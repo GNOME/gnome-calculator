@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 0\n"
-"POT-Creation-Date: 2004-03-15 00:17+0100\n"
+"POT-Creation-Date: 2004-03-23 16:42+1200\n"
 "PO-Revision-Date: 2004-03-15 00:17+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -818,7 +818,8 @@ msgid "cubic centimeters or cubic inches"
 msgstr "kubnih centimetara ili kubnih inča"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#.  *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
+#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
+#.
 #: gcalctool/calctool.c:1098 gcalctool/display.c:262 gcalctool/functions.c:943
 #: gcalctool/functions.c:1071 gcalctool/functions.c:1110
 #: gcalctool/functions.c:1164 gcalctool/functions.c:1257
@@ -839,6 +840,7 @@ msgid "-a needs accuracy value"
 msgstr "-a zahtjeva vrijednost točnosti"
 
 #: gcalctool/get.c:166 gcalctool/get.c:320
+#, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: točnost treba biti u opsegu 0–9\n"
 
@@ -848,26 +850,30 @@ msgid "%s: %s as next argument.\n"
 msgstr "%s: %s kao slijedeći argument.\n"
 
 #. No calculator error initially.
-#.  Not entering an exponent number.
-#.  No pending arithmetic operation.
-#.  No User supplied title line.
+#. Not entering an exponent number.
+#. No pending arithmetic operation.
+#. No User supplied title line.
 #: gcalctool/get.c:278
 msgid "calculator"
 msgstr "kalkulator"
 
 #: gcalctool/get.c:334
+#, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: osnova treba biti 2, 8, 10 ili 16\n"
 
 #: gcalctool/get.c:349
+#, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: neispravan način prikaza [%s]\n"
 
 #: gcalctool/get.c:364
+#, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: neispravan mod [%s]\n"
 
 #: gcalctool/get.c:378
+#, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: neispravan trigonometrijski mod [%s]\n"
 
@@ -881,6 +887,7 @@ msgstr ""
 "\n"
 
 #: gcalctool/get.c:425
+#, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Upotreba: %s: [-D] [-E] [-a točnost] "
 
@@ -889,7 +896,7 @@ msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
-#.  in popup menus
+#. in popup menus
 #: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
 msgid "R"
 msgstr "R"
@@ -1162,4 +1169,3 @@ msgstr "Uredi funkcije..."
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Podešavanje osobnih preferenci"
-
