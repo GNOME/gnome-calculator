@@ -337,9 +337,6 @@ add_extra_kbd_accels()
 {
     create_kbd_accel(BUT_EQ,   0, GDK_Return);
     create_kbd_accel(BUT_MUL,  0, GDK_x);
-#ifdef FIXUP
-    create_kbd_accel(BUT_QUIT, GDK_SHIFT_MASK, GDK_Q);
-#endif /*FIXUP*/
 
     /* Numeric keypad. */
     create_kbd_accel(BUT_0,   0, GDK_KP_0);
@@ -828,13 +825,13 @@ create_mode_panel(GtkWidget *main_vbox)
 
 /* Make Hyp and Inv trigonometric check boxes. */
 
-    X->inv = gtk_check_button_new_with_mnemonic(_("Inv"));
+    X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
     gtk_widget_show(X->inv);
     gtk_box_pack_end(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->inv), "toggled",
                       G_CALLBACK(inv_cb), NULL);
 
-    X->hyp = gtk_check_button_new_with_mnemonic(_("Hyp"));
+    X->hyp = gtk_check_button_new_with_mnemonic(_("_Hyp"));
     gtk_widget_show(X->hyp);
     gtk_box_pack_end(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->hyp), "toggled",

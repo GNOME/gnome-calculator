@@ -47,7 +47,7 @@ double min_fix[MAXACC][MAXBASES] = {
 };
 
 char *base_str[]  = {          /* Strings for each base value. */
-    N_("Bin"), N_("Oct"), N_("Dec"), N_("Hex")
+    N_("_Bin"), N_("_Oct"), N_("_Dec"), N_("_Hex")
 };
 
 char *calc_res[] = {
@@ -56,7 +56,7 @@ char *calc_res[] = {
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
-    N_("Eng"), N_("Fix"), N_("Sci")
+    N_("_Eng"), N_("_Fix"), N_("_Sci")
 };
 
 char *mode_str[]  = {          /* Strings for each mode value. */
@@ -69,7 +69,7 @@ char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
 
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
-    N_("Degrees"), N_("Gradients"), N_("Radians")
+    N_("_Degrees"), N_("_Gradients"), N_("_Radians")
 };
 
 char digits[] = "0123456789ABCDEF";

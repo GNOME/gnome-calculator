@@ -5,7 +5,7 @@
  *  All Rights Reserved.
  */
 
-Revamp gcalctool (v4.2.0 onwards) TODO list.
+Revamped gcalctool (v4.2.0 onwards) TODO list.
 --------------------------------------------
 
 From Calum:
@@ -13,10 +13,6 @@ From Calum:
   occured.
 * The Sto/Rcl/Exch menu items should show the current register values as well.
 * Need to fixup the icon to be the correct GNOME thing.
-* Keyboard navigation doesn't work. Also all the radiobutton and checkbox
-  items need to have a mnemonic associated with them. Make sure that everything
-  is unique (including all the keyboard accelerators for all the gcalctool
-  buttons).
 
 Others:
 * Need to hook up keyboard accelerators for:
@@ -26,22 +22,22 @@ Others:
   - Control-C and Control-V should Copy/Paste the display value from/to the
     clipboard.
 * val_to_button() needs to be reworked to find Alt-<n> type buttons.
-* Button sizes appear to be incorrect again (probably since I added the
-  horizontal separators).
-* Gcalctool is initially being displayed (for me) in Scientific mode, but the
-  Basic Mode radio item is set in the View menu.
+* Sometime gcalctool is initially displayed in Scientific mode, but the
+  Basic Mode radio item is set in the View menu. Also the button sizes are
+  incorrect.
 * Check that the numeric keypad does all the right things.
 * Add in an overview of the various changes since v4.1.13 to the NEWS file.
-* Fixup all the "#ifdef FIXUP"'s.
 * The "*displayitem*" widget and the "*register_label<n>*" widgets background
   color aren't being set to white.
 * Need to update the manual pages to reflect these changes.
 * Need to create help files for gcalctool.
 * Need to reduce tool tip help message sizes.
 * Move .gcalctoolcf functionality into gconf resources.
-* Make sure all the keyboard equivalents of each button are working.
-* Make sure that this new gcalctool is accessible.
-* Need to be able to save the current state away in the Gconf resources.
+* Make sure all the keyboard equivalents of each widget are working.
+* Get keyboard navigation working.
+* Make sure that this new gcalctool is fully accessible.
+* As the user changes options, need to make sure that the current state is
+  stored away in the Gconf resources.
 * Improve the colors in the gcalctoolrc file.
 
 ===========================================================================
