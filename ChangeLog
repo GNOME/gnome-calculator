@@ -7,6 +7,15 @@
 gcalctool change history.
 =========================
 
+v4.2.28 - 21st January 2003.  (richb)
+
+* The real fix for displaying the icon. The problem was that the icon was
+  being installed in the pkgdata_DATA directory, but gcalctool was looking
+  for it in the CALCTOOL_DATA_DIR directory, which was incorrectly set to
+  $(datadir)/calctool" rather than $(datadir)/gcalctool".
+
+----
+
 v4.2.27 - 20th January 2003.  (richb)
 
 * Removed the setting of an event mask and a global event handler in 

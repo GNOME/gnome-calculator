@@ -3,7 +3,7 @@
 INCLUDES = \
 	-I$(includedir) \
 	-DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
-	-DCALCTOOL_DATA_DIR=\""$(datadir)/calctool"\" \
+	-DCALCTOOL_DATA_DIR=\""$(datadir)/gcalctool"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	@PACKAGE_CFLAGS@ \
