@@ -91,7 +91,7 @@ char *ttype_str[] = {          /* Strings for each trig type value. */
 
 char *ttype_desc[] = {         /* Tooltips for each trig type value. */
     N_("Set trigonometric type to degrees"), 
-    N_("Set trigonometric type to gradients"), 
+    N_("Set trigonometric type to gradians"), 
     N_("Set trigonometric type to radians")
 };
 
