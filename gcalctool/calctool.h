@@ -91,6 +91,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_FRAC  b_buttons[22]             /* : */
 #define KEY_RCL   b_buttons[23]             /* R */
 
+#define KEY_SEP   b_buttons[25]             /* . */
 #define KEY_EQ    b_buttons[26]             /* = */
 #define KEY_ADD   b_buttons[27]             /* + */
 #define KEY_REC   b_buttons[28]             /* r */

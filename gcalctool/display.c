@@ -111,7 +111,7 @@ make_fixed(int *MPnumber,int base, int cmax)
     char *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
-    int ddig;                   /* Number of digits to left of . */
+    int ddig;                   /* Number of digits to left of decimal sep. */
     int dval, n;
  
     optr = v->fnum;
@@ -145,7 +145,7 @@ make_fixed(int *MPnumber,int base, int cmax)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-            *optr++ = '.';
+            *optr++ = KEY_SEP.str[0];
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -167,7 +167,7 @@ make_fixed(int *MPnumber,int base, int cmax)
         while (*optr == '0') {
             optr--;
         }
-        if (*optr != '.') {
+        if (*optr != KEY_SEP.str[0]) {
             optr++;
         }
         *optr = '\0';
@@ -340,7 +340,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
         optr++;
     }
 
-    if (*optr == '.') {
+    if (*optr == KEY_SEP.str[0]) {
         for (i = 1; (inum = char_val(*++optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);
             mpcim(&inum, MP2);

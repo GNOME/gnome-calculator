@@ -9,6 +9,13 @@ gcalctool change history.
 
 2003-09-16  Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug 122373 (http://bugzilla.gnome.org/show_bug.cgi?id=122373)
+      The decimal separator is now a translatable string so that other
+      locales that don't use a period (Italian uses a comma for example),
+      can adjust accordingly.
+
+2003-09-16  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug 120605 (http://bugzilla.gnome.org/show_bug.cgi?id=120605)
       Gcalctool contains lots of messages that are (potentially) only 
       displayed if the user starts the application with either the -D or 
