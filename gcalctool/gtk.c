@@ -82,13 +82,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *menus[MAXMENUS];
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
-    gboolean alt_l;              /* Set if the left Alt key is pressed. */
-    gboolean alt_r;              /* Set if the right Alt key is pressed. */
-    gboolean ctrl_l;             /* Set if the left Control key is pressed. */
-    gboolean ctrl_r;             /* Set if the right Control key is pressed. */
-    gboolean shft_l;             /* Set if the left Shift key is pressed. */
-    gboolean shft_r;             /* Set if the right Shift key is pressed. */
-
     GtkWidget *bas_buttons[BROWS * BCOLS];
     GtkWidget *fin_buttons[FROWS * FCOLS];
     GtkWidget *sci_buttons[SROWS * SCOLS];
@@ -133,7 +126,6 @@ static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
-static gboolean kframe_key_release_cb(GtkWidget *, GdkEventKey *, gpointer);
 
 static void about_cb(GtkWidget *, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
@@ -878,8 +870,6 @@ create_kframe()
 
     g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
                      G_CALLBACK(kframe_key_press_cb), NULL);
-    g_signal_connect(G_OBJECT(X->kframe), "key_release_event",
-                     G_CALLBACK(kframe_key_release_cb), NULL);
 
     switch (v->modetype) {
         case FINANCIAL:
@@ -1315,32 +1305,22 @@ inv_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
-#define DO_KEY_PRESS(i) \
-    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL); \
-    g_signal_emit_by_name(GTK_WIDGET(gtk_buttons[i]), "activate"); \
-    return(TRUE)
-
-
 static int
-check_vals(int n, int keyval, 
+check_vals(int n, int keyval, int state,
            struct button buttons[], GtkWidget *gtk_buttons[])
 {
     int i, j;
 
+    state = state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
     for (i = 0; i < n; i++) {
         j = 0;
         while (buttons[i].value[j] != 0) {
             if (buttons[i].value[j] == keyval) {
-                if ((buttons[i].mods[j] == 0) &&
-                    ((X->alt_l  | X->alt_r  | X->ctrl_l | 
-                      X->ctrl_r | X->shft_l | X->shft_r) == 0)) {
-                    DO_KEY_PRESS(i);
-                } else if ((buttons[i].mods[j] == GDK_SHIFT_MASK) &&
-                           ((X->shft_l | X->shft_r) == 1)) {
-                    DO_KEY_PRESS(i);
-                } else if ((buttons[i].mods[j] == GDK_CONTROL_MASK) &&
-                           ((X->ctrl_l | X->ctrl_r) == 1)) {
-                    DO_KEY_PRESS(i);
+                if (buttons[i].mods[j] == state) {
+                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
+                    g_signal_emit_by_name(GTK_WIDGET(gtk_buttons[i]), 
+                                          "activate");
+                    return(TRUE);
                 }
             }
             j++;
@@ -1357,25 +1337,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
     GtkWidget *focus;
     int retval = FALSE;
 
-    if (event->keyval == GDK_Alt_L) {
-        X->alt_l = TRUE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Alt_R) {
-    	X->alt_r = TRUE;
-    	return(TRUE);
-    } else if (event->keyval == GDK_Control_L) {
-        X->ctrl_l = TRUE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Control_R) {
-        X->ctrl_r = TRUE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Shift_L) {
-        X->shft_l = TRUE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Shift_R) {
-        X->shft_r = TRUE;
-	return(TRUE);
-    } else if (event->keyval == GDK_space) {
+    if (event->keyval == GDK_space) {
         focus = gtk_window_get_focus(GTK_WINDOW(X->kframe));
         if (GTK_IS_BUTTON(focus) == TRUE) {
             g_signal_emit_by_name(focus, "pressed");
@@ -1385,57 +1347,30 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
     switch (v->modetype) {
         case BASIC:
-            retval = check_vals(B_NOBUTTONS, event->keyval, 
+            retval = check_vals(B_NOBUTTONS, event->keyval, event->state,
                                 b_buttons, X->bas_buttons);
             break;
 
         case FINANCIAL:
-            retval = check_vals(B_NOBUTTONS, event->keyval,
+            retval = check_vals(B_NOBUTTONS, event->keyval, event->state,
             			b_buttons, X->bas_buttons);
             if (retval != TRUE) {
-                retval = check_vals(F_NOBUTTONS, event->keyval, 
+                retval = check_vals(F_NOBUTTONS, event->keyval, event->state,
                                     f_buttons, X->fin_buttons);
             }
             break;
 
         case SCIENTIFIC:
-            retval = check_vals(B_NOBUTTONS, event->keyval,
+            retval = check_vals(B_NOBUTTONS, event->keyval, event->state,
                                 b_buttons, X->bas_buttons);
             if (retval != TRUE) {
-                retval = check_vals(S_NOBUTTONS, event->keyval, 
+                retval = check_vals(S_NOBUTTONS, event->keyval, event->state,
                                     s_buttons, X->sci_buttons);
             }
             break;
     }
 
     return(retval);
-}
-
-
-static gboolean
-kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
-{
-    if (event->keyval == GDK_Alt_L) {
-        X->alt_l = FALSE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Alt_R) {
-        X->alt_r = FALSE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Control_L) {
-        X->ctrl_l = FALSE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Control_R) {
-        X->ctrl_r = FALSE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Shift_L) {
-        X->shft_l = FALSE;
-        return(TRUE);
-    } else if (event->keyval == GDK_Shift_R) {
-        X->shft_r = FALSE;
-        return(TRUE);
-    }
-
-    return(FALSE);
 }
 
 
