@@ -1860,13 +1860,12 @@ set_display(char *str)
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
-    if (str == NULL || *str == '.')
-      str = " ";
-    else
-      {
+    if (str == NULL || *str == 0) {
+        str = " ";
+    } else {
 	localize_number(localized, str);
 	str = localized;
-      }
+    }
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
     gtk_text_buffer_delete(buffer, &start, &end);
