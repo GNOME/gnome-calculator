@@ -801,6 +801,7 @@ create_mode_panel(GtkWidget *main_vbox)
 
     frame = gtk_frame_new(NULL);
     gtk_widget_show(frame);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
     gtk_box_pack_start(GTK_BOX(main_vbox), frame, TRUE, TRUE, 0);
 
     row1_hbox = gtk_hbox_new(FALSE, 0);
@@ -1339,6 +1340,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
 
     gtk_widget_ref(table);
     gtk_widget_show(table);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     for (i = 0; i < cols; i++) {
