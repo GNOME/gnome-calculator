@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcaltool\n"
-"POT-Creation-Date: 2004-02-03 14:10-0800\n"
+"POT-Creation-Date: 2004-02-26 08:40-0800\n"
 "PO-Revision-Date: 2003-09-03 22:56+0200\n"
 "Last-Translator: Stefano Canepa <sc@linux.it>\n"
 "Language-Team: Italian Translation Team <tp@lists.linux.it>\n"
@@ -115,7 +115,8 @@ msgid "De_grees"
 msgstr "_Gradi sessagesimali"
 
 #: gcalctool/calctool.c:89
-msgid "Gr_adients"
+#, fuzzy
+msgid "Gr_adians"
 msgstr "Gradi _decimali"
 
 #: gcalctool/calctool.c:89
@@ -383,8 +384,8 @@ msgstr "Reciproco"
 
 #: gcalctool/calctool.c:437
 #, fuzzy
-msgid "x<sup><i>2</i></sup>"
-msgstr "x<sup>2</sup>"
+msgid "<i>x</i><sup>2</sup>"
+msgstr "e<sup>x</sup>"
 
 #: gcalctool/calctool.c:438
 msgid "Square"
@@ -622,7 +623,7 @@ msgstr "Dieci alla x"
 
 #: gcalctool/calctool.c:793
 #, fuzzy
-msgid "x<sup><i>y</i></sup>"
+msgid "<i>x</i><sup><i>y</i></sup>"
 msgstr "x<sup>2</sup>"
 
 #: gcalctool/calctool.c:794
@@ -675,7 +676,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Cifra esadecimale E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1116
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
 msgid "F"
 msgstr "F"
 
@@ -739,7 +740,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Cifra esadecimale B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1108
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
 msgid "C"
 msgstr "C"
 
@@ -830,18 +831,18 @@ msgstr "centimetri cubi o pollici cubi"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:298 gcalctool/functions.c:959
-#: gcalctool/functions.c:1087 gcalctool/functions.c:1126
-#: gcalctool/functions.c:1180 gcalctool/functions.c:1273
-#: gcalctool/functions.c:1274 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1098 gcalctool/display.c:262 gcalctool/functions.c:943
+#: gcalctool/functions.c:1071 gcalctool/functions.c:1110
+#: gcalctool/functions.c:1164 gcalctool/functions.c:1257
+#: gcalctool/functions.c:1258 gcalctool/graphics.c:102 gcalctool/mp.c:1987
 msgid "Error"
 msgstr "Errore"
 
-#: gcalctool/functions.c:1293
+#: gcalctool/functions.c:1277
 msgid "Numeric stack error"
 msgstr "Errore stack numerico"
 
-#: gcalctool/functions.c:1314
+#: gcalctool/functions.c:1298
 msgid "Operand stack error"
 msgstr "Errore nello stack degli operandi"
 
@@ -908,279 +909,283 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:914 gcalctool/gtk.c:1047
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:166
+#: gcalctool/gtk.c:167
 msgid "/_Calculator"
 msgstr "/_Calcolatrice"
 
-#: gcalctool/gtk.c:167
+#: gcalctool/gtk.c:168
 msgid "/Calculator/_Quit"
 msgstr "/Calcolatrice/_Esci"
 
-#: gcalctool/gtk.c:169
+#: gcalctool/gtk.c:170
 msgid "/_Edit"
 msgstr "/_Modifica"
 
-#: gcalctool/gtk.c:170
+#: gcalctool/gtk.c:171
 msgid "/Edit/_Copy"
 msgstr "/Modifica/_Copia"
 
-#: gcalctool/gtk.c:171
+#: gcalctool/gtk.c:172
 msgid "/Edit/_Paste"
 msgstr "/Modifica/_Incolla"
 
-#: gcalctool/gtk.c:172
+#: gcalctool/gtk.c:173
 msgid "/Edit/sep1"
 msgstr "/Edit/sep1"
 
-#: gcalctool/gtk.c:173
+#: gcalctool/gtk.c:174
 msgid "/Edit/_Insert ASCII Value..."
 msgstr "/Modifica/Inse_risci valore ASCII..."
 
-#: gcalctool/gtk.c:175
+#: gcalctool/gtk.c:176
 msgid "/_View"
 msgstr "/_Visualizza"
 
-#: gcalctool/gtk.c:176
+#: gcalctool/gtk.c:177
 msgid "/View/_Basic Mode"
 msgstr "/Visualizza/Modalità _base"
 
-#: gcalctool/gtk.c:177
+#: gcalctool/gtk.c:178
 msgid "/View/_Financial Mode"
 msgstr "/Visualizza/Modalità _finanziaria"
 
-#: gcalctool/gtk.c:178
+#: gcalctool/gtk.c:179
 msgid "/View/_Scientific Mode"
 msgstr "/Visualizza/Modalità _scientifica"
 
-#: gcalctool/gtk.c:179
+#: gcalctool/gtk.c:180
 msgid "/View/sep1"
 msgstr "/Visualizza/sep1"
 
-#: gcalctool/gtk.c:180
+#: gcalctool/gtk.c:181
 msgid "/View/Show _Trailing Zeroes"
 msgstr "/Visualizza/Visualizza gli _zero dopo la virgola"
 
-#: gcalctool/gtk.c:181
+#: gcalctool/gtk.c:182
 #, fuzzy
 msgid "/View/Show T_housands Separator"
 msgstr "/Visualizza/Visualizza gli _zero dopo la virgola"
 
-#: gcalctool/gtk.c:182
+#: gcalctool/gtk.c:183
 msgid "/View/sep2"
 msgstr "/Visualizza/sep2"
 
-#: gcalctool/gtk.c:183
+#: gcalctool/gtk.c:184
 msgid "/View/_Memory Registers"
 msgstr "/Visualizza/Registri di _memoria"
 
-#: gcalctool/gtk.c:185
+#: gcalctool/gtk.c:186
 msgid "/_Help"
 msgstr "/_Aiuto"
 
-#: gcalctool/gtk.c:186
+#: gcalctool/gtk.c:187
 msgid "/Help/_Contents"
 msgstr "/Aiuto/_Manuale"
 
-#: gcalctool/gtk.c:187
+#: gcalctool/gtk.c:188
 msgid "/Help/_About"
 msgstr "/Aiuto/I_nformazioni"
 
-#: gcalctool/gtk.c:191
+#: gcalctool/gtk.c:192
 msgid "/0 significant places"
 msgstr "/0 cifre significative"
 
-#: gcalctool/gtk.c:192
+#: gcalctool/gtk.c:193
 msgid "/1 significant place"
 msgstr "/1 cifra significativa"
 
-#: gcalctool/gtk.c:193
+#: gcalctool/gtk.c:194
 msgid "/2 significant places"
 msgstr "/2 cifre significative"
 
-#: gcalctool/gtk.c:194
+#: gcalctool/gtk.c:195
 msgid "/3 significant places"
 msgstr "/3 cifre significative"
 
-#: gcalctool/gtk.c:195
+#: gcalctool/gtk.c:196
 msgid "/4 significant places"
 msgstr "/4 cifre significative"
 
-#: gcalctool/gtk.c:196
+#: gcalctool/gtk.c:197
 msgid "/5 significant places"
 msgstr "/5 cifre significative"
 
-#: gcalctool/gtk.c:197
+#: gcalctool/gtk.c:198
 msgid "/6 significant places"
 msgstr "/6 cifre significative"
 
-#: gcalctool/gtk.c:198
+#: gcalctool/gtk.c:199
 msgid "/7 significant places"
 msgstr "/7 cifre significative"
 
-#: gcalctool/gtk.c:199
+#: gcalctool/gtk.c:200
 msgid "/8 significant places"
 msgstr "/8 cifre significative"
 
-#: gcalctool/gtk.c:200
+#: gcalctool/gtk.c:201
 msgid "/9 significant places"
 msgstr "/9 cifre significative"
 
-#: gcalctool/gtk.c:201
+#: gcalctool/gtk.c:202
 msgid "/sep1"
 msgstr "/sep1"
 
-#: gcalctool/gtk.c:202
+#: gcalctool/gtk.c:203
 msgid "/Show _Trailing Zeroes"
 msgstr "/Mostra gli zero _iniziali"
 
-#: gcalctool/gtk.c:206 gcalctool/gtk.c:224
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
 msgid "/1 place"
 msgstr "/1 posto"
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
 msgid "/2 places"
 msgstr "/2 posti"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
 msgid "/3 places"
 msgstr "/3 posti"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
 msgid "/4 places"
 msgstr "/4 posti"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
 msgid "/5 places"
 msgstr "/5 posti"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
 msgid "/6 places"
 msgstr "/6 posti"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
 msgid "/7 places"
 msgstr "/7 posti"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
 msgid "/8 places"
 msgstr "/8 posti"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
 msgid "/9 places"
 msgstr "/9 posti"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
 msgid "/10 places"
 msgstr "/10 posti"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
 msgid "/11 places"
 msgstr "/11 posti"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
 msgid "/12 places"
 msgstr "/12 posti"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
 msgid "/13 places"
 msgstr "/13 posti"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
 msgid "/14 places"
 msgstr "/14 posti"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
 msgid "/15 places"
 msgstr "/15 posti"
 
-#: gcalctool/gtk.c:293
+#: gcalctool/gtk.c:295
 msgid "translator_credits"
 msgstr "Stefano Canepa <sc@linux.it>"
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:297
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:299
 msgid "Calculator with financial and scientific modes."
 msgstr "Calcolatrice con modalità finanziario e scientifico."
 
-#: gcalctool/gtk.c:585
+#: gcalctool/gtk.c:586
 msgid "Insert ASCII Value"
 msgstr "Inserisci valore ASCII"
 
-#: gcalctool/gtk.c:600
+#: gcalctool/gtk.c:601
 msgid "Ch_aracter:"
 msgstr "C_arattere:"
 
-#: gcalctool/gtk.c:625
+#: gcalctool/gtk.c:626
 msgid "_Insert"
 msgstr "_Inserisci"
 
-#: gcalctool/gtk.c:704
+#: gcalctool/gtk.c:705
 msgid "Edit Constants"
 msgstr "Modifica le costanti"
 
-#: gcalctool/gtk.c:704
+#: gcalctool/gtk.c:705
 msgid "Edit Functions"
 msgstr "Modifica le funzioni"
 
-#: gcalctool/gtk.c:728
+#: gcalctool/gtk.c:729
 msgid "Note:"
 msgstr "Nota:"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:730
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Tutte le costanti sono specificate in base dieci"
 
-#: gcalctool/gtk.c:739
+#: gcalctool/gtk.c:740
 msgid "Click a _value or description to edit it:"
 msgstr "Cliccare un _valore o una descrizione per modificarla:"
 
-#: gcalctool/gtk.c:762
+#: gcalctool/gtk.c:763
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:764
+#: gcalctool/gtk.c:765
 msgid "Value"
 msgstr "Valore"
 
-#: gcalctool/gtk.c:766
+#: gcalctool/gtk.c:767
 msgid "Description"
 msgstr "Descrizione"
 
-#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:800 gcalctool/gtk.c:802
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:801 gcalctool/gtk.c:803
 msgid "Calculator"
 msgstr "Calculator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:982
+#: gcalctool/gtk.c:983
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:990
+#: gcalctool/gtk.c:991
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1038
+#: gcalctool/gtk.c:1039
 msgid "Memory Registers"
 msgstr "Registri di memoria"
 
-#: gcalctool/gtk.c:1097
+#: gcalctool/gtk.c:1098
 msgid "Edit Constants..."
 msgstr "Modifica le costanti"
 
-#: gcalctool/gtk.c:1097
+#: gcalctool/gtk.c:1098
 msgid "Edit Functions..."
 msgstr "Modifica le funzioni"
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Esegue vari calcoli"
+
+#, fuzzy
+#~ msgid "x<sup><i>2</i></sup>"
+#~ msgstr "x<sup>2</sup>"
 
 #~ msgid "Set trigonometric type to gradients"
 #~ msgstr "Imposta i «gradi decimali» come unità di misura degli angoli"

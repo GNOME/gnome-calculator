@@ -29,21 +29,23 @@ static char *make_fixed(int *, int, int);
 
 
 /* Add in the thousand separators characters if required and if we are
- * currently in the decimal numeric base.
+ * currently in the decimal numeric base, use the "right" radix character.
  */
 
 void
-add_tsep()
+localize_number(char *dest, const char *src)
 {
+    char tnum[MAX_LOCALIZED], *dstp;
+
     if (v->show_tsep && v->base == DEC) {
-	char *dstp, *radixp, *srcp;
+	const char *radixp, *srcp;
 	int n, i;
 	size_t tsep_len;
 
 	/* Process the fractional part (if any). */
-	srcp = v->fnum + strlen(v->fnum) - 1;
-	dstp = v->tnum;
-	if ((radixp = strstr(v->fnum, v->radix)) != NULL) {
+	srcp = src + strlen(src) - 1;
+	dstp = tnum;
+	if ((radixp = strchr(src, '.')) != NULL) {
             while (srcp != radixp) {
     		*dstp++ = *srcp--;
             }
@@ -53,10 +55,10 @@ add_tsep()
     	/* Process the integer part, add in thousand separators. */
 	tsep_len = strlen(v->tsep);
     	n = 0;
-    	while (srcp >= v->fnum) {
+    	while (srcp >= src) {
             *dstp++ = *srcp--;
             n++;
-            if (n == 3 && srcp >= v->fnum) {
+            if (n == 3 && srcp >= src) {
 	        for (i = tsep_len - 1; i >= 0; i--)
 		    *dstp++ = v->tsep[i];
 		n = 0;
@@ -65,56 +67,25 @@ add_tsep()
 	*dstp++ = '\0';
 
 	/* Move from scratch pad to fnum, reversing the character order. */
-	srcp = v->tnum + strlen(v->tnum) - 1;
-	dstp = v->fnum;
-	while (srcp >= v->tnum) {
+	srcp = tnum + strlen(tnum) - 1;
+	dstp = dest;
+	while (srcp >= tnum) {
             *dstp++ = *srcp--;
 	}
 	*dstp++ = '\0';
+    } else {
+	STRCPY(dest, src);
     }
-}
+    dstp = strchr(dest, '.');
+    if (dstp != NULL) {
+	size_t radix_len;
 
-
-/* Remove the thousands separators (if any) in-situ. */
-
-void
-remove_tsep(char *str) {
-    char *srcp = str;
-    char *dstp = str;
-    size_t tsep_len;
-
-    tsep_len = strlen(v->tsep);
-    if (tsep_len && strstr(str, v->tsep) != NULL) {
-        while (*srcp != '\0') {
-            if (memcmp(srcp, v->tsep, tsep_len) == 0) {
-                srcp += tsep_len;
-                continue;
-            }
-            *dstp++ = *srcp++;
-        }
-        *dstp++ = '\0';
+	radix_len = strlen(v->radix);
+	if (radix_len != 1) {
+	    memmove(dstp + radix_len, dstp + 1, strlen (dstp + 1) + 1);
+	}
+	MEMCPY(dstp, v->radix, radix_len);
     }
-}
-
-
-/* Adjust the radix string (in-situ) to be the C locale radix value of "." */
-
-void
-adjust_radix(char *str) {
-    char *srcp = str;
-    char *dstp = str;
-    size_t radix_len;
-
-    radix_len = strlen(v->radix);
-    while (*srcp != '\0') {
-        if (memcmp(srcp, v->radix, radix_len) == 0) {
-            srcp += radix_len;
-            *dstp++ = '.';
-            continue;
-        }
-        *dstp++ = *srcp++;
-    }
-    *dstp++ = '\0';
 }
 
 
@@ -200,12 +171,11 @@ initialise()
 static char *
 make_fixed(int *MPnumber, int base, int cmax)
 {
-    char half[3 + MB_LEN_MAX], *optr;
+    char half[4], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
     int dval, n;
-    size_t radix_len = strlen(v->radix);
  
     optr = v->fnum;
     mpabs(MPnumber, MPval);
@@ -218,8 +188,8 @@ make_fixed(int *MPnumber, int base, int cmax)
     mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
-    SPRINTF(half, "0%s5", v->radix);
-    MPstr_to_num(half, DEC, FALSE, MP2);
+    SPRINTF(half, "0.5"); /* FIXME: string constant if MPstr_to_num can get it */
+    MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
 
@@ -239,8 +209,7 @@ make_fixed(int *MPnumber, int base, int cmax)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-	    memcpy(optr, v->radix, radix_len);
-	    optr += radix_len;
+	    *optr++ = '.';
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -262,16 +231,11 @@ make_fixed(int *MPnumber, int base, int cmax)
         while (*optr == '0') {
             optr--;
         }
-	if (optr < v->fnum + radix_len - 1 || 
-            memcmp(optr - (radix_len - 1), v->radix, radix_len) != 0) {
+	if (optr < v->fnum || *optr != '.') {
 	    optr++;
-	} else {
-	    optr -= radix_len - 1;
-        }
+	}
         *optr = '\0';
     }
-
-    add_tsep();
 
     return(v->fnum);
 }
@@ -312,7 +276,7 @@ make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
 static char *
 make_eng_sci(int *MPnumber, int base)
 {
-    char half[3 + MB_CUR_MAX], fixed[MAX_BUFFER], *optr;
+    char half[4], fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
     int i, dval, len, n;
@@ -386,8 +350,8 @@ make_eng_sci(int *MPnumber, int base)
         *optr++ = '+';
     }
  
-    SPRINTF(half, "0%s5", v->radix);
-    MPstr_to_num(half, DEC, FALSE, MP1);
+    SPRINTF(half, "0.5");
+    MPstr_to_num(half, DEC, MP1);
     mpaddi(MP1, &exp, MPval);
     n = 1;
     mpcim(&n, MP1);
@@ -414,32 +378,21 @@ make_eng_sci(int *MPnumber, int base)
 }
 
 
-/* Convert string into an MP number, in the given base, using radix and 
- * thousands separator either from the user's locale or the C locale.
+/* Convert string into an MP number, in the given base
  */
 
 void
-MPstr_to_num(char *str, enum base_type base, gboolean use_C_locale, int *MPval)
+MPstr_to_num(char *str, enum base_type base, int *MPval)
 {
-    char *loc_radix, *loc_tsep, *optr;
+    char *optr;
     int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
     int i, inum;
     int exp      = 0;
     int exp_sign = 1;
-    size_t radix_len;
-
-    if (use_C_locale == TRUE) {
-        loc_radix = (char *) v->radix;
-        v->radix = ".";
-        loc_tsep = (char *) v->tsep;
-        v->tsep = "";
-    }
 
     i = 0;
     mpcim(&i, MPval);
     mpcim(&basevals[(int) base], MPbase);
-
-    remove_tsep(str);
 
     optr = str;
     while ((inum = char_val(*optr)) >= 0) {
@@ -448,9 +401,8 @@ MPstr_to_num(char *str, enum base_type base, gboolean use_C_locale, int *MPval)
         optr++;
     }
 
-    radix_len = strlen (v->radix);
-    if (memcmp(optr, v->radix, radix_len) == 0) {
-        optr += radix_len;
+    if (*optr == '.') {
+        optr++;
         for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);
             mpcim(&inum, MP2);
@@ -478,11 +430,6 @@ MPstr_to_num(char *str, enum base_type base, gboolean use_C_locale, int *MPval)
     if (v->key_exp) {
         mppwr(MPbase, &exp, MP1);
         mpmul(MPval, MP1, MPval);
-    }
-
-    if (use_C_locale == TRUE) {
-        v->radix = loc_radix;
-        v->tsep  = loc_tsep;
     }
 }
 

@@ -159,7 +159,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #endif /*LINT_CAST*/
 
 #define MAX_DIGITS     40         /* Maximum displayable number of digits. */
-#define MAX_BUFFER     (MAX_DIGITS + MAX_DIGITS / 3 * MB_LEN_MAX + 1)
+#define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
 /* Maximum number of various graphics pieces. */
 #define MAXITEMS       8          /* Maximum number of panel items. */
@@ -236,7 +236,7 @@ struct calcVars {                      /* Calctool variables and options. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
-    char fnum[MAX_BUFFER];             /* Scratchpad for fixed numbers. */
+    char fnum[MAX_DIGITS];             /* Scratchpad for fixed numbers. */
     char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
     char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
     char *home;                        /* Pathname for users home directory. */
@@ -247,8 +247,7 @@ struct calcVars {                      /* Calctool variables and options. */
     char pstr[5];                      /* Current button text string. */
     const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
-    char snum[MAX_BUFFER];             /* Scratchpad for scientific numbers. */
-    char tnum[MAX_BUFFER];             /* Scratchpad for tsep numbers. */
+    char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
     const char *tsep;                /* Locale specific thousands seperator. */
     char *titleline;                   /* Value of titleline (if present). */
     char *tool_label;                  /* Title line for calculator window. */
@@ -331,8 +330,6 @@ int get_menu_entry(enum menu_type, int);
 int key_equal(struct button *, struct button);
 int main(int, char **);
 
-void adjust_radix(char *);
-void add_tsep();
 void beep();
 void clear_display(int);
 void display_prop_sheet();
@@ -371,13 +368,14 @@ void init_frame_sizes();
 void init_vars();
 void init_Xvars(int *, char **);
 void key_init();
+void localize_number(char *, const char *);
 void load_resources();
 void make_frames();
 void make_menus();
 void make_reg(int, char *);
 void make_registers();
 void mperr();
-void MPstr_to_num(char *, enum base_type, gboolean, int *);
+void MPstr_to_num(char *, enum base_type, int *);
 void paren_disp(char);
 void process_item(struct button *);
 void process_stack(int, int, int);
@@ -388,7 +386,6 @@ void put_resource(enum res_type, char *);
 void read_cfdefs();
 void read_resources();
 void read_str(char **, char *);
-void remove_tsep(char *);
 void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_toggle(int);

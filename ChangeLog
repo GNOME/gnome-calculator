@@ -7,6 +7,15 @@
 gcalctool change history.
 =========================
 
+2004-02-26  Miloslav Trmac <mitr at volny dot cz>
+
+    * Fixed bug 135064 (http://bugzilla.gnome.org/show_bug.cgi?id=135064)
+      Changing the sign of a large number (when "Show Thousands Separator"
+      is on and this is not the C locale), no longer corrupts the display.
+      The fix involved resetting all the internal calculations in gcalctool
+      to be done in the C locale, and then localized (radix character and
+      thousands separator), just before the number is displayed.
+
 2004-02-24  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 135328 (http://bugzilla.gnome.org/show_bug.cgi?id=135328)

@@ -305,7 +305,7 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 
     } else if (IS_KEY(v->cur_op, KEY_PER.value[0])) {     /* % */
         mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
-        MPstr_to_num("0.01", DEC, FALSE, MP1);
+        MPstr_to_num("0.01", DEC, MP1);
         mpmul(v->MPresult, MP1, v->MPresult);
 
     } else if (IS_KEY(v->cur_op, KEY_YTOX.value[0])) {    /* y^x */
@@ -390,20 +390,7 @@ do_delete()     /* Remove the last numeric character typed. */
 
     len = strlen(v->display);
     if (len > 0) {
-        size_t l2;
-
-	l2 = strlen(v->radix);
-        if (len >= l2 && memcmp(v->display + len - l2, v->radix, l2) == 0) {
-	    v->display[len-l2] = '\0';
-	} else {
-	    l2 = strlen(v->tsep);
-	    if (len >= l2
-		&& memcmp(v->display + len - l2, v->tsep, l2) == 0) {
-	        v->display[len-l2] = '\0';
-	    } else {
-	        v->display[len-1] = '\0';
-	    }
-	}
+	v->display[len-1] = '\0';
     }
 
 /*  If we were entering a scientific number, and we have backspaced over
@@ -417,16 +404,15 @@ do_delete()     /* Remove the last numeric character typed. */
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
 
-    if (v->pointed && !(strstr(v->display, v->radix))) {
+    if (v->pointed && !(strchr(v->display, '.'))) {
         v->pointed = 0;
     }
 
     set_display(v->display);
-    MPstr_to_num(v->display, v->base, FALSE, v->MPdisp_val);
+    MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        add_tsep();
         set_display(v->fnum);
     }
 }
@@ -447,15 +433,12 @@ do_exchange()         /* Exchange display with memory register. */
 void
 do_expno()           /* Get exponential number. */
 {
-    v->pointed = (strstr(v->display, v->radix) != NULL);
+    v->pointed = (strchr(v->display, '.') != NULL);
     if (!v->new_input) {
         STRCPY(v->display, "1.0 +");
         v->new_input = v->pointed = 1;
     } else if (!v->pointed) {
-        char str[4];
-
-        SPRINTF(str, "%s +", v->radix);
-        STRNCAT(v->display, str, 3);
+        STRNCAT(v->display, ". +", 3);
         v->pointed = 1;
     } else if (!v->key_exp) {
         STRNCAT(v->display, " +", 2);
@@ -464,7 +447,7 @@ do_expno()           /* Get exponential number. */
     v->key_exp = 1;
     v->exp_posn = strchr(v->display, '+');
     set_display(v->display);
-    MPstr_to_num(v->display, v->base, FALSE, v->MPdisp_val);
+    MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
 
@@ -600,7 +583,7 @@ do_immed()
                 *v->exp_posn = '+';
             }
             set_display(v->display);
-            MPstr_to_num(v->display, v->base, FALSE, v->MPdisp_val);
+            MPstr_to_num(v->display, v->base, v->MPdisp_val);
             v->key_exp = 0;
         } else {
             mpneg(v->MPdisp_val, v->MPdisp_val);
@@ -667,7 +650,7 @@ do_number()
         }
     }
     set_display(v->display);
-    MPstr_to_num(v->display, v->base, FALSE, v->MPdisp_val);
+    MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
 
@@ -799,15 +782,15 @@ do_point()                   /* Handle numeric point. */
 {
     if (!v->pointed) {
         if (v->toclear) {
-            STRCPY(v->display, v->radix);
+            STRCPY(v->display, ".");
             v->toclear = 0;
         } else {
-            STRCAT(v->display, v->radix);
+            STRCAT(v->display, ".");
         }
         v->pointed = 1;
     }
     set_display(v->display);
-    MPstr_to_num(v->display, v->base, FALSE, v->MPdisp_val);
+    MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
 
@@ -849,7 +832,7 @@ do_shift()     /* Perform bitwise shift on display value. */
     for (i = 0; i <= 15; i++) {
         if (v->current->value[0] == get_menu_entry(mtype, i)) {
             shift = char_val(v->current->value[0]);
-            MPstr_to_num(v->display, v->base, FALSE, MPtemp);
+            MPstr_to_num(v->display, v->base, MPtemp);
             mpcmd(MPtemp, &dval);
             temp = ibool(dval);
 
@@ -1185,7 +1168,7 @@ mpatanh(int *MPx, int *MPretval)
         mpsub(MP1, MPx, MP3);
         mpdiv(MP2, MP3, MP3);
         mpln(MP3, MP3);
-        MPstr_to_num("0.5", DEC, FALSE, MP1);
+        MPstr_to_num("0.5", DEC, MP1);
         mpmul(MP1, MP3, MPretval);
     }
 }

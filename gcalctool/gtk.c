@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <netdb.h>
@@ -470,7 +471,6 @@ button_proc(GtkButton *widget, gpointer user_data)
 
     if (v->new_input && v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        add_tsep();
         set_display(v->fnum);
     }
 }
@@ -554,7 +554,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
            item = g_array_index(entries, CF_Item, i);
 
            if (mtype == M_CON) {
-                MPstr_to_num(item.value, DEC, FALSE, v->MPcon_vals[i]);
+                MPstr_to_num(item.value, DEC, v->MPcon_vals[i]);
                 STRCPY(v->con_names[i], item.description);
                 put_constant(i, item.value, item.description);
             } else {
@@ -1169,7 +1169,7 @@ get_constant(int n)
         return;
     }   
 
-    MPstr_to_num(vline, DEC, TRUE, v->MPcon_vals[n]);
+    MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
     STRCPY(v->con_names[n], nline);
 }
 
@@ -1769,8 +1769,6 @@ put_constant(int n, char *con_value, char *con_name)
  * character of ".".
  */
 
-    remove_tsep(cstr);
-    adjust_radix(cstr);
     SPRINTF(key, "/apps/%s/constant%1dvalue", v->appname, n);
     gconf_client_set_string(X->client, key, cstr, NULL);
     g_free(cstr);
@@ -1858,16 +1856,24 @@ set_accuracy_toggle(int val)
 void
 set_display(char *str)
 {
+    char localized[MAX_LOCALIZED];
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
+    if (str == NULL || *str == '.')
+      str = " ";
+    else
+      {
+	localize_number(localized, str);
+	str = localized;
+      }
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
     gtk_text_buffer_delete(buffer, &start, &end);
 
     gtk_text_buffer_insert_with_tags_by_name(buffer,
                                              &end,
-                                             str != NULL && strlen(str) != 0 ? str : " ",
+                                             str,
                                              -1,
                                              "x-large",
                                              NULL);
