@@ -157,10 +157,10 @@ static XVars X;
 
 static GtkItemFactoryEntry main_menu[] = {
     { "/_File",                    NULL, NULL,    0,       "<Branch>" },
-    { "/File/_Quit",       "<control>Q", mb_proc, M_QUIT,  NULL },
+    { "/File/_Quit",       "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
 
     { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
-    { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  NULL },
+    { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
     { "/Edit/_Insert ASCII Value", NULL, mb_proc, M_ASCII, NULL },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
@@ -171,7 +171,7 @@ static GtkItemFactoryEntry main_menu[] = {
     { "/View/_Memory Registers",   NULL, mb_proc, M_REGS,  "<ToggleItem>" },
 
     { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
-    { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, NULL },
+    { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
     { "/Help/_About Gcalctool",    NULL, mb_proc, M_ABOUT, NULL },
 };
 
