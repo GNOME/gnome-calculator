@@ -188,7 +188,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_none
 },
 {
-    N_("Bsp"),
+    N_("Bksp"),
     N_("Remove rightmost character from displayed value"),
     N_("Backspace"),
     { 0, 0 },
