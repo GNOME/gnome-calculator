@@ -10,6 +10,10 @@ Revamp gcalctool (v4.2.0 onwards) TODO list.
 
 * Entering "((2+3)+(2+3))" gives the wrong answer. Parentheses parsing is
   totally broken at the moment.
+* Button sizes appear to be incorrect again (probably since I added the
+  horizontal separators).
+* Gcalctool is initially being displayed (for me) in Scientific mode, but the
+  Basic Mode radio item is set in the View menu.
 * The Gcalctool icon should have a better graphic.
 * Consider changing the display from a label to a textview.
 * Check that the numeric keypad does all the right things.
@@ -18,8 +22,9 @@ Revamp gcalctool (v4.2.0 onwards) TODO list.
 * Hook up the Help->Contents menu bar menu item.
 * Fixup all the "#ifdef FIXUP"'s.
 * Remove all references to the enum with FCP_KEY, FCP_REG and FCP_MODE in it.
-* Need to create a new gcalctoolrc that shows the old OpenWindows calctool
-  colors.
+* The "*displayitem*" widget and the "*register_label<n>*" widgets background
+  color aren't being set to white.
+* Improve the colors in the gcalctoolrc file.
 * Need to update the manual pages to reflect these changes.
 * Need to create Help file for gcalctool.
 * Need to reduce tool tip help message sizes.
