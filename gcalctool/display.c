@@ -175,7 +175,7 @@ make_number(int *MPnumber)     /* Convert MP number to character string. */
     double number, val;
 
 /*  NOTE: make_number can currently set v->error when converting to a double.
- *        This is to provide the same look&feel as V3 even though calctool
+ *        This is to provide the same look&feel as V3 even though gcalctool
  *        now does internal arithmetic to "infinite" precision.
  *
  *  XXX:  Needs to be improved. Shouldn't need to convert to a double in

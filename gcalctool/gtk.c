@@ -94,7 +94,7 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *mode_tables[MAXMODES];
 
     enum menu_type CFtype;
-    Display *dpy;                      /* Display ids of calctool frames. */
+    Display *dpy;
     XrmDatabase rDB;                   /* Combined resources database. */
 
     int cmap_loaded;              /* Has the colormap being loaded? */
@@ -545,7 +545,7 @@ check_args()
         } else {
             FPRINTF(stderr, _("%s: cannot read icon filename (%s)\n"), 
                     v->progname, tempstr);
-            xv_usage(_("calctool"));
+            xv_usage(_("gcalctool"));
             exit(1);
         }
     }
@@ -1007,7 +1007,7 @@ display_prop_sheet()
 
 
 void
-do_keys()      /* Display/undisplay the calctool key values. */
+do_keys()      /* Display/undisplay the gcalctool key values. */
 {
     enum fcp_type curwin;
     enum mode_type modetype;
@@ -1235,7 +1235,7 @@ get_proc(GtkClipboard *clipboard, const gchar *text, gpointer data)
 }
 
 
-/* Get calctool resource from merged database. */
+/* Get gcalctool resource from merged database. */
 
 char *
 get_resource(enum res_type rtype)
@@ -1283,7 +1283,7 @@ char *MSGFILE_MESSAGE = "SUNW_DESKSET_CALCTOOL_MSG";
 
 
 static void
-load_colors(void)      /* Create and load calctool color map. */
+load_colors(void)      /* Create and load gcalctool color map. */
 {
     GdkColor color;
     int i, numcolors;
@@ -1334,7 +1334,7 @@ load_resources()        /* Load combined X resources databases. */
         X->rDB = NULL;
         return;
     } else if ((ptr = getenv("CALCTOOLDEFAULTS")) == NULL) {
-        SPRINTF(name, "%s/.calctooldefaults", getenv("HOME"));
+        SPRINTF(name, "%s/.gcalctooldefaults", getenv("HOME"));
         ptr = name;
     }
     X->rDB = XrmGetFileDatabase(ptr);
@@ -1360,8 +1360,8 @@ make_frames()
     }
 
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
-    load_colors();                       /* Load the calctool colormap. */
-    create_kframe();                     /* Create main calctool window. */
+    load_colors();                       /* Load the gcalctool colormap. */
+    create_kframe();                     /* Create main gcalctool window. */
     create_mframe();                     /* Create mode window. */
     create_rframe();                     /* Create memory register window. */
     set_mode(v->modetype);
@@ -1806,7 +1806,7 @@ prop_cancel(GtkButton *button, gpointer user_data)
 }
 
 
-/* Put calctool resource into deskset database. */
+/* Put gcalctool resource into deskset database. */
 
 void
 put_resource(enum res_type rtype, char *value)
@@ -1852,7 +1852,7 @@ save_resources()
 
     if ((filename = getenv("CALCTOOLDEFAULTS")) == NULL) {
         filename = (char *) calloc(1, strlen(home) + 18);
-        SPRINTF(filename, "%s/.calctooldefaults", home);
+        SPRINTF(filename, "%s/.gcalctooldefaults", home);
     }
 
 /* Check if file exists and user has write access. */

@@ -43,7 +43,7 @@ static void get_rcfile(char *);
 
 
 char *
-convert(char *line)       /* Convert .calctoolrc line to ascii values. */
+convert(char *line)       /* Convert .gcalctoolrc line to ascii values. */
 {
     static char output[MAXLINE];   /* Converted output record. */
     int ctrl = 0;           /* Set if we are processing a control character. */
@@ -130,10 +130,7 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 
     INC;
     while (argc > 0) {
-        if (argv[0][0] == '-' || argv[0][0] == '+') {
-            if (argv[0][2] != '\0') {
-                goto toolarg;
-            }
+        if (argv[0][0] == '-') {
             switch (argv[0][1]) {
                 case 'D' :                   /* MP debug info. to stderr. */
                     v->MPdebug = TRUE;
@@ -169,27 +166,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                     break;
 
                 default :
-                toolarg :               /* Pick up generic tool arguments. */
-                    if (EQUAL(argv[0], "-name")) {
-                        if (argc < 2) {
-                            usage(v->progname);
-                        }
-                        argc -= 2;
-                        argv += 2;
-                        continue;
-                    }
-
-/*  Check to see if the user has supplied a -Wn or a +Wn argument. The first
- *  signifies no titleline required, and the latter indicates the opposite.
- */
-
-                    if (!strncmp(&argv[0][1], "Wn", 2)) {
-                        v->istitle = (argv[0][0] == '-') ? FALSE : TRUE;
-                        argc--;
-                        argv++;
-                        continue;
-                    }
-
                     usage(v->progname);
             }
             INC;
@@ -214,9 +190,9 @@ getparam(char *s, char *argv[], char *errmes)
 
 
 static void
-get_rcfile(char *name)          /* Read .calctoolrc file. */
+get_rcfile(char *name)          /* Read .gcalctoolrc file. */
 {
-    char line[MAXLINE];    /* Current line from the .calctoolrc file. */
+    char line[MAXLINE];    /* Current line from the .gcalctoolrc file. */
     char tmp[MAXLINE];     /* Used to extract definitions. */
     double cval;           /* Current constant value being converted. */
     enum base_type base;   /* Saved current base value. */
@@ -229,7 +205,7 @@ get_rcfile(char *name)          /* Read .calctoolrc file. */
         return;
     }
 
-/*  Process the .calctoolrc file. There are currently four types of
+/*  Process the .gcalctoolrc file. There are currently four types of
  *  records to look for:
  *
  *  1) Those starting with a hash in the first column are comments.
@@ -361,7 +337,6 @@ init_vars()    /* Setup default values for various variables. */
 
     v->iheight = v->iwidth = -1;   /* To signify no initial size. */
     v->hasicon     = FALSE;        /* Use standard calctool icon by default. */
-    v->istitle     = TRUE;         /* Show a frame title by default. */
     v->beep        = TRUE;         /* Beep on error by default. */
     v->error       = 0;            /* No calculator error initially. */
     v->key_exp     = 0;            /* Not entering an exponent number. */
@@ -396,10 +371,10 @@ init_vars()    /* Setup default values for various variables. */
 
 
 void
-read_rcfiles()   /* Read .calctoolrc's from home and current directories. */
+read_rcfiles()   /* Read .gcalctoolrc's from home and current directories. */
 {
     char *home;                  /* Pathname for users home directory. */
-    char name[MAXLINE];          /* Full name of users .calctoolrc file. */
+    char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
     char pathname[MAXPATHLEN];   /* Current working directory. */
     char tmp[MAXLINE];           /* For temporary constant string creation. */
     int n;
@@ -420,10 +395,10 @@ read_rcfiles()   /* Read .calctoolrc's from home and current directories. */
         home = entry->pw_dir;
     }
     SPRINTF(name, "%s/%s", home, RCNAME);
-    get_rcfile(name);      /* Read .calctoolrc from users home directory. */
+    get_rcfile(name);      /* Read .gcalctoolrc from users home directory. */
 
     SPRINTF(name, "%s/%s", getcwd(pathname, MAXPATHLEN+1), RCNAME);
-    get_rcfile(name);      /* Read .calctoolrc file from current directory. */
+    get_rcfile(name);      /* Read .gcalctoolrc file from current directory. */
 }
 
 
@@ -510,9 +485,6 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_bool_resource(R_RHAND, &boolval)) {
         v->righthand = boolval;
     }
-    if (get_bool_resource(R_TITLE, &boolval)) {
-        v->istitle = boolval;
-    }
 
     if (get_str_resource(R_DECDIG, str)) {
         read_str(&v->colstr[C_DECDIG], str);
@@ -594,9 +566,9 @@ void
 usage(char *progname)
 {
     FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-2] [-3] [-a accuracy] [-l]\n"), progname);
+    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] [-l]\n"), progname);
     FPRINTF(stderr, 
-            _("\t\t [-name app-name] [-r] [-?] [-v] [-?] [-Wn] [+Wn]\n"));
+            _("\t\t [-r] [-?] [-v] [-?]\n"));
     exit(1);
 }
 
@@ -614,12 +586,6 @@ write_cmdline()
         argv[argc++] = "-l";
     }
 
-    if (v->istitle) {
-        argv[argc++] = "+Wn";
-    } else {
-        argv[argc++] = "-Wn";
-    }
-
     argv[argc++] = "-a";
     SPRINTF(buf, "%1d", v->accuracy);
     argv[argc++] = buf;
@@ -634,13 +600,13 @@ write_rcfile(enum menu_type mtype, int exists, int cfno,
 {
     char *home;                  /* Pathname for users home directory. */
     char pathname[MAXPATHLEN];   /* Current working directory. */
-    char rcname[MAXPATHLEN];     /* Full name of users .calctoolrc file. */
+    char rcname[MAXPATHLEN];     /* Full name of users .gcalctoolrc file. */
     char str[MAXLINE];           /* Temporary buffer. */
     char sval[3];                /* Used for string comparisons. */
     char tmp_filename[MAXLINE];  /* Used to construct temp filename. */
-    int rcexists;                /* Set to 1, if .calctoolrc file exists. */
-    FILE *rcfd;                  /* File descriptor for .calctoolrc file. */
-    FILE *tmpfd;                 /* File descriptor for new temp .calctoolrc. */
+    int rcexists;                /* Set to 1, if .gcalctoolrc file exists. */
+    FILE *rcfd;                  /* File descriptor for .gcalctoolrc file. */
+    FILE *tmpfd;                 /* File descriptor for new temp .gcalctoolrc */
     struct passwd *entry;        /* The user's /etc/passwd entry. */
 
     rcexists = 0;
@@ -657,7 +623,7 @@ write_rcfile(enum menu_type mtype, int exists, int cfno,
             rcexists = 1;
         }
     }
-    STRCPY(tmp_filename, "/tmp/.calctoolrcXXXXXX");
+    STRCPY(tmp_filename, "/tmp/.gcalctoolrcXXXXXX");
     MKTEMP(tmp_filename);
     if ((tmpfd = fopen(tmp_filename, "w+")) == NULL) {
         return;
@@ -737,7 +703,6 @@ write_resources()
     put_resource(R_TRIG,     Rtstr[(int) v->ttype]);
     put_resource(R_REGS,     set_bool(v->rstate == TRUE));
     put_resource(R_RHAND,    set_bool(v->righthand == TRUE));
-    put_resource(R_TITLE,    set_bool(v->istitle == TRUE));
     put_resource(R_BEEP,     set_bool(v->beep == TRUE));
     save_resources();
 }

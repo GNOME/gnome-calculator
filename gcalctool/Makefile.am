@@ -25,11 +25,13 @@ gcalctool_SOURCES = \
     color.h \
     extern.h
 
-gcalctool_LDADD = @PACKAGE_LIBS@ -lX11 -lsocket -lnsl
+gcalctool_LDADD = \
+	@PACKAGE_LIBS@ \
+	$(X_LIBS) $(X_PRE_LIBS) $(X_BASIC_LIBS) $(X_EXTRA_LIBS)
 
 pkgdata_DATA = calctool.gif
 
-man1_MANS = calctool.1
+man1_MANS = gcalctool.1
 
 EXTRA_DIST = \
 	$(pkgdata_DATA) \

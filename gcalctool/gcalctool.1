@@ -1,27 +1,18 @@
 .\" Copyright (c) 1987-2002 - Sun Micorsystems, Inc.
-.TH calctool 1 "27 February 2002"
-.IX "calctool" "" "\f3calctool\f1(1) \(em desktop calculator tool" "" PAGE START
-.IX "OpenWindows" "calc" "OpenWindows" "calculator tool \(em \f3calctool\f1(1)"
+.TH gcalctool 1 "13 June 2002"
 .SH NAME
-calctool \- a desktop calculator
+gcalctool \- a desktop calculator
 .SH SYNOPSIS
-.B calctool
+.B gcalctool
 [
-.B \-2
+.B -D
 ] [
-.B \-3
+.B -E
 ] [
 .B -a
 .I accuracy
 ] [
-.B -c
-] [
 .B -l
-] [
-.B -m
-] [
-.B \-name
-.I app-name
 ] [
 .B -r
 ] [
@@ -29,14 +20,8 @@ calctool \- a desktop calculator
 ] [
 .B \-?
 ]
-.br
-[
-.B \-Wn
-] [
-.B \+Wn
-]
 .SH DESCRIPTION
-.B calctool
+.B gcalctool
 is a desktop calculator. It has been designed to be used with
 either the mouse or the keyboard. It is visually similar to a lot of
 hand-held calculators. There are financial, logical and scientific modes.
@@ -45,7 +30,7 @@ calculator keys have menu marks. This indicates that there is a menu
 associated with that key. Each key is discussed in more detail below.
 .LP
 One of the most important things to remember about
-.B calctool
+.B gcalctool
 is that calculations are performed from left to right, with no arithmetic
 precedence. If you need arithmetic precedence, then you should use
 parentheses (see below).
@@ -78,23 +63,21 @@ input is partially complete, the operation is also displayed in this window
 as a reminder.
 .LP
 On startup,
-.B calctool
+.B gcalctool
 will use several X resources. These are listed in detail in the resources
 section of these manual pages.
 .LP
-If you press MENU in the
-.B calctool
-window, and you aren't over a calculator key which has a menu associated
-with it, then a floating menu will appear, from which you can bring up a
-property sheet. Hitting the
+If you press the right mouse button in the
+.B gcalctool
+window, and you aren't over a calculator key or the display area, then a 
+floating menu will appear, from which you can bring up a property sheet. 
+Hitting the
 .I Props
 function key has the same effect.
 .LP
-From this property sheet, you can modify several properties of the
-calculator. Each calculator button can have either a 2D or a 3D look, the
-keys can be in either monochrome or color (assuming you are using a color
-screen), and the buttons can be set to give either a "left-handed" or a
-"right-handed" appearance.
+From this property sheet, you can modify properties of the calculator.
+The buttons can be set to give either a "left-handed" or a "right-handed" 
+appearance.
 .LP
 Context sensitive help is also available. Position the mouse cursor over the
 item you need help with, and press the
@@ -102,18 +85,18 @@ item you need help with, and press the
 key.  A popup will be displayed giving detailed information on this facility.
 .LP
 On startup,
-.B calctool
+.B gcalctool
 will look for a
-.B .calctoolrc
+.B .gcalctoolrc
 file in the users' home directory. This file allows the user to define personal
 constant and function definitions, plus setup the initial values for the
 ten memory registers. It then looks for a
-.B .calctoolrc
+.B .gcalctoolrc
 file in the current directory, and if present, uses the contents of this file
 in place of any previously defined values.
 .LP
 With the
-.B .calctoolrc
+.B .gcalctoolrc
 file, there are currently four valid record types. These are comments,
 constant and function definitions and initial memory register values.
 .LP
@@ -143,74 +126,47 @@ function definitions. Whenever a backslash is found, this and the following
 character signify a control character, for example \\g would be ASCII 7.
 .SH OPTIONS
 .TP
-.B \-2
-On a color screen, start
-.B calctool
-with a 2D look.
-This is the default.
+.B \-D
+Turning on gcalctool debugging.
 .TP
-.B \-3
-On a color screen, start
-.B calctool
-with a 3D look.
+.B \-E
+Turning on debugging in the multiple precision arithmetic package.
 .TP
 .BI \-a " accuracy"
 Initial number of digits displayed after the numeric point. This value must
 be in the range 0 to 9. The default is two numeric places.
 .TP
-.B \-c
-Display in color, assuming this is a color screen.
-.TP
 .B \-l
 Start up a "left-handed" version of the
-.B calctool
+.B gcalctool
 program.
-.TP
-.B \-m
-Always display in monochrome, even on a color screen.
-.TP
-.BI \-name " app-name"
-This option specifies the application name under which resources are to be
-obtained, rather than the default executable file name.
-.I app-name
-should not contain ``.'' or ``*'' characters.
 .TP
 .B \-r
 Start up a "right-handed" version of the
-.B calctool
+.B gcalctool
 program.
 This is the default.
 .TP
 .B \-v
 Show the version number and the usage message of this release of the
-.B calctool
+.B gcalctool
 program.
 .TP
 .B \-?
 Show the version number and the usage message of this release of the
-.B calctool
+.B gcalctool
 program. Note that the
 .B ?
 character must be escaped if using
 .BR csh (1).
-.TP
-.B \-Wn
-Start
-.B calctool
-with no title line.
-.TP
-.B \+Wn
-Start
-.B calctool
-with a title line present.
 .SH RESOURCES
 On startup,
-.B calctool
+.B gcalctool
 uses the following resources:
 .TP 15
 .PD 0
 .B Resource:
-deskset.calctool.accuracy
+gcalctool.accuracy
 .TP
 .B Values:
 Accuracy value (numeric)
@@ -221,7 +177,7 @@ be in the range 0 to 9.
 .sp
 .TP
 .B Resource:
-deskset.calctool.base
+gcalctool.base
 .TP
 .B Values:
 Numeric Base (string)
@@ -232,7 +188,7 @@ hexadecimal.
 .sp
 .TP
 .B Resource:
-deskset.calctool.display
+gcalctool.display
 .TP
 .B Values:
 Display mode (string)
@@ -243,7 +199,7 @@ scientific.
 .sp
 .TP
 .B Resource:
-deskset.calctool.mode
+gcalctool.mode
 .TP
 .B Values:
 Mode (string)
@@ -254,18 +210,7 @@ scientific.
 .sp
 .TP
 .B Resource:
-deskset.calctool.mono
-.TP
-.B Values:
-True, False (False)
-.TP
-.B Description
-Whether the calculator should start in monochrome. Color is obviously only
-allowed on screens that support it.
-.sp
-.TP
-.B Resource:
-deskset.calctool.beep
+gcalctool.beep
 .TP
 .B Values:
 True, False (True)
@@ -276,7 +221,7 @@ invalid input, or if the display needs to be cleared).
 .sp
 .TP
 .B Resource:
-deskset.calctool.showRegisters
+gcalctool.showRegisters
 .TP
 .B Values:
 True, False (True)
@@ -286,7 +231,7 @@ Whether the memory register window is initially displayed.
 .sp
 .TP
 .B Resource:
-deskset.calctool.trigType
+gcalctool.trigType
 .TP
 .B Values:
 Trig. type (string)
@@ -297,7 +242,7 @@ radians.
 .sp
 .TP
 .B Resource:
-deskset.calctool.rightHanded
+gcalctool.rightHanded
 .TP
 .B Values:
 True, False (True)
@@ -307,78 +252,7 @@ Whether the calculator is started with a "right-handed" display style.
 .sp
 .TP
 .B Resource:
-deskset.calctool.3dLook
-.TP
-.B Values:
-True, False (True)
-.TP
-.B Description
-If the display is color, whether each calculator button has a pseudo 3D
-appearance.
-.sp
-.TP
-.B Resource:
-deskset.calctool.hasTitle
-.TP
-.B Values:
-True, False (True)
-.TP
-.B Description
-Indicates whether the
-.B calctool
-window has a title line.
-.sp
-.TP
-.B Resource:
-deskset.calctool.buttonFont
-.TP
-.B Values:
-Font name string
-.TP
-.B Description
-The name of the font used to display all button labels, irrespective of the
-current size and scale of
-.B calctool\&.
-.sp
-.TP
-.B Resource:
-deskset.calctool.modeFont
-.TP
-.B Values:
-Font name string
-.TP
-.B Description
-The name of the font used to display the various mode labels, irrespective
-of the current size and scale of
-.B calctool\&.
-.sp
-.TP
-.B Resource:
-deskset.calctool.memoryFont
-.TP
-.B Values:
-Font name string
-.TP
-.B Description
-The name of the font used to display the memory register values, irrespective
-of the current size and scale of
-.B calctool\&.
-.sp
-.TP
-.B Resource:
-deskset.calctool.displayFont
-.TP
-.B Values:
-Font name string
-.TP
-.B Description
-The name of the font used to show the current display value, irrespective of
-the current size and scale of
-.B calctool\&.
-.sp
-.TP
-.B Resource:
-deskset.calctool.decDigitColor
+gcalctool.decDigitColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -389,7 +263,7 @@ point on the main panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.hexDigitColor
+gcalctool.hexDigitColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -400,7 +274,7 @@ panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.arithOpColor
+gcalctool.arithOpColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -410,7 +284,7 @@ The color of the arithmetic operator buttons on the main panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.adjustColor
+gcalctool.adjustColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -420,7 +294,7 @@ The color of the Bsp and Clr buttons on the main panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.portionColor
+gcalctool.portionColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -430,7 +304,7 @@ The color of the Abs, Chs, Frac and Int buttons on the main panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.functionColor
+gcalctool.functionColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -441,7 +315,7 @@ Con, Exch, Fun, Keys, Mem, Quit, Rcl and Sto.
 .sp
 .TP
 .B Resource:
-deskset.calctool.mainModeColor
+gcalctool.mainModeColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -452,7 +326,7 @@ and Mode.
 .sp
 .TP
 .B Resource:
-deskset.calctool.portionLogicalColor
+gcalctool.portionLogicalColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -463,7 +337,7 @@ or take a portion of the result. These are <, >, &16 and &32.
 .sp
 .TP
 .B Resource:
-deskset.calctool.bitLogicalColor
+gcalctool.bitLogicalColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -474,7 +348,7 @@ are And, Not, Or, Xnor and Xor.
 .sp
 .TP
 .B Resource:
-deskset.calctool.finColor
+gcalctool.finColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -484,7 +358,7 @@ The color of the financial buttons in the mode panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.trigModeColor
+gcalctool.trigModeColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -495,7 +369,7 @@ Hyp, Inv and Trig.
 .sp
 .TP
 .B Resource:
-deskset.calctool.trigColor
+gcalctool.trigColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -506,7 +380,7 @@ Sin and Tan.
 .sp
 .TP
 .B Resource:
-deskset.calctool.sciColor
+gcalctool.sciColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -517,7 +391,7 @@ y^x, x!, Ln, Log and Rand.
 .sp
 .TP
 .B Resource:
-deskset.calctool.backgroundColor
+gcalctool.backgroundColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -528,7 +402,7 @@ mode panels.
 .sp
 .TP
 .B Resource:
-deskset.calctool.displayColor
+gcalctool.displayColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -538,7 +412,7 @@ The color of the numerical display area in the main panel.
 .sp
 .TP
 .B Resource:
-deskset.calctool.memRegisterColor
+gcalctool.memRegisterColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -548,7 +422,7 @@ The background color in the memory register window.
 .sp
 .TP
 .B Resource:
-deskset.calctool.textColor
+gcalctool.textColor
 .TP
 .B Values:
 Color name string or hexadecimal color specification string
@@ -561,9 +435,9 @@ labels and the contents of the memory register window.
 .PD
 .LP
 This section describes the calculator keys present in the main
-.B calctool
+.B gcalctool
 window. Apart from this basic mode,
-.B calctool
+.B gcalctool
 has three other modes, and the keys associated each each of these modes are
 described in separate sections below.
 .LP
@@ -624,16 +498,16 @@ available to you, so the user has to know what item they wish to select.
 Change the base that calculations are displayed in. The available choices are
 binary [ b ], octal [ o ], decimal [ d ] and hexadecimal [\ h\ ]. Digits that
 are inappropriate for a particular base selection are greyed out in the main
-.B calctool
+.B gcalctool
 window.
 .IP "\fBDisp	[ D ]\fP" 18
 Change the numerical display mode. The choices are engineering [\ e\ ], fixed
 point [ f ], and scientific [ s ] notation. 
 .IP "\fBMode	[ M ]\fP" 18
 Change the calculator mode. By default,
-.B calctool
+.B gcalctool
 is in basic mode, and just the keys on the main
-.B calctool
+.B gcalctool
 window are visible. There are also three other modes; financial [ f ],
 logical [ l ] and scientific [ s ]. Selection of one of these modes will
 display an extra window with more keys. These special operations are
@@ -645,7 +519,7 @@ displayed.
 Retrieve and display a constant value. There are ten constant values [ 0-9 ],
 and each one has a default value which can be overridden by entries in the
 users
-.B .calctoolrc
+.B .gcalctoolrc
 file. The ten default values are:
 .sp
 0	0.621		kms per hour / miles per hour.
@@ -670,7 +544,7 @@ file. The ten default values are:
 .IP "\fBFun	[ F ]\fP" 18
 Retrieve and execute a function expression. There are ten function
 definitions [ 0-9 ]. These are setup with entries in the users
-.B .calctoolrc
+.B .gcalctoolrc
 file.
 .IP "\fBRcl	[ R ]\fP" 18
 Retrieve memory register value. There are ten memory registers [\ 0-9\ ].
@@ -694,7 +568,7 @@ displayed value.
 .IP "\fB( and )	[ ( and ) ]\fP" 18
 Parentheses. Allow precedence with arithmetic calculations. Note that
 parentheses can be nested to any level, and
-.B calctool
+.B gcalctool
 provides a visual feedback of what is being typed in, in the calculator
 display. The calculation doesn't take place until the last parenthesis is
 matched, then the display is updated with the new result.
@@ -705,7 +579,7 @@ is then entered. If no numerical input had occurred when the Exp key was
 selected, then a mantissa of 1.0 is assumed.
 .IP "\fBKeys	[ k ]\fP" 18
 Toggle the labels on the
-.B calctool
+.B gcalctool
 buttons between the mouse and keyboard equivalents.
 .IP "\fBMem	[ m ]\fP" 18
 Display the window with the ten memory register values. These values are
@@ -795,7 +669,7 @@ Register 0	fv	(future value).
 Register 1	pv	(present value).
 .br
 Register 2	n	(term).
-.IP "\fBSln	[ ^s ]\fP" 18
+.IP "\fBSln	[ ^l ]\fP" 18
 Straight-line depreciation. Computes the straight-line depreciation of an
 asset for one period. The straight-line method of depreciation divides the
 depreciable cost (cost - salvage) evenly over the useful life of an asset.
@@ -913,10 +787,10 @@ Return a random number between 0.0 and 1.0.
 .SH FILES
 .PD 0
 .TP 18
-.B ~/.desksetdefaults
+.B ~/.gcalctooldefaults
 stored X resources.
 .TP
-.B .calctoolrc
+.B .gcalctoolrc
 user's personal calctool startup file.
 .sp
 .LP

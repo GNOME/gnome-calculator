@@ -104,7 +104,7 @@ enum op_type { OP_SET, OP_CLEAR, OP_NOP };  /* Operation item settings. */
 
 /* Resources. */
 enum res_type { R_ACCURACY, R_BASE,     R_DISPLAY,  R_MODE,
-                R_REGS,     R_RHAND,    R_THREED,   R_TITLE,    R_TRIG,
+                R_REGS,     R_RHAND,    R_THREED,   R_TRIG,
                 R_DECDIG,   R_HEXDIG,   R_ARITHOP,  R_ADJUST,   R_PORTION,
                 R_FUNC,     R_MAINMODE, R_PLOGICAL, R_BLOGICAL, R_FIN,
                 R_TRIGMODE, R_TRIGCOL,  R_SCI,      R_BACK,     R_DISPCOL,
@@ -253,7 +253,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define NOBUTTONS      BROWS * BCOLS
 
 #ifndef RCNAME
-#define RCNAME         ".calctoolrc"
+#define RCNAME         ".gcalctoolrc"
 #endif /*RCNAME*/
 
 #ifndef TRUE                    /* Boolean definitions. */
@@ -292,8 +292,8 @@ struct calcVars {                      /* Calctool variables and options. */
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
     char fnum[MAX_DIGITS+1];           /* Scratchpad for fixed numbers. */
-    char fun_names[MAXREGS][MAXLINE];  /* Function names from .calctoolrc. */
-    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .calctoolrc. */
+    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolrc. */
+    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolrc. */
     char *iconlabel;                   /* The calctool icon label. */
     char item_text[MAXITEMS][60];      /* Pseudo panel item text strings. */
     char old_cal_value;                /* Previous calculation operator. */
@@ -345,7 +345,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int inverse;       /* If set, trig and log functions will be inversed. */
     int iscolor;       /* Set if this is a color screen. */
     int ismenu;        /* Set when do_pending called via a popup menu. */
-    int istitle;       /* Set if calctool frame has a title. */
     int iwidth;        /* Initial width of the calctool window. */
     int ix;            /* Initial X position of the icon. */
     int iy;            /* Initial Y position of the icon. */

@@ -267,7 +267,7 @@ do_calctool(int argc, char **argv)
     if (v->righthand) {              /* Display a right-handed calculator. */
         switch_hands(v->righthand);
     }
-    make_frames();             /* Create calctool window frames. */
+    make_frames();             /* Create gcalctool window frames. */
 
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
@@ -296,7 +296,7 @@ do_calctool(int argc, char **argv)
     }
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
-    write_cmdline();                 /* Setup calctool command line. */
+    write_cmdline();                 /* Setup gcalctool command line. */
     start_tool();                    /* Display the calculator. */
 }
 

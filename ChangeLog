@@ -5,8 +5,29 @@
  *  All Rights Reserved.
  */
 
-Calctool change history.
-========================
+gcalctool change history.
+=========================
+
+v4.1.1 - 14th June 2002.
+
+* Adjusted configure.in to find the X11 libraries in a platform independent
+  way.
+
+* Fixed up the gcalctool usage message. Removed command line options that 
+  are no longer applicable to the Gtk2 version.
+
+* Fixed up the gcalctool manual pages (removed calctool.1 and created a new
+  gcalctool.1). Fixes include:
+  - changing all occurances of "calctool" to "gcalctool".
+  - removing command line options that are no longer supported.
+  - removing X resources that are no longer supported.
+
+* gcalctool now looks for ~/.gcalctoolrc and ~/.gcalctooldefaults files 
+  rather than ~/.calctoolrc and ~/.calctooldefaults
+
+* X resources are not "gcalctool.<whatever" rather than "calctool.<whatever>".
+
+----
 
 v4.1.0 - 3rd May - 5th June 2002.
 
