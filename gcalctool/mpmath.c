@@ -750,17 +750,18 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
    * boolean means BINARY representation
    */
 
-    assert(times >= 0);
-
     double dval;
+    BOOLEAN temp;
     mpcmd(s, &dval);
-    BOOLEAN temp = ibool(dval);
+    temp = ibool(dval);
 
     /* There is a reason to do shift like this. Reason is that
      * processors define shift only in a certain range. i386 uses only 5
      * bits to describe shiftable amount. So, shift 32 times gives original
      * number. That can cause very strange results (and bugs).
      */
+
+    assert(times >= 0);
 
     while (times--) {
         temp = (dir == right) ? temp >> 1 : temp << 1;
@@ -769,4 +770,3 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
     dval = setbool(temp);
     mpcdm(&dval, t);
 }
-

@@ -48,11 +48,13 @@ int ce_udf_parse(char *expression);
 static inline char *
 ce_strndup(char *str, int len)
 {
+    char *dup;
+
     if (len < 1) {
         return(NULL); 
     }
 
-    char *dup = malloc(len+1);
+    dup = malloc(len+1);
     memset(dup, 0, len+1);
     strncpy(dup, str, len);
 
