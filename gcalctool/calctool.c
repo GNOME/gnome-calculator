@@ -86,7 +86,7 @@ char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
 
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
-    N_("De_grees"), N_("Gr_adients"), N_("_Radians")
+    N_("De_grees"), N_("Gr_adians"), N_("_Radians")
 };
 
 char *ttype_desc[] = {         /* Tooltips for each trig type value. */
@@ -434,7 +434,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_immed
 },
 {
-    N_("x<sup><i>2</i></sup>"),
+    N_("<i>x</i><sup>2</sup>"),
     N_("Square"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
@@ -790,7 +790,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },       
 {        
-    N_("x<sup><i>y</i></sup>"),
+    N_("<i>x</i><sup><i>y</i></sup>"),
     N_("Raise displayed value to the power of y"),
     N_("X to the y"),
     { 0, 0 },   

@@ -1924,6 +1924,7 @@ set_error_state(int error)
     SET_MENUBAR_ITEM_STATE(M_FIN,    !v->error); 
     SET_MENUBAR_ITEM_STATE(M_SCI,    !v->error); 
     SET_MENUBAR_ITEM_STATE(M_ZEROES, !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_TSEP,   !v->error); 
     SET_MENUBAR_ITEM_STATE(M_REGS,   !v->error); 
     SET_MENUBAR_ITEM_STATE(M_ABOUT,  !v->error);
 }
