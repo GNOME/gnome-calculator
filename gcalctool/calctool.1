@@ -1,0 +1,922 @@
+.\" Copyright (c) 1987-2002 - Sun Micorsystems, Inc.
+.TH calctool 1 "27 February 2002"
+.IX "calctool" "" "\f3calctool\f1(1) \(em desktop calculator tool" "" PAGE START
+.IX "OpenWindows" "calc" "OpenWindows" "calculator tool \(em \f3calctool\f1(1)"
+.SH NAME
+calctool \- a desktop calculator
+.SH SYNOPSIS
+.B calctool
+[
+.B \-2
+] [
+.B \-3
+] [
+.B -a
+.I accuracy
+] [
+.B -c
+] [
+.B -l
+] [
+.B -m
+] [
+.B \-name
+.I app-name
+] [
+.B -r
+] [
+.B -v
+] [
+.B \-?
+]
+.br
+[
+.B \-Wn
+] [
+.B \+Wn
+]
+.SH DESCRIPTION
+.B calctool
+is a desktop calculator. It has been designed to be used with
+either the mouse or the keyboard. It is visually similar to a lot of
+hand-held calculators. There are financial, logical and scientific modes.
+Similar operations are color coded on color workstations. Some of the
+calculator keys have menu marks. This indicates that there is a menu
+associated with that key. Each key is discussed in more detail below.
+.LP
+One of the most important things to remember about
+.B calctool
+is that calculations are performed from left to right, with no arithmetic
+precedence. If you need arithmetic precedence, then you should use
+parentheses (see below).
+.LP
+Internal arithmetic is now done with multi-precision floating point numbers.
+Accuracy can be adjusted from zero to nine numeric places in fixed notation,
+but numbers can be displayed in engineering and scientific notation as well.
+The calculator reverts to scientific notation when the number is larger than
+the display would allow in fixed notation. The base of operation can be
+changed between binary, octal, decimal and hexadecimal.  Numbers are
+initially displayed in fixed notation to two numeric places, in the decimal
+base.
+.LP
+You can use the
+.I Copy
+and
+.I Paste
+functions in conjunction with the numeric display to store or
+retrieve characters from the text shelf. You can also remove the last digit
+entered, and the whole display can be cleared.
+.LP
+There are ten memory registers. Numbers can be stored or retrieved in these
+locations, and arithmetic can be performed upon register contents.
+.LP
+The display windows contains the current numerical value plus the current
+base and trigonometric type. There are also indicators which show if the
+hyperbolic and inverse function switches are set, and which numerical mode
+is currently in operation. If an operation needing more than one numerical
+input is partially complete, the operation is also displayed in this window
+as a reminder.
+.LP
+On startup,
+.B calctool
+will use several X resources. These are listed in detail in the resources
+section of these manual pages.
+.LP
+If you press MENU in the
+.B calctool
+window, and you aren't over a calculator key which has a menu associated
+with it, then a floating menu will appear, from which you can bring up a
+property sheet. Hitting the
+.I Props
+function key has the same effect.
+.LP
+From this property sheet, you can modify several properties of the
+calculator. Each calculator button can have either a 2D or a 3D look, the
+keys can be in either monochrome or color (assuming you are using a color
+screen), and the buttons can be set to give either a "left-handed" or a
+"right-handed" appearance.
+.LP
+Context sensitive help is also available. Position the mouse cursor over the
+item you need help with, and press the
+.I Help
+key.  A popup will be displayed giving detailed information on this facility.
+.LP
+On startup,
+.B calctool
+will look for a
+.B .calctoolrc
+file in the users' home directory. This file allows the user to define personal
+constant and function definitions, plus setup the initial values for the
+ten memory registers. It then looks for a
+.B .calctoolrc
+file in the current directory, and if present, uses the contents of this file
+in place of any previously defined values.
+.LP
+With the
+.B .calctoolrc
+file, there are currently four valid record types. These are comments,
+constant and function definitions and initial memory register values.
+.LP
+Lines starting with a '#' are treated as comments and ignored.
+.LP
+Lines starting with 'c' or 'C' in the first column are definitions for
+constants. The cC is followed by a digit in the range 0-9, then a space.
+This is followed by a number in fixed or scientific notation. Following
+this is an optional comment, which if found, will be used in the popup
+menu for the constants. If the comment is present, then there must be at
+least one space between this and the preceding number.
+.LP
+Lines starting with 'f' or 'F' in the first column are definitions
+for functions. The fF is followed by a digit in the range 0-9, then a
+space. This is followed by a function definition. Following this is an
+optional comment, which if found, will be used in the popup menu for the
+functions. If the comment is present, then there must be at least one
+space between this and the preceding function definition.
+.LP
+Lines starting with 'r' or 'R' in the first column are definitions
+for the initial contents of the memory registers. The rR is followed
+by a digit in the range 0-9, then a space. This is followed by a number
+in fixed or scientific notation. The rest of the line is ignored.
+.LP
+All other lines are ignored. There should be no embedded spaces in the
+function definitions. Whenever a backslash is found, this and the following
+character signify a control character, for example \\g would be ASCII 7.
+.SH OPTIONS
+.TP
+.B \-2
+On a color screen, start
+.B calctool
+with a 2D look.
+This is the default.
+.TP
+.B \-3
+On a color screen, start
+.B calctool
+with a 3D look.
+.TP
+.BI \-a " accuracy"
+Initial number of digits displayed after the numeric point. This value must
+be in the range 0 to 9. The default is two numeric places.
+.TP
+.B \-c
+Display in color, assuming this is a color screen.
+.TP
+.B \-l
+Start up a "left-handed" version of the
+.B calctool
+program.
+.TP
+.B \-m
+Always display in monochrome, even on a color screen.
+.TP
+.BI \-name " app-name"
+This option specifies the application name under which resources are to be
+obtained, rather than the default executable file name.
+.I app-name
+should not contain ``.'' or ``*'' characters.
+.TP
+.B \-r
+Start up a "right-handed" version of the
+.B calctool
+program.
+This is the default.
+.TP
+.B \-v
+Show the version number and the usage message of this release of the
+.B calctool
+program.
+.TP
+.B \-?
+Show the version number and the usage message of this release of the
+.B calctool
+program. Note that the
+.B ?
+character must be escaped if using
+.BR csh (1).
+.TP
+.B \-Wn
+Start
+.B calctool
+with no title line.
+.TP
+.B \+Wn
+Start
+.B calctool
+with a title line present.
+.SH RESOURCES
+On startup,
+.B calctool
+uses the following resources:
+.TP 15
+.PD 0
+.B Resource:
+deskset.calctool.accuracy
+.TP
+.B Values:
+Accuracy value (numeric)
+.TP
+.B Description
+The number of of digits displayed after the numeric point. This value must
+be in the range 0 to 9.
+.sp
+.TP
+.B Resource:
+deskset.calctool.base
+.TP
+.B Values:
+Numeric Base (string)
+.TP
+.B Description
+The initial numeric base. Valid values are binary, octal, decimal and
+hexadecimal.
+.sp
+.TP
+.B Resource:
+deskset.calctool.display
+.TP
+.B Values:
+Display mode (string)
+.TP
+.B Description
+The initial display mode. Valid values are engineering, fixed-point and
+scientific.
+.sp
+.TP
+.B Resource:
+deskset.calctool.mode
+.TP
+.B Values:
+Mode (string)
+.TP
+.B Description
+The initial calculator mode. Valid values are basic, financial, logical and
+scientific.
+.sp
+.TP
+.B Resource:
+deskset.calctool.mono
+.TP
+.B Values:
+True, False (False)
+.TP
+.B Description
+Whether the calculator should start in monochrome. Color is obviously only
+allowed on screens that support it.
+.sp
+.TP
+.B Resource:
+deskset.calctool.beep
+.TP
+.B Values:
+True, False (True)
+.TP
+.B Description
+Indicates whether a beep should sound in the event of an error (such as
+invalid input, or if the display needs to be cleared).
+.sp
+.TP
+.B Resource:
+deskset.calctool.showRegisters
+.TP
+.B Values:
+True, False (True)
+.TP
+.B Description
+Whether the memory register window is initially displayed.
+.sp
+.TP
+.B Resource:
+deskset.calctool.trigType
+.TP
+.B Values:
+Trig. type (string)
+.TP
+.B Description
+The initial trigonometric type. Valid values are degrees, grads and
+radians.
+.sp
+.TP
+.B Resource:
+deskset.calctool.rightHanded
+.TP
+.B Values:
+True, False (True)
+.TP
+.B Description
+Whether the calculator is started with a "right-handed" display style.
+.sp
+.TP
+.B Resource:
+deskset.calctool.3dLook
+.TP
+.B Values:
+True, False (True)
+.TP
+.B Description
+If the display is color, whether each calculator button has a pseudo 3D
+appearance.
+.sp
+.TP
+.B Resource:
+deskset.calctool.hasTitle
+.TP
+.B Values:
+True, False (True)
+.TP
+.B Description
+Indicates whether the
+.B calctool
+window has a title line.
+.sp
+.TP
+.B Resource:
+deskset.calctool.buttonFont
+.TP
+.B Values:
+Font name string
+.TP
+.B Description
+The name of the font used to display all button labels, irrespective of the
+current size and scale of
+.B calctool\&.
+.sp
+.TP
+.B Resource:
+deskset.calctool.modeFont
+.TP
+.B Values:
+Font name string
+.TP
+.B Description
+The name of the font used to display the various mode labels, irrespective
+of the current size and scale of
+.B calctool\&.
+.sp
+.TP
+.B Resource:
+deskset.calctool.memoryFont
+.TP
+.B Values:
+Font name string
+.TP
+.B Description
+The name of the font used to display the memory register values, irrespective
+of the current size and scale of
+.B calctool\&.
+.sp
+.TP
+.B Resource:
+deskset.calctool.displayFont
+.TP
+.B Values:
+Font name string
+.TP
+.B Description
+The name of the font used to show the current display value, irrespective of
+the current size and scale of
+.B calctool\&.
+.sp
+.TP
+.B Resource:
+deskset.calctool.decDigitColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the buttons containing the decimal digits 0 - 9 and the numeric
+point on the main panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.hexDigitColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the buttons containing the hexadecimal digits A - F on the main
+panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.arithOpColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the arithmetic operator buttons on the main panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.adjustColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the Bsp and Clr buttons on the main panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.portionColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the Abs, Chs, Frac and Int buttons on the main panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.functionColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of various function buttons on the main panel. These are Acc,
+Con, Exch, Fun, Keys, Mem, Quit, Rcl and Sto.
+.sp
+.TP
+.B Resource:
+deskset.calctool.mainModeColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the three mode buttons on the main panel. These are Base, Disp
+and Mode.
+.sp
+.TP
+.B Resource:
+deskset.calctool.portionLogicalColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the logical buttons in the mode panel that do shift operations
+or take a portion of the result. These are <, >, &16 and &32.
+.sp
+.TP
+.B Resource:
+deskset.calctool.bitLogicalColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the bitwise logical operator buttons in the mode panel. These
+are And, Not, Or, Xnor and Xor.
+.sp
+.TP
+.B Resource:
+deskset.calctool.finColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the financial buttons in the mode panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.trigModeColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the trigonometrical mode buttons in the mode panel. These are
+Hyp, Inv and Trig.
+.sp
+.TP
+.B Resource:
+deskset.calctool.trigColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the trigonometrical buttons in the mode panel. These are Cos,
+Sin and Tan.
+.sp
+.TP
+.B Resource:
+deskset.calctool.sciColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the scientific buttons in the mode panel. These are e^x, 10^x,
+y^x, x!, Ln, Log and Rand.
+.sp
+.TP
+.B Resource:
+deskset.calctool.backgroundColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the background area for the calculator buttons in the main and
+mode panels.
+.sp
+.TP
+.B Resource:
+deskset.calctool.displayColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of the numerical display area in the main panel.
+.sp
+.TP
+.B Resource:
+deskset.calctool.memRegisterColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The background color in the memory register window.
+.sp
+.TP
+.B Resource:
+deskset.calctool.textColor
+.TP
+.B Values:
+Color name string or hexadecimal color specification string
+.TP
+.B Description
+The color of all text. This includes the numerical display, the button
+labels and the contents of the memory register window.
+.sp
+.SH CALCULATOR BUTTONS
+.PD
+.LP
+This section describes the calculator keys present in the main
+.B calctool
+window. Apart from this basic mode,
+.B calctool
+has three other modes, and the keys associated each each of these modes are
+described in separate sections below.
+.LP
+Keyboard equivalents appear in the square brackets. Note that '^' followed
+by a letter indicates that the Control key and this key should be pressed
+together.
+.SS "Numerical Keys [ 0-9 a-f . = <Return> ]."
+.LP
+Enter a digit (decimal digits 0-9 or hexadecimal digits A-F) into the display.
+The '.' character acts as the numeric point, and '=' (or Return) is used to
+complete numerical entry.
+.LP
+Upto forty digits may be entered.
+.SS "Arithmetical Operations [ + - x * / ]."
+.LP
+Perform an arithmetical operation using the previous entry and the next entry
+as operands. Addition, subtraction, multiplication and division are denoted by
+the characters '+', '-', 'x' and '/' respectively ('*' is also synonymous with
+multiplication).
+.SS Number Manipulation Operators.
+.LP
+.PD 0
+.IP "\fBInt	[ ^i ]\fP" 18
+Return the integer portion of the current entry.
+.IP "\fBFrac	[ ^f ]\fP" 18
+Return the fractional portion of the current entry.
+.IP "\fBAbs	[ ^u ]\fP" 18
+Return the absolute value of the current entry.
+.IP "\fB+/-	[ C ]\fP" 18
+Change the arithmetic sign of the current entry.
+.IP "\fB1/x	[ r ]\fP" 18
+Return the value of 1 divided by the current entry.
+.IP "\fBx^2	[ @ ]\fP" 18
+Return the square of the current entry.
+.IP "\fB%	[ % ]\fP" 18
+Perform a percentage calculation using the last entry and the next entry.
+.IP "\fBSqrt	[ s ]\fP" 18
+Perform a square root operation on the current entry.
+.IP "\fBAsc	[ ^a ]\fP" 18
+If Asc is selected with the mouse, then a separate window is displayed
+which allows you to enter any character. The ASCII value of this character
+is then displayed in the current base. If this option is selected via the
+keyboard, then you don't get a special window displayed.
+.PD
+.SS Menu Operations.
+.LP
+Each of these operations has a popup menu associated with it. This menu can
+be displayed using the MENU mouse button, and a selection made. You can
+select the default item from the menu using the SELECT mouse button.
+.LP
+It is also possible to use just the keyboard to achieve the same results.
+The first keyboard value selects the menu operation; the second keyboard
+character selects the new value for this operation. Unlike the menu facility
+available with the mouse, there is no visual feedback on what choices are
+available to you, so the user has to know what item they wish to select.
+.PD 0
+.IP "\fBBase	[ B ]\fP" 18
+Change the base that calculations are displayed in. The available choices are
+binary [ b ], octal [ o ], decimal [ d ] and hexadecimal [\ h\ ]. Digits that
+are inappropriate for a particular base selection are greyed out in the main
+.B calctool
+window.
+.IP "\fBDisp	[ D ]\fP" 18
+Change the numerical display mode. The choices are engineering [\ e\ ], fixed
+point [ f ], and scientific [ s ] notation. 
+.IP "\fBMode	[ M ]\fP" 18
+Change the calculator mode. By default,
+.B calctool
+is in basic mode, and just the keys on the main
+.B calctool
+window are visible. There are also three other modes; financial [ f ],
+logical [ l ] and scientific [ s ]. Selection of one of these modes will
+display an extra window with more keys. These special operations are
+described in more detail in the sections below.
+.IP "\fBAcc	[ A ]\fP" 18
+Set the display accuracy. Between 0 and 9 [ 0-9 ] significant digits can be
+displayed.
+.IP "\fBCon	[ # ]\fP" 18
+Retrieve and display a constant value. There are ten constant values [ 0-9 ],
+and each one has a default value which can be overridden by entries in the
+users
+.B .calctoolrc
+file. The ten default values are:
+.sp
+0	0.621		kms per hour / miles per hour.
+.br
+1	1.41421		square root of 2.
+.br
+2	2.71828		e.
+.br
+3	3.14159		pi.
+.br
+4	2.54		cms / inch.
+.br
+5	57.29578	degrees in a radian.
+.br
+6	1048576.0	2 to the power of 20.
+.br
+7	0.0353		gms / oz.
+.br
+8	0.948		kilojoules / British thermals.
+.br
+9	0.0610		cubic cms / cubic inches.
+.IP "\fBFun	[ F ]\fP" 18
+Retrieve and execute a function expression. There are ten function
+definitions [ 0-9 ]. These are setup with entries in the users
+.B .calctoolrc
+file.
+.IP "\fBRcl	[ R ]\fP" 18
+Retrieve memory register value. There are ten memory registers [\ 0-9\ ].
+.IP "\fBSto	[ S ]\fP" 18
+Store value in memory register. There are ten memory registers [\ 0-9\ ].
+The register number may be preceded by an arithmetic operation (addition,
+subtraction, multiplication or division), in which case the specified
+operation is carried out between the displayed entry and the value currently
+in the selected memory register, and the result is placed in the memory
+register.
+.IP "\fBExch	[ X ]\fP" 18
+Exchange the current display with the contents of a memory register. There
+are ten memory registers [ 0-9 ].
+.SS Other Operations.
+.LP
+.IP "\fBClr	[ Delete ]\fP" 18
+Clear the calculator display.
+.IP "\fBBsp	[ Back Space ]\fP" 18
+Remove the rightmost character of the current entry, and recalculate the
+displayed value.
+.IP "\fB( and )	[ ( and ) ]\fP" 18
+Parentheses. Allow precedence with arithmetic calculations. Note that
+parentheses can be nested to any level, and
+.B calctool
+provides a visual feedback of what is being typed in, in the calculator
+display. The calculation doesn't take place until the last parenthesis is
+matched, then the display is updated with the new result.
+.IP "\fBExp	[ E ]\fP" 18
+This is used to allow numbers to be entered in scientific notation. The
+mantissa should be initially entered, then the Exp key selected. The exponent
+is then entered. If no numerical input had occurred when the Exp key was
+selected, then a mantissa of 1.0 is assumed.
+.IP "\fBKeys	[ k ]\fP" 18
+Toggle the labels on the
+.B calctool
+buttons between the mouse and keyboard equivalents.
+.IP "\fBMem	[ m ]\fP" 18
+Display the window with the ten memory register values. These values are
+displayed in the current base to the current degree of accuracy using the
+current numerical display notation.
+.IP "\fBQuit	[ q or Q ]\fP" 18
+Exit without user verification.
+.PD
+.SH FINANCIAL MODE
+.LP
+An example of how to use each of these financial calculations, is available
+via the context sensitive help facility.
+.PD 0
+.IP "\fBCtrm	[ ^t ]\fP" 18
+Compounding term. Computes the number of compounding periods it will take an
+investment of present value pv to grow to a future value of fv, earning a
+fixed interest rate int per compunding period.
+.PD
+.br
+Memory register usage:
+.br
+Register 0	int	(periodic interest rate).
+.br
+Register 1	fv	(future value).
+.br
+Register 2	pv	(present value).
+.IP "\fBDdb	[ ^d ]\fP" 18
+Double-declining depreciation. Computes the depreciation allowance on an
+asset for a specified period of time, using the double-declining balance
+method.
+.br
+Memory register usage:
+.br
+Register 0	cost	(amount paid for asset).
+.br
+Register 1	salvage	(value of asset at end of life).
+.br
+Register 2	life	(useful life of the asset).
+.br
+Register 3	period	(time period for depreciation allowance).
+.IP "\fBFv	[ v ]\fP" 18
+Future value. This calculation determines the future value of an investment.
+It computes the future value based on a series of equal payments, each of
+amount pmt, earning periodic interest rate int, over the number of payment
+periods in term.
+.br
+Memory register usage:
+.br
+Register 0	pmt	(periodic payment).
+.br
+Register 1	int	(periodic interest rate).
+.br
+Register 2	n	(number of periods).
+.IP "\fBPmt	[ P ]\fP" 18
+Periodic payment. Computes the amount of the periodic payment of a loan.
+Most installment loans are computed like ordinary annuities, in that payments
+are made at the end of each payment period.
+.br
+Memory register usage:
+.br
+Register 0	prin	(principal).
+.br
+Register 1	int	(periodic interest rate).
+.br
+Register 2	n	(term).
+.IP "\fBPv	[ p ]\fP" 18
+Present value. Determines the present value of an investment. It computes
+the present value based on a series of equal payments, each of amount pmt,
+discounted at periodic interest rate int, over the number of periods in term.
+.br
+Memory register usage:
+.br
+Register 0	pmt	(periodic payment).
+.br
+Register 1	int	(periodic interest rate).
+.br
+Register 2	n	(term).
+.IP "\fBRate	[ ^r ]\fP" 18
+Periodic interest rate. Returns the periodic interest necessary for a present
+value of pv to grow to a future value of fv over the number of compounding
+periods in term.
+.br
+Memory register usage:
+.br
+Register 0	fv	(future value).
+.br
+Register 1	pv	(present value).
+.br
+Register 2	n	(term).
+.IP "\fBSln	[ ^s ]\fP" 18
+Straight-line depreciation. Computes the straight-line depreciation of an
+asset for one period. The straight-line method of depreciation divides the
+depreciable cost (cost - salvage) evenly over the useful life of an asset.
+The useful life is the number of periods (typically years) over which an
+asset is depreciated.
+.br
+Memory register usage:
+.br
+Register 0	cost	(cost of the asset).
+.br
+Register 1	salvage	(salvage value of the asset).
+.br
+Register 2	life	(useful life of the asset).
+.IP "\fBSyd	[ ^y ]\fP" 18
+Sum-of-the-years-digits depreciation. The sum-of-the-years'-digits method
+of depreciation accelerates the rate of depreciation, so that more
+depreciation expense occurs in earlier periods than in later ones. The
+depreciable cost is the actual cost minus salvage value. The useful life is
+the number of periods (typically years) over which an asset is depreciated.
+.br
+Memory register usage:
+.br
+Register 0	cost	(cost of the asset).
+.br
+Register 1	salvage	(salvage value of the asset).
+.br
+Register 2	life	(useful life of the asset).
+.br
+Register 3	period	(period for which depreciation is computed).
+.IP "\fBTerm	[ T ]\fP" 18
+Payment period. Returns the number of payment periods in the term of an
+ordinary annuity necessary to accumulate a future value of fv, earning a
+periodic interest rate of int. Each payment is equal to amount pmt.
+.br
+Memory register usage:
+.br
+Register 0	pmt	(periodic payment).
+.br
+Register 1	fv	(future value).
+.br
+Register 2	int	(periodic interest rate).
+.PD
+.SH LOGICAL MODE
+.PD 0
+.LP
+.IP "\fB<	[ < ]\fP" 18
+Shift the current entry to the left. The shift can be between 1 and 15 places
+[ 1-9, a-f ]. This calculator key has a popup menu associated with it.
+.IP "\fB>	[ > ]\fP" 18
+Shift the current entry to the right. The shift can be between 1 and 15 places
+[ 1-9, a-f ]. This calculator key has a popup menu associated with it.
+.IP "\fB&16	[ ] ]\fP" 18
+Truncate the current entry to a 16 bit unsigned integer.
+.IP "\fB&32	[ [ ]\fP" 18
+Truncate the current entry to a 32 bit unsigned integer.
+.IP "\fBOr	[ | ]\fP" 18
+Perform a logical OR operation on the current entry and the next entry,
+treating both numbers as unsigned long integers.
+.IP "\fBAnd	[ & ]\fP" 18
+Perform a logical AND operation on the current entry and the next entry,
+treating both numbers as unsigned long integers.
+.IP "\fBNot	[ ~ ]\fP" 18
+Perform a logical NOT operation on the current entry.
+.IP "\fBXor	[ ^ ]\fP" 18
+Perform a logical XOR operation on the current entry and the next entry,
+treating both numbers as unsigned long integers.
+.IP "\fBXnor	[ n ]\fP" 18
+Perform a logical XNOR operation on the current entry and the next entry,
+treating both numbers as unsigned long integers.
+.PD
+.SH SCIENTIFIC MODE
+.PD 0
+.LP
+.IP "\fBTrig	[ T ]\fP" 18
+Set the current trigonometrical base. This can be in degrees [ d ],
+grads [ g ] or radians [ r ]. This key also has a popup menu associated
+with it.
+.IP "\fBHyp	[ h ]\fP" 18
+Toggle the hyperbolic function indicator. This switch affects the type of
+sine, cosine and tangent trigonometric functions performed.
+.IP "\fBInv	[ i ]\fP" 18
+Toggle the inverse function indicator. This switch affects the type of sine,
+cosine and tangent trigonometric functions performed.
+.IP "\fBe^x	[ { ]\fP" 18
+Returns e raised to the power of the current entry.
+.IP "\fB10^x	[ } ]\fP" 18
+Returns 10 raised to the power of the current entry.
+.IP "\fBy^x	[ y ]\fP" 18
+Take the last entry and raise it to the power of the next entry.
+.IP "\fBx!	[ ! ]\fP" 18
+Return the factorial of the current entry. Note that the factorial function
+is only valid for positive integers.
+.IP "\fBCos	[ ^c ]\fP" 18
+Return the trigonometric cosine, arc cosine, hyperbolic cosine or inverse
+hyperbolic cosine of the current display, depending upon the current
+settings of the hyperbolic and inverse function switches. The result is
+displayed in the current trigonometric units (degrees, radians or grads).
+.IP "\fBSin	[ ^s ]\fP" 18
+Return the trigonometric sine, arc sine, hyperbolic sine or inverse
+hyperbolic sine of the current display, depending upon the current settings
+of the hyperbolic and inverse function switches. The result is displayed in
+the current trigonometric units (degrees, radians or grads).
+.IP "\fBTan	[ ^t ]\fP" 18
+Return the trigonometric tangent, arc tangent, hyperbolic tangent or inverse
+hyperbolic tangent of the current display, depending upon the current
+settings of the hyperbolic and inverse function switches. The result is
+displayed in the current trigonometric units (degrees, radians or grads).
+.IP "\fBLn	[ N ]\fP" 18
+Return the natural logarithm of the current entry.
+.IP "\fBLog	[ G ]\fP" 18
+Return the base 10 logarithm of the current entry.
+.IP "\fBRand	[ ? ]\fP" 18
+Return a random number between 0.0 and 1.0.
+.PD
+.SH FILES
+.PD 0
+.TP 18
+.B ~/.desksetdefaults
+stored X resources.
+.TP
+.B .calctoolrc
+user's personal calctool startup file.
+.sp
+.LP

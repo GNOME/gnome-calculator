@@ -1,0 +1,105 @@
+
+/*  $Header$
+ *
+ *  Copyright (c) 1987-2002 Sun Microsystems, Inc.
+ *  All Rights Reserved.
+ */
+
+Calctool TODO.
+==============
+
+Related to the Gtk2 version:
+
+Must Fix.
+---------
+* Remove or fixup all code left surronded by #ifdef FIXUP's.
+* Make sure the manual pages are correct for the Gtk version. Some keyboard
+  accelerators have been changed for uniqueness across all three mode windows.
+* Make sure everything is setup correctly for I18N/L10N.
+* Fixup all occurances of "calctool" in places like source code comments,
+  usage message, help etc..., replacing it with "gcalctool".
+* Starting gcalctool then switching hands to left-handed, then using the
+  keyboard for input wrongly associates the various keyboard accelerators
+  for the swapped keys.
+* Make it work correctly with Gtk themes.
+* Testing of an invalidly entered constant with sscanf() in cfframe_apply_cb()
+  doesn't seem to be working.
+* Shouldn't use X resources. Probably need to use gconf, but maybe Gtk 
+  resources, in which case see:
+  http://developer.gnome.org/doc/API/2.0/gtk/gtk-resource-files.html
+  http://www.gtk.org/tutorial/ch-gtkrcfiles.html
+* The size of the buttons in the logical mode window is incorrect.
+  Problem is in make_mtable() and is due to the GtkAttachOptions options
+  used in the gtk_table_attach() call. Setting them to 0 for non-visible
+  buttons correctly initially draws them, but doesn't allow resizing to work
+  correctly. Checkout GtkSizeGroup.
+* The + and . keys on the numeric keypad don't work.
+  (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
+* Keyboard accelerators don't seem to work for menu buttons.
+* Need to add in Help key support (or tooltip help). Can probably use the
+  text from the calctool.info file in the XView distribution.
+ 
+Would be nice. 
+-------------- 
+* To have a black line between bottom of mode/state labels and main keyboard 
+  buttons, to cleanly delineate them.
+* Need to align items in the various popups.
+
+============================================================================
+
+- Fixup all known bugs and rfe's.
+
+- Consider the possibility of being able to have all the three mode windows
+  pinnable at the same time.
+
+- As of V3.0.1., calctool was modified to have "infinite" precision
+  internally. This needs to be made available to the "power" users, but
+  shouldn't confuse the novice. What I suggest is to replace the Acc
+  button menu, with an Acc... button which brings up a popup with a slider
+  on, to allow you to set the number of numeric places. By default this
+  will be 0-9. I also propose adding another X resource, which will also
+  allow you to set the number of numeric places. This value can be as
+  large as you want. When calctool starts up, it will look for that
+  resource, and adjust the sliders maximum value appropriately.
+ 
+  Making this addition will possibly cause the calctool numeric result to
+  be larger that can fully displayed. There are two possible ways to fix
+  this:
+
+  * make the display area a scrollable canvas.
+  * make the calctool numeric display a panel text item of the appropriate
+    length.
+
+MP - todo.
+----------
+
+* Everytime the accuracy is changed, the menu items in the constant
+  menu should be reevaluated to that new accuracy value.
+
+* Shouldn't have to convert back to a double in make_number() in order
+  to test if the number is too large to be displayed in fixed point.
+
+* The cmax field for make_fixed should be dynamic, and depend upon how
+  many characters can be displayed (ie. a larger calctool will be able
+  to display more).
+
+* Tidy up the code in mp.c, to eventually use no labels and goto's.
+
+* Adjust all uses of MP...[MP_SIZE] to use a dynamic size so that it's
+  possible to calculate to numbers of any length.
+
+
+Possible enhancements.
+----------------------
+
+* Add in the ability to drag & drop from/to the display and the memory
+  registers.
+
+* Add some more functions:
+
+  ~ Common antilogarithm and natural antilogarithm.
+  ~ Cube root key.
+  ~ Root key. The y root of x.
+  ~ Rectangular to polar and polar to rectangular keys.
+
+* Add Reverse Polish notation functionality (as an option).
