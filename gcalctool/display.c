@@ -158,6 +158,17 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
     v->toclear = 1;
     v->pointed = 0;
 
+    if (v->rm_zeroes && v->accuracy != 0) {
+        optr = v->fnum + strlen(v->fnum) - 1;
+        while (*optr == '0') {
+            optr--;
+        }
+        if (*optr != '.') {
+            optr++;
+        }
+        *optr = '\0';
+    }
+
     return(v->fnum);
 }
 

@@ -46,12 +46,13 @@
 #define BUT_7     X->bas_buttons[0]        /* 7 */
 #define BUT_8     X->bas_buttons[1]        /* 8 */
 #define BUT_9     X->bas_buttons[2]        /* 9 */
-#define BUT_A     X->sci_buttons[24]       /* A */
-#define BUT_B     X->sci_buttons[25]       /* B */
-#define BUT_C     X->sci_buttons[26]       /* C */
-#define BUT_D     X->sci_buttons[16]       /* D */
-#define BUT_E     X->sci_buttons[17]       /* E */
-#define BUT_F     X->sci_buttons[18]       /* F */
+#define BUT_ACC   X->sci_buttons[7]        /* A */
+#define BUT_A     X->sci_buttons[24]       /* a */
+#define BUT_B     X->sci_buttons[25]       /* b */
+#define BUT_C     X->sci_buttons[26]       /* c */
+#define BUT_D     X->sci_buttons[16]       /* d */
+#define BUT_E     X->sci_buttons[17]       /* e */
+#define BUT_F     X->sci_buttons[18]       /* f */
 #define BUT_ADD   X->bas_buttons[27]       /* + */
 #define BUT_SUB   X->bas_buttons[19]       /* - */
 #define BUT_MUL   X->bas_buttons[11]       /* x */
@@ -177,9 +178,10 @@ static void new_cf_value(GtkMenuItem *, gpointer);
 static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
+static void reset_mode_values(enum mode_type);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
-static void set_memory_toggle(int state);
+static void set_memory_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
 
 static XVars X;
@@ -209,16 +211,18 @@ static GtkItemFactoryEntry main_menu[] = {
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
-    { N_("/0 radix places"), NULL, menu_proc, '0', NULL, },
-    { N_("/1 radix places"), NULL, menu_proc, '1', NULL, },
-    { N_("/2 radix places"), NULL, menu_proc, '2', NULL, },
-    { N_("/3 radix places"), NULL, menu_proc, '3', NULL, },
-    { N_("/4 radix places"), NULL, menu_proc, '4', NULL, },
-    { N_("/5 radix places"), NULL, menu_proc, '5', NULL, },
-    { N_("/6 radix places"), NULL, menu_proc, '6', NULL, },
-    { N_("/7 radix places"), NULL, menu_proc, '7', NULL, },
-    { N_("/8 radix places"), NULL, menu_proc, '8', NULL, },
-    { N_("/9 radix places"), NULL, menu_proc, '9', NULL, },
+    { N_("/0 radix places"), NULL, menu_proc, '0', "<RadioItem>" },
+    { N_("/1 radix places"), NULL, menu_proc, '1', "/0 radix places" },
+    { N_("/2 radix places"), NULL, menu_proc, '2', "/0 radix places" },
+    { N_("/3 radix places"), NULL, menu_proc, '3', "/0 radix places" },
+    { N_("/4 radix places"), NULL, menu_proc, '4', "/0 radix places" },
+    { N_("/5 radix places"), NULL, menu_proc, '5', "/0 radix places" },
+    { N_("/6 radix places"), NULL, menu_proc, '6', "/0 radix places" },
+    { N_("/7 radix places"), NULL, menu_proc, '7', "/0 radix places" },
+    { N_("/8 radix places"), NULL, menu_proc, '8', "/0 radix places" },
+    { N_("/9 radix places"), NULL, menu_proc, '9', "/0 radix places" },
+    { N_("/sep1"),           NULL, NULL,       0,  "<Separator>" },
+    { N_("/_Remove Trailing Zeroes"),"<control>R", menu_proc, 'R', "<ToggleItem>" },
 };
 
 static GtkItemFactoryEntry lshift_menu[] = {
@@ -930,6 +934,24 @@ create_mode_panel(GtkWidget *main_vbox)
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
 
+/* Make Trig. type radio button widgets. */
+ 
+    trig_hbox = gtk_hbox_new(FALSE, 0);
+    gtk_widget_show(trig_hbox);
+ 
+    for (i = 0; i < MAXTRIGMODES; i++) {
+        X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
+        g_object_set_data(G_OBJECT(X->trig[i]), "trig", (gpointer) i);
+        gtk_widget_show(X->trig[i]);
+        gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
+        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
+        trig_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->trig[i]));
+        g_signal_connect(G_OBJECT(X->trig[i]), "toggled",
+                         G_CALLBACK(trig_cb), NULL);
+    }
+ 
+    gtk_box_pack_start(GTK_BOX(row1_hbox), trig_hbox, FALSE, TRUE, 0);
+
 /* Make numeric base radio button widgets. */
 
     base_hbox = gtk_hbox_new(FALSE, 0);
@@ -946,25 +968,21 @@ create_mode_panel(GtkWidget *main_vbox)
                          G_CALLBACK(base_cb), NULL);
     }
 
-    gtk_box_pack_start(GTK_BOX(row1_hbox), base_hbox, FALSE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(row1_hbox), base_hbox, FALSE, TRUE, 0);
 
-/* Make Trig. type radio button widgets. */
- 
-    trig_hbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(trig_hbox);
- 
-    for (i = 0; i < MAXTRIGMODES; i++) {
-        X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
-        g_object_set_data(G_OBJECT(X->trig[i]), "trig", (gpointer) i);
-        gtk_widget_show(X->trig[i]);
-        gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
-        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
-        trig_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->trig[i]));
-        g_signal_connect(G_OBJECT(X->trig[i]), "toggled",
-                         G_CALLBACK(trig_cb), NULL);
-    }
+/* Make Hyp and Inv trigonometric check boxes. */
 
-    gtk_box_pack_end(GTK_BOX(row1_hbox), trig_hbox, FALSE, TRUE, 0);
+    X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
+    gtk_widget_show(X->inv);
+    gtk_box_pack_start(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(X->inv), "toggled",
+                      G_CALLBACK(inv_cb), NULL);
+
+    X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
+    gtk_widget_show(X->hyp);
+    gtk_box_pack_start(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(X->hyp), "toggled",
+                      G_CALLBACK(hyp_cb), NULL);
 
 /* Make display type radio button widgets. */
 
@@ -982,21 +1000,7 @@ create_mode_panel(GtkWidget *main_vbox)
                          G_CALLBACK(disp_cb), NULL);
     }
 
-    gtk_box_pack_start(GTK_BOX(row2_hbox), disp_hbox, FALSE, TRUE, 0);
-
-/* Make Hyp and Inv trigonometric check boxes. */
-
-    X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
-    gtk_widget_show(X->inv);
-    gtk_box_pack_end(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(X->inv), "toggled",
-                      G_CALLBACK(inv_cb), NULL);
-
-    X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
-    gtk_widget_show(X->hyp);
-    gtk_box_pack_end(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(X->hyp), "toggled",
-                      G_CALLBACK(hyp_cb), NULL);
+    gtk_box_pack_end(GTK_BOX(row2_hbox), disp_hbox, FALSE, TRUE, 0);
 
     gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
@@ -1439,10 +1443,18 @@ load_resources()        /* Load gconf configuration database for gcalctool. */
 void
 make_frames()
 {
+    struct button *n;
+    GtkWidget *menu;
+
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     create_kframe();                     /* Create main gcalctool window. */
     create_rframe();                     /* Create memory register window. */
     set_mode(v->modetype);
+
+    n = (struct button *) g_object_get_data(G_OBJECT(BUT_ACC), "button");
+    menu = create_menu(n->mtype, n);
+    set_accuracy_toggle(v->accuracy);
+    set_rm_zeroes_toggle(v->rm_zeroes);
 }
 
 
@@ -1727,17 +1739,11 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
             break;
 
         case M_BASIC:
-            v->modetype = BASIC;
-            set_item(BASEITEM, DEC);
-            set_item(NUMITEM, FIX);
-            do_mode();
+            reset_mode_values(BASIC);
             break;
 
         case M_FIN:
-            v->modetype = FINANCIAL;
-            set_item(BASEITEM, DEC);
-            set_item(NUMITEM, FIX);
-            do_mode();
+            reset_mode_values(FINANCIAL);
             break;
 
         case M_SCI:
@@ -1821,9 +1827,41 @@ quit_cb(GtkWidget *widget, gpointer user_data)
 
 
 static void
+reset_mode_values(enum mode_type mtype)
+{
+    v->modetype = mtype;
+    set_item(BASEITEM, DEC);
+    set_item(NUMITEM, FIX);
+    v->accuracy = 9;
+    set_accuracy_toggle(v->accuracy);
+
+    v->started = 0;          /* Hack to get do_accuracy() to just return. */
+    v->rm_zeroes = TRUE;
+    set_rm_zeroes_toggle(v->rm_zeroes);
+    put_resource(R_ZEROES, set_bool(v->rm_zeroes == TRUE));
+    v->started = 1;
+
+    show_display(v->MPdisp_val);
+    make_registers();
+    do_mode();
+}
+
+
+static void
 set_button_state(GtkWidget *w, int isSensitive)
 {
     gtk_widget_set_sensitive(w, isSensitive);
+}
+
+
+void
+set_accuracy_toggle(int val)
+{
+    GtkWidget *acc;
+
+    acc = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 
+                                                val + '0');
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
 }
 
 
@@ -1985,6 +2023,16 @@ set_gcalctool_icon(void)
     else {
         X->icon = NULL;
     }
+}
+
+
+void
+set_rm_zeroes_toggle(int state)
+{
+    GtkWidget *rmz;
+
+    rmz = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'R');
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(rmz), state);
 }
 
 

@@ -137,7 +137,7 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                         FPRINTF(stderr, 
                                 _("%s: accuracy should be in the range 0-9\n"),
                                 v->progname);
-                        v->accuracy = 2;
+                        v->accuracy = 9;
                     }
                     break;
 
@@ -194,7 +194,8 @@ init_vars()    /* Setup default values for various variables. */
 {
     int acc, i, n, size;
 
-    v->accuracy      = 2;      /* Initial accuracy. */
+    v->accuracy      = 9;      /* Initial accuracy. */
+    v->rm_zeroes     = TRUE;   /* Remove trailing zeroes. */
     v->base          = DEC;    /* Initial base. */
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
@@ -256,7 +257,7 @@ read_resources()    /* Read all possible resources from the database. */
         if (v->accuracy < 0 || v->accuracy > 9) {
             FPRINTF(stderr, _("%s: accuracy should be in the range 0-9\n"), 
                     v->progname);
-            v->accuracy = 2;
+            v->accuracy = 9;
         }
     }
 
@@ -321,6 +322,10 @@ read_resources()    /* Read all possible resources from the database. */
 
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
+    }
+
+    if (get_bool_resource(R_ZEROES, &boolval)) {
+        v->rm_zeroes = boolval;
     }
 }
 

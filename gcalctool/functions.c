@@ -51,13 +51,23 @@ do_accuracy()     /* Set display accuracy. */
     char intval[5];
     int i;
 
-    for (i = 0; i <= 9; i++) {
-        if (v->current->value == get_menu_entry(M_ACC, i)) {
-            v->accuracy = char_val(v->current->value);
-            SPRINTF(intval, "%d", v->accuracy);
-            put_resource(R_ACCURACY, intval);
-            make_registers();
-            return;
+    if (!v->started) {
+        return;
+    }
+
+    if (v->current->value == 'R') {     /* "Remove trailing zeroes" entry? */
+        v->rm_zeroes = !v->rm_zeroes;
+        put_resource(R_ZEROES, set_bool(v->rm_zeroes == TRUE));
+        make_registers();
+    } else {
+        for (i = 0; i <= 9; i++) {
+            if (v->current->value == get_menu_entry(M_ACC, i)) {
+                v->accuracy = char_val(v->current->value);
+                SPRINTF(intval, "%d", v->accuracy);
+                put_resource(R_ACCURACY, intval);
+                make_registers();
+                return;
+            }
         }
     }
 }

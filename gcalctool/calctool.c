@@ -51,7 +51,8 @@ char *base_str[]  = {          /* Strings for each base value. */
 };
 
 char *calc_res[] = {
-    "accuracy", "base", "display", "mode", "showregisters", "trigtype"
+    "accuracy", "base", "display", "mode", "showregisters", "trigtype",
+    "removezeroes"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
@@ -223,13 +224,13 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_calc
 },
 {
-    N_("Acc"),
-    N_("Set accuracy from 0 to 9 numeric places"),
-    CALC_MOD_SHIFT_MASK,
-    CALC_KEY_ACC,
-    'A',
-    M_ACC,
-    do_pending
+    "    ",
+    "    ",
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
+    ' ',
+    M_NONE,
+    do_none
 },
 {
     N_("+/-"),
@@ -646,13 +647,13 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_paren
 },
 {
-    "    ",
-    "    ",
-    CALC_MOD_NONE,
-    CALC_KEY_NONE,
-    ' ',
-    M_NONE,
-    do_none
+    N_("Acc"),
+    N_("Set accuracy from 0 to 9 numeric places"),
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_ACC,
+    'A',
+    M_ACC,
+    do_pending
 },
 
 /* Row 2. */

@@ -5,6 +5,30 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.2.74
+
+* Fixed Bugzilla bug 108226.
+
+  The menu items in the Acc menu are now "tickable", so you know what the
+  current accuracy selection is. Setting one of these clears the previous one.
+ 
+  A new "remove trailing zeroes" menu item is added to the Acc menu (last
+  item, with a separator just above), that is "tickable". This tick doesn't
+  affect the accuracy ticks. It's either on or off.
+ 
+  The default setting for accuracy now becomes 9 numeric places and "remove 
+  trailing zeroes".
+ 
+  The Acc button is moved to the Scientific mode (clear slot in the top 
+  right corner, above the Rand.
+ 
+  The Base radio button group and the display type radio button group in 
+  the mode panel in Scientific mode are now moved to the right side to be
+  close in proximity to the Acc button. The other mode items move to the 
+  left side.
+
+----
+
 Overview of changes in gcalctool 4.2.73
 
 * Fixed Bugzilla bug 108208. The default value for the "showregisters" 

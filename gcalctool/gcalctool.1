@@ -1,5 +1,5 @@
 .\" Copyright (c) 1987-2003 - Sun Microsystems, Inc.
-.TH gcalctool 1 "26 February 2003"
+.TH gcalctool 1 "18 March 2003"
 .SH NAME
 gcalctool \- a desktop calculator
 .SH SYNOPSIS
@@ -72,7 +72,7 @@ Turning on debugging in the multiple precision arithmetic package.
 .TP
 .BI \-a " accuracy"
 Initial number of digits displayed after the numeric point. This value must
-be in the range 0 to 9. The default is two numeric places.
+be in the range 0 to 9. The default is nine numeric places.
 .TP
 .B \-v
 Show the version number and the usage message of this release of the
@@ -136,6 +136,17 @@ Mode
 .B Description
 The initial calculator mode. Valid values are "BASIC", "FINANCIAL"
 and "SCIENTIFIC".
+.sp
+.TP
+.B Resource:
+/schemes/apps/gcalctool/removezeroes
+.TP
+.B Values:
+true, false (true)
+.TP
+.B Description
+Whether trailing zeroes, after the numeric point, are removed from the 
+display value.
 .sp
 .TP
 .B Resource:

@@ -20,7 +20,7 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <owner>gcalctool</owner>
       <type>string</type>
       <locale name="C">
-        <default>2</default>
+        <default>9</default>
         <short>Accuracy value</short>
         <long>
           The number of digits displayed after the numeric point.
@@ -75,6 +75,20 @@ To change the gconftool target use the - -config-source=blah option to gconftool
             FINANCIAL
             LOGICAL 
             SCIENTIFIC
+        </long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/removezeroes</applyto>
+      <key>/schemas/apps/gcalctool/removezeroes</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>true</default>
+        <short>Remove Trailing Zeroes</short>
+        <long>
+          Indicates whether any trailing zeroes after the 
+          number point should be removed from the display value.
         </long>
       </locale>
     </schema>

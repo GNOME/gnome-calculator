@@ -68,7 +68,8 @@ enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 /* Resources. */
-enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG
+enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
+                R_ZEROES
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -110,7 +111,7 @@ enum mod_type {
 #define KEY_BSP   b_buttons[5]              /* Control-h */
 
 #define KEY_MUL   b_buttons[11]             /* * */
-#define KEY_ACC   b_buttons[12]             /* A */
+
 #define KEY_CHS   b_buttons[13]             /* C */
 #define KEY_INT   b_buttons[14]             /* i */
 #define KEY_STO   b_buttons[15]             /* S */
@@ -144,6 +145,7 @@ enum mod_type {
 #define KEY_32    s_buttons[3]              /* ] */
 #define KEY_LPAR  s_buttons[5]              /* ( */
 #define KEY_RPAR  s_buttons[6]              /* ) */
+#define KEY_ACC   s_buttons[7]              /* A */
 
 #define KEY_CON   s_buttons[8]              /* # */
 #define KEY_FUN   s_buttons[9]              /* F */
@@ -314,6 +316,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
+    int rm_zeroes;     /* Set if trailing zeroes should be removed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
@@ -406,6 +409,7 @@ void read_resources();
 void read_str(char **, char *);
 void save_pending_values(struct button *);
 void save_resources();
+void set_accuracy_toggle(int);
 void set_display(char *str);
 void set_hyp_item(int);
 void set_ins_key();
@@ -413,6 +417,7 @@ void set_item(enum item_type, int);
 void set_inv_item(int);
 void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
+void set_rm_zeroes_toggle(int);
 void show_ascii_frame();
 void show_display(int *);
 void srand48();
