@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-27 03:31+0200\n"
-"PO-Revision-Date: 2004-05-27 13:57+0200\n"
+"POT-Creation-Date: 2004-05-30 03:27+0200\n"
+"PO-Revision-Date: 2004-05-30 16:06+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -669,7 +669,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Šestnáctková číslice E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1134
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1199
 msgid "F"
 msgstr "F"
 
@@ -733,7 +733,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Šestnáctková číslice B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1126
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1191
 msgid "C"
 msgstr "C"
 
@@ -901,274 +901,294 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:926 gcalctool/gtk.c:1059
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:991 gcalctool/gtk.c:1124
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:170
-msgid "/_Calculator"
-msgstr "/_Kalkulačka"
-
-#: gcalctool/gtk.c:171
-msgid "/Calculator/_Quit"
-msgstr "/Kalkulačka/U_končit"
-
-#: gcalctool/gtk.c:173
-msgid "/_Edit"
-msgstr "/_Úpravy"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Copy"
-msgstr "/Úpravy/_Kopírovat"
-
-#: gcalctool/gtk.c:175
-msgid "/Edit/_Paste"
-msgstr "/Úpravy/V_ložit"
-
-#: gcalctool/gtk.c:176
-msgid "/Edit/sep1"
-msgstr "/Úpravy/sep1"
-
 #: gcalctool/gtk.c:177
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/Úpravy/Vložit hodnotu _ASCII..."
+msgid "_Quit"
+msgstr "U_končit"
 
-#: gcalctool/gtk.c:179
-msgid "/_View"
-msgstr "/_Zobrazení"
+#: gcalctool/gtk.c:178
+msgid "Quit the calculator"
+msgstr "Ukončit kalkulačku"
 
 #: gcalctool/gtk.c:180
-msgid "/View/_Basic Mode"
-msgstr "/Zobrazení/_Základní režim"
+msgid "_Copy"
+msgstr "_Kopírovat"
 
 #: gcalctool/gtk.c:181
-msgid "/View/_Financial Mode"
-msgstr "/Zobrazení/_Finanční režim"
+msgid "Copy selection"
+msgstr "Kopírovat výběr"
 
 #: gcalctool/gtk.c:182
-msgid "/View/_Scientific Mode"
-msgstr "/Zobrazení/_Vědecký režim"
+msgid "_Paste"
+msgstr "V_ložit"
 
 #: gcalctool/gtk.c:183
-msgid "/View/sep1"
-msgstr "/Zobrazení/sep1"
+msgid "Paste selection"
+msgstr "Vložit výběr"
 
 #: gcalctool/gtk.c:184
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/Zobrazeni/Zobrazovat _nuly na konci"
+msgid "_Insert ASCII Value..."
+msgstr "Vložit hodnotu _ASCII..."
 
 #: gcalctool/gtk.c:185
-msgid "/View/Show T_housands Separator"
-msgstr "/Zobrazeni/Zobrazovat oddělovač _tisíců"
-
-#: gcalctool/gtk.c:186
-msgid "/View/sep2"
-msgstr "/Zobrazení/sep2"
+msgid "Insert ASCII value"
+msgstr "Vložit hodnotu ASCII"
 
 #: gcalctool/gtk.c:187
-msgid "/View/_Memory Registers"
-msgstr "/Zobrazení/_Registry paměti"
+msgid "_Contents"
+msgstr "_Obsah"
+
+#: gcalctool/gtk.c:188
+msgid "Show help contents"
+msgstr "Zobrazit obsah nápovědy"
 
 #: gcalctool/gtk.c:189
-msgid "/_Help"
-msgstr "/_Nápověda"
+msgid "_About"
+msgstr "O _aplikaci"
 
 #: gcalctool/gtk.c:190
-msgid "/Help/_Contents"
-msgstr "/Nápověda/_Obsah"
-
-#: gcalctool/gtk.c:191
-msgid "/Help/_About"
-msgstr "/Nápověda/O _aplikaci"
+msgid "Show about help"
+msgstr "Zobrazit nápovědu o aplikaci"
 
 #: gcalctool/gtk.c:195
+msgid "Show _Trailing Zeroes"
+msgstr "Zobrazovat _nuly na konci"
+
+#: gcalctool/gtk.c:196
+msgid "Show trailing zeroes"
+msgstr "Zobrazovat nuly na konci"
+
+#: gcalctool/gtk.c:197
+msgid "Show T_housands Separator"
+msgstr "Zobrazovat oddělovač _tisíců"
+
+#: gcalctool/gtk.c:198
+msgid "Show thousands separator"
+msgstr "Zobrazovat oddělovač tisíců"
+
+#: gcalctool/gtk.c:199
+msgid "_Memory Registers"
+msgstr "_Registry paměti"
+
+#: gcalctool/gtk.c:200
+msgid "Show memory registers"
+msgstr "Zobrazovat registry paměti"
+
+#: gcalctool/gtk.c:205
+msgid "_Basic mode"
+msgstr "_Základní režim"
+
+#: gcalctool/gtk.c:206
+msgid "Basic mode"
+msgstr "Základní režim"
+
+#: gcalctool/gtk.c:207
+msgid "_Financial mode"
+msgstr "_Finanční režim"
+
+#: gcalctool/gtk.c:208
+msgid "Financial mode"
+msgstr "Finanční režim"
+
+#: gcalctool/gtk.c:209
+msgid "_Scientific mode"
+msgstr "_Vědecký režim"
+
+#: gcalctool/gtk.c:210
+msgid "Scientific mode"
+msgstr "Vědecký režim"
+
+#: gcalctool/gtk.c:245
 msgid "/0 significant places"
 msgstr "/0 míst soustavy"
 
-#: gcalctool/gtk.c:196
+#: gcalctool/gtk.c:246
 msgid "/1 significant place"
 msgstr "/1 místo soustavy"
 
-#: gcalctool/gtk.c:197
+#: gcalctool/gtk.c:247
 msgid "/2 significant places"
 msgstr "/2 místa soustavy"
 
-#: gcalctool/gtk.c:198
+#: gcalctool/gtk.c:248
 msgid "/3 significant places"
 msgstr "/3 místa soustavy"
 
-#: gcalctool/gtk.c:199
+#: gcalctool/gtk.c:249
 msgid "/4 significant places"
 msgstr "/4 místa soustavy"
 
-#: gcalctool/gtk.c:200
+#: gcalctool/gtk.c:250
 msgid "/5 significant places"
 msgstr "/5 míst soustavy"
 
-#: gcalctool/gtk.c:201
+#: gcalctool/gtk.c:251
 msgid "/6 significant places"
 msgstr "/6 míst soustavy"
 
-#: gcalctool/gtk.c:202
+#: gcalctool/gtk.c:252
 msgid "/7 significant places"
 msgstr "/7 míst soustavy"
 
-#: gcalctool/gtk.c:203
+#: gcalctool/gtk.c:253
 msgid "/8 significant places"
 msgstr "/8 míst soustavy"
 
-#: gcalctool/gtk.c:204
+#: gcalctool/gtk.c:254
 msgid "/9 significant places"
 msgstr "/9 míst soustavy"
 
-#: gcalctool/gtk.c:205
+#: gcalctool/gtk.c:255
 msgid "/sep1"
 msgstr "/sep1"
 
-#: gcalctool/gtk.c:206
+#: gcalctool/gtk.c:256
 msgid "/Show _Trailing Zeroes"
 msgstr "/Zobrazovat _nuly na konci"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
+#: gcalctool/gtk.c:260 gcalctool/gtk.c:278
 msgid "/1 place"
 msgstr "/1 místo"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:261 gcalctool/gtk.c:279
 msgid "/2 places"
 msgstr "/2 místa"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
+#: gcalctool/gtk.c:262 gcalctool/gtk.c:280
 msgid "/3 places"
 msgstr "/3 místa"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:281
 msgid "/4 places"
 msgstr "/4 místa"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:282
 msgid "/5 places"
 msgstr "/5 míst"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:265 gcalctool/gtk.c:283
 msgid "/6 places"
 msgstr "/6 míst"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
+#: gcalctool/gtk.c:266 gcalctool/gtk.c:284
 msgid "/7 places"
 msgstr "/7 míst"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:267 gcalctool/gtk.c:285
 msgid "/8 places"
 msgstr "/8 míst"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:268 gcalctool/gtk.c:286
 msgid "/9 places"
 msgstr "/9 míst"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:269 gcalctool/gtk.c:287
 msgid "/10 places"
 msgstr "/10 míst"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:270 gcalctool/gtk.c:288
 msgid "/11 places"
 msgstr "/11 míst"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:271 gcalctool/gtk.c:289
 msgid "/12 places"
 msgstr "/12 míst"
 
-#: gcalctool/gtk.c:222 gcalctool/gtk.c:240
+#: gcalctool/gtk.c:272 gcalctool/gtk.c:290
 msgid "/13 places"
 msgstr "/13 míst"
 
-#: gcalctool/gtk.c:223 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:273 gcalctool/gtk.c:291
 msgid "/14 places"
 msgstr "/14 míst"
 
-#: gcalctool/gtk.c:224 gcalctool/gtk.c:242
+#: gcalctool/gtk.c:274 gcalctool/gtk.c:292
 msgid "/15 places"
 msgstr "/15 Míst"
 
-#: gcalctool/gtk.c:305
+#: gcalctool/gtk.c:355
 msgid "translator_credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
 "Michal Bukovjan <bukm@centrum.cz>"
 
-#: gcalctool/gtk.c:307
+#: gcalctool/gtk.c:357
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:309
+#: gcalctool/gtk.c:359
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
-#: gcalctool/gtk.c:596
+#: gcalctool/gtk.c:646
 msgid "Insert ASCII Value"
 msgstr "Vložit hodnotu ASCII"
 
-#: gcalctool/gtk.c:611
+#: gcalctool/gtk.c:661
 msgid "Ch_aracter:"
 msgstr "Z_nak:"
 
-#: gcalctool/gtk.c:636
+#: gcalctool/gtk.c:686
 msgid "_Insert"
 msgstr "_Vložit"
 
-#: gcalctool/gtk.c:715
+#: gcalctool/gtk.c:765
 msgid "Edit Constants"
 msgstr "Upravit konstanty"
 
-#: gcalctool/gtk.c:715
+#: gcalctool/gtk.c:765
 msgid "Edit Functions"
 msgstr "Upravit funkce"
 
-#: gcalctool/gtk.c:739
+#: gcalctool/gtk.c:789
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:790
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Všechny konstantní hodnoty jsou zadávány v desítkové soustavě."
 
-#: gcalctool/gtk.c:750
+#: gcalctool/gtk.c:800
 msgid "Click a _value or description to edit it:"
 msgstr "Pro upravení klikněte na _hodnotu nebo popis:"
 
-#: gcalctool/gtk.c:773
+#: gcalctool/gtk.c:823
 msgid "No."
 msgstr "Č."
 
-#: gcalctool/gtk.c:775
+#: gcalctool/gtk.c:825
 msgid "Value"
 msgstr "Hodnota"
 
-#: gcalctool/gtk.c:777
+#: gcalctool/gtk.c:827
 msgid "Description"
 msgstr "Popis"
 
-#: gcalctool/gtk.c:811 gcalctool/gtk.c:813 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:862 gcalctool/gtk.c:864 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulačka"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:994
+#: gcalctool/gtk.c:1059
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1002
+#: gcalctool/gtk.c:1067
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1050
+#: gcalctool/gtk.c:1115
 msgid "Memory Registers"
 msgstr "Registry paměti"
 
-#: gcalctool/gtk.c:1115
+#: gcalctool/gtk.c:1180
 msgid "Edit Constants..."
 msgstr "Upravit konstanty..."
 
-#: gcalctool/gtk.c:1115
+#: gcalctool/gtk.c:1180
 msgid "Edit Functions..."
 msgstr "Upravit funkce..."
 
