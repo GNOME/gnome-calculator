@@ -59,11 +59,6 @@
 #define BUT_PNT   X->bas_buttons[25]       /* . */
 #define BUT_EQ    X->bas_buttons[26]       /* = */
 
-#define BASIC_RADIO_MENU      "/View/Basic Mode"
-#define FINANCIAL_RADIO_MENU  "/View/Financial Mode"
-#define SCIENTIFIC_RADIO_MENU "/View/Scientific Mode"
-#define MEM_REG_TOGGLE_MENU   "/View/Memory Registers"
-
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
@@ -169,25 +164,25 @@ static XVars X;
 /* Menubar menus. */
 
 static GtkItemFactoryEntry main_menu[] = {
-    { "/_Calculator",              NULL, NULL,    0,       "<Branch>" },
-    { "/Calculator/_Quit", "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
+    { N_("/_Calculator"),          NULL, NULL,    0,       "<Branch>" },
+    { N_("/Calculator/_Quit"), "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
 
-    { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
-    { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
-    { "/Edit/_Paste",              NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
-    { "/Edit/sep1",                NULL, NULL,    0,       "<Separator>" },
-    { "/Edit/_Insert ASCII Value...", "<control>I", mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
+    { N_("/_Edit"),                NULL, NULL,    0,       "<Branch>" },
+    { N_("/Edit/_Copy"),           NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
+    { N_("/Edit/_Paste"),          NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
+    { N_("/Edit/sep1"),            NULL, NULL,    0,       "<Separator>" },
+    { N_("/Edit/_Insert ASCII Value..."), "<control>I", mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
 
-    { "/_View",                    NULL, NULL,    0,       "<Branch>" },
-    { "/View/_Basic Mode",     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
-    { "/View/_Financial Mode", "<control>F", mb_proc, M_FIN, "/View/Basic Mode" },
-    { "/View/_Scientific Mode", "<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
-    { "/View/sep1",                NULL, NULL,    0,       "<Separator>" },
-    { "/View/_Memory Registers", "<control>M", mb_proc, M_REGS, "<ToggleItem>" },
+    { N_("/_View"),                NULL, NULL,    0,       "<Branch>" },
+    { N_("/View/_Basic Mode"),     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
+    { N_("/View/_Financial Mode"), "<control>F", mb_proc, M_FIN, "/View/Basic Mode" },
+    { N_("/View/_Scientific Mode"),"<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
+    { N_("/View/sep1"),            NULL, NULL,    0,       "<Separator>" },
+    { N_("/View/_Memory Registers"),"<control>M", mb_proc, M_REGS, "<ToggleItem>" },
 
-    { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
-    { "/Help/_Contents",          "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
-    { "/Help/_About",    	   NULL, about_cb, 0, "<StockItem>", GNOME_STOCK_ABOUT },
+    { N_("/_Help"),                NULL, NULL,    0,       "<Branch>" },
+    { N_("/Help/_Contents"),       "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
+    { N_("/Help/_About"),    	   NULL, about_cb, 0, "<StockItem>", GNOME_STOCK_ABOUT },
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
@@ -848,16 +843,13 @@ create_kframe()
     g_signal_connect(G_OBJECT(X->kframe), "event", G_CALLBACK(event_cb), NULL);
     switch (v->modetype) {
         case FINANCIAL:
-            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
-                                                      FINANCIAL_RADIO_MENU);
+            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_FIN);
             break;
         case SCIENTIFIC:
-            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
-                                                      SCIENTIFIC_RADIO_MENU);
+            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_SCI);
             break;
         default:
-            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
-                                                      BASIC_RADIO_MENU);
+            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_BASIC);
             break;
     }
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
@@ -1760,7 +1752,7 @@ set_memory_toggle(int state)
 {
     GtkWidget *reg;
 
-    reg = gtk_item_factory_get_widget(X->mb_fact, MEM_REG_TOGGLE_MENU);  
+    reg = gtk_item_factory_get_widget_by_action(X->mb_fact, M_REGS);  
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(reg), state);
 }
 
