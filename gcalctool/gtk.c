@@ -60,7 +60,8 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
     GConfClient *client;
-    GtkItemFactory *mb_fact;           /* Menubar item factory. */
+    GtkUIManager *ui;
+    GtkActionGroup *actions;
     GtkItemFactory *fact[MAXMENUS];
     GtkTooltips *tips;
     GtkWidget *aframe;                 /* ASCII window. */
@@ -144,7 +145,8 @@ static void die_cb(GnomeClient *client, gpointer data);
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
-static void mb_proc(gpointer, int, GtkWidget *);
+static void mb_proc(GtkAction *action);
+static void mb_radio_proc(GtkAction *action, GtkRadioAction *current);
 static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
@@ -166,30 +168,78 @@ static XVars X;
 
 /* Menubar menus. */
 
-static GtkItemFactoryEntry main_menu[] = {
-    { N_("/_Calculator"),          NULL, NULL,    0,       "<Branch>" },
-    { N_("/Calculator/_Quit"), "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
+static GtkActionEntry entries[] = {
+    { "CalculatorMenu", NULL, "_Calculator" },
+    { "EditMenu",       NULL, "_Edit" },
+    { "ViewMenu",       NULL, "_View" },
+    { "HelpMenu",       NULL, "_Help" },
 
-    { N_("/_Edit"),                NULL, NULL,    0,       "<Branch>" },
-    { N_("/Edit/_Copy"),           NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
-    { N_("/Edit/_Paste"),          NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
-    { N_("/Edit/sep1"),            NULL, NULL,    0,       "<Separator>" },
-    { N_("/Edit/_Insert ASCII Value..."), "<control>I", mb_proc, M_ASCII, NULL },
+    { "Quit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
+      N_("Quit the calculator"), G_CALLBACK(mb_proc) },
 
-    { N_("/_View"),                NULL, NULL,    0,       "<Branch>" },
-    { N_("/View/_Basic Mode"),     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
-    { N_("/View/_Financial Mode"), "<control>F", mb_proc, M_FIN, "/View/Basic Mode" },
-    { N_("/View/_Scientific Mode"),"<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
-    { N_("/View/sep1"),            NULL, NULL,    0,       "<Separator>" },
-    { N_("/View/Show _Trailing Zeroes"),"<control>T", mstz_proc, M_ZEROES, "<ToggleItem>" },
-   { N_("/View/Show T_housands Separator"),"<control>K", ts_proc, M_TSEP, "<ToggleItem>" },
-    { N_("/View/sep2"),	           NULL, NULL,	  0,       "<Separator>" },
-    { N_("/View/_Memory Registers"),"<control>M", mb_proc, M_REGS, "<ToggleItem>" },
+    { "Copy", GTK_STOCK_COPY, N_("_Copy"), NULL,
+      N_("Copy selection"), G_CALLBACK(mb_proc) },
+    { "Paste", GTK_STOCK_PASTE, N_("_Paste"), NULL,
+      N_("Paste selection"), G_CALLBACK(mb_proc) },
+    { "Insert", NULL, N_("_Insert ASCII Value..."), "<control>I",
+      N_("Insert ASCII value"), G_CALLBACK(mb_proc) },
 
-    { N_("/_Help"),                NULL, NULL,    0,       "<Branch>" },
-    { N_("/Help/_Contents"),       "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
-    { N_("/Help/_About"),    	   NULL, about_cb, M_ABOUT, "<StockItem>", GNOME_STOCK_ABOUT },
+    { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
+      N_("Show help contents"), G_CALLBACK(mb_proc) },
+    { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
+      N_("Show about help"), G_CALLBACK(mb_proc) },
 };
+static guint n_entries = G_N_ELEMENTS(entries);
+
+static GtkToggleActionEntry toggle_entries[] = {
+    { "Trailing",  NULL, N_("Show _Trailing Zeroes"),     "<control>T",
+      N_("Show trailing zeroes"),     G_CALLBACK(mb_proc), FALSE },
+    { "Thousands", NULL, N_("Show T_housands Separator"), "<control>K",
+      N_("Show thousands separator"), G_CALLBACK(mb_proc), FALSE },
+    { "Memory",    NULL, N_("_Memory Registers"),         "<control>M",
+      N_("Show memory registers"),    G_CALLBACK(mb_proc), FALSE },
+};
+static guint n_toggle_entries = G_N_ELEMENTS(toggle_entries);
+
+static GtkRadioActionEntry radio_entries[] = {
+  { "Basic",      NULL, N_("_Basic mode"),      "<control>B",
+    N_("Basic mode"),      M_BASIC },
+  { "Financial",  NULL, N_("_Financial mode"),  "<control>F",
+    N_("Financial mode"),  M_FIN },
+  { "Scientific", NULL, N_("_Scientific mode"), "<control>S",
+    N_("Scientific mode"), M_SCI },
+};
+static guint n_radio_entries = G_N_ELEMENTS(radio_entries);
+
+static const gchar *ui_info =
+"<ui>"
+"  <menubar name='MenuBar'>"
+"    <menu action='CalculatorMenu'>"
+"      <menuitem action='Quit'/>"
+"    </menu>"
+"    <menu action='EditMenu'>"
+"      <menuitem action='Copy'/>"
+"      <menuitem action='Paste'/>"
+"      <separator/>"
+"      <menuitem action='Insert'/>"
+"    </menu>"
+"    <menu action='ViewMenu'>"
+"      <menuitem action='Basic'/>"
+"      <menuitem action='Financial'/>"
+"      <menuitem action='Scientific'/>"
+"      <separator/>"
+"      <menuitem action='Trailing'/>"
+"      <menuitem action='Thousands'/>"
+"      <separator/>"
+"      <menuitem action='Memory'/>"
+"    </menu>"
+"    <menu action='HelpMenu'>"
+"      <menuitem action='Contents'/>"
+"      <menuitem action='About'/>"
+"    </menu>"
+"  </menubar>"
+"</ui>";
+
 
 static GtkItemFactoryEntry acc_menu[] = {
     { N_("/0 significant places"), NULL, menu_proc, '0', "<RadioItem>" },
@@ -393,7 +443,7 @@ astz_proc(gpointer data, int choice, GtkWidget *item)
     if (!v->doing_mi) {
         v->show_zeroes = !v->show_zeroes;
         v->doing_mi = 1;
-        mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_ZEROES);
+        mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
@@ -802,6 +852,7 @@ create_kframe()
 {
     char *hn;
     int count;
+    GError *error;
     GtkWidget *event_box, *view_widget;
     GtkTextBuffer *buffer;
 
@@ -828,16 +879,27 @@ create_kframe()
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
     gtk_widget_show(X->kvbox);
 
-    /* Make menubar from item factory. */
+    X->actions = gtk_action_group_new("Actions");
+    gtk_action_group_add_actions(X->actions, entries, n_entries, NULL);
+    gtk_action_group_add_toggle_actions(X->actions,
+                                        toggle_entries, n_toggle_entries,
+                                        NULL);
+    gtk_action_group_add_radio_actions(X->actions,
+                                       radio_entries, n_radio_entries,
+                                       M_BASIC, G_CALLBACK(mb_radio_proc),
+                                       NULL);
 
-    count = sizeof(main_menu) / sizeof(main_menu[0]);
-    X->mb_fact = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", 
-                                      X->kbd_accel);
-    gtk_item_factory_set_translate_func(X->mb_fact,
-                                        item_factory_translate_func,
-                                        NULL, NULL);
-    gtk_item_factory_create_items(X->mb_fact, count, main_menu, NULL);
-    X->menubar = gtk_item_factory_get_widget(X->mb_fact, "<main>");
+    X->ui = gtk_ui_manager_new();
+    gtk_ui_manager_insert_action_group(X->ui, X->actions, 0);
+    gtk_window_add_accel_group(GTK_WINDOW(X->kframe),
+                               gtk_ui_manager_get_accel_group(X->ui));
+
+    if (!gtk_ui_manager_add_ui_from_string(X->ui, ui_info, -1, &error)) {
+        g_message("Building menus failed: %s", error->message);
+        g_error_free(error);
+    }
+
+    X->menubar = gtk_ui_manager_get_widget(X->ui, "/MenuBar"),
     gtk_widget_show(X->menubar);
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
@@ -897,13 +959,16 @@ create_kframe()
 
     switch (v->modetype) {
         case FINANCIAL:
-            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_FIN);
+            view_widget = gtk_ui_manager_get_widget(X->ui, 
+                                              "/MenuBar/ViewMenu/Financial");
             break;
         case SCIENTIFIC:
-            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_SCI);
+            view_widget = gtk_ui_manager_get_widget(X->ui, 
+                                              "/MenuBar/ViewMenu/Scientific");
             break;
         default:
-            view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_BASIC);
+            view_widget = gtk_ui_manager_get_widget(X->ui, 
+                                              "/MenuBar/ViewMenu/Basic");
             break;
     }
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
@@ -1724,48 +1789,42 @@ make_menu_button(gchar *label_text, int n)
 /* Handle menu bar menu selection. */
 
 static void
-mb_proc(gpointer data, int choice, GtkWidget *item)
+mb_proc(GtkAction *action)
 {
+    const gchar *name = gtk_action_get_name(action);
+
     if (!v->started) {
         return;
     }
 
-    switch (choice) {
-        case M_QUIT:
-            exit(0);
+    if (EQUAL(name, "Quit")) {
+        exit(0);
+    } else if (EQUAL(name, "Copy")) {
+        get_display();
+    } else if (EQUAL(name, "Paste")) {
+        handle_selection();
+    } else if (EQUAL(name, "Insert")) {
+        show_ascii_frame();
+    } else if (EQUAL(name, "Memory")) {
+        v->rstate = !v->rstate;
+        do_memory(v->rstate);
+    } else if (EQUAL(name, "Contents")) {
+        help_cb();
+    }
+}
 
-        case M_COPY:
-            get_display();
-            break;
 
-        case M_PASTE:
-            handle_selection();
-            break;
+static void 
+mb_radio_proc(GtkAction *action, GtkRadioAction *current)
+{
+    const gchar *name = gtk_action_get_name(GTK_ACTION(current));
 
-        case M_ASCII:
-            show_ascii_frame();
-            break;
-
-        case M_BASIC:
-            reset_mode_values(BASIC);
-            break;
-
-        case M_FIN:
-            reset_mode_values(FINANCIAL);
-            break;
-
-        case M_SCI:
-            reset_mode_values(SCIENTIFIC);
-            break;
-
-        case M_REGS:
-            v->rstate = !v->rstate;
-            do_memory(v->rstate);
-            break;
-
-        case M_CONTENTS:
-            help_cb();
-            break;
+    if (EQUAL(name, "Basic")) {
+        reset_mode_values(BASIC);
+    } else if (EQUAL(name, "Financial")) {
+        reset_mode_values(FINANCIAL);
+    } else if (EQUAL(name, "Scientific")) {
+        reset_mode_values(SCIENTIFIC);
     }
 }
 
@@ -1965,8 +2024,7 @@ set_display(char *str, int minimize_changes)
 
 
 #define SET_MENUBAR_ITEM_STATE(i, state) \
-          gtk_widget_set_sensitive( \
-          gtk_item_factory_get_widget_by_action(X->mb_fact, i), state)
+          gtk_widget_set_sensitive(gtk_ui_manager_get_widget(X->ui, i), state)
 
 
 /* When an error condition occurs:
@@ -2007,16 +2065,16 @@ set_error_state(int error)
 
     gtk_widget_set_sensitive(X->mode_panel, !v->error);
 
-    SET_MENUBAR_ITEM_STATE(M_COPY,   !v->error);
-    SET_MENUBAR_ITEM_STATE(M_PASTE,  !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_ASCII,  !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_BASIC,  !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_FIN,    !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_SCI,    !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_ZEROES, !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_TSEP,   !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_REGS,   !v->error); 
-    SET_MENUBAR_ITEM_STATE(M_ABOUT,  !v->error);
+    SET_MENUBAR_ITEM_STATE("/MenuBar/EditMenu/Copy",       !v->error);
+    SET_MENUBAR_ITEM_STATE("/MenuBar/EditMenu/Paste",      !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/EditMenu/Insert",     !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Basic",      !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Financial",  !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Scientific", !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Trailing",   !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Thousands",  !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Memory",     !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/HelpMenu/About",      !v->error);
 }
 
 
@@ -2039,7 +2097,7 @@ set_memory_toggle(int state)
 {
     GtkWidget *reg;
 
-    reg = gtk_item_factory_get_widget_by_action(X->mb_fact, M_REGS);  
+    reg = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Memory");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(reg), state);
 }
 
@@ -2156,7 +2214,7 @@ set_show_tsep_toggle(int state)
 {
     GtkWidget *mi;
 
-    mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_TSEP);
+    mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Thousands");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 }
 
@@ -2170,7 +2228,7 @@ set_show_zeroes_toggle(int state)
     mi = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'T');
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 
-    mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_ZEROES);
+    mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
     gtk_widget_set_sensitive(mi, v->modetype == SCIENTIFIC);
     v->doing_mi = 0;
