@@ -578,7 +578,8 @@ refresh_display()
             break;
 
         case exprs:
-            if (v->expression) {
+            if (v->expression &&
+		strlen(v->expression)) {
                 char *e = gc_strdup(v->expression);
                 char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
 
