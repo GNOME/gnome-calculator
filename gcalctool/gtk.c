@@ -660,7 +660,7 @@ create_cf_model(enum menu_type mtype, GtkWidget *dialog)
     for (i = 0; i < MAXCONFUN; i++) {
         n.number = i;
         if (mtype == M_CON) {
-            n.value = g_strdup(make_number(v->MPcon_vals[i], FALSE, TRUE));
+            n.value = g_strdup(make_number(v->MPcon_vals[i], DEC, FALSE, TRUE));
             n.description = g_strdup(v->con_names[i]);
         } else {
             n.value       = g_strdup(v->fun_vals[i]);
@@ -727,10 +727,15 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
         vbox = gtk_vbox_new(FALSE, 6);
         gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
 
+        label = gtk_label_new(
+          _("All constant values are specified in the decimal numeric base."));
+	gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
         label = gtk_label_new(_("Click a value or description to edit it:"));
         gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
         gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-
         gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
 
         sw = gtk_scrolled_window_new(NULL, NULL);
@@ -899,7 +904,7 @@ create_mem_menu(enum menu_type mtype)
         SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
 	/* translators: R is the short form of register used inter alia
 	in popup menus */
-                _("R"), i, make_number(v->MPmvals[i], FALSE, TRUE));
+                _("R"), i, make_number(v->MPmvals[i], v->base, FALSE, TRUE));
         create_menu_item_with_markup(mstr, m, i);
     }
 }
@@ -1029,7 +1034,7 @@ create_rframe()
 
     for (i = 0; i < MAXREGS; i++) {
         SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>   %s", 
-                _("R"), i,  make_number(v->MPmvals[i], FALSE, TRUE));
+                _("R"), i,  make_number(v->MPmvals[i], v->base, FALSE, TRUE));
         X->regs[i] = gtk_label_new("");
         gtk_label_set_markup(GTK_LABEL(X->regs[i]), line);
         SPRINTF(name, "register_label%1d", i);
@@ -1090,7 +1095,8 @@ create_con_fun_menu(enum menu_type mtype)
         invalid = 0;
         if (mtype == M_CON) {
             SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
-                    _("C"), i, make_number(v->MPcon_vals[i], FALSE, TRUE), 
+                    _("C"), i, 
+                    make_number(v->MPcon_vals[i], v->base, FALSE, TRUE), 
                     v->con_names[i]);
         } else {
             if (!strlen(v->fun_vals[i])) {

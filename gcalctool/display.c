@@ -24,8 +24,8 @@
 #include "calctool.h"
 #include "extern.h"
 
-static char *make_eng_sci(int *);
-static char *make_fixed(int *, int);
+static char *make_eng_sci(int *, int);
+static char *make_fixed(int *, int, int);
 
 
 int
@@ -52,7 +52,7 @@ clear_display(int initialise)
     v->toclear = 1;
     i = 0;
     mpcim(&i, v->MPdisp_val);
-    STRCPY(v->display, make_number(v->MPdisp_val, FALSE, FALSE));
+    STRCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE, FALSE));
     set_display(v->display);
 
     if (initialise == TRUE) {
@@ -100,9 +100,12 @@ initialise()
 }
 
 
+/* Convert MP number to fixed number string in the given base to the
+ * maximum number of characters specified.
+ */
+
 static char *
-make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
-           int cmax)          /* Maximum characters to generate. */
+make_fixed(int *MPnumber,int base, int cmax)
 {
     char *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
@@ -118,7 +121,7 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
         *optr++ = '-';
     }
 
-    mpcim(&basevals[(int) v->base], MP1base);
+    mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
     MPstr_to_num("0.5", DEC, MP2);
@@ -146,8 +149,8 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
 
-        if (dval > basevals[(int) v->base]-1) {
-            dval = basevals[(int) v->base]-1;
+        if (dval > basevals[base]-1) {
+            dval = basevals[base]-1;
         }
 
         *optr++ = digits[dval];
@@ -173,10 +176,10 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
 }
 
 
-/* Convert MP number to character string. */
+/* Convert MP number to character string in the given base. */
 
 char *
-make_number(int *MPnumber, BOOLEAN mkFix, BOOLEAN ignoreError)
+make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
 {
     double number, val;
 
@@ -195,22 +198,24 @@ make_number(int *MPnumber, BOOLEAN mkFix, BOOLEAN ignoreError)
     }
     if ((v->dtype == ENG) ||
         (v->dtype == SCI) ||
-        (v->dtype == FIX && val != 0.0 && (val > max_fix[(int) v->base]))) {
-        return(make_eng_sci(MPnumber));
+        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
+        return(make_eng_sci(MPnumber, base));
     } else if (v->dtype == FIX && val != 0.0 && mkFix) {
-        if (val <= min_fix[v->accuracy][(int) v->base]) {
-            return(make_eng_sci(MPnumber));
+        if (val <= min_fix[v->accuracy][base]) {
+            return(make_eng_sci(MPnumber, base));
         } else {
-            return(make_fixed(MPnumber, MAX_DIGITS));
+            return(make_fixed(MPnumber, base, MAX_DIGITS));
         }
     } else {
-        return(make_fixed(MPnumber, MAX_DIGITS));
+        return(make_fixed(MPnumber, base, MAX_DIGITS));
     }
 }
 
 
+/* Convert engineering or scientific number in the given base. */
+
 static char *
-make_eng_sci(int *MPnumber)   /* Convert engineering or scientific number. */
+make_eng_sci(int *MPnumber, int base)
 {
     char fixed[MAX_DIGITS+1], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
@@ -233,7 +238,7 @@ make_eng_sci(int *MPnumber)   /* Convert engineering or scientific number. */
     }
     mpstr(MPval, MPmant);
 
-    mpcim(&basevals[(int) v->base], MP1base);
+    mpcim(&basevals[base], MP1base);
     n = 3;
     mppwr(MP1base, &n, MP3base);
 
@@ -271,7 +276,7 @@ make_eng_sci(int *MPnumber)   /* Convert engineering or scientific number. */
         }
     }
  
-    STRCPY(fixed, make_fixed(MPmant, MAX_DIGITS-6));
+    STRCPY(fixed, make_fixed(MPmant, base, MAX_DIGITS-6));
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -471,7 +476,7 @@ void
 show_display(int *MPval)
 {
     if (!v->error) {
-        STRCPY(v->display, make_number(MPval, TRUE, FALSE));
+        STRCPY(v->display, make_number(MPval, v->base, TRUE, FALSE));
         set_display(v->display);
     }
 }

@@ -61,7 +61,7 @@ make_registers()            /* Calculate memory register frame values. */
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
-        mval = make_number(v->MPmvals[n], FALSE, TRUE);
+        mval = make_number(v->MPmvals[n], v->base, FALSE, TRUE);
 	SPRINTF(fmt, "<span weight=\"bold\">%s%s%%%1ds", 
                 _("R"), "%1d:</span>   %s", MAX_DIGITS - strlen(mval));
         SPRINTF(line, fmt, n, mval, " ");

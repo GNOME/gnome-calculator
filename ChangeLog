@@ -7,6 +7,17 @@
 gcalctool change history.
 =========================
 
+2003-06-24  Rich Burridge  <rich.burridge@sun.com>
+
+    * Fixed bug 114364 (http://bugzilla.gnome.org/show_bug.cgi?id=114364)
+      When you change numeric base and then display the constant values in 
+      the Con menu, the values are shown in the current base.
+
+      When you select "Edit Constants" from the Con menu, the values of each 
+      constant are shown in Decimal. The label:
+      "All constant values are specified in the decimal numeric base"
+      has also been added to the "Edit Constant" popup to clarify this.
+
 2003-06-23  Rich Burridge  <rich.burridge@sun.com>
 
     * Fixed bug 115653 (http://bugzilla.gnome.org/show_bug.cgi?id=115653)

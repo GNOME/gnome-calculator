@@ -1221,7 +1221,7 @@ L10:
     accuracy = v->accuracy;
     v->accuracy = MAX_DIGITS;
     mpcmf(&x[1], tmp);
-    STRCPY(disp, make_number(tmp, TRUE, FALSE));
+    STRCPY(disp, make_number(tmp, v->base, TRUE, FALSE));
 
     if (disp[0] == '1') {
         y[ll+1]++;
