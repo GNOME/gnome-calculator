@@ -117,6 +117,7 @@ static GtkWidget *make_but_frame(GtkWidget *, GtkWidget **,
 static gchar *find_file(const char *base, GError **err);
 static char *make_hostname(Display *);
 
+static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
@@ -332,6 +333,19 @@ aframe_cancel_cb(GtkButton *button, gpointer user_data)
 }
 
 
+static gboolean
+aframe_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    g_return_val_if_fail(GTK_IS_WIDGET(widget), FALSE);
+
+    if (event->keyval == GDK_Escape) {
+        gtk_widget_hide(X->aframe);
+    }    
+
+    return(FALSE);
+}
+ 
+
 /*ARGSUSED*/
 static void
 aframe_ok_cb(GtkButton *button, gpointer user_data)
@@ -543,6 +557,7 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
 
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(X->aframe), _("Insert ASCII Value"));
+    gtk_window_set_resizable(GTK_WINDOW(X->aframe), FALSE);
     gtk_window_set_type_hint(GTK_WINDOW(X->aframe), 
                              GDK_WINDOW_TYPE_HINT_DIALOG);
 
@@ -589,6 +604,8 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     g_return_if_fail(insert_button != NULL);
     gtk_widget_ref(insert_button);
     gtk_widget_show(insert_button);
+    GTK_WIDGET_SET_FLAGS(insert_button, GTK_CAN_DEFAULT);
+    gtk_window_set_default(GTK_WINDOW(X->aframe), insert_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), insert_button, FALSE, FALSE, 0);
 
     g_signal_connect(G_OBJECT(X->aframe), "delete_event",
@@ -599,6 +616,8 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
                      G_CALLBACK(aframe_ok_cb), NULL);
     g_signal_connect(G_OBJECT(cancel_button), "clicked",
                      G_CALLBACK(aframe_cancel_cb), NULL);
+    g_signal_connect(G_OBJECT(X->aframe), "key_press_event", 
+                     G_CALLBACK(aframe_key_cb), NULL);
     gtk_widget_realize(X->aframe);
 }
 
