@@ -1,0 +1,2553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "4.2.100">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "July 2003">
+  <!ENTITY app "<application>gcalctool</application>">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>Довідка з &app; версії &manrevision;</title>       
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+
+  <copyright>
+   <year>2003</year>
+   <holder>Максим Дзюманенко (переклад Українською)</holder>
+  </copyright>
+
+
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author> 
+		<firstname>Sun</firstname> 
+		<surname>GNOME Documentation Team</surname> 
+		<affiliation> 
+	  		<orgname>Sun Microsystems</orgname> 
+		</affiliation> 
+      </author> 
+      
+      <othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською.</contrib>
+      </othercredit>
+    </authorgroup>
+
+    <revhistory>
+      <revision> 
+		<revnumber>gcalctool Manual V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.4</revnumber> 
+		<date>June 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.3</revnumber> 
+		<date>April 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.2</revnumber> 
+		<date>April 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.1</revnumber> 
+		<date>March 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.0</revnumber> 
+		<date>March 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+
+    <releaseinfo>Ця довідка описує програму &app; версії &appversion; .
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Зворотній зв'язок</title> 
+      <para>Щоб повідомити про помилку або внести пропозицію стосовно програми &app; або цієї довідки,
+      дотримуйтесь приведених на <ulink url="ghelp:gnome-feedback" type="help">Сторінці зворотного зв'язку GNOME</ulink>
+      інструкцій.
+      </para>
+
+      <para>Щоб повідомити про помилки перекладу звертайтесь за адресою <address><email>mvd@mylinux.com.ua</email></address> 
+      </para>
+
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>gcalctool</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>Calculator</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="gcalctool-intro"> 
+    <title>Вступ</title> 
+    <para>Програма &app; є багатофункціональною та реалізує декілька типів математичних підходів.</para>
+    <para>Програма &app; підтримує наступні режими:</para>
+     <variablelist>
+        <varlistentry>
+        <term><link linkend="gcalctool-basic-mode">Основний режим</link></term>
+        <listitem><para>Реалізує загальні функції калькулятора. Можна запам'ятовувати числа у 10 різних регістрах пам'яті та зручно викликати з них значення, а також замінювати числа у регістрах. Основний режим є типовим. Ви можете користуватись всіма функціями основного режиму у будь-якому іншому режимі.</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-financial-mode">Фінансовий режим</link></term>
+        <listitem><para>Передбачає декілька складних фінансових функцій.</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-scientific-mode">Науковий режим</link></term>
+        <listitem><para>Передбачає додаткові математичні функції, серед них тригонометричні та логічні функції. У цьому режимі, ви також можете зберігати власні функції та константи.</para></listitem>
+        </varlistentry>
+     </variablelist>
+
+    <para>Ви можете використовувати  &app; у таких системах числення:</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Система числення</para></entry>
+              <entry colname="COLSPEC1" align="right">
+                <para>База</para></entry>
+            </row>
+          </thead> 
+          <tbody> 
+            <row valign="top">
+              <entry><para>Двійкова</para></entry>
+              <entry align="right"><para>2</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Вісімкова</para></entry>
+              <entry align="right"><para>8</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Десяткова</para></entry>
+              <entry align="right"><para>10</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Шістнадцяткова</para></entry>
+              <entry align="right"><para>16</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+                           
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+
+  <sect1 id="gcalctool-get-start"> 
+    <title>Починаємо роботу</title> 
+
+    <para>Щоб запустити <application>&app;</application> з командного рядка наберіть наступну команду та
+    		натисніть клавішу <keycap>Enter</keycap>:</para>
+    		<para> 
+			<command>gcalctool</command> 
+    		</para> 
+
+    <para>При запуску <application>&app;</application> відображається наступне вікно:</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-basic"> 
+	<title>Вікно основного режиму &app;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Показує вікно основного режиму &app;.</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+    <!-- ==== End of Figure ==== -->
+                <para>Вікно програми <application>&app;</application> містить наступні елементи: </para>
+                <variablelist>
+                  <varlistentry> <term>Панель меню</term>
+                         <listitem>
+                                <para>Меню в панелі меню містить всі необхідні команди для роботи з 
+                                  <application>&app;</application>.</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>Область індикатора</term>
+                         <listitem>
+                                <para>Область індикатора показує цифри, які ви вводите, та результати обчислень. 
+				Ви можете ввести до сорока цифр. </para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>Панель режиму</term>
+                         <listitem>
+                                <para>Панель режиму відображує кнопки поточного режиму обчислень. Кнопки основного режиму відображуються завжди. При виборі фінансового режиму, його кнопки відображаються над кнопками основного режиму.  При виборі наукового режиму, над кнопками основного режиму відображаються кнопки наукового режиму.</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry><term>Контекстне меню</term>
+                         <listitem>
+                <para>Символ <inlinemediaobject> 
+                         <imageobject> 
+                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
+                         </imageobject> 
+                         <textobject> 
+                         <phrase>Показує символ контекстного меню.</phrase> 
+                         </textobject> 
+                      </inlinemediaobject>
+                на кнопках програми &app; показує, що якщо при натисканні на кнопці з'являється контекстне меню.</para>
+                         </listitem>
+                  </varlistentry>
+                </variablelist>
+
+<para></para>
+
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="gcalctool-usage"> 
+    <title>Використання</title> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-calc-functions">
+                <title>Користування функціями калькулятора</title> 
+                <para>Для виконання обчислень користуйтесь наступними методами:</para>
+                <itemizedlist>
+                  <listitem>
+                         <para>Натискайте на кнопки програми &app;, щоб ввести числа та функції.</para>
+                  </listitem>
+                  <listitem>
+                         <para>Передайте фокус вводу вікну &app;, потім користуйтесь клавіатурою або цифровою клавіатурою для вводу необхідних обчислень. Повний список комбінацій клавіш дивіться у <xref linkend="gcalctool-keyboard-shortcut"/>.</para>
+                  </listitem>
+                </itemizedlist>
+                <para>Програма &app; автоматично відображує числа, які мають більше ніж 40 цифр, а також маленькі числа у експоненціальному форматі. Наприклад, у наступній таблиці показані значення, що відображуються у десятковій системі числення з точністю 2 значущих позиції: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Відображується</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Значення</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>1.23e+37</para></entry>
+              <entry><para>1.23 * 10<superscript>37</superscript></para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>1e-5</para></entry>
+              <entry><para>0.00001</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>Правила введення чисел у експоненціальному форматі дивіться у <xref linkend="gcalctool-enter-exp"/>.</para>
+                <para>Скопіювати результат обчислень можна вибором
+                  <menuchoice>
+                         <guimenu>Редагувати</guimenu>
+                         <guimenuitem>Копіювати</guimenuitem>
+                  </menuchoice>. 
+                      Ви можете вставляти значення у іншу програму.</para>
+
+                <para>Щоб вставити раніше скопійоване значення у область індикатора виберіть 
+                  <menuchoice>
+                         <guimenu>Редагувати</guimenu>
+                         <guimenuitem>Вставити</guimenuitem>
+                  </menuchoice>.  </para>
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-basic-mode"> 
+      <title>Виконання основних обчислень</title> 
+      <para>Після запуску &app; типово відображується основний режим. Щоб вибрати основний режим певним чином, виберіть
+	<menuchoice> 
+	  <guimenu>Вигляд</guimenu> 
+	  <guimenuitem>Основний режим</guimenuitem> 
+	</menuchoice>. 
+      </para>
+    <sect3 id="gcalctool-simple-calc"> 
+      <title>Виконання простих обчислень </title> 
+      <para>Для виконання простих обчислень користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-simple-calc"/>. </para>
+                <table id="gcalctool-TBL-simple-calc" frame="all">
+                  <title>Виконання простих обчислень</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Цифри</para> </entry>
+                             <entry><para>від <guibutton>0</guibutton> до <guibutton>9</guibutton> включно</para></entry>
+                             <entry><para>У десятковій та шістнадцятковій системі числення, доступні всі цифри. У вісімковій системі числення кнопки <guibutton>8</guibutton> та <guibutton>9</guibutton> не доступні. У двійковій системі доступні лише кнопки <guibutton>0</guibutton> та <guibutton>1</guibutton>. Типова система числення - десяткова.</para></entry>
+                             <entry><para><guibutton>1</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Числова кома</para> </entry>
+                             <entry><para><guibutton>,</guibutton></para></entry>
+                             <entry><para>Починає дробову частину числа.</para></entry>
+                             <entry><para><guibutton>1</guibutton> <guibutton>.</guibutton> <guibutton>2</guibutton></para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Обчислити результат</para> </entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>Відображує результат поточного обчислення у поточній системі числення.</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Додати</para> </entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>Додає поточне значення з області індикатора до наступного числа, яке ви вводите.</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Відняти</para> </entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>Віднімає від поточного значення з області індикатора наступне значення, яке ви вводите.</para></entry>
+                             <entry><para>3 <guibutton>-</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Помножити</para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>Перемножує поточне значення з області індикатора з наступним значенням, яке ви вводите.</para></entry>
+                             <entry><para>3 <guibutton>*</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>6</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Поділити</para> </entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>Ділить поточне значення з області індикатора на наступне значення, яке ви вводите.</para></entry>
+                             <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>2</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-erase-char"> 
+      <title>Стирання символів</title> 
+      <para>Щоб стерти символи користуйтесь кнопкам описаними у <xref linkend="gcalctool-TBL-erase-char"/>. </para>
+                <table id="gcalctool-TBL-erase-char" frame="all">
+                  <title>Стирання символів</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Видалити</para> </entry>
+                             <entry><para><guibutton>Видл</guibutton></para></entry>
+                             <entry><para>Видаляє правий символ у області індикатора.</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Видл</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Очистити індикатор</para> </entry>
+                             <entry><para><guibutton>Очст</guibutton></para></entry>
+                             <entry><para>Видаляє поточне значення з області індикатора.</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Очст</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Скасувати</para> </entry>
+                             <entry><para><guibutton>Скас</guibutton></para></entry>
+                             <entry><para>Скасовує поточну операцію та скидає значення індикатора на нуль. У науковому режимі <guibutton>Скас</guibutton> також відміняє вибір параметрів <guilabel>Гіпр</guilabel> та <guilabel>Інв</guilabel>.</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Скас</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>0</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-arith-calc"> 
+      <title>Виконання арифметичних обчислень</title>
+      <para>Для виконання арифметичних обчислень користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-arith-calc"/>. </para>
+                <table id="gcalctool-TBL-arith-calc" frame="all">
+                  <title>Виконання арифметичних обчислень</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Відсоток</para> </entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>Наступне число, яке ви введете буде використовуватись для обчислення відсотка від поточного значення індикатора.</para></entry>
+                             <entry><para>200 <guibutton>%</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>4</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Обернений дріб</para> </entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>Ділить 1 на поточне значення індикатора.</para></entry>
+                             <entry><para>4 <guibutton>1/x</guibutton></para></entry>
+                             <entry><para>0.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Змінити знак</para> </entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>Змінює додатне число на від'єине та навпаки.</para></entry>
+                             <entry><para>8 <guibutton>+/-</guibutton></para></entry>
+                             <entry><para>-8</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Квадратний корінь</para> </entry>
+                             <entry><para><guibutton>Кв.кор</guibutton></para></entry>
+                             <entry><para>Обчислює квадратний корінь від поточного значення індикатора.</para></entry>
+                             <entry><para>9 <guibutton>Кв.кор</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Квадрат</para> </entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>Обчислює квадрат від поточного значення індикатора.</para></entry>
+                             <entry><para>3 x<superscript>2</superscript></para></entry>
+                             <entry><para>9</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Ціла частина</para> </entry>
+                             <entry><para><guibutton>Ціл</guibutton></para></entry>
+                             <entry><para>Обчислює цілу частину від поточного значення індикатора.</para></entry>
+                             <entry><para>-23.45 <guibutton>Ціл</guibutton></para></entry>
+                             <entry><para>-23</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Дробова частина</para> </entry>
+                             <entry><para><guibutton>Дрб</guibutton></para></entry>
+                             <entry><para>Обчислює дробову частину від поточного значення індикатора.</para></entry>
+                             <entry><para>-23.45 <guibutton>Дрб</guibutton></para></entry>
+                             <entry><para>-0.45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Абсолютне значення</para> </entry>
+                             <entry><para><guibutton>|x|</guibutton></para></entry>
+                             <entry><para>Обчислює абсолютне значення від поточного значення індикатора.</para></entry>
+                             <entry><para>-23.45 <guibutton>|x|</guibutton></para></entry>
+                             <entry><para>23.45</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-mem-reg"> 
+      <title>Використання регістрів калькулятора</title> 
+      <para>Ви можете зберігати значення у будь-якому з десяти регістрів програми &app; від <guilabel>R0</guilabel> до <guilabel>R9</guilabel>. Для відображення регістрів виберіть 
+	<menuchoice> 
+	  <guimenu>Вигляд</guimenu> 
+	  <guimenuitem>Регістри пам'яті</guimenuitem> 
+	</menuchoice>. 
+      </para>
+      <para><xref linkend="gcalctool-TBL-mem-reg"/> описує наявні функції регістрів пам'яті.</para>
+                <table id="gcalctool-TBL-mem-reg" frame="all">
+                  <title>Функції регістрів пам'яті</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Запам'ятати значення індикатора у пам'яті</para> </entry>
+                             <entry><para><guibutton>Зап</guibutton></para></entry>
+                             <entry><para>Зберігає поточне значення індикатора у вказаному регістрі пам'яті. Натисніть кнопку <guibutton>Зап</guibutton>, та виберіть у контекстного меню регістр пам'яті.</para>
+                                   <para>Для очистки регістра пам'яті:</para>
+                                     <orderedlist>
+                                       <listitem><para>Натисніть <guibutton>Скас</guibutton>.</para></listitem>
+                                       <listitem><para>Натисніть <guibutton>Зап</guibutton>.</para></listitem>
+                                       <listitem><para>Виберіть з контекстному меню регістр пам'яті.</para></listitem>
+                                     </orderedlist>
+</entry>
+                             <entry><para>22 <guibutton>Зап</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>Значення 22 зберігається у регістрі пам'яті <guilabel>R2</guilabel></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Викликати значення з пам'яті на індикатор</para> </entry>
+                             <entry><para><guibutton>Вик</guibutton></para></entry>
+                             <entry><para>Викликає вміст вказаного регістру на індикатор. Натисніть на кнопку <guibutton>Вик</guibutton>, та виберіть регістр пам'яті з контекстного меню.</para></entry>
+                             <entry><para>0 <guibutton>Вик</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>22 </para><para>де 22 - значення, раніше збережене у регістрі R2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Обміняти значення індикатора зі значенням у пам'яті</para> </entry>
+                             <entry><para><guibutton>Обм</guibutton></para></entry>
+                             <entry><para>Обмінює вміст вказаного регістру пам'яті зі значенням індикатора. Натисніть на кнопку <guibutton>Обм</guibutton>, та виберіть регістр з контекстного меню.</para></entry>
+                             <entry><para>44 <guibutton>Обм</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>Значення індикатора змінюється з 44 на 22, значення регістра R2 змінюється з 22 на 44 </para><para>де 22 - значення, раніше збережене у регістрі R2 </para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>Якщо ви користуєтесь комбінаціями клавіш, можете вибирати регістр клавішами клавіатури, як показано у наступних прикладах: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Комбінація клавіш</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Опис</para></entry>
+            </row>
+          </thead>
+          <tbody> 
+            <row valign="top">
+              <entry><para><keycap>S</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Запам'ятовує поточне значення індикатора у регістрі пам'яті <guilabel>R2</guilabel>.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>R</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Викликає поточне значення з регістру пам'яті <guilabel>R2</guilabel> у область індикатора.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>X</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Обмінює поточне значення індикатора та вміст регістру пам'яті <guilabel>R2</guilabel>.</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+  
+          </sect3>
+          <sect3 id="gcalctool-ins-ascii"> 
+            <title>Введення ASCII кодів</title> 
+                        <para>Щоб ввести ASCII код символу, виберіть
+                          <menuchoice>
+                                 <guimenu>Редагувати</guimenu>
+                                 <guimenuitem>Вставити ASCII код</guimenuitem>
+                          </menuchoice>.</para>
+                        <para>З'явиться діалогове вікно вставлення значення коду ASCII.</para>
+                        <para>Введіть потрібний символ у полі <guilabel>Символ</guilabel>, та натисніть на кнопку <guibutton>Вставити</guibutton>. У області індикатора з'явиться значення ASCII коду символу у поточній системі числення. Наприклад, ASCII код літери R у десятковій системі числення дорівнює 82.</para>
+          </sect3>
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="gcalctool-financial-mode"> 
+      <title>Виконання фінансових обчислень</title> 
+      <para>Для переходу у фінансовий режим виберіть 
+	<menuchoice> 
+	  <guimenu>Вигляд</guimenu> 
+	  <guimenuitem>Фінансовий режим</guimenuitem> 
+	</menuchoice>. 
+      </para>
+    <para>При переході у фінансовий режим над кнопками основного режиму з'являються кнопки фінансового режиму:</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-financial"> 
+	<title>Кнопки фінансового режиму &app;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Показує кнопки фінансового режиму &app;.</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+    <!-- ==== End of Figure ==== -->
+      <para>Для виконання фінансових обчислень користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-financial-calc"/>. 
+</para>
+                <table id="gcalctool-TBL-financial-calc" frame="all">
+                  <title>Виконання фінансових обчислень</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Термін складного відсотка</para> </entry>
+                             <entry><para><guibutton>Тсв</guibutton></para></entry>
+                             <entry><para>Обчислює кількість періодів нарахування складного відсотку необхідних для збільшення поточної суми <replaceable>пс</replaceable> до майбутньої суми <replaceable>мс</replaceable>, з фіксованою ставкою відсотка <replaceable>ставка</replaceable> на період нарахування складного відсотка. </para>
+                              <para>Ця функція використовує наступні регістри пам'яті: </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>ставка</replaceable>, ставка відсотка за період</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>мс</replaceable>, майбутня сума</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>пс</replaceable>, поточна сума</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви щойно внесли $8000 на рахунок з річною ставкою відсотка 9%, нарахування йде щомісяця. Знаючи річну ставку відсотка, ви визначаєте місячну ставку відсотка 0.09 / 12 = 0.0075. Для обчислення періоду часу, необхідного для подвоєння вашого внеску, введіть наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>0.0075</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>16000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на <guibutton>Тсв</guibutton>.</para></entry>
+                             <entry><para>92.77</para>
+                                    <para>Інвестиція подвоюється за 92.77 місяців.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Подвійне нарахування амортизації</para> </entry>
+                             <entry><para><guibutton>Пна</guibutton></para></entry>
+                             <entry><para>Обчислює знижку на амортизацію майна за визначений проміжок часу, використовуючи метод подвійного скорочення балансу.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>вартість</replaceable>, сума, яку сплачено за майно</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ліквідаційна вартість</replaceable>, вартість майна наприкінці терміну його служби</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>термін експлуатації</replaceable>, період нормальної експлуатації майна</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 3</term>
+                                <listitem><para><replaceable>період</replaceable>, проміжок часу для обчислення знижки на амортизацію</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви щойно придбали офісний автомобіль за $8000. Період нормальної експлуатації цього автомобіля шість років. Ліквідаційна вартість через шість років складає $900.
+Для обчислення витрат на амортизацію за чотири роки, використовуючи метод подвійного скорочення балансу, вставте наступні значення у перші чотири регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть кнопку <guibutton>Пна</guibutton>.</para></entry>
+                             <entry><para>790.12</para>
+                                    <para>Витрати на амортизацію за чотири роки складають $790.12.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Майбутня сума</para> </entry>
+                             <entry><para><guibutton>Мс</guibutton></para></entry>
+                             <entry><para>Обчислює майбутню суму грунтуючись на серії регулярних платежів, кожен розміром <replaceable>рег.внес</replaceable> зі ставкою відсотка за період <replaceable>ставка</replaceable>, протягом певної кількості періодів нарахувань.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті: </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>рег.внес</replaceable>, регулярний внесок</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ставка</replaceable>, ставка відсотка за період</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>n</replaceable>, кількість періодів</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви плануєте вкладати по $4000 на банківський рахунок у останній день кожного року протягом наступних 20 років. Річна ставка нарахувань складає 8%. Відсотки нараховуються у останній день кожного року. 
+Щоб обчислити суму на вашому рахунку за 20 років, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>4000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>0.08</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на кнопку <guibutton>Мв</guibutton>.</para></entry>
+                             <entry><para>183047.86</para>
+                                    <para>Наприкінці 20 років, сума на рахунку складатиме $183,047.86.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Регулярні платежі</para> </entry>
+                             <entry><para><guibutton>Рп</guibutton></para></entry>
+                             <entry><para>Обчислює суму регулярних платежів по позичці, якщо платежі здійснюються наприкінці кожного періоду сплати.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті: </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>сума</replaceable>, сума позики</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ставка</replaceable>, ставка відсотка за період</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>n</replaceable>, термін</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Нехай ви розраховуєте позичити $120,000 на 30 років з річною ставкою відсотка 11.0%. Знаючи річну ставку відсотка, ви визначаєте місячну ставку відсотка 0.11 / 12 = 0.00917. Термін дорівнює 30 * 12 = 360 місяців. Для обчислення щомісячних платежів за цією позикою, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>0.00917</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>360</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на кнопку <guibutton>Рп</guibutton>.</para></entry>
+                             <entry><para>1143.15</para>
+                                    <para>Щомісячний внесок дорівнює $1143.15.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Поточна вартість</para> </entry>
+                             <entry><para><guibutton>Пв</guibutton></para></entry>
+                             <entry><para>Обчислює поточну вартість інвестиції базуючись на серії однакових платежів, кожен розміром  <replaceable>рег.вип</replaceable>, що знижується зі ставкою відсотку за період <replaceable>ставка</replaceable>, протягом кількості періодів виплат за термін.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті: </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>рег.вип</replaceable>, сума регулярної виплати</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ставка</replaceable>, ставка відсотка за період</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>n</replaceable>, кількість періодів</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви щойно виграли мільйон доларів. Приз виплачується за 20 щорічних платежів, кожен розміром  $50,000. Щорічні платежі надходять наприкінці кожного року. Якщо ви погодитесь на щорічні платежі розміром $50,000, ви вкладаєте гроші з річною ставкою відсотка 9%, що нараховується щорічно.</para>
+                                    <para>Але, у вас є вибір - отримати одноразову виплату розміром $400,000 замість щорічного доходу з мільйона доларів. 
+Щоб обчислити який варіант більше коштує у сьогоденних доларах, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>50000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>0.09</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на кнопку <guibutton>Pv</guibutton>.</para></entry>
+                             <entry><para>456427.28</para>
+                                    <para>$1,000,000 що виплачується протягом 20 років коштує $456,427.28 у сьогоденних доларах.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Ставка відсотка за період</para> </entry>
+                             <entry><para><guibutton>Ставк</guibutton></para></entry>
+                             <entry><para>Обчислює ставку відсотка необхідну для збільшення інвестиції з поточної суми <replaceable>пс</replaceable> до майбутньої суми <replaceable>мс</replaceable>, за кількість періодів нарахування протягом <replaceable>терміну</replaceable>.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті: </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>мс</replaceable>, майбутня сума</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>пс</replaceable>, поточна сума</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>n</replaceable>, термін</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви інвестували $20,000 у облігації. Облігації підлягають погашенню через п'ять років, їх вартість при погашенні дорівнює $30,000. Ставка відсотка нараховується щомісяця. Термін дорівнює 5 * 12 = 60 місяців.
+Для обчислення ставки відсотка за період, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>30000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>20000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>60</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на <guibutton>Ставк</guibutton>.</para></entry>
+                             <entry><para>.00678</para>
+                                    <para>Щомісячна ставка відсотка складає 0.678%. Річна ставка відсотка складає 0.678% * 12 = 8.14%.
+</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Рівномірне нарахування амортизації</para> </entry>
+                             <entry><para><guibutton>Рна</guibutton></para></entry>
+                             <entry><para>Обчислює рівномірне нарахування амортизації на майно за один період. Сума амортизації складає <replaceable>вартість</replaceable> - <replaceable>ліквідаційна вартість</replaceable>. Метод рівномірного нарахування амортизації ділить   залишкову вартість рівномірно протягом усього терміну служби майна. Термін експлуатації - кількість періодів, зазвичай років, протягом яких нараховується амортизація на майно.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>вартість</replaceable> - сума, яку сплачено за майно</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ліквідаційна вартість</replaceable> - вартість майна наприкінці терміну його експлуатації</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>термін експлуатації</replaceable> - час корисного використання майна</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви щойно купили офісний автомобіль за $8000. Термін експлуатації автомобіля - шість років. Ліквідаційна вартість після шести років дорівнює $900.
+Для обчислення вартості річної амортизації, використовуючи метод рівномірного нарахування амортизації, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть кнопку <guibutton>Рна</guibutton>.</para></entry>
+                             <entry><para>1183.33</para>
+                                    <para>Вартість річної амортизації дорівнює $1183.33.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Амортизація за сумою років</para> </entry>
+                             <entry><para><guibutton>Аср</guibutton></para></entry>
+                             <entry><para>Обчислює знижку на амортизацію майна за певний проміжок часу, використовуючи метод амортизації за сумою років. Цей метод прискорює швидкість амортизації, таким чином амортизація за більш ранній період відбувається швидше ніж за більш пізніший період.
+Сума амортизації складає <replaceable>вартість</replaceable> - <replaceable>ліквідаційна вартість</replaceable>. Термін експлуатації - кількість періодів, зазвичай років, протягом яких нараховується амортизація на майно.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>вартість</replaceable>,- сума, яку сплачено за майно</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>ліквідаційна вартість</replaceable>- вартість майна наприкінці терміну його експлуатації</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>термін експлуатації</replaceable> - час корисного використання майна</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 3</term>
+                                <listitem><para><replaceable>період</replaceable>, проміжок часу для обчислення знижки на амортизацію</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви щойно купили офісний автомобіль за $8000. Термін його експлуатації - шість років. Ліквідаційна вартість після шести років складає $900.
+Для обчислення витрат на амортизацію за чотири роки, використовуючи метод сумарної річної амортизації, вставте наступні значення у перші чотири регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на кнопку <guibutton>Аср</guibutton>.</para></entry>
+                             <entry><para>1014.29</para>
+                                    <para>Сума амортизації з чотири роки складає $1014.29.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Термін оплати</para> </entry>
+                             <entry><para><guibutton>Топл</guibutton></para></entry>
+                             <entry><para>Обчислює кількість періодів оплати, необхідних для накопичення суми <replaceable>мс</replaceable> зі ставкою відсотка за період <replaceable>ставка</replaceable>. Розмір кожного внеску складає <replaceable>рег.внес.</replaceable>.
+</para>
+                              <para>Ця функція використовує наступні регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para><replaceable>рег.внес</replaceable>, регулярний внесок</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para><replaceable>мс</replaceable>, майбутня сума</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para><replaceable>ставка</replaceable>, ставка відсотка за період</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             </entry>
+                             <entry><para>Ви плануєте вкладати по $1800 на банківський рахунок у останній день кожного року. Річна ставка нарахувань складає 11%. Відсотки нараховуються у останній день кожного року. 
+Щоб обчислити період часу, необхідний для накопичення $120,000 на вашому рахунку, вставте наступні значення у перші три регістри пам'яті:</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>Регістр 0</term>
+                                <listitem><para>1800</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 1</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>Регістр 2</term>
+                                <listitem><para>0.11</para></listitem>
+                                </varlistentry>
+                             </variablelist> 
+                             <para>Натисніть на кнопку <guibutton>Топл</guibutton>.</para></entry>
+                             <entry><para>20.32</para>
+                                    <para>$120,000 накопичується за 20.32 років.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-scientific-mode"> 
+      <title>Виконання наукових обчислень</title> 
+      <para>Для переходу у науковий режим виберіть 
+	<menuchoice> 
+	  <guimenu>Вигляд</guimenu> 
+	  <guimenuitem>Науковий режим</guimenuitem> 
+	</menuchoice>. 
+      </para>
+    <para>При переході у науковий режим над кнопками основного режиму з'являються кнопки наукового режиму:</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-scientific"> 
+	<title>Кнопки наукового режиму &app;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Показує кнопки наукового режиму &app;. </phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+    <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-set-acc"> 
+      <title>Встановлення точності</title> 
+      <para>Для встановлення точності області індикатора та регістрів пам'яті натисніть кнопку <guibutton>Тчн</guibutton>, та виберіть потрібний рівень точності з контекстного меню. Поточний рівень точності показується у контекстному меню чорним колом. Можна відображати до 9 значущих позицій. Типова точність - 9 значущих позицій. </para>
+      <para>Типово, заключні нулі не показуються. Щоб заключні нулі показувались, натисніть на кнопку <guibutton>Тчн</guibutton> та виберіть <guilabel>Показувати заключні нулі</guilabel> з контекстного меню, або виберіть меню <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Показувати заключні нулі</guimenuitem> </menuchoice>. Мітка у контекстному меню кнопки <guibutton>Тчн</guibutton> або меню <guimenu>Вигляд</guimenu> вказує, що режим <guilabel>Показувати заключні нулі</guilabel> ввімкнено. Щоб приховати заключні нулі, знову виберіть  <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Показувати заключні нулі</guimenuitem> </menuchoice>.</para>
+     <para>Приклад у наступній таблиці показує вплив параметра точності на відображення <replaceable>x</replaceable> при обчисленні <literal>1 / 8 = <replaceable>x</replaceable></literal> з використанням десяткової системи числення та ввімкненим параметром <guimenuitem>Показувати заключні нулі</guimenuitem>: </para>
+                <informaltable frame="all">
+                  <tgroup cols="2" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Точність</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>1 значуща позиція</para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>2 значущих позиції</para></entry>
+                             <entry><para>1.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>3 значущих позиції</para></entry>
+                             <entry><para>1.250</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-num-base"> 
+      <title>Встановлення бази числа</title> 
+      <para>Щоб встановити базу числа виберіть одну з описаних у таблиці <xref linkend="gcalctool-TBL-num-base"/> кнопок. </para>
+                <table id="gcalctool-TBL-num-base" frame="all">
+                  <title>Встановлення бази числа</title> 
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Двійкова база</para> </entry>
+                             <entry><para><guibutton>Двійк</guibutton></para></entry>
+                             <entry><para>Встановлює двійкову базу числа, тобто 2.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Вісімкова база</para> </entry>
+                             <entry><para><guibutton>Вісімк</guibutton></para></entry>
+                             <entry><para>Встановлює вісімкову базу числа, тобто  8.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Десяткова база</para> </entry>
+                             <entry><para><guibutton>Десятк</guibutton></para></entry>
+                             <entry><para>Встановлює десяткову базу числа, тобто 10. Десяткова база - типова. Якщо ви перемикаєтесь з наукового режиму у основний або фінансовий, &app; автоматично встановлює десяткову базу числа.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Шістнадцяткова база</para> </entry>
+                             <entry><para><guibutton>Шістн</guibutton></para></entry>
+                             <entry><para>Встановлює шістнадцяткову базу числа, тобто  16.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-display-type"> 
+      <title>Встановлення типу відображення</title> 
+      <para>Щоб встановити тип відображення виберіть одну з описаних у таблиці  <xref linkend="gcalctool-TBL-display-type"/> кнопок. </para>
+                <table id="gcalctool-TBL-display-type" frame="all">
+                  <title>Встановлення типу відображення</title> 
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Інженерний тип відображення</para> </entry>
+                             <entry><para><guibutton>Інж</guibutton></para></entry>
+                             <entry><para>Встановлює інженерний тип відображення. Результати відображаються у науковій нотації. Експонента завжди кратна трьом.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Тип відображення з фіксованою комою</para> </entry>
+                             <entry><para><guibutton>Фікс</guibutton></para></entry>
+                             <entry><para>Встановлює тип відображення з фіксованою комою. Результати відображаються не у науковій нотації. Цей режим є типовим. Якщо ви перемикаєтесь з наукового режиму у основний або фінансовий, &app; автоматично встановлює тип відображення з фіксованою комою.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Науковий режим відображення</para> </entry>
+                             <entry><para><guibutton>Наук</guibutton></para></entry>
+                             <entry><para>Встановлює науковий режим відображення. Результати відображаються у науковій нотації, з фіксованим числом цифр.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-type"> 
+      <title>Встановлення режиму тригонометричних функцій</title> 
+      <para>Щоб встановити режим тригонометричних функцій, виберіть одну з описаних у таблиці <xref linkend="gcalctool-TBL-trig-type"/> кнопок. </para>
+                <table id="gcalctool-TBL-trig-type" frame="all">
+                  <title>Встановлення режиму тригонометричних функцій</title> 
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Градуси</para> </entry>
+                             <entry><para><guibutton>Градуси</guibutton></para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у градуси. Градуси є типовим режимом тригонометричних функцій.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гради</para> </entry>
+                             <entry><para><guibutton>Гради</guibutton></para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у гради.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Радіани</para> </entry>
+                             <entry><para><guibutton>Радіани</guibutton></para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у радіани.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-options"> 
+      <title>Встановлення варіанту тригонометричних функцій</title> 
+      <para>Щоб встановити варіанту тригонометричних функцій, виберіть одну з описаних у таблиці <xref linkend="gcalctool-TBL-trig-options"/> кнопок. </para>
+                <table id="gcalctool-TBL-trig-options" frame="all">
+                  <title>Встановлення варіанту тригонометричних функцій</title> 
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Індикатор гіперболічних варіантів тригонометричних функцій</para> </entry>
+                             <entry><para><guibutton>Гіпр</guibutton></para></entry>
+                             <entry><para>Вибирає гіперболічні варіанти тригонометричних функцій.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Індикатор інверсних варіантів тригонометричних функцій</para> </entry>
+                             <entry><para><guibutton>Інв</guibutton></para></entry>
+                             <entry><para>Вибирає інверсні варіанти тригонометричних функцій.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>Типово, кнопки описані у <xref linkend="gcalctool-TBL-trig-options"/> не ввімкнені. Натиск на <guibutton>Скас</guibutton> вимикає ці кнопки. </para>
+
+    </sect3>
+    <sect3 id="gcalctool-trig-calc"> 
+      <title>Обчислення тригонометричних величин</title> 
+      <para>Щоб обчислити тригонометричні величини, користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-trig-calc"/>. </para>
+                <table id="gcalctool-TBL-trig-calc" frame="all">
+                  <title>Обчислення тригонометричних величин</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Косинус <literal>cos</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, варіант <guilabel>Гіпр</guilabel> не вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює косинус від поточного значення індикатора.</para></entry>
+                             <entry><para>60 <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>0.5</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Арккосинус <literal>acos</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, варіант <guilabel>Гіпр</guilabel> не вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює арккосинус від поточного значення індикатора.</para></entry>
+                             <entry><para>0.5 <guilabel>Інв</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>60</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний косинус <literal>cosh</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний косинус від поточного значення індикатора.</para></entry>
+                             <entry><para>0.4 <guilabel>Гіпр</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.081072372</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний арккосинус <literal>acosh</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний арккосинус від поточного значення індикатора.</para></entry>
+                             <entry><para>1.6 <guilabel>Гіпр</guilabel> <guilabel>Інв</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.046967915</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Синус <literal>sin</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, варіант <guilabel>Гіпр</guilabel> не вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює синус від поточного значення індикатора.</para></entry>
+                             <entry><para>90 <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Арксинус <literal>asin</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює арксинус від поточного значення індикатора.</para></entry>
+                             <entry><para>1 <guilabel>Інв</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>90</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний синус <literal>sinh</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний синус від поточного значення індикатора.</para></entry>
+                             <entry><para>0.4 <guilabel>Гіпр</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>0.410752326</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний арксинус <literal>asinh</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний арксинус від поточного значення індикатора.</para></entry>
+                             <entry><para>1.6 <guilabel>Гіпр</guilabel> <guilabel>Інв</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1.248983328</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Тангенс <literal>tan</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, варіант <guilabel>Гіпр</guilabel> не вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює тангенс від поточного значення індикатора.</para></entry>
+                             <entry><para>45 <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Арктангенс <literal>atan</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює арктангенс від поточного значення індикатора.</para></entry>
+                             <entry><para>1 <guilabel>Інв</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний тангенс <literal>tanh</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> не вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний тангенс від поточного значення індикатора.</para></entry>
+                             <entry><para>0.6 <guilabel>Гіпр</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.537049567</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Гіперболічний арктангенс <literal>atanh</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, варіант <guilabel>Гіпр</guilabel> вибраний, варіант <guilabel>Інв</guilabel> вибраний</para></entry>
+                             <entry><para>Обчислює гіперболічний арктангенс від поточного значення індикатора.</para></entry>
+                             <entry><para>0.6 <guilabel>Гіпр</guilabel> <guilabel>Інв</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.693147181</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-logs-calc"> 
+      <title>Обчислення логарифмів</title> 
+      <para>Щоб обчислити логарифм, користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-logs-calc"/>. </para>
+                <table id="gcalctool-TBL-logs-calc" frame="all">
+                  <title>Обчислення логарифмів</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Десятковий логарифм</para> </entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>Обчислює десятковий логарифм від поточного значення індикатора.</para></entry>
+                             <entry><para>10 <guibutton>Log</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Натуральний логарифм</para> </entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>Обчислює натуральний логарифм від поточного значення індикатора.</para></entry>
+                             <entry><para>10 <guibutton>Ln</guibutton></para></entry>
+                             <entry><para>2.30</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <note>
+                  <para>Десятковий антилогарифм та натуральний антилогарифм не підтримуються цією версією &app;.</para>
+                </note>
+    </sect3>
+    <sect3 id="gcalctool-logic-calc"> 
+      <title>Виконання логічних обчислень</title> 
+      <para>Для виконання логічних обчислень користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
+                <table id="gcalctool-TBL-logic-calc" frame="all">
+                  <title>Виконання логічних обчислень</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Логічне OR(АБО)</para> </entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>Виконує операцію логічне OR(АБО) між поточним значенням індикатора та наступним числом, яке ви введете, обидва числа трактуються як беззнакові довгі цілі (unsigned long).</para></entry>
+                             <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
+                             <entry><para>10011001</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Логічне AND(ТА)</para> </entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>Виконує операцію логічне AND(ТА) між поточним значенням індикатора та наступним числом, яке ви введете, обидва числа трактуються як беззнакові довгі цілі (unsigned long).</para></entry>
+                             <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
+                             <entry><para>00110011</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Логічне NOT(НІ)</para> </entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>Виконує операцію логічне NOT(НІ) між поточним значенням індикатора та наступним числом, яке ви введете, обидва числа трактуються як беззнакові довгі цілі (unsigned long).</para></entry>
+                             <entry><para>1357ace <guibutton>Not</guibutton> </para></entry>
+                             <entry><para>FECA8531</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Логічне XOR(ВИКЛЮЧНЕ АБО)</para> </entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>Виконує операцію логічне XOR(ВИКЛЮЧНЕ АБО) між поточним значенням індикатора та наступним числом, яке ви введете, обидва числа трактуються як беззнакові довгі цілі (unsigned long).</para></entry>
+                             <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
+                             <entry><para>110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Логічне XNOR(ВИКЛЮЧНЕ НЕ АБО)</para> </entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>Виконує операцію логічне XNOR(ВИКЛЮЧНЕ НЕ АБО) між поточним значенням індикатора та наступним числом, яке ви введете, обидва числа трактуються як беззнакові довгі цілі (unsigned long).</para></entry>
+                             <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
+                             <entry><para>11111111111111111111111111111001</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-enter-exp"> 
+      <title>Введення експоненціальних чисел</title> 
+      <para>Щоб ввести експоненціальне число користуйтесь кнопкою <guibutton>Exp</guibutton>.</para>
+      <para>Кнопка <guibutton>Exp</guibutton> вмикає введення чисел у науковій нотації, тобто <replaceable>мантиса</replaceable> * 10<superscript><replaceable>експонента</replaceable></superscript>. Поточне ненульове значення індикатора є мантисою. Якщо поточне значення індикатора дорівнює нулю, мантиса стає 1.0. Наступне число, яке ви вводите, є експонентою.</para>
+      <para>Після натиску на <guibutton>Exp</guibutton>, калькулятор показує <literal>. +</literal> щоб позначити 10 у степені наступного числа, яке ви вводите. Щоб змінити знак числа користуйтесь кнопкою <guibutton>+/-</guibutton> в кінці операції вводу, як показано у наступному прикладі:</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Послідовність клавіш</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Показання калькулятора</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton></para></entry>
+              <entry><para>-500</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>При вводі чисел у експоненціальному форматі користуйтесь вказівками з наступної таблиці: </para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Число</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Послідовність вводу</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Відображені значення</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>1.2e-7</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1.2e-7</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-edit-const"> 
+      <title>Використання констант</title> 
+      <para>Перелік визначених констант можна отримати натиском на кнопку <guibutton>Кнст</guibutton>. Всі значення констант вказані у десятковій системі числення, навіть якщо поточна система числення не десяткова.</para>
+      <para>Щоб ввести значення константи у індикатор виберіть її з меню. Константи можна вибирати клавіатурою, для цього користуйтесь послідовністю клавіш з участю <keycap>#</keycap>, як показано у наступному прикладі:</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Послідовність клавіш</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Константа</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>#</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>C3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>У програмі &app; заготовлено десять значень констант, вони описані у таблиці:</para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Номер</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Значення</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>C0</para></entry>
+                             <entry><para>0.621</para></entry>
+                             <entry><para>кілометрів за годину або миль за годину</para>
+                                    <para>При перемноженні поточного значення індикатора на цю константу, воно конвертується з кілометрів за годину на милі за годину. Наприклад, 8 * <guibutton>Кнст</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 5.</para>
+                                    <para>Ділення поточного значення індикатора на цю константу, конвертує значення з миль за годину на кілометри за годину. Наприклад, 5 / <guibutton>Кнст</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 8.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C1</para></entry>
+                             <entry><para>1.414213562</para></entry>
+                             <entry><para>квадратний корінь від 2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C2</para></entry>
+                             <entry><para>2.718281828</para></entry>
+                             <entry><para>e</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C3</para></entry>
+                             <entry><para>3.141592653</para></entry>
+                             <entry><para>pi</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C4</para></entry>
+                             <entry><para>0.3937007</para></entry>
+                             <entry><para>сантиметрів або дюймів</para>
+                                    <para>При перемноженні поточного значення індикатора на цю константу, воно конвертується з сантиметрів у дюйми. Наприклад, 30 * <guibutton>Кнст</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 12.</para>
+                                    <para>Ділення поточного значення індикатора на цю константу, конвертує значення з дюймів на сантиметри. Наприклад, 12 / <guibutton>Кнст</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 30.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C5</para></entry>
+                             <entry><para>57.295779513</para></entry>
+                             <entry><para>градусів у радіані</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C6</para></entry>
+                             <entry><para>1048576</para></entry>
+                             <entry><para>2 ^ 20</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C7</para></entry>
+                             <entry><para>0.0353</para></entry>
+                             <entry><para>грами або унції</para>
+                                    <para>При перемноженні поточного значення індикатора на цю константу, воно конвертується з унцій у грами. Наприклад, 500 * <guibutton>Кнст</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 18.</para>
+                                    <para>Ділення поточного значення індикатора на цю константу, конвертує значення з унцій у грами. Наприклад, 18 / <guibutton>Кнст</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 500.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C8</para></entry>
+                             <entry><para>0.948</para></entry>
+                             <entry><para>кілоджоулів або британських термічних одиниць</para>
+                                    <para>При перемноженні поточного значення індикатора на цю константу, воно конвертується з кілоджоулів у британські термальні одиниці. Наприклад, 10 * <guibutton>Кнст</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 9.48.</para>
+                                    <para>Ділення поточного значення індикатора на цю константу, конвертує значення з британських термальних одиниць у кілоджоулі. Наприклад, 9.48 / <guibutton>Кнст</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 10.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C9</para></entry>
+                             <entry><para>0.061</para></entry>
+                             <entry><para>кубічних сантиметрів або кубічних дюймів</para>
+                                    <para>При перемноженні поточного значення індикатора на цю константу, воно конвертується з кубічних сантиметрів у кубічні дюйми. Наприклад, 100 * <guibutton>Кнст</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10.</para>
+                                    <para>Ділення поточного значення індикатора на цю константу, конвертує значення з кубічних дюймів у кубічні сантиметри. Наприклад, 6.10 / <guibutton>Кнст</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+      <para>Додавання нових констант цією версією &app; не підтримується. Але ви можете змінити типові константи на власні.</para>
+      <para>Щоб зберегти нову константу або відредагувати існуючу, виконайте наступні дії:</para>
+      <orderedlist>
+        <listitem>
+           <para>Натисніть на <guibutton>Кнст</guibutton> та виберіть з контекстного меню <guilabel>Редагувати константи</guilabel>. </para>
+        </listitem>
+        <listitem>
+      <para>У вікні <guilabel>Редагування констант</guilabel> виберіть потрібну константу.</para>
+        </listitem>
+        <listitem>
+      <para>Натисніть на її полі Значення, та введіть нове значення.</para>
+        </listitem>
+        <listitem>
+      <para>Натисніть на полі Опис, та введіть новий опис.</para>
+        </listitem>
+        <listitem>
+      <para>Щоб зберегти зміни та закрити вікно <guilabel>Редагування констант</guilabel> натисніть <guibutton>Гаразд</guibutton>.</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-edit-func"> 
+      <title>Використання функцій</title> 
+      <para>Перелік наявних функцій показується у контекстному меню при натисканні на <guibutton>Фнк</guibutton>. Щоб виконати функцію - виберіть її з меню. Якщо функція не визначена значенням результату виконання буде нуль.</para>
+<para>Функції можна вибирати клавіатурою, для цього користуйтесь послідовністю клавіш з участю <keycap>F</keycap>, як показано у наступному прикладі:
+</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Послідовність клавіш</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Функція</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>F</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>F3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>Програма &app; не передбачено ніяких типових функцій. Ви можете визначити до десяти функцій. </para>
+      <para>Щоб зберегти нову функцію або відредагувати існуючу, виконайте наступні дії:</para>
+      <orderedlist>
+        <listitem>
+           <para>Натисніть на <guibutton>Фнк</guibutton> та виберіть з контекстного меню <guilabel>Редагувати функції</guilabel>.</para>
+        </listitem>
+        <listitem>
+      <para>У вікні <guilabel>Редагування функцій</guilabel> виберіть порожній елемент, або виберіть функцію, яку бажаєте змінити.</para>
+        </listitem>
+        <listitem>
+      <para>Щоб ввести нове значення натисніть на полі Значення. Для виклику кнопок &app; користуйтесь комбінаціями клавіш. Наприклад, введіть <literal>90K</literal> щоб обчислити sine(90).</para>
+        </listitem>
+        <listitem>
+      <para>У полі Опис введіть опис функції. Наприклад, <literal>Sine 90</literal>.</para>
+        </listitem>
+        <listitem>
+      <para>Щоб зберегти зміни та закрити вікно <guilabel>Редагування функцій</guilabel> натисніть <guibutton>Гаразд</guibutton>.</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-num-manip"> 
+      <title>Операції з двійковими числами</title> 
+      <para>Для оперування двійковими числами користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-num-manip"/>. </para>
+                <table id="gcalctool-TBL-num-manip" frame="all">
+                  <title>Операції з двійковими числами</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Зсув ліворуч<replaceable>n</replaceable></para> </entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para>Зсуває поточне беззнакове 32-бітне значення індикатора ліворуч на вказану кількість позицій.  Натисніть кнопку <guibutton>&lt;</guibutton>, та виберіть кількість позицій зсуву у контекстному меню. Кількість позицій, на яку можна зсунути число, не перевищує 15. </para></entry>
+                             <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 позицію</guilabel></para></entry>
+                             <entry><para>1110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Зсув праворуч<replaceable>n</replaceable></para> </entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para>Зсуває поточне беззнакове 32-бітне значення індикатора праворуч на вказану кількість позицій.  Натисніть кнопку <guibutton>&gt;</guibutton>, та виберіть кількість позицій зсуву у контекстному меню. Кількість позицій, на яку можна зсунути число, не перевищує 15.</para></entry>
+                             <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 place</guilabel></para></entry>
+                             <entry><para>101 </para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Отримати 16-бітне беззнакове ціле значення</para> </entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>Усікає поточне значення індикатора та повертає 16-бітне беззнакове ціле значення.</para></entry>
+                             <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFF</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Отримати 32-бітне беззнакове ціле значення</para> </entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>Усікає поточне значення індикатора та повертає 32-бітне беззнакове ціле значення.</para></entry>
+                             <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>FFFFFFFF</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>Кількість позицій зсуву можна вибирати клавіатурою, це показано у наступних прикладах: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Послідовність клавіш</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Опис</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>&lt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>Зсуває двійкове значення індикатора на 4 позиції ліворуч.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>&gt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>Зсуває двійкове значення індикатора на 4 позиції праворуч.</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+
+    </sect3>
+    <sect3 id="gcalctool-misc-calc"> 
+      <title>Виконання різних наукових обчислень</title> 
+      <para>Щоб виконати наукові обчислення, користуйтесь кнопками описаними у <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
+                <table id="gcalctool-TBL-misc-calc" frame="all">
+                  <title>Виконання різних наукових обчислень</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Опис</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Приклад</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Результат</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Дужки</para> </entry>
+                             <entry><para><guibutton>(</guibutton> та <guibutton>)</guibutton></para></entry>
+                             <entry><para>Забезпечують пріоритетність арифметичних операцій. Обчислення у дужках виконуються в першу чергу. Якщо дужки відсутні - обчислення виконуються зліва направо без пріоритетності у виконанні. Дужки можуть бути вкладені необмежену кількість раз. При закриванні останньої дужки показання індикатора оновлюються.</para></entry>
+                             <entry>
+                               <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
+                             </entry>
+                             <entry>
+                               <para>20</para>
+                               <para>14</para>
+                             </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>e у степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>Обчислює значення <literal>e</literal> у степені поточного значення індикатора.</para></entry>
+                             <entry><para>2 e<superscript>x</superscript></para></entry>
+                             <entry><para>7.39</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>10 у степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>Обчислює значення 10 у степені поточного значення індикатора.</para></entry>
+                             <entry><para>2 10<superscript>x</superscript></para></entry>
+                             <entry><para>100</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>y в степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>Підносить поточне значення індикатора у степінь наступного значення, яке ви введете.</para></entry>
+                             <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>16</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Факторіал <replaceable>x</replaceable></para> </entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para>Обчислює факторіал від поточного значення індикатора. Факторіал від <replaceable>x</replaceable> дорівнює <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. Ця функція застосовується лише для додатних цілих значень.</para></entry>
+                             <entry><para>4 <guibutton>x!</guibutton></para></entry>
+                             <entry><para>24</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Генератор випадкових чисел</para> </entry>
+                             <entry><para><guibutton>Впдк</guibutton></para></entry>
+                             <entry><para>Генерує випадкове число у діапазоні від 0.0 до 1.0 та заносить його значення у індикатор.</para></entry>
+                             <entry><para><guibutton>Впдк</guibutton></para></entry>
+                             <entry><para>0.14</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Шістнадцяткові цифри</para> </entry>
+                             <entry><para>від <guibutton>A</guibutton> до <guibutton>E</guibutton> включно</para></entry>
+                             <entry><para>Ці цифри доступні лише у шістнадцятковій системі числення.</para></entry>
+                             <entry><para><guibutton>B</guibutton></para></entry>
+                             <entry><para>B</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    </sect2> 
+<!-- ============= Quitting ============================= -->
+  <sect2 id="gcalctool-quit"> 
+    <title>Завершення роботи</title> 
+                <para>Щоб завершити роботу з &app; виберіть
+                  <menuchoice>
+                         <guimenu>Калькулятор</guimenu>
+                         <guimenuitem>Вийти</guimenuitem>
+                  </menuchoice>.  </para>
+                <para>При завершенні &app; автоматично зберігається поточний стан наступних параметрів: </para>
+                  <itemizedlist>
+                    <listitem><para>Режим: <link linkend="gcalctool-basic-mode">Основний</link>, <link linkend="gcalctool-financial-mode">Фінансовий</link>, або <link linkend="gcalctool-scientific-mode">Науковий</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-set-acc">Точність</link></para></listitem>
+                    <listitem><para>стан відображення <link linkend="gcalctool-mem-reg">вікна регістрів</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-num-base">Система числення</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-display-type">Значення індикатора</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-trig-type">Режим тригонометричних функцій</link></para></listitem>
+                  </itemizedlist>
+  </sect2>
+  </sect1>
+<!-- ============= Technical Information ============================= -->
+  <sect1 id="gcalctool-tech-info">
+         <title>Технічна інформація</title>
+         <sect2 id="gcalctool-manage-order">
+                <title>Порядок операцій</title>
+<para>
+Обчислення виконуються зліва направо без арифметичної пріоритетності. 
+Якщо необхідно визначити пріоритет операцій - користуйтесь дужками.
+</para>
+<para>Наприклад, без дужок:
+<screen><literal>2 + 3 * 4 = 20 </literal></screen></para>
+<para>З дужками:
+<screen><literal>2 + (3 * 4) = 14</literal></screen></para>
+         </sect2> 
+         <sect2 id="gcalctool-recognize-error">
+                <title>Виникнення помилок</title>
+                <para>Якщо ви виконуєте неправильні обчислення, &app; реагує на помилку наступним чином:
+<itemizedlist>
+<listitem><para>Відображує на індикаторі слово <literal>Помилка</literal>.</para></listitem>
+<listitem><para>Блокує всі кнопки за винятком <guibutton>Скас</guibutton>.</para></listitem>
+<listitem><para>Блокує всі всі кнопки зміни режимів.</para></listitem>
+<listitem><para>Блокує всі меню калькулятора, за винятком <menuchoice><guimenu>Калькулятор</guimenu><guimenuitem>Вийти</guimenuitem></menuchoice> та <menuchoice><guimenu>Довідка</guimenu><guimenuitem>Зміст</guimenuitem></menuchoice>.</para></listitem>
+</itemizedlist>
+</para>
+<para>Для скидання з помилкового стану натисніть на кнопку <guibutton>Скас</guibutton> або на клавішу <keycap>Delete</keycap>.</para>
+         </sect2>
+         <sect2 id="gcalctool-input-mode">
+                <title>Зміна методу вводу</title>
+                <para>Щоб змінити метод вводу клацніть правою кнопкою миші у вікні індикатора та з контекстного меню виберіть  <guimenuitem>Методи вводу</guimenuitem>. </para>
+         </sect2>
+
+  </sect1>
+<!-- ============= Keyboard Shortcuts ============================= -->
+  <sect1 id="gcalctool-keyboard-shortcut"> 
+    <title>Короткий довідник: комбінації клавіш</title> 
+                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>, <xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/>, та <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> містять короткий довідник з усіх комбінацій клавіш програми &app;.</para>
+                <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
+                  <title>Довідник з комбінацій клавіш для кнопок</title> 
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Комбінація клавіш</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Кнопка</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Дивіться</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>від <keycap>0</keycap> до <keycap>9</keycap> включно</para></entry>
+                             <entry><para>від <guibutton>0</guibutton> до <guibutton>9</guibutton> включно</para></entry>
+                             <entry><para>Цифри</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>A</keycap> </para></entry>
+                             <entry><para><guibutton>Тчн</guibutton> </para></entry>
+                             <entry><para>Точність</para> </entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>a</keycap> </para></entry>
+                             <entry><para><guibutton>A</guibutton> </para></entry>
+                             <entry><para>Шістнадцяткова цифра</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>b</keycap> </para></entry>
+                             <entry><para><guibutton>B</guibutton> </para></entry>
+                             <entry><para>Шістнадцяткова цифра</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>C</keycap></para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>Змінює арифметичний знак</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>c</keycap> </para></entry>
+                             <entry><para><guibutton>C</guibutton> </para></entry>
+                             <entry><para>Шістнадцяткова цифра</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>D</keycap></para></entry>
+                             <entry><para><guibutton>Пна</guibutton></para></entry>
+                             <entry><para>Подвійне нарахування амортизації</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>d</keycap> </para></entry>
+                             <entry><para><guibutton>D</guibutton> </para></entry>
+                             <entry><para>Шістнадцяткова цифра</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>E</keycap> </para></entry>
+                             <entry><para><guibutton>Exp</guibutton> </para></entry>
+                             <entry><para>Експонента</para> </entry>
+                             <entry><para><xref linkend="gcalctool-enter-exp"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><guibutton>E</guibutton> </para></entry>
+                             <entry><para>Шістнадцяткова цифра</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>F</keycap> </para></entry>
+                             <entry><para><guibutton>Фнк</guibutton> </para></entry>
+                             <entry><para>Функція</para> </entry>
+                             <entry><para><xref linkend="gcalctool-edit-func"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>G</keycap></para></entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>Десятковий логарифм</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>i</keycap></para></entry>
+                             <entry><para><guibutton>Ціл</guibutton></para></entry>
+                             <entry><para>Ціла частина</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>J</keycap></para></entry>
+                             <entry><para><guibutton>Cos</guibutton></para></entry>
+                             <entry><para>Косинус</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>K</keycap></para></entry>
+                             <entry><para><guibutton>Sin</guibutton></para></entry>
+                             <entry><para>Синус</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>L</keycap></para></entry>
+                             <entry><para><guibutton>Tan</guibutton></para></entry>
+                             <entry><para>Тангенс</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>l</keycap></para></entry>
+                             <entry><para><guibutton>Рна</guibutton></para></entry>
+                             <entry><para>Рівномірне нарахування амортизації</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>m</keycap></para></entry>
+                             <entry><para><guibutton>Тсв</guibutton></para></entry>
+                             <entry><para>Термін складного відсотка</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>N</keycap></para></entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>Натуральний логарифм</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>n</keycap></para></entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>Логічне XNOR</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>P</keycap></para></entry>
+                             <entry><para><guibutton>Pп</guibutton></para></entry>
+                             <entry><para>Регулярні платежі</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>p</keycap></para></entry>
+                             <entry><para><guibutton>Пв</guibutton></para></entry>
+                             <entry><para>Поточна вартість</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>R</keycap></para></entry>
+                             <entry><para><guibutton>Вик</guibutton></para></entry>
+                             <entry><para>Викликати значення з пам'яті на індикатор</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>r</keycap></para></entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>Обернений дріб</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>S</keycap></para></entry>
+                             <entry><para><guibutton>Sto</guibutton></para></entry>
+                             <entry><para>Запам'ятати значення індикатора у пам'яті</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>s</keycap></para></entry>
+                             <entry><para><guibutton>Кв.кор</guibutton></para></entry>
+                             <entry><para>Квадратний корінь</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>T</keycap></para></entry>
+                             <entry><para><guibutton>Ставк</guibutton></para></entry>
+                             <entry><para>Ставка відсотка за період</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>t</keycap></para></entry>
+                             <entry><para><guibutton>Топл</guibutton></para></entry>
+                             <entry><para>Термін оплати</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>u</keycap></para></entry>
+                             <entry><para><guibutton>|x|</guibutton></para></entry>
+                             <entry><para>Абсолютне значення</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>v</keycap></para></entry>
+                             <entry><para><guibutton>Мс</guibutton></para></entry>
+                             <entry><para>Майбутня сума</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>X</keycap></para></entry>
+                             <entry><para><guibutton>Обм</guibutton></para></entry>
+                             <entry><para>Обміняти значення індикатора зі значенням у пам'яті</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Y</keycap></para></entry>
+                             <entry><para><guibutton>Аср</guibutton></para></entry>
+                             <entry><para>Амортизація за сумою років</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>y</keycap></para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>y в степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>!</keycap></para></entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para>Факторіал <replaceable>x</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>#</keycap> </para></entry>
+                             <entry><para><guibutton>Кнст</guibutton> </para></entry>
+                             <entry><para>Константи</para> </entry>
+                             <entry><para><xref linkend="gcalctool-edit-const"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>%</keycap></para></entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>Відсоток</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&amp;</keycap></para></entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>Логічне AND</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>(</keycap> та <keycap>)</keycap></para></entry>
+                             <entry><para><guibutton>(</guibutton> та <guibutton>)</guibutton></para></entry>
+                             <entry><para>Дужки</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>*</keycap> or <keycap>x</keycap></para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>Множення</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>+</keycap></para></entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>Додавання</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>-</keycap></para></entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>Віднімання</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>.</keycap></para></entry>
+                             <entry><para><guibutton>,</guibutton></para></entry>
+                             <entry><para>Десяткова кома</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>/</keycap></para></entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>Ділення</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>:</keycap></para></entry>
+                             <entry><para><guibutton>Дрб</guibutton></para></entry>
+                             <entry><para>Дробова частина значення індикатора</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&lt;</keycap></para></entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para>Зсув ліворуч на <replaceable>n</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>=</keycap> or <keycap>Return</keycap></para></entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>Обчислення результату</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&gt;</keycap></para></entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para>Зсув праворуч на <replaceable>n</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>?</keycap></para></entry>
+                             <entry><para><guibutton>Впдк</guibutton></para></entry>
+                             <entry><para>Генерує випадкових чисел</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>@</keycap></para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>Квадрат</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>[</keycap></para></entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>32 бітне беззнакове ціле</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>]</keycap></para></entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>16 бітне беззнакове ціле</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>^</keycap></para></entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>Логічне XOR</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>{</keycap></para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>e у степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>|</keycap></para></entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>Логічне OR</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>}</keycap></para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>10 у степені <replaceable>x</replaceable></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>~</keycap></para></entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>Логічне NOT</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Backspace</keycap></para></entry>
+                             <entry><para><guibutton>Видл</guibutton></para></entry>
+                             <entry><para>Видалення символу праворуч</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
+                             <entry><para><guibutton>Очст</guibutton></para></entry>
+                             <entry><para>Очистка індикатора</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Delete</keycap></para></entry>
+                             <entry><para><guibutton>Скас</guibutton></para></entry>
+                             <entry><para>Скасування</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
+                  <title>Довідник з комбінацій клавіш у науковому режимі</title> 
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Комбінація клавіш</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Параметр</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Дивіться</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
+                             <entry><para>Гради</para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у гради.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para>Двійк</para></entry>
+                             <entry><para>Встановлює двійкову базу числа.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para>Десятк</para></entry>
+                             <entry><para>Встановлює десяткову базу числа.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para>Фікс</para></entry>
+                             <entry><para>Встановлює тип відображення з фіксованою комою.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>g</keycap></keycombo></para></entry>
+                             <entry><para>Градуси</para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у градуси.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para>Інв</para></entry>
+                             <entry><para>Вибирає інверсні варіанти тригонометричних функцій.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>n</keycap></keycombo></para></entry>
+                             <entry><para>Інж</para></entry>
+                             <entry><para>Встановлює тип відображення з фіксованою комою.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para>Вісімк</para></entry>
+                             <entry><para>Встановлює вісімкову базу числа.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para>Радіани</para></entry>
+                             <entry><para>Встановлює режим тригонометричних функцій у градуси.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para>Наук</para></entry>
+                             <entry><para>Встановлює науковий тип відображення.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
+                             <entry><para>Шістн</para></entry>
+                             <entry><para>Встановлює шістнадцяткову базу числа.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>y</keycap></keycombo></para></entry>
+                             <entry><para>Гіпр</para></entry>
+                             <entry><para>Вибирає гіперболічні варіанти тригонометричних функцій.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
+                  <title>Довідник з комбінацій клавіш пунктів меню програми &app;</title> 
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Комбінація клавіш</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Пункт меню</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Функція</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Дивіться</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Основний режим</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Переходить у основний режим</para> </entry>
+                             <entry><para><xref linkend="gcalctool-basic-mode"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Редагувати</guimenu> <guimenuitem>Копіювати</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Копіює поточне індикатора у буфер обміну</para> </entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Фінансовий</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Переходить у фінансовий режим</para> </entry>
+                             <entry><para><xref linkend="gcalctool-financial-mode"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Редагувати</guimenu> <guimenuitem>Вставити ASCII код</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Відображує вікно <guilabel>Вставлення значення коду ASCII</guilabel></para> </entry>
+                             <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Регістри пам'яті</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Відображує вікно <guilabel>Регістри пам'яті</guilabel></para> </entry>
+                             <entry><para><xref linkend="gcalctool-mem-reg"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Калькулятор</guimenu> <guimenuitem>Вийти</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Завершує програму &app;</para> </entry>
+                             <entry><para><xref linkend="gcalctool-quit"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Науковий режим</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Переходить у науковий режим</para> </entry>
+                             <entry><para><xref linkend="gcalctool-scientific-mode"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Вигляд</guimenu> <guimenuitem>Показувати заключні нулі</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Показує заключні нулі</para> </entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Редагувати</guimenu> <guimenuitem>Вставити</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Вставляє поточне значення буферу обміну у область індикатора </para> </entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>F1</keycap></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Довідка</guimenu> <guimenuitem>Вміст</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Відображує довідку з &app;</para> </entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+  </sect1>
+</article>
