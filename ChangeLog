@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2003-10-13  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 124377 (http://bugzilla.gnome.org/show_bug.cgi?id=124377)
+      Fixed rounding errors when the radix character for a locale isn't ".".
+      The problem was in the first parameter passed to the MPstr_to_num() 
+      routine. "0.5" should have been a string consisting of 
+      SPRINTF(half, "0%c5", v->radix_char);
+
 2003-10-10  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 124172 (http://bugzilla.gnome.org/show_bug.cgi?id=124172)

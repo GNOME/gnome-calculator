@@ -106,9 +106,9 @@ initialise()
  */
 
 static char *
-make_fixed(int *MPnumber,int base, int cmax)
+make_fixed(int *MPnumber, int base, int cmax)
 {
-    char *optr;
+    char half[4], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
@@ -125,7 +125,8 @@ make_fixed(int *MPnumber,int base, int cmax)
     mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
-    MPstr_to_num("0.5", DEC, MP2);
+    SPRINTF(half, "0%c5", v->radix_char);
+    MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
 
@@ -218,7 +219,7 @@ make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
 static char *
 make_eng_sci(int *MPnumber, int base)
 {
-    char fixed[MAX_DIGITS+1], *optr;
+    char half[4], fixed[MAX_DIGITS+1], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
     int i, dval, len, n;
@@ -292,7 +293,8 @@ make_eng_sci(int *MPnumber, int base)
         *optr++ = '+';
     }
  
-    MPstr_to_num("0.5", DEC, MP1);
+    SPRINTF(half, "0%c5", v->radix_char);
+    MPstr_to_num(half, DEC, MP1);
     mpaddi(MP1, &exp, MPval);
     n = 1;
     mpcim(&n, MP1);
