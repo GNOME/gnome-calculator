@@ -1012,6 +1012,8 @@ do_sto()
         default:
             assert(0);
     }
+
+    make_registers();
 }
 
 

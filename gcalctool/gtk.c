@@ -50,13 +50,13 @@
 #define BUT_8     X->bas_buttons[1]        /* 8 */
 #define BUT_9     X->bas_buttons[2]        /* 9 */
 #define BUT_CLR   X->bas_buttons[7]        /* Clr */
-#define BUT_ACC   X->sci_buttons[7]        /* A */
-#define BUT_A     X->sci_buttons[24]       /* a */
-#define BUT_B     X->sci_buttons[25]       /* b */
-#define BUT_C     X->sci_buttons[26]       /* c */
-#define BUT_D     X->sci_buttons[16]       /* d */
-#define BUT_E     X->sci_buttons[17]       /* e */
-#define BUT_F     X->sci_buttons[18]       /* f */
+#define BUT_ACC   X->sci_buttons[7]        /* a */
+#define BUT_A     X->sci_buttons[24]       /* A */
+#define BUT_B     X->sci_buttons[25]       /* B */
+#define BUT_C     X->sci_buttons[26]       /* C */
+#define BUT_D     X->sci_buttons[16]       /* D */
+#define BUT_E     X->sci_buttons[17]       /* E */
+#define BUT_F     X->sci_buttons[18]       /* F */
 
 struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
@@ -139,6 +139,7 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean spframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 
 static void about_cb(GtkAction *action);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
@@ -165,6 +166,8 @@ static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_values(enum mode_type);
+static void set_accuracy_menu_item(int);
+static void set_accuracy_tooltip(GtkWidget *, int);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
 static void set_memory_toggle(int);
@@ -175,12 +178,10 @@ static void spframe_cancel_cb(GtkButton *, gpointer);
 static void spframe_ok_cb(GtkButton *, gpointer);
 static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
-static void gcalc_window_have_icons_notify (GConfClient *client,
-                                            guint cnxn_id,
-                                            GConfEntry *entry,
-                                            gpointer data);
-static void gcalc_window_get_menu_items (XVars X);
-static void gcalc_window_set_unset_image (gboolean have_icons);
+static void gcalc_window_have_icons_notify(GConfClient *, guint,
+                                            GConfEntry *, gpointer);
+static void gcalc_window_get_menu_items(XVars);
+static void gcalc_window_set_unset_image(gboolean);
 
 #define MENU_KEY_DIR "/desktop/gnome/interface"
 
@@ -209,9 +210,6 @@ static GtkActionEntry entries[] = {
       N_("Show help contents"), G_CALLBACK(mb_proc) },
     { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
       N_("Show about help"), G_CALLBACK(about_cb) },
-
-    { "SetPrecision", NULL, N_("_Set Precision..."), "<control>S",
-      N_("Set Precision"), G_CALLBACK(mb_proc) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
       N_("1 place"),   G_CALLBACK(mb_proc) },
@@ -292,26 +290,28 @@ static GtkToggleActionEntry toggle_entries[] = {
 static guint n_toggle_entries = G_N_ELEMENTS(toggle_entries);
 
 static GtkRadioActionEntry acc_radio_entries[] = {
-  { "SP0", NULL, N_("0 significant places"), NULL, 
+  { "SP0", NULL, N_("_0 significant places"), "<control>0", 
     N_("0 significant places"), '0' },
-  { "SP1", NULL, N_("1 significant place"),  NULL, 
+  { "SP1", NULL, N_("_1 significant place"),  "<control>1", 
     N_("1 significant place"),  '1' },
-  { "SP2", NULL, N_("2 significant places"), NULL,
+  { "SP2", NULL, N_("_2 significant places"), "<control>2",
     N_("2 significant places"), '2' },
-  { "SP3", NULL, N_("3 significant places"), NULL,
+  { "SP3", NULL, N_("_3 significant places"), "<control>3",
     N_("3 significant places"), '3' },
-  { "SP4", NULL, N_("4 significant places"), NULL,
+  { "SP4", NULL, N_("_4 significant places"), "<control>4",
     N_("4 significant places"), '4' },
-  { "SP5", NULL, N_("5 significant places"), NULL,
+  { "SP5", NULL, N_("_5 significant places"), "<control>5",
     N_("5 significant places"), '5' },
-  { "SP6", NULL, N_("6 significant places"), NULL,
+  { "SP6", NULL, N_("_6 significant places"), "<control>6",
     N_("6 significant places"), '6' },
-  { "SP7", NULL, N_("7 significant places"), NULL,
+  { "SP7", NULL, N_("_7 significant places"), "<control>7",
     N_("7 significant places"), '7' },
-  { "SP8", NULL, N_("8 significant places"), NULL,
+  { "SP8", NULL, N_("_8 significant places"), "<control>8",
     N_("8 significant places"), '8' },
-  { "SP9", NULL, N_("9 significant places"), NULL,
+  { "SP9", NULL, N_("_9 significant places"), "<control>9",
     N_("9 significant places"), '9' },
+  { "SPOther", NULL, N_("_Other (10) ..."), "<control>O",
+    N_("Set other precision"), 'O' },
 };
 static guint n_acc_radio_entries = G_N_ELEMENTS(acc_radio_entries);
 
@@ -366,7 +366,7 @@ static const gchar *ui_info =
 "    <menuitem action='SP7'/>"
 "    <menuitem action='SP8'/>"
 "    <menuitem action='SP9'/>"
-"    <menuitem action='SetPrecision'/>"
+"    <menuitem action='SPOther'/>"
 "    <separator/>"
 "    <menuitem action='Show'/>"
 "  </popup>"
@@ -473,7 +473,8 @@ about_cb(GtkAction *action)
 
     if (about == NULL) {
         const gchar *authors[] = {
-            "Rich Burridge <rich.burridge@sun.com>\nSami Pietila <sampie@ariana-dsl.utu.fi>",
+            "Rich Burridge <rich.burridge@sun.com>",
+            "Sami Pietila <sampie@ariana-dsl.utu.fi>",
             NULL
         };
         const gchar *documenters[] = {
@@ -962,12 +963,14 @@ create_spframe()     /* Create auxiliary frame for Set Precision value. */
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
-    label = gtk_label_new_with_mnemonic(_("Significant _Places:"));
+    label = gtk_label_new_with_mnemonic(_("Significant _places:"));
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
     X->spframe_val = gtk_spin_button_new_with_range(0, MAXACC, 1);
+    gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(X->spframe_val),
+                                      GTK_UPDATE_IF_VALID);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
                               (double) v->accuracy);
     gtk_widget_show(X->spframe_val);
@@ -996,6 +999,8 @@ create_spframe()     /* Create auxiliary frame for Set Precision value. */
 
     g_signal_connect(G_OBJECT(X->spframe), "delete_event",
                      G_CALLBACK(dismiss_spframe), NULL);
+    g_signal_connect(G_OBJECT(X->spframe), "key_press_event",
+                     G_CALLBACK(spframe_key_cb), NULL);
     g_signal_connect(G_OBJECT(set_button), "clicked",
                      G_CALLBACK(spframe_ok_cb), NULL);
     g_signal_connect(G_OBJECT(cancel_button), "clicked",
@@ -1186,6 +1191,7 @@ create_kframe()
 
     X->sci_panel = make_but_panel(X->kvbox, X->sci_buttons,
                                   s_buttons, SROWS, SCOLS, "sci");
+    set_accuracy_tooltip(BUT_ACC, v->accuracy);
 
     gtk_widget_show(X->fin_panel);
     gtk_widget_show(X->mode_panel);
@@ -1731,7 +1737,7 @@ check_for_localized_numeric_point(int keyval)
     gunichar ch;
 
     ch = gdk_keyval_to_unicode(keyval);
-    g_return_if_fail(g_unichar_validate(ch));
+    g_return_val_if_fail(g_unichar_validate(ch), FALSE);
 
     outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
 
@@ -1875,6 +1881,28 @@ set_accessible_name(GtkWidget *widget, struct button button)
 }
 
 
+static void
+set_accuracy_menu_item(int accuracy)
+{
+    char label[MAXLINE];
+
+    SPRINTF(label, _("Other (%d) ..."), accuracy);
+    g_object_set(gtk_ui_manager_get_action(X->ui, "/AccMenu/SPOther"),
+                 "label", label, NULL);
+}
+
+
+static void
+set_accuracy_tooltip(GtkWidget *button, int accuracy)
+{
+    char tooltip[MAXLINE];
+
+    SPRINTF(tooltip, _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"), 
+            MAXACC, accuracy);
+    gtk_tooltips_set_tip(X->tips, button, tooltip, "");
+}
+
+
 static GtkWidget *
 make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                struct button buttons[], int rows, int cols, char *tag)
@@ -1966,6 +1994,7 @@ create_menu(enum menu_type mtype, struct button *n)
     if (X->menus[m] == NULL) {
         if (mtype == M_ACC) {
             X->menus[m] = gtk_ui_manager_get_widget(X->ui, "/AccMenu");
+            set_accuracy_menu_item(v->accuracy);
         } else if (mtype == M_LSHF) {
             X->menus[m] = gtk_ui_manager_get_widget(X->ui, "/LeftShiftMenu");
         } else if (mtype == M_RSHF) {
@@ -2138,8 +2167,6 @@ mb_proc(GtkAction *action)
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
     } else if (EQUAL(name, "ArithmeticPrecedence")) {
         toggle_expressions();
-    } else if (EQUAL(name, "SetPrecision")) {
-        show_precision_frame();
     }
 }
 
@@ -2174,7 +2201,11 @@ mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current)
 	return;
     }
 
-    handle_menu_selection(X->mrec[(int) M_ACC], name[2]);
+    if (EQUAL(name, "SPOther")) {
+        show_precision_frame();
+    } else {
+        handle_menu_selection(X->mrec[(int) M_ACC], name[2]);
+    }
 }
 
 
@@ -2305,23 +2336,35 @@ spframe_cancel_cb(GtkButton *button, gpointer user_data)
 
 
 /*ARGSUSED*/
+static gboolean
+spframe_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    if (event->keyval == GDK_minus) {
+        update_statusbar(_("Accuracy value out of range"),
+                         "gtk-dialog-error");
+        beep();
+    }
+
+    return(FALSE);
+}
+
+
+/*ARGSUSED*/
 static void
 spframe_ok_cb(GtkButton *button, gpointer user_data)
 {
     char intval[5];
     int val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
 
-    if (val < 0 || val > MAXACC) {
-        beep();
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
-                                  (double) v->accuracy);
-        return;
-    } else {
-        v->accuracy = val;
-    }
+    v->accuracy = val;
 
     SPRINTF(intval, "%d", v->accuracy);
     put_resource(R_ACCURACY, intval);
+
+    set_accuracy_menu_item(v->accuracy);
+    set_accuracy_tooltip(BUT_ACC, v->accuracy);
+    set_accuracy_toggle(v->accuracy);
+
     make_registers();
     refresh_display();
 

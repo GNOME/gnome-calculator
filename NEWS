@@ -5,6 +5,26 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.5.4
+
+* Further changes to the "Set Precision" popup (rfe #147803):
+  - "Significant places" not "Significant Places".
+  - Change "Set Precision..." to be "Other (12) ..." (where "(12)" is the 
+    current precision, and be in the same radio box group as the other menu 
+    items. Check the appropriate menu entry.
+  - Adjust the Acc button tooltip to show the current accuracy too.
+  - When the user attempts to enter an invalid entry in the Set Precision 
+    popup, an error message is shown in the main gcalctool status bar.
+  - the other Acc radio button items (0-9) need to have mnemonics (_0, _1 ...).
+
+* Fixed bug #152790. Most of the changes needed were already in CVS; there 
+  was one compiler warning that still needed to be removed.
+
+* Storing the display value to a memory register was not updating the memory 
+  register window, if it was visible.
+
+----
+
 Overview of changes in gcalctool 5.5.3
 
 * Added in functionality to set the number of significant places > 9.

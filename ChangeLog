@@ -9,6 +9,29 @@ gcalctool change history.
 
 2004-09-02 Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed rfe #147803 (http://bugzilla.gnome.org/show_bug.cgi?id=147803)
+      Further changes to the "Set Precision" popup.
+      - "Significant places" not "Significant Places".
+      - Change "Set Precision..." to be "Other (12) ..." (where "(12)" is
+        the current precision, and be in the same radio box group as 
+        the other menu items. Check the appropriate menu entry
+      - Adjust the Acc button tooltip to show the current accuracy too.
+      - When the user attempts to enter an invalid entry in the Set 
+        Precision popup, an error message is shown in the main gcalctool 
+        status bar.
+      - the other Acc radio button items (0-9) need to have mnemonics (_0,
+        _1 ...).
+
+    * From Jens Granseuer (jensgr at gmx dot net)
+      Fixed bug #152790 (http://bugzilla.gnome.org/show_bug.cgi?id=152790)
+      Most of the changes needed were already in CVS; there was one compiler
+      warning that still needed to be removed.
+
+    * Storing the display value to a memory register was not updating the
+      memory register window, if it was visible.
+
+2004-09-02 Rich Burridge <rich.burridge@sun.com>
+
     * Added in functionality to set the number of significant places > 9.
       There is a new menu item under the Acc menu called "Set Precision..."
       that brings up a small popup allowing you to set precision between 0
