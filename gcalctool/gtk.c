@@ -1286,6 +1286,20 @@ handle_selection()  /* Handle the GET function key being pressed. */
 
 
 static void
+help_cb()
+{
+    GError *error = NULL;
+
+    gnome_help_display("gcalctool", NULL, &error);
+    if (error) {
+        g_warning("Help error: %s\n", error->message);
+        g_error_free(error);
+        error = NULL;
+    }
+}
+
+
+static void
 hyp_cb(GtkToggleButton *button, gpointer user_data)
 {
     v->hyperbolic = !v->hyperbolic;
@@ -1564,8 +1578,7 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
             break;
 
         case M_CONTENTS:
-/* XXX:richb - to be completed. */
-/**/fprintf(stderr, "mb_proc: M_CONTENTS: not implemented yet.\n");
+            help_cb();
             break;
 
         case M_ABOUT:
