@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://basil.ireland.sun.com:8080/docbook/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.2.65">
+  <!ENTITY appversion "4.2.78">
   <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2003">
+  <!ENTITY date "April 2003">
   <!ENTITY app "<application>gcalctool</application>">
 ]>
 <!-- 
@@ -202,40 +202,6 @@
 	  <guimenuitem>Basic Mode</guimenuitem> 
 	</menuchoice>. 
       </para>
-    <sect3 id="gcalctool-set-acc"> 
-      <title>To Set the Accuracy</title> 
-      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select the appropriate accuracy level from the popup menu. Up to 9 significant digits (radix places) can be displayed. The default accuracy is 2 radix places. </para>
-      <para>The keyboard equivalent of <guibutton>Acc</guibutton> is <keycap>A</keycap>. If using the keyboard equivalent <keycap>A</keycap>, you can use the keyboard to specify the appropriate number of radix places. For example, <keycap>A</keycap> <keycap>4</keycap> specifies an accuracy of 4 numeric places.</para>
-      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation (using decimal base): </para>
-                <informaltable frame="all">
-                  <tgroup cols="2" colsep="1" rowsep="1">
-                         <colspec colname="COLSPEC0" colwidth="50*"/>
-                         <colspec colname="COLSPEC1" colwidth="50*"/>
-                         <thead>
-                                <row valign="top">
-                                  <entry colname="COLSPEC0">
-                                         <para>Example</para></entry>
-                                  <entry colname="COLSPEC1">
-                                         <para>Result</para></entry>
-                                </row>
-                         </thead> 
-                         <tbody> 
-                           <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>1 radix places</guilabel></para></entry>
-                             <entry><para>1.2</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>2 radix places</guilabel></para></entry>
-                             <entry><para>1.25</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>3 radix places</guilabel></para></entry>
-                             <entry><para>1.250</para></entry>
-                           </row>
-			 </tbody>
-		  </tgroup>
-		</informaltable>
-    </sect3>
     <sect3 id="gcalctool-simple-calc"> 
       <title>To Perform Simple Calculations</title> 
       <para>To perform simple calculations, use the buttons described in <xref linkend="gcalctool-TBL-simple-calc"/>. </para>
@@ -1062,6 +1028,41 @@ To calculate how long it will take to accumulate $120,000, put the following val
 	</screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-set-acc"> 
+      <title>To Set the Accuracy</title> 
+      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select the appropriate accuracy level from the popup menu. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant digits (radix places) can be displayed. The default accuracy is 9 radix places. </para>
+      <para>By default, trailing zeroes are not shown. To display trailing zeroes, click on <guibutton>Acc</guibutton> and select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding tick in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
+      <para>The keyboard equivalent of <guibutton>Acc</guibutton> is <keycap>A</keycap>. If using the keyboard equivalent <keycap>A</keycap>, you can use the keyboard to specify the appropriate number of radix places. For example, <keycap>A</keycap> <keycap>4</keycap> specifies an accuracy of 4 numeric places.  </para>
+      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation (using decimal base): </para>
+                <informaltable frame="all">
+                  <tgroup cols="2" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Example</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Result</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>1 radix places</guilabel></para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>2 radix places</guilabel></para></entry>
+                             <entry><para>1.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>3 radix places</guilabel></para></entry>
+                             <entry><para>1.250</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
     <sect3 id="gcalctool-num-base"> 
       <title>To Set the Numeric Base</title> 
       <para>To set the numeric base, select one of the buttons described in <xref linkend="gcalctool-TBL-num-base"/>. </para>
@@ -1095,7 +1096,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Decimal Base</para> </entry>
                              <entry><para><guibutton>Dec</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to decimal (base 10). This is the default numeric base.</para></entry>
+                             <entry><para>Sets the numeric base to decimal (base 10). This is the default numeric base. If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the numeric base to decimal.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Hexadecimal Base</para> </entry>
@@ -1134,7 +1135,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Fixed-Point Display Type</para> </entry>
                              <entry><para><guibutton>Fix</guibutton></para></entry>
-                             <entry><para>Sets the display type to Fixed-Point format. Results are not displayed in scientific notation. This is the default display type.</para></entry>
+                             <entry><para>Sets the display type to Fixed-Point format. Results are not displayed in scientific notation. This is the default display type.  If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the display type to Fixed-Point format.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Scientific Display Type</para> </entry>
@@ -1838,38 +1839,9 @@ To calculate how long it will take to accumulate $120,000, put the following val
 		</table>
     </sect3>
     </sect2> 
-  </sect1>
-<!-- ============= Technical Information ============================= -->
-  <sect1 id="gcalc-tech-info">
-         <title>Technical Information</title>
-         <sect2 id="gcalc-manage-order">
-                <title>Order of Operations</title>
-<para>
-Calculations are performed from left to right with no arithmetic
-precedence. To apply arithmetic precedence, use parentheses.
-</para>
-<para>
-For example, without parentheses:
-<screen><literal>2 + 3 * 4 = 20 </literal></screen>
-With parentheses:
-<screen><literal>2 + (3 * 4) = 14</literal></screen>
-</para>
-         </sect2> 
-         <sect2 id="gcalc-recognize-error">
-                <title>Error Conditions</title>
-                <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. For example, if you try to
-                  calculate the log of a negative number, the calculator displays the word <literal>Error</literal>.
-                  To clear the error, click on <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
-         </sect2>
-         <sect2 id="gcalctool-input-mode">
-                <title>To Change the Input Mode</title>
-                <para>To change the input mode, right-click in the text window, then select <guimenuitem>Input Methods</guimenuitem>. </para>
-         </sect2>
-
-  </sect1>
 <!-- ============= Quitting ============================= -->
-  <sect1 id="gcalctool-quit"> 
-    <title>Quitting</title> 
+  <sect2 id="gcalctool-quit"> 
+    <title>To Quit</title> 
                 <para>To quit &app;, choose
                   <menuchoice>
                          <guimenu>Calculator</guimenu>
@@ -1884,11 +1856,40 @@ With parentheses:
                     <listitem><para><link linkend="gcalctool-display-type">Display type</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-trig-type">Trigonometric type</link></para></listitem>
                   </itemizedlist>
+  </sect2>
+  </sect1>
+<!-- ============= Technical Information ============================= -->
+  <sect1 id="gcalctool-tech-info">
+         <title>Technical Information</title>
+         <sect2 id="gcalctool-manage-order">
+                <title>Order of Operations</title>
+<para>
+Calculations are performed from left to right with no arithmetic
+precedence. To apply arithmetic precedence, use parentheses.
+</para>
+<para>
+For example, without parentheses:
+<screen><literal>2 + 3 * 4 = 20 </literal></screen>
+With parentheses:
+<screen><literal>2 + (3 * 4) = 14</literal></screen>
+</para>
+         </sect2> 
+         <sect2 id="gcalctool-recognize-error">
+                <title>Error Conditions</title>
+                <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. For example, if you try to
+                  calculate the log of a negative number, the calculator displays the word <literal>Error</literal>.
+                  To clear the error, click on <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
+         </sect2>
+         <sect2 id="gcalctool-input-mode">
+                <title>To Change the Input Mode</title>
+                <para>To change the input mode, right-click in the text window, then select <guimenuitem>Input Methods</guimenuitem>. </para>
+         </sect2>
+
   </sect1>
 <!-- ============= Keyboard Equivalents ============================= -->
   <sect1 id="gcalctool-keyboard-equiv"> 
     <title>Quick Reference: Keyboard Equivalents </title> 
-                <para><xref linkend="gcalctool-TBL-keyboard-equiv-button"/> and <xref linkend="gcalctool-TBL-keyboard-equiv-menu"/> provide a quick reference for all of the &app; keyboard equivalents.</para>
+                <para><xref linkend="gcalctool-TBL-keyboard-equiv-button"/>, <xref linkend="gcalctool-TBL-keyboard-equiv-sci-options"/>, and <xref linkend="gcalctool-TBL-keyboard-equiv-menu"/> provide a quick reference for all of the &app; keyboard equivalents.</para>
                 <table id="gcalctool-TBL-keyboard-equiv-button" frame="all">
                   <title>Quick Reference for Keyboard Equivalents of &app; Buttons</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
@@ -2422,6 +2423,12 @@ With parentheses:
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Scientific</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Scientific Mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-scientific-mode"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Show trailing zeroes</para> </entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
