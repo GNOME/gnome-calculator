@@ -49,7 +49,7 @@ char *base_desc[]  = {         /* Tooltips for each base value. */
 };
 
 char *calc_res[] = {
-    "accuracy", "base", "display", "mode", "showregisters", "trigtype",
+    "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
     "showzeroes", "showthousands", "syntax"
 };
 
@@ -89,7 +89,7 @@ int basevals[4] = { 2, 8, 10, 16 };
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "LIGHT", "ADVANCED", "FINANCIAL", 
+char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
                               "SCIENTIFIC", "SCIENTIFIC_EXP" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
@@ -1144,7 +1144,7 @@ do_calctool(int argc, char **argv)
 
     build_word_map();          /* Initialize i18n. */
 
-    init_buttons();            /* Setup the buttons for "Light" mode. */
+    init_buttons();            /* Setup the buttons for "Basic" mode. */
 
     v->progname = argv[0];     /* Save programs name. */
     v->appname  = NULL;
