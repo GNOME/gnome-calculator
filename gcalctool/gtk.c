@@ -210,6 +210,7 @@ static GSList *list;
 static XVars X;
 
 /* Menubar menus. */
+/* Use NULL to let the STOCK label values or keybindings show through */
 
 static GtkActionEntry entries[] = {
     { "CalculatorMenu", NULL, N_("_Calculator") },
@@ -217,21 +218,21 @@ static GtkActionEntry entries[] = {
     { "ViewMenu",       NULL, N_("_View") },
     { "HelpMenu",       NULL, N_("_Help") },
 
-    { "Quit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
+    { "Quit", GTK_STOCK_QUIT, NULL, "<control>Q",
       N_("Quit the calculator"), G_CALLBACK(mb_proc) },
 
-    { "Copy", GTK_STOCK_COPY, N_("_Copy"), NULL,
+    { "Copy", GTK_STOCK_COPY, NULL, NULL,
       N_("Copy selection"), G_CALLBACK(mb_proc) },
-    { "Paste", GTK_STOCK_PASTE, N_("_Paste"), NULL,
+    { "Paste", GTK_STOCK_PASTE, NULL, NULL,
       N_("Paste selection"), G_CALLBACK(mb_proc) },
     { "Insert", NULL, N_("_Insert ASCII Value..."), "<control>I",
       N_("Insert ASCII value"), G_CALLBACK(mb_proc) },
 
 #ifndef DISABLE_GNOME
-    { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
+    { "Contents", GTK_STOCK_HELP, NULL, "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
 #endif /*DISABLE_GNOME*/
-    { "About", GTK_STOCK_ABOUT, N_("_About"), NULL,
+    { "About", GTK_STOCK_ABOUT, NULL, NULL,
       N_("Show the About Gcalctool dialog"), G_CALLBACK(about_cb) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
