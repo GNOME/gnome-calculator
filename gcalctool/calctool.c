@@ -146,7 +146,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("8"),
     N_("Numeric 8"),
     { 0,     0,        0,         0,      0 },
-    { GDK_8, GDK_KP_8, GDK_KP_Up, GDK_Up, 0 },
+    { GDK_8, GDK_KP_8, GDK_KP_Up, 0 },
     '8',
     M_NONE,
     do_number
@@ -211,7 +211,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("4"),
     N_("Numeric 4"),
     { 0,     0,        0,           0,        0 },
-    { GDK_4, GDK_KP_4, GDK_KP_Left, GDK_Left, 0 },
+    { GDK_4, GDK_KP_4, GDK_KP_Left, 0 },
     '4',
     M_NONE,
     do_number
@@ -229,7 +229,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("6"),
     N_("Numeric 6"),
     { 0,     0,        0,            0,         0 },
-    { GDK_6, GDK_KP_6, GDK_KP_Right, GDK_Right, 0 },
+    { GDK_6, GDK_KP_6, GDK_KP_Right, 0 },
     '6',
     M_NONE,
     do_number
@@ -294,7 +294,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("2"),
     N_("Numeric 2"),
     { 0,     0,        0,           0,        0 }, 
-    { GDK_2, GDK_KP_2, GDK_KP_Down, GDK_Down, 0 },
+    { GDK_2, GDK_KP_2, GDK_KP_Down, 0 },
     '2',
     M_NONE,
     do_number
