@@ -1176,7 +1176,7 @@ syntaxdep_show_display()
             break;
 
         case exprs:
-            set_display(v->expression, FALSE);
+	    refresh_display();
             break;
 
         default:
