@@ -5,11 +5,15 @@
 # Gildas Guillemot <g.guillemot@laposte.net>, 2003.
 # Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2003.
 #
+#
+# ATTENTION: il faut utiliser ISO-8859-15 pour ce document car il 
+# contient le caractère EURO.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 4.2.23\n"
-"POT-Creation-Date: 2003-02-16 23:04+0100\n"
-"PO-Revision-Date: 2003-02-16 22:43+0100\n"
+"Project-Id-Version: gcalctool 4.2.61\n"
+"POT-Creation-Date: 2003-03-02 20:55+0100\n"
+"PO-Revision-Date: 2003-03-01 15:43+0100\n"
 "Last-Translator: Gildas Guillemot <g.guillemot@laposte.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +375,6 @@ msgid "Int"
 msgstr "Int"
 
 #: gcalctool/calctool.c:350
-#, fuzzy
 msgid ""
 "Int\n"
 "\n"
@@ -385,39 +388,40 @@ msgstr ""
 "\n"
 "Partie entière\n"
 "\n"
-"Équivalence clavier :   Alt-i\n"
+"Équivalence clavier :   i\n"
 "\n"
 "Retourne la partie entière de la valeur courante affichée."
 
 #: gcalctool/calctool.c:366
-msgid "Rcl"
-msgstr "Rcl"
+msgid "Sto"
+msgstr "Sto"
 
 #: gcalctool/calctool.c:368
 msgid ""
-"Rcl\n"
+"Sto\n"
 "\n"
-"Retrieves a memory register.\n"
+"Stores a value in a memory register.\n"
 "\n"
-"Keyboard equivalent:   R\n"
+"Keyboard equivalent:   S\n"
 "\n"
-"Click on the Rcl button to display a menu of available registers. Choose a "
-"register from the menu to retrieve its value.\n"
+"Click on the Sto button to display a menu of all registers. Choose a "
+"register from the menu to store the displayed value.\n"
 "\n"
-"When you know the number of the register you want, you can click SELECT on "
-"Rcl, then on the register's number (a digit from 0 to 9)."
+"Alternately, click SELECT on Sto, then on a digit in the range 0 to 9 to "
+"indicate the memory register in which to store the displayed value."
 msgstr ""
-"Rcl\n"
+"Sto\n"
 "\n"
-"Recupère un registre mémoire.\n"
+"Stocke une valeur dans un registre mémoire.\n"
 "\n"
-"Équivalence clavier :   R\n"
+"Équivalence clavier :   S\n"
 "\n"
-"Cliquer sur le bouton Rcl pour afficher un menu des registres disponibles. "
-"Choisir un registre du menu pour récupérer sa valeur.\n"
+"Cliquer sur le bouton Sto pour afficher un menu de tous les registres. "
+"Choisir un registre dans le menu pour stocker la valeur affichée.\n"
 "\n"
-"Quand vous connaissez le numéro du registre désiré, vous pouvez cliquer sur "
-"SELECT sur Rcl, ensuite sur le numéro du registre (un chiffre de 0 à 9)."
+"Alternativement, cliquer sur SELECT sur Sto, ensuite sur un chiffre entre 0 "
+"et 9 pour indiquer le registre mémoire dans lequel stocker la valeur "
+"affichée."
 
 #: gcalctool/calctool.c:391
 msgid "1"
@@ -556,7 +560,6 @@ msgid "Frac"
 msgstr "Frac"
 
 #: gcalctool/calctool.c:496
-#, fuzzy
 msgid ""
 "Frac\n"
 "\n"
@@ -570,40 +573,39 @@ msgstr ""
 "\n"
 "Partie décimale\n"
 "\n"
-"Équivalence clavier :   Alt-f\n"
+"Équivalence clavier :   :\n"
 "\n"
 "Renvoi la partie décimal de la valeur courante affichée."
 
 #: gcalctool/calctool.c:512
-msgid "Sto"
-msgstr "Sto"
+msgid "Rcl"
+msgstr "Rcl"
 
 #: gcalctool/calctool.c:514
 msgid ""
-"Sto\n"
+"Rcl\n"
 "\n"
-"Stores a value in a memory register.\n"
+"Retrieves a memory register.\n"
 "\n"
-"Keyboard equivalent:   S\n"
+"Keyboard equivalent:   R\n"
 "\n"
-"Click on the Sto button to display a menu of all registers. Choose a "
-"register from the menu to store the displayed value.\n"
+"Click on the Rcl button to display a menu of available registers. Choose a "
+"register from the menu to retrieve its value.\n"
 "\n"
-"Alternately, click SELECT on Sto, then on a digit in the range 0 to 9 to "
-"indicate the memory register in which to store the displayed value."
+"When you know the number of the register you want, you can click SELECT on "
+"Rcl, then on the register's number (a digit from 0 to 9)."
 msgstr ""
-"Sto\n"
+"Rcl\n"
 "\n"
-"Stocke une valeur dans un registre mémoire.\n"
+"Recupère un registre mémoire.\n"
 "\n"
-"Équivalence clavier :   S\n"
+"Équivalence clavier :   R\n"
 "\n"
-"Cliquer sur le bouton Sto pour afficher un menu de tous les registres. "
-"Choisir un registre dans le menu pour stocker la valeur affichée.\n"
+"Cliquer sur le bouton Rcl pour afficher un menu des registres disponibles. "
+"Choisir un registre du menu pour récupérer sa valeur.\n"
 "\n"
-"Alternativement, cliquer sur SELECT sur Sto, ensuite sur un chiffre entre 0 "
-"et 9 pour indiquer le registre mémoire dans lequel stocker la valeur "
-"affichée."
+"Quand vous connaissez le numéro du registre désiré, vous pouvez cliquer sur "
+"SELECT sur Rcl, ensuite sur le numéro du registre (un chiffre de 0 à 9)."
 
 #: gcalctool/calctool.c:537
 msgid "0"
@@ -730,7 +732,6 @@ msgid "Abs"
 msgstr "Abs"
 
 #: gcalctool/calctool.c:638
-#, fuzzy
 msgid ""
 "Abs\n"
 "\n"
@@ -744,7 +745,7 @@ msgstr ""
 "\n"
 "Valeur absolue.\n"
 "\n"
-"Équivalence clavier :   Alt-u\n"
+"Équivalence clavier :   u\n"
 "\n"
 "Renvoie la valeur absolue de la valeur courante affichée."
 
@@ -1137,18 +1138,15 @@ msgstr ""
 "\n"
 "Exemple :\n"
 "\n"
-"vous venez de gagné un million d'euros. Le prix en attribué en 20 paiements "
+"vous venez de gagner un million d'euros. Le prix en attribué en 20 paiements "
 "annuels de 50,000~ (un total de 1.000.000~ sur 20 ans). Les payements "
 "annuels sont reçus à la fin de chaque année.\n"
 "\n"
 "Vous avez l'option de recevoir un paiement forfaitaire de 400.000~ au lieu "
 "de l'annuité d'un million d'euros. Vous voulez trouver quelle option est la "
 "pire en fonction du court de l'euros.\n"
-"You are given the option of receiving a single lump-sum payment of $400,000 "
-"instead of the million dollars annuity. You want to find out which option is "
-"worth more in today's dollars.\n"
 "\n"
-"Si vous acceptez les paiement annuels de 50.000~, vous présumer que vous "
+"Si vous acceptez les paiement annuels de 50.000~, vous présumez que vous "
 "investirez l'argent à un taux de 9%, en composition annuelle.\n"
 "\n"
 "Utilisation des registres mémoire :\n"
@@ -1170,7 +1168,6 @@ msgid "Rate"
 msgstr "Taux"
 
 #: gcalctool/calctool.c:932
-#, fuzzy
 msgid ""
 "Rate\n"
 "\n"
@@ -1209,7 +1206,7 @@ msgstr ""
 "\n"
 "Taux d'intérêt périodique\n"
 "\n"
-"Équivalence clavier :   Alt-r\n"
+"Équivalence clavier :   T\n"
 "\n"
 "Retourne l'inérêt périodique nécessaire pour la valeur présente de pv pour "
 "croître jusque la valeur future fv sur un nombre de périodes de compositions "
@@ -1418,7 +1415,7 @@ msgid ""
 "\n"
 "Payment period\n"
 "\n"
-"Keyboard equivalent:   T\n"
+"Keyboard equivalent:   t\n"
 "\n"
 "Returns the number of payment periods in the term of an ordinary annuity "
 "necessary to accumulate a future value of fv, earning a periodic interest "
@@ -1449,7 +1446,7 @@ msgstr ""
 "\n"
 "Période de paiement\n"
 "\n"
-"Équivalence clavier :   T\n"
+"Équivalence clavier :   t\n"
 "\n"
 "Renvoi le nombre de période de paiement dans le terme d'une annuité "
 "ordinaire nécessaire pour accumuler la valeur future de fv, en gagnant un "
@@ -1658,35 +1655,10 @@ msgstr ""
 "        2 * 3 + 4 = 10"
 
 #: gcalctool/calctool.c:1352
-msgid "Exp"
-msgstr "Exp"
-
-#: gcalctool/calctool.c:1354
-msgid ""
-"Exp\n"
-"\n"
-"Enters an exponential number.\n"
-"\n"
-"Keyboard equivalent:   E\n"
-"\n"
-"Starts exponential input. Any numbers typed from now on are the exponent. If "
-"you haven't entered a mantissa, the calculator uses a mantissa of 1.0."
-msgstr ""
-"Exp\n"
-"\n"
-"Saisir un nombre exponentiel.\n"
-"\n"
-"Équivalence clavier :   E\n"
-"\n"
-"Commence une entrée exponentiel. n'importe quel nombre saisi sera désormais "
-"l'exposant. si vous n'avez pas entré de matisse, la calculatrice utilise une "
-"mantisse de 1,0."
-
-#: gcalctool/calctool.c:1371
 msgid "Con"
 msgstr "Con"
 
-#: gcalctool/calctool.c:1373
+#: gcalctool/calctool.c:1354
 msgid ""
 "Con\n"
 "\n"
@@ -1727,11 +1699,11 @@ msgstr ""
 "Cliquer sur SELECT sur « entrer la constante » pour stocker la nouvelle "
 "constante dans le fichier ~/.gcalctoolcf."
 
-#: gcalctool/calctool.c:1403
+#: gcalctool/calctool.c:1384
 msgid "Fun"
 msgstr "Fonc"
 
-#: gcalctool/calctool.c:1405
+#: gcalctool/calctool.c:1386
 msgid ""
 "Fun\n"
 "\n"
@@ -1790,6 +1762,31 @@ msgstr ""
 "\n"
 "Quand vous connaissez le numéro de la fonction souhaitée, vous pouvez "
 "cliquer sur SELECT sur Fonc, ensuite sur le numéro de la fonction."
+
+#: gcalctool/calctool.c:1427
+msgid "Exp"
+msgstr "Exp"
+
+#: gcalctool/calctool.c:1429
+msgid ""
+"Exp\n"
+"\n"
+"Enters an exponential number.\n"
+"\n"
+"Keyboard equivalent:   E\n"
+"\n"
+"Starts exponential input. Any numbers typed from now on are the exponent. If "
+"you haven't entered a mantissa, the calculator uses a mantissa of 1.0."
+msgstr ""
+"Exp\n"
+"\n"
+"Saisir un nombre exponentiel.\n"
+"\n"
+"Équivalence clavier :   E\n"
+"\n"
+"Commence une entrée exponentiel. n'importe quel nombre saisi sera désormais "
+"l'exposant. si vous n'avez pas entré de matisse, la calculatrice utilise une "
+"mantisse de 1,0."
 
 #: gcalctool/calctool.c:1446
 msgid "e<sup>x</sup>"
@@ -1959,7 +1956,7 @@ msgstr ""
 "\n"
 "Disponible seulement quand la base courante est hexadécimale."
 
-#: gcalctool/calctool.c:1576 gcalctool/gtk.c:1060
+#: gcalctool/calctool.c:1576 gcalctool/gtk.c:1072
 msgid "F"
 msgstr "F"
 
@@ -1986,7 +1983,6 @@ msgid "Cos"
 msgstr "Cos"
 
 #: gcalctool/calctool.c:1596
-#, fuzzy
 msgid ""
 "Cos\n"
 "\n"
@@ -2005,7 +2001,7 @@ msgstr ""
 "\n"
 "Fonction cosinus\n"
 "\n"
-"Équivalence clavier :   Alt-c\n"
+"Équivalence clavier :   J\n"
 "\n"
 "Renvoi le cosinus trigonométrique, l'arccosinus, le cosinus hyperbolique, ou "
 "le cosinus hyperbolique inverse de la valeur courante affichée, suivant "
@@ -2019,7 +2015,6 @@ msgid "Sin"
 msgstr "Sin"
 
 #: gcalctool/calctool.c:1619
-#, fuzzy
 msgid ""
 "Sin\n"
 "\n"
@@ -2038,7 +2033,7 @@ msgstr ""
 "\n"
 "Fonction sinus\n"
 "\n"
-"Équivalence clavier :   Alt-s\n"
+"Équivalence clavier :   K\n"
 "\n"
 "Renvoi le sinus trigonométrique, l'arcsinus, le sinus hyperbolique, ou le "
 "sinus hyperbolique inverse de la valeur courante affichée, suivant l'état "
@@ -2052,7 +2047,6 @@ msgid "Tan"
 msgstr "Tan"
 
 #: gcalctool/calctool.c:1642
-#, fuzzy
 msgid ""
 "Tan\n"
 "\n"
@@ -2071,7 +2065,7 @@ msgstr ""
 "\n"
 "Fonction Tangente\n"
 "\n"
-"Équivalence clavier :   Alt-t\n"
+"Équivalence clavier :   L\n"
 "\n"
 "Renvoi la tangente trigonométrique, l'arctangente, la tangente hyperbolique, "
 "ou la tangente hyperbolique inverse de la valeur courante affichée, suivant "
@@ -2168,7 +2162,7 @@ msgstr ""
 "\n"
 "Disponible seulement quand la base courante est hexadécimale."
 
-#: gcalctool/calctool.c:1735 gcalctool/gtk.c:1053
+#: gcalctool/calctool.c:1735 gcalctool/gtk.c:1065
 msgid "C"
 msgstr "C"
 
@@ -2316,60 +2310,60 @@ msgstr ""
 "nombres comme des entiers longs non-signés."
 
 #: gcalctool/calctool.c:1937
-msgid "kilometres per hour / miles per hour."
-msgstr "kilomètres par heure / miles par heure."
+msgid "kilometers per hour / miles per hour"
+msgstr "kilomètres par heure / miles par heure"
 
 #: gcalctool/calctool.c:1938
-msgid "square root of 2."
-msgstr "racine carrée de 2."
+msgid "square root of 2"
+msgstr "racine carrée de 2"
 
 #: gcalctool/calctool.c:1939
-msgid "e."
-msgstr "e."
+msgid "e"
+msgstr "e"
 
 #: gcalctool/calctool.c:1940
-msgid "pi."
-msgstr "pi."
+msgid "pi"
+msgstr "pi"
 
 #: gcalctool/calctool.c:1941
-msgid "centimetres / inches."
-msgstr "centimètres / pouces."
+msgid "centimeters / inches"
+msgstr "centimètres / pouces"
 
 #: gcalctool/calctool.c:1942
-msgid "degrees in a radian."
-msgstr "degrés dans un radian."
+msgid "degrees in a radian"
+msgstr "degrés dans un radian"
 
 #: gcalctool/calctool.c:1943
-msgid "2 ^ 20."
-msgstr "2 ^ 20."
+msgid "2 ^ 20"
+msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1944
-msgid "grams / ounces."
-msgstr "grammes / ounces."
+msgid "grams / ounces"
+msgstr "grammes / ounces"
 
 #: gcalctool/calctool.c:1945
-msgid "kilojoules / British thermal units."
-msgstr "kilojoules / unités thermiques anglaises."
+msgid "kilojoules / British thermal units"
+msgstr "kilojoules / unités thermiques anglaises"
 
 #: gcalctool/calctool.c:1946
-msgid "cubic centimetres / cubic inches."
-msgstr "centimètres cubes / pouces cubes."
+msgid "cubic centimeters / cubic inches"
+msgstr "centimètres cubes / pouces cubes"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1957 gcalctool/display.c:185 gcalctool/functions.c:933
-#: gcalctool/functions.c:1053 gcalctool/functions.c:1092
-#: gcalctool/functions.c:1146 gcalctool/functions.c:1239
-#: gcalctool/functions.c:1240 gcalctool/graphics.c:102 gcalctool/mp.c:2000
+#: gcalctool/calctool.c:1957 gcalctool/display.c:183 gcalctool/functions.c:934
+#: gcalctool/functions.c:1062 gcalctool/functions.c:1101
+#: gcalctool/functions.c:1155 gcalctool/functions.c:1248
+#: gcalctool/functions.c:1249 gcalctool/graphics.c:102 gcalctool/mp.c:2000
 msgid "Error"
 msgstr "Erreur"
 
-#: gcalctool/functions.c:1259
+#: gcalctool/functions.c:1268
 msgid "Numeric stack error"
 msgstr "Erreur de la pile numérique"
 
-#: gcalctool/functions.c:1280
+#: gcalctool/functions.c:1289
 msgid "Operand stack error"
 msgstr "Erreur de la pile opérante"
 
@@ -2433,7 +2427,7 @@ msgstr "Utilisation : %s : [-D] [-E] [-a précision]"
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:869 gcalctool/gtk.c:992
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:881 gcalctool/gtk.c:1004
 msgid "R"
 msgstr "R"
 
@@ -2651,28 +2645,28 @@ msgstr "Valeur"
 msgid "Description"
 msgstr "Description"
 
-#: gcalctool/gtk.c:777 gcalctool/gtk.c:779
+#: gcalctool/gtk.c:778 gcalctool/gtk.c:780
 msgid "Calculator"
 msgstr "Calculatrice"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:952
+#: gcalctool/gtk.c:964
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:958
+#: gcalctool/gtk.c:970
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:995
 msgid "Memory Registers"
 msgstr "Registres mémoires"
 
-#: gcalctool/gtk.c:1042
+#: gcalctool/gtk.c:1054
 msgid "Edit Constants..."
 msgstr "Éditer les constantes..."
 
-#: gcalctool/gtk.c:1042
+#: gcalctool/gtk.c:1054
 msgid "Edit Functions..."
 msgstr "Éditer les fonctions..."
 
