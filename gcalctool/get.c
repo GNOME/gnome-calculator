@@ -29,7 +29,6 @@
 #include <sys/param.h>
 #include "calctool.h"
 #include "extern.h"
-#include "config.h"
 
 static int get_bool_resource(enum res_type, int *);
 static int get_int_resource(enum res_type, int *);

@@ -19,6 +19,8 @@
  *  02111-1307, USA.
  */
 
+#include "config.h"
+
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -26,26 +28,7 @@
 #include <math.h>
 #include <gdk/gdktypes.h>
 #include <gdk/gdkkeysyms.h>
-
-#include "config.h"
-
-/* Standard gettext macros. */
-
-#ifdef ENABLE_NLS
-#include <libintl.h>
-#undef _
-#define _(String) dgettext (GETTEXT_PACKAGE, String)
-#undef N_
-#define N_(String) (String)
-#else
-#define textdomain(String) (String)
-#define gettext(String) (String)
-#define dgettext(Domain,Message) (Message)
-#define dcgettext(Domain,Message,Type) (Message)
-#define bindtextdomain(Domain,Directory) (Domain)
-#define _(String) (String)
-#define N_(String) (String)
-#endif /*ENABLE_NLS*/
+#include <gnome.h>
 
 #define MP_SIZE      150     /* Size of the multiple precision values. */
 

@@ -5,6 +5,15 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.2.37
+
+* Fixed Bugzilla bug 104241. The Insert ASCII Value" menu item is now 
+  "Insert ASCII Value..."
+* Tidied up the I18N code as gcalctool now includes <gnome.h> which includes
+  <bonobo-i18n.h,> where all this stuff is already defined.
+
+----
+
 Overview of changes in gcalctool 4.2.36
 
 * Fixed Bugzilla bug #102928. The x^2, e^x, 10^x and y^x keys now use 
@@ -21,7 +30,6 @@ Overview of changes in gcalctool 4.2.35
 Overview of changes in gcalctool 4.2.34
 
 * Handling of the users saved function definitions now works correctly.
-
 * Changed the keyboard accelerators for the following to use non Alt-<?>
   values:
 
@@ -32,7 +40,6 @@ Overview of changes in gcalctool 4.2.34
   Int  (old value: Alt-i) becomes 'i'.
   Abs  (old value: Alt-u) becomes 'u'.
   Rate (old value: Alt-r) becomes 'T'.
-
 * Removed the need to configure with "--enable-build-broken".
 
 ----

@@ -19,6 +19,8 @@
  *  02111-1307, USA.
  */
 
+#include "config.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -27,10 +29,8 @@
 #include <netdb.h>
 #include <pwd.h>
 #include "calctool.h"
-#include "config.h"
 #include "extern.h"
 #include "dsdefs.h"
-#include <gnome.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -153,7 +153,7 @@ static GtkItemFactoryEntry main_menu[] = {
     { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
     { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
     { "/Edit/_Paste",              NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
-    { "/Edit/_Insert ASCII Value", NULL, mb_proc, M_ASCII, NULL },
+    { "/Edit/_Insert ASCII Value...", NULL, mb_proc, M_ASCII, NULL },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
     { "/View/_Basic Mode",         NULL, mb_proc, M_BASIC, "<RadioItem>" },
@@ -226,9 +226,9 @@ main(int argc, char **argv)
     v = (Vars)  LINT_CAST(calloc(1, sizeof(CalcVars)));
     X = (XVars) LINT_CAST(calloc(1, sizeof(XObject)));
 
-    bindtextdomain(PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset(PACKAGE, "UTF-8");
-    textdomain(PACKAGE);
+    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
 
     gtk_init(&argc, &argv);
 
@@ -497,7 +497,7 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     GtkWidget *ok_button, *cancel_button;
 
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(X->aframe), _("Get ASCII"));
+    gtk_window_set_title(GTK_WINDOW(X->aframe), _("Insert ASCII Value"));
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_show(vbox);
