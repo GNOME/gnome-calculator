@@ -28,6 +28,68 @@ static char *make_eng_sci(int *, int);
 static char *make_fixed(int *, int, int);
 
 
+/* Add in the thousand separators characters if required and if we are
+ * currently in the decimal numeric base.
+ */
+
+void
+add_tsep()
+{
+    if (v->show_tsep && v->base == DEC) {
+	char *dstp, *radixp, *srcp;
+	int n;
+
+	/* Process the fractional part (if any). */
+	srcp = v->fnum + strlen(v->fnum) - 1;
+	dstp = v->tnum;
+	if ((radixp = strchr(v->fnum, v->radix_char)) != NULL) {
+            while (*srcp != v->radix_char) {
+    		*dstp++ = *srcp--;
+            }
+            *dstp++ = *srcp--;	   /* Copy over the radix char. */
+    	}
+
+    	/* Process the integer part, add in thousand separators. */
+    	n = 0;
+    	while (srcp >= v->fnum) {
+            *dstp++ = *srcp--;
+            n++;
+            if (n == 3 && srcp >= v->fnum) {
+		*dstp++ = ',';
+		n = 0;
+            }
+	}
+	*dstp++ = '\0';
+
+	/* Move from scratch pad to fnum, reversing the character order. */
+	srcp = v->tnum + strlen(v->tnum) - 1;
+	dstp = v->fnum;
+	while (srcp >= v->tnum) {
+            *dstp++ = *srcp--;
+	}
+	*dstp++ = '\0';
+    }
+}
+
+
+/* Remove the thousands separators (if any) in-situ. */
+
+void
+remove_tsep(char *str) {
+    char *srcp = str;
+    char *dstp = str;
+
+    while (*srcp != '\0') {
+        if (*srcp == ',') {
+            srcp++;
+            continue;
+        }
+        *dstp++ = *srcp++;
+    }
+    *dstp++ = '\0';
+}
+
+
 int
 char_val(char chr)
 {
@@ -174,44 +236,7 @@ make_fixed(int *MPnumber, int base, int cmax)
         *optr = '\0';
     }
 
-/* Add in the thousand separators characters if required and if we are
- * currently in the decimal numeric base.
- */
-
-    if (v->show_tsep && v->base == DEC) {
-        char *dstp, *radixp, *srcp;
-        int n;
-
-        /* Process the fractional part (if any). */
-        srcp = v->fnum + strlen(v->fnum) - 1;
-        dstp = v->tnum;
-        if ((radixp = strchr(v->fnum, v->radix_char)) != NULL) {
-            while (*srcp != v->radix_char) {
-                *dstp++ = *srcp--;
-            }
-            *dstp++ = *srcp--;     /* Copy over the radix char. */
-        }
-
-        /* Process the integer part, add in thousand separators. */
-        n = 0;
-        while (srcp >= v->fnum) {
-            *dstp++ = *srcp--;
-            n++;
-            if (n == 3 && srcp >= v->fnum) {
-                *dstp++ = ',';
-                n = 0;
-            }
-        }
-        *dstp++ = '\0';
-
-        /* Move from scratch pad to fnum, reversing the character order. */
-        srcp = v->tnum + strlen(v->tnum) - 1;
-	dstp = v->fnum;
-        while (srcp >= v->tnum) {
-            *dstp++ = *srcp--;
-        }
-        *dstp++ = '\0';
-    }
+    add_tsep();
 
     return(v->fnum);
 }
@@ -368,6 +393,9 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     i = 0;
     mpcim(&i, MPval);
     mpcim(&basevals[(int) base], MPbase);
+
+    remove_tsep(str);
+
     optr = str;
     while ((inum = char_val(*optr)) >= 0) {
         mpmul(MPval, MPbase, MPval);

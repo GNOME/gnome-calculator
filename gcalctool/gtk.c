@@ -466,6 +466,12 @@ button_proc(GtkButton *widget, gpointer user_data)
     } else {
         process_item(n);
     }
+
+    if (v->new_input && v->dtype == FIX) {
+        STRCPY(v->fnum, v->display);
+        add_tsep();
+        set_display(v->fnum);
+    }
 }
 
 

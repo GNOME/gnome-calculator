@@ -407,6 +407,12 @@ do_delete()     /* Remove the last numeric character typed. */
 
     set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
+
+    if (v->dtype == FIX) {
+        STRCPY(v->fnum, v->display);
+        add_tsep();
+        set_display(v->fnum);
+    }
 }
 
 

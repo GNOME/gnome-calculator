@@ -330,6 +330,7 @@ int get_menu_entry(enum menu_type, int);
 int key_equal(struct button *, struct button);
 int main(int, char **);
 
+void add_tsep();
 void beep();
 void clear_display(int);
 void display_prop_sheet();
