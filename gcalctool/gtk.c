@@ -783,7 +783,7 @@ create_cfframe(enum menu_type mtype)
 
 static void
 create_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
-    gtk_widget_add_accelerator(button, "clicked", X->kbd_accel,
+    gtk_widget_add_accelerator(button, "activate", X->kbd_accel,
                                button_key, button_mods, GTK_ACCEL_VISIBLE);
 }
 
