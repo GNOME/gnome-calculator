@@ -1,11 +1,18 @@
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc.
  *  All Rights Reserved.
  */
 
 gcalctool change history.
 =========================
+
+2004-01-05  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 128603 again (http://bugzilla.gnome.org/show_bug.cgi?id=128603)
+      The solution this time was to duplicate the initial string constant
+      values to be confident that they are not in read-only memory.
+
 2004-01-03  Sanlig Badral  <badral@openmn.org>
 
     * configure.in: Added "mn" to ALL_LINGUAS.

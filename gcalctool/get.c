@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -239,6 +239,16 @@ get_tsep()
 
 
 void
+init_constant(int n, gchar *value)
+{
+    gchar *str = g_strdup(value);
+
+    MPstr_to_num(str, DEC, v->MPcon_vals[n]);
+    g_free(str);
+}
+
+
+void
 init_vars()    /* Setup default values for various variables. */
 {
     int acc, i, n, size;
@@ -264,16 +274,16 @@ init_vars()    /* Setup default values for various variables. */
 
     read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */
 
-    MPstr_to_num("0.621", DEC, v->MPcon_vals[0]);  /* kms/hr <=> miles/hr. */
-    MPstr_to_num("1.4142135623", DEC, v->MPcon_vals[1]);  /* square root of 2 */
-    MPstr_to_num("2.7182818284", DEC, v->MPcon_vals[2]);  /* e */
-    MPstr_to_num("3.1415926535", DEC, v->MPcon_vals[3]);  /* pi */
-    MPstr_to_num("0.3937007",    DEC, v->MPcon_vals[4]);  /* cms <=> inch. */
-    MPstr_to_num("57.295779513", DEC, v->MPcon_vals[5]);  /* degrees/radian. */
-    MPstr_to_num("1048576.0",    DEC, v->MPcon_vals[6]);  /* 2 ^ 20. */
-    MPstr_to_num("0.0353", DEC, v->MPcon_vals[7]);  /* grams <=> ounce. */
-    MPstr_to_num("0.948",  DEC, v->MPcon_vals[8]);  /* Kjoules <=> BTU's. */
-    MPstr_to_num("0.0610", DEC, v->MPcon_vals[9]);  /* cms3 <=> inches3. */
+    init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
+    init_constant(1, "1.4142135623");          /* square root of 2 */
+    init_constant(2, "2.7182818284");          /* e */
+    init_constant(3, "3.1415926535");          /* pi */
+    init_constant(4, "0.3937007");             /* cms <=> inch. */
+    init_constant(5, "57.295779513");          /* degrees/radian. */
+    init_constant(6, "1048576.0");             /* 2 ^ 20. */
+    init_constant(7, "0.0353");                /* grams <=> ounce. */
+    init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
+    init_constant(9, "0.0610");                /* cms3 <=> inches3. */
 
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
