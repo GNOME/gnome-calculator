@@ -11,13 +11,17 @@ Calctool TODO.
 Related to the Gtk2 version:
 
 * Make sure everything is setup correctly for I18N/L10N.
-* Testing of an invalidly entered constant with sscanf() in cfframe_apply_cb()
-  doesn't seem to be working.
-* Shouldn't use X resources. Probably need to use gconf.
+* Shouldn't use X resources. Probably need to use gconf, but I really 
+  don't want to have to drag in a load of GNOME libraries (i.e. I would 
+  rather keep this a Gtk application).
 * The + and . keys on the numeric keypad don't work.
   (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
-* Need to add in Help key support (or tooltip help). Can probably use the
-  text from the calctool.info file in the XView distribution.
+* Remove any explicit sizing of widgets so that resource theming works 
+  correctly.
+* Check that the keyboard equivalents of the menu buttons are working.
+* Make sure the accessibility keys (Tab, Space etc...) work.
+* Add in tooltip help for the six display labels. Make sure all of the
+  tooltip help text is correct.
 
 ============================================================================
 

@@ -150,6 +150,10 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                     }
                     break;
 
+                case 'h' :                    /* Show tooltips help. */
+                    v->show_help = 1;
+                    break;
+
                 case 'l' :                    /* "Left-handed" version. */
                     v->righthand = 0;
                     break;
@@ -326,6 +330,7 @@ init_vars()    /* Setup default values for various variables. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
     v->rstate        = 0;      /* No memory register frame display initially. */
     v->iconic        = FALSE;  /* Calctool not iconic by default. */
+    v->show_help     = FALSE;  /* Don't show tooltips help. */
     v->MPdebug       = FALSE;  /* No debug info by default. */
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
@@ -462,6 +467,9 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
+    if (get_bool_resource(R_HELP, &boolval)) {
+        v->show_help = boolval;
+    }
     if (get_bool_resource(R_BEEP, &boolval)) {
         v->beep = boolval;
     }
@@ -609,5 +617,6 @@ write_resources()
     put_resource(R_REGS,     set_bool(v->rstate == TRUE));
     put_resource(R_RHAND,    set_bool(v->righthand == TRUE));
     put_resource(R_BEEP,     set_bool(v->beep == TRUE));
+    put_resource(R_HELP,     set_bool(v->show_help == TRUE));
     save_resources();
 }

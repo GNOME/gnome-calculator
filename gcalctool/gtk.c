@@ -66,6 +66,7 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *menu_accel;
     GdkAtom clipboard_atom;
     GtkItemFactory *fact[MAXMENUS];
+    GtkTooltips *tips;
     GtkWidget *buttons[NOBUTTONS];
     GtkWidget *mode_buttons[(MROWS * MCOLS) * (MAXMODES-1)];
     GtkWidget *aframe;                 /* ASCII window. */
@@ -287,6 +288,7 @@ main(int argc, char **argv)
 
     X->kbd_accel = gtk_accel_group_new();
     X->menu_accel = gtk_accel_group_new();
+    X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
 
 /* XXX: remove when working well. */
@@ -1303,6 +1305,8 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
                              G_CALLBACK(button_proc), (gpointer) (j*MCOLS + i));
             SPRINTF(name, "mode_button%1d", n);
             gtk_widget_set_name(X->mode_buttons[n], name);
+            gtk_tooltips_set_tip(X->tips, X->mode_buttons[n],
+                                 mode_buttons[n].hstr, "");
             g_object_set_data(G_OBJECT(X->mode_buttons[n]), "frame", X->mframe);
             gtk_widget_ref(X->mode_buttons[n]);
 
@@ -1348,6 +1352,7 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
                              G_CALLBACK(button_proc), (gpointer) n);
             SPRINTF(name, "button%1d", n);
             gtk_widget_set_name(X->buttons[n], name);
+            gtk_tooltips_set_tip(X->tips, X->buttons[n], buttons[n].hstr, "");
             g_object_set_data(G_OBJECT(X->buttons[n]), "frame", X->kframe);
             gtk_widget_ref(X->buttons[n]);
             create_kbd_accel(X->buttons[n], buttons[n].mods, buttons[n].value);
@@ -1793,6 +1798,17 @@ set_button_state(enum fcp_type fcptype, int n, int isSensitive)
 
 
 void
+set_help_state(int show_help)
+{
+    if (show_help) {
+        gtk_tooltips_enable(X->tips);
+    } else {
+        gtk_tooltips_disable(X->tips);
+    }
+}
+
+
+void
 set_label(enum item_type itemno, char *str)
 {
     char label_str[MAXLINE];
@@ -1926,6 +1942,7 @@ void
 start_tool()
 {
     v->started = 1;
+    set_help_state(v->show_help);
     gtk_widget_show(X->kframe);
     gtk_main();
 }

@@ -541,41 +541,10 @@ do_function()      /* Perform a user defined function. */
 
 
 void
-do_help()            /* F1 key was pressed; show help message. */
+do_help()            /* Help key was pressed; show help message. */
 {
-  fprintf(stderr, "do_help called.\n") ;
-#ifdef FIXUP
-    char help_str[MAXLINE];  /* Passed to the help display routine. */
-    int column, n, row;
-
-    SPRINTF(help_str, "%s:", "calctool");
-    if (v->cury <= v->ndisplay && 
-        v->curwin == FCP_KEY) {             /* Help over display? */
-        STRCAT(help_str, "DISP");
-        show_help(help_str);
-    } else {                    /* Check for help over buttons. */
-        if (v->curwin == FCP_KEY) {
-            v->cury -= v->ndisplay;
-        }
-        for (row = 0; row < MAXROWS; row++) {
-            for (column = 0; column < MAXCOLS; column++) {
-                if ((v->curx > (column * (v->bwidth + v->bgap) + v->bborder)) &&
-                    (v->curx < (column * (v->bwidth + v->bgap) + v->bborder +
-                                                                 v->bwidth)) &&
-                    (v->cury > (row * (v->bheight + v->bgap) + v->bborder)) &&
-                    (v->cury < (row * (v->bheight + v->bgap) + v->bborder +
-                                                               v->bheight))) {
-                    n = row * MAXCOLS + column;
-                    STRCAT(help_str, help_button_str(row * MAXCOLS + column));
-                    show_help(help_str);
-                    return;
-                }
-            }
-        }
-        STRCAT(help_str, "canvas");
-        show_help(help_str);
-    }
-#endif /*FIXUP*/
+    v->show_help = !v->show_help;
+    set_help_state(v->show_help); 
 }
 
 

@@ -103,12 +103,8 @@ enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 enum op_type { OP_SET, OP_CLEAR, OP_NOP };  /* Operation item settings. */
 
 /* Resources. */
-enum res_type { R_ACCURACY, R_BASE,     R_DISPLAY,  R_MODE,
-                R_REGS,     R_RHAND,    R_THREED,   R_TRIG,
-                R_DECDIG,   R_HEXDIG,   R_ARITHOP,  R_ADJUST,   R_PORTION,
-                R_FUNC,     R_MAINMODE, R_PLOGICAL, R_BLOGICAL, R_FIN,
-                R_TRIGMODE, R_TRIGCOL,  R_SCI,      R_BACK,     R_DISPCOL,
-                R_MEMORY,   R_TEXT,     R_BEEP
+enum res_type { R_ACCURACY, R_BASE,  R_DISPLAY, R_MODE, R_HELP,
+                R_REGS,     R_RHAND, R_TRIG,    R_BEEP
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -362,6 +358,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int righthand;     /* Set if this is a "right-handed" calculator. */
     int row;           /* Row number of current key/mouse press. */
     int rstate;        /* Indicates if memory register frame is displayed. */
+    int show_help;     /* Set if we wish to show tooltip help. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
@@ -384,7 +381,6 @@ typedef struct calcVars *Vars;
 char *button_str(int);
 char *convert(char *);
 char *get_resource(enum res_type);
-char *help_button_str(int);
 char *make_number(int *);
 
 enum menu_type button_mtype(int);
@@ -454,6 +450,7 @@ void read_str(char **, char *);
 void save_pending_values(int);
 void save_resources();
 void set_button_state(enum fcp_type, int, int);
+void set_help_state(int);
 void set_ins_key();
 void set_item(enum item_type, char *);
 void set_label(enum item_type itemno, char *str);
@@ -461,7 +458,6 @@ void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
 void show_ascii_frame();
 void show_display(int *);
-void show_help(char *);
 void srand48();
 void start_tool();
 void switch_hands(int);

@@ -38,14 +38,8 @@ char *base_str[]  = {          /* Strings for each base value. */
 };
 
 char *calc_res[] = {
-    "accuracy",            "base",            "display",        "mode",
-    "showRegisters",       "rightHanded",     "3dLook",         "hasTitle",
-    "trigType",            "decDigitColor",   "hexDigitColor",  "arithOpColor",
-    "adjustColor",         "portionColor",    "functionColor",  "mainModeColor",
-    "portionLogicalColor", "bitLogicalColor", "finColor",       "trigModeColor",
-    "trigColor",           "sciColor",       "backgroundColor", "displayColor",
-    "memRegisterColor",    "textColor",       "buttonFont",     "modeFont",
-    "memoryFont",          "displayFont",     "beep"
+    "accuracy",      "base",        "display",  "mode", "showhelp",
+    "showRegisters", "rightHanded", "trigType", "beep"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
@@ -57,7 +51,7 @@ char *mode_str[]  = {          /* Strings for each mode value. */
 };
 
 char *mstrs[] = {              /* Mode titles for the popup panel. */
-    _("Basic Mode."), _("Financial Mode."),
+    _("Basic Mode."),   _("Financial Mode."),
     _("Logical Mode."), _("Scientific Mode.")
 };
 
@@ -98,128 +92,2067 @@ Vars v;            /* Calctool variables and options. */
  *-----------+-----------------------------------------------------
  */
 
-/* Calculator button values. */
+struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
-struct button buttons[NOBUTTONS] = {
-/* str        hstr    mods              value           opdisp   menutype   func */
+/* str
+   hstr
+   mods
+   value
+   opdisp
+   menutype
+   func
+ */
 
 /* Row 1. */
-{ _("D   "),  "D   ", 0,                GDK_d,          OP_NOP,   M_NONE, do_number    },
-{ _("E   "),  "E   ", 0,                GDK_e,          OP_NOP,   M_NONE, do_number    },
-{ _("F   "),  "F   ", 0,                GDK_f,          OP_NOP,   M_NONE, do_number    },
-{ _("Clr "),  "Clr ", 0,                GDK_Delete,     OP_CLEAR, M_NONE, do_clear     },
-{ _("Int "),  "Int ", GDK_CONTROL_MASK, GDK_i,          OP_CLEAR, M_NONE, do_portion   },
-{ _("Frac"),  "Frac", GDK_CONTROL_MASK, GDK_f,          OP_CLEAR, M_NONE, do_portion   },
-{ _("Base"),  "Base", GDK_SHIFT_MASK,   GDK_B,          OP_SET,   M_BASE, do_pending   },
-{ _("Disp"),  "Disp", GDK_SHIFT_MASK,   GDK_D,          OP_SET,   M_NUM,  do_pending   },
+{ 
+    _("D   "),  
+    _(
+      "Hex D (decimal 13)\n"
+      "\n"
+      "Keyboard equivalent:   d\n"
+      "\n"
+      "Enters the hexadecimal value d in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_d,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("E   "),
+    _(
+      "Hex E (decimal 14)\n"
+      "\n"
+      "Keyboard equivalent:   e\n"
+      "\n"
+      "Enters the hexadecimal value e in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_e,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _("F   "),
+    _(
+      "Hex F (decimal 15)\n"
+      "\n"
+      "Keyboard equivalent:   f\n"
+      "\n"
+      "Enters the hexadecimal value f in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_f,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _("Clr "),
+    _(
+      "Clr\n"
+      "\n"
+      "Clears the display.\n"
+      "\n"
+      "Keyboard equivalent:   Delete\n"
+      "\n"
+      "This clears the value currently displayed."
+    ),
+    0,
+    GDK_Delete,
+    OP_CLEAR, 
+    M_NONE, 
+    do_clear
+},
+{ 
+    _("Int "),
+    _(
+      "Int\n"
+      "\n"
+      "Integer portion\n"
+      "\n"
+      "Keyboard equivalent:   Control-i\n"
+      "\n"
+      "Returns the integer portion of the current\n"
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK, 
+    GDK_i,
+    OP_CLEAR, 
+    M_NONE, 
+    do_portion
+},
+{ 
+    _("Frac"),
+    _(
+      "Frac\n"
+      " \n"
+      "Fractional portion\n"
+      "\n" 
+      "Keyboard equivalent:   Control-f\n"
+      " \n"
+      "Returns the fractional portion of the current\n"
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK, 
+    GDK_f,
+    OP_CLEAR, 
+    M_NONE, 
+    do_portion
+},
+{ 
+    _("Base"),
+    _(
+      "Base\n"
+      " \n"
+      "Changes numeric base.\n"
+      " \n"
+      "Keyboard equivalent:   B\n"
+      " \n"
+      "Initially the numeric base is decimal. You can\n"
+      "change the base to binary, octal, or hexadecimal.\n"
+      " \n"
+      "Press MENU on Base to show the available settings.\n"
+      "Choose a value from the menu to change to a new\n"
+      "numeric base.\n"
+      " \n"
+      "Depending on that base, various keys on the\n"
+      "calculator will be dimmed to show that they\n"
+      "are disabled.\n"
+      " \n"
+      "Alternatively, you can use the keyboard to set\n"
+      "the numeric base: Type B, followed by\n"
+      "b, o, d, or h to indicate the new base setting:\n"
+      " \n"
+      "b   binary\n"
+      "o   octal\n"
+      "d   decimal\n"
+      "h   hexadecimal"
+    ),
+    GDK_SHIFT_MASK,   
+    GDK_B,
+    OP_SET,
+    M_BASE,
+    do_pending
+},
+{ 
+    _("Disp"),
+    _(
+      "Disp\n"
+      " \n"
+      "Changes the type of numeric display.\n"
+      " \n"
+      "Keyboard equivalent:   D\n"
+      " \n"
+      "Initially the numeric display is fixed-point\n"
+      "notation to an accuracy of two decimal places.\n"
+      "You can change this to engineering or scientific\n"
+      "display.\n"
+      " \n"
+      "Press MENU on Disp to show the available settings.\n"
+      "Choose a value from the menu to change to a new\n"
+      "numeric display.\n"
+      " \n"
+      "The calculator display (plus the memory registers,\n"
+      "if they are showing) will be redrawn using the\n"
+      "new notation.\n"
+      " \n"
+      "Alternatively, you can use the keyboard to set\n"
+      "the numeric display: Type D, followed by\n"
+      "e, f, or s to indicate the new display setting:\n"
+      " \n"
+      "e   engineering\n"
+      "f   fixed-point\n"
+      "s   scientific"
+    ),
+    GDK_SHIFT_MASK,
+    GDK_D,
+    OP_SET,
+    M_NUM,
+    do_pending
+},
 
 /* Row 2. */
-{ _("A   "),  "A   ", 0,                GDK_a,          OP_NOP,   M_NONE, do_number    },
-{ _("B   "),  "B   ", 0,                GDK_b,          OP_NOP,   M_NONE, do_number    },
-{ _("C   "),  "C   ", 0,                GDK_c,          OP_NOP,   M_NONE, do_number    },
-{ _("Bsp "),  "Bsp ", 0,                GDK_BackSpace,  OP_NOP,   M_NONE, do_delete    },
-{ _("Abs "),  "Abs ", GDK_CONTROL_MASK, GDK_u,          OP_CLEAR, M_NONE, do_portion   },
-{ _("+/- "),  "+/- ", GDK_SHIFT_MASK,   GDK_C,          OP_CLEAR, M_NONE, do_immed     },
-{ _("Keys"),  "Keys", 0,                GDK_k,          OP_CLEAR, M_NONE, do_keys      },
-{ _("Mode"),  "Mode", GDK_SHIFT_MASK,   GDK_M,          OP_SET,   M_MODE, do_pending   },
+{ 
+    _("A   "),
+    _(
+      "Hex A (decimal 10)\n"
+      " \n"
+      "Keyboard equivalent:   a\n"
+      "\n" 
+      "Enters the hexadecimal value a in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_a,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("B   "),
+    _(
+      "Hex B (decimal 11)\n"
+      " \n"
+      "Keyboard equivalent:   b\n"
+      " \n"
+      "Enters the hexadecimal value b in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_b,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("C   "),
+    _(
+      "Hex C (decimal 12)\n"
+      " \n"
+      "Keyboard equivalent:   c\n"
+      " \n"
+      "Enters the hexadecimal value c in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_c,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _("Bsp "),
+    _(
+      "Bsp\n"
+      " \n"
+      "Erases characters one at a time.\n"
+      " \n"
+      "Keyboard equivalent:   Back Space\n"
+      " \n"
+      "This removes the right-most character of the\n"
+      "displayed value and recalculates the value of\n"
+      "the display.\n"
+      " \n"
+      "Internal accuracy is lost with this operation."
+    ),
+    0,
+    GDK_BackSpace,
+    OP_NOP,
+    M_NONE,
+    do_delete
+},
+{ 
+    _("Abs "),
+    _(
+      "Abs\n"
+      " \n"
+      "Absolute value.\n"
+      " \n"
+      "Keyboard equivalent:   Control-u\n"
+      " \n"
+      "Returns the absolute value of the current\n"
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_u,
+    OP_CLEAR, 
+    M_NONE, 
+    do_portion
+},
+{ 
+    _("+/- "),
+    _(
+      "+/-\n"
+      " \n"
+      "Change sign.\n"
+      " \n"
+      "Keyboard equivalent:   C\n"
+      "\n" 
+      "Changes the arithmetic sign of the current\n"
+      "displayed value or the exponent being entered."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_C,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Keys"),
+    _(
+      "Keys\n"
+      " \n"
+      "Toggles button labels.\n"
+      " \n"
+      "Keyboard equivalent:   k\n"
+      " \n"
+      "Toggles the labels on the calctool keys,\n"
+      "alternating between the mouse and keyboard\n"
+      "equivalents."
+    ),
+    0,
+    GDK_k,
+    OP_CLEAR, 
+    M_NONE, 
+    do_keys
+},
+{ 
+    _("Mode"),
+    _(
+      "Mode\n"
+      " \n"
+      "Changes the calculator mode.\n"
+      " \n"
+      "Keyboard equivalent:   M\n"
+      " \n"
+      "By default, the initial calculator mode is Basic.\n"
+      " \n"
+      "Press MENU on Mode to display and choose the\n"
+      "other available modes:\n"
+      " \n"
+      "- Financial\n"
+      "- Logical\n"
+      "- Scientific\n"
+      " \n"
+      " \n"
+      "If you choose one of these modes, a window with\n"
+      "extra buttons is displayed.\n"
+      " \n"
+      "Alternatively, you can set the calculator mode\n"
+      "using the keyboard. Type M, followed by n, s, or b\n"
+      "to indicate the new calculator mode.\n"
+      " \n"
+      "b   Basic\n"
+      "f   Financial\n"
+      "l   Logical\n"
+      "s   Scientific"
+    ),
+    GDK_SHIFT_MASK,
+    GDK_M,
+    OP_SET,
+    M_MODE, 
+    do_pending
+},
 
 /* Row 3. */
-{ _("7   "),  "7   ", 0,                GDK_7,          OP_NOP,   M_NONE, do_number    },
-{ _("8   "),  "8   ", 0,                GDK_8,          OP_NOP,   M_NONE, do_number    },
-{ _("9   "),  "9   ", 0,                GDK_9,          OP_NOP,   M_NONE, do_number    },
-{ _("X   "),  "X   ", 0,                GDK_x,          OP_SET,   M_NONE, do_calc      },
-{ _("1/x "),  "1/x ", 0,                GDK_r,          OP_CLEAR, M_NONE, do_immed     },
-{ _("x^2 "),  "x^2 ", GDK_SHIFT_MASK,   GDK_at,         OP_CLEAR, M_NONE, do_immed     },
-{ _("Acc "),  "Acc ", GDK_SHIFT_MASK,   GDK_A,          OP_SET,   M_ACC,  do_pending   },
-{ _("Mem..."), "Mem...", 0,             GDK_m,          OP_NOP,   M_NONE, do_memory    },
+{ 
+    _("7   "),
+    _(
+      "Numeric 7\n"
+      "\n" 
+      "Keyboard equivalent:   7\n"
+      " \n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_7,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("8   "),
+    _(
+      "Numeric 8\n"
+      "\n"
+      "Keyboard equivalent:   8\n"
+      "\n"
+      "This key is inactive in binary or octal base."
+    ),
+    0,
+    GDK_8,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _("9   "),
+    _(
+      "Numeric 9\n"
+      "\n"
+      "Keyboard equivalent:   9\n"
+      "\n"
+      "This key is inactive in binary or octal base."
+    ),
+    0,
+    GDK_9,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("X   "),
+    _(
+      "X\n"
+      "\n"
+      "Multiplication\n"
+      "\n"
+      "Keyboard equivalent:   x or *\n"
+      "\n"
+      "This key takes the last number entered and\n"
+      "multiplies it by the next number entered."
+    ),
+    0,
+    GDK_x,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{ 
+    _("1/x "),
+    _(
+      "1/x\n"
+      "\n"
+      "Reciprocal\n"
+      "\n"
+      "Keyboard equivalent:   r\n"
+      "\n"
+      "Returns the value 1 divided by the current\n"
+      "displayed value."
+    ),
+    0,
+    GDK_r,
+    OP_CLEAR, 
+    M_NONE, 
+    do_immed
+},
+{ 
+    _("x^2 "),
+    _(
+      "x^2\n"
+      "\n"
+      "Keyboard equivalent:   @\n"
+      "\n"
+      "Returns the square of the current displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_at,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Acc "),
+    _(
+      "Acc\n"
+      "\n"
+      "Accuracy\n"
+      "\n"
+      "Keyboard equivalent:   A\n"
+      "\n"
+      "Sets the accuracy of both the display and the\n"
+      "memory registers.\n"
+      "\n"
+      "Press MENU to display a menu of levels of\n"
+      "accuracy. Choose a level from the menu to set\n"
+      "the precision for the display and registers."
+    ),
+    GDK_SHIFT_MASK,   
+    GDK_A,
+    OP_SET,
+    M_ACC,
+    do_pending
+},
+{ 
+    _("Mem..."), 
+    _(
+      "Mem\n"
+      "\n"
+      "Displays a memory register window.\n"
+      "\n"
+      "Keyboard equivalent:   m\n"
+      "\n"
+      "Click SELECT on Mem to display a window showing\n"
+      "the values of the ten memory registers in the\n"
+      "current base, to the current accuracy.\n"
+      "\n"
+      "Alternatively, you can click SELECT on Mem,\n"
+      "and then click on a digit from 0 - 9."
+    ),
+    0,
+    GDK_m,
+    OP_NOP,
+    M_NONE, 
+    do_memory
+},
 
 /* Row 4. */
-{ _("4   "),  "4   ", 0,                GDK_4,          OP_NOP,   M_NONE, do_number    },
-{ _("5   "),  "5   ", 0,                GDK_5,          OP_NOP,   M_NONE, do_number    },
-{ _("6   "),  "6   ", 0,                GDK_6,          OP_NOP,   M_NONE, do_number    },
-{ _("/   "),  "/   ", 0,                GDK_slash,      OP_SET,   M_NONE, do_calc      },
-{ _("%   "),  "%   ", GDK_SHIFT_MASK,   GDK_percent,    OP_SET,   M_NONE, do_calc      },
-{ _("Sqrt"),  "Sqrt", 0,                GDK_s,          OP_CLEAR, M_NONE, do_immed     },
-{ _("Con "),  "Con ", GDK_SHIFT_MASK,   GDK_numbersign, OP_SET,   M_CON,  do_pending   },
-{ _("Fun "),  "Fun ", GDK_SHIFT_MASK,   GDK_F,          OP_SET,   M_FUN,  do_pending   },
+{ 
+    _("4   "),
+    _(
+      "Numeric 4\n"
+      "\n"
+      "Keyboard equivalent:   4\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_4,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _("5   "),
+    _(
+      "Numeric 5\n"
+      "\n"
+      "Keyboard equivalent:   5\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_5,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("6   "),
+    _(
+      "Numeric 6\n"
+      "\n"
+      "Keyboard equivalent:   6\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_6,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("/   "),
+    _(
+      "/\n"
+      "\n"
+      "Division\n"
+      "\n"
+      "Keyboard equivalent:   /\n"
+      "\n"
+      "This key takes the last number entered and\n"
+      "divides it by the next number entered."
+    ),
+    0,
+    GDK_slash,
+    OP_SET,
+    M_NONE, 
+    do_calc
+},
+{ 
+    _("%   "),
+    _(
+      "%\n"
+      "\n"
+      "Percentage\n"
+      "\n"
+      "Keyboard equivalent:   %\n"
+      "\n"
+      "Takes the last number entered and calculates a\n"
+      "percentage using the next number entered.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        200 % 20 = (returns 40)\n"
+      "\n"
+      "The calculator is multiplying (200*20)*0.01."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_percent,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{ 
+    _("Sqrt"),
+    _(
+      "Sqrt\n"
+      "\n"
+      "Square root\n"
+      "\n"
+      "Keyboard equivalent:   s\n"
+      "\n"
+      "Calculates the square root of the current\n"
+      "displayed value."
+    ),
+    0,
+    GDK_s,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Con "),
+    _(
+      "Con\n"
+      "\n"
+      "Constant n\n"
+      "\n"
+      "Keyboard equivalent:   #\n"
+      "\n"
+      "Press MENU on Con to show the available constants.\n"
+      "Choose a constant from the menu to enter its value\n"
+      "in the display.\n"
+      "\n"
+      "Alternatively, if you know the number of a\n"
+      "constant, you can click SELECT on Con, then\n"
+      "on a digit from 0 - 9 to indicate the constant\n"
+      "you want to enter.\n"
+      "\n"
+      "To add new constants or alter existing ones,\n"
+      "choose \"Enter Constant\" from the menu. This\n"
+      "displays a window in which you type the number,\n"
+      "description, and value of the constant.\n"
+      "\n"
+      "Click SELECT on \"Enter Constant\" to store the new\n"
+      "constant in the ~/.gcalctoolcf file."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_numbersign, 
+    OP_SET,
+    M_CON,
+    do_pending
+},
+{ 
+    _("Fun "),
+    _(
+      "Fun\n"
+      "\n"
+      "Menu of defined functions\n"
+      "\n"
+      "Keyboard equivalent:   F\n"
+      "\n"
+      "Press MENU on this key to display a menu of\n"
+      "functions you have defined. Choose a function from\n"
+      "the menu to execute it. The result will show in\n"
+      "the display.\n"
+      "\n"
+      "To add new functions or alter existing ones,\n"
+      "choose \"Enter Function\" from the menu. This\n"
+      "displays a window in which you type the number,\n"
+      "description, and value of the function.\n"
+      "\n"
+      "Click SELECT on \"New Function\" to store the new\n"
+      "function in the ~/.gcalctoolcf file.\n"
+      "\n"
+      "For the function value, type the keyboard strokes\n"
+      "that calculate your function. For example, to\n"
+      "calculate sine(90), type the Value:\n"
+      "\n"
+      "        90 \\s\n"
+      "\n"
+      "When you type the function value, use \\ to\n"
+      "represent the Control key even though KEYS shows\n"
+      "the keyboard equivalent of the Control key as\n"
+      "the character ^ .\n"
+      "\n"
+      "When you know the number of the function you\n"
+      "want, you can click SELECT on Fun, then on the\n"
+      "function's number."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_F,
+    OP_SET,
+    M_FUN,
+    do_pending
+},
 
 /* Row 5. */
-{ _("1   "),  "1   ", 0,                GDK_1,          OP_NOP,   M_NONE, do_number    },
-{ _("2   "),  "2   ", 0,                GDK_2,          OP_NOP,   M_NONE, do_number    },
-{ _("3   "),  "3   ", 0,                GDK_3,          OP_NOP,   M_NONE, do_number    },
-{ _("-   "),  "-   ", 0,                GDK_minus,      OP_SET,   M_NONE, do_calc      },
-{ _("(   "),  "(   ", GDK_SHIFT_MASK,   GDK_parenleft,  OP_SET,   M_NONE, do_paren     },
-{ _(")   "),  ")   ", GDK_SHIFT_MASK,   GDK_parenright, OP_SET,   M_NONE, do_paren     },
-{ _("Rcl "),  "Rcl ", GDK_SHIFT_MASK,   GDK_R,          OP_SET,   M_RCL,  do_pending   },
-{ _("Sto "),  "Sto ", GDK_SHIFT_MASK,   GDK_S,          OP_SET,   M_STO,  do_pending   },
+{ 
+    _("1   "),  
+    _(
+      "Numeric 1\n"
+      "\n"
+      "Keyboard equivalent:   1"
+    ),
+    0,
+    GDK_1,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("2   "),
+    _(
+      "Numeric 2\n"
+      "\n"
+      "Keyboard equivalent:   2\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_2,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("3   "),
+    _(
+      "Numeric 3\n"
+      "\n"
+      "Keyboard equivalent:   3\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_3,
+    OP_NOP,
+    M_NONE, 
+    do_number
+},
+{ 
+    _("-   "),
+    _(
+      "-\n"
+      "\n"
+      "Subtraction\n"
+      "\n"
+      "Keyboard equivalent:   -\n"
+      "\n"
+      "This operation takes the last number entered and\n"
+      "subtracts from it the next number entered."
+    ),
+    0,
+    GDK_minus,
+    OP_SET,
+    M_NONE, 
+    do_calc
+},
+{ 
+    _("(   "),
+    _(
+      "(\n"
+      "\n"
+      "Left parenthesis\n"
+      "\n"
+      "Keyboard equivalent:   (\n"
+      "\n"
+      "Allows you to group together a set of\n"
+      "calculations. Use with the right parenthesis.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        2 * ( 3 + 4 ) = 14\n"
+      "\n"
+      "contrasted with:\n"
+      "\n"
+      "        2 * 3 + 4 = 10"
+    ),
+    GDK_SHIFT_MASK,   
+    GDK_parenleft,  
+    OP_SET,
+    M_NONE, 
+    do_paren
+},
+{ 
+    _(")   "),
+    _(
+      ")\n"
+      "\n"
+      "Right parenthesis\n"
+      "\n"
+      "Keyboard equivalent:   )\n"
+      "\n"
+      "Allows you to group together a set of\n"
+      "calculations. Use with the left parenthesis.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        2 * ( 3 + 4 ) = 14\n"
+      "\n"
+      "contrasted with:\n"
+      "\n"
+      "        2 * 3 + 4 = 10"
+    ),
+    GDK_SHIFT_MASK,   
+    GDK_parenright, 
+    OP_SET,   
+    M_NONE, 
+    do_paren
+},
+{ 
+    _("Rcl "),  
+    _(
+      "Rcl\n"
+      "\n"
+      "Retrieves a memory register.\n"
+      "\n"
+      "Keyboard equivalent:   R\n"
+      "\n"
+      "Press MENU on Rcl to display a menu of available\n"
+      "registers. Choose a register from the menu to\n"
+      "retrieve its value.\n"
+      "\n"
+      "When you know the number of the register you\n"
+      "want, you can click SELECT on Rcl, then on the\n"
+      "register's number (a digit from 0 to 9)."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_R,
+    OP_SET,
+    M_RCL,
+    do_pending
+},
+{ 
+    _("Sto "),
+    _(
+      "Sto\n"
+      "\n"
+      "Stores a value in a memory register.\n"
+      "\n"
+      "Keyboard equivalent:   S\n"
+      "\n"
+      "Press MENU to display a menu of all registers.\n"
+      "Choose a register from the menu to store the\n"
+      "displayed value.\n"
+      "\n"
+      "Alternately, click SELECT on Sto, then on a digit\n"
+      "in the range 0 to 9 to indicate the memory\n"
+      "register in which to store the displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_S,
+    OP_SET,
+    M_STO,
+    do_pending
+},
 
 /* Row 6. */
-{ _("0   "),  "0   ", 0,                GDK_0,          OP_NOP,   M_NONE, do_number    },
-{ _(".   "),  ".   ", 0,                GDK_period,     OP_NOP,   M_NONE, do_point     },
-{ _("=   "),  "=   ", 0,                GDK_equal,      OP_CLEAR, M_NONE, do_calc      },
-{ _("+   "),  "+   ", GDK_SHIFT_MASK,   GDK_plus,       OP_SET,   M_NONE, do_calc      },
-{ _("Exp "),  "Exp ", GDK_SHIFT_MASK,   GDK_E,          OP_SET,   M_NONE, do_expno     },
-{ _("Asc..."), "Asc...", GDK_CONTROL_MASK, GDK_a,       OP_CLEAR, M_NONE, do_ascii     },
-{ _("Exch"),  "Exch", GDK_SHIFT_MASK,   GDK_X,          OP_SET,   M_EXCH, do_pending   },
-{ _("Quit"),  "Quit", 0,                GDK_q,          OP_CLEAR, M_NONE, do_frame     },
+{ 
+    _("0   "),
+    _(
+      "Numeric 0\n"
+      "\n"
+      "Keyboard equivalent:   0\n"
+    ),
+    0,
+    GDK_0,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{ 
+    _(".   "),
+    _(
+      ".\n"
+      "\n"
+      "Numeric point\n"
+      "\n"
+      "Keyboard equivalent:   .\n"
+      "\n"
+      "Starts the fractional part of a numeric entry."
+    ),
+    0,
+    GDK_period,
+    OP_NOP,
+    M_NONE,
+    do_point
+},
+{ 
+    _("=   "),
+    _(
+      "=\n"
+      "\n"
+      "Calculates a result.\n"
+      "\n"
+      "Keyboard equivalent:   = or Return\n"
+      "\n"
+      "Displays the result of the current calculation in\n"
+      "the current base."
+    ),
+    0,
+    GDK_equal,
+    OP_CLEAR,
+    M_NONE,
+    do_calc
+},
+{ 
+    _("+   "),
+    _(
+      "+\n"
+      "\n"
+      "Addition\n"
+      "\n"
+      "Keyboard equivalent:   +\n"
+      "\n"
+      "Takes the last number entered and adds it to the\n"
+      "next number entered."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_plus,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{ 
+    _("Exp "),
+    _(
+      "Exp\n"
+      "\n"
+      "Enters an exponential number.\n"
+      "\n"
+      "Keyboard equivalent:   E\n"
+      "\n"
+      "Starts exponential input. Any numbers typed from\n"
+      "now on are the exponent. If you haven't entered a\n"
+      "mantissa, the calculator uses a mantissa of 1.0."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_E,
+    OP_SET,
+    M_NONE,
+    do_expno
+},
+{ 
+    _("Asc..."),
+    _(
+      "Asc\n"
+      "\n"
+      "ASCII value\n"
+      "\n"
+      "Keyboard equivalent:   Control-a\n"
+      "\n"
+      "Displays a window in which you type a character\n"
+      "whose ASCII value you want. Enter the character\n"
+      "and click SELECT on the ASCII button in the window.\n"
+      "\n"
+      "The calculator displays the ASCII value in the\n"
+      "current number base. (You can change the base.)"
+    ),
+    GDK_CONTROL_MASK, 
+    GDK_a,
+    OP_CLEAR, 
+    M_NONE, 
+    do_ascii
+},
+{ 
+    _("Exch"),
+    _(
+      "Exch\n"
+      "\n"
+      "Register exchange\n"
+      "\n"
+      "Keyboard equivalent:   X\n"
+      "\n"
+      "Press MENU to display the menu of available\n"
+      "registers. You can exchange the contents of a\n"
+      "register with the current displayed value.\n"
+      "\n"
+      "Alternatively, click SELECT on Exch, then on a\n"
+      "digit from 0 - 9 to indicate which register you\n"
+      "want to exchange with the current display.\n"
+      "\n"
+      "Until you store a value in a register, it has the\n"
+      "value 0.00. You can also fill a register by\n"
+      "editing the ~/.gcalctoolcf file."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_X,
+    OP_SET,
+    M_EXCH, 
+    do_pending
+},
+{ 
+    _("Quit"),
+    _(
+      "Quit\n"
+      "\n"
+      "Quits the calculator.\n"
+      "\n"
+      "Keyboard equivalent:   q or Q\n"
+      "\n"
+      "Quits the calculator without asking for your\n"
+      "confirmation."
+    ),
+    0,
+    GDK_q,
+    OP_CLEAR,
+    M_NONE,
+    do_frame
+},
 };
 
 struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
-/* str        hstr    mods              value           opdisp   menutype func */
+
+/* str
+   hstr    
+   mods              
+   value           
+   opdisp   
+   menutype 
+   func
+*/
 
 /* Financial. */
-{ _("Ctrm"),  "Ctrm", GDK_CONTROL_MASK, GDK_m,          OP_CLEAR, M_NONE, do_business  },
-{ _("Ddb "),  "Ddb ", GDK_CONTROL_MASK, GDK_d,          OP_CLEAR, M_NONE, do_business  },
-{ _("Fv  "),  "Fv  ", 0,                GDK_v,          OP_CLEAR, M_NONE, do_business  },
-{ _("Pmt "),  "Pmt ", GDK_SHIFT_MASK,   GDK_P,          OP_CLEAR, M_NONE, do_business  },
-{ _("Pv  "),  "Pv  ", 0,                GDK_p,          OP_CLEAR, M_NONE, do_business  },
-{ _("Rate"),  "Rate", GDK_CONTROL_MASK, GDK_r,          OP_CLEAR, M_NONE, do_business  },
-{ _("Sln "),  "Sln ", GDK_CONTROL_MASK, GDK_l,          OP_CLEAR, M_NONE, do_business  },
-{ _("Syd "),  "Syd ", GDK_CONTROL_MASK, GDK_y,          OP_CLEAR, M_NONE, do_business  },
-{ _("Term"),  "Term", 0,                GDK_T,          OP_CLEAR, M_NONE, do_business  },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ 
+    _("Ctrm"),
+    _(
+      "Ctrm\n"
+      "\n"
+      "Compounding term\n"
+      "\n"
+      "Keyboard equivalent:   Control-t\n"
+      "\n"
+      "Computes the number of compounding periods it\n"
+      "will take an investment of present value pv to\n"
+      "grow to a future value of fv, earning a fixed\n"
+      "interest rate int per compounding period.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - int (periodic interest rate)\n"
+      "   Register 1 - fv  (future value)\n"
+      "   Register 2 - pv  (present value)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have just deposited $8,000 in an account\n"
+      "that pays an annual interest rate of 9%,\n"
+      "compounded monthly. You want to determine how\n"
+      "long it will take to double you investment.\n"
+      "\n"
+      "   Register 0 - 0.0075 (interest rate = 9% / 12)\n"
+      "   Register 1 - 16000  (future value).\n"
+      "   Register 2 - 8000   (present value).\n"
+      "\n"
+      "Pressing SELECT on Ctrm returns 92.77, which\n"
+      "tells you that it would take 92.77 months, or\n"
+      "almost eight years, to double your $8,000."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_m,
+    OP_CLEAR,
+    M_NONE,
+    do_business
+},
+{ 
+    _("Ddb "),
+    _(
+      "Ddb\n"
+      "\n"
+      "Double-declining depreciation\n"
+      "\n"
+      "Keyboard equivalent:   Control-d\n"
+      "\n"
+      "Computes the depreciation allowance on an asset\n"
+      "for a specified period of time, using the\n"
+      "double-declining balance method.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - cost    (amount paid for asset)\n"
+      "   Register 1 - salvage (value of asset at end\n"
+      "                         of its life)\n"
+      "   Register 2 - life    (useful life of the asset)\n"
+      "   Register 3 - period  (time period for\n"
+      "                         depreciation allowance)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have just purchased an office machine for\n"
+      "$8,000. The useful life of this machine is\n"
+      "six years. The salvage value after six years\n"
+      "is $900.\n"
+      "\n"
+      "To compute the depreciate expense for\n"
+      "the fourth year, using the double-declining\n"
+      "balance method.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 8000     (amount paid for asset)\n"
+      "   Register 1 - 900      (value of asset at end\n"
+      "                          of its life)\n"
+      "   Register 2 - 6        (useful life of the\n"
+      "                          asset)\n"
+      "   Register 3 - 4        (time period for\n"
+      "                          depreciation allowance)\n"
+      "\n"
+      "Pressing SELECT on Ddb returns 790.12, which\n"
+      "tells you that the depreciation expense for the\n"
+      "fourth year will be $790.12."
+    ),
+    GDK_CONTROL_MASK, 
+    GDK_d,
+    OP_CLEAR, 
+    M_NONE, 
+    do_business
+},
+{ 
+    _("Fv  "),
+    _(
+      "Fv\n"
+      "\n"
+      "Future value\n"
+      "\n"
+      "Keyboard equivalent:   v\n"
+      "\n"
+      "This calculation determines the future value of\n"
+      "an investment. It computes the future value based\n"
+      "on a series of equal payments, each of amount pmt,\n"
+      "earning periodic interest rate int, over the\n"
+      "number of payment periods in term.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - pmt (periodic payment)\n"
+      "   Register 1 - int (periodic interest rate)\n"
+      "   Register 2 - n   (number of periods)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You plan to deposit $4,000 each year for the next\n"
+      "20 years into a bank account. The account is\n"
+      "paying 8% interest, compounded annually.\n"
+      "Interest is paid on the last day of each year.\n"
+      "\n"
+      "You want to compute the value of your account\n"
+      "in 20 years. You make each year's contribution\n"
+      "on the last day of the year.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 4000 (periodic payment)\n"
+      "   Register 1 - 0.08 (periodic interest rate\n"
+      "                      is 8%)\n"
+      "   Register 2 - 20   (number of periods)\n"
+      "\n"
+      "Clicking SELECT on Fv returns 183047.86, the value\n"
+      "of your account in dollars at the end of 20 years."
+    ),
+    0,
+    GDK_v,
+    OP_CLEAR,
+    M_NONE,
+    do_business
+},
+{ 
+    _("Pmt "),
+    _(
+      "Pmt\n"
+      "\n"
+      "Periodic payment\n"
+      "\n"
+      "Keyboard equivalent:   P\n"
+      "\n"
+      "Computes the amount of the periodic payment\n"
+      "of a loan. Most installment loans are computed\n"
+      "like ordinary annuities, in that payments are\n"
+      "made at the end of each payment period.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"    
+      "   Register 0 - prin (principal)\n"
+      "   Register 1 - int  (periodic interest rate)\n"
+      "   Register 2 - n    (term)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You are considering taking out a $120,000 mortgage\n"
+      "for 30 years at an annual interest rate of 11.0%.\n"
+      "You want to determine your monthly repayment.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 120000  (principal).\n"
+      "   Register 1 - 0.00916 (periodic interest rate\n"
+      "                         is 11.0% / 12)\n"
+      "   Register 2 - 360     (term - 30 x 12)\n"
+      "\n"
+      "Clicking SELECT on Pmt returns 1142.06, the value\n"
+      "in dollars of your monthly repayment."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_P,
+    OP_CLEAR, 
+    M_NONE,
+    do_business
+},
+{ 
+    _("Pv  "),
+    _(
+      "Pv\n"
+      "\n"
+      "Present value\n"
+      "\n"
+      "Keyboard equivalent:   p\n"
+      "\n"
+      "Determines the present value of an investment. It\n"
+      "computes the present value based on a series of\n"
+      "equal payments, each of amount pmt, discounted at\n"
+      "periodic interest rate int, over the number of\n"
+      "periods in term.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - pmt (periodic payment)\n"
+      "   Register 1 - int (periodic interest rate)\n"
+      "   Register 2 - n   (term)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have just won a million dollars. The prize\n"
+      "is awarded in 20 annual payments of $50,000 each\n"
+      "(a total of $1,000,000 over 20 years). Annual\n"
+      "payments are received at the end of each year.\n"
+      "\n"
+      "You are given the option of receiving a single\n"
+      "lump-sum payment of $400,000 instead of the\n"
+      "million dollars annuity. You want to find out\n"
+      "which option is worth more in today's dollars.\n"
+      "\n"
+      "If you were to accept the annual payments of\n"
+      "$50,000, you assume that you would invest the\n"
+      "money at a rate of 9%, compounded annually.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 50000 (periodic payment).\n"
+      "   Register 1 - 0.09  (periodic interest rate\n"
+      "                       is 9%)\n"
+      "   Register 2 - 20    (term)\n"
+      "\n"
+      "Clicking SELECT on Pv returns a value of\n"
+      "456427.28, which tells you that the $1,000,000\n"
+      "paid over 20 years is worth $456,427.28 in\n"
+      "present dollars.\n"
+      "\n"
+      "Based on your assumptions, the lump-sum\n"
+      "payment of $400,000 is worth less than the\n"
+      "million-dollar ordinary annuity, in present\n"
+      "dollars (before taxes)."
+    ),
+    0,
+    GDK_p, 
+    OP_CLEAR,
+    M_NONE,
+    do_business
+},
+{ 
+    _("Rate"),
+    _(
+      "Rate\n"
+      "\n"
+      "Periodic interest rate\n"
+      "\n"
+      "Keyboard equivalent:   Control-r\n"
+      "\n"
+      "Returns the periodic interest necessary for a\n"
+      "present value of pv to grow to a future value of\n"
+      "fv over the number of compounding periods in term.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - fv (future value).\n"
+      "   Register 1 - pv (present value).\n"
+      "   Register 2 - n  (term).\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have invested $20,000 in a bond. The bond\n"
+      "matures in five years, and has a maturity value\n"
+      "of $30,000. Interest is compounded monthly. You\n"
+      "want to determine the periodic interest rate for\n"
+      "this investment.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 30000 (future value)\n"
+      "   Register 1 - 20000 (present value)\n"
+      "   Register 2 - 60    (term - 5 x 12)\n"
+      "\n"
+      "Clicking SELECT on Rate returns .00678, which\n"
+      "tells you that the periodic (monthly) interest\n"
+      "rate is 0.678%, under 1% per month.\n"
+      "\n"
+      "To determine the annual rate, multiply the above\n"
+      "formula by 12, which yields a result of 8.14%."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_r,
+    OP_CLEAR,
+   M_NONE,
+   do_business
+},
+{ 
+    _("Sln "),
+    _(
+      "Sln\n"
+      "\n"
+      "Straight-line depreciation\n"
+      "\n"
+      "Keyboard equivalent:   Control-s\n"
+      "\n"
+      "Computes the straight-line depreciation of an\n"
+      "asset for one period.\n"
+      "\n"
+      "The straight-line method of depreciation divides\n"
+      "the depreciable cost (cost - salvage) evenly over\n"
+      "the useful life of an asset. The useful life is\n"
+      "the number of periods (typically years) over\n"
+      "which an asset is depreciated.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - cost     (cost of the asset)\n"
+      "   Register 1 - salvage  (salvage value of the\n"
+      "                          asset)\n"
+      "   Register 2 - life     (useful life of the\n"
+      "                          asset)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have purchased an office machine for $8,000.\n"
+      "The useful life of this machine is six years,\n"
+      "and the salvage value in eight years will be\n"
+      "$900. You want to compute yearly depreciation\n"
+      "expense, using the straight-line method.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 8000     (cost of the asset)\n"
+      "   Register 1 - 900      (salvage value of the\n"
+      "                          asset)\n"
+      "   Register 2 - 6        (useful life of the\n"
+      "                          asset)\n"
+      "\n"
+      "Clicking SELECT on Sln returns 1183.33, the yearly\n"
+      "dollar depreciation allowance."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_l,
+    OP_CLEAR,
+    M_NONE,
+    do_business
+},
+{ 
+    _("Syd "),
+    _(
+      "Syd\n"
+      "\n"
+      "Sum-of-the years'-digits depreciation\n"
+      "\n"
+      "Keyboard equivalent:   Control-y\n"
+      "\n"
+      "Returns the sum-of-the-years'-digits depreciation\n"
+      "for a specified period.\n"
+      "\n"
+      "The sum-of-the-years'-digits method of\n"
+      "depreciation accelerates the rate of depreciation,\n"
+      "so that more depreciation expense occurs in\n"
+      "earlier periods than in later ones.\n"
+      "\n"
+      "The depreciable cost is the actual cost minus\n"
+      "salvage value. The useful life is the number of\n"
+      "periods (typically years) over which an asset is\n"
+      "depreciated.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - cost     (cost of the asset)\n"
+      "   Register 1 - salvage  (salvage value of\n"
+      "                          the asset)\n"
+      "   Register 2 - life     (useful life of the\n"
+      "                          asset)\n"
+      "   Register 3 - period   (period for which\n"
+      "                         depreciation is computed)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You have just purchased an office machine for\n"
+      "$8,000. The useful life of this machine is six\n"
+      "years, and the salvage value after eight years\n"
+      "will be $900.\n"
+      "\n"
+      "You want to compute the depreciation expense for\n"
+      "the fourth year, using the sum-of-the-years'-\n"
+      "digits method.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 8000    (cost of the asset)\n"
+      "   Register 1 - 900     (salvage value of\n"
+      "                         the asset)\n"
+      "   Register 2 - 6       (useful life of the\n"
+      "                         asset)\n"
+      "   Register 3 - 4       (period for which\n"
+      "                         depreciation is computed)\n"
+      "\n"
+      "Clicking SELECT on Syd returns 1014.29, the dollar\n"
+      "depreciation allowance for the fourth year."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_y,
+    OP_CLEAR,
+    M_NONE, 
+    do_business
+},
+{ 
+    _("Term"),
+    _(
+      "Term\n"
+      "\n"
+      "Payment period\n"
+      "\n"
+      "Keyboard equivalent:   T\n"
+      "\n"
+      "Returns the number of payment periods in the term\n"
+      "of an ordinary annuity necessary to accumulate a\n"
+      "future value of fv, earning a periodic interest\n"
+      "rate of int. Each payment is equal to amount pmt.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - pmt (periodic payment)\n"
+      "   Register 1 - fv  (future value)\n"
+      "   Register 2 - int (periodic interest rate)\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "You deposit $1,800 at the end of each year into\n"
+      "a bank account. Your account earns 11% a year,\n"
+      "compounded annually. You want to determine how\n"
+      "long it will take to accumulate $120,000.\n"
+      "\n"
+      "Memory register usage:\n"
+      "\n"
+      "   Register 0 - 1800    (periodic payment)\n"
+      "   Register 1 - 120000  (future value)\n"
+      "   Register 2 - 0.11    (periodic interest rate\n"
+      "             is 11%)\n"
+      "\n"
+      "Clicking SELECT on Term returns 20.32, the number\n"
+      "of years it will take to accumulate $120,000 in\n"
+      "your account."
+    ),
+    0,
+    GDK_T,
+    OP_CLEAR,
+    M_NONE,
+    do_business
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE, 
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE, 
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
 
 /* Logical. */
-{ _(" <  "),  " <  ", GDK_SHIFT_MASK, GDK_less,         OP_SET,   M_LSHF, do_pending   },
-{ _(" >  "),  " >  ", GDK_SHIFT_MASK, GDK_greater,      OP_SET,   M_RSHF, do_pending   },
-{ _("&16 "),  "&16 ", 0,              GDK_bracketleft,  OP_CLEAR, M_NONE, do_immed     },
-{ _("&32 "),  "&32 ", 0,              GDK_bracketright, OP_CLEAR, M_NONE, do_immed     },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ _("Or  "),  "Or  ", GDK_SHIFT_MASK, GDK_bar,          OP_SET,   M_NONE, do_calc      },
-{ _("And "),  "And ", GDK_SHIFT_MASK, GDK_ampersand,    OP_SET,   M_NONE, do_calc      },
-{ _("Not "),  "Not ", GDK_SHIFT_MASK, GDK_asciitilde,   OP_CLEAR, M_NONE, do_immed     },
-{ _("Xor "),  "Xor ", GDK_SHIFT_MASK, GDK_caret,        OP_SET,   M_NONE, do_calc      },
-{ _("Xnor"),  "Xnor", 0,              GDK_n,            OP_SET,   M_NONE, do_calc      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ 
+    _(" <  "),
+    _(
+      "<\n"
+      "\n"
+      "Left shift n\n"
+      "\n"
+      "Keyboard equivalent:   <\n"
+      "\n"
+      "Use this key to shift the displayed binary value\n"
+      "a designated number of places to the left. Click\n"
+      "SELECT on the key, then on a digit in the range\n"
+      "0 to f to indicate how many places to shift."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_less,
+    OP_SET,
+    M_LSHF,
+    do_pending
+},
+{ 
+    _(" >  "),
+    _(
+      ">\n"
+      "\n"
+      "Right shift n\n"
+      "\n"
+      "Keyboard equivalent:   >\n"
+      "\n"
+      "Use this key to shift the displayed binary value\n"
+      "a designated number of places to the right.\n"
+      "Click SELECT on the key, then on a digit in the\n"
+      "range 0 to f to indicate how many places to shift."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_greater,
+    OP_SET,
+    M_RSHF,
+    do_pending
+},
+{ 
+    _("&16 "),
+    _(
+      "&16\n"
+      "\n"
+      "Get a 16-bit unsigned integer.\n"
+      "\n"
+      "Keyboard equivalent:   ]\n"
+      "\n"
+      "This is a logical function that truncates the\n"
+      "given number and returns a 16-bit unsigned\n"
+      "integer."
+    ),
+    0,
+    GDK_bracketleft,
+    OP_CLEAR, 
+    M_NONE, 
+    do_immed
+},
+{ 
+    _("&32 "),
+    _(
+      "&32\n"
+      "\n"
+      "Get a 32-bit unsigned integer.\n"
+      "\n"
+      "Keyboard equivalent:   [\n"
+      "\n"
+      "This is a logical function that truncates the\n"
+      "given number and returns a 32-bit unsigned\n"
+      "integer."
+    ),
+    0,
+    GDK_bracketright, 
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE, 
+    do_none
+},
+{ 
+    _("Or  "),
+    _(
+      "Or\n"
+      "\n"
+      "Logical OR\n"
+      "\n"
+      "Keyboard equivalent:   |\n"
+      "\n"
+      "This key performs a logical OR operation on the\n"
+      "last number entered and the next number entered,\n"
+      "treating both numbers as unsigned long integers."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_bar,
+    OP_SET,
+    M_NONE, 
+    do_calc
+},
+{ 
+    _("And "),
+    _(
+      "And\n"
+      "\n"
+      "Logical AND\n"
+      "\n"
+      "Keyboard equivalent:   &\n"
+      "\n"
+      "This key performs a logical AND operation on the\n"
+      "last number entered and the next number entered,\n"
+      "treating both numbers as unsigned long integers."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_ampersand,
+    OP_SET,
+    M_NONE, 
+    do_calc
+},
+{ 
+    _("Not "),
+    _(
+      "Not\n"
+      "\n"
+      "Logical NOT\n"
+      "\n"
+      "Keyboard equivalent:   ~\n"
+      "\n"
+      "This key performs a logical NOT operation on the\n"
+      "current displayed value."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_asciitilde,
+    OP_CLEAR, 
+    M_NONE, 
+    do_immed
+},
+{ 
+    _("Xor "),
+    _(
+      "Xor\n"
+      "\n"
+      "Logical XOR\n"
+      "\n"
+      "Keyboard equivalent:   ^\n"
+      "\n"
+      "This key takes the last number entered and the\n"
+      "next number entered, and performs a logical XOR\n"
+      "operation on them, treating both numbers as\n"
+      "unsigned long integers."
+    ),
+    GDK_SHIFT_MASK, 
+    GDK_caret,
+    OP_SET,
+    M_NONE, 
+    do_calc
+},
+{ 
+    _("Xnor"),
+    _(
+      "Xnor\n"
+      "\n"
+      "Logical XNOR\n"
+      "\n"
+      "Keyboard equivalent:   n\n"
+      "\n"
+      "This key takes the last number entered and the\n"
+      "next number entered, and performs a logical XNOR\n"
+      "operation on them, treating both numbers as\n"
+      "unsigned long integers."
+    ),
+    0,
+    GDK_n,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE, 
+    do_none
+},
+{ 
+    "    ",
+    "    ", 
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
 
 /* Scientific. */
-{ _("Trig"),  "Trig", GDK_SHIFT_MASK,   GDK_T,          OP_SET,   M_TRIG, do_pending   },
-{ _("Hyp "),  "Hyp ", 0,                GDK_h,          OP_CLEAR, M_NONE, do_immed     },
-{ _("Inv "),  "Inv ", 0,                GDK_i,          OP_CLEAR, M_NONE, do_immed     },
-{ _("e^x "),  "e^x ", GDK_SHIFT_MASK,   GDK_braceleft,  OP_CLEAR, M_NONE, do_immed     },
-{ _("10^x"),  "10^x", GDK_SHIFT_MASK,   GDK_braceright, OP_CLEAR, M_NONE, do_immed     },
-{ _("y^x "),  "y^x ", 0,                GDK_y,          OP_SET,   M_NONE, do_calc      },
-{ _("x!  "),  "x!  ", GDK_SHIFT_MASK,   GDK_exclam,     OP_CLEAR, M_NONE, do_immed     },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ _("Cos "),  "Cos ", GDK_CONTROL_MASK, GDK_c,          OP_CLEAR, M_NONE, do_trig      },
-{ _("Sin "),  "Sin ", GDK_CONTROL_MASK, GDK_s,          OP_CLEAR, M_NONE, do_trig      },
-{ _("Tan "),  "Tan ", GDK_CONTROL_MASK, GDK_t,          OP_CLEAR, M_NONE, do_trig      },
-{ _("Ln  "),  "Ln  ", GDK_SHIFT_MASK,   GDK_N,          OP_CLEAR, M_NONE, do_immed     },
-{ _("Log "),  "Log ", GDK_SHIFT_MASK,   GDK_G,          OP_CLEAR, M_NONE, do_immed     },
-{ _("Rand"),  "Rand", GDK_SHIFT_MASK,   GDK_question,   OP_CLEAR, M_NONE, do_immed     },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ 
+    _("Trig"),
+    _(
+      "Trig\n"
+      "\n"
+      "Sets trigonometric mode.\n"
+      "\n"
+      "Keyboard equivalent:   T\n"
+      "\n"
+      "Initially the trigonometric display type is\n"
+      "degrees. You can change this to gradients or\n"
+      "radians.\n"
+      "\n"
+      "Press MENU on Trig to show the available settings.\n"
+      "Choose a value from the menu to set the new\n"
+      "trigonometric display type.\n"
+      "\n"
+      "Alternatively, you can use the keyboard to set the\n"
+      "trigonometric display type.\n"
+      "\n"
+      "Type T, followed by d, g, or r to indicate the\n"
+      "new trigonometric display setting:\n"
+      "\n"
+      "d   degrees\n"
+      "g   gradients\n"
+      "r   radians"
+    ),
+    GDK_SHIFT_MASK,
+    GDK_T,
+    OP_SET,
+    M_TRIG,
+    do_pending
+},
+{ 
+    _("Hyp "),
+    _(
+      "Hyp\n"
+      "\n"
+      "Hyperbolic flag\n"
+      "\n"
+      "Keyboard equivalent:   h\n"
+      "\n"
+      "This key is a toggle that sets and unsets the\n"
+      "hyperbolic function flag. That flag affects\n"
+      "Sin, Cos, and Tan trigonometric functions."
+    ),
+    0,
+    GDK_h,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Inv "),
+    _(
+      "Inv\n"
+      "\n"
+      "Inverse function flag\n"
+      "\n"
+      "Keyboard equivalent:   i\n"
+      "\n"
+      "This key is a toggle for setting or unsetting\n"
+      "the inverse function flag. This flag affects Sin,\n"
+      "Cos, and Tan trigonometric functions."
+    ),
+    0,
+    GDK_i,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("e^x "),
+    _(
+      "e^x\n"
+      "\n"
+      "e to the x power\n"
+      "\n"
+      "Keyboard equivalent:   {\n"
+      "\n"
+      "Returns e raised to the power of the current\n"
+      "displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_braceleft,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("10^x"),
+    _(
+      "10^x\n"
+      "\n"
+      "10 to the x power\n"
+      "\n"
+      "Keyboard equivalent:   }\n"
+      "\n"
+      "Returns 10 raised to the power of the current\n"
+      "displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_braceright,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("y^x "),
+    _(
+      "y^x\n"
+      "\n"
+      "y to the power of x\n"
+      "\n"
+      "Keyboard equivalent:   y\n"
+      "\n"
+      "Takes the last number entered and raises it to\n"
+      "the power of the next number entered.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        2 Y 3 = (returns 8)"
+    ),
+    0,
+    GDK_y,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{ 
+    _("x!  "),
+    _(
+      "x!\n"
+      "\n"
+      "Factorial\n"
+      "\n"
+      "Keyboard equivalent:   !\n"
+      "\n"
+      "Returns the factorial of the current displayed\n"
+      "value. This will only work for positive integer\n"
+      "values."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_exclam,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    _("Cos "),
+    _(
+      "Cos\n"
+      "\n"
+      "Cosine function\n"
+      "\n"
+      "Keyboard equivalent:   Control-c\n"
+      "\n"
+      "Returns the trigonometric cosine, arc cosine,\n"
+      "hyperbolic cosine, or inverse hyperbolic cosine\n"
+      "of the current displayed value, depending on the\n"
+      "settings of the Hyp and Inv flags.\n"
+      "\n"
+      "The result appears in the current trigonometric\n"
+      "unit (degrees, radians, or gradients)."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_c,
+    OP_CLEAR,
+    M_NONE,
+    do_trig
+},
+{ 
+    _("Sin "),
+    _(
+      "Sin\n"
+      "\n"
+      "Sine function\n"
+      "\n"
+      "Keyboard equivalent:   Control-s\n"
+      "\n"
+      "Returns the trigonometric sine, arc sine,\n"
+      "hyperbolic sine, or inverse hyperbolic sine of\n"
+      "the current displayed value, depending on the\n"
+      "settings of the Hyp and Inv flags.\n"
+      "\n"
+      "The result appears in the current trigonometric\n"
+      "unit (degrees, radians, or gradients)."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_s,
+    OP_CLEAR,
+    M_NONE,
+    do_trig
+},
+{ 
+    _("Tan "),
+    _(
+      "Tan\n"
+      "\n"
+      "Tangent function\n"
+      "\n"
+      "Keyboard equivalent:   Control-t\n"
+      "\n"
+      "Returns the trigonometric tangent, arc tangent,\n"
+      "hyperbolic tangent, or inverse hyperbolic tangent\n"
+      "of the current displayed value, depending on the\n"
+      "settings of the Hyp and Inv flags.\n"
+      "\n"
+      "The result appears in the current trigonometric\n"
+      "unit (degrees, radians, or gradients)."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_t,
+    OP_CLEAR,
+    M_NONE,
+    do_trig
+},
+{ 
+    _("Ln  "),
+    _(
+      "Ln\n"
+      "\n"
+      "Natural log\n"
+      "\n"
+      "Keyboard equivalent:   N\n"
+      "\n"
+      "Returns the natural logarithm of the current\n"
+      "displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_N,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Log "),
+    _(
+      "Log\n"
+      "\n"
+      "Base 10 log\n"
+      "\n"
+      "Keyboard equivalent:   G\n"
+      "\n"
+      "Returns the base 10 logarithm of the current\n"
+      "displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_G,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    _("Rand"),
+    _(
+      "Rand\n"
+      "\n"
+      "Random number\n"
+      "\n"
+      "Keyboard equivalent:   ?\n"
+      "\n"
+      "Generates a random number in the range 0.0 to 1.0\n"
+      "and enters it into the calculator display."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_question,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{ 
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
 };
 
 

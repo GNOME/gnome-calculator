@@ -53,16 +53,6 @@ button_str(int n)
 }
 
 
-/* Just like button_str() except returns the English string - For Spot Help */
-
-char *
-help_button_str(int n)
-{
-    return((v->curwin == FCP_KEY) ? buttons[n].hstr :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].hstr);
-}
-
-
 int
 button_mods(int n)
 {
