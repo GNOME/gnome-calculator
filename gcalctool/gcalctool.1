@@ -1,5 +1,5 @@
 .\" Copyright (c) 1987-2003 - Sun Microsystems, Inc.
-.TH gcalctool 1 "18 March 2003"
+.TH gcalctool 1 "24 March 2003"
 .SH NAME
 gcalctool \- a desktop calculator
 .SH SYNOPSIS
@@ -34,11 +34,13 @@ parentheses (see below).
 Internal arithmetic is now done with multi-precision floating point numbers.
 Accuracy can be adjusted from zero to nine numeric places in fixed notation,
 but numbers can be displayed in engineering and scientific notation as well.
+There is also an option to show or remove trailing zeroes after the numeric
+point.
 The calculator reverts to scientific notation when the number is larger than
 the display would allow in fixed notation. In the scientific mode, the base 
 of operation can be changed between binary, octal, decimal and hexadecimal.
-Numbers are initially displayed in fixed notation to two numeric places, 
-in the decimal base.
+Numbers are initially displayed in fixed notation to nine numeric places,
+with trailing zeroes removed, in the decimal base.
 .LP
 You can use the
 .I Copy
@@ -139,13 +141,13 @@ and "SCIENTIFIC".
 .sp
 .TP
 .B Resource:
-/schemes/apps/gcalctool/removezeroes
+/schemes/apps/gcalctool/showzeroes
 .TP
 .B Values:
 true, false (true)
 .TP
 .B Description
-Whether trailing zeroes, after the numeric point, are removed from the 
+Whether trailing zeroes, after the numeric point, are shown in the
 display value.
 .sp
 .TP

@@ -161,6 +161,7 @@ static void about_cb(GtkWidget *, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
+static void astz_proc(gpointer, int, GtkWidget *);
 static void base_cb(GtkToggleButton *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
                         const gchar *, const gchar *, gpointer);
@@ -174,6 +175,7 @@ static void mb_proc(gpointer, int, GtkWidget *);
 static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
+static void mstz_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
@@ -182,6 +184,7 @@ static void reset_mode_values(enum mode_type);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
 static void set_memory_toggle(int);
+static void set_show_zeroes_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
 
 static XVars X;
@@ -203,6 +206,8 @@ static GtkItemFactoryEntry main_menu[] = {
     { N_("/View/_Financial Mode"), "<control>F", mb_proc, M_FIN, "/View/Basic Mode" },
     { N_("/View/_Scientific Mode"),"<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
     { N_("/View/sep1"),            NULL, NULL,    0,       "<Separator>" },
+    { N_("/View/Show _Trailing Zeroes"),"<control>T", mstz_proc, M_ZEROES, "<ToggleItem>" },
+    { N_("/View/sep2"),	           NULL, NULL,	  0,       "<Separator>" },
     { N_("/View/_Memory Registers"),"<control>M", mb_proc, M_REGS, "<ToggleItem>" },
 
     { N_("/_Help"),                NULL, NULL,    0,       "<Branch>" },
@@ -222,7 +227,7 @@ static GtkItemFactoryEntry acc_menu[] = {
     { N_("/8 radix places"), NULL, menu_proc, '8', "/0 radix places" },
     { N_("/9 radix places"), NULL, menu_proc, '9', "/0 radix places" },
     { N_("/sep1"),           NULL, NULL,       0,  "<Separator>" },
-    { N_("/_Remove Trailing Zeroes"),"<control>R", menu_proc, 'R', "<ToggleItem>" },
+    { N_("/Show _Trailing Zeroes"),"<control>T", astz_proc, 'T', "<ToggleItem>" },
 };
 
 static GtkItemFactoryEntry lshift_menu[] = {
@@ -424,6 +429,25 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
     mpcim(&val, v->MPdisp_val);
     show_display(v->MPdisp_val);
     gtk_widget_hide(X->aframe);
+}
+
+
+static void
+astz_proc(gpointer data, int choice, GtkWidget *item)
+{
+    GtkWidget *mi;
+
+    if (!v->doing_mi) {
+        v->show_zeroes = !v->show_zeroes;
+        v->doing_mi = 1;
+        mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_ZEROES);
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
+        v->doing_mi = 0;
+
+        show_display(v->MPdisp_val);
+	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
+	make_registers();
+    }
 }
 
 
@@ -1461,7 +1485,7 @@ make_frames()
     n = (struct button *) g_object_get_data(G_OBJECT(BUT_ACC), "button");
     menu = create_menu(n->mtype, n);
     set_accuracy_toggle(v->accuracy);
-    set_rm_zeroes_toggle(v->rm_zeroes);
+    set_show_zeroes_toggle(v->show_zeroes);
 }
 
 
@@ -1754,8 +1778,7 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
             break;
 
         case M_SCI:
-            v->modetype = SCIENTIFIC;
-            do_mode();
+            reset_mode_values(SCIENTIFIC);
             break;
 
         case M_REGS:
@@ -1774,6 +1797,26 @@ static void
 menu_proc(gpointer data, int choice, GtkWidget *item)
 {
     handle_menu_selection(X->mrec[(int) data], choice);
+}
+
+
+static void
+mstz_proc(gpointer data, int choice, GtkWidget *item)
+{
+    GtkWidget *mi;
+
+
+    if (!v->doing_mi) {
+	v->show_zeroes = !v->show_zeroes;
+        v->doing_mi = 1;
+        mi = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'T');
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
+        v->doing_mi = 0;
+
+        show_display(v->MPdisp_val);
+	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
+	make_registers();
+    }
 }
 
 
@@ -1842,11 +1885,9 @@ reset_mode_values(enum mode_type mtype)
     v->accuracy = 9;
     set_accuracy_toggle(v->accuracy);
 
-    v->started = 0;          /* Hack to get do_accuracy() to just return. */
-    v->rm_zeroes = TRUE;
-    set_rm_zeroes_toggle(v->rm_zeroes);
-    put_resource(R_ZEROES, set_bool(v->rm_zeroes == TRUE));
-    v->started = 1;
+    v->show_zeroes = FALSE;
+    set_show_zeroes_toggle(v->show_zeroes);
+    put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 
     show_display(v->MPdisp_val);
     make_registers();
@@ -2033,13 +2074,19 @@ set_gcalctool_icon(void)
 }
 
 
-void
-set_rm_zeroes_toggle(int state)
+static void
+set_show_zeroes_toggle(int state)
 {
-    GtkWidget *rmz;
+    GtkWidget *mi;
 
-    rmz = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'R');
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(rmz), state);
+    v->doing_mi = 1;    /* Hack to get [a,m]stz_proc() to just return. */
+    mi = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'T');
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
+
+    mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_ZEROES);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
+    gtk_widget_set_sensitive(mi, v->modetype == SCIENTIFIC);
+    v->doing_mi = 0;
 }
 
 
@@ -2063,6 +2110,7 @@ trig_cb(GtkToggleButton *button, gpointer user_data)
 {
     do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(button), "trig"));
 }
+
 
 void
 start_tool()

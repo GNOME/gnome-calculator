@@ -46,8 +46,8 @@
 #define UNLINK       (void) unlink
 
 /* Menu bar menu types. */
-enum mb_type { M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  
-               M_FIN,   M_PASTE, M_QUIT,     M_REGS, M_SCI };
+enum mb_type { M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  M_FIN,
+               M_PASTE, M_QUIT,  M_REGS,     M_SCI,   M_ZEROES };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
@@ -298,6 +298,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_ch;        /* Current character if keyboard event. */
     int cur_op;        /* Current arithmetic operation. */
+    int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
@@ -316,8 +317,8 @@ struct calcVars {                      /* Calctool variables and options. */
     int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
-    int rm_zeroes;     /* Set if trailing zeroes should be removed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
+    int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
 } CalcVars;
@@ -417,7 +418,6 @@ void set_item(enum item_type, int);
 void set_inv_item(int);
 void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
-void set_rm_zeroes_toggle(int);
 void show_ascii_frame();
 void show_display(int *);
 void srand48();

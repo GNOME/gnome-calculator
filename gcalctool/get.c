@@ -195,7 +195,7 @@ init_vars()    /* Setup default values for various variables. */
     int acc, i, n, size;
 
     v->accuracy      = 9;      /* Initial accuracy. */
-    v->rm_zeroes     = TRUE;   /* Remove trailing zeroes. */
+    v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
     v->base          = DEC;    /* Initial base. */
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
@@ -325,7 +325,7 @@ read_resources()    /* Read all possible resources from the database. */
     }
 
     if (get_bool_resource(R_ZEROES, &boolval)) {
-        v->rm_zeroes = boolval;
+        v->show_zeroes = boolval;
     }
 }
 

@@ -79,16 +79,16 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       </locale>
     </schema>
     <schema>
-      <applyto>/apps/gcalctool/removezeroes</applyto>
-      <key>/schemas/apps/gcalctool/removezeroes</key>
+      <applyto>/apps/gcalctool/showzeroes</applyto>
+      <key>/schemas/apps/gcalctool/showzeroes</key>
       <owner>gcalctool</owner>
       <type>string</type>
       <locale name="C">
-        <default>true</default>
-        <short>Remove Trailing Zeroes</short>
+        <default>false</default>
+        <short>Show Trailing Zeroes</short>
         <long>
           Indicates whether any trailing zeroes after the 
-          number point should be removed from the display value.
+          number point should be shown in the display value.
         </long>
       </locale>
     </schema>
