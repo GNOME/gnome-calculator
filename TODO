@@ -9,14 +9,9 @@ Revamp gcalctool (v4.2.0 onwards) TODO list.
 --------------------------------------------
 
 From Calum:
-* Fixup the buttons on the "Insert ASCII Value", "Enter Constant..." and 
-  "Enter Function..." popups. They should be Cancel and OK, and use standard 
-  stock GNOME icons.
 * Need to disable all the buttons that aren't valid after an "Error" has 
   occured.
 * The Sto/Rcl/Exch menu items should show the current register values as well.
-* Make sure that the Control-C and Control-V keyboard accelerators Copy and 
-  Paste.
 * Need to fixup the icon to be the correct GNOME thing.
 * Keyboard navigation doesn't work. Also all the radiobutton and checkbox
   items need to have a mnemonic associated with them. Make sure that everything
@@ -24,11 +19,15 @@ From Calum:
   buttons).
 
 Others:
+* Need to hook up keyboard accelerators for:
+  - Control-F1 should display the tooltip help for a button. Need to then
+    remove the toggling of GDK_Help and the -h command line option.
+  - Control-q should terminate gcalctool.
+  - Control-C and Control-V should Copy/Paste the display value from/to the
+    clipboard.
 * val_to_button() needs to be reworked to find Alt-<n> type buttons.
 * Button sizes appear to be incorrect again (probably since I added the
   horizontal separators).
-* Control-F1 should display the tooltip help for a button. Remove the toggling
-  of GDK_Help and the -h command line option.
 * Gcalctool is initially being displayed (for me) in Scientific mode, but the
   Basic Mode radio item is set in the View menu.
 * Check that the numeric keypad does all the right things.
@@ -41,7 +40,6 @@ Others:
 * Need to reduce tool tip help message sizes.
 * Move .gcalctoolcf functionality into gconf resources.
 * Make sure all the keyboard equivalents of each button are working.
-* Make sure that typing Control-q terminates gcalctool.
 * Make sure that this new gcalctool is accessible.
 * Need to be able to save the current state away in the Gconf resources.
 * Improve the colors in the gcalctoolrc file.
@@ -55,10 +53,6 @@ Gcalctool TODO.
   it's now possible for the Memory Register window to dynamically resize
   as larger values are stored in the memory registers. Need to check with
   the HCI folks if this is acceptable.
-
-* Need to find what's causing the warning message:
-  ** (gcalctool:6306): WARNING **: CORBA_ORB_destroy: ORB still has 2 refs.
-  when gcalctool exits, and fix it.
 
 * Implement bugtraq rfe #1190372/#1105626.
   It appears that function definitions are unable to handle all calculator

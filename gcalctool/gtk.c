@@ -126,12 +126,9 @@ static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean frame_interpose(GtkWidget *, GdkEvent *, gpointer );
 
-static void aframe_apply_cb(GtkButton *, gpointer);
 static void aframe_cancel_cb(GtkButton *, gpointer);
-static void aframe_entry_cb(GtkEntry *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
 static void base_cb(GtkToggleButton *, gpointer);
-static void cfframe_apply_cb(GtkButton *, gpointer);
 static void cfframe_cancel_cb(GtkButton *, gpointer);
 static void cfframe_ok_cb(GtkButton *, gpointer);
 static void con_menu_proc(gpointer, int, GtkWidget *);
@@ -366,14 +363,6 @@ add_extra_kbd_accels()
 
 /*ARGSUSED*/
 static void
-aframe_apply_cb(GtkButton *button, gpointer user_data)
-{
-    aframe_entry_cb(GTK_ENTRY(X->aframe_ch), user_data);
-}
-
-
-/*ARGSUSED*/
-static void
 aframe_cancel_cb(GtkButton *button, gpointer user_data)
 {
     gtk_widget_hide(X->aframe);
@@ -382,23 +371,15 @@ aframe_cancel_cb(GtkButton *button, gpointer user_data)
 
 /*ARGSUSED*/
 static void
-aframe_entry_cb(GtkEntry *entry, gpointer user_data)
+aframe_ok_cb(GtkButton *button, gpointer user_data)
 {
     char *ch;
     int val;
 
-    ch = (char *) gtk_entry_get_text(entry);
+    ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
     val = ch[0];
     mpcim(&val, v->MPdisp_val);
     show_display(v->MPdisp_val);
-}
-
-
-/*ARGSUSED*/
-static void
-aframe_ok_cb(GtkButton *button, gpointer user_data)
-{
-    aframe_entry_cb(GTK_ENTRY(X->aframe_ch), user_data);
     gtk_widget_hide(X->aframe);
 }
 
@@ -438,7 +419,7 @@ button_proc(GtkButton *widget, gpointer user_data)
 
 /*ARGSUSED*/
 static void
-cfframe_apply_cb(GtkButton *button, gpointer user_data)
+cfframe_ok_cb(GtkButton *button, gpointer user_data)
 {
     GtkWidget *dialog, *label;
     char str[MAXLINE];      /* Temporary buffer for various strings. */
@@ -535,6 +516,7 @@ cfframe_apply_cb(GtkButton *button, gpointer user_data)
     write_rcfile(X->CFtype, exists, cfno,
                  (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_val_entry)),
                  (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
+    gtk_widget_hide(X->cfframe);
 }
 
 
@@ -542,14 +524,6 @@ cfframe_apply_cb(GtkButton *button, gpointer user_data)
 static void
 cfframe_cancel_cb(GtkButton *button, gpointer user_data)
 {
-    gtk_widget_hide(X->cfframe);
-}
-
-
-static void
-cfframe_ok_cb(GtkButton *button, gpointer user_data)
-{
-    cfframe_apply_cb(button, user_data);
     gtk_widget_hide(X->cfframe);
 }
 
@@ -567,7 +541,7 @@ static void
 create_aframe()  /* Create auxiliary frame for ASC key. */
 {
     GtkWidget *vbox, *hbox, *button_hbox, *label;
-    GtkWidget *ok_button, *apply_button, *cancel_button;
+    GtkWidget *ok_button, *cancel_button;
 
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(X->aframe), _("Get ASCII"));
@@ -596,29 +570,22 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(button_hbox), 5);
 
-    ok_button = gtk_button_new_with_label (_("OK"));
-    gtk_widget_ref(ok_button);
-    gtk_widget_show(ok_button);
-    gtk_box_pack_start(GTK_BOX(button_hbox), ok_button, FALSE, FALSE, 0);
-
-    apply_button = gtk_button_new_with_label (_("Apply"));
-    gtk_widget_ref(apply_button);
-    gtk_widget_show(apply_button);
-    gtk_box_pack_start(GTK_BOX(button_hbox), apply_button, FALSE, FALSE, 0);
-
-    cancel_button = gtk_button_new_with_label (_("Cancel"));
+    cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
     gtk_widget_ref(cancel_button);
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
 
+    ok_button = gtk_button_new_from_stock(GTK_STOCK_OK);
+    gtk_widget_ref(ok_button);
+    gtk_widget_show(ok_button);
+    gtk_box_pack_start(GTK_BOX(button_hbox), ok_button, FALSE, FALSE, 0);
+
     g_signal_connect(G_OBJECT(X->aframe), "delete_event",
                      G_CALLBACK(dismiss_aframe), NULL);
     g_signal_connect(G_OBJECT(X->aframe_ch), "activate",
-                     G_CALLBACK(aframe_entry_cb), NULL);
+                     G_CALLBACK(aframe_ok_cb), NULL);
     g_signal_connect(G_OBJECT(ok_button), "clicked",
                      G_CALLBACK(aframe_ok_cb), NULL);
-    g_signal_connect(G_OBJECT(apply_button), "clicked",
-                     G_CALLBACK(aframe_apply_cb), NULL);
     g_signal_connect(G_OBJECT(cancel_button), "clicked",
                      G_CALLBACK(aframe_cancel_cb), NULL);
     gtk_widget_realize(X->aframe);
@@ -628,7 +595,7 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
 static void
 create_cfframe()    /* Create auxiliary frame for CON/FUN key. */
 {
-    GtkWidget *cf_desc_label, *cf_val_label, *cf_ok, *cf_apply, *cf_cancel;
+    GtkWidget *cf_desc_label, *cf_val_label, *cf_ok, *cf_cancel;
     GtkWidget *hbox, *table, *vbox;
  
     X->cfframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -680,24 +647,18 @@ create_cfframe()    /* Create auxiliary frame for CON/FUN key. */
     hbox = gtk_hbox_new(FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
-    cf_ok = gtk_button_new_with_label(_("OK"));
-    gtk_box_pack_start(GTK_BOX(hbox), cf_ok, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER (cf_ok), 2);
-
-    cf_apply = gtk_button_new_with_label(_("Apply"));
-    gtk_box_pack_start(GTK_BOX(hbox), cf_apply, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(cf_apply), 2);
-
-    cf_cancel = gtk_button_new_with_label(_("Cancel"));
+    cf_cancel = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
     gtk_box_pack_start(GTK_BOX(hbox), cf_cancel, TRUE, TRUE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(cf_cancel), 2);
+
+    cf_ok = gtk_button_new_from_stock(GTK_STOCK_OK);
+    gtk_box_pack_start(GTK_BOX(hbox), cf_ok, TRUE, TRUE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(cf_ok), 2);
 
     g_signal_connect(G_OBJECT(X->cfframe), "delete_event",
                      G_CALLBACK(dismiss_cfframe), NULL);
     g_signal_connect(G_OBJECT(cf_ok), "clicked",
                      G_CALLBACK(cfframe_ok_cb), NULL);
-    g_signal_connect(G_OBJECT(cf_apply), "clicked",
-                     G_CALLBACK(cfframe_apply_cb), NULL);
     g_signal_connect(G_OBJECT(cf_cancel), "clicked",
                      G_CALLBACK(cfframe_cancel_cb), NULL);
     gtk_widget_show_all(vbox);
