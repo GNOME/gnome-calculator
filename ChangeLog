@@ -9,6 +9,14 @@ gcalctool change history.
 
 2005-03-23 Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed Sun internal CR #6214176. If gcalctool is being driven by gok, 
+      the on-screen keyboard assistive technology, it's possible that the 
+      event returned by gtk_get_current_event() is NULL. If this is the 
+      case, we need to fudge the popping up on the menu associated with 
+      this menu button.
+
+2005-03-23 Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug #158280 (http://bugzilla.gnome.org/show_bug.cgi?id=158280)
       You can now build gcalctool without the GNOME libraries by specifying
       "--disable-gnome" on the configure command line.

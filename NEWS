@@ -5,6 +5,16 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.6.4
+
+* Fixed Sun internal CR #6214176. If gcalctool is being driven by gok, 
+  the on-screen keyboard assistive technology, it's possible that the 
+  event returned by gtk_get_current_event() is NULL. If this is the 
+  case, we need to fudge the popping up on the menu associated with 
+  this menu button.
+
+----
+
 Overview of changes in gcalctool 5.6.3
 
 * Fixed bug #158280. You can now build gcalctool without the GNOME 

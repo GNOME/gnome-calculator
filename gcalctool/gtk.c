@@ -2091,14 +2091,23 @@ menu_button_button_press_cb(GtkButton *widget, gpointer data)
     GtkWidget *menu;
     GdkEventButton *event = (GdkEventButton *) gtk_get_current_event();
 
-    if (event->button != 1) {
-        return;
-    }
-
     n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
     menu = create_menu(n->mtype, n);
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                   event->button, event->time);
+
+/* If gcalctool is being driven by gok, the on-screen keyboard 
+ * assistive technology, it's possible that the event returned by 
+ * gtk_get_current_event() is NULL. If this is the case, we need 
+ * to fudge the popping up on the menu associated with this menu 
+ * button.
+ */
+
+    if (event == NULL) {
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+                       1, gtk_get_current_event_time());
+    } else if (event->button == 1) {
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+                       event->button, event->time);
+    }
 }
 
 
