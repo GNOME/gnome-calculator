@@ -705,6 +705,7 @@ create_kframe()
     int i;
     GtkWidget *event_box, *hbox;
 
+    v->curwin = FCP_KEY;
     if (v->titleline == NULL) {
         hn = make_hostname(X->dpy);
         tool_label = malloc(strlen(_("Calculator")) +
@@ -802,6 +803,7 @@ create_mframe()
     GtkRequisition r;
     GtkWidget *vbox;
 
+    v->curwin = FCP_MODE;
     X->mframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->mframe), "mframe", X->mframe);
     gtk_window_set_resizable(GTK_WINDOW(X->mframe), TRUE);
@@ -970,14 +972,15 @@ do_keys()      /* Display/undisplay the gcalctool key values. */
 {
     enum fcp_type curwin;
     enum mode_type modetype;
-    int i, j, k, m, n, nchars, spaces;
+    int i, j, k, m, n, x;
 
     v->tstate = !v->tstate;
     for (i = 0; i < BCOLS; i++) {
         for (j = 0; j < BROWS; j++) {
             n = j*BCOLS + i;
-            get_label(n, &spaces, &nchars);
-            set_button_label(X->buttons[n], v->pstr, n);
+            x = j*BCOLS + cur_pos[i];
+            get_label(n);
+            set_button_label(X->buttons[x], v->pstr, n);
         }
     }
 
@@ -990,7 +993,7 @@ do_keys()      /* Display/undisplay the gcalctool key values. */
                 v->modetype = (enum mode_type) m;
                 k = j*MCOLS + i;
                 n = (MODEKEYS * (m-1)) + j*MCOLS + i;
-                get_label(k, &spaces, &nchars);
+                get_label(k);
                 set_button_label(X->mode_buttons[n], v->pstr, n);
             }
         }
@@ -1315,7 +1318,7 @@ static GtkWidget *
 make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
 {
     char name[MAXLINE];
-    int i, j, n;
+    int i, j, k, n;
     GtkWidget *table = gtk_table_new(MROWS, MCOLS, TRUE);
  
     gtk_widget_ref(table);
@@ -1324,13 +1327,13 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
  
     for (i = 0; i < MCOLS; i++) {
         for (j = 0; j < MROWS; j++) {
+            k = j*MCOLS + i;
             n = (MODEKEYS * ((int) modetype - 1)) + j*MCOLS + i;
+            get_label(k);
             if (mode_buttons[n].mtype == M_NONE) {
-                X->mode_buttons[n] = 
-                           gtk_button_new_with_label(mode_buttons[n].str);
+                X->mode_buttons[n] = gtk_button_new_with_label(v->pstr);
             } else {
-                X->mode_buttons[n] = make_menu_button(mode_buttons[n].str,
-                                                      j*MCOLS + i);
+                X->mode_buttons[n] = make_menu_button(v->pstr, j*MCOLS + i);
             }
             g_signal_connect(G_OBJECT(X->mode_buttons[n]), "clicked",
                              G_CALLBACK(button_proc), (gpointer) (j*MCOLS + i));
@@ -1375,10 +1378,11 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
         for (j = 0; j < BROWS; j++) {
             n = j*BCOLS + i;
             x = j*BCOLS + cur_pos[i];
+            get_label(n);
             if (buttons[n].mtype == M_NONE) {
-                X->buttons[x] = gtk_button_new_with_label(buttons[n].str);
+                X->buttons[x] = gtk_button_new_with_label(v->pstr);
             } else {
-                X->buttons[x] = make_menu_button(buttons[n].str, n);
+                X->buttons[x] = make_menu_button(v->pstr, n);
             }   
             g_signal_connect(G_OBJECT(X->buttons[x]), "clicked",
                              G_CALLBACK(button_proc), (gpointer) n);

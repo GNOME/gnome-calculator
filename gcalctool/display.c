@@ -65,9 +65,9 @@ clear_display()
 
 
 void
-get_label(int n, int *spaces, int *nchars)
+get_label(int n)
 {
-    int i, len, mod, val;
+    int mod, val;
 
     mod = button_mods(n);
     val = button_value(n);
@@ -86,16 +86,6 @@ get_label(int n, int *spaces, int *nchars)
     } else {
         STRCPY(v->pstr, button_str(n));
     }
-    *spaces = 0;
-    len = strlen(v->pstr);
-    for (i = len-1; i >= 0; i--) {
-        if (v->pstr[i] == ' ') {
-            (*spaces)++;
-        } else {
-            break;
-        }
-    }
-    *nchars = len - *spaces;
 }
 
 

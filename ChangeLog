@@ -8,6 +8,22 @@
 gcalctool change history.
 =========================
 
+v4.1.15 - 9th September 2002.
+
+* With the changes made in v4.1.14, the Keys functionality no longer did 
+  the correct thing when the calculator was setup as left-handed. Changes 
+  made to do_keys() to get the correct index for the appropriate button.
+
+* If you switched hands (left/right-handed), the redisplay of the calculator
+  keys in the main window, did not take into effect whether the user was 
+  currently showing the keyboard equivalents. This was fixed by using the 
+  get_label() funcion in make_ktable() and m,ake_mtable().
+
+* Simplified the get_label() routine to no longer return the numbers of 
+  chars and spaces in the label.
+
+----
+
 v4.1.14 - 9th September 2002.
 
 * If started as left-handed (gconf key "righthanded" is "false"), and the

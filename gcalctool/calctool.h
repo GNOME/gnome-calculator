@@ -417,7 +417,7 @@ void do_trig();
 void doerr(char *);
 void get_display();
 void get_key_val(int *, char *);
-void get_label(int, int *, int *);
+void get_label(int);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
 void handle_menu_selection(int, int);
