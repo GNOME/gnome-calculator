@@ -9,6 +9,13 @@ gcalctool change history.
 
 2003-09-16  Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug 120749 (http://bugzilla.gnome.org/show_bug.cgi?id=120749)
+      When gcalctool is displaying a menu, typing Alt+Tab can no longer
+      switch windows. The menu_button_key_press_cb() routine in gtk.c
+      needed to return TRUE if the event->keyval was a Space.
+
+2003-09-16  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug 120745 (http://bugzilla.gnome.org/show_bug.cgi?id=120745)
       Accessible names have now been added to each of the widgets in the 
       mode panel when in Scientific mode.

@@ -1624,6 +1624,7 @@ menu_button_key_press_cb(GtkWidget *widget,
         loc.y += widget->allocation.y;
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
                        (gpointer) &loc, event->keyval, event->time);
+        return(TRUE);
     }
 
     return(FALSE);
