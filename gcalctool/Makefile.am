@@ -32,11 +32,7 @@ gcalctool_SOURCES = \
 gcalctool_LDADD = \
 	$(PACKAGE_LIBS) \
 	$(GNOME_UTILS_LIBS) \
-	$(GCONF_LIBS) \
-	$(X_LIBS) \
-	$(X_PRE_LIBS) \
-	$(X_BASIC_LIBS) \
-	$(X_EXTRA_LIBS)
+	$(GCONF_LIBS)
 
 man1_MANS = gcalctool.1
 
