@@ -2405,8 +2405,10 @@ set_display(char *str, int minimize_changes)
     if (str == NULL || *str == 0) {
         str = " ";
     } else {
-	localize_number(localized, str);
+      if (!v->noparens) {
+      	localize_number(localized, str);
 	str = localized;
+      }
     }
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
