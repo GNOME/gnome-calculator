@@ -967,8 +967,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     N_("Xor"),
     N_("Logical XOR"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_caret, 0 },
+    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
+    { GDK_caret,      GDK_asciicircum, 0 },
     '^',
     M_NONE,
     do_calc
