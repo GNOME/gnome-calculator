@@ -201,8 +201,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("CE"),
     N_("Clear displayed value"),
     N_("Clear entry"),
-    { GDK_CONTROL_MASK, 0 },
-    { GDK_BackSpace, 0 },
+    { GDK_CONTROL_MASK, 0,          0 },
+    { GDK_BackSpace,    GDK_Escape, 0 },
     '\013',
     M_NONE,
     do_clear_entry

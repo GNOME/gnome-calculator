@@ -1,5 +1,5 @@
 .\" Copyright (c) 1987-2003 - Sun Microsystems, Inc.
-.TH gcalctool 1 "15 April 2003"
+.TH gcalctool 1 "3 October 2003"
 .SH NAME
 gcalctool \- a desktop calculator
 .SH SYNOPSIS
@@ -246,7 +246,7 @@ Return the integer portion of the current entry.
 Return the fractional portion of the current entry.
 .IP "\fBAbs	[ u ]\fP" 18
 Return the absolute value of the current entry.
-.IP "\fB+/-	[ C ]\fP" 18
+.IP "\fB+/-	[ c ]\fP" 18
 Change the arithmetic sign of the current entry.
 .IP "\fB1/x	[ r ]\fP" 18
 Return the value of 1 divided by the current entry.
@@ -266,7 +266,7 @@ character selects the new value for this operation. Unlike the menu facility
 available with the mouse, there is no visual feedback on what choices are
 available to you, so the user has to know what item they wish to select.
 .PD 0
-.IP "\fBAcc	[ A ]\fP" 18
+.IP "\fBAcc	[ a ]\fP" 18
 Set the display accuracy. Between 0 and 9 [ 0-9 ] significant digits can be
 displayed.
 .IP "\fBRcl	[ R ]\fP" 18
@@ -285,7 +285,7 @@ are ten memory registers [ 0-9 ].
 .LP
 .IP "\fBClr	[ Delete ]\fP" 18
 Clear the display, and reset the calculator.
-.IP "\fBCE	[ Control-Back Space ]\fP" 18
+.IP "\fBCE	[ Control-Back Space or Escape ]\fP" 18
 Clear the display.
 .IP "\fBBsp	[ Back Space ]\fP" 18
 Remove the rightmost character of the current entry, and recalculate the
@@ -309,7 +309,7 @@ Register 0	int	(periodic interest rate).
 Register 1	fv	(future value).
 .br
 Register 2	pv	(present value).
-.IP "\fBDdb	[ D ]\fP" 18
+.IP "\fBDdb	[ d ]\fP" 18
 Double-declining depreciation. Computes the depreciation allowance on an
 asset for a specified period of time, using the double-declining balance
 method.
@@ -466,7 +466,7 @@ their own constant definitions. The ten default values are:
 8	0.948		kilojoules or British thermals
 .br
 9	0.0610		cubic centimeters or cubic inches
-.IP "\fBFun	[ F ]\fP" 18
+.IP "\fBFun	[ f ]\fP" 18
 Retrieve and execute a function expression. There can be upto ten functions
 expression defined by the user [0 - 9]. There are no default function values.
 .PD
@@ -475,10 +475,10 @@ expression defined by the user [0 - 9]. There are no default function values.
 .LP
 .IP "\fB<	[ < ]\fP" 18
 Shift the current entry to the left. The shift can be between 1 and 15 places
-[ 1-9, a-f ]. This calculator key has a popup menu associated with it.
+[ 1-9, A-F ]. This calculator key has a popup menu associated with it.
 .IP "\fB>	[ > ]\fP" 18
 Shift the current entry to the right. The shift can be between 1 and 15 places
-[ 1-9, a-f ]. This calculator key has a popup menu associated with it.
+[ 1-9, A-F ]. This calculator key has a popup menu associated with it.
 .IP "\fB&16	[ ] ]\fP" 18
 Truncate the current entry to a 16 bit unsigned integer.
 .IP "\fB&32	[ [ ]\fP" 18
@@ -490,7 +490,7 @@ parentheses can be nested to any level, and
 provides a visual feedback of what is being typed in, in the calculator
 display. The calculation doesn't take place until the last parenthesis is
 matched, then the display is updated with the new result.
-.IP "\fBExp	[ E ]\fP" 18
+.IP "\fBExp	[ e ]\fP" 18
 This is used to allow numbers to be entered in scientific notation. The
 mantissa should be initially entered, then the Exp key selected. The exponent
 is then entered. If no numerical input had occurred when the Exp key was
@@ -506,7 +506,7 @@ Return the factorial of the current entry. Note that the factorial function
 is only valid for positive integers.
 .IP "\fBRand	[ ? ]\fP" 18
 Return a random number between 0.0 and 1.0.
-.IP "\fBHexadecimal Keys [ a-f ]\fP" 18
+.IP "\fBHexadecimal Keys [ A-F ]\fP" 18
 The hexadecimal numerical digits A-F. These buttons will be insensitive 
 unless the calculator is currently in the hexadecimal mode.
 .IP "\fBCos	[ J ]\fP" 18
