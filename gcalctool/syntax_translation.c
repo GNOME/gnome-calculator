@@ -34,43 +34,43 @@ static struct word {
   char *word;
 } words[] = {
   { N_("abs") }, /* Absolute value */
-  { N_("acosh") }, /* Inversion of hyperbolic COS */
-  { N_("acos") }, /* Inversion of COS */
+  { N_("acosh") }, /* Inversion of hyperbolic cosine */
+  { N_("acos") }, /* Inversion of cosine */
   { N_("and") }, /* Bitwise AND */
   { N_("ans") }, /* Answer of previous calculation*/
-  { N_("asinh") }, /* Inversion of hyperbolic SIN */
-  { N_("asin") }, /* Hyperbolic SIN */
-  { N_("atanh") }, /* Inversion of hyperbolic TAN */
-  { N_("atan") }, /* Inversion of TAN*/
+  { N_("asinh") }, /* Inversion of hyperbolic sine */
+  { N_("asin") }, /* Hyperbolic sine */
+  { N_("atanh") }, /* Inversion of hyperbolic tangent */
+  { N_("atan") }, /* Inversion of tangent */
   { N_("cbrt") }, /* Cubic root */
   { N_("chs") }, /* Change sign */
-  { N_("clr") }, /* Clear */
+  { N_("clr") }, /* Clear (display) */
   { N_("cosh") }, /* Hyperbolic cosine */
-  { N_("cos") }, /* COS */
-  { N_("ddb") }, /* Financial operation: Double-declining deprecation */ 
+  { N_("cos") }, /* Cosine */
+  { N_("ddb") }, /* Double-declining deprecation */ 
   { N_("exp") }, /* x*10^y */
   { N_("frac") }, /* Fraction of a decimal number */
-  { N_("fv") }, /* Financial function: Future value */
+  { N_("fv") }, /* Future value */
   { N_("int") }, /* Integer part of a decimal number */
   { N_("ln") }, /* Natural logarithm */
   { N_("log") }, /* Logarithm with 10 as a base number */
   { N_("not") }, /* Bitwise NOT */
   { N_("or") }, /* Bitwise OR */
   { N_("pi") }, /* PI */
-  { N_("pmt") }, /* Financial function: Periodic payment */
+  { N_("pmt") }, /* Periodic payment */
   { N_("pv") }, /* Present value */
   { N_("rand") }, /* A random number */
-  { N_("rate") }, /* Financial function: Periodic interest rate */
+  { N_("rate") }, /* Periodic interest rate */
   { N_("rcl") }, /* Recall number from memory register */
-  { N_("sinh") }, /* Hyperbolic SIN */
-  { N_("sin") }, /* SIN */
-  { N_("sln") }, /* Financial function: Straight-line depreciation */
+  { N_("sinh") }, /* Hyperbolic sine */
+  { N_("sin") }, /* Sine */
+  { N_("sln") }, /* Straight-line depreciation */
   { N_("sqrt") }, /* Square root */
   { N_("sto") }, /* Store number at memory register */
-  { N_("syd") }, /* Financial function: Sum-of-the years'-digits depreciation */
-  { N_("tanh") }, /* Hyperbolic TAN */
-  { N_("tan") }, /* TAN */
-  { N_("term") }, /* Financial function: Payment period */
+  { N_("syd") }, /* Sum-of-the years'-digits depreciation */
+  { N_("tanh") }, /* Hyperbolic tangent */
+  { N_("tan") }, /* Tangent */
+  { N_("term") }, /* Payment period */
   { N_("u16") }, /* 16-bit unsigned integer value */
   { N_("u32") }, /* 32-bit unsigned integer value */
   { N_("xnor") }, /* Bitwise XNOR */
