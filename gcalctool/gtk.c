@@ -92,7 +92,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *kframe;                 /* Main window. */
     GtkWidget *kvbox;
     GtkWidget *ktable;
-    GdkPixbuf *icon;                   /* Main window icon. */
     GtkWidget *menubar;
     GtkWidget *mode_panel;
 
@@ -454,11 +453,7 @@ main(int argc, char **argv)
     client = gnome_master_client();
     g_signal_connect(client, "die", G_CALLBACK(die_cb), NULL);
 #else
-    gtk_set_locale();
     gtk_init(&argc, &argv);
-#ifdef WANTED
-    add_pixmap_directory(PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
-#endif /*WANTED*/
 #endif /*DISABLE_GNOME*/
 
     X->lnp = get_localized_numeric_point();
@@ -498,29 +493,28 @@ update_statusbar(gchar *text, const gchar *imagename)
 static void
 about_cb(GtkAction *action, gpointer date)
 {
-    
-        const gchar *authors[] = {
-            "Rich Burridge <rich.burridge@sun.com>",
-            "Sami Pietila <sampie@ariana-dsl.utu.fi>",
-            NULL
-        };
-        const gchar *documenters[] = {
-            "Sun Microsystems",
-            NULL
-        };
-        const gchar *translator_credits = _("translator_credits");
+    const gchar *authors[] = {
+        "Rich Burridge <rich.burridge@sun.com>",
+        "Sami Pietila <sampie@ariana-dsl.utu.fi>",
+        NULL
+    };
+    const gchar *documenters[] = {
+        "Sun Microsystems",
+        NULL
+    };
+    const gchar *translator_credits = _("translator_credits");
 
-        gtk_show_about_dialog(GTK_WINDOW (X->kframe),
-        					"name",_("Gcalctool"),
-        					"version", VERSION,
-        					"copyright", "(C) 2004 the Free Software Foundation",
-        					"comments", _("Calculator with financial and scientific modes."),
-        					"authors", authors,
-        					"documenters", documenters,
-        					"translator-credits", strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-        					"logo", X->icon,
-                                                NULL);
-        					
+    gtk_show_about_dialog(GTK_WINDOW(X->kframe),
+            "name",_("Gcalctool"),
+            "version", VERSION,
+            "copyright", "(C) 2004 the Free Software Foundation",
+            "comments", _("Calculator with financial and scientific modes."),
+            "authors", authors,
+            "documenters", documenters,
+            "translator-credits", strcmp(translator_credits, 
+                "translator_credits") != 0 ? translator_credits : NULL,
+            "logo-icon-name", "gnome-calculator",
+            NULL);
 }
 
 
@@ -1232,7 +1226,6 @@ create_kframe()
     gtk_widget_show(X->adv_panel);
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
-    gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
     if (v->modetype == BASIC) {
         gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR_BAS));
     } else {
@@ -1432,7 +1425,6 @@ create_rframe()
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
     gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
-    gtk_window_set_icon(GTK_WINDOW(X->rframe), X->icon); 
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
@@ -2786,8 +2778,7 @@ set_title(enum fcp_type fcptype, char *str)
 static void
 set_gcalctool_icon(void)
 {    
-    X->icon = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
-                                       "gnome-calculator", 48, 0, NULL);
+    gtk_window_set_default_icon_name("gnome-calculator");
 }
 
 

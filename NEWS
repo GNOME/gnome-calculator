@@ -5,6 +5,13 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.6.5
+
+* Fixed bug #172798. gtk_set_locale was already being run by gtk_init() 
+  and the gtk about popup didn't have the gcalctool icon.
+
+----
+
 Overview of changes in gcalctool 5.6.4
 
 * Fixed Sun internal CR #6214176. If gcalctool is being driven by gok, 

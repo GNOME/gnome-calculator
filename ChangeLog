@@ -1,10 +1,3 @@
-2005-03-31  Steve Murphy  <murf@e-tools.com>
-
-        * configure.in: Added "rw" to ALL_LINGUAS.
-
-2005-03-28  Abel Cheung  <maddog@linuxhall.org>
-
-	* configure.in: Added "tr" to ALL_LINGUAS.
 
 /*   $Header$
  *
@@ -14,6 +7,20 @@
 
 gcalctool change history.
 =========================
+
+2005-04-06 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug #172798 (http://bugzilla.gnome.org/show_bug.cgi?id=172798)
+      gtk_set_locale was already being run by gtk_init() and the gtk about 
+      popup didn't have the gcalctool icon.
+
+2005-03-31  Steve Murphy  <murf@e-tools.com>
+
+    * configure.in: Added "rw" to ALL_LINGUAS.
+
+2005-03-28  Abel Cheung  <maddog@linuxhall.org>
+
+    * configure.in: Added "tr" to ALL_LINGUAS.
 
 2005-03-31 Sami Pietila <sampie@ariana-dsl.utu.fi>
 
