@@ -120,6 +120,7 @@ static char *make_hostname(Display *);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
+static gboolean event_cb(GtkWidget *, GdkEvent *, gpointer);
 
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
@@ -305,9 +306,13 @@ add_extra_kbd_accels()
     create_kbd_accel(BUT_2,   0, GDK_KP_Down);
     create_kbd_accel(BUT_2,   0, GDK_KP_2);
     create_kbd_accel(BUT_1,   0, GDK_End);
+    create_kbd_accel(BUT_1,   0, GDK_KP_1);
     create_kbd_accel(BUT_3,   0, GDK_Page_Down);
+    create_kbd_accel(BUT_3,   0, GDK_KP_3);
     create_kbd_accel(BUT_7,   0, GDK_Home);
+    create_kbd_accel(BUT_7,   0, GDK_KP_7);
     create_kbd_accel(BUT_9,   0, GDK_Page_Up);
+    create_kbd_accel(BUT_9,   0, GDK_KP_9);
 
     create_kbd_accel(BUT_0,   0, GDK_KP_0);
     create_kbd_accel(BUT_5,   0, GDK_KP_5);
@@ -695,6 +700,8 @@ create_kframe()
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     setup_default_icon();
+
+    g_signal_connect(G_OBJECT(X->kframe), "event", G_CALLBACK(event_cb), NULL);
 }
 
 
@@ -933,6 +940,76 @@ static void
 disp_cb(GtkToggleButton *button, gpointer user_data)
 {
     do_numtype((enum num_type) g_object_get_data(G_OBJECT(button), "disp"));
+}
+
+
+/* Handle keypresses on the numeric keypad for Linux boxen. Whereas assigning
+ * additional keyboard character accelerators works for the Solaris platform
+ * (see add_extra_kbd_accels above), it seems you have to add an "event" 
+ * signal handler on the main gcalctool window, then search for various 
+ * keyvals for Linux machines. Here they are then mapped onto keyvals that 
+ * gcalctool knows how to deal with, and are then processed.
+ */
+
+typedef struct _ExtraKeys ExtraKeys;
+
+struct _ExtraKeys {
+    int key;          /* Keyval entered on numeric keypad. */
+    int value;        /* Equivalent keyval that gcalctool understands. */
+};
+
+static ExtraKeys extra_keys[] = {
+    { GDK_KP_Insert,   GDK_0        },          /* 0 */
+    { GDK_KP_End,      GDK_1        },          /* 1 */
+    { GDK_KP_Down,     GDK_2        },          /* 2 */
+    { GDK_KP_Next,     GDK_3        },          /* 3 */
+    { GDK_KP_Left,     GDK_4        },          /* 4 */
+    { GDK_KP_Begin,    GDK_5        },          /* 5 */
+    { GDK_KP_Right,    GDK_6        },          /* 6 */
+    { GDK_KP_Home,     GDK_7        },          /* 7 */
+    { GDK_KP_Up,       GDK_8        },          /* 8 */
+    { GDK_KP_Prior,    GDK_9        },          /* 9 */
+    { GDK_KP_Delete,   GDK_period   },          /* . */
+    { GDK_KP_Add,      GDK_plus     },          /* + */
+    { GDK_KP_Subtract, GDK_minus    },          /* - */
+    { GDK_KP_Multiply, GDK_asterisk },          /* * */
+    { GDK_KP_Divide,   GDK_slash    },          /* / */
+    { GDK_KP_Enter,    GDK_equal    },          /* Enter */
+    { GDK_KP_0,        GDK_0        },          /* 0 (plus NumLock) */
+    { GDK_KP_1,        GDK_1        },          /* 1 (plus NumLock) */
+    { GDK_KP_2,        GDK_2        },          /* 2 (plus NumLock) */
+    { GDK_KP_3,        GDK_3        },          /* 3 (plus NumLock) */
+    { GDK_KP_4,        GDK_4        },          /* 4 (plus NumLock) */
+    { GDK_KP_5,        GDK_5        },          /* 5 (plus NumLock) */
+    { GDK_KP_6,        GDK_6        },          /* 6 (plus NumLock) */
+    { GDK_KP_7,        GDK_7        },          /* 7 (plus NumLock) */
+    { GDK_KP_8,        GDK_8        },          /* 8 (plus NumLock) */
+    { GDK_KP_9,        GDK_9        },          /* 9 (plus NumLock) */
+    { GDK_KP_Decimal,  GDK_period   }           /* . (plus NumLock) */
+};
+
+
+static gboolean
+event_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+    gint i, num;
+    GdkEventKey *kevent;
+
+    if (event->type != GDK_KEY_PRESS) {
+        return(FALSE);
+    }
+
+    kevent = (GdkEventKey *) event;
+
+    num = sizeof(extra_keys) / sizeof(ExtraKeys);
+    for (i = 0; i < num; i++) {
+        if (kevent->keyval == extra_keys[i].key) {
+            process_item(button_for_value(extra_keys[i].value));
+            return(TRUE);
+        }
+    }
+
+    return(FALSE);
 }
 
 
