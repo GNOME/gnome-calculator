@@ -8,14 +8,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
-"PO-Revision-Date: 2004-02-12 01:57+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-20 23:56+0200\n"
+"PO-Revision-Date: 2004-06-21 00:02+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
-"Language-Team: Serbian (sr) <serbiangnome-lista@nognu.org>\n"
+"Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -170,8 +170,8 @@ msgid "Divide"
 msgstr "Deljenje"
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
-msgstr "Obr"
+msgid "Bksp"
+msgstr "Briši"
 
 #: gcalctool/calctool.c:192
 msgid "Remove rightmost character from displayed value"
@@ -673,7 +673,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Heksadecimalna cifra E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1281
 msgid "F"
 msgstr "F"
 
@@ -739,7 +739,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Heksadecimalna cifra B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1273
 msgid "C"
 msgstr "C"
 
@@ -752,44 +752,44 @@ msgid "Or"
 msgstr "Ili"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
-msgstr "Logičko ILI"
+msgid "Bitwise OR"
+msgstr "Bitovno ILI"
 
 #: gcalctool/calctool.c:947
 msgid "And"
 msgstr "I"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
-msgstr "Logičko I"
+msgid "Bitwise AND"
+msgstr "Bitovno I"
 
 #: gcalctool/calctool.c:957
 msgid "Not"
 msgstr "Neg"
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
-msgstr "Logička negacija"
+msgid "Bitwise NOT"
+msgstr "Bitovna negacija"
 
 #: gcalctool/calctool.c:967
 msgid "Xor"
 msgstr "Illi"
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
-msgstr "Logičko „ili — ili“ (isključivo ili)"
+msgid "Bitwise XOR"
+msgstr "Bitovno ILLI"
 
 #: gcalctool/calctool.c:977
 msgid "Xnor"
 msgstr "Xnor"
 
 #: gcalctool/calctool.c:978
-msgid "Logical XNOR"
-msgstr "Logički XNOR"
+msgid "Bitwise XNOR"
+msgstr "Bitovno XNOR"
 
 #: gcalctool/calctool.c:1078
-msgid "kilometers per hour or miles per hour"
-msgstr "kilometara po času ili milja po času"
+msgid "Kilometer-to-mile conversion factor"
+msgstr "Činilac za pretvaranje kilometara u milje"
 
 #: gcalctool/calctool.c:1079
 msgid "square root of 2"
@@ -804,8 +804,8 @@ msgid "pi"
 msgstr "π"
 
 #: gcalctool/calctool.c:1082
-msgid "centimeters or inches"
-msgstr "centimetri ili inči"
+msgid "Centimeter-to-inch conversion factor"
+msgstr "Činilac za pretvaranje centimetra u inče"
 
 #: gcalctool/calctool.c:1083
 msgid "degrees in a radian"
@@ -816,16 +816,16 @@ msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1085
-msgid "grams or ounces"
-msgstr "grama ili unci"
+msgid "Gram-to-ounce conversion factor"
+msgstr "Činilac za pretvaranje grama u unce"
 
 #: gcalctool/calctool.c:1086
-msgid "kilojoules or British thermal units"
-msgstr "kilodžula ili Britanskih termičkih jedinica"
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
+msgstr "Činilac za pretvaranje kilodžula u britanske termičke jedinice"
 
 #: gcalctool/calctool.c:1087
-msgid "cubic centimeters or cubic inches"
-msgstr "kubnih centimetara ili kubnih inča"
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+msgstr "Činilac za pretvaranje kubnih centimetara u kubne inče"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
@@ -907,278 +907,374 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1073 gcalctool/gtk.c:1206
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/_Kalkulator"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/Kalkulator/I_zađi"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/_Uredi"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/_Uredi/_Umnoži"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/_Uredi/_Ubaci"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/Uredi/razdvojnik1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/Uredi/_Ubaci ASCII vrednost..."
-
 #: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/P_regled"
+msgid "_Quit"
+msgstr "_Izađi"
 
 #: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/Pregled/_Osnovni mod"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/Pregled/_Finansijski"
+msgid "Quit the calculator"
+msgstr "Izađi iz kalkulatora"
 
 #: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/Pregled/_Naučni mod"
+msgid "_Copy"
+msgstr "_Umnoži"
 
 #: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/Pregled/razdvojnik1"
+msgid "Copy selection"
+msgstr "Umnoži izabrano"
 
 #: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/Pregled/Prikaži prateće nu_le"
+msgid "_Paste"
+msgstr "U_baci"
 
 #: gcalctool/gtk.c:182
-msgid "/View/Show T_housands Separator"
-msgstr "/Pregled/Razdvoji _hiljade"
+msgid "Paste selection"
+msgstr "Ubaci izabrano"
 
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/Pregled/razdvojnik2"
+msgid "_Insert ASCII Value..."
+msgstr "U_metni ASKRI vrednost..."
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/Pregled/Prikaži _memorijske registre"
+msgid "Insert ASCII value"
+msgstr "Umetni ASKRI vrednost"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/_Pomoć"
+msgid "_Contents"
+msgstr "_Sadržaj"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/Pomoć/_Sadržaj"
+msgid "Show help contents"
+msgstr "Prikaži sadržaj pomoći"
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/Pomoć/_O programu"
+msgid "_About"
+msgstr "_O programu"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
-msgstr "/0 značajnih mesta"
+#: gcalctool/gtk.c:189
+msgid "Show about help"
+msgstr "Prikaži pomoć o programu"
 
-#: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr "/1 značajnih mesta"
+#: gcalctool/gtk.c:191 gcalctool/gtk.c:192 gcalctool/gtk.c:222
+#: gcalctool/gtk.c:223
+msgid "1 place"
+msgstr "1 mesto"
 
-#: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr "/2 značajnih mesta"
+#: gcalctool/gtk.c:193 gcalctool/gtk.c:194 gcalctool/gtk.c:224
+#: gcalctool/gtk.c:225
+msgid "2 places"
+msgstr "2 mesta"
 
-#: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr "/3 značajnih mesta"
+#: gcalctool/gtk.c:195 gcalctool/gtk.c:196 gcalctool/gtk.c:226
+#: gcalctool/gtk.c:227
+msgid "3 places"
+msgstr "3 mesta"
 
-#: gcalctool/gtk.c:196
-msgid "/4 significant places"
-msgstr "/4 značajnih mesta"
+#: gcalctool/gtk.c:197 gcalctool/gtk.c:198 gcalctool/gtk.c:228
+#: gcalctool/gtk.c:229
+msgid "4 places"
+msgstr "4 mesta"
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr "/5 značajnih mesta"
+#: gcalctool/gtk.c:199 gcalctool/gtk.c:200 gcalctool/gtk.c:230
+#: gcalctool/gtk.c:231
+msgid "5 places"
+msgstr "5 mesta"
 
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr "/6 značajnih mesta"
+#: gcalctool/gtk.c:201 gcalctool/gtk.c:202 gcalctool/gtk.c:232
+#: gcalctool/gtk.c:233
+msgid "6 places"
+msgstr "6 mesta"
 
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr "/7 značajnih mesta"
+#: gcalctool/gtk.c:203 gcalctool/gtk.c:204 gcalctool/gtk.c:234
+#: gcalctool/gtk.c:235
+msgid "7 places"
+msgstr "7 mesta"
 
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr "/8 značajnih mesta"
+#: gcalctool/gtk.c:205 gcalctool/gtk.c:206 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:237
+msgid "8 places"
+msgstr "8 mesta"
 
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr "/9 značajnih mesta"
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:208 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:239
+msgid "9 places"
+msgstr "9 mesta"
 
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/razdv1"
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:210 gcalctool/gtk.c:240
+#: gcalctool/gtk.c:241
+msgid "10 places"
+msgstr "10 mesta"
 
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:212 gcalctool/gtk.c:242
+#: gcalctool/gtk.c:243
+msgid "11 places"
+msgstr "11 mesta"
+
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:214 gcalctool/gtk.c:244
+#: gcalctool/gtk.c:245
+msgid "12 places"
+msgstr "12 mesta"
+
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:216 gcalctool/gtk.c:246
+#: gcalctool/gtk.c:247
+msgid "13 places"
+msgstr "13 mesta"
+
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:218 gcalctool/gtk.c:248
+#: gcalctool/gtk.c:249
+msgid "14 places"
+msgstr "14 mesta"
+
+#: gcalctool/gtk.c:219 gcalctool/gtk.c:220 gcalctool/gtk.c:250
+#: gcalctool/gtk.c:251
+msgid "15 places"
+msgstr "15 mesta"
+
+#: gcalctool/gtk.c:256 gcalctool/gtk.c:263
+msgid "Show _Trailing Zeroes"
 msgstr "Prikaži prateće nu_le"
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
-msgstr "/1 mesto"
+#: gcalctool/gtk.c:257 gcalctool/gtk.c:264
+msgid "Show trailing zeroes"
+msgstr "Prikaži prateće nule"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
-msgstr "/2 mesta"
+#: gcalctool/gtk.c:258
+msgid "Show T_housands Separator"
+msgstr "Prikaži razdvajač _hiljada"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
-msgstr "/3 mesta"
+#: gcalctool/gtk.c:259
+msgid "Show thousands separator"
+msgstr "Prikaži razdvajač hiljada"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
-msgstr "/4 mesta"
+#: gcalctool/gtk.c:260
+msgid "_Memory Registers"
+msgstr "_Memorijski registri"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
-msgstr "/5 mesta"
+#: gcalctool/gtk.c:261
+msgid "Show memory registers"
+msgstr "Prikaži memorijske registre"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
-msgstr "/6 mesta"
+#: gcalctool/gtk.c:269 gcalctool/gtk.c:270
+msgid "0 significant places"
+msgstr "0 značajnih mesta"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
-msgstr "/7 mesta"
+#: gcalctool/gtk.c:271 gcalctool/gtk.c:272
+msgid "1 significant place"
+msgstr "1 značajno mesto"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
-msgstr "/8 mesta"
+#: gcalctool/gtk.c:273 gcalctool/gtk.c:274
+msgid "2 significant places"
+msgstr "2 značajna mesta"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
-msgstr "/9 mesta"
+#: gcalctool/gtk.c:275 gcalctool/gtk.c:276
+msgid "3 significant places"
+msgstr "3 značajna mesta"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
-msgstr "/10 mesta"
+#: gcalctool/gtk.c:277 gcalctool/gtk.c:278
+msgid "4 significant places"
+msgstr "4 značajna mesta"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
-msgstr "/11 mesta"
+#: gcalctool/gtk.c:279 gcalctool/gtk.c:280
+msgid "5 significant places"
+msgstr "5 značajnih mesta"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
-msgstr "/12 mesta"
+#: gcalctool/gtk.c:281 gcalctool/gtk.c:282
+msgid "6 significant places"
+msgstr "6 značajnih mesta"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
-msgstr "/13 mesta"
+#: gcalctool/gtk.c:283 gcalctool/gtk.c:284
+msgid "7 significant places"
+msgstr "7 značajnih mesta"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
-msgstr "/14 mesta"
+#: gcalctool/gtk.c:285 gcalctool/gtk.c:286
+msgid "8 significant places"
+msgstr "8 značajnih mesta"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
-msgstr "/15 mesta"
+#: gcalctool/gtk.c:287 gcalctool/gtk.c:288
+msgid "9 significant places"
+msgstr "9 značajnih mesta"
+
+#: gcalctool/gtk.c:293
+msgid "_Basic mode"
+msgstr "_Osnovni režim"
+
+#: gcalctool/gtk.c:294
+msgid "Basic mode"
+msgstr "Osnovni režim"
 
 #: gcalctool/gtk.c:295
+msgid "_Financial mode"
+msgstr "_Finansijski režim"
+
+#: gcalctool/gtk.c:296
+msgid "Financial mode"
+msgstr "Finansijski režim"
+
+#: gcalctool/gtk.c:297
+msgid "_Scientific mode"
+msgstr "_Naučni režim"
+
+#: gcalctool/gtk.c:298
+msgid "Scientific mode"
+msgstr "Naučni režim"
+
+#: gcalctool/gtk.c:440
 msgid "translator_credits"
 msgstr "Danilo Šegan <danilo@prevod.org>"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:442
 msgid "Gcalctool"
 msgstr "Gkalktul"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:444
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator sa finansijskim i naučnim načinom rada."
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:731
 msgid "Insert ASCII Value"
-msgstr "Ubaci ASCII vrednost"
+msgstr "Ubaci ASKRI vrednost"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:746
 msgid "Ch_aracter:"
 msgstr "_Znak:"
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:771
 msgid "_Insert"
 msgstr "U_metni"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:850
 msgid "Edit Constants"
 msgstr "Uredi konstante"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:850
 msgid "Edit Functions"
 msgstr "Uredi funkcije"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:874
 msgid "Note:"
 msgstr "Obaveštenje:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:875
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Sve konstantne vrednosti se navode u dekadnom brojnom sistemu."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:885
 msgid "Click a _value or description to edit it:"
 msgstr "Kliknite na _vrednost ili opis da ih uredite:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:908
 msgid "No."
 msgstr "br."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:910
 msgid "Value"
 msgstr "Vrednost"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:912
 msgid "Description"
 msgstr "Opis"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:940 gcalctool/gtk.c:942 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1141
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1149
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1197
 msgid "Memory Registers"
 msgstr "Memorijski registri"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1262
 msgid "Edit Constants..."
 msgstr "Uredi konstante..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1262
 msgid "Edit Functions..."
 msgstr "Uredi funkcije..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Izračunaj"
+
+#~ msgid "Logical OR"
+#~ msgstr "Logičko ILI"
+
+#~ msgid "Logical AND"
+#~ msgstr "Logičko I"
+
+#~ msgid "Logical NOT"
+#~ msgstr "Logička negacija"
+
+#~ msgid "Logical XOR"
+#~ msgstr "Logičko „ili — ili“ (isključivo ili)"
+
+#~ msgid "Logical XNOR"
+#~ msgstr "Logički XNOR"
+
+#~ msgid "kilometers per hour or miles per hour"
+#~ msgstr "kilometara po času ili milja po času"
+
+#~ msgid "centimeters or inches"
+#~ msgstr "centimetri ili inči"
+
+#~ msgid "grams or ounces"
+#~ msgstr "grama ili unci"
+
+#~ msgid "/_Calculator"
+#~ msgstr "/_Kalkulator"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/Kalkulator/I_zađi"
+
+#~ msgid "/_Edit"
+#~ msgstr "/_Uredi"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/Uredi/razdvojnik1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/Uredi/_Ubaci ASCII vrednost..."
+
+#~ msgid "/_View"
+#~ msgstr "/P_regled"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/Pregled/_Osnovni mod"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/Pregled/_Finansijski"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/Pregled/_Naučni mod"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/Pregled/razdvojnik1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/Pregled/Prikaži prateće nu_le"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/Pregled/razdvojnik2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/Pregled/Prikaži _memorijske registre"
+
+#~ msgid "/_Help"
+#~ msgstr "/_Pomoć"
+
+#~ msgid "/sep1"
+#~ msgstr "/razdv1"
 
 #~ msgid "x<sup><i>2</i></sup>"
 #~ msgstr "x<sup><i>2</i></sup>"
