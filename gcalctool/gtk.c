@@ -170,7 +170,7 @@ static GtkItemFactoryEntry main_menu[] = {
     { N_("/Edit/_Copy"),           NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
     { N_("/Edit/_Paste"),          NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
     { N_("/Edit/sep1"),            NULL, NULL,    0,       "<Separator>" },
-    { N_("/Edit/_Insert ASCII Value..."), "<control>I", mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
+    { N_("/Edit/_Insert ASCII Value..."), "<control>I", mb_proc, M_ASCII, NULL },
 
     { N_("/_View"),                NULL, NULL,    0,       "<Branch>" },
     { N_("/View/_Basic Mode"),     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
@@ -622,8 +622,7 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
 
-    insert_button = button_new_with_stock_image(_("_Insert"), 
-                                                GTK_STOCK_CONVERT);
+    insert_button = gtk_button_new_with_mnemonic(_("_Insert"));
     g_return_if_fail(insert_button != NULL);
     gtk_widget_ref(insert_button);
     gtk_widget_show(insert_button);
