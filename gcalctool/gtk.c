@@ -1491,8 +1491,10 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
             SPRINTF(name, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
-            gtk_tooltips_set_tip(X->tips, Gtk_buttons[n],
-                                 _(buttons[n].hstr), "");
+            if (buttons[n].hstr != NULL) {
+                gtk_tooltips_set_tip(X->tips, Gtk_buttons[n],
+                                     _(buttons[n].hstr), "");
+            }
             g_object_set_data(G_OBJECT(Gtk_buttons[n]),
                               "button", &buttons[n]);
             gtk_widget_ref(Gtk_buttons[n]);

@@ -139,8 +139,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 /* Row 1. */
 {
     N_("7"),
-    N_("Numeric 7"),
     NULL,
+    N_("Numeric 7"),
     { 0,     0,        0,           0,      0 },
     { GDK_7, GDK_KP_7, GDK_KP_Home, GDK_R7, 0 },
     '7',
@@ -149,8 +149,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },
 {
     N_("8"),
-    N_("Numeric 8"),
     NULL,
+    N_("Numeric 8"),
     { 0,     0,        0,         0,      0 },
     { GDK_8, GDK_KP_8, GDK_KP_Up, 0 },
     '8',
@@ -159,8 +159,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },
 {
     N_("9"),
-    N_("Numeric 9"),
     NULL,
+    N_("Numeric 9"),
     { 0,     0,        0,              0,      0 },
     { GDK_9, GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 },
     '9',
@@ -221,8 +221,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 /* Row 2. */
 {
     N_("4"),
-    N_("Numeric 4"),
     NULL,
+    N_("Numeric 4"),
     { 0,     0,        0,           0,        0 },
     { GDK_4, GDK_KP_4, GDK_KP_Left, 0 },
     '4',
@@ -231,8 +231,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },
 {
     N_("5"),
-    N_("Numeric 5"),
     NULL,
+    N_("Numeric 5"),
     { 0,     0,        0,            0,       0 },
     { GDK_5, GDK_KP_5, GDK_KP_Begin, GDK_R11, 0 },
     '5',
@@ -241,8 +241,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },
 {
     N_("6"),
-    N_("Numeric 6"),
     NULL,
+    N_("Numeric 6"),
     { 0,     0,        0,            0,         0 },
     { GDK_6, GDK_KP_6, GDK_KP_Right, 0 },
     '6',
@@ -303,8 +303,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 /* Row 3. */
 {
     N_("1"),
-    N_("Numeric 1"),
     NULL,
+    N_("Numeric 1"),
     { 0,     0,        0,          0,       0 },
     { GDK_1, GDK_KP_1, GDK_KP_End, GDK_R13, 0 },
     '1',
@@ -313,8 +313,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },
 {
     N_("2"),
-    N_("Numeric 2"),
     NULL,
+    N_("Numeric 2"),
     { 0,     0,        0,           0,        0 }, 
     { GDK_2, GDK_KP_2, GDK_KP_Down, 0 },
     '2',
@@ -323,8 +323,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 },    
 {     
     N_("3"),
-    N_("Numeric 3"),
     NULL,
+    N_("Numeric 3"),
     { 0,     0,        0,                0,       0 },
     { GDK_3, GDK_KP_3, GDK_KP_Page_Down, GDK_R15, 0 },
     '3',
@@ -385,8 +385,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 /* Row 4. */
 {
     N_("0"),
-    N_("Numeric 0"),
     NULL,
+    N_("Numeric 0"),
     { 0,     0,        0,             0 },
     { GDK_0, GDK_KP_0, GDK_KP_Insert, 0 },
     '0',
