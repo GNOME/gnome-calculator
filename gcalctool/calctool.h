@@ -183,7 +183,7 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
 #define MAXEXTRAS      8          /* Maximum number of keysym alternates. */
-#define MAXMODES       5          /* Maximum number of calculator modes. */
+#define MAXMODES       4          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */

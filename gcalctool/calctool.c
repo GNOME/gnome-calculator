@@ -90,7 +90,7 @@ int basevals[4] = { 2, 8, 10, 16 };
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
 char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
-                              "SCIENTIFIC", "SCIENTIFIC_EXP" };
+                              "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
 
