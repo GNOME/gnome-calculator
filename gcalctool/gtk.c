@@ -75,11 +75,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
-    GtkWidget *cfframe;                /* Constant/Function window. */
-    GtkWidget *cf_no_label;
-    GtkWidget *cf_con_entry;
-    GtkWidget *cf_desc_entry;
-    GtkWidget *cf_val_entry;
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *hyp;                    /* Hyperbolic mode. */
     GtkWidget *inv;                    /* Inverse mode. */
@@ -107,11 +102,29 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     enum menu_type CFtype;
     Display *dpy;
 
+    GArray *cf_entries;
+
     int menuval;                  /* Index to button array at menu time. */
     struct button *mrec[MAXMENUS];
 } XObject;
 
 typedef struct Xobject *XVars;
+
+enum
+{
+    COLUMN_NUMBER,
+    COLUMN_VALUE,
+    COLUMN_DESCRIPTION,
+    COLUMN_EDITABLE,
+    NUM_COLUMNS
+};
+
+typedef struct {
+    gint  number;
+    gchar  *value;
+    gchar *description;
+    gboolean editable;
+} CF_Item;
 
 static GtkWidget *create_menu(enum menu_type, struct button *);
 static GtkWidget *create_mode_panel(GtkWidget *);
@@ -124,15 +137,15 @@ static char *make_hostname(Display *);
 
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
-static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean event_cb(GtkWidget *, GdkEvent *, gpointer);
 
+static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
 static void base_cb(GtkToggleButton *, gpointer);
-static void cfframe_cancel_cb(GtkButton *, gpointer);
-static void cfframe_ok_cb(GtkButton *, gpointer);
+static void cell_edited(GtkCellRendererText *, 
+                        const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_kbd_accel(GtkWidget *, guint, guint);
 static void create_menu_item_with_markup(char *, int, int);
@@ -143,7 +156,6 @@ static void mb_proc(gpointer, int, GtkWidget *);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
-static void notice_prompt(GtkWidget *, char *);
 static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
@@ -300,6 +312,34 @@ about_cb()
 
 
 static void
+add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
+{
+    GtkCellRenderer *renderer;
+    GtkTreeModel *model = gtk_tree_view_get_model(treeview);
+
+    renderer = gtk_cell_renderer_text_new();
+    if (editable) {
+        g_signal_connect(G_OBJECT(renderer), "edited",
+                         G_CALLBACK(cell_edited), model);
+    }
+    g_object_set_data(G_OBJECT(renderer), "column", (gint *) colno);
+
+    if (editable) {
+        gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(treeview),
+                                                -1, name, renderer,
+                                                "text", colno,
+                                                "editable", COLUMN_EDITABLE,
+                                                NULL);
+    } else {
+        gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(treeview),
+                                                -1, name, renderer,
+                                                "text", colno,
+                                                NULL);
+    }
+}
+
+
+static void
 add_extra_kbd_accels()
 {
     create_kbd_accel(BUT_EQ,   0, GDK_Return);
@@ -447,113 +487,94 @@ button_proc(GtkButton *widget, gpointer user_data)
 }
 
 
-/*ARGSUSED*/
 static void
-cfframe_ok_cb(GtkButton *button, gpointer user_data)
+cell_edited(GtkCellRendererText *cell, const gchar *path_string,
+            const gchar *new_text, gpointer data)
 {
-    GtkWidget *dialog, *label;
-    char str[MAXLINE];      /* Temporary buffer for various strings. */
-    char *pval;             /* Points to values returned from panel items. */
-    int cfno;               /* Current constant/function number. */
-    int exists;             /* Set if the constant/function exists. */
-    int n;                  /* Set to 1, if constant value is valid. */
-    int result;
-    double tmp;             /* For converting constant value. */
+    GtkTreeModel *model = (GtkTreeModel *) data;
+    GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
+    GtkTreeIter iter;
+    gchar *old_text;
+    gint *column, i;
 
-    pval = (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_con_entry));
-    SSCANF(pval, "%d", &cfno);
-    if (cfno < 0 || cfno > 9) {
-        if (X->CFtype == M_CON) {
-            notice_prompt(X->cfframe,
-                _("Invalid constant number.\nMust be in the range 0 - 9"));
-        } else {
-            notice_prompt(X->cfframe, 
-                _("Invalid function number.\nMust be in the range 0 - 9")); 
+    column = g_object_get_data(G_OBJECT(cell), "column");
+
+    gtk_tree_model_get_iter(model, &iter, path);
+
+    switch (GPOINTER_TO_INT(column)) {
+        case COLUMN_VALUE:
+            gtk_tree_model_get(model, &iter, column, &old_text, -1);
+            g_free(old_text);
+ 
+            i = gtk_tree_path_get_indices(path)[0];
+            g_free(g_array_index(X->cf_entries, CF_Item, i).value);
+            g_array_index(X->cf_entries, CF_Item, i).value = g_strdup(new_text);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, column,
+                           g_array_index(X->cf_entries, CF_Item, i).value, -1);
+            break;
+
+        case COLUMN_DESCRIPTION:
+            gtk_tree_model_get(model, &iter, column, &old_text, -1);
+            g_free(old_text);
+ 
+            i = gtk_tree_path_get_indices(path)[0];
+            g_free(g_array_index(X->cf_entries, CF_Item, i).description);
+            g_array_index(X->cf_entries, CF_Item, i).description = 
+                                                             g_strdup(new_text);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, column,
+                     g_array_index(X->cf_entries, CF_Item, i).description, -1);
+            break;
+    }
+ 
+    gtk_tree_path_free(path);
+}
+
+
+static void
+cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
+{
+    CF_Item item;
+    int i;
+
+    if (id == GTK_RESPONSE_HELP) {
+        GError *error = NULL;
+
+        gnome_help_display("gcalctool", NULL, &error);
+
+        if (error) {
+            GtkWidget *d;
+
+            d = gtk_message_dialog_new(NULL,
+                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                             GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                             error->message);
+            gtk_dialog_run(GTK_DIALOG(d));
+            gtk_widget_destroy(d);
+            g_error_free(error);
+            error = NULL;
         }
         return;
     }
 
-    exists = 0;
-    switch (X->CFtype) {
-        case M_CON :
-            exists = 1;    /* Always the default constants. */
-            break;
+    if (id == GTK_RESPONSE_ACCEPT) {
+        for (i = 0; i < MAXCONFUN; i++) {
+            item = (CF_Item) g_array_index(X->cf_entries, CF_Item, i);
 
-        case M_FUN :
-            if (strlen(v->fun_vals[cfno])) {
-                exists = 1;
+            if (X->CFtype == M_CON) {
+                MPstr_to_num(item.value, DEC, v->MPcon_vals[i]);
+                STRCPY(v->con_names[i], item.description);
+                put_constant(i, item.value, item.description);
+            } else {
+                STRCPY(v->fun_vals[i], convert(item.value));
+                SPRINTF(v->fun_names[i], item.description);
+                put_function(i, item.value, item.description);
             }
-            break;
+        }    
 
-        default :
-            break;
+        create_con_fun_menu(X->CFtype);
     }
 
-    if (exists) {
-        if (X->CFtype == M_CON) {
-            SPRINTF(str, _("Constant %1d already exists.\nOkay to overwrite?"),
-                    cfno);
-        } else {
-            SPRINTF(str, _("Function %1d already exists.\nOkay to overwrite?"),
-                    cfno);
-        }
-
-        dialog = gtk_dialog_new_with_buttons("Warning", GTK_WINDOW(X->cfframe),
-                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                             GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
-                             GTK_STOCK_CANCEL, GTK_RESPONSE_REJECT,
-                             NULL);
-        label = gtk_label_new(str);
-        gtk_container_add(GTK_CONTAINER(GTK_DIALOG(dialog)->vbox), label);
-        gtk_widget_show_all(dialog);
-        beep();
-        result = gtk_dialog_run(GTK_DIALOG(dialog));
-        switch (result) {
-            case GTK_RESPONSE_ACCEPT:
-                break;
-
-            default:
-                return;
-        }
-        gtk_widget_destroy(dialog);
-    }                           
-                                
-    pval = (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_val_entry));
-    switch (X->CFtype) {        
-        case M_CON :            
-            n = sscanf(pval, "%lf", &tmp);
-            if (n != 1) {       
-                notice_prompt(X->cfframe,
-                          _("Invalid constant value.\nConstant not changed."));
-                return;         
-            }                   
-            MPstr_to_num(pval, DEC, v->MPcon_vals[cfno]);
-            STRCPY(v->con_names[cfno],
-                   gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
-            put_constant(cfno, pval, v->con_names[cfno]);
-            break;              
-                                
-        case M_FUN :            
-            STRCPY(v->fun_vals[cfno], convert(pval));
-            SPRINTF(v->fun_names[cfno],
-                    gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
-            put_function(cfno, v->fun_vals[cfno], v->fun_names[cfno]);
-            break;              
-                                
-        default :               
-            break;              
-    }                           
-                                
-    create_con_fun_menu(X->CFtype);
-    gtk_widget_hide(X->cfframe);
-}
-
-
-/*ARGSUSED*/
-static void
-cfframe_cancel_cb(GtkButton *button, gpointer user_data)
-{
-    gtk_widget_hide(X->cfframe);
+    gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 
@@ -631,77 +652,119 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
 }
 
 
-static void
-create_cfframe()    /* Create auxiliary frame for CON/FUN key. */
+static GtkTreeModel *
+create_cf_model(enum menu_type mtype)
 {
-    GtkWidget *cf_desc_label, *cf_val_label, *cf_ok, *cf_cancel;
-    GtkWidget *hbox, *table, *vbox;
+    gint i = 0;
+    CF_Item n;
+    GtkListStore *model;
+    GtkTreeIter iter;
  
-    X->cfframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(X->cfframe), _("New Constant"));
+    X->cf_entries = g_array_sized_new(FALSE, FALSE, sizeof(CF_Item), 1);
  
-    vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(X->cfframe), vbox);
+    for (i = 0; i < MAXCONFUN; i++) {
+        n.number = i;
+        if (mtype == M_CON) {
+            n.value       = g_strdup(make_number(v->MPcon_vals[i], FALSE));
+            n.description = g_strdup(v->con_names[i]);
+        } else {
+            n.value       = g_strdup(v->fun_vals[i]);
+            n.description = g_strdup(v->fun_names[i]);
+        }
+        n.editable = TRUE;
+        g_array_append_vals(X->cf_entries, &n, 1);
+    }
  
-    table = gtk_table_new(3, 2, FALSE);
-    gtk_widget_ref(table);
-    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
+    model = gtk_list_store_new(NUM_COLUMNS, G_TYPE_INT, G_TYPE_STRING,
+                               G_TYPE_STRING, G_TYPE_BOOLEAN);
+ 
+    for (i = 0; i < X->cf_entries->len; i++) {
+        gtk_list_store_append(model, &iter);
+   
+        gtk_list_store_set(model, &iter,
+                           COLUMN_NUMBER,
+                           g_array_index(X->cf_entries, CF_Item, i).number,
+                           COLUMN_VALUE,
+                           g_array_index(X->cf_entries, CF_Item, i).value,
+                           COLUMN_DESCRIPTION,
+                           g_array_index(X->cf_entries, CF_Item, i).description,
+                           COLUMN_EDITABLE,
+                           g_array_index(X->cf_entries, CF_Item, i).editable,
+                           -1);
+    }
+   
+    return(GTK_TREE_MODEL(model));
+}
 
-    X->cf_no_label = gtk_label_new(_("Constant no:"));
-    gtk_misc_set_alignment(GTK_MISC(X->cf_no_label), 1.0, 0.5);
-    gtk_table_attach(GTK_TABLE(table), X->cf_no_label, 0, 1, 0, 1,
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
- 
-    X->cf_con_entry = gtk_entry_new();
-    gtk_entry_set_max_length(GTK_ENTRY(X->cf_con_entry), 2);
-    gtk_table_attach(GTK_TABLE(table), X->cf_con_entry, 1, 2, 0, 1,
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
- 
-    cf_desc_label = gtk_label_new(_("Description:"));
-    gtk_misc_set_alignment(GTK_MISC(cf_desc_label), 1.0, 0.5);
-    gtk_table_attach(GTK_TABLE(table), cf_desc_label, 0, 1, 1, 2,
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),  
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
- 
-    X->cf_desc_entry = gtk_entry_new();
-    gtk_entry_set_max_length(GTK_ENTRY(X->cf_desc_entry), 30);
-    gtk_table_attach(GTK_TABLE(table), X->cf_desc_entry, 1, 2, 1, 2, 
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),   
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
- 
-    cf_val_label = gtk_label_new(_("Value:"));
-    gtk_misc_set_alignment(GTK_MISC(cf_val_label), 1.0, 0.5);
-    gtk_table_attach(GTK_TABLE(table), cf_val_label, 0, 1, 2, 3, 
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),   
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
 
-    X->cf_val_entry = gtk_entry_new();
-    gtk_entry_set_max_length(GTK_ENTRY(X->cf_val_entry), 30);
-    gtk_table_attach(GTK_TABLE(table), X->cf_val_entry, 1, 2, 2, 3,            
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),    
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
+/* Create popup window for editing constants/functions. */
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+static void
+create_cfframe(enum menu_type mtype)
+{
+    const gchar *title;
+    GdkGeometry geometry;
+    GtkTreeModel *model;
+    GtkWidget *dialog, *label, *sw, *treeview, *vbox;
 
-    cf_cancel = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
-    gtk_box_pack_start(GTK_BOX(hbox), cf_cancel, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(cf_cancel), 2);
+    title = (mtype == M_CON) ? _("Edit Constants") : _("Edit Functions");
+    geometry.min_width = 360;
+    geometry.min_height = 300;
+    dialog = gtk_dialog_new_with_buttons(title, NULL,
+                                         GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_STOCK_HELP,   GTK_RESPONSE_HELP,
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_REJECT,
+                                         GTK_STOCK_OK,     GTK_RESPONSE_ACCEPT,
+                                         NULL);
 
-    cf_ok = gtk_button_new_from_stock(GTK_STOCK_OK);
-    gtk_box_pack_start(GTK_BOX(hbox), cf_ok, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(cf_ok), 2);
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), 
+                                    GTK_RESPONSE_ACCEPT);
+    gtk_dialog_set_has_separator(GTK_DIALOG(dialog), FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(dialog), TRUE);
+    gtk_window_set_transient_for(GTK_WINDOW(dialog), 
+                                 GTK_WINDOW(X->kframe));
+    gtk_window_set_geometry_hints(GTK_WINDOW(dialog), dialog,
+                                  &geometry, GDK_HINT_MIN_SIZE);
+    vbox = gtk_vbox_new(FALSE, 6);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
 
-    g_signal_connect(G_OBJECT(X->cfframe), "delete_event",
-                     G_CALLBACK(dismiss_cfframe), NULL);
-    g_signal_connect(G_OBJECT(cf_ok), "clicked",
-                     G_CALLBACK(cfframe_ok_cb), NULL);
-    g_signal_connect(G_OBJECT(cf_cancel), "clicked",
-                     G_CALLBACK(cfframe_cancel_cb), NULL);
-    gtk_widget_show_all(vbox);
-    gtk_widget_realize(X->cfframe);
+    label = gtk_label_new(_("Click a value or description to edit it:"));
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
+    sw = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
+                                        GTK_SHADOW_ETCHED_IN);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
+                                   GTK_POLICY_AUTOMATIC,
+                                   GTK_POLICY_NEVER);
+    gtk_box_pack_start(GTK_BOX(vbox), sw, TRUE, TRUE, 0);
+
+    model = create_cf_model(mtype);
+
+    treeview = gtk_tree_view_new_with_model(model);
+    g_object_unref(model);
+    gtk_tree_view_set_rules_hint(GTK_TREE_VIEW(treeview), TRUE);
+    gtk_tree_selection_set_mode(
+                         gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
+                                                     GTK_SELECTION_SINGLE);
+
+    add_cf_column(GTK_TREE_VIEW(treeview), _("No."),
+                  COLUMN_NUMBER, FALSE);
+    add_cf_column(GTK_TREE_VIEW(treeview), _("Value"),
+                  COLUMN_VALUE, TRUE);
+    add_cf_column(GTK_TREE_VIEW(treeview), _("Description"),
+                  COLUMN_DESCRIPTION, TRUE);
+
+    gtk_container_add(GTK_CONTAINER(sw), treeview);
+
+    g_signal_connect(G_OBJECT(dialog), "response",
+                     G_CALLBACK(cfframe_response_cb), (gpointer) model);
+
+    gtk_container_add(GTK_CONTAINER(GTK_DIALOG(dialog)->vbox), vbox);
+    gtk_widget_show_all(dialog);
 }
 
 
@@ -969,16 +1032,6 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
 /*ARGSUSED*/
 static gboolean
-dismiss_cfframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    X->cfframe = NULL;
-
-    return(FALSE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     set_memory_toggle(FALSE);
@@ -999,7 +1052,7 @@ create_con_fun_menu(enum menu_type mtype)
     m = (int) mtype;
     X->menus[(int) mtype] = gtk_menu_new();
 
-    mstr = (mtype == M_CON) ? _("Enter Constant...") : _("Enter Function...");
+    mstr = (mtype == M_CON) ? _("Edit Constants...") : _("Edit Functions...");
     menu_item = gtk_menu_item_new_with_label(mstr);
     gtk_widget_show(menu_item);
     gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
@@ -1628,49 +1681,7 @@ static void
 new_cf_value(GtkMenuItem *item, gpointer user_data)
 {
     X->CFtype = (enum menu_type) user_data;
-    if (X->cfframe == NULL) {
-        create_cfframe();
-    }
-
-    if (X->CFtype == M_CON) {
-        gtk_window_set_title(GTK_WINDOW(X->cfframe), _("New Constant"));
-        gtk_label_set_text(GTK_LABEL(X->cf_no_label), _("Constant no:"));
-    } else {
-        gtk_window_set_title(GTK_WINDOW(X->cfframe), _("New Function"));
-        gtk_label_set_text(GTK_LABEL(X->cf_no_label), _("Function no:"));
-    }
-
-    gtk_entry_set_text(GTK_ENTRY(X->cf_con_entry), "");
-    gtk_entry_set_text(GTK_ENTRY(X->cf_desc_entry), "");
-    gtk_entry_set_text(GTK_ENTRY(X->cf_val_entry), "");
- 
-    if (gdk_window_is_visible(X->cfframe->window) == FALSE) {
-        ds_position_popup(X->kframe, X->cfframe, DS_POPUP_RIGHT);
-    }
-    gtk_widget_show(X->cfframe);
-}
-
-
-/*ARGSUSED*/
-static void
-notice_prompt(GtkWidget *parent, char *message)
-{
-    GtkWidget *dialog, *label;
-     
-    dialog = gtk_dialog_new_with_buttons("Message", GTK_WINDOW(parent),
-                                         GTK_DIALOG_DESTROY_WITH_PARENT,
-                                         GTK_STOCK_OK, GTK_RESPONSE_NONE,
-                                         NULL);
-    label = gtk_label_new(message);
-     
-    g_signal_connect_swapped(GTK_OBJECT(dialog), "response", 
-                             G_CALLBACK(gtk_widget_destroy),
-                             GTK_OBJECT(dialog));
-
-    gtk_container_add(GTK_CONTAINER(GTK_DIALOG(dialog)->vbox), label);
-    gtk_widget_show_all(dialog);
-    beep();
-    gtk_dialog_run(GTK_DIALOG(dialog));
+    create_cfframe(X->CFtype);
 }
 
 
