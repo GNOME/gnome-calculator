@@ -117,7 +117,7 @@ gc_strdup(char *str)
 }
 
 
-static void 
+void 
 exp_append(char *text)
 {
     char *buf;

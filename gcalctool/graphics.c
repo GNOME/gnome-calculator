@@ -67,7 +67,10 @@ make_registers()            /* Calculate memory register frame values. */
 
 /* XXX: is this routine needed anymore? */
 
+#if 0
 void
 process_str(char *str)
 {
+
 }
+#endif

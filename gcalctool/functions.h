@@ -31,4 +31,6 @@ void do_factorial(int *, int *);
 void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
 void do_portionfunc(int num[MP_SIZE]);
 
+void exp_append(char *text);
+
 #endif /*FUNCTIONS_H*/

@@ -31,6 +31,7 @@
 #include "calctool.h"
 #include "extern.h"
 #include "dsdefs.h"
+#include "functions.h"
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -1540,7 +1541,27 @@ get_menu_entry(enum menu_type mtype, int offset)
 static void
 get_proc(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
-    process_str((char *) text);
+
+  switch (v->syntax) {
+  case npa: {
+    int ret = lr_parse(text, v->MPdisp_val);
+    if (!ret) {
+      show_display(v->MPdisp_val);
+    } else {
+      update_statusbar(_("Clipboard contained malformed calculation"), "gtk-dialog-error");
+    }
+    break;
+  }
+    
+  case exprs:
+    exp_append(text);
+    refresh_display();
+    break;
+    
+  default:
+    assert(0);
+  }
+
 }
 
 
