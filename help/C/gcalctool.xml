@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://basil.ireland.sun.com:8080/docbook/docbookx.dtd" [
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.2.78">
-  <!ENTITY manrevision "2.0">
+  <!ENTITY appversion "4.2.81">
+  <!ENTITY manrevision "2.3">
   <!ENTITY date "April 2003">
   <!ENTITY app "<application>gcalctool</application>">
 ]>
@@ -76,6 +76,33 @@
 	  		<para role="publisher">GNOME Documentation Project</para>
 		</revdescription> 
       </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.2</revnumber> 
+		<date>April 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.1</revnumber> 
+		<date>March 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.0</revnumber> 
+		<date>March 2003</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
     </revhistory> 
 
     <releaseinfo>This manual describes version &appversion; of &app;.
@@ -101,22 +128,57 @@
 <!-- ============= Introduction ============================== -->
   <sect1 id="gcalctool-intro"> 
     <title>Introduction</title> 
-    <para>The &app; application is a simple calculator that performs a variety of functions. 
-&app; has three modes:</para>
-     <itemizedlist>
-       <listitem>
- <para><link linkend="gcalctool-basic-mode">Basic Mode</link> provides the standard calculator functions. You can also store numbers in 10 different memory registers, and easily retrieve and replace the numbers in the memory registers. Basic Mode is the default mode. All of the Basic Mode functions are also available in each of the other modes.
-         </para>
-       </listitem>
-       <listitem>
-         <para><link linkend="gcalctool-financial-mode">Financial Mode</link> provides several complex financial functions. 
-         </para>
-       </listitem>
-       <listitem>
-         <para><link linkend="gcalctool-scientific-mode">Scientific Mode</link> provides many additional mathematical functions, including trigonometric and logical functions. You can also store your own functions and constants, when using Scientific Mode. 
-         </para>
-       </listitem>
-     </itemizedlist>
+    <para>The &app; application is multifunctional and can handle different types of mathematical approaches. </para>
+    <para>The &app; application has the following modes:</para>
+     <variablelist>
+        <varlistentry>
+        <term><link linkend="gcalctool-basic-mode">Basic Mode</link></term>
+        <listitem><para>Provides standard calculator functions. You can store numbers in 10 different memory registers, and easily retrieve and replace the numbers in the memory registers. Basic Mode is the default mode. You can use all of the Basic Mode functions in each of the other modes.</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-financial-mode">Financial Mode</link></term>
+        <listitem><para>Provides several complex financial functions.</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-scientific-mode">Scientific Mode</link></term>
+        <listitem><para>Provides many additional mathematical functions, including trigonometric and logical functions. You can also store your own functions and constants, when you use Scientific Mode.</para></listitem>
+        </varlistentry>
+     </variablelist>
+
+    <para>You can use &app; in the following numbering systems:</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Numbering System</para></entry>
+              <entry colname="COLSPEC1" align="right">
+                <para>Base</para></entry>
+            </row>
+          </thead> 
+          <tbody> 
+            <row valign="top">
+              <entry><para>Binary</para></entry>
+              <entry align="right"><para>2</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Octal</para></entry>
+              <entry align="right"><para>8</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Decimal</para></entry>
+              <entry align="right"><para>10</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>Hexadecimal</para></entry>
+              <entry align="right"><para>16</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+                           
   </sect1>
 
 <!-- =========== Getting Started ============================== -->
@@ -147,8 +209,42 @@
 	</screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
+                <para>The <application>&app;</application> window contains the following
+                  elements: </para>
+                <variablelist>
+                  <varlistentry> <term>Menubar</term>
+                         <listitem>
+                                <para>The menus on the menubar contain all of the commands that you need
+                                  to work with <application>&app;</application>.</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>Display area</term>
+                         <listitem>
+                                <para>The display area shows the numbers that you enter, and the results of calculations. You can enter numbers of up to forty digits.  </para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>Mode area</term>
+                         <listitem>
+                                <para>The mode area displays the buttons for the currently selected mode. The Basic Mode buttons are always displayed. When you choose Financial Mode, the Financial Mode buttons are displayed above the Basic Mode buttons. When you choose Scientific Mode, the Scientific Mode buttons are displayed above the Basic Mode Buttons. </para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>Popup Menu</term>
+                         <listitem>
+                <para>The 
+                      <inlinemediaobject> 
+                         <imageobject> 
+                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
+                         </imageobject> 
+                         <textobject> 
+                         <phrase>Shows popup-menu symbol.</phrase> 
+                         </textobject> 
+                      </inlinemediaobject> 
+                symbol on a &app; button indicates that a popup menu is displayed when you click on that button.</para>
+                         </listitem>
+                  </varlistentry>
+                </variablelist>
+
 <para></para>
-<para> To display (this) online help, choose <menuchoice> <guimenu>Help</guimenu> <guimenuitem>Contents</guimenuitem> </menuchoice>. The keyboard equivalent is <keycap>F1</keycap>.</para>
 
   </sect1>
 <!-- ================ Usage ================================ -->
@@ -165,10 +261,36 @@
                          <para>Click on the &app; buttons to enter numbers and functions.</para>
                   </listitem>
                   <listitem>
-                         <para>Give focus to the &app; window, then use the keyboard or numeric keypad to specify the calculation that you want to perform.</para>
+                         <para>Give focus to the &app; window, then use the keyboard or numeric keypad to specify the calculation that you want to perform. For a complete list of keyboard shortcuts, see <xref linkend="gcalctool-keyboard-shortcut"/>.</para>
                   </listitem>
                 </itemizedlist>
-                <para>The numbers that you enter, and the results of calculations, are displayed in the display area. You can enter numbers of up to forty digits.</para>
+                <para>The &app; application automatically displays numbers with more than 40 digits, and small numbers, as exponential numbers. For example, the following table shows the value that is displayed when you use the decimal number base with an accuracy of 2 significant places: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Display</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Signifies</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>1.23e+37</para></entry>
+              <entry><para>1.23 * 10<superscript>37</superscript></para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>1e-5</para></entry>
+              <entry><para>0.00001</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>For information about how to enter a number in exponential format, see <xref linkend="gcalctool-enter-exp"/>.</para>
                 <para>To copy the result of a calculation, choose
                   <menuchoice>
                          <guimenu>Edit</guimenu>
@@ -181,17 +303,6 @@
                          <guimenu>Edit</guimenu>
                          <guimenuitem>Paste</guimenuitem>
                   </menuchoice>.  </para>
-                <para>The 
-                      <inlinemediaobject> 
-                         <imageobject> 
-                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
-                         </imageobject> 
-                         <textobject> 
-                         <phrase>Shows popup-menu symbol.</phrase> 
-                         </textobject> 
-                      </inlinemediaobject> 
-                symbol on a &app; button indicates that a popup menu will be displayed when you click on that button.</para>
-                <para>&app; automatically displays large numbers (>40 digits) and small numbers as exponential numbers. For example, <literal>1.23e+37</literal> signifies 1.23 multiplied by 10 to the power of 37. If you enter 0.00001 and the accuracy is set to less than 5 radix places, &app; displays the number as 1e-5, which signifies 1 multiplied by 10 to the power of -5. For information about how to enter a number in exponential format, see <xref linkend="gcalctool-enter-exp"/>.</para>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="gcalctool-basic-mode"> 
@@ -207,13 +318,12 @@
       <para>To perform simple calculations, use the buttons described in <xref linkend="gcalctool-TBL-simple-calc"/>. </para>
                 <table id="gcalctool-TBL-simple-calc" frame="all">
                   <title>Performing Simple Calculations</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -221,12 +331,10 @@
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -234,7 +342,6 @@
                            <row valign="top">
                              <entry><para>Numerals</para> </entry>
                              <entry><para><guibutton>0</guibutton> to <guibutton>9</guibutton> inclusive</para></entry>
-                             <entry><para><keycap>0</keycap> to <keycap>9</keycap> inclusive</para></entry>
                              <entry><para>In decimal and hexadecimal base, all numerals are active. In octal base, <guibutton>8</guibutton> and <guibutton>9</guibutton> are inactive. In binary base, only <guibutton>0</guibutton> and <guibutton>1</guibutton> are active. The default base is decimal.</para></entry>
                              <entry><para><guibutton>1</guibutton></para></entry>
                              <entry><para>1</para></entry>
@@ -242,7 +349,6 @@
                            <row valign="top">
                              <entry><para>Numeric point</para> </entry>
                              <entry><para><guibutton>.</guibutton></para></entry>
-                             <entry><para><keycap>.</keycap></para></entry>
                              <entry><para>Starts the fractional part of a numeric entry.</para></entry>
                              <entry><para><guibutton>1</guibutton> <guibutton>.</guibutton> <guibutton>2</guibutton></para></entry>
                              <entry><para>1.2</para></entry>
@@ -250,7 +356,6 @@
                            <row valign="top">
                              <entry><para>Calculate a result</para> </entry>
                              <entry><para><guibutton>=</guibutton></para></entry>
-                             <entry><para><keycap>=</keycap> or <keycap>Return</keycap></para></entry>
                              <entry><para>Displays the result of the current calculation in the current base.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
@@ -258,32 +363,28 @@
                            <row valign="top">
                              <entry><para>Addition</para> </entry>
                              <entry><para><guibutton>+</guibutton></para></entry>
-                             <entry><para><keycap>+</keycap></para></entry>
-                             <entry><para>Adds the current value in the display area to the next number entered.</para></entry>
+                             <entry><para>Adds the current value in the display area to the next number that you enter.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Subtraction</para> </entry>
                              <entry><para><guibutton>-</guibutton></para></entry>
-                             <entry><para><keycap>-</keycap></para></entry>
-                             <entry><para>Subtracts the next number entered from the current value in the display area.</para></entry>
+                             <entry><para>Subtracts from the current value in the display area the next number that you enter.</para></entry>
                              <entry><para>3 <guibutton>-</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Multiplication</para> </entry>
                              <entry><para><guibutton>*</guibutton></para></entry>
-                             <entry><para><keycap>*</keycap> or <keycap>x</keycap></para></entry>
-                             <entry><para>Multiplies the current value in the display area by the next number entered.</para></entry>
+                             <entry><para>Multiplies the current value in the display area by the next number that you enter.</para></entry>
                              <entry><para>3 <guibutton>*</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>6</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Division</para> </entry>
                              <entry><para><guibutton>/</guibutton></para></entry>
-                             <entry><para><keycap>/</keycap></para></entry>
-                             <entry><para>Divides the current value in the display area by the next number entered.</para></entry>
+                             <entry><para>Divides the current value in the display area by the next number that you enter.</para></entry>
                              <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>2</para></entry>
                            </row>
@@ -296,13 +397,12 @@
       <para>To erase characters, use the buttons described in <xref linkend="gcalctool-TBL-erase-char"/>. </para>
                 <table id="gcalctool-TBL-erase-char" frame="all">
                   <title>Erasing Characters</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -310,12 +410,10 @@
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -323,7 +421,6 @@
                            <row valign="top">
                              <entry><para>Backspace</para> </entry>
                              <entry><para><guibutton>Bsp</guibutton></para></entry>
-                             <entry><para><keycap>Backspace</keycap></para></entry>
                              <entry><para>Removes the rightmost character from the display area.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bsp</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
@@ -331,7 +428,6 @@
                            <row valign="top">
                              <entry><para>Clear Entry</para> </entry>
                              <entry><para><guibutton>CE</guibutton></para></entry>
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
                              <entry><para>Removes the current value from the display area.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>CE</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>1</para></entry>
@@ -339,7 +435,6 @@
                            <row valign="top">
                              <entry><para>Clear</para> </entry>
                              <entry><para><guibutton>Clr</guibutton></para></entry>
-                             <entry><para><keycap>Delete</keycap></para></entry>
                              <entry><para>Resets the current value in the display area to zero. <guibutton>Clr</guibutton> also deselects the <guilabel>Hyp</guilabel> and <guilabel>Inv</guilabel> options in Scientific Mode.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>0</para></entry>
@@ -353,13 +448,12 @@
       <para>To perform arithmetic calculations, use the buttons described in <xref linkend="gcalctool-TBL-arith-calc"/>. </para>
                 <table id="gcalctool-TBL-arith-calc" frame="all">
                   <title>Performing Arithmetic Calculations</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -367,12 +461,10 @@
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -380,15 +472,13 @@
                            <row valign="top">
                              <entry><para>Percentage</para> </entry>
                              <entry><para><guibutton>%</guibutton></para></entry>
-                             <entry><para><keycap>%</keycap></para></entry>
-                             <entry><para>Uses the next number entered to calculate that percentage of the current value in the display area.</para></entry>
+                             <entry><para>Uses the next number that you enter to calculate that percentage of the current value in the display area.</para></entry>
                              <entry><para>200 <guibutton>%</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>4</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Reciprocal</para> </entry>
                              <entry><para><guibutton>1/x</guibutton></para></entry>
-                             <entry><para><keycap>r</keycap></para></entry>
                              <entry><para>Divides 1 by the current value in the display area.</para></entry>
                              <entry><para>4 <guibutton>1/x</guibutton></para></entry>
                              <entry><para>0.25</para></entry>
@@ -396,7 +486,6 @@
                            <row valign="top">
                              <entry><para>Change the arithmetic sign</para> </entry>
                              <entry><para><guibutton>+/-</guibutton></para></entry>
-                             <entry><para><keycap>C</keycap></para></entry>
                              <entry><para>Changes a positive number to a negative number, or a negative number to a positive number.</para></entry>
                              <entry><para>8 <guibutton>+/-</guibutton></para></entry>
                              <entry><para>-8</para></entry>
@@ -404,7 +493,6 @@
                            <row valign="top">
                              <entry><para>Square Root</para> </entry>
                              <entry><para><guibutton>Sqrt</guibutton></para></entry>
-                             <entry><para><keycap>s</keycap></para></entry>
                              <entry><para>Calculates the square root of the current value in the display area.</para></entry>
                              <entry><para>9 <guibutton>Sqrt</guibutton></para></entry>
                              <entry><para>3</para></entry>
@@ -412,7 +500,6 @@
                            <row valign="top">
                              <entry><para>Square</para> </entry>
                              <entry><para>x<superscript>2</superscript></para></entry>
-                             <entry><para><keycap>@</keycap></para></entry>
                              <entry><para>Calculates the square of the current value in the display area.</para></entry>
                              <entry><para>3 x<superscript>2</superscript></para></entry>
                              <entry><para>9</para></entry>
@@ -420,7 +507,6 @@
                            <row valign="top">
                              <entry><para>Integer Portion</para> </entry>
                              <entry><para><guibutton>Int</guibutton></para></entry>
-                             <entry><para><keycap>i</keycap></para></entry>
                              <entry><para>Calculates the integer portion of the current value in the display area.</para></entry>
                              <entry><para>-23.45 <guibutton>Int</guibutton></para></entry>
                              <entry><para>-23</para></entry>
@@ -428,7 +514,6 @@
                            <row valign="top">
                              <entry><para>Fractional Portion</para> </entry>
                              <entry><para><guibutton>Frac</guibutton></para></entry>
-                             <entry><para><keycap>:</keycap></para></entry>
                              <entry><para>Calculates the fractional portion of the current value in the display area.</para></entry>
                              <entry><para>-23.45 <guibutton>Frac</guibutton></para></entry>
                              <entry><para>-0.45</para></entry>
@@ -436,7 +521,6 @@
                            <row valign="top">
                              <entry><para>Absolute Value</para> </entry>
                              <entry><para><guibutton>Abs</guibutton></para></entry>
-                             <entry><para><keycap>u</keycap></para></entry>
                              <entry><para>Calculates the absolute value of the current value in the display area.</para></entry>
                              <entry><para>-23.45 <guibutton>Abs</guibutton></para></entry>
                              <entry><para>23.45</para></entry>
@@ -447,37 +531,21 @@
     </sect3>
     <sect3 id="gcalctool-mem-reg"> 
       <title>To Use the Calculator Memory Registers</title> 
-      <para>You can store values in any of the ten &app; memory registers (<guilabel>R0</guilabel> to <guilabel>R9</guilabel>). To display the memory registers, choose 
+      <para>You can store values in any of the ten &app; memory registers <guilabel>R0</guilabel> to <guilabel>R9</guilabel>. To display the memory registers, choose 
 	<menuchoice> 
 	  <guimenu>View</guimenu> 
 	  <guimenuitem>Memory Registers</guimenuitem> 
 	</menuchoice>. 
       </para>
-    <!-- ==== Figure ==== -->
-      <figure id="gcalctool-FIG-mem-reg"> 
-	<title>&app; Memory Registers Window</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_mem_reg_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Memory Registers window.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-    <!-- ==== End of Figure ==== -->
-      <para><xref linkend="gcalctool-TBL-mem-reg"/> describes the memory functions that are available.</para>
+      <para><xref linkend="gcalctool-TBL-mem-reg"/> describes the memory functions that you can use.</para>
                 <table id="gcalctool-TBL-mem-reg" frame="all">
                   <title>Memory Functions</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -485,12 +553,10 @@
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -498,31 +564,64 @@
                            <row valign="top">
                              <entry><para>Store Value in Memory Register</para> </entry>
                              <entry><para><guibutton>Sto</guibutton></para></entry>
-                             <entry><para><keycap>S</keycap></para></entry>
-                             <entry><para>Stores the current contents of the display area in the specified memory register. Click on <guibutton>Sto</guibutton>, and select the appropriate memory register from the popup menu. If using the keyboard equivalent <keycap>S</keycap>, you can use the keyboard to specify the appropriate memory register. For example, <keycap>S</keycap> <keycap>2</keycap> stores the current contents of the display area in memory register <guilabel>R2</guilabel>.</para>
-                                   <para>All memory registers are cleared when you exit &app;. To clear a memory register during a &app; session, click on <guibutton>Clr</guibutton>, then click on <guibutton>Sto</guibutton>, and select the appropriate memory register from the popup menu.</para></entry>
+                             <entry><para>Stores the current contents of the display area in the specified memory register. Click on <guibutton>Sto</guibutton>, and select a memory register from the popup menu.</para>
+                                   <para>To clear a memory register during a &app; session:</para>
+                                     <orderedlist>
+                                       <listitem><para>Click <guibutton>Clr</guibutton>.</para></listitem>
+                                       <listitem><para>Click on <guibutton>Sto</guibutton>.</para></listitem>
+                                       <listitem><para>Select the memory register from the popup menu.</para></listitem>
+                                     </orderedlist>
+</entry>
                              <entry><para>22 <guibutton>Sto</guibutton> <guilabel>R2</guilabel></para></entry>
                              <entry><para>The value 22 is stored in memory register <guilabel>R2</guilabel></para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Retrieve Value From Memory Register</para> </entry>
                              <entry><para><guibutton>Rcl</guibutton></para></entry>
-                             <entry><para><keycap>R</keycap></para></entry>
-                             <entry><para>Retrieves the contents of the specified memory register. Click on <guibutton>Rcl</guibutton>, and select the appropriate memory register from the popup menu. If using the keyboard equivalent <keycap>R</keycap>, you can use the keyboard to specify the appropriate memory register. For example, <keycap>R</keycap> <keycap>2</keycap> retrieves the current contents of memory register <guilabel>R2</guilabel> into the display area.</para></entry>
+                             <entry><para>Retrieves the contents of the specified memory register. Click on <guibutton>Rcl</guibutton>, and select the memory register from the popup menu.</para></entry>
                              <entry><para>0 <guibutton>Rcl</guibutton> <guilabel>R2</guilabel></para></entry>
-                             <entry><para>22 (where 22 is the value previously stored in memory register R2)</para></entry>
+                             <entry><para>22 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Exchange Memory Register Value and Displayed Value</para> </entry>
                              <entry><para><guibutton>Exch</guibutton></para></entry>
-                             <entry><para><keycap>X</keycap></para></entry>
-                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click on <guibutton>Exch</guibutton>, and select the appropriate memory register from the popup menu. If using the keyboard equivalent <keycap>X</keycap>, you can use the keyboard to specify the appropriate memory register. For example, <keycap>X</keycap> <keycap>2</keycap> exchanges the current value of the display area with the contents of memory register <guilabel>R2</guilabel>.</para></entry>
+                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click on <guibutton>Exch</guibutton>, and select the memory register from the popup menu.</para></entry>
                              <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
-                             <entry><para>Value in display area changes from 44 to 22; value in R2 changes from 22 to 44 (where 22 is the value previously stored in memory register R2)</para></entry>
+                             <entry><para>Value in display area changes from 44 to 22, value in R2 changes from 22 to 44 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</table>
+      <para>If you use keyboard shortcuts, you can use the keyboard to specify the memory register, as shown in the following examples: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Keyboard Entry</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Description</para></entry>
+            </row>
+          </thead>
+          <tbody> 
+            <row valign="top">
+              <entry><para><keycap>S</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Stores the current contents of the display area in memory register <guilabel>R2</guilabel>.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>R</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Retrieves the current contents of memory register <guilabel>R2</guilabel> into the display area.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>X</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>Exchanges the current value of the display area with the contents of memory register <guilabel>R2</guilabel>.</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+  
           </sect3>
           <sect3 id="gcalctool-ins-ascii"> 
             <title>To Display ASCII Values</title> 
@@ -531,23 +630,8 @@
                                  <guimenu>Edit</guimenu>
                                  <guimenuitem>Insert ASCII Value</guimenuitem>
                           </menuchoice>.</para>
-                        <para>The Insert ASCII Value dialog is displayed:</para>
-                           <!-- ==== Figure ==== -->
-                             <figure id="gcalctool-FIG-ins-ascii"> 
-	                       <title>&app; Insert ASCII Value Dialog</title> 
-	                       <screenshot> 
-	                         <mediaobject> 
-	                           <imageobject><imagedata
-		                       fileref="figures/gcalctool_ins_ascii_window.png" format="PNG"/> 
-	                           </imageobject>
-	                           <textobject> 
-	                             <phrase>Shows &app; Insert ASCII Value Dialog.  </phrase> 
-	                           </textobject> 
-	                         </mediaobject> 
-	                       </screenshot> 
-                             </figure>
-                           <!-- ==== End of Figure ==== -->
-                        <para>Enter the required character in the <guilabel>Character</guilabel> field, and click on <guibutton>Insert</guibutton>. The ASCII value of that character (in the appropriate numeric base) appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
+                        <para>The Insert ASCII Value dialog is displayed.</para>
+                        <para>Enter the required character in the <guilabel>Character</guilabel> field, and click on <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
           </sect3>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
@@ -576,16 +660,16 @@
 	</screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
-      <para>To perform financial calculations, use the buttons described in <xref linkend="gcalctool-TBL-financial-calc"/>. </para>
+      <para>To perform financial calculations, use the buttons described in <xref linkend="gcalctool-TBL-financial-calc"/>. 
+</para>
                 <table id="gcalctool-TBL-financial-calc" frame="all">
                   <title>Performing Financial Calculations</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -593,12 +677,10 @@
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -606,66 +688,64 @@
                            <row valign="top">
                              <entry><para>Compounding Term</para> </entry>
                              <entry><para><guibutton>Ctrm</guibutton></para></entry>
-                             <entry><para><keycap>m</keycap></para></entry>
                              <entry><para>Calculates the number of compounding periods necessary to increase an investment of present value <replaceable>pv</replaceable> to a future value of <replaceable>fv</replaceable>, at a fixed interest rate of <replaceable>int</replaceable> per compounding period. </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>int</replaceable> (periodic interest rate)</para></listitem>
+                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>fv</replaceable> (future value)</para></listitem>
+                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>pv</replaceable> (present value)</para></listitem>
+                                <listitem><para><replaceable>pv</replaceable>, the present value</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>You have just deposited $8000 in an account that pays an annual interest rate of 9%, compounded monthly. To determine how long it will take to double your investment, put the following values into the first three memory registers:</para>
+                             <entry><para>You have just deposited $8000 in an account that pays an annual interest rate of 9%, compounded monthly. Given the annual interest rate, you determine that the monthly interest rate is 0.09 / 12 = 0.0075. To calculate the time period necessary to double your investment, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>0.0075 (interest rate = 9% / 12)</para></listitem>
+                                <listitem><para>0.0075</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>16000 (future value)</para></listitem>
+                                <listitem><para>16000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>8000 (present value)</para></listitem>
+                                <listitem><para>8000</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Ctrm</guibutton>.</para></entry>
                              <entry><para>92.77</para>
-                                    <para>This indicates that it will take 92.77 months, or almost 8 years, to double the initial investment of $8000.</para></entry>
+                                    <para>The investment doubles in value in 92.77 months.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Double-Declining Depreciation</para> </entry>
                              <entry><para><guibutton>Ddb</guibutton></para></entry>
-                             <entry><para><keycap>D</keycap></para></entry>
                              <entry><para>Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method.
 </para>
                               <para>This function uses the following memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable> (amount paid for the asset)</para></listitem>
+                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable> (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable> (useful life of the asset)</para></listitem>
+                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 3</term>
-                                <listitem><para><replaceable>period</replaceable> (time period for depreciation allowance)</para></listitem>
+                                <listitem><para><replaceable>period</replaceable>, the time period for depreciation allowance</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
@@ -674,44 +754,43 @@ To calculate the depreciation expense for the fourth year, using the double-decl
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>8000 (amount paid for the asset)</para></listitem>
+                                <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>900 (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>6 (useful life of the asset)</para></listitem>
+                                <listitem><para>6</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 3</term>
-                                <listitem><para>4 (time period for depreciation allowance)</para></listitem>
+                                <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Ddb</guibutton>.</para></entry>
                              <entry><para>790.12</para>
-                                    <para>This indicates that the depreciation expense for the fourth year will be $790.12.</para></entry>
+                                    <para>The depreciation expense for the fourth year is $790.12.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Future Value</para> </entry>
                              <entry><para><guibutton>Fv</guibutton></para></entry>
-                             <entry><para><keycap>v</keycap></para></entry>
                              <entry><para>Calculates the future value of an investment based on a series of equal payments, each of amount <replaceable>pmt</replaceable>, at a periodic interest rate of <replaceable>int</replaceable>, over the number of payment periods in the term.
 </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable> (periodic payment)</para></listitem>
+                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable> (periodic interest rate)</para></listitem>
+                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable> (number of periods)</para></listitem>
+                                <listitem><para><replaceable>n</replaceable>, the number of periods</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
@@ -720,168 +799,163 @@ To calculate the value of your account in 20 years, put the following values int
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>4000 (periodic payment)</para></listitem>
+                                <listitem><para>4000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>0.08 (periodic interest rate is 8%)</para></listitem>
+                                <listitem><para>0.08</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>20 (number of periods)</para></listitem>
+                                <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Fv</guibutton>.</para></entry>
                              <entry><para>183047.86</para>
-                                    <para>This indicates that, at the end of 20 years, the value of the account will be $183,047.86.</para></entry>
+                                    <para>At the end of 20 years, the value of the account is $183,047.86.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Periodic Payment</para> </entry>
                              <entry><para><guibutton>Pmt</guibutton></para></entry>
-                             <entry><para><keycap>P</keycap></para></entry>
                              <entry><para>Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. 
 </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>prin</replaceable> (principal)</para></listitem>
+                                <listitem><para><replaceable>prin</replaceable>, the principal</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable> (periodic interest rate)</para></listitem>
+                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable> (term)</para></listitem>
+                                <listitem><para><replaceable>n</replaceable>, the term</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>You are considering a $120,000 mortgage for 30 years at an annual interest rate of 11.0%.
-To calculate the monthly repayment for this mortgage, put the following values into the first three memory registers:</para>
+                             <entry><para>You are considering a $120,000 mortgage for 30 years at an annual interest rate of 11.0%. Given the annual interest rate, you determine that the monthly interest rate is 0.11 / 12 = 0.00917. The term is 30 * 12 = 360 months. To calculate the monthly repayment for this mortgage, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>120000 (principal)</para></listitem>
+                                <listitem><para>120000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>0.00917 (periodic interest rate is 11% / 12)</para></listitem>
+                                <listitem><para>0.00917</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>360 (term is 30 * 12)</para></listitem>
+                                <listitem><para>360</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Pmt</guibutton>.</para></entry>
                              <entry><para>1143.15</para>
-                                    <para>This indicates that the monthly repayment will be $1143.15.</para></entry>
+                                    <para>The monthly repayment is $1143.15.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Present Value</para> </entry>
                              <entry><para><guibutton>Pv</guibutton></para></entry>
-                             <entry><para><keycap>p</keycap></para></entry>
                              <entry><para>Calculates the present value of an investment based on a series of equal payments, each of amount <replaceable>pmt</replaceable>, discounted at a periodic interest rate of <replaceable>int</replaceable>, over the number of payment periods in the term.
 </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable> (periodic payment)</para></listitem>
+                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable> (periodic interest rate)</para></listitem>
+                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable> (number of periods)</para></listitem>
+                                <listitem><para><replaceable>n</replaceable>, the number of periods</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>You have just won a million dollars. The prize is awarded in 20 annual payments of $50,000 each (a total of $1,000,000 over 20 years). Annual payments are received at the end of each year. If you were to accept the annual payments of $50,000, you would invest the money at a rate of 9%, compounded annually.</para>
+                             <entry><para>You have just won a million dollars. The prize is awarded in 20 annual payments of $50,000 each. Annual payments are received at the end of each year. If you were to accept the annual payments of $50,000, you would invest the money at a rate of 9%, compounded annually.</para>
                                     <para>However, you are given the option of receiving a single lump-sum payment of $400,000 instead of the million dollars annuity. 
 To calculate which option is worth more in today's dollars, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>50000 (periodic payment)</para></listitem>
+                                <listitem><para>50000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>0.09 (periodic interest rate is 9%)</para></listitem>
+                                <listitem><para>0.09</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>20 (term)</para></listitem>
+                                <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Pv</guibutton>.</para></entry>
                              <entry><para>456427.28</para>
-                                    <para>This indicates that the $1,000,000 paid over 20 years is worth $456,427.28 in present dollars. Based on the assumptions made regarding the investment, the lump-sum payment of $400,000 is worth less than the million-dollar ordinary annuity, in present dollars (before taxes).</para></entry>
+                                    <para>The $1,000,000 paid over 20 years is worth $456,427.28 in present dollars.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Periodic Interest Rate</para> </entry>
                              <entry><para><guibutton>Rate</guibutton></para></entry>
-                             <entry><para><keycap>T</keycap></para></entry>
                              <entry><para>Calculates the periodic interest necessary to increase an investment of present value <replaceable>pv</replaceable> to a future value of <replaceable>fv</replaceable>, over the number of compounding periods in <replaceable>term</replaceable>.
 </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>fv</replaceable> (future value)</para></listitem>
+                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>pv</replaceable> (present value)</para></listitem>
+                                <listitem><para><replaceable>pv</replaceable>, the present value</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable> (term)</para></listitem>
+                                <listitem><para><replaceable>n</replaceable>, the term</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>You have invested $20,000 in a bond. The bond matures in five years, and has a maturity value of $30,000. Interest is compounded monthly. 
-To determine the periodic interest rate for this investment, put the following values into the first three memory registers:</para>
+                             <entry><para>You have invested $20,000 in a bond. The bond matures in five years, and has a maturity value of $30,000. Interest is compounded monthly. The term is 5 * 12 = 60 months.
+To calculate the periodic interest rate for this investment, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>30000 (future value)</para></listitem>
+                                <listitem><para>30000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>20000 (present value)</para></listitem>
+                                <listitem><para>20000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>60 (term is 5 * 12)</para></listitem>
+                                <listitem><para>60</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Rate</guibutton>.</para></entry>
                              <entry><para>.00678</para>
-                                    <para>This indicates that the periodic (monthly) interest rate is 0.678% (less than 1% per month). The annual interest rate is 8.14% (that is, 0.678 * 12).
+                                    <para>The monthly interest rate is 0.678%. The annual interest rate is 0.678% * 12 = 8.14%.
 </para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Straight-Line Depreciation</para> </entry>
                              <entry><para><guibutton>Sln</guibutton></para></entry>
-                             <entry><para><keycap>l</keycap></para></entry>
-                             <entry><para>Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost (<replaceable>cost</replaceable> - <replaceable>salvage</replaceable>) evenly over the useful life of an asset. The useful life is the number of periods (typically years) over which an asset is depreciated.
+                             <entry><para>Calculates the straight-line depreciation of an asset for one period. The depreciable cost is <replaceable>cost</replaceable> - <replaceable>salvage</replaceable>. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated.
 </para>
                               <para>This function uses the following memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable> (amount paid for the asset)</para></listitem>
+                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable> (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable> (useful life of the asset)</para></listitem>
+                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
@@ -890,45 +964,44 @@ To calculate the yearly depreciation expense, using the straight-line method, pu
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>8000 (amount paid for the asset)</para></listitem>
+                                <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>900 (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>6 (useful life of the asset)</para></listitem>
+                                <listitem><para>6</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Sln</guibutton>.</para></entry>
                              <entry><para>1183.33</para>
-                                    <para>This indicates that the yearly depreciation expense is $1183.33.</para></entry>
+                                    <para>The yearly depreciation expense is $1183.33.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Sum-Of-The-Years'-Digits Depreciation</para> </entry>
                              <entry><para><guibutton>Syd</guibutton></para></entry>
-                             <entry><para><keycap>Y</keycap></para></entry>
                              <entry><para>Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-The depreciable cost is the actual cost (<replaceable>cost</replaceable>) minus the salvage value (<replaceable>salvage</replaceable>). The useful life (<replaceable>life</replaceable>) is the number of periods (typically years) over which an asset is depreciated.
+The depreciable cost is <replaceable>cost</replaceable> - <replaceable>salvage</replaceable>. The useful life is the number of periods, typically years, over which an asset is depreciated.
 </para>
                               <para>This function uses the following memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable> (amount paid for the asset)</para></listitem>
+                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable> (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable> (useful life of the asset)</para></listitem>
+                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 3</term>
-                                <listitem><para><replaceable>period</replaceable> (time period for depreciation allowance)</para></listitem>
+                                <listitem><para><replaceable>period</replaceable>, the time period for depreciation allowance</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
@@ -937,66 +1010,65 @@ To calculate the depreciation expense for the fourth year, using the sum-of-the-
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>8000 (amount paid for the asset)</para></listitem>
+                                <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>900 (value of the asset at the end of its life)</para></listitem>
+                                <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>6 (useful life of the asset)</para></listitem>
+                                <listitem><para>6</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 3</term>
-                                <listitem><para>4 (time period for depreciation allowance)</para></listitem>
+                                <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Syd</guibutton>.</para></entry>
                              <entry><para>1014.29</para>
-                                    <para>This indicates that the depreciation expense for the fourth year will be $1014.29.</para></entry>
+                                    <para>The depreciation expense for the fourth year is $1014.29.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Payment Period</para> </entry>
                              <entry><para><guibutton>Term</guibutton></para></entry>
-                             <entry><para><keycap>t</keycap></para></entry>
                              <entry><para>Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of <replaceable>fv</replaceable>, at a periodic interest rate of <replaceable>int</replaceable>. Each payment is equal to amount <replaceable>pmt</replaceable>.
 </para>
                               <para>This function uses the following memory registers: </para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable> (periodic payment)</para></listitem>
+                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para><replaceable>fv</replaceable> (future value)</para></listitem>
+                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para><replaceable>int</replaceable> (periodic interest rate)</para></listitem>
+                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              </entry>
                              <entry><para>You plan to deposit $1800 in a bank account on the last day of each year. The account pays 11% interest, compounded annually. Interest is paid on the last day of each year. 
-To calculate how long it will take to accumulate $120,000, put the following values into the first three memory registers:</para>
+To calculate the time period necessary to accumulate $120,000, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Register 0</term>
-                                <listitem><para>1800 (periodic payment)</para></listitem>
+                                <listitem><para>1800</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 1</term>
-                                <listitem><para>120000 (future value)</para></listitem>
+                                <listitem><para>120000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
                                 <term>Register 2</term>
-                                <listitem><para>0.11 (periodic interest rate is 11%)</para></listitem>
+                                <listitem><para>0.11</para></listitem>
                                 </varlistentry>
                              </variablelist> 
                              <para>Click on <guibutton>Term</guibutton>.</para></entry>
                              <entry><para>20.32</para>
-                                    <para>This indicates that it will take 20.32 years to accumulate $120,000 in the account.</para></entry>
+                                    <para>$120,000 accumulates in the account in 20.32 years.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1030,10 +1102,9 @@ To calculate how long it will take to accumulate $120,000, put the following val
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-set-acc"> 
       <title>To Set the Accuracy</title> 
-      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select the appropriate accuracy level from the popup menu. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant digits (radix places) can be displayed. The default accuracy is 9 radix places. </para>
+      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant places can be displayed. The default accuracy is 9 significant places. </para>
       <para>By default, trailing zeroes are not shown. To display trailing zeroes, click on <guibutton>Acc</guibutton> and select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding tick in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
-      <para>The keyboard equivalent of <guibutton>Acc</guibutton> is <keycap>A</keycap>. If using the keyboard equivalent <keycap>A</keycap>, you can use the keyboard to specify the appropriate number of radix places. For example, <keycap>A</keycap> <keycap>4</keycap> specifies an accuracy of 4 numeric places.  </para>
-      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation (using decimal base): </para>
+      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, when you use decimal base, with the <guimenuitem>Show Trailing Zeroes</guimenuitem> option selected, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation: </para>
                 <informaltable frame="all">
                   <tgroup cols="2" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -1041,22 +1112,22 @@ To calculate how long it will take to accumulate $120,000, put the following val
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
-                                         <para>Example</para></entry>
+                                         <para>Accuracy</para></entry>
                                   <entry colname="COLSPEC1">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>1 radix places</guilabel></para></entry>
+                             <entry><para>1 significant place</para></entry>
                              <entry><para>1.2</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>2 radix places</guilabel></para></entry>
+                             <entry><para>2 significant places</para></entry>
                              <entry><para>1.25</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>3 radix places</guilabel></para></entry>
+                             <entry><para>3 significant places</para></entry>
                              <entry><para>1.250</para></entry>
                            </row>
 			 </tbody>
@@ -1086,22 +1157,22 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Binary Base</para> </entry>
                              <entry><para><guibutton>Bin</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to binary (base 2).</para></entry>
+                             <entry><para>Sets the numeric base to binary, that is, base 2.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Octal Base</para> </entry>
                              <entry><para><guibutton>Oct</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to octal (base 8).</para></entry>
+                             <entry><para>Sets the numeric base to octal, that is, base 8.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Decimal Base</para> </entry>
                              <entry><para><guibutton>Dec</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to decimal (base 10). This is the default numeric base. If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the numeric base to decimal.</para></entry>
+                             <entry><para>Sets the numeric base to decimal, that is, base 10. Decimal is the default numeric base. If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the numeric base to decimal.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Hexadecimal Base</para> </entry>
                              <entry><para><guibutton>Hex</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to hexadecimal (base 16).</para></entry>
+                             <entry><para>Sets the numeric base to hexadecimal, that is, base 16.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1130,12 +1201,12 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Engineering Display Type</para> </entry>
                              <entry><para><guibutton>Eng</guibutton></para></entry>
-                             <entry><para>Sets the display type to Engineering format. Results are displayed in scientific notation; the exponent is always a multiple of three.</para></entry>
+                             <entry><para>Sets the display type to Engineering format. Results are displayed in scientific notation. The exponent is always a multiple of three.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Fixed-Point Display Type</para> </entry>
                              <entry><para><guibutton>Fix</guibutton></para></entry>
-                             <entry><para>Sets the display type to Fixed-Point format. Results are not displayed in scientific notation. This is the default display type.  If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the display type to Fixed-Point format.</para></entry>
+                             <entry><para>Sets the display type to Fixed-Point format. Results are not displayed in scientific notation. Fixed-Point is the default display type.  If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the display type to Fixed-Point format.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Scientific Display Type</para> </entry>
@@ -1169,7 +1240,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Degrees</para> </entry>
                              <entry><para><guibutton>Degrees</guibutton></para></entry>
-                             <entry><para>Sets the trigonometric type to Degrees. This is the default trigonometric type.</para></entry>
+                             <entry><para>Sets the trigonometric type to Degrees. Degrees is the default trigonometric type.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Gradients</para> </entry>
@@ -1208,29 +1279,30 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Hyperbolic Option Indicator</para> </entry>
                              <entry><para><guibutton>Hyp</guibutton></para></entry>
-                             <entry><para>Selects the hyperbolic option for use with the trigonometric functions. By default, this option is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this option.</para></entry>
+                             <entry><para>Selects the hyperbolic option for use with the trigonometric functions.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Inverse Option Indicator</para> </entry>
                              <entry><para><guibutton>Inv</guibutton></para></entry>
-                             <entry><para>Selects the inverse option for use with the trigonometric functions. By default, this option is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this option.</para></entry>
+                             <entry><para>Selects the inverse option for use with the trigonometric functions.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</table>
+      <para>By default, the options described in <xref linkend="gcalctool-TBL-trig-options"/> are not selected. Click <guibutton>Clr</guibutton> to deselect these options. </para>
+
     </sect3>
     <sect3 id="gcalctool-trig-calc"> 
       <title>To Calculate Trigonometric Values</title> 
       <para>To calculate trigonometric values, use the buttons described in <xref linkend="gcalctool-TBL-trig-calc"/>. </para>
                 <table id="gcalctool-TBL-trig-calc" frame="all">
                   <title>Calculating Trigonometric Values</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -1238,109 +1310,95 @@ To calculate how long it will take to accumulate $120,000, put the following val
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para>Cosine</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>J</keycap></para></entry>
-                             <entry><para>Calculates the cosine (<literal>cos</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Cosine <literal>cos</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the cosine of the current value in the display area.</para></entry>
                              <entry><para>60 <guibutton>Cos</guibutton></para></entry>
                              <entry><para>0.5</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Cosine (or Inverse Cosine)</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>J</keycap></para></entry>
-                             <entry><para>Calculates the arc cosine (<literal>acos</literal>), also known as the inverse cosine, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Cosine <literal>acos</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc cosine of the current value in the display area.</para></entry>
                              <entry><para>0.5 <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
                              <entry><para>60</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Hyperbolic Cosine</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>J</keycap></para></entry>
-                             <entry><para>Calculates the hyperbolic cosine (<literal>cosh</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Hyperbolic Cosine <literal>cosh</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the hyperbolic cosine of the current value in the display area.</para></entry>
                              <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Cos</guibutton></para></entry>
                              <entry><para>1.081072372</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Hyperbolic Cosine (or Inverse Hyperbolic Cosine)</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>J</keycap></para></entry>
-                             <entry><para>Calculates the arc hyperbolic cosine (<literal>acosh</literal>), also known as the inverse hyperbolic cosine, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Hyperbolic Cosine <literal>acosh</literal></para> </entry>
+                             <entry><para><guibutton>Cos</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc hyperbolic cosine of the current value in the display area.</para></entry>
                              <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
                              <entry><para>1.046967915</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Sine</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>K</keycap></para></entry>
-                             <entry><para>Calculates the sine (<literal>sin</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Sine <literal>sin</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the sine of the current value in the display area.</para></entry>
                              <entry><para>90 <guibutton>Sin</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Sine (or Inverse Sine)</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>K</keycap></para></entry>
-                             <entry><para>Calculates the arc sine (<literal>asin</literal>), also known as the inverse sine, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Sine <literal>asin</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc sine of the current value in the display area.</para></entry>
                              <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
                              <entry><para>90</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Hyperbolic Sine</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>K</keycap></para></entry>
-                             <entry><para>Calculates the hyperbolic sine (<literal>sinh</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Hyperbolic Sine <literal>sinh</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the hyperbolic sine of the current value in the display area.</para></entry>
                              <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Sin</guibutton></para></entry>
                              <entry><para>0.410752326</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Hyperbolic Sine (or Inverse Hyperbolic Sine)</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>K</keycap></para></entry>
-                             <entry><para>Calculates the arc hyperbolic sine (<literal>asinh</literal>), also known as the inverse hyperbolic sine, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Hyperbolic Sine <literal>asinh</literal></para> </entry>
+                             <entry><para><guibutton>Sin</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc hyperbolic sine of the current value in the display area.</para></entry>
                              <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
                              <entry><para>1.248983328</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Tangent</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>L</keycap></para></entry>
-                             <entry><para>Calculates the tangent (<literal>tan</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Tangent <literal>tan</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the tangent of the current value in the display area.</para></entry>
                              <entry><para>45 <guibutton>Tan</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Tangent (or Inverse Tangent)</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>L</keycap></para></entry>
-                             <entry><para>Calculates the arc tangent (<literal>atan</literal>), also known as the inverse tangent, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Tangent <literal>atan</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, <guilabel>Hyp</guilabel> option not selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc tangent of the current value in the display area.</para></entry>
                              <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
                              <entry><para>45</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Hyperbolic Tangent</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
-                             <entry><para><keycap>L</keycap></para></entry>
-                             <entry><para>Calculates the hyperbolic tangent (<literal>tanh</literal>) of the current value in the display area.</para></entry>
+                             <entry><para>Hyperbolic Tangent <literal>tanh</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option not selected</para></entry>
+                             <entry><para>Calculates the hyperbolic tangent of the current value in the display area.</para></entry>
                              <entry><para>0.6 <guilabel>Hyp</guilabel> <guibutton>Tan</guibutton></para></entry>
                              <entry><para>0.537049567</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Arc Hyperbolic Tangent (or Inverse Hyperbolic Tangent)</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
-                             <entry><para><keycap>L</keycap></para></entry>
-                             <entry><para>Calculates the arc hyperbolic tangent (<literal>atanh</literal>), also known as the inverse hyperbolic tangent, of the current value in the display area.</para></entry>
+                             <entry><para>Arc Hyperbolic Tangent <literal>atanh</literal></para> </entry>
+                             <entry><para><guibutton>Tan</guibutton>, <guilabel>Hyp</guilabel> option selected, <guilabel>Inv</guilabel> option selected</para></entry>
+                             <entry><para>Calculates the arc hyperbolic tangent of the current value in the display area.</para></entry>
                              <entry><para>0.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
                              <entry><para>0.693147181</para></entry>
                            </row>
@@ -1353,13 +1411,12 @@ To calculate how long it will take to accumulate $120,000, put the following val
       <para>To calculate logarithms, use the buttons described in <xref linkend="gcalctool-TBL-logs-calc"/>. </para>
                 <table id="gcalctool-TBL-logs-calc" frame="all">
                   <title>Calculating Logarithms</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -1367,28 +1424,24 @@ To calculate how long it will take to accumulate $120,000, put the following val
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para>Common (Base 10) Logarithm</para> </entry>
+                             <entry><para>Common Logarithm Base 10</para> </entry>
                              <entry><para><guibutton>Log</guibutton></para></entry>
-                             <entry><para><keycap>G</keycap></para></entry>
-                             <entry><para>Calculates the common (base 10) logarithm of the current value in the display area.</para></entry>
+                             <entry><para>Calculates the common logarithm of the current value in the display area.</para></entry>
                              <entry><para>10 <guibutton>Log</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Natural Logarithm</para> </entry>
                              <entry><para><guibutton>Ln</guibutton></para></entry>
-                             <entry><para><keycap>N</keycap></para></entry>
                              <entry><para>Calculates the natural logarithm of the current value in the display area.</para></entry>
                              <entry><para>10 <guibutton>Ln</guibutton></para></entry>
                              <entry><para>2.30</para></entry>
@@ -1405,13 +1458,12 @@ To calculate how long it will take to accumulate $120,000, put the following val
       <para>To perform logical calculations, use the buttons described in <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
                 <table id="gcalctool-TBL-logic-calc" frame="all">
                   <title>Performing Logical Calculations</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -1419,12 +1471,10 @@ To calculate how long it will take to accumulate $120,000, put the following val
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -1432,23 +1482,20 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Logical OR</para> </entry>
                              <entry><para><guibutton>Or</guibutton></para></entry>
-                             <entry><para><keycap>|</keycap></para></entry>
-                             <entry><para>Performs a logical OR operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a logical OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
                              <entry><para>10011001</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Logical AND</para> </entry>
                              <entry><para><guibutton>And</guibutton></para></entry>
-                             <entry><para><keycap>&amp;</keycap></para></entry>
-                             <entry><para>Performs a logical AND operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a logical AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
                              <entry><para>00110011</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Logical NOT</para> </entry>
                              <entry><para><guibutton>Not</guibutton></para></entry>
-                             <entry><para><keycap>~</keycap></para></entry>
                              <entry><para>Performs a logical NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
                              <entry><para>1357ace <guibutton>Not</guibutton> </para></entry>
                              <entry><para>FECA8531</para></entry>
@@ -1456,16 +1503,14 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Logical XOR</para> </entry>
                              <entry><para><guibutton>Xor</guibutton></para></entry>
-                             <entry><para><keycap>^</keycap></para></entry>
-                             <entry><para>Performs a logical XOR operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a logical XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
                              <entry><para>110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Logical XNOR</para> </entry>
                              <entry><para><guibutton>Xnor</guibutton></para></entry>
-                             <entry><para><keycap>n</keycap></para></entry>
-                             <entry><para>Performs a logical XNOR operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a logical XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
                              <entry><para>11111111111111111111111111111001</para></entry>
                            </row>
@@ -1475,9 +1520,31 @@ To calculate how long it will take to accumulate $120,000, put the following val
     </sect3>
     <sect3 id="gcalctool-enter-exp"> 
       <title>To Enter Exponential Numbers</title> 
-      <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button. The keyboard equivalent is <keycap>E</keycap>.</para>
-      <para>The <guibutton>Exp</guibutton> button allows you to enter numbers in scientific notation; that is, <replaceable>mantissa</replaceable> * 10<superscript><replaceable>exponent</replaceable></superscript>. The current (non-zero) value in the display area is the mantissa; if the current value is zero, the mantissa is 1.0. The next number entered is the exponent.</para>
-      <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 10 to the power of the next number that you enter. For example, if you enter <guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> the calculator displays 500. Note that changing the sign of the number (using the <guibutton>+/-</guibutton> button) must be the last part of the operation.</para>
+      <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button.</para>
+      <para>The <guibutton>Exp</guibutton> button enables you to enter numbers in scientific notation, that is, <replaceable>mantissa</replaceable> * 10<superscript><replaceable>exponent</replaceable></superscript>. The current non-zero value in the display area is the mantissa. If the current value in the display area is zero, the mantissa is 1.0. The next number that you enter is the exponent.</para>
+      <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 10 to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button in the last action of the operation, as shown in the following example:</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Keypad Entry</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Calculator Display</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton></para></entry>
+              <entry><para>-500</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
       <para>To enter a number in exponential format, use the guidelines in the following table: </para>
                 <informaltable frame="all">
                   <tgroup cols="3" colsep="1" rowsep="1">
@@ -1520,9 +1587,28 @@ To calculate how long it will take to accumulate $120,000, put the following val
     </sect3>
     <sect3 id="gcalctool-edit-const"> 
       <title>To Use Constant Values</title> 
-      <para>To show the available constants, click on <guibutton>Con</guibutton>. The keyboard equivalent is <keycap>#</keycap>. A popup menu displays the list of defined constant values; select a constant from the menu to enter its value in the display area. If using the keyboard equivalent <keycap>#</keycap>, you can use the keyboard to specify the constant. For example, <keycap>#</keycap> <keycap>3</keycap> enters the value of constant C3 (that is, 3.14) in the display area.
-</para>
-      <para>&app; provides ten default constant values, as described in the following table: </para>
+      <para>Click on <guibutton>Con</guibutton> to display the list of defined constant values. Select a constant from the menu to enter its value in the display area. If you use the keyboard shortcut <keycap>#</keycap>, you can use the keyboard to specify the constant, as shown in the following example:</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Keyboard Entry</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Constant</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>#</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>C3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>The &app; application provides ten default constant values, as described in the following table: </para>
                 <informaltable frame="all">
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -1542,7 +1628,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>C0</para></entry>
                              <entry><para>0.621</para></entry>
-                             <entry><para>kilometers per hour / miles per hour</para>
+                             <entry><para>kilometers per hour or miles per hour</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from kilometers per hour to miles per hour. For example, 8 * <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 5.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from miles per hour to kilometers per hour. For example, 5 / <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 8.</para></entry>
                            </row>
@@ -1564,7 +1650,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>C4</para></entry>
                              <entry><para>2.54</para></entry>
-                             <entry><para>centimeters / inches</para>
+                             <entry><para>centimeters or inches</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from inches to centimeters. For example, 12 * <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 30.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from centimeters to inches. For example, 30 / <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 12.</para></entry>
                            </row>
@@ -1581,50 +1667,35 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>C7</para></entry>
                              <entry><para>0.0353</para></entry>
-                             <entry><para>grams / ounces</para>
+                             <entry><para>grams or ounces</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from grams to ounces. For example, 500 * <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 18.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from ounces to grams. For example, 18 / <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 500.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C8</para></entry>
                              <entry><para>0.948</para></entry>
-                             <entry><para>kilojoules / British thermal units</para>
+                             <entry><para>kilojoules or British thermal units</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from kilojoules to British thermal units. For example, 10 * <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 9.48.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from British thermal units to kilojoules. For example, 9.48 / <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 10.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C9</para></entry>
                              <entry><para>0.0610</para></entry>
-                             <entry><para>cubic centimeters / cubic inches</para>
+                             <entry><para>cubic centimeters or cubic inches</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from cubic centimeters to cubic inches. For example, 100 * <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from cubic inches to cubic centimeters. For example, 6.10 / <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</informaltable>
-      <para>In this version of &app;, it is not possible to add new constants. However, you can store your own constants by overwriting the default constants.</para>
+      <para>You cannot add new constants in this version of &app;. However, you can overwrite the default constants to store your own constants.</para>
       <para>To store a new constant or edit an existing constant, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Con</guibutton> and select <guilabel>Edit Constants...</guilabel> from the popup menu. The <guilabel>Edit Constants</guilabel> window appears:</para>
-    <!-- ==== Figure ==== -->
-      <figure id="gcalctool-FIG-edit-const"> 
-	<title>&app; Edit Constants Window</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_edit_const_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Edit Constants window.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-    <!-- ==== End of Figure ==== -->
+           <para>Click on <guibutton>Con</guibutton> and select <guilabel>Edit Constants...</guilabel> from the popup menu. </para>
         </listitem>
         <listitem>
-      <para>Select the constant that you want to overwrite or edit.</para>
+      <para>In the <guilabel>Edit Constants</guilabel> window, select the constant that you want to overwrite or edit.</para>
         </listitem>
         <listitem>
       <para>Click on the Value field, and enter the new value.</para>
@@ -1639,34 +1710,41 @@ To calculate how long it will take to accumulate $120,000, put the following val
     </sect3>
     <sect3 id="gcalctool-edit-func"> 
       <title>To Use Functions</title> 
-      <para>To show the available functions, click on <guibutton>Fun</guibutton>. The keyboard equivalent is <keycap>F</keycap>. A popup menu displays the list of defined functions; select a function from the menu to run that function. If using the keyboard equivalent <keycap>F</keycap>, you can use the keyboard to specify the appropriate function. For example, <keycap>F</keycap> <keycap>3</keycap> enters in the display area the value returned by executing function F3; if F3 is not defined, the value zero is returned.
+      <para>To show the available functions, click on <guibutton>Fun</guibutton>. A popup menu displays the list of defined functions. Select a function from the menu to run that function. If the function is not defined, the value zero is returned. </para>
+<para>If you use the keyboard shortcut <keycap>F</keycap>, you can use the keyboard to specify the function, as shown in the following example:
 </para>
-      <para>&app; does not provide any default functions. You can store up to ten functions. </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Keyboard Entry</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Function</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>F</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>F3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>The &app; application does not provide any default functions. You can store up to ten functions. </para>
       <para>To store a new function or edit an existing function, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Fun</guibutton> and select <guilabel>Edit Functions...</guilabel> from the popup menu. The <guilabel>Edit Functions</guilabel> window appears:</para>
-    <!-- ==== Figure ==== -->
-      <figure id="gcalctool-FIG-edit-func"> 
-	<title>&app; Edit Functions Window</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_edit_func_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Edit Functions window.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-    <!-- ==== End of Figure ==== -->
+           <para>Click on <guibutton>Fun</guibutton> and select <guilabel>Edit Functions...</guilabel> from the popup menu.</para>
         </listitem>
         <listitem>
-      <para>Select a blank entry, or the function that you want to overwrite.</para>
+      <para>In the <guilabel>Edit Functions</guilabel> window, select a blank entry, or the function that you want to overwrite.</para>
         </listitem>
         <listitem>
-      <para>Click on the Value field, and enter the new value. Use the keyboard equivalents to invoke a &app; button; for example, <literal>90K</literal> to calculate sine(90).</para>
+      <para>Click on the Value field, and enter the new value. Use the keyboard shortcuts to invoke a &app; button. For example, enter <literal>90K</literal> to calculate sine(90).</para>
         </listitem>
         <listitem>
       <para>Click on the Description field, and enter the new description. For example, <literal>Sine 90</literal>.</para>
@@ -1681,13 +1759,12 @@ To calculate how long it will take to accumulate $120,000, put the following val
       <para>To manipulate binary numbers, use the buttons described in <xref linkend="gcalctool-TBL-num-manip"/>. </para>
                 <table id="gcalctool-TBL-num-manip" frame="all">
                   <title>Manipulating Binary Numbers</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -1695,12 +1772,10 @@ To calculate how long it will take to accumulate $120,000, put the following val
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -1708,25 +1783,20 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Left Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&lt;</guibutton></para></entry>
-                             <entry><para><keycap>&lt;</keycap></para></entry>
-                             <entry><para>Shifts the current (unsigned 32-bit) binary value in the display area, the specified number of places to the left. Click on <guibutton>&lt;</guibutton>, and select the appropriate number of shift places from the popup menu. The number can be shifted up to 15 places left. </para>
-                                    <para>If using the keyboard equivalent <keycap>&lt;</keycap>, you can use the keyboard to specify the appropriate places to shift to the left. For example, <keycap>&lt;</keycap> <keycap>4</keycap> will shift the current binary value in the display area 4 places to the left.</para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click on <guibutton>&lt;</guibutton>, and select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
                              <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>1110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Right Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
-                             <entry><para><keycap>&gt;</keycap></para></entry>
-                             <entry><para>Shifts the current (unsigned 32-bit) binary value in the display area, the specified number of places to the right. Click on <guibutton>&gt;</guibutton>, and select the appropriate number of shift places from the popup menu. The number can be shifted up to 15 places right. </para>
-                                    <para>If using the keyboard equivalent <keycap>&gt;</keycap>, you can use the keyboard to specify the appropriate places to shift to the right. For example, <keycap>&gt;</keycap> <keycap>4</keycap> will shift the current binary value in the display area 4 places to the right.</para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click on <guibutton>&gt;</guibutton>, and select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
                              <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>101 </para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Get a 16-Bit Unsigned Integer</para> </entry>
                              <entry><para><guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para><keycap>]</keycap></para></entry>
                              <entry><para>Truncates the current value in the display area and returns a 16-bit unsigned integer.</para></entry>
                              <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
                              <entry><para>FFFF</para></entry>
@@ -1734,7 +1804,6 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Get a 32-Bit Unsigned Integer</para> </entry>
                              <entry><para><guibutton>&amp;32</guibutton></para></entry>
-                             <entry><para><keycap>[</keycap></para></entry>
                              <entry><para>Truncates the current value in the display area and returns a 32-bit unsigned integer.</para></entry>
                              <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
                              <entry><para>FFFFFFFF</para></entry>
@@ -1742,19 +1811,44 @@ To calculate how long it will take to accumulate $120,000, put the following val
 			 </tbody>
 		  </tgroup>
 		</table>
+      <para>If you use keyboard shortcuts, you can use the keyboard to specify the number of places to shift, as shown in the following examples: </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Keyboard Entry</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Description</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>&lt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>Shifts the current binary value in the display area 4 places to the left.</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>&gt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>Shifts the current binary value in the display area 4 places to the right.</para></entry>
+            </row>
+          </tbody> 
+        </tgroup>
+      </informaltable>
+
     </sect3>
     <sect3 id="gcalctool-misc-calc"> 
       <title>To Perform Miscellaneous Scientific Calculations</title> 
       <para>To calculate miscellaneous scientific calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
                 <table id="gcalctool-TBL-misc-calc" frame="all">
                   <title>Performing Miscellaneous Scientific Calculations</title> 
-                  <tgroup cols="6" colsep="1" rowsep="1">
+                  <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
                          <colspec colname="COLSPEC2" colwidth="50*"/>
                          <colspec colname="COLSPEC3" colwidth="50*"/>
                          <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <colspec colname="COLSPEC5" colwidth="50*"/>
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
@@ -1762,12 +1856,10 @@ To calculate how long it will take to accumulate $120,000, put the following val
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
-                                         <para>Keyboard Equivalent</para></entry>
-                                  <entry colname="COLSPEC3">
                                          <para>Description</para></entry>
-                                  <entry colname="COLSPEC4">
+                                  <entry colname="COLSPEC3">
                                          <para>Example</para></entry>
-                                  <entry colname="COLSPEC5">
+                                  <entry colname="COLSPEC4">
                                          <para>Result</para></entry>
                                 </row>
                          </thead> 
@@ -1775,8 +1867,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Parentheses</para> </entry>
                              <entry><para><guibutton>(</guibutton> and <guibutton>)</guibutton></para></entry>
-                             <entry><para><keycap>(</keycap> and <keycap>)</keycap></para></entry>
-                             <entry><para>Provide precedence in arithmetic calculations; calculations within parentheses are performed first. If parentheses are not used, arithmetic calculations are performed from left to right with no arithmetic precedence. Parentheses can be nested to any level. When the last parenthesis is matched, the display area is updated.</para></entry>
+                             <entry><para>Provide precedence in arithmetic calculations. Calculations within parentheses are performed first. If parentheses are not used, arithmetic calculations are performed from left to right with no arithmetic precedence. Parentheses can be nested to any level. When the last parenthesis is matched, the display area is updated.</para></entry>
                              <entry>
                                <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
                                <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
@@ -1789,7 +1880,6 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>e to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para>e<superscript>x</superscript></para></entry>
-                             <entry><para><keycap>{</keycap></para></entry>
                              <entry><para>Calculates the value of <literal>e</literal> raised to the power of the current value in the display area.</para></entry>
                              <entry><para>2 e<superscript>x</superscript></para></entry>
                              <entry><para>7.39</para></entry>
@@ -1797,7 +1887,6 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>10 to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para>10<superscript>x</superscript></para></entry>
-                             <entry><para><keycap>}</keycap></para></entry>
                              <entry><para>Calculates the value of 10 raised to the power of the current value in the display area.</para></entry>
                              <entry><para>2 10<superscript>x</superscript></para></entry>
                              <entry><para>100</para></entry>
@@ -1805,23 +1894,20 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>y to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para>y<superscript>x</superscript></para></entry>
-                             <entry><para><keycap>y</keycap></para></entry>
-                             <entry><para>Raises the current value in the display area to the power of the next value entered.</para></entry>
+                             <entry><para>Raises the current value in the display area to the power of the next value that you enter.</para></entry>
                              <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>16</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para><replaceable>x</replaceable> Factorial</para> </entry>
                              <entry><para><guibutton>x!</guibutton></para></entry>
-                             <entry><para><keycap>!</keycap></para></entry>
-                             <entry><para>Calculates the factorial (that is, <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1) of the current value in the display area. This function applies only to positive integers.</para></entry>
+                             <entry><para>Calculates the factorial of the current value in the display area. <replaceable>x</replaceable> factorial is <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. This function applies only to positive integers.</para></entry>
                              <entry><para>4 <guibutton>x!</guibutton></para></entry>
                              <entry><para>24</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Random Number Generator</para> </entry>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
-                             <entry><para><keycap>?</keycap></para></entry>
                              <entry><para>Generates a random number in the range 0.0 to 1.0 and displays the random number in the display area.</para></entry>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
                              <entry><para>0.14</para></entry>
@@ -1829,7 +1915,6 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><guibutton>A</guibutton> to <guibutton>E</guibutton> inclusive</para></entry>
-                             <entry><para><keycap>a</keycap> to <keycap>e</keycap> inclusive</para></entry>
                              <entry><para>These numerals are active in hexadecimal base only.</para></entry>
                              <entry><para><guibutton>B</guibutton></para></entry>
                              <entry><para>B</para></entry>
@@ -1849,9 +1934,9 @@ To calculate how long it will take to accumulate $120,000, put the following val
                   </menuchoice>.  </para>
                 <para>When you quit &app;, the current values of the following settings are stored and automatically applied the next time you start &app;: </para>
                   <itemizedlist>
-                    <listitem><para>Mode (<link linkend="gcalctool-basic-mode">Basic</link>, <link linkend="gcalctool-financial-mode">Financial</link>, or <link linkend="gcalctool-scientific-mode">Scientific</link>)</para></listitem>
+                    <listitem><para>Mode: <link linkend="gcalctool-basic-mode">Basic</link>, <link linkend="gcalctool-financial-mode">Financial</link>, or <link linkend="gcalctool-scientific-mode">Scientific</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-set-acc">Accuracy</link></para></listitem>
-                    <listitem><para><link linkend="gcalctool-mem-reg">Memory Registers window</link> displayed or not displayed (this setting does not affect the contents of the memory registers, which are always cleared when you quit &app;)</para></listitem>
+                    <listitem><para><link linkend="gcalctool-mem-reg">Memory Registers window</link> displayed or not displayed</para></listitem>
                     <listitem><para><link linkend="gcalctool-num-base">Numeric base</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-display-type">Display type</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-trig-type">Trigonometric type</link></para></listitem>
@@ -1867,18 +1952,15 @@ To calculate how long it will take to accumulate $120,000, put the following val
 Calculations are performed from left to right with no arithmetic
 precedence. To apply arithmetic precedence, use parentheses.
 </para>
-<para>
-For example, without parentheses:
-<screen><literal>2 + 3 * 4 = 20 </literal></screen>
-With parentheses:
-<screen><literal>2 + (3 * 4) = 14</literal></screen>
-</para>
+<para>For example, without parentheses:
+<screen><literal>2 + 3 * 4 = 20 </literal></screen></para>
+<para>With parentheses:
+<screen><literal>2 + (3 * 4) = 14</literal></screen></para>
          </sect2> 
          <sect2 id="gcalctool-recognize-error">
                 <title>Error Conditions</title>
-                <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. For example, if you try to
-                  calculate the log of a negative number, the calculator displays the word <literal>Error</literal>.
-                  To clear the error, click on <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
+                <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. 
+                  To clear the error, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
          </sect2>
          <sect2 id="gcalctool-input-mode">
                 <title>To Change the Input Mode</title>
@@ -1886,12 +1968,12 @@ With parentheses:
          </sect2>
 
   </sect1>
-<!-- ============= Keyboard Equivalents ============================= -->
-  <sect1 id="gcalctool-keyboard-equiv"> 
-    <title>Quick Reference: Keyboard Equivalents </title> 
-                <para><xref linkend="gcalctool-TBL-keyboard-equiv-button"/>, <xref linkend="gcalctool-TBL-keyboard-equiv-sci-options"/>, and <xref linkend="gcalctool-TBL-keyboard-equiv-menu"/> provide a quick reference for all of the &app; keyboard equivalents.</para>
-                <table id="gcalctool-TBL-keyboard-equiv-button" frame="all">
-                  <title>Quick Reference for Keyboard Equivalents of &app; Buttons</title> 
+<!-- ============= Keyboard Shortcuts ============================= -->
+  <sect1 id="gcalctool-keyboard-shortcut"> 
+    <title>Quick Reference: Keyboard Shortcuts</title> 
+                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>, <xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/>, and <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> provide a quick reference for all of the &app; keyboard shortcuts.</para>
+                <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
+                  <title>Quick Reference for Keyboard Shortcuts of &app; Buttons</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1900,7 +1982,7 @@ With parentheses:
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
-                                         <para>Keyboard Equivalent</para></entry>
+                                         <para>Keyboard Shortcut</para></entry>
                                   <entry colname="COLSPEC1">
                                          <para>Button</para></entry>
                                   <entry colname="COLSPEC2">
@@ -1979,7 +2061,7 @@ With parentheses:
                            <row valign="top">
                              <entry><para><keycap>G</keycap></para></entry>
                              <entry><para><guibutton>Log</guibutton></para></entry>
-                             <entry><para>Common (Base 10) Logarithm</para> </entry>
+                             <entry><para>Common Logarithm</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2250,25 +2332,25 @@ With parentheses:
                              <entry><para><keycap>Backspace</keycap></para></entry>
                              <entry><para><guibutton>Bsp</guibutton></para></entry>
                              <entry><para>Backspace</para> </entry>
-                             <entry><para><xref linkend="gcalctool-erase-char"/></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
                              <entry><para><guibutton>CE</guibutton></para></entry>
                              <entry><para>Clear Entry</para> </entry>
-                             <entry><para><xref linkend="gcalctool-erase-char"/></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>Delete</keycap></para></entry>
                              <entry><para><guibutton>Clr</guibutton></para></entry>
                              <entry><para>Clear</para> </entry>
-                             <entry><para><xref linkend="gcalctool-erase-char"/></para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</table>
-                <table id="gcalctool-TBL-keyboard-equiv-sci-options" frame="all">
-                  <title>Quick Reference for Keyboard Equivalents of &app; Scientific Mode Options</title> 
+                <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
+                  <title>Quick Reference for Keyboard Shortcuts of &app; Scientific Mode Options</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -2277,7 +2359,7 @@ With parentheses:
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
-                                         <para>Keyboard Equivalent</para></entry>
+                                         <para>Keyboard Shortcut</para></entry>
                                   <entry colname="COLSPEC1">
                                          <para>Option</para></entry>
                                   <entry colname="COLSPEC2">
@@ -2296,13 +2378,13 @@ With parentheses:
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
                              <entry><para>Bin</para></entry>
-                             <entry><para>Set the numeric base to binary (base 2).</para></entry>
+                             <entry><para>Set the numeric base to binary.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
                              <entry><para>Dec</para></entry>
-                             <entry><para>Set the numeric base to decimal (base 10).</para></entry>
+                             <entry><para>Set the numeric base to decimal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2332,7 +2414,7 @@ With parentheses:
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
                              <entry><para>Oct</para></entry>
-                             <entry><para>Set the numeric base to octal (base 8).</para></entry>
+                             <entry><para>Set the numeric base to octal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2350,7 +2432,7 @@ With parentheses:
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
                              <entry><para>Hex</para></entry>
-                             <entry><para>Set the numeric base to hexadecimal (base 16).</para></entry>
+                             <entry><para>Set the numeric base to hexadecimal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2362,8 +2444,8 @@ With parentheses:
 			 </tbody>
 		  </tgroup>
 		</table>
-                <table id="gcalctool-TBL-keyboard-equiv-menu" frame="all">
-                  <title>Quick Reference for Keyboard Equivalents of &app; Menu Items</title> 
+                <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
+                  <title>Quick Reference for Keyboard Shortcuts of &app; Menu Items</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -2372,7 +2454,7 @@ With parentheses:
                          <thead>
                                 <row valign="top">
                                   <entry colname="COLSPEC0">
-                                         <para>Keyboard Equivalent</para></entry>
+                                         <para>Keyboard Shortcut</para></entry>
                                   <entry colname="COLSPEC1">
                                          <para>Menu Item</para></entry>
                                   <entry colname="COLSPEC2">
@@ -2440,7 +2522,7 @@ With parentheses:
                              <entry><para><keycap>F1</keycap></para></entry>
                              <entry><para> <menuchoice> <guimenu>Help</guimenu> <guimenuitem>Contents</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the &app; online help </para> </entry>
-                             <entry><para><xref linkend="gcalctool-get-start"/></para> </entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
