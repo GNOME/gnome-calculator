@@ -113,19 +113,11 @@ Related to the Gtk2 version:
   Error but instead of being able to click on CLR to clear the error gcalctool
   has frozen up and eats up more and more cpu time.
 
-- Checkout bugtraq bug #4302211 (need to verify with gcalctool).
-  There's a keyboard mapping problem with dtcalc. The problem is that 
-  with finnish keyboard the calculator mis-reads the decimal comma from 
-  numeric keyboard. Pressing numeric keyboard decimal comma just repeats 
-  the previous number. IT DOES NOT PRODUCE decimal comma. Pressing comma
-  on character keyboard DOES NOTHING. Pressing point on characher keyboard
-  produces decimal point. Which is also wrong, we use comma for delimiter.
-
 - Implement bugtraq rfe #1122089.
   Add a log base 2 key.
 
 - Checkout bugtraq bug #1165609 (need to verify with gcalctool).
-  I can't make calctool the target of a seconday selection. Primary selection
+  I can't make calctool the target of a secondary selection. Primary selection
   (cut and paste) works fine however. To reproduce:
 
   1 - Fire up a calctool
@@ -144,27 +136,6 @@ Related to the Gtk2 version:
   problem is in Calctool and not the window system (as I do get the underlined
   highlighting of text - as opposed to the blacking out of selected text I see 
   with cut & paste).
-
-- Fix bugtraq bug #1190181.
-  gcalctool core dumps if parent directory not readable.
-
-  Following scenario:
-
-   % cd /tmp
-   % mkdir subdir
-   % cd subdir
-   % mkdir asubdir
-   % chmod 100 .
-   % cd asubdir
-   % /home/richb/rich_stuff/gcalctool/gcalctool/gcalctool
-     Segmentation Fault (core dumped)
-
-   Problem occurs because calctool fails to handle NULL return from getcwd().
-
-- Checkout bugtraq bug #4017426 (need to verify with gcalctool).
-  Using the keypad button 'Del/,' on a Swedish keyboard in both dtcalc and 
-  calctool repeats the last key pressed instead of entering a decimal 
-  separator.
 
 - Fix bugtraq bug #1102883.
   If you enter 2 and select Inv, select Sin to get the arc sine value, 

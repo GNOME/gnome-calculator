@@ -8,6 +8,30 @@
 gcalctool change history.
 =========================
 
+v4.1.17 - 10th September 2002.
+
+* gcalctool core dumped if parent directory was not readable.
+
+  Following scenario:
+
+    % cd /tmp
+    % mkdir subdir
+    % cd subdir
+    % mkdir asubdir
+    % chmod 100 .
+    % cd asubdir
+    % /home/richb/rich_stuff/gcalctool/gcalctool/gcalctool
+      Segmentation Fault (core dumped)
+
+  The problem occured because gcalctool failed to handle NULL returned
+  from getcwd().
+
+  There were two occurances, in read_rcfiles() and write_rcfile(). Have
+  added more bullet proofing to check if the return value of getcwd() is
+  NULL.
+
+----
+
 v4.1.16 - 9th September 2002.
 
 * Added all the bugs/rfe's from Sun's bugtraq database that need to be fixed

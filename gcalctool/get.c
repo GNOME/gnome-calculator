@@ -388,8 +388,10 @@ read_rcfiles()   /* Read .gcalctoolcf's from home and current directories. */
     SPRINTF(name, "%s/%s", v->home, CFNAME);
     get_rcfile(name);      /* Read .gcalctoolcf from users home directory. */
 
-    SPRINTF(name, "%s/%s", getcwd(pathname, MAXPATHLEN+1), CFNAME);
-    get_rcfile(name);      /* Read .gcalctoolcf file from current directory. */
+    if (getcwd(pathname, MAXPATHLEN+1) != NULL) {
+        SPRINTF(name, "%s/%s", pathname, CFNAME);
+        get_rcfile(name);  /* Read .gcalctoolcf file from current directory. */
+    }
 }
 
 
@@ -529,10 +531,14 @@ write_rcfile(enum menu_type mtype, int exists, int cfno,
     FILE *tmpfd;                 /* File descriptor for new temp .gcalctoolcf */
 
     rcexists = 0;
-    SPRINTF(rcname, "%s/%s", getcwd(pathname, MAXPATHLEN+1), CFNAME);
-    if (access(rcname, F_OK) == 0) {
-        rcexists = 1;
-    } else { 
+    if (getcwd(pathname, MAXPATHLEN+1) != NULL) {
+        SPRINTF(rcname, "%s/%s", pathname, CFNAME);
+        if (access(rcname, F_OK) == 0) {
+            rcexists = 1;
+        }
+    }
+
+    if (rcexists == 0) { 
         SPRINTF(rcname, "%s/%s", v->home, CFNAME);
         if (access(rcname, F_OK) == 0) {
             rcexists = 1;
