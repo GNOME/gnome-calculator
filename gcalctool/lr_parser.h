@@ -43,4 +43,6 @@ int ceerror(char *s);
 int lr_parse(char *expression, int result[MP_SIZE]);
 int lr_udf_parse(char *expression);
 
+void reset_ce_tokeniser();
+
 #endif /*LR_PARSER_H*/

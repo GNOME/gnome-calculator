@@ -43,6 +43,8 @@ int ceerror(char *s);
 int ce_parse(char *expression, int result[MP_SIZE]);
 int ce_udf_parse(char *expression);
 
+void reset_ce_tokeniser();
+
 /* UTILITY NEEDED BECAUSE GNU SOURCE NOT ALWAYS AWAILABLE. */
 
 static inline char *

@@ -150,7 +150,7 @@ exp:
 | exp 'n' exp {calc_xnor($$, $1, $3);}
 | exp '^' exp {calc_xor($$, $1, $3);} 
 
-| exp 'y' exp {mppwr2($1, $3, $$);}
+| exp 'y' exp {calc_xpowy($1, $3, $$);}
 | exp 'e' exp {calc_xtimestenpowx($1, $3, $$);}
 
 | exp 'K' {do_tfunc($1, $$, SIN);}
