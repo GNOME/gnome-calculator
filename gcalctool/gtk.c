@@ -2203,11 +2203,11 @@ mb_proc(GtkAction *action)
         do_memory();
     } else if (EQUAL(name, "Contents")) {
         help_cb();
-    } else if (EQUAL(name, "LSPlaces")) {
+    } else if (!strncmp(name, "LSPlaces", 8)) {
         SSCANF(name,"LSPlaces%d", &choice);
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_LSHF], choice);
-    } else if (EQUAL(name, "RSPlaces")) {
+    } else if (!strncmp(name, "RSPlaces", 8)) {
         SSCANF(name,"RSPlaces%d", &choice);
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
