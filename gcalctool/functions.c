@@ -1275,8 +1275,8 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
     }
     if (v->numsptr >= MAXSTACK) {
         STRCPY(v->display, _("Numeric stack error"));
-        set_display(v->display, FALSE);
         set_error_state(TRUE);
+        set_display(v->display, FALSE);
         beep();
     } else {
         if (v->MPnumstack[v->numsptr] == NULL) {
@@ -1296,8 +1296,8 @@ push_op(int val)     /* Try to push value onto the operand stack. */
     }
     if (v->opsptr >= MAXSTACK) {
         STRCPY(v->display, _("Operand stack error"));
-        set_display(v->display, FALSE);
         set_error_state(TRUE);
+        set_display(v->display, FALSE);
     } else {
         v->opstack[v->opsptr++] = val;
     }
