@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
-AM_INIT_AUTOMAKE(gcalctool, 4.2.95)
+AM_INIT_AUTOMAKE(gcalctool, 4.2.96)
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
@@ -73,6 +73,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
 dnl Add the languages which your application supports here.
+AM_PROG_LIBTOOL
 ALL_LINGUAS="am ca cs de es fr he ja ml nl no pl pt pt_BR ru sr sr@Latn sv uk zh_TW"
 AM_GLIB_GNU_GETTEXT
 

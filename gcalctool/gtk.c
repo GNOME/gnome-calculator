@@ -844,7 +844,7 @@ create_kframe()
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 12);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(X->display_item), 6);
 
-    set_display("0.00");
+    set_display("0.00", FALSE);
     gtk_widget_ref(X->display_item);
     gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
     gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
@@ -1877,16 +1877,20 @@ set_accuracy_toggle(int val)
 
 
 void
-set_display(char *str)
+set_display(char *str, int isError)
 {
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
     gchar *utf8_str;
 
-    utf8_str = g_locale_to_utf8(str, strlen(str), NULL, NULL, NULL);
+    if (isError == TRUE) {
+        utf8_str = g_strdup(str);
+    } else {
+        utf8_str = g_locale_to_utf8(str, strlen(str), NULL, NULL, NULL);
+    }
 	
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_get_bounds (buffer, &start, &end);
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
     gtk_text_buffer_delete(buffer, &start, &end);
 
     gtk_text_buffer_insert_with_tags_by_name(buffer,

@@ -6,13 +6,26 @@
 
 gcalctool change history.
 =========================
+
+2003-07-07  Rich Burridge  <rich.burridge@sun.com>
+
+    * Fixed bug 116727 (http://bugzilla.gnome.org/show_bug.cgi?id=116727)
+      When the calculator display is showing an error message, it is now
+      correctly localized. Fix was to add in a second parameter to each 
+      call of set_display, that indicated whether this was an error 
+      condition or not. If it was, then the first parameter being passed 
+      in was already localized (had to do it this was so that the strings 
+      turned up in the message files), and wouldn't be run through 
+      g_locale_to_utf8(). Thanks to Toshi for pointing me in the right 
+      direction.
+
 2003-07-06  Gil "Dolfin" Osher <dolfin@rpg.org.il>
 
-	* configure.in: Added "he" (Hebrew) to ALL_LINGUAS.
+    * configure.in: Added "he" (Hebrew) to ALL_LINGUAS.
 
 2003-07-04  Artur Flinta  <aflinta@cvs.gnome.org>
 
-        * configure.in: Added "pl" to ALL_LINGUAS.
+    * configure.in: Added "pl" to ALL_LINGUAS.
 
 2003-06-25  Rich Burridge  <rich.burridge@sun.com>
 
