@@ -11,21 +11,25 @@ Gcalctool TODO.
 * Navigation with the arrow keys is a little haywire. This looks like it's
   bug 60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
 
-* val_to_button() needs to be reworked to find Alt-<n> type buttons.
+* Functions such as "(3+3)" won't work. The problem here is that the string
+  defining the function contains single characters for each operation (i.e.
+  '(' for left parenthesis), whereas this is being compared against the
+  button.value struct member where the equivalent value is GDK_parenleft
+  (which is an integer).
 
 * If gcalctool is initially displayed in Financial or Scientific mode, the
   Basic Mode radio item is set in the View menu.
 
-* Check that the numeric keypad does all the right things.
+* The numeric keypad doesn't work on Linux machines.
 
-* The "*displayitem*" widget and the "*register_label<n>*" widgets background
+* With the gcalctoolrc Gtk resources copied to a ~/.gcalctoolrc file, the 
+  "*displayitem*" widget and the "*register_label<n>*" widgets background 
   color aren't being set to white.
 
-* Need to create help files for gcalctool.
+* Need to create help files for gcalctool. Breda McColgan is working on this.
 
-* Need to reduce tool tip help message sizes.
-
-* Make sure all the keyboard equivalents of each widget are working.
+* Need to reduce tool tip help message sizes. Will do this when the help
+  files are in place.
 
 * Make sure that this new gcalctool is fully accessible.
 

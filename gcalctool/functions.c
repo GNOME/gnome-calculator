@@ -1316,16 +1316,15 @@ val_to_button(struct button buttons[], int max_buttons, int val)
 {
     int i, mods;
 
-    for (i = 0; i < max_buttons; i++) {
-
 /* XXX: doesn't properly handle Alt-<whatever> characters. */
 
-        if (val <= CTL(val)) {            /* Is it a control character? */
-            mods = GDK_CONTROL_MASK;
-        } else {
-            mods = 0;
-        }
+    if (val <= CTL(val)) {            /* Is it a control character? */
+        mods = GDK_CONTROL_MASK;
+    } else {
+        mods = 0;
+    }
 
+    for (i = 0; i < max_buttons; i++) {
         if (buttons[i].mods == mods && buttons[i].value == val) {
             return(&buttons[i]);
         }
