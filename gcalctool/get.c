@@ -221,7 +221,7 @@ init_vars()    /* Setup default values for various variables. */
     MPstr_to_num("1.4142135623", DEC, v->MPcon_vals[1]);  /* square root of 2 */
     MPstr_to_num("2.7182818284", DEC, v->MPcon_vals[2]);  /* e */
     MPstr_to_num("3.1415926535", DEC, v->MPcon_vals[3]);  /* pi */
-    MPstr_to_num("2.54",         DEC, v->MPcon_vals[4]);  /* cms <=> inch. */
+    MPstr_to_num("0.3937007",    DEC, v->MPcon_vals[4]);  /* cms <=> inch. */
     MPstr_to_num("57.295779513", DEC, v->MPcon_vals[5]);  /* degrees/radian. */
     MPstr_to_num("1048576.0",    DEC, v->MPcon_vals[6]);  /* 2 ^ 20. */
     MPstr_to_num("0.0353", DEC, v->MPcon_vals[7]);  /* grams <=> ounce. */
