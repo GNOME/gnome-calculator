@@ -2453,6 +2453,32 @@ set_display(char *str, int minimize_changes)
 }
 
 
+void
+write_display(char *str)
+{
+    char localized[MAX_LOCALIZED];
+    gchar *text;
+    GtkTextBuffer *buffer;
+    GtkTextIter start, end;
+
+    if (str == NULL || *str == 0) str = " ";
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+
+    gtk_text_buffer_delete(buffer, &start, &end);
+    
+    gtk_text_buffer_insert_with_tags_by_name(buffer,
+					     &end,
+					     str,
+					     -1,
+					     "x-large",
+					     NULL);
+    g_free(text);
+
+}
+
 #define SET_MENUBAR_ITEM_STATE(i, state) \
           g_object_set(gtk_ui_manager_get_action(X->ui, i),  \
 			"sensitive", state, NULL);

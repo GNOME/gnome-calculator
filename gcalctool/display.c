@@ -573,30 +573,38 @@ show_display(int *MPval)
 void
 refresh_display()
 {
-    switch (v->syntax) {
-        case npa:
-            show_display(v->MPdisp_val);
-            break;
+  /* In arithmetic precedence mode this
+     routine should be called to redraw display.
+  */
 
-        case exprs:
-            if (v->expression &&
-		strlen(v->expression)) {
-                char *e = gc_strdup(v->expression);
-                char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+  char localized[MAX_LOCALIZED];
 
-                str_replace(&e, "Ans", ans);
-                set_display(e, FALSE);
-                free(e);
-            } else {
-	      /* set_display("", FALSE); */
-	      int MP1[MP_SIZE];
-	      do_zero(MP1);
-	      show_display(MP1);
-            }
+  switch (v->syntax) {
+  case npa:
+    show_display(v->MPdisp_val);
+    break;
     
-            break;
-
-        default:
-            assert(0);
+  case exprs:
+    if (v->expression &&
+	strlen(v->expression)) {
+      char *e = gc_strdup(v->expression);
+      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+      localize_number(localized, ans);
+      
+      str_replace(&e, "Ans", localized);
+      //set_display(e, FALSE);
+      write_display(e);
+      free(e);
+    } else {
+      /* set_display("", FALSE); */
+      int MP1[MP_SIZE];
+      do_zero(MP1);
+      show_display(MP1);
     }
+    
+    break;
+    
+  default:
+    assert(0);
+  }
 }
