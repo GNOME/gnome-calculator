@@ -7,6 +7,18 @@
 gcalctool change history.
 =========================
 
+v4.2.25 - 16th January 2003.  (richb)
+
+* HCI change suggested by Glynn Foster <Glynn.Foster@Sun.COM>
+
+  The Sto/Rcl/Exch menu items should show the current register values as well.
+
+  The Exch/Rcl/Sto menus are recreated each time that menu is needed. The
+  menu item callbacks for these menus and the Constant and Function menus
+  have been consolidated into a single menu_proc_cb() routine.
+
+----
+
 v4.2.24 - 16th January 2003.  (richb)
 
 * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>

@@ -131,14 +131,13 @@ static void aframe_ok_cb(GtkButton *, gpointer);
 static void base_cb(GtkToggleButton *, gpointer);
 static void cfframe_cancel_cb(GtkButton *, gpointer);
 static void cfframe_ok_cb(GtkButton *, gpointer);
-static void con_menu_proc(gpointer, int, GtkWidget *);
 static void create_con_fun_menu(enum menu_type);
 static void create_kbd_accel(GtkWidget *, guint, guint);
 static void disp_cb(GtkToggleButton *, gpointer);
-static void fun_menu_proc(gpointer, int, GtkWidget *);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(gpointer, int, GtkWidget *);
+static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void notice_prompt(GtkWidget *, char *);
@@ -184,19 +183,6 @@ static GtkItemFactoryEntry acc_menu[] = {
     { N_("/9 radix places"), NULL, menu_proc, '9', NULL, },
 };
 
-static GtkItemFactoryEntry exch_menu[] = {
-    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
-    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
-    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
-    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
-    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
-    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
-    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
-    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
-    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
-    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
-};
-
 static GtkItemFactoryEntry lshift_menu[] = {
     { N_("/1 place"),   NULL, menu_proc, '1', NULL },
     { N_("/2 places"),  NULL, menu_proc, '2', NULL },
@@ -215,19 +201,6 @@ static GtkItemFactoryEntry lshift_menu[] = {
     { N_("/15 places"), NULL, menu_proc, 'f', NULL },
 };
 
-static GtkItemFactoryEntry rcl_menu[] = {
-    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
-    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
-    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
-    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
-    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
-    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
-    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
-    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
-    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
-    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
-};
-
 static GtkItemFactoryEntry rshift_menu[] = {
     { N_("/1 place"),   NULL, menu_proc, '1', NULL },
     { N_("/2 places"),  NULL, menu_proc, '2', NULL },
@@ -244,19 +217,6 @@ static GtkItemFactoryEntry rshift_menu[] = {
     { N_("/13 places"), NULL, menu_proc, 'd', NULL },
     { N_("/14 places"), NULL, menu_proc, 'e', NULL },
     { N_("/15 places"), NULL, menu_proc, 'f', NULL },
-};
-
-static GtkItemFactoryEntry sto_menu[] = {
-    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
-    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
-    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
-    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
-    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
-    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
-    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
-    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
-    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
-    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
 };
 
 
@@ -525,15 +485,6 @@ cfframe_cancel_cb(GtkButton *button, gpointer user_data)
 }
 
 
-/*ARGSUSED*/
-static void
-con_menu_proc(gpointer data, int choice, GtkWidget *item)
-{
-    v->current->value = '0' + choice;
-    handle_menu_selection(X->mrec[(int) M_CON], v->current->value);
-}
-
-
 static void
 create_aframe()  /* Create auxiliary frame for ASC key. */
 {
@@ -748,6 +699,29 @@ create_kframe()
 }
 
 
+static void
+create_mem_menu(enum menu_type mtype)
+{
+    char mstr[MAXLINE];
+    int i, m;
+    GtkWidget *menu_item;
+
+    m = (int) mtype;
+    X->menus[(int) mtype] = gtk_menu_new();
+
+    for (i = 0; i < MAXREGS; i++) {
+        SPRINTF(mstr, "%s %d: %s", 
+                _("Register"), i, make_number(v->MPmvals[i], FALSE));
+        menu_item = gtk_menu_item_new_with_label(mstr);
+        gtk_widget_show(menu_item);
+        g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) m);
+        gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
+        g_signal_connect(G_OBJECT(menu_item), "activate",
+                         G_CALLBACK(menu_proc_cb), (gpointer) i);
+    }
+}
+
+
 static GtkWidget *
 create_mode_panel(GtkWidget *main_vbox)
 {
@@ -937,14 +911,10 @@ create_con_fun_menu(enum menu_type mtype)
         if (!invalid) {
             menu_item = gtk_menu_item_new_with_label(mstr);
             gtk_widget_show(menu_item);
+            g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) m);
             gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
-            if (mtype == M_CON) {
-                g_signal_connect(G_OBJECT(menu_item), "activate",
-                                 G_CALLBACK(con_menu_proc), (gpointer) i);
-            } else {
-                g_signal_connect(G_OBJECT(menu_item), "activate",
-                                 G_CALLBACK(fun_menu_proc), (gpointer) i);
-            }
+            g_signal_connect(G_OBJECT(menu_item), "activate",
+                             G_CALLBACK(menu_proc_cb), (gpointer) i);
         }
     }
 }
@@ -975,15 +945,6 @@ find_file(const char *base, GError **err)
         }
         return(filename);
     }
-}
-
-
-/*ARGSUSED*/
-static void
-fun_menu_proc(gpointer data, int choice, GtkWidget *item)
-{
-    v->current->value = '0' + choice;
-    handle_menu_selection(X->mrec[(int) M_FUN], v->current->value);
 }
 
 
@@ -1125,20 +1086,11 @@ get_menu_entry(enum menu_type mtype, int offset)
         case M_ACC :
             return(acc_menu[offset].callback_action);
 
-        case M_EXCH :
-            return(exch_menu[offset].callback_action);
-
         case M_LSHF :
             return(lshift_menu[offset].callback_action);
 
-        case M_RCL :
-            return(rcl_menu[offset].callback_action);
-
         case M_RSHF :
             return(rshift_menu[offset].callback_action);
-
-        case M_STO :
-            return(sto_menu[offset].callback_action);
 
         default:
             fprintf(stderr, "need to handle menu type %d\n", mtype);
@@ -1369,19 +1321,9 @@ create_menu(enum menu_type mtype, struct button *n)
             menu = &acc_menu[0];
             break;
 
-        case M_EXCH :
-            count = sizeof(exch_menu) / sizeof(exch_menu[0]);
-            menu = &exch_menu[0];
-            break;
-
         case M_LSHF :
             count = sizeof(lshift_menu) / sizeof(lshift_menu[0]);
             menu = &lshift_menu[0];
-            break;
- 
-        case M_RCL :
-            count = sizeof(rcl_menu) / sizeof(rcl_menu[0]);
-            menu = &rcl_menu[0];
             break;
  
         case M_RSHF :
@@ -1389,11 +1331,12 @@ create_menu(enum menu_type mtype, struct button *n)
             menu = &rshift_menu[0];
             break;
  
+        case M_EXCH :
+        case M_RCL :
         case M_STO :
-            count = sizeof(sto_menu) / sizeof(sto_menu[0]);
-            menu = &sto_menu[0];
+            create_mem_menu(mtype);
             break;
- 
+
         case M_CON :
         case M_FUN :
             create_con_fun_menu(mtype);
@@ -1403,7 +1346,8 @@ create_menu(enum menu_type mtype, struct button *n)
             break;
     }
 
-    if (mtype != M_CON && mtype != M_FUN && X->menus[m] == NULL) {
+    if ((mtype == M_ACC || mtype == M_LSHF || mtype == M_RSHF) &&
+        X->menus[m] == NULL) {
         X->fact[m] = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", 
                                           X->menu_accel);
 	gtk_item_factory_set_translate_func (X->fact[m],
@@ -1416,6 +1360,17 @@ create_menu(enum menu_type mtype, struct button *n)
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[m]), 1);
     X->mrec[m] = n;
     return(X->menus[m]);
+}
+
+
+/*ARGSUSED*/
+static void
+menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
+{
+    int mtype = (int) g_object_get_data(G_OBJECT(mi), "mtype");
+
+    v->current->value = '0' + (int) user_data;
+    handle_menu_selection(X->mrec[mtype], v->current->value);
 }
 
 

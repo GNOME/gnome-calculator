@@ -427,17 +427,12 @@ do_delete()     /* Remove the last numeric character typed. */
 static void
 do_exchange()         /* Exchange display with memory register. */
 {
-    int i, MPtemp[MP_SIZE];
+    int MPtemp[MP_SIZE];
 
-    for (i = 0; i <= 9; i++) {
-        if (v->current->value == get_menu_entry(M_EXCH, i)) {
-            mpstr(v->MPdisp_val, MPtemp);
-            mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
-            mpstr(MPtemp, v->MPmvals[char_val(v->current->value)]);
-            make_registers();
-            return;
-        }
-    }
+    mpstr(v->MPdisp_val, MPtemp);
+    mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
+    mpstr(MPtemp, v->MPmvals[char_val(v->current->value)]);
+    make_registers();
 }
 
 
@@ -872,7 +867,7 @@ do_shift()     /* Perform bitwise shift on display value. */
 static void
 do_sto_rcl()     /* Save/restore value to/from memory register. */
 {
-    int i, MPn[MP_SIZE], n;
+    int MPn[MP_SIZE], n;
     enum menu_type mtype = M_RCL;
 
     if (IS_KEY(v->pending, KEY_RCL)) {
@@ -881,37 +876,33 @@ do_sto_rcl()     /* Save/restore value to/from memory register. */
         mtype = M_STO;
     }
 
-    for (i = 0; i <= 9; i++) {
-        if (v->current->value == get_menu_entry(mtype, i)) {
-            if (IS_KEY(v->pending, KEY_RCL)) {                     /* Rcl */
-                mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
-                v->new_input = 0;
-
-            } else if (IS_KEY(v->pending, KEY_STO)) {              /* Sto */
-                n = char_val(v->current->value);
-
-                if (IS_KEY(v->pending_op, KEY_ADD)) {              /* + */
-                    mpstr(v->MPmvals[n], MPn);
-                    mpadd(MPn, v->MPdisp_val, v->MPmvals[n]);
-                } else if (IS_KEY(v->pending_op, KEY_SUB)) {       /* - */
-                    mpstr(v->MPmvals[n], MPn);
-                    mpsub(MPn, v->MPdisp_val, v->MPmvals[n]);
-                } else if (IS_KEY(v->pending_op, KEY_MUL)) {       /* x */
-                    mpstr(v->MPmvals[n], MPn);
-                    mpmul(MPn, v->MPdisp_val, v->MPmvals[n]);
-                } else if (IS_KEY(v->pending_op, KEY_DIV)) {       /* / */
-                    mpstr(v->MPmvals[n], MPn);
-                    mpdiv(MPn, v->MPdisp_val, v->MPmvals[n]);
-                } else {
-                    mpstr(v->MPdisp_val, v->MPmvals[n]);
-                }
-
-                v->pending_op = 0;
-                make_registers();
-            }
-            return;                 
+    if (IS_KEY(v->pending, KEY_RCL)) {                     /* Rcl */
+        mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
+        v->new_input = 0;
+ 
+    } else if (IS_KEY(v->pending, KEY_STO)) {              /* Sto */
+        n = char_val(v->current->value);
+ 
+        if (IS_KEY(v->pending_op, KEY_ADD)) {              /* + */
+            mpstr(v->MPmvals[n], MPn);
+            mpadd(MPn, v->MPdisp_val, v->MPmvals[n]);
+        } else if (IS_KEY(v->pending_op, KEY_SUB)) {       /* - */
+            mpstr(v->MPmvals[n], MPn);
+            mpsub(MPn, v->MPdisp_val, v->MPmvals[n]);
+        } else if (IS_KEY(v->pending_op, KEY_MUL)) {       /* x */
+            mpstr(v->MPmvals[n], MPn);
+            mpmul(MPn, v->MPdisp_val, v->MPmvals[n]);
+        } else if (IS_KEY(v->pending_op, KEY_DIV)) {       /* / */
+            mpstr(v->MPmvals[n], MPn);
+            mpdiv(MPn, v->MPdisp_val, v->MPmvals[n]);
+        } else {
+            mpstr(v->MPdisp_val, v->MPmvals[n]);
         }
-    }
+ 
+        v->pending_op = 0;
+        make_registers();
+        return;
+    }   
 
     if (IS_KEY(v->current->value, KEY_ADD) || 
         IS_KEY(v->current->value, KEY_SUB) ||
