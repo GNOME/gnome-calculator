@@ -28,7 +28,6 @@ gcalctool_LDADD = \
 	@PACKAGE_LIBS@ \
 	@GCONF_LIBS@ \
 	$(X_LIBS) \
-	$(GNOME_UTIL_LIBS) \
 	$(X_PRE_LIBS) \
 	$(X_BASIC_LIBS) \
 	$(X_EXTRA_LIBS)
