@@ -655,7 +655,7 @@ create_cf_model(enum menu_type mtype)
     for (i = 0; i < MAXCONFUN; i++) {
         n.number = i;
         if (mtype == M_CON) {
-            n.value       = g_strdup(make_number(v->MPcon_vals[i], FALSE));
+            n.value = g_strdup(make_number(v->MPcon_vals[i], FALSE, TRUE));
             n.description = g_strdup(v->con_names[i]);
         } else {
             n.value       = g_strdup(v->fun_vals[i]);
@@ -887,7 +887,7 @@ create_mem_menu(enum menu_type mtype)
         SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
 	/* translators: R is the short form of register used inter alia
 	in popup menus */
-                _("R"), i, make_number(v->MPmvals[i], FALSE));
+                _("R"), i, make_number(v->MPmvals[i], FALSE, TRUE));
         create_menu_item_with_markup(mstr, m, i);
     }
 }
@@ -1017,7 +1017,7 @@ create_rframe()
 
     for (i = 0; i < MAXREGS; i++) {
         SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>   %s", 
-                _("R"), i,  make_number(v->MPmvals[i], FALSE));
+                _("R"), i,  make_number(v->MPmvals[i], FALSE, TRUE));
         X->regs[i] = gtk_label_new("");
         gtk_label_set_markup(GTK_LABEL(X->regs[i]), line);
         SPRINTF(name, "register_label%1d", i);
@@ -1078,7 +1078,7 @@ create_con_fun_menu(enum menu_type mtype)
         invalid = 0;
         if (mtype == M_CON) {
             SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
-                    _("C"), i, make_number(v->MPcon_vals[i], FALSE), 
+                    _("C"), i, make_number(v->MPcon_vals[i], FALSE, TRUE), 
                     v->con_names[i]);
         } else {
             if (!strlen(v->fun_vals[i])) {

@@ -52,7 +52,7 @@ clear_display(int initialise)
     v->toclear = 1;
     i = 0;
     mpcim(&i, v->MPdisp_val);
-    STRCPY(v->display, make_number(v->MPdisp_val, FALSE));
+    STRCPY(v->display, make_number(v->MPdisp_val, FALSE, FALSE));
     set_display(v->display);
 
     if (initialise == TRUE) {
@@ -176,7 +176,7 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
 /* Convert MP number to character string. */
 
 char *
-make_number(int *MPnumber, BOOLEAN mkFix)
+make_number(int *MPnumber, BOOLEAN mkFix, BOOLEAN ignoreError)
 {
     double number, val;
 
@@ -190,7 +190,7 @@ make_number(int *MPnumber, BOOLEAN mkFix)
 
     mpcmd(MPnumber, &number);
     val = fabs(number);
-    if (v->error) {
+    if (v->error && !ignoreError) {
         return(_("Error"));
     }
     if ((v->dtype == ENG) ||
@@ -471,7 +471,7 @@ void
 show_display(int *MPval)
 {
     if (!v->error) {
-        STRCPY(v->display, make_number(MPval, TRUE));
+        STRCPY(v->display, make_number(MPval, TRUE, FALSE));
         set_display(v->display);
     }
 }

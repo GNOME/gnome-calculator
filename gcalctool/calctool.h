@@ -311,7 +311,7 @@ struct button *copy_button_info(struct button *);
 char *button_str(int);
 char *convert(char *);
 char *get_resource(enum res_type);
-char *make_number(int *, BOOLEAN);
+char *make_number(int *, BOOLEAN, BOOLEAN);
 char *set_bool(int);
 
 unsigned short *get_but_data();
