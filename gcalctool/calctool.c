@@ -63,8 +63,16 @@ char *ttype_str[] = {          /* Strings for each trig type value. */
 char digits[] = "0123456789ABCDEF";
 int basevals[4] = { 2, 8, 10, 16 };
 
-int left_pos[BCOLS]  = { 7, 6, 4, 5, 0, 1, 2, 3 };  /* Left positions. */
-int right_pos[BCOLS] = { 4, 5, 6, 7, 2, 3, 1, 0 };  /* "Right" positions. */
+static int left_pos[BCOLS]  = {   /* "Left-handed" positions. */
+    7, 6, 4, 5, 0, 1, 2, 3
+};
+static int right_pos[BCOLS] = {   /* "Right-handed" positions. */
+    0, 1, 2, 3, 4, 5, 6, 7 
+};
+int cur_pos[BCOLS] = {            /* Current positions - initially "right". */
+    0, 1, 2, 3, 4, 5, 6, 7 
+};
+
 
 /* Various string values read/written as X resources. */
 
@@ -105,148 +113,6 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 1. */
 { 
-    _("D   "),  
-    _(
-      "Hex D (decimal 13)\n"
-      "\n"
-      "Keyboard equivalent:   d\n"
-      "\n"
-      "Enters the hexadecimal value d in the display.\n"
-      "\n"
-      "Available only when the current base is\n"
-      "hexadecimal."
-    ),
-    0,
-    GDK_d,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    _("E   "),
-    _(
-      "Hex E (decimal 14)\n"
-      "\n"
-      "Keyboard equivalent:   e\n"
-      "\n"
-      "Enters the hexadecimal value e in the display.\n"
-      "\n"
-      "Available only when the current base is\n"
-      "hexadecimal."
-    ),
-    0,
-    GDK_e,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{ 
-    _("F   "),
-    _(
-      "Hex F (decimal 15)\n"
-      "\n"
-      "Keyboard equivalent:   f\n"
-      "\n"
-      "Enters the hexadecimal value f in the display.\n"
-      "\n"
-      "Available only when the current base is\n"
-      "hexadecimal."
-    ),
-    0,
-    GDK_f,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{ 
-    _("Clr "),
-    _(
-      "Clr\n"
-      "\n"
-      "Clears the display.\n"
-      "\n"
-      "Keyboard equivalent:   Delete\n"
-      "\n"
-      "This clears the value currently displayed."
-    ),
-    0,
-    GDK_Delete,
-    OP_CLEAR, 
-    M_NONE, 
-    do_clear
-},
-{ 
-    _("Int "),
-    _(
-      "Int\n"
-      "\n"
-      "Integer portion\n"
-      "\n"
-      "Keyboard equivalent:   Control-i\n"
-      "\n"
-      "Returns the integer portion of the current\n"
-      "displayed value."
-    ),
-    GDK_CONTROL_MASK, 
-    GDK_i,
-    OP_CLEAR, 
-    M_NONE, 
-    do_portion
-},
-{ 
-    _("Frac"),
-    _(
-      "Frac\n"
-      " \n"
-      "Fractional portion\n"
-      "\n" 
-      "Keyboard equivalent:   Control-f\n"
-      " \n"
-      "Returns the fractional portion of the current\n"
-      "displayed value."
-    ),
-    GDK_CONTROL_MASK, 
-    GDK_f,
-    OP_CLEAR, 
-    M_NONE, 
-    do_portion
-},
-{ 
-    _("Base"),
-    _(
-      "Base\n"
-      " \n"
-      "Changes numeric base.\n"
-      " \n"
-      "Keyboard equivalent:   B\n"
-      " \n"
-      "Initially the numeric base is decimal. You can\n"
-      "change the base to binary, octal, or hexadecimal.\n"
-      " \n"
-      "Click on the Base button to show the available settings.\n"
-      "Choose a value from the menu to change to a new\n"
-      "numeric base.\n"
-      " \n"
-      "Depending on that base, various keys on the\n"
-      "calculator will be dimmed to show that they\n"
-      "are disabled.\n"
-      " \n"
-      "Alternatively, you can use the keyboard to set\n"
-      "the numeric base: Type B, followed by\n"
-      "b, o, d, or h to indicate the new base setting:\n"
-      " \n"
-      "b   binary\n"
-      "o   octal\n"
-      "d   decimal\n"
-      "h   hexadecimal"
-    ),
-    GDK_SHIFT_MASK,   
-    GDK_B,
-    OP_SET,
-    M_BASE,
-    do_pending
-},
-{ 
     _("Disp"),
     _(
       "Disp\n"
@@ -282,139 +148,151 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_NUM,
     do_pending
 },
-
-/* Row 2. */
-{ 
-    _("A   "),
+{    
+    _("Base"),
     _(
-      "Hex A (decimal 10)\n"
+      "Base\n"
       " \n"
-      "Keyboard equivalent:   a\n"
-      "\n" 
-      "Enters the hexadecimal value a in the display.\n"
+      "Changes numeric base.\n"
       " \n"
-      "Available only when the current base is\n"
-      "hexadecimal."
+      "Keyboard equivalent:   B\n"
+      " \n"
+      "Initially the numeric base is decimal. You can\n"
+      "change the base to binary, octal, or hexadecimal.\n"
+      " \n"
+      "Click on the Base button to show the available settings.\n"
+      "Choose a value from the menu to change to a new\n"
+      "numeric base.\n"
+      " \n"
+      "Depending on that base, various keys on the\n"
+      "calculator will be dimmed to show that they\n"
+      "are disabled.\n"
+      " \n"
+      "Alternatively, you can use the keyboard to set\n"
+      "the numeric base: Type B, followed by\n"
+      "b, o, d, or h to indicate the new base setting:\n"
+      " \n"
+      "b   binary\n"
+      "o   octal\n"
+      "d   decimal\n"
+      "h   hexadecimal"
     ),
-    0,
-    GDK_a,
-    OP_NOP,
-    M_NONE, 
-    do_number
+    GDK_SHIFT_MASK,
+    GDK_B,
+    OP_SET,
+    M_BASE,
+    do_pending
 },
-{ 
-    _("B   "),
+{
+    _("Int "),
     _(
-      "Hex B (decimal 11)\n"
-      " \n"
-      "Keyboard equivalent:   b\n"
-      " \n"
-      "Enters the hexadecimal value b in the display.\n"
-      " \n"
-      "Available only when the current base is\n"
-      "hexadecimal."
-    ),
-    0,
-    GDK_b,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("C   "),
-    _(
-      "Hex C (decimal 12)\n"
-      " \n"
-      "Keyboard equivalent:   c\n"
-      " \n"
-      "Enters the hexadecimal value c in the display.\n"
-      " \n"
-      "Available only when the current base is\n"
-      "hexadecimal."
-    ),
-    0,
-    GDK_c,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{ 
-    _("Bsp "),
-    _(
-      "Bsp\n"
-      " \n"
-      "Erases characters one at a time.\n"
-      " \n"
-      "Keyboard equivalent:   Back Space\n"
-      " \n"
-      "This removes the right-most character of the\n"
-      "displayed value and recalculates the value of\n"
-      "the display.\n"
-      " \n"
-      "Internal accuracy is lost with this operation."
-    ),
-    0,
-    GDK_BackSpace,
-    OP_NOP,
-    M_NONE,
-    do_delete
-},
-{ 
-    _("Abs "),
-    _(
-      "Abs\n"
-      " \n"
-      "Absolute value.\n"
-      " \n"
-      "Keyboard equivalent:   Control-u\n"
-      " \n"
-      "Returns the absolute value of the current\n"
+      "Int\n"
+      "\n"
+      "Integer portion\n"
+      "\n"
+      "Keyboard equivalent:   Control-i\n"
+      "\n"
+      "Returns the integer portion of the current\n"
       "displayed value."
     ),
     GDK_CONTROL_MASK,
-    GDK_u,
-    OP_CLEAR, 
-    M_NONE, 
-    do_portion
-},
-{ 
-    _("+/- "),
-    _(
-      "+/-\n"
-      " \n"
-      "Change sign.\n"
-      " \n"
-      "Keyboard equivalent:   C\n"
-      "\n" 
-      "Changes the arithmetic sign of the current\n"
-      "displayed value or the exponent being entered."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_C,
+    GDK_i,
     OP_CLEAR,
     M_NONE,
-    do_immed
+    do_portion
 },
-{ 
-    _("Keys"),
+{
+    _("Frac"),
     _(
-      "Keys\n"
+      "Frac\n"
       " \n"
-      "Toggles button labels.\n"
+      "Fractional portion\n"
+      "\n"
+      "Keyboard equivalent:   Control-f\n"
       " \n"
-      "Keyboard equivalent:   k\n"
-      " \n"
-      "Toggles the labels on the calctool keys,\n"
-      "alternating between the mouse and keyboard\n"
-      "equivalents."
+      "Returns the fractional portion of the current\n"
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_f,
+    OP_CLEAR,
+    M_NONE,
+    do_portion
+},
+{
+    _("D   "),
+    _(
+      "Hex D (decimal 13)\n"
+      "\n"
+      "Keyboard equivalent:   d\n"
+      "\n"
+      "Enters the hexadecimal value d in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
     ),
     0,
-    GDK_k,
-    OP_CLEAR, 
-    M_NONE, 
-    do_keys
+    GDK_d,
+    OP_NOP,
+    M_NONE,
+    do_number
 },
-{ 
+{
+    _("E   "),
+    _(
+      "Hex E (decimal 14)\n"
+      "\n"
+      "Keyboard equivalent:   e\n"
+      "\n"
+      "Enters the hexadecimal value e in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_e,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("F   "),
+    _(
+      "Hex F (decimal 15)\n"
+      "\n"
+      "Keyboard equivalent:   f\n"
+      "\n"
+      "Enters the hexadecimal value f in the display.\n"
+      "\n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_f,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{    
+    _("Clr "),
+    _(
+      "Clr\n"
+      "\n"
+      "Clears the display.\n"
+      "\n"
+      "Keyboard equivalent:   Delete\n"
+      "\n"
+      "This clears the value currently displayed."
+    ),
+    0,
+    GDK_Delete,
+    OP_CLEAR,
+    M_NONE,
+    do_clear
+},
+
+/* Row 2. */
+{
     _("Mode"),
     _(
       "Mode\n"
@@ -448,108 +326,161 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     GDK_SHIFT_MASK,
     GDK_M,
     OP_SET,
-    M_MODE, 
+    M_MODE,
     do_pending
 },
-
-/* Row 3. */
-{ 
-    _("7   "),
+{
+    _("Keys"),
     _(
-      "Numeric 7\n"
-      "\n" 
-      "Keyboard equivalent:   7\n"
+      "Keys\n"
       " \n"
-      "This key is inactive in binary base."
+      "Toggles button labels.\n"
+      " \n"
+      "Keyboard equivalent:   k\n"
+      " \n"
+      "Toggles the labels on the calctool keys,\n"
+      "alternating between the mouse and keyboard\n"
+      "equivalents."
     ),
     0,
-    GDK_7,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("8   "),
-    _(
-      "Numeric 8\n"
-      "\n"
-      "Keyboard equivalent:   8\n"
-      "\n"
-      "This key is inactive in binary or octal base."
-    ),
-    0,
-    GDK_8,
-    OP_NOP,
+    GDK_k,
+    OP_CLEAR,
     M_NONE,
-    do_number
+    do_keys
 },
-{ 
-    _("9   "),
+{
+    _("Abs "),
     _(
-      "Numeric 9\n"
-      "\n"
-      "Keyboard equivalent:   9\n"
-      "\n"
-      "This key is inactive in binary or octal base."
-    ),
-    0,
-    GDK_9,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("X   "),
-    _(
-      "X\n"
-      "\n"
-      "Multiplication\n"
-      "\n"
-      "Keyboard equivalent:   x or *\n"
-      "\n"
-      "This key takes the last number entered and\n"
-      "multiplies it by the next number entered."
-    ),
-    0,
-    GDK_x,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
-{ 
-    _("1/x "),
-    _(
-      "1/x\n"
-      "\n"
-      "Reciprocal\n"
-      "\n"
-      "Keyboard equivalent:   r\n"
-      "\n"
-      "Returns the value 1 divided by the current\n"
+      "Abs\n"
+      " \n"
+      "Absolute value.\n"
+      " \n"
+      "Keyboard equivalent:   Control-u\n"
+      " \n"
+      "Returns the absolute value of the current\n"
       "displayed value."
     ),
-    0,
-    GDK_r,
-    OP_CLEAR, 
-    M_NONE, 
-    do_immed
+    GDK_CONTROL_MASK,
+    GDK_u,
+    OP_CLEAR,
+    M_NONE,
+    do_portion
 },
-{ 
-    _("x^2 "),
+{
+    _("+/- "),
     _(
-      "x^2\n"
+      "+/-\n"
+      " \n"
+      "Change sign.\n"
+      " \n"
+      "Keyboard equivalent:   C\n"
       "\n"
-      "Keyboard equivalent:   @\n"
-      "\n"
-      "Returns the square of the current displayed value."
+      "Changes the arithmetic sign of the current\n"
+      "displayed value or the exponent being entered."
     ),
     GDK_SHIFT_MASK,
-    GDK_at,
+    GDK_C,
     OP_CLEAR,
     M_NONE,
     do_immed
 },
-{ 
+{
+    _("A   "),
+    _(
+      "Hex A (decimal 10)\n"
+      " \n"
+      "Keyboard equivalent:   a\n"
+      "\n"
+      "Enters the hexadecimal value a in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_a,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("B   "),
+    _(
+      "Hex B (decimal 11)\n"
+      " \n"
+      "Keyboard equivalent:   b\n"
+      " \n"
+      "Enters the hexadecimal value b in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_b,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("C   "),
+    _(
+      "Hex C (decimal 12)\n"
+      " \n"
+      "Keyboard equivalent:   c\n"
+      " \n"
+      "Enters the hexadecimal value c in the display.\n"
+      " \n"
+      "Available only when the current base is\n"
+      "hexadecimal."
+    ),
+    0,
+    GDK_c,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("Bsp "),
+    _(
+      "Bsp\n"
+      " \n"
+      "Erases characters one at a time.\n"
+      " \n"
+      "Keyboard equivalent:   Back Space\n"
+      " \n"
+      "This removes the right-most character of the\n"
+      "displayed value and recalculates the value of\n"
+      "the display.\n"
+      " \n"
+      "Internal accuracy is lost with this operation."
+    ),
+    0,
+    GDK_BackSpace,
+    OP_NOP,
+    M_NONE,
+    do_delete
+},
+
+/* Row 3. */
+{
+    _("Mem..."),
+    _(
+      "Mem\n"
+      "\n"
+      "Displays a memory register window.\n"
+      "\n"
+      "Keyboard equivalent:   m\n"
+      "\n"
+      "Click on the Mem button to display a window showing\n"
+      "the values of the ten memory registers in the\n"
+      "current base, to the current accuracy."
+    ),
+    0,
+    GDK_m,
+    OP_NOP,
+    M_NONE,
+    do_memory
+},
+{
     _("Acc "),
     _(
       "Acc\n"
@@ -565,171 +496,111 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
       "of accuracy. Choose a level from the menu to set\n"
       "the precision for the display and registers."
     ),
-    GDK_SHIFT_MASK,   
+    GDK_SHIFT_MASK,
     GDK_A,
     OP_SET,
     M_ACC,
     do_pending
 },
-{ 
-    _("Mem..."), 
+{
+    _("1/x "),
     _(
-      "Mem\n"
+      "1/x\n"
       "\n"
-      "Displays a memory register window.\n"
+      "Reciprocal\n"
       "\n"
-      "Keyboard equivalent:   m\n"
+      "Keyboard equivalent:   r\n"
       "\n"
-      "Click on the Mem button to display a window showing\n"
-      "the values of the ten memory registers in the\n"
-      "current base, to the current accuracy."
-    ),
-    0,
-    GDK_m,
-    OP_NOP,
-    M_NONE, 
-    do_memory
-},
-
-/* Row 4. */
-{ 
-    _("4   "),
-    _(
-      "Numeric 4\n"
-      "\n"
-      "Keyboard equivalent:   4\n"
-      "\n"
-      "This key is inactive in binary base."
-    ),
-    0,
-    GDK_4,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{ 
-    _("5   "),
-    _(
-      "Numeric 5\n"
-      "\n"
-      "Keyboard equivalent:   5\n"
-      "\n"
-      "This key is inactive in binary base."
-    ),
-    0,
-    GDK_5,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("6   "),
-    _(
-      "Numeric 6\n"
-      "\n"
-      "Keyboard equivalent:   6\n"
-      "\n"
-      "This key is inactive in binary base."
-    ),
-    0,
-    GDK_6,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("/   "),
-    _(
-      "/\n"
-      "\n"
-      "Division\n"
-      "\n"
-      "Keyboard equivalent:   /\n"
-      "\n"
-      "This key takes the last number entered and\n"
-      "divides it by the next number entered."
-    ),
-    0,
-    GDK_slash,
-    OP_SET,
-    M_NONE, 
-    do_calc
-},
-{ 
-    _("%   "),
-    _(
-      "%\n"
-      "\n"
-      "Percentage\n"
-      "\n"
-      "Keyboard equivalent:   %\n"
-      "\n"
-      "Takes the last number entered and calculates a\n"
-      "percentage using the next number entered.\n"
-      "\n"
-      "Example:\n"
-      "\n"
-      "        200 % 20 = (returns 40)\n"
-      "\n"
-      "The calculator is multiplying (200*20)*0.01."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_percent,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
-{ 
-    _("Sqrt"),
-    _(
-      "Sqrt\n"
-      "\n"
-      "Square root\n"
-      "\n"
-      "Keyboard equivalent:   s\n"
-      "\n"
-      "Calculates the square root of the current\n"
+      "Returns the value 1 divided by the current\n"
       "displayed value."
     ),
     0,
-    GDK_s,
+    GDK_r,
     OP_CLEAR,
     M_NONE,
     do_immed
 },
-{ 
-    _("Con "),
+{
+    _("x^2 "),
     _(
-      "Con\n"
+      "x^2\n"
       "\n"
-      "Constant n\n"
+      "Keyboard equivalent:   @\n"
       "\n"
-      "Keyboard equivalent:   #\n"
-      "\n"
-      "Click on the Con button to show the available constants.\n"
-      "Choose a constant from the menu to enter its value\n"
-      "in the display.\n"
-      "\n"
-      "Alternatively, if you know the number of a\n"
-      "constant, you can click SELECT on Con, then\n"
-      "on a digit from 0 - 9 to indicate the constant\n"
-      "you want to enter.\n"
-      "\n"
-      "To add new constants or alter existing ones,\n"
-      "choose \"Enter Constant\" from the menu. This\n"
-      "displays a window in which you type the number,\n"
-      "description, and value of the constant.\n"
-      "\n"
-      "Click SELECT on \"Enter Constant\" to store the new\n"
-      "constant in the ~/.gcalctoolcf file."
+      "Returns the square of the current displayed value."
     ),
     GDK_SHIFT_MASK,
-    GDK_numbersign, 
-    OP_SET,
-    M_CON,
-    do_pending
+    GDK_at,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
 },
-{ 
+{
+    _("7   "),
+    _(
+      "Numeric 7\n"
+      "\n"
+      "Keyboard equivalent:   7\n"
+      " \n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_7,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("8   "),
+    _(
+      "Numeric 8\n"
+      "\n"
+      "Keyboard equivalent:   8\n"
+      "\n"
+      "This key is inactive in binary or octal base."
+    ),
+    0,
+    GDK_8,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("9   "),
+    _(
+      "Numeric 9\n"
+      "\n"
+      "Keyboard equivalent:   9\n"
+      "\n"
+      "This key is inactive in binary or octal base."
+    ),
+    0,
+    GDK_9,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("X   "),
+    _(
+      "X\n"
+      "\n" 
+      "Multiplication\n"
+      "\n"
+      "Keyboard equivalent:   x or *\n"
+      "\n"
+      "This key takes the last number entered and\n"
+      "multiplies it by the next number entered."
+    ),
+    0,
+    GDK_x,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+
+/* Row 4. */
+{
     _("Fun "),
     _(
       "Fun\n"
@@ -772,123 +643,170 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_FUN,
     do_pending
 },
-
-/* Row 5. */
-{ 
-    _("1   "),  
+{
+    _("Con "),
     _(
-      "Numeric 1\n"
+      "Con\n"
       "\n"
-      "Keyboard equivalent:   1"
+      "Constant n\n"
+      "\n"
+      "Keyboard equivalent:   #\n"
+      "\n"
+      "Click on the Con button to show the available constants.\n"
+      "Choose a constant from the menu to enter its value\n"
+      "in the display.\n"
+      "\n"
+      "Alternatively, if you know the number of a\n"
+      "constant, you can click SELECT on Con, then\n"
+      "on a digit from 0 - 9 to indicate the constant\n"
+      "you want to enter.\n"
+      "\n"
+      "To add new constants or alter existing ones,\n"
+      "choose \"Enter Constant\" from the menu. This\n"
+      "displays a window in which you type the number,\n"
+      "description, and value of the constant.\n"
+      "\n"
+      "Click SELECT on \"Enter Constant\" to store the new\n"
+      "constant in the ~/.gcalctoolcf file."
     ),
-    0,
-    GDK_1,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("2   "),
-    _(
-      "Numeric 2\n"
-      "\n"
-      "Keyboard equivalent:   2\n"
-      "\n"
-      "This key is inactive in binary base."
-    ),
-    0,
-    GDK_2,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("3   "),
-    _(
-      "Numeric 3\n"
-      "\n"
-      "Keyboard equivalent:   3\n"
-      "\n"
-      "This key is inactive in binary base."
-    ),
-    0,
-    GDK_3,
-    OP_NOP,
-    M_NONE, 
-    do_number
-},
-{ 
-    _("-   "),
-    _(
-      "-\n"
-      "\n"
-      "Subtraction\n"
-      "\n"
-      "Keyboard equivalent:   -\n"
-      "\n"
-      "This operation takes the last number entered and\n"
-      "subtracts from it the next number entered."
-    ),
-    0,
-    GDK_minus,
+    GDK_SHIFT_MASK,
+    GDK_numbersign,
     OP_SET,
-    M_NONE, 
+    M_CON,
+    do_pending
+},
+{
+    _("%   "),
+    _(
+      "%\n"
+      "\n" 
+      "Percentage\n"
+      "\n"
+      "Keyboard equivalent:   %\n"
+      "\n"
+      "Takes the last number entered and calculates a\n"
+      "percentage using the next number entered.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        200 % 20 = (returns 40)\n"
+      "\n"
+      "The calculator is multiplying (200*20)*0.01."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_percent,
+    OP_SET,
+    M_NONE,
     do_calc
 },
-{ 
-    _("(   "),
+{
+    _("Sqrt"),
     _(
-      "(\n"
+      "Sqrt\n"
       "\n"
-      "Left parenthesis\n"
+      "Square root\n"
       "\n"
-      "Keyboard equivalent:   (\n"
+      "Keyboard equivalent:   s\n"
       "\n"
-      "Allows you to group together a set of\n"
-      "calculations. Use with the right parenthesis.\n"
-      "\n"
-      "Example:\n"
-      "\n"
-      "        2 * ( 3 + 4 ) = 14\n"
-      "\n"
-      "contrasted with:\n"
-      "\n"
-      "        2 * 3 + 4 = 10"
+      "Calculates the square root of the current\n"
+      "displayed value."
     ),
-    GDK_SHIFT_MASK,   
-    GDK_parenleft,  
+    0,
+    GDK_s,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{
+    _("4   "),
+    _(
+      "Numeric 4\n"
+      "\n"
+      "Keyboard equivalent:   4\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_4,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("5   "),
+    _(
+      "Numeric 5\n"
+      "\n"
+      "Keyboard equivalent:   5\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_5,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("6   "),
+    _(
+      "Numeric 6\n"
+      "\n"
+      "Keyboard equivalent:   6\n"
+      "\n"
+      "This key is inactive in binary base."
+    ),
+    0,
+    GDK_6,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("/   "),
+    _(
+      "/\n"
+      "\n"
+      "Division\n"
+      "\n"
+      "Keyboard equivalent:   /\n"
+      "\n"
+      "This key takes the last number entered and\n"
+      "divides it by the next number entered."
+    ),
+    0,
+    GDK_slash,
     OP_SET,
-    M_NONE, 
-    do_paren
+    M_NONE,
+    do_calc
 },
-{ 
-    _(")   "),
+
+/* Row 5. */
+{
+    _("Sto "),
     _(
-      ")\n"
+      "Sto\n"
       "\n"
-      "Right parenthesis\n"
+      "Stores a value in a memory register.\n"
       "\n"
-      "Keyboard equivalent:   )\n"
+      "Keyboard equivalent:   S\n"
       "\n"
-      "Allows you to group together a set of\n"
-      "calculations. Use with the left parenthesis.\n"
+      "Click on the Sto button to display a menu of all registers.\n"
+      "Choose a register from the menu to store the\n"
+      "displayed value.\n"
       "\n"
-      "Example:\n"
-      "\n"
-      "        2 * ( 3 + 4 ) = 14\n"
-      "\n"
-      "contrasted with:\n"
-      "\n"
-      "        2 * 3 + 4 = 10"
-    ),
-    GDK_SHIFT_MASK,   
-    GDK_parenright, 
-    OP_SET,   
-    M_NONE, 
-    do_paren
+      "Alternately, click SELECT on Sto, then on a digit\n"
+      "in the range 0 to 9 to indicate the memory\n"
+      "register in which to store the displayed value."
+    ), 
+    GDK_SHIFT_MASK,
+    GDK_S,
+    OP_SET,
+    M_STO,
+    do_pending
 },
-{ 
-    _("Rcl "),  
+{
+    _("Rcl "),
     _(
       "Rcl\n"
       "\n"
@@ -910,139 +828,140 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_RCL,
     do_pending
 },
-{ 
-    _("Sto "),
+{
+    _("(   "),
     _(
-      "Sto\n"
+      "(\n"
+      "\n" 
+      "Left parenthesis\n"
       "\n"
-      "Stores a value in a memory register.\n"
+      "Keyboard equivalent:   (\n"
       "\n"
-      "Keyboard equivalent:   S\n"
+      "Allows you to group together a set of\n"
+      "calculations. Use with the right parenthesis.\n"
       "\n"
-      "Click on the Sto button to display a menu of all registers.\n"
-      "Choose a register from the menu to store the\n"
-      "displayed value.\n"
+      "Example:\n"
       "\n"
-      "Alternately, click SELECT on Sto, then on a digit\n"
-      "in the range 0 to 9 to indicate the memory\n"
-      "register in which to store the displayed value."
+      "        2 * ( 3 + 4 ) = 14\n"
+      "\n"
+      "contrasted with:\n"
+      "\n"
+      "        2 * 3 + 4 = 10"
     ),
     GDK_SHIFT_MASK,
-    GDK_S,
+    GDK_parenleft,
     OP_SET,
-    M_STO,
-    do_pending
+    M_NONE,
+    do_paren
 },
-
-/* Row 6. */
-{ 
-    _("0   "),
+{
+    _(")   "),
     _(
-      "Numeric 0\n"
+      ")\n"
+      "\n" 
+      "Right parenthesis\n"
       "\n"
-      "Keyboard equivalent:   0\n"
+      "Keyboard equivalent:   )\n"
+      "\n"
+      "Allows you to group together a set of\n"
+      "calculations. Use with the left parenthesis.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        2 * ( 3 + 4 ) = 14\n"
+      "\n"
+      "contrasted with:\n"
+      "\n"
+      "        2 * 3 + 4 = 10"
+    ),
+    GDK_SHIFT_MASK,
+    GDK_parenright,
+    OP_SET,
+    M_NONE,
+    do_paren
+},
+{
+    _("1   "),
+    _(
+      "Numeric 1\n"
+      "\n"
+      "Keyboard equivalent:   1"
     ),
     0,
-    GDK_0,
+    GDK_1,
     OP_NOP,
     M_NONE,
     do_number
 },
-{ 
-    _(".   "),
+{
+    _("2   "),
     _(
-      ".\n"
+      "Numeric 2\n"
       "\n"
-      "Numeric point\n"
+      "Keyboard equivalent:   2\n"
       "\n"
-      "Keyboard equivalent:   .\n"
-      "\n"
-      "Starts the fractional part of a numeric entry."
+      "This key is inactive in binary base."
     ),
     0,
-    GDK_period,
+    GDK_2,
     OP_NOP,
     M_NONE,
-    do_point
+    do_number
 },
-{ 
-    _("=   "),
+{
+    _("3   "),
     _(
-      "=\n"
+      "Numeric 3\n"
       "\n"
-      "Calculates a result.\n"
+      "Keyboard equivalent:   3\n"
       "\n"
-      "Keyboard equivalent:   = or Return\n"
-      "\n"
-      "Displays the result of the current calculation in\n"
-      "the current base."
+      "This key is inactive in binary base."
     ),
     0,
-    GDK_equal,
+    GDK_3,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _("-   "),
+    _(
+      "-\n"
+      "\n"
+      "Subtraction\n"
+      "\n"
+      "Keyboard equivalent:   -\n"
+      "\n"
+      "This operation takes the last number entered and\n"
+      "subtracts from it the next number entered."
+    ),
+    0,
+    GDK_minus,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+
+/* Row 6. */
+{
+    _("Quit"),
+    _( 
+      "Quit\n"
+      "\n"
+      "Quits the calculator.\n"
+      "\n"
+      "Keyboard equivalent:   q or Q\n"
+      "\n"
+      "Quits the calculator without asking for your\n"
+      "confirmation."
+    ),
+    0,
+    GDK_q,
     OP_CLEAR,
     M_NONE,
-    do_calc
+    do_frame
 },
-{ 
-    _("+   "),
-    _(
-      "+\n"
-      "\n"
-      "Addition\n"
-      "\n"
-      "Keyboard equivalent:   +\n"
-      "\n"
-      "Takes the last number entered and adds it to the\n"
-      "next number entered."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_plus,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
-{ 
-    _("Exp "),
-    _(
-      "Exp\n"
-      "\n"
-      "Enters an exponential number.\n"
-      "\n"
-      "Keyboard equivalent:   E\n"
-      "\n"
-      "Starts exponential input. Any numbers typed from\n"
-      "now on are the exponent. If you haven't entered a\n"
-      "mantissa, the calculator uses a mantissa of 1.0."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_E,
-    OP_SET,
-    M_NONE,
-    do_expno
-},
-{ 
-    _("Asc..."),
-    _(
-      "Asc\n"
-      "\n"
-      "ASCII value\n"
-      "\n"
-      "Keyboard equivalent:   Control-a\n"
-      "\n"
-      "Displays a window in which you type a character\n"
-      "whose ASCII value you want. Enter the character\n"
-      "and click SELECT on the ASCII button in the window.\n"
-      "\n"
-      "The calculator displays the ASCII value in the\n"
-      "current number base. (You can change the base.)"
-    ),
-    GDK_CONTROL_MASK, 
-    GDK_a,
-    OP_CLEAR, 
-    M_NONE, 
-    do_ascii
-},
-{ 
+{
     _("Exch"),
     _(
       "Exch\n"
@@ -1066,26 +985,115 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     GDK_SHIFT_MASK,
     GDK_X,
     OP_SET,
-    M_EXCH, 
+    M_EXCH,
     do_pending
 },
-{ 
-    _("Quit"),
+{
+    _("Exp "),
     _(
-      "Quit\n"
+      "Exp\n"
       "\n"
-      "Quits the calculator.\n"
+      "Enters an exponential number.\n"
       "\n"
-      "Keyboard equivalent:   q or Q\n"
+      "Keyboard equivalent:   E\n"
       "\n"
-      "Quits the calculator without asking for your\n"
-      "confirmation."
+      "Starts exponential input. Any numbers typed from\n"
+      "now on are the exponent. If you haven't entered a\n"
+      "mantissa, the calculator uses a mantissa of 1.0."
     ),
-    0,
-    GDK_q,
+    GDK_SHIFT_MASK,
+    GDK_E,
+    OP_SET,
+    M_NONE,
+    do_expno
+},
+{
+    _("Asc..."),
+    _(
+      "Asc\n"
+      "\n"
+      "ASCII value\n"
+      "\n"
+      "Keyboard equivalent:   Control-a\n"
+      "\n"
+      "Displays a window in which you type a character\n"
+      "whose ASCII value you want. Enter the character\n"
+      "and click SELECT on the ASCII button in the window.\n"
+      "\n"
+      "The calculator displays the ASCII value in the\n"
+      "current number base. (You can change the base.)"
+    ),
+    GDK_CONTROL_MASK,
+    GDK_a,
     OP_CLEAR,
     M_NONE,
-    do_frame
+    do_ascii
+},
+{
+    _("0   "),
+    _(
+      "Numeric 0\n"
+      "\n"
+      "Keyboard equivalent:   0\n"
+    ),
+    0,
+    GDK_0,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    _(".   "),
+    _(
+      ".\n"
+      "\n" 
+      "Numeric point\n"
+      "\n"
+      "Keyboard equivalent:   .\n"
+      "\n"
+      "Starts the fractional part of a numeric entry."
+    ),
+    0,
+    GDK_period,
+    OP_NOP,
+    M_NONE,
+    do_point
+},
+{
+    _("=   "),
+    _(
+      "=\n"
+      "\n" 
+      "Calculates a result.\n"
+      "\n"
+      "Keyboard equivalent:   = or Return\n"
+      "\n"
+      "Displays the result of the current calculation in\n"
+      "the current base."
+    ),
+    0,
+    GDK_equal,
+    OP_CLEAR,
+    M_NONE,
+    do_calc
+},
+{
+    _("+   "),
+    _(
+      "+\n"
+      "\n" 
+      "Addition\n"
+      "\n"
+      "Keyboard equivalent:   +\n"
+      "\n"
+      "Takes the last number entered and adds it to the\n"
+      "next number entered."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_plus,
+    OP_SET,
+    M_NONE,
+    do_calc
 },
 };
 
@@ -2190,10 +2198,7 @@ do_calctool(int argc, char **argv)
     read_resources();          /* Read resources from merged database. */
     get_options(argc, argv);   /* Get command line arguments. */
     read_rcfiles();            /* Read .calctoolrc's files. */
-
-    if (v->righthand) {              /* Display a right-handed calculator. */
-        switch_hands(v->righthand);
-    }
+    switch_hands(v->righthand);
     make_frames();             /* Create gcalctool window frames. */
 
     v->shelf      = NULL;      /* No selection for shelf initially. */
@@ -2270,4 +2275,15 @@ matherr(struct exception *exc)
     doerr(_("Error"));
 
     return(1);
+}
+
+
+void
+switch_hands(int righthand)
+{
+    int i;
+
+    for (i = 0; i < BCOLS; i++) {
+        cur_pos[i] = (righthand) ? right_pos[i] : left_pos[i];
+    }
 }

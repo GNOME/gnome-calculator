@@ -8,6 +8,18 @@
 gcalctool change history.
 =========================
 
+v4.1.14 - 9th September 2002.
+
+* If started as left-handed (gconf key "righthanded" is "false"), and the
+  user is using the old OpenWindows colors (with the supplied gcalctoolrc
+  file), the buttons are not colored correctly.
+
+  Have adjusted the code so that the buttons are attached in the table in
+  the appropriate positions depending upon whether it's left or right handed,
+  rather than rearranging the entries in the buttons struct.
+
+----
+
 v4.1.13 - 30th August 2002.
 
 * The unused buttons in the mode window are now hidden. Doing this before

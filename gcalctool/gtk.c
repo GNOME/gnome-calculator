@@ -1364,7 +1364,7 @@ static void
 make_ktable(GtkWidget *frame, GtkWidget *vbox)
 {
     char name[MAXLINE];
-    int i, j, n;
+    int i, j, n, x;
 
     X->ktable = gtk_table_new(BROWS, BCOLS, TRUE);
     gtk_widget_ref(X->ktable);
@@ -1374,22 +1374,23 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
     for (i = 0; i < BCOLS; i++) {
         for (j = 0; j < BROWS; j++) {
             n = j*BCOLS + i;
+            x = j*BCOLS + cur_pos[i];
             if (buttons[n].mtype == M_NONE) {
-                X->buttons[n] = gtk_button_new_with_label(buttons[n].str);
+                X->buttons[x] = gtk_button_new_with_label(buttons[n].str);
             } else {
-                X->buttons[n] = make_menu_button(buttons[n].str, n);
+                X->buttons[x] = make_menu_button(buttons[n].str, n);
             }   
-            g_signal_connect(G_OBJECT(X->buttons[n]), "clicked",
+            g_signal_connect(G_OBJECT(X->buttons[x]), "clicked",
                              G_CALLBACK(button_proc), (gpointer) n);
             SPRINTF(name, "button%1d", n);
-            gtk_widget_set_name(X->buttons[n], name);
-            gtk_tooltips_set_tip(X->tips, X->buttons[n], buttons[n].hstr, "");
-            g_object_set_data(G_OBJECT(X->buttons[n]), "frame", X->kframe);
-            gtk_widget_ref(X->buttons[n]);
-            create_kbd_accel(X->buttons[n], buttons[n].mods, buttons[n].value);
-            gtk_widget_show(X->buttons[n]);
-            gtk_table_attach(GTK_TABLE(X->ktable), X->buttons[n], 
-                     i, i+1, j, j+1,
+            gtk_widget_set_name(X->buttons[x], name);
+            gtk_tooltips_set_tip(X->tips, X->buttons[x], buttons[n].hstr, "");
+            g_object_set_data(G_OBJECT(X->buttons[x]), "frame", X->kframe);
+            gtk_widget_ref(X->buttons[x]);
+            create_kbd_accel(X->buttons[x], buttons[n].mods, buttons[n].value);
+            gtk_widget_show(X->buttons[x]);
+            gtk_table_attach(GTK_TABLE(X->ktable), X->buttons[x], 
+                     cur_pos[i], cur_pos[i]+1, j, j+1,
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
                      4, 4);
@@ -1852,13 +1853,14 @@ set_mode(enum mode_type mode)
 static void
 set_prop_options(int newr)
 {
-    int i, j, n;
+    int i, j, n, x;
 
     if (newr != v->righthand) {
         for (i = 0; i < BCOLS; i++) {
             for (j = 0; j < BROWS; j++) {
                 n = j*BCOLS + i;
-                remove_kbd_accel(X->buttons[n], buttons[n].mods, 
+                x = j*BCOLS + cur_pos[i];
+                remove_kbd_accel(X->buttons[x], buttons[n].mods, 
                                  buttons[n].value);
             }
         }

@@ -125,20 +125,29 @@ void
 grey_buttons(enum base_type base)
 {
     char val;
-    int i, n;
+    int found, i, j, k, n, x;
 
-    for (i = 0; i < 16; i++) {
-        val = digits[i];
+    for (k = 0; k < 16; k++) {
+        found = 0;
+        val = digits[k];
         if (isupper((int) val)) {
             val = tolower((int) val);
         }
-        for (n = 0; n < NOBUTTONS; n++) {
-            if (val == buttons[n].value && buttons[n].mods == 0) {
-                break;           
+        for (i = 0; i < BCOLS; i++) {
+            for (j = 0; j < BROWS; j++) {
+                n = j*BCOLS + i;
+                x = j*BCOLS + cur_pos[i];
+                if (val == buttons[n].value && buttons[n].mods == 0) {
+                    found = 1;           
+                    break;
+                }
+            }
+            if (found) {
+                break;
             }
         }
 
-        set_button_state(FCP_KEY, n, (i < basevals[(int) base]));
+        set_button_state(FCP_KEY, x, (k < basevals[(int) base]));
     }                    
 }
 

@@ -111,59 +111,59 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 /* Abbreviations for the calctool keyboard and menu equivalents. */
 
-#define KEY_D     buttons[v->righthand ?  4 :  0].value       /* d */
-#define KEY_E     buttons[v->righthand ?  5 :  1].value       /* e */
-#define KEY_F     buttons[v->righthand ?  6 :  2].value       /* f */
-#define KEY_CLR   buttons[v->righthand ?  7 :  3].value       /* del */
-#define KEY_INT   buttons[v->righthand ?  2 :  4].value       /* CTL('i') */
-#define KEY_FRAC  buttons[v->righthand ?  3 :  5].value       /* CTL('f') */
-#define KEY_BASE  buttons[v->righthand ?  1 :  6].value       /* B */
-#define KEY_DISP  buttons[v->righthand ?  0 :  7].value       /* D */
+#define KEY_D     buttons[4].value              /* d */
+#define KEY_E     buttons[5].value              /* e */
+#define KEY_F     buttons[6].value              /* f */
+#define KEY_CLR   buttons[7].value              /* del */
+#define KEY_INT   buttons[2].value              /* CTL('i') */
+#define KEY_FRAC  buttons[3].value              /* CTL('f') */
+#define KEY_BASE  buttons[1].value              /* B */
+#define KEY_DISP  buttons[0].value              /* D */
 
-#define KEY_A     buttons[v->righthand ? 12 :  8].value       /* a */
-#define KEY_B     buttons[v->righthand ? 13 :  9].value       /* b */
-#define KEY_C     buttons[v->righthand ? 14 : 10].value       /* c */
-#define KEY_BSP   buttons[v->righthand ? 15 : 11].value       /* CTL('h') */
-#define KEY_ABS   buttons[v->righthand ? 10 : 12].value       /* CTL('u') */
-#define KEY_CHS   buttons[v->righthand ? 11 : 13].value       /* C */
-#define KEY_KEYS  buttons[v->righthand ?  9 : 14].value       /* k */
-#define KEY_MODE  buttons[v->righthand ?  8 : 15].value       /* M */
+#define KEY_A     buttons[12].value             /* a */
+#define KEY_B     buttons[13].value             /* b */
+#define KEY_C     buttons[14].value             /* c */
+#define KEY_BSP   buttons[15].value             /* CTL('h') */
+#define KEY_ABS   buttons[10].value             /* CTL('u') */
+#define KEY_CHS   buttons[11].value             /* C */
+#define KEY_KEYS  buttons[9].value              /* k */
+#define KEY_MODE  buttons[8].value              /* M */
 
-#define KEY_7     buttons[v->righthand ? 20 : 16].value       /* 7 */
-#define KEY_8     buttons[v->righthand ? 21 : 17].value       /* 8 */
-#define KEY_9     buttons[v->righthand ? 22 : 18].value       /* 9 */
-#define KEY_MUL   buttons[v->righthand ? 23 : 19].value       /* x */
-#define KEY_REC   buttons[v->righthand ? 18 : 20].value       /* r */
-#define KEY_SQR   buttons[v->righthand ? 19 : 21].value       /* @ */
-#define KEY_ACC   buttons[v->righthand ? 17 : 22].value       /* A */
-#define KEY_MEM   buttons[v->righthand ? 16 : 23].value       /* m */
+#define KEY_7     buttons[20].value             /* 7 */
+#define KEY_8     buttons[21].value             /* 8 */
+#define KEY_9     buttons[22].value             /* 9 */
+#define KEY_MUL   buttons[23].value             /* x */
+#define KEY_REC   buttons[18].value             /* r */
+#define KEY_SQR   buttons[19].value             /* @ */
+#define KEY_ACC   buttons[17].value             /* A */
+#define KEY_MEM   buttons[16].value             /* m */
 
-#define KEY_4     buttons[v->righthand ? 28 : 24].value       /* 4 */
-#define KEY_5     buttons[v->righthand ? 29 : 25].value       /* 5 */
-#define KEY_6     buttons[v->righthand ? 30 : 26].value       /* 6 */
-#define KEY_DIV   buttons[v->righthand ? 31 : 27].value       /* / */
-#define KEY_PER   buttons[v->righthand ? 26 : 28].value       /* % */
-#define KEY_SQRT  buttons[v->righthand ? 27 : 29].value       /* s */
-#define KEY_CON   buttons[v->righthand ? 25 : 30].value       /* # */
-#define KEY_FUN   buttons[v->righthand ? 24 : 31].value       /* F */
+#define KEY_4     buttons[28].value             /* 4 */
+#define KEY_5     buttons[29].value             /* 5 */
+#define KEY_6     buttons[30].value             /* 6 */
+#define KEY_DIV   buttons[31].value             /* / */
+#define KEY_PER   buttons[26].value             /* % */
+#define KEY_SQRT  buttons[27].value             /* s */
+#define KEY_CON   buttons[25].value             /* # */
+#define KEY_FUN   buttons[24].value             /* F */
 
-#define KEY_1     buttons[v->righthand ? 36 : 32].value       /* 1 */
-#define KEY_2     buttons[v->righthand ? 37 : 33].value       /* 2 */
-#define KEY_3     buttons[v->righthand ? 38 : 34].value       /* 3 */
-#define KEY_SUB   buttons[v->righthand ? 39 : 35].value       /* - */
-#define KEY_LPAR  buttons[v->righthand ? 34 : 36].value       /* ( */
-#define KEY_RPAR  buttons[v->righthand ? 35 : 37].value       /* ) */
-#define KEY_RCL   buttons[v->righthand ? 33 : 38].value       /* R */
-#define KEY_STO   buttons[v->righthand ? 32 : 39].value       /* S */
+#define KEY_1     buttons[36].value             /* 1 */
+#define KEY_2     buttons[37].value             /* 2 */
+#define KEY_3     buttons[38].value             /* 3 */
+#define KEY_SUB   buttons[39].value             /* - */
+#define KEY_LPAR  buttons[34].value             /* ( */
+#define KEY_RPAR  buttons[35].value             /* ) */
+#define KEY_RCL   buttons[33].value             /* R */
+#define KEY_STO   buttons[32].value             /* S */
 
-#define KEY_0     buttons[v->righthand ? 44 : 40].value       /* 0 */
-#define KEY_PNT   buttons[v->righthand ? 45 : 41].value       /* . */
-#define KEY_EQ    buttons[v->righthand ? 46 : 42].value       /* = */
-#define KEY_ADD   buttons[v->righthand ? 47 : 43].value       /* + */
-#define KEY_EXP   buttons[v->righthand ? 42 : 44].value       /* E */
-#define KEY_ASC   buttons[v->righthand ? 43 : 45].value       /* CTL('a') */
-#define KEY_EXCH  buttons[v->righthand ? 41 : 46].value       /* X */
-#define KEY_QUIT  buttons[v->righthand ? 40 : 47].value       /* q */
+#define KEY_0     buttons[44].value             /* 0 */
+#define KEY_PNT   buttons[45].value             /* . */
+#define KEY_EQ    buttons[46].value             /* = */
+#define KEY_ADD   buttons[47].value             /* + */
+#define KEY_EXP   buttons[42].value             /* E */
+#define KEY_ASC   buttons[43].value             /* CTL('a') */
+#define KEY_EXCH  buttons[41].value             /* X */
+#define KEY_QUIT  buttons[40].value             /* q */
 
 #define KEY_CTRM  mode_buttons[0].value         /* CTL('t') */
 #define KEY_DDB   mode_buttons[1].value         /* CTL('d') */
@@ -320,8 +320,6 @@ struct calcVars {                      /* Calctool variables and options. */
     enum mode_type pending_mode;    /* Mode for pending op. */
     enum num_type dtype;            /* Number display mode. */
     enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
-
-    struct button temp_buttons[BCOLS];   /* To setup "right-handed" version. */
 
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */

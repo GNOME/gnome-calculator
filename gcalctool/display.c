@@ -495,22 +495,3 @@ show_display(int *MPval)
         set_item(DISPLAYITEM, v->display);
     }
 }
-
-
-void
-switch_hands(int righthand)
-{
-    int i, j, n;
-
-    for (i = 0; i < BROWS; i++) {
-        for (j = 0; j < BCOLS; j++) {
-            n = (righthand) ? right_pos[j] : left_pos[j];
-            MEMCPY((char *) &v->temp_buttons[n],
-                   (char *) &buttons[i*BCOLS + j], sizeof(struct button));
-        }
-        for (j = 0; j < BCOLS; j++) {
-            MEMCPY((char *) &buttons[i*BCOLS + j], 
-                   (char *) &v->temp_buttons[j], sizeof(struct button));
-        }
-    }
-}

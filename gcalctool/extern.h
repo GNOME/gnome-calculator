@@ -37,9 +37,8 @@ extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern double max_fix[];       /* Maximum showable fixed values. */
 
 extern int basevals[];         /* Supported arithmetic bases. */
-extern int left_pos[];         /* "Left-handed" positions. */
-extern int right_pos[];        /* "Right-handed" positions. */
 extern int validkeys[];        /* Valid keys after an error condition. */
+extern int cur_pos[];          /* Current positions - left/right handed. */
 
 extern struct button buttons[];           /* Calculator button values. */
 extern struct button mode_buttons[];      /* Special "mode" buttons. */
