@@ -417,8 +417,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("+"),
     N_("Add"),
     NULL,
-    { GDK_SHIFT_MASK, 0,          0 },
-    { GDK_plus,       GDK_KP_Add, 0 },
+    { GDK_SHIFT_MASK, 0,        0,          0 },
+    { GDK_plus,       GDK_plus, GDK_KP_Add, 0 },
     '+',
     M_NONE,
     do_calc

@@ -7,6 +7,13 @@
 gcalctool change history.
 =========================
 
+2003-10-10  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 124172 (http://bugzilla.gnome.org/show_bug.cgi?id=124172)
+      The "+" character on a German keyboard is on the lower level of a
+      key (i.e. the Shift key doesn't need to be down). Added another
+      mask/keysym pair to the "+" entry in calctool.c to handle this.
+
 2003-10-06  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 120737 (http://bugzilla.gnome.org/show_bug.cgi?id=120737)
