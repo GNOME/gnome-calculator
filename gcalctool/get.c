@@ -211,6 +211,22 @@ get_str_resource(enum res_type rtype, char *strval)
 }
 
 
+/* Return the thousands separator character. For most locales, this is a 
+ * comma.
+ */
+
+char
+get_tsep_char()
+{
+    char *tsep_char;
+
+    setlocale(LC_NUMERIC, "");
+    tsep_char = nl_langinfo(THOUSEP);
+
+    return(tsep_char[0]);
+}
+
+
 void
 init_vars()    /* Setup default values for various variables. */
 {
@@ -348,6 +364,10 @@ read_resources()    /* Read all possible resources from the database. */
 
     if (get_bool_resource(R_ZEROES, &boolval)) {
         v->show_zeroes = boolval;
+    }
+
+    if (get_bool_resource(R_TSEP, &boolval)) {
+        v->show_tsep = boolval;
     }
 }
 

@@ -60,7 +60,7 @@ char *base_desc[]  = {         /* Tooltips for each base value. */
 
 char *calc_res[] = {
     "accuracy", "base", "display", "mode", "showregisters", "trigtype",
-    "removezeroes"
+    "showzeroes", "showthousands"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
@@ -1018,6 +1018,7 @@ do_calctool(int argc, char **argv)
     }
 
     v->radix_char = get_radix_char();   /* Locale specific radix character. */
+    v->tsep_char  = get_tsep_char();  /* Locale specific thousands seperator. */
 
     init_text();               /* Setup text strings depending upon language. */
     init_vars();               /* Setup default values for variables. */

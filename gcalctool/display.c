@@ -174,6 +174,45 @@ make_fixed(int *MPnumber, int base, int cmax)
         *optr = '\0';
     }
 
+/* Add in the thousand separators characters if required and if we are
+ * currently in the decimal numeric base.
+ */
+
+    if (v->show_tsep && v->base == DEC) {
+        char *dstp, *radixp, *srcp;
+        int n;
+
+        /* Process the fractional part (if any). */
+        srcp = v->fnum + strlen(v->fnum) - 1;
+        dstp = v->tnum;
+        if ((radixp = strchr(v->fnum, v->radix_char)) != NULL) {
+            while (*srcp != v->radix_char) {
+                *dstp++ = *srcp--;
+            }
+            *dstp++ = *srcp--;     /* Copy over the radix char. */
+        }
+
+        /* Process the integer part, add in thousand separators. */
+        n = 0;
+        while (srcp >= v->fnum) {
+            *dstp++ = *srcp--;
+            n++;
+            if (n == 3 && srcp >= v->fnum) {
+                *dstp++ = ',';
+                n = 0;
+            }
+        }
+        *dstp++ = '\0';
+
+        /* Move from scratch pad to fnum, reversing the character order. */
+        srcp = v->tnum + strlen(v->tnum) - 1;
+	dstp = v->fnum;
+        while (srcp >= v->tnum) {
+            *dstp++ = *srcp--;
+        }
+        *dstp++ = '\0';
+    }
+
     return(v->fnum);
 }
 

@@ -9,6 +9,15 @@ gcalctool change history.
 
 2003-11-26  Rich Burridge <rich.burridge@sun.com>
 
+    * Implemented enhancement request 125873
+      (http://bugzilla.gnome.org/show_bug.cgi?id=126626)
+      gcalctool can now optionally show the thousands seperator character
+      for fixed point numbers displayed in the decimal base. Same for
+      numbers stored in the memory registers. There is a new "Show 
+      Thousands Separator" menu entry in the View menu to set this.
+
+2003-11-26  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug 126626 (http://bugzilla.gnome.org/show_bug.cgi?id=126626)
       gcalctool no longer causes a Gtk-CRITICAL error when the user enters
       "9*(1<Xor>". The problem was caused because a non-UTF character was

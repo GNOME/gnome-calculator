@@ -47,7 +47,7 @@
 
 /* Menu bar menu types. */
 enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  M_FIN,
-               M_PASTE, M_QUIT,  M_REGS,  M_SCI,      M_ZEROES };
+               M_PASTE, M_QUIT,  M_REGS,  M_SCI,      M_TSEP,  M_ZEROES };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
@@ -69,7 +69,7 @@ enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 /* Resources. */
 enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
-                R_ZEROES
+                R_ZEROES,   R_TSEP
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -247,6 +247,8 @@ struct calcVars {                      /* Calctool variables and options. */
     char radix_char;                   /* Locale specific radix character. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS+1];           /* Scratchpad for scientific numbers. */
+    char tnum[MAX_DIGITS+1];           /* Scratchpad for tsep numbers. */
+    char tsep_char;                 /* Locale specific thousands seperator. */
     char *titleline;                   /* Value of titleline (if present). */
     char *tool_label;                  /* Title line for calculator window. */
 
@@ -290,6 +292,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
+    int show_tsep;     /* Set if the thousands seperator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
@@ -314,6 +317,7 @@ char *button_str(int);
 char *convert(char *);
 char get_radix_char();
 char *get_resource(enum res_type);
+char get_tsep_char();
 char *make_number(int *, int, BOOLEAN, BOOLEAN);
 char *set_bool(int);
 

@@ -153,8 +153,10 @@ static void reset_mode_values(enum mode_type);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
 static void set_memory_toggle(int);
+static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
+static void ts_proc(gpointer, int, GtkWidget *);
 
 static XVars X;
 
@@ -176,6 +178,7 @@ static GtkItemFactoryEntry main_menu[] = {
     { N_("/View/_Scientific Mode"),"<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
     { N_("/View/sep1"),            NULL, NULL,    0,       "<Separator>" },
     { N_("/View/Show _Trailing Zeroes"),"<control>T", mstz_proc, M_ZEROES, "<ToggleItem>" },
+   { N_("/View/Show T_housands Separator"),"<control>K", ts_proc, M_TSEP, "<ToggleItem>" },
     { N_("/View/sep2"),	           NULL, NULL,	  0,       "<Separator>" },
     { N_("/View/_Memory Registers"),"<control>M", mb_proc, M_REGS, "<ToggleItem>" },
 
@@ -1398,6 +1401,7 @@ make_frames()
     n = (struct button *) g_object_get_data(G_OBJECT(BUT_ACC), "button");
     menu = create_menu(n->mtype, n);
     set_accuracy_toggle(v->accuracy);
+    set_show_tsep_toggle(v->show_tsep);
     set_show_zeroes_toggle(v->show_zeroes);
 }
 
@@ -1723,7 +1727,6 @@ mstz_proc(gpointer data, int choice, GtkWidget *item)
 {
     GtkWidget *mi;
 
-
     if (!v->doing_mi) {
 	v->show_zeroes = !v->show_zeroes;
         v->doing_mi = 1;
@@ -1807,6 +1810,10 @@ reset_mode_values(enum mode_type mtype)
     set_item(NUMITEM, FIX);
     v->accuracy = 9;
     set_accuracy_toggle(v->accuracy);
+
+    v->show_tsep = FALSE;
+    set_show_tsep_toggle(v->show_tsep);
+    put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
 
     v->show_zeroes = FALSE;
     set_show_zeroes_toggle(v->show_zeroes);
@@ -2048,6 +2055,16 @@ set_gcalctool_icon(void)
 
 
 static void
+set_show_tsep_toggle(int state)
+{
+    GtkWidget *mi;
+
+    mi = gtk_item_factory_get_widget_by_action(X->mb_fact, M_TSEP);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
+}
+
+
+static void
 set_show_zeroes_toggle(int state)
 {
     GtkWidget *mi;
@@ -2094,6 +2111,21 @@ start_tool()
     set_item(NUMITEM, v->dtype);
     gtk_widget_show(X->kframe);
     gtk_main();
+}
+
+
+static void
+ts_proc(gpointer data, int choice, GtkWidget *item)
+{
+    if (!v->started) {
+	return;
+    }
+
+    v->show_tsep = !v->show_tsep;
+
+    show_display(v->MPdisp_val);
+    put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
+    make_registers();
 }
 
 
