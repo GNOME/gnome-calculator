@@ -401,7 +401,7 @@ do_delete()     /* Remove the last numeric character typed. */
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
 
-    if (v->pointed && !(strchr(v->display, get_numeric_sep()))) {
+    if (v->pointed && !(strchr(v->display, v->radix_char))) {
         v->pointed = 0;
     }
 
@@ -425,13 +425,15 @@ do_exchange()         /* Exchange display with memory register. */
 void
 do_expno()           /* Get exponential number. */
 {
-    v->pointed = (strchr(v->display, get_numeric_sep()) != NULL);
+    v->pointed = (strchr(v->display, v->radix_char) != NULL);
     if (!v->new_input) {
         STRCPY(v->display, "1.0 +");
         v->new_input = v->pointed = 1;
     } else if (!v->pointed) {
-        STRNCAT(v->display, _(KEY_SEP.str), 1);
-        STRNCAT(v->display, " +", 2);
+        char str[4];
+
+        SPRINTF(str, "%c +", v->radix_char);
+        STRNCAT(v->display, str, 3);
         v->pointed = 1;
     } else if (!v->key_exp) {
         STRNCAT(v->display, " +", 2);
@@ -771,12 +773,15 @@ do_pending()
 void
 do_point()                   /* Handle numeric point. */
 {
+    char radix_str[2];
+
     if (!v->pointed) {
+	SPRINTF(radix_str, "%c", v->radix_char);
         if (v->toclear) {
-            STRCPY(v->display, _(KEY_SEP.str));
+            STRCPY(v->display, radix_str);
             v->toclear = 0;
         } else {
-            STRNCAT(v->display, _(KEY_SEP.str), 1);
+            STRNCAT(v->display, radix_str, 1);
         }
         v->pointed = 1;
     }

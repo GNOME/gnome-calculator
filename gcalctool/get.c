@@ -24,6 +24,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <langinfo.h>
+#include <locale.h>
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
@@ -112,14 +114,17 @@ get_key_val(int *val, char *str)
 }
 
 
-/* Return the numeric separator. For most locales, this is a period. */
+/* Return the radix character. For most locales, this is a period. */
 
 char
-get_numeric_sep()
+get_radix_char()
 {
-    char *num_sep = _(KEY_SEP.str);
+    char *radix_char;
 
-    return(num_sep[0]);
+    setlocale(LC_NUMERIC, "");
+    radix_char = nl_langinfo(RADIXCHAR);
+
+    return(radix_char[0]);
 }
 
 

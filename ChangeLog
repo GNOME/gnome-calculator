@@ -9,6 +9,12 @@ gcalctool change history.
 
 2003-10-02  Rich Burridge <rich.burridge@sun.com>
 
+    * Refixed bug 122373 (http://bugzilla.gnome.org/show_bug.cgi?id=122373)
+      gcalctool now uses nl_langinfo() to get the numeric point for the
+      users locale, rather than via a localised string.
+
+2003-10-02  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed enhancement 65806 (http://bugzilla.gnome.org/show_bug.cgi?id=65806)
       Changed that label for e^x (e superscript x) to use an italised "e".
 

@@ -91,7 +91,6 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_FRAC  b_buttons[22]             /* : */
 #define KEY_RCL   b_buttons[23]             /* R */
 
-#define KEY_SEP   b_buttons[25]             /* . */
 #define KEY_EQ    b_buttons[26]             /* = */
 #define KEY_ADD   b_buttons[27]             /* + */
 #define KEY_REC   b_buttons[28]             /* r */
@@ -245,6 +244,7 @@ struct calcVars {                      /* Calctool variables and options. */
     char opstr[5];                     /* Operand string during pending op. */
     char *progname;                    /* Name of this program. */
     char pstr[5];                      /* Current button text string. */
+    char radix_char;                   /* Locale specific radix character. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS+1];           /* Scratchpad for scientific numbers. */
     char *titleline;                   /* Value of titleline (if present). */

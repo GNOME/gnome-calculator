@@ -1017,6 +1017,8 @@ do_calctool(int argc, char **argv)
         }
     }
 
+    v->radix_char = get_radix_char();   /* Locale specific radix character. */
+
     init_text();               /* Setup text strings depending upon language. */
     init_vars();               /* Setup default values for variables. */
     load_resources();          /* Get resources from various places. */
