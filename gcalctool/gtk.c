@@ -639,7 +639,7 @@ button_proc(GtkButton *widget, gpointer user_data)
             }
             if (v->new_input && v->dtype == FIX) {
                 STRCPY(v->fnum, v->display);
-                set_display(v->fnum, FALSE);
+                set_display(v->fnum, TRUE);
             }
             break;
 
@@ -2072,11 +2072,11 @@ menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 
 /*ARGSUSED*/
 static void 
-menu_button_button_press_cb(GtkWidget *widget, 
-                            GdkEventButton *event, gpointer data)
+menu_button_button_press_cb(GtkButton *widget, gpointer data)
 {
     struct button *n;
     GtkWidget *menu;
+    GdkEventButton *event = (GdkEventButton *) gtk_get_current_event();
 
     if (event->button != 1) {
         return;
@@ -2140,7 +2140,7 @@ make_menu_button(gchar *label_text, int n)
     gtk_container_add(GTK_CONTAINER(button), hbox);
  
     gtk_widget_set_events(button, GDK_BUTTON_PRESS_MASK);
-    g_signal_connect(G_OBJECT(button), "button-press-event",
+    g_signal_connect(G_OBJECT(button), "clicked",
                      G_CALLBACK(menu_button_button_press_cb), (gpointer) n);
     g_signal_connect(G_OBJECT(button), "key-press-event",
                      G_CALLBACK(menu_button_key_press_cb), (gpointer) n);

@@ -7,6 +7,18 @@
 gcalctool change history.
 =========================
 
+2005-01-21 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug #162998 (http://bugzilla.gnome.org/show_bug.cgi?id=162998)
+      The "menu" buttons in gcalctool now responds to the "clicked" event
+      rather than the "button-press-event" to allow gok, the on-screen 
+      keyboard to function properly.
+
+    * Fixed bug #159957 (http://bugzilla.gnome.org/show_bug.cgi?id=159957)
+      Input number in FIX mode now make mimimal changes to (i.e append a
+      single character) the display rather than completely delete and
+      insert it. The is helpful to assistive technologies like gnopernicus.
+
 2005-01-18 Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug #164184 (http://bugzilla.gnome.org/show_bug.cgi?id=164184)

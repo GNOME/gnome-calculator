@@ -5,6 +5,19 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.5.28
+
+* Fixed bug #162998. The "menu" buttons in gcalctool now responds 
+  to the "clicked" event rather than the "button-press-event" to 
+  allow gok, the on-screen keyboard to function properly.
+
+* Fixed bug #159957. Input number in FIX mode now make mimimal changes 
+  to (i.e append a single character) the display rather than completely 
+  delete and insert it. The is helpful to assistive technologies like 
+  gnopernicus.
+
+----
+
 Overview of changes in gcalctool 5.5.27
 
 * Fixed bug #164184. Adjusted location of comments in syntax_translation.c 
