@@ -57,7 +57,7 @@ static struct word {
   { /* Bitwise NOT */                            N_("not")   },
   { /* Bitwise OR */                             N_("or")    },
   { /* PI */                                     N_("pi")    },
-  { /* Periodic payment *                        N_("pmt")   },
+  { /* Periodic payment */                       N_("pmt")   },
   { /* Present value */                          N_("pv")    },
   { /* A random number */                        N_("rand")  },
   { /* Periodic interest rate */                 N_("rate")  },
