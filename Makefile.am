@@ -2,7 +2,7 @@
 
 SUBDIRS = po gcalctool help
 
-schemadir = @GCONF_SCHEMA_FILE_DIR@
+schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = gcalctool.schemas
 
 EXTRA_DIST = \
@@ -23,6 +23,8 @@ Utilities_in_files = gcalctool.desktop.in
 Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+if GCONF_SCHEMAS_INSTALL
 # Install the gcalctool schema file.
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+endif

@@ -9,9 +9,9 @@ INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DPACKAGE_PIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
-	@PACKAGE_CFLAGS@ \
-	@GNOME_UTILS_CFLAGS@ \
-	@GCONF_CFLAGS@
+	$(PACKAGE_CFLAGS) \
+	$(GNOME_UTILS_CFLAGS) \
+	$(GCONF_CFLAGS)
 
 bin_PROGRAMS = gcalctool
 
@@ -29,9 +29,9 @@ gcalctool_SOURCES = \
 	extern.h
 
 gcalctool_LDADD = \
-	@PACKAGE_LIBS@ \
-	@GNOME_UTILS_LIBS@ \
-	@GCONF_LIBS@ \
+	$(PACKAGE_LIBS) \
+	$(GNOME_UTILS_LIBS) \
+	$(GCONF_LIBS) \
 	$(X_LIBS) \
 	$(X_PRE_LIBS) \
 	$(X_BASIC_LIBS) \

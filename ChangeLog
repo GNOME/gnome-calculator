@@ -7,6 +7,21 @@
 gcalctool change history.
 =========================
 
+2004-02-25  Tomasz Kłoczko <kloczek@pld.org.pl>
+
+    * Makefile.am: in configure.in is used AM_GCONF_SOURCE_2. Part of this
+      aclocal macro allow disable/enable install schama files in make
+      install target schemas in GConf database. Pass
+      --disable-schemas-install in configure parameters disable defines by
+      AM_CONDITIONAL() GCONF_SCHEMAS_INSTALL variable for allow in
+      Makefile.am files run gconftool-2 for update GConf database
+      conditionaly. This fix enables run gconftool-2 in install-data-local
+      only if GCONF_SCHEMAS_INSTALL variable is defined .. so now passing in
+      configure parameters --disable-schemas-install switch now works perfectly :)
+
+      * Makefile.am, gcalctool/Makefile.am: minor cleanups
+      s#@VARIABLE@#$(VARIABLE)#
+
 2004-02-26  Miloslav Trmac <mitr at volny dot cz>
 
     * Fixed bug 135064 (http://bugzilla.gnome.org/show_bug.cgi?id=135064)
