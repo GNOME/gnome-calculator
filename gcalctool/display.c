@@ -128,6 +128,7 @@ clear_display(int initialise)
         v->show_paren = 0;
         v->opsptr     = 0;            /* Clear parentheses stacks. */
         v->numsptr    = 0;
+        v->noparens   = 0;
         set_hyp_item(FALSE);          /* Also clears v->hyperbolic. */
         set_inv_item(FALSE);          /* Also clears v->inverse. */
     }
@@ -164,6 +165,7 @@ initialise()
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = '?';         /* No arithmetic operator defined yet. */
     v->old_cal_value = '?';
+    v->pending       = 0;
     i = 0;
     mpcim(&i, v->MPresult);         /* No previous result yet. */
     mpcim(&i, v->MPlast_input);

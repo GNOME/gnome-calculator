@@ -627,6 +627,7 @@ do_mode()                   /* Set special calculator mode. */
     set_title(FCP_KEY, title);
     put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
+    do_clear();
 }
 
 
