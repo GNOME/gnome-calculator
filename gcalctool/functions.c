@@ -709,7 +709,7 @@ do_paren()
             return;
         }
     }
-    paren_disp(v->current->func_char);
+    paren_disp(v->current->value[0]);
 }
 
 
