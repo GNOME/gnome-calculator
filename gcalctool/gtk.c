@@ -167,7 +167,16 @@ static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
+static void gcalc_window_have_icons_notify (GConfClient *client,
+                                            guint cnxn_id,
+                                            GConfEntry *entry,
+                                            gpointer data);
+static void gcalc_window_get_menu_items (XVars X);
+static void gcalc_window_set_unset_image (gboolean have_icons);
 
+#define MENU_KEY_DIR "/desktop/gnome/interface"
+
+static GSList *list;
 static XVars X;
 
 /* Menubar menus. */
@@ -957,6 +966,73 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
     return(dialog);
 }
 
+/* action_image[] is a list of Actions which are having icons associated.
+ * We need to set/unset the icons if /desktop/gnome/interface/menus_have_icons
+ * toggles 
+ */
+static void
+gcalc_window_get_menu_items (XVars X)
+{
+    GtkAction *act;
+    GSList *p = NULL;
+    gint i = 0;
+    static gchar *action_image[] = {"Quit", "Copy", "Paste", "Contents", "About", NULL};
+
+    while (action_image[i]) {
+        act = gtk_action_group_get_action (X->actions, action_image[i]);
+        p = gtk_action_get_proxies (GTK_ACTION (act));
+
+        for (; p; p = p->next) {
+            if (p->data) {
+                if (GTK_IS_MENU_ITEM (p->data)) {
+                    list = g_slist_append (list, p->data);
+                }
+            }
+        }
+
+        i ++;
+    }
+
+    return;
+}
+
+static void
+gcalc_window_have_icons_notify (GConfClient *client,
+                                guint cnxn_id,
+                                GConfEntry *entry,
+                                gpointer data)
+{
+    gcalc_window_set_unset_image (gconf_client_get_bool (client, MENU_KEY_DIR"/menus_have_icons", NULL));
+}
+  
+static void
+gcalc_window_set_unset_image (gboolean have_icons)
+{
+    GtkWidget *image;
+    GSList *temp = list;
+
+    while (temp) {
+        image = gtk_image_menu_item_get_image (GTK_IMAGE_MENU_ITEM (temp->data));
+
+        if (image && ! g_object_get_data (G_OBJECT (temp->data), "saved_image"))
+            g_object_set_data_full (G_OBJECT (temp->data), "saved_image", g_object_ref (image), g_object_unref);
+
+        if (!image)
+            image = g_object_get_data (G_OBJECT (temp->data), "saved_image");
+
+        if (!have_icons)
+            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (temp->data), NULL);
+        else
+            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (temp->data), image);
+
+        temp = temp->next;
+    }
+
+    return;
+}
+
+
+
 void
 create_kframe()
 {
@@ -1108,6 +1184,18 @@ create_kframe()
             break;
     }
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
+
+    gcalc_window_get_menu_items (X);
+
+    gconf_client_add_dir (X->client,
+                          MENU_KEY_DIR,
+                          GCONF_CLIENT_PRELOAD_NONE,
+                          NULL);
+    gconf_client_notify_add (X->client,
+                             MENU_KEY_DIR"/menus_have_icons",
+                             (GConfClientNotifyFunc) gcalc_window_have_icons_notify,
+                             NULL, NULL, NULL);
+    gcalc_window_set_unset_image (gconf_client_get_bool (X->client, MENU_KEY_DIR"/menus_have_icons", NULL));
 
     // Use loaded Arithmetic Precedence mode setting
     if (v->syntax == exprs) {

@@ -7,6 +7,22 @@
 gcalctool change history.
 =========================
 
+2004-06-18 Archana Shah <archana.shah@wipro.com>
+ 
+     * gcalctool/gtk.c: Following functions added.
+ 
+     * (gcalc_window_get_menu_items): Function to get the menu_items for actions
+       which are having icons associated with them.
+ 
+     * (gcalc_window_have_icons_notify): Function to be notified when key
+       '/desktop/gnome/interface/menus_have_icons' toggles.
+ 
+     * (gcalc_window_set_unset_image): Based on the value of above mentioned 
+       gconf key, icons will be set/unset.
+ 
+     * Fixes bug#144596 
+
+	
 2004-06-14 Sami Pietila <sampie@ariana-dsl.utu.fi>
     * Merge from NG-branch.
 	
