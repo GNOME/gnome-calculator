@@ -374,14 +374,14 @@ paren_disp(char c)
  */
 
     n = strlen(v->display);
-    if (IS_KEY(c, KEY_CLR)) {             /* Is it a Delete character? */
+    if (IS_KEY(c, KEY_CLR.value)) {         /* Is it a Delete character? */
         v->noparens = v->pending = v->opsptr = v->numsptr = 0;
         v->cur_op = '?';
         i = 0;
         mpcim(&i, v->MPdisp_val);
         show_display(v->MPdisp_val);
         return;
-    } else if (IS_KEY(c, KEY_BSP)) {      /* Is is a Back Space character? */
+    } else if (IS_KEY(c, KEY_BSP.value)) {  /* Is is a Back Space character? */
         if (!n) {
             return;
         }

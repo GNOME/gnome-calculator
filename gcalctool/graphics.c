@@ -32,7 +32,7 @@ void
 handle_menu_selection(struct button *n, int item)
 {
     if (item != -1) {
-        if (IS_KEY(v->pending, KEY_LPAR)) {   /* Are we inside parentheses? */
+        if (IS_KEY(v->pending, KEY_LPAR.value)) {   /* Inside parentheses? */
             v->current->value = n->value;
             do_paren();
             v->current->value = item;

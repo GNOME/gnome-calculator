@@ -77,85 +77,65 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
-#define KEY_7     b_buttons[0].value              /* 7 */
-#define KEY_8     b_buttons[1].value              /* 8 */
-#define KEY_9     b_buttons[2].value              /* 9 */
-#define KEY_DIV   b_buttons[3].value              /* / */
-                                                  /* Empty/hidden button. */
-#define KEY_BSP   b_buttons[5].value              /* Control-h */
-#define KEY_CE    b_buttons[6].value              /* Control-Backspace */
-#define KEY_CLR   b_buttons[7].value              /* del */
+#define KEY_DIV   b_buttons[3]              /* / */
+#define KEY_BSP   b_buttons[5]              /* Control-h */
+#define KEY_CLR   b_buttons[7]              /* del */
 
-#define KEY_4     b_buttons[8].value              /* 4 */
-#define KEY_5     b_buttons[9].value              /* 5 */
-#define KEY_6     b_buttons[10].value             /* 6 */
-#define KEY_MUL   b_buttons[11].value             /* * */
-#define KEY_ACC   b_buttons[12].value             /* A */
-#define KEY_CHS   b_buttons[13].value             /* C */
-#define KEY_INT   b_buttons[14].value             /* i */
-#define KEY_STO   b_buttons[15].value             /* S */
+#define KEY_MUL   b_buttons[11]             /* * */
+#define KEY_ACC   b_buttons[12]             /* A */
+#define KEY_CHS   b_buttons[13]             /* C */
+#define KEY_INT   b_buttons[14]             /* i */
+#define KEY_STO   b_buttons[15]             /* S */
 
-#define KEY_1     b_buttons[16].value             /* 1 */
-#define KEY_2     b_buttons[17].value             /* 2 */
-#define KEY_3     b_buttons[18].value             /* 3 */
-#define KEY_SUB   b_buttons[19].value             /* - */
-#define KEY_PER   b_buttons[20].value             /* % */
-#define KEY_SQRT  b_buttons[21].value             /* s */
-#define KEY_FRAC  b_buttons[22].value             /* : */
-#define KEY_RCL   b_buttons[23].value             /* R */
+#define KEY_SUB   b_buttons[19]             /* - */
+#define KEY_PER   b_buttons[20]             /* % */
+#define KEY_SQRT  b_buttons[21]             /* s */
+#define KEY_FRAC  b_buttons[22]             /* : */
+#define KEY_RCL   b_buttons[23]             /* R */
 
-#define KEY_0     b_buttons[24].value             /* 0 */
-#define KEY_PNT   b_buttons[25].value             /* . */
-#define KEY_EQ    b_buttons[26].value             /* = */
-#define KEY_ADD   b_buttons[27].value             /* + */
-#define KEY_REC   b_buttons[28].value             /* r */
-#define KEY_SQR   b_buttons[29].value             /* @ */
-#define KEY_ABS   b_buttons[30].value             /* u */
-#define KEY_EXCH  b_buttons[31].value             /* X */
+#define KEY_EQ    b_buttons[26]             /* = */
+#define KEY_ADD   b_buttons[27]             /* + */
+#define KEY_REC   b_buttons[28]             /* r */
+#define KEY_SQR   b_buttons[29]             /* @ */
+#define KEY_ABS   b_buttons[30]             /* u */
+#define KEY_EXCH  b_buttons[31]             /* X */
 
-#define KEY_CTRM  f_buttons[0].value              /* m */
-#define KEY_DDB   f_buttons[1].value              /* D */
-#define KEY_FV    f_buttons[2].value              /* v */
-#define KEY_PMT   f_buttons[3].value              /* P */
-#define KEY_PV    f_buttons[4].value              /* p */
-#define KEY_RATE  f_buttons[5].value              /* T */
-#define KEY_SLN   f_buttons[6].value              /* l */
-#define KEY_SYD   f_buttons[7].value              /* Y */
-#define KEY_TERM  f_buttons[8].value              /* T */
+#define KEY_CTRM  f_buttons[0]              /* m */
+#define KEY_DDB   f_buttons[1]              /* D */
+#define KEY_FV    f_buttons[2]              /* v */
+#define KEY_PMT   f_buttons[3]              /* P */
+#define KEY_PV    f_buttons[4]              /* p */
+#define KEY_RATE  f_buttons[5]              /* T */
+#define KEY_SLN   f_buttons[6]              /* l */
+#define KEY_SYD   f_buttons[7]              /* Y */
+#define KEY_TERM  f_buttons[8]              /* T */
 
-#define KEY_LSFT  s_buttons[0].value              /* < */
-#define KEY_RSFT  s_buttons[1].value              /* > */
-#define KEY_16    s_buttons[2].value              /* [ */
-#define KEY_32    s_buttons[3].value              /* ] */
-#define KEY_LPAR  s_buttons[5].value              /* ( */
-#define KEY_RPAR  s_buttons[6].value              /* ) */
+#define KEY_LSFT  s_buttons[0]              /* < */
+#define KEY_RSFT  s_buttons[1]              /* > */
+#define KEY_16    s_buttons[2]              /* [ */
+#define KEY_32    s_buttons[3]              /* ] */
+#define KEY_LPAR  s_buttons[5]              /* ( */
+#define KEY_RPAR  s_buttons[6]              /* ) */
 
-#define KEY_EXP   s_buttons[8].value              /* E */
-#define KEY_CON   s_buttons[9].value              /* # */
-#define KEY_FUN   s_buttons[10].value             /* F */
-#define KEY_ETOX  s_buttons[11].value             /* { */
-#define KEY_TTOX  s_buttons[12].value             /* } */
-#define KEY_YTOX  s_buttons[13].value             /* y */
-#define KEY_FACT  s_buttons[14].value             /* ! */
-#define KEY_RAND  s_buttons[15].value             /* ? */
+#define KEY_CON   s_buttons[8]              /* # */
+#define KEY_FUN   s_buttons[9]              /* F */
+#define KEY_ETOX  s_buttons[11]             /* { */
+#define KEY_TTOX  s_buttons[12]             /* } */
+#define KEY_YTOX  s_buttons[13]             /* y */
+#define KEY_FACT  s_buttons[14]             /* ! */
+#define KEY_RAND  s_buttons[15]             /* ? */
 
-#define KEY_D     s_buttons[16].value             /* d */
-#define KEY_E     s_buttons[17].value             /* e */
-#define KEY_F     s_buttons[18].value             /* f */
-#define KEY_COS   s_buttons[19].value             /* J */
-#define KEY_SIN   s_buttons[20].value             /* K */
-#define KEY_TAN   s_buttons[21].value             /* L */
-#define KEY_LN    s_buttons[22].value             /* N */
-#define KEY_LOG   s_buttons[23].value             /* G */
+#define KEY_COS   s_buttons[19]             /* J */
+#define KEY_SIN   s_buttons[20]             /* K */
+#define KEY_TAN   s_buttons[21]             /* L */
+#define KEY_LN    s_buttons[22]             /* N */
+#define KEY_LOG   s_buttons[23]             /* G */
 
-#define KEY_A     s_buttons[24].value             /* a */
-#define KEY_B     s_buttons[25].value             /* b */
-#define KEY_C     s_buttons[26].value             /* c */
-#define KEY_OR    s_buttons[27].value             /* | */
-#define KEY_AND   s_buttons[28].value             /* & */
-#define KEY_NOT   s_buttons[29].value             /* ~ */
-#define KEY_XOR   s_buttons[30].value             /* ^ */
-#define KEY_XNOR  s_buttons[31].value             /* n */
+#define KEY_OR    s_buttons[27]             /* | */
+#define KEY_AND   s_buttons[28]             /* & */
+#define KEY_NOT   s_buttons[29]             /* ~ */
+#define KEY_XOR   s_buttons[30]             /* ^ */
+#define KEY_XNOR  s_buttons[31]             /* n */
 
 #define BCOLS          8      /* No of columns of Basic Mode buttons. */
 #define BROWS          4      /* No of rows of Basic Mode buttons. */
@@ -338,6 +318,7 @@ int button_mods(int);
 int button_value(int);
 int char_val(char);
 int get_menu_entry(enum menu_type, int);
+int key_equal(struct button *, struct button);
 int main(int, char **);
 
 void beep();

@@ -1084,7 +1084,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Payment period\n"
       "\n"
-      "Keyboard equivalent:   T\n"
+      "Keyboard equivalent:   t\n"
       "\n"
       "Returns the number of payment periods in the term "
       "of an ordinary annuity necessary to accumulate a "
@@ -1349,25 +1349,6 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 
 /* Row 2. */
 {
-    N_("Exp"),
-    N_(
-      "Exp\n"
-      "\n"
-      "Enters an exponential number.\n"
-      "\n"
-      "Keyboard equivalent:   E\n"
-      "\n"
-      "Starts exponential input. Any numbers typed from "
-      "now on are the exponent. If you haven't entered a "
-      "mantissa, the calculator uses a mantissa of 1.0."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_E,
-    'E',
-    M_NONE,
-    do_expno
-},
-{
     N_("Con"),
     N_(
       "Con\n"
@@ -1441,6 +1422,25 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'F',
     M_FUN,
     do_pending
+},
+{
+    N_("Exp"),
+    N_(
+      "Exp\n"
+      "\n"
+      "Enters an exponential number.\n"
+	"\n"
+      "Keyboard equivalent:   E\n"
+	"\n"
+      "Starts exponential input. Any numbers typed from "
+	"now on are the exponent. If you haven't entered a "
+	"mantissa, the calculator uses a mantissa of 1.0."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_E,
+    'E',
+    M_NONE,
+    do_expno
 },
 {
     N_("e<sup>x</sup>"),
@@ -1887,7 +1887,7 @@ do_calctool(int argc, char **argv)
     read_cfdefs();             /* Read constant/function definitions. */
     make_frames();             /* Create gcalctool window frames. */
 
-    v->current    = copy_button_info(button_for_value(KEY_EQ));
+    v->current    = copy_button_info(button_for_value(KEY_EQ.value));
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */

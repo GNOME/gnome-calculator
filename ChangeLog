@@ -7,6 +7,20 @@
 gcalctool change history.
 =========================
 
+v4.2.54 - 20th February 2003.  (richb)
+
+* The financial Term tooltip example didn't work. The problem was that
+  the Rate function had a keyboard shortcut of "T" and Term had "t". The
+  check for which financial function was being processed in do_business()
+  in functions.c didn't take into consideration any key mods (such as
+  GDK_SHIFT_MASK). Add a key_equal function that now compares both the
+  mods and the value of keys.
+
+* Moved the Exp button to the right of the Con and Fun buttons for better
+  grouping.
+
+----
+
 v4.2.53 - 19th February 2003.  (richb)
 
 * Fixed bug 106501 (http://bugzilla.gnome.org/show_bug.cgi?id=106501)

@@ -83,7 +83,7 @@ do_business()     /* Perform special business mode calculations. */
     int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
     int i, len, val;
 
-    if (IS_KEY(v->current->value, KEY_CTRM)) {
+    if (key_equal(v->current, KEY_CTRM)) {
 
 /*  Cterm - MEM0 = int (periodic interest rate).
  *          MEM1 = fv  (future value).
@@ -99,7 +99,7 @@ do_business()     /* Perform special business mode calculations. */
         mpln(MP3, MP4);
         mpdiv(MP2, MP4, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_DDB)) {
+    } else if (key_equal(v->current, KEY_DDB)) {
 
 /*  Ddb   - MEM0 = cost    (amount paid for asset).
  *          MEM1 = salvage (value of asset at end of its life).
@@ -127,7 +127,7 @@ do_business()     /* Perform special business mode calculations. */
             mpadd(MP1, v->MPdisp_val, MPbv);
         }
 
-    } else if (IS_KEY(v->current->value, KEY_FV)) {
+    } else if (key_equal(v->current, KEY_FV)) {
 
 /*  Fv    - MEM0 = pmt (periodic payment).
  *          MEM1 = int (periodic interest rate).
@@ -144,7 +144,7 @@ do_business()     /* Perform special business mode calculations. */
         mpmul(v->MPmvals[0], MP3, MP4);
         mpdiv(MP4, v->MPmvals[1], v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_PMT)) {
+    } else if (key_equal(v->current, KEY_PMT)) {
 
 /*  Pmt   - MEM0 = prin (principal).
  *          MEM1 = int  (periodic interest rate).
@@ -165,7 +165,7 @@ do_business()     /* Perform special business mode calculations. */
         mpdiv(v->MPmvals[1], MP1, MP2);
         mpmul(v->MPmvals[0], MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_PV)) {
+    } else if (key_equal(v->current, KEY_PV)) {
 
 /*  Pv    - MEM0 = pmt (periodic payment).
  *          MEM1 = int (periodic interest rate).
@@ -186,7 +186,7 @@ do_business()     /* Perform special business mode calculations. */
         mpdiv(MP1, v->MPmvals[1], MP2);
         mpmul(v->MPmvals[0], MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_RATE)) {
+    } else if (key_equal(v->current, KEY_RATE)) {
 
 /*  Rate  - MEM0 = fv (future value).
  *          MEM1 = pv (present value).
@@ -203,7 +203,7 @@ do_business()     /* Perform special business mode calculations. */
         val = -1;
         mpaddi(MP4, &val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_SLN)) {
+    } else if (key_equal(v->current, KEY_SLN)) {
 
 /*  Sln   - MEM0 = cost    (cost of the asset).
  *          MEM1 = salvage (salvage value of the asset).
@@ -215,7 +215,7 @@ do_business()     /* Perform special business mode calculations. */
         mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
         mpdiv(MP1, v->MPmvals[2], v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_SYD)) {
+    } else if (key_equal(v->current, KEY_SYD)) {
 
 /*  Syd   - MEM0 = cost    (cost of the asset).
  *          MEM1 = salvage (salvage value of the asset).
@@ -238,7 +238,7 @@ do_business()     /* Perform special business mode calculations. */
         mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
         mpmul(MP1, MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_TERM)) {
+    } else if (key_equal(v->current, KEY_TERM)) {
 
 /*  Term  - MEM0 = pmt (periodic payment).
  *          MEM1 = fv  (future value).
@@ -268,8 +268,8 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     int MP1[MP_SIZE];
 
     if (!(v->opsptr && !v->show_paren)) {  /* Don't do if processing parens. */
-        if (IS_KEY(v->current->value, KEY_EQ) && 
-            IS_KEY(v->old_cal_value, KEY_EQ)) {
+        if (key_equal(v->current, KEY_EQ) && 
+            IS_KEY(v->old_cal_value, KEY_EQ.value)) {
             if (v->new_input) {
                 mpstr(v->MPlast_input, v->MPresult);
             } else {
@@ -279,75 +279,75 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     }
 
 
-    if (!IS_KEY(v->current->value, KEY_EQ) && 
-        IS_KEY(v->old_cal_value, KEY_EQ)) {
+    if (!key_equal(v->current, KEY_EQ) && 
+        IS_KEY(v->old_cal_value, KEY_EQ.value)) {
         v->cur_op = '?';
     }
 
-    if (IS_KEY(v->cur_op, KEY_COS) ||                           /* Cos */
-        IS_KEY(v->cur_op, KEY_SIN) ||                           /* Sin */
-        IS_KEY(v->cur_op, KEY_TAN) ||                           /* Tan */
+    if (IS_KEY(v->cur_op, KEY_COS.value) ||               /* Cos */
+        IS_KEY(v->cur_op, KEY_SIN.value) ||               /* Sin */
+        IS_KEY(v->cur_op, KEY_TAN.value) ||               /* Tan */
         v->cur_op == '?') {                               /* Undefined */
         mpstr(v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_ADD)) {              /* Addition */
+    } else if (IS_KEY(v->cur_op, KEY_ADD.value)) {        /* Addition */
         mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_SUB)) {              /* Subtraction. */
+    } else if (IS_KEY(v->cur_op, KEY_SUB.value)) {        /* Subtraction. */
         mpsub(v->MPresult, v->MPdisp_val, v->MPresult);
 
     } else if (v->cur_op == '*' ||
-               IS_KEY(v->cur_op, KEY_MUL)) {              /* Multiplication */
+               IS_KEY(v->cur_op, KEY_MUL.value)) {        /* Multiplication */
         mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_DIV)) {              /* Division. */
+    } else if (IS_KEY(v->cur_op, KEY_DIV.value)) {        /* Division. */
         mpdiv(v->MPresult, v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_PER)) {              /* % */
+    } else if (IS_KEY(v->cur_op, KEY_PER.value)) {        /* % */
         mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
         MPstr_to_num("0.01", DEC, MP1);
         mpmul(v->MPresult, MP1, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_YTOX)) {             /* y^x */
+    } else if (IS_KEY(v->cur_op, KEY_YTOX.value)) {       /* y^x */
         mppwr2(v->MPresult, v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_AND)) {              /* And */
+    } else if (IS_KEY(v->cur_op, KEY_AND.value)) {        /* And */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) & ibool(dval));
         mpcdm(&dres, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_OR)) {               /* Or */
+    } else if (IS_KEY(v->cur_op, KEY_OR.value)) {         /* Or */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) | ibool(dval));
         mpcdm(&dres, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_XOR)) {              /* Xor */
+    } else if (IS_KEY(v->cur_op, KEY_XOR.value)) {        /* Xor */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) ^ ibool(dval));
         mpcdm(&dres, v->MPresult); 
 
-    } else if (IS_KEY(v->cur_op, KEY_XNOR)) {             /* Xnor */
+    } else if (IS_KEY(v->cur_op, KEY_XNOR.value)) {       /* Xnor */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(~ibool(dres) ^ ibool(dval));
         mpcdm(&dres, v->MPresult); 
 
-    } else if (IS_KEY(v->cur_op, KEY_EQ)) {               /* Equals */
+    } else if (IS_KEY(v->cur_op, KEY_EQ.value)) {         /* Equals */
         /* do nothing */;
     }
 
     show_display(v->MPresult);
 
-    if (!(IS_KEY(v->current->value, KEY_EQ) && 
-          IS_KEY(v->old_cal_value, KEY_EQ))) {
+    if (!(key_equal(v->current, KEY_EQ) && 
+          IS_KEY(v->old_cal_value, KEY_EQ.value))) {
         mpstr(v->MPdisp_val, v->MPlast_input);
     }
 
     mpstr(v->MPresult, v->MPdisp_val);
-    if (!IS_KEY(v->current->value, KEY_EQ)) {
+    if (!key_equal(v->current, KEY_EQ)) {
         v->cur_op = v->current->value;
     }
     v->old_cal_value = v->current->value;
@@ -513,60 +513,60 @@ do_immed()
     double dval;
     int i, MP1[MP_SIZE], MP2[MP_SIZE];
 
-    if (IS_KEY(v->current->value, KEY_32)) {                  /* &32 */
+    if (key_equal(v->current, KEY_32)) {                  /* &32 */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(ibool(dval));
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_16)) {           /* &16 */
+    } else if (key_equal(v->current, KEY_16)) {           /* &16 */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(ibool(dval) & 0xffff);
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_ETOX)) {         /* e^x */
+    } else if (key_equal(v->current, KEY_ETOX)) {         /* e^x */
         mpstr(v->MPdisp_val, MP1);
         mpexp(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_TTOX)) {         /* 10^x */
+    } else if (key_equal(v->current, KEY_TTOX)) {         /* 10^x */
         i = 10;
         mpcim(&i, MP1);
         mppwr2(MP1, v->MPdisp_val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_LN)) {           /* Ln */
+    } else if (key_equal(v->current, KEY_LN)) {           /* Ln */
         mpstr(v->MPdisp_val, MP1);
         mpln(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_LOG)) {          /* Log */
+    } else if (key_equal(v->current, KEY_LOG)) {          /* Log */
         mplog10(v->MPdisp_val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_RAND)) {         /* Rand */
+    } else if (key_equal(v->current, KEY_RAND)) {         /* Rand */
         dval = drand48();
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_SQRT)) {         /* Sqrt */
+    } else if (key_equal(v->current, KEY_SQRT)) {         /* Sqrt */
         mpstr(v->MPdisp_val, MP1);
         mpsqrt(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_NOT)) {          /* Not */
+    } else if (key_equal(v->current, KEY_NOT)) {          /* Not */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(~ibool(dval));               
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_REC)) {          /* 1/x */
+    } else if (key_equal(v->current, KEY_REC)) {          /* 1/x */
         i = 1;
         mpcim(&i, MP1);
         mpstr(v->MPdisp_val, MP2);
         mpdiv(MP1, MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_FACT)) {         /* x! */
+    } else if (key_equal(v->current, KEY_FACT)) {         /* x! */
         do_factorial(v->MPdisp_val, MP1);
         mpstr(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_SQR)) {          /* x^2 */
+    } else if (key_equal(v->current, KEY_SQR)) {          /* x^2 */
         mpstr(v->MPdisp_val, MP1);
         mpmul(MP1, MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_CHS)) {          /* +/- */
+    } else if (key_equal(v->current, KEY_CHS)) {          /* +/- */
         if (v->key_exp) {
             if (*v->exp_posn == '+') {
                 *v->exp_posn = '-';
@@ -670,7 +670,7 @@ do_paren()
  *  Increment parentheses count, and add the open paren to the expression.
  */
 
-    if (IS_KEY(v->current->value, KEY_LPAR)) {
+    if (key_equal(v->current, KEY_LPAR)) {
         if (!v->noparens && v->cur_op != '?') {
             paren_disp(v->cur_op);
         }
@@ -683,7 +683,7 @@ do_paren()
  *  parenthesis expression.
  */
 
-    } else if (IS_KEY(v->current->value, KEY_RPAR)) {
+    } else if (key_equal(v->current, KEY_RPAR)) {
         if (!v->noparens) {
             return;
         }
@@ -716,46 +716,46 @@ do_pending()
  */
 
     if (!v->ismenu) {
-        if (IS_KEY(v->current->value, KEY_CON) ||         /* Con. */
-            IS_KEY(v->current->value, KEY_EXCH) ||        /* Exch. */
-            IS_KEY(v->current->value, KEY_FUN) ||         /* Fun. */
-            IS_KEY(v->current->value, KEY_STO) ||         /* Sto. */
-            IS_KEY(v->current->value, KEY_RCL) ||         /* Rcl. */
-            IS_KEY(v->current->value, KEY_ACC)) {         /* Acc. */
+        if (key_equal(v->current, KEY_CON) ||         /* Con. */
+            key_equal(v->current, KEY_EXCH) ||        /* Exch. */
+            key_equal(v->current, KEY_FUN) ||         /* Fun. */
+            key_equal(v->current, KEY_STO) ||         /* Sto. */
+            key_equal(v->current, KEY_RCL) ||         /* Rcl. */
+            key_equal(v->current, KEY_ACC)) {         /* Acc. */
             grey_buttons(DEC);
         }
-        if (IS_KEY(v->current->value, KEY_LSFT) ||
-            IS_KEY(v->current->value, KEY_RSFT)) {
+        if (key_equal(v->current, KEY_LSFT) ||
+            key_equal(v->current, KEY_RSFT)) {
             grey_buttons(HEX);
         }
     }
 
-    if (IS_KEY(v->pending, KEY_CON))  {                          /* Con */
+    if (IS_KEY(v->pending, KEY_CON.value))  {                    /* Con */
         do_constant();
-    } else if (IS_KEY(v->pending, KEY_EXCH)) {                   /* Exch */
+    } else if (IS_KEY(v->pending, KEY_EXCH.value)) {             /* Exch */
         do_exchange();
-    } else if (IS_KEY(v->pending, KEY_FUN))  {                   /* Fun */
+    } else if (IS_KEY(v->pending, KEY_FUN.value))  {             /* Fun */
         do_function();
-    } else if (IS_KEY(v->pending, KEY_STO) ||                    /* Sto */
-               IS_KEY(v->pending, KEY_RCL)) {                    /* Rcl */
+    } else if (IS_KEY(v->pending, KEY_STO.value) ||              /* Sto */
+               IS_KEY(v->pending, KEY_RCL.value)) {              /* Rcl */
         do_sto_rcl();
-        if (IS_KEY(v->pending_op, KEY_ADD) ||
-            IS_KEY(v->pending_op, KEY_SUB) ||
-            IS_KEY(v->pending_op, KEY_MUL) ||
-            IS_KEY(v->pending_op, KEY_DIV)) {
+        if (IS_KEY(v->pending_op, KEY_ADD.value) ||
+            IS_KEY(v->pending_op, KEY_SUB.value) ||
+            IS_KEY(v->pending_op, KEY_MUL.value) ||
+            IS_KEY(v->pending_op, KEY_DIV.value)) {
             return;
         }
-    } else if (IS_KEY(v->pending, KEY_LSFT) ||                   /* < */
-               IS_KEY(v->pending, KEY_RSFT)) {                   /* > */
+    } else if (IS_KEY(v->pending, KEY_LSFT.value) ||             /* < */
+               IS_KEY(v->pending, KEY_RSFT.value)) {             /* > */
         do_shift();
-    } else if (IS_KEY(v->pending, KEY_ACC)) {                    /* Acc */
+    } else if (IS_KEY(v->pending, KEY_ACC.value)) {              /* Acc */
         do_accuracy();
-    } else if (IS_KEY(v->pending, KEY_LPAR)) {                   /* ( */
+    } else if (IS_KEY(v->pending, KEY_LPAR.value)) {             /* ( */
         do_paren();
         return;
     } else if (!v->pending) {
         save_pending_values(v->current);
-        v->pending_op = KEY_EQ;
+        v->pending_op = KEY_EQ.value;
         return;
     }
 
@@ -790,15 +790,15 @@ do_portion()
 {
     int MP1[MP_SIZE];
 
-    if (IS_KEY(v->current->value, KEY_ABS)) {                       /* Abs */
+    if (key_equal(v->current, KEY_ABS)) {                       /* Abs */
         mpstr(v->MPdisp_val, MP1);
         mpabs(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_FRAC)) {               /* Frac */
+    } else if (key_equal(v->current, KEY_FRAC)) {               /* Frac */
         mpstr(v->MPdisp_val, MP1);
         mpcmf(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current->value, KEY_INT)) {                /* Int */
+    } else if (key_equal(v->current, KEY_INT)) {                /* Int */
         mpstr(v->MPdisp_val, MP1);
         mpcmim(MP1, v->MPdisp_val);
     }
@@ -814,9 +814,9 @@ do_shift()     /* Perform bitwise shift on display value. */
     enum menu_type mtype = M_LSHF;
     double dval;
 
-    if (IS_KEY(v->pending, KEY_LSFT)) {
+    if (IS_KEY(v->pending, KEY_LSFT.value)) {
         mtype = M_LSHF;
-    } else if (IS_KEY(v->pending, KEY_RSFT)) {
+    } else if (IS_KEY(v->pending, KEY_RSFT.value)) {
         mtype = M_RSHF;
     }
 
@@ -827,9 +827,9 @@ do_shift()     /* Perform bitwise shift on display value. */
             mpcmd(MPtemp, &dval);
             temp = ibool(dval);
 
-            if (IS_KEY(v->pending, KEY_LSFT)) {
+            if (IS_KEY(v->pending, KEY_LSFT.value)) {
                 temp = temp << shift;
-            } else if (IS_KEY(v->pending, KEY_RSFT)) {
+            } else if (IS_KEY(v->pending, KEY_RSFT.value)) {
                 temp = temp >> shift;
             }
 
@@ -849,29 +849,29 @@ do_sto_rcl()     /* Save/restore value to/from memory register. */
     int MPn[MP_SIZE], n;
     enum menu_type mtype = M_RCL;
 
-    if (IS_KEY(v->pending, KEY_RCL)) {
+    if (IS_KEY(v->pending, KEY_RCL.value)) {
         mtype = M_RCL;
-    } else if (IS_KEY(v->pending, KEY_STO)) {
+    } else if (IS_KEY(v->pending, KEY_STO.value)) {
         mtype = M_STO;
     }
 
-    if (IS_KEY(v->pending, KEY_RCL)) {                     /* Rcl */
+    if (IS_KEY(v->pending, KEY_RCL.value)) {                     /* Rcl */
         mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
         v->new_input = 0;
  
-    } else if (IS_KEY(v->pending, KEY_STO)) {              /* Sto */
+    } else if (IS_KEY(v->pending, KEY_STO.value)) {              /* Sto */
         n = char_val(v->current->value);
  
-        if (IS_KEY(v->pending_op, KEY_ADD)) {              /* + */
+        if (IS_KEY(v->pending_op, KEY_ADD.value)) {              /* + */
             mpstr(v->MPmvals[n], MPn);
             mpadd(MPn, v->MPdisp_val, v->MPmvals[n]);
-        } else if (IS_KEY(v->pending_op, KEY_SUB)) {       /* - */
+        } else if (IS_KEY(v->pending_op, KEY_SUB.value)) {       /* - */
             mpstr(v->MPmvals[n], MPn);
             mpsub(MPn, v->MPdisp_val, v->MPmvals[n]);
-        } else if (IS_KEY(v->pending_op, KEY_MUL)) {       /* x */
+        } else if (IS_KEY(v->pending_op, KEY_MUL.value)) {       /* x */
             mpstr(v->MPmvals[n], MPn);
             mpmul(MPn, v->MPdisp_val, v->MPmvals[n]);
-        } else if (IS_KEY(v->pending_op, KEY_DIV)) {       /* / */
+        } else if (IS_KEY(v->pending_op, KEY_DIV.value)) {       /* / */
             mpstr(v->MPmvals[n], MPn);
             mpdiv(MPn, v->MPdisp_val, v->MPmvals[n]);
         } else {
@@ -883,10 +883,10 @@ do_sto_rcl()     /* Save/restore value to/from memory register. */
         return;
     }   
 
-    if (IS_KEY(v->current->value, KEY_ADD) || 
-        IS_KEY(v->current->value, KEY_SUB) ||
-        IS_KEY(v->current->value, KEY_MUL) || 
-        IS_KEY(v->current->value, KEY_DIV)) {
+    if (key_equal(v->current, KEY_ADD) || 
+        key_equal(v->current, KEY_SUB) ||
+        key_equal(v->current, KEY_MUL) || 
+        key_equal(v->current, KEY_DIV)) {
         v->pending_op = v->current->value;
     }
 }
@@ -922,11 +922,11 @@ do_trig()         /* Perform all trigonometric functions. */
 
         if (v->current) {
             if (!v->hyperbolic) {
-                if (IS_KEY(v->current->value, KEY_COS)) {           /* Cos */
+                if (key_equal(v->current, KEY_COS)) {           /* Cos */
                     mpcos(MPtemp, v->MPtresults[(int) RAD]);
-                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Sin */
+                } else if (key_equal(v->current, KEY_SIN)) {    /* Sin */
                     mpsin(MPtemp, v->MPtresults[(int) RAD]);
-                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Tan */
+                } else if (key_equal(v->current, KEY_TAN)) {    /* Tan */
                     mpsin(MPtemp, MPsin);
                     mpcos(MPtemp, MPcos);
                     mpcmd(MPcos, &cval);
@@ -934,11 +934,11 @@ do_trig()         /* Perform all trigonometric functions. */
                     mpdiv(MPsin, MPcos, v->MPtresults[(int) RAD]);
                 }
             } else {
-                if (IS_KEY(v->current->value, KEY_COS)) {           /* Cosh */
+                if (key_equal(v->current, KEY_COS)) {           /* Cosh */
                     mpcosh(MPtemp, v->MPtresults[(int) RAD]);
-                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Sinh */
+                } else if (key_equal(v->current, KEY_SIN)) {    /* Sinh */
                     mpsinh(MPtemp, v->MPtresults[(int) RAD]);
-                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Tanh */
+                } else if (key_equal(v->current, KEY_TAN)) {    /* Tanh */
                     mptanh(MPtemp, v->MPtresults[(int) RAD]);
                 }
             }
@@ -949,19 +949,19 @@ do_trig()         /* Perform all trigonometric functions. */
     } else {
         if (v->current) {
             if (!v->hyperbolic) {
-                if (IS_KEY(v->current->value, KEY_COS)) {           /* Acos */
+                if (key_equal(v->current, KEY_COS)) {           /* Acos */
                     mpacos(v->MPdisp_val, v->MPdisp_val);
-                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Asin */
+                } else if (key_equal(v->current, KEY_SIN)) {    /* Asin */
                     mpasin(v->MPdisp_val, v->MPdisp_val);
-                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Atan */
+                } else if (key_equal(v->current, KEY_TAN)) {    /* Atan */
                     mpatan(v->MPdisp_val, v->MPdisp_val);
                 }
             } else {
-                if (IS_KEY(v->current->value, KEY_COS)) {           /* Acosh */
+                if (key_equal(v->current, KEY_COS)) {           /* Acosh */
                     mpacosh(v->MPdisp_val, v->MPdisp_val);
-                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Asinh */
+                } else if (key_equal(v->current, KEY_SIN)) {    /* Asinh */
                     mpasinh(v->MPdisp_val, v->MPdisp_val);
-                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Atanh */
+                } else if (key_equal(v->current, KEY_TAN)) {    /* Atanh */
                     mpatanh(v->MPdisp_val, v->MPdisp_val);
                 }
             }
@@ -997,9 +997,9 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 {
     v->ttype = t;
     put_resource(R_TRIG, Rtstr[(int) v->ttype]);
-    if (IS_KEY(v->cur_op, KEY_COS) ||
-        IS_KEY(v->cur_op, KEY_SIN) ||
-        IS_KEY(v->cur_op, KEY_TAN)) {
+    if (IS_KEY(v->cur_op, KEY_COS.value) ||
+        IS_KEY(v->cur_op, KEY_SIN.value) ||
+        IS_KEY(v->cur_op, KEY_TAN.value)) {
         mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
         show_display(v->MPtresults[(int) v->ttype]);
     }
@@ -1013,6 +1013,13 @@ ibool(double x)
     BOOLEAN p = (BOOLEAN) x;
 
     return(p);
+}
+
+
+int
+key_equal(struct button *x, struct button y)
+{
+    return(x->value == y.value && x->mods == y.mods);
 }
 
 
@@ -1191,7 +1198,7 @@ process_parens(char current)
  *  Increment parentheses count.
  */
 
-    if (IS_KEY(current, KEY_LPAR)) {
+    if (IS_KEY(current, KEY_LPAR.value)) {
         if (!v->noparens && v->cur_op != '?') {
             push_num(v->MPresult);
             push_op(-1);
@@ -1215,12 +1222,12 @@ process_parens(char current)
  *  clear the stack pointers and current operation, and show the display.
  */
 
-    } else if (IS_KEY(current, KEY_RPAR)) {
+    } else if (IS_KEY(current, KEY_RPAR.value)) {
         v->noparens--;
         push_op('=');
         last_lpar = v->opsptr - 1;
         last_num = v->numsptr;
-        while (!IS_KEY(v->opstack[last_lpar], KEY_LPAR)) {
+        while (!IS_KEY(v->opstack[last_lpar], KEY_LPAR.value)) {
             if (v->opstack[last_lpar] == -1) {
                 last_num--;
             }
@@ -1229,7 +1236,7 @@ process_parens(char current)
         process_stack(last_lpar + 1, last_num, v->opsptr - last_lpar - 1);
         if (!v->noparens) {
             if (v->opsptr > 1) {
-                push_op(KEY_EQ);
+                push_op(KEY_EQ.value);
                 process_stack(0, 0, v->opsptr);
             }
             v->pending = v->opsptr = v->numsptr = 0;
