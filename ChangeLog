@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2003-06-25  Rich Burridge  <rich.burridge@sun.com>
+
+    * Fixed bug 115950 (http://bugzilla.gnome.org/show_bug.cgi?id=115950)
+      The "*" key wasn't being recognized as a keyboard shortcut for
+      multiplication. The problem was that GDK_SHIFT_MASK needed to be
+      given in the equivalent entry for the mods array for this button
+      struct.
+
 2003-06-25  Breda McColgan  <breda.mccolgan@sun.com>
 
     * Updated the following files:

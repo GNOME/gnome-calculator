@@ -237,8 +237,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("*"),
     N_("Multiply"),
-    { 0,            0,               0,     0,      0 },
-    { GDK_asterisk, GDK_KP_Multiply, GDK_x, GDK_R6, 0 },
+    { GDK_SHIFT_MASK, 0,               0,     0,      0 },
+    { GDK_asterisk,   GDK_KP_Multiply, GDK_x, GDK_R6, 0 },
     '*',
     M_NONE,
     do_calc
