@@ -212,6 +212,7 @@ typedef unsigned long  BOOLEAN;
 struct button {
     char *str;               /* Button display string. */
     char *hstr;              /* Button help string. */
+    char *astr;              /* AccessibleName string (if tooltip not useful) */
     guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
     guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
     char func_char;          /* Unique function string character. */

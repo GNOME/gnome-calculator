@@ -1495,6 +1495,16 @@ make_hostname(Display *dpy)
 }
 
 
+static void
+set_accessible_name(GtkWidget *widget, struct button button)
+{
+    AtkObject *access_object = gtk_widget_get_accessible(widget);
+
+    atk_object_set_name(access_object,
+                        (button.astr == NULL) ? button.hstr : button.astr);
+}
+
+
 static GtkWidget *
 make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                struct button buttons[], int rows, int cols, char *tag)
@@ -1526,6 +1536,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             } else {
                 Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
+            set_accessible_name(Gtk_buttons[n], buttons[n]);
             g_signal_connect(G_OBJECT(Gtk_buttons[n]), "pressed",
                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
             SPRINTF(name, "%s_button%1d", tag, n);

@@ -76,6 +76,7 @@ copy_button_info(struct button *old)
 
     new->str = old->str;
     new->hstr = old->hstr;
+    new->astr = old->astr;
     new->mods[0] = old->mods[0];
     new->value[0] = old->value[0];
     new->func_char = old->func_char;

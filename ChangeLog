@@ -7,10 +7,47 @@
 gcalctool change history.
 =========================
 
+2003-07-25  Rich Burridge  <rich.burridge@sun.com>
+
+    * Fixed bug 118247 (http://bugzilla.gnome.org/show_bug.cgi?id=118247)
+      Each gcalctool button now has an AccessibleName. By default these
+      are taken from the buttons tooltip string. This is to:
+      - reduce the amount of extra memory that would be taken up otherwise.
+      - reduce the pain that all the translators would have to go through
+      - reduce the repetition because a lot of the actual tooltip strings 
+        are just fine.
+
+      The exceptions to this are for the following buttons, where the
+      tooltip string is too long:
+
+        Button |   
+        Label  |           		AccessibleName
+      ---------+----------------------------------------------
+        Bsp       "Backspace" 
+        CE        "Clear Entry"
+        Clr       "Clear"
+        Int       "Integer portion"
+        Sto       "Store to register"
+        Frac      "Fractional portion"
+        Rcl       "Retrieve from register"
+        Exch      "Exchange with register"
+        <         "Shift left"
+        >         "Shift right"
+        &16       "16 bit unsigned integer"
+        &32       "32 bit unsigned integer"
+        (         "Left bracket"
+        )         "Right bracket"
+        Acc       "Accuracy"
+        Exp       "Exponential"
+        e^x       "E to the x"
+        10^x      "Ten to the x"
+        y^x       "Y to the x"
+        x!        "Factorial"
+        Rand      "Random"
 
 2003-07-25  Telsa Gwynne  <hobbit@aloss.ukuu.org.uk>
 
-	* configure.in: Added "cy" (Welsh) to ALL_LINGUAS
+    * configure.in: Added "cy" (Welsh) to ALL_LINGUAS
 
 2003-07-25  Kang Jeong-Hee  <Keizi@mail.co.kr>
 
@@ -31,10 +68,10 @@ gcalctool change history.
 
 2003-07-13 John Fleck <jfleck@inkstain.net>
 
-	remove:
+    Remove:
 	* xmldocs.make
 	* omf.make
-	edit:
+    Edit:
 	* autogen.sh
 	use new docs build system. Latest gnome-common
 	now required to build from cvs
