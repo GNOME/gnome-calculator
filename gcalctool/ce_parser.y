@@ -95,9 +95,9 @@
 %start statement
 %left '+' '-'
 %left '*' '/'
+%right '^'
 %left NEG
 %left POS
-%right '^'
 %left HIGH
 
 %%
@@ -165,12 +165,13 @@ exp:
 term:
   number {cp($1, $$);}
 | rcl {cp($1, $$);}
-| term term {mpmul($1, $2, $$);}
 | term '%' term {calc_percent($1, $3, $$);}
 | term '/' term {mpdiv($1, $3, $$);}
 | term '*' term {mpmul($1, $3, $$);}
 | term '^' term {mppwr2($1, $3, $$);}
 | term '!' {do_factorial($1 ,$$);}
+| '-' term %prec NEG {mpneg($2, $$);}
+| '+' term %prec POS {cp($2, $$);}
 
 | func {cp($1, $$);}
 | reg {cp($1, $$);}
@@ -252,5 +253,6 @@ int ceerror(char *s)
 
 | '(' lexp ')' {cp($2, $$);}
 
+| term term {mpmul($1, $2, $$);}
 
 #endif
