@@ -331,14 +331,14 @@ static GtkRadioActionEntry acc_radio_entries[] = {
 static guint n_acc_radio_entries = G_N_ELEMENTS(acc_radio_entries);
 
 static GtkRadioActionEntry base_radio_entries[] = {
-  { "Basic",	  NULL, N_("_Basic mode"),	"<control>B",
-    N_("Basic mode"),	   M_BASIC },
-  { "Advanced",	  NULL, N_("_Advanced mode"),	"<control>A",
-    N_("Advanced mode"),   M_ADV },
-  { "Financial",  NULL, N_("_Financial mode"),	"<control>F",
-    N_("Financial mode"),  M_FIN },
-  { "Scientific", NULL, N_("_Scientific mode"), "<control>S",
-    N_("Scientific mode"), M_SCI },
+  { "Basic",      NULL, N_("_Basic"),      "<control>B", 
+    N_("Basic"),      M_BASIC },
+  { "Advanced",   NULL, N_("_Advanced"),   "<control>A",
+    N_("Advanced"),   M_ADV },
+  { "Financial",  NULL, N_("_Financial"),  "<control>F",
+    N_("Financial"),  M_FIN },
+  { "Scientific", NULL, N_("_Scientific"), "<control>S",
+    N_("Scientific"), M_SCI },
 };
 
 static guint n_base_radio_entries = G_N_ELEMENTS(base_radio_entries);
