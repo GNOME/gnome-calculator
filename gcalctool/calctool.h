@@ -26,12 +26,16 @@
 #include <gdk/gdktypes.h>
 #include <gdk/gdkkeysyms.h>
 
+#include "config.h"
+
 /* Standard gettext macros. */
 
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #undef _
-#define _(String) dgettext (PACKAGE, String)
+#define _(String) dgettext (GETTEXT_PACKAGE, String)
+#undef N_
+#define N_(String) (String)
 #else
 #define textdomain(String) (String)
 #define gettext(String) (String)
@@ -39,6 +43,7 @@
 #define dcgettext(Domain,Message,Type) (Message)
 #define bindtextdomain(Domain,Directory) (Domain)
 #define _(String) (String)
+#define N_(String) (String)
 #endif /*ENABLE_NLS*/
 
 #define cpNULL  (char *) NULL

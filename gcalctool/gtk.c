@@ -99,7 +99,7 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
 
 typedef struct Xobject *XVars;
 
-static char *display_help = _( \
+static char *display_help = N_( \
     "Calculator display\n" \
     "\n" \
     "The bottom of the display shows the current mode\n" \
@@ -182,121 +182,121 @@ static void setup_default_icon(void);
 static XVars X;
 
 static GtkItemFactoryEntry acc_menu[] = {
-    { "/0 radix places", NULL, menu_proc, '0', NULL, },
-    { "/1 radix places", NULL, menu_proc, '1', NULL, },
-    { "/2 radix places", NULL, menu_proc, '2', NULL, },
-    { "/3 radix places", NULL, menu_proc, '3', NULL, },
-    { "/4 radix places", NULL, menu_proc, '4', NULL, },
-    { "/5 radix places", NULL, menu_proc, '5', NULL, },
-    { "/6 radix places", NULL, menu_proc, '6', NULL, },
-    { "/7 radix places", NULL, menu_proc, '7', NULL, },
-    { "/8 radix places", NULL, menu_proc, '8', NULL, },
-    { "/9 radix places", NULL, menu_proc, '9', NULL, },
+    { N_("/0 radix places"), NULL, menu_proc, '0', NULL, },
+    { N_("/1 radix places"), NULL, menu_proc, '1', NULL, },
+    { N_("/2 radix places"), NULL, menu_proc, '2', NULL, },
+    { N_("/3 radix places"), NULL, menu_proc, '3', NULL, },
+    { N_("/4 radix places"), NULL, menu_proc, '4', NULL, },
+    { N_("/5 radix places"), NULL, menu_proc, '5', NULL, },
+    { N_("/6 radix places"), NULL, menu_proc, '6', NULL, },
+    { N_("/7 radix places"), NULL, menu_proc, '7', NULL, },
+    { N_("/8 radix places"), NULL, menu_proc, '8', NULL, },
+    { N_("/9 radix places"), NULL, menu_proc, '9', NULL, },
 };
 
 static GtkItemFactoryEntry base_menu[] = {
-    { "/Binary",      NULL, menu_proc, 'b', NULL },
-    { "/Octal",       NULL, menu_proc, 'o', NULL },
-    { "/Decimal",     NULL, menu_proc, 'd', NULL },
-    { "/Hexadecimal", NULL, menu_proc, 'h', NULL },
+    { N_("/Binary"),      NULL, menu_proc, 'b', NULL },
+    { N_("/Octal"),       NULL, menu_proc, 'o', NULL },
+    { N_("/Decimal"),     NULL, menu_proc, 'd', NULL },
+    { N_("/Hexadecimal"), NULL, menu_proc, 'h', NULL },
 };
 
 static GtkItemFactoryEntry exch_menu[] = {
-    { "/Register 0", NULL, menu_proc, '0', NULL },
-    { "/Register 1", NULL, menu_proc, '1', NULL },
-    { "/Register 2", NULL, menu_proc, '2', NULL },
-    { "/Register 3", NULL, menu_proc, '3', NULL },
-    { "/Register 4", NULL, menu_proc, '4', NULL },
-    { "/Register 5", NULL, menu_proc, '5', NULL },
-    { "/Register 6", NULL, menu_proc, '6', NULL },
-    { "/Register 7", NULL, menu_proc, '7', NULL },
-    { "/Register 8", NULL, menu_proc, '8', NULL },
-    { "/Register 9", NULL, menu_proc, '9', NULL },
+    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
+    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
+    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
+    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
+    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
+    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
+    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
+    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
+    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
+    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
 };
 
 static GtkItemFactoryEntry lshift_menu[] = {
-    { "/1 place",   NULL, menu_proc, '1', NULL },
-    { "/2 places",  NULL, menu_proc, '2', NULL },
-    { "/3 places",  NULL, menu_proc, '3', NULL },
-    { "/4 places",  NULL, menu_proc, '4', NULL },
-    { "/5 places",  NULL, menu_proc, '5', NULL },
-    { "/6 places",  NULL, menu_proc, '6', NULL },
-    { "/7 places",  NULL, menu_proc, '7', NULL },
-    { "/8 places",  NULL, menu_proc, '8', NULL },
-    { "/9 places",  NULL, menu_proc, '9', NULL },
-    { "/10 places", NULL, menu_proc, 'a', NULL },
-    { "/11 places", NULL, menu_proc, 'b', NULL },
-    { "/12 places", NULL, menu_proc, 'c', NULL },
-    { "/13 places", NULL, menu_proc, 'd', NULL },
-    { "/14 places", NULL, menu_proc, 'e', NULL },
-    { "/15 places", NULL, menu_proc, 'f', NULL },
+    { N_("/1 place"),   NULL, menu_proc, '1', NULL },
+    { N_("/2 places"),  NULL, menu_proc, '2', NULL },
+    { N_("/3 places"),  NULL, menu_proc, '3', NULL },
+    { N_("/4 places"),  NULL, menu_proc, '4', NULL },
+    { N_("/5 places"),  NULL, menu_proc, '5', NULL },
+    { N_("/6 places"),  NULL, menu_proc, '6', NULL },
+    { N_("/7 places"),  NULL, menu_proc, '7', NULL },
+    { N_("/8 places"),  NULL, menu_proc, '8', NULL },
+    { N_("/9 places"),  NULL, menu_proc, '9', NULL },
+    { N_("/10 places"), NULL, menu_proc, 'a', NULL },
+    { N_("/11 places"), NULL, menu_proc, 'b', NULL },
+    { N_("/12 places"), NULL, menu_proc, 'c', NULL },
+    { N_("/13 places"), NULL, menu_proc, 'd', NULL },
+    { N_("/14 places"), NULL, menu_proc, 'e', NULL },
+    { N_("/15 places"), NULL, menu_proc, 'f', NULL },
 };
 
 static GtkItemFactoryEntry mode_menu[] = {
-    { "/Basic",      NULL, menu_proc, 'b', NULL },
-    { "/Financial",  NULL, menu_proc, 'f', NULL },
-    { "/Logical",    NULL, menu_proc, 'l', NULL },
-    { "/Scientific", NULL, menu_proc, 's', NULL },
+    { N_("/Basic"),      NULL, menu_proc, 'b', NULL },
+    { N_("/Financial"),  NULL, menu_proc, 'f', NULL },
+    { N_("/Logical"),    NULL, menu_proc, 'l', NULL },
+    { N_("/Scientific"), NULL, menu_proc, 's', NULL },
 };
 
 static GtkItemFactoryEntry disp_menu[] = {
-    { "/Engineering", NULL, menu_proc, 'e', NULL },
-    { "/Fixed point", NULL, menu_proc, 'f', NULL },
-    { "/Scientific",  NULL, menu_proc, 's', NULL },
+    { N_("/Engineering"), NULL, menu_proc, 'e', NULL },
+    { N_("/Fixed point"), NULL, menu_proc, 'f', NULL },
+    { N_("/Scientific"),  NULL, menu_proc, 's', NULL },
 };
 
 static GtkItemFactoryEntry rcl_menu[] = {
-    { "/Register 0", NULL, menu_proc, '0', NULL },
-    { "/Register 1", NULL, menu_proc, '1', NULL },
-    { "/Register 2", NULL, menu_proc, '2', NULL },
-    { "/Register 3", NULL, menu_proc, '3', NULL },
-    { "/Register 4", NULL, menu_proc, '4', NULL },
-    { "/Register 5", NULL, menu_proc, '5', NULL },
-    { "/Register 6", NULL, menu_proc, '6', NULL },
-    { "/Register 7", NULL, menu_proc, '7', NULL },
-    { "/Register 8", NULL, menu_proc, '8', NULL },
-    { "/Register 9", NULL, menu_proc, '9', NULL },
+    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
+    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
+    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
+    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
+    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
+    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
+    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
+    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
+    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
+    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
 };
 
 static GtkItemFactoryEntry rshift_menu[] = {
-    { "/1 place",   NULL, menu_proc, '1', NULL },
-    { "/2 places",  NULL, menu_proc, '2', NULL },
-    { "/3 places",  NULL, menu_proc, '3', NULL },
-    { "/4 places",  NULL, menu_proc, '4', NULL },
-    { "/5 places",  NULL, menu_proc, '5', NULL },
-    { "/6 places",  NULL, menu_proc, '6', NULL },
-    { "/7 places",  NULL, menu_proc, '7', NULL },
-    { "/8 places",  NULL, menu_proc, '8', NULL },
-    { "/9 places",  NULL, menu_proc, '9', NULL },
-    { "/10 places", NULL, menu_proc, 'a', NULL },
-    { "/11 places", NULL, menu_proc, 'b', NULL },
-    { "/12 places", NULL, menu_proc, 'c', NULL },
-    { "/13 places", NULL, menu_proc, 'd', NULL },
-    { "/14 places", NULL, menu_proc, 'e', NULL },
-    { "/15 places", NULL, menu_proc, 'f', NULL },
+    { N_("/1 place"),   NULL, menu_proc, '1', NULL },
+    { N_("/2 places"),  NULL, menu_proc, '2', NULL },
+    { N_("/3 places"),  NULL, menu_proc, '3', NULL },
+    { N_("/4 places"),  NULL, menu_proc, '4', NULL },
+    { N_("/5 places"),  NULL, menu_proc, '5', NULL },
+    { N_("/6 places"),  NULL, menu_proc, '6', NULL },
+    { N_("/7 places"),  NULL, menu_proc, '7', NULL },
+    { N_("/8 places"),  NULL, menu_proc, '8', NULL },
+    { N_("/9 places"),  NULL, menu_proc, '9', NULL },
+    { N_("/10 places"), NULL, menu_proc, 'a', NULL },
+    { N_("/11 places"), NULL, menu_proc, 'b', NULL },
+    { N_("/12 places"), NULL, menu_proc, 'c', NULL },
+    { N_("/13 places"), NULL, menu_proc, 'd', NULL },
+    { N_("/14 places"), NULL, menu_proc, 'e', NULL },
+    { N_("/15 places"), NULL, menu_proc, 'f', NULL },
 };
 
 static GtkItemFactoryEntry sto_menu[] = {
-    { "/Register 0", NULL, menu_proc, '0', NULL },
-    { "/Register 1", NULL, menu_proc, '1', NULL },
-    { "/Register 2", NULL, menu_proc, '2', NULL },
-    { "/Register 3", NULL, menu_proc, '3', NULL },
-    { "/Register 4", NULL, menu_proc, '4', NULL },
-    { "/Register 5", NULL, menu_proc, '5', NULL },
-    { "/Register 6", NULL, menu_proc, '6', NULL },
-    { "/Register 7", NULL, menu_proc, '7', NULL },
-    { "/Register 8", NULL, menu_proc, '8', NULL },
-    { "/Register 9", NULL, menu_proc, '9', NULL },
+    { N_("/Register 0"), NULL, menu_proc, '0', NULL },
+    { N_("/Register 1"), NULL, menu_proc, '1', NULL },
+    { N_("/Register 2"), NULL, menu_proc, '2', NULL },
+    { N_("/Register 3"), NULL, menu_proc, '3', NULL },
+    { N_("/Register 4"), NULL, menu_proc, '4', NULL },
+    { N_("/Register 5"), NULL, menu_proc, '5', NULL },
+    { N_("/Register 6"), NULL, menu_proc, '6', NULL },
+    { N_("/Register 7"), NULL, menu_proc, '7', NULL },
+    { N_("/Register 8"), NULL, menu_proc, '8', NULL },
+    { N_("/Register 9"), NULL, menu_proc, '9', NULL },
 };
 
 static GtkItemFactoryEntry trig_menu[] = {
-    { "/Degrees",   NULL, menu_proc, 'd', NULL },
-    { "/Gradients", NULL, menu_proc, 'g', NULL },
-    { "/Radians",   NULL, menu_proc, 'r', NULL },
+    { N_("/Degrees"),   NULL, menu_proc, 'd', NULL },
+    { N_("/Gradients"), NULL, menu_proc, 'g', NULL },
+    { N_("/Radians"),   NULL, menu_proc, 'r', NULL },
 };
 
 static GtkItemFactoryEntry props_menu[] = {
-    { "/Properties...", NULL, props_menu_proc, '0', NULL },
+    { N_("/Properties..."), NULL, props_menu_proc, '0', NULL },
 };
 
 
@@ -728,7 +728,7 @@ create_kframe()
     X->labels[(int) DISPLAYITEM] = gtk_label_new("");
     SPRINTF(name, "label%1d", (int) DISPLAYITEM);
     gtk_widget_set_name(X->labels[(int) DISPLAYITEM], name);
-    gtk_tooltips_set_tip(X->tips, event_box, display_help, "");
+    gtk_tooltips_set_tip(X->tips, event_box, _(display_help), "");
 
     gtk_label_set_selectable(GTK_LABEL(X->labels[(int) DISPLAYITEM]), TRUE);
     set_label(DISPLAYITEM, "0.00");
@@ -1413,6 +1413,12 @@ make_reg(int n, char *str)
 }
 
 
+static char *
+item_factory_translate_func (const char *path, gpointer func_data)
+{
+    return _(path);
+}
+
 static GtkWidget *
 create_menu(enum menu_type mtype, int n)
 {
@@ -1490,6 +1496,9 @@ create_menu(enum menu_type mtype, int n)
     if (mtype != M_CON && mtype != M_FUN && X->menus[m] == NULL) {
         X->fact[m] = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", 
                                           X->menu_accel);
+	gtk_item_factory_set_translate_func (X->fact[m],
+					     item_factory_translate_func,
+					     NULL, NULL);
         gtk_item_factory_create_items(X->fact[m], count, menu, (gpointer) m);
         X->menus[m] = gtk_item_factory_get_widget(X->fact[m], "<popup>");
     }

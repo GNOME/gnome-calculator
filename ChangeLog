@@ -1,4 +1,3 @@
-
 /*  $Header$
  *
  *  Copyright (c) 1987-2002 Sun Microsystems, Inc.
@@ -8,6 +7,18 @@
 gcalctool change history.
 =========================
 
+v4.1.21 - 20th December 2002.
+
+  20th December 2002 - HideToshi Tajima <hidetoshi.tajima@Sun.COM>
+	
+  * gcalctool/gtk.c:
+	Added N_() macro on GtkItemFactoryMenu.
+	Set a translation function to all of the gtk item factory objects.
+  * gcalctool/calctool.h
+	Added "config.h" in calctool.h for ENABLE_NLS.
+	Changed PACKAGE to GETTEXT_PACKAGE in dgettext().
+	Added N_ macro both for #ifdef ENABLE_NLS and the else case.
+----
 v4.1.20 - 10th September 2002.
 
 * [Sun Bugtraq bug #1102883 against DeskSet calctool].
