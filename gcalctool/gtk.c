@@ -1303,13 +1303,12 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
             if (mode_buttons[n].mtype == M_NONE) {
                 X->mode_buttons[n] = 
                            gtk_button_new_with_label(mode_buttons[n].str);
-                g_signal_connect(G_OBJECT(X->mode_buttons[n]), "clicked",
-                                 G_CALLBACK(button_proc), 
-                                 (gpointer) (j*MCOLS + i));
             } else {
                 X->mode_buttons[n] = make_menu_button(mode_buttons[n].str,
                                                       j*MCOLS + i);
             }
+            g_signal_connect(G_OBJECT(X->mode_buttons[n]), "clicked",
+                             G_CALLBACK(button_proc), (gpointer) (j*MCOLS + i));
             SPRINTF(name, "mode_button%1d", n);
             gtk_widget_set_name(X->mode_buttons[n], name);
             g_object_set_data(G_OBJECT(X->mode_buttons[n]), "frame", X->mframe);
@@ -1348,11 +1347,11 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
             n = j*BCOLS + i;
             if (buttons[n].mtype == M_NONE) {
                 X->buttons[n] = gtk_button_new_with_label(buttons[n].str);
-                g_signal_connect(G_OBJECT(X->buttons[n]), "clicked",
-                                 G_CALLBACK(button_proc), (gpointer) n);
             } else {
                 X->buttons[n] = make_menu_button(buttons[n].str, n);
             }   
+            g_signal_connect(G_OBJECT(X->buttons[n]), "clicked",
+                             G_CALLBACK(button_proc), (gpointer) n);
             SPRINTF(name, "button%1d", n);
             gtk_widget_set_name(X->buttons[n], name);
             g_object_set_data(G_OBJECT(X->buttons[n]), "frame", X->kframe);
