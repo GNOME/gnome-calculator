@@ -547,7 +547,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
 
     if (id == GTK_RESPONSE_ACCEPT) {
         for (i = 0; i < MAXCONFUN; i++) {
-            item = (CF_Item) g_array_index(X->cf_entries, CF_Item, i);
+            item = g_array_index(X->cf_entries, CF_Item, i);
 
             if (X->CFtype == M_CON) {
                 MPstr_to_num(item.value, DEC, v->MPcon_vals[i]);
