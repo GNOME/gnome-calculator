@@ -1873,7 +1873,6 @@ set_display(char *str)
  * - make all menubar items insensitive except:
  *     Calculator->Quit
  *     Help->Contents
- *     Help->About
  *
  * When the error condition is cleared, resensitise everything, setting
  * the numeric base buttons correctly.
