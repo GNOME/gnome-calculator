@@ -586,7 +586,11 @@ refresh_display()
                 set_display(e, FALSE);
                 free(e);
             } else {
-                set_display("", FALSE);
+	      /* set_display("", FALSE); */
+	      int MP1[MP_SIZE];
+	      int val = 0;
+	      mpcim(&val, MP1);
+	      show_display(MP1);
             }
     
             break;
