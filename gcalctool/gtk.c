@@ -33,7 +33,6 @@
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <X11/Xresource.h>
-#include "display_frame.h"
 
 #define BUT_0     X->buttons[v->righthand ? 44 : 40]       /* 0 */
 #define BUT_1     X->buttons[v->righthand ? 36 : 32]       /* 1 */
@@ -99,6 +98,45 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
 } XObject;
 
 typedef struct Xobject *XVars;
+
+static char *display_help = _( \
+    "Calculator display\n" \
+    "\n" \
+    "The bottom of the display shows the current mode\n" \
+    "of operation for:\n" \
+    "\n" \
+    "Number base         BIN (binary),\n" \
+    "                    OCT (octal),\n" \
+    "                    DEC (decimal),\n" \
+    "                    or HEX (hexadecimal)\n" \
+    "\n" \
+    "Trigonometric base  DEG (degrees),\n" \
+    "                    GRAD (gradients),\n" \
+    "                    or RAD (radians)\n" \
+    "\n" \
+    "Display type        ENG (engineering),\n" \
+    "                    FIX (fixed point),\n" \
+    "                    or SCI (scientific)\n" \
+    "\n" \
+    "Mode                BASIC, FINANCIAL,\n" \
+    "                    LOGICAL, or SCIENTIFIC\n" \
+    "\n" \
+    "At certain times, the following may also be\n" \
+    "displayed:\n" \
+    "\n" \
+    "HYP     (hyperbolic mode is set)\n" \
+    "INV     (inverse mode is set)\n" \
+    "\n" \
+    "These pertain only to trigonometrical\n" \
+    "calculations.\n" \
+    "\n" \
+    "When the calculator needs to be \"cleared,\"\n" \
+    "\"CLR\" will be displayed.\n" \
+    "\n" \
+    "The display also shows the current mathematical\n" \
+    "operation and function when this operation\n" \
+    "requires other input to be complete."
+    );
 
 static GtkWidget *create_menu(enum menu_type, int);
 static GtkWidget *make_menu_button(gchar *, int);
@@ -290,9 +328,6 @@ main(int argc, char **argv)
     X->menu_accel = gtk_accel_group_new();
     X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
-
-/* XXX: remove when working well. */
-/*    XSynchronize(X->dpy, TRUE); */
 
     do_calctool(argc, argv);
        
@@ -666,11 +701,9 @@ create_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
 void
 create_kframe()
 {
-    char *tool_label = NULL, *hn;
-    char data[12], name[MAXLINE];
+    char *tool_label = NULL, *hn, name[MAXLINE];
     int i;
-    GtkStyle *style;
-    GtkWidget *frame, *hbox, *vbox;
+    GtkWidget *event_box, *hbox;
 
     if (v->titleline == NULL) {
         hn = make_hostname(X->dpy);
@@ -690,21 +723,17 @@ create_kframe()
     gtk_widget_ref(X->kvbox);
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
 
-    frame = calctool_display_frame_new();
-    gtk_widget_set_name(frame, "calcdisplay");
-
-    vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
-
+    event_box = gtk_event_box_new();
     X->labels[(int) DISPLAYITEM] = gtk_label_new("");
+    SPRINTF(name, "label%1d", (int) DISPLAYITEM);
+    gtk_widget_set_name(X->labels[(int) DISPLAYITEM], name);
+    gtk_tooltips_set_tip(X->tips, event_box, display_help, "");
 
     gtk_label_set_selectable(GTK_LABEL(X->labels[(int) DISPLAYITEM]), TRUE);
     set_label(DISPLAYITEM, "0.00");
     gtk_widget_ref(X->labels[(int) DISPLAYITEM]);
-
-    gtk_box_pack_start(GTK_BOX(X->kvbox), frame, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), X->labels[(int) DISPLAYITEM], 
-                       TRUE, TRUE, 0);
+    gtk_container_add(GTK_CONTAINER(event_box), X->labels[(int) DISPLAYITEM]);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, TRUE, TRUE, 0);
 
     gtk_misc_set_alignment(GTK_MISC(X->labels[(int) DISPLAYITEM]), 1.0, 0.5);
     gtk_misc_set_padding(GTK_MISC(X->labels[(int) DISPLAYITEM]), 5, 5);
@@ -724,6 +753,7 @@ create_kframe()
         X->labels[i] = gtk_label_new("");
         SPRINTF(name, "label%1d", i);
         gtk_widget_set_name(X->labels[i], name);
+
         switch (i) {
             case BASEITEM :
                 set_label(i, base_str[(int) v->base]);
@@ -748,14 +778,11 @@ create_kframe()
         }
 
         gtk_widget_ref(X->labels[i]);
-        SPRINTF(data, "label%1d", i);
         gtk_box_pack_start(GTK_BOX(hbox), X->labels[i], TRUE, TRUE, 0);
-        style = gtk_style_copy(gtk_widget_get_style(X->labels[i]));
-        gtk_widget_set_style(X->labels[i], style); 
         gtk_misc_set_padding(GTK_MISC(X->labels[i]), 5, 0);
     }
 
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), hbox, TRUE, TRUE, 0);
     make_ktable(X->kframe, X->kvbox);
     add_extra_kbd_accels();
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
@@ -801,7 +828,7 @@ create_rframe()
     char line[MAXLINE];     /* Current memory register line. */
     char name[MAXLINE];
     int i;
-    GtkWidget *frame, *vbox;
+    GtkWidget *vbox;
 
     X->rframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
@@ -809,13 +836,8 @@ create_rframe()
     set_title(FCP_REG, _("Memory Registers"));
     gtk_widget_set_size_request(X->rframe, 248, 179);
 
-    frame = calctool_display_frame_new();
-    gtk_widget_set_name(frame, "regdisplay");
-
     vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
-
-    gtk_container_add(GTK_CONTAINER(X->rframe), frame);
+    gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
@@ -829,7 +851,7 @@ create_rframe()
         gtk_widget_set_size_request(X->regs[i], -1, 80);
         gtk_box_pack_start(GTK_BOX(vbox), X->regs[i], TRUE, TRUE, 0);
     }
-    gtk_widget_show_all(frame);
+    gtk_widget_show_all(vbox);
 
     g_signal_connect(G_OBJECT(X->rframe), "delete_event",
                      G_CALLBACK(dismiss_rframe), NULL);

@@ -19,8 +19,6 @@ gcalctool_SOURCES = \
     functions.c \
     graphics.c \
     mp.c \
-    display_frame.c \
-	display_frame.h \
 	gtk.c \
     extern.h
 
