@@ -61,7 +61,6 @@
 
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
-    GtkAccelGroup *menu_accel;
     GdkAtom clipboard_atom;
     GConfClient *client;
     GtkItemFactory *mb_fact;           /* Menubar item factory. */
@@ -242,7 +241,6 @@ main(int argc, char **argv)
     gtk_rc_parse(name);
 
     X->kbd_accel = gtk_accel_group_new();
-    X->menu_accel = gtk_accel_group_new();
     X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
 
@@ -656,7 +654,7 @@ create_kframe()
 
     count = sizeof(main_menu) / sizeof(main_menu[0]);
     X->mb_fact = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", 
-                                      X->menu_accel);
+                                      X->kbd_accel);
     gtk_item_factory_create_items(X->mb_fact, count, main_menu, NULL);
     X->menubar = gtk_item_factory_get_widget(X->mb_fact, "<main>");
     gtk_widget_show(X->menubar);
@@ -705,15 +703,23 @@ create_mem_menu(enum menu_type mtype)
 {
     char mstr[MAXLINE];
     int i, m;
+    GtkWidget *accel_label;
     GtkWidget *menu_item;
 
     m = (int) mtype;
     X->menus[(int) mtype] = gtk_menu_new();
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(mstr, "%s %d:    %s",
-                _("Register"), i, make_number(v->MPmvals[i], FALSE));
-        menu_item = gtk_menu_item_new_with_label(mstr);
+        SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
+                _("R"), i, make_number(v->MPmvals[i], FALSE));
+        accel_label = gtk_accel_label_new("");
+        gtk_label_set_markup(GTK_LABEL(accel_label), mstr);
+        menu_item = gtk_menu_item_new();
+        gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
+        gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
+        gtk_accel_label_set_accel_widget(GTK_ACCEL_LABEL(accel_label), 
+                                         menu_item);
+        gtk_widget_show(accel_label);
         gtk_widget_show(menu_item);
         g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) m);
         gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
@@ -1249,7 +1255,7 @@ create_menu(enum menu_type mtype, struct button *n)
     if ((mtype == M_ACC || mtype == M_LSHF || mtype == M_RSHF) &&
         X->menus[m] == NULL) {
         X->fact[m] = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", 
-                                          X->menu_accel);
+                                          X->kbd_accel);
 	gtk_item_factory_set_translate_func (X->fact[m],
 					     item_factory_translate_func,
 					     NULL, NULL);

@@ -1805,6 +1805,7 @@ do_calctool(int argc, char **argv)
     read_rcfiles();            /* Read .calctoolrc's files. */
     make_frames();             /* Create gcalctool window frames. */
 
+    v->current    = copy_button_info(button_for_value(KEY_EQ));
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */

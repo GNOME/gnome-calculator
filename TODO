@@ -8,11 +8,8 @@
 Gcalctool TODO.
 ===============
 
-* Problems with keyboard accelerators:
-  - Navigation with the arrow keys is a little haywire.
-  - Control-q should terminate gcalctool. It's not being recignised.
-  - Control-C and Control-V should Copy/Paste the display value from/to the
-    clipboard. They are not being recognised.
+* Navigation with the arrow keys is a little haywire. This looks like it's
+  bug 60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
 
 * val_to_button() needs to be reworked to find Alt-<n> type buttons.
 
@@ -35,13 +32,6 @@ Gcalctool TODO.
 * Improve the colors in the gcalctoolrc file.
 
 * Track down and fixup any memory leaks.
-
-* From Calum Benson <calum.benson@sun.com>
-  For the Rcl, Sto and Exch menu items, consider losing the "Register" word
-  in every menu item and instead set the register number to bold.
-
-  [richb - 21st January 2003. I tried this. It doesn't look like the menu
-   items respect the Pango markup language. Need to check further].
 
 * Move .gcalctoolcf functionality into gconf resources.
 
