@@ -123,7 +123,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_4     b_buttons[8].value              /* 4 */
 #define KEY_5     b_buttons[9].value              /* 5 */
 #define KEY_6     b_buttons[10].value             /* 6 */
-#define KEY_MUL   b_buttons[11].value             /* x */
+#define KEY_MUL   b_buttons[11].value             /* * */
 #define KEY_ACC   b_buttons[12].value             /* A */
 #define KEY_CHS   b_buttons[13].value             /* C */
 #define KEY_INT   b_buttons[14].value             /* CTL('i') */

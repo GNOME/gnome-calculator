@@ -339,8 +339,8 @@ about_cb()
 static void
 add_extra_kbd_accels()
 {
-    create_kbd_accel(BUT_EQ,   0,              GDK_Return);
-    create_kbd_accel(BUT_MUL,  GDK_SHIFT_MASK, GDK_asterisk);
+    create_kbd_accel(BUT_EQ,   0, GDK_Return);
+    create_kbd_accel(BUT_MUL,  0, GDK_x);
 #ifdef FIXUP
     create_kbd_accel(BUT_QUIT, GDK_SHIFT_MASK, GDK_Q);
 #endif /*FIXUP*/

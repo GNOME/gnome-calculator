@@ -138,7 +138,13 @@ process_stack(int startop,      /* Initial position in the operand stack. */
                 v->current->value = v->cur_ch;
                 do_pending();
             } else {
-                process_item(button_for_value(v->cur_ch));
+                struct button *next = button_for_value(v->cur_ch);
+
+                if (next != NULL) {
+                    process_item(next);
+                } else {
+                    doerr(_("Error"));
+                }
             }
         }
     }

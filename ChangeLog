@@ -7,6 +7,20 @@
 gcalctool change history.
 =========================
 
+v4.2.15 - 13th January 2003.  (richb)
+
+* Entering "((2+3)*(2+3))" gave the wrong answer. Problems was in the
+  process_item() routine where extra values were reassigned. With gcalctool
+  v4.2.0 onwards, "*" is now the multiplication operand, and "x" needed to be
+  reassigned to that value (not the other way around). Had to adjust the
+  assignment of the "x" and "*" keyboard accelerators accordingly too.
+
+* Added in some bullet-proofing to the do_parens() routine to hopefully 
+  improve the handling of bogus keyboard entries when a string in 
+  parentheses is being entered.
+
+----
+
 v4.2.14 - 13th January 2003.  (richb)
 
 * Hooked up the Help->Contents menu item. Note that help support still has

@@ -454,8 +454,10 @@ process_item(struct button *button)
     }
     v->current = copy_button_info(button);
 
-    if (v->current->value == '*') {
-        v->current->value = 'x';      /* Reassign "extra" values. */
+/* Reassign "extra" values. */
+
+    if (v->current->value == 'x') {
+        v->current->value = '*';
     }
     if (v->current->value == GDK_Return) {
         v->current->value = '=';
