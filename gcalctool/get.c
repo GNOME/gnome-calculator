@@ -145,9 +145,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                 case 'v' : 
                     usage(v->progname);
                     break;
-
-                default :
-                    usage(v->progname);
             }
             INC;
         } else {
