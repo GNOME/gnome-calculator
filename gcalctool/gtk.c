@@ -62,7 +62,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GConfClient *client;
     GtkUIManager *ui;
     GtkActionGroup *actions;
-    GtkItemFactory *fact[MAXMENUS];
     GtkTooltips *tips;
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
@@ -135,7 +134,7 @@ static void about_cb(GtkWidget *, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
-static void astz_proc(gpointer, int, GtkWidget *);
+static void astz_proc(GtkAction *action);
 static void base_cb(GtkToggleButton *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
                         const gchar *, const gchar *, gpointer);
@@ -146,11 +145,11 @@ static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(GtkAction *action);
-static void mb_radio_proc(GtkAction *action, GtkRadioAction *current);
+static void mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current);
+static void mb_base_radio_proc(GtkAction *action, GtkRadioAction *current);
 static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
-static void menu_proc(gpointer, int, GtkWidget *);
-static void mstz_proc(gpointer, int, GtkWidget *);
+static void mstz_proc(GtkAction *action);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
@@ -162,7 +161,7 @@ static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
-static void ts_proc(gpointer, int, GtkWidget *);
+static void ts_proc(GtkAction *action);
 
 static XVars X;
 
@@ -188,28 +187,118 @@ static GtkActionEntry entries[] = {
       N_("Show help contents"), G_CALLBACK(mb_proc) },
     { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
       N_("Show about help"), G_CALLBACK(mb_proc) },
+
+    { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
+      N_("1 place"),   G_CALLBACK(mb_proc) },
+    { "LSPlaces2",  NULL, N_("2 places"),  NULL, 
+      N_("2 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces3",  NULL, N_("3 places"),  NULL, 
+      N_("3 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces4",  NULL, N_("4 places"),  NULL, 
+      N_("4 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces5",  NULL, N_("5 places"),  NULL, 
+      N_("5 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces6",  NULL, N_("6 places"),  NULL, 
+      N_("6 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces7",  NULL, N_("7 places"),  NULL, 
+      N_("7 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces8",  NULL, N_("8 places"),  NULL, 
+      N_("8 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces9",  NULL, N_("9 places"),  NULL, 
+      N_("9 places"),  G_CALLBACK(mb_proc) },
+    { "LSPlaces10", NULL, N_("10 places"), NULL, 
+      N_("10 places"), G_CALLBACK(mb_proc) },
+    { "LSPlaces11", NULL, N_("11 places"), NULL, 
+      N_("11 places"), G_CALLBACK(mb_proc) },
+    { "LSPlaces12", NULL, N_("12 places"), NULL, 
+      N_("12 places"), G_CALLBACK(mb_proc) },
+    { "LSPlaces13", NULL, N_("13 places"), NULL, 
+      N_("13 places"), G_CALLBACK(mb_proc) },
+    { "LSPlaces14", NULL, N_("14 places"), NULL, 
+      N_("14 places"), G_CALLBACK(mb_proc) },
+    { "LSPlaces15", NULL, N_("15 places"), NULL, 
+      N_("15 places"), G_CALLBACK(mb_proc) },
+
+    { "RSPlaces1",  NULL, N_("1 place"),   NULL, 
+      N_("1 place"),   G_CALLBACK(mb_proc) },
+    { "RSPlaces2",  NULL, N_("2 places"),  NULL, 
+      N_("2 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces3",  NULL, N_("3 places"),  NULL, 
+      N_("3 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces4",  NULL, N_("4 places"),  NULL, 
+      N_("4 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces5",  NULL, N_("5 places"),  NULL, 
+      N_("5 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces6",  NULL, N_("6 places"),  NULL, 
+      N_("6 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces7",  NULL, N_("7 places"),  NULL, 
+      N_("7 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces8",  NULL, N_("8 places"),  NULL, 
+      N_("8 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces9",  NULL, N_("9 places"),  NULL, 
+      N_("9 places"),  G_CALLBACK(mb_proc) },
+    { "RSPlaces10", NULL, N_("10 places"), NULL, 
+      N_("10 places"), G_CALLBACK(mb_proc) },
+    { "RSPlaces11", NULL, N_("11 places"), NULL, 
+      N_("11 places"), G_CALLBACK(mb_proc) },
+    { "RSPlaces12", NULL, N_("12 places"), NULL, 
+      N_("12 places"), G_CALLBACK(mb_proc) },
+    { "RSPlaces13", NULL, N_("13 places"), NULL, 
+      N_("13 places"), G_CALLBACK(mb_proc) },
+    { "RSPlaces14", NULL, N_("14 places"), NULL, 
+      N_("14 places"), G_CALLBACK(mb_proc) },
+    { "RSPlaces15", NULL, N_("15 places"), NULL, 
+      N_("15 places"), G_CALLBACK(mb_proc) },
 };
 static guint n_entries = G_N_ELEMENTS(entries);
 
 static GtkToggleActionEntry toggle_entries[] = {
     { "Trailing",  NULL, N_("Show _Trailing Zeroes"),     "<control>T",
-      N_("Show trailing zeroes"),     G_CALLBACK(mb_proc), FALSE },
+      N_("Show trailing zeroes"),     G_CALLBACK(mstz_proc), FALSE },
     { "Thousands", NULL, N_("Show T_housands Separator"), "<control>K",
-      N_("Show thousands separator"), G_CALLBACK(mb_proc), FALSE },
+      N_("Show thousands separator"), G_CALLBACK(ts_proc),   FALSE },
     { "Memory",    NULL, N_("_Memory Registers"),         "<control>M",
-      N_("Show memory registers"),    G_CALLBACK(mb_proc), FALSE },
+      N_("Show memory registers"),    G_CALLBACK(mb_proc),   FALSE },
+
+    { "Show",      NULL, N_("Show _Trailing Zeroes"),     "<control>T",
+      N_("Show trailing zeroes"),     G_CALLBACK(astz_proc), FALSE },
 };
 static guint n_toggle_entries = G_N_ELEMENTS(toggle_entries);
 
-static GtkRadioActionEntry radio_entries[] = {
-  { "Basic",      NULL, N_("_Basic mode"),      "<control>B",
-    N_("Basic mode"),      M_BASIC },
-  { "Financial",  NULL, N_("_Financial mode"),  "<control>F",
+static GtkRadioActionEntry acc_radio_entries[] = {
+  { "SP0", NULL, N_("0 significant places"), NULL, 
+    N_("0 significant places"), '0' },
+  { "SP1", NULL, N_("1 significant place"),  NULL, 
+    N_("1 significant place"),  '1' },
+  { "SP2", NULL, N_("2 significant places"), NULL,
+    N_("2 significant places"), '2' },
+  { "SP3", NULL, N_("3 significant places"), NULL,
+    N_("3 significant places"), '3' },
+  { "SP4", NULL, N_("4 significant places"), NULL,
+    N_("4 significant places"), '4' },
+  { "SP5", NULL, N_("5 significant places"), NULL,
+    N_("5 significant places"), '5' },
+  { "SP6", NULL, N_("6 significant places"), NULL,
+    N_("6 significant places"), '6' },
+  { "SP7", NULL, N_("7 significant places"), NULL,
+    N_("7 significant places"), '7' },
+  { "SP8", NULL, N_("8 significant places"), NULL,
+    N_("8 significant places"), '8' },
+  { "SP9", NULL, N_("9 significant places"), NULL,
+    N_("9 significant places"), '9' },
+};
+static guint n_acc_radio_entries = G_N_ELEMENTS(acc_radio_entries);
+
+static GtkRadioActionEntry base_radio_entries[] = {
+  { "Basic",	  NULL, N_("_Basic mode"),	"<control>B",
+    N_("Basic mode"),	   M_BASIC },
+  { "Financial",  NULL, N_("_Financial mode"),	"<control>F",
     N_("Financial mode"),  M_FIN },
   { "Scientific", NULL, N_("_Scientific mode"), "<control>S",
     N_("Scientific mode"), M_SCI },
 };
-static guint n_radio_entries = G_N_ELEMENTS(radio_entries);
+static guint n_base_radio_entries = G_N_ELEMENTS(base_radio_entries);
+
 
 static const gchar *ui_info =
 "<ui>"
@@ -238,59 +327,55 @@ static const gchar *ui_info =
 "      <menuitem action='About'/>"
 "    </menu>"
 "  </menubar>"
+"  <popup name='AccMenu'>"
+"    <menuitem action='SP0'/>"
+"    <menuitem action='SP1'/>"
+"    <menuitem action='SP2'/>"
+"    <menuitem action='SP3'/>"
+"    <menuitem action='SP4'/>"
+"    <menuitem action='SP5'/>"
+"    <menuitem action='SP6'/>"
+"    <menuitem action='SP7'/>"
+"    <menuitem action='SP8'/>"
+"    <menuitem action='SP9'/>"
+"    <separator/>"
+"    <menuitem action='Show'/>"
+"  </popup>"
+"  <popup name='LeftShiftMenu'>"
+"    <menuitem action='LSPlaces1'/>"
+"    <menuitem action='LSPlaces2'/>"
+"    <menuitem action='LSPlaces3'/>"
+"    <menuitem action='LSPlaces4'/>"
+"    <menuitem action='LSPlaces5'/>"
+"    <menuitem action='LSPlaces6'/>"
+"    <menuitem action='LSPlaces7'/>"
+"    <menuitem action='LSPlaces8'/>"
+"    <menuitem action='LSPlaces9'/>"
+"    <menuitem action='LSPlaces10'/>"
+"    <menuitem action='LSPlaces11'/>"
+"    <menuitem action='LSPlaces12'/>"
+"    <menuitem action='LSPlaces13'/>"
+"    <menuitem action='LSPlaces14'/>"
+"    <menuitem action='LSPlaces15'/>"
+"  </popup>"
+"  <popup name='RightShiftMenu'>"
+"    <menuitem action='RSPlaces1'/>"
+"    <menuitem action='RSPlaces2'/>"
+"    <menuitem action='RSPlaces3'/>"
+"    <menuitem action='RSPlaces4'/>"
+"    <menuitem action='RSPlaces5'/>"
+"    <menuitem action='RSPlaces6'/>"
+"    <menuitem action='RSPlaces7'/>"
+"    <menuitem action='RSPlaces8'/>"
+"    <menuitem action='RSPlaces9'/>"
+"    <menuitem action='RSPlaces10'/>"
+"    <menuitem action='RSPlaces11'/>"
+"    <menuitem action='RSPlaces12'/>"
+"    <menuitem action='RSPlaces13'/>"
+"    <menuitem action='RSPlaces14'/>"
+"    <menuitem action='RSPlaces15'/>"
+"  </popup>"
 "</ui>";
-
-
-static GtkItemFactoryEntry acc_menu[] = {
-    { N_("/0 significant places"), NULL, menu_proc, '0', "<RadioItem>" },
-    { N_("/1 significant place"), NULL, menu_proc, '1', "/0 significant places" },
-    { N_("/2 significant places"), NULL, menu_proc, '2', "/0 significant places" },
-    { N_("/3 significant places"), NULL, menu_proc, '3', "/0 significant places" },
-    { N_("/4 significant places"), NULL, menu_proc, '4', "/0 significant places" },
-    { N_("/5 significant places"), NULL, menu_proc, '5', "/0 significant places" },
-    { N_("/6 significant places"), NULL, menu_proc, '6', "/0 significant places" },
-    { N_("/7 significant places"), NULL, menu_proc, '7', "/0 significant places" },
-    { N_("/8 significant places"), NULL, menu_proc, '8', "/0 significant places" },
-    { N_("/9 significant places"), NULL, menu_proc, '9', "/0 significant places" },
-    { N_("/sep1"),           NULL, NULL,       0,  "<Separator>" },
-    { N_("/Show _Trailing Zeroes"),"<control>T", astz_proc, 'T', "<ToggleItem>" },
-};
-
-static GtkItemFactoryEntry lshift_menu[] = {
-    { N_("/1 place"),   NULL, menu_proc, '1', NULL },
-    { N_("/2 places"),  NULL, menu_proc, '2', NULL },
-    { N_("/3 places"),  NULL, menu_proc, '3', NULL },
-    { N_("/4 places"),  NULL, menu_proc, '4', NULL },
-    { N_("/5 places"),  NULL, menu_proc, '5', NULL },
-    { N_("/6 places"),  NULL, menu_proc, '6', NULL },
-    { N_("/7 places"),  NULL, menu_proc, '7', NULL },
-    { N_("/8 places"),  NULL, menu_proc, '8', NULL },
-    { N_("/9 places"),  NULL, menu_proc, '9', NULL },
-    { N_("/10 places"), NULL, menu_proc, 'A', NULL },
-    { N_("/11 places"), NULL, menu_proc, 'B', NULL },
-    { N_("/12 places"), NULL, menu_proc, 'C', NULL },
-    { N_("/13 places"), NULL, menu_proc, 'D', NULL },
-    { N_("/14 places"), NULL, menu_proc, 'E', NULL },
-    { N_("/15 places"), NULL, menu_proc, 'F', NULL },
-};
-
-static GtkItemFactoryEntry rshift_menu[] = {
-    { N_("/1 place"),   NULL, menu_proc, '1', NULL },
-    { N_("/2 places"),  NULL, menu_proc, '2', NULL },
-    { N_("/3 places"),  NULL, menu_proc, '3', NULL },
-    { N_("/4 places"),  NULL, menu_proc, '4', NULL },
-    { N_("/5 places"),  NULL, menu_proc, '5', NULL },
-    { N_("/6 places"),  NULL, menu_proc, '6', NULL },
-    { N_("/7 places"),  NULL, menu_proc, '7', NULL },
-    { N_("/8 places"),  NULL, menu_proc, '8', NULL },
-    { N_("/9 places"),  NULL, menu_proc, '9', NULL },
-    { N_("/10 places"), NULL, menu_proc, 'A', NULL },
-    { N_("/11 places"), NULL, menu_proc, 'B', NULL },
-    { N_("/12 places"), NULL, menu_proc, 'C', NULL },
-    { N_("/13 places"), NULL, menu_proc, 'D', NULL },
-    { N_("/14 places"), NULL, menu_proc, 'E', NULL },
-    { N_("/15 places"), NULL, menu_proc, 'F', NULL },
-};
 
 
 int
@@ -436,7 +521,7 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
 
 
 static void
-astz_proc(gpointer data, int choice, GtkWidget *item)
+astz_proc(GtkAction *action)
 {
     GtkWidget *mi;
 
@@ -840,13 +925,6 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
-static char *
-item_factory_translate_func(const char *path, gpointer func_data)
-{
-    return(_(path));
-}
-
-
 void
 create_kframe()
 {
@@ -885,8 +963,12 @@ create_kframe()
                                         toggle_entries, n_toggle_entries,
                                         NULL);
     gtk_action_group_add_radio_actions(X->actions,
-                                       radio_entries, n_radio_entries,
-                                       M_BASIC, G_CALLBACK(mb_radio_proc),
+                                       acc_radio_entries, n_acc_radio_entries,
+                                       -1, G_CALLBACK(mb_acc_radio_proc),
+                                       NULL);
+    gtk_action_group_add_radio_actions(X->actions,
+                                       base_radio_entries, n_base_radio_entries,
+                                       M_BASIC, G_CALLBACK(mb_base_radio_proc),
                                        NULL);
 
     X->ui = gtk_ui_manager_new();
@@ -1322,13 +1404,11 @@ get_menu_entry(enum menu_type mtype, int offset)
 {
     switch (mtype) {
         case M_ACC :
-            return(acc_menu[offset].callback_action);
+            return(offset + '0');
 
         case M_LSHF :
-            return(lshift_menu[offset].callback_action);
-
         case M_RSHF :
-            return(rshift_menu[offset].callback_action);
+            return((offset < 10) ? offset + '0' : offset + 'A' - 10);
 
         default:
             fprintf(stderr, "need to handle menu type %d\n", mtype);
@@ -1643,27 +1723,9 @@ static GtkWidget *
 create_menu(enum menu_type mtype, struct button *n)
 {
     int count = 0;
-    int m;
-    GtkItemFactoryEntry *menu = NULL;
-
-    m = (int) mtype;
+    int m     = (int) mtype;
 
     switch (mtype) {
-        case M_ACC :
-            count = sizeof(acc_menu) / sizeof(acc_menu[0]);
-            menu = &acc_menu[0];
-            break;
-
-        case M_LSHF :
-            count = sizeof(lshift_menu) / sizeof(lshift_menu[0]);
-            menu = &lshift_menu[0];
-            break;
- 
-        case M_RSHF :
-            count = sizeof(rshift_menu) / sizeof(rshift_menu[0]);
-            menu = &rshift_menu[0];
-            break;
- 
         case M_EXCH :
         case M_RCL :
         case M_STO :
@@ -1679,15 +1741,14 @@ create_menu(enum menu_type mtype, struct button *n)
             break;
     }
 
-    if ((mtype == M_ACC || mtype == M_LSHF || mtype == M_RSHF) &&
-        X->menus[m] == NULL) {
-        X->fact[m] = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", 
-                                          X->kbd_accel);
-	gtk_item_factory_set_translate_func(X->fact[m],
-					    item_factory_translate_func,
-					    NULL, NULL);
-        gtk_item_factory_create_items(X->fact[m], count, menu, (gpointer) m);
-        X->menus[m] = gtk_item_factory_get_widget(X->fact[m], "<popup>");
+    if (X->menus[m] == NULL) {
+        if (mtype == M_ACC) {
+            X->menus[m] = gtk_ui_manager_get_widget(X->ui, "/AccMenu");
+        } else if (mtype == M_LSHF) {
+            X->menus[m] = gtk_ui_manager_get_widget(X->ui, "/LeftShiftMenu");
+        } else if (mtype == M_RSHF) {
+            X->menus[m] = gtk_ui_manager_get_widget(X->ui, "/RightShiftMenu");
+        }
     }
 
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[m]), 1);
@@ -1792,6 +1853,7 @@ static void
 mb_proc(GtkAction *action)
 {
     const gchar *name = gtk_action_get_name(action);
+    int choice;
 
     if (!v->started) {
         return;
@@ -1810,14 +1872,26 @@ mb_proc(GtkAction *action)
         do_memory(v->rstate);
     } else if (EQUAL(name, "Contents")) {
         help_cb();
+    } else if (EQUAL(name, "LSPlaces")) {
+        SSCANF(name,"LSPlaces%d", &choice);
+        choice += (choice < 10) ? '0' : 'A' - 10;
+        handle_menu_selection(X->mrec[(int) M_LSHF], choice);
+    } else if (EQUAL(name, "RSPlaces")) {
+        SSCANF(name,"RSPlaces%d", &choice);
+        choice += (choice < 10) ? '0' : 'A' - 10;
+        handle_menu_selection(X->mrec[(int) M_RSHF], choice);
     }
 }
 
 
 static void 
-mb_radio_proc(GtkAction *action, GtkRadioAction *current)
+mb_base_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
     const gchar *name = gtk_action_get_name(GTK_ACTION(current));
+
+    if (!v->started) {
+	return;
+    }
 
     if (EQUAL(name, "Basic")) {
         reset_mode_values(BASIC);
@@ -1830,21 +1904,27 @@ mb_radio_proc(GtkAction *action, GtkRadioAction *current)
 
 
 static void
-menu_proc(gpointer data, int choice, GtkWidget *item)
+mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
-    handle_menu_selection(X->mrec[(int) data], choice);
+    const gchar *name = gtk_action_get_name(GTK_ACTION(current));
+
+    if (!v->started) {
+	return;
+    }
+
+    handle_menu_selection(X->mrec[(int) M_ACC], name[2]);
 }
 
 
 static void
-mstz_proc(gpointer data, int choice, GtkWidget *item)
+mstz_proc(GtkAction *action)
 {
     GtkWidget *mi;
 
     if (!v->doing_mi) {
 	v->show_zeroes = !v->show_zeroes;
         v->doing_mi = 1;
-        mi = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'T');
+        mi = gtk_ui_manager_get_widget(X->ui, "/AccMenu/Show");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
@@ -1955,10 +2035,11 @@ set_button_state(GtkWidget *w, int isSensitive)
 void
 set_accuracy_toggle(int val)
 {
+    char name[MAXLINE];
     GtkWidget *acc;
 
-    acc = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 
-                                                val + '0');
+    SPRINTF(name, "/AccMenu/SP%c", val + '0');
+    acc = gtk_ui_manager_get_widget(X->ui, name);
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
 }
 
@@ -2225,7 +2306,7 @@ set_show_zeroes_toggle(int state)
     GtkWidget *mi;
 
     v->doing_mi = 1;    /* Hack to get [a,m]stz_proc() to just return. */
-    mi = gtk_item_factory_get_widget_by_action(X->fact[(int) M_ACC], 'T');
+    mi = gtk_ui_manager_get_widget(X->ui, "/AccMenu/Show");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 
     mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
@@ -2270,7 +2351,7 @@ start_tool()
 
 
 static void
-ts_proc(gpointer data, int choice, GtkWidget *item)
+ts_proc(GtkAction *action)
 {
     if (!v->started) {
 	return;
