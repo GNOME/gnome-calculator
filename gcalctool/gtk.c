@@ -1728,15 +1728,15 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
 
         case M_BASIC:
             v->modetype = BASIC;
-            do_base(DEC);
-            do_numtype(FIX);
+            set_item(BASEITEM, DEC);
+            set_item(NUMITEM, FIX);
             do_mode();
             break;
 
         case M_FIN:
             v->modetype = FINANCIAL;
-            do_base(DEC);
-            do_numtype(FIX);
+            set_item(BASEITEM, DEC);
+            set_item(NUMITEM, FIX);
             do_mode();
             break;
 
