@@ -308,73 +308,29 @@ str_replace(char **str, char *from, char *to)
     }
 }
 
+
 void
-trig_filter(char **func) 
+trig_filter(char **func)
 {
+    char *tokens[4][3] = {
+        { "Sin",   "Cos",   "Tan"   },
+        { "Asin",  "Acos",  "Atan"  },
+        { "Sinh",  "Cosh",  "Tanh"  },
+        { "Asinh", "Acosh", "Atanh" },
+    };
+
+    int i;
+    int inverse    = (v->inverse)    ? 1 : 0;
+    int hyperbolic = (v->hyperbolic) ? 2 : 0;
+    int mode       = (inverse | hyperbolic);
+
     assert(func);
-
-    enum mode {
-        normal = 0,
-        inv = 1,
-        hyp = 2,
-        invhyp = 3,
-    } mode;
   
-    int inverse;
-    int hyperbolic;
-
-    inverse = (v->inverse) ? inv : 0;
-    hyperbolic = (v->hyperbolic) ? hyp : 0;
-
-    mode = (inverse | hyperbolic);
-
-    if (!strcmp(*func, "Sin")) {
-        switch (mode) {
-            case normal:
-                break;
-            case inv:
-                str_replace(func, "Sin", "Asin");
-                break;
-            case hyp:
-                str_replace(func, "Sin", "Sinh");
-                break;
-            case invhyp:
-                str_replace(func, "Sin", "Asinh");
-                break;
-            default:
-                assert(0);
-        }
-    } else if (!strcmp(*func, "Cos")) {
-        switch (mode) {
-            case normal:
-                break;
-            case inv:
-                str_replace(func, "Cos", "Acos");
-                break;
-            case hyp:
-                str_replace(func, "Cos", "Cosh");
-                break;
-            case invhyp:
-                str_replace(func, "Cos", "Acosh");
-                break;
-            default:
-                assert(0);
-        }
-    } else if (!strcmp(*func, "Tan")) {
-        switch (mode) {
-            case normal:
-                break;
-            case inv:
-                str_replace(func, "Tan", "Atan");
-                break;
-            case hyp:
-                str_replace(func, "Tan", "Tanh");
-                break;
-            case invhyp:
-                str_replace(func, "Tan", "Atanh");
-                break;
-            default:
-                assert(0);
+    if (mode) {
+        for (i = 0; i < 3; i++) {
+            if (!strcmp(*func, tokens[0][i])) {
+	        str_replace(func, tokens[0][i], tokens[mode][i]);
+            }
         }
     }
 }

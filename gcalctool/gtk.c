@@ -27,7 +27,6 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <netdb.h>
-#include <pwd.h>
 #include "calctool.h"
 #include "extern.h"
 #include "dsdefs.h"
@@ -432,8 +431,6 @@ static const gchar *ui_info =
 int
 main(int argc, char **argv)
 {
-    char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
-    struct passwd *entry;
     GnomeClient  *client;
 
     v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
@@ -453,13 +450,9 @@ main(int argc, char **argv)
     g_signal_connect(client, "die", G_CALLBACK(die_cb), NULL);
 
     gtk_rc_get_default_files();
-    if ((v->home = getenv("HOME")) == NULL) {
-        if ((entry = getpwuid(getuid())) != NULL) {
-            v->home = entry->pw_dir;
-        }
-    }
-    SPRINTF(name, "%s/%s", v->home, RCNAME);
-    gtk_rc_parse(name);
+
+    v->home = g_get_home_dir();
+    gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
 
     X->kbd_accel = gtk_accel_group_new();
     X->tips = gtk_tooltips_new();
