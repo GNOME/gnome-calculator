@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.3.44">
-  <!ENTITY manrevision "2.7">
-  <!ENTITY date "February 2004">
+  <!ENTITY appversion "4.4.16">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "August 2004">
   <!ENTITY app "<application>Calculator</application>">
   <!ENTITY appname "Calculator">
 ]>
@@ -73,8 +73,16 @@
 		<revnumber>Calculator Manual V&manrevision;</revnumber> 
 		<date>&date;</date> 
 		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
+	  		<para role="author">Sun Java Desktop System Documentation Team
 	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.7</revnumber> 
+		<date>February 2004</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team</para>
 	  		<para role="publisher">GNOME Documentation Project</para>
 		</revdescription> 
       </revision> 
@@ -164,8 +172,7 @@
 <!-- ============= Introduction ============================== -->
   <sect1 id="gcalctool-intro"> 
     <title>Introduction</title> 
-    <para>The &app; application is multifunctional and can handle different types of mathematical approaches. </para>
-    <para>The &app; application has the following modes:</para>
+    <para>The &app; application provides the following modes for different types of mathematical functionality: </para>
      <variablelist>
         <varlistentry>
         <term><link linkend="gcalctool-basic-mode">Basic Mode</link></term>
@@ -177,7 +184,7 @@
         </varlistentry>
         <varlistentry>
         <term><link linkend="gcalctool-scientific-mode">Scientific Mode</link></term>
-        <listitem><para>Provides many additional mathematical functions, including trigonometric and logical functions. You can also store your own functions and constants, when you use Scientific Mode.</para></listitem>
+        <listitem><para>Provides many additional mathematical functions, including trigonometric and bitwise functions. You can also store your own functions and constants, when you use Scientific Mode.</para></listitem>
         </varlistentry>
      </variablelist>
 
@@ -224,7 +231,7 @@
     <para>You can start &app; in the following ways:</para>
     <variablelist>
       <varlistentry>
-        <term><guimenu>Applications menu</guimenu></term>
+        <term>Menu</term>
         <listitem>
           <para>
             Choose <menuchoice><guimenu>Accessories</guimenu><guimenuitem>Calculator</guimenuitem></menuchoice>.
@@ -235,7 +242,7 @@
         <term>Command line</term>
         <listitem>
           <para>
-            Execute the following command: <command>gnome-calculator</command></para>
+            Execute the following command: <userinput>gnome-calculator</userinput></para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -452,9 +459,9 @@
                          <tbody> 
                            <row valign="top">
                              <entry><para>Backspace</para> </entry>
-                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para><guibutton>Bksp</guibutton></para></entry>
                              <entry><para>Removes the rightmost character from the display area.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bsp</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bksp</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
@@ -596,30 +603,30 @@
                            <row valign="top">
                              <entry><para>Store Value in Memory Register</para> </entry>
                              <entry><para><guibutton>Sto</guibutton></para></entry>
-                             <entry><para>Stores the current contents of the display area in the specified memory register. Click on <guibutton>Sto</guibutton>, then select a memory register from the popup menu.</para>
+                             <entry><para>Stores the current contents of the display area in the specified memory register. Click <guibutton>Sto</guibutton>, then select a memory register from the popup menu.</para>
                                    <para>To clear a memory register during a &app; session:</para>
                                      <orderedlist>
                                        <listitem><para>Click <guibutton>Clr</guibutton>.</para></listitem>
-                                       <listitem><para>Click on <guibutton>Sto</guibutton>.</para></listitem>
+                                       <listitem><para>Click <guibutton>Sto</guibutton>.</para></listitem>
                                        <listitem><para>Select the memory register from the popup menu.</para></listitem>
                                      </orderedlist>
 </entry>
                              <entry><para>22 <guibutton>Sto</guibutton> <guilabel>R2</guilabel></para></entry>
-                             <entry><para>The value 22 is stored in memory register <guilabel>R2</guilabel></para></entry>
+                             <entry><para>The value 22 is stored in memory register <guilabel>R2</guilabel>.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Retrieve Value From Memory Register</para> </entry>
                              <entry><para><guibutton>Rcl</guibutton></para></entry>
-                             <entry><para>Retrieves the contents of the specified memory register. Click on <guibutton>Rcl</guibutton>, then select the memory register from the popup menu.</para></entry>
+                             <entry><para>Retrieves the contents of the specified memory register. Click <guibutton>Rcl</guibutton>, then select the memory register from the popup menu.</para></entry>
                              <entry><para>0 <guibutton>Rcl</guibutton> <guilabel>R2</guilabel></para></entry>
-                             <entry><para>22 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
+                             <entry><para>The value in the display area is 22.</para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para>Exchange Memory Register Value and Displayed Value</para> </entry>
                              <entry><para><guibutton>Exch</guibutton></para></entry>
-                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click on <guibutton>Exch</guibutton>, then select the memory register from the popup menu.</para></entry>
+                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click <guibutton>Exch</guibutton>, then select the memory register from the popup menu.</para></entry>
                              <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
-                             <entry><para>Value in display area changes from 44 to 22, value in R2 changes from 22 to 44 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
+                             <entry><para>The value in the display area changes from 44 to 22, the value in R2 changes from 22 to 44.</para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -663,7 +670,7 @@
                                  <guimenuitem>Insert ASCII Value</guimenuitem>
                           </menuchoice>.</para>
                         <para>The Insert ASCII Value dialog is displayed.</para>
-                        <para>Enter the required character in the <guilabel>Character</guilabel> field, then click on <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
+                        <para>Enter the required character in the <guilabel>Character</guilabel> field, then click <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
           </sect3>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
@@ -752,7 +759,7 @@
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Ctrm</guibutton>.</para></entry>
+                             <para>Click <guibutton>Ctrm</guibutton>.</para></entry>
                              <entry><para>92.77</para>
                                     <para>The investment doubles in value in 92.77 months.</para></entry>
                            </row>
@@ -801,7 +808,7 @@ To calculate the depreciation expense for the fourth year, using the double-decl
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Ddb</guibutton>.</para></entry>
+                             <para>Click <guibutton>Ddb</guibutton>.</para></entry>
                              <entry><para>790.12</para>
                                     <para>The depreciation expense for the fourth year is $790.12.</para></entry>
                            </row>
@@ -842,7 +849,7 @@ To calculate the value of your account in 20 years, put the following values int
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Fv</guibutton>.</para></entry>
+                             <para>Click <guibutton>Fv</guibutton>.</para></entry>
                              <entry><para>183047.86</para>
                                     <para>At the end of 20 years, the value of the account is $183,047.86.</para></entry>
                            </row>
@@ -882,7 +889,7 @@ To calculate the value of your account in 20 years, put the following values int
                                 <listitem><para>360</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Pmt</guibutton>.</para></entry>
+                             <para>Click <guibutton>Pmt</guibutton>.</para></entry>
                              <entry><para>1143.15</para>
                                     <para>The monthly repayment is $1143.15.</para></entry>
                            </row>
@@ -924,7 +931,7 @@ To calculate which option is worth more in today's dollars, put the following va
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Pv</guibutton>.</para></entry>
+                             <para>Click <guibutton>Pv</guibutton>.</para></entry>
                              <entry><para>456427.28</para>
                                     <para>The $1,000,000 paid over 20 years is worth $456,427.28 in present dollars.</para></entry>
                            </row>
@@ -965,7 +972,7 @@ To calculate the periodic interest rate for this investment, put the following v
                                 <listitem><para>60</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Rate</guibutton>.</para></entry>
+                             <para>Click <guibutton>Rate</guibutton>.</para></entry>
                              <entry><para>.00678</para>
                                     <para>The monthly interest rate is 0.678%. The annual interest rate is 0.678% * 12 = 8.14%.
 </para></entry>
@@ -1007,7 +1014,7 @@ To calculate the yearly depreciation expense, using the straight-line method, pu
                                 <listitem><para>6</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Sln</guibutton>.</para></entry>
+                             <para>Click <guibutton>Sln</guibutton>.</para></entry>
                              <entry><para>1183.33</para>
                                     <para>The yearly depreciation expense is $1183.33.</para></entry>
                            </row>
@@ -1057,7 +1064,7 @@ To calculate the depreciation expense for the fourth year, using the sum-of-the-
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Syd</guibutton>.</para></entry>
+                             <para>Click <guibutton>Syd</guibutton>.</para></entry>
                              <entry><para>1014.29</para>
                                     <para>The depreciation expense for the fourth year is $1014.29.</para></entry>
                            </row>
@@ -1098,7 +1105,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
                                 <listitem><para>0.11</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click on <guibutton>Term</guibutton>.</para></entry>
+                             <para>Click <guibutton>Term</guibutton>.</para></entry>
                              <entry><para>20.32</para>
                                     <para>$120,000 accumulates in the account in 20.32 years.</para></entry>
                            </row>
@@ -1134,8 +1141,8 @@ To calculate the time period necessary to accumulate $120,000, put the following
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-set-acc"> 
       <title>To Set the Accuracy</title> 
-      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, then select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant places can be displayed. The default accuracy is 9 significant places. </para>
-      <para>By default, trailing zeroes are not shown. To display trailing zeroes, click on <guibutton>Acc</guibutton> then select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding check mark in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
+      <para>To set the accuracy of the display area and of the memory registers, click <guibutton>Acc</guibutton>, then select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant places can be displayed. The default accuracy is 9 significant places. </para>
+      <para>By default, trailing zeroes are not shown. To display trailing zeroes, click <guibutton>Acc</guibutton> then select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding check mark in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
       <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, when you use decimal base, with the <guimenuitem>Show Trailing Zeroes</guimenuitem> option selected, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation: </para>
                 <informaltable frame="all">
                   <tgroup cols="2" colsep="1" rowsep="1">
@@ -1486,10 +1493,10 @@ To calculate the time period necessary to accumulate $120,000, put the following
                 </note>
     </sect3>
     <sect3 id="gcalctool-logic-calc"> 
-      <title>To Perform Logical Calculations</title> 
-      <para>To perform logical calculations, use the buttons described in <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
+      <title>To Perform Bitwise Calculations</title> 
+      <para>To perform bitwise calculations, use the buttons described in <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
                 <table id="gcalctool-TBL-logic-calc" frame="all">
-                  <title>Performing Logical Calculations</title> 
+                  <title>Performing Bitwise Calculations</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1512,37 +1519,37 @@ To calculate the time period necessary to accumulate $120,000, put the following
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para>Logical OR</para> </entry>
+                             <entry><para>Bitwise OR</para> </entry>
                              <entry><para><guibutton>Or</guibutton></para></entry>
-                             <entry><para>Performs a logical OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
                              <entry><para>10011001</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Logical AND</para> </entry>
+                             <entry><para>Bitwise AND</para> </entry>
                              <entry><para><guibutton>And</guibutton></para></entry>
-                             <entry><para>Performs a logical AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
                              <entry><para>00110011</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Logical NOT</para> </entry>
+                             <entry><para>Bitwise NOT</para> </entry>
                              <entry><para><guibutton>Not</guibutton></para></entry>
-                             <entry><para>Performs a logical NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
+                             <entry><para>Performs a bitwise NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
                              <entry><para>1357ACE <guibutton>Not</guibutton> </para></entry>
                              <entry><para>FECA8531</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Logical XOR</para> </entry>
+                             <entry><para>Bitwise XOR</para> </entry>
                              <entry><para><guibutton>Xor</guibutton></para></entry>
-                             <entry><para>Performs a logical XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
                              <entry><para>110</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Logical XNOR</para> </entry>
+                             <entry><para>Bitwise XNOR</para> </entry>
                              <entry><para><guibutton>Xnor</guibutton></para></entry>
-                             <entry><para>Performs a logical XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
                              <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
                              <entry><para>11111111111111111111111111111001</para></entry>
                            </row>
@@ -1571,7 +1578,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
   </varlistentry>
 </variablelist>
 
-      <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent <replaceable>base</replaceable> to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button in the last action of the operation. The following example shows the value that is displayed when you use the decimal numeric base: </para>
+      <para>When you click <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent <replaceable>base</replaceable> to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button in the last action of the operation. The following example shows the value that is displayed when you use the decimal numeric base: </para>
 
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
@@ -1636,7 +1643,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
     </sect3>
     <sect3 id="gcalctool-edit-const"> 
       <title>To Use Constant Values</title> 
-      <para>Click on <guibutton>Con</guibutton> to display the list of defined constant values. All constant values are specified in decimal numeric base, even if the current numeric base is not decimal.</para>
+      <para>Click <guibutton>Con</guibutton> to display the list of defined constant values. All constant values are specified in decimal numeric base, even if the current numeric base is not decimal.</para>
       <para>Select a constant from the menu to enter its value in the display area. If you use the keyboard shortcut <keycap>#</keycap>, you can use the keyboard to specify the constant, as shown in the following example:</para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
@@ -1678,14 +1685,14 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>C0</para></entry>
                              <entry><para>0.621</para></entry>
-                             <entry><para>kilometers per hour or miles per hour</para>
+                             <entry><para>Kilometer-to-mile conversion factor</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from kilometers per hour to miles per hour. For example, 8 * <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 5.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from miles per hour to kilometers per hour. For example, 5 / <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 8.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C1</para></entry>
                              <entry><para>1.414213562</para></entry>
-                             <entry><para>square root of 2</para></entry>
+                             <entry><para>Square root of 2</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C2</para></entry>
@@ -1700,14 +1707,14 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>C4</para></entry>
                              <entry><para>0.3937007</para></entry>
-                             <entry><para>centimeters or inches</para>
+                             <entry><para>Centimeter-to-inch conversion factor</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from centimeters to inches. For example, 30 * <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 12.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from inches to centimeters. For example, 12 / <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 30.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C5</para></entry>
                              <entry><para>57.295779513</para></entry>
-                             <entry><para>degrees in a radian</para></entry>
+                             <entry><para>Degrees in a radian</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C6</para></entry>
@@ -1717,35 +1724,35 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>C7</para></entry>
                              <entry><para>0.0353</para></entry>
-                             <entry><para>grams or ounces</para>
+                             <entry><para>Gram-to-ounce conversion factor</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from grams to ounces. For example, 500 * <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 18.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from ounces to grams. For example, 18 / <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 500.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C8</para></entry>
                              <entry><para>0.948</para></entry>
-                             <entry><para>kilojoules or British thermal units</para>
+                             <entry><para>Kilojoule-to-British-thermal-unit conversion factor</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from kilojoules to British thermal units. For example, 10 * <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 9.48.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from British thermal units to kilojoules. For example, 9.48 / <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 10.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>C9</para></entry>
                              <entry><para>0.061</para></entry>
-                             <entry><para>cubic centimeters or cubic inches</para>
+                             <entry><para>Cubic-centimeter-to-cubic-inch conversion factor</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from cubic centimeters to cubic inches. For example, 100 * <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from cubic inches to cubic centimeters. For example, 6.10 / <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</informaltable>
-      <para>You cannot add new constants in this version of &app;. However, you can overwrite the default constants to store your own constants.</para>
+      <para>You can overwrite the default constants to store your own constants.</para>
       <para>To store a new constant or edit an existing constant, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Con</guibutton>, then select <guilabel>Edit Constants</guilabel> from the popup menu. </para>
+           <para>Click <guibutton>Con</guibutton>, then select <guilabel>Edit Constants</guilabel> from the popup menu. </para>
         </listitem>
         <listitem>
-      <para>In the <guilabel>Edit Constants</guilabel> window, select the constant that you want to overwrite or edit.</para>
+      <para>In the <guilabel>Edit Constants</guilabel> dialog, select the constant that you want to overwrite or edit.</para>
         </listitem>
         <listitem>
       <para>Click on the Value field, then enter the new value.</para>
@@ -1754,13 +1761,13 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>Click on the Description field, then enter the new description.</para>
         </listitem>
         <listitem>
-      <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Constants</guilabel> window.</para>
+      <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Constants</guilabel> dialog.</para>
         </listitem>
       </orderedlist>
     </sect3>
     <sect3 id="gcalctool-edit-func"> 
       <title>To Use Functions</title> 
-      <para>To show the available functions, click on <guibutton>Fun</guibutton>. A popup menu displays the list of defined functions. Select a function from the menu to run that function. If the function is not defined, the value zero is returned. </para>
+      <para>To show the available functions, click <guibutton>Fun</guibutton>. A popup menu displays the list of defined functions. Select a function from the menu to run that function. If the function is not defined, the value zero is returned. </para>
 <para>If you use the keyboard shortcut <keycap>F</keycap>, you can use the keyboard to specify the function, as shown in the following example:
 </para>
       <informaltable frame="all">
@@ -1788,10 +1795,10 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>To store a new function or edit an existing function, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Fun</guibutton>, then select <guilabel>Edit Functions</guilabel> from the popup menu.</para>
+           <para>Click <guibutton>Fun</guibutton>, then select <guilabel>Edit Functions</guilabel> from the popup menu.</para>
         </listitem>
         <listitem>
-      <para>In the <guilabel>Edit Functions</guilabel> window, select a blank entry, or the function that you want to overwrite.</para>
+      <para>In the <guilabel>Edit Functions</guilabel> dialog, select a blank entry, or the function that you want to overwrite.</para>
         </listitem>
         <listitem>
       <para>Click on the Value field, then enter the new value. Use the keyboard shortcuts to invoke a &app; button. For example, enter <literal>90K</literal> to calculate sine(90).</para>
@@ -1800,7 +1807,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>Click on the Description field, then enter the new description. For example, <literal>Sine 90</literal>.</para>
         </listitem>
         <listitem>
-      <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Functions</guilabel> window.</para>
+      <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Functions</guilabel> dialog.</para>
         </listitem>
       </orderedlist>
     </sect3>
@@ -1833,14 +1840,14 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>Left Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&lt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click on <guibutton>&lt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click <guibutton>&lt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
                              <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>1110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Right Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click on <guibutton>&gt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click <guibutton>&gt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
                              <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>101 </para></entry>
                            </row>
@@ -2170,7 +2177,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>n</keycap></para></entry>
                              <entry><para><guibutton>Xnor</guibutton></para></entry>
-                             <entry><para>Logical XNOR</para> </entry>
+                             <entry><para>Bitwise XNOR</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2272,7 +2279,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>&amp;</keycap></para></entry>
                              <entry><para><guibutton>And</guibutton></para></entry>
-                             <entry><para>Logical AND</para> </entry>
+                             <entry><para>Bitwise AND</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2362,7 +2369,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>^</keycap></para></entry>
                              <entry><para><guibutton>Xor</guibutton></para></entry>
-                             <entry><para>Logical XOR</para> </entry>
+                             <entry><para>Bitwise XOR</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2374,7 +2381,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>|</keycap></para></entry>
                              <entry><para><guibutton>Or</guibutton></para></entry>
-                             <entry><para>Logical OR</para> </entry>
+                             <entry><para>Bitwise OR</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2386,12 +2393,12 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>~</keycap></para></entry>
                              <entry><para><guibutton>Not</guibutton></para></entry>
-                             <entry><para>Logical NOT</para> </entry>
+                             <entry><para>Bitwise NOT</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>Backspace</keycap></para></entry>
-                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para><guibutton>Bksp</guibutton></para></entry>
                              <entry><para>Backspace</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
@@ -2547,7 +2554,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Value</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Display the <guilabel>Insert ASCII Value</guilabel> window</para> </entry>
+                             <entry><para>Display the <guilabel>Insert ASCII Value</guilabel> dialog</para> </entry>
                              <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
                            </row>
                            <row valign="top">
