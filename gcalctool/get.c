@@ -152,10 +152,10 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                     INC;
                     getparam(next, argv, _("-a needs accuracy value"));
                     v->accuracy = atoi(next);
-                    if (v->accuracy < 0 || v->accuracy > 9) {
+                    if (v->accuracy < 0 || v->accuracy > MAXACC) {
                         FPRINTF(stderr, 
-                                _("%s: accuracy should be in the range 0-9\n"),
-                                v->progname);
+                                _("%s: accuracy should be in the range 0-%d\n"),
+                                v->progname, MAXACC);
                         v->accuracy = 9;
                     }
                     break;
@@ -307,9 +307,9 @@ read_resources()    /* Read all possible resources from the database. */
 
     if (get_int_resource(R_ACCURACY, &intval)) {
         v->accuracy = intval;
-        if (v->accuracy < 0 || v->accuracy > 9) {
-            FPRINTF(stderr, _("%s: accuracy should be in the range 0-9\n"), 
-                    v->progname);
+        if (v->accuracy < 0 || v->accuracy > MAXACC) {
+            FPRINTF(stderr, _("%s: accuracy should be in the range 0-%d\n"), 
+                    v->progname, MAXACC);
             v->accuracy = 9;
         }
     }

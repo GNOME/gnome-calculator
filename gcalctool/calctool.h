@@ -175,7 +175,7 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #define MAXLINE        256        /* Length of character strings. */
 #endif /*MAXLINE*/
 
-#define MAXACC         10         /* Max. number of digits+1 after numeric point. */
+#define MAXACC         30    /* Max. number of digits after numeric point. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */

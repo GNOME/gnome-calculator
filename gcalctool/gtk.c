@@ -32,6 +32,7 @@
 #include "extern.h"
 #include "dsdefs.h"
 #include "functions.h"
+#include "lr_parser.h"
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -85,6 +86,8 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
+    GtkWidget *spframe;                /* Set Precision window. */
+    GtkWidget *spframe_val;
     GtkWidget *regs[MAXREGS];          /* Memory registers. */
     GtkWidget *menus[MAXMENUS];
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
@@ -134,6 +137,7 @@ static char *make_hostname(Display *);
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
+static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
 
 static void about_cb(GtkAction *action);
@@ -166,6 +170,9 @@ static void set_gcalctool_icon(void);
 static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
+static void show_precision_frame();
+static void spframe_cancel_cb(GtkButton *, gpointer);
+static void spframe_ok_cb(GtkButton *, gpointer);
 static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
 static void gcalc_window_have_icons_notify (GConfClient *client,
@@ -202,6 +209,9 @@ static GtkActionEntry entries[] = {
       N_("Show help contents"), G_CALLBACK(mb_proc) },
     { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
       N_("Show about help"), G_CALLBACK(about_cb) },
+
+    { "SetPrecision", NULL, N_("_Set Precision..."), "<control>S",
+      N_("Set Precision"), G_CALLBACK(mb_proc) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
       N_("1 place"),   G_CALLBACK(mb_proc) },
@@ -356,6 +366,7 @@ static const gchar *ui_info =
 "    <menuitem action='SP7'/>"
 "    <menuitem action='SP8'/>"
 "    <menuitem action='SP9'/>"
+"    <menuitem action='SetPrecision'/>"
 "    <separator/>"
 "    <menuitem action='Show'/>"
 "  </popup>"
@@ -929,6 +940,70 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
+static void
+create_spframe()     /* Create auxiliary frame for Set Precision value. */
+{
+    GtkWidget *vbox, *hbox, *button_hbox, *label;
+    GtkWidget *set_button, *cancel_button;
+
+    X->spframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(X->spframe), _("Set Precision"));
+    gtk_window_set_resizable(GTK_WINDOW(X->spframe), FALSE);
+    gtk_window_set_transient_for(GTK_WINDOW(X->spframe), GTK_WINDOW(X->kframe));
+    gtk_window_set_type_hint(GTK_WINDOW(X->spframe),
+                             GDK_WINDOW_TYPE_HINT_DIALOG);
+
+    vbox = gtk_vbox_new(FALSE, 12);
+    gtk_widget_show(vbox);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 12);
+    gtk_container_add(GTK_CONTAINER(X->spframe), vbox);
+
+    hbox = gtk_hbox_new(FALSE, 6);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+
+    label = gtk_label_new_with_mnemonic(_("Significant _Places:"));
+    gtk_widget_show(label);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+    gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+
+    X->spframe_val = gtk_spin_button_new_with_range(0, MAXACC, 1);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
+                              (double) v->accuracy);
+    gtk_widget_show(X->spframe_val);
+    gtk_box_pack_start(GTK_BOX(hbox), X->spframe_val, FALSE, FALSE, 0);
+
+    button_hbox = gtk_hbutton_box_new();
+    gtk_button_box_set_layout(GTK_BUTTON_BOX(button_hbox), GTK_BUTTONBOX_END);
+    gtk_widget_ref(button_hbox);
+    gtk_widget_show(button_hbox);
+    gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
+    gtk_box_set_spacing(GTK_BOX(button_hbox), 12);
+
+    cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
+    GTK_WIDGET_SET_FLAGS(cancel_button, GTK_CAN_DEFAULT);
+    gtk_widget_ref(cancel_button);
+    gtk_widget_show(cancel_button);
+    gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
+
+    set_button = gtk_button_new_with_mnemonic(_("_Set"));
+    g_return_if_fail(set_button != NULL);
+    gtk_widget_ref(set_button);
+    gtk_widget_show(set_button);
+    GTK_WIDGET_SET_FLAGS(set_button, GTK_CAN_DEFAULT);
+    gtk_window_set_default(GTK_WINDOW(X->spframe), set_button);
+    gtk_box_pack_start(GTK_BOX(button_hbox), set_button, FALSE, FALSE, 0);
+
+    g_signal_connect(G_OBJECT(X->spframe), "delete_event",
+                     G_CALLBACK(dismiss_spframe), NULL);
+    g_signal_connect(G_OBJECT(set_button), "clicked",
+                     G_CALLBACK(spframe_ok_cb), NULL);
+    g_signal_connect(G_OBJECT(cancel_button), "clicked",
+                     G_CALLBACK(spframe_cancel_cb), NULL);
+    gtk_widget_realize(X->spframe);
+}
+
+
 /* action_image[] is a list of Actions which are having icons associated.
  * We need to set/unset the icons if /desktop/gnome/interface/menus_have_icons
  * toggles.
@@ -1370,6 +1445,16 @@ dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 }
 
 
+/*ARGSUSED*/
+static gboolean
+dismiss_spframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+    X->spframe = NULL;
+
+    return(FALSE);
+}
+
+
 static void
 create_con_fun_menu(enum menu_type mtype)
 {
@@ -1541,27 +1626,27 @@ get_menu_entry(enum menu_type mtype, int offset)
 static void
 get_proc(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
+    switch (v->syntax) {
+        case npa: {
+            int ret = lr_parse((char *) text, v->MPdisp_val);
 
-  switch (v->syntax) {
-  case npa: {
-    int ret = lr_parse(text, v->MPdisp_val);
-    if (!ret) {
-      show_display(v->MPdisp_val);
-    } else {
-      update_statusbar(_("Clipboard contained malformed calculation"), "gtk-dialog-error");
+            if (!ret) {
+                show_display(v->MPdisp_val);
+            } else {
+                update_statusbar(_("Clipboard contained malformed calculation"),
+                                 "gtk-dialog-error");
+            }
+            break;
+        }
+    
+        case exprs:
+            exp_append((char *) text);
+            refresh_display();
+            break;
+    
+        default:
+            assert(0);
     }
-    break;
-  }
-    
-  case exprs:
-    exp_append(text);
-    refresh_display();
-    break;
-    
-  default:
-    assert(0);
-  }
-
 }
 
 
@@ -2053,8 +2138,9 @@ mb_proc(GtkAction *action)
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
     } else if (EQUAL(name, "ArithmeticPrecedence")) {
         toggle_expressions();
+    } else if (EQUAL(name, "SetPrecision")) {
+        show_precision_frame();
     }
-
 }
 
 
@@ -2202,6 +2288,47 @@ reset_mode_values(enum mode_type mtype)
 }
 
 
+/*ARGUSED*/
+static void
+spframe_adj_cb(GtkAdjustment *adj, gpointer data)
+{
+    g_print("New value is %f\n", adj->value);
+}
+
+
+/*ARGSUSED*/
+static void
+spframe_cancel_cb(GtkButton *button, gpointer user_data)
+{
+    gtk_widget_hide(X->spframe);
+}
+
+
+/*ARGSUSED*/
+static void
+spframe_ok_cb(GtkButton *button, gpointer user_data)
+{
+    char intval[5];
+    int val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
+
+    if (val < 0 || val > MAXACC) {
+        beep();
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
+                                  (double) v->accuracy);
+        return;
+    } else {
+        v->accuracy = val;
+    }
+
+    SPRINTF(intval, "%d", v->accuracy);
+    put_resource(R_ACCURACY, intval);
+    make_registers();
+    refresh_display();
+
+    gtk_widget_hide(X->spframe);
+}
+
+
 static void
 set_button_state(GtkWidget *w, int isSensitive)
 {
@@ -2215,9 +2342,11 @@ set_accuracy_toggle(int val)
     char name[MAXLINE];
     GtkWidget *acc;
 
-    SPRINTF(name, "/AccMenu/SP%c", val + '0');
-    acc = gtk_ui_manager_get_widget(X->ui, name);
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
+    if (val >= 0 && val <= 9) {
+        SPRINTF(name, "/AccMenu/SP%c", val + '0');
+        acc = gtk_ui_manager_get_widget(X->ui, name);
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
+    }
 }
 
 
@@ -2513,6 +2642,21 @@ show_ascii_frame()      /* Display ASCII popup. */
     }
     gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->aframe_ch));
     gtk_widget_show(X->aframe);
+}
+
+
+static void
+show_precision_frame()      /* Display Set Precision popup. */
+{
+    if (X->spframe == NULL) {
+        create_spframe();
+    }
+
+    if (gdk_window_is_visible(X->spframe->window) == FALSE) {
+        ds_position_popup(X->kframe, X->spframe, DS_POPUP_LEFT);
+    }
+    gtk_window_set_focus(GTK_WINDOW(X->spframe), GTK_WIDGET(X->spframe_val));
+    gtk_widget_show(X->spframe);
 }
 
 
