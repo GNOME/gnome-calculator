@@ -8,6 +8,29 @@
 gcalctool change history.
 =========================
 
+v4.1.8 - 21st June 2002.
+
+* Fixed up mistakes is the gcalctool tooltip help text (as it pertains now
+  to gcalctool rather than the old XView calctool).
+
+* Three keyboard accelerators weren't working when a "menu" button had been
+  pressed and the calculastor was in pending mode:
+
+  Base button - "o" (octal).
+  Mode button - "l" (logical).
+  Trig button - "g" (gradient).
+
+  Extra code has been added to the frame_interpose() routine in gtk.c to
+  cater for keypresses when in pending mode, that aren't automatically
+  handled by existing keyboard accelerators.
+
+* The + and . keys on the numeric keypad don't work.
+  (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
+  For now, explicit code has been added to frame_interpose() in gtk.c to
+  handle these two keys. This should be removed when 79184 is fixed.
+
+----
+
 v4.1.7 - 20th June 2002.
 
 * Added in help support. Hitting the Help key will toggle whether tooltip

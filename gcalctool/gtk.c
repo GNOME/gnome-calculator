@@ -1075,6 +1075,29 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
             v->event_type = TAKE_FROM_SHELF;
         } else if ((key == GDK_Help) && down) {
             v->event_type = SHOWHELP;
+
+/* Hack Alert.
+ * There is a bug: http://bugzilla.gnome.org/show_bug.cgi?id=79184
+ * that is preventing the numeric keypad "+" and "." keys from working
+ * correctly. Until this is fixed, an explicit test for those two keys
+ * has been added here.
+ */
+        } else if (type == GDK_KEY_PRESS && key == GDK_KP_Decimal) {
+            process_item(v->righthand ? 45 : 41);
+            return(TRUE);
+        } else if (type == GDK_KEY_PRESS && key == GDK_KP_Add) {
+            process_item(v->righthand ? 47 : 43);
+            return(TRUE);
+        } else if (v->pending) {
+            if (key == GDK_Shift_L || key == GDK_Shift_R) {
+                return(FALSE);
+            }
+            if (type == GDK_KEY_PRESS) {
+                v->current = key;
+                do_pending();
+            } else {
+                return(FALSE);
+            }
         } else {
 
 /* If it's a not a special keyboard down event, then let the keyboard
