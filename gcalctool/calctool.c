@@ -50,7 +50,9 @@ char *base_desc[]  = {         /* Tooltips for each base value. */
 
 char *calc_res[] = {
     "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
-    "showzeroes", "showthousands", "syntax"
+    "showzeroes", "showthousands", "syntax",
+    "register0", "register1", "register2", "register3", "register4",
+    "register5", "register6", "register7", "register8", "register9"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */

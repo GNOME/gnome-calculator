@@ -314,6 +314,12 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
+    for (i = 0; i < MAXREGS; i++) {
+        if (get_str_resource(R_REG0 + i, str)) {
+            MPstr_to_num(str, DEC, v->MPmvals[i]);
+        }
+    }
+
     if (get_str_resource(R_BASE, str)) {
         for (i = 0; i < MAXBASES; i++) {
             if (EQUAL(str, Rbstr[i])) {

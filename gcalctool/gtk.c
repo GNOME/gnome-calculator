@@ -451,7 +451,7 @@ main(int argc, char **argv)
 
     gtk_rc_get_default_files();
 
-    v->home = g_get_home_dir();
+    v->home = (char *) g_get_home_dir();
     gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
 
     X->kbd_accel = gtk_accel_group_new();
