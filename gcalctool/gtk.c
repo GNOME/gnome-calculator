@@ -808,7 +808,7 @@ create_kframe()
 
     X->kframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->kframe), "kframe", X->kframe);
-    gtk_window_set_resizable(GTK_WINDOW(X->kframe), TRUE);
+    gtk_window_set_resizable(GTK_WINDOW(X->kframe), FALSE);
 
     g_signal_connect(G_OBJECT(X->kframe), "delete_event",
                        G_CALLBACK(quit_cb), NULL);
