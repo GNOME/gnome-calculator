@@ -76,8 +76,8 @@ copy_button_info(struct button *old)
 
     new->str = old->str;
     new->hstr = old->hstr;
-    new->mods = old->mods;
-    new->value = old->value;
+    new->mods[0] = old->mods[0];
+    new->value[0] = old->value[0];
     new->func_char = old->func_char;
     new->mtype = old->mtype;
     new->func = old->func;
@@ -430,20 +430,20 @@ process_item(struct button *button)
 
 /* Reassign "extra" values. */
 
-    if (v->current->value == 'x') {
-        v->current->value = '*';
+    if (v->current->value[0] == 'x') {
+        v->current->value[0] = '*';
     }
-    if (v->current->value == GDK_Return) {
-        v->current->value = '=';
+    if (v->current->value[0] == GDK_Return) {
+        v->current->value[0] = '=';
     }
-    if (v->current->value == 'Q') {
-        v->current->value = 'q';
+    if (v->current->value[0] == 'Q') {
+        v->current->value[0] = 'q';
     }
 
     if (v->error) {
         isvalid = 0;                    /* Must press a valid key first. */
         for (i = 0; i < MAXVKEYS; i++) {
-            if (v->current->value == validkeys[i]) {
+            if (v->current->value[0] == validkeys[i]) {
                 isvalid = 1;
             }
         }

@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2003-04-24  Rich Burridge  <rich.burridge@sun.com>
+
+    * Fixed bug 111269 (http://bugzilla.gnome.org/show_bug.cgi?id=111269)
+      It was possible to type fast into gcalctool and digits would be
+      transposed. gcalctool now looks for key_press_event and 
+      key_release_event events on the main window rather than set keyboard 
+      accelerators to the "clicked" action of the various buttons.
+
 2003-04-15  Rich Burridge  <rich.burridge@sun.com>
 
     * Refixed bug 110416 (http://bugzilla.gnome.org/show_bug.cgi?id=110416)

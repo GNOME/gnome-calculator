@@ -74,37 +74,6 @@ enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
-/* Key types - real values assigned in init_key_types(). */
-enum key_type {
-    CALC_KEY_7,    CALC_KEY_8,    CALC_KEY_9,    CALC_KEY_DIV,
-                   CALC_KEY_BSP,  CALC_KEY_CE,   CALC_KEY_CLR,
-    CALC_KEY_4,    CALC_KEY_5,    CALC_KEY_6,    CALC_KEY_MUL,
-    CALC_KEY_ACC,  CALC_KEY_CHS,  CALC_KEY_INT,  CALC_KEY_STO,
-    CALC_KEY_1,    CALC_KEY_2,    CALC_KEY_3,    CALC_KEY_SUB,
-    CALC_KEY_PER,  CALC_KEY_SQRT, CALC_KEY_FRAC, CALC_KEY_RCL,
-    CALC_KEY_0,    CALC_KEY_PNT,  CALC_KEY_EQ,   CALC_KEY_ADD,
-    CALC_KEY_REC,  CALC_KEY_SQR,  CALC_KEY_ABS,  CALC_KEY_EXCH,
-
-    CALC_KEY_CTRM, CALC_KEY_DDB,  CALC_KEY_FV,   CALC_KEY_PMT,
-    CALC_KEY_PV,   CALC_KEY_RATE, CALC_KEY_SLN,  CALC_KEY_SYD,
-    CALC_KEY_TERM,
-
-    CALC_KEY_LSFT, CALC_KEY_RSFT, CALC_KEY_16,   CALC_KEY_32,
-                   CALC_KEY_LPAR, CALC_KEY_RPAR,
-    CALC_KEY_CON,  CALC_KEY_FUN,  CALC_KEY_EXP,  CALC_KEY_ETOX,
-    CALC_KEY_TTOX, CALC_KEY_YTOX, CALC_KEY_FACT, CALC_KEY_RAND,
-    CALC_KEY_D,    CALC_KEY_E,    CALC_KEY_F,    CALC_KEY_COS,
-    CALC_KEY_SIN,  CALC_KEY_TAN,  CALC_KEY_LN,   CALC_KEY_LOG,
-    CALC_KEY_A,    CALC_KEY_B,    CALC_KEY_C,    CALC_KEY_OR,
-    CALC_KEY_AND,  CALC_KEY_NOT,  CALC_KEY_XOR,  CALC_KEY_XNOR,
-    CALC_KEY_NONE
-};
-
-/* Modifier types - real values assigned in init_key_types(). */
-enum mod_type {
-    CALC_MOD_NONE, CALC_MOD_SHIFT_MASK, CALC_MOD_CONTROL_MASK
-};
-
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
 #define KEY_DIV   b_buttons[3]              /* / */
@@ -203,6 +172,7 @@ enum mod_type {
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
+#define MAXEXTRAS      6          /* Maximum number of keysym alternates. */
 #define MAXMODES       3          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
@@ -242,8 +212,8 @@ typedef unsigned long  BOOLEAN;
 struct button {
     char *str;               /* Button display string. */
     char *hstr;              /* Button help string. */
-    enum mod_type mods;      /* Keyboard modifiers (Shift, Ctrl, ...). */
-    enum key_type value;     /* Unique button keyboard equivalent. */
+    guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
+    guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
     char func_char;          /* Unique function string character. */
     enum menu_type mtype;    /* Type of popup menu (if any). */
     void (*func)();          /* Function to obey on button press. */
@@ -388,7 +358,6 @@ void handle_selection();
 void initialise();
 void init_args();
 void init_frame_sizes();
-void init_key_types();
 void init_vars();
 void init_Xvars(int *, char **);
 void key_init();

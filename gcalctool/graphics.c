@@ -32,10 +32,10 @@ void
 handle_menu_selection(struct button *n, int item)
 {
     if (item != -1) {
-        if (IS_KEY(v->pending, KEY_LPAR.value)) {   /* Inside parentheses? */
-            v->current->value = n->value;
+        if (IS_KEY(v->pending, KEY_LPAR.value[0])) {  /* Inside parentheses? */
+            v->current->value[0] = n->value[0];
             do_paren();
-            v->current->value = item;
+            v->current->value[0] = item;
             do_paren();
         } else {
             save_pending_values(n);
@@ -91,7 +91,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
         } else {
             v->cur_ch = v->opstack[startop + i];
             if (v->pending) {
-                v->current->value = v->cur_ch;
+                v->current->value[0] = v->cur_ch;
                 do_pending();
             } else {
                 struct button *next = button_for_fc(v->cur_ch);

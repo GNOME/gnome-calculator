@@ -53,35 +53,14 @@
 #define BUT_D     X->sci_buttons[16]       /* d */
 #define BUT_E     X->sci_buttons[17]       /* e */
 #define BUT_F     X->sci_buttons[18]       /* f */
+#ifdef WANTED
 #define BUT_ADD   X->bas_buttons[27]       /* + */
 #define BUT_SUB   X->bas_buttons[19]       /* - */
 #define BUT_MUL   X->bas_buttons[11]       /* x */
 #define BUT_DIV   X->bas_buttons[3]        /* / */
 #define BUT_PNT   X->bas_buttons[25]       /* . */
 #define BUT_EQ    X->bas_buttons[26]       /* = */
-
-static int keyvals[] = {
-  GDK_7, GDK_8, GDK_9, GDK_slash, GDK_BackSpace, GDK_BackSpace, GDK_Delete,
-  GDK_4, GDK_5, GDK_6, GDK_asterisk, GDK_A, GDK_C, GDK_i, GDK_S,
-  GDK_1, GDK_2, GDK_3, GDK_minus, GDK_percent, GDK_s, GDK_colon, GDK_R,
-  GDK_0, GDK_period, GDK_equal, GDK_plus, GDK_r, GDK_at, GDK_u, GDK_X,
-  GDK_m, GDK_D, GDK_v, GDK_P, GDK_p, GDK_T, GDK_l, GDK_Y,
-  GDK_T,
-
-  GDK_less, GDK_greater, 
-    GDK_bracketright, GDK_bracketleft, GDK_parenleft, GDK_parenright, 
-  GDK_numbersign, GDK_F, GDK_E, 
-    GDK_braceleft, GDK_braceright, GDK_y, GDK_exclam, GDK_question,
-  GDK_d, GDK_e, GDK_f, GDK_J, GDK_K, GDK_L, GDK_N, GDK_G,
-  GDK_a, GDK_b, GDK_c, 
-    GDK_bar, GDK_ampersand, GDK_asciitilde, GDK_caret, GDK_n,
-  0
-};
-
-static int modvals[] = {
-    0, GDK_SHIFT_MASK, GDK_CONTROL_MASK
-};
-
+#endif /*WANTED*/
 
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
@@ -108,6 +87,10 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *menus[MAXMENUS];
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
+    gboolean ctrl_l;             /* Set if the left Control key is pressed. */
+    gboolean ctrl_r;             /* Set if the right Control key is pressed. */
+    gboolean shft_l;             /* Set if the left Shift key is pressed. */
+    gboolean shft_r;             /* Set if the right Shift key is pressed. */
 
     GtkWidget *bas_buttons[BROWS * BCOLS];
     GtkWidget *fin_buttons[FROWS * FCOLS];
@@ -155,7 +138,8 @@ static char *make_hostname(Display *);
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
-static gboolean event_cb(GtkWidget *, GdkEvent *, gpointer);
+static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean kframe_key_release_cb(GtkWidget *, GdkEventKey *, gpointer);
 
 static void about_cb(GtkWidget *, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
@@ -166,7 +150,6 @@ static void base_cb(GtkToggleButton *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
-static void create_kbd_accel(GtkWidget *, guint, guint);
 static void create_menu_item_with_markup(char *, int, int);
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
@@ -358,41 +341,6 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
                                                 "text", colno,
                                                 NULL);
     }
-}
-
-
-static void
-add_extra_kbd_accels()
-{
-    create_kbd_accel(BUT_EQ,   0, GDK_Return);
-    create_kbd_accel(BUT_MUL,  0, GDK_x);
-
-    /* Numeric keypad. */
-    create_kbd_accel(BUT_EQ,  0, GDK_KP_Enter);
-    create_kbd_accel(BUT_PNT, 0, GDK_KP_Delete);
-    create_kbd_accel(BUT_4,   0, GDK_KP_Left);
-    create_kbd_accel(BUT_4,   0, GDK_KP_4);
-    create_kbd_accel(BUT_6,   0, GDK_KP_Right);
-    create_kbd_accel(BUT_6,   0, GDK_KP_6);
-    create_kbd_accel(BUT_8,   0, GDK_KP_Up);
-    create_kbd_accel(BUT_8,   0, GDK_KP_8);
-    create_kbd_accel(BUT_2,   0, GDK_KP_Down);
-    create_kbd_accel(BUT_2,   0, GDK_KP_2);
-    create_kbd_accel(BUT_1,   0, GDK_End);
-    create_kbd_accel(BUT_1,   0, GDK_KP_1);
-    create_kbd_accel(BUT_3,   0, GDK_Page_Down);
-    create_kbd_accel(BUT_3,   0, GDK_KP_3);
-    create_kbd_accel(BUT_7,   0, GDK_Home);
-    create_kbd_accel(BUT_7,   0, GDK_KP_7);
-    create_kbd_accel(BUT_9,   0, GDK_Page_Up);
-    create_kbd_accel(BUT_9,   0, GDK_KP_9);
-
-    create_kbd_accel(BUT_0,   0, GDK_KP_0);
-    create_kbd_accel(BUT_5,   0, GDK_KP_5);
-    create_kbd_accel(BUT_ADD, 0, GDK_KP_Add);
-    create_kbd_accel(BUT_SUB, 0, GDK_KP_Subtract);
-    create_kbd_accel(BUT_MUL, 0, GDK_KP_Multiply);
-    create_kbd_accel(BUT_DIV, 0, GDK_KP_Divide);
 }
 
 
@@ -810,13 +758,6 @@ create_cfframe(enum menu_type mtype)
 }
 
 
-static void
-create_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
-    gtk_widget_add_accelerator(button, "activate", X->kbd_accel,
-                               button_key, button_mods, GTK_ACCEL_VISIBLE);
-}
-
-
 static char *
 item_factory_translate_func (const char *path, gpointer func_data)
 {
@@ -909,12 +850,15 @@ create_kframe()
     X->bas_frame = make_but_frame(X->kvbox, X->bas_buttons,
                                   &b_buttons[0], BROWS, BCOLS, "bas");
     gtk_widget_show(X->bas_frame);
-    add_extra_kbd_accels();
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
 
-    g_signal_connect(G_OBJECT(X->kframe), "event", G_CALLBACK(event_cb), NULL);
+    g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
+                     G_CALLBACK(kframe_key_press_cb), NULL);
+    g_signal_connect(G_OBJECT(X->kframe), "key_release_event",
+                     G_CALLBACK(kframe_key_release_cb), NULL);
+
     switch (v->modetype) {
         case FINANCIAL:
             view_widget = gtk_item_factory_get_widget_by_action(X->mb_fact, M_FIN);
@@ -1180,108 +1124,6 @@ disp_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
-/* Handle keypresses on the numeric keypad for Linux boxen. Whereas assigning
- * additional keyboard character accelerators works for the Solaris platform
- * (see add_extra_kbd_accels above), it seems you have to add an "event" 
- * signal handler on the main gcalctool window, then search for various 
- * keyvals for Linux machines.
- */
-
-static gboolean
-event_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    GdkEventKey *kevent;
-
-    if (event->type != GDK_KEY_PRESS) {
-        return(FALSE);
-    }
-
-    kevent = (GdkEventKey *) event;
-
-    switch (kevent->keyval) {
-        case GDK_KP_0:
-        case GDK_KP_Insert:
-            gtk_widget_activate(GTK_WIDGET(BUT_0));
-            break;
-
-        case GDK_KP_1:
-        case GDK_KP_End:
-            gtk_widget_activate(GTK_WIDGET(BUT_1));
-            break;
-
-        case GDK_KP_2:
-        case GDK_KP_Down:
-            gtk_widget_activate(GTK_WIDGET(BUT_2));
-            break;
-
-        case GDK_KP_3:
-        case GDK_KP_Next:
-            gtk_widget_activate(GTK_WIDGET(BUT_3));
-            break;
-
-        case GDK_KP_4:
-        case GDK_KP_Left:
-            gtk_widget_activate(GTK_WIDGET(BUT_4));
-            break;
-
-        case GDK_KP_5:
-        case GDK_KP_Begin:
-            gtk_widget_activate(GTK_WIDGET(BUT_5));
-            break;
-
-        case GDK_KP_6:
-        case GDK_KP_Right:
-            gtk_widget_activate(GTK_WIDGET(BUT_6));
-            break;
-
-        case GDK_KP_7:
-        case GDK_KP_Home:
-            gtk_widget_activate(GTK_WIDGET(BUT_7));
-            break;
-
-        case GDK_KP_8:
-        case GDK_KP_Up:
-            gtk_widget_activate(GTK_WIDGET(BUT_8));
-            break;
-
-        case GDK_KP_9:
-        case GDK_KP_Prior:
-            gtk_widget_activate(GTK_WIDGET(BUT_9));
-            break;
-
-        case GDK_KP_Decimal:
-        case GDK_KP_Delete:
-            gtk_widget_activate(GTK_WIDGET(BUT_PNT));
-            break;
-
-        case GDK_KP_Add:
-            gtk_widget_activate(GTK_WIDGET(BUT_ADD));
-            break;
-
-        case GDK_KP_Subtract:
-            gtk_widget_activate(GTK_WIDGET(BUT_SUB));
-            break;
-
-        case GDK_KP_Multiply:
-            gtk_widget_activate(GTK_WIDGET(BUT_MUL));
-            break;
-
-        case GDK_KP_Divide:
-            gtk_widget_activate(GTK_WIDGET(BUT_DIV));
-            break;
-
-        case GDK_KP_Enter:
-            gtk_widget_activate(GTK_WIDGET(BUT_EQ));
-            break;
-
-        default:
-            return(FALSE);
-        }	
-
-    return(TRUE);
-}
-
-
 void
 get_constant(int n)
 {
@@ -1443,32 +1285,111 @@ hyp_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
-void
-init_key_types()
-{
-    int i;
-
-    for (i = 0; i < B_NOBUTTONS; i++) {
-        b_buttons[i].value = keyvals[b_buttons[i].value];
-        b_buttons[i].mods  = modvals[b_buttons[i].mods];
-    }
-
-    for (i = 0; i < F_NOBUTTONS; i++) {
-        f_buttons[i].value = keyvals[f_buttons[i].value];
-        f_buttons[i].mods  = modvals[f_buttons[i].mods];
-    }
-
-    for (i = 0; i < S_NOBUTTONS; i++) {
-        s_buttons[i].value = keyvals[s_buttons[i].value];
-        s_buttons[i].mods  = modvals[s_buttons[i].mods];
-    }
-}
-
-
 static void
 inv_cb(GtkToggleButton *button, gpointer user_data)
 {
     v->inverse = !v->inverse;
+}
+
+
+static int
+check_vals(int n, int keyval, 
+           struct button buttons[], GtkWidget *gtk_buttons[])
+{
+    int i, j;
+
+    for (i = 0; i < n; i++) {
+        j = 0;
+        while (buttons[i].value[j] != 0) {
+            if (buttons[i].value[j] == keyval) {
+                if ((buttons[i].mods[j] == 0) &&
+                    ((X->ctrl_l | X->ctrl_r | X->shft_l | X->shft_r) == 0)) {
+                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
+                    return(TRUE);
+                } else if ((buttons[i].mods[j] == GDK_SHIFT_MASK) &&
+                           ((X->shft_l | X->shft_r) == 1)) {
+                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
+                    return(TRUE);
+                } else if ((buttons[i].mods[j] == GDK_CONTROL_MASK) &&
+                           ((X->ctrl_l | X->ctrl_r) == 1)) {
+                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
+                    return(TRUE);
+                }
+            }
+            j++;
+        }
+    }
+
+    return(FALSE);
+}
+
+
+static gboolean
+kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    int retval = FALSE;
+
+    if (event->keyval == GDK_Control_L) {
+        X->ctrl_l = TRUE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Control_R) {
+        X->ctrl_r = TRUE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Shift_L) {
+        X->shft_l = TRUE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Shift_R) {
+        X->shft_r = TRUE;
+	return(TRUE);
+    }
+
+    switch (v->modetype) {
+        case BASIC:
+            retval = check_vals(B_NOBUTTONS, event->keyval, 
+                                b_buttons, X->bas_buttons);
+            break;
+
+        case FINANCIAL:
+            retval = check_vals(B_NOBUTTONS, event->keyval,
+            			b_buttons, X->bas_buttons);
+            if (retval != TRUE) {
+                retval = check_vals(F_NOBUTTONS, event->keyval, 
+                                    f_buttons, X->fin_buttons);
+            }
+            break;
+
+        case SCIENTIFIC:
+            retval = check_vals(B_NOBUTTONS, event->keyval,
+                                b_buttons, X->bas_buttons);
+            if (retval != TRUE) {
+                retval = check_vals(S_NOBUTTONS, event->keyval, 
+                                    s_buttons, X->sci_buttons);
+            }
+            break;
+    }
+
+    return(retval);
+}
+
+
+static gboolean
+kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    if (event->keyval == GDK_Control_L) {
+        X->ctrl_l = FALSE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Control_R) {
+        X->ctrl_r = FALSE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Shift_L) {
+        X->shft_l = FALSE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Shift_R) {
+        X->shft_r = FALSE;
+        return(TRUE);
+    }
+
+    return(FALSE);
 }
 
 
@@ -1578,8 +1499,6 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             gtk_widget_ref(Gtk_buttons[n]);
 
             if (strcmp(buttons[n].str, "    ")) {
-                create_kbd_accel(Gtk_buttons[n], buttons[n].mods,
-                                 buttons[n].value);
                 gtk_widget_show(Gtk_buttons[n]);
             } else {
                 gtk_widget_hide(Gtk_buttons[n]);
@@ -1666,8 +1585,8 @@ menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 {
     int mtype = (int) g_object_get_data(G_OBJECT(mi), "mtype");
 
-    v->current->value = '0' + (int) user_data;
-    handle_menu_selection(X->mrec[mtype], v->current->value);
+    v->current->value[0] = '0' + (int) user_data;
+    handle_menu_selection(X->mrec[mtype], v->current->value[0]);
 }
 
 
