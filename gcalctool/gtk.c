@@ -296,22 +296,27 @@ add_extra_kbd_accels()
     create_kbd_accel(BUT_MUL,  0, GDK_x);
 
     /* Numeric keypad. */
-    create_kbd_accel(BUT_0,   0, GDK_KP_0);
-    create_kbd_accel(BUT_1,   0, GDK_KP_1);
-    create_kbd_accel(BUT_2,   0, GDK_KP_2);
-    create_kbd_accel(BUT_3,   0, GDK_KP_3);
+    create_kbd_accel(BUT_EQ,  0, GDK_KP_Enter);
+    create_kbd_accel(BUT_PNT, 0, GDK_KP_Delete);
+    create_kbd_accel(BUT_4,   0, GDK_KP_Left);
     create_kbd_accel(BUT_4,   0, GDK_KP_4);
-    create_kbd_accel(BUT_5,   0, GDK_KP_5);
+    create_kbd_accel(BUT_6,   0, GDK_KP_Right);
     create_kbd_accel(BUT_6,   0, GDK_KP_6);
-    create_kbd_accel(BUT_7,   0, GDK_KP_7);
+    create_kbd_accel(BUT_8,   0, GDK_KP_Up);
     create_kbd_accel(BUT_8,   0, GDK_KP_8);
-    create_kbd_accel(BUT_9,   0, GDK_KP_9);
+    create_kbd_accel(BUT_2,   0, GDK_KP_Down);
+    create_kbd_accel(BUT_2,   0, GDK_KP_2);
+    create_kbd_accel(BUT_1,   0, GDK_End);
+    create_kbd_accel(BUT_3,   0, GDK_Page_Down);
+    create_kbd_accel(BUT_7,   0, GDK_Home);
+    create_kbd_accel(BUT_9,   0, GDK_Page_Up);
+
+    create_kbd_accel(BUT_0,   0, GDK_KP_0);
+    create_kbd_accel(BUT_5,   0, GDK_KP_5);
     create_kbd_accel(BUT_ADD, 0, GDK_KP_Add);
     create_kbd_accel(BUT_SUB, 0, GDK_KP_Subtract);
     create_kbd_accel(BUT_MUL, 0, GDK_KP_Multiply);
     create_kbd_accel(BUT_DIV, 0, GDK_KP_Divide);
-    create_kbd_accel(BUT_PNT, 0, GDK_KP_Delete);
-    create_kbd_accel(BUT_EQ,  0, GDK_KP_Enter);
 }
 
 

@@ -5,6 +5,349 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.2.30
+
+* Removed the gconf resource for getting/setting whether a beep is sounded
+  on error. A beep will now always be sounded in such a case.
+* The writing out of the resources will now be immediately done when each 
+  of those functions changes.
+
+----
+
+Overview of changes in gcalctool 4.2.29
+
+* Updated the manual pages to reflect the recent v4.2.xx changes.
+* Replaced the occurance of mktemp with mkstemp to placate the Gnu compiler
+  on Linux.
+
+----
+
+Overview of changes in gcalctool 4.2.28
+
+* The real fix for displaying the icon.
+
+----
+
+Overview of changes in gcalctool 4.2.27
+
+* Vastly improved keyboard navigation.
+* Control-F1 now toggles the displaying of tooltip help, so the "-h"
+  command line option has been removed and the old-style event handling
+  code has also been removed.
+* Added in a signal handler for the "delete" event for the main gcalctool
+  window. The callback calls gtk_main_quit() to terminate the application.
+
+----
+
+Overview of changes in gcalctool 4.2.26
+
+* HCI change. Attempt to correct disaplay the gcalctool icon.
+
+----
+
+Overview of changes in gcalctool 4.2.25
+
+* HCI change. The Sto/Rcl/Exch menu items now show the current register 
+  values as well.
+
+----
+
+Overview of changes in gcalctool 4.2.24
+
+* HCI change. All the radiobutton and checkbox items in the mode panel 
+  now have a mnemonic associated with them.
+
+----
+
+Overview of changes in gcalctool 4.2.23
+
+* HCI change. Fixed up the buttons on the "Insert ASCII Value", "Enter 
+  Constant..." and "Enter Function..." popups. They now just use Cancel 
+  and OK buttons, and use standard stock Gtk icons.
+
+----
+
+Overview of changes in gcalctool 4.2.22
+
+* HCI change.  Added in an Edit->Paste menu item. If selected this will 
+  paste the current contents of the clipboard into the calculator display 
+  as if you'd typed it.
+* Added bullet proofing to protect the calculator against values that 
+  weren't found. If a value wasn't found, it's just ignored, and it goes 
+  on to process the next character in the string.
+* Improved the handling of the recognition of characters entered. It now
+  takes into effect the mods value for each keysym.
+
+----
+
+Overview of changes in gcalctool 4.2.21
+
+* HCI change. Added a 2 pixel border for the frames containing the Basic, 
+  Financial and Scientific buttons and the mode panel.
+
+----
+
+Overview of changes in gcalctool 4.2.20
+
+* HCI change. Removed the "operand item" label widget.
+
+----
+
+Overview of changes in gcalctool 4.2.19
+
+* The frames around the mode button tables and the mode panel are no longer
+  always being shown.
+
+----
+
+Overview of changes in gcalctool 4.2.18
+
+* Fixed Bugzilla bug #101865. Remade various keyboard remappings:
+* Removed mention of the "-l" and "-r" command line options from the manual
+  pages. Remove reference to the /schemes/apps/gcalctool/righthanded Gconf
+  resource too.
+
+----
+
+Overview of changes in gcalctool 4.2.17
+
+* Removed the "Keys" key, that allowed you to toggle the button labels to 
+  show their keyboard equivalents.
+
+----
+
+Overview of changes in gcalctool 4.2.16
+
+* Put each of the the button tables and the mode panel inside a frame, rather
+  then use horizontal separators, to try to make the GUI look nicer.
+
+----
+
+Overview of changes in gcalctool 4.2.15
+
+* Entering "((2+3)*(2+3))" now gives the correct answer.
+* Added some bullet-proofing to parentheses handling when bogus characters
+  are entered.
+
+----
+
+Overview of changes in gcalctool 4.2.14
+
+* Hooked up the Help->Contents menu item. Note that help support still has
+  to be included (i.e. a help subdirectory with associated files etc.).
+
+----
+
+Overview of changes in gcalctool 4.2.13
+
+* The View->Memory Registers menu item now correctly toggles the showing of
+  the memory register window.
+
+----
+
+Overview of changes in gcalctool 4.2.12
+
+* Menubar menu items now use stock Gtk icons (where applicable).
+
+----
+
+Overview of changes in gcalctool 4.2.11
+
+* Revised the gcalctoolrc (Gtk resources) file for the new display layout.
+
+----
+
+Overview of changes in gcalctool 4.2.10
+
+* Going into Scientific mode and clicking on "(" twice no longer causes a
+  segmentation violation.
+
+----
+
+Overview of changes in gcalctool 4.2.9
+
+* Added some horizontal separators to help make the calculator more readable
+  when in Financial and Scientific Mode.
+
+----
+
+Overview of changes in gcalctool 4.2.8
+
+* Entering "((2+3)*9+(5-3))" no longer causes a segmentation violation.
+
+----
+
+Overview of changes in gcalctool 4.2.7
+
+* Removed the attempt to display a calculator image on the About popup.
+* Typing the keyboard equivalent of the menu buttons now works.
+* Removed the VERSION string from the titlebar. This is now in the About popup
+
+----
+
+Overview of changes in gcalctool 4.2.6
+
+* Added in an About popup that's accessible through the Help->About Gcalctool
+  menubar Help menu item.
+
+----
+
+Overview of changes in gcalctool 4.2.5
+
+* Fixed Bugzilla bug #102927.
+  Replaced abbreviation "trig." with full word "trigonometric".
+
+----
+
+Overview of changes in gcalctool 4.2.4
+
+* Fixed Bugzilla bug #102922.
+  Adjusted two occurances of sentence fragments to make it easier for 
+  L10N folks to translate them.
+
+----
+
+Overview of changes in gcalctool 4.2.3
+
+* Added Spanish (es) to ALL_LINGUAS at configure.in
+* gcalctool is now resizable again.
+
+----
+
+Overview of changes in gcalctool 4.2.2
+
+* Made calculator window choose a reasonable size at startup, and resize
+  when changing modes.
+
+----
+
+Overview of changes in gcalctool 4.2.1
+
+* Removed the GNOME_UTIL_LIBS line in gcalctool/Makefile.am so that 
+  gcalctool will correctly build.
+
+----
+
+Overview of changes in gcalctool 4.2.0
+
+* The gcalctool GUI layout has been redone to make the Basic mode more
+  basic and to make the application more GNOMEish.
+* The Financial/Logical/Scientific mode buttons have been moved into
+  the main calculator window above the Basic mode buttons. The Logical
+  and Scientific modes have been combined.
+* Added a menubar.
+* The six item mode display has been removed and a mode panel added for
+  the scientific mode.
+* Removed the property sheet. gcalctool no longer has a left or right 
+  handed style.
+* Blank buttons are now correctly hidden.
+* Added a "--enable-build-broken" flag to configure that has to be present
+  in order to configure and build gcalctool while it's still in a semi-broken
+  state.
+
+----
+
+Overview of changes in gcalctool 4.1.27
+
+* Fixed Bugzilla bug #101782.
+  Removed trailing "\n"'s where possible in the tooltip help messages.
+
+----
+
+Overview of changes in gcalctool 4.1.26
+
+* Fixed Bugzilla bug #101861.
+  The size of the memory register window is no longer hard-wired.
+
+----
+
+Overview of changes in gcalctool 4.1.25
+
+* Fixed Bugzilla bug #101867.
+  Changed multiply key from "X" to "*" (same as the existing gnome-calculator).
+
+----
+
+Overview of changes in gcalctool 4.1.24
+
+* Fixed Bugzilla bug #101780.
+  Removed leading and trailing spaces from the labels for the gcalctool buttons.
+
+----
+
+Overview of changes in gcalctool 4.1.23
+
+* Fixed Bugzilla bug #101777.
+  Removed trailing periods on the four window titles.
+
+----
+
+Overview of changes in gcalctool 4.1.22
+
+* Various I18N changes.
+
+----
+
+Overview of changes in gcalctool 4.1.21
+
+* Various I18N changes.
+
+----
+
+Overview of changes in gcalctool 4.1.20
+
+* Fixed Sun Bugtraq bug #1102883 against DeskSet calctool:
+  Adjusted so that all error messages just display "Error" which is
+  more consistent.
+
+----
+
+Overview of changes in gcalctool 4.1.19
+
+* Fixed Sun Bugtraq bug #4006391 against CDE dtcalc:
+  Bring up gcalctool, enter 10000 X 0.58 =, get answer is 5800.
+  Then click on Int button, supposely should get 5800, but the answer was 5799.
+
+----
+
+Overview of changes in gcalctool 4.1.18
+
+* Fixed Sun Bugtraq bug #1258472 against CDE dtcalc:
+  Start up gcalctool and set to decimal and fixed. Set accuracy to 2 decimal
+  places. Do a division like 0.19/2  It gives 0.0A.
+
+----
+
+Overview of changes in gcalctool 4.1.17
+
+* Fixed Bugtraq bug #1190181 against OpenWindows DeskSet calctool:
+  gcalctool core dumped if parent directory was not readable.
+
+----
+
+Overview of changes in gcalctool 4.1.16
+
+* Updated TODO file with all relevant calculator Sun bugs and rfes.
+* Adjusted matherr() routine so that strict ANCI C compilers can compile it.
+* Mode windows now shows buttons correctly if you start up in Basic mode,
+  then try to show one of the other modes.
+
+----
+
+Overview of changes in gcalctool 4.1.15
+
+* "Keys" button now displays correctly if started with left-handed style.
+* Switching handed style now displays button labels correctly if currently
+  showing the keyboard equivalent.
+
+----
+
+Overview of changes in gcalctool 4.1.14
+
+* Buttons are colored correctly if started with left-handed style.
+
+----
+
 Overview of changes in gcalctool 4.1.13
 
 * The unused buttons in the mode window are now hidden.
