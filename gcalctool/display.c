@@ -80,6 +80,7 @@ copy_button_info(struct button *old)
     new->hstr = old->hstr;
     new->mods = old->mods;
     new->value = old->value;
+    new->func_char = old->func_char;
     new->mtype = old->mtype;
     new->func = old->func;
 
@@ -369,8 +370,6 @@ paren_disp(char c)
  *  character was a left parenthesis, decrement the parentheses count. If
  *  the parentheses count is zero, exit parenthesis processing.
  *
- *  If the character is a control character (not Ctrl-h), then append ^(char).
- *
  *  Otherwise just append the character.
  */
 
@@ -396,12 +395,6 @@ paren_disp(char c)
             }
         }
         v->display[n-1] = '\0';
-    } else if (c <= CTL('z')) {           /* Is it a control character? */
-        if (n < MAXLINE-2) {
-            v->display[n]   = '^';
-            v->display[n+1] = c + 96;
-            v->display[n+2] = '\0';
-        }
     } else {                           /* It must be an ordinary character. */
         if (n < MAXLINE-1) {
             v->display[n]   = c;

@@ -43,7 +43,6 @@ char *
 convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
 {
     static char output[MAXLINE];   /* Converted output record. */
-    int ctrl = 0;           /* Set if we are processing a control character. */
     int i;                  /* Position within input line. */
     int len;
     int n = 0;              /* Position within output line. */
@@ -52,11 +51,6 @@ convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
     for (i = 0; i < len; i++) {
         if (line[i] == ' ') {
             continue;
-        } else if (line[i] == '\\') {
-            ctrl = 1;
-        } else if (ctrl) {
-            output[n++] = CTL(line[i]);
-            ctrl = 0;
         } else {
             output[n++] = line[i];
         }

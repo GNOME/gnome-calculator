@@ -7,6 +7,39 @@
 gcalctool change history.
 =========================
 
+v4.2.34 - 22nd January 2003.  (richb)
+
+* Handling the function "(3+3)" now works.
+  The button struct now contains a new item (char func_char) which is the
+  character equivalent to the button when you user enteres it into a function
+  definition. The process_str() routine in graphics.c has been adjusted to
+  call button_for_fc() (a new routine in functions.c) to compare each 
+  character in the function string against this item in each button struct 
+  to find the appropriate operation.
+
+  Also needed changes to do_paren() to call button_for_fc() instead of 
+  button_for_value().
+
+  These changes also fix bugtraq bug #4065378.
+  Certain functions entered into gcalctool produce incorrect results.
+
+* Changed the keyboard accelerators for the following to use non Alt-<?>
+  values:
+
+  Cos  (old value: Alt-c) becomes 'J'.
+  Sin  (old value: Alt-s) becomes 'K'.
+  Tan  (old value: Alt-t) becomes 'L'.
+  Frac (old value: Alt-f) becomes ':'.
+  Int  (old value: Alt-i) becomes 'i'.
+  Abs  (old value: Alt-u) becomes 'u'.
+  Rate (old value: Alt-r) becomes 'T'.
+
+  Updated the manual pages and the tooltip help to reflect these changes.
+
+* Removed the need to configure with "--enable-build-broken".
+
+----
+
 v4.2.33 - 22nd January 2003.  (richb)
 
 * Adjusted the memory registers windows to use the same "R0:  0.00" format 

@@ -92,11 +92,10 @@ Vars v;            /* Calctool variables and options. */
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
  *-----------+-----------------------------------------------------
- *  Alt:     |      c     f     i                 r s t u        
- *  Lower:   |  a b c d e f           l m n   p   r s t   v     y
- *  Upper:   |  A   C D E F G             N   P   R S         X Y
+ *  Lower:   |  a b c d e f     i     l m n   p   r s t u v     y
+ *  Upper:   |  A   C D E F G     J K L   N   P   R S T       X Y
  *  Numeric: |  0 1 2 3 4 5 6 7 8 9
- *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? !
+ *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
  *           |  BackSpace Delete Return
  *-----------+-----------------------------------------------------
  */
@@ -107,6 +106,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
    hstr
    mods
    value
+   func_char
    menutype
    func
  */
@@ -123,6 +123,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_7,
+    '7',
     M_NONE,
     do_number
 },
@@ -137,6 +138,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_8,
+    '8',
     M_NONE,
     do_number
 },
@@ -151,6 +153,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_9,
+    '9',
     M_NONE,
     do_number
 },
@@ -168,6 +171,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_slash,
+    '/',
     M_NONE,
     do_calc
 },
@@ -176,6 +180,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -196,6 +201,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_BackSpace,
+    '\010',
     M_NONE,
     do_delete
 },
@@ -212,6 +218,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_CONTROL_MASK,
     GDK_BackSpace,
+    '\013',
     M_NONE,
     do_clear_entry
 },
@@ -228,6 +235,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_Delete,
+    '\177',
     M_NONE,
     do_clear
 },
@@ -244,6 +252,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_4,
+    '4',
     M_NONE,
     do_number
 },
@@ -258,6 +267,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_5,
+    '5',
     M_NONE,
     do_number
 },
@@ -272,6 +282,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_6,
+    '6',
     M_NONE,
     do_number
 },
@@ -289,6 +300,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_asterisk,
+    '*',
     M_NONE,
     do_calc
 },
@@ -310,6 +322,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_A,
+    'A',
     M_ACC,
     do_pending
 },
@@ -327,6 +340,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_C,
+    'C',
     M_NONE,
     do_immed
 },
@@ -337,13 +351,14 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Integer portion\n"
       "\n"
-      "Keyboard equivalent:   Alt-i\n"
+      "Keyboard equivalent:   i\n"
       "\n"
       "Returns the integer portion of the current "
       "displayed value."
     ),
-    GDK_MOD1_MASK,
+    0,
     GDK_i,
+    'i',
     M_NONE,
     do_portion
 },
@@ -366,6 +381,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_R,
+    'R',
     M_RCL,
     do_pending
 },
@@ -380,6 +396,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_1,
+    '1',
     M_NONE,
     do_number
 },
@@ -394,6 +411,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ), 
     0, 
     GDK_2,
+    '2',
     M_NONE,
     do_number
 },    
@@ -408,6 +426,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_3,
+    '3',
     M_NONE,
     do_number
 },
@@ -425,6 +444,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_minus,
+    '-',
     M_NONE,
     do_calc
 },
@@ -448,6 +468,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_percent,
+    '%',
     M_NONE,
     do_calc
 },
@@ -465,6 +486,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),   
     0,   
     GDK_s,
+    's',
     M_NONE,
     do_immed
 },
@@ -475,13 +497,14 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Fractional portion\n"
       "\n"
-      "Keyboard equivalent:   Alt-f\n"
+      "Keyboard equivalent:   :\n"
       "\n"
       "Returns the fractional portion of the current "
       "displayed value."
     ),
-    GDK_MOD1_MASK,
-    GDK_f,
+    GDK_SHIFT_MASK,
+    GDK_colon,
+    ':',
     M_NONE,
     do_portion
 },
@@ -504,6 +527,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_S,
+    'S',
     M_STO,
     do_pending
 },
@@ -518,6 +542,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_0,
+    '0',
     M_NONE,
     do_number
 },
@@ -534,6 +559,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_period,
+    '.',
     M_NONE,
     do_point
 },
@@ -551,6 +577,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_equal,
+    '=',
     M_NONE,
     do_calc
 },
@@ -568,6 +595,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_plus,
+    '+',
     M_NONE,
     do_calc
 },
@@ -585,6 +613,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     0,
     GDK_r,
+    'r',
     M_NONE,
     do_immed
 },
@@ -599,6 +628,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_at,
+    '@',
     M_NONE,
     do_immed
 },
@@ -609,13 +639,14 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Absolute value.\n"
       "\n"
-      "Keyboard equivalent:   Alt-u\n"
+      "Keyboard equivalent:   u\n"
       "\n"
       "Returns the absolute value of the current "
       "displayed value."
     ),
-    GDK_MOD1_MASK,
+    0,
     GDK_u,
+    'u',
     M_NONE,
     do_portion
 },
@@ -642,6 +673,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_X,
+    'X',
     M_EXCH,
     do_pending
 },
@@ -653,6 +685,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
    hstr
    mods
    value
+   func_char
    menutype
    func
  */
@@ -696,6 +729,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_m,
+    'm',
     M_NONE,
     do_business
 },
@@ -741,6 +775,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_D,
+    'D',
     M_NONE,
     do_business
 },
@@ -787,6 +822,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_v,
+    'v',
     M_NONE,
     do_business
 },
@@ -827,6 +863,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_P,
+    'P',
     M_NONE,
     do_business
 },
@@ -885,6 +922,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_p,
+    'p',
     M_NONE,
     do_business
 },
@@ -895,7 +933,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Periodic interest rate\n"
       "\n"
-      "Keyboard equivalent:   Alt-r\n"
+      "Keyboard equivalent:   T\n"
       "\n"
       "Returns the periodic interest necessary for a "
       "present value of pv to grow to a future value of "
@@ -928,8 +966,9 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "To determine the annual rate, multiply the above "
       "formula by 12, which yields a result of 8.14%."
     ),
-    GDK_MOD1_MASK,
-    GDK_r,
+    GDK_SHIFT_MASK,
+    GDK_T,
+    'T',
     M_NONE,
     do_business
 },
@@ -976,6 +1015,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_l,
+    'l',
     M_NONE,
     do_business
 },
@@ -1031,6 +1071,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_Y,
+    'Y',
     M_NONE,
     do_business
 },
@@ -1075,6 +1116,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     ),
     0,
     GDK_T,
+    'T',
     M_NONE,
     do_business
 },
@@ -1083,6 +1125,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1091,6 +1134,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1099,6 +1143,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1107,6 +1152,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1115,6 +1161,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1123,6 +1170,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1131,6 +1179,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1142,6 +1191,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
    hstr
    mods
    value
+   func_char
    menutype
    func
 */
@@ -1164,6 +1214,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_less,
+    '<',
     M_LSHF,
     do_pending
 },
@@ -1183,6 +1234,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_greater,
+    '>',
     M_RSHF,   
     do_pending
 },            
@@ -1201,6 +1253,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),        
     0,        
     GDK_bracketright,
+    ']',
     M_NONE,   
     do_immed  
 },            
@@ -1219,6 +1272,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),    
     0,
     GDK_bracketleft,
+    '[',
     M_NONE,
     do_immed
 },
@@ -1227,6 +1281,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1252,6 +1307,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_parenleft,
+    '(',
     M_NONE,
     do_paren
 },
@@ -1277,6 +1333,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_parenright,
+    ')',
     M_NONE,
     do_paren
 },
@@ -1285,6 +1342,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     "    ",
     0,
     0,
+    ' ',
     M_NONE,
     do_none
 },
@@ -1305,6 +1363,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_E,
+    'E',
     M_NONE,
     do_expno
 },
@@ -1336,6 +1395,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),                
     GDK_SHIFT_MASK,   
     GDK_numbersign,   
+    '#',
     M_CON,            
     do_pending
 },
@@ -1378,6 +1438,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_F,
+    'F',
     M_FUN,
     do_pending
 },
@@ -1394,6 +1455,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_braceleft,
+    '{',
     M_NONE,
     do_immed
 },
@@ -1410,6 +1472,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_braceright,
+    '}',
     M_NONE,
     do_immed
 },       
@@ -1431,6 +1494,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),   
     0,   
     GDK_y,
+    'y',
     M_NONE,
     do_calc
 },       
@@ -1448,6 +1512,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ), 
     GDK_SHIFT_MASK,
     GDK_exclam,
+    '!',
     M_NONE,
     do_immed
 },
@@ -1465,6 +1530,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_question,
+    '?',
     M_NONE,
     do_immed
 },
@@ -1484,6 +1550,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_d,
+    'd',
     M_NONE,
     do_number
 },
@@ -1501,6 +1568,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_e,
+    'e',
     M_NONE,
     do_number
 },
@@ -1518,6 +1586,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_f,
+    'f',
     M_NONE,
     do_number
 },
@@ -1528,7 +1597,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Cosine function\n"
       "\n"
-      "Keyboard equivalent:   Alt-c\n"
+      "Keyboard equivalent:   J\n"
       "\n"
       "Returns the trigonometric cosine, arc cosine, "
       "hyperbolic cosine, or inverse hyperbolic cosine "
@@ -1538,8 +1607,9 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ),
-    GDK_MOD1_MASK,
-    GDK_c,
+    GDK_SHIFT_MASK,
+    GDK_J,
+    'J',
     M_NONE,
     do_trig
 },
@@ -1550,7 +1620,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Sine function\n"
       "\n"
-      "Keyboard equivalent:   Alt-s\n"
+      "Keyboard equivalent:   K\n"
       "\n"
       "Returns the trigonometric sine, arc sine, "
       "hyperbolic sine, or inverse hyperbolic sine of "
@@ -1560,8 +1630,9 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ),   
-    GDK_MOD1_MASK,
-    GDK_s,
+    GDK_SHIFT_MASK,
+    GDK_K,
+    'K',
     M_NONE,
     do_trig
 },
@@ -1572,7 +1643,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Tangent function\n"
       "\n"
-      "Keyboard equivalent:   Alt-t\n"
+      "Keyboard equivalent:   L\n"
       "\n"
       "Returns the trigonometric tangent, arc tangent, "
       "hyperbolic tangent, or inverse hyperbolic tangent "
@@ -1582,8 +1653,9 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ), 
-    GDK_MOD1_MASK,
-    GDK_t,
+    GDK_SHIFT_MASK,
+    GDK_L,
+    'L',
     M_NONE,
     do_trig
 },     
@@ -1600,6 +1672,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_N,
+    'N',
     M_NONE,
     do_immed
 },
@@ -1616,6 +1689,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_G,
+    'G',
     M_NONE,
     do_immed
 },
@@ -1635,6 +1709,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_a,
+    'a',
     M_NONE,
     do_number
 },
@@ -1652,6 +1727,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_b,
+    'b',
     M_NONE,
     do_number
 },    
@@ -1669,6 +1745,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_c,
+    'c',
     M_NONE,
     do_number
 },
@@ -1687,6 +1764,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_bar,
+    '|',
     M_NONE,
     do_calc
 },
@@ -1705,6 +1783,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_ampersand,
+    '&',
     M_NONE,
     do_calc
 },       
@@ -1722,6 +1801,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),   
     GDK_SHIFT_MASK,
     GDK_asciitilde,
+    '~',
     M_NONE,
     do_immed
 },
@@ -1741,6 +1821,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     GDK_SHIFT_MASK,
     GDK_caret,
+    '^',
     M_NONE,
     do_calc
 },
@@ -1760,6 +1841,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     ),
     0,
     GDK_n,
+    'n',
     M_NONE,
     do_calc
 },

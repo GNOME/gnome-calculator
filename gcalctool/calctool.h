@@ -99,8 +99,8 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_9     b_buttons[2].value              /* 9 */
 #define KEY_DIV   b_buttons[3].value              /* / */
                                                   /* Empty/hidden button. */
-#define KEY_BSP   b_buttons[5].value              /* CTL('h') */
-#define KEY_CE    b_buttons[6].value              /* CTL(backspace) */
+#define KEY_BSP   b_buttons[5].value              /* Control-h */
+#define KEY_CE    b_buttons[6].value              /* Control-Backspace */
 #define KEY_CLR   b_buttons[7].value              /* del */
 
 #define KEY_4     b_buttons[8].value              /* 4 */
@@ -109,7 +109,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_MUL   b_buttons[11].value             /* * */
 #define KEY_ACC   b_buttons[12].value             /* A */
 #define KEY_CHS   b_buttons[13].value             /* C */
-#define KEY_INT   b_buttons[14].value             /* Alt-i */
+#define KEY_INT   b_buttons[14].value             /* i */
 #define KEY_RCL   b_buttons[15].value             /* R */
 
 #define KEY_1     b_buttons[16].value             /* 1 */
@@ -118,7 +118,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_SUB   b_buttons[19].value             /* - */
 #define KEY_PER   b_buttons[20].value             /* % */
 #define KEY_SQRT  b_buttons[21].value             /* s */
-#define KEY_FRAC  b_buttons[22].value             /* Alt-f */
+#define KEY_FRAC  b_buttons[22].value             /* : */
 #define KEY_STO   b_buttons[23].value             /* S */
 
 #define KEY_0     b_buttons[24].value             /* 0 */
@@ -127,7 +127,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_ADD   b_buttons[27].value             /* + */
 #define KEY_REC   b_buttons[28].value             /* r */
 #define KEY_SQR   b_buttons[29].value             /* @ */
-#define KEY_ABS   b_buttons[30].value             /* Alt-u */
+#define KEY_ABS   b_buttons[30].value             /* u */
 #define KEY_EXCH  b_buttons[31].value             /* X */
 
 #define KEY_CTRM  f_buttons[0].value              /* m */
@@ -135,7 +135,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_FV    f_buttons[2].value              /* v */
 #define KEY_PMT   f_buttons[3].value              /* P */
 #define KEY_PV    f_buttons[4].value              /* p */
-#define KEY_RATE  f_buttons[5].value              /* Alt-r */
+#define KEY_RATE  f_buttons[5].value              /* T */
 #define KEY_SLN   f_buttons[6].value              /* l */
 #define KEY_SYD   f_buttons[7].value              /* Y */
 #define KEY_TERM  f_buttons[8].value              /* T */
@@ -159,9 +159,9 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_D     s_buttons[16].value             /* d */
 #define KEY_E     s_buttons[17].value             /* e */
 #define KEY_F     s_buttons[18].value             /* f */
-#define KEY_COS   s_buttons[19].value             /* Alt-c */
-#define KEY_SIN   s_buttons[20].value             /* Alt-s */
-#define KEY_TAN   s_buttons[21].value             /* Alt-t */
+#define KEY_COS   s_buttons[19].value             /* J */
+#define KEY_SIN   s_buttons[20].value             /* K */
+#define KEY_TAN   s_buttons[21].value             /* L */
 #define KEY_LN    s_buttons[22].value             /* N */
 #define KEY_LOG   s_buttons[23].value             /* G */
 
@@ -183,7 +183,6 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define SCOLS          8      /* No of columns of Scientific Mode buttons. */
 #define SROWS          4      /* No of rows of Scientific Mode buttons. */
 
-#define CTL(n)         n - 96     /* Generate control character value. */
 #define EQUAL(a, b)    !strncmp(a, b, strlen(b))
 
 #define INC            { argc--; argv++; }
@@ -252,6 +251,7 @@ struct button {
     char *hstr;              /* Button help string. */
     int mods;                /* Keyboard modifiers (Shift, Ctrl, ...). */
     int value;               /* Unique button keyboard equivalent. */
+    char func_char;          /* Unique function string character. */
     enum menu_type mtype;    /* Type of popup menu (if any). */
     void (*func)();          /* Function to obey on button press. */
 };
@@ -339,6 +339,7 @@ typedef struct calcVars *Vars;
 #define dmax(a, b)  (double) max(a, b)
 #define dmin(a, b)  (double) min(a, b)
 
+struct button *button_for_fc(char);
 struct button *button_for_value(int);
 struct button *copy_button_info(struct button *);
 

@@ -11,12 +11,6 @@ Gcalctool TODO.
 * Navigation with the arrow keys is a little haywire. This looks like it's
   bug 60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
 
-* Functions such as "(3+3)" won't work. The problem here is that the string
-  defining the function contains single characters for each operation (i.e.
-  '(' for left parenthesis), whereas this is being compared against the
-  button.value struct member where the equivalent value is GDK_parenleft
-  (which is an integer).
-
 * If gcalctool is initially displayed in Financial or Scientific mode, the
   Basic Mode radio item is set in the View menu.
 
@@ -26,7 +20,8 @@ Gcalctool TODO.
   "*displayitem*" widget and the "*register_label<n>*" widgets background 
   color aren't being set to white.
 
-* Need to create help files for gcalctool. Breda McColgan is working on this.
+* Need to create help files for gcalctool. Breda McColgan will be working 
+  on this.
 
 * Need to reduce tool tip help message sizes. Will do this when the help
   files are in place.
@@ -50,26 +45,6 @@ Gcalctool TODO.
   eight digits.  This was sufficient to deal with 32-bit addresses.
   When Solaris is 64-bit, the calculator will be less useful.
   Maybe there should be a Logical-64 mode.
-
-* Fix bugtraq bug #4065378.
-  Certain functions entered into gcalctool produce incorrect results.
-  I entered the following functions into gcalctool:
-
-  ((R0)-32)*(5/9)=S1
-
-  (5/9)*(R0-32)=S0
-
-  ((R0-32)*5)/9=S0
-
-  The above 3 functions all do pretty much the same thing. They convert 
-  Fahrenheit to Celsius. However when I store "212" in Register 0, and 
-  run the first of the three functions above, the result is 21200 (and 
-  we all know that 212F is 100 C). If I run the same conversion again, 
-  the result is 2120000. It seems like the previous result is always 
-  multiplied by 100. The other 2 functions also return incorrect results.
-
-  Not all user defined functions behave this way. For example the Function 
-  for converting Celsius to Fahrenheit worked as expected.
 
 * Implement bugtraq rfe #4113441.
   Scientists using dtcalc under CDE would like to get deeper precision.

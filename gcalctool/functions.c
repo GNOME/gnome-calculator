@@ -1200,7 +1200,7 @@ process_parens(char current)
             push_op(v->cur_op);
         }
         v->noparens++;     /* Count of left brackets outstanding. */
-        save_pending_values(button_for_value(current));
+        save_pending_values(button_for_fc(current));
 
 /*  If we haven't had any left brackets yet, and this is a right bracket,
  *  then just ignore it.
@@ -1312,20 +1312,27 @@ setbool(BOOLEAN p)
 
 
 struct button *
+ch_to_button(struct button buttons[], int max_buttons, char ch)
+{
+    int i;
+ 
+    for (i = 0; i < max_buttons; i++) {
+        if (buttons[i].func_char == ch) {
+            return(&buttons[i]);
+        }
+    }    
+ 
+    return(NULL);
+}
+
+
+struct button *
 val_to_button(struct button buttons[], int max_buttons, int val)
 {
-    int i, mods;
-
-/* XXX: doesn't properly handle Alt-<whatever> characters. */
-
-    if (val <= CTL(val)) {            /* Is it a control character? */
-        mods = GDK_CONTROL_MASK;
-    } else {
-        mods = 0;
-    }
+    int i;
 
     for (i = 0; i < max_buttons; i++) {
-        if (buttons[i].mods == mods && buttons[i].value == val) {
+        if (buttons[i].value == val) {
             return(&buttons[i]);
         }
     }
@@ -1344,6 +1351,21 @@ button_for_value(int val)
             b = val_to_button(s_buttons, S_NOBUTTONS, val);
         }
     }
+
+    return(b);
+}
+
+
+struct button *
+button_for_fc(char ch)
+{
+    struct button *b;
+
+    if ((b = ch_to_button(b_buttons, B_NOBUTTONS, ch)) == NULL) {
+        if ((b = ch_to_button(f_buttons, F_NOBUTTONS, ch)) == NULL) {
+            b = ch_to_button(s_buttons, S_NOBUTTONS, ch);
+        }
+    }    
 
     return(b);
 }

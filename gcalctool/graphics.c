@@ -90,15 +90,11 @@ process_stack(int startop,      /* Initial position in the operand stack. */
             mpstr(v->MPnumstack[nptr++], v->MPdisp_val);
         } else {
             v->cur_ch = v->opstack[startop + i];
-            if (v->cur_ch == '^') {                /* Control character? */
-                i++;
-                v->cur_ch = CTL(v->opstack[startop + i]);
-            }
             if (v->pending) {
                 v->current->value = v->cur_ch;
                 do_pending();
             } else {
-                struct button *next = button_for_value(v->cur_ch);
+                struct button *next = button_for_fc(v->cur_ch);
 
                 if (next != NULL) {
                     process_item(next);
@@ -112,7 +108,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
     push_num(v->MPdisp_val);
     v->opsptr = startop - 1;
     push_op(-1);
-    save_pending_values(button_for_value(KEY_LPAR));
+    save_pending_values(button_for_fc('('));
     STRCPY(v->display, sdisp);  /* Restore current display. */
 }
 
@@ -120,6 +116,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
 void
 process_str(char *str)
 {
+    struct button *current;
     int i, len;
 
     len = strlen(str);
@@ -128,12 +125,12 @@ process_str(char *str)
             return;
         }
         if (v->pending) {
-            v->current->value = str[i];
-            do_pending();
+            if ((current = button_for_fc(str[i])) != NULL) {
+                v->current = copy_button_info(current);
+                do_pending();
+            }
         } else {
-            struct button *current = button_for_value(str[i]);
-
-            if (current != NULL) {
+            if ((current = button_for_fc(str[i])) != NULL) {
                 process_item(current);
             }
         }
