@@ -39,6 +39,16 @@ pixmap_DATA = gcalctool.png
 
 man1_MANS = gcalctool.1
 
+# Install a symlink between gcalctool and gnome-calculator
+install-exec-hook:
+	test -e "$(DESTDIR)$(bindir)/gnome-calculator" \
+	|| (cd "$(DESTDIR)$(bindir)" && ln -s gcalctool gnome-calculator)
+
+# Remove the symlink between gcalctool and gnome-calculator
+uninstall-local:
+	test -h "$(DESTDIR)$(bindir)/gnome-calculator" \
+	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
+
 EXTRA_DIST = \
 	$(pixmap_DATA) \
 	$(man1_MANS)
