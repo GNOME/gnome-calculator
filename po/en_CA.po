@@ -1,17 +1,17 @@
 # English/Canada translation of gcalctool.
-# Copyright (C) 2004 Adam Weinberger <adamw@FreeBSD.org>
+# Copyright (C) 2004-2005 Adam Weinberger and the GNOME Foundation
 # This file is distributed under the same licence as the gcalctool package.
-# Maintainer: Adam Weinberger <adamw@FreeBSD.org>.
+# Adam Weinberger <adamw@gnome.org>, 2004, 2005..
 # 
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
-"PO-Revision-Date: 2005-01-14 22:43-0500\n"
-"Last-Translator: Alexander Winston <alexander.winston@comcast.net>\n"
-"Language-Team: English/Canada <adamw@FreeBSD.org>\n"
+"POT-Creation-Date: 2005-03-02 22:24-0500\n"
+"PO-Revision-Date: 2005-03-02 22:43-0500\n"
+"Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
+"Language-Team: English/Canada <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -177,7 +177,7 @@ msgstr "Left bracket"
 
 #: gcalctool/calctool.c:192
 msgid "Bksp"
-msgstr "Bksp"
+msgstr "BKSP"
 
 #: gcalctool/calctool.c:193
 msgid "Remove rightmost character from displayed value"
@@ -655,7 +655,7 @@ msgstr "Raise displayed value to the power of y [y]"
 
 #: gcalctool/calctool.c:908
 msgid "X to the y"
-msgstr "X to the y"
+msgstr "X to the Y"
 
 #: gcalctool/calctool.c:914
 msgid "^"
@@ -886,35 +886,36 @@ msgstr "Cubic-centimetre-to-cubic-inch conversion factor"
 msgid "Error"
 msgstr "Error"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Previous expression"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Malformed expression"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Malformed function"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Cleared display; prefix without an operator is not allowed"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Malformed parenthesis expression"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "No sane value to store"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Malformed function"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Cleared display; prefix without an operator is not allowed"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Malformed parenthesis expression"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Numeric stack error"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Operand stack error"
 
@@ -1373,15 +1374,15 @@ msgid ""
 msgstr ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Activated no operator precedence mode"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Activated expression mode with operator precedence"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Accuracy value out of range"
 
@@ -1508,8 +1509,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1587,6 +1592,3 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Perform calculations"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"
