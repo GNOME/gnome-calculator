@@ -809,7 +809,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Rand"),
     N_("Random number in the range 0.0 to 1.0"),
-    N_("Random"),
+    N_("Random number"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_question, 0 },
     '?',
