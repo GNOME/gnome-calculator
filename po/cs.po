@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-09 14:38+0100\n"
-"PO-Revision-Date: 2004-01-09 17:29+0100\n"
+"POT-Creation-Date: 2004-01-24 03:52+0100\n"
+"PO-Revision-Date: 2004-01-25 01:49+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,19 +37,19 @@ msgstr "_Hex"
 #. Tooltips for each base value.
 #: gcalctool/calctool.c:55
 msgid "Set numeric base to binary (base 2)"
-msgstr "Nastavit číselnou bázi na binární (základ 2)"
+msgstr "Nastavit číselnou soustavu na binární (základ 2)"
 
 #: gcalctool/calctool.c:56
 msgid "Set numeric base to octal (base 8)"
-msgstr "Nastavit číselnou bázi na osmičkovou (základ 8)"
+msgstr "Nastavit číselnou soustavu na osmičkovou (základ 8)"
 
 #: gcalctool/calctool.c:57
 msgid "Set numeric base to decimal (base 10)"
-msgstr "Nastavit číselnou bázi na desítkovou (základ 10)"
+msgstr "Nastavit číselnou soustavu na desítkovou (základ 10)"
 
 #: gcalctool/calctool.c:58
 msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Nastavit číselnou bázi na šestnáctkovou (základ 16)"
+msgstr "Nastavit číselnou soustavu na šestnáctkovou (základ 16)"
 
 #. Strings for each display mode value.
 #: gcalctool/calctool.c:67
@@ -669,7 +669,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Šestnáctková číslice E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1118
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
 msgid "F"
 msgstr "F"
 
@@ -733,7 +733,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Šestnáctková číslice B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1110
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
 msgid "C"
 msgstr "C"
 
@@ -824,7 +824,7 @@ msgstr "kubické centimetry nebo kubické palce"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:277 gcalctool/functions.c:959
+#: gcalctool/calctool.c:1098 gcalctool/display.c:298 gcalctool/functions.c:959
 #: gcalctool/functions.c:1087 gcalctool/functions.c:1126
 #: gcalctool/functions.c:1180 gcalctool/functions.c:1273
 #: gcalctool/functions.c:1274 gcalctool/graphics.c:102 gcalctool/mp.c:1988
@@ -843,7 +843,7 @@ msgstr "Chyba zásobníku operandů"
 msgid "-a needs accuracy value"
 msgstr "-a potřebuje hodnotu přesnosti"
 
-#: gcalctool/get.c:166 gcalctool/get.c:324
+#: gcalctool/get.c:166 gcalctool/get.c:320
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: přesnost by měla být v rozsahu 0-9\n"
@@ -857,31 +857,31 @@ msgstr "%s: %s jako další argument.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:279
+#: gcalctool/get.c:278
 msgid "calculator"
 msgstr "kalkulačka"
 
-#: gcalctool/get.c:338
+#: gcalctool/get.c:334
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: základ by měl být 2, 8, 10 nebo 16\n"
 
-#: gcalctool/get.c:353
+#: gcalctool/get.c:349
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: neplatný režim zobrazování [%s]\n"
 
-#: gcalctool/get.c:368
+#: gcalctool/get.c:364
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: neplatný režim [%s]\n"
 
-#: gcalctool/get.c:382
+#: gcalctool/get.c:378
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: neplatný trigonometrický režim [%s]\n"
 
-#: gcalctool/get.c:428
+#: gcalctool/get.c:424
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -890,18 +890,18 @@ msgstr ""
 "%s verze %s\n"
 "\n"
 
-#: gcalctool/get.c:429
+#: gcalctool/get.c:425
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "použití: %s: [-D] [-E] [-a přesnost] "
 
-#: gcalctool/get.c:430
+#: gcalctool/get.c:426
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:912 gcalctool/gtk.c:1049
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:911 gcalctool/gtk.c:1048
 msgid "R"
 msgstr "R"
 
@@ -1115,60 +1115,60 @@ msgstr "Z_nak:"
 msgid "_Insert"
 msgstr "_Vložit"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Constants"
 msgstr "Upravit konstanty"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Functions"
 msgstr "Upravit funkce"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:728
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:729
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Všechny konstantní hodnoty jsou zadávány v desítkové soustavě."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:739
 msgid "Click a _value or description to edit it:"
 msgstr "Pro upravení klikněte na _hodnotu nebo popis:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:762
 msgid "No."
 msgstr "Č."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:764
 msgid "Value"
 msgstr "Hodnota"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:766
 msgid "Description"
 msgstr "Popis"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:800 gcalctool/gtk.c:802 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulačka"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:984
+#: gcalctool/gtk.c:983
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:992
+#: gcalctool/gtk.c:991
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1040
+#: gcalctool/gtk.c:1039
 msgid "Memory Registers"
 msgstr "Registry paměti"
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1098
 msgid "Edit Constants..."
 msgstr "Upravit konstanty..."
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1098
 msgid "Edit Functions..."
 msgstr "Upravit funkce..."
 
