@@ -83,9 +83,11 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
 #define KEY_DIV   b_buttons[3]              /* / */
+#define KEY_LPAR  b_buttons[4]              /* ( */
 #define KEY_BSP   b_buttons[5]              /* Control-h */
 
 #define KEY_MUL   b_buttons[11]             /* * */
+#define KEY_RPAR  b_buttons[12]             /* ) */
 
 #define KEY_CHS   b_buttons[13]             /* C */
 #define KEY_INT   b_buttons[14]             /* i */
@@ -118,8 +120,6 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #define KEY_RSFT  s_buttons[1]              /* > */
 #define KEY_16    s_buttons[2]              /* [ */
 #define KEY_32    s_buttons[3]              /* ] */
-#define KEY_LPAR  s_buttons[5]              /* ( */
-#define KEY_RPAR  s_buttons[6]              /* ) */
 #define KEY_ACC   s_buttons[7]              /* A */
 
 #define KEY_CON   s_buttons[8]              /* # */
