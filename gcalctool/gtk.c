@@ -59,6 +59,29 @@
 #define BUT_PNT   X->bas_buttons[25]       /* . */
 #define BUT_EQ    X->bas_buttons[26]       /* = */
 
+static int keyvals[] = {
+  GDK_7, GDK_8, GDK_9, GDK_slash, GDK_BackSpace, GDK_BackSpace, GDK_Delete,
+  GDK_4, GDK_5, GDK_6, GDK_asterisk, GDK_A, GDK_C, GDK_i, GDK_S,
+  GDK_1, GDK_2, GDK_3, GDK_minus, GDK_percent, GDK_s, GDK_colon, GDK_R,
+  GDK_0, GDK_period, GDK_equal, GDK_plus, GDK_r, GDK_at, GDK_u, GDK_X,
+  GDK_m, GDK_D, GDK_v, GDK_P, GDK_p, GDK_T, GDK_l, GDK_Y,
+  GDK_T,
+
+  GDK_less, GDK_greater, 
+    GDK_bracketright, GDK_bracketleft, GDK_parenleft, GDK_parenright, 
+  GDK_numbersign, GDK_F, GDK_E, 
+    GDK_braceleft, GDK_braceright, GDK_y, GDK_exclam, GDK_question,
+  GDK_d, GDK_e, GDK_f, GDK_J, GDK_K, GDK_L, GDK_N, GDK_G,
+  GDK_a, GDK_b, GDK_c, 
+    GDK_bar, GDK_ampersand, GDK_asciitilde, GDK_caret, GDK_n,
+  0
+};
+
+static int modvals[] = {
+    0, GDK_SHIFT_MASK, GDK_CONTROL_MASK
+};
+
+
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
@@ -1336,6 +1359,28 @@ static void
 hyp_cb(GtkToggleButton *button, gpointer user_data)
 {
     v->hyperbolic = !v->hyperbolic;
+}
+
+
+void
+init_key_types()
+{
+    int i;
+
+    for (i = 0; i < B_NOBUTTONS; i++) {
+        b_buttons[i].value = keyvals[b_buttons[i].value];
+        b_buttons[i].mods  = modvals[b_buttons[i].mods];
+    }
+
+    for (i = 0; i < F_NOBUTTONS; i++) {
+        f_buttons[i].value = keyvals[f_buttons[i].value];
+        f_buttons[i].mods  = modvals[f_buttons[i].mods];
+    }
+
+    for (i = 0; i < S_NOBUTTONS; i++) {
+        s_buttons[i].value = keyvals[s_buttons[i].value];
+        s_buttons[i].mods  = modvals[s_buttons[i].mods];
+    }
 }
 
 

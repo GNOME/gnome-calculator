@@ -115,8 +115,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("7"),
     N_("Numeric 7"),
-    0,
-    GDK_7,
+    CALC_MOD_NONE,
+    CALC_KEY_7,
     '7',
     M_NONE,
     do_number
@@ -124,8 +124,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("8"),
     N_("Numeric 8"),
-    0,
-    GDK_8,
+    CALC_MOD_NONE,
+    CALC_KEY_8,
     '8',
     M_NONE,
     do_number
@@ -133,8 +133,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("9"),
     N_("Numeric 9"),
-    0,
-    GDK_9,
+    CALC_MOD_NONE,
+    CALC_KEY_9,
     '9',
     M_NONE,
     do_number
@@ -142,8 +142,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {    
     N_("/"),
     N_("Divide"),
-    0,
-    GDK_slash,
+    CALC_MOD_NONE,
+    CALC_KEY_DIV,
     '/',
     M_NONE,
     do_calc
@@ -151,8 +151,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -160,8 +160,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Bsp"),
     N_("Remove rightmost character from displayed value"),
-    0,
-    GDK_BackSpace,
+    CALC_MOD_NONE,
+    CALC_KEY_BSP,
     '\010',
     M_NONE,
     do_delete
@@ -169,8 +169,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("CE"),
     N_("Clear displayed value"),
-    GDK_CONTROL_MASK,
-    GDK_BackSpace,
+    CALC_MOD_CONTROL_MASK,
+    CALC_KEY_CE,
     '\013',
     M_NONE,
     do_clear_entry
@@ -178,8 +178,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Clr"),
     N_("Clear displayed value and any partial calculation"),
-    0,
-    GDK_Delete,
+    CALC_MOD_NONE,
+    CALC_KEY_CLR,
     '\177',
     M_NONE,
     do_clear
@@ -189,8 +189,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("4"),
     N_("Numeric 4"),
-    0,
-    GDK_4,
+    CALC_MOD_NONE,
+    CALC_KEY_4,
     '4',
     M_NONE,
     do_number
@@ -198,8 +198,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("5"),
     N_("Numeric 5"),
-    0,
-    GDK_5,
+    CALC_MOD_NONE,
+    CALC_KEY_5,
     '5',
     M_NONE,
     do_number
@@ -207,8 +207,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("6"),
     N_("Numeric 6"),
-    0,
-    GDK_6,
+    CALC_MOD_NONE,
+    CALC_KEY_6,
     '6',
     M_NONE,
     do_number
@@ -216,8 +216,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("*"),
     N_("Multiply"),
-    0,
-    GDK_asterisk,
+    CALC_MOD_NONE,
+    CALC_KEY_MUL,
     '*',
     M_NONE,
     do_calc
@@ -225,8 +225,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Acc"),
     N_("Set accuracy from 0 to 9 numeric places"),
-    GDK_SHIFT_MASK,
-    GDK_A,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_ACC,
     'A',
     M_ACC,
     do_pending
@@ -234,8 +234,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("+/-"),
     N_("Change sign"),
-    GDK_SHIFT_MASK,
-    GDK_C,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_CHS,
     'C',
     M_NONE,
     do_immed
@@ -243,8 +243,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Int"),
     N_("Integer portion of displayed value"),
-    0,
-    GDK_i,
+    CALC_MOD_NONE,
+    CALC_KEY_INT,
     'i',
     M_NONE,
     do_portion
@@ -252,8 +252,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Sto"),
     N_("Store displayed value in memory register"),
-    GDK_SHIFT_MASK,
-    GDK_S,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_STO,
     'S',
     M_STO,
     do_pending
@@ -263,8 +263,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("1"),
     N_("Numeric 1"),
-    0,
-    GDK_1,
+    CALC_MOD_NONE,
+    CALC_KEY_1,
     '1',
     M_NONE,
     do_number
@@ -272,8 +272,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("2"),
     N_("Numeric 2"),
-    0, 
-    GDK_2,
+    CALC_MOD_NONE, 
+    CALC_KEY_2,
     '2',
     M_NONE,
     do_number
@@ -281,8 +281,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {     
     N_("3"),
     N_("Numeric 3"),
-    0,
-    GDK_3,
+    CALC_MOD_NONE,
+    CALC_KEY_3,
     '3',
     M_NONE,
     do_number
@@ -290,8 +290,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("-"),
     N_("Subtract"),
-    0,
-    GDK_minus,
+    CALC_MOD_NONE,
+    CALC_KEY_SUB,
     '-',
     M_NONE,
     do_calc
@@ -299,8 +299,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("%"),
     N_("Percentage"),
-    GDK_SHIFT_MASK,
-    GDK_percent,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_PER,
     '%',
     M_NONE,
     do_calc
@@ -308,8 +308,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Sqrt"),
     N_("Square root"),
-    0,   
-    GDK_s,
+    CALC_MOD_NONE,   
+    CALC_KEY_SQRT,
     's',
     M_NONE,
     do_immed
@@ -317,8 +317,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Frac"),
     N_("Fractional portion of displayed value"),
-    GDK_SHIFT_MASK,
-    GDK_colon,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_FRAC,
     ':',
     M_NONE,
     do_portion
@@ -326,8 +326,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Rcl"),
     N_("Retrieve memory register to display"),
-    GDK_SHIFT_MASK,
-    GDK_R,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_RCL,
     'R',
     M_RCL,
     do_pending
@@ -337,8 +337,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("0"),
     N_("Numeric 0"),
-    0,
-    GDK_0,
+    CALC_MOD_NONE,
+    CALC_KEY_0,
     '0',
     M_NONE,
     do_number
@@ -346,8 +346,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {    
     N_("."),
     N_("Numeric point"),
-    0,
-    GDK_period,
+    CALC_MOD_NONE,
+    CALC_KEY_PNT,
     '.',
     M_NONE,
     do_point
@@ -355,8 +355,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("="),
     N_("Calculate result"),
-    0,
-    GDK_equal,
+    CALC_MOD_NONE,
+    CALC_KEY_EQ,
     '=',
     M_NONE,
     do_calc
@@ -364,8 +364,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("+"),
     N_("Add"),
-    GDK_SHIFT_MASK,
-    GDK_plus,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_ADD,
     '+',
     M_NONE,
     do_calc
@@ -373,8 +373,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("1/x"),
     N_("Reciprocal"),
-    0,
-    GDK_r,
+    CALC_MOD_NONE,
+    CALC_KEY_REC,
     'r',
     M_NONE,
     do_immed
@@ -382,8 +382,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("x<sup>2</sup>"),
     N_("Square"),
-    GDK_SHIFT_MASK,
-    GDK_at,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_SQR,
     '@',
     M_NONE,
     do_immed
@@ -391,8 +391,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Abs"),
     N_("Absolute value"),
-    0,
-    GDK_u,
+    CALC_MOD_NONE,
+    CALC_KEY_ABS,
     'u',
     M_NONE,
     do_portion
@@ -400,8 +400,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 {
     N_("Exch"),
     N_("Exchange displayed value with memory register"),
-    GDK_SHIFT_MASK,
-    GDK_X,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_EXCH,
     'X',
     M_EXCH,
     do_pending
@@ -424,8 +424,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Ctrm"),
     N_("Compounding term"),
-    0,
-    GDK_m,
+    CALC_MOD_NONE,
+    CALC_KEY_CTRM,
     'm',
     M_NONE,
     do_business
@@ -433,8 +433,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Ddb"),
     N_("Double-declining depreciation"),
-    GDK_SHIFT_MASK,
-    GDK_D,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_DDB,
     'D',
     M_NONE,
     do_business
@@ -442,8 +442,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Fv"),
     N_("Future value"),
-    0,
-    GDK_v,
+    CALC_MOD_NONE,
+    CALC_KEY_FV,
     'v',
     M_NONE,
     do_business
@@ -451,8 +451,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Pmt"),
     N_("Periodic payment"),
-    GDK_SHIFT_MASK,
-    GDK_P,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_PMT,
     'P',
     M_NONE,
     do_business
@@ -460,8 +460,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Pv"),
     N_("Present value"),
-    0,
-    GDK_p,
+    CALC_MOD_NONE,
+    CALC_KEY_PV,
     'p',
     M_NONE,
     do_business
@@ -469,8 +469,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Rate"),
     N_("Periodic interest rate"),
-    GDK_SHIFT_MASK,
-    GDK_T,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_RATE,
     'T',
     M_NONE,
     do_business
@@ -478,8 +478,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     N_("Sln"),
     N_("Straight-line depreciation"),
-    0,
-    GDK_l,
+    CALC_MOD_NONE,
+    CALC_KEY_SLN,
     'l',
     M_NONE,
     do_business
@@ -487,8 +487,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     N_("Syd"),
     N_("Sum-of-the years'-digits depreciation"),
-    0,
-    GDK_Y,
+    CALC_MOD_NONE,
+    CALC_KEY_SYD,
     'Y',
     M_NONE,
     do_business
@@ -498,8 +498,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     N_("Term"),
     N_("Payment period"),
-    0,
-    GDK_T,
+    CALC_MOD_NONE,
+    CALC_KEY_TERM,
     'T',
     M_NONE,
     do_business
@@ -507,8 +507,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -516,8 +516,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -525,8 +525,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -534,8 +534,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -543,8 +543,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -552,8 +552,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 { 
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -561,8 +561,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 {
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -585,8 +585,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("<"),
     N_("Shift displayed value 0-15 places to the left"),
-    GDK_SHIFT_MASK,
-    GDK_less,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_LSFT,
     '<',
     M_LSHF,
     do_pending
@@ -594,8 +594,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_(">"),
     N_("Shift displayed value 0-15 places to the right"),
-    GDK_SHIFT_MASK,
-    GDK_greater,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_RSFT,
     '>',
     M_RSHF,   
     do_pending
@@ -603,8 +603,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {             
     N_("&amp;16"),
     N_("16-bit unsigned integer value of display"),
-    0,        
-    GDK_bracketright,
+    CALC_MOD_NONE,        
+    CALC_KEY_16,
     ']',
     M_NONE,   
     do_immed  
@@ -612,8 +612,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {             
     N_("&amp;32"),
     N_("32-bit unsigned integer value of display"),
-    0,
-    GDK_bracketleft,
+    CALC_MOD_NONE,
+    CALC_KEY_32,
     '[',
     M_NONE,
     do_immed
@@ -621,8 +621,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -630,8 +630,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("("),
     N_("Start group of calculations"),
-    GDK_SHIFT_MASK,
-    GDK_parenleft,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_LPAR,
     '(',
     M_NONE,
     do_paren
@@ -639,8 +639,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_(")"),
     N_("End group of calculations"),
-    GDK_SHIFT_MASK,
-    GDK_parenright,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_RPAR,
     ')',
     M_NONE,
     do_paren
@@ -648,8 +648,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     "    ",
     "    ",
-    0,
-    0,
+    CALC_MOD_NONE,
+    CALC_KEY_NONE,
     ' ',
     M_NONE,
     do_none
@@ -659,8 +659,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Con"),
     N_("Constants"),
-    GDK_SHIFT_MASK,   
-    GDK_numbersign,   
+    CALC_MOD_SHIFT_MASK,   
+    CALC_KEY_CON,   
     '#',
     M_CON,            
     do_pending
@@ -668,8 +668,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Fun"),
     N_("User-defined functions"),
-    GDK_SHIFT_MASK,
-    GDK_F,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_FUN,
     'F',
     M_FUN,
     do_pending
@@ -677,8 +677,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Exp"),
     N_("Enter an exponential number"),
-    GDK_SHIFT_MASK,
-    GDK_E,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_EXP,
     'E',
     M_NONE,
     do_expno
@@ -686,8 +686,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("e<sup>x</sup>"),
     N_("e to the power of displayed value"),
-    GDK_SHIFT_MASK,
-    GDK_braceleft,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_ETOX,
     '{',
     M_NONE,
     do_immed
@@ -695,8 +695,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("10<sup>x</sup>"),
     N_("10 to the power of displayed value"),
-    GDK_SHIFT_MASK,
-    GDK_braceright,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_TTOX,
     '}',
     M_NONE,
     do_immed
@@ -704,8 +704,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {        
     N_("y<sup>x</sup>"),
     N_("y to the power of displayed value"),
-    0,   
-    GDK_y,
+    CALC_MOD_NONE,   
+    CALC_KEY_YTOX,
     'y',
     M_NONE,
     do_calc
@@ -713,8 +713,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {        
     N_("x!"),
     N_("factorial of displayed value"),
-    GDK_SHIFT_MASK,
-    GDK_exclam,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_FACT,
     '!',
     M_NONE,
     do_immed
@@ -722,8 +722,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Rand"),
     N_("Random number in the range 0.0 to 1.0"),
-    GDK_SHIFT_MASK,
-    GDK_question,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_RAND,
     '?',
     M_NONE,
     do_immed
@@ -733,8 +733,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("D"),
     N_("Hexadecimal digit D"),
-    0,
-    GDK_d,
+    CALC_MOD_NONE,
+    CALC_KEY_D,
     'd',
     M_NONE,
     do_number
@@ -742,8 +742,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("E"),
     N_("Hexadecimal digit E"),
-    0,
-    GDK_e,
+    CALC_MOD_NONE,
+    CALC_KEY_E,
     'e',
     M_NONE,
     do_number
@@ -751,8 +751,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("F"),
     N_("Hexadecimal digit F"),
-    0,
-    GDK_f,
+    CALC_MOD_NONE,
+    CALC_KEY_F,
     'f',
     M_NONE,
     do_number
@@ -760,8 +760,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Cos"),
     N_("Cosine"),
-    GDK_SHIFT_MASK,
-    GDK_J,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_COS,
     'J',
     M_NONE,
     do_trig
@@ -769,8 +769,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Sin"),
     N_("Sine"),
-    GDK_SHIFT_MASK,
-    GDK_K,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_SIN,
     'K',
     M_NONE,
     do_trig
@@ -778,8 +778,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {        
     N_("Tan"),
     N_("Tangent"),
-    GDK_SHIFT_MASK,
-    GDK_L,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_TAN,
     'L',
     M_NONE,
     do_trig
@@ -787,8 +787,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {      
     N_("Ln"),
     N_("Natural log"),
-    GDK_SHIFT_MASK,
-    GDK_N,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_LN,
     'N',
     M_NONE,
     do_immed
@@ -796,8 +796,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 { 
     N_("Log"),
     N_("Base 10 log"),
-    GDK_SHIFT_MASK,
-    GDK_G,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_LOG,
     'G',
     M_NONE,
     do_immed
@@ -807,8 +807,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("A"),
     N_("Hexadecimal digit A"),
-    0,
-    GDK_a,
+    CALC_MOD_NONE,
+    CALC_KEY_A,
     'a',
     M_NONE,
     do_number
@@ -816,8 +816,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("B"),
     N_("Hexadecimal digit B"),
-    0,
-    GDK_b,
+    CALC_MOD_NONE,
+    CALC_KEY_B,
     'b',
     M_NONE,
     do_number
@@ -825,8 +825,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {     
     N_("C"),
     N_("Hexadecimal digit C"),
-    0,
-    GDK_c,
+    CALC_MOD_NONE,
+    CALC_KEY_C,
     'c',
     M_NONE,
     do_number
@@ -834,8 +834,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Or"),
     N_("Logical OR"),
-    GDK_SHIFT_MASK,
-    GDK_bar,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_OR,
     '|',
     M_NONE,
     do_calc
@@ -843,8 +843,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("And"),
     N_("Logical AND"),
-    GDK_SHIFT_MASK,
-    GDK_ampersand,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_AND,
     '&',
     M_NONE,
     do_calc
@@ -852,8 +852,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {        
     N_("Not"),
     N_("Logical NOT"),
-    GDK_SHIFT_MASK,
-    GDK_asciitilde,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_NOT,
     '~',
     M_NONE,
     do_immed
@@ -861,8 +861,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Xor"),
     N_("Logical XOR"),
-    GDK_SHIFT_MASK,
-    GDK_caret,
+    CALC_MOD_SHIFT_MASK,
+    CALC_KEY_XOR,
     '^',
     M_NONE,
     do_calc
@@ -870,8 +870,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Xnor"),
     N_("Logical XNOR"),
-    0,
-    GDK_n,
+    CALC_MOD_NONE,
+    CALC_KEY_XNOR,
     'n',
     M_NONE,
     do_calc
@@ -912,6 +912,7 @@ do_calctool(int argc, char **argv)
 
     init_text();               /* Setup text strings depending upon language. */
     init_vars();               /* Setup default values for variables. */
+    init_key_types();          /* Assign toolkit specific key values. */
     load_resources();          /* Get resources from various places. */
     read_resources();          /* Read resources from merged database. */
     get_options(argc, argv);   /* Get command line arguments. */
