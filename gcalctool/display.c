@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -83,13 +83,8 @@ remove_tsep(char *str) {
     char *dstp = str;
     size_t tsep_len;
 
-/* If there are no thousands separators in the numeric string, just return
- * without doing anything. This is needed because the initial constant
- * definitions are potentially in read-only memory, and shouldn't be adjusted.
- */
-
-    if (strstr(str, v->tsep) != NULL) {
-        tsep_len = strlen(v->tsep);
+    tsep_len = strlen(v->tsep);
+    if (tsep_len && strstr(str, v->tsep) != NULL) {
         while (*srcp != '\0') {
             if (memcmp(srcp, v->tsep, tsep_len) == 0) {
                 srcp += tsep_len;

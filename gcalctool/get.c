@@ -128,7 +128,9 @@ get_radix()
     char *radix;
 
     setlocale(LC_NUMERIC, "");
-    radix = nl_langinfo(RADIXCHAR);
+    if ((radix = nl_langinfo(RADIXCHAR)) != NULL) {
+        radix = g_locale_to_utf8(radix, -1, NULL, NULL, NULL);
+    }
 
     if (radix == NULL || radix[0] == '\0') {
         return(".");
@@ -228,7 +230,9 @@ get_tsep()
     char *tsep;
 
     setlocale(LC_NUMERIC, "");
-    tsep = nl_langinfo(THOUSEP);
+    if ((tsep = nl_langinfo(THOUSEP)) != NULL) {
+        tsep = g_locale_to_utf8(tsep, -1, NULL, NULL, NULL);
+    }
 
     if (tsep == NULL || tsep[0] == '\0') {
         return(",");
@@ -251,6 +255,7 @@ init_constant(int n, gchar *value)
 void
 init_vars()    /* Setup default values for various variables. */
 {
+    char *loc_radix;
     int acc, i, n, size;
 
     v->accuracy      = 9;      /* Initial accuracy. */
@@ -274,6 +279,8 @@ init_vars()    /* Setup default values for various variables. */
 
     read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */
 
+    loc_radix = (char *) v->radix;
+    v->radix = ".";
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */
     init_constant(2, "2.7182818284");          /* e */
@@ -284,6 +291,7 @@ init_vars()    /* Setup default values for various variables. */
     init_constant(7, "0.0353");                /* grams <=> ounce. */
     init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
     init_constant(9, "0.0610");                /* cms3 <=> inches3. */
+    v->radix = loc_radix;
 
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
