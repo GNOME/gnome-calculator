@@ -838,21 +838,19 @@ create_rframe()
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
     set_title(FCP_REG, N_("Memory Registers"));
-    gtk_widget_set_size_request(X->rframe, 248, 179);
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(line, "%1d   %s", i,  make_number(v->MPmvals[i], FALSE));
+        SPRINTF(line, "%1d:   %s", i,  make_number(v->MPmvals[i], FALSE));
         X->regs[i] = gtk_label_new(line);
         SPRINTF(name, "register_label%1d", i);
         gtk_widget_set_name(X->regs[i], name);
         gtk_widget_ref(X->regs[i]);
         gtk_misc_set_alignment(GTK_MISC(X->regs[i]), 0.0, 0.5);
         gtk_misc_set_padding(GTK_MISC(X->regs[i]), 5, 5);
-        gtk_widget_set_size_request(X->regs[i], -1, 80);
         gtk_box_pack_start(GTK_BOX(vbox), X->regs[i], TRUE, TRUE, 0);
     }
     gtk_widget_show_all(vbox);

@@ -177,10 +177,14 @@ void
 make_registers()            /* Calculate memory register frame values. */
 {
     char line[MAXLINE];     /* Current memory register line. */
+    char fmt[MAXLINE];      /* Format string to create the register string. */
+    char *mval;
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
-        SPRINTF(line, "%1d   %s", n, make_number(v->MPmvals[n], FALSE));
+        mval = make_number(v->MPmvals[n], FALSE);
+	SPRINTF(fmt, "%s%%%1ds", "%1d:   %s", MAX_DIGITS - strlen(mval));
+	SPRINTF(line, fmt, n, mval, " ");
         make_reg(n, line);
     }
 }
