@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.ne.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-11 03:38+0100\n"
+"POT-Creation-Date: 2005-01-10 07:24-0800\n"
 "PO-Revision-Date: 2004-12-25 04:23+0545\n"
+"Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
 "X-Poedit-Language: Nepali\n"
 "X-Poedit-Country: NEPAL\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -87,19 +87,19 @@ msgid "Set inverse option for trigonometric functions"
 msgstr "त्रिगोनोमेट्रिक कार्य को लागि उल्टो विकल्प मिलाउ"
 
 #. Mode titles to be added to the titlebar.
-#: gcalctool/calctool.c:70
+#: gcalctool/calctool.c:70 gcalctool/gtk.c:335
 msgid "Basic"
 msgstr "आधारभूत"
 
-#: gcalctool/calctool.c:70
+#: gcalctool/calctool.c:70 gcalctool/gtk.c:337
 msgid "Advanced"
 msgstr "आधुनिक"
 
-#: gcalctool/calctool.c:70
+#: gcalctool/calctool.c:70 gcalctool/gtk.c:339
 msgid "Financial"
 msgstr "आर्थिक"
 
-#: gcalctool/calctool.c:71
+#: gcalctool/calctool.c:71 gcalctool/gtk.c:341
 msgid "Scientific"
 msgstr "बैज्ञानिक"
 
@@ -157,8 +157,7 @@ msgstr "९"
 msgid "Numeric 9"
 msgstr "संख्या ९"
 
-#: gcalctool/calctool.c:168
-#: gcalctool/calctool.c:176
+#: gcalctool/calctool.c:168 gcalctool/calctool.c:176
 msgid "/"
 msgstr "/"
 
@@ -238,8 +237,7 @@ msgstr "६"
 msgid "Numeric 6"
 msgstr "संख्या ६"
 
-#: gcalctool/calctool.c:266
-#: gcalctool/calctool.c:274
+#: gcalctool/calctool.c:266 gcalctool/calctool.c:274
 msgid "*"
 msgstr "*"
 
@@ -552,8 +550,7 @@ msgid "16 bit unsigned integer"
 msgstr "१६ बिट चिन्हरहित पूर्णांक"
 
 #. Payment period
-#: gcalctool/calctool.c:780
-#: gcalctool/syntax_translation.c:74
+#: gcalctool/calctool.c:780 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
 
@@ -570,8 +567,7 @@ msgid "32 bit unsigned integer"
 msgstr "३२ बिट चिन्हरहित पूर्णांङ्क"
 
 #. 16-bit unsigned integer value
-#: gcalctool/calctool.c:792
-#: gcalctool/syntax_translation.c:75
+#: gcalctool/calctool.c:792 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
 
@@ -711,8 +707,7 @@ msgstr "ई"
 msgid "Hexadecimal digit E"
 msgstr "हेक्साडेसिमल संख्या ई"
 
-#: gcalctool/calctool.c:968
-#: gcalctool/gtk.c:1523
+#: gcalctool/calctool.c:968 gcalctool/gtk.c:1523
 msgid "F"
 msgstr "एफ"
 
@@ -776,8 +771,7 @@ msgstr "बि"
 msgid "Hexadecimal digit B"
 msgstr "हेक्साडेसिमल संख्या बि"
 
-#: gcalctool/calctool.c:1065
-#: gcalctool/gtk.c:1515
+#: gcalctool/calctool.c:1065 gcalctool/gtk.c:1515
 msgid "C"
 msgstr "सि"
 
@@ -858,8 +852,7 @@ msgid "e"
 msgstr "ई"
 
 #. Bitwise OR
-#: gcalctool/calctool.c:1255
-#: gcalctool/syntax_translation.c:59
+#: gcalctool/calctool.c:1255 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "पाइ"
 
@@ -888,12 +881,10 @@ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "घन-सेन्टिमिटर देखि घन-ईन्च रुपान्तरण आधार"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#: gcalctool/calctool.c:1274
-#: gcalctool/display.c:266
-#: gcalctool/mp.c:1966
-#: gcalctool/mpmath.c:412
-#: gcalctool/mpmath.c:451
-#: gcalctool/mpmath.c:506
+#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
+#.
+#: gcalctool/calctool.c:1274 gcalctool/display.c:266 gcalctool/mp.c:1966
+#: gcalctool/mpmath.c:412 gcalctool/mpmath.c:451 gcalctool/mpmath.c:506
 msgid "Error"
 msgstr "त्रुटि"
 
@@ -917,8 +908,7 @@ msgstr "सफा गरियो देखाउ, कुनै कारकव�
 msgid "Malformed parenthesis expression"
 msgstr "नमिल्ने गरी रचित लघु कोष्ट वाक्यांश"
 
-#: gcalctool/functions.c:1008
-#: gcalctool/functions.c:1256
+#: gcalctool/functions.c:1008 gcalctool/functions.c:1256
 msgid "No sane value to store"
 msgstr "संचय गर्न कुनै सद्दे मान छैन"
 
@@ -934,8 +924,7 @@ msgstr "अपरैण्ड स्ट्याक त्रुटि"
 msgid "-a needs accuracy value"
 msgstr "-ए सहि मान आवश्यक पर्छ"
 
-#: gcalctool/get.c:157
-#: gcalctool/get.c:311
+#: gcalctool/get.c:157 gcalctool/get.c:311
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: ०- %d दायरा भित्र शुद्धता हुनैपर्छ\n"
@@ -946,6 +935,9 @@ msgid "%s: %s as next argument.\n"
 msgstr "%s: %s जस्तै अर्को आर्गुमेन्ट।\n"
 
 #. No calculator error initially.
+#. Not entering an exponent number.
+#. No pending arithmetic operation.
+#. No User supplied title line.
 #: gcalctool/get.c:269
 msgid "calculator"
 msgstr "गणक यन्त्र"
@@ -994,9 +986,8 @@ msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
-#: gcalctool/graphics.c:61
-#: gcalctool/gtk.c:1304
-#: gcalctool/gtk.c:1437
+#. in popup menus
+#: gcalctool/graphics.c:61 gcalctool/gtk.c:1304 gcalctool/gtk.c:1437
 msgid "R"
 msgstr "आर"
 
@@ -1064,118 +1055,86 @@ msgstr "बारेमा"
 msgid "Show the About Gcalctool dialog"
 msgstr "जिगणकयन्त्रको डायलगबारे देखाउ"
 
-#: gcalctool/gtk.c:229
-#: gcalctool/gtk.c:230
-#: gcalctool/gtk.c:260
+#: gcalctool/gtk.c:229 gcalctool/gtk.c:230 gcalctool/gtk.c:260
 #: gcalctool/gtk.c:261
 msgid "1 place"
 msgstr "१ ठाउँ"
 
-#: gcalctool/gtk.c:231
-#: gcalctool/gtk.c:232
-#: gcalctool/gtk.c:262
+#: gcalctool/gtk.c:231 gcalctool/gtk.c:232 gcalctool/gtk.c:262
 #: gcalctool/gtk.c:263
 msgid "2 places"
 msgstr "२ ठाउँहरु"
 
-#: gcalctool/gtk.c:233
-#: gcalctool/gtk.c:234
-#: gcalctool/gtk.c:264
+#: gcalctool/gtk.c:233 gcalctool/gtk.c:234 gcalctool/gtk.c:264
 #: gcalctool/gtk.c:265
 msgid "3 places"
 msgstr "३ ठाउँहरु"
 
-#: gcalctool/gtk.c:235
-#: gcalctool/gtk.c:236
-#: gcalctool/gtk.c:266
+#: gcalctool/gtk.c:235 gcalctool/gtk.c:236 gcalctool/gtk.c:266
 #: gcalctool/gtk.c:267
 msgid "4 places"
 msgstr "४ ठाउँहरु"
 
-#: gcalctool/gtk.c:237
-#: gcalctool/gtk.c:238
-#: gcalctool/gtk.c:268
+#: gcalctool/gtk.c:237 gcalctool/gtk.c:238 gcalctool/gtk.c:268
 #: gcalctool/gtk.c:269
 msgid "5 places"
 msgstr "५ ठाउँहरु"
 
-#: gcalctool/gtk.c:239
-#: gcalctool/gtk.c:240
-#: gcalctool/gtk.c:270
+#: gcalctool/gtk.c:239 gcalctool/gtk.c:240 gcalctool/gtk.c:270
 #: gcalctool/gtk.c:271
 msgid "6 places"
 msgstr "६ ठाउँहरु"
 
-#: gcalctool/gtk.c:241
-#: gcalctool/gtk.c:242
-#: gcalctool/gtk.c:272
+#: gcalctool/gtk.c:241 gcalctool/gtk.c:242 gcalctool/gtk.c:272
 #: gcalctool/gtk.c:273
 msgid "7 places"
 msgstr "७ ठाउँहरु"
 
-#: gcalctool/gtk.c:243
-#: gcalctool/gtk.c:244
-#: gcalctool/gtk.c:274
+#: gcalctool/gtk.c:243 gcalctool/gtk.c:244 gcalctool/gtk.c:274
 #: gcalctool/gtk.c:275
 msgid "8 places"
 msgstr "८ ठाउँहरु"
 
-#: gcalctool/gtk.c:245
-#: gcalctool/gtk.c:246
-#: gcalctool/gtk.c:276
+#: gcalctool/gtk.c:245 gcalctool/gtk.c:246 gcalctool/gtk.c:276
 #: gcalctool/gtk.c:277
 msgid "9 places"
 msgstr "९ ठाउँहरु"
 
-#: gcalctool/gtk.c:247
-#: gcalctool/gtk.c:248
-#: gcalctool/gtk.c:278
+#: gcalctool/gtk.c:247 gcalctool/gtk.c:248 gcalctool/gtk.c:278
 #: gcalctool/gtk.c:279
 msgid "10 places"
 msgstr "१० ठाउँहरु"
 
-#: gcalctool/gtk.c:249
-#: gcalctool/gtk.c:250
-#: gcalctool/gtk.c:280
+#: gcalctool/gtk.c:249 gcalctool/gtk.c:250 gcalctool/gtk.c:280
 #: gcalctool/gtk.c:281
 msgid "11 places"
 msgstr "११ ठाउँहरु"
 
-#: gcalctool/gtk.c:251
-#: gcalctool/gtk.c:252
-#: gcalctool/gtk.c:282
+#: gcalctool/gtk.c:251 gcalctool/gtk.c:252 gcalctool/gtk.c:282
 #: gcalctool/gtk.c:283
 msgid "12 places"
 msgstr "१२ ठाउँहरु"
 
-#: gcalctool/gtk.c:253
-#: gcalctool/gtk.c:254
-#: gcalctool/gtk.c:284
+#: gcalctool/gtk.c:253 gcalctool/gtk.c:254 gcalctool/gtk.c:284
 #: gcalctool/gtk.c:285
 msgid "13 places"
 msgstr "१३ ठाउँहरु"
 
-#: gcalctool/gtk.c:255
-#: gcalctool/gtk.c:256
-#: gcalctool/gtk.c:286
+#: gcalctool/gtk.c:255 gcalctool/gtk.c:256 gcalctool/gtk.c:286
 #: gcalctool/gtk.c:287
 msgid "14 places"
 msgstr "१४ ठाउँहरु"
 
-#: gcalctool/gtk.c:257
-#: gcalctool/gtk.c:258
-#: gcalctool/gtk.c:288
+#: gcalctool/gtk.c:257 gcalctool/gtk.c:258 gcalctool/gtk.c:288
 #: gcalctool/gtk.c:289
 msgid "15 places"
 msgstr "१५ ठाउँहरु"
 
-#: gcalctool/gtk.c:294
-#: gcalctool/gtk.c:300
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:300
 msgid "Show _Trailing Zeroes"
 msgstr "ट्राइलिंग सुन्यहरु देखाउ"
 
-#: gcalctool/gtk.c:295
-#: gcalctool/gtk.c:301
+#: gcalctool/gtk.c:295 gcalctool/gtk.c:301
 msgid "Show trailing zeroes"
 msgstr "ट्राइलिंग सुन्यहरु देखाउ"
 
@@ -1292,36 +1251,24 @@ msgid "Set other precision"
 msgstr "अन्य शुद्धता मिलाउ"
 
 #: gcalctool/gtk.c:334
-msgid "_Basic mode"
-msgstr "आधार शैलि"
-
-#: gcalctool/gtk.c:335
-msgid "Basic mode"
-msgstr "आधार शैलि"
+#, fuzzy
+msgid "_Basic"
+msgstr "आधारभूत"
 
 #: gcalctool/gtk.c:336
-msgid "_Advanced mode"
-msgstr "उच्च शैलि"
-
-#: gcalctool/gtk.c:337
-msgid "Advanced mode"
-msgstr "उच्च शैलि"
+#, fuzzy
+msgid "_Advanced"
+msgstr "आधुनिक"
 
 #: gcalctool/gtk.c:338
-msgid "_Financial mode"
-msgstr "आर्थिक शैलि"
-
-#: gcalctool/gtk.c:339
-msgid "Financial mode"
-msgstr "आर्थिक शैलि"
+#, fuzzy
+msgid "_Financial"
+msgstr "आर्थिक"
 
 #: gcalctool/gtk.c:340
-msgid "_Scientific mode"
-msgstr "बैज्ञानिक शैलि"
-
-#: gcalctool/gtk.c:341
-msgid "Scientific mode"
-msgstr "बैज्ञानिक शैलि"
+#, fuzzy
+msgid "_Scientific"
+msgstr "बैज्ञानिक"
 
 #: gcalctool/gtk.c:502
 msgid "translator_credits"
@@ -1391,9 +1338,7 @@ msgstr "महत्वपुर्ण ठाउँहरु:"
 msgid "_Set"
 msgstr "मिलाउ"
 
-#: gcalctool/gtk.c:1113
-#: gcalctool/gtk.c:1115
-#: gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1113 gcalctool/gtk.c:1115 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "गणक यन्त्र"
 
@@ -1429,7 +1374,8 @@ msgstr "अन्य(%d) ..."
 
 #: gcalctool/gtk.c:1949
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+msgid ""
+"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr "० देखि %d संख्यात्मक ठाउँ देखि शुद्धता मिलाउ। हाललाई %d ठाँउमा मिलाइएको छ।[ए]"
 
 #: gcalctool/gtk.c:2165
@@ -1650,3 +1596,26 @@ msgstr "एक्सअर"
 msgid "Perform calculations"
 msgstr "गणना गर"
 
+#~ msgid "_Basic mode"
+#~ msgstr "आधार शैलि"
+
+#~ msgid "Basic mode"
+#~ msgstr "आधार शैलि"
+
+#~ msgid "_Advanced mode"
+#~ msgstr "उच्च शैलि"
+
+#~ msgid "Advanced mode"
+#~ msgstr "उच्च शैलि"
+
+#~ msgid "_Financial mode"
+#~ msgstr "आर्थिक शैलि"
+
+#~ msgid "Financial mode"
+#~ msgstr "आर्थिक शैलि"
+
+#~ msgid "_Scientific mode"
+#~ msgstr "बैज्ञानिक शैलि"
+
+#~ msgid "Scientific mode"
+#~ msgstr "बैज्ञानिक शैलि"
