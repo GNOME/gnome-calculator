@@ -53,7 +53,7 @@ clear_display(int initialise)
     i = 0;
     mpcim(&i, v->MPdisp_val);
     STRCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE, FALSE));
-    set_display(v->display, FALSE);
+    set_display(v->display);
 
     if (initialise == TRUE) {
         v->show_paren = 0;
@@ -418,7 +418,7 @@ paren_disp(char c)
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
     v->show_paren = 1;       /* Hack to get set_display to really display it. */
-    set_display(&v->display[n], FALSE);
+    set_display(&v->display[n]);
     v->show_paren = 0;
 }
 
@@ -477,6 +477,6 @@ show_display(int *MPval)
 {
     if (!v->error) {
         STRCPY(v->display, make_number(MPval, v->base, TRUE, FALSE));
-        set_display(v->display, FALSE);
+        set_display(v->display);
     }
 }

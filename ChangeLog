@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2003-07-08  Rich Burridge  <rich.burridge@sun.com>
+
+    * Refixed bug 116727 (http://bugzilla.gnome.org/show_bug.cgi?id=116727)
+      After further discussion with Toshi, it was understood that I didn't
+      need to call g_locale_to_utf8() for the numeric strings (which just
+      consist of '0'-'9', 'e', 'A'-'F', '+', '-' and '.'). set_display() in
+      gtk.c was simplified back to using just one parameter.
+
 2003-07-07  Rich Burridge  <rich.burridge@sun.com>
 
     * Fixed bug 116727 (http://bugzilla.gnome.org/show_bug.cgi?id=116727)
