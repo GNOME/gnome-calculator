@@ -1,5 +1,5 @@
 # Serbian translation of gcalctool
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003, 2004.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003, 2004, 2005.
 #
 # This file is distributed under the same license as the gcalctool package.
 #
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
-"PO-Revision-Date: 2004-10-16 09:28+0200\n"
+"POT-Creation-Date: 2005-03-02 14:17+0100\n"
+"PO-Revision-Date: 2005-03-02 14:18+0100\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,29 +87,24 @@ msgstr "Koristi inverzne trigonometrijske funkcije"
 
 #. Mode titles to be added to the titlebar.
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:339
-#, fuzzy
 msgid "Basic"
-msgstr "Osnovni mod"
+msgstr "Osnovni"
 
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:341
-#, fuzzy
 msgid "Advanced"
-msgstr "Osnovni mod"
+msgstr "Napredni"
 
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:343
-#, fuzzy
 msgid "Financial"
-msgstr "Finansijski mod"
+msgstr "Finansijski"
 
 #: gcalctool/calctool.c:71 gcalctool/gtk.c:345
-#, fuzzy
 msgid "Scientific"
-msgstr "Naučni mod"
+msgstr "Naučni"
 
 #: gcalctool/calctool.c:71
-#, fuzzy
 msgid "Expression"
-msgstr "Režim izraza"
+msgstr "Izrazi"
 
 #. Strings for each trig type value.
 #: gcalctool/calctool.c:75
@@ -894,35 +889,36 @@ msgstr "Činilac za pretvaranje kubnih centimetara u kubne inče"
 msgid "Error"
 msgstr "Greška"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Prethodni izraz"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Neispravan izraz"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Neispravna funkcija"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Očišćen prikaz, predmetak bez operatora nije dopušten"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Neispravan izraz u zagradama"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Nema razumne vrednosti za smeštanje"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Neispravna funkcija"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Očišćen prikaz, predmetak bez operatora nije dopušten"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Neispravan izraz u zagradama"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Greška numeričkog steka"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Greška steka operanda"
 
@@ -1257,28 +1253,27 @@ msgid "Set other precision"
 msgstr "Postavi drugačiju tačnost"
 
 #: gcalctool/gtk.c:338
-#, fuzzy
 msgid "_Basic"
-msgstr "_Osnovni režim"
+msgstr "_Osnovni"
 
 #: gcalctool/gtk.c:340
-#, fuzzy
 msgid "_Advanced"
-msgstr "_Osnovni režim"
+msgstr "Na_predni"
 
 #: gcalctool/gtk.c:342
-#, fuzzy
 msgid "_Financial"
-msgstr "_Finansijski režim"
+msgstr "_Finansijski"
 
 #: gcalctool/gtk.c:344
-#, fuzzy
 msgid "_Scientific"
-msgstr "_Naučni režim"
+msgstr "_Naučni"
 
 #: gcalctool/gtk.c:504
 msgid "translator_credits"
-msgstr "Danilo Šegan <danilo@prevod.org>"
+msgstr ""
+"Danilo Šegan <danilo@prevod.org>\n"
+"\n"
+"Prevod.org — prevod na srpski jezik"
 
 #: gcalctool/gtk.c:507
 msgid "Gcalctool"
@@ -1386,21 +1381,21 @@ msgstr ""
 "Postavi preciznost na 0 do %d cifara. Trenutno je postavljeno na %d cifara. "
 "[a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Koristi se režim bez prioriteta operacija"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Koristi se režim sa prioritetom operacija"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Vrednost tačnosti izvan opsega"
 
 #: gcalctool/mp.c:3349
 msgid "Negative X and non-integer Y not supported"
-msgstr ""
+msgstr "Negativni X i neceli Y nisu podržani"
 
 #: gcalctool/mpmath.c:248
 msgid "Error, cannot calculate cosine"
@@ -1521,8 +1516,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1601,14 +1600,7 @@ msgstr "xor"
 msgid "Perform calculations"
 msgstr "Izračunaj"
 
-#~ msgid "pmt"
-#~ msgstr "pmt"
-
 #~ msgid "Basic mode"
-#~ msgstr "Osnovni režim"
-
-#, fuzzy
-#~ msgid "Advanced mode"
 #~ msgstr "Osnovni režim"
 
 #~ msgid "Financial mode"
