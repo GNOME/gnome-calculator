@@ -844,8 +844,10 @@ create_rframe()
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(line, "%1d:   %s", i,  make_number(v->MPmvals[i], FALSE));
-        X->regs[i] = gtk_label_new(line);
+        SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>   %s", 
+                _("R"), i,  make_number(v->MPmvals[i], FALSE));
+        X->regs[i] = gtk_label_new("");
+        gtk_label_set_markup(GTK_LABEL(X->regs[i]), line);
         SPRINTF(name, "register_label%1d", i);
         gtk_widget_set_name(X->regs[i], name);
         gtk_widget_ref(X->regs[i]);
@@ -1201,7 +1203,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
 void
 make_reg(int n, char *str)
 {
-    gtk_label_set_text(GTK_LABEL(X->regs[n]), str);
+    gtk_label_set_markup(GTK_LABEL(X->regs[n]), str);
 }
 
 
