@@ -379,7 +379,7 @@ paren_disp(char c)
         mpcim(&i, v->MPdisp_val);
         show_display(v->MPdisp_val);
         return;
-    } else if (IS_KEY(c, KEY_BSP.value)) {  /* Is is a Back Space character? */
+    } else if (c == 8) {  /* Is is a Back Space character? */
         if (!n) {
             return;
         }
