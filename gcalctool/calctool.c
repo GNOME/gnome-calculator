@@ -301,7 +301,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "multiplies it by the next number entered."
     ),
     0,
-    GDK_x,
+    GDK_asterisk,
     OP_SET,
     M_NONE,
     do_calc

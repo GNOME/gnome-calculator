@@ -7,6 +7,16 @@
 gcalctool change history.
 =========================
 
+v4.2.8 - 9th January 2003.  (richb)
+
+* Entering "((2+3)*9+(5-3))" causes a segv. The problem was due to the
+  change from "x" to "*" as the character for multiplication. The .value
+  entry in the button struct for the multiplication button needed to be
+  changed to GDK_asterisk (rather than GDK_x), otherwise button_for_value()
+  returns a NULL pointer.
+
+----
+
 v4.2.7 - 9th January 2003.  (richb)
 
 * Removed the attempt to display a calculator image on the About popup.
