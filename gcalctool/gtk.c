@@ -1684,26 +1684,15 @@ static void
 setup_default_icon(void)
 {
     GdkPixbuf *pixbuf = NULL;
-    char *filename;
     GError *err = NULL;
+    char *filename;
 
-    filename = find_file("calctool.gif", &err);
-    if (filename) {
-        pixbuf = gdk_pixbuf_new_from_file(filename, &err);
+    if ((filename = find_file("calctool.gif", &err)) != NULL) {
+        if ((pixbuf = gdk_pixbuf_new_from_file(filename, &err)) != NULL) {
+            gtk_window_set_icon(GTK_WINDOW(X->kframe), pixbuf);
+        }
         g_free(filename);
     }
-
-    if (pixbuf)  {          
-        GList *list;
-
-        list = NULL;
-        list = g_list_append(list, pixbuf);
-        gtk_window_set_icon_list(GTK_WINDOW(X->kframe), list);
-        gdk_window_set_icon_name(X->kframe->window, "gcalctool");
-        gtk_window_set_default_icon_list(list);
-        g_list_free(list);
-        g_object_unref(G_OBJECT(pixbuf));
-    }          
 }
 
 
