@@ -79,8 +79,8 @@
 #define LASTEVENTPLUSONE 111    /* Not one of the above. */
 
 /* Menu bar menu types. */
-enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, 
-               M_COPY,  M_FIN,   M_QUIT,  M_REGS,     M_SCI };
+enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  
+               M_FIN,   M_PASTE, M_QUIT,  M_REGS,     M_SCI };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 

@@ -171,7 +171,11 @@ process_str(char *str)
             v->current->value = str[i];
             do_pending();
         } else {
-            process_item(button_for_value(str[i]));
+            struct button *current = button_for_value(str[i]);
+
+            if (current != NULL) {
+                process_item(current);
+            }
         }
     }
 }

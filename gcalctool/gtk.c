@@ -159,6 +159,7 @@ static GtkItemFactoryEntry main_menu[] = {
 
     { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
     { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
+    { "/Edit/_Paste",              NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
     { "/Edit/_Insert ASCII Value", NULL, mb_proc, M_ASCII, NULL },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
@@ -1513,6 +1514,10 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
 
         case M_COPY:
             get_display();
+            break;
+
+        case M_PASTE:
+            handle_selection();
             break;
 
         case M_ASCII:

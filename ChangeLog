@@ -7,6 +7,24 @@
 gcalctool change history.
 =========================
 
+v4.2.22 - 16th January 2003.  (richb)
+
+* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
+
+  Added in an Edit->Paste menu item. If selected this will paste the current
+  contents of the clipboard into the calculator display as if you'd typed it.
+
+* Added bullet proofing to the process_str() routine in graphics.c to protect
+  it against values that weren't found. If a value wasn't found, it's just 
+  ignored, and it goes on to process the next character in the string.
+
+* Improved the val_to_button() routine in functions.c. It now takes into
+  consideration the mods value for each button struct entry when comparing 
+  against the given value. This isn't enough though, as it won't find Alt-<n>
+  buttons.
+
+----
+
 v4.2.21 - 16th January 2003.  (richb)
 
 * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
