@@ -153,7 +153,8 @@ static GtkItemFactoryEntry main_menu[] = {
     { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
     { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
     { "/Edit/_Paste",              NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
-    { "/Edit/_Insert ASCII Value...", NULL, mb_proc, M_ASCII, NULL },
+    { "/Edit/sep1",                NULL, NULL,    0,       "<Separator>" },
+    { "/Edit/_Insert ASCII Value...", NULL, mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
     { "/View/_Basic Mode",         NULL, mb_proc, M_BASIC, "<RadioItem>" },
@@ -360,6 +361,50 @@ beep()
 }
 
 
+static GtkWidget *
+button_new_with_stock_image(const gchar *text, const gchar *stock_id)
+{
+    GtkWidget *button, *label, *image, *hbox, *align;
+    GtkStockItem item;
+
+    button = gtk_button_new();
+
+    if (GTK_BIN(button)->child) {
+        gtk_container_remove(GTK_CONTAINER(button), GTK_BIN(button)->child);
+    }
+
+    if (gtk_stock_lookup(stock_id, &item)) {
+        label = gtk_label_new_with_mnemonic(text);
+
+        gtk_label_set_mnemonic_widget(GTK_LABEL(label), GTK_WIDGET(button));
+
+        image = gtk_image_new_from_stock(stock_id, GTK_ICON_SIZE_BUTTON);
+        hbox = gtk_hbox_new(FALSE, 2);
+
+        align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+
+        gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+        gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+
+        gtk_container_add(GTK_CONTAINER(button), align);
+        gtk_container_add(GTK_CONTAINER(align), hbox);
+        gtk_widget_show_all(align);
+
+        return(button);
+    }
+
+    label = gtk_label_new_with_mnemonic(text);
+    gtk_label_set_mnemonic_widget(GTK_LABEL(label), GTK_WIDGET(button));
+
+    gtk_misc_set_alignment(GTK_MISC(label), 0.5, 0.5);
+
+    gtk_widget_show(label);
+    gtk_container_add(GTK_CONTAINER(button), label);
+
+    return(button);
+}
+
+
 /*ARGSUSED*/
 static void
 button_proc(GtkButton *widget, gpointer user_data)
@@ -493,51 +538,64 @@ cfframe_cancel_cb(GtkButton *button, gpointer user_data)
 static void
 create_aframe()  /* Create auxiliary frame for ASC key. */
 {
-    GtkWidget *vbox, *hbox, *button_hbox, *label;
-    GtkWidget *ok_button, *cancel_button;
+    GtkWidget *vbox, *hbox, *button_hbox, *label, *separator;
+    GtkWidget *insert_button, *cancel_button;
 
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(X->aframe), _("Insert ASCII Value"));
+    gtk_window_set_type_hint(GTK_WINDOW(X->aframe), 
+                             GDK_WINDOW_TYPE_HINT_DIALOG);
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_show(vbox);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
     gtk_container_add(GTK_CONTAINER(X->aframe), vbox);
 
     hbox = gtk_hbox_new(FALSE, 0);
     gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, GNOME_PAD);
 
-    label = gtk_label_new(_("Character:"));
+    label = gtk_label_new_with_mnemonic(_("Ch_aracter:"));
     gtk_widget_show(label);
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
     X->aframe_ch = gtk_entry_new();
+    gtk_label_set_mnemonic_widget(GTK_LABEL(label), GTK_WIDGET(X->aframe_ch));
     gtk_entry_set_max_length(GTK_ENTRY(X->aframe_ch), 1);
     gtk_widget_show(X->aframe_ch);
-    gtk_box_pack_start(GTK_BOX(hbox), X->aframe_ch, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), X->aframe_ch, 
+                       FALSE, FALSE, GNOME_PAD_SMALL);
 
-    button_hbox = gtk_hbox_new(TRUE, 0);
+    separator = gtk_hseparator_new();
+    gtk_widget_show(separator);
+    gtk_box_pack_start(GTK_BOX(vbox), separator, FALSE, FALSE, 0);
+
+    button_hbox = gtk_hbutton_box_new();
+    gtk_button_box_set_layout(GTK_BUTTON_BOX(button_hbox), GTK_BUTTONBOX_END);
     gtk_widget_ref(button_hbox);
     gtk_widget_show(button_hbox);
     gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(button_hbox), 5);
+    gtk_container_set_border_width(GTK_CONTAINER(button_hbox), GNOME_PAD_SMALL);
+    gtk_box_set_spacing(GTK_BOX(button_hbox), GNOME_PAD);
 
     cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
     gtk_widget_ref(cancel_button);
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
 
-    ok_button = gtk_button_new_from_stock(GTK_STOCK_OK);
-    gtk_widget_ref(ok_button);
-    gtk_widget_show(ok_button);
-    gtk_box_pack_start(GTK_BOX(button_hbox), ok_button, FALSE, FALSE, 0);
+    insert_button = button_new_with_stock_image(_("_Insert"), 
+                                                GTK_STOCK_CONVERT);
+    g_return_if_fail(insert_button != NULL);
+    gtk_widget_ref(insert_button);
+    gtk_widget_show(insert_button);
+    gtk_box_pack_start(GTK_BOX(button_hbox), insert_button, FALSE, FALSE, 0);
 
     g_signal_connect(G_OBJECT(X->aframe), "delete_event",
                      G_CALLBACK(dismiss_aframe), NULL);
     g_signal_connect(G_OBJECT(X->aframe_ch), "activate",
                      G_CALLBACK(aframe_ok_cb), NULL);
-    g_signal_connect(G_OBJECT(ok_button), "clicked",
+    g_signal_connect(G_OBJECT(insert_button), "clicked",
                      G_CALLBACK(aframe_ok_cb), NULL);
     g_signal_connect(G_OBJECT(cancel_button), "clicked",
                      G_CALLBACK(aframe_cancel_cb), NULL);
