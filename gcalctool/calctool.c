@@ -986,16 +986,16 @@ doerr(char *errmes)
 static void
 init_text()         /* Setup constant strings. */
 {
-    STRCPY(v->con_names[0], _("kilometers per hour / miles per hour"));
+    STRCPY(v->con_names[0], _("kilometers per hour or miles per hour"));
     STRCPY(v->con_names[1], _("square root of 2"));
     STRCPY(v->con_names[2], _("e"));
     STRCPY(v->con_names[3], _("pi"));
-    STRCPY(v->con_names[4], _("centimeters / inches"));
+    STRCPY(v->con_names[4], _("centimeters or inches"));
     STRCPY(v->con_names[5], _("degrees in a radian"));
     STRCPY(v->con_names[6], _("2 ^ 20"));
-    STRCPY(v->con_names[7], _("grams / ounces"));
-    STRCPY(v->con_names[8], _("kilojoules / British thermal units"));
-    STRCPY(v->con_names[9], _("cubic centimeters / cubic inches"));
+    STRCPY(v->con_names[7], _("grams or ounces"));
+    STRCPY(v->con_names[8], _("kilojoules or British thermal units"));
+    STRCPY(v->con_names[9], _("cubic centimeters or cubic inches"));
 }
 
 

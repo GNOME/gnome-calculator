@@ -216,16 +216,16 @@ static GtkItemFactoryEntry main_menu[] = {
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
-    { N_("/0 radix places"), NULL, menu_proc, '0', "<RadioItem>" },
-    { N_("/1 radix place"), NULL, menu_proc, '1', "/0 radix places" },
-    { N_("/2 radix places"), NULL, menu_proc, '2', "/0 radix places" },
-    { N_("/3 radix places"), NULL, menu_proc, '3', "/0 radix places" },
-    { N_("/4 radix places"), NULL, menu_proc, '4', "/0 radix places" },
-    { N_("/5 radix places"), NULL, menu_proc, '5', "/0 radix places" },
-    { N_("/6 radix places"), NULL, menu_proc, '6', "/0 radix places" },
-    { N_("/7 radix places"), NULL, menu_proc, '7', "/0 radix places" },
-    { N_("/8 radix places"), NULL, menu_proc, '8', "/0 radix places" },
-    { N_("/9 radix places"), NULL, menu_proc, '9', "/0 radix places" },
+    { N_("/0 significant places"), NULL, menu_proc, '0', "<RadioItem>" },
+    { N_("/1 significant place"), NULL, menu_proc, '1', "/0 significant places" },
+    { N_("/2 significant places"), NULL, menu_proc, '2', "/0 significant places" },
+    { N_("/3 significant places"), NULL, menu_proc, '3', "/0 significant places" },
+    { N_("/4 significant places"), NULL, menu_proc, '4', "/0 significant places" },
+    { N_("/5 significant places"), NULL, menu_proc, '5', "/0 significant places" },
+    { N_("/6 significant places"), NULL, menu_proc, '6', "/0 significant places" },
+    { N_("/7 significant places"), NULL, menu_proc, '7', "/0 significant places" },
+    { N_("/8 significant places"), NULL, menu_proc, '8', "/0 significant places" },
+    { N_("/9 significant places"), NULL, menu_proc, '9', "/0 significant places" },
     { N_("/sep1"),           NULL, NULL,       0,  "<Separator>" },
     { N_("/Show _Trailing Zeroes"),"<control>T", astz_proc, 'T', "<ToggleItem>" },
 };

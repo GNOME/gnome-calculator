@@ -178,8 +178,7 @@ L40:
 
     mpchk(&c__1, &c__4);
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"));
-        FPRINTF(stderr, _("POSSIBLE OVERWRITING PROBLEM ***\n"));
+        FPRINTF(stderr, _("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\nPOSSIBLE OVERWRITING PROBLEM ***\n"));
     }
 
     mperr();
@@ -684,8 +683,7 @@ L50:
 /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"));
     }
 
     mperr();
@@ -833,9 +831,7 @@ mpchk(int *i, int *j)
     if (MP.b > 1) goto L40;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** B = %d ILLEGAL IN CALL TO MPCHK.\n"), MP.b);
-        FPRINTF(stderr, 
-                _("PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"));
+        FPRINTF(stderr, _("*** B = %d ILLEGAL IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"), MP.b);
     }
     mperr();
 
@@ -843,9 +839,7 @@ L40:
     if (MP.t > 1) goto L60;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** T = %d ILLEGAL IN CALL TO MPCHK.\n"), MP.t);
-        FPRINTF(stderr, 
-                _("PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"));
+        FPRINTF(stderr, _("*** T = %d ILLEGAL IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"), MP.t);
     }
     mperr();
 
@@ -853,9 +847,7 @@ L60:
     if (MP.m > MP.t) goto L80;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** M .LE. T IN CALL TO MPCHK.\n"));
-        FPRINTF(stderr, 
-                _("PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"));
+        FPRINTF(stderr, _("*** M .LE. T IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"));
     }
     mperr();
 
@@ -1699,8 +1691,7 @@ mpdiv(int *x, int *y, int *z)
     if (y[1] != 0) goto L20;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"));
+        FPRINTF(stderr, _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"));
     }
 
     mperr();
@@ -1787,8 +1778,7 @@ mpdivi(int *x, int *iy, int *z)
 
 L10:
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"));
+        FPRINTF(stderr, _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"));
     }
 
     goto L230;
@@ -2181,8 +2171,7 @@ L110:
  */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"));
     }
 
     mperr();
@@ -2229,8 +2218,7 @@ L20:
     if (x[2] <= 0) goto L40;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"));
+        FPRINTF(stderr, _("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"));
     }
 
     mperr();
@@ -2614,8 +2602,7 @@ L60:
     }
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPLNS.\n"));
-        FPRINTF(stderr, _("NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPLNS.\nNEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
     }
 
     mperr();
@@ -2808,8 +2795,7 @@ L70:
 
 L90:
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"));
-        FPRINTF(stderr, _("POSSIBLE OVERWRITING PROBLEM ***\n"));
+        FPRINTF(stderr, _("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\nPOSSIBLE OVERWRITING PROBLEM ***\n"));
     }
 
 L110:
@@ -3086,8 +3072,7 @@ L20:
     if (C_abs(*rs) <= 1) goto L40;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"));
-        FPRINTF(stderr, _("POSSIBLE OVERWRITING PROBLEM ***\n"));
+        FPRINTF(stderr, _("*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\nPOSSIBLE OVERWRITING PROBLEM ***\n"));
     }
 
     mperr();
@@ -3276,8 +3261,7 @@ mppi(int *x)
 /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"));
     }
 
     mperr();
@@ -3317,8 +3301,7 @@ L20:
     if (x[1] != 0) goto L60;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-          _("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"));
+        FPRINTF(stderr, _("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"));
     }
 
     mperr();
@@ -3397,8 +3380,7 @@ L30:
     if (y[1] > 0) goto L60;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"));
+        FPRINTF(stderr, _("*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"));
     }
 
 L50:
@@ -3460,8 +3442,7 @@ mprec(int *x, int *y)
     if (x[1] != 0) goto L20;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-                _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"));
+        FPRINTF(stderr, _("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"));
     }
 
     mperr();
@@ -3548,8 +3529,7 @@ L50:
  */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-          _("*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
     }
 
     mperr();
@@ -3755,8 +3735,7 @@ L140:
  */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, 
-          _("*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
+        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
     }
 
     mperr();
