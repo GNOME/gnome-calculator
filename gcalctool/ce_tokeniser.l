@@ -93,7 +93,7 @@ celval.integer = atoi(yytext);
 return tREG;
 }
 
-{DIGIT}+ {
+{DIGIT}+|{HEX}+ {
 if (strlen(yytext) > 40) parser_state.error = EINVAL;
 MPstr_to_num(yytext, v->base, celval.int_t);
 return tINUMBER;
