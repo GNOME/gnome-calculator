@@ -2257,7 +2257,6 @@ set_error_state(int error)
                            !v->error && (v->modetype == SCIENTIFIC)); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Thousands",  !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Memory",     !v->error); 
-    SET_MENUBAR_ITEM_STATE("/MenuBar/HelpMenu/About",      !v->error);
 }
 
 
