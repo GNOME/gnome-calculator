@@ -182,10 +182,10 @@ static XVars X;
 /* Menubar menus. */
 
 static GtkActionEntry entries[] = {
-    { "CalculatorMenu", NULL, "_Calculator" },
-    { "EditMenu",       NULL, "_Edit" },
-    { "ViewMenu",       NULL, "_View" },
-    { "HelpMenu",       NULL, "_Help" },
+    { "CalculatorMenu", NULL, N_("_Calculator") },
+    { "EditMenu",       NULL, N_("_Edit") },
+    { "ViewMenu",       NULL, N_("_View") },
+    { "HelpMenu",       NULL, N_("_Help") },
 
     { "Quit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
       N_("Quit the calculator"), G_CALLBACK(mb_proc) },
@@ -1066,6 +1066,7 @@ create_kframe()
     gtk_widget_show(X->kvbox);
 
     X->actions = gtk_action_group_new("Actions");
+    gtk_action_group_set_translation_domain (X->actions, NULL);
     gtk_action_group_add_actions(X->actions, entries, n_entries, NULL);
     gtk_action_group_add_toggle_actions(X->actions,
                                         toggle_entries, n_toggle_entries,

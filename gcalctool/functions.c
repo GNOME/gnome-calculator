@@ -839,7 +839,7 @@ do_function()      /* Perform a user defined function. */
       exp_append(str);
 
       //ret = ce_parse(str, MP);
-      //update_statusbar("Function is parsed operator precedencer", "");
+      //update_statusbar("Function is parsed operator precedence", "");
     }
     break;
   default:

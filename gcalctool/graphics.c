@@ -151,7 +151,7 @@ process_str(char *str)
     break;
   case exprs:
     ret = ce_parse(str, MP);
-    update_statusbar(N_("Parsing is done with operator precedencer"), "");
+    update_statusbar(N_("Parsing is done with operator precedence"), "");
     break;
   default:
     assert(0);
