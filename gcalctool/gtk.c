@@ -288,6 +288,7 @@ about_cb(GtkWidget *widget, gpointer data)
             NULL
         };
         const gchar *documenters[] = {
+            "Sun Microsystems",
             NULL
         };
         const gchar *translator_credits = _("translator_credits");
