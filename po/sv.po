@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 07:24-0800\n"
+"POT-Creation-Date: 2005-01-24 07:49-0800\n"
 "PO-Revision-Date: 2004-09-10 11:37+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -584,7 +584,7 @@ msgstr "16-bitars heltalsvärde av displayen utan tecken"
 msgid "16 bit unsigned integer"
 msgstr "16-bitars heltal utan tecken"
 
-#. Payment period
+#. 16-bit unsigned integer value
 #: gcalctool/calctool.c:780 gcalctool/syntax_translation.c:74
 #, fuzzy
 msgid "u16"
@@ -603,7 +603,7 @@ msgstr "32-bitars heltalsvärde av displayen utan tecken"
 msgid "32 bit unsigned integer"
 msgstr "32-bitars heltal utan tecken"
 
-#. 16-bit unsigned integer value
+#. 32-bit unsigned integer value
 #: gcalctool/calctool.c:792 gcalctool/syntax_translation.c:75
 #, fuzzy
 msgid "u32"
@@ -915,7 +915,7 @@ msgstr "kvadratroten av 2"
 msgid "e"
 msgstr "e"
 
-#. Bitwise OR
+#. PI
 #: gcalctool/calctool.c:1255 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
@@ -1482,228 +1482,224 @@ msgstr ""
 msgid "Error, cannot calculate cosine"
 msgstr ""
 
+#. Absolute value
 #: gcalctool/syntax_translation.c:36
 #, fuzzy
 msgid "abs"
 msgstr "Abs"
 
-#. Absolute value
+#. Inversion of hyperbolic cosine
 #: gcalctool/syntax_translation.c:37
 #, fuzzy
 msgid "acosh"
 msgstr "cos"
 
-#. Inversion of hyperbolic cosine
+#. Inversion of cosine
 #: gcalctool/syntax_translation.c:38
 #, fuzzy
 msgid "acos"
 msgstr "cos"
 
-#. Inversion of cosine
+#. Bitwise AND
 #: gcalctool/syntax_translation.c:39
 #, fuzzy
 msgid "and"
 msgstr "Slump"
 
-#. Bitwise AND
+#. Answer of previous calculation
 #: gcalctool/syntax_translation.c:40
 #, fuzzy
 msgid "ans"
 msgstr "tan"
 
-#. Answer of previous calculation
+#. Inversion of hyperbolic sine
 #: gcalctool/syntax_translation.c:41
 #, fuzzy
 msgid "asinh"
 msgstr "sin"
 
-#. Inversion of hyperbolic sine
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:42
 #, fuzzy
 msgid "asin"
 msgstr "sin"
 
-#. Hyperbolic sine
+#. Inversion of hyperbolic tangent
 #: gcalctool/syntax_translation.c:43
 #, fuzzy
 msgid "atanh"
 msgstr "tan"
 
-#. Inversion of hyperbolic tangent
+#. Inversion of tangent
 #: gcalctool/syntax_translation.c:44
 #, fuzzy
 msgid "atan"
 msgstr "tan"
 
-#. Inversion of tangent
+#. Cubic root
 #: gcalctool/syntax_translation.c:45
 msgid "cbrt"
 msgstr ""
 
-#. Cubic root
+#. Change sign
 #: gcalctool/syntax_translation.c:46
 #, fuzzy
 msgid "chs"
 msgstr "cos"
 
-#. Change sign
+#. Clear (display)
 #: gcalctool/syntax_translation.c:47
 #, fuzzy
 msgid "clr"
 msgstr "Hämt"
 
-#. Clear (display)
+#. Hyperbolic cosine
 #: gcalctool/syntax_translation.c:48
 #, fuzzy
 msgid "cosh"
 msgstr "cos"
 
-#. Hyperbolic cosine
+#. Cosine
 #: gcalctool/syntax_translation.c:49
 msgid "cos"
 msgstr "cos"
 
-#. Cosine
+#. Double-declining deprecation
 #: gcalctool/syntax_translation.c:50
 #, fuzzy
 msgid "ddb"
 msgstr "Dm"
 
-#. Double-declining deprecation
+#. x*10^y
 #: gcalctool/syntax_translation.c:51
 #, fuzzy
 msgid "exp"
 msgstr "e^x"
 
-#. x*10^y
+#. Fraction of a decimal number
 #: gcalctool/syntax_translation.c:52
 #, fuzzy
 msgid "frac"
 msgstr "Bråk"
 
-#. Fraction of a decimal number
+#. Future value
 #: gcalctool/syntax_translation.c:53
 msgid "fv"
 msgstr ""
 
-#. Future value
+#. Integer part of a decimal number
 #: gcalctool/syntax_translation.c:54
 #, fuzzy
 msgid "int"
 msgstr "Skriv ut"
 
 # Osäker
-#. Integer part of a decimal number
+#. Natural logarithm
 #: gcalctool/syntax_translation.c:55
 #, fuzzy
 msgid "ln"
 msgstr "Rkl"
 
-#. Natural logarithm
+#. Logarithm with 10 as a base number
 #: gcalctool/syntax_translation.c:56
 msgid "log"
 msgstr "log"
 
-#. Logarithm with 10 as a base number
+#. Bitwise NOT
 #: gcalctool/syntax_translation.c:57
 #, fuzzy
 msgid "not"
 msgstr "Inte"
 
-#. Bitwise NOT
+#. Bitwise OR
 #: gcalctool/syntax_translation.c:58
 #, fuzzy
 msgid "or"
 msgstr "Xor"
 
-#. PI
-#: gcalctool/syntax_translation.c:60
-#, fuzzy
-msgid "pmt"
-msgstr "Bet"
-
-#. Periodic payment
+#. Periodic payment *                        N_("pmt")   },
+#. { /* Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr ""
 
-#. Present value
+#. A random number
 #: gcalctool/syntax_translation.c:62
 #, fuzzy
 msgid "rand"
 msgstr "Slump"
 
-#. A random number
+#. Periodic interest rate
 #: gcalctool/syntax_translation.c:63
 #, fuzzy
 msgid "rate"
 msgstr "Sats"
 
-#. Periodic interest rate
+#. Recall number from memory register
 #: gcalctool/syntax_translation.c:64
 #, fuzzy
 msgid "rcl"
 msgstr "Hämt"
 
-#. Recall number from memory register
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:65
 #, fuzzy
 msgid "sinh"
 msgstr "sin"
 
-#. Hyperbolic sine
+#. Sine
 #: gcalctool/syntax_translation.c:66
 msgid "sin"
 msgstr "sin"
 
-#. Sine
+#. Straight-line depreciation
 #: gcalctool/syntax_translation.c:67
 #, fuzzy
 msgid "sln"
 msgstr "sin"
 
-#. Straight-line depreciation
+#. Square root
 #: gcalctool/syntax_translation.c:68
 #, fuzzy
 msgid "sqrt"
 msgstr "Rot"
 
-#. Square root
+#. Store number at memory register
 #: gcalctool/syntax_translation.c:69
 #, fuzzy
 msgid "sto"
 msgstr "Lagr"
 
-#. Store number at memory register
+#. Sum-of-the years'-digits depreciation
 #: gcalctool/syntax_translation.c:70
 #, fuzzy
 msgid "syd"
 msgstr "Såm"
 
-#. Sum-of-the years'-digits depreciation
+#. Hyperbolic tangent
 #: gcalctool/syntax_translation.c:71
 #, fuzzy
 msgid "tanh"
 msgstr "tan"
 
-#. Hyperbolic tangent
+#. Tangent
 #: gcalctool/syntax_translation.c:72
 msgid "tan"
 msgstr "tan"
 
-#. Tangent
+#. Payment period
 #: gcalctool/syntax_translation.c:73
 #, fuzzy
 msgid "term"
 msgstr "Strm"
 
-#. 32-bit unsigned integer value
+#. Bitwise XNOR
 #: gcalctool/syntax_translation.c:76
 #, fuzzy
 msgid "xnor"
 msgstr "Xnor"
 
-#. Bitwise XNOR
+#. Bitwise XOR
 #: gcalctool/syntax_translation.c:77
 #, fuzzy
 msgid "xor"
@@ -1712,6 +1708,10 @@ msgstr "Xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Utför beräkningar"
+
+#, fuzzy
+#~ msgid "pmt"
+#~ msgstr "Bet"
 
 #~ msgid "Basic Mode"
 #~ msgstr "Grundläggande läge"

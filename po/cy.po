@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-11 06:50+0000\n"
+"POT-Creation-Date: 2005-01-24 07:49-0800\n"
 "PO-Revision-Date: 2005-01-11 07:05+0000\n"
 "Last-Translator: Rhys Jones <rhys@sucs.org>\n"
 "Language-Team: Welsh <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -562,7 +562,7 @@ msgstr "gwerth cyfanrif diarwydd 16-did y dangosiad (])"
 msgid "16 bit unsigned integer"
 msgstr "cyfanrif diarwydd 16 did"
 
-#. Payment period
+#. 16-bit unsigned integer value
 #: gcalctool/calctool.c:780 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "16d"
@@ -579,7 +579,7 @@ msgstr "gwerth cyfanrif diarwydd 32-did y dangosiad"
 msgid "32 bit unsigned integer"
 msgstr "cyfanrif diarwydd 32 did"
 
-#. 16-bit unsigned integer value
+#. 32-bit unsigned integer value
 #: gcalctool/calctool.c:792 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "32d"
@@ -864,7 +864,7 @@ msgstr "ail isradd 2"
 msgid "e"
 msgstr "e"
 
-#. Bitwise OR
+#. PI
 #: gcalctool/calctool.c:1255 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
@@ -1420,8 +1420,8 @@ msgstr "Gwall: methu cyfrifo'r cosin"
 msgid "abs"
 msgstr "diam"
 
-#. Inversion of hyperbolic cosine
 # Cos hyperbolig, gwrthdro
+#. Inversion of hyperbolic cosine
 #: gcalctool/syntax_translation.c:37
 msgid "acosh"
 msgstr "coshg"
@@ -1441,12 +1441,13 @@ msgstr "ac"
 msgid "ans"
 msgstr "ateb"
 
-#. Inversion of hyperbolic sine
 # sin hyperbolig, gwrthdro
+#. Inversion of hyperbolic sine
 #: gcalctool/syntax_translation.c:41
 msgid "asinh"
 msgstr "sinhG"
 
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:42
 msgid "asin"
 msgstr "sinG"
@@ -1486,8 +1487,8 @@ msgstr "cosh"
 msgid "cos"
 msgstr "cos"
 
-#. Double-declining deprecation
 # Dibrisiad dirywiad dwbl
+#. Double-declining deprecation
 #: gcalctool/syntax_translation.c:50
 msgid "ddb"
 msgstr "ddd"
@@ -1502,8 +1503,8 @@ msgstr "esb"
 msgid "frac"
 msgstr "ffrac"
 
-#. Future value
 # Gwerth y dyfodol
+#. Future value
 #: gcalctool/syntax_translation.c:53
 msgid "fv"
 msgstr "gd"
@@ -1513,8 +1514,8 @@ msgstr "gd"
 msgid "int"
 msgstr "cyfan"
 
-#. Natural logarithm
 # logarithm naturiol
+#. Natural logarithm
 #: gcalctool/syntax_translation.c:55
 msgid "ln"
 msgstr "ln"
@@ -1529,16 +1530,13 @@ msgstr "log"
 msgid "not"
 msgstr "nid"
 
+#. Bitwise OR
 #: gcalctool/syntax_translation.c:58
 msgid "or"
 msgstr "neu"
 
-#. Periodic payment
-#: gcalctool/syntax_translation.c:60
-msgid "pmt"
-msgstr "Tld"
-
-#. Present value
+#. Periodic payment *                        N_("pmt")   },
+#. { /* Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "gp"
@@ -1583,8 +1581,8 @@ msgstr "ais"
 msgid "sto"
 msgstr "cadw"
 
-#. Sum-of-the years'-digits depreciation
 # Swm digidau y blynyddoedd
+#. Sum-of-the years'-digits depreciation
 #: gcalctool/syntax_translation.c:70
 msgid "syd"
 msgstr "sdyb"
@@ -1599,7 +1597,7 @@ msgstr "tanh"
 msgid "tan"
 msgstr "tan"
 
-#. 32-bit unsigned integer value
+#. Payment period
 #: gcalctool/syntax_translation.c:73
 msgid "term"
 msgstr "term"
@@ -1609,6 +1607,7 @@ msgstr "term"
 msgid "xnor"
 msgstr "NieuA"
 
+#. Bitwise XOR
 #: gcalctool/syntax_translation.c:77
 msgid "xor"
 msgstr "nieua"
@@ -1616,6 +1615,9 @@ msgstr "nieua"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Gweithredu'r cyfrifiadau"
+
+#~ msgid "pmt"
+#~ msgstr "Tld"
 
 #, fuzzy
 #~ msgid "Basic mode"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 07:24-0800\n"
+"POT-Creation-Date: 2005-01-24 07:49-0800\n"
 "PO-Revision-Date: 2004-12-19 12:50+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -548,7 +548,7 @@ msgstr "Displej jako šestnáctibitové celé číslo bez znaménka (])"
 msgid "16 bit unsigned integer"
 msgstr "Šestnáctibitové celé číslo bez znaménka"
 
-#. Payment period
+#. 16-bit unsigned integer value
 #: gcalctool/calctool.c:780 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
@@ -565,7 +565,7 @@ msgstr "Displej jako 32bitové celé číslo bez znaménka ([)"
 msgid "32 bit unsigned integer"
 msgstr "Třicetidvoubitové celé číslo bez znaménka"
 
-#. 16-bit unsigned integer value
+#. 32-bit unsigned integer value
 #: gcalctool/calctool.c:792 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
@@ -850,7 +850,7 @@ msgstr "odmocnina 2"
 msgid "e"
 msgstr "e"
 
-#. Bitwise OR
+#. PI
 #: gcalctool/calctool.c:1255 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
@@ -1397,196 +1397,193 @@ msgstr "Záporné X a neceločíselné Y nepodporováno"
 msgid "Error, cannot calculate cosine"
 msgstr "Chyba, nemohu spočítat kosinus"
 
+#. Absolute value
 #: gcalctool/syntax_translation.c:36
 msgid "abs"
 msgstr "abs"
 
-#. Absolute value
+#. Inversion of hyperbolic cosine
 #: gcalctool/syntax_translation.c:37
 msgid "acosh"
 msgstr "acosh"
 
-#. Inversion of hyperbolic cosine
+#. Inversion of cosine
 #: gcalctool/syntax_translation.c:38
 msgid "acos"
 msgstr "acos"
 
-#. Inversion of cosine
+#. Bitwise AND
 #: gcalctool/syntax_translation.c:39
 msgid "and"
 msgstr "and"
 
-#. Bitwise AND
+#. Answer of previous calculation
 #: gcalctool/syntax_translation.c:40
 msgid "ans"
 msgstr "ans"
 
-#. Answer of previous calculation
+#. Inversion of hyperbolic sine
 #: gcalctool/syntax_translation.c:41
 msgid "asinh"
 msgstr "asinh"
 
-#. Inversion of hyperbolic sine
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:42
 msgid "asin"
 msgstr "asin"
 
-#. Hyperbolic sine
+#. Inversion of hyperbolic tangent
 #: gcalctool/syntax_translation.c:43
 msgid "atanh"
 msgstr "atanh"
 
-#. Inversion of hyperbolic tangent
+#. Inversion of tangent
 #: gcalctool/syntax_translation.c:44
 msgid "atan"
 msgstr "atan"
 
-#. Inversion of tangent
+#. Cubic root
 #: gcalctool/syntax_translation.c:45
 msgid "cbrt"
 msgstr "cbrt"
 
-#. Cubic root
+#. Change sign
 #: gcalctool/syntax_translation.c:46
 msgid "chs"
 msgstr "chs"
 
-#. Change sign
+#. Clear (display)
 #: gcalctool/syntax_translation.c:47
 msgid "clr"
 msgstr "clr"
 
-#. Clear (display)
+#. Hyperbolic cosine
 #: gcalctool/syntax_translation.c:48
 msgid "cosh"
 msgstr "cosh"
 
-#. Hyperbolic cosine
+#. Cosine
 #: gcalctool/syntax_translation.c:49
 msgid "cos"
 msgstr "cos"
 
-#. Cosine
+#. Double-declining deprecation
 #: gcalctool/syntax_translation.c:50
 msgid "ddb"
 msgstr "ddb"
 
-#. Double-declining deprecation
+#. x*10^y
 #: gcalctool/syntax_translation.c:51
 msgid "exp"
 msgstr "exp"
 
-#. x*10^y
+#. Fraction of a decimal number
 #: gcalctool/syntax_translation.c:52
 msgid "frac"
 msgstr "frac"
 
-#. Fraction of a decimal number
+#. Future value
 #: gcalctool/syntax_translation.c:53
 msgid "fv"
 msgstr "fv"
 
-#. Future value
+#. Integer part of a decimal number
 #: gcalctool/syntax_translation.c:54
 msgid "int"
 msgstr "int"
 
-#. Integer part of a decimal number
+#. Natural logarithm
 #: gcalctool/syntax_translation.c:55
 msgid "ln"
 msgstr "ln"
 
-#. Natural logarithm
+#. Logarithm with 10 as a base number
 #: gcalctool/syntax_translation.c:56
 msgid "log"
 msgstr "log"
 
-#. Logarithm with 10 as a base number
+#. Bitwise NOT
 #: gcalctool/syntax_translation.c:57
 msgid "not"
 msgstr "not"
 
-#. Bitwise NOT
+#. Bitwise OR
 #: gcalctool/syntax_translation.c:58
 msgid "or"
 msgstr "or"
 
-#. PI
-#: gcalctool/syntax_translation.c:60
-msgid "pmt"
-msgstr "pmt"
-
-#. Periodic payment
+#. Periodic payment *                        N_("pmt")   },
+#. { /* Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
 
-#. Present value
+#. A random number
 #: gcalctool/syntax_translation.c:62
 msgid "rand"
 msgstr "rand"
 
-#. A random number
+#. Periodic interest rate
 #: gcalctool/syntax_translation.c:63
 msgid "rate"
 msgstr "rate"
 
-#. Periodic interest rate
+#. Recall number from memory register
 #: gcalctool/syntax_translation.c:64
 msgid "rcl"
 msgstr "rcl"
 
-#. Recall number from memory register
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:65
 msgid "sinh"
 msgstr "sinh"
 
-#. Hyperbolic sine
+#. Sine
 #: gcalctool/syntax_translation.c:66
 msgid "sin"
 msgstr "sin"
 
-#. Sine
+#. Straight-line depreciation
 #: gcalctool/syntax_translation.c:67
 msgid "sln"
 msgstr "sln"
 
-#. Straight-line depreciation
+#. Square root
 #: gcalctool/syntax_translation.c:68
 msgid "sqrt"
 msgstr "sqrt"
 
-#. Square root
+#. Store number at memory register
 #: gcalctool/syntax_translation.c:69
 msgid "sto"
 msgstr "sto"
 
-#. Store number at memory register
+#. Sum-of-the years'-digits depreciation
 #: gcalctool/syntax_translation.c:70
 msgid "syd"
 msgstr "syd"
 
-#. Sum-of-the years'-digits depreciation
+#. Hyperbolic tangent
 #: gcalctool/syntax_translation.c:71
 msgid "tanh"
 msgstr "tanh"
 
-#. Hyperbolic tangent
+#. Tangent
 #: gcalctool/syntax_translation.c:72
 msgid "tan"
 msgstr "tg"
 
-#. Tangent
+#. Payment period
 #: gcalctool/syntax_translation.c:73
 msgid "term"
 msgstr "term"
 
-#. 32-bit unsigned integer value
+#. Bitwise XNOR
 #: gcalctool/syntax_translation.c:76
 msgid "xnor"
 msgstr "xnor"
 
-#. Bitwise XNOR
+#. Bitwise XOR
 #: gcalctool/syntax_translation.c:77
 msgid "xor"
 msgstr "xor"
@@ -1594,6 +1591,9 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Provést výpočty"
+
+#~ msgid "pmt"
+#~ msgstr "pmt"
 
 #~ msgid "_Basic mode"
 #~ msgstr "_Základní režim"
