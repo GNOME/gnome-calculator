@@ -311,8 +311,6 @@ str_replace(char **str, char *from, char *to)
 void
 trig_filter(char **func) 
 {
-    assert(func);
-
     enum mode {
         normal = 0,
         inv = 1,
@@ -323,6 +321,7 @@ trig_filter(char **func)
     int inverse;
     int hyperbolic;
 
+    assert(func);
     inverse = (v->inverse) ? inv : 0;
     hyperbolic = (v->hyperbolic) ? hyp : 0;
 
