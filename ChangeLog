@@ -9,6 +9,18 @@ gcalctool change history.
 
 2004-01-03 Rich Burridge <rich.burridge@sun.com>
 
+    * From Pádraig Brady < P at draigBrady dot com >
+      Couldn't use the "#" key to select constants as this symbol was
+      a lower-case symbol on his keyboard.
+
+    * From Pádraig Brady < P at draigBrady dot com >
+      Powers that were a multiple of 30 (10 as well as 3) would not 
+      display correctly, having a 4 digit significand. Further testing 
+      showed that without the fix the following powers had a 4 digit 
+      significand: 27,30, 57,60, 90, 96 (and every 3 from here on). 
+
+2004-01-03 Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug #161976 (http://bugzilla.gnome.org/show_bug.cgi?id=161976).
       configure.in now checks to make sure that atk >= 1.5
 

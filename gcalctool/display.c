@@ -315,7 +315,7 @@ make_eng_sci(int *MPnumber, int base)
     n = 0;
     mpcim(&n, MP1);
     if (!mpeq(MPmant, MP1)) {
-        while (mpge(MPmant, MP10base)) {
+        while (!eng && mpge(MPmant, MP10base)) {
             exp += 10;
             mpmul(MPmant, MPatmp, MPmant);
         }
@@ -326,7 +326,7 @@ make_eng_sci(int *MPnumber, int base)
             mpdiv(MPmant, MP1base, MPmant);
         }
  
-        while (mplt(MPmant, MPatmp)) {
+        while (!eng && mplt(MPmant, MPatmp)) {
             exp -= 10;
             mpmul(MPmant, MP10base, MPmant);
         }

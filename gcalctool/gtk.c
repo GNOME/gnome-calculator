@@ -1795,12 +1795,12 @@ check_vals(int n, int keyval, int state,
 {
     int i, j;
 
-    state = state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
+    state = state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
     for (i = 0; i < n; i++) {
         j = 0;
         while (buttons[i].value[j] != 0) {
             if (buttons[i].value[j] == keyval) {
-                if (buttons[i].mods[j] == state) {
+                if ((buttons[i].mods[j] & ~GDK_SHIFT_MASK) == state) {
                     button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
                     return(TRUE);
                 }
