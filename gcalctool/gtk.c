@@ -102,6 +102,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *spframe;                /* Set Precision window. */
     GtkWidget *spframe_val;
+    GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
     GtkWidget *regs[MAXREGS];          /* Memory registers. */
     GtkWidget *menus[MAXMENUS];
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
@@ -1105,7 +1106,6 @@ create_kframe()
     GError *error;
     GtkWidget *event_box, *view_widget;
     GtkTextBuffer *buffer;
-    GtkWidget *scrolledwindow;
 
     v->tool_label = NULL;
     if (v->titleline == NULL) {
@@ -1160,10 +1160,10 @@ create_kframe()
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
 
-    scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
-    gtk_widget_show(scrolledwindow);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW (scrolledwindow), 
-				   GTK_POLICY_ALWAYS, 
+    X->scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
+    gtk_widget_show(X->scrolledwindow);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW (X->scrolledwindow), 
+				   GTK_POLICY_AUTOMATIC, 
 				   GTK_POLICY_NEVER);
 
 
@@ -1186,14 +1186,14 @@ create_kframe()
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 8);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(X->display_item), 6);
 
-    gtk_container_add(GTK_CONTAINER(scrolledwindow), X->display_item);
+    gtk_container_add(GTK_CONTAINER(X->scrolledwindow), X->display_item);
     atk_object_set_role(gtk_widget_get_accessible(X->display_item), 
                                                   ATK_ROLE_EDITBAR);
     set_display("0.00", FALSE);
 
     gtk_widget_ref(X->display_item);
     gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
-    gtk_container_add(GTK_CONTAINER(event_box), scrolledwindow);
+    gtk_container_add(GTK_CONTAINER(event_box), X->scrolledwindow);
     gtk_widget_show(X->display_item);
     gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, FALSE, TRUE, 0);
     gtk_widget_show(event_box);
@@ -2444,6 +2444,19 @@ set_accuracy_toggle(int val)
 
 
 void
+scroll_right()
+{
+    GtkAdjustment *set;
+
+    set = gtk_scrolled_window_get_hadjustment(
+                                GTK_SCROLLED_WINDOW(X->scrolledwindow));
+    gtk_adjustment_set_value(set, set->upper);
+    gtk_scrolled_window_set_hadjustment(
+                                GTK_SCROLLED_WINDOW(X->scrolledwindow), set);
+}
+
+
+void
 set_display(char *str, int minimize_changes)
 {
     char localized[MAX_LOCALIZED];
@@ -2501,7 +2514,8 @@ set_display(char *str, int minimize_changes)
                                                      NULL);
         }
     }
-    g_free (text);
+    scroll_right();
+    g_free(text);
 }
 
 
@@ -2527,8 +2541,8 @@ write_display(char *str)
 					     -1,
 					     "x-large",
 					     NULL);
+    scroll_right();
     g_free(text);
-
 }
 
 #define SET_MENUBAR_ITEM_STATE(i, state) \
