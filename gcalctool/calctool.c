@@ -790,9 +790,9 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },       
 {        
-    N_("y<sup><i>x</i></sup>"),
-    N_("y to the power of displayed value"),
-    N_("Y to the x"),
+    N_("x<sup><i>y</i></sup>"),
+    N_("Raise displayed value to the power of y"),
+    N_("X to the y"),
     { 0, 0 },   
     { GDK_y, 0 },
     'y',
