@@ -9,6 +9,14 @@ gcalctool change history.
 
 2003-11-26  Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug 126626 (http://bugzilla.gnome.org/show_bug.cgi?id=126626)
+      gcalctool no longer causes a Gtk-CRITICAL error when the user enters
+      "9*(1<Xor>". The problem was caused because a non-UTF character was
+      being inserted into the text string to be displayed for the Xor
+      function.
+
+2003-11-26  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug 125782 (http://bugzilla.gnome.org/show_bug.cgi?id=125782)
       If the user is entering a left parenthesis and it is the first one 
       being displayed and there is no current arithmetic operand, then 

@@ -5,6 +5,15 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.3.24
+
+* Fixed bug 126626. gcalctool no longer causes a Gtk-CRITICAL error when 
+  the user enters "9*(1<Xor>". The problem was caused because a non-UTF 
+  character was being inserted into the text string to be displayed for 
+  the Xor function.
+
+----
+
 Overview of changes in gcalctool 4.3.23
 
 * Fixed bug 125782. If the user is entering a left parenthesis and it is 

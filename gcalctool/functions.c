@@ -691,7 +691,7 @@ do_paren()
         }
         v->noparens--;
         if (!v->noparens) {
-            paren_disp(v->current->value[0]);
+            paren_disp(v->current->func_char);
             ptr = v->display;
             while (*ptr != '(') {
                 ptr++;
@@ -702,7 +702,7 @@ do_paren()
             return;
         }
     }
-    paren_disp(v->current->value[0]);
+    paren_disp(v->current->func_char);
 }
 
 
