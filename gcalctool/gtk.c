@@ -158,11 +158,11 @@ static GtkItemFactoryEntry main_menu[] = {
     { "/Edit/_Insert ASCII Value...", NULL, mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
-    { "/View/_Basic Mode",         NULL, mb_proc, M_BASIC, "<RadioItem>" },
-    { "/View/_Financial Mode",     NULL, mb_proc, M_FIN,   "/View/Basic Mode" },
-    { "/View/_Scientific Mode",    NULL, mb_proc, M_SCI,   "/View/Basic Mode" },
+    { "/View/_Basic Mode",     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
+    { "/View/_Financial Mode", "<control>F", mb_proc, M_FIN, "/View/Basic Mode" },
+    { "/View/_Scientific Mode", "<control>S", mb_proc, M_SCI, "/View/Basic Mode" },
     { "/View/sep1",                NULL, NULL,    0,       "<Separator>" },
-    { "/View/_Memory Registers",   NULL, mb_proc, M_REGS,  "<ToggleItem>" },
+    { "/View/_Memory Registers", "<control>M", mb_proc, M_REGS, "<ToggleItem>" },
 
     { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
     { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
