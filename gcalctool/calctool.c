@@ -353,12 +353,12 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Integer portion\n"
       "\n"
-      "Keyboard equivalent:   Control-i\n"
+      "Keyboard equivalent:   Alt-i\n"
       "\n"
       "Returns the integer portion of the current "
       "displayed value."
     ),
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_i,
     OP_CLEAR,
     M_NONE,
@@ -499,12 +499,12 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Fractional portion\n"
       "\n"
-      "Keyboard equivalent:   Control-f\n"
+      "Keyboard equivalent:   Alt-f\n"
       "\n"
       "Returns the fractional portion of the current "
       "displayed value."
     ),
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_f,
     OP_CLEAR,
     M_NONE,
@@ -641,12 +641,12 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
       "\n"
       "Absolute value.\n"
       "\n"
-      "Keyboard equivalent:   Control-u\n"
+      "Keyboard equivalent:   Alt-u\n"
       "\n"
       "Returns the absolute value of the current "
       "displayed value."
     ),
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_u,
     OP_CLEAR,
     M_NONE,
@@ -701,7 +701,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Compounding term\n"
       "\n"
-      "Keyboard equivalent:   Control-m\n"
+      "Keyboard equivalent:   m\n"
       "\n"
       "Computes the number of compounding periods it "
       "will take an investment of present value pv to "
@@ -729,7 +729,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "tells you that it would take 92.77 months, or "
       "almost eight years, to double your $8,000."
     ),
-    GDK_CONTROL_MASK,
+    0,
     GDK_m,
     OP_CLEAR,
     M_NONE,
@@ -742,7 +742,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Double-declining depreciation\n"
       "\n"
-      "Keyboard equivalent:   Control-d\n"
+      "Keyboard equivalent:   d\n"
       "\n"
       "Computes the depreciation allowance on an asset "
       "for a specified period of time, using the "
@@ -775,7 +775,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "tells you that the depreciation expense for the "
       "fourth year will be $790.12."
     ),
-    GDK_CONTROL_MASK,
+    0,
     GDK_d,
     OP_CLEAR,
     M_NONE,
@@ -935,7 +935,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Periodic interest rate\n"
       "\n"
-      "Keyboard equivalent:   Control-r\n"
+      "Keyboard equivalent:   Alt-r\n"
       "\n"
       "Returns the periodic interest necessary for a "
       "present value of pv to grow to a future value of "
@@ -968,11 +968,11 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "To determine the annual rate, multiply the above "
       "formula by 12, which yields a result of 8.14%."
     ),
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_r,
     OP_CLEAR,
-   M_NONE,
-   do_business
+    M_NONE,
+    do_business
 },
 {
     N_("Sln"),
@@ -981,7 +981,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Straight-line depreciation\n"
       "\n"
-      "Keyboard equivalent:   Control-l\n"
+      "Keyboard equivalent:   l\n"
       "\n"
       "Computes the straight-line depreciation of an "
       "asset for one period.\n"
@@ -1015,7 +1015,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "Clicking SELECT on Sln returns 1183.33, the yearly "
       "dollar depreciation allowance."
     ),
-    GDK_CONTROL_MASK,
+    0,
     GDK_l,
     OP_CLEAR,
     M_NONE,
@@ -1028,7 +1028,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "\n"
       "Sum-of-the years'-digits depreciation\n"
       "\n"
-      "Keyboard equivalent:   Control-y\n"
+      "Keyboard equivalent:   Y\n"
       "\n"
       "Returns the sum-of-the-years'-digits depreciation "
       "for a specified period.\n"
@@ -1071,8 +1071,8 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
       "Clicking SELECT on Syd returns 1014.29, the dollar "
       "depreciation allowance for the fourth year."
     ),
-    GDK_CONTROL_MASK,
-    GDK_y,
+    0,
+    GDK_Y,
     OP_CLEAR,
     M_NONE,
     do_business
@@ -1254,7 +1254,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "integer."
     ),        
     0,        
-    GDK_bracketleft,
+    GDK_bracketright,
     OP_CLEAR, 
     M_NONE,   
     do_immed  
@@ -1273,7 +1273,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "integer."
     ),    
     0,
-    GDK_bracketright,
+    GDK_bracketleft,
     OP_CLEAR,
     M_NONE,
     do_immed
@@ -1599,7 +1599,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Cosine function\n"
       "\n"
-      "Keyboard equivalent:   Control-c\n"
+      "Keyboard equivalent:   Alt-c\n"
       "\n"
       "Returns the trigonometric cosine, arc cosine, "
       "hyperbolic cosine, or inverse hyperbolic cosine "
@@ -1609,7 +1609,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ),
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_c,
     OP_CLEAR,
     M_NONE,
@@ -1622,7 +1622,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Sine function\n"
       "\n"
-      "Keyboard equivalent:   Control-s\n"
+      "Keyboard equivalent:   Alt-s\n"
       "\n"
       "Returns the trigonometric sine, arc sine, "
       "hyperbolic sine, or inverse hyperbolic sine of "
@@ -1632,7 +1632,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ),   
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_s,
     OP_CLEAR,
     M_NONE,
@@ -1645,7 +1645,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "\n"
       "Tangent function\n"
       "\n"
-      "Keyboard equivalent:   Control-t\n"
+      "Keyboard equivalent:   Alt-t\n"
       "\n"
       "Returns the trigonometric tangent, arc tangent, "
       "hyperbolic tangent, or inverse hyperbolic tangent "
@@ -1655,7 +1655,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
     ), 
-    GDK_CONTROL_MASK,
+    GDK_MOD1_MASK,
     GDK_t,
     OP_CLEAR,
     M_NONE,

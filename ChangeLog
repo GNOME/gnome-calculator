@@ -7,6 +7,41 @@
 gcalctool change history.
 =========================
 
+v4.2.18 - 14th January 2003.  (richb)
+
+* Fixed bug #101865 (http://bugzilla.gnome.org/show_bug.cgi?id=101865)
+  Made the following keyboard remappings:
+
+  Function     Old         New
+  ---------------------------------
+  Cos        Control-c     d
+  Ddb        Control-d     Alt-C
+  Frac       Control-f     Alt-f
+  Int        Control-i     Alt-i
+  Sln        Control-l     l
+  Ctrm       Control-m     m
+  Rate       Control-r     Alt-r
+  Sin        Control-s     Alt-s
+  Tan        Control-t     Alt-t
+  Abs        Control-u     Alt-u
+  Syd        Control-y     Y
+
+  Note that the keyboard equivalents for:
+
+  Function     Old         New
+  ---------------------------------
+  Quit       q or Q        Control-Q
+  Copy       Sun Copy key  Control-C
+
+  still have to be added in, although the menu items in the menu bar work fine.
+  The appropriate changes have been made to the manual pages.
+
+* Removed mention of the "-l" and "-r" command line options from the manual 
+  pages. Remove reference to the /schemes/apps/gcalctool/righthanded Gconf
+  resource too.
+
+----
+
 v4.2.17 - 14th January 2003.  (richb)
 
 * After discussion with Calum Benson, removed the "Keys" key, that allowed
