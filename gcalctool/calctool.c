@@ -769,7 +769,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("e<sup>x</sup>"),
     N_("e to the power of displayed value"),
-    N_("E to the power of x"),
+    N_("E to the x"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceleft, 0 },
     '{',
@@ -779,7 +779,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("10<sup>x</sup>"),
     N_("10 to the power of displayed value"),
-    N_("Ten to the power of x"),
+    N_("Ten to the x"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceright, 0 },
     '}',
@@ -789,7 +789,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {        
     N_("y<sup>x</sup>"),
     N_("y to the power of displayed value"),
-    N_("Y to the power of x"),
+    N_("Y to the x"),
     { 0, 0 },   
     { GDK_y, 0 },
     'y',
