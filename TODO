@@ -8,6 +8,28 @@
 Revamp gcalctool (v4.2.0 onwards) TODO list.
 --------------------------------------------
 
+From Calum:
+* Remove the operand label widget.
+* Put a little more space between the basic mode buttons and the fin/sci 
+  mode buttons.
+* Add a pixel or two between the frame around the buttons and the mode panel 
+  and there contents.
+* Fixup the buttons on the "Insert ASCII Value", "Enter Constant..." and 
+  "Enter Function..." popups. They should be Cancel and OK, and use standard 
+  stock GNOME icons.
+* Need to disable all the buttons that aren't valid after an "Error" has 
+  occured.
+* The Sto/Rcl/Exch menu items should show the current register values as well.
+* Add in an Edit->Paste menu item.
+* Make sure that the Control-C and Control-V keyboard accelerators Copy and 
+  Paste.
+* Need to fixup the icon to be the correct GNOME thing.
+* Keyboard navigation doesn't work. Also all the radiobutton and checkbox
+  items need to have a mnemonic associated with them. Make sure that everything
+  is unique (including all the keyboard accelerators for all the gcalctool
+  buttons).
+
+Others:
 * Button sizes appear to be incorrect again (probably since I added the
   horizontal separators).
 * Control-F1 should display the tooltip help for a button. Remove the toggling
@@ -27,16 +49,6 @@ Revamp gcalctool (v4.2.0 onwards) TODO list.
 * Make sure that typing Control-q terminates gcalctool.
 * Make sure that this new gcalctool is accessible.
 * Need to be able to save the current state away in the Gconf resources.
-* Make X->op_label a read-only entry (with a white background), and to the
-  right of the Hyp and Inv checkboxes.
-
-HCI Issues.
------------
-* Should the multiplication label be "x' or "*"?
-* From Gman: consider removing the Memory Registers window, and putting the 
-  register values directly in the menus associated with the memory registers.
-* The Gcalctool icon should have a better graphic.
-* Consider changing the display from a label to a textview.
 * Improve the colors in the gcalctoolrc file.
 
 ===========================================================================
