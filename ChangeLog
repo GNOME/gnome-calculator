@@ -7,6 +7,16 @@
 gcalctool change history.
 =========================
 
+v4.2.60 - 26th February 2003.  (richb)
+
+* Gcalctool wasn't saving the trigonometric type when it was changed. The
+  trig_cb() function was calling do_trig() incorrectly instead of do_trigtype().
+
+* Removed the trailing period from the ten constant definitions in the man 
+  pages.
+
+----
+
 v4.2.59 - 26th February 2003.  (evandrofg)
 
 * configure.in: Added Brazilian Portuguese (pt_BR) to ALL_LINGUAS.

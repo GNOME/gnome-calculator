@@ -1887,7 +1887,7 @@ show_ascii_frame()      /* Display ASCII popup. */
 static void
 trig_cb(GtkToggleButton *button, gpointer user_data)
 {
-    do_trig((enum trig_type) g_object_get_data(G_OBJECT(button), "trig"));
+    do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(button), "trig"));
 }
 
 void
