@@ -3,9 +3,9 @@
 INCLUDES = \
 	-I$(includedir) \
 	-DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
-	-DCALCTOOL_DATA_DIR=\""$(datadir)/gcalctool"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPACKAGE_PIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
 	@PACKAGE_CFLAGS@ \
 	@GNOME_UTILS_CFLAGS@ \
 	@GCONF_CFLAGS@
@@ -34,10 +34,11 @@ gcalctool_LDADD = \
 	$(X_BASIC_LIBS) \
 	$(X_EXTRA_LIBS)
 
-pkgdata_DATA = gcalctool.png
+pixmapdir   = $(datadir)/pixmaps
+pixmap_DATA = gcalctool.png
 
 man1_MANS = gcalctool.1
 
 EXTRA_DIST = \
-	$(pkgdata_DATA) \
+	$(pixmap_DATA) \
 	$(man1_MANS)

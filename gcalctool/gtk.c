@@ -126,7 +126,6 @@ static GtkWidget *make_menu_button(gchar *, int);
 static GtkWidget *make_but_frame(GtkWidget *, GtkWidget **,
                                  struct button *, int, int, char *);
 
-static gchar *find_file(const char *base, GError **err);
 static char *make_hostname(Display *);
 
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
@@ -1167,27 +1166,6 @@ event_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 }
 
 
-static gchar *
-find_file(const char *base, GError **err)
-{
-    g_return_val_if_fail(err == NULL || *err == NULL, FALSE);
-
-    if (g_file_test(base, G_FILE_TEST_EXISTS)) {
-        return(g_strdup(base));
-    } else { 
-        char *filename = g_build_filename(CALCTOOL_DATA_DIR, base, NULL);
-
-        if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-            g_set_error(err, G_FILE_ERROR, G_FILE_ERROR_NOENT,
-                        "Cannot find data file \"%s\"", base);
-            g_free(filename);
-            return(NULL);
-        }
-        return(filename);
-    }
-}
-
-
 void
 get_constant(int n)
 {
@@ -1858,13 +1836,13 @@ set_title(enum fcp_type fcptype, char *str)
 
 static void
 set_gcalctool_icon(void)
-{
-    char *filename;
-    
-    if ((filename = find_file("gcalctool.png", NULL)) != NULL) {
+{    
+    gchar *filename = PACKAGE_PIXMAP_DIR"/gcalctool.png";
+
+    if (g_file_test(filename, G_FILE_TEST_EXISTS) == TRUE) {    
         X->icon = gdk_pixbuf_new_from_file(filename, NULL);
-        g_free(filename);
-    } else { 
+    }
+    else {
         X->icon = NULL;
     }
 }

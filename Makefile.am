@@ -11,7 +11,13 @@ EXTRA_DIST = \
 	MAINTAINERS \
 	TODO \
 	gcalctoolrc \
+	gcalctool.desktop.in \
 	$(schema_DATA)
+
+Utilitiesdir = $(datadir)/applications
+Utilities_in_files = gcalctool.desktop.in
+Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
 
 # Install the gcalctool schema file.
 install-data-local:

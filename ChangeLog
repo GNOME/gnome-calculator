@@ -7,6 +7,19 @@
 gcalctool change history.
 =========================
 
+v4.2.48 - 12th February 2003.  (richb)
+
+* From: Dennis Cranston <dennis.cranston@yahoo.com>
+  Added a launcher to the GNOME's Accessories menu. The launcher uses 
+  gcalctool.png for its icon which required moving the icon to the pixmaps 
+  installation directory.  
+
+  This means that the find_file() function is no longer necessary, and has
+  been removed. It was used only in set_gcalctool_icon(). The path of 
+  gcalctool.png is now always PACKAGE_PIXMAP_DIR. 
+
+----
+
 v4.2.47 - 12th February 2003.  (richb)
 
 * From: Dennis Cranston <dennis.cranston@yahoo.com>
