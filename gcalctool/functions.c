@@ -623,7 +623,7 @@ do_mode()                   /* Set special calculator mode. */
 {
     char title[MAXLINE];
 
-    SPRINTF(title, "%s [%s]", v->tool_label, _(mstrs[(int) v->modetype]));
+    SPRINTF(title, "%s- %s", v->tool_label, _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
     put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
