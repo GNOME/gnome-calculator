@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-19 16:57+0100\n"
-"PO-Revision-Date: 2003-12-19 16:58+0100\n"
+"POT-Creation-Date: 2004-01-10 01:15+0100\n"
+"PO-Revision-Date: 2004-01-10 01:15+0100\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nognu.org>\n"
 "MIME-Version: 1.0\n"
@@ -622,16 +622,16 @@ msgid "Ten to the x"
 msgstr "Deset na X"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup><i>x</i></sup>"
-msgstr "y<sup><i>x</i></sup>"
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>y</i></sup>"
 
 #: gcalctool/calctool.c:794
-msgid "y to the power of displayed value"
-msgstr "y na stepen prikazane vrednosti"
+msgid "Raise displayed value to the power of y"
+msgstr "Digni prikazanu vrednost na stepen y"
 
 #: gcalctool/calctool.c:795
-msgid "Y to the x"
-msgstr "Y na X"
+msgid "X to the y"
+msgstr "X na y"
 
 #: gcalctool/calctool.c:803
 msgid "<i>x</i>!"
@@ -830,31 +830,31 @@ msgstr "kubnih centimetara ili kubnih inča"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:279 gcalctool/functions.c:945
-#: gcalctool/functions.c:1073 gcalctool/functions.c:1112
-#: gcalctool/functions.c:1166 gcalctool/functions.c:1259
-#: gcalctool/functions.c:1260 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1098 gcalctool/display.c:277 gcalctool/functions.c:959
+#: gcalctool/functions.c:1087 gcalctool/functions.c:1126
+#: gcalctool/functions.c:1180 gcalctool/functions.c:1273
+#: gcalctool/functions.c:1274 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Greška"
 
-#: gcalctool/functions.c:1279
+#: gcalctool/functions.c:1293
 msgid "Numeric stack error"
 msgstr "Greška numeričkog steka"
 
-#: gcalctool/functions.c:1300
+#: gcalctool/functions.c:1314
 msgid "Operand stack error"
 msgstr "Greška steka operanda"
 
-#: gcalctool/get.c:154
+#: gcalctool/get.c:162
 msgid "-a needs accuracy value"
 msgstr "-a zahteva vrednost tačnosti"
 
-#: gcalctool/get.c:158 gcalctool/get.c:296
+#: gcalctool/get.c:166 gcalctool/get.c:324
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: tačnost treba da bude u opsegu 0–9\n"
 
-#: gcalctool/get.c:183
+#: gcalctool/get.c:191
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s kao sledeći argument.\n"
@@ -863,31 +863,31 @@ msgstr "%s: %s kao sledeći argument.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:254
+#: gcalctool/get.c:279
 msgid "calculator"
 msgstr "kalkulator"
 
-#: gcalctool/get.c:310
+#: gcalctool/get.c:338
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: osnova može da bude 2, 8, 10 ili 16\n"
 
-#: gcalctool/get.c:325
+#: gcalctool/get.c:353
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: neispravan način prikaza [%s]\n"
 
-#: gcalctool/get.c:340
+#: gcalctool/get.c:368
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: neispravan mod [%s]\n"
 
-#: gcalctool/get.c:354
+#: gcalctool/get.c:382
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: neispravan trigonometrijski mod [%s]\n"
 
-#: gcalctool/get.c:400
+#: gcalctool/get.c:428
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -896,12 +896,12 @@ msgstr ""
 "%s izdanje %s\n"
 "\n"
 
-#: gcalctool/get.c:401
+#: gcalctool/get.c:429
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Upotreba: %s: [-D] [-E] [-a tačnost] "
 
-#: gcalctool/get.c:402
+#: gcalctool/get.c:430
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
@@ -1179,6 +1179,15 @@ msgstr "Uredi funkcije..."
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Izračunaj"
+
+#~ msgid "y<sup><i>x</i></sup>"
+#~ msgstr "y<sup><i>x</i></sup>"
+
+#~ msgid "y to the power of displayed value"
+#~ msgstr "y na stepen prikazane vrednosti"
+
+#~ msgid "Y to the x"
+#~ msgstr "Y na X"
 
 #~ msgid "Set trigonometric type to gradients"
 #~ msgstr "Trigonometrijske funkcije rade sa gradijentima"
