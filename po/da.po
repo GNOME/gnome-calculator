@@ -2,7 +2,7 @@
 # Copyright (C) 2003, 04 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # Ole Laursen <olau@hardworking.dk>, 2003, 04.
-# Martin Willemoes Hansen <mwh@sysrq.dk>, 2004.
+# Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 #
 # Husk at tilføje dig i credit-listen (besked id "translator_credits")
 #
@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
-"PO-Revision-Date: 2004-12-08 12:08+0100\n"
+"POT-Creation-Date: 2005-02-21 13:03+0100\n"
+"PO-Revision-Date: 2005-02-21 13:04+0100\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -888,35 +888,36 @@ msgstr "Omregningsfaktor for kubikcentimeter til kubiktommer"
 msgid "Error"
 msgstr "Fejl"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Forrige udtryk"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Misdannet udtryk"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Misdannet funktion"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Ryddede visningen, præfiks uden en operator er ikke tilladt"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Misdannet parentesudtryk"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Ingen gyldig værdig til at lagre"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Misdannet funktion"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Ryddede visningen, præfiks uden en operator er ikke tilladt"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Misdannet parentesudtryk"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Fejl i talstak"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Fejl i operandstak"
 
@@ -1251,24 +1252,20 @@ msgid "Set other precision"
 msgstr "Sæt anden præcision"
 
 #: gcalctool/gtk.c:338
-#, fuzzy
 msgid "_Basic"
-msgstr "Basalt"
+msgstr "_Basalt"
 
 #: gcalctool/gtk.c:340
-#, fuzzy
 msgid "_Advanced"
-msgstr "Avanceret"
+msgstr "_Avanceret"
 
 #: gcalctool/gtk.c:342
-#, fuzzy
 msgid "_Financial"
-msgstr "Finansiel"
+msgstr "_Finansiel"
 
 #: gcalctool/gtk.c:344
-#, fuzzy
 msgid "_Scientific"
-msgstr "Videnskabelig"
+msgstr "_Videnskabelig"
 
 #: gcalctool/gtk.c:504
 msgid "translator_credits"
@@ -1385,15 +1382,15 @@ msgstr ""
 "Sæt nøjagtigheden fra 0 til %d numeriske pladser. I øjeblikket sat til %d "
 "pladser. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Aktiverede ingen-operatorprioritet-tilstanden"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktiverede udtrykstilstanden med operatorprioritet"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Nøjagtighedsværdi tilhøre ikke interval"
 
@@ -1520,8 +1517,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "bet"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "nv"
@@ -1599,9 +1600,6 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Udfør beregninger"
-
-#~ msgid "pmt"
-#~ msgstr "bet"
 
 #~ msgid "_Basic mode"
 #~ msgstr "_Basis tilstand"
