@@ -395,6 +395,7 @@ int key_equal(struct button *, struct button);
 int main(int, char **);
 
 void beep();
+void build_word_map();
 void clear_display(int);
 void display_prop_sheet();
 void do_base(enum base_type);
@@ -469,8 +470,9 @@ void show_ascii_frame();
 void show_display(int *);
 void srand48();
 void start_tool();
+void str_replace(char **, char *, char *);
 void switch_hands(int);
-void update_statusbar(gchar *text, const gchar *imagename);
+void update_statusbar(gchar *, const gchar *);
 void usage(char *);
 void win_display(enum fcp_type, int);
 

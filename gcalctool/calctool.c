@@ -1214,8 +1214,7 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    SPRINTF(title, "%s [Experimental] - %s", v->tool_label, 
-            _(mstrs[(int) v->modetype]));
+    SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
