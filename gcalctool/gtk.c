@@ -146,7 +146,6 @@ static void mb_proc(gpointer, int, GtkWidget *);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void notice_prompt(GtkWidget *, char *);
-static void set_button_label(GtkWidget *, gchar *, int n);
 static void set_button_state(GtkWidget *, int);
 static void setup_default_icon(void);
 static void trig_cb(GtkToggleButton *, gpointer);
@@ -1005,34 +1004,6 @@ disp_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
-static void
-do_key_table(GtkWidget **buttons, int rows, int cols)
-{
-    struct button *b;
-    int i, j, n;
-
-    for (i = 0; i < cols; i++) {
-        for (j = 0; j < rows; j++) {
-            n = j*rows + i;
-            b = (struct button *) g_object_get_data(G_OBJECT(buttons[n]), 
-                                                    "button");
-            get_label(b);
-            set_button_label(buttons[n], v->pstr, n);
-        }
-    }
-}
-
-
-void
-do_keys()      /* Display/undisplay the gcalctool key values. */
-{
-    v->tstate = !v->tstate;
-    do_key_table(X->bas_buttons, BROWS, BCOLS);
-    do_key_table(X->fin_buttons, FROWS, FCOLS);
-    do_key_table(X->sci_buttons, SROWS, SCOLS);
-}
-
-
 static gchar *
 find_file(const char *base, GError **err)
 {
@@ -1652,32 +1623,6 @@ put_resource(enum res_type rtype, char *value)
     STRCPY(key, calc_res[(int) rtype]);
     SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
     gconf_client_set_string(X->client, cstr, value, NULL);
-}
-
-
-static void
-set_button_label(GtkWidget *button, gchar *str, int n)
-{
-    int i, j;
-    GtkWidget *child;
-    GList *list = gtk_container_get_children(GTK_CONTAINER(button));
-
-    for (i = 0; i < g_list_length(list); i++) {
-        child = g_list_nth_data(list, i);
-        if (GTK_IS_LABEL(child)) {                      /* Normal button. */
-            gtk_label_set_text(GTK_LABEL(child), str);
-            return;
-        } else if (GTK_IS_HBOX(child)) {                /* Menu button. */
-            list = gtk_container_get_children(GTK_CONTAINER(child));
-            for (j = 0; j < g_list_length(list); j++) {
-                child = g_list_nth_data(list, j);
-                if (GTK_IS_LABEL(child)) {
-                    gtk_label_set_text(GTK_LABEL(child), str);
-                    return;
-                }
-            }
-        }
-    }
 }
 
 

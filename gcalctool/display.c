@@ -89,31 +89,6 @@ copy_button_info(struct button *old)
 
 
 void
-get_label(struct button *b)
-{
-    int mod, val;
-       
-    mod = b->mods;
-    val = b->value;
-    if (v->tstate) {
-        if (mod == GDK_CONTROL_MASK) {
-            SPRINTF(v->pstr, "^%c  ", val);
-        } else if (val == GDK_Delete) {
-            STRCPY(v->pstr, _("del"));
-        } else if (val == GDK_BackSpace) {
-            STRCPY(v->pstr, _("bsp"));
-        } else if (val == GDK_caret) {
-            STRCPY(v->pstr, _("^"));
-        } else {
-            SPRINTF(v->pstr, "%c   ", val);
-        }
-    } else {
-        STRCPY(v->pstr, b->str);
-    }
-}
-
-
-void
 initialise()
 {
     int i;

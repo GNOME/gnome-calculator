@@ -220,7 +220,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 /* Maximum number of various graphics pieces. */
 #define MAXITEMS       8          /* Maximum number of panel items. */
-#define MAXMENUS       13         /* Maximum number of popup menus. */
+#define MAXMENUS       9          /* Maximum number of popup menus. */
 
 #ifndef MAXLINE
 #define MAXLINE        256        /* Length of character strings. */
@@ -358,7 +358,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
-    int tstate;        /* Indicates current button set being displayed. */
     int wx;            /* Initial X position of the window. */
     int wy;            /* Initial Y position of the window. */
 } CalcVars;
@@ -405,7 +404,6 @@ void do_numtype(enum num_type);
 void do_expno();
 void do_help();
 void do_immed();
-void do_keys();
 void do_memory(int);
 void do_mode();
 void do_none();
@@ -419,7 +417,6 @@ void do_trigtype(enum trig_type);
 void doerr(char *);
 void get_display();
 void get_key_val(int *, char *);
-void get_label(struct button *);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
 void handle_menu_selection(struct button *, int);

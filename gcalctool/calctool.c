@@ -1340,23 +1340,13 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_paren
 },
 {
-    N_("Keys"),
-    N_(
-      "Keys\n"
-      "\n"
-      "Toggles button labels.\n"
-      "\n"
-      "Keyboard equivalent:   k\n"
-      "\n"
-      "Toggles the labels on the calctool keys, "
-      "alternating between the mouse and keyboard "
-      "equivalents."
-    ),
+    "    ",
+    "    ",
     0,
-    GDK_k,
-    OP_CLEAR,
+    0,
+    OP_NOP,
     M_NONE,
-    do_keys
+    do_none
 },
 
 /* Row 2. */
@@ -1904,7 +1894,6 @@ do_calctool(int argc, char **argv)
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
     v->pending    = 0;         /* No initial pending command. */
-    v->tstate     = 0;         /* Button values displayed first. */
     v->hyperbolic = 0;         /* Normal trig functions initially. */
     v->inverse    = 0;         /* No inverse functions initially. */
     v->down       = 0;         /* No mouse presses initially. */
