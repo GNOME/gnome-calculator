@@ -1,0 +1,334 @@
+/*  $Header$
+ *
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
+ *  All Rights Reserved.
+ */
+
+gcalctool change history - 1992.
+================================
+
+v3.2 - patchlevel 54 [richb] - 14 Jan 1992.
+
+* Files changed: CHANGES patchlevel.h calctool.c extern.h get.c
+
+* Fixed #1111170 - It's a needed fix for international locales. It will fail
+                   in all multi-byte locales. Text strings written to the X
+                   resources files should not be localised.
+
+----
+
+v3.2 - patchlevel 53 [richb] - 14 Jan 1992.
+
+* Files changed: CHANGES patchlevel.h functions.c
+
+* Fixed #1110771 -  put an LGET() around the three offending strings.
+
+----
+
+v3.2 - patchlevel 52 [richb] - 14 Jan 1992.
+
+* Files changed: CHANGES patchlevel.h functions.c xview.c
+
+* Fixed #1113318 - the difference between the previous version of calctool
+                   and this one is that the mode window is now pinned when
+                   it's first bought up.
+
+----
+
+v3.2 - patchlevel 51 [richb] - 14 Jan 1992.
+
+Files changed: CHANGES patchlevel.h xview.c
+
+* Fixed #1114403 - the menu was being created with a frame as owner instead
+                   of NULL.
+
+----
+
+v3.2 - patchlevel 50 [richb] - 14 Jan 1992.
+
+* Files changed: CHANGES patchlevel.h calctool.G
+
+* Fixed #1108519 - "Properties" is now "Properties...".
+
+----
+
+v3.2 - patchlevel 49 [jffowler] - 02 Nov 1992.
+
+* Files changed: CHANGES patchlevel.h xview.c
+
+* Temporary fix - commented out all XV_SET's of WIN_USE_IM to prevent 
+  xv_error_proc from being called, just to get calctool up for 493.
+
+----
+
+v3.2 - patchlevel 48 [jffowler] - 23 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h xview.c
+
+* Fixed coredump - moved setting of v above first xv_set where setting 
+  WIN_USE_IM was causing xv_error_proc to be called before v was set.    
+
+----
+
+v3.2 - patchlevel 47 [richb] - 22 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h graphics.c
+
+* Fixed bug #1105557 - added a check to the process_str() routine to test
+                       if v->error is set. If yes, then processing of the
+                       selection is aborted at that point.
+
+* Transferring bug #1105415 to xview/library.
+
+----
+
+v3.2 - patchlevel 46 [richb] - 22 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h functions.c
+
+* Fixed bug #1104803 - calctool didn't always reset the display correctly
+                       after an error condition.
+
+----
+
+v3.2 - patchlevel 45 [richb] - 22 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h functions.c mp.c calctool.h
+
+* Fixed bug #1105387 - tan(90 degrees) now produces an error message, and
+  Fixed bug #1102842 - tan(180 degrees) now produces 0.00 (rather than -0.00).
+                       A check is now made for cos(x) == 0.0. If yes, then
+                       it's an overflow error. Tan(x) is now calculated as:
+                       sin(x) / cos(x). Removed mptan() function from mp.c.
+
+* Fixed bug #1102604 - 0! now produces 1 (rather than "Error").
+
+* Closed #1102877 - not a bug. Compared result against xcalc and two handheld
+                    calculators.
+
+----
+
+v3.2 - patchlevel 44 [richb] - 19 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h xview.c
+
+* Adjusted the put_resource() routine in xview.c to give a pointer to the
+  XrmDatabase, and not call by reference.
+
+----
+
+v3.2 - patchlevel 43 [richb] - 13 Oct 1992.
+
+* Files changed: CHANGES patchlevel.h calctool.h xview.c text.c functions.c
+                 get.c filemgr.G
+
+* Changed the "Set Default" button on the property sheet to "Save as Defaults".
+
+* Fixed bug #1093905 - calctool will now look at the X resource:
+                       OpenWindows.beep first and set the v->beep variable
+                       accordingly. If the DeskSet calctool X resource:
+                       deskset.calctool.beep is also set, this will override.
+
+* Fixed bug #1093948 - problem with exponential numbers and memory registers.
+                       Adjustments to the do_expno() routine in functions.c,
+                       and do_sto_rcl() needed to set v->new_input when
+                       retrieving a number from a memory register.
+
+* Fixed bug #1098178 - allowed the character string "%s %1d already exists."
+                       to be localised. New message in mess[(int) MESS_CON].
+
+* Fixed bug #1100331 - the ibool() routine wasn't returning the correct
+                       integer boolean value for hexadecimal 100000000.
+
+* Fixed bug #1100441 - the second parameter to a call to mppwr() in
+                       MPstr_to_num() in display.c should have been using an
+                       integer not an MP number.
+
+* Reclassified the xcalc bug #1093951 under x11news/program.
+
+* Bug #1102406 isn't a bug. It displays "Error" in the calctool displays and
+  beeps (assuming beeping is set), forcing the user to clear the calculator.
+
+----
+
+[All previous changes were by Rich Burridge <rich.burridge@Sun.COM>]
+
+v3.2 - patchlevel 42.  5 Oct 1992.
+
+* Fixed ifdef'd OW18N code that referenced X->frame to Calctool_kframe->kframe.
+
+----
+
+v3.2 - patchlevel 41.  4 June 1992.
+
+* Moved various routines, that are common to several Deskset tools, over to
+  libdeskset and adjusted the files accordingly.
+
+* Calctool would core dump when trying to retrieve the default menu string
+  for the menus associated with various calctool "buttons". Added a new routine
+  to xview.c called get_def_menu_str() which now correctly returns this.
+  Removed the str variable from the menu_entry struct, and adjusted the code
+  for this change (made menu_entries an array of char).
+
+----
+
+v3.2 - patchlevel 40.  1 May 1992.
+
+* Fixed bug #1090718 - a check is made to see if the mode or memory windows
+                       should be displayed, and they now no longer appear if
+                       calctool is started iconically. A frame event interpose
+                       handler has been added for the main calctool frame, so
+                       that the current window state (open/closed) can be
+                       tracked dynamically.
+
+----
+
+v3.2 - patchlevel 39.  22 April 1992.
+
+* Fixed bug #1084790 - calctool now recognises the -icon_font and
+                       Icon.font.name options.
+
+----
+
+v3.2 - patchlevel 38.  22 April 1992.
+
+* Calctool has been changed so the default is a right-handed calculator. The
+  manual pages have been updated.
+
+* Made the calctool menus pinnable.
+
+----
+
+v3.2 - patchlevel 37.  15 April 1992.
+
+* DevGuided calctool and removed unwanted code.
+
+* Changed the first place calctool looks for it's defaults from
+  /usr/lib/X11/app-defaults/Deskset to $OPENWINHOME/lib/app-defaults/Deskset.
+  This fixes rfe #1087119.
+
+* Calctools' initial size was incorrect if started with a -scale of large or
+  extra_large.
+
+* Fixed bug 1087908 - the constant window is now initially pinned.
+
+* Fixed bug 1087911 - the function window is now initially pinned.
+
+----
+
+v3.2 - patchlevel 36. 23rd March 1992.
+
+* Add and remove WIN_USE_IM (I18N level 4 XView attribute).  See bugid 1083920
+
+----
+
+v3.2 - patchlevel 35. 27th February 1992.
+
+* Due to the changes introduced in patch #31 for the localisation
+  of the keyboard equivalents of the calctool buttons, when calctool
+  was used in "right-hand" mode, the translated values were incorrect.
+  Fixes bug #1084210.
+
+----
+
+v3.2 - patchlevel 34. 24th February 1992.
+ 
+* Ran purify on calctool. Found various memory leaks/corruptions.
+  Plugged 'em. Fixes #1083925.
+
+----
+
+v3.2 - patchlevel 33. 19th February 1992.
+
+* More work on #1077702. Adjustment to the way the hyperbolic
+  trig functions work. If calctool is display in degrees or
+  gradients, then the input should not be converted to radians.
+  Similarily, the output should not be converted back to degrees
+  or gradients.
+
+----
+
+v3.2 - patchlevel 32. 19th February 1992.
+
+* calctool tried to use a localised "deskset" and "Deskset" strings
+  when reading and writing its X resources. Fixes #1083402.
+
+----
+
+v3.2 - patchlevel 31. 19th February 1992.
+
+* The keyboard equivalents for the calctool buttons and menu entries
+  have been localised. Calctool code has been adjusted to use these
+  localised values, rather than the previously hard-wired values. At
+  present, only a single character is allowed for each keyboard
+  equivalent, and it will be taken from the first character in the
+  localised string. A definition IS_KEY() has been added to calctool.h
+  and used extensively in the code in case a multi-byte character
+  comparison is needed. Fixed bug #1082353.
+
+----
+
+v3.2 - patchlevel 30. 14th February 1992.
+
+* If no initial size is given for calctool, then it will determine the
+  length of the longest button label (includes the mode button labels),
+  and adjust the size so that the full text for that button can be
+  displayed, and the remainder of the buttons are the same size. With
+  the English version, all calctool button labels should be four
+  characters long, so there should be no visible change. Note that
+  calctool could then be resized smaller and as much of the label as
+  possible will be displayed, and if there is more text for that label,
+  then the final label character will be a '>' character. Fixes bug
+  #1079649.
+
+----
+
+v3.2 - patchlevel 29. 13th February 1992.
+
+* The Apply, Set defaults and Reset buttons were not being centralised
+  on the calctool property sheet. Fixes bug #1082182.
+
+----
+
+v3.2 - patchlevel 28. 18th January 1992.
+
+* Line up the panel choice labels in the properties sheet using
+  PANEL_LABEL_FONT to figure out the label string length
+  (Font_string_dims).  This is an i18n fix.  File affected - xview.c.
+
+----
+
+v3.2 - patchlevel 27. 17th January 1992.
+
+* The inverse cosine of 1.0 was incorrect. It should have returned
+  0.0. Fixes bug #1077702.
+
+----
+
+v3.2 - patchlevel 26. 17th January 1992.
+
+* Fixup from Doug Twilleager and Jackson Wong to get calctool to
+  work under jup_prebeta3. Variables bminh and bminw were not
+  initialised to zero in init_size() in get.c.
+
+----
+
+v3.2 - patchlevel 25. 16th January 1992.
+
+* Calctool was incorrectly recognising the +Wn and -Wn command line
+  options. Fixes bug #1079394.
+
+* Small changes to the way that -fg color and -bg color are handled:
+
+  - If the -bg command line option is present or the
+    window.color.background resource set, then it will no longer change
+    the background color of the button areas.
+
+  - If the deskset.calctool.textColor resource is set, then -fg will
+    not override it.
+
+  - If the deskset.calctool.memRegisterColor resource is set, then -bg
+    will not override it.
+
+  - If the deskset.calctool.displayColor resource is set, then -bg
+    will not override it.

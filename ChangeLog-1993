@@ -1,0 +1,182 @@
+/*  $Header$
+ *
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
+ *  All Rights Reserved.
+ */
+
+gcalctool change history - 1993.
+================================
+
+v3.2 - patchlevel 74 [richb] - 8 July 1993.
+
+* Files changed: patchlevel.h CHANGES calctool.c graphics.c text.c
+
+* Fixed #1136161 - Hexadecimal results are displayed in lower case letters.
+                   This involved backing out the changed made in patch #72
+                   for bug #1132402. The real fix is that the country shouldn't
+                   have translated hexidecimal a-f.
+
+----
+
+v3.2 - patchlevel 73 [richb] - 6 July 1993.
+
+* Files changed: patchlevel.h CHANGES functions.c
+
+* Fixed #1135862 - exponent key inconsistent with handheld calculators after
+                   memory op. Calctool nows sets the value of v->new_input to
+                   zero after retrieving a value from a memory register.
+
+----
+
+v3.2 - patchlevel 72 [richb] - 7 June 1993.
+
+* Files changed: patchlevel.h CHANGES calctool.c text.c graphics.c
+
+* Work on #1132402 - the digits[] string now gets the hexidecimal values from
+                     the specific locale translated strings.
+
+----
+
+v3.2 - patchlevel 71 [richb] - 3 June 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1130988 - calctool dumps core when Help key on left keypad is
+                   pressed over a button.
+
+----
+
+v3.2 - patchlevel 70 [richb] - 18 May 1993.
+
+* Files changed: patchlevel.h CHANGES functions.c
+
+* Fixed #1128221 - Inconsistent behaviour using logical operators for numbers
+                   wider than 32 bits.
+
+----
+
+v3.2 - patchlevel 69 [richb] - 17 May 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1077543 - -WG and -position do not work properly for calctool.
+
+----
+
+v3.2 - patchlevel 68 [richb] - 10 May 1993.
+
+* Files changed: patchlevel.h CHANGES calctool.h extern.h graphics.c calctool.c
+
+* Fixed #1127530 - help information for right-handed style should be provided.
+
+----
+
+v3.2 - patchlevel 67 [richb] - 10 May 1993.
+ 
+* Files changed: patchlevel.h CHANGES calctool.h graphics.c xview.c
+ 
+* Fixed #1126997 - Can't make multiple selections from the Mode pinup menu.
+
+----
+
+v3.2 - patchlevel 66 [wmui] - 8 Apr 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1125006 - calctool refuses to come up when non-C locale is specified
+                   but not installed.
+
+----
+
+v3.2 - patchlevel 65 [richb] - 7 Apr 1993.
+
+* Files changed: patchlevel.h CHANGES calctool.h graphics.c xview.c
+
+* Fixed #1125145 - In scientific mode, Trig->degrees causes calctool to core
+                   dump.
+
+----
+
+v3.2 - patchlevel 64 [richb] - 25 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1122701 - calctool dumps core when can't load OpenWindows.BoldFont
+                   and RegularFont.
+
+----
+
+v3.2 - patchlevel 63 [richb] - 25 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES get.c
+
+* Fixed #1102821 - changing numeric base doesn't change the base in constants.
+
+----
+
+v3.2 - patchlevel 62 [richb] - 25 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c calctool.h graphics.c
+
+* Fixed #1121424 - selecting numeric string in i18nl4 calctool by mouse,
+                   it will be widely spaced.
+
+----
+
+v3.2 - patchlevel 61 [richb] - 24 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1121451 - memory window is empty when you bring it up the first time.
+
+----
+
+v3.2 - patchlevel 60 [richb] - 24 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1105881 - i18nl4 calctool: numeric string move left when input
+                 numeric.
+
+----
+
+v3.2 - patchlevel 59 [richb] - 24 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1117773 - Calctool cannot resize in ja locale.
+
+----
+
+v3.2 - patchlevel 58 [richb] - 24 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1113962 - Calctool always uses a small scale font.
+
+----
+
+v3.2 - patchlevel 57 [richb] - 16 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES calctool.G xview.c
+
+* Fixed #1122078 - Calctool: props sheet is truncated on right side.
+
+----
+
+v3.2 - patchlevel 56 [richb] - 16 Mar 1993.
+
+* Files changed: patchlevel.h CHANGES xview.c
+
+* Fixed #1117296 - s493_alpha4.3 calctool creates many property windows.
+
+----
+
+v3.2 - patchlevel 55 [wmui] - 23 Feb 1993.
+
+* Files changed: patchlevel.h CHANGES extern.h functions.c graphics.c text.c
+
+* Fixed #1104942 (MOWN3.1 buyback) - Spot help did not work.
+
+* Fixed #1117786 - Calctool writes localized values to resource database.
+                   Resource attribute/value pairs should be in ASCII.

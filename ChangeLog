@@ -7,3589 +7,805 @@
 gcalctool change history.
 =========================
 
-v4.2.77 - 25th March 2003.	  (richb)
+2003-03-25  Rich Burridge  <rich.burridge@sun.com>
 
-* Fixed up a compiler warning for set_show_zeroes_toggle() usage in gtk.c
-  Fixed up distcheck, adding intltool to EXTRA_DIST
+    * Adjusted ChangeLog format to the Gnu style. Moved older ChangeLog entries
+      off into ChangeLog-YYYY files (years 1990, 1991, 1992, 1993 and 2002).
 
-  This version to be announced in gnome-announce.
+2003-03-25  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Fixed up a compiler warning for set_show_zeroes_toggle() usage in gtk.c
+      Fixed up distcheck, adding intltool to EXTRA_DIST
 
-v4.2.76 - 24th March 2003.	  (richb)
+      This version to be announced in gnome-announce.
 
-* Slight adjustments to bug 108226
-  (http://bugzilla.gnome.org/show_bug.cgi?id=108226)
+2003-03-24  Rich Burridge  <rich.burridge@sun.com>
 
-  Menu item is now "Show Trailing Zeroes", with a Control-T accelerator.
-  Added a similar menu item to the View menu on the menu bar (only active
-  in Scientific mode). Adjusted program logic. Cases of "rm_zeroes" now
-  become "show_zeroes". Updated the manual pages and the gcalctool
-  schemas file.
+    * Slight adjustments to bug 108226
+      (http://bugzilla.gnome.org/show_bug.cgi?id=108226)
 
-----
+      Menu item is now "Show Trailing Zeroes", with a Control-T accelerator.
+      Added a similar menu item to the View menu on the menu bar (only active
+      in Scientific mode). Adjusted program logic. Cases of "rm_zeroes" now
+      become "show_zeroes". Updated the manual pages and the gcalctool
+      schemas file.
 
-v4.2.75 - 19th March 2003.       (Dennis Cranston)
+2003-03-19  Dennis Cranston <dennis_cranston@yahoo.com>
 
-* Fixed bug 108729 (http://bugzilla.gnome.org/show_bug.cgi?id=108729)
-  Added tooltips to the radio and check buttons in scientific mode.
+    * Fixed bug 108729 (http://bugzilla.gnome.org/show_bug.cgi?id=108729)
+      Added tooltips to the radio and check buttons in scientific mode.
 
-----
+2003-03-18  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.74 - 18th March 2003.       (richb)
+    * Fixed bug 108226 (http://bugzilla.gnome.org/show_bug.cgi?id=108226)
 
-* Fixed bug 108226 (http://bugzilla.gnome.org/show_bug.cgi?id=108226)
+      The menu items in the Acc menu are now "tickable", so you know what the 
+      current accuracy selection is. Setting one of these clears the previous 
+      one.
 
-  The menu items in the Acc menu are now "tickable", so you know what the 
-  current accuracy selection is. Setting one of these clears the previous one.
+      A new "remove trailing zeroes" menu item is added to the Acc menu (last
+      item, with a separator just above), that is "tickable". This tick doesn't
+      affect the accuracy ticks. It's either on or off.
 
-  A new "remove trailing zeroes" menu item is added to the Acc menu (last
-  item, with a separator just above), that is "tickable". This tick doesn't
-  affect the accuracy ticks. It's either on or off.
+      The default setting for accuracy now becomes 9 numeric places and "remove 
+      trailing zeroes".
 
-  The default setting for accuracy now becomes 9 numeric places and "remove 
-  trailing zeroes".
+      The Acc button is moved to the Scientific mode (clear slot in the top 
+      right corner, above the Rand.
 
-  The Acc button is moved to the Scientific mode (clear slot in the top 
-  right corner, above the Rand.
+      The Base radio button group and the display type radio button group in
+      the mode panel in Scientific mode are now moved to the right side to be
+      close in proximity to the Acc button. The other mode items move to the
+      left side.
 
-  The Base radio button group and the display type radio button group in
-  the mode panel in Scientific mode are now moved to the right side to be
-  close in proximity to the Acc button. The other mode items move to the
-  left side.
+2003-03-18  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 108208 (http://bugzilla.gnome.org/show_bug.cgi?id=108208)
+      The default value for the "showregisters" resource in gcalctool.schemas
+      was incorrectly set.
 
-v4.2.73 - 18th March 2003.       (richb)
+    * There should be no "default:" action in the command line parsing in 
+      get_options().
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 108208 (http://bugzilla.gnome.org/show_bug.cgi?id=108208)
-  The default value for the "showregisters" resource in gcalctool.schemas
-  was incorrectly set.
+2003-03-14  Rich Burridge  <rich.burridge@sun.com>
 
-* There should be no "default:" action in the command line parsing in 
-  get_options().
+    * Correctly fixed bug 108219 
+      (http://bugzilla.gnome.org/show_bug.cgi?id=108219)
+      The previous fix didn't correct set the radio buttons when changing 
+      mode from Scientific to Basic or Financial. Only the internal state.
 
-----
+2003-03-14  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.72 - 14th March 2003.       (richb)
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 108209 (http://bugzilla.gnome.org/show_bug.cgi?id=108209)
+      Followup changes to make the numeric keypad animate the buttons on 
+      Linux machines.
 
-* Correctly fixed bug 108219 (http://bugzilla.gnome.org/show_bug.cgi?id=108219)
-  The previous fix didn't correct set the radio buttons when changing 
-  mode from Scientific to Basic or Financial. Only the internal state.
+2003-03-14  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Fixed bug 108219 (http://bugzilla.gnome.org/show_bug.cgi?id=108219)
+      When you go from Scientific mode to either Basic or Financial mode, 
+      the calculator will revert to "Dec" base in "Fix" notation.
 
-v4.2.71 - 14th March 2003.       (richb)
+      Any number in the display (and the memory registers if shown) will be 
+      converted accordingly.
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 108209 (http://bugzilla.gnome.org/show_bug.cgi?id=108209)
-  Followup changes to make the numeric keypad animate the buttons on 
-  Linux machines.
+      When you are in a mode (Basic, Financial, or Scientific) you will only 
+      be able to do the functionality that that mode shows. For example, you 
+      will not be able to do base changes if you are in Basic or Financial mode.
 
-----
+2003-03-14  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.70 - 14th March 2003.       (richb)
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 108333 (http://bugzilla.gnome.org/show_bug.cgi?id=108333)
+      The gcalctool buttons with menus associated with them are now keyboard
+      navigable.
 
-* Fixed bug 108219 (http://bugzilla.gnome.org/show_bug.cgi?id=108219)
-  When you go from Scientific mode to either Basic or Financial mode, 
-  the calculator will revert to "Dec" base in "Fix" notation.
+2003-03-14  Rich Burridge  <rich.burridge@sun.com>
 
-  Any number in the display (and the memory registers if shown) will be 
-  converted accordingly.
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 108209 (http://bugzilla.gnome.org/show_bug.cgi?id=108209)
+      When the user uses the keyboard to enter data, the associated gcalctool
+      button will be animated.
 
-  When you are in a mode (Basic, Financial, or Scientific) you will only 
-  be able to do the functionality that that mode shows. For example, you 
-  will not be able to do base changes if you are in Basic or Financial mode.
+2003-03-13  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Fixed bug 108210 (http://bugzilla.gnome.org/show_bug.cgi?id=108210)
+      Main gcalctool window is no longer resizable.
 
-v4.2.69 - 14th March 2003.       (richb)
+2003-03-13  Rich Burridge  <rich.burridge@sun.com>
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 108333 (http://bugzilla.gnome.org/show_bug.cgi?id=108333)
-  The gcalctool buttons with menus associated with them are now keyboard
-  navigable.
+    * Incorporated several online help changes from Breda McColgan.
 
-----
+      **IMPORTANT NOTE FOR TRANSLATORS**
 
-v4.2.68 - 14th March 2003.       (richb)
+      Please still hold off translating these files for a while. This is still
+      a draft. The documentation needs to be reviewed by an editor, and 
+      editorial feedback incorporated. Look for a followup entry here in the 
+      Changelog, with an indication that they are ready for translation.
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 108209 (http://bugzilla.gnome.org/show_bug.cgi?id=108209)
-  When the user uses the keyboard to enter data, the associated gcalctool
-  button will be animated.
+2003-03-05  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Added scrollkeeper checks into configure.in.
 
-v4.2.67 - 13th March 2003.       (richb)
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed warning message:
 
-* Fixed bug 108210 (http://bugzilla.gnome.org/show_bug.cgi?id=108210)
-  Main gcalctool window is no longer resizable.
+      ** (gcalctool:27091): WARNING **: Help error: Unable to find the 
+      GNOME_FILE_DOMAIN_APP_HELP domain
 
-----
+      Adjustment to the gnome_help_display() call in gtk.c to use the right 
+      parameters.
 
-v4.2.66 - 13th March 2003.       (richb)
+2003-03-05  Rich Burridge  <rich.burridge@sun.com>
 
-* Incorporated several online help changes from Breda McColgan.
+    * Added in a first (draft) version of online help from Breda McColgan in
+      the Sun GNOME doc. team.
 
- **IMPORTANT NOTE FOR TRANSLATORS**
+      **IMPORTANT NOTE FOR TRANSLATORS**
 
-  Please still hold off translating these files for a while. This is still
-  a draft. The documentation needs to be reviewed by an editor, and editorial
-  feedback incorporated. Look for a followup entry here in the Changelog, 
-  with an indication that they are ready for translation.
+      Please hold off translating these files for a while. Slight revisions
+      are planned for sometime in the next week or two. Look for a followup 
+      entry here in the Changelog, with an indication that they are ready for 
+      translation.
 
-----
+2003-03-05  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.65 - 5th March 2003.       (richb)
+    * Abstracted the key values and modifiers. This will make it easier to
+      create versions of this calculator for other graphical toolkits, or
+      a version with no graphics at all (prompt style).
 
-* Added scrollkeeper checks into configure.in.
+2003-03-04  Rich Burridge  <rich.burridge@sun.com>
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed warning message:
+    * Adjusted the tooltip help to be minimalist messages. Online help for
+      gcalctool will be coming soon, and this will contain the detailed help
+      information (plus examples).
 
-  ** (gcalctool:27091): WARNING **: Help error: Unable to find the 
-  GNOME_FILE_DOMAIN_APP_HELP domain
+2003-02-28  Rich Burridge  <rich.burridge@sun.com>
 
-  Adjustment to the gnome_help_display() call in gtk.c to use the right 
-  parameters.
+    * Small adjustment to allow gcalctool to compile using the Solaris Forte
+      compilers.
 
-----
+2003-02-26  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.64 - 5th March 2003.       (richb)
+    * Gcalctool wasn't saving the trigonometric type when it was changed. The
+      trig_cb() function was calling do_trig() incorrectly instead of 
+      do_trigtype().
 
-* Added in a first (draft) version of online help from Breda McColgan in
-  the Sun GNOME doc. team.
+    * Removed the trailing period from the ten constant definitions in the man 
+      pages.
 
-  **IMPORTANT NOTE FOR TRANSLATORS**
+2003-02-26  evandrofg <someone@somewhere.org>
 
-  Please hold off translating these files for a while. Slight revisions
-  are planned for sometime in the next week or two. Look for a followup 
-  entry here in the Changelog, with an indication that they are ready for 
-  translation.
+    * configure.in: Added Brazilian Portuguese (pt_BR) to ALL_LINGUAS.
 
-----
+2003-02-21  Rich Burridge  <rich.burridge@sun.com>
 
-v4.2.63 - 4th March 2003.       (richb)
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Allows Backspace to correctly work inside parentheses. Similar fix to
+      the one for Delete in v4.2.55 (bug #106583).
 
-* Abstracted the key values and modifiers. This will make it easier to
-  create versions of this calculator for other graphical toolkits, or
-  a version with no graphics at all (prompt style).
+2003-02-21  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * The Xor logical operation wasn't being performed correctly. Gdk uses
+      keysym values that are greater than what can be fitted into a char.
+      Adjusted v->cur_op and v->old_cal_value to now be ints.
 
-v4.2.62 - 4th March 2003.       (richb)
+    * Hitting Clr was not correctly clearing the Hyp and Inv trigonometric
+      checkboxes. In fact, it was toggling them twice, thereby returning them
+      to whatever state they were in when the user hit Clr.
 
-* Adjusted the tooltip help to be minimalist messages. Online help for
-  gcalctool will be coming soon, and this will contain the detailed help
-  information (plus examples).
+2003-02-20  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Removed the final period from the ten default constant descriptions.
 
-v4.2.61 - 28th February 2003.	(richb)
+    * Changed occurances of "kilometre" to "kilometer" and "centimetre" to
+      "centimeter".
 
-* Small adjustment to allow gcalctool to compile using the Solaris Forte
-  compilers.
+    * Fixed up the values of the ten default constant definitions in the
+      manual pages.
 
-----
+    * The "centimeters <=> inches" default constant should be 0.3937007
+      rather than 2.54 to be consistent with the other constants.
 
-v4.2.60 - 26th February 2003.  (richb)
+2003-02-20  Rich Burridge  <rich.burridge@sun.com>
 
-* Gcalctool wasn't saving the trigonometric type when it was changed. The
-  trig_cb() function was calling do_trig() incorrectly instead of do_trigtype().
+    * Fixed bug 106583 (http://bugzilla.gnome.org/show_bug.cgi?id=106583)
+      There were two parts to this. Dennis Cranston fixed the:
 
-* Removed the trailing period from the ten constant definitions in the man 
-  pages.
+      (gcalctool:10872): Gtk-CRITICAL **: file gtktextbuffer.c: line 548:
+      assertion `g_utf8_validate (text, len, NULL)' failed
 
-----
+      messages. 
 
-v4.2.59 - 26th February 2003.  (evandrofg)
+      The crash was caused by the paren_disp() function in display.c not
+      correctly checking for when a Delete character was entered.
 
-* configure.in: Added Brazilian Portuguese (pt_BR) to ALL_LINGUAS.
+2003-02-20  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * The financial Term tooltip example didn't work. The problem was that
+      the Rate function had a keyboard shortcut of "T" and Term had "t". The
+      check for which financial function was being processed in do_business()
+      in functions.c didn't take into consideration any key mods (such as
+      GDK_SHIFT_MASK). Add a key_equal function that now compares both the
+      mods and the value of keys.
 
-v4.2.58 - 21st February 2003.  (richb)
+    * Moved the Exp button to the right of the Con and Fun buttons for better
+      grouping.
 
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Allows Backspace to correctly work inside parentheses. Similar fix to
-  the one for Delete in v4.2.55 (bug #106583).
+2003-02-19  Rich Burridge  <rich.burridge@sun.com>
 
-----
-
-v4.2.57 - 21st February 2003.  (richb)
-
-* The Xor logical operation wasn't being performed correctly. Gdk uses
-  keysym values that are greater than what can be fitted into a char.
-  Adjusted v->cur_op and v->old_cal_value to now be ints.
-* Hitting Clr was not correctly clearing the Hyp and Inv trigonometric
-  checkboxes. In fact, it was toggling them twice, thereby returning them
-  to whatever state they were in when the user hit Clr.
-
-----
-
-v4.2.56 - 20th February 2003.  (richb)
-
-* Removed the final period from the ten default constant descriptions.
-* Changed occurances of "kilometre" to "kilometer" and "centimetre" to
-  "centimeter".
-* Fixed up the values of the ten default constant definitions in the
-  manual pages.
-* The "centimeters <=> inches" default constant should be 0.3937007
-  rather than 2.54 to be consistent with the other constants.
-
-----
-
-v4.2.55 - 20th February 2003.  (richb)
-
-* Fixed bug 106583 (http://bugzilla.gnome.org/show_bug.cgi?id=106583)
-  There were two parts to this. Dennis Cranston fixed the:
-
-  (gcalctool:10872): Gtk-CRITICAL **: file gtktextbuffer.c: line 548:
-  assertion `g_utf8_validate (text, len, NULL)' failed
-
-  messages. 
-
-  The crash was caused by the paren_disp() function in display.c not
-  correctly checking for when a Delete character was entered.
-
-----
-
-v4.2.54 - 20th February 2003.  (richb)
-
-* The financial Term tooltip example didn't work. The problem was that
-  the Rate function had a keyboard shortcut of "T" and Term had "t". The
-  check for which financial function was being processed in do_business()
-  in functions.c didn't take into consideration any key mods (such as
-  GDK_SHIFT_MASK). Add a key_equal function that now compares both the
-  mods and the value of keys.
-
-* Moved the Exp button to the right of the Con and Fun buttons for better
-  grouping.
-
-----
-
-v4.2.53 - 19th February 2003.  (richb)
-
-* Fixed bug 106501 (http://bugzilla.gnome.org/show_bug.cgi?id=106501)
-  A check has been added to the do_delete() function in functions.c to
-  make sure that the length is greater than zero, before setting the
-  len-1 character to '\0'.
- 
-----
-
-v4.2.52 - 19th February 2003.  (richb)
-
-* From Breda McColgan <breda.mccolgan@sun.com>
-  Toggled the positions of the Sto and Rcl buttons. This is primarily to
-  help with the online documentation, which consists of listing the 
-  gcalctool buttons in several tables, grouping "like" buttons together 
-  (for example: Bsp, CE, and Clr in one table; Sto, Rcl, and Exch in 
-  another table). Within a table, the buttons are listed in the sequence 
-  in which they appear in gcalctool. For the most part, the sequence 
-  isn't significant. However, it doesn't really make sense to talk about 
-  either Rcl or Exch until you've described Sto.
-
-----
-
-v4.2.51 - 19th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  - The process_str() function will cause a crash if the input string is 
-    null. For example, if the clipboard is empty and the user presses 
-    CTRL-V then gcalctool will core dump. Fixed by adding a null check to 
-    the function. 
-
-  - gcalctool now uses a text view for its display widget.
-
-----
-
-v4.2.50 - 18th February 2003.  (richb)
-
-* Fixes to the manual page:
-  - the keyboard shortcut for the "Term" function is "t" not "T".
-  - removed the LOGICAL mode section.
-
-----
-
-v4.2.49 - 18th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Changes the EXPAND flag to FALSE when packing the display label and mode
-  frame. These widgets shouldn't expand when the calculator is resized. 
-
-  Replace the three characters of white space in the title bar text with one
-  space character, so more of the title fits into the task window list applet.
-
-----
-
-v4.2.48 - 12th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Added a launcher to the GNOME's Accessories menu. The launcher uses 
-  gcalctool.png for its icon which required moving the icon to the pixmaps 
-  installation directory.  
-
-  This means that the find_file() function is no longer necessary, and has
-  been removed. It was used only in set_gcalctool_icon(). The path of 
-  gcalctool.png is now always PACKAGE_PIXMAP_DIR. 
-
-----
-
-v4.2.47 - 12th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Mark the menu labels for translation and converts the
-  gtk_item_factory_get_widget() calls to 
-  gtk_item_factory_get_widget_by_action() calls. 
-
-----
-
-v4.2.46 - 11th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  - Cleans up the Help menu's layout so it looks like other gnome applications.
-  - Converts gtk_init() to gnome_program_init() to allow access to things 
-    like GNOME_STOCK_ABOUT.
-  - Add an icon field to the Xobject structure.
-  - Change setup_default_icon() to set_gcalctool_icon() and set X->icon in 
-    the function.
-  - Sets the window icon for the memory register and about windows.
-  - Cleans up about_cb() and call it directly in menu callbacks -- like in 
-    other gtk+ applications.
-  - Remove the unneccessary X->about structure field.
-
-----
-
-  2003-02-06 
-
-* From Daniel Yacob  <locales@geez.org>
-  Added Amharic (am) to ALL_LINGUAS ata configure.in.
-
-----
-
-v4.2.45 - 7th February 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 104249 (http://bugzilla.gnome.org/show_bug.cgi?id=104249)
-  The UI for adding new or editing existing constants and/or functions
-  has been improved. It now uses a treeview editable list. A help button
-  is provided, but that currently isn't hooked up. I've added a note to
-  bug #104821 for this problem.
-
-----
-
-v4.2.44 - 4th February 2003.  (richb)
-
-* Fixed bug 104830 (http://bugzilla.gnome.org/show_bug.cgi?id=104830)
-  gcalctool now uses gnome-calc3.png as its icon (same as the current
-  gnome-calculator). For now, I've copied that to a file, gcalctool.png
-  within the gcalctool distribution. Also removed calctool.gif.
-
-----
-
-v4.2.43 - 28th January 2003.  (richb)
-
-* Further slight adjustments needed to fix Bugzilla bug 104248. The callback
-  handler for the menu items (mb_proc in gtk.c) needed to have a check at the
-  top to see if we'd started the application yet, and if it hadn't, then to 
-  just return. Seemed it was getting called as gcalctool was initially 
-  coming up, which was toggling the state of the v->rstate variable 
-  incorrectly.
-
-* Fixed bug 104240 (http://bugzilla.gnome.org/show_bug.cgi?id=104240)
-  The "File" menubar item is now called "Calculator", and there is a set of
-  unique mnemonics for the various items in the Scientific mode panel.
-  The gcalctool manual pages have been updated to reflect these changes.
-
-* Added in a Control-I mnemonic for Edit->Insert ASCII Value.
-  Added in a Control-A mnemonic for Help->About.
-
-----
-
-v4.2.42 - 28th January 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 104248 (http://bugzilla.gnome.org/show_bug.cgi?id=104248)
-  The View->Memory Registers menu item's toggle is now set correctly
-  depending upon whether the memory register windows is visible or hidden.
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  The correct radio item is now set in the View menu mode menu item entries
-  if gcalctool is initially started in Financial or Scientific mode.
-
-----
-
-v4.2.41 - 27th January 2003.  (richb)
-
-* The constant and function definitions are now read and written as Gconf
-  resources, rather than to a ~/.gcalctoolcf file in the user's home 
-  directory. The manual pages have been updated to reflect this change.
-
-  An entry has been added to the TODO file to reflect functionality that
-  is no longer present because of this change.
-
-* Fixed bug 104250 (http://bugzilla.gnome.org/show_bug.cgi?id=104250)
-  The constant and the function menu items now have "C<n>:" and "F<n>:" 
-  prefixes respectively, where <n> is the constant/function number.
-
-  This also involved removing the "<=>" from four of the descriptions for
-  the predefined constant values.
-
-----
-
-v4.2.40 - 25th January 2003.  (richb)
-
-* Fixed bug 104245 (http://bugzilla.gnome.org/show_bug.cgi?id=104245)
-  The View->Basic Mode, Financial Mode, Scientific Mode and Memory
-  Registers now have keyboard accelerators (Control-B, Control-F, Control-S
-  and Control-M respectively).
-
-----
-
-v4.2.39 - 25th January 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Further slight adjustments for bug 104287
-  (http://bugzilla.gnome.org/show_bug.cgi?id=104287)
-  The insert button isthe default button.
-  The dialog is no longer resizable.
-  The ESC key can now be used to cancel the dialog.
-
-----
-
-v4.2.38 - 24th January 2003.  (richb)
-
-* From: Dennis Cranston <dennis.cranston@yahoo.com>
-  Fixed bug 104287 (http://bugzilla.gnome.org/show_bug.cgi?id=104287)
-  HIG improvements for the "Insert ASCII Value" dialog.
-
-----
-
-v4.2.37 - 23rd January 2003.  (richb)
-
-* Fixed bug 104241 (http://bugzilla.gnome.org/show_bug.cgi?id=104241)
-  The Insert ASCII Value" menu item is now "Insert ASCII Value..."
-
-* From: Hidetoshi Tajima <hidetoshi.tajima@sun.com>
-  Tidied up the I18N code as gcalctool now includes <gnome.h> which includes
-  <bonobo-i18n.h,> where all this stuff is already defined.
-
-----
-
-v4.2.36 - 23rd January 2003.  (richb)
-
-* Fixed bug 102928 (http://bugzilla.gnome.org/show_bug.cgi?id=102928)
-  The x^2, e^x, 10^x and y^x keys now use Pango markup to display the
-  label using superscripts.
-
-----
-
-v4.2.35 - 23rd January 2003.  (richb)
-
-* Added in handling of the numeric keypad for Linux systems. This required
-  an "event" signal handler on the main gcalctool window, and then checking
-  for a set of keyvals that could be generated by the numeric keypad keys
-  (with and without the NumLock key on).
-
-----
-
-v4.2.34 - 22nd January 2003.  (richb)
-
-* Handling the function "(3+3)" now works.
-  The button struct now contains a new item (char func_char) which is the
-  character equivalent to the button when you user enteres it into a function
-  definition. The process_str() routine in graphics.c has been adjusted to
-  call button_for_fc() (a new routine in functions.c) to compare each 
-  character in the function string against this item in each button struct 
-  to find the appropriate operation.
-
-  Also needed changes to do_paren() to call button_for_fc() instead of 
-  button_for_value().
-
-  These changes also fix bugtraq bug #4065378.
-  Certain functions entered into gcalctool produce incorrect results.
-
-* Changed the keyboard accelerators for the following to use non Alt-<?>
-  values:
-
-  Cos  (old value: Alt-c) becomes 'J'.
-  Sin  (old value: Alt-s) becomes 'K'.
-  Tan  (old value: Alt-t) becomes 'L'.
-  Frac (old value: Alt-f) becomes ':'.
-  Int  (old value: Alt-i) becomes 'i'.
-  Abs  (old value: Alt-u) becomes 'u'.
-  Rate (old value: Alt-r) becomes 'T'.
-
-  Updated the manual pages and the tooltip help to reflect these changes.
-
-* Removed the need to configure with "--enable-build-broken".
-
-----
-
-v4.2.33 - 22nd January 2003.  (richb)
-
-* Adjusted the memory registers windows to use the same "R0:  0.00" format 
-  (bold for first part), as the Rcl, Sto and Exch menus. 
-
-----
-
-v4.2.32 - 22nd January 2003.  (richb)
-
-* The menu items for the Rcl, Sto and Exch menus now have the format
-  "R0:     0.00", where the "R0:" part is in bold.
-
-* From Padraig O'Briain <Padraig.Obriain@Sun.COM>
-  Fix to get the keyboard accelerators for the menubar menu items working.
-  The problem was due to the creation of two accelerator groups in main()
-  in gtk.c.
-
-----
-
-v4.2.31 - 21st January 2003.  (richb)
-
-* Updated the NEWS file with an overview of all the changes since v4.1.13.
-
-----
-
-v4.2.30 - 21st January 2003.  (richb)
-
-* Removed the gconf resource for getting/setting whether a beep is sounded
-  on error. A beep will now always be sounded in such a case.
-
-* Removed the write_resources() routine. The writing out of the resources
-  will now be immediately done when each of those functions changes.
-
-----
-
-v4.2.29 - 21st January 2003.  (richb)
-
-* Updated the manual pages to reflect the recent v4.2.xx changes.
-
-* Replaced the occurance of mktemp with mkstemp to placate the Gnu compiler
-  on Linux.
-
-----
-
-v4.2.28 - 21st January 2003.  (richb)
-
-* The real fix for displaying the icon. The problem was that the icon was
-  being installed in the pkgdata_DATA directory, but gcalctool was looking
-  for it in the CALCTOOL_DATA_DIR directory, which was incorrectly set to
-  $(datadir)/calctool" rather than $(datadir)/gcalctool".
-
-----
-
-v4.2.27 - 20th January 2003.  (richb)
-
-* Removed the setting of an event mask and a global event handler in 
-  create_kframe() in gtk.c. This seems to have fixed up the keyboard 
-  navigation problems.
-
-  Control-F1 now toggles the displaying of tooltip help, so the "-h"
-  command line option has been removed and the old-style event handling
-  code has also been removed.
-
-* Added in a signal handler for the "delete" event for the main gcalctool
-  window. The callback calls gtk_main_quit() to terminate the application.
-
-----
-
-v4.2.26 - 17th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  The gcalctool icon is now correctly displayed for me running Sun's
-  fcs-10 build on Solaris. It's still a problem for Calum running
-  GNOME HEAD on RH7.2.
-
-----
-
-v4.2.25 - 16th January 2003.  (richb)
-
-* HCI change suggested by Glynn Foster <Glynn.Foster@Sun.COM>
-
-  The Sto/Rcl/Exch menu items should show the current register values as well.
-
-  The Exch/Rcl/Sto menus are recreated each time that menu is needed. The
-  menu item callbacks for these menus and the Constant and Function menus
-  have been consolidated into a single menu_proc_cb() routine.
-
-----
-
-v4.2.24 - 16th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  All the radiobutton and checkbox items in the mode panel now have a 
-  mnemonic associated with them.
-
-----
-
-v4.2.23 - 16th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  Fixed up the buttons on the "Insert ASCII Value", "Enter Constant..." and
-  "Enter Function..." popups. They now just use Cancel and OK buttons, and 
-  use standard stock Gtk icons.
-
-----
-
-v4.2.22 - 16th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  Added in an Edit->Paste menu item. If selected this will paste the current
-  contents of the clipboard into the calculator display as if you'd typed it.
-
-* Added bullet proofing to the process_str() routine in graphics.c to protect
-  it against values that weren't found. If a value wasn't found, it's just 
-  ignored, and it goes on to process the next character in the string.
-
-* Improved the val_to_button() routine in functions.c. It now takes into
-  consideration the mods value for each button struct entry when comparing 
-  against the given value. This isn't enough though, as it won't find Alt-<n>
-  buttons.
-
-----
-
-v4.2.21 - 16th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  Added a 2 pixel border for the frames containing the Basic, Financial and
-  Scientific buttons and the mode panel. The calculator doesn't look so
-  crowded now.
-
-----
-
-v4.2.20 - 16th January 2003.  (richb)
-
-* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
-
-  Removed the "operand item" label widget, the routine where it was being 
-  set (set_op_item()) and all the calls to that routine. Other calculators 
-  don't have any equivalent to this, so it's not really needed.
-
-  This also remove the opdisp entry in the button struct and the op_type enum.
-
-* Adjusted the "keyboard values used" table in calctool.c to reflect the
-  current state.
-
-----
-
-v4.2.19 - 14th January 2003.  (richb)
-
-* The frames around the mode button tables and the mode panel were always 
-  being shown. The make_but_table() and create_mode_panel() routines were
-  returning the wrong widgets.
-
-----
-
-v4.2.18 - 14th January 2003.  (richb)
-
-* Fixed bug #101865 (http://bugzilla.gnome.org/show_bug.cgi?id=101865)
-  Made the following keyboard remappings:
-
-  Function     Old         New
-  ---------------------------------
-  Cos        Control-c     d
-  Ddb        Control-d     Alt-C
-  Frac       Control-f     Alt-f
-  Int        Control-i     Alt-i
-  Sln        Control-l     l
-  Ctrm       Control-m     m
-  Rate       Control-r     Alt-r
-  Sin        Control-s     Alt-s
-  Tan        Control-t     Alt-t
-  Abs        Control-u     Alt-u
-  Syd        Control-y     Y
-
-  Note that the keyboard equivalents for:
-
-  Function     Old         New
-  ---------------------------------
-  Quit       q or Q        Control-Q
-  Copy       Sun Copy key  Control-C
-
-  still have to be added in, although the menu items in the menu bar work fine.
-  The appropriate changes have been made to the manual pages.
-
-* Removed mention of the "-l" and "-r" command line options from the manual 
-  pages. Remove reference to the /schemes/apps/gcalctool/righthanded Gconf
-  resource too.
-
-----
-
-v4.2.17 - 14th January 2003.  (richb)
-
-* After discussion with Calum Benson, removed the "Keys" key, that allowed
-  you to toggle the button labels to show their keyboard equivalents. This
-  functionality is now covered by the tooltip help and the Help->Contents
-  online help.
-
-----
-
-v4.2.16 - 13th January 2003.  (richb)
-
-* Put each of the the button tables and the mode panel inside a frame, rather
-  then use horizontal separators, to try to make the GUI look nicer. There is
-  still a persistent display problem to fix though (see entry in the TODO file).
-
-----
-
-v4.2.15 - 13th January 2003.  (richb)
-
-* Entering "((2+3)*(2+3))" gave the wrong answer. Problems was in the
-  process_item() routine where extra values were reassigned. With gcalctool
-  v4.2.0 onwards, "*" is now the multiplication operand, and "x" needed to be
-  reassigned to that value (not the other way around). Had to adjust the
-  assignment of the "x" and "*" keyboard accelerators accordingly too.
-
-* Added in some bullet-proofing to the do_parens() routine to hopefully 
-  improve the handling of bogus keyboard entries when a string in 
-  parentheses is being entered.
-
-----
-
-v4.2.14 - 13th January 2003.  (richb)
-
-* Hooked up the Help->Contents menu item. Note that help support still has
-  to be included (i.e. a help subdirectory with associated files etc.).
-
-----
-
-v4.2.13 - 13th January 2003.  (richb)
-
-* The View->Memory Registers menu item now correctly toggles the showing of
-  the memory register window.
-
-----
-
-v4.2.12 - 13th January 2003.  (richb)
-
-* Menubar menu items now use stock Gtk icons (where applicable).
-
-----
-
-v4.2.11 - 10th January 2003.  (richb)
-
-* Revised the gcalctoolrc (Gtk resources) file for the new display layout.
-  This really needs help from a real graphics designer for a suggested color
-  set.
-
-----
-
-v4.2.10 - 10th January 2003.  (richb)
-
-* Go into Scientific mode. Click on "(" twice and you'll get a segv.
-  The problem was the v->current needed to be set to a copy of the "n" button
-  struct, rather than trying to find the button value from user_data.
-  Created a copy_button_info() routine that is now called in three places.
-
-----
-
-v4.2.9 - 10th January 2003.  (richb)
-
-* Added some horizontal separators to help make the calculator more readable
-  when in Financial and Scientific Mode.
-
-----
-
-v4.2.8 - 9th January 2003.  (richb)
-
-* Entering "((2+3)*9+(5-3))" causes a segv. The problem was due to the
-  change from "x" to "*" as the character for multiplication. The .value
-  entry in the button struct for the multiplication button needed to be
-  changed to GDK_asterisk (rather than GDK_x), otherwise button_for_value()
-  returns a NULL pointer.
-
-----
-
-v4.2.7 - 9th January 2003.  (richb)
-
-* Removed the attempt to display a calculator image on the About popup.
-
-* Typing the keyboard equivalent of the menu buttons now works. The problem
-  was in process_item() in display.c. v->current couldn't just point to the
-  current button struct. It needed to be a copy of it, so that pending
-  operation (which save the pending value), don't overwrite the base button
-  entries.
-
-* Removed the VERSION string from the titlebar. This is now in the About popup.
-
-----
-
-v4.2.6 - 9th January 2003.  (richb)
-
-* Added in an About popup that's accessible through the Help->About Gcalctool
-  menubar Help menu item.
-
-----
-
-v4.2.5 - 9th January 2003.  (richb)
-
-* Fixed bug #102927 (http://bugzilla.gnome.org/show_bug.cgi?id=102927)
-  Replaced abbreviation "trig." with full word "trigonometric".
-
-----
-
-v4.2.4 - 9th January 2003.  (richb)
-
-* Fixed bug #102922 (http://bugzilla.gnome.org/show_bug.cgi?id=102922)
-  Adjusted the two occurances of sentence fragments in the cfframe_apply_cb()
-  routine in gtk.c to make it easier for L10N folks to translate them.
-
-----
-
-v4.2.3 - 8th January 2003.  (richb)
-
-* From German Poo-Caaman~o <gpoo@ubiobio.cl>
-  Added Spanish (es) to ALL_LINGUAS at configure.in
-
-* gcalctool is now resizable again.
-
-----
-
-v4.2.2 - 8th January 2003.  (aes)
-
-* Make calculator window choose a reasonable size at startup, and resize 
-  when changing modes.
-
-----
-
-v4.2.1 - 8th January 2003.  (richb)
-
-* Removed the GNOME_UTIL_LIBS line from .../gcalctool/Makefile.am as it's
-  not needed.
-
-----
-
-v4.2.0 - 8th January 2003.  (aes)
-
-* From Andrew Sobala <andrew@sobala.net>
-  Fixed "blank buttons displaying" bug. 
-
-* From Andrew Sobala <andrew@sobala.net>
-  Added small section to configure.in that forces a "--enable-build-broken"
-  flag to have to be passed to configure in order to build gcalctool while 
-  it is still in this semi-broken state. This will be removed when most of
-  the items mentioned in the first section of the TODO file have been
-  implemented.
-
-----
-
-v4.2.0 - 8th January 2003.  (richb)
-
-* Updated the copyright messages to by the correct GPL ones for the various
-  source files, plus used date of 2003 (not 2002) in:
-
-  .../ChangeLog
-  .../NEWS
-  .../README
-  .../TODO.
-  .../gcalctool/calctool.c
-  .../gcalctool/calctool.h
-  .../gcalctool/display.c
-  .../gcalctool/dsdefs.h
-  .../gcalctool/dsfuns.c
-  .../gcalctool/extern.h
-  .../gcalctool/functions.c
-  .../gcalctool/gcalctool.1
-  .../gcalctool/get.c
-  .../gcalctool/graphics.c
-  .../gcalctool/gtk.c
-  .../gcalctool/mp.c
-
-* The Financial/Logical/Scientific mode buttons have been moved into
-  the main calculator window above the Basic mode buttons.
-
-* Added a menubar with the following menus/items:
-
-  File      Edit                  View              Help
-  -----------------------------------------------------------------
-  Quit      Copy                  Basic Mode        Contents...
-            Insert ASCII Value    Financial Mode    About Gcalctool
-                                  Scientific Mode
-
-                                  Memory Register
-                                  Right-handed Style
-
-  The functionality has been hooked up except for the two Help menu items.
-
-* Revamped the gcalctool design. The Basic Mode is much simpler now.
-  The Logical and Scientific modes have been combined into a single
-  Scientific mode (which also includes some of the functionality that
-  was in the previous Basic mode).
-
-  The mode buttons are now extra button tables (and a mode panel) that get
-  shown or hidden in the main gcalctool window depending upon the current
-  mode.
-
-  The six item mode display has been removed. The current base, numeric
-  display type, trigonometric type, hyp and inv settings can be seen by
-  the radio buttons and check boxes in the mode panel. The current mode is
-  given in the main window title bar. The only things that's really 
-  different is that there is no longer a current operand display item.
-
-* Remove the small property sheet that was displayed when you right clicked
-  in the main window button area (not over a button). This had the ability
-  to set a left or right-handed style. This functionality has also been
-  removed, because with the simplification of the Basic mode, it's no longer
-  needed. Remove the command line options and resources associated with this.
-
-* From Andrew Sobala <andrew@sobala.net>
-  Fixed bug #102698 - "make distcheck" fails. Fix was to use the correct
-  GNOME 2 autogen.sh. Also added #(schema_DATA) to the top-level
-  Makefile.am
-
-----
-
-v4.1.27 - 24th December 2002.  (richb)
-
-* Fixed bug #101782 (http://bugzilla.gnome.org/show_bug.cgi?id=101782)
-
-  Removed trailing "\n"'s where possible. Also removed a few inappropriate
-  leading spaces before newlines. Paragraphs should hopefully format better.
-
-----
-
-v4.1.26 - 24th December 2002.  (richb)
-
-* Fixed bug #101861 (http://bugzilla.gnome.org/show_bug.cgi?id=101861)
-
-  The size of the memory register window was being hard-wired. These
-  fixed values have been removed, and everything is now dynamically
-  sized. This should now work with any font.
-
-----
-
-v4.1.25 - 23th December 2002.  (richb)
-
-* Fixed bug #101867 (http://bugzilla.gnome.org/show_bug.cgi?id=101867)
-
-  Changed multiply key from "X" to "*" (same as the existing gnome-calculator).
-
-----
-
-v4.1.24 - 23th December 2002.  (richb)
-
-* Fixed bug #101780 (http://bugzilla.gnome.org/show_bug.cgi?id=101780)
-
-  Removed leading and trailing spaces from the labels for the gcalctool
-  buttons.
-
-----
-
-v4.1.23 - 23th December 2002.  (richb)
-
-* Fixed bug #101777 (http://bugzilla.gnome.org/show_bug.cgi?id=101777)
-
-  Removed trailing periods on the four window titles.
-
-----
-
-v4.1.22 - 23th December 2002.
-
-  23th December 2002 - HideToshi Tajima <hidetoshi.tajima@Sun.COM>
-	
-  * gcalctool/calctool.c:
-  	Changed _() to N_() for the strings in the structure tables.
-  * gcalctool/gtk.c:
-  	Put _() to the strings in the set_item, set_label and set_title()
-	funtcions.
-  * gcalctool/graphics.c:
-  	Put _() to the mode_buttons[] in button_str() function.
-
-----
-
-v4.1.21 - 20th December 2002.
-
-  20th December 2002 - HideToshi Tajima <hidetoshi.tajima@Sun.COM>
-	
-  * gcalctool/gtk.c:
-	Added N_() macro on GtkItemFactoryMenu.
-	Set a translation function to all of the gtk item factory objects.
-  * gcalctool/calctool.h
-	Added "config.h" in calctool.h for ENABLE_NLS.
-	Changed PACKAGE to GETTEXT_PACKAGE in dgettext().
-	Added N_ macro both for #ifdef ENABLE_NLS and the else case.
-----
-
-v4.1.20 - 10th September 2002.
-
-* [Sun Bugtraq bug #1102883 against DeskSet calctool].
-  If you enter 2 and select Inv, select Sin to get the arc sine value,
-  "Error" is displayed on the window. Do the same thing but select Cos
-  to get arc cosine value, the error message is "acos DOMAIN error",
-  which is better. Sine should have the same error message to be more
-  consistant.
-
-  Fixed this by making all error messages just display "Error" which is
-  more consistent.
-
-----
-
-v4.1.19 - 10th September 2002.
-
-* [Sun Bugtraq bug #4006391 against CDE dtcalc].
-  Bring up gcalctool, enter 10000 X 0.58 =, get answer is 5800.
-  Then click on Int button, supposely should get 5800, but the answer is 5799.
-
-  [Evaluation taken from bug #4006391:
-
-  10000 * 0.58 = 5800
-
-  The value displayed should be 5800. However the actual number calculated is
-  5799.999999999999999999999999999...
-
-  This value is stored in an array of type int, the array has 150 elements.
-  The second field tells how many fields the integer part takes up, in this 
-  case 1 as 5799 is smaller than MAX_INT. The next N cells hold the fraction 
-  part.
-
-  When we determine the Int value, we simply set the fraction part to 0, 
-  which leaves us with a value of 5799].
-
-  The fix in dtcalc for bug #4006391 is wrong. Need to set the accuracy to
-  MAX_DIGITS in mpcmim() in mp.c (not 9).
- 
-----
-
-v4.1.18 - 10th September 2002.
-
-* [Sun Bugtraq bug #1258472 against CDE dtcalc].
-  Start up gcalctool and set to decimal and fixed. Set accuracy to 2 decimal 
-  places. Do a division like 0.19/2  It gives 0.0A
-
-  Changes to make_number() and make_fixed(). Took the fix from bug #1258472 
-  (reworked for smaller/simpler code). This introduces a min_fix 
-  two-dimensional array (accurracy/base), and if we are displaying a fixed 
-  number (that isn't 0.0), and mpFix is TRUE, then tests whether the number 
-  to be displayed is less that the appropriate min_fix value.
-
-  In make_fixed() we also test if dval is greater that base-1 and if it is,
-  then it's reset to base-1.
-
-* Removed all occurances of v->row and v->column as they are no longer
-  needed.
-
-----
-
-v4.1.17 - 10th September 2002.
-
-* [Sun Bugtraq bug #1190181 against OpenWindows DeskSet calctool].
-  gcalctool core dumped if parent directory was not readable.
-
-  Following scenario:
-
-    % cd /tmp
-    % mkdir subdir
-    % cd subdir
-    % mkdir asubdir
-    % chmod 100 .
-    % cd asubdir
-    % /home/richb/rich_stuff/gcalctool/gcalctool/gcalctool
-      Segmentation Fault (core dumped)
-
-  The problem occured because gcalctool failed to handle NULL returned
-  from getcwd().
-
-  There were two occurances, in read_rcfiles() and write_rcfile(). Have
-  added more bullet proofing to check if the return value of getcwd() is
-  NULL.
-
-----
-
-v4.1.16 - 9th September 2002.
-
-* Added all the bugs/rfe's from Sun's bugtraq database that need to be fixed
-  (and/or implemented) at sometime.
-
-* Adjusted the definition of matherr() in calctool.c so that strict ANSI C
-  compilers will compile it if _XOPEN_SOURCE is defined.
-
-* If gcalctool initially came up in BASIC mode, and you then tried to display
-  one of the other modes, the buttons in the mode window would be incorrect.
-  Needed to set v->modetype appropriately in make_mtable() in gtk.c just
-  before get_label() was called.
-
-----
-
-v4.1.15 - 9th September 2002.
-
-* With the changes made in v4.1.14, the Keys functionality no longer did 
-  the correct thing when the calculator was setup as left-handed. Changes 
-  made to do_keys() to get the correct index for the appropriate button.
-
-* If you switched hands (left/right-handed), the redisplay of the calculator
-  keys in the main window, did not take into effect whether the user was 
-  currently showing the keyboard equivalents. This was fixed by using the 
-  get_label() funcion in make_ktable() and m,ake_mtable().
-
-* Simplified the get_label() routine to no longer return the numbers of 
-  chars and spaces in the label.
-
-----
-
-v4.1.14 - 9th September 2002.
-
-* If started as left-handed (gconf key "righthanded" is "false"), and the
-  user is using the old OpenWindows colors (with the supplied gcalctoolrc
-  file), the buttons are not colored correctly.
-
-  Have adjusted the code so that the buttons are attached in the table in
-  the appropriate positions depending upon whether it's left or right handed,
-  rather than rearranging the entries in the buttons struct.
-
-----
-
-v4.1.13 - 30th August 2002.
-
-* The unused buttons in the mode window are now hidden. Doing this before
-  was a problem because it made the size of the remaining visible ones 
-  incorrect. This now works, because the GtkTable* is now created with the
-  third parameter TRUE; i.e. each button is the size of the largest one.
-
-  This also fixes the problem where not all the unused buttons on the 
-  various mode popups are colored correctly (if the user is using the 
-  old OpenWindows colors (with the supplied gcalctoolrc file). Adjusted
-  the supplied gcalctoolrc to remove the grey-bg and back-bg styles, and
-  the mode buttons that used them.
-
-----
-
-v4.1.12 - 30th August 2002.
-
-* Replaced the use of X resources with gconf schemas. Updated the manual 
-  pages to reflect this change. Note this is a minimal gconf implementation.
-  gcalctool doesn't actively look for other applications changing its
-  key/value pairs. Also all the keys are stored as strings to make it more
-  portable and easier to convert to the next resource database technology 
-  when it comes along.
-
-----
-
-v4.1.11 - 29th August 2002.
-
-* Explicitly setting the size of the calculator buttons has been removed.
-  Each button is now the size of the largest one in that table.
-
-* The width of the mode window is now set to be the width of the main
-  calculator window (the size was previously hard-wired).
-
-----
-
-v4.1.10 - 29th August 2002.
-
-* Fixes for I18N support from HideToshi Tajima <hidetoshi.tajima@sun.com>.
-  Thanks!
-
-----
-
-v4.1.9 - 24th June 2002.
-
-* Now that gcalctool is using Gtk resources to determine the appearance of 
-  the calculator, there is no need to use the custom display_frame widget. 
-  This means that the display_frame.[c,h] files are removed from the 
-  distribution.
-
-* The calculator display area now has tooltip help.
-
-----
-
-v4.1.8 - 21st June 2002.
-
-* Fixed up mistakes is the gcalctool tooltip help text (as it pertains now
-  to gcalctool rather than the old XView calctool).
-
-* Three keyboard accelerators weren't working when a "menu" button had been
-  pressed and the calculator was in pending mode:
-
-  Base button - "o" (octal).
-  Mode button - "l" (logical).
-  Trig button - "g" (gradient).
-
-  Extra code has been added to the frame_interpose() routine in gtk.c to
-  cater for keypresses when in pending mode, that aren't automatically
-  handled by existing keyboard accelerators.
-
-* The + and . keys on the numeric keypad don't work.
-  (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
-  For now, explicit code has been added to frame_interpose() in gtk.c to
-  handle these two keys. This should be removed when 79184 is fixed.
-
-----
-
-v4.1.7 - 20th June 2002.
-
-* Added in help support. Hitting the Help key will toggle whether tooltip
-  help messages are displayed for the various buttons and other widgets.
-
-  By default tooltips are disabled. Start gcalctool with the "-h" command
-  line option will enable them. There is also a "gcalctool.showhelp"
-  resource that can enable/disdable them. 
-
-  Used the text from the calctool.info file in the XView distribution for 
-  the tooltip messages.
-
-  The manual pages have been updated to reflect these changes.
-
-----
-
-v4.1.6 - 20th June 2002.
-
-* The new Constant/Function popup now has the various items aligned.
-
-----
-
-v4.1.5 - 20th June 2002.
-
-* The size of the buttons in the Mode window are incorrect if the unused ones
-  are not shown. Solved this my simply making the unused ones insnsitive, and
-  showing them all.
-
-----
-
-v4.1.4 - 19th June 2002.
-
-* Keyboard accelerators now work for the gcalctool "menu" buttons. Needed to
-  add a g_signal_connect( ... "clicked" ...) callback for all buttons, not
-  just the non-menu" buttons.
-
-----
-
-v4.1.3 - 14th June 2002.
-
-* The constant and function definitions are now read and written to a file
-  named ~/.gcalctoolcf  now (was ~/.gcalctoolrc). Manual pages also updated
-  to reflect this change.
-
-* gcalctool now also tries to read a ~/.gcalctoolrc file at startup time.
-  This file (if it exists) can contain resources for changing the appearance
-  of the application. A gcalctoolrc file is now also included with the
-  gcalctool distribution, which gives the old OpenWindows DeskSet appearance
-  to the calculator.
-
-* The ability to change various colors via X resources has also been removed.
-  The manual pages have been updated to reflect this.
-
-  This change means that all code related to colors has been removed from
-  gcalctool. color.h has been removed from the distribution.
-
-----
-
-v4.1.2 - 13th June 2002.
-
-* Removed all the code in gtk.c that was surronded by #ifdef FIXUP.
-
-* Starting gcalctool then switching hands to left-handed, then using the
-  keyboard for input wrongly associates the various keyboard accelerators
-  for the swapped keys.
-
-  Reworked the logic in set_prop_options() in gtk.c. Needed to remove the
-  keyboard accelerators for the old buttons, before the keyboard layout
-  was switched.
-
-----
-
-v4.1.1 - 13th June 2002.
-
-* Adjusted configure.in to find the X11 libraries in a platform independent
-  way.
-
-* Fixed up the gcalctool usage message. Removed command line options that 
-  are no longer applicable to the Gtk2 version.
-
-* Fixed up the gcalctool manual pages (removed calctool.1 and created a new
-  gcalctool.1). Fixes include:
-  - changing all occurances of "calctool" to "gcalctool".
-  - removing command line options that are no longer supported.
-  - removing X resources that are no longer supported.
-
-* gcalctool now looks for ~/.gcalctoolrc and ~/.gcalctooldefaults files 
-  rather than ~/.calctoolrc and ~/.calctooldefaults
-
-* X resources are not "gcalctool.<whatever" rather than "calctool.<whatever>".
-
-----
-
-v4.1.0 - 3rd May - 5th June 2002.
-
-* Started work on a Gtk2 version:
-
-  - Create an automake/autoconf environment that builts against the Solaris
-    GNOME 2 beta3 release.
-
-  - Conversion of the XView graphics to Gtk2: 
-    . Added new gtk.c source file and removed xview.c.
-    . Converted .icon files to .xbm files.
-
-    Note that the code is no longer easily portable to other graphic toolkits,
-    and now uses higher level graphic widgets. This reduced the code line 
-    count by over 5000.
-
-  - Del key wasn't being recognized. For XView was '\177'; for Gtk2 need
-    to use values in <gdk/gdkkeysyms.h>. Change needed in text.c for setting 
-    the .value entry on the button structure for the del key, to be an int 
-    not a char. Also had to adjust get_key_val to return an int. menu_entries 
-    changed to array of int's not char's.
-
-  - The Control-L keyboard accelerator (used to refresh the display) has been
-    removed. Everything is a high-level widget now, so automatic redrawing
-    should occur.
-
-  - Cut and Paste function keys now do the right thing.
-  - Switching "hands" now works from the calctool property sheet.
-
-  - Removed the "Display: [color][monochrome]" option from the property sheet,
-    fixed up the code to no longer care about this option, and removed the
-    associated command line options and X property.
-
-  - Two fprintf() statements in the mpchk() routine in mp.c did not have their
-    numeric arguments.
-
-  - Fixed up all the deprecated Gtk calls.
-    Modify CFLAGS to add:
-
-      -DG_DISABLE_DEPRECATED 
-      -DGDK_PIXBUF_DISABLE_DEPRECATED
-      -DGDK_DISABLE_DEPRECATED 
-      -DGTK_DISABLE_DEPRECATED
-
-    then fixed up the warnings and errors that were reported.
-
-  - This version placed into CVS on cvs.gnome.org as module "gcalctool".
-
-----
-
-v4.0.0 - 26th February 2002.
-
-  26th February 2002 - Rich Burridge <rich.burridge@Sun.COM>
-
-  Preparation for releasing the calctool sources to the community:
-
-  - Added "#define OWTOOLKIT_WARNING_DISABLED" to calctool_ui.c and xview.c
-
-  - Added code into calctool_ui.c from:
-
-    /net/dtserver/export/src_998/MASTER_OL3.0/external/DeskSet/V3_release:
-    .../audiotool/guide/libguidexv/group.h
-    .../audiotool/guide/libguide/guide.h
-    .../audiotool/guide/libguidexv/group_impl.h
-
-    This file also includes dummy routines for:
-
-    group_destroy()
-    group_set()
-    group_get()
-    group_init()
-
-    and a definition for group_pkg.
-
-  - Created dsdefs.h which includes definitions from:
-
-    /net/dtserver/export/src_300/PMASTER_OL300/external/DeskSet:
-    .../libdeskset/ds_popup.h
-    .../libdeskset/ds_xlib.h
-
-    Adjusted calctool_ui.c and xview.c to call this.
-
-  - Create dsfuns.c which includes code from:
-
-    /net/dtserver/export/src_300/PMASTER_OL300/external/DeskSet:
-    .../libdeskset/ds_xlib.c
-    .../libdeskset/ds_popup.c
-    .../libdeskset/ds_pathname.c
-    .../libdeskset/ds_hostname.c
-
-  - Fixed up one of the compiler warnings in xview.c
-
-  - Adjusted the build environment to use autoconf and automake.
-
-  - Moved all the image file into the .../calctool/calctool directory, and
-    adjusted calctool_ui.c, graphics.c and xview.c accordingly.
-
-  - Adjusted all the copyright notices to have dates upto 2002.
-
-  - Fixed up most of the warnings generated by the Gnu compiler and lint.
-
-  - Removed patchlevel.h and replaced it with VERSION from config.h
-
-  - Adjusted the code to K&R style.
-
-  - Removed the "calctool_" prefix on all names in calctool_ui.c and
-    calctool_ui.h (and calls in xview.c).
-
-  - Created AUTHORS, NEWS and README files.
-
-  - Adjusted the calctool manual pages to remove references to the Solaris
-    User's Guide and the note to indicate that the OpenWindows environment
-    may no longer be supported in a future release.
-
-----
-
-v3.2 - patchlevel 74 [richb] - 8 July 1993.
-
-* Files changed: patchlevel.h CHANGES calctool.c graphics.c text.c
-
-* Fixed #1136161 - Hexadecimal results are displayed in lower case letters.
-                   This involved backing out the changed made in patch #72
-                   for bug #1132402. The real fix is that the country shouldn't
-                   have translated hexidecimal a-f.
-
-----
-
-v3.2 - patchlevel 73 [richb] - 6 July 1993.
-
-* Files changed: patchlevel.h CHANGES functions.c
-
-* Fixed #1135862 - exponent key inconsistent with handheld calculators after
-                   memory op. Calctool nows sets the value of v->new_input to
-                   zero after retrieving a value from a memory register.
-
-----
-
-v3.2 - patchlevel 72 [richb] - 7 June 1993.
-
-* Files changed: patchlevel.h CHANGES calctool.c text.c graphics.c
-
-* Work on #1132402 - the digits[] string now gets the hexidecimal values from
-                     the specific locale translated strings.
-
-----
-
-v3.2 - patchlevel 71 [richb] - 3 June 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1130988 - calctool dumps core when Help key on left keypad is
-                   pressed over a button.
-
-----
-
-v3.2 - patchlevel 70 [richb] - 18 May 1993.
-
-* Files changed: patchlevel.h CHANGES functions.c
-
-* Fixed #1128221 - Inconsistent behaviour using logical operators for numbers
-                   wider than 32 bits.
-
-----
-
-v3.2 - patchlevel 69 [richb] - 17 May 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1077543 - -WG and -position do not work properly for calctool.
-
-----
-
-v3.2 - patchlevel 68 [richb] - 10 May 1993.
-
-* Files changed: patchlevel.h CHANGES calctool.h extern.h graphics.c calctool.c
-
-* Fixed #1127530 - help information for right-handed style should be provided.
-
-----
-
-v3.2 - patchlevel 67 [richb] - 10 May 1993.
- 
-* Files changed: patchlevel.h CHANGES calctool.h graphics.c xview.c
- 
-* Fixed #1126997 - Can't make multiple selections from the Mode pinup menu.
-
-----
-
-v3.2 - patchlevel 66 [wmui] - 8 Apr 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1125006 - calctool refuses to come up when non-C locale is specified
-                   but not installed.
-
-----
-
-v3.2 - patchlevel 65 [richb] - 7 Apr 1993.
-
-* Files changed: patchlevel.h CHANGES calctool.h graphics.c xview.c
-
-* Fixed #1125145 - In scientific mode, Trig->degrees causes calctool to core
-                   dump.
-
-----
-
-v3.2 - patchlevel 64 [richb] - 25 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1122701 - calctool dumps core when can't load OpenWindows.BoldFont
-                   and RegularFont.
-
-----
-
-v3.2 - patchlevel 63 [richb] - 25 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES get.c
-
-* Fixed #1102821 - changing numeric base doesn't change the base in constants.
-
-----
-
-v3.2 - patchlevel 62 [richb] - 25 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c calctool.h graphics.c
-
-* Fixed #1121424 - selecting numeric string in i18nl4 calctool by mouse,
-                   it will be widely spaced.
-
-----
-
-v3.2 - patchlevel 61 [richb] - 24 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1121451 - memory window is empty when you bring it up the first time.
-
-----
-
-v3.2 - patchlevel 60 [richb] - 24 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1105881 - i18nl4 calctool: numeric string move left when input
-                 numeric.
-
-----
-
-v3.2 - patchlevel 59 [richb] - 24 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1117773 - Calctool cannot resize in ja locale.
-
-----
-
-v3.2 - patchlevel 58 [richb] - 24 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1113962 - Calctool always uses a small scale font.
-
-----
-
-v3.2 - patchlevel 57 [richb] - 16 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES calctool.G xview.c
-
-* Fixed #1122078 - Calctool: props sheet is truncated on right side.
-
-----
-
-v3.2 - patchlevel 56 [richb] - 16 Mar 1993.
-
-* Files changed: patchlevel.h CHANGES xview.c
-
-* Fixed #1117296 - s493_alpha4.3 calctool creates many property windows.
-
-----
-
-v3.2 - patchlevel 55 [wmui] - 23 Feb 1993.
-
-* Files changed: patchlevel.h CHANGES extern.h functions.c graphics.c text.c
-
-* Fixed #1104942 (MOWN3.1 buyback) - Spot help did not work.
-
-* Fixed #1117786 - Calctool writes localized values to resource database.
-                   Resource attribute/value pairs should be in ASCII.
-
-----
-
-v3.2 - patchlevel 54 [richb] - 14 Jan 1992.
-
-* Files changed: CHANGES patchlevel.h calctool.c extern.h get.c
-
-* Fixed #1111170 - It's a needed fix for international locales. It will fail
-                   in all multi-byte locales. Text strings written to the X
-                   resources files should not be localised.
-
-----
-
-v3.2 - patchlevel 53 [richb] - 14 Jan 1992.
-
-* Files changed: CHANGES patchlevel.h functions.c
-
-* Fixed #1110771 -  put an LGET() around the three offending strings.
-
-----
-
-v3.2 - patchlevel 52 [richb] - 14 Jan 1992.
-
-* Files changed: CHANGES patchlevel.h functions.c xview.c
-
-* Fixed #1113318 - the difference between the previous version of calctool
-                   and this one is that the mode window is now pinned when
-                   it's first bought up.
-
-----
-
-v3.2 - patchlevel 51 [richb] - 14 Jan 1992.
-
-Files changed: CHANGES patchlevel.h xview.c
-
-* Fixed #1114403 - the menu was being created with a frame as owner instead
-                   of NULL.
-
-----
-
-v3.2 - patchlevel 50 [richb] - 14 Jan 1992.
-
-* Files changed: CHANGES patchlevel.h calctool.G
-
-* Fixed #1108519 - "Properties" is now "Properties...".
-
-----
-
-v3.2 - patchlevel 49 [jffowler] - 02 Nov 1992.
-
-* Files changed: CHANGES patchlevel.h xview.c
-
-* Temporary fix - commented out all XV_SET's of WIN_USE_IM to prevent 
-  xv_error_proc from being called, just to get calctool up for 493.
-
-----
-
-v3.2 - patchlevel 48 [jffowler] - 23 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h xview.c
-
-* Fixed coredump - moved setting of v above first xv_set where setting 
-  WIN_USE_IM was causing xv_error_proc to be called before v was set.    
-
-----
-
-v3.2 - patchlevel 47 [richb] - 22 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h graphics.c
-
-* Fixed bug #1105557 - added a check to the process_str() routine to test
-                       if v->error is set. If yes, then processing of the
-                       selection is aborted at that point.
-
-* Transferring bug #1105415 to xview/library.
-
-----
-
-v3.2 - patchlevel 46 [richb] - 22 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h functions.c
-
-* Fixed bug #1104803 - calctool didn't always reset the display correctly
-                       after an error condition.
-
-----
-
-v3.2 - patchlevel 45 [richb] - 22 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h functions.c mp.c calctool.h
-
-* Fixed bug #1105387 - tan(90 degrees) now produces an error message, and
-  Fixed bug #1102842 - tan(180 degrees) now produces 0.00 (rather than -0.00).
-                       A check is now made for cos(x) == 0.0. If yes, then
-                       it's an overflow error. Tan(x) is now calculated as:
-                       sin(x) / cos(x). Removed mptan() function from mp.c.
-
-* Fixed bug #1102604 - 0! now produces 1 (rather than "Error").
-
-* Closed #1102877 - not a bug. Compared result against xcalc and two handheld
-                    calculators.
-
-----
-
-v3.2 - patchlevel 44 [richb] - 19 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h xview.c
-
-* Adjusted the put_resource() routine in xview.c to give a pointer to the
-  XrmDatabase, and not call by reference.
-
-----
-
-v3.2 - patchlevel 43 [richb] - 13 Oct 1992.
-
-* Files changed: CHANGES patchlevel.h calctool.h xview.c text.c functions.c
-                 get.c filemgr.G
-
-* Changed the "Set Default" button on the property sheet to "Save as Defaults".
-
-* Fixed bug #1093905 - calctool will now look at the X resource:
-                       OpenWindows.beep first and set the v->beep variable
-                       accordingly. If the DeskSet calctool X resource:
-                       deskset.calctool.beep is also set, this will override.
-
-* Fixed bug #1093948 - problem with exponential numbers and memory registers.
-                       Adjustments to the do_expno() routine in functions.c,
-                       and do_sto_rcl() needed to set v->new_input when
-                       retrieving a number from a memory register.
-
-* Fixed bug #1098178 - allowed the character string "%s %1d already exists."
-                       to be localised. New message in mess[(int) MESS_CON].
-
-* Fixed bug #1100331 - the ibool() routine wasn't returning the correct
-                       integer boolean value for hexadecimal 100000000.
-
-* Fixed bug #1100441 - the second parameter to a call to mppwr() in
-                       MPstr_to_num() in display.c should have been using an
-                       integer not an MP number.
-
-* Reclassified the xcalc bug #1093951 under x11news/program.
-
-* Bug #1102406 isn't a bug. It displays "Error" in the calctool displays and
-  beeps (assuming beeping is set), forcing the user to clear the calculator.
-
-----
-
-[All previous changes were by Rich Burridge <rich.burridge@Sun.COM>]
-
-v3.2 - patchlevel 42.  5 Oct 1992.
-
-* Fixed ifdef'd OW18N code that referenced X->frame to Calctool_kframe->kframe.
-
-----
-
-v3.2 - patchlevel 41.  4 June 1992.
-
-* Moved various routines, that are common to several Deskset tools, over to
-  libdeskset and adjusted the files accordingly.
-
-* Calctool would core dump when trying to retrieve the default menu string
-  for the menus associated with various calctool "buttons". Added a new routine
-  to xview.c called get_def_menu_str() which now correctly returns this.
-  Removed the str variable from the menu_entry struct, and adjusted the code
-  for this change (made menu_entries an array of char).
-
-----
-
-v3.2 - patchlevel 40.  1 May 1992.
-
-* Fixed bug #1090718 - a check is made to see if the mode or memory windows
-                       should be displayed, and they now no longer appear if
-                       calctool is started iconically. A frame event interpose
-                       handler has been added for the main calctool frame, so
-                       that the current window state (open/closed) can be
-                       tracked dynamically.
-
-----
-
-v3.2 - patchlevel 39.  22 April 1992.
-
-* Fixed bug #1084790 - calctool now recognises the -icon_font and
-                       Icon.font.name options.
-
-----
-
-v3.2 - patchlevel 38.  22 April 1992.
-
-* Calctool has been changed so the default is a right-handed calculator. The
-  manual pages have been updated.
-
-* Made the calctool menus pinnable.
-
-----
-
-v3.2 - patchlevel 37.  15 April 1992.
-
-* DevGuided calctool and removed unwanted code.
-
-* Changed the first place calctool looks for it's defaults from
-  /usr/lib/X11/app-defaults/Deskset to $OPENWINHOME/lib/app-defaults/Deskset.
-  This fixes rfe #1087119.
-
-* Calctools' initial size was incorrect if started with a -scale of large or
-  extra_large.
-
-* Fixed bug 1087908 - the constant window is now initially pinned.
-
-* Fixed bug 1087911 - the function window is now initially pinned.
-
-----
-
-v3.2 - patchlevel 36. 23rd March 1992.
-
-* Add and remove WIN_USE_IM (I18N level 4 XView attribute).  See bugid 1083920
-
-----
-
-v3.2 - patchlevel 35. 27th February 1992.
-
-* Due to the changes introduced in patch #31 for the localisation
-  of the keyboard equivalents of the calctool buttons, when calctool
-  was used in "right-hand" mode, the translated values were incorrect.
-  Fixes bug #1084210.
-
-----
-
-v3.2 - patchlevel 34. 24th February 1992.
- 
-* Ran purify on calctool. Found various memory leaks/corruptions.
-  Plugged 'em. Fixes #1083925.
-
-----
-
-v3.2 - patchlevel 33. 19th February 1992.
-
-* More work on #1077702. Adjustment to the way the hyperbolic
-  trig functions work. If calctool is display in degrees or
-  gradients, then the input should not be converted to radians.
-  Similarily, the output should not be converted back to degrees
-  or gradients.
-
-----
-
-v3.2 - patchlevel 32. 19th February 1992.
-
-* calctool tried to use a localised "deskset" and "Deskset" strings
-  when reading and writing its X resources. Fixes #1083402.
-
-----
-
-v3.2 - patchlevel 31. 19th February 1992.
-
-* The keyboard equivalents for the calctool buttons and menu entries
-  have been localised. Calctool code has been adjusted to use these
-  localised values, rather than the previously hard-wired values. At
-  present, only a single character is allowed for each keyboard
-  equivalent, and it will be taken from the first character in the
-  localised string. A definition IS_KEY() has been added to calctool.h
-  and used extensively in the code in case a multi-byte character
-  comparison is needed. Fixed bug #1082353.
-
-----
-
-v3.2 - patchlevel 30. 14th February 1992.
-
-* If no initial size is given for calctool, then it will determine the
-  length of the longest button label (includes the mode button labels),
-  and adjust the size so that the full text for that button can be
-  displayed, and the remainder of the buttons are the same size. With
-  the English version, all calctool button labels should be four
-  characters long, so there should be no visible change. Note that
-  calctool could then be resized smaller and as much of the label as
-  possible will be displayed, and if there is more text for that label,
-  then the final label character will be a '>' character. Fixes bug
-  #1079649.
-
-----
-
-v3.2 - patchlevel 29. 13th February 1992.
-
-* The Apply, Set defaults and Reset buttons were not being centralised
-  on the calctool property sheet. Fixes bug #1082182.
-
-----
-
-v3.2 - patchlevel 28. 18th January 1992.
-
-* Line up the panel choice labels in the properties sheet using
-  PANEL_LABEL_FONT to figure out the label string length
-  (Font_string_dims).  This is an i18n fix.  File affected - xview.c.
-
-----
-
-v3.2 - patchlevel 27. 17th January 1992.
-
-* The inverse cosine of 1.0 was incorrect. It should have returned
-  0.0. Fixes bug #1077702.
-
-----
-
-v3.2 - patchlevel 26. 17th January 1992.
-
-* Fixup from Doug Twilleager and Jackson Wong to get calctool to
-  work under jup_prebeta3. Variables bminh and bminw were not
-  initialised to zero in init_size() in get.c.
-
-----
-
-v3.2 - patchlevel 25. 16th January 1992.
-
-* Calctool was incorrectly recognising the +Wn and -Wn command line
-  options. Fixes bug #1079394.
-
-* Small changes to the way that -fg color and -bg color are handled:
-
-  - If the -bg command line option is present or the
-    window.color.background resource set, then it will no longer change
-    the background color of the button areas.
-
-  - If the deskset.calctool.textColor resource is set, then -fg will
-    not override it.
-
-  - If the deskset.calctool.memRegisterColor resource is set, then -bg
-    will not override it.
-
-  - If the deskset.calctool.displayColor resource is set, then -bg
-    will not override it.
-
-----
-
-v3.2 - patchlevel 24. 31st December 1991.
-
-* Calctool ignored the -fg and -bg color command line options when
-  painting the calctool canvases. Calctool has lots of X resources
-  to allow you to set the color of different items. If -fg and/or
-  -bg is present, they now override these X resources as follows:
-
-  deskset.calctool.decDigitColor:        not changed
-  deskset.calctool.hexDigitColor:        not changed
-  deskset.calctool.arithOpColor:         not changed
-  deskset.calctool.adjustColor:          not changed
-  deskset.calctool.portionColor:         not changed
-  deskset.calctool.functionColor:        not changed
-  deskset.calctool.mainModeColor:        not changed
-  deskset.calctool.portionLogicalColor:  not changed
-  deskset.calctool.bitLogicalColor:      not changed
-  deskset.calctool.finColor:             not changed
-  deskset.calctool.trigModeColor:        not changed
-  deskset.calctool.trigColor:            not changed
-  deskset.calctool.sciColor:             not changed
-  deskset.calctool.backgroundColor:      background color
-  deskset.calctool.displayColor:         background color
-  deskset.calctool.memRegisterColor:     background color
-  deskset.calctool.textColor:            foreground color
-
-  The -reverse command line option switches the foreground and
-  background colors. Fixes bug #1077714.
-
-----
-
-v3.2 - patchlevel 23. 31st December 1991.
-
-* Calctool didn't allow the user to set an alternative calctool icon
-  image via the -icon_image command line option. Calctool checks if
-  the image filename given exists and is readable. If it isn't, then
-  it displays an error message and the generic XView usage message
-  and exits. If the file does exist, but isn't an icon file, then
-  XView silently ignores it. Perhaps a bug should be opened against
-  xview/library, to generate an error message for such a case. Fixes
-  bug #1077709.
-
-----
-
-v3.2 - patchlevel 22. 30th December 1991.
-
-* Calctool tries to localise the command line text strings. This is
-  incorrect. Created a new routine called init_cmdline_opts(),
-  which initialises the command line options (instead of in init_text(),
-  and gets called before init_Xvars(). The search for -name is also
-  done before init_Xvars(), because the xv_init() call strips it out.
-  write_cmdline() was also writing out the -name command line option
-  (if present) for a "Save Workspace". As this is now a generic XView
-  tool command line argument, this is no longer needed.  Fixes bug
-  #1077907.
-
-----
-
-v3.2 - patchlevel 21. 27th December 1991.
-
-* Calctool didn't allow you to set the icon label with the
-  -icon_label command line option. Fixes bug #1077710.
-
-----
-
-v3.2 - patchlevel 20. 27th December 1991.
-
-* Incorrect parameters to the -size command line argument
-  (ie. -size fubar) caused the tool to hang whilst trying to parse
-  it's command line arguments. In fact, any command line argument
-  that didn't start with - or + would cause it to hang.
-
-  An XView error procedure has been added to calctool. This is
-  called whenever there is an XView error. Invalid command line
-  arguments that cause XView errors will cause this routine to be
-  called. An attempt is made to try to determine if this is the case
-  (as opposed to an XView error at a later stage in the game). In the
-  former case, the error message is printed out, followed by the
-  XView usage message (equivalent of -help), then the program exits.
-  If calctool has already started (v->started = 1), then if the
-  error procedure is called, then calctool will print the error
-  message and try to resume, and hope the error is recoverable.
-  Fixes bug 1077706.
-
-----
-
-v3.2 - patchlevel 19. 27th December 1991.
-
-* Calctool didn't handle the command line option -size correctly if
-  one of the two size parameters was too small. It automatically
-  reset to the smallest size for both width and height. Calctool has
-  now been changed to one adjust the single dimension that was too
-  small. Fixes bug #1077705.
-
-----
-
-v3.2 - patchlevel 18. 24th December 1991.
-
-* Problems with the -title option. If you specified -title '' then
-  calctool wasn't displaying a blank titleline. Note that the XView
-  defaults_get_string() call strips off leading and trailing spaces.
-  Under SVR4, specifying a titleline, caused a core dump. This was
-  due to tool_label not being initially set to NULL in make_frames().
-  Fixes bug #1077708.
-
-----
-
-v3.2 - patchlevel 17. 24th December 1991.
-
-* calctool ignores -font <fontname> on the command line. To be more
-  correct, this font is only used in the XView panel popups such as
-  the property sheet, the constant and function windows and the Asc
-  window. Calctool can use upto four different fonts; these can be
-  set via X resources, and are:
-
-  deskset.calctool.buttonFont:         button labels.
-  deskset.calctool.modeFont:           mode line labels.
-  deskset.calctool.memoryFont:         memory window popup text.
-  deskset.calctool.displayFont:        display line font.
-
-  It is assumed that specifying a font using either the -font or -fn
-  command line option will override *all* of these. In other words,
-  this means that all text will be drawn in that font. Not a perfect
-  solution. Fixes bug #1077704.
-
-----
-
-v3.2 - patchlevel 16. 24th December 1991.
-
-* If the user is displaying in fixed point mode, and the number is
-  smaller then the current degree of accuracy, then the number is
-  displayed to the number of numeric places specified, and not
-  converted to scientific notation. Fixes bug #1077703.
-
-----
-
-v3.2 - patchlevel 15. 23rd December 1991.
-
-* The memory register popup window was being incorrectly repainted.
-  The width value for the amount of background to be colored was
-  incorrect. Particularily noticable with colored background and
-  non-standard fonts. Fixes bug #1077541.
-
-----
-
-v3.2 - patchlevel 14. 23rd December 1991.
-
-* Converting 0.00 (decimal) to binary resulted in 0.10. The problem
-  here was the MPstr_to_num() routine in display.c was assuming the
-  string to be converted was always in the current base. Added an
-  extra parameter to the MPstr_to_num() call; the base to use to do
-  the conversion.  Fixes #1077537.
-
-----
-
-v3.2 - patchlevel 13. 23rd December 1991.
-
-* The result of the online help example for the financial Pmt
-  calculation was incorrect. It should have been 1142.06 (to two
-  decimal places), and not 1142.29. All financial online help
-  example results are now given correct to 2DP. This involved
-  adjustments to Ctrm, Fv, Pv, Sln, Syd and Term. Fixes bugs
-  #1077534 and #1077718.
-
-----
-
-v3.2 - patchlevel 12. 23rd December 1991.
-
-* Added in help attributes for each of the items on the Asc, Constant
-  and Function popups. The following new entries were added to the
-  calctool.info file:
-
-  AscButton:
-  AscFrame:
-  AscPanel:
-  AscText:
-  ConFunConButton:
-  ConFunDescription:
-  ConFunFunButton:
-  ConFunFrame:
-  ConFunNumber:
-  ConFunPanel:
-  ConFunValue:
-
-  Fixes bug #1077528.
-
-----
-
-v3.2 - patchlevel 11. 23rd December 1991.
-
-* Fixed up the help entries in the calctool.info file for the Con and
-  Fun menus. They needed a trailing space, ie: "Con " and "Fun ".
-  Added in XV_HELP_DATA attributes for all the other calctool menus:
-  Acc, Base, Disp, Exch, Mode, Properties, Rcl, Sto, Trig, < and >.
-  Added an entry for the properties menu (:Props) to the calctool.info
-  file. Fixes bugs #1077525 and #1077526.
-
-----
-
-v3.2 - patchlevel 10. 23rd December 1991.
-
-* Calctool man pages didn't mention the -? and -name options.
-  Noted with the -? entry that this needs to be escaped when used
-  with the csh, ie. -\?
-
-  Adjusted the order of the entries in the usage message to match
-  the manual pages.
-
-  Moved the code in calctool that looked for "-name", before the
-  call to xv_init(XV_INIT_ARGC_PTR_ARGV, argc, argv, ... which
-  removes it from the program command line.  Fixes bug #1077524.
-
-----
-
-v3.2 - patchlevel 9. 11th December 1991.
-
-* Ifdef'ed XmbDrawString for painting multibyte characters on canvas.
-  Routine changed is draw_text() in xview.c. Fixes bugid #1076798.
-
-  Relative positioning for the "Apply", "Set Default", and "Reset" 
-  buttons on the property sheet.
-
-----
-
-v3.2 - patchlevel 8. 22nd November 1991.
-
-* If you pressed the middle mouse button when holding the right
-  mouse button down, when the cursor was positioned in the display
-  portion of the main calctool window, then you got the following
-  message:
-
-  XView warning: Notifier error: Too many interposition functions
-
-  Fixes bugid #1075270.
-
-----
-
-v3.2 - patchlevel 7. 20th November 1991.
-
-* Calctool would not allow you to enter "big" numbers like:
-  336341050452.2  The previous version of calctool represented
-  numbers internally in doubles, and checked against a certain
-  number of digits (depending upon the current radix). After a
-  certain number, internally accuracy would be lost. With v3.2
-  of calctool, internal accuracy is represented with "infinite"
-  precision, and this test can be removed. Fixes bugid #1075198.
-
-----
-
-v3.2 - patchlevel 6. 5th November 1991.
-
-* Changed the MP routines pow_di and pow_ri to mppow_di and mppow_ri,
-  to get calctool to compile under jup_alpha5.
-
-----
-
-v3.2 - patchlevel 5. 1st November 1991.
-
-* Overflow and underflow could still lock up calctool. Stricter tests
-  have been added to make_number() and do_factorial. There might be
-  other places where this is needed. Fixes bug #1073459.  Roll on V4!
-
-----
-
-v3.2 - patchlevel 4. 4th September 1991.
-
-* To try and remain consistent with the look&feel of the V3 calctool
-  (even though calctool now has "infinite" precision internal
-  arithmetic), the MP result of each calculation is converted into a
-  double before it is displayed. If the number is larger (or smaller)
-  then what can be correctly placed in a double, than an error is
-  generated. What was happening was that the "Error" string displayed
-  in the calculator display was getting overwritten by the converted
-  MP value. It's now been adjusted to not overwrite, if the error
-  indicator is set. All this can be adjusted for V4.
-
-----
-
-v3.2 - patchlevel 3. 28th August 1991.
-
-* Changed the definition of abs() in calctool.h to C_abs(), and
-  adjusted the code accordingly. This should allow calctool to now
-  correctly compile under SVR4 jup_alpha3.
-
-----
-
-v3.2 - patchlevel 2. 19th August 1991.
-
-* Fixed up the calculation of base 10 logarithms. It no longer relies
-  on an imprecise constant.
-
-----
-
-v3.2 - patchlevel 1. 19th August 1991.
-
-* Added in "infinite" precision, using the Richard Brent MP routines.
-  These were originally written in FORTRAN but have been converted to
-  C (using f2c), and tidied up, placing the resulting routines in the
-  new mp.c. Results now displayed are exact, to the given degree of
-  accuracy. Fixes bug #1039759.
-
-* When you Clr the display now, it display zero in the appropriate
-  representation; fixed, scientific or engineering.
-
-----
-
-v3.2 - patchlevel 0. 31st July 1991.
-
-* Incremented version number. Reset patchlevel.
-
-* Modified the factorial function. A factorial of 0 now returns 1.
-  Trying to do a factorial on a negative or non-integer number now
-  results in an error. The calctool man pages have been modified to
-  mention that that the factorial function is only valid for positive
-  integers. Fixes bug #1065280.
-
-* When memory was being allocated for the v data object, it was not
-  being cleared, resulting in certain values being used before they
-  were set.
-
-* When entering numbers with the mouse, calctool incorrectly displayed
-  and handled the left parenthesis. Fixes bug #1065388.
-
-* The sequence ((1+1)) was resulting in 1 instead of 2. Fixes bugs
-  #1065697 and #1065571.
-
-* If calctool is being run in click-to-type mode, and input focus is
-  on the mode popup, it was not possible to currently change modes
-  using the menu on the Mode button in the main calctool window.
-  Fixes bug #1065698.
-
-----
-
-v3.1 - patchlevel 50. 23rd July 1991.
-
-* Calctool did not correctly set minimum size frame hints. This is
-  the same problem as bugid 1065155 (reported against perfmeter and clock).
-
-----
-
-v3.1 - patchlevel 49. 19th July 1991.
-
-* Fixed a bug where it was possible to leave a calctool button
-  inverted if dragging the left mouse button from the calctool
-  button area, into the display area.
-
-* The -name option is only written to the saved command line if the
-  user specified it on the command line initially.
-
-* Added in support for a titleline for calctool, through the standard
-  -Wl, -title or -label options.
-
-* Modified the command line option parsing in get_options(). Instead of
-  parsing the command line options, looking for options where the user
-  might have set the calctool size, init_Xvars() now strips out the
-  XView/X specific command line arguments, and calctool checks on user
-  size and scale with calls to defaults_exists(). This means that
-  xv_parse_one() is no longer needed; the original reason for doing all
-  this.
-
-* Handling on the calctool button labels has been adjusted to try
-  to allow for longer strings which would probably be needed for
-  the international versions. The hooks are all in there, but the
-  I18N equivalent code needs to be rewritten, then bugid 1062858 can
-  be closed. Here are some notes taken from one of the comments in
-  text.c:
-
-  Some notes for translators:
-
-  Text in the label strings below, should be left justified. It will
-  automatically be centre justified in the buttons, but various
-  calculations depend on the text starting on the left.
-
-  The original English V3 version was written with fixed (upto) four
-  character button labels. I've tried to extend this to allow any sized
-  labels, however the following conditions apply:
-
-  - If the label won't fit in the button, then as much as possible will
-    be shown, with the last character being '>'. If you enlarge the
-    calculator, probably more of the label will show.
-
-  - If the last character of the label is a '.', and this is not the
-    first character of the label (ie, the numeric point label), then
-    calctool knows that this signifies that this label should have two
-    more '.' characters appended to it (ie, "Mem." becomes "Mem...").
-
-  - If a calctool button has a menu item glyph associated with it, the
-    width of this glyph is taken into consideration, and the amount of
-    the label that can be displayed is adjusted accordingly.
-
-----
-
-v3.1 - patchlevel 48. 18th July 1991.
-
-* Replaced the WIN_CMD_LINE call with the new ICCCM compliant
-  FRAME_WM_COMMAND_ARGC_ARGV stuff, rewriting write_cmdline
-  appropriately.
-
-----
-
-v3.1 - patchlevel 47. 11th July 1991.
-
-* The -geometry and -Ws width and height values were not being
-  correctly used. Thus it was not always possible for the user
-  to set a preferred initial size.
-
-----
-
-v3.1 - patchlevel 46. 11th July 1991.
-
-* The window manager does not read the NormalHints property until the
-  frame comes out of it's withdrawn state. So minimal size hints are
-  now set when we've had the first valid canvas repaint. Bugid 1064024
-  can be closed.
-
-----
-
-v3.1 - patchlevel 45. 4th July 1991.
-
-* Added ICON_TRANSPARENT, TRUE, to the calctool icon creation, to
-  correctly generate a transparent icon.
-
-----
-
-v3.1 - patchlevel 44. 1st July 1991.
-
-* Adjusted one of the examples in the calctool.info file:
-
-  2 * ( 3 + 4 ) = 24
-
-  should really be
-
-  2 * ( 3 + 4 ) = 14
-
-----
-
-v3.1 - patchlevel 43. 24th June 1991.
-
-* Adjusted the font names used by calctool from:
-
-  lucidasanstypewriter-10   format
-
-  to
-
-  -b&h-lucidatypewriter-medium-r-*-*-*-100-*-*-*-*-iso8859-1  format.
-
-* Added in the ability to select a portion of the calctool display,
-  by using the left mouse button (to select), and the middle mouse
-  button (to adjust). This can then be used in a Copy/Paste operation.
-  Selection/adjustment via dragging is permitted, and double-clicking
-  inside the display area will hilite the full display value.
-
-  Bugid 1055425 can be closed.
-
-----
-
-v3.1 - patchlevel 42. 13th June 1991.
-
-* The calctool "buttons" are now highlighted, when the equivalent
-  keyboard input is pressed. Rfe 1062016 can be closed.
-
-----
-
-v3.1 - patchlevel 41. 12th June 1991.
-
-* The Cut (L10) key is now synonymous with the Copy (L6) key. This
-  will make the calctool display value the current primary selection.
-  This problem comes from bugid 1055425.
-
-* Using keyboard input, it was possible to cause calctool to core dump
-  by typing an invalid mode letter, and when the "broken" mode window
-  appeared, by selecting one of the invalid keys.
-
-----
-
-v3.1 - patchlevel 40. 11th June 1991.
-
-* Added in ANSI prototypes for each calctool routine.
-
-----
-
-v3.1 - patchlevel 39. 7th May 1991.
-
-* Fixed up the alignment of the panel items on the property sheet,
-  removing the large blank area near the top left.
-
-----
-
-v3.1 - patchlevel 38. 7th May 1991.
-
-* The "Save settings as the default" property item has been removed,
-  and the row of three buttons on the bottom now look like:
-
-    (Apply)   (Set Default)    (Reset)
-
-  The (Defaults) button has gone. The (Set Default) button is the
-  proper OPEN LOOK way of doing the same as "Save settings as the
-  default".
-
-* The main calctool frame now has minimal size hints at creation
-  time, so it's impossible to shrink below it's smallest allowed size.
-
-----
-
-v3.1 - patchlevel 37. 2nd May 1991.
-
-* Changes needed to get calctool to work under SVR4 (Zeus). There are
-  no SVR4 specifics; the same code runs unchanged under both SunOS
-  v4.1.1 and SVR4.
-
-----
-
-v3.1 - patchlevel 36. 30th April 1991.
-
-* The calctool icon is now retained. This prevents flashing when
-  another window is dragged over it when OpenWindows.DragWindow:
-  is set to true.
-
-----
-
-v3.1 - patchlevel 35. 29th April 1991.
-
-* The calctool button labels are are created using read_str() instead
-  of STRCPY'ing to an array of 5 characters. This doesn't work in
-  multi-byte per character environments.
-
-----
-
-v3.1 - patchlevel 34. 29th April 1991.
-
-* The calctool icon now correctly uses the foreground and background
-  colors. Bugid 1051860 can be closed.
-
-----
-
-v3.1 - patchlevel 33. 27th April 1991.
-
-* Modified all the text string initialisations in text.c to use the
-  LGET() and MGET() macro's. Wendy tells me this now works for sundae.
-
-* Changed the definition for the calctool button strings from char *str
-  to char str[5]. This is needed because the dgettext() strings are now
-  read only, and the calctool buttons strings can change, so they have
-  to be STRCPY'ed.
-
-* If an entry was added or changed in either the constant or the
-  function menus, the new menu wasn't being recreated.
-
-* Calctool correctly displays on the NCD terminal.
-
-----
-
-v3.1 - patchlevel 32. 26th April 1991.
-
-* Moved the call to init_text() in do_calctool() to after the call
-  to init_Xvar(). The call to xv_init() needs to be done before the
-  calls to dgettext(). Bugid's 1056298 and 1056806 can be closed.
-
-* The strings generated by dgettext are now read only. They shouln't
-  be modified in any way. The check for menu items greater then 45
-  characters long has been removed. This XView problem is now fixed,
-  and because of the read-only strings, is no longer possible.
-
-----
-
-v3.1 - patchlevel 31. 26th April 1991.
-
-* Ran calctool through Saber-C and fixed up discrepancies.
-
-* Calctool now appears to work correctly on 24bit screens.
-  There were three problems:
-
-  - calctool was crashing in xv_destroy(). What was happening was the
-    frame event handler was getting a resize event before the canvas
-    repaint handler has been properly called.
-
-  - Should have been using GXclear and XCopyArea to clear the offscreen
-    calctool "button" server images (pixmaps).
-
-  - the server images for manipulationg that offscreen buttons should
-    have been using a foreground of 1 and a background of 0 (not
-    BlackPixel() and WhitePixel()). Thanks to Darren Austin for finding
-    this one.
-
-    Bugid 1056788 can be closed.
-    Bugid 1054340 is against SunView, but has been fixed in OW v3.0(FCS).
+    * Fixed bug 106501 (http://bugzilla.gnome.org/show_bug.cgi?id=106501)
+      A check has been added to the do_delete() function in functions.c to
+      make sure that the length is greater than zero, before setting the
+      len-1 character to '\0'.
  
-* Calctool now appears to work correctly in the 4bit and 8bit color
-  visuals on the 24bit screen. The problem here was that several
-  graphics contexts and scratch pixmaps were been created with an xid
-  of the root window instead of the calctool main window. The default
-  depth of the screen is differwent from the depth of the visual.
-
-* Resizes are now correctly handled. Not all resize events are really
-  changes in size, so the current width and height are compared against
-  the new width and height, and if there is no change, then no resize
-  is done. Checking the frame sizes is now done with an xv_get()
-  on FRAME_OPEN_RECT (which works), instead of a frame_get_rect().
-  Bugid 1057636 can be closed.
-  Rfe 1052050 can be closed. Calctool redraws a *lot* quicker now.
-
-* Changed the label on the Chs button to +/-. This means the help
-  key for the button now works (part of bugid 1057794).
-
-----
-
-v3.1 - patchlevel 30. 23rd April 1991.
-
-* Added in the right numeric function keyboard handling from Stuart
-  Marks (thanks Stuart!). This is the correct way to handle the
-  numeric keyboard, and gets rid of all the sloppy stuff I originally
-  had. The three resources:
-
-  deskset.calctool.sun3Keyboard:
-  deskset.calctool.sun4Keyboard:
-  deskset.calctool.numericKeypad:
-
-  have been removed. The manual pages have been adjusted accordingly.
-
-----
-
-v3.1 - patchlevel 29. 18th April 1991.
-
-* The sequence of keys 10 - 30 "sin" = was not producing the correct
-  effect. For some reason, v->cur_op was being set to the current
-  character ("sin"). I've removed this. The worrying thing, is why
-  was this there in the first place? Bugid 1056216 can be closed.
-
-* Dragging with the left mouse button over certain calctool "keys"
-  such as Con and Fun, resulted in illegal xv_get()'s. This is
-  because the appropriate menu hadn't been made.
-
-* Certain operators that have control character keyboard equivalents
-  weren't being handled inside parentheses properly.
-
-----
-
-v3.1 - patchlevel 28. 17th April 1991.
-
-* Calctool has been modified so that most calctool specific warning
-  messages from the acc compiler have been eliminated.
-
-----
-
-v3.1 - patchlevel 27. 16th April 1991.
-
-* Added in a routine to save the user supplied command line options.
-  These options are also saved to the WIN_CMD_LINE whenever they are
-  adjusted via the property sheet. The -Wn and +Wn options are also
-  saved. These options are then correctly placed in ~/.openwin-init
-  when the user does a "Save Workspace". Bugid 1056934 can be closed.
-
-----
-
-v3.1 - patchlevel 26. 12th April 1991.
-
-* Various changes to improve calctool memory usage. Resources such
-  as the property sheet, the menus are not created until they are
-  needed.
-
-* No longer assume the default keyboard is a Sun4. In other words if
-  the ioctl doesn't say it's a sun3 or a sun4 keyboard, then calctool
-  wont't attempt to setup a right-hand numeric keypad.
-
-  Add in another X resource:
-
-  deskset.calctool.numericKeypad:      False
-
-  which if set to false, won't setup a numeric keypad (irrespective
-  of the results from above.
-
-* Added in yet another X resource:
-
-  deskset.calctool.sun3Keyboard: False
-
-* Calctool no longer assumes that the keyboard is a Sun4 keyboard by
-  default. The ioctl has got to be successful to determine if it's
-  a Sun3 or a Sun4 keyboard. If this doesn't happen, then no right
-  numeric keypad is setup.
-
-----
-
-v3.1 - patchlevel 25. 20th March 1991.
-
-* Changed all occurances of DefaultColormap to:
-
-  xv_get(xv_get(frame, WIN_CMS), CMS_CMAP_ID) ;
-
-----
-
-v3.1 - patchlevel 24. 18th March 1991.
-
-* On a color screen (4bit or 8bit), if calctool can't allocate all
-  the colors, it tries to cook up a special colormap using black,
-  white, the workspace color, the default window color, a shade of
-  gray (for the 3D button inversion), plus the tools foreground and
-  background colors. The only new color should be the shade of grey.
-  If we can't get that, or if this all fails for some other reason,
-  then return FALSE, forcing calctool to monochrome.
-  Color palette indices will be:
-
-  C_WHITE   = white pixel color.
-  C_BLACK   = black pixel color.
-  C_GREY    = grey color.
-  C_BACK    = workspace color.
-  C_DISPCOL = tool background color.
-  C_MEMORY  = tool background color.
-  C_TEXT    = tool foreground color.
-  the rest will be the window color.
+2003-02-19  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * From Breda McColgan <breda.mccolgan@sun.com>
+      Toggled the positions of the Sto and Rcl buttons. This is primarily to
+      help with the online documentation, which consists of listing the 
+      gcalctool buttons in several tables, grouping "like" buttons together 
+      (for example: Bsp, CE, and Clr in one table; Sto, Rcl, and Exch in 
+      another table). Within a table, the buttons are listed in the sequence 
+      in which they appear in gcalctool. For the most part, the sequence 
+      isn't significant. However, it doesn't really make sense to talk about 
+      either Rcl or Exch until you've described Sto.
 
-v3.1 - patchlevel 23. 13th March 1991.
+2003-02-19  Rich Burridge  <rich.burridge@sun.com>
 
-* Another new X resource has been added:
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      - The process_str() function will cause a crash if the input string is 
+        null. For example, if the clipboard is empty and the user presses 
+        CTRL-V then gcalctool will core dump. Fixed by adding a null check to 
+        the function. 
 
-  deskset.calctool.sun4Keyboard:       true
+      - gcalctool now uses a text view for its display widget.
 
-  which will allow the user to override the default keyboard type,
-  which is normally determined by doing an ioctl on /dev/kbd. This
-  is for situations where the calctool program is running on a
-  machine which has a different keyboard type then where the tool is
-  being displayed.
+2003-02-18  Rich Burridge  <rich.burridge@sun.com>
 
-* The XView event handler has been adjusted to correctly handle the
-  numeric 6 key on the right function pad. Pressing this key now
-  generates an ACTION_GO_CHAR_FORWARD event, and this was being
-  incorrectly taken as Control-F (Frac) on the down press.
+    * Fixes to the manual page:
+      - the keyboard shortcut for the "Term" function is "t" not "T".
+      - removed the LOGICAL mode section.
 
-* Calctool now compiles, links and successfully runs with acc, if
-  you ignore the warning messages.
+2003-02-18  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Changes the EXPAND flag to FALSE when packing the display label and mode
+      frame. These widgets shouldn't expand when the calculator is resized. 
 
-v3.1 - patchlevel 22. 8th March 1991.
+      Replace the three characters of white space in the title bar text with one
+      space character, so more of the title fits into the task window list 
+      applet.
 
-* Various control-character events are no longer recognised as ascii
-  events, but instead generate action events. The following have been
-  noticed, and the get_next_event() routine in xview.c has been
-  adjusted to correctly handle this.:
+2003-02-12  Rich Burridge  <rich.burridge@sun.com>
 
-  Control-a   - ACTION_GO_LINE_BACKWARD
-  Control-f   - ACTION_GO_CHAR_FORWARD
-  Control-u   - ACTION_ERASE_LINE_BACKWARD
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Added a launcher to the GNOME's Accessories menu. The launcher uses 
+      gcalctool.png for its icon which required moving the icon to the pixmaps 
+      installation directory.  
 
-* The calctool manual pages have been adjusted to correctly detail
-  the Asc keyboard accelerator.
+      This means that the find_file() function is no longer necessary, and has
+      been removed. It was used only in set_gcalctool_icon(). The path of 
+      gcalctool.png is now always PACKAGE_PIXMAP_DIR. 
 
-* The default startup mode for color machines, unless specified on
-  the command line or via an X resource, has been changed to 2D. This
-  will repaint faster to the screen.
+2003-02-12  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Mark the menu labels for translation and converts the
+      gtk_item_factory_get_widget() calls to 
+      gtk_item_factory_get_widget_by_action() calls. 
 
-v3.1 - patchlevel 21. 28th February 1991.
+2003-02-11  Rich Burridge  <rich.burridge@sun.com>
 
-* The canvas event handler for calctool has been modified to call
-  notify_next_event_func. The menu_show() call now uses the canvas
-  paint window as its' second argument, and not the canvas itself.
-  This now correctly allows menus that have been MENU clicked up,
-  to correct accept the SELECT mouse button.
-  Bugid 1035658 can be closed.
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      - Cleans up the Help menu's layout so it looks like other GNOME 
+        applications.
+      - Converts gtk_init() to gnome_program_init() to allow access to things 
+        like GNOME_STOCK_ABOUT.
+      - Add an icon field to the Xobject structure.
+      - Change setup_default_icon() to set_gcalctool_icon() and set X->icon in 
+        the function.
+      - Sets the window icon for the memory register and about windows.
+      - Cleans up about_cb() and call it directly in menu callbacks -- like in 
+        other gtk+ applications.
+      - Remove the unneccessary X->about structure field.
 
-----
+2003-02-06  Daniel Yacob  <locales@geez.org>
 
-v3.1 - patchlevel 20. 27th February 1991.
+    * Added Amharic (am) to ALL_LINGUAS ata configure.in.
 
-* Added in a routine that compresses repaint events. This should speed
-  up calctool repaint fractionally.
+2003-02-07  Rich Burridge  <rich.burridge@sun.com>
 
-* Another X resource has been added:
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 104249 (http://bugzilla.gnome.org/show_bug.cgi?id=104249)
+      The UI for adding new or editing existing constants and/or functions
+      has been improved. It now uses a treeview editable list. A help button
+      is provided, but that currently isn't hooked up. I've added a note to
+      bug #104821 for this problem.
 
-  deskset.calctool.beep:        true
+2003-02-04  Rich Burridge  <rich.burridge@sun.com>
 
-  which, if set to false, suppresses the beep sound in the event of
-  an error (such as invalid input, or if the display needs to be
-  cleared).
+    * Fixed bug 104830 (http://bugzilla.gnome.org/show_bug.cgi?id=104830)
+      gcalctool now uses gnome-calc3.png as its icon (same as the current
+      gnome-calculator). For now, I've copied that to a file, gcalctool.png
+      within the gcalctool distribution. Also removed calctool.gif.
 
-  The beep sound has been added for such error conditions.
+2003-01-28  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Further slight adjustments needed to fix Bugzilla bug 104248. The 
+      callback handler for the menu items (mb_proc in gtk.c) needed to 
+      have a check at the top to see if we'd started the application yet, 
+      and if it hadn't, then to just return. Seemed it was getting called 
+      as gcalctool was initially coming up, which was toggling the state 
+      of the v->rstate variable incorrectly.
 
-v3.1 - patchlevel 19. 15th February 1991.
+    * Fixed bug 104240 (http://bugzilla.gnome.org/show_bug.cgi?id=104240)
+      The "File" menubar item is now called "Calculator", and there is a set of
+      unique mnemonics for the various items in the Scientific mode panel.
+      The gcalctool manual pages have been updated to reflect these changes.
 
-* The fontnames variables were not being initialised to NULL.
+    * Added in a Control-I mnemonic for Edit->Insert ASCII Value.
+      Added in a Control-A mnemonic for Help->About.
 
-----
+2003-01-28  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 18. 15th February 1991.
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 104248 (http://bugzilla.gnome.org/show_bug.cgi?id=104248)
+      The View->Memory Registers menu item's toggle is now set correctly
+      depending upon whether the memory register windows is visible or hidden.
 
-* Have added in four new X resources, to allow you to specify the
-  fonts used to display text with calctool:
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      The correct radio item is now set in the View menu mode menu item entries
+      if gcalctool is initially started in Financial or Scientific mode.
 
-  deskset.calctool.buttonFont:
-  deskset.calctool.modeFont:
-  deskset.calctool.memoryFont:
-  deskset.calctool.displayFont:
+2003-01-27  Rich Burridge  <rich.burridge@sun.com>
 
-  Normally calctool will use the lucidasanstypewriter font and pick a
-  font size depending upon the scale and size of the calctool window.
-  This would be for the button and memory fonts, with the mode font
-  2 points smaller and the display font two points bigger. If the tool
-  is resized, then the font sizes are adjusted accordingly.
+    * The constant and function definitions are now read and written as Gconf
+      resources, rather than to a ~/.gcalctoolcf file in the user's home 
+      directory. The manual pages have been updated to reflect this change.
 
-  If any of the above X resources are used, then this no longer happens,
-  and the new font names are always in effect irrespective of scale or
-  size.
+      An entry has been added to the TODO file to reflect functionality that
+      is no longer present because of this change.
 
-  The manual pages have been updated.
+    * Fixed bug 104250 (http://bugzilla.gnome.org/show_bug.cgi?id=104250)
+      The constant and the function menu items now have "C<n>:" and "F<n>:" 
+      prefixes respectively, where <n> is the constant/function number.
 
-----
+      This also involved removing the "<=>" from four of the descriptions for
+      the predefined constant values.
 
-v3.1 - patchlevel 17. 14th February 1991.
+2003-01-25  Rich Burridge  <rich.burridge@sun.com>
 
-* Have rewritten parentheses handling so that the parenthesis
-  expression is not calculated until the last matching bracket has
-  been entered. This now allows backspace to be easily and correctly
-  handled.
+    * Fixed bug 104245 (http://bugzilla.gnome.org/show_bug.cgi?id=104245)
+      The View->Basic Mode, Financial Mode, Scientific Mode and Memory
+      Registers now have keyboard accelerators (Control-B, Control-F, Control-S
+      and Control-M respectively).
 
-----
+2003-01-25  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 16. 27th January 1991.
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Further slight adjustments for bug 104287
+      (http://bugzilla.gnome.org/show_bug.cgi?id=104287)
+      The insert button isthe default button.
+      The dialog is no longer resizable.
+      The ESC key can now be used to cancel the dialog.
 
-* Adjusted the property sheet. Moved the "Save calculator settings" to
-  the bottom, and called it:
+2003-01-24  Rich Burridge  <rich.burridge@sun.com>
 
-  Save settings as the default: [no][yes]
+    * From: Dennis Cranston <dennis_cranston@yahoo.com>
+      Fixed bug 104287 (http://bugzilla.gnome.org/show_bug.cgi?id=104287)
+      HIG improvements for the "Insert ASCII Value" dialog.
 
-  If this property item is set to yes, then the current calctool
-  settings are written to the ~/.desksetdefaults file when the user
-  selects the Apply, Reset or Defaults buttons. This makes it
-  compatible with clock and perfmeter.
+2003-01-23  Rich Burridge  <rich.burridge@sun.com>
 
-* All the new property sheet items have had their help information
-  added to the calctool.info file.
+    * Fixed bug 104241 (http://bugzilla.gnome.org/show_bug.cgi?id=104241)
+      The Insert ASCII Value" menu item is now "Insert ASCII Value..."
 
-* Added in the command line option:   -name app-name
+    * From: Hidetoshi Tajima <hidetoshi.tajima@sun.com>
+      Tidied up the I18N code as gcalctool now includes <gnome.h> which includes
+      <bonobo-i18n.h,> where all this stuff is already defined.
 
-  This option specifies the application name under which resources are
-  to be obtained, rather than the default executable file name.
+2003-01-23  Rich Burridge  <rich.burridge@sun.com>
 
-* Found and fixed one more case related to bugid 1049453, which was
-  mainly fixed in patch #15.
+    * Fixed bug 102928 (http://bugzilla.gnome.org/show_bug.cgi?id=102928)
+      The x^2, e^x, 10^x and y^x keys now use Pango markup to display the
+      label using superscripts.
 
-* All popup windows have been adjusted so that the pushpin is not in
-  by default.
+2003-01-23  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Added in handling of the numeric keypad for Linux systems. This required
+      an "event" signal handler on the main gcalctool window, and then checking
+      for a set of keyvals that could be generated by the numeric keypad keys
+      (with and without the NumLock key on).
 
-v3.1 - patchlevel 15 - 23rd January 1991.
+2003-01-22  Rich Burridge  <rich.burridge@sun.com>
 
-* Removed redundant code in xview.c that was put there to try to fix
-  the Sun4 Ins key problem, which no longer appears to be a problem.
+    * Handling the function "(3+3)" now works.
+      The button struct now contains a new item (char func_char) which 
+      is the character equivalent to the button when you user enteres 
+      it into a function definition. The process_str() routine in 
+      graphics.c has been adjusted to call button_for_fc() (a new 
+      routine in functions.c) to compare each character in the function 
+      string against this item in each button struct to find the 
+      appropriate operation.
 
-* If the user presses a calctool button which has a window
-  associated with it (Asc or Mem), and that window is already displayed,
-  or if the user make a selection from a menu, and that would bring up
-  a window, but that window is already displayed, then the window is
-  popped to the top.  This fixes bugid 1049453 which can now be closed.
+      Also needed changes to do_paren() to call button_for_fc() instead of 
+      button_for_value().
 
-----
+      These changes also fix bugtraq bug #4065378.
+      Certain functions entered into gcalctool produce incorrect results.
 
-v3.1 - patchlevel 14 - 18th January 1991.
+    * Changed the keyboard accelerators for the following to use non Alt-<?>
+      values:
 
-* The Delete key was working incorrectly with a Sun3 keyboard.
+      Cos  (old value: Alt-c) becomes 'J'.
+      Sin  (old value: Alt-s) becomes 'K'.
+      Tan  (old value: Alt-t) becomes 'L'.
+      Frac (old value: Alt-f) becomes ':'.
+      Int  (old value: Alt-i) becomes 'i'.
+      Abs  (old value: Alt-u) becomes 'u'.
+      Rate (old value: Alt-r) becomes 'T'.
 
-* The Ins key on a Sun4 keyboard no longer works with the latest OW
-  V3 builds. A workaround would be to set the Ins key appropriately
-  depending upon whether the calctool program currently has the
-  keyboard focus. Unfortunately I don't know the magic keycode number
-  to use to define the Ins key. The code has been written. When that
-  magic number is found the INSFUNKEY definition in xview.c should be
-  set appropriately, and the call to set_ins_key() in xview.c
-  uncommented. For now, an entry has been added to the TODO file.
+      Updated the manual pages and the tooltip help to reflect these changes.
 
-* The dynamic calctool resizing hasn't been working. Calctool no
-  longer seems to get WIN_RESIZE events when the main calctool frame
-  is resized. To try to "fix" this up, an event interpose routine
-  for the main calctool frame has been added. It then tries to set the
-  canvas size accordingly, and resize all the graphics objects, such
-  as the offscreen server images for the buttons and the text fonts.
+    * Removed the need to configure with "--enable-build-broken".
 
-  With the introduction of the interpose routine to fix the resizing,
-  occasionally there are strips of foreground color to the right and
-  below in the various calctool windows.
+2003-01-22  Rich Burridge  <rich.burridge@sun.com>
 
-  A much better and simpler solution would be to find out why calctool
-  no longer gets WIN_RESIZE events on the canvas. All this used to
-  work; the code to handle resize events on the canvas has been written
-  and used to work.
+    * Adjusted the memory registers windows to use the same "R0:  0.00" format 
+      (bold for first part), as the Rcl, Sto and Exch menus. 
 
-----
+2003-01-22  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 13 - 19th December 1990.
- 
-* Added in X color resource support for all of the colors that calctool
-  uses. These can now be setup in all the standard X places or the
-  ~/.desksetdefaults file. If there aren't any, then the "standard"
-  colors are used. The manual pages have been updated to describe these
-  new resources.
-
-----
-
-v3.1 - patchlevel 12 - 27th November 1990 [mjb]
-
-* Fixed Makefile to compile with the XView Makefile.master
-
-----
-
-v3.1 - patchlevel 11 - 27th November 1990.
-
-* Generated a version of calctool which should have support for other
-  languages. The text generation has been separated out into another
-  source file (text.c). Needs to be tested in the sundae environment
-
-* Modified the text handling for calctool to use four new definitions,
-  DGET(), EGET(), LGET() and MGET() definied in calctool.h, and set the
-  text initialisation appropriately. Note that DGET() is just a dummy
-  call, but makes it easier to change from one type of conversion to
-  another. Certain strings (command line arguments, help strings, parts
-  of the usage message, calctool resources), don't appear to have to be
-  converted, and are just initialised into the correct arrays using
-  DGET().
-
-* Added in Xrm resource handling. Resources are looked for in the
-  following ways:
-
-  Classname file in the app-defaults directory. In this case, Classname
-  is Deskset.
-
-  Classname file in the directory specified by the XUSERFILESEARCHPATH
-  or XAPPLRESDIR environment variable.
- 
-  Property set using xrdb, accessible through the XResourceManagerString
-  macro or, if that is empty, the ~/.Xdefaults file.
- 
-  XENVIRONMENT environment variable or, if not set, .Xdefaults-hostname
-  file.
- 
-  DESKSETDEFAULTS environment variable or, if not set, the
-  ~/.desksetdefaults file
- 
-  *NOTE* When you write an Xrm database to a file, it overwrites the
-         file. What I've done is read in the ~/.desksetdefaults file
-         just before I write out the new values. This seems like a
-         window for error if two or more clients are doing this at
-         the same time.
-
-  The calctool resources are (with example values shown):
-
-  deskset.calctool.accuracy:      6
-  deskset.calctool.base:          hex
-  deskset.calctool.display:       scientific
-  deskset.calctool.mode:          scientific
-  deskset.calctool.mono:          false
-  deskset.calctool.showRegisters: false
-  deskset.calctool.trigType:      rad
-  deskset.calctool.rightHanded:   false
-  deskset.calctool.3dLook:        true
-  deskset.calctool.hasTitle:      true
-
-* Calctool now has a property sheet. There are four settings:
-
-                       Appearance:   2D-look | 3D-llok
-                          Display:   color | monochrome
-         Save calculator settings:   no | yes
-                            Style:   left-handed | right-handed
-
-  The third choice determine whether five extra calculator settings
-  are written out to the ~/.desksetdefaults file. These are (for
-  example):
-
-  deskset.calctool.accuracy:      6
-  deskset.calctool.base:          hex
-  deskset.calctool.display:       scientific
-  deskset.calctool.mode:          scientific
-  deskset.calctool.trigType:      rad
-
-* Calctool now recognises the Props key being pressed, and displays
-  the property sheet.
-
-* The manual pages have been modified to include all this new
-  information on resources and the property sheet.
-
-----
-
-v3.1 - patchlevel 10 - 22nd November 1990.
-
-* If you backspace over a number which contained a decimal point,
-  calctool would not allow you to enter a new decimal point.
-  Bugid 1047077 can be closed.
-
-----
-
-v3.1 - patchlevel 9 - 1st November 1990.
-
-* If the total colormap couldn't be allocated in load_colors(), then
-  calctool is starting in monochrome instead of exiting.
-
-----
-
-v3.1 - patchlevel 8 - 18th October 1990.
-
-* The Delete, Back Space and Ins (numeric keypad) keys were no
-  longer working. In the latest OW V3 build, these have been
-  remapped to ACTION_ERASE_CHAR_FORWARD, ACTION_ERASE_CHAR_BACKWARD
-  and ACTION_INSERT events. Tidied up the event reading routine too.
+    * The menu items for the Rcl, Sto and Exch menus now have the format
+      "R0:     0.00", where the "R0:" part is in bold.
 
-----
+    * From Padraig O'Briain <Padraig.Obriain@Sun.COM>
+      Fix to get the keyboard accelerators for the menubar menu items working.
+      The problem was due to the creation of two accelerator groups in main()
+      in gtk.c.
 
-v3.1 - patchlevel 7 - 2nd October 1990.
+2003-01-21  Rich Burridge  <rich.burridge@sun.com>
 
-* "Fixing" the minimal shrinking problem in patch #6, broke the
-  sizing of the memory and mode windows. This patch fixes that.
+    * Updated the NEWS file with an overview of all the changes since v4.1.13.
 
-----
+2003-01-21  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 6 - 2nd October 1990.
+    * Removed the gconf resource for getting/setting whether a beep is sounded
+      on error. A beep will now always be sounded in such a case.
 
-* Shrinking calctool below it's minimum size now correctly works.
+    * Removed the write_resources() routine. The writing out of the resources
+      will now be immediately done when each of those functions changes.
 
-----
+2003-01-25  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 5 - 27th September 1990.
+    * Updated the manual pages to reflect the recent v4.2.xx changes.
 
-* After the user has done a valid parentheses calculation, the last
-  input is set to the displayed value. If the user enters an '=',
-  nothing changes.
+    * Replaced the occurance of mktemp with mkstemp to placate the Gnu compiler
+      on Linux.
 
-* During parentheses processing, if the user uses the mouse to
-  select an item from a function menu or the default menu item, then
-  the correct values are entered in the display (and on the parentheses
-  stack).
+2003-01-21  Rich Burridge  <rich.burridge@sun.com>
 
-* The default menu item for the function menu is now "Enter Function".
-  The default menu item for the constant menu is now "Enter Constant".
-  The text is now correctly displayed on the calctool button when the
-  left mouse button is held down. The popup correctly appears when the
-  left mouse button is released.
+    * The real fix for displaying the icon. The problem was that the icon was
+      being installed in the pkgdata_DATA directory, but gcalctool was looking
+      for it in the CALCTOOL_DATA_DIR directory, which was incorrectly set to
+      $(datadir)/calctool" rather than $(datadir)/gcalctool".
 
-* If you executed a user defined function that ended in a ')', then a
-  '(' was left in the operand field.
+2003-01-20  Rich Burridge  <rich.burridge@sun.com>
 
-* All calctool button labels are now only drawn with the "normal" font.
+    * Removed the setting of an event mask and a global event handler in 
+      create_kframe() in gtk.c. This seems to have fixed up the keyboard 
+      navigation problems.
 
-* If calctool is resized, the memory register window is now correctly
-  resized also.
+      Control-F1 now toggles the displaying of tooltip help, so the "-h"
+      command line option has been removed and the old-style event handling
+      code has also been removed.
 
-----
+    * Added in a signal handler for the "delete" event for the main gcalctool
+      window. The callback calls gtk_main_quit() to terminate the application.
 
-v3.1 - patchlevel 4 - 27th September 1990.
+2003-01-17  Rich Burridge  <rich.burridge@sun.com>
 
-* Define a user defined function and dismiss the window. If you bring
-  the define constant window the info from the previously defined
-  function is still in the window. The user should not have to erase
-  this info before entering the new info.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* Only certain "pending" operations should redisplay the numeric
-  calctool buttons half way through the operation. Con, Exch, Fun,
-  Sto, Rcl and Acc should redisplay the buttons 0-9. < and > should
-  redisplay the buttons 0-f.
+      The gcalctool icon is now correctly displayed for me running Sun's
+      fcs-10 build on Solaris. It's still a problem for Calum running
+      GNOME HEAD on RH7.2.
 
-* During parentheses processing if a numerical error occured, the
-  display is now set to "Error", and the operand field is set to "CLR".
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-* The contents of v->disp_val are now zeroised when the first left
-  parenthesis is found. This is to allow for correct calculations when
-  invalid numbers and operands are found inside the parentheses.
+    * HCI change suggested by Glynn Foster <Glynn.Foster@Sun.COM>
 
-----
+      The Sto/Rcl/Exch menu items should show the current register values 
+      as well.
 
-v3.1 - patchlevel 3 - 26th September 1990.
+      The Exch/Rcl/Sto menus are recreated each time that menu is needed. The
+      menu item callbacks for these menus and the Constant and Function menus
+      have been consolidated into a single menu_proc_cb() routine.
 
-* When you type '*' (synonymous with multiplication 'x'), the op field
-  was not being set.
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-* Displaying the Memory register window shouldn't clear the operand
-  field.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* Use of a pending operation within a current calculation, will result
-  in the erasing of the display of the type of the current operation.
+      All the radiobutton and checkbox items in the mode panel now have a 
+      mnemonic associated with them.
 
-* The 10 constant values were accidentally being zeroised in
-  init_vars().
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-* The ASC, Enter Con/Fun windows and the mode window are all pinned
-  when initially displayed.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* The command line option extraction routine now understands -Wx as
-  being synonymous with -scale.
+      Fixed up the buttons on the "Insert ASCII Value", "Enter Constant..." and
+      "Enter Function..." popups. They now just use Cancel and OK buttons, and 
+      use standard stock Gtk icons.
 
-* Added two new command line options, -2 and -3 which start up the
-  color version of calctool with a 2D and a 3D look respectively.
-  The manual pages have been updated.
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-  NOTE: The color -2 version renders a lot faster then the default
-        color option.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* If you had typed a left parenthesis, then hitting certain
-  calctool keys that generate control characters (such as Tan),
-  didn't get displayed properly. They are now displayed as ^c,
-  where c is the character in question.
+      Added in an Edit->Paste menu item. If selected this will paste 
+      the current contents of the clipboard into the calculator display 
+      as if you'd typed it.
 
-* Hitting the Delete and Back Space keys after entering a left
-  parenthesis now does the appropriate action.
+    * Added bullet proofing to the process_str() routine in graphics.c 
+      to protect it against values that weren't found. If a value wasn't 
+      found, it's just ignored, and it goes on to process the next 
+      character in the string.
 
-----
+    * Improved the val_to_button() routine in functions.c. It now takes 
+      into consideration the mods value for each button struct entry when 
+      comparing against the given value. This isn't enough though, as it 
+      won't find Alt-<n> buttons.
 
-v3.1 - patchlevel 2 - 21st September 1990.
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-* If a left parenthesis had been entered, and a selection then
-  made from the Mode window, calctool would core dump.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* The memory register and constant values were not getting initialised
-  to zero.
+      Added a 2 pixel border for the frames containing the Basic, Financial and
+      Scientific buttons and the mode panel. The calculator doesn't look so
+      crowded now.
 
-----
+2003-01-16  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 1 - 17th September 1990.
+    * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
 
-* Ran calctool through xsaber, and cleaned up any errors/warning
-  generated.
+      Removed the "operand item" label widget, the routine where it was being 
+      set (set_op_item()) and all the calls to that routine. Other calculators 
+      don't have any equivalent to this, so it's not really needed.
 
-* Made as many functions as possible in xview.c, static.
+      This also remove the opdisp entry in the button struct and the op_type 
+      enum.
 
-* calctool can now automatically resize itself using the frame resize
-  corners. The fonts are reinitialised depending upon the new scale,
-  and the calctool button images regenerated depending upon the new
-  size.
+    * Adjusted the "keyboard values used" table in calctool.c to reflect the
+      current state.
 
-* The calctool.info file has been fixed up to mention the logical mode
-  under the mode information.
+2003-01-14  Rich Burridge  <rich.burridge@sun.com>
 
-* If the user holds the left mouse button down over a calctool button
-  that has a menu associated with it, and the length of the default
-  menu item is zero, then the menu button glyph is now placed on the
-  right side of the calctool button.
+    * The frames around the mode button tables and the mode panel were always 
+      being shown. The make_but_table() and create_mode_panel() routines were
+      returning the wrong widgets.
 
-----
+2003-01-18  Rich Burridge  <rich.burridge@sun.com>
 
-v3.1 - patchlevel 0 - 12th September 1990.
+    * Fixed bug #101865 (http://bugzilla.gnome.org/show_bug.cgi?id=101865)
+      Made the following keyboard remappings:
 
-* Started work on the OpenWindows v3.0 calctool.
+      Function     Old         New
+      ---------------------------------
+      Cos        Control-c     d
+      Ddb        Control-d     Alt-C
+      Frac       Control-f     Alt-f
+      Int        Control-i     Alt-i
+      Sln        Control-l     l
+      Ctrm       Control-m     m
+      Rate       Control-r     Alt-r
+      Sin        Control-s     Alt-s
+      Tan        Control-t     Alt-t
+      Abs        Control-u     Alt-u
+      Syd        Control-y     Y
 
-* Created a minimal Makefile. Reversed the order of patch descriptions
-  in the CHANGES file, so that the latest is at the beginning.
+      Note that the keyboard equivalents for:
 
-* Added standard Sun Microsystems headers to each .c and .h file.
+      Function     Old         New
+      ---------------------------------
+      Quit       q or Q        Control-Q
+      Copy       Sun Copy key  Control-C
 
-* Added in code to determine whether there is a Sun3 or a Sun4 type
-  keyboard attached, and adjusts the right function keypad accordingly.
-  Bugid 1039460 can be closed.
+      still have to be added in, although the menu items in the menu bar 
+      work fine. The appropriate changes have been made to the manual pages.
 
-* For the Sun4 keyboard, changed the R6 (*) definition to x from *.
-  This now allows multiplication to work correctly.
-
-* For the Sun3 keyboard, changed the R14 '1' definition to '.'.
-
-* The key labled CHS has been changed to +/-.
-
-* Removed the three spare entries from the colormap table. As this
-  is now XView and not SunView, the colormap size doesn't have to be
-  a power of 2.
-
-* calctool now looks for KBD_USE and KBD_DONE events to determine if
-  calctool has the keyboard focus, and sets the mapping of the Del/.
-  function key to '.' or Del acordingly.
-
-* Added the '*' case to the switch table in do_calc() to allow '*' to
-  be synonymous for multiplication.
-
-* All the "variable" variables are now defined in structures and
-  malloced. This should make it fairly trivial to turn calctool
-  into a library routine if so required.
-
-* Made as many functions as possible void.
-
-* Fixed up the usage() message.
-
-* Removed references to the -i (inverse video) command line option,
-  which is not supported under XView/Xlib.
-
-* If there is a mode window displayed and it is pinned, then trying 
-  to change to Basic mode will have no effect. The user has to unpin
-  the frame to achieve this. 
-
-* Now recognises the -Wn and +Wn command line options to disable or
-  enable a frame titleline. The actual contents of the titleline
-  still needs to be set with the -Wl option.
-
-* The manual page has been updated to describe the -Wn and +Wn
-  command line options, and the change of CHS to +/-.
-
-* The calctool.info file has been updated to reflect the change of
-  Chs to +/-.
-
-* Calctool now understands the -scale and -Ws (-size) command line
-  options, and adjusts the button sizes and the fonts it uses
-  accordingly.
-
-* A check is now made in the get_menu_def routine for a valid default
-  menu item. Initialy it is possible for the Function menu to not have
-  a default item. If there isn't one, then get_menu_def() now returns
-  -1. This is checked for in handle_menu_selection() and prevents an:
-  "XView warning: invalid object (not a pointer), xv_get" message.
-  Bugid 1039912 can be closed.
-
-* With the greying in/out of the calctool buttons, the button is only
-  redrawn if it's changing color/state.
-
-----
-
-v3.0 - patchlevel 24 - 22nd May 1990.
- 
-* Columns 1 and 2 have been reversed for the -r "right-handed" option.
-  This means that the Quit buton will be in the bottom left hand
-  corner.
-
-----
-
-v3.0 - patchlevel 23 - 22st May 1990.
- 
-* Fixed up repaint problem on monochrome screen when no selection was
-  made from the displayed popup menu.
- 
-* Added -r command line option to display a "right-handed" calculator.
- 
-* Removed unwanted -W? command line options.
- 
-* Updated the calctool manual page. The -r option was added and the
-  -Wi, -WP and -Wp options were removed because these are generic tool
-  arguments.
-
-----
-
-v3.0 - patchlevel 22 - 19th May 1990.
- 
-* Added menu_showing kludge to xview.c, to prevent multiple repaints
-  on mono screens.
-
-----
-
-v3.0 - patchlevel 21 - 12th May 1990.
- 
-* Entering numbers with more then 10 numeric places were being
-  converted incorrectly.
-
-----
-
-v3.0 - patchlevel 20 - 9th May 1990.
-          
-* XView calctool has been run through XSaber-C, and several changes
-  made because of the error messages produced.
- 
-* There was an uninitialised variable exp_sign in convert_display()
-         
-* The variable label, used to store the calctool labels was two
-  characters too small.
- 
-* In write_cf_value, the variable result was being written to. This
-  was clobbering the global variable called result, which was the
-  calculators current result. A local variable with the same name
-  has been introduced.
- 
-* If the calculation  2+(3*(4+5)-6)  was entered, the display should
-  not be adjusted until the last parenthisis is matched. This was not
-  the case, and has now been fixed.
-
-----
-
-v3.0 - patchlevel 19 - 7th May 1990.
-                 
-* Calctool didn't correctly grey out buttons when run on a mono
-  screen.
-          
-* A -m option has been introduced to allow you to run in just black
-  and white on a color screen.
-          
-* Made sure that after a menu has been displayed, the grey area
-  repaint of the canvas occurs on an even pixel boundary.
-
-----
-
-v3.0 - patchlevel 18 - 2nd May 1990.
-          
-* The XView driver has been fixed so that the additional popup
-  frames don't "jiggle" about.
-
-----
-
-v3.0 - patchlevel 17 - 27th April 1990.
-          
-* The XView driver has been adjusted so that auxiliary frames are
-  only created if they are used.
-
-----
-
-v3.0 - patchlevel 16 - 20th April 1990.
- 
-* Added in the changes to include ds_position_popup, to successfully
-  position the popup windows.
- 
-* Buttons are now correctly stenciled.
+    * Removed mention of the "-l" and "-r" command line options from the manual 
+      pages. Remove reference to the /schemes/apps/gcalctool/righthanded Gconf
+      resource too.
 
-----
+2003-01-14  Rich Burridge  <rich.burridge@sun.com>
 
-v3.0 - patchlevel 15. - 17th April 1990.
- 
-* If the user presses left over a calctool button which has a menu
-  associated with it, then as much as possible of the default menu
-  item is now shown on the button label.
- 
-* References to DRAGING have been changed to DRAGGING.
- 
-* The mouse event code in process_event in graphics.c, has been
-  divided up into separate routines.
- 
-* If the left mouse button was pressed initially, when it wasn't
-  over a calctool button, then the OPEN LOOK mouse dragging effect
-  didn't work.
- 
-* If the right mouse button was pressed initially when it wasn't
-  over a calctool button which had a menu associated with it, then
-  the correct OPEN LOOK actions were not performed.
+    * After discussion with Calum Benson, removed the "Keys" key, that allowed
+      you to toggle the button labels to show their keyboard equivalents. This
+      functionality is now covered by the tooltip help and the Help->Contents
+      online help.
 
-----
+2003-01-13  Rich Burridge  <rich.burridge@sun.com>
 
-v3.0 - patchlevel 14. - 15th April 1990.
- 
-* A few things have been done to make calctool more OPEN LOOK.
-  These include only being able to SELECT with the left button.
-  The middle button has no effect. The right button is only
-  useful on buttons which have a menu associated with them.
-  If you click on the SELECT mouse button and drag the mouse
-  around, the calctool buttons invert and return to normal when
-  the mouse moves over them. Exiting the calctool window when
-  the mouse is being dragged, deselects the last button.
- 
-* If the users Clicks over a calctool button with the left mouse
-  button, and this calctool button has a menu associated with it,
-  then the default menu item value is selected. This has introduced
-  an extra field to the cmenus menu structure, which is the initial
-  default value.
- 
-* In scientific mode, 6 was being displayed as 6.00e+ instead of
-  6.00e+0.
+    * Put each of the the button tables and the mode panel inside a frame,
+      rather then use horizontal separators, to try to make the GUI look 
+      nicer. There is still a persistent display problem to fix though 
+      (see entry in the TODO file).
 
-----
+2003-01-13  Rich Burridge  <rich.burridge@sun.com>
 
-v3.0 - patchlevel 13. - 26th March 1990.
- 
-* The ability to store values via the popup menu was broken by a
-  change in patch #11. This is now fixed.
+    * Entering "((2+3)*(2+3))" gave the wrong answer. Problems was in the
+      process_item() routine where extra values were reassigned. With gcalctool
+      v4.2.0 onwards, "*" is now the multiplication operand, and "x" needed 
+      to be reassigned to that value (not the other way around). Had to 
+      adjust the assignment of the "x" and "*" keyboard accelerators 
+      accordingly too.
 
-----
+    * Added in some bullet-proofing to the do_parens() routine to hopefully 
+      improve the handling of bogus keyboard entries when a string in 
+      parentheses is being entered.
 
-v3.0 - patchlevel 12. - 22st March 1990.
- 
-* Clicking SELECT on the pane of the Memory Registers
-  window still displayed keys from the Calculator base window.
- 
-* If a number was being displayed in scientific notation in
-  hexidecimal, then the exponent'e' was being incorrectly converted
-  to uppercase.
- 
-* The destroy_proc routine has been removed from both the XView and
-  the SunView drivers. This means that the X/NeWS command "Save
-  Workspace" now correctly works. The do_frame routine has been
-  moved to functions.c
- 
-* The incorrect result was being produced with the parenthesis code.
-  This was because the push_op and push_num routines were being
-  passed a negative index.
+2003-01-13  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Hooked up the Help->Contents menu item. Note that help support still has
+      to be included (i.e. a help subdirectory with associated files etc.).
 
-v3.0 - patchlevel 11. - 20th March 1990.
- 
-* If one of the following operators (+, -, x or /) was used in
-  between the sto operator and the register, then calctool would hang.
- 
-* Calctool was only allowing a certain maximum number of digits to
-  be entered in each base; 40 for binary, 15 for octal and 12 for
-  decimal and hexidecimal. This has been changed to allow upto
-  MAX_DIGITS (40) to be entered, irrespective of what base you are
-  in. Note that internal accuracy is lost above the number of digits
-  (40/bin, 15/oct, 12/dec, 12/hex).
- 
-* The exponent portion of scientific numbers displayed in binary was
-  incorrect.
+2003-01-13  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * The View->Memory Registers menu item now correctly toggles the showing of
+      the memory register window.
 
-v3.0 - patchlevel 10. - 16th March 1990.
- 
-* Both the XView and the SunView version now use a canvas repaint
-  handler which tries to repaint the smallest amount possible for the
-  main calctool canvas plus the canvas for the special mode.
- 
-* The titleline for the mode popup frame now has the initial letter
-  of each word capitalised.
+2003-01-13  Rich Burridge  <rich.burridge@sun.com>
 
-* The "4" button was displaying as 4.. at certain times when the
-  main calctool frame was completely redrawn. This is now fixed.
+    * Menubar menu items now use stock Gtk icons (where applicable).
 
-* Redundant code has been removed, plus the comments in functions.c
-  have been corrected.
+2003-01-10  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Revised the gcalctoolrc (Gtk resources) file for the new display layout.
+      This really needs help from a real graphics designer for a suggested color
+      set.
 
-v3.0 - patchlevel 9. - 15th March 1990.
- 
-* The title line now says "Calculator" and not "Calctool".
- 
-* All main calctool canvas and the mode popup canvas are now retained.
-  This should prevent the repaint events when a menu is poped up.
-  Note that calctool is still capable of correctly repainting itself,
-  should that retained canvas go away.
- 
-* The calctool buttons have been remade. The height is now 28 pixels
-  instead of 48 pixels. The XView version now uses the Lucida font
-  in various sizes. The menu glyph has been made slightly smaller to
-  be in proportion to the new sized buttons.
- 
-* The button labels can now contain upto four characters, plus
-  allowing room for the menu glyph. The labels now just have the
-  initially character in uppercase. Labels are now much more readable.
- 
-* The mode popup has changed shape. It's now two rows of eight columns
-  and fits in nicely below the main calctool window. The buttons have
-  been rearranged on this popup (in the various modes).
- 
-* The Mem and Asc keys now have the ... menu mark, to show that they
-  display popup frames.
- 
-* The title line of the memory register window now is "Memory
-  Registers" and not "Memory registers". This frame now comes up with
-  the push pin in.
- 
-* Clicking SELECT on the register window no longer displays calctool
-  buttons on this window.
- 
-* Clicking on the Mem key when the memory register window is shown,
-  no longer removes it.
- 
-* The calctool.info file has been modified. All key names have been
-  changed from capital letters to just the initial letter in uppercase
-  with the rest in lowercase. Examples for all the financial functions
-  have been added.
- 
-* The calctool display now shows characters typed in during parenthesis
-  processing.
+2003-01-10  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Go into Scientific mode. Click on "(" twice and you'll get a segv.
+      The problem was the v->current needed to be set to a copy of the 
+      "n" button struct, rather than trying to find the button value from 
+      user_data. Created a copy_button_info() routine that is now called 
+      in three places.
 
-v3.0 - patchlevel 8. - 1st March 1990.
- 
-* Parentheses have been fully implemented.
+2003-01-10  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Added some horizontal separators to help make the calculator more readable
+      when in Financial and Scientific Mode.
 
-v3.0 - patchlevel 7. - 27th February 1990.
- 
-* The < and > shift operators have been moved to the logical popup.
-  The 1/x and x^2 keys have been moved to the main calctool frame.
- 
-* Keyboard handling has been fixed up so that all possible valid
-  keys are available from either the main calctool frame or the
-  current mode popup (if there is one).
- 
-* The calctool.info file has been updated for the new layout.
- 
-* The code for adding/altering constant/function popup menu values
-  has been simplified to solve a problem with the new value being
-  in the wrong place.
- 
-* The "business" mode has been renamed "financial" mode with a
-  corresponding letter 'f'. The "basic" mode letter has been changed
-  from 'n' to 'b'.
- 
-* Nine financial keys and their associated routines have been
-  included. The calctool.info file has been updated with descriptions
-  of these definitions.
- 
-* Just before the buttons table in calctool.c, a table of currently
-  used keyboard equivalents has been defined. This should make it
-  easier to show what ones are available for new functions.
- 
-* The variable array mem_vals has been renamed to mvals.
- 
-* More work has been done on the parentheses handling, but this is
-  not complete yet.
+2003-01-09  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Entering "((2+3)*9+(5-3))" causes a segv. The problem was due to the
+      change from "x" to "*" as the character for multiplication. The .value
+      entry in the button struct for the multiplication button needed to be
+      changed to GDK_asterisk (rather than GDK_x), otherwise button_for_value()
+      returns a NULL pointer.
 
-v3.0 - patchlevel 6. - 23rd February 1990.
- 
-* The code for the "Enter Function/Constant" has been tested,
-  and is hopefully now bug free.
- 
-* Hooks for the parentheses code has been written.
- 
-* The calculator has had the logical functions moved into a
-  separate mode on the popup mode frame. One column has been
-  removed, and the keys rearranged. The SQRT key has been put
-  back on the main frame, and is now GREY0. So is the ASC key.
-  There are no buttons showing where there are no functions in
-  this position on the mode frames.
-
-----
-
-v3.0 - patchlevel 5. - 22nd February 1990.
- 
-* The CHANGES file has been updated for all patches.
- 
-* When there is no calculator mode, the "panel item" is set to
-  BASIC, not NONE. The keyboard equivalent is still 'n'.
- 
-* The auxiliary popup frames now come up correctly with the XView version.
- 
-* The display no longer truncates to 30 digits when in binary
-  mode. To achieve this, I've had to change the numeric display
-  font to cour.r.18 from cour.r.24.
- 
-* The code for the "Enter Function/Constant" has been written,
-  compiled and partially tested. It is not bug free yet though,
-  so shouldn't yet be used.
+2003-01-09  Rich Burridge  <rich.burridge@sun.com>
 
-----
+    * Removed the attempt to display a calculator image on the About popup.
 
-v3.0 - patchlevel 4. - 21st February 1990.
- 
-* Fixes up the calctool.info file.
- 
-* Fixes up the validkeys array (keys that can be validly pressed
-  after an error has occured).
- 
-* I've changes several calctool button keyboard equivalents, to
-  make the result more consistent. Buttons with menus, now tend
-  to have a capital letter equivalent, unless it's a special key
-  like <, > or #.
- 
-  Changed values are:
- 
-  Button display    Keyboard equivalent.
-       MO                   M
-       RT                   R
-       ST                   S
-       FN                   F
-       INT               Control-i
-       FRAC              Control-f
-       ABS               Control-u
-       1/x                  r
-       SQRT                 s
-       y^x                  y
-       KEYS                 k
-       MEM                  m
- 
-* Pressing the KEYS button now successfully changes the values on
-  the mode popup frame if it is displayed.
- 
-* Setting the calculator mode to NONE now correctly shows NONE in
-  the display area.
- 
-* I have fixed up the .calctoolrc file for the key changes listed above.
- 
-* Do_help now has correct values when selecting help for items in
-  the popup calculator mode window.
- 
-* The last remaining pixwin call has been removed from the XView
-  driver and the handling of server images has been improved.
- 
-* The control character sequences in the function popup menu are
-  now correctly displayed.
- 
-* Repaint handlers have been added to the SunView and XView drivers,
-  and the hooks are in place to do minimal repaint.
+    * Typing the keyboard equivalent of the menu buttons now works. The problem
+      was in process_item() in display.c. v->current couldn't just point to the
+      current button struct. It needed to be a copy of it, so that pending
+      operation (which save the pending value), don't overwrite the base button
+      entries.
 
-----
+    * Removed the VERSION string from the titlebar. This is now in the About 
+      popup.
 
-v3.0 - patchlevel 3. - 20th February 1990.
+2003-01-09  Rich Burridge  <rich.burridge@sun.com>
 
-* The ASC frame is now the correct size.
+    * Added in an About popup that's accessible through the Help->About 
+      Gcalctool menubar Help menu item.
 
-* The do_function routine now works correctly.
+2003-01-09  Rich Burridge  <rich.burridge@sun.com>
 
-* The memory register window now displays correctly.
+    * Fixed bug #102927 (http://bugzilla.gnome.org/show_bug.cgi?id=102927)
+      Replaced abbreviation "trig." with full word "trigonometric".
 
-* The mode popup frame now correctly displays the new mode buttons
-  if the mode window was already being displayed.
+2003-01-09  Rich Burridge  <rich.burridge@sun.com>
 
-* The SunView driver had an incorrect XV_SHOW; should have been a WIN_SHOW.
+    * Fixed bug #102922 (http://bugzilla.gnome.org/show_bug.cgi?id=102922)
+      Adjusted the two occurances of sentence fragments in the 
+      cfframe_apply_cb() routine in gtk.c to make it easier for L10N folks 
+      to translate them.
 
-* Greying out of the redundant numeric keys is now handled differently.
+2003-01-08  German Poo-Caaman~o  <gpoo@ubiobio.cl>
 
-* The shift keys will now shift upto 15 places.
- 
-* I've removed all the pixwin calls (except one) in the XView
-  driver. The colormap handling is now also done at the Xlib level.
- 
-* All the hooks are in place for the "New Constant" and "New
-  Function" entries in the constant and function menus.
+    * Added Spanish (es) to ALL_LINGUAS at configure.in
 
-----
+2003-01-08  Rich Burridge  <rich.burridge@sun.com>
 
-v3.0 - patchlevel 2. - 19th February 1990.
+    * gcalctool is now resizable again.
 
-* The mode keys are on a separate popup frame.
+2003-01-08  Andrew Sobala  <andrew@sobala.net>
 
-* The base values (BIN, OCT, DEC, HEX) are under one key with popup menu.
+    * Make calculator window choose a reasonable size at startup, and resize 
+      when changing modes.
 
-* The display values (ENG, FIX, SCI) are under one key with popup menu.
+2003-01-08  Rich Burridge  <rich.burridge@sun.com>
 
-* The size of the calculators main frames is now 9 columns x 6 rows.
+    * Removed the GNOME_UTIL_LIBS line from .../gcalctool/Makefile.am as it's
+      not needed.
 
-* RAND, TMv, HYP and INV have been moved to the scientific mode
-  frame which is now 4 columns x 4 rows. The TM is a button with
-  popup menu for the trig type values (DEG, GRAD and RAD).
+2003-01-08  Andrew Sobala  <andrew@sobala.net>
 
-* The frames no longer have resize corners. This will prevent the
-  user from resizing the calctool.
+    * Fixed "blank buttons displaying" bug. 
 
-----
+    * Added small section to configure.in that forces a "--enable-build-broken"
+      flag to have to be passed to configure in order to build gcalctool while 
+      it is still in this semi-broken state. This will be removed when most of
+      the items mentioned in the first section of the TODO file have been
+      implemented.
 
-v3.0 - patchlevel 1. - 15th February 1990.
+2003-01-08  Rich Burridge  <rich.burridge@sun.com>
 
-* Popup menus now use the default font.
+    * Updated the copyright messages to by the correct GPL ones for the various
+      source files, plus used date of 2003 (not 2002) in:
 
-* The SunView and the XView routines returned that the fonts were
-  of different widths, so I've rewritten the part of set_item that
-  shows the calculator display to use a get_strwidth, and then set
-  the string x position based on this.
+      .../ChangeLog
+      .../NEWS
+      .../README
+      .../TODO.
+      .../gcalctool/calctool.c
+      .../gcalctool/calctool.h
+      .../gcalctool/display.c
+      .../gcalctool/dsdefs.h
+      .../gcalctool/dsfuns.c
+      .../gcalctool/extern.h
+      .../gcalctool/functions.c
+      .../gcalctool/gcalctool.1
+      .../gcalctool/get.c
+      .../gcalctool/graphics.c
+      .../gcalctool/gtk.c
+      .../gcalctool/mp.c
 
-* I've implemented context sensitive help.
+    * The Financial/Logical/Scientific mode buttons have been moved into
+      the main calculator window above the Basic mode buttons.
 
-* I've implemented the ASC key. I have a philosophical problem with
-  the current implementation. It should be possible to do every
-  calctool operation solely by using the keyboard. I've implemented
-  ASC this way in this new version.
+    * Added a menubar with the following menus/items:
 
-* Updated calctool.info,rearranging the order to tie in with the
-  new button layout, and adding in help messages for all the new
-  functions.
+      File      Edit                  View              Help
+      -----------------------------------------------------------------
+      Quit      Copy                  Basic Mode        Contents...
+                Insert ASCII Value    Financial Mode    About Gcalctool
+                                      Scientific Mode
 
-* Removed all redundant code. This includes unwanted command line
-  option parsing, variables and routines associated with the help
-  file, plus others.
+                                      Memory Register
+                                      Right-handed Style
 
-* Started to tidy up the XView driver.
+      The functionality has been hooked up except for the two Help menu items.
 
-----
+    * Revamped the gcalctool design. The Basic Mode is much simpler now.
+      The Logical and Scientific modes have been combined into a single
+      Scientific mode (which also includes some of the functionality that
+      was in the previous Basic mode).
 
-v3.0 - patchlevel 0. - 14th February 1990.
+      The mode buttons are now extra button tables (and a mode panel) that get
+      shown or hidden in the main gcalctool window depending upon the current
+      mode.
 
-* New version passed over to the desktop group for comments.
+      The six item mode display has been removed. The current base, numeric
+      display type, trigonometric type, hyp and inv settings can be seen by
+      the radio buttons and check boxes in the mode panel. The current mode is
+      given in the main window title bar. The only things that's really 
+      different is that there is no longer a current operand display item.
 
-* Started 8th February 1990.
+    * Remove the small property sheet that was displayed when you right clicked
+      in the main window button area (not over a button). This had the ability
+      to set a left or right-handed style. This functionality has also been
+      removed, because with the simplification of the Basic mode, it's no 
+      longer needed. Remove the command line options and resources associated 
+      with this.
 
-====
+    * From Andrew Sobala <andrew@sobala.net>
+      Fixed bug #102698 - "make distcheck" fails. Fix was to use the correct
+      GNOME 2 autogen.sh. Also added #(schema_DATA) to the top-level
+      Makefile.am

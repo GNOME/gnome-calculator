@@ -1,0 +1,490 @@
+/*  $Header$
+ *
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
+ *  All Rights Reserved.
+ */
+
+gcalctool change history - 2002.
+================================
+
+v4.1.27 - 24th December 2002.  (richb)
+
+* Fixed bug #101782 (http://bugzilla.gnome.org/show_bug.cgi?id=101782)
+
+  Removed trailing "\n"'s where possible. Also removed a few inappropriate
+  leading spaces before newlines. Paragraphs should hopefully format better.
+
+----
+
+v4.1.26 - 24th December 2002.  (richb)
+
+* Fixed bug #101861 (http://bugzilla.gnome.org/show_bug.cgi?id=101861)
+
+  The size of the memory register window was being hard-wired. These
+  fixed values have been removed, and everything is now dynamically
+  sized. This should now work with any font.
+
+----
+
+v4.1.25 - 23th December 2002.  (richb)
+
+* Fixed bug #101867 (http://bugzilla.gnome.org/show_bug.cgi?id=101867)
+
+  Changed multiply key from "X" to "*" (same as the existing gnome-calculator).
+
+----
+
+v4.1.24 - 23th December 2002.  (richb)
+
+* Fixed bug #101780 (http://bugzilla.gnome.org/show_bug.cgi?id=101780)
+
+  Removed leading and trailing spaces from the labels for the gcalctool
+  buttons.
+
+----
+
+v4.1.23 - 23th December 2002.  (richb)
+
+* Fixed bug #101777 (http://bugzilla.gnome.org/show_bug.cgi?id=101777)
+
+  Removed trailing periods on the four window titles.
+
+----
+
+v4.1.22 - 23th December 2002.
+
+  23th December 2002 - HideToshi Tajima <hidetoshi.tajima@Sun.COM>
+	
+  * gcalctool/calctool.c:
+  	Changed _() to N_() for the strings in the structure tables.
+  * gcalctool/gtk.c:
+  	Put _() to the strings in the set_item, set_label and set_title()
+	funtcions.
+  * gcalctool/graphics.c:
+  	Put _() to the mode_buttons[] in button_str() function.
+
+----
+
+v4.1.21 - 20th December 2002.
+
+  20th December 2002 - HideToshi Tajima <hidetoshi.tajima@Sun.COM>
+	
+  * gcalctool/gtk.c:
+	Added N_() macro on GtkItemFactoryMenu.
+	Set a translation function to all of the gtk item factory objects.
+  * gcalctool/calctool.h
+	Added "config.h" in calctool.h for ENABLE_NLS.
+	Changed PACKAGE to GETTEXT_PACKAGE in dgettext().
+	Added N_ macro both for #ifdef ENABLE_NLS and the else case.
+----
+
+v4.1.20 - 10th September 2002.
+
+* [Sun Bugtraq bug #1102883 against DeskSet calctool].
+  If you enter 2 and select Inv, select Sin to get the arc sine value,
+  "Error" is displayed on the window. Do the same thing but select Cos
+  to get arc cosine value, the error message is "acos DOMAIN error",
+  which is better. Sine should have the same error message to be more
+  consistant.
+
+  Fixed this by making all error messages just display "Error" which is
+  more consistent.
+
+----
+
+v4.1.19 - 10th September 2002.
+
+* [Sun Bugtraq bug #4006391 against CDE dtcalc].
+  Bring up gcalctool, enter 10000 X 0.58 =, get answer is 5800.
+  Then click on Int button, supposely should get 5800, but the answer is 5799.
+
+  [Evaluation taken from bug #4006391:
+
+  10000 * 0.58 = 5800
+
+  The value displayed should be 5800. However the actual number calculated is
+  5799.999999999999999999999999999...
+
+  This value is stored in an array of type int, the array has 150 elements.
+  The second field tells how many fields the integer part takes up, in this 
+  case 1 as 5799 is smaller than MAX_INT. The next N cells hold the fraction 
+  part.
+
+  When we determine the Int value, we simply set the fraction part to 0, 
+  which leaves us with a value of 5799].
+
+  The fix in dtcalc for bug #4006391 is wrong. Need to set the accuracy to
+  MAX_DIGITS in mpcmim() in mp.c (not 9).
+ 
+----
+
+v4.1.18 - 10th September 2002.
+
+* [Sun Bugtraq bug #1258472 against CDE dtcalc].
+  Start up gcalctool and set to decimal and fixed. Set accuracy to 2 decimal 
+  places. Do a division like 0.19/2  It gives 0.0A
+
+  Changes to make_number() and make_fixed(). Took the fix from bug #1258472 
+  (reworked for smaller/simpler code). This introduces a min_fix 
+  two-dimensional array (accurracy/base), and if we are displaying a fixed 
+  number (that isn't 0.0), and mpFix is TRUE, then tests whether the number 
+  to be displayed is less that the appropriate min_fix value.
+
+  In make_fixed() we also test if dval is greater that base-1 and if it is,
+  then it's reset to base-1.
+
+* Removed all occurances of v->row and v->column as they are no longer
+  needed.
+
+----
+
+v4.1.17 - 10th September 2002.
+
+* [Sun Bugtraq bug #1190181 against OpenWindows DeskSet calctool].
+  gcalctool core dumped if parent directory was not readable.
+
+  Following scenario:
+
+    % cd /tmp
+    % mkdir subdir
+    % cd subdir
+    % mkdir asubdir
+    % chmod 100 .
+    % cd asubdir
+    % /home/richb/rich_stuff/gcalctool/gcalctool/gcalctool
+      Segmentation Fault (core dumped)
+
+  The problem occured because gcalctool failed to handle NULL returned
+  from getcwd().
+
+  There were two occurances, in read_rcfiles() and write_rcfile(). Have
+  added more bullet proofing to check if the return value of getcwd() is
+  NULL.
+
+----
+
+v4.1.16 - 9th September 2002.
+
+* Added all the bugs/rfe's from Sun's bugtraq database that need to be fixed
+  (and/or implemented) at sometime.
+
+* Adjusted the definition of matherr() in calctool.c so that strict ANSI C
+  compilers will compile it if _XOPEN_SOURCE is defined.
+
+* If gcalctool initially came up in BASIC mode, and you then tried to display
+  one of the other modes, the buttons in the mode window would be incorrect.
+  Needed to set v->modetype appropriately in make_mtable() in gtk.c just
+  before get_label() was called.
+
+----
+
+v4.1.15 - 9th September 2002.
+
+* With the changes made in v4.1.14, the Keys functionality no longer did 
+  the correct thing when the calculator was setup as left-handed. Changes 
+  made to do_keys() to get the correct index for the appropriate button.
+
+* If you switched hands (left/right-handed), the redisplay of the calculator
+  keys in the main window, did not take into effect whether the user was 
+  currently showing the keyboard equivalents. This was fixed by using the 
+  get_label() funcion in make_ktable() and m,ake_mtable().
+
+* Simplified the get_label() routine to no longer return the numbers of 
+  chars and spaces in the label.
+
+----
+
+v4.1.14 - 9th September 2002.
+
+* If started as left-handed (gconf key "righthanded" is "false"), and the
+  user is using the old OpenWindows colors (with the supplied gcalctoolrc
+  file), the buttons are not colored correctly.
+
+  Have adjusted the code so that the buttons are attached in the table in
+  the appropriate positions depending upon whether it's left or right handed,
+  rather than rearranging the entries in the buttons struct.
+
+----
+
+v4.1.13 - 30th August 2002.
+
+* The unused buttons in the mode window are now hidden. Doing this before
+  was a problem because it made the size of the remaining visible ones 
+  incorrect. This now works, because the GtkTable* is now created with the
+  third parameter TRUE; i.e. each button is the size of the largest one.
+
+  This also fixes the problem where not all the unused buttons on the 
+  various mode popups are colored correctly (if the user is using the 
+  old OpenWindows colors (with the supplied gcalctoolrc file). Adjusted
+  the supplied gcalctoolrc to remove the grey-bg and back-bg styles, and
+  the mode buttons that used them.
+
+----
+
+v4.1.12 - 30th August 2002.
+
+* Replaced the use of X resources with gconf schemas. Updated the manual 
+  pages to reflect this change. Note this is a minimal gconf implementation.
+  gcalctool doesn't actively look for other applications changing its
+  key/value pairs. Also all the keys are stored as strings to make it more
+  portable and easier to convert to the next resource database technology 
+  when it comes along.
+
+----
+
+v4.1.11 - 29th August 2002.
+
+* Explicitly setting the size of the calculator buttons has been removed.
+  Each button is now the size of the largest one in that table.
+
+* The width of the mode window is now set to be the width of the main
+  calculator window (the size was previously hard-wired).
+
+----
+
+v4.1.10 - 29th August 2002.
+
+* Fixes for I18N support from HideToshi Tajima <hidetoshi.tajima@sun.com>.
+  Thanks!
+
+----
+
+v4.1.9 - 24th June 2002.
+
+* Now that gcalctool is using Gtk resources to determine the appearance of 
+  the calculator, there is no need to use the custom display_frame widget. 
+  This means that the display_frame.[c,h] files are removed from the 
+  distribution.
+
+* The calculator display area now has tooltip help.
+
+----
+
+v4.1.8 - 21st June 2002.
+
+* Fixed up mistakes is the gcalctool tooltip help text (as it pertains now
+  to gcalctool rather than the old XView calctool).
+
+* Three keyboard accelerators weren't working when a "menu" button had been
+  pressed and the calculator was in pending mode:
+
+  Base button - "o" (octal).
+  Mode button - "l" (logical).
+  Trig button - "g" (gradient).
+
+  Extra code has been added to the frame_interpose() routine in gtk.c to
+  cater for keypresses when in pending mode, that aren't automatically
+  handled by existing keyboard accelerators.
+
+* The + and . keys on the numeric keypad don't work.
+  (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
+  For now, explicit code has been added to frame_interpose() in gtk.c to
+  handle these two keys. This should be removed when 79184 is fixed.
+
+----
+
+v4.1.7 - 20th June 2002.
+
+* Added in help support. Hitting the Help key will toggle whether tooltip
+  help messages are displayed for the various buttons and other widgets.
+
+  By default tooltips are disabled. Start gcalctool with the "-h" command
+  line option will enable them. There is also a "gcalctool.showhelp"
+  resource that can enable/disdable them. 
+
+  Used the text from the calctool.info file in the XView distribution for 
+  the tooltip messages.
+
+  The manual pages have been updated to reflect these changes.
+
+----
+
+v4.1.6 - 20th June 2002.
+
+* The new Constant/Function popup now has the various items aligned.
+
+----
+
+v4.1.5 - 20th June 2002.
+
+* The size of the buttons in the Mode window are incorrect if the unused ones
+  are not shown. Solved this my simply making the unused ones insnsitive, and
+  showing them all.
+
+----
+
+v4.1.4 - 19th June 2002.
+
+* Keyboard accelerators now work for the gcalctool "menu" buttons. Needed to
+  add a g_signal_connect( ... "clicked" ...) callback for all buttons, not
+  just the non-menu" buttons.
+
+----
+
+v4.1.3 - 14th June 2002.
+
+* The constant and function definitions are now read and written to a file
+  named ~/.gcalctoolcf  now (was ~/.gcalctoolrc). Manual pages also updated
+  to reflect this change.
+
+* gcalctool now also tries to read a ~/.gcalctoolrc file at startup time.
+  This file (if it exists) can contain resources for changing the appearance
+  of the application. A gcalctoolrc file is now also included with the
+  gcalctool distribution, which gives the old OpenWindows DeskSet appearance
+  to the calculator.
+
+* The ability to change various colors via X resources has also been removed.
+  The manual pages have been updated to reflect this.
+
+  This change means that all code related to colors has been removed from
+  gcalctool. color.h has been removed from the distribution.
+
+----
+
+v4.1.2 - 13th June 2002.
+
+* Removed all the code in gtk.c that was surronded by #ifdef FIXUP.
+
+* Starting gcalctool then switching hands to left-handed, then using the
+  keyboard for input wrongly associates the various keyboard accelerators
+  for the swapped keys.
+
+  Reworked the logic in set_prop_options() in gtk.c. Needed to remove the
+  keyboard accelerators for the old buttons, before the keyboard layout
+  was switched.
+
+----
+
+v4.1.1 - 13th June 2002.
+
+* Adjusted configure.in to find the X11 libraries in a platform independent
+  way.
+
+* Fixed up the gcalctool usage message. Removed command line options that 
+  are no longer applicable to the Gtk2 version.
+
+* Fixed up the gcalctool manual pages (removed calctool.1 and created a new
+  gcalctool.1). Fixes include:
+  - changing all occurances of "calctool" to "gcalctool".
+  - removing command line options that are no longer supported.
+  - removing X resources that are no longer supported.
+
+* gcalctool now looks for ~/.gcalctoolrc and ~/.gcalctooldefaults files 
+  rather than ~/.calctoolrc and ~/.calctooldefaults
+
+* X resources are not "gcalctool.<whatever" rather than "calctool.<whatever>".
+
+----
+
+v4.1.0 - 3rd May - 5th June 2002.
+
+* Started work on a Gtk2 version:
+
+  - Create an automake/autoconf environment that builts against the Solaris
+    GNOME 2 beta3 release.
+
+  - Conversion of the XView graphics to Gtk2: 
+    . Added new gtk.c source file and removed xview.c.
+    . Converted .icon files to .xbm files.
+
+    Note that the code is no longer easily portable to other graphic toolkits,
+    and now uses higher level graphic widgets. This reduced the code line 
+    count by over 5000.
+
+  - Del key wasn't being recognized. For XView was '\177'; for Gtk2 need
+    to use values in <gdk/gdkkeysyms.h>. Change needed in text.c for setting 
+    the .value entry on the button structure for the del key, to be an int 
+    not a char. Also had to adjust get_key_val to return an int. menu_entries 
+    changed to array of int's not char's.
+
+  - The Control-L keyboard accelerator (used to refresh the display) has been
+    removed. Everything is a high-level widget now, so automatic redrawing
+    should occur.
+
+  - Cut and Paste function keys now do the right thing.
+  - Switching "hands" now works from the calctool property sheet.
+
+  - Removed the "Display: [color][monochrome]" option from the property sheet,
+    fixed up the code to no longer care about this option, and removed the
+    associated command line options and X property.
+
+  - Two fprintf() statements in the mpchk() routine in mp.c did not have their
+    numeric arguments.
+
+  - Fixed up all the deprecated Gtk calls.
+    Modify CFLAGS to add:
+
+      -DG_DISABLE_DEPRECATED 
+      -DGDK_PIXBUF_DISABLE_DEPRECATED
+      -DGDK_DISABLE_DEPRECATED 
+      -DGTK_DISABLE_DEPRECATED
+
+    then fixed up the warnings and errors that were reported.
+
+  - This version placed into CVS on cvs.gnome.org as module "gcalctool".
+
+----
+
+v4.0.0 - 26th February 2002.
+
+  26th February 2002 - Rich Burridge <rich.burridge@Sun.COM>
+
+  Preparation for releasing the calctool sources to the community:
+
+  - Added "#define OWTOOLKIT_WARNING_DISABLED" to calctool_ui.c and xview.c
+
+  - Added code into calctool_ui.c from:
+
+    /net/dtserver/export/src_998/MASTER_OL3.0/external/DeskSet/V3_release:
+    .../audiotool/guide/libguidexv/group.h
+    .../audiotool/guide/libguide/guide.h
+    .../audiotool/guide/libguidexv/group_impl.h
+
+    This file also includes dummy routines for:
+
+    group_destroy()
+    group_set()
+    group_get()
+    group_init()
+
+    and a definition for group_pkg.
+
+  - Created dsdefs.h which includes definitions from:
+
+    /net/dtserver/export/src_300/PMASTER_OL300/external/DeskSet:
+    .../libdeskset/ds_popup.h
+    .../libdeskset/ds_xlib.h
+
+    Adjusted calctool_ui.c and xview.c to call this.
+
+  - Create dsfuns.c which includes code from:
+
+    /net/dtserver/export/src_300/PMASTER_OL300/external/DeskSet:
+    .../libdeskset/ds_xlib.c
+    .../libdeskset/ds_popup.c
+    .../libdeskset/ds_pathname.c
+    .../libdeskset/ds_hostname.c
+
+  - Fixed up one of the compiler warnings in xview.c
+
+  - Adjusted the build environment to use autoconf and automake.
+
+  - Moved all the image file into the .../calctool/calctool directory, and
+    adjusted calctool_ui.c, graphics.c and xview.c accordingly.
+
+  - Adjusted all the copyright notices to have dates upto 2002.
+
+  - Fixed up most of the warnings generated by the Gnu compiler and lint.
+
+  - Removed patchlevel.h and replaced it with VERSION from config.h
+
+  - Adjusted the code to K&R style.
+
+  - Removed the "calctool_" prefix on all names in calctool_ui.c and
+    calctool_ui.h (and calls in xview.c).
+
+  - Created AUTHORS, NEWS and README files.
+
+  - Adjusted the calctool manual pages to remove references to the Solaris
+    User's Guide and the note to indicate that the OpenWindows environment
+    may no longer be supported in a future release.
