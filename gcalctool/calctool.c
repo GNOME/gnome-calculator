@@ -63,8 +63,8 @@ char *mode_str[]  = {          /* Strings for each mode value. */
 };
 
 char *mstrs[] = {              /* Mode titles for the popup panel. */
-    N_("Basic Mode."),   N_("Financial Mode."),
-    N_("Logical Mode."), N_("Scientific Mode.")
+    N_("Basic Mode"),   N_("Financial Mode"),
+    N_("Logical Mode"), N_("Scientific Mode")
 };
 
 
