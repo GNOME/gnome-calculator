@@ -4,7 +4,7 @@
  *  External functions needed by calctool from the libdeskset, libguide
  *  and libguidexv libraries.
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

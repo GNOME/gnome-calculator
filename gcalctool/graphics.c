@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@
 #include <string.h>
 #include "calctool.h"
 #include "extern.h"
-#include "ce_parser.h"
-#include "lr_parser.h"
 
 
 /* Process menu selection. */
@@ -33,15 +31,22 @@
 void
 handle_menu_selection(struct button *n, int item)
 {
-    if (item != -1) {    
-        save_pending_values(n);
-        if (v->current != NULL) {
-	    free(v->current);
+    if (item != -1) {
+        if (IS_KEY(v->pending, KEY_LPAR.value[0])) {  /* Inside parentheses? */
+            v->current->value[0] = n->value[0];
+            do_paren();
+            v->current->value[0] = item;
+            do_paren();
+        } else {
+            save_pending_values(n);
+            if (v->current != NULL) {
+                free(v->current);
+            }
+            v->current = copy_button_info(button_for_value(item));
+            v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
+            do_pending();
+            v->ismenu = 0;
         }
-        v->current = copy_button_info(button_for_value(item));
-        v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
-        do_pending();
-        v->ismenu = 0;
         v->down = 0;
     }
 }
@@ -59,7 +64,7 @@ make_registers()            /* Calculate memory register frame values. */
         mval = make_number(v->MPmvals[n], v->base, FALSE, TRUE);
 	SPRINTF(fmt, "<span weight=\"bold\">%s%s%%%1ds", 
                 _("R"), "%1d:</span>   %s", MAX_DIGITS - strlen(mval));
-       SPRINTF(line, fmt, n, mval, " ");
+        SPRINTF(line, fmt, n, mval, " ");
         make_reg(n, line);
     }
 }
@@ -108,9 +113,30 @@ process_stack(int startop,      /* Initial position in the operand stack. */
 }
 
 
-/* XXX: is this routine needed anymore? */
-
 void
 process_str(char *str)
 {
+    struct button *current;
+    int i, len;
+
+    if (str == NULL) {
+        return;
+    }
+
+    len = strlen(str);
+    for (i = 0; i < len; i++) {
+        if (v->error) {
+            return;
+        }
+        if (v->pending) {
+            if ((current = button_for_fc(str[i])) != NULL) {
+                v->current = copy_button_info(current);
+                do_pending();
+            }
+        } else {
+            if ((current = button_for_fc(str[i])) != NULL) {
+                process_item(current);
+            }
+        }
+    }
 }

@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,8 +25,6 @@
 #include <sys/types.h>
 #include "calctool.h"
 #include <gdk/gdkkeysyms.h>
-
-#include "functions.h"
 
 time_t time();
 
@@ -62,7 +60,7 @@ char *base_desc[]  = {         /* Tooltips for each base value. */
 
 char *calc_res[] = {
     "accuracy", "base", "display", "mode", "showregisters", "trigtype",
-    "showzeroes", "showthousands", "syntax"
+    "showzeroes", "showthousands"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
@@ -79,13 +77,13 @@ char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
 char *inv_desc = N_("Set inverse option for trigonometric functions");
 
 char *mode_str[]  = {          /* Strings for each mode value. */
-    N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC"), N_("SCIENTIFIC_EXP")
+    N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC")
 };
 
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-    N_("Basic Mode"), N_("Financial Mode"), 
-    N_("Scientific Mode"), N_("Expression Mode")
+    N_("Basic Mode"), N_("Financial Mode"), N_("Scientific Mode")
 };
+
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
     N_("De_grees"), N_("Gr_adians"), N_("_Radians")
@@ -105,11 +103,8 @@ int basevals[4] = { 2, 8, 10, 16 };
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", 
-                              "SCIENTIFIC", "SCIENTIFIC_EXP" };
+char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
-char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
-
 
 /* Valid keys when an error condition has occured. */
 /*                           Clr */
@@ -150,9 +145,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_7, GDK_7,          GDK_KP_7, GDK_KP_Home, GDK_R7, 0 },
     '7',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("8"),
@@ -162,9 +155,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_8, GDK_8,          GDK_KP_8, GDK_KP_Up, 0 },
     '8',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("9"),
@@ -174,9 +165,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_9, GDK_9,          GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 },
     '9',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {    
     N_("/"),
@@ -186,21 +175,17 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_slash, GDK_slash,      GDK_KP_Divide, GDK_R5, GDK_slash,      0 },
     '/',
     M_NONE,
-    do_calc,
-    N_("/"),
-    binop
+    do_calc
 },
 {
-    N_("("),
-    N_("Start group of calculations"),
-    N_("Left bracket"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenleft, 0 },
-    '(',
-    M_NONE,
-    do_paren,
+    "    ",
+    "    ",
     NULL,
-    parenthesis
+    { 0, 0 },
+    { 0, 0 },
+    ' ',
+    M_NONE,
+    do_none
 },
 {
     N_("Bksp"),
@@ -210,9 +195,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_BackSpace, 0 },
     '\010',
     M_NONE,
-    do_delete,
-    NULL,
-    bsp
+    do_delete
 },
 {
     N_("CE"),
@@ -222,9 +205,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_BackSpace,    GDK_Escape, 0 },
     '\013',
     M_NONE,
-    do_clear_entry,
-    NULL,
-    clear
+    do_clear_entry
 },
 {
     N_("Clr"),
@@ -234,9 +215,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_Delete, 0 },
     '\177',
     M_NONE,
-    do_clear,
-    NULL,
-    clear
+    do_clear
 },
 
 /* Row 2. */
@@ -248,9 +227,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_4, GDK_4,          GDK_KP_4, GDK_KP_Left, 0 },
     '4',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("5"),
@@ -260,9 +237,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_5, GDK_5,          GDK_KP_5, GDK_KP_Begin, GDK_R11, 0 },
     '5',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("6"),
@@ -272,9 +247,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_6, GDK_6,          GDK_KP_6, GDK_KP_Right, 0 },
     '6',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("*"),
@@ -284,57 +257,47 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_asterisk,   GDK_KP_Multiply, GDK_x, GDK_R6, 0 },
     '*',
     M_NONE,
-    do_calc,
-    N_("*"),
-    binop
+    do_calc
 },
 {
-    N_(")"),
-    N_("End group of calculations"),
-    N_("Right bracket"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenright, 0 },
-    ')',
-    M_NONE,
-    do_paren,
+    "    ",
+    "    ",
     NULL,
-    parenthesis
+    { 0, 0 },
+    { 0, 0 },
+    ' ',
+    M_NONE,
+    do_none
 },
 {
     N_("+/-"),
-    N_("Change sign [c]"),
+    N_("Change sign"),
     NULL,
     { 0,     0 },
     { GDK_c, 0 },
     'c',
     M_NONE,
-    do_immed, 
-    N_("Chs"),
-    neg
+    do_immed
 },
 {
     N_("Int"),
-    N_("Integer portion of displayed value [i]"),
+    N_("Integer portion of displayed value"),
     N_("Integer portion"),
     { 0, 0 },
     { GDK_i, 0 },
     'i',
     M_NONE,
-    do_portion,
-    NULL,
-    func
+    do_portion
 },
 {
     N_("Sto"),
-    N_("Store displayed value in memory register [S]"),
+    N_("Store displayed value in memory register"),
     N_("Store to register"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_S, 0 },
     'S',
     M_STO,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 
 /* Row 3. */
@@ -346,9 +309,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_1, GDK_1,          GDK_KP_1, GDK_KP_End, GDK_R13, 0 },
     '1',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("2"),
@@ -358,9 +319,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_2, GDK_2,          GDK_KP_2, GDK_KP_Down, 0 },
     '2',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },    
 {     
     N_("3"),
@@ -370,9 +329,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_3, GDK_3,          GDK_KP_3, GDK_KP_Page_Down, GDK_R15, 0 },
     '3',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {
     N_("-"),
@@ -382,9 +339,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 },
     '-',
     M_NONE,
-    do_calc,
-    NULL,
-    unop | binop
+    do_calc
 },
 {
     N_("%"),
@@ -394,45 +349,37 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_percent, 0 },
     '%',
     M_NONE,
-    do_immed,  
-    NULL,
-    immediate
+    do_calc
 },
 {
     N_("Sqrt"),
-    N_("Square root [s]"),
+    N_("Square root"),
     NULL,
     { 0, 0 },   
     { GDK_s, 0 },
     's',
     M_NONE,
-    do_immed, 
-    NULL,
-    func
+    do_immed
 },
 {
     N_("Frac"),
-    N_("Fractional portion of displayed value [:]"),
+    N_("Fractional portion of displayed value"),
     N_("Fractional portion"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_colon, 0 },
     ':',
     M_NONE,
-    do_portion,
-    NULL,
-    func  
+    do_portion
 },
 {
     N_("Rcl"),
-    N_("Retrieve memory register to display [R]"),
+    N_("Retrieve memory register to display"),
     N_("Retrieve from register"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_R, 0 },
     'R',
     M_RCL,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 
 /* Row 4. */
@@ -444,9 +391,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_0, GDK_0,          GDK_KP_0, GDK_KP_Insert, 0 },
     '0',
     M_NONE,
-    do_number,
-    NULL,
-    number
+    do_number
 },
 {    
     N_("."),
@@ -456,9 +401,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 },
     '.',
     M_NONE,
-    do_point,
-    NULL,
-    number
+    do_point
 },
 {
     N_("="),
@@ -468,9 +411,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_equal, GDK_KP_Enter, GDK_Return, GDK_equal,      0 },
     '=',
     M_NONE,
-    do_calc,
-    NULL,
-    enter
+    do_calc
 },
 {
     N_("+"),
@@ -480,57 +421,47 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_plus,       GDK_plus, GDK_KP_Add, 0 },
     '+',
     M_NONE,
-    do_calc,
-    NULL,
-    binop
+    do_calc
 },
 {
-  N_("1/<i>x</i>"),
-    N_("Reciprocal [r]"),
+    N_("1/<i>x</i>"),
+    N_("Reciprocal"),
     NULL,
     { 0, 0 },
     { GDK_r, 0 },
     'r',
     M_NONE,
-    do_immed, 
-    N_("Recip"),
-    inv
+    do_immed
 },
 {
     N_("<i>x</i><sup>2</sup>"),
-    N_("Square [@]"),
+    N_("Square"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_at, 0 },
     '@',
     M_NONE,
-    do_immed,  
-    N_("^2"),
-    immediate | postfixop
+    do_immed
 },
 {
     N_("Abs"),
-    N_("Absolute value [u]"),
+    N_("Absolute value"),
     NULL,
     { 0, 0 },
     { GDK_u, 0 },
     'u',
     M_NONE,
-    do_portion,
-    NULL,
-    func
+    do_portion
 },
 {
     N_("Exch"),
-    N_("Exchange displayed value with memory register [X]"),
+    N_("Exchange displayed value with memory register"),
     N_("Exchange with register"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_X, 0 },
     'X',
     M_EXCH,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 };
 
@@ -550,113 +481,95 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 
 {
     N_("Ctrm"),
-    N_("Compounding term [m]"),
+    N_("Compounding term"),
     NULL,
     { 0, 0 },
     { GDK_m, 0 },
     'm',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Ddb"),
-    N_("Double-declining depreciation [d]"),
+    N_("Double-declining depreciation"),
     NULL,
     { 0,     0 },
     { GDK_d, 0 },
     'd',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Fv"),
-    N_("Future value [v]"),
+    N_("Future value"),
     NULL,
     { 0, 0 },
     { GDK_v, 0 },
     'v',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Pmt"),
-    N_("Periodic payment [P]"),
+    N_("Periodic payment"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_P, 0 },
     'P',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Pv"),
-    N_("Present value [p]"),
+    N_("Present value"),
     NULL,
     { 0, 0 },
     { GDK_p, 0 },
     'p',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Rate"),
-    N_("Periodic interest rate [T]"),
+    N_("Periodic interest rate"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_T, 0 },
     'T',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 {
     N_("Sln"),
-    N_("Straight-line depreciation [l]"),
+    N_("Straight-line depreciation"),
     NULL,
     { 0, 0 },
     { GDK_l, 0 },
     'l',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 { 
     N_("Syd"),
-    N_("Sum-of-the years'-digits depreciation [Y]"),
+    N_("Sum-of-the years'-digits depreciation"),
     NULL,
     { 0, 0 },
     { GDK_Y, 0 },
     'Y',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 
 /* Row 2. */
 { 
     N_("Term"),
-    N_("Payment period [T]"),
+    N_("Payment period"),
     NULL,
     { 0, 0 },
     { GDK_T, 0 },
     'T',
     M_NONE,
-    do_business,
-    NULL,
-    none
+    do_business
 },
 { 
     "    ",
@@ -666,9 +579,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 { 
     "    ",
@@ -678,9 +589,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 { 
     "    ",
@@ -690,9 +599,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 { 
     "    ",
@@ -702,9 +609,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 { 
     "    ",
@@ -714,9 +619,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 { 
     "    ",
@@ -726,9 +629,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 {
     "    ",
@@ -738,9 +639,7 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 };
 
@@ -766,9 +665,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_less, 0 },
     '<',
     M_LSHF,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 {
     N_(">"),
@@ -778,33 +675,27 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_greater, 0 },
     '>',
     M_RSHF,   
-    do_pending,
-    NULL,
-    none
+    do_pending
 },            
 {             
     N_("&amp;16"),
-    N_("16-bit unsigned integer value of display (])"),
+    N_("16-bit unsigned integer value of display"),
     N_("16 bit unsigned integer"),
     { 0, 0 },        
     { GDK_bracketright, 0 },
     ']',
     M_NONE,   
-    do_immed,  
-    N_("u16"),
-    func
+    do_immed  
 },            
 {             
     N_("&amp;32"),
-    N_("32-bit unsigned integer value of display ([)"),
+    N_("32-bit unsigned integer value of display"),
     N_("32 bit unsigned integer"),
     { 0, 0 },
     { GDK_bracketleft, 0 },
     '[',
     M_NONE,
-    do_immed,  
-    N_("u32"),
-    func
+    do_immed
 },
 {
     "    ",
@@ -814,143 +705,119 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { 0, 0 },
     ' ',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_none
 },
 {
-    "    ",
-    "    ",
-    NULL,
-    { 0, 0 },
-    { 0, 0 },
-    ' ',
+    N_("("),
+    N_("Start group of calculations"),
+    N_("Left bracket"),
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_parenleft, 0 },
+    '(',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_paren
 },
 {
-    "    ",
-    "    ",
-    NULL,
-    { 0, 0 },
-    { 0, 0 },
-    ' ',
+    N_(")"),
+    N_("End group of calculations"),
+    N_("Right bracket"),
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_parenright, 0 },
+    ')',
     M_NONE,
-    do_none,
-    NULL,
-    none
+    do_paren
 },
 {
     N_("Acc"),
-    N_("Set accuracy from 0 to 9 numeric places [a]"),
+    N_("Set accuracy from 0 to 9 numeric places"),
     N_("Accuracy"),
     { 0,     0 },
     { GDK_a, 0 },
     'a',
     M_ACC,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 
 /* Row 2. */
 {
     N_("Con"),
-    N_("Constants [#]"),
+    N_("Constants"),
     NULL,
     { GDK_SHIFT_MASK, 0 },   
     { GDK_numbersign, 0 },   
     '#',
     M_CON,            
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 {
     N_("Fun"),
-    N_("User-defined functions [f]"),
+    N_("User-defined functions"),
     NULL,
     { 0,     0 },
     { GDK_f, 0 },
     'f',
     M_FUN,
-    do_pending,
-    NULL,
-    none
+    do_pending
 },
 {
     N_("Exp"),
-    N_("Enter an exponential number [e]"),
+    N_("Enter an exponential number"),
     N_("Exponential"),
     { 0,     0 },
     { GDK_e, 0 },
     'e',
     M_NONE,
-    do_expno,
-    N_("*10^"),
-    expnum
+    do_expno
 },
 {
     N_("e<sup><i>x</i></sup>"),
-    N_("e to the power of displayed value [{]"),
+    N_("e to the power of displayed value"),
     N_("E to the x"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceleft, 0 },
     '{',
     M_NONE,
-    do_immed, 
-    N_("e^"),
-    immediate | prefixop
+    do_immed
 },
 {
     N_("10<sup><i>x</i></sup>"),
-    N_("10 to the power of displayed value [}]"),
+    N_("10 to the power of displayed value"),
     N_("Ten to the x"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceright, 0 },
     '}',
     M_NONE,
-    do_immed, 
-    N_("10^"),
-    prefixop
+    do_immed
 },       
 {        
     N_("<i>x</i><sup><i>y</i></sup>"),
-    N_("Raise displayed value to the power of y [y]"),
+    N_("Raise displayed value to the power of y"),
     N_("X to the y"),
     { 0, 0 },   
     { GDK_y, 0 },
     'y',
     M_NONE,
-    do_calc,
-    N_("^"),
-    binop | postfixop
+    do_calc
 },       
 {        
     N_("<i>x</i>!"),
-    N_("Factorial of displayed value [!]"),
+    N_("Factorial of displayed value"),
     N_("Factorial"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_exclam, 0 },
     '!',
     M_NONE,
-    do_immed, 
-    N_("!"),
-    immediate | postfixop
+    do_immed
 },
 {
     N_("Rand"),
-    N_("Random number in the range 0.0 to 1.0 [?]"),
+    N_("Random number in the range 0.0 to 1.0"),
     N_("Random number"),
     { GDK_SHIFT_MASK, 0 },
     { GDK_question, 0 },
     '?',
     M_NONE,
-    do_immed, 
-    NULL,
-    none
+    do_immed
 },
 
 /* Row 3. */
@@ -962,9 +829,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_D,          0 },
     'D',
     M_NONE,
-    do_number,
-    NULL,
-    none
+    do_number
 },
 {
     N_("E"),
@@ -974,9 +839,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_E,          0 },
     'E',
     M_NONE,
-    do_number,
-    NULL,
-    none
+    do_number
 },
 {
     N_("F"),
@@ -986,69 +849,57 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_F,          0 },
     'F',
     M_NONE,
-    do_number,
-    NULL,
-    none
+    do_number
 },
 {
     N_("Cos"),
-    N_("Cosine [J]"),
+    N_("Cosine"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_J, 0 },
     'J',
     M_NONE,
-    do_trig,
-    NULL,
-    func
+    do_trig
 },
 {
     N_("Sin"),
-    N_("Sine [K]"),
+    N_("Sine"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_K, 0 },
     'K',
     M_NONE,
-    do_trig,
-    NULL,
-    func
+    do_trig
 },
 {        
     N_("Tan"),
-    N_("Tangent [L]"),
+    N_("Tangent"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_L, 0 },
     'L',
     M_NONE,
-    do_trig,
-    NULL,  
-    func
+    do_trig
 },     
 {      
     N_("Ln"),
-    N_("Natural log [N]"),
+    N_("Natural log"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_N, 0 },
     'N',
     M_NONE,
-    do_immed, 
-    NULL,
-    func
+    do_immed
 },
 { 
     N_("Log"),
-    N_("Base 10 log [G]"),
+    N_("Base 10 log"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_G, 0 },
     'G',
     M_NONE,
-    do_immed, 
-    NULL,
-    func
+    do_immed
 },
 
 /* Row 4. */
@@ -1060,9 +911,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_A,          0 },
     'A',
     M_NONE,
-    do_number,
-    NULL,
-    none
+    do_number
 },
 {
     N_("B"),
@@ -1072,8 +921,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_B,          0 },
     'B',
     M_NONE,
-    do_number,
-    NULL
+    do_number
 },    
 {     
     N_("C"),
@@ -1083,79 +931,66 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_C,          0 },
     'C',
     M_NONE,
-    do_number,
-    NULL,
-    none
+    do_number
 },
 {
     N_("Or"),
     N_("Bitwise OR"),
-    "bitwise OR [!]",
+    "bitwise OR",
     { GDK_SHIFT_MASK, 0 },
     { GDK_bar, 0 },
     '|',
     M_NONE,
-    do_calc,
-    N_(" Or "),
-    binop
+    do_calc
 },
 {
     N_("And"),
-    N_("Bitwise AND [&]"),
+    N_("Bitwise AND"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_ampersand, 0 },
     '&',
     M_NONE,
-    do_calc,
-    N_(" And "),
-    binop
+    do_calc
 },       
 {        
     N_("Not"),
-    N_("Bitwise NOT [~]"),
+    N_("Bitwise NOT"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_asciitilde, 0 },
     '~',
     M_NONE,
-    do_immed, 
-    N_("~"),
-    unop | immediate
+    do_immed
 },
 {
     N_("Xor"),
-    N_("Bitwise XOR [^]"),
+    N_("Bitwise XOR"),
     NULL,
     { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
     { GDK_caret,      GDK_asciicircum, 0 },
     '^',
     M_NONE,
-    do_calc,
-    N_(" Xor "),
-    binop
+    do_calc
 },
 {
     N_("Xnor"),
-    N_("Bitwise XNOR [n]"),
+    N_("Bitwise XNOR"),
     NULL,
     { 0, 0 },
     { GDK_n, 0 },
     'n',
     M_NONE,
-    do_calc,
-    N_(" Xnor "),
-    binop
+    do_calc
 },
 };
+
 
 void
 do_calctool(int argc, char **argv)
 {
     char *ptr, title[MAXLINE];
     int i;
-
-    build_word_map();          /* Initialize i18n. */
 
     v->progname = argv[0];     /* Save programs name. */
     v->appname  = NULL;
@@ -1214,11 +1049,10 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) v->modetype]));
+    SPRINTF(title, "%s- %s", v->tool_label, _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
-
     start_tool();                    /* Display the calculator. */
 }
 
@@ -1249,10 +1083,8 @@ init_text()         /* Setup constant strings. */
     STRCPY(v->con_names[5], _("degrees in a radian"));
     STRCPY(v->con_names[6], _("2 ^ 20"));
     STRCPY(v->con_names[7], _("Gram-to-ounce conversion factor"));
-    STRCPY(v->con_names[8], 
-           _("Kilojoule-to-British-thermal-unit conversion factor"));
-    STRCPY(v->con_names[9], 
-           _("Cubic-centimeter-to-cubic-inch conversion factor"));
+    STRCPY(v->con_names[8], _("Kilojoule-to-British-thermal-unit conversion factor"));
+    STRCPY(v->con_names[9], _("Cubic-centimeter-to-cubic-inch conversion factor"));
 }
 
 

@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  *  02111-1307, USA.
  */
+
 #include "config.h"
 
 #include <stdio.h>
@@ -35,7 +36,6 @@
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gconf/gconf-client.h>
-#include "ce_parser.h"
 
 #define BUT_0     X->bas_buttons[24]       /* 0 */
 #define BUT_1     X->bas_buttons[16]       /* 1 */
@@ -77,11 +77,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GdkPixbuf *icon;                   /* Main window icon. */
     GtkWidget *menubar;
     GtkWidget *mode_panel;
-
-    GtkWidget *khbox;                  /* Box containing statusbar and image */
-    GtkWidget *status_image;           /* Statusbar image */
-    GtkWidget *statusbar; 
-
     GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *regs[MAXREGS];          /* Memory registers. */
@@ -167,25 +162,16 @@ static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
 static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
-static void gcalc_window_have_icons_notify (GConfClient *client,
-                                            guint cnxn_id,
-                                            GConfEntry *entry,
-                                            gpointer data);
-static void gcalc_window_get_menu_items (XVars X);
-static void gcalc_window_set_unset_image (gboolean have_icons);
 
-#define MENU_KEY_DIR "/desktop/gnome/interface"
-
-static GSList *list;
 static XVars X;
 
 /* Menubar menus. */
 
 static GtkActionEntry entries[] = {
-    { "CalculatorMenu", NULL, N_("_Calculator") },
-    { "EditMenu",       NULL, N_("_Edit") },
-    { "ViewMenu",       NULL, N_("_View") },
-    { "HelpMenu",       NULL, N_("_Help") },
+    { "CalculatorMenu", NULL, "_Calculator" },
+    { "EditMenu",       NULL, "_Edit" },
+    { "ViewMenu",       NULL, "_View" },
+    { "HelpMenu",       NULL, "_Help" },
 
     { "Quit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
       N_("Quit the calculator"), G_CALLBACK(mb_proc) },
@@ -273,10 +259,9 @@ static GtkToggleActionEntry toggle_entries[] = {
       N_("Show thousands separator"), G_CALLBACK(ts_proc),   FALSE },
     { "Memory",    NULL, N_("_Memory Registers"),         "<control>M",
       N_("Show memory registers"),    G_CALLBACK(mb_proc),   FALSE },
+
     { "Show",      NULL, N_("Show _Trailing Zeroes"),     "<control>T",
       N_("Show trailing zeroes"),     G_CALLBACK(astz_proc), FALSE },
-    { "ArithmeticPrecedence", NULL, N_("_Use Arithmetic Precedence"), "<control>U",
-      N_("Use Arithmetic Precedence"), G_CALLBACK(mb_proc), FALSE },
 };
 static guint n_toggle_entries = G_N_ELEMENTS(toggle_entries);
 
@@ -312,8 +297,8 @@ static GtkRadioActionEntry base_radio_entries[] = {
   { "Scientific", NULL, N_("_Scientific mode"), "<control>S",
     N_("Scientific mode"), M_SCI },
 };
-
 static guint n_base_radio_entries = G_N_ELEMENTS(base_radio_entries);
+
 
 static const gchar *ui_info =
 "<ui>"
@@ -336,8 +321,6 @@ static const gchar *ui_info =
 "      <menuitem action='Thousands'/>"
 "      <separator/>"
 "      <menuitem action='Memory'/>"
-"      <separator/>"
-"      <menuitem action='ArithmeticPrecedence'/>"
 "    </menu>"
 "    <menu action='HelpMenu'>"
 "      <menuitem action='Contents'/>"
@@ -434,21 +417,9 @@ main(int argc, char **argv)
 
     do_calctool(argc, argv);
 
-    return 0;
-}
+    return(0);
 
-
-void 
-update_statusbar(gchar *text, const gchar *imagename)
-{
-  assert(text);
-  assert(imagename);
-
-  GtkImage *image = GTK_IMAGE(X->status_image);
-  assert(image);
-  gtk_image_set_from_stock(image, imagename, GTK_ICON_SIZE_BUTTON);
-  gtk_statusbar_pop(GTK_STATUSBAR(X->statusbar), 0);
-  gtk_statusbar_push(GTK_STATUSBAR(X->statusbar), 0, text); 
+/*NOTREACHED*/
 }
 
 
@@ -459,7 +430,7 @@ about_cb(GtkAction *action)
 
     if (about == NULL) {
         const gchar *authors[] = {
-            "Rich Burridge <rich.burridge@sun.com>\nSami Pietila <sampie@ariana-dsl.utu.fi>",
+            "Rich Burridge <rich.burridge@sun.com>",
             NULL
         };
         const gchar *documenters[] = {
@@ -468,9 +439,8 @@ about_cb(GtkAction *action)
         };
         const gchar *translator_credits = _("translator_credits");
 
-        about = gnome_about_new(_("Gcalctool"),
-                       VERSION,
-                       "(C) 2004 the Free Software Foundation",
+        about = gnome_about_new(_("Gcalctool"), VERSION,
+                       "(C) 2003 the Free Software Foundation",
                        _("Calculator with financial and scientific modes."),
                        authors,
                        documenters,
@@ -512,6 +482,7 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
                                                 NULL);
     }
 }
+
 
 /*ARGSUSED*/
 static void
@@ -633,31 +604,19 @@ button_proc(GtkButton *widget, gpointer user_data)
     struct button *n;
 
     n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+    if (v->pending) {
+        if (v->current != NULL) {
+            free(v->current);
+        }
+        v->current = copy_button_info(n);
+        do_pending();
+    } else {
+        process_item(n);
+    }
 
-    switch (v->syntax) {
-        case npa:
-            if (v->pending) {
-                if (v->current != NULL) {
-	            free(v->current);
-                }
-                v->current = copy_button_info(n);
-                do_pending();
-            } else {
-                process_item(n);
-            }
-            if (v->new_input && v->dtype == FIX) {
-                STRCPY(v->fnum, v->display);
-                set_display(v->fnum, FALSE);
-            }
-            break;
-
-        case exprs:
-            v->current = copy_button_info(n);
-            do_expression();
-            break;
-
-        default:
-            assert(0);
+    if (v->new_input && v->dtype == FIX) {
+        STRCPY(v->fnum, v->display);
+        set_display(v->fnum, FALSE);
     }
 }
 
@@ -966,77 +925,6 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
-/* action_image[] is a list of Actions which are having icons associated.
- * We need to set/unset the icons if /desktop/gnome/interface/menus_have_icons
- * toggles.
- */
-
-static void
-gcalc_window_get_menu_items(XVars X)
-{
-    GtkAction *act;
-    GSList *p = NULL;
-    gint i = 0;
-    static gchar *action_image[] = { "Quit", "Copy", "Paste", 
-                                     "Contents", "About", NULL };
-
-    while (action_image[i]) {
-        act = gtk_action_group_get_action (X->actions, action_image[i]);
-        p = gtk_action_get_proxies (GTK_ACTION (act));
-
-        for (; p; p = p->next) {
-            if (p->data) {
-                if (GTK_IS_MENU_ITEM (p->data)) {
-                    list = g_slist_append (list, p->data);
-                }
-            }
-        }
-
-        i ++;
-    }
-}
-
-
-static void
-gcalc_window_have_icons_notify(GConfClient *client, guint cnxn_id,
-                               GConfEntry *entry, gpointer data)
-{
-    gcalc_window_set_unset_image(gconf_client_get_bool(client, 
-                                 MENU_KEY_DIR"/menus_have_icons", NULL));
-}
-
-
-static void
-gcalc_window_set_unset_image(gboolean have_icons)
-{
-    GtkWidget *image;
-    GSList *temp = list;
-
-    while (temp) {
-        image = gtk_image_menu_item_get_image(GTK_IMAGE_MENU_ITEM(temp->data));
-
-        if (image && ! g_object_get_data(G_OBJECT(temp->data), "saved_image")) {
-            g_object_set_data_full(G_OBJECT(temp->data), "saved_image", 
-                                   g_object_ref(image), g_object_unref);
-        }
-
-        if (!image) {
-            image = g_object_get_data(G_OBJECT(temp->data), "saved_image");
-        }
-
-        if (!have_icons) {
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(temp->data), 
-                                          NULL);
-        } else {
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(temp->data), 
-                                          image);
-        }
-
-        temp = temp->next;
-    }
-}
-
-
 void
 create_kframe()
 {
@@ -1070,7 +958,6 @@ create_kframe()
     gtk_widget_show(X->kvbox);
 
     X->actions = gtk_action_group_new("Actions");
-    gtk_action_group_set_translation_domain (X->actions, NULL);
     gtk_action_group_add_actions(X->actions, entries, n_entries, NULL);
     gtk_action_group_add_toggle_actions(X->actions,
                                         toggle_entries, n_toggle_entries,
@@ -1098,21 +985,13 @@ create_kframe()
     gtk_widget_show(X->menubar);
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
-
-    GtkWidget *scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
-    gtk_widget_show(scrolledwindow);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW (scrolledwindow), 
-				   GTK_POLICY_ALWAYS, 
-				   GTK_POLICY_NEVER);
-
-
     event_box = gtk_event_box_new();
     X->display_item = gtk_text_view_new();
     gtk_widget_set_name(X->display_item, "displayitem");
 
     gtk_text_view_set_justification(GTK_TEXT_VIEW(X->display_item),
                                     GTK_JUSTIFY_RIGHT);
-    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(X->display_item), GTK_WRAP_NONE);
+    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(X->display_item), GTK_WRAP_WORD);
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_create_tag(buffer, "x-large", "scale", PANGO_SCALE_X_LARGE, 
                                NULL);			       
@@ -1121,18 +1000,15 @@ create_kframe()
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), FALSE);
     GTK_WIDGET_SET_FLAGS(X->display_item, GTK_CAN_FOCUS);
 
-    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(X->display_item), 8);
-    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 8);
+    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(X->display_item), 12);
+    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 12);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(X->display_item), 6);
 
-    gtk_container_add(GTK_CONTAINER(scrolledwindow), X->display_item);
-    atk_object_set_role(gtk_widget_get_accessible(X->display_item), 
-                                                  ATK_ROLE_EDITBAR);
+    atk_object_set_role (gtk_widget_get_accessible (X->display_item), ATK_ROLE_EDITBAR);
     set_display("0.00", FALSE);
-
     gtk_widget_ref(X->display_item);
     gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
-    gtk_container_add(GTK_CONTAINER(event_box), scrolledwindow);
+    gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
     gtk_widget_show(X->display_item);
     gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, FALSE, TRUE, 0);
     gtk_widget_show(event_box);
@@ -1160,18 +1036,6 @@ create_kframe()
     gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
     gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR));
 
-    X->khbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(X->khbox);
-    gtk_container_add(GTK_CONTAINER(X->kvbox), X->khbox);
-    X->statusbar = gtk_statusbar_new();
-    gtk_widget_show(X->statusbar);
-    gtk_box_pack_start(GTK_BOX(X->khbox), X->statusbar, TRUE, TRUE, 0);
-    gtk_statusbar_set_has_resize_grip(GTK_STATUSBAR(X->statusbar), FALSE);
-
-    X->status_image = gtk_image_new_from_stock("", 
-					       GTK_ICON_SIZE_BUTTON);
-    gtk_widget_show(X->status_image);
-    gtk_box_pack_start(GTK_BOX(X->khbox), X->status_image, FALSE, TRUE, 0);
     g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
                      G_CALLBACK(kframe_key_press_cb), NULL);
 
@@ -1180,36 +1044,16 @@ create_kframe()
             view_widget = gtk_ui_manager_get_widget(X->ui, 
                                               "/MenuBar/ViewMenu/Financial");
             break;
-
         case SCIENTIFIC:
             view_widget = gtk_ui_manager_get_widget(X->ui, 
                                               "/MenuBar/ViewMenu/Scientific");
             break;
-
         default:
             view_widget = gtk_ui_manager_get_widget(X->ui, 
                                               "/MenuBar/ViewMenu/Basic");
             break;
     }
-
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
-    gcalc_window_get_menu_items(X);
-
-    gconf_client_add_dir(X->client, MENU_KEY_DIR,
-                         GCONF_CLIENT_PRELOAD_NONE, NULL);
-    gconf_client_notify_add(X->client, MENU_KEY_DIR"/menus_have_icons",
-                            (GConfClientNotifyFunc) 
-                                gcalc_window_have_icons_notify,
-                             NULL, NULL, NULL);
-    gcalc_window_set_unset_image(gconf_client_get_bool(X->client, 
-                                 MENU_KEY_DIR"/menus_have_icons", NULL));
-
-    /* Use loaded Arithmetic Precedence mode setting. */
-    if (v->syntax == exprs) {
-        view_widget = gtk_ui_manager_get_widget(X->ui, 
-                                    "/MenuBar/ViewMenu/ArithmeticPrecedence");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
-    }
 }
 
 
@@ -1433,8 +1277,8 @@ create_con_fun_menu(enum menu_type mtype)
             if (!strlen(v->fun_vals[i])) {
                 invalid = 1;
             } else {
-	      SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
-		      _("F"), i, v->fun_vals[i], v->fun_names[i]);
+                SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
+                        _("F"), i, v->fun_vals[i], v->fun_names[i]);
             }
         }
 
@@ -1692,9 +1536,11 @@ check_vals(int n, int keyval, int state,
     return(FALSE);
 }
 
+
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
+    GtkWidget *focus;
     int retval = FALSE;
 
     if (check_for_localized_numeric_point(event->keyval) == TRUE) {
@@ -1727,8 +1573,9 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
             break;
     }
 
-    return retval;
+    return(retval);
 }
+
 
 void
 load_resources()        /* Load gconf configuration database for gcalctool. */
@@ -1906,7 +1753,6 @@ create_menu(enum menu_type mtype, struct button *n)
 
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[m]), 1);
     X->mrec[m] = n;
-
     return(X->menus[m]);
 }
 
@@ -1918,7 +1764,6 @@ menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
     int mtype = (int) g_object_get_data(G_OBJECT(mi), "mtype");
 
     v->current->value[0] = '0' + (int) user_data;
-    
     handle_menu_selection(X->mrec[mtype], v->current->value[0]);
 }
 
@@ -2002,36 +1847,6 @@ make_menu_button(gchar *label_text, int n)
 }
 
 
-static void
-toggle_expressions()
-{
-    /* TODO: Always do clear things when mode is changed. */
-
-    v->syntax = v->syntax ^ 1;
-    switch (v->syntax) {
-        case npa:
-            v->noparens = 0;
-            MPstr_to_num("0", DEC, v->MPdisp_val);
-            show_display(v->MPdisp_val);
-            update_statusbar(_("Activated no operator precedence mode"), "");
-            break;
-
-        case exprs:
-            v->e.calc_complete = 0;
-            MPstr_to_num("0", DEC, v->e.ans);
-            exp_del();
-            show_display(v->e.ans);
-            update_statusbar(
-                _("Activated expression mode with operator precedence"), "");
-            break;
-
-        default:
-            assert(0);
-    }
-    put_resource(R_SYNTAX, Rsstr[v->syntax]);
-}
-
-
 /* Handle menu bar menu selection. */
 
 static void
@@ -2065,10 +1880,7 @@ mb_proc(GtkAction *action)
         SSCANF(name,"RSPlaces%d", &choice);
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
-    } else if (EQUAL(name, "ArithmeticPrecedence")) {
-        toggle_expressions();
     }
-
 }
 
 
@@ -2167,6 +1979,7 @@ put_function(int n, char *fun_value, char *fun_name)
     SPRINTF(key, "/apps/%s/function%1dname", v->appname, n);
     gconf_client_set_string(X->client, key, fun_name, NULL);
 }
+
 
 
 /* Put gcalctool resource into deskset database. */
@@ -2344,7 +2157,6 @@ set_error_state(int error)
                            !v->error && (v->modetype == SCIENTIFIC)); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Thousands",  !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Memory",     !v->error); 
-    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/ArithmeticPrecedence", !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/HelpMenu/About",      !v->error);
 }
 
@@ -2378,7 +2190,7 @@ set_mode(enum mode_type mode)
 {
     GtkRequisition *r;
     gint w, h;
-  
+
     switch (mode) {
         case BASIC:
             gtk_widget_hide(X->fin_panel);
@@ -2398,7 +2210,7 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->sci_panel);
             break;
     }
-  
+
     r = g_new0(GtkRequisition, 1);
     gtk_widget_size_request(X->menubar, r);
     w = r->width;
@@ -2406,29 +2218,26 @@ set_mode(enum mode_type mode)
     gtk_widget_size_request(X->display_item, r);
     w = MAX(w, r->width);
     h += r->height;
-
     if (GTK_WIDGET_VISIBLE(X->fin_panel)) {
-      gtk_widget_size_request(X->fin_panel, r);
-      w = MAX(w, r->width);
-      h += r->height;
+        gtk_widget_size_request(X->fin_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
     }
-
     if (GTK_WIDGET_VISIBLE(X->mode_panel)) {
-      gtk_widget_size_request(X->mode_panel, r);
-      w = MAX(w, r->width);
-          h += r->height;
+        gtk_widget_size_request(X->mode_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
     }
-
     if (GTK_WIDGET_VISIBLE(X->sci_panel)) {
-      gtk_widget_size_request(X->sci_panel, r);
-      w = MAX(w, r->width);
-      h += r->height;
+        gtk_widget_size_request(X->sci_panel, r);
+        w = MAX(w, r->width);
+    	h += r->height;
     }
-  
+    
     /* For initial display. */
     gtk_window_set_default_size(GTK_WINDOW(X->kframe), w, h);
     gtk_window_resize(GTK_WINDOW(X->kframe), w, h);
-  
+    
     g_free(r);
 }
 
@@ -2540,7 +2349,6 @@ start_tool()
     set_item(BASEITEM, v->base);
     set_item(TTYPEITEM, v->ttype);
     set_item(NUMITEM, v->dtype);
-
     gtk_widget_show(X->kframe);
     gtk_main();
 }

@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,9 +18,6 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  *  02111-1307, USA.
  */
-
-#ifndef EXTERN_H
-#define EXTERN_H
 
 extern Vars v;                 /* Calctool variables and options. */
 
@@ -42,7 +39,6 @@ extern char *Rbstr[];          /* Base mode X resource strings. */
 extern char *Rdstr[];          /* Display mode X resource strings. */
 extern char *Rmstr[];          /* Mode mode X resource strings. */
 extern char *Rtstr[];          /* Trig mode X resource strings. */
-extern char *Rsstr[];          /* Syntax resource strings. */
 
 extern double max_fix[];           /* Maximum showable fixed values. */
 extern double min_fix[MAXACC][MAXBASES];  /* Minimum showable fixed values. */
@@ -54,5 +50,3 @@ extern int cur_pos[];          /* Current positions - left/right handed. */
 extern struct button b_buttons[];         /* Basic mode button values. */
 extern struct button f_buttons[];         /* Financial mode button values. */
 extern struct button s_buttons[];         /* Scientific mode button values. */
-
-#endif /*EXTERN_H*/

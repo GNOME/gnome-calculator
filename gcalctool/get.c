@@ -382,24 +382,6 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
-    /* Set expression (arithmetic precedence) mode as default. */
-    v->syntax = exprs;
-
-    if (get_str_resource(R_SYNTAX, str)) {
-      for (i = 0; i < MAXSYNTAX; i++) {
-	if (EQUAL(str, Rsstr[i])) {
-	  break;
-	}
-      }
-      
-      if (i == MAXSYNTAX) {
-	FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
-		v->progname, str);
-      } else {
-	v->syntax = i;
-      }
-    }
-
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
     }
@@ -411,7 +393,6 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_bool_resource(R_TSEP, &boolval)) {
         v->show_tsep = boolval;
     }
-
 }
 
 

@@ -1,4 +1,4 @@
-/*   $Header$
+/*  $Header$
  *
  *  Copyright (c) 1987-2004 Sun Microsystems, Inc.
  *  All Rights Reserved.
@@ -7,109 +7,6 @@
 gcalctool change history.
 =========================
 
-2004-07-26 Rich Burridge <rich.burridge@sun.com>
-
-    * Added various filenames to .../gcalctool/.cvsignore.
-    * Added mkinstalldirs so that I could successfully do a "make dist"
-      on my Solaris machine.
-    * Removed ChangeLog-NG and FIXME references from Makefile.am
-    * Version 5.5.0 released.
-
-2004-07-26 Rich Burridge <rich.burridge@sun.com>
-
-    * Added:
-      gcalctool/mpmath.c
-      gcalctool/syntax_translation.c
-      to ../po/POTFILES.in (thanks Marcel Telka!).
-
-2004-07-26 Rich Burridge <rich.burridge@sun.com>
-
-    * Fixed bug 148381 (http://bugzilla.gnome.org/show_bug.cgi?id=148381)
-      Removed the unwanted ...omf.out files from under the .../help/
-      directories, an artifact of the gcalctool-ng branch merge.
-      Removed the unwanted Makefile and Makefile.in files from the same
-      directories.
-
-2004-07-23 Sami Pietila <sampie@ariana-dsl.utu.fi>
-    * Menu option "Arithmetic Precedence" mode is disabled on error condition.
-    * Remove goto commands from do_expression()
-
-2004-07-22 Sami Pietila <sampie@ariana-dsl.utu.fi>
-
-    * Error is reported and input not accepted if a number exceeds 40 chars.
-    * Added e+ and e- notation support to ce_tokeniser.
-    * xh, xd, xb and xo support removed (from ce_tokeniser), where x is a number.
-    * Empty input is always displayed as zero.
-    * Removed some redundant #ifdefs
-    * Applied a patch from Rich Burridge. The patch removes goto from exp_del_char()
-    * Changed macro N_() to _() from statusbar entries.
-    * Postfix operations can now use empty (zero) expression as a operator
-
-2004-07-19 Rich Burridge <rich.burridge@sun.com>
-
-    * Added in function prototypes to fixup warning messages from the compiler.
-    * Added a final newline in both .l files, so that they could be correctly
-      compiled on a Solaris machine.
-    * Removed the "[Experimental]" from the titleline.
-
-2004-07-19 Rich Burridge <rich.burridge@sun.com>
-
-    * Removed ChangeLog-NG. It's not needed.
-    * Added the contents of FIXME to the TODO file and removed
-      FIXME.
-    * Added Copyright comments to the source files that didn't have
-      them.
-    * Adjusted the C code to the "One True Style". If/when you take over
-      ownership of gcalctool, I'm happy for you to revert it to whatever
-      style you like, but while I've got to maintain it, then all the source
-      code will be a consistent style. Sorry.
-    * Removed commented out C code or code surronded by "#if 0". It just 
-      leads to confusion. Look at the previous versions in CVS history if 
-      you need to see what was there.
-    * Adjusted code so that line length is less than 80 characters (wherever
-      possible).
-    * Adjusted comments to "/* ... */" style. The "// ..." style is not
-      recognized by default with the Sun compiler.
-    * Removed all Tabs. Tabs are evil.
-    * Indentation is four spaces not two.
-    * Added blank lines where appropriate to make the code more readable.
-    * Adjusted code to define variables at the top of a routine.
-    * Remove the "Next Generation (Experiemental)" from the about box.
-    * Changed copyright dates to include 2004.
-    * Removed the "word:" Gnuism from the words[] struct in 
-      syntax_translation.c. Similar problems with another struct in the
-      same source file.
-
-2004-06-18 Christian Neumair <chris@gnome-de.org>
-
-     * gcalctool/functions.c, gcalctool/graphics.c: s/precedencer/precedence/
-
-     * gcalctool/gtk.c: Mark missing GtkActionEntry entries in menu entry
-     array for translation.
-
-     * (create_kframe): Call gtk_action_group_set_translation_domain to enable
-     menu i18n.
-
-2004-06-18 Archana Shah <archana.shah@wipro.com>
- 
-     * gcalctool/gtk.c: Following functions added.
- 
-     * (gcalc_window_get_menu_items): Function to get the menu_items for actions
-       which are having icons associated with them.
- 
-     * (gcalc_window_have_icons_notify): Function to be notified when key
-       '/desktop/gnome/interface/menus_have_icons' toggles.
- 
-     * (gcalc_window_set_unset_image): Based on the value of above mentioned 
-       gconf key, icons will be set/unset.
- 
-     * Fixes bug#144596 
-
-	
-2004-06-14 Sami Pietila <sampie@ariana-dsl.utu.fi>
-
-    * Merge from NG-branch.
-	
 2004-06-14 Rich Burridge <rich.burridge@sun.com>
 
     * Remainder of the fix for bug #143924.
@@ -174,13 +71,6 @@ gcalctool change history.
       gcalctool now correctly recognizes the localized decimal point
       character by explicitly checking to see if the keyboard event keyval
       matches what's returned by localeconv()->decimal_point.
-
-2004-05-25 Udayan Kumar <udayan_kumar@da-iict.org>
- 
-    * From Rich Burridge <rich.burridge@sun.com>
-      Fixed bug 136119 (http://bugzilla.gnome.org/show_bug.cgi?id=136119)
-      gcalctool/calctool.c : structure button b_bottons 
-      Added code for paranthesis in place of empty space
 
 2004-05-23 Rich Burridge <rich.burridge@sun.com>
 
