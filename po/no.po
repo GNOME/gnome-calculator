@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 4.3.17\n"
-"POT-Creation-Date: 2003-12-05 11:05-0800\n"
-"PO-Revision-Date: 2004-01-13 23:45+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-21 22:53+0100\n"
+"PO-Revision-Date: 2004-01-21 22:54+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -128,8 +128,8 @@ msgid "Set trigonometric type to degrees"
 msgstr "Sett trignonometrisk type til grader"
 
 #: gcalctool/calctool.c:94
-msgid "Set trigonometric type to gradients"
-msgstr "Sett trigonometrisk type til gradienter"
+msgid "Set trigonometric type to gradians"
+msgstr "Sett trigonometrisk type til grader"
 
 #: gcalctool/calctool.c:95
 msgid "Set trigonometric type to radians"
@@ -300,7 +300,6 @@ msgid "Subtract"
 msgstr "Trekk fra"
 
 #: gcalctool/calctool.c:345
-#, c-format
 msgid "%"
 msgstr "%"
 
@@ -617,16 +616,16 @@ msgid "Ten to the x"
 msgstr "Ti i x'te"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup><i>x</i></sup>"
-msgstr "y<sup><i>x</i></sup>"
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>y</i></sup>"
 
 #: gcalctool/calctool.c:794
-msgid "y to the power of displayed value"
-msgstr "y opphøyd i vist verdi"
+msgid "Raise displayed value to the power of y"
+msgstr "Hev vist verdi i y-te potens"
 
 #: gcalctool/calctool.c:795
-msgid "Y to the x"
-msgstr "Y i x'te"
+msgid "X to the y"
+msgstr "X i y-te"
 
 #: gcalctool/calctool.c:803
 msgid "<i>x</i>!"
@@ -668,7 +667,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Heksadesimaltall E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1118
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
 msgid "F"
 msgstr "F"
 
@@ -732,7 +731,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Heksadesimaltall B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1110
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
 msgid "C"
 msgstr "C"
 
@@ -823,31 +822,31 @@ msgstr "kubikkcentimetre eller kubikktommer"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:279 gcalctool/functions.c:945
-#: gcalctool/functions.c:1073 gcalctool/functions.c:1112
-#: gcalctool/functions.c:1166 gcalctool/functions.c:1259
-#: gcalctool/functions.c:1260 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1098 gcalctool/display.c:277 gcalctool/functions.c:959
+#: gcalctool/functions.c:1087 gcalctool/functions.c:1126
+#: gcalctool/functions.c:1180 gcalctool/functions.c:1273
+#: gcalctool/functions.c:1274 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Feil"
 
-#: gcalctool/functions.c:1279
+#: gcalctool/functions.c:1293
 msgid "Numeric stack error"
 msgstr "Numerisk stakkfeil"
 
-#: gcalctool/functions.c:1300
+#: gcalctool/functions.c:1314
 msgid "Operand stack error"
 msgstr "Operandstakkfeil"
 
-#: gcalctool/get.c:154
+#: gcalctool/get.c:162
 msgid "-a needs accuracy value"
 msgstr "-a trenger presisjonsverdi"
 
-#: gcalctool/get.c:158 gcalctool/get.c:296
+#: gcalctool/get.c:166 gcalctool/get.c:327
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: presisjon må være mellom 0 og 9\n"
 
-#: gcalctool/get.c:183
+#: gcalctool/get.c:191
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s som neste argument.\n"
@@ -856,31 +855,31 @@ msgstr "%s: %s som neste argument.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:254
+#: gcalctool/get.c:279
 msgid "calculator"
 msgstr "kalkulator"
 
-#: gcalctool/get.c:310
+#: gcalctool/get.c:341
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: basen skal være 2, 8, 10 eller 16\n"
 
-#: gcalctool/get.c:325
+#: gcalctool/get.c:356
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: ugyldig skjermmodus [%s]\n"
 
-#: gcalctool/get.c:340
+#: gcalctool/get.c:371
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: ugyldig modus [%s]\n"
 
-#: gcalctool/get.c:354
+#: gcalctool/get.c:385
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: ugyldig trigonometrisk modus [%s]\n"
 
-#: gcalctool/get.c:400
+#: gcalctool/get.c:431
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -889,18 +888,18 @@ msgstr ""
 "%s versjon %s\n"
 "\n"
 
-#: gcalctool/get.c:401
+#: gcalctool/get.c:432
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Bruk: %s: [-D] [-E] [-a presisjon] "
 
-#: gcalctool/get.c:402
+#: gcalctool/get.c:433
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:912 gcalctool/gtk.c:1049
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:911 gcalctool/gtk.c:1048
 msgid "R"
 msgstr "R"
 
@@ -1112,60 +1111,60 @@ msgstr "_Tegn:"
 msgid "_Insert"
 msgstr "Sett _inn"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Constants"
 msgstr "Rediger konstanter"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Functions"
 msgstr "Rediger funksjoner"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:728
 msgid "Note:"
 msgstr "Merknad:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:729
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Alle konstante verdier er spesifisert som desimale tall."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:739
 msgid "Click a _value or description to edit it:"
 msgstr "Klikk på en _verdi eller beskrivelse for å redigere den:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:762
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:764
 msgid "Value"
 msgstr "Verdi"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:766
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:801 gcalctool/gtk.c:803
+#: gcalctool/gtk.c:800 gcalctool/gtk.c:802 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:984
+#: gcalctool/gtk.c:983
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:992
+#: gcalctool/gtk.c:991
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1040
+#: gcalctool/gtk.c:1039
 msgid "Memory Registers"
 msgstr "Minneregistre"
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1098
 msgid "Edit Constants..."
 msgstr "Rediger konstanter..."
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1098
 msgid "Edit Functions..."
 msgstr "Rediger funksjoner..."
 
