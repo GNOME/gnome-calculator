@@ -7,15 +7,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-03-25 19:41+0000\n"
-"PO-Revision-Date: 2003-03-20 22:15GMT\n"
-"Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
+"Project-Id-Version: gcalctool VERSION\n"
+"POT-Creation-Date: 2003-04-07 20:04+0200\n"
+"PO-Revision-Date: 2003-04-08 00:13+0200\n"
+"Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:50
@@ -446,16 +445,16 @@ msgid "<"
 msgstr "<"
 
 #: gcalctool/calctool.c:607
-msgid "Shift displayed value 0-15 places to the left"
-msgstr "Posunout zobrazovanou hodnotu o 0-15 míst doleva"
+msgid "Shift displayed value 1-15 places to the left"
+msgstr "Posunout zobrazovanou hodnotu o 1-15 míst doleva"
 
 #: gcalctool/calctool.c:615
 msgid ">"
 msgstr ">"
 
 #: gcalctool/calctool.c:616
-msgid "Shift displayed value 0-15 places to the right"
-msgstr "Posunout zobrazovanou hodnotu o 0-15 míst doprava"
+msgid "Shift displayed value 1-15 places to the right"
+msgstr "Posunout zobrazovanou hodnotu o 1-15 míst doprava"
 
 #: gcalctool/calctool.c:624
 msgid "&amp;16"
@@ -550,8 +549,8 @@ msgid "x!"
 msgstr "x!"
 
 #: gcalctool/calctool.c:735
-msgid "factorial of displayed value"
-msgstr "faktoriál zobrazované hodnoty"
+msgid "Factorial of displayed value"
+msgstr "Faktoriál zobrazované hodnoty"
 
 #: gcalctool/calctool.c:743
 msgid "Rand"
@@ -577,7 +576,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Šestnáctková číslice E"
 
-#: gcalctool/calctool.c:772 gcalctool/gtk.c:1132
+#: gcalctool/calctool.c:772 gcalctool/gtk.c:1144
 msgid "F"
 msgstr "F"
 
@@ -641,7 +640,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Šestnáctková číslice B"
 
-#: gcalctool/calctool.c:846 gcalctool/gtk.c:1125
+#: gcalctool/calctool.c:846 gcalctool/gtk.c:1137
 msgid "C"
 msgstr "C"
 
@@ -807,7 +806,9 @@ msgstr "použití: %s: [-D] [-E] [-a přesnost] "
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:934 gcalctool/gtk.c:1064
+#. translators: R is the short form of register used inter alia
+#. in popup menus
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:946 gcalctool/gtk.c:1076
 msgid "R"
 msgstr "R"
 
@@ -860,14 +861,12 @@ msgid "/View/sep1"
 msgstr "/Zobrazení/sep1"
 
 #: gcalctool/gtk.c:209
-#, fuzzy
 msgid "/View/Show _Trailing Zeroes"
-msgstr "/Odst_ranit nuly na konci"
+msgstr "/Zobrazeni/Zob_razovat nuly na konci"
 
 #: gcalctool/gtk.c:210
-#, fuzzy
 msgid "/View/sep2"
-msgstr "/Zobrazení/sep1"
+msgstr "/Zobrazení/sep2"
 
 #: gcalctool/gtk.c:211
 msgid "/View/_Memory Registers"
@@ -890,7 +889,7 @@ msgid "/0 radix places"
 msgstr "/0 míst soustavy"
 
 #: gcalctool/gtk.c:220
-msgid "/1 radix places"
+msgid "/1 radix place"
 msgstr "/1 místo soustavy"
 
 #: gcalctool/gtk.c:221
@@ -930,9 +929,8 @@ msgid "/sep1"
 msgstr "/sep1"
 
 #: gcalctool/gtk.c:230
-#, fuzzy
 msgid "/Show _Trailing Zeroes"
-msgstr "/Odst_ranit nuly na konci"
+msgstr "/Zob_razovat nuly na konci"
 
 #: gcalctool/gtk.c:234 gcalctool/gtk.c:252
 msgid "/1 place"
@@ -1044,36 +1042,36 @@ msgstr "Hodnota"
 msgid "Description"
 msgstr "Popis"
 
-#: gcalctool/gtk.c:831 gcalctool/gtk.c:833
+#: gcalctool/gtk.c:838 gcalctool/gtk.c:840 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulačka"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1001
+#: gcalctool/gtk.c:1013
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1003
+#: gcalctool/gtk.c:1015
 msgid "Set inverse option for trigonometric functions"
 msgstr "Nastavení přepínače inverze pro trigonometrické funkce"
 
-#: gcalctool/gtk.c:1009
+#: gcalctool/gtk.c:1021
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1011
+#: gcalctool/gtk.c:1023
 msgid "Set hyperbolic option for trigonometric functions"
 msgstr "Nastavení hyperbolického přepínače pro trigonometrické funkce"
 
-#: gcalctool/gtk.c:1055
+#: gcalctool/gtk.c:1067
 msgid "Memory Registers"
 msgstr "Registry paměti"
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Constants..."
 msgstr "Upravit konstanty..."
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Functions..."
 msgstr "Upravit funkce..."
 
@@ -1163,7 +1161,7 @@ msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPDIVI ***\n"
 
 #: gcalctool/mp.c:1961
 msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
-msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPDIVI, B PŘLIŠ VELKÉ ***\n"
+msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPDIVI, B PŘíLIŠ VELKÉ ***\n"
 
 #: gcalctool/mp.c:2068
 msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
@@ -1183,7 +1181,7 @@ msgstr "*** X NEKLADNÉ VE VOLÁNÍ MPLN ***\n"
 
 #: gcalctool/mp.c:2507
 msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
-msgstr "*** CHYBA V MPLN, INTERACE NEKONVERGUJE ***\n"
+msgstr "*** CHYBA V MPLN, ITERACE NEKONVERGUJE ***\n"
 
 #: gcalctool/mp.c:2557
 msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
@@ -1313,3 +1311,7 @@ msgstr "*** ABS(X) .GT. 1 VE VOLÁNÍ MPSIN1 ***\n"
 #: gcalctool/mp.c:4194
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
 msgstr "*** X ZÁPORNÉ VE VOLÁNÍ SUBRUTINY MPSQRT ***\n"
+
+#: gcalctool.desktop.in.h:2
+msgid "Perform calculations"
+msgstr "Provést výpočty"
