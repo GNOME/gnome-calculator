@@ -81,7 +81,7 @@ enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
-enum trig_func { SIN=1, COS=2, TAN=4 };
+enum trig_func {SIN=0, COS=1, TAN=2};       
 
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 

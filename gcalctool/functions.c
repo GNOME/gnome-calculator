@@ -63,21 +63,6 @@ do_accuracy()     /* Set display accuracy. */
     }
 }
 
-
-void
-do_base(enum base_type b)    /* Change the current base setting. */
-{
-    v->base = b;
-    put_resource(R_BASE, Rbstr[(int) v->base]);
-    grey_buttons(v->base);
-    refresh_display();
-    v->pending = 0;
-    if (v->rstate) {
-        make_registers();
-    }
-}
-
-
 void
 do_business()     /* Perform special business mode calculations. */
 {
@@ -571,7 +556,6 @@ do_trigfunc(int s[MP_SIZE], int t[MP_SIZE])
     } else assert(0);
   
     return(do_tfunc(s, t, tfunc));
-
 }
 
 
@@ -586,72 +570,25 @@ do_trig()
 int
 do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
 {
-    enum mode {
-        normal = 0,
-        inv = 1,
-        hyp = 2,
-        invhyp = 3,
-    } mode;
-
-    int inverse;
-    int hyperbolic;
-
-    if (!v->current) {
-        return(-EINVAL);
-    }
-
-    inverse = (v->inverse) ? inv : 0;
-    hyperbolic = (v->hyperbolic) ? hyp : 0;
-
-    mode = (inverse | hyperbolic);
-
-    switch (mode) {
-        case normal:
-            if (tfunc & SIN) {
-                calc_trigfunc(sin_t, s, t);
-            } else if (tfunc & COS) {
-                calc_trigfunc(cos_t, s, t);
-            } else if (tfunc & TAN) {
-                calc_trigfunc(tan_t, s, t);
-            }
-            break;
-
-        case inv:
-            if (tfunc & SIN) {
-                calc_trigfunc(asin_t, s, t);
-            } else if (tfunc & COS) {
-                calc_trigfunc(acos_t, s, t);
-            } else if (tfunc & TAN) {
-                calc_trigfunc(atan_t, s, t);
-            }
-            break;
-
-        case hyp:
-            if (tfunc & SIN) {
-                calc_trigfunc(sinh_t, s, t);
-            } else if (tfunc & COS) {
-                calc_trigfunc(cosh_t, s, t);
-            } else if (tfunc & TAN) {
-                calc_trigfunc(tanh_t, s, t);
-            }
-            break;
-
-        case invhyp:
-            if (tfunc & SIN) {
-                calc_trigfunc(asinh_t, s, t);
-            } else if (tfunc & COS) {
-                calc_trigfunc(acosh_t, s, t);
-            } else if (tfunc & TAN) {
-                calc_trigfunc(atanh_t, s, t);
-            } 
-            break;
-
-        default:
-            assert(0);
-    }
-
-
-    return(0);
+    // Assumes the SIN=0, COS=1, TAN=2
+    
+    assert(tfunc < 3); 
+    
+    enum trig_func conv_table[3][4] = {
+	{sin_t, asin_t, sinh_t, asinh_t},
+	{cos_t, acos_t, cosh_t, acosh_t},
+	{tan_t, atan_t, tanh_t, atanh_t},
+    };
+    
+    int inverse = (v->inverse) ? 1 : 0;
+    int hyperbolic = (v->hyperbolic) ? 2 : 0;
+    int mode = (inverse | hyperbolic);
+    
+    if (!v->current) return -EINVAL;
+    
+    calc_trigfunc(conv_table[tfunc][mode], s, t);
+    
+    return 0;
 }
 
 
@@ -672,6 +609,43 @@ do_clear_entry()     /* Clear the calculator display. */
     clear_display(FALSE);
 }
 
+void
+do_base(enum base_type b)    /* Change the current base setting. */
+{
+    v->base = b;
+    put_resource(R_BASE, Rbstr[(int) v->base]);
+    grey_buttons(v->base);
+    
+    switch (v->syntax) {
+    case npa:
+	v->pending = 0;
+	if (v->rstate) {
+	    make_registers();
+	}
+	break;
+	
+    case exprs: {
+	int MP[MP_SIZE];
+	int ret = usable_num(MP);
+	if (ret) {
+	    update_statusbar(_("No sane value to convert"), 
+			     "gtk-dialog-error");
+	} else {
+	    mpstr(v->e.ans, v->e.ansbak);
+	    mpstr(MP, v->e.ans);
+	    exp_replace("Ans");
+	    v->e.calc_complete = 1;
+	    make_registers();
+	}
+    }
+    break;
+    
+    default:
+	assert(0);
+    }
+    
+    refresh_display();
+}
 
 static void
 do_constant()
@@ -735,8 +709,8 @@ do_delete()     /* Remove the last numeric character typed. */
 static void
 do_exchange()         /* Exchange display with memory register. */
 {
-  int MPtemp[MP_SIZE];
-  int MPexpr[MP_SIZE];
+    int MPtemp[MP_SIZE];
+    int MPexpr[MP_SIZE];
 
     switch (v->syntax) {
         case npa:
@@ -761,6 +735,10 @@ do_exchange()         /* Exchange display with memory register. */
 	      mpstr(MPtemp, v->e.ans);	      
 	      // TODO: duplicated code in do_expression
 	      mpstr(v->e.ans, v->e.ansbak);
+	      if (v->e.expbak) {
+		free(v->e.expbak);
+		v->e.expbak = NULL;
+	      }
 	      v->e.expbak = gc_strdup(v->expression);
 	      exp_replace("Ans");
 	      v->e.calc_complete = 1;
