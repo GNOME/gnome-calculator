@@ -1137,52 +1137,12 @@ disp_cb(GtkToggleButton *button, gpointer user_data)
  * additional keyboard character accelerators works for the Solaris platform
  * (see add_extra_kbd_accels above), it seems you have to add an "event" 
  * signal handler on the main gcalctool window, then search for various 
- * keyvals for Linux machines. Here they are then mapped onto keyvals that 
- * gcalctool knows how to deal with, and are then processed.
+ * keyvals for Linux machines.
  */
-
-typedef struct _ExtraKeys ExtraKeys;
-
-struct _ExtraKeys {
-    int key;          /* Keyval entered on numeric keypad. */
-    int value;        /* Equivalent keyval that gcalctool understands. */
-};
-
-static ExtraKeys extra_keys[] = {
-    { GDK_KP_Insert,   GDK_0        },          /* 0 */
-    { GDK_KP_End,      GDK_1        },          /* 1 */
-    { GDK_KP_Down,     GDK_2        },          /* 2 */
-    { GDK_KP_Next,     GDK_3        },          /* 3 */
-    { GDK_KP_Left,     GDK_4        },          /* 4 */
-    { GDK_KP_Begin,    GDK_5        },          /* 5 */
-    { GDK_KP_Right,    GDK_6        },          /* 6 */
-    { GDK_KP_Home,     GDK_7        },          /* 7 */
-    { GDK_KP_Up,       GDK_8        },          /* 8 */
-    { GDK_KP_Prior,    GDK_9        },          /* 9 */
-    { GDK_KP_Delete,   GDK_period   },          /* . */
-    { GDK_KP_Add,      GDK_plus     },          /* + */
-    { GDK_KP_Subtract, GDK_minus    },          /* - */
-    { GDK_KP_Multiply, GDK_asterisk },          /* * */
-    { GDK_KP_Divide,   GDK_slash    },          /* / */
-    { GDK_KP_Enter,    GDK_equal    },          /* Enter */
-    { GDK_KP_0,        GDK_0        },          /* 0 (plus NumLock) */
-    { GDK_KP_1,        GDK_1        },          /* 1 (plus NumLock) */
-    { GDK_KP_2,        GDK_2        },          /* 2 (plus NumLock) */
-    { GDK_KP_3,        GDK_3        },          /* 3 (plus NumLock) */
-    { GDK_KP_4,        GDK_4        },          /* 4 (plus NumLock) */
-    { GDK_KP_5,        GDK_5        },          /* 5 (plus NumLock) */
-    { GDK_KP_6,        GDK_6        },          /* 6 (plus NumLock) */
-    { GDK_KP_7,        GDK_7        },          /* 7 (plus NumLock) */
-    { GDK_KP_8,        GDK_8        },          /* 8 (plus NumLock) */
-    { GDK_KP_9,        GDK_9        },          /* 9 (plus NumLock) */
-    { GDK_KP_Decimal,  GDK_period   }           /* . (plus NumLock) */
-};
-
 
 static gboolean
 event_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-    gint i, num;
     GdkEventKey *kevent;
 
     if (event->type != GDK_KEY_PRESS) {
@@ -1191,15 +1151,87 @@ event_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     kevent = (GdkEventKey *) event;
 
-    num = sizeof(extra_keys) / sizeof(ExtraKeys);
-    for (i = 0; i < num; i++) {
-        if (kevent->keyval == extra_keys[i].key) {
-            process_item(button_for_value(extra_keys[i].value));
-            return(TRUE);
-        }
-    }
+    switch (kevent->keyval) {
+        case GDK_KP_0:
+        case GDK_KP_Insert:
+            gtk_widget_activate(GTK_WIDGET(BUT_0));
+            break;
 
-    return(FALSE);
+        case GDK_KP_1:
+        case GDK_KP_End:
+            gtk_widget_activate(GTK_WIDGET(BUT_1));
+            break;
+
+        case GDK_KP_2:
+        case GDK_KP_Down:
+            gtk_widget_activate(GTK_WIDGET(BUT_2));
+            break;
+
+        case GDK_KP_3:
+        case GDK_KP_Next:
+            gtk_widget_activate(GTK_WIDGET(BUT_3));
+            break;
+
+        case GDK_KP_4:
+        case GDK_KP_Left:
+            gtk_widget_activate(GTK_WIDGET(BUT_4));
+            break;
+
+        case GDK_KP_5:
+        case GDK_KP_Begin:
+            gtk_widget_activate(GTK_WIDGET(BUT_5));
+            break;
+
+        case GDK_KP_6:
+        case GDK_KP_Right:
+            gtk_widget_activate(GTK_WIDGET(BUT_6));
+            break;
+
+        case GDK_KP_7:
+        case GDK_KP_Home:
+            gtk_widget_activate(GTK_WIDGET(BUT_7));
+            break;
+
+        case GDK_KP_8:
+        case GDK_KP_Up:
+            gtk_widget_activate(GTK_WIDGET(BUT_8));
+            break;
+
+        case GDK_KP_9:
+        case GDK_KP_Prior:
+            gtk_widget_activate(GTK_WIDGET(BUT_9));
+            break;
+
+        case GDK_KP_Decimal:
+        case GDK_KP_Delete:
+            gtk_widget_activate(GTK_WIDGET(BUT_PNT));
+            break;
+
+        case GDK_KP_Add:
+            gtk_widget_activate(GTK_WIDGET(BUT_ADD));
+            break;
+
+        case GDK_KP_Subtract:
+            gtk_widget_activate(GTK_WIDGET(BUT_SUB));
+            break;
+
+        case GDK_KP_Multiply:
+            gtk_widget_activate(GTK_WIDGET(BUT_MUL));
+            break;
+
+        case GDK_KP_Divide:
+            gtk_widget_activate(GTK_WIDGET(BUT_DIV));
+            break;
+
+        case GDK_KP_Enter:
+            gtk_widget_activate(GTK_WIDGET(BUT_EQ));
+            break;
+
+        default:
+            return(FALSE);
+        }	
+
+    return(TRUE);
 }
 
 
