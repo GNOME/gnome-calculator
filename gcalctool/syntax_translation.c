@@ -31,51 +31,51 @@
 #define N_(String) gettext_noop (String)
 
 static struct word {
-    char *word;
+  char *word;
 } words[] = {
-    { N_("abs") },
-    { N_("acosh") },
-    { N_("acos") },
-    { N_("and") },
-    { N_("ans") }, 
-    { N_("asinh") },
-    { N_("asin") }, 
-    { N_("atanh") },
-    { N_("atan") },
-    { N_("cbrt") },
-    { N_("chs") }, 
-    { N_("clr") }, 
-    { N_("cosh") },
-    { N_("cos") }, 
-    { N_("ddb") }, 
-    { N_("exp") }, 
-    { N_("frac") }, 
-    { N_("fv") }, 
-    { N_("int") },
-    { N_("ln") }, 
-    { N_("log") }, 
-    { N_("not") }, 
-    { N_("or") }, 
-    { N_("pi") }, 
-    { N_("pmt") },
-    { N_("pv") }, 
-    { N_("rand") },
-    { N_("rate") },
-    { N_("rcl") }, 
-    { N_("sinh") },
-    { N_("sin") }, 
-    { N_("sln") }, 
-    { N_("sqrt") },
-    { N_("sto") }, 
-    { N_("syd") }, 
-    { N_("tanh") },
-    { N_("tan") },
-    { N_("term") },
-    { N_("u16") }, 
-    { N_("u32") }, 
-    { N_("xnor") },
-    { N_("xor") },
-    { NULL }
+  { N_("abs") }, /* Absolute value */
+  { N_("acosh") }, /* Inversion of hyperbolic COS */
+  { N_("acos") }, /* Inversion of COS */
+  { N_("and") }, /* Bitwise AND */
+  { N_("ans") }, /* Answer of previous calculation*/
+  { N_("asinh") }, /* Inversion of hyperbolic SIN */
+  { N_("asin") }, /* Hyperbolic SIN */
+  { N_("atanh") }, /* Inversion of hyperbolic TAN */
+  { N_("atan") }, /* Inversion of TAN*/
+  { N_("cbrt") }, /* Cubic root */
+  { N_("chs") }, /* Change sign */
+  { N_("clr") }, /* Clear */
+  { N_("cosh") }, /* Hyperbolic cosine */
+  { N_("cos") }, /* COS */
+  { N_("ddb") }, /* Financial operation: Double-declining deprecation */ 
+  { N_("exp") }, /* x*10^y */
+  { N_("frac") }, /* Fraction of a decimal number */
+  { N_("fv") }, /* Financial function: Future value */
+  { N_("int") }, /* Integer part of a decimal number */
+  { N_("ln") }, /* Natural logarithm */
+  { N_("log") }, /* Logarithm with 10 as a base number */
+  { N_("not") }, /* Bitwise NOT */
+  { N_("or") }, /* Bitwise OR */
+  { N_("pi") }, /* PI */
+  { N_("pmt") }, /* Financial function: Periodic payment */
+  { N_("pv") }, /* Present value */
+  { N_("rand") }, /* A random number */
+  { N_("rate") }, /* Financial function: Periodic interest rate */
+  { N_("rcl") }, /* Recall number from memory register */
+  { N_("sinh") }, /* Hyperbolic SIN */
+  { N_("sin") }, /* SIN */
+  { N_("sln") }, /* Financial function: Straight-line depreciation */
+  { N_("sqrt") }, /* Square root */
+  { N_("sto") }, /* Store number at memory register */
+  { N_("syd") }, /* Financial function: Sum-of-the years'-digits depreciation */
+  { N_("tanh") }, /* Hyperbolic TAN */
+  { N_("tan") }, /* TAN */
+  { N_("term") }, /* Financial function: Payment period */
+  { N_("u16") }, /* 16-bit unsigned integer value */
+  { N_("u32") }, /* 32-bit unsigned integer value */
+  { N_("xnor") }, /* Bitwise XNOR */
+  { N_("xor") }, /* Bitwise XOR */
+  { NULL }
 };
 
 static struct word_map *word_map = NULL;
