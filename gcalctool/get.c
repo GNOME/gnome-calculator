@@ -31,8 +31,6 @@
 #include "extern.h"
 #include "config.h"
 
-static char *set_bool(int);
-
 static int get_bool_resource(enum res_type, int *);
 static int get_int_resource(enum res_type, int *);
 static int get_str_resource(enum res_type, char *);
@@ -324,7 +322,6 @@ init_vars()    /* Setup default values for various variables. */
     size             = MP_SIZE;
     mpset(&acc, &size, &size);
 
-    v->beep        = TRUE;         /* Beep on error by default. */
     v->error       = 0;            /* No calculator error initially. */
     v->key_exp     = 0;            /* Not entering an exponent number. */
     v->pending_op  = 0;            /* No pending arithmetic operation. */
@@ -450,9 +447,6 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
-    if (get_bool_resource(R_BEEP, &boolval)) {
-        v->beep = boolval;
-    }
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
     }
@@ -474,7 +468,7 @@ read_str(char **str, char *value)
 }
 
 
-static char *
+char *
 set_bool(int value)
 {
     return(value ? "true" : "false");
@@ -580,20 +574,4 @@ write_rcfile(enum menu_type mtype, int exists, int cfno,
     FCLOSE(rcfd);
     FCLOSE(tmpfd);
     UNLINK(tmp_filename);
-}
-
-
-void
-write_resources()
-{
-    char intval[5];
-
-    SPRINTF(intval, "%d", v->accuracy);
-    put_resource(R_ACCURACY, intval);
-    put_resource(R_BASE,     Rbstr[(int) v->base]);
-    put_resource(R_DISPLAY,  Rdstr[(int) v->dtype]);
-    put_resource(R_MODE,     Rmstr[(int) v->modetype]);
-    put_resource(R_TRIG,     Rtstr[(int) v->ttype]);
-    put_resource(R_REGS,     set_bool(v->rstate == TRUE));
-    put_resource(R_BEEP,     set_bool(v->beep == TRUE));
 }

@@ -48,11 +48,14 @@ static void process_parens(char);
 static void
 do_accuracy()     /* Set display accuracy. */
 {
+    char intval[5];
     int i;
 
     for (i = 0; i <= 9; i++) {
         if (v->current->value == get_menu_entry(M_ACC, i)) {
             v->accuracy = char_val(v->current->value);
+            SPRINTF(intval, "%d", v->accuracy);
+            put_resource(R_ACCURACY, intval);
             make_registers();
             return;
         }
@@ -64,6 +67,7 @@ void
 do_base(enum base_type b)    /* Change the current base setting. */
 {
     v->base = b;
+    put_resource(R_BASE, Rbstr[(int) v->base]);
     grey_buttons(v->base);
     show_display(v->MPdisp_val);
     v->pending = 0;
@@ -584,6 +588,7 @@ void
 do_memory(int show)
 {
     make_registers();
+    put_resource(R_REGS, set_bool(v->rstate == TRUE));
     win_display(FCP_REG, v->rstate);
 }
 
@@ -595,6 +600,7 @@ do_mode()                   /* Set special calculator mode. */
 
     SPRINTF(title, "%s   [%s]", v->tool_label, mstrs[(int) v->modetype]);
     set_title(FCP_KEY, title);
+    put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
 }
 
@@ -620,9 +626,7 @@ do_number()
         n = v->current->value - 'a' + 10;
     }
     if (n > maxvals[(int) v->base]) {
-        if (v->beep == TRUE) {
-            beep();
-        }
+        beep();
         return;
     }
 
@@ -646,6 +650,7 @@ void
 do_numtype(enum num_type n)   /* Set number display type. */
 {
     v->dtype = n;
+    put_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
     v->pending = 0;
     show_display(v->MPdisp_val);
     if (v->rstate) {
@@ -991,6 +996,7 @@ void
 do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 {
     v->ttype = t;
+    put_resource(R_TRIG, Rtstr[(int) v->ttype]);
     if (IS_KEY(v->cur_op, KEY_COS) ||
         IS_KEY(v->cur_op, KEY_SIN) ||
         IS_KEY(v->cur_op, KEY_TAN)) {
@@ -1253,9 +1259,7 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
         STRCPY(v->display, _("Numeric stack error"));
         set_display(v->display);
         v->error = 1;
-        if (v->beep == TRUE) {
-            beep();
-        }
+        beep();
     } else {
         if (v->MPnumstack[v->numsptr] == NULL) {
             v->MPnumstack[v->numsptr] =

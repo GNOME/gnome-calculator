@@ -51,8 +51,7 @@ char *base_str[]  = {          /* Strings for each base value. */
 };
 
 char *calc_res[] = {
-    "accuracy",      "base",     "display",  "mode", "showhelp",
-    "showregisters", "trigtype", "beep"
+    "accuracy", "base", "display", "mode", "showregisters", "trigtype"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
@@ -84,8 +83,8 @@ char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 
 /* Valid keys when an error condition has occured. */
-/*                            MEM  KEYS clr         QUIT REDRAW */
-int validkeys[MAXVKEYS]  = { 'm', 'k',  GDK_Delete, 'q', '\f' };
+/*                           Clr */
+int validkeys[MAXVKEYS]  = { GDK_Delete };
 
 Vars v;            /* Calctool variables and options. */
 
@@ -1843,9 +1842,7 @@ doerr(char *errmes)
     STRCPY(v->display, errmes);
     set_display(v->display);
     v->error = 1;
-    if (v->beep == TRUE) {
-        beep();
-    }
+    beep();
 }
 
 

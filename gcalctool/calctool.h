@@ -87,7 +87,7 @@ enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 /* Resources. */
-enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG, R_BEEP
+enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -109,7 +109,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_MUL   b_buttons[11].value             /* * */
 #define KEY_ACC   b_buttons[12].value             /* A */
 #define KEY_CHS   b_buttons[13].value             /* C */
-#define KEY_INT   b_buttons[14].value             /* CTL('i') */
+#define KEY_INT   b_buttons[14].value             /* Alt-i */
 #define KEY_RCL   b_buttons[15].value             /* R */
 
 #define KEY_1     b_buttons[16].value             /* 1 */
@@ -118,7 +118,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_SUB   b_buttons[19].value             /* - */
 #define KEY_PER   b_buttons[20].value             /* % */
 #define KEY_SQRT  b_buttons[21].value             /* s */
-#define KEY_FRAC  b_buttons[22].value             /* CTL('f') */
+#define KEY_FRAC  b_buttons[22].value             /* Alt-f */
 #define KEY_STO   b_buttons[23].value             /* S */
 
 #define KEY_0     b_buttons[24].value             /* 0 */
@@ -127,27 +127,25 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_ADD   b_buttons[27].value             /* + */
 #define KEY_REC   b_buttons[28].value             /* r */
 #define KEY_SQR   b_buttons[29].value             /* @ */
-#define KEY_ABS   b_buttons[30].value             /* CTL('u') */
+#define KEY_ABS   b_buttons[30].value             /* Alt-u */
 #define KEY_EXCH  b_buttons[31].value             /* X */
 
-#define KEY_CTRM  f_buttons[0].value              /* CTL('t') */
-#define KEY_DDB   f_buttons[1].value              /* CTL('d') */
+#define KEY_CTRM  f_buttons[0].value              /* m */
+#define KEY_DDB   f_buttons[1].value              /* D */
 #define KEY_FV    f_buttons[2].value              /* v */
 #define KEY_PMT   f_buttons[3].value              /* P */
 #define KEY_PV    f_buttons[4].value              /* p */
-#define KEY_RATE  f_buttons[5].value              /* CTL('r') */
-#define KEY_SLN   f_buttons[6].value              /* CTL('s') */
-#define KEY_SYD   f_buttons[7].value              /* CTL('y') */
+#define KEY_RATE  f_buttons[5].value              /* Alt-r */
+#define KEY_SLN   f_buttons[6].value              /* l */
+#define KEY_SYD   f_buttons[7].value              /* Y */
 #define KEY_TERM  f_buttons[8].value              /* T */
 
 #define KEY_LSFT  s_buttons[0].value              /* < */
 #define KEY_RSFT  s_buttons[1].value              /* > */
 #define KEY_16    s_buttons[2].value              /* [ */
 #define KEY_32    s_buttons[3].value              /* ] */
-                                                  /* Empty/hidden button. */
 #define KEY_LPAR  s_buttons[5].value              /* ( */
 #define KEY_RPAR  s_buttons[6].value              /* ) */
-#define KEY_KEYS  s_buttons[7].value              /* k */
 
 #define KEY_EXP   s_buttons[8].value              /* E */
 #define KEY_CON   s_buttons[9].value              /* # */
@@ -161,9 +159,9 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_D     s_buttons[16].value             /* d */
 #define KEY_E     s_buttons[17].value             /* e */
 #define KEY_F     s_buttons[18].value             /* f */
-#define KEY_COS   s_buttons[19].value             /* CTL('c') */
-#define KEY_SIN   s_buttons[20].value             /* CTL('s') */
-#define KEY_TAN   s_buttons[21].value             /* CTL('t') */
+#define KEY_COS   s_buttons[19].value             /* Alt-c */
+#define KEY_SIN   s_buttons[20].value             /* Alt-s */
+#define KEY_TAN   s_buttons[21].value             /* Alt-t */
 #define KEY_LN    s_buttons[22].value             /* N */
 #define KEY_LOG   s_buttons[23].value             /* G */
 
@@ -213,12 +211,11 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
-#define MAXENTRIES     50         /* Maximum number of menu entries. */
 #define MAXMODES       3          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
-#define MAXVKEYS       5          /* Number of valid keys after an error. */
+#define MAXVKEYS       1          /* Number of valid keys after an error. */
 
 #define MCOLS          8          /* Number of columns of "special" keys. */
 #define MROWS          2          /* Number of rows of "special" keys. */
@@ -349,6 +346,7 @@ char *button_str(int);
 char *convert(char *);
 char *get_resource(enum res_type);
 char *make_number(int *, BOOLEAN);
+char *set_bool(int);
 
 unsigned short *get_but_data();
 
@@ -427,7 +425,6 @@ void switch_hands(int);
 void usage(char *);
 void win_display(enum fcp_type, int);
 void write_rcfile(enum menu_type, int, int, char *, char *);
-void write_resources();
 
 /* Global Brent MP routines in mp.c. */
 int mpeq(int *, int *);

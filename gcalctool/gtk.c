@@ -59,9 +59,6 @@
 #define BUT_PNT   X->bas_buttons[25]       /* . */
 #define BUT_EQ    X->bas_buttons[26]       /* = */
 
-#define FRAME_MASK GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK | \
-                   GDK_VISIBILITY_NOTIFY_MASK
-
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GtkAccelGroup *menu_accel;
@@ -709,7 +706,7 @@ create_mem_menu(enum menu_type mtype)
     X->menus[(int) mtype] = gtk_menu_new();
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(mstr, "%s %d: %s", 
+        SPRINTF(mstr, "%s %d:    %s",
                 _("Register"), i, make_number(v->MPmvals[i], FALSE));
         menu_item = gtk_menu_item_new_with_label(mstr);
         gtk_widget_show(menu_item);
