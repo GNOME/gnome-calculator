@@ -67,8 +67,8 @@ char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
 char *inv_desc = N_("Set inverse option for trigonometric functions");
 
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-    N_("Basic Mode"), N_("Advanced Mode"), N_("Financial Mode"), 
-    N_("Scientific Mode"), N_("Expression Mode")
+    N_("Basic"), N_("Advanced"), N_("Financial"), 
+    N_("Scientific"), N_("Expression")
 };
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
