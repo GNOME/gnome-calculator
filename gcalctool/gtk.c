@@ -1344,10 +1344,10 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
             if (strcmp(mode_buttons[n].str, "    ")) {
                 create_kbd_accel(X->mode_buttons[n], mode_buttons[n].mods,
                                  mode_buttons[n].value);
+                gtk_widget_show(X->mode_buttons[n]);
             } else {
-                gtk_widget_set_sensitive(X->mode_buttons[n], FALSE);
+                gtk_widget_hide(X->mode_buttons[n]);
             }
-            gtk_widget_show(X->mode_buttons[n]);
             gtk_table_attach(GTK_TABLE(table), X->mode_buttons[n],
                      i, i+1, j, j+1,
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),

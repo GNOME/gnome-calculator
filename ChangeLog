@@ -8,6 +8,21 @@
 gcalctool change history.
 =========================
 
+v4.1.13 - 30th August 2002.
+
+* The unused buttons in the mode window are now hidden. Doing this before
+  was a problem because it made the size of the remaining visible ones 
+  incorrect. This now works, because the GtkTable* is now created with the
+  third parameter TRUE; i.e. each button is the size of the largest one.
+
+  This also fixes the problem where not all the unused buttons on the 
+  various mode popups are colored correctly (if the user is using the 
+  old OpenWindows colors (with the supplied gcalctoolrc file). Adjusted
+  the supplied gcalctoolrc to remove the grey-bg and back-bg styles, and
+  the mode buttons that used them.
+
+----
+
 v4.1.12 - 30th August 2002.
 
 * Replaced the use of X resources with gconf schemas. Updated the manual 
