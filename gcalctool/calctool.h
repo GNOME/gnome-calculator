@@ -79,7 +79,6 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 #define KEY_DIV   b_buttons[3]              /* / */
 #define KEY_BSP   b_buttons[5]              /* Control-h */
-#define KEY_CLR   b_buttons[7]              /* del */
 
 #define KEY_MUL   b_buttons[11]             /* * */
 #define KEY_ACC   b_buttons[12]             /* A */

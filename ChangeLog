@@ -7,6 +7,21 @@
 gcalctool change history.
 =========================
 
+v4.2.55 - 20th February 2003.  (richb)
+
+* Fixed bug 106583 (http://bugzilla.gnome.org/show_bug.cgi?id=106583)
+  There were two parts to this. Dennis Cranston fixed the:
+
+  (gcalctool:10872): Gtk-CRITICAL **: file gtktextbuffer.c: line 548:
+  assertion `g_utf8_validate (text, len, NULL)' failed
+
+  messages. 
+
+  The crash was caused by the paren_disp() function in display.c not
+  correctly checking for when a Delete character was entered.
+
+----
+
 v4.2.54 - 20th February 2003.  (richb)
 
 * The financial Term tooltip example didn't work. The problem was that

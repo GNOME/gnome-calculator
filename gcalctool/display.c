@@ -374,7 +374,7 @@ paren_disp(char c)
  */
 
     n = strlen(v->display);
-    if (IS_KEY(c, KEY_CLR.value)) {         /* Is it a Delete character? */
+    if (c == -1) {         /* Is it a Delete character? */
         v->noparens = v->pending = v->opsptr = v->numsptr = 0;
         v->cur_op = '?';
         i = 0;

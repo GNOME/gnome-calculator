@@ -1218,7 +1218,7 @@ get_display()              /* The Copy function key has been pressed. */
     if (v->shelf != NULL) {
         free(v->shelf);
     }
-    v->shelf = g_strdup(string);
+    v->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
 
     gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), v->shelf, -1);
 }
@@ -1713,17 +1713,22 @@ set_display(char *str)
 {
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
+    gchar *utf8_str;
 
+    utf8_str = g_locale_to_utf8(str, strlen(str), NULL, NULL, NULL);
+	
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds (buffer, &start, &end);
     gtk_text_buffer_delete(buffer, &start, &end);
 
     gtk_text_buffer_insert_with_tags_by_name(buffer,
                                              &end,
-                                             strlen(str) != 0 ? str : " ",
+                                             utf8_str != NULL && strlen(utf8_str) != 0 ? utf8_str : " ",
                                              -1,
                                              "x-large",
                                              NULL);
+
+    g_free(utf8_str);
 }
 
 
