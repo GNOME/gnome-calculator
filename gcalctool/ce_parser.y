@@ -31,7 +31,7 @@
 #include "parser_mac.h"
 #include "ce_parser.h"
 
-  struct parser_state parser_state;
+  extern struct parser_state parser_state;
 
 %}
 
