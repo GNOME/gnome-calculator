@@ -33,48 +33,48 @@
 static struct word {
   char *word;
 } words[] = {
-  { N_("abs") }, /* Absolute value */
-  { N_("acosh") }, /* Inversion of hyperbolic cosine */
-  { N_("acos") }, /* Inversion of cosine */
-  { N_("and") }, /* Bitwise AND */
-  { N_("ans") }, /* Answer of previous calculation*/
-  { N_("asinh") }, /* Inversion of hyperbolic sine */
-  { N_("asin") }, /* Hyperbolic sine */
-  { N_("atanh") }, /* Inversion of hyperbolic tangent */
-  { N_("atan") }, /* Inversion of tangent */
-  { N_("cbrt") }, /* Cubic root */
-  { N_("chs") }, /* Change sign */
-  { N_("clr") }, /* Clear (display) */
-  { N_("cosh") }, /* Hyperbolic cosine */
-  { N_("cos") }, /* Cosine */
-  { N_("ddb") }, /* Double-declining deprecation */ 
-  { N_("exp") }, /* x*10^y */
-  { N_("frac") }, /* Fraction of a decimal number */
-  { N_("fv") }, /* Future value */
-  { N_("int") }, /* Integer part of a decimal number */
-  { N_("ln") }, /* Natural logarithm */
-  { N_("log") }, /* Logarithm with 10 as a base number */
-  { N_("not") }, /* Bitwise NOT */
-  { N_("or") }, /* Bitwise OR */
-  { N_("pi") }, /* PI */
-  { N_("pmt") }, /* Periodic payment */
-  { N_("pv") }, /* Present value */
-  { N_("rand") }, /* A random number */
-  { N_("rate") }, /* Periodic interest rate */
-  { N_("rcl") }, /* Recall number from memory register */
-  { N_("sinh") }, /* Hyperbolic sine */
-  { N_("sin") }, /* Sine */
-  { N_("sln") }, /* Straight-line depreciation */
-  { N_("sqrt") }, /* Square root */
-  { N_("sto") }, /* Store number at memory register */
-  { N_("syd") }, /* Sum-of-the years'-digits depreciation */
-  { N_("tanh") }, /* Hyperbolic tangent */
-  { N_("tan") }, /* Tangent */
-  { N_("term") }, /* Payment period */
-  { N_("u16") }, /* 16-bit unsigned integer value */
-  { N_("u32") }, /* 32-bit unsigned integer value */
-  { N_("xnor") }, /* Bitwise XNOR */
-  { N_("xor") }, /* Bitwise XOR */
+  { /* Absolute value */                         N_("abs")   },
+  { /* Inversion of hyperbolic cosine */         N_("acosh") },
+  { /* Inversion of cosine */                    N_("acos" ) },
+  { /* Bitwise AND */                            N_("and")   },
+  { /* Answer of previous calculation */         N_("ans")   },
+  { /* Inversion of hyperbolic sine */           N_("asinh") },
+  { /* Hyperbolic sine */                        N_("asin")  },
+  { /* Inversion of hyperbolic tangent */        N_("atanh") },
+  { /* Inversion of tangent */                   N_("atan")  },
+  { /* Cubic root */                             N_("cbrt")  },
+  { /* Change sign */                            N_("chs")   },
+  { /* Clear (display) */                        N_("clr")   },
+  { /* Hyperbolic cosine */                      N_("cosh")  },
+  { /* Cosine */                                 N_("cos")   },
+  { /* Double-declining deprecation */           N_("ddb")   },
+  { /* x*10^y */                                 N_("exp")   },
+  { /* Fraction of a decimal number */           N_("frac")  },
+  { /* Future value */                           N_("fv")    },
+  { /* Integer part of a decimal number */       N_("int")   },
+  { /* Natural logarithm */                      N_("ln")    },
+  { /* Logarithm with 10 as a base number */     N_("log")   },
+  { /* Bitwise NOT */                            N_("not")   },
+  { /* Bitwise OR */                             N_("or")    },
+  { /* PI */                                     N_("pi")    },
+  { /* Periodic payment *                        N_("pmt")   },
+  { /* Present value */                          N_("pv")    },
+  { /* A random number */                        N_("rand")  },
+  { /* Periodic interest rate */                 N_("rate")  },
+  { /* Recall number from memory register */     N_("rcl")   },
+  { /* Hyperbolic sine */                        N_("sinh")  },
+  { /* Sine */                                   N_("sin")   },
+  { /* Straight-line depreciation */             N_("sln")   },
+  { /* Square root */                            N_("sqrt")  },
+  { /* Store number at memory register */        N_("sto")   },
+  { /* Sum-of-the years'-digits depreciation */  N_("syd")   },
+  { /* Hyperbolic tangent */                     N_("tanh")  },
+  { /* Tangent */                                N_("tan")   },
+  { /* Payment period */                         N_("term")  },
+  { /* 16-bit unsigned integer value */          N_("u16")   },
+  { /* 32-bit unsigned integer value */          N_("u32")   },
+  { /* Bitwise XNOR */                           N_("xnor")  },
+  { /* Bitwise XOR */                            N_("xor")   },
   { NULL }
 };
 
