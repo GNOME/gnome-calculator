@@ -39,7 +39,7 @@ char *base_str[]  = {          /* Strings for each base value. */
 
 char *calc_res[] = {
     "accuracy",      "base",        "display",  "mode", "showhelp",
-    "showRegisters", "rightHanded", "trigType", "beep"
+    "showregisters", "righthanded", "trigtype", "beep"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */

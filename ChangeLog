@@ -8,6 +8,17 @@
 gcalctool change history.
 =========================
 
+v4.1.12 - 30th August 2002.
+
+* Replaced the use of X resources with gconf schemas. Updated the manual 
+  pages to reflect this change. Note this is a minimal gconf implementation.
+  gcalctool doesn't actively look for other applications changing its
+  key/value pairs. Also all the keys are stored as strings to make it more
+  portable and easier to convert to the next resource database technology 
+  when it comes along.
+
+----
+
 v4.1.11 - 29th August 2002.
 
 * Explicitly setting the size of the calculator buttons has been removed.

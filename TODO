@@ -10,9 +10,9 @@ Calctool TODO.
 
 Related to the Gtk2 version:
 
-* Shouldn't use X resources. Probably need to use gconf, but I really 
-  don't want to have to drag in a load of GNOME libraries (i.e. I would 
-  rather keep this a Gtk application).
+* Need to find what's causing the warning message:
+  ** (gcalctool:6306): WARNING **: CORBA_ORB_destroy: ORB still has 2 refs.
+  when gcalctool exits, and fix it.
 * If the mode window is to be initially displayed when gcalctool starts
   (currently "gcalctool.mode: <mode>" in ~/.gcalctooldefaults), then it
   is being displayed in the wrong position on the screen.
@@ -23,6 +23,8 @@ Related to the Gtk2 version:
 * Not all the gray buttons on the various mode popups are colored correctly
   (if the user is using the old OpenWindows colors (with the supplied 
   gcalctoolrc file).
+* Not a biggie, but would really prefer if the non-functional buttons on
+  the mode popups weren't visible.
 
 ============================================================================
 

@@ -1,11 +1,13 @@
 ## Process this file with automake to produce Makefile.in
 
 INCLUDES = \
+	-I$(includedir) \
 	-DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
 	-DCALCTOOL_DATA_DIR=\""$(datadir)/calctool"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	@PACKAGE_CFLAGS@
+	@PACKAGE_CFLAGS@ \
+	@GCONF_CFLAGS@
 
 bin_PROGRAMS = gcalctool
 
@@ -24,6 +26,7 @@ gcalctool_SOURCES = \
 
 gcalctool_LDADD = \
 	@PACKAGE_LIBS@ \
+	@GCONF_LIBS@ \
 	$(X_LIBS) $(X_PRE_LIBS) $(X_BASIC_LIBS) $(X_EXTRA_LIBS)
 
 pkgdata_DATA = calctool.gif

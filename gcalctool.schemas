@@ -1,0 +1,154 @@
+<gconfschemafile>
+
+<!-- 
+Note: all double hyphens in this comment have a space in the middle
+because double hyphen isn't allowed in comments. So, remove the space
+before use.
+
+To install this file type: 
+      gconftool - -install-schema-file gcalctool.schemas 
+You probably want your "make install" to do this for real applications.
+Also, you probably want a configure option so people can retarget where the 
+schema file gets installed. The option should be called - -gconf-config-source=blah
+To change the gconftool target use the - -config-source=blah option to gconftool.
+-->
+
+  <schemalist>
+    <schema>
+      <applyto>/apps/gcalctool/accuracy</applyto>
+      <key>/schemas/apps/gcalctool/accuracy</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>2</default>
+        <short>Accuracy value</short>
+        <long>
+          The number of digits displayed after the numeric point.
+          This value must be in the range 0 to 9.
+        </long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/base</applyto>
+      <key>/schemas/apps/gcalctool/base</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>DEC</default>
+        <short>Numeric Base</short>
+        <long>
+          The initial numeric base. Valid values are 
+          BIN (binary)
+          OCT (octal)
+          DEC (decimal)
+          HEX (hexadecimal)
+        </long>
+      </locale>
+    </schema>
+    <schema> 
+      <applyto>/apps/gcalctool/display</applyto> 
+      <key>/schemas/apps/gcalctool/display</key> 
+      <owner>gcalctool</owner> 
+      <type>string</type> 
+      <locale name="C"> 
+        <default>FIX</default> 
+        <short>Display Mode</short> 
+        <long> 
+          The initial display mode. Valid values are
+            ENG (engineering) 
+            FIX (fixed-point)
+            SCI (scientific)
+        </long> 
+      </locale> 
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/mode</applyto>
+      <key>/schemas/apps/gcalctool/mode</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C"> 
+        <default>BASIC</default>
+        <short>Mode</short>
+        <long> 
+          The initial calculator mode. Valid values are
+            BASIC
+            FINANCIAL
+            LOGICAL 
+            SCIENTIFIC
+        </long>
+      </locale>
+    </schema>
+    <schema> 
+      <applyto>/apps/gcalctool/showhelp</applyto> 
+      <key>/schemas/apps/gcalctool/showhelp</key> 
+      <owner>gcalctool</owner> 
+      <type>string</type> 
+      <locale name="C">  
+        <default>false</default> 
+        <short>Show Help</short> 
+        <long>  
+          Indicates whether tooltip help should be enabled.
+        </long> 
+      </locale> 
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/showregisters</applyto>
+      <key>/schemas/apps/gcalctool/showregisters</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>true</default>
+        <short>Show Registers</short>
+        <long>
+          Indicates whether the memory register window is 
+          initially displayed.
+        </long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/righthanded</applyto>
+      <key>/schemas/apps/gcalctool/righthanded</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>true</default>
+        <short>Right Handed</short>
+        <long>
+          Indicates whether the calculator is started with a
+          "right-handed" display style.
+        </long>
+      </locale>
+    </schema>
+    <schema> 
+      <applyto>/apps/gcalctool/trigtype</applyto> 
+      <key>/schemas/apps/gcalctool/trigtype</key> 
+      <owner>gcalctool</owner> 
+      <type>string</type> 
+      <locale name="C"> 
+        <default>DEG</default> 
+        <short>Trigonometric type</short> 
+        <long> 
+          The initial trigonometric type. Valid values are
+            DEG (degrees)
+            GRAD (grads)
+            RAD (radians).
+        </long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/beep</applyto>
+      <key>/schemas/apps/gcalctool/beep</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <locale name="C">
+        <default>true</default>
+        <short>Beep</short>
+        <long>
+          Indicates whether a beep should sound in the
+          event of an error (such as invalid input, or
+          if the display needs to be cleared).
+        </long>
+      </locale>
+    </schema>
+  </schemalist>
+</gconfschemafile>

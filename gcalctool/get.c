@@ -618,5 +618,4 @@ write_resources()
     put_resource(R_RHAND,    set_bool(v->righthand == TRUE));
     put_resource(R_BEEP,     set_bool(v->beep == TRUE));
     put_resource(R_HELP,     set_bool(v->show_help == TRUE));
-    save_resources();
 }

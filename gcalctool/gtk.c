@@ -32,7 +32,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
-#include <X11/Xresource.h>
+#include <gconf/gconf-client.h>
 
 #define BUT_0     X->buttons[v->righthand ? 44 : 40]       /* 0 */
 #define BUT_1     X->buttons[v->righthand ? 36 : 32]       /* 1 */
@@ -64,6 +64,7 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GtkAccelGroup *menu_accel;
     GdkAtom clipboard_atom;
+    GConfClient *client;
     GtkItemFactory *fact[MAXMENUS];
     GtkTooltips *tips;
     GtkWidget *buttons[NOBUTTONS];
@@ -91,7 +92,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     enum menu_type CFtype;
     Display *dpy;
-    XrmDatabase rDB;                   /* Combined resources database. */
 
     int menuval;                  /* Index to button array at menu time. */
     int mrec[MAXMENUS];
@@ -330,7 +330,7 @@ main(int argc, char **argv)
     X->dpy = GDK_DISPLAY();
 
     do_calctool(argc, argv);
-       
+
     return(0);
 
 /*NOTREACHED*/
@@ -1222,22 +1222,12 @@ get_proc(GtkClipboard *clipboard, const gchar *text, gpointer data)
 char *
 get_resource(enum res_type rtype)
 {
-    char cstr[MAXLINE], nstr[MAXLINE], str[MAXLINE];
-    char *str_type[20];
-    XrmValue value;
+    char cstr[MAXLINE], key[MAXLINE];
 
-    STRCPY(str, calc_res[(int) rtype]);
-    SPRINTF(nstr, "%s.%s", v->appname, str);
-    if (islower((int) str[0])) {
-        str[0] = toupper(str[0]);
-    }
+    STRCPY(key, calc_res[(int) rtype]);
+    SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
 
-    SPRINTF(cstr, "%s.%s", v->appname, str);
-    if (XrmGetResource(X->rDB, nstr, cstr, str_type, &value) == 0) {
-        return((char *) NULL);
-    } else {
-        return(value.addr);
-    }
+    return(gconf_client_get_string(X->client, cstr, NULL));
 }
 
 
@@ -1265,19 +1255,13 @@ char *MSGFILE_MESSAGE = "SUNW_DESKSET_CALCTOOL_MSG";
 
 
 void
-load_resources()        /* Load combined X resources databases. */
+load_resources()        /* Load gconf configuration database for gcalctool. */
 { 
-    char name[MAXPATHLEN], *ptr;
+    char str[MAXLINE];
 
-    XrmInitialize();
-    if (getenv("HOME") == NULL) {
-        X->rDB = NULL;
-        return;
-    } else if ((ptr = getenv("CALCTOOLDEFAULTS")) == NULL) {
-        SPRINTF(name, "%s/.gcalctooldefaults", getenv("HOME"));
-        ptr = name;
-    }
-    X->rDB = XrmGetFileDatabase(ptr);
+    SPRINTF(str, "/apps/%s", v->appname);
+    X->client = gconf_client_get_default();
+    gconf_client_add_dir(X->client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
 }
 
 
@@ -1724,14 +1708,11 @@ prop_cancel(GtkButton *button, gpointer user_data)
 void
 put_resource(enum res_type rtype, char *value)
 {
-    char app[MAXLINE], resource[MAXLINE];
+    char cstr[MAXLINE], key[MAXLINE];
 
-    STRCPY(app, v->appname);
-    if (isupper((int) app[0])) {
-        app[0] = tolower(app[0]);
-    }
-    SPRINTF(resource, "%s.%s", app, calc_res[(int) rtype]);
-    XrmPutStringResource(&X->rDB, resource, (value) ? value : "");
+    STRCPY(key, calc_res[(int) rtype]);
+    SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
+    gconf_client_set_string(X->client, cstr, value, NULL);
 }
 
 
@@ -1773,39 +1754,6 @@ static void
 reset_prop_vals(void)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->psright), v->righthand);
-}
-
-
-void
-save_resources()
-{
-    char *home, *filename;
-    struct stat statbuf;
-
-    if ((home = getenv("HOME")) == NULL) {
-        FPRINTF(stderr, "%s: Unable to save defaults. $HOME not set\n", 
-                v->progname);
-        return;
-    }
-
-    if ((filename = getenv("CALCTOOLDEFAULTS")) == NULL) {
-        filename = (char *) calloc(1, strlen(home) + 18);
-        SPRINTF(filename, "%s/.gcalctooldefaults", home);
-    }
-
-/* Check if file exists and user has write access. */
-
-    if (stat(filename, &statbuf) != -1 && access(filename, W_OK) != 0) {
-        FPRINTF(stderr, "%s: Unable to save defaults.\n", v->progname);
-        FPRINTF(stderr, "Cannot write to %s\n", filename);
-        free(filename);
-        return;
-    }
-
-/* If file does not exist this call will create it. */
-
-    XrmPutFileDatabase(X->rDB, filename);
-    free(filename);
 }
 
 
