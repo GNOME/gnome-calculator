@@ -308,6 +308,77 @@ str_replace(char **str, char *from, char *to)
     }
 }
 
+void
+trig_filter(char **func) 
+{
+    assert(func);
+
+    enum mode {
+        normal = 0,
+        inv = 1,
+        hyp = 2,
+        invhyp = 3,
+    } mode;
+  
+    int inverse;
+    int hyperbolic;
+
+    inverse = (v->inverse) ? inv : 0;
+    hyperbolic = (v->hyperbolic) ? hyp : 0;
+
+    mode = (inverse | hyperbolic);
+
+    if (!strcmp(*func, "Sin")) {
+        switch (mode) {
+            case normal:
+                break;
+            case inv:
+                str_replace(func, "Sin", "Asin");
+                break;
+            case hyp:
+                str_replace(func, "Sin", "Sinh");
+                break;
+            case invhyp:
+                str_replace(func, "Sin", "Asinh");
+                break;
+            default:
+                assert(0);
+        }
+    } else if (!strcmp(*func, "Cos")) {
+        switch (mode) {
+            case normal:
+                break;
+            case inv:
+                str_replace(func, "Cos", "Acos");
+                break;
+            case hyp:
+                str_replace(func, "Cos", "Cosh");
+                break;
+            case invhyp:
+                str_replace(func, "Cos", "Acosh");
+                break;
+            default:
+                assert(0);
+        }
+    } else if (!strcmp(*func, "Tan")) {
+        switch (mode) {
+            case normal:
+                break;
+            case inv:
+                str_replace(func, "Tan", "Atan");
+                break;
+            case hyp:
+                str_replace(func, "Tan", "Tanh");
+                break;
+            case invhyp:
+                str_replace(func, "Tan", "Atanh");
+                break;
+            default:
+                assert(0);
+        }
+    }
+}
+
 
 void
 do_expression()
@@ -317,6 +388,8 @@ do_expression()
     update_statusbar("", "");
 
     btext = (v->current->symname) ? v->current->symname : v->current->str;
+    btext = gc_strdup(btext);
+    trig_filter(&btext);
   
     if (v->e.calc_complete) {
         v->e.calc_complete = 0;
@@ -328,8 +401,7 @@ do_expression()
             assert(!v->expression);
             v->expression = v->e.expbak;
             v->e.expbak = NULL;
-	    refresh_display();
-	    return;
+	    goto out;
         }
 
         if (v->current->flags & 
@@ -340,8 +412,7 @@ do_expression()
 
             snprintf(buf, 128, "%s(Ans)", btext);
             exp_replace(buf);
-	    refresh_display();
-	    return;
+	    goto out;
         } else if (v->current->flags & (number | func)) {
             exp_del(); 
         }
@@ -362,8 +433,7 @@ do_expression()
         set_error_state(FALSE);
         MPstr_to_num("0", DEC, v->e.ans);
         MPstr_to_num("0", DEC, v->e.ansbak);
-	refresh_display();
-	return;
+	goto out;
     } else if (v->current->flags & regrcl) {
         int i = char_val(v->current->value[0]);
         char reg[3];
@@ -371,30 +441,25 @@ do_expression()
 
         snprintf(reg, 3, "R%c", n);
         exp_append(reg);
-	refresh_display();
-	return;
+	goto out;
     } else if (v->current->flags & con) {
         int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
         exp_append(make_number(MPval, v->base, TRUE, FALSE));
-	refresh_display();
-	return;
+	goto out;
     } else if (v->current->flags & bsp) {
         if (exp_has_postfix(v->expression, "Ans")) { 
             char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
 
             str_replace(&v->expression, "Ans", ans);
         } 
-        exp_del_char(&v->expression, 1); 
-	refresh_display();
-	return;
+        exp_del_char(&v->expression, 1);
+	goto out;
     } else if (v->current->flags & neg) {
         exp_negate();
-	refresh_display();
-	return;
+	goto out;
     } else if (v->current->flags & inv) {
         exp_inv();
-	refresh_display();
-	return;
+	goto out;
     }
 
     if (v->current->flags & enter) {
@@ -409,16 +474,14 @@ do_expression()
 	        v->e.expbak = gc_strdup(v->expression);
 	        exp_replace("Ans");
 	        v->e.calc_complete = 1;
-		refresh_display();
-		return;
+		goto out;
             } else {
 	        update_statusbar(_("Malformed expression"), 
                                  "gtk-dialog-error");
 	        return;
             }
         } else {
-	    refresh_display();
-	    return;
+	  goto out;
         }
     }
 
@@ -428,7 +491,11 @@ do_expression()
         exp_append("(");
     }
 
+ out:
+    free(btext);
+    btext = NULL;
     refresh_display();
+    return;
 }
 
 
