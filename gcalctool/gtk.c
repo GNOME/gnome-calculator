@@ -719,7 +719,7 @@ create_kframe()
 
     X->kframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->kframe), "kframe", X->kframe);
-    gtk_window_set_resizable(GTK_WINDOW(X->kframe), TRUE);
+    gtk_window_set_resizable(GTK_WINDOW(X->kframe), FALSE);
 
     X->kvbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(X->kvbox);
@@ -771,7 +771,6 @@ create_kframe()
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     setup_default_icon();
-    gtk_widget_show(X->kframe);
 
     gdk_window_set_events(X->kframe->window, FRAME_MASK);
     g_signal_connect(G_OBJECT(X->kframe), "event",
@@ -1694,12 +1693,15 @@ set_inv_item(int state)
 void
 set_mode(enum mode_type mode)
 {
+    GtkRequisition *r;
+    gint w, h;
+
     switch (mode) {
         case BASIC:
             gtk_widget_hide(X->fin_table);
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->sci_table);
-            return;
+            break;
 
         case FINANCIAL:
             gtk_widget_show(X->fin_table);
@@ -1713,6 +1715,35 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->sci_table);
             break;
     }
+
+    r = g_new0(GtkRequisition, 1);
+    gtk_widget_size_request(X->menubar, r);
+    w = r->width;
+    h = r->height;
+    gtk_widget_size_request(X->display_item, r);
+    w = MAX(w, r->width);
+    h += r->height;
+    if (GTK_WIDGET_VISIBLE(X->fin_table)) {
+        gtk_widget_size_request(X->fin_table, r);
+        w = MAX(w, r->width);
+        h += r->height;
+    }
+    if (GTK_WIDGET_VISIBLE(X->mode_panel)) {
+        gtk_widget_size_request(X->mode_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
+    }
+    if (GTK_WIDGET_VISIBLE(X->sci_table)) {
+        gtk_widget_size_request(X->sci_table, r);
+        w = MAX(w, r->width);
+    	h += r->height;
+    }
+    
+    /* For initial display. */
+    gtk_window_set_default_size(GTK_WINDOW(X->kframe), w, h);
+    gtk_window_resize(GTK_WINDOW(X->kframe), w, h);
+    
+    g_free(r);
 }
 
 
