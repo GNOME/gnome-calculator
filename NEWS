@@ -5,6 +5,15 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.3.23
+
+* Fixed bug 125782. If the user is entering a left parenthesis and it is 
+  the first one being displayed and there is no current arithmetic operand,
+  then the current display is initially cleared to avoid the confusion of 
+  showing something like "0(".
+
+----
+
 Overview of changes in gcalctool 4.3.22
 
 * Fixed bug 127862. The fix for bug #125625 introduced a potential 

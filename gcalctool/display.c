@@ -406,6 +406,24 @@ paren_disp(char c)
             }
         }
         v->display[n-1] = '\0';
+
+    } else if (c == '(') {
+
+/* If this is the first left parenthesis being displayed and there is no
+ * current arithmetic operand, then the current display is initially cleared
+ * to avoid the confusion of showing something like "0(".
+ */
+
+        if (v->noparens == 1 && v->cur_op == '?') {
+            n = 0;
+            v->display[n] = '\0';
+        }
+
+        if (n < MAXLINE-1) {
+            v->display[n]   = c;
+            v->display[n+1] = '\0';
+        }
+
     } else {                           /* It must be an ordinary character. */
         if (n < MAXLINE-1) {
             v->display[n]   = c;
