@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <string.h>
@@ -45,14 +46,6 @@
 #define _(String) (String)
 #define N_(String) (String)
 #endif /*ENABLE_NLS*/
-
-#define cpNULL  (char *) NULL
-
-#ifdef XGETTEXT
-#define MSGFILE_LABEL    "SUNW_DESKSET_CALCTOOL_LABEL"
-#else
-extern char *MSGFILE_LABEL;
-#endif
 
 #define MP_SIZE      150     /* Size of the multiple precision values. */
 
@@ -85,126 +78,130 @@ extern char *MSGFILE_LABEL;
 #define SHOWHELP         110    /* F1 key was pressed; show help message. */
 #define LASTEVENTPLUSONE 111    /* Not one of the above. */
 
+/* Menu bar menu types. */
+enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, 
+               M_COPY,  M_FIN,   M_QUIT,  M_REGS,     M_SCI };
+
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
 /* Main calctool window types. */
 enum fcp_type  { FCP_KEY, FCP_REG, FCP_MODE };
 
-/* Pseudo panel items. */
-enum item_type { BASEITEM, DISPLAYITEM, TTYPEITEM, NUMITEM,
-                 HYPITEM,  INVITEM,     OPITEM,    MODEITEM };
+enum item_type { BASEITEM, TTYPEITEM, NUMITEM,
+                 HYPITEM,  INVITEM,   OPITEM,  MODEITEM };
 
 /* Popup menu types. */
-enum menu_type { M_ACC,  M_BASE, M_CON,  M_EXCH, M_FUN,  M_LSHF,  M_MODE,
-                 M_NUM,  M_RCL,  M_RSHF, M_STO,  M_TRIG, M_PROPS, M_NONE
+enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
+                 M_RCL,  M_RSHF, M_STO,  M_NONE
 };
 
 /* Calculator modes. */
-enum mode_type { BASIC, FINANCIAL, LOGICAL, SCIENTIFIC };
+enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
 
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 enum op_type { OP_SET, OP_CLEAR, OP_NOP };  /* Operation item settings. */
 
 /* Resources. */
-enum res_type { R_ACCURACY, R_BASE,  R_DISPLAY, R_MODE, R_HELP,
-                R_REGS,     R_RHAND, R_TRIG,    R_BEEP
+enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_HELP,
+                R_REGS,     R_TRIG, R_BEEP
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
-/* Abbreviations for the calctool keyboard and menu equivalents. */
+/* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
-#define KEY_D     buttons[4].value              /* d */
-#define KEY_E     buttons[5].value              /* e */
-#define KEY_F     buttons[6].value              /* f */
-#define KEY_CLR   buttons[7].value              /* del */
-#define KEY_INT   buttons[2].value              /* CTL('i') */
-#define KEY_FRAC  buttons[3].value              /* CTL('f') */
-#define KEY_BASE  buttons[1].value              /* B */
-#define KEY_DISP  buttons[0].value              /* D */
+#define KEY_7     b_buttons[0].value              /* 7 */
+#define KEY_8     b_buttons[1].value              /* 8 */
+#define KEY_9     b_buttons[2].value              /* 9 */
+#define KEY_DIV   b_buttons[3].value              /* / */
+                                                  /* Empty/hidden button. */
+#define KEY_BSP   b_buttons[5].value              /* CTL('h') */
+#define KEY_CE    b_buttons[6].value              /* CTL(backspace) */
+#define KEY_CLR   b_buttons[7].value              /* del */
 
-#define KEY_A     buttons[12].value             /* a */
-#define KEY_B     buttons[13].value             /* b */
-#define KEY_C     buttons[14].value             /* c */
-#define KEY_BSP   buttons[15].value             /* CTL('h') */
-#define KEY_ABS   buttons[10].value             /* CTL('u') */
-#define KEY_CHS   buttons[11].value             /* C */
-#define KEY_KEYS  buttons[9].value              /* k */
-#define KEY_MODE  buttons[8].value              /* M */
+#define KEY_4     b_buttons[8].value              /* 4 */
+#define KEY_5     b_buttons[9].value              /* 5 */
+#define KEY_6     b_buttons[10].value             /* 6 */
+#define KEY_MUL   b_buttons[11].value             /* x */
+#define KEY_ACC   b_buttons[12].value             /* A */
+#define KEY_CHS   b_buttons[13].value             /* C */
+#define KEY_INT   b_buttons[14].value             /* CTL('i') */
+#define KEY_RCL   b_buttons[15].value             /* R */
 
-#define KEY_7     buttons[20].value             /* 7 */
-#define KEY_8     buttons[21].value             /* 8 */
-#define KEY_9     buttons[22].value             /* 9 */
-#define KEY_MUL   buttons[23].value             /* x */
-#define KEY_REC   buttons[18].value             /* r */
-#define KEY_SQR   buttons[19].value             /* @ */
-#define KEY_ACC   buttons[17].value             /* A */
-#define KEY_MEM   buttons[16].value             /* m */
+#define KEY_1     b_buttons[16].value             /* 1 */
+#define KEY_2     b_buttons[17].value             /* 2 */
+#define KEY_3     b_buttons[18].value             /* 3 */
+#define KEY_SUB   b_buttons[19].value             /* - */
+#define KEY_PER   b_buttons[20].value             /* % */
+#define KEY_SQRT  b_buttons[21].value             /* s */
+#define KEY_FRAC  b_buttons[22].value             /* CTL('f') */
+#define KEY_STO   b_buttons[23].value             /* S */
 
-#define KEY_4     buttons[28].value             /* 4 */
-#define KEY_5     buttons[29].value             /* 5 */
-#define KEY_6     buttons[30].value             /* 6 */
-#define KEY_DIV   buttons[31].value             /* / */
-#define KEY_PER   buttons[26].value             /* % */
-#define KEY_SQRT  buttons[27].value             /* s */
-#define KEY_CON   buttons[25].value             /* # */
-#define KEY_FUN   buttons[24].value             /* F */
+#define KEY_0     b_buttons[24].value             /* 0 */
+#define KEY_PNT   b_buttons[25].value             /* . */
+#define KEY_EQ    b_buttons[26].value             /* = */
+#define KEY_ADD   b_buttons[27].value             /* + */
+#define KEY_REC   b_buttons[28].value             /* r */
+#define KEY_SQR   b_buttons[29].value             /* @ */
+#define KEY_ABS   b_buttons[30].value             /* CTL('u') */
+#define KEY_EXCH  b_buttons[31].value             /* X */
 
-#define KEY_1     buttons[36].value             /* 1 */
-#define KEY_2     buttons[37].value             /* 2 */
-#define KEY_3     buttons[38].value             /* 3 */
-#define KEY_SUB   buttons[39].value             /* - */
-#define KEY_LPAR  buttons[34].value             /* ( */
-#define KEY_RPAR  buttons[35].value             /* ) */
-#define KEY_RCL   buttons[33].value             /* R */
-#define KEY_STO   buttons[32].value             /* S */
+#define KEY_CTRM  f_buttons[0].value              /* CTL('t') */
+#define KEY_DDB   f_buttons[1].value              /* CTL('d') */
+#define KEY_FV    f_buttons[2].value              /* v */
+#define KEY_PMT   f_buttons[3].value              /* P */
+#define KEY_PV    f_buttons[4].value              /* p */
+#define KEY_RATE  f_buttons[5].value              /* CTL('r') */
+#define KEY_SLN   f_buttons[6].value              /* CTL('s') */
+#define KEY_SYD   f_buttons[7].value              /* CTL('y') */
+#define KEY_TERM  f_buttons[8].value              /* T */
 
-#define KEY_0     buttons[44].value             /* 0 */
-#define KEY_PNT   buttons[45].value             /* . */
-#define KEY_EQ    buttons[46].value             /* = */
-#define KEY_ADD   buttons[47].value             /* + */
-#define KEY_EXP   buttons[42].value             /* E */
-#define KEY_ASC   buttons[43].value             /* CTL('a') */
-#define KEY_EXCH  buttons[41].value             /* X */
-#define KEY_QUIT  buttons[40].value             /* q */
+#define KEY_LSFT  s_buttons[0].value              /* < */
+#define KEY_RSFT  s_buttons[1].value              /* > */
+#define KEY_16    s_buttons[2].value              /* [ */
+#define KEY_32    s_buttons[3].value              /* ] */
+                                                  /* Empty/hidden button. */
+#define KEY_LPAR  s_buttons[5].value              /* ( */
+#define KEY_RPAR  s_buttons[6].value              /* ) */
+#define KEY_KEYS  s_buttons[7].value              /* k */
 
-#define KEY_CTRM  mode_buttons[0].value         /* CTL('t') */
-#define KEY_DDB   mode_buttons[1].value         /* CTL('d') */
-#define KEY_FV    mode_buttons[2].value         /* v */
-#define KEY_PMT   mode_buttons[3].value         /* P */
-#define KEY_PV    mode_buttons[4].value         /* p */
-#define KEY_RATE  mode_buttons[5].value         /* CTL('r') */
-#define KEY_SLN   mode_buttons[6].value         /* CTL('s') */
-#define KEY_SYD   mode_buttons[7].value         /* CTL('y') */
-#define KEY_TERM  mode_buttons[8].value         /* T */
+#define KEY_EXP   s_buttons[8].value              /* E */
+#define KEY_CON   s_buttons[9].value              /* # */
+#define KEY_FUN   s_buttons[10].value             /* F */
+#define KEY_ETOX  s_buttons[11].value             /* { */
+#define KEY_TTOX  s_buttons[12].value             /* } */
+#define KEY_YTOX  s_buttons[13].value             /* y */
+#define KEY_FACT  s_buttons[14].value             /* ! */
+#define KEY_RAND  s_buttons[15].value             /* ? */
 
-#define KEY_LSFT  mode_buttons[16].value        /* < */
-#define KEY_RSFT  mode_buttons[17].value        /* > */
-#define KEY_16    mode_buttons[18].value        /* [ */
-#define KEY_32    mode_buttons[19].value        /* ] */
-#define KEY_OR    mode_buttons[24].value        /* | */
-#define KEY_AND   mode_buttons[25].value        /* & */
-#define KEY_NOT   mode_buttons[26].value        /* ~ */
-#define KEY_XOR   mode_buttons[27].value        /* ^ */
-#define KEY_XNOR  mode_buttons[28].value        /* n */
+#define KEY_D     s_buttons[16].value             /* d */
+#define KEY_E     s_buttons[17].value             /* e */
+#define KEY_F     s_buttons[18].value             /* f */
+#define KEY_COS   s_buttons[19].value             /* CTL('c') */
+#define KEY_SIN   s_buttons[20].value             /* CTL('s') */
+#define KEY_TAN   s_buttons[21].value             /* CTL('t') */
+#define KEY_LN    s_buttons[22].value             /* N */
+#define KEY_LOG   s_buttons[23].value             /* G */
 
-#define KEY_TRIG  mode_buttons[32].value        /* T */
-#define KEY_HYP   mode_buttons[33].value        /* h */
-#define KEY_INV   mode_buttons[34].value        /* i */
-#define KEY_ETOX  mode_buttons[35].value        /* { */
-#define KEY_TTOX  mode_buttons[36].value        /* } */
-#define KEY_YTOX  mode_buttons[37].value        /* y */
-#define KEY_FACT  mode_buttons[38].value        /* ! */
-#define KEY_COS   mode_buttons[40].value        /* CTL('c') */
-#define KEY_SIN   mode_buttons[41].value        /* CTL('s') */
-#define KEY_TAN   mode_buttons[42].value        /* CTL('t') */
-#define KEY_LN    mode_buttons[43].value        /* N */
-#define KEY_LOG   mode_buttons[44].value        /* G */
-#define KEY_RAND  mode_buttons[45].value        /* ? */
+#define KEY_A     s_buttons[24].value             /* a */
+#define KEY_B     s_buttons[25].value             /* b */
+#define KEY_C     s_buttons[26].value             /* c */
+#define KEY_OR    s_buttons[27].value             /* | */
+#define KEY_AND   s_buttons[28].value             /* & */
+#define KEY_NOT   s_buttons[29].value             /* ~ */
+#define KEY_XOR   s_buttons[30].value             /* ^ */
+#define KEY_XNOR  s_buttons[31].value             /* n */
 
-#define BCOLS          8          /* No of columns of buttons. */
-#define BROWS          6          /* No of rows of buttons. */
+#define BCOLS          8      /* No of columns of Basic Mode buttons. */
+#define BROWS          4      /* No of rows of Basic Mode buttons. */
+
+#define FCOLS          8      /* No of columns of Financial Mode buttons. */
+#define FROWS          2      /* No of rows of Financial Mode buttons. */
+
+#define SCOLS          8      /* No of columns of Scientific Mode buttons. */
+#define SROWS          4      /* No of rows of Scientific Mode buttons. */
+
 #define CTL(n)         n - 96     /* Generate control character value. */
 #define EQUAL(a, b)    !strncmp(a, b, strlen(b))
 
@@ -234,7 +231,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
 #define MAXENTRIES     50         /* Maximum number of menu entries. */
-#define MAXMODES       4          /* Maximum number of calculator modes. */
+#define MAXMODES       3          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
@@ -244,14 +241,13 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define MROWS          2          /* Number of rows of "special" keys. */
 #define MODEKEYS       MCOLS * MROWS
 
-#define MAXCOLS        ((v->curwin == FCP_KEY) ? BCOLS : MCOLS)
-#define MAXROWS        ((v->curwin == FCP_KEY) ? BROWS : MROWS)
-
 #ifndef MIN
 #define MIN(x,y)       ((x) < (y) ? (x) : (y))
 #endif /*MIN*/
 
-#define NOBUTTONS      BROWS * BCOLS
+#define B_NOBUTTONS      BROWS * BCOLS  /* Number of Basic Mode buttons. */
+#define F_NOBUTTONS      FROWS * FCOLS  /* Number of Financial Mode buttons. */
+#define S_NOBUTTONS      SROWS * SCOLS  /* Number of Scientific Mode buttons. */
 
 #ifndef CFNAME
 #define CFNAME         ".gcalctoolcf"
@@ -289,6 +285,9 @@ struct menu {
 };
 
 struct calcVars {                      /* Calctool variables and options. */
+    struct button *pending_but;        /* Button info. for pending op. */
+    struct button *current;            /* Current button/character pressed. */
+
     char *appname;                     /* Application name for resources. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
     char cur_op;                       /* Current arithmetic operation. */
@@ -299,14 +298,15 @@ struct calcVars {                      /* Calctool variables and options. */
     char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
     char *home;                        /* Pathname for users home directory. */
     char *iconlabel;                   /* The calctool icon label. */
-    char item_text[MAXITEMS][60];      /* Pseudo panel item text strings. */
     char old_cal_value;                /* Previous calculation operator. */
+    char op_item_text[5];              /* Operand item panel string. */
     char opstr[5];                     /* Operand string during pending op. */
     char *progname;                    /* Name of this program. */
     char pstr[5];                      /* Current button text string. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS+1];           /* Scratchpad for scientific numbers. */
     char *titleline;                   /* Value of titleline (if present). */
+    char *tool_label;                  /* Title line for calculator window. */
 
     int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
     int MPdebug;                       /* If set, debug info. to stderr. */
@@ -320,16 +320,13 @@ struct calcVars {                      /* Calctool variables and options. */
 
     enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
     enum fcp_type curwin;           /* Window current event occured in. */
-    enum fcp_type pending_win;      /* Window that pending op came from. */
     enum mode_type modetype;        /* Current calculator mode. */
-    enum mode_type pending_mode;    /* Mode for pending op. */
     enum num_type dtype;            /* Number display mode. */
     enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
 
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_ch;        /* Current character if keyboard event. */
-    int current;       /* Current button/character pressed. */
     int curx;          /* Current mouse X position. */
     int cury;          /* Current mouse Y position. */
     int down;          /* Indicates is a mouse button is down. */
@@ -354,10 +351,8 @@ struct calcVars {                      /* Calctool variables and options. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
     int opstack[MAXSTACK];  /* Stack containing parentheses input. */
     int pending;            /* Set for command depending on multiple presses. */
-    int pending_n;     /* Offset into function table for pending op. */
     int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
-    int righthand;     /* Set if this is a "right-handed" calculator. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_help;     /* Set if we wish to show tooltip help. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
@@ -379,13 +374,12 @@ typedef struct calcVars *Vars;
 #define dmax(a, b)  (double) max(a, b)
 #define dmin(a, b)  (double) min(a, b)
 
+struct button *button_for_value(int);
+
 char *button_str(int);
 char *convert(char *);
 char *get_resource(enum res_type);
 char *make_number(int *, BOOLEAN);
-
-enum menu_type button_mtype(int);
-enum op_type button_opdisp(int);
 
 unsigned short *get_but_data();
 
@@ -396,20 +390,23 @@ int get_menu_entry(enum menu_type, int);
 int main(int, char **);
 
 void beep();
-void clear_display();
+void clear_display(int);
 void display_prop_sheet();
 void do_ascii();
+void do_base(enum base_type);
 void do_business();
 void do_calc();
 void do_calctool(int, char **);
 void do_clear();
+void do_clear_entry();
 void do_delete();
+void do_numtype(enum num_type);
 void do_expno();
-void do_frame();
 void do_help();
 void do_immed();
 void do_keys();
-void do_memory();
+void do_memory(int);
+void do_mode();
 void do_none();
 void do_number();
 void do_paren();
@@ -417,13 +414,14 @@ void do_pending();
 void do_point();
 void do_portion();
 void do_trig();
+void do_trigtype(enum trig_type);
 void doerr(char *);
 void get_display();
 void get_key_val(int *, char *);
-void get_label(int);
+void get_label(struct button *);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
-void handle_menu_selection(int, int);
+void handle_menu_selection(struct button *, int);
 void handle_selection();
 void initialise();
 void init_args();
@@ -439,7 +437,7 @@ void make_registers();
 void MPstr_to_num(char *, enum base_type, int *);
 void paren_disp(char);
 void process_event(int);
-void process_item(int);
+void process_item(struct button *);
 void process_stack(int, int, int);
 void process_str(char *);
 void push_num(int *);
@@ -448,14 +446,16 @@ void put_resource(enum res_type, char *);
 void read_rcfiles();
 void read_resources();
 void read_str(char **, char *);
-void save_pending_values(int);
+void save_pending_values(struct button *);
 void save_resources();
-void set_button_state(enum fcp_type, int, int);
+void set_display(char *str);
 void set_help_state(int);
+void set_hyp_item(int);
 void set_ins_key();
-void set_item(enum item_type, char *);
-void set_label(enum item_type itemno, char *str);
+void set_item(enum item_type, int);
+void set_inv_item(int);
 void set_mode(enum mode_type);
+void set_op_item(char *);
 void set_title(enum fcp_type, char *);
 void show_ascii_frame();
 void show_display(int *);

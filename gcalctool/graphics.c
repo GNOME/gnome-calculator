@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -24,62 +25,10 @@
 #include "calctool.h"
 #include "extern.h"
 
-static int get_index(int);
-
-static void do_mouse_right_down();
+static struct button *get_index(int ch);
 
 
-enum menu_type
-button_mtype(int n)
-{
-    return((v->curwin == FCP_KEY) ? buttons[n].mtype :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].mtype);
-}
-
-
-enum op_type
-button_opdisp(int n)
-{
-    return((v->curwin == FCP_KEY) ? buttons[n].opdisp :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].opdisp);
-}
-
-
-char *
-button_str(int n)
-{
-    return((v->curwin == FCP_KEY) ? _(buttons[n].str) :
-	   _(mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].str));
-}
-
-
-int
-button_mods(int n)
-{
-    return((v->curwin == FCP_KEY) ? buttons[n].mods :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].mods);
-}
-
-
-int
-button_value(int n)
-{
-    return((v->curwin == FCP_KEY) ? buttons[n].value :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].value);
-}
-
-
-static void
-do_mouse_right_down()   /* Handle mouse right button down event. */
-{
-    if (v->curwin == FCP_REG) {
-        return;
-    }
-    v->down = RIGHT_DOWN;
-    display_prop_sheet();
-}
-
-
+#ifdef FIXUP
 /*  Get button index for given character value, setting curwin,
  *  row and column appropriately. Note that if the value isn't found,
  *  then a value of NOBUTTONS is returned. This is "chucked out" by
@@ -115,55 +64,35 @@ get_index(int ch)
 
     return(n);
 }
+#endif /*FIXUP*/
 
-
-/* Grey out numeric buttons depending upon base. */
-
-void
-grey_buttons(enum base_type base)
+static struct button *
+get_index(int ch)
 {
-    char val;
-    int found, i, j, k, n, x;
+/**/fprintf(stderr, "get_index called.\n");
 
-    for (k = 0; k < 16; k++) {
-        found = 0;
-        val = digits[k];
-        if (isupper((int) val)) {
-            val = tolower((int) val);
-        }
-        for (i = 0; i < BCOLS; i++) {
-            for (j = 0; j < BROWS; j++) {
-                n = j*BCOLS + i;
-                x = j*BCOLS + cur_pos[i];
-                if (val == buttons[n].value && buttons[n].mods == 0) {
-                    found = 1;           
-                    break;
-                }
-            }
-            if (found) {
-                break;
-            }
-        }
+/* XXX:richb - this routine needs to be rewritten to return the button 
+ *             struct for the keyboard character that was entered.
+ */
 
-        set_button_state(FCP_KEY, x, (k < basevals[(int) base]));
-    }                    
+    return(NULL);
 }
 
 
 /* Process menu selection. */
 
 void
-handle_menu_selection(int n, int item)
+handle_menu_selection(struct button *n, int item)
 {
     if (item != -1) {
         if (IS_KEY(v->pending, KEY_LPAR)) {   /* Are we inside parentheses? */
-            v->current = button_value(n);
+            v->current->value = n->value;
             do_paren();
-            v->current = item;
+            v->current->value = item;
             do_paren();
         } else {
-            save_pending_values(button_value(n));
-            v->current = item;
+            save_pending_values(n);
+            v->current = button_for_value(item);
             v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
             do_pending();
             v->ismenu = 0;
@@ -193,16 +122,13 @@ make_registers()            /* Calculate memory register frame values. */
 void
 process_event(int type)       /* Process this event. */
 {
-    int ival;
-
     switch (type) {
         case KEYBOARD_DOWN : 
             if (v->pending) {
-                v->current = v->cur_ch;
+                v->current->value = v->cur_ch;
                 do_pending();
             } else {
-                ival = get_index(v->cur_ch);
-                process_item(ival);
+                process_item(get_index(v->cur_ch));
             }
             break;
 
@@ -211,10 +137,7 @@ process_event(int type)       /* Process this event. */
 
         case LEFT_DOWN : 
         case MIDDLE_DOWN : 
-            break;
-
         case RIGHT_DOWN : 
-            do_mouse_right_down();
             break;
 
         case LEFT_UP : 
@@ -262,7 +185,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
                 v->cur_ch = CTL(v->opstack[startop + i]);
             }
             if (v->pending) {
-                v->current = v->cur_ch;
+                v->current->value = v->cur_ch;
                 do_pending();
             } else {
                 process_item(get_index(v->cur_ch));
@@ -273,7 +196,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
     push_num(v->MPdisp_val);
     v->opsptr = startop - 1;
     push_op(-1);
-    save_pending_values(KEY_LPAR);
+    save_pending_values(button_for_value(KEY_LPAR));
     STRCPY(v->display, sdisp);  /* Restore current display. */
 }
 
@@ -289,31 +212,10 @@ process_str(char *str)
             return;
         }
         if (v->pending) {
-            v->current = str[i];
+            v->current->value = str[i];
             do_pending();
         } else {
             process_item(get_index(str[i]));
         }
     }
-}
-
-
-void
-set_item(enum item_type itemno, char *str)
-{
- 
-/*  If we are in the middle of processing parentheses input, then we
- *  should immediately return. The display would look a mess otherwise.
- *  There is one exception to this; when we want to show the current
- *  characters typed in during parenthesis processing. This can be
- *  determined by checking the show_paren flag.
- */
-
-    if (v->opsptr && !v->show_paren) {
-        return;
-    }
-
-    set_label(itemno, str);	/* Not _(str) here - it is done
-				   in the set_label() function */
-    STRCPY(v->item_text[(int) itemno], _(str));
 }

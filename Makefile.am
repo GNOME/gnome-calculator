@@ -10,7 +10,8 @@ EXTRA_DIST = \
 	depcomp \
 	MAINTAINERS \
 	TODO \
-	gcalctoolrc
+	gcalctoolrc \
+	$(schema_DATA)
 
 # Install the gcalctool schema file.
 install-data-local:

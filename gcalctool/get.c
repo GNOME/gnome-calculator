@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -152,14 +153,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 
                 case 'h' :                    /* Show tooltips help. */
                     v->show_help = 1;
-                    break;
-
-                case 'l' :                    /* "Left-handed" version. */
-                    v->righthand = 0;
-                    break;
-
-                case 'r' :                    /* "Right-handed" version */
-                    v->righthand = 1;
                     break;
 
                 case '?' :
@@ -322,7 +315,6 @@ init_vars()    /* Setup default values for various variables. */
 {
     int acc, i, n, size;
 
-    v->righthand     = 1;      /* "Right-handed" calculator by default. */
     v->accuracy      = 2;      /* Initial accuracy. */
     v->base          = DEC;    /* Initial base. */
     v->dtype         = FIX;    /* Initial number display mode. */
@@ -357,10 +349,6 @@ init_vars()    /* Setup default values for various variables. */
     MPstr_to_num("0.0353", DEC, v->MPcon_vals[7]);  /* grams <=> ounce. */
     MPstr_to_num("0.948",  DEC, v->MPcon_vals[8]);  /* Kjoules <=> BTU's. */
     MPstr_to_num("0.0610", DEC, v->MPcon_vals[9]);  /* cms3 <=> inches3. */
-
-    for (i = 0; i < MAXITEMS; i++) {
-        v->item_text[i][0] = 0;
-    }
 
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
@@ -478,9 +466,6 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
     }
-    if (get_bool_resource(R_RHAND, &boolval)) {
-        v->righthand = boolval;
-    }
 }
 
 
@@ -510,9 +495,8 @@ void
 usage(char *progname)
 {
     FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] [-l]\n"), progname);
-    FPRINTF(stderr, 
-            _("\t\t [-r] [-?] [-v] [-?]\n"));
+    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
+    FPRINTF(stderr, _("\t\t [-?] [-v] [-?]\n"));
     exit(1);
 }
 
@@ -621,7 +605,6 @@ write_resources()
     put_resource(R_MODE,     Rmstr[(int) v->modetype]);
     put_resource(R_TRIG,     Rtstr[(int) v->ttype]);
     put_resource(R_REGS,     set_bool(v->rstate == TRUE));
-    put_resource(R_RHAND,    set_bool(v->righthand == TRUE));
     put_resource(R_BEEP,     set_bool(v->beep == TRUE));
     put_resource(R_HELP,     set_bool(v->show_help == TRUE));
 }

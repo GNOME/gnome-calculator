@@ -12,22 +12,26 @@ INCLUDES = \
 bin_PROGRAMS = gcalctool
 
 gcalctool_SOURCES = \
-    calctool.c \
-    calctool.h \
-    display.c \
-    dsfuns.c \
-    dsdefs.h \
-    get.c \
-    functions.c \
-    graphics.c \
-    mp.c \
+	calctool.c \
+	calctool.h \
+	display.c \
+	dsfuns.c \
+	dsdefs.h \
+	get.c \
+	functions.c \
+	graphics.c \
+	mp.c \
 	gtk.c \
-    extern.h
+	extern.h
 
 gcalctool_LDADD = \
 	@PACKAGE_LIBS@ \
 	@GCONF_LIBS@ \
-	$(X_LIBS) $(X_PRE_LIBS) $(X_BASIC_LIBS) $(X_EXTRA_LIBS)
+	$(X_LIBS) \
+	$(GNOME_UTIL_LIBS) \
+	$(X_PRE_LIBS) \
+	$(X_BASIC_LIBS) \
+	$(X_EXTRA_LIBS)
 
 pkgdata_DATA = calctool.gif
 

@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -34,28 +35,28 @@
 #include <gdk/gdkkeysyms.h>
 #include <gconf/gconf-client.h>
 
-#define BUT_0     X->buttons[v->righthand ? 44 : 40]       /* 0 */
-#define BUT_1     X->buttons[v->righthand ? 36 : 32]       /* 1 */
-#define BUT_2     X->buttons[v->righthand ? 37 : 33]       /* 2 */
-#define BUT_3     X->buttons[v->righthand ? 38 : 34]       /* 3 */
-#define BUT_4     X->buttons[v->righthand ? 28 : 24]       /* 4 */
-#define BUT_5     X->buttons[v->righthand ? 29 : 25]       /* 5 */
-#define BUT_6     X->buttons[v->righthand ? 30 : 26]       /* 6 */
-#define BUT_7     X->buttons[v->righthand ? 20 : 16]       /* 7 */
-#define BUT_8     X->buttons[v->righthand ? 21 : 17]       /* 8 */
-#define BUT_9     X->buttons[v->righthand ? 22 : 18]       /* 9 */
-#define BUT_ADD   X->buttons[v->righthand ? 47 : 43]       /* + */
-#define BUT_SUB   X->buttons[v->righthand ? 39 : 35]       /* - */
-#define BUT_MUL   X->buttons[v->righthand ? 23 : 19]       /* x */
-#define BUT_DIV   X->buttons[v->righthand ? 31 : 27]       /* / */
-#define BUT_PNT   X->buttons[v->righthand ? 45 : 41]       /* . */
-#define BUT_EQ    X->buttons[v->righthand ? 46 : 42]       /* = */
-#define BUT_MUL   X->buttons[v->righthand ? 23 : 19]       /* x */
-#define BUT_QUIT  X->buttons[v->righthand ? 40 : 47]       /* q */
-
-#define GETHOSTNAME  (void) gethostname
-
-#define MAXLABELS   8
+#define BUT_0     X->bas_buttons[24]       /* 0 */
+#define BUT_1     X->bas_buttons[16]       /* 1 */
+#define BUT_2     X->bas_buttons[17]       /* 2 */
+#define BUT_3     X->bas_buttons[18]       /* 3 */
+#define BUT_4     X->bas_buttons[8]        /* 4 */
+#define BUT_5     X->bas_buttons[9]        /* 5 */
+#define BUT_6     X->bas_buttons[10]       /* 6 */
+#define BUT_7     X->bas_buttons[0]        /* 7 */
+#define BUT_8     X->bas_buttons[1]        /* 8 */
+#define BUT_9     X->bas_buttons[2]        /* 9 */
+#define BUT_A     X->sci_buttons[24]       /* A */
+#define BUT_B     X->sci_buttons[25]       /* B */
+#define BUT_C     X->sci_buttons[26]       /* C */
+#define BUT_D     X->sci_buttons[16]       /* D */
+#define BUT_E     X->sci_buttons[17]       /* E */
+#define BUT_F     X->sci_buttons[18]       /* F */
+#define BUT_ADD   X->bas_buttons[27]       /* + */
+#define BUT_SUB   X->bas_buttons[19]       /* - */
+#define BUT_MUL   X->bas_buttons[11]       /* x */
+#define BUT_DIV   X->bas_buttons[3]        /* / */
+#define BUT_PNT   X->bas_buttons[25]       /* . */
+#define BUT_EQ    X->bas_buttons[26]       /* = */
 
 #define FRAME_MASK GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK | \
                    GDK_VISIBILITY_NOTIFY_MASK
@@ -65,90 +66,63 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *menu_accel;
     GdkAtom clipboard_atom;
     GConfClient *client;
+    GtkItemFactory *mb_fact;           /* Menubar item factory. */
     GtkItemFactory *fact[MAXMENUS];
     GtkTooltips *tips;
-    GtkWidget *buttons[NOBUTTONS];
-    GtkWidget *mode_buttons[(MROWS * MCOLS) * (MAXMODES-1)];
+    GtkWidget *about;                  /* "About gcalctool" popup. */
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
+    GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
     GtkWidget *cfframe;                /* Constant/Function window. */
     GtkWidget *cf_no_label;
     GtkWidget *cf_con_entry;
     GtkWidget *cf_desc_entry;
     GtkWidget *cf_val_entry;
+    GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
+    GtkWidget *hyp;                    /* Hyperbolic mode. */
+    GtkWidget *inv;                    /* Inverse mode. */
     GtkWidget *kframe;                 /* Main window. */
     GtkWidget *kvbox;
     GtkWidget *ktable;
     GdkPixbuf *icon;                   /* Main window icon. */
-    GtkWidget *mframe;                 /* Mode window. */
-    GtkWidget *labels[MAXLABELS];      /* Entry and mode/state labels. */
-    GtkWidget *pframe;                 /* Properties window. */
-    GtkWidget *psleft;
-    GtkWidget *psright;
+    GtkWidget *menubar;
+    GtkWidget *mode_panel;
+    GtkWidget *op_label;               /* Operand label. */
+    GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *regs[MAXREGS];          /* Memory registers. */
     GtkWidget *menus[MAXMENUS];
-    GtkWidget *mode_tables[MAXMODES];
+    GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
+
+
+    GtkWidget *bas_buttons[BROWS * BCOLS];
+    GtkWidget *fin_buttons[FROWS * FCOLS];
+    GtkWidget *sci_buttons[SROWS * SCOLS];
+
+    GtkWidget *bas_table;
+    GtkWidget *fin_table;
+    GtkWidget *sci_table;
 
     enum menu_type CFtype;
     Display *dpy;
 
     int menuval;                  /* Index to button array at menu time. */
-    int mrec[MAXMENUS];
+    struct button *mrec[MAXMENUS];
 } XObject;
 
 typedef struct Xobject *XVars;
 
-static char *display_help = N_( \
-    "Calculator display\n" \
-    "\n" \
-    "The bottom of the display shows the current mode\n" \
-    "of operation for:\n" \
-    "\n" \
-    "Number base         BIN (binary),\n" \
-    "                    OCT (octal),\n" \
-    "                    DEC (decimal),\n" \
-    "                    or HEX (hexadecimal)\n" \
-    "\n" \
-    "Trigonometric base  DEG (degrees),\n" \
-    "                    GRAD (gradients),\n" \
-    "                    or RAD (radians)\n" \
-    "\n" \
-    "Display type        ENG (engineering),\n" \
-    "                    FIX (fixed point),\n" \
-    "                    or SCI (scientific)\n" \
-    "\n" \
-    "Mode                BASIC, FINANCIAL,\n" \
-    "                    LOGICAL, or SCIENTIFIC\n" \
-    "\n" \
-    "At certain times, the following may also be\n" \
-    "displayed:\n" \
-    "\n" \
-    "HYP     (hyperbolic mode is set)\n" \
-    "INV     (inverse mode is set)\n" \
-    "\n" \
-    "These pertain only to trigonometrical\n" \
-    "calculations.\n" \
-    "\n" \
-    "When the calculator needs to be \"cleared,\"\n" \
-    "\"CLR\" will be displayed.\n" \
-    "\n" \
-    "The display also shows the current mathematical\n" \
-    "operation and function when this operation\n" \
-    "requires other input to be complete."
-    );
-
-static GtkWidget *create_menu(enum menu_type, int);
+static GtkWidget *create_menu(enum menu_type, struct button *);
+static GtkWidget *create_mode_panel(GtkWidget *);
 static GtkWidget *make_menu_button(gchar *, int);
-static GtkWidget *make_mtable(GtkWidget *, GtkWidget *, enum mode_type);
+static GtkWidget *make_but_table(GtkWidget *, GtkWidget *, GtkWidget **,
+                                 struct button *, int, int, char *);
 
 static gchar *find_file(const char *base, GError **err);
 static char *make_hostname(Display *);
 
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
-static gboolean dismiss_mframe(GtkWidget *, GdkEvent *, gpointer);
-static gboolean dismiss_pframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean frame_interpose(GtkWidget *, GdkEvent *, gpointer );
 
@@ -156,30 +130,49 @@ static void aframe_apply_cb(GtkButton *, gpointer);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_entry_cb(GtkEntry *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
+static void base_cb(GtkToggleButton *, gpointer);
 static void cfframe_apply_cb(GtkButton *, gpointer);
 static void cfframe_cancel_cb(GtkButton *, gpointer);
 static void cfframe_ok_cb(GtkButton *, gpointer);
 static void con_menu_proc(gpointer, int, GtkWidget *);
 static void create_con_fun_menu(enum menu_type);
 static void create_kbd_accel(GtkWidget *, guint, guint);
+static void disp_cb(GtkToggleButton *, gpointer);
 static void fun_menu_proc(gpointer, int, GtkWidget *);
-static void init_options(void);
-static void make_ktable(GtkWidget *, GtkWidget *);
+static void hyp_cb(GtkToggleButton *, gpointer);
+static void inv_cb(GtkToggleButton *, gpointer);
+static void mb_proc(gpointer, int, GtkWidget *);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void notice_prompt(GtkWidget *, char *);
-static void pframe_init(void);
-static void prop_apply(GtkButton *, gpointer);
-static void prop_cancel(GtkButton *, gpointer);
-static void prop_ok(GtkButton *, gpointer);
-static void props_menu_proc(gpointer, int, GtkWidget *);
-static void remove_kbd_accel(GtkWidget *, guint, guint);
-static void reset_prop_vals(void);
 static void set_button_label(GtkWidget *, gchar *, int n);
-static void set_prop_options(int);
+static void set_button_state(GtkWidget *, int);
 static void setup_default_icon(void);
+static void trig_cb(GtkToggleButton *, gpointer);
 
 static XVars X;
+
+/* Menubar menus. */
+
+static GtkItemFactoryEntry main_menu[] = {
+    { "/_File",                    NULL, NULL,    0,       "<Branch>" },
+    { "/File/_Quit",       "<control>Q", mb_proc, M_QUIT,  NULL },
+
+    { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
+    { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  NULL },
+    { "/Edit/_Insert ASCII Value", NULL, mb_proc, M_ASCII, NULL },
+
+    { "/_View",                    NULL, NULL,    0,       "<Branch>" },
+    { "/View/_Basic Mode",         NULL, mb_proc, M_BASIC, "<RadioItem>" },
+    { "/View/_Financial Mode",     NULL, mb_proc, M_FIN,   "/View/Basic Mode" },
+    { "/View/_Scientific Mode",    NULL, mb_proc, M_SCI,   "/View/Basic Mode" },
+    { "/View/sep1",                NULL, NULL,    0,       "<Separator>" },
+    { "/View/_Memory Registers",   NULL, mb_proc, M_REGS,  "<ToggleItem>" },
+
+    { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
+    { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, NULL },
+    { "/Help/_About Gcalctool",    NULL, mb_proc, M_ABOUT, NULL },
+};
 
 static GtkItemFactoryEntry acc_menu[] = {
     { N_("/0 radix places"), NULL, menu_proc, '0', NULL, },
@@ -192,13 +185,6 @@ static GtkItemFactoryEntry acc_menu[] = {
     { N_("/7 radix places"), NULL, menu_proc, '7', NULL, },
     { N_("/8 radix places"), NULL, menu_proc, '8', NULL, },
     { N_("/9 radix places"), NULL, menu_proc, '9', NULL, },
-};
-
-static GtkItemFactoryEntry base_menu[] = {
-    { N_("/Binary"),      NULL, menu_proc, 'b', NULL },
-    { N_("/Octal"),       NULL, menu_proc, 'o', NULL },
-    { N_("/Decimal"),     NULL, menu_proc, 'd', NULL },
-    { N_("/Hexadecimal"), NULL, menu_proc, 'h', NULL },
 };
 
 static GtkItemFactoryEntry exch_menu[] = {
@@ -230,19 +216,6 @@ static GtkItemFactoryEntry lshift_menu[] = {
     { N_("/13 places"), NULL, menu_proc, 'd', NULL },
     { N_("/14 places"), NULL, menu_proc, 'e', NULL },
     { N_("/15 places"), NULL, menu_proc, 'f', NULL },
-};
-
-static GtkItemFactoryEntry mode_menu[] = {
-    { N_("/Basic"),      NULL, menu_proc, 'b', NULL },
-    { N_("/Financial"),  NULL, menu_proc, 'f', NULL },
-    { N_("/Logical"),    NULL, menu_proc, 'l', NULL },
-    { N_("/Scientific"), NULL, menu_proc, 's', NULL },
-};
-
-static GtkItemFactoryEntry disp_menu[] = {
-    { N_("/Engineering"), NULL, menu_proc, 'e', NULL },
-    { N_("/Fixed point"), NULL, menu_proc, 'f', NULL },
-    { N_("/Scientific"),  NULL, menu_proc, 's', NULL },
 };
 
 static GtkItemFactoryEntry rcl_menu[] = {
@@ -289,16 +262,6 @@ static GtkItemFactoryEntry sto_menu[] = {
     { N_("/Register 9"), NULL, menu_proc, '9', NULL },
 };
 
-static GtkItemFactoryEntry trig_menu[] = {
-    { N_("/Degrees"),   NULL, menu_proc, 'd', NULL },
-    { N_("/Gradients"), NULL, menu_proc, 'g', NULL },
-    { N_("/Radians"),   NULL, menu_proc, 'r', NULL },
-};
-
-static GtkItemFactoryEntry props_menu[] = {
-    { N_("/Properties..."), NULL, props_menu_proc, '0', NULL },
-};
-
 
 int
 main(int argc, char **argv)
@@ -338,11 +301,47 @@ main(int argc, char **argv)
 
 
 static void
+about_cb()
+{
+/**/fprintf(stderr, "about_cb called.\n");
+#ifdef FIXUP
+    gchar *authors[] = {
+        "Rich Burridge <rich.burridge@sun.com>",
+        NULL
+    };
+    gchar *documenters[] = {
+        NULL
+    };
+    /* Translator credits */
+    gchar *translator_credits = _("translator_credits");
+
+    if (X->about != NULL) {
+        gdk_window_show(X->about->window);
+        gdk_window_raise(X->about->window);
+        return;
+    }
+    X->about = gnome_about_new(_("Gcalctool"), VERSION,
+                   "(C) 2003 the Free Software Foundation",
+                   _("Calculator with financial and scientific modes"),
+                   (const char **) authors,
+                   (const char **) documenters,
+                   strcmp(translator_credits, "translator_credits") != 0 ? 
+                          translator_credits : NULL, NULL);
+    g_signal_connect(G_OBJECT(X->about), "destroy",
+                        G_CALLBACK(gtk_widget_destroyed), &X->about);
+    gtk_widget_show(X->about);
+#endif /*FIXUP*/
+}
+
+
+static void
 add_extra_kbd_accels()
 {
     create_kbd_accel(BUT_EQ,   0,              GDK_Return);
     create_kbd_accel(BUT_MUL,  GDK_SHIFT_MASK, GDK_asterisk);
+#ifdef FIXUP
     create_kbd_accel(BUT_QUIT, GDK_SHIFT_MASK, GDK_Q);
+#endif /*FIXUP*/
 
     /* Numeric keypad. */
     create_kbd_accel(BUT_0,   0, GDK_KP_0);
@@ -403,6 +402,13 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
 }
 
 
+static void
+base_cb(GtkToggleButton *button, gpointer user_data)
+{
+    do_base((enum base_type) g_object_get_data(G_OBJECT(button), "base"));
+}
+
+
 void
 beep()
 {
@@ -412,20 +418,15 @@ beep()
 
 /*ARGSUSED*/
 static void
-button_proc(GtkButton *button, gpointer user_data)
+button_proc(GtkButton *widget, gpointer user_data)
 {
-    int n = (int) user_data;
+    struct button *n;
 
-    if (g_object_get_data(G_OBJECT(button), "frame") == X->kframe) {
-        v->curwin = FCP_KEY;
-    } else if (g_object_get_data(G_OBJECT(button), "frame") == X->mframe) {
-        v->curwin = FCP_MODE;
-    }
-
+    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
     if (v->pending) {
-        v->current = button_value(n);
+        v->current = button_for_value((int) user_data);
         do_pending();
-    } else if (n >= 0 && n <= NOBUTTONS) {
+    } else {
         process_item(n);
     }
 }
@@ -544,8 +545,8 @@ cfframe_ok_cb(GtkButton *button, gpointer user_data)
 static void
 con_menu_proc(gpointer data, int choice, GtkWidget *item)
 {
-    v->current = '0' + choice;
-    handle_menu_selection(X->mrec[(int) M_CON], v->current);
+    v->current->value = '0' + choice;
+    handle_menu_selection(X->mrec[(int) M_CON], v->current->value);
 }
 
 
@@ -701,19 +702,19 @@ create_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
 void
 create_kframe()
 {
-    char *tool_label = NULL, *hn, name[MAXLINE];
-    int i;
-    GtkWidget *event_box, *hbox;
+    char *hn;
+    int count;
+    GtkWidget *event_box;
 
-    v->curwin = FCP_KEY;
+    v->tool_label = NULL;
     if (v->titleline == NULL) {
         hn = make_hostname(X->dpy);
-        tool_label = malloc(strlen(_("Calculator")) +
-                            strlen(VERSION) + strlen(hn) + 3);
+        v->tool_label = malloc(strlen(_("Calculator")) +
+                               strlen(VERSION) + strlen(hn) + 3);
 
-        SPRINTF(tool_label, "%s %s%s", _("Calculator"), VERSION, hn);
+        SPRINTF(v->tool_label, "%s %s%s", _("Calculator"), VERSION, hn);
     } else {
-        read_str(&tool_label, v->titleline);
+        read_str(&v->tool_label, v->titleline);
     }
 
     X->kframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -723,73 +724,54 @@ create_kframe()
     X->kvbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(X->kvbox);
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
+    gtk_widget_show(X->kvbox);
+
+    /* Make menubar from item factory. */
+
+    count = sizeof(main_menu) / sizeof(main_menu[0]);
+    X->mb_fact = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", 
+                                      X->menu_accel);
+    gtk_item_factory_create_items(X->mb_fact, count, main_menu, NULL);
+    X->menubar = gtk_item_factory_get_widget(X->mb_fact, "<main>");
+    gtk_widget_show(X->menubar);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
     event_box = gtk_event_box_new();
-    X->labels[(int) DISPLAYITEM] = gtk_label_new("");
-    SPRINTF(name, "label%1d", (int) DISPLAYITEM);
-    gtk_widget_set_name(X->labels[(int) DISPLAYITEM], name);
-    gtk_tooltips_set_tip(X->tips, event_box, _(display_help), "");
+    X->display_item = gtk_label_new("");
+    gtk_widget_set_name(X->display_item, "displayitem");
 
-    gtk_label_set_selectable(GTK_LABEL(X->labels[(int) DISPLAYITEM]), TRUE);
-    set_label(DISPLAYITEM, "0.00");
-    gtk_widget_ref(X->labels[(int) DISPLAYITEM]);
-    gtk_container_add(GTK_CONTAINER(event_box), X->labels[(int) DISPLAYITEM]);
+    gtk_label_set_selectable(GTK_LABEL(X->display_item), TRUE);
+    set_display("0.00");
+    gtk_widget_ref(X->display_item);
+    gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
+    gtk_widget_show(X->display_item);
     gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, TRUE, TRUE, 0);
+    gtk_widget_show(event_box);
 
-    gtk_misc_set_alignment(GTK_MISC(X->labels[(int) DISPLAYITEM]), 1.0, 0.5);
-    gtk_misc_set_padding(GTK_MISC(X->labels[(int) DISPLAYITEM]), 5, 5);
-    gtk_widget_set_size_request(X->labels[(int) DISPLAYITEM], -1, 80);
+    gtk_misc_set_alignment(GTK_MISC(X->display_item), 1.0, 0.5);
+    gtk_misc_set_padding(GTK_MISC(X->display_item), 5, 5);
+    gtk_widget_set_size_request(X->display_item, -1, 80);
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_ref(hbox);
     gtk_widget_realize(X->kframe);
+    gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
 
-    set_title(FCP_KEY, tool_label);
-    free(tool_label);
+    X->fin_table = make_but_table(X->kframe, X->kvbox, X->fin_buttons,
+                                  f_buttons, FROWS, FCOLS, "fin");
+    X->mode_panel = create_mode_panel(X->kvbox);
+    X->sci_table = make_but_table(X->kframe, X->kvbox, X->sci_buttons,
+                                  s_buttons, SROWS, SCOLS, "sci");
+    gtk_widget_show(X->fin_table);
+    gtk_widget_show(X->mode_panel);
+    gtk_widget_show(X->sci_table);
 
-    for (i = 0; i < MAXLABELS; i++) {
-        if (i == (int) DISPLAYITEM) {
-            continue;                   /* DISPLAYITEM is already created. */
-        }
-        X->labels[i] = gtk_label_new("");
-        SPRINTF(name, "label%1d", i);
-        gtk_widget_set_name(X->labels[i], name);
-
-        switch (i) {
-            case BASEITEM :
-                set_label(i, base_str[(int) v->base]);
-                break;
-            case TTYPEITEM :
-                set_label(i, ttype_str[(int) v->ttype]);
-                break;
-            case NUMITEM :
-                set_label(i, dtype_str[(int) v->dtype]);
-                break;
-            case HYPITEM :
-                set_label(i, (v->hyperbolic) ? N_("HYP") : "    ");
-                break;
-            case INVITEM :
-                set_label(i, (v->inverse) ? N_("INV") : "    ");
-                break;
-            case OPITEM :
-                set_label(i, "");
-                break;
-            case MODEITEM :
-                set_label(i, mode_str[(int) v->modetype]);
-        }
-
-        gtk_widget_ref(X->labels[i]);
-        gtk_box_pack_start(GTK_BOX(hbox), X->labels[i], TRUE, TRUE, 0);
-        gtk_misc_set_padding(GTK_MISC(X->labels[i]), 5, 0);
-    }
-
-    gtk_box_pack_start(GTK_BOX(X->kvbox), hbox, TRUE, TRUE, 0);
-    make_ktable(X->kframe, X->kvbox);
+    X->bas_table = make_but_table(X->kframe, X->kvbox, X->bas_buttons,
+                                  &b_buttons[0], BROWS, BCOLS, "bas");
+    gtk_widget_show(X->bas_table);
     add_extra_kbd_accels();
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     setup_default_icon();
-    gtk_widget_show_all(X->kframe);
+    gtk_widget_show(X->kframe);
 
     gdk_window_set_events(X->kframe->window, FRAME_MASK);
     g_signal_connect(G_OBJECT(X->kframe), "event",
@@ -797,32 +779,101 @@ create_kframe()
 }
 
 
-void
-create_mframe()
+static GtkWidget *
+create_mode_panel(GtkWidget *main_vbox)
 {
-    GtkRequisition r;
-    GtkWidget *vbox;
+    int i;
+    GtkWidget *base_hbox, *disp_hbox, *trig_hbox;
+    GtkWidget *row1_hbox, *row2_hbox, *vbox;
+    GSList *base_gr = NULL;
+    GSList *disp_gr = NULL;
+    GSList *trig_gr = NULL;
 
-    v->curwin = FCP_MODE;
-    X->mframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    g_object_set_data(G_OBJECT(X->mframe), "mframe", X->mframe);
-    gtk_window_set_resizable(GTK_WINDOW(X->mframe), TRUE);
-    gtk_widget_size_request(X->kframe, &r);
-    gtk_widget_set_size_request(X->mframe, r.width, -1);
+    row1_hbox = gtk_hbox_new(FALSE, 0);
+    row2_hbox = gtk_hbox_new(FALSE, 0);
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
-    gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(X->mframe), vbox);
-    gtk_widget_realize(X->mframe);
 
-    X->mode_tables[(int) FINANCIAL]  = make_mtable(X->mframe, vbox, FINANCIAL);
-    X->mode_tables[(int) LOGICAL]    = make_mtable(X->mframe, vbox, LOGICAL);
-    X->mode_tables[(int) SCIENTIFIC] = make_mtable(X->mframe, vbox, SCIENTIFIC);
+/* Make numeric base radio button widgets. */
 
-    gtk_window_add_accel_group(GTK_WINDOW(X->mframe), X->kbd_accel);
-    g_signal_connect(G_OBJECT(X->mframe), "delete_event",
-                     G_CALLBACK(dismiss_mframe), NULL);
+    base_hbox = gtk_hbox_new(FALSE, 0);
+    gtk_widget_show(base_hbox);
+
+    for (i = 0; i < MAXBASES; i++) {
+        X->base[i] = gtk_radio_button_new_with_mnemonic(NULL, _(base_str[i]));
+        g_object_set_data(G_OBJECT(X->base[i]), "base", (gpointer) i);
+        gtk_widget_show(X->base[i]);
+        gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
+        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->base[i]), base_gr);
+        base_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->base[i]));
+        g_signal_connect(G_OBJECT(X->base[i]), "toggled",
+                         G_CALLBACK(base_cb), NULL);
+    }
+
+    gtk_box_pack_start(GTK_BOX(row1_hbox), base_hbox, FALSE, TRUE, 0);
+
+/* Make Trig. type radio button widgets. */
+ 
+    trig_hbox = gtk_hbox_new(FALSE, 0);
+    gtk_widget_show(trig_hbox);
+ 
+    for (i = 0; i < MAXTRIGMODES; i++) {
+        X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
+        g_object_set_data(G_OBJECT(X->trig[i]), "trig", (gpointer) i);
+        gtk_widget_show(X->trig[i]);
+        gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
+        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
+        trig_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->trig[i]));
+        g_signal_connect(G_OBJECT(X->trig[i]), "toggled",
+                         G_CALLBACK(trig_cb), NULL);
+    }
+
+    gtk_box_pack_end(GTK_BOX(row1_hbox), trig_hbox, FALSE, TRUE, 0);
+
+/* Make display type radio button widgets. */
+
+    disp_hbox = gtk_hbox_new(FALSE, 0);                              
+    gtk_widget_show(disp_hbox);                                      
+                                                                
+    for (i = 0; i < MAXTRIGMODES; i++) {
+        X->disp[i] = gtk_radio_button_new_with_mnemonic(NULL, _(dtype_str[i]));
+        g_object_set_data(G_OBJECT(X->disp[i]), "disp", (gpointer) i);
+        gtk_widget_show(X->disp[i]);
+        gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);
+        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->disp[i]), disp_gr);
+        disp_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->disp[i]));
+        g_signal_connect(G_OBJECT(X->disp[i]), "toggled",
+                         G_CALLBACK(disp_cb), NULL);
+    }
+
+    gtk_box_pack_start(GTK_BOX(row2_hbox), disp_hbox, FALSE, TRUE, 0);
+
+/* Make Hyp and Inv trigonometric check boxes. */
+
+    X->inv = gtk_check_button_new_with_mnemonic(_("Inv"));
+    gtk_widget_show(X->inv);
+    gtk_box_pack_end(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(X->inv), "toggled",
+                      G_CALLBACK(inv_cb), NULL);
+
+    X->hyp = gtk_check_button_new_with_mnemonic(_("Hyp"));
+    gtk_widget_show(X->hyp);
+    gtk_box_pack_end(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(X->hyp), "toggled",
+                      G_CALLBACK(hyp_cb), NULL);
+
+/* Make operand label. */
+
+    X->op_label = gtk_label_new("");
+    gtk_widget_set_name(X->op_label, "oplabel");
+    gtk_box_pack_end(GTK_BOX(row2_hbox), X->op_label, FALSE, FALSE, 0);
+
+    gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
+    gtk_box_pack_end(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(main_vbox), vbox, FALSE, FALSE, 0);
+
+    return(vbox);
 }
 
 
@@ -837,7 +888,7 @@ create_rframe()
     X->rframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
-    set_title(FCP_REG, N_("Memory Registers"));
+    gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
@@ -876,28 +927,6 @@ static gboolean
 dismiss_cfframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     X->cfframe = NULL;
-
-    return(FALSE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-dismiss_mframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    v->modetype = BASIC;
-    set_item(MODEITEM, mode_str[(int) v->modetype]);
-    gtk_widget_hide(X->mframe);
- 
-    return(TRUE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-dismiss_pframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    X->pframe = NULL;
 
     return(FALSE);
 }
@@ -953,51 +982,38 @@ create_con_fun_menu(enum menu_type mtype)
 }
 
 
-void
-display_prop_sheet()
+static void
+disp_cb(GtkToggleButton *button, gpointer user_data)
 {
-    init_options();
-    if (gdk_window_is_visible(X->pframe->window) == FALSE) {
-        ds_position_popup(X->kframe, X->pframe, DS_POPUP_LOR);
-    }
+    do_numtype((enum num_type) g_object_get_data(G_OBJECT(button), "disp"));
+}
 
-    gtk_widget_show(X->pframe);
+
+static void
+do_key_table(GtkWidget **buttons, int rows, int cols)
+{
+    struct button *b;
+    int i, j, n;
+
+    for (i = 0; i < cols; i++) {
+        for (j = 0; j < rows; j++) {
+            n = j*rows + i;
+            b = (struct button *) g_object_get_data(G_OBJECT(buttons[n]), 
+                                                    "button");
+            get_label(b);
+            set_button_label(buttons[n], v->pstr, n);
+        }
+    }
 }
 
 
 void
 do_keys()      /* Display/undisplay the gcalctool key values. */
 {
-    enum fcp_type curwin;
-    enum mode_type modetype;
-    int i, j, k, m, n, x;
-
     v->tstate = !v->tstate;
-    for (i = 0; i < BCOLS; i++) {
-        for (j = 0; j < BROWS; j++) {
-            n = j*BCOLS + i;
-            x = j*BCOLS + cur_pos[i];
-            get_label(n);
-            set_button_label(X->buttons[x], v->pstr, n);
-        }
-    }
-
-    modetype = v->modetype;
-    curwin = v->curwin;
-    v->curwin = FCP_MODE;
-    for (m = 1; m < MAXMODES; m++) {
-        for (i = 0; i < MCOLS; i++) {
-            for (j = 0; j < MROWS; j++) {
-                v->modetype = (enum mode_type) m;
-                k = j*MCOLS + i;
-                n = (MODEKEYS * (m-1)) + j*MCOLS + i;
-                get_label(k);
-                set_button_label(X->mode_buttons[n], v->pstr, n);
-            }
-        }
-    }
-    v->modetype = modetype;
-    v->curwin = curwin;
+    do_key_table(X->bas_buttons, BROWS, BCOLS);
+    do_key_table(X->fin_buttons, FROWS, FCOLS);
+    do_key_table(X->sci_buttons, SROWS, SCOLS);
 }
 
 
@@ -1026,8 +1042,8 @@ find_file(const char *base, GError **err)
 static void
 fun_menu_proc(gpointer data, int choice, GtkWidget *item)
 {
-    v->current = '0' + choice;
-    handle_menu_selection(X->mrec[(int) M_FUN], v->current);
+    v->current->value = '0' + choice;
+    handle_menu_selection(X->mrec[(int) M_FUN], v->current->value);
 }
 
 
@@ -1052,9 +1068,6 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
         if (v->rstate) {
             win_display(FCP_REG,  TRUE);
         }
-        if (v->modetype != BASIC) {
-            win_display(FCP_MODE, TRUE);
-        }
         v->iconic = FALSE;
     }
 
@@ -1062,13 +1075,9 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
         if (v->rstate) {
             win_display(FCP_REG,  FALSE);
         }
-        if (v->modetype != BASIC) {
-            win_display(FCP_MODE, FALSE);
-        }
         v->iconic = TRUE;
     }
 
-    v->curwin = FCP_KEY;
     v->curx   = event->button.x;
     v->cury   = event->button.y;
 
@@ -1101,6 +1110,7 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
         } else if ((key == GDK_Help) && down) {
             v->event_type = SHOWHELP;
 
+#ifdef FIXUP
 /* Hack Alert.
  * There is a bug: http://bugzilla.gnome.org/show_bug.cgi?id=79184
  * that is preventing the numeric keypad "+" and "." keys from working
@@ -1113,12 +1123,14 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
         } else if (type == GDK_KEY_PRESS && key == GDK_KP_Add) {
             process_item(v->righthand ? 47 : 43);
             return(TRUE);
+#endif /*FIXUP*/
+
         } else if (v->pending) {
             if (key == GDK_Shift_L || key == GDK_Shift_R) {
                 return(FALSE);
             }
             if (type == GDK_KEY_PRESS) {
-                v->current = key;
+                v->current->value = key;
                 do_pending();
             } else {
                 return(FALSE);
@@ -1146,9 +1158,9 @@ get_display()              /* The Copy function key has been pressed. */
     int i, start, end;
     int sellen = 0;        /* Length of display value (or selected portion). */
 
-    display = gtk_label_get_text(GTK_LABEL(X->labels[(int) DISPLAYITEM]));
-    if (gtk_label_get_selection_bounds(GTK_LABEL(X->labels[(int) DISPLAYITEM]),
-                                   &start, &end) == TRUE) {
+    display = gtk_label_get_text(GTK_LABEL(X->display_item));
+    if (gtk_label_get_selection_bounds(GTK_LABEL(X->display_item),
+                                       &start, &end) == TRUE) {
         for (i = start; i < end; i++) {
             selstr[sellen++] = display[i];
         }    
@@ -1175,20 +1187,11 @@ get_menu_entry(enum menu_type mtype, int offset)
         case M_ACC :
             return(acc_menu[offset].callback_action);
 
-        case M_BASE :
-            return(base_menu[offset].callback_action);
-
         case M_EXCH :
             return(exch_menu[offset].callback_action);
 
         case M_LSHF :
             return(lshift_menu[offset].callback_action);
-
-        case M_MODE :
-            return(mode_menu[offset].callback_action);
-
-        case M_NUM :
-            return(disp_menu[offset].callback_action);
 
         case M_RCL :
             return(rcl_menu[offset].callback_action);
@@ -1198,9 +1201,6 @@ get_menu_entry(enum menu_type mtype, int offset)
 
         case M_STO :
             return(sto_menu[offset].callback_action);
-
-        case M_TRIG :
-            return(trig_menu[offset].callback_action);
 
         default:
             fprintf(stderr, "need to handle menu type %d\n", mtype);
@@ -1233,6 +1233,28 @@ get_resource(enum res_type rtype)
 
 
 void
+grey_buttons(enum base_type base)
+{
+    set_button_state(BUT_0, (0 < basevals[(int) base]));
+    set_button_state(BUT_1, (1 < basevals[(int) base]));
+    set_button_state(BUT_2, (2 < basevals[(int) base]));
+    set_button_state(BUT_3, (3 < basevals[(int) base]));
+    set_button_state(BUT_4, (4 < basevals[(int) base]));
+    set_button_state(BUT_5, (5 < basevals[(int) base]));
+    set_button_state(BUT_6, (6 < basevals[(int) base]));
+    set_button_state(BUT_7, (7 < basevals[(int) base]));
+    set_button_state(BUT_8, (8 < basevals[(int) base]));
+    set_button_state(BUT_9, (9 < basevals[(int) base]));
+    set_button_state(BUT_A, (10 < basevals[(int) base]));
+    set_button_state(BUT_B, (11 < basevals[(int) base]));
+    set_button_state(BUT_C, (12 < basevals[(int) base]));
+    set_button_state(BUT_D, (13 < basevals[(int) base]));
+    set_button_state(BUT_E, (14 < basevals[(int) base]));
+    set_button_state(BUT_F, (15 < basevals[(int) base]));
+}
+
+
+void
 handle_selection()  /* Handle the GET function key being pressed. */
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X->clipboard_atom),
@@ -1241,18 +1263,17 @@ handle_selection()  /* Handle the GET function key being pressed. */
 
 
 static void
-init_options(void)
+hyp_cb(GtkToggleButton *button, gpointer user_data)
 {
-    if (X->pframe == NULL) {
-        pframe_init();
-    }
-
-    reset_prop_vals();
+    v->hyperbolic = !v->hyperbolic;
 }
 
 
-char *MSGFILE_LABEL   = "SUNW_DESKSET_CALCTOOL_LABEL";
-char *MSGFILE_MESSAGE = "SUNW_DESKSET_CALCTOOL_MSG";
+static void
+inv_cb(GtkToggleButton *button, gpointer user_data)
+{
+    v->inverse = !v->inverse;
+}
 
 
 void
@@ -1271,7 +1292,6 @@ make_frames()
 {
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     create_kframe();                     /* Create main gcalctool window. */
-    create_mframe();                     /* Create mode window. */
     create_rframe();                     /* Create memory register window. */
     set_mode(v->modetype);
 }
@@ -1313,94 +1333,52 @@ make_hostname(Display *dpy)
 
 
 static GtkWidget *
-make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
+make_but_table(GtkWidget *frame, GtkWidget *vbox, GtkWidget **Gtk_buttons,
+               struct button buttons[], int rows, int cols, char *tag)
 {
-    char name[MAXLINE];
-    int i, j, k, n, oldmode;
-    GtkWidget *table = gtk_table_new(MROWS, MCOLS, TRUE);
- 
+    char *label, name[MAXLINE];
+    int i, j, n;
+    GtkWidget *table = gtk_table_new(rows, cols, TRUE);
+
     gtk_widget_ref(table);
     gtk_widget_show(table);
     gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
- 
-    oldmode = v->modetype;
-    for (i = 0; i < MCOLS; i++) {
-        for (j = 0; j < MROWS; j++) {
-            k = j*MCOLS + i;
-            n = (MODEKEYS * ((int) modetype - 1)) + j*MCOLS + i;
-            v->modetype = modetype;
-            get_label(k);
-            if (mode_buttons[n].mtype == M_NONE) {
-                X->mode_buttons[n] = gtk_button_new_with_label(v->pstr);
-            } else {
-                X->mode_buttons[n] = make_menu_button(v->pstr, j*MCOLS + i);
-            }
-            g_signal_connect(G_OBJECT(X->mode_buttons[n]), "clicked",
-                             G_CALLBACK(button_proc), (gpointer) (j*MCOLS + i));
-            SPRINTF(name, "mode_button%1d", n);
-            gtk_widget_set_name(X->mode_buttons[n], name);
-            gtk_tooltips_set_tip(X->tips, X->mode_buttons[n],
-                                 _(mode_buttons[n].hstr), "");
-            g_object_set_data(G_OBJECT(X->mode_buttons[n]), "frame", X->mframe);
-            gtk_widget_ref(X->mode_buttons[n]);
 
-            if (strcmp(mode_buttons[n].str, "    ")) {
-                create_kbd_accel(X->mode_buttons[n], mode_buttons[n].mods,
-                                 mode_buttons[n].value);
-                gtk_widget_show(X->mode_buttons[n]);
+    for (i = 0; i < cols; i++) {
+        for (j = 0; j < rows; j++) {
+            n = j*cols + i;
+            label = _(buttons[n].str);
+            if (buttons[n].mtype == M_NONE) {
+                Gtk_buttons[n] = gtk_button_new_with_label(label);
             } else {
-                gtk_widget_hide(X->mode_buttons[n]);
+                Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
-            gtk_table_attach(GTK_TABLE(table), X->mode_buttons[n],
+            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
+                            G_CALLBACK(button_proc), (gpointer) (j*cols + i));
+            SPRINTF(name, "%s_button%1d", tag, n);
+            gtk_widget_set_name(Gtk_buttons[n], name);
+            gtk_tooltips_set_tip(X->tips, Gtk_buttons[n],
+                                 _(buttons[n].hstr), "");
+            g_object_set_data(G_OBJECT(Gtk_buttons[n]),
+                              "button", &buttons[n]);
+            gtk_widget_ref(Gtk_buttons[n]);
+
+            if (strcmp(buttons[n].str, "    ")) {
+                create_kbd_accel(Gtk_buttons[n], buttons[n].mods,
+                                 buttons[n].value);
+                gtk_widget_show(Gtk_buttons[n]);
+            } else {
+                gtk_widget_hide(Gtk_buttons[n]);
+            }
+            gtk_table_attach(GTK_TABLE(table), Gtk_buttons[n],
                      i, i+1, j, j+1,
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
                      4, 4);
         }
-    } 
-    v->modetype = oldmode;
+    }
 
     return(table);
-}
-
-
-static void
-make_ktable(GtkWidget *frame, GtkWidget *vbox)
-{
-    char name[MAXLINE];
-    int i, j, n, x;
-
-    X->ktable = gtk_table_new(BROWS, BCOLS, TRUE);
-    gtk_widget_ref(X->ktable);
-    gtk_widget_show(X->ktable);
-    gtk_box_pack_start(GTK_BOX(vbox), X->ktable, TRUE, TRUE, 0);
-
-    for (i = 0; i < BCOLS; i++) {
-        for (j = 0; j < BROWS; j++) {
-            n = j*BCOLS + i;
-            x = j*BCOLS + cur_pos[i];
-            get_label(n);
-            if (buttons[n].mtype == M_NONE) {
-                X->buttons[x] = gtk_button_new_with_label(v->pstr);
-            } else {
-                X->buttons[x] = make_menu_button(v->pstr, n);
-            }   
-            g_signal_connect(G_OBJECT(X->buttons[x]), "clicked",
-                             G_CALLBACK(button_proc), (gpointer) n);
-            SPRINTF(name, "button%1d", n);
-            gtk_widget_set_name(X->buttons[x], name);
-            gtk_tooltips_set_tip(X->tips, X->buttons[x], _(buttons[n].hstr), "");
-            g_object_set_data(G_OBJECT(X->buttons[x]), "frame", X->kframe);
-            gtk_widget_ref(X->buttons[x]);
-            create_kbd_accel(X->buttons[x], buttons[n].mods, buttons[n].value);
-            gtk_widget_show(X->buttons[x]);
-            gtk_table_attach(GTK_TABLE(X->ktable), X->buttons[x], 
-                     cur_pos[i], cur_pos[i]+1, j, j+1,
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
-                     4, 4);
-        }
-    }    
 }
 
 
@@ -1417,8 +1395,9 @@ item_factory_translate_func (const char *path, gpointer func_data)
     return _(path);
 }
 
+
 static GtkWidget *
-create_menu(enum menu_type mtype, int n)
+create_menu(enum menu_type mtype, struct button *n)
 {
     int count = 0;
     int m;
@@ -1432,11 +1411,6 @@ create_menu(enum menu_type mtype, int n)
             menu = &acc_menu[0];
             break;
 
-        case M_BASE :
-            count = sizeof(base_menu) / sizeof(base_menu[0]);
-            menu = &base_menu[0];
-            break;
-
         case M_EXCH :
             count = sizeof(exch_menu) / sizeof(exch_menu[0]);
             menu = &exch_menu[0];
@@ -1445,16 +1419,6 @@ create_menu(enum menu_type mtype, int n)
         case M_LSHF :
             count = sizeof(lshift_menu) / sizeof(lshift_menu[0]);
             menu = &lshift_menu[0];
-            break;
- 
-        case M_MODE :
-            count = sizeof(mode_menu) / sizeof(mode_menu[0]);
-            menu = &mode_menu[0];
-            break;
- 
-        case M_NUM :
-            count = sizeof(disp_menu) / sizeof(disp_menu[0]);
-            menu = &disp_menu[0];
             break;
  
         case M_RCL :
@@ -1470,16 +1434,6 @@ create_menu(enum menu_type mtype, int n)
         case M_STO :
             count = sizeof(sto_menu) / sizeof(sto_menu[0]);
             menu = &sto_menu[0];
-            break;
- 
-        case M_TRIG :
-            count = sizeof(trig_menu) / sizeof(trig_menu[0]);
-            menu = &trig_menu[0];
-            break;
- 
-        case M_PROPS :
-            count = sizeof(props_menu) / sizeof(props_menu[0]);
-            menu = &props_menu[0];
             break;
  
         case M_CON :
@@ -1511,20 +1465,15 @@ create_menu(enum menu_type mtype, int n)
 static void 
 menu_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
+    struct button *n;
     GtkWidget *menu;
-    int n = (int) data;
-
-    if (g_object_get_data(G_OBJECT(widget), "frame") == X->kframe) {
-        v->curwin = FCP_KEY;
-    } else if (g_object_get_data(G_OBJECT(widget), "frame") == X->mframe) {
-        v->curwin = FCP_MODE;
-    }
 
     if (event->button != 1) {
         return;
     }
 
-    menu = create_menu(button_mtype(n), n);
+    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+    menu = create_menu(n->mtype, n);
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
                    event->button, event->time);
 }
@@ -1551,6 +1500,55 @@ make_menu_button(gchar *label_text, int n)
     gtk_widget_show_all(button);
  
     return(button);
+}
+
+
+/* Handle menu bar menu selection. */
+
+static void
+mb_proc(gpointer data, int choice, GtkWidget *item)
+{
+    switch (choice) {
+        case M_QUIT:
+            exit(0);
+
+        case M_COPY:
+            get_display();
+            break;
+
+        case M_ASCII:
+            do_ascii();
+            break;
+
+        case M_BASIC:
+            v->modetype = BASIC;
+            do_mode();
+            break;
+
+        case M_FIN:
+            v->modetype = FINANCIAL;
+            do_mode();
+            break;
+
+        case M_SCI:
+            v->modetype = SCIENTIFIC;
+            do_mode();
+            break;
+
+        case M_REGS:
+/* XXX:richb - should use the state of the menu item toggle, not TRUE. */
+            do_memory(TRUE);
+            break;
+
+        case M_CONTENTS:
+/* XXX:richb - to be completed. */
+/**/fprintf(stderr, "mb_proc: M_CONTENTS: not implemented yet.\n");
+            break;
+
+        case M_ABOUT:
+            about_cb();
+            break;
+    }
 }
 
 
@@ -1612,112 +1610,6 @@ notice_prompt(GtkWidget *parent, char *message)
 }
 
 
-static void
-pframe_init(void)
-{
-    GtkWidget *ppanel, *hbox3, *pslabel, *hbox4;
-    GtkWidget *pok, *papply, *pcancel;
-    GSList *hbox3_group = NULL;
-
-    X->pframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    g_object_set_data(G_OBJECT(X->pframe), "pframe", X->pframe);
-    gtk_window_set_title(GTK_WINDOW(X->pframe), _("Calculator properties"));
-
-    ppanel = gtk_vbox_new(FALSE, 0);
-    gtk_widget_ref(ppanel);
-    gtk_widget_show(ppanel);
-    gtk_container_add(GTK_CONTAINER(X->pframe), ppanel);
-
-    hbox3 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_ref(hbox3);
-    gtk_widget_show(hbox3);
-    gtk_box_pack_start(GTK_BOX(ppanel), hbox3, TRUE, TRUE, 0);
-
-    pslabel = gtk_label_new(_("Style:"));
-    gtk_widget_ref(pslabel);
-    gtk_widget_show(pslabel);
-    gtk_box_pack_start(GTK_BOX(hbox3), pslabel, FALSE, FALSE, 0);
-
-    X->psleft = gtk_radio_button_new_with_label(hbox3_group, _("left-handed"));
-    hbox3_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->psleft));
-    gtk_widget_ref(X->psleft);
-    gtk_widget_show(X->psleft);
-    gtk_box_pack_start(GTK_BOX(hbox3), X->psleft, FALSE, FALSE, 0);
-
-    X->psright = gtk_radio_button_new_with_label(hbox3_group, 
-                                                 _("right-handed"));
-    hbox3_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->psright));
-    gtk_widget_ref(X->psright);
-    gtk_widget_show(X->psright);
-    gtk_box_pack_start(GTK_BOX(hbox3), X->psright, FALSE, FALSE, 0);
-
-    hbox4 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_ref(hbox4);
-    gtk_widget_show(hbox4);
-    gtk_box_pack_start(GTK_BOX(ppanel), hbox4, TRUE, TRUE, 0);
-
-    pok = gtk_button_new_with_label(_("OK"));
-    gtk_widget_ref(pok);
-    gtk_widget_show(pok);
-    gtk_box_pack_start(GTK_BOX(hbox4), pok, TRUE, TRUE, 2);
-
-    papply = gtk_button_new_with_label(_("Apply"));
-    gtk_widget_ref(papply);
-    gtk_widget_show(papply);
-    gtk_box_pack_start(GTK_BOX(hbox4), papply, TRUE, TRUE, 2);
-
-    pcancel = gtk_button_new_with_label(_("Cancel"));
-    gtk_widget_ref(pcancel);
-    gtk_widget_show(pcancel);
-    gtk_box_pack_start(GTK_BOX(hbox4), pcancel, TRUE, TRUE, 2);
-
-    g_signal_connect(G_OBJECT(X->pframe), "delete_event",
-                     G_CALLBACK(dismiss_pframe), NULL);
-    g_signal_connect(G_OBJECT(pok), "clicked", 
-                     G_CALLBACK(prop_ok), NULL);
-    g_signal_connect(G_OBJECT(papply), "clicked",
-                     G_CALLBACK(prop_apply), NULL);
-    g_signal_connect(G_OBJECT(pcancel), "clicked", 
-                     G_CALLBACK(prop_cancel), NULL);
-    gtk_widget_realize(X->pframe);
-}
-
-
-/*ARGSUSED*/
-static void
-prop_apply(GtkButton *button, gpointer user_data)
-{
-    int newr = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->psright));
-
-    set_prop_options(newr);
-}
-
-
-static void
-prop_ok(GtkButton *button, gpointer user_data)
-{
-    prop_apply(button, user_data);
-    write_resources();
-    gtk_widget_hide(X->pframe);
-}
-
-
-/*ARGSUSED*/
-static void
-props_menu_proc(gpointer data, int choice, GtkWidget *item)
-{
-    display_prop_sheet();
-}
-
-
-/*ARGSUSED*/
-static void
-prop_cancel(GtkButton *button, gpointer user_data)
-{
-    gtk_widget_hide(X->pframe);
-}
-
-
 /* Put gcalctool resource into deskset database. */
 
 void
@@ -1728,47 +1620,6 @@ put_resource(enum res_type rtype, char *value)
     STRCPY(key, calc_res[(int) rtype]);
     SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
     gconf_client_set_string(X->client, cstr, value, NULL);
-}
-
-
-static void
-remove_extra_kbd_accels()
-{
-    remove_kbd_accel(BUT_EQ,   0,              GDK_Return);
-    remove_kbd_accel(BUT_MUL,  GDK_SHIFT_MASK, GDK_asterisk);
-    remove_kbd_accel(BUT_QUIT, GDK_SHIFT_MASK, GDK_Q);
-
-    /* Numeric keypad. */
-    remove_kbd_accel(BUT_0,   0, GDK_KP_0);
-    remove_kbd_accel(BUT_1,   0, GDK_KP_1);
-    remove_kbd_accel(BUT_2,   0, GDK_KP_2);
-    remove_kbd_accel(BUT_3,   0, GDK_KP_3);
-    remove_kbd_accel(BUT_4,   0, GDK_KP_4);
-    remove_kbd_accel(BUT_5,   0, GDK_KP_5);
-    remove_kbd_accel(BUT_6,   0, GDK_KP_6);
-    remove_kbd_accel(BUT_7,   0, GDK_KP_7);
-    remove_kbd_accel(BUT_8,   0, GDK_KP_8);
-    remove_kbd_accel(BUT_9,   0, GDK_KP_9);
-    remove_kbd_accel(BUT_ADD, 0, GDK_KP_Add);
-    remove_kbd_accel(BUT_SUB, 0, GDK_KP_Subtract);
-    remove_kbd_accel(BUT_MUL, 0, GDK_KP_Multiply);
-    remove_kbd_accel(BUT_DIV, 0, GDK_KP_Divide);
-    remove_kbd_accel(BUT_PNT, 0, GDK_KP_Delete);
-    remove_kbd_accel(BUT_EQ,  0, GDK_KP_Enter);
-}
-
-
-static void
-remove_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
-    gtk_widget_remove_accelerator(button, X->kbd_accel, 
-                                  button_key, button_mods);
-}
-
-
-static void
-reset_prop_vals(void)
-{
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->psright), v->righthand);
 }
 
 
@@ -1798,11 +1649,9 @@ set_button_label(GtkWidget *button, gchar *str, int n)
 }
 
 
-void
-set_button_state(enum fcp_type fcptype, int n, int isSensitive)
+static void
+set_button_state(GtkWidget *w, int isSensitive)
 {
-    GtkWidget *w = (fcptype == FCP_KEY) ? X->buttons[n]: X->mode_buttons[n];
-
     gtk_widget_set_sensitive(w, isSensitive);
 }
 
@@ -1819,17 +1668,26 @@ set_help_state(int show_help)
 
 
 void
-set_label(enum item_type itemno, char *str)
+set_display(char *str)
 {
     char label_str[MAXLINE];
+ 
+    SPRINTF(label_str, "<span size=\"x-large\">%s</span>", _(str));
+    gtk_label_set_markup(GTK_LABEL(X->display_item), label_str);
+}
 
-    if (itemno == DISPLAYITEM) {
-        SPRINTF(label_str, "<span size=\"x-large\">%s</span>", _(str));
-    } else {
-        SPRINTF(label_str, "<span size=\"x-small\">%s</span>", _(str));
-    }
 
-    gtk_label_set_markup(GTK_LABEL(X->labels[(int) itemno]), label_str);
+void
+set_hyp_item(int state)
+{
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyp), state);
+}
+
+
+void
+set_inv_item(int state)
+{
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inv), state);
 }
 
 
@@ -1838,55 +1696,61 @@ set_mode(enum mode_type mode)
 {
     switch (mode) {
         case BASIC:
-            gtk_widget_hide(X->mframe);
+            gtk_widget_hide(X->fin_table);
+            gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->sci_table);
             return;
 
         case FINANCIAL:
-            gtk_widget_show(X->mode_tables[(int) FINANCIAL]);
-            gtk_widget_hide(X->mode_tables[(int) LOGICAL]);
-            gtk_widget_hide(X->mode_tables[(int) SCIENTIFIC]);
-            break;
-
-        case LOGICAL:
-            gtk_widget_hide(X->mode_tables[(int) FINANCIAL]);
-            gtk_widget_show(X->mode_tables[(int) LOGICAL]);
-            gtk_widget_hide(X->mode_tables[(int) SCIENTIFIC]);
+            gtk_widget_show(X->fin_table);
+            gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->sci_table);
             break;
 
         case SCIENTIFIC:
-            gtk_widget_hide(X->mode_tables[(int) FINANCIAL]);
-            gtk_widget_hide(X->mode_tables[(int) LOGICAL]);
-            gtk_widget_show(X->mode_tables[(int) SCIENTIFIC]);
+            gtk_widget_hide(X->fin_table);
+            gtk_widget_show_all(X->mode_panel);
+            gtk_widget_show(X->sci_table);
             break;
     }
-
-    win_display(FCP_MODE, TRUE);
 }
 
 
-static void
-set_prop_options(int newr)
+void
+set_item(enum item_type itemtype, int val)
 {
-    int i, j, n, x;
-
-    if (newr != v->righthand) {
-        for (i = 0; i < BCOLS; i++) {
-            for (j = 0; j < BROWS; j++) {
-                n = j*BCOLS + i;
-                x = j*BCOLS + cur_pos[i];
-                remove_kbd_accel(X->buttons[x], buttons[n].mods, 
-                                 buttons[n].value);
-            }
-        }
-        remove_extra_kbd_accels();
-        switch_hands(newr);
+    if (!v->started) {
+        return;
     }
 
-    v->righthand = newr;
-    gtk_container_remove(GTK_CONTAINER(X->kvbox), X->ktable);
-    make_ktable(X->kframe, X->kvbox); 
-    add_extra_kbd_accels();
-    grey_buttons(v->base);
+    switch (itemtype) {
+        case BASEITEM:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->base[val]), 1);
+            break;
+
+        case NUMITEM:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->disp[val]), 1);
+            break;
+
+        case TTYPEITEM:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->trig[val]), 1);
+            break;
+
+        default:
+            break;
+    }
+}
+
+
+void
+set_op_item(char *str)
+{
+    if (v->opsptr && !v->show_paren) {
+        return;
+    }
+
+    gtk_label_set_text(GTK_LABEL(X->op_label), _(str));
+    STRCPY(v->op_item_text, _(str));
 }
 
 
@@ -1901,8 +1765,6 @@ set_title(enum fcp_type fcptype, char *str)
         f = X->kframe;
     } else if (fcptype == FCP_REG) {
         f = X->rframe;
-    } else if (fcptype == FCP_MODE) {
-        f = X->mframe;
     }
     gtk_window_set_title(GTK_WINDOW(f), _(str));
 }
@@ -1949,11 +1811,20 @@ show_ascii_frame()      /* Display ASCII popup. */
 }
 
 
+static void
+trig_cb(GtkToggleButton *button, gpointer user_data)
+{
+    do_trig((enum trig_type) g_object_get_data(G_OBJECT(button), "trig"));
+}
+
 void
 start_tool()
 {
     v->started = 1;
     set_help_state(v->show_help);
+    set_item(BASEITEM, v->base);
+    set_item(TTYPEITEM, v->ttype);
+    set_item(NUMITEM, v->dtype);
     gtk_widget_show(X->kframe);
     gtk_main();
 }
@@ -1966,8 +1837,6 @@ win_display(enum fcp_type fcptype, int state)
 
     if (fcptype == FCP_REG) {
         f = X->rframe;
-    } else if (fcptype == FCP_MODE) {
-        f = X->mframe;
     }
 
     if (state && gdk_window_is_visible(f->window)) {
@@ -1977,8 +1846,6 @@ win_display(enum fcp_type fcptype, int state)
     if (state) {
         if (fcptype == FCP_REG) {
             ds_position_popup(X->kframe, f, DS_POPUP_ABOVE);
-        } else if (fcptype == FCP_MODE) {
-            ds_position_popup(X->kframe, f, DS_POPUP_BELOW);
         }
     }
     if (state) {

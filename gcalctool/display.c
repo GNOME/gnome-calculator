@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -43,7 +44,7 @@ char_val(char chr)
 
 
 void
-clear_display()
+clear_display(int initialise)
 {
     int i;
 
@@ -52,25 +53,27 @@ clear_display()
     i = 0;
     mpcim(&i, v->MPdisp_val);
     STRCPY(v->display, make_number(v->MPdisp_val, FALSE));
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
 
-    v->hyperbolic = 0;
-    v->inverse    = 0;
-    v->show_paren = 0;
-    v->opsptr     = 0;            /* Clear parentheses stacks. */
-    v->numsptr    = 0;
-    set_item(HYPITEM, "    ");
-    set_item(INVITEM, "    ");
+    if (initialise == TRUE) {
+        v->show_paren = 0;
+        v->opsptr     = 0;            /* Clear parentheses stacks. */
+        v->numsptr    = 0;
+        v->hyperbolic = 0;
+        v->inverse    = 0;
+        set_hyp_item(FALSE);
+        set_inv_item(FALSE);
+    }
 }
 
 
 void
-get_label(int n)
+get_label(struct button *b)
 {
     int mod, val;
-
-    mod = button_mods(n);
-    val = button_value(n);
+       
+    mod = b->mods;
+    val = b->value;
     if (v->tstate) {
         if (mod == GDK_CONTROL_MASK) {
             SPRINTF(v->pstr, "^%c  ", val);
@@ -84,7 +87,7 @@ get_label(int n)
             SPRINTF(v->pstr, "%c   ", val);
         }
     } else {
-        STRCPY(v->pstr, button_str(n));
+        STRCPY(v->pstr, b->str);
     }
 }
 
@@ -380,7 +383,7 @@ paren_disp(char c)
     if (IS_KEY(c, KEY_CLR)) {             /* Is it a Delete character? */
         v->noparens = v->pending = v->opsptr = v->numsptr = 0;
         v->cur_op = '?';
-        set_item(OPITEM, "");
+        set_op_item("");
         i = 0;
         mpcim(&i, v->MPdisp_val);
         show_display(v->MPdisp_val);
@@ -394,7 +397,7 @@ paren_disp(char c)
             if (!v->noparens) {
                 v->pending = v->opsptr = v->numsptr = 0;
                 v->cur_op = '?';
-                set_item(OPITEM, "");
+                set_op_item("");
                 show_display(v->MPdisp_val);
                 return;
             }
@@ -414,39 +417,32 @@ paren_disp(char c)
     }
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
-    v->show_paren = 1;       /* Hack to get set_item to really display it. */
-    set_item(DISPLAYITEM, &v->display[n]);
+    v->show_paren = 1;       /* Hack to get set_display to really display it. */
+    set_display(&v->display[n]);
     v->show_paren = 0;
 }
 
 
 void
-process_item(int n)
+process_item(struct button *button)
 {
-    int i,isvalid;
+    int i, isvalid;
 
-    if (n < 0 || n >= NOBUTTONS) {
-        if (v->beep == TRUE) {
-            beep();
-        }
-        return;
+    v->current = button;
+    if (v->current->value == '*') {
+        v->current->value = 'x';      /* Reassign "extra" values. */
     }
-
-    v->current = button_value(n);
-    if (v->current == '*') {
-        v->current = 'x';      /* Reassign "extra" values. */
+    if (v->current->value == GDK_Return) {
+        v->current->value = '=';
     }
-    if (v->current == GDK_Return) {
-        v->current = '=';
-    }
-    if (v->current == 'Q') {
-        v->current = 'q';
+    if (v->current->value == 'Q') {
+        v->current->value = 'q';
     }
 
     if (v->error) {
         isvalid = 0;                    /* Must press a valid key first. */
         for (i = 0; i < MAXVKEYS; i++) {
-            if (v->current == validkeys[i]) {
+            if (v->current->value == validkeys[i]) {
                 isvalid = 1;
             }
         }
@@ -460,35 +456,28 @@ process_item(int n)
     }
 
     if (v->pending) {
-        if (v->pending_win == FCP_KEY) {
-            (*buttons[v->pending_n].func)();
-        } else {
-            (*mode_buttons[MODEKEYS * ((int) v->pending_mode - 1) +
-            v->pending_n].func)();
-        }
-        return; 
+        (*v->pending_but->func)();
+        return;
     }
-    STRCPY(v->opstr, v->item_text[(int) OPITEM]);
-    switch (button_opdisp(n)) {
+
+    STRCPY(v->opstr, v->op_item_text);
+    switch (button->opdisp) {
         case OP_SET : 
-            set_item(OPITEM, button_str(n));
+            set_op_item(button->str);
             break;
 
         case OP_CLEAR : 
             if (v->error) {
-                set_item(OPITEM, _("CLR"));
+                set_op_item(_("CLR"));
             } else {
-                set_item(OPITEM, "");
+                set_op_item("");
             }
 
         default : 
             break;
     }
-    if (v->curwin == FCP_KEY) {
-        (*buttons[n].func)();
-    } else {
-        (*mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].func)();
-    }
+
+    (*button->func)();
 }
 
 
@@ -497,6 +486,6 @@ show_display(int *MPval)
 {
     if (!v->error) {
         STRCPY(v->display, make_number(MPval, TRUE));
-        set_item(DISPLAYITEM, v->display);
+        set_display(v->display);
     }
 }

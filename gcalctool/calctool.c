@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -46,51 +47,40 @@ double min_fix[MAXACC][MAXBASES] = {
 };
 
 char *base_str[]  = {          /* Strings for each base value. */
-    N_("BIN"), N_("OCT"), N_("DEC"), N_("HEX")
+    N_("Bin"), N_("Oct"), N_("Dec"), N_("Hex")
 };
 
 char *calc_res[] = {
-    "accuracy",      "base",        "display",  "mode", "showhelp",
-    "showregisters", "righthanded", "trigtype", "beep"
+    "accuracy",      "base",     "display",  "mode", "showhelp",
+    "showregisters", "trigtype", "beep"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
-    N_("ENG"), N_("FIX"), N_("SCI")
+    N_("Eng"), N_("Fix"), N_("Sci")
 };
 
 char *mode_str[]  = {          /* Strings for each mode value. */
-    N_("BASIC"), N_("FINANCIAL"), N_("LOGICAL"), N_("SCIENTIFIC")
+    N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC")
 };
 
-char *mstrs[] = {              /* Mode titles for the popup panel. */
-    N_("Basic Mode"),   N_("Financial Mode"),
-    N_("Logical Mode"), N_("Scientific Mode")
+char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
+    N_("Basic Mode"), N_("Financial Mode"), N_("Scientific Mode")
 };
 
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
-    N_("DEG"), N_("GRAD"), N_("RAD")
+    N_("Degrees"), N_("Gradients"), N_("Radians")
 };
 
 char digits[] = "0123456789ABCDEF";
 int basevals[4] = { 2, 8, 10, 16 };
-
-static int left_pos[BCOLS]  = {   /* "Left-handed" positions. */
-    7, 6, 4, 5, 0, 1, 2, 3
-};
-static int right_pos[BCOLS] = {   /* "Right-handed" positions. */
-    0, 1, 2, 3, 4, 5, 6, 7 
-};
-int cur_pos[BCOLS] = {            /* Current positions - initially "right". */
-    0, 1, 2, 3, 4, 5, 6, 7 
-};
 
 
 /* Various string values read/written as X resources. */
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", "LOGICAL", "SCIENTIFIC" };
+char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 
 /* Valid keys when an error condition has occured. */
@@ -112,7 +102,7 @@ Vars v;            /* Calctool variables and options. */
  *-----------+-----------------------------------------------------
  */
 
-struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
+struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
 
 /* str
    hstr
@@ -124,429 +114,6 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
  */
 
 /* Row 1. */
-{ 
-    N_("Disp"),
-    N_(
-      "Disp\n"
-      "\n"
-      "Changes the type of numeric display.\n"
-      "\n"
-      "Keyboard equivalent:   D\n"
-      "\n"
-      "Initially the numeric display is fixed-point "
-      "notation to an accuracy of two decimal places. "
-      "You can change this to engineering or scientific "
-      "display.\n"
-      "\n"
-      "Click on the Disp button to show the available settings. "
-      "Choose a value from the menu to change to a new "
-      "numeric display.\n"
-      "\n"
-      "The calculator display (plus the memory registers, "
-      "if they are showing) will be redrawn using the "
-      "new notation.\n"
-      "\n"
-      "Alternatively, you can use the keyboard to set "
-      "the numeric display: Type D, followed by "
-      "e, f, or s to indicate the new display setting:\n"
-      "\n"
-      "e   engineering\n"
-      "f   fixed-point\n"
-      "s   scientific"
-    ),
-    GDK_SHIFT_MASK,
-    GDK_D,
-    OP_SET,
-    M_NUM,
-    do_pending
-},
-{    
-    N_("Base"),
-    N_(
-      "Base\n"
-      "\n"
-      "Changes numeric base.\n"
-      "\n"
-      "Keyboard equivalent:   B\n"
-      "\n"
-      "Initially the numeric base is decimal. You can "
-      "change the base to binary, octal, or hexadecimal.\n"
-      "\n"
-      "Click on the Base button to show the available settings. "
-      "Choose a value from the menu to change to a new "
-      "numeric base.\n"
-      "\n"
-      "Depending on that base, various keys on the "
-      "calculator will be dimmed to show that they "
-      "are disabled.\n"
-      "\n"
-      "Alternatively, you can use the keyboard to set "
-      "the numeric base: Type B, followed by "
-      "b, o, d, or h to indicate the new base setting:\n"
-      "\n"
-      "b   binary\n"
-      "o   octal\n"
-      "d   decimal\n"
-      "h   hexadecimal"
-    ),
-    GDK_SHIFT_MASK,
-    GDK_B,
-    OP_SET,
-    M_BASE,
-    do_pending
-},
-{
-    N_("Int"),
-    N_(
-      "Int\n"
-      "\n"
-      "Integer portion\n"
-      "\n"
-      "Keyboard equivalent:   Control-i\n"
-      "\n"
-      "Returns the integer portion of the current "
-      "displayed value."
-    ),
-    GDK_CONTROL_MASK,
-    GDK_i,
-    OP_CLEAR,
-    M_NONE,
-    do_portion
-},
-{
-    N_("Frac"),
-    N_(
-      "Frac\n"
-      "\n"
-      "Fractional portion\n"
-      "\n"
-      "Keyboard equivalent:   Control-f\n"
-      "\n"
-      "Returns the fractional portion of the current "
-      "displayed value."
-    ),
-    GDK_CONTROL_MASK,
-    GDK_f,
-    OP_CLEAR,
-    M_NONE,
-    do_portion
-},
-{
-    N_("D"),
-    N_(
-      "Hex D (decimal 13)\n"
-      "\n"
-      "Keyboard equivalent:   d\n"
-      "\n"
-      "Enters the hexadecimal value d in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_d,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("E"),
-    N_(
-      "Hex E (decimal 14)\n"
-      "\n"
-      "Keyboard equivalent:   e\n"
-      "\n"
-      "Enters the hexadecimal value e in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_e,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("F"),
-    N_(
-      "Hex F (decimal 15)\n"
-      "\n"
-      "Keyboard equivalent:   f\n"
-      "\n"
-      "Enters the hexadecimal value f in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_f,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{    
-    N_("Clr"),
-    N_(
-      "Clr\n"
-      "\n"
-      "Clears the display.\n"
-      "\n"
-      "Keyboard equivalent:   Delete\n"
-      "\n"
-      "This clears the value currently displayed."
-    ),
-    0,
-    GDK_Delete,
-    OP_CLEAR,
-    M_NONE,
-    do_clear
-},
-
-/* Row 2. */
-{
-    N_("Mode"),
-    N_(
-      "Mode\n"
-      "\n"
-      "Changes the calculator mode.\n"
-      "\n"
-      "Keyboard equivalent:   M\n"
-      "\n"
-      "By default, the initial calculator mode is Basic.\n"
-      "\n"
-      "Click on the Mode button to display and choose the "
-      "other available modes:\n"
-      "\n"
-      "- Financial\n"
-      "- Logical\n"
-      "- Scientific\n"
-      "\n"
-      "\n"
-      "If you choose one of these modes, a window with "
-      "extra buttons is displayed.\n"
-      "\n"
-      "Alternatively, you can set the calculator mode "
-      "using the keyboard. Type M, followed by n, s, or b "
-      "to indicate the new calculator mode.\n"
-      "\n"
-      "b   Basic\n"
-      "f   Financial\n"
-      "l   Logical\n"
-      "s   Scientific"
-    ),
-    GDK_SHIFT_MASK,
-    GDK_M,
-    OP_SET,
-    M_MODE,
-    do_pending
-},
-{
-    N_("Keys"),
-    N_(
-      "Keys\n"
-      "\n"
-      "Toggles button labels.\n"
-      "\n"
-      "Keyboard equivalent:   k\n"
-      "\n"
-      "Toggles the labels on the calctool keys, "
-      "alternating between the mouse and keyboard "
-      "equivalents."
-    ),
-    0,
-    GDK_k,
-    OP_CLEAR,
-    M_NONE,
-    do_keys
-},
-{
-    N_("Abs"),
-    N_(
-      "Abs\n"
-      "\n"
-      "Absolute value.\n"
-      "\n"
-      "Keyboard equivalent:   Control-u\n"
-      "\n"
-      "Returns the absolute value of the current "
-      "displayed value."
-    ),
-    GDK_CONTROL_MASK,
-    GDK_u,
-    OP_CLEAR,
-    M_NONE,
-    do_portion
-},
-{
-    N_("+/-"),
-    N_(
-      "+/-\n"
-      "\n"
-      "Change sign.\n"
-      "\n"
-      "Keyboard equivalent:   C\n"
-      "\n"
-      "Changes the arithmetic sign of the current "
-      "displayed value or the exponent being entered."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_C,
-    OP_CLEAR,
-    M_NONE,
-    do_immed
-},
-{
-    N_("A"),
-    N_(
-      "Hex A (decimal 10)\n"
-      "\n"
-      "Keyboard equivalent:   a\n"
-      "\n"
-      "Enters the hexadecimal value a in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_a,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("B"),
-    N_(
-      "Hex B (decimal 11)\n"
-      "\n"
-      "Keyboard equivalent:   b\n"
-      "\n"
-      "Enters the hexadecimal value b in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_b,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("C"),
-    N_(
-      "Hex C (decimal 12)\n"
-      "\n"
-      "Keyboard equivalent:   c\n"
-      "\n"
-      "Enters the hexadecimal value c in the display.\n"
-      "\n"
-      "Available only when the current base is "
-      "hexadecimal."
-    ),
-    0,
-    GDK_c,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("Bsp"),
-    N_(
-      "Bsp\n"
-      "\n"
-      "Erases characters one at a time.\n"
-      "\n"
-      "Keyboard equivalent:   Back Space\n"
-      "\n"
-      "This removes the right-most character of the "
-      "displayed value and recalculates the value of "
-      "the display.\n"
-      "\n"
-      "Internal accuracy is lost with this operation."
-    ),
-    0,
-    GDK_BackSpace,
-    OP_NOP,
-    M_NONE,
-    do_delete
-},
-
-/* Row 3. */
-{
-    N_("Mem..."),
-    N_(
-      "Mem\n"
-      "\n"
-      "Displays a memory register window.\n"
-      "\n"
-      "Keyboard equivalent:   m\n"
-      "\n"
-      "Click on the Mem button to display a window showing "
-      "the values of the ten memory registers in the "
-      "current base, to the current accuracy."
-    ),
-    0,
-    GDK_m,
-    OP_NOP,
-    M_NONE,
-    do_memory
-},
-{
-    N_("Acc"),
-    N_(
-      "Acc\n"
-      "\n"
-      "Accuracy\n"
-      "\n"
-      "Keyboard equivalent:   A\n"
-      "\n"
-      "Sets the accuracy of both the display and the "
-      "memory registers.\n"
-      "\n"
-      "Click on the Acc button to display a menu of levels "
-      "of accuracy. Choose a level from the menu to set "
-      "the precision for the display and registers."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_A,
-    OP_SET,
-    M_ACC,
-    do_pending
-},
-{
-    N_("1/x"),
-    N_(
-      "1/x\n"
-      "\n"
-      "Reciprocal\n"
-      "\n"
-      "Keyboard equivalent:   r\n"
-      "\n"
-      "Returns the value 1 divided by the current "
-      "displayed value."
-    ),
-    0,
-    GDK_r,
-    OP_CLEAR,
-    M_NONE,
-    do_immed
-},
-{
-    N_("x^2"),
-    N_(
-      "x^2\n"
-      "\n"
-      "Keyboard equivalent:   @\n"
-      "\n"
-      "Returns the square of the current displayed value."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_at,
-    OP_CLEAR,
-    M_NONE,
-    do_immed
-},
 {
     N_("7"),
     N_(
@@ -592,143 +159,90 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_NONE,
     do_number
 },
-{
-    N_("*"),
+{    
+    N_("/"),
     N_(
-      "*\n"
-      "\n" 
-      "Multiplication\n"
+      "/\n"
       "\n"
-      "Keyboard equivalent:   * or x\n"
+      "Division\n"
+      "\n"
+      "Keyboard equivalent:   /\n"
       "\n"
       "This key takes the last number entered and "
-      "multiplies it by the next number entered."
+      "divides it by the next number entered."
     ),
     0,
-    GDK_x,
+    GDK_slash,
     OP_SET,
     M_NONE,
     do_calc
 },
-
-/* Row 4. */
 {
-    N_("Fun"),
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+{
+    N_("Bsp"),
     N_(
-      "Fun\n"
+      "Bsp\n"
       "\n"
-      "Menu of defined functions\n"
+      "Erases characters one at a time.\n"
       "\n"
-      "Keyboard equivalent:   F\n"
+      "Keyboard equivalent:   Back Space\n"
       "\n"
-      "Click on the Fun button to display a menu of "
-      "functions you have defined. Choose a function from "
-      "the menu to execute it. The result will show in "
+      "This removes the right-most character of the "
+      "displayed value and recalculates the value of "
       "the display.\n"
       "\n"
-      "To add new functions or alter existing ones, "
-      "choose \"Enter Function\" from the menu. This "
-      "displays a window in which you type the number, "
-      "description, and value of the function.\n"
-      "\n"
-      "Click SELECT on \"New Function\" to store the new "
-      "function in the ~/.gcalctoolcf file.\n"
-      "\n"
-      "For the function value, type the keyboard strokes "
-      "that calculate your function. For example, to "
-      "calculate sine(90), type the Value:\n"
-      "\n"
-      "        90 \\s\n"
-      "\n"
-      "When you type the function value, use \\ to "
-      "represent the Control key even though KEYS shows "
-      "the keyboard equivalent of the Control key as "
-      "the character ^ .\n"
-      "\n"
-      "When you know the number of the function you "
-      "want, you can click SELECT on Fun, then on the "
-      "function's number."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_F,
-    OP_SET,
-    M_FUN,
-    do_pending
-},
-{
-    N_("Con"),
-    N_(
-      "Con\n"
-      "\n"
-      "Constant n\n"
-      "\n"
-      "Keyboard equivalent:   #\n"
-      "\n"
-      "Click on the Con button to show the available constants. "
-      "Choose a constant from the menu to enter its value "
-      "in the display.\n"
-      "\n"
-      "Alternatively, if you know the number of a "
-      "constant, you can click SELECT on Con, then "
-      "on a digit from 0 - 9 to indicate the constant "
-      "you want to enter.\n"
-      "\n"
-      "To add new constants or alter existing ones, "
-      "choose \"Enter Constant\" from the menu. This "
-      "displays a window in which you type the number, "
-      "description, and value of the constant.\n"
-      "\n"
-      "Click SELECT on \"Enter Constant\" to store the new "
-      "constant in the ~/.gcalctoolcf file."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_numbersign,
-    OP_SET,
-    M_CON,
-    do_pending
-},
-{
-    N_("%"),
-    N_(
-      "%\n"
-      "\n" 
-      "Percentage\n"
-      "\n"
-      "Keyboard equivalent:   %\n"
-      "\n"
-      "Takes the last number entered and calculates a "
-      "percentage using the next number entered.\n"
-      "\n"
-      "Example:\n"
-      "\n"
-      "        200 % 20 = (returns 40)\n"
-      "\n"
-      "The calculator is multiplying (200*20)*0.01."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_percent,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
-{
-    N_("Sqrt"),
-    N_(
-      "Sqrt\n"
-      "\n"
-      "Square root\n"
-      "\n"
-      "Keyboard equivalent:   s\n"
-      "\n"
-      "Calculates the square root of the current "
-      "displayed value."
+      "Internal accuracy is lost with this operation."
     ),
     0,
-    GDK_s,
+    GDK_BackSpace,
+    OP_NOP,
+    M_NONE,
+    do_delete
+},
+{
+    N_("CE"),
+    N_(
+      "CE\n"
+      "\n"
+      "Clears the current entry.\n"
+      "\n"
+      "Keyboard equivalent:   Control-Back Space\n"
+      "\n"
+      "This clears the value currently displayed."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_BackSpace,
     OP_CLEAR,
     M_NONE,
-    do_immed
+    do_clear_entry
 },
+{
+    N_("Clr"),
+    N_(
+      "Clr\n"
+      "\n"
+      "Clears the calculator.\n"
+      "\n"
+      "Keyboard equivalent:   Delete\n"
+      "\n"
+      "This clears the current display and any partial current calculation."
+    ),
+    0,
+    GDK_Delete,
+    OP_CLEAR,
+    M_NONE,
+    do_clear
+},
+
+/* Row 2. */
 {
     N_("4"),
     N_(
@@ -775,47 +289,80 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    N_("/"),
+    N_("*"),
     N_(
-      "/\n"
+      "*\n"
+      "\n" 
+      "Multiplication\n"
       "\n"
-      "Division\n"
-      "\n"
-      "Keyboard equivalent:   /\n"
+      "Keyboard equivalent:   * or x\n"
       "\n"
       "This key takes the last number entered and "
-      "divides it by the next number entered."
+      "multiplies it by the next number entered."
     ),
     0,
-    GDK_slash,
+    GDK_x,
     OP_SET,
     M_NONE,
     do_calc
 },
-
-/* Row 5. */
 {
-    N_("Sto"),
+    N_("Acc"),
     N_(
-      "Sto\n"
+      "Acc\n"
       "\n"
-      "Stores a value in a memory register.\n"
+      "Accuracy\n"
       "\n"
-      "Keyboard equivalent:   S\n"
+      "Keyboard equivalent:   A\n"
       "\n"
-      "Click on the Sto button to display a menu of all registers. "
-      "Choose a register from the menu to store the "
-      "displayed value.\n"
+      "Sets the accuracy of both the display and the "
+      "memory registers.\n"
       "\n"
-      "Alternately, click SELECT on Sto, then on a digit "
-      "in the range 0 to 9 to indicate the memory "
-      "register in which to store the displayed value."
-    ), 
+      "Click on the Acc button to display a menu of levels "
+      "of accuracy. Choose a level from the menu to set "
+      "the precision for the display and registers."
+    ),
     GDK_SHIFT_MASK,
-    GDK_S,
+    GDK_A,
     OP_SET,
-    M_STO,
+    M_ACC,
     do_pending
+},
+{
+    N_("+/-"),
+    N_(
+      "+/-\n"
+      "\n"
+      "Change sign.\n"
+      "\n"
+      "Keyboard equivalent:   C\n"
+      "\n"
+      "Changes the arithmetic sign of the current "
+      "displayed value or the exponent being entered."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_C,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{
+    N_("Int"),
+    N_(
+      "Int\n"
+      "\n"
+      "Integer portion\n"
+      "\n"
+      "Keyboard equivalent:   Control-i\n"
+      "\n"
+      "Returns the integer portion of the current "
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_i,
+    OP_CLEAR,
+    M_NONE,
+    do_portion
 },
 {
     N_("Rcl"),
@@ -840,58 +387,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_RCL,
     do_pending
 },
-{
-    N_("("),
-    N_(
-      "(\n"
-      "\n" 
-      "Left parenthesis\n"
-      "\n"
-      "Keyboard equivalent:   (\n"
-      "\n"
-      "Allows you to group together a set of "
-      "calculations. Use with the right parenthesis.\n"
-      "\n"
-      "Example:\n"
-      "\n"
-      "        2 * ( 3 + 4 ) = 14\n"
-      "\n"
-      "contrasted with:\n"
-      "\n"
-      "        2 * 3 + 4 = 10"
-    ),
-    GDK_SHIFT_MASK,
-    GDK_parenleft,
-    OP_SET,
-    M_NONE,
-    do_paren
-},
-{
-    N_(")"),
-    N_(
-      ")\n"
-      "\n" 
-      "Right parenthesis\n"
-      "\n"
-      "Keyboard equivalent:   )\n"
-      "\n"
-      "Allows you to group together a set of "
-      "calculations. Use with the left parenthesis.\n"
-      "\n"
-      "Example:\n"
-      "\n"
-      "        2 * ( 3 + 4 ) = 14\n"
-      "\n"
-      "contrasted with:\n"
-      "\n"
-      "        2 * 3 + 4 = 10"
-    ),
-    GDK_SHIFT_MASK,
-    GDK_parenright,
-    OP_SET,
-    M_NONE,
-    do_paren
-},
+
+/* Row 3. */
 {
     N_("1"),
     N_(
@@ -913,14 +410,14 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
       "Keyboard equivalent:   2\n"
       "\n"
       "This key is inactive in binary base."
-    ),
-    0,
+    ), 
+    0, 
     GDK_2,
     OP_NOP,
     M_NONE,
     do_number
-},
-{
+},    
+{     
     N_("3"),
     N_(
       "Numeric 3\n"
@@ -953,25 +450,207 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_NONE,
     do_calc
 },
-
-/* Row 6. */
 {
-    N_("Quit"),
-    N_( 
-      "Quit\n"
+    N_("%"),
+    N_(
+      "%\n"
+      "\n" 
+      "Percentage\n"
       "\n"
-      "Quits the calculator.\n"
+      "Keyboard equivalent:   %\n"
       "\n"
-      "Keyboard equivalent:   q or Q\n"
+      "Takes the last number entered and calculates a "
+      "percentage using the next number entered.\n"
       "\n"
-      "Quits the calculator without asking for your "
-      "confirmation."
+      "Example:\n"
+      "\n"
+      "        200 % 20 = (returns 40)\n"
+      "\n"
+      "The calculator is multiplying (200*20)*0.01."
     ),
-    0,
-    GDK_q,
+    GDK_SHIFT_MASK,
+    GDK_percent,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{
+    N_("Sqrt"),
+    N_(
+      "Sqrt\n"
+      "\n"
+      "Square root\n"
+      "\n"
+      "Keyboard equivalent:   s\n"
+      "\n"
+      "Calculates the square root of the current "
+      "displayed value."
+    ),   
+    0,   
+    GDK_s,
     OP_CLEAR,
     M_NONE,
-    do_frame
+    do_immed
+},
+{
+    N_("Frac"),
+    N_(
+      "Frac\n"
+      "\n"
+      "Fractional portion\n"
+      "\n"
+      "Keyboard equivalent:   Control-f\n"
+      "\n"
+      "Returns the fractional portion of the current "
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_f,
+    OP_CLEAR,
+    M_NONE,
+    do_portion
+},
+{
+    N_("Sto"),
+    N_(
+      "Sto\n"
+      "\n"
+      "Stores a value in a memory register.\n"
+      "\n"
+      "Keyboard equivalent:   S\n"
+      "\n"
+      "Click on the Sto button to display a menu of all registers. "
+      "Choose a register from the menu to store the "
+      "displayed value.\n"
+      "\n"
+      "Alternately, click SELECT on Sto, then on a digit "
+      "in the range 0 to 9 to indicate the memory "
+      "register in which to store the displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_S,
+    OP_SET,
+    M_STO,
+    do_pending
+},
+
+/* Row 4. */
+{
+    N_("0"),
+    N_(
+      "Numeric 0\n"
+      "\n"
+      "Keyboard equivalent:   0\n"
+    ),
+    0,
+    GDK_0,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{    
+    N_("."),
+    N_(
+      ".\n"
+      "\n"
+      "Numeric point\n"
+      "\n"
+      "Keyboard equivalent:   .\n"
+      "\n"
+      "Starts the fractional part of a numeric entry."
+    ),
+    0,
+    GDK_period,
+    OP_NOP,
+    M_NONE,
+    do_point
+},
+{
+    N_("="),
+    N_(
+      "=\n"
+      "\n"
+      "Calculates a result.\n"
+      "\n"
+      "Keyboard equivalent:   = or Return\n"
+      "\n"
+      "Displays the result of the current calculation in "
+      "the current base."
+    ),
+    0,
+    GDK_equal,
+    OP_CLEAR,
+    M_NONE,
+    do_calc
+},
+{
+    N_("+"),
+    N_(
+      "+\n"
+      "\n"
+      "Addition\n"
+      "\n"
+      "Keyboard equivalent:   +\n"
+      "\n"
+      "Takes the last number entered and adds it to the "
+      "next number entered."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_plus,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{
+    N_("1/x"),
+    N_(
+      "1/x\n"
+      "\n"
+      "Reciprocal\n"
+      "\n"
+      "Keyboard equivalent:   r\n"
+      "\n"
+      "Returns the value 1 divided by the current "
+      "displayed value."
+    ),
+    0,
+    GDK_r,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{
+    N_("x^2"),
+    N_(
+      "x^2\n"
+      "\n"
+      "Keyboard equivalent:   @\n"
+      "\n"
+      "Returns the square of the current displayed value."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_at,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+{
+    N_("Abs"),
+    N_(
+      "Abs\n"
+      "\n"
+      "Absolute value.\n"
+      "\n"
+      "Keyboard equivalent:   Control-u\n"
+      "\n"
+      "Returns the absolute value of the current "
+      "displayed value."
+    ),
+    GDK_CONTROL_MASK,
+    GDK_u,
+    OP_CLEAR,
+    M_NONE,
+    do_portion
 },
 {
     N_("Exch"),
@@ -1000,128 +679,22 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     M_EXCH,
     do_pending
 },
-{
-    N_("Exp"),
-    N_(
-      "Exp\n"
-      "\n"
-      "Enters an exponential number.\n"
-      "\n"
-      "Keyboard equivalent:   E\n"
-      "\n"
-      "Starts exponential input. Any numbers typed from "
-      "now on are the exponent. If you haven't entered a "
-      "mantissa, the calculator uses a mantissa of 1.0."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_E,
-    OP_SET,
-    M_NONE,
-    do_expno
-},
-{
-    N_("Asc..."),
-    N_(
-      "Asc\n"
-      "\n"
-      "ASCII value\n"
-      "\n"
-      "Keyboard equivalent:   Control-a\n"
-      "\n"
-      "Displays a window in which you type a character "
-      "whose ASCII value you want. Enter the character "
-      "and click SELECT on the ASCII button in the window.\n"
-      "\n"
-      "The calculator displays the ASCII value in the "
-      "current number base. (You can change the base.)"
-    ),
-    GDK_CONTROL_MASK,
-    GDK_a,
-    OP_CLEAR,
-    M_NONE,
-    do_ascii
-},
-{
-    N_("0"),
-    N_(
-      "Numeric 0\n"
-      "\n"
-      "Keyboard equivalent:   0\n"
-    ),
-    0,
-    GDK_0,
-    OP_NOP,
-    M_NONE,
-    do_number
-},
-{
-    N_("."),
-    N_(
-      ".\n"
-      "\n" 
-      "Numeric point\n"
-      "\n"
-      "Keyboard equivalent:   .\n"
-      "\n"
-      "Starts the fractional part of a numeric entry."
-    ),
-    0,
-    GDK_period,
-    OP_NOP,
-    M_NONE,
-    do_point
-},
-{
-    N_("="),
-    N_(
-      "=\n"
-      "\n" 
-      "Calculates a result.\n"
-      "\n"
-      "Keyboard equivalent:   = or Return\n"
-      "\n"
-      "Displays the result of the current calculation in "
-      "the current base."
-    ),
-    0,
-    GDK_equal,
-    OP_CLEAR,
-    M_NONE,
-    do_calc
-},
-{
-    N_("+"),
-    N_(
-      "+\n"
-      "\n" 
-      "Addition\n"
-      "\n"
-      "Keyboard equivalent:   +\n"
-      "\n"
-      "Takes the last number entered and adds it to the "
-      "next number entered."
-    ),
-    GDK_SHIFT_MASK,
-    GDK_plus,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
 };
 
-struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
+struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 
 /* str
-   hstr    
-   mods              
-   value           
-   opdisp   
-   menutype 
+   hstr
+   mods
+   value
+   opdisp
+   menutype
    func
-*/
+ */
 
-/* Financial. */
-{ 
+/* Row 1. */
+
+{
     N_("Ctrm"),
     N_(
       "Ctrm\n"
@@ -1162,7 +735,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_business
 },
-{ 
+{
     N_("Ddb"),
     N_(
       "Ddb\n"
@@ -1202,13 +775,13 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "tells you that the depreciation expense for the "
       "fourth year will be $790.12."
     ),
-    GDK_CONTROL_MASK, 
+    GDK_CONTROL_MASK,
     GDK_d,
-    OP_CLEAR, 
-    M_NONE, 
+    OP_CLEAR,
+    M_NONE,
     do_business
 },
-{ 
+{
     N_("Fv"),
     N_(
       "Fv\n"
@@ -1255,7 +828,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_business
 },
-{ 
+{
     N_("Pmt"),
     N_(
       "Pmt\n"
@@ -1270,7 +843,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "made at the end of each payment period.\n"
       "\n"
       "Memory register usage:\n"
-      "\n"    
+      "\n"
       "   Register 0 - prin (principal)\n"
       "   Register 1 - int  (periodic interest rate)\n"
       "   Register 2 - n    (term)\n"
@@ -1290,13 +863,13 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "Clicking SELECT on Pmt returns 1142.06, the value "
       "in dollars of your monthly repayment."
     ),
-    GDK_SHIFT_MASK, 
+    GDK_SHIFT_MASK,
     GDK_P,
-    OP_CLEAR, 
+    OP_CLEAR,
     M_NONE,
     do_business
 },
-{ 
+{
     N_("Pv"),
     N_(
       "Pv\n"
@@ -1350,12 +923,12 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "dollars (before taxes)."
     ),
     0,
-    GDK_p, 
+    GDK_p,
     OP_CLEAR,
     M_NONE,
     do_business
 },
-{ 
+{
     N_("Rate"),
     N_(
       "Rate\n"
@@ -1401,7 +974,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
    M_NONE,
    do_business
 },
-{ 
+{
     N_("Sln"),
     N_(
       "Sln\n"
@@ -1501,9 +1074,11 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     GDK_CONTROL_MASK,
     GDK_y,
     OP_CLEAR,
-    M_NONE, 
+    M_NONE,
     do_business
 },
+
+/* Row 2. */
 { 
     N_("Term"),
     N_(
@@ -1549,7 +1124,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 },
 { 
     "    ",
-    "    ", 
+    "    ",
     0,
     0,
     OP_NOP,
@@ -1558,25 +1133,16 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 },
 { 
     "    ",
-    "    ", 
+    "    ",
     0,
     0,
     OP_NOP,
-    M_NONE, 
+    M_NONE,
     do_none
 },
 { 
     "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE, 
-    do_none
-},
-{ 
     "    ",
-    "    ", 
     0,
     0,
     OP_NOP,
@@ -1603,20 +1169,42 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 },
 { 
     "    ",
-    "    ", 
+    "    ",
     0,
     0,
     OP_NOP,
     M_NONE,
     do_none
 },
+{
+    "    ",
+    "    ",
+    0,
+    0,
+    OP_NOP,
+    M_NONE,
+    do_none
+},
+};
 
-/* Logical. */
-{ 
+struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
+
+/* str
+   hstr
+   mods
+   value
+   opdisp
+   menutype
+   func
+*/
+
+/* Row 1. */
+
+{
     N_("<"),
     N_(
       "<\n"
-      "\n"
+      "\n" 
       "Left shift n\n"
       "\n"
       "Keyboard equivalent:   <\n"
@@ -1626,17 +1214,17 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "SELECT on the key, then on a digit in the range "
       "0 to f to indicate how many places to shift."
     ),
-    GDK_SHIFT_MASK, 
+    GDK_SHIFT_MASK,
     GDK_less,
     OP_SET,
     M_LSHF,
     do_pending
 },
-{ 
+{
     N_(">"),
     N_(
       ">\n"
-      "\n"
+      "\n" 
       "Right shift n\n"
       "\n"
       "Keyboard equivalent:   >\n"
@@ -1646,36 +1234,36 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "Click SELECT on the key, then on a digit in the "
       "range 0 to f to indicate how many places to shift."
     ),
-    GDK_SHIFT_MASK, 
+    GDK_SHIFT_MASK,
     GDK_greater,
-    OP_SET,
-    M_RSHF,
+    OP_SET,   
+    M_RSHF,   
     do_pending
-},
-{ 
+},            
+{             
     N_("&16"),
-    N_(
-      "&16\n"
-      "\n"
+    N_(       
+      "&16\n" 
+      "\n"    
       "Get a 16-bit unsigned integer.\n"
-      "\n"
+      "\n"    
       "Keyboard equivalent:   ]\n"
-      "\n"
+      "\n"    
       "This is a logical function that truncates the "
       "given number and returns a 16-bit unsigned "
       "integer."
-    ),
-    0,
+    ),        
+    0,        
     GDK_bracketleft,
     OP_CLEAR, 
-    M_NONE, 
-    do_immed
-},
-{ 
+    M_NONE,   
+    do_immed  
+},            
+{             
     N_("&32"),
-    N_(
-      "&32\n"
-      "\n"
+    N_(       
+      "&32\n" 
+      "\n"    
       "Get a 32-bit unsigned integer.\n"
       "\n"
       "Keyboard equivalent:   [\n"
@@ -1683,146 +1271,14 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "This is a logical function that truncates the "
       "given number and returns a 32-bit unsigned "
       "integer."
-    ),
+    ),    
     0,
-    GDK_bracketright, 
+    GDK_bracketright,
     OP_CLEAR,
     M_NONE,
     do_immed
 },
-{ 
-    "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE,
-    do_none
-},
-{ 
-    "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE,
-    do_none
-},
-{ 
-    "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE,
-    do_none
-},
-{ 
-    "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE, 
-    do_none
-},
-{ 
-    N_("Or"),
-    N_(
-      "Or\n"
-      "\n"
-      "Logical OR\n"
-      "\n"
-      "Keyboard equivalent:   |\n"
-      "\n"
-      "This key performs a logical OR operation on the "
-      "last number entered and the next number entered, "
-      "treating both numbers as unsigned long integers."
-    ),
-    GDK_SHIFT_MASK, 
-    GDK_bar,
-    OP_SET,
-    M_NONE, 
-    do_calc
-},
-{ 
-    N_("And"),
-    N_(
-      "And\n"
-      "\n"
-      "Logical AND\n"
-      "\n"
-      "Keyboard equivalent:   &\n"
-      "\n"
-      "This key performs a logical AND operation on the "
-      "last number entered and the next number entered, "
-      "treating both numbers as unsigned long integers."
-    ),
-    GDK_SHIFT_MASK, 
-    GDK_ampersand,
-    OP_SET,
-    M_NONE, 
-    do_calc
-},
-{ 
-    N_("Not"),
-    N_(
-      "Not\n"
-      "\n"
-      "Logical NOT\n"
-      "\n"
-      "Keyboard equivalent:   ~\n"
-      "\n"
-      "This key performs a logical NOT operation on the "
-      "current displayed value."
-    ),
-    GDK_SHIFT_MASK, 
-    GDK_asciitilde,
-    OP_CLEAR, 
-    M_NONE, 
-    do_immed
-},
-{ 
-    N_("Xor"),
-    N_(
-      "Xor\n"
-      "\n"
-      "Logical XOR\n"
-      "\n"
-      "Keyboard equivalent:   ^\n"
-      "\n"
-      "This key takes the last number entered and the "
-      "next number entered, and performs a logical XOR "
-      "operation on them, treating both numbers as "
-      "unsigned long integers."
-    ),
-    GDK_SHIFT_MASK, 
-    GDK_caret,
-    OP_SET,
-    M_NONE, 
-    do_calc
-},
-{ 
-    N_("Xnor"),
-    N_(
-      "Xnor\n"
-      "\n"
-      "Logical XNOR\n"
-      "\n"
-      "Keyboard equivalent:   n\n"
-      "\n"
-      "This key takes the last number entered and the "
-      "next number entered, and performs a logical XNOR "
-      "operation on them, treating both numbers as "
-      "unsigned long integers."
-    ),
-    0,
-    GDK_n,
-    OP_SET,
-    M_NONE,
-    do_calc
-},
-{ 
+{
     "    ",
     "    ",
     0,
@@ -1831,98 +1287,174 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_none
 },
-{ 
-    "    ",
-    "    ",
-    0,
-    0,
-    OP_NOP,
-    M_NONE, 
-    do_none
-},
-{ 
-    "    ",
-    "    ", 
-    0,
-    0,
-    OP_NOP,
-    M_NONE,
-    do_none
-},
-
-/* Scientific. */
-{ 
-    N_("Trig"),
+{
+    N_("("),
     N_(
-      "Trig\n"
+      "(\n"
+      "\n" 
+      "Left parenthesis\n"
       "\n"
-      "Sets trigonometric mode.\n"
+      "Keyboard equivalent:   (\n"
       "\n"
-      "Keyboard equivalent:   T\n"
+      "Allows you to group together a set of "
+      "calculations. Use with the right parenthesis.\n"
       "\n"
-      "Initially the trigonometric display type is "
-      "degrees. You can change this to gradients or "
-      "radians.\n"
+      "Example:\n"
       "\n"
-      "Click on the Trig button to show the available settings. "
-      "Choose a value from the menu to set the new "
-      "trigonometric display type.\n"
+      "        2 * ( 3 + 4 ) = 14\n"
       "\n"
-      "Alternatively, you can use the keyboard to set the "
-      "trigonometric display type.\n"
+      "contrasted with:\n"
       "\n"
-      "Type T, followed by d, g, or r to indicate the "
-      "new trigonometric display setting:\n"
-      "\n"
-      "d   degrees\n"
-      "g   gradients\n"
-      "r   radians"
+      "        2 * 3 + 4 = 10"
     ),
     GDK_SHIFT_MASK,
-    GDK_T,
+    GDK_parenleft,
     OP_SET,
-    M_TRIG,
+    M_NONE,
+    do_paren
+},
+{
+    N_(")"),
+    N_(
+      ")\n"
+      "\n"
+      "Right parenthesis\n"
+      "\n"
+      "Keyboard equivalent:   )\n"
+      "\n"
+      "Allows you to group together a set of "
+      "calculations. Use with the left parenthesis.\n"
+      "\n"
+      "Example:\n"
+      "\n"
+      "        2 * ( 3 + 4 ) = 14\n"
+      "\n"
+      "contrasted with:\n"
+      "\n"
+      "        2 * 3 + 4 = 10"
+    ),
+    GDK_SHIFT_MASK,
+    GDK_parenright,
+    OP_SET,
+    M_NONE,
+    do_paren
+},
+{
+    N_("Keys"),
+    N_(
+      "Keys\n"
+      "\n"
+      "Toggles button labels.\n"
+      "\n"
+      "Keyboard equivalent:   k\n"
+      "\n"
+      "Toggles the labels on the calctool keys, "
+      "alternating between the mouse and keyboard "
+      "equivalents."
+    ),
+    0,
+    GDK_k,
+    OP_CLEAR,
+    M_NONE,
+    do_keys
+},
+
+/* Row 2. */
+{
+    N_("Exp"),
+    N_(
+      "Exp\n"
+      "\n"
+      "Enters an exponential number.\n"
+      "\n"
+      "Keyboard equivalent:   E\n"
+      "\n"
+      "Starts exponential input. Any numbers typed from "
+      "now on are the exponent. If you haven't entered a "
+      "mantissa, the calculator uses a mantissa of 1.0."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_E,
+    OP_SET,
+    M_NONE,
+    do_expno
+},
+{
+    N_("Con"),
+    N_(
+      "Con\n"
+      "\n"
+      "Constant n\n"
+      "\n"
+      "Keyboard equivalent:   #\n"
+      "\n"
+      "Click on the Con button to show the available constants. "
+      "Choose a constant from the menu to enter its value "
+      "in the display.\n"
+      "\n"
+      "Alternatively, if you know the number of a "
+      "constant, you can click SELECT on Con, then "
+      "on a digit from 0 - 9 to indicate the constant "
+      "you want to enter.\n"
+      "\n"            
+      "To add new constants or alter existing ones, "
+      "choose \"Enter Constant\" from the menu. This "
+      "displays a window in which you type the number, "
+      "description, and value of the constant.\n"
+      "\n"            
+      "Click SELECT on \"Enter Constant\" to store the new "
+      "constant in the ~/.gcalctoolcf file."
+    ),                
+    GDK_SHIFT_MASK,   
+    GDK_numbersign,   
+    OP_SET,           
+    M_CON,            
     do_pending
 },
-{ 
-    N_("Hyp"),
+{
+    N_("Fun"),
     N_(
-      "Hyp\n"
+      "Fun\n"
       "\n"
-      "Hyperbolic flag\n"
+      "Menu of defined functions\n"
       "\n"
-      "Keyboard equivalent:   h\n"
+      "Keyboard equivalent:   F\n"
       "\n"
-      "This key is a toggle that sets and unsets the "
-      "hyperbolic function flag. That flag affects "
-      "Sin, Cos, and Tan trigonometric functions."
+      "Click on the Fun button to display a menu of "
+      "functions you have defined. Choose a function from "
+      "the menu to execute it. The result will show in "
+      "the display.\n"
+      "\n"
+      "To add new functions or alter existing ones, "
+      "choose \"Enter Function\" from the menu. This "
+      "displays a window in which you type the number, "
+      "description, and value of the function.\n"
+      "\n"
+      "Click SELECT on \"New Function\" to store the new "
+      "function in the ~/.gcalctoolcf file.\n"
+      "\n"
+      "For the function value, type the keyboard strokes "
+      "that calculate your function. For example, to "
+      "calculate sine(90), type the Value:\n"
+      "\n"
+      "        90 \\s\n"
+      "\n"
+      "When you type the function value, use \\ to "
+      "represent the Control key even though KEYS shows "
+      "the keyboard equivalent of the Control key as "
+      "the character ^ .\n"
+      "\n"
+      "When you know the number of the function you "
+      "want, you can click SELECT on Fun, then on the "
+      "function's number."
     ),
-    0,
-    GDK_h,
-    OP_CLEAR,
-    M_NONE,
-    do_immed
+    GDK_SHIFT_MASK,
+    GDK_F,
+    OP_SET,
+    M_FUN,
+    do_pending
 },
-{ 
-    N_("Inv"),
-    N_(
-      "Inv\n"
-      "\n"
-      "Inverse function flag\n"
-      "\n"
-      "Keyboard equivalent:   i\n"
-      "\n"
-      "This key is a toggle for setting or unsetting "
-      "the inverse function flag. This flag affects Sin, "
-      "Cos, and Tan trigonometric functions."
-    ),
-    0,
-    GDK_i,
-    OP_CLEAR,
-    M_NONE,
-    do_immed
-},
-{ 
+{
     N_("e^x"),
     N_(
       "e^x\n"
@@ -1939,7 +1471,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_immed
 },
-{ 
+{
     N_("10^x"),
     N_(
       "10^x\n"
@@ -1955,10 +1487,10 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     OP_CLEAR,
     M_NONE,
     do_immed
-},
-{ 
+},       
+{        
     N_("y^x"),
-    N_(
+    N_(  
       "y^x\n"
       "\n"
       "y to the power of x\n"
@@ -1971,16 +1503,16 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "Example:\n"
       "\n"
       "        2 Y 3 = (returns 8)"
-    ),
-    0,
+    ),   
+    0,   
     GDK_y,
     OP_SET,
     M_NONE,
     do_calc
-},
-{ 
+},       
+{        
     N_("x!"),
-    N_(
+    N_(  
       "x!\n"
       "\n"
       "Factorial\n"
@@ -1989,23 +1521,88 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "\n"
       "Returns the factorial of the current displayed "
       "value. This will only work for positive integer values."
-    ),
+    ), 
     GDK_SHIFT_MASK,
     GDK_exclam,
     OP_CLEAR,
     M_NONE,
     do_immed
 },
-{ 
-    "    ",
-    "    ",
+{
+    N_("Rand"),
+    N_(
+      "Rand\n"
+      "\n"
+      "Random number\n"
+      "\n"
+      "Keyboard equivalent:   ?\n"
+      "\n"
+      "Generates a random number in the range 0.0 to 1.0 "
+      "and enters it into the calculator display."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_question,
+    OP_CLEAR,
+    M_NONE,
+    do_immed
+},
+
+/* Row 3. */
+{
+    N_("D"),
+    N_(
+      "Hex D (decimal 13)\n"
+      "\n"
+      "Keyboard equivalent:   d\n"
+      "\n"
+      "Enters the hexadecimal value d in the display.\n"
+      "\n"
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
     0,
-    0,
+    GDK_d,
     OP_NOP,
     M_NONE,
-    do_none
+    do_number
 },
-{ 
+{
+    N_("E"),
+    N_(
+      "Hex E (decimal 14)\n"
+      "\n"
+      "Keyboard equivalent:   e\n"
+      "\n"
+      "Enters the hexadecimal value e in the display.\n"
+      "\n"
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
+    0,
+    GDK_e,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    N_("F"),
+    N_(
+      "Hex F (decimal 15)\n"
+      "\n"
+      "Keyboard equivalent:   f\n"
+      "\n"
+      "Enters the hexadecimal value f in the display.\n"
+      "\n"
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
+    0,
+    GDK_f,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
     N_("Cos"),
     N_(
       "Cos\n"
@@ -2028,7 +1625,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_trig
 },
-{ 
+{
     N_("Sin"),
     N_(
       "Sin\n"
@@ -2044,16 +1641,16 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "\n"
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
-    ),
+    ),   
     GDK_CONTROL_MASK,
     GDK_s,
     OP_CLEAR,
     M_NONE,
     do_trig
 },
-{ 
+{        
     N_("Tan"),
-    N_(
+    N_(  
       "Tan\n"
       "\n"
       "Tangent function\n"
@@ -2067,14 +1664,14 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
       "\n"
       "The result appears in the current trigonometric "
       "unit (degrees, radians, or gradients)."
-    ),
+    ), 
     GDK_CONTROL_MASK,
     GDK_t,
     OP_CLEAR,
     M_NONE,
     do_trig
-},
-{ 
+},     
+{      
     N_("Ln"),
     N_(
       "Ln\n"
@@ -2108,41 +1705,157 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     M_NONE,
     do_immed
 },
-{ 
-    N_("Rand"),
+
+/* Row 4. */
+{
+    N_("A"),
     N_(
-      "Rand\n"
+      "Hex A (decimal 10)\n"
       "\n"
-      "Random number\n"
+      "Keyboard equivalent:   a\n"
       "\n"
-      "Keyboard equivalent:   ?\n"
+      "Enters the hexadecimal value a in the display.\n"
       "\n"
-      "Generates a random number in the range 0.0 to 1.0 "
-      "and enters it into the calculator display."
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
+    0,
+    GDK_a,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    N_("B"),
+    N_(
+      "Hex B (decimal 11)\n"
+      "\n"
+      "Keyboard equivalent:   b\n"
+      "\n"
+      "Enters the hexadecimal value b in the display.\n"
+      "\n"
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
+    0,
+    GDK_b,
+    OP_NOP,
+    M_NONE,
+    do_number
+},    
+{     
+    N_("C"),
+    N_(
+      "Hex C (decimal 12)\n"
+      "\n"
+      "Keyboard equivalent:   c\n"
+      "\n"
+      "Enters the hexadecimal value c in the display.\n"
+      "\n"
+      "Available only when the current base is "
+      "hexadecimal."
+    ),
+    0,
+    GDK_c,
+    OP_NOP,
+    M_NONE,
+    do_number
+},
+{
+    N_("Or"),
+    N_(
+      "Or\n"
+      "\n"
+      "Logical OR\n"
+      "\n"
+      "Keyboard equivalent:   |\n"
+      "\n"
+      "This key performs a logical OR operation on the "
+      "last number entered and the next number entered, "
+      "treating both numbers as unsigned long integers."
     ),
     GDK_SHIFT_MASK,
-    GDK_question,
+    GDK_bar,
+    OP_SET,
+    M_NONE,
+    do_calc
+},
+{
+    N_("And"),
+    N_(
+      "And\n"
+      "\n"
+      "Logical AND\n"
+      "\n"
+      "Keyboard equivalent:   &\n"
+      "\n"
+      "This key performs a logical AND operation on the "
+      "last number entered and the next number entered, "
+      "treating both numbers as unsigned long integers."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_ampersand,
+    OP_SET,
+    M_NONE,
+    do_calc
+},       
+{        
+    N_("Not"),
+    N_(  
+      "Not\n"
+      "\n"
+      "Logical NOT\n"
+      "\n"
+      "Keyboard equivalent:   ~\n"
+      "\n"
+      "This key performs a logical NOT operation on the "
+      "current displayed value."
+    ),   
+    GDK_SHIFT_MASK,
+    GDK_asciitilde,
     OP_CLEAR,
     M_NONE,
     do_immed
 },
-{ 
-    "    ",
-    "    ",
-    0,
-    0,
-    OP_NOP,
+{
+    N_("Xor"),
+    N_(
+      "Xor\n"
+      "\n"
+      "Logical XOR\n"
+      "\n"
+      "Keyboard equivalent:   ^\n"
+      "\n"
+      "This key takes the last number entered and the "
+      "next number entered, and performs a logical XOR "
+      "operation on them, treating both numbers as "
+      "unsigned long integers."
+    ),
+    GDK_SHIFT_MASK,
+    GDK_caret,
+    OP_SET,
     M_NONE,
-    do_none
+    do_calc
 },
-{ 
-    "    ",
-    "    ",
+{
+    N_("Xnor"),
+    N_(
+      "Xnor\n"
+      "\n"
+      "Logical XNOR\n"
+      "\n"
+      "Keyboard equivalent:   n\n"
+      "\n"
+      "This key takes the last number entered and the "
+      "next number entered, and performs a logical XNOR "
+      "operation on them, treating both numbers as "
+      "unsigned long integers."
+    ),
     0,
-    0,
-    OP_NOP,
+    GDK_n,
+    OP_SET,
     M_NONE,
-    do_none
+    do_calc
 },
 };
 
@@ -2150,7 +1863,7 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 void
 do_calctool(int argc, char **argv)
 {
-    char *ptr;
+    char *ptr, title[MAXLINE];
     int i;
 
     v->progname = argv[0];     /* Save programs name. */
@@ -2184,7 +1897,6 @@ do_calctool(int argc, char **argv)
     read_resources();          /* Read resources from merged database. */
     get_options(argc, argv);   /* Get command line arguments. */
     read_rcfiles();            /* Read .calctoolrc's files. */
-    switch_hands(v->righthand);
     make_frames();             /* Create gcalctool window frames. */
 
     v->shelf      = NULL;      /* No selection for shelf initially. */
@@ -2205,13 +1917,9 @@ do_calctool(int argc, char **argv)
         make_registers();
         if (!v->iconic) win_display(FCP_REG, TRUE);
     }
-    if (v->modetype != BASIC) {     /* Show the mode window? */
-        set_title(FCP_MODE, mstrs[(int) v->modetype]);
-        set_item(MODEITEM, mode_str[(int) v->modetype]);
-        if (!v->iconic) {
-            win_display(FCP_MODE, TRUE);
-        }
-    }
+
+    SPRINTF(title, "%s   [%s]", v->tool_label, mstrs[(int) v->modetype]);
+    set_title(FCP_KEY, title);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
     start_tool();                    /* Display the calculator. */
@@ -2227,12 +1935,12 @@ doerr(char *errmes)
         return;
     }
     STRCPY(v->display, errmes);
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
     v->error = 1;
     if (v->beep == TRUE) {
         beep();
     }
-    set_item(OPITEM, _("CLR"));
+    set_op_item(_("CLR"));
 }
 
 
@@ -2262,15 +1970,4 @@ struct exception *exc;
     doerr(_("Error"));
 
     return(1);
-}
-
-
-void
-switch_hands(int righthand)
-{
-    int i;
-
-    for (i = 0; i < BCOLS; i++) {
-        cur_pos[i] = (righthand) ? right_pos[i] : left_pos[i];
-    }
 }

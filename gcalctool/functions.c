@@ -1,21 +1,22 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002, Sun Microsystems, Inc.  All Rights Reserved.
- *  Sun considers its source code as an unpublished, proprietary
- *  trade secret, and it is available only under strict license
- *  provisions.  This copyright notice is placed here only to protect
- *  Sun in the event the source is deemed a published work.  Dissassembly,
- *  decompilation, or other means of reducing the object code to human
- *  readable form is prohibited by the license agreement under which
- *  this code is provided to the user or company in possession of this
- *  copy.
- *
- *  RESTRICTED RIGHTS LEGEND: Use, duplication, or disclosure by the
- *  Government is subject to restrictions as set forth in subparagraph
- *  (c)(1)(ii) of the Rights in Technical Data and Computer Software
- *  clause at DFARS 52.227-7013 and in similar clauses in the FAR and
- *  NASA FAR Supplement.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *           
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *           
+ *  This program is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  General Public License for more details.
+ *           
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ *  02111-1307, USA.
  */
 
 #include <stdio.h>
@@ -30,16 +31,12 @@ static BOOLEAN ibool(double);
 static double setbool(BOOLEAN);
 
 static void do_accuracy();
-static void do_base();
 static void do_constant();
 static void do_exchange();
 static void do_factorial(int *, int *);
 static void do_function();
-static void do_mode();
-static void do_numtype();
 static void do_shift();
 static void do_sto_rcl();
-static void do_trigtype() ;
 static void mpacos(int *, int *);
 static void mpacosh(int *, int *);
 static void mpasinh(int *, int *);
@@ -54,8 +51,8 @@ do_accuracy()     /* Set display accuracy. */
     int i;
 
     for (i = 0; i <= 9; i++) {
-        if (v->current == get_menu_entry(M_ACC, i)) {
-            v->accuracy = char_val(v->current);
+        if (v->current->value == get_menu_entry(M_ACC, i)) {
+            v->accuracy = char_val(v->current->value);
             make_registers();
             return;
         }
@@ -72,33 +69,26 @@ do_ascii()        /* Convert ASCII value. */
         val = v->cur_ch;
         mpcim(&val, v->MPdisp_val);
         show_display(v->MPdisp_val);
-        set_item(OPITEM, "");
+        set_op_item("");
         v->pending = 0;
     } else if (v->event_type != KEYBOARD_DOWN) {
         show_ascii_frame();
     } else {
         save_pending_values(v->current);
-        set_item(OPITEM, _("ASC"));
+        set_op_item(_("ASC"));
     }
 }
 
 
-static void
-do_base()    /* Change the current base setting. */
+void
+do_base(enum base_type b)    /* Change the current base setting. */
 {
-    int i;
-
-    for (i = 0; i <= 3; i++) {
-        if (v->current == get_menu_entry(M_BASE, i)) {
-            v->base = (enum base_type) i;
-            grey_buttons(v->base);
-            set_item(BASEITEM, base_str[(int) v->base]);
-            show_display(v->MPdisp_val);
-            v->pending = 0;
-            if (v->rstate) {
-                make_registers();
-            }
-        }
+    v->base = b;
+    grey_buttons(v->base);
+    show_display(v->MPdisp_val);
+    v->pending = 0;
+    if (v->rstate) {
+        make_registers();
     }
 }
 
@@ -109,7 +99,7 @@ do_business()     /* Perform special business mode calculations. */
     int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
     int i, len, val;
 
-    if (IS_KEY(v->current, KEY_CTRM)) {
+    if (IS_KEY(v->current->value, KEY_CTRM)) {
 
 /*  Cterm - MEM0 = int (periodic interest rate).
  *          MEM1 = fv  (future value).
@@ -125,7 +115,7 @@ do_business()     /* Perform special business mode calculations. */
         mpln(MP3, MP4);
         mpdiv(MP2, MP4, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_DDB)) {
+    } else if (IS_KEY(v->current->value, KEY_DDB)) {
 
 /*  Ddb   - MEM0 = cost    (amount paid for asset).
  *          MEM1 = salvage (value of asset at end of its life).
@@ -153,7 +143,7 @@ do_business()     /* Perform special business mode calculations. */
             mpadd(MP1, v->MPdisp_val, MPbv);
         }
 
-    } else if (IS_KEY(v->current, KEY_FV)) {
+    } else if (IS_KEY(v->current->value, KEY_FV)) {
 
 /*  Fv    - MEM0 = pmt (periodic payment).
  *          MEM1 = int (periodic interest rate).
@@ -170,7 +160,7 @@ do_business()     /* Perform special business mode calculations. */
         mpmul(v->MPmvals[0], MP3, MP4);
         mpdiv(MP4, v->MPmvals[1], v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_PMT)) {
+    } else if (IS_KEY(v->current->value, KEY_PMT)) {
 
 /*  Pmt   - MEM0 = prin (principal).
  *          MEM1 = int  (periodic interest rate).
@@ -191,7 +181,7 @@ do_business()     /* Perform special business mode calculations. */
         mpdiv(v->MPmvals[1], MP1, MP2);
         mpmul(v->MPmvals[0], MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_PV)) {
+    } else if (IS_KEY(v->current->value, KEY_PV)) {
 
 /*  Pv    - MEM0 = pmt (periodic payment).
  *          MEM1 = int (periodic interest rate).
@@ -212,7 +202,7 @@ do_business()     /* Perform special business mode calculations. */
         mpdiv(MP1, v->MPmvals[1], MP2);
         mpmul(v->MPmvals[0], MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_RATE)) {
+    } else if (IS_KEY(v->current->value, KEY_RATE)) {
 
 /*  Rate  - MEM0 = fv (future value).
  *          MEM1 = pv (present value).
@@ -229,7 +219,7 @@ do_business()     /* Perform special business mode calculations. */
         val = -1;
         mpaddi(MP4, &val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_SLN)) {
+    } else if (IS_KEY(v->current->value, KEY_SLN)) {
 
 /*  Sln   - MEM0 = cost    (cost of the asset).
  *          MEM1 = salvage (salvage value of the asset).
@@ -241,7 +231,7 @@ do_business()     /* Perform special business mode calculations. */
         mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
         mpdiv(MP1, v->MPmvals[2], v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_SYD)) {
+    } else if (IS_KEY(v->current->value, KEY_SYD)) {
 
 /*  Syd   - MEM0 = cost    (cost of the asset).
  *          MEM1 = salvage (salvage value of the asset).
@@ -264,7 +254,7 @@ do_business()     /* Perform special business mode calculations. */
         mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
         mpmul(MP1, MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_TERM)) {
+    } else if (IS_KEY(v->current->value, KEY_TERM)) {
 
 /*  Term  - MEM0 = pmt (periodic payment).
  *          MEM1 = fv  (future value).
@@ -294,7 +284,8 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     int MP1[MP_SIZE];
 
     if (!(v->opsptr && !v->show_paren)) {  /* Don't do if processing parens. */
-        if (IS_KEY(v->current, KEY_EQ) && IS_KEY(v->old_cal_value, KEY_EQ)) {
+        if (IS_KEY(v->current->value, KEY_EQ) && 
+            IS_KEY(v->old_cal_value, KEY_EQ)) {
             if (v->new_input) {
                 mpstr(v->MPlast_input, v->MPresult);
             } else {
@@ -304,7 +295,8 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     }
 
 
-    if (!IS_KEY(v->current, KEY_EQ) && IS_KEY(v->old_cal_value, KEY_EQ)) {
+    if (!IS_KEY(v->current->value, KEY_EQ) && 
+        IS_KEY(v->old_cal_value, KEY_EQ)) {
         v->cur_op = '?';
     }
 
@@ -365,15 +357,16 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 
     show_display(v->MPresult);
 
-    if (!(IS_KEY(v->current, KEY_EQ) && IS_KEY(v->old_cal_value, KEY_EQ))) {
+    if (!(IS_KEY(v->current->value, KEY_EQ) && 
+          IS_KEY(v->old_cal_value, KEY_EQ))) {
         mpstr(v->MPdisp_val, v->MPlast_input);
     }
 
     mpstr(v->MPresult, v->MPdisp_val);
-    if (!IS_KEY(v->current, KEY_EQ)) {
-        v->cur_op = v->current;
+    if (!IS_KEY(v->current->value, KEY_EQ)) {
+        v->cur_op = v->current->value;
     }
-    v->old_cal_value = v->current;
+    v->old_cal_value = v->current->value;
     v->new_input     = v->key_exp = 0;
 }
 
@@ -381,19 +374,26 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 void
 do_clear()       /* Clear the calculator display and re-initialise. */
 {
-    clear_display();
+    clear_display(TRUE);
     if (v->error) {
-        set_item(DISPLAYITEM, "");
+        set_display("");
     }
     initialise();
+}
+
+
+void
+do_clear_entry()     /* Clear the calculator display. */
+{
+    clear_display(FALSE);
 }
 
 
 static void
 do_constant()
 {
-    if (v->current >= '0' && v->current <= '9') {
-        mpstr(v->MPcon_vals[char_val(v->current)], v->MPdisp_val);
+    if (v->current->value >= '0' && v->current->value <= '9') {
+        mpstr(v->MPcon_vals[char_val(v->current->value)], v->MPdisp_val);
         show_display(v->MPdisp_val);
     }
 }
@@ -413,7 +413,7 @@ do_delete()     /* Remove the last numeric character typed. */
     if (v->key_exp && !(strchr(v->display, '+'))) {
         v->key_exp = 0;
         v->display[strlen(v->display)-1] = '\0';
-        set_item(OPITEM, "");
+        set_op_item("");
     }
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
@@ -422,7 +422,7 @@ do_delete()     /* Remove the last numeric character typed. */
         v->pointed = 0;
     }
 
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -433,10 +433,10 @@ do_exchange()         /* Exchange display with memory register. */
     int i, MPtemp[MP_SIZE];
 
     for (i = 0; i <= 9; i++) {
-        if (v->current == get_menu_entry(M_EXCH, i)) {
+        if (v->current->value == get_menu_entry(M_EXCH, i)) {
             mpstr(v->MPdisp_val, MPtemp);
-            mpstr(v->MPmvals[char_val(v->current)], v->MPdisp_val);
-            mpstr(MPtemp, v->MPmvals[char_val(v->current)]);
+            mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
+            mpstr(MPtemp, v->MPmvals[char_val(v->current->value)]);
             make_registers();
             return;
         }
@@ -460,7 +460,7 @@ do_expno()           /* Get exponential number. */
     v->toclear = 0;
     v->key_exp = 1;
     v->exp_posn = strchr(v->display, '+');
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -513,13 +513,6 @@ do_factorial(int *MPval, int *MPres)
 }
 
 
-void
-do_frame()    /* Exit calctool. */
-{
-    exit(0);
-}
-
-
 static void
 do_function()      /* Perform a user defined function. */
 {
@@ -528,8 +521,8 @@ do_function()      /* Perform a user defined function. */
 
     scurwin = v->curwin;
     v->pending = 0;
-    if (v->current >= '0' && v->current <= '9') {
-        fno = char_val(v->current);
+    if (v->current->value >= '0' && v->current->value <= '9') {
+        fno = char_val(v->current->value);
         process_str(v->fun_vals[fno]);
     }
     v->curwin = scurwin;
@@ -550,75 +543,67 @@ do_immed()
     double dval;
     int i, MP1[MP_SIZE], MP2[MP_SIZE];
 
-    if (IS_KEY(v->current, KEY_HYP)) {                 /* Hyp */
-        v->hyperbolic = !v->hyperbolic;
-        set_item(HYPITEM, (v->hyperbolic) ? _("HYP") : "    ");
-
-    } else if (IS_KEY(v->current, KEY_INV)) {          /* Inv */
-        v->inverse = !v->inverse;
-        set_item(INVITEM, (v->inverse) ? _("INV") : "    ");
-
-    } else if (IS_KEY(v->current, KEY_32)) {           /* &32 */
+    if (IS_KEY(v->current->value, KEY_32)) {                  /* &32 */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(ibool(dval));
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_16)) {           /* &16 */
+    } else if (IS_KEY(v->current->value, KEY_16)) {           /* &16 */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(ibool(dval) & 0xffff);
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_ETOX)) {         /* e^x */
+    } else if (IS_KEY(v->current->value, KEY_ETOX)) {         /* e^x */
         mpstr(v->MPdisp_val, MP1);
         mpexp(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_TTOX)) {         /* 10^x */
+    } else if (IS_KEY(v->current->value, KEY_TTOX)) {         /* 10^x */
         i = 10;
         mpcim(&i, MP1);
         mppwr2(MP1, v->MPdisp_val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_LN)) {           /* Ln */
+    } else if (IS_KEY(v->current->value, KEY_LN)) {           /* Ln */
         mpstr(v->MPdisp_val, MP1);
         mpln(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_LOG)) {          /* Log */
+    } else if (IS_KEY(v->current->value, KEY_LOG)) {          /* Log */
         mplog10(v->MPdisp_val, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_RAND)) {         /* Rand */
+    } else if (IS_KEY(v->current->value, KEY_RAND)) {         /* Rand */
         dval = drand48();
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_SQRT)) {         /* Sqrt */
+    } else if (IS_KEY(v->current->value, KEY_SQRT)) {         /* Sqrt */
         mpstr(v->MPdisp_val, MP1);
         mpsqrt(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_NOT)) {          /* Not */
+    } else if (IS_KEY(v->current->value, KEY_NOT)) {          /* Not */
         mpcmd(v->MPdisp_val, &dval);
         dval = setbool(~ibool(dval));               
         mpcdm(&dval, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_REC)) {          /* 1/x */
+    } else if (IS_KEY(v->current->value, KEY_REC)) {          /* 1/x */
         i = 1;
         mpcim(&i, MP1);
         mpstr(v->MPdisp_val, MP2);
         mpdiv(MP1, MP2, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_FACT)) {         /* x! */
+    } else if (IS_KEY(v->current->value, KEY_FACT)) {         /* x! */
         do_factorial(v->MPdisp_val, MP1);
         mpstr(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_SQR)) {          /* x^2 */
+    } else if (IS_KEY(v->current->value, KEY_SQR)) {          /* x^2 */
         mpstr(v->MPdisp_val, MP1);
         mpmul(MP1, MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_CHS)) {          /* +/- */
+    } else if (IS_KEY(v->current->value, KEY_CHS)) {          /* +/- */
         if (v->key_exp) {
             if (*v->exp_posn == '+') {
                 *v->exp_posn = '-';
             } else {
                 *v->exp_posn = '+';
             }
-            set_item(DISPLAYITEM, v->display);
+            set_display(v->display);
             MPstr_to_num(v->display, v->base, v->MPdisp_val);
             v->key_exp = 0;
         } else {
@@ -630,7 +615,7 @@ do_immed()
 
 
 void
-do_memory()
+do_memory(int show)
 {
     if (!v->rstate) {
         make_registers();
@@ -640,21 +625,13 @@ do_memory()
 }
 
 
-static void
+void
 do_mode()                   /* Set special calculator mode. */
 {
-    int i;
+    char title[MAXLINE];
 
-    for (i = 0; i <= 3; i++) {
-        if (v->current == get_menu_entry(M_MODE, i)) {
-            v->modetype = (enum mode_type) i;
-            if (v->modetype != BASIC) {
-                set_title(FCP_MODE, mstrs[i]);
-            }
-        }
-    }
-
-    set_item(MODEITEM, mode_str[(int) v->modetype]);
+    SPRINTF(title, "%s   [%s]", v->tool_label, mstrs[(int) v->modetype]);
+    set_title(FCP_KEY, title);
     set_mode(v->modetype);
 }
 
@@ -672,11 +649,12 @@ do_number()
     int len, n;
     static int maxvals[4] = { 1, 7, 9, 15 };
 
-    nextchar = v->current;
-    n = v->current - '0';
-    if (v->base == HEX && v->current >= 'a' && v->current <= 'f') {
+    nextchar = v->current->value;
+    n = v->current->value - '0';
+    if (v->base == HEX && 
+        v->current->value >= 'a' && v->current->value <= 'f') {
         nextchar -= 32;             /* Convert to uppercase hex digit. */
-        n = v->current - 'a' + 10;
+        n = v->current->value - 'a' + 10;
     }
     if (n > maxvals[(int) v->base]) {
         if (v->beep == TRUE) {
@@ -695,27 +673,20 @@ do_number()
             v->display[len+1] = '\0';
         }
     }
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
 
 
-static void
-do_numtype()    /* Set number type (engineering, fixed or scientific). */
+void
+do_numtype(enum num_type n)   /* Set number display type. */
 {
-    int i;
-
-    for (i = 0; i <= 2; i++) {
-        if (v->current == get_menu_entry(M_NUM, i)) {
-            v->dtype = (enum num_type) i;
-            set_item(NUMITEM, dtype_str[(int) v->dtype]);
-            v->pending = 0;
-            show_display(v->MPdisp_val);
-            if (v->rstate) {
-                make_registers();
-            }
-        }
+    v->dtype = n;
+    v->pending = 0;
+    show_display(v->MPdisp_val);
+    if (v->rstate) {
+        make_registers();
     }
 }
 
@@ -731,11 +702,11 @@ do_paren()
  *  Increment parentheses count, and add the open paren to the expression.
  */
 
-    if (IS_KEY(v->current, KEY_LPAR)) {
+    if (IS_KEY(v->current->value, KEY_LPAR)) {
         if (!v->noparens && v->cur_op != '?') {
             paren_disp(v->cur_op);
         }
-        v->pending = v->current;
+        v->pending = v->current->value;
         v->noparens++;
 
 /*  If we haven't had any left brackets yet, and this is a right bracket,
@@ -744,13 +715,13 @@ do_paren()
  *  parenthesis expression.
  */
 
-    } else if (IS_KEY(v->current, KEY_RPAR)) {
+    } else if (IS_KEY(v->current->value, KEY_RPAR)) {
         if (!v->noparens) {
             return;
         }
         v->noparens--;
         if (!v->noparens) {
-            paren_disp(v->current);
+            paren_disp(v->current->value);
             ptr = v->display;
             while (*ptr != '(') {
                 ptr++;
@@ -761,7 +732,7 @@ do_paren()
             return;
         }
     }
-    paren_disp(v->current);
+    paren_disp(v->current->value);
 }
 
 
@@ -777,29 +748,21 @@ do_pending()
  */
 
     if (!v->ismenu) {
-        if (IS_KEY(v->current, KEY_CON) ||         /* Con. */
-            IS_KEY(v->current, KEY_EXCH) ||        /* Exch. */
-            IS_KEY(v->current, KEY_FUN) ||         /* Fun. */
-            IS_KEY(v->current, KEY_STO) ||         /* Sto. */
-            IS_KEY(v->current, KEY_RCL) ||         /* Rcl. */
-            IS_KEY(v->current, KEY_ACC)) {         /* Acc. */
+        if (IS_KEY(v->current->value, KEY_CON) ||         /* Con. */
+            IS_KEY(v->current->value, KEY_EXCH) ||        /* Exch. */
+            IS_KEY(v->current->value, KEY_FUN) ||         /* Fun. */
+            IS_KEY(v->current->value, KEY_STO) ||         /* Sto. */
+            IS_KEY(v->current->value, KEY_RCL) ||         /* Rcl. */
+            IS_KEY(v->current->value, KEY_ACC)) {         /* Acc. */
             grey_buttons(DEC);
         }
-        if (IS_KEY(v->current, KEY_LSFT) ||
-            IS_KEY(v->current, KEY_RSFT)) {
+        if (IS_KEY(v->current->value, KEY_LSFT) ||
+            IS_KEY(v->current->value, KEY_RSFT)) {
             grey_buttons(HEX);
         }
     }
 
-    if (IS_KEY(v->pending, KEY_ASC)) {                           /* Asc */
-        do_ascii();
-    } else if (IS_KEY(v->pending, KEY_BASE)) {                   /* Base */
-        do_base();
-    } else if (IS_KEY(v->pending, KEY_DISP)) {                   /* Disp */
-        do_numtype();
-    } else if (IS_KEY(v->pending, KEY_TRIG)) {                   /* Trig */
-        do_trigtype();
-    } else if (IS_KEY(v->pending, KEY_CON))  {                   /* Con */
+    if (IS_KEY(v->pending, KEY_CON))  {                          /* Con */
         do_constant();
     } else if (IS_KEY(v->pending, KEY_EXCH)) {                   /* Exch */
         do_exchange();
@@ -819,8 +782,6 @@ do_pending()
         do_shift();
     } else if (IS_KEY(v->pending, KEY_ACC)) {                    /* Acc */
         do_accuracy();
-    } else if (IS_KEY(v->pending, KEY_MODE)) {                   /* Mode */
-        do_mode();
     } else if (IS_KEY(v->pending, KEY_LPAR)) {                   /* ( */
         do_paren();
         return;
@@ -832,9 +793,9 @@ do_pending()
 
     show_display(v->MPdisp_val);
     if (v->error) {
-        set_item(OPITEM, _("CLR"));
+        set_op_item(_("CLR"));
     } else {
-        set_item(OPITEM, v->opstr);  /* Redisplay pending op. (if any). */
+        set_op_item(v->opstr);  /* Redisplay pending op. (if any). */
     }
 
     v->pending = 0;
@@ -856,7 +817,7 @@ do_point()                   /* Handle numeric point. */
         }
         v->pointed = 1;
     }
-    set_item(DISPLAYITEM, v->display);
+    set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -866,15 +827,15 @@ do_portion()
 {
     int MP1[MP_SIZE];
 
-    if (IS_KEY(v->current, KEY_ABS)) {                       /* Abs */
+    if (IS_KEY(v->current->value, KEY_ABS)) {                       /* Abs */
         mpstr(v->MPdisp_val, MP1);
         mpabs(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_FRAC)) {               /* Frac */
+    } else if (IS_KEY(v->current->value, KEY_FRAC)) {               /* Frac */
         mpstr(v->MPdisp_val, MP1);
         mpcmf(MP1, v->MPdisp_val);
 
-    } else if (IS_KEY(v->current, KEY_INT)) {                /* Int */
+    } else if (IS_KEY(v->current->value, KEY_INT)) {                /* Int */
         mpstr(v->MPdisp_val, MP1);
         mpcmim(MP1, v->MPdisp_val);
     }
@@ -897,8 +858,8 @@ do_shift()     /* Perform bitwise shift on display value. */
     }
 
     for (i = 0; i <= 15; i++) {
-        if (v->current == get_menu_entry(mtype, i)) {
-            shift = char_val(v->current);
+        if (v->current->value == get_menu_entry(mtype, i)) {
+            shift = char_val(v->current->value);
             MPstr_to_num(v->display, v->base, MPtemp);
             mpcmd(MPtemp, &dval);
             temp = ibool(dval);
@@ -932,13 +893,13 @@ do_sto_rcl()     /* Save/restore value to/from memory register. */
     }
 
     for (i = 0; i <= 9; i++) {
-        if (v->current == get_menu_entry(mtype, i)) {
+        if (v->current->value == get_menu_entry(mtype, i)) {
             if (IS_KEY(v->pending, KEY_RCL)) {                     /* Rcl */
-                mpstr(v->MPmvals[char_val(v->current)], v->MPdisp_val);
+                mpstr(v->MPmvals[char_val(v->current->value)], v->MPdisp_val);
                 v->new_input = 0;
 
             } else if (IS_KEY(v->pending, KEY_STO)) {              /* Sto */
-                n = char_val(v->current);
+                n = char_val(v->current->value);
 
                 if (IS_KEY(v->pending_op, KEY_ADD)) {              /* + */
                     mpstr(v->MPmvals[n], MPn);
@@ -963,9 +924,11 @@ do_sto_rcl()     /* Save/restore value to/from memory register. */
         }
     }
 
-    if (IS_KEY(v->current, KEY_ADD) || IS_KEY(v->current, KEY_SUB) ||
-        IS_KEY(v->current, KEY_MUL) || IS_KEY(v->current, KEY_DIV)) {
-        v->pending_op = v->current;
+    if (IS_KEY(v->current->value, KEY_ADD) || 
+        IS_KEY(v->current->value, KEY_SUB) ||
+        IS_KEY(v->current->value, KEY_MUL) || 
+        IS_KEY(v->current->value, KEY_DIV)) {
+        v->pending_op = v->current->value;
     }
 }
 
@@ -998,46 +961,50 @@ do_trig()         /* Perform all trigonometric functions. */
             mpstr(v->MPdisp_val, MPtemp);
         }
 
-        if (!v->hyperbolic) {
-            if (IS_KEY(v->current, KEY_COS)) {                  /* Cos */
-                mpcos(MPtemp, v->MPtresults[(int) RAD]);
-            } else if (IS_KEY(v->current, KEY_SIN)) {           /* Sin */
-                mpsin(MPtemp, v->MPtresults[(int) RAD]);
-            } else if (IS_KEY(v->current, KEY_TAN)) {           /* Tan */
-                mpsin(MPtemp, MPsin);
-                mpcos(MPtemp, MPcos);
-                mpcmd(MPcos, &cval);
-                if (cval == 0.0) doerr(_("Error"));
-                mpdiv(MPsin, MPcos, v->MPtresults[(int) RAD]);
-            }
-        } else {
-            if (IS_KEY(v->current, KEY_COS)) {                  /* Cosh */
-                mpcosh(MPtemp, v->MPtresults[(int) RAD]);
-            } else if (IS_KEY(v->current, KEY_SIN)) {           /* Sinh */
-                mpsinh(MPtemp, v->MPtresults[(int) RAD]);
-            } else if (IS_KEY(v->current, KEY_TAN)) {           /* Tanh */
-                mptanh(MPtemp, v->MPtresults[(int) RAD]);
+        if (v->current) {
+            if (!v->hyperbolic) {
+                if (IS_KEY(v->current->value, KEY_COS)) {           /* Cos */
+                    mpcos(MPtemp, v->MPtresults[(int) RAD]);
+                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Sin */
+                    mpsin(MPtemp, v->MPtresults[(int) RAD]);
+                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Tan */
+                    mpsin(MPtemp, MPsin);
+                    mpcos(MPtemp, MPcos);
+                    mpcmd(MPcos, &cval);
+                    if (cval == 0.0) doerr(_("Error"));
+                    mpdiv(MPsin, MPcos, v->MPtresults[(int) RAD]);
+                }
+            } else {
+                if (IS_KEY(v->current->value, KEY_COS)) {           /* Cosh */
+                    mpcosh(MPtemp, v->MPtresults[(int) RAD]);
+                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Sinh */
+                    mpsinh(MPtemp, v->MPtresults[(int) RAD]);
+                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Tanh */
+                    mptanh(MPtemp, v->MPtresults[(int) RAD]);
+                }
             }
         }
 
         mpstr(v->MPtresults[(int) RAD], v->MPtresults[(int) DEG]);
         mpstr(v->MPtresults[(int) RAD], v->MPtresults[(int) GRAD]);
     } else {
-        if (!v->hyperbolic) {
-            if (IS_KEY(v->current, KEY_COS)) {                  /* Acos */
-                mpacos(v->MPdisp_val, v->MPdisp_val);
-            } else if (IS_KEY(v->current, KEY_SIN)) {           /* Asin */
-                mpasin(v->MPdisp_val, v->MPdisp_val);
-            } else if (IS_KEY(v->current, KEY_TAN)) {           /* Atan */
-                mpatan(v->MPdisp_val, v->MPdisp_val);
-            }
-        } else {
-            if (IS_KEY(v->current, KEY_COS)) {                  /* Acosh */
-                mpacosh(v->MPdisp_val, v->MPdisp_val);
-            } else if (IS_KEY(v->current, KEY_SIN)) {           /* Asinh */
-                mpasinh(v->MPdisp_val, v->MPdisp_val);
-            } else if (IS_KEY(v->current, KEY_TAN)) {           /* Atanh */
-                mpatanh(v->MPdisp_val, v->MPdisp_val);
+        if (v->current) {
+            if (!v->hyperbolic) {
+                if (IS_KEY(v->current->value, KEY_COS)) {           /* Acos */
+                    mpacos(v->MPdisp_val, v->MPdisp_val);
+                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Asin */
+                    mpasin(v->MPdisp_val, v->MPdisp_val);
+                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Atan */
+                    mpatan(v->MPdisp_val, v->MPdisp_val);
+                }
+            } else {
+                if (IS_KEY(v->current->value, KEY_COS)) {           /* Acosh */
+                    mpacosh(v->MPdisp_val, v->MPdisp_val);
+                } else if (IS_KEY(v->current->value, KEY_SIN)) {    /* Asinh */
+                    mpasinh(v->MPdisp_val, v->MPdisp_val);
+                } else if (IS_KEY(v->current->value, KEY_TAN)) {    /* Atanh */
+                    mpatanh(v->MPdisp_val, v->MPdisp_val);
+                }
             }
         }
 
@@ -1066,24 +1033,17 @@ do_trig()         /* Perform all trigonometric functions. */
 }
 
 
-static void
-do_trigtype()          /* Change the current trigonometric type. */
+void
+do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 {
-    int i;
-
-    for (i = 0; i <= 2; i++) {
-        if (v->current == get_menu_entry(M_TRIG, i)) {
-            v->ttype = (enum trig_type) i;
-            if (IS_KEY(v->cur_op, KEY_COS) ||
-                IS_KEY(v->cur_op, KEY_SIN) ||
-                IS_KEY(v->cur_op, KEY_TAN)) {
-                mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
-                show_display(v->MPtresults[(int) v->ttype]);
-            }
-            set_item(TTYPEITEM, ttype_str[(int) v->ttype]);
-            v->pending = 0;
-        }
+    v->ttype = t;
+    if (IS_KEY(v->cur_op, KEY_COS) ||
+        IS_KEY(v->cur_op, KEY_SIN) ||
+        IS_KEY(v->cur_op, KEY_TAN)) {
+        mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
+        show_display(v->MPtresults[(int) v->ttype]);
     }
+    v->pending = 0;
 }
 
 
@@ -1280,7 +1240,7 @@ process_parens(char current)
             push_op(v->cur_op);
         }
         v->noparens++;     /* Count of left brackets outstanding. */
-        save_pending_values(current);
+        save_pending_values(button_for_value(current));
 
 /*  If we haven't had any left brackets yet, and this is a right bracket,
  *  then just ignore it.
@@ -1314,11 +1274,11 @@ process_parens(char current)
             }
             v->pending = v->opsptr = v->numsptr = 0;
             v->cur_op = '?';
-            set_item(OPITEM, "");
+            set_op_item("");
             STRCPY(v->opstr, "");
             if (v->error) {
-                set_item(DISPLAYITEM, _("Error"));
-                set_item(OPITEM, _("CLR"));
+                set_display(_("Error"));
+                set_op_item(_("CLR"));
                 STRCPY(v->display, _("Error"));
             } else { 
                 show_display(v->MPdisp_val);
@@ -1339,12 +1299,12 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
     }
     if (v->numsptr >= MAXSTACK) {
         STRCPY(v->display, _("Numeric stack error"));
-        set_item(DISPLAYITEM, v->display);
+        set_display(v->display);
         v->error = 1;
         if (v->beep == TRUE) {
             beep();
         }
-        set_item(OPITEM, _("CLR"));
+        set_op_item(_("CLR"));
     } else {
         if (v->MPnumstack[v->numsptr] == NULL) {
             v->MPnumstack[v->numsptr] =
@@ -1363,9 +1323,9 @@ push_op(int val)     /* Try to push value onto the operand stack. */
     }
     if (v->opsptr >= MAXSTACK) {
         STRCPY(v->display, _("Operand stack error"));
-        set_item(DISPLAYITEM, v->display);
+        set_display(v->display);
         v->error = 1;
-        set_item(OPITEM, _("CLR"));
+        set_op_item(_("CLR"));
     } else {
         v->opstack[v->opsptr++] = val;
     }
@@ -1373,20 +1333,10 @@ push_op(int val)     /* Try to push value onto the operand stack. */
 
 
 void
-save_pending_values(int val)
+save_pending_values(struct button *but)
 {
-    int n;
-
-    v->pending = val;
-    for (n = 0; n < NOBUTTONS; n++) {
-        if (val == button_value(n)) {
-            v->pending_n = n;
-        }
-    }
-    v->pending_win = v->curwin;
-    if (v->pending_win == FCP_MODE) {
-        v->pending_mode = v->modetype;
-    }
+    v->pending_but = but;
+    v->pending = but->value;
 }
 
 
@@ -1404,4 +1354,34 @@ setbool(BOOLEAN p)
     }
 
     return(val);
+}
+
+
+struct button *
+val_to_button(struct button buttons[], int max_buttons, int val)
+{
+    int i;
+
+    for (i = 0; i < max_buttons; i++) {
+        if (buttons[i].value == val) {
+            return(&buttons[i]);
+        }
+    }
+
+    return(NULL);
+}
+
+
+struct button *
+button_for_value(int val)
+{
+    struct button *b;
+
+    if ((b = val_to_button(b_buttons, B_NOBUTTONS, val)) == NULL) {
+        if ((b = val_to_button(f_buttons, F_NOBUTTONS, val)) == NULL) {
+            b = val_to_button(s_buttons, S_NOBUTTONS, val);
+        }
+    }
+
+    return(b);
 }

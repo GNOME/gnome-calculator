@@ -1,12 +1,48 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2002 Sun Microsystems, Inc.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
  *  All Rights Reserved.
  */
 
-Calctool TODO.
-==============
+Revamp gcalctool (v4.2.0 onwards) TODO list.
+--------------------------------------------
+
+* When the About popup is working, remove the gcalctool VERSION number from
+  the titlebar.
+* Consider removing the "Keys" key and all the code associated with it.
+* Keyboard input is not working for menu buttons at all at the moment.
+* Check that the numeric keypad does all the right things.
+* Toggling the "Keys" button doesn't toggle the label for all of the buttons.
+* Add in an overview of the various changes since v4.1.13 to the NEWS file.
+* Put a border around the Basic, Financial and Scientific panels. Also 
+  the mode panel.
+* Hook up the Help->About and Help->Contents menu bar menu items.
+* When the two mode tables and the mode panel are built, they affect the
+  size of the gcalctool buttons.
+* Fixup all the "#ifdef FIXUP"'s.
+* Remove all references to the enum with FCP_KEY, FCP_REG and FCP_MODE in it.
+* Need to create a new gcalctoolrc that shows the old OpenWindows calctool
+  colors.
+* Need to update the manual pages to reflect these changes.
+* Need to create Help file for gcalctool.
+* Need to reduce tool tip help message sizes.
+* Need to create an "About gcalctool" popup.
+* Move .gcalctoolcf functionality into gconf resources.
+* Should the menubar "standard" menu entries have tiny icons?
+* Make sure all the keyboard equivalents of each button are working.
+* Define what the best keyboard equivalents are.
+* Make sure that typing Control-q terminates gcalctool.
+* Make sure that this new gcalctool is accessible.
+* Need to be able to save the current state away in the Gconf resources.
+* "View Memory Register" should be a checkbox to toggle this option.
+* Make X->op_label a read-only entry (with a white background), and to the
+  right of the Hyp and Inv checkboxes.
+
+===========================================================================
+
+Gcalctool TODO.
+===============
 
 * In fixing bug #101861 (http://bugzilla.gnome.org/show_bug.cgi?id=101861)
   it's now possible for the Memory Register window to dynamically resize
@@ -16,10 +52,6 @@ Calctool TODO.
 * Need to find what's causing the warning message:
   ** (gcalctool:6306): WARNING **: CORBA_ORB_destroy: ORB still has 2 refs.
   when gcalctool exits, and fix it.
-
-* If the mode window is to be initially displayed when gcalctool starts
-  (gconf key "Mode" is not BASIC") then it is being positioned incorrectly
-  relative to the main gcalctool window.
 
 * Implement bugtraq rfe #1190372/#1105626.
   It appears that function definitions are unable to handle all calculator
@@ -34,7 +66,7 @@ Calctool TODO.
   and [dgr] for Trig) and beep if it's illegal.
 
 * Implement bugtraq rfe #4023507.
-  The calculator in Logical mode accepts hex entries of up to
+  The calculator in Scientific mode accepts hex entries of up to
   eight digits.  This was sufficient to deal with 32-bit addresses.
   When Solaris is 64-bit, the calculator will be less useful.
   Maybe there should be a Logical-64 mode.
@@ -70,11 +102,7 @@ Calctool TODO.
 * See if it's now safe to remove the "Hack Alert" code in gtk.c at about
   line 1106.
 
-* Consider moving the three mode tables into the main window, and removing
-  the extra mode window. This would "fix" the initial positioning bug near
-  the top of this TODO file.
-
-* Consider the possibility of being able to have all the three mode windows
+* Consider the possibility of being able to have all the mode windows
   displayed at the same time.
 
 * As of v3.0.1. calctool was modified to have "infinite" precision

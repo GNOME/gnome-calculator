@@ -1,11 +1,91 @@
 /*  $Header$
  *
- *  Copyright (c) 1987-2002 Sun Microsystems, Inc.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc.
  *  All Rights Reserved.
  */
 
 gcalctool change history.
 =========================
+
+v4.2.0 - 8th January 2003.  (aes)
+
+* From Andrew Sobala <andrew@sobala.net>
+  Fixed "blank buttons displaying" bug. 
+
+* From Andrew Sobala <andrew@sobala.net>
+  Added small section to configure.in that forces a "--enable-build-broken"
+  flag to have to be passed to configure in order to build gcalctool while 
+  it is still in this semi-broken state. This will be removed when most of
+  the items mentioned in the first section of the TODO file have been
+  implemented.
+
+----
+
+v4.2.0 - 8th January 2003.  (richb)
+
+* Updated the copyright messages to by the correct GPL ones for the various
+  source files, plus used date of 2003 (not 2002) in:
+
+  .../ChangeLog
+  .../NEWS
+  .../README
+  .../TODO.
+  .../gcalctool/calctool.c
+  .../gcalctool/calctool.h
+  .../gcalctool/display.c
+  .../gcalctool/dsdefs.h
+  .../gcalctool/dsfuns.c
+  .../gcalctool/extern.h
+  .../gcalctool/functions.c
+  .../gcalctool/gcalctool.1
+  .../gcalctool/get.c
+  .../gcalctool/graphics.c
+  .../gcalctool/gtk.c
+  .../gcalctool/mp.c
+
+* The Financial/Logical/Scientific mode buttons have been moved into
+  the main calculator window above the Basic mode buttons.
+
+* Added a menubar with the following menus/items:
+
+  File      Edit                  View              Help
+  -----------------------------------------------------------------
+  Quit      Copy                  Basic Mode        Contents...
+            Insert ASCII Value    Financial Mode    About Gcalctool
+                                  Scientific Mode
+
+                                  Memory Register
+                                  Right-handed Style
+
+  The functionality has been hooked up except for the two Help menu items.
+
+* Revamped the gcalctool design. The Basic Mode is much simpler now.
+  The Logical and Scientific modes have been combined into a single
+  Scientific mode (which also includes some of the functionality that
+  was in the previous Basic mode).
+
+  The mode buttons are now extra button tables (and a mode panel) that get
+  shown or hidden in the main gcalctool window depending upon the current
+  mode.
+
+  The six item mode display has been removed. The current base, numeric
+  display type, trigonometric type, hyp and inv settings can be seen by
+  the radio buttons and check boxes in the mode panel. The current mode is
+  given in the main window title bar. The only things that's really 
+  different is that there is no longer a current operand display item.
+
+* Remove the small property sheet that was displayed when you right clicked
+  in the main window button area (not over a button). This had the ability
+  to set a left or right-handed style. This functionality has also been
+  removed, because with the simplification of the Basic mode, it's no longer
+  needed. Remove the command line options and resources associated with this.
+
+* From Andrew Sobala <andrew@sobala.net>
+  Fixed bug #102698 - "make distcheck" fails. Fix was to use the correct
+  GNOME 2 autogen.sh. Also added #(schema_DATA) to the top-level
+  Makefile.am
+
+----
 
 v4.1.27 - 24th December 2002.  (richb)
 
@@ -77,6 +157,7 @@ v4.1.21 - 20th December 2002.
 	Changed PACKAGE to GETTEXT_PACKAGE in dgettext().
 	Added N_ macro both for #ifdef ENABLE_NLS and the else case.
 ----
+
 v4.1.20 - 10th September 2002.
 
 * [Sun Bugtraq bug #1102883 against DeskSet calctool].

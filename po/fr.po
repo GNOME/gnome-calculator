@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 4.1.27\n"
-"POT-Creation-Date: 2002-12-27 15:05+0100\n"
+"POT-Creation-Date: 2003-01-07 10:12-0800\n"
 "PO-Revision-Date: 2002-12-27 15:00+0100\n"
 "Last-Translator: Laurent Richard <laurent.richard@lilit.be>\n"
 "Language-Team: GNIME French Team <gnomefr@traduc.org>\n"
@@ -15,64 +15,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Strings for each base value.
-#: gcalctool/calctool.c:49
-msgid "BIN"
-msgstr "BIN"
+#: gcalctool/calctool.c:50
+#, fuzzy
+msgid "Bin"
+msgstr "Sin"
 
-#: gcalctool/calctool.c:49
-msgid "OCT"
-msgstr "OCT"
+#: gcalctool/calctool.c:50
+#, fuzzy
+msgid "Oct"
+msgstr "/Octale"
 
-#: gcalctool/calctool.c:49
-msgid "DEC"
-msgstr "DEC"
+#: gcalctool/calctool.c:50
+msgid "Dec"
+msgstr ""
 
-#: gcalctool/calctool.c:49
-msgid "HEX"
-msgstr "HEX"
+#: gcalctool/calctool.c:50
+#, fuzzy
+msgid "Hex"
+msgstr "e^x"
 
 #. Strings for each display mode value.
-#: gcalctool/calctool.c:58
-msgid "ENG"
-msgstr "ENG"
+#: gcalctool/calctool.c:59
+msgid "Eng"
+msgstr ""
 
-#: gcalctool/calctool.c:58
-msgid "FIX"
-msgstr "FIX"
+#: gcalctool/calctool.c:59
+msgid "Fix"
+msgstr ""
 
-#: gcalctool/calctool.c:58
-msgid "SCI"
-msgstr "SCI"
+#: gcalctool/calctool.c:59
+#, fuzzy
+msgid "Sci"
+msgstr "Sin"
 
 #. Strings for each mode value.
-#: gcalctool/calctool.c:62
+#: gcalctool/calctool.c:63
 msgid "BASIC"
 msgstr "BASIQUE"
 
-#: gcalctool/calctool.c:62
+#: gcalctool/calctool.c:63
 msgid "FINANCIAL"
 msgstr "FINANCIER"
 
-#: gcalctool/calctool.c:62
-msgid "LOGICAL"
-msgstr "LOGIQUE"
-
-#: gcalctool/calctool.c:62
+#: gcalctool/calctool.c:63
 msgid "SCIENTIFIC"
 msgstr "SCIENTIFIQUE"
 
-#. Mode titles for the popup panel.
-#: gcalctool/calctool.c:66
+#. Mode titles to be added to the titlebar.
+#: gcalctool/calctool.c:67
 msgid "Basic Mode"
 msgstr "Mode Basique"
 
-#: gcalctool/calctool.c:66
+#: gcalctool/calctool.c:67
 msgid "Financial Mode"
 msgstr "Mode Financier"
-
-#: gcalctool/calctool.c:67
-msgid "Logical Mode"
-msgstr "Mode Logique"
 
 #: gcalctool/calctool.c:67
 msgid "Scientific Mode"
@@ -80,295 +76,80 @@ msgstr "Mode Scientifique"
 
 #. Strings for each trig type value.
 #: gcalctool/calctool.c:72
-msgid "DEG"
-msgstr "DEG"
+#, fuzzy
+msgid "Degrees"
+msgstr "/Degrés"
 
 #: gcalctool/calctool.c:72
-msgid "GRAD"
-msgstr "GRAD"
+#, fuzzy
+msgid "Gradients"
+msgstr "/Gradiants"
 
 #: gcalctool/calctool.c:72
-msgid "RAD"
-msgstr "RAD"
+#, fuzzy
+msgid "Radians"
+msgstr "/Radians"
 
-#: gcalctool/calctool.c:128
-msgid "Disp"
-msgstr ""
+#: gcalctool/calctool.c:118
+msgid "7"
+msgstr "7"
 
-#: gcalctool/calctool.c:130
+#: gcalctool/calctool.c:120
 msgid ""
-"Disp\n"
+"Numeric 7\n"
 "\n"
-"Changes the type of numeric display.\n"
+"Keyboard equivalent:   7\n"
 "\n"
-"Keyboard equivalent:   D\n"
-"\n"
-"Initially the numeric display is fixed-point notation to an accuracy of two "
-"decimal places. You can change this to engineering or scientific display.\n"
-"\n"
-"Click on the Disp button to show the available settings. Choose a value from "
-"the menu to change to a new numeric display.\n"
-"\n"
-"The calculator display (plus the memory registers, if they are showing) will "
-"be redrawn using the new notation.\n"
-"\n"
-"Alternatively, you can use the keyboard to set the numeric display: Type D, "
-"followed by e, f, or s to indicate the new display setting:\n"
-"\n"
-"e   engineering\n"
-"f   fixed-point\n"
-"s   scientific"
+"This key is inactive in binary base."
 msgstr ""
 
-#: gcalctool/calctool.c:164
-msgid "Base"
-msgstr "Base"
+#: gcalctool/calctool.c:133
+msgid "8"
+msgstr "8"
 
-#: gcalctool/calctool.c:166
+#: gcalctool/calctool.c:135
 msgid ""
-"Base\n"
+"Numeric 8\n"
 "\n"
-"Changes numeric base.\n"
+"Keyboard equivalent:   8\n"
 "\n"
-"Keyboard equivalent:   B\n"
-"\n"
-"Initially the numeric base is decimal. You can change the base to binary, "
-"octal, or hexadecimal.\n"
-"\n"
-"Click on the Base button to show the available settings. Choose a value from "
-"the menu to change to a new numeric base.\n"
-"\n"
-"Depending on that base, various keys on the calculator will be dimmed to "
-"show that they are disabled.\n"
-"\n"
-"Alternatively, you can use the keyboard to set the numeric base: Type B, "
-"followed by b, o, d, or h to indicate the new base setting:\n"
-"\n"
-"b   binary\n"
-"o   octal\n"
-"d   decimal\n"
-"h   hexadecimal"
+"This key is inactive in binary or octal base."
 msgstr ""
 
-#: gcalctool/calctool.c:199
-msgid "Int"
-msgstr "Int"
+#: gcalctool/calctool.c:148
+msgid "9"
+msgstr "9"
 
-#: gcalctool/calctool.c:201
+#: gcalctool/calctool.c:150
 msgid ""
-"Int\n"
+"Numeric 9\n"
 "\n"
-"Integer portion\n"
+"Keyboard equivalent:   9\n"
 "\n"
-"Keyboard equivalent:   Control-i\n"
-"\n"
-"Returns the integer portion of the current displayed value."
+"This key is inactive in binary or octal base."
 msgstr ""
 
-#: gcalctool/calctool.c:217
-msgid "Frac"
-msgstr "Frac"
+#: gcalctool/calctool.c:163
+msgid "/"
+msgstr "/"
 
-#: gcalctool/calctool.c:219
+#: gcalctool/calctool.c:165
 msgid ""
-"Frac\n"
+"/\n"
 "\n"
-"Fractional portion\n"
+"Division\n"
 "\n"
-"Keyboard equivalent:   Control-f\n"
+"Keyboard equivalent:   /\n"
 "\n"
-"Returns the fractional portion of the current displayed value."
+"This key takes the last number entered and divides it by the next number "
+"entered."
 msgstr ""
 
-#: gcalctool/calctool.c:235
-msgid "D"
-msgstr "D"
-
-#: gcalctool/calctool.c:237
-msgid ""
-"Hex D (decimal 13)\n"
-"\n"
-"Keyboard equivalent:   d\n"
-"\n"
-"Enters the hexadecimal value d in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:253
-msgid "E"
-msgstr "E"
-
-#: gcalctool/calctool.c:255
-msgid ""
-"Hex E (decimal 14)\n"
-"\n"
-"Keyboard equivalent:   e\n"
-"\n"
-"Enters the hexadecimal value e in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:271
-msgid "F"
-msgstr ""
-
-#: gcalctool/calctool.c:273
-msgid ""
-"Hex F (decimal 15)\n"
-"\n"
-"Keyboard equivalent:   f\n"
-"\n"
-"Enters the hexadecimal value f in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:289
-msgid "Clr"
-msgstr ""
-
-#: gcalctool/calctool.c:291
-msgid ""
-"Clr\n"
-"\n"
-"Clears the display.\n"
-"\n"
-"Keyboard equivalent:   Delete\n"
-"\n"
-"This clears the value currently displayed."
-msgstr ""
-
-#: gcalctool/calctool.c:308
-msgid "Mode"
-msgstr "Mode"
-
-#: gcalctool/calctool.c:310
-msgid ""
-"Mode\n"
-"\n"
-"Changes the calculator mode.\n"
-"\n"
-"Keyboard equivalent:   M\n"
-"\n"
-"By default, the initial calculator mode is Basic.\n"
-"\n"
-"Click on the Mode button to display and choose the other available modes:\n"
-"\n"
-"- Financial\n"
-"- Logical\n"
-"- Scientific\n"
-"\n"
-"\n"
-"If you choose one of these modes, a window with extra buttons is displayed.\n"
-"\n"
-"Alternatively, you can set the calculator mode using the keyboard. Type M, "
-"followed by n, s, or b to indicate the new calculator mode.\n"
-"\n"
-"b   Basic\n"
-"f   Financial\n"
-"l   Logical\n"
-"s   Scientific"
-msgstr ""
-
-#: gcalctool/calctool.c:345
-msgid "Keys"
-msgstr ""
-
-#: gcalctool/calctool.c:347
-msgid ""
-"Keys\n"
-"\n"
-"Toggles button labels.\n"
-"\n"
-"Keyboard equivalent:   k\n"
-"\n"
-"Toggles the labels on the calctool keys, alternating between the mouse and "
-"keyboard equivalents."
-msgstr ""
-
-#: gcalctool/calctool.c:364
-msgid "Abs"
-msgstr "Abs"
-
-#: gcalctool/calctool.c:366
-msgid ""
-"Abs\n"
-"\n"
-"Absolute value.\n"
-"\n"
-"Keyboard equivalent:   Control-u\n"
-"\n"
-"Returns the absolute value of the current displayed value."
-msgstr ""
-
-#: gcalctool/calctool.c:382
-msgid "+/-"
-msgstr "+/-"
-
-#: gcalctool/calctool.c:384
-msgid ""
-"+/-\n"
-"\n"
-"Change sign.\n"
-"\n"
-"Keyboard equivalent:   C\n"
-"\n"
-"Changes the arithmetic sign of the current displayed value or the exponent "
-"being entered."
-msgstr ""
-
-#: gcalctool/calctool.c:400
-msgid "A"
-msgstr "A"
-
-#: gcalctool/calctool.c:402
-msgid ""
-"Hex A (decimal 10)\n"
-"\n"
-"Keyboard equivalent:   a\n"
-"\n"
-"Enters the hexadecimal value a in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:418
-msgid "B"
-msgstr "B"
-
-#: gcalctool/calctool.c:420
-msgid ""
-"Hex B (decimal 11)\n"
-"\n"
-"Keyboard equivalent:   b\n"
-"\n"
-"Enters the hexadecimal value b in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:436
-msgid "C"
-msgstr "C"
-
-#: gcalctool/calctool.c:438
-msgid ""
-"Hex C (decimal 12)\n"
-"\n"
-"Keyboard equivalent:   c\n"
-"\n"
-"Enters the hexadecimal value c in the display.\n"
-"\n"
-"Available only when the current base is hexadecimal."
-msgstr ""
-
-#: gcalctool/calctool.c:454
+#: gcalctool/calctool.c:190
 msgid "Bsp"
 msgstr ""
 
-#: gcalctool/calctool.c:456
+#: gcalctool/calctool.c:192
 msgid ""
 "Bsp\n"
 "\n"
@@ -382,27 +163,97 @@ msgid ""
 "Internal accuracy is lost with this operation."
 msgstr ""
 
-#: gcalctool/calctool.c:477
-msgid "Mem..."
-msgstr ""
+#: gcalctool/calctool.c:211
+#, fuzzy
+msgid "CE"
+msgstr "E"
 
-#: gcalctool/calctool.c:479
+#: gcalctool/calctool.c:213
 msgid ""
-"Mem\n"
+"CE\n"
 "\n"
-"Displays a memory register window.\n"
+"Clears the current entry.\n"
 "\n"
-"Keyboard equivalent:   m\n"
+"Keyboard equivalent:   Control-Back Space\n"
 "\n"
-"Click on the Mem button to display a window showing the values of the ten "
-"memory registers in the current base, to the current accuracy."
+"This clears the value currently displayed."
 msgstr ""
 
-#: gcalctool/calctool.c:496
+#: gcalctool/calctool.c:228
+msgid "Clr"
+msgstr ""
+
+#: gcalctool/calctool.c:230
+msgid ""
+"Clr\n"
+"\n"
+"Clears the calculator.\n"
+"\n"
+"Keyboard equivalent:   Delete\n"
+"\n"
+"This clears the current display and any partial current calculation."
+msgstr ""
+
+#: gcalctool/calctool.c:247
+msgid "4"
+msgstr "4"
+
+#: gcalctool/calctool.c:249
+msgid ""
+"Numeric 4\n"
+"\n"
+"Keyboard equivalent:   4\n"
+"\n"
+"This key is inactive in binary base."
+msgstr ""
+
+#: gcalctool/calctool.c:262
+msgid "5"
+msgstr "5"
+
+#: gcalctool/calctool.c:264
+msgid ""
+"Numeric 5\n"
+"\n"
+"Keyboard equivalent:   5\n"
+"\n"
+"This key is inactive in binary base."
+msgstr ""
+
+#: gcalctool/calctool.c:277
+msgid "6"
+msgstr "6"
+
+#: gcalctool/calctool.c:279
+msgid ""
+"Numeric 6\n"
+"\n"
+"Keyboard equivalent:   6\n"
+"\n"
+"This key is inactive in binary base."
+msgstr ""
+
+#: gcalctool/calctool.c:292
+msgid "*"
+msgstr "*"
+
+#: gcalctool/calctool.c:294
+msgid ""
+"*\n"
+"\n"
+"Multiplication\n"
+"\n"
+"Keyboard equivalent:   * or x\n"
+"\n"
+"This key takes the last number entered and multiplies it by the next number "
+"entered."
+msgstr ""
+
+#: gcalctool/calctool.c:310
 msgid "Acc"
 msgstr ""
 
-#: gcalctool/calctool.c:498
+#: gcalctool/calctool.c:312
 msgid ""
 "Acc\n"
 "\n"
@@ -416,156 +267,115 @@ msgid ""
 "level from the menu to set the precision for the display and registers."
 msgstr ""
 
-#: gcalctool/calctool.c:518
-msgid "1/x"
-msgstr "1/x"
+#: gcalctool/calctool.c:332
+msgid "+/-"
+msgstr "+/-"
 
-#: gcalctool/calctool.c:520
+#: gcalctool/calctool.c:334
 msgid ""
-"1/x\n"
+"+/-\n"
 "\n"
-"Reciprocal\n"
+"Change sign.\n"
 "\n"
-"Keyboard equivalent:   r\n"
+"Keyboard equivalent:   C\n"
 "\n"
-"Returns the value 1 divided by the current displayed value."
+"Changes the arithmetic sign of the current displayed value or the exponent "
+"being entered."
 msgstr ""
 
-#: gcalctool/calctool.c:536
-msgid "x^2"
-msgstr "x^2"
+#: gcalctool/calctool.c:350
+msgid "Int"
+msgstr "Int"
 
-#: gcalctool/calctool.c:538
+#: gcalctool/calctool.c:352
 msgid ""
-"x^2\n"
+"Int\n"
 "\n"
-"Keyboard equivalent:   @\n"
+"Integer portion\n"
 "\n"
-"Returns the square of the current displayed value."
+"Keyboard equivalent:   Control-i\n"
+"\n"
+"Returns the integer portion of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:551
-msgid "7"
-msgstr "7"
+#: gcalctool/calctool.c:368
+msgid "Rcl"
+msgstr "Rcl"
 
-#: gcalctool/calctool.c:553
+#: gcalctool/calctool.c:370
 msgid ""
-"Numeric 7\n"
+"Rcl\n"
 "\n"
-"Keyboard equivalent:   7\n"
+"Retrieves a memory register.\n"
+"\n"
+"Keyboard equivalent:   R\n"
+"\n"
+"Click on the Rcl button to display a menu of available registers. Choose a "
+"register from the menu to retrieve its value.\n"
+"\n"
+"When you know the number of the register you want, you can click SELECT on "
+"Rcl, then on the register's number (a digit from 0 to 9)."
+msgstr ""
+
+#: gcalctool/calctool.c:393
+msgid "1"
+msgstr "1"
+
+#: gcalctool/calctool.c:395
+msgid ""
+"Numeric 1\n"
+"\n"
+"Keyboard equivalent:   1"
+msgstr ""
+
+#: gcalctool/calctool.c:406
+msgid "2"
+msgstr "2"
+
+#: gcalctool/calctool.c:408
+msgid ""
+"Numeric 2\n"
+"\n"
+"Keyboard equivalent:   2\n"
 "\n"
 "This key is inactive in binary base."
 msgstr ""
 
-#: gcalctool/calctool.c:566
-msgid "8"
-msgstr "8"
+#: gcalctool/calctool.c:421
+msgid "3"
+msgstr "3"
 
-#: gcalctool/calctool.c:568
+#: gcalctool/calctool.c:423
 msgid ""
-"Numeric 8\n"
+"Numeric 3\n"
 "\n"
-"Keyboard equivalent:   8\n"
+"Keyboard equivalent:   3\n"
 "\n"
-"This key is inactive in binary or octal base."
+"This key is inactive in binary base."
 msgstr ""
 
-#: gcalctool/calctool.c:581
-msgid "9"
-msgstr "9"
+#: gcalctool/calctool.c:436
+msgid "-"
+msgstr "-"
 
-#: gcalctool/calctool.c:583
+#: gcalctool/calctool.c:438
 msgid ""
-"Numeric 9\n"
+"-\n"
 "\n"
-"Keyboard equivalent:   9\n"
+"Subtraction\n"
 "\n"
-"This key is inactive in binary or octal base."
+"Keyboard equivalent:   -\n"
+"\n"
+"This operation takes the last number entered and subtracts from it the next "
+"number entered."
 msgstr ""
 
-#: gcalctool/calctool.c:596
-msgid "*"
-msgstr "*"
-
-#: gcalctool/calctool.c:598
-msgid ""
-"*\n"
-"\n"
-"Multiplication\n"
-"\n"
-"Keyboard equivalent:   * or x\n"
-"\n"
-"This key takes the last number entered and multiplies it by the next number "
-"entered."
-msgstr ""
-
-#: gcalctool/calctool.c:616
-msgid "Fun"
-msgstr ""
-
-#: gcalctool/calctool.c:618
-msgid ""
-"Fun\n"
-"\n"
-"Menu of defined functions\n"
-"\n"
-"Keyboard equivalent:   F\n"
-"\n"
-"Click on the Fun button to display a menu of functions you have defined. "
-"Choose a function from the menu to execute it. The result will show in the "
-"display.\n"
-"\n"
-"To add new functions or alter existing ones, choose \"Enter Function\" from "
-"the menu. This displays a window in which you type the number, description, "
-"and value of the function.\n"
-"\n"
-"Click SELECT on \"New Function\" to store the new function in the ~/."
-"gcalctoolcf file.\n"
-"\n"
-"For the function value, type the keyboard strokes that calculate your "
-"function. For example, to calculate sine(90), type the Value:\n"
-"\n"
-"        90 \\s\n"
-"\n"
-"When you type the function value, use \\ to represent the Control key even "
-"though KEYS shows the keyboard equivalent of the Control key as the "
-"character ^ .\n"
-"\n"
-"When you know the number of the function you want, you can click SELECT on "
-"Fun, then on the function's number."
-msgstr ""
-
-#: gcalctool/calctool.c:659
-msgid "Con"
-msgstr "Con"
-
-#: gcalctool/calctool.c:661
-msgid ""
-"Con\n"
-"\n"
-"Constant n\n"
-"\n"
-"Keyboard equivalent:   #\n"
-"\n"
-"Click on the Con button to show the available constants. Choose a constant "
-"from the menu to enter its value in the display.\n"
-"\n"
-"Alternatively, if you know the number of a constant, you can click SELECT on "
-"Con, then on a digit from 0 - 9 to indicate the constant you want to enter.\n"
-"\n"
-"To add new constants or alter existing ones, choose \"Enter Constant\" from "
-"the menu. This displays a window in which you type the number, description, "
-"and value of the constant.\n"
-"\n"
-"Click SELECT on \"Enter Constant\" to store the new constant in the ~/."
-"gcalctoolcf file."
-msgstr ""
-
-#: gcalctool/calctool.c:691
+#: gcalctool/calctool.c:454
+#, c-format
 msgid "%"
 msgstr "%"
 
-#: gcalctool/calctool.c:693
+#: gcalctool/calctool.c:456
 msgid ""
 "%\n"
 "\n"
@@ -583,11 +393,11 @@ msgid ""
 "The calculator is multiplying (200*20)*0.01."
 msgstr ""
 
-#: gcalctool/calctool.c:715
+#: gcalctool/calctool.c:478
 msgid "Sqrt"
 msgstr ""
 
-#: gcalctool/calctool.c:717
+#: gcalctool/calctool.c:480
 msgid ""
 "Sqrt\n"
 "\n"
@@ -598,66 +408,26 @@ msgid ""
 "Calculates the square root of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:733
-msgid "4"
-msgstr "4"
+#: gcalctool/calctool.c:496
+msgid "Frac"
+msgstr "Frac"
 
-#: gcalctool/calctool.c:735
+#: gcalctool/calctool.c:498
 msgid ""
-"Numeric 4\n"
+"Frac\n"
 "\n"
-"Keyboard equivalent:   4\n"
+"Fractional portion\n"
 "\n"
-"This key is inactive in binary base."
+"Keyboard equivalent:   Control-f\n"
+"\n"
+"Returns the fractional portion of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:748
-msgid "5"
-msgstr "5"
-
-#: gcalctool/calctool.c:750
-msgid ""
-"Numeric 5\n"
-"\n"
-"Keyboard equivalent:   5\n"
-"\n"
-"This key is inactive in binary base."
-msgstr ""
-
-#: gcalctool/calctool.c:763
-msgid "6"
-msgstr "6"
-
-#: gcalctool/calctool.c:765
-msgid ""
-"Numeric 6\n"
-"\n"
-"Keyboard equivalent:   6\n"
-"\n"
-"This key is inactive in binary base."
-msgstr ""
-
-#: gcalctool/calctool.c:778
-msgid "/"
-msgstr "/"
-
-#: gcalctool/calctool.c:780
-msgid ""
-"/\n"
-"\n"
-"Division\n"
-"\n"
-"Keyboard equivalent:   /\n"
-"\n"
-"This key takes the last number entered and divides it by the next number "
-"entered."
-msgstr ""
-
-#: gcalctool/calctool.c:798
+#: gcalctool/calctool.c:514
 msgid "Sto"
 msgstr "Sto"
 
-#: gcalctool/calctool.c:800
+#: gcalctool/calctool.c:516
 msgid ""
 "Sto\n"
 "\n"
@@ -672,146 +442,110 @@ msgid ""
 "indicate the memory register in which to store the displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:821
-msgid "Rcl"
-msgstr "Rcl"
+#: gcalctool/calctool.c:539
+msgid "0"
+msgstr "0"
 
-#: gcalctool/calctool.c:823
+#: gcalctool/calctool.c:541
 msgid ""
-"Rcl\n"
+"Numeric 0\n"
 "\n"
-"Retrieves a memory register.\n"
-"\n"
-"Keyboard equivalent:   R\n"
-"\n"
-"Click on the Rcl button to display a menu of available registers. Choose a "
-"register from the menu to retrieve its value.\n"
-"\n"
-"When you know the number of the register you want, you can click SELECT on "
-"Rcl, then on the register's number (a digit from 0 to 9)."
+"Keyboard equivalent:   0\n"
 msgstr ""
 
-#: gcalctool/calctool.c:844
-msgid "("
-msgstr "("
+#: gcalctool/calctool.c:552
+msgid "."
+msgstr "."
 
-#: gcalctool/calctool.c:846
+#: gcalctool/calctool.c:554
 msgid ""
-"(\n"
+".\n"
 "\n"
-"Left parenthesis\n"
+"Numeric point\n"
 "\n"
-"Keyboard equivalent:   (\n"
+"Keyboard equivalent:   .\n"
 "\n"
-"Allows you to group together a set of calculations. Use with the right "
-"parenthesis.\n"
-"\n"
-"Example:\n"
-"\n"
-"        2 * ( 3 + 4 ) = 14\n"
-"\n"
-"contrasted with:\n"
-"\n"
-"        2 * 3 + 4 = 10"
+"Starts the fractional part of a numeric entry."
 msgstr ""
 
-#: gcalctool/calctool.c:870
-msgid ")"
-msgstr ")"
+#: gcalctool/calctool.c:569
+msgid "="
+msgstr "="
 
-#: gcalctool/calctool.c:872
+#: gcalctool/calctool.c:571
 msgid ""
-")\n"
+"=\n"
 "\n"
-"Right parenthesis\n"
+"Calculates a result.\n"
 "\n"
-"Keyboard equivalent:   )\n"
+"Keyboard equivalent:   = or Return\n"
 "\n"
-"Allows you to group together a set of calculations. Use with the left "
-"parenthesis.\n"
-"\n"
-"Example:\n"
-"\n"
-"        2 * ( 3 + 4 ) = 14\n"
-"\n"
-"contrasted with:\n"
-"\n"
-"        2 * 3 + 4 = 10"
+"Displays the result of the current calculation in the current base."
 msgstr ""
 
-#: gcalctool/calctool.c:896
-msgid "1"
-msgstr "1"
+#: gcalctool/calctool.c:587
+msgid "+"
+msgstr "+"
 
-#: gcalctool/calctool.c:898
+#: gcalctool/calctool.c:589
 msgid ""
-"Numeric 1\n"
+"+\n"
 "\n"
-"Keyboard equivalent:   1"
+"Addition\n"
+"\n"
+"Keyboard equivalent:   +\n"
+"\n"
+"Takes the last number entered and adds it to the next number entered."
 msgstr ""
 
-#: gcalctool/calctool.c:909
-msgid "2"
-msgstr "2"
+#: gcalctool/calctool.c:605
+msgid "1/x"
+msgstr "1/x"
 
-#: gcalctool/calctool.c:911
+#: gcalctool/calctool.c:607
 msgid ""
-"Numeric 2\n"
+"1/x\n"
 "\n"
-"Keyboard equivalent:   2\n"
+"Reciprocal\n"
 "\n"
-"This key is inactive in binary base."
+"Keyboard equivalent:   r\n"
+"\n"
+"Returns the value 1 divided by the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:924
-msgid "3"
-msgstr "3"
+#: gcalctool/calctool.c:623
+msgid "x^2"
+msgstr "x^2"
 
-#: gcalctool/calctool.c:926
+#: gcalctool/calctool.c:625
 msgid ""
-"Numeric 3\n"
+"x^2\n"
 "\n"
-"Keyboard equivalent:   3\n"
+"Keyboard equivalent:   @\n"
 "\n"
-"This key is inactive in binary base."
+"Returns the square of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:939
-msgid "-"
-msgstr "-"
+#: gcalctool/calctool.c:638
+msgid "Abs"
+msgstr "Abs"
 
-#: gcalctool/calctool.c:941
+#: gcalctool/calctool.c:640
 msgid ""
-"-\n"
+"Abs\n"
 "\n"
-"Subtraction\n"
+"Absolute value.\n"
 "\n"
-"Keyboard equivalent:   -\n"
+"Keyboard equivalent:   Control-u\n"
 "\n"
-"This operation takes the last number entered and subtracts from it the next "
-"number entered."
+"Returns the absolute value of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:959
-msgid "Quit"
-msgstr "Quitter"
-
-#: gcalctool/calctool.c:961
-msgid ""
-"Quit\n"
-"\n"
-"Quits the calculator.\n"
-"\n"
-"Keyboard equivalent:   q or Q\n"
-"\n"
-"Quits the calculator without asking for your confirmation."
-msgstr ""
-
-#: gcalctool/calctool.c:977
+#: gcalctool/calctool.c:656
 msgid "Exch"
 msgstr ""
 
-#: gcalctool/calctool.c:979
+#: gcalctool/calctool.c:658
 msgid ""
 "Exch\n"
 "\n"
@@ -829,102 +563,11 @@ msgid ""
 "fill a register by editing the ~/.gcalctoolcf file."
 msgstr ""
 
-#: gcalctool/calctool.c:1004
-msgid "Exp"
-msgstr "Exp"
-
-#: gcalctool/calctool.c:1006
-msgid ""
-"Exp\n"
-"\n"
-"Enters an exponential number.\n"
-"\n"
-"Keyboard equivalent:   E\n"
-"\n"
-"Starts exponential input. Any numbers typed from now on are the exponent. If "
-"you haven't entered a mantissa, the calculator uses a mantissa of 1.0."
-msgstr ""
-
-#: gcalctool/calctool.c:1023
-msgid "Asc..."
-msgstr "Asc..."
-
-#: gcalctool/calctool.c:1025
-msgid ""
-"Asc\n"
-"\n"
-"ASCII value\n"
-"\n"
-"Keyboard equivalent:   Control-a\n"
-"\n"
-"Displays a window in which you type a character whose ASCII value you want. "
-"Enter the character and click SELECT on the ASCII button in the window.\n"
-"\n"
-"The calculator displays the ASCII value in the current number base. (You can "
-"change the base.)"
-msgstr ""
-
-#: gcalctool/calctool.c:1045
-msgid "0"
-msgstr "0"
-
-#: gcalctool/calctool.c:1047
-msgid ""
-"Numeric 0\n"
-"\n"
-"Keyboard equivalent:   0\n"
-msgstr ""
-
-#: gcalctool/calctool.c:1058
-msgid "."
-msgstr "."
-
-#: gcalctool/calctool.c:1060
-msgid ""
-".\n"
-"\n"
-"Numeric point\n"
-"\n"
-"Keyboard equivalent:   .\n"
-"\n"
-"Starts the fractional part of a numeric entry."
-msgstr ""
-
-#: gcalctool/calctool.c:1075
-msgid "="
-msgstr "="
-
-#: gcalctool/calctool.c:1077
-msgid ""
-"=\n"
-"\n"
-"Calculates a result.\n"
-"\n"
-"Keyboard equivalent:   = or Return\n"
-"\n"
-"Displays the result of the current calculation in the current base."
-msgstr ""
-
-#: gcalctool/calctool.c:1093
-msgid "+"
-msgstr "+"
-
-#: gcalctool/calctool.c:1095
-msgid ""
-"+\n"
-"\n"
-"Addition\n"
-"\n"
-"Keyboard equivalent:   +\n"
-"\n"
-"Takes the last number entered and adds it to the next number entered."
-msgstr ""
-
-#: gcalctool/calctool.c:1125
+#: gcalctool/calctool.c:698
 msgid "Ctrm"
 msgstr ""
 
-#: gcalctool/calctool.c:1127
+#: gcalctool/calctool.c:700
 msgid ""
 "Ctrm\n"
 "\n"
@@ -956,11 +599,11 @@ msgid ""
 "92.77 months, or almost eight years, to double your $8,000."
 msgstr ""
 
-#: gcalctool/calctool.c:1166
+#: gcalctool/calctool.c:739
 msgid "Ddb"
 msgstr ""
 
-#: gcalctool/calctool.c:1168
+#: gcalctool/calctool.c:741
 msgid ""
 "Ddb\n"
 "\n"
@@ -983,8 +626,8 @@ msgid ""
 "You have just purchased an office machine for $8,000. The useful life of "
 "this machine is six years. The salvage value after six years is $900.\n"
 "\n"
-"To compute the depreciate expense for the fourth year, using the double-"
-"declining balance method.\n"
+"To compute the depreciate expense for the fourth year, using the "
+"double-declining balance method.\n"
 "\n"
 "Memory register usage:\n"
 "\n"
@@ -997,11 +640,11 @@ msgid ""
 "expense for the fourth year will be $790.12."
 msgstr ""
 
-#: gcalctool/calctool.c:1212
+#: gcalctool/calctool.c:785
 msgid "Fv"
 msgstr ""
 
-#: gcalctool/calctool.c:1214
+#: gcalctool/calctool.c:787
 msgid ""
 "Fv\n"
 "\n"
@@ -1039,11 +682,11 @@ msgid ""
 "dollars at the end of 20 years."
 msgstr ""
 
-#: gcalctool/calctool.c:1259
+#: gcalctool/calctool.c:832
 msgid "Pmt"
 msgstr ""
 
-#: gcalctool/calctool.c:1261
+#: gcalctool/calctool.c:834
 msgid ""
 "Pmt\n"
 "\n"
@@ -1076,11 +719,11 @@ msgid ""
 "repayment."
 msgstr ""
 
-#: gcalctool/calctool.c:1300
+#: gcalctool/calctool.c:873
 msgid "Pv"
 msgstr ""
 
-#: gcalctool/calctool.c:1302
+#: gcalctool/calctool.c:875
 msgid ""
 "Pv\n"
 "\n"
@@ -1124,11 +767,11 @@ msgid ""
 "than the million-dollar ordinary annuity, in present dollars (before taxes)."
 msgstr ""
 
-#: gcalctool/calctool.c:1359
+#: gcalctool/calctool.c:932
 msgid "Rate"
 msgstr "Taux"
 
-#: gcalctool/calctool.c:1361
+#: gcalctool/calctool.c:934
 msgid ""
 "Rate\n"
 "\n"
@@ -1164,11 +807,11 @@ msgid ""
 "a result of 8.14%."
 msgstr ""
 
-#: gcalctool/calctool.c:1405
+#: gcalctool/calctool.c:978
 msgid "Sln"
 msgstr ""
 
-#: gcalctool/calctool.c:1407
+#: gcalctool/calctool.c:980
 msgid ""
 "Sln\n"
 "\n"
@@ -1205,11 +848,11 @@ msgid ""
 "allowance."
 msgstr ""
 
-#: gcalctool/calctool.c:1452
+#: gcalctool/calctool.c:1025
 msgid "Syd"
 msgstr ""
 
-#: gcalctool/calctool.c:1454
+#: gcalctool/calctool.c:1027
 msgid ""
 "Syd\n"
 "\n"
@@ -1254,11 +897,11 @@ msgid ""
 "for the fourth year."
 msgstr ""
 
-#: gcalctool/calctool.c:1508
+#: gcalctool/calctool.c:1083
 msgid "Term"
 msgstr "Echéance"
 
-#: gcalctool/calctool.c:1510
+#: gcalctool/calctool.c:1085
 msgid ""
 "Term\n"
 "\n"
@@ -1292,11 +935,11 @@ msgid ""
 "accumulate $120,000 in your account."
 msgstr ""
 
-#: gcalctool/calctool.c:1616
+#: gcalctool/calctool.c:1204
 msgid "<"
 msgstr "<"
 
-#: gcalctool/calctool.c:1618
+#: gcalctool/calctool.c:1206
 msgid ""
 "<\n"
 "\n"
@@ -1309,11 +952,11 @@ msgid ""
 "to f to indicate how many places to shift."
 msgstr ""
 
-#: gcalctool/calctool.c:1636
+#: gcalctool/calctool.c:1224
 msgid ">"
 msgstr ">"
 
-#: gcalctool/calctool.c:1638
+#: gcalctool/calctool.c:1226
 msgid ""
 ">\n"
 "\n"
@@ -1326,11 +969,11 @@ msgid ""
 "to f to indicate how many places to shift."
 msgstr ""
 
-#: gcalctool/calctool.c:1656
+#: gcalctool/calctool.c:1244
 msgid "&16"
 msgstr "&16"
 
-#: gcalctool/calctool.c:1658
+#: gcalctool/calctool.c:1246
 msgid ""
 "&16\n"
 "\n"
@@ -1338,15 +981,15 @@ msgid ""
 "\n"
 "Keyboard equivalent:   ]\n"
 "\n"
-"This is a logical function that truncates the given number and returns a 16-"
-"bit unsigned integer."
+"This is a logical function that truncates the given number and returns a "
+"16-bit unsigned integer."
 msgstr ""
 
-#: gcalctool/calctool.c:1675
+#: gcalctool/calctool.c:1263
 msgid "&32"
 msgstr "&32"
 
-#: gcalctool/calctool.c:1677
+#: gcalctool/calctool.c:1265
 msgid ""
 "&32\n"
 "\n"
@@ -1354,157 +997,157 @@ msgid ""
 "\n"
 "Keyboard equivalent:   [\n"
 "\n"
-"This is a logical function that truncates the given number and returns a 32-"
-"bit unsigned integer."
+"This is a logical function that truncates the given number and returns a "
+"32-bit unsigned integer."
 msgstr ""
 
-#: gcalctool/calctool.c:1730
-msgid "Or"
-msgstr "0r"
+#: gcalctool/calctool.c:1291
+msgid "("
+msgstr "("
 
-#: gcalctool/calctool.c:1732
+#: gcalctool/calctool.c:1293
 msgid ""
-"Or\n"
+"(\n"
 "\n"
-"Logical OR\n"
+"Left parenthesis\n"
 "\n"
-"Keyboard equivalent:   |\n"
+"Keyboard equivalent:   (\n"
 "\n"
-"This key performs a logical OR operation on the last number entered and the "
-"next number entered, treating both numbers as unsigned long integers."
+"Allows you to group together a set of calculations. Use with the right "
+"parenthesis.\n"
+"\n"
+"Example:\n"
+"\n"
+"        2 * ( 3 + 4 ) = 14\n"
+"\n"
+"contrasted with:\n"
+"\n"
+"        2 * 3 + 4 = 10"
 msgstr ""
 
-#: gcalctool/calctool.c:1749
-msgid "And"
-msgstr "And"
+#: gcalctool/calctool.c:1317
+msgid ")"
+msgstr ")"
 
-#: gcalctool/calctool.c:1751
+#: gcalctool/calctool.c:1319
 msgid ""
-"And\n"
+")\n"
 "\n"
-"Logical AND\n"
+"Right parenthesis\n"
 "\n"
-"Keyboard equivalent:   &\n"
+"Keyboard equivalent:   )\n"
 "\n"
-"This key performs a logical AND operation on the last number entered and the "
-"next number entered, treating both numbers as unsigned long integers."
+"Allows you to group together a set of calculations. Use with the left "
+"parenthesis.\n"
+"\n"
+"Example:\n"
+"\n"
+"        2 * ( 3 + 4 ) = 14\n"
+"\n"
+"contrasted with:\n"
+"\n"
+"        2 * 3 + 4 = 10"
 msgstr ""
 
-#: gcalctool/calctool.c:1768
-msgid "Not"
-msgstr "Not"
+#: gcalctool/calctool.c:1343
+msgid "Keys"
+msgstr ""
 
-#: gcalctool/calctool.c:1770
+#: gcalctool/calctool.c:1345
 msgid ""
-"Not\n"
+"Keys\n"
 "\n"
-"Logical NOT\n"
+"Toggles button labels.\n"
 "\n"
-"Keyboard equivalent:   ~\n"
+"Keyboard equivalent:   k\n"
 "\n"
-"This key performs a logical NOT operation on the current displayed value."
+"Toggles the labels on the calctool keys, alternating between the mouse and "
+"keyboard equivalents."
 msgstr ""
 
-#: gcalctool/calctool.c:1786
-msgid "Xor"
-msgstr "Xor"
+#: gcalctool/calctool.c:1364
+msgid "Exp"
+msgstr "Exp"
 
-#: gcalctool/calctool.c:1788
+#: gcalctool/calctool.c:1366
 msgid ""
-"Xor\n"
+"Exp\n"
 "\n"
-"Logical XOR\n"
+"Enters an exponential number.\n"
 "\n"
-"Keyboard equivalent:   ^\n"
+"Keyboard equivalent:   E\n"
 "\n"
-"This key takes the last number entered and the next number entered, and "
-"performs a logical XOR operation on them, treating both numbers as unsigned "
-"long integers."
+"Starts exponential input. Any numbers typed from now on are the exponent. If "
+"you haven't entered a mantissa, the calculator uses a mantissa of 1.0."
 msgstr ""
 
-#: gcalctool/calctool.c:1806
-msgid "Xnor"
-msgstr "Xnor"
+#: gcalctool/calctool.c:1383
+msgid "Con"
+msgstr "Con"
 
-#: gcalctool/calctool.c:1808
+#: gcalctool/calctool.c:1385
 msgid ""
-"Xnor\n"
+"Con\n"
 "\n"
-"Logical XNOR\n"
+"Constant n\n"
 "\n"
-"Keyboard equivalent:   n\n"
+"Keyboard equivalent:   #\n"
 "\n"
-"This key takes the last number entered and the next number entered, and "
-"performs a logical XNOR operation on them, treating both numbers as unsigned "
-"long integers."
+"Click on the Con button to show the available constants. Choose a constant "
+"from the menu to enter its value in the display.\n"
+"\n"
+"Alternatively, if you know the number of a constant, you can click SELECT on "
+"Con, then on a digit from 0 - 9 to indicate the constant you want to enter.\n"
+"\n"
+"To add new constants or alter existing ones, choose \"Enter Constant\" from "
+"the menu. This displays a window in which you type the number, description, "
+"and value of the constant.\n"
+"\n"
+"Click SELECT on \"Enter Constant\" to store the new constant in the "
+"~/.gcalctoolcf file."
 msgstr ""
 
-#: gcalctool/calctool.c:1855
-msgid "Trig"
-msgstr "Trig"
+#: gcalctool/calctool.c:1415
+msgid "Fun"
+msgstr ""
 
-#: gcalctool/calctool.c:1857
+#: gcalctool/calctool.c:1417
 msgid ""
-"Trig\n"
+"Fun\n"
 "\n"
-"Sets trigonometric mode.\n"
+"Menu of defined functions\n"
 "\n"
-"Keyboard equivalent:   T\n"
+"Keyboard equivalent:   F\n"
 "\n"
-"Initially the trigonometric display type is degrees. You can change this to "
-"gradients or radians.\n"
+"Click on the Fun button to display a menu of functions you have defined. "
+"Choose a function from the menu to execute it. The result will show in the "
+"display.\n"
 "\n"
-"Click on the Trig button to show the available settings. Choose a value from "
-"the menu to set the new trigonometric display type.\n"
+"To add new functions or alter existing ones, choose \"Enter Function\" from "
+"the menu. This displays a window in which you type the number, description, "
+"and value of the function.\n"
 "\n"
-"Alternatively, you can use the keyboard to set the trigonometric display "
-"type.\n"
+"Click SELECT on \"New Function\" to store the new function in the "
+"~/.gcalctoolcf file.\n"
 "\n"
-"Type T, followed by d, g, or r to indicate the new trigonometric display "
-"setting:\n"
+"For the function value, type the keyboard strokes that calculate your "
+"function. For example, to calculate sine(90), type the Value:\n"
 "\n"
-"d   degrees\n"
-"g   gradients\n"
-"r   radians"
+"        90 \\s\n"
+"\n"
+"When you type the function value, use \\ to represent the Control key even "
+"though KEYS shows the keyboard equivalent of the Control key as the "
+"character ^ .\n"
+"\n"
+"When you know the number of the function you want, you can click SELECT on "
+"Fun, then on the function's number."
 msgstr ""
 
-#: gcalctool/calctool.c:1888
-msgid "Hyp"
-msgstr "Hyp"
-
-#: gcalctool/calctool.c:1890
-msgid ""
-"Hyp\n"
-"\n"
-"Hyperbolic flag\n"
-"\n"
-"Keyboard equivalent:   h\n"
-"\n"
-"This key is a toggle that sets and unsets the hyperbolic function flag. That "
-"flag affects Sin, Cos, and Tan trigonometric functions."
-msgstr ""
-
-#: gcalctool/calctool.c:1907
-msgid "Inv"
-msgstr "Inv"
-
-#: gcalctool/calctool.c:1909
-msgid ""
-"Inv\n"
-"\n"
-"Inverse function flag\n"
-"\n"
-"Keyboard equivalent:   i\n"
-"\n"
-"This key is a toggle for setting or unsetting the inverse function flag. "
-"This flag affects Sin, Cos, and Tan trigonometric functions."
-msgstr ""
-
-#: gcalctool/calctool.c:1926
+#: gcalctool/calctool.c:1458
 msgid "e^x"
 msgstr "e^x"
 
-#: gcalctool/calctool.c:1928
+#: gcalctool/calctool.c:1460
 msgid ""
 "e^x\n"
 "\n"
@@ -1515,11 +1158,11 @@ msgid ""
 "Returns e raised to the power of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:1943
+#: gcalctool/calctool.c:1475
 msgid "10^x"
 msgstr "10^x"
 
-#: gcalctool/calctool.c:1945
+#: gcalctool/calctool.c:1477
 msgid ""
 "10^x\n"
 "\n"
@@ -1530,11 +1173,11 @@ msgid ""
 "Returns 10 raised to the power of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:1960
+#: gcalctool/calctool.c:1492
 msgid "y^x"
 msgstr "y^x"
 
-#: gcalctool/calctool.c:1962
+#: gcalctool/calctool.c:1494
 msgid ""
 "y^x\n"
 "\n"
@@ -1550,11 +1193,11 @@ msgid ""
 "        2 Y 3 = (returns 8)"
 msgstr ""
 
-#: gcalctool/calctool.c:1982
+#: gcalctool/calctool.c:1514
 msgid "x!"
 msgstr "x!"
 
-#: gcalctool/calctool.c:1984
+#: gcalctool/calctool.c:1516
 msgid ""
 "x!\n"
 "\n"
@@ -1566,11 +1209,72 @@ msgid ""
 "for positive integer values."
 msgstr ""
 
-#: gcalctool/calctool.c:2009
+#: gcalctool/calctool.c:1532
+msgid "Rand"
+msgstr "Rand"
+
+#: gcalctool/calctool.c:1534
+msgid ""
+"Rand\n"
+"\n"
+"Random number\n"
+"\n"
+"Keyboard equivalent:   ?\n"
+"\n"
+"Generates a random number in the range 0.0 to 1.0 and enters it into the "
+"calculator display."
+msgstr ""
+
+#: gcalctool/calctool.c:1552
+msgid "D"
+msgstr "D"
+
+#: gcalctool/calctool.c:1554
+msgid ""
+"Hex D (decimal 13)\n"
+"\n"
+"Keyboard equivalent:   d\n"
+"\n"
+"Enters the hexadecimal value d in the display.\n"
+"\n"
+"Available only when the current base is hexadecimal."
+msgstr ""
+
+#: gcalctool/calctool.c:1570
+msgid "E"
+msgstr "E"
+
+#: gcalctool/calctool.c:1572
+msgid ""
+"Hex E (decimal 14)\n"
+"\n"
+"Keyboard equivalent:   e\n"
+"\n"
+"Enters the hexadecimal value e in the display.\n"
+"\n"
+"Available only when the current base is hexadecimal."
+msgstr ""
+
+#: gcalctool/calctool.c:1588
+msgid "F"
+msgstr ""
+
+#: gcalctool/calctool.c:1590
+msgid ""
+"Hex F (decimal 15)\n"
+"\n"
+"Keyboard equivalent:   f\n"
+"\n"
+"Enters the hexadecimal value f in the display.\n"
+"\n"
+"Available only when the current base is hexadecimal."
+msgstr ""
+
+#: gcalctool/calctool.c:1606
 msgid "Cos"
 msgstr "Cos"
 
-#: gcalctool/calctool.c:2011
+#: gcalctool/calctool.c:1608
 msgid ""
 "Cos\n"
 "\n"
@@ -1586,11 +1290,11 @@ msgid ""
 "gradients)."
 msgstr ""
 
-#: gcalctool/calctool.c:2032
+#: gcalctool/calctool.c:1629
 msgid "Sin"
 msgstr "Sin"
 
-#: gcalctool/calctool.c:2034
+#: gcalctool/calctool.c:1631
 msgid ""
 "Sin\n"
 "\n"
@@ -1606,11 +1310,11 @@ msgid ""
 "gradients)."
 msgstr ""
 
-#: gcalctool/calctool.c:2055
+#: gcalctool/calctool.c:1652
 msgid "Tan"
 msgstr "Tan"
 
-#: gcalctool/calctool.c:2057
+#: gcalctool/calctool.c:1654
 msgid ""
 "Tan\n"
 "\n"
@@ -1626,11 +1330,11 @@ msgid ""
 "gradients)."
 msgstr ""
 
-#: gcalctool/calctool.c:2078
+#: gcalctool/calctool.c:1675
 msgid "Ln"
 msgstr "Ln"
 
-#: gcalctool/calctool.c:2080
+#: gcalctool/calctool.c:1677
 msgid ""
 "Ln\n"
 "\n"
@@ -1641,11 +1345,11 @@ msgid ""
 "Returns the natural logarithm of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:2095
+#: gcalctool/calctool.c:1692
 msgid "Log"
 msgstr "Log"
 
-#: gcalctool/calctool.c:2097
+#: gcalctool/calctool.c:1694
 msgid ""
 "Log\n"
 "\n"
@@ -1656,120 +1360,222 @@ msgid ""
 "Returns the base 10 logarithm of the current displayed value."
 msgstr ""
 
-#: gcalctool/calctool.c:2112
-msgid "Rand"
-msgstr "Rand"
+#: gcalctool/calctool.c:1711
+msgid "A"
+msgstr "A"
 
-#: gcalctool/calctool.c:2114
+#: gcalctool/calctool.c:1713
 msgid ""
-"Rand\n"
+"Hex A (decimal 10)\n"
 "\n"
-"Random number\n"
+"Keyboard equivalent:   a\n"
 "\n"
-"Keyboard equivalent:   ?\n"
+"Enters the hexadecimal value a in the display.\n"
 "\n"
-"Generates a random number in the range 0.0 to 1.0 and enters it into the "
-"calculator display."
+"Available only when the current base is hexadecimal."
 msgstr ""
 
-#: gcalctool/calctool.c:2235 gcalctool/display.c:479 gcalctool/functions.c:835
-#: gcalctool/functions.c:1321 gcalctool/functions.c:1347
-#: gcalctool/functions.c:1368
+#: gcalctool/calctool.c:1729
+msgid "B"
+msgstr "B"
+
+#: gcalctool/calctool.c:1731
+msgid ""
+"Hex B (decimal 11)\n"
+"\n"
+"Keyboard equivalent:   b\n"
+"\n"
+"Enters the hexadecimal value b in the display.\n"
+"\n"
+"Available only when the current base is hexadecimal."
+msgstr ""
+
+#: gcalctool/calctool.c:1747
+msgid "C"
+msgstr "C"
+
+#: gcalctool/calctool.c:1749
+msgid ""
+"Hex C (decimal 12)\n"
+"\n"
+"Keyboard equivalent:   c\n"
+"\n"
+"Enters the hexadecimal value c in the display.\n"
+"\n"
+"Available only when the current base is hexadecimal."
+msgstr ""
+
+#: gcalctool/calctool.c:1765
+msgid "Or"
+msgstr "0r"
+
+#: gcalctool/calctool.c:1767
+msgid ""
+"Or\n"
+"\n"
+"Logical OR\n"
+"\n"
+"Keyboard equivalent:   |\n"
+"\n"
+"This key performs a logical OR operation on the last number entered and the "
+"next number entered, treating both numbers as unsigned long integers."
+msgstr ""
+
+#: gcalctool/calctool.c:1784
+msgid "And"
+msgstr "And"
+
+#: gcalctool/calctool.c:1786
+msgid ""
+"And\n"
+"\n"
+"Logical AND\n"
+"\n"
+"Keyboard equivalent:   &\n"
+"\n"
+"This key performs a logical AND operation on the last number entered and the "
+"next number entered, treating both numbers as unsigned long integers."
+msgstr ""
+
+#: gcalctool/calctool.c:1803
+msgid "Not"
+msgstr "Not"
+
+#: gcalctool/calctool.c:1805
+msgid ""
+"Not\n"
+"\n"
+"Logical NOT\n"
+"\n"
+"Keyboard equivalent:   ~\n"
+"\n"
+"This key performs a logical NOT operation on the current displayed value."
+msgstr ""
+
+#: gcalctool/calctool.c:1821
+msgid "Xor"
+msgstr "Xor"
+
+#: gcalctool/calctool.c:1823
+msgid ""
+"Xor\n"
+"\n"
+"Logical XOR\n"
+"\n"
+"Keyboard equivalent:   ^\n"
+"\n"
+"This key takes the last number entered and the next number entered, and "
+"performs a logical XOR operation on them, treating both numbers as unsigned "
+"long integers."
+msgstr ""
+
+#: gcalctool/calctool.c:1841
+msgid "Xnor"
+msgstr "Xnor"
+
+#: gcalctool/calctool.c:1843
+msgid ""
+"Xnor\n"
+"\n"
+"Logical XNOR\n"
+"\n"
+"Keyboard equivalent:   n\n"
+"\n"
+"This key takes the last number entered and the next number entered, and "
+"performs a logical XNOR operation on them, treating both numbers as unsigned "
+"long integers."
+msgstr ""
+
+#: gcalctool/calctool.c:1943 gcalctool/display.c:471 gcalctool/functions.c:796
+#: gcalctool/functions.c:1281 gcalctool/functions.c:1307
+#: gcalctool/functions.c:1328
 msgid "CLR"
 msgstr ""
 
-#: gcalctool/calctool.c:2242
+#: gcalctool/calctool.c:1950
 msgid "kilometres per hour <=> miles per hour."
 msgstr "kilomètres par heure <=> miles par heure"
 
-#: gcalctool/calctool.c:2243
+#: gcalctool/calctool.c:1951
 msgid "square root of 2."
 msgstr "racine carée de 2."
 
-#: gcalctool/calctool.c:2244
+#: gcalctool/calctool.c:1952
 msgid "e."
 msgstr "e."
 
-#: gcalctool/calctool.c:2245
+#: gcalctool/calctool.c:1953
 msgid "pi."
 msgstr "pi."
 
-#: gcalctool/calctool.c:2246
+#: gcalctool/calctool.c:1954
 msgid "centimetres <=> inch."
 msgstr "centimètres <=> pouce."
 
-#: gcalctool/calctool.c:2247
+#: gcalctool/calctool.c:1955
 msgid "degrees in a radian."
 msgstr "degrés dans un radian."
 
-#: gcalctool/calctool.c:2248
+#: gcalctool/calctool.c:1956
 msgid "2 ^ 20."
 msgstr "2 ^ 20."
 
-#: gcalctool/calctool.c:2249
+#: gcalctool/calctool.c:1957
 msgid "grams <=> ounce."
 msgstr "grammes <=> ounce."
 
-#: gcalctool/calctool.c:2250
+#: gcalctool/calctool.c:1958
 msgid "kilojoules <=> British thermal units."
 msgstr "kilojoules <=> unités thermiques anglaises."
 
-#: gcalctool/calctool.c:2251
+#: gcalctool/calctool.c:1959
 msgid "cubic cms <=> cubic inches."
 msgstr ""
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:2262 gcalctool/display.c:186
-#: gcalctool/functions.c:1010 gcalctool/functions.c:1133
-#: gcalctool/functions.c:1172 gcalctool/functions.c:1226
-#: gcalctool/functions.c:1320 gcalctool/functions.c:1322 gcalctool/mp.c:1999
+#: gcalctool/calctool.c:1970 gcalctool/display.c:189 gcalctool/functions.c:974
+#: gcalctool/functions.c:1093 gcalctool/functions.c:1132
+#: gcalctool/functions.c:1186 gcalctool/functions.c:1280
+#: gcalctool/functions.c:1282 gcalctool/mp.c:2000
 msgid "Error"
 msgstr "Erreur"
 
-#: gcalctool/display.c:78
+#: gcalctool/display.c:81
 msgid "del"
 msgstr "del"
 
-#: gcalctool/display.c:80
+#: gcalctool/display.c:83
 msgid "bsp"
 msgstr ""
 
-#: gcalctool/display.c:82
+#: gcalctool/display.c:85
 msgid "^"
 msgstr "^"
 
-#: gcalctool/functions.c:81
+#: gcalctool/functions.c:78
 msgid "ASC"
 msgstr "ASC"
 
-#: gcalctool/functions.c:555 gcalctool/gtk.c:769
-msgid "HYP"
-msgstr "HYP"
-
-#: gcalctool/functions.c:559 gcalctool/gtk.c:772
-msgid "INV"
-msgstr "INV"
-
-#: gcalctool/functions.c:1341
+#: gcalctool/functions.c:1301
 msgid "Numeric stack error"
 msgstr "Erreur de la pile numérique"
 
-#: gcalctool/functions.c:1365
+#: gcalctool/functions.c:1325
 msgid "Operand stack error"
 msgstr "Erreur de la pile opérante"
 
-#: gcalctool/get.c:143
+#: gcalctool/get.c:144
 msgid "-a needs accuracy value"
 msgstr "-a neccéssite une valeur d'exactitude"
 
-#: gcalctool/get.c:147 gcalctool/get.c:407
+#: gcalctool/get.c:148 gcalctool/get.c:395
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: l'exactitude doit être située entre 0 et 0\n"
 
-#: gcalctool/get.c:187
+#: gcalctool/get.c:180
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr ""
@@ -1781,627 +1587,631 @@ msgstr ""
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:348
+#: gcalctool/get.c:340
 msgid "calculator"
 msgstr "calculatrice"
 
-#: gcalctool/get.c:421
+#: gcalctool/get.c:409
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: la base doit être 2, 8, 10 ou 16\n"
 
-#: gcalctool/get.c:436
+#: gcalctool/get.c:424
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: mode d'affichage invallide [%s]\n"
 
-#: gcalctool/get.c:451
+#: gcalctool/get.c:439
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: mode invalide [%s]\n"
 
-#: gcalctool/get.c:465
+#: gcalctool/get.c:453
 #, c-format
 msgid "%s: invalid trig. mode [%s]\n"
 msgstr "%s: mode trigonomique invalide [%s]\n"
 
-#: gcalctool/get.c:512
+#: gcalctool/get.c:497
 #, c-format
 msgid ""
 "%s version %s\n"
 "\n"
 msgstr ""
 
-#: gcalctool/get.c:513
-#, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] [-l]\n"
+#: gcalctool/get.c:498
+#, fuzzy, c-format
+msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Utilisation : %s: [-D] [-E] [-a exactitude] [-l]\n"
 
-#: gcalctool/get.c:515
-msgid "\t\t [-r] [-?] [-v] [-?]\n"
+#: gcalctool/get.c:499
+msgid "\t\t [-?] [-v] [-?]\n"
 msgstr ""
 
-#: gcalctool/gtk.c:103
-msgid ""
-"Calculator display\n"
-"\n"
-"The bottom of the display shows the current mode\n"
-"of operation for:\n"
-"\n"
-"Number base         BIN (binary),\n"
-"                    OCT (octal),\n"
-"                    DEC (decimal),\n"
-"                    or HEX (hexadecimal)\n"
-"\n"
-"Trigonometric base  DEG (degrees),\n"
-"                    GRAD (gradients),\n"
-"                    or RAD (radians)\n"
-"\n"
-"Display type        ENG (engineering),\n"
-"                    FIX (fixed point),\n"
-"                    or SCI (scientific)\n"
-"\n"
-"Mode                BASIC, FINANCIAL,\n"
-"                    LOGICAL, or SCIENTIFIC\n"
-"\n"
-"At certain times, the following may also be\n"
-"displayed:\n"
-"\n"
-"HYP     (hyperbolic mode is set)\n"
-"INV     (inverse mode is set)\n"
-"\n"
-"These pertain only to trigonometrical\n"
-"calculations.\n"
-"\n"
-"When the calculator needs to be \"cleared,\"\n"
-"\"CLR\" will be displayed.\n"
-"\n"
-"The display also shows the current mathematical\n"
-"operation and function when this operation\n"
-"requires other input to be complete."
-msgstr ""
-
-#: gcalctool/gtk.c:185
+#: gcalctool/gtk.c:179
 msgid "/0 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:186
+#: gcalctool/gtk.c:180
 msgid "/1 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:187
+#: gcalctool/gtk.c:181
 msgid "/2 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:188
+#: gcalctool/gtk.c:182
 msgid "/3 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:189
+#: gcalctool/gtk.c:183
 msgid "/4 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:190
+#: gcalctool/gtk.c:184
 msgid "/5 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:191
+#: gcalctool/gtk.c:185
 msgid "/6 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:192
+#: gcalctool/gtk.c:186
 msgid "/7 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:193
+#: gcalctool/gtk.c:187
 msgid "/8 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:194
+#: gcalctool/gtk.c:188
 msgid "/9 radix places"
 msgstr ""
 
-#: gcalctool/gtk.c:198
-msgid "/Binary"
-msgstr "/Binaire"
-
-#: gcalctool/gtk.c:199
-msgid "/Octal"
-msgstr "/Octale"
-
-#: gcalctool/gtk.c:200
-msgid "/Decimal"
-msgstr "/Décimal"
-
-#: gcalctool/gtk.c:201
-msgid "/Hexadecimal"
-msgstr "/Hexadécimal"
-
-#: gcalctool/gtk.c:205 gcalctool/gtk.c:249 gcalctool/gtk.c:280
+#: gcalctool/gtk.c:192 gcalctool/gtk.c:223 gcalctool/gtk.c:254
 msgid "/Register 0"
 msgstr ""
 
-#: gcalctool/gtk.c:206 gcalctool/gtk.c:250 gcalctool/gtk.c:281
+#: gcalctool/gtk.c:193 gcalctool/gtk.c:224 gcalctool/gtk.c:255
 msgid "/Register 1"
 msgstr ""
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:251 gcalctool/gtk.c:282
+#: gcalctool/gtk.c:194 gcalctool/gtk.c:225 gcalctool/gtk.c:256
 msgid "/Register 2"
 msgstr ""
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:252 gcalctool/gtk.c:283
+#: gcalctool/gtk.c:195 gcalctool/gtk.c:226 gcalctool/gtk.c:257
 msgid "/Register 3"
 msgstr ""
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:253 gcalctool/gtk.c:284
+#: gcalctool/gtk.c:196 gcalctool/gtk.c:227 gcalctool/gtk.c:258
 msgid "/Register 4"
 msgstr ""
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:254 gcalctool/gtk.c:285
+#: gcalctool/gtk.c:197 gcalctool/gtk.c:228 gcalctool/gtk.c:259
 msgid "/Register 5"
 msgstr ""
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:255 gcalctool/gtk.c:286
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:229 gcalctool/gtk.c:260
 msgid "/Register 6"
 msgstr ""
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:256 gcalctool/gtk.c:287
+#: gcalctool/gtk.c:199 gcalctool/gtk.c:230 gcalctool/gtk.c:261
 msgid "/Register 7"
 msgstr ""
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:257 gcalctool/gtk.c:288
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:231 gcalctool/gtk.c:262
 msgid "/Register 8"
 msgstr ""
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:258 gcalctool/gtk.c:289
+#: gcalctool/gtk.c:201 gcalctool/gtk.c:232 gcalctool/gtk.c:263
 msgid "/Register 9"
 msgstr ""
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:262
+#: gcalctool/gtk.c:205 gcalctool/gtk.c:236
 msgid "/1 place"
 msgstr ""
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:263
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:237
 msgid "/2 places"
 msgstr ""
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:264
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:238
 msgid "/3 places"
 msgstr ""
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:265
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:239
 msgid "/4 places"
 msgstr ""
 
-#: gcalctool/gtk.c:222 gcalctool/gtk.c:266
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:240
 msgid "/5 places"
 msgstr ""
 
-#: gcalctool/gtk.c:223 gcalctool/gtk.c:267
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:241
 msgid "/6 places"
 msgstr ""
 
-#: gcalctool/gtk.c:224 gcalctool/gtk.c:268
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:242
 msgid "/7 places"
 msgstr ""
 
-#: gcalctool/gtk.c:225 gcalctool/gtk.c:269
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:243
 msgid "/8 places"
 msgstr ""
 
-#: gcalctool/gtk.c:226 gcalctool/gtk.c:270
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:244
 msgid "/9 places"
 msgstr ""
 
-#: gcalctool/gtk.c:227 gcalctool/gtk.c:271
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:245
 msgid "/10 places"
 msgstr ""
 
-#: gcalctool/gtk.c:228 gcalctool/gtk.c:272
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:246
 msgid "/11 places"
 msgstr ""
 
-#: gcalctool/gtk.c:229 gcalctool/gtk.c:273
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:247
 msgid "/12 places"
 msgstr ""
 
-#: gcalctool/gtk.c:230 gcalctool/gtk.c:274
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:248
 msgid "/13 places"
 msgstr ""
 
-#: gcalctool/gtk.c:231 gcalctool/gtk.c:275
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:249
 msgid "/14 places"
 msgstr ""
 
-#: gcalctool/gtk.c:232 gcalctool/gtk.c:276
+#: gcalctool/gtk.c:219 gcalctool/gtk.c:250
 msgid "/15 places"
 msgstr ""
 
-#: gcalctool/gtk.c:236
-msgid "/Basic"
-msgstr "/Basique"
-
-#: gcalctool/gtk.c:237
-msgid "/Financial"
-msgstr "/Financier"
-
-#: gcalctool/gtk.c:238
-msgid "/Logical"
-msgstr "/Logique"
-
-#: gcalctool/gtk.c:239 gcalctool/gtk.c:245
-msgid "/Scientific"
-msgstr "/Scientifique"
-
-#: gcalctool/gtk.c:243
-msgid "/Engineering"
+#. Translator credits
+#: gcalctool/gtk.c:317
+msgid "translator_credits"
 msgstr ""
 
-#: gcalctool/gtk.c:244
-msgid "/Fixed point"
+#: gcalctool/gtk.c:324
+#, fuzzy
+msgid "Gcalctool"
+msgstr "calculatrice"
+
+#: gcalctool/gtk.c:326
+msgid "Calculator with financial and scientific modes"
 msgstr ""
 
-#: gcalctool/gtk.c:293
-msgid "/Degrees"
-msgstr "/Degrés"
-
-#: gcalctool/gtk.c:294
-msgid "/Gradients"
-msgstr "/Gradiants"
-
-#: gcalctool/gtk.c:295
-msgid "/Radians"
-msgstr "/Radians"
-
-#: gcalctool/gtk.c:299
-msgid "/Properties..."
-msgstr "/Propriétés..."
-
-#: gcalctool/gtk.c:450
+#: gcalctool/gtk.c:452
 #, c-format
 msgid ""
 "Invalid %s number.\n"
 "Must be in the range 0 - 9"
 msgstr ""
 
-#: gcalctool/gtk.c:451
+#: gcalctool/gtk.c:453
 msgid "constant"
 msgstr "constante"
 
-#: gcalctool/gtk.c:451
+#: gcalctool/gtk.c:453
 msgid "function"
 msgstr "fonction"
 
-#: gcalctool/gtk.c:473
+#: gcalctool/gtk.c:475
 #, c-format
 msgid ""
 "%s %1d already exists.\n"
 "Okay to overwrite?"
 msgstr ""
 
-#: gcalctool/gtk.c:474
+#: gcalctool/gtk.c:476
 msgid "Constant"
 msgstr "Constante"
 
-#: gcalctool/gtk.c:474
+#: gcalctool/gtk.c:476
 msgid "Function"
 msgstr "Fonction"
 
-#: gcalctool/gtk.c:502
+#: gcalctool/gtk.c:504
 msgid ""
 "Invalid constant value.\n"
 "Constant not changed."
 msgstr ""
 
-#: gcalctool/gtk.c:559
+#: gcalctool/gtk.c:561
 msgid "Get ASCII"
 msgstr "Obtenir ASCII"
 
-#: gcalctool/gtk.c:569
+#: gcalctool/gtk.c:571
 msgid "Character:"
 msgstr "Caractère: "
 
-#: gcalctool/gtk.c:585 gcalctool/gtk.c:669 gcalctool/gtk.c:1659
+#: gcalctool/gtk.c:587 gcalctool/gtk.c:671
 msgid "OK"
 msgstr "OK"
 
-#: gcalctool/gtk.c:590 gcalctool/gtk.c:673 gcalctool/gtk.c:1664
+#: gcalctool/gtk.c:592 gcalctool/gtk.c:675
 msgid "Apply"
 msgstr "Appliquer"
 
-#: gcalctool/gtk.c:595 gcalctool/gtk.c:677 gcalctool/gtk.c:1669
+#: gcalctool/gtk.c:597 gcalctool/gtk.c:679
 msgid "Cancel"
 msgstr "Annuler"
 
-#: gcalctool/gtk.c:621 gcalctool/gtk.c:1574
+#: gcalctool/gtk.c:623 gcalctool/gtk.c:1664
 msgid "New Constant"
 msgstr "Nouvelle constante"
 
-#: gcalctool/gtk.c:630 gcalctool/gtk.c:1575
+#: gcalctool/gtk.c:632 gcalctool/gtk.c:1665
 msgid "Constant no:"
 msgstr "N° de constante:"
 
-#: gcalctool/gtk.c:642
+#: gcalctool/gtk.c:644
 msgid "Description:"
 msgstr "Description:"
 
-#: gcalctool/gtk.c:654
+#: gcalctool/gtk.c:656
 msgid "Value:"
 msgstr "Valeur:"
 
-#: gcalctool/gtk.c:711 gcalctool/gtk.c:714
+#: gcalctool/gtk.c:713 gcalctool/gtk.c:716
 msgid "Calculator"
 msgstr "Calculatrice"
 
-#: gcalctool/gtk.c:840
+#. Make Hyp and Inv trigonometric check boxes.
+#: gcalctool/gtk.c:851
+msgid "Inv"
+msgstr "Inv"
+
+#: gcalctool/gtk.c:857
+msgid "Hyp"
+msgstr "Hyp"
+
+#: gcalctool/gtk.c:886
 msgid "Memory Registers"
 msgstr ""
 
-#: gcalctool/gtk.c:927
+#: gcalctool/gtk.c:951
 msgid "Enter Constant..."
 msgstr "Entrer la constante..."
 
-#: gcalctool/gtk.c:927
+#: gcalctool/gtk.c:951
 msgid "Enter Function..."
 msgstr "Entrer la fonction"
 
-#: gcalctool/gtk.c:1577
+#: gcalctool/gtk.c:1667
 msgid "New Function"
 msgstr "Nouvelle fonction"
 
-#: gcalctool/gtk.c:1578
+#: gcalctool/gtk.c:1668
 msgid "Function no:"
 msgstr "N° de fonction"
 
-#: gcalctool/gtk.c:1624
-msgid "Calculator properties"
-msgstr "Propriétés de la calculatrice"
-
-#: gcalctool/gtk.c:1636
-msgid "Style:"
-msgstr "Style:"
-
-#: gcalctool/gtk.c:1641
-msgid "left-handed"
-msgstr "Gaucher"
-
-#: gcalctool/gtk.c:1648
-msgid "right-handed"
-msgstr "Droitier"
-
-#: gcalctool/mp.c:180
+#: gcalctool/mp.c:181
 msgid "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
 msgstr ""
 
-#: gcalctool/mp.c:181 gcalctool/mp.c:2813 gcalctool/mp.c:3091
+#: gcalctool/mp.c:182 gcalctool/mp.c:2814 gcalctool/mp.c:3092
 msgid "POSSIBLE OVERWRITING PROBLEM ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:457
+#: gcalctool/mp.c:458
 msgid "*** N .LE. 1 IN CALL TO MPART1 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:564
+#: gcalctool/mp.c:565
 msgid "*** ABS(X) .GT. 1 IN CALL TO MPASIN ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:687
+#: gcalctool/mp.c:688
 msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:835
+#: gcalctool/mp.c:836
 #, c-format
 msgid "*** B = %d ILLEGAL IN CALL TO MPCHK.\n"
 msgstr ""
 
-#: gcalctool/mp.c:837 gcalctool/mp.c:847 gcalctool/mp.c:857
+#: gcalctool/mp.c:838 gcalctool/mp.c:848 gcalctool/mp.c:858
 msgid "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:845
+#: gcalctool/mp.c:846
 #, c-format
 msgid "*** T = %d ILLEGAL IN CALL TO MPCHK.\n"
 msgstr ""
 
-#: gcalctool/mp.c:855
+#: gcalctool/mp.c:856
 msgid "*** M .LE. T IN CALL TO MPCHK.\n"
 msgstr ""
 
-#: gcalctool/mp.c:870
+#: gcalctool/mp.c:871
 msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:885
+#: gcalctool/mp.c:886
 msgid "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL "
 msgstr ""
 
-#: gcalctool/mp.c:886
+#: gcalctool/mp.c:887
 msgid "TO AN MP ROUTINE ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:887
+#: gcalctool/mp.c:888
 #, c-format
 msgid "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:889
+#: gcalctool/mp.c:890
 #, c-format
 msgid "*** ACTUALLY MXR = %d, AND T = %d  ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1035
+#: gcalctool/mp.c:1036
 msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1353
+#: gcalctool/mp.c:1354
 msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1543
+#: gcalctool/mp.c:1544
 msgid "*** J = 0 IN CALL TO MPCQM ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1704
+#: gcalctool/mp.c:1705
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1761
+#: gcalctool/mp.c:1762
 msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1792
+#: gcalctool/mp.c:1793
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1960
+#: gcalctool/mp.c:1961
 msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2067
+#: gcalctool/mp.c:2068
 msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2186
+#: gcalctool/mp.c:2187
 msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2234
+#: gcalctool/mp.c:2235
 msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2456
+#: gcalctool/mp.c:2457
 msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2506
+#: gcalctool/mp.c:2507
 msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2556
+#: gcalctool/mp.c:2557
 msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2618
+#: gcalctool/mp.c:2619
 msgid "*** ERROR OCCURRED IN MPLNS.\n"
 msgstr ""
 
-#: gcalctool/mp.c:2619
+#: gcalctool/mp.c:2620
 msgid "NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2805
+#: gcalctool/mp.c:2806
 msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2812
+#: gcalctool/mp.c:2813
 msgid "*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
 msgstr ""
 
-#: gcalctool/mp.c:2864
+#: gcalctool/mp.c:2865
 msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:2972
+#: gcalctool/mp.c:2973
 msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3013
+#: gcalctool/mp.c:3014
 msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3090
+#: gcalctool/mp.c:3091
 msgid "*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
 msgstr ""
 
-#: gcalctool/mp.c:3186
+#: gcalctool/mp.c:3187
 msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3235
+#: gcalctool/mp.c:3236
 msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3281
+#: gcalctool/mp.c:3282
 msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3321
+#: gcalctool/mp.c:3322
 msgid "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN\n"
 msgstr ""
 
-#: gcalctool/mp.c:3322
+#: gcalctool/mp.c:3323
 msgid "CALL TO SUBROUTINE MPPWR ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3390
+#: gcalctool/mp.c:3391
 msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3402
+#: gcalctool/mp.c:3403
 msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3465
+#: gcalctool/mp.c:3466
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3552
+#: gcalctool/mp.c:3553
 msgid "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION\n"
 msgstr ""
 
-#: gcalctool/mp.c:3553 gcalctool/mp.c:3760
+#: gcalctool/mp.c:3554 gcalctool/mp.c:3761
 msgid "NOT CONVERGING PROPERLY ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3570
+#: gcalctool/mp.c:3571
 msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3613
+#: gcalctool/mp.c:3614
 msgid "*** N = 0 IN CALL TO MPROOT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3626
+#: gcalctool/mp.c:3627
 msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3648
+#: gcalctool/mp.c:3649
 msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3659
+#: gcalctool/mp.c:3660
 msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3759
+#: gcalctool/mp.c:3760
 msgid "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION\n"
 msgstr ""
 
-#: gcalctool/mp.c:3848
+#: gcalctool/mp.c:3849
 msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3871
+#: gcalctool/mp.c:3872
 msgid "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3872
+#: gcalctool/mp.c:3873
 msgid "*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS \n"
 msgstr ""
 
-#: gcalctool/mp.c:3873
+#: gcalctool/mp.c:3874
 #, c-format
 msgid "TO AT LEAST %d ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3997
+#: gcalctool/mp.c:3998
 msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:4044
+#: gcalctool/mp.c:4045
 msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:4193
+#: gcalctool/mp.c:4194
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
 msgstr ""
+
+#~ msgid "BIN"
+#~ msgstr "BIN"
+
+#~ msgid "OCT"
+#~ msgstr "OCT"
+
+#~ msgid "DEC"
+#~ msgstr "DEC"
+
+#~ msgid "HEX"
+#~ msgstr "HEX"
+
+#~ msgid "ENG"
+#~ msgstr "ENG"
+
+#~ msgid "FIX"
+#~ msgstr "FIX"
+
+#~ msgid "SCI"
+#~ msgstr "SCI"
+
+#~ msgid "LOGICAL"
+#~ msgstr "LOGIQUE"
+
+#~ msgid "Logical Mode"
+#~ msgstr "Mode Logique"
+
+#~ msgid "DEG"
+#~ msgstr "DEG"
+
+#~ msgid "GRAD"
+#~ msgstr "GRAD"
+
+#~ msgid "RAD"
+#~ msgstr "RAD"
+
+#~ msgid "Base"
+#~ msgstr "Base"
+
+#~ msgid "Mode"
+#~ msgstr "Mode"
+
+#~ msgid "Quit"
+#~ msgstr "Quitter"
+
+#~ msgid "Asc..."
+#~ msgstr "Asc..."
+
+#~ msgid "Trig"
+#~ msgstr "Trig"
+
+#~ msgid "HYP"
+#~ msgstr "HYP"
+
+#~ msgid "INV"
+#~ msgstr "INV"
+
+#~ msgid "/Binary"
+#~ msgstr "/Binaire"
+
+#~ msgid "/Decimal"
+#~ msgstr "/Décimal"
+
+#~ msgid "/Hexadecimal"
+#~ msgstr "/Hexadécimal"
+
+#~ msgid "/Basic"
+#~ msgstr "/Basique"
+
+#~ msgid "/Financial"
+#~ msgstr "/Financier"
+
+#~ msgid "/Logical"
+#~ msgstr "/Logique"
+
+#~ msgid "/Scientific"
+#~ msgstr "/Scientifique"
+
+#~ msgid "/Properties..."
+#~ msgstr "/Propriétés..."
+
+#~ msgid "Calculator properties"
+#~ msgstr "Propriétés de la calculatrice"
+
+#~ msgid "Style:"
+#~ msgstr "Style:"
+
+#~ msgid "left-handed"
+#~ msgstr "Gaucher"
+
+#~ msgid "right-handed"
+#~ msgstr "Droitier"
