@@ -169,6 +169,31 @@ calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])   /* Calculate 10^x */
 }
 
 
+void
+calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
+{
+    int MP0[MP_SIZE], val;
+
+    val = 0;
+    mpcim(&val, MP0);
+    if (mplt(MPx, MP0)) {          /* Is x < 0 ? */
+        int MPtmp[MP_SIZE];
+
+        mpcmim(MPy, MPtmp);
+        if (mpeq(MPtmp, MPy)) {   /* Is y == int(y) ? */
+            int y;
+
+            mpcmi(MPy, &y);
+            mppwr(MPx, &y, MPres);
+        } else {        /* y != int(y). Force mppwr2 to generate an error. */
+            mppwr2(MPx, MPy, MPres);
+        }
+    } else {
+        mppwr2(MPx, MPy, MPres);
+    }
+}
+
+
 void 
 calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
 {

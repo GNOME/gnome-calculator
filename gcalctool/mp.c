@@ -3346,10 +3346,7 @@ mppwr2(int *x, int *y, int *z)
     else goto L70;
 
 L10:
-    if (v->MPerrors) {
-        FPRINTF(stderr, "*** X NEGATIVE IN CALL TO MPPWR2 ***\n");
-    }
-
+    show_error(_("Negative X and non-integer Y not supported"));
     goto L50;
 
 /* HERE X IS ZERO, RETURN ZERO IF Y POSITIVE, OTHERWISE ERROR */

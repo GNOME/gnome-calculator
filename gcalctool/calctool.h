@@ -470,6 +470,7 @@ void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
 void show_ascii_frame();
 void show_display(int *);
+void show_error(char *);
 void srand48();
 void start_tool();
 void str_replace(char **, char *, char *);

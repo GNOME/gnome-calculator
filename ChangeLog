@@ -7,6 +7,17 @@
 gcalctool change history.
 =========================
 
+2004-11-03 Rich Burridge <rich.burridge@sun.com>
+
+    * Partial fix for bug #157021 
+      (http://bugzilla.gnome.org/show_bug.cgi?id=157021).
+      Changes have been added to fix this for non-arithmetic precedence mode.
+      for x ^ y, if x is negative and y is an integer, then the mppwr() MP
+      routine is used instead of mppwr2(). Added a new calc_xpowy() routine 
+      in mpmath.c to do this calculation. Also added a show_error() routine
+      to functions.c to display the error in the status bar if the user
+      enters -X with non-integer Y.
+
 2004-11-02 Sami Pietila <sampie@ariana-dsl.utu.fi>
 
     * -x^y was intepreted -(x^y). Fixed. 

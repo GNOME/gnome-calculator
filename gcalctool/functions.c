@@ -473,7 +473,7 @@ do_calc()      /* Perform arithmetic calculation and display result. */
         mpmul(v->MPresult, MP1, v->MPresult);
 
     } else if (IS_KEY(v->cur_op, KEY_YTOX.value[0])) {    /* y^x */
-        mppwr2(v->MPresult, v->MPdisp_val, v->MPresult);
+        calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
 
     } else if (IS_KEY(v->cur_op, KEY_AND.value[0])) {     /* And */
         mpcmd(v->MPresult, &dres);
@@ -1336,6 +1336,13 @@ save_pending_values(struct button *but)
 {
     v->pending_but = but;
     v->pending = but->value[0];
+}
+
+
+void
+show_error(char *message)
+{
+    update_statusbar(message, "gtk-dialog-error");
 }
 
 
