@@ -511,7 +511,8 @@ about_cb(GtkAction *action, gpointer date)
         					"authors", authors,
         					"documenters", documenters,
         					"translator-credits", strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-        					"logo", X->icon);
+        					"logo", X->icon,
+                                                NULL);
         					
 }
 
