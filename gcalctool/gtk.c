@@ -1259,6 +1259,7 @@ create_kframe()
         case ADVANCED:
             view_widget = gtk_ui_manager_get_widget(X->ui,
                                               "/MenuBar/ViewMenu/Advanced");
+            break;
 
         default:
             view_widget = gtk_ui_manager_get_widget(X->ui, 

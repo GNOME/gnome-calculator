@@ -7,6 +7,16 @@
 gcalctool change history.
 =========================
 
+2004-11-15 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug #158357 (http://bugzilla.gnome.org/show_bug.cgi?id=158357).
+      Removed the -DGNOME_DISABLE_DEPRECATED and the -DGTK_DISABLE_DEPRECATED
+      flags from the INCLUDES definition in .../gcalctool/Makefile.am for now,
+      to allow it to successfully build against the latest GNOME/Gtk+.
+
+    * Slight adjustment to correct check the Advanced mode menu item when
+      the user had previously terminated gcalctool in that mode.
+
 2004-11-14 Rich Burridge <rich.burridge@sun.com>
 
     * Changed the names of the gconf mode type key so that there is

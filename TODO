@@ -7,9 +7,10 @@
 Gcalctool TODO.
 ===============
 
-* Replace the use of GtkItemGFactory with GtkUIManager when there has been
-  a GTK+-2.3.x release. When this has been done, then -DGTK_DISABLE_DEPRECATED
-  should be returned to .../gcalctool/gcalctool/Makefile.am
+* Put the 
+    -DGNOME_DISABLE_DEPRECATED \
+    -DGTK_DISABLE_DEPRECATED \
+  lines back in .../gcacltool/Makefile.am, after GNOME 2.10.
 
 * From Jeremiah Jahn <jeremiah at goodinassociates dot com>
   Add a modulo function.

@@ -5,6 +5,18 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.5.14
+
+* Fixed bug #158357. Removed the -DGNOME_DISABLE_DEPRECATED and the 
+  -DGTK_DISABLE_DEPRECATED flags from the INCLUDES definition in 
+  .../gcalctool/Makefile.am for now, to allow it to successfully build
+  against the latest GNOME/Gtk+.
+
+* Slight adjustment to correct check the Advanced mode menu item when
+  the user had previously terminated gcalctool in that mode.
+
+----
+
 Overview of changes in gcalctool 5.5.13
 
 * Changed the names of the gconf mode type key so that there is backward 
