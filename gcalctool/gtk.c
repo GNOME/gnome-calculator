@@ -2152,7 +2152,8 @@ set_error_state(int error)
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Basic",      !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Financial",  !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Scientific", !v->error); 
-    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Trailing",   !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Trailing",
+                           !v->error && (v->modetype == SCIENTIFIC)); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Thousands",  !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Memory",     !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/HelpMenu/About",      !v->error);
