@@ -231,7 +231,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     char *appname;                     /* Application name for resources. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
-    char cur_op;                       /* Current arithmetic operation. */
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
     char fnum[MAX_DIGITS+1];           /* Scratchpad for fixed numbers. */
@@ -239,7 +238,6 @@ struct calcVars {                      /* Calctool variables and options. */
     char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
     char *home;                        /* Pathname for users home directory. */
     char *iconlabel;                   /* The calctool icon label. */
-    char old_cal_value;                /* Previous calculation operator. */
     char op_item_text[5];              /* Operand item panel string. */
     char opstr[5];                     /* Operand string during pending op. */
     char *progname;                    /* Name of this program. */
@@ -268,6 +266,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_ch;        /* Current character if keyboard event. */
+    int cur_op;        /* Current arithmetic operation. */
     int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
@@ -279,6 +278,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int new_input;     /* New number input since last op. */
     int noparens;      /* Count of left brackets still to be matched. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
+    int old_cal_value;      /* Previous calculation operator. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
     int opstack[MAXSTACK];  /* Stack containing parentheses input. */
     int pending;            /* Set for command depending on multiple presses. */

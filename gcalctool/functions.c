@@ -930,7 +930,9 @@ do_trig()         /* Perform all trigonometric functions. */
                     mpsin(MPtemp, MPsin);
                     mpcos(MPtemp, MPcos);
                     mpcmd(MPcos, &cval);
-                    if (cval == 0.0) doerr(_("Error"));
+                    if (cval == 0.0) {
+                        doerr(_("Error"));
+                    }
                     mpdiv(MPsin, MPcos, v->MPtresults[(int) RAD]);
                 }
             } else {

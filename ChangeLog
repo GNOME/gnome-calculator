@@ -7,6 +7,17 @@
 gcalctool change history.
 =========================
 
+v4.2.57 - 21st February 2003.  (richb)
+
+* The Xor logical operation wasn't being performed correctly. Gdk uses
+  keysym values that are greater than what can be fitted into a char.
+  Adjusted v->cur_op and v->old_cal_value to now be ints.
+* Hitting Clr was not correctly clearing the Hyp and Inv trigonometric
+  checkboxes. In fact, it was toggling them twice, thereby returning them
+  to whatever state they were in when the user hit Clr.
+
+----
+
 v4.2.56 - 20th February 2003.  (richb)
 
 * Removed the final period from the ten default constant descriptions.

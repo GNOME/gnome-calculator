@@ -59,10 +59,8 @@ clear_display(int initialise)
         v->show_paren = 0;
         v->opsptr     = 0;            /* Clear parentheses stacks. */
         v->numsptr    = 0;
-        v->hyperbolic = 0;
-        v->inverse    = 0;
-        set_hyp_item(FALSE);
-        set_inv_item(FALSE);
+        set_hyp_item(FALSE);          /* Also clears v->hyperbolic. */
+        set_inv_item(FALSE);          /* Also clears v->inverse. */
     }
 }
 
