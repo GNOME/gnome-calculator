@@ -7,6 +7,15 @@
 gcalctool change history.
 =========================
 
+v4.2.53 - 19th February 2003.  (richb)
+
+* Fixed bug 106501 (http://bugzilla.gnome.org/show_bug.cgi?id=106501)
+  A check has been added to the do_delete() function in functions.c to
+  make sure that the length is greater than zero, before setting the
+  len-1 character to '\0'.
+ 
+----
+
 v4.2.52 - 19th February 2003.  (richb)
 
 * From Breda McColgan <breda.mccolgan@sun.com>

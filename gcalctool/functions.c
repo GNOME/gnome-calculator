@@ -386,7 +386,7 @@ do_constant()
 void
 do_delete()     /* Remove the last numeric character typed. */
 {
-    if (strlen(v->display)) {
+    if (strlen(v->display) > 0) {
         v->display[strlen(v->display)-1] = '\0';
     }
 
