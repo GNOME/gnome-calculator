@@ -6,6 +6,16 @@
 
 gcalctool change history.
 =========================
+
+2003-09-16  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 120605 (http://bugzilla.gnome.org/show_bug.cgi?id=120605)
+      Gcalctool contains lots of messages that are (potentially) only 
+      displayed if the user starts the application with either the -D or 
+      the -E command line options. As these are debugging messages, they 
+      need not be translated, so the _(...) macros around them have been 
+      removed.
+
 2003-09-09  Andras Timar  <timar@gnome.hu>
 
 	* configure.in: Added Hungarian (hu) to ALL_LINGUAS.

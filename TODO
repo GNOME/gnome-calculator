@@ -8,18 +8,21 @@
 Gcalctool TODO.
 ===============
 
-* Navigation with the arrow keys is a little haywire. This looks like it's
-  bug #60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
+* From James Brown <alumnus at bigpond dot com>
+  In engineering it is typical to think of numbers in scientific notation 
+  in powers of three for example
+  123473 - I would only use say 4 signification "digits" and would say
+  123.4 kilo units
+
+  and .00000324 would be three point two four micro units
+
+  The only improvement I could suggest would be to have an engineering
+  mode where the postfix milli,micro,nano,pico,kilo,mega,giga etc
+  (m,u,n,p,k,M,G respectively) was shown next to the number.  
 
 * With the gcalctoolrc Gtk resources copied to a ~/.gcalctoolrc file, the 
   "*displayitem*" widget and the "*register_label<n>*" widgets background 
   color aren't being set to white.
-
-* Need to create help files for gcalctool. Breda McColgan will be working 
-  on this (bug #104821).
-
-* Need to reduce tool tip help message sizes. Will do this when the help
-  files are in place (bug #101784).
 
 * Improve the colors in the gcalctoolrc file.
 
@@ -54,9 +57,6 @@ Gcalctool TODO.
 
 * Implement bugtraq rfe #1122089.
   Add a log base 2 key.
-
-* Consider the possibility of being able to have all the mode windows
-  displayed at the same time.
 
 * As of v3.0.1. gcalctool was modified to have "infinite" precision
   internally. This needs to be made available to the "power" users, but
