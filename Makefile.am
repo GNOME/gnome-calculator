@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = po gcalctool
+SUBDIRS = po gcalctool help
 
 schemadir = $(sysconfdir)/gconf/schemas
 schema_DATA = gcalctool.schemas
@@ -12,7 +12,9 @@ EXTRA_DIST = \
 	TODO \
 	gcalctoolrc \
 	gcalctool.desktop.in \
-	$(schema_DATA)
+	$(schema_DATA) \
+	omf.make \
+	xmldocs.make
 
 Utilitiesdir = $(datadir)/applications
 Utilities_in_files = gcalctool.desktop.in
