@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2003-10-19 11:37+0200\n"
+"POT-Creation-Date: 2003-11-26 07:09-0800\n"
 "PO-Revision-Date: 2003-10-19 11:38+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -304,6 +304,7 @@ msgid "Subtract"
 msgstr "Subtrahera"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -377,15 +378,16 @@ msgid "Add"
 msgstr "Addera"
 
 #: gcalctool/calctool.c:427
-msgid "1/x"
-msgstr "1/x"
+msgid "1/<i>x</i>"
+msgstr ""
 
 #: gcalctool/calctool.c:428
 msgid "Reciprocal"
 msgstr "Reciprokt värde"
 
 #: gcalctool/calctool.c:437
-msgid "x<sup>2</sup>"
+#, fuzzy
+msgid "x<sup><i>2</i></sup>"
 msgstr "x<sup>2</sup>"
 
 #: gcalctool/calctool.c:438
@@ -602,8 +604,9 @@ msgid "Exponential"
 msgstr "Exponent"
 
 #: gcalctool/calctool.c:773
-msgid "<i>e</i><sup>x</sup>"
-msgstr "<i>e</i><sup>x</sup>"
+#, fuzzy
+msgid "e<sup><i>x</i></sup>"
+msgstr "e<sup>x</sup>"
 
 #: gcalctool/calctool.c:774
 msgid "e to the power of displayed value"
@@ -614,7 +617,8 @@ msgid "E to the x"
 msgstr "e upphöjt med x"
 
 #: gcalctool/calctool.c:783
-msgid "10<sup>x</sup>"
+#, fuzzy
+msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup>x</sup>"
 
 #: gcalctool/calctool.c:784
@@ -626,7 +630,8 @@ msgid "Ten to the x"
 msgstr "Tio upphöjt med x"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup>x</sup>"
+#, fuzzy
+msgid "y<sup><i>x</i></sup>"
 msgstr "y<sup>x</sup>"
 
 #: gcalctool/calctool.c:794
@@ -638,8 +643,8 @@ msgid "Y to the x"
 msgstr "y upphöjt med x"
 
 #: gcalctool/calctool.c:803
-msgid "x!"
-msgstr "x!"
+msgid "<i>x</i>!"
+msgstr ""
 
 #: gcalctool/calctool.c:804
 msgid "Factorial of displayed value"
@@ -677,7 +682,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Hexadecimala siffran E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1108
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1109
 msgid "F"
 msgstr "F"
 
@@ -741,7 +746,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Hexadecimala siffran B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1100
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1101
 msgid "C"
 msgstr "C"
 
@@ -847,16 +852,16 @@ msgstr "Fel i numerisk stack"
 msgid "Operand stack error"
 msgstr "Fel i operandstack"
 
-#: gcalctool/get.c:150
+#: gcalctool/get.c:154
 msgid "-a needs accuracy value"
 msgstr "-a behöver noggrannhetsvärde"
 
-#: gcalctool/get.c:154 gcalctool/get.c:274
+#: gcalctool/get.c:158 gcalctool/get.c:280
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: nogrannheten måste vara inom intervallet 0-9\n"
 
-#: gcalctool/get.c:179
+#: gcalctool/get.c:183
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s som nästa argument.\n"
@@ -865,31 +870,31 @@ msgstr "%s: %s som nästa argument.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:232
+#: gcalctool/get.c:238
 msgid "calculator"
 msgstr "miniräknare"
 
-#: gcalctool/get.c:288
+#: gcalctool/get.c:294
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: basen måste vara 2, 8, 10 eller 16\n"
 
-#: gcalctool/get.c:303
+#: gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: ogiltigt displayläge [%s]\n"
 
-#: gcalctool/get.c:318
+#: gcalctool/get.c:324
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: ogiltigt läge [%s]\n"
 
-#: gcalctool/get.c:332
+#: gcalctool/get.c:338
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: ogiltigt trigonometriskt läge [%s]\n"
 
-#: gcalctool/get.c:374
+#: gcalctool/get.c:380
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -898,18 +903,18 @@ msgstr ""
 "%s version %s\n"
 "\n"
 
-#: gcalctool/get.c:375
+#: gcalctool/get.c:381
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Användning: %s: [-D] [-E] [-a noggrannhet] "
 
-#: gcalctool/get.c:376
+#: gcalctool/get.c:382
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:902 gcalctool/gtk.c:1039
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:903 gcalctool/gtk.c:1040
 msgid "R"
 msgstr "R"
 
@@ -1154,28 +1159,28 @@ msgstr "Värde"
 msgid "Description"
 msgstr "Beskrivning"
 
-#: gcalctool/gtk.c:792 gcalctool/gtk.c:794 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:792 gcalctool/gtk.c:794
 msgid "Calculator"
 msgstr "Miniräknare"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:974
+#: gcalctool/gtk.c:975
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:982
+#: gcalctool/gtk.c:983
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1030
+#: gcalctool/gtk.c:1031
 msgid "Memory Registers"
 msgstr "Minnesregister"
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Constants..."
 msgstr "Redigera konstanter..."
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Functions..."
 msgstr "Redigera funktioner..."
 
@@ -1183,8 +1188,14 @@ msgstr "Redigera funktioner..."
 msgid "Perform calculations"
 msgstr "Utför beräkningar"
 
-#~ msgid "e<sup>x</sup>"
-#~ msgstr "e<sup>x</sup>"
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "<i>e</i><sup>x</sup>"
+#~ msgstr "<i>e</i><sup>x</sup>"
+
+#~ msgid "x!"
+#~ msgstr "x!"
 
 #~ msgid ""
 #~ "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"

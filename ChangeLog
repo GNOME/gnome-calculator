@@ -7,6 +7,16 @@
 gcalctool change history.
 =========================
 
+2003-11-26  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 127862 (http://bugzilla.gnome.org/show_bug.cgi?id=127862)
+      The fix for bug #125625 introduced a potential out-of-order case
+      for users who are rapid keyboard typers. This bug fix rectifies this
+      with the unfortunate side-effect of no longer visual toggling the 
+      equivalent button to the keyboard character that the user entered.  
+      This fix is still compatible with the way the accessibility 
+      infrastructure works though.
+
 2003-11-24  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 65806 (http://bugzilla.gnome.org/show_bug.cgi?id=65806)

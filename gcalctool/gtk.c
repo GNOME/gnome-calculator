@@ -1326,8 +1326,7 @@ check_vals(int n, int keyval, int state,
         while (buttons[i].value[j] != 0) {
             if (buttons[i].value[j] == keyval) {
                 if (buttons[i].mods[j] == state) {
-                    g_signal_emit_by_name(GTK_WIDGET(gtk_buttons[i]), 
-                                          "activate");
+                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
                     return(TRUE);
                 }
             }

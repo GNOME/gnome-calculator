@@ -11,14 +11,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 20:06+0200\n"
+"POT-Creation-Date: 2003-11-26 07:09-0800\n"
 "PO-Revision-Date: 2003-06-16 00:32+0000\n"
 "Last-Translator: Ilin Petkovski <krack@linux.net.mk>\n"
 "Language-Team: Macedonian <lug@lists.linux.net.mk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #. Strings for each base value.
@@ -81,697 +81,802 @@ msgstr "Промени го типот на дисплејот во формат
 msgid "Set display type to scientific format"
 msgstr "Промени го типот на дисплејот во научен формат"
 
-#. Strings for each mode value.
+#: gcalctool/calctool.c:76
+msgid "Set hyperbolic option for trigonometric functions"
+msgstr "Подеси ја хиперболичната опција за тригонометриските функции"
+
 #: gcalctool/calctool.c:77
+msgid "Set inverse option for trigonometric functions"
+msgstr "Постави ја опцијата инверзно за тригонометриски функции"
+
+#. Strings for each mode value.
+#: gcalctool/calctool.c:80
 msgid "BASIC"
 msgstr "Основен"
 
-#: gcalctool/calctool.c:77
+#: gcalctool/calctool.c:80
 msgid "FINANCIAL"
 msgstr "Финансиски"
 
-#: gcalctool/calctool.c:77
+#: gcalctool/calctool.c:80
 msgid "SCIENTIFIC"
 msgstr "Научен"
 
 #. Mode titles to be added to the titlebar.
-#: gcalctool/calctool.c:81
+#: gcalctool/calctool.c:84
 msgid "Basic Mode"
 msgstr "Основен режим"
 
-#: gcalctool/calctool.c:81
+#: gcalctool/calctool.c:84
 msgid "Financial Mode"
 msgstr "Финансиски режим"
 
-#: gcalctool/calctool.c:81
+#: gcalctool/calctool.c:84
 msgid "Scientific Mode"
 msgstr "Научен режим"
 
 #. Strings for each trig type value.
-#: gcalctool/calctool.c:86
+#: gcalctool/calctool.c:89
 msgid "De_grees"
 msgstr "Сте_пени"
 
-#: gcalctool/calctool.c:86
+#: gcalctool/calctool.c:89
 msgid "Gr_adients"
 msgstr "Гра_диенти"
 
-#: gcalctool/calctool.c:86
+#: gcalctool/calctool.c:89
 msgid "_Radians"
 msgstr "_Радијани"
 
 #. Tooltips for each trig type value.
-#: gcalctool/calctool.c:90
+#: gcalctool/calctool.c:93
 msgid "Set trigonometric type to degrees"
 msgstr "Тригонометрискиот режим да смета во степени"
 
-#: gcalctool/calctool.c:91
+#: gcalctool/calctool.c:94
 msgid "Set trigonometric type to gradients"
 msgstr "Тригонометрискиот режим да смета во градиенти"
 
-#: gcalctool/calctool.c:92
+#: gcalctool/calctool.c:95
 msgid "Set trigonometric type to radians"
 msgstr "Тригонометрискиот режим да смета во радијани"
 
-#: gcalctool/calctool.c:137
+#: gcalctool/calctool.c:141
 msgid "7"
 msgstr "7"
 
-#: gcalctool/calctool.c:138
+#: gcalctool/calctool.c:143
 msgid "Numeric 7"
 msgstr "Нумеричко 7"
 
-#: gcalctool/calctool.c:146
+#: gcalctool/calctool.c:151
 msgid "8"
 msgstr "8"
 
-#: gcalctool/calctool.c:147
+#: gcalctool/calctool.c:153
 msgid "Numeric 8"
 msgstr "Нумеричко 8"
 
-#: gcalctool/calctool.c:155
+#: gcalctool/calctool.c:161
 msgid "9"
 msgstr "9"
 
-#: gcalctool/calctool.c:156
+#: gcalctool/calctool.c:163
 msgid "Numeric 9"
 msgstr "Нумеричко 9"
 
-#: gcalctool/calctool.c:164
+#: gcalctool/calctool.c:171
 msgid "/"
 msgstr "/"
 
-#: gcalctool/calctool.c:165
+#: gcalctool/calctool.c:172
 msgid "Divide"
 msgstr "Дели"
 
-#: gcalctool/calctool.c:182
+#: gcalctool/calctool.c:191
 msgid "Bsp"
 msgstr "Bsp"
 
-#: gcalctool/calctool.c:183
+#: gcalctool/calctool.c:192
 msgid "Remove rightmost character from displayed value"
 msgstr "Отстрани го најдесниот карактер од прикажаната вредност"
 
-#: gcalctool/calctool.c:191
+#: gcalctool/calctool.c:193
+msgid "Backspace"
+msgstr ""
+
+#: gcalctool/calctool.c:201
 msgid "CE"
 msgstr "CE"
 
-#: gcalctool/calctool.c:192
+#: gcalctool/calctool.c:202
 msgid "Clear displayed value"
 msgstr "Избриши ја прикажаната вредност"
 
-#: gcalctool/calctool.c:200
+#: gcalctool/calctool.c:203
+msgid "Clear entry"
+msgstr ""
+
+#: gcalctool/calctool.c:211
 msgid "Clr"
 msgstr "Clr"
 
-#: gcalctool/calctool.c:201
+#: gcalctool/calctool.c:212
 msgid "Clear displayed value and any partial calculation"
 msgstr "Избриши ја прикажаната вредност и било која парцијална пресметка"
 
-#: gcalctool/calctool.c:211
+#: gcalctool/calctool.c:213
+#, fuzzy
+msgid "Clear"
+msgstr "Clr"
+
+#: gcalctool/calctool.c:223
 msgid "4"
 msgstr "4"
 
-#: gcalctool/calctool.c:212
+#: gcalctool/calctool.c:225
 msgid "Numeric 4"
 msgstr "Нумеричко 4"
 
-#: gcalctool/calctool.c:220
+#: gcalctool/calctool.c:233
 msgid "5"
 msgstr "5"
 
-#: gcalctool/calctool.c:221
+#: gcalctool/calctool.c:235
 msgid "Numeric 5"
 msgstr "Нумеричко 5"
 
-#: gcalctool/calctool.c:229
+#: gcalctool/calctool.c:243
 msgid "6"
 msgstr "6"
 
-#: gcalctool/calctool.c:230
+#: gcalctool/calctool.c:245
 msgid "Numeric 6"
 msgstr "Нумеричко 6"
 
-#: gcalctool/calctool.c:238
+#: gcalctool/calctool.c:253
 msgid "*"
 msgstr "*"
 
-#: gcalctool/calctool.c:239
+#: gcalctool/calctool.c:254
 msgid "Multiply"
 msgstr "Помножи"
 
-#: gcalctool/calctool.c:256
+#: gcalctool/calctool.c:273
 msgid "+/-"
 msgstr "+/-"
 
-#: gcalctool/calctool.c:257
+#: gcalctool/calctool.c:274
 msgid "Change sign"
 msgstr "Промени знак"
 
-#: gcalctool/calctool.c:265
+#: gcalctool/calctool.c:283
 msgid "Int"
 msgstr "Int"
 
-#: gcalctool/calctool.c:266
+#: gcalctool/calctool.c:284
 msgid "Integer portion of displayed value"
 msgstr "Целобројниот дел од прикажаната вредност"
 
-#: gcalctool/calctool.c:274
+#: gcalctool/calctool.c:285
+#, fuzzy
+msgid "Integer portion"
+msgstr "Целобројниот дел од прикажаната вредност"
+
+#: gcalctool/calctool.c:293
 msgid "Sto"
 msgstr "Sto"
 
-#: gcalctool/calctool.c:275
+#: gcalctool/calctool.c:294
 msgid "Store displayed value in memory register"
 msgstr "Зачувај ја прикажаната вредност во меморискиот регистар"
 
-#: gcalctool/calctool.c:285
+#: gcalctool/calctool.c:295
+#, fuzzy
+msgid "Store to register"
+msgstr "Мемориски регистри"
+
+#: gcalctool/calctool.c:305
 msgid "1"
 msgstr "1"
 
-#: gcalctool/calctool.c:286
+#: gcalctool/calctool.c:307
 msgid "Numeric 1"
 msgstr "Нумеричко 1"
 
-#: gcalctool/calctool.c:294
+#: gcalctool/calctool.c:315
 msgid "2"
 msgstr "2"
 
-#: gcalctool/calctool.c:295
+#: gcalctool/calctool.c:317
 msgid "Numeric 2"
 msgstr "Нумеричко 2"
 
-#: gcalctool/calctool.c:303
+#: gcalctool/calctool.c:325
 msgid "3"
 msgstr "3"
 
-#: gcalctool/calctool.c:304
+#: gcalctool/calctool.c:327
 msgid "Numeric 3"
 msgstr "Нумеричко 3"
 
-#: gcalctool/calctool.c:312
+#: gcalctool/calctool.c:335
 msgid "-"
 msgstr "-"
 
-#: gcalctool/calctool.c:313
+#: gcalctool/calctool.c:336
 msgid "Subtract"
 msgstr "Одземање"
 
-#: gcalctool/calctool.c:321
+#: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
-#: gcalctool/calctool.c:322
+#: gcalctool/calctool.c:346
 msgid "Percentage"
 msgstr "Проценти"
 
-#: gcalctool/calctool.c:330
+#: gcalctool/calctool.c:355
 msgid "Sqrt"
 msgstr "Квадратен корен"
 
-#: gcalctool/calctool.c:331
+#: gcalctool/calctool.c:356
 msgid "Square root"
 msgstr "Квадратен корен"
 
-#: gcalctool/calctool.c:339
+#: gcalctool/calctool.c:365
 msgid "Frac"
 msgstr "Дел"
 
-#: gcalctool/calctool.c:340
+#: gcalctool/calctool.c:366
 msgid "Fractional portion of displayed value"
 msgstr "Децималниот дел од прикажаната вредност"
 
-#: gcalctool/calctool.c:348
+#: gcalctool/calctool.c:367
+#, fuzzy
+msgid "Fractional portion"
+msgstr "Децималниот дел од прикажаната вредност"
+
+#: gcalctool/calctool.c:375
 #, fuzzy
 msgid "Rcl"
 msgstr "Rcl"
 
-#: gcalctool/calctool.c:349
+#: gcalctool/calctool.c:376
 msgid "Retrieve memory register to display"
 msgstr "Прикажи ја вредноста на меморискиот регистар"
 
-#: gcalctool/calctool.c:359
+#: gcalctool/calctool.c:377
+#, fuzzy
+msgid "Retrieve from register"
+msgstr "Прикажи ја вредноста на меморискиот регистар"
+
+#: gcalctool/calctool.c:387
 msgid "0"
 msgstr "0"
 
-#: gcalctool/calctool.c:360
+#: gcalctool/calctool.c:389
 msgid "Numeric 0"
 msgstr "Нумеричко 0"
 
-#: gcalctool/calctool.c:368
+#: gcalctool/calctool.c:397
 msgid "."
 msgstr "."
 
-#: gcalctool/calctool.c:369
+#: gcalctool/calctool.c:398
 msgid "Numeric point"
 msgstr "Нумеричка точка"
 
-#: gcalctool/calctool.c:377
+#: gcalctool/calctool.c:407
 msgid "="
 msgstr "="
 
-#: gcalctool/calctool.c:378
+#: gcalctool/calctool.c:408
 msgid "Calculate result"
 msgstr "Пресметај резултат"
 
-#: gcalctool/calctool.c:386
+#: gcalctool/calctool.c:417
 msgid "+"
 msgstr "+"
 
-#: gcalctool/calctool.c:387
+#: gcalctool/calctool.c:418
 msgid "Add"
 msgstr "Додади"
 
-#: gcalctool/calctool.c:395
-msgid "1/x"
-msgstr "1/х"
+#: gcalctool/calctool.c:427
+msgid "1/<i>x</i>"
+msgstr ""
 
-#: gcalctool/calctool.c:396
+#: gcalctool/calctool.c:428
 msgid "Reciprocal"
 msgstr "Реципрочно"
 
-#: gcalctool/calctool.c:404
-msgid "x<sup>2</sup>"
+#: gcalctool/calctool.c:437
+#, fuzzy
+msgid "x<sup><i>2</i></sup>"
 msgstr "x<sup>2</sup>"
 
-#: gcalctool/calctool.c:405
+#: gcalctool/calctool.c:438
 msgid "Square"
 msgstr "Квадрат"
 
-#: gcalctool/calctool.c:413
+#: gcalctool/calctool.c:447
 #, fuzzy
 msgid "Abs"
 msgstr "Abs"
 
-#: gcalctool/calctool.c:414
+#: gcalctool/calctool.c:448
 msgid "Absolute value"
 msgstr "Апсолутна вредност"
 
-#: gcalctool/calctool.c:422
+#: gcalctool/calctool.c:457
 #, fuzzy
 msgid "Exch"
 msgstr "Exch"
 
-#: gcalctool/calctool.c:423
+#: gcalctool/calctool.c:458
 msgid "Exchange displayed value with memory register"
 msgstr "Размени ја прикажаната вредност со меморискиот регистар"
 
-#: gcalctool/calctool.c:446
+#: gcalctool/calctool.c:459
+#, fuzzy
+msgid "Exchange with register"
+msgstr "Размени ја прикажаната вредност со меморискиот регистар"
+
+#: gcalctool/calctool.c:483
 #, fuzzy
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#: gcalctool/calctool.c:447
+#: gcalctool/calctool.c:484
 msgid "Compounding term"
 msgstr "Збирен израз"
 
-#: gcalctool/calctool.c:455
+#: gcalctool/calctool.c:493
 #, fuzzy
 msgid "Ddb"
 msgstr "Ddb"
 
-#: gcalctool/calctool.c:456
+#: gcalctool/calctool.c:494
 msgid "Double-declining depreciation"
 msgstr "Двојно опаѓачка девалвација"
 
-#: gcalctool/calctool.c:464
+#: gcalctool/calctool.c:503
 #, fuzzy
 msgid "Fv"
 msgstr "Fv"
 
-#: gcalctool/calctool.c:465
+#: gcalctool/calctool.c:504
 msgid "Future value"
 msgstr "Идна вредност"
 
-#: gcalctool/calctool.c:473
+#: gcalctool/calctool.c:513
 #, fuzzy
 msgid "Pmt"
 msgstr "Pmt"
 
-#: gcalctool/calctool.c:474
+#: gcalctool/calctool.c:514
 msgid "Periodic payment"
 msgstr "Периодична наплата"
 
-#: gcalctool/calctool.c:482
+#: gcalctool/calctool.c:523
 #, fuzzy
 msgid "Pv"
 msgstr "Pv"
 
-#: gcalctool/calctool.c:483
+#: gcalctool/calctool.c:524
 msgid "Present value"
 msgstr "Сегашна вредност"
 
-#: gcalctool/calctool.c:491
+#: gcalctool/calctool.c:533
 msgid "Rate"
 msgstr "Стапка"
 
-#: gcalctool/calctool.c:492
+#: gcalctool/calctool.c:534
 msgid "Periodic interest rate"
 msgstr "Периодична каматна стапка"
 
-#: gcalctool/calctool.c:500
+#: gcalctool/calctool.c:543
 #, fuzzy
 msgid "Sln"
 msgstr "Sln"
 
-#: gcalctool/calctool.c:501
+#: gcalctool/calctool.c:544
 msgid "Straight-line depreciation"
 msgstr "Девалвација по права линија"
 
-#: gcalctool/calctool.c:509
+#: gcalctool/calctool.c:553
 #, fuzzy
 msgid "Syd"
 msgstr "Syd"
 
-#: gcalctool/calctool.c:510
+#: gcalctool/calctool.c:554
 msgid "Sum-of-the years'-digits depreciation"
 msgstr "Девалвација според збирот на цифрите на годините"
 
-#: gcalctool/calctool.c:520
+#: gcalctool/calctool.c:565
 msgid "Term"
 msgstr "Временски термин"
 
-#: gcalctool/calctool.c:521
+#: gcalctool/calctool.c:566
 msgid "Payment period"
 msgstr "Период на исплата"
 
-#: gcalctool/calctool.c:607
+#: gcalctool/calctool.c:661
 msgid "<"
 msgstr "<"
 
-#: gcalctool/calctool.c:608
+#: gcalctool/calctool.c:662
 msgid "Shift displayed value 1-15 places to the left"
 msgstr "Помести ја прикажаната вредност 1-15 места налево"
 
-#: gcalctool/calctool.c:616
+#: gcalctool/calctool.c:663
+msgid "Shift left"
+msgstr ""
+
+#: gcalctool/calctool.c:671
 msgid ">"
 msgstr ">"
 
-#: gcalctool/calctool.c:617
+#: gcalctool/calctool.c:672
 msgid "Shift displayed value 1-15 places to the right"
 msgstr "Помести ја прикажаната вредност 1-15 места надесно"
 
-#: gcalctool/calctool.c:625
+#: gcalctool/calctool.c:673
+msgid "Shift right"
+msgstr ""
+
+#: gcalctool/calctool.c:681
 msgid "&amp;16"
 msgstr "&amp;16"
 
-#: gcalctool/calctool.c:626
+#: gcalctool/calctool.c:682
 msgid "16-bit unsigned integer value of display"
 msgstr "Прикажана 16-битна целобројна вредност без знак"
 
-#: gcalctool/calctool.c:634
+#: gcalctool/calctool.c:683
+#, fuzzy
+msgid "16 bit unsigned integer"
+msgstr "Прикажана 16-битна целобројна вредност без знак"
+
+#: gcalctool/calctool.c:691
 msgid "&amp;32"
 msgstr "&amp;32"
 
-#: gcalctool/calctool.c:635
+#: gcalctool/calctool.c:692
 msgid "32-bit unsigned integer value of display"
 msgstr "Прикажана 32-битна целобројна вредност без знак"
 
-#: gcalctool/calctool.c:652
+#: gcalctool/calctool.c:693
+#, fuzzy
+msgid "32 bit unsigned integer"
+msgstr "Прикажана 32-битна целобројна вредност без знак"
+
+#: gcalctool/calctool.c:711
 msgid "("
 msgstr "("
 
-#: gcalctool/calctool.c:653
+#: gcalctool/calctool.c:712
 msgid "Start group of calculations"
 msgstr "Започни група на пресметки"
 
-#: gcalctool/calctool.c:661
+#: gcalctool/calctool.c:713
+msgid "Left bracket"
+msgstr ""
+
+#: gcalctool/calctool.c:721
 msgid ")"
 msgstr ")"
 
-#: gcalctool/calctool.c:662
+#: gcalctool/calctool.c:722
 msgid "End group of calculations"
 msgstr "Заврши група на пресметки"
 
-#: gcalctool/calctool.c:670
+#: gcalctool/calctool.c:723
+msgid "Right bracket"
+msgstr ""
+
+#: gcalctool/calctool.c:731
 msgid "Acc"
 msgstr "Acc"
 
-#: gcalctool/calctool.c:671
+#: gcalctool/calctool.c:732
 msgid "Set accuracy from 0 to 9 numeric places"
 msgstr "Подеси ја точноста од 0 до 9 нумерички места"
 
-#: gcalctool/calctool.c:681
+#: gcalctool/calctool.c:733
+msgid "Accuracy"
+msgstr ""
+
+#: gcalctool/calctool.c:743
 msgid "Con"
 msgstr "Конст"
 
-#: gcalctool/calctool.c:682
+#: gcalctool/calctool.c:744
 msgid "Constants"
 msgstr "Константи"
 
-#: gcalctool/calctool.c:690
+#: gcalctool/calctool.c:753
 msgid "Fun"
 msgstr "Забава"
 
-#: gcalctool/calctool.c:691
+#: gcalctool/calctool.c:754
 msgid "User-defined functions"
 msgstr "Функции дефинирани од корисникот"
 
-#: gcalctool/calctool.c:699
+#: gcalctool/calctool.c:763
 #, fuzzy
 msgid "Exp"
 msgstr "Exp"
 
-#: gcalctool/calctool.c:700
+#: gcalctool/calctool.c:764
 msgid "Enter an exponential number"
 msgstr "Внеси експоненцијална вредност"
 
-#: gcalctool/calctool.c:708
-msgid "e<sup>x</sup>"
+#: gcalctool/calctool.c:765
+msgid "Exponential"
+msgstr ""
+
+#: gcalctool/calctool.c:773
+#, fuzzy
+msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup>x</sup>"
 
-#: gcalctool/calctool.c:709
+#: gcalctool/calctool.c:774
 msgid "e to the power of displayed value"
 msgstr "е на степен од прикажаната вредност"
 
-#: gcalctool/calctool.c:717
-msgid "10<sup>x</sup>"
+#: gcalctool/calctool.c:775
+msgid "E to the x"
+msgstr ""
+
+#: gcalctool/calctool.c:783
+#, fuzzy
+msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup>x</sup>"
 
-#: gcalctool/calctool.c:718
+#: gcalctool/calctool.c:784
 msgid "10 to the power of displayed value"
 msgstr "10 на степен од прикажаната вредност"
 
-#: gcalctool/calctool.c:726
-msgid "y<sup>x</sup>"
+#: gcalctool/calctool.c:785
+msgid "Ten to the x"
+msgstr ""
+
+#: gcalctool/calctool.c:793
+#, fuzzy
+msgid "y<sup><i>x</i></sup>"
 msgstr "y<sup>x</sup>"
 
-#: gcalctool/calctool.c:727
+#: gcalctool/calctool.c:794
 msgid "y to the power of displayed value"
 msgstr "y на степен од прикажаната вредност"
 
-#: gcalctool/calctool.c:735
-msgid "x!"
-msgstr "x!"
+#: gcalctool/calctool.c:795
+msgid "Y to the x"
+msgstr ""
 
-#: gcalctool/calctool.c:736
+#: gcalctool/calctool.c:803
+msgid "<i>x</i>!"
+msgstr ""
+
+#: gcalctool/calctool.c:804
 msgid "Factorial of displayed value"
 msgstr "Факториел од прикажаната вредност"
 
-#: gcalctool/calctool.c:744
+#: gcalctool/calctool.c:805
+msgid "Factorial"
+msgstr ""
+
+#: gcalctool/calctool.c:813
 msgid "Rand"
 msgstr "Случаен"
 
-#: gcalctool/calctool.c:745
+#: gcalctool/calctool.c:814
 msgid "Random number in the range 0.0 to 1.0"
 msgstr "Случаен број од опсегот 0,0 до 1,0"
 
-#: gcalctool/calctool.c:755
+#: gcalctool/calctool.c:815
+msgid "Random number"
+msgstr ""
+
+#: gcalctool/calctool.c:825
 msgid "D"
 msgstr "Д"
 
-#: gcalctool/calctool.c:756
+#: gcalctool/calctool.c:826
 msgid "Hexadecimal digit D"
 msgstr "Хексадецимална цифра Д"
 
-#: gcalctool/calctool.c:764
+#: gcalctool/calctool.c:835
 msgid "E"
 msgstr "Е"
 
-#: gcalctool/calctool.c:765
+#: gcalctool/calctool.c:836
 msgid "Hexadecimal digit E"
 msgstr "Хексадецимална цифра Е"
 
-#: gcalctool/calctool.c:773 gcalctool/gtk.c:1088
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1109
 msgid "F"
 msgstr "Ф"
 
-#: gcalctool/calctool.c:774
+#: gcalctool/calctool.c:846
 msgid "Hexadecimal digit F"
 msgstr "Хексадецимална цифра Ф"
 
-#: gcalctool/calctool.c:782
+#: gcalctool/calctool.c:855
 msgid "Cos"
 msgstr "Cos"
 
-#: gcalctool/calctool.c:783
+#: gcalctool/calctool.c:856
 msgid "Cosine"
 msgstr "Косинус"
 
-#: gcalctool/calctool.c:791
+#: gcalctool/calctool.c:865
 msgid "Sin"
 msgstr "Sin"
 
-#: gcalctool/calctool.c:792
+#: gcalctool/calctool.c:866
 msgid "Sine"
 msgstr "Синус"
 
-#: gcalctool/calctool.c:800
+#: gcalctool/calctool.c:875
 msgid "Tan"
 msgstr "Tan"
 
-#: gcalctool/calctool.c:801
+#: gcalctool/calctool.c:876
 msgid "Tangent"
 msgstr "Тангенс"
 
-#: gcalctool/calctool.c:809
+#: gcalctool/calctool.c:885
 msgid "Ln"
 msgstr "Ln"
 
-#: gcalctool/calctool.c:810
+#: gcalctool/calctool.c:886
 msgid "Natural log"
 msgstr "Природен логаритам"
 
-#: gcalctool/calctool.c:818
+#: gcalctool/calctool.c:895
 msgid "Log"
 msgstr "Log"
 
-#: gcalctool/calctool.c:819
+#: gcalctool/calctool.c:896
 msgid "Base 10 log"
 msgstr "Логаритам со основа 10"
 
-#: gcalctool/calctool.c:829
+#: gcalctool/calctool.c:907
 msgid "A"
 msgstr "A"
 
-#: gcalctool/calctool.c:830
+#: gcalctool/calctool.c:908
 msgid "Hexadecimal digit A"
 msgstr "Хексадецимална цифра А"
 
-#: gcalctool/calctool.c:838
+#: gcalctool/calctool.c:917
 msgid "B"
 msgstr "Б"
 
-#: gcalctool/calctool.c:839
+#: gcalctool/calctool.c:918
 msgid "Hexadecimal digit B"
 msgstr "Хексадецимална цифра Б"
 
-#: gcalctool/calctool.c:847 gcalctool/gtk.c:1081
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1101
 msgid "C"
 msgstr "Ц"
 
-#: gcalctool/calctool.c:848
+#: gcalctool/calctool.c:928
 msgid "Hexadecimal digit C"
 msgstr "Хексадецимална цифра Ц"
 
-#: gcalctool/calctool.c:856
+#: gcalctool/calctool.c:937
 msgid "Or"
 msgstr "Или"
 
-#: gcalctool/calctool.c:857
+#: gcalctool/calctool.c:938
 msgid "Logical OR"
 msgstr "Логичко ИЛИ"
 
-#: gcalctool/calctool.c:865
+#: gcalctool/calctool.c:947
 msgid "And"
 msgstr "И"
 
-#: gcalctool/calctool.c:866
+#: gcalctool/calctool.c:948
 msgid "Logical AND"
 msgstr "Логичко И"
 
-#: gcalctool/calctool.c:874
+#: gcalctool/calctool.c:957
 msgid "Not"
 msgstr "Не"
 
-#: gcalctool/calctool.c:875
+#: gcalctool/calctool.c:958
 msgid "Logical NOT"
 msgstr "Логичко НЕ"
 
-#: gcalctool/calctool.c:883
+#: gcalctool/calctool.c:967
 msgid "Xor"
 msgstr "Или/Или"
 
-#: gcalctool/calctool.c:884
+#: gcalctool/calctool.c:968
 msgid "Logical XOR"
 msgstr "Логичко Или/Или"
 
-#: gcalctool/calctool.c:892
+#: gcalctool/calctool.c:977
 msgid "Xnor"
 msgstr "Нили"
 
-#: gcalctool/calctool.c:893
+#: gcalctool/calctool.c:978
 msgid "Logical XNOR"
 msgstr "Логичко нили"
 
-#: gcalctool/calctool.c:989
+#: gcalctool/calctool.c:1077
 msgid "kilometers per hour or miles per hour"
 msgstr "километри на час или милји на час"
 
-#: gcalctool/calctool.c:990
+#: gcalctool/calctool.c:1078
 msgid "square root of 2"
 msgstr "квадратен корен од 2"
 
-#: gcalctool/calctool.c:991
+#: gcalctool/calctool.c:1079
 msgid "e"
 msgstr "е"
 
-#: gcalctool/calctool.c:992
+#: gcalctool/calctool.c:1080
 msgid "pi"
 msgstr "пи"
 
-#: gcalctool/calctool.c:993
+#: gcalctool/calctool.c:1081
 msgid "centimeters or inches"
 msgstr "сантиметри или инчи"
 
-#: gcalctool/calctool.c:994
+#: gcalctool/calctool.c:1082
 msgid "degrees in a radian"
 msgstr "степени во радијан"
 
-#: gcalctool/calctool.c:995
+#: gcalctool/calctool.c:1083
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: gcalctool/calctool.c:996
+#: gcalctool/calctool.c:1084
 msgid "grams or ounces"
 msgstr "грамови или унци"
 
-#: gcalctool/calctool.c:997
+#: gcalctool/calctool.c:1085
 msgid "kilojoules or British thermal units"
 msgstr "килоџули или британски термални единици"
 
-#: gcalctool/calctool.c:998
+#: gcalctool/calctool.c:1086
 msgid "cubic centimeters or cubic inches"
 msgstr "кубни сантиметри или кубни инчи"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1009 gcalctool/display.c:194 gcalctool/functions.c:934
-#: gcalctool/functions.c:1062 gcalctool/functions.c:1101
-#: gcalctool/functions.c:1155 gcalctool/functions.c:1248
-#: gcalctool/functions.c:1249 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1097 gcalctool/display.c:199 gcalctool/functions.c:939
+#: gcalctool/functions.c:1067 gcalctool/functions.c:1106
+#: gcalctool/functions.c:1160 gcalctool/functions.c:1253
+#: gcalctool/functions.c:1254 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Грешка"
 
-#: gcalctool/functions.c:1268
+#: gcalctool/functions.c:1273
 msgid "Numeric stack error"
 msgstr "Нумеричка грешка на стекот"
 
-#: gcalctool/functions.c:1289
+#: gcalctool/functions.c:1294
 msgid "Operand stack error"
 msgstr "Грешка на стекот со операнди"
 
-#: gcalctool/get.c:134
+#: gcalctool/get.c:154
 msgid "-a needs accuracy value"
 msgstr "-на а му треба вредност на точност"
 
-#: gcalctool/get.c:138 gcalctool/get.c:258
+#: gcalctool/get.c:158 gcalctool/get.c:280
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s точноста треба да е во опсег 0-9\n"
 
-#: gcalctool/get.c:163
+#: gcalctool/get.c:183
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s како следен аргумент.\n"
@@ -780,31 +885,31 @@ msgstr "%s: %s како следен аргумент.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:216
+#: gcalctool/get.c:238
 msgid "calculator"
 msgstr "калкулатор"
 
-#: gcalctool/get.c:272
+#: gcalctool/get.c:294
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s базата треба да биде 2, 8 , 10 или 16\n"
 
-#: gcalctool/get.c:287
+#: gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: неважечки режим на прикажување[%s]\n"
 
-#: gcalctool/get.c:302
+#: gcalctool/get.c:324
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: неважечки режим [%s]\n"
 
-#: gcalctool/get.c:316
+#: gcalctool/get.c:338
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: неважечки тригонометриски режим [%s]\n"
 
-#: gcalctool/get.c:358
+#: gcalctool/get.c:380
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -813,520 +918,490 @@ msgstr ""
 "%s верзија %s\n"
 "\n"
 
-#: gcalctool/get.c:359
+#: gcalctool/get.c:381
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Употребеност: %s: [-D] [-E] [-a вредност] "
 
-#: gcalctool/get.c:360
+#: gcalctool/get.c:382
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:890 gcalctool/gtk.c:1020
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:903 gcalctool/gtk.c:1040
 msgid "R"
 msgstr "Р"
 
-#: gcalctool/gtk.c:178
+#: gcalctool/gtk.c:164
 msgid "/_Calculator"
 msgstr "/_Калкулатор"
 
-#: gcalctool/gtk.c:179
+#: gcalctool/gtk.c:165
 msgid "/Calculator/_Quit"
 msgstr "/Клакулатор/_Излез"
 
-#: gcalctool/gtk.c:181
+#: gcalctool/gtk.c:167
 msgid "/_Edit"
 msgstr "/_Уреди"
 
-#: gcalctool/gtk.c:182
+#: gcalctool/gtk.c:168
 msgid "/Edit/_Copy"
 msgstr "/Уреди/_Копирај"
 
-#: gcalctool/gtk.c:183
+#: gcalctool/gtk.c:169
 msgid "/Edit/_Paste"
 msgstr "/Уреди/_Вметни"
 
-#: gcalctool/gtk.c:184
+#: gcalctool/gtk.c:170
 #, fuzzy
 msgid "/Edit/sep1"
 msgstr "/Уреди/сеп1"
 
-#: gcalctool/gtk.c:185
+#: gcalctool/gtk.c:171
 msgid "/Edit/_Insert ASCII Value..."
 msgstr "/Уреди/_Вметни аски (АSCII) вредност..."
 
-#: gcalctool/gtk.c:187
+#: gcalctool/gtk.c:173
 msgid "/_View"
 msgstr "/_Поглед"
 
-#: gcalctool/gtk.c:188
+#: gcalctool/gtk.c:174
 msgid "/View/_Basic Mode"
 msgstr "/Поглед/_Основен режим"
 
-#: gcalctool/gtk.c:189
+#: gcalctool/gtk.c:175
 msgid "/View/_Financial Mode"
 msgstr "/Поглед/_Финансиски режим"
 
-#: gcalctool/gtk.c:190
+#: gcalctool/gtk.c:176
 msgid "/View/_Scientific Mode"
 msgstr "/Поглед/_Научен режим"
 
-#: gcalctool/gtk.c:191
+#: gcalctool/gtk.c:177
 msgid "/View/sep1"
 msgstr "/Поглед/сеп1"
 
-#: gcalctool/gtk.c:192
+#: gcalctool/gtk.c:178
 msgid "/View/Show _Trailing Zeroes"
 msgstr "/Преглед/Покажи ги нули_те од десно"
 
-#: gcalctool/gtk.c:193
+#: gcalctool/gtk.c:179
 msgid "/View/sep2"
 msgstr "/Поглед/сеп2"
 
-#: gcalctool/gtk.c:194
+#: gcalctool/gtk.c:180
 msgid "/View/_Memory Registers"
 msgstr "/Пголед/_Мемориски регистри"
 
-#: gcalctool/gtk.c:196
+#: gcalctool/gtk.c:182
 msgid "/_Help"
 msgstr "/_Помош"
 
-#: gcalctool/gtk.c:197
+#: gcalctool/gtk.c:183
 msgid "/Help/_Contents"
 msgstr "/Помош/_Содржина"
 
-#: gcalctool/gtk.c:198
+#: gcalctool/gtk.c:184
 msgid "/Help/_About"
 msgstr "/Помош/_За"
 
-#: gcalctool/gtk.c:202
+#: gcalctool/gtk.c:188
 msgid "/0 significant places"
 msgstr "/0 значајни места"
 
-#: gcalctool/gtk.c:203
+#: gcalctool/gtk.c:189
 msgid "/1 significant place"
 msgstr "/Едно значајно место"
 
-#: gcalctool/gtk.c:204
+#: gcalctool/gtk.c:190
 msgid "/2 significant places"
 msgstr "/Две значајни места"
 
-#: gcalctool/gtk.c:205
+#: gcalctool/gtk.c:191
 msgid "/3 significant places"
 msgstr "/Три значајни места"
 
-#: gcalctool/gtk.c:206
+#: gcalctool/gtk.c:192
 msgid "/4 significant places"
 msgstr "/Четири значајни места"
 
-#: gcalctool/gtk.c:207
+#: gcalctool/gtk.c:193
 msgid "/5 significant places"
 msgstr "/Пет значајни места"
 
-#: gcalctool/gtk.c:208
+#: gcalctool/gtk.c:194
 msgid "/6 significant places"
 msgstr "/Шест значајни места"
 
-#: gcalctool/gtk.c:209
+#: gcalctool/gtk.c:195
 msgid "/7 significant places"
 msgstr "/Седум значајни места"
 
-#: gcalctool/gtk.c:210
+#: gcalctool/gtk.c:196
 msgid "/8 significant places"
 msgstr "/Осум значајни места"
 
-#: gcalctool/gtk.c:211
+#: gcalctool/gtk.c:197
 msgid "/9 significant places"
 msgstr "/Девет значајни места"
 
-#: gcalctool/gtk.c:212
+#: gcalctool/gtk.c:198
 msgid "/sep1"
 msgstr "/1 сеп"
 
-#: gcalctool/gtk.c:213
+#: gcalctool/gtk.c:199
 msgid "/Show _Trailing Zeroes"
 msgstr "/Покажи ги нули_те од десно"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:203 gcalctool/gtk.c:221
 msgid "/1 place"
 msgstr "/Прво место"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:222
 msgid "/2 places"
 msgstr "/Две места"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:205 gcalctool/gtk.c:223
 msgid "/3 places"
 msgstr "/Три места"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:224
 msgid "/4 places"
 msgstr "/Четири места"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
 msgid "/5 places"
 msgstr "/Пет места"
 
-#: gcalctool/gtk.c:222 gcalctool/gtk.c:240
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
 msgid "/6 places"
 msgstr "/Шест места"
 
-#: gcalctool/gtk.c:223 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
 msgid "/7 places"
 msgstr "/Седум места"
 
-#: gcalctool/gtk.c:224 gcalctool/gtk.c:242
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
 msgid "/8 places"
 msgstr "/Осум места"
 
-#: gcalctool/gtk.c:225 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
 msgid "/9 places"
 msgstr "/Девет места"
 
-#: gcalctool/gtk.c:226 gcalctool/gtk.c:244
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
 msgid "/10 places"
 msgstr "/Десет места"
 
-#: gcalctool/gtk.c:227 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
 msgid "/11 places"
 msgstr "/Единаесет места"
 
-#: gcalctool/gtk.c:228 gcalctool/gtk.c:246
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
 msgid "/12 places"
 msgstr "/Дванаесет места"
 
-#: gcalctool/gtk.c:229 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
 msgid "/13 places"
 msgstr "/Тринаесет места"
 
-#: gcalctool/gtk.c:230 gcalctool/gtk.c:248
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
 msgid "/14 places"
 msgstr "/Четиринаесет места"
 
-#: gcalctool/gtk.c:231 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
 msgid "/15 places"
 msgstr "/Петнаесет места"
 
-#: gcalctool/gtk.c:303
+#: gcalctool/gtk.c:290
 msgid "translator_credits"
 msgstr "преведувачки_заслуги"
 
-#: gcalctool/gtk.c:305
+#: gcalctool/gtk.c:292
 msgid "Gcalctool"
 msgstr "Алатка г-калк (Gcalc)"
 
-#: gcalctool/gtk.c:307
+#: gcalctool/gtk.c:294
 msgid "Calculator with financial and scientific modes."
 msgstr "Калкулатор со финансиски и научен режим на работа."
 
-#: gcalctool/gtk.c:578
+#: gcalctool/gtk.c:576
 msgid "Insert ASCII Value"
 msgstr "Вметни аски (ASCII) вредност"
 
-#: gcalctool/gtk.c:593
+#: gcalctool/gtk.c:591
 msgid "Ch_aracter:"
 msgstr "Зн_ак:"
 
-#: gcalctool/gtk.c:622
+#: gcalctool/gtk.c:616
 msgid "_Insert"
 msgstr "_Вметни"
 
-#: gcalctool/gtk.c:700
+#: gcalctool/gtk.c:696
 msgid "Edit Constants"
 msgstr "Измени константи"
 
-#: gcalctool/gtk.c:700
+#: gcalctool/gtk.c:696
 msgid "Edit Functions"
 msgstr "Измени функции"
 
+#: gcalctool/gtk.c:720
+#, fuzzy
+msgid "Note:"
+msgstr "Не"
+
 #: gcalctool/gtk.c:721
-msgid "Click a value or description to edit it:"
+msgid "All constant values are specified in the decimal numeric base."
+msgstr ""
+
+#: gcalctool/gtk.c:731
+#, fuzzy
+msgid "Click a _value or description to edit it:"
 msgstr "Притисни вредност или опис за да го измениш"
 
-#: gcalctool/gtk.c:744
+#: gcalctool/gtk.c:754
 msgid "No."
 msgstr "Не."
 
-#: gcalctool/gtk.c:746
+#: gcalctool/gtk.c:756
 msgid "Value"
 msgstr "Вредност"
 
-#: gcalctool/gtk.c:748
+#: gcalctool/gtk.c:758
 msgid "Description"
 msgstr "Опис"
 
-#: gcalctool/gtk.c:779 gcalctool/gtk.c:781 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:792 gcalctool/gtk.c:794
 msgid "Calculator"
 msgstr "Калкулатор"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:957
+#: gcalctool/gtk.c:975
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:959
-msgid "Set inverse option for trigonometric functions"
-msgstr "Постави ја опцијата инверзно за тригонометриски функции"
-
-#: gcalctool/gtk.c:965
+#: gcalctool/gtk.c:983
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:967
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Подеси ја хиперболичната опција за тригонометриските функции"
-
-#: gcalctool/gtk.c:1011
+#: gcalctool/gtk.c:1031
 msgid "Memory Registers"
 msgstr "Мемориски регистри"
 
-#: gcalctool/gtk.c:1070
+#: gcalctool/gtk.c:1090
 msgid "Edit Constants..."
 msgstr "Измени константи..."
 
-#: gcalctool/gtk.c:1070
+#: gcalctool/gtk.c:1090
 msgid "Edit Functions..."
 msgstr "Измени функции..."
-
-#: gcalctool/mp.c:181
-msgid ""
-"*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** Знакот не е 0, +1 или -1 во повикот „MPADD2“.\n"
-"Moжен е проблем со запишување преку постоечки вредности ***\n"
-
-#: gcalctool/mp.c:457
-msgid "*** N .LE. 1 IN CALL TO MPART1 ***\n"
-msgstr "*** N е помало или еднакво на 1 во повикот на „MPART1“ ***\n"
-
-#: gcalctool/mp.c:564
-msgid "*** ABS(X) .GT. 1 IN CALL TO MPASIN ***\n"
-msgstr "*** ABS(X) поголемо од 1 во повикот на „MPASIN“ ***\n"
-
-#: gcalctool/mp.c:686
-msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
-msgstr "*** Се јави грешка во „MPATAN“, резултатот е неточен ***\n"
-
-#: gcalctool/mp.c:834
-#, c-format
-msgid ""
-"*** B = %d ILLEGAL IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** B = %d нелегално во повикот на MPCHK.\n"
-"Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
-
-#: gcalctool/mp.c:842
-#, c-format
-msgid ""
-"*** T = %d ILLEGAL IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** T = %d илегален повик на MPCHK.\n"
-"Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
-
-#: gcalctool/mp.c:850
-msgid ""
-"*** M .LE. T IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** M помало или еднакво на T при повикување на „MPCHK“.\n"
-"Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
-
-#: gcalctool/mp.c:863
-msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
-msgstr "*** B преголемо при повикот на „MPCHK“ ***\n"
-
-#: gcalctool/mp.c:878
-msgid "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr "*** MXR премало или неподесено на DIM(R) пред повикувањето на рутината „MP“ ***\n"
-
-#: gcalctool/mp.c:880
-#, c-format
-msgid ""
-"*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
-"*** ACTUALLY MXR = %d, AND T = %d  ***\n"
-msgstr ""
-"*** MXR би требало да е најмалку %d*T + %d = %d  ***\n"
-"*** Всушност MXR = %d, и T = %d  ***\n"
-
-#: gcalctool/mp.c:1026
-msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
-msgstr "*** Под или над-проток на подвижна точка во „MPCMD“ ***\n"
-
-#: gcalctool/mp.c:1344
-msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
-msgstr "*** Под или над-проток на подвижна точка во „MPCMD“ ***\n"
-
-#: gcalctool/mp.c:1534
-msgid "*** J = 0 IN CALL TO MPCQM ***\n"
-msgstr "*** J = 0 при повикување на „MPCQM“ ***\n"
-
-#: gcalctool/mp.c:1694
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
-msgstr "*** Обид за делење со нула при повикување на „MPDIV“ ***\n"
-
-#: gcalctool/mp.c:1751
-msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
-msgstr "*** Во „MPDIV“ се случи преполнување ***\n"
-
-#: gcalctool/mp.c:1781
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
-msgstr "*** Обид за делење со нула при повикување на „MPDIV“ ***\n"
-
-#: gcalctool/mp.c:1949
-msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
-msgstr "*** Преполнување на целобројна вредност во „MPDIVI“, B е преголемо ***\n"
-
-#: gcalctool/mp.c:2056
-msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
-msgstr "*** Преполнување во субрутината „MPEXP“ ***\n"
-
-#: gcalctool/mp.c:2174
-msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
-msgstr "*** Во „MPEXP“ се јави грешка, резултатот е неточен ***\n"
-
-#: gcalctool/mp.c:2221
-msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
-msgstr "*** ABS(X) не е поголема од 1 при повикот на „MPEXP1“ ***\n"
-
-#: gcalctool/mp.c:2443
-msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
-msgstr "*** X не е позитивна во повикот на „MPLN“ ***\n"
-
-#: gcalctool/mp.c:2493
-msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
-msgstr "*** Грешка во „MPLN“, итерацијата не конвергира ***\n"
-
-#: gcalctool/mp.c:2543
-msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
-msgstr "*** ABS(X) е поголемо или еднакво на 1/B при повик на „MPLNS“ ***\n"
-
-#: gcalctool/mp.c:2605
-msgid ""
-"*** ERROR OCCURRED IN MPLNS.\n"
-"NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr ""
-"*** Во „MPLNS“ се јави грешка.\n"
-"Итерацијата на Њутн не конвергира соодветно ***\n"
-
-#: gcalctool/mp.c:2791
-msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
-msgstr "*** Целобројно преполнување во „MPMUL“, B е преголемо ***\n"
-
-#: gcalctool/mp.c:2798
-msgid ""
-"*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** Цифра со невалидна основа B при повикување на „MPMUL“.\n"
-"Можност за проблем со пишување преку потребни вредности ***\n"
-
-#: gcalctool/mp.c:2849
-msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
-msgstr "*** Преполнување во „MPMUL2“ ***\n"
-
-#: gcalctool/mp.c:2957
-msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
-msgstr "*** Целобројно преполнување во „MPMUL2“, B е преголемо ***\n"
-
-#: gcalctool/mp.c:2998
-msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
-msgstr "*** Обид за делење со нула во „MPMULQ“ ***\n"
-
-#: gcalctool/mp.c:3075
-msgid ""
-"*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** Знакот не е 0, +1 или -1 при повикување на „MPNZR“.\n"
-"Можност за проблем со пишување преку потребни вредности ***\n"
-
-#: gcalctool/mp.c:3170
-msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
-msgstr "*** Во „MPNZR“ се јави проблем со преполнување ***\n"
-
-#: gcalctool/mp.c:3219
-msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
-msgstr "*** Повикување на „MPOVFL“, се случил преполнување на „MP“ ***\n"
-
-#: gcalctool/mp.c:3264
-msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
-msgstr "*** Во „MPPI“ се јави грешка, резултатот е неточен ***\n"
-
-#: gcalctool/mp.c:3304
-msgid "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"
-msgstr "*** Обид да се дигне нулата на негативен степен при повик на субрутината „MPPWR“ ***\n"
-
-#: gcalctool/mp.c:3372
-msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
-msgstr "*** Негативен X при повик на „MPPWR2“ ***\n"
-
-#: gcalctool/mp.c:3383
-msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
-msgstr "*** X нула и Y непозитивни во повик на „MPPWR2“ ***\n"
-
-#: gcalctool/mp.c:3445
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
-msgstr "*** Обид за делење со нула при повик на „MPREC“ ***\n"
-
-#: gcalctool/mp.c:3532
-msgid "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr "*** Во „MPREC“ се јави грешка, њутновата итерација не конвергира како што треба ***\n"
-
-#: gcalctool/mp.c:3549
-msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
-msgstr "*** Во „МPREC“ се јави преполнување ***\n"
-
-#: gcalctool/mp.c:3592
-msgid "*** N = 0 IN CALL TO MPROOT ***\n"
-msgstr "*** N = 0 при повик на „MPROOT“ ***\n"
-
-#: gcalctool/mp.c:3605
-msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
-msgstr "*** ABS(N) е преголемо при повик на „MPROOT“ ***\n"
-
-#: gcalctool/mp.c:3627
-msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
-msgstr "*** X = 0 и N негативно во повикот на „MPROOT“ ***\n"
-
-#: gcalctool/mp.c:3638
-msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
-msgstr "*** X негативен и N парно при повик на „MPROOT“ ***\n"
-
-#: gcalctool/mp.c:3738
-msgid "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr "*** Во „MPROOT“ се јави грешка, њутновата итерација не конвергира како што треба ***\n"
-
-#: gcalctool/mp.c:3826
-msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
-msgstr "*** IDECPL помало или еднакво од 0 при повик на „MPSET“ ***\n"
-
-#: gcalctool/mp.c:3850
-#, c-format
-msgid ""
-"ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
-"*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"
-msgstr ""
-"ITMAX2 премало при повик на „MPSET“ ***\n"
-"*** Зголеми го „ITMAX2“ и димензиите на низите „MP“ на најмалку %d ***\n"
-
-#: gcalctool/mp.c:3975
-msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
-msgstr "*** Во „MPSIN“ се јави грешка, резултатот е неточен ***\n"
-
-#: gcalctool/mp.c:4022
-msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
-msgstr "*** ABS(X) е поголемо од 1 при повик на „MPSIN1“ ***\n"
-
-#: gcalctool/mp.c:4171
-msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
-msgstr "*** X негативен при повикување на субрутината „MPSQRT“ ***\n"
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Изврши ги пресметките"
 
+#~ msgid "1/x"
+#~ msgstr "1/х"
+
+#~ msgid "x!"
+#~ msgstr "x!"
+
+#~ msgid ""
+#~ "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** Знакот не е 0, +1 или -1 во повикот „MPADD2“.\n"
+#~ "Moжен е проблем со запишување преку постоечки вредности ***\n"
+
+#~ msgid "*** N .LE. 1 IN CALL TO MPART1 ***\n"
+#~ msgstr "*** N е помало или еднакво на 1 во повикот на „MPART1“ ***\n"
+
+#~ msgid "*** ABS(X) .GT. 1 IN CALL TO MPASIN ***\n"
+#~ msgstr "*** ABS(X) поголемо од 1 во повикот на „MPASIN“ ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
+#~ msgstr "*** Се јави грешка во „MPATAN“, резултатот е неточен ***\n"
+
+#~ msgid ""
+#~ "*** B = %d ILLEGAL IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** B = %d нелегално во повикот на MPCHK.\n"
+#~ "Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
+
+#~ msgid ""
+#~ "*** T = %d ILLEGAL IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** T = %d илегален повик на MPCHK.\n"
+#~ "Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
+
+#~ msgid ""
+#~ "*** M .LE. T IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** M помало или еднакво на T при повикување на „MPCHK“.\n"
+#~ "Moжеби не било подесено пред повикот на рутина „MP“ ***\n"
+
+#~ msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
+#~ msgstr "*** B преголемо при повикот на „MPCHK“ ***\n"
+
+#~ msgid ""
+#~ "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** MXR премало или неподесено на DIM(R) пред повикувањето на рутината "
+#~ "„MP“ ***\n"
+
+#~ msgid ""
+#~ "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
+#~ "*** ACTUALLY MXR = %d, AND T = %d  ***\n"
+#~ msgstr ""
+#~ "*** MXR би требало да е најмалку %d*T + %d = %d  ***\n"
+#~ "*** Всушност MXR = %d, и T = %d  ***\n"
+
+#~ msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
+#~ msgstr "*** Под или над-проток на подвижна точка во „MPCMD“ ***\n"
+
+#~ msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
+#~ msgstr "*** Под или над-проток на подвижна точка во „MPCMD“ ***\n"
+
+#~ msgid "*** J = 0 IN CALL TO MPCQM ***\n"
+#~ msgstr "*** J = 0 при повикување на „MPCQM“ ***\n"
+
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
+#~ msgstr "*** Обид за делење со нула при повикување на „MPDIV“ ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
+#~ msgstr "*** Во „MPDIV“ се случи преполнување ***\n"
+
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
+#~ msgstr "*** Обид за делење со нула при повикување на „MPDIV“ ***\n"
+
+#~ msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
+#~ msgstr ""
+#~ "*** Преполнување на целобројна вредност во „MPDIVI“, B е преголемо ***\n"
+
+#~ msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
+#~ msgstr "*** Преполнување во субрутината „MPEXP“ ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
+#~ msgstr "*** Во „MPEXP“ се јави грешка, резултатот е неточен ***\n"
+
+#~ msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
+#~ msgstr "*** ABS(X) не е поголема од 1 при повикот на „MPEXP1“ ***\n"
+
+#~ msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
+#~ msgstr "*** X не е позитивна во повикот на „MPLN“ ***\n"
+
+#~ msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
+#~ msgstr "*** Грешка во „MPLN“, итерацијата не конвергира ***\n"
+
+#~ msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
+#~ msgstr "*** ABS(X) е поголемо или еднакво на 1/B при повик на „MPLNS“ ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPLNS.\n"
+#~ "NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
+#~ msgstr ""
+#~ "*** Во „MPLNS“ се јави грешка.\n"
+#~ "Итерацијата на Њутн не конвергира соодветно ***\n"
+
+#~ msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
+#~ msgstr "*** Целобројно преполнување во „MPMUL“, B е преголемо ***\n"
+
+#~ msgid ""
+#~ "*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** Цифра со невалидна основа B при повикување на „MPMUL“.\n"
+#~ "Можност за проблем со пишување преку потребни вредности ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
+#~ msgstr "*** Преполнување во „MPMUL2“ ***\n"
+
+#~ msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
+#~ msgstr "*** Целобројно преполнување во „MPMUL2“, B е преголемо ***\n"
+
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
+#~ msgstr "*** Обид за делење со нула во „MPMULQ“ ***\n"
+
+#~ msgid ""
+#~ "*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** Знакот не е 0, +1 или -1 при повикување на „MPNZR“.\n"
+#~ "Можност за проблем со пишување преку потребни вредности ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
+#~ msgstr "*** Во „MPNZR“ се јави проблем со преполнување ***\n"
+
+#~ msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
+#~ msgstr "*** Повикување на „MPOVFL“, се случил преполнување на „MP“ ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
+#~ msgstr "*** Во „MPPI“ се јави грешка, резултатот е неточен ***\n"
+
+#~ msgid ""
+#~ "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** Обид да се дигне нулата на негативен степен при повик на субрутината "
+#~ "„MPPWR“ ***\n"
+
+#~ msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
+#~ msgstr "*** Негативен X при повик на „MPPWR2“ ***\n"
+
+#~ msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
+#~ msgstr "*** X нула и Y непозитивни во повик на „MPPWR2“ ***\n"
+
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
+#~ msgstr "*** Обид за делење со нула при повик на „MPREC“ ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** Во „MPREC“ се јави грешка, њутновата итерација не конвергира како што "
+#~ "треба ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
+#~ msgstr "*** Во „МPREC“ се јави преполнување ***\n"
+
+#~ msgid "*** N = 0 IN CALL TO MPROOT ***\n"
+#~ msgstr "*** N = 0 при повик на „MPROOT“ ***\n"
+
+#~ msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
+#~ msgstr "*** ABS(N) е преголемо при повик на „MPROOT“ ***\n"
+
+#~ msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
+#~ msgstr "*** X = 0 и N негативно во повикот на „MPROOT“ ***\n"
+
+#~ msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
+#~ msgstr "*** X негативен и N парно при повик на „MPROOT“ ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** Во „MPROOT“ се јави грешка, њутновата итерација не конвергира како "
+#~ "што треба ***\n"
+
+#~ msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
+#~ msgstr "*** IDECPL помало или еднакво од 0 при повик на „MPSET“ ***\n"
+
+#~ msgid ""
+#~ "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
+#~ "*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"
+#~ msgstr ""
+#~ "ITMAX2 премало при повик на „MPSET“ ***\n"
+#~ "*** Зголеми го „ITMAX2“ и димензиите на низите „MP“ на најмалку %d ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
+#~ msgstr "*** Во „MPSIN“ се јави грешка, резултатот е неточен ***\n"
+
+#~ msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
+#~ msgstr "*** ABS(X) е поголемо од 1 при повик на „MPSIN1“ ***\n"
+
+#~ msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
+#~ msgstr "*** X негативен при повикување на субрутината „MPSQRT“ ***\n"

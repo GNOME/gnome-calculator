@@ -9,14 +9,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-08 12:13+0200\n"
+"POT-Creation-Date: 2003-11-26 07:09-0800\n"
 "PO-Revision-Date: 2003-07-14 09:09+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -303,6 +303,7 @@ msgid "Subtract"
 msgstr "Odejmowanie"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -375,15 +376,16 @@ msgid "Add"
 msgstr "Dodawanie"
 
 #: gcalctool/calctool.c:427
-msgid "1/x"
-msgstr "1/x"
+msgid "1/<i>x</i>"
+msgstr ""
 
 #: gcalctool/calctool.c:428
 msgid "Reciprocal"
 msgstr "Odwrotność"
 
 #: gcalctool/calctool.c:437
-msgid "x<sup>2</sup>"
+#, fuzzy
+msgid "x<sup><i>2</i></sup>"
 msgstr "x<sup>2</sup>"
 
 #: gcalctool/calctool.c:438
@@ -595,8 +597,9 @@ msgid "Exponential"
 msgstr "Wykładnicza"
 
 #: gcalctool/calctool.c:773
-msgid "<i>e</i><sup>x</sup>"
-msgstr "<i>e</i><sup>x</sup>"
+#, fuzzy
+msgid "e<sup><i>x</i></sup>"
+msgstr "y<sup>x</sup>"
 
 #: gcalctool/calctool.c:774
 msgid "e to the power of displayed value"
@@ -607,7 +610,8 @@ msgid "E to the x"
 msgstr "E do x"
 
 #: gcalctool/calctool.c:783
-msgid "10<sup>x</sup>"
+#, fuzzy
+msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup>x</sup>"
 
 #: gcalctool/calctool.c:784
@@ -619,7 +623,8 @@ msgid "Ten to the x"
 msgstr "10 do x"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup>x</sup>"
+#, fuzzy
+msgid "y<sup><i>x</i></sup>"
 msgstr "y<sup>x</sup>"
 
 #: gcalctool/calctool.c:794
@@ -631,8 +636,8 @@ msgid "Y to the x"
 msgstr "Y do x"
 
 #: gcalctool/calctool.c:803
-msgid "x!"
-msgstr "x!"
+msgid "<i>x</i>!"
+msgstr ""
 
 #: gcalctool/calctool.c:804
 msgid "Factorial of displayed value"
@@ -670,7 +675,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Szesnastkowa cyfra E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1108
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1109
 msgid "F"
 msgstr "F"
 
@@ -734,7 +739,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Szesnastkowa cyfra B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1100
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1101
 msgid "C"
 msgstr "C"
 
@@ -825,7 +830,7 @@ msgstr "centymetry kwadratowe lub cale kwadratowe"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1097 gcalctool/display.c:198 gcalctool/functions.c:939
+#: gcalctool/calctool.c:1097 gcalctool/display.c:199 gcalctool/functions.c:939
 #: gcalctool/functions.c:1067 gcalctool/functions.c:1106
 #: gcalctool/functions.c:1160 gcalctool/functions.c:1253
 #: gcalctool/functions.c:1254 gcalctool/graphics.c:102 gcalctool/mp.c:1988
@@ -840,16 +845,16 @@ msgstr "Liczbowy błąd stosu"
 msgid "Operand stack error"
 msgstr "Operatorowy błąd stosu"
 
-#: gcalctool/get.c:150
+#: gcalctool/get.c:154
 msgid "-a needs accuracy value"
 msgstr "-a wymaga dokładnej wartości"
 
-#: gcalctool/get.c:154 gcalctool/get.c:274
+#: gcalctool/get.c:158 gcalctool/get.c:280
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: dokładność musi mieścić się w zakresie 0-9\n"
 
-#: gcalctool/get.c:179
+#: gcalctool/get.c:183
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s jako następny argument.\n"
@@ -858,31 +863,31 @@ msgstr "%s: %s jako następny argument.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:232
+#: gcalctool/get.c:238
 msgid "calculator"
 msgstr "kalkulator"
 
-#: gcalctool/get.c:288
+#: gcalctool/get.c:294
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: podstawą powinna być liczba 2, 8, 10 lub 16\n"
 
-#: gcalctool/get.c:303
+#: gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: niepoprawny tryb wyświetlania [%s]\n"
 
-#: gcalctool/get.c:318
+#: gcalctool/get.c:324
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: niepoprawny tryb [%s]\n"
 
-#: gcalctool/get.c:332
+#: gcalctool/get.c:338
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: niepoprawny tryb trygonometryczny [%s]\n"
 
-#: gcalctool/get.c:374
+#: gcalctool/get.c:380
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -891,18 +896,18 @@ msgstr ""
 "%s wersja %s\n"
 "\n"
 
-#: gcalctool/get.c:375
+#: gcalctool/get.c:381
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Użycie: %s: [-D] [-E] [-a dokładność] "
 
-#: gcalctool/get.c:376
+#: gcalctool/get.c:382
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:902 gcalctool/gtk.c:1039
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:903 gcalctool/gtk.c:1040
 msgid "R"
 msgstr "R"
 
@@ -1142,28 +1147,28 @@ msgstr "Wartość"
 msgid "Description"
 msgstr "Opis"
 
-#: gcalctool/gtk.c:792 gcalctool/gtk.c:794 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:792 gcalctool/gtk.c:794
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:974
+#: gcalctool/gtk.c:975
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:982
+#: gcalctool/gtk.c:983
 msgid "H_yp"
 msgstr "_Hyp"
 
-#: gcalctool/gtk.c:1030
+#: gcalctool/gtk.c:1031
 msgid "Memory Registers"
 msgstr "Rejestry pamięci"
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Constants..."
 msgstr "Modyfikacja stałych..."
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Functions..."
 msgstr "Modyfikacja funkcji..."
 
@@ -1171,3 +1176,11 @@ msgstr "Modyfikacja funkcji..."
 msgid "Perform calculations"
 msgstr "Przeprowadzenie obliczeń"
 
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "<i>e</i><sup>x</sup>"
+#~ msgstr "<i>e</i><sup>x</sup>"
+
+#~ msgid "x!"
+#~ msgstr "x!"

@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-28 11:36+0200\n"
+"POT-Creation-Date: 2003-11-26 07:09-0800\n"
 "PO-Revision-Date: 2003-10-01 21:22+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -300,6 +300,7 @@ msgid "Subtract"
 msgstr "Trừ"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -372,15 +373,16 @@ msgid "Add"
 msgstr "Cộng"
 
 #: gcalctool/calctool.c:427
-msgid "1/x"
-msgstr "1/x"
+msgid "1/<i>x</i>"
+msgstr ""
 
 #: gcalctool/calctool.c:428
 msgid "Reciprocal"
 msgstr ""
 
 #: gcalctool/calctool.c:437
-msgid "x<sup>2</sup>"
+#, fuzzy
+msgid "x<sup><i>2</i></sup>"
 msgstr "x<sup>2</sup>"
 
 #: gcalctool/calctool.c:438
@@ -592,7 +594,8 @@ msgid "Exponential"
 msgstr "Mũ"
 
 #: gcalctool/calctool.c:773
-msgid "e<sup>x</sup>"
+#, fuzzy
+msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup>x</sup>"
 
 #: gcalctool/calctool.c:774
@@ -604,7 +607,8 @@ msgid "E to the x"
 msgstr "E mũ x"
 
 #: gcalctool/calctool.c:783
-msgid "10<sup>x</sup>"
+#, fuzzy
+msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup>x</sup>"
 
 #: gcalctool/calctool.c:784
@@ -616,7 +620,8 @@ msgid "Ten to the x"
 msgstr "10 mũ x"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup>x</sup>"
+#, fuzzy
+msgid "y<sup><i>x</i></sup>"
 msgstr "y<sup>x</sup>"
 
 #: gcalctool/calctool.c:794
@@ -628,8 +633,8 @@ msgid "Y to the x"
 msgstr "Y mũ x"
 
 #: gcalctool/calctool.c:803
-msgid "x!"
-msgstr "x!"
+msgid "<i>x</i>!"
+msgstr ""
 
 #: gcalctool/calctool.c:804
 msgid "Factorial of displayed value"
@@ -667,7 +672,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Số thập lục phân E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1108
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1109
 msgid "F"
 msgstr "F"
 
@@ -731,7 +736,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Số thập lục phân B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1100
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1101
 msgid "C"
 msgstr "C"
 
@@ -779,74 +784,74 @@ msgstr "Xnor"
 msgid "Logical XNOR"
 msgstr "XNOR luận lý"
 
-#: gcalctool/calctool.c:1075
+#: gcalctool/calctool.c:1077
 msgid "kilometers per hour or miles per hour"
 msgstr "kilomét trên giờ hoặc dặm trên giờ"
 
-#: gcalctool/calctool.c:1076
+#: gcalctool/calctool.c:1078
 msgid "square root of 2"
 msgstr "căn bật 2"
 
-#: gcalctool/calctool.c:1077
+#: gcalctool/calctool.c:1079
 msgid "e"
 msgstr "e"
 
-#: gcalctool/calctool.c:1078
+#: gcalctool/calctool.c:1080
 msgid "pi"
 msgstr "pi"
 
-#: gcalctool/calctool.c:1079
+#: gcalctool/calctool.c:1081
 msgid "centimeters or inches"
 msgstr "centimét hoặc inch"
 
-#: gcalctool/calctool.c:1080
+#: gcalctool/calctool.c:1082
 msgid "degrees in a radian"
 msgstr "độ trên 1 radian"
 
-#: gcalctool/calctool.c:1081
+#: gcalctool/calctool.c:1083
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: gcalctool/calctool.c:1082
+#: gcalctool/calctool.c:1084
 msgid "grams or ounces"
 msgstr "gam hoặc ounce"
 
-#: gcalctool/calctool.c:1083
+#: gcalctool/calctool.c:1085
 msgid "kilojoules or British thermal units"
 msgstr "Kilo Jun hoặc đơn vị Anh"
 
-#: gcalctool/calctool.c:1084
+#: gcalctool/calctool.c:1086
 msgid "cubic centimeters or cubic inches"
 msgstr "centimét vuông hoặc inch vuông"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1095 gcalctool/display.c:198 gcalctool/functions.c:934
-#: gcalctool/functions.c:1062 gcalctool/functions.c:1101
-#: gcalctool/functions.c:1155 gcalctool/functions.c:1248
-#: gcalctool/functions.c:1249 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1097 gcalctool/display.c:199 gcalctool/functions.c:939
+#: gcalctool/functions.c:1067 gcalctool/functions.c:1106
+#: gcalctool/functions.c:1160 gcalctool/functions.c:1253
+#: gcalctool/functions.c:1254 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Lỗi"
 
-#: gcalctool/functions.c:1268
+#: gcalctool/functions.c:1273
 msgid "Numeric stack error"
 msgstr "Lỗi stack số"
 
-#: gcalctool/functions.c:1289
+#: gcalctool/functions.c:1294
 msgid "Operand stack error"
 msgstr "Lỗi stack toán tử"
 
-#: gcalctool/get.c:145
+#: gcalctool/get.c:154
 msgid "-a needs accuracy value"
 msgstr "-a cần giá trị chính xác"
 
-#: gcalctool/get.c:149 gcalctool/get.c:269
+#: gcalctool/get.c:158 gcalctool/get.c:280
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: độ chính xác nên nằm trong khoảng 0-9\n"
 
-#: gcalctool/get.c:174
+#: gcalctool/get.c:183
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s là đối số kế.\n"
@@ -855,31 +860,31 @@ msgstr "%s: %s là đối số kế.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: gcalctool/get.c:227
+#: gcalctool/get.c:238
 msgid "calculator"
 msgstr "máy tính"
 
-#: gcalctool/get.c:283
+#: gcalctool/get.c:294
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: cơ số phải là 2, 8, 10 hoặc 16\n"
 
-#: gcalctool/get.c:298
+#: gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: kiểu hiển thị không hợp lệ [%s]\n"
 
-#: gcalctool/get.c:313
+#: gcalctool/get.c:324
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: kiểu không hợp lệ [%s]\n"
 
-#: gcalctool/get.c:327
+#: gcalctool/get.c:338
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: kiểu trigonometric không hợp lệ [%s]\n"
 
-#: gcalctool/get.c:369
+#: gcalctool/get.c:380
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -888,18 +893,18 @@ msgstr ""
 "%s phiên bản %s\n"
 "\n"
 
-#: gcalctool/get.c:370
+#: gcalctool/get.c:381
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Cách dùng: %s: [-D] [-E] [-a độ chính xác] "
 
-#: gcalctool/get.c:371
+#: gcalctool/get.c:382
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:902 gcalctool/gtk.c:1039
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:903 gcalctool/gtk.c:1040
 msgid "R"
 msgstr "R"
 
@@ -1141,34 +1146,40 @@ msgstr "Giá trị"
 msgid "Description"
 msgstr "Mô tả"
 
-#: gcalctool/gtk.c:792 gcalctool/gtk.c:794 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:792 gcalctool/gtk.c:794
 msgid "Calculator"
 msgstr "Máy tính"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:974
+#: gcalctool/gtk.c:975
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:982
+#: gcalctool/gtk.c:983
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1030
+#: gcalctool/gtk.c:1031
 msgid "Memory Registers"
 msgstr "Bộ nhớ"
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Constants..."
 msgstr "Sửa hằng số..."
 
-#: gcalctool/gtk.c:1089
+#: gcalctool/gtk.c:1090
 msgid "Edit Functions..."
 msgstr "Sửa hàm..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Thực hiện tính toán"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "x!"
+#~ msgstr "x!"
 
 #~ msgid ""
 #~ "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"

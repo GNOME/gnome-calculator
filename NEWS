@@ -5,6 +5,17 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.3.22
+
+* Fixed bug 127862. The fix for bug #125625 introduced a potential 
+  out-of-order case for users who are rapid keyboard typers. This 
+  bug fix rectifies this with the unfortunate side-effect of no longer 
+  visual toggling the equivalent button to the keyboard character 
+  that the user	entered. This fix is still compatible with the way 
+  the accessibility infrastructure works though.
+
+----
+
 Overview of changes in gcalctool 4.3.21
 
 * Fixed bug 65806. For the "1/x", "x^2", "x!", "e^x", "10^x" and 
