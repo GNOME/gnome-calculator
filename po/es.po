@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.es\n"
-"POT-Creation-Date: 2003-03-25 19:41+0000\n"
-"PO-Revision-Date: 2003-03-23 23:51+0100\n"
+"POT-Creation-Date: 2003-04-02 12:03+0200\n"
+"PO-Revision-Date: 2003-04-02 21:01+0200\n"
 "Last-Translator: Francisco Javier Fernandez <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -444,16 +444,16 @@ msgid "<"
 msgstr "<"
 
 #: gcalctool/calctool.c:607
-msgid "Shift displayed value 0-15 places to the left"
-msgstr "Desplazar el valor mostrado 0-15 lugares a la izquierda"
+msgid "Shift displayed value 1-15 places to the left"
+msgstr "Desplazar el valor mostrado 1-15 lugares a la izquierda"
 
 #: gcalctool/calctool.c:615
 msgid ">"
 msgstr ">"
 
 #: gcalctool/calctool.c:616
-msgid "Shift displayed value 0-15 places to the right"
-msgstr "Desplazar el valor mostrado  0-15 lugares a la derecha"
+msgid "Shift displayed value 1-15 places to the right"
+msgstr "Desplazar el valor mostrado  1-15 lugares a la derecha"
 
 #: gcalctool/calctool.c:624
 msgid "&amp;16"
@@ -548,8 +548,8 @@ msgid "x!"
 msgstr "x!"
 
 #: gcalctool/calctool.c:735
-msgid "factorial of displayed value"
-msgstr "factorial del número mostrado"
+msgid "Factorial of displayed value"
+msgstr "Factorial del valor mostrado"
 
 #: gcalctool/calctool.c:743
 msgid "Rand"
@@ -575,7 +575,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Dígito hexadecimal E"
 
-#: gcalctool/calctool.c:772 gcalctool/gtk.c:1132
+#: gcalctool/calctool.c:772 gcalctool/gtk.c:1144
 msgid "F"
 msgstr "F"
 
@@ -639,7 +639,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Dígito hexadecimal B"
 
-#: gcalctool/calctool.c:846 gcalctool/gtk.c:1125
+#: gcalctool/calctool.c:846 gcalctool/gtk.c:1137
 msgid "C"
 msgstr "C"
 
@@ -805,7 +805,9 @@ msgstr "Uso: %s: [-D] [-E] [-a precisión] "
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:934 gcalctool/gtk.c:1064
+#. translators: R is the short form of register used inter alia
+#. in popup menus
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:946 gcalctool/gtk.c:1076
 msgid "R"
 msgstr "R"
 
@@ -858,14 +860,12 @@ msgid "/View/sep1"
 msgstr "/Vista/sep1"
 
 #: gcalctool/gtk.c:209
-#, fuzzy
 msgid "/View/Show _Trailing Zeroes"
-msgstr "/_Eliminar los ceros"
+msgstr "/Ver/Mostrar los ceros exceden_tes"
 
 #: gcalctool/gtk.c:210
-#, fuzzy
 msgid "/View/sep2"
-msgstr "/Vista/sep1"
+msgstr "/Ver/sep2"
 
 #: gcalctool/gtk.c:211
 msgid "/View/_Memory Registers"
@@ -888,7 +888,7 @@ msgid "/0 radix places"
 msgstr "/0 lugares raíces"
 
 #: gcalctool/gtk.c:220
-msgid "/1 radix places"
+msgid "/1 radix place"
 msgstr "/1 lugar raíz"
 
 #: gcalctool/gtk.c:221
@@ -928,9 +928,8 @@ msgid "/sep1"
 msgstr "/sep1"
 
 #: gcalctool/gtk.c:230
-#, fuzzy
 msgid "/Show _Trailing Zeroes"
-msgstr "/_Eliminar los ceros"
+msgstr "/Mostrar los ceros exceden_tes"
 
 #: gcalctool/gtk.c:234 gcalctool/gtk.c:252
 msgid "/1 place"
@@ -1042,36 +1041,36 @@ msgstr "Valor"
 msgid "Description"
 msgstr "Descripción"
 
-#: gcalctool/gtk.c:831 gcalctool/gtk.c:833
+#: gcalctool/gtk.c:838 gcalctool/gtk.c:840 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Calculadora"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1001
+#: gcalctool/gtk.c:1013
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1003
+#: gcalctool/gtk.c:1015
 msgid "Set inverse option for trigonometric functions"
 msgstr "Establecer la opción inversa para las funciones trigonométricas"
 
-#: gcalctool/gtk.c:1009
+#: gcalctool/gtk.c:1021
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1011
+#: gcalctool/gtk.c:1023
 msgid "Set hyperbolic option for trigonometric functions"
 msgstr "Establecer la opción hiperbólica para las funciones trigonométricas"
 
-#: gcalctool/gtk.c:1055
+#: gcalctool/gtk.c:1067
 msgid "Memory Registers"
 msgstr "Registros de memoria"
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Constants..."
 msgstr "Editar constantes..."
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Functions..."
 msgstr "Editar funciones..."
 
@@ -1119,8 +1118,7 @@ msgstr "*** B DEMASIADO GRANDE EN LA LLAMADA A MPCHK ***\n"
 
 #: gcalctool/mp.c:886
 msgid "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL "
-msgstr ""
-"*** MXR DEMASIADO PEQUEÑO O NO ESTABLECIDO A DIM(R) ANTES DE LA LLAMADA "
+msgstr "*** MXR DEMASIADO PEQUEÑO O NO ESTABLECIDO A DIM(R) ANTES DE LA LLAMADA "
 
 #: gcalctool/mp.c:887
 msgid "TO AN MP ROUTINE ***\n"
@@ -1312,6 +1310,10 @@ msgstr "*** ABS(X) .GT. 1 EN LA LLAMADA A MPSIN1 ***\n"
 #: gcalctool/mp.c:4194
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
 msgstr "*** X NEGATIVA EN LA LLAMADA A LA SUBRUTINA MPSQRT ***\n"
+
+#: gcalctool.desktop.in.h:2
+msgid "Perform calculations"
+msgstr "Realizar cálculos"
 
 #~ msgid ""
 #~ "Numeric 7\n"
@@ -2744,3 +2746,4 @@ msgstr "*** X NEGATIVA EN LA LLAMADA A LA SUBRUTINA MPSQRT ***\n"
 
 #~ msgid "Function no:"
 #~ msgstr "Función no:"
+
