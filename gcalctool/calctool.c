@@ -368,7 +368,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("."),
     N_("Numeric point"),
     { 0,          0,              0,             0 },
-    { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, 0 },
+    { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 },
     '.',
     M_NONE,
     do_point
