@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool.HEAD\n"
+"Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-20 14:32+0200\n"
-"PO-Revision-Date: 2004-07-20 16:43+0200\n"
+"POT-Creation-Date: 2004-07-27 03:20+0200\n"
+"PO-Revision-Date: 2004-07-27 12:09+0200\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -559,7 +559,7 @@ msgstr "vlerë 16-bit pa shenjën e vlerës së shfaqur (])"
 msgid "16 bit unsigned integer"
 msgstr "vlerë 16-bit pa shenjë"
 
-#: gcalctool/calctool.c:794
+#: gcalctool/calctool.c:794 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
 
@@ -575,7 +575,7 @@ msgstr "vlerë 32-bit pa shenjën e vlerës së shfaqur ([)"
 msgid "32 bit unsigned integer"
 msgstr "vlerë 16-bit pa shenjë"
 
-#: gcalctool/calctool.c:806
+#: gcalctool/calctool.c:806 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
 
@@ -715,7 +715,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Shifra eksadecimale E"
 
-#: gcalctool/calctool.c:982 gcalctool/gtk.c:1438
+#: gcalctool/calctool.c:982 gcalctool/gtk.c:1437
 msgid "F"
 msgstr "F"
 
@@ -779,7 +779,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Shifra eksadecimale B"
 
-#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1430
+#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1429
 msgid "C"
 msgstr "C"
 
@@ -859,7 +859,7 @@ msgstr "rrënja katrore e 2"
 msgid "e"
 msgstr "e"
 
-#: gcalctool/calctool.c:1247
+#: gcalctool/calctool.c:1247 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
 
@@ -891,39 +891,40 @@ msgstr "Faktori i konvertimit nga centimetër kubik në inch kubik"
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
 #: gcalctool/calctool.c:1266 gcalctool/display.c:265 gcalctool/graphics.c:97
-#: gcalctool/mp.c:1987
+#: gcalctool/mp.c:1987 gcalctool/mpmath.c:382 gcalctool/mpmath.c:421
+#: gcalctool/mpmath.c:476
 msgid "Error"
 msgstr "Gabim"
 
-#: gcalctool/functions.c:438
+#: gcalctool/functions.c:435
 msgid "Previous expression"
 msgstr "Shprehja paraardhëse"
 
-#: gcalctool/functions.c:508
+#: gcalctool/functions.c:523
 msgid "Malformed expression"
 msgstr "Shprehje e keqformuar"
 
-#: gcalctool/functions.c:912
+#: gcalctool/functions.c:927
 msgid "Malformed function"
 msgstr "Funksion i keqformuar"
 
-#: gcalctool/functions.c:1055
+#: gcalctool/functions.c:1070
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Display i pastruar, prefiksi pa një operues nuk lejohet"
 
-#: gcalctool/functions.c:1079
+#: gcalctool/functions.c:1094
 msgid "Malformed parenthesis expression"
 msgstr "Shprehje me paranteza të keqformuara"
 
-#: gcalctool/functions.c:1102 gcalctool/functions.c:1349
+#: gcalctool/functions.c:1117 gcalctool/functions.c:1364
 msgid "No sane value to store"
 msgstr "Asnjë vlerë e dobishme për t'u regjistruar"
 
-#: gcalctool/functions.c:1397
+#: gcalctool/functions.c:1412
 msgid "Numeric stack error"
 msgstr "Gabim stack numerik"
 
-#: gcalctool/functions.c:1418
+#: gcalctool/functions.c:1433
 msgid "Operand stack error"
 msgstr "Gabim në stack e operimeve"
 
@@ -994,333 +995,493 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1230 gcalctool/gtk.c:1363
+#: gcalctool/graphics.c:61 gcalctool/gtk.c:1229 gcalctool/gtk.c:1362
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:186
+#: gcalctool/gtk.c:185
 msgid "_Calculator"
 msgstr "_Kalkulator (llogaritës)"
 
-#: gcalctool/gtk.c:187
+#: gcalctool/gtk.c:186
 msgid "_Edit"
 msgstr "_Ndrysho"
 
-#: gcalctool/gtk.c:188
+#: gcalctool/gtk.c:187
 msgid "_View"
 msgstr "_Shfaq"
 
-#: gcalctool/gtk.c:189
+#: gcalctool/gtk.c:188
 msgid "_Help"
 msgstr "_Ndihmë"
 
-#: gcalctool/gtk.c:191
+#: gcalctool/gtk.c:190
 msgid "_Quit"
 msgstr "_Dil"
 
-#: gcalctool/gtk.c:192
+#: gcalctool/gtk.c:191
 msgid "Quit the calculator"
 msgstr "Mbylle llogaritësin"
 
-#: gcalctool/gtk.c:194
+#: gcalctool/gtk.c:193
 msgid "_Copy"
 msgstr "_Kopjo"
 
-#: gcalctool/gtk.c:195
+#: gcalctool/gtk.c:194
 msgid "Copy selection"
 msgstr "Kopjo të zgjedhurin"
 
-#: gcalctool/gtk.c:196
+#: gcalctool/gtk.c:195
 msgid "_Paste"
 msgstr "_Ngjite"
 
-#: gcalctool/gtk.c:197
+#: gcalctool/gtk.c:196
 msgid "Paste selection"
 msgstr "Ngjite të zgjedhurin"
 
-#: gcalctool/gtk.c:198
+#: gcalctool/gtk.c:197
 msgid "_Insert ASCII Value..."
 msgstr "_Shto një vlerë ASCII..."
 
-#: gcalctool/gtk.c:199
+#: gcalctool/gtk.c:198
 msgid "Insert ASCII value"
 msgstr "Shto një vlerë ASCII"
 
-#: gcalctool/gtk.c:201
+#: gcalctool/gtk.c:200
 msgid "_Contents"
 msgstr "_Përmbajtja"
 
-#: gcalctool/gtk.c:202
+#: gcalctool/gtk.c:201
 msgid "Show help contents"
 msgstr "Shiko përmbajtjen e ndihmës"
 
-#: gcalctool/gtk.c:203
+#: gcalctool/gtk.c:202
 msgid "_About"
 msgstr "_Informacione"
 
-#: gcalctool/gtk.c:204
+#: gcalctool/gtk.c:203
 msgid "Show about help"
 msgstr "Shfaq informacionet mbi ndihmën"
 
-#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
-#: gcalctool/gtk.c:238
+#: gcalctool/gtk.c:205 gcalctool/gtk.c:206 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:237
 msgid "1 place"
 msgstr "1 vend"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
-#: gcalctool/gtk.c:240
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:208 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:239
 msgid "2 places"
 msgstr "2 vënde"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
-#: gcalctool/gtk.c:242
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:210 gcalctool/gtk.c:240
+#: gcalctool/gtk.c:241
 msgid "3 places"
 msgstr "3 vënde"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
-#: gcalctool/gtk.c:244
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:212 gcalctool/gtk.c:242
+#: gcalctool/gtk.c:243
 msgid "4 places"
 msgstr "4 vënde"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
-#: gcalctool/gtk.c:246
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:214 gcalctool/gtk.c:244
+#: gcalctool/gtk.c:245
 msgid "5 places"
 msgstr "5 vënde"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
-#: gcalctool/gtk.c:248
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:216 gcalctool/gtk.c:246
+#: gcalctool/gtk.c:247
 msgid "6 places"
 msgstr "6 vënde"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
-#: gcalctool/gtk.c:250
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:218 gcalctool/gtk.c:248
+#: gcalctool/gtk.c:249
 msgid "7 places"
 msgstr "7 vënde"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
-#: gcalctool/gtk.c:252
+#: gcalctool/gtk.c:219 gcalctool/gtk.c:220 gcalctool/gtk.c:250
+#: gcalctool/gtk.c:251
 msgid "8 places"
 msgstr "8 vënde"
 
-#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
-#: gcalctool/gtk.c:254
+#: gcalctool/gtk.c:221 gcalctool/gtk.c:222 gcalctool/gtk.c:252
+#: gcalctool/gtk.c:253
 msgid "9 places"
 msgstr "9 vënde"
 
-#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
-#: gcalctool/gtk.c:256
+#: gcalctool/gtk.c:223 gcalctool/gtk.c:224 gcalctool/gtk.c:254
+#: gcalctool/gtk.c:255
 msgid "10 places"
 msgstr "10 vënde"
 
-#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
-#: gcalctool/gtk.c:258
+#: gcalctool/gtk.c:225 gcalctool/gtk.c:226 gcalctool/gtk.c:256
+#: gcalctool/gtk.c:257
 msgid "11 places"
 msgstr "11 vënde"
 
-#: gcalctool/gtk.c:228 gcalctool/gtk.c:229 gcalctool/gtk.c:259
-#: gcalctool/gtk.c:260
+#: gcalctool/gtk.c:227 gcalctool/gtk.c:228 gcalctool/gtk.c:258
+#: gcalctool/gtk.c:259
 msgid "12 places"
 msgstr "12 vënde"
 
-#: gcalctool/gtk.c:230 gcalctool/gtk.c:231 gcalctool/gtk.c:261
-#: gcalctool/gtk.c:262
+#: gcalctool/gtk.c:229 gcalctool/gtk.c:230 gcalctool/gtk.c:260
+#: gcalctool/gtk.c:261
 msgid "13 places"
 msgstr "13 vënde"
 
-#: gcalctool/gtk.c:232 gcalctool/gtk.c:233 gcalctool/gtk.c:263
-#: gcalctool/gtk.c:264
+#: gcalctool/gtk.c:231 gcalctool/gtk.c:232 gcalctool/gtk.c:262
+#: gcalctool/gtk.c:263
 msgid "14 places"
 msgstr "14 vënde"
 
-#: gcalctool/gtk.c:234 gcalctool/gtk.c:235 gcalctool/gtk.c:265
-#: gcalctool/gtk.c:266
+#: gcalctool/gtk.c:233 gcalctool/gtk.c:234 gcalctool/gtk.c:264
+#: gcalctool/gtk.c:265
 msgid "15 places"
 msgstr "15 vënde"
 
-#: gcalctool/gtk.c:271 gcalctool/gtk.c:277
+#: gcalctool/gtk.c:270 gcalctool/gtk.c:276
 msgid "Show _Trailing Zeroes"
 msgstr "Shfaq Zerot e _Fillimit"
 
-#: gcalctool/gtk.c:272 gcalctool/gtk.c:278
+#: gcalctool/gtk.c:271 gcalctool/gtk.c:277
 msgid "Show trailing zeroes"
 msgstr "Shfaq zerot e fillimit"
 
-#: gcalctool/gtk.c:273
+#: gcalctool/gtk.c:272
 msgid "Show T_housands Separator"
 msgstr "Shfaq Ndarësin D_hjetor"
 
-#: gcalctool/gtk.c:274
+#: gcalctool/gtk.c:273
 msgid "Show thousands separator"
 msgstr "Shfaq ndarësin dhjetor"
 
-#: gcalctool/gtk.c:275
+#: gcalctool/gtk.c:274
 msgid "_Memory Registers"
 msgstr "_Regjistrat e kujtesës"
 
-#: gcalctool/gtk.c:276
+#: gcalctool/gtk.c:275
 msgid "Show memory registers"
 msgstr "Shfaq regjistrat e kujtesës"
 
-#: gcalctool/gtk.c:279
+#: gcalctool/gtk.c:278
 msgid "_Use Arithmetic Precedence"
 msgstr "_Përdor paraprirjen aritmetikore"
 
-#: gcalctool/gtk.c:280
+#: gcalctool/gtk.c:279
 msgid "Use Arithmetic Precedence"
 msgstr "Përdor paraprirjen aritmetikore"
 
-#: gcalctool/gtk.c:285 gcalctool/gtk.c:286
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
 msgid "0 significant places"
 msgstr "0 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:287 gcalctool/gtk.c:288
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
 msgid "1 significant place"
 msgstr "1 shifër sinjifikuese"
 
-#: gcalctool/gtk.c:289 gcalctool/gtk.c:290
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
 msgid "2 significant places"
 msgstr "2 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:291 gcalctool/gtk.c:292
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
 msgid "3 significant places"
 msgstr "3 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:293 gcalctool/gtk.c:294
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
 msgid "4 significant places"
 msgstr "4 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:295 gcalctool/gtk.c:296
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
 msgid "5 significant places"
 msgstr "5 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:297 gcalctool/gtk.c:298
+#: gcalctool/gtk.c:296 gcalctool/gtk.c:297
 msgid "6 significant places"
 msgstr "6 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:299 gcalctool/gtk.c:300
+#: gcalctool/gtk.c:298 gcalctool/gtk.c:299
 msgid "7 significant places"
 msgstr "7 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:301 gcalctool/gtk.c:302
+#: gcalctool/gtk.c:300 gcalctool/gtk.c:301
 msgid "8 significant places"
 msgstr "8 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:303 gcalctool/gtk.c:304
+#: gcalctool/gtk.c:302 gcalctool/gtk.c:303
 msgid "9 significant places"
 msgstr "9 shifra sinjifikuese"
 
-#: gcalctool/gtk.c:309
+#: gcalctool/gtk.c:308
 msgid "_Basic mode"
 msgstr "Modaliteti _Bazë"
 
-#: gcalctool/gtk.c:310
+#: gcalctool/gtk.c:309
 msgid "Basic mode"
 msgstr "Modaliteti bazë"
 
-#: gcalctool/gtk.c:311
+#: gcalctool/gtk.c:310
 msgid "_Financial mode"
 msgstr "Modaliteti _Financë"
 
-#: gcalctool/gtk.c:312
+#: gcalctool/gtk.c:311
 msgid "Financial mode"
 msgstr "Modaliteti financë"
 
-#: gcalctool/gtk.c:313
+#: gcalctool/gtk.c:312
 msgid "_Scientific mode"
 msgstr "Modaliteti _Shkencor"
 
-#: gcalctool/gtk.c:314
+#: gcalctool/gtk.c:313
 msgid "Scientific mode"
 msgstr "Modaliteti shkencor"
 
-#: gcalctool/gtk.c:470
+#: gcalctool/gtk.c:469
 msgid "translator_credits"
 msgstr "Laurent Dhima <laurenti@alblinux.net>"
 
-#: gcalctool/gtk.c:472
+#: gcalctool/gtk.c:471
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:475
+#: gcalctool/gtk.c:474
 msgid "Calculator with financial and scientific modes."
 msgstr "Makinë llogaritëse me modalitete finance dhe shkencore."
 
-#: gcalctool/gtk.c:773
+#: gcalctool/gtk.c:772
 msgid "Insert ASCII Value"
 msgstr "Shto vlerën ASCII"
 
-#: gcalctool/gtk.c:788
+#: gcalctool/gtk.c:787
 msgid "Ch_aracter:"
 msgstr "Gërm_a:"
 
-#: gcalctool/gtk.c:813
+#: gcalctool/gtk.c:812
 msgid "_Insert"
 msgstr "_Shkruaj"
 
-#: gcalctool/gtk.c:892
+#: gcalctool/gtk.c:891
 msgid "Edit Constants"
 msgstr "Ndrysho konstantet"
 
-#: gcalctool/gtk.c:892
+#: gcalctool/gtk.c:891
 msgid "Edit Functions"
 msgstr "Ndrysho funksionet"
 
-#: gcalctool/gtk.c:916
+#: gcalctool/gtk.c:915
 msgid "Note:"
 msgstr "Shënim:"
 
-#: gcalctool/gtk.c:917
+#: gcalctool/gtk.c:916
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Të gjitha vlerat konstante janë të specifikuara me bazë numerike dhjetore."
 
-#: gcalctool/gtk.c:927
+#: gcalctool/gtk.c:926
 msgid "Click a _value or description to edit it:"
 msgstr "Kliko tek _vlera apo përshkrimi për t'a ndryshuar:"
 
-#: gcalctool/gtk.c:950
+#: gcalctool/gtk.c:949
 msgid "No."
 msgstr "Jo."
 
-#: gcalctool/gtk.c:952
+#: gcalctool/gtk.c:951
 msgid "Value"
 msgstr "Vlera"
 
-#: gcalctool/gtk.c:954
+#: gcalctool/gtk.c:953
 msgid "Description"
 msgstr "Përshkrimi"
 
-#: gcalctool/gtk.c:1053 gcalctool/gtk.c:1055 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1052 gcalctool/gtk.c:1054 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulator (llogaritës)"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1298
+#: gcalctool/gtk.c:1297
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1306
+#: gcalctool/gtk.c:1305
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1354
+#: gcalctool/gtk.c:1353
 msgid "Memory Registers"
 msgstr "Regjistrat e kujtesës"
 
-#: gcalctool/gtk.c:1419
+#: gcalctool/gtk.c:1418
 msgid "Edit Constants..."
 msgstr "Ndrysho konstantet..."
 
-#: gcalctool/gtk.c:1419
+#: gcalctool/gtk.c:1418
 msgid "Edit Functions..."
 msgstr "Ndrysho funksionet..."
 
-#: gcalctool/gtk.c:2017
+#: gcalctool/gtk.c:2016
 msgid "Activated no operator precedence mode"
 msgstr "Është aktivuar modaliteti pa paraprirjen me operues"
 
-#: gcalctool/gtk.c:2026
+#: gcalctool/gtk.c:2025
 msgid "Activated expression mode with operator precedence"
 msgstr "Është aktivuar modaliteti i shprehjes me paraprirjen me operues"
+
+#: gcalctool/mpmath.c:218
+msgid "Error, cannot calculate cosine"
+msgstr "Gabim, nuk arrij të llogaris kosinusin"
+
+#: gcalctool/syntax_translation.c:36
+msgid "abs"
+msgstr "abs"
+
+#: gcalctool/syntax_translation.c:37
+msgid "acosh"
+msgstr "acosh"
+
+#: gcalctool/syntax_translation.c:38
+msgid "acos"
+msgstr "acos"
+
+#: gcalctool/syntax_translation.c:39
+msgid "and"
+msgstr "and"
+
+#: gcalctool/syntax_translation.c:40
+msgid "ans"
+msgstr "ans"
+
+#: gcalctool/syntax_translation.c:41
+msgid "asinh"
+msgstr "asinh"
+
+#: gcalctool/syntax_translation.c:42
+msgid "asin"
+msgstr "asin"
+
+#: gcalctool/syntax_translation.c:43
+msgid "atanh"
+msgstr "atanh"
+
+#: gcalctool/syntax_translation.c:44
+msgid "atan"
+msgstr "atan"
+
+#: gcalctool/syntax_translation.c:45
+msgid "cbrt"
+msgstr "cbrt"
+
+#: gcalctool/syntax_translation.c:46
+msgid "chs"
+msgstr "chs"
+
+#: gcalctool/syntax_translation.c:47
+msgid "clr"
+msgstr "clr"
+
+#: gcalctool/syntax_translation.c:48
+msgid "cosh"
+msgstr "cosh"
+
+#: gcalctool/syntax_translation.c:49
+msgid "cos"
+msgstr "cos"
+
+#: gcalctool/syntax_translation.c:50
+msgid "ddb"
+msgstr "ddb"
+
+#: gcalctool/syntax_translation.c:51
+msgid "exp"
+msgstr "exp"
+
+#: gcalctool/syntax_translation.c:52
+msgid "frac"
+msgstr "frac"
+
+#: gcalctool/syntax_translation.c:53
+msgid "fv"
+msgstr "fv"
+
+#: gcalctool/syntax_translation.c:54
+msgid "int"
+msgstr "int"
+
+#: gcalctool/syntax_translation.c:55
+msgid "ln"
+msgstr "ln"
+
+#: gcalctool/syntax_translation.c:56
+msgid "log"
+msgstr "log"
+
+#: gcalctool/syntax_translation.c:57
+msgid "not"
+msgstr "not"
+
+#: gcalctool/syntax_translation.c:58
+msgid "or"
+msgstr "or"
+
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#: gcalctool/syntax_translation.c:61
+msgid "pv"
+msgstr "pv"
+
+#: gcalctool/syntax_translation.c:62
+msgid "rand"
+msgstr "rand"
+
+#: gcalctool/syntax_translation.c:63
+msgid "rate"
+msgstr "taksa"
+
+#: gcalctool/syntax_translation.c:64
+msgid "rcl"
+msgstr "rcl"
+
+#: gcalctool/syntax_translation.c:65
+msgid "sinh"
+msgstr "sinh"
+
+#: gcalctool/syntax_translation.c:66
+msgid "sin"
+msgstr "sin"
+
+#: gcalctool/syntax_translation.c:67
+msgid "sln"
+msgstr "sln"
+
+#: gcalctool/syntax_translation.c:68
+msgid "sqrt"
+msgstr "sqrt"
+
+#: gcalctool/syntax_translation.c:69
+msgid "sto"
+msgstr "mem"
+
+#: gcalctool/syntax_translation.c:70
+msgid "syd"
+msgstr "syd"
+
+#: gcalctool/syntax_translation.c:71
+msgid "tanh"
+msgstr "tanh"
+
+#: gcalctool/syntax_translation.c:72
+msgid "tan"
+msgstr "tan"
+
+#: gcalctool/syntax_translation.c:73
+msgid "term"
+msgstr "term"
+
+#: gcalctool/syntax_translation.c:76
+msgid "xnor"
+msgstr "xnor"
+
+#: gcalctool/syntax_translation.c:77
+msgid "xor"
+msgstr "xor"
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
