@@ -170,6 +170,7 @@ static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(gpointer, int, GtkWidget *);
+static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
@@ -1592,7 +1593,8 @@ menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 
 /*ARGSUSED*/
 static void 
-menu_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer data)
+menu_button_button_press_cb(GtkWidget *widget, 
+                            GdkEventButton *event, gpointer data)
 {
     struct button *n;
     GtkWidget *menu;
@@ -1605,6 +1607,39 @@ menu_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer data)
     menu = create_menu(n->mtype, n);
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
                    event->button, event->time);
+}
+
+
+static gboolean
+menu_button_key_press_cb(GtkWidget *widget, 
+                         GdkEventKey *event, gpointer data)
+{
+    struct button *n;
+    GdkPoint loc;
+    GtkWidget *menu;
+
+    if (event->keyval == GDK_space) {
+        n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+        menu = create_menu(n->mtype, n);
+        gdk_window_get_origin(widget->window, &loc.x, &loc.y);
+        loc.x += widget->allocation.x;
+        loc.y += widget->allocation.y;
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
+                       (gpointer) &loc, event->keyval, event->time);
+    }
+
+    return(FALSE);
+}
+
+
+static void
+menu_pos_func(GtkMenu *menu, gint *x, gint *y,
+              gboolean *push_in, gpointer user_data)
+{
+    GdkPoint *loc = (GdkPoint *) user_data;
+
+    *x = loc->x;
+    *y = loc->y;
 }
 
 
@@ -1624,7 +1659,9 @@ make_menu_button(gchar *label_text, int n)
  
     gtk_widget_set_events(button, GDK_BUTTON_PRESS_MASK);
     g_signal_connect(G_OBJECT(button), "button-press-event",
-                     G_CALLBACK(menu_button_cb), (gpointer) n);
+                     G_CALLBACK(menu_button_button_press_cb), (gpointer) n);
+    g_signal_connect(G_OBJECT(button), "key-press-event",
+                     G_CALLBACK(menu_button_key_press_cb), (gpointer) n);
  
     gtk_widget_show_all(button);
  
