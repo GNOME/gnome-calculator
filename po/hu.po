@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-28 14:18+0200\n"
+"POT-Creation-Date: 2004-09-24 07:32-0700\n"
 "PO-Revision-Date: 2004-07-28 15:44+0200\n"
 "Last-Translator: Laszlo Dvornik <dvornik@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
@@ -600,6 +600,7 @@ msgstr "A megjelenített érték 16 bites előjel nélküli egész formájában 
 msgid "16 bit unsigned integer"
 msgstr "16 bites előjel nélküli egész"
 
+#. Payment period
 #: gcalctool/calctool.c:777 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
@@ -616,6 +617,7 @@ msgstr "A megjelenített érték 32 bites előjel nélküli egész formájában 
 msgid "32 bit unsigned integer"
 msgstr "32 bites előjel nélküli egész"
 
+#. 16-bit unsigned integer value
 #: gcalctool/calctool.c:789 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
@@ -756,7 +758,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "E hexadecimális számjegy"
 
-#: gcalctool/calctool.c:965 gcalctool/gtk.c:1401
+#: gcalctool/calctool.c:965 gcalctool/gtk.c:1491
 msgid "F"
 msgstr "F"
 
@@ -820,7 +822,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "B hexadecimális számjegy"
 
-#: gcalctool/calctool.c:1062 gcalctool/gtk.c:1393
+#: gcalctool/calctool.c:1062 gcalctool/gtk.c:1483
 msgid "C"
 msgstr "C"
 
@@ -900,6 +902,7 @@ msgstr "2 négyzetgyöke"
 msgid "e"
 msgstr "e"
 
+#. Bitwise OR
 #: gcalctool/calctool.c:1230 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
@@ -951,35 +954,35 @@ msgstr "Köbcenti -> köbhüvelyk konverziótényező"
 msgid "Error"
 msgstr "Hiba"
 
-#: gcalctool/functions.c:319
+#: gcalctool/functions.c:321
 msgid "Previous expression"
 msgstr "Előző kifejezés"
 
-#: gcalctool/functions.c:407
+#: gcalctool/functions.c:409
 msgid "Malformed expression"
 msgstr "Hibás kifejezés"
 
-#: gcalctool/functions.c:816
+#: gcalctool/functions.c:818
 msgid "Malformed function"
 msgstr "Hibás függvény"
 
-#: gcalctool/functions.c:959
+#: gcalctool/functions.c:961
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr ""
 
-#: gcalctool/functions.c:983
+#: gcalctool/functions.c:985
 msgid "Malformed parenthesis expression"
 msgstr "Hibás zárójelhasználat"
 
-#: gcalctool/functions.c:1006 gcalctool/functions.c:1252
+#: gcalctool/functions.c:1008 gcalctool/functions.c:1256
 msgid "No sane value to store"
 msgstr ""
 
-#: gcalctool/functions.c:1300
+#: gcalctool/functions.c:1304
 msgid "Numeric stack error"
 msgstr "Számveremhiba"
 
-#: gcalctool/functions.c:1321
+#: gcalctool/functions.c:1325
 msgid "Operand stack error"
 msgstr "Operandusverem-hiba"
 
@@ -988,8 +991,8 @@ msgid "-a needs accuracy value"
 msgstr "-a kapcsoló után pontosságértéket kell írni"
 
 #: gcalctool/get.c:157 gcalctool/get.c:311
-#, c-format
-msgid "%s: accuracy should be in the range 0-9\n"
+#, fuzzy, c-format
+msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: a pontosság 0-9 tartományba eshet\n"
 
 #: gcalctool/get.c:182
@@ -1054,294 +1057,352 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1192 gcalctool/gtk.c:1325
+#: gcalctool/graphics.c:61 gcalctool/gtk.c:1272 gcalctool/gtk.c:1405
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:185
+#: gcalctool/gtk.c:192
 msgid "_Calculator"
 msgstr "Számoló_gép"
 
-#: gcalctool/gtk.c:186
+#: gcalctool/gtk.c:193
 msgid "_Edit"
 msgstr "S_zerkesztés"
 
-#: gcalctool/gtk.c:187
+#: gcalctool/gtk.c:194
 msgid "_View"
 msgstr "_Nézet"
 
-#: gcalctool/gtk.c:188
+#: gcalctool/gtk.c:195
 msgid "_Help"
 msgstr "_Súgó"
 
-#: gcalctool/gtk.c:190
+#: gcalctool/gtk.c:197
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: gcalctool/gtk.c:191
+#: gcalctool/gtk.c:198
 msgid "Quit the calculator"
 msgstr "Kilépés a számológépből"
 
-#: gcalctool/gtk.c:193
+#: gcalctool/gtk.c:200
 msgid "_Copy"
 msgstr "_Másolás"
 
-#: gcalctool/gtk.c:194
+#: gcalctool/gtk.c:201
 msgid "Copy selection"
 msgstr "Kijelölés másolása"
 
-#: gcalctool/gtk.c:195
+#: gcalctool/gtk.c:202
 msgid "_Paste"
 msgstr "_Beillesztés"
 
-#: gcalctool/gtk.c:196
+#: gcalctool/gtk.c:203
 msgid "Paste selection"
 msgstr "Kijelölés beillesztése"
 
-#: gcalctool/gtk.c:197
+#: gcalctool/gtk.c:204
 msgid "_Insert ASCII Value..."
 msgstr "ASCII-érték _beszúrása..."
 
-#: gcalctool/gtk.c:198
+#: gcalctool/gtk.c:205
 msgid "Insert ASCII value"
 msgstr "ASCII-érték beszúrása"
 
-#: gcalctool/gtk.c:200
+#: gcalctool/gtk.c:207
 msgid "_Contents"
 msgstr "_Tartalom"
 
-#: gcalctool/gtk.c:201
+#: gcalctool/gtk.c:208
 msgid "Show help contents"
 msgstr "Súgótartalom megjelenítése"
 
-#: gcalctool/gtk.c:202
+#: gcalctool/gtk.c:209
 msgid "_About"
 msgstr "_Névjegy"
 
-#: gcalctool/gtk.c:203
+#: gcalctool/gtk.c:210
 msgid "Show about help"
 msgstr "Névjegy megjelenítése"
 
-#: gcalctool/gtk.c:205 gcalctool/gtk.c:206 gcalctool/gtk.c:236
-#: gcalctool/gtk.c:237
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
 msgid "1 place"
 msgstr "1 jegy"
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:208 gcalctool/gtk.c:238
-#: gcalctool/gtk.c:239
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
 msgid "2 places"
 msgstr "2 jegy"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:210 gcalctool/gtk.c:240
-#: gcalctool/gtk.c:241
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
 msgid "3 places"
 msgstr "3 jegy"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:212 gcalctool/gtk.c:242
-#: gcalctool/gtk.c:243
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
 msgid "4 places"
 msgstr "4 jegy"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:214 gcalctool/gtk.c:244
-#: gcalctool/gtk.c:245
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
 msgid "5 places"
 msgstr "5 jegy"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:216 gcalctool/gtk.c:246
-#: gcalctool/gtk.c:247
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
 msgid "6 places"
 msgstr "6 jegy"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:218 gcalctool/gtk.c:248
-#: gcalctool/gtk.c:249
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
 msgid "7 places"
 msgstr "7 jegy"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:220 gcalctool/gtk.c:250
-#: gcalctool/gtk.c:251
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
 msgid "8 places"
 msgstr "8 jegy"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:222 gcalctool/gtk.c:252
-#: gcalctool/gtk.c:253
+#: gcalctool/gtk.c:228 gcalctool/gtk.c:229 gcalctool/gtk.c:259
+#: gcalctool/gtk.c:260
 msgid "9 places"
 msgstr "9 jegy"
 
-#: gcalctool/gtk.c:223 gcalctool/gtk.c:224 gcalctool/gtk.c:254
-#: gcalctool/gtk.c:255
+#: gcalctool/gtk.c:230 gcalctool/gtk.c:231 gcalctool/gtk.c:261
+#: gcalctool/gtk.c:262
 msgid "10 places"
 msgstr "10 jegy"
 
-#: gcalctool/gtk.c:225 gcalctool/gtk.c:226 gcalctool/gtk.c:256
-#: gcalctool/gtk.c:257
+#: gcalctool/gtk.c:232 gcalctool/gtk.c:233 gcalctool/gtk.c:263
+#: gcalctool/gtk.c:264
 msgid "11 places"
 msgstr "11 jegy"
 
-#: gcalctool/gtk.c:227 gcalctool/gtk.c:228 gcalctool/gtk.c:258
-#: gcalctool/gtk.c:259
+#: gcalctool/gtk.c:234 gcalctool/gtk.c:235 gcalctool/gtk.c:265
+#: gcalctool/gtk.c:266
 msgid "12 places"
 msgstr "12 jegy"
 
-#: gcalctool/gtk.c:229 gcalctool/gtk.c:230 gcalctool/gtk.c:260
-#: gcalctool/gtk.c:261
+#: gcalctool/gtk.c:236 gcalctool/gtk.c:237 gcalctool/gtk.c:267
+#: gcalctool/gtk.c:268
 msgid "13 places"
 msgstr "13 jegy"
 
-#: gcalctool/gtk.c:231 gcalctool/gtk.c:232 gcalctool/gtk.c:262
-#: gcalctool/gtk.c:263
+#: gcalctool/gtk.c:238 gcalctool/gtk.c:239 gcalctool/gtk.c:269
+#: gcalctool/gtk.c:270
 msgid "14 places"
 msgstr "14 jegy"
 
-#: gcalctool/gtk.c:233 gcalctool/gtk.c:234 gcalctool/gtk.c:264
-#: gcalctool/gtk.c:265
+#: gcalctool/gtk.c:240 gcalctool/gtk.c:241 gcalctool/gtk.c:271
+#: gcalctool/gtk.c:272
 msgid "15 places"
 msgstr "15 jegy"
 
-#: gcalctool/gtk.c:270 gcalctool/gtk.c:276
+#: gcalctool/gtk.c:277 gcalctool/gtk.c:283
 msgid "Show _Trailing Zeroes"
 msgstr "_Nullák megjelenítése a szám végén"
 
-#: gcalctool/gtk.c:271 gcalctool/gtk.c:277
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:284
 msgid "Show trailing zeroes"
 msgstr "Nullák megjelenítése a szám végén"
 
-#: gcalctool/gtk.c:272
+#: gcalctool/gtk.c:279
 msgid "Show T_housands Separator"
 msgstr "_Ezreselválasztók megjelenítése"
 
-#: gcalctool/gtk.c:273
+#: gcalctool/gtk.c:280
 msgid "Show thousands separator"
 msgstr "Ezreselválasztók megjelenítése"
 
 # #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
 # sysdeps/names/sysdeps.c:51 sysdeps/names/sysdeps.c:78
-#: gcalctool/gtk.c:274
+#: gcalctool/gtk.c:281
 msgid "_Memory Registers"
 msgstr "_Memóriaregiszterek"
 
 # #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
 # sysdeps/names/sysdeps.c:51 sysdeps/names/sysdeps.c:78
-#: gcalctool/gtk.c:275
+#: gcalctool/gtk.c:282
 msgid "Show memory registers"
 msgstr "Memóriaregiszterek megjelenítése"
 
-#: gcalctool/gtk.c:278
+#: gcalctool/gtk.c:285
 msgid "_Use Arithmetic Precedence"
 msgstr ""
 
-#: gcalctool/gtk.c:279
+#: gcalctool/gtk.c:286
 msgid "Use Arithmetic Precedence"
 msgstr ""
 
-#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+#: gcalctool/gtk.c:291
+#, fuzzy
+msgid "_0 significant places"
+msgstr "0 értékes jegy"
+
+#: gcalctool/gtk.c:292
 msgid "0 significant places"
 msgstr "0 értékes jegy"
 
-#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+#: gcalctool/gtk.c:293
+#, fuzzy
+msgid "_1 significant place"
+msgstr "1 értékes jegy"
+
+#: gcalctool/gtk.c:294
 msgid "1 significant place"
 msgstr "1 értékes jegy"
 
-#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+#: gcalctool/gtk.c:295
+#, fuzzy
+msgid "_2 significant places"
+msgstr "2 értékes jegy"
+
+#: gcalctool/gtk.c:296
 msgid "2 significant places"
 msgstr "2 értékes jegy"
 
-#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+#: gcalctool/gtk.c:297
+#, fuzzy
+msgid "_3 significant places"
+msgstr "3 értékes jegy"
+
+#: gcalctool/gtk.c:298
 msgid "3 significant places"
 msgstr "3 értékes jegy"
 
-#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+#: gcalctool/gtk.c:299
+#, fuzzy
+msgid "_4 significant places"
+msgstr "4 értékes jegy"
+
+#: gcalctool/gtk.c:300
 msgid "4 significant places"
 msgstr "4 értékes jegy"
 
-#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "_5 significant places"
+msgstr "5 értékes jegy"
+
+#: gcalctool/gtk.c:302
 msgid "5 significant places"
 msgstr "5 értékes jegy"
 
-#: gcalctool/gtk.c:296 gcalctool/gtk.c:297
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "_6 significant places"
+msgstr "6 értékes jegy"
+
+#: gcalctool/gtk.c:304
 msgid "6 significant places"
 msgstr "6 értékes jegy"
 
-#: gcalctool/gtk.c:298 gcalctool/gtk.c:299
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "_7 significant places"
+msgstr "7 értékes jegy"
+
+#: gcalctool/gtk.c:306
 msgid "7 significant places"
 msgstr "7 értékes jegy"
 
-#: gcalctool/gtk.c:300 gcalctool/gtk.c:301
+#: gcalctool/gtk.c:307
+#, fuzzy
+msgid "_8 significant places"
+msgstr "8 értékes jegy"
+
+#: gcalctool/gtk.c:308
 msgid "8 significant places"
 msgstr "8 értékes jegy"
 
-#: gcalctool/gtk.c:302 gcalctool/gtk.c:303
+#: gcalctool/gtk.c:309
+#, fuzzy
+msgid "_9 significant places"
+msgstr "9 értékes jegy"
+
+#: gcalctool/gtk.c:310
 msgid "9 significant places"
 msgstr "9 értékes jegy"
 
-#: gcalctool/gtk.c:308
+#: gcalctool/gtk.c:311
+msgid "_Other (10) ..."
+msgstr ""
+
+#: gcalctool/gtk.c:312
+msgid "Set other precision"
+msgstr ""
+
+#: gcalctool/gtk.c:317
 msgid "_Basic mode"
 msgstr "_Egyszerű mód"
 
-#: gcalctool/gtk.c:309
+#: gcalctool/gtk.c:318
 msgid "Basic mode"
 msgstr "Egyszerű mód"
 
-#: gcalctool/gtk.c:310
+#: gcalctool/gtk.c:319
 msgid "_Financial mode"
 msgstr "_Pénzügyi mód"
 
-#: gcalctool/gtk.c:311
+#: gcalctool/gtk.c:320
 msgid "Financial mode"
 msgstr "Pénzügyi mód"
 
-#: gcalctool/gtk.c:312
+#: gcalctool/gtk.c:321
 msgid "_Scientific mode"
 msgstr "_Tudományos mód"
 
-#: gcalctool/gtk.c:313
+#: gcalctool/gtk.c:322
 msgid "Scientific mode"
 msgstr "Tudományos mód"
 
-#: gcalctool/gtk.c:471
+#: gcalctool/gtk.c:482
 msgid "translator_credits"
 msgstr ""
 "Dvornik László <dvornik@gnome.hu>\n"
 "Tímár András <timar@gnome.hu>"
 
-#: gcalctool/gtk.c:473
+#: gcalctool/gtk.c:484
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:476
+#: gcalctool/gtk.c:487
 msgid "Calculator with financial and scientific modes."
 msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
 
-#: gcalctool/gtk.c:734
+#: gcalctool/gtk.c:745
 msgid "Insert ASCII Value"
 msgstr "ASCII-érték beszúrása"
 
-#: gcalctool/gtk.c:749
+#: gcalctool/gtk.c:760
 msgid "Ch_aracter:"
 msgstr "K_arakter:"
 
-#: gcalctool/gtk.c:774
+#: gcalctool/gtk.c:785
 msgid "_Insert"
 msgstr "_Beszúrás"
 
-#: gcalctool/gtk.c:853
+#: gcalctool/gtk.c:864
 msgid "Edit Constants"
 msgstr "Állandók szerkesztése"
 
-#: gcalctool/gtk.c:853
+#: gcalctool/gtk.c:864
 msgid "Edit Functions"
 msgstr "Függvények szerkesztése"
 
 # #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
 # src/trans.h:346 src/trans.h:381
-#: gcalctool/gtk.c:877
+#: gcalctool/gtk.c:888
 msgid "Note:"
 msgstr "Megjegyzés:"
 
-#: gcalctool/gtk.c:878
+#: gcalctool/gtk.c:889
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Minden állandó értéke tízes számrendszerben van kifejezve."
 
-#: gcalctool/gtk.c:888
+#: gcalctool/gtk.c:899
 msgid "Click a _value or description to edit it:"
 msgstr "_Kattintson az érték vagy leírás szerkesztéséhez:"
 
@@ -1362,11 +1423,11 @@ msgstr "_Kattintson az érték vagy leírás szerkesztéséhez:"
 # src/trans.h:87 src/trans.h:90 src/trans.h:155 src/trans.h:157
 # #-#-#-#-#  galeon.HEAD.hu.po-new.po (Galeon 1.2)  #-#-#-#-#
 # src/trans.h:87 src/trans.h:90 src/trans.h:155 src/trans.h:157
-#: gcalctool/gtk.c:911
+#: gcalctool/gtk.c:922
 msgid "No."
 msgstr "Sz."
 
-#: gcalctool/gtk.c:913
+#: gcalctool/gtk.c:924
 msgid "Value"
 msgstr "Érték"
 
@@ -1381,44 +1442,76 @@ msgstr "Érték"
 # #-#-#-#-#  gnumeric.HEAD.hu.po-new.po (gnumeric 0.70)  #-#-#-#-#
 # #-#-#-#-#  gnome-system-tools.HEAD.hu.po-new.po (gnome-system-tools CVS)  #-#-#-#-#
 # interfaces/nameresolution.glade.h:25
-#: gcalctool/gtk.c:915
+#: gcalctool/gtk.c:926
 msgid "Description"
 msgstr "Leírás"
 
-#: gcalctool/gtk.c:1015 gcalctool/gtk.c:1017 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:949
+msgid "Set Precision"
+msgstr ""
+
+#: gcalctool/gtk.c:964
+#, fuzzy
+msgid "Significant _places:"
+msgstr "0 értékes jegy"
+
+#: gcalctool/gtk.c:990
+msgid "_Set"
+msgstr ""
+
+#: gcalctool/gtk.c:1094 gcalctool/gtk.c:1096 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Számológép"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1260
+#: gcalctool/gtk.c:1340
 msgid "_Inv"
 msgstr "_Inv"
 
 # FIXME
-#: gcalctool/gtk.c:1268
+#: gcalctool/gtk.c:1348
 msgid "H_yp"
 msgstr "H_yp"
 
 # #-#-#-#-#  libgtop.libgtop-GNOME-2-0-port.hu.po-new.po (libgtop 1.1.6)  #-#-#-#-#
 # sysdeps/names/sysdeps.c:51 sysdeps/names/sysdeps.c:78
-#: gcalctool/gtk.c:1316
+#: gcalctool/gtk.c:1396
 msgid "Memory Registers"
 msgstr "Memóriaregiszterek"
 
-#: gcalctool/gtk.c:1382
+#: gcalctool/gtk.c:1472
 msgid "Edit Constants..."
 msgstr "Állandók szerkesztése..."
 
-#: gcalctool/gtk.c:1382
+#: gcalctool/gtk.c:1472
 msgid "Edit Functions..."
 msgstr "Függvények szerkesztése..."
 
-#: gcalctool/gtk.c:1981
+#: gcalctool/gtk.c:1640
+msgid "Clipboard contained malformed calculation"
+msgstr ""
+
+#: gcalctool/gtk.c:1887
+#, c-format
+msgid "Other (%d) ..."
+msgstr ""
+
+#: gcalctool/gtk.c:1898
+#, fuzzy, c-format
+msgid ""
+"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+msgstr "A pontosság beállítása 0-tól 9 jegyig [a]"
+
+#: gcalctool/gtk.c:2114
 msgid "Activated no operator precedence mode"
 msgstr ""
 
-#: gcalctool/gtk.c:1990
+#: gcalctool/gtk.c:2123
 msgid "Activated expression mode with operator precedence"
+msgstr ""
+
+#: gcalctool/gtk.c:2341
+msgid "Accuracy value out of range"
 msgstr ""
 
 #: gcalctool/mpmath.c:223
@@ -1429,126 +1522,157 @@ msgstr "Hiba, nem lehet szinuszt számolni"
 msgid "abs"
 msgstr "abs"
 
+#. Absolute value
 #: gcalctool/syntax_translation.c:37
 msgid "acosh"
 msgstr "acosh"
 
+#. Inversion of hyperbolic cosine
 #: gcalctool/syntax_translation.c:38
 msgid "acos"
 msgstr "acos"
 
+#. Inversion of cosine
 #: gcalctool/syntax_translation.c:39
 msgid "and"
 msgstr "and"
 
+#. Bitwise AND
 #: gcalctool/syntax_translation.c:40
 msgid "ans"
 msgstr "ans"
 
+#. Answer of previous calculation
 #: gcalctool/syntax_translation.c:41
 msgid "asinh"
 msgstr "asinh"
 
+#. Inversion of hyperbolic sine
 #: gcalctool/syntax_translation.c:42
 msgid "asin"
 msgstr "asin"
 
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:43
 msgid "atanh"
 msgstr "atanh"
 
+#. Inversion of hyperbolic tangent
 #: gcalctool/syntax_translation.c:44
 msgid "atan"
 msgstr "atan"
 
+#. Inversion of tangent
 #: gcalctool/syntax_translation.c:45
 msgid "cbrt"
 msgstr "cbrt"
 
+#. Cubic root
 #: gcalctool/syntax_translation.c:46
 msgid "chs"
 msgstr "chs"
 
+#. Change sign
 #: gcalctool/syntax_translation.c:47
 msgid "clr"
 msgstr "clr"
 
+#. Clear (display)
 #: gcalctool/syntax_translation.c:48
 msgid "cosh"
 msgstr "cosh"
 
+#. Hyperbolic cosine
 #: gcalctool/syntax_translation.c:49
 msgid "cos"
 msgstr "cos"
 
+#. Cosine
 #: gcalctool/syntax_translation.c:50
 msgid "ddb"
 msgstr "ddb"
 
+#. Double-declining deprecation
 #: gcalctool/syntax_translation.c:51
 msgid "exp"
 msgstr "exp"
 
+#. x*10^y
 #: gcalctool/syntax_translation.c:52
 msgid "frac"
 msgstr "frac"
 
+#. Fraction of a decimal number
 #: gcalctool/syntax_translation.c:53
 msgid "fv"
 msgstr "fv"
 
+#. Future value
 #: gcalctool/syntax_translation.c:54
 msgid "int"
 msgstr "int"
 
+#. Integer part of a decimal number
 #: gcalctool/syntax_translation.c:55
 msgid "ln"
 msgstr "ln"
 
+#. Natural logarithm
 #: gcalctool/syntax_translation.c:56
 msgid "log"
 msgstr "log"
 
+#. Logarithm with 10 as a base number
 #: gcalctool/syntax_translation.c:57
 msgid "not"
 msgstr "not"
 
+#. Bitwise NOT
 #: gcalctool/syntax_translation.c:58
 msgid "or"
 msgstr "or"
 
+#. PI
 #: gcalctool/syntax_translation.c:60
 msgid "pmt"
 msgstr "pmt"
 
+#. Periodic payment
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
 
+#. Present value
 #: gcalctool/syntax_translation.c:62
 msgid "rand"
 msgstr "rand"
 
+#. A random number
 #: gcalctool/syntax_translation.c:63
 msgid "rate"
 msgstr "rate"
 
+#. Periodic interest rate
 #: gcalctool/syntax_translation.c:64
 msgid "rcl"
 msgstr "rcl"
 
+#. Recall number from memory register
 #: gcalctool/syntax_translation.c:65
 msgid "sinh"
 msgstr "sinh"
 
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:66
 msgid "sin"
 msgstr "sin"
 
+#. Sine
 #: gcalctool/syntax_translation.c:67
 msgid "sln"
 msgstr "sln"
 
+#. Straight-line depreciation
 #: gcalctool/syntax_translation.c:68
 msgid "sqrt"
 msgstr "sqrt"
@@ -1563,31 +1687,38 @@ msgstr "sqrt"
 # libnautilus-private/nautilus-file-operations.c:960
 # libnautilus-private/nautilus-file-operations.c:979
 # src/nautilus-shell-ui.xml.h:54
+#. Square root
 #: gcalctool/syntax_translation.c:69
 msgid "sto"
 msgstr "sto"
 
 # data/browser.xml.h:72
+#. Store number at memory register
 #: gcalctool/syntax_translation.c:70
 msgid "syd"
 msgstr "syd"
 
+#. Sum-of-the years'-digits depreciation
 #: gcalctool/syntax_translation.c:71
 msgid "tanh"
 msgstr "tanh"
 
+#. Hyperbolic tangent
 #: gcalctool/syntax_translation.c:72
 msgid "tan"
 msgstr "tan"
 
+#. Tangent
 #: gcalctool/syntax_translation.c:73
 msgid "term"
 msgstr "term"
 
+#. 32-bit unsigned integer value
 #: gcalctool/syntax_translation.c:76
 msgid "xnor"
 msgstr "xnor"
 
+#. Bitwise XNOR
 #: gcalctool/syntax_translation.c:77
 msgid "xor"
 msgstr "xor"

@@ -166,8 +166,6 @@ static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_values(enum mode_type);
-static void set_accuracy_menu_item(int);
-static void set_accuracy_tooltip(GtkWidget *, int);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
 static void set_memory_toggle(int);
@@ -1191,7 +1189,7 @@ create_kframe()
 
     X->sci_panel = make_but_panel(X->kvbox, X->sci_buttons,
                                   s_buttons, SROWS, SCOLS, "sci");
-    set_accuracy_tooltip(BUT_ACC, v->accuracy);
+    set_accuracy_tooltip(v->accuracy);
 
     gtk_widget_show(X->fin_panel);
     gtk_widget_show(X->mode_panel);
@@ -1881,7 +1879,7 @@ set_accessible_name(GtkWidget *widget, struct button button)
 }
 
 
-static void
+void
 set_accuracy_menu_item(int accuracy)
 {
     char label[MAXLINE];
@@ -1892,14 +1890,14 @@ set_accuracy_menu_item(int accuracy)
 }
 
 
-static void
-set_accuracy_tooltip(GtkWidget *button, int accuracy)
+void
+set_accuracy_tooltip(int accuracy)
 {
     char tooltip[MAXLINE];
 
     SPRINTF(tooltip, _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"), 
             MAXACC, accuracy);
-    gtk_tooltips_set_tip(X->tips, button, tooltip, "");
+    gtk_tooltips_set_tip(X->tips, BUT_ACC, tooltip, "");
 }
 
 
@@ -2362,7 +2360,7 @@ spframe_ok_cb(GtkButton *button, gpointer user_data)
     put_resource(R_ACCURACY, intval);
 
     set_accuracy_menu_item(v->accuracy);
-    set_accuracy_tooltip(BUT_ACC, v->accuracy);
+    set_accuracy_tooltip(v->accuracy);
     set_accuracy_toggle(v->accuracy);
 
     make_registers();

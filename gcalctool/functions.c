@@ -50,6 +50,8 @@ do_accuracy()     /* Set display accuracy. */
             v->accuracy = char_val(v->current->value[0]);
             SPRINTF(intval, "%d", v->accuracy);
             put_resource(R_ACCURACY, intval);
+            set_accuracy_menu_item(v->accuracy);
+            set_accuracy_tooltip(v->accuracy);
             make_registers();
             return;
         }
