@@ -171,8 +171,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("/"),
     N_("Divide"),
     NULL,
-    { 0,         0,             0,      GDK_SHIFT_MASK, 0 },
-    { GDK_slash, GDK_KP_Divide, GDK_R5, GDK_slash,      0 },
+    { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
+    { GDK_slash, GDK_slash,      GDK_KP_Divide, GDK_R5, GDK_slash,      0 },
     '/',
     M_NONE,
     do_calc
