@@ -158,7 +158,7 @@ static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean spframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 
-static void about_cb(GtkAction *action);
+static void about_cb(GtkAction *action, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
@@ -223,7 +223,7 @@ static GtkActionEntry entries[] = {
 
     { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
-    { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
+    { "About", GTK_STOCK_ABOUT, N_("_About"), NULL,
       N_("Show the About Gcalctool dialog"), G_CALLBACK(about_cb) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
@@ -485,11 +485,9 @@ update_statusbar(gchar *text, const gchar *imagename)
 
 /*ARGSUSED*/
 static void
-about_cb(GtkAction *action)
+about_cb(GtkAction *action, gpointer date)
 {
-    static GtkWidget *about = NULL;
-
-    if (about == NULL) {
+    
         const gchar *authors[] = {
             "Rich Burridge <rich.burridge@sun.com>",
             "Sami Pietila <sampie@ariana-dsl.utu.fi>",
@@ -501,21 +499,16 @@ about_cb(GtkAction *action)
         };
         const gchar *translator_credits = _("translator_credits");
 
-        about = gnome_about_new(_("Gcalctool"),
-                       VERSION,
-                       "(C) 2004 the Free Software Foundation",
-                       _("Calculator with financial and scientific modes."),
-                       authors,
-                       documenters,
-                       strcmp(translator_credits, "translator_credits") != 0 ? 
-                              translator_credits : NULL,
-                       X->icon);
-
-        g_signal_connect(G_OBJECT(about), "destroy",
-                         G_CALLBACK(gtk_widget_destroyed), &about);
-        gtk_window_set_icon(GTK_WINDOW(about), X->icon);    
-    }
-    gtk_window_present(GTK_WINDOW(about));
+        gtk_show_about_dialog(GTK_WINDOW (X->kframe),
+        					"name",_("Gcalctool"),
+        					"version", VERSION,
+        					"copyright", "(C) 2004 the Free Software Foundation",
+        					"comments", _("Calculator with financial and scientific modes."),
+        					"authors", authors,
+        					"documenters", documenters,
+        					"translator-credits", strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+        					"logo", X->icon);
+        					
 }
 
 
