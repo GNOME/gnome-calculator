@@ -209,12 +209,12 @@ static GtkItemFactoryEntry lshift_menu[] = {
     { N_("/7 places"),  NULL, menu_proc, '7', NULL },
     { N_("/8 places"),  NULL, menu_proc, '8', NULL },
     { N_("/9 places"),  NULL, menu_proc, '9', NULL },
-    { N_("/10 places"), NULL, menu_proc, 'a', NULL },
-    { N_("/11 places"), NULL, menu_proc, 'b', NULL },
-    { N_("/12 places"), NULL, menu_proc, 'c', NULL },
-    { N_("/13 places"), NULL, menu_proc, 'd', NULL },
-    { N_("/14 places"), NULL, menu_proc, 'e', NULL },
-    { N_("/15 places"), NULL, menu_proc, 'f', NULL },
+    { N_("/10 places"), NULL, menu_proc, 'A', NULL },
+    { N_("/11 places"), NULL, menu_proc, 'B', NULL },
+    { N_("/12 places"), NULL, menu_proc, 'C', NULL },
+    { N_("/13 places"), NULL, menu_proc, 'D', NULL },
+    { N_("/14 places"), NULL, menu_proc, 'E', NULL },
+    { N_("/15 places"), NULL, menu_proc, 'F', NULL },
 };
 
 static GtkItemFactoryEntry rshift_menu[] = {
@@ -227,12 +227,12 @@ static GtkItemFactoryEntry rshift_menu[] = {
     { N_("/7 places"),  NULL, menu_proc, '7', NULL },
     { N_("/8 places"),  NULL, menu_proc, '8', NULL },
     { N_("/9 places"),  NULL, menu_proc, '9', NULL },
-    { N_("/10 places"), NULL, menu_proc, 'a', NULL },
-    { N_("/11 places"), NULL, menu_proc, 'b', NULL },
-    { N_("/12 places"), NULL, menu_proc, 'c', NULL },
-    { N_("/13 places"), NULL, menu_proc, 'd', NULL },
-    { N_("/14 places"), NULL, menu_proc, 'e', NULL },
-    { N_("/15 places"), NULL, menu_proc, 'f', NULL },
+    { N_("/10 places"), NULL, menu_proc, 'A', NULL },
+    { N_("/11 places"), NULL, menu_proc, 'B', NULL },
+    { N_("/12 places"), NULL, menu_proc, 'C', NULL },
+    { N_("/13 places"), NULL, menu_proc, 'D', NULL },
+    { N_("/14 places"), NULL, menu_proc, 'E', NULL },
+    { N_("/15 places"), NULL, menu_proc, 'F', NULL },
 };
 
 
