@@ -562,7 +562,7 @@ calc_ddb(int t[MP_SIZE])
         mpmuli(MP1, &val, MP2);
         mpdiv(MP2, v->MPmvals[2], t);
         mpstr(MPbv, MP1);
-        mpadd(MP1, t, MPbv); // TODO: figure why result is MPbv, for next loop?
+        mpadd(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
     }
 }
 
