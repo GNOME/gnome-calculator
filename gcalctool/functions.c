@@ -437,7 +437,8 @@ do_expression()
             assert(!v->expression);
             v->expression = v->e.expbak;
             v->e.expbak = NULL;
-            goto out;
+	    refresh_display();
+	    return;
         }
 
         if (v->current->flags & 
@@ -448,7 +449,8 @@ do_expression()
 
             snprintf(buf, 128, "%s(Ans)", btext);
             exp_replace(buf);
-            goto out;
+	    refresh_display();
+	    return;
         } else if (v->current->flags & (number | func)) {
             exp_del(); 
         }
@@ -469,7 +471,8 @@ do_expression()
         set_error_state(FALSE);
         MPstr_to_num("0", DEC, v->e.ans);
         MPstr_to_num("0", DEC, v->e.ansbak);
-        goto out;
+	refresh_display();
+	return;
     } else if (v->current->flags & regrcl) {
         int i = char_val(v->current->value[0]);
         char reg[3];
@@ -477,12 +480,13 @@ do_expression()
 
         snprintf(reg, 3, "R%c", n);
         exp_append(reg);
-        goto out;
+	refresh_display();
+	return;
     } else if (v->current->flags & con) {
         int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-
         exp_append(make_number(MPval, v->base, TRUE, FALSE));
-        goto out;
+	refresh_display();
+	return;
     } else if (v->current->flags & bsp) {
         if (exp_has_postfix(v->expression, "Ans")) { 
             char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
@@ -490,13 +494,16 @@ do_expression()
             str_replace(&v->expression, "Ans", ans);
         } 
         exp_del_char(&v->expression, 1); 
-        goto out;
+	refresh_display();
+	return;
     } else if (v->current->flags & neg) {
         exp_negate();
-        goto out;
+	refresh_display();
+	return;
     } else if (v->current->flags & inv) {
         exp_inv();
-        goto out;
+	refresh_display();
+	return;
     }
 
     if (v->current->flags & enter) {
@@ -510,14 +517,16 @@ do_expression()
 	        v->e.expbak = gc_strdup(v->expression);
 	        exp_replace("Ans");
 	        v->e.calc_complete = 1;
-	        goto out;
+		refresh_display();
+		return;
             } else {
 	        update_statusbar(_("Malformed expression"), 
                                  "gtk-dialog-error");
 	        return;
             }
         } else {
-            goto out;
+	    refresh_display();
+	    return;
         }
     }
 
@@ -527,7 +536,6 @@ do_expression()
         exp_append("(");
     }
 
-out:
     refresh_display();
 }
 
