@@ -7,11 +7,13 @@ schema_DATA = gcalctool.schemas
 
 EXTRA_DIST = \
 	autogen.sh \
-	depcomp \
 	MAINTAINERS \
 	TODO \
 	gcalctoolrc \
 	gcalctool.desktop.in \
+	intltool-extract.in     \
+	intltool-merge.in       \
+	intltool-update.in      \
 	$(schema_DATA) \
 	omf.make \
 	xmldocs.make
