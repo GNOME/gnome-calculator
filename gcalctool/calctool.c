@@ -936,7 +936,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 {
     N_("Or"),
     N_("Logical OR"),
-    NULL,
+    "logical OR",
     { GDK_SHIFT_MASK, 0 },
     { GDK_bar, 0 },
     '|',
