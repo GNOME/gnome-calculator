@@ -207,7 +207,7 @@ static GtkActionEntry entries[] = {
     { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
     { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
-      N_("Show about help"), G_CALLBACK(about_cb) },
+      N_("Show the about dialog"), G_CALLBACK(about_cb) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
       N_("1 place"),   G_CALLBACK(mb_proc) },
