@@ -424,7 +424,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_calc
 },
 {
-    N_("1/x"),
+    N_("1/<i>x</i>"),
     N_("Reciprocal"),
     NULL,
     { 0, 0 },
@@ -434,7 +434,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_immed
 },
 {
-    N_("x<sup>2</sup>"),
+    N_("x<sup><i>2</i></sup>"),
     N_("Square"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
@@ -770,7 +770,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_expno
 },
 {
-    N_("<i>e</i><sup>x</sup>"),
+    N_("e<sup><i>x</i></sup>"),
     N_("e to the power of displayed value"),
     N_("E to the x"),
     { GDK_SHIFT_MASK, 0 },
@@ -780,7 +780,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },
 {
-    N_("10<sup>x</sup>"),
+    N_("10<sup><i>x</i></sup>"),
     N_("10 to the power of displayed value"),
     N_("Ten to the x"),
     { GDK_SHIFT_MASK, 0 },
@@ -790,7 +790,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },       
 {        
-    N_("y<sup>x</sup>"),
+    N_("y<sup><i>x</i></sup>"),
     N_("y to the power of displayed value"),
     N_("Y to the x"),
     { 0, 0 },   
@@ -800,7 +800,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_calc
 },       
 {        
-    N_("x!"),
+    N_("<i>x</i>!"),
     N_("Factorial of displayed value"),
     N_("Factorial"),
     { GDK_SHIFT_MASK, 0 },
