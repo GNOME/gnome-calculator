@@ -138,6 +138,7 @@ static void cell_edited(GtkCellRendererText *,
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_menu_item_with_markup(char *, int, int);
+static void die_cb(GnomeClient *client, gpointer data);
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
@@ -245,6 +246,7 @@ main(int argc, char **argv)
 {
     char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
     struct passwd *entry;
+    GnomeClient  *client;
 
     v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
     X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
@@ -255,6 +257,10 @@ main(int argc, char **argv)
 
     gnome_program_init("gcalctool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
                         NULL, NULL, NULL);
+
+    /* Connect to the die signal. */
+    client = gnome_master_client();
+    g_signal_connect(client, "die", G_CALLBACK(die_cb), NULL);
 
     gtk_rc_get_default_files();
     if ((v->home = getenv("HOME")) == NULL) {
@@ -1062,6 +1068,12 @@ create_rframe()
                      G_CALLBACK(dismiss_rframe), NULL);
 }
 
+
+static void
+die_cb(GnomeClient *client, gpointer data)
+{
+    gtk_main_quit();
+}
 
 
 /*ARGSUSED*/
