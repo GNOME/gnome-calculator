@@ -888,7 +888,7 @@ create_mode_panel(GtkWidget *main_vbox)
     gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
 
-    return(vbox);
+    return(frame);
 }
 
 
@@ -1382,7 +1382,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
         }
     }
 
-    return(table);
+    return(frame);
 }
 
 
