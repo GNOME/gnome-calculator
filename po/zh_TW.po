@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 4.2.65\n"
-"POT-Creation-Date: 2003-03-25 19:41+0000\n"
-"PO-Revision-Date: 2003-03-11 11:56+0800\n"
+"Project-Id-Version: gcalctool 4.2.80\n"
+"POT-Creation-Date: 2003-04-11 03:49+0800\n"
+"PO-Revision-Date: 2003-04-11 04:09+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -33,19 +33,19 @@ msgstr "1_6"
 #. Tooltips for each base value.
 #: gcalctool/calctool.c:54
 msgid "Set numeric base to binary (base 2)"
-msgstr ""
+msgstr "用 2 進制數字進行計算"
 
 #: gcalctool/calctool.c:55
 msgid "Set numeric base to octal (base 8)"
-msgstr ""
+msgstr "用 8 進制數字進行計算"
 
 #: gcalctool/calctool.c:56
 msgid "Set numeric base to decimal (base 10)"
-msgstr ""
+msgstr "用 10 進制數字進行計算"
 
 #: gcalctool/calctool.c:57
 msgid "Set numeric base to hexadecimal (base 16)"
-msgstr ""
+msgstr "用 16 進制數字進行計算"
 
 #. Strings for each display mode value.
 #: gcalctool/calctool.c:66
@@ -54,7 +54,7 @@ msgstr "工程(_N)"
 
 #: gcalctool/calctool.c:66
 msgid "_Fix"
-msgstr ""
+msgstr "定點(_F)"
 
 #: gcalctool/calctool.c:66
 msgid "_Sci"
@@ -115,15 +115,15 @@ msgstr "弧度(_R)"
 #. Tooltips for each trig type value.
 #: gcalctool/calctool.c:89
 msgid "Set trigonometric type to degrees"
-msgstr ""
+msgstr "三角函數會以角度方式運算"
 
 #: gcalctool/calctool.c:90
 msgid "Set trigonometric type to gradients"
-msgstr ""
+msgstr "三角函數會以梯度方式運算"
 
 #: gcalctool/calctool.c:91
 msgid "Set trigonometric type to radians"
-msgstr ""
+msgstr "三角函數會以弧度方式運算"
 
 #: gcalctool/calctool.c:136
 msgid "7"
@@ -442,7 +442,7 @@ msgid "<"
 msgstr "<"
 
 #: gcalctool/calctool.c:607
-msgid "Shift displayed value 0-15 places to the left"
+msgid "Shift displayed value 1-15 places to the left"
 msgstr ""
 
 #: gcalctool/calctool.c:615
@@ -450,7 +450,7 @@ msgid ">"
 msgstr ">"
 
 #: gcalctool/calctool.c:616
-msgid "Shift displayed value 0-15 places to the right"
+msgid "Shift displayed value 1-15 places to the right"
 msgstr ""
 
 #: gcalctool/calctool.c:624
@@ -459,7 +459,7 @@ msgstr "&amp;16"
 
 #: gcalctool/calctool.c:625
 msgid "16-bit unsigned integer value of display"
-msgstr ""
+msgstr "將畫面中的數字轉換成 16 位元、不帶正負號的整數"
 
 #: gcalctool/calctool.c:633
 msgid "&amp;32"
@@ -467,7 +467,7 @@ msgstr "&amp;32"
 
 #: gcalctool/calctool.c:634
 msgid "32-bit unsigned integer value of display"
-msgstr ""
+msgstr "將畫面中的數字轉換成 32 位元、不帶正負號的整數"
 
 #: gcalctool/calctool.c:651
 msgid "("
@@ -546,7 +546,7 @@ msgid "x!"
 msgstr "x!"
 
 #: gcalctool/calctool.c:735
-msgid "factorial of displayed value"
+msgid "Factorial of displayed value"
 msgstr "畫面中的數字的階乘"
 
 #: gcalctool/calctool.c:743
@@ -573,7 +573,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "16 進制數字 E"
 
-#: gcalctool/calctool.c:772 gcalctool/gtk.c:1132
+#: gcalctool/calctool.c:772 gcalctool/gtk.c:1144
 msgid "F"
 msgstr "F"
 
@@ -637,7 +637,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "16 進制數字 B"
 
-#: gcalctool/calctool.c:846 gcalctool/gtk.c:1125
+#: gcalctool/calctool.c:846 gcalctool/gtk.c:1137
 msgid "C"
 msgstr "C"
 
@@ -731,7 +731,7 @@ msgstr "立方英吋 → 立方厘米"
 #: gcalctool/calctool.c:1009 gcalctool/display.c:194 gcalctool/functions.c:934
 #: gcalctool/functions.c:1062 gcalctool/functions.c:1101
 #: gcalctool/functions.c:1155 gcalctool/functions.c:1248
-#: gcalctool/functions.c:1249 gcalctool/graphics.c:102 gcalctool/mp.c:2000
+#: gcalctool/functions.c:1249 gcalctool/graphics.c:102 gcalctool/mp.c:1998
 msgid "Error"
 msgstr "錯誤"
 
@@ -768,7 +768,7 @@ msgstr "計算機"
 #: gcalctool/get.c:272
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr ""
+msgstr "%s：必須使用 2、8、10 或 16 進制\n"
 
 #: gcalctool/get.c:287
 #, c-format
@@ -803,7 +803,9 @@ msgstr "用法：%s: [-D] [-E] [-a 準確度] "
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "[-v] [-?]\n"
 
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:934 gcalctool/gtk.c:1064
+#. translators: R is the short form of register used inter alia
+#. in popup menus
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:946 gcalctool/gtk.c:1076
 msgid "R"
 msgstr "R"
 
@@ -857,12 +859,11 @@ msgstr "/顯示/sep1"
 
 #: gcalctool/gtk.c:209
 msgid "/View/Show _Trailing Zeroes"
-msgstr ""
+msgstr "/顯示/顯示末端的 0 數位(_T)"
 
 #: gcalctool/gtk.c:210
-#, fuzzy
 msgid "/View/sep2"
-msgstr "/顯示/sep1"
+msgstr "/顯示/sep2"
 
 #: gcalctool/gtk.c:211
 msgid "/View/_Memory Registers"
@@ -885,7 +886,7 @@ msgid "/0 radix places"
 msgstr "/0 個小數位"
 
 #: gcalctool/gtk.c:220
-msgid "/1 radix places"
+msgid "/1 radix place"
 msgstr "/1 個小數位"
 
 #: gcalctool/gtk.c:221
@@ -921,13 +922,12 @@ msgid "/9 radix places"
 msgstr "/9 個小數位"
 
 #: gcalctool/gtk.c:229
-#, fuzzy
 msgid "/sep1"
-msgstr "/編輯/sep1"
+msgstr "/sep1"
 
 #: gcalctool/gtk.c:230
 msgid "/Show _Trailing Zeroes"
-msgstr ""
+msgstr "/顯示末端的 0 數位(_T)"
 
 #: gcalctool/gtk.c:234 gcalctool/gtk.c:252
 msgid "/1 place"
@@ -1031,7 +1031,7 @@ msgstr ""
 
 #: gcalctool/gtk.c:796
 msgid "No."
-msgstr ""
+msgstr "否。"
 
 #: gcalctool/gtk.c:798
 msgid "Value"
@@ -1041,36 +1041,36 @@ msgstr "數值"
 msgid "Description"
 msgstr "說明"
 
-#: gcalctool/gtk.c:831 gcalctool/gtk.c:833
+#: gcalctool/gtk.c:838 gcalctool/gtk.c:840 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "計算機"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1001
+#: gcalctool/gtk.c:1013
 msgid "_Inv"
 msgstr "反函數(_I)"
 
-#: gcalctool/gtk.c:1003
+#: gcalctool/gtk.c:1015
 msgid "Set inverse option for trigonometric functions"
-msgstr ""
+msgstr "使用反三角函數"
 
-#: gcalctool/gtk.c:1009
+#: gcalctool/gtk.c:1021
 msgid "H_yp"
 msgstr "雙曲函數(_Y)"
 
-#: gcalctool/gtk.c:1011
+#: gcalctool/gtk.c:1023
 msgid "Set hyperbolic option for trigonometric functions"
-msgstr ""
+msgstr "使用雙曲三角函數"
 
-#: gcalctool/gtk.c:1055
+#: gcalctool/gtk.c:1067
 msgid "Memory Registers"
 msgstr "暫存器數值"
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Constants..."
 msgstr "修改常數..."
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Functions..."
 msgstr "修改函式..."
 
@@ -1078,7 +1078,7 @@ msgstr "修改函式..."
 msgid "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
 msgstr "*** 調用 MPADD2 時 SIGN 不是 0、+1 或 -1。\n"
 
-#: gcalctool/mp.c:182 gcalctool/mp.c:2814 gcalctool/mp.c:3092
+#: gcalctool/mp.c:182 gcalctool/mp.c:2812 gcalctool/mp.c:3090
 msgid "POSSIBLE OVERWRITING PROBLEM ***\n"
 msgstr ""
 
@@ -1117,199 +1117,188 @@ msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
 msgstr "*** 調用 MPCHK 時 B 的值太大。\n"
 
 #: gcalctool/mp.c:886
-msgid "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL "
-msgstr ""
-
-#: gcalctool/mp.c:887
-msgid "TO AN MP ROUTINE ***\n"
+msgid ""
+"*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"
 msgstr ""
 
 #: gcalctool/mp.c:888
 #, c-format
-msgid "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
-msgstr "*** MXR 最小應該是 %d*T + %d = %d  ***\n"
+msgid ""
+"*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
+"*** ACTUALLY MXR = %d, AND T = %d  ***\n"
+msgstr ""
+"*** MXR 最小應該是 %d*T + %d = %d  ***\n"
+"*** 實際上 MXR = %d 而 T = %d  ***\n"
 
-#: gcalctool/mp.c:890
-#, c-format
-msgid "*** ACTUALLY MXR = %d, AND T = %d  ***\n"
-msgstr "*** 實際上 MXR = %d，及 T = %d ***\n"
-
-#: gcalctool/mp.c:1036
+#: gcalctool/mp.c:1034
 msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1354
+#: gcalctool/mp.c:1352
 msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:1544
+#: gcalctool/mp.c:1542
 msgid "*** J = 0 IN CALL TO MPCQM ***\n"
 msgstr "*** 調用 MPCQM 時 J = 0 ***\n"
 
-#: gcalctool/mp.c:1705
+#: gcalctool/mp.c:1703
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
 msgstr "*** 調用 MPDIV 時嘗試以 0 作為除數 ***\n"
 
-#: gcalctool/mp.c:1762
+#: gcalctool/mp.c:1760
 msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
 msgstr "*** MPDIV 出現溢位 ***\n"
 
-#: gcalctool/mp.c:1793
+#: gcalctool/mp.c:1791
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
 msgstr "*** 調用 MPDIVI 時嘗試以 0 作為除數 ***\n"
 
-#: gcalctool/mp.c:1961
+#: gcalctool/mp.c:1959
 msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
 msgstr "*** MPDIVI 出現整數溢位，因為 B 太大 ***\n"
 
-#: gcalctool/mp.c:2068
+#: gcalctool/mp.c:2066
 msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
 msgstr "*** MPEXP 副程序出現溢位 ***\n"
 
-#: gcalctool/mp.c:2187
+#: gcalctool/mp.c:2185
 msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
 msgstr "*** MPEXP 出現錯誤，計算結果將會不正確 ***\n"
 
-#: gcalctool/mp.c:2235
+#: gcalctool/mp.c:2233
 msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
 msgstr "*** 調用 MPEXP1 時 ABS(X) 不少於 1 ***\n"
 
-#: gcalctool/mp.c:2457
+#: gcalctool/mp.c:2455
 msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
 msgstr "*** 調用 MPLN 時 X 不是正數 ***\n"
 
-#: gcalctool/mp.c:2507
+#: gcalctool/mp.c:2505
 msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
 msgstr "*** MPLN 出現錯誤，運算法無法產生收歛的結果 ***\n"
 
-#: gcalctool/mp.c:2557
+#: gcalctool/mp.c:2555
 msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
 msgstr "*** 調用 MPLN時 ABS(X) >= 1/B ***\n"
 
-#: gcalctool/mp.c:2619
+#: gcalctool/mp.c:2617
 msgid "*** ERROR OCCURRED IN MPLNS.\n"
 msgstr "*** MPLNS 出現錯誤。\n"
 
-#: gcalctool/mp.c:2620
+#: gcalctool/mp.c:2618
 msgid "NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
 msgstr "牛頓運算法無法產生收歛的結果 ***\n"
 
-#: gcalctool/mp.c:2806
+#: gcalctool/mp.c:2804
 msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
 msgstr "*** MPMUL 出現整數溢位，因為 B 太大 ***\n"
 
-#: gcalctool/mp.c:2813
+#: gcalctool/mp.c:2811
 msgid "*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
 msgstr ""
 
-#: gcalctool/mp.c:2865
+#: gcalctool/mp.c:2863
 msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
 msgstr "*** MPMUL2 出現溢位 ***\n"
 
-#: gcalctool/mp.c:2973
+#: gcalctool/mp.c:2971
 msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
 msgstr "*** MPMUL2 出現整數溢位，因為 B 太大 ***\n"
 
-#: gcalctool/mp.c:3014
+#: gcalctool/mp.c:3012
 msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
 msgstr "*** 調用 MPMULQ 時嘗試以 0 作為除數 ***\n"
 
-#: gcalctool/mp.c:3091
+#: gcalctool/mp.c:3089
 msgid "*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
 msgstr "*** 調用 MPNZR 時 SIGN 不是 0、+1 或 -1。\n"
 
-#: gcalctool/mp.c:3187
+#: gcalctool/mp.c:3185
 msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
 msgstr "*** MPNZR 出現溢位 ***\n"
 
-#: gcalctool/mp.c:3236
+#: gcalctool/mp.c:3234
 msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
 msgstr "*** MPOVFL 出現溢位 ***\n"
 
-#: gcalctool/mp.c:3282
+#: gcalctool/mp.c:3280
 msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
 msgstr "*** MPPI 出現錯誤，計算結果將會不正確 ***\n"
 
-#: gcalctool/mp.c:3322
-msgid "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN\n"
-msgstr "*** 調用 MPPWR 副程序時嘗試\n"
+#: gcalctool/mp.c:3321
+msgid ""
+"*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"
+msgstr "*** 調用 MPPWR 副程序時嘗試計算 0 的負數次方 ***\n"
 
-#: gcalctool/mp.c:3323
-msgid "CALL TO SUBROUTINE MPPWR ***\n"
-msgstr "計算 0 的負數次方 ***\n"
-
-#: gcalctool/mp.c:3391
+#: gcalctool/mp.c:3389
 msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
 msgstr "*** 調用 MPPWR2 時 X 是負數 ***\n"
 
-#: gcalctool/mp.c:3403
+#: gcalctool/mp.c:3401
 msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
 msgstr "*** 調用 MPPWR2 時 X = 0 而且 Y 不是正數 ***\n"
 
-#: gcalctool/mp.c:3466
+#: gcalctool/mp.c:3464
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
 msgstr "*** 調用 MPREC 時嘗試以 0 作為除數 ***\n"
 
-#: gcalctool/mp.c:3553
-msgid "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION\n"
-msgstr "*** MPREC 出現錯誤，牛頓運算法\n"
+#: gcalctool/mp.c:3552
+msgid ""
+"*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
+msgstr "*** MPREC 出現錯誤，牛頓運算法無法產生收歛的結果 ***\n"
 
-#: gcalctool/mp.c:3554 gcalctool/mp.c:3761
-msgid "NOT CONVERGING PROPERLY ***\n"
-msgstr "無法產生收歛的結果 ***\n"
-
-#: gcalctool/mp.c:3571
+#: gcalctool/mp.c:3569
 msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
 msgstr "*** MPREC 出現溢位 ***\n"
 
-#: gcalctool/mp.c:3614
+#: gcalctool/mp.c:3612
 msgid "*** N = 0 IN CALL TO MPROOT ***\n"
 msgstr "*** 調用 MPROOT 時 N = 0 ***\n"
 
-#: gcalctool/mp.c:3627
+#: gcalctool/mp.c:3625
 msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
 msgstr "*** 調用 MPROOT 時 ABS(N) 的值太大 ***\n"
 
-#: gcalctool/mp.c:3649
+#: gcalctool/mp.c:3647
 msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
 msgstr "*** 調用 MPROOT 時 X = 0 而且 N 是負數 ***\n"
 
-#: gcalctool/mp.c:3660
+#: gcalctool/mp.c:3658
 msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
 msgstr "*** 調用 MPROOT 時 X 是負數而且 N 是偶數 ***\n"
 
-#: gcalctool/mp.c:3760
-msgid "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION\n"
-msgstr "*** MPROOT 出現錯誤，牛頓運算法\n"
+#: gcalctool/mp.c:3759
+msgid ""
+"*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
+msgstr "*** MPROOT 出現錯誤，牛頓運算法無法產生收歛的結果 ***\n"
 
-#: gcalctool/mp.c:3849
+#: gcalctool/mp.c:3847
 msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
 msgstr "*** 調用 MPSET 時 IDECPL <= 0 ***\n"
 
-#: gcalctool/mp.c:3872
-msgid "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
-msgstr "*** 調用 MPSET 時 ITMAX2 的值太小 ***\n"
-
-#: gcalctool/mp.c:3873
-msgid "*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS \n"
-msgstr ""
-
-#: gcalctool/mp.c:3874
+#: gcalctool/mp.c:3871
 #, c-format
-msgid "TO AT LEAST %d ***\n"
+msgid ""
+"ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
+"*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"
 msgstr ""
 
-#: gcalctool/mp.c:3998
+#: gcalctool/mp.c:3996
 msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
 msgstr "*** MPSIN 出現錯誤，計算結果將會不正確 ***\n"
 
-#: gcalctool/mp.c:4045
+#: gcalctool/mp.c:4043
 msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
 msgstr "*** 調用 MPSIN1 時 ABS(X) > 1 ***\n"
 
-#: gcalctool/mp.c:4194
+#: gcalctool/mp.c:4192
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
 msgstr "*** 調用 MPSQRT 副程序時 X 是負數 ***\n"
 
-#~ msgid "Perform calculations"
-#~ msgstr "進行計算"
+#: gcalctool.desktop.in.h:2
+msgid "Perform calculations"
+msgstr "進行計算"
+
+#~ msgid "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
+#~ msgstr "*** 調用 MPSET 時 ITMAX2 的值太小 ***\n"
