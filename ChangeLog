@@ -7,6 +7,18 @@
 gcalctool change history.
 =========================
 
+v4.2.51 - 19th February 2003.  (richb)
+
+* From: Dennis Cranston <dennis.cranston@yahoo.com>
+  - The process_str() function will cause a crash if the input string is 
+    null. For example, if the clipboard is empty and the user presses 
+    CTRL-V then gcalctool will core dump. Fixed by adding a null check to 
+    the function. 
+
+  - gcalctool now uses a text view for its display widget.
+
+----
+
 v4.2.50 - 18th February 2003.  (richb)
 
 * Fixes to the manual page:

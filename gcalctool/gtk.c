@@ -770,6 +770,7 @@ create_kframe()
     char *hn;
     int count;
     GtkWidget *event_box, *view_widget;
+    GtkTextBuffer *buffer;
 
     v->tool_label = NULL;
     if (v->titleline == NULL) {
@@ -804,20 +805,31 @@ create_kframe()
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
     event_box = gtk_event_box_new();
-    X->display_item = gtk_label_new("");
+    X->display_item = gtk_text_view_new();
     gtk_widget_set_name(X->display_item, "displayitem");
 
-    gtk_label_set_selectable(GTK_LABEL(X->display_item), TRUE);
+    gtk_text_view_set_justification(GTK_TEXT_VIEW(X->display_item),
+                                    GTK_JUSTIFY_RIGHT);
+    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(X->display_item), GTK_WRAP_WORD);
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_create_tag(buffer, "x-large", "scale", PANGO_SCALE_X_LARGE, 
+                               NULL);			       
+
+    gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(X->display_item), FALSE);
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), FALSE);
+    GTK_WIDGET_UNSET_FLAGS(X->display_item, GTK_CAN_FOCUS);
+
+    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(X->display_item), 12);
+    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 12);
+    gtk_text_view_set_right_margin(GTK_TEXT_VIEW(X->display_item), 6);
+
     set_display("0.00");
     gtk_widget_ref(X->display_item);
+    gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
     gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
     gtk_widget_show(X->display_item);
     gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, FALSE, TRUE, 0);
     gtk_widget_show(event_box);
-
-    gtk_misc_set_alignment(GTK_MISC(X->display_item), 1.0, 0.5);
-    gtk_misc_set_padding(GTK_MISC(X->display_item), 5, 5);
-    gtk_widget_set_size_request(X->display_item, -1, 80);
 
     gtk_widget_realize(X->kframe);
     gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
@@ -1190,28 +1202,23 @@ get_constant(int n)
 void
 get_display()              /* The Copy function key has been pressed. */
 {
-    char selstr[MAXLINE];  /* Display value or selected portion thereof. */
-    const gchar *display;
-    int i, start, end;
-    int sellen = 0;        /* Length of display value (or selected portion). */
+    gchar *string = NULL;
+    GtkTextBuffer *buffer;
+    GtkTextIter start, end;
 
-    display = gtk_label_get_text(GTK_LABEL(X->display_item));
-    if (gtk_label_get_selection_bounds(GTK_LABEL(X->display_item),
-                                       &start, &end) == TRUE) {
-        for (i = start; i < end; i++) {
-            selstr[sellen++] = display[i];
-        }    
-        selstr[sellen] = '\0';
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+
+    if (gtk_text_buffer_get_selection_bounds(buffer, &start, &end) == TRUE) {
+        string = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
     } else {
-        STRCPY(selstr, display);
-        sellen = strlen(display)+1;
+        gtk_text_buffer_get_bounds(buffer, &start, &end);
+        string = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
     }
 
     if (v->shelf != NULL) {
         free(v->shelf);
     }
-    v->shelf = malloc((unsigned int) sellen);
-    STRCPY(v->shelf, selstr);     /* Safely keep copy of display. */
+    v->shelf = g_strdup(string);
 
     gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), v->shelf, -1);
 }
@@ -1704,10 +1711,19 @@ set_button_state(GtkWidget *w, int isSensitive)
 void
 set_display(char *str)
 {
-    char label_str[MAXLINE];
- 
-    SPRINTF(label_str, "<span size=\"x-large\">%s</span>", _(str));
-    gtk_label_set_markup(GTK_LABEL(X->display_item), label_str);
+    GtkTextBuffer *buffer;
+    GtkTextIter start, end;
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_get_bounds (buffer, &start, &end);
+    gtk_text_buffer_delete(buffer, &start, &end);
+
+    gtk_text_buffer_insert_with_tags_by_name(buffer,
+                                             &end,
+                                             strlen(str) != 0 ? str : " ",
+                                             -1,
+                                             "x-large",
+                                             NULL);
 }
 
 

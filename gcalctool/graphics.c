@@ -119,6 +119,10 @@ process_str(char *str)
     struct button *current;
     int i, len;
 
+    if (str == NULL) {
+        return;
+    }
+
     len = strlen(str);
     for (i = 0; i < len; i++) {
         if (v->error) {
