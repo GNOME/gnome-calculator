@@ -5,6 +5,96 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.1.10
+
+* Fixes for I18N support.
+
+----
+
+Overview of changes in gcalctool 4.1.9
+
+* Now that gcalctool is using Gtk resources to determine the appearance of
+  the calculator, there is no need to use the custom display_frame widget.
+* The calculator display area now has tooltip help.
+
+----
+
+Overview of changes in gcalctool 4.1.8
+
+* Fixed up mistakes is the gcalctool tooltip help text.
+* Three keyboard accelerators weren't working when a "menu" button had been
+  pressed and the calculator was in pending mode:
+  Base button - "o" (octal).
+  Mode button - "l" (logical).
+  Trig button - "g" (gradient).
+* The + and . keys on the numeric keypad now work.
+
+----
+
+Overview of changes in gcalctool 4.1.7
+
+* Added in help support. Hitting the Help key will toggle whether tooltip
+  help messages are displayed for the various buttons and other widgets.
+
+  By default tooltips are disabled. Start gcalctool with the "-h" command
+  line option will enable them. There is also a "gcalctool.showhelp"
+  resource that can enable/disable them.
+
+----
+
+Overview of changes in gcalctool 4.1.6
+
+* The new Constant/Function popup now has the various items aligned.
+
+----
+
+Overview of changes in gcalctool 4.1.5
+
+* The size of the buttons in the Mode window are incorrect if the unused ones
+  are not shown. Solved this my simply making the unused ones insnsitive, and
+  showing them all.
+
+----
+
+Overview of changes in gcalctool 4.1.4
+
+
+* Keyboard accelerators now work for the gcalctool "menu" buttons.
+
+----
+
+Overview of changes in gcalctool 4.1.3
+
+* The constant and function definitions are now read and written to a file
+  named ~/.gcalctoolcf.
+* gcalctool now also tries to read a ~/.gcalctoolrc file at startup time.
+  This file (if it exists) can contain resources for changing the appearance
+  of the application. A gcalctoolrc file is now also included with the
+  gcalctool distribution, which gives the old OpenWindows DeskSet appearance
+  to the calculator.
+* The ability to change various colors via X resources has also been removed.
+  The manual pages have been updated to reflect this.
+
+----
+
+Overview of changes in gcalctool 4.1.2
+
+* Starting gcalctool then switching hands to left-handed, then using the
+  keyboard for input, wrongly associated the various keyboard accelerators
+  for the swapped keys.
+
+----
+
+Overview of changes in gcalctool 4.1.1
+
+* Now finds the X11 libraries in a platform independent way.
+* Fixed up the gcalctool usage message.
+* Fixed up the gcalctool manual pages.
+* gcalctool now looks for ~/.gcalctoolrc and ~/.gcalctooldefaults files.
+* X resources are now "gcalctool.<whatever" rather than "calctool.<whatever>".
+
+----
+
 Overview of changes in gcalctool 4.1.0
 
 * Graphics driver is now based on Gtk2.

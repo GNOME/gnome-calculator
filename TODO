@@ -10,11 +10,32 @@ Calctool TODO.
 
 Related to the Gtk2 version:
 
-* Make sure everything is setup correctly for I18N/L10N.
 * Shouldn't use X resources. Probably need to use gconf, but I really 
   don't want to have to drag in a load of GNOME libraries (i.e. I would 
   rather keep this a Gtk application).
 * Make sure the accessibility keys (Tab, Space etc...) work.
+* If the mode window is to be initially displayed when gcalctool starts
+  (currently "gcalctool.mode: <mode>" in ~/.gcalctooldefaults), then it
+  is being displayed in the wrong position on the screen.
+* If started as left-handed (currently "gcalctool.rightHanded:  false" 
+  in ~/.gcalctooldefaults), and the user is using the old OpenWindows
+  colors (with the supplied gcalctoolrc file), the buttons are not colored
+  correctly.
+* Not all the gray buttons on the various mode popups are colored correctly
+  (if the user is using the old OpenWindows
+  colors (with the supplied gcalctoolrc file).
+* There are still places in the code where the size of the widgets are 
+  hard-coded. See:
+
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#740  
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#807
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#837
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#851
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#1369
+  http://cvs.gnome.org/lxr/source/gcalctool/gcalctool/gtk.c#1409
+
+  In order to work properly with all themes and in all locales, these
+  should be adjusted.
 
 ============================================================================
 

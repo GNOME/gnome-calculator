@@ -310,9 +310,9 @@ main(int argc, char **argv)
     X = (XVars) LINT_CAST(calloc(1, sizeof(XObject)));
 
     bindtextdomain(PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset(PACKAGE, "UTF-8");
     textdomain(PACKAGE);
 
-    gtk_set_locale();
     gtk_init(&argc, &argv);
 
     gtk_rc_get_default_files();
