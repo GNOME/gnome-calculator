@@ -1354,6 +1354,7 @@ check_vals(int n, int keyval,
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
+    GtkWidget *focus;
     int retval = FALSE;
 
     if (event->keyval == GDK_Alt_L) {
@@ -1374,6 +1375,12 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
     } else if (event->keyval == GDK_Shift_R) {
         X->shft_r = TRUE;
 	return(TRUE);
+    } else if (event->keyval == GDK_space) {
+        focus = gtk_window_get_focus(GTK_WINDOW(X->kframe));
+        if (GTK_IS_BUTTON(focus) == TRUE) {
+            g_signal_emit_by_name(focus, "pressed");
+        }
+        return(FALSE);
     }
 
     switch (v->modetype) {
