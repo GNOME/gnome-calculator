@@ -719,7 +719,7 @@ create_kframe()
 
     X->kframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->kframe), "kframe", X->kframe);
-    gtk_window_set_resizable(GTK_WINDOW(X->kframe), FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(X->kframe), TRUE);
 
     X->kvbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(X->kvbox);
