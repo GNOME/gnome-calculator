@@ -485,7 +485,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     binop
 },
 {
-    N_("1/<i>x</i>"),
+  N_("1/<i>x</i>"),
     N_("Reciprocal [r]"),
     NULL,
     { 0, 0 },
@@ -506,7 +506,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     M_NONE,
     do_immed,  
     N_("^2"),
-    immediate
+    immediate | postfixop
 },
 {
     N_("Abs"),
@@ -926,7 +926,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_calc,
     N_("^"),
-    binop
+    binop | postfixop
 },       
 {        
     N_("<i>x</i>!"),

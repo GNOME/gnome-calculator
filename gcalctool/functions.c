@@ -454,6 +454,16 @@ do_expression()
         }
     }
 
+    if (v->current->flags & postfixop) {
+      if (!v->expression || !strlen(v->expression)) {
+	int MP1[MP_SIZE];
+	char *zero = NULL;
+	do_zero(MP1);
+	zero = make_number(MP1, v->base, TRUE, FALSE);
+	exp_append(zero);
+      }
+    }
+
     if (v->current->flags & clear) {
         exp_del();
         set_error_state(FALSE);
