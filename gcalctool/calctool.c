@@ -296,7 +296,6 @@ do_calctool(int argc, char **argv)
     }
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
-    write_cmdline();                 /* Setup gcalctool command line. */
     start_tool();                    /* Display the calculator. */
 }
 

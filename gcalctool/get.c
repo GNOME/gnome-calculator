@@ -173,7 +173,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
             INC;
         }
     }
-    check_args();
 }
 
 
@@ -574,27 +573,6 @@ usage(char *progname)
 
 
 void
-write_cmdline()
-{
-    int argc;
-    char *argv[15], buf[MAXLINE];
-
-    argc = 0;
-    if (v->righthand) {
-        argv[argc++] = "-r";
-    } else {
-        argv[argc++] = "-l";
-    }
-
-    argv[argc++] = "-a";
-    SPRINTF(buf, "%1d", v->accuracy);
-    argv[argc++] = buf;
-
-    save_cmdline(argc, argv);
-}
-
-
-void
 write_rcfile(enum menu_type mtype, int exists, int cfno, 
              char *val, char *comment)
 {
@@ -692,8 +670,6 @@ void
 write_resources()
 {
     char intval[5];
-
-    load_deskset_defs();
 
     SPRINTF(intval, "%d", v->accuracy);
     put_resource(R_ACCURACY, intval);

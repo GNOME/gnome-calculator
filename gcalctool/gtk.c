@@ -141,6 +141,7 @@ static void prop_apply(GtkButton *, gpointer);
 static void prop_cancel(GtkButton *, gpointer);
 static void prop_ok(GtkButton *, gpointer);
 static void props_menu_proc(gpointer, int, GtkWidget *);
+static void remove_kbd_accel(GtkWidget *, guint, guint);
 static void reset_prop_vals(void);
 static void set_button_label(GtkWidget *, gchar *, int n);
 static void set_prop_options(int);
@@ -493,75 +494,6 @@ cfframe_ok_cb(GtkButton *button, gpointer user_data)
 {
     cfframe_apply_cb(button, user_data);
     gtk_widget_hide(X->cfframe);
-}
-
-
-/*  Checks for font, width, height, scale, header, geometry, icon image
- *  icon label, reverse video, foreground color and background color.
- */
-
-void
-check_args()
-{
-#ifdef FIXUP
-    char *tempstr;
-    int reverse = 0;
-
-    if (defaults_exists("window.width", "Window.Width")) {
-        v->iwidth = defaults_get_integer("window.width", "Window.Width", 1);
-        if (v->iwidth < 0) {
-            v->iwidth = -1;
-        }
-    }
-    if (defaults_exists("window.height", "Window.Height")) {
-        v->iheight = defaults_get_integer("window.height", "Window.Height", 1);
-        if (v->iheight < 0) {
-            v->iheight = -1;
-        }
-    }
-
-    if (defaults_exists("window.iconic", "Window.Iconic")) {
-        v->iconic = defaults_get_boolean("window.iconic", "Window.Iconic", 0);
-    }
-
-    if (defaults_exists("window.header", "Window.Header")) {
-        tempstr = (char *) defaults_get_string("window.header",
-                                               "Window.Header", "Calculator");
-        if (tempstr == NULL || *tempstr == '\0') {
-            tempstr = " ";
-        }
-        read_str(&v->titleline, tempstr);
-    }
-    if (defaults_exists("window.geometry", "Window.Geometry")) {
-        tempstr = (char *) defaults_get_string("window.geometry",
-                                               "Window.Geometry", "");
-        ds_get_geometry_size(tempstr, &v->iwidth, &v->iheight);
-    }
-    if (defaults_exists("icon.pixmap", "Icon.Pixmap")) {
-        tempstr = (char *) defaults_get_string("icon.pixmap",
-                                               "Icon.Pixmap", "");
-        if (tempstr != NULL && *tempstr != '\0' && access(tempstr, R_OK) == 0) {
-            v->hasicon = TRUE;
-        } else {
-            FPRINTF(stderr, _("%s: cannot read icon filename (%s)\n"), 
-                    v->progname, tempstr);
-            xv_usage(_("gcalctool"));
-            exit(1);
-        }
-    }
-    if (defaults_exists("icon.footer", "Icon.Footer")) {
-        tempstr = (char *) defaults_get_string("icon.footer", "Icon.Footer",
-                                               _("Constant no:"));
-        if (tempstr == NULL || *tempstr == '\0') {
-            tempstr = " ";
-        }
-        read_str(&v->iconlabel, tempstr);
-    }
-    if (defaults_exists("window.reverseVideo", "Window.ReverseVideo")) {
-        reverse = defaults_get_boolean("window.reverseVideo",
-                                       "Window.ReverseVideo", 0);
-    }
-#endif /*FIXUP*/
 }
 
 
@@ -1313,18 +1245,6 @@ load_colors(void)      /* Create and load gcalctool color map. */
 
 
 void
-load_deskset_defs()     /* Load current deskset resource database. */
-{
-#ifdef FIXUP
-    if (X->desksetDB != NULL) {
-        XrmDestroyDatabase(X->desksetDB);
-    }
-    X->desksetDB = ds_load_deskset_defs();
-#endif /*FIXUP*/
-}
-
-
-void
 load_resources()        /* Load combined X resources databases. */
 { 
     char name[MAXPATHLEN], *ptr;
@@ -1661,11 +1581,6 @@ new_cf_value(GtkMenuItem *item, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(X->cf_desc_entry), "");
     gtk_entry_set_text(GTK_ENTRY(X->cf_val_entry), "");
  
-#ifdef FIXUP
-    XV_SET(Calctool_CFframe->CFpanel,
-           PANEL_CARET_ITEM, Calctool_CFframe->CFpi_cftext,
-           0);
-#endif /*FIXUP*/
     if (gdk_window_is_visible(X->cfframe->window) == FALSE) {
         ds_position_popup(X->kframe, X->cfframe, DS_POPUP_RIGHT);
     }
@@ -1771,13 +1686,9 @@ pframe_init(void)
 static void
 prop_apply(GtkButton *button, gpointer user_data)
 {
-    int oldr;
+    int newr = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->psright));
 
-    oldr          = v->righthand;
-    v->righthand  = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->psright));
-    set_prop_options(oldr);
-
-    write_cmdline();
+    set_prop_options(newr);
 }
 
 
@@ -1823,18 +1734,43 @@ put_resource(enum res_type rtype, char *value)
 
 
 static void
-reset_prop_vals(void)
+remove_extra_kbd_accels()
 {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->psright), v->righthand);
+    remove_kbd_accel(BUT_EQ,   0,              GDK_Return);
+    remove_kbd_accel(BUT_MUL,  GDK_SHIFT_MASK, GDK_asterisk);
+    remove_kbd_accel(BUT_QUIT, GDK_SHIFT_MASK, GDK_Q);
+
+    /* Numeric keypad. */
+    remove_kbd_accel(BUT_0,   0, GDK_KP_0);
+    remove_kbd_accel(BUT_1,   0, GDK_KP_1);
+    remove_kbd_accel(BUT_2,   0, GDK_KP_2);
+    remove_kbd_accel(BUT_3,   0, GDK_KP_3);
+    remove_kbd_accel(BUT_4,   0, GDK_KP_4);
+    remove_kbd_accel(BUT_5,   0, GDK_KP_5);
+    remove_kbd_accel(BUT_6,   0, GDK_KP_6);
+    remove_kbd_accel(BUT_7,   0, GDK_KP_7);
+    remove_kbd_accel(BUT_8,   0, GDK_KP_8);
+    remove_kbd_accel(BUT_9,   0, GDK_KP_9);
+    remove_kbd_accel(BUT_ADD, 0, GDK_KP_Add);
+    remove_kbd_accel(BUT_SUB, 0, GDK_KP_Subtract);
+    remove_kbd_accel(BUT_MUL, 0, GDK_KP_Multiply);
+    remove_kbd_accel(BUT_DIV, 0, GDK_KP_Divide);
+    remove_kbd_accel(BUT_PNT, 0, GDK_KP_Delete);
+    remove_kbd_accel(BUT_EQ,  0, GDK_KP_Enter);
 }
 
 
-void
-save_cmdline(int argc, char *argv[])
+static void
+remove_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
+    gtk_widget_remove_accelerator(button, X->kbd_accel, 
+                                  button_key, button_mods);
+}
+
+
+static void
+reset_prop_vals(void)
 {
-#ifdef FIXUP
-    DS_SAVE_CMDLINE(Calctool_kframe->kframe, argc, argv);
-#endif /*FIXUP*/
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->psright), v->righthand);
 }
 
 
@@ -1962,14 +1898,26 @@ set_mode(enum mode_type mode)
 
 
 static void
-set_prop_options(int oldr)
+set_prop_options(int newr)
 {
-    if (oldr != v->righthand) {
-        switch_hands(v->righthand);
+    int i, j, n;
+
+    if (newr != v->righthand) {
+        for (i = 0; i < BCOLS; i++) {
+            for (j = 0; j < BROWS; j++) {
+                n = j*BCOLS + i;
+                remove_kbd_accel(X->buttons[n], buttons[n].mods, 
+                                 buttons[n].value);
+            }
+        }
+        remove_extra_kbd_accels();
+        switch_hands(newr);
     }
 
+    v->righthand = newr;
     gtk_container_remove(GTK_CONTAINER(X->kvbox), X->ktable);
     make_ktable(X->kframe, X->kvbox); 
+    add_extra_kbd_accels();
     grey_buttons(v->base);
 }
 

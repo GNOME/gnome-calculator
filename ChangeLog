@@ -8,6 +8,20 @@
 gcalctool change history.
 =========================
 
+v4.1.2 - 14th June 2002.
+
+* Removed all the code in gtk.c that was surronded by #ifdef FIXUP.
+
+* Starting gcalctool then switching hands to left-handed, then using the
+  keyboard for input wrongly associates the various keyboard accelerators
+  for the swapped keys.
+
+  Reworked the logic in set_prop_options() in gtk.c. Needed to remove the
+  keyboard accelerators for the old buttons, before the keyboard layout
+  was switched.
+
+----
+
 v4.1.1 - 14th June 2002.
 
 * Adjusted configure.in to find the X11 libraries in a platform independent
