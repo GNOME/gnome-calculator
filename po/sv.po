@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2003-03-25 19:41+0000\n"
-"PO-Revision-Date: 2003-03-09 00:47+0100\n"
+"POT-Creation-Date: 2003-04-10 02:21+0200\n"
+"PO-Revision-Date: 2003-04-10 02:23+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,16 +67,15 @@ msgstr "_Vet"
 #. Tooltips for each display mode value.
 #: gcalctool/calctool.c:70
 msgid "Set display type to engineering format"
-msgstr ""
+msgstr "Ställ displaytypen till ingenjörsformat"
 
 #: gcalctool/calctool.c:71
-#, fuzzy
 msgid "Set display type to fixed-point format"
-msgstr "Visa text med fast breddsteg"
+msgstr "Ställ in displaytyp till fixt format"
 
 #: gcalctool/calctool.c:72
 msgid "Set display type to scientific format"
-msgstr ""
+msgstr "Ställ in displaytyp till vetenskapligt format"
 
 #. Strings for each mode value.
 #: gcalctool/calctool.c:76
@@ -449,16 +448,16 @@ msgid "<"
 msgstr "<"
 
 #: gcalctool/calctool.c:607
-msgid "Shift displayed value 0-15 places to the left"
-msgstr "Skifta det visade värdet 0-15 platser till vänster"
+msgid "Shift displayed value 1-15 places to the left"
+msgstr "Skifta det visade värdet 1-15 platser till vänster"
 
 #: gcalctool/calctool.c:615
 msgid ">"
 msgstr ">"
 
 #: gcalctool/calctool.c:616
-msgid "Shift displayed value 0-15 places to the right"
-msgstr "Skifta det visade värdet 0-15 platser till höger"
+msgid "Shift displayed value 1-15 places to the right"
+msgstr "Skifta det visade värdet 1-15 platser till höger"
 
 #: gcalctool/calctool.c:624
 msgid "&amp;16"
@@ -553,8 +552,8 @@ msgid "x!"
 msgstr "x!"
 
 #: gcalctool/calctool.c:735
-msgid "factorial of displayed value"
-msgstr "fakulteten av det visade värdet"
+msgid "Factorial of displayed value"
+msgstr "Fakulteten av det visade värdet"
 
 #: gcalctool/calctool.c:743
 msgid "Rand"
@@ -580,7 +579,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Hexadecimala siffran E"
 
-#: gcalctool/calctool.c:772 gcalctool/gtk.c:1132
+#: gcalctool/calctool.c:772 gcalctool/gtk.c:1144
 msgid "F"
 msgstr "F"
 
@@ -644,7 +643,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Hexadecimala siffran B"
 
-#: gcalctool/calctool.c:846 gcalctool/gtk.c:1125
+#: gcalctool/calctool.c:846 gcalctool/gtk.c:1137
 msgid "C"
 msgstr "C"
 
@@ -810,7 +809,9 @@ msgstr "Användning: %s: [-D] [-E] [-a noggrannhet] "
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:934 gcalctool/gtk.c:1064
+#. translators: R is the short form of register used inter alia
+#. in popup menus
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:946 gcalctool/gtk.c:1076
 msgid "R"
 msgstr "R"
 
@@ -864,12 +865,11 @@ msgstr "/Visa/sep1"
 
 #: gcalctool/gtk.c:209
 msgid "/View/Show _Trailing Zeroes"
-msgstr ""
+msgstr "/Visa/Visa _eftersläpande nollor"
 
 #: gcalctool/gtk.c:210
-#, fuzzy
 msgid "/View/sep2"
-msgstr "/Visa/sep1"
+msgstr "/Visa/sep2"
 
 #: gcalctool/gtk.c:211
 msgid "/View/_Memory Registers"
@@ -893,8 +893,8 @@ msgid "/0 radix places"
 msgstr "/0 radixplatser"
 
 #: gcalctool/gtk.c:220
-msgid "/1 radix places"
-msgstr "/1 radixplatser"
+msgid "/1 radix place"
+msgstr "/1 radixplats"
 
 #: gcalctool/gtk.c:221
 msgid "/2 radix places"
@@ -929,13 +929,12 @@ msgid "/9 radix places"
 msgstr "/9 radixplatser"
 
 #: gcalctool/gtk.c:229
-#, fuzzy
 msgid "/sep1"
-msgstr "/Redigera/sep1"
+msgstr "/sep1"
 
 #: gcalctool/gtk.c:230
 msgid "/Show _Trailing Zeroes"
-msgstr ""
+msgstr "/Visa _eftersläpande nollor"
 
 #: gcalctool/gtk.c:234 gcalctool/gtk.c:252
 msgid "/1 place"
@@ -1049,43 +1048,42 @@ msgstr "Värde"
 msgid "Description"
 msgstr "Beskrivning"
 
-#: gcalctool/gtk.c:831 gcalctool/gtk.c:833
+#: gcalctool/gtk.c:838 gcalctool/gtk.c:840 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Miniräknare"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1001
+#: gcalctool/gtk.c:1013
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1003
-#, fuzzy
+#: gcalctool/gtk.c:1015
 msgid "Set inverse option for trigonometric functions"
-msgstr "Inverterad trigonometri-/logfunktion"
+msgstr "Ställ in inverterat alternativ för trigonometriska funktioner"
 
-#: gcalctool/gtk.c:1009
+#: gcalctool/gtk.c:1021
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1011
+#: gcalctool/gtk.c:1023
 msgid "Set hyperbolic option for trigonometric functions"
-msgstr ""
+msgstr "Ställ in hyperboliskt alternativ för trigonometriska funktioner"
 
-#: gcalctool/gtk.c:1055
+#: gcalctool/gtk.c:1067
 msgid "Memory Registers"
 msgstr "Minnesregister"
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Constants..."
 msgstr "Redigera konstanter..."
 
-#: gcalctool/gtk.c:1114
+#: gcalctool/gtk.c:1126
 msgid "Edit Functions..."
 msgstr "Redigera funktioner..."
 
 #: gcalctool/mp.c:181
 msgid "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
-msgstr ""
+msgstr "*** TECKEN INTE 0, +1 ELLER -1 I ANROP AV MPADD2.\n"
 
 #: gcalctool/mp.c:182 gcalctool/mp.c:2814 gcalctool/mp.c:3092
 msgid "POSSIBLE OVERWRITING PROBLEM ***\n"
@@ -1281,11 +1279,11 @@ msgstr ""
 
 #: gcalctool/mp.c:3649
 msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
-msgstr ""
+msgstr "*** X = 0 OCH N NEGATIVT I ANROP AV MPROOT ***\n"
 
 #: gcalctool/mp.c:3660
 msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
-msgstr ""
+msgstr "*** X NEGATIVT OCH N JÄMNT I ANROP AV MPROOT ***\n"
 
 #: gcalctool/mp.c:3760
 msgid "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION\n"
@@ -1306,19 +1304,26 @@ msgstr ""
 #: gcalctool/mp.c:3874
 #, c-format
 msgid "TO AT LEAST %d ***\n"
-msgstr ""
+msgstr "TILL MINST %d ***\n"
 
 #: gcalctool/mp.c:3998
 msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
-msgstr ""
+msgstr "*** FEL INTRÄFFADE I MPSIN, RESULTATET FELAKTIGT ***\n"
 
 #: gcalctool/mp.c:4045
 msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
-msgstr ""
+msgstr "*** ABS(X) STÖRRE ÄN 1 I ANROP AV MPSIN1 ***\n"
 
 #: gcalctool/mp.c:4194
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
-msgstr ""
+msgstr "*** X NEGATIVT I ANROP TILL SUBRUTINEN MPSQRT ***\n"
+
+#: gcalctool.desktop.in.h:2
+msgid "Perform calculations"
+msgstr "Utför beräkningar"
+
+#~ msgid "/1 radix places"
+#~ msgstr "/1 radixplatser"
 
 #~ msgid "Calculate"
 #~ msgstr "Beräkna"
@@ -1475,9 +1480,6 @@ msgstr ""
 
 #~ msgid "Help"
 #~ msgstr "Hjälp"
-
-#~ msgid "/1 radix place"
-#~ msgstr "/1 radixplats"
 
 #~ msgid "Character:"
 #~ msgstr "Tecken:"
