@@ -1227,18 +1227,15 @@ create_kframe()
         gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR_ADV));
     }
 
-    X->khbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(X->khbox);
-    gtk_container_add(GTK_CONTAINER(X->kvbox), X->khbox);
     X->statusbar = gtk_statusbar_new();
     gtk_widget_show(X->statusbar);
-    gtk_box_pack_start(GTK_BOX(X->khbox), X->statusbar, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), X->statusbar, FALSE, FALSE, 0);
     gtk_statusbar_set_has_resize_grip(GTK_STATUSBAR(X->statusbar), FALSE);
 
     X->status_image = gtk_image_new_from_stock("", 
 					       GTK_ICON_SIZE_BUTTON);
     gtk_widget_show(X->status_image);
-    gtk_box_pack_start(GTK_BOX(X->khbox), X->status_image, FALSE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(X->statusbar), X->status_image, FALSE, TRUE, 0);
     g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
                      G_CALLBACK(kframe_key_press_cb), NULL);
 
