@@ -35,7 +35,9 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
+#ifndef DISABLE_GNOME
 #include <gnome.h>
+#endif /*DISABLE_GNOME*/
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 
@@ -168,7 +170,9 @@ static void cell_edited(GtkCellRendererText *,
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_menu_item_with_markup(char *, int, int);
+#ifndef DISABLE_GNOME
 static void die_cb(GnomeClient *client, gpointer data);
+#endif /*DISABLE_GNOME*/
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
@@ -431,7 +435,9 @@ static const gchar *ui_info =
 int
 main(int argc, char **argv)
 {
+#ifndef DISABLE_GNOME
     GnomeClient  *client;
+#endif /*DISABLE_GNOME*/
 
     v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
     X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
@@ -440,14 +446,22 @@ main(int argc, char **argv)
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
+#ifndef DISABLE_GNOME
     gnome_program_init("gcalctool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
                         NULL, NULL, NULL);
-
-    X->lnp = get_localized_numeric_point();
 
     /* Connect to the die signal. */
     client = gnome_master_client();
     g_signal_connect(client, "die", G_CALLBACK(die_cb), NULL);
+#else
+    gtk_set_locale();
+    gtk_init(&argc, &argv);
+#ifdef WANTED
+    add_pixmap_directory(PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
+#endif /*WANTED*/
+#endif /*DISABLE_GNOME*/
+
+    X->lnp = get_localized_numeric_point();
 
     gtk_rc_get_default_files();
 
@@ -699,6 +713,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
     GArray *entries = (GArray *) g_object_get_data(G_OBJECT(dialog), "entries");
 
     if (id == GTK_RESPONSE_HELP) {
+#ifndef DISABLE_GNOME
         GError *error = NULL;
 
         gnome_help_display_desktop(NULL, "gcalctool", "gcalctool", 
@@ -716,6 +731,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
             g_error_free(error);
             error = NULL;
         }
+#endif /*DISABLE_GNOME*/
         return;
     }
 
@@ -1441,12 +1457,14 @@ create_rframe()
 }
 
 
+#ifndef DISABLE_GNOME
 /*ARGSUSED*/
 static void
 die_cb(GnomeClient *client, gpointer data)
 {
     gtk_main_quit();
 }
+#endif /*DISABLE_GNOME*/
 
 
 /*ARGSUSED*/
@@ -1738,6 +1756,7 @@ handle_selection()  /* Handle the GET function key being pressed. */
 static void
 help_cb()
 {
+#ifndef DISABLE_GNOME
     GError *error = NULL;
 
     gnome_help_display_desktop(NULL, "gcalctool", "gcalctool", NULL, &error);
@@ -1746,6 +1765,7 @@ help_cb()
         g_error_free(error);
         error = NULL;
     }
+#endif /*DISABLE_GNOME*/
 }
 
 
