@@ -2447,13 +2447,16 @@ set_accuracy_toggle(int val)
 void
 scroll_right()
 {
-    GtkAdjustment *set;
+    if (GTK_WIDGET_VISIBLE(
+                   GTK_SCROLLED_WINDOW(X->scrolledwindow)->hscrollbar)) {
+        GtkAdjustment *set;
 
-    set = gtk_scrolled_window_get_hadjustment(
+        set = gtk_scrolled_window_get_hadjustment(
                                 GTK_SCROLLED_WINDOW(X->scrolledwindow));
-    gtk_adjustment_set_value(set, set->upper);
-    gtk_scrolled_window_set_hadjustment(
+        gtk_adjustment_set_value(set, set->upper);
+        gtk_scrolled_window_set_hadjustment(
                                 GTK_SCROLLED_WINDOW(X->scrolledwindow), set);
+    }
 }
 
 
