@@ -30,6 +30,7 @@
 #include "config.h"
 #include "extern.h"
 #include "dsdefs.h"
+#include <gnome.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -303,8 +304,10 @@ main(int argc, char **argv)
 static void
 about_cb()
 {
-/**/fprintf(stderr, "about_cb called.\n");
-#ifdef FIXUP
+    GdkPixbuf *pixbuf = NULL;
+    gchar *file;
+    GError *error = NULL;
+
     gchar *authors[] = {
         "Rich Burridge <rich.burridge@sun.com>",
         NULL
@@ -315,22 +318,37 @@ about_cb()
     /* Translator credits */
     gchar *translator_credits = _("translator_credits");
 
+
     if (X->about != NULL) {
         gdk_window_show(X->about->window);
         gdk_window_raise(X->about->window);
         return;
     }
+
+    file = gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_PIXMAP, 
+                                     "gnome-calc3.png", FALSE, NULL);
+    pixbuf = gdk_pixbuf_new_from_file(file, &error);
+    if (error) {
+        g_warning(_(": cannot open %s: %s"), file, error->message);
+        g_error_free(error);
+    }
+    g_free(file);
+
     X->about = gnome_about_new(_("Gcalctool"), VERSION,
                    "(C) 2003 the Free Software Foundation",
                    _("Calculator with financial and scientific modes"),
                    (const char **) authors,
                    (const char **) documenters,
                    strcmp(translator_credits, "translator_credits") != 0 ? 
-                          translator_credits : NULL, NULL);
+                          translator_credits : NULL,
+                   pixbuf);
+    if (pixbuf) {
+        gdk_pixbuf_unref(pixbuf);
+    }             
+
     g_signal_connect(G_OBJECT(X->about), "destroy",
                         G_CALLBACK(gtk_widget_destroyed), &X->about);
     gtk_widget_show(X->about);
-#endif /*FIXUP*/
 }
 
 
