@@ -9,6 +9,14 @@ gcalctool change history.
 
 2004-01-06  Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug 130282 again (http://bugzilla.gnome.org/show_bug.cgi?id=130282)
+      Needed to remove the "|| tsep[0] == '\0'" check from the get_tsep()
+      routine in order to get the thousands separator to correctly work in
+      all locales. Note that there is no thousands separator now for the C 
+      locale.
+
+2004-01-06  Rich Burridge <rich.burridge@sun.com>
+
     * Fixed part of bug 126125 
       (http://bugzilla.gnome.org/show_bug.cgi?id=126125). If the user
       entered: "1+(2()<backspace>)", this resulted in an answer of 0.

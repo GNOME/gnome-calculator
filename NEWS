@@ -5,6 +5,15 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.3.36
+
+* Fixed bug 130282 again. Needed to remove the "|| tsep[0] == '\0'" check 
+  from the get_tsep() routine in order to get the thousands separator to 
+  correctly work in all locales. Note that there is no thousands separator 
+  now for the C locale.
+
+----
+
 Overview of changes in gcalctool 4.3.35
 
 * Fixed part of bug 126125. If the user entered: "1+(2()<backspace>)", 
