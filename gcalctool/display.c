@@ -202,12 +202,6 @@ make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
         (v->dtype == SCI) ||
         (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
         return(make_eng_sci(MPnumber, base));
-    } else if (v->dtype == FIX && val != 0.0 && mkFix) {
-        if (val <= min_fix[v->accuracy][base]) {
-            return(make_eng_sci(MPnumber, base));
-        } else {
-            return(make_fixed(MPnumber, base, MAX_DIGITS));
-        }
     } else {
         return(make_fixed(MPnumber, base, MAX_DIGITS));
     }
