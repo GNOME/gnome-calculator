@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
-"PO-Revision-Date: 2004-02-15 01:56+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-10 00:08+0900\n"
+"PO-Revision-Date: 2004-06-10 00:07+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -169,8 +169,8 @@ msgid "Divide"
 msgstr "除算"
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
-msgstr "Bsp"
+msgid "Bksp"
+msgstr "Bksp"
 
 #: gcalctool/calctool.c:192
 msgid "Remove rightmost character from displayed value"
@@ -668,7 +668,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "16 進数表記の E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1281
 msgid "F"
 msgstr "F"
 
@@ -732,7 +732,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "16 進数表記の B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1273
 msgid "C"
 msgstr "C"
 
@@ -742,47 +742,47 @@ msgstr "16 進数表記の C"
 
 #: gcalctool/calctool.c:937
 msgid "Or"
-msgstr "Or"
+msgstr "OR"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
-msgstr "論理和 (or)"
+msgid "Bitwise OR"
+msgstr "ビット単位の論理和"
 
 #: gcalctool/calctool.c:947
 msgid "And"
-msgstr "And"
+msgstr "AND"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
-msgstr "論理積 (and)"
+msgid "Bitwise AND"
+msgstr "ビット単位の論理積"
 
 #: gcalctool/calctool.c:957
 msgid "Not"
-msgstr "Not"
+msgstr "NOT"
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
-msgstr "否定"
+msgid "Bitwise NOT"
+msgstr "ビット単位の否定"
 
 #: gcalctool/calctool.c:967
 msgid "Xor"
-msgstr "Xor"
+msgstr "XOR"
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
-msgstr "排他的論理和 (xor)"
+msgid "Bitwise XOR"
+msgstr "ビット単位の排他的論理和"
 
 #: gcalctool/calctool.c:977
 msgid "Xnor"
-msgstr "Xnor"
+msgstr "XNOR"
 
 #: gcalctool/calctool.c:978
-msgid "Logical XNOR"
-msgstr "排他的論理和の否定 (xnor)"
+msgid "Bitwise XNOR"
+msgstr "ビット単位の排他的論理和の否定"
 
 #: gcalctool/calctool.c:1078
-msgid "kilometers per hour or miles per hour"
-msgstr "キロメートル毎時とマイル毎時"
+msgid "Kilometer-to-mile conversion factor"
+msgstr "キロメータ -> マイル変換の係数"
 
 #: gcalctool/calctool.c:1079
 msgid "square root of 2"
@@ -797,8 +797,8 @@ msgid "pi"
 msgstr "π (円周率)"
 
 #: gcalctool/calctool.c:1082
-msgid "centimeters or inches"
-msgstr "センチメートルとインチ"
+msgid "Centimeter-to-inch conversion factor"
+msgstr "センチメートル -> インチ変換の係数"
 
 #: gcalctool/calctool.c:1083
 msgid "degrees in a radian"
@@ -809,16 +809,16 @@ msgid "2 ^ 20"
 msgstr "2<sup>20</sup>"
 
 #: gcalctool/calctool.c:1085
-msgid "grams or ounces"
-msgstr "グラムとオンス"
+msgid "Gram-to-ounce conversion factor"
+msgstr "グラム -> オンス変換の係数"
 
 #: gcalctool/calctool.c:1086
-msgid "kilojoules or British thermal units"
-msgstr "キロジュールと英国式温度の単位"
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
+msgstr "キロジュール -> 英国式温度の単位変換の係数"
 
 #: gcalctool/calctool.c:1087
-msgid "cubic centimeters or cubic inches"
-msgstr "立方センチメートルと立方インチ"
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+msgstr "立方センチメートル -> 立方インチ変換の係数"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
@@ -900,275 +900,302 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1073 gcalctool/gtk.c:1206
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/関数電卓(_C)"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/関数電卓/終了(_Q)"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/編集(_E)"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/編集/コピー(_C)"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/編集/貼り付け(_P)"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/編集/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/編集/ASCII 文字の挿入(_I)..."
-
 #: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/表示(_V)"
+msgid "_Quit"
+msgstr "終了(_Q)"
 
 #: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/表示/基本モード(_B)"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/表示/財務モード(_F)"
+msgid "Quit the calculator"
+msgstr "電卓を終了します"
 
 #: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/表示/科学計算モード(_S)"
+msgid "_Copy"
+msgstr "コピー(_C)"
 
 #: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/表示/sep1"
+msgid "Copy selection"
+msgstr "選択範囲をコピーします"
 
 #: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/表示/付与されている 0 の表示(_T)"
+msgid "_Paste"
+msgstr "貼り付け(_P)"
 
 #: gcalctool/gtk.c:182
-msgid "/View/Show T_housands Separator"
-msgstr "/表示/1000単位の区切りの表示(_H)"
+msgid "Paste selection"
+msgstr "クリップボードから貼り付けます"
 
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/表示/sep2"
+msgid "_Insert ASCII Value..."
+msgstr "ASCII 文字の挿入(_I)..."
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/表示/メモリ・レジスタ(_M)"
+msgid "Insert ASCII value"
+msgstr "ASCII 文字の挿入"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/ヘルプ(_H)"
+msgid "_Contents"
+msgstr "目次(_C)"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/ヘルプ/目次(_C)"
+msgid "Show help contents"
+msgstr "ヘルプの目次を表示します"
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/ヘルプ/情報(_A)"
+msgid "_About"
+msgstr "情報(_A)"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
-msgstr "/有効桁数 0"
+#: gcalctool/gtk.c:189
+msgid "Show about help"
+msgstr "情報ダイアログを表示します"
 
-#: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr "/有効桁数 1"
+#: gcalctool/gtk.c:191 gcalctool/gtk.c:192 gcalctool/gtk.c:222
+#: gcalctool/gtk.c:223
+msgid "1 place"
+msgstr "１個"
 
-#: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr "/有効桁数 2"
+#: gcalctool/gtk.c:193 gcalctool/gtk.c:194 gcalctool/gtk.c:224
+#: gcalctool/gtk.c:225
+msgid "2 places"
+msgstr "２個"
 
-#: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr "/有効桁数 3"
+#: gcalctool/gtk.c:195 gcalctool/gtk.c:196 gcalctool/gtk.c:226
+#: gcalctool/gtk.c:227
+msgid "3 places"
+msgstr "３個"
 
-#: gcalctool/gtk.c:196
-msgid "/4 significant places"
-msgstr "/有効桁数 4"
+#: gcalctool/gtk.c:197 gcalctool/gtk.c:198 gcalctool/gtk.c:228
+#: gcalctool/gtk.c:229
+msgid "4 places"
+msgstr "４個"
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr "/有効桁数 5"
+#: gcalctool/gtk.c:199 gcalctool/gtk.c:200 gcalctool/gtk.c:230
+#: gcalctool/gtk.c:231
+msgid "5 places"
+msgstr "５個"
 
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr "/有効桁数 6"
+#: gcalctool/gtk.c:201 gcalctool/gtk.c:202 gcalctool/gtk.c:232
+#: gcalctool/gtk.c:233
+msgid "6 places"
+msgstr "６個"
 
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr "/有効桁数 7"
+#: gcalctool/gtk.c:203 gcalctool/gtk.c:204 gcalctool/gtk.c:234
+#: gcalctool/gtk.c:235
+msgid "7 places"
+msgstr "７個"
 
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr "/有効桁数 8"
+#: gcalctool/gtk.c:205 gcalctool/gtk.c:206 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:237
+msgid "8 places"
+msgstr "８個"
 
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr "/有効桁数 9"
+#: gcalctool/gtk.c:207 gcalctool/gtk.c:208 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:239
+msgid "9 places"
+msgstr "９個"
 
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
+#: gcalctool/gtk.c:209 gcalctool/gtk.c:210 gcalctool/gtk.c:240
+#: gcalctool/gtk.c:241
+msgid "10 places"
+msgstr "10個"
 
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
-msgstr "/有効桁数で表示する(_T)"
+#: gcalctool/gtk.c:211 gcalctool/gtk.c:212 gcalctool/gtk.c:242
+#: gcalctool/gtk.c:243
+msgid "11 places"
+msgstr "11個"
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
-msgstr "/ 1 個シフト"
+#: gcalctool/gtk.c:213 gcalctool/gtk.c:214 gcalctool/gtk.c:244
+#: gcalctool/gtk.c:245
+msgid "12 places"
+msgstr "12個"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
-msgstr "/ 2 個シフト"
+#: gcalctool/gtk.c:215 gcalctool/gtk.c:216 gcalctool/gtk.c:246
+#: gcalctool/gtk.c:247
+msgid "13 places"
+msgstr "13個"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
-msgstr "/ 3 個シフト"
+#: gcalctool/gtk.c:217 gcalctool/gtk.c:218 gcalctool/gtk.c:248
+#: gcalctool/gtk.c:249
+msgid "14 places"
+msgstr "14個"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
-msgstr "/ 4 個シフト"
+#: gcalctool/gtk.c:219 gcalctool/gtk.c:220 gcalctool/gtk.c:250
+#: gcalctool/gtk.c:251
+msgid "15 places"
+msgstr "15個"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
-msgstr "/ 5 個シフト"
+#: gcalctool/gtk.c:256 gcalctool/gtk.c:263
+msgid "Show _Trailing Zeroes"
+msgstr "有効桁数で表示する(_T)"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
-msgstr "/ 6 個シフト"
+#: gcalctool/gtk.c:257 gcalctool/gtk.c:264
+msgid "Show trailing zeroes"
+msgstr "有効桁数で表示します"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
-msgstr "/ 7 個シフト"
+#: gcalctool/gtk.c:258
+msgid "Show T_housands Separator"
+msgstr "1000単位の区切りの表示(_H)"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
-msgstr "/ 8 個シフト"
+#: gcalctool/gtk.c:259
+msgid "Show thousands separator"
+msgstr "1000単位で桁区切りを表示します"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
-msgstr "/ 9 個シフト"
+#: gcalctool/gtk.c:260
+msgid "_Memory Registers"
+msgstr "メモリのレジスタ(_M)"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
-msgstr "/10 個シフト"
+#: gcalctool/gtk.c:261
+msgid "Show memory registers"
+msgstr "メモリのレジスタを表示します"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
-msgstr "/11 個シフト"
+#: gcalctool/gtk.c:269 gcalctool/gtk.c:270
+msgid "0 significant places"
+msgstr "桁数０"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
-msgstr "/12 個シフト"
+#: gcalctool/gtk.c:271 gcalctool/gtk.c:272
+msgid "1 significant place"
+msgstr "桁数１"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
-msgstr "/13 個シフト"
+#: gcalctool/gtk.c:273 gcalctool/gtk.c:274
+msgid "2 significant places"
+msgstr "桁数２"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
-msgstr "/14 個シフト"
+#: gcalctool/gtk.c:275 gcalctool/gtk.c:276
+msgid "3 significant places"
+msgstr "桁数３"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
-msgstr "/15 個シフト"
+#: gcalctool/gtk.c:277 gcalctool/gtk.c:278
+msgid "4 significant places"
+msgstr "桁数４"
+
+#: gcalctool/gtk.c:279 gcalctool/gtk.c:280
+msgid "5 significant places"
+msgstr "桁数５"
+
+#: gcalctool/gtk.c:281 gcalctool/gtk.c:282
+msgid "6 significant places"
+msgstr "桁数６"
+
+#: gcalctool/gtk.c:283 gcalctool/gtk.c:284
+msgid "7 significant places"
+msgstr "桁数７"
+
+#: gcalctool/gtk.c:285 gcalctool/gtk.c:286
+msgid "8 significant places"
+msgstr "桁数８"
+
+#: gcalctool/gtk.c:287 gcalctool/gtk.c:288
+msgid "9 significant places"
+msgstr "桁数９"
+
+#: gcalctool/gtk.c:293
+msgid "_Basic mode"
+msgstr "基本モード(_B)"
+
+#: gcalctool/gtk.c:294
+msgid "Basic mode"
+msgstr "基本モードにします"
 
 #: gcalctool/gtk.c:295
+msgid "_Financial mode"
+msgstr "財務モード(_F)"
+
+#: gcalctool/gtk.c:296
+msgid "Financial mode"
+msgstr "財務モードにします"
+
+#: gcalctool/gtk.c:297
+msgid "_Scientific mode"
+msgstr "科学モード(_S)"
+
+#: gcalctool/gtk.c:298
+msgid "Scientific mode"
+msgstr "科学モードにします"
+
+#: gcalctool/gtk.c:440
 msgid "translator_credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
 "KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:442
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:444
 msgid "Calculator with financial and scientific modes."
 msgstr "財務と科学計算モードを持つ関数電卓です。"
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:731
 msgid "Insert ASCII Value"
 msgstr "ASCII 文字の挿入"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:746
 msgid "Ch_aracter:"
 msgstr "文字(_A):"
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:771
 msgid "_Insert"
 msgstr "挿入する(_I)"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:850
 msgid "Edit Constants"
 msgstr "定数の編集"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:850
 msgid "Edit Functions"
 msgstr "関数の編集"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:874
 msgid "Note:"
 msgstr "備考:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:875
 msgid "All constant values are specified in the decimal numeric base."
-msgstr "全ての定数は基数を 10進数として指定されています。"
+msgstr "全ての定数は 10進数で基数を表して下さい。"
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:885
 msgid "Click a _value or description to edit it:"
 msgstr "編集する値または説明をクリックして下さい(_V):"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:908
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:910
 msgid "Value"
 msgstr "値"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:912
 msgid "Description"
 msgstr "説明"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:940 gcalctool/gtk.c:942 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "関数電卓"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1141
 msgid "_Inv"
 msgstr "逆三角関数(_I)"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1149
 msgid "H_yp"
 msgstr "双曲線三角関数(_Y)"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1197
 msgid "Memory Registers"
 msgstr "メモリのレジスタ"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1262
 msgid "Edit Constants..."
 msgstr "定数の編集..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1262
 msgid "Edit Functions..."
 msgstr "関数の編集..."
 
