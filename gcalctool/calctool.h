@@ -252,6 +252,10 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 #define NOBUTTONS      BROWS * BCOLS
 
+#ifndef CFNAME
+#define CFNAME         ".gcalctoolcf"
+#endif /*CFNAME*/
+
 #ifndef RCNAME
 #define RCNAME         ".gcalctoolrc"
 #endif /*RCNAME*/
@@ -273,7 +277,6 @@ struct button {
     int value;               /* Unique button keyboard equivalent. */
     enum op_type opdisp;     /* Is button selected during operation? */
     enum menu_type mtype;    /* Type of popup menu (if any). */
-    char color;              /* Color of button portion. */
     void (*func)();          /* Function to obey on button press. */
 };
 
@@ -286,14 +289,14 @@ struct menu {
 
 struct calcVars {                      /* Calctool variables and options. */
     char *appname;                     /* Application name for resources. */
-    char *colstr[CALC_COLORSIZE];      /* X color resource strings. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
     char cur_op;                       /* Current arithmetic operation. */
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
     char fnum[MAX_DIGITS+1];           /* Scratchpad for fixed numbers. */
-    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolrc. */
-    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolrc. */
+    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
+    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
+    char *home;                        /* Pathname for users home directory. */
     char *iconlabel;                   /* The calctool icon label. */
     char item_text[MAXITEMS][60];      /* Pseudo panel item text strings. */
     char old_cal_value;                /* Previous calculation operator. */
@@ -324,10 +327,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     struct button temp_buttons[BCOLS];   /* To setup "right-handed" version. */
 
-    int rcols[CALC_COLORSIZE];           /* Red colormap values. */
-    int gcols[CALC_COLORSIZE];           /* Green colormap values. */
-    int bcols[CALC_COLORSIZE];           /* Blue colormap values. */
-
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int column;        /* Column number of current key/mouse press. */
@@ -343,7 +342,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int iconic;        /* Set if window is currently iconic. */
     int iheight;       /* Initial height of the calctool window. */
     int inverse;       /* If set, trig and log functions will be inversed. */
-    int iscolor;       /* Set if this is a color screen. */
     int ismenu;        /* Set when do_pending called via a popup menu. */
     int iwidth;        /* Initial width of the calctool window. */
     int ix;            /* Initial X position of the icon. */

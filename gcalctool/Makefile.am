@@ -22,7 +22,6 @@ gcalctool_SOURCES = \
     display_frame.c \
 	display_frame.h \
 	gtk.c \
-    color.h \
     extern.h
 
 gcalctool_LDADD = \

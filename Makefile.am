@@ -6,4 +6,5 @@ EXTRA_DIST = \
 	autogen.sh \
 	depcomp \
 	MAINTAINERS \
-	TODO
+	TODO \
+	gcalctoolrc

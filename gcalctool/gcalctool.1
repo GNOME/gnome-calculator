@@ -1,5 +1,5 @@
 .\" Copyright (c) 1987-2002 - Sun Micorsystems, Inc.
-.TH gcalctool 1 "13 June 2002"
+.TH gcalctool 1 "14 June 2002"
 .SH NAME
 gcalctool \- a desktop calculator
 .SH SYNOPSIS
@@ -87,16 +87,16 @@ key.  A popup will be displayed giving detailed information on this facility.
 On startup,
 .B gcalctool
 will look for a
-.B .gcalctoolrc
+.B .gcalctoolcf
 file in the users' home directory. This file allows the user to define personal
 constant and function definitions, plus setup the initial values for the
 ten memory registers. It then looks for a
-.B .gcalctoolrc
+.B .gcalctoolcf
 file in the current directory, and if present, uses the contents of this file
 in place of any previously defined values.
 .LP
 With the
-.B .gcalctoolrc
+.B .gcalctoolcf
 file, there are currently four valid record types. These are comments,
 constant and function definitions and initial memory register values.
 .LP
@@ -250,187 +250,6 @@ True, False (True)
 .B Description
 Whether the calculator is started with a "right-handed" display style.
 .sp
-.TP
-.B Resource:
-gcalctool.decDigitColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the buttons containing the decimal digits 0 - 9 and the numeric
-point on the main panel.
-.sp
-.TP
-.B Resource:
-gcalctool.hexDigitColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the buttons containing the hexadecimal digits A - F on the main
-panel.
-.sp
-.TP
-.B Resource:
-gcalctool.arithOpColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the arithmetic operator buttons on the main panel.
-.sp
-.TP
-.B Resource:
-gcalctool.adjustColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the Bsp and Clr buttons on the main panel.
-.sp
-.TP
-.B Resource:
-gcalctool.portionColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the Abs, Chs, Frac and Int buttons on the main panel.
-.sp
-.TP
-.B Resource:
-gcalctool.functionColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of various function buttons on the main panel. These are Acc,
-Con, Exch, Fun, Keys, Mem, Quit, Rcl and Sto.
-.sp
-.TP
-.B Resource:
-gcalctool.mainModeColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the three mode buttons on the main panel. These are Base, Disp
-and Mode.
-.sp
-.TP
-.B Resource:
-gcalctool.portionLogicalColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the logical buttons in the mode panel that do shift operations
-or take a portion of the result. These are <, >, &16 and &32.
-.sp
-.TP
-.B Resource:
-gcalctool.bitLogicalColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the bitwise logical operator buttons in the mode panel. These
-are And, Not, Or, Xnor and Xor.
-.sp
-.TP
-.B Resource:
-gcalctool.finColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the financial buttons in the mode panel.
-.sp
-.TP
-.B Resource:
-gcalctool.trigModeColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the trigonometrical mode buttons in the mode panel. These are
-Hyp, Inv and Trig.
-.sp
-.TP
-.B Resource:
-gcalctool.trigColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the trigonometrical buttons in the mode panel. These are Cos,
-Sin and Tan.
-.sp
-.TP
-.B Resource:
-gcalctool.sciColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the scientific buttons in the mode panel. These are e^x, 10^x,
-y^x, x!, Ln, Log and Rand.
-.sp
-.TP
-.B Resource:
-gcalctool.backgroundColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the background area for the calculator buttons in the main and
-mode panels.
-.sp
-.TP
-.B Resource:
-gcalctool.displayColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of the numerical display area in the main panel.
-.sp
-.TP
-.B Resource:
-gcalctool.memRegisterColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The background color in the memory register window.
-.sp
-.TP
-.B Resource:
-gcalctool.textColor
-.TP
-.B Values:
-Color name string or hexadecimal color specification string
-.TP
-.B Description
-The color of all text. This includes the numerical display, the button
-labels and the contents of the memory register window.
-.sp
 .SH CALCULATOR BUTTONS
 .PD
 .LP
@@ -519,7 +338,7 @@ displayed.
 Retrieve and display a constant value. There are ten constant values [ 0-9 ],
 and each one has a default value which can be overridden by entries in the
 users
-.B .gcalctoolrc
+.B .gcalctoolcf
 file. The ten default values are:
 .sp
 0	0.621		kms per hour / miles per hour.
@@ -544,7 +363,7 @@ file. The ten default values are:
 .IP "\fBFun	[ F ]\fP" 18
 Retrieve and execute a function expression. There are ten function
 definitions [ 0-9 ]. These are setup with entries in the users
-.B .gcalctoolrc
+.B .gcalctoolcf
 file.
 .IP "\fBRcl	[ R ]\fP" 18
 Retrieve memory register value. There are ten memory registers [\ 0-9\ ].
@@ -790,7 +609,11 @@ Return a random number between 0.0 and 1.0.
 .B ~/.gcalctooldefaults
 stored X resources.
 .TP
-.B .gcalctoolrc
-user's personal calctool startup file.
+.B ~/.gcalctoolcf
+user's personal gcalctool constant and function startup file.
+.TP
+.B ~/.gcalctoolrc
+user's personal gcalctool resources for customizing the appearance and color of
+.B gcalctool
 .sp
 .LP

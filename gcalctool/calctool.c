@@ -22,7 +22,6 @@
 #include <string.h>
 #include <malloc.h>
 #include <sys/types.h>
-#include "color.h"
 #include "calctool.h"
 
 time_t time();
@@ -102,125 +101,125 @@ Vars v;            /* Calctool variables and options. */
 /* Calculator button values. */
 
 struct button buttons[NOBUTTONS] = {
-/* str        hstr    mods              value           opdisp   menutype   color       func */
+/* str        hstr    mods              value           opdisp   menutype   func */
 
 /* Row 1. */
-{ _("D   "),  "D   ", 0,                GDK_d,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("E   "),  "E   ", 0,                GDK_e,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("F   "),  "F   ", 0,                GDK_f,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("Clr "),  "Clr ", 0,                GDK_Delete,     OP_CLEAR, M_NONE, C_ADJUST,   do_clear     },
-{ _("Int "),  "Int ", GDK_CONTROL_MASK, GDK_i,          OP_CLEAR, M_NONE, C_PORTION,  do_portion   },
-{ _("Frac"),  "Frac", GDK_CONTROL_MASK, GDK_f,          OP_CLEAR, M_NONE, C_PORTION,  do_portion   },
-{ _("Base"),  "Base", GDK_SHIFT_MASK,   GDK_B,          OP_SET,   M_BASE, C_MAINMODE, do_pending   },
-{ _("Disp"),  "Disp", GDK_SHIFT_MASK,   GDK_D,          OP_SET,   M_NUM,  C_MAINMODE, do_pending   },
+{ _("D   "),  "D   ", 0,                GDK_d,          OP_NOP,   M_NONE, do_number    },
+{ _("E   "),  "E   ", 0,                GDK_e,          OP_NOP,   M_NONE, do_number    },
+{ _("F   "),  "F   ", 0,                GDK_f,          OP_NOP,   M_NONE, do_number    },
+{ _("Clr "),  "Clr ", 0,                GDK_Delete,     OP_CLEAR, M_NONE, do_clear     },
+{ _("Int "),  "Int ", GDK_CONTROL_MASK, GDK_i,          OP_CLEAR, M_NONE, do_portion   },
+{ _("Frac"),  "Frac", GDK_CONTROL_MASK, GDK_f,          OP_CLEAR, M_NONE, do_portion   },
+{ _("Base"),  "Base", GDK_SHIFT_MASK,   GDK_B,          OP_SET,   M_BASE, do_pending   },
+{ _("Disp"),  "Disp", GDK_SHIFT_MASK,   GDK_D,          OP_SET,   M_NUM,  do_pending   },
 
 /* Row 2. */
-{ _("A   "),  "A   ", 0,                GDK_a,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("B   "),  "B   ", 0,                GDK_b,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("C   "),  "C   ", 0,                GDK_c,          OP_NOP,   M_NONE, C_HEXDIG,   do_number    },
-{ _("Bsp "),  "Bsp ", 0,                GDK_BackSpace,  OP_NOP,   M_NONE, C_ADJUST,   do_delete    },
-{ _("Abs "),  "Abs ", GDK_CONTROL_MASK, GDK_u,          OP_CLEAR, M_NONE, C_PORTION,  do_portion   },
-{ _("+/- "),  "+/- ", GDK_SHIFT_MASK,   GDK_C,          OP_CLEAR, M_NONE, C_PORTION,  do_immed     },
-{ _("Keys"),  "Keys", 0,                GDK_k,          OP_CLEAR, M_NONE, C_FUNC,     do_keys      },
-{ _("Mode"),  "Mode", GDK_SHIFT_MASK,   GDK_M,          OP_SET,   M_MODE, C_MAINMODE, do_pending   },
+{ _("A   "),  "A   ", 0,                GDK_a,          OP_NOP,   M_NONE, do_number    },
+{ _("B   "),  "B   ", 0,                GDK_b,          OP_NOP,   M_NONE, do_number    },
+{ _("C   "),  "C   ", 0,                GDK_c,          OP_NOP,   M_NONE, do_number    },
+{ _("Bsp "),  "Bsp ", 0,                GDK_BackSpace,  OP_NOP,   M_NONE, do_delete    },
+{ _("Abs "),  "Abs ", GDK_CONTROL_MASK, GDK_u,          OP_CLEAR, M_NONE, do_portion   },
+{ _("+/- "),  "+/- ", GDK_SHIFT_MASK,   GDK_C,          OP_CLEAR, M_NONE, do_immed     },
+{ _("Keys"),  "Keys", 0,                GDK_k,          OP_CLEAR, M_NONE, do_keys      },
+{ _("Mode"),  "Mode", GDK_SHIFT_MASK,   GDK_M,          OP_SET,   M_MODE, do_pending   },
 
 /* Row 3. */
-{ _("7   "),  "7   ", 0,                GDK_7,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("8   "),  "8   ", 0,                GDK_8,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("9   "),  "9   ", 0,                GDK_9,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("X   "),  "X   ", 0,                GDK_x,          OP_SET,   M_NONE, C_ARITHOP,  do_calc      },
-{ _("1/x "),  "1/x ", 0,                GDK_r,          OP_CLEAR, M_NONE, C_ARITHOP,  do_immed     },
-{ _("x^2 "),  "x^2 ", GDK_SHIFT_MASK,   GDK_at,         OP_CLEAR, M_NONE, C_ARITHOP,  do_immed     },
-{ _("Acc "),  "Acc ", GDK_SHIFT_MASK,   GDK_A,          OP_SET,   M_ACC,  C_FUNC,     do_pending   },
-{ _("Mem..."), "Mem...", 0,             GDK_m,          OP_NOP,   M_NONE, C_FUNC,     do_memory    },
+{ _("7   "),  "7   ", 0,                GDK_7,          OP_NOP,   M_NONE, do_number    },
+{ _("8   "),  "8   ", 0,                GDK_8,          OP_NOP,   M_NONE, do_number    },
+{ _("9   "),  "9   ", 0,                GDK_9,          OP_NOP,   M_NONE, do_number    },
+{ _("X   "),  "X   ", 0,                GDK_x,          OP_SET,   M_NONE, do_calc      },
+{ _("1/x "),  "1/x ", 0,                GDK_r,          OP_CLEAR, M_NONE, do_immed     },
+{ _("x^2 "),  "x^2 ", GDK_SHIFT_MASK,   GDK_at,         OP_CLEAR, M_NONE, do_immed     },
+{ _("Acc "),  "Acc ", GDK_SHIFT_MASK,   GDK_A,          OP_SET,   M_ACC,  do_pending   },
+{ _("Mem..."), "Mem...", 0,             GDK_m,          OP_NOP,   M_NONE, do_memory    },
 
 /* Row 4. */
-{ _("4   "),  "4   ", 0,                GDK_4,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("5   "),  "5   ", 0,                GDK_5,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("6   "),  "6   ", 0,                GDK_6,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("/   "),  "/   ", 0,                GDK_slash,      OP_SET,   M_NONE, C_ARITHOP,  do_calc      },
-{ _("%   "),  "%   ", GDK_SHIFT_MASK,   GDK_percent,    OP_SET,   M_NONE, C_ARITHOP,  do_calc      },
-{ _("Sqrt"),  "Sqrt", 0,                GDK_s,          OP_CLEAR, M_NONE, C_ARITHOP,  do_immed     },
-{ _("Con "),  "Con ", GDK_SHIFT_MASK,   GDK_numbersign, OP_SET,   M_CON,  C_FUNC,     do_pending   },
-{ _("Fun "),  "Fun ", GDK_SHIFT_MASK,   GDK_F,          OP_SET,   M_FUN,  C_FUNC,     do_pending   },
+{ _("4   "),  "4   ", 0,                GDK_4,          OP_NOP,   M_NONE, do_number    },
+{ _("5   "),  "5   ", 0,                GDK_5,          OP_NOP,   M_NONE, do_number    },
+{ _("6   "),  "6   ", 0,                GDK_6,          OP_NOP,   M_NONE, do_number    },
+{ _("/   "),  "/   ", 0,                GDK_slash,      OP_SET,   M_NONE, do_calc      },
+{ _("%   "),  "%   ", GDK_SHIFT_MASK,   GDK_percent,    OP_SET,   M_NONE, do_calc      },
+{ _("Sqrt"),  "Sqrt", 0,                GDK_s,          OP_CLEAR, M_NONE, do_immed     },
+{ _("Con "),  "Con ", GDK_SHIFT_MASK,   GDK_numbersign, OP_SET,   M_CON,  do_pending   },
+{ _("Fun "),  "Fun ", GDK_SHIFT_MASK,   GDK_F,          OP_SET,   M_FUN,  do_pending   },
 
 /* Row 5. */
-{ _("1   "),  "1   ", 0,                GDK_1,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("2   "),  "2   ", 0,                GDK_2,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("3   "),  "3   ", 0,                GDK_3,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _("-   "),  "-   ", 0,                GDK_minus,      OP_SET,   M_NONE, C_ARITHOP,  do_calc      },
-{ _("(   "),  "(   ", GDK_SHIFT_MASK,   GDK_parenleft,  OP_SET,   M_NONE, C_ARITHOP,  do_paren     },
-{ _(")   "),  ")   ", GDK_SHIFT_MASK,   GDK_parenright, OP_SET,   M_NONE, C_ARITHOP,  do_paren     },
-{ _("Rcl "),  "Rcl ", GDK_SHIFT_MASK,   GDK_R,          OP_SET,   M_RCL,  C_FUNC,     do_pending   },
-{ _("Sto "),  "Sto ", GDK_SHIFT_MASK,   GDK_S,          OP_SET,   M_STO,  C_FUNC,     do_pending   },
+{ _("1   "),  "1   ", 0,                GDK_1,          OP_NOP,   M_NONE, do_number    },
+{ _("2   "),  "2   ", 0,                GDK_2,          OP_NOP,   M_NONE, do_number    },
+{ _("3   "),  "3   ", 0,                GDK_3,          OP_NOP,   M_NONE, do_number    },
+{ _("-   "),  "-   ", 0,                GDK_minus,      OP_SET,   M_NONE, do_calc      },
+{ _("(   "),  "(   ", GDK_SHIFT_MASK,   GDK_parenleft,  OP_SET,   M_NONE, do_paren     },
+{ _(")   "),  ")   ", GDK_SHIFT_MASK,   GDK_parenright, OP_SET,   M_NONE, do_paren     },
+{ _("Rcl "),  "Rcl ", GDK_SHIFT_MASK,   GDK_R,          OP_SET,   M_RCL,  do_pending   },
+{ _("Sto "),  "Sto ", GDK_SHIFT_MASK,   GDK_S,          OP_SET,   M_STO,  do_pending   },
 
 /* Row 6. */
-{ _("0   "),  "0   ", 0,                GDK_0,          OP_NOP,   M_NONE, C_DECDIG,   do_number    },
-{ _(".   "),  ".   ", 0,                GDK_period,     OP_NOP,   M_NONE, C_DECDIG,   do_point     },
-{ _("=   "),  "=   ", 0,                GDK_equal,      OP_CLEAR, M_NONE, C_ARITHOP,  do_calc      },
-{ _("+   "),  "+   ", GDK_SHIFT_MASK,   GDK_plus,       OP_SET,   M_NONE, C_ARITHOP,  do_calc      },
-{ _("Exp "),  "Exp ", GDK_SHIFT_MASK,   GDK_E,          OP_SET,   M_NONE, C_ARITHOP,  do_expno     },
-{ _("Asc..."), "Asc...", GDK_CONTROL_MASK, GDK_a,       OP_CLEAR, M_NONE, C_ARITHOP,  do_ascii     },
-{ _("Exch"),  "Exch", GDK_SHIFT_MASK,   GDK_X,          OP_SET,   M_EXCH, C_FUNC,     do_pending   },
-{ _("Quit"),  "Quit", 0,                GDK_q,          OP_CLEAR, M_NONE, C_FUNC,     do_frame     },
+{ _("0   "),  "0   ", 0,                GDK_0,          OP_NOP,   M_NONE, do_number    },
+{ _(".   "),  ".   ", 0,                GDK_period,     OP_NOP,   M_NONE, do_point     },
+{ _("=   "),  "=   ", 0,                GDK_equal,      OP_CLEAR, M_NONE, do_calc      },
+{ _("+   "),  "+   ", GDK_SHIFT_MASK,   GDK_plus,       OP_SET,   M_NONE, do_calc      },
+{ _("Exp "),  "Exp ", GDK_SHIFT_MASK,   GDK_E,          OP_SET,   M_NONE, do_expno     },
+{ _("Asc..."), "Asc...", GDK_CONTROL_MASK, GDK_a,       OP_CLEAR, M_NONE, do_ascii     },
+{ _("Exch"),  "Exch", GDK_SHIFT_MASK,   GDK_X,          OP_SET,   M_EXCH, do_pending   },
+{ _("Quit"),  "Quit", 0,                GDK_q,          OP_CLEAR, M_NONE, do_frame     },
 };
 
 struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
-/* str        hstr    mods              value           opdisp   menutype color       func */
+/* str        hstr    mods              value           opdisp   menutype func */
 
 /* Financial. */
-{ _("Ctrm"),  "Ctrm", GDK_CONTROL_MASK, GDK_m,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Ddb "),  "Ddb ", GDK_CONTROL_MASK, GDK_d,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Fv  "),  "Fv  ", 0,                GDK_v,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Pmt "),  "Pmt ", GDK_SHIFT_MASK,   GDK_P,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Pv  "),  "Pv  ", 0,                GDK_p,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Rate"),  "Rate", GDK_CONTROL_MASK, GDK_r,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Sln "),  "Sln ", GDK_CONTROL_MASK, GDK_l,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Syd "),  "Syd ", GDK_CONTROL_MASK, GDK_y,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ _("Term"),  "Term", 0,                GDK_T,          OP_CLEAR, M_NONE, C_FIN,      do_business  },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
+{ _("Ctrm"),  "Ctrm", GDK_CONTROL_MASK, GDK_m,          OP_CLEAR, M_NONE, do_business  },
+{ _("Ddb "),  "Ddb ", GDK_CONTROL_MASK, GDK_d,          OP_CLEAR, M_NONE, do_business  },
+{ _("Fv  "),  "Fv  ", 0,                GDK_v,          OP_CLEAR, M_NONE, do_business  },
+{ _("Pmt "),  "Pmt ", GDK_SHIFT_MASK,   GDK_P,          OP_CLEAR, M_NONE, do_business  },
+{ _("Pv  "),  "Pv  ", 0,                GDK_p,          OP_CLEAR, M_NONE, do_business  },
+{ _("Rate"),  "Rate", GDK_CONTROL_MASK, GDK_r,          OP_CLEAR, M_NONE, do_business  },
+{ _("Sln "),  "Sln ", GDK_CONTROL_MASK, GDK_l,          OP_CLEAR, M_NONE, do_business  },
+{ _("Syd "),  "Syd ", GDK_CONTROL_MASK, GDK_y,          OP_CLEAR, M_NONE, do_business  },
+{ _("Term"),  "Term", 0,                GDK_T,          OP_CLEAR, M_NONE, do_business  },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
 
 /* Logical. */
-{ _(" <  "),  " <  ", GDK_SHIFT_MASK, GDK_less,         OP_SET,   M_LSHF, C_PLOGICAL, do_pending   },
-{ _(" >  "),  " >  ", GDK_SHIFT_MASK, GDK_greater,      OP_SET,   M_RSHF, C_PLOGICAL, do_pending   },
-{ _("&16 "),  "&16 ", 0,              GDK_bracketleft,  OP_CLEAR, M_NONE, C_PLOGICAL, do_immed     },
-{ _("&32 "),  "&32 ", 0,              GDK_bracketright, OP_CLEAR, M_NONE, C_PLOGICAL, do_immed     },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ _("Or  "),  "Or  ", GDK_SHIFT_MASK, GDK_bar,          OP_SET,   M_NONE, C_BLOGICAL, do_calc      },
-{ _("And "),  "And ", GDK_SHIFT_MASK, GDK_ampersand,    OP_SET,   M_NONE, C_BLOGICAL, do_calc      },
-{ _("Not "),  "Not ", GDK_SHIFT_MASK, GDK_asciitilde,   OP_CLEAR, M_NONE, C_BLOGICAL, do_immed     },
-{ _("Xor "),  "Xor ", GDK_SHIFT_MASK, GDK_caret,        OP_SET,   M_NONE, C_BLOGICAL, do_calc      },
-{ _("Xnor"),  "Xnor", 0,              GDK_n,            OP_SET,   M_NONE, C_BLOGICAL, do_calc      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, C_BACK,     do_none      },
+{ _(" <  "),  " <  ", GDK_SHIFT_MASK, GDK_less,         OP_SET,   M_LSHF, do_pending   },
+{ _(" >  "),  " >  ", GDK_SHIFT_MASK, GDK_greater,      OP_SET,   M_RSHF, do_pending   },
+{ _("&16 "),  "&16 ", 0,              GDK_bracketleft,  OP_CLEAR, M_NONE, do_immed     },
+{ _("&32 "),  "&32 ", 0,              GDK_bracketright, OP_CLEAR, M_NONE, do_immed     },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ _("Or  "),  "Or  ", GDK_SHIFT_MASK, GDK_bar,          OP_SET,   M_NONE, do_calc      },
+{ _("And "),  "And ", GDK_SHIFT_MASK, GDK_ampersand,    OP_SET,   M_NONE, do_calc      },
+{ _("Not "),  "Not ", GDK_SHIFT_MASK, GDK_asciitilde,   OP_CLEAR, M_NONE, do_immed     },
+{ _("Xor "),  "Xor ", GDK_SHIFT_MASK, GDK_caret,        OP_SET,   M_NONE, do_calc      },
+{ _("Xnor"),  "Xnor", 0,              GDK_n,            OP_SET,   M_NONE, do_calc      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,              0,                OP_NOP,   M_NONE, do_none      },
 
 /* Scientific. */
-{ _("Trig"),  "Trig", GDK_SHIFT_MASK,   GDK_T,          OP_SET,   M_TRIG, C_TRIGMODE, do_pending   },
-{ _("Hyp "),  "Hyp ", 0,                GDK_h,          OP_CLEAR, M_NONE, C_TRIGMODE, do_immed     },
-{ _("Inv "),  "Inv ", 0,                GDK_i,          OP_CLEAR, M_NONE, C_TRIGMODE, do_immed     },
-{ _("e^x "),  "e^x ", GDK_SHIFT_MASK,   GDK_braceleft,  OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ _("10^x"),  "10^x", GDK_SHIFT_MASK,   GDK_braceright, OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ _("y^x "),  "y^x ", 0,                GDK_y,          OP_SET,   M_NONE, C_SCI,      do_calc      },
-{ _("x!  "),  "x!  ", GDK_SHIFT_MASK,   GDK_exclam,     OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ _("Cos "),  "Cos ", GDK_CONTROL_MASK, GDK_c,          OP_CLEAR, M_NONE, C_TRIGCOL,  do_trig      },
-{ _("Sin "),  "Sin ", GDK_CONTROL_MASK, GDK_s,          OP_CLEAR, M_NONE, C_TRIGCOL,  do_trig      },
-{ _("Tan "),  "Tan ", GDK_CONTROL_MASK, GDK_t,          OP_CLEAR, M_NONE, C_TRIGCOL,  do_trig      },
-{ _("Ln  "),  "Ln  ", GDK_SHIFT_MASK,   GDK_N,          OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ _("Log "),  "Log ", GDK_SHIFT_MASK,   GDK_G,          OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ _("Rand"),  "Rand", GDK_SHIFT_MASK,   GDK_question,   OP_CLEAR, M_NONE, C_SCI,      do_immed     },
-{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, C_BACK,     do_none      },
-{ "    ",     "    ", 0,                0,           OP_NOP,   M_NONE, C_BACK,     do_none      },
+{ _("Trig"),  "Trig", GDK_SHIFT_MASK,   GDK_T,          OP_SET,   M_TRIG, do_pending   },
+{ _("Hyp "),  "Hyp ", 0,                GDK_h,          OP_CLEAR, M_NONE, do_immed     },
+{ _("Inv "),  "Inv ", 0,                GDK_i,          OP_CLEAR, M_NONE, do_immed     },
+{ _("e^x "),  "e^x ", GDK_SHIFT_MASK,   GDK_braceleft,  OP_CLEAR, M_NONE, do_immed     },
+{ _("10^x"),  "10^x", GDK_SHIFT_MASK,   GDK_braceright, OP_CLEAR, M_NONE, do_immed     },
+{ _("y^x "),  "y^x ", 0,                GDK_y,          OP_SET,   M_NONE, do_calc      },
+{ _("x!  "),  "x!  ", GDK_SHIFT_MASK,   GDK_exclam,     OP_CLEAR, M_NONE, do_immed     },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ _("Cos "),  "Cos ", GDK_CONTROL_MASK, GDK_c,          OP_CLEAR, M_NONE, do_trig      },
+{ _("Sin "),  "Sin ", GDK_CONTROL_MASK, GDK_s,          OP_CLEAR, M_NONE, do_trig      },
+{ _("Tan "),  "Tan ", GDK_CONTROL_MASK, GDK_t,          OP_CLEAR, M_NONE, do_trig      },
+{ _("Ln  "),  "Ln  ", GDK_SHIFT_MASK,   GDK_N,          OP_CLEAR, M_NONE, do_immed     },
+{ _("Log "),  "Log ", GDK_SHIFT_MASK,   GDK_G,          OP_CLEAR, M_NONE, do_immed     },
+{ _("Rand"),  "Rand", GDK_SHIFT_MASK,   GDK_question,   OP_CLEAR, M_NONE, do_immed     },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
+{ "    ",     "    ", 0,                0,              OP_NOP,   M_NONE, do_none      },
 };
 
 
@@ -254,8 +253,6 @@ do_calctool(int argc, char **argv)
             break;
         }
     }
-
-    calc_colorsetup(v->rcols, v->gcols, v->bcols);  /* Setup default colors. */
 
     init_text();               /* Setup text strings depending upon language. */
     init_vars();               /* Setup default values for variables. */

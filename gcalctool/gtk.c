@@ -24,7 +24,7 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <netdb.h>
-#include "color.h"
+#include <pwd.h>
 #include "calctool.h"
 #include "config.h"
 #include "extern.h"
@@ -65,8 +65,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GtkAccelGroup *menu_accel;
     GdkAtom clipboard_atom;
-    GdkColor palette[CALC_COLORSIZE];  /* Gtk+ color palette. */
-    GdkColormap *cmap;
     GtkItemFactory *fact[MAXMENUS];
     GtkWidget *buttons[NOBUTTONS];
     GtkWidget *mode_buttons[(MROWS * MCOLS) * (MAXMODES-1)];
@@ -84,8 +82,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *mframe;                 /* Mode window. */
     GtkWidget *labels[MAXLABELS];      /* Entry and mode/state labels. */
     GtkWidget *pframe;                 /* Properties window. */
-    GtkWidget *pdcolor;
-    GtkWidget *pdmono;
     GtkWidget *psleft;
     GtkWidget *psright;
     GtkWidget *rframe;                 /* Register window. */
@@ -97,8 +93,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     Display *dpy;
     XrmDatabase rDB;                   /* Combined resources database. */
 
-    int cmap_loaded;              /* Has the colormap being loaded? */
-    int depth;                    /* Depth of the visual we are using. */
     int menuval;                  /* Index to button array at menu time. */
     int mrec[MAXMENUS];
 } XObject;
@@ -119,7 +113,6 @@ static gboolean dismiss_pframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean frame_interpose(GtkWidget *, GdkEvent *, gpointer );
 
-static void load_colors(void);
 static void aframe_apply_cb(GtkButton *, gpointer);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_entry_cb(GtkEntry *, gpointer);
@@ -271,6 +264,9 @@ static GtkItemFactoryEntry props_menu[] = {
 int
 main(int argc, char **argv)
 {
+    char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
+    struct passwd *entry;
+
     v = (Vars)  LINT_CAST(calloc(1, sizeof(CalcVars)));
     X = (XVars) LINT_CAST(calloc(1, sizeof(XObject)));
 
@@ -279,6 +275,16 @@ main(int argc, char **argv)
 
     gtk_set_locale();
     gtk_init(&argc, &argv);
+
+    gtk_rc_get_default_files();
+    if ((v->home = getenv("HOME")) == NULL) {
+        if ((entry = getpwuid(getuid())) != NULL) {
+            v->home = entry->pw_dir;
+        }
+    }
+    SPRINTF(name, "%s/%s", v->home, RCNAME);
+    gtk_rc_parse(name);
+
     X->kbd_accel = gtk_accel_group_new();
     X->menu_accel = gtk_accel_group_new();
     X->dpy = GDK_DISPLAY();
@@ -667,7 +673,7 @@ void
 create_kframe()
 {
     char *tool_label = NULL, *hn;
-    char data[12];
+    char data[12], name[MAXLINE];
     int i;
     GtkStyle *style;
     GtkWidget *frame, *hbox, *vbox;
@@ -691,8 +697,7 @@ create_kframe()
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
 
     frame = calctool_display_frame_new();
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
-    gtk_widget_modify_bg(frame, GTK_STATE_NORMAL, &X->palette[C_WHITE]);
+    gtk_widget_set_name(frame, "calcdisplay");
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
@@ -723,6 +728,8 @@ create_kframe()
             continue;                   /* DISPLAYITEM is already created. */
         }
         X->labels[i] = gtk_label_new("");
+        SPRINTF(name, "label%1d", i);
+        gtk_widget_set_name(X->labels[i], name);
         switch (i) {
             case BASEITEM :
                 set_label(i, base_str[(int) v->base]);
@@ -798,6 +805,7 @@ void
 create_rframe()
 {
     char line[MAXLINE];     /* Current memory register line. */
+    char name[MAXLINE];
     int i;
     GtkWidget *frame, *vbox;
 
@@ -808,8 +816,7 @@ create_rframe()
     gtk_widget_set_size_request(X->rframe, 248, 179);
 
     frame = calctool_display_frame_new();
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
-    gtk_widget_modify_bg(frame, GTK_STATE_NORMAL, &X->palette[C_WHITE]);
+    gtk_widget_set_name(frame, "regdisplay");
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
@@ -820,6 +827,8 @@ create_rframe()
     for (i = 0; i < MAXREGS; i++) {
         SPRINTF(line, "%1d   %s", i,  make_number(v->MPmvals[i]));
         X->regs[i] = gtk_label_new(line);
+        SPRINTF(name, "register_label%1d", i);
+        gtk_widget_set_name(X->regs[i], name);
         gtk_widget_ref(X->regs[i]);
         gtk_misc_set_alignment(GTK_MISC(X->regs[i]), 0.0, 0.5);
         gtk_misc_set_padding(GTK_MISC(X->regs[i]), 5, 5);
@@ -1214,36 +1223,6 @@ char *MSGFILE_LABEL   = "SUNW_DESKSET_CALCTOOL_LABEL";
 char *MSGFILE_MESSAGE = "SUNW_DESKSET_CALCTOOL_MSG";
 
 
-static void
-load_colors(void)      /* Create and load gcalctool color map. */
-{
-    GdkColor color;
-    int i, numcolors;
-
-    if (v->iscolor) {
-        numcolors  = 0;
-        for (i = 0; i < CALC_COLORSIZE; i++) {
-            if (v->colstr[i] == NULL ||
-                gdk_color_parse(v->colstr[i], &color) == FALSE) {
-                color.red   = (unsigned short) (v->rcols[i] << 8);
-                color.green = (unsigned short) (v->gcols[i] << 8);
-                color.blue  = (unsigned short) (v->bcols[i] << 8);
-            }
-            if (gdk_colormap_alloc_color(X->cmap, &color, TRUE, TRUE) == TRUE) {
-                X->palette[numcolors++] = color;
-            }
-        }
-        if (numcolors < CALC_COLORSIZE) {
-            FPRINTF(stderr, _("%s: cannot allocate colors. "), v->progname);
-            FPRINTF(stderr, _("Starting monochrome version.\n"));
-            v->iscolor = 0;
-        } else {
-            X->cmap_loaded = 1;
-        }
-    }
-}
-
-
 void
 load_resources()        /* Load combined X resources databases. */
 { 
@@ -1264,23 +1243,7 @@ load_resources()        /* Load combined X resources databases. */
 void
 make_frames()
 {
-    int dummy;
-    GdkVisual *visual;
-
-    X->cmap = gdk_colormap_get_system();
-    gdk_window_get_geometry(gdk_get_default_root_window(),
-                            &dummy, &dummy, &dummy, &dummy, &X->depth);
-    visual = gdk_visual_get_system();
-    if ((visual->depth > 1) &&
-        ((visual->type == GDK_VISUAL_PSEUDO_COLOR) ||
-         (visual->type == GDK_VISUAL_STATIC_COLOR) ||
-         (visual->type == GDK_VISUAL_TRUE_COLOR) ||
-         (visual->type == GDK_VISUAL_DIRECT_COLOR))) {
-        v->iscolor = 1;
-    }
-
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
-    load_colors();                       /* Load the gcalctool colormap. */
     create_kframe();                     /* Create main gcalctool window. */
     create_mframe();                     /* Create mode window. */
     create_rframe();                     /* Create memory register window. */
@@ -1326,8 +1289,8 @@ make_hostname(Display *dpy)
 static GtkWidget *
 make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
 {
-    int i, j, k, n;
-    GtkStyle *style;
+    char name[MAXLINE];
+    int i, j, n;
     GtkWidget *table = gtk_table_new(MROWS, MCOLS, FALSE);
  
     gtk_widget_ref(table);
@@ -1347,13 +1310,10 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
                 X->mode_buttons[n] = make_menu_button(mode_buttons[n].str,
                                                       j*MCOLS + i);
             }
+            SPRINTF(name, "mode_button%1d", n);
+            gtk_widget_set_name(X->mode_buttons[n], name);
             g_object_set_data(G_OBJECT(X->mode_buttons[n]), "frame", X->mframe);
             gtk_widget_ref(X->mode_buttons[n]);
-            style = gtk_style_copy(gtk_widget_get_style(X->mode_buttons[n]));
-            for (k = 0; k < 5; k++) {
-                style->bg[k] = X->palette[(int) mode_buttons[n].color];
-            }   
-            gtk_widget_set_style(X->mode_buttons[n], style);
 
             if (strcmp(mode_buttons[n].str, "    ")) {
                 create_kbd_accel(X->mode_buttons[n], mode_buttons[n].mods,
@@ -1375,8 +1335,8 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
 static void
 make_ktable(GtkWidget *frame, GtkWidget *vbox)
 {
-    int i, j, k, n;
-    GtkStyle *style;
+    char name[MAXLINE];
+    int i, j, n;
 
     X->ktable = gtk_table_new(BROWS, BCOLS, FALSE);
     gtk_widget_ref(X->ktable);
@@ -1393,13 +1353,10 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
             } else {
                 X->buttons[n] = make_menu_button(buttons[n].str, n);
             }   
+            SPRINTF(name, "button%1d", n);
+            gtk_widget_set_name(X->buttons[n], name);
             g_object_set_data(G_OBJECT(X->buttons[n]), "frame", X->kframe);
             gtk_widget_ref(X->buttons[n]);
-            style = gtk_style_copy(gtk_widget_get_style(X->buttons[n]));
-            for (k = 0; k < 5; k++) {
-                style->bg[k] = X->palette[(int) buttons[n].color];
-            }   
-            gtk_widget_set_style(X->buttons[n], style);
             create_kbd_accel(X->buttons[n], buttons[n].mods, buttons[n].value);
             gtk_widget_show(X->buttons[n]);
             gtk_table_attach(GTK_TABLE(X->ktable), X->buttons[n], 
@@ -1836,17 +1793,8 @@ set_button_label(GtkWidget *button, gchar *str, int n)
 void
 set_button_state(enum fcp_type fcptype, int n, int isSensitive)
 {
-    int i;
-    GtkStyle *style;
     GtkWidget *w = (fcptype == FCP_KEY) ? X->buttons[n]: X->mode_buttons[n];
 
-    gtk_widget_set_sensitive(w, isSensitive);
-    style = gtk_style_copy(gtk_widget_get_style(X->buttons[n]));
-    for (i = 0; i < 5; i++) {
-        style->bg[i] = (isSensitive ? X->palette[(int) buttons[n].color] :
-                                      X->palette[C_GREY]);
-    }
-    gtk_widget_set_style(X->buttons[n], style);
     gtk_widget_set_sensitive(w, isSensitive);
 }
 

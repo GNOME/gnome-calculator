@@ -21,7 +21,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include "color.h"
 #include "calctool.h"
 #include "extern.h"
 

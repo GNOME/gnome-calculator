@@ -10,16 +10,10 @@ Calctool TODO.
 
 Related to the Gtk2 version:
 
-Must Fix.
----------
 * Make sure everything is setup correctly for I18N/L10N.
-* Make it work correctly with Gtk themes.
 * Testing of an invalidly entered constant with sscanf() in cfframe_apply_cb()
   doesn't seem to be working.
-* Shouldn't use X resources. Probably need to use gconf, but maybe Gtk 
-  resources, in which case see:
-  http://developer.gnome.org/doc/API/2.0/gtk/gtk-resource-files.html
-  http://www.gtk.org/tutorial/ch-gtkrcfiles.html
+* Shouldn't use X resources. Probably need to use gconf.
 * The size of the buttons in the logical mode window is incorrect.
   Problem is in make_mtable() and is due to the GtkAttachOptions options
   used in the gtk_table_attach() call. Setting them to 0 for non-visible
@@ -30,11 +24,6 @@ Must Fix.
 * Keyboard accelerators don't seem to work for menu buttons.
 * Need to add in Help key support (or tooltip help). Can probably use the
   text from the calctool.info file in the XView distribution.
- 
-Would be nice. 
--------------- 
-* To have a black line between bottom of mode/state labels and main keyboard 
-  buttons, to cleanly delineate them.
 * Need to align items in the various popups.
 
 ============================================================================

@@ -8,7 +8,27 @@
 gcalctool change history.
 =========================
 
-v4.1.2 - 14th June 2002.
+v4.1.3 - 14th June 2002.
+
+* The constant and function definitions are now read and written to a file
+  named ~/.gcalctoolcf  now (was ~/.gcalctoolrc). Manual pages also updated
+  to reflect this change.
+
+* gcalctool now also tries to read a ~/.gcalctoolrc file at startup time.
+  This file (if it exists) can contain resources for changing the appearance
+  of the application. A gcalctoolrc file is now also included with the
+  gcalctool distribution, which gives the old OpenWindows DeskSet appearance
+  to the calculator.
+
+  The ability to change various colors via X resources has also been removed.
+  The manual pages have been updated to reflect this.
+
+  This change means that all code related to colors has been removed from
+  gcalctool. color.h has been removed from the distribution.
+
+----
+
+v4.1.2 - 13th June 2002.
 
 * Removed all the code in gtk.c that was surronded by #ifdef FIXUP.
 
@@ -22,7 +42,7 @@ v4.1.2 - 14th June 2002.
 
 ----
 
-v4.1.1 - 14th June 2002.
+v4.1.1 - 13th June 2002.
 
 * Adjusted configure.in to find the X11 libraries in a platform independent
   way.

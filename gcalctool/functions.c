@@ -22,7 +22,6 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "color.h"
 #include "calctool.h"
 #include "extern.h"
 
@@ -791,7 +790,7 @@ do_paren()
             while (*ptr != '(') {
                 ptr++;
             }
-            while (*ptr != NULL) {
+            while (*ptr) {
                 process_parens(*ptr++);
             }
             return;

@@ -20,7 +20,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "color.h"
 #include "calctool.h"
 #include "extern.h"
 

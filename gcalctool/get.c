@@ -26,8 +26,6 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
-#include <pwd.h>
-#include "color.h"
 #include "calctool.h"
 #include "extern.h"
 #include "config.h"
@@ -43,7 +41,7 @@ static void get_rcfile(char *);
 
 
 char *
-convert(char *line)       /* Convert .gcalctoolrc line to ascii values. */
+convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
 {
     static char output[MAXLINE];   /* Converted output record. */
     int ctrl = 0;           /* Set if we are processing a control character. */
@@ -189,9 +187,9 @@ getparam(char *s, char *argv[], char *errmes)
 
 
 static void
-get_rcfile(char *name)          /* Read .gcalctoolrc file. */
+get_rcfile(char *name)          /* Read .gcalctoolcf file. */
 {
-    char line[MAXLINE];    /* Current line from the .gcalctoolrc file. */
+    char line[MAXLINE];    /* Current line from the .gcalctoolcf file. */
     char tmp[MAXLINE];     /* Used to extract definitions. */
     double cval;           /* Current constant value being converted. */
     enum base_type base;   /* Saved current base value. */
@@ -204,7 +202,7 @@ get_rcfile(char *name)          /* Read .gcalctoolrc file. */
         return;
     }
 
-/*  Process the .gcalctoolrc file. There are currently four types of
+/*  Process the .gcalctoolcf file. There are currently four types of
  *  records to look for:
  *
  *  1) Those starting with a hash in the first column are comments.
@@ -358,9 +356,6 @@ init_vars()    /* Setup default values for various variables. */
     for (i = 0; i < MAXITEMS; i++) {
         v->item_text[i][0] = 0;
     }
-    for (i = 0; i < CALC_COLORSIZE; i++) {
-        v->colstr[i] = NULL;
-    }
 
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
@@ -370,14 +365,12 @@ init_vars()    /* Setup default values for various variables. */
 
 
 void
-read_rcfiles()   /* Read .gcalctoolrc's from home and current directories. */
+read_rcfiles()   /* Read .gcalctoolcf's from home and current directories. */
 {
-    char *home;                  /* Pathname for users home directory. */
-    char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
+    char name[MAXLINE];          /* Full name of users .gcalctoolcf file. */
     char pathname[MAXPATHLEN];   /* Current working directory. */
     char tmp[MAXLINE];           /* For temporary constant string creation. */
     int n;
-    struct passwd *entry;
 
     for (n = 0; n < MAXREGS; n++) {
         STRCPY(tmp, make_number(v->MPcon_vals[n]));
@@ -387,17 +380,11 @@ read_rcfiles()   /* Read .gcalctoolrc's from home and current directories. */
         STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
     }
 
-    if ((home = getenv("HOME")) == NULL) {
-        if ((entry = getpwuid(getuid())) == NULL) {
-            return;
-        }
-        home = entry->pw_dir;
-    }
-    SPRINTF(name, "%s/%s", home, RCNAME);
-    get_rcfile(name);      /* Read .gcalctoolrc from users home directory. */
+    SPRINTF(name, "%s/%s", v->home, CFNAME);
+    get_rcfile(name);      /* Read .gcalctoolcf from users home directory. */
 
-    SPRINTF(name, "%s/%s", getcwd(pathname, MAXPATHLEN+1), RCNAME);
-    get_rcfile(name);      /* Read .gcalctoolrc file from current directory. */
+    SPRINTF(name, "%s/%s", getcwd(pathname, MAXPATHLEN+1), CFNAME);
+    get_rcfile(name);      /* Read .gcalctoolcf file from current directory. */
 }
 
 
@@ -484,58 +471,6 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_bool_resource(R_RHAND, &boolval)) {
         v->righthand = boolval;
     }
-
-    if (get_str_resource(R_DECDIG, str)) {
-        read_str(&v->colstr[C_DECDIG], str);
-    }
-    if (get_str_resource(R_HEXDIG, str)) {
-        read_str(&v->colstr[C_HEXDIG], str);
-    }
-    if (get_str_resource(R_ARITHOP, str)) {
-        read_str(&v->colstr[C_ARITHOP], str);
-    }
-    if (get_str_resource(R_ADJUST, str)) {
-        read_str(&v->colstr[C_ADJUST], str);
-    }
-    if (get_str_resource(R_PORTION, str)) {
-        read_str(&v->colstr[C_PORTION], str);
-    }
-    if (get_str_resource(R_FUNC, str)) {
-        read_str(&v->colstr[C_FUNC], str);
-    }
-    if (get_str_resource(R_MAINMODE, str)) {
-        read_str(&v->colstr[C_MAINMODE], str);
-    }
-    if (get_str_resource(R_PLOGICAL, str)) {
-        read_str(&v->colstr[C_PLOGICAL], str);
-    }
-    if (get_str_resource(R_BLOGICAL, str)) {
-        read_str(&v->colstr[C_BLOGICAL], str);
-    }
-    if (get_str_resource(R_FIN, str)) {
-        read_str(&v->colstr[C_FIN], str);
-    }
-    if (get_str_resource(R_TRIGMODE, str)) {
-        read_str(&v->colstr[C_TRIGMODE], str);
-    }
-    if (get_str_resource(R_TRIGCOL, str)) {
-        read_str(&v->colstr[C_TRIGCOL], str);
-    }
-    if (get_str_resource(R_SCI, str)) {
-        read_str(&v->colstr[C_SCI], str);
-    }
-    if (get_str_resource(R_BACK, str)) {
-        read_str(&v->colstr[C_BACK], str);
-    }
-    if (get_str_resource(R_DISPCOL, str)) {
-        read_str(&v->colstr[C_DISPCOL], str);
-    }
-    if (get_str_resource(R_MEMORY, str)) {
-        read_str(&v->colstr[C_MEMORY], str);
-    }
-    if (get_str_resource(R_TEXT, str)) {
-        read_str(&v->colstr[C_TEXT], str);
-    }
 }
 
 
@@ -576,32 +511,26 @@ void
 write_rcfile(enum menu_type mtype, int exists, int cfno, 
              char *val, char *comment)
 {
-    char *home;                  /* Pathname for users home directory. */
     char pathname[MAXPATHLEN];   /* Current working directory. */
-    char rcname[MAXPATHLEN];     /* Full name of users .gcalctoolrc file. */
+    char rcname[MAXPATHLEN];     /* Full name of users .gcalctoolcf file. */
     char str[MAXLINE];           /* Temporary buffer. */
     char sval[3];                /* Used for string comparisons. */
     char tmp_filename[MAXLINE];  /* Used to construct temp filename. */
-    int rcexists;                /* Set to 1, if .gcalctoolrc file exists. */
-    FILE *rcfd;                  /* File descriptor for .gcalctoolrc file. */
-    FILE *tmpfd;                 /* File descriptor for new temp .gcalctoolrc */
-    struct passwd *entry;        /* The user's /etc/passwd entry. */
+    int rcexists;                /* Set to 1, if .gcalctoolcf file exists. */
+    FILE *rcfd;                  /* File descriptor for .gcalctoolcf file. */
+    FILE *tmpfd;                 /* File descriptor for new temp .gcalctoolcf */
 
     rcexists = 0;
-    SPRINTF(rcname, "%s/%s", getcwd(pathname, MAXPATHLEN+1), RCNAME);
+    SPRINTF(rcname, "%s/%s", getcwd(pathname, MAXPATHLEN+1), CFNAME);
     if (access(rcname, F_OK) == 0) {
         rcexists = 1;
     } else { 
-        if ((home = getenv("HOME")) == NULL) {
-            if ((entry = getpwuid(getuid())) == NULL) return;
-            home = entry->pw_dir;
-        }
-        SPRINTF(rcname, "%s/%s", home, RCNAME);
+        SPRINTF(rcname, "%s/%s", v->home, CFNAME);
         if (access(rcname, F_OK) == 0) {
             rcexists = 1;
         }
     }
-    STRCPY(tmp_filename, "/tmp/.gcalctoolrcXXXXXX");
+    STRCPY(tmp_filename, "/tmp/.gcalctoolcfXXXXXX");
     MKTEMP(tmp_filename);
     if ((tmpfd = fopen(tmp_filename, "w+")) == NULL) {
         return;
