@@ -82,6 +82,8 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *menus[MAXMENUS];
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
+    gboolean alt_l;              /* Set if the left Alt key is pressed. */
+    gboolean alt_r;              /* Set if the right Alt key is pressed. */
     gboolean ctrl_l;             /* Set if the left Control key is pressed. */
     gboolean ctrl_r;             /* Set if the right Control key is pressed. */
     gboolean shft_l;             /* Set if the left Shift key is pressed. */
@@ -1319,7 +1321,8 @@ check_vals(int n, int keyval,
         while (buttons[i].value[j] != 0) {
             if (buttons[i].value[j] == keyval) {
                 if ((buttons[i].mods[j] == 0) &&
-                    ((X->ctrl_l | X->ctrl_r | X->shft_l | X->shft_r) == 0)) {
+                    ((X->alt_l  | X->alt_r  | X->ctrl_l | 
+                      X->ctrl_r | X->shft_l | X->shft_r) == 0)) {
                     DO_KEY_PRESS(i);
                 } else if ((buttons[i].mods[j] == GDK_SHIFT_MASK) &&
                            ((X->shft_l | X->shft_r) == 1)) {
@@ -1342,7 +1345,13 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     int retval = FALSE;
 
-    if (event->keyval == GDK_Control_L) {
+    if (event->keyval == GDK_Alt_L) {
+        X->alt_l = TRUE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Alt_R) {
+    	X->alt_r = TRUE;
+    	return(TRUE);
+    } else if (event->keyval == GDK_Control_L) {
         X->ctrl_l = TRUE;
         return(TRUE);
     } else if (event->keyval == GDK_Control_R) {
@@ -1388,7 +1397,13 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 static gboolean
 kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-    if (event->keyval == GDK_Control_L) {
+    if (event->keyval == GDK_Alt_L) {
+        X->alt_l = FALSE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Alt_R) {
+        X->alt_r = FALSE;
+        return(TRUE);
+    } else if (event->keyval == GDK_Control_L) {
         X->ctrl_l = FALSE;
         return(TRUE);
     } else if (event->keyval == GDK_Control_R) {
