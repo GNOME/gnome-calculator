@@ -8,8 +8,6 @@
 Calctool TODO.
 ==============
 
-Related to the Gtk2 version:
-
 * Need to find what's causing the warning message:
   ** (gcalctool:6306): WARNING **: CORBA_ORB_destroy: ORB still has 2 refs.
   when gcalctool exits, and fix it.
@@ -18,59 +16,25 @@ Related to the Gtk2 version:
   (gconf key "Mode" is not BASIC") then it is being positioned incorrectly
   relative to the main gcalctool window.
 
-============================================================================
-
-- Implement bugtraq rfe #1190372/#1105626.
+* Implement bugtraq rfe #1190372/#1105626.
   It appears that function definitions are unable to handle all calculator
   buttons. Buttons with a keyboard equivalent that is a special key (clear 
   display) or key combination (^s - Sin) appear to be rejected in functions 
   defs.  This affects the availability of many of the calculator buttons.
 
-- Fix bugtraq bug #1190524.
-  Display of small numbers in Memory & Financial registers can be confusing 
-  and misleading.
-
-  Ex.
-         1. Set Accuracy to 9
-         2. Display memory registers.
-         3. Set mem. reg. #1 to 0.000000000
-         4. Enter small value into display window.
-                 5.236000000e-251
-         5. Attempt to store this value in mem. reg #1.
-                 Store 1
- 
-            Results:  No change, no visual or audio indication
-                      of success or failure.
-                      Memory Reg. #1 still shows: 0.000000000
- 
-         6. Clear Display
-         7. Recall memory reg #1.
- 
-            Results:  Display shows:  5.236000000e-251
- 
-         Conclusion:  Small number was stored correctly but
-                      number was too small to show up in the
-                      current level of accuracy.
- 
-         Suggestion:  Convert display of very small numbers
-                      to a format visible by user:
-                         5.236000000e-251
-                      This is already done for very large numbers:
-                         5.236000000e+251
-
-- Implement bugtraq rfe #1190313.
+* Implement bugtraq rfe #1190313.
   After a menu-button is activated via keyboard mnemonic (i.e. press M for 
   Mode, B for Base, D for Display, and T for Trig), gcalctool should validate 
   the next key pressed ([fls] for Mode, [bodh] for Base, [efs] for Display, 
   and [dgr] for Trig) and beep if it's illegal.
 
-- Implement bugtraq rfe #4023507.
+* Implement bugtraq rfe #4023507.
   The calculator in Logical mode accepts hex entries of up to
   eight digits.  This was sufficient to deal with 32-bit addresses.
   When Solaris is 64-bit, the calculator will be less useful.
   Maybe there should be a Logical-64 mode.
 
-- Fix bugtraq bug #4065378.
+* Fix bugtraq bug #4065378.
   Certain functions entered into gcalctool produce incorrect results.
   I entered the following functions into gcalctool:
 
@@ -90,60 +54,25 @@ Related to the Gtk2 version:
   Not all user defined functions behave this way. For example the Function 
   for converting Celsius to Fahrenheit worked as expected.
 
-- Implement bugtraq rfe #4113441.
+* Implement bugtraq rfe #4113441.
   Scientists using dtcalc under CDE would like to get deeper precision.
-  The maximun accuracy depth, which is 9, is not enough for them.
+  The maximum accuracy depth, which is 9, is not enough for them.
   They would like to have 15 digits available.
 
-- Fix bugtraq bug #4164019
-  Switch calculator to financial mode. Bring up window of financial registers.
-  Enter a number of about 6 digits for Term, Pv,Pmt and a 2 digit num. for 
-  i%Yr. Now click on Fv to calculate Future value. Calculator displays an 
-  Error but instead of being able to click on CLR to clear the error gcalctool
-  has frozen up and eats up more and more cpu time.
-
-- Implement bugtraq rfe #1122089.
+* Implement bugtraq rfe #1122089.
   Add a log base 2 key.
 
-- Checkout bugtraq bug #1165609 (need to verify with gcalctool).
-  I can't make calctool the target of a secondary selection. Primary selection
-  (cut and paste) works fine however. To reproduce:
-
-  1 - Fire up a calctool
-
-  2 - put the cursor in the calctool window
-
-  3 - press and hold the PASTE key
-
-  4 - move the cursor over to a number and select it using the left mouse 
-      button
-
-  5 - release the PASTE key
-
-  At this point I expect that the highlighted number will land in the Calctool
-  window, but it does not.  This works fine with other tools, so I assume the
-  problem is in Calctool and not the window system (as I do get the underlined
-  highlighting of text - as opposed to the blacking out of selected text I see 
-  with cut & paste).
-
-- Fix bugtraq bug #1102883.
-  If you enter 2 and select Inv, select Sin to get the arc sine value, 
-  "Error" is displayed on the window. Do the same thing but select Cos 
-  to get arc cosine value, the error message is "acos DOMAIN error", 
-  which is better. Sine should have the same error message to be more 
-  consistant.
-
-- See if it's now safe to remove the "Hack Alert" code in gtk.c at about
+* See if it's now safe to remove the "Hack Alert" code in gtk.c at about
   line 1106.
 
-- Consider moving the three mode tables into the main window, and removing
+* Consider moving the three mode tables into the main window, and removing
   the extra mode window. This would "fix" the initial positioning bug near
   the top of this TODO file.
 
-- Consider the possibility of being able to have all the three mode windows
+* Consider the possibility of being able to have all the three mode windows
   displayed at the same time.
 
-- As of V3.0.1., calctool was modified to have "infinite" precision
+* As of v3.0.1. calctool was modified to have "infinite" precision
   internally. This needs to be made available to the "power" users, but
   shouldn't confuse the novice. What I suggest is to replace the Acc
   button menu, with an Acc... button which brings up a popup with a slider
@@ -161,6 +90,19 @@ Related to the Gtk2 version:
   * make the calctool numeric display a panel text item of the appropriate
     length.
 
+* Consider adding in the ability to drag & drop from/to the display and 
+  the memory registers.
+ 
+* Consider adding in some more functions:
+ 
+  ~ Common antilogarithm and natural antilogarithm.
+  ~ Cube root key.
+  ~ Root key. The y root of x.
+  ~ Rectangular to polar and polar to rectangular keys.
+   
+* Consider adding Reverse Polish notation functionality (as an option).
+
+
 MP - todo.
 ----------
 
@@ -175,19 +117,3 @@ MP - todo.
 
 * Adjust all uses of MP...[MP_SIZE] to use a dynamic size so that it's
   possible to calculate to numbers of any length.
-
-
-Possible enhancements.
-----------------------
-
-* Add in the ability to drag & drop from/to the display and the memory
-  registers.
-
-* Add some more functions:
-
-  ~ Common antilogarithm and natural antilogarithm.
-  ~ Cube root key.
-  ~ Root key. The y root of x.
-  ~ Rectangular to polar and polar to rectangular keys.
-
-* Add Reverse Polish notation functionality (as an option).

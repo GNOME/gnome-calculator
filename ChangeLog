@@ -8,6 +8,20 @@
 gcalctool change history.
 =========================
 
+v4.1.20 - 10th September 2002.
+
+* [Sun Bugtraq bug #1102883 against DeskSet calctool].
+  If you enter 2 and select Inv, select Sin to get the arc sine value,
+  "Error" is displayed on the window. Do the same thing but select Cos
+  to get arc cosine value, the error message is "acos DOMAIN error",
+  which is better. Sine should have the same error message to be more
+  consistant.
+
+  Fixed this by making all error messages just display "Error" which is
+  more consistent.
+
+----
+
 v4.1.19 - 10th September 2002.
 
 * [Sun Bugtraq bug #4006391 against CDE dtcalc].

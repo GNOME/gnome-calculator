@@ -49,8 +49,6 @@
 extern char *MSGFILE_LABEL;
 #endif
 
-#define LGET(s) (char *) dgettext(MSGFILE_LABEL,   s)
-
 #define MP_SIZE      150     /* Size of the multiple precision values. */
 
 #define FCLOSE       (void) fclose     /* To make lint happy. */

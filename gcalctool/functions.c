@@ -1130,7 +1130,7 @@ mpacos(int *MPx, int *MPretval)
     mpcim(&val, MPn1);
 
     if (mpgt(MPx, MP1) || mplt(MPx, MPn1)) {
-        doerr(LGET("acos DOMAIN error"));
+        doerr(_("Error"));
         mpstr(MP0, MPretval);
     } else if (mpeq(MPx, MP0)) {
         val = 2;
@@ -1169,7 +1169,7 @@ mpacosh(int *MPx, int *MPretval)
     val = 1;
     mpcim(&val, MP1);
     if (mplt(MPx, MP1)) {
-        doerr(LGET("acosh DOMAIN error"));
+        doerr(_("Error"));
         val = 0;
         mpcim(&val, MPretval);
     } else {
@@ -1223,7 +1223,7 @@ mpatanh(int *MPx, int *MPretval)
     mpcim(&val, MPn1);
 
     if (mpge(MPx, MP1) || mple(MPx, MPn1)) {
-        doerr(LGET("atanh DOMAIN error"));
+        doerr(_("Error"));
         mpstr(MP0, MPretval);
     } else {
         mpadd(MP1, MPx, MP2);
