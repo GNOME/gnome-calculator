@@ -840,9 +840,9 @@ create_kframe()
     gtk_text_buffer_create_tag(buffer, "x-large", "scale", PANGO_SCALE_X_LARGE, 
                                NULL);			       
 
-    gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(X->display_item), FALSE);
+    gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(X->display_item), TRUE);
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), FALSE);
-    GTK_WIDGET_UNSET_FLAGS(X->display_item, GTK_CAN_FOCUS);
+    GTK_WIDGET_SET_FLAGS(X->display_item, GTK_CAN_FOCUS);
 
     gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(X->display_item), 12);
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 12);
@@ -874,6 +874,7 @@ create_kframe()
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
+    gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR));
 
     g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
                      G_CALLBACK(kframe_key_press_cb), NULL);
