@@ -7,6 +7,12 @@
 gcalctool change history.
 =========================
 
+2004-06-09 Rich Burridge <rich.burridge@sun.com>
+
+    * Selecting Help->About from the menubar wasn't doing anything. 
+      With the switch to using the GtkUIManager, the hooks to link 
+      up to the about_cb were incorrect.
+
 2004-06-01 Rich Burridge <rich.burridge@sun.com>
 
     * Adjusted the creation of the Accuracy and Left/Right shift menus

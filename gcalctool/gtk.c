@@ -130,7 +130,7 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
 
-static void about_cb(GtkWidget *, gpointer);
+static void about_cb(GtkAction *action);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
@@ -186,7 +186,7 @@ static GtkActionEntry entries[] = {
     { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
     { "About", GNOME_STOCK_ABOUT, N_("_About"), NULL,
-      N_("Show about help"), G_CALLBACK(mb_proc) },
+      N_("Show about help"), G_CALLBACK(about_cb) },
 
     { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
       N_("1 place"),   G_CALLBACK(mb_proc) },
@@ -424,7 +424,7 @@ main(int argc, char **argv)
 
 
 static void
-about_cb(GtkWidget *widget, gpointer data)
+about_cb(GtkAction *action)
 {
     static GtkWidget *about = NULL;
 
