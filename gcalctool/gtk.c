@@ -2013,7 +2013,7 @@ toggle_expressions()
             v->noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
             show_display(v->MPdisp_val);
-            update_statusbar(N_("Activated no operator precedence mode"), "");
+            update_statusbar(_("Activated no operator precedence mode"), "");
             break;
 
         case exprs:
@@ -2022,7 +2022,7 @@ toggle_expressions()
             exp_del();
             show_display(v->e.ans);
             update_statusbar(
-                N_("Activated expression mode with operator precedence"), "");
+                _("Activated expression mode with operator precedence"), "");
             break;
 
         default:

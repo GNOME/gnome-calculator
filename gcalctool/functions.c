@@ -432,7 +432,7 @@ do_expression()
 
         if (v->current->flags & enter) {
             exp_del();
-            update_statusbar(N_("Previous expression"), "");
+            update_statusbar(_("Previous expression"), "");
             mpstr(v->e.ansbak, v->e.ans);
             assert(!v->expression);
             v->expression = v->e.expbak;
@@ -502,7 +502,7 @@ do_expression()
 	        v->e.calc_complete = 1;
 	        goto out;
             } else {
-	        update_statusbar(N_("Malformed expression"), 
+	        update_statusbar(_("Malformed expression"), 
                                  "gtk-dialog-error");
 	        return;
             }
@@ -906,7 +906,7 @@ do_function()      /* Perform a user defined function. */
     if (!ret) {
         update_statusbar("", "");
     } else { 
-        update_statusbar(N_("Malformed function"), "gtk-dialog-error");
+        update_statusbar(_("Malformed function"), "gtk-dialog-error");
     }
 }
 
@@ -1049,7 +1049,7 @@ do_paren()
         if (!v->noparens) {
             if (v->cur_op == '?') {
 	        v->display[0] = 0;
-	        update_statusbar(N_("Cleared display, prefix without an operator is not allowed"), "");
+	        update_statusbar(_("Cleared display, prefix without an operator is not allowed"), "");
             } else {
                 paren_disp(v->cur_op);
             }
@@ -1073,7 +1073,7 @@ do_paren()
 	        v->pending = 0;
 	        return;
             } else {
-                update_statusbar(N_("Malformed parenthesis expression"), 
+                update_statusbar(_("Malformed parenthesis expression"), 
                                  "gtk-dialog-error");
             }
         }
@@ -1096,7 +1096,7 @@ do_sto()
             int ret = usable_num(v->MPmvals[n]);
 
             if (ret) {
-	        update_statusbar(N_("No sane value to store"), 
+	        update_statusbar(_("No sane value to store"), 
                                  "gtk-dialog-error");
             }
         }
@@ -1343,7 +1343,7 @@ do_shift()     /* Perform bitwise shift on display value. */
             int ret = usable_num(MPval);
 
             if (ret) {
-	        update_statusbar(N_("No sane value to store"), 
+	        update_statusbar(_("No sane value to store"), 
                                  "gtk-dialog-error");
 	        return;
             } 
