@@ -5,6 +5,29 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.2.90
+
+* Fixed bug 114363 (http://bugzilla.gnome.org/show_bug.cgi?id=114363)
+  When an error condition occurs:
+
+  - make insensitive all buttons except Clr.
+  - make all Scientific mode toggles and checkboxes insensitive.
+  - make all menubar items insensitive except:
+      Calculator->Quit
+      Help->Contents
+      Help->About
+
+  When the error condition is cleared, resensitise everything, setting
+  the numeric base buttons correctly.
+
+----
+
+Overview of changes in gcalctool 4.2.89
+
+* Fix for bug #115212. gcalctool no longer can display multiple About boxes.
+
+----
+
 Overview of changes in gcalctool 4.2.88
 
 * Fix for bug #108209. The appropriate gcalctool button is now animated 

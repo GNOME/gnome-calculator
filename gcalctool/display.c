@@ -453,7 +453,7 @@ process_item(struct button *button)
         if (!isvalid) {
             return;
         }
-        v->error = 0;
+        set_error_state(FALSE);
     }
 
     if (v->pending) {

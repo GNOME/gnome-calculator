@@ -46,8 +46,8 @@
 #define UNLINK       (void) unlink
 
 /* Menu bar menu types. */
-enum mb_type { M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  M_FIN,
-               M_PASTE, M_QUIT,  M_REGS,     M_SCI,   M_ZEROES };
+enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  M_FIN,
+               M_PASTE, M_QUIT,  M_REGS,  M_SCI,      M_ZEROES };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
@@ -381,6 +381,7 @@ void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_toggle(int);
 void set_display(char *str);
+void set_error_state(int);
 void set_hyp_item(int);
 void set_ins_key();
 void set_item(enum item_type, int);

@@ -46,6 +46,7 @@
 #define BUT_7     X->bas_buttons[0]        /* 7 */
 #define BUT_8     X->bas_buttons[1]        /* 8 */
 #define BUT_9     X->bas_buttons[2]        /* 9 */
+#define BUT_CLR   X->bas_buttons[7]        /* Clr */
 #define BUT_ACC   X->sci_buttons[7]        /* A */
 #define BUT_A     X->sci_buttons[24]       /* a */
 #define BUT_B     X->sci_buttons[25]       /* b */
@@ -53,14 +54,6 @@
 #define BUT_D     X->sci_buttons[16]       /* d */
 #define BUT_E     X->sci_buttons[17]       /* e */
 #define BUT_F     X->sci_buttons[18]       /* f */
-#ifdef WANTED
-#define BUT_ADD   X->bas_buttons[27]       /* + */
-#define BUT_SUB   X->bas_buttons[19]       /* - */
-#define BUT_MUL   X->bas_buttons[11]       /* x */
-#define BUT_DIV   X->bas_buttons[3]        /* / */
-#define BUT_PNT   X->bas_buttons[25]       /* . */
-#define BUT_EQ    X->bas_buttons[26]       /* = */
-#endif /*WANTED*/
 
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
@@ -195,7 +188,7 @@ static GtkItemFactoryEntry main_menu[] = {
 
     { N_("/_Help"),                NULL, NULL,    0,       "<Branch>" },
     { N_("/Help/_Contents"),       "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
-    { N_("/Help/_About"),    	   NULL, about_cb, 0, "<StockItem>", GNOME_STOCK_ABOUT },
+    { N_("/Help/_About"),    	   NULL, about_cb, M_ABOUT, "<StockItem>", GNOME_STOCK_ABOUT },
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
@@ -291,28 +284,32 @@ main(int argc, char **argv)
 static void
 about_cb(GtkWidget *widget, gpointer data)
 {
-    GtkWidget *about;        
+    static GtkWidget *about = NULL;
 
-    const gchar *authors[] = {
-        "Rich Burridge <rich.burridge@sun.com>",
-        NULL
-    };
-    const gchar *documenters[] = {
-        NULL
-    };
-    const gchar *translator_credits = _("translator_credits");
+    if (about == NULL) {
+        const gchar *authors[] = {
+            "Rich Burridge <rich.burridge@sun.com>",
+            NULL
+        };
+        const gchar *documenters[] = {
+            NULL
+        };
+        const gchar *translator_credits = _("translator_credits");
 
-    about = gnome_about_new(_("Gcalctool"), VERSION,
-                   "(C) 2003 the Free Software Foundation",
-                   _("Calculator with financial and scientific modes."),
-                   authors,
-                   documenters,
-                   strcmp(translator_credits, "translator_credits") != 0 ? 
-                          translator_credits : NULL,
-                   X->icon);
+        about = gnome_about_new(_("Gcalctool"), VERSION,
+                       "(C) 2003 the Free Software Foundation",
+                       _("Calculator with financial and scientific modes."),
+                       authors,
+                       documenters,
+                       strcmp(translator_credits, "translator_credits") != 0 ? 
+                              translator_credits : NULL,
+                       X->icon);
 
-    gtk_window_set_icon(GTK_WINDOW(about), X->icon);    
-    gtk_widget_show(about);
+        g_signal_connect(G_OBJECT(about), "destroy",
+                         G_CALLBACK(gtk_widget_destroyed), &about);
+        gtk_window_set_icon(GTK_WINDOW(about), X->icon);    
+    }
+    gtk_window_present(GTK_WINDOW(about));
 }
 
 
@@ -1861,6 +1858,63 @@ set_display(char *str)
                                              NULL);
 
     g_free(utf8_str);
+}
+
+
+#define SET_MENUBAR_ITEM_STATE(i, state) \
+          gtk_widget_set_sensitive( \
+          gtk_item_factory_get_widget_by_action(X->mb_fact, i), state)
+
+
+/* When an error condition occurs:
+ *
+ * - make insensitive all buttons except Clr.
+ * - make all Scientific mode toggles and checkboxes insensitive.
+ * - make all menubar items insensitive except:
+ *     Calculator->Quit
+ *     Help->Contents
+ *     Help->About
+ *
+ * When the error condition is cleared, resensitise everything, setting
+ * the numeric base buttons correctly.
+ */
+
+void
+set_error_state(int error)
+{
+    GtkWidget *mi;
+    int i;
+
+    v->error = error;
+
+    for (i = 0; i < (BROWS * BCOLS); i++) {
+        set_button_state(X->bas_buttons[i], !v->error);
+    }
+    set_button_state(BUT_CLR, TRUE);    /* Clr button always sensitive. */
+
+    for (i = 0; i < (FROWS * FCOLS); i++) {
+        set_button_state(X->fin_buttons[i], !v->error);
+    }
+
+    for (i = 0; i < (SROWS * SCOLS); i++) {
+        set_button_state(X->sci_buttons[i], !v->error);
+    }
+
+    if (!v->error) {
+        grey_buttons(v->base);
+    }
+
+    gtk_widget_set_sensitive(X->mode_panel, !v->error);
+
+    SET_MENUBAR_ITEM_STATE(M_COPY,   !v->error);
+    SET_MENUBAR_ITEM_STATE(M_PASTE,  !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_ASCII,  !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_BASIC,  !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_FIN,    !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_SCI,    !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_ZEROES, !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_REGS,   !v->error); 
+    SET_MENUBAR_ITEM_STATE(M_ABOUT,  !v->error);
 }
 
 
