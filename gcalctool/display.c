@@ -456,7 +456,7 @@ paren_disp(char c)
  */
 
     n = strlen(v->display);
-    if (c == -1) {         /* Is it a Delete character? */
+    if (c == -1 || c == 127) {         /* Is it a Delete character? */
         v->noparens = v->pending = v->opsptr = v->numsptr = 0;
         v->cur_op = '?';
         i = 0;
