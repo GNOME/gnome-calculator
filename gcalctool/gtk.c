@@ -577,77 +577,68 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
 static void
 create_cfframe()    /* Create auxiliary frame for CON/FUN key. */
 {
-    GtkWidget *vbox2, *hbox2, *hbox3, *cf_desc_label, *hbox4, *cf_val_label; 
-    GtkWidget *hbox5, *cf_ok, *cf_apply, *cf_cancel;
+    GtkWidget *cf_desc_label, *cf_val_label, *cf_ok, *cf_apply, *cf_cancel;
+    GtkWidget *hbox, *table, *vbox;
  
     X->cfframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(X->cfframe), _("New Constant"));
  
-    vbox2 = gtk_vbox_new(FALSE, 0);
-    gtk_widget_show(vbox2);
-    gtk_container_add(GTK_CONTAINER(X->cfframe), vbox2);
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_container_add(GTK_CONTAINER(X->cfframe), vbox);
  
-    hbox2 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(hbox2);
-    gtk_box_pack_start(GTK_BOX(vbox2), hbox2, TRUE, TRUE, 0);
- 
+    table = gtk_table_new(3, 2, FALSE);
+    gtk_widget_ref(table);
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
+
     X->cf_no_label = gtk_label_new(_("Constant no:"));
-    gtk_widget_show(X->cf_no_label);
-    gtk_box_pack_start(GTK_BOX(hbox2), X->cf_no_label, FALSE, FALSE, 0);
-    gtk_label_set_justify(GTK_LABEL(X->cf_no_label), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_padding(GTK_MISC(X->cf_no_label), 5, 0);
+    gtk_misc_set_alignment(GTK_MISC(X->cf_no_label), 1.0, 0.5);
+    gtk_table_attach(GTK_TABLE(table), X->cf_no_label, 0, 1, 0, 1,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
  
     X->cf_con_entry = gtk_entry_new();
     gtk_entry_set_max_length(GTK_ENTRY(X->cf_con_entry), 2);
-    gtk_widget_show(X->cf_con_entry);
-    gtk_box_pack_start(GTK_BOX(hbox2), X->cf_con_entry, TRUE, TRUE, 0);
- 
-    hbox3 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(hbox3);
-    gtk_box_pack_start(GTK_BOX(vbox2), hbox3, TRUE, TRUE, 0);
+    gtk_table_attach(GTK_TABLE(table), X->cf_con_entry, 1, 2, 0, 1,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
  
     cf_desc_label = gtk_label_new(_("Description:"));
-    gtk_widget_show(cf_desc_label);
-    gtk_box_pack_start(GTK_BOX(hbox3), cf_desc_label, FALSE, FALSE, 0);
-    gtk_label_set_justify(GTK_LABEL(cf_desc_label), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_padding(GTK_MISC(cf_desc_label), 5, 0);
+    gtk_misc_set_alignment(GTK_MISC(cf_desc_label), 1.0, 0.5);
+    gtk_table_attach(GTK_TABLE(table), cf_desc_label, 0, 1, 1, 2,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),  
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
  
     X->cf_desc_entry = gtk_entry_new();
     gtk_entry_set_max_length(GTK_ENTRY(X->cf_desc_entry), 30);
-    gtk_widget_show(X->cf_desc_entry);
-    gtk_box_pack_start(GTK_BOX(hbox3), X->cf_desc_entry, FALSE, FALSE, 0);
+    gtk_table_attach(GTK_TABLE(table), X->cf_desc_entry, 1, 2, 1, 2, 
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),   
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
  
-    hbox4 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(hbox4);
-    gtk_box_pack_start(GTK_BOX(vbox2), hbox4, TRUE, TRUE, 0);
-
     cf_val_label = gtk_label_new(_("Value:"));
-    gtk_widget_show(cf_val_label);
-    gtk_box_pack_start(GTK_BOX(hbox4), cf_val_label, FALSE, FALSE, 0);
-    gtk_label_set_justify(GTK_LABEL(cf_val_label), GTK_JUSTIFY_RIGHT);
+    gtk_misc_set_alignment(GTK_MISC(cf_val_label), 1.0, 0.5);
+    gtk_table_attach(GTK_TABLE(table), cf_val_label, 0, 1, 2, 3, 
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),   
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
 
     X->cf_val_entry = gtk_entry_new();
     gtk_entry_set_max_length(GTK_ENTRY(X->cf_val_entry), 30);
-    gtk_widget_show(X->cf_val_entry);
-    gtk_box_pack_start(GTK_BOX(hbox4), X->cf_val_entry, TRUE, TRUE, 0);
+    gtk_table_attach(GTK_TABLE(table), X->cf_val_entry, 1, 2, 2, 3,            
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),    
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4); 
 
-    hbox5 = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(hbox5);
-    gtk_box_pack_start(GTK_BOX (vbox2), hbox5, TRUE, TRUE, 0);
+    hbox = gtk_hbox_new(FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
     cf_ok = gtk_button_new_with_label(_("OK"));
-    gtk_widget_show(cf_ok);
-    gtk_box_pack_start(GTK_BOX (hbox5), cf_ok, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), cf_ok, TRUE, TRUE, 0);
     gtk_container_set_border_width(GTK_CONTAINER (cf_ok), 2);
 
     cf_apply = gtk_button_new_with_label(_("Apply"));
-    gtk_widget_show(cf_apply);
-    gtk_box_pack_start(GTK_BOX(hbox5), cf_apply, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), cf_apply, TRUE, TRUE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(cf_apply), 2);
 
     cf_cancel = gtk_button_new_with_label(_("Cancel"));
-    gtk_widget_show(cf_cancel);
-    gtk_box_pack_start(GTK_BOX(hbox5), cf_cancel, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), cf_cancel, TRUE, TRUE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(cf_cancel), 2);
 
     g_signal_connect(G_OBJECT(X->cfframe), "delete_event",
@@ -658,6 +649,7 @@ create_cfframe()    /* Create auxiliary frame for CON/FUN key. */
                      G_CALLBACK(cfframe_apply_cb), NULL);
     g_signal_connect(G_OBJECT(cf_cancel), "clicked",
                      G_CALLBACK(cfframe_cancel_cb), NULL);
+    gtk_widget_show_all(vbox);
     gtk_widget_realize(X->cfframe);
 }
 
