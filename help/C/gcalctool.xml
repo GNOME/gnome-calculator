@@ -2,10 +2,10 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.2.100">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "July 2003">
-  <!ENTITY app "<application>gcalctool</application>">
+  <!ENTITY appversion "4.3.15">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "October 2003">
+  <!ENTITY app "<application>Calculator</application>">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -68,8 +68,17 @@
 
     <revhistory>
       <revision> 
-		<revnumber>gcalctool Manual V&manrevision;</revnumber> 
+		<revnumber>Calculator Manual V&manrevision;</revnumber> 
 		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.5</revnumber> 
+		<date>July 2003</date> 
 		<revdescription> 
 	  		<para role="author">Sun GNOME Documentation Team
 	  		</para>
@@ -204,11 +213,11 @@
   <sect1 id="gcalctool-get-start"> 
     <title>Getting Started</title> 
 
-    <para>To start <application>&app;</application> from a command line, type the following command, 
-    		then press <keycap>Return</keycap>:</para>
-    		<para> 
-			<command>gcalctool</command> 
-    		</para> 
+    <para>To start <application>&app;</application> from a command line, type the following command,
+                then press <keycap>Return</keycap>:</para>
+                <para>
+                        <command>gcalctool</command>
+                </para>
 
     <para>When you start <application>&app;</application>, the following window is displayed:</para>
 
@@ -2026,60 +2035,66 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycap>A</keycap> </para></entry>
-                             <entry><para><guibutton>Acc</guibutton> </para></entry>
-                             <entry><para>Accuracy</para> </entry>
-                             <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><keycap>a</keycap> </para></entry>
                              <entry><para><guibutton>A</guibutton> </para></entry>
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>b</keycap> </para></entry>
+                             <entry><para><keycap>a</keycap> </para></entry>
+                             <entry><para><guibutton>Acc</guibutton> </para></entry>
+                             <entry><para>Accuracy</para> </entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>B</keycap> </para></entry>
                              <entry><para><guibutton>B</guibutton> </para></entry>
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>C</keycap></para></entry>
-                             <entry><para><guibutton>+/-</guibutton></para></entry>
-                             <entry><para>Change the arithmetic sign</para> </entry>
-                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><keycap>c</keycap> </para></entry>
+                             <entry><para><keycap>C</keycap> </para></entry>
                              <entry><para><guibutton>C</guibutton> </para></entry>
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>D</keycap></para></entry>
-                             <entry><para><guibutton>Ddb</guibutton></para></entry>
-                             <entry><para>Double-Declining Depreciation</para> </entry>
-                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                             <entry><para><keycap>c</keycap></para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>Change the arithmetic sign</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>d</keycap> </para></entry>
+                             <entry><para><keycap>D</keycap> </para></entry>
                              <entry><para><guibutton>D</guibutton> </para></entry>
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>E</keycap> </para></entry>
-                             <entry><para><guibutton>Exp</guibutton> </para></entry>
-                             <entry><para>Exponential</para> </entry>
-                             <entry><para><xref linkend="gcalctool-enter-exp"/></para> </entry>
+                             <entry><para><keycap>d</keycap></para></entry>
+                             <entry><para><guibutton>Ddb</guibutton></para></entry>
+                             <entry><para>Double-Declining Depreciation</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><keycap>E</keycap> </para></entry>
                              <entry><para><guibutton>E</guibutton> </para></entry>
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
+                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><guibutton>Exp</guibutton> </para></entry>
+                             <entry><para>Exponential</para> </entry>
+                             <entry><para><xref linkend="gcalctool-enter-exp"/></para> </entry>
+                           </row>
+                           <row valign="top">
                              <entry><para><keycap>F</keycap> </para></entry>
+                             <entry><para><guibutton>F</guibutton> </para></entry>
+                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>f</keycap> </para></entry>
                              <entry><para><guibutton>Fun</guibutton> </para></entry>
                              <entry><para>Function</para> </entry>
                              <entry><para><xref linkend="gcalctool-edit-func"/></para> </entry>
@@ -2361,7 +2376,8 @@ precedence. To apply arithmetic precedence, use parentheses.
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
+                             <entry><para><keycap>Esc</keycap> or </para>
+                                    <para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
                              <entry><para><guibutton>CE</guibutton></para></entry>
                              <entry><para>Clear Entry</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
