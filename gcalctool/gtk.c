@@ -448,9 +448,13 @@ cfframe_apply_cb(GtkButton *button, gpointer user_data)
     pval = (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_con_entry));
     SSCANF(pval, "%d", &cfno);
     if (cfno < 0 || cfno > 9) {
-        SPRINTF(str, _("Invalid %s number.\nMust be in the range 0 - 9"),
-                (X->CFtype == M_CON) ? _("constant") : _("function"));
-        notice_prompt(X->cfframe, str);
+        if (X->CFtype == M_CON) {
+            notice_prompt(X->cfframe,
+                _("Invalid constant number.\nMust be in the range 0 - 9"));
+        } else {
+            notice_prompt(X->cfframe, 
+                _("Invalid function number.\nMust be in the range 0 - 9")); 
+        }
         return;
     }
 
@@ -471,8 +475,13 @@ cfframe_apply_cb(GtkButton *button, gpointer user_data)
     }
 
     if (exists) {
-        SPRINTF(str, _("%s %1d already exists.\nOkay to overwrite?"),
-                (X->CFtype == M_CON) ? _("Constant") : _("Function"), cfno);
+        if (X->CFtype == M_CON) {
+            SPRINTF(str, _("Constant %1d already exists.\nOkay to overwrite?"),
+                    cfno);
+        } else {
+            SPRINTF(str, _("Function %1d already exists.\nOkay to overwrite?"),
+                    cfno);
+        }
 
         dialog = gtk_dialog_new_with_buttons("Warning", GTK_WINDOW(X->cfframe),
                              GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
