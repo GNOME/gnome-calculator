@@ -80,7 +80,6 @@ copy_button_info(struct button *old)
     new->hstr = old->hstr;
     new->mods = old->mods;
     new->value = old->value;
-    new->opdisp = old->opdisp;
     new->mtype = old->mtype;
     new->func = old->func;
 
@@ -379,7 +378,6 @@ paren_disp(char c)
     if (IS_KEY(c, KEY_CLR)) {             /* Is it a Delete character? */
         v->noparens = v->pending = v->opsptr = v->numsptr = 0;
         v->cur_op = '?';
-        set_op_item("");
         i = 0;
         mpcim(&i, v->MPdisp_val);
         show_display(v->MPdisp_val);
@@ -393,7 +391,6 @@ paren_disp(char c)
             if (!v->noparens) {
                 v->pending = v->opsptr = v->numsptr = 0;
                 v->cur_op = '?';
-                set_op_item("");
                 show_display(v->MPdisp_val);
                 return;
             }
@@ -463,21 +460,6 @@ process_item(struct button *button)
     }
 
     STRCPY(v->opstr, v->op_item_text);
-    switch (button->opdisp) {
-        case OP_SET : 
-            set_op_item(button->str);
-            break;
-
-        case OP_CLEAR : 
-            if (v->error) {
-                set_op_item(_("CLR"));
-            } else {
-                set_op_item("");
-            }
-
-        default : 
-            break;
-    }
 
     (*button->func)();
 }

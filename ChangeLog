@@ -7,6 +7,21 @@
 gcalctool change history.
 =========================
 
+v4.2.20 - 16th January 2003.  (richb)
+
+* HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>
+
+  Removed the "operand item" label widget, the routine where it was being 
+  set (set_op_item()) and all the calls to that routine. Other calculators 
+  don't have any equivalent to this, so it's not really needed.
+
+  This also remove the opdisp entry in the button struct and the op_type enum.
+
+* Adjusted the "keyboard values used" table in calctool.c to reflect the
+  current state.
+
+----
+
 v4.2.19 - 14th January 2003.  (richb)
 
 * The frames around the mode button tables and the mode panel were always 

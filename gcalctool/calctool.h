@@ -100,8 +100,6 @@ enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
 
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
-enum op_type { OP_SET, OP_CLEAR, OP_NOP };  /* Operation item settings. */
-
 /* Resources. */
 enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_HELP,
                 R_REGS,     R_TRIG, R_BEEP
@@ -272,7 +270,6 @@ struct button {
     char *hstr;              /* Button help string. */
     int mods;                /* Keyboard modifiers (Shift, Ctrl, ...). */
     int value;               /* Unique button keyboard equivalent. */
-    enum op_type opdisp;     /* Is button selected during operation? */
     enum menu_type mtype;    /* Type of popup menu (if any). */
     void (*func)();          /* Function to obey on button press. */
 };
@@ -453,7 +450,6 @@ void set_ins_key();
 void set_item(enum item_type, int);
 void set_inv_item(int);
 void set_mode(enum mode_type);
-void set_op_item(char *);
 void set_title(enum fcp_type, char *);
 void show_ascii_frame();
 void show_display(int *);

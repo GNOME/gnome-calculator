@@ -69,13 +69,11 @@ do_ascii()        /* Convert ASCII value. */
         val = v->cur_ch;
         mpcim(&val, v->MPdisp_val);
         show_display(v->MPdisp_val);
-        set_op_item("");
         v->pending = 0;
     } else if (v->event_type != KEYBOARD_DOWN) {
         show_ascii_frame();
     } else {
         save_pending_values(v->current);
-        set_op_item(_("ASC"));
     }
 }
 
@@ -413,7 +411,6 @@ do_delete()     /* Remove the last numeric character typed. */
     if (v->key_exp && !(strchr(v->display, '+'))) {
         v->key_exp = 0;
         v->display[strlen(v->display)-1] = '\0';
-        set_op_item("");
     }
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
@@ -789,11 +786,6 @@ do_pending()
     }
 
     show_display(v->MPdisp_val);
-    if (v->error) {
-        set_op_item(_("CLR"));
-    } else {
-        set_op_item(v->opstr);  /* Redisplay pending op. (if any). */
-    }
 
     v->pending = 0;
     if (!v->ismenu) {
@@ -1271,11 +1263,9 @@ process_parens(char current)
             }
             v->pending = v->opsptr = v->numsptr = 0;
             v->cur_op = '?';
-            set_op_item("");
             STRCPY(v->opstr, "");
             if (v->error) {
                 set_display(_("Error"));
-                set_op_item(_("CLR"));
                 STRCPY(v->display, _("Error"));
             } else { 
                 show_display(v->MPdisp_val);
@@ -1301,7 +1291,6 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
         if (v->beep == TRUE) {
             beep();
         }
-        set_op_item(_("CLR"));
     } else {
         if (v->MPnumstack[v->numsptr] == NULL) {
             v->MPnumstack[v->numsptr] =
@@ -1322,7 +1311,6 @@ push_op(int val)     /* Try to push value onto the operand stack. */
         STRCPY(v->display, _("Operand stack error"));
         set_display(v->display);
         v->error = 1;
-        set_op_item(_("CLR"));
     } else {
         v->opstack[v->opsptr++] = val;
     }

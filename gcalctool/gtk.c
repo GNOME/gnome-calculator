@@ -88,7 +88,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GdkPixbuf *icon;                   /* Main window icon. */
     GtkWidget *menubar;
     GtkWidget *mode_panel;
-    GtkWidget *op_label;               /* Operand label. */
     GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *regs[MAXREGS];          /* Memory registers. */
@@ -877,12 +876,6 @@ create_mode_panel(GtkWidget *main_vbox)
     gtk_box_pack_end(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->hyp), "toggled",
                       G_CALLBACK(hyp_cb), NULL);
-
-/* Make operand label. */
-
-    X->op_label = gtk_label_new("");
-    gtk_widget_set_name(X->op_label, "oplabel");
-    gtk_box_pack_end(GTK_BOX(row2_hbox), X->op_label, FALSE, FALSE, 0);
 
     gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
@@ -1748,18 +1741,6 @@ set_item(enum item_type itemtype, int val)
         default:
             break;
     }
-}
-
-
-void
-set_op_item(char *str)
-{
-    if (v->opsptr && !v->show_paren) {
-        return;
-    }
-
-    gtk_label_set_text(GTK_LABEL(X->op_label), _(str));
-    STRCPY(v->op_item_text, _(str));
 }
 
 
