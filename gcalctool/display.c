@@ -58,7 +58,7 @@ localize_number(char *dest, const char *src)
     	while (srcp >= src) {
             *dstp++ = *srcp--;
             n++;
-            if (n == 3 && srcp >= src) {
+            if (n == 3 && srcp >= src && *srcp != '-') {
 	        for (i = tsep_len - 1; i >= 0; i--)
 		    *dstp++ = v->tsep[i];
 		n = 0;
