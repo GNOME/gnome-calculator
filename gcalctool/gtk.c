@@ -1326,7 +1326,6 @@ check_vals(int n, int keyval, int state,
         while (buttons[i].value[j] != 0) {
             if (buttons[i].value[j] == keyval) {
                 if (buttons[i].mods[j] == state) {
-                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
                     g_signal_emit_by_name(GTK_WIDGET(gtk_buttons[i]), 
                                           "activate");
                     return(TRUE);
@@ -1345,14 +1344,6 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     GtkWidget *focus;
     int retval = FALSE;
-
-    if (event->keyval == GDK_space) {
-        focus = gtk_window_get_focus(GTK_WINDOW(X->kframe));
-        if (GTK_IS_BUTTON(focus) == TRUE) {
-            g_signal_emit_by_name(focus, "pressed");
-        }
-        return(FALSE);
-    }
 
     switch (v->modetype) {
         case BASIC:
@@ -1489,7 +1480,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                 Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
             set_accessible_name(Gtk_buttons[n], buttons[n]);
-            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "pressed",
+            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
             SPRINTF(name, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
