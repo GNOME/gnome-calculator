@@ -7,6 +7,34 @@
 gcalctool change history.
 =========================
 
+2004-07-19 Rich Burridge <rich.burridge@sun.com>
+
+    * Removed ChangeLog-NG. It's not needed.
+    * Added the contents of FIXME to the TODO file and removed
+      FIXME.
+    * Added Copyright comments to the source files that didn't have
+      them.
+    * Adjusted the C code to the "One True Style". If/when you take over
+      ownership of gcalctool, I'm happy for you to revert it to whatever
+      style you like, but while I've got to maintain it, then all the source
+      code will be a consistent style. Sorry.
+    * Removed commented out C code or code surronded by "#if 0". It just 
+      leads to confusion. Look at the previous versions in CVS history if 
+      you need to see what was there.
+    * Adjusted code so that line length is less than 80 characters (wherever
+      possible).
+    * Adjusted comments to "/* ... */" style. The "// ..." style is not
+      recognized by default with the Sun compiler.
+    * Removed all Tabs. Tabs are evil.
+    * Indentation is four spaces not two.
+    * Added blank lines where appropriate to make the code more readable.
+    * Adjusted code to define variables at the top of a routine.
+    * Remove the "Next Generation (Experiemental)" from the about box.
+    * Changed copyright dates to include 2004.
+    * Removed the "word:" Gnuism from the words[] struct in 
+      syntax_translation.c. Similar problems with another struct in the
+      same source file.
+
 2004-06-18 Christian Neumair <chris@gnome-de.org>
 
      * gcalctool/functions.c, gcalctool/graphics.c: s/precedencer/precedence/
@@ -34,6 +62,7 @@ gcalctool change history.
 
 	
 2004-06-14 Sami Pietila <sampie@ariana-dsl.utu.fi>
+
     * Merge from NG-branch.
 	
 2004-06-14 Rich Burridge <rich.burridge@sun.com>

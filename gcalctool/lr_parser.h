@@ -22,7 +22,7 @@
 #ifndef LR_PARSER_H
 #define LR_PARSER_H
 
-// LR = Left to the Right 
+/* LR = Left to the Right. */
 
 #include <stdio.h>
 #include <stdlib.h> 
@@ -37,14 +37,10 @@
 
 extern struct parser_state parser_state;
 
-int lrerror(); // dummy definition
-int lrparse(); // dummy definition
-
+int lrerror();            /* Dummy definition. */
+int lrparse();            /* Dummy definition. */
 int ceerror(char *s);
-
-int lr_parse(char *expression,
-	     int result[MP_SIZE]);
-
+int lr_parse(char *expression, int result[MP_SIZE]);
 int lr_udf_parse(char *expression);
 
-#endif
+#endif /*LR_PARSER_H*/

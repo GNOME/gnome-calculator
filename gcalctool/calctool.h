@@ -1,6 +1,7 @@
+
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -77,7 +78,7 @@ enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
-enum trig_func {SIN=1, COS=2, TAN=4};
+enum trig_func { SIN=1, COS=2, TAN=4 };
 
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
@@ -218,57 +219,57 @@ enum trig_func {SIN=1, COS=2, TAN=4};
 typedef unsigned long  BOOLEAN;
 
 enum button_flags {
-  none = 0,                /* No flags */
-  binop = 1,               /* Is binary operation ie. A op B */ 
-  unop = 2,                /* Is unary operation ie. op A. */
-  enter = 4,               /* Expression is entered */
-  number = 8,              /* Number button */
-  immediate = 16,           /* Button does immediate function */
-  //trigonometric = 32,      /* Sin, Cos, Tan function */
-  parenthesis = 64,        /* Parenthesis */
-  func = 128,              /* Function */
-  bsp = 256,               /* Backspace */
-  clear = 512,             /* Clear display */
-  neg = 1024,              /* Negate display */
-  inv = 2048,              /* Reciprocial */
-  con = 4096,              /* Constant */
-  regrcl = 8192,           /* Recall register */
-  expnum = 16384,          /* Exponential number */
-  postfixop = 32768,       /* Unary postfix operation */
-  prefixop = 65536         /* Unary prefix operation */
+    none         = 0,          /* No flags */
+    binop        = 1,          /* Is binary operation ie. A op B */ 
+    unop         = 2,          /* Is unary operation ie. op A. */
+    enter        = 4,          /* Expression is entered */
+    number       = 8,          /* Number button */
+    immediate    = 16,         /* Button does immediate function */
+
+    parenthesis  = 64,         /* Parenthesis */
+    func         = 128,        /* Function */
+    bsp          = 256,        /* Backspace */
+    clear        = 512,        /* Clear display */
+    neg          = 1024,       /* Negate display */
+    inv          = 2048,       /* Reciprocial */
+    con          = 4096,       /* Constant */
+    regrcl       = 8192,       /* Recall register */
+    expnum       = 16384,      /* Exponential number */
+    postfixop    = 32768,      /* Unary postfix operation */
+    prefixop     = 65536       /* Unary prefix operation */
 };
 
-
 struct exprm_state {       /* Expression mode state */
-  //int to_clear : 1;
-  int calc_complete : 1;
-  int numeric_ans : 1;     /* Show ans numerically (alternative is symbolically) */
-  int ans[MP_SIZE];        /* Previously calculated answer */
-  int ansbak[MP_SIZE];     /* Pre ans */
-  char *expbak;
+    int calc_complete : 1;
+    int numeric_ans : 1;    /* Show answer numerically 
+                             * (alternative is symbolically) 
+                             */
+    int ans[MP_SIZE];        /* Previously calculated answer */
+    int ansbak[MP_SIZE];     /* Pre ans */
+    char *expbak;
 };
 
 enum shiftd {
-  left = 0,
-  right 
+    left = 0,
+    right 
 };
 
 enum syntax {
-  npa = 0,                 /* Non-precedence arithmetic */
-  exprs,                   /* Expression with arithmetic precedence */
+    npa = 0,                 /* Non-precedence arithmetic */
+    exprs,                   /* Expression with arithmetic precedence */
 };
 
 struct button {
-  char *str;               /* Button display string. */
-  char *hstr;              /* Button help string. */
-  char *astr;              /* AccessibleName string (if tooltip not useful) */
-  guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
-  guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
-  char func_char;          /* Unique function string character. */
-  enum menu_type mtype;    /* Type of popup menu (if any). */
-  void (*func)();          /* Function to obey on button press. */
-  char *symname;           /* Expression function name */
-  enum button_flags flags; /* Misc flags */
+    char *str;               /* Button display string. */
+    char *hstr;              /* Button help string. */
+    char *astr;              /* AccessibleName string (if tooltip not useful) */
+    guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
+    guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
+    char func_char;          /* Unique function string character. */
+    enum menu_type mtype;    /* Type of popup menu (if any). */
+    void (*func)();          /* Function to obey on button press. */
+    char *symname;           /* Expression function name */
+    enum button_flags flags; /* Misc flags */
 };
 
 struct menu {
@@ -279,109 +280,85 @@ struct menu {
 };
 
 struct calcVars {                      /* Calctool variables and options. */
-  struct exprm_state e;               /* Expression mode state */
+    struct exprm_state e;               /* Expression mode state */
   
-  struct button *pending_but;        /* Button info. for pending op. */
-  struct button *current;            /* Current button/character pressed. */
+    struct button *pending_but;        /* Button info. for pending op. */
+    struct button *current;            /* Current button/character pressed. */
   
-  char *appname;                     /* Application name for resources. */
-  char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
-  char display[MAXLINE];             /* Current calculator display. */
-  char *exp_posn;                    /* Position of the exponent sign. */
-  char fnum[MAX_DIGITS];             /* Scratchpad for fixed numbers. */
-  char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
-  char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
-  char *home;                        /* Pathname for users home directory. */
-  char *iconlabel;                   /* The calctool icon label. */
-  char op_item_text[5];              /* Operand item panel string. */
-  char opstr[5];                     /* Operand string during pending op. */
-  char *progname;                    /* Name of this program. */
-  char pstr[5];                      /* Current button text string. */
-  const char *radix;                 /* Locale specific radix string. */
-  char *shelf;                       /* PUT selection shelf contents. */
-  char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
-  const char *tsep;                /* Locale specific thousands seperator. */
-  char *titleline;                   /* Value of titleline (if present). */
-  char *tool_label;                  /* Title line for calculator window. */
-  
-  int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
-  int MPdebug;                       /* If set, debug info. to stderr. */
-  int MPerrors;                      /* If set, output errors to stderr. */
-  int MPdisp_val[MP_SIZE];           /* Value of the current display. */
-  int MPexpr_val[MP_SIZE];           /* Value of the current expression. */
-  int MPlast_input[MP_SIZE];         /* Previous number input by user. */
-  int MPmvals[MAXREGS][MP_SIZE];     /* Memory register values. */
-  int *MPnumstack[MAXSTACK];         /* Numeric stack for parens. */
-  int MPresult[MP_SIZE];             /* Current calculator total value. */
-  int MPimresult[MP_SIZE];           /* Current intermediate result. */
-  int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */
+    char *appname;                     /* Application name for resources. */
+    char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
+    char display[MAXLINE];             /* Current calculator display. */
+    char *exp_posn;                    /* Position of the exponent sign. */
+    char fnum[MAX_DIGITS];             /* Scratchpad for fixed numbers. */
+    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
+    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
+    char *home;                        /* Pathname for users home directory. */
+    char *iconlabel;                   /* The calctool icon label. */
+    char op_item_text[5];              /* Operand item panel string. */
+    char opstr[5];                     /* Operand string during pending op. */
+    char *progname;                    /* Name of this program. */
+    char pstr[5];                      /* Current button text string. */
+    const char *radix;                 /* Locale specific radix string. */
+    char *shelf;                       /* PUT selection shelf contents. */
+    char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
+    const char *tsep;                /* Locale specific thousands seperator. */
+    char *titleline;                   /* Value of titleline (if present). */
+    char *tool_label;                  /* Title line for calculator window. */
 
-  enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
-  enum fcp_type curwin;           /* Window current event occured in. */
-  enum mode_type modetype;        /* Current calculator mode. */
-  enum num_type dtype;            /* Number display mode. */
-  enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
+    int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
+    int MPdebug;                       /* If set, debug info. to stderr. */
+    int MPerrors;                      /* If set, output errors to stderr. */
+    int MPdisp_val[MP_SIZE];           /* Value of the current display. */
+    int MPexpr_val[MP_SIZE];           /* Value of the current expression. */
+    int MPlast_input[MP_SIZE];         /* Previous number input by user. */
+    int MPmvals[MAXREGS][MP_SIZE];     /* Memory register values. */
+    int *MPnumstack[MAXSTACK];         /* Numeric stack for parens. */
+    int MPresult[MP_SIZE];             /* Current calculator total value. */
+    int MPimresult[MP_SIZE];           /* Current intermediate result. */
+    int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */
+
+    enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
+    enum fcp_type curwin;           /* Window current event occured in. */
+    enum mode_type modetype;        /* Current calculator mode. */
+    enum num_type dtype;            /* Number display mode. */
+    enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
+
+    enum syntax syntax;             /* Calculation syntax mode */
+
+    char *expression;  /* Expression entered by user */
   
-  enum syntax syntax;             /* Calculation syntax mode */
-  
-  char *expression;  /* Expression entered by user */
-  
-  int accuracy;      /* Number of digits precision (Max 9). */
-  int beep;          /* Indicates whether there is a beep sound on error. */
-  int cur_ch;        /* Current character if keyboard event. */
-  int cur_op;        /* Current arithmetic operation. */
-  int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
-  int down;          /* Indicates is a mouse button is down. */
-  int error;         /* Indicates some kind of display error. */
-  int hyperbolic;    /* If set, trig functions will be hyperbolic. */
-  int iconic;        /* Set if window is currently iconic. */
-  int inverse;       /* If set, trig and log functions will be inversed. */
-  int ismenu;        /* Set when do_pending called via a popup menu. */
-  int key_exp;       /* Set if entering exponent number. */
-  int ndisplay;      /* Height of the numerical display. */
-  int new_input;     /* New number input since last op. */
-  int noparens;      /* Count of left brackets still to be matched. */
-  int numsptr;       /* Pointer into the parenthese numeric stack. */
-  int old_cal_value;      /* Previous calculation operator. */
-  int opsptr;        /* Pointer into the parentheses operand stack. */
-  int opstack[MAXSTACK];  /* Stack containing parentheses input. */
-  int pending;            /* Set for command depending on multiple presses. */
-  int pending_op;    /* Arithmetic operation for pending command. */
-  int pointed;       /* Whether a decimal point has been given. */
-  int rstate;        /* Indicates if memory register frame is displayed. */
-  int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
-  int show_tsep;     /* Set if the thousands seperator should be shown. */
-  int show_zeroes;   /* Set if trailing zeroes should be shown. */
-  int started;       /* Set just before window is displayed. */
-  int toclear;       /* Indicates if display should be cleared. */
+    int accuracy;      /* Number of digits precision (Max 9). */
+    int beep;          /* Indicates whether there is a beep sound on error. */
+    int cur_ch;        /* Current character if keyboard event. */
+    int cur_op;        /* Current arithmetic operation. */
+    int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
+    int down;          /* Indicates is a mouse button is down. */
+    int error;         /* Indicates some kind of display error. */
+    int hyperbolic;    /* If set, trig functions will be hyperbolic. */
+    int iconic;        /* Set if window is currently iconic. */
+    int inverse;       /* If set, trig and log functions will be inversed. */
+    int ismenu;        /* Set when do_pending called via a popup menu. */
+    int key_exp;       /* Set if entering exponent number. */
+    int ndisplay;      /* Height of the numerical display. */
+    int new_input;     /* New number input since last op. */
+    int noparens;      /* Count of left brackets still to be matched. */
+    int numsptr;       /* Pointer into the parenthese numeric stack. */
+    int old_cal_value;      /* Previous calculation operator. */
+    int opsptr;        /* Pointer into the parentheses operand stack. */
+    int opstack[MAXSTACK];  /* Stack containing parentheses input. */
+    int pending;            /* Set for command depending on multiple presses. */
+    int pending_op;    /* Arithmetic operation for pending command. */
+    int pointed;       /* Whether a decimal point has been given. */
+    int rstate;        /* Indicates if memory register frame is displayed. */
+    int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
+    int show_tsep;     /* Set if the thousands seperator should be shown. */
+    int show_zeroes;   /* Set if trailing zeroes should be shown. */
+    int started;       /* Set just before window is displayed. */
+    int toclear;       /* Indicates if display should be cleared. */
 };
 
 typedef struct calcVars *Vars;
 
-int
-do_sto_reg(int reg, 
-	   int value[MP_SIZE]);
-
-int
-do_rcl_reg(int reg,
-	   int value[MP_SIZE]);
-
-int
-do_tfunc(int s[MP_SIZE], 
-	 int t[MP_SIZE],
-	 enum trig_func tfunc);
-
-void 
-exp_del();
-
-void 
-update_statusbar(gchar *text, const gchar *imagename);
-
-void
-refresh_display();
-
-char*
-gc_strdup(char *str);
 
 /* MP definitions. */
 
@@ -398,6 +375,7 @@ struct button *copy_button_info(struct button *);
 
 char *button_str(int);
 char *convert(char *);
+char *gc_strdup(char *str);
 const char *get_radix();
 char *get_resource(enum res_type);
 const char *get_tsep();
@@ -409,6 +387,9 @@ unsigned short *get_but_data();
 int button_mods(int);
 int button_value(int);
 int char_val(char);
+int do_rcl_reg(int reg, int value[MP_SIZE]);
+int do_sto_reg(int reg, int value[MP_SIZE]);
+int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 int get_menu_entry(enum menu_type, int);
 int key_equal(struct button *, struct button);
 int main(int, char **);
@@ -439,6 +420,7 @@ void do_portion();
 void do_trig();
 void do_trigtype(enum trig_type);
 void doerr(char *);
+void exp_del();
 void get_constant(int);
 void get_display();
 void get_function(int);
@@ -471,6 +453,7 @@ void put_resource(enum res_type, char *);
 void read_cfdefs();
 void read_resources();
 void read_str(char **, char *);
+void refresh_display();
 void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_toggle(int);
@@ -487,6 +470,7 @@ void show_display(int *);
 void srand48();
 void start_tool();
 void switch_hands(int);
+void update_statusbar(gchar *text, const gchar *imagename);
 void usage(char *);
 void win_display(enum fcp_type, int);
 
@@ -529,5 +513,4 @@ void mpstr(int *, int *);
 void mpsub(int *, int *, int *);
 void mptanh(int *, int *);
 
-
-#endif
+#endif /*CALCTOOL_H*/

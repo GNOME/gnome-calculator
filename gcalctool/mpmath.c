@@ -1,4 +1,5 @@
-/*  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+
+/*  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,9 +22,10 @@
 
 #include <assert.h>
 
-#include "calctool.h" // FIXME: include only needed stuff
+#include "calctool.h"    /* FIXME: include only needed stuff. */
 #include "mpmath.h"
 #include "extern.h"
+
 
 BOOLEAN
 ibool(double x)
@@ -32,6 +34,7 @@ ibool(double x)
 
     return(p);
 }
+
 
 double
 setbool(BOOLEAN p)
@@ -49,259 +52,301 @@ setbool(BOOLEAN p)
     return(val);
 }
 
+
 void
 calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
-  double dres, dval;
-  mpcmd(s1, &dres);
-  mpcmd(s2, &dval);
-  dres = setbool(ibool(dres) & ibool(dval));
-  mpcdm(&dres, t);
+    double dres, dval;
+
+    mpcmd(s1, &dres);
+    mpcmd(s2, &dval);
+    dres = setbool(ibool(dres) & ibool(dval));
+    mpcdm(&dres, t);
 }
+
 
 void
 calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
-  double dres, dval;
-  mpcmd(s1, &dres);
-  mpcmd(s2, &dval);
-  dres = setbool(ibool(dres) | ibool(dval));
-  mpcdm(&dres, t);
+    double dres, dval;
+
+    mpcmd(s1, &dres);
+    mpcmd(s2, &dval);
+    dres = setbool(ibool(dres) | ibool(dval));
+    mpcdm(&dres, t);
 }
+
 
 void
 calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
-  double dres, dval;
-  mpcmd(s1, &dres);
-  mpcmd(s2, &dval);
-  dres = setbool(ibool(dres) ^ ibool(dval));
-  mpcdm(&dres, t);
+    double dres, dval;
+
+    mpcmd(s1, &dres);
+    mpcmd(s2, &dval);
+    dres = setbool(ibool(dres) ^ ibool(dval));
+    mpcdm(&dres, t);
 }
+
 
 void
 calc_xnor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
-  double dres, dval;
-  mpcmd(s1, &dres);
-  mpcmd(s2, &dval);
-  dres = setbool(~ibool(dres) ^ ibool(dval));
-  mpcdm(&dres, t);
+    double dres, dval;
+
+    mpcmd(s1, &dres);
+    mpcmd(s2, &dval);
+    dres = setbool(~ibool(dres) ^ ibool(dval));
+    mpcdm(&dres, t);
 }
+
 
 void
 calc_not(int s1[MP_SIZE], int t[MP_SIZE])
 {
-  double dval;
-  mpcmd(s1, &dval);
-  dval = setbool(~ibool(dval));
-  mpcdm(&dval, t);
+    double dval;
+
+    mpcmd(s1, &dval);
+    dval = setbool(~ibool(dval));
+    mpcdm(&dval, t);
 }
+
 
 void
 calc_rand(int t[MP_SIZE])
 {
-  double dval = drand48();
-  mpcdm(&dval, t);
+    double dval = drand48();
+
+    mpcdm(&dval, t);
 }
+
 
 void
 calc_u32(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  double dval;
-  mpcmd(s1, &dval);
-  dval = setbool(ibool(dval));
-  mpcdm(&dval, t1);
+    double dval;
+
+    mpcmd(s1, &dval);
+    dval = setbool(ibool(dval));
+    mpcdm(&dval, t1);
 }
+
 
 void
 calc_u16(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  double dval;
-  mpcmd(s1, &dval);
-  dval = setbool(ibool(dval) & 0xffff);
-  mpcdm(&dval, t1);
+    double dval;
+
+    mpcmd(s1, &dval);
+    dval = setbool(ibool(dval) & 0xffff);
+    mpcdm(&dval, t1);
 }
+
 
 void
-calc_inv(int s1[MP_SIZE], int t1[MP_SIZE])
-{ // Calculate 1/x
-  int MP1[MP_SIZE];
-  int MP2[MP_SIZE];
-  int i = 1;
-  mpcim(&i, MP1);
-  mpstr(s1, MP2);
-  mpdiv(MP1, MP2, t1);
-}
-
-void 
-calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])
-{ // Calculate 10^x
-  int MP1[MP_SIZE];
-  int i = 10;
-  mpcim(&i, MP1);
-  mppwr2(MP1, s1, t1);
-}
-
-void 
-calc_xtimestenpowx(int s1[MP_SIZE], 
-		   int s2[MP_SIZE], 
-		   int t1[MP_SIZE])
+calc_inv(int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
 {
-  int MP1[MP_SIZE];
-  calc_tenpowx(s2, MP1);
-  mpmul(s1, MP1, t1);
+    int MP1[MP_SIZE];
+    int MP2[MP_SIZE];
+    int i = 1;
+
+    mpcim(&i, MP1);
+    mpstr(s1, MP2);
+    mpdiv(MP1, MP2, t1);
 }
+
+
+void 
+calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])   /* Calculate 10^x */
+{
+    int MP1[MP_SIZE];
+    int i = 10;
+
+    mpcim(&i, MP1);
+    mppwr2(MP1, s1, t1);
+}
+
+
+void 
+calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
+{
+    int MP1[MP_SIZE];
+
+    calc_tenpowx(s2, MP1);
+    mpmul(s1, MP1, t1);
+}
+
 
 void
-calc_percent(int s1[MP_SIZE], 
-	     int s2[MP_SIZE], 
-	     int t1[MP_SIZE])
+calc_percent(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
 {
-  int MP1[MP_SIZE];
-  int MP2[MP_SIZE];
+    int MP1[MP_SIZE];
+    int MP2[MP_SIZE];
 
-  mpmul(s1, s2, MP1);
-  MPstr_to_num("0.01", DEC, MP2);
-  mpmul(MP1, MP2, t1);
+    mpmul(s1, s2, MP1);
+    MPstr_to_num("0.01", DEC, MP2);
+    mpmul(MP1, MP2, t1);
 }
+
 
 void
 do_zero(int t1[MP_SIZE])
 {
-  int i = 0;
-  mpcim(&i, t1);
+    int i = 0;
+
+    mpcim(&i, t1);
 }
+
 
 void
 do_e(int t1[MP_SIZE])
 {
-  double e = 2.71828182846;
-  mpcdm(&e, t1);
+    double e = 2.71828182846;
+
+    mpcdm(&e, t1);
 }
+
 
 void 
 mptan(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  int MPcos[MP_SIZE]; 
-  int MPsin[MP_SIZE];
-  double cval;
+    int MPcos[MP_SIZE]; 
+    int MPsin[MP_SIZE];
+    double cval;
 
-  mpsin(s1, MPsin);
-  mpcos(s1, MPcos);
-  mpcmd(MPcos, &cval);
-  if (cval == 0.0) {
-    doerr(_("Error, cannot calculate cosine"));
-  }
-  mpdiv(MPsin, MPcos, t1);
+    mpsin(s1, MPsin);
+    mpcos(s1, MPcos);
+    mpcmd(MPcos, &cval);
+    if (cval == 0.0) {
+        doerr(_("Error, cannot calculate cosine"));
+    }
+    mpdiv(MPsin, MPcos, t1);
 }
 
-/* change type to radian */
+
+/* Change type to radian */
+
 void
 to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  int i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int i, MP1[MP_SIZE], MP2[MP_SIZE];
 
-  if (v->ttype == DEG) {
-    mppi(MP1);
-    mpmul(s1, MP1, MP2);
-    i = 180;
-    mpcim(&i, MP1);
-    mpdiv(MP2, MP1, t1);
-  } else if (v->ttype == GRAD) {
-    mppi(MP1);
-    mpmul(s1, MP1, MP2);
-    i = 200;
-    mpcim(&i, MP1);
-    mpdiv(MP2, MP1, t1);
-  } else {
-    mpstr(s1, t1);
-  }
+    if (v->ttype == DEG) {
+        mppi(MP1);
+        mpmul(s1, MP1, MP2);
+        i = 180;
+        mpcim(&i, MP1);
+        mpdiv(MP2, MP1, t1);
+    } else if (v->ttype == GRAD) {
+        mppi(MP1);
+        mpmul(s1, MP1, MP2);
+        i = 200;
+        mpcim(&i, MP1);
+        mpdiv(MP2, MP1, t1);
+    } else {
+        mpstr(s1, t1);
+    }
 }
+
 
 void
-do_trig_typeconv(enum trig_type ttype,
-		 int s1[MP_SIZE],
-		 int t1[MP_SIZE])
+do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  int i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int i, MP1[MP_SIZE], MP2[MP_SIZE];
   
-  switch (ttype) {
-  case DEG:
-    i = 180;
-    mpcim(&i, MP1);
-    mpmul(s1, MP1, MP2);
-    mppi(MP1);
-    mpdiv(MP2, MP1, t1);
-    break;
-  case RAD:
-    mpstr(s1, t1);
-    break;
-  case GRAD:
-    i = 200;
-    mpcim(&i, MP1);
-    mpmul(s1, MP1, MP2);
-    mppi(MP1);
-    mpdiv(MP2, MP1, t1);
-    break;
-  default:
-    assert(0);
-    break;
-  }
+    switch (ttype) {
+
+        case DEG:
+            i = 180;
+            mpcim(&i, MP1);
+            mpmul(s1, MP1, MP2);
+            mppi(MP1);
+            mpdiv(MP2, MP1, t1);
+            break;
+
+        case RAD:
+            mpstr(s1, t1);
+            break;
+
+        case GRAD:
+            i = 200;
+            mpcim(&i, MP1);
+            mpmul(s1, MP1, MP2);
+            mppi(MP1);
+            mpdiv(MP2, MP1, t1);
+            break;
+
+        default:
+            assert(0);
+            break;
+    }
 }
 
-/* calculate selected trigonometric function */
+
+/* Calculate selected trigonometric function */
+
 int
-calc_trigfunc(enum trigfunc_type type, 
-	      int s1[MP_SIZE],
-	      int t1[MP_SIZE])
+calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
 {
-  switch (type) {
-  case sin_t: 
-    to_rad(s1, s1);
-    mpsin(s1, t1);
-    break;
-  case cos_t:
-    to_rad(s1, s1);
-    mpcos(s1, t1);
-    break;
-  case tan_t:
-    to_rad(s1, s1);
-    mptan(s1, t1);
-    break;
-  case sinh_t:
-    mpsinh(s1, t1);
-    break;
-  case cosh_t:
-    mpcosh(s1, t1);
-    break;
-  case tanh_t:
-    mptanh(s1, t1);
-    break;
-  case asin_t:
-    mpasin(s1, t1);
-    do_trig_typeconv(v->ttype, t1, t1);
-    break;
-  case acos_t:
-    mpacos(s1, t1);
-    do_trig_typeconv(v->ttype, t1, t1);
-    break;
-  case atan_t:
-    mpatan(s1, t1);
-    do_trig_typeconv(v->ttype, t1, t1);
-    break;
-  case asinh_t:
-    mpasinh(s1, t1);
-    break;
-  case acosh_t:
-    mpacosh(s1, t1);
-    break;
-  case atanh_t:
-    mpatanh(s1, t1);
-    break;
-  };
-  return 0;
+    switch (type) {
+        case sin_t: 
+            to_rad(s1, s1);
+            mpsin(s1, t1);
+            break;
+
+        case cos_t:
+            to_rad(s1, s1);
+            mpcos(s1, t1);
+            break;
+
+        case tan_t:
+            to_rad(s1, s1);
+            mptan(s1, t1);
+            break;
+
+        case sinh_t:
+            mpsinh(s1, t1);
+            break;
+
+        case cosh_t:
+            mpcosh(s1, t1);
+            break;
+
+        case tanh_t:
+            mptanh(s1, t1);
+            break;
+
+        case asin_t:
+            mpasin(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case acos_t:
+            mpacos(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case atan_t:
+            mpatan(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case asinh_t:
+            mpasinh(s1, t1);
+            break;
+
+        case acosh_t:
+            mpacosh(s1, t1);
+            break;
+
+        case atanh_t:
+            mpatanh(s1, t1);
+            break;
+    }
+
+    return(0);
 }
+
 
 /*  The following MP routines were not in the Brent FORTRAN package. They are
  *  derived here, in terms of the existing routines.
@@ -359,6 +404,7 @@ mpacos(int *MPx, int *MPretval)
         }
     }
 }
+
 
 /*  MP precision hyperbolic arc cosine.
  *
@@ -442,6 +488,7 @@ mpatanh(int *MPx, int *MPretval)
     }
 }
 
+
 /*  MP precision common log.
  *
  *  1. log10(x) = log10(e) * log(x)
@@ -471,16 +518,17 @@ calc_ctrm(int t[MP_SIZE])
  *          RESULT = log(MEM1 / MEM2) / log(1 + MEM0)
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  mpdiv(v->MPmvals[1], v->MPmvals[2], MP1);
-  mpln(MP1, MP2);
-  val = 1;
-  mpaddi(v->MPmvals[0], &val, MP3);
-  mpln(MP3, MP4);
-  mpdiv(MP2, MP4, t);
+    mpdiv(v->MPmvals[1], v->MPmvals[2], MP1);
+    mpln(MP1, MP2);
+    val = 1;
+    mpaddi(v->MPmvals[0], &val, MP3);
+    mpln(MP3, MP4);
+    mpdiv(MP2, MP4, t);
 }
+
 
 void
 calc_ddb(int t[MP_SIZE])
@@ -500,23 +548,24 @@ calc_ddb(int t[MP_SIZE])
  *          RESULT = VAL
  */
 
-  int i;
-  int len;
-  int val;
-  int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
+    int i;
+    int len;
+    int val;
+    int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
 
-  i = 0;
-  mpcim(&i, MPbv);
-  mpcmi(v->MPmvals[3], &len);
-  for (i = 0; i < len; i++) {
-    mpsub(v->MPmvals[0], MPbv, MP1);
-    val = 2;
-    mpmuli(MP1, &val, MP2);
-    mpdiv(MP2, v->MPmvals[2], t);
-    mpstr(MPbv, MP1);
-    mpadd(MP1, t, MPbv); // TODO: figure why result is MPbv, for next loop?
-  }
+    i = 0;
+    mpcim(&i, MPbv);
+    mpcmi(v->MPmvals[3], &len);
+    for (i = 0; i < len; i++) {
+        mpsub(v->MPmvals[0], MPbv, MP1);
+        val = 2;
+        mpmuli(MP1, &val, MP2);
+        mpdiv(MP2, v->MPmvals[2], t);
+        mpstr(MPbv, MP1);
+        mpadd(MP1, t, MPbv); // TODO: figure why result is MPbv, for next loop?
+    }
 }
+
 
 void
 calc_fv(int t[MP_SIZE])
@@ -529,17 +578,18 @@ calc_fv(int t[MP_SIZE])
  *          RESULT = MEM0 * (pow(1 + MEM1, MEM2) - 1) / MEM1
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
   
-  val = 1;
-  mpaddi(v->MPmvals[1], &val, MP1);
-  mppwr2(MP1, v->MPmvals[2], MP2);
-  val = -1;
-  mpaddi(MP2, &val, MP3);
-  mpmul(v->MPmvals[0], MP3, MP4);
-  mpdiv(MP4, v->MPmvals[1], t);
+    val = 1;
+    mpaddi(v->MPmvals[1], &val, MP1);
+    mppwr2(MP1, v->MPmvals[2], MP2);
+    val = -1;
+    mpaddi(MP2, &val, MP3);
+    mpmul(v->MPmvals[0], MP3, MP4);
+    mpdiv(MP4, v->MPmvals[1], t);
 }
+
 
 void
 calc_pmt(int t[MP_SIZE])
@@ -552,21 +602,22 @@ calc_pmt(int t[MP_SIZE])
  *          RESULT = MEM0 * (MEM1 / (1 - pow(MEM1 + 1, -1 * MEM2)))
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  val = 1;
-  mpaddi(v->MPmvals[1], &val, MP1);
-  val = -1;
-  mpmuli(v->MPmvals[2], &val, MP2);
-  mppwr2(MP1, MP2, MP3);
-  val = -1;
-  mpmuli(MP3, &val, MP4);
-  val = 1;
-  mpaddi(MP4, &val, MP1);
-  mpdiv(v->MPmvals[1], MP1, MP2);
-  mpmul(v->MPmvals[0], MP2, t);
+    val = 1;
+    mpaddi(v->MPmvals[1], &val, MP1);
+    val = -1;
+    mpmuli(v->MPmvals[2], &val, MP2);
+    mppwr2(MP1, MP2, MP3);
+    val = -1;
+    mpmuli(MP3, &val, MP4);
+    val = 1;
+    mpaddi(MP4, &val, MP1);
+    mpdiv(v->MPmvals[1], MP1, MP2);
+    mpmul(v->MPmvals[0], MP2, t);
 }
+
 
 void
 calc_pv(int t[MP_SIZE])
@@ -579,21 +630,22 @@ calc_pv(int t[MP_SIZE])
  *          RESULT = MEM0 * (1 - pow(1 + MEM1, -1 * MEM2)) / MEM1
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  val = 1;
-  mpaddi(v->MPmvals[1], &val, MP1);
-  val = -1;
-  mpmuli(v->MPmvals[2], &val, MP2);
-  mppwr2(MP1, MP2, MP3);
-  val = -1;
-  mpmuli(MP3, &val, MP4);
-  val = 1;
-  mpaddi(MP4, &val, MP1);
-  mpdiv(MP1, v->MPmvals[1], MP2);
-  mpmul(v->MPmvals[0], MP2, t);
+    val = 1;
+    mpaddi(v->MPmvals[1], &val, MP1);
+    val = -1;
+    mpmuli(v->MPmvals[2], &val, MP2);
+    mppwr2(MP1, MP2, MP3);
+    val = -1;
+    mpmuli(MP3, &val, MP4);
+    val = 1;
+    mpaddi(MP4, &val, MP1);
+    mpdiv(MP1, v->MPmvals[1], MP2);
+    mpmul(v->MPmvals[0], MP2, t);
 }
+
 
 void
 calc_rate(int t[MP_SIZE])
@@ -606,17 +658,18 @@ calc_rate(int t[MP_SIZE])
  *          RESULT = pow(MEM0 / MEM1, 1 / MEM2) - 1
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  mpdiv(v->MPmvals[0], v->MPmvals[1], MP1);
-  val = 1;
-  mpcim(&val, MP2);
-  mpdiv(MP2, v->MPmvals[2], MP3);
-  mppwr2(MP1, MP3, MP4);
-  val = -1;
-  mpaddi(MP4, &val, t);
+    mpdiv(v->MPmvals[0], v->MPmvals[1], MP1);
+    val = 1;
+    mpcim(&val, MP2);
+    mpdiv(MP2, v->MPmvals[2], MP3);
+    mppwr2(MP1, MP3, MP4);
+    val = -1;
+    mpaddi(MP4, &val, t);
 }
+
 
 void
 calc_sln(int t[MP_SIZE])
@@ -629,11 +682,12 @@ calc_sln(int t[MP_SIZE])
  *          RESULT = (MEM0 - MEM1) / MEM2
  */
   
-  int MP1[MP_SIZE];
+    int MP1[MP_SIZE];
 
-  mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
-  mpdiv(MP1, v->MPmvals[2], t);
+    mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
+    mpdiv(MP1, v->MPmvals[2], t);
 }
+
 
 void
 calc_syd(int t[MP_SIZE])
@@ -648,21 +702,22 @@ calc_syd(int t[MP_SIZE])
  *                   (MEM2 * (MEM2 + 1) / 2)
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  mpsub(v->MPmvals[2], v->MPmvals[3], MP2);
-  val = 1;
-  mpaddi(MP2, &val, MP3);
-  mpaddi(v->MPmvals[2], &val, MP2);
-  mpmul(v->MPmvals[2], MP2, MP4);
-  val = 2;
-  mpcim(&val, MP2);
-  mpdiv(MP4, MP2, MP1);
-  mpdiv(MP3, MP1, MP2);
-  mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
-  mpmul(MP1, MP2, t);
+    mpsub(v->MPmvals[2], v->MPmvals[3], MP2);
+    val = 1;
+    mpaddi(MP2, &val, MP3);
+    mpaddi(v->MPmvals[2], &val, MP2);
+    mpmul(v->MPmvals[2], MP2, MP4);
+    val = 2;
+    mpcim(&val, MP2);
+    mpdiv(MP4, MP2, MP1);
+    mpdiv(MP3, MP1, MP2);
+    mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
+    mpmul(MP1, MP2, t);
 }
+
 
 void
 calc_term(int t[MP_SIZE])
@@ -675,52 +730,47 @@ calc_term(int t[MP_SIZE])
  *          RESULT = log(1 + (MEM1 * MEM2 / MEM0)) / log(1 + MEM2)
  */
 
-  int val;
-  int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    int val;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-  val = 1;
-  mpaddi(v->MPmvals[2], &val, MP1);
-  mpln(MP1, MP2);
-  mpmul(v->MPmvals[1], v->MPmvals[2], MP1);
-  mpdiv(MP1, v->MPmvals[0], MP3);
-  val = 1;
-  mpaddi(MP3, &val, MP4);
-  mpln(MP4, MP1);
-  mpdiv(MP1, MP2, t);
+    val = 1;
+    mpaddi(v->MPmvals[2], &val, MP1);
+    mpln(MP1, MP2);
+    mpmul(v->MPmvals[1], v->MPmvals[2], MP1);
+    mpdiv(MP1, v->MPmvals[0], MP3);
+    val = 1;
+    mpaddi(MP3, &val, MP4);
+    mpln(MP4, MP1);
+    mpdiv(MP1, MP2, t);
 }
 
 
 void
-calc_rshift(int s[MP_SIZE],
-	    int t[MP_SIZE],
-	    int times,
-	    enum shiftd dir)
+calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
 {
-  // Implementation derived from old code.
-  // Using BOOLEAN is strange at least. Assumed that
-  // boolean means BINARY representation
+  /* Implementation derived from old code.
+   * Using BOOLEAN is strange at least. Assumed that
+   * boolean means BINARY representation
+   */
 
-  assert(times >= 0);
+    assert(times >= 0);
 
-  double dval;
-  mpcmd(s, &dval);
-  BOOLEAN temp = ibool(dval);
+    double dval;
+    mpcmd(s, &dval);
+    BOOLEAN temp = ibool(dval);
 
-  // There is a reason to do shift like this. Reason is that
-  // processors define shift only in a certain range. i386 uses only 5
-  // bits to describe shiftable amount. So, shift 32 times gives original
-  // number. That can cause very strange results (and bugs).
-  while (times--) temp = (dir == right) ? temp >> 1 : temp << 1;
+    /* There is a reason to do shift like this. Reason is that
+     * processors define shift only in a certain range. i386 uses only 5
+     * bits to describe shiftable amount. So, shift 32 times gives original
+     * number. That can cause very strange results (and bugs).
+     */
 
-#if 0
-  if (direction) {
-    while (times--) temp = temp >> 1;
-  } else while (times--) temp = temp << 1;
-#endif
+    while (times--) {
+        temp = (dir == right) ? temp >> 1 : temp << 1;
+    }
 
-  dval = setbool(temp);
-  mpcdm(&dval, t);
+    dval = setbool(temp);
+    mpcdm(&dval, t);
 }
 
-
-#endif
+#endif /*MPMATH_C*/

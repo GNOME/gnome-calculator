@@ -23,57 +23,58 @@
 #include "limits.h"
 #include "extern.h"
 #include "calctool.h"
-//#include "lr_parser.tab.h"
 
 #include "syntax_translation.h"
 
-// TODO: This file is almost identical to ce-parser
+/* TODO: This file is almost identical to ce-parser. */
 
 int 
-lr_parse_(char *expression,
-	  int result[MP_SIZE],
-	  int flags)
+lr_parse_(char *expression, int result[MP_SIZE], int flags)
 {
-  int ret = 0;
+    int ret = 0;
 
-  if (!(expression && result))
-    return -EINVAL;
-
-  memset(&parser_state, 0, sizeof(struct parser_state));
-
-  if (strlen(expression)) {
-    parser_state.i = 0;
-    parser_state.buff = gc_strdup(expression);
-    translate_tokens(&parser_state.buff);
-    ret = lrparse();
-    free(parser_state.buff);
-  }
-  
-  ret = (parser_state.error) ? parser_state.error : ret;
-
-  if (ret) {
-    return ret;
-  } else {
-    if ((flags & ANS) != (parser_state.flags & ANS)) {
-      return -EINVAL;
+    if (!(expression && result)) {
+        return(-EINVAL);
     }
-    if (flags & ANS) {
-      memcpy(result, parser_state.ret, sizeof(int)*MP_SIZE);
+
+    memset(&parser_state, 0, sizeof(struct parser_state));
+
+    if (strlen(expression)) {
+        parser_state.i = 0;
+        parser_state.buff = gc_strdup(expression);
+        translate_tokens(&parser_state.buff);
+        ret = lrparse();
+        free(parser_state.buff);
     }
-    return 0;
-  }
+
+    ret = (parser_state.error) ? parser_state.error : ret;
+
+    if (ret) {
+        return(ret);
+    } else {
+        if ((flags & ANS) != (parser_state.flags & ANS)) {
+            return(-EINVAL);
+        }
+        if (flags & ANS) {
+            memcpy(result, parser_state.ret, sizeof(int)*MP_SIZE);
+        }
+
+        return(0);
+    }
 }
+
 
 int 
-lr_parse(char *expression,
-	 int result[MP_SIZE])
+lr_parse(char *expression, int result[MP_SIZE])
 {
-  return lr_parse_(expression, result, ANS);
+    return(lr_parse_(expression, result, ANS));
 }
+
 
 int 
 lr_udf_parse(char *expression)
 {
-  int dummy[MP_SIZE];
-  return lr_parse_(expression, dummy, 0);
+    int dummy[MP_SIZE];
+
+    return(lr_parse_(expression, dummy, 0));
 }

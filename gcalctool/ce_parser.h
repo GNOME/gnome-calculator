@@ -33,31 +33,30 @@
 #include "parser.h"
 #include "parser_mac.h"
 
-// CE = Common expression
+/* CE = Common expression */
 
 extern struct parser_state parser_state;
 
-int ceerror(); // dummy definition TODO: this is a douple
-int ceparse(); // dummy definition
-
+int ceerror();                   /* dummy definition TODO: this is a douple */
+int ceparse();                   /* dummy definition. */
 int ceerror(char *s);
-
-int ce_parse(char *expression,
-	     int result[MP_SIZE]);
-
+int ce_parse(char *expression, int result[MP_SIZE]);
 int ce_udf_parse(char *expression);
 
-// UTILITY NEEDED BECAUSE GNU SOURCE NOT ALWAYS AWAILABLE
+/* UTILITY NEEDED BECAUSE GNU SOURCE NOT ALWAYS AWAILABLE. */
 
-static inline char*
+static inline char *
 ce_strndup(char *str, int len)
 {
-  if (len < 1) return NULL; 
+    if (len < 1) {
+        return(NULL); 
+    }
 
-  char *dup = malloc(len+1);
-  memset(dup, 0, len+1);
-  strncpy(dup, str, len);
-  return dup;
+    char *dup = malloc(len+1);
+    memset(dup, 0, len+1);
+    strncpy(dup, str, len);
+
+    return(dup);
 }
 
 #endif

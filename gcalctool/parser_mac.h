@@ -22,15 +22,15 @@
 #ifndef PARSER_MAC_H
 #define PARSER_MAC_H
 
-#define PARSER_MIN(a,b) (a<b)?a:b;
+#define PARSER_MIN(a, b) (a < b) ? a : b;
 
-#define YY_INPUT(buf,result,max) {\
-  int l = strlen(parser_state.buff);\
-  int remaining = l - parser_state.i;\
-  int c = PARSER_MIN(remaining, max);\
-  memcpy(buf, parser_state.buff+parser_state.i, c);\
-  parser_state.i += c;\
-  result = (c) ? c : YY_NULL;\
+#define YY_INPUT(buf, result, max) {\
+    int l = strlen(parser_state.buff);\
+    int remaining = l - parser_state.i;\
+    int c = PARSER_MIN(remaining, max);\
+    memcpy(buf, parser_state.buff + parser_state.i, c);\
+    parser_state.i += c;\
+    result = (c) ? c : YY_NULL;\
 }
 
-#endif
+#endif /*PARSER_MAC_H*/

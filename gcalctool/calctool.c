@@ -1,6 +1,7 @@
+
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -78,11 +79,12 @@ char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
 char *inv_desc = N_("Set inverse option for trigonometric functions");
 
 char *mode_str[]  = {          /* Strings for each mode value. */
-  N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC"), N_("SCIENTIFIC_EXP")
+    N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC"), N_("SCIENTIFIC_EXP")
 };
 
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-  N_("Basic Mode"), N_("Financial Mode"), N_("Scientific Mode"), N_("Expression Mode")
+    N_("Basic Mode"), N_("Financial Mode"), 
+    N_("Scientific Mode"), N_("Expression Mode")
 };
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
@@ -103,7 +105,8 @@ int basevals[4] = { 2, 8, 10, 16 };
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", "SCIENTIFIC", "SCIENTIFIC_EXP" };
+char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", 
+                              "SCIENTIFIC", "SCIENTIFIC_EXP" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
 
@@ -305,7 +308,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_c, 0 },
     'c',
     M_NONE,
-    do_immed,  //do_calc
+    do_immed, 
     N_("Chs"),
     neg
 },
@@ -391,7 +394,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_percent, 0 },
     '%',
     M_NONE,
-    do_immed,  //do_calc,
+    do_immed,  
     NULL,
     immediate
 },
@@ -403,7 +406,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_s, 0 },
     's',
     M_NONE,
-    do_immed, //do_calc,
+    do_immed, 
     NULL,
     func
 },
@@ -489,7 +492,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_r, 0 },
     'r',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     N_("Recip"),
     inv
 },
@@ -501,7 +504,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     { GDK_at, 0 },
     '@',
     M_NONE,
-    do_immed,  //do_calc
+    do_immed,  
     N_("^2"),
     immediate
 },
@@ -787,7 +790,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_bracketright, 0 },
     ']',
     M_NONE,   
-    do_immed,  //do_calc, 
+    do_immed,  
     N_("u16"),
     func
 },            
@@ -799,7 +802,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_bracketleft, 0 },
     '[',
     M_NONE,
-    do_immed,  //do_calc, 
+    do_immed,  
     N_("u32"),
     func
 },
@@ -897,7 +900,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_braceleft, 0 },
     '{',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     N_("e^"),
     immediate | prefixop
 },
@@ -909,7 +912,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_braceright, 0 },
     '}',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     N_("10^"),
     prefixop
 },       
@@ -933,7 +936,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_exclam, 0 },
     '!',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     N_("!"),
     immediate | postfixop
 },
@@ -945,7 +948,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_question, 0 },
     '?',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     NULL,
     none
 },
@@ -1031,7 +1034,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_N, 0 },
     'N',
     M_NONE,
-    do_immed, //do_calc
+    do_immed, 
     NULL,
     func
 },
@@ -1043,7 +1046,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_G, 0 },
     'G',
     M_NONE,
-    do_immed, //do_calc,
+    do_immed, 
     NULL,
     func
 },
@@ -1116,7 +1119,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     { GDK_asciitilde, 0 },
     '~',
     M_NONE,
-    do_immed, //do_calc,
+    do_immed, 
     N_("~"),
     unop | immediate
 },
@@ -1152,7 +1155,7 @@ do_calctool(int argc, char **argv)
     char *ptr, title[MAXLINE];
     int i;
 
-    build_word_map(); // initialize i18n
+    build_word_map();          /* Initialize i18n. */
 
     v->progname = argv[0];     /* Save programs name. */
     v->appname  = NULL;
@@ -1211,7 +1214,8 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    SPRINTF(title, "%s [Experimental] - %s", v->tool_label, _(mstrs[(int) v->modetype]));
+    SPRINTF(title, "%s [Experimental] - %s", v->tool_label, 
+            _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
@@ -1246,8 +1250,10 @@ init_text()         /* Setup constant strings. */
     STRCPY(v->con_names[5], _("degrees in a radian"));
     STRCPY(v->con_names[6], _("2 ^ 20"));
     STRCPY(v->con_names[7], _("Gram-to-ounce conversion factor"));
-    STRCPY(v->con_names[8], _("Kilojoule-to-British-thermal-unit conversion factor"));
-    STRCPY(v->con_names[9], _("Cubic-centimeter-to-cubic-inch conversion factor"));
+    STRCPY(v->con_names[8], 
+           _("Kilojoule-to-British-thermal-unit conversion factor"));
+    STRCPY(v->con_names[9], 
+           _("Cubic-centimeter-to-cubic-inch conversion factor"));
 }
 
 

@@ -25,15 +25,10 @@
 #include "calctool.h"
 #include "extern.h"
 
+int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
+
 void do_factorial(int *, int *);
+void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
+void do_portionfunc(int num[MP_SIZE]);
 
-int
-do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
-
-void
-do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
-
-void
-do_portionfunc(int num[MP_SIZE]);
-
-#endif
+#endif /*FUNCTIONS_H*/

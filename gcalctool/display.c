@@ -1,6 +1,7 @@
+
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -37,53 +38,54 @@ localize_number(char *dest, const char *src)
     char tnum[MAX_LOCALIZED], *dstp;
 
     if (!v->error && v->show_tsep && v->base == DEC) {
-	const char *radixp, *srcp;
-	int n, i;
-	size_t tsep_len;
+        const char *radixp, *srcp;
+        int n, i;
+        size_t tsep_len;
 
-	/* Process the fractional part (if any). */
-	srcp = src + strlen(src) - 1;
-	dstp = tnum;
-	if ((radixp = strchr(src, '.')) != NULL) {
+        /* Process the fractional part (if any). */
+        srcp = src + strlen(src) - 1;
+        dstp = tnum;
+        if ((radixp = strchr(src, '.')) != NULL) {
             while (srcp != radixp) {
-    		*dstp++ = *srcp--;
+                *dstp++ = *srcp--;
             }
-	    *dstp++ = *srcp--;
-    	}
+            *dstp++ = *srcp--;
+        }
 
-    	/* Process the integer part, add in thousand separators. */
-	tsep_len = strlen(v->tsep);
-    	n = 0;
-    	while (srcp >= src) {
+        /* Process the integer part, add in thousand separators. */
+        tsep_len = strlen(v->tsep);
+        n = 0;
+        while (srcp >= src) {
             *dstp++ = *srcp--;
             n++;
             if (n == 3 && srcp >= src && *srcp != '-') {
-	        for (i = tsep_len - 1; i >= 0; i--)
-		    *dstp++ = v->tsep[i];
-		n = 0;
+                for (i = tsep_len - 1; i >= 0; i--) {
+                    *dstp++ = v->tsep[i];
+                }
+                n = 0;
             }
-	}
-	*dstp++ = '\0';
+        }
+        *dstp++ = '\0';
 
-	/* Move from scratch pad to fnum, reversing the character order. */
-	srcp = tnum + strlen(tnum) - 1;
-	dstp = dest;
-	while (srcp >= tnum) {
+        /* Move from scratch pad to fnum, reversing the character order. */
+        srcp = tnum + strlen(tnum) - 1;
+        dstp = dest;
+        while (srcp >= tnum) {
             *dstp++ = *srcp--;
-	}
-	*dstp++ = '\0';
+        }
+        *dstp++ = '\0';
     } else {
-	STRCPY(dest, src);
+        STRCPY(dest, src);
     }
     dstp = strchr(dest, '.');
     if (dstp != NULL) {
-	size_t radix_len;
+        size_t radix_len;
 
-	radix_len = strlen(v->radix);
-	if (radix_len != 1) {
-	    memmove(dstp + radix_len, dstp + 1, strlen (dstp + 1) + 1);
-	}
-	MEMCPY(dstp, v->radix, radix_len);
+        radix_len = strlen(v->radix);
+        if (radix_len != 1) {
+            memmove(dstp + radix_len, dstp + 1, strlen (dstp + 1) + 1);
+        }
+        MEMCPY(dstp, v->radix, radix_len);
     }
 }
 
@@ -101,6 +103,7 @@ char_val(char chr)
         return(-1);
     }
 }
+
 
 void
 clear_display(int initialise)
@@ -125,7 +128,8 @@ clear_display(int initialise)
 }
 
 
-// FIXME: not a right location for this function
+/* FIXME: not a right location for this function. */
+
 struct button *
 copy_button_info(struct button *old)
 {
@@ -135,32 +139,31 @@ copy_button_info(struct button *old)
     new = malloc(sizeof(struct button));
     assert(new);
     memcpy(new, old, len);
-    return new;
+
+    return(new);
 }
 
 
 void
 initialise()
 {
-  // TODO: perhaps this function should be
-  //       renamed to reset.
+    /* TODO: perhaps this function should be renamed to reset. */
 
-  int i;
+    int i;
   
-  v->error         = 0;           /* Currently no display error. */
-  v->cur_op        = '?';         /* No arithmetic operator defined yet. */
-  v->old_cal_value = '?';
-  v->pending       = 0;
-  i = 0;
-  mpcim(&i, v->MPresult);         /* No previous result yet. */
-  mpcim(&i, v->MPdisp_val);         
-  mpcim(&i, v->MPlast_input);
+    v->error         = 0;           /* Currently no display error. */
+    v->cur_op        = '?';         /* No arithmetic operator defined yet. */
+    v->old_cal_value = '?';
+    v->pending       = 0;
+    i = 0;
+    mpcim(&i, v->MPresult);         /* No previous result yet. */
+    mpcim(&i, v->MPdisp_val);         
+    mpcim(&i, v->MPlast_input);
   
-  v->new_input = 1;               /* Value zero is on calculator display */
+    v->new_input = 1;               /* Value zero is on calculator display */
 
-  free(v->expression);
-  v->expression = NULL;
-
+    free(v->expression);
+    v->expression = NULL;
 }
 
 
@@ -188,7 +191,7 @@ make_fixed(int *MPnumber, int base, int cmax)
     mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
-    SPRINTF(half, "0.5"); /* FIXME: string constant if MPstr_to_num can get it */
+    SPRINTF(half, "0.5"); /* FIXME: string const. if MPstr_to_num can get it */
     MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
@@ -209,7 +212,7 @@ make_fixed(int *MPnumber, int base, int cmax)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-	    *optr++ = '.';
+            *optr++ = '.';
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -231,9 +234,9 @@ make_fixed(int *MPnumber, int base, int cmax)
         while (*optr == '0') {
             optr--;
         }
-	if (optr < v->fnum || *optr != '.') {
-	    optr++;
-	}
+    if (optr < v->fnum || *optr != '.') {
+        optr++;
+    }
         *optr = '\0';
     }
 
@@ -408,7 +411,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
             mpcim(&inum, MP2);
             mpdiv(MP2, MP1, MP1);
             mpadd(MPval, MP1, MPval);
-	    optr++;
+        optr++;
         }
     }
 
@@ -569,30 +572,26 @@ show_display(int *MPval)
 void
 refresh_display()
 {
-  switch (v->syntax) {
-  case npa: {
-    show_display(v->MPdisp_val);
-    break;
-  }
-  case exprs:
-    if (v->expression) {
-      char *e = gc_strdup(v->expression);
-      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
-      str_replace(&e, "Ans", ans);
-      set_display(e, FALSE);
-      free(e);
-    } else set_display("", FALSE);
-    
-#if 0
-    if (v->e.calc_complete) {
-      show_display(v->e.ans);
-    } else {
-      set_display(v->expression, FALSE);
-    }
-#endif
-    break;
-  default:
-    assert(0);
-  }
+    switch (v->syntax) {
+        case npa:
+            show_display(v->MPdisp_val);
+            break;
 
+        case exprs:
+            if (v->expression) {
+                char *e = gc_strdup(v->expression);
+                char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+
+                str_replace(&e, "Ans", ans);
+                set_display(e, FALSE);
+                free(e);
+            } else {
+                set_display("", FALSE);
+            }
+    
+            break;
+
+        default:
+            assert(0);
+    }
 }

@@ -1,4 +1,7 @@
-/*  Copyright (C) 2004 Sami Pietila
+
+/*  $Header$
+ *
+ *  Copyright (C) 2004 Sami Pietila
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,33 +30,19 @@
 
 struct parser_state parser_state;
 
-void cp(int s[MP_SIZE], int t[MP_SIZE])
+
+void 
+cp(int s[MP_SIZE], int t[MP_SIZE])
 {
-  memcpy(t, s, sizeof(int)*MP_SIZE);
-}
-
-void ret(int s[MP_SIZE])
-{ // copy result value
-  memcpy(parser_state.ret, s, sizeof(int)*MP_SIZE);
-  parser_state.flags |= ANS;
-}
-
-#if 0
-void iret(int s[MP_SIZE])
-{ // copy intermediate return value
-  assert(!parser_state.flags.iret);
-  parser_state.flags.iret = 1;
-  ret(s);
+    memcpy(t, s, sizeof(int)*MP_SIZE);
 }
 
 
-void set_iop(char *op)
+void 
+ret(int s[MP_SIZE])     /* Copy result value. */
 {
-  assert(op);
-  int n = strlen(op);
-  assert(n < 8);
-  strncpy(parser_state.iop, op, n+1);
+    memcpy(parser_state.ret, s, sizeof(int)*MP_SIZE);
+    parser_state.flags |= ANS;
 }
-#endif
 
-#endif
+#endif /*PARSER_C*/

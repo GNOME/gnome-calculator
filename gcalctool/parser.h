@@ -1,3 +1,4 @@
+
 /*  $Header$
  *
  *  Copyright (C) 2004 Sami Pietila
@@ -24,16 +25,16 @@
 #define ANS 1
 
 struct parser_state {
-  int flags;
-  char *buff;
-  int i;
-  int error;
-  int ret[MP_SIZE];
-  int ncount;
+    int flags;
+    char *buff;
+    int i;
+    int error;
+    int ret[MP_SIZE];
+    int ncount;
 };
 
 void cp(int s[MP_SIZE], int t[MP_SIZE]);
 void ret(int s[MP_SIZE]);
 void iret(int s[MP_SIZE]);
 
-#endif
+#endif /*PARSER_H*/

@@ -1,6 +1,7 @@
+
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,13 +31,13 @@
 #include "mpmath.h"
 #include "ce_parser.h"
 #include "lr_parser.h"
-//#include "udf_parser.h"
 
 static void do_accuracy();
 static void do_constant();
 static void do_exchange();
 static void do_function();
 static void do_shift();
+
 
 static void
 do_accuracy()     /* Set display accuracy. */
@@ -63,7 +64,6 @@ do_base(enum base_type b)    /* Change the current base setting. */
     put_resource(R_BASE, Rbstr[(int) v->base]);
     grey_buttons(v->base);
     refresh_display();
-    //show_display(v->MPdisp_val);
     v->pending = 0;
     if (v->rstate) {
         make_registers();
@@ -75,381 +75,453 @@ void
 do_business()     /* Perform special business mode calculations. */
 {
     if (key_equal(v->current, KEY_CTRM)) {
-      calc_ctrm(v->MPdisp_val);
+        calc_ctrm(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_DDB)) {
-      calc_ddb(v->MPdisp_val);
+        calc_ddb(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_FV)) {
-      calc_fv(v->MPdisp_val);
+        calc_fv(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_PMT)) {
-      calc_pmt(v->MPdisp_val);
+        calc_pmt(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_PV)) {
-      calc_pv(v->MPdisp_val);
+        calc_pv(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_RATE)) {
-      calc_rate(v->MPdisp_val);
+        calc_rate(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_SLN)) {
-      calc_sln(v->MPdisp_val);
+        calc_sln(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_SYD)) {
-      calc_syd(v->MPdisp_val);
+        calc_syd(v->MPdisp_val);
     } else if (key_equal(v->current, KEY_TERM)) {
-      calc_term(v->MPdisp_val);
+        calc_term(v->MPdisp_val);
     }
     show_display(v->MPdisp_val);
 }
 
+
 char* 
 ch_trig(char *func) {
-  assert(func);
+    assert(func);
   
-  struct ch {
-    char *orig;
-    char *conv;
-  }; 
-  struct ch inv[] = {
-    {"Sin", "Asin"},
-    {"Cos", "Acos"},
-    {"Tan", "Atan"},
-    {NULL, NULL}
-  };
-  struct ch hyp[] = {
-    {"Sin", "Sinh"},
-    {"Cos", "Cosh"},
-      {"Tan", "Tanh"},
-    {NULL, NULL}
-  };
-  struct ch invhyp[] = {
-    {"Sin", "Asinh"},
-    {"Cos", "Acosh"},
-    {"Tan", "Atanh"},
-    {NULL, NULL}
-  };
+    struct ch {
+        char *orig;
+        char *conv;
+    }; 
+    struct ch inv[] = {
+        { "Sin", "Asin"},
+        { "Cos", "Acos"},
+        { "Tan", "Atan"},
+        { NULL,  NULL}
+    };
+    struct ch hyp[] = {
+        { "Sin", "Sinh"},
+        { "Cos", "Cosh"},
+        { "Tan", "Tanh"},
+        { NULL,  NULL}
+    };
+    struct ch invhyp[] = {
+        { "Sin", "Asinh"},
+        { "Cos", "Acosh"},
+        { "Tan", "Atanh"},
+        { NULL,  NULL}
+    };
   
-  int f1 = (v->inverse) ? 1 : 0;
-  int f2 = (v->hyperbolic) ? 2 : 0;
-  int table = f1 | f2;
+    int f1 = (v->inverse) ? 1 : 0;
+    int f2 = (v->hyperbolic) ? 2 : 0;
+    int table = f1 | f2;
   
-  struct ch *ch = NULL;
-  
-  switch (table) {
-  case 0:
-    break;
-  case 1:
-    ch = inv;
-    break;
-  case 2:
-    ch = hyp;
-    break;
-  case 3:
-    ch = invhyp;
-    break;
-  default:
-    assert(0);
-  }
-  
-  if (ch) {
-    int i;
-    for (i = 0; ch[i].orig; i++) {
-      if (!strcmp(ch[i].orig, func)) {
-	return ch[i].conv;
-      }
+    struct ch *ch = NULL;
+
+    switch (table) {
+      case 0:
+          break;
+
+      case 1:
+          ch = inv;
+          break;
+
+      case 2:
+        ch = hyp;
+        break;
+
+      case 3:
+        ch = invhyp;
+        break;
+
+      default:
+        assert(0);
     }
-  } 
-  return func;
+
+    if (ch) {
+        int i;
+
+        for (i = 0; ch[i].orig; i++) {
+            if (!strcmp(ch[i].orig, func)) {
+	        return(ch[i].conv);
+            }
+        }
+    } 
+
+    return(func);
 }
+
 
 char*
 gc_strdup(char *str)
 {
-  if (!str) return NULL;
-  int len = strlen(str);
-  char *dup = malloc(len+1);
-  assert(dup);
-  memset(dup, 0, len+1);
-  strncpy(dup, str, len);
-  return dup;
+    char *dup;
+    int len;
+
+    if (!str) {
+        return NULL;
+    }
+
+    len = strlen(str);
+    dup = malloc(len+1);
+    assert(dup);
+    memset(dup, 0, len+1);
+    strncpy(dup, str, len);
+
+    return(dup);
 }
+
 
 void 
 exp_append(char *text)
 {
-  if (!text) return;
-  int orig_len = (v->expression) ? strlen(v->expression) : 0;
-  int dest_len = orig_len + strlen(text) +1;
-  char *buf = malloc(dest_len);
-  assert(buf);
-  if (v->expression) {
-    if (snprintf(buf, dest_len, "%s%s", v->expression, text) < 0) {
-      assert(0);
+    char *buf;
+    int orig_len, dest_len;
+
+    if (!text) {
+        return;
     }
-  } else strcpy(buf, text);
-  free(v->expression);
-  v->expression = buf;
+    orig_len = (v->expression) ? strlen(v->expression) : 0;
+    dest_len = orig_len + strlen(text) +1;
+    buf = malloc(dest_len);
+    assert(buf);
+    if (v->expression) {
+        if (snprintf(buf, dest_len, "%s%s", v->expression, text) < 0) {
+            assert(0);
+        }
+    } else {
+        strcpy(buf, text);
+    }
+    free(v->expression);
+    v->expression = buf;
 }
+
 
 void 
 exp_del() 
 {
-  free(v->expression);
-  v->expression = NULL;
+    free(v->expression);
+    v->expression = NULL;
 }
+
 
 int 
 usable_num(int MPnum[MP_SIZE]) 
 {
-  int ret = 0;
+    int ret = 0;
 
-  if (v->expression) {
-    ret = ce_parse(v->expression, MPnum);
-  } else {
-    mpstr(v->MPresult, MPnum);
-  }
-  return ret;
+    if (v->expression) {
+        ret = ce_parse(v->expression, MPnum);
+    } else {
+        mpstr(v->MPresult, MPnum);
+    }
+
+    return(ret);
 }
+
 
 void
-exp_del_char(char **expr, 
-	     int amount) 
+exp_del_char(char **expr, int amount) 
 {
-  assert(expr);
-  assert(amount >= 0);
-  char *e = NULL;
+    char *e = NULL;
+    int len;
 
-  if (!*expr) return;
-  int len = strlen(*expr);
-  len = len - amount;
-  if (len < 0) goto out;
+    assert(expr);
+    assert(amount >= 0);
+
+    if (!*expr) {
+        return;
+    }
+    len = strlen(*expr);
+    len = len - amount;
+    if (len < 0) {
+        goto out;
+    }
   
-  e = malloc(len+1);
-  assert(e);
-  snprintf(e, len+1, "%s", *expr);
+    e = malloc(len+1);
+    assert(e);
+    snprintf(e, len+1, "%s", *expr);
 
- out:
-  free(*expr);
-  *expr = e;
+out:
+    free(*expr);
+    *expr = e;
 }
+
 
 void
 exp_replace(char *text)
 {
-  free(v->expression);
-  v->expression = NULL;
-  exp_append(text);
+    free(v->expression);
+    v->expression = NULL;
+    exp_append(text);
 }
+
 
 void
 exp_negate()
 {
-  if (v->expression) {
-    int len = strlen(v->expression) + 4; // ending zero + parenthesis + minus
-    char *exp = malloc(len);
-    assert(exp);
-    if (snprintf(exp, len, "-(%s)", v->expression) < 0) {
-      assert(0);
+    if (v->expression) {
+        /* Ending zero + parenthesis + minus */
+        int len = strlen(v->expression) + 4;
+        char *exp = malloc(len);
+
+        assert(exp);
+        if (snprintf(exp, len, "-(%s)", v->expression) < 0) {
+            assert(0);
+        }
+        free(v->expression);
+        v->expression = exp;
     }
-    free(v->expression);
-    v->expression = exp;
-  }
 }
+
 
 void
 exp_inv()
 {
-  if (v->expression) {
-    int len = strlen(v->expression) + 5; // ending zero + 1/ + parenthesis
-    char *exp = malloc(len);
-    assert(exp);
-    if (snprintf(exp, len, "1/(%s)", v->expression) < 0) {
-      assert(0);
+    if (v->expression) {
+        /* Ending zero + 1/ + parenthesis */
+        int len = strlen(v->expression) + 5;
+        char *exp = malloc(len);
+
+        assert(exp);
+        if (snprintf(exp, len, "1/(%s)", v->expression) < 0) {
+            assert(0);
+        }
+        free(v->expression);
+        v->expression = exp;
     }
-    free(v->expression);
-    v->expression = exp;
-  }
 }
+
 
 int
-exp_has_postfix(char *str, 
-		char *postfix)
+exp_has_postfix(char *str, char *postfix)
 {
-  if (!str) return 0;
-  assert(postfix);
+    int len, plen;
 
-  int len = strlen(str);
-  int plen = strlen(postfix);
+    if (!str) {
+        return(0);
+    }
 
-  if (plen > len) return 0;
+    assert(postfix);
 
-  if (!strcasecmp(str + len - plen, postfix)) {
-    return 1;
-  } else {
-    return 0;
-  }
+    len = strlen(str);
+    plen = strlen(postfix);
+
+    if (plen > len) {
+        return(0);
+    }
+
+    if (!strcasecmp(str + len - plen, postfix)) {
+        return(1);
+    } else {
+        return(0);
+    }
 }
+
 
 void
-str_replace(char **str, 
-	    char *from,
-	    char *to)
+str_replace(char **str, char *from, char *to)
 {
-  assert(str);
-  assert(from);
-  assert(to);
-  if (!*str) return;
-  
-  int i = 0;
-  int len = strlen(*str);
-  int flen = strlen(from);
+    int i, flen, len;
 
-  for (i = 0; len-i >= flen; i++) {
-    if (!strncasecmp(from, *str+i, flen)) {
-      int j = i+3;
-      char *prefix = malloc(i+1);
-      char *postfix = malloc(len-j+1);
-      assert(prefix && postfix);
-      memset(prefix, 0, i+1);
-      memset(postfix, 0, len-j+1);
-      memcpy(prefix, *str, i);
-      memcpy(postfix, *str+i+3, len-j);
-      char *print = malloc(strlen(to)+i+len-j+1);
-      sprintf(print, "%s%s%s", prefix, to, postfix);
-      free(prefix);
-      free(postfix);
-      free(*str);
-      *str = print;
+    assert(str);
+    assert(from);
+    assert(to);
+
+    if (!*str) {
+        return;
     }
-  }
-  return;
+
+    i = 0;
+    len = strlen(*str);
+    flen = strlen(from);
+
+    for (i = 0; len-i >= flen; i++) {
+        if (!strncasecmp(from, *str+i, flen)) {
+            char *print;
+            int j = i+3;
+            char *prefix = malloc(i+1);
+            char *postfix = malloc(len-j+1);
+
+            assert(prefix && postfix);
+            memset(prefix, 0, i+1);
+            memset(postfix, 0, len-j+1);
+            memcpy(prefix, *str, i);
+            memcpy(postfix, *str+i+3, len-j);
+
+            print = malloc(strlen(to)+i+len-j+1);
+            sprintf(print, "%s%s%s", prefix, to, postfix);
+            free(prefix);
+            free(postfix);
+            free(*str);
+            *str = print;
+        }
+    }
 }
+
 
 void
 exp_do_backspace()
 {
-  if (exp_has_postfix(v->expression, "Ans")) { 
-    char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
-    str_replace(&v->expression, "Ans", ans);
-  }
+    if (exp_has_postfix(v->expression, "Ans")) { 
+        char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
+
+        str_replace(&v->expression, "Ans", ans);
+    }
 }
+
 
 char *
 exp_print()
 {
-  if (!v->expression) return NULL;
+    int i, len;
 
-  int i = 0;
-  int len = strlen(v->expression);
+    if (!v->expression) return NULL;
 
-  for (i = 0; len-i >= 3; i++) {
-    if (!strncasecmp("ans", v->expression+i, 3)) {
-      int j = i+3;
-      char *prefix = malloc(i+1);
-      char *postfix = malloc(len-j+1);
-      assert(prefix && postfix);
-      memset(prefix, 0, i+1);
-      memset(postfix, 0, len-j+1);
-      memcpy(prefix, v->expression, i);
-      memcpy(postfix, v->expression+i+3, len-j);
-      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
-      assert(ans);
-      char *print = malloc(strlen(ans)+i+len-j+1);
-      sprintf(print, "%s%s%s", prefix, ans, postfix);
-      free(prefix);
-      free(postfix);
-      return print;
+    i = 0;
+    len = strlen(v->expression);
+
+    for (i = 0; len-i >= 3; i++) {
+        if (!strncasecmp("ans", v->expression+i, 3)) {
+            char *ans;
+            int j = i+3;
+            char *prefix = malloc(i+1);
+            char *postfix = malloc(len-j+1);
+
+            assert(prefix && postfix);
+            memset(prefix, 0, i+1);
+            memset(postfix, 0, len-j+1);
+            memcpy(prefix, v->expression, i);
+            memcpy(postfix, v->expression+i+3, len-j);
+
+            ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+            assert(ans);
+            char *print = malloc(strlen(ans)+i+len-j+1);
+            sprintf(print, "%s%s%s", prefix, ans, postfix);
+            free(prefix);
+            free(postfix);
+
+            return(print);
+        }
     }
-  }
-  return NULL;
+
+    return(NULL);
 }
+
 
 void
 do_expression()
 {
-  update_statusbar("", "");
+    char *btext;
 
-  char *btext = 
-    (v->current->symname) ? v->current->symname : v->current->str;
+    update_statusbar("", "");
+
+    btext = (v->current->symname) ? v->current->symname : v->current->str;
   
-  if (v->e.calc_complete) {
-    v->e.calc_complete = 0;
+    if (v->e.calc_complete) {
+        v->e.calc_complete = 0;
+
+        if (v->current->flags & enter) {
+            exp_del();
+            update_statusbar(N_("Previous expression"), "");
+            mpstr(v->e.ansbak, v->e.ans);
+            assert(!v->expression);
+            v->expression = v->e.expbak;
+            v->e.expbak = NULL;
+            goto out;
+        }
+
+        if (v->current->flags & 
+            (binop | postfixop | neg | inv | expnum | bsp)) {
+            /* do nothing. */
+        } else if (v->current->flags & (prefixop)) {
+            char buf[1024];
+
+            snprintf(buf, 128, "%s(Ans)", btext);
+            exp_replace(buf);
+            goto out;
+        } else if (v->current->flags & (number | func)) {
+            exp_del(); 
+        }
+    }
+
+    if (v->current->flags & clear) {
+        exp_del();
+        set_error_state(FALSE);
+        MPstr_to_num("0", DEC, v->e.ans);
+        MPstr_to_num("0", DEC, v->e.ansbak);
+        goto out;
+    } else if (v->current->flags & regrcl) {
+        int i = char_val(v->current->value[0]);
+        char reg[3];
+        int n = '0' +  i;
+
+        snprintf(reg, 3, "R%c", n);
+        exp_append(reg);
+        goto out;
+    } else if (v->current->flags & con) {
+        int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
+
+        exp_append(make_number(MPval, v->base, TRUE, FALSE));
+        goto out;
+    } else if (v->current->flags & bsp) {
+        if (exp_has_postfix(v->expression, "Ans")) { 
+            char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
+
+            str_replace(&v->expression, "Ans", ans);
+        } 
+        exp_del_char(&v->expression, 1); 
+        goto out;
+    } else if (v->current->flags & neg) {
+        exp_negate();
+        goto out;
+    } else if (v->current->flags & inv) {
+        exp_inv();
+        goto out;
+    }
 
     if (v->current->flags & enter) {
-      exp_del();
-      update_statusbar(N_("Previous expression"), "");
-      mpstr(v->e.ansbak, v->e.ans);
-      assert(!v->expression);
-      v->expression = v->e.expbak;
-      v->e.expbak = NULL;
-      goto out;
+        if (v->expression) {
+            int MPval[MP_SIZE];
+            int ret = ce_parse(v->expression, MPval);
+
+            if (!ret) {
+	        mpstr(v->e.ans, v->e.ansbak);
+	        mpstr(MPval, v->e.ans);
+	        v->e.expbak = gc_strdup(v->expression);
+	        exp_replace("Ans");
+	        v->e.calc_complete = 1;
+	        goto out;
+            } else {
+	        update_statusbar(N_("Malformed expression"), 
+                                 "gtk-dialog-error");
+	        return;
+            }
+        } else {
+            goto out;
+        }
     }
 
-    if (v->current->flags & (binop | postfixop | neg | inv | expnum | bsp)) {
-      //exp_append("Ans");
-    } else if (v->current->flags & (prefixop)) {
-      char buf[1024];
-      snprintf(buf, 128, "%s(Ans)", btext);
-      exp_replace(buf);
-      goto out;
-    } else if (v->current->flags & (number | func)) exp_del(); 
-  }
+    exp_append(btext);
 
-  if (v->current->flags & clear) {
-    exp_del();
-    set_error_state(FALSE);
-    MPstr_to_num("0", DEC, v->e.ans);
-    MPstr_to_num("0", DEC, v->e.ansbak);
-    goto out;
-  } else if (v->current->flags & regrcl) {
-    int i = char_val(v->current->value[0]);
-    char reg[3];
-    int n = '0' +  i;
-    snprintf(reg, 3, "R%c", n);
-    exp_append(reg);
-    goto out;
-  } else if (v->current->flags & con) {
-    int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-    exp_append(make_number(MPval, v->base, TRUE, FALSE));
-    goto out;
-  } else if (v->current->flags & bsp) {
-    if (exp_has_postfix(v->expression, "Ans")) { 
-      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
-      str_replace(&v->expression, "Ans", ans);
-    } 
-    exp_del_char(&v->expression, 1); 
-    goto out;
-  } else if (v->current->flags & neg) {
-    exp_negate();
-    goto out;
-  } else if (v->current->flags & inv) {
-    exp_inv();
-    goto out;
-  }
-
-  if (v->current->flags & enter) {
-    if (v->expression) {
-      int MPval[MP_SIZE];
-      int ret = ce_parse(v->expression, MPval);
-      if (!ret) {
-	mpstr(v->e.ans, v->e.ansbak);
-	mpstr(MPval, v->e.ans);
-	//show_display(v->e.ans);
-	v->e.expbak = gc_strdup(v->expression);
-	exp_replace("Ans");
-	v->e.calc_complete = 1;
-	//update_statusbar(N_("Showing answer"), "");	    
-	goto out;
-	//return;
-      } else {
-	update_statusbar(N_("Malformed expression"), "gtk-dialog-error");
-	return;
-      }
-    } else {
-      goto out;
+    if (v->current->flags & func) {
+        exp_append("(");
     }
-  }
 
-  exp_append(btext);
-
-  if (v->current->flags & func) exp_append("(");
-
- out:
-  refresh_display();
+out:
+    refresh_display();
 }
 
 
@@ -545,97 +617,106 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     v->new_input     = v->key_exp = 0;
 }
 
+
 int
-do_trigfunc(int s[MP_SIZE], 
-	    int t[MP_SIZE])
+do_trigfunc(int s[MP_SIZE], int t[MP_SIZE])
 {
-  if (!v->current) return -EINVAL;
+    enum trig_func tfunc;
+    int sin_key, cos_key, tan_key;
 
-  int sin_key = (key_equal(v->current, KEY_SIN)) ? 1 : 0;
-  int cos_key = (key_equal(v->current, KEY_COS)) ? 1 : 0;
-  int tan_key = (key_equal(v->current, KEY_TAN)) ? 1 : 0;
-  
-  enum trig_func tfunc;
+    if (!v->current) {
+        return(-EINVAL);
+    }
 
-  if (sin_key) {
-    tfunc = SIN;
-  } else if (cos_key) {
-    tfunc = COS;
-  } else if (tan_key) {
-    tfunc = TAN;
-  } else assert(0);
+    sin_key = (key_equal(v->current, KEY_SIN)) ? 1 : 0;
+    cos_key = (key_equal(v->current, KEY_COS)) ? 1 : 0;
+    tan_key = (key_equal(v->current, KEY_TAN)) ? 1 : 0;
   
-  return do_tfunc(s, t, tfunc);
+    if (sin_key) {
+        tfunc = SIN;
+    } else if (cos_key) {
+        tfunc = COS;
+    } else if (tan_key) {
+        tfunc = TAN;
+    } else assert(0);
+  
+    return(do_tfunc(s, t, tfunc));
 
 }
+
 
 void
 do_trig() 
 {
-  do_trigfunc(v->MPdisp_val, v->MPresult);
-  show_display(v->MPresult);
+    do_trigfunc(v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
 }
 
+
 int
-do_tfunc(int s[MP_SIZE], 
-	 int t[MP_SIZE],
-	 enum trig_func tfunc)
+do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
 {
-  if (!v->current) return -EINVAL;
+    if (!v->current) return -EINVAL;
 
-  enum mode {
-    normal = 0,
-    inv = 1,
-    hyp = 2,
-    invhyp = 3,
-  } mode;
+    enum mode {
+        normal = 0,
+        inv = 1,
+        hyp = 2,
+        invhyp = 3,
+    } mode;
 
-  int inverse = (v->inverse) ? inv : 0; 
-  int hyperbolic = (v->hyperbolic) ? hyp : 0; 
+    int inverse = (v->inverse) ? inv : 0; 
+    int hyperbolic = (v->hyperbolic) ? hyp : 0; 
 
-  mode = (inverse | hyperbolic);
+    mode = (inverse | hyperbolic);
 
-  switch (mode) {
-  case normal:
-    if (tfunc & SIN) {
-      calc_trigfunc(sin_t, s, t);
-    } else if (tfunc & COS) {
-      calc_trigfunc(cos_t, s, t);
-    } else if (tfunc & TAN) {
-      calc_trigfunc(tan_t, s, t);
+    switch (mode) {
+        case normal:
+            if (tfunc & SIN) {
+                calc_trigfunc(sin_t, s, t);
+            } else if (tfunc & COS) {
+                calc_trigfunc(cos_t, s, t);
+            } else if (tfunc & TAN) {
+                calc_trigfunc(tan_t, s, t);
+            }
+            break;
+
+        case inv:
+            if (tfunc & SIN) {
+                calc_trigfunc(asin_t, s, t);
+            } else if (tfunc & COS) {
+                calc_trigfunc(acos_t, s, t);
+            } else if (tfunc & TAN) {
+                calc_trigfunc(atan_t, s, t);
+            }
+            break;
+
+        case hyp:
+            if (tfunc & SIN) {
+                calc_trigfunc(sinh_t, s, t);
+            } else if (tfunc & COS) {
+                calc_trigfunc(cosh_t, s, t);
+            } else if (tfunc & TAN) {
+                calc_trigfunc(tanh_t, s, t);
+            }
+            break;
+
+        case invhyp:
+            if (tfunc & SIN) {
+                calc_trigfunc(asinh_t, s, t);
+            } else if (tfunc & COS) {
+                calc_trigfunc(acosh_t, s, t);
+            } else if (tfunc & TAN) {
+                calc_trigfunc(atanh_t, s, t);
+            } 
+            break;
+
+        default:
+            assert(0);
     }
-    break;
-  case inv:
-    if (tfunc & SIN) {
-      calc_trigfunc(asin_t, s, t);
-    } else if (tfunc & COS) {
-      calc_trigfunc(acos_t, s, t);
-    } else if (tfunc & TAN) {
-      calc_trigfunc(atan_t, s, t);
-    }
-    break;
-  case hyp:
-    if (tfunc & SIN) {
-      calc_trigfunc(sinh_t, s, t);
-    } else if (tfunc & COS) {
-      calc_trigfunc(cosh_t, s, t);
-    } else if (tfunc & TAN) {
-      calc_trigfunc(tanh_t, s, t);
-    }
-    break;
-  case invhyp:
-    if (tfunc & SIN) {
-      calc_trigfunc(asinh_t, s, t);
-    } else if (tfunc & COS) {
-      calc_trigfunc(acosh_t, s, t);
-    } else if (tfunc & TAN) {
-      calc_trigfunc(atanh_t, s, t);
-    } 
-    break;
-  default:
-    assert(0);
-  }
-  return 0;
+
+
+    return(0);
 }
 
 
@@ -660,22 +741,24 @@ do_clear_entry()     /* Clear the calculator display. */
 static void
 do_constant()
 {
-  assert(v->current->value[0] >= '0');
-  assert(v->current->value[0] <= '9');
+    assert(v->current->value[0] >= '0');
+    assert(v->current->value[0] <= '9');
 
-  switch (v->syntax) {
-  case npa: {
-    int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-    mpstr(MPval, v->MPdisp_val);
-    break;
-  }
-  case exprs:
-    v->current->flags = con;
-    do_expression();
-    break;
-  default:
-    assert(0);
-  }
+    switch (v->syntax) {
+        case npa: {
+            int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
+            mpstr(MPval, v->MPdisp_val);
+            break;
+        }
+
+        case exprs:
+            v->current->flags = con;
+            do_expression();
+            break;
+
+        default:
+            assert(0);
+    }
 }
 
 
@@ -795,117 +878,89 @@ do_factorial(int *MPval, int *MPres)
     mpstr(MPa, MPres);
 }
 
+
 static void
 do_function()      /* Perform a user defined function. */
 {
-  assert(v->current->value[0] >= '0');
-  assert(v->current->value[0] <= '9');
+    char *str;
+    int fno, ret;
 
-  int fno = char_val(v->current->value[0]);
-  int ret = 0;
-  char *str = v->fun_vals[fno];
-  assert(str);
+    assert(v->current->value[0] >= '0');
+    assert(v->current->value[0] <= '9');
 
-  switch (v->syntax) {
-  case npa:
-    ret = lr_udf_parse(str);
-    break;
-  case exprs:
-      ret = ce_udf_parse(str);
-    break;
-  default:
-    assert(0);
-  }
+    fno = char_val(v->current->value[0]);
+    ret = 0;
+    str = v->fun_vals[fno];
+    assert(str);
 
-  if (!ret) {
-    update_statusbar("", "");
-  } else { 
-    update_statusbar(N_("Malformed function"), "gtk-dialog-error");
-  }
+    switch (v->syntax) {
+        case npa:
+            ret = lr_udf_parse(str);
+            break;
 
-#if 0  
-  switch (v->syntax) {
-  case npa:
-    {
-      //enum fcp_type scurwin;
-      //scurwin = v->curwin;
+        case exprs:
+            ret = ce_udf_parse(str);
+            break;
 
+        default:
+            assert(0);
     }
-    break;
-  case exprs:
-    {
-      // What should happen if middle of calculation UDF is called?
 
-      exp_append(str);
-
-      //ret = ce_parse(str, MP);
-      //update_statusbar("Function is parsed operator precedence", "");
+    if (!ret) {
+        update_statusbar("", "");
+    } else { 
+        update_statusbar(N_("Malformed function"), "gtk-dialog-error");
     }
-    break;
-  default:
-    assert(0);
-  }
-#endif
-
 }
+
 
 void
 do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
 {
-  int MP1[MP_SIZE];
+    int MP1[MP_SIZE];
 
-  if (key_equal(v->current, KEY_32)) {                  /* &32 */
-    calc_u32(s, t);
-    
-  } else if (key_equal(v->current, KEY_16)) {           /* &16 */
-    calc_u16(s, t);
-    
-  } else if (key_equal(v->current, KEY_ETOX)) {         /* e^x  */
-    mpstr(s, MP1);
-    mpexp(MP1, t);
-    
-  } else if (key_equal(v->current, KEY_TTOX)) {         /* 10^x */
-    calc_tenpowx(s, t);
-    
-  } else if (key_equal(v->current, KEY_LN)) {           /* Ln */
-    mpstr(s, MP1);
-    mpln(MP1, t);
-    
-  } else if (key_equal(v->current, KEY_LOG)) {          /* Log */
-    mplog10(s, t);
-    
-  } else if (key_equal(v->current, KEY_RAND)) {         /* Rand */
-    calc_rand(t);
-    
-  } else if (key_equal(v->current, KEY_SQRT)) {         /* Sqrt */
-    mpstr(s, MP1);
-    mpsqrt(MP1, t);
-    
-  } else if (key_equal(v->current, KEY_NOT)) {          /* Not */
-    calc_not(t, s);
-    
-  } else if (key_equal(v->current, KEY_REC)) {          /* 1/x */
-    calc_inv(s, t);
-    
-  } else if (key_equal(v->current, KEY_FACT)) {         /* x! */
-    do_factorial(s, MP1);
-    mpstr(MP1, t);
-    
-  } else if (key_equal(v->current, KEY_SQR)) {          /* x^2 */
-    mpstr(s, MP1);
-    mpmul(MP1, MP1, t);
-
-  } else if (key_equal(v->current, KEY_CHS)) {          /* +/- */
-    mpneg(s, t);
-  }
+    if (key_equal(v->current, KEY_32)) {                  /* &32 */
+        calc_u32(s, t);
+    } else if (key_equal(v->current, KEY_16)) {           /* &16 */
+        calc_u16(s, t);
+    } else if (key_equal(v->current, KEY_ETOX)) {         /* e^x  */
+        mpstr(s, MP1);
+        mpexp(MP1, t);
+    } else if (key_equal(v->current, KEY_TTOX)) {         /* 10^x */
+        calc_tenpowx(s, t);
+    } else if (key_equal(v->current, KEY_LN)) {           /* Ln */
+        mpstr(s, MP1);
+        mpln(MP1, t);
+    } else if (key_equal(v->current, KEY_LOG)) {          /* Log */
+        mplog10(s, t);
+    } else if (key_equal(v->current, KEY_RAND)) {         /* Rand */
+        calc_rand(t);
+    } else if (key_equal(v->current, KEY_SQRT)) {         /* Sqrt */
+        mpstr(s, MP1);
+        mpsqrt(MP1, t);
+    } else if (key_equal(v->current, KEY_NOT)) {          /* Not */
+        calc_not(t, s);
+    } else if (key_equal(v->current, KEY_REC)) {          /* 1/x */
+        calc_inv(s, t);
+    } else if (key_equal(v->current, KEY_FACT)) {         /* x! */
+        do_factorial(s, MP1);
+        mpstr(MP1, t);
+    } else if (key_equal(v->current, KEY_SQR)) {          /* x^2 */
+        mpstr(s, MP1);
+        mpmul(MP1, MP1, t);
+    } else if (key_equal(v->current, KEY_CHS)) {          /* +/- */
+        mpneg(s, t);
+    }
 }
+
 
 void
 do_immed()
 {
-  do_immedfunc(v->MPdisp_val, v->MPdisp_val);
-  show_display(v->MPdisp_val);
+    do_immedfunc(v->MPdisp_val, v->MPdisp_val);
+    show_display(v->MPdisp_val);
 }
+
 
 void
 do_memory(int show)
@@ -921,17 +976,20 @@ do_mode()                   /* Set special calculator mode. */
 {
     char title[MAXLINE];
 
-    SPRINTF(title, "%s [Experimental] - %s", v->tool_label, _(mstrs[(int) v->modetype]));
+    SPRINTF(title, "%s [Experimental] - %s", v->tool_label, 
+            _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
     put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
     do_clear();
 }
 
+
 void
 do_none()       /* Null routine for empty buttons. */
 {
 }
+
 
 void
 do_number()
@@ -944,15 +1002,17 @@ do_number()
     n = v->current->value[0];
     
     if (isdigit(n)) {
-      n = n - '0';
+        n = n - '0';
     } else if (isupper(n)) {
-      n = n - 'A' + 10;
-    } else n = n - 'a' +10;
+        n = n - 'A' + 10;
+    } else {
+        n = n - 'a' + 10;
+    }
     
     if (n > maxvals[(int) v->base]) {
-      // TODO: add an error message to the status bar
-      beep();
-      return;
+        /* TODO: add an error message to the status bar. */
+        beep();
+        return;
     }
 
     if (v->toclear) {
@@ -961,13 +1021,14 @@ do_number()
     } else {
         len = strlen(v->display);
         if (len < MAX_DIGITS) {
-	  SPRINTF(v->display+len, "%c", nextchar);
+	    SPRINTF(v->display+len, "%c", nextchar);
         }
     }
     set_display(v->display, TRUE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
+
 
 void
 do_numtype(enum num_type n)   /* Set number display type. */
@@ -981,121 +1042,154 @@ do_numtype(enum num_type n)   /* Set number display type. */
     }
 }
 
+
 void
 do_paren()
 {
-  update_statusbar("", "");
+    update_statusbar("", "");
 
-  if (key_equal(v->current, KEY_LPAR)) {
-    v->pending = v->current->value[0];
-    if (!v->noparens) {
-      if (v->cur_op == '?') {
-	v->display[0] = 0;
-	update_statusbar(N_("Cleared display, prefix without an operator is not allowed"), "");
-      } else paren_disp(v->cur_op);
-      v->pending_op = v->cur_op;
+    if (key_equal(v->current, KEY_LPAR)) {
+        v->pending = v->current->value[0];
+        if (!v->noparens) {
+            if (v->cur_op == '?') {
+	        v->display[0] = 0;
+	        update_statusbar(N_("Cleared display, prefix without an operator is not allowed"), "");
+            } else {
+                paren_disp(v->cur_op);
+            }
+            v->pending_op = v->cur_op;
+        }
+        v->noparens++;
     }
-    v->noparens++;
-  }
-  
-  if (v->noparens 
-      && key_equal(v->current, KEY_RPAR)) {
-    v->noparens--;
-    if (!v->noparens) {
-      int i = 0;
-      while (v->display[i++] != '(');
-      int ret = lr_parse(&v->display[i], v->MPdisp_val);
-      if (!ret) {
-	show_display(v->MPdisp_val);
-	v->pending = 0;
-	return;
-      } else update_statusbar(N_("Malformed parenthesis expression"), "gtk-dialog-error");
-    }
-  }
 
-  paren_disp(v->current->value[0]);
+    if (v->noparens && key_equal(v->current, KEY_RPAR)) {
+        v->noparens--;
+        if (!v->noparens) {
+            int ret, i = 0;
+
+            while (v->display[i++] != '(') {
+                /* do nothing */;
+            }
+
+            ret = lr_parse(&v->display[i], v->MPdisp_val);
+            if (!ret) {
+	        show_display(v->MPdisp_val);
+	        v->pending = 0;
+	        return;
+            } else {
+                update_statusbar(N_("Malformed parenthesis expression"), 
+                                 "gtk-dialog-error");
+            }
+        }
+    }
+    paren_disp(v->current->value[0]);
 }
+
 
 static void
 do_sto()
 {
-  int n = char_val(v->current->value[0]);
+    int n = char_val(v->current->value[0]);
 
-  switch (v->syntax) {
-  case npa:
-    mpstr(v->MPdisp_val, v->MPmvals[n]);
-    break;
-  case exprs:
-    {
-      int ret = usable_num(v->MPmvals[n]);
-      if (ret) {
-	update_statusbar(N_("No sane value to store"), "gtk-dialog-error");
-      } //else update_statusbar("Stored value into register", "");
+    switch (v->syntax) {
+        case npa:
+            mpstr(v->MPdisp_val, v->MPmvals[n]);
+            break;
+
+        case exprs: {
+            int ret = usable_num(v->MPmvals[n]);
+
+            if (ret) {
+	        update_statusbar(N_("No sane value to store"), 
+                                 "gtk-dialog-error");
+            }
+        }
+        break;
+
+        default:
+            assert(0);
     }
-    break;
-  default:
-    assert(0);
-  }
 }
+
+
+/* Return: 0 = success, otherwise failed.
+ *
+ * TODO: remove hardcoding from reg ranges.
+ */
 
 int
-do_sto_reg(int reg, 
-	   int value[MP_SIZE])
-{ // ret: 0 = success, otherwize failed.
-  // TODO: remove hardcoding from reg ranges.
-  if ((reg >= 0) && (reg <= 10)) {
-    mpstr(value, v->MPmvals[reg]);
-    return 0;
-  } else return -EINVAL;
+do_sto_reg(int reg, int value[MP_SIZE])
+{
+    if ((reg >= 0) && (reg <= 10)) {
+        mpstr(value, v->MPmvals[reg]);
+        return(0);
+    } else {
+        return(-EINVAL);
+    }
 }
+
 
 static void
 do_rcl()
 {
-  switch (v->syntax) {
-  case npa: {
-    int i = char_val(v->current->value[0]);
-    mpstr(v->MPmvals[i], v->MPdisp_val);
-    break;
-  }
-  case exprs:
-    v->current->flags = regrcl;
-    do_expression();
-    break;
-  default:
-    assert(0);
-  }
+    switch (v->syntax) {
+        case npa: {
+            int i = char_val(v->current->value[0]);
+
+            mpstr(v->MPmvals[i], v->MPdisp_val);
+            break;
+        }
+
+        case exprs:
+            v->current->flags = regrcl;
+            do_expression();
+            break;
+
+        default:
+            assert(0);
+    }
 }
 
+
+/* Return: 0 = success, otherwise failed.
+ *
+ * TODO: remove hardcoding from reg ranges.
+ */
+
 int
-do_rcl_reg(int reg,
-	   int value[MP_SIZE])
-{ // ret: 0 = success, otherwize failed.
-  // TODO: remove hardcoding from reg ranges.
-  if ((reg >= 0) && (reg <= 10)) {
-    mpstr(v->MPmvals[reg], value);
-    return 0;
-  } else return -EINVAL;
+do_rcl_reg(int reg, int value[MP_SIZE])
+{
+    if ((reg >= 0) && (reg <= 10)) {
+        mpstr(v->MPmvals[reg], value);
+        return(0);
+    } else {
+        return(-EINVAL);
+    }
 }
+
 
 void
 syntaxdep_show_display()
 {
-  switch (v->syntax) {
-  case npa:
-    show_display(v->MPdisp_val);
-    break;
-  case exprs:
-    set_display(v->expression, FALSE);
-    break;
-  default:
-    assert(0);
-  }
+    switch (v->syntax) {
+        case npa:
+            show_display(v->MPdisp_val);
+            break;
+
+        case exprs:
+            set_display(v->expression, FALSE);
+            break;
+
+        default:
+            assert(0);
+    }
 }
+
 
 void
 do_pending()
 {
+
 /*  Certain pending operations which are half completed, force the numeric
  *  keypad to be reshown (assuming they already aren't).
  *
@@ -1129,7 +1223,6 @@ do_pending()
     } else if (IS_KEY(v->pending, KEY_FUN.value[0]))  {          /* Fun */
         do_function();
 	v->new_input = 1;
-	//syntaxdep_show_display();
     } else if (IS_KEY(v->pending, KEY_STO.value[0])) {
         do_sto();
     } else if (IS_KEY(v->pending, KEY_RCL.value[0])) {
@@ -1146,7 +1239,6 @@ do_pending()
 	syntaxdep_show_display();
     } else if (IS_KEY(v->pending, KEY_LPAR.value[0])) {          /* ( */
         do_paren();
-	//syntaxdep_show_display(); // FIXME: does this belong here!
         return;
     } else if (!v->pending) {
         save_pending_values(v->current);
@@ -1197,77 +1289,82 @@ do_portionfunc(int num[MP_SIZE])
     }
 }
 
+
 void
 do_portion() 
 {
-  do_portionfunc(v->MPdisp_val);
-  show_display(v->MPdisp_val);
+    do_portionfunc(v->MPdisp_val);
+    show_display(v->MPdisp_val);
 }
+
 
 static void
 do_shift()     /* Perform bitwise shift on display value. */
 {
-  enum menu_type mtype = M_LSHF;
+    enum menu_type mtype = M_LSHF;
 
-  if (IS_KEY(v->pending, KEY_LSFT.value[0])) {
-    mtype = M_LSHF;
-  } else if (IS_KEY(v->pending, KEY_RSFT.value[0])) {
-    mtype = M_RSHF;
-  } else assert(0);
+    if (IS_KEY(v->pending, KEY_LSFT.value[0])) {
+        mtype = M_LSHF;
+    } else if (IS_KEY(v->pending, KEY_RSFT.value[0])) {
+        mtype = M_RSHF;
+    } else assert(0);
+
+    switch (v->syntax) {
+        case npa: {
+            /* TODO: cleanup this code block. */
+            int i, MPtemp[MP_SIZE], shift;
+            BOOLEAN temp;
+            double dval;
       
-  switch (v->syntax) {
-  case npa:
-    {
-      // TODO: cleanup this code block
-      int i, MPtemp[MP_SIZE], shift;
-      BOOLEAN temp;
-      double dval;
-      
-      for (i = 0; i <= 15; i++) {
-        if (v->current->value[0] == get_menu_entry(mtype, i)) {
-	  shift = char_val(v->current->value[0]);
-	  MPstr_to_num(v->display, v->base, MPtemp);
-	  mpcmd(MPtemp, &dval);
-	  temp = ibool(dval);
+            for (i = 0; i <= 15; i++) {
+                if (v->current->value[0] == get_menu_entry(mtype, i)) {
+	            shift = char_val(v->current->value[0]);
+	            MPstr_to_num(v->display, v->base, MPtemp);
+	            mpcmd(MPtemp, &dval);
+	            temp = ibool(dval);
 	  
-	  if (IS_KEY(v->pending, KEY_LSFT.value[0])) {
-	    temp = temp << shift;
-	  } else if (IS_KEY(v->pending, KEY_RSFT.value[0])) {
-	    temp = temp >> shift;
-	  }
-	  
-	  dval = setbool(temp);
-	  mpcdm(&dval, v->MPdisp_val);
-	  show_display(v->MPdisp_val);
-	  mpstr(v->MPdisp_val, v->MPlast_input);
-	  return;
+	            if (IS_KEY(v->pending, KEY_LSFT.value[0])) {
+	                temp = temp << shift;
+	            } else if (IS_KEY(v->pending, KEY_RSFT.value[0])) {
+	                temp = temp >> shift;
+	            }
+
+	            dval = setbool(temp);
+	            mpcdm(&dval, v->MPdisp_val);
+	            show_display(v->MPdisp_val);
+	            mpstr(v->MPdisp_val, v->MPlast_input);
+	            return;
+                }
+            }
+        } 
+        break;
+
+        case exprs: {
+            enum shiftd dir;
+            int MPval[MP_SIZE];
+            int MPres[MP_SIZE];
+            int n = char_val(v->current->value[0]);
+            int ret = usable_num(MPval);
+
+            if (ret) {
+	        update_statusbar(N_("No sane value to store"), 
+                                 "gtk-dialog-error");
+	        return;
+            } 
+
+            dir = (mtype == M_LSHF) ? left : right;
+            calc_rshift(MPval, v->e.ans, n, dir);
+
+            exp_del();
+            exp_append(make_number(v->e.ans, v->base, TRUE, FALSE));
         }
-      }
-    } 
-    break;
-  case exprs:
-    {
-      int MPval[MP_SIZE];
-      int MPres[MP_SIZE];
-      int n = char_val(v->current->value[0]);
-      int ret = usable_num(MPval);
+        break;
 
-      if (ret) {
-	update_statusbar(N_("No sane value to store"), "gtk-dialog-error");
-	return;
-      } 
-      
-      enum shiftd dir = (mtype == M_LSHF) ? left : right;
-      calc_rshift(MPval, v->e.ans, n, dir);
-      
-      exp_del();
-      exp_append(make_number(v->e.ans, v->base, TRUE, FALSE));
+        default:
+            assert(0);
     }
-    break;
-  default:
-    assert(0);
-  }
 }
+
 
 void
 do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
@@ -1283,11 +1380,13 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
     v->pending = 0;
 }
 
+
 int
 key_equal(struct button *x, struct button y)
 {
     return(x->value[0] == y.value[0] && x->mods[0] == y.mods[0]);
 }
+
 
 void
 push_num(int *MPval)        /* Try to push value onto the numeric stack. */
