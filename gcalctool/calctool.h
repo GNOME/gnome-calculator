@@ -296,7 +296,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
-} CalcVars;
+};
 
 typedef struct calcVars *Vars;
 

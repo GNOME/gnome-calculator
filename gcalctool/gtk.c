@@ -56,7 +56,7 @@
 #define BUT_E     X->sci_buttons[17]       /* e */
 #define BUT_F     X->sci_buttons[18]       /* f */
 
-typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
+struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
     GConfClient *client;
@@ -95,7 +95,7 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     int menuval;                  /* Index to button array at menu time. */
     struct button *mrec[MAXMENUS];
-} XObject;
+};
 
 typedef struct Xobject *XVars;
 
@@ -246,8 +246,8 @@ main(int argc, char **argv)
     char name[MAXLINE];          /* Full name of users .gcalctoolrc file. */
     struct passwd *entry;
 
-    v = (Vars)  LINT_CAST(calloc(1, sizeof(CalcVars)));
-    X = (XVars) LINT_CAST(calloc(1, sizeof(XObject)));
+    v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
+    X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
 
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
