@@ -471,7 +471,7 @@ button_proc(GtkButton *widget, gpointer user_data)
 
     if (v->new_input && v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        set_display(v->fnum);
+        set_display(v->fnum, FALSE);
     }
 }
 
@@ -850,7 +850,8 @@ create_kframe()
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 12);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(X->display_item), 6);
 
-    set_display("0.00");
+    atk_object_set_role (gtk_widget_get_accessible (X->display_item), ATK_ROLE_EDITBAR);
+    set_display("0.00", FALSE);
     gtk_widget_ref(X->display_item);
     gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
     gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
@@ -1854,11 +1855,15 @@ set_accuracy_toggle(int val)
 
 
 void
-set_display(char *str)
+set_display(char *str, int minimize_changes)
 {
     char localized[MAX_LOCALIZED];
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
+    gchar *text;
+    gint diff;
+    gint len1, len2;
+    gboolean done;
 
     if (str == NULL || *str == 0) {
         str = " ";
@@ -1868,14 +1873,44 @@ set_display(char *str)
     }
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
-    gtk_text_buffer_delete(buffer, &start, &end);
+    text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+    diff = strcmp (text, str);
+    if (diff != 0) {
+        len1 = strlen(text);
+        len2 = strlen(str);
 
-    gtk_text_buffer_insert_with_tags_by_name(buffer,
-                                             &end,
-                                             str,
-                                             -1,
-                                             "x-large",
-                                             NULL);
+        done = FALSE;
+        if (minimize_changes) {
+            if (len1 < len2 && strncmp(text, str, len1) == 0) {
+                /* Text insertion */
+                gtk_text_buffer_insert_with_tags_by_name(buffer,
+                                                         &end,
+                                                         str + len1,
+                                                         -1,
+                                                         "x-large",
+                                                         NULL);
+                done = TRUE;
+            } else if (len1 > len2 && strncmp(text, str, len2) == 0) {
+               /* Text deletion */
+                gtk_text_buffer_get_iter_at_offset (buffer, &start, len2);
+                gtk_text_buffer_delete(buffer, &start, &end); 
+                done = TRUE;
+            }
+        }
+             
+ 
+        if (!done) {
+            gtk_text_buffer_delete(buffer, &start, &end);
+
+            gtk_text_buffer_insert_with_tags_by_name(buffer,
+                                                     &end,
+                                                     str,
+                                                     -1,
+                                                     "x-large",
+                                                     NULL);
+        }
+    }
+    g_free (text);
 }
 
 

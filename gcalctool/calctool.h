@@ -389,7 +389,7 @@ void read_str(char **, char *);
 void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_toggle(int);
-void set_display(char *);
+void set_display(char *, int);
 void set_error_state(int);
 void set_hyp_item(int);
 void set_ins_key();

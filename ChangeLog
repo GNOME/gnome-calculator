@@ -7,6 +7,21 @@
 gcalctool change history.
 =========================
 
+2004-05-17 Padraig O'Briain <padraig.obriain@sun.com>
+
+	* gcalctool/caltool.h: Add second argument to set_display to
+	specify whether to mminimize changes.
+
+	* gcacltool/calctool.c gcalctool/display.c gcaltool/functions.c: 
+	Add second argument to calls to set_display. It is set to TRUE only 
+	when adding a digit after pressing caclulator button or deleting 
+	digit after pressing backspace.
+
+	* gcacltool/gtk.c (set_display): Implement second argument
+	minimize changes. Do nothing if display is not being changed.
+	
+	Fixes bug #134376.
+
 2004-04-09  Guntupalli Karunakar  <karunakar@freedomink.org>
 
     * configure.in: Added "gu" (Gujarati) to ALL_LINGUAS.

@@ -360,7 +360,7 @@ do_clear()       /* Clear the calculator display and re-initialise. */
 {
     clear_display(TRUE);
     if (v->error) {
-        set_display("");
+        set_display("", FALSE);
     }
     initialise();
 }
@@ -408,12 +408,12 @@ do_delete()     /* Remove the last numeric character typed. */
         v->pointed = 0;
     }
 
-    set_display(v->display);
+    set_display(v->display, TRUE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        set_display(v->fnum);
+        set_display(v->fnum, FALSE);
     }
 }
 
@@ -446,7 +446,7 @@ do_expno()           /* Get exponential number. */
     v->toclear = 0;
     v->key_exp = 1;
     v->exp_posn = strchr(v->display, '+');
-    set_display(v->display);
+    set_display(v->display, FALSE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -582,7 +582,7 @@ do_immed()
             } else {
                 *v->exp_posn = '+';
             }
-            set_display(v->display);
+            set_display(v->display, FALSE);
             MPstr_to_num(v->display, v->base, v->MPdisp_val);
             v->key_exp = 0;
         } else {
@@ -649,7 +649,7 @@ do_number()
             v->display[len+1] = '\0';
         }
     }
-    set_display(v->display);
+    set_display(v->display, TRUE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
@@ -789,7 +789,7 @@ do_point()                   /* Handle numeric point. */
         }
         v->pointed = 1;
     }
-    set_display(v->display);
+    set_display(v->display, FALSE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1254,7 +1254,7 @@ process_parens(char current)
             v->cur_op = '?';
             STRCPY(v->opstr, "");
             if (v->error) {
-                set_display(_("Error"));
+                set_display(_("Error"), FALSE);
                 STRCPY(v->display, _("Error"));
             } else { 
                 show_display(v->MPdisp_val);
@@ -1275,7 +1275,7 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
     }
     if (v->numsptr >= MAXSTACK) {
         STRCPY(v->display, _("Numeric stack error"));
-        set_display(v->display);
+        set_display(v->display, FALSE);
         set_error_state(TRUE);
         beep();
     } else {
@@ -1296,7 +1296,7 @@ push_op(int val)     /* Try to push value onto the operand stack. */
     }
     if (v->opsptr >= MAXSTACK) {
         STRCPY(v->display, _("Operand stack error"));
-        set_display(v->display);
+        set_display(v->display, FALSE);
         set_error_state(TRUE);
     } else {
         v->opstack[v->opsptr++] = val;

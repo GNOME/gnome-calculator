@@ -1066,7 +1066,7 @@ doerr(char *errmes)
         return;
     }
     STRCPY(v->display, errmes);
-    set_display(v->display);
+    set_display(v->display, FALSE);
     set_error_state(TRUE);
     beep();
 }
