@@ -9,19 +9,17 @@ Gcalctool TODO.
 ===============
 
 * Navigation with the arrow keys is a little haywire. This looks like it's
-  bug 60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
+  bug #60690 (http://bugzilla.gnome.org/show_bug.cgi?id=60690).
 
 * With the gcalctoolrc Gtk resources copied to a ~/.gcalctoolrc file, the 
   "*displayitem*" widget and the "*register_label<n>*" widgets background 
   color aren't being set to white.
 
 * Need to create help files for gcalctool. Breda McColgan will be working 
-  on this.
+  on this (bug #104821).
 
 * Need to reduce tool tip help message sizes. Will do this when the help
-  files are in place.
-
-* Make sure that this new gcalctool is fully accessible.
+  files are in place (bug #101784).
 
 * Improve the colors in the gcalctoolrc file.
 
@@ -60,22 +58,22 @@ Gcalctool TODO.
 * Consider the possibility of being able to have all the mode windows
   displayed at the same time.
 
-* As of v3.0.1. calctool was modified to have "infinite" precision
+* As of v3.0.1. gcalctool was modified to have "infinite" precision
   internally. This needs to be made available to the "power" users, but
   shouldn't confuse the novice. What I suggest is to replace the Acc
   button menu, with an Acc... button which brings up a popup with a slider
   on, to allow you to set the number of numeric places. By default this
-  will be 0-9. I also propose adding another X resource, which will also
+  will be 0-9. I also propose adding another gconf resource, which will also
   allow you to set the number of numeric places. This value can be as
-  large as you want. When calctool starts up, it will look for that
+  large as you want. When gcalctool starts up, it will look for that
   resource, and adjust the sliders maximum value appropriately.
  
-  Making this addition will possibly cause the calctool numeric result to
+  Making this addition will possibly cause the gcalctool numeric result to
   be larger that can fully displayed. There are two possible ways to fix
   this:
 
   * make the display area a scrollable canvas.
-  * make the calctool numeric display a panel text item of the appropriate
+  * make the gcalctool numeric display a panel text item of the appropriate
     length.
 
 * Consider adding in the ability to drag & drop from/to the display and 
@@ -98,7 +96,7 @@ MP - todo.
   to test if the number is too large to be displayed in fixed point.
 
 * The cmax field for make_fixed should be dynamic, and depend upon how
-  many characters can be displayed (ie. a larger calctool will be able
+  many characters can be displayed (ie. a larger gcalctool will be able
   to display more).
 
 * Tidy up the code in mp.c, to eventually use no labels and goto's.

@@ -34,7 +34,7 @@ gcalctool_LDADD = \
 	$(X_BASIC_LIBS) \
 	$(X_EXTRA_LIBS)
 
-pkgdata_DATA = calctool.gif
+pkgdata_DATA = gcalctool.png
 
 man1_MANS = gcalctool.1
 

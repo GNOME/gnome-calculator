@@ -1868,7 +1868,7 @@ setup_default_icon(void)
     GError *err = NULL;
     char *filename;
 
-    if ((filename = find_file("calctool.gif", &err)) != NULL) {
+    if ((filename = find_file("gcalctool.png", &err)) != NULL) {
         if ((pixbuf = gdk_pixbuf_new_from_file(filename, &err)) != NULL) {
             gtk_window_set_icon(GTK_WINDOW(X->kframe), pixbuf);
         }
