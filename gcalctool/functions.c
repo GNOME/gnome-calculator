@@ -403,6 +403,7 @@ do_expression()
             int ret = ce_parse(v->expression, MPval);
 
             if (!ret) {
+	        // FIXME: duplicated code in do_exchange().
 	        mpstr(v->e.ans, v->e.ansbak);
 	        mpstr(MPval, v->e.ans);
 	        v->e.expbak = gc_strdup(v->expression);
@@ -711,12 +712,45 @@ do_delete()     /* Remove the last numeric character typed. */
 static void
 do_exchange()         /* Exchange display with memory register. */
 {
-    int MPtemp[MP_SIZE];
+  int MPtemp[MP_SIZE];
+  int MPexpr[MP_SIZE];
 
-    mpstr(v->MPdisp_val, MPtemp);
-    mpstr(v->MPmvals[char_val(v->current->value[0])], v->MPdisp_val);
-    mpstr(MPtemp, v->MPmvals[char_val(v->current->value[0])]);
-    make_registers();
+    switch (v->syntax) {
+        case npa:
+	  {
+	    mpstr(v->MPdisp_val, MPtemp);
+	    mpstr(v->MPmvals[char_val(v->current->value[0])], v->MPdisp_val);
+	    mpstr(MPtemp, v->MPmvals[char_val(v->current->value[0])]);
+	    make_registers();
+	  }
+	  break;
+
+        case exprs:
+	  {
+	    int ret = usable_num(MPexpr);
+	    int n = char_val(v->current->value[0]);
+	    if (ret) {
+	      update_statusbar(_("No sane value to store"), 
+			       "gtk-dialog-error");
+	    } else {
+	      mpstr(v->MPmvals[n], MPtemp);
+	      mpstr(MPexpr, v->MPmvals[n]);
+	      mpstr(MPtemp, v->e.ans);	      
+	      // TODO: duplicated code in do_expression
+	      mpstr(v->e.ans, v->e.ansbak);
+	      v->e.expbak = gc_strdup(v->expression);
+	      exp_replace("Ans");
+	      v->e.calc_complete = 1;
+              refresh_display();
+	      make_registers();
+	    }
+	  }
+	  break;
+
+        default:
+            assert(0);
+    }
+
 }
 
 

@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2005-02-15 Rich Burridge <rich.burridge@sun.com>
+
+    * The fix for bug #162998 was incorrect when in Arithmetic Precedence
+      mode. Had to remove an extra bogus signal handler that shouldn't
+      have been connected up for menu-type buttons.
+
+    * Exch functionality was incorrect in Arithmetic Precedence mode.
+
 2005-02-11 Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 167124 (http://bugzilla.gnome.org/show_bug.cgi?id=167124)

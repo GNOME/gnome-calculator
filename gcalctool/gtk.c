@@ -1978,8 +1978,10 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                 Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
             set_accessible_name(Gtk_buttons[n], buttons[n]);
-            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
-                            G_CALLBACK(button_proc), (gpointer) (j*cols + i));
+            if (buttons[n].mtype == M_NONE) {
+                g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
+                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
+            }
             SPRINTF(name, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
             if (buttons[n].hstr != NULL) {
