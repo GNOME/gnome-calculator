@@ -112,8 +112,6 @@ get_index(int ch)
         }
         v->curwin = FCP_MODE;
     }
-    v->row = n / MAXCOLS;
-    v->column = n - (v->row * MAXCOLS);
 
     return(n);
 }
@@ -182,7 +180,7 @@ make_registers()            /* Calculate memory register frame values. */
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
-        SPRINTF(line, "%1d   %s", n, make_number(v->MPmvals[n]));
+        SPRINTF(line, "%1d   %s", n, make_number(v->MPmvals[n], FALSE));
         make_reg(n, line);
     }
 }

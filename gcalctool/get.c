@@ -276,7 +276,7 @@ get_rcfile(char *name)          /* Read .gcalctoolcf file. */
                         if (isval == 'c') {
                             base = v->base;
                             v->base = DEC;
-                            STRCPY(tmp, make_number(v->MPcon_vals[i]));
+                            STRCPY(tmp, make_number(v->MPcon_vals[i], TRUE));
                             v->base = base;
                             SPRINTF(v->con_names[i], "%1d: %s [%s]",
                                     i, tmp, &line[n]);
@@ -378,7 +378,7 @@ read_rcfiles()   /* Read .gcalctoolcf's from home and current directories. */
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
-        STRCPY(tmp, make_number(v->MPcon_vals[n]));
+        STRCPY(tmp, make_number(v->MPcon_vals[n], FALSE));
         SPRINTF(name, "%1d: %s [%s]", n, tmp, v->con_names[n]);
 
         STRCPY(v->con_names[n], name);

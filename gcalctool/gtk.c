@@ -845,7 +845,7 @@ create_rframe()
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(line, "%1d   %s", i,  make_number(v->MPmvals[i]));
+        SPRINTF(line, "%1d   %s", i,  make_number(v->MPmvals[i], FALSE));
         X->regs[i] = gtk_label_new(line);
         SPRINTF(name, "register_label%1d", i);
         gtk_widget_set_name(X->regs[i], name);

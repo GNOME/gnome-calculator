@@ -524,10 +524,8 @@ static void
 do_function()      /* Perform a user defined function. */
 {
     enum fcp_type scurwin;
-    int fno, scolumn, srow;
+    int fno;
 
-    srow = v->row;
-    scolumn = v->column;
     scurwin = v->curwin;
     v->pending = 0;
     if (v->current >= '0' && v->current <= '9') {
@@ -535,8 +533,6 @@ do_function()      /* Perform a user defined function. */
         process_str(v->fun_vals[fno]);
     }
     v->curwin = scurwin;
-    v->row = srow;
-    v->column = scolumn;
 }
 
 

@@ -225,6 +225,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define MAXLINE        256        /* Length of character strings. */
 #endif /*MAXLINE*/
 
+#define MAXACC         10   /* Maximum number of digits after numeric point. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
@@ -323,7 +324,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
-    int column;        /* Column number of current key/mouse press. */
     int cur_ch;        /* Current character if keyboard event. */
     int current;       /* Current button/character pressed. */
     int curx;          /* Current mouse X position. */
@@ -354,7 +354,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
     int righthand;     /* Set if this is a "right-handed" calculator. */
-    int row;           /* Row number of current key/mouse press. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_help;     /* Set if we wish to show tooltip help. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
@@ -379,7 +378,7 @@ typedef struct calcVars *Vars;
 char *button_str(int);
 char *convert(char *);
 char *get_resource(enum res_type);
-char *make_number(int *);
+char *make_number(int *, BOOLEAN);
 
 enum menu_type button_mtype(int);
 enum op_type button_opdisp(int);

@@ -34,7 +34,8 @@ extern char *Rdstr[];          /* Display mode X resource strings. */
 extern char *Rmstr[];          /* Mode mode X resource strings. */
 extern char *Rtstr[];          /* Trig mode X resource strings. */
 
-extern double max_fix[];       /* Maximum showable fixed values. */
+extern double max_fix[];           /* Maximum showable fixed values. */
+extern double min_fix[MAXACC][MAXBASES];  /* Minimum showable fixed values. */
 
 extern int basevals[];         /* Supported arithmetic bases. */
 extern int validkeys[];        /* Valid keys after an error condition. */

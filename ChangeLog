@@ -8,9 +8,30 @@
 gcalctool change history.
 =========================
 
+v4.1.18 - 10th September 2002.
+
+* Sun Bugtraq bug #1258472 against CDE dtcalc].
+  Start up gcalctool and set to decimal and fixed. Set accuracy to 2 decimal 
+  places. Do a division like 0.19/2  It gives 0.0A
+
+  Changes to make_number() and make_fixed(). Took the fix from bug #1258472 
+  (reworked for smaller/simpler code). This introduces a min_fix 
+  two-dimensional array (accurracy/base), and if we are displaying a fixed 
+  number (that isn't 0.0), and mpFix is TRUE, then tests whether the number 
+  to be displayed is less that the appropriate min_fix value.
+
+  In make_fixed() we also test if dval is greater that base-1 and if it is,
+  then it's reset to base-1.
+
+* Removed all occurances of v->row and v->column as they are no longer
+  needed.
+
+----
+
 v4.1.17 - 10th September 2002.
 
-* gcalctool core dumped if parent directory was not readable.
+* [Sun Bugtraq bug #1190181 against OpenWindows DeskSet calctool].
+  gcalctool core dumped if parent directory was not readable.
 
   Following scenario:
 

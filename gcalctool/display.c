@@ -51,7 +51,7 @@ clear_display()
     v->toclear = 1;
     i = 0;
     mpcim(&i, v->MPdisp_val);
-    STRCPY(v->display, make_number(v->MPdisp_val));
+    STRCPY(v->display, make_number(v->MPdisp_val, FALSE));
     set_item(DISPLAYITEM, v->display);
 
     v->hyperbolic = 0;
@@ -117,7 +117,9 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
     mpabs(MPnumber, MPval);
     n = 0;
     mpcim(&n, MP1);
-    if (mplt(MPnumber, MP1)) *optr++ = '-';
+    if (mplt(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
 
     mpcim(&basevals[(int) v->base], MP1base);
 
@@ -146,6 +148,11 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
+
+        if (dval > basevals[(int) v->base]-1) {
+            dval = basevals[(int) v->base]-1;
+        }
+
         *optr++ = digits[dval];
         dval = -dval;
         mpaddi(MPval, &dval, MPval);
@@ -158,8 +165,10 @@ make_fixed(int *MPnumber,     /* Convert MP number to fixed number string. */
 }
 
 
+/* Convert MP number to character string. */
+
 char *
-make_number(int *MPnumber)     /* Convert MP number to character string. */
+make_number(int *MPnumber, BOOLEAN mkFix)
 {
     double number, val;
 
@@ -180,6 +189,12 @@ make_number(int *MPnumber)     /* Convert MP number to character string. */
         (v->dtype == SCI) ||
         (v->dtype == FIX && val != 0.0 && (val > max_fix[(int) v->base]))) {
         return(make_eng_sci(MPnumber));
+    } else if (v->dtype == FIX && val != 0.0 && mkFix) {
+        if (val <= min_fix[v->accuracy][(int) v->base]) {
+            return(make_eng_sci(MPnumber));
+        } else {
+            return(make_fixed(MPnumber, MAX_DIGITS));
+        }
     } else {
         return(make_fixed(MPnumber, MAX_DIGITS));
     }
@@ -481,7 +496,7 @@ void
 show_display(int *MPval)
 {
     if (!v->error) {
-        STRCPY(v->display, make_number(MPval));
+        STRCPY(v->display, make_number(MPval, TRUE));
         set_item(DISPLAYITEM, v->display);
     }
 }
