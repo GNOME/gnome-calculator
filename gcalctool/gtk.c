@@ -941,6 +941,7 @@ create_mode_panel(GtkWidget *main_vbox)
  
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
+        gtk_tooltips_set_tip(X->tips, X->trig[i], _(ttype_desc[i]), "");
         g_object_set_data(G_OBJECT(X->trig[i]), "trig", (gpointer) i);
         gtk_widget_show(X->trig[i]);
         gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
@@ -959,6 +960,7 @@ create_mode_panel(GtkWidget *main_vbox)
 
     for (i = 0; i < MAXBASES; i++) {
         X->base[i] = gtk_radio_button_new_with_mnemonic(NULL, _(base_str[i]));
+        gtk_tooltips_set_tip(X->tips, X->base[i], _(base_desc[i]), "");
         g_object_set_data(G_OBJECT(X->base[i]), "base", (gpointer) i);
         gtk_widget_show(X->base[i]);
         gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
@@ -973,12 +975,16 @@ create_mode_panel(GtkWidget *main_vbox)
 /* Make Hyp and Inv trigonometric check boxes. */
 
     X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
+    gtk_tooltips_set_tip(X->tips, X->inv, 
+                         _("Set inverse option for trigonometric functions"), "");
     gtk_widget_show(X->inv);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->inv), "toggled",
                       G_CALLBACK(inv_cb), NULL);
 
     X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
+    gtk_tooltips_set_tip(X->tips, X->hyp, 
+                         _("Set hyperbolic option for trigonometric functions"), "");
     gtk_widget_show(X->hyp);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->hyp), "toggled",
@@ -991,6 +997,7 @@ create_mode_panel(GtkWidget *main_vbox)
                                                                 
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->disp[i] = gtk_radio_button_new_with_mnemonic(NULL, _(dtype_str[i]));
+        gtk_tooltips_set_tip(X->tips, X->disp[i], _(dtype_desc[i]), "");
         g_object_set_data(G_OBJECT(X->disp[i]), "disp", (gpointer) i);
         gtk_widget_show(X->disp[i]);
         gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);

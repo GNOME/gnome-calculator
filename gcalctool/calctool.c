@@ -50,6 +50,13 @@ char *base_str[]  = {          /* Strings for each base value. */
     N_("_Bin"), N_("_Oct"), N_("_Dec"), N_("He_x")
 };
 
+char *base_desc[]  = {         /* Tooltips for each base value. */
+    N_("Set numeric base to binary (base 2)"), 
+    N_("Set numeric base to octal (base 8)"), 
+    N_("Set numeric base to decimal (base 10)"), 
+    N_("Set numeric base to hexadecimal (base 16)")
+};
+
 char *calc_res[] = {
     "accuracy", "base", "display", "mode", "showregisters", "trigtype",
     "removezeroes"
@@ -57,6 +64,12 @@ char *calc_res[] = {
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
     N_("E_ng"), N_("_Fix"), N_("_Sci")
+};
+
+char *dtype_desc[] = {         /* Tooltips for each display mode value. */
+    N_("Set display type to engineering format"), 
+    N_("Set display type to fixed-point format"), 
+    N_("Set display type to scientific format")
 };
 
 char *mode_str[]  = {          /* Strings for each mode value. */
@@ -70,6 +83,12 @@ char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
     N_("De_grees"), N_("Gr_adients"), N_("_Radians")
+};
+
+char *ttype_desc[] = {         /* Tooltips for each trig type value. */
+    N_("Set trigonometric type to degrees"), 
+    N_("Set trigonometric type to gradients"), 
+    N_("Set trigonometric type to radians")
 };
 
 char digits[] = "0123456789ABCDEF";
