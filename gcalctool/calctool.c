@@ -618,7 +618,7 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_immed
 },
 {
-    N_("x^2"),
+    N_("x<sup>2</sup>"),
     N_(
       "x^2\n"
       "\n"
@@ -1239,7 +1239,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_pending
 },            
 {             
-    N_("&16"),
+    N_("&amp;16"),
     N_(       
       "&16\n" 
       "\n"    
@@ -1258,7 +1258,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed  
 },            
 {             
-    N_("&32"),
+    N_("&amp;32"),
     N_(       
       "&32\n" 
       "\n"    
@@ -1443,7 +1443,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_pending
 },
 {
-    N_("e^x"),
+    N_("e<sup>x</sup>"),
     N_(
       "e^x\n"
       "\n"
@@ -1460,7 +1460,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },
 {
-    N_("10^x"),
+    N_("10<sup>x</sup>"),
     N_(
       "10^x\n"
       "\n"
@@ -1477,7 +1477,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_immed
 },       
 {        
-    N_("y^x"),
+    N_("y<sup>x</sup>"),
     N_(  
       "y^x\n"
       "\n"

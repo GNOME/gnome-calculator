@@ -1227,7 +1227,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
 {
     char *label, name[MAXLINE];
     int i, j, n;
-    GtkWidget *frame;
+    GtkWidget *frame, *l;
     GtkWidget *table = gtk_table_new(rows, cols, TRUE);
 
     frame = gtk_frame_new(NULL);
@@ -1244,7 +1244,11 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             n = j*cols + i;
             label = _(buttons[n].str);
             if (buttons[n].mtype == M_NONE) {
-                Gtk_buttons[n] = gtk_button_new_with_label(label);
+                l = gtk_label_new(label);
+                gtk_widget_show(l);
+                gtk_label_set_use_markup(GTK_LABEL(l), TRUE);
+                Gtk_buttons[n] = gtk_button_new();
+                gtk_container_add(GTK_CONTAINER(Gtk_buttons[n]), l);
             } else {
                 Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
