@@ -70,9 +70,11 @@ get_bool_resource(enum res_type rtype, int *boolval)
     int len, n;
 
     if ((val = get_resource(rtype)) == NULL) {
+        g_free(val);
         return(0);
     }
     STRCPY(tempstr, val);
+    g_free(val);
     len = strlen(tempstr);
     for (n = 0; n < len; n++) {
         if (isupper((int) tempstr[n])) {
@@ -97,10 +99,12 @@ get_int_resource(enum res_type rtype, int *intval)
     char *val;
  
     if ((val = get_resource(rtype)) == NULL) {
+        g_free(val);
         return(0);
     }
     *intval = atoi(val);
 
+    g_free(val);
     return(1);
 }
 
@@ -191,9 +195,11 @@ get_str_resource(enum res_type rtype, char *strval)
     int i, len;
 
     if ((val = get_resource(rtype)) == NULL) {
+        g_free(val);
         return(0);
     }
     STRCPY(strval, val);
+    g_free(val);
     len = strlen(strval);
     for (i = 0; i < len; i++) {
         if (islower((int) strval[i])) {

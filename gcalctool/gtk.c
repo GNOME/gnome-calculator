@@ -792,6 +792,7 @@ create_kframe()
         v->tool_label = malloc(strlen(_("Calculator")) + strlen(hn) + 3);
 
         SPRINTF(v->tool_label, "%s %s", _("Calculator"), hn);
+        g_free(hn);
     } else {
         read_str(&v->tool_label, v->titleline);
     }
@@ -1185,6 +1186,7 @@ get_display()              /* The Copy function key has been pressed. */
         free(v->shelf);
     }
     v->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
+    g_free(string);
 
     gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), v->shelf, -1);
 }
