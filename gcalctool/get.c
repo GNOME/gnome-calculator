@@ -450,7 +450,7 @@ read_resources()    /* Read all possible resources from the database. */
         }
        
         if (i == MAXTRIGMODES) {
-            FPRINTF(stderr, _("%s: invalid trig. mode [%s]\n"), 
+            FPRINTF(stderr, _("%s: invalid trigonometric mode [%s]\n"), 
                     v->progname, str);
         } else {
             v->ttype = (enum trig_type) i;
