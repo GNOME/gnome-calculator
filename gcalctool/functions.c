@@ -504,7 +504,8 @@ do_factorial(int *MPval, int *MPres)
                 mpmuli(MPa, &i, MPa);
                 mpcmd(MPa, &val);
                 if (v->error) {
-                    break;
+                    mperr();
+                    return;
                 }
                 i--;
             }

@@ -376,6 +376,7 @@ void make_frames();
 void make_menus();
 void make_reg(int, char *);
 void make_registers();
+void mperr();
 void MPstr_to_num(char *, enum base_type, gboolean, int *);
 void paren_disp(char);
 void process_item(struct button *);

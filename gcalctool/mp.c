@@ -81,7 +81,6 @@ static void mpchk(int *, int *);
 static void mpcmr(int *, float *);
 static void mpcqm(int *, int *, int *);
 static void mpcrm(float *, int *);
-static void mperr();
 static void mpexp1(int *, int *);
 static void mpext(int *, int *, int *);
 static void mpgcd(int *, int *);
@@ -1977,7 +1976,7 @@ mpeq(int *x, int *y)
 }
 
 
-static void
+void
 mperr()
 {
 
