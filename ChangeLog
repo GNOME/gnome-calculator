@@ -6,10 +6,29 @@
 
 gcalctool change history.
 =========================
-2003-02-06 
+
+v4.2.46 - 11th February 2003.  (richb)
+
+* From: Dennis Cranston <dennis.cranston@yahoo.com>
+  - Cleans up the Help menu's layout so it looks like other gnome applications.
+  - Converts gtk_init() to gnome_program_init() to allow access to things 
+    like GNOME_STOCK_ABOUT.
+  - Add an icon field to the Xobject structure.
+  - Change setup_default_icon() to set_gcalctool_icon() and set X->icon in 
+    the function.
+  - Sets the window icon for the memory register and about windows.
+  - Cleans up about_cb() and call it directly in menu callbacks -- like in 
+    other gtk+ applications.
+  - Remove the unneccessary X->about structure field.
+
+----
+
+  2003-02-06 
 
 * From Daniel Yacob  <locales@geez.org>
   Added Amharic (am) to ALL_LINGUAS ata configure.in.
+
+----
 
 v4.2.45 - 7th February 2003.  (richb)
 

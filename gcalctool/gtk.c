@@ -71,7 +71,6 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkItemFactory *mb_fact;           /* Menubar item factory. */
     GtkItemFactory *fact[MAXMENUS];
     GtkTooltips *tips;
-    GtkWidget *about;                  /* "About gcalctool" popup. */
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
@@ -140,6 +139,7 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean event_cb(GtkWidget *, GdkEvent *, gpointer);
 
+static void about_cb(GtkWidget *, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
@@ -160,8 +160,8 @@ static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void set_button_state(GtkWidget *, int);
+static void set_gcalctool_icon(void);
 static void set_memory_toggle(int state);
-static void setup_default_icon(void);
 static void trig_cb(GtkToggleButton *, gpointer);
 
 static XVars X;
@@ -186,8 +186,8 @@ static GtkItemFactoryEntry main_menu[] = {
     { "/View/_Memory Registers", "<control>M", mb_proc, M_REGS, "<ToggleItem>" },
 
     { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
-    { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
-    { "/Help/_About Gcalctool",    "<control>A", mb_proc, M_ABOUT, NULL },
+    { "/Help/_Contents",          "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
+    { "/Help/_About",    	   NULL, about_cb, 0, "<StockItem>", GNOME_STOCK_ABOUT },
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
@@ -253,7 +253,8 @@ main(int argc, char **argv)
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-    gtk_init(&argc, &argv);
+    gnome_program_init("gcalctool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
+                        NULL, NULL, NULL);
 
     gtk_rc_get_default_files();
     if ((v->home = getenv("HOME")) == NULL) {
@@ -267,6 +268,7 @@ main(int argc, char **argv)
     X->kbd_accel = gtk_accel_group_new();
     X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
+    set_gcalctool_icon();
 
     do_calctool(argc, argv);
 
@@ -277,37 +279,30 @@ main(int argc, char **argv)
 
 
 static void
-about_cb()
+about_cb(GtkWidget *widget, gpointer data)
 {
-    gchar *authors[] = {
+    GtkWidget *about;        
+
+    const gchar *authors[] = {
         "Rich Burridge <rich.burridge@sun.com>",
         NULL
     };
-    gchar *documenters[] = {
+    const gchar *documenters[] = {
         NULL
     };
-    /* Translator credits */
-    gchar *translator_credits = _("translator_credits");
+    const gchar *translator_credits = _("translator_credits");
 
-
-    if (X->about != NULL) {
-        gdk_window_show(X->about->window);
-        gdk_window_raise(X->about->window);
-        return;
-    }
-
-    X->about = gnome_about_new(_("Gcalctool"), VERSION,
+    about = gnome_about_new(_("Gcalctool"), VERSION,
                    "(C) 2003 the Free Software Foundation",
-                   _("Calculator with financial and scientific modes"),
-                   (const char **) authors,
-                   (const char **) documenters,
+                   _("Calculator with financial and scientific modes."),
+                   authors,
+                   documenters,
                    strcmp(translator_credits, "translator_credits") != 0 ? 
                           translator_credits : NULL,
-                   NULL);
+                   X->icon);
 
-    g_signal_connect(G_OBJECT(X->about), "destroy",
-                        G_CALLBACK(gtk_widget_destroyed), &X->about);
-    gtk_widget_show(X->about);
+    gtk_window_set_icon(GTK_WINDOW(about), X->icon);    
+    gtk_widget_show(about);
 }
 
 
@@ -848,7 +843,7 @@ create_kframe()
     add_extra_kbd_accels();
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
-    setup_default_icon();
+    gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
 
     g_signal_connect(G_OBJECT(X->kframe), "event", G_CALLBACK(event_cb), NULL);
     switch (v->modetype) {
@@ -995,6 +990,7 @@ create_rframe()
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
     gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
+    gtk_window_set_icon(GTK_WINDOW(X->rframe), X->icon); 
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
@@ -1661,10 +1657,6 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
         case M_CONTENTS:
             help_cb();
             break;
-
-        case M_ABOUT:
-            about_cb();
-            break;
     }
 }
 
@@ -1873,17 +1865,15 @@ set_title(enum fcp_type fcptype, char *str)
 
 
 static void
-setup_default_icon(void)
+set_gcalctool_icon(void)
 {
-    GdkPixbuf *pixbuf = NULL;
-    GError *err = NULL;
     char *filename;
-
-    if ((filename = find_file("gcalctool.png", &err)) != NULL) {
-        if ((pixbuf = gdk_pixbuf_new_from_file(filename, &err)) != NULL) {
-            gtk_window_set_icon(GTK_WINDOW(X->kframe), pixbuf);
-        }
+    
+    if ((filename = find_file("gcalctool.png", NULL)) != NULL) {
+        X->icon = gdk_pixbuf_new_from_file(filename, NULL);
         g_free(filename);
+    } else { 
+        X->icon = NULL;
     }
 }
 
