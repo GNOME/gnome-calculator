@@ -428,7 +428,18 @@ process_item(struct button *button)
 {
     int i, isvalid;
 
-    v->current = button;
+    if (v->current != NULL) {
+        free(v->current);
+    }
+    v->current = malloc(sizeof(struct button));
+    v->current->str = button->str;
+    v->current->hstr = button->hstr;
+    v->current->mods = button->mods;
+    v->current->value = button->value;
+    v->current->opdisp = button->opdisp;
+    v->current->mtype = button->mtype;
+    v->current->func = button->func;
+
     if (v->current->value == '*') {
         v->current->value = 'x';      /* Reassign "extra" values. */
     }

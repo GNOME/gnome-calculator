@@ -25,59 +25,6 @@
 #include "calctool.h"
 #include "extern.h"
 
-static struct button *get_index(int ch);
-
-
-#ifdef FIXUP
-/*  Get button index for given character value, setting curwin,
- *  row and column appropriately. Note that if the value isn't found,
- *  then a value of NOBUTTONS is returned. This is "chucked out" by
- *  process_item as being invalid.
- *
- *  XXX: This routine can be improved by using a hash lookup table.
- */
-
-static int
-get_index(int ch)
-{
-    int n, val;
-
-    for (n = 0; n < NOBUTTONS; n++) {
-        if (ch == buttons[n].value) {
-            break;
-        }
-    }
-    if (n < NOBUTTONS) {
-        v->curwin = FCP_KEY;
-    } else if (v->modetype != BASIC) { 
-        for (n = 0; n < MODEKEYS; n++) {
-            val = mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].value;
-            if (ch == val) {
-                break;
-            }
-        }
-        if (n == MODEKEYS) {
-            return(NOBUTTONS);
-        }
-        v->curwin = FCP_MODE;
-    }
-
-    return(n);
-}
-#endif /*FIXUP*/
-
-static struct button *
-get_index(int ch)
-{
-/**/fprintf(stderr, "get_index called.\n");
-
-/* XXX:richb - this routine needs to be rewritten to return the button 
- *             struct for the keyboard character that was entered.
- */
-
-    return(NULL);
-}
-
 
 /* Process menu selection. */
 
@@ -128,7 +75,7 @@ process_event(int type)       /* Process this event. */
                 v->current->value = v->cur_ch;
                 do_pending();
             } else {
-                process_item(get_index(v->cur_ch));
+                process_item(button_for_value(v->cur_ch));
             }
             break;
 
@@ -188,7 +135,7 @@ process_stack(int startop,      /* Initial position in the operand stack. */
                 v->current->value = v->cur_ch;
                 do_pending();
             } else {
-                process_item(get_index(v->cur_ch));
+                process_item(button_for_value(v->cur_ch));
             }
         }
     }
@@ -215,7 +162,7 @@ process_str(char *str)
             v->current->value = str[i];
             do_pending();
         } else {
-            process_item(get_index(str[i]));
+            process_item(button_for_value(str[i]));
         }
     }
 }

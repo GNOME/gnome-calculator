@@ -7,10 +7,24 @@
 gcalctool change history.
 =========================
 
+v4.2.7 - 9th January 2003.  (richb)
+
+* Removed the attempt to display a calculator image on the About popup.
+
+* Typing the keyboard equivalent of the menu buttons now works. The problem
+  was in process_item() in display.c. v->current couldn't just point to the
+  current button struct. It needed to be a copy of it, so that pending
+  operation (which save the pending value), don't overwrite the base button
+  entries.
+
+* Removed the VERSION string from the titlebar. This is now in the About popup.
+
+----
+
 v4.2.6 - 9th January 2003.  (richb)
 
-Added in an About popup that's accessible through the Help->About Gcalctool
-menubar Help menu item.
+* Added in an About popup that's accessible through the Help->About Gcalctool
+  menubar Help menu item.
 
 ----
 

@@ -304,10 +304,6 @@ main(int argc, char **argv)
 static void
 about_cb()
 {
-    GdkPixbuf *pixbuf = NULL;
-    gchar *file;
-    GError *error = NULL;
-
     gchar *authors[] = {
         "Rich Burridge <rich.burridge@sun.com>",
         NULL
@@ -325,15 +321,6 @@ about_cb()
         return;
     }
 
-    file = gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_PIXMAP, 
-                                     "gnome-calc3.png", FALSE, NULL);
-    pixbuf = gdk_pixbuf_new_from_file(file, &error);
-    if (error) {
-        g_warning(_(": cannot open %s: %s"), file, error->message);
-        g_error_free(error);
-    }
-    g_free(file);
-
     X->about = gnome_about_new(_("Gcalctool"), VERSION,
                    "(C) 2003 the Free Software Foundation",
                    _("Calculator with financial and scientific modes"),
@@ -341,10 +328,7 @@ about_cb()
                    (const char **) documenters,
                    strcmp(translator_credits, "translator_credits") != 0 ? 
                           translator_credits : NULL,
-                   pixbuf);
-    if (pixbuf) {
-        gdk_pixbuf_unref(pixbuf);
-    }             
+                   NULL);
 
     g_signal_connect(G_OBJECT(X->about), "destroy",
                         G_CALLBACK(gtk_widget_destroyed), &X->about);
@@ -736,10 +720,9 @@ create_kframe()
     v->tool_label = NULL;
     if (v->titleline == NULL) {
         hn = make_hostname(X->dpy);
-        v->tool_label = malloc(strlen(_("Calculator")) +
-                               strlen(VERSION) + strlen(hn) + 3);
+        v->tool_label = malloc(strlen(_("Calculator")) + strlen(hn) + 3);
 
-        SPRINTF(v->tool_label, "%s %s%s", _("Calculator"), VERSION, hn);
+        SPRINTF(v->tool_label, "%s %s", _("Calculator"), hn);
     } else {
         read_str(&v->tool_label, v->titleline);
     }
@@ -1136,7 +1119,6 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
         } else if ((key == GDK_Help) && down) {
             v->event_type = SHOWHELP;
 
-#ifdef FIXUP
 /* Hack Alert.
  * There is a bug: http://bugzilla.gnome.org/show_bug.cgi?id=79184
  * that is preventing the numeric keypad "+" and "." keys from working
@@ -1144,12 +1126,11 @@ frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
  * has been added here.
  */
         } else if (type == GDK_KEY_PRESS && key == GDK_KP_Decimal) {
-            process_item(v->righthand ? 45 : 41);
+            process_item(button_for_value(KEY_PNT));
             return(TRUE);
         } else if (type == GDK_KEY_PRESS && key == GDK_KP_Add) {
-            process_item(v->righthand ? 47 : 43);
+            process_item(button_for_value(KEY_ADD));
             return(TRUE);
-#endif /*FIXUP*/
 
         } else if (v->pending) {
             if (key == GDK_Shift_L || key == GDK_Shift_R) {
