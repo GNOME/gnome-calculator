@@ -481,7 +481,10 @@ paren_disp(char c)
         if (!n) {
             return;
         }
-        if (v->display[n-1] == '(') {
+
+        if (v->display[n-1] == ')') {
+            v->noparens++;
+        } else if (v->display[n-1] == '(') {
             v->noparens--;
             if (!v->noparens) {
                 v->pending = v->opsptr = v->numsptr = 0;

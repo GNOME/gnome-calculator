@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2004-01-06  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed part of bug 126125 
+      (http://bugzilla.gnome.org/show_bug.cgi?id=126125). If the user
+      entered: "1+(2()<backspace>)", this resulted in an answer of 0.
+      When the user backspaced over the ")" character, v->noparens should
+      have been incremented.
+
 2004-01-05  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 130187 (http://bugzilla.gnome.org/show_bug.cgi?id=130187)
