@@ -7,6 +7,13 @@
 gcalctool change history.
 =========================
 
+2004-05-26 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 142824 (http://bugzilla.gnome.org/show_bug.cgi?id=142824)
+      gcalctool now correctly recognizes the localized decimal point
+      character by explicitly checking to see if the keyboard event keyval
+      matches what's returned by localeconv()->decimal_point.
+
 2004-05-23 Rich Burridge <rich.burridge@sun.com>
 
     * From Michael Terry <mterry@fastmail.fm>

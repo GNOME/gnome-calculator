@@ -94,6 +94,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     Display *dpy;
 
     int menuval;                  /* Index to button array at menu time. */
+    char *lnp;                    /* Localized numerical point (UTF8 format) */
     struct button *mrec[MAXMENUS];
 };
 
@@ -121,6 +122,7 @@ static GtkWidget *make_menu_button(gchar *, int);
 static GtkWidget *make_but_panel(GtkWidget *, GtkWidget **,
                                  struct button *, int, int, char *);
 
+static char *get_localized_numeric_point(void);
 static char *make_hostname(Display *);
 
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
@@ -257,6 +259,8 @@ main(int argc, char **argv)
 
     gnome_program_init("gcalctool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
                         NULL, NULL, NULL);
+
+    X->lnp = get_localized_numeric_point();
 
     /* Connect to the die signal. */
     client = gnome_master_client();
@@ -1234,6 +1238,20 @@ get_function(int n)
 }
 
 
+static char *
+get_localized_numeric_point(void)
+{
+    struct lconv *locale_data;
+    const char *decimal_point;
+    int decimal_point_len;
+
+    decimal_point = localeconv()->decimal_point;
+    decimal_point_len = strlen(decimal_point);
+
+    return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
+}
+
+
 int
 get_menu_entry(enum menu_type mtype, int offset)
 {
@@ -1335,6 +1353,21 @@ inv_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
+static gboolean
+check_for_localized_numeric_point(int keyval)
+{
+    gchar outbuf[10];        /* Minumum size 6. */
+    gunichar ch;
+
+    ch = gdk_keyval_to_unicode(keyval);
+    g_return_if_fail(g_unichar_validate(ch));
+
+    outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
+
+    return(strcmp(outbuf, X->lnp) == 0);
+}
+
+
 static int
 check_vals(int n, int keyval, int state,
            struct button buttons[], GtkWidget *gtk_buttons[])
@@ -1364,6 +1397,11 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     GtkWidget *focus;
     int retval = FALSE;
+
+    if (check_for_localized_numeric_point(event->keyval) == TRUE) {
+        event->state = 0;
+        event->keyval = GDK_KP_Decimal;
+    }
 
     switch (v->modetype) {
         case BASIC:
