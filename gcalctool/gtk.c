@@ -812,7 +812,7 @@ create_kframe()
     gtk_widget_ref(X->display_item);
     gtk_container_add(GTK_CONTAINER(event_box), X->display_item);
     gtk_widget_show(X->display_item);
-    gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), event_box, FALSE, TRUE, 0);
     gtk_widget_show(event_box);
 
     gtk_misc_set_alignment(GTK_MISC(X->display_item), 1.0, 0.5);
@@ -885,7 +885,7 @@ create_mode_panel(GtkWidget *main_vbox)
     frame = gtk_frame_new(NULL);
     gtk_widget_show(frame);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
-    gtk_box_pack_start(GTK_BOX(main_vbox), frame, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(main_vbox), frame, FALSE, TRUE, 0);
 
     row1_hbox = gtk_hbox_new(FALSE, 0);
     row2_hbox = gtk_hbox_new(FALSE, 0);
