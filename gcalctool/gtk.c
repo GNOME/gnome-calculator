@@ -227,8 +227,10 @@ static GtkActionEntry entries[] = {
     { "Insert", NULL, N_("_Insert ASCII Value..."), "<control>I",
       N_("Insert ASCII value"), G_CALLBACK(mb_proc) },
 
+#ifndef DISABLE_GNOME
     { "Contents", GTK_STOCK_HELP, N_("_Contents"), "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
+#endif /*DISABLE_GNOME*/
     { "About", GTK_STOCK_ABOUT, N_("_About"), NULL,
       N_("Show the About Gcalctool dialog"), G_CALLBACK(about_cb) },
 
@@ -375,7 +377,9 @@ static const gchar *ui_info =
 "      <menuitem action='ArithmeticPrecedence'/>"
 "    </menu>"
 "    <menu action='HelpMenu'>"
+#ifndef DISABLE_GNOME
 "      <menuitem action='Contents'/>"
+#endif /*DISABLE_GNOME*/
 "      <menuitem action='About'/>"
 "    </menu>"
 "  </menubar>"
@@ -1040,7 +1044,10 @@ gcalc_window_get_menu_items(XVars X)
     GSList *p = NULL;
     gint i = 0;
     static gchar *action_image[] = { "Quit", "Copy", "Paste", 
-                                     "Contents", "About", NULL };
+#ifndef DISABLE_GNOME
+                                     "Contents", 
+#endif /*DISABLE_GNOME*/
+                                     "About", NULL };
 
     while (action_image[i]) {
         act = gtk_action_group_get_action (X->actions, action_image[i]);
