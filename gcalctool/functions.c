@@ -617,10 +617,7 @@ do_immed()
 void
 do_memory(int show)
 {
-    if (!v->rstate) {
-        make_registers();
-        v->rstate = 1;
-    }
+    make_registers();
     win_display(FCP_REG, v->rstate);
 }
 

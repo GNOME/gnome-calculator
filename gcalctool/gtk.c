@@ -1559,8 +1559,8 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
             break;
 
         case M_REGS:
-/* XXX:richb - should use the state of the menu item toggle, not TRUE. */
-            do_memory(TRUE);
+            v->rstate = !v->rstate;
+            do_memory(v->rstate);
             break;
 
         case M_CONTENTS:
