@@ -363,26 +363,26 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_portion
 },
 {
-    N_("Rcl"),
+    N_("Sto"),
     N_(
-      "Rcl\n"
+      "Sto\n"
       "\n"
-      "Retrieves a memory register.\n"
-      "\n"
-      "Keyboard equivalent:   R\n"
-      "\n"
-      "Click on the Rcl button to display a menu of available "
-      "registers. Choose a register from the menu to "
-      "retrieve its value.\n"
-      "\n"
-      "When you know the number of the register you "
-      "want, you can click SELECT on Rcl, then on the "
-      "register's number (a digit from 0 to 9)."
+      "Stores a value in a memory register.\n"
+	"\n"
+      "Keyboard equivalent:   S\n"
+	"\n"
+      "Click on the Sto button to display a menu of all registers. "
+	"Choose a register from the menu to store the "
+	"displayed value.\n"
+	"\n"
+      "Alternately, click SELECT on Sto, then on a digit "
+	"in the range 0 to 9 to indicate the memory "
+	"register in which to store the displayed value."
     ),
     GDK_SHIFT_MASK,
-    GDK_R,
-    'R',
-    M_RCL,
+    GDK_S,
+    'S',
+    M_STO,
     do_pending
 },
 
@@ -509,26 +509,26 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     do_portion
 },
 {
-    N_("Sto"),
+    N_("Rcl"),
     N_(
-      "Sto\n"
+      "Rcl\n"
       "\n"
-      "Stores a value in a memory register.\n"
-      "\n"
-      "Keyboard equivalent:   S\n"
-      "\n"
-      "Click on the Sto button to display a menu of all registers. "
-      "Choose a register from the menu to store the "
-      "displayed value.\n"
-      "\n"
-      "Alternately, click SELECT on Sto, then on a digit "
-      "in the range 0 to 9 to indicate the memory "
-      "register in which to store the displayed value."
+      "Retrieves a memory register.\n"
+	"\n"
+      "Keyboard equivalent:   R\n"
+	"\n"
+	"Click on the Rcl button to display a menu of available "
+	"registers. Choose a register from the menu to "
+	"retrieve its value.\n"
+	"\n"
+	"When you know the number of the register you "
+	"want, you can click SELECT on Rcl, then on the "
+	"register's number (a digit from 0 to 9)."
     ),
     GDK_SHIFT_MASK,
-    GDK_S,
-    'S',
-    M_STO,
+    GDK_R,
+    'R',
+    M_RCL,
     do_pending
 },
 

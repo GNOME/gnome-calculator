@@ -93,7 +93,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_ACC   b_buttons[12].value             /* A */
 #define KEY_CHS   b_buttons[13].value             /* C */
 #define KEY_INT   b_buttons[14].value             /* i */
-#define KEY_RCL   b_buttons[15].value             /* R */
+#define KEY_STO   b_buttons[15].value             /* S */
 
 #define KEY_1     b_buttons[16].value             /* 1 */
 #define KEY_2     b_buttons[17].value             /* 2 */
@@ -102,7 +102,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define KEY_PER   b_buttons[20].value             /* % */
 #define KEY_SQRT  b_buttons[21].value             /* s */
 #define KEY_FRAC  b_buttons[22].value             /* : */
-#define KEY_STO   b_buttons[23].value             /* S */
+#define KEY_RCL   b_buttons[23].value             /* R */
 
 #define KEY_0     b_buttons[24].value             /* 0 */
 #define KEY_PNT   b_buttons[25].value             /* . */
