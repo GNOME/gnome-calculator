@@ -1150,6 +1150,8 @@ create_kframe()
     gtk_widget_show(X->menubar);
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
+    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
+                 "sensitive", (v->modetype != BASIC), NULL);
 
     X->scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
     gtk_widget_show(X->scrolledwindow);
@@ -1461,6 +1463,7 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
+    v->rstate = 0;
     set_memory_toggle(FALSE);
     put_resource(R_REGS, "false");
     gtk_widget_hide(X->rframe);
@@ -2354,6 +2357,12 @@ reset_mode_values(enum mode_type mtype)
     set_show_zeroes_toggle(v->show_zeroes);
     put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 
+    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
+                 "sensitive", (v->modetype != BASIC), NULL);
+    if (v->modetype == BASIC) {
+        dismiss_rframe(NULL, NULL, NULL);
+    }
+
     show_display(v->MPdisp_val);
     make_registers();
     do_mode();
@@ -2863,7 +2872,6 @@ win_display(enum fcp_type fcptype, int state)
     }
     if (state) {
         if (fcptype == FCP_REG) {
-            set_memory_toggle(v->rstate);
             ds_position_popup(X->kframe, f, DS_POPUP_ABOVE);
         }
     }
