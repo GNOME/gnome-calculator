@@ -1,7 +1,6 @@
-
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,12 +20,12 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 #include "calctool.h"
 #include "extern.h"
 
 static char *make_eng_sci(int *, int);
 static char *make_fixed(int *, int, int);
-
 
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base, use the "right" radix character.
@@ -103,7 +102,6 @@ char_val(char chr)
     }
 }
 
-
 void
 clear_display(int initialise)
 {
@@ -127,40 +125,42 @@ clear_display(int initialise)
 }
 
 
+// FIXME: not a right location for this function
 struct button *
 copy_button_info(struct button *old)
 {
     struct button *new;
 
+    int len = sizeof(struct button);
     new = malloc(sizeof(struct button));
-
-/* Note that copies of the strings aren't done here as they aren't needed. */
-
-    new->str = old->str;
-    new->hstr = old->hstr;
-    new->astr = old->astr;
-    new->mods[0] = old->mods[0];
-    new->value[0] = old->value[0];
-    new->func_char = old->func_char;
-    new->mtype = old->mtype;
-    new->func = old->func;
-
-    return(new);
+    assert(new);
+    memcpy(new, old, len);
+    return new;
 }
 
 
 void
 initialise()
 {
-    int i;
+  // TODO: perhaps this function should be
+  //       renamed to reset.
 
-    v->error         = 0;           /* Currently no display error. */
-    v->cur_op        = '?';         /* No arithmetic operator defined yet. */
-    v->old_cal_value = '?';
-    v->pending       = 0;
-    i = 0;
-    mpcim(&i, v->MPresult);         /* No previous result yet. */
-    mpcim(&i, v->MPlast_input);
+  int i;
+  
+  v->error         = 0;           /* Currently no display error. */
+  v->cur_op        = '?';         /* No arithmetic operator defined yet. */
+  v->old_cal_value = '?';
+  v->pending       = 0;
+  i = 0;
+  mpcim(&i, v->MPresult);         /* No previous result yet. */
+  mpcim(&i, v->MPdisp_val);         
+  mpcim(&i, v->MPlast_input);
+  
+  v->new_input = 1;               /* Value zero is on calculator display */
+
+  free(v->expression);
+  v->expression = NULL;
+
 }
 
 
@@ -474,7 +474,7 @@ paren_disp(char c)
                 show_display(v->MPdisp_val);
                 return;
             }
-        }
+        } else if (v->display[n-1] == ')') v->noparens++;
         v->display[n-1] = '\0';
 
     } else if (c == '(') {
@@ -564,4 +564,35 @@ show_display(int *MPval)
         STRCPY(v->display, make_number(MPval, v->base, TRUE, FALSE));
         set_display(v->display, FALSE);
     }
+}
+
+void
+refresh_display()
+{
+  switch (v->syntax) {
+  case npa: {
+    show_display(v->MPdisp_val);
+    break;
+  }
+  case exprs:
+    if (v->expression) {
+      char *e = gc_strdup(v->expression);
+      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+      str_replace(&e, "Ans", ans);
+      set_display(e, FALSE);
+      free(e);
+    } else set_display("", FALSE);
+    
+#if 0
+    if (v->e.calc_complete) {
+      show_display(v->e.ans);
+    } else {
+      set_display(v->expression, FALSE);
+    }
+#endif
+    break;
+  default:
+    assert(0);
+  }
+
 }

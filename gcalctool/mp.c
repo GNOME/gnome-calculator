@@ -1,4 +1,3 @@
-
 /*  $Header$
  *
  *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.

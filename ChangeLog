@@ -1,4 +1,4 @@
-/*  $Header$
+/*   $Header$
  *
  *  Copyright (c) 1987-2004 Sun Microsystems, Inc.
  *  All Rights Reserved.
@@ -7,6 +7,9 @@
 gcalctool change history.
 =========================
 
+2004-06-14 Sami Pietila <sampie@ariana-dsl.utu.fi>
+    * Merge from NG-branch.
+	
 2004-06-14 Rich Burridge <rich.burridge@sun.com>
 
     * Remainder of the fix for bug #143924.
@@ -71,6 +74,13 @@ gcalctool change history.
       gcalctool now correctly recognizes the localized decimal point
       character by explicitly checking to see if the keyboard event keyval
       matches what's returned by localeconv()->decimal_point.
+
+2004-05-25 Udayan Kumar <udayan_kumar@da-iict.org>
+ 
+    * From Rich Burridge <rich.burridge@sun.com>
+      Fixed bug 136119 (http://bugzilla.gnome.org/show_bug.cgi?id=136119)
+      gcalctool/calctool.c : structure button b_bottons 
+      Added code for paranthesis in place of empty space
 
 2004-05-23 Rich Burridge <rich.burridge@sun.com>
 

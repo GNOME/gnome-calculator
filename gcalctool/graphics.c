@@ -1,4 +1,3 @@
-
 /*  $Header$
  *
  *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
@@ -24,6 +23,8 @@
 #include <string.h>
 #include "calctool.h"
 #include "extern.h"
+#include "ce_parser.h"
+#include "lr_parser.h"
 
 
 /* Process menu selection. */
@@ -31,6 +32,9 @@
 void
 handle_menu_selection(struct button *n, int item)
 {
+
+#if 0
+
     if (item != -1) {
         if (IS_KEY(v->pending, KEY_LPAR.value[0])) {  /* Inside parentheses? */
             v->current->value[0] = n->value[0];
@@ -42,13 +46,28 @@ handle_menu_selection(struct button *n, int item)
             if (v->current != NULL) {
                 free(v->current);
             }
-            v->current = copy_button_info(button_for_value(item));
+	    v->current = copy_button_info(button_for_value(item));
             v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
             do_pending();
             v->ismenu = 0;
         }
         v->down = 0;
     }
+#endif
+
+    if (item != -1) {    
+      save_pending_values(n);
+      if (v->current != NULL) {
+	free(v->current);
+      }
+      v->current = copy_button_info(button_for_value(item));
+      v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
+      do_pending();
+      v->ismenu = 0;
+      
+      v->down = 0;
+    }
+
 }
 
 
@@ -64,7 +83,7 @@ make_registers()            /* Calculate memory register frame values. */
         mval = make_number(v->MPmvals[n], v->base, FALSE, TRUE);
 	SPRINTF(fmt, "<span weight=\"bold\">%s%s%%%1ds", 
                 _("R"), "%1d:</span>   %s", MAX_DIGITS - strlen(mval));
-        SPRINTF(line, fmt, n, mval, " ");
+       SPRINTF(line, fmt, n, mval, " ");
         make_reg(n, line);
     }
 }
@@ -116,27 +135,29 @@ process_stack(int startop,      /* Initial position in the operand stack. */
 void
 process_str(char *str)
 {
-    struct button *current;
-    int i, len;
+#if 0
+  // Desserted function
 
-    if (str == NULL) {
-        return;
-    }
+  // parse_udf
 
-    len = strlen(str);
-    for (i = 0; i < len; i++) {
-        if (v->error) {
-            return;
-        }
-        if (v->pending) {
-            if ((current = button_for_fc(str[i])) != NULL) {
-                v->current = copy_button_info(current);
-                do_pending();
-            }
-        } else {
-            if ((current = button_for_fc(str[i])) != NULL) {
-                process_item(current);
-            }
-        }
-    }
+ int MP[MP_SIZE];
+
+ int ret = 0;
+
+ switch (v->syntax) {
+  case npa:
+    ret = lr_parse(str, MP);
+    update_statusbar(N_("Parsing is done from left to right"), "");
+    break;
+  case exprs:
+    ret = ce_parse(str, MP);
+    update_statusbar(N_("Parsing is done with operator precedencer"), "");
+    break;
+  default:
+    assert(0);
+  }
+
+ if (ret) update_statusbar(N_("Malformed function"), "gtk-dialog-error");
+
+#endif
 }

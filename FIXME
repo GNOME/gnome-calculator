@@ -1,0 +1,34 @@
+/*  $Header$
+ *
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc.
+ *  All Rights Reserved.
+ */
+
+Gcalctool 
+
+* Has Rate and Term (financial mode) same shortkey?
+
+
+Gcalctool - Next Generation FIXME (Arithmetic Precedence (AP) mode)
+------------------------------------------------------------------
+
+* Editing calctool.h does not seem to make compiler to recompile.
+
+* CE parser has 2 reduce/reduce errors
+
+* Financial function usage in AP (arithmetic precedence) mode has not 
+  been thought throughly.
+
+* bug 138875
+
+* Answer cannot be used in logical calculations because answer may not
+  be integer.
+
+* Base conversions are not easy to use. (Only answer can be converted)
+
+* If you do
+  78/0=
+  
+    it displays "Error" correctly, but the following menu items are activated:
+    View->Use Arithmetic Precedence
+    View->Show Thousands Separator
