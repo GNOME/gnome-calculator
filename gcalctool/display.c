@@ -67,6 +67,27 @@ clear_display(int initialise)
 }
 
 
+struct button *
+copy_button_info(struct button *old)
+{
+    struct button *new;
+
+    new = malloc(sizeof(struct button));
+
+/* Note that copies of the strings aren't done here as they aren't needed. */
+
+    new->str = old->str;
+    new->hstr = old->hstr;
+    new->mods = old->mods;
+    new->value = old->value;
+    new->opdisp = old->opdisp;
+    new->mtype = old->mtype;
+    new->func = old->func;
+
+    return(new);
+}
+
+
 void
 get_label(struct button *b)
 {
@@ -431,14 +452,7 @@ process_item(struct button *button)
     if (v->current != NULL) {
         free(v->current);
     }
-    v->current = malloc(sizeof(struct button));
-    v->current->str = button->str;
-    v->current->hstr = button->hstr;
-    v->current->mods = button->mods;
-    v->current->value = button->value;
-    v->current->opdisp = button->opdisp;
-    v->current->mtype = button->mtype;
-    v->current->func = button->func;
+    v->current = copy_button_info(button);
 
     if (v->current->value == '*') {
         v->current->value = 'x';      /* Reassign "extra" values. */

@@ -426,7 +426,10 @@ button_proc(GtkButton *widget, gpointer user_data)
 
     n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
     if (v->pending) {
-        v->current = button_for_value((int) user_data);
+        if (v->current != NULL) {
+            free(v->current);
+        }
+        v->current = copy_button_info(n);
         do_pending();
     } else {
         process_item(n);

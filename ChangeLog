@@ -7,6 +7,15 @@
 gcalctool change history.
 =========================
 
+v4.2.10 - 10th January 2003.  (richb)
+
+* Go into Scientific mode. Click on "(" twice and you'll get a segv.
+  The problem was the v->current needed to be set to a copy of the "n" button
+  struct, rather than trying to find the button value from user_data.
+  Created a copy_button_info() routine that is now called in three places.
+
+----
+
 v4.2.9 - 10th January 2003.  (richb)
 
 * Added some horizontal separators to help make the calculator more readable

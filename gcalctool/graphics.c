@@ -39,7 +39,10 @@ handle_menu_selection(struct button *n, int item)
             do_paren();
         } else {
             save_pending_values(n);
-            v->current = button_for_value(item);
+            if (v->current != NULL) {
+                free(v->current);
+            }
+            v->current = copy_button_info(button_for_value(item));
             v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
             do_pending();
             v->ismenu = 0;

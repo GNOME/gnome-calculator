@@ -375,6 +375,7 @@ typedef struct calcVars *Vars;
 #define dmin(a, b)  (double) min(a, b)
 
 struct button *button_for_value(int);
+struct button *copy_button_info(struct button *);
 
 char *button_str(int);
 char *convert(char *);
