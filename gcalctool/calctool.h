@@ -29,7 +29,8 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <math.h>
-#include <gnome.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 #define MP_SIZE      150     /* Size of the multiple precision values. */
 
@@ -396,7 +397,6 @@ int do_rcl_reg(int reg, int value[MP_SIZE]);
 int do_sto_reg(int reg, int value[MP_SIZE]);
 int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 int get_menu_entry(enum menu_type, int);
-int key_equal(struct button *, struct button);
 int main(int, char **);
 
 void beep();
@@ -428,12 +428,10 @@ void do_trigtype(enum trig_type);
 void doerr(char *);
 void exp_del();
 void get_constant(int);
-void get_display();
 void get_function(int);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
 void handle_menu_selection(struct button *, int);
-void handle_selection();
 void initialise();
 void init_args();
 void init_frame_sizes();
@@ -461,18 +459,15 @@ void refresh_display();
 void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_menu_item(int);
-void set_accuracy_toggle(int);
 void set_accuracy_tooltip(int);
 void set_display(char *, int);
 void write_display(char *);
 void set_error_state(int);
 void set_hyp_item(int);
 void set_ins_key();
-void set_item(enum item_type, int);
 void set_inv_item(int);
 void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
-void show_ascii_frame();
 void show_display(int *);
 void show_error(char *);
 void srand48();

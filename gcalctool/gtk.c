@@ -36,6 +36,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
+#include <gnome.h>
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 
@@ -183,11 +184,14 @@ static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_values(enum mode_type);
+static void set_accuracy_toggle(int val);
 static void set_button_state(GtkWidget *, int);
 static void set_gcalctool_icon(void);
+static void set_item(enum item_type itemtype, int val);
 static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
+static void show_ascii_frame();
 static void show_precision_frame();
 static void spframe_cancel_cb(GtkButton *, gpointer);
 static void spframe_ok_cb(GtkButton *, gpointer);
@@ -2519,7 +2523,6 @@ set_display(char *str, int minimize_changes)
 void
 write_display(char *str)
 {
-    char localized[MAX_LOCALIZED];
     gchar *text;
     GtkTextBuffer *buffer;
     GtkTextIter start, end;

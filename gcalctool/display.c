@@ -23,6 +23,7 @@
 #include <string.h>
 #include <assert.h>
 #include "calctool.h"
+#include <gdk/gdkkeysyms.h>
 #include "extern.h"
 #include "mpmath.h"
 

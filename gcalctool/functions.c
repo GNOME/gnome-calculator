@@ -32,10 +32,15 @@
 #include "ce_parser.h"
 #include "lr_parser.h"
 
+static int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
+static int key_equal(struct button *, struct button);
+
 static void do_accuracy();
 static void do_constant();
 static void do_exchange();
 static void do_function();
+static void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
+static void do_portionfunc(int num[MP_SIZE]);
 static void do_shift();
 
 
