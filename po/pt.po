@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-01-26 00:45+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -885,35 +885,36 @@ msgstr "Factor de conversão de centímetros-cúbicos-para-polegadas-cúbicas"
 msgid "Error"
 msgstr "Erro"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Expressão anterior"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Expressão mal-formada"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Função mal-formada"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Ecrã limpo, não é permitido um prefixo sem operador"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Expressão de parêntesis mal-formada"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Nenhum valor lógico a armazenar"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Função mal-formada"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Ecrã limpo, não é permitido um prefixo sem operador"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Expressão de parêntesis mal-formada"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Erro de pilha numérica"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Erro de pilha de operador"
 
@@ -1374,15 +1375,15 @@ msgstr ""
 "Definir a precisão de 0 a %d casas decimais. Actualmente definido para %d "
 "casas. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Activado o modo sem precedência de operador"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Activado o modo de expressão com precedência de operador"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Valor de precisão fora dos limites"
 
@@ -1509,8 +1510,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1588,9 +1593,6 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Efectuar os cálculos"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"
 
 #~ msgid "Basic mode"
 #~ msgstr "Modo básico"

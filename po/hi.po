@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-8.hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2004-08-06 17:24+0000\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -894,35 +894,36 @@ msgstr "घन-सेंटीमीटर-से-घन-इंच परिव�
 msgid "Error"
 msgstr "त्रुटि"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr ""
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr ""
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr ""
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr ""
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr ""
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr ""
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr ""
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr ""
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr ""
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "न्यूमेरिक स्टेक त्रुटि"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "ऑपरैंड स्टेक त्रुटि"
 
@@ -1395,15 +1396,15 @@ msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr ""
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr ""
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr ""
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr ""
 
@@ -1544,8 +1545,13 @@ msgstr "इंट."
 msgid "or"
 msgstr "Xor"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+#, fuzzy
+msgid "pmt"
+msgstr "Pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr ""
@@ -1635,10 +1641,6 @@ msgstr "Xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "गणना करें"
-
-#, fuzzy
-#~ msgid "pmt"
-#~ msgstr "Pmt"
 
 #~ msgid "Basic mode"
 #~ msgstr "सामान्य मोड"

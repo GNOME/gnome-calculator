@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2004-12-18 14:12+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -892,35 +892,36 @@ msgstr "Factor de conversión de cms cúbicos a pulgadas cúbicas"
 msgid "Error"
 msgstr "Error"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Expresión anterior"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Función malformada"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Con el visor borrado, un prefijo sin un operador no está permitido"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Expresión con paréntesis malformados"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Función malformada"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Con el visor borrado, un prefijo sin un operador no está permitido"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Expresión con paréntesis malformados"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Error de la pila numérica"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Error de la pila de operandos"
 
@@ -1383,15 +1384,15 @@ msgstr ""
 "Establecer la precisión de 0 a %d lugares numéricos. Acualmente está en %d "
 "lugares. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Activado el modo sin operador de precedencia"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Activado el modo de expresión con operador de precedencia"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Valor de precisión fuera de rango"
 
@@ -1518,8 +1519,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1597,9 +1602,6 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Realizar cálculos"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"
 
 #~ msgid "Basic Mode"
 #~ msgstr "Modo básico"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.or\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2004-09-08 01:12+0530\n"
 "Last-Translator: Gora Mohanty <gora_mohanty@yahoo.co.in>\n"
 "Language-Team: Oriya <oriya-group@lists.sarovar.org>\n"
@@ -892,35 +892,36 @@ msgstr "କୱୁବିକ୍ ସେଣ୍ଟିମିଟର ରୁ କୱୁବ
 msgid "Error"
 msgstr "ତ୍ରୁଟି"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "ପୂର୍ବର୍ତ୍ତୀ ଅଭିବ୍ଯକ୍ତି"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "ବିକୃତ ଅଭିବ୍ଯକ୍ତି"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "ବିକୃତ ଫଳନ"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "ପ୍ରଦର୍ଶକ ସଫା କରାଯାଇଛି, ଚାଳକ ବିନା ଉପସର୍ଗ ନିଷେଧ"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "ବିକୃତ ବନ୍ଧନୀ ଅଭିବ୍ଯକ୍ତି"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "ସଞ୍ଚୟ ପାଇଁ କୌଣସି ଯୁକ୍ତିଯୁକ୍ତ ମୂଲ୍ଯ ନାହିଁ"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "ବିକୃତ ଫଳନ"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "ପ୍ରଦର୍ଶକ ସଫା କରାଯାଇଛି, ଚାଳକ ବିନା ଉପସର୍ଗ ନିଷେଧ"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "ବିକୃତ ବନ୍ଧନୀ ଅଭିବ୍ଯକ୍ତି"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "ସଂଖ୍ଯାତ୍ମକ ଥାକ ତ୍ରୁଟି"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "ଓପେରାଣ୍ଡ ଥାକ ତ୍ରୁଟି"
 
@@ -1384,15 +1385,15 @@ msgstr ""
 "ଯଥାର୍ଥତାକୁ ୦ରୁ %d ସଂଖ୍ଯାତ୍ମକ ସ୍ଥାନ ଯାଏଁ ବିନ୍ଯାସ କରନ୍ତୁ. ବର୍ତ୍ତମାନ ଏହା %d ସ୍ଥାନକୁ ବିନ୍ଯାସ "
 "କରାଯାଇଛି [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "ବିନା ଚାଳକ କ୍ରମ ଅବସ୍ଥା ଚଳାଯାଇଛି"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "ଚାଳକ କ୍ରମାନୁସାରେ ଅଭିବ୍ଯକ୍ତି ଅବସ୍ଥା ଚଳାଯାଇଛି"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "ସଠିକତା ମୂଲ୍ଯ ପରିସର ବାହାରେ"
 
@@ -1519,8 +1520,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "ଯଥାକାଳୀନ ଶୋଧନ"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "ବର୍ତ୍ତମାନ ମୂଲ୍ଯ"
@@ -1598,9 +1603,6 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "ଗଣନା କରନ୍ତୁ"
-
-#~ msgid "pmt"
-#~ msgstr "ଯଥାକାଳୀନ ଶୋଧନ"
 
 #~ msgid "Basic mode"
 #~ msgstr "ମୌଳିକ ଧାରା"

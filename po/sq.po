@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-01-04 11:00+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -885,35 +885,36 @@ msgstr "Faktori i konvertimit nga centimetër kubik në inch kubik"
 msgid "Error"
 msgstr "Gabim"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Shprehja paraardhëse"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Shprehje e keqformuar"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Funksion i keqformuar"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Display i pastruar, prefiksi pa një operues nuk lejohet"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Shprehje me paranteza të keqformuara"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Asnjë vlerë e dobishme për t'u regjistruar"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Funksion i keqformuar"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Display i pastruar, prefiksi pa një operues nuk lejohet"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Shprehje me paranteza të keqformuara"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Gabim stack numerik"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Gabim në stack e operimeve"
 
@@ -1374,15 +1375,15 @@ msgstr ""
 "Përcakton precizionin nga 0 në %d shifra numerike. Aktualisht vendosur në %d "
 "shifra. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Është aktivuar modaliteti pa paraprirjen me operues"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Është aktivuar modaliteti i shprehjes me paraprirjen me operues"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Vlerë preçizioni jashtë rangut"
 
@@ -1509,8 +1510,12 @@ msgstr "nuk"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1588,6 +1593,3 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Kryej llogaritjet"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2004-12-18 09:01+0100\n"
 "Last-Translator: Marcel Telka <marcel@telka.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -888,35 +888,36 @@ msgstr "Konverzná konštanta pre prevod kubických centimetrov na kubické palc
 msgid "Error"
 msgstr "Chyba"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Predchádzajúci výraz"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Poškodený výraz"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Poškodená funkcia"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Vyčistený displej, predpona bez operátora nie je povolená"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Poškodený výraz so zátvorkami"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Nie je rozumná hodnota na uloženie"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Poškodená funkcia"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Vyčistený displej, predpona bez operátora nie je povolená"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Poškodený výraz so zátvorkami"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Chyba číselného zásobníka"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Chyba zásobníka operandov"
 
@@ -1375,15 +1376,15 @@ msgid ""
 msgstr ""
 "Nastaviť presnosť od 0 do %d miest. Teraz je nastavené na %d miest. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Aktivovaný režim bez priority operátorov"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktivovaný režim výrazov s prioritou operátorov"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Hodnota presnosti je mimo rozsah"
 
@@ -1510,8 +1511,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1589,6 +1594,3 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Vykonať výpočty"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"

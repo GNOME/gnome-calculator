@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-01-11 07:05+0000\n"
 "Last-Translator: Rhys Jones <rhys@sucs.org>\n"
 "Language-Team: Welsh <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -901,35 +901,36 @@ msgstr "Ffactor trawsnewid centimedrau ciwbig i fodfeddi ciwbig"
 msgid "Error"
 msgstr "Gwall"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Mynegiad blaenorol"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Mynegiad wedi'i gamffurfio"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Ffwythiant wedi'i gamffurfio"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Wedi clirio'r man dangos: ni chaniateir rhagddodiad heb weithredydd"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Cromfachau'r mynegiad wedi'u camffurfio"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Dim gwerth synhwyrol i'w storio"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Ffwythiant wedi'i gamffurfio"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Wedi clirio'r man dangos: ni chaniateir rhagddodiad heb weithredydd"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Cromfachau'r mynegiad wedi'u camffurfio"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Gwall stac rhifyddol"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Gwall stac operandau"
 
@@ -1395,15 +1396,15 @@ msgstr ""
 "Gosod cywirdeb rhwng 0 a %d o rifau. Wedi ei osod i %d o rifau ar hyn o "
 "bryd. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Wedi gweithredu modd dim blaenoriaeth gweithredwyr"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Wedi gweithredu modd mynegiant gyda blaenoriaeth gweithredwyr"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Gwerth cywirdeb y tu allan i'r amrediad"
 
@@ -1535,8 +1536,12 @@ msgstr "nid"
 msgid "or"
 msgstr "neu"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "Tld"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "gp"
@@ -1615,9 +1620,6 @@ msgstr "nieua"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Gweithredu'r cyfrifiadau"
-
-#~ msgid "pmt"
-#~ msgstr "Tld"
 
 #, fuzzy
 #~ msgid "Basic mode"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-11 22:29+0100\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-02-11 22:29+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -895,35 +895,36 @@ msgstr "Konverteringsfaktor för kubikcentimeter till kubiktum"
 msgid "Error"
 msgstr "Fel"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Föregående uttryck"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Felaktigt utformad funktion"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Tömde display, prefix utan en operator är inte tillåtet"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Felaktigt utformat parentesuttryck"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Felaktigt utformad funktion"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Tömde display, prefix utan en operator är inte tillåtet"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Felaktigt utformat parentesuttryck"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Fel i numerisk stack"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Fel i operandstack"
 
@@ -1387,15 +1388,15 @@ msgstr ""
 "Ställ in noggrannheten från 0 till %d sifferplatser. För tillfället inställd "
 "till %d platser. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Aktiverade läge utan operatorrangordning"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktiverade uttrycksläge med operatorrangordning"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Noggrannhetsvärdet utanför intervallet"
 
@@ -1522,8 +1523,12 @@ msgstr "inte"
 msgid "or"
 msgstr "ellr"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pbt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "nv"
@@ -1766,9 +1771,6 @@ msgstr "Utför beräkningar"
 
 #~ msgid "Set accuracy from 0 to %d numeric places."
 #~ msgstr "Ställ in noggrannheten från 0 till %d sifferplatser."
-
-#~ msgid "pmt"
-#~ msgstr "pbt"
 
 #~ msgid "Basic Mode"
 #~ msgstr "Grundläggande läge"

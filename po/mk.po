@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-8.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-01-26 18:44+0100\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -892,35 +892,36 @@ msgstr "Фактор на конвертирање од кубни сантим�
 msgid "Error"
 msgstr "Грешка"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Претходен израз"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Погрешен израз"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Погрешна функција"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Чист прикажан префикс без оператор не е дозволен"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Погрешен израз во заградите"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Нема вистинска вредност за складирање"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Погрешна функција"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Чист прикажан префикс без оператор не е дозволен"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Погрешен израз во заградите"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Нумеричка грешка на стекот"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Грешка на стекот со операнди"
 
@@ -1382,15 +1383,15 @@ msgstr ""
 "Подеси ја точноста од 0 до %d нумерички места. Моментално поставено на %d "
 "места. [a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "Не е активиран оператор со режим на приоритети"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "Активиран е режимот за изрази со операторски приоритети"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Вредноста за прецизноста е надвор од опсегот"
 
@@ -1517,8 +1518,13 @@ msgstr "не"
 msgid "or"
 msgstr "или"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+#, fuzzy
+msgid "pmt"
+msgstr "Pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1596,10 +1602,6 @@ msgstr "x или"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Изврши ги пресметките"
-
-#, fuzzy
-#~ msgid "pmt"
-#~ msgstr "Pmt"
 
 #~ msgid "Basic mode"
 #~ msgstr "Основен режим"

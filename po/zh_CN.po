@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
+"POT-Creation-Date: 2005-03-07 07:34-0800\n"
 "PO-Revision-Date: 2005-01-24 00:18+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -466,9 +466,6 @@ msgstr "将来值 [v]"
 msgid "Pmt"
 msgstr "Pmt"
 
-msgid "pmt"
-msgstr "pmt"
-
 #: gcalctool/calctool.c:575
 msgid "Periodic payment [P]"
 msgstr "阶段支付 [P]"
@@ -888,35 +885,36 @@ msgstr "立方厘米到立方英寸转换因子"
 msgid "Error"
 msgstr "错误"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "上个表达式"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "格式错误的表达式"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "格式错误的函数"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "清除显示，不允许没有操作符的前缀"
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "格式错误的括号表达式"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "格式错误的函数"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "清除显示，不允许没有操作符的前缀"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "格式错误的括号表达式"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "数字栈错误"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "操作数栈错误"
 
@@ -1374,15 +1372,15 @@ msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr "将精度设定为 0 到 %d 位数字。目前为 %d 位。[a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
 msgstr "已激活无运算符优先级模式"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
 msgstr "已激活带运算符优先级的表达式模式"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "精确值超出范围"
 
@@ -1509,8 +1507,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
