@@ -715,7 +715,7 @@ create_kframe()
 {
     char *hn;
     int count;
-    GtkWidget *event_box;
+    GtkWidget *event_box, *hsep;
 
     v->tool_label = NULL;
     if (v->titleline == NULL) {
@@ -774,6 +774,10 @@ create_kframe()
     gtk_widget_show(X->mode_panel);
     gtk_widget_show(X->sci_table);
 
+    hsep = gtk_hseparator_new();
+    gtk_widget_show(hsep);
+    gtk_box_pack_start(GTK_BOX(X->kvbox), hsep, TRUE, TRUE, 0);
+
     X->bas_table = make_but_table(X->kframe, X->kvbox, X->bas_buttons,
                                   &b_buttons[0], BROWS, BCOLS, "bas");
     gtk_widget_show(X->bas_table);
@@ -793,7 +797,7 @@ create_mode_panel(GtkWidget *main_vbox)
 {
     int i;
     GtkWidget *base_hbox, *disp_hbox, *trig_hbox;
-    GtkWidget *row1_hbox, *row2_hbox, *vbox;
+    GtkWidget *row1_hbox, *row2_hbox, *hsep, *vbox;
     GSList *base_gr = NULL;
     GSList *disp_gr = NULL;
     GSList *trig_gr = NULL;
@@ -803,6 +807,10 @@ create_mode_panel(GtkWidget *main_vbox)
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
+
+    hsep = gtk_hseparator_new();
+    gtk_widget_show(hsep);
+    gtk_box_pack_start(GTK_BOX(vbox), hsep, TRUE, TRUE, 0);
 
 /* Make numeric base radio button widgets. */
 
@@ -879,7 +887,12 @@ create_mode_panel(GtkWidget *main_vbox)
     gtk_box_pack_end(GTK_BOX(row2_hbox), X->op_label, FALSE, FALSE, 0);
 
     gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
-    gtk_box_pack_end(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
+
+    hsep = gtk_hseparator_new();
+    gtk_widget_show(hsep);
+    gtk_box_pack_start(GTK_BOX(vbox), hsep, TRUE, TRUE, 0);
+
     gtk_box_pack_start(GTK_BOX(main_vbox), vbox, FALSE, FALSE, 0);
 
     return(vbox);
