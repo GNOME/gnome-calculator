@@ -551,7 +551,8 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
     if (id == GTK_RESPONSE_HELP) {
         GError *error = NULL;
 
-        gnome_help_display("gcalctool", NULL, &error);
+        gnome_help_display_desktop(NULL, "gcalctool", "gcalctool", 
+                                   NULL, &error);
 
         if (error) {
             GtkWidget *d;
