@@ -8,14 +8,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-27 06:21+0100\n"
+"POT-Creation-Date: 2003-12-05 11:05-0800\n"
 "PO-Revision-Date: 2003-11-27 06:22+0100\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nognu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -302,6 +302,7 @@ msgid "Subtract"
 msgstr "Oduzmi"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -673,7 +674,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Heksadecimalna cifra E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1112
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1118
 msgid "F"
 msgstr "F"
 
@@ -739,7 +740,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Heksadecimalna cifra B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1104
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1110
 msgid "C"
 msgstr "C"
 
@@ -830,18 +831,18 @@ msgstr "kubnih centimetara ili kubnih inča"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:238 gcalctool/functions.c:939
-#: gcalctool/functions.c:1067 gcalctool/functions.c:1106
-#: gcalctool/functions.c:1160 gcalctool/functions.c:1253
-#: gcalctool/functions.c:1254 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1098 gcalctool/display.c:279 gcalctool/functions.c:945
+#: gcalctool/functions.c:1073 gcalctool/functions.c:1112
+#: gcalctool/functions.c:1166 gcalctool/functions.c:1259
+#: gcalctool/functions.c:1260 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Greška"
 
-#: gcalctool/functions.c:1273
+#: gcalctool/functions.c:1279
 msgid "Numeric stack error"
 msgstr "Greška numeričkog steka"
 
-#: gcalctool/functions.c:1294
+#: gcalctool/functions.c:1300
 msgid "Operand stack error"
 msgstr "Greška steka operanda"
 
@@ -907,7 +908,7 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:906 gcalctool/gtk.c:1043
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:912 gcalctool/gtk.c:1049
 msgid "R"
 msgstr "R"
 
@@ -1107,72 +1108,72 @@ msgstr "Gkalktul"
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator sa finansijskim i naučnim načinom rada."
 
-#: gcalctool/gtk.c:579
+#: gcalctool/gtk.c:585
 msgid "Insert ASCII Value"
 msgstr "Ubaci ASCII vrednost"
 
-#: gcalctool/gtk.c:594
+#: gcalctool/gtk.c:600
 msgid "Ch_aracter:"
 msgstr "_Znak:"
 
-#: gcalctool/gtk.c:619
+#: gcalctool/gtk.c:625
 msgid "_Insert"
 msgstr "U_metni"
 
-#: gcalctool/gtk.c:699
+#: gcalctool/gtk.c:705
 msgid "Edit Constants"
 msgstr "Uredi konstante"
 
-#: gcalctool/gtk.c:699
+#: gcalctool/gtk.c:705
 msgid "Edit Functions"
 msgstr "Uredi funkcije"
 
-#: gcalctool/gtk.c:723
+#: gcalctool/gtk.c:729
 msgid "Note:"
 msgstr "Obaveštenje:"
 
-#: gcalctool/gtk.c:724
+#: gcalctool/gtk.c:730
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Sve konstantne vrednosti se navode u dekadnom brojnom sistemu."
 
-#: gcalctool/gtk.c:734
+#: gcalctool/gtk.c:740
 msgid "Click a _value or description to edit it:"
 msgstr "Kliknite na _vrednost ili opis da ih uredite:"
 
-#: gcalctool/gtk.c:757
+#: gcalctool/gtk.c:763
 msgid "No."
 msgstr "br."
 
-#: gcalctool/gtk.c:759
+#: gcalctool/gtk.c:765
 msgid "Value"
 msgstr "Vrednost"
 
-#: gcalctool/gtk.c:761
+#: gcalctool/gtk.c:767
 msgid "Description"
 msgstr "Opis"
 
-#: gcalctool/gtk.c:795 gcalctool/gtk.c:797 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:801 gcalctool/gtk.c:803
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:978
+#: gcalctool/gtk.c:984
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:986
+#: gcalctool/gtk.c:992
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1034
+#: gcalctool/gtk.c:1040
 msgid "Memory Registers"
 msgstr "Memorijski registri"
 
-#: gcalctool/gtk.c:1093
+#: gcalctool/gtk.c:1099
 msgid "Edit Constants..."
 msgstr "Uredi konstante..."
 
-#: gcalctool/gtk.c:1093
+#: gcalctool/gtk.c:1099
 msgid "Edit Functions..."
 msgstr "Uredi funkcije..."
 

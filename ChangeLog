@@ -7,6 +7,17 @@
 gcalctool change history.
 =========================
 
+2003-12-05  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 128603 (http://bugzilla.gnome.org/show_bug.cgi?id=128603)
+      The changes for enhancement request #126626 which added thousands 
+      separator support caused a crash at startup time on a Debian system. 
+      The initial constant strings are being put in read-only memory either 
+      by gcc (or because of the way that x86 arch is designed). This was 
+      not a problem when tested with the Sun compilers on a Solaris SPARC 
+      machine.  The remove_tsep() routine is display.c has been rewritten 
+      to correctly handle this.
+
 2003-12-04  Iñaki Larrañaga <dooteo@euskalgnu.org>
 
     * configure.in: Added Basque (eu) to ALL_LINGUAS.

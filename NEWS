@@ -5,6 +5,18 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 4.3.29
+
+* Fixed bug 128603. The changes for enhancement request #126626 which added 
+  thousands separator support caused a crash at startup time on a Debian 
+  system. The initial constant strings are being put in read-only memory 
+  either by gcc (or because of the way that x86 arch is designed). This was 
+  not a problem when tested with the Sun compilers on a Solaris SPARC machine.
+  The remove_tsep() routine is display.c has been rewritten to correctly 
+  handle this.
+
+----
+
 Overview of changes in gcalctool 4.3.28
 
 * Further work on enhancement request 125873. As the user is typing in 

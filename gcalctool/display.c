@@ -55,7 +55,7 @@ add_tsep()
             *dstp++ = *srcp--;
             n++;
             if (n == 3 && srcp >= v->fnum) {
-		*dstp++ = ',';
+		*dstp++ = v->tsep_char;
 		n = 0;
             }
 	}
@@ -76,17 +76,33 @@ add_tsep()
 
 void
 remove_tsep(char *str) {
+    gboolean found = FALSE;
     char *srcp = str;
     char *dstp = str;
 
+/* If there are no thousands separators in the numeric string, just return
+ * without doing anything. This is needed because the initial constant
+ * definitions are potentially in read-only memory, and shouldn't be adjusted.
+ */
+
     while (*srcp != '\0') {
-        if (*srcp == ',') {
-            srcp++;
-            continue;
+        if (*srcp == v->tsep_char) {
+            found = TRUE;
         }
-        *dstp++ = *srcp++;
+        srcp++;
     }
-    *dstp++ = '\0';
+
+    if (found == TRUE) {
+        srcp = str;
+        while (*srcp != '\0') {
+            if (*srcp == v->tsep_char) {
+                srcp++;
+                continue;
+            }
+            *dstp++ = *srcp++;
+        }
+        *dstp++ = '\0';
+    }
 }
 
 

@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-28 14:32+0100\n"
+"POT-Creation-Date: 2003-12-05 11:05-0800\n"
 "PO-Revision-Date: 2003-11-28 20:02+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -301,6 +301,7 @@ msgid "Subtract"
 msgstr "Odčítání"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -668,7 +669,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Šestnáctková číslice E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1112
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1118
 msgid "F"
 msgstr "F"
 
@@ -732,7 +733,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Šestnáctková číslice B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1104
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1110
 msgid "C"
 msgstr "C"
 
@@ -823,18 +824,18 @@ msgstr "kubické centimetry nebo kubické palce"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:238 gcalctool/functions.c:939
-#: gcalctool/functions.c:1067 gcalctool/functions.c:1106
-#: gcalctool/functions.c:1160 gcalctool/functions.c:1253
-#: gcalctool/functions.c:1254 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#: gcalctool/calctool.c:1098 gcalctool/display.c:279 gcalctool/functions.c:945
+#: gcalctool/functions.c:1073 gcalctool/functions.c:1112
+#: gcalctool/functions.c:1166 gcalctool/functions.c:1259
+#: gcalctool/functions.c:1260 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Chyba"
 
-#: gcalctool/functions.c:1273
+#: gcalctool/functions.c:1279
 msgid "Numeric stack error"
 msgstr "Chyba zásobníku čísel"
 
-#: gcalctool/functions.c:1294
+#: gcalctool/functions.c:1300
 msgid "Operand stack error"
 msgstr "Chyba zásobníku operandů"
 
@@ -900,7 +901,7 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:906 gcalctool/gtk.c:1043
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:912 gcalctool/gtk.c:1049
 msgid "R"
 msgstr "R"
 
@@ -1102,72 +1103,72 @@ msgstr "Gcalctool"
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
-#: gcalctool/gtk.c:579
+#: gcalctool/gtk.c:585
 msgid "Insert ASCII Value"
 msgstr "Vložit hodnotu ASCII"
 
-#: gcalctool/gtk.c:594
+#: gcalctool/gtk.c:600
 msgid "Ch_aracter:"
 msgstr "Z_nak:"
 
-#: gcalctool/gtk.c:619
+#: gcalctool/gtk.c:625
 msgid "_Insert"
 msgstr "_Vložit"
 
-#: gcalctool/gtk.c:699
+#: gcalctool/gtk.c:705
 msgid "Edit Constants"
 msgstr "Upravit konstanty"
 
-#: gcalctool/gtk.c:699
+#: gcalctool/gtk.c:705
 msgid "Edit Functions"
 msgstr "Upravit funkce"
 
-#: gcalctool/gtk.c:723
+#: gcalctool/gtk.c:729
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: gcalctool/gtk.c:724
+#: gcalctool/gtk.c:730
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Všechny konstantní hodnoty jsou zadávány v desítkové soustavě."
 
-#: gcalctool/gtk.c:734
+#: gcalctool/gtk.c:740
 msgid "Click a _value or description to edit it:"
 msgstr "Pro upravení klikněte na _hodnotu nebo popis:"
 
-#: gcalctool/gtk.c:757
+#: gcalctool/gtk.c:763
 msgid "No."
 msgstr "Č."
 
-#: gcalctool/gtk.c:759
+#: gcalctool/gtk.c:765
 msgid "Value"
 msgstr "Hodnota"
 
-#: gcalctool/gtk.c:761
+#: gcalctool/gtk.c:767
 msgid "Description"
 msgstr "Popis"
 
-#: gcalctool/gtk.c:795 gcalctool/gtk.c:797 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:801 gcalctool/gtk.c:803
 msgid "Calculator"
 msgstr "Kalkulačka"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:978
+#: gcalctool/gtk.c:984
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:986
+#: gcalctool/gtk.c:992
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1034
+#: gcalctool/gtk.c:1040
 msgid "Memory Registers"
 msgstr "Registry paměti"
 
-#: gcalctool/gtk.c:1093
+#: gcalctool/gtk.c:1099
 msgid "Edit Constants..."
 msgstr "Upravit konstanty..."
 
-#: gcalctool/gtk.c:1093
+#: gcalctool/gtk.c:1099
 msgid "Edit Functions..."
 msgstr "Upravit funkce..."
 
@@ -1175,199 +1176,203 @@ msgstr "Upravit funkce..."
 msgid "Perform calculations"
 msgstr "Provést výpočty"
 
-msgid "1/x"
-msgstr "1/x"
+#~ msgid "1/x"
+#~ msgstr "1/x"
 
-msgid "x!"
-msgstr "x!"
+#~ msgid "x!"
+#~ msgstr "x!"
 
-msgid ""
-"*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** ZNAMÉNKO NENÍ 0, +1 NEBO -1 VE VOLÁNÍ MPADD2.\n"
-"MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
+#~ msgid ""
+#~ "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** ZNAMÉNKO NENÍ 0, +1 NEBO -1 VE VOLÁNÍ MPADD2.\n"
+#~ "MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
 
-msgid "*** N .LE. 1 IN CALL TO MPART1 ***\n"
-msgstr "*** N .LE. 1 VE VOLÁNÍ MPART1 ***\n"
+#~ msgid "*** N .LE. 1 IN CALL TO MPART1 ***\n"
+#~ msgstr "*** N .LE. 1 VE VOLÁNÍ MPART1 ***\n"
 
-msgid "*** ABS(X) .GT. 1 IN CALL TO MPASIN ***\n"
-msgstr "*** ABS(X) .GT. 1 VE VOLÁNÍ MPASIN ***\n"
+#~ msgid "*** ABS(X) .GT. 1 IN CALL TO MPASIN ***\n"
+#~ msgstr "*** ABS(X) .GT. 1 VE VOLÁNÍ MPASIN ***\n"
 
-msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
-msgstr "*** V MPATAN DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
+#~ msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
+#~ msgstr "*** V MPATAN DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
 
-msgid ""
-"*** B = %d ILLEGAL IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** B = %d NEPLATNÉ VE VOLÁNÍ MPCHK.\n"
-"MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
+#~ msgid ""
+#~ "*** B = %d ILLEGAL IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** B = %d NEPLATNÉ VE VOLÁNÍ MPCHK.\n"
+#~ "MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
 
-msgid ""
-"*** T = %d ILLEGAL IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** T = %d NEPLATNÉ VE VOLÁNÍ MPCHK.\n"
-"MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
+#~ msgid ""
+#~ "*** T = %d ILLEGAL IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** T = %d NEPLATNÉ VE VOLÁNÍ MPCHK.\n"
+#~ "MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
 
-msgid ""
-"*** M .LE. T IN CALL TO MPCHK.\n"
-"PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** M .LE. T VE VOLÁNÍ MPCHK.\n"
-"MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
+#~ msgid ""
+#~ "*** M .LE. T IN CALL TO MPCHK.\n"
+#~ "PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** M .LE. T VE VOLÁNÍ MPCHK.\n"
+#~ "MOŽNÁ NEBYLO NASTAVENO PŘED VOLÁNÍM RUTINY MP ***\n"
 
-msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
-msgstr "*** B PŘÍLIŠ VELKÉ VE VOLÁNÍ MPCHK ***\n"
+#~ msgid "*** B TOO LARGE IN CALL TO MPCHK ***\n"
+#~ msgstr "*** B PŘÍLIŠ VELKÉ VE VOLÁNÍ MPCHK ***\n"
 
-msgid ""
-"*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"
-msgstr ""
-"*** MXR PŘÍLIŠ MALÉ NEBO NENASTAVENO NA DIM(R) PŘED VOLÁNÍM RUTINY MP ***\n"
+#~ msgid ""
+#~ "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"
+#~ msgstr ""
+#~ "*** MXR PŘÍLIŠ MALÉ NEBO NENASTAVENO NA DIM(R) PŘED VOLÁNÍM RUTINY MP "
+#~ "***\n"
 
-msgid ""
-"*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
-"*** ACTUALLY MXR = %d, AND T = %d  ***\n"
-msgstr ""
-"*** MXR BY MĚLO BÝT NEJMÉNĚ %d*T + %d = %d  ***\n"
-"*** VE SKUTEČNOSTI MXR = %d A T = %d  ***\n"
+#~ msgid ""
+#~ "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
+#~ "*** ACTUALLY MXR = %d, AND T = %d  ***\n"
+#~ msgstr ""
+#~ "*** MXR BY MĚLO BÝT NEJMÉNĚ %d*T + %d = %d  ***\n"
+#~ "*** VE SKUTEČNOSTI MXR = %d A T = %d  ***\n"
 
-msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
-msgstr "*** PŘE/PODTEČENÍ V POHYBLIVÉ ŘÁDOVÉ ČÁRCE V MPCMD ***\n"
+#~ msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMD ***\n"
+#~ msgstr "*** PŘE/PODTEČENÍ V POHYBLIVÉ ŘÁDOVÉ ČÁRCE V MPCMD ***\n"
 
-msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
-msgstr "*** PŘE/PODTEČENÍ V POHYBLIVÉ ŘÁDOVÉ ČÁRCE V MPCMR ***\n"
+#~ msgid "*** FLOATING-POINT OVER/UNDER-FLOW IN MPCMR ***\n"
+#~ msgstr "*** PŘE/PODTEČENÍ V POHYBLIVÉ ŘÁDOVÉ ČÁRCE V MPCMR ***\n"
 
-msgid "*** J = 0 IN CALL TO MPCQM ***\n"
-msgstr "*** J = 0 VE VOLÁNÍ MPCQM ***\n"
+#~ msgid "*** J = 0 IN CALL TO MPCQM ***\n"
+#~ msgstr "*** J = 0 VE VOLÁNÍ MPCQM ***\n"
 
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
-msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPDIV ***\n"
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n"
+#~ msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPDIV ***\n"
 
-msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
-msgstr "*** V MPDIV DOŠLO K PŘETEČENÍ ***\n"
+#~ msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
+#~ msgstr "*** V MPDIV DOŠLO K PŘETEČENÍ ***\n"
 
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
-msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPDIVI ***\n"
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
+#~ msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPDIVI ***\n"
 
-msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
-msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPDIVI, B PŘÍLIŠ VELKÉ ***\n"
+#~ msgid "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n"
+#~ msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPDIVI, B PŘÍLIŠ VELKÉ ***\n"
 
-msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
-msgstr "*** PŘETEČENÍ V SUBRUTINĚ MPEXP ***\n"
+#~ msgid "*** OVERFLOW IN SUBROUTINE MPEXP ***\n"
+#~ msgstr "*** PŘETEČENÍ V SUBRUTINĚ MPEXP ***\n"
 
-msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
-msgstr "*** V MPEXP DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
+#~ msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
+#~ msgstr "*** V MPEXP DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
 
-msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
-msgstr "*** ABS(X) NENÍ MENŠÍ NEŽ 1 VE VOLÁNÍ MPEXP1 ***\n"
+#~ msgid "*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n"
+#~ msgstr "*** ABS(X) NENÍ MENŠÍ NEŽ 1 VE VOLÁNÍ MPEXP1 ***\n"
 
-msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
-msgstr "*** X NEKLADNÉ VE VOLÁNÍ MPLN ***\n"
+#~ msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
+#~ msgstr "*** X NEKLADNÉ VE VOLÁNÍ MPLN ***\n"
 
-msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
-msgstr "*** CHYBA V MPLN, ITERACE NEKONVERGUJE ***\n"
+#~ msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
+#~ msgstr "*** CHYBA V MPLN, ITERACE NEKONVERGUJE ***\n"
 
-msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
-msgstr "*** ABS(X) .GE. 1/B VE VOLÁNÍ MPLNS ***\n"
+#~ msgid "*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n"
+#~ msgstr "*** ABS(X) .GE. 1/B VE VOLÁNÍ MPLNS ***\n"
 
-msgid ""
-"*** ERROR OCCURRED IN MPLNS.\n"
-"NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr ""
-"*** DOŠLO K CHYBĚ V MPLNS.\n"
-"NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPLNS.\n"
+#~ "NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
+#~ msgstr ""
+#~ "*** DOŠLO K CHYBĚ V MPLNS.\n"
+#~ "NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
 
-msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
-msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPMUL, B PŘÍLIŠ VELKÉ ***\n"
+#~ msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
+#~ msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPMUL, B PŘÍLIŠ VELKÉ ***\n"
 
-msgid ""
-"*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** NEPLATNÁ ČÍSLICE ZÁKLADU B VE VOLÁNÍ MPMUL.\n"
-"MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
+#~ msgid ""
+#~ "*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** NEPLATNÁ ČÍSLICE ZÁKLADU B VE VOLÁNÍ MPMUL.\n"
+#~ "MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
 
-msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
-msgstr "*** V MPMUL2 DOŠLO K PŘETEČENÍ ***\n"
+#~ msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
+#~ msgstr "*** V MPMUL2 DOŠLO K PŘETEČENÍ ***\n"
 
-msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
-msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPMUL2, B PŘÍLIŠ VELKÉ ***\n"
+#~ msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
+#~ msgstr "*** PŘETEČENÍ CELÝCH ČÍSEL V MPMUL2, B PŘÍLIŠ VELKÉ ***\n"
 
-msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
-msgstr "*** POKUS O DĚLENÍ NULOU V MPMULQ ***\n"
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
+#~ msgstr "*** POKUS O DĚLENÍ NULOU V MPMULQ ***\n"
 
-msgid ""
-"*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
-"POSSIBLE OVERWRITING PROBLEM ***\n"
-msgstr ""
-"*** ZNAMÉNKO NENÍ 0, +1 NEBO -1 VE VOLÁNÍ MPNZR.\n"
-"MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
+#~ msgid ""
+#~ "*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\n"
+#~ "POSSIBLE OVERWRITING PROBLEM ***\n"
+#~ msgstr ""
+#~ "*** ZNAMÉNKO NENÍ 0, +1 NEBO -1 VE VOLÁNÍ MPNZR.\n"
+#~ "MOŽNÝ PROBLÉM S PŘEPISOVÁNÍM ***\n"
 
-msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
-msgstr "*** V MPNZR DOŠLO K PŘETEČENÍ ***\n"
+#~ msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
+#~ msgstr "*** V MPNZR DOŠLO K PŘETEČENÍ ***\n"
 
-msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
-msgstr "*** VOLÁNÍ MPOVFL, DOŠLO K PŘETEČENÍ MP ***\n"
+#~ msgid "*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n"
+#~ msgstr "*** VOLÁNÍ MPOVFL, DOŠLO K PŘETEČENÍ MP ***\n"
 
-msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
-msgstr "*** V MPPI DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
+#~ msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
+#~ msgstr "*** V MPPI DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
 
-msgid ""
-"*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"
-msgstr ""
-"*** POKUS MOCNIT NULU NA ZÁPORNOU MOCNINU VE VOLÁNÍ SUBRUTINY MPPWR ***\n"
+#~ msgid ""
+#~ "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** POKUS MOCNIT NULU NA ZÁPORNOU MOCNINU VE VOLÁNÍ SUBRUTINY MPPWR ***\n"
 
-msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
-msgstr "*** X ZÁPORNÉ VE VOLÁNÍ MPPWR2 ***\n"
+#~ msgid "*** X NEGATIVE IN CALL TO MPPWR2 ***\n"
+#~ msgstr "*** X ZÁPORNÉ VE VOLÁNÍ MPPWR2 ***\n"
 
-msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
-msgstr "*** X NULA A Y NEKLADNÉ VE VOLÁNÍ MPPWR2 ***\n"
+#~ msgid "*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n"
+#~ msgstr "*** X NULA A Y NEKLADNÉ VE VOLÁNÍ MPPWR2 ***\n"
 
-msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
-msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPREC ***\n"
+#~ msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
+#~ msgstr "*** POKUS O DĚLENÍ NULOU VE VOLÁNÍ MPREC ***\n"
 
-msgid ""
-"*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr ""
-"*** DOŠLO K CHYBĚ V MPREC, NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** DOŠLO K CHYBĚ V MPREC, NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
 
-msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
-msgstr "*** V MPREC DOŠLO K PŘETEČENÍ ***\n"
+#~ msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
+#~ msgstr "*** V MPREC DOŠLO K PŘETEČENÍ ***\n"
 
-msgid "*** N = 0 IN CALL TO MPROOT ***\n"
-msgstr "*** N = 0 VE VOLÁNÍ MPROOT ***\n"
+#~ msgid "*** N = 0 IN CALL TO MPROOT ***\n"
+#~ msgstr "*** N = 0 VE VOLÁNÍ MPROOT ***\n"
 
-msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
-msgstr "*** ABS(N) PŘÍLIŠ VELKÉ VE VOLÁNÍ MPROOT ***\n"
+#~ msgid "*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n"
+#~ msgstr "*** ABS(N) PŘÍLIŠ VELKÉ VE VOLÁNÍ MPROOT ***\n"
 
-msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
-msgstr "*** X = 0 A N ZÁPORNÉ VE VOLÁNÍ MPROOT ***\n"
+#~ msgid "*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n"
+#~ msgstr "*** X = 0 A N ZÁPORNÉ VE VOLÁNÍ MPROOT ***\n"
 
-msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
-msgstr "*** X ZÁPORNÉ A N SUDÉ VE VOLÁNÍ MPROOT ***\n"
+#~ msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
+#~ msgstr "*** X ZÁPORNÉ A N SUDÉ VE VOLÁNÍ MPROOT ***\n"
 
-msgid ""
-"*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
-msgstr ""
-"*** DOŠLO K CHYBĚ V MPROOT, NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** DOŠLO K CHYBĚ V MPROOT, NEWTONOVA ITERACE NEKONVERGUJE SPRÁVNĚ ***\n"
 
-msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
-msgstr "*** IDECPL .LE. 0 VE VOLÁNÍ MPSET ***\n"
+#~ msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
+#~ msgstr "*** IDECPL .LE. 0 VE VOLÁNÍ MPSET ***\n"
 
-msgid ""
-"ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
-"*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"
-msgstr ""
-"ITMAX2 PŘÍLIŠ MALÉ VE VOLÁNÍ MPSET ***\n"
-"*** ZVĚTŠETE ITMAX2 A ROZMĚRY POLÍ MP NA NEJMÉNĚ %d ***\n"
+#~ msgid ""
+#~ "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
+#~ "*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"
+#~ msgstr ""
+#~ "ITMAX2 PŘÍLIŠ MALÉ VE VOLÁNÍ MPSET ***\n"
+#~ "*** ZVĚTŠETE ITMAX2 A ROZMĚRY POLÍ MP NA NEJMÉNĚ %d ***\n"
 
-msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
-msgstr "*** V MPSIN DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
+#~ msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
+#~ msgstr "*** V MPSIN DOŠLO K CHYBĚ, VÝSLEDEK NESPRÁVNÝ ***\n"
 
-msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
-msgstr "*** ABS(X) .GT. 1 VE VOLÁNÍ MPSIN1 ***\n"
+#~ msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
+#~ msgstr "*** ABS(X) .GT. 1 VE VOLÁNÍ MPSIN1 ***\n"
 
-msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
-msgstr "*** X ZÁPORNÉ VE VOLÁNÍ SUBRUTINY MPSQRT ***\n"
+#~ msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
+#~ msgstr "*** X ZÁPORNÉ VE VOLÁNÍ SUBRUTINY MPSQRT ***\n"
