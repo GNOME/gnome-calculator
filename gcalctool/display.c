@@ -37,25 +37,28 @@ add_tsep()
 {
     if (v->show_tsep && v->base == DEC) {
 	char *dstp, *radixp, *srcp;
-	int n;
+	int n, i;
+	size_t tsep_len;
 
 	/* Process the fractional part (if any). */
 	srcp = v->fnum + strlen(v->fnum) - 1;
 	dstp = v->tnum;
-	if ((radixp = strchr(v->fnum, v->radix_char)) != NULL) {
-            while (*srcp != v->radix_char) {
+	if ((radixp = strstr(v->fnum, v->radix)) != NULL) {
+            while (srcp != radixp) {
     		*dstp++ = *srcp--;
             }
-            *dstp++ = *srcp--;	   /* Copy over the radix char. */
+	    *dstp++ = *srcp--;
     	}
 
     	/* Process the integer part, add in thousand separators. */
+	tsep_len = strlen(v->tsep);
     	n = 0;
     	while (srcp >= v->fnum) {
             *dstp++ = *srcp--;
             n++;
             if (n == 3 && srcp >= v->fnum) {
-		*dstp++ = v->tsep_char;
+	        for (i = tsep_len - 1; i >= 0; i--)
+		    *dstp++ = v->tsep[i];
 		n = 0;
             }
 	}
@@ -76,27 +79,20 @@ add_tsep()
 
 void
 remove_tsep(char *str) {
-    gboolean found = FALSE;
     char *srcp = str;
     char *dstp = str;
+    size_t tsep_len;
 
 /* If there are no thousands separators in the numeric string, just return
  * without doing anything. This is needed because the initial constant
  * definitions are potentially in read-only memory, and shouldn't be adjusted.
  */
 
-    while (*srcp != '\0') {
-        if (*srcp == v->tsep_char) {
-            found = TRUE;
-        }
-        srcp++;
-    }
-
-    if (found == TRUE) {
-        srcp = str;
+    if (strstr(str, v->tsep) != NULL) {
+        tsep_len = strlen(v->tsep);
         while (*srcp != '\0') {
-            if (*srcp == v->tsep_char) {
-                srcp++;
+            if (memcmp(srcp, v->tsep, tsep_len) == 0) {
+                srcp += tsep_len;
                 continue;
             }
             *dstp++ = *srcp++;
@@ -180,17 +176,18 @@ initialise()
 
 
 /* Convert MP number to fixed number string in the given base to the
- * maximum number of characters specified.
+ * maximum number of digits specified.
  */
 
 static char *
 make_fixed(int *MPnumber, int base, int cmax)
 {
-    char half[4], *optr;
+    char half[3 + MB_LEN_MAX], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
     int dval, n;
+    size_t radix_len = strlen(v->radix);
  
     optr = v->fnum;
     mpabs(MPnumber, MPval);
@@ -203,7 +200,7 @@ make_fixed(int *MPnumber, int base, int cmax)
     mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
-    SPRINTF(half, "0%c5", v->radix_char);
+    SPRINTF(half, "0%s5", v->radix);
     MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
@@ -224,7 +221,8 @@ make_fixed(int *MPnumber, int base, int cmax)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-            *optr++ = v->radix_char;
+	    memcpy(optr, v->radix, radix_len);
+	    optr += radix_len;
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -246,8 +244,11 @@ make_fixed(int *MPnumber, int base, int cmax)
         while (*optr == '0') {
             optr--;
         }
-        if (*optr != v->radix_char) {
-            optr++;
+	if (optr < v->fnum + radix_len - 1 || 
+            memcmp(optr - (radix_len - 1), v->radix, radix_len) != 0) {
+	    optr++;
+	} else {
+	    optr -= radix_len - 1;
         }
         *optr = '\0';
     }
@@ -293,7 +294,7 @@ make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
 static char *
 make_eng_sci(int *MPnumber, int base)
 {
-    char half[4], fixed[MAX_DIGITS+1], *optr;
+    char half[3 + MB_CUR_MAX], fixed[MAX_BUFFER], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
     int i, dval, len, n;
@@ -367,7 +368,7 @@ make_eng_sci(int *MPnumber, int base)
         *optr++ = '+';
     }
  
-    SPRINTF(half, "0%c5", v->radix_char);
+    SPRINTF(half, "0%s5", v->radix);
     MPstr_to_num(half, DEC, MP1);
     mpaddi(MP1, &exp, MPval);
     n = 1;
@@ -405,6 +406,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int i, inum;
     int exp      = 0;
     int exp_sign = 1;
+    size_t radix_len;
 
     i = 0;
     mpcim(&i, MPval);
@@ -419,12 +421,15 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
         optr++;
     }
 
-    if (*optr == v->radix_char) {
-        for (i = 1; (inum = char_val(*++optr)) >= 0; i++) {
+    radix_len = strlen (v->radix);
+    if (memcmp(optr, v->radix, radix_len) == 0) {
+        optr += radix_len;
+        for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);
             mpcim(&inum, MP2);
             mpdiv(MP2, MP1, MP1);
             mpadd(MPval, MP1, MPval);
+	    optr++;
         }
     }
 

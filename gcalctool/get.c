@@ -118,17 +118,23 @@ get_key_val(int *val, char *str)
 }
 
 
-/* Return the radix character. For most locales, this is a period. */
+/* Return the radix character. For most locales, this is a period. 
+ * If nl_langinfo(RADIXCHAR) returns an empty string, return ",".
+ */
 
-char
-get_radix_char()
+const char *
+get_radix()
 {
-    char *radix_char;
+    char *radix;
 
     setlocale(LC_NUMERIC, "");
-    radix_char = nl_langinfo(RADIXCHAR);
+    radix = nl_langinfo(RADIXCHAR);
 
-    return(radix_char[0]);
+    if (radix == NULL || radix[0] == '\0') {
+        return(".");
+    } else {
+        return(radix);
+    }
 }
 
 
@@ -211,19 +217,24 @@ get_str_resource(enum res_type rtype, char *strval)
 }
 
 
-/* Return the thousands separator character. For most locales, this is a 
- * comma.
+/* Return the thousands separator string. For most locales, this is a 
+ * comma. If this is the C locale, nl_langinfo(THOUSEP) returns an empty 
+ * string, in which case we return ",".
  */
 
-char
-get_tsep_char()
+const char *
+get_tsep()
 {
-    char *tsep_char;
+    char *tsep;
 
     setlocale(LC_NUMERIC, "");
-    tsep_char = nl_langinfo(THOUSEP);
+    tsep = nl_langinfo(THOUSEP);
 
-    return(tsep_char[0]);
+    if (tsep == NULL || tsep[0] == '\0') {
+        return(",");
+    } else {
+        return(tsep);
+    }
 }
 
 

@@ -6,9 +6,20 @@
 
 gcalctool change history.
 =========================
+
+2003-12-22  Miloslav Trmac <mitr at volny dot cz>
+
+    * Fixed bug 129539 (http://bugzilla.gnome.org/show_bug.cgi?id=129539)
+      The thousands separator is a null terminated string, not a single
+      character. Same for the radix. Adjusted various functions to handle
+      this. Note that in the C locale, nl_langinfo(THOUSEP) returns an empty
+      string, so get_tsep() has been adjusted to return "," for that case.
+      If nl_langinfo(RADIXCHAR) returns an empty string (it shouldn't do),
+      then get_radix() will return ".".
+
 2003-12-20  Arafat Medini <lumina@silverpen.de>
-                                                                                
-        * ar.po: Added Arabic Locale "ar" to ALL_LINGUAS
+
+    * ar.po: Added Arabic Locale "ar" to ALL_LINGUAS
 
 2003-12-05  Rich Burridge <rich.burridge@sun.com>
 

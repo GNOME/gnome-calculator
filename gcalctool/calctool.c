@@ -1017,8 +1017,8 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    v->radix_char = get_radix_char();   /* Locale specific radix character. */
-    v->tsep_char  = get_tsep_char();  /* Locale specific thousands seperator. */
+    v->radix = get_radix();    /* Locale specific radix string. */
+    v->tsep  = get_tsep();     /* Locale specific thousands seperator. */
 
     init_text();               /* Setup text strings depending upon language. */
     init_vars();               /* Setup default values for variables. */

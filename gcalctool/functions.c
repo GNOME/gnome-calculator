@@ -386,8 +386,24 @@ do_constant()
 void
 do_delete()     /* Remove the last numeric character typed. */
 {
-    if (strlen(v->display) > 0) {
-        v->display[strlen(v->display)-1] = '\0';
+    size_t len;
+
+    len = strlen(v->display);
+    if (len > 0) {
+        size_t l2;
+
+	l2 = strlen(v->radix);
+        if (len >= l2 && memcmp(v->display + len - l2, v->radix, l2) == 0) {
+	    v->display[len-l2] = '\0';
+	} else {
+	    l2 = strlen(v->tsep);
+	    if (len >= l2
+		&& memcmp(v->display + len - l2, v->tsep, l2) == 0) {
+	        v->display[len-l2] = '\0';
+	    } else {
+	        v->display[len-1] = '\0';
+	    }
+	}
     }
 
 /*  If we were entering a scientific number, and we have backspaced over
@@ -401,7 +417,7 @@ do_delete()     /* Remove the last numeric character typed. */
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
 
-    if (v->pointed && !(strchr(v->display, v->radix_char))) {
+    if (v->pointed && !(strstr(v->display, v->radix))) {
         v->pointed = 0;
     }
 
@@ -431,14 +447,14 @@ do_exchange()         /* Exchange display with memory register. */
 void
 do_expno()           /* Get exponential number. */
 {
-    v->pointed = (strchr(v->display, v->radix_char) != NULL);
+    v->pointed = (strstr(v->display, v->radix) != NULL);
     if (!v->new_input) {
         STRCPY(v->display, "1.0 +");
         v->new_input = v->pointed = 1;
     } else if (!v->pointed) {
         char str[4];
 
-        SPRINTF(str, "%c +", v->radix_char);
+        SPRINTF(str, "%s +", v->radix);
         STRNCAT(v->display, str, 3);
         v->pointed = 1;
     } else if (!v->key_exp) {
@@ -779,15 +795,12 @@ do_pending()
 void
 do_point()                   /* Handle numeric point. */
 {
-    char radix_str[2];
-
     if (!v->pointed) {
-	SPRINTF(radix_str, "%c", v->radix_char);
         if (v->toclear) {
-            STRCPY(v->display, radix_str);
+            STRCPY(v->display, v->radix);
             v->toclear = 0;
         } else {
-            STRNCAT(v->display, radix_str, 1);
+            STRCAT(v->display, v->radix);
         }
         v->pointed = 1;
     }

@@ -159,6 +159,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #endif /*LINT_CAST*/
 
 #define MAX_DIGITS     40         /* Maximum displayable number of digits. */
+#define MAX_BUFFER     (MAX_DIGITS + MAX_DIGITS / 3 * MB_LEN_MAX + 1)
 
 /* Maximum number of various graphics pieces. */
 #define MAXITEMS       8          /* Maximum number of panel items. */
@@ -235,7 +236,7 @@ struct calcVars {                      /* Calctool variables and options. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
-    char fnum[MAX_DIGITS+1];           /* Scratchpad for fixed numbers. */
+    char fnum[MAX_BUFFER];             /* Scratchpad for fixed numbers. */
     char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
     char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
     char *home;                        /* Pathname for users home directory. */
@@ -244,11 +245,11 @@ struct calcVars {                      /* Calctool variables and options. */
     char opstr[5];                     /* Operand string during pending op. */
     char *progname;                    /* Name of this program. */
     char pstr[5];                      /* Current button text string. */
-    char radix_char;                   /* Locale specific radix character. */
+    const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
-    char snum[MAX_DIGITS+1];           /* Scratchpad for scientific numbers. */
-    char tnum[MAX_DIGITS+1];           /* Scratchpad for tsep numbers. */
-    char tsep_char;                 /* Locale specific thousands seperator. */
+    char snum[MAX_BUFFER];             /* Scratchpad for scientific numbers. */
+    char tnum[MAX_BUFFER];             /* Scratchpad for tsep numbers. */
+    const char *tsep;                /* Locale specific thousands seperator. */
     char *titleline;                   /* Value of titleline (if present). */
     char *tool_label;                  /* Title line for calculator window. */
 
@@ -315,9 +316,9 @@ struct button *copy_button_info(struct button *);
 
 char *button_str(int);
 char *convert(char *);
-char get_radix_char();
+const char *get_radix();
 char *get_resource(enum res_type);
-char get_tsep_char();
+const char *get_tsep();
 char *make_number(int *, int, BOOLEAN, BOOLEAN);
 char *set_bool(int);
 
