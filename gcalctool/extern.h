@@ -50,6 +50,7 @@ extern int validkeys[];        /* Valid keys after an error condition. */
 extern int cur_pos[];          /* Current positions - left/right handed. */
 
 extern struct button b_buttons[];         /* Basic mode button values. */
+extern struct button a_buttons[];         /* Advanced mode button values. */
 extern struct button f_buttons[];         /* Financial mode button values. */
 extern struct button s_buttons[];         /* Scientific mode button values. */
 

@@ -1381,7 +1381,7 @@ button_for_value(int val)
 {
     struct button *b;
 
-    if ((b = val_to_button(b_buttons, B_NOBUTTONS, val)) == NULL) {
+    if ((b = val_to_button(a_buttons, A_NOBUTTONS, val)) == NULL) {
         if ((b = val_to_button(f_buttons, F_NOBUTTONS, val)) == NULL) {
             b = val_to_button(s_buttons, S_NOBUTTONS, val);
         }
@@ -1396,7 +1396,7 @@ button_for_fc(char ch)
 {
     struct button *b;
 
-    if ((b = ch_to_button(b_buttons, B_NOBUTTONS, ch)) == NULL) {
+    if ((b = ch_to_button(a_buttons, A_NOBUTTONS, ch)) == NULL) {
         if ((b = ch_to_button(f_buttons, F_NOBUTTONS, ch)) == NULL) {
             b = ch_to_button(s_buttons, S_NOBUTTONS, ch);
         }

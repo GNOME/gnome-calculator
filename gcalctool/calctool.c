@@ -30,6 +30,7 @@
 
 time_t time();
 
+static void init_buttons();
 static void init_text();
 
 double max_fix[MAXBASES] = {
@@ -66,7 +67,7 @@ char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
 char *inv_desc = N_("Set inverse option for trigonometric functions");
 
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-    N_("Basic Mode"), N_("Financial Mode"), 
+    N_("Basic Mode"), N_("Advanced Mode"), N_("Financial Mode"), 
     N_("Scientific Mode"), N_("Expression Mode")
 };
 
@@ -88,7 +89,7 @@ int basevals[4] = { 2, 8, 10, 16 };
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "FINANCIAL", 
+char *Rmstr[MAXMODES]     = { "LIGHT", "ADVANCED", "FINANCIAL", 
                               "SCIENTIFIC", "SCIENTIFIC_EXP" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
@@ -112,7 +113,9 @@ Vars v;            /* Calctool variables and options. */
  *-----------+-----------------------------------------------------
  */
 
-struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
+struct button b_buttons[B_NOBUTTONS];      /* Buttons for "Basic" mode. */
+
+struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
 
 /* str
    hstr
@@ -1132,6 +1135,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 };
 
+
 void
 do_calctool(int argc, char **argv)
 {
@@ -1139,6 +1143,8 @@ do_calctool(int argc, char **argv)
     int i;
 
     build_word_map();          /* Initialize i18n. */
+
+    init_buttons();            /* Setup the buttons for "Light" mode. */
 
     v->progname = argv[0];     /* Save programs name. */
     v->appname  = NULL;
@@ -1218,6 +1224,25 @@ doerr(char *errmes)
     set_error_state(TRUE);
     set_display(v->display, FALSE);
     beep();
+}
+
+
+static int b_buttons_n[B_NOBUTTONS] = {
+    5,  6,  7,  13,     /* Bksp  CE  Clr  +/- */
+    0,  1,  2,  3,      /*  7    8    9    /  */
+    8,  9,  10, 11,     /*  4    5    6    *  */
+    16, 17, 18, 19,     /*  1    2    3    -  */
+    24, 25, 26, 27,     /*  0    .    =    +  */
+};
+
+static void
+init_buttons()         /* Setup buttons for "Basic" mode. */
+{
+    int i;
+
+    for (i = 0; i < B_NOBUTTONS; i++) {
+        b_buttons[i] = a_buttons[b_buttons_n[i]];
+    }
 }
 
 

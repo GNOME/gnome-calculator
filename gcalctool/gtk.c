@@ -39,17 +39,31 @@
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 
-#define BUT_0     X->bas_buttons[24]       /* 0 */
-#define BUT_1     X->bas_buttons[16]       /* 1 */
-#define BUT_2     X->bas_buttons[17]       /* 2 */
-#define BUT_3     X->bas_buttons[18]       /* 3 */
-#define BUT_4     X->bas_buttons[8]        /* 4 */
-#define BUT_5     X->bas_buttons[9]        /* 5 */
-#define BUT_6     X->bas_buttons[10]       /* 6 */
-#define BUT_7     X->bas_buttons[0]        /* 7 */
-#define BUT_8     X->bas_buttons[1]        /* 8 */
-#define BUT_9     X->bas_buttons[2]        /* 9 */
-#define BUT_CLR   X->bas_buttons[7]        /* Clr */
+#define BUT_0_BAS     X->bas_buttons[24]       /* 0 - in "Basic" mode */
+#define BUT_1_BAS     X->bas_buttons[16]       /* 1 - in "Basic" mode */
+#define BUT_2_BAS     X->bas_buttons[17]       /* 2 - in "Basic" mode */
+#define BUT_3_BAS     X->bas_buttons[18]       /* 3 - in "Basic" mode */
+#define BUT_4_BAS     X->bas_buttons[8]        /* 4 - in "Basic" mode */
+#define BUT_5_BAS     X->bas_buttons[9]        /* 5 - in "Basic" mode */
+#define BUT_6_BAS     X->bas_buttons[10]       /* 6 - in "Basic" mode */
+#define BUT_7_BAS     X->bas_buttons[0]        /* 7 - in "Basic" mode */
+#define BUT_8_BAS     X->bas_buttons[1]        /* 8 - in "Basic" mode */
+#define BUT_9_BAS     X->bas_buttons[2]        /* 9 - in "Basic" mode */
+
+#define BUT_0_ADV     X->adv_buttons[24]       /* 0 - in "Advanced" mode */
+#define BUT_1_ADV     X->adv_buttons[16]       /* 1 - in "Advanced" mode */
+#define BUT_2_ADV     X->adv_buttons[17]       /* 2 - in "Advanced" mode */
+#define BUT_3_ADV     X->adv_buttons[18]       /* 3 - in "Advanced" mode */
+#define BUT_4_ADV     X->adv_buttons[8]        /* 4 - in "Advanced" mode */
+#define BUT_5_ADV     X->adv_buttons[9]        /* 5 - in "Advanced" mode */
+#define BUT_6_ADV     X->adv_buttons[10]       /* 6 - in "Advanced" mode */
+#define BUT_7_ADV     X->adv_buttons[0]        /* 7 - in "Advanced" mode */
+#define BUT_8_ADV     X->adv_buttons[1]        /* 8 - in "Advanced" mode */
+#define BUT_9_ADV     X->adv_buttons[2]        /* 9 - in "Advanced" mode */
+
+#define BUT_CLR_BAS   X->bas_buttons[2]        /* Clr - in "Basic" mode */
+#define BUT_CLR_ADV   X->adv_buttons[7]        /* Clr - in "Advanced" mode */
+
 #define BUT_ACC   X->sci_buttons[7]        /* a */
 #define BUT_A     X->sci_buttons[24]       /* A */
 #define BUT_B     X->sci_buttons[25]       /* B */
@@ -93,10 +107,12 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
     GtkWidget *bas_buttons[BROWS * BCOLS];
+    GtkWidget *adv_buttons[AROWS * ACOLS];
     GtkWidget *fin_buttons[FROWS * FCOLS];
     GtkWidget *sci_buttons[SROWS * SCOLS];
 
     GtkWidget *bas_panel;
+    GtkWidget *adv_panel;
     GtkWidget *fin_panel;
     GtkWidget *sci_panel;
 
@@ -316,6 +332,8 @@ static guint n_acc_radio_entries = G_N_ELEMENTS(acc_radio_entries);
 static GtkRadioActionEntry base_radio_entries[] = {
   { "Basic",	  NULL, N_("_Basic mode"),	"<control>B",
     N_("Basic mode"),	   M_BASIC },
+  { "Advanced",	  NULL, N_("_Advanced mode"),	"<control>A",
+    N_("Advanced mode"),   M_ADV },
   { "Financial",  NULL, N_("_Financial mode"),	"<control>F",
     N_("Financial mode"),  M_FIN },
   { "Scientific", NULL, N_("_Scientific mode"), "<control>S",
@@ -338,6 +356,7 @@ static const gchar *ui_info =
 "    </menu>"
 "    <menu action='ViewMenu'>"
 "      <menuitem action='Basic'/>"
+"      <menuitem action='Advanced'/>"
 "      <menuitem action='Financial'/>"
 "      <menuitem action='Scientific'/>"
 "      <separator/>"
@@ -1198,10 +1217,18 @@ create_kframe()
     X->bas_panel = make_but_panel(X->kvbox, X->bas_buttons,
                                   &b_buttons[0], BROWS, BCOLS, "bas");
     gtk_widget_show(X->bas_panel);
+
+    X->adv_panel = make_but_panel(X->kvbox, X->adv_buttons,
+                                  &a_buttons[0], AROWS, ACOLS, "adv");
+    gtk_widget_show(X->adv_panel);
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
-    gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR));
+    if (v->modetype == BASIC) {
+        gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR_BAS));
+    } else {
+        gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(BUT_CLR_ADV));
+    }
 
     X->khbox = gtk_hbox_new(FALSE, 0);
     gtk_widget_show(X->khbox);
@@ -1228,6 +1255,10 @@ create_kframe()
             view_widget = gtk_ui_manager_get_widget(X->ui, 
                                               "/MenuBar/ViewMenu/Scientific");
             break;
+
+        case ADVANCED:
+            view_widget = gtk_ui_manager_get_widget(X->ui,
+                                              "/MenuBar/ViewMenu/Advanced");
 
         default:
             view_widget = gtk_ui_manager_get_widget(X->ui, 
@@ -1671,16 +1702,30 @@ get_resource(enum res_type rtype)
 void
 grey_buttons(enum base_type base)
 {
-    set_button_state(BUT_0, (0 < basevals[(int) base]));
-    set_button_state(BUT_1, (1 < basevals[(int) base]));
-    set_button_state(BUT_2, (2 < basevals[(int) base]));
-    set_button_state(BUT_3, (3 < basevals[(int) base]));
-    set_button_state(BUT_4, (4 < basevals[(int) base]));
-    set_button_state(BUT_5, (5 < basevals[(int) base]));
-    set_button_state(BUT_6, (6 < basevals[(int) base]));
-    set_button_state(BUT_7, (7 < basevals[(int) base]));
-    set_button_state(BUT_8, (8 < basevals[(int) base]));
-    set_button_state(BUT_9, (9 < basevals[(int) base]));
+    if (v->modetype == BASIC) {
+        set_button_state(BUT_0_BAS, (0 < basevals[(int) base]));
+        set_button_state(BUT_1_BAS, (1 < basevals[(int) base]));
+        set_button_state(BUT_2_BAS, (2 < basevals[(int) base]));
+        set_button_state(BUT_3_BAS, (3 < basevals[(int) base]));
+        set_button_state(BUT_4_BAS, (4 < basevals[(int) base]));
+        set_button_state(BUT_5_BAS, (5 < basevals[(int) base]));
+        set_button_state(BUT_6_BAS, (6 < basevals[(int) base]));
+        set_button_state(BUT_7_BAS, (7 < basevals[(int) base]));
+        set_button_state(BUT_8_BAS, (8 < basevals[(int) base]));
+        set_button_state(BUT_9_BAS, (9 < basevals[(int) base]));
+    } else {
+        set_button_state(BUT_0_ADV, (0 < basevals[(int) base]));
+        set_button_state(BUT_1_ADV, (1 < basevals[(int) base]));
+        set_button_state(BUT_2_ADV, (2 < basevals[(int) base]));
+        set_button_state(BUT_3_ADV, (3 < basevals[(int) base]));
+        set_button_state(BUT_4_ADV, (4 < basevals[(int) base]));
+        set_button_state(BUT_5_ADV, (5 < basevals[(int) base]));
+        set_button_state(BUT_6_ADV, (6 < basevals[(int) base]));
+        set_button_state(BUT_7_ADV, (7 < basevals[(int) base]));
+        set_button_state(BUT_8_ADV, (8 < basevals[(int) base]));
+        set_button_state(BUT_9_ADV, (9 < basevals[(int) base]));
+    }
+
     set_button_state(BUT_A, (10 < basevals[(int) base]));
     set_button_state(BUT_B, (11 < basevals[(int) base]));
     set_button_state(BUT_C, (12 < basevals[(int) base]));
@@ -1783,9 +1828,14 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
                                 b_buttons, X->bas_buttons);
             break;
 
+        case ADVANCED:
+            retval = check_vals(A_NOBUTTONS, event->keyval, event->state,
+                                a_buttons, X->adv_buttons);
+            break;
+
         case FINANCIAL:
-            retval = check_vals(B_NOBUTTONS, event->keyval, event->state,
-            			b_buttons, X->bas_buttons);
+            retval = check_vals(A_NOBUTTONS, event->keyval, event->state,
+            			a_buttons, X->adv_buttons);
             if (retval != TRUE) {
                 retval = check_vals(F_NOBUTTONS, event->keyval, event->state,
                                     f_buttons, X->fin_buttons);
@@ -1793,8 +1843,8 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
             break;
 
         case SCIENTIFIC:
-            retval = check_vals(B_NOBUTTONS, event->keyval, event->state,
-                                b_buttons, X->bas_buttons);
+            retval = check_vals(A_NOBUTTONS, event->keyval, event->state,
+                                a_buttons, X->adv_buttons);
             if (retval != TRUE) {
                 retval = check_vals(S_NOBUTTONS, event->keyval, event->state,
                                     s_buttons, X->sci_buttons);
@@ -2181,6 +2231,8 @@ mb_base_radio_proc(GtkAction *action, GtkRadioAction *current)
 
     if (EQUAL(name, "Basic")) {
         reset_mode_values(BASIC);
+    } else if (EQUAL(name, "Advanced")) {
+        reset_mode_values(ADVANCED);
     } else if (EQUAL(name, "Financial")) {
         reset_mode_values(FINANCIAL);
     } else if (EQUAL(name, "Scientific")) {
@@ -2506,7 +2558,14 @@ set_error_state(int error)
     for (i = 0; i < (BROWS * BCOLS); i++) {
         set_button_state(X->bas_buttons[i], !v->error);
     }
-    set_button_state(BUT_CLR, TRUE);    /* Clr button always sensitive. */
+    /* Clr ("Basic") button always sensitive. */
+    set_button_state(BUT_CLR_BAS, TRUE);
+
+    for (i = 0; i < (AROWS * ACOLS); i++) {
+        set_button_state(X->adv_buttons[i], !v->error);
+    }
+    /* Clr ("Advanced") button always sensitive. */
+    set_button_state(BUT_CLR_ADV, TRUE);
 
     for (i = 0; i < (FROWS * FCOLS); i++) {
         set_button_state(X->fin_buttons[i], !v->error);
@@ -2526,6 +2585,7 @@ set_error_state(int error)
     SET_MENUBAR_ITEM_STATE("/MenuBar/EditMenu/Paste",      !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/EditMenu/Insert",     !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Basic",      !v->error); 
+    SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Advanced",   !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Financial",  !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Scientific", !v->error); 
     SET_MENUBAR_ITEM_STATE("/MenuBar/ViewMenu/Trailing",
@@ -2569,18 +2629,32 @@ set_mode(enum mode_type mode)
   
     switch (mode) {
         case BASIC:
+            gtk_widget_show(X->bas_panel);
+            gtk_widget_hide(X->adv_panel);
+            gtk_widget_hide(X->fin_panel);
+            gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->sci_panel);
+            break;
+
+        case ADVANCED:
+            gtk_widget_hide(X->bas_panel);
+            gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->sci_panel);
             break;
 
         case FINANCIAL:
+            gtk_widget_hide(X->bas_panel);
+            gtk_widget_show(X->adv_panel);
             gtk_widget_show(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->sci_panel);
             break;
 
         case SCIENTIFIC:
+            gtk_widget_hide(X->bas_panel);
+            gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_show_all(X->mode_panel);
             gtk_widget_show(X->sci_panel);

@@ -50,7 +50,7 @@
 
 /* Menu bar menu types. */
 
-enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  M_FIN,
+enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY,  M_FIN,
 	       M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
@@ -67,7 +67,7 @@ enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
 };
 
 /* Calculator modes. */
-enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
+enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
 
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
@@ -82,29 +82,29 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 
 /* Abbreviations for the gcalctool keyboard and menu equivalents. */
 
-#define KEY_DIV   b_buttons[3]              /* / */
-#define KEY_LPAR  b_buttons[4]              /* ( */
-#define KEY_BSP   b_buttons[5]              /* Control-h */
+#define KEY_DIV   a_buttons[3]              /* / */
+#define KEY_LPAR  a_buttons[4]              /* ( */
+#define KEY_BSP   a_buttons[5]              /* Control-h */
 
-#define KEY_MUL   b_buttons[11]             /* * */
-#define KEY_RPAR  b_buttons[12]             /* ) */
+#define KEY_MUL   a_buttons[11]             /* * */
+#define KEY_RPAR  a_buttons[12]             /* ) */
 
-#define KEY_CHS   b_buttons[13]             /* C */
-#define KEY_INT   b_buttons[14]             /* i */
-#define KEY_STO   b_buttons[15]             /* S */
+#define KEY_CHS   a_buttons[13]             /* C */
+#define KEY_INT   a_buttons[14]             /* i */
+#define KEY_STO   a_buttons[15]             /* S */
 
-#define KEY_SUB   b_buttons[19]             /* - */
-#define KEY_PER   b_buttons[20]             /* % */
-#define KEY_SQRT  b_buttons[21]             /* s */
-#define KEY_FRAC  b_buttons[22]             /* : */
-#define KEY_RCL   b_buttons[23]             /* R */
+#define KEY_SUB   a_buttons[19]             /* - */
+#define KEY_PER   a_buttons[20]             /* % */
+#define KEY_SQRT  a_buttons[21]             /* s */
+#define KEY_FRAC  a_buttons[22]             /* : */
+#define KEY_RCL   a_buttons[23]             /* R */
 
-#define KEY_EQ    b_buttons[26]             /* = */
-#define KEY_ADD   b_buttons[27]             /* + */
-#define KEY_REC   b_buttons[28]             /* r */
-#define KEY_SQR   b_buttons[29]             /* @ */
-#define KEY_ABS   b_buttons[30]             /* u */
-#define KEY_EXCH  b_buttons[31]             /* X */
+#define KEY_EQ    a_buttons[26]             /* = */
+#define KEY_ADD   a_buttons[27]             /* + */
+#define KEY_REC   a_buttons[28]             /* r */
+#define KEY_SQR   a_buttons[29]             /* @ */
+#define KEY_ABS   a_buttons[30]             /* u */
+#define KEY_EXCH  a_buttons[31]             /* X */
 
 #define KEY_CTRM  f_buttons[0]              /* m */
 #define KEY_DDB   f_buttons[1]              /* D */
@@ -142,8 +142,11 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #define KEY_XOR   s_buttons[30]             /* ^ */
 #define KEY_XNOR  s_buttons[31]             /* n */
 
-#define BCOLS          8      /* No of columns of Basic Mode buttons. */
-#define BROWS          4      /* No of rows of Basic Mode buttons. */
+#define BCOLS          4      /* No of columns of Basic Mode buttons. */
+#define BROWS          5      /* No of rows of Basic Mode buttons. */
+
+#define ACOLS          8      /* No of columns of Advanced Mode buttons. */
+#define AROWS          4      /* No of rows of Advanced Mode buttons. */
 
 #define FCOLS          8      /* No of columns of Financial Mode buttons. */
 #define FROWS          2      /* No of rows of Financial Mode buttons. */
@@ -180,7 +183,7 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
 #define MAXEXTRAS      8          /* Maximum number of keysym alternates. */
-#define MAXMODES       4          /* Maximum number of calculator modes. */
+#define MAXMODES       5          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
@@ -196,6 +199,7 @@ enum trig_func { SIN=1, COS=2, TAN=4 };
 #endif /*MIN*/
 
 #define B_NOBUTTONS      BROWS * BCOLS  /* Number of Basic Mode buttons. */
+#define A_NOBUTTONS      AROWS * ACOLS  /* Number of Advanced Mode buttons. */
 #define F_NOBUTTONS      FROWS * FCOLS  /* Number of Financial Mode buttons. */
 #define S_NOBUTTONS      SROWS * SCOLS  /* Number of Scientific Mode buttons. */
 

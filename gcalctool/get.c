@@ -252,7 +252,7 @@ init_vars()    /* Setup default values for various variables. */
     v->base          = DEC;    /* Initial base. */
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
-    v->modetype      = BASIC;  /* Initial calculator mode. */
+    v->modetype      = ADVANCED;  /* Initial calculator mode. */
     v->rstate        = 0;      /* No memory register frame display initially. */
     v->iconic        = FALSE;  /* Calctool not iconic by default. */
     v->MPdebug       = FALSE;  /* No debug info by default. */
