@@ -7,6 +7,13 @@
 gcalctool change history.
 =========================
 
+2003-11-24  Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug 127672 (http://bugzilla.gnome.org/show_bug.cgi?id=127672)
+      The "=" key on a Swedish keyboard is on the upper level of a key 
+      (i.e. the Shift key needs to be down). Added another mask/keysym 
+      pair to the "=" entry in calctool.c to handle this.
+
 2003-11-07  Rich Burridge <rich.burridge@sun.com>
 
     * Fixed bug 125625 (http://bugzilla.gnome.org/show_bug.cgi?id=125625)

@@ -407,8 +407,8 @@ struct button b_buttons[B_NOBUTTONS] = {   /* Basic mode button values. */
     N_("="),
     N_("Calculate result"),
     NULL,
-    { 0,         0,            0,          0 },
-    { GDK_equal, GDK_KP_Enter, GDK_Return, 0 },
+    { 0,         0,            0,          GDK_SHIFT_MASK, 0 },
+    { GDK_equal, GDK_KP_Enter, GDK_Return, GDK_Return,     0 },
     '=',
     M_NONE,
     do_calc
