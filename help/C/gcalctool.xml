@@ -2,10 +2,11 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.3.15">
-  <!ENTITY manrevision "2.6">
-  <!ENTITY date "October 2003">
+  <!ENTITY appversion "4.3.42">
+  <!ENTITY manrevision "2.7">
+  <!ENTITY date "February 2004">
   <!ENTITY app "<application>Calculator</application>">
+  <!ENTITY appname "Calculator">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -23,6 +24,7 @@
 
     <copyright> 
       <year>2003</year> 
+      <year>2004</year> 
       <holder>Sun Microsystems</holder> 
     </copyright> 
 <!-- translators: uncomment this:
@@ -70,6 +72,15 @@
       <revision> 
 		<revnumber>Calculator Manual V&manrevision;</revnumber> 
 		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.6</revnumber> 
+		<date>October 2003</date> 
 		<revdescription> 
 	  		<para role="author">Sun GNOME Documentation Team
 	  		</para>
@@ -136,9 +147,7 @@
     </releaseinfo> 
     <legalnotice> 
       <title>Feedback</title> 
-      <para>To report a bug or make a suggestion regarding the &app; application or
-      this manual, follow the directions in the <ulink url="ghelp:gnome-feedback"
-	  type="help">GNOME Feedback Page</ulink>. 
+      <para>To report a bug or make a suggestion regarding the &app; application or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
       </para>
 <!-- Translators may also add here feedback address for translations -->
     </legalnotice> 
@@ -212,13 +221,24 @@
 
   <sect1 id="gcalctool-get-start"> 
     <title>Getting Started</title> 
-
-    <para>To start <application>&app;</application> from a command line, type the following command,
-                then press <keycap>Return</keycap>:</para>
-                <para>
-                        <command>gcalctool</command>
-                </para>
-
+    <para>You can start &app; in the following ways:</para>
+    <variablelist>
+      <varlistentry>
+        <term><guimenu>Applications menu</guimenu></term>
+        <listitem>
+          <para>
+            Choose <menuchoice><guimenu>Accessories</guimenu><guimenuitem>Calculator</guimenuitem></menuchoice>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Command line</term>
+        <listitem>
+          <para>
+            Execute the following command: <command>gnome-calculator</command></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
     <para>When you start <application>&app;</application>, the following window is displayed:</para>
 
     <!-- ==== Figure ==== -->
@@ -236,13 +256,11 @@
 	</screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
-                <para>The <application>&app;</application> window contains the following
-                  elements: </para>
+                <para>The <application>&app;</application> window contains the following elements: </para>
                 <variablelist>
                   <varlistentry> <term>Menubar</term>
                          <listitem>
-                                <para>The menus on the menubar contain all of the commands that you need
-                                  to work with <application>&app;</application>.</para>
+                                <para>The menus on the menubar contain all of the commands that you need to work with <application>&app;</application>.</para>
                          </listitem>
                   </varlistentry>
                   <varlistentry> <term>Display area</term>
@@ -257,22 +275,10 @@
                   </varlistentry>
                   <varlistentry> <term>Popup Menu</term>
                          <listitem>
-                <para>The 
-                      <inlinemediaobject> 
-                         <imageobject> 
-                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
-                         </imageobject> 
-                         <textobject> 
-                         <phrase>Shows popup-menu symbol.</phrase> 
-                         </textobject> 
-                      </inlinemediaobject> 
-                symbol on a &app; button indicates that a popup menu is displayed when you click on that button.</para>
+                <para>The <inlinemediaobject><imageobject><imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/></imageobject><textobject><phrase>Shows popup-menu symbol.</phrase></textobject></inlinemediaobject> symbol on a &app; button indicates that a popup menu is displayed when you click on that button.</para>
                          </listitem>
                   </varlistentry>
                 </variablelist>
-
-<para></para>
-
   </sect1>
 <!-- ================ Usage ================================ -->
   <sect1 id="gcalctool-usage"> 
@@ -281,8 +287,7 @@
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="gcalctool-calc-functions">
                 <title>To Use Calculator Functions</title> 
-                <para>To perform a calculation, use one of the following
-                  methods:</para>
+                <para>To perform a calculation, use one of the following methods:</para>
                 <itemizedlist>
                   <listitem>
                          <para>Click on the &app; buttons to enter numbers and functions.</para>
@@ -318,28 +323,28 @@
       </informaltable>
 
       <para>For information about how to enter a number in exponential format, see <xref linkend="gcalctool-enter-exp"/>.</para>
-                <para>To copy the result of a calculation, choose
-                  <menuchoice>
-                         <guimenu>Edit</guimenu>
-                         <guimenuitem>Copy</guimenuitem>
-                  </menuchoice>. 
-                      You can paste the value into another application.</para>
 
-                <para>To paste a previously copied value into the display area, choose
-                  <menuchoice>
-                         <guimenu>Edit</guimenu>
-                         <guimenuitem>Paste</guimenuitem>
-                  </menuchoice>.  </para>
+    <sect3 id="gcalctool-calc-functions-separator">
+                <title>To Display a Separator in Large Numbers</title> 
+      <para>To insert a separator between every three digits to the left of the numeric point in decimal base, choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Thousands Separator</guimenuitem></menuchoice>. 
+</para>
+      <note>
+      <para>The separator character is not displayed when you use the C locale.</para>
+      </note>
+    </sect3>
+
+    <sect3 id="gcalctool-calc-functions-copy">
+                <title>To Copy and Paste in the Display Area</title> 
+                <para>To copy the result of a calculation, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice>. You can paste the value into another application.</para>
+
+                <para>To paste a previously copied value into the display area, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Paste</guimenuitem></menuchoice>.  </para>
+    </sect3>
+
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="gcalctool-basic-mode"> 
       <title>To Perform Basic Calculations</title> 
-      <para>Basic Mode is displayed by default when you first start &app;. To explicitly invoke Basic Mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Basic Mode</guimenuitem> 
-	</menuchoice>. 
-      </para>
+      <para>Basic Mode is displayed by default when you first start &app;. To explicitly invoke Basic Mode, choose <menuchoice><guimenu>View</guimenu><guimenuitem>Basic Mode</guimenuitem></menuchoice>.  </para>
     <sect3 id="gcalctool-simple-calc"> 
       <title>To Perform Simple Calculations</title> 
       <para>To perform simple calculations, use the buttons described in <xref linkend="gcalctool-TBL-simple-calc"/>. </para>
@@ -505,9 +510,9 @@
                            </row>
                            <row valign="top">
                              <entry><para>Reciprocal</para> </entry>
-                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para><guibutton>1/<replaceable>x</replaceable></guibutton></para></entry>
                              <entry><para>Divides 1 by the current value in the display area.</para></entry>
-                             <entry><para>4 <guibutton>1/x</guibutton></para></entry>
+                             <entry><para>4 <guibutton>1/<replaceable>x</replaceable></guibutton></para></entry>
                              <entry><para>0.25</para></entry>
                            </row>
                            <row valign="top">
@@ -526,9 +531,9 @@
                            </row>
                            <row valign="top">
                              <entry><para>Square</para> </entry>
-                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para><replaceable>x</replaceable><superscript>2</superscript></para></entry>
                              <entry><para>Calculates the square of the current value in the display area.</para></entry>
-                             <entry><para>3 x<superscript>2</superscript></para></entry>
+                             <entry><para>3 <replaceable>x</replaceable><superscript>2</superscript></para></entry>
                              <entry><para>9</para></entry>
                            </row>
                            <row valign="top">
@@ -591,7 +596,7 @@
                            <row valign="top">
                              <entry><para>Store Value in Memory Register</para> </entry>
                              <entry><para><guibutton>Sto</guibutton></para></entry>
-                             <entry><para>Stores the current contents of the display area in the specified memory register. Click on <guibutton>Sto</guibutton>, and select a memory register from the popup menu.</para>
+                             <entry><para>Stores the current contents of the display area in the specified memory register. Click on <guibutton>Sto</guibutton>, then select a memory register from the popup menu.</para>
                                    <para>To clear a memory register during a &app; session:</para>
                                      <orderedlist>
                                        <listitem><para>Click <guibutton>Clr</guibutton>.</para></listitem>
@@ -605,14 +610,14 @@
                            <row valign="top">
                              <entry><para>Retrieve Value From Memory Register</para> </entry>
                              <entry><para><guibutton>Rcl</guibutton></para></entry>
-                             <entry><para>Retrieves the contents of the specified memory register. Click on <guibutton>Rcl</guibutton>, and select the memory register from the popup menu.</para></entry>
+                             <entry><para>Retrieves the contents of the specified memory register. Click on <guibutton>Rcl</guibutton>, then select the memory register from the popup menu.</para></entry>
                              <entry><para>0 <guibutton>Rcl</guibutton> <guilabel>R2</guilabel></para></entry>
                              <entry><para>22 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Exchange Memory Register Value and Displayed Value</para> </entry>
                              <entry><para><guibutton>Exch</guibutton></para></entry>
-                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click on <guibutton>Exch</guibutton>, and select the memory register from the popup menu.</para></entry>
+                             <entry><para>Exchanges the contents of the specified memory register and the current value in the display area. Click on <guibutton>Exch</guibutton>, then select the memory register from the popup menu.</para></entry>
                              <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
                              <entry><para>Value in display area changes from 44 to 22, value in R2 changes from 22 to 44 </para><para>where 22 is the value previously stored in memory register R2</para></entry>
                            </row>
@@ -658,7 +663,7 @@
                                  <guimenuitem>Insert ASCII Value</guimenuitem>
                           </menuchoice>.</para>
                         <para>The Insert ASCII Value dialog is displayed.</para>
-                        <para>Enter the required character in the <guilabel>Character</guilabel> field, and click on <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
+                        <para>Enter the required character in the <guilabel>Character</guilabel> field, then click on <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
           </sect3>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
@@ -1129,8 +1134,8 @@ To calculate the time period necessary to accumulate $120,000, put the following
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-set-acc"> 
       <title>To Set the Accuracy</title> 
-      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant places can be displayed. The default accuracy is 9 significant places. </para>
-      <para>By default, trailing zeroes are not shown. To display trailing zeroes, click on <guibutton>Acc</guibutton> and select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding tick in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
+      <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, then select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 9 significant places can be displayed. The default accuracy is 9 significant places. </para>
+      <para>By default, trailing zeroes are not shown. To display trailing zeroes, click on <guibutton>Acc</guibutton> then select <guilabel>Show Trailing Zeroes</guilabel> from the popup menu, or choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice>. A preceding check mark in the <guibutton>Acc</guibutton> popup menu or <guimenu>View</guimenu> menu indicates that the <guilabel>Show Trailing Zeroes</guilabel> option has been selected. To hide trailing zeroes, choose <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> again.</para>
       <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, when you use decimal base, with the <guimenuitem>Show Trailing Zeroes</guimenuitem> option selected, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation: </para>
                 <informaltable frame="all">
                   <tgroup cols="2" colsep="1" rowsep="1">
@@ -1228,17 +1233,17 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>Engineering Display Type</para> </entry>
                              <entry><para><guibutton>Eng</guibutton></para></entry>
-                             <entry><para>Sets the display type to Engineering format. Results are displayed in scientific notation. The exponent is always a multiple of three.</para></entry>
+                             <entry><para>Sets the display type to engineering format. Results are displayed in scientific notation. The exponent is always a multiple of three.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Fixed-Point Display Type</para> </entry>
                              <entry><para><guibutton>Fix</guibutton></para></entry>
-                             <entry><para>Sets the display type to Fixed-Point format. Results are not displayed in scientific notation. Fixed-Point is the default display type.  If you change from Scientific Mode to either Basic Mode or Financial Mode, &app; automatically sets the display type to Fixed-Point format.</para></entry>
+                             <entry><para>Sets the display type to fixed-point format. Results are not displayed in scientific notation. Fixed-point is the default display type.  If you change from scientific mode to either basic mode or financial mode, &app; automatically sets the display type to fixed-point format.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Scientific Display Type</para> </entry>
                              <entry><para><guibutton>Sci</guibutton></para></entry>
-                             <entry><para>Sets the display type to Scientific format. Results are displayed in scientific notation, with a fixed number of numeric digits.</para></entry>
+                             <entry><para>Sets the display type to scientific format. Results are displayed in scientific notation, with a fixed number of numeric digits.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1267,17 +1272,17 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>Degrees</para> </entry>
                              <entry><para><guibutton>Degrees</guibutton></para></entry>
-                             <entry><para>Sets the trigonometric type to Degrees. Degrees is the default trigonometric type.</para></entry>
+                             <entry><para>Sets the trigonometric type to degrees. Degrees is the default trigonometric type.</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Gradients</para> </entry>
+                             <entry><para>Gradians</para> </entry>
                              <entry><para><guibutton>Gradients</guibutton></para></entry>
-                             <entry><para>Sets the trigonometric type to Gradients.</para></entry>
+                             <entry><para>Sets the trigonometric type to gradians.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Radians</para> </entry>
                              <entry><para><guibutton>Radians</guibutton></para></entry>
-                             <entry><para>Sets the trigonometric type to Radians.</para></entry>
+                             <entry><para>Sets the trigonometric type to radians.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1524,7 +1529,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
                              <entry><para>Logical NOT</para> </entry>
                              <entry><para><guibutton>Not</guibutton></para></entry>
                              <entry><para>Performs a logical NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
-                             <entry><para>1357ace <guibutton>Not</guibutton> </para></entry>
+                             <entry><para>1357ACE <guibutton>Not</guibutton> </para></entry>
                              <entry><para>FECA8531</para></entry>
                            </row>
                            <row valign="top">
@@ -1548,8 +1553,25 @@ To calculate the time period necessary to accumulate $120,000, put the following
     <sect3 id="gcalctool-enter-exp"> 
       <title>To Enter Exponential Numbers</title> 
       <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button.</para>
-      <para>The <guibutton>Exp</guibutton> button enables you to enter numbers in scientific notation, that is, <replaceable>mantissa</replaceable> * 10<superscript><replaceable>exponent</replaceable></superscript>. The current non-zero value in the display area is the mantissa. If the current value in the display area is zero, the mantissa is 1.0. The next number that you enter is the exponent.</para>
-      <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 10 to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button in the last action of the operation, as shown in the following example:</para>
+      <para>The <guibutton>Exp</guibutton> button enables you to enter numbers in scientific notation, that is, <replaceable>mantissa</replaceable> * <replaceable>base</replaceable><superscript><replaceable>exponent</replaceable></superscript>:
+</para>
+<variablelist>
+  <varlistentry>
+    <term><replaceable>mantissa</replaceable></term>
+    <listitem><para>Current non-zero value in the display area. If the current value in the display area is zero, the mantissa is 1.0. </para></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term><replaceable>base</replaceable></term>
+    <listitem><para>2, 8, 10, or 16 for binary, octal, decimal, and hexadecimal numeric base respectively.  </para></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term><replaceable>exponent</replaceable></term>
+    <listitem><para>Next number that you enter.
+</para></listitem>
+  </varlistentry>
+</variablelist>
+
+      <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent <replaceable>base</replaceable> to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button in the last action of the operation. The following example shows the value that is displayed when you use the decimal numeric base: </para>
 
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
@@ -1599,12 +1621,12 @@ To calculate the time period necessary to accumulate $120,000, put the following
                              <entry><para>-1200000000</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>0.0000000012</para></entry>
+                             <entry><para>0.00000012</para></entry>
                              <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
                              <entry><para>1.2e-7</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>-0.0000000012</para></entry>
+                             <entry><para>-0.00000012</para></entry>
                              <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> <guibutton>+/-</guibutton> </para></entry>
                              <entry><para>-1.2e-7</para></entry>
                            </row>
@@ -1720,16 +1742,16 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>To store a new constant or edit an existing constant, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Con</guibutton> and select <guilabel>Edit Constants</guilabel> from the popup menu. </para>
+           <para>Click on <guibutton>Con</guibutton>, then select <guilabel>Edit Constants</guilabel> from the popup menu. </para>
         </listitem>
         <listitem>
       <para>In the <guilabel>Edit Constants</guilabel> window, select the constant that you want to overwrite or edit.</para>
         </listitem>
         <listitem>
-      <para>Click on the Value field, and enter the new value.</para>
+      <para>Click on the Value field, then enter the new value.</para>
         </listitem>
         <listitem>
-      <para>Click on the Description field, and enter the new description.</para>
+      <para>Click on the Description field, then enter the new description.</para>
         </listitem>
         <listitem>
       <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Constants</guilabel> window.</para>
@@ -1766,16 +1788,16 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>To store a new function or edit an existing function, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Fun</guibutton> and select <guilabel>Edit Functions</guilabel> from the popup menu.</para>
+           <para>Click on <guibutton>Fun</guibutton>, then select <guilabel>Edit Functions</guilabel> from the popup menu.</para>
         </listitem>
         <listitem>
       <para>In the <guilabel>Edit Functions</guilabel> window, select a blank entry, or the function that you want to overwrite.</para>
         </listitem>
         <listitem>
-      <para>Click on the Value field, and enter the new value. Use the keyboard shortcuts to invoke a &app; button. For example, enter <literal>90K</literal> to calculate sine(90).</para>
+      <para>Click on the Value field, then enter the new value. Use the keyboard shortcuts to invoke a &app; button. For example, enter <literal>90K</literal> to calculate sine(90).</para>
         </listitem>
         <listitem>
-      <para>Click on the Description field, and enter the new description. For example, <literal>Sine 90</literal>.</para>
+      <para>Click on the Description field, then enter the new description. For example, <literal>Sine 90</literal>.</para>
         </listitem>
         <listitem>
       <para>Click <guibutton>OK</guibutton> to save your changes and close the <guilabel>Edit Functions</guilabel> window.</para>
@@ -1811,14 +1833,14 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>Left Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&lt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click on <guibutton>&lt;</guibutton>, and select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click on <guibutton>&lt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
                              <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>1110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Right Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click on <guibutton>&gt;</guibutton>, and select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
+                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click on <guibutton>&gt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
                              <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>101 </para></entry>
                            </row>
@@ -1868,7 +1890,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
     </sect3>
     <sect3 id="gcalctool-misc-calc"> 
       <title>To Perform Miscellaneous Scientific Calculations</title> 
-      <para>To calculate miscellaneous scientific calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
+      <para>To perform miscellaneous scientific calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
                 <table id="gcalctool-TBL-misc-calc" frame="all">
                   <title>Performing Miscellaneous Scientific Calculations</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
@@ -1906,43 +1928,43 @@ To calculate the time period necessary to accumulate $120,000, put the following
                              </entry>
                            </row>
                            <row valign="top">
-                             <entry><para>e to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>e to the <replaceable>x</replaceable> power</para> </entry>
+                             <entry><para>e<superscript><replaceable>x</replaceable></superscript></para></entry>
                              <entry><para>Calculates the value of <literal>e</literal> raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 e<superscript>x</superscript></para></entry>
+                             <entry><para>2 e<superscript><replaceable>x</replaceable></superscript></para></entry>
                              <entry><para>7.39</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>10 to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>10 to the <replaceable>x</replaceable> power</para> </entry>
+                             <entry><para>10<superscript><replaceable>x</replaceable></superscript></para></entry>
                              <entry><para>Calculates the value of 10 raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 10<superscript>x</superscript></para></entry>
+                             <entry><para>2 10<superscript><replaceable>x</replaceable></superscript></para></entry>
                              <entry><para>100</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>y to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>x to the <replaceable>y</replaceable> power</para> </entry>
+                             <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
                              <entry><para>Raises the current value in the display area to the power of the next value that you enter.</para></entry>
-                             <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>2 <replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>16</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para><replaceable>x</replaceable> Factorial</para> </entry>
-                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para><guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
                              <entry><para>Calculates the factorial of the current value in the display area. <replaceable>x</replaceable> factorial is <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. This function applies only to positive integers.</para></entry>
-                             <entry><para>4 <guibutton>x!</guibutton></para></entry>
+                             <entry><para>4 <guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
                              <entry><para>24</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Random Number Generator</para> </entry>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
-                             <entry><para>Generates a random number in the range 0.0 to 1.0 and displays the random number in the display area.</para></entry>
+                             <entry><para>Generates a random number in the range 0.0 to 1.0 then displays the random number in the display area.</para></entry>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
                              <entry><para>0.14</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Hexadecimal Numerals</para> </entry>
-                             <entry><para><guibutton>A</guibutton> to <guibutton>E</guibutton> inclusive</para></entry>
+                             <entry><para><guibutton>A</guibutton> to <guibutton>F</guibutton> inclusive</para></entry>
                              <entry><para>These numerals are available in hexadecimal base only.</para></entry>
                              <entry><para><guibutton>B</guibutton></para></entry>
                              <entry><para>B</para></entry>
@@ -1997,10 +2019,6 @@ precedence. To apply arithmetic precedence, use parentheses.
 </para>
 <para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
          </sect2>
-         <sect2 id="gcalctool-input-mode">
-                <title>To Change the Input Mode</title>
-                <para>To change the input mode, right-click in the text window, then select <guimenuitem>Input Methods</guimenuitem>. </para>
-         </sect2>
 
   </sect1>
 <!-- ============= Keyboard Shortcuts ============================= -->
@@ -2036,7 +2054,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>A</keycap> </para></entry>
                              <entry><para><guibutton>A</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2048,13 +2066,13 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>B</keycap> </para></entry>
                              <entry><para><guibutton>B</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>C</keycap> </para></entry>
                              <entry><para><guibutton>C</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2066,19 +2084,19 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>D</keycap> </para></entry>
                              <entry><para><guibutton>D</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>d</keycap></para></entry>
                              <entry><para><guibutton>Ddb</guibutton></para></entry>
-                             <entry><para>Double-Declining Depreciation</para> </entry>
+                             <entry><para>Double-declining depreciation</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>E</keycap> </para></entry>
                              <entry><para><guibutton>E</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2090,7 +2108,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>F</keycap> </para></entry>
                              <entry><para><guibutton>F</guibutton> </para></entry>
-                             <entry><para>Hexadecimal Numerals</para> </entry>
+                             <entry><para>Hexadecimal numerals</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2102,13 +2120,13 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>G</keycap></para></entry>
                              <entry><para><guibutton>Log</guibutton></para></entry>
-                             <entry><para>Common Logarithm</para> </entry>
+                             <entry><para>Common logarithm</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>i</keycap></para></entry>
                              <entry><para><guibutton>Int</guibutton></para></entry>
-                             <entry><para>Integer Portion</para> </entry>
+                             <entry><para>Integer portion</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2132,19 +2150,19 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>l</keycap></para></entry>
                              <entry><para><guibutton>Sln</guibutton></para></entry>
-                             <entry><para>Straight-Line Depreciation</para> </entry>
+                             <entry><para>Straight-line depreciation</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>m</keycap></para></entry>
                              <entry><para><guibutton>Ctrm</guibutton></para></entry>
-                             <entry><para>Compounding Term</para> </entry>
+                             <entry><para>Compounding term</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>N</keycap></para></entry>
                              <entry><para><guibutton>Ln</guibutton></para></entry>
-                             <entry><para>Natural Logarithm</para> </entry>
+                             <entry><para>Natural logarithm</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2156,91 +2174,91 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>P</keycap></para></entry>
                              <entry><para><guibutton>Pmt</guibutton></para></entry>
-                             <entry><para>Periodic Payment</para> </entry>
+                             <entry><para>Periodic payment</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>p</keycap></para></entry>
                              <entry><para><guibutton>Pv</guibutton></para></entry>
-                             <entry><para>Present Value</para> </entry>
+                             <entry><para>Present value</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>R</keycap></para></entry>
                              <entry><para><guibutton>Rcl</guibutton></para></entry>
-                             <entry><para>Retrieve Value From Memory Register</para> </entry>
+                             <entry><para>Retrieve value from memory register</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>r</keycap></para></entry>
-                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para><guibutton>1/<replaceable>x</replaceable></guibutton></para></entry>
                              <entry><para>Reciprocal</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>S</keycap></para></entry>
                              <entry><para><guibutton>Sto</guibutton></para></entry>
-                             <entry><para>Store Value in Memory Register</para> </entry>
+                             <entry><para>Store value in memory register</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>s</keycap></para></entry>
                              <entry><para><guibutton>Sqrt</guibutton></para></entry>
-                             <entry><para>Square Root</para> </entry>
+                             <entry><para>Square root</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>T</keycap></para></entry>
                              <entry><para><guibutton>Rate</guibutton></para></entry>
-                             <entry><para>Periodic Interest Rate</para> </entry>
+                             <entry><para>Periodic interest rate</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>t</keycap></para></entry>
                              <entry><para><guibutton>Term</guibutton></para></entry>
-                             <entry><para>Payment Period</para> </entry>
+                             <entry><para>Payment period</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>u</keycap></para></entry>
                              <entry><para><guibutton>Abs</guibutton></para></entry>
-                             <entry><para>Absolute Value</para> </entry>
+                             <entry><para>Absolute value</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>v</keycap></para></entry>
                              <entry><para><guibutton>Fv</guibutton></para></entry>
-                             <entry><para>Future Value</para> </entry>
+                             <entry><para>Future value</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>X</keycap></para></entry>
                              <entry><para><guibutton>Exch</guibutton></para></entry>
-                             <entry><para>Exchange Memory Register Value and Displayed Value</para> </entry>
+                             <entry><para>Exchange memory register value and displayed value</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>Y</keycap></para></entry>
                              <entry><para><guibutton>Syd</guibutton></para></entry>
-                             <entry><para>Sum-Of-The-Years'-Digits Depreciation</para> </entry>
+                             <entry><para>Sum-of-the-years'-digits depreciation</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>y</keycap></para></entry>
-                             <entry><para>y<superscript>x</superscript></para></entry>
-                             <entry><para>y to the <replaceable>x</replaceable> Power</para> </entry>
+                             <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
+                             <entry><para>x to the <replaceable>y</replaceable> power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>!</keycap></para></entry>
-                             <entry><para><guibutton>x!</guibutton></para></entry>
-                             <entry><para><replaceable>x</replaceable> Factorial</para> </entry>
+                             <entry><para><guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
+                             <entry><para><replaceable>x</replaceable> factorial</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>#</keycap> </para></entry>
                              <entry><para><guibutton>Con</guibutton> </para></entry>
-                             <entry><para>Constant Value</para> </entry>
+                             <entry><para>Constant value</para> </entry>
                              <entry><para><xref linkend="gcalctool-edit-const"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2294,13 +2312,13 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>:</keycap></para></entry>
                              <entry><para><guibutton>Frac</guibutton></para></entry>
-                             <entry><para>Fractional Portion</para> </entry>
+                             <entry><para>Fractional portion</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>&lt;</keycap></para></entry>
                              <entry><para><guibutton>&lt;</guibutton></para></entry>
-                             <entry><para>Left Shift <replaceable>n</replaceable></para> </entry>
+                             <entry><para>Left shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2312,31 +2330,31 @@ precedence. To apply arithmetic precedence, use parentheses.
                            <row valign="top">
                              <entry><para><keycap>&gt;</keycap></para></entry>
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
-                             <entry><para>Right Shift <replaceable>n</replaceable></para> </entry>
+                             <entry><para>Right shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>?</keycap></para></entry>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
-                             <entry><para>Random Number Generator</para> </entry>
+                             <entry><para>Random number generator</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>@</keycap></para></entry>
-                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para><replaceable>x</replaceable><superscript>2</superscript></para></entry>
                              <entry><para>Square</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>[</keycap></para></entry>
                              <entry><para><guibutton>&amp;32</guibutton></para></entry>
-                             <entry><para>Get a 32-Bit Unsigned Integer</para> </entry>
+                             <entry><para>Get a 32-bit unsigned integer</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>]</keycap></para></entry>
                              <entry><para><guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>Get a 16-Bit Unsigned Integer</para> </entry>
+                             <entry><para>Get a 16-bit unsigned integer</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2347,8 +2365,8 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycap>{</keycap></para></entry>
-                             <entry><para>e<superscript>x</superscript></para></entry>
-                             <entry><para>e to the <replaceable>x</replaceable> Power</para> </entry>
+                             <entry><para>e<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>e to the <replaceable>x</replaceable> power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2359,8 +2377,8 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycap>}</keycap></para></entry>
-                             <entry><para>10<superscript>x</superscript></para></entry>
-                             <entry><para>10 to the <replaceable>x</replaceable> Power</para> </entry>
+                             <entry><para>10<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>10 to the <replaceable>x</replaceable> power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2379,7 +2397,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                              <entry><para><keycap>Esc</keycap> or </para>
                                     <para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
                              <entry><para><guibutton>CE</guibutton></para></entry>
-                             <entry><para>Clear Entry</para> </entry>
+                             <entry><para>Clear entry</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2413,73 +2431,73 @@ precedence. To apply arithmetic precedence, use parentheses.
                          <tbody> 
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
-                             <entry><para>Gradients</para></entry>
-                             <entry><para>Set the trigonometric type to Gradients.</para></entry>
+                             <entry><para><guilabel>Gradients</guilabel></para></entry>
+                             <entry><para>Set the trigonometric type to gradians.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
-                             <entry><para>Bin</para></entry>
+                             <entry><para><guilabel>Bin</guilabel></para></entry>
                              <entry><para>Set the numeric base to binary.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
-                             <entry><para>Dec</para></entry>
+                             <entry><para><guilabel>Dec</guilabel></para></entry>
                              <entry><para>Set the numeric base to decimal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
-                             <entry><para>Fix</para></entry>
-                             <entry><para>Set the display type to Fixed-Point format.</para></entry>
+                             <entry><para><guilabel>Fix</guilabel></para></entry>
+                             <entry><para>Set the display type to fixed-point format.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>g</keycap></keycombo></para></entry>
-                             <entry><para>Degrees</para></entry>
-                             <entry><para>Set the trigonometric type to Degrees.</para></entry>
+                             <entry><para><guilabel>Degrees</guilabel></para></entry>
+                             <entry><para>Set the trigonometric type to degrees.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
-                             <entry><para>Inv</para></entry>
+                             <entry><para><guilabel>Inv</guilabel></para></entry>
                              <entry><para>Select the inverse option for use with the trigonometric functions.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>n</keycap></keycombo></para></entry>
-                             <entry><para>Eng</para></entry>
-                             <entry><para>Set the display type to Engineering format.</para></entry>
+                             <entry><para><guilabel>Eng</guilabel></para></entry>
+                             <entry><para>Set the display type to engineering format.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
-                             <entry><para>Oct</para></entry>
+                             <entry><para><guilabel>Oct</guilabel></para></entry>
                              <entry><para>Set the numeric base to octal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
-                             <entry><para>Radians</para></entry>
-                             <entry><para>Set the trigonometric type to Radians.</para></entry>
+                             <entry><para><guilabel>Radians</guilabel></para></entry>
+                             <entry><para>Set the trigonometric type to radians.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
-                             <entry><para>Sci</para></entry>
-                             <entry><para>Set the display type to Scientific format.</para></entry>
+                             <entry><para><guilabel>Sci</guilabel></para></entry>
+                             <entry><para>Set the display type to scientific format.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
-                             <entry><para>Hex</para></entry>
+                             <entry><para><guilabel>Hex</guilabel></para></entry>
                              <entry><para>Set the numeric base to hexadecimal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>y</keycap></keycombo></para></entry>
-                             <entry><para>Hyp</para></entry>
+                             <entry><para><guilabel>Hyp</guilabel></para></entry>
                              <entry><para>Select the hyperbolic option for use with the trigonometric functions.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
                            </row>
@@ -2508,8 +2526,8 @@ precedence. To apply arithmetic precedence, use parentheses.
                          <tbody> 
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Basic</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Change to Basic Mode</para> </entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Basic Mode</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Change to basic mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-basic-mode"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2520,15 +2538,22 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Financial</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Change to Financial Mode</para> </entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Financial Mode</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Change to financial mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-financial-mode"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Values</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Display the <guilabel>Insert ASCII Values</guilabel> window</para> </entry>
+                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Value</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the <guilabel>Insert ASCII Value</guilabel> window</para> </entry>
                              <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>K</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Thousands Separator</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the thousands separator
+</para> </entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions-separator"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
@@ -2544,8 +2569,8 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Scientific</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Change to Scientific Mode</para> </entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Scientific Mode</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Change to scientific mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-scientific-mode"/></para> </entry>
                            </row>
                            <row valign="top">
