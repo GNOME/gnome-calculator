@@ -1292,6 +1292,12 @@ inv_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
+#define DO_KEY_PRESS(i) \
+    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL); \
+    g_signal_emit_by_name(GTK_WIDGET(gtk_buttons[i]), "activate"); \
+    return(TRUE)
+
+
 static int
 check_vals(int n, int keyval, 
            struct button buttons[], GtkWidget *gtk_buttons[])
@@ -1304,16 +1310,13 @@ check_vals(int n, int keyval,
             if (buttons[i].value[j] == keyval) {
                 if ((buttons[i].mods[j] == 0) &&
                     ((X->ctrl_l | X->ctrl_r | X->shft_l | X->shft_r) == 0)) {
-                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
-                    return(TRUE);
+                    DO_KEY_PRESS(i);
                 } else if ((buttons[i].mods[j] == GDK_SHIFT_MASK) &&
                            ((X->shft_l | X->shft_r) == 1)) {
-                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
-                    return(TRUE);
+                    DO_KEY_PRESS(i);
                 } else if ((buttons[i].mods[j] == GDK_CONTROL_MASK) &&
                            ((X->ctrl_l | X->ctrl_r) == 1)) {
-                    button_proc(GTK_BUTTON(gtk_buttons[i]), NULL);
-                    return(TRUE);
+                    DO_KEY_PRESS(i);
                 }
             }
             j++;
@@ -1488,7 +1491,7 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             } else {
                 Gtk_buttons[n] = make_menu_button(label, j*cols + i);
             }
-            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
+            g_signal_connect(G_OBJECT(Gtk_buttons[n]), "pressed",
                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
             SPRINTF(name, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
