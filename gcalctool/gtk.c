@@ -2108,14 +2108,8 @@ set_title(enum fcp_type fcptype, char *str)
 static void
 set_gcalctool_icon(void)
 {    
-    gchar *filename = PACKAGE_PIXMAP_DIR"/gcalctool.png";
-
-    if (g_file_test(filename, G_FILE_TEST_EXISTS) == TRUE) {    
-        X->icon = gdk_pixbuf_new_from_file(filename, NULL);
-    }
-    else {
-        X->icon = NULL;
-    }
+    X->icon = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
+                                       "gnome-calculator", 48, 0, NULL);
 }
 
 

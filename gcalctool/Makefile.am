@@ -37,9 +37,6 @@ gcalctool_LDADD = \
 	$(X_BASIC_LIBS) \
 	$(X_EXTRA_LIBS)
 
-pixmapdir   = $(datadir)/pixmaps
-pixmap_DATA = gcalctool.png
-
 man1_MANS = gcalctool.1
 
 # Install a symlink between gcalctool and gnome-calculator
@@ -53,5 +50,4 @@ uninstall-local:
 	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
 
 EXTRA_DIST = \
-	$(pixmap_DATA) \
 	$(man1_MANS)
