@@ -1884,7 +1884,7 @@ do_calctool(int argc, char **argv)
     load_resources();          /* Get resources from various places. */
     read_resources();          /* Read resources from merged database. */
     get_options(argc, argv);   /* Get command line arguments. */
-    read_rcfiles();            /* Read .calctoolrc's files. */
+    read_cfdefs();             /* Read constant/function definitions. */
     make_frames();             /* Create gcalctool window frames. */
 
     v->current    = copy_button_info(button_for_value(KEY_EQ));
@@ -1932,16 +1932,16 @@ doerr(char *errmes)
 static void
 init_text()         /* Setup constant strings. */
 {
-    STRCPY(v->con_names[0], _("kilometres per hour <=> miles per hour."));
+    STRCPY(v->con_names[0], _("kilometres per hour / miles per hour."));
     STRCPY(v->con_names[1], _("square root of 2."));
     STRCPY(v->con_names[2], _("e."));
     STRCPY(v->con_names[3], _("pi."));
-    STRCPY(v->con_names[4], _("centimetres <=> inch."));
+    STRCPY(v->con_names[4], _("centimetres / inches."));
     STRCPY(v->con_names[5], _("degrees in a radian."));
     STRCPY(v->con_names[6], _("2 ^ 20."));
-    STRCPY(v->con_names[7], _("grams <=> ounce."));
-    STRCPY(v->con_names[8], _("kilojoules <=> British thermal units."));
-    STRCPY(v->con_names[9], _("cubic cms <=> cubic inches."));
+    STRCPY(v->con_names[7], _("grams / ounces."));
+    STRCPY(v->con_names[8], _("kilojoules / British thermal units."));
+    STRCPY(v->con_names[9], _("cubic centimetres / cubic inches."));
 }
 
 

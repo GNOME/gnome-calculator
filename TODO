@@ -30,8 +30,15 @@ Gcalctool TODO.
 
 * Track down and fixup any memory leaks.
 
-* Consider moving the constant and function definitions in ~/.gcalctoolcf
-  to Gconf resources.
+* Now that constant and function definitions are read/written as Gconf
+  resources, there are three pieces of functionality that are no longer
+  present. Need to be consider whether we wish to reimplement them. They
+  are:
+  - ability to read new constant/function definitions from a .gcalctoolcf
+    file in the current directory, which override the ones in the users
+    home directory.
+  - ability to set initial values for the ten memory registers.
+  - ability to extensively comment the definitions in the file.
 
 * Implement bugtraq rfe #1190372/#1105626.
   It appears that function definitions are unable to handle all calculator

@@ -130,6 +130,7 @@ static void cfframe_cancel_cb(GtkButton *, gpointer);
 static void cfframe_ok_cb(GtkButton *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_kbd_accel(GtkWidget *, guint, guint);
+static void create_menu_item_with_markup(char *, int, int);
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
@@ -138,6 +139,8 @@ static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void notice_prompt(GtkWidget *, char *);
+static void put_constant(int, char *, char *);
+static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void set_button_state(GtkWidget *, int);
 static void setup_default_icon(void);
@@ -519,14 +522,16 @@ cfframe_ok_cb(GtkButton *button, gpointer user_data)
                 return;         
             }                   
             MPstr_to_num(pval, DEC, v->MPcon_vals[cfno]);
-            SPRINTF(v->con_names[cfno], "%1d: %s [%s]", cfno, pval,
-                    gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
+            STRCPY(v->con_names[cfno],
+                   gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
+            put_constant(cfno, pval, v->con_names[cfno]);
             break;              
                                 
         case M_FUN :            
             STRCPY(v->fun_vals[cfno], convert(pval));
-            SPRINTF(v->fun_names[cfno], "%1d: %s [%s]", cfno, pval,
+            SPRINTF(v->fun_names[cfno],
                     gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
+            put_function(cfno, v->fun_vals[cfno], v->fun_names[cfno]);
             break;              
                                 
         default :               
@@ -534,9 +539,6 @@ cfframe_ok_cb(GtkButton *button, gpointer user_data)
     }                           
                                 
     create_con_fun_menu(X->CFtype);
-    write_rcfile(X->CFtype, exists, cfno,
-                 (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_val_entry)),
-                 (char *) gtk_entry_get_text(GTK_ENTRY(X->cf_desc_entry)));
     gtk_widget_hide(X->cfframe);
 }
 
@@ -787,8 +789,6 @@ create_mem_menu(enum menu_type mtype)
 {
     char mstr[MAXLINE];
     int i, m;
-    GtkWidget *accel_label;
-    GtkWidget *menu_item;
 
     m = (int) mtype;
     X->menus[(int) mtype] = gtk_menu_new();
@@ -796,19 +796,7 @@ create_mem_menu(enum menu_type mtype)
     for (i = 0; i < MAXREGS; i++) {
         SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
                 _("R"), i, make_number(v->MPmvals[i], FALSE));
-        accel_label = gtk_accel_label_new("");
-        gtk_label_set_markup(GTK_LABEL(accel_label), mstr);
-        menu_item = gtk_menu_item_new();
-        gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
-        gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
-        gtk_accel_label_set_accel_widget(GTK_ACCEL_LABEL(accel_label), 
-                                         menu_item);
-        gtk_widget_show(accel_label);
-        gtk_widget_show(menu_item);
-        g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) m);
-        gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
-        g_signal_connect(G_OBJECT(menu_item), "activate",
-                         G_CALLBACK(menu_proc_cb), (gpointer) i);
+        create_menu_item_with_markup(mstr, m, i);
     }
 }
 
@@ -981,7 +969,7 @@ dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static void
 create_con_fun_menu(enum menu_type mtype)
 {
-    char *mstr;
+    char *mstr, mline[MAXLINE];
     int i, invalid, m;
     GtkWidget *menu_item;
 
@@ -997,19 +985,44 @@ create_con_fun_menu(enum menu_type mtype)
 
     for (i = 0; i < MAXCONFUN; i++) {
         invalid = 0;
-        mstr = (mtype == M_CON) ? v->con_names[i] : v->fun_names[i];
-        if (!strlen(mstr)) {
-            invalid = 1;
+        if (mtype == M_CON) {
+            SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
+                    _("C"), i, make_number(v->MPcon_vals[i], FALSE), 
+                    v->con_names[i]);
+        } else {
+            if (!strlen(v->fun_vals[i])) {
+                invalid = 1;
+            } else {
+                SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
+                        _("F"), i, v->fun_vals[i], v->fun_names[i]);
+            }
         }
+
         if (!invalid) {
-            menu_item = gtk_menu_item_new_with_label(mstr);
-            gtk_widget_show(menu_item);
-            g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) m);
-            gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[m]), menu_item);
-            g_signal_connect(G_OBJECT(menu_item), "activate",
-                             G_CALLBACK(menu_proc_cb), (gpointer) i);
+            create_menu_item_with_markup(mline, m, i);
         }
     }
+}
+
+
+static void
+create_menu_item_with_markup(char *label, int menu_no, int user_data)
+{
+    GtkWidget *accel_label;
+    GtkWidget *menu_item;
+
+    accel_label = gtk_accel_label_new("");
+    gtk_label_set_markup(GTK_LABEL(accel_label), label);
+    menu_item = gtk_menu_item_new();
+    gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
+    gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
+    gtk_accel_label_set_accel_widget(GTK_ACCEL_LABEL(accel_label), menu_item);
+    gtk_widget_show(accel_label);
+    gtk_widget_show(menu_item);
+    g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) menu_no);
+    gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[menu_no]), menu_item);
+    g_signal_connect(G_OBJECT(menu_item), "activate",
+                     G_CALLBACK(menu_proc_cb), (gpointer) user_data);
 }
 
 
@@ -1112,6 +1125,27 @@ find_file(const char *base, GError **err)
 
 
 void
+get_constant(int n)
+{
+    char nkey[MAXLINE], *nline;
+    char vkey[MAXLINE], *vline;
+
+    SPRINTF(nkey, "/apps/%s/constant%1dname", v->appname, n);
+    if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
+        return;
+    }   
+ 
+    SPRINTF(vkey, "/apps/%s/constant%1dvalue", v->appname, n);
+    if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
+        return;
+    }   
+
+    MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
+    STRCPY(v->con_names[n], nline);
+}
+
+
+void
 get_display()              /* The Copy function key has been pressed. */
 {
     char selstr[MAXLINE];  /* Display value or selected portion thereof. */
@@ -1138,6 +1172,27 @@ get_display()              /* The Copy function key has been pressed. */
     STRCPY(v->shelf, selstr);     /* Safely keep copy of display. */
 
     gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), v->shelf, -1);
+}
+
+
+void
+get_function(int n)
+{
+    char nkey[MAXLINE], *nline;
+    char vkey[MAXLINE], *vline;
+ 
+    SPRINTF(nkey, "/apps/%s/function%1dname", v->appname, n);
+    if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
+        return;  
+    }    
+ 
+    SPRINTF(vkey, "/apps/%s/function%1dvalue", v->appname, n);
+    if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
+        return;
+    }   
+ 
+    STRCPY(v->fun_vals[n], convert(vline));
+    STRCPY(v->fun_names[n], nline);
 }
 
 
@@ -1590,6 +1645,33 @@ notice_prompt(GtkWidget *parent, char *message)
     beep();
     gtk_dialog_run(GTK_DIALOG(dialog));
 }
+
+
+static void
+put_constant(int n, char *con_value, char *con_name)
+{
+    char key[MAXLINE];
+
+    SPRINTF(key, "/apps/%s/constant%1dvalue", v->appname, n);
+    gconf_client_set_string(X->client, key, con_value, NULL);
+
+    SPRINTF(key, "/apps/%s/constant%1dname", v->appname, n);
+    gconf_client_set_string(X->client, key, con_name, NULL);
+}
+
+
+static void
+put_function(int n, char *fun_value, char *fun_name)
+{
+    char key[MAXLINE];
+
+    SPRINTF(key, "/apps/%s/function%1dvalue", v->appname, n);
+    gconf_client_set_string(X->client, key, fun_value, NULL);
+
+    SPRINTF(key, "/apps/%s/function%1dname", v->appname, n);
+    gconf_client_set_string(X->client, key, fun_name, NULL);
+}
+
 
 
 /* Put gcalctool resource into deskset database. */

@@ -1,5 +1,5 @@
 .\" Copyright (c) 1987-2003 - Sun Microsystems, Inc.
-.TH gcalctool 1 "22 January 2003"
+.TH gcalctool 1 "27 January 2003"
 .SH NAME
 gcalctool \- a desktop calculator
 .SH SYNOPSIS
@@ -57,51 +57,11 @@ On startup,
 will use several configuration resources stored in a 
 .I gconf
 database. These are listed in detail in the resources section of these 
-manual pages.
+manual pages. Any constants or function definitions that the user defines are
+also stored in this database.
 .LP
 Context sensitive help is also available. Control-F1 toggles whether
 tooltip help is displayed for the item which currently has focus.
-.LP
-On startup,
-.B gcalctool
-will look for a
-.B .gcalctoolcf
-file in the users' home directory. This file allows the user to define personal
-constant and function definitions, plus setup the initial values for the
-ten memory registers. It then looks for a
-.B .gcalctoolcf
-file in the current directory, and if present, uses the contents of this file
-in place of any previously defined values.
-.LP
-With the
-.B .gcalctoolcf
-file, there are currently four valid record types. These are comments,
-constant and function definitions and initial memory register values.
-.LP
-Lines starting with a '#' are treated as comments and ignored.
-.LP
-Lines starting with 'c' or 'C' in the first column are definitions for
-constants. The cC is followed by a digit in the range 0-9, then a space.
-This is followed by a number in fixed or scientific notation. Following
-this is an optional comment, which if found, will be used in the popup
-menu for the constants. If the comment is present, then there must be at
-least one space between this and the preceding number.
-.LP
-Lines starting with 'f' or 'F' in the first column are definitions
-for functions. The fF is followed by a digit in the range 0-9, then a
-space. This is followed by a function definition. Following this is an
-optional comment, which if found, will be used in the popup menu for the
-functions. If the comment is present, then there must be at least one
-space between this and the preceding function definition.
-.LP
-Lines starting with 'r' or 'R' in the first column are definitions
-for the initial contents of the memory registers. The rR is followed
-by a digit in the range 0-9, then a space. This is followed by a number
-in fixed or scientific notation. The rest of the line is ignored.
-.LP
-All other lines are ignored. There should be no embedded spaces in the
-function definitions. Whenever a backslash is found, this and the following
-character signify a control character, for example \\g would be ASCII 7.
 .SH OPTIONS
 .TP
 .B \-D
@@ -486,12 +446,10 @@ cosine and tangent trigonometric functions performed.
 .PD 0
 .IP "\fBCon	[ # ]\fP" 18
 Retrieve and display a constant value. There are ten constant values [ 0-9 ],
-and each one has a default value which can be overridden by entries in the
-users
-.B .gcalctoolcf
-file. The ten default values are:
+and each one has a default value which can be overridden when the user creates
+their own constant definitions. The ten default values are:
 .sp
-0	0.621		kms per hour / miles per hour.
+0	0.621		kilometers per hour / miles per hour.
 .br
 1	1.41421		square root of 2.
 .br
@@ -499,22 +457,20 @@ file. The ten default values are:
 .br
 3	3.14159		pi.
 .br
-4	2.54		cms / inch.
+4	2.54		centimetres / inches.
 .br
 5	57.29578	degrees in a radian.
 .br
 6	1048576.0	2 to the power of 20.
 .br
-7	0.0353		gms / oz.
+7	0.0353		grams / ounces.
 .br
 8	0.948		kilojoules / British thermals.
 .br
-9	0.0610		cubic cms / cubic inches.
+9	0.0610		cubic centimetres / cubic inches.
 .IP "\fBFun	[ F ]\fP" 18
-Retrieve and execute a function expression. There are ten function
-definitions [ 0-9 ]. These are setup with entries in the users
-.B .gcalctoolcf
-file.
+Retrieve and execute a function expression. There can be upto ten functions
+expression defined by the user [0 - 9]. There are no default function values.
 .PD
 .SS Scientific buttons.
 .PD 0
@@ -591,9 +547,6 @@ treating both numbers as unsigned long integers.
 .SH FILES
 .PD 0
 .TP 18
-.B ~/.gcalctoolcf
-user's personal gcalctool constant and function startup file.
-.TP
 .B ~/.gcalctoolrc
 user's personal gcalctool resources for customizing the appearance and color of
 .B gcalctool

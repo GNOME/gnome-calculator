@@ -7,6 +7,24 @@
 gcalctool change history.
 =========================
 
+v4.2.41 - 27th January 2003.  (richb)
+
+* The constant and function definitions are now read and written as Gconf
+  resources, rather than to a ~/.gcalctoolcf file in the user's home 
+  directory. The manual pages have been updated to reflect this change.
+
+  An entry has been added to the TODO file to reflect functionality that
+  is no longer present because of this change.
+
+* Fixed bug 104250 (http://bugzilla.gnome.org/show_bug.cgi?id=104250)
+  The constant and the function menu items now have "C<n>:" and "F<n>:" 
+  prefixes respectively, where <n> is the constant/function number.
+
+  This also involved removing the "<=>" from four of the descriptions for
+  the predefined constant values.
+
+----
+
 v4.2.40 - 25th January 2003.  (richb)
 
 * Fixed bug 104245 (http://bugzilla.gnome.org/show_bug.cgi?id=104245)

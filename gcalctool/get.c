@@ -35,7 +35,6 @@ static int get_int_resource(enum res_type, int *);
 static int get_str_resource(enum res_type, char *);
 
 static void getparam(char *, char **, char *);
-static void get_rcfile(char *);
 
 
 char *
@@ -170,110 +169,6 @@ getparam(char *s, char *argv[], char *errmes)
 }
 
 
-static void
-get_rcfile(char *name)          /* Read .gcalctoolcf file. */
-{
-    char line[MAXLINE];    /* Current line from the .gcalctoolcf file. */
-    char tmp[MAXLINE];     /* Used to extract definitions. */
-    double cval;           /* Current constant value being converted. */
-    enum base_type base;   /* Saved current base value. */
-    int i;                 /* Index to constant or function array. */
-    int isval;             /* Set to 'c' or 'f' for convertable line. */
-    int len, n;
-    FILE *rcfd;            /* File descriptor for calctool rc file. */
-
-    if ((rcfd = fopen(name, "r")) == NULL) {
-        return;
-    }
-
-/*  Process the .gcalctoolcf file. There are currently four types of
- *  records to look for:
- *
- *  1) Those starting with a hash in the first column are comments.
- *
- *  2) Lines starting with 'c' or 'C' in the first column are
- *     definitions for constants. The cC is followed by a digit in
- *     the range 0-9, then a space. This is followed by a number
- *     in fixed or scientific notation. Following this is an optional
- *     comment, which if found, will be used in the popup menu for
- *     the constants. If the comment is present, there must be at
- *     least one space between this and the preceding number.
- *
- *  3) Those starting with a 'f' or a 'F' in the first column are
- *     definitions for functions. The fF is followed by a digit in
- *     the range 0-9, then a space. This is followed by a function
- *     definition. Following this is an optional comment, which if
- *     found, will be used in the popup menu for the functions.
- *     If the comment is present, there must be at least one space
- *     between this and the preceding function definition.
- *
- *  4) Lines starting with a 'r' or a 'R' in the first column are
- *     definitions for the initial contents of the calculators
- *     memory registers. The rR is followed by a digit in the
- *     range 0-9, then a space. This is followed by a number in
- *     fixed or scientific notation. The rest of the line is ignored.
- *
- *  All other lines are ignored.
- *
- *  Two other things to note. There should be no embedded spaces in
- *  the function definitions, and whenever a backslash is found, that
- *  and the following character signify a control character, for
- *  example \g would be ascii 7.
- */
-
-    while (fgets(line, MAXLINE, rcfd) != NULL) {
-        isval = 0;
-        if (line[0] == 'c' || line[0] == 'C') {
-            isval = 'c';
-        } else if (line[0] == 'f' || line[0] == 'F') {
-            isval = 'f';
-        } else if (line[0] == 'r' || line[0] == 'R') {
-            isval = 'r';
-        }
-        if (isval) {
-            if (line[1] >= '0' && line[1] <= '9' && line[2] == ' ') {
-                i = char_val(line[1]);
-                if (isval == 'c') {
-                    n = sscanf(&line[3], "%lf", &cval);
-                    if (n == 1) {
-                        MPstr_to_num(&line[3], DEC, v->MPcon_vals[i]);
-                    }
-                } else if (isval == 'f') {
-                    SSCANF(&line[3], "%s", tmp);      
-                    STRCPY(v->fun_vals[i], convert(tmp));
-                } else if (isval == 'r') {
-                    n = sscanf(&line[3], "%lf", &cval);
-                    if (n == 1) MPstr_to_num(&line[3], DEC, v->MPmvals[i]);
-                    continue;
-                }
-                len = strlen(line);
-                for (n = 3; n < len; n++) {
-                    if (line[n] == ' ' || line[n] == '\n') {
-                        while (line[n] == ' ') {
-                            n++;
-                        }
-                        line[strlen(line)-1] = '\0';
-                        if (isval == 'c') {
-                            base = v->base;
-                            v->base = DEC;
-                            STRCPY(tmp, make_number(v->MPcon_vals[i], TRUE));
-                            v->base = base;
-                            SPRINTF(v->con_names[i], "%1d: %s [%s]",
-                                    i, tmp, &line[n]);
-                        } else {
-                            SPRINTF(v->fun_names[i], "%1d: %s [%s]",
-                                    i, tmp, &line[n]);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    FCLOSE(rcfd);
-}
-
-
 /* Get a string resource from database. */
 
 static int
@@ -341,27 +236,14 @@ init_vars()    /* Setup default values for various variables. */
 
 
 void
-read_rcfiles()   /* Read .gcalctoolcf's from home and current directories. */
+read_cfdefs()        /* Read constant/function definitions. */
 {
-    char name[MAXLINE];          /* Full name of users .gcalctoolcf file. */
-    char pathname[MAXPATHLEN];   /* Current working directory. */
-    char tmp[MAXLINE];           /* For temporary constant string creation. */
     int n;
 
-    for (n = 0; n < MAXREGS; n++) {
-        STRCPY(tmp, make_number(v->MPcon_vals[n], FALSE));
-        SPRINTF(name, "%1d: %s [%s]", n, tmp, v->con_names[n]);
-
-        STRCPY(v->con_names[n], name);
+    for (n = 0; n < MAXCONFUN; n++) {
+        get_constant(n);
         STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
-    }
-
-    SPRINTF(name, "%s/%s", v->home, CFNAME);
-    get_rcfile(name);      /* Read .gcalctoolcf from users home directory. */
-
-    if (getcwd(pathname, MAXPATHLEN+1) != NULL) {
-        SPRINTF(name, "%s/%s", pathname, CFNAME);
-        get_rcfile(name);  /* Read .gcalctoolcf file from current directory. */
+        get_function(n);
     }
 }
 
@@ -475,96 +357,4 @@ usage(char *progname)
     FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
     FPRINTF(stderr, _("\t\t [-?] [-v] [-?]\n"));
     exit(1);
-}
-
-
-void
-write_rcfile(enum menu_type mtype, int exists, int cfno, 
-             char *val, char *comment)
-{
-    char pathname[MAXPATHLEN];   /* Current working directory. */
-    char rcname[MAXPATHLEN];     /* Full name of users .gcalctoolcf file. */
-    char str[MAXLINE];           /* Temporary buffer. */
-    char sval[3];                /* Used for string comparisons. */
-    char tmp_filename[MAXLINE];  /* Used to construct temp filename. */
-    int rcexists;                /* Set to 1, if .gcalctoolcf file exists. */
-    FILE *rcfd;                  /* File descriptor for .gcalctoolcf file. */
-    FILE *tmpfd;                 /* File descriptor for new temp .gcalctoolcf */
-
-    rcexists = 0;
-    if (getcwd(pathname, MAXPATHLEN+1) != NULL) {
-        SPRINTF(rcname, "%s/%s", pathname, CFNAME);
-        if (access(rcname, F_OK) == 0) {
-            rcexists = 1;
-        }
-    }
-
-    if (rcexists == 0) { 
-        SPRINTF(rcname, "%s/%s", v->home, CFNAME);
-        if (access(rcname, F_OK) == 0) {
-            rcexists = 1;
-        }
-    }
-    STRCPY(tmp_filename, "/tmp/.gcalctoolcfXXXXXX");
-    MKSTEMP(tmp_filename);
-    if ((tmpfd = fopen(tmp_filename, "w+")) == NULL) {
-        return;
-    }
-
-    if (rcexists) {
-        rcfd = fopen(rcname, "r");
-        SPRINTF(sval, " %1d", cfno);
-        while (fgets(str, MAXLINE, rcfd)) {
-            if (exists) {
-                switch (mtype) {
-                    case M_CON : 
-                        sval[0] = 'c';
-                        if (!strncmp(str, sval, 2)) {
-                            FPUTS("#", tmpfd);
-                        }
-                        sval[0] = 'C';
-                        if (!strncmp(str, sval, 2)) {
-                            FPUTS("#", tmpfd);
-                        }
-                        break;
-
-                    case M_FUN : 
-                        sval[0] = 'f';
-                        if (!strncmp(str, sval, 2)) {
-                            FPUTS("#", tmpfd);
-                        }
-                        sval[0] = 'F';
-                        if (!strncmp(str, sval, 2)) {
-                            FPUTS("#", tmpfd);
-                        }
-                        break;
-
-                    default : 
-                        break;
-                }
-            }
-            FPUTS(str, tmpfd);
-        }
-        FCLOSE(rcfd);
-    }
-
-    switch (mtype) {
-        case M_CON : 
-            FPRINTF(tmpfd, "\nC%1d %s %s\n", cfno, val, comment);
-            break;
-
-        case M_FUN : 
-            FPRINTF(tmpfd, "\nF%1d %s %s\n", cfno, val, comment);
-            break;
-
-        default : 
-            break;
-    }
-    UNLINK(rcname);
-    rcfd = fopen(rcname, "w");
-    REWIND(tmpfd);
-    while (fgets(str, MAXLINE, tmpfd)) FPUTS(str, rcfd);
-    FCLOSE(rcfd);
-    FCLOSE(tmpfd);
-    UNLINK(tmp_filename);
 }

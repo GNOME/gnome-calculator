@@ -364,7 +364,9 @@ void do_portion();
 void do_trig();
 void do_trigtype(enum trig_type);
 void doerr(char *);
+void get_constant(int);
 void get_display();
+void get_function(int);
 void get_key_val(int *, char *);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
@@ -389,7 +391,7 @@ void process_str(char *);
 void push_num(int *);
 void push_op(int);
 void put_resource(enum res_type, char *);
-void read_rcfiles();
+void read_cfdefs();
 void read_resources();
 void read_str(char **, char *);
 void save_pending_values(struct button *);
@@ -408,7 +410,6 @@ void start_tool();
 void switch_hands(int);
 void usage(char *);
 void win_display(enum fcp_type, int);
-void write_rcfile(enum menu_type, int, int, char *, char *);
 
 /* Global Brent MP routines in mp.c. */
 int mpeq(int *, int *);
