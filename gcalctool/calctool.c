@@ -1903,7 +1903,9 @@ do_calctool(int argc, char **argv)
 
     if (v->rstate == TRUE) {   /* Show the memory register window? */
         make_registers();
-        if (!v->iconic) win_display(FCP_REG, TRUE);
+        if (!v->iconic) {
+            win_display(FCP_REG, TRUE);
+        }
     }
 
     SPRINTF(title, "%s   [%s]", v->tool_label, mstrs[(int) v->modetype]);

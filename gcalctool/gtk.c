@@ -59,6 +59,11 @@
 #define BUT_PNT   X->bas_buttons[25]       /* . */
 #define BUT_EQ    X->bas_buttons[26]       /* = */
 
+#define BASIC_RADIO_MENU      "/View/Basic Mode"
+#define FINANCIAL_RADIO_MENU  "/View/Financial Mode"
+#define SCIENTIFIC_RADIO_MENU "/View/Scientific Mode"
+#define MEM_REG_TOGGLE_MENU   "/View/Memory Registers"
+
 typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
@@ -143,6 +148,7 @@ static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void set_button_state(GtkWidget *, int);
+static void set_memory_toggle(int state);
 static void setup_default_icon(void);
 static void trig_cb(GtkToggleButton *, gpointer);
 
@@ -560,6 +566,7 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(X->aframe), _("Insert ASCII Value"));
     gtk_window_set_resizable(GTK_WINDOW(X->aframe), FALSE);
+    gtk_window_set_transient_for(GTK_WINDOW(X->aframe), GTK_WINDOW(X->kframe));
     gtk_window_set_type_hint(GTK_WINDOW(X->aframe), 
                              GDK_WINDOW_TYPE_HINT_DIALOG);
 
@@ -710,7 +717,7 @@ create_kframe()
 {
     char *hn;
     int count;
-    GtkWidget *event_box;
+    GtkWidget *event_box, *view_widget;
 
     v->tool_label = NULL;
     if (v->titleline == NULL) {
@@ -781,6 +788,21 @@ create_kframe()
     setup_default_icon();
 
     g_signal_connect(G_OBJECT(X->kframe), "event", G_CALLBACK(event_cb), NULL);
+    switch (v->modetype) {
+        case FINANCIAL:
+            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
+                                                      FINANCIAL_RADIO_MENU);
+            break;
+        case SCIENTIFIC:
+            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
+                                                      SCIENTIFIC_RADIO_MENU);
+            break;
+        default:
+            view_widget = gtk_item_factory_get_widget(X->mb_fact, 
+                                                      BASIC_RADIO_MENU);
+            break;
+    }
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
 }
 
 
@@ -959,7 +981,10 @@ dismiss_cfframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
+/**/fprintf(stderr, "dismiss_rframe called.\n");
     v->rstate = 0;
+    set_memory_toggle(v->rstate);
+    put_resource(R_REGS, set_bool(v->rstate == TRUE));
     gtk_widget_hide(X->rframe);
 
     return(TRUE);
@@ -1725,6 +1750,16 @@ set_inv_item(int state)
 }
 
 
+static void
+set_memory_toggle(int state)
+{
+    GtkWidget *reg;
+
+    reg = gtk_item_factory_get_widget(X->mb_fact, MEM_REG_TOGGLE_MENU);  
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(reg), state);
+}
+
+
 void
 set_mode(enum mode_type mode)
 {
@@ -1850,6 +1885,7 @@ show_ascii_frame()      /* Display ASCII popup. */
     if (gdk_window_is_visible(X->aframe->window) == FALSE) {
         ds_position_popup(X->kframe, X->aframe, DS_POPUP_LEFT);
     }
+    gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->aframe_ch));
     gtk_widget_show(X->aframe);
 }
 
@@ -1887,6 +1923,8 @@ win_display(enum fcp_type fcptype, int state)
     }
     if (state) {
         if (fcptype == FCP_REG) {
+            v->rstate = 1;
+            set_memory_toggle(v->rstate);
             ds_position_popup(X->kframe, f, DS_POPUP_ABOVE);
         }
     }
