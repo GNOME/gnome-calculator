@@ -2,7 +2,7 @@
 
 SUBDIRS = po gcalctool help
 
-schemadir = $(sysconfdir)/gconf/schemas
+schemadir = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = gcalctool.schemas
 
 EXTRA_DIST = \
