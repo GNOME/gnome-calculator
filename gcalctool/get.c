@@ -254,7 +254,7 @@ init_constant(int n, gchar *value)
 void
 init_vars()    /* Setup default values for various variables. */
 {
-    char *loc_radix;
+    char *loc_radix, *loc_tsep;
     int acc, i, n, size;
 
     v->accuracy      = 9;      /* Initial accuracy. */
@@ -280,6 +280,8 @@ init_vars()    /* Setup default values for various variables. */
 
     loc_radix = (char *) v->radix;
     v->radix = ".";
+    loc_tsep = (char *) v->tsep;
+    v->tsep = "";
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */
     init_constant(2, "2.7182818284");          /* e */
@@ -291,6 +293,7 @@ init_vars()    /* Setup default values for various variables. */
     init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
     init_constant(9, "0.0610");                /* cms3 <=> inches3. */
     v->radix = loc_radix;
+    v->tsep = loc_tsep;
 
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
