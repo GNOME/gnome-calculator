@@ -38,10 +38,8 @@ EXTRA_DIST = \
 	ChangeLog-1992 \
 	ChangeLog-1993 \
 	ChangeLog-2002 \
-	ChangeLog-NG \
 	MAINTAINERS \
 	TODO \
-	FIXME \
 	gcalctoolrc \
 	gcalctool.desktop.in \
 	intltool-extract.in     \
