@@ -7,6 +7,22 @@
 gcalctool change history.
 =========================
 
+2004-06-14 Rich Burridge <rich.burridge@sun.com>
+
+    * Remainder of the fix for bug #143924.
+      http://bugzilla.gnome.org/show_bug.cgi?id=143924
+      Control-T shouldn't work in Basic or Financial modes. 
+      I should have been using:
+
+        g_object_set(gtk_ui_manager_get_action(X->ui, i),  \
+                     "sensitive", state, NULL);
+
+      rather than:
+
+        gtk_widget_set_sensitive(gtk_ui_manager_get_widget(X->ui, i), state)
+
+      to set the [in]activeness state of the various menubar menu items.
+
 2004-06-11 Rich Burridge <rich.burridge@sun.com>
 
     * Partial fix for bug #143924.

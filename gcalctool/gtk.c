@@ -2105,7 +2105,8 @@ set_display(char *str, int minimize_changes)
 
 
 #define SET_MENUBAR_ITEM_STATE(i, state) \
-          gtk_widget_set_sensitive(gtk_ui_manager_get_widget(X->ui, i), state)
+          g_object_set(gtk_ui_manager_get_action(X->ui, i),  \
+			"sensitive", state, NULL);
 
 
 /* When an error condition occurs:
@@ -2312,7 +2313,9 @@ set_show_zeroes_toggle(int state)
 
     mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
-    gtk_widget_set_sensitive(mi, v->modetype == SCIENTIFIC);
+    g_object_set(gtk_ui_manager_get_action(X->ui, 
+                                           "/MenuBar/ViewMenu/Trailing"), 
+                 "sensitive", v->modetype == SCIENTIFIC, NULL);
     v->doing_mi = 0;
 }
 
