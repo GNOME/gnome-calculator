@@ -145,7 +145,7 @@ make_fixed(int *MPnumber,int base, int cmax)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-            *optr++ = KEY_SEP.str[0];
+            *optr++ = get_numeric_sep();
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -167,7 +167,7 @@ make_fixed(int *MPnumber,int base, int cmax)
         while (*optr == '0') {
             optr--;
         }
-        if (*optr != KEY_SEP.str[0]) {
+        if (*optr != get_numeric_sep()) {
             optr++;
         }
         *optr = '\0';
@@ -340,7 +340,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
         optr++;
     }
 
-    if (*optr == KEY_SEP.str[0]) {
+    if (*optr == get_numeric_sep()) {
         for (i = 1; (inum = char_val(*++optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);
             mpcim(&inum, MP2);

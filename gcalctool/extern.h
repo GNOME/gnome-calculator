@@ -27,6 +27,8 @@ extern char *calc_res[];       /* Calctool X resources. */
 extern char digits[];          /* Valid numerical digits. */
 extern char *dtype_str[];      /* Strings for each display mode value. */
 extern char *dtype_desc[];     /* Tooltips for each display mode value. */
+extern char *hyp_desc;         /* Tooltip for hyperbolic option. */
+extern char *inv_desc;         /* Tooltip for inverse option. */
 extern char *mode_str[];       /* Strings for each mode value. */
 extern char *mstrs[];          /* Mode titles for the popup panel. */
 extern char *opts[];           /* Command line option strings. */

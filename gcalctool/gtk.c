@@ -909,6 +909,7 @@ static GtkWidget *
 create_mode_panel(GtkWidget *main_vbox)
 {
     int i;
+    AtkObject *access_object;
     GtkWidget *base_hbox, *disp_hbox, *trig_hbox;
     GtkWidget *row1_hbox, *row2_hbox, *frame, *vbox;
     GSList *base_gr = NULL;
@@ -939,6 +940,8 @@ create_mode_panel(GtkWidget *main_vbox)
         gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
         trig_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->trig[i]));
+        access_object = gtk_widget_get_accessible(X->trig[i]);
+        atk_object_set_name(access_object, _(ttype_desc[i]));
         g_signal_connect(G_OBJECT(X->trig[i]), "toggled",
                          G_CALLBACK(trig_cb), NULL);
     }
@@ -958,6 +961,8 @@ create_mode_panel(GtkWidget *main_vbox)
         gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->base[i]), base_gr);
         base_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->base[i]));
+        access_object = gtk_widget_get_accessible(X->base[i]);
+        atk_object_set_name(access_object, _(base_desc[i]));
         g_signal_connect(G_OBJECT(X->base[i]), "toggled",
                          G_CALLBACK(base_cb), NULL);
     }
@@ -967,20 +972,20 @@ create_mode_panel(GtkWidget *main_vbox)
 /* Make Hyp and Inv trigonometric check boxes. */
 
     X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
-    gtk_tooltips_set_tip(X->tips, X->inv, 
-                         _("Set inverse option for trigonometric functions"), "");
+    gtk_tooltips_set_tip(X->tips, X->inv, _(inv_desc), "");
     gtk_widget_show(X->inv);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(X->inv), "toggled",
-                      G_CALLBACK(inv_cb), NULL);
+    access_object = gtk_widget_get_accessible(X->inv);
+    atk_object_set_name(access_object, _(inv_desc));
+    g_signal_connect(G_OBJECT(X->inv), "toggled", G_CALLBACK(inv_cb), NULL);
 
     X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
-    gtk_tooltips_set_tip(X->tips, X->hyp, 
-                         _("Set hyperbolic option for trigonometric functions"), "");
+    gtk_tooltips_set_tip(X->tips, X->hyp, _(hyp_desc), "");
     gtk_widget_show(X->hyp);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(X->hyp), "toggled",
-                      G_CALLBACK(hyp_cb), NULL);
+    access_object = gtk_widget_get_accessible(X->hyp);
+    atk_object_set_name(access_object, _(hyp_desc));
+    g_signal_connect(G_OBJECT(X->hyp), "toggled", G_CALLBACK(hyp_cb), NULL);
 
 /* Make display type radio button widgets. */
 
@@ -995,6 +1000,8 @@ create_mode_panel(GtkWidget *main_vbox)
         gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->disp[i]), disp_gr);
         disp_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->disp[i]));
+        access_object = gtk_widget_get_accessible(X->disp[i]);
+        atk_object_set_name(access_object, _(dtype_desc[i]));
         g_signal_connect(G_OBJECT(X->disp[i]), "toggled",
                          G_CALLBACK(disp_cb), NULL);
     }

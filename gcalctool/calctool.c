@@ -73,6 +73,9 @@ char *dtype_desc[] = {         /* Tooltips for each display mode value. */
     N_("Set display type to scientific format")
 };
 
+char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
+char *inv_desc = N_("Set inverse option for trigonometric functions");
+
 char *mode_str[]  = {          /* Strings for each mode value. */
     N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC")
 };

@@ -112,6 +112,17 @@ get_key_val(int *val, char *str)
 }
 
 
+/* Return the numeric separator. For most locales, this is a period. */
+
+char
+get_numeric_sep()
+{
+    char *num_sep = _(KEY_SEP.str);
+
+    return(num_sep[0]);
+}
+
+
 void
 get_options(int argc, char *argv[])      /* Extract command line options. */
 {
