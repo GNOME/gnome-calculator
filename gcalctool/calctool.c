@@ -2270,7 +2270,8 @@ init_text()         /* Setup constant strings. */
 
 /*ARGSUSED*/
 int
-matherr(struct exception *exc)
+matherr(exc)
+struct exception *exc;
 {
     doerr(_("Error"));
 

@@ -8,6 +8,21 @@
 gcalctool change history.
 =========================
 
+v4.1.16 - 9th September 2002.
+
+* Added all the bugs/rfe's from Sun's bugtraq database that need to be fixed
+  (and/or implemented) at sometime.
+
+* Adjusted the definition of matherr() in calctool.c so that strict ANSI C
+  compilers will compile it if _XOPEN_SOURCE is defined.
+
+* If gcalctool initially came up in BASIC mode, and you then tried to display
+  one of the other modes, the buttons in the mode window would be incorrect.
+  Needed to set v->modetype appropriately in make_mtable() in gtk.c just
+  before get_label() was called.
+
+----
+
 v4.1.15 - 9th September 2002.
 
 * With the changes made in v4.1.14, the Keys functionality no longer did 

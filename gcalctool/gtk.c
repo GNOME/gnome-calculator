@@ -1318,17 +1318,19 @@ static GtkWidget *
 make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
 {
     char name[MAXLINE];
-    int i, j, k, n;
+    int i, j, k, n, oldmode;
     GtkWidget *table = gtk_table_new(MROWS, MCOLS, TRUE);
  
     gtk_widget_ref(table);
     gtk_widget_show(table);
     gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
  
+    oldmode = v->modetype;
     for (i = 0; i < MCOLS; i++) {
         for (j = 0; j < MROWS; j++) {
             k = j*MCOLS + i;
             n = (MODEKEYS * ((int) modetype - 1)) + j*MCOLS + i;
+            v->modetype = modetype;
             get_label(k);
             if (mode_buttons[n].mtype == M_NONE) {
                 X->mode_buttons[n] = gtk_button_new_with_label(v->pstr);
@@ -1358,6 +1360,7 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
                      4, 4);
         }
     } 
+    v->modetype = oldmode;
 
     return(table);
 }

@@ -20,16 +20,168 @@ Related to the Gtk2 version:
 
 ============================================================================
 
-- Implement bugtraq bug #1190372.
+- Implement bugtraq rfe #1190372/#1105626.
   It appears that function definitions are unable to handle all calculator
   buttons. Buttons with a keyboard equivalent that is a special key (clear 
   display) or key combination (^s - Sin) appear to be rejected in functions 
   defs.  This affects the availability of many of the calculator buttons.
 
-- Fixup all known bugs and rfe's.
+- Fix bugtraq bug #1190524.
+  Display of small numbers in Memory & Financial registers can be confusing 
+  and misleading.
+
+  Ex.
+         1. Set Accuracy to 9
+         2. Display memory registers.
+         3. Set mem. reg. #1 to 0.000000000
+         4. Enter small value into display window.
+                 5.236000000e-251
+         5. Attempt to store this value in mem. reg #1.
+                 Store 1
+ 
+            Results:  No change, no visual or audio indication
+                      of success or failure.
+                      Memory Reg. #1 still shows: 0.000000000
+ 
+         6. Clear Display
+         7. Recall memory reg #1.
+ 
+            Results:  Display shows:  5.236000000e-251
+ 
+         Conclusion:  Small number was stored correctly but
+                      number was too small to show up in the
+                      current level of accuracy.
+ 
+         Suggestion:  Convert display of very small numbers
+                      to a format visible by user:
+                         5.236000000e-251
+                      This is already done for very large numbers:
+                         5.236000000e+251
+
+- Implement bugtraq rfe #1190313.
+  After a menu-button is activated via keyboard mnemonic (i.e. press M for 
+  Mode, B for Base, D for Display, and T for Trig), gcalctool should validate 
+  the next key pressed ([fls] for Mode, [bodh] for Base, [efs] for Display, 
+  and [dgr] for Trig) and beep if it's illegal.
+
+- Fix bugtraq bug #1258472.
+  Start calculator => set to decimal and fixed.
+  Set accuracy to 2 decimal places.
+  do a division like   0.19/2
+  It gives 0.0A
+
+- Implement bugtraq rfe #4023507.
+  The calculator in Logical mode accepts hex entries of up to
+  eight digits.  This was sufficient to deal with 32-bit addresses.
+  When Solaris is 64-bit, the calculator will be less useful.
+  Maybe there should be a Logical-64 mode.
+
+- Fix bugtraq bug #4006391.
+  Bring up gcalctool, enter 10000 X 0.58 =, got answer is 5800.
+  Then click on INT button, supposely should get 5800, but the 
+  answer is 5799.
+
+- Fix bugtraq bug #4065378.
+  Certain functions entered into gcalctool produce incorrect results.
+  I entered the following functions into gcalctool:
+
+  ((R0)-32)*(5/9)=S1
+
+  (5/9)*(R0-32)=S0
+
+  ((R0-32)*5)/9=S0
+
+  The above 3 functions all do pretty much the same thing. They convert 
+  Fahrenheit to Celsius. However when I store "212" in Register 0, and 
+  run the first of the three functions above, the result is 21200 (and 
+  we all know that 212F is 100 C). If I run the same conversion again, 
+  the result is 2120000. It seems like the previous result is always 
+  multiplied by 100. The other 2 functions also return incorrect results.
+
+  Not all user defined functions behave this way. For example the Function 
+  for converting Celsius to Fahrenheit worked as expected.
+
+- Implement bugtraq rfe #4113441.
+  Scientists using dtcalc under CDE would like to get deeper precision.
+  The maximun accuracy depth, which is 9, is not enough for them.
+  They would like to have 15 digits available.
+
+- Fix bugtraq bug #4164019
+  Switch calculator to financial mode. Bring up window of financial registers.
+  Enter a number of about 6 digits for Term, Pv,Pmt and a 2 digit num. for 
+  i%Yr. Now click on Fv to calculate Future value. Calculator displays an 
+  Error but instead of being able to click on CLR to clear the error gcalctool
+  has frozen up and eats up more and more cpu time.
+
+- Checkout bugtraq bug #4302211 (need to verify with gcalctool).
+  There's a keyboard mapping problem with dtcalc. The problem is that 
+  with finnish keyboard the calculator mis-reads the decimal comma from 
+  numeric keyboard. Pressing numeric keyboard decimal comma just repeats 
+  the previous number. IT DOES NOT PRODUCE decimal comma. Pressing comma
+  on character keyboard DOES NOTHING. Pressing point on characher keyboard
+  produces decimal point. Which is also wrong, we use comma for delimiter.
+
+- Implement bugtraq rfe #1122089.
+  Add a log base 2 key.
+
+- Checkout bugtraq bug #1165609 (need to verify with gcalctool).
+  I can't make calctool the target of a seconday selection. Primary selection
+  (cut and paste) works fine however. To reproduce:
+
+  1 - Fire up a calctool
+
+  2 - put the cursor in the calctool window
+
+  3 - press and hold the PASTE key
+
+  4 - move the cursor over to a number and select it using the left mouse 
+      button
+
+  5 - release the PASTE key
+
+  At this point I expect that the highlighted number will land in the Calctool
+  window, but it does not.  This works fine with other tools, so I assume the
+  problem is in Calctool and not the window system (as I do get the underlined
+  highlighting of text - as opposed to the blacking out of selected text I see 
+  with cut & paste).
+
+- Fix bugtraq bug #1190181.
+  gcalctool core dumps if parent directory not readable.
+
+  Following scenario:
+
+   % cd /tmp
+   % mkdir subdir
+   % cd subdir
+   % mkdir asubdir
+   % chmod 100 .
+   % cd asubdir
+   % /home/richb/rich_stuff/gcalctool/gcalctool/gcalctool
+     Segmentation Fault (core dumped)
+
+   Problem occurs because calctool fails to handle NULL return from getcwd().
+
+- Checkout bugtraq bug #4017426 (need to verify with gcalctool).
+  Using the keypad button 'Del/,' on a Swedish keyboard in both dtcalc and 
+  calctool repeats the last key pressed instead of entering a decimal 
+  separator.
+
+- Fix bugtraq bug #1102883.
+  If you enter 2 and select Inv, select Sin to get the arc sine value, 
+  "Error" is displayed on the window. Do the same thing but select Cos 
+  to get arc cosine value, the error message is "acos DOMAIN error", 
+  which is better. Sine should have the same error message to be more 
+  consistant.
+
+- See if it's now safe to remove the "Hack Alert" code in gtk.c at about
+  line 1106.
+
+- Consider moving the three mode tables into the main window, and removing
+  the extra mode window. This would "fix" the initial positioning bug near
+  the top of this TODO file.
 
 - Consider the possibility of being able to have all the three mode windows
-  pinnable at the same time.
+  displayed at the same time.
 
 - As of V3.0.1., calctool was modified to have "infinite" precision
   internally. This needs to be made available to the "power" users, but
@@ -51,9 +203,6 @@ Related to the Gtk2 version:
 
 MP - todo.
 ----------
-
-* Everytime the accuracy is changed, the menu items in the constant
-  menu should be reevaluated to that new accuracy value.
 
 * Shouldn't have to convert back to a double in make_number() in order
   to test if the number is too large to be displayed in fixed point.
