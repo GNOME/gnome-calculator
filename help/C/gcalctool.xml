@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://basil.ireland.sun.com:8080/docbook/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.2.58">
+  <!ENTITY appversion "4.2.65">
   <!ENTITY manrevision "2.0">
-  <!ENTITY date "February 2003">
+  <!ENTITY date "March 2003">
   <!ENTITY app "<application>gcalctool</application>">
 ]>
 <!-- 
@@ -101,12 +101,22 @@
 <!-- ============= Introduction ============================== -->
   <sect1 id="gcalctool-intro"> 
     <title>Introduction</title> 
-    <para>The &app; application is a financial and scientific calculator that performs a variety of mathematical functions. 
-&app; has three modes: Basic, Financial, and Scientific; each of these modes has 
-special functions. You can store your own functions and
-constants. You can also store numbers in 10 different
-memory registers, and easily retrieve and replace the numbers in the memory registers.
-</para> 
+    <para>The &app; application is a simple calculator that performs a variety of functions. 
+&app; has three modes:</para>
+     <itemizedlist>
+       <listitem>
+ <para><link linkend="gcalctool-basic-mode">Basic Mode</link> provides the standard calculator functions. You can also store numbers in 10 different memory registers, and easily retrieve and replace the numbers in the memory registers. Basic Mode is the default mode. All of the Basic Mode functions are also available in each of the other modes.
+         </para>
+       </listitem>
+       <listitem>
+         <para><link linkend="gcalctool-financial-mode">Financial Mode</link> provides several complex financial functions. 
+         </para>
+       </listitem>
+       <listitem>
+         <para><link linkend="gcalctool-scientific-mode">Scientific Mode</link> provides many additional mathematical functions, including trigonometric and logical functions. You can also store your own functions and constants, when using Scientific Mode. 
+         </para>
+       </listitem>
+     </itemizedlist>
   </sect1>
 
 <!-- =========== Getting Started ============================== -->
@@ -152,13 +162,13 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
                   methods:</para>
                 <itemizedlist>
                   <listitem>
-                         <para>Click on the &app; buttons to enter numbers and mathematical functions.</para>
+                         <para>Click on the &app; buttons to enter numbers and functions.</para>
                   </listitem>
                   <listitem>
-                         <para>Give focus to the &app; window, then use the keyboard or numeric keypad to specify the mathematical calculation that you want to perform.</para>
+                         <para>Give focus to the &app; window, then use the keyboard or numeric keypad to specify the calculation that you want to perform.</para>
                   </listitem>
                 </itemizedlist>
-                <para>The numbers that you enter, and the results of calculations, are displayed in the display area. You can enter up to forty digits.</para>
+                <para>The numbers that you enter, and the results of calculations, are displayed in the display area. You can enter numbers of up to forty digits.</para>
                 <para>To copy the result of a calculation, choose
                   <menuchoice>
                          <guimenu>Edit</guimenu>
@@ -181,7 +191,7 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
                          </textobject> 
                       </inlinemediaobject> 
                 symbol on a &app; button indicates that a popup menu will be displayed when you click on that button.</para>
-                <para>&app; automatically displays large numbers (>40 digits) and small decimal numbers as exponential numbers. For example, <literal>1.23e+37</literal> signifies 1.23 multiplied by 10 to the power of 37. If you enter 0.00001 and the accuracy is set to less than 5 radix places, &app; displays the number as 1e-5, which signifies 1 multiplied by 10 to the power of -5. For information about how to enter a number in exponential format, see <xref linkend="gcalctool-enter-exp"/>.</para>
+                <para>&app; automatically displays large numbers (>40 digits) and small numbers as exponential numbers. For example, <literal>1.23e+37</literal> signifies 1.23 multiplied by 10 to the power of 37. If you enter 0.00001 and the accuracy is set to less than 5 radix places, &app; displays the number as 1e-5, which signifies 1 multiplied by 10 to the power of -5. For information about how to enter a number in exponential format, see <xref linkend="gcalctool-enter-exp"/>.</para>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="gcalctool-basic-mode"> 
@@ -195,8 +205,8 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
     <sect3 id="gcalctool-set-acc"> 
       <title>To Set the Accuracy</title> 
       <para>To set the accuracy of the display area and of the memory registers, click on <guibutton>Acc</guibutton>, and select the appropriate accuracy level from the popup menu. Up to 9 significant digits (radix places) can be displayed. The default accuracy is 2 radix places. </para>
-      <para>The keyboard equivalent of <guibutton>Acc</guibutton> is <keycap>A</keycap>. If using the keyboard equivalent <keycap>A</keycap>, you can use the keyboard to specify the appropriate number of radix places. For example, <keycap>A</keycap> <keycap>4</keycap> specifies an accuracy of 4 decimal places.</para>
-      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation: </para>
+      <para>The keyboard equivalent of <guibutton>Acc</guibutton> is <keycap>A</keycap>. If using the keyboard equivalent <keycap>A</keycap>, you can use the keyboard to specify the appropriate number of radix places. For example, <keycap>A</keycap> <keycap>4</keycap> specifies an accuracy of 4 numeric places.</para>
+      <para>The examples in the following table show how the accuracy setting affects <replaceable>x</replaceable> in the display area, for the <literal>1 / 8 = <replaceable>x</replaceable></literal> calculation (using decimal base): </para>
                 <informaltable frame="all">
                   <tgroup cols="2" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -211,15 +221,15 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>2 radix places</guilabel></para></entry>
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>1 radix places</guilabel></para></entry>
                              <entry><para>1.2</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>3 radix places</guilabel></para></entry>
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>2 radix places</guilabel></para></entry>
                              <entry><para>1.25</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para><guibutton>Acc</guibutton> <guilabel>4 radix places</guilabel></para></entry>
+                             <entry><para><guibutton>Acc</guibutton> <guilabel>3 radix places</guilabel></para></entry>
                              <entry><para>1.250</para></entry>
                            </row>
 			 </tbody>
@@ -364,7 +374,7 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
                              <entry><para>Clear</para> </entry>
                              <entry><para><guibutton>Clr</guibutton></para></entry>
                              <entry><para><keycap>Delete</keycap></para></entry>
-                             <entry><para>Resets the current value in the display area to zero. <guibutton>Clr</guibutton> also deselects the <guilabel>Hyp</guilabel> and <guilabel>Inv</guilabel> check boxes.</para></entry>
+                             <entry><para>Resets the current value in the display area to zero. <guibutton>Clr</guibutton> also deselects the <guilabel>Hyp</guilabel> and <guilabel>Inv</guilabel> options in Scientific Mode.</para></entry>
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>0</para></entry>
                            </row>
@@ -435,10 +445,10 @@ memory registers, and easily retrieve and replace the numbers in the memory regi
                            </row>
                            <row valign="top">
                              <entry><para>Square</para> </entry>
-                             <entry><para><guibutton>x^2</guibutton></para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
                              <entry><para><keycap>@</keycap></para></entry>
                              <entry><para>Calculates the square of the current value in the display area.</para></entry>
-                             <entry><para>3 <guibutton>x^2</guibutton></para></entry>
+                             <entry><para>3 x<superscript>2</superscript></para></entry>
                              <entry><para>9</para></entry>
                            </row>
                            <row valign="top">
@@ -1054,8 +1064,9 @@ To calculate how long it will take to accumulate $120,000, put the following val
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-num-base"> 
       <title>To Set the Numeric Base</title> 
-      <para>To set the numeric base, select one of the buttons described in the following table: </para>
-                <informaltable frame="all">
+      <para>To set the numeric base, select one of the buttons described in <xref linkend="gcalctool-TBL-num-base"/>. </para>
+                <table id="gcalctool-TBL-num-base" frame="all">
+                  <title>Setting the Numeric Base</title> 
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1093,12 +1104,13 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
 			 </tbody>
 		  </tgroup>
-		</informaltable>
+		</table>
     </sect3>
     <sect3 id="gcalctool-display-type"> 
       <title>To Set the Display Type</title> 
-      <para>To set the display type, select one of the buttons described in the following table: </para>
-                <informaltable frame="all">
+      <para>To set the display type, select one of the buttons described in <xref linkend="gcalctool-TBL-display-type"/>. </para>
+                <table id="gcalctool-TBL-display-type" frame="all">
+                  <title>Setting the Display Type</title> 
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1131,12 +1143,13 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
 			 </tbody>
 		  </tgroup>
-		</informaltable>
+		</table>
     </sect3>
     <sect3 id="gcalctool-trig-type"> 
       <title>To Set the Trigonometric Type</title> 
-      <para>To set the trigonometric type, select one of the buttons described in the following table: </para>
-                <informaltable frame="all">
+      <para>To set the trigonometric type, select one of the buttons described in <xref linkend="gcalctool-TBL-trig-type"/>. </para>
+                <table id="gcalctool-TBL-trig-type" frame="all">
+                  <title>Setting the Trigonometric Type</title> 
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1169,12 +1182,13 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
 			 </tbody>
 		  </tgroup>
-		</informaltable>
+		</table>
     </sect3>
     <sect3 id="gcalctool-trig-options"> 
       <title>To Set the Trigonometric Options</title> 
-      <para>To set the trigonometric options, use the check boxes described in the following table: </para>
-                <informaltable frame="all">
+      <para>To set the trigonometric options, use the options described in <xref linkend="gcalctool-TBL-trig-options"/>. </para>
+                <table id="gcalctool-TBL-trig-options" frame="all">
+                  <title>Setting the Trigonometric Options</title> 
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1193,16 +1207,16 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            <row valign="top">
                              <entry><para>Hyperbolic Option Indicator</para> </entry>
                              <entry><para><guibutton>Hyp</guibutton></para></entry>
-                             <entry><para>Selects the hyperbolic option for use with the trigonometric functions. By default, this check box is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this check box.</para></entry>
+                             <entry><para>Selects the hyperbolic option for use with the trigonometric functions. By default, this option is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this option.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Inverse Option Indicator</para> </entry>
                              <entry><para><guibutton>Inv</guibutton></para></entry>
-                             <entry><para>Selects the inverse option for use with the trigonometric functions. By default, this check box is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this check box.</para></entry>
+                             <entry><para>Selects the inverse option for use with the trigonometric functions. By default, this option is not selected. Clicking on <guibutton>Clr</guibutton> will deselect this option.</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
-		</informaltable>
+		</table>
     </sect3>
     <sect3 id="gcalctool-trig-calc"> 
       <title>To Calculate Trigonometric Values</title> 
@@ -1235,7 +1249,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                          <tbody> 
                            <row valign="top">
                              <entry><para>Cosine</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>J</keycap></para></entry>
                              <entry><para>Calculates the cosine (<literal>cos</literal>) of the current value in the display area.</para></entry>
                              <entry><para>60 <guibutton>Cos</guibutton></para></entry>
@@ -1243,7 +1257,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Cosine (or Inverse Cosine)</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>J</keycap></para></entry>
                              <entry><para>Calculates the arc cosine (<literal>acos</literal>), also known as the inverse cosine, of the current value in the display area.</para></entry>
                              <entry><para>0.5 <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
@@ -1251,7 +1265,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Hyperbolic Cosine</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>J</keycap></para></entry>
                              <entry><para>Calculates the hyperbolic cosine (<literal>cosh</literal>) of the current value in the display area.</para></entry>
                              <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Cos</guibutton></para></entry>
@@ -1259,7 +1273,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Hyperbolic Cosine (or Inverse Hyperbolic Cosine)</para> </entry>
-                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Cos</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>J</keycap></para></entry>
                              <entry><para>Calculates the arc hyperbolic cosine (<literal>acosh</literal>), also known as the inverse hyperbolic cosine, of the current value in the display area.</para></entry>
                              <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
@@ -1267,7 +1281,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Sine</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>K</keycap></para></entry>
                              <entry><para>Calculates the sine (<literal>sin</literal>) of the current value in the display area.</para></entry>
                              <entry><para>90 <guibutton>Sin</guibutton></para></entry>
@@ -1275,7 +1289,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Sine (or Inverse Sine)</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>K</keycap></para></entry>
                              <entry><para>Calculates the arc sine (<literal>asin</literal>), also known as the inverse sine, of the current value in the display area.</para></entry>
                              <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
@@ -1283,7 +1297,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Hyperbolic Sine</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>K</keycap></para></entry>
                              <entry><para>Calculates the hyperbolic sine (<literal>sinh</literal>) of the current value in the display area.</para></entry>
                              <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Sin</guibutton></para></entry>
@@ -1291,7 +1305,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Hyperbolic Sine (or Inverse Hyperbolic Sine)</para> </entry>
-                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Sin</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>K</keycap></para></entry>
                              <entry><para>Calculates the arc hyperbolic sine (<literal>asinh</literal>), also known as the inverse hyperbolic sine, of the current value in the display area.</para></entry>
                              <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
@@ -1299,7 +1313,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Tangent</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>L</keycap></para></entry>
                              <entry><para>Calculates the tangent (<literal>tan</literal>) of the current value in the display area.</para></entry>
                              <entry><para>45 <guibutton>Tan</guibutton></para></entry>
@@ -1307,7 +1321,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Tangent (or Inverse Tangent)</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> checkbox not selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option not selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>L</keycap></para></entry>
                              <entry><para>Calculates the arc tangent (<literal>atan</literal>), also known as the inverse tangent, of the current value in the display area.</para></entry>
                              <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
@@ -1315,7 +1329,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Hyperbolic Tangent</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox not selected</para></entry>
+                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option not selected</para></entry>
                              <entry><para><keycap>L</keycap></para></entry>
                              <entry><para>Calculates the hyperbolic tangent (<literal>tanh</literal>) of the current value in the display area.</para></entry>
                              <entry><para>0.6 <guilabel>Hyp</guilabel> <guibutton>Tan</guibutton></para></entry>
@@ -1323,7 +1337,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>Arc Hyperbolic Tangent (or Inverse Hyperbolic Tangent)</para> </entry>
-                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> checkbox selected; <guilabel>Inv</guilabel> checkbox selected</para></entry>
+                             <entry><para><guibutton>Tan</guibutton>; <guilabel>Hyp</guilabel> option selected; <guilabel>Inv</guilabel> option selected</para></entry>
                              <entry><para><keycap>L</keycap></para></entry>
                              <entry><para>Calculates the arc hyperbolic tangent (<literal>atanh</literal>), also known as the inverse hyperbolic tangent, of the current value in the display area.</para></entry>
                              <entry><para>0.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
@@ -1419,16 +1433,16 @@ To calculate how long it will take to accumulate $120,000, put the following val
                              <entry><para><guibutton>Or</guibutton></para></entry>
                              <entry><para><keycap>|</keycap></para></entry>
                              <entry><para>Performs a logical OR operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>1000100010001000 <guibutton>Or</guibutton> 0001000100010001</para></entry>
-                             <entry><para>1001100110011001</para></entry>
+                             <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
+                             <entry><para>10011001</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Logical AND</para> </entry>
                              <entry><para><guibutton>And</guibutton></para></entry>
                              <entry><para><keycap>&amp;</keycap></para></entry>
                              <entry><para>Performs a logical AND operation on the current value in the display area and the next number entered, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>1010101010101010 <guibutton>And</guibutton> 0011001100110011</para></entry>
-                             <entry><para>10001000100010</para></entry>
+                             <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
+                             <entry><para>00110011</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Logical NOT</para> </entry>
@@ -1461,7 +1475,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
     <sect3 id="gcalctool-enter-exp"> 
       <title>To Enter Exponential Numbers</title> 
       <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button. The keyboard equivalent is <keycap>E</keycap>.</para>
-      <para>The <guibutton>Exp</guibutton> button allows you to enter numbers in scientific notation; that is, <replaceable>mantissa</replaceable> * 10^<replaceable>exponent</replaceable>. The current (non-zero) value in the display area is the mantissa; if the current value is zero, the mantissa is 1.0. The next number entered is the exponent.</para>
+      <para>The <guibutton>Exp</guibutton> button allows you to enter numbers in scientific notation; that is, <replaceable>mantissa</replaceable> * 10<superscript><replaceable>exponent</replaceable></superscript>. The current (non-zero) value in the display area is the mantissa; if the current value is zero, the mantissa is 1.0. The next number entered is the exponent.</para>
       <para>When you click on <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 10 to the power of the next number that you enter. For example, if you enter <guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> the calculator displays 500. Note that changing the sign of the number (using the <guibutton>+/-</guibutton> button) must be the last part of the operation.</para>
       <para>To enter a number in exponential format, use the guidelines in the following table: </para>
                 <informaltable frame="all">
@@ -1713,16 +1727,16 @@ To calculate how long it will take to accumulate $120,000, put the following val
                              <entry><para><guibutton>&amp;16</guibutton></para></entry>
                              <entry><para><keycap>]</keycap></para></entry>
                              <entry><para>Truncates the current value in the display area and returns a 16-bit unsigned integer.</para></entry>
-                             <entry><para>11101110111011110000 <guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>1110111011110000 <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFF</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Get a 32-Bit Unsigned Integer</para> </entry>
                              <entry><para><guibutton>&amp;32</guibutton></para></entry>
                              <entry><para><keycap>[</keycap></para></entry>
                              <entry><para>Truncates the current value in the display area and returns a 32-bit unsigned integer.</para></entry>
-                             <entry><para>111111111111111111111111111111110001 <guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>11111111111111111111111111110001 <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>FFFFFFFF</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1764,7 +1778,7 @@ To calculate how long it will take to accumulate $120,000, put the following val
                              <entry><para>Provide precedence in arithmetic calculations; calculations within parentheses are performed first. If parentheses are not used, arithmetic calculations are performed from left to right with no arithmetic precedence. Parentheses can be nested to any level. When the last parenthesis is matched, the display area is updated.</para></entry>
                              <entry>
                                <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
-                               <para>2 <guibutton>+</guibutton><guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
                              </entry>
                              <entry>
                                <para>20</para>
@@ -1773,26 +1787,26 @@ To calculate how long it will take to accumulate $120,000, put the following val
                            </row>
                            <row valign="top">
                              <entry><para>e to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para><guibutton>e^x</guibutton></para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
                              <entry><para><keycap>{</keycap></para></entry>
                              <entry><para>Calculates the value of <literal>e</literal> raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 <guibutton>e^x</guibutton></para></entry>
+                             <entry><para>2 e<superscript>x</superscript></para></entry>
                              <entry><para>7.39</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>10 to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para><guibutton>10^x</guibutton></para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
                              <entry><para><keycap>}</keycap></para></entry>
                              <entry><para>Calculates the value of 10 raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 <guibutton>10^x</guibutton></para></entry>
+                             <entry><para>2 10<superscript>x</superscript></para></entry>
                              <entry><para>100</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>y to the <replaceable>x</replaceable> Power</para> </entry>
-                             <entry><para><guibutton>y^x</guibutton></para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
                              <entry><para><keycap>y</keycap></para></entry>
                              <entry><para>Raises the current value in the display area to the power of the next value entered.</para></entry>
-                             <entry><para>2 <guibutton>y^x</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>16</para></entry>
                            </row>
                            <row valign="top">
@@ -1845,8 +1859,13 @@ With parentheses:
                 <title>Error Conditions</title>
                 <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. For example, if you try to
                   calculate the log of a negative number, the calculator displays the word <literal>Error</literal>.
-                  To clear the error, click on <guibutton>Clr</guibutton>.</para>
+                  To clear the error, click on <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
          </sect2>
+         <sect2 id="gcalctool-input-mode">
+                <title>To Change the Input Mode</title>
+                <para>To change the input mode, right-click in the text window, then select <guimenuitem>Input Methods</guimenuitem>. </para>
+         </sect2>
+
   </sect1>
 <!-- ============= Quitting ============================= -->
   <sect1 id="gcalctool-quit"> 
@@ -2084,7 +2103,7 @@ With parentheses:
                            </row>
                            <row valign="top">
                              <entry><para><keycap>y</keycap></para></entry>
-                             <entry><para><guibutton>y^x</guibutton></para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
                              <entry><para>y to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
@@ -2180,7 +2199,7 @@ With parentheses:
                            </row>
                            <row valign="top">
                              <entry><para><keycap>@</keycap></para></entry>
-                             <entry><para><guibutton>x^2</guibutton></para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
                              <entry><para>Square</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para> </entry>
                            </row>
@@ -2204,7 +2223,7 @@ With parentheses:
                            </row>
                            <row valign="top">
                              <entry><para><keycap>{</keycap></para></entry>
-                             <entry><para><guibutton>e^x</guibutton></para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
                              <entry><para>e to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
@@ -2216,7 +2235,7 @@ With parentheses:
                            </row>
                            <row valign="top">
                              <entry><para><keycap>}</keycap></para></entry>
-                             <entry><para><guibutton>10^x</guibutton></para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
                              <entry><para>10 to the <replaceable>x</replaceable> Power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
@@ -2243,6 +2262,101 @@ With parentheses:
                              <entry><para><guibutton>Clr</guibutton></para></entry>
                              <entry><para>Clear</para> </entry>
                              <entry><para><xref linkend="gcalctool-erase-char"/></para> </entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-equiv-sci-options" frame="all">
+                  <title>Quick Reference for Keyboard Equivalents of &app; Scientific Mode Options</title> 
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Keyboard Equivalent</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Option</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Function</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>See</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
+                             <entry><para>Gradients</para></entry>
+                             <entry><para>Set the trigonometric type to Gradients.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para>Bin</para></entry>
+                             <entry><para>Set the numeric base to binary (base 2).</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para>Dec</para></entry>
+                             <entry><para>Set the numeric base to decimal (base 10).</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para>Fix</para></entry>
+                             <entry><para>Set the display type to Fixed-Point format.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>g</keycap></keycombo></para></entry>
+                             <entry><para>Degrees</para></entry>
+                             <entry><para>Set the trigonometric type to Degrees.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para>Inv</para></entry>
+                             <entry><para>Select the inverse option for use with the trigonometric functions.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>n</keycap></keycombo></para></entry>
+                             <entry><para>Eng</para></entry>
+                             <entry><para>Set the display type to Engineering format.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para>Oct</para></entry>
+                             <entry><para>Set the numeric base to octal (base 8).</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para>Radians</para></entry>
+                             <entry><para>Set the trigonometric type to Radians.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para>Sci</para></entry>
+                             <entry><para>Set the display type to Scientific format.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
+                             <entry><para>Hex</para></entry>
+                             <entry><para>Set the numeric base to hexadecimal (base 16).</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>y</keycap></keycombo></para></entry>
+                             <entry><para>Hyp</para></entry>
+                             <entry><para>Select the hyperbolic option for use with the trigonometric functions.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
