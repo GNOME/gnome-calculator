@@ -593,13 +593,13 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    N_("X"),
+    N_("*"),
     N_(
-      "X\n"
+      "*\n"
       "\n" 
       "Multiplication\n"
       "\n"
-      "Keyboard equivalent:   x or *\n"
+      "Keyboard equivalent:   * or x\n"
       "\n"
       "This key takes the last number entered and\n"
       "multiplies it by the next number entered."
