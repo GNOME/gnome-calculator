@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "4.2.81">
-  <!ENTITY manrevision "2.3">
-  <!ENTITY date "April 2003">
+  <!ENTITY appversion "4.2.94">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "June 2003">
   <!ENTITY app "<application>gcalctool</application>">
 ]>
 <!-- 
@@ -70,6 +70,15 @@
       <revision> 
 		<revnumber>gcalctool Manual V&manrevision;</revnumber> 
 		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME Documentation Team
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+      <revision> 
+		<revnumber>gcalctool Manual V2.3</revnumber> 
+		<date>April 2003</date> 
 		<revdescription> 
 	  		<para role="author">Sun GNOME Documentation Team
 	  		</para>
@@ -264,7 +273,7 @@
                          <para>Give focus to the &app; window, then use the keyboard or numeric keypad to specify the calculation that you want to perform. For a complete list of keyboard shortcuts, see <xref linkend="gcalctool-keyboard-shortcut"/>.</para>
                   </listitem>
                 </itemizedlist>
-                <para>The &app; application automatically displays numbers with more than 40 digits, and small numbers, as exponential numbers. For example, the following table shows the value that is displayed when you use the decimal number base with an accuracy of 2 significant places: </para>
+                <para>The &app; application automatically displays numbers with more than 40 digits, and small numbers, as exponential numbers. For example, the following table shows the value that is displayed when you use the decimal numeric base with an accuracy of 2 significant places: </para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
           <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -342,7 +351,7 @@
                            <row valign="top">
                              <entry><para>Numerals</para> </entry>
                              <entry><para><guibutton>0</guibutton> to <guibutton>9</guibutton> inclusive</para></entry>
-                             <entry><para>In decimal and hexadecimal base, all numerals are active. In octal base, <guibutton>8</guibutton> and <guibutton>9</guibutton> are inactive. In binary base, only <guibutton>0</guibutton> and <guibutton>1</guibutton> are active. The default base is decimal.</para></entry>
+                             <entry><para>In decimal and hexadecimal base, all numerals are available. In octal base, <guibutton>8</guibutton> and <guibutton>9</guibutton> are unavailable. In binary base, only <guibutton>0</guibutton> and <guibutton>1</guibutton> are available. The default base is decimal.</para></entry>
                              <entry><para><guibutton>1</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
@@ -1587,7 +1596,8 @@ To calculate the time period necessary to accumulate $120,000, put the following
     </sect3>
     <sect3 id="gcalctool-edit-const"> 
       <title>To Use Constant Values</title> 
-      <para>Click on <guibutton>Con</guibutton> to display the list of defined constant values. Select a constant from the menu to enter its value in the display area. If you use the keyboard shortcut <keycap>#</keycap>, you can use the keyboard to specify the constant, as shown in the following example:</para>
+      <para>Click on <guibutton>Con</guibutton> to display the list of defined constant values. All constant values are specified in decimal numeric base, even if the current numeric base is not decimal.</para>
+      <para>Select a constant from the menu to enter its value in the display area. If you use the keyboard shortcut <keycap>#</keycap>, you can use the keyboard to specify the constant, as shown in the following example:</para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
           <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -1608,7 +1618,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
           </tbody>
         </tgroup>
       </informaltable>
-      <para>The &app; application provides ten default constant values, as described in the following table: </para>
+      <para>The &app; application provides ten default constant values, as described in the following table:</para>
                 <informaltable frame="all">
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -1692,7 +1702,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>To store a new constant or edit an existing constant, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Con</guibutton> and select <guilabel>Edit Constants...</guilabel> from the popup menu. </para>
+           <para>Click on <guibutton>Con</guibutton> and select <guilabel>Edit Constants</guilabel> from the popup menu. </para>
         </listitem>
         <listitem>
       <para>In the <guilabel>Edit Constants</guilabel> window, select the constant that you want to overwrite or edit.</para>
@@ -1738,7 +1748,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
       <para>To store a new function or edit an existing function, perform the following steps:</para>
       <orderedlist>
         <listitem>
-           <para>Click on <guibutton>Fun</guibutton> and select <guilabel>Edit Functions...</guilabel> from the popup menu.</para>
+           <para>Click on <guibutton>Fun</guibutton> and select <guilabel>Edit Functions</guilabel> from the popup menu.</para>
         </listitem>
         <listitem>
       <para>In the <guilabel>Edit Functions</guilabel> window, select a blank entry, or the function that you want to overwrite.</para>
@@ -1915,7 +1925,7 @@ To calculate the time period necessary to accumulate $120,000, put the following
                            <row valign="top">
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><guibutton>A</guibutton> to <guibutton>E</guibutton> inclusive</para></entry>
-                             <entry><para>These numerals are active in hexadecimal base only.</para></entry>
+                             <entry><para>These numerals are available in hexadecimal base only.</para></entry>
                              <entry><para><guibutton>B</guibutton></para></entry>
                              <entry><para>B</para></entry>
                            </row>
@@ -1959,8 +1969,15 @@ precedence. To apply arithmetic precedence, use parentheses.
          </sect2> 
          <sect2 id="gcalctool-recognize-error">
                 <title>Error Conditions</title>
-                <para>If you perform an invalid calculation, the calculator displays the word <literal>Error</literal> in the display area to indicate an error. 
-                  To clear the error, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
+                <para>If you perform an invalid calculation, &app; indicates the error condition as follows:
+<itemizedlist>
+<listitem><para>Displays the word <literal>Error</literal> in the display area.</para></listitem>
+<listitem><para>Makes all calculator buttons unavailable, except <guibutton>Clr</guibutton>.</para></listitem>
+<listitem><para>Makes all calculator options unavailable.</para></listitem>
+<listitem><para>Makes all calculator menu items unavailable, except <menuchoice><guimenu>Calculator</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> and <menuchoice><guimenu>Help</guimenu><guimenuitem>Contents</guimenuitem></menuchoice>.</para></listitem>
+</itemizedlist>
+</para>
+<para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
          </sect2>
          <sect2 id="gcalctool-input-mode">
                 <title>To Change the Input Mode</title>
@@ -2484,7 +2501,7 @@ precedence. To apply arithmetic precedence, use parentheses.
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Values...</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Values</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the <guilabel>Insert ASCII Values</guilabel> window</para> </entry>
                              <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
                            </row>
