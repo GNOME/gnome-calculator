@@ -1,7 +1,6 @@
 # Translation of gcalctool to Croatian
 # Copyright (C) Croatian team
 # Translators: Automatski Prijevod <>,Kresimir Kalafatic <>,Marija Lucevnjak <marija.lucevnjak@inet.hr>,Mato Kutlić <mate@iskraemeco.hr>,Nikola Planinac <>,Robert Sedak <robert.sedak@sk.tel.hr>,Tanja Minarik <tanja@finte.net>,pr pr <delacko@192.168.0.1>,
-
 # Translation of gcalctool to Croatian
 # Copyright (C) Croatian team
 # Translators: Automatski Prijevod <>,Kresimir Kalafatic <>,Marija Lucevnjak <marija.lucevnjak@inet.hr>,Mato Kutlić <mate@iskraemeco.hr>,Nikola Planinac <>,Robert Sedak <robert.sedak@sk.tel.hr>,Tanja Minarik <tanja@finte.net>,pr pr <delacko@192.168.0.1>,
@@ -11,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 0\n"
-"POT-Creation-Date: 2004-01-02 14:39+0100\n"
+"POT-Creation-Date: 2004-02-03 14:10-0800\n"
 "PO-Revision-Date: 2004-01-02 20:32+CET\n"
 "Last-Translator: Robert Sedak <robert.sedak@sk.tel.hr>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -305,6 +304,7 @@ msgid "Subtract"
 msgstr "Oduzmi"
 
 #: gcalctool/calctool.c:345
+#, c-format
 msgid "%"
 msgstr "%"
 
@@ -621,16 +621,19 @@ msgid "Ten to the x"
 msgstr "Deset na X"
 
 #: gcalctool/calctool.c:793
-msgid "y<sup><i>x</i></sup>"
-msgstr "y<sup><i>x</i></sup>"
+#, fuzzy
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>2</i></sup>"
 
 #: gcalctool/calctool.c:794
-msgid "y to the power of displayed value"
-msgstr "y na potenciju prikazane vrijednosti"
+#, fuzzy
+msgid "Raise displayed value to the power of y"
+msgstr "Pomjeri prikazanu vrijednost 1–15 mjesta ulijevo"
 
 #: gcalctool/calctool.c:795
-msgid "Y to the x"
-msgstr "Y na X"
+#, fuzzy
+msgid "X to the y"
+msgstr "e na X"
 
 #: gcalctool/calctool.c:803
 msgid "<i>x</i>!"
@@ -672,7 +675,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Heksadecimalna znamenka E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1118
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1116
 msgid "F"
 msgstr "F"
 
@@ -736,7 +739,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Heksadecimalna znamenka B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1110
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1108
 msgid "C"
 msgstr "C"
 
@@ -825,60 +828,66 @@ msgid "cubic centimeters or cubic inches"
 msgstr "kubnih centimetara ili kubnih inča"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#.  *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#: gcalctool/calctool.c:1098 gcalctool/display.c:280 gcalctool/functions.c:958
-#: gcalctool/functions.c:1086 gcalctool/functions.c:1125
-#: gcalctool/functions.c:1179 gcalctool/functions.c:1272
-#: gcalctool/functions.c:1273 gcalctool/graphics.c:102 gcalctool/mp.c:1988
+#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
+#.
+#: gcalctool/calctool.c:1098 gcalctool/display.c:298 gcalctool/functions.c:959
+#: gcalctool/functions.c:1087 gcalctool/functions.c:1126
+#: gcalctool/functions.c:1180 gcalctool/functions.c:1273
+#: gcalctool/functions.c:1274 gcalctool/graphics.c:102 gcalctool/mp.c:1988
 msgid "Error"
 msgstr "Greška"
 
-#: gcalctool/functions.c:1292
+#: gcalctool/functions.c:1293
 msgid "Numeric stack error"
 msgstr "Greška numeričkog stacka"
 
-#: gcalctool/functions.c:1313
+#: gcalctool/functions.c:1314
 msgid "Operand stack error"
 msgstr "Greška stacka operanda"
 
-#: gcalctool/get.c:160
+#: gcalctool/get.c:162
 msgid "-a needs accuracy value"
 msgstr "-a zahtjeva vrijednost točnosti"
 
-#: gcalctool/get.c:164 gcalctool/get.c:307
+#: gcalctool/get.c:166 gcalctool/get.c:320
+#, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: točnost treba biti u opsegu 0–9\n"
 
-#: gcalctool/get.c:189
+#: gcalctool/get.c:191
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s kao slijedeći argument.\n"
 
 #. No calculator error initially.
-#.  Not entering an exponent number.
-#.  No pending arithmetic operation.
-#.  No User supplied title line.
-#: gcalctool/get.c:265
+#. Not entering an exponent number.
+#. No pending arithmetic operation.
+#. No User supplied title line.
+#: gcalctool/get.c:278
 msgid "calculator"
 msgstr "kalkulator"
 
-#: gcalctool/get.c:321
+#: gcalctool/get.c:334
+#, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: osnova treba biti 2, 8, 10 ili 16\n"
 
-#: gcalctool/get.c:336
+#: gcalctool/get.c:349
+#, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: neispravan način prikaza [%s]\n"
 
-#: gcalctool/get.c:351
+#: gcalctool/get.c:364
+#, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: neispravan mod [%s]\n"
 
-#: gcalctool/get.c:365
+#: gcalctool/get.c:378
+#, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: neispravan trigonometrijski mod [%s]\n"
 
-#: gcalctool/get.c:411
+#: gcalctool/get.c:424
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -887,17 +896,18 @@ msgstr ""
 "%s inačica %s\n"
 "\n"
 
-#: gcalctool/get.c:412
+#: gcalctool/get.c:425
+#, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Upotreba: %s: [-D] [-E] [-a točnost] "
 
-#: gcalctool/get.c:413
+#: gcalctool/get.c:426
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
-#.  in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:912 gcalctool/gtk.c:1049
+#. in popup menus
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:914 gcalctool/gtk.c:1047
 msgid "R"
 msgstr "R"
 
@@ -1109,66 +1119,75 @@ msgstr "_Znak:"
 msgid "_Insert"
 msgstr "_Ubaci"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Constants"
 msgstr "Uredi konstante"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:704
 msgid "Edit Functions"
 msgstr "Uredi funkcije"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:728
 msgid "Note:"
 msgstr "Bilješka:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:729
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Sve konstantne vrijednosti se navode u decimalnom brojnom sustavu"
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:739
 msgid "Click a _value or description to edit it:"
 msgstr "Kliknite na _vrijednost ili opis da ih uredite:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:762
 msgid "No."
 msgstr "&Ne"
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:764
 msgid "Value"
 msgstr "Vrijednost"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:766
 msgid "Description"
 msgstr "Opis"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool.desktop.in.h:1 gcalctool/gtk.c:800 gcalctool/gtk.c:802
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:984
+#: gcalctool/gtk.c:982
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:992
+#: gcalctool/gtk.c:990
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1040
+#: gcalctool/gtk.c:1038
 msgid "Memory Registers"
 msgstr "Memorijski registri"
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1097
 msgid "Edit Constants..."
 msgstr "Uredi konstante..."
 
-#: gcalctool/gtk.c:1099
+#: gcalctool/gtk.c:1097
 msgid "Edit Functions..."
 msgstr "Uredi funkcije..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Podešavanje osobnih preferenci"
+
+#~ msgid "y<sup><i>x</i></sup>"
+#~ msgstr "y<sup><i>x</i></sup>"
+
+#~ msgid "y to the power of displayed value"
+#~ msgstr "y na potenciju prikazane vrijednosti"
+
+#~ msgid "Y to the x"
+#~ msgstr "Y na X"
 
 #~ msgid "Set trigonometric type to gradients"
 #~ msgstr "Trigonometrijske funkcije rade sa gradijanima"
@@ -1181,4 +1200,3 @@ msgstr "Podešavanje osobnih preferenci"
 
 #~ msgid "x!"
 #~ msgstr "x!"
-

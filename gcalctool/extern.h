@@ -19,9 +19,6 @@
  *  02111-1307, USA.
  */
 
-#ifndef EXTERN_H
-#define EXTERN_H
-
 extern Vars v;                 /* Calctool variables and options. */
 
 extern char *base_str[];       /* Strings for each base value. */
@@ -53,5 +50,3 @@ extern int cur_pos[];          /* Current positions - left/right handed. */
 extern struct button b_buttons[];         /* Basic mode button values. */
 extern struct button f_buttons[];         /* Financial mode button values. */
 extern struct button s_buttons[];         /* Scientific mode button values. */
-
-#endif

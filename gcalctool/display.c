@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2003 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2004 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,12 +21,12 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 #include "calctool.h"
 #include "extern.h"
 
 static char *make_eng_sci(int *, int);
 static char *make_fixed(int *, int, int);
+
 
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base.
@@ -132,6 +132,7 @@ char_val(char chr)
     }
 }
 
+
 void
 clear_display(int initialise)
 {
@@ -155,17 +156,25 @@ clear_display(int initialise)
 }
 
 
-// FIXME: not a right location for this function
 struct button *
 copy_button_info(struct button *old)
 {
     struct button *new;
 
-    int len = sizeof(struct button);
     new = malloc(sizeof(struct button));
-    assert(new);
-    memcpy(new, old, len);
-    return new;
+
+/* Note that copies of the strings aren't done here as they aren't needed. */
+
+    new->str = old->str;
+    new->hstr = old->hstr;
+    new->astr = old->astr;
+    new->mods[0] = old->mods[0];
+    new->value[0] = old->value[0];
+    new->func_char = old->func_char;
+    new->mtype = old->mtype;
+    new->func = old->func;
+
+    return(new);
 }
 
 
@@ -181,10 +190,6 @@ initialise()
     i = 0;
     mpcim(&i, v->MPresult);         /* No previous result yet. */
     mpcim(&i, v->MPlast_input);
-
-    v->new_input = 1;               /* Value zero is on calculator display */
-    free(v->expression);
-    v->expression = NULL;
 }
 
 
@@ -522,7 +527,7 @@ paren_disp(char c)
                 show_display(v->MPdisp_val);
                 return;
             }
-        } else if (v->display[n-1] == ')') v->noparens++;
+        }
         v->display[n-1] = '\0';
 
     } else if (c == '(') {
