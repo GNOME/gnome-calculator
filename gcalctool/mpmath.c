@@ -17,9 +17,6 @@
  *  02111-1307, USA.
  */
 
-#ifndef MPMATH_C
-#define MPMATH_C
-
 #include <assert.h>
 
 #include "calctool.h"    /* FIXME: include only needed stuff. */
@@ -773,4 +770,3 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
     mpcdm(&dval, t);
 }
 
-#endif /*MPMATH_C*/

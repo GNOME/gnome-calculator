@@ -19,9 +19,6 @@
  *  02111-1307, USA.
  */
 
-#ifndef PARSER_C
-#define PARSER_C
-
 #include <assert.h>
 #include <string.h>
 
@@ -45,4 +42,3 @@ ret(int s[MP_SIZE])     /* Copy result value. */
     parser_state.flags |= ANS;
 }
 
-#endif /*PARSER_C*/

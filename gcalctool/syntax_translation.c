@@ -19,9 +19,6 @@
  *  02111-1307, USA.
  */
 
-#ifndef SYNTAX_TRANSLATION_C
-#define SYNTAX_TRANSLATION_C
-
 #include <stdio.h>
 #include <libintl.h>
 #include <malloc.h>
@@ -181,4 +178,3 @@ translate_tokens(char **str)
     }
 }
 
-#endif /*SYNTAX_TRANSLATION_C*/
