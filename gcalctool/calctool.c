@@ -770,7 +770,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     do_expno
 },
 {
-    N_("e<sup>x</sup>"),
+    N_("<i>e</i><sup>x</sup>"),
     N_("e to the power of displayed value"),
     N_("E to the x"),
     { GDK_SHIFT_MASK, 0 },
