@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-08 07:01-0800\n"
-"PO-Revision-Date: 2004-12-17 14:11+0200\n"
+"POT-Creation-Date: 2005-02-19 18:28+0200\n"
+"PO-Revision-Date: 2005-02-19 18:28+0200\n"
 "Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -889,35 +889,36 @@ msgstr "Παράγοντας μετατροπής από κυβικά εκατο
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: gcalctool/functions.c:326
+#: gcalctool/functions.c:399
 msgid "Previous expression"
 msgstr "Προηγούμνε διατύπωση"
 
-#: gcalctool/functions.c:414
+#: gcalctool/functions.c:479
 msgid "Malformed expression"
 msgstr "Κακογραμμένη διατύπωση"
 
-#: gcalctool/functions.c:823
-msgid "Malformed function"
-msgstr "Καοκογραμμένη εξίσωση"
-
-#: gcalctool/functions.c:966
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr ""
-
-#: gcalctool/functions.c:990
-msgid "Malformed parenthesis expression"
-msgstr "Κακογραμμένη διατύπωση παρένθεσης"
-
-#: gcalctool/functions.c:1013 gcalctool/functions.c:1261
+#: gcalctool/functions.c:800 gcalctool/functions.c:1114
+#: gcalctool/functions.c:1362
 msgid "No sane value to store"
 msgstr "Δεν υπάρχει λογική τιμή για αποθήκευση"
 
-#: gcalctool/functions.c:1309
+#: gcalctool/functions.c:924
+msgid "Malformed function"
+msgstr "Καοκογραμμένη εξίσωση"
+
+#: gcalctool/functions.c:1067
+msgid "Cleared display, prefix without an operator is not allowed"
+msgstr "Εκκαθάρισης οθόνης, δεν επιτρέπεται πρόθεμα χωρίς χειριστή"
+
+#: gcalctool/functions.c:1091
+msgid "Malformed parenthesis expression"
+msgstr "Κακογραμμένη διατύπωση παρένθεσης"
+
+#: gcalctool/functions.c:1410
 msgid "Numeric stack error"
 msgstr "Αριθμητικό σφάλμα"
 
-#: gcalctool/functions.c:1330
+#: gcalctool/functions.c:1431
 msgid "Operand stack error"
 msgstr "Σφάλμα Operand stack"
 
@@ -1157,11 +1158,11 @@ msgstr "Εμφάνιση καταχωρητών μνήμης"
 
 #: gcalctool/gtk.c:306
 msgid "_Use Arithmetic Precedence"
-msgstr ""
+msgstr "_Χρήση προτεραιότητας τελεστών"
 
 #: gcalctool/gtk.c:307
 msgid "Use Arithmetic Precedence"
-msgstr ""
+msgstr "Χρήση·προτεραιότητας·τελεστών"
 
 #: gcalctool/gtk.c:312
 msgid "_0 significant places"
@@ -1252,24 +1253,20 @@ msgid "Set other precision"
 msgstr "Ορισμός άλλης ακρίβειας"
 
 #: gcalctool/gtk.c:338
-#, fuzzy
 msgid "_Basic"
-msgstr "Βασική"
+msgstr "_Βασική"
 
 #: gcalctool/gtk.c:340
-#, fuzzy
 msgid "_Advanced"
-msgstr "Βασική"
+msgstr "Π_ροχωρημένη"
 
 #: gcalctool/gtk.c:342
-#, fuzzy
 msgid "_Financial"
-msgstr "Εμπορική"
+msgstr "Ε_μπορική"
 
 #: gcalctool/gtk.c:344
-#, fuzzy
 msgid "_Scientific"
-msgstr "Επιστημονική"
+msgstr "Επι_στημονική"
 
 #: gcalctool/gtk.c:504
 msgid "translator_credits"
@@ -1381,15 +1378,15 @@ msgstr ""
 "Ορισμός ακρίβειας από 0 έως %d αριθμητικά σημεία. Τώρα είναι ορισμένη σε %"
 "d·σημεία.·[a]"
 
-#: gcalctool/gtk.c:2160
+#: gcalctool/gtk.c:2162
 msgid "Activated no operator precedence mode"
-msgstr ""
+msgstr "Ενεργή χωρίς λειτουργία·προτεραιότητας·τελεστών"
 
-#: gcalctool/gtk.c:2169
+#: gcalctool/gtk.c:2171
 msgid "Activated expression mode with operator precedence"
-msgstr ""
+msgstr "Λειτουργία ενεργής έκφρασης με προτεραιότητα·τελεστών"
 
-#: gcalctool/gtk.c:2389
+#: gcalctool/gtk.c:2391
 msgid "Accuracy value out of range"
 msgstr "Ακριβής τιμή εκτός εύρους"
 
@@ -1473,7 +1470,6 @@ msgstr "cos"
 
 #. Double-declining deprecation
 #: gcalctool/syntax_translation.c:50
-#, fuzzy
 msgid "ddb"
 msgstr "ddb"
 
@@ -1484,7 +1480,6 @@ msgstr "exp"
 
 #. Fraction of a decimal number
 #: gcalctool/syntax_translation.c:52
-#, fuzzy
 msgid "frac"
 msgstr "frac"
 
@@ -1518,8 +1513,12 @@ msgstr "not"
 msgid "or"
 msgstr "or"
 
-#. Periodic payment *                        N_("pmt")   },
-#. { /* Present value
+#. Periodic payment
+#: gcalctool/syntax_translation.c:60
+msgid "pmt"
+msgstr "pmt"
+
+#. Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
@@ -1597,9 +1596,6 @@ msgstr "xor"
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Εκτέλεση υπολογισμών"
-
-#~ msgid "pmt"
-#~ msgstr "pmt"
 
 #~ msgid "_Basic mode"
 #~ msgstr "_Βασική λειτουργία"
