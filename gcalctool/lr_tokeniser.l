@@ -88,11 +88,13 @@ SEPARATOR "e+"|"e-"
 "clr" {return tCLR;}
 
 {DIGIT}+ {
+  if (strlen(yytext) > 40) parser_state.error = EINVAL;
   MPstr_to_num(yytext, v->base, lrlval.int_t);
   return tINUMBER;
 }
 
 {DIGIT}*{DECIMAL}{DIGIT}+ {
+  if (strlen(yytext) > 40) parser_state.error = EINVAL;
   MPstr_to_num(yytext, v->base, lrlval.int_t);
   return tDNUMBER;
 }

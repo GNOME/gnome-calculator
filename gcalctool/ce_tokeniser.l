@@ -40,6 +40,7 @@ HEX     [0-9]|[A-F]|[a-f]
 BIN     "0"|"1"
 OCT     [0-7]
 NUMBER  [DIGIT}*{DECIMAL}{DIGIT}+|{DIGIT}
+SEPARATOR "e+"|"e-"
 
 %%
 
@@ -92,6 +93,38 @@ celval.integer = atoi(yytext);
 return tREG;
 }
 
+{DIGIT}+ {
+if (strlen(yytext) > 40) parser_state.error = EINVAL;
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tINUMBER;
+}
+
+{DIGIT}*{DECIMAL}{DIGIT}+ {
+if (strlen(yytext) > 40) parser_state.error = EINVAL;
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tDNUMBER;
+}
+
+{DIGIT}+{SEPARATOR}{DIGIT}+ {
+  MPstr_to_num(yytext, v->base, celval.int_t);
+  return tDNUMBER;
+}
+
+[ \t\n]
+.        {return *yytext; }
+
+%% 
+
+void
+reset_ce_tokeniser()
+{
+ce_flush_buffer(YY_CURRENT_BUFFER);
+
+}
+
+#if 0
+// TO BE USED LATER
+
 {HEX}+"h" {
 // TODO: fix memory leak (look also following sections)
 char *number = ce_strndup(yytext, strlen(yytext)-1);
@@ -121,11 +154,6 @@ free(number);
 return tINUMBER;
 }
 
-{DIGIT}+ {
-MPstr_to_num(yytext, v->base, celval.int_t);
-return tINUMBER;
-}
-
 {DIGIT}*{DECIMAL}{DIGIT}+"d" {
 char *number = ce_strndup(yytext, strlen(yytext)-1);
 MPstr_to_num(number, DEC, celval.int_t);
@@ -133,19 +161,4 @@ free(number);
 return tDNUMBER;
 }
 
-{DIGIT}*{DECIMAL}{DIGIT}+ {
-MPstr_to_num(yytext, v->base, celval.int_t);
-return tDNUMBER;
-}
-
-[ \t\n]
-.        {return *yytext; }
-
-%% 
-
-void
-reset_ce_tokeniser()
-{
-ce_flush_buffer(YY_CURRENT_BUFFER);
-
-}
+#endif
