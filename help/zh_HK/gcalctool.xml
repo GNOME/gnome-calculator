@@ -1,0 +1,2572 @@
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "4.2.103">
+  <!ENTITY manrevision "2.5.1">
+  <!ENTITY date "September 2003">
+  <!ENTITY app "<application>Calculator</application>">
+  <!ENTITY ug "GNOME Desktop User Guide">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_hk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&app; 手冊 V&manrevision;</title>
+
+    <copyright> 
+      <year>2003 年</year> 
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+    <publisher> 
+      <publishername> GNOME 文件專案 </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author> 
+		<firstname>Sun</firstname> 
+		<surname>GNOME 文件小組</surname> 
+		<affiliation> 
+	  		<orgname>Sun Microsystems</orgname> 
+		</affiliation> 
+      </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+     maintainers,  etc. Commented out by default.
+     
+      <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+	  		<orgname>Latin Translation Team</orgname> 
+	  		<address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+      <revision> 
+		<revnumber>計算機手冊 V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.5</revnumber> 
+		<date>2003 年 7 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.4</revnumber> 
+		<date>2003 年 6 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.3</revnumber> 
+		<date>2003 年 4 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.2</revnumber> 
+		<date>2003 年 4 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.1</revnumber> 
+		<date>2003 年 3 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool 手冊 V2.0</revnumber> 
+		<date>2003 年 3 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME 文件小組
+	  		</para>
+	  		<para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>本手冊的內容是說明 &appversion; 版的 &app;。
+    </releaseinfo>
+    <legalnotice> 
+      <title>回饋</title>
+      <para>關於本 &app; 應用程式或
+      手冊，如果要報告錯誤或提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>gcalctool</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>計算機</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="gcalctool-intro"> 
+    <title>介紹</title>
+    <para>&app; 應用程式含有多種函數可以處理不同類型的數學問題。</para>
+    <para>&app; 應用程式具有下列的模式：</para>
+     <variablelist>
+        <varlistentry>
+        <term><link linkend="gcalctool-basic-mode">基本模式</link></term>
+        <listitem><para>提供標準的計算機函數。您可以將數字儲存於 10 個不同的記憶體註冊，並且可以輕易地擷取和取代記憶體註冊中的數字。基本模式為預設的模式。您可以在其他每一種模式中使用所有的基本模式函數。</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-financial-mode">財務模式</link></term>
+        <listitem><para>提供一些複雜的財務函數。</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-scientific-mode">科學模式</link></term>
+        <listitem><para>提供許多額外的數學函數，包括三角函數和邏輯函數。您也可以在使用科學模式時儲存您自己的函數和常數。</para></listitem>
+        </varlistentry>
+     </variablelist>
+
+    <para>您可以在下列的數值系統中使用 &app;：</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>數值系統</para></entry>
+              <entry colname="COLSPEC1" align="right">
+                <para>基礎</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>二進制</para></entry>
+              <entry align="right"><para>2</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>八進制</para></entry>
+              <entry align="right"><para>8</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>十進制</para></entry>
+              <entry align="right"><para>10</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>十六進制</para></entry>
+              <entry align="right"><para>16</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+                           
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+
+  <sect1 id="gcalctool-get-start"> 
+    <title>入門</title>
+                <para>您可以使用下列方式啟動 &app;：</para>
+                <variablelist>
+                <varlistentry>
+                <term>功能表</term>
+                <listitem>
+                <para>若需更多如何從功能表啟動 &app; 的資訊，請參閱最新版的平台 &ug;。</para>
+                </listitem>
+                </varlistentry>
+                <varlistentry>
+                <term>指令行</term>
+                <listitem>
+                <para>執行以下的指令： <command>gcalctool</command></para>
+                </listitem>
+                </varlistentry>
+                </variablelist>
+    <para>當您啟動 <application>&app;</application> 後，會顯示下面的視窗：</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-basic"> 
+	<title>&app; 基本模式視窗</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>顯示 &app; 基本模式視窗。 </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+                <para><application>&app;</application> 視窗包含下列的
+                  元素：</para>
+                <variablelist>
+                  <varlistentry> <term>功能表列</term>
+                         <listitem>
+                                <para> 功能表列上的功能表包含所有
+                                  使用 <application>&app;</application> 所需的指令。</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>顯示區域</term>
+                         <listitem>
+                                <para>顯示區域可以顯示您輸入的數字，以及計算的結果。可以輸入的數字最多為 40 位數。 </para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>模式區域</term>
+                         <listitem>
+                                <para>模式區域可以顯示目前選取模式的按鈕。基本模式按鈕永遠會顯示。當您選擇財務模式時，財務模式按鈕將會顯示在基本模式按鈕之上。當您選擇科學模式時，科學模式按鈕將會顯示在基本模式按鈕之上 。</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>即現式功能表</term>
+                         <listitem>
+                <para> 
+                      <inlinemediaobject> 
+                         <imageobject> 
+                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
+                         </imageobject> 
+                         <textobject> 
+                         <phrase>顯示即現式功能表符號。</phrase> 
+                         </textobject> 
+                      </inlinemediaobject> 
+                &app; 按鈕上的符號表示按一下該按鈕後即會顯示即現式功能表。</para>
+                         </listitem>
+                  </varlistentry>
+                </variablelist>
+
+<para></para>
+
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="gcalctool-usage"> 
+    <title>使用</title>
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-calc-functions">
+                <title>使用計算機函數</title>
+                <para>如果要執行計算，請使用下列任一種
+                  方法：</para>
+                <itemizedlist>
+                  <listitem>
+                         <para>按一下 &app; 按鈕可以輸入數字和函數。</para>
+                  </listitem>
+                  <listitem>
+                         <para>給予 &app; 視窗焦點，然後使用鍵盤或數字鍵組來指定您要執行的計算。若需鍵盤捷徑的完整清單，請參閱 <xref linkend="gcalctool-keyboard-shortcut"/>。</para>
+                  </listitem>
+                </itemizedlist>
+                <para>&app; 應用程式會自動以 40 位數以上和小型字 (如指數) 來顯示數字。例如，下列表格將顯示當使用十進制數值基礎且設定 2 位數的精準度時所顯示的值：</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>顯示</para></entry>
+              <entry colname="COLSPEC1">
+                <para>意義</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>1.23e+37</para></entry>
+              <entry><para>1.23 * 10<superscript>37</superscript></para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>1e-5</para></entry>
+              <entry><para>0.00001</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>若需如何輸入指數的詳細資訊，請參閱 <xref linkend="gcalctool-enter-exp"/>。</para>
+                <para>如果要複製計算的結果，請選擇
+                  <menuchoice>
+                         <guimenu>編輯</guimenu>
+                         <guimenuitem>複製</guimenuitem>
+                  </menuchoice>。
+                      您可以將值貼入其他的應用程式。</para>
+
+                <para>如果要將上一次複製的值貼入顯示區域，請選擇
+                  <menuchoice>
+                         <guimenu>編輯</guimenu>
+                         <guimenuitem>貼上</guimenuitem>
+                  </menuchoice>。 </para>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-basic-mode"> 
+      <title>執行基本計算</title>
+      <para>當您第一次啟動 &app; 時，預設為顯示基本模式。如果要確定啟動的是基本模式，請選擇 
+	<menuchoice> 
+	  <guimenu>檢視</guimenu> 
+	  <guimenuitem>基本模式</guimenuitem> 
+	</menuchoice>。
+      </para>
+    <sect3 id="gcalctool-simple-calc"> 
+      <title>執行簡單的計算</title>
+      <para>如果要執行簡單的計算，請使用 <xref linkend="gcalctool-TBL-simple-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-simple-calc" frame="all">
+                  <title>執行簡單的計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>數字</para></entry>
+                             <entry><para><guibutton>0</guibutton> 到 <guibutton>9</guibutton> 以內的數字</para></entry>
+                             <entry><para>在十進制和十六進制基礎中，可以使用所有的數字。在八進制中，不可以使用  <guibutton>8</guibutton> 和 <guibutton>9</guibutton>。在二進制中，只能使用 <guibutton>0</guibutton> 和 <guibutton>1</guibutton>。預設基礎為十進制。</para></entry>
+                             <entry><para><guibutton>1</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>數字點</para></entry>
+                             <entry><para><guibutton>。</guibutton></para></entry>
+                             <entry><para>開始輸入數字的分數部份。</para></entry>
+                             <entry><para><guibutton>1</guibutton> <guibutton>.</guibutton><guibutton>2</guibutton></para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>計算結果</para></entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>顯示以目前基礎求得的計算結果。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>加</para></entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值加上下一個您輸入的數字。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>減</para></entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值減去下一個您輸入的數字。</para></entry>
+                             <entry><para>3 <guibutton>-</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>乘</para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值乘上下一個您輸入的數字。</para></entry>
+                             <entry><para>3 <guibutton>*</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>6</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>除</para></entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值除以下一個您輸入的數字。</para></entry>
+                             <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>2</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-erase-char"> 
+      <title>消除字元</title>
+      <para>如果要消除字元，請使用 <xref linkend="gcalctool-TBL-erase-char"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-erase-char" frame="all">
+                  <title>消除字元</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>Backspace</para></entry>
+                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para>移除顯示區域最右邊的字元。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bsp</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>清除輸入</para></entry>
+                             <entry><para><guibutton>CE</guibutton></para></entry>
+                             <entry><para>移除顯示區域的目前值。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>CE</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>清除</para></entry>
+                             <entry><para><guibutton>Clr</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值重設為零。<guibutton>Clr</guibutton> 也會取消選取科學模式中的 <guilabel>Hyp</guilabel> 和 <guilabel>Inv</guilabel> 選項 。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>0</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-arith-calc"> 
+      <title>執行算術計算</title>
+      <para>如果要執行算術計算，請使用 <xref linkend="gcalctool-TBL-arith-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-arith-calc" frame="all">
+                  <title>執行算術計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>百分比</para></entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>使用您輸入的下一個數字來計算顯示區域中目前值的百分比。</para></entry>
+                             <entry><para>200 <guibutton>%</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>4</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>倒數</para></entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值除1。</para></entry>
+                             <entry><para>4 <guibutton>1/x</guibutton></para></entry>
+                             <entry><para>0.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>變更算術符號</para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>將正數變為負數，或將負數變為正數。</para></entry>
+                             <entry><para>8 <guibutton>+/-</guibutton></para></entry>
+                             <entry><para>-8</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>平方根</para></entry>
+                             <entry><para><guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的平方根。</para></entry>
+                             <entry><para>9 <guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>平方</para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>計算顯示區域之目前值的平方。</para></entry>
+                             <entry><para>3 x<superscript>2</superscript></para></entry>
+                             <entry><para>9</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>整數部份</para></entry>
+                             <entry><para><guibutton>Int</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的整數部份。</para></entry>
+                             <entry><para>-23.45 <guibutton>Int</guibutton></para></entry>
+                             <entry><para>-23</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>分數部份</para></entry>
+                             <entry><para><guibutton>Frac</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的分數部份。</para></entry>
+                             <entry><para>-23.45 <guibutton>Frac</guibutton></para></entry>
+                             <entry><para>-0.45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>絕對值</para></entry>
+                             <entry><para><guibutton>Abs</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的絕對值。</para></entry>
+                             <entry><para>-23.45 <guibutton>Abs</guibutton></para></entry>
+                             <entry><para>23.45</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-mem-reg"> 
+      <title>使用計算機記憶體註冊</title>
+      <para>您可以將值儲存於 10 個 &app; 記憶體註冊 <guilabel>R0</guilabel> 到 <guilabel>R9</guilabel> 中的任一個記憶體註冊。如果要顯示記憶體註冊，請選擇 
+	<menuchoice> 
+	  <guimenu>檢視</guimenu> 
+	  <guimenuitem>記憶體註冊</guimenuitem> 
+	</menuchoice>。
+      </para>
+      <para><xref linkend="gcalctool-TBL-mem-reg"/> 將說明您可以使用的記憶體函數。</para>
+                <table id="gcalctool-TBL-mem-reg" frame="all">
+                  <title>記憶體函數</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>將值儲存於記憶體註冊</para></entry>
+                             <entry><para><guibutton>Sto</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前內容儲存於指定的記憶體註冊。按一下 <guibutton>Sto</guibutton>，然後選取即現式功能表上的記憶體註冊。</para>
+                                   <para>如果要在 &app; 階段作業期間清除記憶體註冊：</para>
+                                     <orderedlist>
+                                       <listitem><para>按一下 <guibutton>Clr</guibutton>。</para></listitem>
+                                       <listitem><para>按一下 <guibutton>Sto</guibutton>。</para></listitem>
+                                       <listitem><para>選取即現式功能表上的記憶體註冊。</para></listitem>
+                                     </orderedlist>
+</entry>
+                             <entry><para>22 <guibutton>Sto</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>值 22 已儲存於記憶體註冊 <guilabel>R2</guilabel></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>擷取記憶體註冊的值 </para></entry>
+                             <entry><para><guibutton>Rcl</guibutton></para></entry>
+                             <entry><para>擷取指定記憶體註冊的內容。按一下 <guibutton>Rcl</guibutton>，然後選取即現式功能表上的記憶體註冊。</para></entry>
+                             <entry><para>0 <guibutton>Rcl</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>22 </para><para>其中 22 是上一次儲存於記憶體註冊 R2 的值</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>將記憶體註冊值與顯示的值交換</para></entry>
+                             <entry><para><guibutton>Exch</guibutton></para></entry>
+                             <entry><para>將指定記憶體註冊的內容與顯示區域的目前值交換。按一下 <guibutton>Exch</guibutton>，然後選取即現式功能表上的記憶體註冊。</para></entry>
+                             <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>顯示區域的值從 44 變為 22，而 R2 的值則從 22 變為 44 </para><para>其中 22 是上一次儲存於記憶體註冊 R2 的值</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>如果您是使用鍵盤捷徑，您可以使用鍵盤來指定記憶體註冊，如下列範例所示：</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>鍵盤輸入</para></entry>
+              <entry colname="COLSPEC1">
+                <para>說明</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>S</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>將顯示區域的目前內容儲存於記憶體註冊 <guilabel>R2</guilabel>。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>R</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>擷取記憶體註冊 <guilabel>R2</guilabel> 的目前內容並放入顯示區域。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>X</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>將顯示區域的目前值與記憶體註冊 <guilabel>R2</guilabel> 的內容交換。</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+  
+          </sect3>
+          <sect3 id="gcalctool-ins-ascii"> 
+            <title>顯示 ASCII 值</title>
+                        <para>如果要顯示字元的 ASCII 值，請選擇
+                          <menuchoice>
+                                 <guimenu>編輯</guimenu>
+                                 <guimenuitem>插入 ASCII 值</guimenuitem>
+                          </menuchoice>。</para>
+                        <para>此時會顯示插入 ASCII 值對話方塊。</para>
+                        <para>在<guilabel>字元</guilabel>欄位中輸入您需要的字元，然後按一下<guibutton>插入</guibutton>。顯示區域即會出現以目前數值基礎求得的該字元 ASCII 值。例如，使用十進制基礎 B 的 ASCII 值為 66。</para>
+          </sect3>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="gcalctool-financial-mode"> 
+      <title>執行財務計算</title>
+      <para>如果要變更為財務模式，請選擇 
+	<menuchoice> 
+	  <guimenu>檢視</guimenu> 
+	  <guimenuitem>財務模式</guimenuitem> 
+	</menuchoice>。
+      </para>
+    <para>當您變更為財務模式時，下列的財務模式按鈕將會顯示在基本模式按鈕之上：</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-financial"> 
+	<title>&app; 財務模式按鈕</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>顯示 &app; 財務模式按鈕。 </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+      <para>如果要執行財務計算，請使用 <xref linkend="gcalctool-TBL-financial-calc"/> 中所述的按鈕。
+</para>
+                <table id="gcalctool-TBL-financial-calc" frame="all">
+                  <title>執行財務計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>複利期間</para></entry>
+                             <entry><para><guibutton>Ctrm</guibutton></para></entry>
+                             <entry><para>計算增加現值 <replaceable>pv</replaceable> 的投資使其等於 <replaceable>fv</replaceable> 期約值所需的複利週期數 (每一複利週期使用 <replaceable>int</replaceable> 的固定利率)。</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>int</replaceable>，定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>fv</replaceable>，期約值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>pv</replaceable>，現值</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您已經在帳戶中存入 $8000，利率為年利率 9% 每月複利計算。依據年利率，您求得的月利率為 0.09 / 12 = 0.0075。如果要計算使投資倍增所需的時間週期，請將下列的值放前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>0.0075</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>16000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Ctrm</guibutton>。</para></entry>
+                             <entry><para>92.77</para>
+                                    <para>投資金額倍增所需的時間為 92.77 個月。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>倍數餘額折舊</para></entry>
+                             <entry><para><guibutton>Ddb</guibutton></para></entry>
+                             <entry><para>使用倍數餘額法計算資產在指定時間週期內的折舊額。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>成本</replaceable>，購買資產的金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>剩餘價值</replaceable>，資產在到達使用年限後的價值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>年限</replaceable>，資產的使用年限</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 3</term>
+                                <listitem><para><replaceable>週期</replaceable>，提列折舊的時間週期</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您已經購買了 $8000 的事務機器。機器的使用年限為 6 年。6 年後的剩餘價值為 $900。
+如果要計算第 4 年的折舊額，請使用倍數餘額法將下列的值放入前四個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Ddb</guibutton>。</para></entry>
+                             <entry><para>790.12</para>
+                                    <para>第 4 年的折舊額為 $790.12。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>期約值</para></entry>
+                             <entry><para><guibutton>Fv</guibutton></para></entry>
+                             <entry><para>依據定期固定金額付款計算投資的期約值，每期付款金額 <replaceable>pmt</replaceable> 在付款期間內支付的利率為 <replaceable>int</replaceable> 定期利率。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>，分期付款</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>int</replaceable>，定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>n</replaceable>，週期數</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您計劃在未來 20 年內每年的最後一天在銀行帳戶存入 $4000。帳戶支付 8% 利息，每年複利計算。利息的支付日期為每年的最後一天。
+如果要計算帳戶 20 年後的價值，請將下列的值放入前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>4000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>0.08</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Fv</guibutton>。</para></entry>
+                             <entry><para>183047.86</para>
+                                    <para>當 20 年到期後，帳戶的價值為 $183,047.86。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>分期付款</para></entry>
+                             <entry><para><guibutton>Pmt</guibutton></para></entry>
+                             <entry><para>計算貸款每期付款的金額，其中付款日期為每一個付款週期的最後一天。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>prin</replaceable>，本金</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>int</replaceable>，定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>n</replaceable>，期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您正考慮一項 30 年 $120,000 年利率 11.0%的扺押貸款。依據年利率，您求得的月利率為 0.11 / 12 = 0.00917。期間為 30 * 12 = 360 個月。如果要計算這個扺押貸款每月償還的金額，請將下列的值放入前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>0.00917</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>360</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Pmt</guibutton>。</para></entry>
+                             <entry><para>1143.15</para>
+                                    <para>每月償還的金額為 $1143.15。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>現值</para></entry>
+                             <entry><para><guibutton>Pv</guibutton></para></entry>
+                             <entry><para>依據定期固定金額付款計算投資的現值，每期的金額 <replaceable>pmt</replaceable> 在付款期間內的利率為 <replaceable>int</replaceable> 定期貼現率。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>，分期付款</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>int</replaceable>，定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>n</replaceable>，週期數</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您剛嬴得了一佰萬元。獎金將分 20 年領取每年領取 $50,000。每年的最後一天領取獎金。如果您想接受每年領取 $50,000，即表示您的投資為年利率 9% 每年複利計算。</para>
+                                    <para>但是，您也可以選擇一次領取 $400,000，而不是一佰萬的年金。
+如果要計算那一種比較符合現值，請將下列的值放入前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>50000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>0.09</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Pv</guibutton>。</para></entry>
+                             <entry><para>456427.28</para>
+                                    <para>$1,000,000 分20 年領取相當於現值 $456,427.28。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>定期利率</para></entry>
+                             <entry><para><guibutton>利率</guibutton></para></entry>
+                             <entry><para>計算增加現值<replaceable>pv</replaceable> 的投資使其等於 <replaceable>fv</replaceable> 期約值所需的定期利率 (在<replaceable>期間</replaceable>內的複利週期數)。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>fv</replaceable>，期約值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>pv</replaceable>，現值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>n</replaceable>，期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您已經投資了 $20,000 的債券。債券為 5 年期，到期值為 $30,000。利息為每月複利計算。期間為 5 * 12 = 60 個月。
+如果要計算這項投資的定期利率，請將下列的值放入前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>30000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>20000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>60</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>利率</guibutton>。</para></entry>
+                             <entry><para>.00678</para>
+                                    <para>月利率為 0.678%。年利率為 0.678% * 12 = 8.14%。
+</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>直線折舊</para></entry>
+                             <entry><para><guibutton>Sln</guibutton></para></entry>
+                             <entry><para>計算資產在指定期間內的直線折舊額。折舊額為<replaceable>成本</replaceable> - <replaceable>剩餘價值</replaceable>。直線折舊法是將折舊額平均分攤於資產的使用年限。使用年限是資產的折舊期間，通常為年。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>成本</replaceable>，購買資產的金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>剩餘價值</replaceable>，資產在到達使用年限後的價值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>年限</replaceable>，資產的使用年限</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您已經購買了 $8000 的事務機器。機器的使用年限為 6 年。6 年後的剩餘價值為 $900。
+如果要計算每年的折舊額，請使用直線折舊法將下列的值放入前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Sln</guibutton>。</para></entry>
+                             <entry><para>1183.33</para>
+                                    <para>每年的折舊額為 $1183.33。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>年數合計折舊</para></entry>
+                             <entry><para><guibutton>Syd</guibutton></para></entry>
+                             <entry><para>使用年數合計折舊法計算資產在指定時間週期內的折舊額。這種折舊法會加速折舊率，因此早期的折舊額會遠大於後期的折舊額。
+折舊額為<replaceable>成本</replaceable> - <replaceable>剩餘價值</replaceable>。使用年限是資產的折舊期間，通常為年。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>成本</replaceable>，購買資產的金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>剩餘價值</replaceable>，資產在到達使用年限後的價值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>年限</replaceable>，資產的使用年限</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 3</term>
+                                <listitem><para><replaceable>週期</replaceable>，提列折舊的時間週期</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您已經購買了 $8000 的事務機器。機器的使用年限為 6 年。6 年後的剩餘價值為 $900。
+如果要計算第 4 年的折舊額，請使用年數合計折舊法將下列的值放入前四個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>Syd</guibutton>。</para></entry>
+                             <entry><para>1014.29</para>
+                                    <para>第 4 年的折舊額為 $1014.29。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>付款週期</para></entry>
+                             <entry><para><guibutton>期間</guibutton></para></entry>
+                             <entry><para>計算在一般年金期間內將期約值累積到 <replaceable>fv</replaceable> 所需的付款週期數 (以定期利率 <replaceable>int</replaceable> 計算)。每次付款金額等於金額 <replaceable>pmt</replaceable>。
+</para>
+                              <para>這個函數會使用下列的記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>，分期付款</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para><replaceable>fv</replaceable>，期約值</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para><replaceable>int</replaceable>，定期利率</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>您計劃在每年的最後一天將 $1800 存入銀行帳戶。帳戶支付 11% 利息，每年複利計算。利息的支付日期為每年的最後一天。
+如果要計算累積到 $120,000 所需的時間週期，請將下列的值放前三個記憶體註冊：</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>註冊 0</term>
+                                <listitem><para>1800</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 1</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>註冊 2</term>
+                                <listitem><para>0.11</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>按一下 <guibutton>期間</guibutton>。</para></entry>
+                             <entry><para>20.32</para>
+                                    <para>帳戶會在 20.32 年內累積到 $120,000。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-scientific-mode"> 
+      <title>執行科學計算</title>
+      <para>如果要變更為科學模式，請選擇 
+	<menuchoice> 
+	  <guimenu>檢視</guimenu> 
+	  <guimenuitem>科學模式</guimenuitem> 
+	</menuchoice>。
+      </para>
+    <para>當您變更為科學模式時，下列的科學模式按鈕將會顯示在基本模式按鈕之上：</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-scientific"> 
+	<title>&app; 科學模式按鈕</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>顯示 &app; 科學模式按鈕。 </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-set-acc"> 
+      <title>設定精確度</title>
+      <para>如果要設定顯示區域和記憶體註冊的精確度，請按一下 <guibutton>Acc</guibutton>，然後選取即現式功能表上您需要的精確度等級。即現式功能表上目前的精確度等級之前會加上黑色圓圈。最多可以顯示 9 位數。預設的精確度為 9 位數。</para>
+      <para>依據預設，不顯示尾隨的零。如果要顯示尾隨的零，請按一下 <guibutton>Acc</guibutton>，然後選取即現式功能表上的<guilabel>顯示尾隨的零</guilabel>，或選擇<menuchoice> <guimenu>檢視</guimenu> <guimenuitem>顯示尾隨的零</guimenuitem> </menuchoice>。在 <guibutton>Acc</guibutton> 即現式功能表上或<guimenu>檢視</guimenu>功能表上前置的標記表示已選取<guilabel>顯示尾隨的零</guilabel>選項。如果要隱藏尾隨的零，請再選擇一次<menuchoice> <guimenu>檢視</guimenu> <guimenuitem>顯示尾隨的零</guimenuitem> </menuchoice>。</para>
+      <para>下列表格中的範例將說明精確度設定對顯示區域中 <replaceable>x</replaceable> 的影響 (使用十進制基礎並選取<guimenuitem>顯示尾隨的零</guimenuitem>選項來計算 <literal>1 / 8 = <replaceable>x</replaceable></literal>)：</para>
+                <informaltable frame="all">
+                  <tgroup cols="2" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>精確度</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>1 位數</para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>2 位數</para></entry>
+                             <entry><para>1.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>3 位數</para></entry>
+                             <entry><para>1.250</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-num-base"> 
+      <title>設定數值基礎</title>
+      <para>如果要設定數值基礎，請選取 <xref linkend="gcalctool-TBL-num-base"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-num-base" frame="all">
+                  <title>設定數值基礎</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>二進制基礎</para></entry>
+                             <entry><para><guibutton>Bin</guibutton></para></entry>
+                             <entry><para>將數值基礎設為二進制，即基底為 2。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>八進制基礎</para></entry>
+                             <entry><para><guibutton>Oct</guibutton></para></entry>
+                             <entry><para>將數值基礎設為八進制，即基底為 8。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>十進制基礎</para></entry>
+                             <entry><para><guibutton>Dec</guibutton></para></entry>
+                             <entry><para>將數值基礎設為十進制，即基底為 10。十進制為預設的數值基礎。如果您是從科學模式變為基本模式或財務模式，&app; 會自動將數值基礎設為十進制。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>十六進制基礎</para></entry>
+                             <entry><para><guibutton>Hex</guibutton></para></entry>
+                             <entry><para>將數值基礎設為十六進制，即基底為 16。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-display-type"> 
+      <title>設定顯示類型</title>
+      <para>如果要設定顯示類型，請選取 <xref linkend="gcalctool-TBL-display-type"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-display-type" frame="all">
+                  <title>設定顯示類型</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>工程顯示類型</para></entry>
+                             <entry><para><guibutton>Eng</guibutton></para></entry>
+                             <entry><para>將顯示類型設為工程格式。結果將以科學記號顯示。指數永遠是 3 的位數。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>定點顯示類型</para></entry>
+                             <entry><para><guibutton>Fix</guibutton></para></entry>
+                             <entry><para>將顯示類型設為定點格式。結果將不以科學記號顯示。定點是預設的顯示類型。 如果您是從科學模式變為基本模式或財務模式，&app; 會自動將顯示類型設為定點格式。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>科學顯示類型</para></entry>
+                             <entry><para><guibutton>Sci</guibutton></para></entry>
+                             <entry><para>將顯示類型設為科學格式。結果將以位數固定的科學記號顯示。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-type"> 
+      <title>設定三角類型</title>
+      <para>如果要設定三角類型，請選取 <xref linkend="gcalctool-TBL-trig-type"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-trig-type" frame="all">
+                  <title>設定三角類型</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>角度</para></entry>
+                             <entry><para><guibutton>角度</guibutton></para></entry>
+                             <entry><para>將三角類型設為角度。角度是預設的三角類型。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>斜度</para></entry>
+                             <entry><para><guibutton>斜度</guibutton></para></entry>
+                             <entry><para>將三角類型設為斜度。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>弧度</para></entry>
+                             <entry><para><guibutton>弧度</guibutton></para></entry>
+                             <entry><para>將三角類型設為弧度。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-options"> 
+      <title>設定三角選項</title>
+      <para>如果要設定三角選項，請使用 <xref linkend="gcalctool-TBL-trig-options"/> 中所述的選項。</para>
+                <table id="gcalctool-TBL-trig-options" frame="all">
+                  <title>設定三角選項</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>雙曲線選項指示器</para></entry>
+                             <entry><para><guibutton>Hyp</guibutton></para></entry>
+                             <entry><para>選取三角函數使用的雙曲線選項。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反三角選項指示器</para></entry>
+                             <entry><para><guibutton>Inv</guibutton></para></entry>
+                             <entry><para>選取三角函數使用的反三角選項。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>依據預設，不會選取 <xref linkend="gcalctool-TBL-trig-options"/> 中所述的選項。按一下 <guibutton>Clr</guibutton> 可以取消選取這些選項。</para>
+
+    </sect3>
+    <sect3 id="gcalctool-trig-calc"> 
+      <title>計算三角值</title>
+      <para>如果要計算三角值，請使用 <xref linkend="gcalctool-TBL-trig-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-trig-calc" frame="all">
+                  <title>計算三角值</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>餘弦 <literal>cos</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Cos</guibutton>、 <guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的餘弦。</para></entry>
+                             <entry><para>60 <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>0.5</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反餘弦 <literal>acos</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Cos</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反餘弦。</para></entry>
+                             <entry><para>0.5 <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>60</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>雙曲餘弦 <literal>cosh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Cos</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的雙曲餘弦。</para></entry>
+                             <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.081072372</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反雙曲餘弦 <literal>acosh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Cos</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反雙曲餘弦。</para></entry>
+                             <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.046967915</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正弦 <literal>sin</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Sin</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的正弦。</para></entry>
+                             <entry><para>90 <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反正弦 <literal>asin</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Sin</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反正弦。</para></entry>
+                             <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>90</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>雙曲正弦 <literal>sinh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Sin</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的雙曲正弦。</para></entry>
+                             <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>0.410752326</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反雙曲正弦 <literal>asinh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Sin</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反雙曲正弦。</para></entry>
+                             <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1.248983328</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正切 <literal>tan</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Tan</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的正切。</para></entry>
+                             <entry><para>45 <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反正切 <literal>atan</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Tan</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反正切。</para></entry>
+                             <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>雙曲正切 <literal>tanh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Tan</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的雙曲正切。</para></entry>
+                             <entry><para>0.6 <guilabel>Hyp</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.537049567</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反雙曲正切 <literal>atanh</literal></para></entry>
+                             <entry><para>未選取 <guibutton>Tan</guibutton>、<guilabel>Hyp</guilabel> 選項，未選取 <guilabel>Inv</guilabel> 選項</para></entry>
+                             <entry><para>計算顯示區域之目前值的反雙曲正切。</para></entry>
+                             <entry><para>0.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.693147181</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-logs-calc"> 
+      <title>計算對數</title>
+      <para>如果要計算對數，請使用 <xref linkend="gcalctool-TBL-logs-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-logs-calc" frame="all">
+                  <title>計算對數</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>常用對數基礎 10</para></entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的常用對數。</para></entry>
+                             <entry><para>10 <guibutton>Log</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>自然對數</para></entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的自然對數。</para></entry>
+                             <entry><para>10 <guibutton>Ln</guibutton></para></entry>
+                             <entry><para>2.30</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <note>
+                  <para>這一版的 &app; 不支援常用對數和自然對數。</para>
+                </note>
+    </sect3>
+    <sect3 id="gcalctool-logic-calc"> 
+      <title>執行邏輯計算</title>
+      <para>如果要執行邏輯計算，請使用 <xref linkend="gcalctool-TBL-logic-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-logic-calc" frame="all">
+                  <title>執行邏輯計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>邏輯 OR</para></entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>對顯示區域的目前值和您輸入的下一個數字執行邏輯 OR 運算，兩者皆視為無符號長整數。</para></entry>
+                             <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
+                             <entry><para>10011001</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>邏輯 AND</para></entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>對顯示區域的目前值和您輸入的下一個數字執行邏輯 AND 運算，兩者皆視為無符號長整數。</para></entry>
+                             <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
+                             <entry><para>00110011</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>邏輯 NOT</para></entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>對顯示區域的目前值執行邏輯 NOT 運算，並將數字視為無符號長整數。</para></entry>
+                             <entry><para>1357ace <guibutton>Not</guibutton> </para></entry>
+                             <entry><para>FECA8531</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>邏輯 XOR</para></entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>對顯示區域的目前值和您輸入的下一個數字執行邏輯 XOR 運算，兩者皆視為無符號長整數。</para></entry>
+                             <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
+                             <entry><para>110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>邏輯 XNOR</para></entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>對顯示區域的目前值和您輸入的下一個數字執行邏輯 XNOR 運算，兩者皆視為無符號長整數。</para></entry>
+                             <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
+                             <entry><para>11111111111111111111111111111001</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-enter-exp"> 
+      <title>輸入指數</title>
+      <para>如果要輸入指數字，請使用 <guibutton>Exp</guibutton> 按鈕。</para>
+      <para><guibutton>Exp</guibutton> 按鈕可以讓您使用科學記號輸入數字，即<replaceable>假數</replaceable> * 10<superscript><replaceable>指數</replaceable></superscript>。顯示區域中目前的非零值為假數。如果顯示區域的目前值為零，假數即為 1.0。您輸入的下一個數字則為指數。</para>
+      <para>當您按一下 <guibutton>Exp</guibutton> 時，計算機會顯示 <literal>。+</literal> 來表示 10 是您輸入之下一個數字的次方。如果要變更數字的符號，請在運算的最後一個步驟使用 <guibutton>+/-</guibutton> 按鈕，如下列範例所示：</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>數字鍵組輸入</para></entry>
+              <entry colname="COLSPEC1">
+                <para>計算機顯示</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton></para></entry>
+              <entry><para>-500</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>如果要以指數格式輸入數字，請按照下列表格的指示：</para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>數字</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>輸入</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>顯示的數字</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>1.2e-7</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1.2e-7</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-edit-const"> 
+      <title>使用定值</title>
+      <para>按一下 <guibutton>Con</guibutton> 以顯示已定義定值的清單。所有定值都使用十進制數值基礎，即使目前的數值基礎並不是十進制。</para>
+      <para>請從功能表上選取一個常數，將它的值輸入顯示區域。如果您是使用鍵盤捷徑 <keycap>#</keycap>，您可以使用鍵盤來指定常數，如下列範例所示：</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>鍵盤輸入</para></entry>
+              <entry colname="COLSPEC1">
+                <para>常數</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>#</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>C3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>&app; 應用程式提供 10 個預設定值，如下列表格所示：</para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>數字</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>值</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>C0</para></entry>
+                             <entry><para>0.621</para></entry>
+                             <entry><para>每小時公里數或每小時英里數</para>
+                                    <para>將顯示區域的目前值乘上這個常數，將每小時公里數轉換為每小時英里數。例如，8 * <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 5。</para>
+                                    <para>將顯示區域的目前值除這個常數，將每小時英里數轉換為每小時公里數。例如，5 / <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 8。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C1</para></entry>
+                             <entry><para>1.414213562</para></entry>
+                             <entry><para>2 的平方根</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C2</para></entry>
+                             <entry><para>2.718281828</para></entry>
+                             <entry><para>e</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C3</para></entry>
+                             <entry><para>3.141592653</para></entry>
+                             <entry><para>pi</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C4</para></entry>
+                             <entry><para>0.3937007</para></entry>
+                             <entry><para>公分或英吋</para>
+                                    <para>將顯示區域的目前值乘上這個常數，將公分轉換為英吋。例如，30 * <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 12。</para>
+                                    <para>將顯示區域的目前值除這個常數，將英吋轉換為公分。例如，12 / <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 30。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C5</para></entry>
+                             <entry><para>57.295779513</para></entry>
+                             <entry><para>弧度角度</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C6</para></entry>
+                             <entry><para>1048576</para></entry>
+                             <entry><para>2 ^ 20</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C7</para></entry>
+                             <entry><para>0.0353</para></entry>
+                             <entry><para>克或盎司</para>
+                                    <para>將顯示區域的目前值乘上這個常數，將克轉換為盎司。例如，500 * <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 18。</para>
+                                    <para>將顯示區域的目前值除這個常數，將盎司轉換為克。例如，18 / <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 500。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C8</para></entry>
+                             <entry><para>0.948</para></entry>
+                             <entry><para>千焦耳或英國熱量單位</para>
+                                    <para>將顯示區域的目前值乘上這個常數，將千焦耳轉換為英國熱量單位。例如，10 * <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 9.48。</para>
+                                    <para>將顯示區域的目前值除這個常數，將英國熱量單位轉換為千焦耳。例如，9.48 / <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 10。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C9</para></entry>
+                             <entry><para>0.061</para></entry>
+                             <entry><para>立方厘米或立方英吋</para>
+                                    <para>將顯示區域的目前值乘上這個常數，將立方厘米轉換為立方英吋。例如，100 * <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10。</para>
+                                    <para>將顯示區域的目前值除這個常數，將立方厘米轉換為立方英吋。例如，6.10 / <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+      <para>您不可以在這一版的 &app; 中增加新的常數。但是，您可以覆寫預設常數來儲存您自己的常數。</para>
+      <para>如果要儲存新常數或編輯現有的常數，請執行下列的步驟：</para>
+      <orderedlist>
+        <listitem>
+           <para>按一下 <guibutton>Con</guibutton>，然後選取即現式功能表上的<guilabel>編輯常數</guilabel>。</para>
+        </listitem>
+        <listitem>
+      <para>在<guilabel>編輯常數</guilabel>視窗中，選取您要覆寫或編輯的常數。</para>
+        </listitem>
+        <listitem>
+      <para>按一下值欄位，然後輸入新的值。</para>
+        </listitem>
+        <listitem>
+      <para>按一下說明欄位，然後輸入新的說明。</para>
+        </listitem>
+        <listitem>
+      <para>按一下<guibutton>確定</guibutton>以儲存您所作的變更並關閉<guilabel>編輯常數</guilabel>視窗。</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-edit-func"> 
+      <title>使用函數</title>
+      <para>如果要顯示可用的函數，請按一下 <guibutton>Fun</guibutton>。即現式功能表會顯示已定義函數的清單。請從功能表選取函數以執行該函數。如果這個函數尚未定義，則會傳回零值。</para>
+<para>如果您是使用鍵盤捷徑 <keycap>F</keycap>，您可以使用鍵盤來指定函數，如下列範例所示：
+</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>鍵盤輸入</para></entry>
+              <entry colname="COLSPEC1">
+                <para>功能</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>F</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>F3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>&app; 應用程式不提供任何預設函數。您最多可以儲存 10  個函數。</para>
+      <para>如果要儲存新的函數或編輯現有的函數，請執行下列的步驟：</para>
+      <orderedlist>
+        <listitem>
+           <para>按一下 <guibutton>Fun</guibutton>，然後選取即現式功能表上的 <guilabel>編輯函數</guilabel>。</para>
+        </listitem>
+        <listitem>
+      <para>在<guilabel>編輯函數</guilabel>視窗中，選取空的項目或是您要覆寫的函數。</para>
+        </listitem>
+        <listitem>
+      <para>按一下值欄位，然後輸入新的值。使用鍵盤捷徑可以啟動 &app; 按鈕。例如，輸入 <literal>90K</literal> 可以計算 sine(90)。</para>
+        </listitem>
+        <listitem>
+      <para>按一下說明欄位，然後輸入新的說明。例如，<literal>Sine 90</literal>。</para>
+        </listitem>
+        <listitem>
+      <para>按一下<guibutton>確定</guibutton>以儲存您所作的變更並關閉<guilabel>編輯函數</guilabel>視窗。</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-num-manip"> 
+      <title>處理二進制數字</title>
+      <para>如果要處理二進制數字，請使用 <xref linkend="gcalctool-TBL-num-manip"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-num-manip" frame="all">
+                  <title>處理二進制數字</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>左移 <replaceable>n</replaceable></para></entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para>將顯示區域中目前的無符號 32 位元二進制值依指定的位數向左移。按一下 <guibutton>&lt;</guibutton>，然後選取即現式功能表上的移動位數。數字最多可以左移 15 位數。</para></entry>
+                             <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 位數</guilabel></para></entry>
+                             <entry><para>1110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>右移 <replaceable>n</replaceable></para></entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para>將顯示區域中目前的無符號 32 位元二進制值依指定的位數向右移。按一下 <guibutton>&gt;</guibutton>，然後選取即現式功能表上的移動位數。數字最多可以右移 15 位數。</para></entry>
+                             <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 位數</guilabel></para></entry>
+                             <entry><para>101 </para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>取得 16 位元無符號整數</para></entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值截斷並傳回一個 16 位元無符號整數。</para></entry>
+                             <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFF</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>取得 32 位元無符號整數</para></entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>將顯示區域的目前值截斷並傳回一個 32 位元無符號整數。</para></entry>
+                             <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>FFFFFFFF</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>如果您是使用鍵盤捷徑，您可以使用鍵盤來指定要移動的位數，如下列範例所示：</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>鍵盤輸入</para></entry>
+              <entry colname="COLSPEC1">
+                <para>說明</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>&lt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>將顯示區域中目前的二進制值左移  4 位數。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>&gt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>將顯示區域中目前的二進制值右移  4 位數。</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect3>
+    <sect3 id="gcalctool-misc-calc"> 
+      <title>執行其他的科學計算</title>
+      <para>如果要計算其他的科學計算，請使用 <xref linkend="gcalctool-TBL-misc-calc"/> 中所述的按鈕。</para>
+                <table id="gcalctool-TBL-misc-calc" frame="all">
+                  <title>執行其他的科學計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>說明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>範例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>括號</para></entry>
+                             <entry><para><guibutton>(</guibutton> and <guibutton>)</guibutton></para></entry>
+                             <entry><para>提供算術計算中的優先順序。括號內的算式會優先執行。如果沒有使用括號，算術計算將從左至右執行沒有優先順序。括號可以嵌套的層數不限。當最後一個括號相符時，即更新顯示區域。</para></entry>
+                             <entry>
+                               <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
+                             </entry>
+                             <entry>
+                               <para>20</para>
+                               <para>14</para>
+                             </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>e 的 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>計算顯示區域之目前值其 <literal>e</literal> 的次方值。</para></entry>
+                             <entry><para>2 e<superscript>x</superscript></para></entry>
+                             <entry><para>7.39</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>10 的 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>計算顯示區域之目前值其 10 的次方值。</para></entry>
+                             <entry><para>2 10<superscript>x</superscript></para></entry>
+                             <entry><para>100</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>y 的 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>將顯示區域的目前值作為您輸入之下一個值的次方。</para></entry>
+                             <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>16</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><replaceable>x</replaceable> 階乘</para></entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para>計算顯示區域之目前值的階乘。<replaceable>x</replaceable> 階乘為 <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1。這個函數只可套用於正整數。</para></entry>
+                             <entry><para>4 <guibutton>x!</guibutton></para></entry>
+                             <entry><para>24</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>亂數產生器</para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>隨機產生一個 0.0 到 1.0 範圍之間的數字並在顯示區域中顯示該數字。</para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>0.14</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><guibutton>A</guibutton> 到 <guibutton>E</guibutton> 以內的數值</para></entry>
+                             <entry><para>這些數字只可用於十六進制基礎。</para></entry>
+                             <entry><para><guibutton>B</guibutton></para></entry>
+                             <entry><para>B</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    </sect2>
+<!-- ============= Quitting ============================= -->
+  <sect2 id="gcalctool-quit"> 
+    <title>結束</title>
+                <para>如果要結束 &app;，請選擇
+                  <menuchoice>
+                         <guimenu>計算機</guimenu>
+                         <guimenuitem>結束</guimenuitem>
+                  </menuchoice>。 </para>
+                <para>當您結束 &app; 時，即會儲存下列設定目前的值並在下次啟動 &app; 時自動套用：</para>
+                  <itemizedlist>
+                    <listitem><para>模式：<link linkend="gcalctool-basic-mode">基本</link>、<link linkend="gcalctool-financial-mode">財務</link>或<link linkend="gcalctool-scientific-mode">科學</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-set-acc">精確度</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-mem-reg">記憶體註冊視窗</link>顯示或未顯示</para></listitem>
+                    <listitem><para><link linkend="gcalctool-num-base">數值基礎</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-display-type">顯示類型</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-trig-type">三角類型</link></para></listitem>
+                  </itemizedlist>
+  </sect2>
+  </sect1>
+<!-- ============= Technical Information ============================= -->
+  <sect1 id="gcalctool-tech-info">
+         <title>技術資訊</title>
+         <sect2 id="gcalctool-manage-order">
+                <title>運算順序</title>
+<para>
+從左至右執行計算，沒有算術
+優先順序。如果要套用算術
+優先順序，請使用括號。
+</para>
+<para>例如，當沒有使用括號時：
+<screen><literal>2 + 3 * 4 = 20 </literal></screen></para>
+<para>使用括號時：
+<screen><literal>2 + (3 * 4) = 14</literal></screen></para>
+         </sect2>
+         <sect2 id="gcalctool-recognize-error">
+                <title>錯誤狀況</title>
+                <para>如果您執行一個無效的計算，&app; 會指出下列的錯誤狀況：
+<itemizedlist>
+<listitem><para>在顯示區域中顯示 <literal>Error</literal> 一字。</para></listitem>
+<listitem><para>使所有的計算機按鈕無法使用，<guibutton>Clr</guibutton> 除外。</para></listitem>
+<listitem><para>使所有的計算機選項無法使用。</para></listitem>
+<listitem><para>使所有的計算機功能表項目無法使用，<menuchoice><guimenu>計算機</guimenu><guimenuitem>結束</guimenuitem></menuchoice>和<menuchoice><guimenu>說明</guimenu><guimenuitem>內容</guimenuitem></menuchoice> 除外。</para></listitem>
+</itemizedlist>
+</para>
+<para>如果要清除錯誤狀況，請按一下 <guibutton>Clr</guibutton> 或按下 <keycap>Delete</keycap>。</para>
+         </sect2>
+         <sect2 id="gcalctool-input-mode">
+                <title>變更輸入模式</title>
+                <para>如果要變更輸入模式，請在文字視窗上按滑鼠右鍵，然後選取
+<guimenuitem>輸入方法</guimenuitem>。</para>
+         </sect2>
+
+  </sect1>
+<!-- ============= Keyboard Shortcuts ============================= -->
+  <sect1 id="gcalctool-keyboard-shortcut"> 
+    <title>快速參考：鍵盤捷徑</title>
+                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>、<xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/> 和 <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> 提供了所有 &app; 鍵盤捷徑的快速參考。</para>
+                <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
+                  <title>&app; 按鈕之鍵盤捷徑的快速參考</title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>鍵盤捷徑</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>按鈕</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>請參閱</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycap>0</keycap> 到 <keycap>9</keycap> 以內的數字</para></entry>
+                             <entry><para><guibutton>0</guibutton> 到 <guibutton>9</guibutton> 以內的數字</para></entry>
+                             <entry><para>數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>A</keycap> </para></entry>
+                             <entry><para><guibutton>Acc</guibutton> </para></entry>
+                             <entry><para>精確度</para></entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>a</keycap> </para></entry>
+                             <entry><para><guibutton>A</guibutton> </para></entry>
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>b</keycap> </para></entry>
+                             <entry><para><guibutton>B</guibutton> </para></entry>
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>C</keycap></para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>變更算術符號</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>c</keycap> </para></entry>
+                             <entry><para><guibutton>C</guibutton> </para></entry>
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>D</keycap></para></entry>
+                             <entry><para><guibutton>Ddb</guibutton></para></entry>
+                             <entry><para>倍數餘額折舊</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>d</keycap> </para></entry>
+                             <entry><para><guibutton>D</guibutton> </para></entry>
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>E</keycap> </para></entry>
+                             <entry><para><guibutton>Exp</guibutton> </para></entry>
+                             <entry><para>指數</para></entry>
+                             <entry><para><xref linkend="gcalctool-enter-exp"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><guibutton>E</guibutton> </para></entry>
+                             <entry><para>十六進制數字</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>F</keycap> </para></entry>
+                             <entry><para><guibutton>Fun</guibutton> </para></entry>
+                             <entry><para>功能</para></entry>
+                             <entry><para><xref linkend="gcalctool-edit-func"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>G</keycap></para></entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>常用對數</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>i</keycap></para></entry>
+                             <entry><para><guibutton>Int</guibutton></para></entry>
+                             <entry><para>整數部份</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>J</keycap></para></entry>
+                             <entry><para><guibutton>Cos</guibutton></para></entry>
+                             <entry><para>餘弦</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>K</keycap></para></entry>
+                             <entry><para><guibutton>Sin</guibutton></para></entry>
+                             <entry><para>正弦</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>L</keycap></para></entry>
+                             <entry><para><guibutton>Tan</guibutton></para></entry>
+                             <entry><para>正切</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>l</keycap></para></entry>
+                             <entry><para><guibutton>Sln</guibutton></para></entry>
+                             <entry><para>直線折舊</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>m</keycap></para></entry>
+                             <entry><para><guibutton>Ctrm</guibutton></para></entry>
+                             <entry><para>複利期間</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>N</keycap></para></entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>自然對數</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>n</keycap></para></entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>邏輯 XNOR</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>P</keycap></para></entry>
+                             <entry><para><guibutton>Pmt</guibutton></para></entry>
+                             <entry><para>分期付款</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>p</keycap></para></entry>
+                             <entry><para><guibutton>Pv</guibutton></para></entry>
+                             <entry><para>現值</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>R</keycap></para></entry>
+                             <entry><para><guibutton>Rcl</guibutton></para></entry>
+                             <entry><para>擷取記憶體註冊的值 </para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>r</keycap></para></entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>倒數</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>S</keycap></para></entry>
+                             <entry><para><guibutton>Sto</guibutton></para></entry>
+                             <entry><para>將值儲存於記憶體註冊</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>s</keycap></para></entry>
+                             <entry><para><guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>平方根</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>T</keycap></para></entry>
+                             <entry><para><guibutton>利率</guibutton></para></entry>
+                             <entry><para>定期利率</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>t</keycap></para></entry>
+                             <entry><para><guibutton>期間</guibutton></para></entry>
+                             <entry><para>付款週期</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>u</keycap></para></entry>
+                             <entry><para><guibutton>Abs</guibutton></para></entry>
+                             <entry><para>絕對值</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>v</keycap></para></entry>
+                             <entry><para><guibutton>Fv</guibutton></para></entry>
+                             <entry><para>期約值</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>X</keycap></para></entry>
+                             <entry><para><guibutton>Exch</guibutton></para></entry>
+                             <entry><para>將記憶體註冊值與顯示的值交換</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Y</keycap></para></entry>
+                             <entry><para><guibutton>Syd</guibutton></para></entry>
+                             <entry><para>年數合計折舊</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>y</keycap></para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>y 的 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>! </keycap></para></entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para><replaceable>x</replaceable> 階乘</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>#</keycap> </para></entry>
+                             <entry><para><guibutton>Con</guibutton> </para></entry>
+                             <entry><para>定值</para></entry>
+                             <entry><para><xref linkend="gcalctool-edit-const"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>%</keycap></para></entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>百分比</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&amp;</keycap></para></entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>邏輯 AND</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>(</keycap> and <keycap>)</keycap></para></entry>
+                             <entry><para><guibutton>(</guibutton> and <guibutton>)</guibutton></para></entry>
+                             <entry><para>括號</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>*</keycap> or <keycap>x</keycap></para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>乘</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>+</keycap></para></entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>加</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>-</keycap></para></entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>減</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>。</keycap></para></entry>
+                             <entry><para><guibutton>。</guibutton></para></entry>
+                             <entry><para>數字點</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>/</keycap></para></entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>除</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>：</keycap></para></entry>
+                             <entry><para><guibutton>Frac</guibutton></para></entry>
+                             <entry><para>分數部份</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&lt;</keycap></para></entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para>左移 <replaceable>n</replaceable></para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>=</keycap> 或 <keycap>Return</keycap></para></entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>計算結果</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&gt;</keycap></para></entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para>右移 <replaceable>n</replaceable></para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>?</keycap></para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>亂數產生器</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>@</keycap></para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>平方</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>[</keycap></para></entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>取得 32 位元無符號整數</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>]</keycap></para></entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>取得 16 位元無符號整數</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>^</keycap></para></entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>邏輯 XOR</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>{</keycap></para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>e 的 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>|</keycap></para></entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>邏輯 OR</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>}</keycap></para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>10 是 <replaceable>x</replaceable> 次方</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&tilde;</keycap></para></entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>邏輯 NOT</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Backspace</keycap></para></entry>
+                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para>Backspace</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
+                             <entry><para><guibutton>CE</guibutton></para></entry>
+                             <entry><para>清除輸入</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Delete</keycap></para></entry>
+                             <entry><para><guibutton>Clr</guibutton></para></entry>
+                             <entry><para>清除</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
+                  <title>&app; 科學模式選項之鍵盤捷徑的快速參考</title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>鍵盤捷徑</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>選項</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>請參閱</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
+                             <entry><para>斜度</para></entry>
+                             <entry><para>將三角類型設為斜度。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para>Bin</para></entry>
+                             <entry><para>將數值基礎設為二進制。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para>Dec</para></entry>
+                             <entry><para>將數值基礎設為十進制。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para>Fix</para></entry>
+                             <entry><para>將顯示類型設為定點格式。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>g</keycap></keycombo></para></entry>
+                             <entry><para>角度</para></entry>
+                             <entry><para>將三角類型設為角度。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para>Inv</para></entry>
+                             <entry><para>選取三角函數使用的反三角選項。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>n</keycap></keycombo></para></entry>
+                             <entry><para>Eng</para></entry>
+                             <entry><para>將顯示類型設為工程格式。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para>Oct</para></entry>
+                             <entry><para>將數值基礎設為八進制。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para>弧度</para></entry>
+                             <entry><para>將三角類型設為弧度。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para>Sci</para></entry>
+                             <entry><para>將顯示類型設為科學格式。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
+                             <entry><para>Hex</para></entry>
+                             <entry><para>將數值基礎設為十六進制。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>y</keycap></keycombo></para></entry>
+                             <entry><para>Hyp</para></entry>
+                             <entry><para>選取三角函數使用的雙曲線選項。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
+                  <title>&app; 功能表項目之鍵盤捷徑的快速參考</title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>鍵盤捷徑</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>功能表項目 </para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>功能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>請參閱</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>檢視</guimenu> <guimenuitem>基本</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>變更為基本模式</para></entry>
+                             <entry><para><xref linkend="gcalctool-basic-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>編輯</guimenu> <guimenuitem>複製</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>將顯示區域的目前值複製到剪貼簿。</para></entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>檢視</guimenu> <guimenuitem>財務</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>變更為財務模式</para></entry>
+                             <entry><para><xref linkend="gcalctool-financial-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>編輯</guimenu> <guimenuitem>插入 ASCII 值</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>顯示<guilabel>插入 ASCII 值</guilabel>視窗</para></entry>
+                             <entry><para><xref linkend="gcalctool-ins-ascii"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>檢視</guimenu> <guimenuitem>記憶體註冊</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>顯示<guilabel>記憶體註冊</guilabel>視窗</para></entry>
+                             <entry><para><xref linkend="gcalctool-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>計算機</guimenu> <guimenuitem>結束</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>結束 &app; 應用程式</para></entry>
+                             <entry><para><xref linkend="gcalctool-quit"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>檢視</guimenu> <guimenuitem>科學</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>變更為科學模式</para></entry>
+                             <entry><para><xref linkend="gcalctool-scientific-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>檢視</guimenu> <guimenuitem>顯示尾隨的零</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>顯示尾隨的零</para></entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>編輯</guimenu> <guimenuitem>貼上</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>將顯示區域的目前值貼入剪貼簿  </para></entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>F1</keycap></para></entry>
+                             <entry><para> <menuchoice> <guimenu>說明</guimenu> <guimenuitem>內容</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>顯示 &app; 線上說明 </para></entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+  </sect1>
+</article>

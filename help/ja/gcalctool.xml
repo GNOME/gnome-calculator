@@ -1,0 +1,2522 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "4.2.103">
+  <!ENTITY manrevision "2.5.1">
+  <!ENTITY date "2003 年 9 月">
+  <!ENTITY app "<application>電卓</application>">
+  <!ENTITY ug "GNOME ユーザーズガイド">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+<title>&app; のマニュアル V&manrevision;</title>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+    <publisher> 
+      <publishername>GNOME ドキュメンテーションプロジェクト</publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author> 
+		<firstname>Sun</firstname> 
+		<surname>GNOME ドキュメンテーションチーム</surname> 
+		<affiliation> 
+	  		<orgname>Sun Microsystems</orgname> 
+		</affiliation> 
+      </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+     maintainers,  etc. Commented out by default.
+     
+      <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+	  		<orgname>Latin Translation Team</orgname> 
+	  		<address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+      <revision> 
+		<revnumber>電卓 マニュアル V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool マニュアル V2.5</revnumber> 
+		<date>2003 年 7 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool マニュアル V2.4</revnumber> 
+		<date>2003 年 6 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool マニュアル V2.3</revnumber> 
+		<date>2003 年 4 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool マニュアル V2.2</revnumber> 
+		<date>2003 年 4 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision> 
+		<revnumber>gcalctool マニュアル V2.1</revnumber> 
+		<date>2003 年 3 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+      <revision>
+		<revnumber>gcalctool マニュアル V2.0</revnumber> 
+		<date>2003 年 3 月</date> 
+		<revdescription> 
+	  		<para role="author">Sun GNOME ドキュメンテーションチーム</para>
+	  		<para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>このマニュアルは&app;のバージョン &appversion; について説明します。
+    </releaseinfo>
+    <legalnotice><title>フィードバック</title>
+      <para>&app; アプリケーションまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink url="ghelp:gnome-feedback" type="help">GNOME フィードバックページ</ulink> 
+      にある説明に従ってください。
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>gcalctool</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>電卓</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="gcalctool-intro"><title>概要</title>
+    <para>&app; アプリケーションは多機能で、複数の数学アプローチを処理できます。</para>
+    <para>&app; アプリケーションのモードは、以下のとおりです。</para>
+     <variablelist>
+        <varlistentry>
+        <term><link linkend="gcalctool-basic-mode">基本モード</link></term>
+        <listitem><para>標準的な電卓機能を提供します。数字を 10 個のメモリレジスタに保存し、メモリレジスタ内の数字を簡単に検索、置換できます。基本モードは、デフォルトモードです。他の各モードでも、基本モード機能はすべて使用できます。</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-financial-mode">財務モード</link></term>
+        <listitem><para>複雑な財務機能を複数提供します。</para></listitem>
+        </varlistentry>
+        <varlistentry>
+        <term><link linkend="gcalctool-scientific-mode">科学モード</link></term>
+        <listitem><para>三角関数や論理機能など多くの数学機能を提供します。科学モードでは、ユーザが定義した機能や定数も保存できます。</para></listitem>
+        </varlistentry>
+     </variablelist>
+
+    <para>&app; は、以下の進法で使用できます。</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>進法</para></entry>
+              <entry colname="COLSPEC1" align="right">
+                <para>基数</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>2 進法</para></entry>
+              <entry align="right"><para>2</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>8 進法</para></entry>
+              <entry align="right"><para>8</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>10 進法</para></entry>
+              <entry align="right"><para>10</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>16 進法</para></entry>
+              <entry align="right"><para>16</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+                           
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+
+  <sect1 id="gcalctool-get-start"><title>基本的な使用方法</title>
+                <para>以下の方法で &app; を起動してください。</para>
+                <variablelist>
+                <varlistentry>
+                <term>メニュー</term>
+                <listitem>
+                <para>&app; のメニューからの起動方法については、使用中のプラットフォーム向けの最新版 &ug; を参照してください。</para>
+                </listitem>
+                </varlistentry>
+                <varlistentry> 
+             <term>コマンドライン</term> 
+             <listitem>
+                <para>次のコマンドを実行します。 <command>gcalctool</command></para>
+                </listitem>
+                </varlistentry>
+                </variablelist>
+    <para><application>&app;</application> の起動時には、次のウィンドウが表示されます。</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-basic"> 
+	<title>&app; の基本モードウィンドウ</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>&app; の基本モード ウィンドウが表示されます。  </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+                <para><application>&app;</application> ウィンドウには、以下の要素が含まれています。 </para>
+                <variablelist>
+                  <varlistentry><term>メニューバー</term>
+                         <listitem>
+                                <para>メニューバーのメニューには、<application>&app;</application> で必要なコマンドがすべて含まれています。</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry><term>表示領域</term>
+                         <listitem>
+                                <para>表示領域には、入力した数字および計算結果が表示されます。40 桁までの数字を入力できます。</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry><term>モード領域</term>
+                         <listitem>
+                                <para>モード領域では、現在選択されているモードのボタンが表示されます。基本モードボタンは、常に表示されています。財務モードを選択すると、 財務モードボタンが基本モードボタンの上に表示されます。科学モードを選択すると、 科学モードボタンが基本モードボタンの上に表示されます。</para>
+                         </listitem>
+                  </varlistentry>
+                  <varlistentry> <term>ポップアップメニュー</term>
+                         <listitem>
+                <para>&app; ボタンの
+                      <inlinemediaobject> 
+                         <imageobject> 
+                            <imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/> 
+                         </imageobject> 
+                         <textobject> 
+                         <phrase>ポップアップメニューシンボルを表示</phrase> 
+                         </textobject> 
+                      </inlinemediaobject>
+シンボルは、そのボタンをクリックするとポップアップメニューが表示されることを表しています。</para>
+                         </listitem>
+                  </varlistentry>
+                </variablelist>
+
+<para></para>
+
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="gcalctool-usage"><title>使用方法</title>
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-calc-functions">
+                <title>電卓機能を使用する</title>
+                <para>計算は、以下のどちらかの方法で行います。</para>
+                <itemizedlist>
+                  <listitem>
+                         <para>&app; ボタンをクリックして、数字と関数を入力します。</para>
+                  </listitem>
+                  <listitem>
+                         <para>&app; ウィンドウにフォーカスを移動し、キーボードまたは数値入力キーで、実行する計算を指定します。キーボードのショートカットの全リストについては、<xref linkend="gcalctool-keyboard-shortcut"/>を参照してください。</para>
+                  </listitem>
+                </itemizedlist>
+                <para>&app; アプリケーションは、40 桁以上の数字や小数を自動的に指数として表示します。以下の表の例では、小数点以下 2 桁の 10 進数を使用している場合に表示される値が示されています。 </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>表示される情報</para></entry>
+              <entry colname="COLSPEC1">
+                <para>意味</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para>1.23e+37</para></entry>
+              <entry><para>1.23 * 10<superscript>37</superscript></para></entry>
+            </row>
+            <row valign="top">
+              <entry><para>1e-5</para></entry>
+              <entry><para>0.00001</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>数字を指数形式で入力する方法については、<xref linkend="gcalctool-enter-exp"/>を参照してください。</para>
+                <para>計算結果をコピーするには、<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「コピー」</guimenuitem></menuchoice>の順に選択します。
+                     値は、他のアプリケーションに張り付けることができます。</para>
+
+                <para>事前にコピーした値を表示領域に張り付けるには、<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「貼り付け」</guimenuitem></menuchoice>の順に選択します。</para>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-basic-mode"> 
+      <title>基本計算を実行する</title>
+      <para>&app; を起動すると、デフォルトで基本モードが表示されます。基本モードを明示的に呼び出すには、<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Basic Mode」</guimenuitem></menuchoice>の順に選択します。
+      </para>
+    <sect3 id="gcalctool-simple-calc"> 
+      <title>簡単な計算を実行する</title>
+      <para>簡単な 計算を実行するには、<xref linkend="gcalctool-TBL-simple-calc"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-simple-calc" frame="all">
+                  <title>簡単な計算の実行</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>数値キー </para></entry>
+                             <entry><para><guibutton>0</guibutton>から<guibutton>9</guibutton></para></entry>
+                             <entry><para>10 進法と 16 進法では、すべての数値キーを使用できます。8 進法では、<guibutton>「8」</guibutton>と<guibutton>「9」</guibutton> は使用できません。2 進法では、<guibutton>「0」</guibutton>と<guibutton>「1」</guibutton>だけを使用できます。デフォルトは、10 進法です。</para></entry>
+                             <entry><para><guibutton>1</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>小数点</para></entry>
+                             <entry><para><guibutton> </guibutton></para></entry>
+                             <entry><para>数字の小数部分の入力を開始します。</para></entry>
+                             <entry><para><guibutton>1</guibutton> <guibutton>.</guibutton><guibutton>2</guibutton></para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>結果の計算</para></entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>現在の計算結果が現在の進法で表示されます。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>足し算</para></entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>表示領域内の値を次に入力する数字に加えます。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>引き算</para></entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>表示領域内の値から次に入力する数字を引きます。</para></entry>
+                             <entry><para>3 <guibutton>-</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>掛け算</para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>表示領域内の値に次に入力する数字をかけます。</para></entry>
+                             <entry><para>3 <guibutton>*</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>6</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>割り算</para></entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>表示領域内の値を次に入力する数字で割ります。</para></entry>
+                             <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>2</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-erase-char"> 
+      <title>文字を消去する</title>
+      <para>文字を消去するには、<xref linkend="gcalctool-TBL-erase-char"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-erase-char" frame="all">
+                  <title>文字の消去</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>バックスペース</para></entry>
+                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para>右端の文字を表示領域から削除します。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bsp</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>エントリの消去</para></entry>
+                             <entry><para><guibutton>CE</guibutton></para></entry>
+                             <entry><para>現在の値を表示領域から削除します。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>CE</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>平文</para></entry>
+                             <entry><para><guibutton>Clr</guibutton></para></entry>
+                             <entry><para>表示領域内の値を 0 にリセットします。<guibutton>「Clr」</guibutton>は、科学モードでは<guilabel>「Hyp」</guilabel>と<guilabel>「Inv」</guilabel>オプションの選択解除も行います。</para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>0</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-arith-calc"> 
+      <title>算術計算を実行する</title>
+      <para>算術計算を実行するには、<xref linkend="gcalctool-TBL-arith-calc"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-arith-calc" frame="all">
+                  <title>算術計算の実行</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>%</para></entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>表示領域内の値の次に入力する数字のパーセンテージを計算します。</para></entry>
+                             <entry><para>200 <guibutton>%</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>4</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>逆数</para></entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>1を表示領域内の値で割ります。</para></entry>
+                             <entry><para>4 <guibutton>1/x</guibutton></para></entry>
+                             <entry><para>0.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>演算符号の変更</para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>正の数を負の数に、または負の数を正の数に変更します。</para></entry>
+                             <entry><para>8 <guibutton>+/-</guibutton></para></entry>
+                             <entry><para>-8</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>平方根</para></entry>
+                             <entry><para><guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>表示領域内の値の平方根を計算します。</para></entry>
+                             <entry><para>9 <guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>平方</para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>表示領域内の値の平方を計算します。</para></entry>
+                             <entry><para>3 x<superscript>2</superscript></para></entry>
+                             <entry><para>9</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>整数部分</para></entry>
+                             <entry><para><guibutton>Int</guibutton></para></entry>
+                             <entry><para>表示領域内の値の整数部分を計算します。</para></entry>
+                             <entry><para>-23.45 <guibutton>Int</guibutton></para></entry>
+                             <entry><para>-23</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>小数部分</para></entry>
+                             <entry><para><guibutton>Frac</guibutton></para></entry>
+                             <entry><para>表示領域内の値の小数部分を計算します。</para></entry>
+                             <entry><para>-23.45 <guibutton>Frac</guibutton></para></entry>
+                             <entry><para>-0.45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>絶対値</para></entry>
+                             <entry><para><guibutton>Abs</guibutton></para></entry>
+                             <entry><para>表示領域内の値の絶対値を計算します。</para></entry>
+                             <entry><para>-23.45 <guibutton>Abs</guibutton></para></entry>
+                             <entry><para>23.45</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-mem-reg">
+      <title>電卓メモリレジスタを使用する</title>
+      <para>10 個の &app; メモリレジスタ <guilabel>R0</guilabel> から <guilabel>R9</guilabel> のどこにでも値を保存できます。 メモリレジスタを表示するには、<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Memory Registers」</guimenuitem></menuchoice>の順に選択します。
+      </para>
+      <para><xref linkend="gcalctool-TBL-mem-reg"/> では、使用可能なメモリ機能が説明されています。</para>
+                <table id="gcalctool-TBL-mem-reg" frame="all">
+                  <title>メモリ機能</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>メモリレジスタに値を保存</para></entry>
+                             <entry><para><guibutton>Sto</guibutton></para></entry>
+                             <entry><para>指定されたメモリレジスタに表示領域の内容を保存します。<guibutton>「Sto」</guibutton>をクリックし、ポップアップメニューからメモリレジスタを選択します。</para>
+                                   <para>&app; のセッション中にメモリレジスタをクリアするには</para>
+                                     <orderedlist>
+                                       <listitem><para><guibutton>「Clr」</guibutton>をクリックします。</para></listitem>
+                                       <listitem><para><guibutton>「Sto」</guibutton>をクリックします。</para></listitem>
+                                       <listitem><para>ポップアップメニューからメモリレジスタを選択します。</para></listitem>
+                                     </orderedlist>
+</entry>
+                             <entry><para>22 <guibutton>Sto</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>値 22 がメモリレジスタ <guilabel>R2</guilabel> に保存されました。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>メモリレジスタの値を取り出し</para></entry>
+                             <entry><para><guibutton>Rcl</guibutton></para></entry>
+                             <entry><para>指定されたメモリレジスタの内容を取り出します。<guibutton>「Rcl」</guibutton>をクリックし、ポップアップメニューからメモリレジスタを選択します。</para></entry>
+                             <entry><para>0 <guibutton>Rcl</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>22 </para><para>22 は先ほどメモリレジスタ R2 に保存された値です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>メモリレジスタの値と表示値を交換</para></entry>
+                             <entry><para><guibutton>Exch</guibutton></para></entry>
+                             <entry><para>指定されたメモリレジスタの内容と表示領域内の値を交換します。<guibutton>「Exch」</guibutton>をクリックし、ポップアップメニューからメモリレジスタを選択します。</para></entry>
+                             <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
+                             <entry><para>表示領域内の値が 44 から 22 に、R2 の値が 22 から 44 に変わります。</para><para>22 は先ほどメモリレジスタ R2 に保存された値です。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>キーボードのショートカットを使用する場合は、以下の例のようにキーボードで メモリレジスタを指定します。 </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>キーボードの入力</para></entry>
+              <entry colname="COLSPEC1">
+                <para>説明</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>S</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>メモリレジスタ <guilabel>R2</guilabel> に表示領域の内容を保存します。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>R</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>メモリレジスタ <guilabel>R2</guilabel> の内容を表示領域に取り出します。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>X</keycap> <keycap>2</keycap></para></entry>
+              <entry><para>表示領域内の値とメモリレジスタ <guilabel>R2</guilabel> の内容を交換します。</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+  
+          </sect3>
+          <sect3 id="gcalctool-ins-ascii"> 
+            <title>ASCII 値を表示する</title>
+                        <para>文字の ASCII 値を表示するには、<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「Insert ASCII Value」</guimenuitem></menuchoice>の順に選択します。</para>
+                        <para>「Insert ASCII Value」ダイアログが表示されます。</para>
+                        <para>ASCII 値を表示する文字を<guilabel>「Character」</guilabel>フィールドに入力し、<guibutton>「Insert」</guibutton>をクリックします。 指定した文字の ASCII 値が、現在の進法で表示領域に表示されます。 たとえば、B の ASCII 値は、10 進法では 66 です。</para>
+          </sect3>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="gcalctool-financial-mode"> 
+      <title>財務上の計算の実行</title>
+      <para>財務モードを変更するには、<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Financial Mode」</guimenuitem></menuchoice>の順に選択します。
+      </para>
+    <para>財務モードに変更すると、以下の 財務モードボタンが基本モードボタンの上に表示されます。</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-financial"> 
+	<title>&app; の財務モードボタン</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>&app; の財務モードボタンを表示します。  </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+      <para>財務上の計算を実行するには、<xref linkend="gcalctool-TBL-financial-calc"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-financial-calc" frame="all">
+                  <title>財務上の計算の実行</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>複利計算期</para></entry>
+                             <entry><para><guibutton>Ctrm</guibutton></para></entry>
+                             <entry><para>投資した現在価値 <replaceable>pv</replaceable> を複利計算期ごとの固定利率 <replaceable>int</replaceable> で将来価値 <replaceable>fv</replaceable> に増やすために必要な複利計算期を計算します。</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>int</replaceable>。定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>fv</replaceable>。将来価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>pv</replaceable>。現在価値</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>$8000 を年利 9% で毎月利率のつく口座に預けたとします。年利から計算すると、月利は 0.09 / 12 = 0.0075 となります。投資額が 2 倍になるまでの期間を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>0.0075</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>16000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Ctrm」</guibutton>をクリックします。</para></entry>
+                             <entry><para>92.77</para>
+                                    <para>投資は、92.77 か月後に倍になります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>2 倍定率法による減価償却</para></entry>
+                             <entry><para><guibutton>Ddb</guibutton></para></entry>
+                             <entry><para>2 倍定率法を使用した場合の指定期間内の資産の減価償却費を計算します。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>cost</replaceable>。その資産に支払った金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>salvage</replaceable>。耐用年数が終わったときのその資産の価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>life</replaceable>。その資産の耐用年数</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 3</term>
+                                <listitem><para><replaceable>period</replaceable>。減価償却費を計算する期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>$8000 のオフィス機器を購入したとします。 このマシンの耐用年数は、6 年です。6 年後の残存価額は、$900 です。
+2 倍定率法を使用して、4 年目の減価償却費を計算するには、以下の値を最初の 4 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Ddb」</guibutton>をクリックします。</para></entry>
+                             <entry><para>790.12</para>
+                                    <para>4 年目の減価償却費は、 $790.12 です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>将来値</para></entry>
+                             <entry><para><guibutton>Fv</guibutton></para></entry>
+                             <entry><para><replaceable>pmt</replaceable> ずつ、定期利率  <replaceable>int</replaceable> で、契約の支払回数、元利均等支払方式で支払った投資の将来価値を計算します。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>。定期支払額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>int</replaceable>。定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>n</replaceable>。回数</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>これから 20 年間、毎年末に $4000 を銀行口座に預ける計画だとします。口座の利率は 8% で、毎年足されていきます。Interest is paid on the last day of each year. 
+20 年後の口座の価値を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>4000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>0.08</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Fv」</guibutton>をクリックします。</para></entry>
+                             <entry><para>183047.86</para>
+                                    <para>20 年後の口座の価値は、$183,047.86 になります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>定期払い込み</para></entry>
+                             <entry><para><guibutton>Pmt</guibutton></para></entry>
+                             <entry><para>各返済期間の末日に支払が行われるローンの定期払い込み額を計算します。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>prin</replaceable>。元金</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>int</replaceable>。定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>n</replaceable>。期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>年利 11.0% で 30 年間の $120,000 のローンを考えているとします。年利から計算すると、月利は 0.11 / 12 = 0.00917 となります。期間は、30 * 12 = 360 か月です。このローンの毎月の支払額を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>0.00917</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>360</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Pmt」</guibutton>をクリックします。</para></entry>
+                             <entry><para>1143.15</para>
+                                    <para>毎月の返済金は、$1143.15 です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>現在値</para></entry>
+                             <entry><para><guibutton>Pv</guibutton></para></entry>
+                             <entry><para><replaceable>pmt</replaceable> ずつ、契約の支払回数、元利均等支払方式で支払われ、定期利率 <replaceable>int</replaceable> が差し引かれる投資の現在価値を計算します。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>。定期支払額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>int</replaceable>。定期利率</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>n</replaceable>。回数</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>100 万ドルが当たったとします。賞金は、毎年 $50,000、20 年払いで支払われます。その年の支払額は、毎年末に受け取ります。毎年 $50,000 を受け取る場合は、そのお金を毎年足されていく利率 9% の投資に使います。</para>
+                                    <para>100 万ドルではなく、$400,000 を一括で受け取るオプションもあります。
+現在の価値ではどちらのオプションが得かを計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>50000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>0.09</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>20</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para>Click on <guibutton>Pv</guibutton>.</para></entry>
+                             <entry><para>456427.28</para>
+                                    <para>20 年間で支払われる $1,000,000 の今の価値は、$456,427.28 です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>定期利率</para></entry>
+                             <entry><para><guibutton>Rate</guibutton></para></entry>
+                             <entry><para>現在価値 <replaceable>pv</replaceable> の投資を <replaceable>term</replaceable> 内の複利計算期で将来価値 <replaceable>fv</replaceable> に増やすために必要な定期利率を計算します。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>fv</replaceable>。将来価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>pv</replaceable>。現在価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>n</replaceable>。期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>$20,000 を公債に投資したとします。満期は 5 年後で、満期における価額は $30,000 です。 利息は毎月足されていきます。期間は、5 * 12 = 60 か月です。
+この投資の定期利率を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>30000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>20000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>60</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Rate」</guibutton>をクリックします。</para></entry>
+                             <entry><para>.00678</para>
+                                    <para>月利は、0.678% です。 年利は、0.678% * 12 = 8.14% です。
+</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>定額償却</para></entry>
+                             <entry><para><guibutton>Sln</guibutton></para></entry>
+                             <entry><para>ある期間の資産の定額償却を計算します。定額償却費は、<replaceable>cost</replaceable> - <replaceable>salvage</replaceable> です。 定額償却方式では、減価償却資産原価を資産の耐用年数間で均等に割ります。耐用年数は、資産が減価償却が行われる期間で、年数の場合が一般的です。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>cost</replaceable>。その資産に支払った金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>salvage</replaceable>。耐用年数が終わったときのその資産の価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>life</replaceable>。その資産の耐用年数</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>$8000 のオフィス機器を購入したとします。 このマシンの耐用年数は、6 年です。6 年後の残存価額は、$900 です。
+直線法を用いて年間の減価償却費を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Sln」</guibutton>をクリックします。</para></entry>
+                             <entry><para>1183.33</para>
+                                    <para>毎年の償却費は、$1183.33 です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>算術級数法による減価償却</para></entry>
+                             <entry><para><guibutton>Syd</guibutton></para></entry>
+                             <entry><para>算術級数法を使用した場合の指定期間内の資産の減価償却費を計算します。この減価償却法では、初期により多くの償却を行うことで、償却を速めることができます。
+定額償却費は、<replaceable>cost</replaceable> - <replaceable>salvage</replaceable> です。 耐用年数は、資産が減価償却が行われる期間で、年数の場合が一般的です。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>cost</replaceable>。その資産に支払った金額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>salvage</replaceable>。耐用年数が終わったときのその資産の価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>life</replaceable>。その資産の耐用年数</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 3</term>
+                                <listitem><para><replaceable>period</replaceable>。減価償却費を計算する期間</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>$8000 のオフィス機器を購入したとします。 このマシンの耐用年数は、6 年です。6 年後の残存価額は、$900 です。
+算術級数法を使用して、4 年目の減価償却費を計算するには、以下の値を最初の 4 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>8000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>900</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>6</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 3</term>
+                                <listitem><para>4</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Syd」</guibutton>をクリックします。</para></entry>
+                             <entry><para>1014.29</para>
+                                    <para>4 年目の減価償却費は、 $1014.29 です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>支払期間</para></entry>
+                             <entry><para><guibutton>Term</guibutton></para></entry>
+                             <entry><para>定期利率  <replaceable>int</replaceable> で、将来価値  <replaceable>fv</replaceable> を達成するために、普通年金期間内で必要な支払期間を計算します。各回の支払額は、<replaceable>pmt</replaceable> です。
+</para>
+                              <para>この機能は、以下のメモリレジスタを使用します。 </para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para><replaceable>pmt</replaceable>。定期支払額</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para><replaceable>fv</replaceable>。将来価値</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para><replaceable>int</replaceable>。定期利率</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             </entry>
+                             <entry><para>毎年の最後の日に、銀行口座に1800 ドル貯金します。口座の利率は 11% で、毎年足されていきます。利子は毎年の再度の日に支払われます。
+$120,000 貯まるまでの期間を計算するには、以下の値を最初の 3 つのメモリレジスタに入力します。</para>
+                             <variablelist>
+                                <varlistentry>
+                                <term>レジスタ 0</term>
+                                <listitem><para>1800</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 1</term>
+                                <listitem><para>120000</para></listitem>
+                                </varlistentry>
+                                <varlistentry>
+                                <term>レジスタ 2</term>
+                                <listitem><para>0.11</para></listitem>
+                                </varlistentry>
+                             </variablelist>
+                             <para><guibutton>「Term」</guibutton>をクリックします。</para></entry>
+                             <entry><para>20.32</para>
+                                    <para>口座に $120,000 貯まるのは、20.32 年後です。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gcalctool-scientific-mode"> 
+      <title>科学技術計算を実行する</title>
+      <para>科学モードを変更するには、<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Scientific Mode」</guimenuitem></menuchoice>の順に選択します。
+      </para>
+    <para>科学モードに変更すると、以下の科学モードボタンが基本モードボタンの上に表示されます。</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-scientific"> 
+	<title>&app; の科学モードボタン</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject><imagedata 		fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject>
+	      <phrase>&app; 科学モードボタンを表示します。</phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure>
+    <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-set-acc">
+      <title>精度を設定する</title>
+      <para>表示領域およびメモリレジスタの精度を設定するには、<guibutton>「Acc」</guibutton>をクリックし、ポップアップメニューから精度レベルを選択します。ポップアップメニューの現在の精度レベルの前には、黒い丸がつけられています。小数点以下 9 桁までを表示できます。デフォルトの精度は、小数点以下 9 桁です。</para>
+      <para>デフォルトでは、後続の 0 は表示されていません。後続の 0 を表示するには、<guibutton>「Acc」</guibutton> をクリックし、ポップアップメニューから<guilabel>「Show Trailing Zeroes」</guilabel>を選択するか、または<menuchoice> <guimenu>「表示」</guimenu><guimenuitem>「Show Trailing Zeroes」</guimenuitem></menuchoice>の順に選択します。 <guibutton>「Acc」</guibutton>ポップアップメニューまたは<guimenu>「表示」</guimenu>メニューの前のチェックは、<guilabel>「Show Trailing Zeroes」</guilabel>オプションが選択されていることを表しています。後続の 0 を非表示にするには、再度<menuchoice> <guimenu>「表示」</guimenu><guimenuitem>「Show Trailing Zeroes」</guimenuitem></menuchoice>の順に選択します。</para>
+      <para>以下の表の例は、10 進法を使用し、<guimenuitem>「Show Trailing Zeroes」</guimenuitem>オプションを選択している場合に、<literal>1 / 8 = <replaceable>x</replaceable></literal> の計算で、精度設定がどのように表示領域の <replaceable>x</replaceable> に影響するかを例示しています。 </para>
+                <informaltable frame="all">
+                  <tgroup cols="2" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>精度</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>小数点以下 1 桁</para></entry>
+                             <entry><para>1.2</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>小数点以下 2 桁</para></entry>
+                             <entry><para>1.25</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>小数点以下 3 桁</para></entry>
+                             <entry><para>1.250</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-num-base"> 
+      <title>基数を設定する</title>
+      <para>基数を選択するには、<xref linkend="gcalctool-TBL-num-base"/> に説明のあるボタンの 1 つを選択します。</para>
+                <table id="gcalctool-TBL-num-base" frame="all">
+                  <title>基数の設定</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>基数 2</para></entry>
+                             <entry><para><guibutton>Bin</guibutton></para></entry>
+                             <entry><para>基数が 2 の 2 進数に設定します。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>基数 8</para></entry>
+                             <entry><para><guibutton>Oct</guibutton></para></entry>
+                             <entry><para>基数が 8 の 8 進数に設定します。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>基数 10</para></entry>
+                             <entry><para><guibutton>Dec</guibutton></para></entry>
+                             <entry><para>基数が 10 の 10 進数に設定します。デフォルトの基数は、10 です。科学モードから基本モードまたは財務モードに変更すると、基数は &app; によって自動的に 10 進数に設定されます。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>16 進数</para></entry>
+                             <entry><para><guibutton>Hex</guibutton></para></entry>
+                             <entry><para>基数が 16 の 16 進数に設定します。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-display-type">
+       <title>表示タイプを設定する</title>
+      <para>表示タイプを設定するには、<xref linkend="gcalctool-TBL-display-type"/> に説明のあるボタンの 1 つを選択します。</para>
+                <table id="gcalctool-TBL-display-type" frame="all">
+                  <title>表示タイプの設定</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>エンジニアリング用表示タイプ</para></entry>
+                             <entry><para><guibutton>Eng</guibutton></para></entry>
+                             <entry><para>表示タイプをエンジニアリング形式に設定します。結果は、科学的表記で表示されます。指数は常に 3 の倍数になります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>固定小数点表示タイプ</para></entry>
+                             <entry><para><guibutton>Fix</guibutton></para></entry>
+                             <entry><para>表示タイプを固定小数点形式に設定します。結果は、科学的表記では表示されません。デフォルトは、固定小数点表示タイプです。科学モードから基本モードまたは財務モードに変更すると、表示タイプは &app; によって自動的に固定小数点形式に設定されます。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>科学的表示タイプ</para></entry>
+                             <entry><para><guibutton>Sci</guibutton></para></entry>
+                             <entry><para>表示タイプを科学的形式に設定します。結果は科学的表記で表示され、数値の桁数は固定されています。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-type"> 
+      <title>三角関数のタイプを設定する</title>
+      <para>三角関数のタイプを選択するには、<xref linkend="gcalctool-TBL-trig-type"/> に説明のあるボタンの 1 つを選択します。</para>
+                <table id="gcalctool-TBL-trig-type" frame="all">
+                  <title>三角関数のタイプの設定</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>度数</para></entry>
+                             <entry><para><guibutton>Degrees</guibutton></para></entry>
+                             <entry><para>三角関数のタイプを度数に設定します。デフォルトの三角関数のタイプは、度数です。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>傾斜</para></entry>
+                             <entry><para><guibutton>Gradients</guibutton></para></entry>
+                             <entry><para>三角関数のタイプを傾斜に設定します。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>ラジアン</para></entry>
+                             <entry><para><guibutton>Radians</guibutton></para></entry>
+                             <entry><para>三角関数のタイプをラジアンに設定します。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-trig-options"> 
+      <title>三角関数オプションを設定する</title>
+      <para>三角関数オプションを設定するには、<xref linkend="gcalctool-TBL-trig-options"/> に説明のあるオプションを使います。</para>
+                <table id="gcalctool-TBL-trig-options" frame="all">
+                  <title>三角関数オプションの設定</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>双曲線オプションインジケータ</para></entry>
+                             <entry><para><guibutton>Hyp</guibutton></para></entry>
+                             <entry><para>三角関数機能と一緒に双曲線オプションを使用します。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>反転オプションインジケータ</para></entry>
+                             <entry><para><guibutton>Inv</guibutton></para></entry>
+                             <entry><para>三角関数機能と一緒に反転オプションを使用します。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>デフォルトでは、<xref linkend="gcalctool-TBL-trig-options"/> に説明のあるオプションは選択されていません。これらのオプションの選択を解除するには、<guibutton>「Clr」</guibutton>をクリックします。</para>
+
+    </sect3>
+    <sect3 id="gcalctool-trig-calc"> 
+		<title>三角関数を計算する</title>
+      <para>三角関数の値を計算するには、<xref linkend="gcalctool-TBL-trig-calc"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-trig-calc" frame="all">
+                  <title>三角関数の計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>余弦曲線<literal>cos</literal></para></entry>
+                             <entry><para><guibutton>「Cos」</guibutton>、<guilabel>「Hyp」</guilabel>、<guilabel>「Inv」</guilabel>オプションは選択されていません。</para></entry>
+                             <entry><para>表示領域内の値の余弦曲線を計算します。</para></entry>
+                             <entry><para>60 <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>0.5</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>余弦曲線弧<literal>acos</literal></para></entry>
+                             <entry><para><guibutton>「Cos」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の余弦曲線弧を計算します。</para></entry>
+                             <entry><para>0.5 <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>60</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線余弦曲線<literal>cosh</literal></para></entry>
+                             <entry><para><guibutton>「Cos」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線余弦曲線を計算します。</para></entry>
+                             <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.081072372</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線余弦曲線弧<literal>acosh</literal></para></entry>
+                             <entry><para><guibutton>「Cos」</guibutton>、<guilabel>「Hyp」</guilabel>オプションと<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線余弦曲線弧を計算します。</para></entry>
+                             <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Cos</guibutton></para></entry>
+                             <entry><para>1.046967915</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正弦曲線<literal>sin</literal></para></entry>
+                             <entry><para><guibutton>「Sin」</guibutton>、<guilabel>「Hyp」</guilabel>、<guilabel>「Inv」</guilabel>オプションは選択されていません。</para></entry>
+                             <entry><para>表示領域内の値の正弦曲線を計算します。</para></entry>
+                             <entry><para>90 <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正弦曲線弧<literal>asin</literal></para></entry>
+                             <entry><para><guibutton>「Sin」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の正弦曲線弧を計算します。</para></entry>
+                             <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>90</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線正弦曲線<literal>sinh</literal></para></entry>
+                             <entry><para><guibutton>「Sin」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線正弦曲線を計算します。</para></entry>
+                             <entry><para>0.4 <guilabel>Hyp</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>0.410752326</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線正弦曲線弧<literal>asinh</literal></para></entry>
+                             <entry><para><guibutton>「Sin」</guibutton>、<guilabel>「Hyp」</guilabel>オプションと<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線正弦曲線弧を計算します。</para></entry>
+                             <entry><para>1.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Sin</guibutton></para></entry>
+                             <entry><para>1.248983328</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正接曲線<literal>tan</literal></para></entry>
+                             <entry><para><guibutton>「Tan」</guibutton>、<guilabel>「Hyp」</guilabel>、<guilabel>「Inv」</guilabel>オプションは選択されていません。</para></entry>
+                             <entry><para>表示領域内の値の正接曲線を計算します。</para></entry>
+                             <entry><para>45 <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>正接曲線弧<literal>atan</literal></para></entry>
+                             <entry><para><guibutton>「Tan」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の正接曲線弧を計算します。</para></entry>
+                             <entry><para>1 <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>45</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線正接曲線<literal>tanh</literal></para></entry>
+                             <entry><para><guibutton>「Tan」</guibutton>、<guilabel>「Hyp」</guilabel>オプションは選択されておらず、<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線正接曲線を計算します。</para></entry>
+                             <entry><para>0.6 <guilabel>Hyp</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.537049567</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>双曲線正接曲線弧<literal>atanh</literal></para></entry>
+                             <entry><para><guibutton>「Tan」</guibutton>、<guilabel>「Hyp」</guilabel>オプションと<guilabel>「Inv」</guilabel>オプションは選択されています。</para></entry>
+                             <entry><para>表示領域内の値の双曲線正接曲線弧を計算します。</para></entry>
+                             <entry><para>0.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
+                             <entry><para>0.693147181</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-logs-calc"> 
+		<title>対数を計算する</title>
+      <para>対数を計算するには、<xref linkend="gcalctool-TBL-logs-calc"/> に説明のあるボタンを使います。 </para>
+                <table id="gcalctool-TBL-logs-calc" frame="all">
+                  <title>対数の計算</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>常用対数の底 10</para></entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>表示領域内の値の常用対数を計算します。</para></entry>
+                             <entry><para>10 <guibutton>Log</guibutton></para></entry>
+                             <entry><para>1</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>自然対数</para></entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>表示領域内の値の自然対数を計算します。</para></entry>
+                             <entry><para>10 <guibutton>Ln</guibutton></para></entry>
+                             <entry><para>2.30</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <note>
+                  <para>一般真数と自然真数は &app; のこのバージョンではサポートしていません。</para>
+                </note>
+    </sect3>
+    <sect3 id="gcalctool-logic-calc"> 
+      <title>論理演算を実行する</title>
+      <para>論理演算を実行するには、<xref linkend="gcalctool-TBL-logic-calc"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-logic-calc" frame="all">
+                  <title>論理演算の実行</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>論理和</para></entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>表示領域内の値と次に入力する数字を両方符号なしロング整数として扱い、これらの論理和をとります。</para></entry>
+                             <entry><para>10001000 <guibutton>Or</guibutton> 00010001</para></entry>
+                             <entry><para>10011001</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>論理積</para></entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>表示領域内の値と次に入力する数字を両方符号なしロング整数として扱い、これらの論理積をとります。</para></entry>
+                             <entry><para>10101010 <guibutton>And</guibutton> 00110011</para></entry>
+                             <entry><para>00110011</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>論理否定</para></entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>表示領域内の値を符号なしロング整数として扱い、この否定をとります。</para></entry>
+                             <entry><para>1357ace <guibutton>Not</guibutton> </para></entry>
+                             <entry><para>FECA8531</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>排他論理和</para></entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>表示領域内の値と次に入力する数字を両方符号なしロング整数として扱い、これらの排他論理和をとります。</para></entry>
+                             <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
+                             <entry><para>110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>排他的論理和の否定</para></entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>表示領域内の値と次に入力する数字を両方符号なしロング整数として扱い、これらの排他論理和の否定をとります。</para></entry>
+                             <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
+                             <entry><para>11111111111111111111111111111001</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-enter-exp">
+		<title>指数を入力する</title>
+      <para>指数を入力するには、<guibutton>「Exp」</guibutton>ボタンを使用します。</para>
+      <para><guibutton>「Exp」</guibutton>ボタンを使用すると、数字を科学的表記 (<replaceable>仮数</replaceable> * 10<superscript><replaceable>指数</replaceable></superscript>) で入力できます。 現在の表示領域の 0 以外の値が、仮数です。表示領域内の値が 0 の場合、仮数は 1.0 です。 次に入力する数字が、指数になります。</para>
+      <para><guibutton>「Exp」</guibutton>をクリックすると、次に入力した数字分 10 の累乗となることを表すために、電卓に <literal>.+</literal>が、表示されます。数字の符号を変更するには、以下の例のように操作の最後に<guibutton>「+/-」</guibutton>ボタンを使用します。</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>キーパッドの入力</para></entry>
+              <entry colname="COLSPEC1">
+                <para>電卓の表示</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><guibutton>5</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton></para></entry>
+              <entry><para>-500</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>指数形式で数字を入力するには、以下の表のガイドラインを使用します。 </para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>番号</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>入力</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>表示される数値</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-1200000000</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1200000000</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>1.2e-7</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>-0.0000000012</para></entry>
+                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                             <entry><para>-1.2e-7</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+    </sect3>
+    <sect3 id="gcalctool-edit-const"> 
+      <title>定数値を使用する</title>
+      <para>定義された定数値のリストを表示するには、<guibutton>「Con」</guibutton>をクリックします。現在の進数が 10 進数ではない場合も、定数値はすべて 10 進数で指定されます。</para>
+      <para>メニューから定数を選択し、表示領域に値を入力します。 キーボードのショートカット <keycap>#</keycap> を使用する場合は、以下の例のようにキーボードで定数を指定します。</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>キーボードの入力</para></entry>
+              <entry colname="COLSPEC1">
+                <para>「定数」</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>#</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>C3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>&app; アプリケーションには、以下の表に示されている 10 個のデフォルト定数値があります。</para>
+                <informaltable frame="all">
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1" colwidth="50*"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>番号</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>値</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>C0</para></entry>
+                             <entry><para>0.621</para></entry>
+                             <entry><para>キロメータ毎時またはマイル毎時</para>
+                                    <para>表示領域内の値にこの定数をかけると、キロメータ毎時がマイル毎時に変換されます。たとえば、8 * <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 5 のようになります。</para>
+                                    <para>表示領域内の値をこの定数で割ると、マイル毎時がキロメータ毎時に変換されます。たとえば、5 / <guibutton>Con</guibutton> <guilabel>C0</guilabel> <keycap>=</keycap> 8 のようになります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C1</para></entry>
+                             <entry><para>1.414213562</para></entry>
+                             <entry><para>2 の平方根</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C2</para></entry>
+                             <entry><para>2.718281828</para></entry>
+                             <entry><para>e</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C3</para></entry>
+                             <entry><para>3.141592653</para></entry>
+                             <entry><para>パイ</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C4</para></entry>
+                             <entry><para>0.3937007</para></entry>
+                             <entry><para>センチメータまたはインチ</para>
+                                    <para>表示領域内の値にこの定数をかけると、センチメータがインチに変換されます。たとえば、30 * <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 12 のようになります。</para>
+                                    <para>表示領域内の値をこの定数で割ると、インチがセンチメータに変換されます。たとえば、12 / <guibutton>Con</guibutton> <guilabel>C4</guilabel> <keycap>=</keycap> 30 のようになります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C5</para></entry>
+                             <entry><para>57.295779513</para></entry>
+                             <entry><para>ラジアンでの度数</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>パイ</para></entry>
+                             <entry><para>1048576</para></entry>
+                             <entry><para>2 ^ 20</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C7</para></entry>
+                             <entry><para>0.0353</para></entry>
+                             <entry><para>グラムまたはオンス</para>
+                                    <para>表示領域内の値にこの定数をかけると、グラムがオンスに変換されます。たとえば、500 * <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 18 のようになります。</para>
+                                    <para>表示領域内の値をこの定数で割ると、オンスがグラムに変換されます。たとえば、18 / <guibutton>Con</guibutton> <guilabel>C7</guilabel> <keycap>=</keycap> 500 のようになります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C8</para></entry>
+                             <entry><para>0.948</para></entry>
+                             <entry><para>キロジュールと英国熱単位</para>
+                                    <para>表示領域内の値にこの定数をかけると、キロジュールが英国熱単位に変換されます。たとえば、10 * <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 9.48。</para>
+                                    <para>表示領域内の値をこの定数で割ると、英国熱単位がキロジュールに変換されます。たとえば、9.48 / <guibutton>Con</guibutton> <guilabel>C8</guilabel> <keycap>=</keycap> 10 のようになります。</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>C9</para></entry>
+                             <entry><para>0.061</para></entry>
+                             <entry><para>立方センチメータまたは立方インチ</para>
+                                    <para>表示領域内の値にこの定数をかけると、立方センチメータが立方インチに変換されます。たとえば、100 * <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10 のようになります。</para>
+                                    <para>表示領域内の値をこの定数で割ると、立方インチが立方センチメータに変換されます。たとえば、6.10 / <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100 のようになります。</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</informaltable>
+      <para>&app; の本バージョンでは、新しい定数を追加することはできません。 ただし、デフォルトの定数を上書きして、ユーザ独自の定数を保存することは可能です。</para>
+      <para>新しい定数の保存または既存の定数の編集を行うには、以下の手順を実行します。</para>
+      <orderedlist>
+        <listitem>
+           <para><guibutton>「Con」</guibutton>をクリックし、ポップアップメニューから<guilabel>「Edit Constants」</guilabel>を選択します。</para>
+        </listitem>
+        <listitem>
+      <para><guilabel>「Edit Constants」</guilabel>ウィンドウで、上書きまたは編集する定数を選択します。</para>
+        </listitem>
+        <listitem>
+      <para>「Value」項目をクリックし、新しい値を入力します。</para>
+        </listitem>
+        <listitem>
+      <para>「Description」項目をクリックし、新しい説明を入力します</para>
+        </listitem>
+        <listitem>
+      <para><guibutton>「OK」</guibutton>をクリックして変更を保存し、<guilabel>「Edit Constants」</guilabel>ウィンドウを閉じます。</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-edit-func">
+      <title>関数を使用する</title>
+      <para>使用可能な関数を表示するには、<guibutton>「Fun」</guibutton>をクリックします。ポップアップメニューが、定義されている関数のリストを表示します。メニューから関数を選択し、実行します。関数が定義されていない場合は、値 0 が返されます。</para>
+<para>キーボードのショートカット <keycap>F</keycap> を使用する場合は、以下の例のようにキーボードで関数を指定します。
+</para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>キーボードの入力</para></entry>
+              <entry colname="COLSPEC1">
+                <para>機能</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>F</keycap> <keycap>3</keycap> </para></entry>
+              <entry><para>F3</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para>&app; アプリケーションには、デフォルトの関数はありません。関数は 10 個まで保存できます。</para>
+      <para>新しい関数の保存または既存の関数の編集を行うには、以下の手順を実行します。</para>
+      <orderedlist>
+        <listitem>
+           <para><guibutton>「Fun」</guibutton>をクリックし、ポップアップメニューから<guilabel>「Edit Functions」</guilabel>を選択します。</para>
+        </listitem>
+        <listitem>
+      <para><guilabel>「Edit Constants」</guilabel>ウィンドウで、空のエントリまたは上書きする関数を選択します。</para>
+        </listitem>
+        <listitem>
+      <para>「Value」項目をクリックし、新しい値を入力します。&app; ボタンを起動するキーボードのショートカットを使用します。たとえば、正弦 (90) を計算するには <literal>90K</literal> を入力します。</para>
+        </listitem>
+        <listitem>
+      <para>「Description」項目をクリックし、新しい説明を入力しますたとえば、<literal>Sine 90</literal> となります。</para>
+        </listitem>
+        <listitem>
+      <para><guibutton>「OK」</guibutton>をクリックして変更を保存し、<guilabel>「Edit Functions」</guilabel>ウィンドウを閉じます。</para>
+        </listitem>
+      </orderedlist>
+    </sect3>
+    <sect3 id="gcalctool-num-manip"> 
+      <title>2 進数の数字を処理する</title>
+      <para>2 進法の数字を扱うには、<xref linkend="gcalctool-TBL-num-manip"/> に説明のあるボタンを使います。</para>
+                <table id="gcalctool-TBL-num-manip" frame="all">
+                  <title>2 進数の数字の処理</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><replaceable>n</replaceable> 左にシフト</para></entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para>表示領域の 32 ビット符号なし 2 進数値を、指定された桁数左にシフトします。<guibutton>「&lt;」</guibutton>をクリックし、ポップアップメニューからシフト桁数を選択します。数字は、15 桁まで左にシフトできます。</para></entry>
+                             <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 桁</guilabel></para></entry>
+                             <entry><para>1110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><replaceable>n</replaceable>右にシフト</para></entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para>表示領域の 32 ビット符号なし 2 進数値を、指定された桁数右にシフトします。<guibutton>「&gt;」</guibutton>をクリックし、ポップアップメニューからシフト桁数を選択します。数字は、15 桁まで右にシフトできます。</para></entry>
+                             <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 桁</guilabel></para></entry>
+                             <entry><para>101 </para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>16 ビット符号なし整数の取得</para></entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>表示領域内の値を切り捨て、16 ビットの符号なし整数を返します。</para></entry>
+                             <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>FFFF</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>32 ビット符号なし整数の取得</para></entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>表示領域内の値を切り捨て、32 ビットの符号なし整数を返します。</para></entry>
+                             <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>FFFFFFFF</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+      <para>キーボードのショートカットを使用する場合は、以下の例のようにキーボードで シフトする桁数を指定します。 </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>キーボードの入力</para></entry>
+              <entry colname="COLSPEC1">
+                <para>説明</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry><para><keycap>&lt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>表示領域内の 2 進数値を左に 4 桁シフトします。</para></entry>
+            </row>
+            <row valign="top">
+              <entry><para><keycap>&gt;</keycap> <keycap>4</keycap></para></entry>
+              <entry><para>表示領域内の 2 進数値を右に 4 桁シフトします。</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect3>
+    <sect3 id="gcalctool-misc-calc"> 
+      <title>その他の科学技術計算を実行する</title>
+      <para>その他科学技術計算を実行するには、<xref linkend="gcalctool-TBL-misc-calc"/> に説明のあるボタンを使います。 </para>
+                <table id="gcalctool-TBL-misc-calc" frame="all">
+                  <title>その他の科学技術計算の実行</title>
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>説明</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>例</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>結果</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para>括弧</para></entry>
+                             <entry><para><guibutton>(</guibutton> および <guibutton>)</guibutton></para></entry>
+                             <entry><para>算術計算の優先順位を指定します。 括弧内の計算が先に行われます。括弧がない場合、算術計算は数学上の優先順位なしで左から右に計算されます。括弧は何層でも入れ子にすることができます。最後の括弧が一致すると、表示領域が更新されます。</para></entry>
+                             <entry>
+                               <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
+                             </entry>
+                             <entry>
+                               <para>20</para>
+                               <para>14</para>
+                             </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>e <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>表示領域内の値分、<literal>e</literal> を累乗します。</para></entry>
+                             <entry><para>2 e<superscript>x</superscript></para></entry>
+                             <entry><para>7.39</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>10 <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>表示領域内の値分、10 を累乗します。</para></entry>
+                             <entry><para>2 10<superscript>x</superscript></para></entry>
+                             <entry><para>100</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>y <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>次に入力した値分、表示領域内の値を累乗します。</para></entry>
+                             <entry><para>2 y<superscript>x</superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>16</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><replaceable>x</replaceable> の階乗</para></entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para>表示領域内の値の階乗を計算します。<replaceable>x</replaceable> の階乗は、<replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1 となります。この関数は、正の整数にのみ使用できます。</para></entry>
+                             <entry><para>4 <guibutton>x!</guibutton></para></entry>
+                             <entry><para>24</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>乱数発生関数</para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>0.0 から 1.0 の範囲で乱数を発生し、その乱数を表示領域に表示します。</para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>0.14</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><guibutton>A</guibutton> から <guibutton>E</guibutton></para></entry>
+                             <entry><para>これらの数字は、16 進法でのみ使用できます。</para></entry>
+                             <entry><para><guibutton>B</guibutton></para></entry>
+                             <entry><para>B</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    </sect2>
+<!-- ============= Quitting ============================= -->
+  <sect2 id="gcalctool-quit"> 
+    <title>終了する</title>
+                <para>&app; を終了するには、<menuchoice><guimenu>「Calculator」</guimenu><guimenuitem>「Quit」</guimenuitem></menuchoice>の順に選択します。 </para>
+                <para>&app; を終了すると、以下の設定の現在値が保存され、次に &app; を起動した際に自動的に適用されます。 </para>
+                  <itemizedlist>
+                    <listitem><para>モード<link linkend="gcalctool-basic-mode">基本</link>、<link linkend="gcalctool-financial-mode">財務</link>、または<link linkend="gcalctool-scientific-mode">科学</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-set-acc">精度</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-mem-reg">メモリレジスタ ウィンドウ</link>の表示または非表示</para></listitem>
+                    <listitem><para><link linkend="gcalctool-num-base">進数</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-display-type">表示タイプ</link></para></listitem>
+                    <listitem><para><link linkend="gcalctool-trig-type">三角関数のタイプ</link></para></listitem>
+                  </itemizedlist>
+  </sect2>
+  </sect1>
+<!-- ============= Technical Information ============================= -->
+  <sect1 id="gcalctool-tech-info">
+         <title>技術情報</title>
+         <sect2 id="gcalctool-manage-order">
+                <title>演算の順序</title>
+<para>
+計算は、数学上の優先順位を考慮せず、左から右に実行されます。数学上の優先順位を適用するには、括弧を使ってください。
+</para>
+<para>たとえば、括弧なしでは
+<screen><literal>2 + 3 * 4 = 20 </literal></screen> となり、</para>
+<para>括弧があると、
+<screen><literal>2 + (3 * 4) = 14</literal></screen> となります。</para>
+         </sect2>
+         <sect2 id="gcalctool-recognize-error">
+                <title>エラー状態</title>
+                <para>無効な計算を行うと、&app; が以下のようにエラー状態を示します。
+<itemizedlist>
+<listitem><para><literal>Error</literal> という文字を表示領域に表示します。</para></listitem>
+<listitem><para><guibutton>「Clr」</guibutton>以外のすべてのボタンを使用できなくなります。</para></listitem>
+<listitem><para>また、すべての電卓オプションも使用できなくなります。</para></listitem>
+<listitem><para>さらに、 <menuchoice><guimenu>「Calculator」</guimenu><guimenuitem>「Quit」</guimenuitem></menuchoice>、<menuchoice><guimenu>「Help」</guimenu><guimenuitem>「Contents」</guimenuitem></menuchoice>以外のすべての電卓メニュー項目も使用できなくなります。</para></listitem>
+</itemizedlist>
+</para>
+<para>エラー状態をクリアするには、<guibutton>「Clr」</guibutton>をクリックするか、<keycap>Delete</keycap> キーを押します。</para>
+         </sect2>
+         <sect2 id="gcalctool-input-mode">
+                <title>入力モードを変更する</title>
+                <para>入力モードを変更するには、テキストウィンドウ内を右クリックし、<guimenuitem>「入力方法」</guimenuitem>を選択します。 </para>
+         </sect2>
+
+  </sect1>
+<!-- ============= Keyboard Shortcuts ============================= -->
+  <sect1 id="gcalctool-keyboard-shortcut"> 
+    <title>クイックリファレンス: キーボードのショートカット</title>
+                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>、<xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/> および<xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> は、&app; のキーボードショートカットすべてのクイックリファレンスを提供します。</para>
+                <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
+                  <title>&app; ボタンのキーボードのショートカットのクイックリファレンス </title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>キーボードのショートカット</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>ボタン</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>参照</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycap>0</keycap> から <keycap>9</keycap></para></entry>
+                             <entry><para><guibutton>0</guibutton>から<guibutton>9</guibutton></para></entry>
+                             <entry><para>数値キー </para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>A</keycap> </para></entry>
+                             <entry><para><guibutton>Acc</guibutton> </para></entry>
+                             <entry><para>精度</para></entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>a</keycap> </para></entry>
+                             <entry><para><guibutton>A</guibutton> </para></entry>
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>b</keycap> </para></entry>
+                             <entry><para><guibutton>B</guibutton> </para></entry>
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>C</keycap></para></entry>
+                             <entry><para><guibutton>+/-</guibutton></para></entry>
+                             <entry><para>演算符号の変更</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>c</keycap> </para></entry>
+                             <entry><para><guibutton>C</guibutton> </para></entry>
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>D</keycap></para></entry>
+                             <entry><para><guibutton>Ddb</guibutton></para></entry>
+                             <entry><para>2 倍定率法による減価償却</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>d</keycap> </para></entry>
+                             <entry><para><guibutton>D</guibutton> </para></entry>
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>E</keycap> </para></entry>
+                             <entry><para><guibutton>Exp</guibutton> </para></entry>
+                             <entry><para>Exponential</para></entry>
+                             <entry><para><xref linkend="gcalctool-enter-exp"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><guibutton>E</guibutton> </para></entry>
+                             <entry><para>16 進数キー</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>F</keycap> </para></entry>
+                             <entry><para><guibutton>Fun</guibutton> </para></entry>
+                             <entry><para>機能</para></entry>
+                             <entry><para><xref linkend="gcalctool-edit-func"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>G</keycap></para></entry>
+                             <entry><para><guibutton>Log</guibutton></para></entry>
+                             <entry><para>Common Logarithm</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>i</keycap></para></entry>
+                             <entry><para><guibutton>Int</guibutton></para></entry>
+                             <entry><para>整数部分</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>J</keycap></para></entry>
+                             <entry><para><guibutton>Cos</guibutton></para></entry>
+                             <entry><para>余弦</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>K</keycap></para></entry>
+                             <entry><para><guibutton>Sin</guibutton></para></entry>
+                             <entry><para>正弦</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>L</keycap></para></entry>
+                             <entry><para><guibutton>Tan</guibutton></para></entry>
+                             <entry><para>正接</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>l</keycap></para></entry>
+                             <entry><para><guibutton>Sln</guibutton></para></entry>
+                             <entry><para>定額償却</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>m</keycap></para></entry>
+                             <entry><para><guibutton>Ctrm</guibutton></para></entry>
+                             <entry><para>複利計算期</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><command>N</command></para></entry>
+                             <entry><para><guibutton>Ln</guibutton></para></entry>
+                             <entry><para>自然対数</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>n</keycap></para></entry>
+                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para>排他的論理和の否定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>P</keycap></para></entry>
+                             <entry><para><guibutton>Pmt</guibutton></para></entry>
+                             <entry><para>定期払い込み</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>p</keycap></para></entry>
+                             <entry><para><guibutton>Pv</guibutton></para></entry>
+                             <entry><para>現在値</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>R</keycap></para></entry>
+                             <entry><para><guibutton>Rcl</guibutton></para></entry>
+                             <entry><para>メモリレジスタの値を取り出し</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>r</keycap></para></entry>
+                             <entry><para><guibutton>1/x</guibutton></para></entry>
+                             <entry><para>逆数</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>S</keycap></para></entry>
+                             <entry><para><guibutton>Sto</guibutton></para></entry>
+                             <entry><para>メモリレジスタに値を保存</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>s</keycap></para></entry>
+                             <entry><para><guibutton>Sqrt</guibutton></para></entry>
+                             <entry><para>平方根</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>T</keycap></para></entry>
+                             <entry><para><guibutton>Rate</guibutton></para></entry>
+                             <entry><para>定期利率</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>t</keycap></para></entry>
+                             <entry><para><guibutton>Term</guibutton></para></entry>
+                             <entry><para>支払期間</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>u</keycap></para></entry>
+                             <entry><para><guibutton>Abs</guibutton></para></entry>
+                             <entry><para>絶対値</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>v</keycap></para></entry>
+                             <entry><para><guibutton>Fv</guibutton></para></entry>
+                             <entry><para>将来値</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>X</keycap></para></entry>
+                             <entry><para><guibutton>Exch</guibutton></para></entry>
+                             <entry><para>メモリレジスタの値と表示値を交換</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Y</keycap></para></entry>
+                             <entry><para><guibutton>Syd</guibutton></para></entry>
+                             <entry><para>算術級数法による減価償却</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>y</keycap></para></entry>
+                             <entry><para>y<superscript>x</superscript></para></entry>
+                             <entry><para>y <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>!</keycap></para></entry>
+                             <entry><para><guibutton>x!</guibutton></para></entry>
+                             <entry><para><replaceable>x</replaceable> の階乗</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>#</keycap> </para></entry>
+                             <entry><para><guibutton>Con</guibutton> </para></entry>
+                             <entry><para>一定値</para></entry>
+                             <entry><para><xref linkend="gcalctool-edit-const"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>%</keycap></para></entry>
+                             <entry><para><guibutton>%</guibutton></para></entry>
+                             <entry><para>%</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&amp;</keycap></para></entry>
+                             <entry><para><guibutton>And</guibutton></para></entry>
+                             <entry><para>論理積</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>(</keycap> および <keycap>)</keycap></para></entry>
+                             <entry><para><guibutton>(</guibutton> および <guibutton>)</guibutton></para></entry>
+                             <entry><para>括弧</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>*</keycap> または <keycap>x</keycap></para></entry>
+                             <entry><para><guibutton>*</guibutton></para></entry>
+                             <entry><para>掛け算</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>+</keycap></para></entry>
+                             <entry><para><guibutton>+</guibutton></para></entry>
+                             <entry><para>足し算</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>-</keycap></para></entry>
+                             <entry><para><guibutton>-</guibutton></para></entry>
+                             <entry><para>引き算</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap> </keycap></para></entry>
+                             <entry><para><guibutton> </guibutton></para></entry>
+                             <entry><para>小数点</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>/</keycap></para></entry>
+                             <entry><para><guibutton>/</guibutton></para></entry>
+                             <entry><para>割り算</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>:</keycap></para></entry>
+                             <entry><para><guibutton>Frac</guibutton></para></entry>
+                             <entry><para>小数部分</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&lt;</keycap></para></entry>
+                             <entry><para><guibutton>&lt;</guibutton></para></entry>
+                             <entry><para><replaceable>n</replaceable> 左にシフト</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>=</keycap> または <keycap>Return</keycap></para></entry>
+                             <entry><para><guibutton>=</guibutton></para></entry>
+                             <entry><para>結果の計算</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>&gt;</keycap></para></entry>
+                             <entry><para><guibutton>&gt;</guibutton></para></entry>
+                             <entry><para><replaceable>n</replaceable>右にシフト</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>?</keycap></para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>乱数発生関数</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>@</keycap></para></entry>
+                             <entry><para>x<superscript>2</superscript></para></entry>
+                             <entry><para>平方</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-arith-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>[</keycap></para></entry>
+                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
+                             <entry><para>32 ビット符号なし整数の取得</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>]</keycap></para></entry>
+                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
+                             <entry><para>16 ビット符号なし整数の取得</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>^</keycap></para></entry>
+                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para>排他論理和</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>{</keycap></para></entry>
+                             <entry><para>e<superscript>x</superscript></para></entry>
+                             <entry><para>e <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>|</keycap></para></entry>
+                             <entry><para><guibutton>Or</guibutton></para></entry>
+                             <entry><para>論理和</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>}</keycap></para></entry>
+                             <entry><para>10<superscript>x</superscript></para></entry>
+                             <entry><para>10 <replaceable>x</replaceable> の累乗</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>N</keycap></para></entry>
+                             <entry><para><guibutton>Not</guibutton></para></entry>
+                             <entry><para>論理否定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Backspace</keycap></para></entry>
+                             <entry><para><guibutton>Bsp</guibutton></para></entry>
+                             <entry><para>Backspace</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo></para></entry>
+                             <entry><para><guibutton>CE</guibutton></para></entry>
+                             <entry><para>エントリの消去</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>Delete</keycap></para></entry>
+                             <entry><para><guibutton>Clr</guibutton></para></entry>
+                             <entry><para>平文</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
+                  <title>&app; 科学モードオプションに関するキーボードのショートカットのクイックリファレンス</title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>キーボードのショートカット</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>オプション</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>参照</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
+                             <entry><para>傾斜</para></entry>
+                             <entry><para>三角関数のタイプを傾斜に設定します。</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para>Bin</para></entry>
+                             <entry><para>2 進数に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para>Dec</para></entry>
+                             <entry><para>10 進数に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para>Fix</para></entry>
+                             <entry><para>表示タイプを固定小数点形式に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>g</keycap></keycombo></para></entry>
+                             <entry><para>度数</para></entry>
+                             <entry><para>三角関数のタイプを度数に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para>Inv</para></entry>
+                             <entry><para>三角関数機能と一緒に反転オプションを使用</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>n</keycap></keycombo></para></entry>
+                             <entry><para>Eng</para></entry>
+                             <entry><para>表示タイプをエンジニアリング形式に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para>Oct</para></entry>
+                             <entry><para>8 進数に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para>ラジアン</para></entry>
+                             <entry><para>三角関数のタイプをラジアンに設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para>Sci</para></entry>
+                             <entry><para>表示タイプを科学的形式に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-display-type"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>x</keycap></keycombo></para></entry>
+                             <entry><para>Hex</para></entry>
+                             <entry><para>16 進数に設定</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-base"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>y</keycap></keycombo></para></entry>
+                             <entry><para>Hyp</para></entry>
+                             <entry><para>三角関数機能と一緒に双曲線オプションを使用</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+                <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
+                  <title>&app; メニュー項目のキーボードのショートカットのクイックリファレンス</title>
+                  <tgroup cols="4" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>キーボードのショートカット</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>メニュー項目</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>機能</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>参照</para></entry>
+                                </row>
+                         </thead>
+                         <tbody>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Basic」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>基本モードへ変更</para></entry>
+                             <entry><para><xref linkend="gcalctool-basic-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice><guimenu>「編集」</guimenu><guimenuitem>「コピー」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>表示領域内の値をクリップボードへコピー</para></entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice> <guimenu>「表示」</guimenu><guimenuitem>「Financial」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>財務モードへ変更</para></entry>
+                             <entry><para><xref linkend="gcalctool-financial-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice><guimenu>「編集」</guimenu><guimenuitem>「Insert ASCII Values」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para><guilabel>「Insert ASCII Values」</guilabel>ウィンドウを表示</para></entry>
+                             <entry><para><xref linkend="gcalctool-ins-ascii"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Memory Registers」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para><guilabel>「Memory Registers」</guilabel>ウィンドウを表示</para></entry>
+                             <entry><para><xref linkend="gcalctool-mem-reg"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice> <guimenu>「Calculator」</guimenu><guimenuitem>「Quit」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>&app; アプリケーションを終了</para></entry>
+                             <entry><para><xref linkend="gcalctool-quit"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Scientific」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>科学モードへ変更</para></entry>
+                             <entry><para><xref linkend="gcalctool-scientific-mode"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice><guimenu>「表示」</guimenu><guimenuitem>「Show Trailing Zeroes」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>後続の 0 を表示</para></entry>
+                             <entry><para><xref linkend="gcalctool-set-acc"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
+                             <entry><para><menuchoice><guimenu>「編集」</guimenu><guimenuitem>「Paste」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>クリップボードの現在の値を表示領域へ張り付け</para></entry>
+                             <entry><para><xref linkend="gcalctool-calc-functions"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><command>F1</command></para></entry>
+                             <entry><para><menuchoice><guimenu>「Help」</guimenu><guimenuitem>「Contents」</guimenuitem></menuchoice> </para></entry>
+                             <entry><para>&app; のオンラインヘルプを表示</para></entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+  </sect1>
+</article>
