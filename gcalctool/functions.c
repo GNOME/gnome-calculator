@@ -246,15 +246,12 @@ exp_del_char(char **expr, int amount)
     }
     len = strlen(*expr);
     len = len - amount;
-    if (len < 0) {
-        goto out;
+    if (len >= 0) {
+        e = malloc(len+1);
+        assert(e);
+        snprintf(e, len+1, "%s", *expr);
     }
-  
-    e = malloc(len+1);
-    assert(e);
-    snprintf(e, len+1, "%s", *expr);
 
-out:
     free(*expr);
     *expr = e;
 }
