@@ -86,9 +86,9 @@ typedef struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *fin_buttons[FROWS * FCOLS];
     GtkWidget *sci_buttons[SROWS * SCOLS];
 
-    GtkWidget *bas_frame;
-    GtkWidget *fin_frame;
-    GtkWidget *sci_frame;
+    GtkWidget *bas_panel;
+    GtkWidget *fin_panel;
+    GtkWidget *sci_panel;
 
     Display *dpy;
 
@@ -117,7 +117,7 @@ typedef struct {
 static GtkWidget *create_menu(enum menu_type, struct button *);
 static GtkWidget *create_mode_panel(GtkWidget *);
 static GtkWidget *make_menu_button(gchar *, int);
-static GtkWidget *make_but_frame(GtkWidget *, GtkWidget **,
+static GtkWidget *make_but_panel(GtkWidget *, GtkWidget **,
                                  struct button *, int, int, char *);
 
 static char *make_hostname(Display *);
@@ -860,18 +860,21 @@ create_kframe()
     gtk_widget_realize(X->kframe);
     gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
 
-    X->fin_frame = make_but_frame(X->kvbox, X->fin_buttons,
+    X->fin_panel = make_but_panel(X->kvbox, X->fin_buttons,
                                   f_buttons, FROWS, FCOLS, "fin");
-    X->mode_panel = create_mode_panel(X->kvbox);
-    X->sci_frame = make_but_frame(X->kvbox, X->sci_buttons,
-                                  s_buttons, SROWS, SCOLS, "sci");
-    gtk_widget_show(X->fin_frame);
-    gtk_widget_show(X->mode_panel);
-    gtk_widget_show(X->sci_frame);
 
-    X->bas_frame = make_but_frame(X->kvbox, X->bas_buttons,
+    X->mode_panel = create_mode_panel(X->kvbox);
+
+    X->sci_panel = make_but_panel(X->kvbox, X->sci_buttons,
+                                  s_buttons, SROWS, SCOLS, "sci");
+
+    gtk_widget_show(X->fin_panel);
+    gtk_widget_show(X->mode_panel);
+    gtk_widget_show(X->sci_panel);
+
+    X->bas_panel = make_but_panel(X->kvbox, X->bas_buttons,
                                   &b_buttons[0], BROWS, BCOLS, "bas");
-    gtk_widget_show(X->bas_frame);
+    gtk_widget_show(X->bas_panel);
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     gtk_window_set_icon(GTK_WINDOW(X->kframe), X->icon);
@@ -920,21 +923,17 @@ create_mode_panel(GtkWidget *main_vbox)
     int i;
     AtkObject *access_object;
     GtkWidget *base_hbox, *disp_hbox, *trig_hbox;
-    GtkWidget *row1_hbox, *row2_hbox, *frame, *vbox;
+    GtkWidget *row1_hbox, *row2_hbox, *vbox;
     GSList *base_gr = NULL;
     GSList *disp_gr = NULL;
     GSList *trig_gr = NULL;
-
-    frame = gtk_frame_new(NULL);
-    gtk_widget_show(frame);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
-    gtk_box_pack_start(GTK_BOX(main_vbox), frame, FALSE, TRUE, 0);
 
     row1_hbox = gtk_hbox_new(FALSE, 0);
     row2_hbox = gtk_hbox_new(FALSE, 0);
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
 
 /* Make Trig. type radio button widgets. */
  
@@ -1019,9 +1018,9 @@ create_mode_panel(GtkWidget *main_vbox)
 
     gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    gtk_box_pack_start(GTK_BOX(main_vbox), vbox, FALSE, TRUE, 0);
 
-    return(frame);
+    return(vbox);
 }
 
 
@@ -1457,22 +1456,21 @@ set_accessible_name(GtkWidget *widget, struct button button)
 
 
 static GtkWidget *
-make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
+make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                struct button buttons[], int rows, int cols, char *tag)
 {
     char *label, name[MAXLINE];
     int i, j, n;
-    GtkWidget *frame, *l;
+    GtkWidget *l;
     GtkWidget *table = gtk_table_new(rows, cols, TRUE);
 
-    frame = gtk_frame_new(NULL);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, TRUE, TRUE, 0);
+    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
+    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
+    gtk_container_set_border_width(GTK_CONTAINER(table), 6);
 
     gtk_widget_ref(table);
     gtk_widget_show(table);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
-    gtk_container_add(GTK_CONTAINER(frame), table);
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
     for (i = 0; i < cols; i++) {
         for (j = 0; j < rows; j++) {
@@ -1509,11 +1507,11 @@ make_but_frame(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                      i, i+1, j, j+1,
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
-                     4, 4);
+                     0, 0);
         }
     }
 
-    return(frame);
+    return(table);
 }
 
 
@@ -1962,21 +1960,21 @@ set_mode(enum mode_type mode)
 
     switch (mode) {
         case BASIC:
-            gtk_widget_hide(X->fin_frame);
+            gtk_widget_hide(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
-            gtk_widget_hide(X->sci_frame);
+            gtk_widget_hide(X->sci_panel);
             break;
 
         case FINANCIAL:
-            gtk_widget_show(X->fin_frame);
+            gtk_widget_show(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
-            gtk_widget_hide(X->sci_frame);
+            gtk_widget_hide(X->sci_panel);
             break;
 
         case SCIENTIFIC:
-            gtk_widget_hide(X->fin_frame);
+            gtk_widget_hide(X->fin_panel);
             gtk_widget_show_all(X->mode_panel);
-            gtk_widget_show(X->sci_frame);
+            gtk_widget_show(X->sci_panel);
             break;
     }
 
@@ -1987,8 +1985,8 @@ set_mode(enum mode_type mode)
     gtk_widget_size_request(X->display_item, r);
     w = MAX(w, r->width);
     h += r->height;
-    if (GTK_WIDGET_VISIBLE(X->fin_frame)) {
-        gtk_widget_size_request(X->fin_frame, r);
+    if (GTK_WIDGET_VISIBLE(X->fin_panel)) {
+        gtk_widget_size_request(X->fin_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
@@ -1997,8 +1995,8 @@ set_mode(enum mode_type mode)
         w = MAX(w, r->width);
         h += r->height;
     }
-    if (GTK_WIDGET_VISIBLE(X->sci_frame)) {
-        gtk_widget_size_request(X->sci_frame, r);
+    if (GTK_WIDGET_VISIBLE(X->sci_panel)) {
+        gtk_widget_size_request(X->sci_panel, r);
         w = MAX(w, r->width);
     	h += r->height;
     }
