@@ -36,19 +36,6 @@ double max_fix[MAXBASES] = {
     6.871947674e+10, 3.245185537e+32, 1.000000000e+36, 2.230074520e+43
 };
 
-double min_fix[MAXACC][MAXBASES] = {
-    { 2.500000000e-1, 3.750000000e-1, 1.000000000e-1,  4.375000000e-1 },
-    { 1.250000000e-1, 4.687500000e-2, 1.000000000e-2,  2.734375000e-2 },
-    { 6.250000000e-2, 5.859375000e-3, 1.000000000e-3,  1.708984375e-3 },
-    { 3.125000000e-2, 7.324218750e-4, 1.000000000e-4,  1.068115234e-4 },
-    { 1.562500000e-2, 9.155273437e-5, 1.000000000e-5,  6.675720215e-6 },
-    { 7.812500000e-3, 1.144409180e-5, 1.000000000e-6,  4.172325134e-7 },
-    { 6.906250000e-3, 1.430511475e-6, 1.000000000e-7,  2.607703209e-8 },
-    { 1.953125000e-3, 1.788139343e-7, 1.000000000e-8,  1.629814506e-9 },
-    { 9.765625000e-4, 2.235174179e-8, 1.000000000e-9,  1.018634066e-10 },
-    { 4.882812500e-4, 2.793967724e-9, 1.000000000e-10, 6.366462912e-12 }
-};
-
 char *base_str[]  = {          /* Strings for each base value. */
     N_("_Bin"), N_("_Oct"), N_("_Dec"), N_("He_x")
 };
@@ -77,10 +64,6 @@ char *dtype_desc[] = {         /* Tooltips for each display mode value. */
 
 char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
 char *inv_desc = N_("Set inverse option for trigonometric functions");
-
-char *mode_str[]  = {          /* Strings for each mode value. */
-    N_("BASIC"), N_("FINANCIAL"), N_("SCIENTIFIC"), N_("SCIENTIFIC_EXP")
-};
 
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
     N_("Basic Mode"), N_("Financial Mode"), 

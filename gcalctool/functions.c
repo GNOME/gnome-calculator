@@ -97,75 +97,7 @@ do_business()     /* Perform special business mode calculations. */
 }
 
 
-char* 
-ch_trig(char *func) {
-  
-    struct ch {
-        char *orig;
-        char *conv;
-    }; 
-    struct ch inv[] = {
-        { "Sin", "Asin"},
-        { "Cos", "Acos"},
-        { "Tan", "Atan"},
-        { NULL,  NULL}
-    };
-    struct ch hyp[] = {
-        { "Sin", "Sinh"},
-        { "Cos", "Cosh"},
-        { "Tan", "Tanh"},
-        { NULL,  NULL}
-    };
-    struct ch invhyp[] = {
-        { "Sin", "Asinh"},
-        { "Cos", "Acosh"},
-        { "Tan", "Atanh"},
-        { NULL,  NULL}
-    };
-  
-    int f1 = (v->inverse) ? 1 : 0;
-    int f2 = (v->hyperbolic) ? 2 : 0;
-    int table = f1 | f2;
-  
-    struct ch *ch = NULL;
-
-    assert(func);
-
-    switch (table) {
-      case 0:
-          break;
-
-      case 1:
-          ch = inv;
-          break;
-
-      case 2:
-        ch = hyp;
-        break;
-
-      case 3:
-        ch = invhyp;
-        break;
-
-      default:
-        assert(0);
-    }
-
-    if (ch) {
-        int i;
-
-        for (i = 0; ch[i].orig; i++) {
-            if (!strcmp(ch[i].orig, func)) {
-	        return(ch[i].conv);
-            }
-        }
-    } 
-
-    return(func);
-}
-
-
-char*
+char *
 gc_strdup(char *str)
 {
     char *dup;
@@ -185,7 +117,7 @@ gc_strdup(char *str)
 }
 
 
-void 
+static void 
 exp_append(char *text)
 {
     char *buf;
@@ -218,7 +150,7 @@ exp_del()
 }
 
 
-int 
+static int 
 usable_num(int MPnum[MP_SIZE]) 
 {
     int ret = 0;
@@ -233,7 +165,7 @@ usable_num(int MPnum[MP_SIZE])
 }
 
 
-void
+static void
 exp_del_char(char **expr, int amount) 
 {
     char *e = NULL;
@@ -258,7 +190,7 @@ exp_del_char(char **expr, int amount)
 }
 
 
-void
+static void
 exp_replace(char *text)
 {
     free(v->expression);
@@ -267,7 +199,7 @@ exp_replace(char *text)
 }
 
 
-void
+static void
 exp_negate()
 {
     if (v->expression) {
@@ -285,7 +217,7 @@ exp_negate()
 }
 
 
-void
+static void
 exp_inv()
 {
     if (v->expression) {
@@ -303,7 +235,7 @@ exp_inv()
 }
 
 
-int
+static int
 exp_has_postfix(char *str, char *postfix)
 {
     int len, plen;
@@ -367,56 +299,6 @@ str_replace(char **str, char *from, char *to)
             *str = print;
         }
     }
-}
-
-
-void
-exp_do_backspace()
-{
-    if (exp_has_postfix(v->expression, "Ans")) { 
-        char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
-
-        str_replace(&v->expression, "Ans", ans);
-    }
-}
-
-
-char *
-exp_print()
-{
-    int i, len;
-
-    if (!v->expression) return NULL;
-
-    i = 0;
-    len = strlen(v->expression);
-
-    for (i = 0; len-i >= 3; i++) {
-        if (!strncasecmp("ans", v->expression+i, 3)) {
-            char *ans;
-            int j = i+3;
-            char *prefix = malloc(i+1);
-            char *postfix = malloc(len-j+1);
-            char *print;
-
-            assert(prefix && postfix);
-            memset(prefix, 0, i+1);
-            memset(postfix, 0, len-j+1);
-            memcpy(prefix, v->expression, i);
-            memcpy(postfix, v->expression+i+3, len-j);
-
-            ans = make_number(v->e.ans, v->base, TRUE, FALSE);
-            assert(ans);
-            print = malloc(strlen(ans)+i+len-j+1);
-            sprintf(print, "%s%s%s", prefix, ans, postfix);
-            free(prefix);
-            free(postfix);
-
-            return(print);
-        }
-    }
-
-    return(NULL);
 }
 
 
@@ -635,7 +517,7 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 }
 
 
-int
+static int
 do_trigfunc(int s[MP_SIZE], int t[MP_SIZE])
 {
     enum trig_func tfunc;
@@ -936,7 +818,7 @@ do_function()      /* Perform a user defined function. */
 }
 
 
-void
+static void
 do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
 {
     int MP1[MP_SIZE];
@@ -985,7 +867,7 @@ do_immed()
 
 
 void
-do_memory(int show)
+do_memory()
 {
     make_registers();
     put_resource(R_REGS, set_bool(v->rstate == TRUE));
@@ -1189,7 +1071,7 @@ do_rcl_reg(int reg, int value[MP_SIZE])
 }
 
 
-void
+static void
 syntaxdep_show_display()
 {
     switch (v->syntax) {
@@ -1291,7 +1173,7 @@ do_point()                   /* Handle numeric point. */
 }
 
 
-void
+static void
 do_portionfunc(int num[MP_SIZE])
 {
     int MP1[MP_SIZE];
@@ -1363,7 +1245,6 @@ do_shift()     /* Perform bitwise shift on display value. */
         case exprs: {
             enum shiftd dir;
             int MPval[MP_SIZE];
-            int MPres[MP_SIZE];
             int n = char_val(v->current->value[0]);
             int ret = usable_num(MPval);
 
@@ -1402,7 +1283,7 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 }
 
 
-int
+static int
 key_equal(struct button *x, struct button y)
 {
     return(x->value[0] == y.value[0] && x->mods[0] == y.mods[0]);
@@ -1454,7 +1335,7 @@ save_pending_values(struct button *but)
 }
 
 
-struct button *
+static struct button *
 ch_to_button(struct button buttons[], int max_buttons, char ch)
 {
     int i;
@@ -1469,7 +1350,7 @@ ch_to_button(struct button buttons[], int max_buttons, char ch)
 }
 
 
-struct button *
+static struct button *
 val_to_button(struct button buttons[], int max_buttons, int val)
 {
     int i;

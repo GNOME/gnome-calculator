@@ -78,9 +78,9 @@ static struct word {
     { NULL }
 };
 
-struct word_map *word_map = NULL;
+static struct word_map *word_map = NULL;
 
-int 
+static int 
 word_count() {
     int i = 0;
 
@@ -115,7 +115,7 @@ build_word_map()
 }
 
 
-void
+static void
 replace_str_at(char **str, int loc, int len, char *subst)
 {
     char *prefix, *postfix, *target;

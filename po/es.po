@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-24 23:41+0200\n"
+"POT-Creation-Date: 2004-07-27 08:21-0700\n"
 "PO-Revision-Date: 2004-07-24 23:42+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -565,7 +565,7 @@ msgstr "mostrar un entero sin signo de 16 bits en la pantalla (])"
 msgid "16 bit unsigned integer"
 msgstr "Entero sin signo de 16 bits"
 
-#: gcalctool/calctool.c:794
+#: gcalctool/calctool.c:794 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
 
@@ -581,7 +581,7 @@ msgstr "mostrar un entero sin signo de 32 bits en la pantalla ([)"
 msgid "32 bit unsigned integer"
 msgstr "entero sin signo de 32 bits"
 
-#: gcalctool/calctool.c:806
+#: gcalctool/calctool.c:806 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
 
@@ -721,7 +721,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Dígito hexadecimal E"
 
-#: gcalctool/calctool.c:982 gcalctool/gtk.c:1437
+#: gcalctool/calctool.c:982 gcalctool/gtk.c:1439
 msgid "F"
 msgstr "F"
 
@@ -785,7 +785,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Dígito hexadecimal B"
 
-#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1429
+#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1431
 msgid "C"
 msgstr "C"
 
@@ -865,7 +865,7 @@ msgstr "raíz cuadrada de 2"
 msgid "e"
 msgstr "e"
 
-#: gcalctool/calctool.c:1247
+#: gcalctool/calctool.c:1247 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
 
@@ -897,39 +897,40 @@ msgstr "Factor de conversión de cms cúbicos a pulgadas cúbicas"
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
 #: gcalctool/calctool.c:1266 gcalctool/display.c:265 gcalctool/graphics.c:97
-#: gcalctool/mp.c:1987
+#: gcalctool/mp.c:1987 gcalctool/mpmath.c:382 gcalctool/mpmath.c:421
+#: gcalctool/mpmath.c:476
 msgid "Error"
 msgstr "Error"
 
-#: gcalctool/functions.c:435
+#: gcalctool/functions.c:437
 msgid "Previous expression"
 msgstr "Expresión anterior"
 
-#: gcalctool/functions.c:523
+#: gcalctool/functions.c:525
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: gcalctool/functions.c:927
+#: gcalctool/functions.c:934
 msgid "Malformed function"
 msgstr "Función malformada"
 
-#: gcalctool/functions.c:1070
+#: gcalctool/functions.c:1077
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Con el visor borrado, un prefijo sin un operador no está permitido"
 
-#: gcalctool/functions.c:1094
+#: gcalctool/functions.c:1101
 msgid "Malformed parenthesis expression"
 msgstr "Expresión con paréntesis malformados"
 
-#: gcalctool/functions.c:1117 gcalctool/functions.c:1364
+#: gcalctool/functions.c:1124 gcalctool/functions.c:1371
 msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
-#: gcalctool/functions.c:1412
+#: gcalctool/functions.c:1419
 msgid "Numeric stack error"
 msgstr "Error de la pila numérica"
 
-#: gcalctool/functions.c:1433
+#: gcalctool/functions.c:1440
 msgid "Operand stack error"
 msgstr "Error de la pila de operandos"
 
@@ -1000,7 +1001,7 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1229 gcalctool/gtk.c:1362
+#: gcalctool/graphics.c:61 gcalctool/gtk.c:1231 gcalctool/gtk.c:1364
 msgid "R"
 msgstr "R"
 
@@ -1239,96 +1240,284 @@ msgstr "Modo _científico"
 msgid "Scientific mode"
 msgstr "Modo científico"
 
-#: gcalctool/gtk.c:469
+#: gcalctool/gtk.c:470
 msgid "translator_credits"
 msgstr ""
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>\n"
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>"
 
-#: gcalctool/gtk.c:471
+#: gcalctool/gtk.c:472
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:474
+#: gcalctool/gtk.c:475
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
-#: gcalctool/gtk.c:772
+#: gcalctool/gtk.c:773
 msgid "Insert ASCII Value"
 msgstr "Introduzca un valor ASCII"
 
-#: gcalctool/gtk.c:787
+#: gcalctool/gtk.c:788
 msgid "Ch_aracter:"
 msgstr "C_arácter:"
 
-#: gcalctool/gtk.c:812
+#: gcalctool/gtk.c:813
 msgid "_Insert"
 msgstr "_Introducir"
 
-#: gcalctool/gtk.c:891
+#: gcalctool/gtk.c:892
 msgid "Edit Constants"
 msgstr "Editar constantes"
 
-#: gcalctool/gtk.c:891
+#: gcalctool/gtk.c:892
 msgid "Edit Functions"
 msgstr "Editar funciones"
 
-#: gcalctool/gtk.c:915
+#: gcalctool/gtk.c:916
 msgid "Note:"
 msgstr "Nota:"
 
-#: gcalctool/gtk.c:916
+#: gcalctool/gtk.c:917
 msgid "All constant values are specified in the decimal numeric base."
-msgstr "Todos los valores constantes están especificados en la base numérica decimal"
+msgstr ""
+"Todos los valores constantes están especificados en la base numérica decimal"
 
-#: gcalctool/gtk.c:926
+#: gcalctool/gtk.c:927
 msgid "Click a _value or description to edit it:"
 msgstr "Pulse un _valor o descripción para editarlo:"
 
-#: gcalctool/gtk.c:949
+#: gcalctool/gtk.c:950
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:951
+#: gcalctool/gtk.c:952
 msgid "Value"
 msgstr "Valor"
 
-#: gcalctool/gtk.c:953
+#: gcalctool/gtk.c:954
 msgid "Description"
 msgstr "Descripción"
 
-#: gcalctool/gtk.c:1052 gcalctool/gtk.c:1054 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1054 gcalctool/gtk.c:1056 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Calculadora"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1297
+#: gcalctool/gtk.c:1299
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:1305
+#: gcalctool/gtk.c:1307
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1353
+#: gcalctool/gtk.c:1355
 msgid "Memory Registers"
 msgstr "Registros de memoria"
 
-#: gcalctool/gtk.c:1418
+#: gcalctool/gtk.c:1420
 msgid "Edit Constants..."
 msgstr "Editar constantes..."
 
-#: gcalctool/gtk.c:1418
+#: gcalctool/gtk.c:1420
 msgid "Edit Functions..."
 msgstr "Editar funciones..."
 
-#: gcalctool/gtk.c:2016
+#: gcalctool/gtk.c:2018
 msgid "Activated no operator precedence mode"
 msgstr "Activado el modo sin operador de precedencia"
 
-#: gcalctool/gtk.c:2025
+#: gcalctool/gtk.c:2027
 msgid "Activated expression mode with operator precedence"
 msgstr "Activado el modo de expresión con operador de precedencia"
+
+#: gcalctool/mpmath.c:218
+msgid "Error, cannot calculate cosine"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:36
+#, fuzzy
+msgid "abs"
+msgstr "Abs"
+
+#: gcalctool/syntax_translation.c:37
+msgid "acosh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:38
+msgid "acos"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:39
+#, fuzzy
+msgid "and"
+msgstr "Rand"
+
+#: gcalctool/syntax_translation.c:40
+#, fuzzy
+msgid "ans"
+msgstr "Tan"
+
+#: gcalctool/syntax_translation.c:41
+msgid "asinh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:42
+msgid "asin"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:43
+msgid "atanh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:44
+msgid "atan"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:45
+msgid "cbrt"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:46
+#, fuzzy
+msgid "chs"
+msgstr "Chs"
+
+#: gcalctool/syntax_translation.c:47
+#, fuzzy
+msgid "clr"
+msgstr "Clr"
+
+#: gcalctool/syntax_translation.c:48
+msgid "cosh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:49
+#, fuzzy
+msgid "cos"
+msgstr "Cos"
+
+#: gcalctool/syntax_translation.c:50
+#, fuzzy
+msgid "ddb"
+msgstr "Sumar"
+
+#: gcalctool/syntax_translation.c:51
+#, fuzzy
+msgid "exp"
+msgstr "Exp"
+
+#: gcalctool/syntax_translation.c:52
+#, fuzzy
+msgid "frac"
+msgstr "Frac"
+
+#: gcalctool/syntax_translation.c:53
+msgid "fv"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:54
+#, fuzzy
+msgid "int"
+msgstr "Int"
+
+#: gcalctool/syntax_translation.c:55
+#, fuzzy
+msgid "ln"
+msgstr "Sln"
+
+#: gcalctool/syntax_translation.c:56
+#, fuzzy
+msgid "log"
+msgstr "Log"
+
+#: gcalctool/syntax_translation.c:57
+#, fuzzy
+msgid "not"
+msgstr "Int"
+
+#: gcalctool/syntax_translation.c:58
+#, fuzzy
+msgid "or"
+msgstr "Xor"
+
+#: gcalctool/syntax_translation.c:60
+#, fuzzy
+msgid "pmt"
+msgstr "Pmt"
+
+#: gcalctool/syntax_translation.c:61
+msgid "pv"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:62
+#, fuzzy
+msgid "rand"
+msgstr "Rand"
+
+#: gcalctool/syntax_translation.c:63
+#, fuzzy
+msgid "rate"
+msgstr "Rate"
+
+#: gcalctool/syntax_translation.c:64
+#, fuzzy
+msgid "rcl"
+msgstr "Rcl"
+
+#: gcalctool/syntax_translation.c:65
+msgid "sinh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:66
+#, fuzzy
+msgid "sin"
+msgstr "Sin"
+
+#: gcalctool/syntax_translation.c:67
+#, fuzzy
+msgid "sln"
+msgstr "Sln"
+
+#: gcalctool/syntax_translation.c:68
+#, fuzzy
+msgid "sqrt"
+msgstr "Sqrt"
+
+#: gcalctool/syntax_translation.c:69
+#, fuzzy
+msgid "sto"
+msgstr "Sto"
+
+#: gcalctool/syntax_translation.c:70
+#, fuzzy
+msgid "syd"
+msgstr "Syd"
+
+#: gcalctool/syntax_translation.c:71
+msgid "tanh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:72
+#, fuzzy
+msgid "tan"
+msgstr "Tan"
+
+#: gcalctool/syntax_translation.c:73
+#, fuzzy
+msgid "term"
+msgstr "Ctrm"
+
+#: gcalctool/syntax_translation.c:76
+#, fuzzy
+msgid "xnor"
+msgstr "Xnor"
+
+#: gcalctool/syntax_translation.c:77
+#, fuzzy
+msgid "xor"
+msgstr "Xor"
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
@@ -3074,4 +3263,3 @@ msgstr "Realizar cálculos"
 
 #~ msgid "Function no:"
 #~ msgstr "Función no:"
-

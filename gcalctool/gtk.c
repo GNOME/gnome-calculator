@@ -453,6 +453,7 @@ update_statusbar(gchar *text, const gchar *imagename)
 }
 
 
+/*ARGSUSED*/
 static void
 about_cb(GtkAction *action)
 {
@@ -522,6 +523,7 @@ aframe_cancel_cb(GtkButton *button, gpointer user_data)
 }
 
 
+/*ARGSUSED*/
 static gboolean
 aframe_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
@@ -550,6 +552,7 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
 }
 
 
+/*ARGSUSED*/
 static void
 astz_proc(GtkAction *action)
 {
@@ -569,6 +572,7 @@ astz_proc(GtkAction *action)
 }
 
 
+/*ARGSUSED*/
 static void
 base_cb(GtkToggleButton *button, gpointer user_data)
 {
@@ -580,50 +584,6 @@ void
 beep()
 {
     gdk_beep();
-}
-
-
-static GtkWidget *
-button_new_with_stock_image(const gchar *text, const gchar *stock_id)
-{
-    GtkWidget *button, *label, *image, *hbox, *align;
-    GtkStockItem item;
-
-    button = gtk_button_new();
-
-    if (GTK_BIN(button)->child) {
-        gtk_container_remove(GTK_CONTAINER(button), GTK_BIN(button)->child);
-    }
-
-    if (gtk_stock_lookup(stock_id, &item)) {
-        label = gtk_label_new_with_mnemonic(text);
-
-        gtk_label_set_mnemonic_widget(GTK_LABEL(label), GTK_WIDGET(button));
-
-        image = gtk_image_new_from_stock(stock_id, GTK_ICON_SIZE_BUTTON);
-        hbox = gtk_hbox_new(FALSE, 2);
-
-        align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-
-        gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
-        gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-
-        gtk_container_add(GTK_CONTAINER(button), align);
-        gtk_container_add(GTK_CONTAINER(align), hbox);
-        gtk_widget_show_all(align);
-
-        return(button);
-    }
-
-    label = gtk_label_new_with_mnemonic(text);
-    gtk_label_set_mnemonic_widget(GTK_LABEL(label), GTK_WIDGET(button));
-
-    gtk_misc_set_alignment(GTK_MISC(label), 0.5, 0.5);
-
-    gtk_widget_show(label);
-    gtk_container_add(GTK_CONTAINER(button), label);
-
-    return(button);
 }
 
 
@@ -706,6 +666,7 @@ cell_edited(GtkCellRendererText *cell, const gchar *path_string,
 }
 
 
+/*ARGSUSED*/
 static void
 cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
 {
@@ -998,6 +959,7 @@ gcalc_window_get_menu_items(XVars X)
 }
 
 
+/*ARGSUSED*/
 static void
 gcalc_window_have_icons_notify(GConfClient *client, guint cnxn_id,
                                GConfEntry *entry, gpointer data)
@@ -1038,11 +1000,10 @@ gcalc_window_set_unset_image(gboolean have_icons)
 }
 
 
-void
+static void
 create_kframe()
 {
     char *hn;
-    int count;
     GError *error;
     GtkWidget *event_box, *view_widget;
     GtkTextBuffer *buffer;
@@ -1341,7 +1302,7 @@ create_mode_panel(GtkWidget *main_vbox)
 }
 
 
-void
+static void
 create_rframe()
 {
     char line[MAXLINE];     /* Current memory register line. */
@@ -1378,6 +1339,7 @@ create_rframe()
 }
 
 
+/*ARGSUSED*/
 static void
 die_cb(GnomeClient *client, gpointer data)
 {
@@ -1468,6 +1430,7 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
 }
 
 
+/*ARGSUSED*/
 static void
 disp_cb(GtkToggleButton *button, gpointer user_data)
 {
@@ -1496,7 +1459,7 @@ get_constant(int n)
 }
 
 
-void
+static void
 get_display()              /* The Copy function key has been pressed. */
 {
     gchar *string = NULL;
@@ -1546,12 +1509,9 @@ get_function(int n)
 static char *
 get_localized_numeric_point(void)
 {
-    struct lconv *locale_data;
     const char *decimal_point;
-    int decimal_point_len;
 
     decimal_point = localeconv()->decimal_point;
-    decimal_point_len = strlen(decimal_point);
 
     return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
 }
@@ -1620,7 +1580,7 @@ grey_buttons(enum base_type base)
 }
 
 
-void
+static void
 handle_selection()  /* Handle the GET function key being pressed. */
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X->clipboard_atom),
@@ -1642,6 +1602,7 @@ help_cb()
 }
 
 
+/*ARGSUSED*/
 static void
 hyp_cb(GtkToggleButton *button, gpointer user_data)
 {
@@ -1649,6 +1610,7 @@ hyp_cb(GtkToggleButton *button, gpointer user_data)
 }
 
 
+/*ARGSUSED*/
 static void
 inv_cb(GtkToggleButton *button, gpointer user_data)
 {
@@ -1694,6 +1656,7 @@ check_vals(int n, int keyval, int state,
     return(FALSE);
 }
 
+/*ARGSUSED*/
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
@@ -1747,7 +1710,6 @@ void
 make_frames()
 {
     struct button *n;
-    GtkWidget *menu;
 
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     create_kframe();                     /* Create main gcalctool window. */
@@ -1755,7 +1717,7 @@ make_frames()
     set_mode(v->modetype);
 
     n = (struct button *) g_object_get_data(G_OBJECT(BUT_ACC), "button");
-    menu = create_menu(n->mtype, n);
+    (void) create_menu(n->mtype, n);
     set_accuracy_toggle(v->accuracy);
     set_show_tsep_toggle(v->show_tsep);
     set_show_zeroes_toggle(v->show_zeroes);
@@ -1877,8 +1839,7 @@ make_reg(int n, char *str)
 static GtkWidget *
 create_menu(enum menu_type mtype, struct button *n)
 {
-    int count = 0;
-    int m     = (int) mtype;
+    int m = (int) mtype;
 
     switch (mtype) {
         case M_EXCH :
@@ -1944,6 +1905,7 @@ menu_button_button_press_cb(GtkWidget *widget,
 }
 
 
+/*ARGSUSED*/
 static gboolean
 menu_button_key_press_cb(GtkWidget *widget, 
                          GdkEventKey *event, gpointer data)
@@ -1967,6 +1929,7 @@ menu_button_key_press_cb(GtkWidget *widget,
 }
 
 
+/*ARGSUSED*/
 static void
 menu_pos_func(GtkMenu *menu, gint *x, gint *y,
               gboolean *push_in, gpointer user_data)
@@ -2056,7 +2019,7 @@ mb_proc(GtkAction *action)
         show_ascii_frame();
     } else if (EQUAL(name, "Memory")) {
         v->rstate = !v->rstate;
-        do_memory(v->rstate);
+        do_memory();
     } else if (EQUAL(name, "Contents")) {
         help_cb();
     } else if (EQUAL(name, "LSPlaces")) {
@@ -2074,6 +2037,7 @@ mb_proc(GtkAction *action)
 }
 
 
+/*ARGSUSED*/
 static void 
 mb_base_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
@@ -2093,6 +2057,7 @@ mb_base_radio_proc(GtkAction *action, GtkRadioAction *current)
 }
 
 
+/*ARGSUSED*/
 static void
 mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
@@ -2106,6 +2071,7 @@ mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current)
 }
 
 
+/*ARGSUSED*/
 static void
 mstz_proc(GtkAction *action)
 {
@@ -2184,6 +2150,7 @@ put_resource(enum res_type rtype, char *value)
 }
 
 
+/*ARGSUSED*/
 static void
 quit_cb(GtkWidget *widget, gpointer user_data)
 {
@@ -2221,7 +2188,7 @@ set_button_state(GtkWidget *w, int isSensitive)
 }
 
 
-void
+static void
 set_accuracy_toggle(int val)
 {
     char name[MAXLINE];
@@ -2435,7 +2402,7 @@ set_mode(enum mode_type mode)
 }
 
 
-void
+static void
 set_item(enum item_type itemtype, int val)
 {
     if (!v->started) {
@@ -2513,7 +2480,7 @@ set_show_zeroes_toggle(int state)
 }
 
 
-void
+static void
 show_ascii_frame()      /* Display ASCII popup. */
 {
     if (X->aframe == NULL) {
@@ -2528,6 +2495,7 @@ show_ascii_frame()      /* Display ASCII popup. */
 }
 
 
+/*ARGSUSED*/
 static void
 trig_cb(GtkToggleButton *button, gpointer user_data)
 {
@@ -2548,6 +2516,7 @@ start_tool()
 }
 
 
+/*ARGSUSED*/
 static void
 ts_proc(GtkAction *action)
 {

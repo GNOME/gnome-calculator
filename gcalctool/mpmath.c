@@ -23,6 +23,11 @@
 #include "mpmath.h"
 #include "extern.h"
 
+static void mpacos(int *, int *);
+static void mpacosh(int *, int *);
+static void mpasinh(int *, int *);
+static void mpatanh(int *, int *);
+
 
 BOOLEAN
 ibool(double x)
@@ -204,7 +209,7 @@ do_e(int t1[MP_SIZE])
 }
 
 
-void 
+static void 
 mptan(int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int MPcos[MP_SIZE]; 
@@ -223,7 +228,7 @@ mptan(int s1[MP_SIZE], int t1[MP_SIZE])
 
 /* Change type to radian */
 
-void
+static void
 to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int i, MP1[MP_SIZE], MP2[MP_SIZE];
@@ -246,7 +251,7 @@ to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
 }
 
 
-void
+static void
 do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int i, MP1[MP_SIZE], MP2[MP_SIZE];
@@ -364,7 +369,7 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
  *  6. If (-1.0 < x < 0.0) then acos(x) = atan(sqrt(1-(x**2)) / x) + PI
  */
 
-void
+static void
 mpacos(int *MPx, int *MPretval)
 {
     int MP0[MP_SIZE],  MP1[MP_SIZE],  MP2[MP_SIZE];
@@ -410,7 +415,7 @@ mpacos(int *MPx, int *MPretval)
  *  2. acosh(x) = log(x + sqrt(x**2 - 1))
  */
 
-void
+static void
 mpacosh(int *MPx, int *MPretval)
 {
     int MP1[MP_SIZE], val;
@@ -437,7 +442,7 @@ mpacosh(int *MPx, int *MPretval)
  *  1. asinh(x) = log(x + sqrt(x**2 + 1))
  */
 
-void
+static void
 mpasinh(int *MPx, int *MPretval)
 {
     int MP1[MP_SIZE], val;
@@ -458,7 +463,7 @@ mpasinh(int *MPx, int *MPretval)
  *  2. atanh(x) = 0.5 * log((1 + x) / (1 - x))
  */
 
-void
+static void
 mpatanh(int *MPx, int *MPretval)
 {
     int MP0[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];

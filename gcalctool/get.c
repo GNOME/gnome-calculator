@@ -109,15 +109,6 @@ get_int_resource(enum res_type rtype, int *intval)
 }
 
 
-/* Get keyboard equivalent from first character of localised string. */
-
-void
-get_key_val(int *val, char *str)
-{
-    *val = str[0];
-}
-
-
 /* Return the radix character. For most locales, this is a period. 
  * If nl_langinfo(RADIXCHAR) returns an empty string, return ",".
  */

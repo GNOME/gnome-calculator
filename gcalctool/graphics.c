@@ -65,49 +65,6 @@ make_registers()            /* Calculate memory register frame values. */
 }
 
 
-/* Process a portion of the parentheses stack. */
-
-void
-process_stack(int startop,      /* Initial position in the operand stack. */
-              int startnum,     /* Initial position in the numeric stack. */
-              int n)            /* Number of items to process. */
-{
-    char sdisp[MAXLINE];     /* Used to save display contents. */
-    int i;
-    int nptr;                /* Pointer to next number from numeric stack. */
-
-    STRCPY(sdisp, v->display);  /* Save current display. */
-    nptr = startnum;
-    v->pending = 0;
-    v->cur_op = '?';            /* Current operation is initially undefined. */
-    for (i = 0; i < n; i++) {
-        if (v->opstack[startop + i] == -1) {
-            mpstr(v->MPnumstack[nptr++], v->MPdisp_val);
-        } else {
-            v->cur_ch = v->opstack[startop + i];
-            if (v->pending) {
-                v->current->value[0] = v->cur_ch;
-                do_pending();
-            } else {
-                struct button *next = button_for_fc(v->cur_ch);
-
-                if (next != NULL) {
-                    process_item(next);
-                } else {
-                    doerr(_("Error"));
-                }
-            }
-        }
-    }
-    v->numsptr = startnum;
-    push_num(v->MPdisp_val);
-    v->opsptr = startop - 1;
-    push_op(-1);
-    save_pending_values(button_for_fc('('));
-    STRCPY(v->display, sdisp);  /* Restore current display. */
-}
-
-
 /* XXX: is this routine needed anymore? */
 
 void

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-21 18:00+0530\n"
+"POT-Creation-Date: 2004-07-27 08:21-0700\n"
 "PO-Revision-Date: 2004-06-19 19:29+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -593,7 +593,7 @@ msgstr "प्रदर्शित का 16-बिट अहस्ताक्
 msgid "16 bit unsigned integer"
 msgstr "16 बिट अहस्ताक्षरित पूर्णांक"
 
-#: gcalctool/calctool.c:794
+#: gcalctool/calctool.c:794 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr ""
 
@@ -610,7 +610,7 @@ msgstr "प्रदर्शित का 32-बिट अहस्ताक्
 msgid "32 bit unsigned integer"
 msgstr "32 बिट अहस्ताक्षरित पूर्णांक"
 
-#: gcalctool/calctool.c:806
+#: gcalctool/calctool.c:806 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr ""
 
@@ -760,7 +760,7 @@ msgstr "ई"
 msgid "Hexadecimal digit E"
 msgstr "हेक्साडेसीमल अंक ई"
 
-#: gcalctool/calctool.c:982 gcalctool/gtk.c:1437
+#: gcalctool/calctool.c:982 gcalctool/gtk.c:1439
 msgid "F"
 msgstr "एफ़"
 
@@ -829,7 +829,7 @@ msgstr "बी"
 msgid "Hexadecimal digit B"
 msgstr "हेक्साडेसीमल अंक बी"
 
-#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1429
+#: gcalctool/calctool.c:1079 gcalctool/gtk.c:1431
 msgid "C"
 msgstr "सी"
 
@@ -917,7 +917,7 @@ msgstr "2 का वर्गमूल"
 msgid "e"
 msgstr "इ"
 
-#: gcalctool/calctool.c:1247
+#: gcalctool/calctool.c:1247 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "पाई"
 
@@ -949,40 +949,41 @@ msgstr "घन-सेंटीमीटर-से-घन-इंच परिव�
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
 #: gcalctool/calctool.c:1266 gcalctool/display.c:265 gcalctool/graphics.c:97
-#: gcalctool/mp.c:1987
+#: gcalctool/mp.c:1987 gcalctool/mpmath.c:382 gcalctool/mpmath.c:421
+#: gcalctool/mpmath.c:476
 msgid "Error"
 msgstr "त्रुटि"
 
-#: gcalctool/functions.c:438
+#: gcalctool/functions.c:437
 msgid "Previous expression"
 msgstr ""
 
-#: gcalctool/functions.c:508
+#: gcalctool/functions.c:525
 msgid "Malformed expression"
 msgstr ""
 
-#: gcalctool/functions.c:912
+#: gcalctool/functions.c:934
 #, fuzzy
 msgid "Malformed function"
 msgstr "उपयोगकर्ता-पारिभाषित फंक्शन्स"
 
-#: gcalctool/functions.c:1055
+#: gcalctool/functions.c:1077
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr ""
 
-#: gcalctool/functions.c:1079
+#: gcalctool/functions.c:1101
 msgid "Malformed parenthesis expression"
 msgstr ""
 
-#: gcalctool/functions.c:1102 gcalctool/functions.c:1349
+#: gcalctool/functions.c:1124 gcalctool/functions.c:1371
 msgid "No sane value to store"
 msgstr ""
 
-#: gcalctool/functions.c:1397
+#: gcalctool/functions.c:1419
 msgid "Numeric stack error"
 msgstr "न्यूमेरिक स्टेक त्रुटि"
 
-#: gcalctool/functions.c:1418
+#: gcalctool/functions.c:1440
 msgid "Operand stack error"
 msgstr "ऑपरैंड स्टेक त्रुटि"
 
@@ -1059,7 +1060,7 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 #  in popup menus
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1229 gcalctool/gtk.c:1362
+#: gcalctool/graphics.c:61 gcalctool/gtk.c:1231 gcalctool/gtk.c:1364
 msgid "R"
 msgstr "र"
 
@@ -1300,96 +1301,283 @@ msgstr "वैज्ञानिक मोड (_S) "
 msgid "Scientific mode"
 msgstr "वैज्ञानिक मोड"
 
-#: gcalctool/gtk.c:469
+#: gcalctool/gtk.c:470
 msgid "translator_credits"
 msgstr ""
 "जी करुणाकर <karunakar@freedomink.org>, रविशंकर श्रीवास्तव <raviratlami@yahoo.com>"
 
-#: gcalctool/gtk.c:471
+#: gcalctool/gtk.c:472
 msgid "Gcalctool"
 msgstr "जीकेल्कटूल"
 
-#: gcalctool/gtk.c:474
+#: gcalctool/gtk.c:475
 msgid "Calculator with financial and scientific modes."
 msgstr "वित्त और वैज्ञानिक मोड वाला गणक"
 
-#: gcalctool/gtk.c:772
+#: gcalctool/gtk.c:773
 msgid "Insert ASCII Value"
 msgstr "एसकी मान प्रविष्ट करें"
 
-#: gcalctool/gtk.c:787
+#: gcalctool/gtk.c:788
 msgid "Ch_aracter:"
 msgstr "अक्षर (_a):"
 
-#: gcalctool/gtk.c:812
+#: gcalctool/gtk.c:813
 msgid "_Insert"
 msgstr "प्रविष्ट करें (_I)"
 
-#: gcalctool/gtk.c:891
+#: gcalctool/gtk.c:892
 msgid "Edit Constants"
 msgstr "स्थिरांक संपादित करें"
 
-#: gcalctool/gtk.c:891
+#: gcalctool/gtk.c:892
 msgid "Edit Functions"
 msgstr "फंक्शन्स संपादित करें"
 
-#: gcalctool/gtk.c:915
+#: gcalctool/gtk.c:916
 msgid "Note:"
 msgstr "टीपः"
 
-#: gcalctool/gtk.c:916
+#: gcalctool/gtk.c:917
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "सभी स्थिर मूल्य दशमलव अंक मूल में निर्दिष्ट हैं."
 
-#: gcalctool/gtk.c:926
+#: gcalctool/gtk.c:927
 msgid "Click a _value or description to edit it:"
 msgstr "संपादन हेतु एक मूल्य या वर्णन पर क्लिक करें:"
 
-#: gcalctool/gtk.c:949
+#: gcalctool/gtk.c:950
 msgid "No."
 msgstr "नहीं."
 
-#: gcalctool/gtk.c:951
+#: gcalctool/gtk.c:952
 msgid "Value"
 msgstr "मान"
 
-#: gcalctool/gtk.c:953
+#: gcalctool/gtk.c:954
 msgid "Description"
 msgstr "वर्णन"
 
-#: gcalctool/gtk.c:1052 gcalctool/gtk.c:1054 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1054 gcalctool/gtk.c:1056 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "गणक"
 
 #  Make Hyp and Inv trigonometric check boxes.
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1297
+#: gcalctool/gtk.c:1299
 msgid "_Inv"
 msgstr "उलटा (_I)"
 
-#: gcalctool/gtk.c:1305
+#: gcalctool/gtk.c:1307
 msgid "H_yp"
 msgstr "हाइप. (_y)"
 
-#: gcalctool/gtk.c:1353
+#: gcalctool/gtk.c:1355
 msgid "Memory Registers"
 msgstr "मेमोरी रजिस्टर्स"
 
-#: gcalctool/gtk.c:1418
+#: gcalctool/gtk.c:1420
 msgid "Edit Constants..."
 msgstr "स्थिरांक संपादित करें..."
 
-#: gcalctool/gtk.c:1418
+#: gcalctool/gtk.c:1420
 msgid "Edit Functions..."
 msgstr "फंक्शन्स संपादित करें..."
 
-#: gcalctool/gtk.c:2016
+#: gcalctool/gtk.c:2018
 msgid "Activated no operator precedence mode"
 msgstr ""
 
-#: gcalctool/gtk.c:2025
+#: gcalctool/gtk.c:2027
 msgid "Activated expression mode with operator precedence"
 msgstr ""
+
+#: gcalctool/mpmath.c:218
+msgid "Error, cannot calculate cosine"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:36
+#, fuzzy
+msgid "abs"
+msgstr "निर."
+
+#: gcalctool/syntax_translation.c:37
+msgid "acosh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:38
+msgid "acos"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:39
+#, fuzzy
+msgid "and"
+msgstr "रैण्ड"
+
+#: gcalctool/syntax_translation.c:40
+#, fuzzy
+msgid "ans"
+msgstr "स्पर्श."
+
+#: gcalctool/syntax_translation.c:41
+msgid "asinh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:42
+msgid "asin"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:43
+msgid "atanh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:44
+msgid "atan"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:45
+msgid "cbrt"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:46
+#, fuzzy
+msgid "chs"
+msgstr "कोज्या"
+
+#: gcalctool/syntax_translation.c:47
+#, fuzzy
+msgid "clr"
+msgstr "साफ"
+
+#: gcalctool/syntax_translation.c:48
+msgid "cosh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:49
+#, fuzzy
+msgid "cos"
+msgstr "कोज्या"
+
+#: gcalctool/syntax_translation.c:50
+#, fuzzy
+msgid "ddb"
+msgstr "जोड़ें"
+
+#: gcalctool/syntax_translation.c:51
+#, fuzzy
+msgid "exp"
+msgstr "एक्सपो."
+
+#: gcalctool/syntax_translation.c:52
+#, fuzzy
+msgid "frac"
+msgstr "अंश"
+
+#: gcalctool/syntax_translation.c:53
+msgid "fv"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:54
+#, fuzzy
+msgid "int"
+msgstr "इंट."
+
+#: gcalctool/syntax_translation.c:55
+#, fuzzy
+msgid "ln"
+msgstr "Sln"
+
+#: gcalctool/syntax_translation.c:56
+#, fuzzy
+msgid "log"
+msgstr "लघुगणक"
+
+#: gcalctool/syntax_translation.c:57
+#, fuzzy
+msgid "not"
+msgstr "इंट."
+
+#: gcalctool/syntax_translation.c:58
+#, fuzzy
+msgid "or"
+msgstr "Xor"
+
+#: gcalctool/syntax_translation.c:60
+#, fuzzy
+msgid "pmt"
+msgstr "Pmt"
+
+#: gcalctool/syntax_translation.c:61
+msgid "pv"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:62
+#, fuzzy
+msgid "rand"
+msgstr "रैण्ड"
+
+#: gcalctool/syntax_translation.c:63
+#, fuzzy
+msgid "rate"
+msgstr "दर"
+
+#: gcalctool/syntax_translation.c:64
+#, fuzzy
+msgid "rcl"
+msgstr "Rcl"
+
+#: gcalctool/syntax_translation.c:65
+msgid "sinh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:66
+#, fuzzy
+msgid "sin"
+msgstr "ज्या"
+
+#: gcalctool/syntax_translation.c:67
+#, fuzzy
+msgid "sln"
+msgstr "Sln"
+
+#: gcalctool/syntax_translation.c:68
+#, fuzzy
+msgid "sqrt"
+msgstr "व.मू."
+
+#: gcalctool/syntax_translation.c:69
+#, fuzzy
+msgid "sto"
+msgstr "स्टॉ."
+
+#: gcalctool/syntax_translation.c:70
+#, fuzzy
+msgid "syd"
+msgstr "Syd"
+
+#: gcalctool/syntax_translation.c:71
+msgid "tanh"
+msgstr ""
+
+#: gcalctool/syntax_translation.c:72
+#, fuzzy
+msgid "tan"
+msgstr "स्पर्श."
+
+#: gcalctool/syntax_translation.c:73
+#, fuzzy
+msgid "term"
+msgstr "Ctrm"
+
+#: gcalctool/syntax_translation.c:76
+#, fuzzy
+msgid "xnor"
+msgstr "Xnor"
+
+#: gcalctool/syntax_translation.c:77
+#, fuzzy
+msgid "xor"
+msgstr "Xor"
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"

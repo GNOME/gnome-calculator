@@ -32,7 +32,6 @@ extern char *dtype_str[];      /* Strings for each display mode value. */
 extern char *dtype_desc[];     /* Tooltips for each display mode value. */
 extern char *hyp_desc;         /* Tooltip for hyperbolic option. */
 extern char *inv_desc;         /* Tooltip for inverse option. */
-extern char *mode_str[];       /* Strings for each mode value. */
 extern char *mstrs[];          /* Mode titles for the popup panel. */
 extern char *opts[];           /* Command line option strings. */
 extern char *ttype_str[];      /* Strings for each trig type value. */
@@ -44,8 +43,7 @@ extern char *Rmstr[];          /* Mode mode X resource strings. */
 extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern char *Rsstr[];          /* Syntax resource strings. */
 
-extern double max_fix[];           /* Maximum showable fixed values. */
-extern double min_fix[MAXACC][MAXBASES];  /* Minimum showable fixed values. */
+extern double max_fix[];       /* Maximum showable fixed values. */
 
 extern int basevals[];         /* Supported arithmetic bases. */
 extern int validkeys[];        /* Valid keys after an error condition. */

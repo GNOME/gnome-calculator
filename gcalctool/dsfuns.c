@@ -31,7 +31,7 @@
 static int ds_position_popup_rect(int, int, int, int, GtkWidget *, 
                                   enum ds_location_op);
 static int ds_force_popup_on_screen(int *, int *, int, int, GtkWidget *);
-static int ds_get_screen_size(GtkWidget *, int *, int *);
+static int ds_get_screen_size(int *, int *);
 
 
 int
@@ -57,7 +57,7 @@ ds_position_popup_rect(int base_x, int base_y, int base_width, int base_height,
     gtk_window_get_position(GTK_WINDOW(popup), &popup_x, &popup_y);
     gtk_window_get_size(GTK_WINDOW(popup), &popup_width, &popup_height);
 
-    ds_get_screen_size(popup, &screen_width, &screen_height);
+    ds_get_screen_size(&screen_width, &screen_height);
 
     if (location_op == DS_POPUP_LOR) {
         if (base_x >= screen_width - base_width - base_x) {
@@ -120,7 +120,7 @@ ds_force_popup_on_screen(int *popup_x_p, int *popup_y_p,
     popup_y = *popup_y_p;
 
     /* Get the screen size */
-    ds_get_screen_size(popup, &screen_width, &screen_height);
+    ds_get_screen_size(&screen_width, &screen_height);
 
     /* Make sure frame doesn't go off side of screen */
     n = popup_x + popup_width;
@@ -153,7 +153,7 @@ ds_force_popup_on_screen(int *popup_x_p, int *popup_y_p,
 
 
 static int
-ds_get_screen_size(GtkWidget *frame, int *width_p, int *height_p)
+ds_get_screen_size(int *width_p, int *height_p)
 {
     *width_p  = gdk_screen_width();
     *height_p = gdk_screen_height();

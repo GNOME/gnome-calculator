@@ -24,6 +24,7 @@
 #include <assert.h>
 #include "calctool.h"
 #include "extern.h"
+#include "mpmath.h"
 
 static char *make_eng_sci(int *, int);
 static char *make_fixed(int *, int, int);

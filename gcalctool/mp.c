@@ -936,27 +936,6 @@ L40:
 
 
 void
-mpclr(int *x, int *n)
-{
-    int i__1;
-
-    static int i, i2, i3;
-
-/*  SETS X(T+3), ... , X(N+2) TO ZERO, USEFUL
- *  IF PRECISION IS GOING TO BE INCREASED.
- */
-
-    --x;                 /* Parameter adjustments */
-
-    if (*n <= MP.t) return;
-    i2 = MP.t + 3;
-    i3 = *n + 2;
-    i__1 = i3;
-    for (i = i2; i <= i__1; ++i) x[i] = 0;
-}
-
-
-void
 mpcmd(int *x, double *dz)
 {
     int i__1;
