@@ -37,7 +37,7 @@ localize_number(char *dest, const char *src)
 {
     char tnum[MAX_LOCALIZED], *dstp;
 
-    if (v->show_tsep && v->base == DEC) {
+    if (!v->error && v->show_tsep && v->base == DEC) {
 	const char *radixp, *srcp;
 	int n, i;
 	size_t tsep_len;
