@@ -48,8 +48,8 @@ button_opdisp(int n)
 char *
 button_str(int n)
 {
-    return((v->curwin == FCP_KEY) ? buttons[n].str :
-            mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].str);
+    return((v->curwin == FCP_KEY) ? _(buttons[n].str) :
+	   _(mode_buttons[MODEKEYS * ((int) v->modetype - 1) + n].str));
 }
 
 
@@ -309,6 +309,7 @@ set_item(enum item_type itemno, char *str)
         return;
     }
 
-    set_label(itemno, str);
-    STRCPY(v->item_text[(int) itemno], str);
+    set_label(itemno, str);	/* Not _(str) here - it is done
+				   in the set_label() function */
+    STRCPY(v->item_text[(int) itemno], _(str));
 }

@@ -46,7 +46,7 @@ double min_fix[MAXACC][MAXBASES] = {
 };
 
 char *base_str[]  = {          /* Strings for each base value. */
-    _("BIN"), _("OCT"), _("DEC"), _("HEX")
+    N_("BIN"), N_("OCT"), N_("DEC"), N_("HEX")
 };
 
 char *calc_res[] = {
@@ -55,21 +55,21 @@ char *calc_res[] = {
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
-    _("ENG"), _("FIX"), _("SCI")
+    N_("ENG"), N_("FIX"), N_("SCI")
 };
 
 char *mode_str[]  = {          /* Strings for each mode value. */
-    _("BASIC"), _("FINANCIAL"), _("LOGICAL"), _("SCIENTIFIC")
+    N_("BASIC"), N_("FINANCIAL"), N_("LOGICAL"), N_("SCIENTIFIC")
 };
 
 char *mstrs[] = {              /* Mode titles for the popup panel. */
-    _("Basic Mode."),   _("Financial Mode."),
-    _("Logical Mode."), _("Scientific Mode.")
+    N_("Basic Mode."),   N_("Financial Mode."),
+    N_("Logical Mode."), N_("Scientific Mode.")
 };
 
 
 char *ttype_str[] = {          /* Strings for each trig type value. */
-    _("DEG"), _("GRAD"), _("RAD")
+    N_("DEG"), N_("GRAD"), N_("RAD")
 };
 
 char digits[] = "0123456789ABCDEF";
@@ -125,8 +125,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 1. */
 { 
-    _("Disp"),
-    _(
+    N_("Disp"),
+    N_(
       "Disp\n"
       " \n"
       "Changes the type of numeric display.\n"
@@ -161,8 +161,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {    
-    _("Base"),
-    _(
+    N_("Base"),
+    N_(
       "Base\n"
       " \n"
       "Changes numeric base.\n"
@@ -196,8 +196,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("Int "),
-    _(
+    N_("Int "),
+    N_(
       "Int\n"
       "\n"
       "Integer portion\n"
@@ -214,8 +214,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_portion
 },
 {
-    _("Frac"),
-    _(
+    N_("Frac"),
+    N_(
       "Frac\n"
       " \n"
       "Fractional portion\n"
@@ -232,8 +232,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_portion
 },
 {
-    _("D   "),
-    _(
+    N_("D   "),
+    N_(
       "Hex D (decimal 13)\n"
       "\n"
       "Keyboard equivalent:   d\n"
@@ -250,8 +250,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("E   "),
-    _(
+    N_("E   "),
+    N_(
       "Hex E (decimal 14)\n"
       "\n"
       "Keyboard equivalent:   e\n"
@@ -268,8 +268,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("F   "),
-    _(
+    N_("F   "),
+    N_(
       "Hex F (decimal 15)\n"
       "\n"
       "Keyboard equivalent:   f\n"
@@ -286,8 +286,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {    
-    _("Clr "),
-    _(
+    N_("Clr "),
+    N_(
       "Clr\n"
       "\n"
       "Clears the display.\n"
@@ -305,8 +305,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 2. */
 {
-    _("Mode"),
-    _(
+    N_("Mode"),
+    N_(
       "Mode\n"
       " \n"
       "Changes the calculator mode.\n"
@@ -342,8 +342,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("Keys"),
-    _(
+    N_("Keys"),
+    N_(
       "Keys\n"
       " \n"
       "Toggles button labels.\n"
@@ -361,8 +361,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_keys
 },
 {
-    _("Abs "),
-    _(
+    N_("Abs "),
+    N_(
       "Abs\n"
       " \n"
       "Absolute value.\n"
@@ -379,8 +379,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_portion
 },
 {
-    _("+/- "),
-    _(
+    N_("+/- "),
+    N_(
       "+/-\n"
       " \n"
       "Change sign.\n"
@@ -397,8 +397,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_immed
 },
 {
-    _("A   "),
-    _(
+    N_("A   "),
+    N_(
       "Hex A (decimal 10)\n"
       " \n"
       "Keyboard equivalent:   a\n"
@@ -415,8 +415,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("B   "),
-    _(
+    N_("B   "),
+    N_(
       "Hex B (decimal 11)\n"
       " \n"
       "Keyboard equivalent:   b\n"
@@ -433,8 +433,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("C   "),
-    _(
+    N_("C   "),
+    N_(
       "Hex C (decimal 12)\n"
       " \n"
       "Keyboard equivalent:   c\n"
@@ -451,8 +451,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("Bsp "),
-    _(
+    N_("Bsp "),
+    N_(
       "Bsp\n"
       " \n"
       "Erases characters one at a time.\n"
@@ -474,8 +474,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 3. */
 {
-    _("Mem..."),
-    _(
+    N_("Mem..."),
+    N_(
       "Mem\n"
       "\n"
       "Displays a memory register window.\n"
@@ -493,8 +493,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_memory
 },
 {
-    _("Acc "),
-    _(
+    N_("Acc "),
+    N_(
       "Acc\n"
       "\n"
       "Accuracy\n"
@@ -515,8 +515,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("1/x "),
-    _(
+    N_("1/x "),
+    N_(
       "1/x\n"
       "\n"
       "Reciprocal\n"
@@ -533,8 +533,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_immed
 },
 {
-    _("x^2 "),
-    _(
+    N_("x^2 "),
+    N_(
       "x^2\n"
       "\n"
       "Keyboard equivalent:   @\n"
@@ -548,8 +548,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_immed
 },
 {
-    _("7   "),
-    _(
+    N_("7   "),
+    N_(
       "Numeric 7\n"
       "\n"
       "Keyboard equivalent:   7\n"
@@ -563,8 +563,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("8   "),
-    _(
+    N_("8   "),
+    N_(
       "Numeric 8\n"
       "\n"
       "Keyboard equivalent:   8\n"
@@ -578,8 +578,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("9   "),
-    _(
+    N_("9   "),
+    N_(
       "Numeric 9\n"
       "\n"
       "Keyboard equivalent:   9\n"
@@ -593,8 +593,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("X   "),
-    _(
+    N_("X   "),
+    N_(
       "X\n"
       "\n" 
       "Multiplication\n"
@@ -613,8 +613,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 4. */
 {
-    _("Fun "),
-    _(
+    N_("Fun "),
+    N_(
       "Fun\n"
       "\n"
       "Menu of defined functions\n"
@@ -656,8 +656,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("Con "),
-    _(
+    N_("Con "),
+    N_(
       "Con\n"
       "\n"
       "Constant n\n"
@@ -688,8 +688,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("%   "),
-    _(
+    N_("%   "),
+    N_(
       "%\n"
       "\n" 
       "Percentage\n"
@@ -712,8 +712,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_calc
 },
 {
-    _("Sqrt"),
-    _(
+    N_("Sqrt"),
+    N_(
       "Sqrt\n"
       "\n"
       "Square root\n"
@@ -730,8 +730,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_immed
 },
 {
-    _("4   "),
-    _(
+    N_("4   "),
+    N_(
       "Numeric 4\n"
       "\n"
       "Keyboard equivalent:   4\n"
@@ -745,8 +745,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("5   "),
-    _(
+    N_("5   "),
+    N_(
       "Numeric 5\n"
       "\n"
       "Keyboard equivalent:   5\n"
@@ -760,8 +760,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("6   "),
-    _(
+    N_("6   "),
+    N_(
       "Numeric 6\n"
       "\n"
       "Keyboard equivalent:   6\n"
@@ -775,8 +775,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("/   "),
-    _(
+    N_("/   "),
+    N_(
       "/\n"
       "\n"
       "Division\n"
@@ -795,8 +795,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 5. */
 {
-    _("Sto "),
-    _(
+    N_("Sto "),
+    N_(
       "Sto\n"
       "\n"
       "Stores a value in a memory register.\n"
@@ -818,8 +818,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("Rcl "),
-    _(
+    N_("Rcl "),
+    N_(
       "Rcl\n"
       "\n"
       "Retrieves a memory register.\n"
@@ -841,8 +841,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("(   "),
-    _(
+    N_("(   "),
+    N_(
       "(\n"
       "\n" 
       "Left parenthesis\n"
@@ -867,8 +867,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_paren
 },
 {
-    _(")   "),
-    _(
+    N_(")   "),
+    N_(
       ")\n"
       "\n" 
       "Right parenthesis\n"
@@ -893,8 +893,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_paren
 },
 {
-    _("1   "),
-    _(
+    N_("1   "),
+    N_(
       "Numeric 1\n"
       "\n"
       "Keyboard equivalent:   1"
@@ -906,8 +906,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("2   "),
-    _(
+    N_("2   "),
+    N_(
       "Numeric 2\n"
       "\n"
       "Keyboard equivalent:   2\n"
@@ -921,8 +921,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("3   "),
-    _(
+    N_("3   "),
+    N_(
       "Numeric 3\n"
       "\n"
       "Keyboard equivalent:   3\n"
@@ -936,8 +936,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _("-   "),
-    _(
+    N_("-   "),
+    N_(
       "-\n"
       "\n"
       "Subtraction\n"
@@ -956,8 +956,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
 
 /* Row 6. */
 {
-    _("Quit"),
-    _( 
+    N_("Quit"),
+    N_( 
       "Quit\n"
       "\n"
       "Quits the calculator.\n"
@@ -974,8 +974,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_frame
 },
 {
-    _("Exch"),
-    _(
+    N_("Exch"),
+    N_(
       "Exch\n"
       "\n"
       "Register exchange\n"
@@ -1001,8 +1001,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_pending
 },
 {
-    _("Exp "),
-    _(
+    N_("Exp "),
+    N_(
       "Exp\n"
       "\n"
       "Enters an exponential number.\n"
@@ -1020,8 +1020,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_expno
 },
 {
-    _("Asc..."),
-    _(
+    N_("Asc..."),
+    N_(
       "Asc\n"
       "\n"
       "ASCII value\n"
@@ -1042,8 +1042,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_ascii
 },
 {
-    _("0   "),
-    _(
+    N_("0   "),
+    N_(
       "Numeric 0\n"
       "\n"
       "Keyboard equivalent:   0\n"
@@ -1055,8 +1055,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_number
 },
 {
-    _(".   "),
-    _(
+    N_(".   "),
+    N_(
       ".\n"
       "\n" 
       "Numeric point\n"
@@ -1072,8 +1072,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_point
 },
 {
-    _("=   "),
-    _(
+    N_("=   "),
+    N_(
       "=\n"
       "\n" 
       "Calculates a result.\n"
@@ -1090,8 +1090,8 @@ struct button buttons[NOBUTTONS] = {  /* Calculator button values. */
     do_calc
 },
 {
-    _("+   "),
-    _(
+    N_("+   "),
+    N_(
       "+\n"
       "\n" 
       "Addition\n"
@@ -1122,8 +1122,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 
 /* Financial. */
 { 
-    _("Ctrm"),
-    _(
+    N_("Ctrm"),
+    N_(
       "Ctrm\n"
       "\n"
       "Compounding term\n"
@@ -1163,8 +1163,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Ddb "),
-    _(
+    N_("Ddb "),
+    N_(
       "Ddb\n"
       "\n"
       "Double-declining depreciation\n"
@@ -1216,8 +1216,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Fv  "),
-    _(
+    N_("Fv  "),
+    N_(
       "Fv\n"
       "\n"
       "Future value\n"
@@ -1264,8 +1264,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Pmt "),
-    _(
+    N_("Pmt "),
+    N_(
       "Pmt\n"
       "\n"
       "Periodic payment\n"
@@ -1306,8 +1306,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Pv  "),
-    _(
+    N_("Pv  "),
+    N_(
       "Pv\n"
       "\n"
       "Present value\n"
@@ -1366,8 +1366,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Rate"),
-    _(
+    N_("Rate"),
+    N_(
       "Rate\n"
       "\n"
       "Periodic interest rate\n"
@@ -1412,8 +1412,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
    do_business
 },
 { 
-    _("Sln "),
-    _(
+    N_("Sln "),
+    N_(
       "Sln\n"
       "\n"
       "Straight-line depreciation\n"
@@ -1463,8 +1463,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Syd "),
-    _(
+    N_("Syd "),
+    N_(
       "Syd\n"
       "\n"
       "Sum-of-the years'-digits depreciation\n"
@@ -1525,8 +1525,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_business
 },
 { 
-    _("Term"),
-    _(
+    N_("Term"),
+    N_(
       "Term\n"
       "\n"
       "Payment period\n"
@@ -1634,8 +1634,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 
 /* Logical. */
 { 
-    _(" <  "),
-    _(
+    N_(" <  "),
+    N_(
       "<\n"
       "\n"
       "Left shift n\n"
@@ -1654,8 +1654,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_pending
 },
 { 
-    _(" >  "),
-    _(
+    N_(" >  "),
+    N_(
       ">\n"
       "\n"
       "Right shift n\n"
@@ -1674,8 +1674,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_pending
 },
 { 
-    _("&16 "),
-    _(
+    N_("&16 "),
+    N_(
       "&16\n"
       "\n"
       "Get a 16-bit unsigned integer.\n"
@@ -1693,8 +1693,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("&32 "),
-    _(
+    N_("&32 "),
+    N_(
       "&32\n"
       "\n"
       "Get a 32-bit unsigned integer.\n"
@@ -1748,8 +1748,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_none
 },
 { 
-    _("Or  "),
-    _(
+    N_("Or  "),
+    N_(
       "Or\n"
       "\n"
       "Logical OR\n"
@@ -1767,8 +1767,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_calc
 },
 { 
-    _("And "),
-    _(
+    N_("And "),
+    N_(
       "And\n"
       "\n"
       "Logical AND\n"
@@ -1786,8 +1786,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_calc
 },
 { 
-    _("Not "),
-    _(
+    N_("Not "),
+    N_(
       "Not\n"
       "\n"
       "Logical NOT\n"
@@ -1804,8 +1804,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("Xor "),
-    _(
+    N_("Xor "),
+    N_(
       "Xor\n"
       "\n"
       "Logical XOR\n"
@@ -1824,8 +1824,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_calc
 },
 { 
-    _("Xnor"),
-    _(
+    N_("Xnor"),
+    N_(
       "Xnor\n"
       "\n"
       "Logical XNOR\n"
@@ -1873,8 +1873,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
 
 /* Scientific. */
 { 
-    _("Trig"),
-    _(
+    N_("Trig"),
+    N_(
       "Trig\n"
       "\n"
       "Sets trigonometric mode.\n"
@@ -1906,8 +1906,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_pending
 },
 { 
-    _("Hyp "),
-    _(
+    N_("Hyp "),
+    N_(
       "Hyp\n"
       "\n"
       "Hyperbolic flag\n"
@@ -1925,8 +1925,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("Inv "),
-    _(
+    N_("Inv "),
+    N_(
       "Inv\n"
       "\n"
       "Inverse function flag\n"
@@ -1944,8 +1944,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("e^x "),
-    _(
+    N_("e^x "),
+    N_(
       "e^x\n"
       "\n"
       "e to the x power\n"
@@ -1962,8 +1962,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("10^x"),
-    _(
+    N_("10^x"),
+    N_(
       "10^x\n"
       "\n"
       "10 to the x power\n"
@@ -1980,8 +1980,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("y^x "),
-    _(
+    N_("y^x "),
+    N_(
       "y^x\n"
       "\n"
       "y to the power of x\n"
@@ -2002,8 +2002,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_calc
 },
 { 
-    _("x!  "),
-    _(
+    N_("x!  "),
+    N_(
       "x!\n"
       "\n"
       "Factorial\n"
@@ -2030,8 +2030,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_none
 },
 { 
-    _("Cos "),
-    _(
+    N_("Cos "),
+    N_(
       "Cos\n"
       "\n"
       "Cosine function\n"
@@ -2053,8 +2053,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_trig
 },
 { 
-    _("Sin "),
-    _(
+    N_("Sin "),
+    N_(
       "Sin\n"
       "\n"
       "Sine function\n"
@@ -2076,8 +2076,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_trig
 },
 { 
-    _("Tan "),
-    _(
+    N_("Tan "),
+    N_(
       "Tan\n"
       "\n"
       "Tangent function\n"
@@ -2099,8 +2099,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_trig
 },
 { 
-    _("Ln  "),
-    _(
+    N_("Ln  "),
+    N_(
       "Ln\n"
       "\n"
       "Natural log\n"
@@ -2117,8 +2117,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("Log "),
-    _(
+    N_("Log "),
+    N_(
       "Log\n"
       "\n"
       "Base 10 log\n"
@@ -2135,8 +2135,8 @@ struct button mode_buttons[(MAXMODES-1) * MODEKEYS] = {
     do_immed
 },
 { 
-    _("Rand"),
-    _(
+    N_("Rand"),
+    N_(
       "Rand\n"
       "\n"
       "Random number\n"

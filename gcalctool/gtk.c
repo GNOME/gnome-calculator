@@ -766,10 +766,10 @@ create_kframe()
                 set_label(i, dtype_str[(int) v->dtype]);
                 break;
             case HYPITEM :
-                set_label(i, (v->hyperbolic) ? _("HYP") : "    ");
+                set_label(i, (v->hyperbolic) ? N_("HYP") : "    ");
                 break;
             case INVITEM :
-                set_label(i, (v->inverse) ? _("INV") : "    ");
+                set_label(i, (v->inverse) ? N_("INV") : "    ");
                 break;
             case OPITEM :
                 set_label(i, "");
@@ -837,7 +837,7 @@ create_rframe()
     X->rframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
-    set_title(FCP_REG, _("Memory Registers"));
+    set_title(FCP_REG, N_("Memory Registers"));
     gtk_widget_set_size_request(X->rframe, 248, 179);
 
     vbox = gtk_vbox_new(FALSE, 0);
@@ -1342,7 +1342,7 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
             SPRINTF(name, "mode_button%1d", n);
             gtk_widget_set_name(X->mode_buttons[n], name);
             gtk_tooltips_set_tip(X->tips, X->mode_buttons[n],
-                                 mode_buttons[n].hstr, "");
+                                 _(mode_buttons[n].hstr), "");
             g_object_set_data(G_OBJECT(X->mode_buttons[n]), "frame", X->mframe);
             gtk_widget_ref(X->mode_buttons[n]);
 
@@ -1391,7 +1391,7 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
                              G_CALLBACK(button_proc), (gpointer) n);
             SPRINTF(name, "button%1d", n);
             gtk_widget_set_name(X->buttons[x], name);
-            gtk_tooltips_set_tip(X->tips, X->buttons[x], buttons[n].hstr, "");
+            gtk_tooltips_set_tip(X->tips, X->buttons[x], _(buttons[n].hstr), "");
             g_object_set_data(G_OBJECT(X->buttons[x]), "frame", X->kframe);
             gtk_widget_ref(X->buttons[x]);
             create_kbd_accel(X->buttons[x], buttons[n].mods, buttons[n].value);
@@ -1826,9 +1826,9 @@ set_label(enum item_type itemno, char *str)
     char label_str[MAXLINE];
 
     if (itemno == DISPLAYITEM) {
-        SPRINTF(label_str, "<span size=\"x-large\">%s</span>", str);
+        SPRINTF(label_str, "<span size=\"x-large\">%s</span>", _(str));
     } else {
-        SPRINTF(label_str, "<span size=\"x-small\">%s</span>", str);
+        SPRINTF(label_str, "<span size=\"x-small\">%s</span>", _(str));
     }
 
     gtk_label_set_markup(GTK_LABEL(X->labels[(int) itemno]), label_str);
@@ -1906,7 +1906,7 @@ set_title(enum fcp_type fcptype, char *str)
     } else if (fcptype == FCP_MODE) {
         f = X->mframe;
     }
-    gtk_window_set_title(GTK_WINDOW(f), str);
+    gtk_window_set_title(GTK_WINDOW(f), _(str));
 }
 
 
