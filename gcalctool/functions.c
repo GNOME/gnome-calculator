@@ -622,9 +622,8 @@ do_number()
     nextchar = v->current->value[0];
     n = v->current->value[0] - '0';
     if (v->base == HEX && 
-        v->current->value[0] >= 'a' && v->current->value[0] <= 'f') {
-        nextchar -= 32;             /* Convert to uppercase hex digit. */
-        n = v->current->value[0] - 'a' + 10;
+        v->current->value[0] >= 'A' && v->current->value[0] <= 'F') {
+        n = v->current->value[0] - 'A' + 10;
     }
     if (n > maxvals[(int) v->base]) {
         beep();
