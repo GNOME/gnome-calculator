@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 4.2.86\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2003-06-04 05:41+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -169,7 +169,8 @@ msgid "Divide"
 msgstr "除號"
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
+#, fuzzy
+msgid "Bksp"
 msgstr "←"
 
 #: gcalctool/calctool.c:192
@@ -681,7 +682,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "16 進制數字 E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr "F"
 
@@ -745,7 +746,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "16 進制數字 B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -758,45 +759,44 @@ msgid "Or"
 msgstr "OR"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
-msgstr "邏輯 OR"
+msgid "Bitwise OR"
+msgstr ""
 
 #: gcalctool/calctool.c:947
 msgid "And"
 msgstr "AND"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
-msgstr "邏輯 AND"
+msgid "Bitwise AND"
+msgstr ""
 
 #: gcalctool/calctool.c:957
 msgid "Not"
 msgstr "NOT"
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
-msgstr "邏輯 NOT"
+msgid "Bitwise NOT"
+msgstr ""
 
 #: gcalctool/calctool.c:967
 msgid "Xor"
 msgstr "XOR"
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
-msgstr "邏輯 XOR"
+msgid "Bitwise XOR"
+msgstr ""
 
 #: gcalctool/calctool.c:977
 msgid "Xnor"
 msgstr "XNOR"
 
 #: gcalctool/calctool.c:978
-msgid "Logical XNOR"
-msgstr "邏輯 XNOR"
+msgid "Bitwise XNOR"
+msgstr ""
 
 #: gcalctool/calctool.c:1078
-#, fuzzy
-msgid "kilometers per hour or miles per hour"
-msgstr "千米 → 英里"
+msgid "Kilometer-to-mile conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1079
 msgid "square root of 2"
@@ -811,9 +811,8 @@ msgid "pi"
 msgstr "π"
 
 #: gcalctool/calctool.c:1082
-#, fuzzy
-msgid "centimeters or inches"
-msgstr "英吋 → 厘米"
+msgid "Centimeter-to-inch conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1083
 msgid "degrees in a radian"
@@ -824,18 +823,17 @@ msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1085
-#, fuzzy
-msgid "grams or ounces"
-msgstr "盎司 → 克"
+msgid "Gram-to-ounce conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1086
 #, fuzzy
-msgid "kilojoules or British thermal units"
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "英制熱量單位 → 千焦耳"
 
 #: gcalctool/calctool.c:1087
 #, fuzzy
-msgid "cubic centimeters or cubic inches"
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "立方英吋 → 立方厘米"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
@@ -918,196 +916,267 @@ msgstr "[-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/計算機(_C)"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/計算機(C)/結束(_Q)"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/編輯(_E)"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/編輯/複製(_C)"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/編輯/貼上(_P)"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/編輯/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/編輯/插入 ASCII 值(_I)..."
-
-#: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/顯示(_V)"
-
-#: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/顯示/基本模式(_B)"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/顯示/財務計算模式(_F)"
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/顯示/科學計算模式(_S)"
-
-#: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/顯示/sep1"
-
-#: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/顯示/顯示末端的 0 數位(_T)"
-
-#: gcalctool/gtk.c:182
-#, fuzzy
-msgid "/View/Show T_housands Separator"
-msgstr "/顯示/顯示末端的 0 數位(_T)"
-
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/顯示/sep2"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/顯示/暫存器數值(_M)"
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "計算機"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/求助(_H)"
+#, fuzzy
+msgid "_Copy"
+msgstr "/編輯/複製(_C)"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/求助/內容(_C)"
+msgid "Copy selection"
+msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/求助/關於(_A)"
+#, fuzzy
+msgid "_Paste"
+msgstr "/編輯/貼上(_P)"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
-msgstr "/0 位有效數字"
+#: gcalctool/gtk.c:189
+msgid "Paste selection"
+msgstr ""
+
+#: gcalctool/gtk.c:190
+#, fuzzy
+msgid "_Insert ASCII Value..."
+msgstr "插入 ASCII 值"
+
+#: gcalctool/gtk.c:191
+#, fuzzy
+msgid "Insert ASCII value"
+msgstr "插入 ASCII 值"
 
 #: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr "/1 位有效數字"
+#, fuzzy
+msgid "_Contents"
+msgstr "常數"
 
 #: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr "/2 位有效數字"
+#, fuzzy
+msgid "Show help contents"
+msgstr "/求助/內容(_C)"
 
 #: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr "/3 位有效數字"
+#, fuzzy
+msgid "_About"
+msgstr "/求助/關於(_A)"
 
 #: gcalctool/gtk.c:196
-msgid "/4 significant places"
-msgstr "/4 位有效數字"
+msgid "Show about help"
+msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr "/5 位有效數字"
-
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr "/6 位有效數字"
-
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr "/7 位有效數字"
-
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr "/8 位有效數字"
-
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr "/9 位有效數字"
-
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
-
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
-msgstr "/顯示末端的數字 0 (_T)"
-
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
+#, fuzzy
+msgid "1 place"
 msgstr "/1 個位"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
+#, fuzzy
+msgid "2 places"
 msgstr "/2 個位"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
+#, fuzzy
+msgid "3 places"
 msgstr "/3 個位"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
+#, fuzzy
+msgid "4 places"
 msgstr "/4 個位"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
+#, fuzzy
+msgid "5 places"
 msgstr "/5 個位"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
+#, fuzzy
+msgid "6 places"
 msgstr "/6 個位"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
+#, fuzzy
+msgid "7 places"
 msgstr "/7 個位"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
+#, fuzzy
+msgid "8 places"
 msgstr "/8 個位"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
+#, fuzzy
+msgid "9 places"
 msgstr "/9 個位"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
+#, fuzzy
+msgid "10 places"
 msgstr "/10 個位"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
+#, fuzzy
+msgid "11 places"
 msgstr "/11 個位"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
+#, fuzzy
+msgid "12 places"
 msgstr "/12 個位"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
+#, fuzzy
+msgid "13 places"
 msgstr "/13 個位"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
+#, fuzzy
+msgid "14 places"
 msgstr "/14 個位"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
+#, fuzzy
+msgid "15 places"
 msgstr "/15 個位"
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+#, fuzzy
+msgid "Show _Trailing Zeroes"
+msgstr "/顯示末端的數字 0 (_T)"
+
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+#, fuzzy
+msgid "Show trailing zeroes"
+msgstr "/顯示末端的數字 0 (_T)"
+
+#: gcalctool/gtk.c:265
+#, fuzzy
+msgid "Show T_housands Separator"
+msgstr "/顯示/顯示末端的 0 數位(_T)"
+
+#: gcalctool/gtk.c:266
+#, fuzzy
+msgid "Show thousands separator"
+msgstr "/顯示/顯示末端的 0 數位(_T)"
+
+#: gcalctool/gtk.c:267
+#, fuzzy
+msgid "_Memory Registers"
+msgstr "暫存器數值"
+
+#: gcalctool/gtk.c:268
+#, fuzzy
+msgid "Show memory registers"
+msgstr "暫存器數值"
+
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+#, fuzzy
+msgid "0 significant places"
+msgstr "/0 位有效數字"
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+#, fuzzy
+msgid "1 significant place"
+msgstr "/1 位有效數字"
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+#, fuzzy
+msgid "2 significant places"
+msgstr "/2 位有效數字"
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+#, fuzzy
+msgid "3 significant places"
+msgstr "/3 位有效數字"
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+#, fuzzy
+msgid "4 significant places"
+msgstr "/4 位有效數字"
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+#, fuzzy
+msgid "5 significant places"
+msgstr "/5 位有效數字"
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+#, fuzzy
+msgid "6 significant places"
+msgstr "/6 位有效數字"
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+#, fuzzy
+msgid "7 significant places"
+msgstr "/7 位有效數字"
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+#, fuzzy
+msgid "8 significant places"
+msgstr "/8 位有效數字"
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+#, fuzzy
+msgid "9 significant places"
+msgstr "/9 位有效數字"
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "基本模式"
+
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "基本模式"
+
+#: gcalctool/gtk.c:302
+#, fuzzy
+msgid "_Financial mode"
+msgstr "財務計算模式"
+
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "Financial mode"
+msgstr "財務計算模式"
+
+#: gcalctool/gtk.c:304
+#, fuzzy
+msgid "_Scientific mode"
+msgstr "科學計算模式"
+
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "Scientific mode"
+msgstr "科學計算模式"
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr ""
 "i18n 程式中文化計劃\n"
@@ -1115,88 +1184,160 @@ msgstr ""
 "\n"
 "Abel Cheung <maddog@linux.org.hk>, 2003"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr "附有財務及科學計算模式的計算機。"
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr "插入 ASCII 值"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr "字元(_A)："
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr "插入(_I)"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr "修改常數"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr "修改函式"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:881
 #, fuzzy
 msgid "Note:"
 msgstr "NOT"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr ""
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:892
 #, fuzzy
 msgid "Click a _value or description to edit it:"
 msgstr "若要修改數值，請點選數值本身或它的說明："
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:915
 msgid "No."
 msgstr "常數"
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "數值"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "說明"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "計算機"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1241
 msgid "_Inv"
 msgstr "反函數(_I)"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1249
 msgid "H_yp"
 msgstr "雙曲函數(_Y)"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr "暫存器數值"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr "修改常數..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr "修改函式..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "進行計算"
+
+#~ msgid "Logical OR"
+#~ msgstr "邏輯 OR"
+
+#~ msgid "Logical AND"
+#~ msgstr "邏輯 AND"
+
+#~ msgid "Logical NOT"
+#~ msgstr "邏輯 NOT"
+
+#~ msgid "Logical XOR"
+#~ msgstr "邏輯 XOR"
+
+#~ msgid "Logical XNOR"
+#~ msgstr "邏輯 XNOR"
+
+#, fuzzy
+#~ msgid "kilometers per hour or miles per hour"
+#~ msgstr "千米 → 英里"
+
+#, fuzzy
+#~ msgid "centimeters or inches"
+#~ msgstr "英吋 → 厘米"
+
+#, fuzzy
+#~ msgid "grams or ounces"
+#~ msgstr "盎司 → 克"
+
+#~ msgid "/_Calculator"
+#~ msgstr "/計算機(_C)"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/計算機(C)/結束(_Q)"
+
+#~ msgid "/_Edit"
+#~ msgstr "/編輯(_E)"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/編輯/sep1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/編輯/插入 ASCII 值(_I)..."
+
+#~ msgid "/_View"
+#~ msgstr "/顯示(_V)"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/顯示/基本模式(_B)"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/顯示/財務計算模式(_F)"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/顯示/科學計算模式(_S)"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/顯示/sep1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/顯示/顯示末端的 0 數位(_T)"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/顯示/sep2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/顯示/暫存器數值(_M)"
+
+#~ msgid "/_Help"
+#~ msgstr "/求助(_H)"
+
+#~ msgid "/sep1"
+#~ msgstr "/sep1"
 
 #, fuzzy
 #~ msgid "x<sup><i>2</i></sup>"

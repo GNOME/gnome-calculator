@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 20:35+0530\n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2004-02-29 20:47+0530\n"
 "Last-Translator: Nirav, Ankit, Ankur, Atit, Bhavin, Kartik, Khushbu, Sweta. "
 "<magnet@magnet-i.com>\n"
@@ -167,7 +167,8 @@ msgid "Divide"
 msgstr "ભાગો"
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
+#, fuzzy
+msgid "Bksp"
 msgstr "Bsp"
 
 #: gcalctool/calctool.c:192
@@ -667,7 +668,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "૧૬ આધારવાળી સંખ્યા E છે"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr "F"
 
@@ -731,7 +732,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "૧૬ આધારવાળી સંખ્યા B છે"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -901,196 +902,267 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/કેલ્ક્યુલેટર (_C)"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/કેલ્ક્યુલેટર/બહાર નીકળો (_Q)"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/ફેરફાર કરો (_E)"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/ફેરફાર/નકલ કરો (_C)"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/ફેરફાર/ચોંટાડો (_P)"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/ફેરફાર/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/ફેરફાર/ASCII કિંમત ઉમેરો... (_I)"
-
-#: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/દેખાવ (_V)"
-
-#: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/દેખાવ/આધારભૂત સ્થિતિ (_B)"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/દેખાવ/આર્થિક સ્થિતિ (_F)"
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/દેખાવ/વૈજ્ઞાનિક સ્થિતિ (_S) "
-
-#: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/દેખાવ/sep1"
-
-#: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/દેખાવ/પાછળનાં શૂન્યો દેખાડો (_T)"
-
-#: gcalctool/gtk.c:182
-msgid "/View/Show T_housands Separator"
-msgstr "/દેખાવ/હજારનો વિભાજક દેખાડો (_h)"
-
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/દેખાવ/sep2"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/દેખાવ/મેમરી રજીસ્ટરો (_M)"
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "કેલ્ક્યુલેટર"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/મદદ (_H)"
+#, fuzzy
+msgid "_Copy"
+msgstr "/ફેરફાર/નકલ કરો (_C)"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/મદદ/સમાવિષ્ટો (_C)"
+msgid "Copy selection"
+msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/મદદ/વિશે (_A)"
+#, fuzzy
+msgid "_Paste"
+msgstr "/ફેરફાર/ચોંટાડો (_P)"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
-msgstr "/૦ નોંધપાત્ર જગ્યાઓ"
+#: gcalctool/gtk.c:189
+msgid "Paste selection"
+msgstr ""
+
+#: gcalctool/gtk.c:190
+#, fuzzy
+msgid "_Insert ASCII Value..."
+msgstr "ASCII કિંમત દાખલ કરો"
+
+#: gcalctool/gtk.c:191
+#, fuzzy
+msgid "Insert ASCII value"
+msgstr "ASCII કિંમત દાખલ કરો"
 
 #: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr "/૧ નોંધપાત્ર જગ્યાઓ"
+#, fuzzy
+msgid "_Contents"
+msgstr "અચળ"
 
 #: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr "/૨ નોંધપાત્ર જગ્યાઓ"
+#, fuzzy
+msgid "Show help contents"
+msgstr "/મદદ/સમાવિષ્ટો (_C)"
 
 #: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr "/૩ નોંધપાત્ર જગ્યાઓ"
+#, fuzzy
+msgid "_About"
+msgstr "/મદદ/વિશે (_A)"
 
 #: gcalctool/gtk.c:196
-msgid "/4 significant places"
-msgstr "/૪ નોંધપાત્ર જગ્યાઓ"
+msgid "Show about help"
+msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr "/૫ નોંધપાત્ર જગ્યાઓ"
-
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr "/૬ નોંધપાત્ર જગ્યાઓ"
-
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr "/૭ નોંધપાત્ર જગ્યાઓ"
-
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr "/૮ નોંધપાત્ર જગ્યાઓ"
-
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr "/૯ નોંધપાત્ર જગ્યાઓ"
-
-# src/gconf-editor-window.c:343
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
-
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
-msgstr "/પાછળનાં શૂન્યો દેખાડો (_T)"
-
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
+#, fuzzy
+msgid "1 place"
 msgstr "/૧ જગ્યા"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
+#, fuzzy
+msgid "2 places"
 msgstr "/૨ જગ્યાઓ"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
+#, fuzzy
+msgid "3 places"
 msgstr "/૩ જગ્યાઓ"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
+#, fuzzy
+msgid "4 places"
 msgstr "/૪ જગ્યાઓ"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
+#, fuzzy
+msgid "5 places"
 msgstr "/૫ જગ્યાઓ"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
+#, fuzzy
+msgid "6 places"
 msgstr "/૬ જગ્યાઓ"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
+#, fuzzy
+msgid "7 places"
 msgstr "/૭ જગ્યાઓ"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
+#, fuzzy
+msgid "8 places"
 msgstr "/૮ જગ્યાઓ"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
+#, fuzzy
+msgid "9 places"
 msgstr "/૯ જગ્યાઓ"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
+#, fuzzy
+msgid "10 places"
 msgstr "/૧૦ જગ્યાઓ"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
+#, fuzzy
+msgid "11 places"
 msgstr "/૧૧ જગ્યાઓ"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
+#, fuzzy
+msgid "12 places"
 msgstr "/૧૨ જગ્યાઓ"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
+#, fuzzy
+msgid "13 places"
 msgstr "/૧૩ જગ્યાઓ"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
+#, fuzzy
+msgid "14 places"
 msgstr "/૧૪ જગ્યાઓ"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
+#, fuzzy
+msgid "15 places"
 msgstr "/૧૫ જગ્યાઓ"
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+#, fuzzy
+msgid "Show _Trailing Zeroes"
+msgstr "/પાછળનાં શૂન્યો દેખાડો (_T)"
+
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+#, fuzzy
+msgid "Show trailing zeroes"
+msgstr "/પાછળનાં શૂન્યો દેખાડો (_T)"
+
+#: gcalctool/gtk.c:265
+#, fuzzy
+msgid "Show T_housands Separator"
+msgstr "/દેખાવ/હજારનો વિભાજક દેખાડો (_h)"
+
+#: gcalctool/gtk.c:266
+#, fuzzy
+msgid "Show thousands separator"
+msgstr "/દેખાવ/હજારનો વિભાજક દેખાડો (_h)"
+
+#: gcalctool/gtk.c:267
+#, fuzzy
+msgid "_Memory Registers"
+msgstr "મેમરી રજીસ્ટરો"
+
+#: gcalctool/gtk.c:268
+#, fuzzy
+msgid "Show memory registers"
+msgstr "મેમરી રજીસ્ટરો"
+
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+#, fuzzy
+msgid "0 significant places"
+msgstr "/૦ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+#, fuzzy
+msgid "1 significant place"
+msgstr "/૧ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+#, fuzzy
+msgid "2 significant places"
+msgstr "/૨ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+#, fuzzy
+msgid "3 significant places"
+msgstr "/૩ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+#, fuzzy
+msgid "4 significant places"
+msgstr "/૪ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+#, fuzzy
+msgid "5 significant places"
+msgstr "/૫ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+#, fuzzy
+msgid "6 significant places"
+msgstr "/૬ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+#, fuzzy
+msgid "7 significant places"
+msgstr "/૭ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+#, fuzzy
+msgid "8 significant places"
+msgstr "/૮ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+#, fuzzy
+msgid "9 significant places"
+msgstr "/૯ નોંધપાત્ર જગ્યાઓ"
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "આધારભૂત સ્થિતિ"
+
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "આધારભૂત સ્થિતિ"
+
+#: gcalctool/gtk.c:302
+#, fuzzy
+msgid "_Financial mode"
+msgstr "આર્થિક સ્થિતિ"
+
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "Financial mode"
+msgstr "આર્થિક સ્થિતિ"
+
+#: gcalctool/gtk.c:304
+#, fuzzy
+msgid "_Scientific mode"
+msgstr "વૈજ્ઞાનિક સ્થિતિ"
+
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "Scientific mode"
+msgstr "વૈજ્ઞાનિક સ્થિતિ"
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr ""
 "નીરવ <nirav@magnet-i.com>\n"
@@ -1102,87 +1174,133 @@ msgstr ""
 "ખુશ્બુ <khushbu_hi21@yahoo.co.in>\n"
 "શ્વેતા <sweta2782@yahoo.co.in>."
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "જીનોમ કેલ્ક્યુલેટર"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr "આર્થિક અને વૈજ્ઞાનિક સ્થિતિઓ સાથેનુ કેલ્ક્યુલેટર."
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr "ASCII કિંમત દાખલ કરો"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr "અક્ષર (_a):"
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr "દાખલ કરો (_I)"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr "અચલોમાં ફેરફાર કરો"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr "વિધેયોમાં ફેરફાર કરો"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:881
 msgid "Note:"
 msgstr "નોંધ:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "બધી અચલ કિંમતો દશાંંશ આંકડાકીય આધારમાં સ્પષ્ટ કરાયેલી છે."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:892
 msgid "Click a _value or description to edit it:"
 msgstr "કિંમત અથવા વર્ણનમાં ફેરફાર કરવા માટે તેના પર ક્લિક કરો: (_v)"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:915
 msgid "No."
 msgstr "ના."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "કિંમત"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "વર્ણન"
 
 # gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "કેલ્ક્યુલેટર"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1241
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1249
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr "મેમરી રજીસ્ટરો"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr "અચલોમાં ફેરફાર કરો..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr "વિધેયોમાં ફેરફાર કરો..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "ગણતરી કરો"
+
+#~ msgid "/_Calculator"
+#~ msgstr "/કેલ્ક્યુલેટર (_C)"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/કેલ્ક્યુલેટર/બહાર નીકળો (_Q)"
+
+#~ msgid "/_Edit"
+#~ msgstr "/ફેરફાર કરો (_E)"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/ફેરફાર/sep1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/ફેરફાર/ASCII કિંમત ઉમેરો... (_I)"
+
+#~ msgid "/_View"
+#~ msgstr "/દેખાવ (_V)"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/દેખાવ/આધારભૂત સ્થિતિ (_B)"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/દેખાવ/આર્થિક સ્થિતિ (_F)"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/દેખાવ/વૈજ્ઞાનિક સ્થિતિ (_S) "
+
+#~ msgid "/View/sep1"
+#~ msgstr "/દેખાવ/sep1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/દેખાવ/પાછળનાં શૂન્યો દેખાડો (_T)"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/દેખાવ/sep2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/દેખાવ/મેમરી રજીસ્ટરો (_M)"
+
+#~ msgid "/_Help"
+#~ msgstr "/મદદ (_H)"
+
+# src/gconf-editor-window.c:343
+#~ msgid "/sep1"
+#~ msgstr "/sep1"
 
 #~ msgid "Logical OR"
 #~ msgstr "તાર્કિક OR"

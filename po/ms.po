@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2003-08-08 22:56+0800\n"
 "Last-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -173,7 +173,7 @@ msgstr "Bahagi"
 
 #: gcalctool/calctool.c:191
 #, fuzzy
-msgid "Bsp"
+msgid "Bksp"
 msgstr "Bas"
 
 #: gcalctool/calctool.c:192
@@ -703,7 +703,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Digit heksadesimal E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr "F"
 
@@ -768,7 +768,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Digit heksadesimal B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -781,32 +781,32 @@ msgid "Or"
 msgstr "Atau"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
-msgstr "Logikal ATAU"
+msgid "Bitwise OR"
+msgstr ""
 
 #: gcalctool/calctool.c:947
 msgid "And"
 msgstr "Dan"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
-msgstr "Logikal DAN"
+msgid "Bitwise AND"
+msgstr ""
 
 #: gcalctool/calctool.c:957
 msgid "Not"
 msgstr "Tak"
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
-msgstr "Logikal TAK"
+msgid "Bitwise NOT"
+msgstr ""
 
 #: gcalctool/calctool.c:967
 msgid "Xor"
 msgstr ""
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
-msgstr "Logikal XATAU"
+msgid "Bitwise XOR"
+msgstr ""
 
 # #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
 # libgnomeui/gnome-app-util.c:315
@@ -815,13 +815,12 @@ msgid "Xnor"
 msgstr ""
 
 #: gcalctool/calctool.c:978
-#, fuzzy
-msgid "Logical XNOR"
-msgstr "Logikal"
+msgid "Bitwise XNOR"
+msgstr ""
 
 #: gcalctool/calctool.c:1078
-msgid "kilometers per hour or miles per hour"
-msgstr "kilometer per jam atau batu per jam"
+msgid "Kilometer-to-mile conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1079
 msgid "square root of 2"
@@ -836,8 +835,8 @@ msgid "pi"
 msgstr "pai"
 
 #: gcalctool/calctool.c:1082
-msgid "centimeters or inches"
-msgstr "sentimeter atau inci"
+msgid "Centimeter-to-inch conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1083
 msgid "degrees in a radian"
@@ -848,15 +847,17 @@ msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1085
-msgid "grams or ounces"
-msgstr "gram atau aun"
+msgid "Gram-to-ounce conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1086
-msgid "kilojoules or British thermal units"
+#, fuzzy
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "kilojoule atau unit termal British"
 
 #: gcalctool/calctool.c:1087
-msgid "cubic centimeters or cubic inches"
+#, fuzzy
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "sentimeter padu atau inci padu"
 
 # #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
@@ -941,301 +942,418 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/_Calkulator"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/Kalkulator/_Keluar"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/_Edit"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/Edit/_Salin"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/Edit/_Tepek"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/Edit/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/Edit/Sel_itkan nilai ASCII...."
-
-#: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/_Lihat"
-
-#: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/Lihat/Mod _Asas"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/Lihat/Mod Ke_wangan"
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/Lihat/Mod _Saintifik"
-
-#: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/Lihat/sep1"
-
-#: gcalctool/gtk.c:181
-#, fuzzy
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/Lihat/Papar _Trailing Zeroes"
-
-#: gcalctool/gtk.c:182
-#, fuzzy
-msgid "/View/Show T_housands Separator"
-msgstr "/Lihat/Papar _Trailing Zeroes"
-
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/Lihat/sep2"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/Lihat/Pendaftar _Memori"
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "kalkulator"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/_Bantuan"
+#, fuzzy
+msgid "_Copy"
+msgstr "/Edit/_Salin"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/Bantuan/_Kandungan"
+msgid "Copy selection"
+msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/Bantuan/_Perihal"
+#, fuzzy
+msgid "_Paste"
+msgstr "/Edit/_Tepek"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
+#: gcalctool/gtk.c:189
+msgid "Paste selection"
 msgstr ""
 
+#: gcalctool/gtk.c:190
+#, fuzzy
+msgid "_Insert ASCII Value..."
+msgstr "Selit Nilai ASCII"
+
+#: gcalctool/gtk.c:191
+#, fuzzy
+msgid "Insert ASCII value"
+msgstr "Selit Nilai ASCII"
+
+# src/prefs.c:618
+# ui/galeon.glade.h:140
 #: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr ""
+#, fuzzy
+msgid "_Contents"
+msgstr "Pemalar"
 
 #: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr ""
+#, fuzzy
+msgid "Show help contents"
+msgstr "/Bantuan/_Kandungan"
 
 #: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr ""
+#, fuzzy
+msgid "_About"
+msgstr "/Bantuan/_Perihal"
 
 #: gcalctool/gtk.c:196
-msgid "/4 significant places"
+msgid "Show about help"
 msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr ""
-
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr ""
-
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr ""
-
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr ""
-
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr ""
-
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
-
-#: gcalctool/gtk.c:203
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
 #, fuzzy
-msgid "/Show _Trailing Zeroes"
-msgstr "/Papar kotak _dialog"
-
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-#, fuzzy
-msgid "/1 place"
+msgid "1 place"
 msgstr "Laplace"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
 #, fuzzy
-msgid "/2 places"
+msgid "2 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
 #, fuzzy
-msgid "/3 places"
+msgid "3 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
 #, fuzzy
-msgid "/4 places"
+msgid "4 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
 #, fuzzy
-msgid "/5 places"
+msgid "5 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
 #, fuzzy
-msgid "/6 places"
+msgid "6 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
 #, fuzzy
-msgid "/7 places"
+msgid "7 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
 #, fuzzy
-msgid "/8 places"
+msgid "8 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
 #, fuzzy
-msgid "/9 places"
+msgid "9 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
 #, fuzzy
-msgid "/10 places"
+msgid "10 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
 #, fuzzy
-msgid "/11 places"
+msgid "11 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
 #, fuzzy
-msgid "/12 places"
+msgid "12 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
 #, fuzzy
-msgid "/13 places"
+msgid "13 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
 #, fuzzy
-msgid "/14 places"
+msgid "14 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
 #, fuzzy
-msgid "/15 places"
+msgid "15 places"
 msgstr "/All pakej"
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+#, fuzzy
+msgid "Show _Trailing Zeroes"
+msgstr "/Papar kotak _dialog"
+
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+#, fuzzy
+msgid "Show trailing zeroes"
+msgstr "/Papar kotak _dialog"
+
+#: gcalctool/gtk.c:265
+#, fuzzy
+msgid "Show T_housands Separator"
+msgstr "/Lihat/Papar _Trailing Zeroes"
+
+#: gcalctool/gtk.c:266
+#, fuzzy
+msgid "Show thousands separator"
+msgstr "/Lihat/Papar _Trailing Zeroes"
+
+#: gcalctool/gtk.c:267
+#, fuzzy
+msgid "_Memory Registers"
+msgstr "Pendaftar Memori"
+
+#: gcalctool/gtk.c:268
+#, fuzzy
+msgid "Show memory registers"
+msgstr "Pendaftar Memori"
+
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+msgid "0 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+msgid "1 significant place"
+msgstr ""
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+msgid "2 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+msgid "3 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+msgid "4 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+msgid "5 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+msgid "6 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+msgid "7 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+msgid "8 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+msgid "9 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "Mod Asas"
+
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "Mod Asas"
+
+#: gcalctool/gtk.c:302
+#, fuzzy
+msgid "_Financial mode"
+msgstr "Mod Kewangan"
+
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "Financial mode"
+msgstr "Mod Kewangan"
+
+#: gcalctool/gtk.c:304
+#, fuzzy
+msgid "_Scientific mode"
+msgstr "Mod Saintifik"
+
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "Scientific mode"
+msgstr "Mod Saintifik"
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr "translator_credits"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator dengan mod kewangan dan saintifik."
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr "Selit Nilai ASCII"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr "_Aksara:"
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr "Sel_it"
 
 # src/prefs.c:618
 # ui/galeon.glade.h:140
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr "Edit Pemalar"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr "Edit Fungsi"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:881
 msgid "Note:"
 msgstr "Nota:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Semua nilai pemalar dinyatakan dalam asas angka desimal."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:892
 msgid "Click a _value or description to edit it:"
 msgstr "Klik _nilai atau penerangan untuk diedit:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:915
 #, fuzzy
 msgid "No."
 msgstr "Tidak."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "Nilai"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "Huraian"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulator"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1241
 #, fuzzy
 msgid "_Inv"
 msgstr "_Masuk"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1249
 #, fuzzy
 msgid "H_yp"
 msgstr "H_ip"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr "Pendaftar Memori"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr "Edit Pemalar..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr "Edit Fungsi..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Lakukan pengiraan"
+
+#~ msgid "Logical OR"
+#~ msgstr "Logikal ATAU"
+
+#~ msgid "Logical AND"
+#~ msgstr "Logikal DAN"
+
+#~ msgid "Logical NOT"
+#~ msgstr "Logikal TAK"
+
+#~ msgid "Logical XOR"
+#~ msgstr "Logikal XATAU"
+
+#, fuzzy
+#~ msgid "Logical XNOR"
+#~ msgstr "Logikal"
+
+#~ msgid "kilometers per hour or miles per hour"
+#~ msgstr "kilometer per jam atau batu per jam"
+
+#~ msgid "centimeters or inches"
+#~ msgstr "sentimeter atau inci"
+
+#~ msgid "grams or ounces"
+#~ msgstr "gram atau aun"
+
+#~ msgid "/_Calculator"
+#~ msgstr "/_Calkulator"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/Kalkulator/_Keluar"
+
+#~ msgid "/_Edit"
+#~ msgstr "/_Edit"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/Edit/sep1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/Edit/Sel_itkan nilai ASCII...."
+
+#~ msgid "/_View"
+#~ msgstr "/_Lihat"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/Lihat/Mod _Asas"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/Lihat/Mod Ke_wangan"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/Lihat/Mod _Saintifik"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/Lihat/sep1"
+
+#, fuzzy
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/Lihat/Papar _Trailing Zeroes"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/Lihat/sep2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/Lihat/Pendaftar _Memori"
+
+#~ msgid "/_Help"
+#~ msgstr "/_Bantuan"
+
+#~ msgid "/sep1"
+#~ msgstr "/sep1"
 
 #, fuzzy
 #~ msgid "x<sup><i>2</i></sup>"

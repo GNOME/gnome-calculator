@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2004-02-29 20:22+0200\n"
 "Last-Translator: Sami Pesonen <sampeson@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -169,7 +169,8 @@ msgid "Divide"
 msgstr "Jaa"
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
+#, fuzzy
+msgid "Bksp"
 msgstr "←"
 
 #: gcalctool/calctool.c:192
@@ -668,7 +669,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Heksadesimaaliluku E"
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr "F"
 
@@ -732,7 +733,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Heksadesimaaliluku B"
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -745,44 +746,44 @@ msgid "Or"
 msgstr "Or"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
-msgstr "Looginen OR"
+msgid "Bitwise OR"
+msgstr ""
 
 #: gcalctool/calctool.c:947
 msgid "And"
 msgstr "And"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
-msgstr "Looginen AND"
+msgid "Bitwise AND"
+msgstr ""
 
 #: gcalctool/calctool.c:957
 msgid "Not"
 msgstr "Not"
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
-msgstr "Looginen NOT"
+msgid "Bitwise NOT"
+msgstr ""
 
 #: gcalctool/calctool.c:967
 msgid "Xor"
 msgstr "Xor"
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
-msgstr "Looginen XOR"
+msgid "Bitwise XOR"
+msgstr ""
 
 #: gcalctool/calctool.c:977
 msgid "Xnor"
 msgstr "Xnor"
 
 #: gcalctool/calctool.c:978
-msgid "Logical XNOR"
-msgstr "Looginen XNOR"
+msgid "Bitwise XNOR"
+msgstr ""
 
 #: gcalctool/calctool.c:1078
-msgid "kilometers per hour or miles per hour"
-msgstr "kilometria tunnissa tai mailia tunnissa"
+msgid "Kilometer-to-mile conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1079
 msgid "square root of 2"
@@ -797,8 +798,8 @@ msgid "pi"
 msgstr "pii"
 
 #: gcalctool/calctool.c:1082
-msgid "centimeters or inches"
-msgstr "senttimetriä tai tuumia"
+msgid "Centimeter-to-inch conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1083
 msgid "degrees in a radian"
@@ -809,15 +810,17 @@ msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1085
-msgid "grams or ounces"
-msgstr "grammoja tai nauloja"
+msgid "Gram-to-ounce conversion factor"
+msgstr ""
 
 #: gcalctool/calctool.c:1086
-msgid "kilojoules or British thermal units"
+#, fuzzy
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "kilojouleja tai Brittiläisiä lämpöyksiköitä"
 
 #: gcalctool/calctool.c:1087
-msgid "cubic centimeters or cubic inches"
+#, fuzzy
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "kuutiosenttimetriä tai kuutiotuumia"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
@@ -900,195 +903,267 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/_Laskin"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/_Laskin/_Lopeta"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/_Muokkaa"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/Muokkaa/_Kopioi"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/Muokkaa/_Liitä"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/Muokkaa/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/Muokkaa/_Liitä ASCII-arvo..."
-
-#: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/_Näytä"
-
-#: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/Näytä/_Perustila"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr "/Näytä/_Taloustila"
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr "/Näytä/_Tiedetila"
-
-#: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/Näytä/sep1"
-
-#: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/Näytä/Näytä _nollat perässä"
-
-#: gcalctool/gtk.c:182
-msgid "/View/Show T_housands Separator"
-msgstr "/Näytä/Näytä _tuhaterotin"
-
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/Näytä/sep2"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr "/Näytä/_Muistirekisterit"
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "laskin"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/_Ohje"
+#, fuzzy
+msgid "_Copy"
+msgstr "/Muokkaa/_Kopioi"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
-msgstr "/Ohje/_Sisältö"
+msgid "Copy selection"
+msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/Ohje/_Tietoja"
+#, fuzzy
+msgid "_Paste"
+msgstr "/Muokkaa/_Liitä"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
-msgstr "/0:n desimaalin tarkkuus"
+#: gcalctool/gtk.c:189
+msgid "Paste selection"
+msgstr ""
+
+#: gcalctool/gtk.c:190
+#, fuzzy
+msgid "_Insert ASCII Value..."
+msgstr "Liitä ASCII-arvo"
+
+#: gcalctool/gtk.c:191
+#, fuzzy
+msgid "Insert ASCII value"
+msgstr "Liitä ASCII-arvo"
 
 #: gcalctool/gtk.c:193
-msgid "/1 significant place"
-msgstr "/1:n desimaalin tarkkuus"
+#, fuzzy
+msgid "_Contents"
+msgstr "Vakiot"
 
 #: gcalctool/gtk.c:194
-msgid "/2 significant places"
-msgstr "/2:n desimaalin tarkkuus"
+#, fuzzy
+msgid "Show help contents"
+msgstr "/Ohje/_Sisältö"
 
 #: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr "/3:n desimaalin tarkkuus"
+#, fuzzy
+msgid "_About"
+msgstr "/Ohje/_Tietoja"
 
 #: gcalctool/gtk.c:196
-msgid "/4 significant places"
-msgstr "/4:n desimaalin tarkkuus"
+msgid "Show about help"
+msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
-msgstr "/5:n desimaalin tarkkuus"
-
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
-msgstr "/6:n desimaalin tarkkuus"
-
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
-msgstr "/7:n desimaalin tarkkuus"
-
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
-msgstr "/8:n desimaalin tarkkuus"
-
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
-msgstr "/9:n desimaalin tarkkuus"
-
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
-
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
-msgstr "/Näytä _nollat perässä"
-
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
+#, fuzzy
+msgid "1 place"
 msgstr "/1 paikka"
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
+#, fuzzy
+msgid "2 places"
 msgstr "/2 paikkaa"
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
+#, fuzzy
+msgid "3 places"
 msgstr "/3 paikkaa"
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
+#, fuzzy
+msgid "4 places"
 msgstr "/4 paikkaa"
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
+#, fuzzy
+msgid "5 places"
 msgstr "/5 paikkaa"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
+#, fuzzy
+msgid "6 places"
 msgstr "/6 paikkaa"
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
+#, fuzzy
+msgid "7 places"
 msgstr "/7 paikkaa"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
+#, fuzzy
+msgid "8 places"
 msgstr "/8 paikkaa"
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
+#, fuzzy
+msgid "9 places"
 msgstr "/9 paikkaa"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
+#, fuzzy
+msgid "10 places"
 msgstr "/10 paikkaa"
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
+#, fuzzy
+msgid "11 places"
 msgstr "/11 paikkaa"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
+#, fuzzy
+msgid "12 places"
 msgstr "/12 paikkaa"
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
+#, fuzzy
+msgid "13 places"
 msgstr "/13 paikkaa"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
+#, fuzzy
+msgid "14 places"
 msgstr "/14 paikkaa"
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
+#, fuzzy
+msgid "15 places"
 msgstr "/15 paikkaa"
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+#, fuzzy
+msgid "Show _Trailing Zeroes"
+msgstr "/Näytä _nollat perässä"
+
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+#, fuzzy
+msgid "Show trailing zeroes"
+msgstr "/Näytä _nollat perässä"
+
+#: gcalctool/gtk.c:265
+#, fuzzy
+msgid "Show T_housands Separator"
+msgstr "/Näytä/Näytä _tuhaterotin"
+
+#: gcalctool/gtk.c:266
+#, fuzzy
+msgid "Show thousands separator"
+msgstr "/Näytä/Näytä _tuhaterotin"
+
+#: gcalctool/gtk.c:267
+#, fuzzy
+msgid "_Memory Registers"
+msgstr "Muistirekisterit"
+
+#: gcalctool/gtk.c:268
+#, fuzzy
+msgid "Show memory registers"
+msgstr "Muistirekisterit"
+
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+#, fuzzy
+msgid "0 significant places"
+msgstr "/0:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+#, fuzzy
+msgid "1 significant place"
+msgstr "/1:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+#, fuzzy
+msgid "2 significant places"
+msgstr "/2:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+#, fuzzy
+msgid "3 significant places"
+msgstr "/3:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+#, fuzzy
+msgid "4 significant places"
+msgstr "/4:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+#, fuzzy
+msgid "5 significant places"
+msgstr "/5:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+#, fuzzy
+msgid "6 significant places"
+msgstr "/6:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+#, fuzzy
+msgid "7 significant places"
+msgstr "/7:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+#, fuzzy
+msgid "8 significant places"
+msgstr "/8:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+#, fuzzy
+msgid "9 significant places"
+msgstr "/9:n desimaalin tarkkuus"
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "Perustila"
+
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "Perustila"
+
+#: gcalctool/gtk.c:302
+#, fuzzy
+msgid "_Financial mode"
+msgstr "Taloustila"
+
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "Financial mode"
+msgstr "Taloustila"
+
+#: gcalctool/gtk.c:304
+#, fuzzy
+msgid "_Scientific mode"
+msgstr "Tiedetila"
+
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "Scientific mode"
+msgstr "Tiedetila"
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr ""
 "Sami Pesonen, 2003-2004\n"
@@ -1096,83 +1171,152 @@ msgstr ""
 "\n"
 "http://gnome-fi.org/"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "Laskin"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr "Laskin talous- ja tiedetilojan kera"
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr "Liitä ASCII-arvo"
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr "_Kirjain:"
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr "_Liitä"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr "Muokkaa vakioita"
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr "Muokkaa funktioita"
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:881
 msgid "Note:"
 msgstr "Huomautus:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Kaikki vakioarvot on määritelty desimaalimuodossa."
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:892
 msgid "Click a _value or description to edit it:"
 msgstr "Napsauta _arvoa tai määritelmää muokataksesi sitä:"
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:915
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "Arvo"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "Selitys"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Laskin"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1241
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1249
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr "Muistirekisterit"
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr "Muokkaa vakioita..."
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr "Muokkaa funktioita..."
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Suorita laskutoimitukset"
+
+#~ msgid "Logical OR"
+#~ msgstr "Looginen OR"
+
+#~ msgid "Logical AND"
+#~ msgstr "Looginen AND"
+
+#~ msgid "Logical NOT"
+#~ msgstr "Looginen NOT"
+
+#~ msgid "Logical XOR"
+#~ msgstr "Looginen XOR"
+
+#~ msgid "Logical XNOR"
+#~ msgstr "Looginen XNOR"
+
+#~ msgid "kilometers per hour or miles per hour"
+#~ msgstr "kilometria tunnissa tai mailia tunnissa"
+
+#~ msgid "centimeters or inches"
+#~ msgstr "senttimetriä tai tuumia"
+
+#~ msgid "grams or ounces"
+#~ msgstr "grammoja tai nauloja"
+
+#~ msgid "/_Calculator"
+#~ msgstr "/_Laskin"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/_Laskin/_Lopeta"
+
+#~ msgid "/_Edit"
+#~ msgstr "/_Muokkaa"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/Muokkaa/sep1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/Muokkaa/_Liitä ASCII-arvo..."
+
+#~ msgid "/_View"
+#~ msgstr "/_Näytä"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/Näytä/_Perustila"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/Näytä/_Taloustila"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/Näytä/_Tiedetila"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/Näytä/sep1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/Näytä/Näytä _nollat perässä"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/Näytä/sep2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/Näytä/_Muistirekisterit"
+
+#~ msgid "/_Help"
+#~ msgstr "/_Ohje"
+
+#~ msgid "/sep1"
+#~ msgstr "/sep1"

@@ -7,6 +7,23 @@
 gcalctool change history.
 =========================
 
+2004-06-28 Rich Burridge <rich.burridge@sun.com>
+
+    * From Archana Shah (archana dot shah at wipro.com)
+      Fixed bug 144596 (http://bugzilla.gnome.org/show_bug.cgi?id=144596)
+      Gcalctool did not follow 'Show icons in menus' in gnome-ui-peoperties.
+
+    * gcalctool/gtk.c: Following functions added.
+
+    * (gcalc_window_get_menu_items): Function to get the menu_items for 
+      actions which are having icons associated with them.
+
+    * (gcalc_window_have_icons_notify): Function to be notified when key
+      '/desktop/gnome/interface/menus_have_icons' toggles.
+
+    * (gcalc_window_set_unset_image): Based on the value of above 
+       mentioned gconf key, icons will be set/unset.
+
 2004-06-14 Rich Burridge <rich.burridge@sun.com>
 
     * Remainder of the fix for bug #143924.

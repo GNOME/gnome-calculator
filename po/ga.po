@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
-"POT-Creation-Date: 2004-03-23 16:42+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2004-03-08 21:53+0000\n"
 "Last-Translator: Alastair McKinstry <mckinstry@computer.org>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #. Strings for each base value.
 #: gcalctool/calctool.c:51
@@ -168,7 +168,7 @@ msgid "Divide"
 msgstr ""
 
 #: gcalctool/calctool.c:191
-msgid "Bsp"
+msgid "Bksp"
 msgstr ""
 
 #: gcalctool/calctool.c:192
@@ -669,7 +669,7 @@ msgstr ""
 msgid "Hexadecimal digit E"
 msgstr ""
 
-#: gcalctool/calctool.c:845 gcalctool/gtk.c:1117
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr ""
 
@@ -733,7 +733,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr ""
 
-#: gcalctool/calctool.c:927 gcalctool/gtk.c:1109
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -746,7 +746,7 @@ msgid "Or"
 msgstr "No"
 
 #: gcalctool/calctool.c:938
-msgid "Logical OR"
+msgid "Bitwise OR"
 msgstr ""
 
 #: gcalctool/calctool.c:947
@@ -754,7 +754,7 @@ msgid "And"
 msgstr "Agus"
 
 #: gcalctool/calctool.c:948
-msgid "Logical AND"
+msgid "Bitwise AND"
 msgstr ""
 
 #: gcalctool/calctool.c:957
@@ -762,7 +762,7 @@ msgid "Not"
 msgstr ""
 
 #: gcalctool/calctool.c:958
-msgid "Logical NOT"
+msgid "Bitwise NOT"
 msgstr ""
 
 #: gcalctool/calctool.c:967
@@ -770,7 +770,7 @@ msgid "Xor"
 msgstr "Xor"
 
 #: gcalctool/calctool.c:968
-msgid "Logical XOR"
+msgid "Bitwise XOR"
 msgstr ""
 
 #: gcalctool/calctool.c:977
@@ -778,11 +778,11 @@ msgid "Xnor"
 msgstr "Xnor"
 
 #: gcalctool/calctool.c:978
-msgid "Logical XNOR"
+msgid "Bitwise XNOR"
 msgstr ""
 
 #: gcalctool/calctool.c:1078
-msgid "kilometers per hour or miles per hour"
+msgid "Kilometer-to-mile conversion factor"
 msgstr ""
 
 #: gcalctool/calctool.c:1079
@@ -798,7 +798,7 @@ msgid "pi"
 msgstr "pi"
 
 #: gcalctool/calctool.c:1082
-msgid "centimeters or inches"
+msgid "Centimeter-to-inch conversion factor"
 msgstr ""
 
 #: gcalctool/calctool.c:1083
@@ -810,15 +810,15 @@ msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
 #: gcalctool/calctool.c:1085
-msgid "grams or ounces"
+msgid "Gram-to-ounce conversion factor"
 msgstr ""
 
 #: gcalctool/calctool.c:1086
-msgid "kilojoules or British thermal units"
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr ""
 
 #: gcalctool/calctool.c:1087
-msgid "cubic centimeters or cubic inches"
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr ""
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
@@ -901,275 +901,335 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66 gcalctool/gtk.c:915 gcalctool/gtk.c:1048
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr ""
 
-#: gcalctool/gtk.c:167
-msgid "/_Calculator"
-msgstr "/_Aireamhán"
-
-#: gcalctool/gtk.c:168
-msgid "/Calculator/_Quit"
-msgstr "/Aireamhán/__Ealu"
-
-#: gcalctool/gtk.c:170
-msgid "/_Edit"
-msgstr "/_Eagar"
-
-#: gcalctool/gtk.c:171
-msgid "/Edit/_Copy"
-msgstr "/Eagar/_Cóip"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Paste"
-msgstr "/Eagar/_Greamaigh"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/sep1"
-msgstr "/Eagar/sep1"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/_Insert ASCII Value..."
-msgstr ""
-
-#: gcalctool/gtk.c:176
-msgid "/_View"
-msgstr "/_Amharc"
-
-#: gcalctool/gtk.c:177
-msgid "/View/_Basic Mode"
-msgstr "/_Amharc/Modh _Gnáth"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Financial Mode"
-msgstr ""
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Scientific Mode"
-msgstr ""
-
-#: gcalctool/gtk.c:180
-msgid "/View/sep1"
-msgstr "/Amharc/sep1"
-
-#: gcalctool/gtk.c:181
-msgid "/View/Show _Trailing Zeroes"
-msgstr ""
-
-#: gcalctool/gtk.c:182
-msgid "/View/Show T_housands Separator"
-msgstr ""
-
 #: gcalctool/gtk.c:183
-msgid "/View/sep2"
-msgstr "/Amharc/sep2"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/_Memory Registers"
-msgstr ""
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "áireamhán"
 
 #: gcalctool/gtk.c:186
-msgid "/_Help"
-msgstr "/C_uidiú"
+#, fuzzy
+msgid "_Copy"
+msgstr "/Eagar/_Cóip"
 
 #: gcalctool/gtk.c:187
-msgid "/Help/_Contents"
+msgid "Copy selection"
 msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_About"
-msgstr "/Cuidiú/_Faoi"
+#, fuzzy
+msgid "_Paste"
+msgstr "/Eagar/_Greamaigh"
 
-#: gcalctool/gtk.c:192
-msgid "/0 significant places"
+#: gcalctool/gtk.c:189
+msgid "Paste selection"
+msgstr ""
+
+#: gcalctool/gtk.c:190
+msgid "_Insert ASCII Value..."
+msgstr ""
+
+#: gcalctool/gtk.c:191
+msgid "Insert ASCII value"
 msgstr ""
 
 #: gcalctool/gtk.c:193
-msgid "/1 significant place"
+msgid "_Contents"
 msgstr ""
 
 #: gcalctool/gtk.c:194
-msgid "/2 significant places"
+msgid "Show help contents"
 msgstr ""
 
 #: gcalctool/gtk.c:195
-msgid "/3 significant places"
-msgstr ""
+#, fuzzy
+msgid "_About"
+msgstr "/Cuidiú/_Faoi"
 
 #: gcalctool/gtk.c:196
-msgid "/4 significant places"
+msgid "Show about help"
 msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/5 significant places"
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
+msgid "1 place"
 msgstr ""
 
-#: gcalctool/gtk.c:198
-msgid "/6 significant places"
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
+msgid "2 places"
 msgstr ""
 
-#: gcalctool/gtk.c:199
-msgid "/7 significant places"
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
+msgid "3 places"
 msgstr ""
 
-#: gcalctool/gtk.c:200
-msgid "/8 significant places"
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
+msgid "4 places"
 msgstr ""
 
-#: gcalctool/gtk.c:201
-msgid "/9 significant places"
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
+msgid "5 places"
 msgstr ""
 
-#: gcalctool/gtk.c:202
-msgid "/sep1"
-msgstr "/sep1"
-
-#: gcalctool/gtk.c:203
-msgid "/Show _Trailing Zeroes"
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
+msgid "6 places"
 msgstr ""
 
-#: gcalctool/gtk.c:207 gcalctool/gtk.c:225
-msgid "/1 place"
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
+msgid "7 places"
 msgstr ""
 
-#: gcalctool/gtk.c:208 gcalctool/gtk.c:226
-msgid "/2 places"
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
+msgid "8 places"
 msgstr ""
 
-#: gcalctool/gtk.c:209 gcalctool/gtk.c:227
-msgid "/3 places"
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
+msgid "9 places"
 msgstr ""
 
-#: gcalctool/gtk.c:210 gcalctool/gtk.c:228
-msgid "/4 places"
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
+msgid "10 places"
 msgstr ""
 
-#: gcalctool/gtk.c:211 gcalctool/gtk.c:229
-msgid "/5 places"
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
+msgid "11 places"
 msgstr ""
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:230
-msgid "/6 places"
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
+msgid "12 places"
 msgstr ""
 
-#: gcalctool/gtk.c:213 gcalctool/gtk.c:231
-msgid "/7 places"
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
+msgid "13 places"
 msgstr ""
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:232
-msgid "/8 places"
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
+msgid "14 places"
 msgstr ""
 
-#: gcalctool/gtk.c:215 gcalctool/gtk.c:233
-msgid "/9 places"
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
+msgid "15 places"
 msgstr ""
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:234
-msgid "/10 places"
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+msgid "Show _Trailing Zeroes"
 msgstr ""
 
-#: gcalctool/gtk.c:217 gcalctool/gtk.c:235
-msgid "/11 places"
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+msgid "Show trailing zeroes"
 msgstr ""
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:236
-msgid "/12 places"
+#: gcalctool/gtk.c:265
+msgid "Show T_housands Separator"
 msgstr ""
 
-#: gcalctool/gtk.c:219 gcalctool/gtk.c:237
-msgid "/13 places"
+#: gcalctool/gtk.c:266
+msgid "Show thousands separator"
 msgstr ""
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:238
-msgid "/14 places"
+#: gcalctool/gtk.c:267
+msgid "_Memory Registers"
 msgstr ""
 
-#: gcalctool/gtk.c:221 gcalctool/gtk.c:239
-msgid "/15 places"
+#: gcalctool/gtk.c:268
+msgid "Show memory registers"
 msgstr ""
 
-#: gcalctool/gtk.c:295
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+msgid "0 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+msgid "1 significant place"
+msgstr ""
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+msgid "2 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+msgid "3 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+msgid "4 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+msgid "5 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+msgid "6 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+msgid "7 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+msgid "8 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+msgid "9 significant places"
+msgstr ""
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "/_Amharc/Modh _Gnáth"
+
+#: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "/_Amharc/Modh _Gnáth"
+
+#: gcalctool/gtk.c:302
+msgid "_Financial mode"
+msgstr ""
+
+#: gcalctool/gtk.c:303
+msgid "Financial mode"
+msgstr ""
+
+#: gcalctool/gtk.c:304
+msgid "_Scientific mode"
+msgstr ""
+
+#: gcalctool/gtk.c:305
+msgid "Scientific mode"
+msgstr ""
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr "Alastair McKinstry <mckinstry@computer.org>"
 
-#: gcalctool/gtk.c:297
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:299
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr ""
 
-#: gcalctool/gtk.c:586
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr ""
 
-#: gcalctool/gtk.c:601
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr ""
 
-#: gcalctool/gtk.c:626
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr ""
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr ""
 
-#: gcalctool/gtk.c:705
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr ""
 
-#: gcalctool/gtk.c:729
+#: gcalctool/gtk.c:881
 msgid "Note:"
 msgstr "Nota:"
 
-#: gcalctool/gtk.c:730
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr ""
 
-#: gcalctool/gtk.c:740
+#: gcalctool/gtk.c:892
 msgid "Click a _value or description to edit it:"
 msgstr ""
 
-#: gcalctool/gtk.c:763
+#: gcalctool/gtk.c:915
 msgid "No."
 msgstr "Ui."
 
-#: gcalctool/gtk.c:765
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "Luach"
 
-#: gcalctool/gtk.c:767
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "Tuarascail"
 
-#: gcalctool/gtk.c:801 gcalctool/gtk.c:803 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Áireammhán"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:983
+#: gcalctool/gtk.c:1241
 msgid "_Inv"
 msgstr ""
 
-#: gcalctool/gtk.c:991
+#: gcalctool/gtk.c:1249
 msgid "H_yp"
 msgstr ""
 
-#: gcalctool/gtk.c:1039
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr ""
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr ""
 
-#: gcalctool/gtk.c:1098
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr ""
 
 #: gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr ""
+
+#~ msgid "/_Calculator"
+#~ msgstr "/_Aireamhán"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/Aireamhán/__Ealu"
+
+#~ msgid "/_Edit"
+#~ msgstr "/_Eagar"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/Eagar/sep1"
+
+#~ msgid "/_View"
+#~ msgstr "/_Amharc"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/Amharc/sep1"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/Amharc/sep2"
+
+#~ msgid "/_Help"
+#~ msgstr "/C_uidiú"
+
+#~ msgid "/sep1"
+#~ msgstr "/sep1"

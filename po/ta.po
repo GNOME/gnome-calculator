@@ -5,8 +5,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Tamil gcalctool 2.4POT-Creation-Date: 2003-09-16 17:19-0500\n"
-"POT-Creation-Date: 2004-05-26 03:31+0200\n"
+"Project-Id-Version: Tamil gcalctool 2.4POT-Creation-Date: 2003-09-16 17:19-"
+"0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-28 12:49-0700\n"
 "PO-Revision-Date: 2004-05-28 14:45+0530\n"
 "Last-Translator: zhakanini <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -666,8 +668,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "பதின்அறும இலக்கம் E"
 
-#: gcalctool/calctool.c:845
-#: gcalctool/gtk.c:1130
+#: gcalctool/calctool.c:845 gcalctool/gtk.c:1381
 msgid "F"
 msgstr "F"
 
@@ -731,8 +732,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "பதினறும இலக்கம் B"
 
-#: gcalctool/calctool.c:927
-#: gcalctool/gtk.c:1122
+#: gcalctool/calctool.c:927 gcalctool/gtk.c:1373
 msgid "C"
 msgstr "C"
 
@@ -823,16 +823,10 @@ msgstr "கியூபிக்-செண்டிமீட்டர்-கி�
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1098
-#: gcalctool/display.c:262
-#: gcalctool/functions.c:943
-#: gcalctool/functions.c:1071
-#: gcalctool/functions.c:1110
-#: gcalctool/functions.c:1164
-#: gcalctool/functions.c:1257
-#: gcalctool/functions.c:1258
-#: gcalctool/graphics.c:102
-#: gcalctool/mp.c:1987
+#: gcalctool/calctool.c:1098 gcalctool/display.c:262 gcalctool/functions.c:943
+#: gcalctool/functions.c:1071 gcalctool/functions.c:1110
+#: gcalctool/functions.c:1164 gcalctool/functions.c:1257
+#: gcalctool/functions.c:1258 gcalctool/graphics.c:102 gcalctool/mp.c:1987
 msgid "Error"
 msgstr "பிழை"
 
@@ -848,8 +842,7 @@ msgstr "செயல்ஏற்பி அடுக்கு பிழை"
 msgid "-a needs accuracy value"
 msgstr "துல்லியமான மதிப்பு தேவை"
 
-#: gcalctool/get.c:166
-#: gcalctool/get.c:320
+#: gcalctool/get.c:166 gcalctool/get.c:320
 #, c-format
 msgid "%s: accuracy should be in the range 0-9\n"
 msgstr "%s: துல்லியம் இந்த நிலையில் இருக்க வேண்டும் 0-9\n"
@@ -907,291 +900,344 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/graphics.c:66
-#: gcalctool/gtk.c:922
-#: gcalctool/gtk.c:1055
+#: gcalctool/graphics.c:66 gcalctool/gtk.c:1173 gcalctool/gtk.c:1306
 msgid "R"
 msgstr "R"
 
-#: gcalctool/gtk.c:168
-msgid "/_Calculator"
-msgstr "/_கணிப்பான்"
-
-#: gcalctool/gtk.c:169
-msgid "/Calculator/_Quit"
-msgstr "/கணிப்பான்/_வெளியேறு"
-
-#: gcalctool/gtk.c:171
-msgid "/_Edit"
-msgstr "/_தொகு"
-
-#: gcalctool/gtk.c:172
-msgid "/Edit/_Copy"
-msgstr "/தொடு/_நகல்"
-
-#: gcalctool/gtk.c:173
-msgid "/Edit/_Paste"
-msgstr "/தொகு/_ஒட்டு"
-
-#: gcalctool/gtk.c:174
-msgid "/Edit/sep1"
-msgstr "/தொகு/படி1"
-
-#: gcalctool/gtk.c:175
-msgid "/Edit/_Insert ASCII Value..."
-msgstr "/தொகு/_ஆஸ்கி மதிப்பு சொருகு..."
-
-#: gcalctool/gtk.c:177
-msgid "/_View"
-msgstr "/_தோற்றம்"
-
-#: gcalctool/gtk.c:178
-msgid "/View/_Basic Mode"
-msgstr "/தோற்றம்/_அடிப்படை பாங்கு"
-
-#: gcalctool/gtk.c:179
-msgid "/View/_Financial Mode"
-msgstr "/தோற்றம்/_நிதி தொடர்பான பாங்கு"
-
-#: gcalctool/gtk.c:180
-msgid "/View/_Scientific Mode"
-msgstr "/தோற்றம்/_ பாங்கு"
-
-#: gcalctool/gtk.c:181
-msgid "/View/sep1"
-msgstr "/தோற்றம்/படி1"
-
-#: gcalctool/gtk.c:182
-msgid "/View/Show _Trailing Zeroes"
-msgstr "/தோற்றம்/காட்டு_பின் சுழி"
-
 #: gcalctool/gtk.c:183
-msgid "/View/Show T_housands Separator"
-msgstr "/தோற்றம்/காட்டு_ஆயிரம் பிரிப்பி"
+msgid "_Quit"
+msgstr ""
 
 #: gcalctool/gtk.c:184
-msgid "/View/sep2"
-msgstr "/தோற்றம்/படி2"
+#, fuzzy
+msgid "Quit the calculator"
+msgstr "கணிப்பான்"
 
-#: gcalctool/gtk.c:185
-msgid "/View/_Memory Registers"
-msgstr "/தோற்றம்/_நினைவக பதிவகங்கள்"
+#: gcalctool/gtk.c:186
+#, fuzzy
+msgid "_Copy"
+msgstr "/தொடு/_நகல்"
 
 #: gcalctool/gtk.c:187
-msgid "/_Help"
-msgstr "/_உதவி"
+msgid "Copy selection"
+msgstr ""
 
 #: gcalctool/gtk.c:188
-msgid "/Help/_Contents"
-msgstr "/உதவு/_உட்குறிப்புகள்"
+#, fuzzy
+msgid "_Paste"
+msgstr "/தொகு/_ஒட்டு"
 
 #: gcalctool/gtk.c:189
-msgid "/Help/_About"
-msgstr "/உதவி/_பற்றி"
+msgid "Paste selection"
+msgstr ""
+
+#: gcalctool/gtk.c:190
+#, fuzzy
+msgid "_Insert ASCII Value..."
+msgstr "ஆஸ்கி மதிப்பு சொருகு"
+
+#: gcalctool/gtk.c:191
+#, fuzzy
+msgid "Insert ASCII value"
+msgstr "ஆஸ்கி மதிப்பு சொருகு"
 
 #: gcalctool/gtk.c:193
-msgid "/0 significant places"
-msgstr "/0 முக்கியமான இடங்கள்"
+#, fuzzy
+msgid "_Contents"
+msgstr "மாறிலிகள்"
 
 #: gcalctool/gtk.c:194
-msgid "/1 significant place"
-msgstr "/1 முக்கியமான இடங்கள்"
+#, fuzzy
+msgid "Show help contents"
+msgstr "/உதவு/_உட்குறிப்புகள்"
 
 #: gcalctool/gtk.c:195
-msgid "/2 significant places"
-msgstr "/2 முக்கியமான இடங்கள்"
+#, fuzzy
+msgid "_About"
+msgstr "/உதவி/_பற்றி"
 
 #: gcalctool/gtk.c:196
-msgid "/3 significant places"
-msgstr "/3முக்கியமான இடங்கள்"
+msgid "Show about help"
+msgstr ""
 
-#: gcalctool/gtk.c:197
-msgid "/4 significant places"
-msgstr "/4 முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:198
-msgid "/5 significant places"
-msgstr "/5முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:199
-msgid "/6 significant places"
-msgstr "/6 முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:200
-msgid "/7 significant places"
-msgstr "/7 முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:201
-msgid "/8 significant places"
-msgstr "/8 முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:202
-msgid "/9 significant places"
-msgstr "/9 முக்கியமான இடங்கள்"
-
-#: gcalctool/gtk.c:203
-msgid "/sep1"
-msgstr "/பிரிப்பான்1"
-
-#: gcalctool/gtk.c:204
-msgid "/Show _Trailing Zeroes"
-msgstr "/காட்டு_பின் சுழி"
-
-#: gcalctool/gtk.c:208
-#: gcalctool/gtk.c:226
-msgid "/1 place"
+#: gcalctool/gtk.c:198 gcalctool/gtk.c:199 gcalctool/gtk.c:229
+#: gcalctool/gtk.c:230
+#, fuzzy
+msgid "1 place"
 msgstr "/1 இடம்"
 
-#: gcalctool/gtk.c:209
-#: gcalctool/gtk.c:227
-msgid "/2 places"
+#: gcalctool/gtk.c:200 gcalctool/gtk.c:201 gcalctool/gtk.c:231
+#: gcalctool/gtk.c:232
+#, fuzzy
+msgid "2 places"
 msgstr "/2 இடங்கள்"
 
-#: gcalctool/gtk.c:210
-#: gcalctool/gtk.c:228
-msgid "/3 places"
+#: gcalctool/gtk.c:202 gcalctool/gtk.c:203 gcalctool/gtk.c:233
+#: gcalctool/gtk.c:234
+#, fuzzy
+msgid "3 places"
 msgstr "/3 இடங்கள்"
 
-#: gcalctool/gtk.c:211
-#: gcalctool/gtk.c:229
-msgid "/4 places"
+#: gcalctool/gtk.c:204 gcalctool/gtk.c:205 gcalctool/gtk.c:235
+#: gcalctool/gtk.c:236
+#, fuzzy
+msgid "4 places"
 msgstr "/4 இடங்கள்"
 
-#: gcalctool/gtk.c:212
-#: gcalctool/gtk.c:230
-msgid "/5 places"
+#: gcalctool/gtk.c:206 gcalctool/gtk.c:207 gcalctool/gtk.c:237
+#: gcalctool/gtk.c:238
+#, fuzzy
+msgid "5 places"
 msgstr "/5 இடங்கள்"
 
-#: gcalctool/gtk.c:213
-#: gcalctool/gtk.c:231
-msgid "/6 places"
+#: gcalctool/gtk.c:208 gcalctool/gtk.c:209 gcalctool/gtk.c:239
+#: gcalctool/gtk.c:240
+#, fuzzy
+msgid "6 places"
 msgstr "/6 இடங்கள்"
 
-#: gcalctool/gtk.c:214
-#: gcalctool/gtk.c:232
-msgid "/7 places"
+#: gcalctool/gtk.c:210 gcalctool/gtk.c:211 gcalctool/gtk.c:241
+#: gcalctool/gtk.c:242
+#, fuzzy
+msgid "7 places"
 msgstr "/7 இடங்கள்"
 
-#: gcalctool/gtk.c:215
-#: gcalctool/gtk.c:233
-msgid "/8 places"
+#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:244
+#, fuzzy
+msgid "8 places"
 msgstr "/8 இடங்கள்"
 
-#: gcalctool/gtk.c:216
-#: gcalctool/gtk.c:234
-msgid "/9 places"
+#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:246
+#, fuzzy
+msgid "9 places"
 msgstr "/9 இடங்கள்"
 
-#: gcalctool/gtk.c:217
-#: gcalctool/gtk.c:235
-msgid "/10 places"
+#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:248
+#, fuzzy
+msgid "10 places"
 msgstr "/10 இடங்கள்"
 
-#: gcalctool/gtk.c:218
-#: gcalctool/gtk.c:236
-msgid "/11 places"
+#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:250
+#, fuzzy
+msgid "11 places"
 msgstr "/11 இடங்கள்"
 
-#: gcalctool/gtk.c:219
-#: gcalctool/gtk.c:237
-msgid "/12 places"
+#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:252
+#, fuzzy
+msgid "12 places"
 msgstr "/12 இடங்கள்"
 
-#: gcalctool/gtk.c:220
-#: gcalctool/gtk.c:238
-msgid "/13 places"
+#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:254
+#, fuzzy
+msgid "13 places"
 msgstr "/13 இடங்கள்"
 
-#: gcalctool/gtk.c:221
-#: gcalctool/gtk.c:239
-msgid "/14 places"
+#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:256
+#, fuzzy
+msgid "14 places"
 msgstr "/14 இடங்கள்"
 
-#: gcalctool/gtk.c:222
-#: gcalctool/gtk.c:240
-msgid "/15 places"
+#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:258
+#, fuzzy
+msgid "15 places"
 msgstr "/15 இடங்கள்"
 
+#: gcalctool/gtk.c:263 gcalctool/gtk.c:270
+#, fuzzy
+msgid "Show _Trailing Zeroes"
+msgstr "/காட்டு_பின் சுழி"
+
+#: gcalctool/gtk.c:264 gcalctool/gtk.c:271
+#, fuzzy
+msgid "Show trailing zeroes"
+msgstr "/காட்டு_பின் சுழி"
+
+#: gcalctool/gtk.c:265
+#, fuzzy
+msgid "Show T_housands Separator"
+msgstr "/தோற்றம்/காட்டு_ஆயிரம் பிரிப்பி"
+
+#: gcalctool/gtk.c:266
+#, fuzzy
+msgid "Show thousands separator"
+msgstr "/தோற்றம்/காட்டு_ஆயிரம் பிரிப்பி"
+
+#: gcalctool/gtk.c:267
+#, fuzzy
+msgid "_Memory Registers"
+msgstr "நினைவக பதிவகங்கள்"
+
+#: gcalctool/gtk.c:268
+#, fuzzy
+msgid "Show memory registers"
+msgstr "நினைவக பதிவகங்கள்"
+
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:277
+#, fuzzy
+msgid "0 significant places"
+msgstr "/0 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:279
+#, fuzzy
+msgid "1 significant place"
+msgstr "/1 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:281
+#, fuzzy
+msgid "2 significant places"
+msgstr "/2 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:283
+#, fuzzy
+msgid "3 significant places"
+msgstr "/3முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285
+#, fuzzy
+msgid "4 significant places"
+msgstr "/4 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287
+#, fuzzy
+msgid "5 significant places"
+msgstr "/5முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289
+#, fuzzy
+msgid "6 significant places"
+msgstr "/6 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291
+#, fuzzy
+msgid "7 significant places"
+msgstr "/7 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293
+#, fuzzy
+msgid "8 significant places"
+msgstr "/8 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295
+#, fuzzy
+msgid "9 significant places"
+msgstr "/9 முக்கியமான இடங்கள்"
+
+#: gcalctool/gtk.c:300
+#, fuzzy
+msgid "_Basic mode"
+msgstr "அடிப்படை பாங்கு"
+
 #: gcalctool/gtk.c:301
+#, fuzzy
+msgid "Basic mode"
+msgstr "அடிப்படை பாங்கு"
+
+#: gcalctool/gtk.c:302
+#, fuzzy
+msgid "_Financial mode"
+msgstr "நிதி தொடற்பான பாங்கு"
+
+#: gcalctool/gtk.c:303
+#, fuzzy
+msgid "Financial mode"
+msgstr "நிதி தொடற்பான பாங்கு"
+
+#: gcalctool/gtk.c:304
+#, fuzzy
+msgid "_Scientific mode"
+msgstr "அறிவியல் பாங்கு"
+
+#: gcalctool/gtk.c:305
+#, fuzzy
+msgid "Scientific mode"
+msgstr "அறிவியல் பாங்கு"
+
+#: gcalctool/gtk.c:447
 msgid "translator_credits"
 msgstr "மொழிபெயர்ப்பர் பற்று"
 
-#: gcalctool/gtk.c:303
+#: gcalctool/gtk.c:449
 msgid "Gcalctool"
 msgstr "Gகணிப்பான்கருவி"
 
-#: gcalctool/gtk.c:305
+#: gcalctool/gtk.c:451
 msgid "Calculator with financial and scientific modes."
 msgstr "கணிப்பானுடன் நிதி தொடர்பான மற்றும் அறிவியல் பாங்குகள்."
 
-#: gcalctool/gtk.c:592
+#: gcalctool/gtk.c:738
 msgid "Insert ASCII Value"
 msgstr "ஆஸ்கி மதிப்பு சொருகு"
 
-#: gcalctool/gtk.c:607
+#: gcalctool/gtk.c:753
 msgid "Ch_aracter:"
 msgstr "எழுத்து:"
 
-#: gcalctool/gtk.c:632
+#: gcalctool/gtk.c:778
 msgid "_Insert"
 msgstr "சொருகு"
 
-#: gcalctool/gtk.c:711
+#: gcalctool/gtk.c:857
 msgid "Edit Constants"
 msgstr "தொகு மாறிலி"
 
-#: gcalctool/gtk.c:711
+#: gcalctool/gtk.c:857
 msgid "Edit Functions"
 msgstr "தொகு செயல்கூறுகள்"
 
-#: gcalctool/gtk.c:735
+#: gcalctool/gtk.c:881
 msgid "Note:"
 msgstr "குறிப்பு:"
 
-#: gcalctool/gtk.c:736
+#: gcalctool/gtk.c:882
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "பதின்ம எண்வகை தளத்தில் அனைத்து நிலைமாறா மதிப்புகள் குறிப்பிடப்பட்டுள்ளது."
 
-#: gcalctool/gtk.c:746
+#: gcalctool/gtk.c:892
 msgid "Click a _value or description to edit it:"
 msgstr "மதிப்பை கிளிக் செய் அல்லது அதை தொகுக்க விரிவாக்கம்:"
 
-#: gcalctool/gtk.c:769
+#: gcalctool/gtk.c:915
 msgid "No."
 msgstr "இல்லை."
 
-#: gcalctool/gtk.c:771
+#: gcalctool/gtk.c:917
 msgid "Value"
 msgstr "மதிப்பு"
 
-#: gcalctool/gtk.c:773
+#: gcalctool/gtk.c:919
 msgid "Description"
 msgstr "விபரிப்பு"
 
-#: gcalctool/gtk.c:807
-#: gcalctool/gtk.c:809
-#: gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1025 gcalctool/gtk.c:1027 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "கணிப்பான்"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:990
+#: gcalctool/gtk.c:1241
 msgid "_Inv"
 msgstr "_Inv"
 
-#: gcalctool/gtk.c:998
+#: gcalctool/gtk.c:1249
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1046
+#: gcalctool/gtk.c:1297
 msgid "Memory Registers"
 msgstr "நினைவக பதிவகங்கள்"
 
-#: gcalctool/gtk.c:1111
+#: gcalctool/gtk.c:1362
 msgid "Edit Constants..."
 msgstr "தொகு மாறிலி..."
 
-#: gcalctool/gtk.c:1111
+#: gcalctool/gtk.c:1362
 msgid "Edit Functions..."
 msgstr "தொகு செயல்கூறுகள்..."
 
@@ -1199,3 +1245,47 @@ msgstr "தொகு செயல்கூறுகள்..."
 msgid "Perform calculations"
 msgstr "கணக்கிடம் ஆற்று"
 
+#~ msgid "/_Calculator"
+#~ msgstr "/_கணிப்பான்"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/கணிப்பான்/_வெளியேறு"
+
+#~ msgid "/_Edit"
+#~ msgstr "/_தொகு"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/தொகு/படி1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/தொகு/_ஆஸ்கி மதிப்பு சொருகு..."
+
+#~ msgid "/_View"
+#~ msgstr "/_தோற்றம்"
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/தோற்றம்/_அடிப்படை பாங்கு"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/தோற்றம்/_நிதி தொடர்பான பாங்கு"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/தோற்றம்/_ பாங்கு"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/தோற்றம்/படி1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/தோற்றம்/காட்டு_பின் சுழி"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/தோற்றம்/படி2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/தோற்றம்/_நினைவக பதிவகங்கள்"
+
+#~ msgid "/_Help"
+#~ msgstr "/_உதவி"
+
+#~ msgid "/sep1"
+#~ msgstr "/பிரிப்பான்1"
