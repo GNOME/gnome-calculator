@@ -935,8 +935,8 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("Or"),
-    N_("Logical OR"),
-    "logical OR",
+    N_("Bitwise OR"),
+    "bitwise OR",
     { GDK_SHIFT_MASK, 0 },
     { GDK_bar, 0 },
     '|',
@@ -945,7 +945,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("And"),
-    N_("Logical AND"),
+    N_("Bitwise AND"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_ampersand, 0 },
@@ -955,7 +955,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },       
 {        
     N_("Not"),
-    N_("Logical NOT"),
+    N_("Bitwise NOT"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
     { GDK_asciitilde, 0 },
@@ -965,7 +965,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("Xor"),
-    N_("Logical XOR"),
+    N_("Bitwise XOR"),
     NULL,
     { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
     { GDK_caret,      GDK_asciicircum, 0 },
@@ -975,7 +975,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("Xnor"),
-    N_("Logical XNOR"),
+    N_("Bitwise XNOR"),
     NULL,
     { 0, 0 },
     { GDK_n, 0 },
