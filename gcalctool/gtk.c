@@ -1096,7 +1096,7 @@ create_con_fun_menu(enum menu_type mtype)
         if (mtype == M_CON) {
             SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
                     _("C"), i, 
-                    make_number(v->MPcon_vals[i], v->base, FALSE, TRUE), 
+                    make_number(v->MPcon_vals[i], DEC, FALSE, TRUE), 
                     v->con_names[i]);
         } else {
             if (!strlen(v->fun_vals[i])) {
