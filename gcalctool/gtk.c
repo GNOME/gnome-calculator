@@ -799,12 +799,14 @@ create_kframe()
 void
 create_mframe()
 {
+    GtkRequisition r;
     GtkWidget *vbox;
 
     X->mframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_object_set_data(G_OBJECT(X->mframe), "mframe", X->mframe);
     gtk_window_set_resizable(GTK_WINDOW(X->mframe), TRUE);
-    gtk_widget_set_size_request(X->mframe, 545, 72);
+    gtk_widget_size_request(X->kframe, &r);
+    gtk_widget_set_size_request(X->mframe, r.width, -1);
 
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
@@ -1330,7 +1332,7 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
 {
     char name[MAXLINE];
     int i, j, n;
-    GtkWidget *table = gtk_table_new(MROWS, MCOLS, FALSE);
+    GtkWidget *table = gtk_table_new(MROWS, MCOLS, TRUE);
  
     gtk_widget_ref(table);
     gtk_widget_show(table);
@@ -1363,10 +1365,10 @@ make_mtable(GtkWidget *frame, GtkWidget *vbox, enum mode_type modetype)
             }
             gtk_widget_show(X->mode_buttons[n]);
             gtk_table_attach(GTK_TABLE(table), X->mode_buttons[n],
-                             i, i+1, j, j+1,
-                             (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                             (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
-            gtk_widget_set_size_request(X->mode_buttons[n], 60, 28);
+                     i, i+1, j, j+1,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
+                     4, 4);
         }
     } 
 
@@ -1380,7 +1382,7 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
     char name[MAXLINE];
     int i, j, n;
 
-    X->ktable = gtk_table_new(BROWS, BCOLS, FALSE);
+    X->ktable = gtk_table_new(BROWS, BCOLS, TRUE);
     gtk_widget_ref(X->ktable);
     gtk_widget_show(X->ktable);
     gtk_box_pack_start(GTK_BOX(vbox), X->ktable, TRUE, TRUE, 0);
@@ -1403,10 +1405,10 @@ make_ktable(GtkWidget *frame, GtkWidget *vbox)
             create_kbd_accel(X->buttons[n], buttons[n].mods, buttons[n].value);
             gtk_widget_show(X->buttons[n]);
             gtk_table_attach(GTK_TABLE(X->ktable), X->buttons[n], 
-                             i, i+1, j, j+1,
-                             (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                             (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 4, 4);
-            gtk_widget_set_size_request(X->buttons[n], 60, 28);
+                     i, i+1, j, j+1,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL | GTK_SHRINK),
+                     4, 4);
         }
     }    
 }

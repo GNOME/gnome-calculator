@@ -8,7 +8,17 @@
 gcalctool change history.
 =========================
 
-v4.1.10 - 29th August 2002. [toshi]
+v4.1.11 - 29th August 2002.
+
+* Explicitly setting the size of the calculator buttons has been removed.
+  Each button is now the size of the largest one in that table.
+
+* The width of the mode window is now set to be the width of the main
+  calculator window (the size was previously hard-wired).
+
+----
+
+v4.1.10 - 29th August 2002.
 
 * Fixes for I18N support from HideToshi Tajima <hidetoshi.tajima@sun.com>.
   Thanks!
@@ -32,7 +42,7 @@ v4.1.8 - 21st June 2002.
   to gcalctool rather than the old XView calctool).
 
 * Three keyboard accelerators weren't working when a "menu" button had been
-  pressed and the calculastor was in pending mode:
+  pressed and the calculator was in pending mode:
 
   Base button - "o" (octal).
   Mode button - "l" (logical).
@@ -99,7 +109,7 @@ v4.1.3 - 14th June 2002.
   gcalctool distribution, which gives the old OpenWindows DeskSet appearance
   to the calculator.
 
-  The ability to change various colors via X resources has also been removed.
+* The ability to change various colors via X resources has also been removed.
   The manual pages have been updated to reflect this.
 
   This change means that all code related to colors has been removed from
