@@ -1,16 +1,11 @@
 /*  $Header$
  *
- *  Copyright (c) 1987-2004 Sun Microsystems, Inc.
+ *  Copyright (c) 1987-2005 Sun Microsystems, Inc.
  *  All Rights Reserved.
  */
 
 Gcalctool TODO.
 ===============
-
-* Put the 
-    -DGNOME_DISABLE_DEPRECATED \
-    -DGTK_DISABLE_DEPRECATED \
-  lines back in .../gcacltool/Makefile.am, after GNOME 2.10.
 
 * From Jeremiah Jahn <jeremiah at goodinassociates dot com>
   Add a modulo function.
@@ -63,24 +58,6 @@ Gcalctool TODO.
 * Implement bugtraq rfe #1122089.
   Add a log base 2 key.
 
-* As of v3.0.1. gcalctool was modified to have "infinite" precision
-  internally. This needs to be made available to the "power" users, but
-  shouldn't confuse the novice. What I suggest is to replace the Acc
-  button menu, with an Acc... button which brings up a popup with a slider
-  on, to allow you to set the number of numeric places. By default this
-  will be 0-9. I also propose adding another gconf resource, which will also
-  allow you to set the number of numeric places. This value can be as
-  large as you want. When gcalctool starts up, it will look for that
-  resource, and adjust the sliders maximum value appropriately.
- 
-  Making this addition will possibly cause the gcalctool numeric result to
-  be larger that can fully displayed. There are two possible ways to fix
-  this:
-
-  * make the display area a scrollable canvas.
-  * make the gcalctool numeric display a panel text item of the appropriate
-    length.
-
 * Consider adding in the ability to drag & drop from/to the display and 
   the memory registers.
  
@@ -105,13 +82,6 @@ Gcalctool - Next Generation TODO (Arithmetic Precedence (AP) mode)
   be integer.
 
 * Base conversions are not easy to use. (Only answer can be converted)
-
-* If you do
-  78/0=
-
-    it displays "Error" correctly, but the following menu items are activated:
-    View->Use Arithmetic Precedence
-    View->Show Thousands Separator
 
 * New display 
   - History of previous expressions (scrollable)
