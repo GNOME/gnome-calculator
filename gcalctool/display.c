@@ -97,6 +97,27 @@ remove_tsep(char *str) {
 }
 
 
+/* Adjust the radix string (in-situ) to be the C locale radix value of "." */
+
+void
+adjust_radix(char *str) {
+    char *srcp = str;
+    char *dstp = str;
+    size_t radix_len;
+
+    radix_len = strlen(v->radix);
+    while (*srcp != '\0') {
+        if (memcmp(srcp, v->radix, radix_len) == 0) {
+            srcp += radix_len;
+            *dstp++ = '.';
+            continue;
+        }
+        *dstp++ = *srcp++;
+    }
+    *dstp++ = '\0';
+}
+
+
 int
 char_val(char chr)
 {
@@ -198,7 +219,7 @@ make_fixed(int *MPnumber, int base, int cmax)
 
     mppwr(MP1base, &v->accuracy, MP1);
     SPRINTF(half, "0%s5", v->radix);
-    MPstr_to_num(half, DEC, MP2);
+    MPstr_to_num(half, DEC, FALSE, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
 
@@ -366,7 +387,7 @@ make_eng_sci(int *MPnumber, int base)
     }
  
     SPRINTF(half, "0%s5", v->radix);
-    MPstr_to_num(half, DEC, MP1);
+    MPstr_to_num(half, DEC, FALSE, MP1);
     mpaddi(MP1, &exp, MPval);
     n = 1;
     mpcim(&n, MP1);
@@ -393,17 +414,26 @@ make_eng_sci(int *MPnumber, int base)
 }
 
 
-/* Convert string into an MP number. */
+/* Convert string into an MP number, in the given base, using radix and 
+ * thousands separator either from the user's locale or the C locale.
+ */
 
 void
-MPstr_to_num(char *str, enum base_type base, int *MPval)
+MPstr_to_num(char *str, enum base_type base, gboolean use_C_locale, int *MPval)
 {
-    char *optr;
+    char *loc_radix, *loc_tsep, *optr;
     int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
     int i, inum;
     int exp      = 0;
     int exp_sign = 1;
     size_t radix_len;
+
+    if (use_C_locale == TRUE) {
+        loc_radix = (char *) v->radix;
+        v->radix = ".";
+        loc_tsep = (char *) v->tsep;
+        v->tsep = "";
+    }
 
     i = 0;
     mpcim(&i, MPval);
@@ -448,6 +478,11 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     if (v->key_exp) {
         mppwr(MPbase, &exp, MP1);
         mpmul(MPval, MP1, MPval);
+    }
+
+    if (use_C_locale == TRUE) {
+        v->radix = loc_radix;
+        v->tsep  = loc_tsep;
     }
 }
 

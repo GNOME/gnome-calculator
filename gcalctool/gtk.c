@@ -553,7 +553,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
            item = g_array_index(entries, CF_Item, i);
 
            if (mtype == M_CON) {
-                MPstr_to_num(item.value, DEC, v->MPcon_vals[i]);
+                MPstr_to_num(item.value, DEC, FALSE, v->MPcon_vals[i]);
                 STRCPY(v->con_names[i], item.description);
                 put_constant(i, item.value, item.description);
             } else {
@@ -1169,7 +1169,7 @@ get_constant(int n)
         return;
     }   
 
-    MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
+    MPstr_to_num(vline, DEC, TRUE, v->MPcon_vals[n]);
     STRCPY(v->con_names[n], nline);
 }
 
@@ -1764,9 +1764,17 @@ static void
 put_constant(int n, char *con_value, char *con_name)
 {
     char key[MAXLINE];
+    char *cstr = g_strdup(con_value);
 
+/* Constants are written out with no thousands seaparator and with a radix
+ * character of ".".
+ */
+
+    remove_tsep(cstr);
+    adjust_radix(cstr);
     SPRINTF(key, "/apps/%s/constant%1dvalue", v->appname, n);
-    gconf_client_set_string(X->client, key, con_value, NULL);
+    gconf_client_set_string(X->client, key, cstr, NULL);
+    g_free(cstr);
 
     SPRINTF(key, "/apps/%s/constant%1dname", v->appname, n);
     gconf_client_set_string(X->client, key, con_name, NULL);
