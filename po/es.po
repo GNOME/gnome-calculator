@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.es\n"
-"POT-Creation-Date: 2003-02-22 04:47+0100\n"
-"PO-Revision-Date: 2003-02-22 08:39+0100\n"
+"POT-Creation-Date: 2003-02-26 12:06+0100\n"
+"PO-Revision-Date: 2003-03-02 13:54+0100\n"
 "Last-Translator: Francisco Javier Fernandez <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -706,7 +706,7 @@ msgstr ""
 
 #: gcalctool/calctool.c:621
 msgid "x<sup>2</sup>"
-msgstr ""
+msgstr "x<sup>2</sup>"
 
 #: gcalctool/calctool.c:623
 msgid ""
@@ -1234,7 +1234,6 @@ msgid "Term"
 msgstr "Term"
 
 #: gcalctool/calctool.c:1083
-#, fuzzy
 msgid ""
 "Term\n"
 "\n"
@@ -1267,34 +1266,6 @@ msgid ""
 "Clicking SELECT on Term returns 20.32, the number of years it will take to "
 "accumulate $120,000 in your account."
 msgstr ""
-"Ctrm\n"
-"\n"
-"Interés compuesto\n"
-"\n"
-"Equivalencia del teclado:   m\n"
-"\n"
-"Calcula el número de períodos compuestos que tomará una inversión de "
-"valor presente pv en crecer a un valor futuro fv, tomando como ganancias un "
-"tipo de interés fijo int en el periodo de tiempo.\n"
-"\n"
-"Uso de registros de memoria:\n"
-"\n"
-"   Registro 0 - int (tasa de interés periódica)\n"
-"   Registro 1 - fv (valor futuro)\n"
-"   Registro 2 - pv (valor presente)\n"
-"\n"
-"Ejemplo:\n"
-"\n"
-"Ha depositado 8.000 € en una cuenta que paga un interés anual del 9%, "
-"calculado mensualmente. Quiere determinar cuánto tardará en doblar su "
-"inversión\n"
-". \n"
-"   Registro 0 - 0.0075 (tasa de interés = 9% / 12)\n"
-"   Registro 1 - 16000 (valor futuro)\n"
-"   Registro 3 - 8000 (valor presente)\n"
-"\n"
-"Presionando SELECT en Ctrm devuelve 92.77, que le dice que le tardará 92.77 "
-"meses, o al menos ocho años en doblar sus 8.000 €."
 
 #: gcalctool/calctool.c:1202
 msgid "<"
@@ -1312,6 +1283,15 @@ msgid ""
 "places to the left. Click SELECT on the key, then on a digit in the range 0 "
 "to f to indicate how many places to shift."
 msgstr ""
+"<\n"
+"\n"
+"Desplazar a la izquierda n\n"
+"\n"
+"Equivalencia del teclado:   <\n"
+"\n"
+"use esta tecla para desplazar el valor binario mostrado un número "
+"determinado de lugares a la izquierda. Pulse SELECT, después en un dígito "
+"en el rango 0 a f para indicar cuántos lugares desplazar."
 
 #: gcalctool/calctool.c:1222
 msgid ">"
@@ -1329,6 +1309,15 @@ msgid ""
 "places to the right. Click SELECT on the key, then on a digit in the range 0 "
 "to f to indicate how many places to shift."
 msgstr ""
+">\n"
+"\n"
+"Desplazar a la derecha n\n"
+"\n"
+"Equivalencia del teclado:   >\n"
+"\n"
+"Use esta tecla para desplazar el valor binario mostrado un número "
+"determinado de lugares a la derecha. Pulse SELECT, después en un dígito en "
+"el rango 0 a f para indicar cuántos lugares desplazar."
 
 #: gcalctool/calctool.c:1242
 msgid "&amp;16"
@@ -1483,6 +1472,25 @@ msgid ""
 "Click SELECT on \"Enter Constant\" to store the new constant in the "
 "~/.gcalctoolcf file."
 msgstr ""
+"Con\n"
+"\n"
+"Constante n\n"
+"\n"
+"Equivalencia del teclado:     #\n"
+"\n"
+"Pulse en el botón Con para mostrar las constantes disponibles. elija una "
+"constante del menú para introducir su palor en la pantalla.\n"
+"\n"
+"alternativamente, si sabe el número de la constante puede pulsar SELECT en "
+"Con, luego en un dígito desde 0 a 9 para indicar la constante que quiere "
+"introducir.\n"
+"\n"
+"Para añadir nuevas constantes o alterar las existentes, elija «Introducir "
+"constante» desde el menú. Esto muestra una ventana en la cuál escribir el "
+"número, descripción y valor de la constante.\n"
+"\n"
+"Pulse SELECT en «Introducir constante» para almacenar una constante nueva "
+"en el archivo ~/.gcalctoolcf."
 
 #: gcalctool/calctool.c:1384
 msgid "Fun"
@@ -1535,10 +1543,19 @@ msgid ""
 "Starts exponential input. Any numbers typed from now on are the exponent. If "
 "you haven't entered a mantissa, the calculator uses a mantissa of 1.0."
 msgstr ""
+"Exp\n"
+"\n"
+"Introduce un número exponencial\n"
+"\n"
+"Equivalencia del teclado:   E\n"
+"\n"
+"Inicia la entrada exponencial. Cualquier número tecleado desde ahora es el "
+"exponente. Si no ha introducido una mantisa, la calculadora usa la mantisa "
+"1.0"
 
 #: gcalctool/calctool.c:1446
 msgid "e<sup>x</sup>"
-msgstr ""
+msgstr "e<sup>x</sup>"
 
 #: gcalctool/calctool.c:1448
 msgid ""
@@ -1560,7 +1577,7 @@ msgstr ""
 
 #: gcalctool/calctool.c:1463
 msgid "10<sup>x</sup>"
-msgstr ""
+msgstr "10<sup>x</sup>"
 
 #: gcalctool/calctool.c:1465
 msgid ""
@@ -1582,7 +1599,7 @@ msgstr ""
 
 #: gcalctool/calctool.c:1480
 msgid "y<sup>x</sup>"
-msgstr ""
+msgstr "y<sup>x</sup>"
 
 #: gcalctool/calctool.c:1482
 msgid ""
@@ -1599,6 +1616,18 @@ msgid ""
 "\n"
 "        2 Y 3 = (returns 8)"
 msgstr ""
+"y^x\n"
+"\n"
+"y elevado a x\n"
+"\n"
+"Equivalencia del teclado:   y\n"
+"\n"
+"Toma el último número  introducido y lo eleva a la potencia del siguiente "
+"número que se introduzca.\n"
+"\n"
+"Ejemplo:\n"
+"\n"
+"        2 Y 3 = (devuelve 8)"
 
 #: gcalctool/calctool.c:1502
 msgid "x!"
@@ -1639,6 +1668,14 @@ msgid ""
 "Generates a random number in the range 0.0 to 1.0 and enters it into the "
 "calculator display."
 msgstr ""
+"Rand\n"
+"\n"
+"Número aleatorio\n"
+"\n"
+"Equivalencia del teclado:    ?\n"
+"\n"
+"Genera un número aleatorio en el rango 0.0 a 1.0 y lo introduce en la "
+"pantalla de la calculadora."
 
 #: gcalctool/calctool.c:1540
 msgid "D"
@@ -1725,6 +1762,18 @@ msgid ""
 "The result appears in the current trigonometric unit (degrees, radians, or "
 "gradients)."
 msgstr ""
+"Cos\n"
+"\n"
+"Funcion coseno\n"
+"\n"
+"Equivalencia del teclado:   J\n"
+"\n"
+"Devuelve el coseno trigonométrico, el arco coseno, el coseno hiperbñolico o "
+"el coseno hiperbólico inverso del valor actualmente mostrado, dependiendo de "
+"lo que establezcan las marcas Hyp e Inv.\n"
+"\n"
+"El resultado aparece en la unidad trigonométrica actual (grados, radianes, o "
+"gradientes)."
 
 #: gcalctool/calctool.c:1617
 msgid "Sin"
@@ -1780,6 +1829,13 @@ msgid ""
 "\n"
 "Returns the natural logarithm of the current displayed value."
 msgstr ""
+"Ln\n"
+"\n"
+"Logaritmo natural\n"
+"\n"
+"Equivalencia del teclado:   N\n"
+"\n"
+"Devuelve el logaritmo natural del valor mostrado actualmente."
 
 #: gcalctool/calctool.c:1680
 msgid "Log"
@@ -1795,6 +1851,13 @@ msgid ""
 "\n"
 "Returns the base 10 logarithm of the current displayed value."
 msgstr ""
+"Log\n"
+"\n"
+"Logaritmo en base 10\n"
+"\n"
+"Equivalencia del teclado:    G\n"
+"\n"
+"Devuelve el logaritmo en base 10 del valor mostrado actualmete."
 
 #: gcalctool/calctool.c:1699
 msgid "A"
@@ -1877,6 +1940,15 @@ msgid ""
 "This key performs a logical OR operation on the last number entered and the "
 "next number entered, treating both numbers as unsigned long integers."
 msgstr ""
+"O\n"
+"\n"
+"O lógico\n"
+"\n"
+"Equivalencia del teclado:   |\n"
+"\n"
+"Esta tecla realiza una operación O lógica entre el último número entrado "
+"y el siguiente número que se introduzca, tratando ambos números como "
+"enteros largos sin signo."
 
 #: gcalctool/calctool.c:1772
 msgid "And"
@@ -1893,6 +1965,15 @@ msgid ""
 "This key performs a logical AND operation on the last number entered and the "
 "next number entered, treating both numbers as unsigned long integers."
 msgstr ""
+"And\n"
+"\n"
+"AND lógica\n"
+"\n"
+"Equivalencia del teclado   &\n"
+"\n"
+"Esta tecla toma el último número introducido y el siguiente que se "
+"introduzca, y efectúa una operación AND entre ellos, tratando ambos "
+"números como entreos largos sin signo."
 
 #: gcalctool/calctool.c:1791
 msgid "Not"
@@ -1908,6 +1989,13 @@ msgid ""
 "\n"
 "This key performs a logical NOT operation on the current displayed value."
 msgstr ""
+"Negación\n"
+"\n"
+"Negación lógica\n"
+"\n"
+"Equivalencia del teclado:   ~\n"
+"\n"
+"Esta tecla efectúa una negación lógica en el valor mostrado actualmente."
 
 #: gcalctool/calctool.c:1809
 msgid "Xor"
@@ -1925,6 +2013,15 @@ msgid ""
 "performs a logical XOR operation on them, treating both numbers as unsigned "
 "long integers."
 msgstr ""
+"Xor\n"
+"\n"
+"XOR lógica\n"
+"\n"
+"Equivalencia del teclado    \n"
+"\n"
+"Esta tecla toma el último número introducido y el siguiente que se "
+"introduzca, y efectúa una operación XOR entre ellos, tratando ambos "
+"números como entreos largos sin signo."
 
 #: gcalctool/calctool.c:1829
 msgid "Xnor"
@@ -2072,7 +2169,7 @@ msgstr "\t\t [-?] [-v] [-?]\n"
 
 #: gcalctool/graphics.c:66 gcalctool/gtk.c:881 gcalctool/gtk.c:1004
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: gcalctool/gtk.c:166
 msgid "/_Calculator"
@@ -2096,7 +2193,7 @@ msgstr "/Editar/_Pegar"
 
 #: gcalctool/gtk.c:172
 msgid "/Edit/sep1"
-msgstr ""
+msgstr "/Editar/sep1"
 
 #: gcalctool/gtk.c:173
 msgid "/Edit/_Insert ASCII Value..."
@@ -2120,7 +2217,7 @@ msgstr "/Ver/Modo _científico"
 
 #: gcalctool/gtk.c:179
 msgid "/View/sep1"
-msgstr ""
+msgstr "/Vista/sep1"
 
 #: gcalctool/gtk.c:180
 msgid "/View/_Memory Registers"
@@ -2180,63 +2277,63 @@ msgstr ""
 
 #: gcalctool/gtk.c:201 gcalctool/gtk.c:219
 msgid "/1 place"
-msgstr ""
+msgstr "/1 lugar"
 
 #: gcalctool/gtk.c:202 gcalctool/gtk.c:220
 msgid "/2 places"
-msgstr ""
+msgstr "/2 lugares"
 
 #: gcalctool/gtk.c:203 gcalctool/gtk.c:221
 msgid "/3 places"
-msgstr ""
+msgstr "/3 lugares"
 
 #: gcalctool/gtk.c:204 gcalctool/gtk.c:222
 msgid "/4 places"
-msgstr ""
+msgstr "/4 lugares"
 
 #: gcalctool/gtk.c:205 gcalctool/gtk.c:223
 msgid "/5 places"
-msgstr ""
+msgstr "/5 lugares"
 
 #: gcalctool/gtk.c:206 gcalctool/gtk.c:224
 msgid "/6 places"
-msgstr ""
+msgstr "/6 lugares"
 
 #: gcalctool/gtk.c:207 gcalctool/gtk.c:225
 msgid "/7 places"
-msgstr ""
+msgstr "/7 lugares"
 
 #: gcalctool/gtk.c:208 gcalctool/gtk.c:226
 msgid "/8 places"
-msgstr ""
+msgstr "/8 lugares"
 
 #: gcalctool/gtk.c:209 gcalctool/gtk.c:227
 msgid "/9 places"
-msgstr ""
+msgstr "/9 lugares"
 
 #: gcalctool/gtk.c:210 gcalctool/gtk.c:228
 msgid "/10 places"
-msgstr ""
+msgstr "/10 lugares"
 
 #: gcalctool/gtk.c:211 gcalctool/gtk.c:229
 msgid "/11 places"
-msgstr ""
+msgstr "/11 lugares"
 
 #: gcalctool/gtk.c:212 gcalctool/gtk.c:230
 msgid "/12 places"
-msgstr ""
+msgstr "/12 lugares"
 
 #: gcalctool/gtk.c:213 gcalctool/gtk.c:231
 msgid "/13 places"
-msgstr ""
+msgstr "/13 lugares"
 
 #: gcalctool/gtk.c:214 gcalctool/gtk.c:232
 msgid "/14 places"
-msgstr ""
+msgstr "/14 lugares"
 
 #: gcalctool/gtk.c:215 gcalctool/gtk.c:233
 msgid "/15 places"
-msgstr ""
+msgstr "/15 lugares"
 
 #: gcalctool/gtk.c:287
 msgid "translator_credits"
@@ -2254,7 +2351,7 @@ msgstr "Calculadora con modos científico y financiero."
 
 #: gcalctool/gtk.c:577
 msgid "Insert ASCII Value"
-msgstr ""
+msgstr "Introduzca un valor ASCII"
 
 #: gcalctool/gtk.c:592
 msgid "Ch_aracter:"
@@ -2274,7 +2371,7 @@ msgstr "Editar funciones"
 
 #: gcalctool/gtk.c:720
 msgid "Click a value or description to edit it:"
-msgstr ""
+msgstr "Pulse un valor o descripción para editarlo:"
 
 #: gcalctool/gtk.c:743
 msgid "No."
@@ -2361,7 +2458,7 @@ msgstr ""
 
 #: gcalctool/mp.c:887
 msgid "TO AN MP ROUTINE ***\n"
-msgstr ""
+msgstr "A UNA RUTINA MP ***\n"
 
 #: gcalctool/mp.c:888
 #, c-format
@@ -2391,7 +2488,7 @@ msgstr ""
 
 #: gcalctool/mp.c:1762
 msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
-msgstr ""
+msgstr "*** OCURRIÓ UN REBOSAMIENTO EN MPDIV ***\n"
 
 #: gcalctool/mp.c:1793
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n"
@@ -2415,7 +2512,7 @@ msgstr ""
 
 #: gcalctool/mp.c:2457
 msgid "*** X NONPOSITIVE IN CALL TO MPLN ***\n"
-msgstr ""
+msgstr "*** X NO POSITIVA EN LA LLAMADA A MPLN ***\n"
 
 #: gcalctool/mp.c:2507
 msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
@@ -2435,19 +2532,19 @@ msgstr ""
 
 #: gcalctool/mp.c:2806
 msgid "*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n"
-msgstr ""
+msgstr "*** REBOSAMIENTO DE ENTEROS EN  MPMUL, B DEMASIADO GRANDE ***\n"
 
 #: gcalctool/mp.c:2813
 msgid "*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\n"
-msgstr ""
+msgstr "*** DIGITO BASE B ILEGAL EN LA LLAMADA A MPMUL.\n"
 
 #: gcalctool/mp.c:2865
 msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
-msgstr ""
+msgstr "*** OCURRIÓ UN REBOSAMIENTO EN MPMUL2 ***\n"
 
 #: gcalctool/mp.c:2973
 msgid "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n"
-msgstr ""
+msgstr "*** REBOSAMIENTO DE ENTEROS EN MPMUL2, B DEMASIADO GRANDE ***\n"
 
 #: gcalctool/mp.c:3014
 msgid "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n"
@@ -2487,19 +2584,19 @@ msgstr ""
 
 #: gcalctool/mp.c:3466
 msgid "*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n"
-msgstr ""
+msgstr "*** SE INTENTÓ UNA DIVISIÓN POR CERO EN LA LLAMADA A MPREC ***\n"
 
 #: gcalctool/mp.c:3553
 msgid "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION\n"
-msgstr ""
+msgstr "*** OCURRIO UN ERROR EN MPREC, ITERACIÓN DE NEWTON\n"
 
 #: gcalctool/mp.c:3554 gcalctool/mp.c:3761
 msgid "NOT CONVERGING PROPERLY ***\n"
-msgstr ""
+msgstr "NO CONVERGIENDO APROPIADAMENTE ***\n"
 
 #: gcalctool/mp.c:3571
 msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
-msgstr ""
+msgstr "*** OCURRIÓ UN REBOSAMIENTO EN MPREC ***\n"
 
 #: gcalctool/mp.c:3614
 msgid "*** N = 0 IN CALL TO MPROOT ***\n"
@@ -2515,11 +2612,11 @@ msgstr ""
 
 #: gcalctool/mp.c:3660
 msgid "*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n"
-msgstr ""
+msgstr "*** X NEGATIVO Y N INCLUSO EN LA LLAMADA A MPROOT ***\n"
 
 #: gcalctool/mp.c:3760
 msgid "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION\n"
-msgstr ""
+msgstr "*** OCURRIÓ UN ERROR EN MPROOT, ITERACIÓN DE NEWTON\n"
 
 #: gcalctool/mp.c:3849
 msgid "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n"
@@ -2527,28 +2624,28 @@ msgstr ""
 
 #: gcalctool/mp.c:3872
 msgid "ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"
-msgstr ""
+msgstr "ITMAX2 DEMASIADO PEQUEÑO EN LA LLAMADA A MPSET ***\n"
 
 #: gcalctool/mp.c:3873
 msgid "*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS \n"
-msgstr ""
+msgstr "*** INCREMENTE ITMAX2 Y LAS DIMENSIONES DE LOS ARRAYS MP \n"
 
 #: gcalctool/mp.c:3874
 #, c-format
 msgid "TO AT LEAST %d ***\n"
-msgstr ""
+msgstr "A AL MENOS %d ***\n"
 
 #: gcalctool/mp.c:3998
 msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
-msgstr ""
+msgstr "*** OCURRIÓ UN ERROR EN MPSIN, RESULTADO INCORRECTO ***\n"
 
 #: gcalctool/mp.c:4045
 msgid "*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n"
-msgstr ""
+msgstr "*** ABS(X) .GT. 1 EN LA LLAMADA A MPSIN1 ***\n"
 
 #: gcalctool/mp.c:4194
 msgid "*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n"
-msgstr ""
+msgstr "*** X NEGATIVA EN LA LLAMADA A LA SUBRUTINA MPSQRT ***\n"
 
 #~ msgid "x^2"
 #~ msgstr "x^2"
