@@ -157,14 +157,14 @@ static XVars X;
 /* Menubar menus. */
 
 static GtkItemFactoryEntry main_menu[] = {
-    { "/_File",                    NULL, NULL,    0,       "<Branch>" },
-    { "/File/_Quit",       "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
+    { "/_Calculator",              NULL, NULL,    0,       "<Branch>" },
+    { "/Calculator/_Quit", "<control>Q", mb_proc, M_QUIT,  "<StockItem>" , GTK_STOCK_QUIT },
 
     { "/_Edit",                    NULL, NULL,    0,       "<Branch>" },
     { "/Edit/_Copy",               NULL, mb_proc, M_COPY,  "<StockItem>", GTK_STOCK_COPY },
     { "/Edit/_Paste",              NULL, mb_proc, M_PASTE, "<StockItem>", GTK_STOCK_PASTE },
     { "/Edit/sep1",                NULL, NULL,    0,       "<Separator>" },
-    { "/Edit/_Insert ASCII Value...", NULL, mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
+    { "/Edit/_Insert ASCII Value...", "<control>I", mb_proc, M_ASCII, "<StockItem>", GTK_STOCK_CONVERT },
 
     { "/_View",                    NULL, NULL,    0,       "<Branch>" },
     { "/View/_Basic Mode",     "<control>B", mb_proc, M_BASIC, "<RadioItem>" },
@@ -175,7 +175,7 @@ static GtkItemFactoryEntry main_menu[] = {
 
     { "/_Help",                    NULL, NULL,    0,       "<Branch>" },
     { "/Help/_Contents...",        "F1", mb_proc, M_CONTENTS, "<StockItem>", GTK_STOCK_HELP },
-    { "/Help/_About Gcalctool",    NULL, mb_proc, M_ABOUT, NULL },
+    { "/Help/_About Gcalctool",    "<control>A", mb_proc, M_ABOUT, NULL },
 };
 
 static GtkItemFactoryEntry acc_menu[] = {
@@ -906,7 +906,7 @@ create_mode_panel(GtkWidget *main_vbox)
     g_signal_connect(G_OBJECT(X->inv), "toggled",
                       G_CALLBACK(inv_cb), NULL);
 
-    X->hyp = gtk_check_button_new_with_mnemonic(_("_Hyp"));
+    X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
     gtk_widget_show(X->hyp);
     gtk_box_pack_end(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(X->hyp), "toggled",
@@ -981,10 +981,8 @@ dismiss_cfframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-/**/fprintf(stderr, "dismiss_rframe called.\n");
-    v->rstate = 0;
-    set_memory_toggle(v->rstate);
-    put_resource(R_REGS, set_bool(v->rstate == TRUE));
+    set_memory_toggle(FALSE);
+    put_resource(R_REGS, "false");
     gtk_widget_hide(X->rframe);
 
     return(TRUE);
@@ -1567,6 +1565,10 @@ make_menu_button(gchar *label_text, int n)
 static void
 mb_proc(gpointer data, int choice, GtkWidget *item)
 {
+    if (!v->started) {
+        return;
+    }
+
     switch (choice) {
         case M_QUIT:
             exit(0);
@@ -1914,6 +1916,7 @@ win_display(enum fcp_type fcptype, int state)
     GtkWidget *f = NULL;
 
     if (fcptype == FCP_REG) {
+        v->rstate = state;
         f = X->rframe;
     }
 
@@ -1923,7 +1926,6 @@ win_display(enum fcp_type fcptype, int state)
     }
     if (state) {
         if (fcptype == FCP_REG) {
-            v->rstate = 1;
             set_memory_toggle(v->rstate);
             ds_position_popup(X->kframe, f, DS_POPUP_ABOVE);
         }

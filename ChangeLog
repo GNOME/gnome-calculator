@@ -7,6 +7,25 @@
 gcalctool change history.
 =========================
 
+v4.2.43 - 28th January 2003.  (richb)
+
+* Further slight adjustments needed to fix Bugzilla bug 104248. The callback
+  handler for the menu items (mb_proc in gtk.c) needed to have a check at the
+  top to see if we'd started the application yet, and if it hadn't, then to 
+  just return. Seemed it was getting called as gcalctool was initially 
+  coming up, which was toggling the state of the v->rstate variable 
+  incorrectly.
+
+* Fixed bug 104240 (http://bugzilla.gnome.org/show_bug.cgi?id=104240)
+  The "File" menubar item is now called "Calculator", and there is a set of
+  unique mnemonics for the various items in the Scientific mode panel.
+  The gcalctool manual pages have been updated to reflect these changes.
+
+* Added in a Control-I mnemonic for Edit->Insert ASCII Value.
+  Added in a Control-A mnemonic for Help->About.
+
+----
+
 v4.2.42 - 28th January 2003.  (richb)
 
 * From: Dennis Cranston <dennis.cranston@yahoo.com>
