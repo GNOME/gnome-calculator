@@ -576,7 +576,7 @@ astz_proc(GtkAction *action)
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
-        show_display(v->MPdisp_val);
+	syntaxdep_show_display();  //show_display(v->MPdisp_val);
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 	make_registers();
     }
@@ -2220,7 +2220,7 @@ mstz_proc(GtkAction *action)
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
-        show_display(v->MPdisp_val);
+	syntaxdep_show_display(); //show_display(v->MPdisp_val);
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 	make_registers();
     }
@@ -2760,7 +2760,7 @@ ts_proc(GtkAction *action)
 
     v->show_tsep = !v->show_tsep;
 
-    show_display(v->MPdisp_val);
+    syntaxdep_show_display();  //show_display(v->MPdisp_val);
     put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
     make_registers();
 }

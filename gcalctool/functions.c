@@ -1075,7 +1075,7 @@ do_rcl_reg(int reg, int value[MP_SIZE])
 }
 
 
-static void
+void
 syntaxdep_show_display()
 {
     switch (v->syntax) {

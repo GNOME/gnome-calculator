@@ -373,6 +373,7 @@ struct button *button_for_fc(char);
 struct button *button_for_value(int);
 struct button *copy_button_info(struct button *);
 
+void syntaxdep_show_display();
 char *button_str(int);
 char *convert(char *);
 char *gc_strdup(char *str);
