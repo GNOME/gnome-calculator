@@ -519,7 +519,7 @@ write_rcfile(enum menu_type mtype, int exists, int cfno,
         }
     }
     STRCPY(tmp_filename, "/tmp/.gcalctoolcfXXXXXX");
-    MKTEMP(tmp_filename);
+    MKSTEMP(tmp_filename);
     if ((tmpfd = fopen(tmp_filename, "w+")) == NULL) {
         return;
     }

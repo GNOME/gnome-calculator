@@ -1440,7 +1440,6 @@ put_resource(enum res_type rtype, char *value)
 static void
 quit_cb(GtkWidget *widget, gpointer user_data)
 {
-/**/fprintf(stderr, "quit_cb called.\n");
     gtk_main_quit();
 }
 
