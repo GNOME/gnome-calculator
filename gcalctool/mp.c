@@ -883,12 +883,10 @@ L100:
 
     if (v->MPerrors) {
         FPRINTF(stderr, 
-                _("*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL "));
-        FPRINTF(stderr, _("TO AN MP ROUTINE ***\n"));
-        FPRINTF(stderr, _("*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"),
-                *i, *j, mx);
-        FPRINTF(stderr, _("*** ACTUALLY MXR = %d, AND T = %d  ***\n"), 
-                MP.mxr, MP.t);
+          _("*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n"));
+        FPRINTF(stderr, 
+          _("*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n*** ACTUALLY MXR = %d, AND T = %d  ***\n"),
+          *i, *j, mx, MP.mxr, MP.t);
     }
 
     mperr();
@@ -3319,8 +3317,8 @@ L20:
     if (x[1] != 0) goto L60;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN\n"));
-        FPRINTF(stderr, _("CALL TO SUBROUTINE MPPWR ***\n"));
+        FPRINTF(stderr, 
+          _("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n"));
     }
 
     mperr();
@@ -3550,8 +3548,8 @@ L50:
  */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPREC, NEWTON ITERATION\n"));
-        FPRINTF(stderr, _("NOT CONVERGING PROPERLY ***\n"));
+        FPRINTF(stderr, 
+          _("*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
     }
 
     mperr();
@@ -3757,8 +3755,8 @@ L140:
  */
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION\n"));
-        FPRINTF(stderr, _("NOT CONVERGING PROPERLY ***\n"));
+        FPRINTF(stderr, 
+          _("*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"));
     }
 
     mperr();
@@ -3869,9 +3867,9 @@ L60:
     if (i2 <= *itmax2) goto L80;
 
     if (v->MPerrors) {
-        FPRINTF(stderr, _("ITMAX2 TOO SMALL IN CALL TO MPSET ***\n"));
-        FPRINTF(stderr, _("*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS \n"));
-        FPRINTF(stderr, _("TO AT LEAST %d ***\n"), i2);
+        FPRINTF(stderr, 
+          _("ITMAX2 TOO SMALL IN CALL TO MPSET ***\n*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n"),
+          i2);
     }
 
     mperr();
