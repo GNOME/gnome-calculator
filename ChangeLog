@@ -7,6 +7,21 @@
 gcalctool change history.
 =========================
 
+v4.2.27 - 20th January 2003.  (richb)
+
+* Removed the setting of an event mask and a global event handler in 
+  create_kframe() in gtk.c. This seems to have fixed up the keyboard 
+  navigation problems.
+
+  Control-F1 now toggles the displaying of tooltip help, so the "-h"
+  command line option has been removed and the old-style event handling
+  code has also been removed.
+
+* Added in a signal handler for the "delete" event for the main gcalctool
+  window. The callback calls gtk_main_quit() to terminate the application.
+
+----
+
 v4.2.26 - 17th January 2003.  (richb)
 
 * HCI change suggested by Calum Benson <Calum.Benson@Sun.COM>

@@ -69,47 +69,6 @@ make_registers()            /* Calculate memory register frame values. */
 }
 
 
-void
-process_event(int type)       /* Process this event. */
-{
-    switch (type) {
-        case KEYBOARD_DOWN : 
-            if (v->pending) {
-                v->current->value = v->cur_ch;
-                do_pending();
-            } else {
-                process_item(button_for_value(v->cur_ch));
-            }
-            break;
-
-        case KEYBOARD_UP : 
-            break;
-
-        case LEFT_DOWN : 
-        case MIDDLE_DOWN : 
-        case RIGHT_DOWN : 
-            break;
-
-        case LEFT_UP : 
-        case MIDDLE_UP : 
-        case RIGHT_UP : 
-            break;
-
-        case TAKE_FROM_SHELF : 
-            handle_selection();
-            break;
-
-        case PUT_ON_SHELF : 
-            get_display();
-            break;
-
-        case SHOWHELP : 
-            do_help();
-            break;
-    }                           
-}
-
-
 /* Process a portion of the parentheses stack. */
 
 void

@@ -124,7 +124,6 @@ static char *make_hostname(Display *);
 static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_cfframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
-static gboolean frame_interpose(GtkWidget *, GdkEvent *, gpointer );
 
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
@@ -141,6 +140,7 @@ static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void menu_proc(gpointer, int, GtkWidget *);
 static void new_cf_value(GtkMenuItem *, gpointer);
 static void notice_prompt(GtkWidget *, char *);
+static void quit_cb(GtkWidget *, gpointer);
 static void set_button_state(GtkWidget *, int);
 static void setup_default_icon(void);
 static void trig_cb(GtkToggleButton *, gpointer);
@@ -642,6 +642,9 @@ create_kframe()
     g_object_set_data(G_OBJECT(X->kframe), "kframe", X->kframe);
     gtk_window_set_resizable(GTK_WINDOW(X->kframe), TRUE);
 
+    g_signal_connect(G_OBJECT(X->kframe), "delete_event",
+                       G_CALLBACK(quit_cb), NULL);
+
     X->kvbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(X->kvbox);
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
@@ -692,10 +695,6 @@ create_kframe()
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), X->kbd_accel);
     grey_buttons(v->base);
     setup_default_icon();
-
-    gdk_window_set_events(X->kframe->window, FRAME_MASK);
-    g_signal_connect(G_OBJECT(X->kframe), "event",
-                     G_CALLBACK(frame_interpose), NULL);
 }
 
 
@@ -945,107 +944,6 @@ find_file(const char *base, GError **err)
         }
         return(filename);
     }
-}
-
-
-static gboolean
-frame_interpose(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    int button, down, key, type, up;
-
-    type = event->type;
-    if (type == GDK_CONFIGURE || type == GDK_EXPOSE) {
-        return(FALSE);
-    }
-
-    down = (type == GDK_KEY_PRESS)   || (type == GDK_BUTTON_PRESS);
-    up   = (type == GDK_KEY_RELEASE) || (type == GDK_BUTTON_RELEASE);
-
-    if (type == GDK_DELETE) {
-        exit(0);
-    }
-
-    if (type == GDK_MAP) {
-        if (v->rstate) {
-            win_display(FCP_REG,  TRUE);
-        }
-        v->iconic = FALSE;
-    }
-
-    if (type == GDK_UNMAP) {
-        if (v->rstate) {
-            win_display(FCP_REG,  FALSE);
-        }
-        v->iconic = TRUE;
-    }
-
-    v->curx   = event->button.x;
-    v->cury   = event->button.y;
-
-    if (type == GDK_BUTTON_PRESS || type == GDK_BUTTON_RELEASE) {
-        button = event->button.button;
-        if (down && button == 1) {
-            v->event_type = LEFT_DOWN;
-        } else if (down && button == 2) {
-            v->event_type = MIDDLE_DOWN;
-        } else if (down && button == 3) {
-            v->event_type = RIGHT_DOWN;
-        } else if (up && button == 1) {
-            v->event_type = LEFT_UP;
-        } else if (up && button == 2) {
-            v->event_type = MIDDLE_UP;
-        } else if (up && button == 3) {
-            v->event_type = RIGHT_UP;
-        }
-        process_event(v->event_type);
-    }
-
-    if (type == GDK_KEY_PRESS || type == GDK_KEY_RELEASE) {
-        key = event->key.keyval;
-        if ((key == GDK_L6) && down) {
-            v->event_type = PUT_ON_SHELF;
-        } else if ((key == GDK_L10) && down) {
-            v->event_type = PUT_ON_SHELF;
-        } else if ((key == GDK_L8) && down) {
-            v->event_type = TAKE_FROM_SHELF;
-        } else if ((key == GDK_Help) && down) {
-            v->event_type = SHOWHELP;
-
-/* Hack Alert.
- * There is a bug: http://bugzilla.gnome.org/show_bug.cgi?id=79184
- * that is preventing the numeric keypad "+" and "." keys from working
- * correctly. Until this is fixed, an explicit test for those two keys
- * has been added here.
- */
-        } else if (type == GDK_KEY_PRESS && key == GDK_KP_Decimal) {
-            process_item(button_for_value(KEY_PNT));
-            return(TRUE);
-        } else if (type == GDK_KEY_PRESS && key == GDK_KP_Add) {
-            process_item(button_for_value(KEY_ADD));
-            return(TRUE);
-
-        } else if (v->pending) {
-            if (key == GDK_Shift_L || key == GDK_Shift_R) {
-                return(FALSE);
-            }
-            if (type == GDK_KEY_PRESS) {
-                v->current->value = key;
-                do_pending();
-            } else {
-                return(FALSE);
-            }
-        } else {
-
-/* If it's a not a special keyboard down event, then let the keyboard
- * accelerators handle it.
- */
-            v->event_type = LASTEVENTPLUSONE;
-            return(FALSE);
-        }
-        process_event(v->event_type);
-    }
-
-    return(TRUE);
 }
 
 
@@ -1434,7 +1332,7 @@ mb_proc(gpointer data, int choice, GtkWidget *item)
             break;
 
         case M_ASCII:
-            do_ascii();
+            show_ascii_frame();
             break;
 
         case M_BASIC:
@@ -1540,20 +1438,17 @@ put_resource(enum res_type rtype, char *value)
 
 
 static void
-set_button_state(GtkWidget *w, int isSensitive)
+quit_cb(GtkWidget *widget, gpointer user_data)
 {
-    gtk_widget_set_sensitive(w, isSensitive);
+/**/fprintf(stderr, "quit_cb called.\n");
+    gtk_main_quit();
 }
 
 
-void
-set_help_state(int show_help)
+static void
+set_button_state(GtkWidget *w, int isSensitive)
 {
-    if (show_help) {
-        gtk_tooltips_enable(X->tips);
-    } else {
-        gtk_tooltips_disable(X->tips);
-    }
+    gtk_widget_set_sensitive(w, isSensitive);
 }
 
 
@@ -1720,7 +1615,6 @@ void
 start_tool()
 {
     v->started = 1;
-    set_help_state(v->show_help);
     set_item(BASEITEM, v->base);
     set_item(TTYPEITEM, v->ttype);
     set_item(NUMITEM, v->dtype);

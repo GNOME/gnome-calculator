@@ -64,20 +64,6 @@
 #define STRNCAT      (void) strncat
 #define UNLINK       (void) unlink
 
-/* Various pseudo events used by the calctool program. */
-#define KEYBOARD_DOWN    100    /* Keyboard character was pressed. */
-#define KEYBOARD_UP      101    /* Keyboard character was released. */
-#define LEFT_DOWN        102    /* Left mouse button was depressed. */
-#define LEFT_UP          103    /* Left mouse button was debounced. */
-#define MIDDLE_DOWN      104    /* Middle mouse button was depressed. */
-#define MIDDLE_UP        105    /* Middle mouse button was debounced. */
-#define RIGHT_DOWN       106    /* Right mouse button was depressed. */
-#define RIGHT_UP         107    /* Right mouse button was debounced. */
-#define TAKE_FROM_SHELF  108    /* PUT function key was pressed. */
-#define PUT_ON_SHELF     109    /* GET function key was pressed. */
-#define SHOWHELP         110    /* F1 key was pressed; show help message. */
-#define LASTEVENTPLUSONE 111    /* Not one of the above. */
-
 /* Menu bar menu types. */
 enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_CONTENTS, M_COPY,  
                M_FIN,   M_PASTE, M_QUIT,  M_REGS,     M_SCI };
@@ -101,8 +87,7 @@ enum mode_type { BASIC, FINANCIAL, SCIENTIFIC };
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 /* Resources. */
-enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_HELP,
-                R_REGS,     R_TRIG, R_BEEP
+enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG, R_BEEP
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -324,39 +309,26 @@ struct calcVars {                      /* Calctool variables and options. */
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_ch;        /* Current character if keyboard event. */
-    int curx;          /* Current mouse X position. */
-    int cury;          /* Current mouse Y position. */
     int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
-    int event_type;    /* Type of event being currently processed. */
-    int hasicon;       /* Set if user gave icon name on command line. */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
     int iconic;        /* Set if window is currently iconic. */
-    int iheight;       /* Initial height of the calctool window. */
     int inverse;       /* If set, trig and log functions will be inversed. */
     int ismenu;        /* Set when do_pending called via a popup menu. */
-    int iwidth;        /* Initial width of the calctool window. */
-    int ix;            /* Initial X position of the icon. */
-    int iy;            /* Initial Y position of the icon. */
     int key_exp;       /* Set if entering exponent number. */
     int ndisplay;      /* Height of the numerical display. */
     int new_input;     /* New number input since last op. */
     int noparens;      /* Count of left brackets still to be matched. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
-    int oldx;          /* X position of previous left mouse down. */
-    int oldy;          /* Y position of previous left mouse down. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
     int opstack[MAXSTACK];  /* Stack containing parentheses input. */
     int pending;            /* Set for command depending on multiple presses. */
     int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
-    int show_help;     /* Set if we wish to show tooltip help. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
-    int wx;            /* Initial X position of the window. */
-    int wy;            /* Initial Y position of the window. */
 } CalcVars;
 
 typedef struct calcVars *Vars;
@@ -389,7 +361,6 @@ int main(int, char **);
 void beep();
 void clear_display(int);
 void display_prop_sheet();
-void do_ascii();
 void do_base(enum base_type);
 void do_business();
 void do_calc();
@@ -399,7 +370,6 @@ void do_clear_entry();
 void do_delete();
 void do_numtype(enum num_type);
 void do_expno();
-void do_help();
 void do_immed();
 void do_memory(int);
 void do_mode();
@@ -431,7 +401,6 @@ void make_reg(int, char *);
 void make_registers();
 void MPstr_to_num(char *, enum base_type, int *);
 void paren_disp(char);
-void process_event(int);
 void process_item(struct button *);
 void process_stack(int, int, int);
 void process_str(char *);
@@ -444,7 +413,6 @@ void read_str(char **, char *);
 void save_pending_values(struct button *);
 void save_resources();
 void set_display(char *str);
-void set_help_state(int);
 void set_hyp_item(int);
 void set_ins_key();
 void set_item(enum item_type, int);

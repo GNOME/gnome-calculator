@@ -61,24 +61,6 @@ do_accuracy()     /* Set display accuracy. */
 
 
 void
-do_ascii()        /* Convert ASCII value. */
-{
-    int val;
-
-    if (v->pending) {
-        val = v->cur_ch;
-        mpcim(&val, v->MPdisp_val);
-        show_display(v->MPdisp_val);
-        v->pending = 0;
-    } else if (v->event_type != KEYBOARD_DOWN) {
-        show_ascii_frame();
-    } else {
-        save_pending_values(v->current);
-    }
-}
-
-
-void
 do_base(enum base_type b)    /* Change the current base setting. */
 {
     v->base = b;
@@ -518,14 +500,6 @@ do_function()      /* Perform a user defined function. */
         process_str(v->fun_vals[fno]);
     }
     v->curwin = scurwin;
-}
-
-
-void
-do_help()            /* Help key was pressed; show help message. */
-{
-    v->show_help = !v->show_help;
-    set_help_state(v->show_help); 
 }
 
 

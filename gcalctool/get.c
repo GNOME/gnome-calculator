@@ -151,10 +151,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                     }
                     break;
 
-                case 'h' :                    /* Show tooltips help. */
-                    v->show_help = 1;
-                    break;
-
                 case '?' :
                 case 'v' : 
                     usage(v->progname);
@@ -322,15 +318,12 @@ init_vars()    /* Setup default values for various variables. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
     v->rstate        = 0;      /* No memory register frame display initially. */
     v->iconic        = FALSE;  /* Calctool not iconic by default. */
-    v->show_help     = FALSE;  /* Don't show tooltips help. */
     v->MPdebug       = FALSE;  /* No debug info by default. */
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
     size             = MP_SIZE;
     mpset(&acc, &size, &size);
 
-    v->iheight = v->iwidth = -1;   /* To signify no initial size. */
-    v->hasicon     = FALSE;        /* Use standard calctool icon by default. */
     v->beep        = TRUE;         /* Beep on error by default. */
     v->error       = 0;            /* No calculator error initially. */
     v->key_exp     = 0;            /* Not entering an exponent number. */
@@ -457,9 +450,6 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
-    if (get_bool_resource(R_HELP, &boolval)) {
-        v->show_help = boolval;
-    }
     if (get_bool_resource(R_BEEP, &boolval)) {
         v->beep = boolval;
     }
@@ -606,5 +596,4 @@ write_resources()
     put_resource(R_TRIG,     Rtstr[(int) v->ttype]);
     put_resource(R_REGS,     set_bool(v->rstate == TRUE));
     put_resource(R_BEEP,     set_bool(v->beep == TRUE));
-    put_resource(R_HELP,     set_bool(v->show_help == TRUE));
 }
