@@ -577,7 +577,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
 static void
 create_aframe()  /* Create auxiliary frame for ASC key. */
 {
-    GtkWidget *vbox, *hbox, *button_hbox, *label, *separator;
+    GtkWidget *vbox, *hbox, *button_hbox, *label;
     GtkWidget *insert_button, *cancel_button;
 
     X->aframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -587,18 +587,18 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     gtk_window_set_type_hint(GTK_WINDOW(X->aframe), 
                              GDK_WINDOW_TYPE_HINT_DIALOG);
 
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_vbox_new(FALSE, 12);
     gtk_widget_show(vbox);
-    gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 12);
     gtk_container_add(GTK_CONTAINER(X->aframe), vbox);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_hbox_new(FALSE, 6);
     gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, GNOME_PAD);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
     label = gtk_label_new_with_mnemonic(_("Ch_aracter:"));
     gtk_widget_show(label);
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
 
     X->aframe_ch = gtk_entry_new();
@@ -606,21 +606,17 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
     gtk_entry_set_max_length(GTK_ENTRY(X->aframe_ch), 1);
     gtk_widget_show(X->aframe_ch);
     gtk_box_pack_start(GTK_BOX(hbox), X->aframe_ch, 
-                       FALSE, FALSE, GNOME_PAD_SMALL);
-
-    separator = gtk_hseparator_new();
-    gtk_widget_show(separator);
-    gtk_box_pack_start(GTK_BOX(vbox), separator, FALSE, FALSE, 0);
+                       FALSE, FALSE, 0);
 
     button_hbox = gtk_hbutton_box_new();
     gtk_button_box_set_layout(GTK_BUTTON_BOX(button_hbox), GTK_BUTTONBOX_END);
     gtk_widget_ref(button_hbox);
     gtk_widget_show(button_hbox);
     gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(button_hbox), GNOME_PAD_SMALL);
-    gtk_box_set_spacing(GTK_BOX(button_hbox), GNOME_PAD);
+    gtk_box_set_spacing(GTK_BOX(button_hbox), 12);
 
     cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
+    GTK_WIDGET_SET_FLAGS(cancel_button, GTK_CAN_DEFAULT);
     gtk_widget_ref(cancel_button);
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
@@ -703,9 +699,10 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
     GdkGeometry geometry;
     GtkTreeModel *model;
     GtkWidget *label, *sw, *treeview, *vbox;
+    gchar *str;
 
     title = (mtype == M_CON) ? _("Edit Constants") : _("Edit Functions");
-    geometry.min_width = 360;
+    geometry.min_width = 380;
     geometry.min_height = 300;
     if (dialog == NULL) {
         dialog = gtk_dialog_new_with_buttons(title, NULL,
@@ -719,28 +716,34 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
         gtk_dialog_set_default_response(GTK_DIALOG(dialog), 
                                         GTK_RESPONSE_ACCEPT);
         gtk_dialog_set_has_separator(GTK_DIALOG(dialog), FALSE);
+        gtk_container_set_border_width(GTK_CONTAINER(dialog), 5);
         gtk_window_set_resizable(GTK_WINDOW(dialog), TRUE);
         gtk_window_set_transient_for(GTK_WINDOW(dialog), 
                                      GTK_WINDOW(X->kframe));
         gtk_window_set_geometry_hints(GTK_WINDOW(dialog), dialog,
                                       &geometry, GDK_HINT_MIN_SIZE);
         vbox = gtk_vbox_new(FALSE, 6);
-        gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
 
-        label = gtk_label_new(
-          _("All constant values are specified in the decimal numeric base."));
+	str = g_strconcat("<small><i><b>", _("Note:"), "</b> ", 
+            _("All constant values are specified in the decimal numeric base."),
+            "</i></small>", NULL); 
+	label = gtk_label_new(_(str));
+	g_free(str);
 	gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(vbox), label, FALSE, FALSE, 0);
 
-        label = gtk_label_new(_("Click a value or description to edit it:"));
+        label = gtk_label_new_with_mnemonic(
+                    _("Click a _value or description to edit it:"));
         gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
         gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
         gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
 
         sw = gtk_scrolled_window_new(NULL, NULL);
         gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
-                                            GTK_SHADOW_ETCHED_IN);
+                                            GTK_SHADOW_NONE);
         gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
                                        GTK_POLICY_AUTOMATIC,
                                        GTK_POLICY_NEVER);
@@ -749,6 +752,7 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 	model = create_cf_model(mtype, dialog);
 
         treeview = gtk_tree_view_new_with_model(model);
+        gtk_label_set_mnemonic_widget(GTK_LABEL(label), treeview);
         g_object_unref(model);
         gtk_tree_view_set_rules_hint(GTK_TREE_VIEW(treeview), TRUE);
         gtk_tree_selection_set_mode(
@@ -1915,7 +1919,6 @@ set_display(char *str)
 void
 set_error_state(int error)
 {
-    GtkWidget *mi;
     int i;
 
     v->error = error;
