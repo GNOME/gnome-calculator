@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-24 07:32-0700\n"
-"PO-Revision-Date: 2004-09-22 08:07-0400\n"
-"Last-Translator: Gareth Owen <gowen72@yahoo.comg>\n"
+"POT-Creation-Date: 2004-10-03 23:11+0100\n"
+"PO-Revision-Date: 2004-10-03 23:11+0100\n"
+"Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -150,7 +150,8 @@ msgstr "9"
 msgid "Numeric 9"
 msgstr "Numeric 9"
 
-#: gcalctool/calctool.c:165 gcalctool/calctool.c:173
+#: gcalctool/calctool.c:165
+#: gcalctool/calctool.c:173
 msgid "/"
 msgstr "/"
 
@@ -230,7 +231,8 @@ msgstr "6"
 msgid "Numeric 6"
 msgstr "Numeric 6"
 
-#: gcalctool/calctool.c:263 gcalctool/calctool.c:271
+#: gcalctool/calctool.c:263
+#: gcalctool/calctool.c:271
 msgid "*"
 msgstr "*"
 
@@ -543,7 +545,8 @@ msgid "16 bit unsigned integer"
 msgstr "16 bit unsigned integer"
 
 #. Payment period
-#: gcalctool/calctool.c:777 gcalctool/syntax_translation.c:74
+#: gcalctool/calctool.c:777
+#: gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
 
@@ -560,7 +563,8 @@ msgid "32 bit unsigned integer"
 msgstr "32 bit unsigned integer"
 
 #. 16-bit unsigned integer value
-#: gcalctool/calctool.c:789 gcalctool/syntax_translation.c:75
+#: gcalctool/calctool.c:789
+#: gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
 
@@ -700,7 +704,8 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Hexadecimal digit E"
 
-#: gcalctool/calctool.c:965 gcalctool/gtk.c:1491
+#: gcalctool/calctool.c:965
+#: gcalctool/gtk.c:1491
 msgid "F"
 msgstr "F"
 
@@ -764,7 +769,8 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Hexadecimal digit B"
 
-#: gcalctool/calctool.c:1062 gcalctool/gtk.c:1483
+#: gcalctool/calctool.c:1062
+#: gcalctool/gtk.c:1483
 msgid "C"
 msgstr "C"
 
@@ -845,7 +851,8 @@ msgid "e"
 msgstr "e"
 
 #. Bitwise OR
-#: gcalctool/calctool.c:1230 gcalctool/syntax_translation.c:59
+#: gcalctool/calctool.c:1230
+#: gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
 
@@ -875,10 +882,12 @@ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Cubic-centimeter-to-cubic-inch conversion factor"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: gcalctool/calctool.c:1249 gcalctool/display.c:266 gcalctool/mp.c:1966
-#: gcalctool/mpmath.c:387 gcalctool/mpmath.c:426 gcalctool/mpmath.c:481
+#: gcalctool/calctool.c:1249
+#: gcalctool/display.c:266
+#: gcalctool/mp.c:1966
+#: gcalctool/mpmath.c:387
+#: gcalctool/mpmath.c:426
+#: gcalctool/mpmath.c:481
 msgid "Error"
 msgstr "Error"
 
@@ -902,7 +911,8 @@ msgstr "Cleared display, prefix without an operator is not allowed"
 msgid "Malformed parenthesis expression"
 msgstr "Malformed parenthesis expression"
 
-#: gcalctool/functions.c:1008 gcalctool/functions.c:1256
+#: gcalctool/functions.c:1008
+#: gcalctool/functions.c:1256
 msgid "No sane value to store"
 msgstr "No sane value to store"
 
@@ -918,7 +928,8 @@ msgstr "Operand stack error"
 msgid "-a needs accuracy value"
 msgstr "-a needs accuracy value"
 
-#: gcalctool/get.c:157 gcalctool/get.c:311
+#: gcalctool/get.c:157
+#: gcalctool/get.c:311
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: accuracy should be in the range 0-%d\n"
@@ -929,9 +940,7 @@ msgid "%s: %s as next argument.\n"
 msgstr "%s: %s as next argument.\n"
 
 #. No calculator error initially.
-#. Not entering an exponent number.
 #. No pending arithmetic operation.
-#. No User supplied title line.
 #: gcalctool/get.c:269
 msgid "calculator"
 msgstr "calculator"
@@ -980,8 +989,9 @@ msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
 #. translators: R is the short form of register used inter alia
-#. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1272 gcalctool/gtk.c:1405
+#: gcalctool/graphics.c:61
+#: gcalctool/gtk.c:1272
+#: gcalctool/gtk.c:1405
 msgid "R"
 msgstr "R"
 
@@ -1046,89 +1056,121 @@ msgid "_About"
 msgstr "_About"
 
 #: gcalctool/gtk.c:210
-msgid "Show about help"
-msgstr "Show about help"
+msgid "Show the About Gcalctool dialog"
+msgstr "Show the About Gcalctool dialogue"
 
-#: gcalctool/gtk.c:212 gcalctool/gtk.c:213 gcalctool/gtk.c:243
+#: gcalctool/gtk.c:212
+#: gcalctool/gtk.c:213
+#: gcalctool/gtk.c:243
 #: gcalctool/gtk.c:244
 msgid "1 place"
 msgstr "1 place"
 
-#: gcalctool/gtk.c:214 gcalctool/gtk.c:215 gcalctool/gtk.c:245
+#: gcalctool/gtk.c:214
+#: gcalctool/gtk.c:215
+#: gcalctool/gtk.c:245
 #: gcalctool/gtk.c:246
 msgid "2 places"
 msgstr "2 places"
 
-#: gcalctool/gtk.c:216 gcalctool/gtk.c:217 gcalctool/gtk.c:247
+#: gcalctool/gtk.c:216
+#: gcalctool/gtk.c:217
+#: gcalctool/gtk.c:247
 #: gcalctool/gtk.c:248
 msgid "3 places"
 msgstr "3 places"
 
-#: gcalctool/gtk.c:218 gcalctool/gtk.c:219 gcalctool/gtk.c:249
+#: gcalctool/gtk.c:218
+#: gcalctool/gtk.c:219
+#: gcalctool/gtk.c:249
 #: gcalctool/gtk.c:250
 msgid "4 places"
 msgstr "4 places"
 
-#: gcalctool/gtk.c:220 gcalctool/gtk.c:221 gcalctool/gtk.c:251
+#: gcalctool/gtk.c:220
+#: gcalctool/gtk.c:221
+#: gcalctool/gtk.c:251
 #: gcalctool/gtk.c:252
 msgid "5 places"
 msgstr "5 places"
 
-#: gcalctool/gtk.c:222 gcalctool/gtk.c:223 gcalctool/gtk.c:253
+#: gcalctool/gtk.c:222
+#: gcalctool/gtk.c:223
+#: gcalctool/gtk.c:253
 #: gcalctool/gtk.c:254
 msgid "6 places"
 msgstr "6 places"
 
-#: gcalctool/gtk.c:224 gcalctool/gtk.c:225 gcalctool/gtk.c:255
+#: gcalctool/gtk.c:224
+#: gcalctool/gtk.c:225
+#: gcalctool/gtk.c:255
 #: gcalctool/gtk.c:256
 msgid "7 places"
 msgstr "7 places"
 
-#: gcalctool/gtk.c:226 gcalctool/gtk.c:227 gcalctool/gtk.c:257
+#: gcalctool/gtk.c:226
+#: gcalctool/gtk.c:227
+#: gcalctool/gtk.c:257
 #: gcalctool/gtk.c:258
 msgid "8 places"
 msgstr "8 places"
 
-#: gcalctool/gtk.c:228 gcalctool/gtk.c:229 gcalctool/gtk.c:259
+#: gcalctool/gtk.c:228
+#: gcalctool/gtk.c:229
+#: gcalctool/gtk.c:259
 #: gcalctool/gtk.c:260
 msgid "9 places"
 msgstr "9 places"
 
-#: gcalctool/gtk.c:230 gcalctool/gtk.c:231 gcalctool/gtk.c:261
+#: gcalctool/gtk.c:230
+#: gcalctool/gtk.c:231
+#: gcalctool/gtk.c:261
 #: gcalctool/gtk.c:262
 msgid "10 places"
 msgstr "10 places"
 
-#: gcalctool/gtk.c:232 gcalctool/gtk.c:233 gcalctool/gtk.c:263
+#: gcalctool/gtk.c:232
+#: gcalctool/gtk.c:233
+#: gcalctool/gtk.c:263
 #: gcalctool/gtk.c:264
 msgid "11 places"
 msgstr "11 places"
 
-#: gcalctool/gtk.c:234 gcalctool/gtk.c:235 gcalctool/gtk.c:265
+#: gcalctool/gtk.c:234
+#: gcalctool/gtk.c:235
+#: gcalctool/gtk.c:265
 #: gcalctool/gtk.c:266
 msgid "12 places"
 msgstr "12 places"
 
-#: gcalctool/gtk.c:236 gcalctool/gtk.c:237 gcalctool/gtk.c:267
+#: gcalctool/gtk.c:236
+#: gcalctool/gtk.c:237
+#: gcalctool/gtk.c:267
 #: gcalctool/gtk.c:268
 msgid "13 places"
 msgstr "13 places"
 
-#: gcalctool/gtk.c:238 gcalctool/gtk.c:239 gcalctool/gtk.c:269
+#: gcalctool/gtk.c:238
+#: gcalctool/gtk.c:239
+#: gcalctool/gtk.c:269
 #: gcalctool/gtk.c:270
 msgid "14 places"
 msgstr "14 places"
 
-#: gcalctool/gtk.c:240 gcalctool/gtk.c:241 gcalctool/gtk.c:271
+#: gcalctool/gtk.c:240
+#: gcalctool/gtk.c:241
+#: gcalctool/gtk.c:271
 #: gcalctool/gtk.c:272
 msgid "15 places"
 msgstr "15 places"
 
-#: gcalctool/gtk.c:277 gcalctool/gtk.c:283
+#: gcalctool/gtk.c:277
+#: gcalctool/gtk.c:283
 msgid "Show _Trailing Zeroes"
 msgstr "Show _Trailing Zeroes"
 
-#: gcalctool/gtk.c:278 gcalctool/gtk.c:284
+#: gcalctool/gtk.c:278
+#: gcalctool/gtk.c:284
 msgid "Show trailing zeroes"
 msgstr "Show trailing zeroes"
 
@@ -1339,7 +1381,9 @@ msgstr "Significant _places:"
 msgid "_Set"
 msgstr "_Set"
 
-#: gcalctool/gtk.c:1094 gcalctool/gtk.c:1096 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1094
+#: gcalctool/gtk.c:1096
+#: gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Calculator"
 
@@ -1375,10 +1419,8 @@ msgstr "Other (%d) ..."
 
 #: gcalctool/gtk.c:1898
 #, c-format
-msgid ""
-"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-msgstr ""
-"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+msgid "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+msgstr "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 
 #: gcalctool/gtk.c:2114
 msgid "Activated no operator precedence mode"
@@ -1594,80 +1636,3 @@ msgstr "xor"
 msgid "Perform calculations"
 msgstr "Perform calculations"
 
-#~ msgid "BASIC"
-#~ msgstr "BASIC"
-
-#~ msgid "FINANCIAL"
-#~ msgstr "FINANCIAL"
-
-#~ msgid "SCIENTIFIC"
-#~ msgstr "SCIENTIFIC"
-
-#~ msgid "SCIENTIFIC_EXP"
-#~ msgstr "SCIENTIFIC_EXP"
-
-#~ msgid "Parsing is done from left to right"
-#~ msgstr "Parsing is done from left to right"
-
-#~ msgid "Parsing is done with operator precedencer"
-#~ msgstr "Parsing is done with operator precedence"
-
-#~ msgid "Gcalctool - Next Generation (Experimental)"
-#~ msgstr "Gcalctool - Next Generation (Experimental)"
-
-#~ msgid "/Calculator/_Quit"
-#~ msgstr "/Calculator/_Quit"
-
-#~ msgid "/Edit/sep1"
-#~ msgstr "/Edit/sep1"
-
-#~ msgid "/Edit/_Insert ASCII Value..."
-#~ msgstr "/Edit/_Insert ASCII Value..."
-
-#~ msgid "/View/_Basic Mode"
-#~ msgstr "/View/_Basic Mode"
-
-#~ msgid "/View/_Financial Mode"
-#~ msgstr "/View/_Financial Mode"
-
-#~ msgid "/View/_Scientific Mode"
-#~ msgstr "/View/_Scientific Mode"
-
-#~ msgid "/View/sep1"
-#~ msgstr "/View/sep1"
-
-#~ msgid "/View/Show _Trailing Zeroes"
-#~ msgstr "/View/Show _Trailing Zeroes"
-
-#~ msgid "/View/sep2"
-#~ msgstr "/View/sep2"
-
-#~ msgid "/View/_Memory Registers"
-#~ msgstr "/View/_Memory Registers"
-
-#~ msgid "/sep1"
-#~ msgstr "/sep1"
-
-#~ msgid "Logical OR"
-#~ msgstr "Logical OR"
-
-#~ msgid "Logical AND"
-#~ msgstr "Logical AND"
-
-#~ msgid "Logical NOT"
-#~ msgstr "Logical NOT"
-
-#~ msgid "Logical XOR"
-#~ msgstr "Logical XOR"
-
-#~ msgid "Logical XNOR"
-#~ msgstr "Logical XNOR"
-
-#~ msgid "kilometers per hour or miles per hour"
-#~ msgstr "miles in a kilometre"
-
-#~ msgid "centimeters or inches"
-#~ msgstr "inches in a centimetre"
-
-#~ msgid "grams or ounces"
-#~ msgstr "ounces in a gram"
