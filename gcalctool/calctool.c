@@ -604,7 +604,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 
 {
     N_("<"),
-    N_("Shift displayed value 0-15 places to the left"),
+    N_("Shift displayed value 1-15 places to the left"),
     CALC_MOD_SHIFT_MASK,
     CALC_KEY_LSFT,
     '<',
@@ -613,7 +613,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_(">"),
-    N_("Shift displayed value 0-15 places to the right"),
+    N_("Shift displayed value 1-15 places to the right"),
     CALC_MOD_SHIFT_MASK,
     CALC_KEY_RSFT,
     '>',
@@ -732,7 +732,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },       
 {        
     N_("x!"),
-    N_("factorial of displayed value"),
+    N_("Factorial of displayed value"),
     CALC_MOD_SHIFT_MASK,
     CALC_KEY_FACT,
     '!',
@@ -960,7 +960,7 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    SPRINTF(title, "%s [%s]", v->tool_label, mstrs[(int) v->modetype]);
+    SPRINTF(title, "%s [%s]", v->tool_label, _(mstrs[(int) v->modetype]));
     set_title(FCP_KEY, title);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */

@@ -217,7 +217,7 @@ static GtkItemFactoryEntry main_menu[] = {
 
 static GtkItemFactoryEntry acc_menu[] = {
     { N_("/0 radix places"), NULL, menu_proc, '0', "<RadioItem>" },
-    { N_("/1 radix places"), NULL, menu_proc, '1', "/0 radix places" },
+    { N_("/1 radix place"), NULL, menu_proc, '1', "/0 radix places" },
     { N_("/2 radix places"), NULL, menu_proc, '2', "/0 radix places" },
     { N_("/3 radix places"), NULL, menu_proc, '3', "/0 radix places" },
     { N_("/4 radix places"), NULL, menu_proc, '4', "/0 radix places" },
@@ -817,6 +817,13 @@ create_kbd_accel(GtkWidget *button, guint button_mods, guint button_key) {
 }
 
 
+static char *
+item_factory_translate_func (const char *path, gpointer func_data)
+{
+    return _(path);
+}
+
+
 void
 create_kframe()
 {
@@ -852,6 +859,9 @@ create_kframe()
     count = sizeof(main_menu) / sizeof(main_menu[0]);
     X->mb_fact = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", 
                                       X->kbd_accel);
+    gtk_item_factory_set_translate_func(X->mb_fact,
+                                        item_factory_translate_func,
+                                        NULL, NULL);
     gtk_item_factory_create_items(X->mb_fact, count, main_menu, NULL);
     X->menubar = gtk_item_factory_get_widget(X->mb_fact, "<main>");
     gtk_widget_show(X->menubar);
@@ -931,6 +941,8 @@ create_mem_menu(enum menu_type mtype)
 
     for (i = 0; i < MAXREGS; i++) {
         SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
+	/* translators: R is the short form of register used inter alia
+	in popup menus */
                 _("R"), i, make_number(v->MPmvals[i], FALSE));
         create_menu_item_with_markup(mstr, m, i);
     }
@@ -1591,13 +1603,6 @@ make_reg(int n, char *str)
 }
 
 
-static char *
-item_factory_translate_func (const char *path, gpointer func_data)
-{
-    return _(path);
-}
-
-
 static GtkWidget *
 create_menu(enum menu_type mtype, struct button *n)
 {
@@ -1642,9 +1647,9 @@ create_menu(enum menu_type mtype, struct button *n)
         X->menus[m] == NULL) {
         X->fact[m] = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", 
                                           X->kbd_accel);
-	gtk_item_factory_set_translate_func (X->fact[m],
-					     item_factory_translate_func,
-					     NULL, NULL);
+	gtk_item_factory_set_translate_func(X->fact[m],
+					    item_factory_translate_func,
+					    NULL, NULL);
         gtk_item_factory_create_items(X->fact[m], count, menu, (gpointer) m);
         X->menus[m] = gtk_item_factory_get_widget(X->fact[m], "<popup>");
     }

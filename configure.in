@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
-AM_INIT_AUTOMAKE(gcalctool, 4.2.77)
+AM_INIT_AUTOMAKE(gcalctool, 4.2.78)
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
@@ -68,11 +68,12 @@ dnl Internationalization
 dnl *******************************
 
 GETTEXT_PACKAGE=gcalctool
+AC_PREREQ(2.53)
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
 dnl Add the languages which your application supports here.
-ALL_LINGUAS="am ca cs es fr ja nl no pt pt_BR sv uk zh_TW"
+ALL_LINGUAS="am ca cs de es fr ja nl no pt pt_BR sv uk zh_TW"
 AM_GLIB_GNU_GETTEXT
 
 dnl Use -Wall if we have gcc.
