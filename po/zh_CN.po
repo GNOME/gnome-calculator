@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 07:24-0800\n"
-"PO-Revision-Date: 2004-11-20 15:44+0800\n"
+"POT-Creation-Date: 2005-01-23 11:50+0100\n"
+"PO-Revision-Date: 2005-01-24 00:18+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -85,29 +85,24 @@ msgstr "设置三角函数的反函数"
 
 #. Mode titles to be added to the titlebar.
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:335
-#, fuzzy
 msgid "Basic"
-msgstr "标准模式"
+msgstr "基本"
 
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:337
-#, fuzzy
 msgid "Advanced"
-msgstr "高级模式"
+msgstr "高级"
 
 #: gcalctool/calctool.c:70 gcalctool/gtk.c:339
-#, fuzzy
 msgid "Financial"
-msgstr "金融模式"
+msgstr "金融"
 
 #: gcalctool/calctool.c:71 gcalctool/gtk.c:341
-#, fuzzy
 msgid "Scientific"
-msgstr "科学模式"
+msgstr "科学模"
 
 #: gcalctool/calctool.c:71
-#, fuzzy
 msgid "Expression"
-msgstr "表达式模式"
+msgstr "表达式"
 
 #. Strings for each trig type value.
 #: gcalctool/calctool.c:75
@@ -551,7 +546,7 @@ msgstr "显示值的 16 位无符号整数 (])"
 msgid "16 bit unsigned integer"
 msgstr "16 位无符号整数"
 
-#. Payment period
+#. 16-bit unsigned integer value
 #: gcalctool/calctool.c:780 gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
@@ -568,7 +563,7 @@ msgstr "显示值的 32 位无符号整数 ([)"
 msgid "32 bit unsigned integer"
 msgstr "32 位无符号整数"
 
-#. 16-bit unsigned integer value
+#. 32-bit unsigned integer value
 #: gcalctool/calctool.c:792 gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
@@ -815,7 +810,7 @@ msgstr "按位非 [~]"
 
 #: gcalctool/calctool.c:1109
 msgid "~"
-msgstr ""
+msgstr "~"
 
 #: gcalctool/calctool.c:1113
 msgid "Xor"
@@ -853,7 +848,7 @@ msgstr "2 的平方根"
 msgid "e"
 msgstr "e"
 
-#. Bitwise OR
+#. PI
 #: gcalctool/calctool.c:1255 gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
@@ -912,7 +907,7 @@ msgstr "格式错误的括号表达式"
 
 #: gcalctool/functions.c:1008 gcalctool/functions.c:1256
 msgid "No sane value to store"
-msgstr ""
+msgstr "没有要存储的标准值"
 
 #: gcalctool/functions.c:1304
 msgid "Numeric stack error"
@@ -1158,11 +1153,11 @@ msgstr "显示内存寄存器"
 
 #: gcalctool/gtk.c:302
 msgid "_Use Arithmetic Precedence"
-msgstr ""
+msgstr "使用算术优先级(_U)"
 
 #: gcalctool/gtk.c:303
 msgid "Use Arithmetic Precedence"
-msgstr ""
+msgstr "使用算术优先级"
 
 #: gcalctool/gtk.c:308
 msgid "_0 significant places"
@@ -1253,24 +1248,20 @@ msgid "Set other precision"
 msgstr "设置其它精度"
 
 #: gcalctool/gtk.c:334
-#, fuzzy
 msgid "_Basic"
-msgstr "标准模式(_B)"
+msgstr "基本(_B)"
 
 #: gcalctool/gtk.c:336
-#, fuzzy
 msgid "_Advanced"
-msgstr "高级模式(_A)"
+msgstr "高级(_A)"
 
 #: gcalctool/gtk.c:338
-#, fuzzy
 msgid "_Financial"
-msgstr "金融模式(_F)"
+msgstr "金融(_F)"
 
 #: gcalctool/gtk.c:340
-#, fuzzy
 msgid "_Scientific"
-msgstr "科学模式(_S)"
+msgstr "科学(_S)"
 
 #: gcalctool/gtk.c:502
 msgid "translator_credits"
@@ -1382,214 +1373,211 @@ msgstr "将精度设定为 0 到 %d 位数字。目前为 %d 位。[a]"
 
 #: gcalctool/gtk.c:2165
 msgid "Activated no operator precedence mode"
-msgstr ""
+msgstr "已激活无运算符优先级模式"
 
 #: gcalctool/gtk.c:2174
 msgid "Activated expression mode with operator precedence"
-msgstr ""
+msgstr "已激活带运算符优先级的表达式模式"
 
 #: gcalctool/gtk.c:2394
 msgid "Accuracy value out of range"
-msgstr ""
+msgstr "精确值超出范围"
 
 #: gcalctool/mp.c:3349
 msgid "Negative X and non-integer Y not supported"
-msgstr ""
+msgstr "不支持负 X 和非整数 Y"
 
 #: gcalctool/mpmath.c:248
 msgid "Error, cannot calculate cosine"
 msgstr "错误，无法计算余弦"
 
+#. Absolute value
 #: gcalctool/syntax_translation.c:36
 msgid "abs"
 msgstr "abs"
 
-#. Absolute value
+#. Inversion of hyperbolic cosine
 #: gcalctool/syntax_translation.c:37
 msgid "acosh"
 msgstr "acosh"
 
-#. Inversion of hyperbolic cosine
+#. Inversion of cosine
 #: gcalctool/syntax_translation.c:38
 msgid "acos"
 msgstr "acos"
 
-#. Inversion of cosine
+#. Bitwise AND
 #: gcalctool/syntax_translation.c:39
 msgid "and"
 msgstr "and"
 
-#. Bitwise AND
+#. Answer of previous calculation
 #: gcalctool/syntax_translation.c:40
 msgid "ans"
 msgstr "ans"
 
-#. Answer of previous calculation
+#. Inversion of hyperbolic sine
 #: gcalctool/syntax_translation.c:41
 msgid "asinh"
 msgstr "asinh"
 
-#. Inversion of hyperbolic sine
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:42
 msgid "asin"
 msgstr "asin"
 
-#. Hyperbolic sine
+#. Inversion of hyperbolic tangent
 #: gcalctool/syntax_translation.c:43
 msgid "atanh"
 msgstr "atanh"
 
-#. Inversion of hyperbolic tangent
+#. Inversion of tangent
 #: gcalctool/syntax_translation.c:44
 msgid "atan"
 msgstr "atan"
 
-#. Inversion of tangent
+#. Cubic root
 #: gcalctool/syntax_translation.c:45
 msgid "cbrt"
 msgstr "cbrt"
 
-#. Cubic root
+#. Change sign
 #: gcalctool/syntax_translation.c:46
 msgid "chs"
 msgstr "chs"
 
-#. Change sign
+#. Clear (display)
 #: gcalctool/syntax_translation.c:47
 msgid "clr"
 msgstr "clr"
 
-#. Clear (display)
+#. Hyperbolic cosine
 #: gcalctool/syntax_translation.c:48
 msgid "cosh"
 msgstr "cosh"
 
-#. Hyperbolic cosine
+#. Cosine
 #: gcalctool/syntax_translation.c:49
 msgid "cos"
 msgstr "cos"
 
-#. Cosine
+#. Double-declining deprecation
 #: gcalctool/syntax_translation.c:50
 msgid "ddb"
 msgstr "ddb"
 
-#. Double-declining deprecation
+#. x*10^y
 #: gcalctool/syntax_translation.c:51
 msgid "exp"
 msgstr "exp"
 
-#. x*10^y
+#. Fraction of a decimal number
 #: gcalctool/syntax_translation.c:52
 msgid "frac"
 msgstr "frac"
 
-#. Fraction of a decimal number
+#. Future value
 #: gcalctool/syntax_translation.c:53
 msgid "fv"
 msgstr "fv"
 
-#. Future value
+#. Integer part of a decimal number
 #: gcalctool/syntax_translation.c:54
 msgid "int"
 msgstr "int"
 
-#. Integer part of a decimal number
+#. Natural logarithm
 #: gcalctool/syntax_translation.c:55
 msgid "ln"
 msgstr "ln"
 
-#. Natural logarithm
+#. Logarithm with 10 as a base number
 #: gcalctool/syntax_translation.c:56
 msgid "log"
 msgstr "log"
 
-#. Logarithm with 10 as a base number
+#. Bitwise NOT
 #: gcalctool/syntax_translation.c:57
 msgid "not"
 msgstr "not"
 
-#. Bitwise NOT
+#. Bitwise OR
 #: gcalctool/syntax_translation.c:58
 msgid "or"
 msgstr "or"
 
-#. PI
-#: gcalctool/syntax_translation.c:60
-msgid "pmt"
-msgstr "pmt"
-
-#. Periodic payment
+#. Periodic payment *                        N_("pmt")   },
+#. { /* Present value
 #: gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "pv"
 
-#. Present value
+#. A random number
 #: gcalctool/syntax_translation.c:62
 msgid "rand"
 msgstr "rand"
 
-#. A random number
+#. Periodic interest rate
 #: gcalctool/syntax_translation.c:63
 msgid "rate"
 msgstr "rate"
 
-#. Periodic interest rate
+#. Recall number from memory register
 #: gcalctool/syntax_translation.c:64
 msgid "rcl"
 msgstr "rcl"
 
-#. Recall number from memory register
+#. Hyperbolic sine
 #: gcalctool/syntax_translation.c:65
 msgid "sinh"
 msgstr "sinh"
 
-#. Hyperbolic sine
+#. Sine
 #: gcalctool/syntax_translation.c:66
 msgid "sin"
 msgstr "sin"
 
-#. Sine
+#. Straight-line depreciation
 #: gcalctool/syntax_translation.c:67
 msgid "sln"
 msgstr "sln"
 
-#. Straight-line depreciation
+#. Square root
 #: gcalctool/syntax_translation.c:68
 msgid "sqrt"
 msgstr "sqrt"
 
-#. Square root
+#. Store number at memory register
 #: gcalctool/syntax_translation.c:69
 msgid "sto"
 msgstr "sto"
 
-#. Store number at memory register
+#. Sum-of-the years'-digits depreciation
 #: gcalctool/syntax_translation.c:70
 msgid "syd"
 msgstr "syd"
 
-#. Sum-of-the years'-digits depreciation
+#. Hyperbolic tangent
 #: gcalctool/syntax_translation.c:71
 msgid "tanh"
 msgstr "tanh"
 
-#. Hyperbolic tangent
+#. Tangent
 #: gcalctool/syntax_translation.c:72
 msgid "tan"
 msgstr "tan"
 
-#. Tangent
+#. Payment period
 #: gcalctool/syntax_translation.c:73
 msgid "term"
 msgstr "term"
 
-#. 32-bit unsigned integer value
+#. Bitwise XNOR
 #: gcalctool/syntax_translation.c:76
 msgid "xnor"
 msgstr "xnor"
 
-#. Bitwise XNOR
+#. Bitwise XOR
 #: gcalctool/syntax_translation.c:77
 msgid "xor"
 msgstr "xor"
@@ -1598,14 +1586,3 @@ msgstr "xor"
 msgid "Perform calculations"
 msgstr "执行计算"
 
-#~ msgid "Basic mode"
-#~ msgstr "标准模式"
-
-#~ msgid "Advanced mode"
-#~ msgstr "高级模式"
-
-#~ msgid "Financial mode"
-#~ msgstr "金融模式"
-
-#~ msgid "Scientific mode"
-#~ msgstr "科学模式"
