@@ -8,9 +8,35 @@
 gcalctool change history.
 =========================
 
+v4.1.19 - 10th September 2002.
+
+* [Sun Bugtraq bug #4006391 against CDE dtcalc].
+  Bring up gcalctool, enter 10000 X 0.58 =, get answer is 5800.
+  Then click on Int button, supposely should get 5800, but the answer is 5799.
+
+  [Evaluation taken from bug #4006391:
+
+  10000 * 0.58 = 5800
+
+  The value displayed should be 5800. However the actual number calculated is
+  5799.999999999999999999999999999...
+
+  This value is stored in an array of type int, the array has 150 elements.
+  The second field tells how many fields the integer part takes up, in this 
+  case 1 as 5799 is smaller than MAX_INT. The next N cells hold the fraction 
+  part.
+
+  When we determine the Int value, we simply set the fraction part to 0, 
+  which leaves us with a value of 5799].
+
+  The fix in dtcalc for bug #4006391 is wrong. Need to set the accuracy to
+  MAX_DIGITS in mpcmim() in mp.c (not 9).
+ 
+----
+
 v4.1.18 - 10th September 2002.
 
-* Sun Bugtraq bug #1258472 against CDE dtcalc].
+* [Sun Bugtraq bug #1258472 against CDE dtcalc].
   Start up gcalctool and set to decimal and fixed. Set accuracy to 2 decimal 
   places. Do a division like 0.19/2  It gives 0.0A
 

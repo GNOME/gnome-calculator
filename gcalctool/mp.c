@@ -1171,9 +1171,14 @@ L30:
 void
 mpcmim(int *x, int *y)
 {
+    int tmp[MP_SIZE];     /* Temporary store for the number. */
+    int accuracy;         /* Temporary story for the accuracy. */
+    char disp[MAXLINE];   /* Setup a string to store what would be displayed */
+    enum num_type dtype;  /* Setup a temp display type variable */
+
     int i__1;
 
-    static int i, il;
+    static int i, il, ll;
 
 /* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
  * USE IF Y TOO LARGE TO BE REPRESENTABLE AS A SINGLE-PRECISION INTEGER. 
@@ -1186,17 +1191,24 @@ mpcmim(int *x, int *y)
 
     mpchk(&c__1, &c__4);
     mpstr(&x[1], &y[1]);
-    if (y[1] == 0) return;
+    if (y[1] == 0) {
+        return;
+    }
 
     il = y[2] + 1;
+    ll = il;
 
 /* IF EXPONENT LARGE ENOUGH RETURN Y = X */
 
-    if (il > MP.t) return;
+    if (il > MP.t) {
+        return;
+    }
 
 /* IF EXPONENT SMALL ENOUGH RETURN ZERO */
 
-    if (il > 1) goto L10;
+    if (il > 1) {
+        goto L10;
+    }
 
     y[1] = 0;
     return;
@@ -1205,7 +1217,27 @@ mpcmim(int *x, int *y)
 
 L10:
     i__1 = MP.t;
-    for (i = il; i <= i__1; ++i) y[i + 2] = 0;
+    for (i = il; i <= i__1; ++i) {
+        y[i + 2] = 0;
+    }
+
+/* Fix for Sun bugtraq bug #4006391 - problem with Int function for numbers
+ * like 4800 when internal representation in something like 4799.999999999.
+ */
+
+    dtype = v->dtype;
+    v->dtype = FIX;
+    accuracy = v->accuracy;
+    v->accuracy = MAX_DIGITS;
+    mpcmf(&x[1], tmp);
+    STRCPY(disp, make_number(tmp, TRUE));
+
+    if (disp[0] == '1') {
+        y[ll+1]++;
+    }
+
+    v->accuracy = accuracy;
+    v->dtype = dtype;
 }
 
 

@@ -18,6 +18,7 @@
  *  NASA FAR Supplement.
  */
 
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -225,7 +226,7 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 #define MAXLINE        256        /* Length of character strings. */
 #endif /*MAXLINE*/
 
-#define MAXACC         10   /* Maximum number of digits after numeric point. */
+#define MAXACC         10    /* Max. number of digits+1 after numeric point. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
