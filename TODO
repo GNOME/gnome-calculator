@@ -14,11 +14,6 @@ Related to the Gtk2 version:
 * Testing of an invalidly entered constant with sscanf() in cfframe_apply_cb()
   doesn't seem to be working.
 * Shouldn't use X resources. Probably need to use gconf.
-* The size of the buttons in the logical mode window is incorrect.
-  Problem is in make_mtable() and is due to the GtkAttachOptions options
-  used in the gtk_table_attach() call. Setting them to 0 for non-visible
-  buttons correctly initially draws them, but doesn't allow resizing to work
-  correctly. Checkout GtkSizeGroup.
 * The + and . keys on the numeric keypad don't work.
   (See: http://bugzilla.gnome.org/show_bug.cgi?id=79184)
 * Need to add in Help key support (or tooltip help). Can probably use the
