@@ -1210,6 +1210,8 @@ do_calctool(int argc, char **argv)
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
 
+    memset(&(v->e), 0, sizeof(struct exprm_state)); /* clear expression mode state */
+
     start_tool();                    /* Display the calculator. */
 }
 

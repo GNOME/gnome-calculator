@@ -2190,6 +2190,7 @@ toggle_expressions()
         case exprs:
             v->e.calc_complete = 0;
             MPstr_to_num("0", DEC, v->e.ans);
+	    MPstr_to_num("0", DEC, v->e.ansbak);
             exp_del();
             show_display(v->e.ans);
             update_statusbar(
@@ -2865,6 +2866,24 @@ start_tool()
     set_item(NUMITEM, v->dtype);
 
     gtk_widget_show(X->kframe);
+
+    switch (v->syntax) { 
+        case npa:
+	    break;
+        case exprs:
+	    // Init expression mode.
+	    // This must be executed after do_base is called at init.
+	    // FIXME: The init code here is duplicated elsewhere
+	    v->e.calc_complete = 0;
+	    MPstr_to_num("0", DEC, v->e.ans);
+	    MPstr_to_num("0", DEC, v->e.ansbak);
+            exp_del();
+            show_display(v->e.ans);
+	    break;
+    default:
+	assert(0);
+    }
+
     gtk_main();
 }
 

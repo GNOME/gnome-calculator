@@ -83,7 +83,7 @@ lr_parser.tab.c: lr_parser.y
 	bison -d -p lr lr_parser.y
 
 lex.ce.c: ce_parser.tab.c ce_tokeniser.l
-	$(LEX) -i -Pce ce_tokeniser.l
+	$(LEX) -Pce ce_tokeniser.l
 
 lex.lr.c: lr_parser.tab.c lr_tokeniser.l
 	$(LEX) -i -Plr lr_tokeniser.l
