@@ -399,6 +399,7 @@ int do_rcl_reg(int reg, int value[MP_SIZE]);
 int do_sto_reg(int reg, int value[MP_SIZE]);
 int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 int get_menu_entry(enum menu_type, int);
+int key_equal(struct button *, struct button);
 int main(int, char **);
 
 void beep();
@@ -472,6 +473,7 @@ void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
 void show_display(int *);
 void show_error(char *);
+void show_menu(struct button *);
 void srand48();
 void start_tool();
 void str_replace(char **, char *, char *);

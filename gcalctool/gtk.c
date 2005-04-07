@@ -67,6 +67,14 @@
 #define BUT_CLR_ADV   X->adv_buttons[7]        /* Clr - in "Advanced" mode */
 
 #define BUT_ACC   X->sci_buttons[7]        /* a */
+#define BUT_CON   X->sci_buttons[8]        /* # */
+#define BUT_EXCH  X->adv_buttons[31]       /* e */
+#define BUT_FUN   X->sci_buttons[9]        /* f */
+#define BUT_LSFT  X->sci_buttons[0]        /* < */
+#define BUT_RCL   X->adv_buttons[23]       /* R */
+#define BUT_RSFT  X->sci_buttons[1]        /* > */
+#define BUT_STO   X->adv_buttons[15]       /* S */
+
 #define BUT_A     X->sci_buttons[24]       /* A */
 #define BUT_B     X->sci_buttons[25]       /* B */
 #define BUT_C     X->sci_buttons[26]       /* C */
@@ -194,6 +202,7 @@ static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
 static void show_ascii_frame();
+static void show_menu_for_button(GtkWidget *, GdkEventKey *event);
 static void show_precision_frame();
 static void spframe_cancel_cb(GtkButton *, gpointer);
 static void spframe_ok_cb(GtkButton *, gpointer);
@@ -235,54 +244,54 @@ static GtkActionEntry entries[] = {
     { "About", GTK_STOCK_ABOUT, NULL, NULL,
       N_("Show the About Gcalctool dialog"), G_CALLBACK(about_cb) },
 
-    { "LSPlaces1",  NULL, N_("1 place"),   NULL, 
+    { "LSPlaces1",  NULL, N_("_1 place"),   NULL,
       N_("1 place"),   G_CALLBACK(mb_proc) },
-    { "LSPlaces2",  NULL, N_("2 places"),  NULL, 
+    { "LSPlaces2",  NULL, N_("_2 places"),  NULL,
       N_("2 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces3",  NULL, N_("3 places"),  NULL, 
+    { "LSPlaces3",  NULL, N_("_3 places"),  NULL,
       N_("3 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces4",  NULL, N_("4 places"),  NULL, 
+    { "LSPlaces4",  NULL, N_("_4 places"),  NULL,
       N_("4 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces5",  NULL, N_("5 places"),  NULL, 
+    { "LSPlaces5",  NULL, N_("_5 places"),  NULL, 
       N_("5 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces6",  NULL, N_("6 places"),  NULL, 
+    { "LSPlaces6",  NULL, N_("_6 places"),  NULL, 
       N_("6 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces7",  NULL, N_("7 places"),  NULL, 
+    { "LSPlaces7",  NULL, N_("_7 places"),  NULL, 
       N_("7 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces8",  NULL, N_("8 places"),  NULL, 
+    { "LSPlaces8",  NULL, N_("_8 places"),  NULL, 
       N_("8 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces9",  NULL, N_("9 places"),  NULL, 
+    { "LSPlaces9",  NULL, N_("_9 places"),  NULL, 
       N_("9 places"),  G_CALLBACK(mb_proc) },
-    { "LSPlaces10", NULL, N_("10 places"), NULL, 
+    { "LSPlaces10", NULL, N_("10 places"),  NULL,
       N_("10 places"), G_CALLBACK(mb_proc) },
-    { "LSPlaces11", NULL, N_("11 places"), NULL, 
+    { "LSPlaces11", NULL, N_("11 places"),  NULL,
       N_("11 places"), G_CALLBACK(mb_proc) },
-    { "LSPlaces12", NULL, N_("12 places"), NULL, 
+    { "LSPlaces12", NULL, N_("12 places"),  NULL,
       N_("12 places"), G_CALLBACK(mb_proc) },
-    { "LSPlaces13", NULL, N_("13 places"), NULL, 
+    { "LSPlaces13", NULL, N_("13 places"),  NULL,
       N_("13 places"), G_CALLBACK(mb_proc) },
-    { "LSPlaces14", NULL, N_("14 places"), NULL, 
+    { "LSPlaces14", NULL, N_("14 places"),  NULL,
       N_("14 places"), G_CALLBACK(mb_proc) },
-    { "LSPlaces15", NULL, N_("15 places"), NULL, 
+    { "LSPlaces15", NULL, N_("15 places"),  NULL,
       N_("15 places"), G_CALLBACK(mb_proc) },
 
-    { "RSPlaces1",  NULL, N_("1 place"),   NULL, 
+    { "RSPlaces1",  NULL, N_("_1 place"),   NULL, 
       N_("1 place"),   G_CALLBACK(mb_proc) },
-    { "RSPlaces2",  NULL, N_("2 places"),  NULL, 
+    { "RSPlaces2",  NULL, N_("_2 places"),  NULL, 
       N_("2 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces3",  NULL, N_("3 places"),  NULL, 
+    { "RSPlaces3",  NULL, N_("_3 places"),  NULL, 
       N_("3 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces4",  NULL, N_("4 places"),  NULL, 
+    { "RSPlaces4",  NULL, N_("_4 places"),  NULL, 
       N_("4 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces5",  NULL, N_("5 places"),  NULL, 
+    { "RSPlaces5",  NULL, N_("_5 places"),  NULL, 
       N_("5 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces6",  NULL, N_("6 places"),  NULL, 
+    { "RSPlaces6",  NULL, N_("_6 places"),  NULL, 
       N_("6 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces7",  NULL, N_("7 places"),  NULL, 
+    { "RSPlaces7",  NULL, N_("_7 places"),  NULL, 
       N_("7 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces8",  NULL, N_("8 places"),  NULL, 
+    { "RSPlaces8",  NULL, N_("_8 places"),  NULL, 
       N_("8 places"),  G_CALLBACK(mb_proc) },
-    { "RSPlaces9",  NULL, N_("9 places"),  NULL, 
+    { "RSPlaces9",  NULL, N_("_9 places"),  NULL, 
       N_("9 places"),  G_CALLBACK(mb_proc) },
     { "RSPlaces10", NULL, N_("10 places"), NULL, 
       N_("10 places"), G_CALLBACK(mb_proc) },
@@ -1305,7 +1314,7 @@ create_mem_menu(enum menu_type mtype)
     X->menus[(int) mtype] = gtk_menu_new();
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(mstr, "<span weight=\"bold\">%s%d:</span>    %s",
+        SPRINTF(mstr, "<span weight=\"bold\">%s_%d:</span>    %s",
 	/* translators: R is the short form of register used inter alia
 	in popup menus */
                 _("R"), i, make_number(v->MPmvals[i], v->base, FALSE, TRUE));
@@ -1520,7 +1529,7 @@ create_con_fun_menu(enum menu_type mtype)
     for (i = 0; i < MAXCONFUN; i++) {
         invalid = 0;
         if (mtype == M_CON) {
-            SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
+            SPRINTF(mline, "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
                     _("C"), i, 
                     make_number(v->MPcon_vals[i], DEC, FALSE, TRUE), 
                     v->con_names[i]);
@@ -1528,7 +1537,7 @@ create_con_fun_menu(enum menu_type mtype)
             if (!strlen(v->fun_vals[i])) {
                 invalid = 1;
             } else {
-	      SPRINTF(mline, "<span weight=\"bold\">%s%1d:</span> %s [%s]", 
+	      SPRINTF(mline, "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
 		      _("F"), i, v->fun_vals[i], v->fun_names[i]);
             }
         }
@@ -1546,16 +1555,16 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
     GtkWidget *accel_label;
     GtkWidget *menu_item;
 
-    accel_label = gtk_accel_label_new("");
-    gtk_label_set_markup(GTK_LABEL(accel_label), label);
-    menu_item = gtk_menu_item_new();
-    gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
+    accel_label = gtk_label_new(NULL); 
+    gtk_label_set_markup_with_mnemonic(GTK_LABEL(accel_label), label); 
+    menu_item = gtk_menu_item_new(); 
     gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
-    gtk_accel_label_set_accel_widget(GTK_ACCEL_LABEL(accel_label), menu_item);
     gtk_widget_show(accel_label);
     gtk_widget_show(menu_item);
+
     g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) menu_no);
     gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[menu_no]), menu_item);
+
     g_signal_connect(G_OBJECT(menu_item), "activate",
                      G_CALLBACK(menu_proc_cb), (gpointer) user_data);
 }
@@ -2032,6 +2041,14 @@ make_reg(int n, char *str)
 }
 
 
+/*ARGSUSED*/
+void
+menu_cancel_cb(GtkMenuShell *menushell, gpointer user_data)
+{
+    v->pending = 0;
+}
+
+
 static GtkWidget *
 create_menu(enum menu_type mtype, struct button *n)
 {
@@ -2066,6 +2083,9 @@ create_menu(enum menu_type mtype, struct button *n)
 
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[m]), 1);
     X->mrec[m] = n;
+
+    g_signal_connect(G_OBJECT(X->menus[m]), "cancel",
+                     G_CALLBACK(menu_cancel_cb), (gpointer) n);
 
     return(X->menus[m]);
 }
@@ -2116,18 +2136,9 @@ static gboolean
 menu_button_key_press_cb(GtkWidget *widget, 
                          GdkEventKey *event, gpointer data)
 {
-    struct button *n;
-    GdkPoint loc;
-    GtkWidget *menu;
-
     if (event->keyval == GDK_space) {
-        n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
-        menu = create_menu(n->mtype, n);
-        gdk_window_get_origin(widget->window, &loc.x, &loc.y);
-        loc.x += widget->allocation.x;
-        loc.y += widget->allocation.y;
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
-                       (gpointer) &loc, event->keyval, event->time);
+        show_menu_for_button(widget, event);
+
         return(TRUE);
     }
 
@@ -2830,6 +2841,51 @@ show_ascii_frame()      /* Display ASCII popup. */
     }
     gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->aframe_ch));
     gtk_widget_show(X->aframe);
+}
+
+
+void
+show_menu(struct button *current)
+{
+    GtkWidget *button = NULL;
+    GdkEvent *event = gtk_get_current_event();
+
+       if (key_equal(v->current, KEY_ACC)) {              /* Acc */
+        button = BUT_ACC;
+    } else if (key_equal(v->current, KEY_CON)) {          /* Con */
+        button = BUT_CON;
+    } else if (key_equal(v->current, KEY_EXCH)) {         /* Exch */
+        button = BUT_EXCH;
+    } else if (key_equal(v->current, KEY_FUN)) {          /* Fun */
+        button = BUT_FUN;
+    } else if (key_equal(v->current, KEY_LSFT)) {         /* < */
+        button = BUT_LSFT;
+    } else if (key_equal(v->current, KEY_RCL)) {          /* Rcl */
+        button = BUT_RCL;
+    } else if (key_equal(v->current, KEY_RSFT)) {         /* > */
+        button = BUT_RSFT;
+    } else if (key_equal(v->current, KEY_STO)) {          /* Sto */
+        button = BUT_STO;
+    }
+
+    show_menu_for_button(button, (GdkEventKey *) event);
+}
+
+
+static void
+show_menu_for_button(GtkWidget *widget, GdkEventKey *event)
+{
+    struct button *n;
+    GdkPoint loc;
+    GtkWidget *menu;
+
+    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+    menu = create_menu(n->mtype, n);
+    gdk_window_get_origin(widget->window, &loc.x, &loc.y);
+    loc.x += widget->allocation.x;
+    loc.y += widget->allocation.y;
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
+                   (gpointer) &loc, event->keyval, event->time);
 }
 
 

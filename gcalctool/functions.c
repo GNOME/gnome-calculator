@@ -33,7 +33,6 @@
 #include "lr_parser.h"
 
 static int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
-static int key_equal(struct button *, struct button);
 
 static void do_accuracy();
 static void do_constant();
@@ -1137,26 +1136,8 @@ void
 do_pending()
 {
 
-/*  Certain pending operations which are half completed, force the numeric
- *  keypad to be reshown (assuming they already aren't).
- *
- *  Con, Exch, Fun, Sto, Rcl and Acc    show buttons 0 - 9.
- *  < and >                             show buttons 0 - f.
- */
-
     if (!v->ismenu) {
-        if (key_equal(v->current, KEY_CON) ||         /* Con. */
-            key_equal(v->current, KEY_EXCH) ||        /* Exch. */
-            key_equal(v->current, KEY_FUN) ||         /* Fun. */
-            key_equal(v->current, KEY_STO) ||         /* Sto. */
-            key_equal(v->current, KEY_RCL) ||         /* Rcl. */
-            key_equal(v->current, KEY_ACC)) {         /* Acc. */
-            grey_buttons(DEC);
-        }
-        if (key_equal(v->current, KEY_LSFT) ||
-            key_equal(v->current, KEY_RSFT)) {
-            grey_buttons(HEX);
-        }
+        show_menu(v->current) ;
     }
 
     if (IS_KEY(v->pending, KEY_CON.value[0]))  {                 /* Con */
@@ -1194,9 +1175,6 @@ do_pending()
     }
 
     v->pending = 0;
-    if (!v->ismenu) {
-        grey_buttons(v->base);  /* Just show numeric keys for current base. */
-    }
 }
 
 
@@ -1327,7 +1305,7 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 }
 
 
-static int
+int
 key_equal(struct button *x, struct button y)
 {
     return(x->value[0] == y.value[0] && x->mods[0] == y.mods[0]);
