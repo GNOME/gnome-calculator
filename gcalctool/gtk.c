@@ -1557,6 +1557,7 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
 
     accel_label = gtk_label_new(NULL); 
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(accel_label), label); 
+    gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
     menu_item = gtk_menu_item_new(); 
     gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
     gtk_widget_show(accel_label);
