@@ -387,7 +387,7 @@ char *gc_strdup(char *str);
 const char *get_radix();
 char *get_resource(enum res_type);
 const char *get_tsep();
-char *make_number(int *, int, BOOLEAN, BOOLEAN);
+char *make_number(int *, int, BOOLEAN);
 char *set_bool(int);
 
 unsigned short *get_but_data();
@@ -473,7 +473,7 @@ void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
 void show_display(int *);
 void show_error(char *);
-void show_menu(struct button *);
+void show_menu();
 void srand48();
 void start_tool();
 void str_replace(char **, char *, char *);

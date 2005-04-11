@@ -116,7 +116,7 @@ clear_display(int initialise)
     v->toclear = 1;
     i = 0;
     mpcim(&i, v->MPdisp_val);
-    STRCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE, FALSE));
+    STRCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE));
     set_display(v->display, FALSE);
 
     if (initialise == TRUE) {
@@ -249,7 +249,7 @@ make_fixed(int *MPnumber, int base, int cmax)
 /* Convert MP number to character string in the given base. */
 
 char *
-make_number(int *MPnumber, int base, BOOLEAN mkFix, BOOLEAN ignoreError)
+make_number(int *MPnumber, int base, BOOLEAN ignoreError)
 {
     double number, val;
 
@@ -566,7 +566,7 @@ void
 show_display(int *MPval)
 {
     if (!v->error) {
-        STRCPY(v->display, make_number(MPval, v->base, TRUE, FALSE));
+        STRCPY(v->display, make_number(MPval, v->base, FALSE));
         set_display(v->display, FALSE);
     }
 }
@@ -589,7 +589,7 @@ refresh_display()
     if (v->expression &&
 	strlen(v->expression)) {
       char *e = gc_strdup(v->expression);
-      char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);
+      char *ans = make_number(v->e.ans, v->base, FALSE);
       localize_number(localized, ans);
       
       str_replace(&e, "Ans", localized);

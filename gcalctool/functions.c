@@ -363,7 +363,7 @@ do_expression()
 	int MP1[MP_SIZE];
 	char *zero = NULL;
 	do_zero(MP1);
-	zero = make_number(MP1, v->base, TRUE, FALSE);
+	zero = make_number(MP1, v->base, FALSE);
 	exp_append(zero);
       }
     }
@@ -384,11 +384,11 @@ do_expression()
 	goto out;
     } else if (v->current->flags & con) {
         int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-        exp_append(make_number(MPval, v->base, TRUE, FALSE));
+        exp_append(make_number(MPval, v->base, FALSE));
 	goto out;
     } else if (v->current->flags & bsp) {
         if (exp_has_postfix(v->expression, "Ans")) { 
-            char *ans = make_number(v->e.ans, v->base, TRUE, FALSE);   
+            char *ans = make_number(v->e.ans, v->base, FALSE);   
 
             str_replace(&v->expression, "Ans", ans);
         } 
@@ -1137,7 +1137,7 @@ do_pending()
 {
 
     if (!v->ismenu) {
-        show_menu(v->current) ;
+        show_menu();
     }
 
     if (IS_KEY(v->pending, KEY_CON.value[0]))  {                 /* Con */
@@ -1280,7 +1280,7 @@ do_shift()     /* Perform bitwise shift on display value. */
             calc_rshift(MPval, v->e.ans, n, dir);
 
             exp_del();
-            exp_append(make_number(v->e.ans, v->base, TRUE, FALSE));
+            exp_append(make_number(v->e.ans, v->base, FALSE));
         }
         break;
 
