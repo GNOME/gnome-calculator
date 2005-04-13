@@ -36,7 +36,7 @@ DIGIT	[0-9]
 DECIMAL	"."|","
 SIGN	"+"|"-" 
 CHARACTER [a-z]|[A-Z]
-HEX     [0-9]|[A-F]|[a-f]
+HEX     [0-9]|[A-F]
 BIN     "0"|"1"
 OCT     [0-7]
 NUMBER  [DIGIT}*{DECIMAL}{DIGIT}+|{DIGIT}
