@@ -8,6 +8,15 @@
 gcalctool change history.
 =========================
 
+2005-04-13 Rich Burridge <rich.burridge@sun.com>
+
+    * More work on bug #172704. 
+      - Adjusted the code to not try to display a menu when the user 
+        entered a left parentheses (another do_pending() type of 
+        operation).
+      - Toggling the "Show Trailing Zeroes" operation via keyboard
+        shortcuts, needed to clear the v-.pending flag.
+
 2005-04-11 Rich Burridge <rich.burridge@sun.com>
 
     * Fixed up some problems reported by lint.

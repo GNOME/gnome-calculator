@@ -1136,7 +1136,8 @@ void
 do_pending()
 {
 
-    if (!v->ismenu) {
+    if (!v->ismenu &&
+        !IS_KEY(v->pending, KEY_LPAR.value[0])) {
         show_menu();
     }
 

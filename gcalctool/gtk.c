@@ -2301,6 +2301,7 @@ mstz_proc(GtkAction *action)
 {
     GtkWidget *mi;
 
+/**/FPRINTF(stderr, "mstz_proc called.\n");
     if (!v->doing_mi) {
 	v->show_zeroes = !v->show_zeroes;
         v->doing_mi = 1;
@@ -2312,6 +2313,8 @@ mstz_proc(GtkAction *action)
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 	make_registers();
     }
+
+    v->pending = 0;
 }
 
 
