@@ -516,7 +516,7 @@ about_cb(GtkAction *action, gpointer date)
         "Sun Microsystems",
         NULL
     };
-    const gchar *translator_credits = _("translator_credits");
+    const gchar *translator_credits = _("translator-credits");
 
     gtk_show_about_dialog(GTK_WINDOW(X->kframe),
             "name",_("Gcalctool"),
@@ -525,8 +525,7 @@ about_cb(GtkAction *action, gpointer date)
             "comments", _("Calculator with financial and scientific modes."),
             "authors", authors,
             "documenters", documenters,
-            "translator-credits", strcmp(translator_credits, 
-                "translator_credits") != 0 ? translator_credits : NULL,
+            "translator_credits", translator_credits,
             "logo-icon-name", "gnome-calculator",
             NULL);
 }
@@ -2301,7 +2300,6 @@ mstz_proc(GtkAction *action)
 {
     GtkWidget *mi;
 
-/**/FPRINTF(stderr, "mstz_proc called.\n");
     if (!v->doing_mi) {
 	v->show_zeroes = !v->show_zeroes;
         v->doing_mi = 1;
