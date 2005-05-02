@@ -196,7 +196,6 @@ static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_values(enum mode_type);
 static void set_accuracy_toggle(int val);
 static void set_button_state(GtkWidget *, int);
-static void set_gcalctool_icon(void);
 static void set_item(enum item_type itemtype, int val);
 static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
@@ -221,7 +220,7 @@ static XVars X;
 /* Menubar menus. */
 /* Use NULL to let the STOCK label values or keybindings show through */
 
-static GtkActionEntry entries[] = {
+static const GtkActionEntry entries[] = {
     { "CalculatorMenu", NULL, N_("_Calculator") },
     { "EditMenu",       NULL, N_("_Edit") },
     { "ViewMenu",       NULL, N_("_View") },
@@ -306,9 +305,8 @@ static GtkActionEntry entries[] = {
     { "RSPlaces15", NULL, N_("15 places"), NULL, 
       N_("15 places"), G_CALLBACK(mb_proc) },
 };
-static guint n_entries = G_N_ELEMENTS(entries);
 
-static GtkToggleActionEntry toggle_entries[] = {
+static const GtkToggleActionEntry toggle_entries[] = {
     { "Trailing",  NULL, N_("Show _Trailing Zeroes"),     "<control>T",
       N_("Show trailing zeroes"),     G_CALLBACK(mstz_proc), FALSE },
     { "Thousands", NULL, N_("Show T_housands Separator"), "<control>K",
@@ -320,9 +318,8 @@ static GtkToggleActionEntry toggle_entries[] = {
     { "ArithmeticPrecedence", NULL, N_("_Use Arithmetic Precedence"), "<control>U",
       N_("Use Arithmetic Precedence"), G_CALLBACK(mb_proc), FALSE },
 };
-static guint n_toggle_entries = G_N_ELEMENTS(toggle_entries);
 
-static GtkRadioActionEntry acc_radio_entries[] = {
+static const GtkRadioActionEntry acc_radio_entries[] = {
   { "SP0", NULL, N_("_0 significant places"), "<control>0", 
     N_("0 significant places"), '0' },
   { "SP1", NULL, N_("_1 significant place"),  "<control>1", 
@@ -346,9 +343,8 @@ static GtkRadioActionEntry acc_radio_entries[] = {
   { "SPOther", NULL, N_("_Other (10) ..."), "<control>O",
     N_("Set other precision"), 'O' },
 };
-static guint n_acc_radio_entries = G_N_ELEMENTS(acc_radio_entries);
 
-static GtkRadioActionEntry base_radio_entries[] = {
+static const GtkRadioActionEntry base_radio_entries[] = {
   { "Basic",      NULL, N_("_Basic"),      "<control>B", 
     N_("Basic"),      M_BASIC },
   { "Advanced",   NULL, N_("_Advanced"),   "<control>A",
@@ -359,9 +355,7 @@ static GtkRadioActionEntry base_radio_entries[] = {
     N_("Scientific"), M_SCI },
 };
 
-static guint n_base_radio_entries = G_N_ELEMENTS(base_radio_entries);
-
-static const gchar *ui_info =
+static const gchar ui_info[] =
 "<ui>"
 "  <menubar name='MenuBar'>"
 "    <menu action='CalculatorMenu'>"
@@ -480,7 +474,8 @@ main(int argc, char **argv)
     X->kbd_accel = gtk_accel_group_new();
     X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
-    set_gcalctool_icon();
+
+    gtk_window_set_default_icon_name("gnome-calculator");
 
     do_calctool(argc, argv);
 
@@ -1052,7 +1047,7 @@ gcalc_window_get_menu_items(XVars X)
     GtkAction *act;
     GSList *p = NULL;
     gint i = 0;
-    static gchar *action_image[] = { "Quit", "Copy", "Paste", 
+    static const gchar *action_image[] = { "Quit", "Copy", "Paste", 
 #ifndef DISABLE_GNOME
                                      "Contents", 
 #endif /*DISABLE_GNOME*/
@@ -1149,16 +1144,16 @@ create_kframe()
 
     X->actions = gtk_action_group_new("Actions");
     gtk_action_group_set_translation_domain (X->actions, NULL);
-    gtk_action_group_add_actions(X->actions, entries, n_entries, NULL);
+    gtk_action_group_add_actions(X->actions, entries, G_N_ELEMENTS(entries), NULL);
     gtk_action_group_add_toggle_actions(X->actions,
-                                        toggle_entries, n_toggle_entries,
+                                        toggle_entries, G_N_ELEMENTS(toggle_entries),
                                         NULL);
     gtk_action_group_add_radio_actions(X->actions,
-                                       acc_radio_entries, n_acc_radio_entries,
+                                       acc_radio_entries, G_N_ELEMENTS(acc_radio_entries),
                                        -1, G_CALLBACK(mb_acc_radio_proc),
                                        NULL);
     gtk_action_group_add_radio_actions(X->actions,
-                                       base_radio_entries, n_base_radio_entries,
+                                       base_radio_entries, G_N_ELEMENTS(base_radio_entries),
                                        M_BASIC, G_CALLBACK(mb_base_radio_proc),
                                        NULL);
 
@@ -2785,13 +2780,6 @@ set_title(enum fcp_type fcptype, char *str)
         f = X->rframe;
     }
     gtk_window_set_title(GTK_WINDOW(f), _(str));
-}
-
-
-static void
-set_gcalctool_icon(void)
-{    
-    gtk_window_set_default_icon_name("gnome-calculator");
 }
 
 
