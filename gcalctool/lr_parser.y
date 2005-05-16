@@ -92,7 +92,7 @@ extern struct parser_state parser_state;
 %type  <int_t> exp value term rcl number parenthesis func
 
 %start statement
-%left '+' '-' '*' '/' '&' '|' 'n' '^' 'y' 'e'
+%left '+' '-' '*' '/' '&' '|' 'n' 'x' '^' 'e'
 %left NEG
 %left POS
 
@@ -148,9 +148,9 @@ exp:
 | exp '&' exp {calc_and($$, $1, $3);}
 | exp '|' exp {calc_or($$, $1, $3);}
 | exp 'n' exp {calc_xnor($$, $1, $3);}
-| exp '^' exp {calc_xor($$, $1, $3);} 
+| exp 'x' exp {calc_xor($$, $1, $3);} 
 
-| exp 'y' exp {calc_xpowy($1, $3, $$);}
+| exp '^' exp {calc_xpowy($1, $3, $$);}
 | exp 'e' exp {calc_xtimestenpowx($1, $3, $$);}
 
 | exp 'K' {do_tfunc($1, $$, SIN);}

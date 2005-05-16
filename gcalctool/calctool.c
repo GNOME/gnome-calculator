@@ -107,7 +107,7 @@ Vars v;            /* Calctool variables and options. */
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
  *-----------+-----------------------------------------------------
- *  Lower:   |  a b c d e f     i     l m n   p   r s t u v     y
+ *  Lower:   |  a b c d e f     i     l m n   p   r s t u v   x
  *  Upper:   |  A   C D E F G     J K L   N   P   R S T       X Y
  *  Numeric: |  0 1 2 3 4 5 6 7 8 9
  *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
@@ -906,11 +906,11 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },       
 {        
     N_("<i>x</i><sup><i>y</i></sup>"),
-    N_("Raise displayed value to the power of y [y]"),
+    N_("Raise displayed value to the power of y [^]"),
     N_("X to the y"),
-    { 0, 0 },   
-    { GDK_y, 0 },
-    'y',
+    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
+    { GDK_caret,      GDK_asciicircum, 0 },
+    '^',
     M_NONE,
     do_calc,
     N_("^"),
@@ -1113,11 +1113,11 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("Xor"),
-    N_("Bitwise XOR [^]"),
+    N_("Bitwise XOR [x]"),
     NULL,
-    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
-    { GDK_caret,      GDK_asciicircum, 0 },
-    '^',
+    { 0, 0 },   
+    { GDK_x, 0 },
+    'x',
     M_NONE,
     do_calc,
     N_(" Xor "),
