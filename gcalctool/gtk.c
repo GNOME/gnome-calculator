@@ -2081,6 +2081,8 @@ create_menu(enum menu_type mtype, struct button *n)
 
     g_signal_connect(G_OBJECT(X->menus[m]), "cancel",
                      G_CALLBACK(menu_cancel_cb), (gpointer) n);
+    g_signal_connect(G_OBJECT(X->menus[m]), "deactivate",
+                      G_CALLBACK(menu_cancel_cb), (gpointer) n);
 
     return(X->menus[m]);
 }
