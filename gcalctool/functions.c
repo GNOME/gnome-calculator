@@ -979,11 +979,36 @@ do_numtype(enum num_type n)   /* Set number display type. */
 {
     v->dtype = n;
     put_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
-    v->pending = 0;
-    show_display(v->MPdisp_val);
-    if (v->rstate) {
-        make_registers();
+
+    switch (v->syntax) {
+    case npa:
+        v->pending = 0;
+        if (v->rstate) {
+            make_registers();
+        }
+        break;
+        
+    case exprs: {
+        int MP[MP_SIZE];
+        int ret = usable_num(MP);
+        if (ret) {
+            update_statusbar(_("No sane value to convert"),
+                             "gtk-dialog-error");
+        } else {
+            mpstr(v->e.ans, v->e.ansbak);
+            mpstr(MP, v->e.ans);
+            exp_replace("Ans");
+            v->e.calc_complete = 1;
+            make_registers();
+        }
     }
+    break;
+
+    default:
+        assert(0);
+    }	
+
+    refresh_display();
 }
 
 
