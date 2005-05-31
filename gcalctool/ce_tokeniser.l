@@ -89,7 +89,7 @@ SEPARATOR "e+"|"e-"
 "xor" {return tXOR;}
 
 "R"{DIGIT}+ {
-celval.integer = atoi(yytext);  
+celval.integer = atoi(yytext+1);  
 return tREG;
 }
 
