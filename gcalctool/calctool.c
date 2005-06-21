@@ -952,7 +952,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_number,
     NULL,
-    none
+    number
 },
 {
     N_("E"),
@@ -964,7 +964,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_number,
     NULL,
-    none
+    number
 },
 {
     N_("F"),
@@ -976,7 +976,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_number,
     NULL,
-    none
+    number
 },
 {
     N_("Cos"),
@@ -1050,7 +1050,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_number,
     NULL,
-    none
+    number
 },
 {
     N_("B"),
@@ -1061,7 +1061,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'B',
     M_NONE,
     do_number,
-    NULL
+    number
 },    
 {     
     N_("C"),
@@ -1073,7 +1073,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_NONE,
     do_number,
     NULL,
-    none
+    number
 },
 {
     N_("Or"),
