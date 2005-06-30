@@ -10,6 +10,14 @@ gcalctool change history.
 
 2005-06-21 Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug #309182 (http://bugzilla.gnome.org/show_bug.cgi?id=309182)
+      In non-arithmetic precdence mode, gcalctool can now correctly change
+      the sign of the exponent on scientific numbers again. The problem was
+      caused by a chunk of code being removed from the handling of the 
+      "+/-" case when the arithmetic operator precedence code was merged in.
+
+2005-06-21 Rich Burridge <rich.burridge@sun.com>
+
     * From Sami Pietila <sampie@ariana-dsl.utu.fi>
       Fixed bug #308408 (http://bugzilla.gnome.org/show_bug.cgi?id=308408)
       gcalctool can now correctly convert the hexadecimal numbers "A-F"

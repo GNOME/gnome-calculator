@@ -894,7 +894,18 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
         mpstr(s, MP1);
         mpmul(MP1, MP1, t);
     } else if (key_equal(v->current, KEY_CHS)) {          /* +/- */
-        mpneg(s, t);
+         if (v->key_exp) {
+             if (*v->exp_posn == '+') {
+                 *v->exp_posn = '-';
+             } else {
+                 *v->exp_posn = '+';
+             }
+             set_display(v->display, FALSE);
+             MPstr_to_num(v->display, v->base, s);
+             v->key_exp = 0;
+         } else {
+             mpneg(s, t);
+        }
     }
 }
 
