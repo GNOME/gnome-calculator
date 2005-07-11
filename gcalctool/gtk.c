@@ -92,6 +92,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
+    GtkWidget *cm_dialog;              /* Change Mode dialog. */
     GtkWidget *con_dialog;             /* Edit constants dialog. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *fun_dialog;             /* Edit functions dialog. */
@@ -128,6 +129,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     Display *dpy;
 
+    const gchar *mode_name;       /* Name of the new mode. */
     int menuval;                  /* Index to button array at menu time. */
     char *lnp;                    /* Localized numerical point (UTF8 format) */
     struct button *mrec[MAXMENUS];
@@ -185,7 +187,7 @@ static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(GtkAction *action);
 static void mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current);
-static void mb_base_radio_proc(GtkAction *action, GtkRadioAction *current);
+static void mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current);
 static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
 static void mstz_proc(GtkAction *action);
@@ -344,7 +346,7 @@ static const GtkRadioActionEntry acc_radio_entries[] = {
     N_("Set other precision"), 'O' },
 };
 
-static const GtkRadioActionEntry base_radio_entries[] = {
+static const GtkRadioActionEntry mode_radio_entries[] = {
   { "Basic",      NULL, N_("_Basic"),      "<control>B", 
     N_("Basic"),      M_BASIC },
   { "Advanced",   NULL, N_("_Advanced"),   "<control>A",
@@ -969,6 +971,175 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 
 
 static void
+change_mode(const gchar *name)
+{
+    if (EQUAL(name, "Basic")) {
+        reset_mode_values(BASIC);
+    } else if (EQUAL(name, "Advanced")) {
+        reset_mode_values(ADVANCED);
+    } else if (EQUAL(name, "Financial")) {
+        reset_mode_values(FINANCIAL);
+    } else if (EQUAL(name, "Scientific")) {
+        reset_mode_values(SCIENTIFIC);
+    }
+}
+
+
+/*ARGSUSED*/
+static void
+cm_ok_cb(GtkButton *button, gpointer user_data)
+{
+    change_mode(X->mode_name);
+    gtk_widget_hide(X->cm_dialog);
+}
+
+
+/*ARGSUSED*/
+static void
+cm_cancel_cb(GtkButton *button, gpointer user_data)
+{
+    GtkWidget *w;
+
+    switch (v->modetype) {
+        case FINANCIAL:
+            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Financial");
+            break;
+
+        case SCIENTIFIC:
+            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Scientific");
+            break;
+
+        case ADVANCED:
+            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Advanced");
+            break;
+
+        default:
+            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Basic");
+            break;
+    }
+
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(w), TRUE);
+
+    gtk_widget_hide(X->cm_dialog);
+}
+
+
+/*ARGSUSED*/
+static void
+cm_warning_cb(GtkToggleButton *button, gpointer user_data)
+{
+    v->warn_change_mode = !gtk_toggle_button_get_active(button);
+}
+
+
+static void
+create_change_mode_dialog()
+{
+    GtkWidget *vbox, *table, *warning;
+    GtkWidget *check, *desc, *action_area;
+    GtkWidget *cancel, *ok, *align, *hbox, *refresh, *mode_label;
+
+    X->cm_dialog = gtk_dialog_new();
+    gtk_container_set_border_width(GTK_CONTAINER(X->cm_dialog), 12);
+    gtk_window_set_modal(GTK_WINDOW(X->cm_dialog), TRUE);
+    gtk_window_set_resizable(GTK_WINDOW(X->cm_dialog), FALSE);
+    gtk_window_set_type_hint(GTK_WINDOW(X->cm_dialog), 
+                             GDK_WINDOW_TYPE_HINT_DIALOG);
+    gtk_dialog_set_has_separator(GTK_DIALOG(X->cm_dialog), FALSE);
+
+    vbox = GTK_DIALOG(X->cm_dialog)->vbox;
+    gtk_widget_show(vbox);
+
+    table = gtk_table_new(2, 2, FALSE);
+    gtk_widget_show(table);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 5);
+    gtk_table_set_row_spacings(GTK_TABLE(table), 12);
+    gtk_table_set_col_spacings(GTK_TABLE(table), 12);
+
+    warning = gtk_image_new_from_stock("gtk-dialog-warning", 
+                                       GTK_ICON_SIZE_DIALOG);
+    gtk_widget_show(warning);
+    gtk_table_attach(GTK_TABLE(table), warning, 0, 1, 0, 2,
+                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                     (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_misc_set_alignment(GTK_MISC(warning), 0.5, 0);
+
+    check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
+    gtk_widget_show(check);
+    gtk_table_attach(GTK_TABLE(table), check, 1, 2, 1, 2,
+                     (GtkAttachOptions) (GTK_FILL),
+                     (GtkAttachOptions) (0), 0, 0);
+
+    desc = gtk_label_new(_("<big><b>Changing Modes Clears Calculation</b></big>\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."));
+    gtk_widget_show(desc);
+    gtk_table_attach(GTK_TABLE(table), desc, 1, 2, 0, 1,
+                     (GtkAttachOptions) (GTK_FILL),
+                     (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_use_markup(GTK_LABEL(desc), TRUE);
+    gtk_label_set_line_wrap(GTK_LABEL(desc), TRUE);
+    gtk_misc_set_alignment(GTK_MISC(desc), 0, 0.5);
+
+    action_area = GTK_DIALOG(X->cm_dialog)->action_area;
+    gtk_widget_show(action_area);
+    gtk_button_box_set_layout(GTK_BUTTON_BOX(action_area), 
+                              GTK_BUTTONBOX_END);
+
+    cancel = gtk_button_new_from_stock("gtk-cancel");
+    gtk_widget_show(cancel);
+    gtk_dialog_add_action_widget(GTK_DIALOG(X->cm_dialog), 
+                                 cancel, GTK_RESPONSE_CANCEL);
+    GTK_WIDGET_SET_FLAGS(cancel, GTK_CAN_DEFAULT);
+
+    ok = gtk_button_new();
+    gtk_widget_show(ok);
+    gtk_dialog_add_action_widget(GTK_DIALOG(X->cm_dialog), 
+                                 ok, GTK_RESPONSE_OK);
+    GTK_WIDGET_SET_FLAGS(ok, GTK_CAN_DEFAULT);
+
+    align = gtk_alignment_new(0.5, 0.5, 0, 0);
+    gtk_widget_show(align);
+    gtk_container_add(GTK_CONTAINER(ok), align);
+
+    hbox = gtk_hbox_new(FALSE, 2);
+    gtk_widget_show(hbox);
+    gtk_container_add(GTK_CONTAINER(align), hbox);
+
+    refresh = gtk_image_new_from_stock("gtk-refresh", 
+                                       GTK_ICON_SIZE_BUTTON);
+    gtk_widget_show(refresh);
+    gtk_box_pack_start(GTK_BOX(hbox), refresh, FALSE, FALSE, 0);
+
+    mode_label = gtk_label_new_with_mnemonic(_("C_hange Mode"));
+    gtk_widget_show(mode_label);
+    gtk_box_pack_start(GTK_BOX(hbox), mode_label, FALSE, FALSE, 0);
+
+    g_signal_connect((gpointer) check, "toggled",
+                     G_CALLBACK(cm_warning_cb), NULL);
+    g_signal_connect((gpointer) cancel, "clicked",
+                     G_CALLBACK(cm_cancel_cb), NULL);
+    g_signal_connect((gpointer) ok, "clicked",
+                     G_CALLBACK(cm_ok_cb), NULL);
+
+    gtk_widget_realize(X->cm_dialog);
+}
+
+
+void
+show_change_mode_dialog()
+{
+    if (X->cm_dialog == NULL) {
+        create_change_mode_dialog();
+    }
+
+    if (gdk_window_is_visible(X->cm_dialog->window) == FALSE) {
+        ds_position_popup(X->kframe, X->cm_dialog, DS_POPUP_CENTERED);
+    }
+    gtk_widget_show(X->cm_dialog);
+}
+
+
+
+static void
 create_spframe()     /* Create auxiliary frame for Set Precision value. */
 {
     GtkWidget *vbox, *hbox, *button_hbox, *label;
@@ -1146,15 +1317,18 @@ create_kframe()
     gtk_action_group_set_translation_domain (X->actions, NULL);
     gtk_action_group_add_actions(X->actions, entries, G_N_ELEMENTS(entries), NULL);
     gtk_action_group_add_toggle_actions(X->actions,
-                                        toggle_entries, G_N_ELEMENTS(toggle_entries),
+                                        toggle_entries, 
+                                        G_N_ELEMENTS(toggle_entries),
                                         NULL);
     gtk_action_group_add_radio_actions(X->actions,
-                                       acc_radio_entries, G_N_ELEMENTS(acc_radio_entries),
+                                       acc_radio_entries, 
+                                       G_N_ELEMENTS(acc_radio_entries),
                                        -1, G_CALLBACK(mb_acc_radio_proc),
                                        NULL);
     gtk_action_group_add_radio_actions(X->actions,
-                                       base_radio_entries, G_N_ELEMENTS(base_radio_entries),
-                                       M_BASIC, G_CALLBACK(mb_base_radio_proc),
+                                       mode_radio_entries, 
+                                       G_N_ELEMENTS(mode_radio_entries),
+                                       M_BASIC, G_CALLBACK(mb_mode_radio_proc),
                                        NULL);
 
     X->ui = gtk_ui_manager_new();
@@ -2253,22 +2427,17 @@ mb_proc(GtkAction *action)
 
 /*ARGSUSED*/
 static void 
-mb_base_radio_proc(GtkAction *action, GtkRadioAction *current)
+mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
-    const gchar *name = gtk_action_get_name(GTK_ACTION(current));
-
     if (!v->started) {
 	return;
     }
 
-    if (EQUAL(name, "Basic")) {
-        reset_mode_values(BASIC);
-    } else if (EQUAL(name, "Advanced")) {
-        reset_mode_values(ADVANCED);
-    } else if (EQUAL(name, "Financial")) {
-        reset_mode_values(FINANCIAL);
-    } else if (EQUAL(name, "Scientific")) {
-        reset_mode_values(SCIENTIFIC);
+    X->mode_name = gtk_action_get_name(GTK_ACTION(current));
+    if (v->warn_change_mode) {
+        show_change_mode_dialog();
+    } else {
+        change_mode(X->mode_name);
     }
 }
 

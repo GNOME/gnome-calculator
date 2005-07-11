@@ -1193,6 +1193,7 @@ do_calctool(int argc, char **argv)
     v->hyperbolic = 0;         /* Normal trig functions initially. */
     v->inverse    = 0;         /* No inverse functions initially. */
     v->down       = 0;         /* No mouse presses initially. */
+    v->warn_change_mode = 1;   /* Warn user when changing modes. */
 
     srand48((long) time((time_t *) 0));   /* Seed random number generator. */
 

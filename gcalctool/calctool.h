@@ -362,6 +362,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
+    int warn_change_mode;    /* Should we warn user when changing modes? */
 };
 
 typedef struct calcVars *Vars;
@@ -471,6 +472,7 @@ void set_ins_key();
 void set_inv_item(int);
 void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
+void show_change_mode_dialog();
 void show_display(int *);
 void show_error(char *);
 void show_menu();
