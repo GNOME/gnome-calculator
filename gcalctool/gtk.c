@@ -1658,7 +1658,6 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-    v->rstate = 0;
     set_memory_toggle(FALSE);
     put_resource(R_REGS, "false");
     gtk_widget_hide(X->rframe);
