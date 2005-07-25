@@ -2553,6 +2553,7 @@ reset_mode_values(enum mode_type mtype)
 {
     v->modetype = mtype;
     set_item(BASEITEM, DEC);
+    grey_buttons(v->base);
     set_item(NUMITEM, FIX);
     v->accuracy = 9;
     set_accuracy_toggle(v->accuracy);
