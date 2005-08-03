@@ -37,7 +37,6 @@ static struct word {
   { /* Inversion of hyperbolic cosine */         N_("acosh") },
   { /* Inversion of cosine */                    N_("acos" ) },
   { /* Bitwise AND */                            N_("and")   },
-  { /* Answer of previous calculation */         N_("ans")   },
   { /* Inversion of hyperbolic sine */           N_("asinh") },
   { /* Hyperbolic sine */                        N_("asin")  },
   { /* Inversion of hyperbolic tangent */        N_("atanh") },
