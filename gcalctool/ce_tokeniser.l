@@ -48,7 +48,7 @@ SEPARATOR "e+"|"e-"
 "acosh" {return tACOSH;}
 "acos" {return tACOS;}
 "and" {return tAND;}
-"ans" {return tANS;}
+"Ans" {return tANS;}
 "asinh" {return tASINH;}
 "asin" {return tASIN;}
 "atanh" {return tATANH;}
