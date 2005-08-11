@@ -41,16 +41,16 @@
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 
-#define BUT_0_BAS     X->bas_buttons[24]       /* 0 - in "Basic" mode */
-#define BUT_1_BAS     X->bas_buttons[16]       /* 1 - in "Basic" mode */
-#define BUT_2_BAS     X->bas_buttons[17]       /* 2 - in "Basic" mode */
-#define BUT_3_BAS     X->bas_buttons[18]       /* 3 - in "Basic" mode */
+#define BUT_0_BAS     X->bas_buttons[16]       /* 0 - in "Basic" mode */
+#define BUT_1_BAS     X->bas_buttons[12]       /* 1 - in "Basic" mode */
+#define BUT_2_BAS     X->bas_buttons[13]       /* 2 - in "Basic" mode */
+#define BUT_3_BAS     X->bas_buttons[14]       /* 3 - in "Basic" mode */
 #define BUT_4_BAS     X->bas_buttons[8]        /* 4 - in "Basic" mode */
 #define BUT_5_BAS     X->bas_buttons[9]        /* 5 - in "Basic" mode */
 #define BUT_6_BAS     X->bas_buttons[10]       /* 6 - in "Basic" mode */
-#define BUT_7_BAS     X->bas_buttons[0]        /* 7 - in "Basic" mode */
-#define BUT_8_BAS     X->bas_buttons[1]        /* 8 - in "Basic" mode */
-#define BUT_9_BAS     X->bas_buttons[2]        /* 9 - in "Basic" mode */
+#define BUT_7_BAS     X->bas_buttons[4]        /* 7 - in "Basic" mode */
+#define BUT_8_BAS     X->bas_buttons[5]        /* 8 - in "Basic" mode */
+#define BUT_9_BAS     X->bas_buttons[6]        /* 9 - in "Basic" mode */
 
 #define BUT_0_ADV     X->adv_buttons[24]       /* 0 - in "Advanced" mode */
 #define BUT_1_ADV     X->adv_buttons[16]       /* 1 - in "Advanced" mode */
