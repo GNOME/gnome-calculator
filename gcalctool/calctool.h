@@ -450,7 +450,7 @@ void make_reg(int, char *);
 void make_registers();
 void mperr();
 void MPstr_to_num(char *, enum base_type, int *);
-void paren_disp(char);
+void paren_disp(int);
 void process_item(struct button *);
 void process_str(char *);
 void push_num(int *);

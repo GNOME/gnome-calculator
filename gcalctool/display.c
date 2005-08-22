@@ -442,7 +442,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
 /* Append the latest parenthesis char to the display item. */
 
 void
-paren_disp(char c)
+paren_disp(int c)
 {
     int i, n;
 
