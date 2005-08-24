@@ -21,7 +21,7 @@
 
 #include <stdio.h>
 #include <libintl.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <string.h>
 
