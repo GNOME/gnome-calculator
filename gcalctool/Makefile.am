@@ -56,7 +56,8 @@ libparser.a: \
 	lr_parser.tab.o\
 	ce_parser.o\
 	lr_parser.o
-	ar r libparser.a $^
+	$(AR) r libparser.a $^
+	$(RANLIB) libparser.a
 
 ce_parser.o: ce_parser.c ce_parser.h
 	$(COMPILE) -c $(INCLUDES) -o $@ ce_parser.c
