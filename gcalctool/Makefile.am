@@ -60,10 +60,10 @@ libparser.a: \
 	$(RANLIB) libparser.a
 
 ce_parser.o: ce_parser.c ce_parser.h
-	$(COMPILE) -c $(INCLUDES) -o $@ ce_parser.c
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/ce_parser.c
 
 lr_parser.o: lr_parser.c lr_parser.h
-	$(COMPILE) -c $(INCLUDES) -o $@ lr_parser.c
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lr_parser.c
 
 lex.ce.o: lex.ce.c
 	$(COMPILE) -c $(INCLUDES) -o $@ $^
@@ -75,19 +75,19 @@ ce_parser.tab.o: ce_parser.tab.c
 	$(COMPILE) -c $(INCLUDES) -o $@ $^
 
 ce_parser.tab.c: ce_parser.y
-	bison -d -p ce -d ce_parser.y
+	bison -d -p ce -d $(srcdir)/ce_parser.y
 
 lr_parser.tab.o: lr_parser.tab.c
 	$(COMPILE) -c $(INCLUDES) -o $@ $^
 
 lr_parser.tab.c: lr_parser.y
-	bison -d -p lr lr_parser.y
+	bison -d -p lr $(srcdir)/lr_parser.y
 
 lex.ce.c: ce_parser.tab.c ce_tokeniser.l
-	$(LEX) -Pce ce_tokeniser.l
+	$(LEX) -Pce $(srcdir)/ce_tokeniser.l
 
 lex.lr.c: lr_parser.tab.c lr_tokeniser.l
-	$(LEX) -i -Plr lr_tokeniser.l
+	$(LEX) -i -Plr $(srcdir)/lr_tokeniser.l
 
 code-format: 
 	ls *[ch] | xargs indent -nbad -bap -bbo -nbc -br\
