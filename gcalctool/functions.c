@@ -416,8 +416,19 @@ do_expression()
 	        v->e.calc_complete = 1;
 		goto out;
             } else {
-	        update_statusbar(_("Malformed expression"), 
-                                 "gtk-dialog-error");
+		char *message = NULL;
+		switch (ret) {
+		case -PARSER_ERR_INVALID_BASE:
+		    message = _("Invalid number for the current base");
+		    break;
+		case -PARSER_ERR_TOO_LONG_NUMBER:
+		    message = _("Too long number");
+		    break;
+		default:
+		    message = _("Malformed expression");
+		    break;
+		}
+	        update_statusbar(message, "gtk-dialog-error");
 	        return;
             }
         } else {

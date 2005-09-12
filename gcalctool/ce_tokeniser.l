@@ -94,20 +94,23 @@ return tREG;
 }
 
 {DIGIT}+|{HEX}+ {
-if (strlen(yytext) > 40) parser_state.error = EINVAL;
+if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
+check_numbase(yytext);
 MPstr_to_num(yytext, v->base, celval.int_t);
 return tINUMBER;
 }
 
 {DIGIT}*{DECIMAL}{DIGIT}+ {
-if (strlen(yytext) > 40) parser_state.error = EINVAL;
+if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
+check_numbase(yytext);
 MPstr_to_num(yytext, v->base, celval.int_t);
 return tDNUMBER;
 }
 
 {DIGIT}+{SEPARATOR}{DIGIT}+ {
-  MPstr_to_num(yytext, v->base, celval.int_t);
-  return tDNUMBER;
+check_numbase(yytext);
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tDNUMBER;
 }
 
 [ \t\n]

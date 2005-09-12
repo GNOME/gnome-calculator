@@ -21,8 +21,11 @@
 
 #include <assert.h>
 #include <string.h>
+#include <errno.h>
+#include <ctype.h>
 
 #include "calctool.h"
+#include "extern.h"
 #include "parser.h"
 
 struct parser_state parser_state;
@@ -42,3 +45,48 @@ ret(int s[MP_SIZE])     /* Copy result value. */
     parser_state.flags |= ANS;
 }
 
+void
+check_numbase(char *num)
+{
+    int i;
+
+    for (i = 0; num[i]; i++) {
+	char l = num[i];
+
+	if (l == '.' || 
+	    l == ',' || 
+	    l == 'e' || 
+	    l == ' ') continue;
+
+	switch (v->base) {
+	case BIN:
+	    if ((l < '0') || (l > '1')) {
+		 parser_state.error = -PARSER_ERR_INVALID_BASE;
+		 return;		
+	    }
+	    break;
+	case OCT:
+	    if ((l < '0') || (l > '7')) {
+		 parser_state.error = -PARSER_ERR_INVALID_BASE;
+		 return;		
+	    }
+	    break;
+	case DEC:
+	    if (!isdigit(l)) {
+		 parser_state.error = -PARSER_ERR_INVALID_BASE;
+		 return;		
+	    }
+
+	    break;
+	case HEX:
+	    if (!isxdigit(l)) {
+		 parser_state.error = -PARSER_ERR_INVALID_BASE;
+		 return;		
+	    }
+	    break;
+	default:
+	    assert(0); // unknown base
+	}
+    }
+    
+}
