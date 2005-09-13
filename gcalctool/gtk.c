@@ -1606,13 +1606,14 @@ create_rframe()
     int i;
     GtkWidget *vbox;
 
-    X->rframe = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    X->rframe = gtk_dialog_new();
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
-    gtk_window_set_resizable(GTK_WINDOW(X->rframe), TRUE);
+    gtk_window_set_resizable(GTK_WINDOW(X->rframe), FALSE);
     gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
+    gtk_window_set_type_hint(GTK_WINDOW(X->rframe), 
+                             GDK_WINDOW_TYPE_HINT_DIALOG);
 
-    vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_add(GTK_CONTAINER(X->rframe), vbox);
+    vbox = GTK_DIALOG(X->rframe)->vbox;
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
