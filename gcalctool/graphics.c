@@ -51,16 +51,12 @@ void
 make_registers()            /* Calculate memory register frame values. */
 {
     char line[MAXLINE];     /* Current memory register line. */
-    char fmt[MAXLINE];      /* Format string to create the register string. */
     char *mval;
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
         mval = make_number(v->MPmvals[n], v->base, TRUE);
-	SPRINTF(fmt, "<span weight=\"bold\">%s%s%%%1ds", 
-                _("R"), "%1d:</span>   %s", MAX_DIGITS - strlen(mval));
-        SPRINTF(line, fmt, n, mval, " ");
-        make_reg(n, line);
+        make_reg(n, mval);
         put_resource(((int) R_REG0) + n, mval);
     }
 }

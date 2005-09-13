@@ -1598,13 +1598,25 @@ create_mode_panel(GtkWidget *main_vbox)
 }
 
 
+/*ARGSUSED*/
+static void
+mem_close(GtkButton *button, gpointer user_data)
+{
+    set_memory_toggle(FALSE);
+    put_resource(R_REGS, "false");
+    gtk_widget_hide(X->rframe);
+}
+
+
 static void
 create_rframe()
 {
     char line[MAXLINE];     /* Current memory register line. */
     char name[MAXLINE];
     int i;
-    GtkWidget *vbox;
+    AtkObject *atko[MAXREGS];
+    GtkWidget *action_area, *close_button;
+    GtkWidget *hbox[MAXREGS], *label[MAXREGS], *vbox;
 
     X->rframe = gtk_dialog_new();
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
@@ -1617,17 +1629,41 @@ create_rframe()
     gtk_widget_realize(X->rframe);
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>   %s", 
-                _("R"), i,  make_number(v->MPmvals[i], v->base, TRUE));
-        X->regs[i] = gtk_label_new("");
-        gtk_label_set_markup(GTK_LABEL(X->regs[i]), line);
-        SPRINTF(name, "register_label%1d", i);
+        hbox[i] = gtk_hbox_new(FALSE, 0);
+
+        SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>", _("R"), i);
+        label[i] = gtk_label_new("");
+        gtk_label_set_markup(GTK_LABEL(label[i]), line);
+        gtk_box_pack_start(GTK_BOX(hbox[i]), label[i], FALSE, FALSE, 5);
+
+        X->regs[i] = gtk_entry_new();
+        gtk_entry_set_text(GTK_ENTRY(X->regs[i]), 
+                           make_number(v->MPmvals[i], v->base, TRUE));
+        gtk_editable_set_editable(GTK_EDITABLE(X->regs[i]), FALSE);
+        gtk_box_pack_start(GTK_BOX(hbox[i]), X->regs[i], TRUE, TRUE, 5);
+
+        SPRINTF(name, "register %1d", i);
         gtk_widget_set_name(X->regs[i], name);
-        gtk_widget_ref(X->regs[i]);
-        gtk_misc_set_alignment(GTK_MISC(X->regs[i]), 0.0, 0.5);
-        gtk_misc_set_padding(GTK_MISC(X->regs[i]), 5, 5);
-        gtk_box_pack_start(GTK_BOX(vbox), X->regs[i], TRUE, TRUE, 0);
+
+        atko[i] = gtk_widget_get_accessible(X->regs[i]);
+        atk_object_set_name(atko[i], _(name));
+
+        gtk_box_pack_start(GTK_BOX(vbox), hbox[i], TRUE, TRUE, 0);
     }
+
+    action_area = GTK_DIALOG(X->rframe)->action_area;
+    gtk_widget_show(action_area);
+    gtk_button_box_set_layout(GTK_BUTTON_BOX(action_area), GTK_BUTTONBOX_END);
+
+    close_button = gtk_button_new_from_stock("gtk-close");
+    gtk_widget_show(close_button);
+    gtk_dialog_add_action_widget(GTK_DIALOG(X->rframe), 
+                                 close_button, GTK_RESPONSE_CLOSE);
+    GTK_WIDGET_SET_FLAGS(close_button, GTK_CAN_DEFAULT);
+
+    g_signal_connect((gpointer) close_button, "clicked",
+                     G_CALLBACK(mem_close), NULL);
+
     gtk_widget_show_all(vbox);
 
     g_signal_connect(G_OBJECT(X->rframe), "delete_event",
@@ -1659,9 +1695,7 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-    set_memory_toggle(FALSE);
-    put_resource(R_REGS, "false");
-    gtk_widget_hide(X->rframe);
+    mem_close(NULL, NULL);
 
     return(TRUE);
 }
@@ -2206,7 +2240,8 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
 void
 make_reg(int n, char *str)
 {
-    gtk_label_set_markup(GTK_LABEL(X->regs[n]), str);
+    gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(str));
+    gtk_entry_set_text(GTK_ENTRY(X->regs[n]), str);
 }
 
 
