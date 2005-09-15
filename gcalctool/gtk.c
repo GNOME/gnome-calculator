@@ -1368,7 +1368,7 @@ create_kframe()
 
     gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(X->display_item), TRUE);
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), FALSE);
-    GTK_WIDGET_SET_FLAGS(X->display_item, GTK_CAN_FOCUS);
+    GTK_WIDGET_UNSET_FLAGS(X->display_item, GTK_CAN_FOCUS);
 
     gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(X->display_item), 8);
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(X->display_item), 8);
