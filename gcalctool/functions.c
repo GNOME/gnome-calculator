@@ -454,7 +454,7 @@ void
 do_calc()      /* Perform arithmetic calculation and display result. */
 {
     double dval, dres;
-    int MP1[MP_SIZE];
+    int MP1[MP_SIZE], MP2[MP_SIZE];
 
     if (!(v->opsptr && !v->show_paren)) {  /* Don't do if processing parens. */
         if (key_equal(v->current, KEY_EQ) && 
@@ -490,6 +490,18 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 
     } else if (IS_KEY(v->cur_op, KEY_DIV.value[0])) {     /* Division. */
         mpdiv(v->MPresult, v->MPdisp_val, v->MPresult);
+
+    } else if (IS_KEY(v->cur_op, KEY_MOD.value[0])) {     /* Modulus. */
+        mpcmim(v->MPresult, MP1);
+        mpcmim(v->MPdisp_val, MP2);
+        if (!mpeq(v->MPresult, MP1) || !mpeq(v->MPdisp_val, MP2)) {
+            doerr(_("Error, operands must be integers"));
+        }
+
+        mpdiv(v->MPresult, v->MPdisp_val, MP1);
+        mpcmim(MP1, MP1);
+        mpmul(MP1, v->MPdisp_val, MP2);
+        mpsub(v->MPresult, MP2, v->MPresult);
 
     } else if (IS_KEY(v->cur_op, KEY_PER.value[0])) {     /* % */
         mpmul(v->MPresult, v->MPdisp_val, v->MPresult);

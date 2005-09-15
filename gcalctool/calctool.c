@@ -108,7 +108,7 @@ Vars v;            /* Calctool variables and options. */
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
  *-----------+-----------------------------------------------------
  *  Lower:   |  a b c d e f     i     l m n   p   r s t u v   x
- *  Upper:   |  A   C D E F G     J K L   N   P   R S T       X Y
+ *  Upper:   |  A   C D E F G     J K L M N   P   R S T       X Y
  *  Numeric: |  0 1 2 3 4 5 6 7 8 9
  *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
  *           |  BackSpace Delete Return
@@ -819,16 +819,16 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     none
 },
 {
-    "    ",
-    "    ",
+    N_("Mod"),
+    N_("Modulus Division"),
     NULL,
-    { 0, 0 },
-    { 0, 0 },
-    ' ',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_M,          0 },
+    'M',
     M_NONE,
-    do_none,
+    do_calc,
     NULL,
-    none
+    binop
 },
 {
     N_("Acc"),

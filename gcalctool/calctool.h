@@ -123,6 +123,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define KEY_RSFT  s_buttons[1]              /* > */
 #define KEY_16    s_buttons[2]              /* [ */
 #define KEY_32    s_buttons[3]              /* ] */
+#define KEY_MOD   s_buttons[6]              /* M */
 #define KEY_ACC   s_buttons[7]              /* A */
 
 #define KEY_CON   s_buttons[8]              /* # */
