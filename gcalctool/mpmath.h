@@ -49,6 +49,7 @@ void calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]);
 void do_zero(int t1[MP_SIZE]);
 void do_e(int t1[MP_SIZE]);
 void calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE]);
+int calc_modulus(int op1[MP_SIZE], int op2[MP_SIZE], int result[MP_SIZE]);
 void calc_ctrm(int t[MP_SIZE]);
 void calc_ddb(int t[MP_SIZE]);
 void calc_fv(int t[MP_SIZE]);

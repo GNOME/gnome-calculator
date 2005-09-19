@@ -62,6 +62,7 @@
 %token tINT
 %token tLN
 %token tLOG10
+%token tMOD
 %token tNOT
 %token tOR
 %token tPI
@@ -142,6 +143,11 @@ udf:
 value: 
   lexp {cp($1, $$);}
 | exp {cp($1, $$);}
+| tINUMBER tMOD tINUMBER {
+  if (calc_modulus($1, $3, $$)) {
+      parser_state.error = EINVAL;
+  }
+}
 ;
 
 lexp:

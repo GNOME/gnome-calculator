@@ -18,6 +18,7 @@
  */
 
 #include <assert.h>
+#include <errno.h>
 
 #include "calctool.h"    /* FIXME: include only needed stuff. */
 #include "mpmath.h"
@@ -203,6 +204,25 @@ calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
     mpmul(s1, MP1, t1);
 }
 
+int
+calc_modulus(int op1[MP_SIZE], 
+	     int op2[MP_SIZE], 
+	     int result[MP_SIZE])
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+
+    mpcmim(op1, MP1);
+    mpcmim(op2, MP2);
+    if (!mpeq(op1, MP1) || !mpeq(op2, MP2)) {
+	return -EINVAL;
+    }
+    
+    mpdiv(op1, op2, MP1);
+    mpcmim(MP1, MP1);
+    mpmul(MP1, op2, MP2);
+    mpsub(op1, MP2, result);
+    return 0;
+}
 
 void
 calc_percent(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])

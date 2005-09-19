@@ -53,6 +53,7 @@ static struct word {
   { /* Integer part of a decimal number */       N_("int")   },
   { /* Natural logarithm */                      N_("ln")    },
   { /* Logarithm with 10 as a base number */     N_("log")   },
+  { /* Modulus */                                N_("mod")   },
   { /* Bitwise NOT */                            N_("not")   },
   { /* Bitwise OR */                             N_("or")    },
   { /* PI */                                     N_("pi")    },

@@ -827,7 +827,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'M',
     M_NONE,
     do_calc,
-    NULL,
+    N_(" Mod "),
     binop
 },
 {

@@ -66,6 +66,7 @@ SEPARATOR "e+"|"e-"
 "int" {return tINT;}
 "ln" {return tLN;}
 "log" {return tLOG10;}
+"mod" {return tMOD;}
 "not" {return tNOT;}
 "or" {return tOR;}
 "pi" {return tPI;}
