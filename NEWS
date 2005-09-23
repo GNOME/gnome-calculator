@@ -5,6 +5,17 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.7.6
+
+* Adjusted the mpcmim() routine in mp.c. The fix for Sun bug #4006391
+  needed to also preserve v->toclear and v->pointed.
+
+* Work on enhancement request #157961. Started to implement the bit 
+  panel for non-arithmetic precedence mode.  It's automatically displayed 
+  when in Scientific mode.
+
+----
+
 Overview of changes in gcalctool 5.7.5
 
 * Implemented enhancement request #148104 for arithmetic precedence mode.

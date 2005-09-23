@@ -82,6 +82,10 @@
 #define BUT_E     X->sci_buttons[17]       /* E */
 #define BUT_F     X->sci_buttons[18]       /* F */
 
+#define  MAXBITS    64      /* Bit panel: number of bit fields. */
+#define  MAXGAPS    14      /* Bit panel: number of 4 bit gaps. */
+#define  MAXLABELS  6       /* Bit panel: number of bits that are labelled. */
+
 struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
@@ -103,6 +107,9 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *ktable;
     GtkWidget *menubar;
     GtkWidget *mode_panel;
+
+    GtkWidget *bit_panel;
+    GtkWidget *bits[MAXBITS];          /* The 0/1 labels in the bit panel. */
 
     GtkWidget *khbox;                  /* Box containing statusbar and image */
     GtkWidget *status_image;           /* Statusbar image */
@@ -153,6 +160,7 @@ typedef struct {
     gboolean editable;
 } CF_Item;
 
+static GtkWidget *create_bit_panel(GtkWidget *);
 static GtkWidget *create_menu(enum menu_type, struct button *);
 static GtkWidget *create_mode_panel(GtkWidget *);
 static GtkWidget *make_menu_button(gchar *, int);
@@ -197,6 +205,7 @@ static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_values(enum mode_type);
 static void set_accuracy_toggle(int val);
+static void set_bit_panel();
 static void set_button_state(GtkWidget *, int);
 static void set_item(enum item_type itemtype, int val);
 static void set_memory_toggle(int);
@@ -646,6 +655,7 @@ button_proc(GtkButton *widget, gpointer user_data)
             } else {
                 process_item(n);
             }
+            set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRCPY(v->fnum, v->display);
                 set_display(v->fnum, TRUE);
@@ -1282,6 +1292,112 @@ gcalc_window_set_unset_image(gboolean have_icons)
 }
 
 
+static gboolean
+bit_toggled(GtkWidget *event_box, GdkEventButton *event, gpointer data)
+{
+    double number;
+    long long lval;
+    int n, MP1[MP_SIZE], MP2[MP_SIZE];
+
+    n = MAXBITS - (int) data - 1;
+    MPstr_to_num(v->display, v->base, MP1);
+    mpcmd(MP1, &number);
+    lval = (long long) number;
+
+    if (lval & (1LL << n)) {
+        lval &= ~(1LL << n);
+        gtk_label_set_text(GTK_LABEL(X->bits[(int) data]), " 0");
+    } else {
+        lval |=  (1LL << n);
+        gtk_label_set_text(GTK_LABEL(X->bits[(int) data]), " 1");
+    }
+
+    number = (double) lval;
+    mpcdm(&number, v->MPdisp_val);
+    show_display(v->MPdisp_val);
+    v->toclear = 0;
+
+    return(TRUE);
+}
+
+
+static char *label_strs[MAXLABELS] = {
+    "63", "47", "32", "31", "15", "0"
+};
+
+static int label_pos[MAXLABELS] = {
+      0,   20,   38,   0,    20,  38
+};
+
+
+static GtkWidget *
+create_bit_panel(GtkWidget *main_vbox)
+{
+    int i, half;
+    GtkWidget *table;
+    GtkWidget *eb[MAXBITS], *gaps[MAXGAPS], *labels[MAXLABELS];
+
+    table = gtk_table_new(4, 39, FALSE);
+    gtk_box_pack_start(GTK_BOX(main_vbox), table, TRUE, TRUE, 0);
+
+    for (i = 0; i < MAXBITS; i++) {
+        int left, right, top, bottom;
+
+        half = MAXBITS / 2;
+        eb[i] = gtk_event_box_new();
+        X->bits[i] = gtk_label_new(" 0");
+        gtk_container_add(GTK_CONTAINER(eb[i]), X->bits[i]);
+
+        left   = (i < half) ? i + (i/4)     : i - half + ((i-half)/4);
+        right  = (i < half) ? i + (i/4) + 1 : i - half + ((i-half)/4) + 1;
+        top    = (i < half) ? 0 : 2;
+        bottom = (i < half) ? 1 : 3;
+
+        gtk_table_attach(GTK_TABLE(table), eb[i], left, right, top, bottom,
+                         (GtkAttachOptions) (GTK_SHRINK),
+                         (GtkAttachOptions) (0), 0, 0);
+        g_signal_connect(G_OBJECT(eb[i]), "button_press_event",
+                         G_CALLBACK(bit_toggled), (gpointer) i);
+    }
+
+    for (i = 0; i < MAXGAPS; i++) {
+        int left, right, top, bottom;
+
+        half = MAXGAPS / 2;
+        gaps[i] = gtk_label_new("  ");
+        left   = (i < half) ? (i + 1) * 5 - 1 : (i - half + 1) * 5 - 1;
+        right  = (i < half) ? (i + 1) * 5     : (i - half + 1) * 5;
+        top    = (i < half) ? 0 : 2;
+        bottom = (i < half) ? 1 : 3;
+
+        gtk_table_attach(GTK_TABLE(table), gaps[i], left, right, top, bottom,
+                         (GtkAttachOptions) (GTK_SHRINK),
+                         (GtkAttachOptions) (0), 0, 0);
+        gtk_misc_set_alignment(GTK_MISC(gaps[i]), 0, 0.5);
+    }
+
+    for (i = 0; i < MAXLABELS; i++) {
+        int left, right, top, bottom;
+
+        labels[i] = gtk_label_new(_(label_strs[i]));
+        left   = label_pos[i];
+        right  = label_pos[i] + 1;
+        top    = (i < (MAXLABELS / 2)) ? 1 : 3;
+        bottom = (i < (MAXLABELS / 2)) ? 2 : 4;
+
+        gtk_table_attach(GTK_TABLE(table), labels[i], left, right, top, bottom,
+                         (GtkAttachOptions) (GTK_SHRINK),
+                         (GtkAttachOptions) (0), 0, 0);
+        gtk_label_set_justify(GTK_LABEL(labels[i]), GTK_JUSTIFY_CENTER);
+        gtk_misc_set_alignment(GTK_MISC(labels[i]), 0, 0.5);
+    }
+
+    gtk_widget_show_all(table);
+
+    return(table);
+}
+
+
 static void
 create_kframe()
 {
@@ -1393,6 +1509,7 @@ create_kframe()
                                   f_buttons, FROWS, FCOLS, "fin");
 
     X->mode_panel = create_mode_panel(X->kvbox);
+    X->bit_panel  = create_bit_panel(X->kvbox);
 
     X->sci_panel = make_but_panel(X->kvbox, X->sci_buttons,
                                   s_buttons, SROWS, SCOLS, "sci");
@@ -1400,6 +1517,7 @@ create_kframe()
 
     gtk_widget_show(X->fin_panel);
     gtk_widget_show(X->mode_panel);
+    gtk_widget_show(X->bit_panel);
     gtk_widget_show(X->sci_panel);
 
     X->bas_panel = make_but_panel(X->kvbox, X->bas_buttons,
@@ -2418,6 +2536,7 @@ toggle_expressions()
             assert(0);
     }
     put_resource(R_SYNTAX, Rsstr[v->syntax]);
+    set_mode(v->modetype);
 }
 
 
@@ -2697,6 +2816,29 @@ scroll_right()
 
 
 void
+set_bit_panel() {
+    double number;
+    long long lval;
+    int i, MP1[MP_SIZE], MP2[MP_SIZE];
+
+    MPstr_to_num(v->display, v->base, MP1);
+    mpcmim(MP1, MP2);
+    if (mpeq(MP1, MP2)) {
+        gtk_widget_set_sensitive(X->bit_panel, TRUE);
+        mpcmd(MP1, &number);
+        lval = (long long) number;
+
+        for (i = 0; i < MAXBITS; i++) {
+            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), 
+                               (lval & (1LL << i)) ? " 1" : " 0");
+        }
+    } else {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+    }
+}
+
+
+void
 set_display(char *str, int minimize_changes)
 {
     char localized[MAX_LOCALIZED];
@@ -2886,6 +3028,7 @@ set_mode(enum mode_type mode)
             gtk_widget_hide(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
             break;
 
@@ -2894,6 +3037,7 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
             break;
 
@@ -2902,6 +3046,7 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->adv_panel);
             gtk_widget_show(X->fin_panel);
             gtk_widget_hide(X->mode_panel);
+            gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
             break;
 
@@ -2910,6 +3055,11 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_show_all(X->mode_panel);
+            if (v->syntax == npa) {
+                gtk_widget_show_all(X->bit_panel);
+            } else {
+                gtk_widget_hide(X->bit_panel);
+            }
             gtk_widget_show(X->sci_panel);
             break;
     }

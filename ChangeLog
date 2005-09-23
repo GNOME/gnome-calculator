@@ -8,6 +8,16 @@
 gcalctool change history.
 =========================
 
+2005-09-23 Rich Burridge <rich.burridge@sun.com>
+
+    * Adjusted the mpcmim() routine in mp.c. The fix for Sun bug #4006391
+      needed to also preserve v->toclear and v->pointed.
+
+    * Work on enhancement request #157961
+      (http://bugzilla.gnome.org/show_bug.cgi?id=157961).
+      Started to implement the bit panel for non-arithmetic precedence mode.
+      It's automatically displayed when in Scientific mode.
+
 2005-09-19 Rich Burridge <rich.burridge@sun.com>
 
     * From Sami Pietila <sampie@ariana-dsl.utu.fi>

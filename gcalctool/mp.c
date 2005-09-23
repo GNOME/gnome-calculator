@@ -1142,6 +1142,8 @@ mpcmim(int *x, int *y)
 {
     int tmp[MP_SIZE];     /* Temporary store for the number. */
     int accuracy;         /* Temporary story for the accuracy. */
+    int pointed;          /* Whether a decimal point has been given. */
+    int toclear;          /* Indicates if display should be cleared. */
     char disp[MAXLINE];   /* Setup a string to store what would be displayed */
     enum num_type dtype;  /* Setup a temp display type variable */
 
@@ -1194,9 +1196,12 @@ L10:
  * like 4800 when internal representation in something like 4799.999999999.
  */
 
-    dtype = v->dtype;
-    v->dtype = FIX;
     accuracy = v->accuracy;
+    dtype = v->dtype;
+    pointed = v->pointed;
+    toclear = v->toclear;
+
+    v->dtype = FIX;
     v->accuracy = MAX_DIGITS;
     mpcmf(&x[1], tmp);
     STRCPY(disp, make_number(tmp, v->base, FALSE));
@@ -1207,6 +1212,8 @@ L10:
 
     v->accuracy = accuracy;
     v->dtype = dtype;
+    v->pointed = pointed;
+    v->toclear = toclear;
 }
 
 
