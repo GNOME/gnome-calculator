@@ -1334,11 +1334,16 @@ static GtkWidget *
 create_bit_panel(GtkWidget *main_vbox)
 {
     int i, half;
-    GtkWidget *table;
+    GtkWidget *align, *table, *vbox;
     GtkWidget *eb[MAXBITS], *gaps[MAXGAPS], *labels[MAXLABELS];
 
+    vbox = gtk_vbox_new(FALSE, 0);
+    align = gtk_alignment_new(0.5, 0.5, 0, 0);
+    gtk_container_add(GTK_CONTAINER(align), vbox);
+    gtk_box_pack_start(GTK_BOX(main_vbox), align, FALSE, TRUE, 0);
+
     table = gtk_table_new(4, 39, FALSE);
-    gtk_box_pack_start(GTK_BOX(main_vbox), table, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
     for (i = 0; i < MAXBITS; i++) {
         int left, right, top, bottom;
@@ -1392,9 +1397,9 @@ create_bit_panel(GtkWidget *main_vbox)
         gtk_misc_set_alignment(GTK_MISC(labels[i]), 0, 0.5);
     }
 
-    gtk_widget_show_all(table);
+    gtk_widget_show_all(align);
 
-    return(table);
+    return(align);
 }
 
 
