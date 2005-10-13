@@ -97,6 +97,7 @@
 %left '+' '-'
 %left '*' '/'
 %right '^'
+%left MED
 %left NEG
 %left POS
 %left HIGH
@@ -176,6 +177,7 @@ term:
 | term '*' term {mpmul($1, $3, $$);}
 | term '^' term {calc_xpowy($1, $3, $$);}
 | term '!' {do_factorial($1 ,$$);}
+| term 'e' term %prec MED {calc_xtimestenpowx($1, $3, $$);}
 | '-' term %prec NEG {mpneg($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
 

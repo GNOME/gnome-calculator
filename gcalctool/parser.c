@@ -56,6 +56,7 @@ check_numbase(char *num)
 	if (l == '.' || 
 	    l == ',' || 
 	    l == 'e' || 
+	    l == '+' || 
 	    l == ' ') continue;
 
 	switch (v->base) {

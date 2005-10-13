@@ -877,7 +877,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'e',
     M_NONE,
     do_expno,
-    N_("*10^"),
+    N_("e"),
     expnum
 },
 {

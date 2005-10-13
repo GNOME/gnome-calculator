@@ -60,7 +60,7 @@ SEPARATOR "e+"|"e-"
 "cos" {return tCOS;}
 "ctrm" {return tCTRM;}
 "ddb" {return tDDB;}
-"exp" {return tEXP;}
+"eng" {return tEXP;}
 "frac" {return tFRAC;}
 "fv" {return tFV;}
 "int" {return tINT;}
@@ -94,6 +94,7 @@ celval.integer = atoi(yytext+1);
 return tREG;
 }
 
+
 {DIGIT}+|{HEX}+ {
 if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
 check_numbase(yytext);
@@ -108,11 +109,6 @@ MPstr_to_num(yytext, v->base, celval.int_t);
 return tDNUMBER;
 }
 
-{DIGIT}+{SEPARATOR}{DIGIT}+ {
-check_numbase(yytext);
-MPstr_to_num(yytext, v->base, celval.int_t);
-return tDNUMBER;
-}
 
 [ \t\n]
 .        {return *yytext; }
@@ -128,6 +124,12 @@ ce_flush_buffer(YY_CURRENT_BUFFER);
 
 #if 0
 // TO BE USED LATER
+
+{DIGIT}*{DECIMAL}*{DIGIT}+{SEPARATOR}{DIGIT}+ {
+check_numbase(yytext);
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tDNUMBER;
+}
 
 {HEX}+"h" {
 // TODO: fix memory leak (look also following sections)
