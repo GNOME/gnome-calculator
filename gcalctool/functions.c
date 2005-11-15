@@ -951,7 +951,7 @@ do_memory()
 
 
 void
-do_mode()                   /* Set special calculator mode. */
+do_mode(int toclear)           /* Set special calculator mode. */
 {
     char title[MAXLINE];
 
@@ -959,7 +959,9 @@ do_mode()                   /* Set special calculator mode. */
     set_title(FCP_KEY, title);
     put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
-    do_clear();
+    if (toclear) {
+        do_clear();
+    }
 }
 
 

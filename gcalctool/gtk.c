@@ -203,6 +203,7 @@ static void new_cf_value(GtkMenuItem *, gpointer);
 static void put_constant(int, char *, char *);
 static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
+static void reset_mode_display(int);
 static void reset_mode_values(enum mode_type);
 static void set_accuracy_toggle(int val);
 static void set_bit_panel();
@@ -2588,15 +2589,71 @@ mb_proc(GtkAction *action)
 static void 
 mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
 {
+    enum mode_type new_modetype;
+    int immediate = 0;    /* Set if we can change mode without warning user. */
+    int complete = 0;     /* Set if the user has completed a calculation. */
+
     if (!v->started) {
 	return;
     }
 
     X->mode_name = gtk_action_get_name(GTK_ACTION(current));
-    if (v->warn_change_mode) {
-        show_change_mode_dialog();
+    if (EQUAL(X->mode_name, "Basic")) {
+        new_modetype = BASIC;
+    } else if (EQUAL(X->mode_name, "Advanced")) {
+        new_modetype = ADVANCED;
+    } else if (EQUAL(X->mode_name, "Financial")) {
+        new_modetype = FINANCIAL;
+    } else if (EQUAL(X->mode_name, "Scientific")) {
+        new_modetype = SCIENTIFIC;
+    }
+
+/* If the user has completed a calculation and we are going to a
+ * new mode that is "compatible" with this one, then just change
+ * modes. Otherwise display a dialog warning the user that the
+ * current calculation will be cleared.
+ *
+ * Incompatible modes are:
+ *
+ * Scientific -> Basic
+ * Scientific -> Advanced
+ * Scientific -> Financial
+ *
+ * (unless we are in Scientific mode with Decimal numeric base and Fixed).
+ */
+
+    switch (v->syntax) {
+        case npa:
+            if (v->old_cal_value == '?' ||
+                IS_KEY(v->old_cal_value, KEY_EQ.value[0])) {
+                complete = 1;    /* Calculation is complete. */
+            }
+            break;
+
+        case exprs:
+            if (v->e.calc_complete == 1) {
+                complete = 1;   /* Calculation is complete. */
+            }
+            break;
+    }
+
+    if (complete) {
+        if ((v->modetype != SCIENTIFIC) ||
+            (v->dtype == FIX && v->base == DEC)) {
+            immediate = 1;
+        }
+    }
+
+    if (immediate) {
+        v->modetype = new_modetype;
+        reset_mode_display(FALSE);
+
     } else {
-        change_mode(X->mode_name);
+        if (v->warn_change_mode) {
+            show_change_mode_dialog();
+        } else {
+            change_mode(X->mode_name);
+        }
     }
 }
 
@@ -2709,6 +2766,26 @@ quit_cb(GtkWidget *widget, gpointer user_data)
 
 
 static void
+reset_mode_display(int toclear)
+{
+
+/* If the new mode is BASIC, then we need to dismiss the memory register
+ * window (if it's being displayed), as there is no way to interact with it.
+ */
+
+    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
+                 "sensitive", (v->modetype != BASIC), NULL);
+    if (v->modetype == BASIC) {
+        dismiss_rframe(NULL, NULL, NULL);
+    }
+
+    show_display(v->MPdisp_val);
+    make_registers();
+    do_mode(toclear);
+}
+
+
+static void
 reset_mode_values(enum mode_type mtype)
 {
     v->modetype = mtype;
@@ -2726,15 +2803,7 @@ reset_mode_values(enum mode_type mtype)
     set_show_zeroes_toggle(v->show_zeroes);
     put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 
-    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
-                 "sensitive", (v->modetype != BASIC), NULL);
-    if (v->modetype == BASIC) {
-        dismiss_rframe(NULL, NULL, NULL);
-    }
-
-    show_display(v->MPdisp_val);
-    make_registers();
-    do_mode();
+    reset_mode_display(TRUE);
 }
 
 

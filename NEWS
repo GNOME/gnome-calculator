@@ -5,6 +5,26 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.7.12
+
+* More work on bug #153854
+  If the user has completed a calculation and we are going to a
+  new mode that is "compatible" with this one, then just change
+  modes. Otherwise display a dialog warning the user that the
+  current calculation will be cleared.
+
+  Incompatible modes are:
+
+  Scientific -> Basic
+  Scientific -> Advanced
+  Scientific -> Financial
+
+  (unless we are in Scientific mode with Decimal numeric base and Fixed).
+
+  These changes work nicely in non-arithmetic operator precedence mode.
+
+----
+
 Overview of changes in gcalctool 5.7.11
 
 * Released a gcalctool tarball for GNOME 2.13.2.
