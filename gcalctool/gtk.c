@@ -1297,7 +1297,7 @@ static gboolean
 bit_toggled(GtkWidget *event_box, GdkEventButton *event, gpointer data)
 {
     double number;
-    long long lval;
+    unsigned long long lval;
     int n, MP1[MP_SIZE], MP2[MP_SIZE];
 
     n = MAXBITS - (int) data - 1;

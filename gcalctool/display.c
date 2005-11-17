@@ -152,7 +152,7 @@ initialise()
     /* TODO: perhaps this function should be renamed to reset. */
 
     int i;
-  
+ 
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = '?';         /* No arithmetic operator defined yet. */
     v->old_cal_value = '?';

@@ -8,6 +8,12 @@
 gcalctool change history.
 =========================
 
+2005-11-17 Rich Burridge <rich.burridge@sun.com>
+
+    * Slight fixup for bug #157961. The toggling of the first bit in the
+      bit panel wasn't working correctly. The long long lval variable in
+      the bit_toggled() routine in gtk.c needed to be made unsigned.
+
 2005-11-15 Rich Burridge <rich.burridge@sun.com>
 
     * More work on bug #153854 
