@@ -45,7 +45,6 @@ INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 
 CC = @CC@
-GENCAT = @GENCAT@
 GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@
 XGETTEXT = @XGETTEXT@
@@ -73,7 +72,6 @@ POTFILES = \
 
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
-INSTOBJEXT = @INSTOBJEXT@
 
 .SUFFIXES:
 .SUFFIXES: .c .o .po .pox .gmo .mo .msg .cat
@@ -94,7 +92,7 @@ INSTOBJEXT = @INSTOBJEXT@
 
 .po.cat:
 	sed -f ../intl/po2msg.sed < $< > $*.msg \
-	  && rm -f $@ && $(GENCAT) $@ $*.msg
+	  && rm -f $@ && gencat $@ $*.msg
 
 
 all: all-@USE_NLS@
@@ -130,22 +128,22 @@ install-data-yes: all
 	    $(SHELL) $(top_srcdir)/mkinstalldirs $$dir; \
 	  fi; \
 	  if test -r $$cat; then \
-	    $(INSTALL_DATA) $$cat $$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
-	    echo "installing $$cat as $$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT)"; \
+	    $(INSTALL_DATA) $$cat $$dir/$(GETTEXT_PACKAGE).mo; \
+	    echo "installing $$cat as $$dir/$(GETTEXT_PACKAGE).mo"; \
 	  else \
-	    $(INSTALL_DATA) $(srcdir)/$$cat $$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
+	    $(INSTALL_DATA) $(srcdir)/$$cat $$dir/$(GETTEXT_PACKAGE).mo; \
 	    echo "installing $(srcdir)/$$cat as" \
-		 "$$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT)"; \
+		 "$$dir/$(GETTEXT_PACKAGE).mo"; \
 	  fi; \
 	  if test -r $$cat.m; then \
-	    $(INSTALL_DATA) $$cat.m $$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
-	    echo "installing $$cat.m as $$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m"; \
+	    $(INSTALL_DATA) $$cat.m $$dir/$(GETTEXT_PACKAGE).mo.m; \
+	    echo "installing $$cat.m as $$dir/$(GETTEXT_PACKAGE).mo.m"; \
 	  else \
 	    if test -r $(srcdir)/$$cat.m ; then \
 	      $(INSTALL_DATA) $(srcdir)/$$cat.m \
-		$$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
+		$$dir/$(GETTEXT_PACKAGE).mo.m; \
 	      echo "installing $(srcdir)/$$cat as" \
-		   "$$dir/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m"; \
+		   "$$dir/$(GETTEXT_PACKAGE).mo.m"; \
 	    else \
 	      true; \
 	    fi; \
@@ -171,10 +169,10 @@ uninstall:
 	for cat in $$catalogs; do \
 	  cat=`basename $$cat`; \
 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
-	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
-	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
-	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
-	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
+	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
+	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo.m; \
+	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
+	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo.m; \
 	done
 	if test "$(PACKAGE)" = "glib"; then \
 	  rm -f $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
