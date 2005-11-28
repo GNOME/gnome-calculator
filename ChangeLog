@@ -8,6 +8,15 @@
 gcalctool change history.
 =========================
 
+2005-11-28 Rich Burridge <rich.burridge@sun.com>
+
+    * From Sami Pietila <sampie@ariana-dsl.utu.fi>
+      More work on bug #153854 
+      (http://bugzilla.gnome.org/show_bug.cgi?id=153854)
+      Similar change to that made on 15th November 2005, this time for
+      arithmetic operator precedence (AOP) mode. Still need to correct 
+      handle this is AOP mode if it's the first thing the user does.
+
 2005-11-17 Rich Burridge <rich.burridge@sun.com>
 
     * Slight fixup for bug #157961. The toggling of the first bit in the
@@ -17,7 +26,7 @@ gcalctool change history.
 2005-11-15 Rich Burridge <rich.burridge@sun.com>
 
     * More work on bug #153854 
-      (http://bugzilla.gnome.org/show_bug.cgi?id=316755)
+      (http://bugzilla.gnome.org/show_bug.cgi?id=153854)
       If the user has completed a calculation and we are going to a
       new mode that is "compatible" with this one, then just change
       modes. Otherwise display a dialog warning the user that the

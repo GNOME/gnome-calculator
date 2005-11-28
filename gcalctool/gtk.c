@@ -2631,7 +2631,7 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
             break;
 
         case exprs:
-            if (v->e.calc_complete == 1) {
+            if (v->e.calc_complete) {
                 complete = 1;   /* Calculation is complete. */
             }
             break;
@@ -2779,7 +2779,16 @@ reset_mode_display(int toclear)
         dismiss_rframe(NULL, NULL, NULL);
     }
 
-    show_display(v->MPdisp_val);
+    switch (v->syntax) {
+        case npa:
+            show_display(v->MPdisp_val);
+            break;
+
+        case exprs:
+            refresh_display();
+            break;
+    }
+
     make_registers();
     do_mode(toclear);
 }
