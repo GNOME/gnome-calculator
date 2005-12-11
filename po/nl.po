@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.nl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-15 12:07+0200\n"
-"PO-Revision-Date: 2005-07-18 00:47+0200\n"
+"POT-Creation-Date: 2005-12-09 14:13+0100\n"
+"PO-Revision-Date: 2005-12-09 21:54+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -88,19 +88,19 @@ msgid "Set inverse option for trigonometric functions"
 msgstr "Inverse gebruiken voor de trigonometrische functies"
 
 #. Mode titles to be added to the titlebar.
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:351
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:361
 msgid "Basic"
 msgstr "Standaard"
 
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:353
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:363
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:355
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:365
 msgid "Financial"
 msgstr "Financieel"
 
-#: ../gcalctool/calctool.c:73 ../gcalctool/gtk.c:357
+#: ../gcalctool/calctool.c:73 ../gcalctool/gtk.c:367
 msgid "Scientific"
 msgstr "Wetenschappelijk"
 
@@ -556,7 +556,7 @@ msgid "16 bit unsigned integer"
 msgstr "16-bit unsigned integer"
 
 #. 16-bit unsigned integer value
-#: ../gcalctool/calctool.c:782 ../gcalctool/syntax_translation.c:73
+#: ../gcalctool/calctool.c:782 ../gcalctool/syntax_translation.c:74
 msgid "u16"
 msgstr "u16"
 
@@ -573,9 +573,21 @@ msgid "32 bit unsigned integer"
 msgstr "32-bit unsigned integer"
 
 #. 32-bit unsigned integer value
-#: ../gcalctool/calctool.c:794 ../gcalctool/syntax_translation.c:74
+#: ../gcalctool/calctool.c:794 ../gcalctool/syntax_translation.c:75
 msgid "u32"
 msgstr "u32"
+
+#: ../gcalctool/calctool.c:822
+msgid "Mod"
+msgstr "Mod"
+
+#: ../gcalctool/calctool.c:823
+msgid "Modulus Division"
+msgstr "Modulus deling"
+
+#: ../gcalctool/calctool.c:830
+msgid " Mod "
+msgstr " Mod "
 
 #: ../gcalctool/calctool.c:834
 msgid "Acc"
@@ -617,9 +629,9 @@ msgstr "Een exponent invoeren [e]"
 msgid "Exponential"
 msgstr "Exponent"
 
-#: ../gcalctool/calctool.c:880
-msgid "*10^"
-msgstr "*10^"
+#: ../gcalctool/calctool.c:880 ../gcalctool/calctool.c:1260
+msgid "e"
+msgstr "e"
 
 #: ../gcalctool/calctool.c:884
 msgid "e<sup><i>x</i></sup>"
@@ -717,7 +729,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Hexadecimaal cijfer E"
 
-#: ../gcalctool/calctool.c:970 ../gcalctool/gtk.c:1708
+#: ../gcalctool/calctool.c:970 ../gcalctool/gtk.c:1867
 msgid "F"
 msgstr "F"
 
@@ -781,7 +793,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Hexadecimaal cijfer B"
 
-#: ../gcalctool/calctool.c:1068 ../gcalctool/gtk.c:1700
+#: ../gcalctool/calctool.c:1068 ../gcalctool/gtk.c:1859
 msgid "C"
 msgstr "C"
 
@@ -859,12 +871,8 @@ msgstr "Kilometer-naar-mijl conversiefactor"
 msgid "square root of 2"
 msgstr "wortel van 2"
 
-#: ../gcalctool/calctool.c:1260
-msgid "e"
-msgstr "e"
-
 #. PI
-#: ../gcalctool/calctool.c:1261 ../gcalctool/syntax_translation.c:58
+#: ../gcalctool/calctool.c:1261 ../gcalctool/syntax_translation.c:59
 msgid "pi"
 msgstr "pi"
 
@@ -896,8 +904,8 @@ msgstr "Kubieke-centimeter-naar-kubieke-inch conversiefactor"
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
 #: ../gcalctool/calctool.c:1280 ../gcalctool/display.c:267
-#: ../gcalctool/mp.c:1966 ../gcalctool/mpmath.c:412 ../gcalctool/mpmath.c:451
-#: ../gcalctool/mpmath.c:506
+#: ../gcalctool/mp.c:1973 ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:471
+#: ../gcalctool/mpmath.c:526
 msgid "Error"
 msgstr "Fout"
 
@@ -905,37 +913,49 @@ msgstr "Fout"
 msgid "Previous expression"
 msgstr "Vorige uitdrukking"
 
+#: ../gcalctool/functions.c:422
+msgid "Invalid number for the current base"
+msgstr "Ongeldig getal voor de huidige basis"
+
+#: ../gcalctool/functions.c:425
+msgid "Too long number"
+msgstr "Getal te lang"
+
 # verkeerd gevormd
-#: ../gcalctool/functions.c:419
+#: ../gcalctool/functions.c:428
 msgid "Malformed expression"
 msgstr "Foutieve uitdrukking"
 
-#: ../gcalctool/functions.c:630 ../gcalctool/functions.c:1006
+#: ../gcalctool/functions.c:498
+msgid "Error, operands must be integers"
+msgstr "Fout, operanden moeten gehele getallen zijn"
+
+#: ../gcalctool/functions.c:653 ../gcalctool/functions.c:1031
 msgid "No sane value to convert"
 msgstr "Geen zinvolle waarde om om te zetten"
 
-#: ../gcalctool/functions.c:729 ../gcalctool/functions.c:1083
-#: ../gcalctool/functions.c:1311
+#: ../gcalctool/functions.c:752 ../gcalctool/functions.c:1108
+#: ../gcalctool/functions.c:1336
 msgid "No sane value to store"
 msgstr "Geen zinvolle waarde om op te slaan"
 
-#: ../gcalctool/functions.c:857
+#: ../gcalctool/functions.c:880
 msgid "Malformed function"
 msgstr "Foutieve functie"
 
-#: ../gcalctool/functions.c:1036
+#: ../gcalctool/functions.c:1061
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Weergave gewist, prefix zonder een operator is niet toegestaan"
 
-#: ../gcalctool/functions.c:1060
+#: ../gcalctool/functions.c:1085
 msgid "Malformed parenthesis expression"
 msgstr "Foutieve haakjes"
 
-#: ../gcalctool/functions.c:1359
+#: ../gcalctool/functions.c:1384
 msgid "Numeric stack error"
 msgstr "Numerieke stackfout"
 
-#: ../gcalctool/functions.c:1380
+#: ../gcalctool/functions.c:1405
 msgid "Operand stack error"
 msgstr "Operationele stackfout"
 
@@ -1005,363 +1025,357 @@ msgstr "Gebruik: %s: [-D] [-E] [-a precisie] "
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/graphics.c:61 ../gcalctool/gtk.c:1488 ../gcalctool/gtk.c:1620
-msgid "R"
-msgstr "R"
-
-#: ../gcalctool/gtk.c:226
+#: ../gcalctool/gtk.c:236
 msgid "_Calculator"
 msgstr "_Rekenmachine"
 
-#: ../gcalctool/gtk.c:227
+#: ../gcalctool/gtk.c:237
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: ../gcalctool/gtk.c:228
+#: ../gcalctool/gtk.c:238
 msgid "_View"
 msgstr "Beel_d"
 
-#: ../gcalctool/gtk.c:229
+#: ../gcalctool/gtk.c:239
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../gcalctool/gtk.c:232
+#: ../gcalctool/gtk.c:242
 msgid "Quit the calculator"
 msgstr "De calculator afsluiten"
 
-#: ../gcalctool/gtk.c:235
+#: ../gcalctool/gtk.c:245
 msgid "Copy selection"
 msgstr "Selectie kopiëren"
 
-#: ../gcalctool/gtk.c:237
+#: ../gcalctool/gtk.c:247
 msgid "Paste selection"
 msgstr "Selectie plakken"
 
-#: ../gcalctool/gtk.c:238
+#: ../gcalctool/gtk.c:248
 msgid "_Insert ASCII Value..."
 msgstr "ASCII-waarde _invoegen..."
 
-#: ../gcalctool/gtk.c:239
+#: ../gcalctool/gtk.c:249
 msgid "Insert ASCII value"
 msgstr "ASCII-waarde invoegen"
 
-#: ../gcalctool/gtk.c:243
+#: ../gcalctool/gtk.c:253
 msgid "Show help contents"
 msgstr "Inhoud hulp tonen"
 
-#: ../gcalctool/gtk.c:246
+#: ../gcalctool/gtk.c:256
 msgid "Show the About Gcalctool dialog"
 msgstr "Het dialoogvenster Over Gcaltool tonen"
 
-#: ../gcalctool/gtk.c:248 ../gcalctool/gtk.c:279
+#: ../gcalctool/gtk.c:258 ../gcalctool/gtk.c:289
 msgid "_1 place"
 msgstr "_1 plaats"
 
-#: ../gcalctool/gtk.c:249 ../gcalctool/gtk.c:280
+#: ../gcalctool/gtk.c:259 ../gcalctool/gtk.c:290
 msgid "1 place"
 msgstr "1 plaats"
 
-#: ../gcalctool/gtk.c:250 ../gcalctool/gtk.c:281
+#: ../gcalctool/gtk.c:260 ../gcalctool/gtk.c:291
 msgid "_2 places"
 msgstr "_2 plaatsen"
 
-#: ../gcalctool/gtk.c:251 ../gcalctool/gtk.c:282
+#: ../gcalctool/gtk.c:261 ../gcalctool/gtk.c:292
 msgid "2 places"
 msgstr "2 plaatsen"
 
-#: ../gcalctool/gtk.c:252 ../gcalctool/gtk.c:283
+#: ../gcalctool/gtk.c:262 ../gcalctool/gtk.c:293
 msgid "_3 places"
 msgstr "_3 plaatsen"
 
-#: ../gcalctool/gtk.c:253 ../gcalctool/gtk.c:284
+#: ../gcalctool/gtk.c:263 ../gcalctool/gtk.c:294
 msgid "3 places"
 msgstr "3 plaatsen"
 
-#: ../gcalctool/gtk.c:254 ../gcalctool/gtk.c:285
+#: ../gcalctool/gtk.c:264 ../gcalctool/gtk.c:295
 msgid "_4 places"
 msgstr "_4 plaatsen"
 
-#: ../gcalctool/gtk.c:255 ../gcalctool/gtk.c:286
+#: ../gcalctool/gtk.c:265 ../gcalctool/gtk.c:296
 msgid "4 places"
 msgstr "4 plaatsen"
 
-#: ../gcalctool/gtk.c:256 ../gcalctool/gtk.c:287
+#: ../gcalctool/gtk.c:266 ../gcalctool/gtk.c:297
 msgid "_5 places"
 msgstr "_5 plaatsen"
 
-#: ../gcalctool/gtk.c:257 ../gcalctool/gtk.c:288
+#: ../gcalctool/gtk.c:267 ../gcalctool/gtk.c:298
 msgid "5 places"
 msgstr "5 plaatsen"
 
-#: ../gcalctool/gtk.c:258 ../gcalctool/gtk.c:289
+#: ../gcalctool/gtk.c:268 ../gcalctool/gtk.c:299
 msgid "_6 places"
 msgstr "_6 plaatsen"
 
-#: ../gcalctool/gtk.c:259 ../gcalctool/gtk.c:290
+#: ../gcalctool/gtk.c:269 ../gcalctool/gtk.c:300
 msgid "6 places"
 msgstr "6 plaatsen"
 
-#: ../gcalctool/gtk.c:260 ../gcalctool/gtk.c:291
+#: ../gcalctool/gtk.c:270 ../gcalctool/gtk.c:301
 msgid "_7 places"
 msgstr "_7 plaatsen"
 
-#: ../gcalctool/gtk.c:261 ../gcalctool/gtk.c:292
+#: ../gcalctool/gtk.c:271 ../gcalctool/gtk.c:302
 msgid "7 places"
 msgstr "7 plaatsen"
 
-#: ../gcalctool/gtk.c:262 ../gcalctool/gtk.c:293
+#: ../gcalctool/gtk.c:272 ../gcalctool/gtk.c:303
 msgid "_8 places"
 msgstr "_8 plaatsen"
 
-#: ../gcalctool/gtk.c:263 ../gcalctool/gtk.c:294
+#: ../gcalctool/gtk.c:273 ../gcalctool/gtk.c:304
 msgid "8 places"
 msgstr "8 plaatsen"
 
-#: ../gcalctool/gtk.c:264 ../gcalctool/gtk.c:295
+#: ../gcalctool/gtk.c:274 ../gcalctool/gtk.c:305
 msgid "_9 places"
 msgstr "_9 plaatsen"
 
-#: ../gcalctool/gtk.c:265 ../gcalctool/gtk.c:296
+#: ../gcalctool/gtk.c:275 ../gcalctool/gtk.c:306
 msgid "9 places"
 msgstr "9 plaatsen"
 
-#: ../gcalctool/gtk.c:266 ../gcalctool/gtk.c:267 ../gcalctool/gtk.c:297
-#: ../gcalctool/gtk.c:298
+#: ../gcalctool/gtk.c:276 ../gcalctool/gtk.c:277 ../gcalctool/gtk.c:307
+#: ../gcalctool/gtk.c:308
 msgid "10 places"
 msgstr "10 plaatsen"
 
-#: ../gcalctool/gtk.c:268 ../gcalctool/gtk.c:269 ../gcalctool/gtk.c:299
-#: ../gcalctool/gtk.c:300
+#: ../gcalctool/gtk.c:278 ../gcalctool/gtk.c:279 ../gcalctool/gtk.c:309
+#: ../gcalctool/gtk.c:310
 msgid "11 places"
 msgstr "11 plaatsen"
 
-#: ../gcalctool/gtk.c:270 ../gcalctool/gtk.c:271 ../gcalctool/gtk.c:301
-#: ../gcalctool/gtk.c:302
+#: ../gcalctool/gtk.c:280 ../gcalctool/gtk.c:281 ../gcalctool/gtk.c:311
+#: ../gcalctool/gtk.c:312
 msgid "12 places"
 msgstr "12 plaatsen"
 
-#: ../gcalctool/gtk.c:272 ../gcalctool/gtk.c:273 ../gcalctool/gtk.c:303
-#: ../gcalctool/gtk.c:304
+#: ../gcalctool/gtk.c:282 ../gcalctool/gtk.c:283 ../gcalctool/gtk.c:313
+#: ../gcalctool/gtk.c:314
 msgid "13 places"
 msgstr "13 plaatsen"
 
-#: ../gcalctool/gtk.c:274 ../gcalctool/gtk.c:275 ../gcalctool/gtk.c:305
-#: ../gcalctool/gtk.c:306
+#: ../gcalctool/gtk.c:284 ../gcalctool/gtk.c:285 ../gcalctool/gtk.c:315
+#: ../gcalctool/gtk.c:316
 msgid "14 places"
 msgstr "14 plaatsen"
 
-#: ../gcalctool/gtk.c:276 ../gcalctool/gtk.c:277 ../gcalctool/gtk.c:307
-#: ../gcalctool/gtk.c:308
+#: ../gcalctool/gtk.c:286 ../gcalctool/gtk.c:287 ../gcalctool/gtk.c:317
+#: ../gcalctool/gtk.c:318
 msgid "15 places"
 msgstr "15 plaatsen"
 
-#: ../gcalctool/gtk.c:312 ../gcalctool/gtk.c:318
+#: ../gcalctool/gtk.c:322 ../gcalctool/gtk.c:328
 msgid "Show _Trailing Zeroes"
 msgstr "_Nullen tonen"
 
-#: ../gcalctool/gtk.c:313 ../gcalctool/gtk.c:319
+#: ../gcalctool/gtk.c:323 ../gcalctool/gtk.c:329
 msgid "Show trailing zeroes"
 msgstr "Nullen aan het begin tonen"
 
 # Als je duizendtallen toont, gebruik je automatisch het scheidingsteken
 # voor duizendtallen
-#: ../gcalctool/gtk.c:314
+#: ../gcalctool/gtk.c:324
 msgid "Show T_housands Separator"
 msgstr "_Duizendtallen scheiden"
 
 # Als je duizendtallen toont, gebruik je automatisch het scheidingsteken
 # voor duizendtallen
-#: ../gcalctool/gtk.c:315
+#: ../gcalctool/gtk.c:325
 msgid "Show thousands separator"
 msgstr "Duizendtallen scheiden"
 
-#: ../gcalctool/gtk.c:316
+#: ../gcalctool/gtk.c:326
 msgid "_Memory Registers"
 msgstr "_Geheugenplaatsen"
 
-#: ../gcalctool/gtk.c:317
+#: ../gcalctool/gtk.c:327
 msgid "Show memory registers"
 msgstr "Geheugenplaatsen tonen"
 
-#: ../gcalctool/gtk.c:320
+#: ../gcalctool/gtk.c:330
 msgid "_Use Arithmetic Precedence"
 msgstr "_Rekenkundige prioriteit gebruiken"
 
-#: ../gcalctool/gtk.c:321
+#: ../gcalctool/gtk.c:331
 msgid "Use Arithmetic Precedence"
 msgstr "Rekenkundige prioriteit gebruiken"
 
-#: ../gcalctool/gtk.c:325
+#: ../gcalctool/gtk.c:335
 msgid "_0 significant places"
 msgstr "_0 significante plaatsen"
 
-#: ../gcalctool/gtk.c:326
+#: ../gcalctool/gtk.c:336
 msgid "0 significant places"
 msgstr "0 significante plaatsen"
 
-#: ../gcalctool/gtk.c:327
+#: ../gcalctool/gtk.c:337
 msgid "_1 significant place"
 msgstr "_1 significante plaats"
 
-#: ../gcalctool/gtk.c:328
+#: ../gcalctool/gtk.c:338
 msgid "1 significant place"
 msgstr "1 significante plaats"
 
-#: ../gcalctool/gtk.c:329
+#: ../gcalctool/gtk.c:339
 msgid "_2 significant places"
 msgstr "_2 significante plaatsen"
 
-#: ../gcalctool/gtk.c:330
+#: ../gcalctool/gtk.c:340
 msgid "2 significant places"
 msgstr "2 significante plaatsen"
 
-#: ../gcalctool/gtk.c:331
+#: ../gcalctool/gtk.c:341
 msgid "_3 significant places"
 msgstr "_3 significante plaatsen"
 
-#: ../gcalctool/gtk.c:332
+#: ../gcalctool/gtk.c:342
 msgid "3 significant places"
 msgstr "3 significante plaatsen"
 
-#: ../gcalctool/gtk.c:333
+#: ../gcalctool/gtk.c:343
 msgid "_4 significant places"
 msgstr "_4 significante plaatsen"
 
-#: ../gcalctool/gtk.c:334
+#: ../gcalctool/gtk.c:344
 msgid "4 significant places"
 msgstr "4 significante plaatsen"
 
-#: ../gcalctool/gtk.c:335
+#: ../gcalctool/gtk.c:345
 msgid "_5 significant places"
 msgstr "_5 significante plaatsen"
 
-#: ../gcalctool/gtk.c:336
+#: ../gcalctool/gtk.c:346
 msgid "5 significant places"
 msgstr "5 significante plaatsen"
 
-#: ../gcalctool/gtk.c:337
+#: ../gcalctool/gtk.c:347
 msgid "_6 significant places"
 msgstr "_6 significante plaatsen"
 
-#: ../gcalctool/gtk.c:338
+#: ../gcalctool/gtk.c:348
 msgid "6 significant places"
 msgstr "6 significante plaatsen"
 
-#: ../gcalctool/gtk.c:339
+#: ../gcalctool/gtk.c:349
 msgid "_7 significant places"
 msgstr "_7 significante plaatsen"
 
-#: ../gcalctool/gtk.c:340
+#: ../gcalctool/gtk.c:350
 msgid "7 significant places"
 msgstr "7 significante plaatsen"
 
-#: ../gcalctool/gtk.c:341
+#: ../gcalctool/gtk.c:351
 msgid "_8 significant places"
 msgstr "_8 significante plaatsen"
 
-#: ../gcalctool/gtk.c:342
+#: ../gcalctool/gtk.c:352
 msgid "8 significant places"
 msgstr "8 significante plaatsen"
 
-#: ../gcalctool/gtk.c:343
+#: ../gcalctool/gtk.c:353
 msgid "_9 significant places"
 msgstr "_9 significante plaatsen"
 
-#: ../gcalctool/gtk.c:344
+#: ../gcalctool/gtk.c:354
 msgid "9 significant places"
 msgstr "9 significante plaatsen"
 
-#: ../gcalctool/gtk.c:345
+#: ../gcalctool/gtk.c:355
 msgid "_Other (10) ..."
 msgstr "_Andere (10) ..."
 
-#: ../gcalctool/gtk.c:346
+#: ../gcalctool/gtk.c:356
 msgid "Set other precision"
 msgstr "Andere nauwkeurigheid instellen"
 
-#: ../gcalctool/gtk.c:350
+#: ../gcalctool/gtk.c:360
 msgid "_Basic"
 msgstr "_Standaard"
 
-#: ../gcalctool/gtk.c:352
+#: ../gcalctool/gtk.c:362
 msgid "_Advanced"
 msgstr "_Geavanceerd"
 
-#: ../gcalctool/gtk.c:354
+#: ../gcalctool/gtk.c:364
 msgid "_Financial"
 msgstr "_Financieel"
 
-#: ../gcalctool/gtk.c:356
+#: ../gcalctool/gtk.c:366
 msgid "_Scientific"
 msgstr "_Wetenschappelijk"
 
-#: ../gcalctool/gtk.c:516
+#: ../gcalctool/gtk.c:526
 msgid "translator-credits"
 msgstr ""
 "Tino Meinen\n"
 "Vincent van Adrighem<\n"
 "Zie ook: nl.gnome.org"
 
-#: ../gcalctool/gtk.c:519
+#: ../gcalctool/gtk.c:529
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 # calculator?
-#: ../gcalctool/gtk.c:522
+#: ../gcalctool/gtk.c:532
 msgid "Calculator with financial and scientific modes."
 msgstr "Rekenmachine met financiële en wetenschappelijke standen."
 
-#: ../gcalctool/gtk.c:776
+#: ../gcalctool/gtk.c:787
 msgid "Insert ASCII Value"
 msgstr "ASCII-waarde invoegen"
 
-#: ../gcalctool/gtk.c:791
+#: ../gcalctool/gtk.c:802
 msgid "Ch_aracter:"
 msgstr "_Teken:"
 
-#: ../gcalctool/gtk.c:816
+#: ../gcalctool/gtk.c:827
 msgid "_Insert"
 msgstr "_Invoegen"
 
-#: ../gcalctool/gtk.c:895
+#: ../gcalctool/gtk.c:906
 msgid "Edit Constants"
 msgstr "Constanten bewerken"
 
-#: ../gcalctool/gtk.c:895
+#: ../gcalctool/gtk.c:906
 msgid "Edit Functions"
 msgstr "Functies bewerken"
 
-#: ../gcalctool/gtk.c:919
+#: ../gcalctool/gtk.c:930
 msgid "Note:"
 msgstr "Opmerking:"
 
-#: ../gcalctool/gtk.c:920
+#: ../gcalctool/gtk.c:931
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Alle constante waardes worden opgegeven in het decimale talstelsel."
 
-#: ../gcalctool/gtk.c:930
+#: ../gcalctool/gtk.c:941
 msgid "Click a _value or description to edit it:"
 msgstr "Klik op een _waarde of beschrijving om deze te bewerken:"
 
-#: ../gcalctool/gtk.c:953
+#: ../gcalctool/gtk.c:964
 msgid "No."
 msgstr "Nee."
 
-#: ../gcalctool/gtk.c:955
+#: ../gcalctool/gtk.c:966
 msgid "Value"
 msgstr "Waarde"
 
-#: ../gcalctool/gtk.c:957
+#: ../gcalctool/gtk.c:968
 msgid "Description"
 msgstr "Beschrijving"
 
-#: ../gcalctool/gtk.c:1067
+#: ../gcalctool/gtk.c:1078
 msgid "_Do not warn me again"
 msgstr "_Niet meer waarschuwen"
 
-#: ../gcalctool/gtk.c:1073
+#: ../gcalctool/gtk.c:1084
 msgid ""
 "<big><b>Changing Modes Clears Calculation</b></big>\n"
 "\n"
@@ -1373,59 +1387,65 @@ msgstr ""
 "Wanneer u de modus wijzigt, zal de huidige berekening worden gewist en zal "
 "de basis weer worden ingesteld op decimaal."
 
-#: ../gcalctool/gtk.c:1112
+#: ../gcalctool/gtk.c:1123
 msgid "C_hange Mode"
 msgstr "_Modus wijzigen"
 
-#: ../gcalctool/gtk.c:1149
+#: ../gcalctool/gtk.c:1160
 msgid "Set Precision"
 msgstr "Nauwkeurigheid"
 
 # significante cijfers/decimalen/plaatsen
-#: ../gcalctool/gtk.c:1164
+#: ../gcalctool/gtk.c:1175
 msgid "Significant _places:"
 msgstr "_Significante cijfers:"
 
-#: ../gcalctool/gtk.c:1190
+#: ../gcalctool/gtk.c:1201
 msgid "_Set"
 msgstr "_Instellen"
 
 # calculator?
-#: ../gcalctool/gtk.c:1296 ../gcalctool/gtk.c:1298 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:1418 ../gcalctool/gtk.c:1420 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Rekenmachine"
 
+#. translators: R is the short form of register used inter alia
+#. in popup menus
+#: ../gcalctool/gtk.c:1612 ../gcalctool/gtk.c:1758
+msgid "R"
+msgstr "R"
+
 #. Make Hyp and Inv trigonometric check boxes.
-#: ../gcalctool/gtk.c:1556
+#: ../gcalctool/gtk.c:1680
 msgid "_Inv"
 msgstr "_Inv"
 
-#: ../gcalctool/gtk.c:1564
+#: ../gcalctool/gtk.c:1688
 msgid "H_yp"
 msgstr "H_yp"
 
-#: ../gcalctool/gtk.c:1612
+#: ../gcalctool/gtk.c:1748
 msgid "Memory Registers"
 msgstr "Geheugenplaatsen"
 
-#: ../gcalctool/gtk.c:1689
+#: ../gcalctool/gtk.c:1848
 msgid "Edit Constants..."
 msgstr "Constanten bewerken..."
 
-#: ../gcalctool/gtk.c:1689
+#: ../gcalctool/gtk.c:1848
 msgid "Edit Functions..."
 msgstr "Functies bewerken..."
 
-#: ../gcalctool/gtk.c:1858
+#: ../gcalctool/gtk.c:2017
 msgid "Clipboard contained malformed calculation"
 msgstr "Klembord bevatte onjuist gevormde berekening"
 
-#: ../gcalctool/gtk.c:2126
+#: ../gcalctool/gtk.c:2285
 #, c-format
 msgid "Other (%d) ..."
 msgstr "Andere (%d) ..."
 
-#: ../gcalctool/gtk.c:2137
+#: ../gcalctool/gtk.c:2296
 #, c-format
 msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
@@ -1433,23 +1453,23 @@ msgstr ""
 "Nauwkeurigheid instellen op 0 tot %d decimalen. Staat momenteel op %d "
 "decimalen. [a]"
 
-#: ../gcalctool/gtk.c:2368
+#: ../gcalctool/gtk.c:2528
 msgid "Activated no operator precedence mode"
 msgstr "Geen operator-prioriteit geactiveerd"
 
-#: ../gcalctool/gtk.c:2378
+#: ../gcalctool/gtk.c:2538
 msgid "Activated expression mode with operator precedence"
 msgstr "Uitdrukking met operator-prioriteit geactiveerd"
 
-#: ../gcalctool/gtk.c:2594
+#: ../gcalctool/gtk.c:2832
 msgid "Accuracy value out of range"
 msgstr "Nauwkeurigheid valt buiten bereik"
 
-#: ../gcalctool/mp.c:3349
+#: ../gcalctool/mp.c:3356
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negatieve X en Y niet geheel worden niet ondersteund"
 
-#: ../gcalctool/mpmath.c:248
+#: ../gcalctool/mpmath.c:268
 msgid "Error, cannot calculate cosine"
 msgstr "Fout, kan cosinus niet berekenen"
 
@@ -1555,101 +1575,109 @@ msgstr "ln"
 msgid "log"
 msgstr "log"
 
-#. Bitwise NOT
+#. Modulus
 #: ../gcalctool/syntax_translation.c:56
+msgid "mod"
+msgstr "mod"
+
+#. Bitwise NOT
+#: ../gcalctool/syntax_translation.c:57
 msgid "not"
 msgstr "not"
 
 #. Bitwise OR
-#: ../gcalctool/syntax_translation.c:57
+#: ../gcalctool/syntax_translation.c:58
 msgid "or"
 msgstr "or"
 
 # termijn
 #. Periodic payment
-#: ../gcalctool/syntax_translation.c:59
+#: ../gcalctool/syntax_translation.c:60
 msgid "pmt"
 msgstr "trm"
 
 # huidige waarde
 #. Present value
-#: ../gcalctool/syntax_translation.c:60
+#: ../gcalctool/syntax_translation.c:61
 msgid "pv"
 msgstr "hw"
 
 #. A random number
-#: ../gcalctool/syntax_translation.c:61
+#: ../gcalctool/syntax_translation.c:62
 msgid "rand"
 msgstr "rand"
 
 #. Periodic interest rate
-#: ../gcalctool/syntax_translation.c:62
+#: ../gcalctool/syntax_translation.c:63
 msgid "rate"
 msgstr "rente"
 
 #. Recall number from memory register
-#: ../gcalctool/syntax_translation.c:63
+#: ../gcalctool/syntax_translation.c:64
 msgid "rcl"
 msgstr "ophl"
 
 #. Hyperbolic sine
-#: ../gcalctool/syntax_translation.c:64
+#: ../gcalctool/syntax_translation.c:65
 msgid "sinh"
 msgstr "sinh"
 
 #. Sine
-#: ../gcalctool/syntax_translation.c:65
+#: ../gcalctool/syntax_translation.c:66
 msgid "sin"
 msgstr "sin"
 
 #. Straight-line depreciation
-#: ../gcalctool/syntax_translation.c:66
+#: ../gcalctool/syntax_translation.c:67
 msgid "sln"
 msgstr "rld"
 
 #. Square root
-#: ../gcalctool/syntax_translation.c:67
+#: ../gcalctool/syntax_translation.c:68
 msgid "sqrt"
 msgstr "wrtl"
 
 #. Store number at memory register
-#: ../gcalctool/syntax_translation.c:68
+#: ../gcalctool/syntax_translation.c:69
 msgid "sto"
 msgstr "opsl"
 
 #. Sum-of-the years'-digits depreciation
-#: ../gcalctool/syntax_translation.c:69
+#: ../gcalctool/syntax_translation.c:70
 msgid "syd"
 msgstr "Sjd"
 
 #. Hyperbolic tangent
-#: ../gcalctool/syntax_translation.c:70
+#: ../gcalctool/syntax_translation.c:71
 msgid "tanh"
 msgstr "tanh"
 
 #. Tangent
-#: ../gcalctool/syntax_translation.c:71
+#: ../gcalctool/syntax_translation.c:72
 msgid "tan"
 msgstr "tan"
 
 #. Payment period
-#: ../gcalctool/syntax_translation.c:72
+#: ../gcalctool/syntax_translation.c:73
 msgid "term"
 msgstr "term"
 
 #. Bitwise XNOR
-#: ../gcalctool/syntax_translation.c:75
+#: ../gcalctool/syntax_translation.c:76
 msgid "xnor"
 msgstr "xnor"
 
 #. Bitwise XOR
-#: ../gcalctool/syntax_translation.c:76
+#: ../gcalctool/syntax_translation.c:77
 msgid "xor"
 msgstr "xor"
 
 #: ../gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Rekenmachine"
+
+#~ msgid "*10^"
+#~ msgstr "*10^"
 
 #~ msgid "ans"
 #~ msgstr "ans"
