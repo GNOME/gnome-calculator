@@ -175,6 +175,7 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean mouse_button_cb(GtkWidget *, GdkEventButton *, gpointer);
 static gboolean spframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 
 static void about_cb(GtkAction *action, gpointer);
@@ -1480,6 +1481,9 @@ create_kframe()
     event_box = gtk_event_box_new();
     X->display_item = gtk_text_view_new();
     gtk_widget_set_name(X->display_item, "displayitem");
+    g_signal_connect(G_OBJECT(X->display_item), "button_release_event",
+                     G_CALLBACK(mouse_button_cb),
+                     NULL);
 
     gtk_text_view_set_justification(GTK_TEXT_VIEW(X->display_item),
                                     GTK_JUSTIFY_RIGHT);
@@ -2264,6 +2268,17 @@ make_hostname(Display *dpy)
     *scanner = ':';                         
 
     return(strdup(client_hostname));                
+}
+
+
+static gboolean
+mouse_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
+{
+    if (event->button == 2) {
+        handle_selection();
+    }
+
+    return(TRUE);
 }
 
 
