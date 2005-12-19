@@ -24,8 +24,6 @@
 #include "extern.h"
 #include "calctool.h"
 
-#include "syntax_translation.h"
-
 /* TODO: This file is almost identical to ce-parser. */
 
 int 
@@ -42,7 +40,6 @@ lr_parse_(char *expression, int result[MP_SIZE], int flags)
     if (strlen(expression)) {
         parser_state.i = 0;
         parser_state.buff = gc_strdup(expression);
-        translate_tokens(&parser_state.buff);
         ret = lrparse();
         free(parser_state.buff);
     }

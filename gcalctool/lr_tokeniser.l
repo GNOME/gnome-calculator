@@ -44,48 +44,48 @@ SEPARATOR "e+"|"e-"
 
 %%
 
-"abs" {return tABS;}
-"acosh" {return tACOSH;}
-"acos" {return tACOS;}
-"and" {return tAND;}
-"asinh" {return tASINH;}
-"asin" {return tASIN;}
-"atanh" {return tATANH;}
-"atan" {return tATAN;}
-"cbrt" {return tCBRT;}
-"chs" {return tCHS;}
-"cosh" {return tCOSH;}
-"cos" {return tCOS;}
-"ddb" {return tDDB;}
-"exp" {return tEXP;}
-"frac" {return tFRAC;}
-"fv" {return tFV;}
-"int" {return tINT;}
-"ln" {return tLN;}
-"log" {return tLOG10;}
-"not" {return tNOT;}
-"or" {return tOR;}
-"pi" {return tPI;}
-"pmt" {return tPMT;}
-"pv" {return tPV;}
-"rand" {return tRAND;}
-"rate" {return tRATE;}
-"sinh" {return tSINH;}
-"sin" {return tSIN;}
-"sln" {return tSLN;}
-"sqrt" {return tSQRT;}
-"syd" {return tSYD;}
-"tanh" {return tTANH;}
-"tan" {return tTAN;}
-"term" {return tTERM;}
+"Abs" {return tABS;}
+"Acosh" {return tACOSH;}
+"Acos" {return tACOS;}
+"And" {return tAND;}
+"Asinh" {return tASINH;}
+"Asin" {return tASIN;}
+"Atanh" {return tATANH;}
+"Atan" {return tATAN;}
+"Cbrt" {return tCBRT;}
+"Chs" {return tCHS;}
+"Cosh" {return tCOSH;}
+"Cos" {return tCOS;}
+"Ddb" {return tDDB;}
+"Exp" {return tEXP;}
+"Frac" {return tFRAC;}
+"Fv" {return tFV;}
+"Int" {return tINT;}
+"Ln" {return tLN;}
+"Log" {return tLOG10;}
+"Not" {return tNOT;}
+"Or" {return tOR;}
+"Pi" {return tPI;}
+"Pmt" {return tPMT;}
+"Pv" {return tPV;}
+"Rand" {return tRAND;}
+"Rate" {return tRATE;}
+"Sinh" {return tSINH;}
+"Sin" {return tSIN;}
+"Sln" {return tSLN;}
+"Sqrt" {return tSQRT;}
+"Syd" {return tSYD;}
+"Tanh" {return tTANH;}
+"Tan" {return tTAN;}
+"Term" {return tTERM;}
 "u16" {return tU16;}
 "u32" {return tU32;}
-"xnor" {return tXNOR;}
-"xor" {return tXOR;}
+"Xnor" {return tXNOR;}
+"Xor" {return tXOR;}
 
-"rcl" {return tRCL;}
-"sto" {return tSTO;}
-"clr" {return tCLR;}
+"Rcl" {return tRCL;}
+"Sto" {return tSTO;}
+"Clr" {return tCLR;}
 
 {DIGIT}+ {
   if (strlen(yytext) > 40) parser_state.error = EINVAL;

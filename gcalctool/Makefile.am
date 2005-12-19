@@ -39,9 +39,7 @@ gcalctool_SOURCES = \
 	ce_parser.tab.h \
 	lr_parser.c \
 	lr_parser.h \
-	lr_parser.tab.h \
-	syntax_translation.h \
-	syntax_translation.c
+	lr_parser.tab.h
 
 gcalctool_LDADD = \
 	$(PACKAGE_LIBS) \

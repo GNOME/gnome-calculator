@@ -1145,8 +1145,6 @@ do_calctool(int argc, char **argv)
     char *ptr, title[MAXLINE];
     int i;
 
-    build_word_map();          /* Initialize i18n. */
-
     init_buttons();            /* Setup the buttons for "Basic" mode. */
 
     v->progname = argv[0];     /* Save programs name. */
