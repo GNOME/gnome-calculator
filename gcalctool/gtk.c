@@ -2646,7 +2646,7 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
             break;
 
         case exprs:
-            if (v->e.calc_complete) {
+            if (v->e.calc_complete || !v->expression) {
                 complete = 1;   /* Calculation is complete. */
             }
             break;
