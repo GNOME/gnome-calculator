@@ -2278,7 +2278,7 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
         handle_selection();
     }
 
-    return(TRUE);
+    return(FALSE);
 }
 
 

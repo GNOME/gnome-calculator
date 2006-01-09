@@ -12,6 +12,13 @@
 gcalctool change history.
 =========================
 
+2006-01-09 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug #325074 (http://bugzilla.gnome.org/show_bug.cgi?id=325074)
+      Gcalctool no longer crashes when you double click the 0 in the 
+      display area. Problem was the return value of the mouse_button_cb()
+      routine in gtk.c.
+
 2005-12-23 Rich Burridge <rich.burridge@sun.com>
 
     * Released a gcalctool tarball for GNOME 2.13.4.
