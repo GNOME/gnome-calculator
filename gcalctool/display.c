@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2005 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2006 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -394,6 +394,8 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int i, inum;
     int exp      = 0;
     int exp_sign = 1;
+    char *lnp = get_localized_numeric_point();
+    assert(lnp && strlen(lnp) == 1);
 
     i = 0;
     mpcim(&i, MPval);
@@ -406,7 +408,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
         optr++;
     }
 
-    if (*optr == '.') {
+    if (*optr == '.' || *optr == *lnp) {
         optr++;
         for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);

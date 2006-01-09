@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2005 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2006 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -328,6 +328,9 @@ do_expression()
     update_statusbar("", "");
 
     btext = (v->current->symname) ? v->current->symname : v->current->str;
+    if (v->current->flags & dpoint) {
+	btext = get_localized_numeric_point();
+    }
     btext = gc_strdup(btext);
     trig_filter(&btext);
   

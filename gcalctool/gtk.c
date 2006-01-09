@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2005 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2006 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -167,7 +167,6 @@ static GtkWidget *make_menu_button(gchar *, int);
 static GtkWidget *make_but_panel(GtkWidget *, GtkWidget **,
                                  struct button *, int, int, char *);
 
-static char *get_localized_numeric_point(void);
 static char *make_hostname(Display *);
 
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
@@ -1977,7 +1976,7 @@ get_function(int n)
 }
 
 
-static char *
+char *
 get_localized_numeric_point(void)
 {
     const char *decimal_point;
@@ -2943,6 +2942,7 @@ set_bit_panel() {
 void
 set_display(char *str, int minimize_changes)
 {
+
     char localized[MAX_LOCALIZED];
     GtkTextBuffer *buffer;
     GtkTextIter start, end;

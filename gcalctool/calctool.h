@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2005 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2006 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -244,7 +244,8 @@ enum button_flags {
     regrcl       = 8192,       /* Recall register */
     expnum       = 16384,      /* Exponential number */
     postfixop    = 32768,      /* Unary postfix operation */
-    prefixop     = 65536       /* Unary prefix operation */
+    prefixop     = 65536,      /* Unary prefix operation */
+    dpoint       = 131072      /* Decimal point */
 };
 
 struct exprm_state {       /* Expression mode state */
@@ -391,6 +392,8 @@ char *get_resource(enum res_type);
 const char *get_tsep();
 char *make_number(int *, int, BOOLEAN);
 char *set_bool(int);
+
+char *get_localized_numeric_point(void);
 
 unsigned short *get_but_data();
 

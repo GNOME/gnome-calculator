@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2005 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2006 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -446,7 +446,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_point,
     NULL,
-    number
+    number | dpoint
 },
 {
     N_("="),
