@@ -8,6 +8,19 @@
 gcalctool change history.
 =========================
 
+2006-01-10 Rich Burridge <rich.burridge@sun.com>
+
+    * Fixed bug #326344 (http://bugzilla.gnome.org/show_bug.cgi?id=326344)
+      The bit display of large numbers (in non-arithmetic operator precedence
+      mode with the scientific view) now hopefully works correctly.
+
+      It no longer converts the displayed number to a double then a long 
+      long, which is where the loss of accuracy was occuring.
+
+      This also involved adding a couple of parameters to the make_fixed() 
+      routine in display.c to make it more generally useful for things like 
+      this.
+
 2006-01-09 Rich Burridge <rich.burridge@sun.com>
 
     * From Sami Pietila <sampie@ariana-dsl.utu.fi>

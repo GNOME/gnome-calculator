@@ -390,6 +390,7 @@ char *gc_strdup(char *str);
 const char *get_radix();
 char *get_resource(enum res_type);
 const char *get_tsep();
+char *make_fixed(int *, char *, int, int, int);
 char *make_number(int *, int, BOOLEAN);
 char *set_bool(int);
 

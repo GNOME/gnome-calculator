@@ -28,7 +28,6 @@
 #include "mpmath.h"
 
 static char *make_eng_sci(int *, int);
-static char *make_fixed(int *, int, int);
 
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base, use the "right" radix character.
@@ -173,8 +172,8 @@ initialise()
  * maximum number of digits specified.
  */
 
-static char *
-make_fixed(int *MPnumber, int base, int cmax)
+char *
+make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 {
     char half[4], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
@@ -182,7 +181,7 @@ make_fixed(int *MPnumber, int base, int cmax)
     int ddig;                   /* Number of digits to left of decimal sep. */
     int dval, n;
  
-    optr = v->fnum;
+    optr = str;
     mpabs(MPnumber, MPval);
     n = 0;
     mpcim(&n, MP1);
@@ -228,21 +227,23 @@ make_fixed(int *MPnumber, int base, int cmax)
         mpaddi(MPval, &dval, MPval);
     }    
     *optr++ = '\0';
-    v->toclear = 1;
+    if (toclear == TRUE) {
+        v->toclear = 1;
+    }
     v->pointed = 0;
 
     if (!v->show_zeroes && v->accuracy != 0) {
-        optr = v->fnum + strlen(v->fnum) - 1;
+        optr = str + strlen(str) - 1;
         while (*optr == '0') {
             optr--;
         }
-    if (optr < v->fnum || *optr != '.') {
+    if (optr < str || *optr != '.') {
         optr++;
     }
         *optr = '\0';
     }
 
-    return(v->fnum);
+    return(str);
 }
 
 
@@ -271,7 +272,7 @@ make_number(int *MPnumber, int base, BOOLEAN ignoreError)
         (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
         return(make_eng_sci(MPnumber, base));
     } else {
-        return(make_fixed(MPnumber, base, MAX_DIGITS));
+        return(make_fixed(MPnumber, v->fnum, base, MAX_DIGITS, TRUE));
     }
 }
 
@@ -340,7 +341,7 @@ make_eng_sci(int *MPnumber, int base)
         }
     }
  
-    STRCPY(fixed, make_fixed(MPmant, base, MAX_DIGITS-6));
+    STRCPY(fixed, make_fixed(MPmant, v->fnum, base, MAX_DIGITS-6, TRUE));
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];

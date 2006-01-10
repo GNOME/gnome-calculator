@@ -2918,24 +2918,28 @@ scroll_right()
 
 void
 set_bit_panel() {
-    double number;
-    long long lval;
-    int i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
 
     MPstr_to_num(v->display, v->base, MP1);
     mpcmim(MP1, MP2);
     if (mpeq(MP1, MP2)) {
-        gtk_widget_set_sensitive(X->bit_panel, TRUE);
-        mpcmd(MP1, &number);
-        lval = (long long) number;
+        char *bit_str, label[3], tmp[MAXLINE];
 
-        for (i = 0; i < MAXBITS; i++) {
-            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), 
-                               (lval & (1LL << i)) ? " 1" : " 0");
+        bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, FALSE);
+        bit_str_len = strlen(bit_str);
+        if (bit_str_len <= MAXBITS) {
+            gtk_widget_set_sensitive(X->bit_panel, TRUE);
+
+            STRCPY(label, " 0");
+            for (i = 0; i < MAXBITS; i++) {
+                label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+                gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+            }
+
+            return;
         }
-    } else {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
     }
+    gtk_widget_set_sensitive(X->bit_panel, FALSE);
 }
 
 
