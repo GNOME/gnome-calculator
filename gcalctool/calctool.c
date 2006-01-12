@@ -166,8 +166,9 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     NULL,
     number
 },
-{    
-    N_("/"),
+{
+    /* Note to translators: this is a division sign (/) */
+    N_("\342\210\225"),
     N_("Divide"),
     NULL,
     { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
@@ -265,7 +266,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     number
 },
 {
-    N_("*"),
+    /* Note to translators: this is a multiplication sign (*) */
+    N_("\303\227"),
     N_("Multiply"),
     NULL,
     { GDK_SHIFT_MASK, 0,               0,     0,      0 },
@@ -289,7 +291,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     parenthesis
 },
 {
-    N_("+/-"),
+    /* Note to translators: this is a plus-minus sign (+/-) */
+    N_("\302\261"),
     N_("Change sign [c]"),
     NULL,
     { 0,     0 },
@@ -363,7 +366,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     number
 },
 {
-    N_("-"),
+    /* Note to translators: this is a minus sign (-) */
+    N_("\342\210\222"),
     N_("Subtract"),
     NULL,
     { 0,         0,               0,      0 },
@@ -387,7 +391,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     immediate
 },
 {
-    N_("Sqrt"),
+    /* Note to translators: this is a square root sign */
+    N_("\342\210\232"),
     N_("Square root [s]"),
     NULL,
     { 0, 0 },   
