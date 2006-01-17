@@ -589,6 +589,7 @@ do_trig()
 {
     do_trigfunc(v->MPdisp_val, v->MPresult);
     show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
 }
 
 
