@@ -167,8 +167,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     number
 },
 {
-    /* Note to translators: this is a division sign (/) */
-    N_("\342\210\225"),
+    /* Note to translators: this is a division sign (÷) */
+    N_("\303\267"),
     N_("Divide"),
     NULL,
     { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
