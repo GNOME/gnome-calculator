@@ -2924,8 +2924,9 @@ set_bit_panel() {
     mpcmim(MP1, MP2);
     if (mpeq(MP1, MP2)) {
         char *bit_str, label[3], tmp[MAXLINE];
+        int toclear = (key_equal(v->current, KEY_CE)) ? TRUE : FALSE;
 
-        bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, FALSE);
+        bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
         bit_str_len = strlen(bit_str);
         if (bit_str_len <= MAXBITS) {
             gtk_widget_set_sensitive(X->bit_panel, TRUE);

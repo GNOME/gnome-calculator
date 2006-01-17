@@ -88,6 +88,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define KEY_DIV   a_buttons[3]              /* / */
 #define KEY_LPAR  a_buttons[4]              /* ( */
 #define KEY_BSP   a_buttons[5]              /* Control-h */
+#define KEY_CE    a_buttons[6]              /* Control-Backspace */
 
 #define KEY_MUL   a_buttons[11]             /* * */
 #define KEY_RPAR  a_buttons[12]             /* ) */
