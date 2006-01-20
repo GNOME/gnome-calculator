@@ -1,10 +1,24 @@
 
+runtests.py:
+------------
+
 * Currently you need to terminate the tests by pressing F12. This should
   happen automatically.
 
-* With play_keystrokes.py: allow comment lines starting with '#' to be
-  read (and ignored) in the input file. When comparing input with output,
-  a simple sed command would be needed to remove the comment lines first.
+
+play_keystroke.py:
+------------------
+
+* Allow comment lines starting with '#' to be read (and ignored) in the 
+  input file. When comparing input with output, a simple sed command would 
+  be needed to remove the comment lines first.
+
+* Add a listener to not start reading standard input until the application
+  see a "focus:" event for gcalctool.
+
+
+General:
+--------
 
 * Fully intergrate into the gcalctool distribution. Currently the files
   are present in CVS, but aren't included with gcalctool tarball
