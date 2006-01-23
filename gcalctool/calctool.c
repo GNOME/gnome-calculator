@@ -375,7 +375,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     '-',
     M_NONE,
     do_calc,
-    NULL,
+    N_("-"),
     unop | binop
 },
 {
@@ -400,7 +400,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     's',
     M_NONE,
     do_immed, 
-    NULL,
+    N_("Sqrt"),
     func
 },
 {
