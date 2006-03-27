@@ -20,10 +20,13 @@ distuninstallcheck:
 
 distcleancheck_listfiles = find . -type f -print | grep -v 'omf\.out' | grep -v 'legal.xml'
 
+DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper
+
 DISTCLEANFILES =                \
 	intltool-extract        \
 	intltool-merge          \
 	intltool-update		\
+	gnome-doc-utils.make	\
 	gcalctool.desktop
 
 SUBDIRS = po gcalctool help
@@ -44,6 +47,8 @@ EXTRA_DIST = \
 	TODO \
 	gcalctoolrc \
 	gcalctool.desktop.in \
+	gnome-doc-utils.make	\
+	m4			\
 	intltool-extract.in     \
 	intltool-merge.in       \
 	intltool-update.in      \

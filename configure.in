@@ -2,6 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
 AM_INIT_AUTOMAKE(gcalctool, 5.8.1)
+AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
@@ -115,12 +116,17 @@ fi
 
 AM_GCONF_SOURCE_2
 
+dnl *****************
+dnl API Documentation
+dnl *****************
+
+GNOME_DOC_INIT
+
 AC_OUTPUT([
 Makefile
 gcalctool/Makefile
 po/Makefile.in
 help/Makefile
-help/C/Makefile
 help/bg/Makefile
 help/de/Makefile
 help/es/Makefile
