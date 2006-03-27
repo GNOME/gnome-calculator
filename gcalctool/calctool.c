@@ -1147,7 +1147,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 void
 do_calctool(int argc, char **argv)
 {
-    char *ptr, title[MAXLINE];
+    char *ptr;
     int i;
 
     init_buttons();            /* Setup the buttons for "Basic" mode. */
@@ -1210,8 +1210,7 @@ do_calctool(int argc, char **argv)
         }
     }
 
-    SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) v->modetype]));
-    set_title(FCP_KEY, title);
+    set_main_title(v->modetype);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
 

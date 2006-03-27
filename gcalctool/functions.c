@@ -957,10 +957,7 @@ do_memory()
 void
 do_mode(int toclear)           /* Set special calculator mode. */
 {
-    char title[MAXLINE];
-
-    SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) v->modetype]));
-    set_title(FCP_KEY, title);
+    set_main_title(v->modetype);
     put_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
     if (toclear) {
@@ -1420,6 +1417,20 @@ save_pending_values(struct button *but)
 {
     v->pending_but = but;
     v->pending = but->value[0];
+}
+
+
+void
+set_main_title(enum mode_type modetype)  /* Set the title for main window. */
+{
+    char title[MAXLINE];
+
+    if (modetype == BASIC) {
+        STRCPY(title, v->tool_label);
+    } else {
+        SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) modetype]));
+    }
+    set_title(FCP_KEY, title);
 }
 
 

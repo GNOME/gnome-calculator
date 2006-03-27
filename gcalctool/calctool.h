@@ -476,6 +476,7 @@ void set_error_state(int);
 void set_hyp_item(int);
 void set_ins_key();
 void set_inv_item(int);
+void set_main_title(enum mode_type);
 void set_mode(enum mode_type);
 void set_title(enum fcp_type, char *);
 void show_change_mode_dialog();
