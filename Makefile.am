@@ -30,15 +30,8 @@ SUBDIRS = po gcalctool help
 
 SCHEMAS_FILE = gcalctool.schemas
 
-### Install the schemas file in /etc if GNOME support is not compiled in,
-### and do not install the schemas at all
-if DISABLE_GNOME
-schemasdir = $(sysconfdir)/gcalctool
-schemas_DATA = $(SCHEMAS_FILE)
-else
 schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = $(SCHEMAS_FILE)
-endif
 
 EXTRA_DIST = \
 	autogen.sh \
