@@ -820,3 +820,12 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
     dval = setbool(temp);
     mpcdm(&dval, t);
 }
+
+void
+calc_epowy(int s[MP_SIZE], int t[MP_SIZE])
+{
+    int MP1[MP_SIZE];
+    
+    mpstr(s, MP1);
+    mpexp(MP1, t);
+}

@@ -60,5 +60,6 @@ void calc_sln(int t[MP_SIZE]);
 void calc_syd(int t[MP_SIZE]);
 void calc_term(int t[MP_SIZE]);
 void calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir);
+void calc_epowy(int s[MP_SIZE], int t[MP_SIZE]);
 
 #endif /*MPMATH_H*/
