@@ -91,7 +91,7 @@
 
 %token NEG
 
-%type  <int_t> exp rcl lexp value term reg func constant number parenthesis
+%type  <int_t> exp rcl value term reg func constant number parenthesis
 
 %start statement
 %left '+' '-'
@@ -110,7 +110,7 @@ statement:
 | error {
   yyclearin; 
   reset_ce_tokeniser();
-  parser_state.error = EINVAL; 
+  parser_state.error = -EINVAL; 
   YYABORT;
 }
 ;
@@ -142,22 +142,12 @@ udf:
 ;
 
 value: 
-  lexp {cp($1, $$);}
-| exp {cp($1, $$);}
+  exp {cp($1, $$);}
 | tINUMBER tMOD tINUMBER {
   if (calc_modulus($1, $3, $$)) {
-      parser_state.error = EINVAL;
+      parser_state.error = -EINVAL;
   }
 }
-;
-
-lexp:
-  tINUMBER {cp($1, $$);}
-| lexp tAND lexp {calc_and($$, $1, $3);}
-| lexp tOR lexp {calc_or($$, $1, $3);}
-| lexp tXNOR lexp {calc_xnor($$, $1, $3);}
-| lexp tXOR lexp {calc_xor($$, $1, $3);}
-| '~' lexp {calc_not($2, $$);}
 ;
 
 exp: 
@@ -167,7 +157,39 @@ exp:
 
 | exp '+' exp {mpadd($1, $3, $$);}
 | exp '-' exp {mpsub($1, $3, $$);}
+
+| exp tAND exp {
+    if (!is_natural($1) || !is_natural($3)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_and($$, $1, $3);
+}
+| exp tOR exp {
+    if (!is_natural($1) || !is_natural($3)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_or($$, $1, $3);
+}
+| exp tXNOR exp {
+    if (!is_natural($1) || !is_natural($3)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_xnor($$, $1, $3);
+}
+| exp tXOR exp {
+    if (!is_natural($1) || !is_natural($3)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_xor($$, $1, $3);
+}
+| '~' exp {
+    if (!is_natural($2)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_not($2, $$);
+}
 ;
+
 
 term:
   number {cp($1, $$);}

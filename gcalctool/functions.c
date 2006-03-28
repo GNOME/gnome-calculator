@@ -427,6 +427,9 @@ do_expression()
 		case -PARSER_ERR_TOO_LONG_NUMBER:
 		    message = _("Too long number");
 		    break;
+		case -PARSER_ERR_BITWISEOP:
+		    message = _("Invalid bitwise operation parameter(s)");
+		    break;
 		default:
 		    message = _("Malformed expression");
 		    break;

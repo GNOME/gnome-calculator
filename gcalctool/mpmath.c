@@ -821,6 +821,26 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
     mpcdm(&dval, t);
 }
 
+
+int
+is_integer(int MPnum[MP_SIZE])
+{    
+    int MP1[MP_SIZE];
+    mpcmim(MPnum, MP1);
+    return mpeq(MPnum, MP1);
+}
+
+int
+is_natural(int MPnum[MP_SIZE])
+{    
+    int MP1[MP_SIZE];
+    if (!is_integer(MPnum)) {
+	return 0;
+    }
+    mpabs(MPnum, MP1);
+    return mpeq(MPnum, MP1);
+}
+
 void
 calc_epowy(int s[MP_SIZE], int t[MP_SIZE])
 {
