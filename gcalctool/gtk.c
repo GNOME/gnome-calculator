@@ -1762,8 +1762,7 @@ create_rframe()
     char name[MAXLINE];
     int i;
     AtkObject *atko[MAXREGS];
-    GtkWidget *action_area, *close_button;
-    GtkWidget *hbox[MAXREGS], *label[MAXREGS], *vbox;
+    GtkWidget *action_area, *close_button, *label[MAXREGS], *table, *vbox;
 
     X->rframe = gtk_dialog_new();
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
@@ -1775,28 +1774,31 @@ create_rframe()
     vbox = GTK_DIALOG(X->rframe)->vbox;
     gtk_widget_realize(X->rframe);
 
+    table = gtk_table_new(10, 2, FALSE);
     for (i = 0; i < MAXREGS; i++) {
-        hbox[i] = gtk_hbox_new(FALSE, 0);
-
         SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>", _("R"), i);
         label[i] = gtk_label_new("");
         gtk_label_set_markup(GTK_LABEL(label[i]), line);
-        gtk_box_pack_start(GTK_BOX(hbox[i]), label[i], FALSE, FALSE, 5);
+        gtk_table_attach(GTK_TABLE(table), label[i], 0, 1, i, i+1,
+                         (GtkAttachOptions) (GTK_FILL),
+                         (GtkAttachOptions) (0), 0, 0);
+        gtk_misc_set_alignment(GTK_MISC(label[i]), 0, 0.5);
 
         X->regs[i] = gtk_entry_new();
-        gtk_entry_set_text(GTK_ENTRY(X->regs[i]), 
+        gtk_entry_set_text(GTK_ENTRY(X->regs[i]),
                            make_number(v->MPmvals[i], v->base, TRUE));
         gtk_editable_set_editable(GTK_EDITABLE(X->regs[i]), FALSE);
-        gtk_box_pack_start(GTK_BOX(hbox[i]), X->regs[i], TRUE, TRUE, 5);
+        gtk_table_attach(GTK_TABLE(table), X->regs[i], 1, 2, i, i+1,
+                         (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                         (GtkAttachOptions) (0), 0, 0);
 
         SPRINTF(name, "register %1d", i);
         gtk_widget_set_name(X->regs[i], name);
 
         atko[i] = gtk_widget_get_accessible(X->regs[i]);
         atk_object_set_name(atko[i], _(name));
-
-        gtk_box_pack_start(GTK_BOX(vbox), hbox[i], TRUE, TRUE, 0);
     }
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
     action_area = GTK_DIALOG(X->rframe)->action_area;
     gtk_widget_show(action_area);

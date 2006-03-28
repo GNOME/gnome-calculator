@@ -10,6 +10,13 @@ gcalctool change history.
 
 2006-03-28 Rich Burridge <rich.burridge@sun.com>
 
+    * Fixed bug #327729 (http://bugzilla.gnome.org/show_bug.cgi?id=327729)
+      The fields in the memory register window were not correctly aligned
+      in some themes. In the create_rframe() routine in gtk.c, the code has
+      been changed to use a gtk_table rather than ten gtk_hbox's.
+
+2006-03-28 Rich Burridge <rich.burridge@sun.com>
+
     * Fixed bug #330867 (http://bugzilla.gnome.org/show_bug.cgi?id=330867)
       Added License info to the Gcalctool About dialog.
 
