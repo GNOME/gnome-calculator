@@ -525,10 +525,30 @@ about_cb(GtkAction *action, gpointer date)
     };
     const gchar *translator_credits = _("translator-credits");
 
+    const char *license[] = {
+        N_("Gcalctool is free software; you can redistribute it and/or modify\n"
+        "it under the terms of the GNU General Public License as published by\n"
+        "the Free Software Foundation; either version 2 of the License, or\n"
+        "(at your option) any later version.\n"),
+        N_("Gcalctool is distributed in the hope that it will be useful,\n"
+        "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+        "GNU General Public License for more details.\n"),
+        N_("You should have received a copy of the GNU General Public License\n"
+        "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+        "59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n")
+    };
+
+    char *license_trans = g_strconcat(_(license[0]), "\n", 
+                                      _(license[1]), "\n",
+                                      _(license[2]), "\n", 
+                                      NULL);
+
     gtk_show_about_dialog(GTK_WINDOW(X->kframe),
             "name",_("Gcalctool"),
             "version", VERSION,
-            "copyright", "(C) 2004 the Free Software Foundation",
+            "copyright", _("\xc2\xa9 1987-2006 The Gcalctool authors"),
+            "license", license_trans,
             "comments", _("Calculator with financial and scientific modes."),
             "authors", authors,
             "documenters", documenters,
