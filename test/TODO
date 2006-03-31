@@ -5,16 +5,18 @@ runtests.py:
 * Currently you need to terminate the tests by pressing F12. This should
   happen automatically.
 
+* Not seeing a proper "object:text-changed:insert" event for gcalctool
+  with non_aop_input.txt (except for the last line from the input file).
+
 
 play_keystroke.py:
 ------------------
 
-* Allow comment lines starting with '#' to be read (and ignored) in the 
-  input file. When comparing input with output, a simple sed command would 
-  be needed to remove the comment lines first.
+* Not correctly handling the Period token.
 
-* Add a listener to not start reading standard input until the application
-  see a "focus:" event for gcalctool.
+* Need to make sure it properly handles the Control-<char>, Alt-<char>
+  etc. tokens at the beginning of the non_aop_input.txt file (currently
+  these are commented out).
 
 
 General:

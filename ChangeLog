@@ -8,6 +8,18 @@
 gcalctool change history.
 =========================
 
+2006-03-31 Rich Burridge <rich.burridge@sun.com>
+
+    * Further work on the gcalctool automated test tools:
+      - Now allows comment lines starting with '#' to be read (and ignored)
+        in the input file. Same for blank lines.
+
+      - Added a listener to not start reading standard input until the 
+        application see a "focus:" event for gcalctool.
+
+      - Adjusted the isApplication() routine in runtests.py to check for
+        None.
+
 2006-03-28 Rich Burridge <rich.burridge@sun.com>
 
     * From Sami Pietila <sampie@ariana-dsl.utu.fi>

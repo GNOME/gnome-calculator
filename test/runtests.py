@@ -29,11 +29,11 @@ To perform the gcalctool automated tests, follow these steps:
 
 3) Run gcalctool. 
 
-4) Give focus to gcalctool. You have five seconds to do this.
+4) Give focus to gcalctool.
 
-That's it! The tests will now be automatically run.
-
-Press F12 to terminate the test run.
+That's it! The tests will now be automatically run. Currently you will
+need to type Control-C to terminal the runtest.py script when the
+play_keystrokes.py script automatically terminates.
 """
 
 import time
@@ -56,7 +56,7 @@ registry = bonobo.get_object("OAFIID:Accessibility_Registry:1.0",
                              "Accessibility/Registry")
 
 applicationName = "gcalctool"
-debug = False
+debug = True
 display = None
 lastKeyEvent = None
 
@@ -577,7 +577,7 @@ def notifyKeystroke(event):
             print event.event_string,
         lastKeyEvent = event
 
-    # If the user has delibrately hit the F12 key, then terminate the
+    # If the user has deliberately hit the F12 key, then terminate the
     # application.
 
     if (event.event_string == "F12") or (event.event_string == "SunF37"):
@@ -606,7 +606,7 @@ def isApplication(event, appName):
         if parent.getRoleName() == "application":
             break
         parent = parent.parent
-    if parent.name == appName:
+    if parent and parent.name == appName:
         return True
 
     return False
