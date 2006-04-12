@@ -2809,6 +2809,8 @@ reset_mode_display(int toclear)
  * window (if it's being displayed), as there is no way to interact with it.
  */
 
+    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Trailing"),
+                 "sensitive", (v->modetype == SCIENTIFIC), NULL);
     g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
                  "sensitive", (v->modetype != BASIC), NULL);
     if (v->modetype == BASIC) {
