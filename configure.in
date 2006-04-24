@@ -1,12 +1,12 @@
 Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
-AM_INIT_AUTOMAKE(gcalctool, 5.8.6)
+AM_INIT_AUTOMAKE(gcalctool, 5.8.7)
 AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
-AC_PROG_INTLTOOL
+IT_PROG_INTLTOOL([0.34.90])
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -92,9 +92,7 @@ AC_PREREQ(2.53)
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
-dnl Add the languages which your application supports here.
 AM_PROG_LIBTOOL
-ALL_LINGUAS="am ar az be bg bs ca cs cy da de dz el en_CA en_GB en_US es et eu fa fi fr ga gl gu he hi hr hu id it ja ko lt mk ml mn ms nb ne nl or pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv ta te th tk tr uk vi xh zh_CN zh_HK zh_TW"
 AM_GLIB_GNU_GETTEXT
 
 dnl Use -Wall if we have gcc.
