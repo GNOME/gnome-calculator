@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.nl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-06 18:59+0100\n"
-"PO-Revision-Date: 2006-03-06 19:05+0100\n"
+"POT-Creation-Date: 2006-04-24 14:03+0200\n"
+"PO-Revision-Date: 2006-04-24 20:52+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #. Strings for each base value.
 #: ../gcalctool/calctool.c:41
@@ -648,7 +648,7 @@ msgstr "Een exponent invoeren [e]"
 msgid "Exponential"
 msgstr "Exponent"
 
-#: ../gcalctool/calctool.c:885 ../gcalctool/calctool.c:1263
+#: ../gcalctool/calctool.c:885 ../gcalctool/calctool.c:1262
 msgid "e"
 msgstr "e"
 
@@ -748,7 +748,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Hexadecimaal cijfer E"
 
-#: ../gcalctool/calctool.c:975 ../gcalctool/gtk.c:1870
+#: ../gcalctool/calctool.c:975 ../gcalctool/gtk.c:1892
 msgid "F"
 msgstr "F"
 
@@ -812,7 +812,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Hexadecimaal cijfer B"
 
-#: ../gcalctool/calctool.c:1073 ../gcalctool/gtk.c:1862
+#: ../gcalctool/calctool.c:1073 ../gcalctool/gtk.c:1884
 msgid "C"
 msgstr "C"
 
@@ -882,46 +882,46 @@ msgstr "Bitsgewijs XNOR [n]"
 msgid " Xnor "
 msgstr " Xnor "
 
-#: ../gcalctool/calctool.c:1261
+#: ../gcalctool/calctool.c:1260
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Kilometer-naar-mijl conversiefactor"
 
-#: ../gcalctool/calctool.c:1262
+#: ../gcalctool/calctool.c:1261
 msgid "square root of 2"
 msgstr "wortel van 2"
 
-#: ../gcalctool/calctool.c:1264
+#: ../gcalctool/calctool.c:1263
 msgid "pi"
 msgstr "pi"
 
-#: ../gcalctool/calctool.c:1265
+#: ../gcalctool/calctool.c:1264
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Centimeter-naar-inch conversiefactor"
 
-#: ../gcalctool/calctool.c:1266
+#: ../gcalctool/calctool.c:1265
 msgid "degrees in a radian"
 msgstr "graden in een radiaal"
 
-#: ../gcalctool/calctool.c:1267
+#: ../gcalctool/calctool.c:1266
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:1268
+#: ../gcalctool/calctool.c:1267
 msgid "Gram-to-ounce conversion factor"
 msgstr "Gram-naar-ons conversiefactor"
 
-#: ../gcalctool/calctool.c:1270
+#: ../gcalctool/calctool.c:1269
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Kilojoules-naar-Britse-hitte-eenheden conversiefactor"
 
-#: ../gcalctool/calctool.c:1272
+#: ../gcalctool/calctool.c:1271
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Kubieke-centimeter-naar-kubieke-inch conversiefactor"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:1283 ../gcalctool/display.c:268
+#: ../gcalctool/calctool.c:1282 ../gcalctool/display.c:268
 #: ../gcalctool/mp.c:1973 ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:471
 #: ../gcalctool/mpmath.c:526
 msgid "Error"
@@ -939,25 +939,29 @@ msgstr "Ongeldig getal voor de huidige basis"
 msgid "Too long number"
 msgstr "Getal te lang"
 
-# verkeerd gevormd
 #: ../gcalctool/functions.c:431
+msgid "Invalid bitwise operation parameter(s)"
+msgstr "Ongeldige bitsgewijze bewerkingsparameters(s)"
+
+# verkeerd gevormd
+#: ../gcalctool/functions.c:434
 msgid "Malformed expression"
 msgstr "Foutieve uitdrukking"
 
-#: ../gcalctool/functions.c:501
+#: ../gcalctool/functions.c:504
 msgid "Error, operands must be integers"
 msgstr "Fout, operanden moeten gehele getallen zijn"
 
-#: ../gcalctool/functions.c:657 ../gcalctool/functions.c:1035
+#: ../gcalctool/functions.c:660 ../gcalctool/functions.c:1035
 msgid "No sane value to convert"
 msgstr "Geen zinvolle waarde om om te zetten"
 
-#: ../gcalctool/functions.c:756 ../gcalctool/functions.c:1112
+#: ../gcalctool/functions.c:759 ../gcalctool/functions.c:1112
 #: ../gcalctool/functions.c:1340
 msgid "No sane value to store"
 msgstr "Geen zinvolle waarde om op te slaan"
 
-#: ../gcalctool/functions.c:884
+#: ../gcalctool/functions.c:887
 msgid "Malformed function"
 msgstr "Foutieve functie"
 
@@ -1337,63 +1341,91 @@ msgstr ""
 "Zie ook: nl.gnome.org"
 
 #: ../gcalctool/gtk.c:529
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+msgstr ""
+
+#: ../gcalctool/gtk.c:533
+msgid ""
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+msgstr ""
+
+#: ../gcalctool/gtk.c:537
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+msgstr ""
+
+#: ../gcalctool/gtk.c:548
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
+# makers/auteurs
+#: ../gcalctool/gtk.c:550
+msgid "© 1987-2006 The Gcalctool authors"
+msgstr "© 1987-2006 De makers van Gcalctool"
+
 # calculator?
-#: ../gcalctool/gtk.c:532
+#: ../gcalctool/gtk.c:552
 msgid "Calculator with financial and scientific modes."
 msgstr "Rekenmachine met financiële en wetenschappelijke standen."
 
-#: ../gcalctool/gtk.c:787
+#: ../gcalctool/gtk.c:807
 msgid "Insert ASCII Value"
 msgstr "ASCII-waarde invoegen"
 
-#: ../gcalctool/gtk.c:802
+#: ../gcalctool/gtk.c:822
 msgid "Ch_aracter:"
 msgstr "_Teken:"
 
-#: ../gcalctool/gtk.c:827
+#: ../gcalctool/gtk.c:847
 msgid "_Insert"
 msgstr "_Invoegen"
 
-#: ../gcalctool/gtk.c:906
+#: ../gcalctool/gtk.c:926
 msgid "Edit Constants"
 msgstr "Constanten bewerken"
 
-#: ../gcalctool/gtk.c:906
+#: ../gcalctool/gtk.c:926
 msgid "Edit Functions"
 msgstr "Functies bewerken"
 
-#: ../gcalctool/gtk.c:930
+#: ../gcalctool/gtk.c:950
 msgid "Note:"
 msgstr "Opmerking:"
 
-#: ../gcalctool/gtk.c:931
+#: ../gcalctool/gtk.c:951
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Alle constante waardes worden opgegeven in het decimale talstelsel."
 
-#: ../gcalctool/gtk.c:941
+#: ../gcalctool/gtk.c:961
 msgid "Click a _value or description to edit it:"
 msgstr "Klik op een _waarde of beschrijving om deze te bewerken:"
 
-#: ../gcalctool/gtk.c:964
+#: ../gcalctool/gtk.c:984
 msgid "No."
 msgstr "Nee."
 
-#: ../gcalctool/gtk.c:966
+#: ../gcalctool/gtk.c:986
 msgid "Value"
 msgstr "Waarde"
 
-#: ../gcalctool/gtk.c:968
+#: ../gcalctool/gtk.c:988
 msgid "Description"
 msgstr "Beschrijving"
 
-#: ../gcalctool/gtk.c:1078
+#: ../gcalctool/gtk.c:1098
 msgid "_Do not warn me again"
 msgstr "_Niet meer waarschuwen"
 
-#: ../gcalctool/gtk.c:1084
+#: ../gcalctool/gtk.c:1104
 msgid ""
 "<big><b>Changing Modes Clears Calculation</b></big>\n"
 "\n"
@@ -1405,65 +1437,65 @@ msgstr ""
 "Wanneer u de modus wijzigt, zal de huidige berekening worden gewist en zal "
 "de basis weer worden ingesteld op decimaal."
 
-#: ../gcalctool/gtk.c:1123
+#: ../gcalctool/gtk.c:1143
 msgid "C_hange Mode"
 msgstr "_Modus wijzigen"
 
-#: ../gcalctool/gtk.c:1160
+#: ../gcalctool/gtk.c:1180
 msgid "Set Precision"
 msgstr "Nauwkeurigheid"
 
 # significante cijfers/decimalen/plaatsen
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1195
 msgid "Significant _places:"
 msgstr "_Significante cijfers:"
 
-#: ../gcalctool/gtk.c:1201
+#: ../gcalctool/gtk.c:1221
 msgid "_Set"
 msgstr "_Instellen"
 
 # calculator?
-#: ../gcalctool/gtk.c:1418 ../gcalctool/gtk.c:1420 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:1438 ../gcalctool/gtk.c:1440 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Rekenmachine"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1615 ../gcalctool/gtk.c:1761
+#: ../gcalctool/gtk.c:1635 ../gcalctool/gtk.c:1779
 msgid "R"
 msgstr "R"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1703
 msgid "_Inv"
 msgstr "_Inv"
 
-#: ../gcalctool/gtk.c:1691
+#: ../gcalctool/gtk.c:1711
 msgid "H_yp"
 msgstr "H_yp"
 
-#: ../gcalctool/gtk.c:1751
+#: ../gcalctool/gtk.c:1770
 msgid "Memory Registers"
 msgstr "Geheugenplaatsen"
 
-#: ../gcalctool/gtk.c:1851
+#: ../gcalctool/gtk.c:1873
 msgid "Edit Constants..."
 msgstr "Constanten bewerken..."
 
-#: ../gcalctool/gtk.c:1851
+#: ../gcalctool/gtk.c:1873
 msgid "Edit Functions..."
 msgstr "Functies bewerken..."
 
-#: ../gcalctool/gtk.c:2020
+#: ../gcalctool/gtk.c:2042
 msgid "Clipboard contained malformed calculation"
 msgstr "Klembord bevatte onjuist gevormde berekening"
 
-#: ../gcalctool/gtk.c:2299
+#: ../gcalctool/gtk.c:2321
 #, c-format
 msgid "Other (%d) ..."
 msgstr "Andere (%d) ..."
 
-#: ../gcalctool/gtk.c:2310
+#: ../gcalctool/gtk.c:2332
 #, c-format
 msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
@@ -1471,15 +1503,15 @@ msgstr ""
 "Nauwkeurigheid instellen op 0 tot %d decimalen. Staat momenteel op %d "
 "decimalen. [a]"
 
-#: ../gcalctool/gtk.c:2542
+#: ../gcalctool/gtk.c:2564
 msgid "Activated no operator precedence mode"
 msgstr "Geen operator-prioriteit geactiveerd"
 
-#: ../gcalctool/gtk.c:2552
+#: ../gcalctool/gtk.c:2574
 msgid "Activated expression mode with operator precedence"
 msgstr "Uitdrukking met operator-prioriteit geactiveerd"
 
-#: ../gcalctool/gtk.c:2846
+#: ../gcalctool/gtk.c:2870
 msgid "Accuracy value out of range"
 msgstr "Nauwkeurigheid valt buiten bereik"
 
