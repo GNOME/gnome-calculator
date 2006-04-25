@@ -8,6 +8,16 @@
 gcalctool change history.
 =========================
 
+2006-04-25 Rich Burridge <rich.burridge@sun.com>
+
+    * Respun the gcalctool tarball for GNOME 2.15.1 because intltool
+      is not Solarisized. It's generated constructs in .../po/Makefile.in.in
+      that do not work on Solaris. The hack fix was to change the SHELL
+      definition in .../po/Makefile.in.in to /bin/bask before running
+      make; make install; make dist
+
+    * Removed the no entry from the po/LINGUAS file.
+
 2006-04-24 Rich Burridge <rich.burridge@sun.com>
 
     * Removed .../po/Makefile.in.in. Shouldn't have been in CVS.
