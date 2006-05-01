@@ -26,6 +26,7 @@
 #include <gdk/gdkkeysyms.h>
 #include "extern.h"
 #include "mpmath.h"
+#include "functions.h"
 
 static char *make_eng_sci(int *, int);
 
@@ -163,8 +164,9 @@ initialise()
   
     v->new_input = 1;               /* Value zero is on calculator display */
 
-    free(v->expression);
-    v->expression = NULL;
+	struct exprm_state *e = get_state();
+    free(e->expression);
+    e->expression = NULL;
 }
 
 
@@ -588,24 +590,25 @@ refresh_display()
     show_display(v->MPdisp_val);
     break;
     
-  case exprs:
-    if (v->expression &&
-	strlen(v->expression)) {
-      char *e = gc_strdup(v->expression);
-      char *ans = make_number(v->e.ans, v->base, FALSE);
+  case exprs: {
+	struct exprm_state *e = get_state();
+    if (e->expression &&
+		strlen(e->expression)) {
+      char *str = gc_strdup(e->expression);
+      char *ans = make_number(e->ans, v->base, FALSE);
       localize_number(localized, ans);
       
-      str_replace(&e, "Ans", localized);
+      str_replace(&str, "Ans", localized);
       //set_display(e, FALSE);
-      write_display(e);
-      free(e);
+      write_display(str);
+      free(str);
     } else {
       /* set_display("", FALSE); */
       int MP1[MP_SIZE];
       do_zero(MP1);
       show_display(MP1);
     }
-    
+  }    
     break;
     
   default:

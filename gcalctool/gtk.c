@@ -115,6 +115,9 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *status_image;           /* Statusbar image */
     GtkWidget *statusbar; 
 
+    GtkWidget *undo;                   /* Undo menuitem */ 
+    GtkWidget *redo;                   /* Redo menuitem */ 
+
     GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *spframe;                /* Set Precision window. */
@@ -247,6 +250,11 @@ static const GtkActionEntry entries[] = {
       N_("Paste selection"), G_CALLBACK(mb_proc) },
     { "Insert", NULL, N_("_Insert ASCII Value..."), "<control>I",
       N_("Insert ASCII value"), G_CALLBACK(mb_proc) },
+    { "Undo", GTK_STOCK_UNDO, N_("_Undo"), "<control>Z",
+      N_("Undo"), G_CALLBACK(mb_proc) },
+    { "Redo", GTK_STOCK_REDO, N_("_Redo"), "<shift><control>Z",
+      N_("Redo"), G_CALLBACK(mb_proc) },
+
 
 #ifndef DISABLE_GNOME
     { "Contents", GTK_STOCK_HELP, NULL, "F1",
@@ -376,6 +384,8 @@ static const gchar ui_info[] =
 "    <menu action='EditMenu'>"
 "      <menuitem action='Copy'/>"
 "      <menuitem action='Paste'/>"
+"      <menuitem action='Undo'/>"
+"      <menuitem action='Redo'/>"
 "      <separator/>"
 "      <menuitem action='Insert'/>"
 "    </menu>"
@@ -656,7 +666,6 @@ beep()
     gdk_beep();
 }
 
-
 /*ARGSUSED*/
 static void
 button_proc(GtkButton *widget, gpointer user_data)
@@ -684,8 +693,12 @@ button_proc(GtkButton *widget, gpointer user_data)
             break;
 
         case exprs:
-            v->current = copy_button_info(n);
-            do_expression();
+	    {
+		struct exprm_state *e = get_state();
+		memcpy(&(e->button), n, sizeof(struct button));
+		new_state();
+		do_expression();
+	    }
             break;
 
         default:
@@ -1318,7 +1331,7 @@ bit_toggled(GtkWidget *event_box, GdkEventButton *event, gpointer data)
 {
     double number;
     unsigned long long lval;
-    int n, MP1[MP_SIZE], MP2[MP_SIZE];
+    int n, MP1[MP_SIZE];
 
     n = MAXBITS - (int) data - 1;
     MPstr_to_num(v->display, v->base, MP1);
@@ -1423,6 +1436,13 @@ create_bit_panel(GtkWidget *main_vbox)
     return(align);
 }
 
+void 
+set_redo_and_undo_button_sensitivity(int undo, 
+				     int redo)
+{
+    gtk_widget_set_sensitive(X->undo, undo); 
+    gtk_widget_set_sensitive(X->redo, redo);
+}
 
 static void
 create_kframe()
@@ -1483,7 +1503,7 @@ create_kframe()
         g_error_free(error);
     }
 
-    X->menubar = gtk_ui_manager_get_widget(X->ui, "/MenuBar"),
+    X->menubar = gtk_ui_manager_get_widget(X->ui, "/MenuBar");
     gtk_widget_show(X->menubar);
     gtk_box_pack_start(GTK_BOX(X->kvbox), X->menubar, FALSE, FALSE, 0);
 
@@ -1616,8 +1636,12 @@ create_kframe()
                                     "/MenuBar/ViewMenu/ArithmeticPrecedence");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
     }
-}
 
+    X->undo = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Undo");
+    X->redo = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Redo");
+
+    set_redo_and_undo_button_sensitivity(0, 0);
+}
 
 static void
 create_mem_menu(enum menu_type mtype)
@@ -2562,20 +2586,21 @@ toggle_expressions()
             MPstr_to_num("0", DEC, v->MPdisp_val);
             show_display(v->MPdisp_val);
             update_statusbar(_("Activated no operator precedence mode"), "");
+	    clear_undo_history();
             break;
 
-        case exprs:
-            v->e.calc_complete = 0;
-            MPstr_to_num("0", DEC, v->e.ans);
-	    MPstr_to_num("0", DEC, v->e.ansbak);
-            exp_del();
-            show_display(v->e.ans);
-            update_statusbar(
-                _("Activated expression mode with operator precedence"), "");
-            break;
-
-        default:
-            assert(0);
+    case exprs: {
+	struct exprm_state *e = get_state();
+	MPstr_to_num("0", DEC, e->ans);
+	exp_del();
+	show_display(e->ans);
+	update_statusbar(
+			 _("Activated expression mode with operator precedence"), "");
+   }
+	break;
+	
+    default:
+	assert(0);
     }
     put_resource(R_SYNTAX, Rsstr[v->syntax]);
     set_mode(v->modetype);
@@ -2600,6 +2625,30 @@ mb_proc(GtkAction *action)
         get_display();
     } else if (EQUAL(name, "Paste")) {
         handle_selection();
+    } else if (EQUAL(name, "Undo")) {
+	perform_undo();
+	refresh_display();
+#if 0
+	printf("Begin %d, Current %d, End %d\n", 
+	       v->h.begin,
+	       v->h.current,
+	       v->h.end);
+	struct exprm_state *e = get_state();
+	printf("Expression %s\n", v->h.e[v->h.current].expression);
+#endif
+
+
+    } else if (EQUAL(name, "Redo")) {
+	perform_redo();
+	refresh_display();
+#if 0
+	printf("Begin %d, Current %d, End %d\n", 
+	       v->h.begin,
+	       v->h.current,
+	       v->h.end);
+	struct exprm_state *e = get_state();
+	printf("Expression %s\n", v->h.e[v->h.current].expression);
+#endif
     } else if (EQUAL(name, "Insert")) {
         show_ascii_frame();
     } else if (EQUAL(name, "Memory")) {
@@ -2642,7 +2691,9 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
         new_modetype = FINANCIAL;
     } else if (EQUAL(X->mode_name, "Scientific")) {
         new_modetype = SCIENTIFIC;
-    }
+    } else {
+	  assert(0); // Oops, we shouldn't be here
+	}
 
 /* If the user has completed a calculation and we are going to a
  * new mode that is "compatible" with this one, then just change
@@ -2666,10 +2717,12 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
             }
             break;
 
-        case exprs:
-            if (v->e.calc_complete || !v->expression) {
+	    case exprs: {
+		  	struct exprm_state *e = get_state();
+            if (!strcmp(e->expression, "Ans") || !e->expression) {
                 complete = 1;   /* Calculation is complete. */
             }
+	}
             break;
     }
 
@@ -3395,15 +3448,15 @@ start_tool()
     switch (v->syntax) { 
         case npa:
 	    break;
-        case exprs:
+     	case exprs: {
 	    // Init expression mode.
 	    // This must be executed after do_base is called at init.
 	    // FIXME: The init code here is duplicated elsewhere
-	    v->e.calc_complete = 0;
-	    MPstr_to_num("0", DEC, v->e.ans);
-	    MPstr_to_num("0", DEC, v->e.ansbak);
-            exp_del();
-            show_display(v->e.ans);
+		struct exprm_state *e = get_state();
+	    MPstr_to_num("0", DEC, e->ans);
+        exp_del();
+        show_display(e->ans);
+		}
 	    break;
     default:
 	assert(0);

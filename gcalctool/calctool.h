@@ -224,39 +224,30 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define FALSE          0
 #endif /*FALSE*/
 
+#define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
 
 typedef unsigned long  BOOLEAN;
 
 enum button_flags {
     none         = 0,          /* No flags */
     binop        = 1,          /* Is binary operation ie. A op B */ 
-    unop         = 2,          /* Is unary operation ie. op A. */
-    enter        = 4,          /* Expression is entered */
-    number       = 8,          /* Number button */
-    immediate    = 16,         /* Button does immediate function */
+    unop         = (1 << 1),   /* Is unary operation ie. op A. */
+    enter        = (1 << 2),   /* Expression is entered */
+    number       = (1 << 3),   /* Number button */
+    immediate    = (1 << 4),   /* Button does immediate function */
 
-    parenthesis  = 64,         /* Parenthesis */
-    func         = 128,        /* Function */
-    bsp          = 256,        /* Backspace */
-    clear        = 512,        /* Clear display */
-    neg          = 1024,       /* Negate display */
-    inv          = 2048,       /* Reciprocial */
-    con          = 4096,       /* Constant */
-    regrcl       = 8192,       /* Recall register */
-    expnum       = 16384,      /* Exponential number */
-    postfixop    = 32768,      /* Unary postfix operation */
-    prefixop     = 65536,      /* Unary prefix operation */
-    dpoint       = 131072      /* Decimal point */
-};
-
-struct exprm_state {       /* Expression mode state */
-    int calc_complete : 1;
-    int numeric_ans : 1;    /* Show answer numerically 
-                             * (alternative is symbolically) 
-                             */
-    int ans[MP_SIZE];        /* Previously calculated answer */
-    int ansbak[MP_SIZE];     /* Pre ans */
-    char *expbak;
+    parenthesis  = (1 << 5),   /* Parenthesis */
+    func         = (1 << 6),   /* Function */
+    bsp          = (1 << 7),   /* Backspace */
+    clear        = (1 << 8),   /* Clear display */
+    neg          = (1 << 9),   /* Negate display */
+    inv          = (1 << 10),  /* Reciprocial */
+    con          = (1 << 11),  /* Constant */
+    regrcl       = (1 << 12),  /* Recall register */
+    expnum       = (1 << 13),  /* Exponential number */
+    postfixop    = (1 << 14),  /* Unary postfix operation */
+    prefixop     = (1 << 15),  /* Unary prefix operation */
+    dpoint       = (1 << 16)   /* Decimal point */
 };
 
 enum shiftd {
@@ -282,6 +273,20 @@ struct button {
     enum button_flags flags; /* Misc flags */
 };
 
+struct exprm_state {       /* Expression mode state */
+    struct button button;  /* Current button/character pressed. */
+    int ans[MP_SIZE];      /* Previously calculated answer */
+    char *expression;      /* Expression entered by user */
+};
+
+/* Circular list of Arithmetic Precedence Mode states*/ 
+struct exprm_state_history {
+  unsigned int begin;
+  unsigned int end;
+  unsigned int current;
+  struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
+};
+
 struct menu {
     char *title;             /* Menu title. */
     int  total;              /* Number of menu entries. */
@@ -290,8 +295,8 @@ struct menu {
 };
 
 struct calcVars {                      /* Calctool variables and options. */
-    struct exprm_state e;               /* Expression mode state */
-  
+    struct exprm_state_history h;      /* History of expression mode states */
+
     struct button *pending_but;        /* Button info. for pending op. */
     struct button *current;            /* Current button/character pressed. */
   
@@ -311,7 +316,7 @@ struct calcVars {                      /* Calctool variables and options. */
     const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
-    const char *tsep;                /* Locale specific thousands seperator. */
+    const char *tsep;                  /* Locale specific thousands seperator. */
     char *titleline;                   /* Value of titleline (if present). */
     char *tool_label;                  /* Title line for calculator window. */
 
@@ -335,8 +340,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     enum syntax syntax;             /* Calculation syntax mode */
 
-    char *expression;  /* Expression entered by user */
-  
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_ch;        /* Current character if keyboard event. */
@@ -490,6 +493,7 @@ void switch_hands(int);
 void update_statusbar(gchar *, const gchar *);
 void usage(char *);
 void win_display(enum fcp_type, int);
+void set_redo_and_undo_button_sensitivity(int undo, int redo);
 
 /* Global Brent MP routines in mp.c. */
 int mpeq(int *, int *);

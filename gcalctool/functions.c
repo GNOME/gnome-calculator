@@ -42,6 +42,137 @@ static void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
 static void do_portionfunc(int num[MP_SIZE]);
 static void do_shift();
 
+char *
+gc_strdup(char *str)
+{
+    char *dup;
+    int len;
+
+    if (!str) {
+        return NULL;
+    }
+
+    len = strlen(str);
+    dup = malloc(len+1);
+    assert(dup);
+    memset(dup, 0, len+1);
+    strncpy(dup, str, len);
+
+    return(dup);
+}
+
+void
+update_undo_redo_button_sensitivity(void)
+{
+    int undo = 0;
+    int redo = 0;
+    
+    if (v->h.current != v->h.end) {
+	redo = 1;
+    }
+
+    if (v->h.current != v->h.begin) {
+	undo = 1;
+    }
+
+    set_redo_and_undo_button_sensitivity(undo, redo);
+}
+
+void
+clear_undo_history(void)
+{
+    int i = v->h.begin;
+    while (i != v->h.end) {
+	if (i != v->h.current) {
+	    free(v->h.e[i].expression);
+	    v->h.e[i].expression = NULL;
+	}
+	i = ((i + 1) % UNDO_HISTORY_LENGTH);
+    }
+    v->h.begin = v->h.end = v->h.current;
+    update_undo_redo_button_sensitivity();
+}
+
+struct exprm_state *
+get_state(void)
+{
+    return &(v->h.e[v->h.current]);
+}
+
+void
+copy_state(struct exprm_state *dst,
+	   struct exprm_state *src)
+{
+    memcpy(dst, src, sizeof(struct exprm_state));
+    dst->expression = gc_strdup(src->expression);
+}
+
+void
+purge_redo_history(void)
+{
+
+    if (v->h.current != v->h.end) {
+	int i = v->h.current;
+	do {
+	    i = ((i + 1) % UNDO_HISTORY_LENGTH);
+	    free(v->h.e[i].expression);
+	    v->h.e[i].expression = NULL;
+	} while (i != v->h.end);
+    }
+
+#if 0
+    while (i != v->h.end) {
+	free(v->h.e[i].expression);
+	v->h.e[i].expression = NULL;
+	i = ((i + 1) % UNDO_HISTORY_LENGTH);
+    }
+#endif    
+
+    v->h.end = v->h.current;
+}
+
+void
+new_state(void)
+{
+    purge_redo_history();
+
+    int c = v->h.current;
+    v->h.end = v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+    if (v->h.current == v->h.begin) {
+	free(v->h.e[v->h.begin].expression);
+	v->h.e[v->h.begin].expression = NULL;
+	v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
+    }
+
+    //purge_redo_history();
+
+    assert(!v->h.e[v->h.current].expression);
+    copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
+    update_undo_redo_button_sensitivity();
+}
+
+
+void
+perform_undo(void)
+{
+    if (v->h.current != v->h.begin) {
+	v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
+    } else {
+	update_statusbar("No undo history", "gtk-dialog-warning");
+    }
+    update_undo_redo_button_sensitivity();
+}
+
+void
+perform_redo(void)
+{
+    if (v->h.current != v->h.end) {
+	v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+    } else {
+	update_statusbar("No redo steps", "gtk-dialog-warning");
+    }
+    update_undo_redo_button_sensitivity();
+}
 
 static void
 do_accuracy()     /* Set display accuracy. */
@@ -57,6 +188,7 @@ do_accuracy()     /* Set display accuracy. */
             set_accuracy_menu_item(v->accuracy);
             set_accuracy_tooltip(v->accuracy);
             make_registers();
+	    clear_undo_history();
             return;
         }
     }
@@ -88,26 +220,6 @@ do_business()     /* Perform special business mode calculations. */
 }
 
 
-char *
-gc_strdup(char *str)
-{
-    char *dup;
-    int len;
-
-    if (!str) {
-        return NULL;
-    }
-
-    len = strlen(str);
-    dup = malloc(len+1);
-    assert(dup);
-    memset(dup, 0, len+1);
-    strncpy(dup, str, len);
-
-    return(dup);
-}
-
-
 void 
 exp_append(char *text)
 {
@@ -117,27 +229,31 @@ exp_append(char *text)
     if (!text) {
         return;
     }
-    orig_len = (v->expression) ? strlen(v->expression) : 0;
+
+    struct exprm_state *e = get_state();
+	
+    orig_len = (e->expression) ? strlen(e->expression) : 0;
     dest_len = orig_len + strlen(text) +1;
     buf = malloc(dest_len);
     assert(buf);
-    if (v->expression) {
-        if (snprintf(buf, dest_len, "%s%s", v->expression, text) < 0) {
+    if (e->expression) {
+        if (snprintf(buf, dest_len, "%s%s", e->expression, text) < 0) {
             assert(0);
         }
     } else {
         strcpy(buf, text);
     }
-    free(v->expression);
-    v->expression = buf;
+    free(e->expression);
+    e->expression = buf;
 }
 
 
 void 
 exp_del() 
 {
-    free(v->expression);
-    v->expression = NULL;
+    struct exprm_state *e = get_state();
+    free(e->expression);
+    e->expression = NULL;
 }
 
 
@@ -146,13 +262,16 @@ usable_num(int MPnum[MP_SIZE])
 {
     int ret = 0;
 
-    if (v->expression) {
-        ret = ce_parse(v->expression, MPnum);
+    struct exprm_state *e = get_state();
+
+    if (e->expression) {
+        ret = ce_parse(e->expression, MPnum);
     } else {
-        mpstr(v->MPresult, MPnum);
+	do_zero(MPnum);
+        //mpstr(v->MPresult, MPnum);
     }
 
-    return(ret);
+    return ret;
 }
 
 
@@ -184,8 +303,9 @@ exp_del_char(char **expr, int amount)
 static void
 exp_replace(char *text)
 {
-    free(v->expression);
-    v->expression = NULL;
+    struct exprm_state *e = get_state();
+    free(e->expression);
+    e->expression = NULL;
     exp_append(text);
 }
 
@@ -193,17 +313,19 @@ exp_replace(char *text)
 static void
 exp_negate()
 {
-    if (v->expression) {
+    struct exprm_state *e = get_state();
+
+    if (e->expression) {
         /* Ending zero + parenthesis + minus */
-        int len = strlen(v->expression) + 4;
+        int len = strlen(e->expression) + 4;
         char *exp = malloc(len);
 
         assert(exp);
-        if (snprintf(exp, len, "-(%s)", v->expression) < 0) {
+        if (snprintf(exp, len, "-(%s)", e->expression) < 0) {
             assert(0);
         }
-        free(v->expression);
-        v->expression = exp;
+        free(e->expression);
+        e->expression = exp;
     }
 }
 
@@ -211,17 +333,19 @@ exp_negate()
 static void
 exp_inv()
 {
-    if (v->expression) {
+    struct exprm_state *e = get_state();
+
+    if (e->expression) {
         /* Ending zero + 1/ + parenthesis */
-        int len = strlen(v->expression) + 5;
+        int len = strlen(e->expression) + 5;
         char *exp = malloc(len);
 
         assert(exp);
-        if (snprintf(exp, len, "1/(%s)", v->expression) < 0) {
+        if (snprintf(exp, len, "1/(%s)", e->expression) < 0) {
             assert(0);
         }
-        free(v->expression);
-        v->expression = exp;
+        free(e->expression);
+        e->expression = exp;
     }
 }
 
@@ -325,44 +449,38 @@ do_expression()
 {
     char *btext;
 
+    struct exprm_state *e = get_state();
+
     update_statusbar("", "");
 
-    btext = (v->current->symname) ? v->current->symname : v->current->str;
-    if (v->current->flags & dpoint) {
+    btext = (e->button.symname) ? e->button.symname : e->button.str;
+    if (e->button.flags & dpoint) {
 	btext = get_localized_numeric_point();
     }
     btext = gc_strdup(btext);
     trig_filter(&btext);
   
-    if (v->e.calc_complete) {
-        v->e.calc_complete = 0;
+	
+    if (e->expression && !strcmp(e->expression, "Ans")) {
 
-        if (v->current->flags & enter) {
-            exp_del();
-            update_statusbar(_("Previous expression"), "");
-            mpstr(v->e.ansbak, v->e.ans);
-            assert(!v->expression);
-            v->expression = v->e.expbak;
-            v->e.expbak = NULL;
-	    goto out;
-        }
+	// TODO: ENTER performs an undo
 
-        if (v->current->flags & 
+        if (e->button.flags & 
             (binop | postfixop | neg | inv | expnum | bsp)) {
             /* do nothing. */
-        } else if (v->current->flags & (prefixop)) {
+        } else if (e->button.flags & (prefixop)) {
             char buf[1024];
 
             snprintf(buf, 128, "%s(Ans)", btext);
             exp_replace(buf);
 	    goto out;
-        } else if (v->current->flags & (number | func)) {
+        } else if (e->button.flags & (number | func)) {
             exp_del(); 
         }
     }
 
-    if (v->current->flags & postfixop) {
-      if (!v->expression || !strlen(v->expression)) {
+    if (e->button.flags & postfixop) {
+      if (!e->expression || !strlen(e->expression)) {
 	int MP1[MP_SIZE];
 	char *zero = NULL;
 	do_zero(MP1);
@@ -371,52 +489,47 @@ do_expression()
       }
     }
 
-    if (v->current->flags & clear) {
+    if (e->button.flags & clear) {
         exp_del();
         set_error_state(FALSE);
-        MPstr_to_num("0", DEC, v->e.ans);
-        MPstr_to_num("0", DEC, v->e.ansbak);
+        MPstr_to_num("0", DEC, e->ans);
 	goto out;
-    } else if (v->current->flags & regrcl) {
-        int i = char_val(v->current->value[0]);
+    } else if (e->button.flags & regrcl) {
+        int i = char_val(e->button.value[0]);
         char reg[3];
         int n = '0' +  i;
-
         snprintf(reg, 3, "R%c", n);
         exp_append(reg);
 	goto out;
-    } else if (v->current->flags & con) {
-        int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
+    } else if (e->button.flags & con) {
+        int *MPval = v->MPcon_vals[char_val(e->button.value[0])];
         exp_append(make_number(MPval, v->base, FALSE));
 	goto out;
-    } else if (v->current->flags & bsp) {
-        if (exp_has_postfix(v->expression, "Ans")) { 
-            char *ans = make_number(v->e.ans, v->base, FALSE);   
+    } else if (e->button.flags & bsp) {
+        if (exp_has_postfix(e->expression, "Ans")) { 
+            char *ans = make_number(e->ans, v->base, FALSE);   
 
-            str_replace(&v->expression, "Ans", ans);
+            str_replace(&e->expression, "Ans", ans);
         } 
-        exp_del_char(&v->expression, 1);
+        exp_del_char(&e->expression, 1);
 	goto out;
-    } else if (v->current->flags & neg) {
+    } else if (e->button.flags & neg) {
         exp_negate();
 	goto out;
-    } else if (v->current->flags & inv) {
+    } else if (e->button.flags & inv) {
         exp_inv();
 	goto out;
     }
 
-    if (v->current->flags & enter) {
-        if (v->expression) {
+    if (e->button.flags & enter) {
+        if (e->expression) {
             int MPval[MP_SIZE];
-            int ret = ce_parse(v->expression, MPval);
+            int ret = ce_parse(e->expression, MPval);
 
             if (!ret) {
 	        // FIXME: duplicated code in do_exchange().
-	        mpstr(v->e.ans, v->e.ansbak);
-	        mpstr(MPval, v->e.ans);
-	        v->e.expbak = gc_strdup(v->expression);
+	        mpstr(MPval, e->ans);
 	        exp_replace("Ans");
-	        v->e.calc_complete = 1;
 		goto out;
             } else {
 		char *message = NULL;
@@ -444,7 +557,7 @@ do_expression()
 
     exp_append(btext);
 
-    if (v->current->flags & func) {
+    if (e->button.flags & func) {
         exp_append("(");
     }
 
@@ -654,18 +767,18 @@ do_base(enum base_type b)    /* Change the current base setting. */
 	break;
 	
     case exprs: {
+	struct exprm_state *e = get_state();
 	int MP[MP_SIZE];
 	int ret = usable_num(MP);
 	if (ret) {
 	    update_statusbar(_("No sane value to convert"), 
 			     "gtk-dialog-error");
 	} else {
-	    mpstr(v->e.ans, v->e.ansbak);
-	    mpstr(MP, v->e.ans);
+	    mpstr(MP, e->ans);
 	    exp_replace("Ans");
-	    v->e.calc_complete = 1;
 	    make_registers();
 	}
+	clear_undo_history();
     }
     break;
     
@@ -681,17 +794,19 @@ do_constant()
 {
     assert(v->current->value[0] >= '0');
     assert(v->current->value[0] <= '9');
-
+    
     switch (v->syntax) {
-        case npa: {
-            int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-            mpstr(MPval, v->MPdisp_val);
-            break;
-        }
-
-        case exprs:
-            v->current->flags = con;
-            do_expression();
+    case npa: {
+	int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
+	mpstr(MPval, v->MPdisp_val);
+	break;
+    }
+	
+    case exprs: {
+	struct exprm_state *e = get_state();
+	e->button.flags = con;
+	do_expression();
+    }
             break;
 
         default:
@@ -753,25 +868,18 @@ do_exchange()         /* Exchange display with memory register. */
 
         case exprs:
 	  {
+		struct exprm_state *e = get_state();
 	    int ret = usable_num(MPexpr);
-	    int n = char_val(v->current->value[0]);
+	    int n = char_val(e->button.value[0]);
 	    if (ret) {
 	      update_statusbar(_("No sane value to store"), 
 			       "gtk-dialog-error");
 	    } else {
 	      mpstr(v->MPmvals[n], MPtemp);
 	      mpstr(MPexpr, v->MPmvals[n]);
-	      mpstr(MPtemp, v->e.ans);	      
-	      // TODO: duplicated code in do_expression
-	      mpstr(v->e.ans, v->e.ansbak);
-	      if (v->e.expbak) {
-		free(v->e.expbak);
-		v->e.expbak = NULL;
-	      }
-	      v->e.expbak = gc_strdup(v->expression);
+	      mpstr(MPtemp, e->ans);	      
 	      exp_replace("Ans");
-	      v->e.calc_complete = 1;
-              refresh_display();
+          refresh_display();
 	      make_registers();
 	    }
 	  }
@@ -860,21 +968,32 @@ do_function()      /* Perform a user defined function. */
     char *str;
     int fno, ret;
 
-    assert(v->current->value[0] >= '0');
-    assert(v->current->value[0] <= '9');
-
-    fno = char_val(v->current->value[0]);
-    ret = 0;
-    str = v->fun_vals[fno];
-    assert(str);
-
     switch (v->syntax) {
         case npa:
+		    assert(v->current->value[0] >= '0');
+			assert(v->current->value[0] <= '9');
+		  
+			fno = char_val(v->current->value[0]);
+			ret = 0;
+			str = v->fun_vals[fno];
+			assert(str);
+
             ret = lr_udf_parse(str);
             break;
 
-        case exprs:
+	    case exprs: {
+		    struct exprm_state *e = get_state();
+
+		    assert(e->button.value[0] >= '0');
+			assert(e->button.value[0] <= '9');
+		  
+			fno = char_val(e->button.value[0]);
+			ret = 0;
+			str = v->fun_vals[fno];
+			assert(str);
+
             ret = ce_udf_parse(str);
+	    }
             break;
 
         default:
@@ -1029,18 +1148,19 @@ do_numtype(enum num_type n)   /* Set number display type. */
         break;
         
     case exprs: {
+     	struct exprm_state *e = get_state();
         int MP[MP_SIZE];
         int ret = usable_num(MP);
         if (ret) {
             update_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
-            mpstr(v->e.ans, v->e.ansbak);
-            mpstr(MP, v->e.ans);
+            mpstr(MP, e->ans);
             exp_replace("Ans");
-            v->e.calc_complete = 1;
             make_registers();
         }
+	clear_undo_history();
+
     }
     break;
 
@@ -1144,20 +1264,23 @@ static void
 do_rcl()
 {
     switch (v->syntax) {
-        case npa: {
-            int i = char_val(v->current->value[0]);
-
-            mpstr(v->MPmvals[i], v->MPdisp_val);
-            break;
-        }
-
-        case exprs:
-            v->current->flags = regrcl;
-            do_expression();
-            break;
-
-        default:
-            assert(0);
+    case npa: {
+	int i = char_val(v->current->value[0]);
+	
+	mpstr(v->MPmvals[i], v->MPdisp_val);
+	break;
+    }
+	
+    case exprs: {
+	
+	struct exprm_state *e = get_state();
+	e->button.flags = regrcl;
+	do_expression();
+    }
+	break;
+	
+    default:
+	assert(0);
     }
 }
 
@@ -1188,7 +1311,7 @@ syntaxdep_show_display()
             break;
 
         case exprs:
-	    refresh_display();
+     	    refresh_display();
             break;
 
         default:
@@ -1200,7 +1323,6 @@ syntaxdep_show_display()
 void
 do_pending()
 {
-
     if (!v->ismenu &&
         !IS_KEY(v->pending, KEY_LPAR.value[0])) {
         show_menu();
@@ -1331,9 +1453,10 @@ do_shift()     /* Perform bitwise shift on display value. */
         break;
 
         case exprs: {
+	    struct exprm_state *e = get_state();
             enum shiftd dir;
             int MPval[MP_SIZE];
-            int n = char_val(v->current->value[0]);
+            int n = char_val(e->button.value[0]);
             int ret = usable_num(MPval);
 
             if (ret) {
@@ -1343,10 +1466,13 @@ do_shift()     /* Perform bitwise shift on display value. */
             } 
 
             dir = (mtype == M_LSHF) ? left : right;
-            calc_rshift(MPval, v->e.ans, n, dir);
+            calc_rshift(MPval, e->ans, n, dir);
 
+	    exp_replace("Ans");
+#if 0
             exp_del();
-            exp_append(make_number(v->e.ans, v->base, FALSE));
+            exp_append(make_number(e->ans, v->base, FALSE));
+#endif
         }
         break;
 

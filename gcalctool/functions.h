@@ -28,4 +28,10 @@
 void do_factorial(int *, int *);
 void exp_append(char *text);
 
+struct exprm_state *get_state(void);
+void new_state(void);
+void perform_undo(void);
+void perform_redo(void);
+void clear_undo_history(void);
+
 #endif /*FUNCTIONS_H*/

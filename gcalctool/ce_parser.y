@@ -270,7 +270,10 @@ rcl:
 number:
   tINUMBER {cp($1, $$);}
 | tDNUMBER {cp($1, $$);}
-| tANS {cp(v->e.ans, $$);}
+| tANS {
+  struct exprm_state *e = get_state();
+  cp(e->ans, $$);
+}
 ;
 
 %%
