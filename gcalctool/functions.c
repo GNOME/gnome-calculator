@@ -157,6 +157,7 @@ perform_undo(void)
 {
     if (v->h.current != v->h.begin) {
 	v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
+	update_statusbar("", "");
     } else {
 	update_statusbar("No undo history", "gtk-dialog-warning");
     }
@@ -168,6 +169,7 @@ perform_redo(void)
 {
     if (v->h.current != v->h.end) {
 	v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+	update_statusbar("", "");
     } else {
 	update_statusbar("No redo steps", "gtk-dialog-warning");
     }
@@ -447,121 +449,103 @@ trig_filter(char **func)
 void
 do_expression()
 {
-    char *btext;
-
-    struct exprm_state *e = get_state();
-
     update_statusbar("", "");
 
-    btext = (e->button.symname) ? e->button.symname : e->button.str;
+    char *btext = NULL;
+    struct exprm_state *e = get_state();
     if (e->button.flags & dpoint) {
 	btext = get_localized_numeric_point();
+    } else {
+	btext = (e->button.symname) ? e->button.symname : e->button.str;
     }
     btext = gc_strdup(btext);
     trig_filter(&btext);
   
-	
-    if (e->expression && !strcmp(e->expression, "Ans")) {
+    int non_empty_expression = !!(e->expression && strlen(e->expression));
 
-	// TODO: ENTER performs an undo
-
-        if (e->button.flags & 
-            (binop | postfixop | neg | inv | expnum | bsp)) {
-            /* do nothing. */
-        } else if (e->button.flags & (prefixop)) {
-            char buf[1024];
-
-            snprintf(buf, 128, "%s(Ans)", btext);
-            exp_replace(buf);
-	    goto out;
-        } else if (e->button.flags & (number | func)) {
-            exp_del(); 
-        }
+    if (non_empty_expression) {
+	if (!strcmp(e->expression, "Ans")) {
+	    if (e->button.flags & number) {
+		exp_del(); 
+	    }	
+	}
+    } else {
+	if (e->button.flags & postfixop) {
+	    int MP1[MP_SIZE];
+	    char *zero = NULL;
+	    do_zero(MP1);
+	    zero = make_number(MP1, v->base, FALSE);
+	    exp_append(zero);
+	}
     }
 
-    if (e->button.flags & postfixop) {
-      if (!e->expression || !strlen(e->expression)) {
-	int MP1[MP_SIZE];
-	char *zero = NULL;
-	do_zero(MP1);
-	zero = make_number(MP1, v->base, FALSE);
-	exp_append(zero);
-      }
-    }
-
-    if (e->button.flags & clear) {
+    if ((e->button.flags & (prefixop | func)) 
+	&& e->expression
+	&& !strcmp(e->expression, "Ans")) {
+	    char buf[1024];
+	    snprintf(buf, 128, "%s(Ans)", btext);
+	    exp_replace(buf);
+    } else if (e->button.flags & clear) {
         exp_del();
         set_error_state(FALSE);
         MPstr_to_num("0", DEC, e->ans);
-	goto out;
     } else if (e->button.flags & regrcl) {
         int i = char_val(e->button.value[0]);
         char reg[3];
         int n = '0' +  i;
         snprintf(reg, 3, "R%c", n);
         exp_append(reg);
-	goto out;
     } else if (e->button.flags & con) {
         int *MPval = v->MPcon_vals[char_val(e->button.value[0])];
         exp_append(make_number(MPval, v->base, FALSE));
-	goto out;
     } else if (e->button.flags & bsp) {
         if (exp_has_postfix(e->expression, "Ans")) { 
             char *ans = make_number(e->ans, v->base, FALSE);   
-
             str_replace(&e->expression, "Ans", ans);
         } 
         exp_del_char(&e->expression, 1);
-	goto out;
     } else if (e->button.flags & neg) {
         exp_negate();
-	goto out;
     } else if (e->button.flags & inv) {
         exp_inv();
-	goto out;
-    }
-
-    if (e->button.flags & enter) {
+    } else if (e->button.flags & enter) {
         if (e->expression) {
-            int MPval[MP_SIZE];
-            int ret = ce_parse(e->expression, MPval);
-
-            if (!ret) {
-	        // FIXME: duplicated code in do_exchange().
-	        mpstr(MPval, e->ans);
-	        exp_replace("Ans");
-		goto out;
-            } else {
-		char *message = NULL;
-		switch (ret) {
-		case -PARSER_ERR_INVALID_BASE:
-		    message = _("Invalid number for the current base");
-		    break;
-		case -PARSER_ERR_TOO_LONG_NUMBER:
-		    message = _("Too long number");
-		    break;
-		case -PARSER_ERR_BITWISEOP:
-		    message = _("Invalid bitwise operation parameter(s)");
-		    break;
-		default:
-		    message = _("Malformed expression");
-		    break;
-		}
-	        update_statusbar(message, "gtk-dialog-error");
-	        return;
-            }
-        } else {
-	  goto out;
-        }
+	    if (strcmp(e->expression, "Ans")) {
+		    int MPval[MP_SIZE];
+		    int ret = ce_parse(e->expression, MPval);
+		    if (!ret) {
+			mpstr(MPval, e->ans);
+			exp_replace("Ans");
+		    } else {
+			char *message = NULL;
+			switch (ret) {
+			case -PARSER_ERR_INVALID_BASE:
+			    message = _("Invalid number for the current base");
+			    break;
+			case -PARSER_ERR_TOO_LONG_NUMBER:
+			    message = _("Too long number");
+			    break;
+			case -PARSER_ERR_BITWISEOP:
+			    message = _("Invalid bitwise operation parameter(s)");
+			    break;
+			default:
+			    message = _("Malformed expression");
+			    break;
+			}
+			update_statusbar(message, "gtk-dialog-error");
+		    }
+	    } else {
+		perform_undo();
+		perform_undo();
+	    }
+	}
+    } else {
+	exp_append(btext);
+	if (e->button.flags & func) {
+	    exp_append("(");
+	}
     }
 
-    exp_append(btext);
-
-    if (e->button.flags & func) {
-        exp_append("(");
-    }
-
- out:
     free(btext);
     btext = NULL;
     refresh_display();
@@ -868,20 +852,20 @@ do_exchange()         /* Exchange display with memory register. */
 
         case exprs:
 	  {
-		struct exprm_state *e = get_state();
-	    int ret = usable_num(MPexpr);
-	    int n = char_val(e->button.value[0]);
-	    if (ret) {
-	      update_statusbar(_("No sane value to store"), 
-			       "gtk-dialog-error");
-	    } else {
-	      mpstr(v->MPmvals[n], MPtemp);
-	      mpstr(MPexpr, v->MPmvals[n]);
-	      mpstr(MPtemp, e->ans);	      
-	      exp_replace("Ans");
-          refresh_display();
-	      make_registers();
-	    }
+	      struct exprm_state *e = get_state();
+	      int ret = usable_num(MPexpr);
+	      int n = char_val(e->button.value[0]);
+	      if (ret) {
+		  update_statusbar(_("No sane value to store"), 
+				   "gtk-dialog-error");
+	      } else {
+		  mpstr(v->MPmvals[n], MPtemp);
+		  mpstr(MPexpr, v->MPmvals[n]);
+		  mpstr(MPtemp, e->ans);	      
+		  exp_replace("Ans");
+		  refresh_display();
+		  make_registers();
+	      }
 	  }
 	  break;
 

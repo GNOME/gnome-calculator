@@ -8,6 +8,23 @@
 gcalctool change history.
 =========================
 
+2006-05-08 Rich Burridge <rich.burridge@sun.com>
+
+    * From Sami Pietila <sampie@ariana-dsl.utu.fi>
+      Fixed bug #163538 (http://bugzilla.gnome.org/show_bug.cgi?id=163538)
+      Backspace results in mal-formed expression.
+
+    * From Sami Pietila <sampie@ariana-dsl.utu.fi>
+      - = button is now also a one step undo. (This feature was temporary 
+        disabled by the previous redo/undo patch.)
+
+      - Removed gotos from do_expression function. (This change might add
+        unstability as this is a major change to the expression mode state
+        machine.)
+
+      - Functions (such as sin, cos, tan..) can use previously calculated
+        value.
+
 2006-05-01 Rich Burridge <rich.burridge@sun.com>
 
     * From Sami Pietila <sampie@ariana-dsl.utu.fi>
