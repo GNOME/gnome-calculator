@@ -26,7 +26,7 @@
 #include "extern.h"
 #include "ce_parser.h"
 #include "lr_parser.h"
-
+#include "functions.h"
 
 /* Process menu selection. */
 
@@ -93,7 +93,6 @@ handle_menu_selection(struct button *n, int item)
 void
 make_registers()            /* Calculate memory register frame values. */
 {
-    char line[MAXLINE];     /* Current memory register line. */
     char *mval;
     int n;
 

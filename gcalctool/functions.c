@@ -698,7 +698,7 @@ do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
 {
     // Assumes the SIN=0, COS=1, TAN=2
     
-    enum trig_func conv_table[3][4] = {
+    enum trigfunc_type conv_table[3][4] = {
 	{sin_t, asin_t, sinh_t, asinh_t},
 	{cos_t, acos_t, cosh_t, acosh_t},
 	{tan_t, atan_t, tanh_t, atanh_t},
