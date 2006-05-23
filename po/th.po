@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-17 09:13+0700\n"
-"PO-Revision-Date: 2006-01-17 09:14+0700\n"
+"POT-Creation-Date: 2006-05-23 19:31+0700\n"
+"PO-Revision-Date: 2006-05-23 19:50+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -88,19 +88,19 @@ msgid "Set inverse option for trigonometric functions"
 msgstr "ใช้อินเวอร์สของฟังก์ชันตรีโกณมิติ"
 
 #. Mode titles to be added to the titlebar.
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:361
+#: gcalctool/calctool.c:72 gcalctool/gtk.c:369
 msgid "Basic"
 msgstr "โหมดพื้นฐาน"
 
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:363
+#: gcalctool/calctool.c:72 gcalctool/gtk.c:371
 msgid "Advanced"
 msgstr "โหมดพิเศษ"
 
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:365
+#: gcalctool/calctool.c:72 gcalctool/gtk.c:373
 msgid "Financial"
 msgstr "โหมดการเงิน"
 
-#: gcalctool/calctool.c:73 gcalctool/gtk.c:367
+#: gcalctool/calctool.c:73 gcalctool/gtk.c:375
 msgid "Scientific"
 msgstr "โหมดวิทยาศาสตร์"
 
@@ -338,6 +338,10 @@ msgstr "−"
 msgid "Subtract"
 msgstr "ลบ"
 
+#: gcalctool/calctool.c:378
+msgid "-"
+msgstr "-"
+
 #: gcalctool/calctool.c:382
 msgid "%"
 msgstr "%"
@@ -354,6 +358,10 @@ msgstr "√"
 #: gcalctool/calctool.c:396
 msgid "Square root [s]"
 msgstr "รากที่สอง [s]"
+
+#: gcalctool/calctool.c:403
+msgid "Sqrt"
+msgstr "Sqrt"
 
 #: gcalctool/calctool.c:407
 msgid "Frac"
@@ -635,7 +643,7 @@ msgstr "ใส่เอ็กซ์โพเน็นเชียล [e]"
 msgid "Exponential"
 msgstr "เอ็กซ์โพเน็นเชียล"
 
-#: gcalctool/calctool.c:885 gcalctool/calctool.c:1263
+#: gcalctool/calctool.c:885 gcalctool/calctool.c:1262
 msgid "e"
 msgstr "e"
 
@@ -731,7 +739,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "เลขฐานสิบหก E"
 
-#: gcalctool/calctool.c:975 gcalctool/gtk.c:1870
+#: gcalctool/calctool.c:975 gcalctool/gtk.c:1916
 msgid "F"
 msgstr "F"
 
@@ -795,7 +803,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "เลขฐานสิบหก B"
 
-#: gcalctool/calctool.c:1073 gcalctool/gtk.c:1862
+#: gcalctool/calctool.c:1073 gcalctool/gtk.c:1908
 msgid "C"
 msgstr "C"
 
@@ -863,97 +871,97 @@ msgstr "XNOR บิตต่อบิต [n]"
 msgid " Xnor "
 msgstr " Xnor "
 
-#: gcalctool/calctool.c:1261
+#: gcalctool/calctool.c:1260
 msgid "Kilometer-to-mile conversion factor"
 msgstr "กิโลเมตรต่อหนึ่งไมล์"
 
-#: gcalctool/calctool.c:1262
+#: gcalctool/calctool.c:1261
 msgid "square root of 2"
 msgstr "รากที่สองของ 2"
 
-#: gcalctool/calctool.c:1264
+#: gcalctool/calctool.c:1263
 msgid "pi"
 msgstr "π"
 
-#: gcalctool/calctool.c:1265
+#: gcalctool/calctool.c:1264
 msgid "Centimeter-to-inch conversion factor"
 msgstr "เซนติเมตรต่อหนึ่งนิ้ว"
 
-#: gcalctool/calctool.c:1266
+#: gcalctool/calctool.c:1265
 msgid "degrees in a radian"
 msgstr "องศาต่อเรเดียน"
 
-#: gcalctool/calctool.c:1267
+#: gcalctool/calctool.c:1266
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: gcalctool/calctool.c:1268
+#: gcalctool/calctool.c:1267
 msgid "Gram-to-ounce conversion factor"
 msgstr "กรัมต่อหนึ่งออนซ์"
 
-#: gcalctool/calctool.c:1270
+#: gcalctool/calctool.c:1269
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "กิโลจูลต่อหนื่งบีทียู"
 
-#: gcalctool/calctool.c:1272
+#: gcalctool/calctool.c:1271
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "ลูกบาศก์เซนติเมตร ต่อหนื่งลูกบาศก์นิ้ว"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: gcalctool/calctool.c:1283 gcalctool/display.c:268
+#: gcalctool/calctool.c:1282 gcalctool/display.c:270
 #: gcalctool/mp.c:1973 gcalctool/mpmath.c:432 gcalctool/mpmath.c:471
 #: gcalctool/mpmath.c:526
 msgid "Error"
 msgstr "ผิดพลาด"
 
-#: gcalctool/functions.c:342
-msgid "Previous expression"
-msgstr "นิพจน์ที่แล้ว"
-
-#: gcalctool/functions.c:425
+#: gcalctool/functions.c:523
 msgid "Invalid number for the current base"
 msgstr "ตัวเลขใช้ไม่ได้สำหรับเลขฐานที่ใช้อยู่"
 
-#: gcalctool/functions.c:428
+#: gcalctool/functions.c:526
 msgid "Too long number"
 msgstr "ตัวเลขยาวเกินไป"
 
-#: gcalctool/functions.c:431
+#: gcalctool/functions.c:529
+msgid "Invalid bitwise operation parameter(s)"
+msgstr "พารามิเตอร์สำหรับการกระทำบิตไม่ถูกต้อง"
+
+#: gcalctool/functions.c:532
 msgid "Malformed expression"
 msgstr "รูปแบบนิพจน์ไม่ถูกต้อง"
 
-#: gcalctool/functions.c:501
+#: gcalctool/functions.c:601
 msgid "Error, operands must be integers"
 msgstr "ผิดพลาด, ตัวเลขที่กระทำกันต้องเป็นจำนวนเต็ม"
 
-#: gcalctool/functions.c:656 gcalctool/functions.c:1034
+#: gcalctool/functions.c:758 gcalctool/functions.c:1139
 msgid "No sane value to convert"
 msgstr "ไม่มีค่าที่ใช้ได้ให้แปลง"
 
-#: gcalctool/functions.c:755 gcalctool/functions.c:1111
-#: gcalctool/functions.c:1339
+#: gcalctool/functions.c:859 gcalctool/functions.c:1216
+#: gcalctool/functions.c:1447
 msgid "No sane value to store"
 msgstr "ไม่มีค่าที่ใช้ได้ให้เก็บ"
 
-#: gcalctool/functions.c:883
+#: gcalctool/functions.c:990
 msgid "Malformed function"
 msgstr "รูปแบบฟังก์ชันไม่ถูกต้อง"
 
-#: gcalctool/functions.c:1064
+#: gcalctool/functions.c:1169
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "ล้างค่าแสดงผล เนื่องจากมีค่าหน้าวงเล็บโดยไม่มีเครื่องหมาย ซึ่งไม่อนุญาต"
 
-#: gcalctool/functions.c:1088
+#: gcalctool/functions.c:1193
 msgid "Malformed parenthesis expression"
 msgstr "รูปแบบนิพจน์วงเล็บไม่ถูกต้อง"
 
-#: gcalctool/functions.c:1387
+#: gcalctool/functions.c:1498
 msgid "Numeric stack error"
 msgstr "ค่าแสตกผิดพลาด"
 
-#: gcalctool/functions.c:1408
+#: gcalctool/functions.c:1519
 msgid "Operand stack error"
 msgstr "แสตกเครื่องหมายผิดพลาด"
 
@@ -1022,289 +1030,305 @@ msgstr "การใช้งาน: %s: [-D] [-E] [-a ความแม่น�
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: gcalctool/gtk.c:236
+#: gcalctool/gtk.c:239
 msgid "_Calculator"
 msgstr "เ_ครื่องคิดเลข"
 
-#: gcalctool/gtk.c:237
+#: gcalctool/gtk.c:240
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: gcalctool/gtk.c:238
+#: gcalctool/gtk.c:241
 msgid "_View"
 msgstr "มุ_มมอง"
 
-#: gcalctool/gtk.c:239
+#: gcalctool/gtk.c:242
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: gcalctool/gtk.c:242
+#: gcalctool/gtk.c:245
 msgid "Quit the calculator"
 msgstr "ออกจากโปรแกรมเครื่องคิดเลข"
 
-#: gcalctool/gtk.c:245
+#: gcalctool/gtk.c:248
 msgid "Copy selection"
 msgstr "คัดลอกส่วนที่เลือก"
 
-#: gcalctool/gtk.c:247
+#: gcalctool/gtk.c:250
 msgid "Paste selection"
 msgstr "แปะส่วนที่เลือก"
 
-#: gcalctool/gtk.c:248
+#: gcalctool/gtk.c:251
 msgid "_Insert ASCII Value..."
 msgstr "ใ_ส่ค่า ASCII..."
 
-#: gcalctool/gtk.c:249
+#: gcalctool/gtk.c:252
 msgid "Insert ASCII value"
 msgstr "ใส่ค่า ASCII"
 
 #: gcalctool/gtk.c:253
+msgid "_Undo"
+msgstr "เรี_ยกคืน"
+
+#: gcalctool/gtk.c:254
+msgid "Undo"
+msgstr "เรียกคืน"
+
+#: gcalctool/gtk.c:255
+msgid "_Redo"
+msgstr "_ทำซ้ำ"
+
+#: gcalctool/gtk.c:256
+msgid "Redo"
+msgstr "ทำซ้ำ"
+
+#: gcalctool/gtk.c:261
 msgid "Show help contents"
 msgstr "แสดงเนื้อหาวิธีใช้"
 
-#: gcalctool/gtk.c:256
+#: gcalctool/gtk.c:264
 msgid "Show the About Gcalctool dialog"
 msgstr "แสดงข้อมูลเกี่ยวกับ Gcaltool"
 
-#: gcalctool/gtk.c:258 gcalctool/gtk.c:289
+#: gcalctool/gtk.c:266 gcalctool/gtk.c:297
 msgid "_1 place"
 msgstr "_1 ตำแหน่ง"
 
-#: gcalctool/gtk.c:259 gcalctool/gtk.c:290
+#: gcalctool/gtk.c:267 gcalctool/gtk.c:298
 msgid "1 place"
 msgstr "1 ตำแหน่ง"
 
-#: gcalctool/gtk.c:260 gcalctool/gtk.c:291
+#: gcalctool/gtk.c:268 gcalctool/gtk.c:299
 msgid "_2 places"
 msgstr "_2 ตำแหน่ง"
 
-#: gcalctool/gtk.c:261 gcalctool/gtk.c:292
+#: gcalctool/gtk.c:269 gcalctool/gtk.c:300
 msgid "2 places"
 msgstr "2 ตำแหน่ง"
 
-#: gcalctool/gtk.c:262 gcalctool/gtk.c:293
+#: gcalctool/gtk.c:270 gcalctool/gtk.c:301
 msgid "_3 places"
 msgstr "_3 ตำแหน่ง"
 
-#: gcalctool/gtk.c:263 gcalctool/gtk.c:294
+#: gcalctool/gtk.c:271 gcalctool/gtk.c:302
 msgid "3 places"
 msgstr "3 ตำแหน่ง"
 
-#: gcalctool/gtk.c:264 gcalctool/gtk.c:295
+#: gcalctool/gtk.c:272 gcalctool/gtk.c:303
 msgid "_4 places"
 msgstr "_4 ตำแหน่ง"
 
-#: gcalctool/gtk.c:265 gcalctool/gtk.c:296
+#: gcalctool/gtk.c:273 gcalctool/gtk.c:304
 msgid "4 places"
 msgstr "4 ตำแหน่ง"
 
-#: gcalctool/gtk.c:266 gcalctool/gtk.c:297
+#: gcalctool/gtk.c:274 gcalctool/gtk.c:305
 msgid "_5 places"
 msgstr "_5 ตำแหน่ง"
 
-#: gcalctool/gtk.c:267 gcalctool/gtk.c:298
+#: gcalctool/gtk.c:275 gcalctool/gtk.c:306
 msgid "5 places"
 msgstr "5 ตำแหน่ง"
 
-#: gcalctool/gtk.c:268 gcalctool/gtk.c:299
+#: gcalctool/gtk.c:276 gcalctool/gtk.c:307
 msgid "_6 places"
 msgstr "_6 ตำแหน่ง"
 
-#: gcalctool/gtk.c:269 gcalctool/gtk.c:300
+#: gcalctool/gtk.c:277 gcalctool/gtk.c:308
 msgid "6 places"
 msgstr "6 ตำแหน่ง"
 
-#: gcalctool/gtk.c:270 gcalctool/gtk.c:301
+#: gcalctool/gtk.c:278 gcalctool/gtk.c:309
 msgid "_7 places"
 msgstr "_7 ตำแหน่ง"
 
-#: gcalctool/gtk.c:271 gcalctool/gtk.c:302
+#: gcalctool/gtk.c:279 gcalctool/gtk.c:310
 msgid "7 places"
 msgstr "7 ตำแหน่ง"
 
-#: gcalctool/gtk.c:272 gcalctool/gtk.c:303
+#: gcalctool/gtk.c:280 gcalctool/gtk.c:311
 msgid "_8 places"
 msgstr "_8 ตำแหน่ง"
 
-#: gcalctool/gtk.c:273 gcalctool/gtk.c:304
+#: gcalctool/gtk.c:281 gcalctool/gtk.c:312
 msgid "8 places"
 msgstr "8 ตำแหน่ง"
 
-#: gcalctool/gtk.c:274 gcalctool/gtk.c:305
+#: gcalctool/gtk.c:282 gcalctool/gtk.c:313
 msgid "_9 places"
 msgstr "_9 ตำแหน่ง"
 
-#: gcalctool/gtk.c:275 gcalctool/gtk.c:306
+#: gcalctool/gtk.c:283 gcalctool/gtk.c:314
 msgid "9 places"
 msgstr "9 ตำแหน่ง"
 
-#: gcalctool/gtk.c:276 gcalctool/gtk.c:277 gcalctool/gtk.c:307
-#: gcalctool/gtk.c:308
+#: gcalctool/gtk.c:284 gcalctool/gtk.c:285 gcalctool/gtk.c:315
+#: gcalctool/gtk.c:316
 msgid "10 places"
 msgstr "10 ตำแหน่ง"
 
-#: gcalctool/gtk.c:278 gcalctool/gtk.c:279 gcalctool/gtk.c:309
-#: gcalctool/gtk.c:310
+#: gcalctool/gtk.c:286 gcalctool/gtk.c:287 gcalctool/gtk.c:317
+#: gcalctool/gtk.c:318
 msgid "11 places"
 msgstr "11 ตำแหน่ง"
 
-#: gcalctool/gtk.c:280 gcalctool/gtk.c:281 gcalctool/gtk.c:311
-#: gcalctool/gtk.c:312
+#: gcalctool/gtk.c:288 gcalctool/gtk.c:289 gcalctool/gtk.c:319
+#: gcalctool/gtk.c:320
 msgid "12 places"
 msgstr "12 ตำแหน่ง"
 
-#: gcalctool/gtk.c:282 gcalctool/gtk.c:283 gcalctool/gtk.c:313
-#: gcalctool/gtk.c:314
+#: gcalctool/gtk.c:290 gcalctool/gtk.c:291 gcalctool/gtk.c:321
+#: gcalctool/gtk.c:322
 msgid "13 places"
 msgstr "13 ตำแหน่ง"
 
-#: gcalctool/gtk.c:284 gcalctool/gtk.c:285 gcalctool/gtk.c:315
-#: gcalctool/gtk.c:316
+#: gcalctool/gtk.c:292 gcalctool/gtk.c:293 gcalctool/gtk.c:323
+#: gcalctool/gtk.c:324
 msgid "14 places"
 msgstr "14 ตำแหน่ง"
 
-#: gcalctool/gtk.c:286 gcalctool/gtk.c:287 gcalctool/gtk.c:317
-#: gcalctool/gtk.c:318
+#: gcalctool/gtk.c:294 gcalctool/gtk.c:295 gcalctool/gtk.c:325
+#: gcalctool/gtk.c:326
 msgid "15 places"
 msgstr "15 ตำแหน่ง"
 
-#: gcalctool/gtk.c:322 gcalctool/gtk.c:328
+#: gcalctool/gtk.c:330 gcalctool/gtk.c:336
 msgid "Show _Trailing Zeroes"
 msgstr "แ_สดงทศนิยมต่อท้าย"
 
-#: gcalctool/gtk.c:323 gcalctool/gtk.c:329
+#: gcalctool/gtk.c:331 gcalctool/gtk.c:337
 msgid "Show trailing zeroes"
 msgstr "แสดงทศนิยมต่อท้าย"
 
-#: gcalctool/gtk.c:324
+#: gcalctool/gtk.c:332
 msgid "Show T_housands Separator"
 msgstr "แสดง_สัญลักษณ์แบ่งหลักพัน"
 
-#: gcalctool/gtk.c:325
+#: gcalctool/gtk.c:333
 msgid "Show thousands separator"
 msgstr "แสดงสัญลักษณ์แบ่งหลักพัน"
 
-#: gcalctool/gtk.c:326
+#: gcalctool/gtk.c:334
 msgid "_Memory Registers"
 msgstr "_หน่วยความจำเรจิสเตอร์"
 
-#: gcalctool/gtk.c:327
+#: gcalctool/gtk.c:335
 msgid "Show memory registers"
 msgstr "แสดงหน่วยความจำเรจิสเตอร์"
 
-#: gcalctool/gtk.c:330
+#: gcalctool/gtk.c:338
 msgid "_Use Arithmetic Precedence"
 msgstr "ใช้_ลำดับการคำนวณเครื่องหมาย"
 
-#: gcalctool/gtk.c:331
+#: gcalctool/gtk.c:339
 msgid "Use Arithmetic Precedence"
 msgstr "ใช้ลำดับเครื่องหมายเลขคณิต"
 
-#: gcalctool/gtk.c:335
+#: gcalctool/gtk.c:343
 msgid "_0 significant places"
 msgstr "ทศนิยม _0 ตำแหน่ง"
 
-#: gcalctool/gtk.c:336
+#: gcalctool/gtk.c:344
 msgid "0 significant places"
 msgstr "ทศนิยม 0 ตำแหน่ง"
 
-#: gcalctool/gtk.c:337
+#: gcalctool/gtk.c:345
 msgid "_1 significant place"
 msgstr "ทศนิยม _1 ตำแหน่ง"
 
-#: gcalctool/gtk.c:338
+#: gcalctool/gtk.c:346
 msgid "1 significant place"
 msgstr "ทศนิยม 1 ตำแหน่ง"
 
-#: gcalctool/gtk.c:339
+#: gcalctool/gtk.c:347
 msgid "_2 significant places"
 msgstr "ทศนิยม _2 ตำแหน่ง"
 
-#: gcalctool/gtk.c:340
+#: gcalctool/gtk.c:348
 msgid "2 significant places"
 msgstr "ทศนิยม 2 ตำแหน่ง"
 
-#: gcalctool/gtk.c:341
+#: gcalctool/gtk.c:349
 msgid "_3 significant places"
 msgstr "ทศนิยม _3 ตำแหน่ง"
 
-#: gcalctool/gtk.c:342
+#: gcalctool/gtk.c:350
 msgid "3 significant places"
 msgstr "ทศนิยม 3 ตำแหน่ง"
 
-#: gcalctool/gtk.c:343
+#: gcalctool/gtk.c:351
 msgid "_4 significant places"
 msgstr "ทศนิยม _4 ตำแหน่ง"
 
-#: gcalctool/gtk.c:344
+#: gcalctool/gtk.c:352
 msgid "4 significant places"
 msgstr "ทศนิยม 4 ตำแหน่ง"
 
-#: gcalctool/gtk.c:345
+#: gcalctool/gtk.c:353
 msgid "_5 significant places"
 msgstr "ทศนิยม _5 ตำแหน่ง"
 
-#: gcalctool/gtk.c:346
+#: gcalctool/gtk.c:354
 msgid "5 significant places"
 msgstr "ทศนิยม 5 ตำแหน่ง"
 
-#: gcalctool/gtk.c:347
+#: gcalctool/gtk.c:355
 msgid "_6 significant places"
 msgstr "ทศนิยม _6 ตำแหน่ง"
 
-#: gcalctool/gtk.c:348
+#: gcalctool/gtk.c:356
 msgid "6 significant places"
 msgstr "ทศนิยม 6 ตำแหน่ง"
 
-#: gcalctool/gtk.c:349
+#: gcalctool/gtk.c:357
 msgid "_7 significant places"
 msgstr "ทศนิยม _7 ตำแหน่ง"
 
-#: gcalctool/gtk.c:350
+#: gcalctool/gtk.c:358
 msgid "7 significant places"
 msgstr "ทศนิยม 7 ตำแหน่ง"
 
-#: gcalctool/gtk.c:351
+#: gcalctool/gtk.c:359
 msgid "_8 significant places"
 msgstr "ทศนิยม _8 ตำแหน่ง"
 
-#: gcalctool/gtk.c:352
+#: gcalctool/gtk.c:360
 msgid "8 significant places"
 msgstr "ทศนิยม 8 ตำแหน่ง"
 
-#: gcalctool/gtk.c:353
+#: gcalctool/gtk.c:361
 msgid "_9 significant places"
 msgstr "ทศนิยม _9 ตำแหน่ง"
 
-#: gcalctool/gtk.c:354
+#: gcalctool/gtk.c:362
 msgid "9 significant places"
 msgstr "ทศนิยม 9 ตำแหน่ง"
 
-#: gcalctool/gtk.c:355
+#: gcalctool/gtk.c:363
 msgid "_Other (10) ..."
 msgstr "ค่า_อื่น (10) ..."
 
-#: gcalctool/gtk.c:356
+#: gcalctool/gtk.c:364
 msgid "Set other precision"
 msgstr "ตั้งค่าความละเอียดอื่น"
 
-#: gcalctool/gtk.c:360
+#: gcalctool/gtk.c:368
 msgid "_Basic"
 msgstr "_พื้นฐาน"
 
-#: gcalctool/gtk.c:362
+#: gcalctool/gtk.c:370
 msgid "_Advanced"
 msgstr "พิ_เศษ"
 
-#: gcalctool/gtk.c:364
+#: gcalctool/gtk.c:372
 msgid "_Financial"
 msgstr "_การเงิน"
 
-#: gcalctool/gtk.c:366
+#: gcalctool/gtk.c:374
 msgid "_Scientific"
 msgstr "_วิทยาศาสตร์"
 
-#: gcalctool/gtk.c:526
+#: gcalctool/gtk.c:536
 msgid "translator-credits"
 msgstr ""
 "Ithipan Methasate\n"
@@ -1315,63 +1339,100 @@ msgstr ""
 "ถ้าพอมีเวลาโปรดมาช่วยกันแปล\n"
 "http://gnome-th.sf.net"
 
-#: gcalctool/gtk.c:529
+#: gcalctool/gtk.c:539
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+msgstr ""
+"Gcalctool เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้\n"
+"ภายใต้เงื่อนไขของ GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี\n"
+"ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
+
+#: gcalctool/gtk.c:543
+msgid ""
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+msgstr ""
+"Gcalctool เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์\n"
+"แต่ _ไม่มีการรับประกันใดๆ_ ไม่มีแม้การรับประกัน _อรรถประโยชน์เชิงพาณิชย์_\n"
+"หรือ _ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ_ กรุณาอ่าน\n"
+"GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
+
+#: gcalctool/gtk.c:547
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+msgstr ""
+"คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับ Gcalctool\n"
+"ถ้าคุณไม่ได้รับ กรุณาติดต่อไปที่ Free Software Foundation, Inc., \n"
+"59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+
+#: gcalctool/gtk.c:558
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: gcalctool/gtk.c:532
+#: gcalctool/gtk.c:560
+msgid "© 1987-2006 The Gcalctool authors"
+msgstr "© 1987-2006 ผู้เขียน Gcalctool"
+
+#: gcalctool/gtk.c:562
 msgid "Calculator with financial and scientific modes."
 msgstr "เครื่องคิดเลข พร้อมด้วยโหมดการเงินและวิทยาศาสตร์"
 
-#: gcalctool/gtk.c:787
+#: gcalctool/gtk.c:820
 msgid "Insert ASCII Value"
 msgstr "ใส่ค่า ASCII"
 
-#: gcalctool/gtk.c:802
+#: gcalctool/gtk.c:835
 msgid "Ch_aracter:"
 msgstr "_ตัวอักษร:"
 
-#: gcalctool/gtk.c:827
+#: gcalctool/gtk.c:860
 msgid "_Insert"
 msgstr "แ_ทรก"
 
-#: gcalctool/gtk.c:906
+#: gcalctool/gtk.c:939
 msgid "Edit Constants"
 msgstr "แก้ไขค่าคงที่"
 
-#: gcalctool/gtk.c:906
+#: gcalctool/gtk.c:939
 msgid "Edit Functions"
 msgstr "แก้ไขฟังก์ชัน"
 
-#: gcalctool/gtk.c:930
+#: gcalctool/gtk.c:963
 msgid "Note:"
 msgstr "บันทึก:"
 
-#: gcalctool/gtk.c:931
+#: gcalctool/gtk.c:964
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "ค่าคงที่ทั้งหมดอยู่ในเลขฐานสิบ"
 
-#: gcalctool/gtk.c:941
+#: gcalctool/gtk.c:974
 msgid "Click a _value or description to edit it:"
 msgstr "_คลิกที่ค่าหรือคำอธิบายเพื่อแก้ไข:"
 
-#: gcalctool/gtk.c:964
+#: gcalctool/gtk.c:997
 msgid "No."
 msgstr "No."
 
-#: gcalctool/gtk.c:966
+#: gcalctool/gtk.c:999
 msgid "Value"
 msgstr "ค่า"
 
-#: gcalctool/gtk.c:968
+#: gcalctool/gtk.c:1001
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: gcalctool/gtk.c:1078
+#: gcalctool/gtk.c:1111
 msgid "_Do not warn me again"
 msgstr "ไ_ม่ต้องเตือนอีก"
 
-#: gcalctool/gtk.c:1084
+#: gcalctool/gtk.c:1117
 msgid ""
 "<big><b>Changing Modes Clears Calculation</b></big>\n"
 "\n"
@@ -1382,77 +1443,77 @@ msgstr ""
 "\n"
 "เมื่อคุณเปลี่ยนโหมด ค่าการคำนวณปัจจุบันจะถูกล้างทิ้ง และจะเปลี่ยนฐานเลขกลับเป็นฐานสิบ"
 
-#: gcalctool/gtk.c:1123
+#: gcalctool/gtk.c:1156
 msgid "C_hange Mode"
 msgstr "เ_ปลี่ยนโหมด"
 
-#: gcalctool/gtk.c:1160
+#: gcalctool/gtk.c:1193
 msgid "Set Precision"
 msgstr "ตั้งความละเอียดทศนิยม"
 
-#: gcalctool/gtk.c:1175
+#: gcalctool/gtk.c:1208
 msgid "Significant _places:"
 msgstr "ความละเอียด_ทศนิยม:"
 
-#: gcalctool/gtk.c:1201
+#: gcalctool/gtk.c:1234
 msgid "_Set"
 msgstr "_ตั้ง"
 
-#: gcalctool/gtk.c:1418 gcalctool/gtk.c:1420 gcalctool.desktop.in.h:1
+#: gcalctool/gtk.c:1458 gcalctool/gtk.c:1460 gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "เครื่องคิดเลข"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: gcalctool/gtk.c:1615 gcalctool/gtk.c:1761
+#: gcalctool/gtk.c:1659 gcalctool/gtk.c:1803
 msgid "R"
 msgstr "R"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1683
+#: gcalctool/gtk.c:1727
 msgid "_Inv"
 msgstr "I_nv"
 
-#: gcalctool/gtk.c:1691
+#: gcalctool/gtk.c:1735
 msgid "H_yp"
 msgstr "H_yp"
 
-#: gcalctool/gtk.c:1751
+#: gcalctool/gtk.c:1794
 msgid "Memory Registers"
 msgstr "หน่วยความจำเรจิสเตอร์"
 
-#: gcalctool/gtk.c:1851
+#: gcalctool/gtk.c:1897
 msgid "Edit Constants..."
 msgstr "แก้ไขค่าคงที่..."
 
-#: gcalctool/gtk.c:1851
+#: gcalctool/gtk.c:1897
 msgid "Edit Functions..."
 msgstr "แก้ไขฟังก์ชัน..."
 
-#: gcalctool/gtk.c:2020
+#: gcalctool/gtk.c:2066
 msgid "Clipboard contained malformed calculation"
 msgstr "เนื้อหาในคลิปบอร์ดมีรูปแบบการคำนวณไม่ถูกต้อง"
 
-#: gcalctool/gtk.c:2299
+#: gcalctool/gtk.c:2345
 #, c-format
 msgid "Other (%d) ..."
 msgstr "ค่าอื่น (%d) ..."
 
-#: gcalctool/gtk.c:2310
+#: gcalctool/gtk.c:2356
 #, c-format
 msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr "ตั้งค่าความละเอียดทศนิยมจาก 0 ถึง %d หลัก ค่าปัจจุบันคือ %d หลัก [a]"
 
-#: gcalctool/gtk.c:2542
+#: gcalctool/gtk.c:2588
 msgid "Activated no operator precedence mode"
 msgstr "เข้าสู่โหมดไม่ใช้ลำดับเครื่องหมายเลขคณิต"
 
-#: gcalctool/gtk.c:2552
+#: gcalctool/gtk.c:2598
 msgid "Activated expression mode with operator precedence"
 msgstr "เข้าสู่โหมดคำนวณนิพจน์แบบใช้ลำดับเครื่องหมายเลขคณิต"
 
-#: gcalctool/gtk.c:2846
+#: gcalctool/gtk.c:2923
 msgid "Accuracy value out of range"
 msgstr "ค่าความละเอียดอยู่นอกช่วงที่ยอมรับได้"
 
@@ -1468,17 +1529,14 @@ msgstr "เกิดข้อผิดพลาด ไม่สามารถ�
 msgid "Perform calculations"
 msgstr "คำนวณผล"
 
+#~ msgid "Previous expression"
+#~ msgstr "นิพจน์ที่แล้ว"
+
 #~ msgid "∕"
 #~ msgstr "÷"
 
 #~ msgid "+/-"
 #~ msgstr "+/-"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-#~ msgid "Sqrt"
-#~ msgstr "Sqrt"
 
 #~ msgid "abs"
 #~ msgstr "abs"
