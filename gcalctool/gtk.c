@@ -2719,7 +2719,7 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
 
 	    case exprs: {
 		  	struct exprm_state *e = get_state();
-            if (!strcmp(e->expression, "Ans") || !e->expression) {
+            if (!e->expression || !strcmp(e->expression, "Ans")) {
                 complete = 1;   /* Calculation is complete. */
             }
 	}
