@@ -192,6 +192,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     parenthesis
 },
 {
+    /* Note to translators: Bksp is short for Backspace. */
     N_("Bksp"),
     N_("Remove rightmost character from displayed value"),
     N_("Backspace"),
@@ -216,6 +217,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     clear
 },
 {
+    /* Note to translators: Clr is short for Clear. */
     N_("Clr"),
     N_("Clear displayed value and any partial calculation"),
     N_("Clear"),
