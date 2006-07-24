@@ -504,6 +504,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     immediate | postfixop
 },
 {
+    /* Note to translators: Abs is short for Absolute. */
     N_("Abs"),
     N_("Absolute value [u]"),
     NULL,
