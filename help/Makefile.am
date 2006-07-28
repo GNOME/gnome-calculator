@@ -11,4 +11,4 @@ DOC_FIGURES = figures/gcalctool_basic_window.png	\
 
 DOC_LINGUAS = es sv 
 
-SUBDIRS = bg de es fr it ja ko zh_CN zh_HK zh_TW
+SUBDIRS = bg de fr it ja ko zh_CN zh_HK zh_TW
