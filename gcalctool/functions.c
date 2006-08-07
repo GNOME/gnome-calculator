@@ -134,9 +134,11 @@ purge_redo_history(void)
 void
 new_state(void)
 {
+    int c;
+
     purge_redo_history();
 
-    int c = v->h.current;
+    c = v->h.current;
     v->h.end = v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
     if (v->h.current == v->h.begin) {
 	free(v->h.e[v->h.begin].expression);
@@ -227,12 +229,13 @@ exp_append(char *text)
 {
     char *buf;
     int orig_len, dest_len;
+    struct exprm_state *e;
 
     if (!text) {
         return;
     }
 
-    struct exprm_state *e = get_state();
+    e = get_state();
 	
     orig_len = (e->expression) ? strlen(e->expression) : 0;
     dest_len = orig_len + strlen(text) +1;
@@ -449,10 +452,13 @@ trig_filter(char **func)
 void
 do_expression()
 {
+    char *btext = NULL;
+    struct exprm_state *e;
+    int non_empty_expression;
+
     update_statusbar("", "");
 
-    char *btext = NULL;
-    struct exprm_state *e = get_state();
+    e = get_state();
     if (e->button.flags & dpoint) {
 	btext = get_localized_numeric_point();
     } else {
@@ -461,7 +467,7 @@ do_expression()
     btext = gc_strdup(btext);
     trig_filter(&btext);
   
-    int non_empty_expression = !!(e->expression && strlen(e->expression));
+    non_empty_expression = !!(e->expression && strlen(e->expression));
 
     if (non_empty_expression) {
 	if (!strcmp(e->expression, "Ans")) {

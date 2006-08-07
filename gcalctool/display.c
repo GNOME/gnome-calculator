@@ -152,6 +152,7 @@ initialise()
     /* TODO: perhaps this function should be renamed to reset. */
 
     int i;
+    struct exprm_state *e;
  
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = '?';         /* No arithmetic operator defined yet. */
@@ -164,7 +165,7 @@ initialise()
   
     v->new_input = 1;               /* Value zero is on calculator display */
 
-	struct exprm_state *e = get_state();
+    e = get_state();
     free(e->expression);
     e->expression = NULL;
 }

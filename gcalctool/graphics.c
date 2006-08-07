@@ -34,13 +34,14 @@ void
 handle_menu_selection(struct button *n, int item)
 {
     if (item != -1) {    
+        struct exprm_state *e;
 
 	save_pending_values(n);
 	if (v->current != NULL) {
 	    free(v->current);
 	}
 
-	struct exprm_state *e = get_state();
+	e = get_state();
 	memcpy(&(e->button), button_for_value(item), sizeof(struct button));
 	new_state();
 	
