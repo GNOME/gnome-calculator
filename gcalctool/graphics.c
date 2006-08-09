@@ -51,42 +51,6 @@ handle_menu_selection(struct button *n, int item)
 	v->down = 0;
 	
 	v->current = copy_button_info(button_for_value(item));
-	
-
-#if 0
-	switch (v->syntax) {
-	case npa:
-	    save_pending_values(n);
-	    if (v->current != NULL) {
-		free(v->current);
-	    }
-	    
-	    v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
-	    do_pending();
-	    v->ismenu = 0;
-	    v->down = 0;
-	    
-	    v->current = copy_button_info(button_for_value(item));
-	    break;
-        case exprs:
-	    {
-
-		v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
-
-		struct exprm_state *e = get_state();
-		memcpy(&(e->button), button_for_value(item), sizeof(struct button));
-		new_state();
-		do_pending();
-
-		v->ismenu = 0;
-		v->down = 0;
-
-	    }
-            break;
-	}
-#endif
-
-
     }
 }
 

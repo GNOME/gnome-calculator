@@ -2628,27 +2628,9 @@ mb_proc(GtkAction *action)
     } else if (EQUAL(name, "Undo")) {
 	perform_undo();
 	refresh_display();
-#if 0
-	printf("Begin %d, Current %d, End %d\n", 
-	       v->h.begin,
-	       v->h.current,
-	       v->h.end);
-	struct exprm_state *e = get_state();
-	printf("Expression %s\n", v->h.e[v->h.current].expression);
-#endif
-
-
     } else if (EQUAL(name, "Redo")) {
 	perform_redo();
 	refresh_display();
-#if 0
-	printf("Begin %d, Current %d, End %d\n", 
-	       v->h.begin,
-	       v->h.current,
-	       v->h.end);
-	struct exprm_state *e = get_state();
-	printf("Expression %s\n", v->h.e[v->h.current].expression);
-#endif
     } else if (EQUAL(name, "Insert")) {
         show_ascii_frame();
     } else if (EQUAL(name, "Memory")) {

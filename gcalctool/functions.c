@@ -120,14 +120,6 @@ purge_redo_history(void)
 	} while (i != v->h.end);
     }
 
-#if 0
-    while (i != v->h.end) {
-	free(v->h.e[i].expression);
-	v->h.e[i].expression = NULL;
-	i = ((i + 1) % UNDO_HISTORY_LENGTH);
-    }
-#endif    
-
     v->h.end = v->h.current;
 }
 
@@ -1459,10 +1451,6 @@ do_shift()     /* Perform bitwise shift on display value. */
             calc_rshift(MPval, e->ans, n, dir);
 
 	    exp_replace("Ans");
-#if 0
-            exp_del();
-            exp_append(make_number(e->ans, v->base, FALSE));
-#endif
         }
         break;
 
