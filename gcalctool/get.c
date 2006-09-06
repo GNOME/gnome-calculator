@@ -33,7 +33,6 @@
 #include "extern.h"
 
 static int get_bool_resource(enum res_type, int *);
-static int get_int_resource(enum res_type, int *);
 static int get_str_resource(enum res_type, char *);
 
 static void getparam(char *, char **, char *);
@@ -93,7 +92,7 @@ get_bool_resource(enum res_type rtype, int *boolval)
 
 /* Get integer resource from database. */
 
-static int
+int
 get_int_resource(enum res_type rtype, int *intval)
 {
     char *val;

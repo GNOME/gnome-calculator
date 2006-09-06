@@ -208,6 +208,7 @@ static void put_function(int, char *, char *);
 static void quit_cb(GtkWidget *, gpointer);
 static void reset_mode_display(int);
 static void reset_mode_values(enum mode_type);
+static void save_win_position();
 static void set_accuracy_toggle(int val);
 static void set_bit_panel();
 static void set_button_state(GtkWidget *, int);
@@ -215,6 +216,7 @@ static void set_item(enum item_type itemtype, int val);
 static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
+static void set_win_position();
 static void show_ascii_frame();
 static void show_menu_for_button(GtkWidget *, GdkEventKey *event);
 static void show_precision_frame();
@@ -1553,6 +1555,7 @@ create_kframe()
 
     gtk_widget_realize(X->kframe);
     gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
+    set_win_position();
 
     X->fin_panel = make_but_panel(X->kvbox, X->fin_buttons,
                                   f_buttons, FROWS, FCOLS, "fin");
@@ -2359,6 +2362,31 @@ set_accuracy_tooltip(int accuracy)
 }
 
 
+static void
+set_win_position()
+{
+    int intval, screen_height, screen_width, x, y;
+
+    screen_width = gdk_screen_get_width(gdk_screen_get_default());
+    screen_height = gdk_screen_get_height(gdk_screen_get_default());
+
+    if (get_int_resource(R_XPOS, &intval)) {
+        x = intval;
+        if (x < 0 || x > screen_width) {
+            x = 0;
+        }
+    }
+
+    if (get_int_resource(R_YPOS, &intval)) {
+        y = intval;
+        if (y < 0 || y > screen_height) {
+            y = 0;
+        }
+    }
+
+    gtk_window_move(GTK_WINDOW(X->kframe), x, y);
+}
+
 static GtkWidget *
 make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                struct button buttons[], int rows, int cols, char *tag)
@@ -2620,6 +2648,7 @@ mb_proc(GtkAction *action)
     }
 
     if (EQUAL(name, "Quit")) {
+        save_win_position();
         exit(0);
     } else if (EQUAL(name, "Copy")) {
         get_display();
@@ -2832,6 +2861,7 @@ put_resource(enum res_type rtype, char *value)
 static void
 quit_cb(GtkWidget *widget, gpointer user_data)
 {
+    save_win_position();
     gtk_main_quit();
 }
 
@@ -2886,6 +2916,20 @@ reset_mode_values(enum mode_type mtype)
     put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 
     reset_mode_display(TRUE);
+}
+
+
+static void
+save_win_position()
+{
+    char intval[MAXLINE];
+    int x, y;
+
+    (void) gdk_window_get_origin(X->kframe->window, &x, &y);
+    SPRINTF(intval, "%d", x);
+    put_resource(R_XPOS, intval);
+    SPRINTF(intval, "%d", y);
+    put_resource(R_YPOS, intval);
 }
 
 

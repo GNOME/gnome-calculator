@@ -74,7 +74,7 @@ enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 /* Resources. */
 enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
-                R_ZEROES,   R_TSEP, R_SYNTAX, 
+                R_ZEROES,   R_TSEP, R_SYNTAX,  R_XPOS, R_YPOS,
                 R_REG0,     R_REG1, R_REG2,    R_REG3, R_REG4,
                 R_REG5,     R_REG6, R_REG7,    R_REG8, R_REG9
 };
@@ -408,6 +408,7 @@ int char_val(char);
 int do_rcl_reg(int reg, int value[MP_SIZE]);
 int do_sto_reg(int reg, int value[MP_SIZE]);
 int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
+int get_int_resource(enum res_type, int *);
 int get_menu_entry(enum menu_type, int);
 int key_equal(struct button *, struct button);
 int main(int, char **);
