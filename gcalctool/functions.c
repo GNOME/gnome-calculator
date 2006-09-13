@@ -604,11 +604,6 @@ do_calc()      /* Perform arithmetic calculation and display result. */
         mpmul(MP1, v->MPdisp_val, MP2);
         mpsub(v->MPresult, MP2, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_PER.value[0])) {     /* % */
-        mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
-        MPstr_to_num("0.01", DEC, MP1);
-        mpmul(v->MPresult, MP1, v->MPresult);
-
     } else if (IS_KEY(v->cur_op, KEY_YTOX.value[0])) {    /* y^x */
         calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
 
@@ -690,6 +685,14 @@ do_trig()
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
+
+void
+do_percent()
+{
+  calc_percent(v->MPdisp_val, v->MPresult);
+  show_display(v->MPresult);
+  mpstr(v->MPresult, v->MPdisp_val);
+}
 
 int
 do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)

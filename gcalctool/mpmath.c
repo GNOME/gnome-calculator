@@ -225,16 +225,13 @@ calc_modulus(int op1[MP_SIZE],
 }
 
 void
-calc_percent(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
+calc_percent(int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int MP1[MP_SIZE];
-    int MP2[MP_SIZE];
 
-    mpmul(s1, s2, MP1);
-    MPstr_to_num("0.01", DEC, MP2);
-    mpmul(MP1, MP2, t1);
+    MPstr_to_num("0.01", DEC, MP1);
+    mpmul(s1, MP1, t1);
 }
-
 
 void
 do_zero(int t1[MP_SIZE])

@@ -170,6 +170,7 @@ exp:
 | exp '[' {calc_u32($1, $$);}
 | exp '}' {calc_tenpowx($1, $$);}
 | exp '{' {mpexp($1, $$);}
+| exp '%' {calc_percent($1, $$);}
 
 | func {cp($1, $$);}
 ;

@@ -439,6 +439,7 @@ void do_point();
 void do_portion();
 void do_trig();
 void do_trigtype(enum trig_type);
+void do_percent();
 void doerr(char *);
 void exp_del();
 void get_constant(int);

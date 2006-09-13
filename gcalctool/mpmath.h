@@ -42,7 +42,7 @@ void calc_not(int t[MP_SIZE], int s1[MP_SIZE]);
 void calc_rand(int t[MP_SIZE]);
 void calc_u32(int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_u16(int s1[MP_SIZE], int t1[MP_SIZE]);
-void calc_percent(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE]);
+void calc_percent(int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_inv(int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]);

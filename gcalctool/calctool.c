@@ -388,7 +388,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     { GDK_percent, 0 },
     '%',
     M_NONE,
-    do_calc,  
+    do_percent,  
     NULL,
     immediate
 },
