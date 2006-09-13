@@ -526,6 +526,9 @@ do_expression()
 			case -PARSER_ERR_BITWISEOP:
 			    message = _("Invalid bitwise operation parameter(s)");
 			    break;
+			case -MPMATH_ERR:
+			    message = _("Math operation error");
+			    break;
 			default:
 			    message = _("Malformed expression");
 			    break;

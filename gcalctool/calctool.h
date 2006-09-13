@@ -226,6 +226,8 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 
 #define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
 
+#define MPMATH_ERR		    	20001
+
 typedef unsigned long  BOOLEAN;
 
 enum button_flags {
@@ -347,6 +349,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
+    int math_error;    /* Math error (used in expression mode) */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
     int iconic;        /* Set if window is currently iconic. */
     int inverse;       /* If set, trig and log functions will be inversed. */

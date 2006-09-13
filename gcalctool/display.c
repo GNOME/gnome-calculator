@@ -268,8 +268,8 @@ make_number(int *MPnumber, int base, BOOLEAN ignoreError)
     mpcmd(MPnumber, &number);
     val = fabs(number);
     if (v->error && !ignoreError) {
-        return(_("Error"));
-    }
+	  return(_("Error"));
+	}
     if ((v->dtype == ENG) ||
         (v->dtype == SCI) ||
         (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
@@ -596,7 +596,7 @@ refresh_display()
     if (e->expression &&
 		strlen(e->expression)) {
       char *str = gc_strdup(e->expression);
-      char *ans = make_number(e->ans, v->base, FALSE);
+      char *ans = make_number(e->ans, v->base, TRUE);
       localize_number(localized, ans);
       
       str_replace(&str, "Ans", localized);

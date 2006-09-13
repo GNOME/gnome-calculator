@@ -1231,10 +1231,18 @@ doerr(char *errmes)
     if (!v->started) {
         return;
     }
-    STRCPY(v->display, errmes);
-    set_error_state(TRUE);
-    set_display(v->display, FALSE);
-    beep();
+
+	switch (v->syntax) {
+	case npa:
+	  STRCPY(v->display, errmes);
+	  set_error_state(TRUE);
+	  set_display(v->display, FALSE);
+	  beep();
+	  break;
+	case exprs:
+	  v->math_error = -MPMATH_ERR;
+	  break;
+	}
 }
 
 
