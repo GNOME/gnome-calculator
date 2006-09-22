@@ -76,7 +76,8 @@ enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
                 R_ZEROES,   R_TSEP, R_SYNTAX,  R_XPOS, R_YPOS,
                 R_REG0,     R_REG1, R_REG2,    R_REG3, R_REG4,
-                R_REG5,     R_REG6, R_REG7,    R_REG8, R_REG9
+                R_REG5,     R_REG6, R_REG7,    R_REG8, R_REG9,
+				R_BITCALC
 };
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
@@ -194,6 +195,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
 #define MAXVKEYS       1          /* Number of valid keys after an error. */
 #define MAXSYNTAX      2          /* Number of syntaxes in calculator */
+#define MAXBITCALC     2          /* Choices for bitcalculating */
 
 #define MCOLS          8          /* Number of columns of "special" keys. */
 #define MROWS          2          /* Number of rows of "special" keys. */
@@ -372,6 +374,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
     int warn_change_mode;    /* Should we warn user when changing modes? */
+    int bitcalculating_mode;  /* 0 = no, else yes */
 };
 
 typedef struct calcVars *Vars;

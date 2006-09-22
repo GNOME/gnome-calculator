@@ -33,5 +33,6 @@ void new_state(void);
 void perform_undo(void);
 void perform_redo(void);
 void clear_undo_history(void);
+int usable_num(int MPnum[MP_SIZE]);
 
 #endif /*FUNCTIONS_H*/

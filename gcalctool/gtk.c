@@ -40,6 +40,7 @@
 #endif /*DISABLE_GNOME*/
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
+#include "mpmath.h"
 
 #define BUT_0_BAS     X->bas_buttons[16]       /* 0 - in "Basic" mode */
 #define BUT_1_BAS     X->bas_buttons[12]       /* 1 - in "Basic" mode */
@@ -216,6 +217,7 @@ static void set_item(enum item_type itemtype, int val);
 static void set_memory_toggle(int);
 static void set_show_tsep_toggle(int);
 static void set_show_zeroes_toggle(int);
+static void set_show_bitcalculating_toggle(int);
 static void set_win_position();
 static void show_ascii_frame();
 static void show_menu_for_button(GtkWidget *, GdkEventKey *event);
@@ -333,6 +335,8 @@ static const GtkToggleActionEntry toggle_entries[] = {
       N_("Show trailing zeroes"),     G_CALLBACK(mstz_proc), FALSE },
     { "Thousands", NULL, N_("Show T_housands Separator"), "<control>K",
       N_("Show thousands separator"), G_CALLBACK(ts_proc),   FALSE },
+    { "Bitcalculating", NULL, N_("Show Bitcalculating _Extension"), "<control>E",
+      N_("Show bitcalculating extension"), G_CALLBACK(mb_proc),   FALSE },
     { "Memory",    NULL, N_("_Memory Registers"),         "<control>M",
       N_("Show memory registers"),    G_CALLBACK(mb_proc),   FALSE },
     { "Show",      NULL, N_("Show _Trailing Zeroes"),     "<control>T",
@@ -399,6 +403,7 @@ static const gchar ui_info[] =
 "      <separator/>"
 "      <menuitem action='Trailing'/>"
 "      <menuitem action='Thousands'/>"
+"      <menuitem action='Bitcalculating'/>"
 "      <separator/>"
 "      <menuitem action='Memory'/>"
 "      <separator/>"
@@ -695,13 +700,14 @@ button_proc(GtkButton *widget, gpointer user_data)
             break;
 
         case exprs:
-	    {
-		struct exprm_state *e = get_state();
-		memcpy(&(e->button), n, sizeof(struct button));
-		new_state();
-		do_expression();
-	    }
-            break;
+		  {
+			struct exprm_state *e = get_state();
+			memcpy(&(e->button), n, sizeof(struct button));
+			new_state();
+			do_expression();
+			set_bit_panel();
+		  }
+		  break;
 
         default:
             assert(0);
@@ -2281,6 +2287,7 @@ make_frames()
     set_accuracy_toggle(v->accuracy);
     set_show_tsep_toggle(v->show_tsep);
     set_show_zeroes_toggle(v->show_zeroes);
+    set_show_bitcalculating_toggle(v->bitcalculating_mode);
 }
 
 
@@ -2601,7 +2608,6 @@ make_menu_button(gchar *label_text, int n)
     return(button);
 }
 
-
 static void
 toggle_expressions()
 {
@@ -2677,7 +2683,11 @@ mb_proc(GtkAction *action)
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
     } else if (EQUAL(name, "ArithmeticPrecedence")) {
         toggle_expressions();
-    }
+    } else if (EQUAL(name, "Bitcalculating")) {
+	  v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
+	  set_mode(v->modetype);
+	  put_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+    } 
 }
 
 
@@ -3021,29 +3031,62 @@ scroll_right()
 
 void
 set_bit_panel() {
-    int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
 
-    MPstr_to_num(v->display, v->base, MP1);
-    mpcmim(MP1, MP2);
-    if (mpeq(MP1, MP2)) {
-        char *bit_str, label[3], tmp[MAXLINE];
-        int toclear = (key_equal(v->current, KEY_CE)) ? TRUE : FALSE;
-
-        bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
-        bit_str_len = strlen(bit_str);
-        if (bit_str_len <= MAXBITS) {
+    switch (v->syntax) {
+    case npa:
+	  {
+		int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
+		
+		MPstr_to_num(v->display, v->base, MP1);
+		mpcmim(MP1, MP2);
+		if (mpeq(MP1, MP2)) {
+		  char *bit_str, label[3], tmp[MAXLINE];
+		  int toclear = (key_equal(v->current, KEY_CE)) ? TRUE : FALSE;
+		  
+		  bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
+		  bit_str_len = strlen(bit_str);
+		  if (bit_str_len <= MAXBITS) {
             gtk_widget_set_sensitive(X->bit_panel, TRUE);
-
+			
             STRCPY(label, " 0");
             for (i = 0; i < MAXBITS; i++) {
-                label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
-                gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+			  label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+			  gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
             }
-
+			
             return;
-        }
-    }
-    gtk_widget_set_sensitive(X->bit_panel, FALSE);
+		  }
+		}
+		gtk_widget_set_sensitive(X->bit_panel, FALSE);
+		
+	  }
+	  break;
+	case exprs:
+	  {
+		int MP[MP_SIZE];
+		int bit_str_len, i;
+		char *bit_str, label[3], tmp[MAXLINE];
+		int ret = usable_num(MP);
+
+		if (ret || !is_integer(MP)) {
+		  gtk_widget_set_sensitive(X->bit_panel, FALSE);
+		  return;
+		}
+		
+		bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
+		bit_str_len = strlen(bit_str);
+		if (bit_str_len <= MAXBITS) {
+		  gtk_widget_set_sensitive(X->bit_panel, TRUE);
+		  
+		  STRCPY(label, " 0");
+		  for (i = 0; i < MAXBITS; i++) {
+			label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+			gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+		  }
+		}
+	  }
+	  break;
+	}
 }
 
 
@@ -3265,7 +3308,7 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_show_all(X->mode_panel);
-            if (v->syntax == npa) {
+			if (v->bitcalculating_mode) {
                 gtk_widget_show_all(X->bit_panel);
             } else {
                 gtk_widget_hide(X->bit_panel);
@@ -3359,6 +3402,14 @@ set_show_tsep_toggle(int state)
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 }
 
+static void
+set_show_bitcalculating_toggle(int state)
+{
+    GtkWidget *mi;
+
+    mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Bitcalculating");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
+}
 
 static void
 set_show_zeroes_toggle(int state)

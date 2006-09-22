@@ -383,18 +383,36 @@ read_resources()    /* Read all possible resources from the database. */
 
     if (get_str_resource(R_SYNTAX, str)) {
       for (i = 0; i < MAXSYNTAX; i++) {
-	if (EQUAL(str, Rsstr[i])) {
-	  break;
-	}
+		if (EQUAL(str, Rsstr[i])) {
+		  break;
+		}
       }
       
       if (i == MAXSYNTAX) {
-	FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
-		v->progname, str);
+		FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
+				v->progname, str);
       } else {
-	v->syntax = i;
+		v->syntax = i;
       }
     }
+	
+	v->bitcalculating_mode = 0; // default = off
+
+    if (get_str_resource(R_BITCALC, str)) {
+      for (i = 0; i < MAXBITCALC; i++) {
+		if (EQUAL(str, Rcstr[i])) {
+		  break;
+		}
+      }
+      
+      if (i == MAXBITCALC) {
+		FPRINTF(stderr, _("%s: invalid bitcalc choice [%s]\n"), 
+				v->progname, str);
+      } else {
+		v->bitcalculating_mode = i;
+      }
+    }
+
 
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;

@@ -254,7 +254,7 @@ exp_del()
 }
 
 
-static int 
+int 
 usable_num(int MPnum[MP_SIZE]) 
 {
     int ret = 0;

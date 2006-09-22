@@ -95,6 +95,7 @@ char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL",
                               "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
+char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 
 /* Valid keys when an error condition has occured. */

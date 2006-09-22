@@ -42,6 +42,7 @@ extern char *Rdstr[];          /* Display mode X resource strings. */
 extern char *Rmstr[];          /* Mode mode X resource strings. */
 extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern char *Rsstr[];          /* Syntax resource strings. */
+extern char *Rcstr[];          /* Bitcalculating mode. */
 
 extern double max_fix[];       /* Maximum showable fixed values. */
 
