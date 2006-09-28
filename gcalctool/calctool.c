@@ -52,7 +52,7 @@ char *calc_res[] = {
     "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
     "showzeroes", "showthousands", "syntax", "xposition", "yposition",
     "register0", "register1", "register2", "register3", "register4",
-    "register5", "register6", "register7", "register8", "register9"
+    "register5", "register6", "register7", "register8", "register9", "bitcalculating"
 };
 
 char *dtype_str[] = {          /* Strings for each display mode value. */
