@@ -138,9 +138,6 @@ new_state(void)
 	v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
     }
 
-    //purge_redo_history();
-
-    assert(!v->h.e[v->h.current].expression);
     copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
     update_undo_redo_button_sensitivity();
 }
@@ -156,6 +153,12 @@ perform_undo(void)
 	update_statusbar("No undo history", "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
+}
+
+int
+is_undo_step()
+{
+  return (v->h.current != v->h.begin);
 }
 
 void
@@ -507,39 +510,41 @@ do_expression()
     } else if (e->button.flags & inv) {
         exp_inv();
     } else if (e->button.flags & enter) {
-        if (e->expression) {
+	  if (e->expression) {
 	    if (strcmp(e->expression, "Ans")) {
-		    int MPval[MP_SIZE];
-		    int ret = ce_parse(e->expression, MPval);
-		    if (!ret) {
+		  int MPval[MP_SIZE];
+		  int ret = ce_parse(e->expression, MPval);
+		  if (!ret) {
 			mpstr(MPval, e->ans);
 			exp_replace("Ans");
-		    } else {
+		  } else {
 			char *message = NULL;
 			switch (ret) {
 			case -PARSER_ERR_INVALID_BASE:
-			    message = _("Invalid number for the current base");
-			    break;
+			  message = _("Invalid number for the current base");
+			  break;
 			case -PARSER_ERR_TOO_LONG_NUMBER:
-			    message = _("Too long number");
-			    break;
+			  message = _("Too long number");
+			  break;
 			case -PARSER_ERR_BITWISEOP:
-			    message = _("Invalid bitwise operation parameter(s)");
-			    break;
+			  message = _("Invalid bitwise operation parameter(s)");
+			  break;
 			case -MPMATH_ERR:
-			    message = _("Math operation error");
-			    break;
+			  message = _("Math operation error");
+			  break;
 			default:
-			    message = _("Malformed expression");
-			    break;
+			  message = _("Malformed expression");
+			  break;
 			}
 			update_statusbar(message, "gtk-dialog-error");
-		    }
+		  }
 	    } else {
-		perform_undo();
-		perform_undo();
+		  perform_undo();
+		  if (is_undo_step()) {
+			perform_undo();
+		  }
 	    }
-	}
+	  }
     } else {
 	exp_append(btext);
 	if (e->button.flags & func) {
