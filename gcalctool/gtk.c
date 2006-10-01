@@ -2363,7 +2363,8 @@ set_accuracy_tooltip(int accuracy)
 {
     char tooltip[MAXLINE];
 
-    SPRINTF(tooltip, _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"), 
+    snprintf(tooltip, MAXLINE, 
+            _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"),
             MAXACC, accuracy);
     gtk_tooltips_set_tip(X->tips, BUT_ACC, tooltip, "");
 }

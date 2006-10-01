@@ -1233,17 +1233,19 @@ doerr(char *errmes)
         return;
     }
 
-	switch (v->syntax) {
-	case npa:
-	  STRCPY(v->display, errmes);
-	  set_error_state(TRUE);
-	  set_display(v->display, FALSE);
-	  beep();
-	  break;
-	case exprs:
-	  v->math_error = -MPMATH_ERR;
-	  break;
-	}
+    switch (v->syntax) {
+        case npa:
+            strncpy(v->display, errmes, MAXLINE - 1);
+            v->display[MAXLINE - 1] = '\0';
+            set_error_state(TRUE);
+            set_display(v->display, FALSE);
+            beep();
+            break;
+
+        case exprs:
+            v->math_error = -MPMATH_ERR;
+            break;
+    }
 }
 
 
