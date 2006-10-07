@@ -1090,6 +1090,7 @@ create_change_mode_dialog()
     GtkWidget *vbox, *table, *warning;
     GtkWidget *check, *desc, *action_area;
     GtkWidget *cancel, *ok, *align, *hbox, *refresh, *mode_label;
+    char *label_text;
 
     X->cm_dialog = gtk_dialog_new();
     gtk_container_set_border_width(GTK_CONTAINER(X->cm_dialog), 12);
@@ -1122,7 +1123,9 @@ create_change_mode_dialog()
                      (GtkAttachOptions) (GTK_FILL),
                      (GtkAttachOptions) (0), 0, 0);
 
-    desc = gtk_label_new(_("<big><b>Changing Modes Clears Calculation</b></big>\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."));
+    label_text = g_strdup_printf(_("%sChanging Modes Clears Calculation%s\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."), "<big><b>", "</big></b>");
+    desc = gtk_label_new(label_text);
+    g_free(label_text);
     gtk_widget_show(desc);
     gtk_table_attach(GTK_TABLE(table), desc, 1, 2, 0, 1,
                      (GtkAttachOptions) (GTK_FILL),
