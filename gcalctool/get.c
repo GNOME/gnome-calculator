@@ -270,7 +270,7 @@ init_vars()    /* Setup default values for various variables. */
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */
     init_constant(2, "2.7182818284");          /* e */
-    init_constant(3, "3.1415926535");          /* pi */
+    init_constant(3, "3.1415926536");          /* pi */
     init_constant(4, "0.3937007");             /* cms <=> inch. */
     init_constant(5, "57.295779513");          /* degrees/radian. */
     init_constant(6, "1048576.0");             /* 2 ^ 20. */
