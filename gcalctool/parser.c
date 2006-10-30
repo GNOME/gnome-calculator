@@ -86,8 +86,7 @@ check_numbase(char *num)
 	    }
 	    break;
 	default:
-	    assert(0); // unknown base
+	    assert(0);      /* unknown base. */
 	}
     }
-    
 }

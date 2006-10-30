@@ -72,7 +72,7 @@ get_bool_resource(enum res_type rtype, int *boolval)
         g_free(val);
         return(0);
     }
-    STRCPY(tempstr, val);
+    STRNCPY(tempstr, val, MAXLINE - 1);
     g_free(val);
     len = strlen(tempstr);
     for (n = 0; n < len; n++) {
@@ -176,7 +176,7 @@ static void
 getparam(char *s, char *argv[], char *errmes)
 {
     if (*argv != NULL && argv[0][0] != '-') {
-        STRCPY(s, *argv);
+        STRNCPY(s, *argv, MAXLINE - 1);
     } else { 
         FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
         exit(1);                        
@@ -196,7 +196,7 @@ get_str_resource(enum res_type rtype, char *strval)
         g_free(val);
         return(0);
     }
-    STRCPY(strval, val);
+    STRNCPY(strval, val, MAXLINE - 1);
     g_free(val);
     len = strlen(strval);
     for (i = 0; i < len; i++) {
@@ -382,37 +382,36 @@ read_resources()    /* Read all possible resources from the database. */
     v->syntax = exprs;
 
     if (get_str_resource(R_SYNTAX, str)) {
-      for (i = 0; i < MAXSYNTAX; i++) {
-		if (EQUAL(str, Rsstr[i])) {
-		  break;
-		}
-      }
-      
-      if (i == MAXSYNTAX) {
-		FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
-				v->progname, str);
-      } else {
-		v->syntax = i;
-      }
+        for (i = 0; i < MAXSYNTAX; i++) {
+            if (EQUAL(str, Rsstr[i])) {
+                break;
+            }
+        }
+
+        if (i == MAXSYNTAX) {
+            FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
+                    v->progname, str);
+        } else {
+            v->syntax = i;
+        }
     }
-	
-	v->bitcalculating_mode = 0; // default = off
+
+    v->bitcalculating_mode = 0;            /* default = off. */
 
     if (get_str_resource(R_BITCALC, str)) {
-      for (i = 0; i < MAXBITCALC; i++) {
-		if (EQUAL(str, Rcstr[i])) {
-		  break;
-		}
-      }
+        for (i = 0; i < MAXBITCALC; i++) {
+            if (EQUAL(str, Rcstr[i])) {
+                break;
+            }
+        }
       
-      if (i == MAXBITCALC) {
-		FPRINTF(stderr, _("%s: invalid bitcalc choice [%s]\n"), 
-				v->progname, str);
-      } else {
-		v->bitcalculating_mode = i;
-      }
+        if (i == MAXBITCALC) {
+            FPRINTF(stderr, _("%s: invalid bitcalc choice [%s]\n"), 
+                    v->progname, str);
+        } else {
+            v->bitcalculating_mode = i;
+        }
     }
-
 
     if (get_bool_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
@@ -425,7 +424,6 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_bool_resource(R_TSEP, &boolval)) {
         v->show_tsep = boolval;
     }
-
 }
 
 

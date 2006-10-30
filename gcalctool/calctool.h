@@ -42,10 +42,12 @@
 #define MEMSET       (void) memset
 #define MKSTEMP      (void) mkstemp
 #define REWIND       (void) rewind
+#define SNPRINTF     (void) snprintf
 #define SPRINTF      (void) sprintf
 #define SSCANF       (void) sscanf
 #define STRCAT       (void) strcat
 #define STRCPY       (void) strcpy
+#define STRNCPY      (void) strncpy
 #define STRNCAT      (void) strncat
 #define UNLINK       (void) unlink
 
@@ -181,7 +183,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define MAXMENUS       9          /* Maximum number of popup menus. */
 
 #ifndef MAXLINE
-#define MAXLINE        256        /* Length of character strings. */
+#define MAXLINE        512        /* Length of character strings. */
 #endif /*MAXLINE*/
 
 #define MAXACC         30    /* Max. number of digits after numeric point. */

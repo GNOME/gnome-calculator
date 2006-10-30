@@ -652,7 +652,7 @@ astz_proc(GtkAction *action)
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
-	syntaxdep_show_display();  //show_display(v->MPdisp_val);
+	syntaxdep_show_display();
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 	make_registers();
     }
@@ -694,7 +694,7 @@ button_proc(GtkButton *widget, gpointer user_data)
             }
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
-                STRCPY(v->fnum, v->display);
+                STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
                 set_display(v->fnum, TRUE);
             }
             break;
@@ -797,11 +797,11 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
 
            if (mtype == M_CON) {
                 MPstr_to_num(item.value, DEC, v->MPcon_vals[i]);
-                STRCPY(v->con_names[i], item.description);
+                STRNCPY(v->con_names[i], item.description, MAXLINE - 1);
                 put_constant(i, item.value, item.description);
             } else {
-                STRCPY(v->fun_vals[i], convert(item.value));
-                SPRINTF(v->fun_names[i], item.description);
+                STRNCPY(v->fun_vals[i], convert(item.value), MAXLINE - 1);
+                SNPRINTF(v->fun_names[i], MAXLINE, item.description);
                 put_function(i, item.value, item.description);
             }
         }    
@@ -1466,9 +1466,9 @@ create_kframe()
     v->tool_label = NULL;
     if (v->titleline == NULL) {
         hn = make_hostname(X->dpy);
-        v->tool_label = malloc(strlen(_("Calculator")) + strlen(hn) + 3);
+        v->tool_label = malloc(MAXLINE);
 
-        SPRINTF(v->tool_label, "%s %s", _("Calculator"), hn);
+        SNPRINTF(v->tool_label, MAXLINE, "%s %s", _("Calculator"), hn);
         g_free(hn);
     } else {
         read_str(&v->tool_label, v->titleline);
@@ -1665,7 +1665,7 @@ create_mem_menu(enum menu_type mtype)
     X->menus[(int) mtype] = gtk_menu_new();
 
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(mstr, "<span weight=\"bold\">%s_%d:</span>    %s",
+        SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
 	/* translators: R is the short form of register used inter alia
 	in popup menus */
                 _("R"), i, make_number(v->MPmvals[i], v->base, TRUE));
@@ -1812,7 +1812,8 @@ create_rframe()
 
     table = gtk_table_new(10, 2, FALSE);
     for (i = 0; i < MAXREGS; i++) {
-        SPRINTF(line, "<span weight=\"bold\">%s%1d:</span>", _("R"), i);
+        SNPRINTF(line, MAXLINE, "<span weight=\"bold\">%s%1d:</span>", 
+                 _("R"), i);
         label[i] = gtk_label_new("");
         gtk_label_set_markup(GTK_LABEL(label[i]), line);
         gtk_table_attach(GTK_TABLE(table), label[i], 0, 1, i, i+1,
@@ -1828,7 +1829,7 @@ create_rframe()
                          (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                          (GtkAttachOptions) (0), 0, 0);
 
-        SPRINTF(name, "register %1d", i);
+        SNPRINTF(name, MAXLINE, "register %1d", i);
         gtk_widget_set_name(X->regs[i], name);
 
         atko[i] = gtk_widget_get_accessible(X->regs[i]);
@@ -1916,15 +1917,16 @@ create_con_fun_menu(enum menu_type mtype)
     for (i = 0; i < MAXCONFUN; i++) {
         invalid = 0;
         if (mtype == M_CON) {
-            SPRINTF(mline, "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
-                    _("C"), i, 
+            SNPRINTF(mline, MAXLINE, 
+                    "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                     make_number(v->MPcon_vals[i], DEC, TRUE), 
                     v->con_names[i]);
         } else {
             if (!strlen(v->fun_vals[i])) {
                 invalid = 1;
             } else {
-	      SPRINTF(mline, "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
+	      SNPRINTF(mline, MAXLINE,
+                      "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
 		      _("F"), i, v->fun_vals[i], v->fun_names[i]);
             }
         }
@@ -1972,18 +1974,18 @@ get_constant(int n)
     char nkey[MAXLINE], *nline;
     char vkey[MAXLINE], *vline;
 
-    SPRINTF(nkey, "/apps/%s/constant%1dname", v->appname, n);
+    SNPRINTF(nkey, MAXLINE, "/apps/%s/constant%1dname", v->appname, n);
     if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
         return;
     }   
  
-    SPRINTF(vkey, "/apps/%s/constant%1dvalue", v->appname, n);
+    SNPRINTF(vkey, MAXLINE, "/apps/%s/constant%1dvalue", v->appname, n);
     if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
         return;
     }   
 
     MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
-    STRCPY(v->con_names[n], nline);
+    STRNCPY(v->con_names[n], nline, MAXLINE - 1);
 }
 
 
@@ -2019,18 +2021,18 @@ get_function(int n)
     char nkey[MAXLINE], *nline;
     char vkey[MAXLINE], *vline;
  
-    SPRINTF(nkey, "/apps/%s/function%1dname", v->appname, n);
+    SNPRINTF(nkey, MAXLINE, "/apps/%s/function%1dname", v->appname, n);
     if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
         return;  
     }    
  
-    SPRINTF(vkey, "/apps/%s/function%1dvalue", v->appname, n);
+    SNPRINTF(vkey, MAXLINE, "/apps/%s/function%1dvalue", v->appname, n);
     if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
         return;
     }   
  
-    STRCPY(v->fun_vals[n], convert(vline));
-    STRCPY(v->fun_names[n], nline);
+    STRNCPY(v->fun_vals[n], convert(vline), MAXLINE - 1);
+    STRNCPY(v->fun_names[n], nline, MAXLINE - 1);
 }
 
 
@@ -2099,8 +2101,8 @@ get_resource(enum res_type rtype)
 {
     char cstr[MAXLINE], key[MAXLINE];
 
-    STRCPY(key, calc_res[(int) rtype]);
-    SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
+    STRNCPY(key, calc_res[(int) rtype], MAXLINE - 1);
+    SNPRINTF(cstr, MAXLINE, "/apps/%s/%s", v->appname, key);
 
     return(gconf_client_get_string(X->client, cstr, NULL));
 }
@@ -2269,7 +2271,7 @@ load_resources()        /* Load gconf configuration database for gcalctool. */
 { 
     char str[MAXLINE];
 
-    SPRINTF(str, "/apps/%s", v->appname);
+    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
     X->client = gconf_client_get_default();
     gconf_client_add_dir(X->client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
 }
@@ -2355,7 +2357,7 @@ set_accuracy_menu_item(int accuracy)
 {
     char label[MAXLINE];
 
-    SPRINTF(label, _("Other (%d) ..."), accuracy);
+    SNPRINTF(label, MAXLINE, _("Other (%d) ..."), accuracy);
     g_object_set(gtk_ui_manager_get_action(X->ui, "/AccMenu/SPOther"),
                  "label", label, NULL);
 }
@@ -2433,7 +2435,7 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
                 g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
                              G_CALLBACK(button_proc), (gpointer) (j*cols + i));
             }
-            SPRINTF(name, "%s_button%1d", tag, n);
+            SNPRINTF(name, MAXLINE, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
             if (buttons[n].hstr != NULL) {
                 gtk_tooltips_set_tip(X->tips, Gtk_buttons[n],
@@ -2717,8 +2719,8 @@ mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
     } else if (EQUAL(X->mode_name, "Scientific")) {
         new_modetype = SCIENTIFIC;
     } else {
-	  assert(0); // Oops, we shouldn't be here
-	}
+        assert(0);   /* Oops, we shouldn't be here. */
+    }
 
 /* If the user has completed a calculation and we are going to a
  * new mode that is "compatible" with this one, then just change
@@ -2803,7 +2805,7 @@ mstz_proc(GtkAction *action)
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
         v->doing_mi = 0;
 
-	syntaxdep_show_display(); //show_display(v->MPdisp_val);
+	syntaxdep_show_display();
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
 	make_registers();
     }
@@ -2836,11 +2838,11 @@ put_constant(int n, char *con_value, char *con_name)
  * character of ".".
  */
 
-    SPRINTF(key, "/apps/%s/constant%1dvalue", v->appname, n);
+    SNPRINTF(key, MAXLINE, "/apps/%s/constant%1dvalue", v->appname, n);
     gconf_client_set_string(X->client, key, cstr, NULL);
     g_free(cstr);
 
-    SPRINTF(key, "/apps/%s/constant%1dname", v->appname, n);
+    SNPRINTF(key, MAXLINE, "/apps/%s/constant%1dname", v->appname, n);
     gconf_client_set_string(X->client, key, con_name, NULL);
 }
 
@@ -2850,10 +2852,10 @@ put_function(int n, char *fun_value, char *fun_name)
 {
     char key[MAXLINE];
 
-    SPRINTF(key, "/apps/%s/function%1dvalue", v->appname, n);
+    SNPRINTF(key, MAXLINE, "/apps/%s/function%1dvalue", v->appname, n);
     gconf_client_set_string(X->client, key, fun_value, NULL);
 
-    SPRINTF(key, "/apps/%s/function%1dname", v->appname, n);
+    SNPRINTF(key, MAXLINE, "/apps/%s/function%1dname", v->appname, n);
     gconf_client_set_string(X->client, key, fun_name, NULL);
 }
 
@@ -2865,8 +2867,8 @@ put_resource(enum res_type rtype, char *value)
 {
     char cstr[MAXLINE], key[MAXLINE];
 
-    STRCPY(key, calc_res[(int) rtype]);
-    SPRINTF(cstr, "/apps/%s/%s", v->appname, key);
+    STRNCPY(key, calc_res[(int) rtype], MAXLINE - 1);
+    SNPRINTF(cstr, MAXLINE, "/apps/%s/%s", v->appname, key);
     gconf_client_set_string(X->client, cstr, value, NULL);
 }
 
@@ -2940,9 +2942,9 @@ save_win_position()
     int x, y;
 
     (void) gdk_window_get_origin(X->kframe->window, &x, &y);
-    SPRINTF(intval, "%d", x);
+    SNPRINTF(intval, MAXLINE, "%d", x);
     put_resource(R_XPOS, intval);
-    SPRINTF(intval, "%d", y);
+    SNPRINTF(intval, MAXLINE, "%d", y);
     put_resource(R_YPOS, intval);
 }
 
@@ -2973,12 +2975,12 @@ spframe_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 static void
 spframe_ok_cb(GtkButton *button, gpointer user_data)
 {
-    char intval[5];
+    char intval[MAXLINE];
     int val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
 
     v->accuracy = val;
 
-    SPRINTF(intval, "%d", v->accuracy);
+    SNPRINTF(intval, MAXLINE, "%d", v->accuracy);
     put_resource(R_ACCURACY, intval);
 
     set_accuracy_menu_item(v->accuracy);
@@ -3006,7 +3008,7 @@ set_accuracy_toggle(int val)
     GtkWidget *acc;
 
     if (val >= 0 && val <= 9) {
-        SPRINTF(name, "/AccMenu/SP%c", val + '0');
+        SNPRINTF(name, MAXLINE, "/AccMenu/SP%c", val + '0');
         acc = gtk_ui_manager_get_widget(X->ui, name);
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
     }
@@ -3060,7 +3062,7 @@ bin_str(int MP_value[MP_SIZE],
  
   for (i = 0; i < maxbits; i++) {
 
-	double lsb; // least significant bit 
+	double lsb;               /* Least significant bit. */
 	calc_and(MP3, MP0, MP1);
 	mpcmd(MP3, &lsb);
 
@@ -3569,18 +3571,22 @@ start_tool()
     switch (v->syntax) { 
         case npa:
 	    break;
+
      	case exprs: {
-	    // Init expression mode.
-	    // This must be executed after do_base is called at init.
-	    // FIXME: The init code here is duplicated elsewhere
-		struct exprm_state *e = get_state();
+	    /* Init expression mode.
+	     * This must be executed after do_base is called at init.
+	     * FIXME: The init code here is duplicated elsewhere.
+             */
+            struct exprm_state *e = get_state();
+
 	    MPstr_to_num("0", DEC, e->ans);
-        exp_del();
-        show_display(e->ans);
-		}
-	    break;
-    default:
-	assert(0);
+            exp_del();
+            show_display(e->ans);
+        }
+        break;
+
+        default:
+            assert(0);
     }
 
     gtk_main();
@@ -3597,7 +3603,7 @@ ts_proc(GtkAction *action)
 
     v->show_tsep = !v->show_tsep;
 
-    syntaxdep_show_display();  //show_display(v->MPdisp_val);
+    syntaxdep_show_display();
     put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
     make_registers();
 }

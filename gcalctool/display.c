@@ -116,7 +116,8 @@ clear_display(int initialise)
     v->toclear = 1;
     i = 0;
     mpcim(&i, v->MPdisp_val);
-    STRCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE));
+    STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
+            MAXLINE - 1);
     set_display(v->display, FALSE);
 
     if (initialise == TRUE) {
@@ -195,7 +196,8 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     mpcim(&basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
-    SPRINTF(half, "0.5"); /* FIXME: string const. if MPstr_to_num can get it */
+    /* FIXME: string const. if MPstr_to_num can get it */
+    SPRINTF(half, "0.5");
     MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
@@ -572,47 +574,47 @@ void
 show_display(int *MPval)
 {
     if (!v->error) {
-        STRCPY(v->display, make_number(MPval, v->base, FALSE));
+        STRNCPY(v->display, make_number(MPval, v->base, FALSE), MAXLINE - 1);
         set_display(v->display, FALSE);
     }
 }
 
+
+/* In arithmetic precedence mode this routine should be called to redraw 
+ * the display.
+ */
+
 void
 refresh_display()
 {
-  /* In arithmetic precedence mode this
-     routine should be called to redraw display.
-  */
+    char localized[MAX_LOCALIZED];
 
-  char localized[MAX_LOCALIZED];
+    switch (v->syntax) {
+        case npa:
+            show_display(v->MPdisp_val);
+            break;
 
-  switch (v->syntax) {
-  case npa:
-    show_display(v->MPdisp_val);
-    break;
-    
-  case exprs: {
-	struct exprm_state *e = get_state();
-    if (e->expression &&
-		strlen(e->expression)) {
-      char *str = gc_strdup(e->expression);
-      char *ans = make_number(e->ans, v->base, TRUE);
-      localize_number(localized, ans);
-      
-      str_replace(&str, "Ans", localized);
-      //set_display(e, FALSE);
-      write_display(str);
-      free(str);
-    } else {
-      /* set_display("", FALSE); */
-      int MP1[MP_SIZE];
-      do_zero(MP1);
-      show_display(MP1);
+        case exprs: {
+	    struct exprm_state *e = get_state();
+
+            if (e->expression && strlen(e->expression)) {
+                char *str = gc_strdup(e->expression);
+                char *ans = make_number(e->ans, v->base, TRUE);
+
+                localize_number(localized, ans);
+                str_replace(&str, "Ans", localized);
+                write_display(str);
+                free(str);
+            } else {
+                int MP1[MP_SIZE];
+
+                do_zero(MP1);
+                show_display(MP1);
+            }
+        }    
+        break;
+
+        default:
+            assert(0);
     }
-  }    
-    break;
-    
-  default:
-    assert(0);
-  }
 }

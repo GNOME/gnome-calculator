@@ -158,7 +158,7 @@ perform_undo(void)
 int
 is_undo_step()
 {
-  return (v->h.current != v->h.begin);
+    return(v->h.current != v->h.begin);
 }
 
 void
@@ -241,7 +241,7 @@ exp_append(char *text)
             assert(0);
         }
     } else {
-        strcpy(buf, text);
+        STRCPY(buf, text);
     }
     free(e->expression);
     e->expression = buf;
@@ -268,7 +268,6 @@ usable_num(int MPnum[MP_SIZE])
         ret = ce_parse(e->expression, MPnum);
     } else {
 	do_zero(MPnum);
-        //mpstr(v->MPresult, MPnum);
     }
 
     return ret;
@@ -407,7 +406,7 @@ str_replace(char **str, char *from, char *to)
             memcpy(postfix, *str+i+3, len-j);
 
             print = malloc(strlen(to)+i+len-j+1);
-            sprintf(print, "%s%s%s", prefix, to, postfix);
+            SPRINTF(print, "%s%s%s", prefix, to, postfix);
             free(prefix);
             free(postfix);
             free(*str);
@@ -494,10 +493,12 @@ do_expression()
         int i = char_val(e->button.value[0]);
         char reg[3];
         int n = '0' +  i;
+
         snprintf(reg, 3, "R%c", n);
         exp_append(reg);
     } else if (e->button.flags & con) {
         int *MPval = v->MPcon_vals[char_val(e->button.value[0])];
+
         exp_append(make_number(MPval, v->base, FALSE));
     } else if (e->button.flags & bsp) {
         if (exp_has_postfix(e->expression, "Ans")) { 
@@ -514,27 +515,32 @@ do_expression()
 	    if (strcmp(e->expression, "Ans")) {
 		  int MPval[MP_SIZE];
 		  int ret = ce_parse(e->expression, MPval);
+
 		  if (!ret) {
 			mpstr(MPval, e->ans);
 			exp_replace("Ans");
 		  } else {
 			char *message = NULL;
+
 			switch (ret) {
-			case -PARSER_ERR_INVALID_BASE:
-			  message = _("Invalid number for the current base");
-			  break;
-			case -PARSER_ERR_TOO_LONG_NUMBER:
-			  message = _("Too long number");
-			  break;
-			case -PARSER_ERR_BITWISEOP:
-			  message = _("Invalid bitwise operation parameter(s)");
-			  break;
-			case -MPMATH_ERR:
-			  message = _("Math operation error");
-			  break;
-			default:
-			  message = _("Malformed expression");
-			  break;
+			    case -PARSER_ERR_INVALID_BASE:
+			        message = _("Invalid number for the current base");
+			        break;
+
+			    case -PARSER_ERR_TOO_LONG_NUMBER:
+			        message = _("Too long number");
+			        break;
+
+			    case -PARSER_ERR_BITWISEOP:
+			        message = _("Invalid bitwise operation parameter(s)");
+			        break;
+
+			    case -MPMATH_ERR:
+			        message = _("Math operation error");
+			        break;
+
+			    default:
+			        message = _("Malformed expression");
 			}
 			update_statusbar(message, "gtk-dialog-error");
 		  }
@@ -697,15 +703,15 @@ do_trig()
 void
 do_percent()
 {
-  calc_percent(v->MPdisp_val, v->MPresult);
-  show_display(v->MPresult);
-  mpstr(v->MPresult, v->MPdisp_val);
+    calc_percent(v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
 }
 
 int
 do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
 {
-    // Assumes the SIN=0, COS=1, TAN=2
+    /* Assumes the SIN=0, COS=1, TAN=2. */
     
     enum trigfunc_type conv_table[3][4] = {
 	{sin_t, asin_t, sinh_t, asinh_t},
@@ -719,11 +725,13 @@ do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
 
     assert(tfunc < 3); 
     
-    if (!v->current) return -EINVAL;
+    if (!v->current) {
+        return -EINVAL;
+    }
     
     calc_trigfunc(conv_table[tfunc][mode], s, t);
     
-    return 0;
+    return(0);
 }
 
 
@@ -789,18 +797,20 @@ do_constant()
     assert(v->current->value[0] <= '9');
     
     switch (v->syntax) {
-    case npa: {
-	int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
-	mpstr(MPval, v->MPdisp_val);
-	break;
-    }
-	
-    case exprs: {
-	struct exprm_state *e = get_state();
-	e->button.flags = con;
-	do_expression();
-    }
-            break;
+        case npa: {
+	    int *MPval = v->MPcon_vals[char_val(v->current->value[0])];
+
+	    mpstr(MPval, v->MPdisp_val);
+	    break;
+        }
+
+        case exprs: {
+	    struct exprm_state *e = get_state();
+
+	    e->button.flags = con;
+	    do_expression();
+        }
+        break;
 
         default:
             assert(0);
@@ -850,38 +860,36 @@ do_exchange()         /* Exchange display with memory register. */
     int MPexpr[MP_SIZE];
 
     switch (v->syntax) {
-        case npa:
-	  {
-	    mpstr(v->MPdisp_val, MPtemp);
-	    mpstr(v->MPmvals[char_val(v->current->value[0])], v->MPdisp_val);
-	    mpstr(MPtemp, v->MPmvals[char_val(v->current->value[0])]);
-	    make_registers();
-	  }
-	  break;
+        case npa: {
+            mpstr(v->MPdisp_val, MPtemp);
+            mpstr(v->MPmvals[char_val(v->current->value[0])], v->MPdisp_val);
+            mpstr(MPtemp, v->MPmvals[char_val(v->current->value[0])]);
+            make_registers();
+        }
+        break;
 
-        case exprs:
-	  {
-	      struct exprm_state *e = get_state();
-	      int ret = usable_num(MPexpr);
-	      int n = char_val(e->button.value[0]);
-	      if (ret) {
-		  update_statusbar(_("No sane value to store"), 
-				   "gtk-dialog-error");
-	      } else {
-		  mpstr(v->MPmvals[n], MPtemp);
-		  mpstr(MPexpr, v->MPmvals[n]);
-		  mpstr(MPtemp, e->ans);	      
-		  exp_replace("Ans");
-		  refresh_display();
-		  make_registers();
+        case exprs: {
+              struct exprm_state *e = get_state();
+              int ret = usable_num(MPexpr);
+              int n = char_val(e->button.value[0]);
+
+              if (ret) {
+                  update_statusbar(_("No sane value to store"), 
+                                   "gtk-dialog-error");
+              } else {
+                  mpstr(v->MPmvals[n], MPtemp);
+                  mpstr(MPexpr, v->MPmvals[n]);
+                  mpstr(MPtemp, e->ans);	      
+                  exp_replace("Ans");
+                  refresh_display();
+                  make_registers();
 	      }
 	  }
-	  break;
+          break;
 
         default:
             assert(0);
     }
-
 }
 
 
@@ -919,7 +927,7 @@ do_factorial(int *MPval, int *MPres)
  *        then we've overflowed. This is to provide the same look&feel
  *        as V3.
  *
- *  XXX:  Needs to be imtproved. Shouldn't need to convert to a double in
+ *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
  *        order to check this.
  */
 
@@ -963,31 +971,31 @@ do_function()      /* Perform a user defined function. */
 
     switch (v->syntax) {
         case npa:
-		    assert(v->current->value[0] >= '0');
-			assert(v->current->value[0] <= '9');
-		  
-			fno = char_val(v->current->value[0]);
-			ret = 0;
-			str = v->fun_vals[fno];
-			assert(str);
+            assert(v->current->value[0] >= '0');
+            assert(v->current->value[0] <= '9');
+
+            fno = char_val(v->current->value[0]);
+            ret = 0;
+            str = v->fun_vals[fno];
+            assert(str);
 
             ret = lr_udf_parse(str);
             break;
 
-	    case exprs: {
-		    struct exprm_state *e = get_state();
+        case exprs: {
+            struct exprm_state *e = get_state();
 
-		    assert(e->button.value[0] >= '0');
-			assert(e->button.value[0] <= '9');
-		  
-			fno = char_val(e->button.value[0]);
-			ret = 0;
-			str = v->fun_vals[fno];
-			assert(str);
+            assert(e->button.value[0] >= '0');
+            assert(e->button.value[0] <= '9');
+
+            fno = char_val(e->button.value[0]);
+            ret = 0;
+            str = v->fun_vals[fno];
+            assert(str);
 
             ret = ce_udf_parse(str);
-	    }
-            break;
+        }
+        break;
 
         default:
             assert(0);
@@ -1112,12 +1120,12 @@ do_number()
     }
 
     if (v->toclear) {
-        SPRINTF(v->display, "%c", nextchar);
+        SNPRINTF(v->display, MAXLINE, "%c", nextchar);
         v->toclear = 0;
     } else {
         len = strlen(v->display);
         if (len < MAX_DIGITS) {
-	    SPRINTF(v->display+len, "%c", nextchar);
+	    SNPRINTF(v->display+len, MAXLINE, "%c", nextchar);
         }
     }
     set_display(v->display, TRUE);
@@ -1257,23 +1265,23 @@ static void
 do_rcl()
 {
     switch (v->syntax) {
-    case npa: {
-	int i = char_val(v->current->value[0]);
-	
-	mpstr(v->MPmvals[i], v->MPdisp_val);
-	break;
-    }
-	
-    case exprs: {
-	
-	struct exprm_state *e = get_state();
-	e->button.flags = regrcl;
-	do_expression();
-    }
-	break;
-	
-    default:
-	assert(0);
+        case npa: {
+            int i = char_val(v->current->value[0]);
+
+            mpstr(v->MPmvals[i], v->MPdisp_val);
+            break;
+        }
+
+        case exprs: {
+            struct exprm_state *e = get_state();
+
+            e->button.flags = regrcl;
+            do_expression();
+        }
+        break;
+
+        default:
+            assert(0);
     }
 }
 
@@ -1500,7 +1508,7 @@ push_num(int *MPval)        /* Try to push value onto the numeric stack. */
         return;
     }
     if (v->numsptr >= MAXSTACK) {
-        STRCPY(v->display, _("Numeric stack error"));
+        STRNCPY(v->display, _("Numeric stack error"), MAXLINE - 1);
         set_error_state(TRUE);
         set_display(v->display, FALSE);
         beep();
@@ -1521,7 +1529,7 @@ push_op(int val)     /* Try to push value onto the operand stack. */
         return;
     }
     if (v->opsptr >= MAXSTACK) {
-        STRCPY(v->display, _("Operand stack error"));
+        STRNCPY(v->display, _("Operand stack error"), MAXLINE - 1);
         set_error_state(TRUE);
         set_display(v->display, FALSE);
     } else {
@@ -1544,9 +1552,10 @@ set_main_title(enum mode_type modetype)  /* Set the title for main window. */
     char title[MAXLINE];
 
     if (modetype == BASIC) {
-        STRCPY(title, v->tool_label);
+        STRNCPY(title, v->tool_label, MAXLINE - 1);
     } else {
-        SPRINTF(title, "%s - %s", v->tool_label, _(mstrs[(int) modetype]));
+        SNPRINTF(title, MAXLINE, "%s - %s", v->tool_label, 
+                 _(mstrs[(int) modetype]));
     }
     set_title(FCP_KEY, title);
 }

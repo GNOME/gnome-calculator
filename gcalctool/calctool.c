@@ -1271,18 +1271,21 @@ init_buttons()         /* Setup buttons for "Basic" mode. */
 static void
 init_text()         /* Setup constant strings. */
 {
-    STRCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"));
-    STRCPY(v->con_names[1], _("square root of 2"));
-    STRCPY(v->con_names[2], _("e"));
-    STRCPY(v->con_names[3], _("pi"));
-    STRCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"));
-    STRCPY(v->con_names[5], _("degrees in a radian"));
-    STRCPY(v->con_names[6], _("2 ^ 20"));
-    STRCPY(v->con_names[7], _("Gram-to-ounce conversion factor"));
-    STRCPY(v->con_names[8], 
-           _("Kilojoule-to-British-thermal-unit conversion factor"));
-    STRCPY(v->con_names[9], 
-           _("Cubic-centimeter-to-cubic-inch conversion factor"));
+    STRNCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[1], _("square root of 2"), MAXLINE - 1);
+    STRNCPY(v->con_names[2], _("e"), MAXLINE - 1);
+    STRNCPY(v->con_names[3], _("pi"), MAXLINE - 1);
+    STRNCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[5], _("degrees in a radian"), MAXLINE - 1);
+    STRNCPY(v->con_names[6], _("2 ^ 20"), MAXLINE - 1);
+    STRNCPY(v->con_names[7], _("Gram-to-ounce conversion factor"), MAXLINE - 1);
+    STRNCPY(v->con_names[8], 
+           _("Kilojoule-to-British-thermal-unit conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[9], 
+           _("Cubic-centimeter-to-cubic-inch conversion factor"), MAXLINE - 1);
 }
 
 
