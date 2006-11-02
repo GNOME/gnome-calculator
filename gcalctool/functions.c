@@ -138,11 +138,15 @@ new_state(void)
 	v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
     }
 
-    //purge_redo_history();
-
-    assert(!v->h.e[v->h.current].expression);
     copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
     update_undo_redo_button_sensitivity();
+}
+
+
+int
+is_undo_step()
+{
+    return(v->h.current != v->h.begin);
 }
 
 
@@ -533,8 +537,10 @@ do_expression()
 			update_statusbar(message, "gtk-dialog-error");
 		    }
 	    } else {
-		perform_undo();
-		perform_undo();
+                perform_undo();
+                if (is_undo_step()) {
+                    perform_undo();
+                }
 	    }
 	}
     } else {

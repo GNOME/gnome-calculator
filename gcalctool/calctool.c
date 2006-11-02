@@ -1231,7 +1231,8 @@ doerr(char *errmes)
     if (!v->started) {
         return;
     }
-    STRCPY(v->display, errmes);
+    strncpy(v->display, errmes, MAXLINE - 1);
+    v->display[MAXLINE - 1] = '\0';
     set_error_state(TRUE);
     set_display(v->display, FALSE);
     beep();

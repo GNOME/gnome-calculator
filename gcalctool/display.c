@@ -399,7 +399,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int exp      = 0;
     int exp_sign = 1;
     char *lnp = get_localized_numeric_point();
-    assert(lnp && strlen(lnp) == 1);
+    assert(lnp);
 
     i = 0;
     mpcim(&i, MPval);
