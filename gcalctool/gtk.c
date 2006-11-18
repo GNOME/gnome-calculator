@@ -90,6 +90,7 @@
 struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
     GdkAtom clipboard_atom;
+    GdkAtom primary_atom;
     GConfClient *client;
     GtkUIManager *ui;
     GtkActionGroup *actions;
@@ -2283,6 +2284,7 @@ make_frames()
     struct button *n;
 
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
+    X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     create_kframe();                     /* Create main gcalctool window. */
     create_rframe();                     /* Create memory register window. */
     set_mode(v->modetype);
@@ -2335,7 +2337,8 @@ static gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
 {
     if (event->button == 2) {
-        handle_selection();
+        gtk_clipboard_request_text(gtk_clipboard_get(X->primary_atom),
+                                   get_proc, NULL);
     }
 
     return(FALSE);
