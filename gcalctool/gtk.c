@@ -2383,7 +2383,8 @@ set_accuracy_tooltip(int accuracy)
 static void
 set_win_position()
 {
-    int intval, screen_height, screen_width, x, y;
+    int intval, screen_height, screen_width;
+    int x = 0, y = 0;
 
     screen_width = gdk_screen_get_width(gdk_screen_get_default());
     screen_height = gdk_screen_get_height(gdk_screen_get_default());
