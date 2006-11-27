@@ -1661,68 +1661,94 @@ To calculate the time period necessary to accumulate $120,000, put the following
   </varlistentry>
 </variablelist>
 
-<para>When you click <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent <replaceable>base</replaceable> to the power of the next number that you enter. To change the sign of the number, use the <guibutton>+/-</guibutton> button before the <guibutton>Exp</guibutton> button or in the last action of the operation. The following example shows the value that is displayed when you use the decimal numeric base: </para>
+<para>When you click <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 
+<replaceable>base</replaceable> to the power of the next number that you enter. </para>
+<para>To change the sign of the number, use the <guibutton>+/-</guibutton> button before the <guibutton>Exp</guibutton> button.
+How you change the sign of the exponent (the power to which the number is raised) depends on whether you are in
+arithmetic precedence mode or not. In arithmetic precedence mode, use <guibutton>-</guibutton> after the
+<guibutton>Exp</guibutton> button, otherwise use the <guibutton>+/-</guibutton> button
+after entering the exponent.</para>
 
-      <informaltable frame="all">
-        <tgroup cols="2" colsep="1" rowsep="1">
-          <colspec colname="COLSPEC0" colwidth="50*"/>
-          <colspec colname="COLSPEC1" colwidth="50*"/>
-          <thead>
-            <row valign="top">
-              <entry colname="COLSPEC0">
-                <para>Keypad Entry</para></entry>
-              <entry colname="COLSPEC1">
-                <para>Calculator Display</para></entry>
-            </row>
-          </thead>
-          <tbody>
-            <row valign="top">
-              <entry><para><guibutton>5</guibutton> <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
-              <entry><para>-500</para></entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
+<para>To enter a decimal number in exponential format, in arithmetic precedence mode, use the guidelines in the following table: </para>
+          <informaltable frame="all">
+            <tgroup cols="3" colsep="1" rowsep="1">
+                   <colspec colname="COLSPEC0" colwidth="50*"/>
+                   <colspec colname="COLSPEC1" colwidth="50*"/>
+                   <thead>
+                          <row valign="top">
+                            <entry colname="COLSPEC0">
+                                   <para>Number</para></entry>
+                            <entry colname="COLSPEC1">
+                                   <para>Enter</para></entry>
+                            <entry colname="COLSPEC2">
+                                   <para>Number Displayed</para></entry>
+                          </row>
+                   </thead> 
+                   <tbody> 
+                     <row valign="top">
+                       <entry><para>1200000000</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                       <entry><para>1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-1200000000</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>0.00000012</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>-</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>1.2e-7</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-0.00000012</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>-</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1.2e-7</para></entry>
+                     </row>
+                   </tbody>
+            </tgroup>
+          </informaltable>
 
-      <para>To enter a number in exponential format, use the guidelines in the following table: </para>
-                <informaltable frame="all">
-                  <tgroup cols="3" colsep="1" rowsep="1">
-                         <colspec colname="COLSPEC0" colwidth="50*"/>
-                         <colspec colname="COLSPEC1" colwidth="50*"/>
-                         <thead>
-                                <row valign="top">
-                                  <entry colname="COLSPEC0">
-                                         <para>Number</para></entry>
-                                  <entry colname="COLSPEC1">
-                                         <para>Enter</para></entry>
-                                  <entry colname="COLSPEC2">
-                                         <para>Number Displayed</para></entry>
-                                </row>
-                         </thead> 
-                         <tbody> 
-                           <row valign="top">
-                             <entry><para>1200000000</para></entry>
-                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
-                             <entry><para>1200000000</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>-1200000000</para></entry>
-                             <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
-                             <entry><para>-1200000000</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>0.00000012</para></entry>
-                             <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
-                             <entry><para>1.2e-7</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>-0.00000012</para></entry>
-                             <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
-                             <entry><para>-1.2e-7</para></entry>
-                           </row>
-			 </tbody>
-		  </tgroup>
-		</informaltable>
+<para>To enter a decimal number in exponential format, in non-arithmetic precedence mode, use the guidelines in the following table: </para>
+          <informaltable frame="all">
+            <tgroup cols="3" colsep="1" rowsep="1">
+                   <colspec colname="COLSPEC0" colwidth="50*"/>
+                   <colspec colname="COLSPEC1" colwidth="50*"/>
+                   <thead>
+                          <row valign="top">
+                            <entry colname="COLSPEC0">
+                                   <para>Number</para></entry>
+                            <entry colname="COLSPEC1">
+                                   <para>Enter</para></entry>
+                            <entry colname="COLSPEC2">
+                                   <para>Number Displayed</para></entry>
+                          </row>
+                   </thead> 
+                   <tbody> 
+                     <row valign="top">
+                       <entry><para>1200000000</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                       <entry><para>1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-1200000000</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>0.00000012</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                       <entry><para>1.2e-7</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-0.00000012</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                       <entry><para>-1.2e-7</para></entry>
+                     </row>
+                   </tbody>
+            </tgroup>
+          </informaltable>
+
     </sect3>
     <sect3 id="gcalctool-edit-const"> 
       <title>To Use Constant Values</title> 
