@@ -1124,7 +1124,7 @@ create_change_mode_dialog()
                      (GtkAttachOptions) (GTK_FILL),
                      (GtkAttachOptions) (0), 0, 0);
 
-    label_text = g_strdup_printf(_("%sChanging Modes Clears Calculation%s\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."), "<big><b>", "</big></b>");
+    label_text = g_strdup_printf(_("%sChanging Modes Clears Calculation%s\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."), "<big><b>", "</b></big>");
     desc = gtk_label_new(label_text);
     g_free(label_text);
     gtk_widget_show(desc);
