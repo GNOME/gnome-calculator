@@ -54,7 +54,8 @@
 /* Menu bar menu types. */
 
 enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY,  M_FIN,
-	       M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES };
+	       M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES,
+               M_LR_ARITH, M_OP_ARITH };
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 

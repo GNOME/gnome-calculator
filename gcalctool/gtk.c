@@ -200,6 +200,8 @@ static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(GtkAction *action);
 static void mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current);
+static void mb_arith_mode_radio_proc(GtkAction *action, 
+                                     GtkRadioAction *current);
 static void mb_mode_radio_proc(GtkAction *action, GtkRadioAction *current);
 static void menu_pos_func(GtkMenu *, gint *, gint *, gboolean *, gpointer);
 static void menu_proc_cb(GtkMenuItem *, gpointer);
@@ -342,8 +344,6 @@ static const GtkToggleActionEntry toggle_entries[] = {
       N_("Show memory registers"),    G_CALLBACK(mb_proc),   FALSE },
     { "Show",      NULL, N_("Show _Trailing Zeroes"),     "<control>T",
       N_("Show trailing zeroes"),     G_CALLBACK(astz_proc), FALSE },
-    { "ArithmeticPrecedence", NULL, N_("_Use Arithmetic Precedence"), "<control>U",
-      N_("Use Arithmetic Precedence"), G_CALLBACK(mb_proc), FALSE },
 };
 
 static const GtkRadioActionEntry acc_radio_entries[] = {
@@ -369,6 +369,13 @@ static const GtkRadioActionEntry acc_radio_entries[] = {
     N_("9 significant places"), '9' },
   { "SPOther", NULL, N_("_Other (10) ..."), "<control>O",
     N_("Set other precision"), 'O' },
+};
+
+static const GtkRadioActionEntry arith_mode_radio_entries[] = {
+  { "LeftRightPrecedence", NULL, N_("_Left-to-right Precedence"), "<control>L",    
+    N_("Use Left-right Precedence"), M_LR_ARITH, },
+  { "ArithmeticPrecedence", NULL, N_("A_rithmetic Precedence"), "<control>R",    
+    N_("Use Arithmetic Precedence"), M_OP_ARITH },
 };
 
 static const GtkRadioActionEntry mode_radio_entries[] = {
@@ -408,6 +415,7 @@ static const gchar ui_info[] =
 "      <separator/>"
 "      <menuitem action='Memory'/>"
 "      <separator/>"
+"      <menuitem action='LeftRightPrecedence'/>"
 "      <menuitem action='ArithmeticPrecedence'/>"
 "    </menu>"
 "    <menu action='HelpMenu'>"
@@ -1506,6 +1514,13 @@ create_kframe()
                                        M_BASIC, G_CALLBACK(mb_mode_radio_proc),
                                        NULL);
 
+    gtk_action_group_add_radio_actions(X->actions,
+                                       arith_mode_radio_entries,
+                                       G_N_ELEMENTS(arith_mode_radio_entries),
+                                       M_OP_ARITH, 
+                                       G_CALLBACK(mb_arith_mode_radio_proc), 
+                                       NULL);
+
     X->ui = gtk_ui_manager_new();
     gtk_ui_manager_insert_action_group(X->ui, X->actions, 0);
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe),
@@ -1649,6 +1664,10 @@ create_kframe()
     if (v->syntax == exprs) {
         view_widget = gtk_ui_manager_get_widget(X->ui, 
                                     "/MenuBar/ViewMenu/ArithmeticPrecedence");
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
+    } else {
+        view_widget = gtk_ui_manager_get_widget(X->ui,
+                                    "/MenuBar/ViewMenu/LeftRightPrecedence");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
     }
 
@@ -2693,13 +2712,23 @@ mb_proc(GtkAction *action)
         SSCANF(name,"RSPlaces%d", &choice);
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
-    } else if (EQUAL(name, "ArithmeticPrecedence")) {
-        toggle_expressions();
     } else if (EQUAL(name, "Bitcalculating")) {
 	  v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
 	  set_mode(v->modetype);
 	  put_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
     } 
+}
+
+
+/*ARGSUSED*/
+static void
+mb_arith_mode_radio_proc(GtkAction *action, GtkRadioAction *current)
+{
+    if (!v->started) {
+        return;
+    }
+
+    toggle_expressions();
 }
 
 
