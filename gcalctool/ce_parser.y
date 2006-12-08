@@ -143,11 +143,6 @@ udf:
 
 value: 
   exp {cp($1, $$);}
-| tINUMBER tMOD tINUMBER {
-  if (calc_modulus($1, $3, $$)) {
-      parser_state.error = -EINVAL;
-  }
-}
 ;
 
 exp: 
@@ -157,6 +152,16 @@ exp:
 
 | exp '+' exp {mpadd($1, $3, $$);}
 | exp '-' exp {mpsub($1, $3, $$);}
+
+| exp tMOD exp {
+    if (!is_integer($1) || !is_integer($3)) {
+	parser_state.error = -PARSER_ERR_MODULUSOP;
+    } else {
+      if (calc_modulus($1, $3, $$)) {
+        parser_state.error = -EINVAL;
+      }			   
+    }
+}
 
 | exp tAND exp {
     if (!is_natural($1) || !is_natural($3)) {

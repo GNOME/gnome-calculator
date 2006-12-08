@@ -535,6 +535,10 @@ do_expression()
 			        message = _("Invalid bitwise operation parameter(s)");
 			        break;
 
+			    case -PARSER_ERR_MODULUSOP:
+			        message = _("Invalid modulus operation parameter(s)");
+			        break;
+
 			    case -MPMATH_ERR:
 			        message = _("Math operation error");
 			        break;

@@ -27,6 +27,7 @@
 #define PARSER_ERR_INVALID_BASE			10000
 #define PARSER_ERR_TOO_LONG_NUMBER 		10001
 #define PARSER_ERR_BITWISEOP		    	10002
+#define PARSER_ERR_MODULUSOP		    	10003
 
 struct parser_state {
     int flags;
