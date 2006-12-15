@@ -1464,8 +1464,8 @@ do_shift()     /* Perform bitwise shift on display value. */
             int n = char_val(e->button.value[0]);
             int ret = usable_num(MPval);
 
-            if (ret) {
-	        update_statusbar(_("No sane value to store"), 
+            if (ret || !is_integer(MPval)) {
+	        update_statusbar(_("No sane value to do bitwise shift"), 
                                  "gtk-dialog-error");
 	        return;
             } 
