@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-11 10:26+0100\n"
-"PO-Revision-Date: 2006-12-11 10:38+0100\n"
+"POT-Creation-Date: 2006-12-17 17:12+0100\n"
+"PO-Revision-Date: 2006-12-17 17:13+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -741,7 +741,7 @@ msgstr "E"
 msgid "Hexadecimal digit E"
 msgstr "Dígito hexadecimal E"
 
-#: ../gcalctool/calctool.c:979 ../gcalctool/gtk.c:1952
+#: ../gcalctool/calctool.c:979 ../gcalctool/gtk.c:1955
 msgid "F"
 msgstr "F"
 
@@ -805,7 +805,7 @@ msgstr "B"
 msgid "Hexadecimal digit B"
 msgstr "Dígito hexadecimal B"
 
-#: ../gcalctool/calctool.c:1077 ../gcalctool/gtk.c:1943
+#: ../gcalctool/calctool.c:1077 ../gcalctool/gtk.c:1946
 msgid "C"
 msgstr "C"
 
@@ -951,7 +951,6 @@ msgid "No sane value to convert"
 msgstr "No hay un valor bueno para convertir"
 
 #: ../gcalctool/functions.c:881 ../gcalctool/functions.c:1237
-#: ../gcalctool/functions.c:1468
 msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
@@ -966,6 +965,10 @@ msgstr "Con el visor borrado, un prefijo sin un operador no está permitido"
 #: ../gcalctool/functions.c:1214
 msgid "Malformed parenthesis expression"
 msgstr "Expresión con paréntesis malformados"
+
+#: ../gcalctool/functions.c:1468
+msgid "No sane value to do bitwise shift"
+msgstr "No hay un valor bueno para un desplazamiento de bits"
 
 #: ../gcalctool/functions.c:1515
 msgid "Numeric stack error"
@@ -1438,7 +1441,8 @@ msgstr "Nota:"
 
 #: ../gcalctool/gtk.c:981
 msgid "All constant values are specified in the decimal numeric base."
-msgstr "Todos los valores constantes están especificados en la base numérica decimal."
+msgstr ""
+"Todos los valores constantes están especificados en la base numérica decimal."
 
 #: ../gcalctool/gtk.c:991
 msgid "Click a _value or description to edit it:"
@@ -1460,91 +1464,89 @@ msgstr "Descripción"
 msgid "_Do not warn me again"
 msgstr "_No avisarme otra vez"
 
-#: ../gcalctool/gtk.c:1135
-#, c-format
+#: ../gcalctool/gtk.c:1137
+msgid "Changing Modes Clears Calculation"
+msgstr "Cambiar de modo borra el cálculo"
+
+#: ../gcalctool/gtk.c:1138
 msgid ""
-"%sChanging Modes Clears Calculation%s\n"
-"\n"
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
-msgstr ""
-"%sCambiar de modo borra el cálculo%s\n"
-"\n"
-"Cuando cambia de modo, el cálculo actual será borrado, y la base reiniciada "
-"a decimal."
+msgstr "Cuando cambia de modo, el cálculo actual será borrado, y la base reiniciada a decimal."
 
-#: ../gcalctool/gtk.c:1176
+#: ../gcalctool/gtk.c:1179
 msgid "C_hange Mode"
 msgstr "_Cambiar de modo"
 
-#: ../gcalctool/gtk.c:1213
+#: ../gcalctool/gtk.c:1216
 msgid "Set Precision"
 msgstr "Establecer precisión"
 
-#: ../gcalctool/gtk.c:1228
+#: ../gcalctool/gtk.c:1231
 msgid "Significant _places:"
 msgstr "_Cifras significativas:"
 
-#: ../gcalctool/gtk.c:1254
+#: ../gcalctool/gtk.c:1257
 msgid "_Set"
 msgstr "E_stablecer"
 
-#: ../gcalctool/gtk.c:1481 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:1484 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Calculadora"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1693 ../gcalctool/gtk.c:1838
+#: ../gcalctool/gtk.c:1696 ../gcalctool/gtk.c:1841
 msgid "R"
 msgstr "R"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: ../gcalctool/gtk.c:1761
+#: ../gcalctool/gtk.c:1764
 msgid "_Inv"
 msgstr "_Inv"
 
-#: ../gcalctool/gtk.c:1769
+#: ../gcalctool/gtk.c:1772
 msgid "H_yp"
 msgstr "H_yp"
 
-#: ../gcalctool/gtk.c:1828
+#: ../gcalctool/gtk.c:1831
 msgid "Memory Registers"
 msgstr "Registros de memoria"
 
-#: ../gcalctool/gtk.c:1932
+#: ../gcalctool/gtk.c:1935
 msgid "Edit Constants..."
 msgstr "Editar constantes..."
 
-#: ../gcalctool/gtk.c:1932
+#: ../gcalctool/gtk.c:1935
 msgid "Edit Functions..."
 msgstr "Editar funciones..."
 
-#: ../gcalctool/gtk.c:2102
+#: ../gcalctool/gtk.c:2105
 msgid "Clipboard contained malformed calculation"
 msgstr "El portapapeles contenía cálculos malformados"
 
-#: ../gcalctool/gtk.c:2384
+#: ../gcalctool/gtk.c:2387
 #, c-format
 msgid "Other (%d) ..."
 msgstr "Otro (%d) …"
 
-#: ../gcalctool/gtk.c:2396
+#: ../gcalctool/gtk.c:2399
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+msgid ""
+"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr ""
 "Establecer la precisión de 0 a %d lugares numéricos. Actualmente está en %d "
 "lugares. [a]"
 
-#: ../gcalctool/gtk.c:2653
+#: ../gcalctool/gtk.c:2656
 msgid "Activated no operator precedence mode"
 msgstr "Activado el modo sin operador de precedencia"
 
-#: ../gcalctool/gtk.c:2663
+#: ../gcalctool/gtk.c:2666
 msgid "Activated expression mode with operator precedence"
 msgstr "Activado el modo de expresión con operador de precedencia"
 
-#: ../gcalctool/gtk.c:3000
+#: ../gcalctool/gtk.c:3003
 msgid "Accuracy value out of range"
 msgstr "Valor de precisión fuera de rango"
 
@@ -1559,4 +1561,3 @@ msgstr "Error, no se puede calcular el coseno"
 #: ../gcalctool.desktop.in.h:2
 msgid "Perform calculations"
 msgstr "Realizar cálculos"
-
