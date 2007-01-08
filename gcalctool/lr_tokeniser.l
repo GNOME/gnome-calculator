@@ -2,9 +2,9 @@
 
 %{
 
-/*  $Header$
+/*  $Header: /cvs/gnome/gcalctool/gcalctool/lr_tokeniser.l,v 1.7 2005/12/19 15:46:57 richb Exp $
  *
- *  Copyright (C) 2004-2005 Sami Pietila
+ *  Copyright (C) 2004-2007 Sami Pietila
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

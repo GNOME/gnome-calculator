@@ -4,7 +4,7 @@
 #
 # $Header$
 #
-# Copyright (c) 1987-2006 Sun Microsystems, Inc.
+# Copyright (c) 1987-2007 Sun Microsystems, Inc.
 # All Rights Reserved.
 #
 
