@@ -120,6 +120,9 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *undo;                   /* Undo menuitem */ 
     GtkWidget *redo;                   /* Redo menuitem */ 
 
+    GtkWidget* copy;		       /* Copy menuitem */
+    GtkWidget* paste;		       /* Paste menuitem */
+
     GtkWidget *display_item;           /* Calculator display. */
     GtkWidget *rframe;                 /* Register window. */
     GtkWidget *spframe;                /* Set Precision window. */
@@ -188,6 +191,7 @@ static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
 static void astz_proc(GtkAction *action);
 static void base_cb(GtkToggleButton *, gpointer);
+static void buffer_populate_popup_cb(GtkTextView *, GtkMenu *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
@@ -229,6 +233,7 @@ static void spframe_cancel_cb(GtkButton *, gpointer);
 static void spframe_ok_cb(GtkButton *, gpointer);
 static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
+static void update_copy_paste_status();
 static void gcalc_window_have_icons_notify(GConfClient *, guint,
                                             GConfEntry *, gpointer);
 static void gcalc_window_get_menu_items(XVars);
@@ -244,7 +249,7 @@ static XVars X;
 
 static const GtkActionEntry entries[] = {
     { "CalculatorMenu", NULL, N_("_Calculator") },
-    { "EditMenu",       NULL, N_("_Edit") },
+    { "EditMenu",       NULL, N_("_Edit"), NULL, NULL, G_CALLBACK(mb_proc) },
     { "ViewMenu",       NULL, N_("_View") },
     { "HelpMenu",       NULL, N_("_Help") },
 
@@ -1456,13 +1461,31 @@ create_bit_panel(GtkWidget *main_vbox)
     return(align);
 }
 
+
 void 
-set_redo_and_undo_button_sensitivity(int undo, 
-				     int redo)
+set_redo_and_undo_button_sensitivity(int undo, int redo)
 {
     gtk_widget_set_sensitive(X->undo, undo); 
     gtk_widget_set_sensitive(X->redo, redo);
 }
+
+
+static void
+update_copy_paste_status() {
+    GtkTextBuffer *buffer;
+    gboolean can_paste;
+    gboolean can_copy;
+    
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    
+    can_copy = gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(buffer));
+    can_paste = gtk_clipboard_wait_is_text_available(
+                            gtk_clipboard_get(X->clipboard_atom));
+    
+    gtk_widget_set_sensitive(GTK_WIDGET(X->copy), can_copy);
+    gtk_widget_set_sensitive(GTK_WIDGET(X->paste), can_paste);
+}
+
 
 static void
 create_kframe()
@@ -1551,6 +1574,10 @@ create_kframe()
     g_signal_connect(G_OBJECT(X->display_item), "button_release_event",
                      G_CALLBACK(mouse_button_cb),
                      NULL);
+
+    /* Detect when populating the right-click menu to enable pasting */
+    g_signal_connect(G_OBJECT(X->display_item), "populate-popup",
+                     G_CALLBACK(buffer_populate_popup_cb), NULL);
 
     gtk_text_view_set_justification(GTK_TEXT_VIEW(X->display_item),
                                     GTK_JUSTIFY_RIGHT);
@@ -1673,7 +1700,9 @@ create_kframe()
 
     X->undo = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Undo");
     X->redo = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Redo");
-
+    X->copy = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Copy");
+    X->paste = gtk_ui_manager_get_widget(X->ui, "/MenuBar/EditMenu/Paste");
+    
     set_redo_and_undo_button_sensitivity(0, 0);
 }
 
@@ -2174,7 +2203,41 @@ handle_selection()  /* Handle the GET function key being pressed. */
 }
 
 
+static void 
+popup_paste_cb(GtkMenuItem *menuitem, gpointer user_data)
+{
+    handle_selection();
+}
+
+
 static void
+for_each_menu(GtkWidget *widget, gpointer data) {
+
+    /* Find the "Paste" entry and activate it (see bug #317786). */
+    if (strcmp(G_OBJECT_TYPE_NAME(widget), "GtkImageMenuItem") == 0) {  
+        GtkWidget *label = gtk_bin_get_child(GTK_BIN(widget));
+
+        if (strcmp(gtk_label_get_text(GTK_LABEL(label)), "Paste") == 0) {
+            if (gtk_clipboard_wait_is_text_available(
+                        gtk_clipboard_get(X->clipboard_atom))) {
+                gtk_widget_set_sensitive(GTK_WIDGET(widget), TRUE);
+                g_signal_connect(GTK_OBJECT(widget), "activate",
+                                 G_CALLBACK(popup_paste_cb), NULL);
+            }
+        }
+    }
+}
+
+
+static void
+buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu, 
+                         gpointer user_data)
+{
+    gtk_container_foreach(GTK_CONTAINER(menu), for_each_menu, NULL);
+}
+
+
+static void 
 help_cb()
 {
 #ifndef DISABLE_GNOME
@@ -2687,6 +2750,8 @@ mb_proc(GtkAction *action)
     if (EQUAL(name, "Quit")) {
         save_win_position();
         exit(0);
+    } else if (EQUAL(name, "EditMenu")) {
+        update_copy_paste_status();
     } else if (EQUAL(name, "Copy")) {
         get_display();
     } else if (EQUAL(name, "Paste")) {
