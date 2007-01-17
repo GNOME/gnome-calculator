@@ -1240,6 +1240,7 @@ create_spframe()     /* Create auxiliary frame for Set Precision value. */
                                       GTK_UPDATE_IF_VALID);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
                               (double) v->accuracy);
+    gtk_entry_set_max_length(GTK_ENTRY(X->spframe_val), 2);
     gtk_widget_show(X->spframe_val);
     gtk_box_pack_start(GTK_BOX(hbox), X->spframe_val, FALSE, FALSE, 0);
 
