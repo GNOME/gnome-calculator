@@ -2120,8 +2120,30 @@ get_menu_entry(enum menu_type mtype, int offset)
 
 /*ARGSUSED*/
 static void
-get_proc(GtkClipboard *clipboard, const gchar *text, gpointer data)
+get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
+    gchar *end_buffer = (gchar *) (buffer + strlen(buffer));
+    gchar *dstp, *srcp, text[MAXLINE];
+
+    /* If the clipboard buffer contains any occurances of the "thousands
+     * separator", remove them.
+     */
+
+    srcp = (gchar *) buffer;
+    dstp = text;
+    while (srcp < end_buffer) {
+        if (*srcp == v->tsep[0]) {
+            if (strstr(srcp, v->tsep) == srcp) {
+                srcp += strlen(v->tsep);
+            } else {
+                *dstp++ = *srcp++;
+            }
+        } else {
+            *dstp++ = *srcp++;
+        }
+    }
+    *dstp++ = '\0';
+
     switch (v->syntax) {
         case npa: {
             int ret = lr_parse((char *) text, v->MPdisp_val);
