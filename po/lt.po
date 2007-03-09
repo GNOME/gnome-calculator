@@ -1,25 +1,25 @@
 # translation of lt.po to Lithuanian
 # Lithuanian translation of gcalctool
-# Copyright (C) 2003-2006 Free Software Foundation, Inc.
+# Copyright (C) 2003-2006, 2007 Free Software Foundation, Inc.
 #
 #
 # Gediminas Paulauskas <menesis@delfi.lt>, 2003.
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2003-2004.
 # Žygimantas Beručka <zygis@gnome.org>, 2004-2006.
 # Justina Klingaitė <justina.klingaite@gmail.com>, 2005.
-# Gintautas Miliauskas <gintas@akl.lt>, 2006.
+# Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-27 15:47+0200\n"
-"PO-Revision-Date: 2006-08-29 00:30+0300\n"
+"POT-Creation-Date: 2007-03-09 21:24+0200\n"
+"PO-Revision-Date: 2007-03-09 21:23+0200\n"
 "Last-Translator: Gintautas Miliauskas <gintas@akl.lt>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -936,13 +936,12 @@ msgid "Invalid bitwise operation parameter(s)"
 msgstr "Netaisyklingas bitų operacijos parametras (-ai)"
 
 #: ../gcalctool/functions.c:539
-#, fuzzy
 msgid "Invalid modulus operation parameter(s)"
-msgstr "Netaisyklingas bitų operacijos parametras (-ai)"
+msgstr "Netaisyklingas liekanos operacijos parametras (-ai)"
 
 #: ../gcalctool/functions.c:543
 msgid "Math operation error"
-msgstr ""
+msgstr "Matematinės operacijos klaida"
 
 #: ../gcalctool/functions.c:547
 msgid "Malformed expression"
@@ -973,9 +972,8 @@ msgid "Malformed parenthesis expression"
 msgstr "Blogai suformuota skliaustų išraiška"
 
 #: ../gcalctool/functions.c:1468
-#, fuzzy
 msgid "No sane value to do bitwise shift"
-msgstr "Nėra tinkamos reikšmės konvertavimui"
+msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
 
 #: ../gcalctool/functions.c:1515
 msgid "Numeric stack error"
@@ -1033,9 +1031,9 @@ msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: netinkamas sintaksės režimas [%s]\n"
 
 #: ../gcalctool/get.c:409
-#, fuzzy, c-format
+#, c-format
 msgid "%s: invalid bitcalc choice [%s]\n"
-msgstr "%s: netinkamas sintaksės režimas [%s]\n"
+msgstr "%s: netinkamas bitcalc pasirinkimas [%s]\n"
 
 #: ../gcalctool/get.c:455
 #, c-format
@@ -1235,12 +1233,11 @@ msgstr "Rodyti tūkstančių skyriklį"
 
 #: ../gcalctool/gtk.c:346
 msgid "Show Bitcalculating _Extension"
-msgstr ""
+msgstr "Rodyti bitų skaičiavimo priedą"
 
 #: ../gcalctool/gtk.c:347
-#, fuzzy
 msgid "Show bitcalculating extension"
-msgstr "Rodyti nulius skaičiaus gale"
+msgstr "Rodyti bitų skaičiavimo priedą"
 
 #: ../gcalctool/gtk.c:348
 msgid "_Memory Registers"
@@ -1339,19 +1336,16 @@ msgid "Set other precision"
 msgstr "Nustatyti kitą tikslumą"
 
 #: ../gcalctool/gtk.c:380
-#, fuzzy
 msgid "_Left-to-right Precedence"
-msgstr "Na_udoti aritmetinę pirmenybę"
+msgstr "Pirmenybė _iš kairės į dešinę"
 
 #: ../gcalctool/gtk.c:381
-#, fuzzy
 msgid "Use Left-right Precedence"
-msgstr "Naudoti aritmetinę pirmenybę"
+msgstr "Naudoti pirmenybę iš kairės į dešinę"
 
 #: ../gcalctool/gtk.c:382
-#, fuzzy
 msgid "A_rithmetic Precedence"
-msgstr "Naudoti aritmetinę pirmenybę"
+msgstr "A_ritmetinė pirmenybė"
 
 #: ../gcalctool/gtk.c:383
 msgid "Use Arithmetic Precedence"
@@ -1479,17 +1473,17 @@ msgid "_Do not warn me again"
 msgstr "_Daugiau manęs neperspėti"
 
 #: ../gcalctool/gtk.c:1140
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%sChanging Modes Clears Calculation%s\n"
 "\n"
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
 msgstr ""
-"<big><b>Keičiant režimus išvalomi skaičiavimai</b></big>\n"
+"%sKeičiant veiksenas išvalomi skaičiavimai%s\n"
 "\n"
-"Jums keičiant režimus, esami skaičiavimai bus išvalyti, ir pagrindas bus "
-"nustatytas į dešimtainį."
+"Keičiant veiksenas esami skaičiavimai bus išvalyti ir bazė bus nustatyta į "
+"dešimtainę."
 
 #: ../gcalctool/gtk.c:1181
 msgid "C_hange Mode"
@@ -1538,16 +1532,16 @@ msgstr "Redaguoti konstantas..."
 msgid "Edit Functions..."
 msgstr "Redaguoti funkcijas..."
 
-#: ../gcalctool/gtk.c:2154
+#: ../gcalctool/gtk.c:2159
 msgid "Clipboard contained malformed calculation"
 msgstr "Podėlyje buvo netinkami skaičiavimai"
 
-#: ../gcalctool/gtk.c:2470
+#: ../gcalctool/gtk.c:2475
 #, c-format
 msgid "Other (%d) ..."
 msgstr "Kita (%d) ..."
 
-#: ../gcalctool/gtk.c:2482
+#: ../gcalctool/gtk.c:2487
 #, c-format
 msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
@@ -1555,15 +1549,15 @@ msgstr ""
 "Nustatyti tikslumą nuo 0 iki %d skaičių po kablelio. Šiuo metu yra naudojama "
 "%d. [a]"
 
-#: ../gcalctool/gtk.c:2739
+#: ../gcalctool/gtk.c:2744
 msgid "Activated no operator precedence mode"
 msgstr "Aktyvuota operatorių pirmenybės nebuvimo veiksena"
 
-#: ../gcalctool/gtk.c:2749
+#: ../gcalctool/gtk.c:2754
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktyvuota išraiškos veiksena su operatorių pirmenybe"
 
-#: ../gcalctool/gtk.c:3088
+#: ../gcalctool/gtk.c:3093
 msgid "Accuracy value out of range"
 msgstr "Tikslumo reikšmė už ribų"
 
