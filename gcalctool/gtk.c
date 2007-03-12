@@ -2245,7 +2245,7 @@ for_each_menu(GtkWidget *widget, gpointer data) {
     if (strcmp(G_OBJECT_TYPE_NAME(widget), "GtkImageMenuItem") == 0) {  
         GtkWidget *label = gtk_bin_get_child(GTK_BIN(widget));
 
-        if (strcmp(gtk_label_get_text(GTK_LABEL(label)), "Paste") == 0) {
+        if (strcmp(gtk_label_get_text(GTK_LABEL(label)), _("Paste")) == 0) {
             if (gtk_clipboard_wait_is_text_available(
                         gtk_clipboard_get(X->clipboard_atom))) {
                 gtk_widget_set_sensitive(GTK_WIDGET(widget), TRUE);
