@@ -600,7 +600,7 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
         g_signal_connect(G_OBJECT(renderer), "edited",
                          G_CALLBACK(cell_edited), model);
     }
-    g_object_set_data(G_OBJECT(renderer), "column", (gint *) colno);
+    g_object_set_data(G_OBJECT(renderer), "column", GINT_TO_POINTER(colno));
 
     if (editable) {
         gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(treeview),
@@ -1359,17 +1359,17 @@ bit_toggled(GtkWidget *event_box, GdkEventButton *event, gpointer data)
     unsigned long long lval;
     int n, MP1[MP_SIZE];
 
-    n = MAXBITS - (int) data - 1;
+    n = MAXBITS - GPOINTER_TO_INT(data) - 1;
     MPstr_to_num(v->display, v->base, MP1);
     mpcmd(MP1, &number);
     lval = (long long) number;
 
     if (lval & (1LL << n)) {
         lval &= ~(1LL << n);
-        gtk_label_set_text(GTK_LABEL(X->bits[(int) data]), " 0");
+        gtk_label_set_text(GTK_LABEL(X->bits[GPOINTER_TO_INT(data)]), " 0");
     } else {
         lval |=  (1LL << n);
-        gtk_label_set_text(GTK_LABEL(X->bits[(int) data]), " 1");
+        gtk_label_set_text(GTK_LABEL(X->bits[GPOINTER_TO_INT(data)]), " 1");
     }
 
     number = (double) lval;
@@ -1422,7 +1422,7 @@ create_bit_panel(GtkWidget *main_vbox)
                          (GtkAttachOptions) (GTK_SHRINK),
                          (GtkAttachOptions) (0), 0, 0);
         g_signal_connect(G_OBJECT(eb[i]), "button_press_event",
-                         G_CALLBACK(bit_toggled), (gpointer) i);
+                         G_CALLBACK(bit_toggled), GINT_TO_POINTER(i));
     }
 
     for (i = 0; i < MAXGAPS; i++) {
@@ -1752,7 +1752,7 @@ create_mode_panel(GtkWidget *main_vbox)
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
         gtk_tooltips_set_tip(X->tips, X->trig[i], _(ttype_desc[i]), "");
-        g_object_set_data(G_OBJECT(X->trig[i]), "trig", (gpointer) i);
+        g_object_set_data(G_OBJECT(X->trig[i]), "trig", GINT_TO_POINTER(i));
         gtk_widget_show(X->trig[i]);
         gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
@@ -1773,7 +1773,7 @@ create_mode_panel(GtkWidget *main_vbox)
     for (i = 0; i < MAXBASES; i++) {
         X->base[i] = gtk_radio_button_new_with_mnemonic(NULL, _(base_str[i]));
         gtk_tooltips_set_tip(X->tips, X->base[i], _(base_desc[i]), "");
-        g_object_set_data(G_OBJECT(X->base[i]), "base", (gpointer) i);
+        g_object_set_data(G_OBJECT(X->base[i]), "base", GINT_TO_POINTER(i));
         gtk_widget_show(X->base[i]);
         gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->base[i]), base_gr);
@@ -1812,7 +1812,7 @@ create_mode_panel(GtkWidget *main_vbox)
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->disp[i] = gtk_radio_button_new_with_mnemonic(NULL, _(dtype_str[i]));
         gtk_tooltips_set_tip(X->tips, X->disp[i], _(dtype_desc[i]), "");
-        g_object_set_data(G_OBJECT(X->disp[i]), "disp", (gpointer) i);
+        g_object_set_data(G_OBJECT(X->disp[i]), "disp", GINT_TO_POINTER(i));
         gtk_widget_show(X->disp[i]);
         gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->disp[i]), disp_gr);
@@ -2004,11 +2004,11 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
     gtk_widget_show(accel_label);
     gtk_widget_show(menu_item);
 
-    g_object_set_data(G_OBJECT(menu_item), "mtype", (gpointer) menu_no);
+    g_object_set_data(G_OBJECT(menu_item), "mtype", GINT_TO_POINTER(menu_no));
     gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[menu_no]), menu_item);
 
     g_signal_connect(G_OBJECT(menu_item), "activate",
-                     G_CALLBACK(menu_proc_cb), (gpointer) user_data);
+                     G_CALLBACK(menu_proc_cb), GINT_TO_POINTER(user_data));
 }
 
 
@@ -2549,7 +2549,7 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             set_accessible_name(Gtk_buttons[n], buttons[n]);
             if (buttons[n].mtype == M_NONE) {
                 g_signal_connect(G_OBJECT(Gtk_buttons[n]), "clicked",
-                             G_CALLBACK(button_proc), (gpointer) (j*cols + i));
+                             G_CALLBACK(button_proc), GINT_TO_POINTER(j*cols + i));
             }
             SNPRINTF(name, MAXLINE, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
@@ -2642,9 +2642,9 @@ create_menu(enum menu_type mtype, struct button *n)
 static void
 menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 {
-    int mtype = (int) g_object_get_data(G_OBJECT(mi), "mtype");
+    int mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), "mtype"));
 
-    v->current->value[0] = '0' + (int) user_data;
+    v->current->value[0] = '0' + GPOINTER_TO_INT(user_data);
     
     handle_menu_selection(X->mrec[mtype], v->current->value[0]);
 }
@@ -2721,9 +2721,11 @@ make_menu_button(gchar *label_text, int n)
  
     gtk_widget_set_events(button, GDK_BUTTON_PRESS_MASK);
     g_signal_connect(G_OBJECT(button), "clicked",
-                     G_CALLBACK(menu_button_button_press_cb), (gpointer) n);
+                     G_CALLBACK(menu_button_button_press_cb),
+                     GINT_TO_POINTER(n));
     g_signal_connect(G_OBJECT(button), "key-press-event",
-                     G_CALLBACK(menu_button_key_press_cb), (gpointer) n);
+                     G_CALLBACK(menu_button_key_press_cb),
+                     GINT_TO_POINTER(n));
  
     gtk_widget_show_all(button);
  
