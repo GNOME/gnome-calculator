@@ -395,7 +395,7 @@ str_replace(char **str, char *from, char *to)
     for (i = 0; len-i >= flen; i++) {
         if (!strncasecmp(from, *str+i, flen)) {
             char *print;
-            int j = i+3;
+            int j = i+flen;
             char *prefix = malloc(i+1);
             char *postfix = malloc(len-j+1);
 
@@ -403,7 +403,7 @@ str_replace(char **str, char *from, char *to)
             memset(prefix, 0, i+1);
             memset(postfix, 0, len-j+1);
             memcpy(prefix, *str, i);
-            memcpy(postfix, *str+i+3, len-j);
+            memcpy(postfix, *str+i+flen, len-j);
 
             print = malloc(strlen(to)+i+len-j+1);
             SPRINTF(print, "%s%s%s", prefix, to, postfix);
@@ -503,8 +503,27 @@ do_expression()
     } else if (e->button.flags & bsp) {
         if (exp_has_postfix(e->expression, "Ans")) { 
             char *ans = make_number(e->ans, v->base, FALSE);   
+
             str_replace(&e->expression, "Ans", ans);
-        } 
+        } else {
+            char reg[3];
+            int n = '0';
+            int i;
+
+            for (i = 0; i < 10; i++) {
+                snprintf(reg, 3, "R%c", n+i);
+                if (exp_has_postfix(e->expression, reg)) {
+                    int MP_reg[MP_SIZE];
+                    char *reg_val;
+
+                    do_rcl_reg(i, MP_reg);
+                    reg_val = make_number(MP_reg, v->base, FALSE);
+                    /* Remove "Rx" postfix. */
+                    exp_del_char(&e->expression, 2);
+                    exp_append(reg_val);
+                }
+            }
+        }
         exp_del_char(&e->expression, 1);
     } else if (e->button.flags & neg) {
         exp_negate();

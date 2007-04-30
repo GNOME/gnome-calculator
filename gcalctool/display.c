@@ -603,6 +603,22 @@ refresh_display()
 
                 localize_number(localized, ans);
                 str_replace(&str, "Ans", localized);
+
+                { /* Replace registers with values. */
+                    char reg[3];
+                    int n = '0';
+                    int i;
+
+                    for (i = 0; i < 10; i++) {
+                        char *reg_val;
+                        int MP_reg[MP_SIZE];
+
+                        snprintf(reg, 3, "R%c", n+i);
+                        do_rcl_reg(i, MP_reg);
+                        reg_val = make_number(MP_reg, v->base, FALSE);
+                        str_replace(&str, reg, reg_val);
+                    }
+                }
                 write_display(str);
                 free(str);
             } else {
