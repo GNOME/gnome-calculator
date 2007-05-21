@@ -400,6 +400,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int i, inum;
     int exp      = 0;
     int exp_sign = 1;
+    int negate = 0;
     char *lnp = get_localized_numeric_point();
     assert(lnp);
 
@@ -408,6 +409,18 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     mpcim(&basevals[(int) base], MPbase);
 
     optr = str;
+
+    /* Remove any initial spaces or tabs. */
+    while (*optr == ' ' || *optr == '\t') {
+        optr++;
+    }
+
+    /* Check if this is a negative number. */
+    if (*optr == '-') {
+        negate = 1;
+        optr++;
+    }
+
     while ((inum = char_val(*optr)) >= 0) {
         mpmul(MPval, MPbase, MPval);
         mpaddi(MPval, &inum, MPval);
@@ -443,6 +456,10 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     if (v->key_exp) {
         mppwr(MPbase, &exp, MP1);
         mpmul(MPval, MP1, MPval);
+    }
+
+    if (negate == 1) {
+        mpneg(MPval, MPval);
     }
 }
 
