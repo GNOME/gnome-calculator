@@ -35,9 +35,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
-#ifndef DISABLE_GNOME
-#include <gnome.h>
-#endif /*DISABLE_GNOME*/
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 #include "mpmath.h"
@@ -196,9 +193,6 @@ static void cell_edited(GtkCellRendererText *,
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_menu_item_with_markup(char *, int, int);
-#ifndef DISABLE_GNOME
-static void die_cb(GnomeClient *client, gpointer data);
-#endif /*DISABLE_GNOME*/
 static void disp_cb(GtkToggleButton *, gpointer);
 static void hyp_cb(GtkToggleButton *, gpointer);
 static void inv_cb(GtkToggleButton *, gpointer);
@@ -238,6 +232,7 @@ static void gcalc_window_have_icons_notify(GConfClient *, guint,
                                             GConfEntry *, gpointer);
 static void gcalc_window_get_menu_items(XVars);
 static void gcalc_window_set_unset_image(gboolean);
+static void help_display(void);
 
 #define MENU_KEY_DIR "/desktop/gnome/interface"
 
@@ -268,10 +263,8 @@ static const GtkActionEntry entries[] = {
       N_("Redo"), G_CALLBACK(mb_proc) },
 
 
-#ifndef DISABLE_GNOME
     { "Contents", GTK_STOCK_HELP, NULL, "F1",
       N_("Show help contents"), G_CALLBACK(mb_proc) },
-#endif /*DISABLE_GNOME*/
     { "About", GTK_STOCK_ABOUT, NULL, NULL,
       N_("Show the About Gcalctool dialog"), G_CALLBACK(about_cb) },
 
@@ -424,9 +417,7 @@ static const gchar ui_info[] =
 "      <menuitem action='ArithmeticPrecedence'/>"
 "    </menu>"
 "    <menu action='HelpMenu'>"
-#ifndef DISABLE_GNOME
 "      <menuitem action='Contents'/>"
-#endif /*DISABLE_GNOME*/
 "      <menuitem action='About'/>"
 "    </menu>"
 "  </menubar>"
@@ -485,9 +476,6 @@ static const gchar ui_info[] =
 int
 main(int argc, char **argv)
 {
-#ifndef DISABLE_GNOME
-    GnomeClient  *client;
-#endif /*DISABLE_GNOME*/
 
     v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
     X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
@@ -496,16 +484,7 @@ main(int argc, char **argv)
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-#ifndef DISABLE_GNOME
-    gnome_program_init("gcalctool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
-                        NULL, NULL, NULL);
-
-    /* Connect to the die signal. */
-    client = gnome_master_client();
-    g_signal_connect(client, "die", G_CALLBACK(die_cb), NULL);
-#else
     gtk_init(&argc, &argv);
-#endif /*DISABLE_GNOME*/
 
     X->lnp = get_localized_numeric_point();
 
@@ -783,26 +762,7 @@ cfframe_response_cb(GtkDialog *dialog, gint id, gpointer data)
     GArray *entries = (GArray *) g_object_get_data(G_OBJECT(dialog), "entries");
 
     if (id == GTK_RESPONSE_HELP) {
-#ifndef DISABLE_GNOME
-        GError *error = NULL;
-
-        gnome_help_display_desktop(NULL, "gcalctool", "gcalctool", 
-                                   NULL, &error);
-
-        if (error) {
-            GtkWidget *d;
-
-            d = gtk_message_dialog_new(NULL,
-                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                             GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                             error->message);
-            gtk_dialog_run(GTK_DIALOG(d));
-            gtk_widget_destroy(d);
-            g_error_free(error);
-            error = NULL;
-        }
-#endif /*DISABLE_GNOME*/
-        return;
+        help_display();
     }
 
     if (id == GTK_RESPONSE_ACCEPT) {
@@ -1289,9 +1249,7 @@ gcalc_window_get_menu_items(XVars X)
     GSList *p = NULL;
     gint i = 0;
     static const gchar *action_image[] = { "Quit", "Copy", "Paste", 
-#ifndef DISABLE_GNOME
                                      "Contents", 
-#endif /*DISABLE_GNOME*/
                                      "About", NULL };
 
     while (action_image[i]) {
@@ -1909,16 +1867,6 @@ create_rframe()
 }
 
 
-#ifndef DISABLE_GNOME
-/*ARGSUSED*/
-static void
-die_cb(GnomeClient *client, gpointer data)
-{
-    gtk_main_quit();
-}
-#endif /*DISABLE_GNOME*/
-
-
 /*ARGSUSED*/
 static gboolean
 dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
@@ -2268,16 +2216,7 @@ buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu,
 static void 
 help_cb()
 {
-#ifndef DISABLE_GNOME
-    GError *error = NULL;
-
-    gnome_help_display_desktop(NULL, "gcalctool", "gcalctool", NULL, &error);
-    if (error) {
-        g_warning("Help error: %s\n", error->message);
-        g_error_free(error);
-        error = NULL;
-    }
-#endif /*DISABLE_GNOME*/
+    help_display();
 }
 
 
@@ -3764,3 +3703,54 @@ win_display(enum fcp_type fcptype, int state)
         gtk_widget_hide(f);
     }
 }
+
+static void
+help_display(void)
+{
+	GError *error = NULL;
+	char *command;
+	const char *lang;
+	char *uri = NULL;
+	GdkScreen *gscreen;
+
+	int i;
+
+	const char * const * langs = g_get_language_names ();
+
+	for (i = 0; langs[i]; i++) {
+		lang = langs[i];
+		if (strchr (lang, '.')) {
+			continue;
+		}
+
+		uri = g_build_filename(PACKAGE_DATA_DIR,
+				       "/gnome/help/gcalctool/",
+					lang,
+				       "/gcalctool.xml",
+					NULL);
+					
+		if (g_file_test (uri, G_FILE_TEST_EXISTS)) {
+                    break;
+		}
+	}
+	
+	command = g_strconcat ("gnome-open ghelp://", uri, NULL);
+	gscreen = gdk_screen_get_default();
+	gdk_spawn_command_line_on_screen (gscreen, command, &error);
+	if (error) {
+		GtkWidget *d;
+
+	    d = gtk_message_dialog_new(NULL,
+				GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+				error->message);
+		gtk_dialog_run(GTK_DIALOG(d));
+		gtk_widget_destroy(d);
+		g_error_free(error);
+		error = NULL;
+	}
+
+	g_free (command);
+	g_free (uri);
+}
+
