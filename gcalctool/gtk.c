@@ -2070,13 +2070,14 @@ get_menu_entry(enum menu_type mtype, int offset)
 static void
 get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
-    gchar *dstp, *end_buffer, *srcp, text[MAXLINE];
+    gchar *dstp, *end_buffer, *srcp, *text;
 
     if (buffer == NULL) {
         return;
     }
 
     end_buffer = (gchar *) (buffer + strlen(buffer));
+    text = malloc(strlen(buffer)+1);
 
     /* If the clipboard buffer contains any occurances of the "thousands
      * separator", remove them.
@@ -2118,6 +2119,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
         default:
             assert(0);
     }
+    free(text);
 }
 
 
