@@ -177,7 +177,15 @@ calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
 
     val = 0;
     mpcim(&val, MP0);
-    if (mplt(MPx, MP0)) {          /* Is x < 0 ? */
+
+    /* Check if both x and y are zero. If yes, then just return 1.
+     * See gcalctool bug #451286.
+     */
+    if (mpeq(MPx, MP0) && mpeq(MPy, MP0)) {
+        val = 1;
+        mpcim(&val, MPres);
+
+    } else if (mplt(MPx, MP0)) {          /* Is x < 0 ? */
         int MPtmp[MP_SIZE];
 
         mpcmim(MPy, MPtmp);
