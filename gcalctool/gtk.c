@@ -1361,6 +1361,7 @@ create_bit_panel(GtkWidget *main_vbox)
     gtk_box_pack_start(GTK_BOX(main_vbox), align, FALSE, TRUE, 0);
 
     table = gtk_table_new(4, 39, FALSE);
+    gtk_widget_set_direction(table, GTK_TEXT_DIR_LTR);
     gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
     for (i = 0; i < MAXBITS; i++) {
@@ -1476,6 +1477,7 @@ create_kframe()
     X->kvbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(X->kvbox);
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
+    gtk_widget_set_direction(X->kvbox, GTK_TEXT_DIR_LTR );
     gtk_widget_show(X->kvbox);
 
     X->actions = gtk_action_group_new("Actions");
@@ -1634,6 +1636,7 @@ create_kframe()
             break;
     }
 
+    gtk_widget_set_direction(view_widget, GTK_TEXT_DIR_LTR);
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(view_widget), TRUE);
     gcalc_window_get_menu_items(X);
 
@@ -1701,6 +1704,7 @@ create_mode_panel(GtkWidget *main_vbox)
     vbox = gtk_vbox_new(FALSE, 0);
     gtk_widget_ref(vbox);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
+    gtk_widget_set_direction(vbox, GTK_TEXT_DIR_LTR);
 
 /* Make Trig. type radio button widgets. */
  
@@ -2465,6 +2469,8 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
     int i, j, n;
     GtkWidget *l;
     GtkWidget *table = gtk_table_new(rows, cols, TRUE);
+
+    gtk_widget_set_direction(table, GTK_TEXT_DIR_LTR);
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 6);
     gtk_table_set_col_spacings(GTK_TABLE(table), 6);
