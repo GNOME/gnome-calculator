@@ -91,7 +91,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GConfClient *client;
     GtkUIManager *ui;
     GtkActionGroup *actions;
-    GtkTooltips *tips;
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
@@ -494,7 +493,6 @@ main(int argc, char **argv)
     gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
 
     X->kbd_accel = gtk_accel_group_new();
-    X->tips = gtk_tooltips_new();
     X->dpy = GDK_DISPLAY();
 
     gtk_window_set_default_icon_name("gnome-calculator");
@@ -1713,7 +1711,7 @@ create_mode_panel(GtkWidget *main_vbox)
  
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
-        gtk_tooltips_set_tip(X->tips, X->trig[i], _(ttype_desc[i]), "");
+	gtk_widget_set_tooltip_text (X->trig[i], _(ttype_desc[i]));
         g_object_set_data(G_OBJECT(X->trig[i]), "trig", GINT_TO_POINTER(i));
         gtk_widget_show(X->trig[i]);
         gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
@@ -1734,7 +1732,7 @@ create_mode_panel(GtkWidget *main_vbox)
 
     for (i = 0; i < MAXBASES; i++) {
         X->base[i] = gtk_radio_button_new_with_mnemonic(NULL, _(base_str[i]));
-        gtk_tooltips_set_tip(X->tips, X->base[i], _(base_desc[i]), "");
+	 gtk_widget_set_tooltip_text (X->base[i], _(base_desc[i]));
         g_object_set_data(G_OBJECT(X->base[i]), "base", GINT_TO_POINTER(i));
         gtk_widget_show(X->base[i]);
         gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
@@ -1751,7 +1749,7 @@ create_mode_panel(GtkWidget *main_vbox)
 /* Make Hyp and Inv trigonometric check boxes. */
 
     X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
-    gtk_tooltips_set_tip(X->tips, X->inv, _(inv_desc), "");
+    gtk_widget_set_tooltip_text (X->inv, _(inv_desc));
     gtk_widget_show(X->inv);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
     access_object = gtk_widget_get_accessible(X->inv);
@@ -1759,7 +1757,7 @@ create_mode_panel(GtkWidget *main_vbox)
     g_signal_connect(G_OBJECT(X->inv), "toggled", G_CALLBACK(inv_cb), NULL);
 
     X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
-    gtk_tooltips_set_tip(X->tips, X->hyp, _(hyp_desc), "");
+    gtk_widget_set_tooltip_text (X->hyp, _(hyp_desc));
     gtk_widget_show(X->hyp);
     gtk_box_pack_start(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
     access_object = gtk_widget_get_accessible(X->hyp);
@@ -1773,7 +1771,7 @@ create_mode_panel(GtkWidget *main_vbox)
                                                                 
     for (i = 0; i < MAXTRIGMODES; i++) {
         X->disp[i] = gtk_radio_button_new_with_mnemonic(NULL, _(dtype_str[i]));
-        gtk_tooltips_set_tip(X->tips, X->disp[i], _(dtype_desc[i]), "");
+	gtk_widget_set_tooltip_text (X->disp[i], _(dtype_desc[i]));
         g_object_set_data(G_OBJECT(X->disp[i]), "disp", GINT_TO_POINTER(i));
         gtk_widget_show(X->disp[i]);
         gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);
@@ -2431,7 +2429,7 @@ set_accuracy_tooltip(int accuracy)
     snprintf(tooltip, MAXLINE, 
             _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"),
             MAXACC, accuracy);
-    gtk_tooltips_set_tip(X->tips, BUT_ACC, tooltip, "");
+    gtk_widget_set_tooltip_text (BUT_ACC, tooltip);
 }
 
 
@@ -2501,8 +2499,7 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             SNPRINTF(name, MAXLINE, "%s_button%1d", tag, n);
             gtk_widget_set_name(Gtk_buttons[n], name);
             if (buttons[n].hstr != NULL) {
-                gtk_tooltips_set_tip(X->tips, Gtk_buttons[n],
-                                     _(buttons[n].hstr), "");
+		gtk_widget_set_tooltip_text (Gtk_buttons[n],_(buttons[n].hstr));
             }
             g_object_set_data(G_OBJECT(Gtk_buttons[n]),
                               "button", &buttons[n]);

@@ -17,7 +17,7 @@ PKG_CHECK_MODULES(ATK, atk >= 1.5)
 AC_SUBST(ATK_CFLAGS)
 AC_SUBST(ATK_LIBS)
 
-pkg_modules="gtk+-2.0 >= 2.6 gobject-2.0 gdk-x11-2.0 glib-2.0 atk gdk-pixbuf-2.0"
+pkg_modules="gtk+-2.0 >= 2.11.6 gobject-2.0 gdk-x11-2.0 glib-2.0 atk gdk-pixbuf-2.0"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
