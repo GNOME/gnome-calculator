@@ -1,22 +1,27 @@
+# translation of sk.po to Slovak
 # Slovak translations for gcalctool package
 # Slovenské preklady pre balík gcalctool.
-# Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004, 2005, 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
+#
+# $Id: sk.po,v 1.33 2005/10/16 17:25:17 marcel Exp $
+#
 # Marcel Telka <marcel@telka.sk>, 2003, 2004, 2005.
-#
-# $Id$
-#
+# Peter Tuharsky <tuharsky@misbb.sk>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool\n"
+"Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-16 19:21+0200\n"
-"PO-Revision-Date: 2005-10-16 19:24+0200\n"
-"Last-Translator: Marcel Telka <marcel@telka.sk>\n"
+"POT-Creation-Date: 2007-09-15 17:39+0200\n"
+"PO-Revision-Date: 2007-09-09 20:59+0100\n"
+"Last-Translator: Peter Tuhársky <tuharsky@misbb.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Poedit-Country: SLOVAKIA\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. Strings for each base value.
 #: ../gcalctool/calctool.c:41
@@ -87,21 +92,21 @@ msgid "Set inverse option for trigonometric functions"
 msgstr "Nastaviť inverznú voľbu pre trigonometrické funkcie"
 
 #. Mode titles to be added to the titlebar.
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:360
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:380
 msgid "Basic"
-msgstr "Základný"
+msgstr "Základná"
 
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:362
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:382
 msgid "Advanced"
-msgstr "Rozšírený"
+msgstr "Rozšírená"
 
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:364
+#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:384
 msgid "Financial"
-msgstr "Finančný"
+msgstr "Finančná"
 
-#: ../gcalctool/calctool.c:73 ../gcalctool/gtk.c:366
+#: ../gcalctool/calctool.c:73 ../gcalctool/gtk.c:386
 msgid "Scientific"
-msgstr "Vedecký"
+msgstr "Vedecká"
 
 #: ../gcalctool/calctool.c:73
 msgid "Expression"
@@ -133,829 +138,861 @@ msgstr "Nastaviť trigonometricky typ na gradiány"
 msgid "Set trigonometric type to radians"
 msgstr "Nastaviť trigonometricky typ na radiány"
 
-#: ../gcalctool/calctool.c:134
+#: ../gcalctool/calctool.c:135
 msgid "7"
 msgstr "7"
 
-#: ../gcalctool/calctool.c:136
+#: ../gcalctool/calctool.c:137
 msgid "Numeric 7"
 msgstr "Číslica 7"
 
-#: ../gcalctool/calctool.c:146
+#: ../gcalctool/calctool.c:147
 msgid "8"
 msgstr "8"
 
-#: ../gcalctool/calctool.c:148
+#: ../gcalctool/calctool.c:149
 msgid "Numeric 8"
 msgstr "Číslica 8"
 
-#: ../gcalctool/calctool.c:158
+#: ../gcalctool/calctool.c:159
 msgid "9"
 msgstr "9"
 
-#: ../gcalctool/calctool.c:160
+#: ../gcalctool/calctool.c:161
 msgid "Numeric 9"
 msgstr "Číslica 9"
 
-#: ../gcalctool/calctool.c:170 ../gcalctool/calctool.c:178
-msgid "/"
+#. Note to translators: this is a division sign (÷)
+#: ../gcalctool/calctool.c:172
+msgid "÷"
 msgstr "÷"
 
-#: ../gcalctool/calctool.c:171
+#: ../gcalctool/calctool.c:173
 msgid "Divide"
 msgstr "Delenie"
 
-#: ../gcalctool/calctool.c:182
+#: ../gcalctool/calctool.c:180
+msgid "/"
+msgstr "÷"
+
+#: ../gcalctool/calctool.c:184
 msgid "("
 msgstr "("
 
-#: ../gcalctool/calctool.c:183
+#: ../gcalctool/calctool.c:185
 msgid "Start group of calculations"
 msgstr "Začiatok skupiny výpočtov"
 
-#: ../gcalctool/calctool.c:184
+#: ../gcalctool/calctool.c:186
 msgid "Left bracket"
 msgstr "Ľavá zátvorka"
 
-#: ../gcalctool/calctool.c:194
+#. Note to translators: Bksp is short for Backspace.
+#: ../gcalctool/calctool.c:197
 msgid "Bksp"
 msgstr "<-"
 
-#: ../gcalctool/calctool.c:195
+#: ../gcalctool/calctool.c:198
 msgid "Remove rightmost character from displayed value"
 msgstr "Odstrániť znak, ktorý je najviac vpravo, zo zobrazenej hodnoty"
 
-#: ../gcalctool/calctool.c:196
+#: ../gcalctool/calctool.c:199
 msgid "Backspace"
 msgstr "Vrátiť"
 
-#: ../gcalctool/calctool.c:206
+#: ../gcalctool/calctool.c:209
 msgid "CE"
 msgstr "CE"
 
-#: ../gcalctool/calctool.c:207
+#: ../gcalctool/calctool.c:210
 msgid "Clear displayed value"
 msgstr "Vymazať zobrazenú hodnotu"
 
-#: ../gcalctool/calctool.c:208
+#: ../gcalctool/calctool.c:211
 msgid "Clear entry"
 msgstr "Vymazať položku"
 
-#: ../gcalctool/calctool.c:218
+#. Note to translators: Clr is short for Clear.
+#: ../gcalctool/calctool.c:222
 msgid "Clr"
 msgstr "Clr"
 
-#: ../gcalctool/calctool.c:219
+#: ../gcalctool/calctool.c:223
 msgid "Clear displayed value and any partial calculation"
 msgstr "Vymazať zobrazenú hodnotu a prípadný čiastočný výpočet"
 
-#: ../gcalctool/calctool.c:220
+#: ../gcalctool/calctool.c:224
 msgid "Clear"
 msgstr "Vymazať"
 
-#: ../gcalctool/calctool.c:232
+#: ../gcalctool/calctool.c:236
 msgid "4"
 msgstr "4"
 
-#: ../gcalctool/calctool.c:234
+#: ../gcalctool/calctool.c:238
 msgid "Numeric 4"
 msgstr "Číslica 4"
 
-#: ../gcalctool/calctool.c:244
+#: ../gcalctool/calctool.c:248
 msgid "5"
 msgstr "5"
 
-#: ../gcalctool/calctool.c:246
+#: ../gcalctool/calctool.c:250
 msgid "Numeric 5"
 msgstr "Číslica 5"
 
-#: ../gcalctool/calctool.c:256
+#: ../gcalctool/calctool.c:260
 msgid "6"
 msgstr "6"
 
-#: ../gcalctool/calctool.c:258
+#: ../gcalctool/calctool.c:262
 msgid "Numeric 6"
 msgstr "Číslica 6"
 
-#: ../gcalctool/calctool.c:268 ../gcalctool/calctool.c:276
-msgid "*"
+#. Note to translators: this is a multiplication sign (*)
+#: ../gcalctool/calctool.c:273
+msgid "×"
 msgstr "×"
 
-#: ../gcalctool/calctool.c:269
+#: ../gcalctool/calctool.c:274
 msgid "Multiply"
 msgstr "Násobenie"
 
-#: ../gcalctool/calctool.c:280
+#: ../gcalctool/calctool.c:281
+msgid "*"
+msgstr "×"
+
+#: ../gcalctool/calctool.c:285
 msgid ")"
 msgstr ")"
 
-#: ../gcalctool/calctool.c:281
+#: ../gcalctool/calctool.c:286
 msgid "End group of calculations"
 msgstr "Koniec skupiny výpočtov"
 
-#: ../gcalctool/calctool.c:282
+#: ../gcalctool/calctool.c:287
 msgid "Right bracket"
 msgstr "Pravá zátvorka"
 
-#: ../gcalctool/calctool.c:292
-msgid "+/-"
-msgstr "+/-"
+#. Note to translators: this is a plus-minus sign (+/-)
+#: ../gcalctool/calctool.c:298
+msgid "±"
+msgstr "±"
 
-#: ../gcalctool/calctool.c:293
+#: ../gcalctool/calctool.c:299
 msgid "Change sign [c]"
 msgstr "Zmeniť znamienko [c]"
 
-#: ../gcalctool/calctool.c:300
+#: ../gcalctool/calctool.c:306
 msgid "Chs"
-msgstr "zmz"
+msgstr "Chs"
 
-#: ../gcalctool/calctool.c:304
+#: ../gcalctool/calctool.c:310
 msgid "Int"
 msgstr "Int"
 
-#: ../gcalctool/calctool.c:305
+#: ../gcalctool/calctool.c:311
 msgid "Integer portion of displayed value [i]"
 msgstr "Celočíselná časť zobrazenej hodnoty [i]"
 
-#: ../gcalctool/calctool.c:306
+#: ../gcalctool/calctool.c:312
 msgid "Integer portion"
 msgstr "Celočíselná časť"
 
-#: ../gcalctool/calctool.c:316
+#: ../gcalctool/calctool.c:322
 msgid "Sto"
 msgstr "Sto"
 
-#: ../gcalctool/calctool.c:317
+#: ../gcalctool/calctool.c:323
 msgid "Store displayed value in memory register [S]"
 msgstr "Uložiť zobrazenú hodnotu do pamäťového registra [S]"
 
-#: ../gcalctool/calctool.c:318
+#: ../gcalctool/calctool.c:324
 msgid "Store to register"
 msgstr "Uložiť do registra"
 
-#: ../gcalctool/calctool.c:330
+#: ../gcalctool/calctool.c:336
 msgid "1"
 msgstr "1"
 
-#: ../gcalctool/calctool.c:332
+#: ../gcalctool/calctool.c:338
 msgid "Numeric 1"
 msgstr "Číslica 1"
 
-#: ../gcalctool/calctool.c:342
+#: ../gcalctool/calctool.c:348
 msgid "2"
 msgstr "2"
 
-#: ../gcalctool/calctool.c:344
+#: ../gcalctool/calctool.c:350
 msgid "Numeric 2"
 msgstr "Číslica 2"
 
-#: ../gcalctool/calctool.c:354
+#: ../gcalctool/calctool.c:360
 msgid "3"
 msgstr "3"
 
-#: ../gcalctool/calctool.c:356
+#: ../gcalctool/calctool.c:362
 msgid "Numeric 3"
 msgstr "Číslica 3"
 
-#: ../gcalctool/calctool.c:366
-msgid "-"
-msgstr "-"
+#. Note to translators: this is a minus sign (-)
+#: ../gcalctool/calctool.c:373
+msgid "−"
+msgstr "−"
 
-#: ../gcalctool/calctool.c:367
+#: ../gcalctool/calctool.c:374
 msgid "Subtract"
 msgstr "Rozdiel"
 
-#: ../gcalctool/calctool.c:378
+#: ../gcalctool/calctool.c:381
+msgid "-"
+msgstr "-"
+
+#: ../gcalctool/calctool.c:385
 msgid "%"
 msgstr "%"
 
-#: ../gcalctool/calctool.c:379
+#: ../gcalctool/calctool.c:386
 msgid "Percentage"
 msgstr "Percento"
 
-#: ../gcalctool/calctool.c:390
-msgid "Sqrt"
-msgstr "Sqrt"
+#. Note to translators: this is a square root sign
+#: ../gcalctool/calctool.c:398
+msgid "√"
+msgstr "√"
 
-#: ../gcalctool/calctool.c:391
+#: ../gcalctool/calctool.c:399
 msgid "Square root [s]"
 msgstr "Druhá odmocnina [s]"
 
-#: ../gcalctool/calctool.c:402
+#: ../gcalctool/calctool.c:406
+msgid "Sqrt"
+msgstr "Sqrt"
+
+#: ../gcalctool/calctool.c:410
 msgid "Frac"
 msgstr "Frac"
 
-#: ../gcalctool/calctool.c:403
+#: ../gcalctool/calctool.c:411
 msgid "Fractional portion of displayed value [:]"
 msgstr "Desatinná časť zobrazenej hodnoty [:]"
 
-#: ../gcalctool/calctool.c:404
+#: ../gcalctool/calctool.c:412
 msgid "Fractional portion"
 msgstr "Desatinná časť"
 
-#: ../gcalctool/calctool.c:414
+#: ../gcalctool/calctool.c:422
 msgid "Rcl"
 msgstr "Rcl"
 
-#: ../gcalctool/calctool.c:415
+#: ../gcalctool/calctool.c:423
 msgid "Retrieve memory register to display [R]"
 msgstr "Obnoviť pamäťový register na displej [R]"
 
-#: ../gcalctool/calctool.c:416
+#: ../gcalctool/calctool.c:424
 msgid "Retrieve from register"
 msgstr "Obnoviť z registra"
 
-#: ../gcalctool/calctool.c:428
+#: ../gcalctool/calctool.c:436
 msgid "0"
 msgstr "0"
 
-#: ../gcalctool/calctool.c:430
+#: ../gcalctool/calctool.c:438
 msgid "Numeric 0"
 msgstr "Číslica 0"
 
-#: ../gcalctool/calctool.c:440
+#: ../gcalctool/calctool.c:448
 msgid "."
 msgstr ","
 
-#: ../gcalctool/calctool.c:441
+#: ../gcalctool/calctool.c:449
 msgid "Numeric point"
 msgstr "Desatinná čiarka"
 
-#: ../gcalctool/calctool.c:452
+#: ../gcalctool/calctool.c:460
 msgid "="
 msgstr "="
 
-#: ../gcalctool/calctool.c:453
+#: ../gcalctool/calctool.c:461
 msgid "Calculate result"
 msgstr "Vypočítať výsledok"
 
-#: ../gcalctool/calctool.c:464
+#: ../gcalctool/calctool.c:472
 msgid "+"
 msgstr "+"
 
-#: ../gcalctool/calctool.c:465
+#: ../gcalctool/calctool.c:473
 msgid "Add"
 msgstr "Súčet"
 
-#: ../gcalctool/calctool.c:476
+#: ../gcalctool/calctool.c:484
 msgid "1/<i>x</i>"
 msgstr "1/<i>x</i>"
 
-#: ../gcalctool/calctool.c:477
+#: ../gcalctool/calctool.c:485
 msgid "Reciprocal [r]"
 msgstr "Prevrátená hodnota [r]"
 
-#: ../gcalctool/calctool.c:484
+#: ../gcalctool/calctool.c:492
 msgid "Recip"
 msgstr "Prevrát"
 
-#: ../gcalctool/calctool.c:488
+#: ../gcalctool/calctool.c:496
 msgid "<i>x</i><sup>2</sup>"
 msgstr "<i>x</i><sup>2</sup>"
 
-#: ../gcalctool/calctool.c:489
+#: ../gcalctool/calctool.c:497
 msgid "Square [@]"
 msgstr "Mocnina [@]"
 
-#: ../gcalctool/calctool.c:496
+#: ../gcalctool/calctool.c:504
 msgid "^2"
 msgstr "^2"
 
-#: ../gcalctool/calctool.c:500
+#. Note to translators: Abs is short for Absolute.
+#: ../gcalctool/calctool.c:509
 msgid "Abs"
 msgstr "Abs"
 
-#: ../gcalctool/calctool.c:501
+#: ../gcalctool/calctool.c:510
 msgid "Absolute value [u]"
 msgstr "Absolútna hodnota [u]"
 
-#: ../gcalctool/calctool.c:512
+#: ../gcalctool/calctool.c:521
 msgid "Exch"
 msgstr "Exch"
 
-#: ../gcalctool/calctool.c:513
+#: ../gcalctool/calctool.c:522
 msgid "Exchange displayed value with memory register [X]"
 msgstr "Vymeniť zobrazenú hodnotu s pamäťovým registrom [X]"
 
-#: ../gcalctool/calctool.c:514
+#: ../gcalctool/calctool.c:523
 msgid "Exchange with register"
 msgstr "Vymeniť s registrom"
 
-#: ../gcalctool/calctool.c:540
+#: ../gcalctool/calctool.c:549
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#: ../gcalctool/calctool.c:541
+#: ../gcalctool/calctool.c:550
 msgid "Compounding term [m]"
 msgstr "Zložený výraz [m]"
 
-#: ../gcalctool/calctool.c:552
+#: ../gcalctool/calctool.c:561
 msgid "Ddb"
 msgstr "Ddb"
 
-#: ../gcalctool/calctool.c:553
+#: ../gcalctool/calctool.c:562
 msgid "Double-declining depreciation [d]"
 msgstr "Dvojnásobne klesajúca amortizácia [d]"
 
-#: ../gcalctool/calctool.c:564
+#: ../gcalctool/calctool.c:573
 msgid "Fv"
 msgstr "Fv"
 
-#: ../gcalctool/calctool.c:565
+#: ../gcalctool/calctool.c:574
 msgid "Future value [v]"
 msgstr "Budúca hodnota [v]"
 
-#: ../gcalctool/calctool.c:576
+#: ../gcalctool/calctool.c:585
 msgid "Pmt"
 msgstr "Pmt"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:586
 msgid "Periodic payment [P]"
 msgstr "Periodická platba [P]"
 
-#: ../gcalctool/calctool.c:588
+#: ../gcalctool/calctool.c:597
 msgid "Pv"
 msgstr "Pv"
 
-#: ../gcalctool/calctool.c:589
+#: ../gcalctool/calctool.c:598
 msgid "Present value [p]"
 msgstr "Súčasná hodnota [p]"
 
-#: ../gcalctool/calctool.c:600
+#: ../gcalctool/calctool.c:609
 msgid "Rate"
 msgstr "Rate"
 
-#: ../gcalctool/calctool.c:601
+#: ../gcalctool/calctool.c:610
 msgid "Periodic interest rate [T]"
 msgstr "Periodická sadzba úroku [T]"
 
-#: ../gcalctool/calctool.c:612
+#: ../gcalctool/calctool.c:621
 msgid "Sln"
 msgstr "Sln"
 
-#: ../gcalctool/calctool.c:613
+#: ../gcalctool/calctool.c:622
 msgid "Straight-line depreciation [l]"
 msgstr "Priamočiara amortizácia [l]"
 
-#: ../gcalctool/calctool.c:624
+#: ../gcalctool/calctool.c:633
 msgid "Syd"
 msgstr "Syd"
 
-#: ../gcalctool/calctool.c:625
+#: ../gcalctool/calctool.c:634
 msgid "Sum-of-the years'-digits depreciation [Y]"
 msgstr "Amortizácia po súčtoch číslic rokov [Y]"
 
-#: ../gcalctool/calctool.c:638
+#: ../gcalctool/calctool.c:647
 msgid "Term"
 msgstr "Výraz"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:648
 msgid "Payment period [T]"
 msgstr "Doba platenia [T]"
 
-#: ../gcalctool/calctool.c:750
+#: ../gcalctool/calctool.c:759
 msgid "<"
 msgstr "<"
 
-#: ../gcalctool/calctool.c:751
+#: ../gcalctool/calctool.c:760
 msgid "Shift displayed value 1-15 places to the left"
 msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vľavo"
 
-#: ../gcalctool/calctool.c:752
+#: ../gcalctool/calctool.c:761
 msgid "Shift left"
 msgstr "Posun vľavo"
 
-#: ../gcalctool/calctool.c:762
+#: ../gcalctool/calctool.c:771
 msgid ">"
 msgstr ">"
 
-#: ../gcalctool/calctool.c:763
+#: ../gcalctool/calctool.c:772
 msgid "Shift displayed value 1-15 places to the right"
 msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vpravo"
 
-#: ../gcalctool/calctool.c:764
+#: ../gcalctool/calctool.c:773
 msgid "Shift right"
 msgstr "Posun vpravo"
 
-#: ../gcalctool/calctool.c:774
+#: ../gcalctool/calctool.c:783
 msgid "&amp;16"
 msgstr "&amp;16"
 
-#: ../gcalctool/calctool.c:775
+#: ../gcalctool/calctool.c:784
 msgid "16-bit unsigned integer value of display (])"
 msgstr "16-bitové celé číslo bez znamienka zo zobrazenej hodnoty (])"
 
-#: ../gcalctool/calctool.c:776
+#: ../gcalctool/calctool.c:785
 msgid "16 bit unsigned integer"
 msgstr "16-bitové celé číslo bez znamienka"
 
-#. 16-bit unsigned integer value
-#: ../gcalctool/calctool.c:782 ../gcalctool/syntax_translation.c:74
+#: ../gcalctool/calctool.c:791
 msgid "u16"
 msgstr "u16"
 
-#: ../gcalctool/calctool.c:786
+#: ../gcalctool/calctool.c:795
 msgid "&amp;32"
 msgstr "&amp;32"
 
-#: ../gcalctool/calctool.c:787
+#: ../gcalctool/calctool.c:796
 msgid "32-bit unsigned integer value of display ([)"
 msgstr "32-bitové celé číslo bez znamienka zo zobrazenej hodnoty ([)"
 
-#: ../gcalctool/calctool.c:788
+#: ../gcalctool/calctool.c:797
 msgid "32 bit unsigned integer"
 msgstr "32-bitové celé číslo bez znamienka"
 
-#. 32-bit unsigned integer value
-#: ../gcalctool/calctool.c:794 ../gcalctool/syntax_translation.c:75
+#: ../gcalctool/calctool.c:803
 msgid "u32"
 msgstr "u32"
 
-#: ../gcalctool/calctool.c:822
+#: ../gcalctool/calctool.c:831
 msgid "Mod"
 msgstr "Mod"
 
-#: ../gcalctool/calctool.c:823
+#: ../gcalctool/calctool.c:832
 msgid "Modulus Division"
 msgstr "Delenie so zvyškom"
 
-#: ../gcalctool/calctool.c:830
+#: ../gcalctool/calctool.c:839
 msgid " Mod "
 msgstr " Mod "
 
-#: ../gcalctool/calctool.c:834
+#: ../gcalctool/calctool.c:843
 msgid "Acc"
 msgstr "Acc"
 
-#: ../gcalctool/calctool.c:835
+#: ../gcalctool/calctool.c:844
 msgid "Set accuracy from 0 to 9 numeric places [a]"
 msgstr "Nastaviť presnosť od 0 do 9 miest [a]"
 
-#: ../gcalctool/calctool.c:836
+#: ../gcalctool/calctool.c:845
 msgid "Accuracy"
 msgstr "Presnosť"
 
-#: ../gcalctool/calctool.c:848
+#: ../gcalctool/calctool.c:857
 msgid "Con"
 msgstr "Kon"
 
-#: ../gcalctool/calctool.c:849
+#: ../gcalctool/calctool.c:858
 msgid "Constants [#]"
 msgstr "Konštanty [#]"
 
-#: ../gcalctool/calctool.c:860
+#: ../gcalctool/calctool.c:869
 msgid "Fun"
 msgstr "Fun"
 
-#: ../gcalctool/calctool.c:861
+#: ../gcalctool/calctool.c:870
 msgid "User-defined functions [f]"
 msgstr "Používateľom definované funkcie [f]"
 
-#: ../gcalctool/calctool.c:872
+#: ../gcalctool/calctool.c:881
 msgid "Exp"
 msgstr "Exp"
 
-#: ../gcalctool/calctool.c:873
+#: ../gcalctool/calctool.c:882
 msgid "Enter an exponential number [e]"
 msgstr "Zadať exponenciálne číslo [e]"
 
-#: ../gcalctool/calctool.c:874
+#: ../gcalctool/calctool.c:883
 msgid "Exponential"
 msgstr "Exponenciálne"
 
-#: ../gcalctool/calctool.c:880 ../gcalctool/calctool.c:1260
+#: ../gcalctool/calctool.c:889 ../gcalctool/calctool.c:1277
 msgid "e"
 msgstr "e"
 
-#: ../gcalctool/calctool.c:884
+#: ../gcalctool/calctool.c:893
 msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup><i>x</i></sup>"
 
-#: ../gcalctool/calctool.c:885
+#: ../gcalctool/calctool.c:894
 msgid "e to the power of displayed value [{]"
 msgstr "e umocnené na zobrazenú hodnotu [{]"
 
-#: ../gcalctool/calctool.c:886
+#: ../gcalctool/calctool.c:895
 msgid "E to the x"
-msgstr "e na x"
+msgstr "E na x"
 
-#: ../gcalctool/calctool.c:892
+#: ../gcalctool/calctool.c:901
 msgid "e^"
 msgstr "e^"
 
-#: ../gcalctool/calctool.c:896
+#: ../gcalctool/calctool.c:905
 msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup><i>x</i></sup>"
 
-#: ../gcalctool/calctool.c:897
+#: ../gcalctool/calctool.c:906
 msgid "10 to the power of displayed value [}]"
 msgstr "10 umocnené na zobrazenú hodnotu [}]"
 
-#: ../gcalctool/calctool.c:898
+#: ../gcalctool/calctool.c:907
 msgid "Ten to the x"
 msgstr "10 na x"
 
-#: ../gcalctool/calctool.c:904
+#: ../gcalctool/calctool.c:913
 msgid "10^"
 msgstr "10^"
 
-#: ../gcalctool/calctool.c:908
+#: ../gcalctool/calctool.c:917
 msgid "<i>x</i><sup><i>y</i></sup>"
 msgstr "<i>x</i><sup><i>y</i></sup>"
 
-#: ../gcalctool/calctool.c:909
+#: ../gcalctool/calctool.c:918
 msgid "Raise displayed value to the power of y [^]"
 msgstr "Zvýšiť zobrazenú hodnotu na mocninu y [^]"
 
-#: ../gcalctool/calctool.c:910
+#: ../gcalctool/calctool.c:919
 msgid "X to the y"
-msgstr "x na y"
+msgstr "X na y"
 
-#: ../gcalctool/calctool.c:916
+#: ../gcalctool/calctool.c:925
 msgid "^"
 msgstr "^"
 
-#: ../gcalctool/calctool.c:920
+#: ../gcalctool/calctool.c:929
 msgid "<i>x</i>!"
 msgstr "<i>x</i>!"
 
-#: ../gcalctool/calctool.c:921
+#: ../gcalctool/calctool.c:930
 msgid "Factorial of displayed value [!]"
 msgstr "Faktoriál zobrazenej hodnoty [!]"
 
-#: ../gcalctool/calctool.c:922
+#: ../gcalctool/calctool.c:931
 msgid "Factorial"
 msgstr "Faktoriál"
 
-#: ../gcalctool/calctool.c:928
+#: ../gcalctool/calctool.c:937
 msgid "!"
 msgstr "!"
 
-#: ../gcalctool/calctool.c:932
+#: ../gcalctool/calctool.c:941
 msgid "Rand"
 msgstr "Rand"
 
-#: ../gcalctool/calctool.c:933
+#: ../gcalctool/calctool.c:942
 msgid "Random number in the range 0.0 to 1.0 [?]"
 msgstr "Náhodné číslo v rozsahu od 0.0 do 1.0 [?]"
 
-#: ../gcalctool/calctool.c:934
+#: ../gcalctool/calctool.c:943
 msgid "Random number"
 msgstr "Náhodné číslo"
 
-#: ../gcalctool/calctool.c:946
+#: ../gcalctool/calctool.c:955
 msgid "D"
 msgstr "D"
 
-#: ../gcalctool/calctool.c:947
+#: ../gcalctool/calctool.c:956
 msgid "Hexadecimal digit D"
 msgstr "Šestnástková číslica D"
 
-#: ../gcalctool/calctool.c:958
+#: ../gcalctool/calctool.c:967
 msgid "E"
 msgstr "E"
 
-#: ../gcalctool/calctool.c:959
+#: ../gcalctool/calctool.c:968
 msgid "Hexadecimal digit E"
 msgstr "Šestnástková číslica E"
 
-#: ../gcalctool/calctool.c:970 ../gcalctool/gtk.c:1866
+#: ../gcalctool/calctool.c:979 ../gcalctool/gtk.c:1932
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/calctool.c:971
+#: ../gcalctool/calctool.c:980
 msgid "Hexadecimal digit F"
 msgstr "Šestnástková číslica F"
 
-#: ../gcalctool/calctool.c:982
+#: ../gcalctool/calctool.c:991
 msgid "Cos"
 msgstr "cos"
 
-#: ../gcalctool/calctool.c:983
+#: ../gcalctool/calctool.c:992
 msgid "Cosine [J]"
 msgstr "Kosínus [J]"
 
-#: ../gcalctool/calctool.c:994
+#: ../gcalctool/calctool.c:1003
 msgid "Sin"
 msgstr "sin"
 
-#: ../gcalctool/calctool.c:995
+#: ../gcalctool/calctool.c:1004
 msgid "Sine [K]"
 msgstr "Sínus [K]"
 
-#: ../gcalctool/calctool.c:1006
+#: ../gcalctool/calctool.c:1015
 msgid "Tan"
 msgstr "tg"
 
-#: ../gcalctool/calctool.c:1007
+#: ../gcalctool/calctool.c:1016
 msgid "Tangent [L]"
 msgstr "Tangens [L]"
 
-#: ../gcalctool/calctool.c:1018
+#: ../gcalctool/calctool.c:1027
 msgid "Ln"
 msgstr "ln"
 
-#: ../gcalctool/calctool.c:1019
+#: ../gcalctool/calctool.c:1028
 msgid "Natural log [N]"
 msgstr "Prirodzený logaritmus [N]"
 
-#: ../gcalctool/calctool.c:1030
+#: ../gcalctool/calctool.c:1039
 msgid "Log"
 msgstr "log"
 
-#: ../gcalctool/calctool.c:1031
+#: ../gcalctool/calctool.c:1040
 msgid "Base 10 log [G]"
 msgstr "Desiatkový logaritmus [G]"
 
-#: ../gcalctool/calctool.c:1044
+#: ../gcalctool/calctool.c:1053
 msgid "A"
 msgstr "A"
 
-#: ../gcalctool/calctool.c:1045
+#: ../gcalctool/calctool.c:1054
 msgid "Hexadecimal digit A"
 msgstr "Šestnásková číslica A"
 
-#: ../gcalctool/calctool.c:1056
+#: ../gcalctool/calctool.c:1065
 msgid "B"
 msgstr "B"
 
-#: ../gcalctool/calctool.c:1057
+#: ../gcalctool/calctool.c:1066
 msgid "Hexadecimal digit B"
 msgstr "Šestnástková číslica B"
 
-#: ../gcalctool/calctool.c:1068 ../gcalctool/gtk.c:1858
+#: ../gcalctool/calctool.c:1077 ../gcalctool/gtk.c:1923
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/calctool.c:1069
+#: ../gcalctool/calctool.c:1078
 msgid "Hexadecimal digit C"
 msgstr "Šestnástková číslica C"
 
-#: ../gcalctool/calctool.c:1080
+#: ../gcalctool/calctool.c:1089
 msgid "Or"
 msgstr "or"
 
-#: ../gcalctool/calctool.c:1081
+#: ../gcalctool/calctool.c:1090
 msgid "Bitwise OR"
 msgstr "Bitový súčet"
 
-#: ../gcalctool/calctool.c:1088
+#: ../gcalctool/calctool.c:1097
 msgid " Or "
 msgstr " or "
 
-#: ../gcalctool/calctool.c:1092
+#: ../gcalctool/calctool.c:1101
 msgid "And"
 msgstr "and"
 
-#: ../gcalctool/calctool.c:1093
+#: ../gcalctool/calctool.c:1102
 msgid "Bitwise AND [&]"
 msgstr "Bitový súčin [&]"
 
-#: ../gcalctool/calctool.c:1100
+#: ../gcalctool/calctool.c:1109
 msgid " And "
 msgstr " and "
 
-#: ../gcalctool/calctool.c:1104
+#: ../gcalctool/calctool.c:1113
 msgid "Not"
 msgstr "not"
 
-#: ../gcalctool/calctool.c:1105
+#: ../gcalctool/calctool.c:1114
 msgid "Bitwise NOT [~]"
 msgstr "Bitová negácia [~]"
 
-#: ../gcalctool/calctool.c:1112
+#: ../gcalctool/calctool.c:1121
 msgid "~"
 msgstr "~"
 
-#: ../gcalctool/calctool.c:1116
+#: ../gcalctool/calctool.c:1125
 msgid "Xor"
 msgstr "xor"
 
-#: ../gcalctool/calctool.c:1117
+#: ../gcalctool/calctool.c:1126
 msgid "Bitwise XOR [x]"
 msgstr "Bitový exkluzívny súčet [x]"
 
-#: ../gcalctool/calctool.c:1124
+#: ../gcalctool/calctool.c:1133
 msgid " Xor "
 msgstr " xor "
 
-#: ../gcalctool/calctool.c:1128
+#: ../gcalctool/calctool.c:1137
 msgid "Xnor"
 msgstr "xnor"
 
-#: ../gcalctool/calctool.c:1129
+#: ../gcalctool/calctool.c:1138
 msgid "Bitwise XNOR [n]"
 msgstr "Bitový exkluzívny negovaný súčet [n]"
 
-#: ../gcalctool/calctool.c:1136
+#: ../gcalctool/calctool.c:1145
 msgid " Xnor "
 msgstr " xnor "
 
-#: ../gcalctool/calctool.c:1258
+#: ../gcalctool/calctool.c:1274
 msgid "Kilometer-to-mile conversion factor"
-msgstr "Konverzná konštanta pre konverziu kilometrov na míle"
+msgstr "Konštanta pre prevod kilometrov na míle"
 
-#: ../gcalctool/calctool.c:1259
+#: ../gcalctool/calctool.c:1276
 msgid "square root of 2"
 msgstr "druhá odmocnina z 2"
 
-#. PI
-#: ../gcalctool/calctool.c:1261 ../gcalctool/syntax_translation.c:59
+#: ../gcalctool/calctool.c:1278
 msgid "pi"
 msgstr "pí"
 
-#: ../gcalctool/calctool.c:1262
+#: ../gcalctool/calctool.c:1279
 msgid "Centimeter-to-inch conversion factor"
-msgstr "Konverzná konštanta pre konverziu centimetrov na palce"
+msgstr "Konštanta pre prevod centimetrov na palce"
 
-#: ../gcalctool/calctool.c:1263
+#: ../gcalctool/calctool.c:1281
 msgid "degrees in a radian"
 msgstr "stupňov v radiáne"
 
-#: ../gcalctool/calctool.c:1264
+#: ../gcalctool/calctool.c:1282
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:1265
+#: ../gcalctool/calctool.c:1283
 msgid "Gram-to-ounce conversion factor"
-msgstr "Konverzná konštanta pre konverziu gramu na unce"
+msgstr "Konštanta pre prevod gramu na unce"
 
-#: ../gcalctool/calctool.c:1267
+#: ../gcalctool/calctool.c:1285
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Konverzná konštanta pre prevod kilojoulov na britské tepelné jednotky"
+msgstr "Konštanta pre prevod kilojoulov na britské tepelné jednotky"
 
-#: ../gcalctool/calctool.c:1269
+#: ../gcalctool/calctool.c:1288
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Konverzná konštanta pre prevod kubických centimetrov na kubické palce"
+msgstr "Konštanta pre prevod kubických centimetrov na kubické palce"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:1280 ../gcalctool/display.c:267
-#: ../gcalctool/mp.c:1973 ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:471
-#: ../gcalctool/mpmath.c:526
+#: ../gcalctool/calctool.c:1299 ../gcalctool/display.c:273
+#: ../gcalctool/mp.c:1973 ../gcalctool/mpmath.c:437 ../gcalctool/mpmath.c:476
+#: ../gcalctool/mpmath.c:531
 msgid "Error"
 msgstr "Chyba"
 
-#: ../gcalctool/functions.c:339
-msgid "Previous expression"
-msgstr "Predchádzajúci výraz"
-
-#: ../gcalctool/functions.c:422
+#: ../gcalctool/functions.c:546
 msgid "Invalid number for the current base"
 msgstr "Neplatné číslo pre aktuálnu sústavu"
 
-#: ../gcalctool/functions.c:425
+#: ../gcalctool/functions.c:550
 msgid "Too long number"
 msgstr "Príliš dlhé číslo"
 
-#: ../gcalctool/functions.c:428
+#: ../gcalctool/functions.c:554
+msgid "Invalid bitwise operation parameter(s)"
+msgstr "Neplatné parametre bitovej operácie"
+
+#: ../gcalctool/functions.c:558
+msgid "Invalid modulus operation parameter(s)"
+msgstr "Neplatné parametre operácie modula"
+
+#: ../gcalctool/functions.c:562
+msgid "Math operation error"
+msgstr "Chyba matematickej operácie"
+
+#: ../gcalctool/functions.c:566
 msgid "Malformed expression"
 msgstr "Poškodený výraz"
 
-#: ../gcalctool/functions.c:498
+#: ../gcalctool/functions.c:636
 msgid "Error, operands must be integers"
 msgstr "Chyba, operandy musia byť celočíselné"
 
-#: ../gcalctool/functions.c:653 ../gcalctool/functions.c:1029
+#: ../gcalctool/functions.c:798 ../gcalctool/functions.c:1179
 msgid "No sane value to convert"
-msgstr "Nie je rozumná hodnota na konvertovanie"
+msgstr "Nie je rozumná hodnota na prevod"
 
-#: ../gcalctool/functions.c:752 ../gcalctool/functions.c:1106
-#: ../gcalctool/functions.c:1334
+#: ../gcalctool/functions.c:900 ../gcalctool/functions.c:1256
 msgid "No sane value to store"
 msgstr "Nie je rozumná hodnota na uloženie"
 
-#: ../gcalctool/functions.c:880
+#: ../gcalctool/functions.c:1030
 msgid "Malformed function"
 msgstr "Poškodená funkcia"
 
-#: ../gcalctool/functions.c:1059
+#: ../gcalctool/functions.c:1209
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Vyčistený displej, predpona bez operátora nie je povolená"
 
-#: ../gcalctool/functions.c:1083
+#: ../gcalctool/functions.c:1233
 msgid "Malformed parenthesis expression"
 msgstr "Poškodený výraz so zátvorkami"
 
-#: ../gcalctool/functions.c:1382
+#: ../gcalctool/functions.c:1487
+msgid "No sane value to do bitwise shift"
+msgstr "Nie je rozumná hodnota pre bitový posun"
+
+#: ../gcalctool/functions.c:1534
 msgid "Numeric stack error"
 msgstr "Chyba číselného zásobníka"
 
-#: ../gcalctool/functions.c:1403
+#: ../gcalctool/functions.c:1555
 msgid "Operand stack error"
 msgstr "Chyba zásobníka operandov"
 
-#: ../gcalctool/get.c:153
+#: ../gcalctool/get.c:152
 msgid "-a needs accuracy value"
 msgstr "-a potrebuje hodnotu presnosti"
 
-#: ../gcalctool/get.c:157 ../gcalctool/get.c:311
+#: ../gcalctool/get.c:156 ../gcalctool/get.c:310
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: presnosť by mala byť v rozsahu 0-%d\n"
 
-#: ../gcalctool/get.c:182
+#: ../gcalctool/get.c:181
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s ako ďalší parameter.\n"
@@ -964,36 +1001,41 @@ msgstr "%s: %s ako ďalší parameter.\n"
 #. Not entering an exponent number.
 #. No pending arithmetic operation.
 #. No User supplied title line.
-#: ../gcalctool/get.c:269
+#: ../gcalctool/get.c:268
 msgid "calculator"
 msgstr "kalkulačka"
 
-#: ../gcalctool/get.c:331
+#: ../gcalctool/get.c:330
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: základ by mal byť 2, 8, 10 alebo 16\n"
 
-#: ../gcalctool/get.c:346
+#: ../gcalctool/get.c:345
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: neplatný zobrazovací režim [%s]\n"
 
-#: ../gcalctool/get.c:361
+#: ../gcalctool/get.c:360
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: neplatný režim [%s]\n"
 
-#: ../gcalctool/get.c:375
+#: ../gcalctool/get.c:374
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: neplatný trigonometrický režim [%s]\n"
 
-#: ../gcalctool/get.c:393
+#: ../gcalctool/get.c:392
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: neplatný režim syntaxe [%s]\n"
 
-#: ../gcalctool/get.c:440
+#: ../gcalctool/get.c:409
+#, c-format
+msgid "%s: invalid bitcalc choice [%s]\n"
+msgstr "%s: neplatná voľba bitovej kalkulácie[%s]\n"
+
+#: ../gcalctool/get.c:455
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -1002,441 +1044,521 @@ msgstr ""
 "%s verzia %s\n"
 "\n"
 
-#: ../gcalctool/get.c:441
+#: ../gcalctool/get.c:456
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Použitie: %s: [-D] [-E] [-a presnosť] "
 
-#: ../gcalctool/get.c:442
+#: ../gcalctool/get.c:457
 msgid "\t\t [-?] [-v] [-?]\n"
 msgstr "\t\t [-?] [-v] [-?]\n"
 
-#: ../gcalctool/gtk.c:235
+#: ../gcalctool/gtk.c:245
 msgid "_Calculator"
 msgstr "_Kalkulačka"
 
-#: ../gcalctool/gtk.c:236
+#: ../gcalctool/gtk.c:246
 msgid "_Edit"
 msgstr "_Upraviť"
 
-#: ../gcalctool/gtk.c:237
+#: ../gcalctool/gtk.c:247
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: ../gcalctool/gtk.c:238
+#: ../gcalctool/gtk.c:248
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../gcalctool/gtk.c:241
+#: ../gcalctool/gtk.c:251
 msgid "Quit the calculator"
 msgstr "Ukončiť kalkulačku"
 
-#: ../gcalctool/gtk.c:244
+#: ../gcalctool/gtk.c:254
 msgid "Copy selection"
 msgstr "Kopírovať výber"
 
-#: ../gcalctool/gtk.c:246
+#: ../gcalctool/gtk.c:256
 msgid "Paste selection"
-msgstr "Vlepiť výber"
+msgstr "Prilepiť výber"
 
-#: ../gcalctool/gtk.c:247
+#: ../gcalctool/gtk.c:257
 msgid "_Insert ASCII Value..."
 msgstr "_Vložiť ASCII hodnotu..."
 
-#: ../gcalctool/gtk.c:248
+#: ../gcalctool/gtk.c:258
 msgid "Insert ASCII value"
 msgstr "Vložiť ASCII hodnotu"
 
-#: ../gcalctool/gtk.c:252
+#: ../gcalctool/gtk.c:259
+msgid "_Undo"
+msgstr "Vrátiť _späť"
+
+#: ../gcalctool/gtk.c:260
+msgid "Undo"
+msgstr "Späť"
+
+#: ../gcalctool/gtk.c:261
+msgid "_Redo"
+msgstr "_Opakovať"
+
+#: ../gcalctool/gtk.c:262
+msgid "Redo"
+msgstr "Opakovať"
+
+#: ../gcalctool/gtk.c:266
 msgid "Show help contents"
 msgstr "Zobraziť obsah pomocníka"
 
-#: ../gcalctool/gtk.c:255
+#: ../gcalctool/gtk.c:268
 msgid "Show the About Gcalctool dialog"
 msgstr "Zobraziť dialógové okno O programe Gkalkulačka"
 
-#: ../gcalctool/gtk.c:257 ../gcalctool/gtk.c:288
+#: ../gcalctool/gtk.c:270 ../gcalctool/gtk.c:301
 msgid "_1 place"
 msgstr "_1 miesto"
 
-#: ../gcalctool/gtk.c:258 ../gcalctool/gtk.c:289
+#: ../gcalctool/gtk.c:271 ../gcalctool/gtk.c:302
 msgid "1 place"
 msgstr "1 miesto"
 
-#: ../gcalctool/gtk.c:259 ../gcalctool/gtk.c:290
+#: ../gcalctool/gtk.c:272 ../gcalctool/gtk.c:303
 msgid "_2 places"
 msgstr "_2 miesta"
 
-#: ../gcalctool/gtk.c:260 ../gcalctool/gtk.c:291
+#: ../gcalctool/gtk.c:273 ../gcalctool/gtk.c:304
 msgid "2 places"
 msgstr "2 miesta"
 
-#: ../gcalctool/gtk.c:261 ../gcalctool/gtk.c:292
+#: ../gcalctool/gtk.c:274 ../gcalctool/gtk.c:305
 msgid "_3 places"
 msgstr "_3 miesta"
 
-#: ../gcalctool/gtk.c:262 ../gcalctool/gtk.c:293
+#: ../gcalctool/gtk.c:275 ../gcalctool/gtk.c:306
 msgid "3 places"
 msgstr "3 miesta"
 
-#: ../gcalctool/gtk.c:263 ../gcalctool/gtk.c:294
+#: ../gcalctool/gtk.c:276 ../gcalctool/gtk.c:307
 msgid "_4 places"
 msgstr "_4 miesta"
 
-#: ../gcalctool/gtk.c:264 ../gcalctool/gtk.c:295
+#: ../gcalctool/gtk.c:277 ../gcalctool/gtk.c:308
 msgid "4 places"
 msgstr "4 miesta"
 
-#: ../gcalctool/gtk.c:265 ../gcalctool/gtk.c:296
+#: ../gcalctool/gtk.c:278 ../gcalctool/gtk.c:309
 msgid "_5 places"
 msgstr "_5 miest"
 
-#: ../gcalctool/gtk.c:266 ../gcalctool/gtk.c:297
+#: ../gcalctool/gtk.c:279 ../gcalctool/gtk.c:310
 msgid "5 places"
 msgstr "5 miest"
 
-#: ../gcalctool/gtk.c:267 ../gcalctool/gtk.c:298
+#: ../gcalctool/gtk.c:280 ../gcalctool/gtk.c:311
 msgid "_6 places"
 msgstr "_6 miest"
 
-#: ../gcalctool/gtk.c:268 ../gcalctool/gtk.c:299
+#: ../gcalctool/gtk.c:281 ../gcalctool/gtk.c:312
 msgid "6 places"
 msgstr "6 miest"
 
-#: ../gcalctool/gtk.c:269 ../gcalctool/gtk.c:300
+#: ../gcalctool/gtk.c:282 ../gcalctool/gtk.c:313
 msgid "_7 places"
 msgstr "_7 miest"
 
-#: ../gcalctool/gtk.c:270 ../gcalctool/gtk.c:301
+#: ../gcalctool/gtk.c:283 ../gcalctool/gtk.c:314
 msgid "7 places"
 msgstr "7 miest"
 
-#: ../gcalctool/gtk.c:271 ../gcalctool/gtk.c:302
+#: ../gcalctool/gtk.c:284 ../gcalctool/gtk.c:315
 msgid "_8 places"
 msgstr "_8 miest"
 
-#: ../gcalctool/gtk.c:272 ../gcalctool/gtk.c:303
+#: ../gcalctool/gtk.c:285 ../gcalctool/gtk.c:316
 msgid "8 places"
 msgstr "8 miest"
 
-#: ../gcalctool/gtk.c:273 ../gcalctool/gtk.c:304
+#: ../gcalctool/gtk.c:286 ../gcalctool/gtk.c:317
 msgid "_9 places"
 msgstr "_9 miest"
 
-#: ../gcalctool/gtk.c:274 ../gcalctool/gtk.c:305
+#: ../gcalctool/gtk.c:287 ../gcalctool/gtk.c:318
 msgid "9 places"
 msgstr "9 miest"
 
-#: ../gcalctool/gtk.c:275 ../gcalctool/gtk.c:276 ../gcalctool/gtk.c:306
-#: ../gcalctool/gtk.c:307
+#: ../gcalctool/gtk.c:288 ../gcalctool/gtk.c:289 ../gcalctool/gtk.c:319
+#: ../gcalctool/gtk.c:320
 msgid "10 places"
 msgstr "10 miest"
 
-#: ../gcalctool/gtk.c:277 ../gcalctool/gtk.c:278 ../gcalctool/gtk.c:308
-#: ../gcalctool/gtk.c:309
+#: ../gcalctool/gtk.c:290 ../gcalctool/gtk.c:291 ../gcalctool/gtk.c:321
+#: ../gcalctool/gtk.c:322
 msgid "11 places"
 msgstr "11 miest"
 
-#: ../gcalctool/gtk.c:279 ../gcalctool/gtk.c:280 ../gcalctool/gtk.c:310
-#: ../gcalctool/gtk.c:311
+#: ../gcalctool/gtk.c:292 ../gcalctool/gtk.c:293 ../gcalctool/gtk.c:323
+#: ../gcalctool/gtk.c:324
 msgid "12 places"
 msgstr "12 miest"
 
-#: ../gcalctool/gtk.c:281 ../gcalctool/gtk.c:282 ../gcalctool/gtk.c:312
-#: ../gcalctool/gtk.c:313
+#: ../gcalctool/gtk.c:294 ../gcalctool/gtk.c:295 ../gcalctool/gtk.c:325
+#: ../gcalctool/gtk.c:326
 msgid "13 places"
 msgstr "13 miest"
 
-#: ../gcalctool/gtk.c:283 ../gcalctool/gtk.c:284 ../gcalctool/gtk.c:314
-#: ../gcalctool/gtk.c:315
+#: ../gcalctool/gtk.c:296 ../gcalctool/gtk.c:297 ../gcalctool/gtk.c:327
+#: ../gcalctool/gtk.c:328
 msgid "14 places"
 msgstr "14 miest"
 
-#: ../gcalctool/gtk.c:285 ../gcalctool/gtk.c:286 ../gcalctool/gtk.c:316
-#: ../gcalctool/gtk.c:317
+#: ../gcalctool/gtk.c:298 ../gcalctool/gtk.c:299 ../gcalctool/gtk.c:329
+#: ../gcalctool/gtk.c:330
 msgid "15 places"
 msgstr "15 miest"
 
-#: ../gcalctool/gtk.c:321 ../gcalctool/gtk.c:327
+#: ../gcalctool/gtk.c:334 ../gcalctool/gtk.c:342
 msgid "Show _Trailing Zeroes"
 msgstr "Zobraziť _zadné nuly"
 
-#: ../gcalctool/gtk.c:322 ../gcalctool/gtk.c:328
+#: ../gcalctool/gtk.c:335 ../gcalctool/gtk.c:343
 msgid "Show trailing zeroes"
 msgstr "Zobraziť zadné nuly"
 
-#: ../gcalctool/gtk.c:323
+#: ../gcalctool/gtk.c:336
 msgid "Show T_housands Separator"
 msgstr "Zobraziť oddeľovač _tisícov"
 
-#: ../gcalctool/gtk.c:324
+#: ../gcalctool/gtk.c:337
 msgid "Show thousands separator"
 msgstr "Zobraziť oddeľovač tisícov"
 
-#: ../gcalctool/gtk.c:325
+#: ../gcalctool/gtk.c:338
+msgid "Show Bitcalculating _Extension"
+msgstr "Zobraziť _rozšírenie bitových výpočtov"
+
+#: ../gcalctool/gtk.c:339
+msgid "Show bitcalculating extension"
+msgstr "Zobraziť rozšírenie pre bitové výpočtu"
+
+#: ../gcalctool/gtk.c:340
 msgid "_Memory Registers"
 msgstr "_Pamäťové registre"
 
-#: ../gcalctool/gtk.c:326
+#: ../gcalctool/gtk.c:341
 msgid "Show memory registers"
 msgstr "Zobraziť pamäťové registre"
 
-#: ../gcalctool/gtk.c:329
-msgid "_Use Arithmetic Precedence"
-msgstr "_Použiť aritmetickú prioritu"
-
-#: ../gcalctool/gtk.c:330
-msgid "Use Arithmetic Precedence"
-msgstr "Použiť aritmetickú prioritu"
-
-#: ../gcalctool/gtk.c:334
+#: ../gcalctool/gtk.c:347
 msgid "_0 significant places"
 msgstr "_0 významných miest"
 
-#: ../gcalctool/gtk.c:335
+#: ../gcalctool/gtk.c:348
 msgid "0 significant places"
 msgstr "0 významných miest"
 
-#: ../gcalctool/gtk.c:336
+#: ../gcalctool/gtk.c:349
 msgid "_1 significant place"
 msgstr "_1 významné miesto"
 
-#: ../gcalctool/gtk.c:337
+#: ../gcalctool/gtk.c:350
 msgid "1 significant place"
 msgstr "1 významné miesto"
 
-#: ../gcalctool/gtk.c:338
+#: ../gcalctool/gtk.c:351
 msgid "_2 significant places"
 msgstr "_2 významné miesta"
 
-#: ../gcalctool/gtk.c:339
+#: ../gcalctool/gtk.c:352
 msgid "2 significant places"
 msgstr "2 významné miesta"
 
-#: ../gcalctool/gtk.c:340
+#: ../gcalctool/gtk.c:353
 msgid "_3 significant places"
 msgstr "_3 významné miesta"
 
-#: ../gcalctool/gtk.c:341
+#: ../gcalctool/gtk.c:354
 msgid "3 significant places"
 msgstr "3 významné miesta"
 
-#: ../gcalctool/gtk.c:342
+#: ../gcalctool/gtk.c:355
 msgid "_4 significant places"
 msgstr "_4 významné miesta"
 
-#: ../gcalctool/gtk.c:343
+#: ../gcalctool/gtk.c:356
 msgid "4 significant places"
 msgstr "4 významné miesta"
 
-#: ../gcalctool/gtk.c:344
+#: ../gcalctool/gtk.c:357
 msgid "_5 significant places"
 msgstr "_5 významných miest"
 
-#: ../gcalctool/gtk.c:345
+#: ../gcalctool/gtk.c:358
 msgid "5 significant places"
 msgstr "5 významných miest"
 
-#: ../gcalctool/gtk.c:346
+#: ../gcalctool/gtk.c:359
 msgid "_6 significant places"
 msgstr "_6 významných miest"
 
-#: ../gcalctool/gtk.c:347
+#: ../gcalctool/gtk.c:360
 msgid "6 significant places"
 msgstr "6 významných miest"
 
-#: ../gcalctool/gtk.c:348
+#: ../gcalctool/gtk.c:361
 msgid "_7 significant places"
 msgstr "_7 významných miest"
 
-#: ../gcalctool/gtk.c:349
+#: ../gcalctool/gtk.c:362
 msgid "7 significant places"
 msgstr "7 významných miest"
 
-#: ../gcalctool/gtk.c:350
+#: ../gcalctool/gtk.c:363
 msgid "_8 significant places"
 msgstr "_8 významných miest"
 
-#: ../gcalctool/gtk.c:351
+#: ../gcalctool/gtk.c:364
 msgid "8 significant places"
 msgstr "8 významných miest"
 
-#: ../gcalctool/gtk.c:352
+#: ../gcalctool/gtk.c:365
 msgid "_9 significant places"
 msgstr "_9 významných miest"
 
-#: ../gcalctool/gtk.c:353
+#: ../gcalctool/gtk.c:366
 msgid "9 significant places"
 msgstr "9 významných miest"
 
-#: ../gcalctool/gtk.c:354
+#: ../gcalctool/gtk.c:367
 msgid "_Other (10) ..."
 msgstr "_Ostatné (10) ..."
 
-#: ../gcalctool/gtk.c:355
+#: ../gcalctool/gtk.c:368
 msgid "Set other precision"
 msgstr "Nastaviť inú presnosť"
 
-#: ../gcalctool/gtk.c:359
+#: ../gcalctool/gtk.c:372
+#, fuzzy
+msgid "_Left-to-right Precedence"
+msgstr "_Použiť aritmetickú prioritu"
+
+#: ../gcalctool/gtk.c:373
+#, fuzzy
+msgid "Use Left-right Precedence"
+msgstr "Použiť aritmetickú prioritu"
+
+#: ../gcalctool/gtk.c:374
+#, fuzzy
+msgid "A_rithmetic Precedence"
+msgstr "Použiť aritmetickú prioritu"
+
+#: ../gcalctool/gtk.c:375
+msgid "Use Arithmetic Precedence"
+msgstr "Použiť aritmetickú prioritu"
+
+#: ../gcalctool/gtk.c:379
 msgid "_Basic"
 msgstr "_Základný"
 
-#: ../gcalctool/gtk.c:361
+#: ../gcalctool/gtk.c:381
 msgid "_Advanced"
 msgstr "_Rozšírený"
 
-#: ../gcalctool/gtk.c:363
+#: ../gcalctool/gtk.c:383
 msgid "_Financial"
 msgstr "_Finančný"
 
-#: ../gcalctool/gtk.c:365
+#: ../gcalctool/gtk.c:385
 msgid "_Scientific"
 msgstr "_Vedecký"
 
-#: ../gcalctool/gtk.c:525
+#: ../gcalctool/gtk.c:534
 msgid "translator-credits"
-msgstr "Marcel Telka <marcel@telka.sk>"
+msgstr ""
+"Marcel Telka <marcel@telka.sk>\n"
+"Peter Tuhársky <tuharsky@misbb.sk>"
 
-#: ../gcalctool/gtk.c:528
+#: ../gcalctool/gtk.c:537
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+msgstr ""
+"Gkalkulačka je free software; môžete ho redistribuovať a/alebo modifikovať\n"
+"za podmienok GNU General Public License publikovaných\n"
+" Free Software Foundation; a to buď verzie licencie 2,\n"
+"alebo (podľa vášho uváženia) ľubovoľnej neskoršej verzie.\n"
+
+#: ../gcalctool/gtk.c:541
+msgid ""
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+msgstr ""
+"Gkalkulačka  je distribuovaná v nádeji, že bude užitočná,\n"
+"ale BEZ AKEJKOĽVEK ZÁRUKY; a to ani bez predpokladanej záruky\n"
+"PREDAJNOSTI, alebo VHODNOSTI PRE KONKRÉTNY ÚČEL.\n"
+"Pre ďalšie podrobnosti viz. GNU General Public License.\n"
+
+#: ../gcalctool/gtk.c:545
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+msgstr ""
+"Kópiu GNU General Public License ste mali dostať spolu s Gkalkulačkou;\n"
+"ak sa tak nestalo napíšte na Free Software Foundation, Inc.,\n"
+"59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
+
+#: ../gcalctool/gtk.c:556
 msgid "Gcalctool"
 msgstr "Gkalkulačka"
 
-#: ../gcalctool/gtk.c:531
+#: ../gcalctool/gtk.c:558
+msgid "© 1987-2006 The Gcalctool authors"
+msgstr "© 1987-2006 Autori Gkalkulačky"
+
+#: ../gcalctool/gtk.c:560
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulčka s finančným a vedeckým režimom."
 
-#: ../gcalctool/gtk.c:786
+#: ../gcalctool/gtk.c:800
 msgid "Insert ASCII Value"
 msgstr "Vložiť ASCII hodnotu"
 
-#: ../gcalctool/gtk.c:801
+#: ../gcalctool/gtk.c:815
 msgid "Ch_aracter:"
 msgstr "Zn_ak:"
 
-#: ../gcalctool/gtk.c:826
+#: ../gcalctool/gtk.c:840
 msgid "_Insert"
 msgstr "V_ložiť"
 
-#: ../gcalctool/gtk.c:905
+#: ../gcalctool/gtk.c:919
 msgid "Edit Constants"
 msgstr "Upraviť konštanty"
 
-#: ../gcalctool/gtk.c:905
+#: ../gcalctool/gtk.c:919
 msgid "Edit Functions"
 msgstr "Upraviť funkcie"
 
-#: ../gcalctool/gtk.c:929
+#: ../gcalctool/gtk.c:943
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: ../gcalctool/gtk.c:930
+#: ../gcalctool/gtk.c:944
 msgid "All constant values are specified in the decimal numeric base."
 msgstr "Všetky konštantné hodnoty sú zadané v desiatkovej číselnej sústave."
 
-#: ../gcalctool/gtk.c:940
+#: ../gcalctool/gtk.c:954
 msgid "Click a _value or description to edit it:"
-msgstr "Na editáciu kliknite na _hodnotu alebo popis:"
+msgstr "Pre úpravu kliknite na _hodnotu alebo popis:"
 
-#: ../gcalctool/gtk.c:963
+#: ../gcalctool/gtk.c:977
 msgid "No."
 msgstr "Č."
 
-#: ../gcalctool/gtk.c:965
+#: ../gcalctool/gtk.c:979
 msgid "Value"
 msgstr "Hodnota"
 
-#: ../gcalctool/gtk.c:967
+#: ../gcalctool/gtk.c:981
 msgid "Description"
 msgstr "Popis"
 
-#: ../gcalctool/gtk.c:1077
+#: ../gcalctool/gtk.c:1092
 msgid "_Do not warn me again"
 msgstr "_Už neupozorňovať"
 
-#: ../gcalctool/gtk.c:1083
+#: ../gcalctool/gtk.c:1098
+#, c-format
 msgid ""
-"<big><b>Changing Modes Clears Calculation</b></big>\n"
+"%sChanging Modes Clears Calculation%s\n"
 "\n"
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
 msgstr ""
-"<big><b>Zmena režimu vymaže výpočet</b></big>\n"
+"%sZmena režimu vymaže výpočet%s\n"
 "\n"
-"Keď zmenite režimy, aktuálny výpočet bude vymazaný a sústava bude nastavená "
-"na desiatkovú."
+"Keď meníte režim, aktuálny výpočet sa vymaže a sústava sa nastaví na "
+"desiatkovú."
 
-#: ../gcalctool/gtk.c:1122
+#: ../gcalctool/gtk.c:1139
 msgid "C_hange Mode"
 msgstr "Z_meniť režim"
 
-#: ../gcalctool/gtk.c:1159
+#: ../gcalctool/gtk.c:1176
 msgid "Set Precision"
 msgstr "Nastaviť presnosť"
 
-#: ../gcalctool/gtk.c:1174
+#: ../gcalctool/gtk.c:1191
 msgid "Significant _places:"
 msgstr "Významných _miest:"
 
-#: ../gcalctool/gtk.c:1200
+#: ../gcalctool/gtk.c:1218
 msgid "_Set"
 msgstr "_Nastaviť"
 
-#: ../gcalctool/gtk.c:1417 ../gcalctool/gtk.c:1419 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:1462 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulačka"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1611 ../gcalctool/gtk.c:1757
+#: ../gcalctool/gtk.c:1682 ../gcalctool/gtk.c:1828
 msgid "R"
 msgstr "R"
 
 #. Make Hyp and Inv trigonometric check boxes.
-#: ../gcalctool/gtk.c:1679
+#: ../gcalctool/gtk.c:1751
 msgid "_Inv"
 msgstr "_Inv"
 
-#: ../gcalctool/gtk.c:1687
+#: ../gcalctool/gtk.c:1759
 msgid "H_yp"
 msgstr "H_yp"
 
-#: ../gcalctool/gtk.c:1747
+#: ../gcalctool/gtk.c:1818
 msgid "Memory Registers"
 msgstr "Pamäťové registre"
 
-#: ../gcalctool/gtk.c:1847
+#: ../gcalctool/gtk.c:1912
 msgid "Edit Constants..."
 msgstr "Upraviť konštanty..."
 
-#: ../gcalctool/gtk.c:1847
+#: ../gcalctool/gtk.c:1912
 msgid "Edit Functions..."
 msgstr "Upraviť funkcie..."
 
-#: ../gcalctool/gtk.c:2016
+#: ../gcalctool/gtk.c:2110
 msgid "Clipboard contained malformed calculation"
 msgstr "Schránka obsahovala poškodený výpočet"
 
-#: ../gcalctool/gtk.c:2284
+#: ../gcalctool/gtk.c:2200
+msgid "Paste"
+msgstr "Prilepiť"
+
+#: ../gcalctool/gtk.c:2418
 #, c-format
 msgid "Other (%d) ..."
 msgstr "Ostatné (%d) ..."
 
-#: ../gcalctool/gtk.c:2295
+#: ../gcalctool/gtk.c:2430
 #, c-format
 msgid ""
 "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 msgstr ""
 "Nastaviť presnosť od 0 do %d miest. Teraz je nastavené na %d miest. [a]"
 
-#: ../gcalctool/gtk.c:2527
+#: ../gcalctool/gtk.c:2690
 msgid "Activated no operator precedence mode"
 msgstr "Aktivovaný režim bez priority operátorov"
 
-#: ../gcalctool/gtk.c:2537
+#: ../gcalctool/gtk.c:2700
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktivovaný režim výrazov s prioritou operátorov"
 
-#: ../gcalctool/gtk.c:2754
+#: ../gcalctool/gtk.c:3039
 msgid "Accuracy value out of range"
 msgstr "Hodnota presnosti je mimo rozsah"
 
@@ -1444,205 +1566,10 @@ msgstr "Hodnota presnosti je mimo rozsah"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Záporné X a neceločíselné Y nie sú podporované"
 
-#: ../gcalctool/mpmath.c:268
+#: ../gcalctool/mpmath.c:273
 msgid "Error, cannot calculate cosine"
 msgstr "Chyba, nepodarilo sa vypočítať kosínus"
 
-#. Absolute value
-#: ../gcalctool/syntax_translation.c:36
-msgid "abs"
-msgstr "abs"
-
-#. Inversion of hyperbolic cosine
-#: ../gcalctool/syntax_translation.c:37
-msgid "acosh"
-msgstr "acosh"
-
-#. Inversion of cosine
-#: ../gcalctool/syntax_translation.c:38
-msgid "acos"
-msgstr "acos"
-
-#. Bitwise AND
-#: ../gcalctool/syntax_translation.c:39
-msgid "and"
-msgstr "and"
-
-#. Inversion of hyperbolic sine
-#: ../gcalctool/syntax_translation.c:40
-msgid "asinh"
-msgstr "asinh"
-
-#. Hyperbolic sine
-#: ../gcalctool/syntax_translation.c:41
-msgid "asin"
-msgstr "asin"
-
-#. Inversion of hyperbolic tangent
-#: ../gcalctool/syntax_translation.c:42
-msgid "atanh"
-msgstr "atanh"
-
-#. Inversion of tangent
-#: ../gcalctool/syntax_translation.c:43
-msgid "atan"
-msgstr "atan"
-
-#. Cubic root
-#: ../gcalctool/syntax_translation.c:44
-msgid "cbrt"
-msgstr "cbrt"
-
-#. Change sign
-#: ../gcalctool/syntax_translation.c:45
-msgid "chs"
-msgstr "chs"
-
-#. Clear (display)
-#: ../gcalctool/syntax_translation.c:46
-msgid "clr"
-msgstr "clr"
-
-#. Hyperbolic cosine
-#: ../gcalctool/syntax_translation.c:47
-msgid "cosh"
-msgstr "cosh"
-
-#. Cosine
-#: ../gcalctool/syntax_translation.c:48
-msgid "cos"
-msgstr "cos"
-
-#. Double-declining deprecation
-#: ../gcalctool/syntax_translation.c:49
-msgid "ddb"
-msgstr "ddb"
-
-#. x*10^y
-#: ../gcalctool/syntax_translation.c:50
-msgid "exp"
-msgstr "exp"
-
-#. Fraction of a decimal number
-#: ../gcalctool/syntax_translation.c:51
-msgid "frac"
-msgstr "frac"
-
-#. Future value
-#: ../gcalctool/syntax_translation.c:52
-msgid "fv"
-msgstr "fv"
-
-#. Integer part of a decimal number
-#: ../gcalctool/syntax_translation.c:53
-msgid "int"
-msgstr "int"
-
-#. Natural logarithm
-#: ../gcalctool/syntax_translation.c:54
-msgid "ln"
-msgstr "ln"
-
-#. Logarithm with 10 as a base number
-#: ../gcalctool/syntax_translation.c:55
-msgid "log"
-msgstr "log"
-
-#. Modulus
-#: ../gcalctool/syntax_translation.c:56
-msgid "mod"
-msgstr "mod"
-
-#. Bitwise NOT
-#: ../gcalctool/syntax_translation.c:57
-msgid "not"
-msgstr "not"
-
-#. Bitwise OR
-#: ../gcalctool/syntax_translation.c:58
-msgid "or"
-msgstr "or"
-
-#. Periodic payment
-#: ../gcalctool/syntax_translation.c:60
-msgid "pmt"
-msgstr "pmt"
-
-#. Present value
-#: ../gcalctool/syntax_translation.c:61
-msgid "pv"
-msgstr "pv"
-
-#. A random number
-#: ../gcalctool/syntax_translation.c:62
-msgid "rand"
-msgstr "rand"
-
-#. Periodic interest rate
-#: ../gcalctool/syntax_translation.c:63
-msgid "rate"
-msgstr "rate"
-
-#. Recall number from memory register
-#: ../gcalctool/syntax_translation.c:64
-msgid "rcl"
-msgstr "rcl"
-
-#. Hyperbolic sine
-#: ../gcalctool/syntax_translation.c:65
-msgid "sinh"
-msgstr "sinh"
-
-#. Sine
-#: ../gcalctool/syntax_translation.c:66
-msgid "sin"
-msgstr "sin"
-
-#. Straight-line depreciation
-#: ../gcalctool/syntax_translation.c:67
-msgid "sln"
-msgstr "sln"
-
-#. Square root
-#: ../gcalctool/syntax_translation.c:68
-msgid "sqrt"
-msgstr "sqrt"
-
-#. Store number at memory register
-#: ../gcalctool/syntax_translation.c:69
-msgid "sto"
-msgstr "sto"
-
-#. Sum-of-the years'-digits depreciation
-#: ../gcalctool/syntax_translation.c:70
-msgid "syd"
-msgstr "syd"
-
-#. Hyperbolic tangent
-#: ../gcalctool/syntax_translation.c:71
-msgid "tanh"
-msgstr "tanh"
-
-#. Tangent
-#: ../gcalctool/syntax_translation.c:72
-msgid "tan"
-msgstr "tg"
-
-#. Payment period
-#: ../gcalctool/syntax_translation.c:73
-msgid "term"
-msgstr "term"
-
-#. Bitwise XNOR
-#: ../gcalctool/syntax_translation.c:76
-msgid "xnor"
-msgstr "xnor"
-
-#. Bitwise XOR
-#: ../gcalctool/syntax_translation.c:77
-msgid "xor"
-msgstr "xor"
-
 #: ../gcalctool.desktop.in.h:2
-msgid "Perform calculations"
-msgstr "Vykonať výpočty"
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Vykonať aritmetické, vedecké alebo finančné výpočty"
