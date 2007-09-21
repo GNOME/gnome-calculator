@@ -1398,6 +1398,71 @@ set_redo_and_undo_button_sensitivity(int undo, int redo)
 
 
 static void
+menu_item_select_cb(GtkWidget *widget, gpointer data)
+{
+    GtkStatusbar *statusbar = GTK_STATUSBAR(X->statusbar);
+    GtkAction *action;
+    gchar *tooltip;
+    guint context_id;
+
+    context_id = gtk_statusbar_get_context_id(statusbar, "menuhelp");
+
+#if GTK_CHECK_VERSION (2, 8, 0)
+    action = gtk_widget_get_action(widget);
+#else
+    action = g_object_get_data(G_OBJECT(widget), "gtk-action");
+#endif
+    g_return_if_fail(action != NULL);
+
+    g_object_get(action, "tooltip", &tooltip, NULL);
+
+    if (tooltip) {
+        gtk_statusbar_push(statusbar, context_id, tooltip);
+        g_free(tooltip);
+    }
+}
+
+
+static void
+menu_item_deselect_cb(GtkWidget *widget, gpointer data)
+{
+    GtkStatusbar *statusbar = GTK_STATUSBAR(X->statusbar);
+    guint context_id;
+
+    context_id = gtk_statusbar_get_context_id(statusbar, "menuhelp");
+    gtk_statusbar_pop(statusbar, context_id);
+}
+
+
+static void
+connect_proxy_cb(GtkUIManager *ui_manager, GtkAction *action,
+                 GtkWidget *proxy, gpointer data)
+{
+    if (!GTK_IS_MENU_ITEM(proxy))
+        return;
+
+    g_signal_connect(proxy, "select",
+                     G_CALLBACK(menu_item_select_cb), data);
+    g_signal_connect(proxy, "deselect",
+                     G_CALLBACK (menu_item_deselect_cb), data);
+}
+
+
+static void
+disconnect_proxy_cb(GtkUIManager *ui_manager, GtkAction *action,
+                    GtkWidget *proxy, gpointer data)
+{
+    if (!GTK_IS_MENU_ITEM (proxy))
+        return;
+
+    g_signal_handlers_disconnect_by_func(proxy, 
+                       G_CALLBACK(menu_item_select_cb), data);
+    g_signal_handlers_disconnect_by_func(proxy, 
+                       G_CALLBACK(menu_item_deselect_cb), data);
+}
+
+
+static void
 update_copy_paste_status() {
     GtkTextBuffer *buffer;
     gboolean can_paste;
@@ -1475,6 +1540,12 @@ create_kframe()
     gtk_ui_manager_insert_action_group(X->ui, X->actions, 0);
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe),
                                gtk_ui_manager_get_accel_group(X->ui));
+
+    /* Show action help in the statusbar. */
+    g_signal_connect(X->ui, "connect-proxy",
+                     G_CALLBACK(connect_proxy_cb), NULL);
+    g_signal_connect(X->ui, "disconnect-proxy",
+                     G_CALLBACK(disconnect_proxy_cb), NULL);
 
     if (!gtk_ui_manager_add_ui_from_string(X->ui, ui_info, -1, &error)) {
         g_message("Building menus failed: %s", error->message);
