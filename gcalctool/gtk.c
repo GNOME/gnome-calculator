@@ -185,7 +185,6 @@ static void about_cb(GtkAction *action, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
-static void astz_proc(GtkAction *action);
 static void base_cb(GtkToggleButton *, gpointer);
 static void buffer_populate_popup_cb(GtkTextView *, GtkMenu *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
@@ -339,8 +338,6 @@ static const GtkToggleActionEntry toggle_entries[] = {
       N_("Show bitcalculating extension"), G_CALLBACK(mb_proc),   FALSE },
     { "Memory",    NULL, N_("_Memory Registers"),         "<control>M",
       N_("Show memory registers"),    G_CALLBACK(mb_proc),   FALSE },
-    { "Show",      NULL, N_("Show _Trailing Zeroes"),     "<control>T",
-      N_("Show trailing zeroes"),     G_CALLBACK(astz_proc), FALSE },
 };
 
 static const GtkRadioActionEntry acc_radio_entries[] = {
@@ -387,88 +384,88 @@ static const GtkRadioActionEntry mode_radio_entries[] = {
 };
 
 static const gchar ui_info[] =
-"<ui>"
-"  <menubar name='MenuBar'>"
-"    <menu action='CalculatorMenu'>"
-"      <menuitem action='Quit'/>"
-"    </menu>"
-"    <menu action='EditMenu'>"
-"      <menuitem action='Copy'/>"
-"      <menuitem action='Paste'/>"
-"      <menuitem action='Undo'/>"
-"      <menuitem action='Redo'/>"
-"      <separator/>"
-"      <menuitem action='Insert'/>"
-"    </menu>"
-"    <menu action='ViewMenu'>"
-"      <menuitem action='Basic'/>"
-"      <menuitem action='Advanced'/>"
-"      <menuitem action='Financial'/>"
-"      <menuitem action='Scientific'/>"
-"      <separator/>"
-"      <menuitem action='Trailing'/>"
-"      <menuitem action='Thousands'/>"
-"      <menuitem action='Bitcalculating'/>"
-"      <separator/>"
-"      <menuitem action='Memory'/>"
-"      <separator/>"
-"      <menuitem action='LeftRightPrecedence'/>"
-"      <menuitem action='ArithmeticPrecedence'/>"
-"    </menu>"
-"    <menu action='HelpMenu'>"
-"      <menuitem action='Contents'/>"
-"      <menuitem action='About'/>"
-"    </menu>"
-"  </menubar>"
-"  <popup name='AccMenu'>"
-"    <menuitem action='SP0'/>"
-"    <menuitem action='SP1'/>"
-"    <menuitem action='SP2'/>"
-"    <menuitem action='SP3'/>"
-"    <menuitem action='SP4'/>"
-"    <menuitem action='SP5'/>"
-"    <menuitem action='SP6'/>"
-"    <menuitem action='SP7'/>"
-"    <menuitem action='SP8'/>"
-"    <menuitem action='SP9'/>"
-"    <menuitem action='SPOther'/>"
-"    <separator/>"
-"    <menuitem action='Show'/>"
-"  </popup>"
-"  <popup name='LeftShiftMenu'>"
-"    <menuitem action='LSPlaces1'/>"
-"    <menuitem action='LSPlaces2'/>"
-"    <menuitem action='LSPlaces3'/>"
-"    <menuitem action='LSPlaces4'/>"
-"    <menuitem action='LSPlaces5'/>"
-"    <menuitem action='LSPlaces6'/>"
-"    <menuitem action='LSPlaces7'/>"
-"    <menuitem action='LSPlaces8'/>"
-"    <menuitem action='LSPlaces9'/>"
-"    <menuitem action='LSPlaces10'/>"
-"    <menuitem action='LSPlaces11'/>"
-"    <menuitem action='LSPlaces12'/>"
-"    <menuitem action='LSPlaces13'/>"
-"    <menuitem action='LSPlaces14'/>"
-"    <menuitem action='LSPlaces15'/>"
-"  </popup>"
-"  <popup name='RightShiftMenu'>"
-"    <menuitem action='RSPlaces1'/>"
-"    <menuitem action='RSPlaces2'/>"
-"    <menuitem action='RSPlaces3'/>"
-"    <menuitem action='RSPlaces4'/>"
-"    <menuitem action='RSPlaces5'/>"
-"    <menuitem action='RSPlaces6'/>"
-"    <menuitem action='RSPlaces7'/>"
-"    <menuitem action='RSPlaces8'/>"
-"    <menuitem action='RSPlaces9'/>"
-"    <menuitem action='RSPlaces10'/>"
-"    <menuitem action='RSPlaces11'/>"
-"    <menuitem action='RSPlaces12'/>"
-"    <menuitem action='RSPlaces13'/>"
-"    <menuitem action='RSPlaces14'/>"
-"    <menuitem action='RSPlaces15'/>"
-"  </popup>"
+ "<ui>"
+  "<menubar name='MenuBar'>"
+    "<menu action='CalculatorMenu'>"
+      "<menuitem action='Quit'/>"
+    "</menu>"
+    "<menu action='EditMenu'>"
+      "<menuitem action='Copy'/>"
+      "<menuitem action='Paste'/>"
+      "<menuitem action='Undo'/>"
+      "<menuitem action='Redo'/>"
+      "<separator/>"
+      "<menuitem action='Insert'/>"
+    "</menu>"
+    "<menu action='ViewMenu'>"
+      "<menuitem action='Basic'/>"
+      "<menuitem action='Advanced'/>"
+      "<menuitem action='Financial'/>"
+      "<menuitem action='Scientific'/>"
+      "<separator/>"
+      "<menuitem action='Trailing'/>"
+      "<menuitem action='Thousands'/>"
+      "<menuitem action='Bitcalculating'/>"
+      "<separator/>"
+      "<menuitem action='Memory'/>"
+      "<separator/>"
+      "<menuitem action='LeftRightPrecedence'/>"
+      "<menuitem action='ArithmeticPrecedence'/>"
+    "</menu>"
+    "<menu action='HelpMenu'>"
+      "<menuitem action='Contents'/>"
+      "<menuitem action='About'/>"
+    "</menu>"
+  "</menubar>"
+  "<popup name='AccMenu'>"
+    "<menuitem action='SP0'/>"
+    "<menuitem action='SP1'/>"
+    "<menuitem action='SP2'/>"
+    "<menuitem action='SP3'/>"
+    "<menuitem action='SP4'/>"
+    "<menuitem action='SP5'/>"
+    "<menuitem action='SP6'/>"
+    "<menuitem action='SP7'/>"
+    "<menuitem action='SP8'/>"
+    "<menuitem action='SP9'/>"
+    "<menuitem action='SPOther'/>"
+    "<separator/>"
+    "<menuitem action='Trailing'/>"
+  "</popup>"
+  "<popup name='LeftShiftMenu'>"
+    "<menuitem action='LSPlaces1'/>"
+    "<menuitem action='LSPlaces2'/>"
+    "<menuitem action='LSPlaces3'/>"
+    "<menuitem action='LSPlaces4'/>"
+    "<menuitem action='LSPlaces5'/>"
+    "<menuitem action='LSPlaces6'/>"
+    "<menuitem action='LSPlaces7'/>"
+    "<menuitem action='LSPlaces8'/>"
+    "<menuitem action='LSPlaces9'/>"
+    "<menuitem action='LSPlaces10'/>"
+    "<menuitem action='LSPlaces11'/>"
+    "<menuitem action='LSPlaces12'/>"
+    "<menuitem action='LSPlaces13'/>"
+    "<menuitem action='LSPlaces14'/>"
+    "<menuitem action='LSPlaces15'/>"
+  "</popup>"
+  "<popup name='RightShiftMenu'>"
+    "<menuitem action='RSPlaces1'/>"
+    "<menuitem action='RSPlaces2'/>"
+    "<menuitem action='RSPlaces3'/>"
+    "<menuitem action='RSPlaces4'/>"
+    "<menuitem action='RSPlaces5'/>"
+    "<menuitem action='RSPlaces6'/>"
+    "<menuitem action='RSPlaces7'/>"
+    "<menuitem action='RSPlaces8'/>"
+    "<menuitem action='RSPlaces9'/>"
+    "<menuitem action='RSPlaces10'/>"
+    "<menuitem action='RSPlaces11'/>"
+    "<menuitem action='RSPlaces12'/>"
+    "<menuitem action='RSPlaces13'/>"
+    "<menuitem action='RSPlaces14'/>"
+    "<menuitem action='RSPlaces15'/>"
+  "</popup>"
 "</ui>";
 
 
@@ -627,26 +624,6 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
     mpcim(&val, v->MPdisp_val);
     show_display(v->MPdisp_val);
     gtk_widget_hide(X->aframe);
-}
-
-
-/*ARGSUSED*/
-static void
-astz_proc(GtkAction *action)
-{
-    GtkWidget *mi;
-
-    if (!v->doing_mi) {
-        v->show_zeroes = !v->show_zeroes;
-        v->doing_mi = 1;
-        mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
-        v->doing_mi = 0;
-
-	syntaxdep_show_display();
-	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
-	make_registers();
-    }
 }
 
 
@@ -2870,14 +2847,8 @@ mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current)
 static void
 mstz_proc(GtkAction *action)
 {
-    GtkWidget *mi;
-
     if (!v->doing_mi) {
-	v->show_zeroes = !v->show_zeroes;
-        v->doing_mi = 1;
-        mi = gtk_ui_manager_get_widget(X->ui, "/AccMenu/Show");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), v->show_zeroes);
-        v->doing_mi = 0;
+	v->show_zeroes = gtk_toggle_action_get_active(GTK_TOGGLE_ACTION(action));
 
 	syntaxdep_show_display();
 	put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
@@ -3382,10 +3353,10 @@ set_inv_item(int state)
 static void
 set_memory_toggle(int state)
 {
-    GtkWidget *reg;
+    GtkAction *action;
 
-    reg = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Memory");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(reg), state);
+    action = gtk_action_group_get_action(X->actions, "Memory");
+    gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(action), state);
 }
 
 
@@ -3534,17 +3505,12 @@ set_show_bitcalculating_toggle(int state)
 static void
 set_show_zeroes_toggle(int state)
 {
-    GtkWidget *mi;
+    GtkAction *action;
 
-    v->doing_mi = 1;    /* Hack to get [a,m]stz_proc() to just return. */
-    mi = gtk_ui_manager_get_widget(X->ui, "/AccMenu/Show");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
-
-    mi = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Trailing");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
-    g_object_set(gtk_ui_manager_get_action(X->ui, 
-                                           "/MenuBar/ViewMenu/Trailing"), 
-                 "sensitive", v->modetype == SCIENTIFIC, NULL);
+    v->doing_mi = 1;    /* Hack to get mstz_proc() to just return. */
+    action = gtk_action_group_get_action(X->actions, "Trailing");
+    gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(action), state);
+    gtk_action_set_sensitive(action, v->modetype == SCIENTIFIC);
     v->doing_mi = 0;
 }
 
