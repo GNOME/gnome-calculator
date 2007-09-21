@@ -984,40 +984,39 @@ change_mode(const gchar *name)
 
 /*ARGSUSED*/
 static void
-cm_ok_cb(GtkButton *button, gpointer user_data)
+cm_response_cb(GtkDialog *dialog, int response, gpointer user_data)
 {
-    change_mode(X->mode_name);
-    gtk_widget_hide(X->cm_dialog);
-}
+    GtkAction *action;
+    const gchar *action_name;
 
+    if (response == GTK_RESPONSE_ACCEPT) {
+        change_mode(X->mode_name);
+    } else {
 
-/*ARGSUSED*/
-static void
-cm_cancel_cb(GtkButton *button, gpointer user_data)
-{
-    GtkWidget *w;
+        switch (v->modetype) {
+            case FINANCIAL:
+                action_name = "Financial";
+                break;
 
-    switch (v->modetype) {
-        case FINANCIAL:
-            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Financial");
-            break;
+            case SCIENTIFIC:
+                action_name = "Scientific";
+                break;
 
-        case SCIENTIFIC:
-            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Scientific");
-            break;
+            case ADVANCED:
+                action_name = "Advanced";
+                break;
 
-        case ADVANCED:
-            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Advanced");
-            break;
+            default:
+                action_name = "Basic";
+                break;
+        }
 
-        default:
-            w = gtk_ui_manager_get_widget(X->ui, "/MenuBar/ViewMenu/Basic");
-            break;
+        action = gtk_action_group_get_action(X->actions, action_name);
+        gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(action), TRUE);
     }
 
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(w), TRUE);
-
-    gtk_widget_hide(X->cm_dialog);
+    gtk_widget_destroy(X->cm_dialog);
+    X->cm_dialog = NULL;
 }
 
 
@@ -1032,95 +1031,41 @@ cm_warning_cb(GtkToggleButton *button, gpointer user_data)
 static void
 create_change_mode_dialog()
 {
-    GtkWidget *vbox, *table, *warning;
-    GtkWidget *check, *desc, *action_area;
-    GtkWidget *cancel, *ok, *align, *hbox, *refresh, *mode_label;
-    char *label_text;
+    GtkWidget *check, *button;
 
-    X->cm_dialog = gtk_dialog_new();
-    gtk_container_set_border_width(GTK_CONTAINER(X->cm_dialog), 12);
-    gtk_window_set_modal(GTK_WINDOW(X->cm_dialog), TRUE);
-    gtk_window_set_resizable(GTK_WINDOW(X->cm_dialog), FALSE);
-    gtk_window_set_type_hint(GTK_WINDOW(X->cm_dialog), 
-                             GDK_WINDOW_TYPE_HINT_DIALOG);
-    gtk_dialog_set_has_separator(GTK_DIALOG(X->cm_dialog), FALSE);
-
-    vbox = GTK_DIALOG(X->cm_dialog)->vbox;
-    gtk_widget_show(vbox);
-
-    table = gtk_table_new(2, 2, FALSE);
-    gtk_widget_show(table);
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 5);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 12);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 12);
-
-    warning = gtk_image_new_from_stock("gtk-dialog-warning", 
-                                       GTK_ICON_SIZE_DIALOG);
-    gtk_widget_show(warning);
-    gtk_table_attach(GTK_TABLE(table), warning, 0, 1, 0, 2,
-                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-    gtk_misc_set_alignment(GTK_MISC(warning), 0.5, 0);
+    X->cm_dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
+                                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                          GTK_MESSAGE_WARNING,
+                                          GTK_BUTTONS_CANCEL,
+                                          "%s",
+                                          _("Changing Modes Clears Calculation"));
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(X->cm_dialog),
+                                             "%s",
+                                             _("When you change modes, the current calculation "
+                                               "will be cleared, and the base will be reset to "
+                                               "decimal."));
 
     check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
+    gtk_box_pack_end(GTK_BOX(GTK_MESSAGE_DIALOG(X->cm_dialog)->label->parent), check, FALSE, FALSE, 0);
     gtk_widget_show(check);
-    gtk_table_attach(GTK_TABLE(table), check, 1, 2, 1, 2,
-                     (GtkAttachOptions) (GTK_FILL),
-                     (GtkAttachOptions) (0), 0, 0);
 
-    label_text = g_strdup_printf(_("%sChanging Modes Clears Calculation%s\n\nWhen you change modes, the current calculation will be cleared, and the base will be reset to decimal."), "<big><b>", "</b></big>");
-    desc = gtk_label_new(label_text);
-    g_free(label_text);
-    gtk_widget_show(desc);
-    gtk_table_attach(GTK_TABLE(table), desc, 1, 2, 0, 1,
-                     (GtkAttachOptions) (GTK_FILL),
-                     (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_use_markup(GTK_LABEL(desc), TRUE);
-    gtk_label_set_line_wrap(GTK_LABEL(desc), TRUE);
-    gtk_misc_set_alignment(GTK_MISC(desc), 0, 0.5);
+    button = gtk_dialog_add_button(GTK_DIALOG(X->cm_dialog), _("C_hange Mode"), GTK_RESPONSE_ACCEPT);
+    gtk_button_set_image(GTK_BUTTON(button),
+                         gtk_image_new_from_stock(GTK_STOCK_REFRESH, GTK_ICON_SIZE_BUTTON));
+    /* Set default focus on affirmative button */
+    gtk_widget_grab_focus(button);
 
-    action_area = GTK_DIALOG(X->cm_dialog)->action_area;
-    gtk_widget_show(action_area);
-    gtk_button_box_set_layout(GTK_BUTTON_BOX(action_area), 
-                              GTK_BUTTONBOX_END);
-
-    cancel = gtk_button_new_from_stock("gtk-cancel");
-    gtk_widget_show(cancel);
-    gtk_dialog_add_action_widget(GTK_DIALOG(X->cm_dialog), 
-                                 cancel, GTK_RESPONSE_CANCEL);
-    GTK_WIDGET_SET_FLAGS(cancel, GTK_CAN_DEFAULT);
-
-    ok = gtk_button_new();
-    gtk_widget_show(ok);
-    gtk_dialog_add_action_widget(GTK_DIALOG(X->cm_dialog), 
-                                 ok, GTK_RESPONSE_OK);
-    GTK_WIDGET_SET_FLAGS(ok, GTK_CAN_DEFAULT);
-
-    align = gtk_alignment_new(0.5, 0.5, 0, 0);
-    gtk_widget_show(align);
-    gtk_container_add(GTK_CONTAINER(ok), align);
-
-    hbox = gtk_hbox_new(FALSE, 2);
-    gtk_widget_show(hbox);
-    gtk_container_add(GTK_CONTAINER(align), hbox);
-
-    refresh = gtk_image_new_from_stock("gtk-refresh", 
-                                       GTK_ICON_SIZE_BUTTON);
-    gtk_widget_show(refresh);
-    gtk_box_pack_start(GTK_BOX(hbox), refresh, FALSE, FALSE, 0);
-
-    mode_label = gtk_label_new_with_mnemonic(_("C_hange Mode"));
-    gtk_widget_show(mode_label);
-    gtk_box_pack_start(GTK_BOX(hbox), mode_label, FALSE, FALSE, 0);
+    gtk_dialog_set_alternative_button_order(GTK_DIALOG(X->cm_dialog),
+                                            GTK_RESPONSE_ACCEPT,
+                                            GTK_RESPONSE_CANCEL,
+                                            -1);
 
     g_signal_connect((gpointer) check, "toggled",
                      G_CALLBACK(cm_warning_cb), NULL);
-    g_signal_connect((gpointer) cancel, "clicked",
-                     G_CALLBACK(cm_cancel_cb), NULL);
-    g_signal_connect((gpointer) ok, "clicked",
-                     G_CALLBACK(cm_ok_cb), NULL);
+    g_signal_connect(X->cm_dialog, "response",
+                     G_CALLBACK(cm_response_cb), NULL);
 
-    gtk_widget_realize(X->cm_dialog);
+    gtk_window_set_position(GTK_WINDOW(X->cm_dialog), GTK_WIN_POS_CENTER_ON_PARENT);
 }
 
 
@@ -1131,12 +1076,8 @@ show_change_mode_dialog()
         create_change_mode_dialog();
     }
 
-    if (gdk_window_is_visible(X->cm_dialog->window) == FALSE) {
-        ds_position_popup(X->kframe, X->cm_dialog, DS_POPUP_CENTERED);
-    }
-    gtk_widget_show(X->cm_dialog);
+    gtk_window_present(GTK_WINDOW(X->cm_dialog));
 }
-
 
 
 static void
