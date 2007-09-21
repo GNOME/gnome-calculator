@@ -2461,12 +2461,23 @@ set_accuracy_menu_item(int accuracy)
 void
 set_accuracy_tooltip(int accuracy)
 {
-    char tooltip[MAXLINE];
+    char *desc, *current, *tooltip;
 
-    snprintf(tooltip, MAXLINE, 
-            _("Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"),
-            MAXACC, accuracy);
+    desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric places.",
+                                    "Set accuracy from 0 to %d numeric places.",
+                                    MAXACC),
+                           MAXACC);
+
+    /* Translator: This refers to the current accuracy setting */
+    current = g_strdup_printf(ngettext("Currently set to %d places.",
+                                       "Currently set to %d places.",
+                                       accuracy),
+                              accuracy);
+    tooltip = g_strdup_printf ("%s %s [a]", desc, current);
     gtk_widget_set_tooltip_text (BUT_ACC, tooltip);
+    g_free(desc);
+    g_free(current);
+    g_free(tooltip);
 }
 
 
