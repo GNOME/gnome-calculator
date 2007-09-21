@@ -803,20 +803,16 @@ create_aframe()  /* Create auxiliary frame for ASC key. */
 
     button_hbox = gtk_hbutton_box_new();
     gtk_button_box_set_layout(GTK_BUTTON_BOX(button_hbox), GTK_BUTTONBOX_END);
-    gtk_widget_ref(button_hbox);
     gtk_widget_show(button_hbox);
     gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
     gtk_box_set_spacing(GTK_BOX(button_hbox), 12);
 
     cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
     GTK_WIDGET_SET_FLAGS(cancel_button, GTK_CAN_DEFAULT);
-    gtk_widget_ref(cancel_button);
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
 
     insert_button = gtk_button_new_with_mnemonic(_("_Insert"));
-    g_return_if_fail(insert_button != NULL);
-    gtk_widget_ref(insert_button);
     gtk_widget_show(insert_button);
     GTK_WIDGET_SET_FLAGS(insert_button, GTK_CAN_DEFAULT);
     gtk_window_set_default(GTK_WINDOW(X->aframe), insert_button);
@@ -1181,20 +1177,16 @@ create_spframe()     /* Create auxiliary frame for Set Precision value. */
 
     button_hbox = gtk_hbutton_box_new();
     gtk_button_box_set_layout(GTK_BUTTON_BOX(button_hbox), GTK_BUTTONBOX_END);
-    gtk_widget_ref(button_hbox);
     gtk_widget_show(button_hbox);
     gtk_box_pack_start(GTK_BOX(vbox), button_hbox, TRUE, TRUE, 0);
     gtk_box_set_spacing(GTK_BOX(button_hbox), 12);
 
     cancel_button = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
     GTK_WIDGET_SET_FLAGS(cancel_button, GTK_CAN_DEFAULT);
-    gtk_widget_ref(cancel_button);
     gtk_widget_show(cancel_button);
     gtk_box_pack_start(GTK_BOX(button_hbox), cancel_button, FALSE, FALSE, 0);
 
     set_button = gtk_button_new_with_mnemonic(_("_Set"));
-    g_return_if_fail(set_button != NULL);
-    gtk_widget_ref(set_button);
     gtk_widget_show(set_button);
     GTK_WIDGET_SET_FLAGS(set_button, GTK_CAN_DEFAULT);
     gtk_window_set_default(GTK_WINDOW(X->spframe), set_button);
@@ -1450,7 +1442,6 @@ create_kframe()
                        G_CALLBACK(quit_cb), NULL);
 
     X->kvbox = gtk_vbox_new(FALSE, 0);
-    gtk_widget_ref(X->kvbox);
     gtk_container_add(GTK_CONTAINER(X->kframe), X->kvbox);
     gtk_widget_set_direction(X->kvbox, GTK_TEXT_DIR_LTR );
     gtk_widget_show(X->kvbox);
@@ -1536,7 +1527,6 @@ create_kframe()
                                                   ATK_ROLE_EDITBAR);
     set_display("0.00", FALSE);
 
-    gtk_widget_ref(X->display_item);
     gtk_container_set_border_width(GTK_CONTAINER(X->display_item), 2);
     gtk_container_add(GTK_CONTAINER(event_box), X->scrolledwindow);
     gtk_widget_show(X->display_item);
@@ -1677,7 +1667,6 @@ create_mode_panel(GtkWidget *main_vbox)
     row2_hbox = gtk_hbox_new(FALSE, 0);
 
     vbox = gtk_vbox_new(FALSE, 0);
-    gtk_widget_ref(vbox);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
     gtk_widget_set_direction(vbox, GTK_TEXT_DIR_LTR);
 
@@ -2451,7 +2440,6 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
     gtk_table_set_col_spacings(GTK_TABLE(table), 6);
     gtk_container_set_border_width(GTK_CONTAINER(table), 6);
 
-    gtk_widget_ref(table);
     gtk_widget_show(table);
     gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
@@ -2480,7 +2468,6 @@ make_but_panel(GtkWidget *vbox, GtkWidget **Gtk_buttons,
             }
             g_object_set_data(G_OBJECT(Gtk_buttons[n]),
                               "button", &buttons[n]);
-            gtk_widget_ref(Gtk_buttons[n]);
 
             if (strcmp(buttons[n].str, "    ")) {
                 gtk_widget_show(Gtk_buttons[n]);
