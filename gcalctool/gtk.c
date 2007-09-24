@@ -1683,7 +1683,7 @@ create_mode_panel(GtkWidget *main_vbox)
 
 /*ARGSUSED*/
 static void
-mem_close(GtkButton *button, gpointer user_data)
+mem_response(GtkDialog *dialog, int response, gpointer user_data)
 {
     set_memory_toggle(FALSE);
     put_resource(R_REGS, "false");
@@ -1694,28 +1694,38 @@ mem_close(GtkButton *button, gpointer user_data)
 static void
 create_rframe()
 {
-    char line[MAXLINE];     /* Current memory register line. */
+    char *line, *markup, *acc_name;
     char name[MAXLINE];
     int i;
     AtkObject *atko[MAXREGS];
-    GtkWidget *action_area, *close_button, *label[MAXREGS], *table, *vbox;
+    GtkWidget *label[MAXREGS], *table, *vbox;
 
     X->rframe = gtk_dialog_new();
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), FALSE);
     gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
-    gtk_window_set_type_hint(GTK_WINDOW(X->rframe), 
-                             GDK_WINDOW_TYPE_HINT_DIALOG);
+    gtk_container_set_border_width(GTK_CONTAINER(X->rframe), 5);
+    gtk_dialog_set_has_separator(GTK_DIALOG(X->rframe), FALSE);
+    gtk_box_set_spacing(GTK_BOX(GTK_DIALOG(X->rframe)->vbox), 2);
 
     vbox = GTK_DIALOG(X->rframe)->vbox;
-    gtk_widget_realize(X->rframe);
 
     table = gtk_table_new(10, 2, FALSE);
+    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
+    gtk_table_set_col_spacings(GTK_TABLE(table), 12);
+    gtk_container_set_border_width(GTK_CONTAINER(table), 5);
+
     for (i = 0; i < MAXREGS; i++) {
-        SNPRINTF(line, MAXLINE, "<span weight=\"bold\">%s%1d:</span>", 
-                 _("R"), i);
-        label[i] = gtk_label_new("");
-        gtk_label_set_markup(GTK_LABEL(label[i]), line);
+        /* Translators: "R%d" is the abbreviation for "Register %d", used in the
+         * memory register dialog.
+         */
+        line = g_strdup_printf(ngettext("R%d","R%d", i), i);
+        markup = g_strdup_printf("<span weight=\"bold\">%s</span>", line);
+        label[i] = gtk_label_new(NULL);
+        gtk_misc_set_alignment(GTK_MISC(label[i]), 0.0, 0.5);
+        gtk_label_set_markup(GTK_LABEL(label[i]), markup);
+        g_free(line);
+        g_free(markup);
         gtk_table_attach(GTK_TABLE(table), label[i], 0, 1, i, i+1,
                          (GtkAttachOptions) (GTK_FILL),
                          (GtkAttachOptions) (0), 0, 0);
@@ -1732,28 +1742,23 @@ create_rframe()
         SNPRINTF(name, MAXLINE, "register %1d", i);
         gtk_widget_set_name(X->regs[i], name);
 
+        acc_name = g_strdup_printf(ngettext("register %1d", "register %1d", i), i);
         atko[i] = gtk_widget_get_accessible(X->regs[i]);
-        atk_object_set_name(atko[i], _(name));
+        atk_object_set_name(atko[i], acc_name);
+        g_free(acc_name);
     }
     gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
 
-    action_area = GTK_DIALOG(X->rframe)->action_area;
-    gtk_widget_show(action_area);
-    gtk_button_box_set_layout(GTK_BUTTON_BOX(action_area), GTK_BUTTONBOX_END);
-
-    close_button = gtk_button_new_from_stock("gtk-close");
-    gtk_widget_show(close_button);
-    gtk_dialog_add_action_widget(GTK_DIALOG(X->rframe), 
-                                 close_button, GTK_RESPONSE_CLOSE);
-    GTK_WIDGET_SET_FLAGS(close_button, GTK_CAN_DEFAULT);
-
-    g_signal_connect((gpointer) close_button, "clicked",
-                     G_CALLBACK(mem_close), NULL);
+    gtk_dialog_add_button(GTK_DIALOG(X->rframe), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
 
     gtk_widget_show_all(vbox);
 
     g_signal_connect(G_OBJECT(X->rframe), "delete_event",
                      G_CALLBACK(dismiss_rframe), NULL);
+    g_signal_connect(X->rframe, "response",
+                     G_CALLBACK(mem_response), NULL);
+
+    gtk_widget_realize(X->rframe);
 }
 
 
@@ -1771,7 +1776,7 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 static gboolean
 dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-    mem_close(NULL, NULL);
+    gtk_dialog_response(GTK_DIALOG(widget), GTK_RESPONSE_DELETE_EVENT);
 
     return(TRUE);
 }
