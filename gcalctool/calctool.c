@@ -141,7 +141,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },
 {
     N_("8"),
@@ -242,7 +242,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },
 {
     N_("5"),
@@ -254,7 +254,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },
 {
     N_("6"),
@@ -266,7 +266,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },
 {
     /* Note to translators: this is a multiplication sign (*) */
@@ -296,11 +296,11 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
 {
     /* Note to translators: this is a plus-minus sign (+/-) */
     N_("\302\261"),
-    N_("Change sign [c]"),
+    N_("Change sign [C]"),
     NULL,
-    { 0,     0 },
-    { GDK_c, 0 },
-    'c',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_C,          0 },
+    'C',
     M_NONE,
     do_immed, 
     N_("Chs"),
@@ -328,7 +328,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_STO,
     do_pending,
     NULL,
-    none
+    pending
 },
 
 /* Row 3. */
@@ -342,7 +342,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | bin_set | oct_set
 },
 {
     N_("2"),
@@ -354,7 +354,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },    
 {     
     N_("3"),
@@ -366,7 +366,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | oct_set
 },
 {
     /* Note to translators: this is a minus sign (-) */
@@ -428,7 +428,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_RCL,
     do_pending,
     NULL,
-    none
+    pending
 },
 
 /* Row 4. */
@@ -442,7 +442,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_NONE,
     do_number,
     NULL,
-    number
+    number | bin_set | oct_set
 },
 {    
     N_("."),
@@ -527,7 +527,7 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
     M_EXCH,
     do_pending,
     NULL,
-    none
+    pending
 },
 };
 
@@ -559,11 +559,11 @@ struct button f_buttons[F_NOBUTTONS] = {   /* Financial mode button values. */
 },
 {
     N_("Ddb"),
-    N_("Double-declining depreciation [d]"),
+    N_("Double-declining depreciation [D]"),
     NULL,
-    { 0,     0 },
-    { GDK_d, 0 },
-    'd',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_D,          0 },
+    'D',
     M_NONE,
     do_business,
     NULL,
@@ -765,7 +765,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_LSHF,
     do_pending,
     NULL,
-    none
+    pending
 },
 {
     N_(">"),
@@ -777,7 +777,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_RSHF,   
     do_pending,
     NULL,
-    none
+    pending
 },            
 {             
     N_("&amp;16"),
@@ -841,15 +841,15 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 },
 {
     N_("Acc"),
-    N_("Set accuracy from 0 to 9 numeric places [a]"),
+    N_("Set accuracy from 0 to 9 numeric places [A]"),
     N_("Accuracy"),
-    { 0,     0 },
-    { GDK_a, 0 },
-    'a',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_A,          0 },
+    'A',
     M_ACC,
     do_pending,
     NULL,
-    none
+    pending
 },
 
 /* Row 2. */
@@ -863,27 +863,27 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     M_CON,            
     do_pending,
     NULL,
-    none
+    pending
 },
 {
     N_("Fun"),
-    N_("User-defined functions [f]"),
+    N_("User-defined functions [F]"),
     NULL,
-    { 0,     0 },
-    { GDK_f, 0 },
-    'f',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_F,          0 },
+    'F',
     M_FUN,
     do_pending,
     NULL,
-    none
+    pending
 },
 {
     N_("Exp"),
-    N_("Enter an exponential number [e]"),
+    N_("Enter an exponential number [E]"),
     N_("Exponential"),
-    { 0,     0 },
-    { GDK_e, 0 },
-    'e',
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_E,          0 },
+    'E',
     M_NONE,
     do_expno,
     N_("e"),
@@ -953,39 +953,39 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 /* Row 3. */
 {
     N_("D"),
-    N_("Hexadecimal digit D"),
+    N_("Hexadecimal digit D [d]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_D,          0 },
-    'D',
+    { 0,     0 },
+    { GDK_d, 0 },
+    'd',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },
 {
     N_("E"),
-    N_("Hexadecimal digit E"),
+    N_("Hexadecimal digit E [e]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_E,          0 },
-    'E',
+    { 0,     0 },
+    { GDK_e, 0 },
+    'e',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },
 {
     N_("F"),
-    N_("Hexadecimal digit F"),
+    N_("Hexadecimal digit F [f]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_F,          0 },
-    'F',
+    { 0,     0 },
+    { GDK_f, 0 },
+    'f',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },
 {
     N_("Cos"),
@@ -1051,39 +1051,39 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
 /* Row 4. */
 {
     N_("A"),
-    N_("Hexadecimal digit A"),
+    N_("Hexadecimal digit A [a]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_A,          0 },
-    'A',
+    { 0,     0 },
+    { GDK_a, 0 },
+    'a',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },
 {
     N_("B"),
-    N_("Hexadecimal digit B"),
+    N_("Hexadecimal digit B [b]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_B,          0 },
-    'B',
+    { 0,     0 },
+    { GDK_b, 0 },
+    'b',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },    
 {     
     N_("C"),
-    N_("Hexadecimal digit C"),
+    N_("Hexadecimal digit C [c]"),
     NULL,
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_C,          0 },
-    'C',
+    { 0,     0 },
+    { GDK_c, 0 },
+    'c',
     M_NONE,
     do_number,
     NULL,
-    number
+    number | hex
 },
 {
     N_("Or"),

@@ -62,6 +62,39 @@ gc_strdup(char *str)
 }
 
 void
+make_exp(char *number, int t[MP_SIZE])
+{
+    int i;
+    char *a = NULL;
+    char *b = NULL;
+
+    int MP_a[MP_SIZE];
+    int MP_b[MP_SIZE];
+
+    assert(number);
+    a = gc_strdup(number);
+    assert(a);
+
+    for (i = 0; !((a[i] == 'e') || (a[i] == 'E')); i++) {
+        assert(a[i]);
+    }
+    
+    a[i] = 0;
+    b = &a[i+2];
+
+    MPstr_to_num(a, v->base, MP_a);
+    MPstr_to_num(b, v->base, MP_b);
+    if (a[i+1] == '-') {
+        int MP_c[MP_SIZE];
+        mpneg(MP_b, MP_c);   
+        calc_xtimestenpowx(MP_a, MP_c, t);
+    } else {
+        calc_xtimestenpowx(MP_a, MP_b, t);
+    }
+
+    free(a);
+}
+void
 update_undo_redo_button_sensitivity(void)
 {
     int undo = 0;

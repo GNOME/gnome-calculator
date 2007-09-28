@@ -254,7 +254,11 @@ enum button_flags {
     expnum       = (1 << 13),  /* Exponential number */
     postfixop    = (1 << 14),  /* Unary postfix operation */
     prefixop     = (1 << 15),  /* Unary prefix operation */
-    dpoint       = (1 << 16)   /* Decimal point */
+    dpoint       = (1 << 16),  /* Decimal point */
+    pending      = (1 << 17),  /* Is a pending button */
+    hex          = (1 << 18),  /* Is a hex button A..F */
+    oct_set      = (1 << 19),  /* Is a oct button 0..7 */
+    bin_set      = (1 << 20)   /* Is a bin button 0..1 */
 };
 
 enum shiftd {
@@ -543,5 +547,9 @@ void mpsqrt(int *, int *);
 void mpstr(int *, int *);
 void mpsub(int *, int *, int *);
 void mptanh(int *, int *);
+
+void make_exp(char *number, int t[MP_SIZE]);
+
+
 
 #endif /*CALCTOOL_H*/

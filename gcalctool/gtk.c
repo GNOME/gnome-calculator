@@ -661,12 +661,26 @@ button_proc(GtkButton *widget, gpointer user_data)
             break;
 
         case exprs:
-		  {
+		  { 
+                      if ((n->flags) & pending) {
+                          if (v->current != NULL) {
+                              free(v->current);
+                          }
+                          v->current = copy_button_info(n);
+                          do_pending();
+                      } else if (((n->flags) & hex) &&  (v->base != HEX)) {
+                          // Do nothing
+                      } else if (((n->flags) & number) && 
+                                 (((v->base == BIN) && !(n->flags & bin_set))
+                                  || ((v->base == OCT) && !(n->flags & oct_set)))) {
+                          // Do nothing
+                      } else {
 			struct exprm_state *e = get_state();
 			memcpy(&(e->button), n, sizeof(struct button));
 			new_state();
 			do_expression();
 			set_bit_panel();
+                      }
 		  }
 		  break;
 
@@ -1974,13 +1988,13 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     end_buffer = (gchar *) (buffer + strlen(buffer));
     text = malloc(strlen(buffer)+1);
 
-    /* If the clipboard buffer contains any occurances of the "thousands
-     * separator", remove them.
-     */
-
     srcp = (gchar *) buffer;
     dstp = text;
     while (srcp < end_buffer) {
+
+        /* If the clipboard buffer contains any occurances of the "thousands
+         * separator", remove them.
+         */
         if (*srcp == v->tsep[0]) {
             if (strstr(srcp, v->tsep) == srcp) {
                 srcp += strlen(v->tsep);
@@ -1988,7 +2002,35 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
                 *dstp++ = *srcp++;
             }
         } else {
-            *dstp++ = *srcp++;
+
+            /* If an "A", "B", "C", "D" or "F" character is encountered, it 
+             * will be converted to its lowercase equivalent. If an "E" is 
+             * found,  and the next character is a "-" or a "+", then it 
+             * remains as an upper case "E" (it's assumed to be a possible 
+             * exponential number), otherwise its converted to a lower case 
+             * "e". See bugs #455889 and #469245 for more details.
+             */
+            switch (*srcp) {
+                case 'A':
+                case 'B':
+                case 'C':
+                case 'D':
+                case 'F': *dstp++ = tolower(*srcp);
+                          srcp++;
+                          break;
+
+                case 'E': if (srcp < (end_buffer-1)) {
+                              if (*(srcp+1) != '-' &&
+                                  *(srcp+1) != '+') {
+                                  *dstp++ = tolower(*srcp);
+                                  srcp++;
+                                  break;
+                              }
+                          }
+                          /*FALLTHROUGH*/
+
+                default:  *dstp++ = *srcp++;
+            }
         }
     }
     *dstp++ = '\0';

@@ -41,6 +41,7 @@ BIN     "0"|"1"
 OCT     [0-7]
 NUMBER  [DIGIT}*{DECIMAL}{DIGIT}+|{DIGIT}
 SEPARATOR "e+"|"e-"
+HEXS [0-9]|[A-F]|" "
 
 %%
 
@@ -87,19 +88,19 @@ SEPARATOR "e+"|"e-"
 "Sto" {return tSTO;}
 "Clr" {return tCLR;}
 
-{DIGIT}+ {
+{HEXS}+ {
   if (strlen(yytext) > 40) parser_state.error = EINVAL;
   MPstr_to_num(yytext, v->base, lrlval.int_t);
   return tINUMBER;
 }
 
-{DIGIT}*{DECIMAL}{DIGIT}+ {
+{HEXS}*{DECIMAL}{HEXS}+ {
   if (strlen(yytext) > 40) parser_state.error = EINVAL;
   MPstr_to_num(yytext, v->base, lrlval.int_t);
   return tDNUMBER;
 }
 
-{DIGIT}+{SEPARATOR}{DIGIT}+ {
+{HEXS}+{SEPARATOR}{HEXS}+ {
   MPstr_to_num(yytext, v->base, lrlval.int_t);
   return tDNUMBER;
 }

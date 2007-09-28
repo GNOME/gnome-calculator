@@ -85,13 +85,12 @@
 %token tXNOR
 %token tXOR
 
-%token <int_t> tINUMBER
-%token <int_t> tDNUMBER
+%token <int_t> tNUMBER
 %token <integer> tREG
 
 %token NEG
 
-%type  <int_t> exp rcl value term reg func constant number parenthesis
+%type  <int_t> exp rcl value term reg func number parenthesis
 
 %start statement
 %left '+' '-'
@@ -125,12 +124,12 @@ udf:
   cp($1, v->MPdisp_val);
   show_display(v->MPdisp_val);
   }
-| value '=' tSTO '(' tINUMBER ')' {
+| value '=' tSTO '(' tNUMBER ')' {
   int val;
   mpcmi($5, &val);
   do_sto_reg(val, $1);
 }
-| value tSTO '(' tINUMBER ')' {
+| value tSTO '(' tNUMBER ')' {
   int val;
   mpcmi($4, &val);
   do_sto_reg(val, $1);
@@ -204,7 +203,6 @@ term:
 | term '^' term {calc_xpowy($1, $3, $$);}
 | 'e' '^' term {calc_epowy($3, $$);} 
 | term '!' {do_factorial($1 ,$$);}
-| term 'e' term %prec MED {calc_xtimestenpowx($1, $3, $$);}
 | term '%' {calc_percent($1, $$);}
 | '-' term %prec NEG {mpneg($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
@@ -213,7 +211,6 @@ term:
 | reg {cp($1, $$);}
 
 | parenthesis {cp($1, $$);}
-| constant {cp($1, $$);}
 ;
 
 parenthesis:
@@ -221,10 +218,7 @@ parenthesis:
   ;
 
 reg: 
-  tREG {do_rcl_reg($1, $$);};
-
-constant:
-  'e' {do_e($$);}
+  tREG {do_rcl_reg($1, $$);}
   ;
 
 func:
@@ -265,7 +259,7 @@ func:
 ;
 
 rcl:
-  tRCL '(' tINUMBER ')' {
+  tRCL '(' tNUMBER ')' {
     int val;
     mpcmi($3, &val);
     do_rcl_reg(val, $$);
@@ -273,8 +267,7 @@ rcl:
   ;
 
 number:
-  tINUMBER {cp($1, $$);}
-| tDNUMBER {cp($1, $$);}
+  tNUMBER {cp($1, $$);}
 | tANS {
   struct exprm_state *e = get_state();
   cp(e->ans, $$);

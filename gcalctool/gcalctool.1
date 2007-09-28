@@ -257,7 +257,7 @@ Return the integer portion of the current entry.
 Return the fractional portion of the current entry.
 .IP "\fBAbs	[ u ]\fP" 18
 Return the absolute value of the current entry.
-.IP "\fB+/-	[ c ]\fP" 18
+.IP "\fB+/-	[ C ]\fP" 18
 Change the arithmetic sign of the current entry.
 .IP "\fB1/x	[ r ]\fP" 18
 Return the value of 1 divided by the current entry.
@@ -277,7 +277,7 @@ character selects the new value for this operation. Unlike the menu facility
 available with the mouse, there is no visual feedback on what choices are
 available to you, so the user has to know what item they wish to select.
 .PD 0
-.IP "\fBAcc	[ a ]\fP" 18
+.IP "\fBAcc	[ A ]\fP" 18
 Set the display accuracy. Between 0 and 9 [ 0-9 ] significant digits can be
 displayed.
 .IP "\fBRcl	[ R ]\fP" 18
@@ -320,7 +320,7 @@ Register 0	int	(periodic interest rate).
 Register 1	fv	(future value).
 .br
 Register 2	pv	(present value).
-.IP "\fBDdb	[ d ]\fP" 18
+.IP "\fBDdb	[ D ]\fP" 18
 Double-declining depreciation. Computes the depreciation allowance on an
 asset for a specified period of time, using the double-declining balance
 method.
@@ -477,7 +477,7 @@ their own constant definitions. The ten default values are:
 8	0.948		kilojoules or British thermals
 .br
 9	0.0610		cubic centimeters or cubic inches
-.IP "\fBFun	[ f ]\fP" 18
+.IP "\fBFun	[ F ]\fP" 18
 Retrieve and execute a function expression. There can be upto ten functions
 expression defined by the user [0 - 9]. There are no default function values.
 .PD
@@ -501,7 +501,7 @@ parentheses can be nested to any level, and
 provides a visual feedback of what is being typed in, in the calculator
 display. The calculation doesn't take place until the last parenthesis is
 matched, then the display is updated with the new result.
-.IP "\fBExp	[ e ]\fP" 18
+.IP "\fBExp	[ E ]\fP" 18
 This is used to allow numbers to be entered in scientific notation. The
 mantissa should be initially entered, then the Exp key selected. The exponent
 is then entered. If no numerical input had occurred when the Exp key was
@@ -517,9 +517,10 @@ Return the factorial of the current entry. Note that the factorial function
 is only valid for positive integers.
 .IP "\fBRand	[ ? ]\fP" 18
 Return a random number between 0.0 and 1.0.
-.IP "\fBHexadecimal Keys [ A-F ]\fP" 18
+.IP "\fBHexadecimal Keys [ a-f ]\fP" 18
 The hexadecimal numerical digits A-F. These buttons will be insensitive 
-unless the calculator is currently in the hexadecimal mode.
+unless the calculator is currently in the hexadecimal mode. They will be
+shown in upper-case in the calculator display.
 .IP "\fBCos	[ J ]\fP" 18
 Return the trigonometric cosine, arc cosine, hyperbolic cosine or inverse
 hyperbolic cosine of the current display, depending upon the current

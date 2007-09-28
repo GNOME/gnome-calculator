@@ -28,19 +28,24 @@
 #include <sys/types.h>
 #include "calctool.h"
 #include "extern.h"
+#include "mpmath.h"
 #include "ce_parser.h"
 #include "ce_parser.tab.h"
 %}
 
-DIGIT	[0-9]
 DECIMAL	"."|","
 SIGN	"+"|"-" 
 CHARACTER [a-z]|[A-Z]
-HEX     [0-9]|[A-F]
-BIN     "0"|"1"
+BIN     [0-1]
 OCT     [0-7]
-NUMBER  [DIGIT}*{DECIMAL}{DIGIT}+|{DIGIT}
-SEPARATOR "e+"|"e-"
+DEC	[0-9]
+HEX     [0-9]|[A-F]|[a-f]
+EXP     "e+"|"e-"|"E+"|"E-"
+NEP     "e"
+HEX_NUM {HEX}+|{HEX}*{DECIMAL}{HEX}+
+DEC_NUM{DEC}+|{DEC}*{DECIMAL}{DEC}+
+OCT_NUM{OCT}+|{OCT}*{DECIMAL}{OCT}+
+BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}+
 
 %%
 
@@ -89,24 +94,45 @@ SEPARATOR "e+"|"e-"
 "Xnor" {return tXNOR;}
 "Xor" {return tXOR;}
 
-"R"{DIGIT}+ {
+"R"{DEC}+ {
 celval.integer = atoi(yytext+1);  
 return tREG;
 }
 
 
-{DIGIT}+|{HEX}+ {
+{DEC_NUM}{EXP}{DEC_NUM} {
+if (v->base == HEX) REJECT;
 if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-check_numbase(yytext);
-MPstr_to_num(yytext, v->base, celval.int_t);
-return tINUMBER;
+make_exp(yytext, celval.int_t);
+return tNUMBER;
 }
 
-{HEX}*{DECIMAL}{HEX}+ {
+{BIN_NUM} {
+if (v->base != BIN) REJECT;
 if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-check_numbase(yytext);
 MPstr_to_num(yytext, v->base, celval.int_t);
-return tDNUMBER;
+return tNUMBER;
+}
+
+{OCT_NUM} {
+if (v->base != OCT) REJECT;
+if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tNUMBER;
+}
+
+{DEC_NUM} {
+if (v->base != DEC) REJECT;
+if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tNUMBER;
+}
+
+{HEX_NUM} {
+if (v->base != HEX) REJECT;
+if (strlen(yytext) > 40) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
+MPstr_to_num(yytext, v->base, celval.int_t);
+return tNUMBER;
 }
 
 
@@ -123,48 +149,8 @@ ce_flush_buffer(YY_CURRENT_BUFFER);
 }
 
 #if 0
-// TO BE USED LATER
+// EMPTY BLOCK
 
-{DIGIT}*{DECIMAL}*{DIGIT}+{SEPARATOR}{DIGIT}+ {
-check_numbase(yytext);
-MPstr_to_num(yytext, v->base, celval.int_t);
-return tDNUMBER;
-}
 
-{HEX}+"h" {
-// TODO: fix memory leak (look also following sections)
-char *number = ce_strndup(yytext, strlen(yytext)-1);
-MPstr_to_num(number, HEX, celval.int_t);
-free(number);
-return tINUMBER;
-}
-
-{BIN}+"b" {
-char *number = ce_strndup(yytext, strlen(yytext)-1);
-MPstr_to_num(number, BIN, celval.int_t);
-free(number);
-return tINUMBER;
-}
-
-{OCT}+"o" {
-char *number = ce_strndup(yytext, strlen(yytext)-1);
-MPstr_to_num(number, OCT, celval.int_t);
-free(number);
-return tINUMBER;
-}
-
-{DIGIT}+"d" {
-char *number = ce_strndup(yytext, strlen(yytext)-1);
-MPstr_to_num(number, DEC, celval.int_t);
-free(number);
-return tINUMBER;
-}
-
-{DIGIT}*{DECIMAL}{DIGIT}+"d" {
-char *number = ce_strndup(yytext, strlen(yytext)-1);
-MPstr_to_num(number, DEC, celval.int_t);
-free(number);
-return tDNUMBER;
-}
 
 #endif

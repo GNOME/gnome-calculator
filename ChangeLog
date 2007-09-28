@@ -8,6 +8,61 @@
 gcalctool change history.
 =========================
 
+2007-09-28 Rich Burridge <rich.burridge@sun.com>
+
+    * help/C/gcalctool.xml:
+      gcalctool/calctool.c:
+      gcalctool/calctool.h:
+      gcalctool/functions.c:
+      gcalctool/lr_tokeniser.l:
+      gcalctool/ce_tokeniser.l:
+      gcalctool/gcalctool.1:
+      gcalctool/gtk.c:
+      gcalctool/ce_parser.y:
+      With lots of help from Sami Pietila <sampie@ariana-dsl.utu.fi>
+      Fixed bug #469245 – Hexadecimal input is not intuitive and
+      bug #455889 – Copy/paste of lower case hex letter does not work.
+      The hexadecimal digits have been changed back to their pre Sept
+      2003 (bug #118826) values of "a" - "f".
+
+      The following functions have also had their keyboard shortcuts
+      reverted back to their pre Sept 2003 upper-case values:
+
+      [A] - Set accuracy
+      [C] - Change sign
+      [D] - Double-declining depreciation
+      [E] - Enter an exponential number
+      [F] - User-defined functions
+
+      With copy/paste operations, where the user is pasting a string into
+      gcalctool, the copy buffer is now iterated over. If an "A", "B", "C",
+      "D" or "F" character is encountered, it will be converted to its
+      lowercase equivalent. If an "E" is found,  and the next character is a
+      "-" or a "+", then it remains as an upper case "E" (it's assumed to be
+      a possible exponential number), otherwise its converted to a lower
+      case "e".
+
+      Displaying of hex digits in the gcalctool display will still be
+      in uppercase. Displaying of the "e" in an exponential number will
+      still be in lower-case.
+
+      The way to enter exponential numbers in arithmetic precedence mode
+      has changed. The following four examples should show you the new
+      correct syntax:
+
+        1  2  Exp + 8  =              1200000000
+      - 1  2  Exp + 8  =             -1200000000
+        1  2  Exp - 8  =              0.00000012
+      - 1  2  Exp - 8  =             -0.00000012
+
+      In both left-to-right precedence and arithmetic precedence modes, if
+      the user enters a numeric digit that is incorrect for the current
+      numeric base, this shouldn't be allowed and should not be entered
+      in the display.
+
+      The gcalctool documentation (and tooltips) have been updated to
+      reflect these changes.
+
 2007-09-24 Rich Burridge <rich.burridge@sun.com>
 
     * From Christian Persch <chpe@gnome.org>
