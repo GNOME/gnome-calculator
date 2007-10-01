@@ -148,7 +148,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define KEY_OR    s_buttons[27]             /* | */
 #define KEY_AND   s_buttons[28]             /* & */
 #define KEY_NOT   s_buttons[29]             /* ~ */
-#define KEY_XOR   s_buttons[30]             /* ^ */
+#define KEY_XOR   s_buttons[30]             /* x */
 #define KEY_XNOR  s_buttons[31]             /* n */
 
 #define BCOLS          4      /* No of columns of Basic Mode buttons. */

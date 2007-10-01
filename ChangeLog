@@ -15,6 +15,29 @@ gcalctool change history.
       From Rémi Cardona <remi@gentoo.org>
       Use GNOME_MAINTAINER_MODE_DEFINES() to handle *_DISABLE_DEPRECATED
 
+    * help/C/gcalctool.xml:
+      gcalctool/calctool.c:
+      gcalctool/display.c:
+      gcalctool/calctool.h:
+      gcalctool/functions.c:
+      gcalctool/lr_tokeniser.l:
+      gcalctool/ce_tokeniser.l:
+      gcalctool/gcalctool.1:
+      Fixed bug #428573 – [doc] Spelling of logical gates.
+      The logical operations, And, Not, Or, Xor and Xnor now use uppercase
+      letters (AND, NOT, OR, XOR and XNOR) for both the buttons and in the
+      display area in arithmetic precedence mode. The gcalctool manual
+      pages and the online help have been updated accordingly.
+
+      The XOR operation in non-arithmetic mode was doing a multiplication 
+      instead.
+
+      The result for the AND example in the online help was incorrect.
+
+      The syntax for using NOT in aritmetic mode is different then for
+      non-arithmetic mode. The online help example has been updated to
+      show both examples.
+
 2007-09-28 Rich Burridge <rich.burridge@sun.com>
 
     * help/C/gcalctool.xml:

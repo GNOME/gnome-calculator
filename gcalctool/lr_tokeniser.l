@@ -48,7 +48,7 @@ HEXS [0-9]|[A-F]|" "
 "Abs" {return tABS;}
 "Acosh" {return tACOSH;}
 "Acos" {return tACOS;}
-"And" {return tAND;}
+"AND" {return tAND;}
 "Asinh" {return tASINH;}
 "Asin" {return tASIN;}
 "Atanh" {return tATANH;}
@@ -64,8 +64,8 @@ HEXS [0-9]|[A-F]|" "
 "Int" {return tINT;}
 "Ln" {return tLN;}
 "Log" {return tLOG10;}
-"Not" {return tNOT;}
-"Or" {return tOR;}
+"NOT" {return tNOT;}
+"OR" {return tOR;}
 "Pi" {return tPI;}
 "Pmt" {return tPMT;}
 "Pv" {return tPV;}
@@ -81,8 +81,8 @@ HEXS [0-9]|[A-F]|" "
 "Term" {return tTERM;}
 "u16" {return tU16;}
 "u32" {return tU32;}
-"Xnor" {return tXNOR;}
-"Xor" {return tXOR;}
+"XNOR" {return tXNOR;}
+"XOR" {return tXOR;}
 
 "Rcl" {return tRCL;}
 "Sto" {return tSTO;}

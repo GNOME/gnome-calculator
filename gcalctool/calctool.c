@@ -128,6 +128,8 @@ struct button a_buttons[A_NOBUTTONS] = {   /* Advanced mode button values. */
    func_char
    menutype
    func
+   symname
+   flags
  */
 
 /* Row 1. */
@@ -1086,7 +1088,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     number | hex
 },
 {
-    N_("Or"),
+    N_("OR"),
     N_("Bitwise OR"),
     "bitwise OR [!]",
     { GDK_SHIFT_MASK, 0 },
@@ -1094,11 +1096,11 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     '|',
     M_NONE,
     do_calc,
-    N_(" Or "),
+    N_(" OR "),
     binop
 },
 {
-    N_("And"),
+    N_("AND"),
     N_("Bitwise AND [&]"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
@@ -1106,11 +1108,11 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     '&',
     M_NONE,
     do_calc,
-    N_(" And "),
+    N_(" AND "),
     binop
 },       
 {        
-    N_("Not"),
+    N_("NOT"),
     N_("Bitwise NOT [~]"),
     NULL,
     { GDK_SHIFT_MASK, 0 },
@@ -1122,7 +1124,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     unop | immediate
 },
 {
-    N_("Xor"),
+    N_("XOR"),
     N_("Bitwise XOR [x]"),
     NULL,
     { 0, 0 },   
@@ -1130,11 +1132,11 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'x',
     M_NONE,
     do_calc,
-    N_(" Xor "),
+    N_(" XOR "),
     binop
 },
 {
-    N_("Xnor"),
+    N_("XNOR"),
     N_("Bitwise XNOR [n]"),
     NULL,
     { 0, 0 },
@@ -1142,7 +1144,7 @@ struct button s_buttons[S_NOBUTTONS] = {   /* Scientific mode button values. */
     'n',
     M_NONE,
     do_calc,
-    N_(" Xnor "),
+    N_(" XNOR "),
     binop
 },
 };

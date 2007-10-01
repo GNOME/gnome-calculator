@@ -677,25 +677,25 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     } else if (IS_KEY(v->cur_op, KEY_YTOX.value[0])) {    /* y^x */
         calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_AND.value[0])) {     /* And */
+    } else if (IS_KEY(v->cur_op, KEY_AND.value[0])) {     /* AND */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) & ibool(dval));
         mpcdm(&dres, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_OR.value[0])) {      /* Or */
+    } else if (IS_KEY(v->cur_op, KEY_OR.value[0])) {      /* OR */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) | ibool(dval));
         mpcdm(&dres, v->MPresult);
 
-    } else if (IS_KEY(v->cur_op, KEY_XOR.value[0])) {     /* Xor */
+    } else if (IS_KEY(v->cur_op, KEY_XOR.value[0])) {     /* XOR */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(ibool(dres) ^ ibool(dval));
         mpcdm(&dres, v->MPresult); 
 
-    } else if (IS_KEY(v->cur_op, KEY_XNOR.value[0])) {    /* Xnor */
+    } else if (IS_KEY(v->cur_op, KEY_XNOR.value[0])) {    /* XNOR */
         mpcmd(v->MPresult, &dres);
         mpcmd(v->MPdisp_val, &dval);
         dres = setbool(~ibool(dres) ^ ibool(dval));
@@ -1089,7 +1089,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
     } else if (key_equal(v->current, KEY_SQRT)) {         /* Sqrt */
         mpstr(s, MP1);
         mpsqrt(MP1, t);
-    } else if (key_equal(v->current, KEY_NOT)) {          /* Not */
+    } else if (key_equal(v->current, KEY_NOT)) {          /* NOT */
         calc_not(t, s);
     } else if (key_equal(v->current, KEY_REC)) {          /* 1/x */
         calc_inv(s, t);

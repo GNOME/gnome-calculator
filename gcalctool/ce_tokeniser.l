@@ -52,7 +52,7 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}+
 "Abs" {return tABS;}
 "Acosh" {return tACOSH;}
 "Acos" {return tACOS;}
-"And" {return tAND;}
+"AND" {return tAND;}
 "Ans" {return tANS;}
 "Asinh" {return tASINH;}
 "Asin" {return tASIN;}
@@ -72,8 +72,8 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}+
 "Ln" {return tLN;}
 "Log" {return tLOG10;}
 "Mod" {return tMOD;}
-"Not" {return tNOT;}
-"Or" {return tOR;}
+"NOT" {return tNOT;}
+"OR" {return tOR;}
 "Pi" {return tPI;}
 "Pmt" {return tPMT;}
 "Pv" {return tPV;}
@@ -91,8 +91,8 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}+
 "Term" {return tTERM;}
 "u16" {return tU16;}
 "u32" {return tU32;}
-"Xnor" {return tXNOR;}
-"Xor" {return tXOR;}
+"XNOR" {return tXNOR;}
+"XOR" {return tXOR;}
 
 "R"{DEC}+ {
 celval.integer = atoi(yytext+1);  

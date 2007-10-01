@@ -550,9 +550,6 @@ process_item(struct button *button)
 
 /* Reassign "extra" values. */
 
-    if (v->current->value[0] == 'x') {
-        v->current->value[0] = '*';
-    }
     if (v->current->value[0] == GDK_Return) {
         v->current->value[0] = '=';
     }
