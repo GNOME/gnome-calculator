@@ -11,6 +11,21 @@ gcalctool change history.
 2007-10-02 Rich Burridge <rich.burridge@sun.com>
 
     * help/C/gcalctool.xml:
+      gcalctool/calctool.h:
+      gcalctool/ce_tokeniser.l:
+      Fix for bug #439087 – Gcalctool can't handle small physic constants 
+      like the Boltzmann constant. The number of significant places has
+      been increased to 99 and the number of displayable digits has been
+      increased to 150. The online help has been adjust to reflect these
+      changes.
+
+      Note that if you have something in the gcalctool display that is 
+      wider than the display area, a scrollbar is shown, but the first 
+      digit isn't properly displayed. The workaround here, is to enlarge 
+      the size of the calculator window until the scrollbar goes away.
+      I believe this is a Gtk+ problem and will file a bug against it.
+
+    * help/C/gcalctool.xml:
       Fixed bug #367738 – [doc] Square root documentation needs to be updated.
       The entry in the online help now includes examples for both arithmetic 
       precedence and non-arithmetic precedence mode.

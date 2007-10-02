@@ -32,7 +32,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#define MP_SIZE      150     /* Size of the multiple precision values. */
+#define MP_SIZE      1000     /* Size of the multiple precision values. */
 
 #define FCLOSE       (void) fclose     /* To make lint happy. */
 #define FPRINTF      (void) fprintf
@@ -176,7 +176,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #endif /*lint*/
 #endif /*LINT_CAST*/
 
-#define MAX_DIGITS     40         /* Maximum displayable number of digits. */
+#define MAX_DIGITS     150         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
 /* Maximum number of various graphics pieces. */
@@ -187,7 +187,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #define MAXLINE        512        /* Length of character strings. */
 #endif /*MAXLINE*/
 
-#define MAXACC         30    /* Max. number of digits after numeric point. */
+#define MAXACC         99     /* Max. number of digits after numeric point. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
