@@ -176,7 +176,7 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #endif /*lint*/
 #endif /*LINT_CAST*/
 
-#define MAX_DIGITS     150         /* Maximum displayable number of digits. */
+#define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
 /* Maximum number of various graphics pieces. */

@@ -34,7 +34,10 @@ static void init_buttons();
 static void init_text();
 
 double max_fix[MAXBASES] = {
-    6.871947674e+10, 3.245185537e+32, 1.000000000e+36, 2.230074520e+43
+    1.298074214e+33,    /* Binary. */
+    2.037035976e+90,    /* Octal. */
+    1.000000000e+100,   /* Decimal */
+    2.582249878e+120    /* Hexadecimal. */
 };
 
 char *base_str[]  = {          /* Strings for each base value. */
