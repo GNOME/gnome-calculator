@@ -358,6 +358,8 @@ struct calcVars {                      /* Calctool variables and options. */
     int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
+    int ghost_zero;    /* Flag to indicate display with "0", actually 
+                           having empty content. */
     int math_error;    /* Math error (used in expression mode) */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
     int iconic;        /* Set if window is currently iconic. */
@@ -549,7 +551,9 @@ void mpsub(int *, int *, int *);
 void mptanh(int *, int *);
 
 void make_exp(char *number, int t[MP_SIZE]);
-
-
+void exp_replace(char *text);
+void insert_to_cursor(char *text);
+void get_expr_from_display();
+void delete_from_cursor();
 
 #endif /*CALCTOOL_H*/

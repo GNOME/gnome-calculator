@@ -119,6 +119,7 @@ clear_display(int initialise)
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
     set_display(v->display, FALSE);
+    v->ghost_zero = 1;
 
     if (initialise == TRUE) {
         v->show_paren = 0;
@@ -635,11 +636,13 @@ refresh_display()
                 }
                 write_display(str);
                 free(str);
+                v->ghost_zero = 0;
             } else {
                 int MP1[MP_SIZE];
 
                 do_zero(MP1);
                 show_display(MP1);
+                v->ghost_zero = 1;
             }
         }    
         break;

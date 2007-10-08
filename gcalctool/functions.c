@@ -281,6 +281,20 @@ exp_append(char *text)
 }
 
 
+void
+exp_insert(char *text)
+{
+    // struct exprm_state *e;
+    // e = get_state();
+    // write_display(e->expression);
+    if (v->ghost_zero) {
+        write_display("");
+        v->ghost_zero = 0;
+    }
+    insert_to_cursor(text);
+    get_expr_from_display();
+}
+
 void 
 exp_del() 
 {
@@ -332,7 +346,7 @@ exp_del_char(char **expr, int amount)
 }
 
 
-static void
+void
 exp_replace(char *text)
 {
     struct exprm_state *e = get_state();
@@ -479,6 +493,7 @@ trig_filter(char **func)
 void
 do_expression()
 {
+    int update_display = 0; // Update whole display. Looses cursor position.
     char *btext = NULL;
     struct exprm_state *e;
     int non_empty_expression;
@@ -500,6 +515,7 @@ do_expression()
 	if (!strcmp(e->expression, "Ans")) {
 	    if (e->button.flags & number) {
 		exp_del(); 
+                update_display = 1;
 	    }	
 	}
     } else {
@@ -508,7 +524,7 @@ do_expression()
 	    char *zero = NULL;
 	    do_zero(MP1);
 	    zero = make_number(MP1, v->base, FALSE);
-	    exp_append(zero);
+	    exp_insert(zero);
 	}
     }
 
@@ -518,8 +534,10 @@ do_expression()
 	    char buf[1024];
 	    snprintf(buf, 128, "%s(Ans)", btext);
 	    exp_replace(buf);
+            update_display = 1;
     } else if (e->button.flags & clear) {
         exp_del();
+        update_display = 1;
         set_error_state(FALSE);
         MPstr_to_num("0", DEC, e->ans);
     } else if (e->button.flags & regrcl) {
@@ -528,11 +546,11 @@ do_expression()
         int n = '0' +  i;
 
         snprintf(reg, 3, "R%c", n);
-        exp_append(reg);
+        exp_insert(reg);
     } else if (e->button.flags & con) {
         int *MPval = v->MPcon_vals[char_val(e->button.value[0])];
 
-        exp_append(make_number(MPval, v->base, FALSE));
+        exp_insert(make_number(MPval, v->base, FALSE));
     } else if (e->button.flags & bsp) {
         if (exp_has_postfix(e->expression, "Ans")) { 
             char *ans = make_number(e->ans, v->base, FALSE);   
@@ -553,15 +571,17 @@ do_expression()
                     reg_val = make_number(MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix. */
                     exp_del_char(&e->expression, 2);
-                    exp_append(reg_val);
+                    exp_insert(reg_val);
                 }
             }
         }
-        exp_del_char(&e->expression, 1);
+        delete_from_cursor();
     } else if (e->button.flags & neg) {
         exp_negate();
+        update_display = 1;
     } else if (e->button.flags & inv) {
         exp_inv();
+        update_display = 1;
     } else if (e->button.flags & enter) {
 	  if (e->expression) {
 	    if (strcmp(e->expression, "Ans")) {
@@ -571,6 +591,7 @@ do_expression()
 		  if (!ret) {
 			mpstr(MPval, e->ans);
 			exp_replace("Ans");
+                        update_display = 1;
 		  } else {
 			char *message = NULL;
 
@@ -604,20 +625,22 @@ do_expression()
 		  perform_undo();
 		  if (is_undo_step()) {
 			perform_undo();
+                        update_display = 1;
 		  }
 	    }
 	  }
     } else {
-	exp_append(btext);
+	exp_insert(btext);
 	if (e->button.flags & func) {
-	    exp_append("(");
+	    exp_insert("(");
 	}
     }
 
     free(btext);
     btext = NULL;
-    refresh_display();
-    return;
+    if (update_display) {
+        refresh_display();
+    }
 }
 
 
@@ -830,7 +853,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
 	if (ret) {
 	    update_statusbar(_("No sane value to convert"), 
 			     "gtk-dialog-error");
-	} else {
+	} else if (!v->ghost_zero) {
 	    mpstr(MP, e->ans);
 	    exp_replace("Ans");
 	    make_registers();
@@ -1211,7 +1234,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
         if (ret) {
             update_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
-        } else {
+        } else if (!v->ghost_zero) {
             mpstr(MP, e->ans);
             exp_replace("Ans");
             make_registers();

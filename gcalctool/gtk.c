@@ -178,6 +178,8 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean display_focus_in_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean display_focus_out_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean mouse_button_cb(GtkWidget *, GdkEventButton *, gpointer);
 static gboolean spframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
 
@@ -1360,8 +1362,8 @@ create_kframe()
     char *hn;
     GError *error;
     GtkWidget *event_box, *view_widget;
-    GtkTextBuffer *buffer;
     AtkObject *aob;
+    PangoFontDescription *font_desc;
 
     v->tool_label = NULL;
     if (v->titleline == NULL) {
@@ -1443,10 +1445,25 @@ create_kframe()
 
     event_box = gtk_event_box_new();
     X->display_item = gtk_text_view_new();
+    gtk_widget_ensure_style(X->display_item);
+    font_desc = pango_font_description_copy(X->display_item->style->font_desc);
+    pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
+    gtk_widget_modify_font(X->display_item, font_desc);
+    pango_font_description_free(font_desc);
+
     gtk_widget_set_name(X->display_item, "displayitem");
     g_signal_connect(G_OBJECT(X->display_item), "button_release_event",
                      G_CALLBACK(mouse_button_cb),
                      NULL);
+
+    g_signal_connect(G_OBJECT(X->display_item), "focus_in_event",
+                     G_CALLBACK(display_focus_in_cb), NULL);
+
+    g_signal_connect(G_OBJECT(X->display_item), "focus_out_event",
+                     G_CALLBACK(display_focus_out_cb), NULL);
+
+    g_signal_connect(G_OBJECT(X->display_item), "focus_out_event",
+                     G_CALLBACK(display_focus_out_cb), NULL);
 
     /* Detect when populating the right-click menu to enable pasting */
     g_signal_connect(G_OBJECT(X->display_item), "populate-popup",
@@ -1455,12 +1472,10 @@ create_kframe()
     gtk_text_view_set_justification(GTK_TEXT_VIEW(X->display_item),
                                     GTK_JUSTIFY_RIGHT);
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(X->display_item), GTK_WRAP_NONE);
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_create_tag(buffer, "x-large", "scale", PANGO_SCALE_X_LARGE, 
-                               NULL);			       
 
     gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(X->display_item), TRUE);
-    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), FALSE);
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
+                               (v->syntax == exprs));
     aob = gtk_widget_get_accessible(GTK_WIDGET(X->display_item));
     atk_object_set_description(aob, "Result Region");
 
@@ -2213,11 +2228,95 @@ check_vals(int n, int keyval, int state,
     return(FALSE);
 }
 
+
+void
+get_expr_from_display()
+{
+    char *text;
+    GtkTextBuffer *buffer;
+    GtkTextIter start, end;
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    
+    text = gtk_text_buffer_get_text(
+                 gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item)),
+                                 &start,
+                                 &end,
+                                 FALSE);
+    exp_replace(text);
+}
+
+
+void
+delete_from_cursor()
+{
+    GtkTextBuffer *buffer;
+    GtkTextIter start, end, loc;
+    gint pos;
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
+
+    g_object_get(G_OBJECT(buffer), "cursor-position", &pos, NULL);
+
+    gtk_text_buffer_get_iter_at_offset(buffer,
+                                       &loc,
+                                       pos);
+
+    gtk_text_buffer_backspace(buffer, &loc, TRUE, TRUE);
+
+}
+
+
+void
+insert_to_cursor(char *text)
+{
+    GtkTextBuffer *buffer = NULL;
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
+    gtk_text_buffer_insert_at_cursor(buffer,
+                                     text,
+                                     strlen(text));
+}
+
+
+static gboolean
+display_focus_out_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    if (v->syntax == exprs) {
+        get_expr_from_display();
+    } 
+
+    return(FALSE);
+}
+
+
+static gboolean
+display_focus_in_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    v->ghost_zero = 0;
+
+    return(FALSE);
+}
+
+
 /*ARGSUSED*/
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     int retval = FALSE;
+
+    if (gtk_widget_is_focus(X->display_item) && (v->syntax == exprs)) {
+
+        if ((event->keyval == GDK_equal) || 
+            (event->keyval == GDK_KP_Enter) || 
+            (event->keyval == GDK_Return) || 
+            (event->keyval == GDK_equal)) {
+            get_expr_from_display();
+        } else {
+            return(FALSE);
+        }
+    }
 
     if (check_for_localized_numeric_point(event->keyval) == TRUE) {
         event->state = 0;
@@ -2650,6 +2749,8 @@ toggle_expressions()
     }
     put_resource(R_SYNTAX, Rsstr[v->syntax]);
     set_mode(v->modetype);
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
+                               (v->syntax == exprs));
 }
 
 
@@ -3180,12 +3281,7 @@ set_display(char *str, int minimize_changes)
         if (minimize_changes) {
             if (len1 < len2 && strncmp(text, str, len1) == 0) {
                 /* Text insertion */
-                gtk_text_buffer_insert_with_tags_by_name(buffer,
-                                                         &end,
-                                                         str + len1,
-                                                         -1,
-                                                         "x-large",
-                                                         NULL);
+                gtk_text_buffer_insert(buffer, &end, str + len1, -1);
                 done = TRUE;
             } else if (len1 > len2 && strncmp(text, str, len2) == 0) {
                /* Text deletion */
@@ -3199,12 +3295,7 @@ set_display(char *str, int minimize_changes)
         if (!done) {
             gtk_text_buffer_delete(buffer, &start, &end);
 
-            gtk_text_buffer_insert_with_tags_by_name(buffer,
-                                                     &end,
-                                                     str,
-                                                     -1,
-                                                     "x-large",
-                                                     NULL);
+            gtk_text_buffer_insert(buffer, &end, str, -1);
         }
     }
     scroll_right();
@@ -3227,12 +3318,7 @@ write_display(char *str)
 
     gtk_text_buffer_delete(buffer, &start, &end);
     
-    gtk_text_buffer_insert_with_tags_by_name(buffer,
-					     &end,
-					     str,
-					     -1,
-					     "x-large",
-					     NULL);
+    gtk_text_buffer_insert(buffer, &end, str, -1);
     scroll_right();
     g_free(text);
 }
