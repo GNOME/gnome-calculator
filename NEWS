@@ -7,6 +7,109 @@
 
 Overview of changes in gcalctool 5.20.0
 
+    * Fix for bug #326938 – Display cursor in input area; allow home and 
+      end keys.
+
+    * Fix for bug #484158 – Setting Accuracy is incorrect via the 0-9 places 
+      menu items.
+
+    * Fix for bug #439087 – Gcalctool can't handle small physic constants
+      like the Boltzmann constant. The number of significant places has
+      been increased to 99 and the number of displayable digits has been
+      increased to 200. The online help has been adjusted to reflect these
+      changes.
+
+      Note that if you have something in the gcalctool display that is
+      wider than the display area, a scrollbar is shown, but the first
+      digit isn't properly displayed. The workaround here, is to enlarge
+      the size of the calculator window until the scrollbar goes away.
+      I believe this is a Gtk+ problem and have filed bug #482688 against 
+      it.
+
+    * Fixed bug #367738 – [doc] Square root documentation needs to be updated.
+      The entry in the online help now includes examples for both arithmetic
+      precedence and non-arithmetic precedence mode.
+
+    * Fixed bug #428571 – [doc] Repetitive usage of "use".
+
+    * Use GNOME_MAINTAINER_MODE_DEFINES() to handle *_DISABLE_DEPRECATED
+
+    * Fixed bug #428573 – [doc] Spelling of logical gates.
+      The logical operations, And, Not, Or, Xor and Xnor now use uppercase
+      letters (AND, NOT, OR, XOR and XNOR) for both the buttons and in the
+      display area in arithmetic precedence mode. The gcalctool manual
+      pages and the online help have been updated accordingly.
+
+      The XOR operation in non-arithmetic mode was doing a multiplication
+      instead.
+
+      The result for the AND example in the online help was incorrect.
+
+      The syntax for using NOT in aritmetic mode is different then for
+      non-arithmetic mode. The online help example has been updated to
+      show both examples.
+
+    *  Fixed bug #469245 – Hexadecimal input is not intuitive and
+      bug #455889 – Copy/paste of lower case hex letter does not work.
+      The hexadecimal digits have been changed back to their pre Sept
+      2003 (bug #118826) values of "a" - "f".
+
+      The following functions have also had their keyboard shortcuts
+      reverted back to their pre Sept 2003 upper-case values:
+
+      [A] - Set accuracy
+      [C] - Change sign
+      [D] - Double-declining depreciation
+      [E] - Enter an exponential number
+      [F] - User-defined functions
+
+      With copy/paste operations, where the user is pasting a string into
+      gcalctool, the copy buffer is now iterated over. If an "A", "B", "C",
+      "D" or "F" character is encountered, it will be converted to its
+      lowercase equivalent. If an "E" is found,  and the next character is a
+      "-" or a "+", then it remains as an upper case "E" (it's assumed to be
+      a possible exponential number), otherwise its converted to a lower
+      case "e".
+
+      Displaying of hex digits in the gcalctool display will still be
+      in uppercase. Displaying of the "e" in an exponential number will
+      still be in lower-case.
+
+      The way to enter exponential numbers in arithmetic precedence mode
+      has changed. The following four examples should show you the new
+      correct syntax:
+
+        1  2  Exp + 8  =              1200000000
+      - 1  2  Exp + 8  =             -1200000000
+        1  2  Exp - 8  =              0.00000012
+      - 1  2  Exp - 8  =             -0.00000012
+
+      In both left-to-right precedence and arithmetic precedence modes, if
+      the user enters a numeric digit that is incorrect for the current
+      numeric base, this shouldn't be allowed and should not be entered
+      in the display.
+
+      The gcalctool documentation (and tooltips) have been updated to
+      reflect these changes.
+
+    * Fixed bug #479102 – memory registers dialogue should use ngettext.
+
+    * Fixed bug #478961 – GtkAaction use.
+
+    * Fixed bug #478964 – don't use deprecated gtk_widget_ref func.
+
+    * Fixed bug #478979 – show menu help in statusbar.
+
+    * Fixed bug #479064 – should use ngettext on the Acc button.
+
+    * Fixed bug #479097 – use gtkmessagedialog.
+
+    * Fixed bug #479066 – weird way to use gnome menus-have-icons setting.
+
+----
+
+Overview of changes in gcalctool 5.20.0
+
 * Released a gcalctool tarball for GNOME 2.20.0.
 
 ----
