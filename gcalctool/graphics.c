@@ -45,12 +45,11 @@ handle_menu_selection(struct button *n, int item)
 	memcpy(&(e->button), button_for_value(item), sizeof(struct button));
 	new_state();
 	
+	v->current = copy_button_info(button_for_value(item));
 	v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
 	do_pending();
 	v->ismenu = 0;
 	v->down = 0;
-	
-	v->current = copy_button_info(button_for_value(item));
     }
 }
 
