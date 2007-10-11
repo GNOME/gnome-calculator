@@ -2999,17 +2999,19 @@ quit_cb(GtkWidget *widget, gpointer user_data)
 static void
 reset_mode_display(int toclear)
 {
+    GtkAction *action;
 
 /* If the new mode is BASIC, then we need to dismiss the memory register
  * window (if it's being displayed), as there is no way to interact with it.
  */
 
-    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Trailing"),
-                 "sensitive", (v->modetype == SCIENTIFIC), NULL);
-    g_object_set(gtk_ui_manager_get_action(X->ui, "/MenuBar/ViewMenu/Memory"),
-                 "sensitive", (v->modetype != BASIC), NULL);
+    action = gtk_action_group_get_action(X->actions, "Trailing");
+    gtk_action_set_sensitive(action, v->modetype == SCIENTIFIC);
+    action = gtk_action_group_get_action(X->actions, "Memory");
+    gtk_action_set_sensitive(action, v->modetype != BASIC);
+
     if (v->modetype == BASIC) {
-        dismiss_rframe(NULL, NULL, NULL);
+        gtk_dialog_response(GTK_DIALOG(X->rframe), GTK_RESPONSE_CLOSE);
     }
 
     switch (v->syntax) {
