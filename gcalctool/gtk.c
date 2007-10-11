@@ -2384,6 +2384,7 @@ make_frames()
     set_show_tsep_toggle(v->show_tsep);
     set_show_zeroes_toggle(v->show_zeroes);
     set_show_bitcalculating_toggle(v->bitcalculating_mode);
+    set_memory_toggle(v->rstate);
 }
 
 

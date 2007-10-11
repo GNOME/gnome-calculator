@@ -8,6 +8,13 @@
 gcalctool change history.
 =========================
 
+2007-10-11 Rich Burridge <rich.burridge@sun.com>
+
+    * gcalctool/gtk.c:
+      Added a call to "set_memory_toggle(v->rstate);" in make_frames() to
+      correctly set the state of the Edit-<Memory Registers check box if the
+      user wanted the memory registers initially displayed.
+
 2007-10-08 Rich Burridge <rich.burridge@sun.com>
 
     * Released a gcalctool v5.21.0 tarball.
