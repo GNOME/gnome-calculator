@@ -40,17 +40,6 @@ double max_fix[MAXBASES] = {
     2.582249878e+120    /* Hexadecimal. */
 };
 
-char *base_str[]  = {          /* Strings for each base value. */
-    N_("_Bin"), N_("_Oct"), N_("_Dec"), N_("He_x")
-};
-
-char *base_desc[]  = {         /* Tooltips for each base value. */
-    N_("Set numeric base to binary (base 2)"), 
-    N_("Set numeric base to octal (base 8)"), 
-    N_("Set numeric base to decimal (base 10)"), 
-    N_("Set numeric base to hexadecimal (base 16)")
-};
-
 char *calc_res[] = {
     "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
     "showzeroes", "showthousands", "syntax", "xposition", "yposition",
@@ -58,32 +47,9 @@ char *calc_res[] = {
     "register5", "register6", "register7", "register8", "register9", "bitcalculating"
 };
 
-char *dtype_str[] = {          /* Strings for each display mode value. */
-    N_("E_ng"), N_("_Fix"), N_("_Sci")
-};
-
-char *dtype_desc[] = {         /* Tooltips for each display mode value. */
-    N_("Set display type to engineering format"), 
-    N_("Set display type to fixed-point format"), 
-    N_("Set display type to scientific format")
-};
-
-char *hyp_desc = N_("Set hyperbolic option for trigonometric functions");
-char *inv_desc = N_("Set inverse option for trigonometric functions");
-
 char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
     N_("Basic"), N_("Advanced"), N_("Financial"), 
     N_("Scientific"), N_("Expression")
-};
-
-char *ttype_str[] = {          /* Strings for each trig type value. */
-    N_("De_grees"), N_("Gr_adians"), N_("_Radians")
-};
-
-char *ttype_desc[] = {         /* Tooltips for each trig type value. */
-    N_("Set trigonometric type to degrees"), 
-    N_("Set trigonometric type to gradians"), 
-    N_("Set trigonometric type to radians")
 };
 
 char digits[] = "0123456789ABCDEF";

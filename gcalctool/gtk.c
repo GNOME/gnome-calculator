@@ -35,6 +35,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
+#include <glade/glade.h>
 #include <gconf/gconf-client.h>
 #include "ce_parser.h"
 #include "mpmath.h"
@@ -171,6 +172,12 @@ static GtkWidget *make_menu_button(gchar *, int);
 static GtkWidget *make_but_panel(GtkWidget *, GtkWidget **,
                                  struct button *, int, int, char *);
 
+void trig_cb(GtkToggleButton *, gpointer);
+void base_cb(GtkToggleButton *, gpointer);
+void disp_cb(GtkToggleButton *, gpointer);
+void inv_cb(GtkToggleButton *, gpointer);
+void hyp_cb(GtkToggleButton *, gpointer);
+
 static char *make_hostname(Display *);
 
 static gboolean aframe_key_cb(GtkWidget *, GdkEventKey *, gpointer);
@@ -187,15 +194,11 @@ static void about_cb(GtkAction *action, gpointer);
 static void add_cf_column(GtkTreeView *, gchar *, gint, gboolean);
 static void aframe_cancel_cb(GtkButton *, gpointer);
 static void aframe_ok_cb(GtkButton *, gpointer);
-static void base_cb(GtkToggleButton *, gpointer);
 static void buffer_populate_popup_cb(GtkTextView *, GtkMenu *, gpointer);
 static void cell_edited(GtkCellRendererText *, 
                         const gchar *, const gchar *, gpointer);
 static void create_con_fun_menu(enum menu_type);
 static void create_menu_item_with_markup(char *, int, int);
-static void disp_cb(GtkToggleButton *, gpointer);
-static void hyp_cb(GtkToggleButton *, gpointer);
-static void inv_cb(GtkToggleButton *, gpointer);
 static void mb_proc(GtkAction *action);
 static void mb_acc_radio_proc(GtkAction *action, GtkRadioAction *current);
 static void mb_arith_mode_radio_proc(GtkAction *action, 
@@ -225,7 +228,6 @@ static void show_menu_for_button(GtkWidget *, GdkEventKey *event);
 static void show_precision_frame();
 static void spframe_cancel_cb(GtkButton *, gpointer);
 static void spframe_ok_cb(GtkButton *, gpointer);
-static void trig_cb(GtkToggleButton *, gpointer);
 static void ts_proc(GtkAction *action);
 static void update_copy_paste_status();
 static void help_display(void);
@@ -623,10 +625,10 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
 
 
 /*ARGSUSED*/
-static void
+void
 base_cb(GtkToggleButton *button, gpointer user_data)
 {
-    do_base((enum base_type) g_object_get_data(G_OBJECT(button), "base"));
+    do_base((enum base_type) g_object_get_data(G_OBJECT(button), "response_id"));
 }
 
 
@@ -1606,107 +1608,45 @@ create_mem_menu(enum menu_type mtype)
 static GtkWidget *
 create_mode_panel(GtkWidget *main_vbox)
 {
-    int i;
-    AtkObject *access_object;
-    GtkWidget *base_hbox, *disp_hbox, *trig_hbox;
-    GtkWidget *row1_hbox, *row2_hbox, *vbox;
-    GSList *base_gr = NULL;
-    GSList *disp_gr = NULL;
-    GSList *trig_gr = NULL;
-
-    row1_hbox = gtk_hbox_new(FALSE, 0);
-    row2_hbox = gtk_hbox_new(FALSE, 0);
-
-    vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
-    gtk_widget_set_direction(vbox, GTK_TEXT_DIR_LTR);
-
-/* Make Trig. type radio button widgets. */
- 
-    trig_hbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(trig_hbox);
- 
-    for (i = 0; i < MAXTRIGMODES; i++) {
-        X->trig[i] = gtk_radio_button_new_with_mnemonic(NULL, _(ttype_str[i]));
-	gtk_widget_set_tooltip_text (X->trig[i], _(ttype_desc[i]));
-        g_object_set_data(G_OBJECT(X->trig[i]), "trig", GINT_TO_POINTER(i));
-        gtk_widget_show(X->trig[i]);
-        gtk_box_pack_start(GTK_BOX(trig_hbox), X->trig[i], FALSE, FALSE, 0);
-        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->trig[i]), trig_gr);
-        trig_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->trig[i]));
-        access_object = gtk_widget_get_accessible(X->trig[i]);
-        atk_object_set_name(access_object, _(ttype_desc[i]));
-        g_signal_connect(G_OBJECT(X->trig[i]), "toggled",
-                         G_CALLBACK(trig_cb), NULL);
-    }
- 
-    gtk_box_pack_start(GTK_BOX(row1_hbox), trig_hbox, FALSE, TRUE, 0);
-
-/* Make numeric base radio button widgets. */
-
-    base_hbox = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(base_hbox);
-
-    for (i = 0; i < MAXBASES; i++) {
-        X->base[i] = gtk_radio_button_new_with_mnemonic(NULL, _(base_str[i]));
-	 gtk_widget_set_tooltip_text (X->base[i], _(base_desc[i]));
-        g_object_set_data(G_OBJECT(X->base[i]), "base", GINT_TO_POINTER(i));
-        gtk_widget_show(X->base[i]);
-        gtk_box_pack_start(GTK_BOX(base_hbox), X->base[i], FALSE, FALSE, 0);
-        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->base[i]), base_gr);
-        base_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->base[i]));
-        access_object = gtk_widget_get_accessible(X->base[i]);
-        atk_object_set_name(access_object, _(base_desc[i]));
-        g_signal_connect(G_OBJECT(X->base[i]), "toggled",
-                         G_CALLBACK(base_cb), NULL);
-    }
-
-    gtk_box_pack_end(GTK_BOX(row1_hbox), base_hbox, FALSE, TRUE, 0);
-
-/* Make Hyp and Inv trigonometric check boxes. */
-
-    X->inv = gtk_check_button_new_with_mnemonic(_("_Inv"));
-    gtk_widget_set_tooltip_text (X->inv, _(inv_desc));
-    gtk_widget_show(X->inv);
-    gtk_box_pack_start(GTK_BOX(row2_hbox), X->inv, FALSE, FALSE, 0);
-    access_object = gtk_widget_get_accessible(X->inv);
-    atk_object_set_name(access_object, _(inv_desc));
+    GladeXML *xml;
+    GtkWidget *vbox;
+    
+    xml = glade_xml_new(PACKAGE_GLADE_DIR "/mode_panel.glade", "mode_panel", NULL);
+    
+    vbox = glade_xml_get_widget(xml, "mode_panel");
+    X->trig[0] = glade_xml_get_widget(xml, "degrees_radio");
+    X->trig[1] = glade_xml_get_widget(xml, "gradians_radio");
+    X->trig[2] = glade_xml_get_widget(xml, "radians_radio");
+    X->base[0] = glade_xml_get_widget(xml, "binary_radio");
+    X->base[1] = glade_xml_get_widget(xml, "octal_radio");
+    X->base[2] = glade_xml_get_widget(xml, "decimal_radio");
+    X->base[3] = glade_xml_get_widget(xml, "hexadecimal_radio");
+    X->disp[0] = glade_xml_get_widget(xml, "engineering_radio");
+    X->disp[1] = glade_xml_get_widget(xml, "fixed_point_radio");
+    X->disp[2] = glade_xml_get_widget(xml, "scientific_radio");
+    X->inv = glade_xml_get_widget(xml, "inverse_check");
+    X->hyp = glade_xml_get_widget(xml, "hyperbolic_check");
+       
+    // Connect up signals, would ideally use autoconnect but not sure how to get the build process
+    // working. See http://www.jamesh.id.au/software/libglade/ for details on how to get this to
+    // work
+    //glade_xml_signal_autoconnect(xml);
+    g_signal_connect(G_OBJECT(X->trig[0]), "toggled", G_CALLBACK(trig_cb), NULL);
+    g_signal_connect(G_OBJECT(X->trig[1]), "toggled", G_CALLBACK(trig_cb), NULL);
+    g_signal_connect(G_OBJECT(X->trig[2]), "toggled", G_CALLBACK(trig_cb), NULL);
+    g_signal_connect(G_OBJECT(X->base[0]), "toggled", G_CALLBACK(base_cb), NULL);
+    g_signal_connect(G_OBJECT(X->base[1]), "toggled", G_CALLBACK(base_cb), NULL);
+    g_signal_connect(G_OBJECT(X->base[2]), "toggled", G_CALLBACK(base_cb), NULL);
+    g_signal_connect(G_OBJECT(X->base[3]), "toggled", G_CALLBACK(base_cb), NULL);
+    g_signal_connect(G_OBJECT(X->disp[0]), "toggled", G_CALLBACK(disp_cb), NULL);
+    g_signal_connect(G_OBJECT(X->disp[1]), "toggled", G_CALLBACK(disp_cb), NULL);
+    g_signal_connect(G_OBJECT(X->disp[2]), "toggled", G_CALLBACK(disp_cb), NULL);
     g_signal_connect(G_OBJECT(X->inv), "toggled", G_CALLBACK(inv_cb), NULL);
-
-    X->hyp = gtk_check_button_new_with_mnemonic(_("H_yp"));
-    gtk_widget_set_tooltip_text (X->hyp, _(hyp_desc));
-    gtk_widget_show(X->hyp);
-    gtk_box_pack_start(GTK_BOX(row2_hbox), X->hyp, FALSE, FALSE, 0);
-    access_object = gtk_widget_get_accessible(X->hyp);
-    atk_object_set_name(access_object, _(hyp_desc));
     g_signal_connect(G_OBJECT(X->hyp), "toggled", G_CALLBACK(hyp_cb), NULL);
-
-/* Make display type radio button widgets. */
-
-    disp_hbox = gtk_hbox_new(FALSE, 0);                              
-    gtk_widget_show(disp_hbox);                                      
-                                                                
-    for (i = 0; i < MAXTRIGMODES; i++) {
-        X->disp[i] = gtk_radio_button_new_with_mnemonic(NULL, _(dtype_str[i]));
-	gtk_widget_set_tooltip_text (X->disp[i], _(dtype_desc[i]));
-        g_object_set_data(G_OBJECT(X->disp[i]), "disp", GINT_TO_POINTER(i));
-        gtk_widget_show(X->disp[i]);
-        gtk_box_pack_start(GTK_BOX(disp_hbox), X->disp[i], FALSE, FALSE, 0);
-        gtk_radio_button_set_group(GTK_RADIO_BUTTON(X->disp[i]), disp_gr);
-        disp_gr = gtk_radio_button_get_group(GTK_RADIO_BUTTON(X->disp[i]));
-        access_object = gtk_widget_get_accessible(X->disp[i]);
-        atk_object_set_name(access_object, _(dtype_desc[i]));
-        g_signal_connect(G_OBJECT(X->disp[i]), "toggled",
-                         G_CALLBACK(disp_cb), NULL);
-    }
-
-    gtk_box_pack_end(GTK_BOX(row2_hbox), disp_hbox, FALSE, TRUE, 0);
-
-    gtk_box_pack_start(GTK_BOX(vbox), row1_hbox, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), row2_hbox, FALSE, FALSE, 0);
+    
     gtk_box_pack_start(GTK_BOX(main_vbox), vbox, FALSE, TRUE, 0);
-
-    return(vbox);
+    
+    return vbox;
 }
 
 
@@ -1885,10 +1825,10 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
 
 
 /*ARGSUSED*/
-static void
+void
 disp_cb(GtkToggleButton *button, gpointer user_data)
 {
-    do_numtype((enum num_type) g_object_get_data(G_OBJECT(button), "disp"));
+    do_numtype((enum num_type) g_object_get_data(G_OBJECT(button), "response_id"));
 }
 
 
@@ -2175,7 +2115,7 @@ help_cb()
 
 
 /*ARGSUSED*/
-static void
+void
 hyp_cb(GtkToggleButton *button, gpointer user_data)
 {
     v->hyperbolic = !v->hyperbolic;
@@ -2183,7 +2123,7 @@ hyp_cb(GtkToggleButton *button, gpointer user_data)
 
 
 /*ARGSUSED*/
-static void
+void
 inv_cb(GtkToggleButton *button, gpointer user_data)
 {
     v->inverse = !v->inverse;
@@ -3647,10 +3587,10 @@ show_precision_frame()      /* Display Set Precision popup. */
 
 
 /*ARGSUSED*/
-static void
+void
 trig_cb(GtkToggleButton *button, gpointer user_data)
 {
-    do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(button), "trig"));
+    do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(button), "response_id"));
 }
 
 

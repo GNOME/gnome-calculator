@@ -29,7 +29,7 @@ DISTCLEANFILES =                \
 	gnome-doc-utils.make	\
 	gcalctool.desktop
 
-SUBDIRS = po gcalctool help
+SUBDIRS = po gcalctool glade help
 
 SCHEMAS_FILE = gcalctool.schemas
 
