@@ -185,6 +185,7 @@ static gboolean dismiss_aframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_rframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean dismiss_spframe(GtkWidget *, GdkEvent *, gpointer);
 static gboolean kframe_key_press_cb(GtkWidget *, GdkEventKey *, gpointer);
+static gboolean kframe_key_release_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean display_focus_in_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean display_focus_out_cb(GtkWidget *, GdkEventKey *, gpointer);
 static gboolean mouse_button_cb(GtkWidget *, GdkEventButton *, gpointer);
@@ -1541,6 +1542,8 @@ create_kframe()
     gtk_box_pack_start(GTK_BOX(X->statusbar), X->status_image, FALSE, TRUE, 0);
     g_signal_connect(G_OBJECT(X->kframe), "key_press_event",
                      G_CALLBACK(kframe_key_press_cb), NULL);
+    g_signal_connect(G_OBJECT(X->kframe), "key_release_event",
+                     G_CALLBACK(kframe_key_release_cb), NULL);
 
     switch (v->modetype) {
         case FINANCIAL:
@@ -2236,6 +2239,23 @@ display_focus_in_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     v->ghost_zero = 0;
 
+    return(FALSE);
+}
+
+
+static gboolean
+kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    if (gtk_widget_is_focus(X->display_item) && (v->syntax == exprs)) {
+        if ((event->keyval == GDK_equal)
+            || (event->keyval == GDK_KP_Enter)
+            || (event->keyval == GDK_Return)
+            || (event->keyval == GDK_equal)) {
+        } else {
+            new_state();
+            get_expr_from_display();
+        }
+    }
     return(FALSE);
 }
 
