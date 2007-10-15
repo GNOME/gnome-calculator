@@ -1675,6 +1675,7 @@ create_rframe()
     X->rframe = gtk_dialog_new();
     g_object_set_data(G_OBJECT(X->rframe), "rframe", X->rframe);
     gtk_window_set_resizable(GTK_WINDOW(X->rframe), FALSE);
+    gtk_window_set_transient_for(GTK_WINDOW(X->rframe), GTK_WINDOW(X->kframe));
     gtk_window_set_title(GTK_WINDOW(X->rframe), _("Memory Registers"));
     gtk_container_set_border_width(GTK_CONTAINER(X->rframe), 5);
     gtk_dialog_set_has_separator(GTK_DIALOG(X->rframe), FALSE);
