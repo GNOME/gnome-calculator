@@ -67,8 +67,7 @@ enum item_type { BASEITEM, TTYPEITEM, NUMITEM,
 
 /* Popup menu types. */
 enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
-                 M_RCL,  M_RSHF, M_STO,  M_NONE
-};
+                 M_RCL,  M_RSHF, M_STO, M_NONE };
 
 /* Calculator modes. */
 enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
@@ -87,81 +86,83 @@ enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 enum trig_func {SIN=0, COS=1, TAN=2};       
 
-/* Abbreviations for the gcalctool keyboard and menu equivalents. */
+/* Abbreviations for the gcalctool keyboard */
 
-#define KEY_DIV   a_buttons[3]              /* / */
-#define KEY_LPAR  a_buttons[4]              /* ( */
-#define KEY_BSP   a_buttons[5]              /* Control-h */
-#define KEY_CE    a_buttons[6]              /* Control-Backspace */
-
-#define KEY_MUL   a_buttons[11]             /* * */
-#define KEY_RPAR  a_buttons[12]             /* ) */
-
-#define KEY_CHS   a_buttons[13]             /* C */
-#define KEY_INT   a_buttons[14]             /* i */
-#define KEY_STO   a_buttons[15]             /* S */
-
-#define KEY_SUB   a_buttons[19]             /* - */
-#define KEY_PER   a_buttons[20]             /* % */
-#define KEY_SQRT  a_buttons[21]             /* s */
-#define KEY_FRAC  a_buttons[22]             /* : */
-#define KEY_RCL   a_buttons[23]             /* R */
-
-#define KEY_EQ    a_buttons[26]             /* = */
-#define KEY_ADD   a_buttons[27]             /* + */
-#define KEY_REC   a_buttons[28]             /* r */
-#define KEY_SQR   a_buttons[29]             /* @ */
-#define KEY_ABS   a_buttons[30]             /* u */
-#define KEY_EXCH  a_buttons[31]             /* X */
-
-#define KEY_CTRM  f_buttons[0]              /* m */
-#define KEY_DDB   f_buttons[1]              /* D */
-#define KEY_FV    f_buttons[2]              /* v */
-#define KEY_PMT   f_buttons[3]              /* P */
-#define KEY_PV    f_buttons[4]              /* p */
-#define KEY_RATE  f_buttons[5]              /* T */
-#define KEY_SLN   f_buttons[6]              /* l */
-#define KEY_SYD   f_buttons[7]              /* Y */
-#define KEY_TERM  f_buttons[8]              /* T */
-
-#define KEY_LSFT  s_buttons[0]              /* < */
-#define KEY_RSFT  s_buttons[1]              /* > */
-#define KEY_16    s_buttons[2]              /* [ */
-#define KEY_32    s_buttons[3]              /* ] */
-#define KEY_MOD   s_buttons[6]              /* M */
-#define KEY_ACC   s_buttons[7]              /* A */
-
-#define KEY_CON   s_buttons[8]              /* # */
-#define KEY_FUN   s_buttons[9]              /* F */
-#define KEY_ETOX  s_buttons[11]             /* { */
-#define KEY_TTOX  s_buttons[12]             /* } */
-#define KEY_YTOX  s_buttons[13]             /* y */
-#define KEY_FACT  s_buttons[14]             /* ! */
-#define KEY_RAND  s_buttons[15]             /* ? */
-
-#define KEY_COS   s_buttons[19]             /* J */
-#define KEY_SIN   s_buttons[20]             /* K */
-#define KEY_TAN   s_buttons[21]             /* L */
-#define KEY_LN    s_buttons[22]             /* N */
-#define KEY_LOG   s_buttons[23]             /* G */
-
-#define KEY_OR    s_buttons[27]             /* | */
-#define KEY_AND   s_buttons[28]             /* & */
-#define KEY_NOT   s_buttons[29]             /* ~ */
-#define KEY_XOR   s_buttons[30]             /* x */
-#define KEY_XNOR  s_buttons[31]             /* n */
-
-#define BCOLS          4      /* No of columns of Basic Mode buttons. */
-#define BROWS          5      /* No of rows of Basic Mode buttons. */
-
-#define ACOLS          8      /* No of columns of Advanced Mode buttons. */
-#define AROWS          4      /* No of rows of Advanced Mode buttons. */
-
-#define FCOLS          8      /* No of columns of Financial Mode buttons. */
-#define FROWS          2      /* No of rows of Financial Mode buttons. */
-
-#define SCOLS          8      /* No of columns of Scientific Mode buttons. */
-#define SROWS          4      /* No of rows of Scientific Mode buttons. */
+enum
+{
+    KEY_0,
+    KEY_1,
+    KEY_2,
+    KEY_3,
+    KEY_4,
+    KEY_5,
+    KEY_6,
+    KEY_7,
+    KEY_8,
+    KEY_9,
+    KEY_A,
+    KEY_B,
+    KEY_C,
+    KEY_D,
+    KEY_E,
+    KEY_F,
+    KEY_NUMERIC_POINT,
+    KEY_CALCULATE,
+    KEY_CLEAR,
+    KEY_CLEAR_ENTRY,
+    KEY_START_BLOCK,
+    KEY_END_BLOCK,
+    KEY_ADD,
+    KEY_SUBTRACT,
+    KEY_MULTIPLY,
+    KEY_DIVIDE,
+    KEY_BACKSPACE,
+    KEY_CHANGE_SIGN,
+    KEY_INTEGER,
+    KEY_FRACTION,
+    KEY_PERCENTAGE,
+    KEY_SQUARE,
+    KEY_SQUARE_ROOT,
+    KEY_RECIPROCAL,
+    KEY_E_POW_X,
+    KEY_10_POW_X,
+    KEY_X_POW_Y,
+    KEY_FACTORIAL,
+    KEY_RANDOM,
+    KEY_SINE,
+    KEY_COSINE,
+    KEY_TANGENT,
+    KEY_NATURAL_LOGARITHM,
+    KEY_LOGARITHM,
+    KEY_ABSOLUTE_VALUE,
+    KEY_MASK_16,
+    KEY_MASK_32,
+    KEY_MODULUS_DIVIDE,
+    KEY_EXPONENTIAL,
+    KEY_NOT,
+    KEY_OR,
+    KEY_AND,
+    KEY_XOR,
+    KEY_XNOR,
+    KEY_FINC_CTRM,
+    KEY_FINC_DDB,
+    KEY_FINC_FV,
+    KEY_FINC_PMT,
+    KEY_FINC_PV,
+    KEY_FINC_RATE,
+    KEY_FINC_SLN,
+    KEY_FINC_SYD,
+    KEY_FINC_TERM,
+    KEY_LEFT_SHIFT,
+    KEY_RIGHT_SHIFT,
+    KEY_STORE,
+    KEY_RECALL,
+    KEY_EXCHANGE,
+    KEY_ACCURACY_MENU,
+    KEY_CONSTANTS_MENU,
+    KEY_FUNCTIONS_MENU,
+    NKEYS
+};
 
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 
@@ -207,11 +208,6 @@ enum trig_func {SIN=0, COS=1, TAN=2};
 #ifndef MIN
 #define MIN(x,y)       ((x) < (y) ? (x) : (y))
 #endif /*MIN*/
-
-#define B_NOBUTTONS      BROWS * BCOLS  /* Number of Basic Mode buttons. */
-#define A_NOBUTTONS      AROWS * ACOLS  /* Number of Advanced Mode buttons. */
-#define F_NOBUTTONS      FROWS * FCOLS  /* Number of Financial Mode buttons. */
-#define S_NOBUTTONS      SROWS * SCOLS  /* Number of Scientific Mode buttons. */
 
 #ifndef CFNAME
 #define CFNAME         ".gcalctoolcf"
@@ -272,15 +268,11 @@ enum syntax {
 };
 
 struct button {
-    char *str;               /* Button display string. */
-    char *hstr;              /* Button help string. */
-    char *astr;              /* AccessibleName string (if tooltip not useful) */
+    char *symname;           /* Expression function name */
     guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
     guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
     char func_char;          /* Unique function string character. */
-    enum menu_type mtype;    /* Type of popup menu (if any). */
     void (*func)();          /* Function to obey on button press. */
-    char *symname;           /* Expression function name */
     enum button_flags flags; /* Misc flags */
 };
 

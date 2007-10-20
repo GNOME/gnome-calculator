@@ -1,5 +1,5 @@
 uidir = $(datadir)/gcalctool
 ui_DATA = \
-        mode_panel.glade
+        gcalctool.glade
 
 EXTRA_DIST = $(ui_DATA)
