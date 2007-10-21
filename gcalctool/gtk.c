@@ -1357,6 +1357,7 @@ create_kframe()
 	SNPRINTF(name, MAXLINE, "acc_item%d", i);
 	widget = GET_WIDGET(name);
 	g_object_set_data(G_OBJECT(widget), "index", GINT_TO_POINTER(i));
+	gtk_widget_add_accelerator(widget, "activate", accel_group, GDK_0 + i, GDK_CONTROL_MASK, 0);
     }    
 }
 
