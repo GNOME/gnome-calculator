@@ -2967,10 +2967,9 @@ set_inv_item(int state)
 static void
 set_memory_toggle(int state)
 {
-    GtkWidget *radio;
+    GtkWidget *radio = GET_WIDGET("show_registers_menu");
 
-    radio = GET_WIDGET("show_registers_menu");
-    gtk_widget_set_sensitive(radio, state);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(radio), state);
 }
 
 
