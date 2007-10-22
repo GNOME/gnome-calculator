@@ -840,7 +840,6 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 static void
 change_mode(int mode)
 {
-    FPRINTF(stderr, "change_mode called.\n");
     X->mode = mode;
     reset_mode_values(mode);
 }
@@ -852,7 +851,6 @@ cm_response_cb(GtkDialog *dialog, int response)
 {
     GtkWidget *radio;
 
-    FPRINTF(stderr, "cm_response_cb called.\n");
     if (response == GTK_RESPONSE_ACCEPT) {
         change_mode(X->mode);
     } else {
@@ -2453,19 +2451,14 @@ mode_radio_cb(GtkWidget *radio)
         }
     }
 
-    FPRINTF(stderr, "mode_radio_cb: immediate: %d\n", immediate);
     if (immediate) {
         v->modetype = X->mode;
-        FPRINTF(stderr, "Just calling reset_mode_display.\n");
         reset_mode_display(FALSE);
 
     } else {
-        FPRINTF(stderr, "Going the other way.\n");
         if (v->warn_change_mode) {
-            FPRINTF(stderr, "Showing change mode dialog.\n");
             show_change_mode_dialog();
         } else {
-            FPRINTF(stderr, "Calling change_mode.\n");
             change_mode(X->mode);
         }
     }
@@ -2587,7 +2580,6 @@ reset_mode_display(int toclear)
  * window (if it's being displayed), as there is no way to interact with it.
  */
 
-    FPRINTF(stderr, "reset_mode_display called. mode type: %d\n", v->modetype);
     radio = GET_WIDGET("show_trailing_zeroes_menu");
     gtk_widget_set_sensitive(radio, v->modetype == SCIENTIFIC);
     radio = GET_WIDGET("show_registers_menu");
@@ -2615,7 +2607,6 @@ reset_mode_display(int toclear)
 static void
 reset_mode_values(enum mode_type mtype)
 {
-    FPRINTF(stderr, "reset_mode_values called.\n");
     v->modetype = mtype;
     set_item(BASEITEM, DEC);
     grey_buttons(v->base);
