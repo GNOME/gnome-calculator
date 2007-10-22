@@ -166,9 +166,11 @@ struct button_widget button_widgets[] = {
           glade_xml_get_widget(X->ui, (name))
 
 #define SET_MENUBAR_ITEM_STATE(name, state) \
-          g_object_set_data(G_OBJECT(GET_WIDGET(name)), "sensitive", GINT_TO_POINTER(state));
+          g_object_set_data(G_OBJECT(GET_WIDGET(name)), "sensitive", \
+                            GINT_TO_POINTER(state));
 
-#define CONNECT_SIGNAL(name) glade_xml_signal_connect(X->ui, #name, G_CALLBACK(name))
+#define CONNECT_SIGNAL(name) glade_xml_signal_connect(X->ui, #name, \
+                       G_CALLBACK(name))
 
 struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkAccelGroup *kbd_accel;
@@ -1218,20 +1220,18 @@ create_kframe()
     gtk_widget_set_direction(X->fin_panel, GTK_TEXT_DIR_LTR);
     
     size_group = gtk_size_group_new(GTK_SIZE_GROUP_BOTH);
-    for(i = 0; i < NBUTTONS; i++)
-    {
-	SNPRINTF(name, MAXLINE, "calc_%s_button", button_widgets[i].widget_name);
+    for (i = 0; i < NBUTTONS; i++) {
+	SNPRINTF(name, MAXLINE, "calc_%s_button", 
+                 button_widgets[i].widget_name);
 	X->buttons[i] = GET_WIDGET(name);
 	assert(X->buttons[i] != NULL);
 	
 	gtk_size_group_add_widget(size_group, X->buttons[i]);
 	
-	//AtkObject *access_object = gtk_widget_get_accessible(widget);
-	//atk_object_set_name(access_object,
-	//(button.astr == NULL) ? button.hstr : button.astr);
-	
-	g_object_set_data(G_OBJECT(X->buttons[i]), "button", &buttons[button_widgets[i].key]);
-	g_object_set_data(G_OBJECT(X->buttons[i]), "mtype", GINT_TO_POINTER(button_widgets[i].mtype));
+	g_object_set_data(G_OBJECT(X->buttons[i]), "button", 
+                          &buttons[button_widgets[i].key]);
+	g_object_set_data(G_OBJECT(X->buttons[i]), "mtype", 
+                          GINT_TO_POINTER(button_widgets[i].mtype));
     }
 
     X->mode_panel = GET_WIDGET("mode_panel");
