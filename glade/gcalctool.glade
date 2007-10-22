@@ -50,9 +50,9 @@
 		      <property name="tooltip" translatable="yes">Quit the calculator</property>
 		      <property name="label">gtk-quit</property>
 		      <property name="use_stock">True</property>
-		      <signal name="activate" handler="quit_cb"/>
 		      <signal name="select" handler="menu_item_select_cb"/>
-      		      <signal name="deselect" handler="menu_item_deselect_cb"/>
+		      <signal name="deselect" handler="menu_item_deselect_cb"/>
+		      <signal name="activate" handler="quit_cb"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -101,10 +101,11 @@
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
-		      <signal name="activate" handler="undo_cb"/>
+		      <signal name="activate" handler="undo_cb" last_modification_time="Mon, 22 Oct 2007 12:55:07 GMT"/>
+		      <accelerator key="Z" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image8">
+			<widget class="GtkImage" id="image4">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-undo</property>
 			  <property name="icon_size">1</property>
@@ -125,10 +126,11 @@
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
-		      <signal name="activate" handler="redo_cb"/>
+		      <signal name="activate" handler="redo_cb" last_modification_time="Mon, 22 Oct 2007 12:55:07 GMT"/>
+		      <accelerator key="Z" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image9">
+			<widget class="GtkImage" id="image5">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-redo</property>
 			  <property name="icon_size">1</property>
@@ -156,6 +158,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="insert_ascii_cb"/>
+		      <accelerator key="I" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -182,6 +185,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="mode_radio_cb"/>
+		      <accelerator key="B" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -196,6 +200,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="A" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -210,6 +215,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="F" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -219,11 +225,12 @@
 		      <property name="tooltip" translatable="yes">Scientific</property>
 		      <property name="label" translatable="yes">_Scientific</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">False</property>
+		      <property name="active">True</property>
 		      <property name="group">view_basic_menu</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="S" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -243,6 +250,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_trailing_zeroes_cb"/>
+		      <accelerator key="T" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -256,6 +264,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_thousands_separator_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -269,6 +278,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_bitcalculating_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="E" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -288,6 +298,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_registers_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="M" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -307,6 +318,7 @@
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="on_left-to-right_precedence1_activate" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -316,11 +328,12 @@
 		      <property name="tooltip" translatable="yes">Use Arithmetic Precedence</property>
 		      <property name="label" translatable="yes">A_rithmetic Precedence</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">False</property>
+		      <property name="active">True</property>
 		      <property name="group">ltr_precedence_menu</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="arithmetic_mode_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
+		      <accelerator key="R" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -591,7 +604,7 @@
 		      <property name="visible">True</property>
 		      <property name="tooltip" translatable="yes">Set numeric base to hexadecimal (base 16)</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Hex</property>
+		      <property name="label" translatable="yes">He_x</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -797,7 +810,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Sum-of-the years'-digits depreciation [Y]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sum-of-the years'-digits depreciation [Y]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -821,7 +834,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Straight-line depreciation [l]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Straight-line depreciation [l]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -845,7 +858,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic interest rate [T]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic interest rate [T]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -869,7 +882,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Present value [p]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Present value [p]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -893,7 +906,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic payment [P]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic payment [P]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -917,7 +930,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Future value [v]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Future value [v]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -941,7 +954,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Double-declining depreciation [D]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Double-declining depreciation [D]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -965,7 +978,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Compounding term [m]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Compounding term [m]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -989,7 +1002,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Payment period [t]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Payment period [t]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -3988,7 +4001,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit D [d]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit D [d]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4010,7 +4023,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">User-defined functions [F]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">User-defined functions [F]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="menu_button_button_press_cb"/>
 	      <signal name="key-press-event" handler="menu_button_key_press_cb"/>
@@ -4229,7 +4242,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Constants [#]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Constants [#]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="menu_button_button_press_cb"/>
 	      <signal name="key-press-event" handler="menu_button_key_press_cb"/>
@@ -4377,7 +4390,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Modulus Division [M]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Modulus Division [M]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4425,7 +4438,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XOR [x]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XOR [x]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4449,7 +4462,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XNOR [n]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XNOR [n]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4473,7 +4486,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Base 10 log [G]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Base 10 log [G]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4497,7 +4510,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Natural log [N]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Natural log [N]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4521,7 +4534,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Tangent [L]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Tangent [L]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4545,7 +4558,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise NOT [~]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise NOT [~]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4569,7 +4582,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise AND [&amp;]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise AND [&amp;]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4593,7 +4606,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Sine [K]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sine [K]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4641,7 +4654,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise OR [|]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise OR [|]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4665,7 +4678,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Cosine [J]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Cosine [J]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4737,7 +4750,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit F [f]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit F [f]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4761,7 +4774,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit C [c]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit C [c]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4785,7 +4798,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit B [b]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit B [b]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4809,7 +4822,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit E [e]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit E [e]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -4833,7 +4846,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
-	        <atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit A [a]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit A [a]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -5026,152 +5039,56 @@
 	<widget class="GtkTable" id="table4">
 	  <property name="border_width">6</property>
 	  <property name="visible">True</property>
-	  <property name="n_rows">2</property>
+	  <property name="n_rows">5</property>
 	  <property name="n_columns">2</property>
 	  <property name="homogeneous">False</property>
 	  <property name="row_spacing">6</property>
 	  <property name="column_spacing">6</property>
 
 	  <child>
-	    <widget class="GtkTable" id="core_panel">
+	    <widget class="GtkTable" id="basic_panel">
 	      <property name="visible">True</property>
-	      <property name="n_rows">4</property>
+	      <property name="n_rows">1</property>
 	      <property name="n_columns">4</property>
 	      <property name="homogeneous">True</property>
 	      <property name="row_spacing">6</property>
 	      <property name="column_spacing">6</property>
 
 	      <child>
-		<widget class="GtkButton" id="calc_4_button">
+		<widget class="GtkButton" id="calc_backspace_simple_button">
 		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 4">4</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_7_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 7">7</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_8_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 8">8</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_9_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 9">9</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_5_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 5">5</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_6_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 6">6</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_divide_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Divide</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="this is a division sign (÷)">÷</property>
+		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Divide</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Remove rightmost character from displayed value</atkproperty>
+		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_change_sign_simple_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Change Sign [c]</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Change Sign [c]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
@@ -5186,200 +5103,48 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="calc_1_button">
+		<widget class="GtkButton" id="calc_clear_simple_button">
 		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 1">1</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_2_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 2">2</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_0_button">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 0">0</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_numeric_point_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Numeric point</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric point">.</property>
+		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Numeric point</atkproperty>
-		  </accessibility>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_result_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Calculate result</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="This is the calculate result button (=)">=</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Calculate result</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear displayed value and any partial calculation</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
 		  <property name="left_attach">2</property>
 		  <property name="right_attach">3</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
 		  <property name="x_options">expand|shrink|fill</property>
 		  <property name="y_options">expand|shrink|fill</property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="calc_3_button">
+		<widget class="GtkButton" id="calc_clear_entry_simple_button">
 		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Clear displayed value</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 3">3</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_multiply_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Multiply</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="This is a multiplication sign (*)">×</property>
+		  <property name="label" translatable="yes">CE</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Multiply</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
-		  <property name="left_attach">3</property>
-		  <property name="right_attach">4</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_subtract_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Subtract</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="This is a minus sign (-)">−</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Subtract</atkproperty>
-		  </accessibility>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">3</property>
-		  <property name="right_attach">4</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="x_options">expand|shrink|fill</property>
-		  <property name="y_options">expand|shrink|fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkButton" id="calc_add_button">
-		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Add</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">+</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Add</atkproperty>
-		  </accessibility>
-		  <signal name="clicked" handler="button_cb"/>
-		</widget>
-		<packing>
-		  <property name="left_attach">3</property>
-		  <property name="right_attach">4</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
 		  <property name="x_options">expand|shrink|fill</property>
 		  <property name="y_options">expand|shrink|fill</property>
 		</packing>
@@ -5388,8 +5153,8 @@
 	    <packing>
 	      <property name="left_attach">0</property>
 	      <property name="right_attach">1</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
@@ -5975,33 +5740,49 @@
 	      <property name="left_attach">1</property>
 	      <property name="right_attach">2</property>
 	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
+	      <property name="bottom_attach">5</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
 	  </child>
 
 	  <child>
-	    <widget class="GtkTable" id="basic_panel">
+	    <widget class="GtkTable" id="core_panel">
 	      <property name="visible">True</property>
-	      <property name="n_rows">1</property>
+	      <property name="n_rows">4</property>
 	      <property name="n_columns">4</property>
 	      <property name="homogeneous">True</property>
 	      <property name="row_spacing">6</property>
 	      <property name="column_spacing">6</property>
 
 	      <child>
-		<widget class="GtkButton" id="calc_backspace_simple_button">
+		<widget class="GtkButton" id="calc_4_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
+		  <property name="label" translatable="yes" comments="Numeric 4">4</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Remove rightmost character from displayed value</atkproperty>
-		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_7_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 7">7</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -6015,16 +5796,96 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="calc_change_sign_simple_button">
+		<widget class="GtkButton" id="calc_8_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Change Sign [c]</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
+		  <property name="label" translatable="yes" comments="Numeric 8">8</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_9_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 9">9</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_5_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 5">5</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_6_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 6">6</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_divide_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Divide</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="this is a division sign (÷)">÷</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Change Sign [c]</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Divide</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
@@ -6039,48 +5900,200 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="calc_clear_simple_button">
+		<widget class="GtkButton" id="calc_1_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
+		  <property name="label" translatable="yes" comments="Numeric 1">1</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear displayed value and any partial calculation</atkproperty>
-		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
 		  <property name="x_options">expand|shrink|fill</property>
 		  <property name="y_options">expand|shrink|fill</property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="calc_clear_entry_simple_button">
+		<widget class="GtkButton" id="calc_2_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">CE</property>
+		  <property name="label" translatable="yes" comments="Numeric 2">2</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_0_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 0">0</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_numeric_point_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Numeric point</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric point">.</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Numeric point</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
 		  <property name="right_attach">2</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_result_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Calculate result</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="This is the calculate result button (=)">=</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Calculate result</atkproperty>
+		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_3_button">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="Numeric 3">3</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_multiply_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Multiply</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="This is a multiplication sign (*)">×</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Multiply</atkproperty>
+		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_subtract_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Subtract</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes" comments="This is a minus sign (-)">−</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Subtract</atkproperty>
+		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options">expand|shrink|fill</property>
+		  <property name="y_options">expand|shrink|fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="calc_add_button">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Add</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">+</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Add</atkproperty>
+		  </accessibility>
+		  <signal name="clicked" handler="button_cb"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
 		  <property name="x_options">expand|shrink|fill</property>
 		  <property name="y_options">expand|shrink|fill</property>
 		</packing>
@@ -6089,8 +6102,8 @@
 	    <packing>
 	      <property name="left_attach">0</property>
 	      <property name="right_attach">1</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">5</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
