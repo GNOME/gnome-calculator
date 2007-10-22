@@ -1198,7 +1198,7 @@ create_kframe()
     pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
     gtk_widget_modify_font(X->display_item, font_desc);
     pango_font_description_free(font_desc);
-    gtk_widget_set_name(X->display_item, "displayitem"); // FIXME: Is this necessary?
+    gtk_widget_set_name(X->display_item, "displayitem");
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
                                (v->syntax == exprs));
 

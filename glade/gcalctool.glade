@@ -417,7 +417,7 @@
 		  <property name="left_margin">0</property>
 		  <property name="right_margin">6</property>
 		  <property name="indent">0</property>
-		  <property name="text" translatable="yes"></property>
+		  <property name="text" translatable="yes">5</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Result Region</atkproperty>
 		  </accessibility>
@@ -810,6 +810,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Sum-of-the years'-digits depreciation</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sum-of-the years'-digits depreciation [Y]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -834,6 +835,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Straight-line depreciation</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Straight-line depreciation [l]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -858,6 +860,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Periodic interest rate</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic interest rate [T]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -882,6 +885,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Present value</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Present value [p]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -906,6 +910,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Periodic payment</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic payment [P]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -930,6 +935,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Future value</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Future value [v]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -954,6 +960,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Double-declining depreciation</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Double-declining depreciation [D]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -978,6 +985,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Compounding term</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Compounding term [m]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -1002,6 +1010,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Payment period</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Payment period [t]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4001,6 +4010,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit D</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit D [d]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4023,6 +4033,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">User-defined functions</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">User-defined functions [F]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -4051,6 +4062,10 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">Fun</atkproperty>
+			<atkproperty name="AtkObject::accessible_description" translatable="yes">User-defined functions</atkproperty>
+		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4110,6 +4125,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label7">
 		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes" comments="Shift left">&lt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
@@ -4124,6 +4140,9 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift left</atkproperty>
+		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4183,6 +4202,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label6">
 		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes" comments="Shift right">&gt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
@@ -4197,6 +4217,9 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift right</atkproperty>
+		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4242,6 +4265,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Constants</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Constants [#]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -4270,6 +4294,10 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">Con</atkproperty>
+			<atkproperty name="AtkObject::accessible_description" translatable="yes">Constants</atkproperty>
+		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4315,6 +4343,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Accuracy</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Accuracy</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -4343,6 +4372,9 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">Acc</atkproperty>
+		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4390,6 +4422,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Modulus Division</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Modulus Division [M]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4414,6 +4447,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Random number</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Random number</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4438,6 +4472,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XOR</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XOR [x]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4462,6 +4497,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XNOR</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise XNOR [n]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4486,6 +4522,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Base 10 Log</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Base 10 log [G]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4510,6 +4547,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Natural log</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Natural log [N]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4534,6 +4572,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Tangent</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Tangent [L]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4558,6 +4597,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise NOT</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise NOT [~]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4582,6 +4622,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise AND</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise AND [&amp;]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4606,6 +4647,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Sine</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sine [K]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4630,6 +4672,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">32 bit unsigned integer</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">32 bit unsigned integer</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4654,6 +4697,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise OR</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise OR [|]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4678,6 +4722,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Cosine</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Cosine [J]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4702,6 +4747,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">16 bit unsigned integer</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">16 bit unsigned integer</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4726,6 +4772,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Exponential</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Exponential</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4750,6 +4797,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit F</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit F [f]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4774,6 +4822,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit C</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit C [c]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4798,6 +4847,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit B</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit B [b]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4822,6 +4872,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit E</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit E [e]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4846,6 +4897,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit A</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Hexadecimal digit A [a]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4868,6 +4920,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">E to the x</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">E to the x</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4889,6 +4942,10 @@
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">ex</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">E to the x</atkproperty>
+		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4910,6 +4967,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Factorial</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Factorial</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4931,6 +4989,10 @@
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Factorial</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Factorial</atkproperty>
+		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4952,6 +5014,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">X to the y</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">X to the y</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4973,6 +5036,10 @@
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">xy</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">X to the y</atkproperty>
+		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4994,6 +5061,7 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">10 to the x</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">10 to the x</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
@@ -5015,6 +5083,10 @@
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">10x</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Ten to the x</atkproperty>
+		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -5064,6 +5136,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Backspace</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Remove rightmost character from displayed value</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5088,6 +5161,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Change sign</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Change Sign [c]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5112,6 +5186,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear displayed value and any partial calculation</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5136,6 +5211,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear entry</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5179,6 +5255,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Left bracket</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Left bracket</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5201,6 +5278,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Reciprocal</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Reciprocal [r]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5222,6 +5300,10 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">1/x</atkproperty>
+			<atkproperty name="AtkObject::accessible_description" translatable="yes">Reciprocal</atkproperty>
+		      </accessibility>
 		    </widget>
 		  </child>
 		</widget>
@@ -5245,6 +5327,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Percentage</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Percentage</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5269,6 +5352,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Right bracket</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Right bracket</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5293,7 +5377,8 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Backspace</atkproperty>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Backspace</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Remove rightmost character from displayed value</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
@@ -5317,6 +5402,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Change sign</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Change Sign [c]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5341,6 +5427,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Square root</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Square root [s]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5365,6 +5452,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Absolute value</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Absolute value [u]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5389,6 +5477,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Fractional portion</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Fractional portion</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5413,6 +5502,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Integer portion</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Integer portion</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5437,6 +5527,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear entry</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5459,6 +5550,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Exchange with register</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Exchange with register</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -5487,6 +5579,10 @@
 			  <property name="width_chars">-1</property>
 			  <property name="single_line_mode">False</property>
 			  <property name="angle">0</property>
+			  <accessibility>
+			    <atkproperty name="AtkObject::accessible_name" translatable="yes">Exch</atkproperty>
+			    <atkproperty name="AtkObject::accessible_description" translatable="yes">Exchange with register</atkproperty>
+			  </accessibility>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -5532,6 +5628,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Retreive from register</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Retrieve from register</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -5560,6 +5657,10 @@
 			  <property name="width_chars">-1</property>
 			  <property name="single_line_mode">False</property>
 			  <property name="angle">0</property>
+			  <accessibility>
+			    <atkproperty name="AtkObject::accessible_name" translatable="yes">Rcl</atkproperty>
+			    <atkproperty name="AtkObject::accessible_description" translatable="yes">Retrieve from register</atkproperty>
+			  </accessibility>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -5607,7 +5708,8 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear</atkproperty>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear displayed value and any partial calculation</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
@@ -5629,6 +5731,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Store to register</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Store to register</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="menu_button_button_press_cb"/>
@@ -5657,6 +5760,10 @@
 			  <property name="width_chars">-1</property>
 			  <property name="single_line_mode">False</property>
 			  <property name="angle">0</property>
+			  <accessibility>
+			    <atkproperty name="AtkObject::accessible_name" translatable="yes">Sto</atkproperty>
+			    <atkproperty name="AtkObject::accessible_description" translatable="yes">Store to register</atkproperty>
+			  </accessibility>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -5702,6 +5809,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Square</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Square [@]</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5723,6 +5831,10 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes">x2</atkproperty>
+			<atkproperty name="AtkObject::accessible_description" translatable="yes">Square</atkproperty>
+		      </accessibility>
 		    </widget>
 		  </child>
 		</widget>
@@ -5763,6 +5875,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 4</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5783,6 +5898,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 7</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5803,6 +5921,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 8</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5823,6 +5944,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 9</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5843,6 +5967,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 5</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5863,6 +5990,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 6</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5885,6 +6015,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Divide</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Divide</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5907,6 +6038,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 1</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5927,6 +6061,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 2</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5947,6 +6084,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 0</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -5969,6 +6109,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric point</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Numeric point</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -5993,6 +6134,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Calculate result</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Calculate result</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -6015,6 +6157,9 @@
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 3</atkproperty>
+		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
 		</widget>
 		<packing>
@@ -6037,6 +6182,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Multiply</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Multiply</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -6061,6 +6207,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Subtract</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Subtract</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
@@ -6085,6 +6232,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Add</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Add</atkproperty>
 		  </accessibility>
 		  <signal name="clicked" handler="button_cb"/>
