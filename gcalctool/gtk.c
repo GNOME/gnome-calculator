@@ -2124,7 +2124,7 @@ set_accuracy_tooltip(int accuracy)
                                        "Currently set to %d places.",
                                        accuracy),
                               accuracy);
-    tooltip = g_strdup_printf ("%s %s [a]", desc, current);
+    tooltip = g_strdup_printf ("%s %s [A]", desc, current);
     gtk_widget_set_tooltip_text (X->buttons[BUT_ACCURACY_MENU], tooltip);
     g_free(desc);
     g_free(current);
