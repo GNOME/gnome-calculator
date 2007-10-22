@@ -2589,6 +2589,22 @@ reset_mode_display(int toclear)
         gtk_dialog_response(GTK_DIALOG(X->rframe), GTK_RESPONSE_CLOSE);
     }
 
+/* Fix for bug #485918 from Brian Costello.
+ * If the new mode is Scientific, we need to set the Base to Decimal the 
+ * Numbers to Fixed, and the accuracy to 9. Need to make sure that the 
+ * correct keys are displayed. We dont want to pick up any Scientific 
+ * settings that we used the last time we were in that mode. Because
+ * when we last changed out, the Base was reset to Decimal, but nothing 
+ * else was changed.
+ */
+
+    if (v->modetype == SCIENTIFIC){
+        set_item(BASEITEM, DEC);     /* Set FIX and DEC. */
+        grey_buttons(v->base);
+        set_item(NUMITEM, FIX);
+        v->accuracy = 9;
+    }
+
     switch (v->syntax) {
         case npa:
             show_display(v->MPdisp_val);
