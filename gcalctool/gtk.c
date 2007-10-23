@@ -249,11 +249,11 @@ typedef struct {
 
 static GtkWidget *create_menu(enum menu_type, struct button *);
 
-void trig_cb(GtkToggleButton *);
-void base_cb(GtkToggleButton *);
-void disp_cb(GtkToggleButton *);
-void inv_cb(GtkToggleButton *);
-void hyp_cb(GtkToggleButton *);
+void trig_cb(GtkWidget *);
+void base_cb(GtkWidget *);
+void disp_cb(GtkWidget *);
+void inv_cb(GtkWidget *);
+void hyp_cb(GtkWidget *);
 
 static char *make_hostname(Display *);
 
@@ -486,9 +486,10 @@ aframe_ok_cb(GtkButton *button, gpointer user_data)
 
 /*ARGSUSED*/
 void
-base_cb(GtkToggleButton *button)
+base_cb(GtkWidget *widget)
 {
-    do_base((enum base_type) g_object_get_data(G_OBJECT(button), "response_id"));
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+	do_base((enum base_type) g_object_get_data(G_OBJECT(widget), "response_id"));
 }
 
 
@@ -885,9 +886,9 @@ cm_response_cb(GtkDialog *dialog, int response)
 
 /*ARGSUSED*/
 static void
-cm_warning_cb(GtkToggleButton *button)
+cm_warning_cb(GtkWidget *button)
 {
-    v->warn_change_mode = !gtk_toggle_button_get_active(button);
+    v->warn_change_mode = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button));
 }
 
 
@@ -1557,9 +1558,10 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
 
 /*ARGSUSED*/
 void
-disp_cb(GtkToggleButton *button)
+disp_cb(GtkWidget *widget)
 {
-    do_numtype((enum num_type) g_object_get_data(G_OBJECT(button), "response_id"));
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+	do_numtype((enum num_type) g_object_get_data(G_OBJECT(widget), "response_id"));
 }
 
 
@@ -1833,15 +1835,15 @@ help_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 void
-hyp_cb(GtkToggleButton *button)
+hyp_cb(GtkWidget *widget)
 {
-    v->hyperbolic = !v->hyperbolic;
+    v->hyperbolic = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 }
 
 
 /*ARGSUSED*/
 void
-inv_cb(GtkToggleButton *button)
+inv_cb(GtkWidget *button)
 {
     v->inverse = !v->inverse;
 }
@@ -2406,6 +2408,9 @@ mode_radio_cb(GtkWidget *radio)
 {
     int immediate = 0;    /* Set if we can change mode without warning user. */
     int complete = 0;     /* Set if the user has completed a calculation. */
+
+    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(radio)))
+	return;
 
     if (!v->started) {
 	return;
@@ -3208,9 +3213,10 @@ show_precision_frame()      /* Display Set Precision popup. */
 
 /*ARGSUSED*/
 void
-trig_cb(GtkToggleButton *button)
+trig_cb(GtkWidget *widget)
 {
-    do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(button), "response_id"));
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+	do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget), "response_id"));
 }
 
 
