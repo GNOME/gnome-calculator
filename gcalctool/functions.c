@@ -404,7 +404,7 @@ exp_has_postfix(char *str, char *postfix)
     if (!str) {
         return(0);
     }
-
+    
     assert(postfix);
 
     len = strlen(str);
@@ -524,7 +524,7 @@ do_expression()
 	    char *zero = NULL;
 	    do_zero(MP1);
 	    zero = make_number(MP1, v->base, FALSE);
-	    exp_insert(zero);
+	    exp_append(zero);
 	}
     }
 
@@ -546,11 +546,11 @@ do_expression()
         int n = '0' +  i;
 
         snprintf(reg, 3, "R%c", n);
-        exp_insert(reg);
+        exp_append(reg);
     } else if (e->button.flags & con) {
         int *MPval = v->MPcon_vals[char_val(e->button.value[0])];
 
-        exp_insert(make_number(MPval, v->base, FALSE));
+        exp_append(make_number(MPval, v->base, FALSE));
     } else if (e->button.flags & bsp) {
         if (exp_has_postfix(e->expression, "Ans")) { 
             char *ans = make_number(e->ans, v->base, FALSE);   
@@ -571,7 +571,7 @@ do_expression()
                     reg_val = make_number(MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix. */
                     exp_del_char(&e->expression, 2);
-                    exp_insert(reg_val);
+                    exp_append(reg_val);
                 }
             }
         }
@@ -630,14 +630,16 @@ do_expression()
 	    }
 	  }
     } else {
-	exp_insert(btext);
+	exp_append(btext);
 	if (e->button.flags & func) {
-	    exp_insert("(");
+	    exp_append("(");
 	}
     }
 
     free(btext);
     btext = NULL;
+
+    update_display = 1;
     if (update_display) {
         refresh_display();
     }
