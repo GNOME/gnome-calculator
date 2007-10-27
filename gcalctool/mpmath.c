@@ -829,11 +829,22 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
 
 int
 is_integer(int MPnum[MP_SIZE])
-{    
-    int MP1[MP_SIZE];
-    mpcmim(MPnum, MP1);
-    return mpeq(MPnum, MP1);
+{
+    int i = 10000;
+    int MPtt[MP_SIZE], MP0[MP_SIZE], MP1[MP_SIZE];
+
+    /* Division by 10000 is used to get around a limitation to the "fix" 
+     * for Sun bugtraq bug #4006391 in the mpcmim() routine in mp.c, when
+     * the exponent is less than 1.
+     */
+    mpcim(&i, MPtt);
+    mpdiv(MPnum, MPtt, MP0);
+    mpmul(MP0, MPtt, MP0);
+    mpcmim(MP0, MP1);
+
+    return mpeq(MP0, MP1);
 }
+
 
 int
 is_natural(int MPnum[MP_SIZE])
