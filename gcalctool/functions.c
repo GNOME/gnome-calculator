@@ -575,7 +575,7 @@ do_expression()
                 }
             }
         }
-        delete_from_cursor();
+        exp_del_char(&e->expression, 1);
     } else if (e->button.flags & neg) {
         exp_negate();
         update_display = 1;
