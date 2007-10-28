@@ -835,13 +835,13 @@ do_clear_entry()     /* Clear the calculator display. */
 
 void
 do_base(enum base_type b)    /* Change the current base setting. */
-{
-    v->base = b;
-    put_resource(R_BASE, Rbstr[(int) v->base]);
-    grey_buttons(v->base);
-    
+{    
     switch (v->syntax) {
     case npa:
+        v->base = b;
+        put_resource(R_BASE, Rbstr[(int) v->base]);
+        grey_buttons(v->base);
+
 	v->pending = 0;
 	if (v->rstate) {
 	    make_registers();
@@ -858,8 +858,11 @@ do_base(enum base_type b)    /* Change the current base setting. */
 	} else if (!v->ghost_zero) {
 	    mpstr(MP, e->ans);
 	    exp_replace("Ans");
-	    make_registers();
 	}
+        v->base = b;
+        put_resource(R_BASE, Rbstr[(int) v->base]);
+        grey_buttons(v->base);
+        make_registers();
 	clear_undo_history();
     }
     break;
@@ -870,6 +873,8 @@ do_base(enum base_type b)    /* Change the current base setting. */
     
     refresh_display();
 }
+
+
 
 static void
 do_constant()
