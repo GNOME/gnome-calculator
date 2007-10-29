@@ -30,7 +30,6 @@
 
 time_t time();
 
-static void init_buttons();
 static void init_text();
 
 double max_fix[MAXBASES] = {

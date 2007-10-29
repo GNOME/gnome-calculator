@@ -5,6 +5,64 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.21.1
+
+* Work on bug #485919 - Use Glade for UI.
+    > Adds support for the mode panel.
+    > Puts menu accelerators back again and fixes the top button row in
+      basic mode being too tall.
+    > Now provides Glade support for the majority of the gcalctool GUI.
+
+* Fix for bug #490701 - base radio buttons initially fail.
+
+* Attempted fix for bug #485134 - OR calculation produces incorrect 
+  result in arithmetic precedence mode. This isn't a complete solution
+  so the bug has been reopened.
+
+* Fix for bug #488828 - Reciprocal remembers backspaced items.
+
+* More work on bug ##488694 - [a11y] Several calculator buttons don't speak 
+  correctly with Orca. Removed the accessible descriptions (not needed) and 
+  adjusted the "shift left" and "shift right" names (they were reversed).
+
+* Patch to stablize arithmetic precedence.
+
+* Stop acting on toggle events from radio buttons when they go inactive 
+  (Bug #485918).
+
+* Added Robert Ancell to the list of gcalctool MAINTAINERS.
+
+* Fixed bug #488830 - Hex radio button shortcut conflicts with Help menu 
+  shortcut.
+
+* Fixed bug #488829 - Accuracy and Change Sign have wrong tooltip shortcut 
+  keys.
+
+* Fixed bug #488783 - memory registers not available if you start in 
+  Advanced mode
+
+* Fixed bug bug #488694 - [a11y] Several calculator buttons don't speak
+  correctly with Orca.
+
+* Fix for bug #485398 - Put memory register window inside the main window.
+  Uses gtk_window_set_transient_for() to associate the memory register
+  window with the main gcalctool window.
+
+* Fix for bug #383850 - [doc] New names for Precedence.
+
+* Fix for bug #485137 - Undo/Redo don't work in arithmetic precedence mode
+  if user has "hand edited" the display.
+
+* Added a call to "set_memory_toggle(v->rstate);" in make_frames() to
+  correctly set the state of the Edit-<Memory Registers check box if the
+  user wanted the memory registers initially displayed.
+
+* Correctly handle memory register display and "Memory Registers" menu
+  item checkbox status when user goes from Sci/Fin/Adv mode to Basic.
+  (Needed because of the recent changes for bug #478961).
+
+----
+
 Overview of changes in gcalctool 5.21.0
 
     * Fix for bug #326938 – Display cursor in input area; allow home and 
