@@ -833,13 +833,13 @@ is_integer(int MPnum[MP_SIZE])
     int i = 10000;
     int MPtt[MP_SIZE], MP0[MP_SIZE], MP1[MP_SIZE];
 
-    /* Division by 10000 is used to get around a limitation to the "fix" 
-     * for Sun bugtraq bug #4006391 in the mpcmim() routine in mp.c, when
-     * the exponent is less than 1.
+    /* Multiplication and division by 10000 is used to get around a 
+     * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
+     * mpcmim() routine in mp.c, when the exponent is less than 1.
      */
     mpcim(&i, MPtt);
-    mpdiv(MPnum, MPtt, MP0);
-    mpmul(MP0, MPtt, MP0);
+    mpmul(MPnum, MPtt, MP0);
+    mpdiv(MP0, MPtt, MP0);
     mpcmim(MP0, MP1);
 
     return mpeq(MP0, MP1);
