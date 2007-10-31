@@ -47,7 +47,6 @@ extern char *Rcstr[];          /* Bitcalculating mode. */
 extern double max_fix[];       /* Maximum showable fixed values. */
 
 extern int basevals[];         /* Supported arithmetic bases. */
-extern int validkeys[];        /* Valid keys after an error condition. */
 extern int cur_pos[];          /* Current positions - left/right handed. */
 
 extern struct button buttons[];         /* Calculator button values. */

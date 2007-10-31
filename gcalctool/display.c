@@ -23,7 +23,6 @@
 #include <string.h>
 #include <assert.h>
 #include "calctool.h"
-#include <gdk/gdkkeysyms.h>
 #include "extern.h"
 #include "mpmath.h"
 #include "functions.h"
@@ -111,7 +110,7 @@ void
 clear_display(int initialise)
 {
     int i;
-
+    
     v->pointed = 0;
     v->toclear = 1;
     i = 0;
@@ -157,9 +156,9 @@ initialise()
     struct exprm_state *e;
  
     v->error         = 0;           /* Currently no display error. */
-    v->cur_op        = '?';         /* No arithmetic operator defined yet. */
-    v->old_cal_value = '?';
-    v->pending       = 0;
+    v->cur_op        = -1;         /* No arithmetic operator defined yet. */
+    v->old_cal_value = -1;
+    v->pending       = -1;
     i = 0;
     mpcim(&i, v->MPresult);         /* No previous result yet. */
     mpcim(&i, v->MPdisp_val);         
@@ -259,7 +258,7 @@ char *
 make_number(int *MPnumber, int base, BOOLEAN ignoreError)
 {
     double number, val;
-
+    
 /*  NOTE: make_number can currently set v->error when converting to a double.
  *        This is to provide the same look&feel as V3 even though gcalctool
  *        now does internal arithmetic to "infinite" precision.
@@ -296,7 +295,7 @@ make_eng_sci(int *MPnumber, int base)
     int ddig;                   /* Number of digits in exponent. */
     int eng = 0;                /* Set if this is an engineering number. */
     int exp = 0;                /* Exponent */
-
+    
     if (v->dtype == ENG) {
         eng = 1;
     }
@@ -468,9 +467,10 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
 /* Append the latest parenthesis char to the display item. */
 
 void
-paren_disp(int c)
+paren_disp(int key)
 {
     int i, n;
+    char *text;
 
 /*  If the character is a Delete, clear the whole line, and exit parenthesis
  *  processing.
@@ -483,14 +483,19 @@ paren_disp(int c)
  */
 
     n = strlen(v->display);
-    if (c == -1 || c == 127) {         /* Is it a Delete character? */
-        v->noparens = v->pending = v->opsptr = v->numsptr = 0;
-        v->cur_op = '?';
+    text = buttons[key].symname;
+    switch (key)
+    {
+    case -1:
+    case KEY_CLEAR:
+        v->noparens = v->opsptr = v->numsptr = 0;
+        v->pending = -1;
+        v->cur_op = -1;
         i = 0;
         mpcim(&i, v->MPdisp_val);
         show_display(v->MPdisp_val);
         return;
-    } else if (c == 8) {  /* Is is a Back Space character? */
+    case KEY_BACKSPACE:
         if (!n) {
             return;
         }
@@ -500,36 +505,37 @@ paren_disp(int c)
         } else if (v->display[n-1] == '(') {
             v->noparens--;
             if (!v->noparens) {
-                v->pending = v->opsptr = v->numsptr = 0;
-                v->cur_op = '?';
+                v->opsptr = v->numsptr = 0;
+                v->pending = -1;
+                v->cur_op = -1;
                 show_display(v->MPdisp_val);
                 return;
             }
         } else if (v->display[n-1] == ')') v->noparens++;
         v->display[n-1] = '\0';
+	break;
 
-    } else if (c == '(') {
+    case KEY_START_BLOCK:
 
 /* If this is the first left parenthesis being displayed and there is no
  * current arithmetic operand, then the current display is initially cleared
  * to avoid the confusion of showing something like "0(".
  */
 
-        if (v->noparens == 1 && v->cur_op == '?') {
+        if (v->noparens == 1 && v->cur_op == -1) {
             n = 0;
-            v->display[n] = '\0';
+            v->display[0] = '\0';
         }
+        text = "(";
+        break;
+        
+    case KEY_END_BLOCK:
+        text = ")";
+        break;
+    }
 
-        if (n < MAXLINE-1) {
-            v->display[n]   = c;
-            v->display[n+1] = '\0';
-        }
-
-    } else {                           /* It must be an ordinary character. */
-        if (n < MAXLINE-1) {
-            v->display[n]   = c;
-            v->display[n+1] = '\0';
-        }
+    if (text) {
+        SNPRINTF(v->display+n, MAXLINE-n, "%s", text);
     }
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
@@ -542,40 +548,21 @@ paren_disp(int c)
 void
 process_item(struct button *button)
 {
-    int i, isvalid;
-
     if (v->current != NULL) {
         free(v->current);
     }
     v->current = copy_button_info(button);
 
-/* Reassign "extra" values. */
-
-    if (v->current->value[0] == GDK_Return) {
-        v->current->value[0] = '=';
-    }
-    if (v->current->value[0] == 'Q') {
-        v->current->value[0] = 'q';
-    }
-
     if (v->error) {
-        isvalid = 0;                    /* Must press a valid key first. */
-        for (i = 0; i < MAXVKEYS; i++) {
-            if (v->current->value[0] == validkeys[i]) {
-                isvalid = 1;
-            }
-        }
-        if (v->pending == '?') {
-            isvalid = 1;
-        }
-        if (!isvalid) {
+        /* Must press a valid key first. */
+	if (v->current->id != KEY_CLEAR) {
             return;
         }
         set_error_state(FALSE);
     }
 
-    if (v->pending) {
-        (*v->pending_but->func)();
+    if (v->pending >= 0) {
+        buttons[v->pending].func();
         return;
     }
 

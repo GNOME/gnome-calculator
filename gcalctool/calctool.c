@@ -24,7 +24,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include "calctool.h"
-#include <gdk/gdkkeysyms.h>
 
 #include "functions.h"
 
@@ -65,11 +64,6 @@ char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
 char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
-
-/* Valid keys when an error condition has occured. */
-/*                           Clr */
-int validkeys[MAXVKEYS]  = { GDK_Delete };
-
 Vars v;            /* Calctool variables and options. */
 
 /*  This table shows the keyboard values that are currently being used:
@@ -84,583 +78,439 @@ Vars v;            /* Calctool variables and options. */
  *-----------+-----------------------------------------------------
  */
 
+// FIXME: Sort this list
 struct button buttons[NKEYS] = {
 
-/* symname
-   mods
-   value
-   func_char
+/* id,
+   symname
    func
    flags
  */
 
-// FIXME: Move accelerators into gtk.c
 {
+    KEY_0,
     N_("0"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,             0 },
-    { GDK_0, GDK_0,          GDK_KP_0, GDK_KP_Insert, 0 },
-    '0',
     do_number,
-    number | bin_set | oct_set
+    number
 },
 {
+    KEY_1,
     N_("1"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,          0,       0 },
-    { GDK_1, GDK_1,          GDK_KP_1, GDK_KP_End, GDK_R13, 0 },
-    '1',
     do_number,
-    number | bin_set | oct_set
+    number
 },
 {
+    KEY_2,
     N_("2"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,           0 }, 
-    { GDK_2, GDK_2,          GDK_KP_2, GDK_KP_Down, 0 },
-    '2',
     do_number,
-    number | oct_set
+    number
 },    
 {     
+    KEY_3,
     N_("3"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,                0,       0 },
-    { GDK_3, GDK_3,          GDK_KP_3, GDK_KP_Page_Down, GDK_R15, 0 },
-    '3',
     do_number,
-    number | oct_set
+    number
 },
 {
+    KEY_4,
     N_("4"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,           0 },
-    { GDK_4, GDK_4,          GDK_KP_4, GDK_KP_Left, 0 },
-    '4',
     do_number,
-    number | oct_set
+    number
 },
 {
+    KEY_5,
     N_("5"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,            0,       0 },
-    { GDK_5, GDK_5,          GDK_KP_5, GDK_KP_Begin, GDK_R11, 0 },
-    '5',
     do_number,
-    number | oct_set
+    number
 },
 {
+    KEY_6,
     N_("6"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,            0 },
-    { GDK_6, GDK_6,          GDK_KP_6, GDK_KP_Right, 0 },
-    '6',
     do_number,
-    number | oct_set
+    number
 },
 {
+    KEY_7,
     N_("7"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,           0,      0 },
-    { GDK_7, GDK_7,          GDK_KP_7, GDK_KP_Home, GDK_R7, 0 },
-    '7',
     do_number,
-    number | oct_set
+    number
 },
 {
+    KEY_8,
     N_("8"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,         0 },
-    { GDK_8, GDK_8,          GDK_KP_8, GDK_KP_Up, 0 },
-    '8',
     do_number,
     number
 },
 {
+    KEY_9,
     N_("9"),
-    { 0,     GDK_SHIFT_MASK, 0,        0,              0,      0 },
-    { GDK_9, GDK_9,          GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 },
-    '9',
     do_number,
     number
 },
 {
+    KEY_A,
     N_("A"),
-    { 0,     0 },
-    { GDK_a, 0 },
-    'a',
     do_number,
-    number | hex
+    number
 },
 {
+    KEY_B,
     N_("B"),
-    { 0,     0 },
-    { GDK_b, 0 },
-    'b',
     do_number,
-    number | hex
+    number
 },    
 {     
+    KEY_C,
     N_("C"),
-    { 0,     0 },
-    { GDK_c, 0 },
-    'c',
     do_number,
-    number | hex
+    number
 },
 {
+    KEY_D,
     N_("D"),
-    { 0,     0 },
-    { GDK_d, 0 },
-    'd',
     do_number,
-    number | hex
+    number
 },
 {
+    KEY_E,
     N_("E"),
-    { 0,     0 },
-    { GDK_e, 0 },
-    'e',
     do_number,
-    number | hex
+    number
 },
 {
+    KEY_F,
     N_("F"),
-    { 0,     0 },
-    { GDK_f, 0 },
-    'f',
     do_number,
-    number | hex
+    number
 },
 {    
+    KEY_NUMERIC_POINT,
     N_("."),
-    { 0,          0,              0,             0 },
-    { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 },
-    '.',
     do_point,
     number | dpoint
 },
 {
-    N_("="),
-    { 0,         0,            0,          GDK_SHIFT_MASK, 0 },
-    { GDK_equal, GDK_KP_Enter, GDK_Return, GDK_equal,      0 },
-    '=',
+    KEY_CALCULATE,
+    NULL,
     do_calc,
     enter
 },
 {
-    N_("Clr"),
-    { 0, 0 },
-    { GDK_Delete, 0 },
-    '\177',
+    KEY_CLEAR,
+    NULL,
     do_clear,
     clear
 },
 {
-    N_("Clear entry"),
-    { GDK_CONTROL_MASK, 0,          0 },
-    { GDK_BackSpace,    GDK_Escape, 0 },
-    '\013',
+    KEY_CLEAR_ENTRY,
+    NULL,
     do_clear_entry,
     clear
 },
 {
-    N_("("),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenleft, 0 },
-    '(',
+    KEY_START_BLOCK,
+    "(", /* Do not translate this as the equation solver expects this character always */
     do_paren,
     parenthesis
 },
 {
-    N_(")"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenright, 0 },
-    ')',
+    KEY_END_BLOCK,
+    ")", /* Do not translate this as the equation solver expects this character always */
     do_paren,
     parenthesis
 },
 {
+    KEY_ADD,
     N_("+"),
-    { GDK_SHIFT_MASK, 0,        0,          0 },
-    { GDK_plus,       GDK_plus, GDK_KP_Add, 0 },
-    '+',
     do_calc,
     binop
 },
 {
+    KEY_SUBTRACT,
     N_("-"),
-    { 0,         0,               0,      0 },
-    { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 },
-    '-',
     do_calc,
     unop | binop
 },
 {
+    KEY_MULTIPLY,
     N_("*"),
-    { GDK_SHIFT_MASK, 0,               0,     0,      0 },
-    { GDK_asterisk,   GDK_KP_Multiply, GDK_x, GDK_R6, 0 },
-    '*',
     do_calc,
     binop
 },
 {
+    KEY_DIVIDE,
     N_("/"),
-    { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
-    { GDK_slash, GDK_slash,      GDK_KP_Divide, GDK_R5, GDK_slash,      0 },
-    '/',
     do_calc,
     binop
 },
 {
+    KEY_BACKSPACE,
     NULL,
-    { 0, 0 },
-    { GDK_BackSpace, 0 },
-    '\010',
     do_delete,
     bsp
 },
 {
-    N_("Chs"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_C,          0 },
-    'C',
+    KEY_CHANGE_SIGN,
+    NULL,
     do_immed, 
     neg
 },
 {
+    KEY_INTEGER,
     N_("Int"),
-    { 0, 0 },
-    { GDK_i, 0 },
-    'i',
     do_portion,
     func
 },
 {
+    KEY_FRACTION,
     N_("Frac"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_colon, 0 },
-    ':',
     do_portion,
     func  
 },
 {
+    KEY_PERCENTAGE,
     N_("%"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_percent, 0 },
-    '%',
     do_percent,  
     immediate
 },
 {
+    KEY_SQUARE,
     N_("^2"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_at, 0 },
-    '@',
     do_immed,  
     immediate | postfixop
 },
 {
+    KEY_SQUARE_ROOT,
     N_("Sqrt"),
-    { 0, 0 },   
-    { GDK_s, 0 },
-    's',
     do_immed, 
     func
 },
 {
-    N_("Recip"),
-    { 0, 0 },
-    { GDK_r, 0 },
-    'r',
+    KEY_RECIPROCAL,
+    NULL,
     do_immed, 
     inv
 },
 {
+    KEY_E_POW_X,
     N_("e^"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_braceleft, 0 },
-    '{',
     do_immed, 
     immediate | prefixop
 },
 {
+    KEY_10_POW_X,
     N_("10^"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_braceright, 0 },
-    '}',
     do_immed, 
     prefixop
 },       
 {
+    KEY_X_POW_Y,
     N_("^"),
-    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
-    { GDK_caret,      GDK_asciicircum, 0 },
-    '^',
     do_calc,
     binop | postfixop
 },
 {
+    KEY_FACTORIAL,
     N_("!"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_exclam, 0 },
-    '!',
     do_immed, 
     immediate | postfixop
 },
 {
+    KEY_RANDOM,
     N_("Rand"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_question, 0 },
-    '?',
     do_immed, 
     none
 },
 {
+    KEY_SINE,
     N_("Sin"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_K, 0 },
-    'K',
     do_trig,
     func
 },
 {
+    KEY_COSINE,
     N_("Cos"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_J, 0 },
-    'J',
     do_trig,
     func
 },
-{        
+{
+    KEY_TANGENT,
     N_("Tan"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_L, 0 },
-    'L',
     do_trig,
     func
 },
-{      
+{
+    KEY_NATURAL_LOGARITHM,
     N_("Ln"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_N, 0 },
-    'N',
-    do_immed, 
-    func
-},
-{ 
-    N_("Log"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_G, 0 },
-    'G',
     do_immed, 
     func
 },
 {
+    KEY_LOGARITHM,
+    N_("Log"),
+    do_immed, 
+    func
+},
+{
+    KEY_ABSOLUTE_VALUE,
     /* Note to translators: Abs is short for Absolute. */
     N_("Abs"),
-    { 0, 0 },
-    { GDK_u, 0 },
-    'u',
     do_portion,
     func
 },
 {
+    KEY_MASK_16,
     N_("u16"),
-    { 0, 0 },        
-    { GDK_bracketright, 0 },
-    ']',
     do_immed,  
     func
 },            
 {
+    KEY_MASK_32,
     N_("u32"),
-    { 0, 0 },
-    { GDK_bracketleft, 0 },
-    '[',
     do_immed,  
     func
 },
 {
+    KEY_MODULUS_DIVIDE,
     N_(" Mod "),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_M,          0 },
-    'M',
     do_calc,
     binop
 },
 {
+    KEY_EXPONENTIAL,
     N_("e"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_E,          0 },
-    'E',
     do_expno,
     expnum
 },
 {
+    KEY_NOT,
     N_("~"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_asciitilde, 0 },
-    '~',
     do_immed, 
     unop | immediate
 },
 {
+    KEY_OR,
     N_(" OR "),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_bar, 0 },
-    '|',
     do_calc,
     binop
 },
 {
+    KEY_AND,
     N_(" AND "),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_ampersand, 0 },
-    '&',
     do_calc,
     binop
 },       
 {
+    KEY_XOR,
     N_(" XOR "),
-    { 0, 0 },   
-    { GDK_x, 0 },
-    'x',
     do_calc,
     binop
 },
 {
+    KEY_XNOR,
     N_(" XNOR "),
-    { 0, 0 },
-    { GDK_n, 0 },
-    'n',
     do_calc,
     binop
 },
 {
+    KEY_FINC_CTRM,
     N_("Ctrm"),
-    { 0, 0 },
-    { GDK_m, 0 },
-    'm',
     do_business,
     none
 },
 {
+    KEY_FINC_DDB,
     N_("Ddb"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_D,          0 },
-    'D',
     do_business,
     none
 },
 {
+    KEY_FINC_FV,
     N_("Fv"),
-    { 0, 0 },
-    { GDK_v, 0 },
-    'v',
     do_business,
     none
 },
 {
+    KEY_FINC_PMT,
     N_("Pmt"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_P, 0 },
-    'P',
     do_business,
     none
 },
 {
+    KEY_FINC_PV,
     N_("Pv"),
-    { 0, 0 },
-    { GDK_p, 0 },
-    'p',
     do_business,
     none
 },
 {
+    KEY_FINC_RATE,
     N_("Rate"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_T, 0 },
-    'T',
     do_business,
     none
 },
 {
+    KEY_FINC_SLN,
     N_("Sln"),
-    { 0, 0 },
-    { GDK_l, 0 },
-    'l',
     do_business,
     none
 },
-{ 
+{
+    KEY_FINC_SYD,
     N_("Syd"),
-    { 0, 0 },
-    { GDK_Y, 0 },
-    'Y',
     do_business,
     none
 },
-{ 
+{
+    KEY_FINC_TERM,
     N_("Term"),
-    { 0, 0 },
-    { GDK_T, 0 },
-    'T',
     do_business,
     none
 },
 {
-    N_("<"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_less, 0 },
-    '<',
+    KEY_LEFT_SHIFT,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_(">"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_greater, 0 },
-    '>',
+    KEY_RIGHT_SHIFT,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Sto"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_S, 0 },
-    'S',
+    KEY_STORE,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Rcl"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_R, 0 },
-    'R',
+    KEY_RECALL,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Exch"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_X, 0 },
-    'X',
+    KEY_EXCHANGE,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Acc"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_A,          0 },
-    'A',
+    KEY_ACCURACY_MENU,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Con"),
-    { GDK_SHIFT_MASK, 0,              0 },
-    { GDK_numbersign, GDK_numbersign, 0 },   
-    '#',
+    KEY_CONSTANTS_MENU,
+    NULL,
     do_pending,
     pending
 },
 {
-    N_("Fun"),
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_F,          0 },
-    'F',
+    KEY_FUNCTIONS_MENU,
+    NULL,
     do_pending,
     pending
 },
@@ -708,12 +558,12 @@ do_calctool(int argc, char **argv)
     read_cfdefs();             /* Read constant/function definitions. */
     make_frames();             /* Create gcalctool window frames. */
 
-    v->current    = copy_button_info(button_for_value(buttons[KEY_CALCULATE].value[0]));
+    v->current    = copy_button_info(&buttons[KEY_CALCULATE]);
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
-    v->pending    = 0;         /* No initial pending command. */
+    v->pending    = -1;        /* No initial pending command. */
     v->hyperbolic = 0;         /* Normal trig functions initially. */
     v->inverse    = 0;         /* No inverse functions initially. */
     v->down       = 0;         /* No mouse presses initially. */

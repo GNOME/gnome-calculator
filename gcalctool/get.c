@@ -263,7 +263,6 @@ init_vars()    /* Setup default values for various variables. */
 
     v->error       = 0;            /* No calculator error initially. */
     v->key_exp     = 0;            /* Not entering an exponent number. */
-    v->pending_op  = 0;            /* No pending arithmetic operation. */
     v->titleline   = NULL;         /* No User supplied title line. */
 
     read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */

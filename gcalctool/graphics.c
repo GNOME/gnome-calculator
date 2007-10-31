@@ -36,16 +36,17 @@ handle_menu_selection(struct button *n, int item)
     if (item != -1) {    
         struct exprm_state *e;
 
-	save_pending_values(n);
+	v->pending = n->id;
 	if (v->current != NULL) {
 	    free(v->current);
 	}
 
 	e = get_state();
-	memcpy(&(e->button), button_for_value(item), sizeof(struct button));
+	memcpy(&(e->button), n, sizeof(struct button));
+	e->value = v->current_value;
 	new_state();
 	
-	v->current = copy_button_info(button_for_value(item));
+	v->current = copy_button_info(n);
 	v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
 	do_pending();
 	v->ismenu = 0;

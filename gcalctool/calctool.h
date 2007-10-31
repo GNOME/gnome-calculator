@@ -167,7 +167,6 @@ enum
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 
 #define INC            { argc--; argv++; }
-#define IS_KEY(v, n)   (v == n)
 
 #ifndef LINT_CAST
 #ifdef  lint
@@ -192,18 +191,12 @@ enum
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
-#define MAXEXTRAS      8          /* Maximum number of keysym alternates. */
 #define MAXMODES       4          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
 #define MAXSTACK       256        /* Parenthese stack size. */
 #define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
-#define MAXVKEYS       1          /* Number of valid keys after an error. */
 #define MAXSYNTAX      2          /* Number of syntaxes in calculator */
 #define MAXBITCALC     2          /* Choices for bitcalculating */
-
-#define MCOLS          8          /* Number of columns of "special" keys. */
-#define MROWS          2          /* Number of rows of "special" keys. */
-#define MODEKEYS       MCOLS * MROWS
 
 #ifndef MIN
 #define MIN(x,y)       ((x) < (y) ? (x) : (y))
@@ -252,9 +245,6 @@ enum button_flags {
     prefixop     = (1 << 15),  /* Unary prefix operation */
     dpoint       = (1 << 16),  /* Decimal point */
     pending      = (1 << 17),  /* Is a pending button */
-    hex          = (1 << 18),  /* Is a hex button A..F */
-    oct_set      = (1 << 19),  /* Is a oct button 0..7 */
-    bin_set      = (1 << 20)   /* Is a bin button 0..1 */
 };
 
 enum shiftd {
@@ -268,16 +258,15 @@ enum syntax {
 };
 
 struct button {
+    int id;
     char *symname;           /* Expression function name */
-    guint mods[MAXEXTRAS];   /* Keyboard modifiers (Shift, Ctrl, ...). */
-    guint value[MAXEXTRAS];  /* Button keyboard equivalents. */
-    char func_char;          /* Unique function string character. */
     void (*func)();          /* Function to obey on button press. */
     enum button_flags flags; /* Misc flags */
 };
 
 struct exprm_state {       /* Expression mode state */
     struct button button;  /* Current button/character pressed. */
+    int value;
     int ans[MP_SIZE];      /* Previously calculated answer */
     char *expression;      /* Expression entered by user */
 };
@@ -300,7 +289,6 @@ struct menu {
 struct calcVars {                      /* Calctool variables and options. */
     struct exprm_state_history h;      /* History of expression mode states */
 
-    struct button *pending_but;        /* Button info. for pending op. */
     struct button *current;            /* Current button/character pressed. */
   
     char *appname;                     /* Application name for resources. */
@@ -345,7 +333,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     int accuracy;      /* Number of digits precision (Max 9). */
     int beep;          /* Indicates whether there is a beep sound on error. */
-    int cur_ch;        /* Current character if keyboard event. */
     int cur_op;        /* Current arithmetic operation. */
     int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int down;          /* Indicates is a mouse button is down. */
@@ -366,7 +353,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
     int opstack[MAXSTACK];  /* Stack containing parentheses input. */
     int pending;            /* Set for command depending on multiple presses. */
-    int pending_op;    /* Arithmetic operation for pending command. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
@@ -376,6 +362,8 @@ struct calcVars {                      /* Calctool variables and options. */
     int toclear;       /* Indicates if display should be cleared. */
     int warn_change_mode;    /* Should we warn user when changing modes? */
     int bitcalculating_mode;  /* 0 = no, else yes */
+    
+    int current_value; // FIXME
 };
 
 typedef struct calcVars *Vars;
@@ -390,7 +378,6 @@ typedef struct calcVars *Vars;
 #define dmax(a, b)  (double) max(a, b)
 #define dmin(a, b)  (double) min(a, b)
 
-struct button *button_for_fc(char);
 struct button *button_for_value(int);
 struct button *copy_button_info(struct button *);
 
@@ -417,7 +404,6 @@ int do_sto_reg(int reg, int value[MP_SIZE]);
 int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 int get_int_resource(enum res_type, int *);
 int get_menu_entry(enum menu_type, int);
-int key_equal(struct button *, struct button);
 int main(int, char **);
 
 void beep();
@@ -478,7 +464,6 @@ void read_cfdefs();
 void read_resources();
 void read_str(char **, char *);
 void refresh_display();
-void save_pending_values(struct button *);
 void save_resources();
 void set_accuracy_menu_item(int);
 void set_accuracy_tooltip(int);

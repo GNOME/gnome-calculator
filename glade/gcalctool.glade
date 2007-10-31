@@ -20,7 +20,6 @@
   <property name="urgency_hint">False</property>
   <signal name="delete_event" handler="quit_cb"/>
   <signal name="key_press_event" handler="kframe_key_press_cb"/>
-  <signal name="key_release_event" handler="kframe_key_release_cb"/>
 
   <child>
     <widget class="GtkVBox" id="kvbox">
@@ -404,7 +403,7 @@
 		<widget class="GtkTextView" id="displayitem">
 		  <property name="border_width">2</property>
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
+		  <property name="can_focus">False</property>
 		  <property name="editable">True</property>
 		  <property name="overwrite">False</property>
 		  <property name="accepts_tab">True</property>
@@ -417,7 +416,7 @@
 		  <property name="left_margin">0</property>
 		  <property name="right_margin">6</property>
 		  <property name="indent">0</property>
-		  <property name="text" translatable="yes">5</property>
+		  <property name="text" translatable="no"></property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Result Region</atkproperty>
 		  </accessibility>
@@ -803,15 +802,14 @@
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Sum-of-the years'-digits depreciation [Y]</property>
-	      <property name="can_focus">True</property>
+	      <property name="tooltip" translatable="yes">Sum-of-the years'-digits depreciation [y]</property>
 	      <property name="label" translatable="yes">Syd</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Sum-of-the years'-digits depreciation</atkproperty>
-		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sum-of-the years'-digits depreciation [Y]</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Sum-of-the years'-digits depreciation [y]</atkproperty>
 	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
@@ -829,11 +827,10 @@
 	    <widget class="GtkButton" id="calc_finc_straight_line_depreciation_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Straight-line depreciation [l]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Sln</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Straight-line depreciation</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Straight-line depreciation [l]</atkproperty>
@@ -854,11 +851,10 @@
 	    <widget class="GtkButton" id="calc_finc_periodic_interest_rate_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Periodic interest rate [T]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Rate</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Periodic interest rate</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic interest rate [T]</atkproperty>
@@ -879,11 +875,10 @@
 	    <widget class="GtkButton" id="calc_finc_present_value_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Present value [p]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Pv</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Present value</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Present value [p]</atkproperty>
@@ -904,11 +899,10 @@
 	    <widget class="GtkButton" id="calc_finc_periodic_payment_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Periodic payment [P]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Pmt</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Periodic payment</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Periodic payment [P]</atkproperty>
@@ -929,11 +923,10 @@
 	    <widget class="GtkButton" id="calc_finc_future_value_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Future value [v]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Fv</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Future value</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Future value [v]</atkproperty>
@@ -954,11 +947,10 @@
 	    <widget class="GtkButton" id="calc_finc_double_declining_depreciation_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Double-declining depreciation [D]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Ddb</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Double-declining depreciation</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Double-declining depreciation [D]</atkproperty>
@@ -979,11 +971,10 @@
 	    <widget class="GtkButton" id="calc_finc_compounding_term_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Compounding term [m]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Ctrm</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Compounding term</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Compounding term [m]</atkproperty>
@@ -1004,11 +995,10 @@
 	    <widget class="GtkButton" id="calc_finc_term_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Payment period [t]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Term</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Payment period</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Payment period [t]</atkproperty>
@@ -4004,11 +3994,10 @@
 	    <widget class="GtkButton" id="calc_d_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit D [d]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">D</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit D</atkproperty>
 	      </accessibility>
@@ -4028,9 +4017,8 @@
 	    <widget class="GtkButton" id="calc_functions_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">User-defined functions [F]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">User-defined functions</atkproperty>
 	      </accessibility>
@@ -4105,9 +4093,8 @@
 	    <widget class="GtkButton" id="calc_shift_left_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the left [&lt;]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift left</atkproperty>
 	      </accessibility>
@@ -4182,9 +4169,8 @@
 	    <widget class="GtkButton" id="calc_shift_right_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the right [&gt;]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift right</atkproperty>
 	      </accessibility>
@@ -4259,9 +4245,8 @@
 	    <widget class="GtkButton" id="calc_constants_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Constants [#]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Constants</atkproperty>
 	      </accessibility>
@@ -4336,9 +4321,8 @@
 	    <widget class="GtkButton" id="calc_accuracy_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Set accuracy from 0 to 9 numeric places [A]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Accuracy</atkproperty>
 	      </accessibility>
@@ -4412,11 +4396,10 @@
 	    <widget class="GtkButton" id="calc_modulus_divide_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Mod</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Modulus Division</atkproperty>
 	      </accessibility>
@@ -4436,11 +4419,10 @@
 	    <widget class="GtkButton" id="calc_random_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Random number in the range 0.0 to 1.0 [?]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes" comments="Random number">Rand</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Random number</atkproperty>
 	      </accessibility>
@@ -4460,11 +4442,10 @@
 	    <widget class="GtkButton" id="calc_xor_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise XOR [x]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">XOR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XOR</atkproperty>
 	      </accessibility>
@@ -4484,11 +4465,10 @@
 	    <widget class="GtkButton" id="calc_xnor_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise XNOR [n]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">XNOR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XNOR</atkproperty>
 	      </accessibility>
@@ -4508,11 +4488,10 @@
 	    <widget class="GtkButton" id="calc_logarithm_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Log</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Base 10 Log</atkproperty>
 	      </accessibility>
@@ -4532,11 +4511,10 @@
 	    <widget class="GtkButton" id="calc_natural_logarithm_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Natural log [N]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Ln</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Natural log</atkproperty>
 	      </accessibility>
@@ -4556,11 +4534,10 @@
 	    <widget class="GtkButton" id="calc_tangent_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Tangent [L]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Tan</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Tangent</atkproperty>
 	      </accessibility>
@@ -4580,11 +4557,10 @@
 	    <widget class="GtkButton" id="calc_not_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise NOT [~]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">NOT</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise NOT</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise NOT [~]</atkproperty>
@@ -4605,11 +4581,10 @@
 	    <widget class="GtkButton" id="calc_and_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise AND [&amp;]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">AND</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise AND</atkproperty>
 	      </accessibility>
@@ -4629,11 +4604,10 @@
 	    <widget class="GtkButton" id="calc_sine_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Sine [K]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Sin</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Sine</atkproperty>
 	      </accessibility>
@@ -4653,11 +4627,10 @@
 	    <widget class="GtkButton" id="calc_mask_32_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">32 bit unsigned integer</atkproperty>
 	      </accessibility>
@@ -4677,11 +4650,10 @@
 	    <widget class="GtkButton" id="calc_or_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise OR [|]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">OR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise OR</atkproperty>
 	      </accessibility>
@@ -4701,11 +4673,10 @@
 	    <widget class="GtkButton" id="calc_cosine_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Cosine [J]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">Cos</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Cosine</atkproperty>
 	      </accessibility>
@@ -4725,11 +4696,10 @@
 	    <widget class="GtkButton" id="calc_mask_16_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">16-bit unsigned integer value of display (])</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes" comments="16 bit unsigned integer">&amp;16</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">16 bit unsigned integer</atkproperty>
 	      </accessibility>
@@ -4749,11 +4719,10 @@
 	    <widget class="GtkButton" id="calc_exponential_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Exponential</atkproperty>
 	      </accessibility>
@@ -4773,11 +4742,10 @@
 	    <widget class="GtkButton" id="calc_f_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit F [f]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">F</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit F</atkproperty>
 	      </accessibility>
@@ -4797,11 +4765,10 @@
 	    <widget class="GtkButton" id="calc_c_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit C [c]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">C</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit C</atkproperty>
 	      </accessibility>
@@ -4821,11 +4788,10 @@
 	    <widget class="GtkButton" id="calc_b_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit B [b]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">B</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit B</atkproperty>
 	      </accessibility>
@@ -4845,11 +4811,10 @@
 	    <widget class="GtkButton" id="calc_e_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit E [e]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">E</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit E</atkproperty>
 	      </accessibility>
@@ -4869,11 +4834,10 @@
 	    <widget class="GtkButton" id="calc_a_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Hexadecimal digit A [a]</property>
-	      <property name="can_focus">True</property>
 	      <property name="label" translatable="yes">A</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit A</atkproperty>
 	      </accessibility>
@@ -4893,9 +4857,8 @@
 	    <widget class="GtkButton" id="calc_pow_e_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">e to the power of displayed value [{]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">E to the x</atkproperty>
 	      </accessibility>
@@ -4939,9 +4902,8 @@
 	    <widget class="GtkButton" id="calc_factorial_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Factorial of displayed value [!]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">Factorial</atkproperty>
 		<atkproperty name="AtkObject::accessible_description" translatable="yes">Factorial</atkproperty>
@@ -4986,9 +4948,8 @@
 	    <widget class="GtkButton" id="calc_x_pow_y_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Raise displayed value to the power of y [^]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">X to the y</atkproperty>
 	      </accessibility>
@@ -5032,9 +4993,8 @@
 	    <widget class="GtkButton" id="calc_pow_10_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">10 to the power of displayed value [}]</property>
-	      <property name="can_focus">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
+	      <property name="focus_on_click">False</property>
 	      <accessibility>
 		<atkproperty name="AtkObject::accessible_name" translatable="yes">10 to the x</atkproperty>
 	      </accessibility>
@@ -5104,11 +5064,10 @@
 		<widget class="GtkButton" id="calc_backspace_simple_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Backspace</atkproperty>
 		  </accessibility>
@@ -5128,11 +5087,10 @@
 		<widget class="GtkButton" id="calc_change_sign_simple_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Change Sign [C]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Change sign</atkproperty>
 		  </accessibility>
@@ -5152,11 +5110,10 @@
 		<widget class="GtkButton" id="calc_clear_simple_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear</atkproperty>
 		  </accessibility>
@@ -5176,11 +5133,10 @@
 		<widget class="GtkButton" id="calc_clear_entry_simple_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Clear displayed value</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes">CE</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear entry</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Clear</atkproperty>
@@ -5220,11 +5176,10 @@
 		<widget class="GtkButton" id="calc_start_group_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Start group of calculations</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Left bracket">(</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Left bracket</atkproperty>
 		  </accessibility>
@@ -5244,9 +5199,8 @@
 		<widget class="GtkButton" id="calc_reciprocal_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Reciprocal [r]</property>
-		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Reciprocal</atkproperty>
 		  </accessibility>
@@ -5290,11 +5244,10 @@
 		<widget class="GtkButton" id="calc_percentage_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Percentage</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a percentage sign">%</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Percentage</atkproperty>
 		  </accessibility>
@@ -5314,11 +5267,10 @@
 		<widget class="GtkButton" id="calc_end_group_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">End group of calculations</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Right bracket">)</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Right bracket</atkproperty>
 		  </accessibility>
@@ -5338,11 +5290,10 @@
 		<widget class="GtkButton" id="calc_backspace_advanced_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Backspace</atkproperty>
 		  </accessibility>
@@ -5362,11 +5313,10 @@
 		<widget class="GtkButton" id="calc_change_sign_advanced_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Change Sign [C]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Change sign</atkproperty>
 		  </accessibility>
@@ -5386,11 +5336,10 @@
 		<widget class="GtkButton" id="calc_sqrt_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Square root [s]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a square root sign">√</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Square root</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Square root [s]</atkproperty>
@@ -5411,11 +5360,10 @@
 		<widget class="GtkButton" id="calc_abs_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Absolute value [u]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Abs is short for Absolute">Abs</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Absolute value</atkproperty>
 		  </accessibility>
@@ -5435,11 +5383,10 @@
 		<widget class="GtkButton" id="calc_fractional_portion_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Fractional portion of displayed value [:]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Fractional portion">Frac</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Fractional portion</atkproperty>
 		  </accessibility>
@@ -5459,11 +5406,10 @@
 		<widget class="GtkButton" id="calc_integer_portion_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Integer portion of displayed value [i]</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Integer portion">Int</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Integer portion</atkproperty>
 		  </accessibility>
@@ -5483,11 +5429,10 @@
 		<widget class="GtkButton" id="calc_clear_entry_advanced_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Clear displayed value</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes">CE</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear entry</atkproperty>
 		  </accessibility>
@@ -5507,9 +5452,8 @@
 		<widget class="GtkButton" id="calc_exchange_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Exchange displayed value with memory register [X]</property>
-		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Exchange with register</atkproperty>
 		  </accessibility>
@@ -5584,9 +5528,8 @@
 		<widget class="GtkButton" id="calc_recall_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Retrieve memory register to display [R]</property>
-		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Retreive from register</atkproperty>
 		  </accessibility>
@@ -5661,11 +5604,10 @@
 		<widget class="GtkButton" id="calc_clear_advanced_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Clear</atkproperty>
 		  </accessibility>
@@ -5685,9 +5627,8 @@
 		<widget class="GtkButton" id="calc_store_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Store displayed value in memory register [S]</property>
-		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Store to register</atkproperty>
 		  </accessibility>
@@ -5762,9 +5703,8 @@
 		<widget class="GtkButton" id="calc_square_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Square [@]</property>
-		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Square</atkproperty>
 		  </accessibility>
@@ -5826,11 +5766,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_4_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 4">4</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 4</atkproperty>
 		  </accessibility>
@@ -5849,11 +5788,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_7_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 7">7</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 7</atkproperty>
 		  </accessibility>
@@ -5872,11 +5810,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_8_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 8">8</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 8</atkproperty>
 		  </accessibility>
@@ -5895,11 +5832,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_9_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 9">9</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 9</atkproperty>
 		  </accessibility>
@@ -5918,11 +5854,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_5_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 5">5</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 5</atkproperty>
 		  </accessibility>
@@ -5941,11 +5876,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_6_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 6">6</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 6</atkproperty>
 		  </accessibility>
@@ -5965,11 +5899,10 @@
 		<widget class="GtkButton" id="calc_divide_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Divide</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="this is a division sign (÷)">÷</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Divide</atkproperty>
 		  </accessibility>
@@ -5988,11 +5921,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_1_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 1">1</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 1</atkproperty>
 		  </accessibility>
@@ -6011,11 +5943,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_2_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 2">2</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 2</atkproperty>
 		  </accessibility>
@@ -6034,11 +5965,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_0_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 0">0</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 0</atkproperty>
 		  </accessibility>
@@ -6058,11 +5988,10 @@
 		<widget class="GtkButton" id="calc_numeric_point_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Numeric point</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric point">.</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric point</atkproperty>
 		  </accessibility>
@@ -6082,11 +6011,10 @@
 		<widget class="GtkButton" id="calc_result_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Calculate result</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is the calculate result button (=)">=</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Calculate result</atkproperty>
 		  </accessibility>
@@ -6105,11 +6033,10 @@
 	      <child>
 		<widget class="GtkButton" id="calc_3_button">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="Numeric 3">3</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Numeric 3</atkproperty>
 		  </accessibility>
@@ -6129,11 +6056,10 @@
 		<widget class="GtkButton" id="calc_multiply_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Multiply</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a multiplication sign (*)">×</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Multiply</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Multiply</atkproperty>
@@ -6154,11 +6080,10 @@
 		<widget class="GtkButton" id="calc_subtract_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Subtract</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes" comments="This is a minus sign (-)">−</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Subtract</atkproperty>
 		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Subtract</atkproperty>
@@ -6179,11 +6104,10 @@
 		<widget class="GtkButton" id="calc_add_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Add</property>
-		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes">+</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
+		  <property name="focus_on_click">False</property>
 		  <accessibility>
 		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Add</atkproperty>
 		  </accessibility>
