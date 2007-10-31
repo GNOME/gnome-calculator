@@ -66,19 +66,8 @@ char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 Vars v;            /* Calctool variables and options. */
 
-/*  This table shows the keyboard values that are currently being used:
- *
- *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
- *-----------+-----------------------------------------------------
- *  Lower:   |  a b c d e f     i     l m n   p   r s t u v   x
- *  Upper:   |  A   C D E F G     J K L M N   P   R S T       X Y
- *  Numeric: |  0 1 2 3 4 5 6 7 8 9
- *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
- *           |  BackSpace Delete Return
- *-----------+-----------------------------------------------------
- */
-
 // FIXME: Sort this list
+// FIXME: Stop being translatable (parser would break)
 struct button buttons[NKEYS] = {
 
 /* id,

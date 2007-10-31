@@ -81,8 +81,18 @@ enum {
     BUT_EXCHANGE
 };
 
-
-
+/*  This table shows the keyboard values that are currently being used:
+ *
+ *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
+ *-----------+-----------------------------------------------------
+ *  Lower:   |  a b c d e f     i     l m n   p   r s t u v   x
+ *  Upper:   |  A   C D E F G     J K L M N   P   R S T       X Y
+ *  Numeric: |  0 1 2 3 4 5 6 7 8 9
+ *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
+ *           |  BackSpace Delete Return
+ *-----------+-----------------------------------------------------
+ */
+    
 struct button_widget button_widgets[] = {
     {KEY_0,                  "0", M_NONE,
     { 0,     GDK_SHIFT_MASK, 0,        0,             0 },
