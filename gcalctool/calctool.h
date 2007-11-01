@@ -65,10 +65,6 @@ enum fcp_type  { FCP_KEY, FCP_REG, FCP_MODE };
 enum item_type { BASEITEM, TTYPEITEM, NUMITEM,
                  HYPITEM,  INVITEM,   OPITEM,  MODEITEM };
 
-/* Popup menu types. */
-enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
-                 M_RCL,  M_RSHF, M_STO, M_NONE };
-
 /* Calculator modes. */
 enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
 
@@ -158,9 +154,9 @@ enum
     KEY_STORE,
     KEY_RECALL,
     KEY_EXCHANGE,
-    KEY_ACCURACY_MENU,
-    KEY_CONSTANTS_MENU,
-    KEY_FUNCTIONS_MENU,
+    KEY_SET_ACCURACY,
+    KEY_CONSTANT,
+    KEY_FUNCTION,
     NKEYS
 };
 
@@ -179,15 +175,11 @@ enum
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
-/* Maximum number of various graphics pieces. */
-#define MAXITEMS       8          /* Maximum number of panel items. */
-#define MAXMENUS       9          /* Maximum number of popup menus. */
-
 #ifndef MAXLINE
 #define MAXLINE        512        /* Length of character strings. */
 #endif /*MAXLINE*/
 
-#define MAXACC         99     /* Max. number of digits after numeric point. */
+#define MAXACC         99         /* Max. number of digits after numeric point. */
 #define MAXBASES       4          /* Maximum number of numeric bases. */
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
 #define MAXDISPMODES   3          /* Maximum number of display modes. */
@@ -224,13 +216,8 @@ typedef unsigned long  BOOLEAN;
 
 enum button_flags {
     none         = 0,          /* No flags */
-    binop        = 1,          /* Is binary operation ie. A op B */ 
-    unop         = (1 << 1),   /* Is unary operation ie. op A. */
     enter        = (1 << 2),   /* Expression is entered */
     number       = (1 << 3),   /* Number button */
-    immediate    = (1 << 4),   /* Button does immediate function */
-
-    parenthesis  = (1 << 5),   /* Parenthesis */
     func         = (1 << 6),   /* Function */
     bsp          = (1 << 7),   /* Backspace */
     clear        = (1 << 8),   /* Clear display */
@@ -241,8 +228,7 @@ enum button_flags {
     expnum       = (1 << 13),  /* Exponential number */
     postfixop    = (1 << 14),  /* Unary postfix operation */
     prefixop     = (1 << 15),  /* Unary prefix operation */
-    dpoint       = (1 << 16),  /* Decimal point */
-    pending      = (1 << 17),  /* Is a pending button */
+    dpoint       = (1 << 16)   /* Decimal point */
 };
 
 enum shiftd {
@@ -287,7 +273,7 @@ struct menu {
 struct calcVars {                      /* Calctool variables and options. */
     struct exprm_state_history h;      /* History of expression mode states */
 
-    struct button *current;            /* Current button/character pressed. */
+    int current;                       /* Current button/character pressed. */
   
     char *appname;                     /* Application name for resources. */
     char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
@@ -333,7 +319,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_op;        /* Current arithmetic operation. */
     int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
-    int down;          /* Indicates is a mouse button is down. */
     int error;         /* Indicates some kind of display error. */
     int ghost_zero;    /* Flag to indicate display with "0", actually 
                            having empty content. */
@@ -341,7 +326,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int hyperbolic;    /* If set, trig functions will be hyperbolic. */
     int iconic;        /* Set if window is currently iconic. */
     int inverse;       /* If set, trig and log functions will be inversed. */
-    int ismenu;        /* Set when do_pending called via a popup menu. */
     int key_exp;       /* Set if entering exponent number. */
     int ndisplay;      /* Height of the numerical display. */
     int new_input;     /* New number input since last op. */
@@ -350,7 +334,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int old_cal_value;      /* Previous calculation operator. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
     int opstack[MAXSTACK];  /* Stack containing parentheses input. */
-    int pending;            /* Set for command depending on multiple presses. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
@@ -360,8 +343,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int toclear;       /* Indicates if display should be cleared. */
     int warn_change_mode;    /* Should we warn user when changing modes? */
     int bitcalculating_mode;  /* 0 = no, else yes */
-    
-    int current_value; // FIXME
 };
 
 typedef struct calcVars *Vars;
@@ -377,7 +358,6 @@ typedef struct calcVars *Vars;
 #define dmin(a, b)  (double) min(a, b)
 
 struct button *button_for_value(int);
-struct button *copy_button_info(struct button *);
 
 void syntaxdep_show_display();
 char *button_str(int);
@@ -396,12 +376,10 @@ unsigned short *get_but_data();
 
 int button_mods(int);
 int button_value(int);
-int char_val(char);
 int do_rcl_reg(int reg, int value[MP_SIZE]);
 int do_sto_reg(int reg, int value[MP_SIZE]);
 int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 int get_int_resource(enum res_type, int *);
-int get_menu_entry(enum menu_type, int);
 int main(int, char **);
 
 void beep();
@@ -425,7 +403,14 @@ void do_mode(int);
 void do_none();
 void do_number();
 void do_paren();
-void do_pending();
+void do_lshift();
+void do_rshift();
+void do_sto();
+void do_rcl();
+void do_exchange();
+void do_accuracy();
+void do_constant();
+void do_function();
 void do_point();
 void do_portion();
 void do_trig();
@@ -437,7 +422,6 @@ void get_constant(int);
 void get_function(int);
 void get_options(int, char **);
 void grey_buttons(enum base_type);
-void handle_menu_selection(struct button *, int);
 void initialise();
 void init_args();
 void init_frame_sizes();
@@ -453,7 +437,7 @@ void make_registers();
 void mperr();
 void MPstr_to_num(char *, enum base_type, int *);
 void paren_disp(int);
-void process_item(struct button *);
+void process_item(struct button *, int);
 void process_str(char *);
 void push_num(int *);
 void push_op(int);
@@ -477,7 +461,6 @@ void set_title(enum fcp_type, char *);
 void show_change_mode_dialog();
 void show_display(int *);
 void show_error(char *);
-void show_menu();
 void srand48();
 void start_tool();
 void str_replace(char **, char *, char *);

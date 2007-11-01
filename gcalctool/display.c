@@ -91,7 +91,7 @@ localize_number(char *dest, const char *src)
 }
 
 
-int
+static int
 char_val(char chr)
 {
     if (chr >= '0' && chr <= '9') {
@@ -131,22 +131,6 @@ clear_display(int initialise)
 }
 
 
-/* FIXME: not a right location for this function. */
-
-struct button *
-copy_button_info(struct button *old)
-{
-    struct button *new;
-
-    int len = sizeof(struct button);
-    new = malloc(sizeof(struct button));
-    assert(new);
-    memcpy(new, old, len);
-
-    return(new);
-}
-
-
 void
 initialise()
 {
@@ -158,7 +142,6 @@ initialise()
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = -1;         /* No arithmetic operator defined yet. */
     v->old_cal_value = -1;
-    v->pending       = -1;
     i = 0;
     mpcim(&i, v->MPresult);         /* No previous result yet. */
     mpcim(&i, v->MPdisp_val);         
@@ -484,12 +467,10 @@ paren_disp(int key)
 
     n = strlen(v->display);
     text = buttons[key].symname;
-    switch (key)
-    {
+    switch (key) {
     case -1:
     case KEY_CLEAR:
         v->noparens = v->opsptr = v->numsptr = 0;
-        v->pending = -1;
         v->cur_op = -1;
         i = 0;
         mpcim(&i, v->MPdisp_val);
@@ -506,14 +487,13 @@ paren_disp(int key)
             v->noparens--;
             if (!v->noparens) {
                 v->opsptr = v->numsptr = 0;
-                v->pending = -1;
                 v->cur_op = -1;
                 show_display(v->MPdisp_val);
                 return;
             }
         } else if (v->display[n-1] == ')') v->noparens++;
         v->display[n-1] = '\0';
-	break;
+        break;
 
     case KEY_START_BLOCK:
 
@@ -546,29 +526,26 @@ paren_disp(int key)
 
 
 void
-process_item(struct button *button)
+process_item(struct button *button, int arg)
 {
-    if (v->current != NULL) {
-        free(v->current);
-    }
-    v->current = copy_button_info(button);
+    v->current = button->id;
 
     if (v->error) {
         /* Must press a valid key first. */
-	if (v->current->id != KEY_CLEAR) {
+        if (v->current != KEY_CLEAR) {
             return;
         }
         set_error_state(FALSE);
     }
-
-    if (v->pending >= 0) {
-        buttons[v->pending].func();
+    
+    if (v->noparens > 0) {
+        do_paren();
         return;
     }
 
     STRCPY(v->opstr, v->op_item_text);
 
-    (*button->func)();
+    (*button->func)(arg);
 }
 
 
@@ -590,14 +567,15 @@ void
 refresh_display()
 {
     char localized[MAX_LOCALIZED];
+    struct exprm_state *e;
 
     switch (v->syntax) {
         case npa:
             show_display(v->MPdisp_val);
             break;
 
-        case exprs: {
-	    struct exprm_state *e = get_state();
+        case exprs:
+            e = get_state();
 
             if (e->expression && strlen(e->expression)) {
                 char *str = gc_strdup(e->expression);
@@ -631,8 +609,7 @@ refresh_display()
                 show_display(MP1);
                 v->ghost_zero = 1;
             }
-        }    
-        break;
+            break;
 
         default:
             assert(0);

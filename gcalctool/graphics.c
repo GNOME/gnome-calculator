@@ -28,32 +28,6 @@
 #include "lr_parser.h"
 #include "functions.h"
 
-/* Process menu selection. */
-
-void
-handle_menu_selection(struct button *n, int item)
-{
-    if (item != -1) {    
-        struct exprm_state *e;
-
-	v->pending = n->id;
-	if (v->current != NULL) {
-	    free(v->current);
-	}
-
-	e = get_state();
-	memcpy(&(e->button), n, sizeof(struct button));
-	e->value = v->current_value;
-	new_state();
-	
-	v->current = copy_button_info(n);
-	v->ismenu = 1;       /* To prevent grey buttons being redrawn. */
-	do_pending();
-	v->ismenu = 0;
-	v->down = 0;
-    }
-}
-
 
 void
 make_registers()            /* Calculate memory register frame values. */

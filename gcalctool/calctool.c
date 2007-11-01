@@ -200,37 +200,37 @@ struct button buttons[NKEYS] = {
     KEY_START_BLOCK,
     "(", /* Do not translate this as the equation solver expects this character always */
     do_paren,
-    parenthesis
+    none
 },
 {
     KEY_END_BLOCK,
     ")", /* Do not translate this as the equation solver expects this character always */
     do_paren,
-    parenthesis
+    none
 },
 {
     KEY_ADD,
     N_("+"),
     do_calc,
-    binop
+    none
 },
 {
     KEY_SUBTRACT,
     N_("-"),
     do_calc,
-    unop | binop
+    none
 },
 {
     KEY_MULTIPLY,
     N_("*"),
     do_calc,
-    binop
+    none
 },
 {
     KEY_DIVIDE,
     N_("/"),
     do_calc,
-    binop
+    none
 },
 {
     KEY_BACKSPACE,
@@ -260,13 +260,13 @@ struct button buttons[NKEYS] = {
     KEY_PERCENTAGE,
     N_("%"),
     do_percent,  
-    immediate
+    none
 },
 {
     KEY_SQUARE,
     N_("^2"),
     do_immed,  
-    immediate | postfixop
+    postfixop
 },
 {
     KEY_SQUARE_ROOT,
@@ -284,7 +284,7 @@ struct button buttons[NKEYS] = {
     KEY_E_POW_X,
     N_("e^"),
     do_immed, 
-    immediate | prefixop
+    prefixop
 },
 {
     KEY_10_POW_X,
@@ -296,13 +296,13 @@ struct button buttons[NKEYS] = {
     KEY_X_POW_Y,
     N_("^"),
     do_calc,
-    binop | postfixop
+    postfixop
 },
 {
     KEY_FACTORIAL,
     N_("!"),
     do_immed, 
-    immediate | postfixop
+    postfixop
 },
 {
     KEY_RANDOM,
@@ -363,7 +363,7 @@ struct button buttons[NKEYS] = {
     KEY_MODULUS_DIVIDE,
     N_(" Mod "),
     do_calc,
-    binop
+    none
 },
 {
     KEY_EXPONENTIAL,
@@ -375,31 +375,31 @@ struct button buttons[NKEYS] = {
     KEY_NOT,
     N_("~"),
     do_immed, 
-    unop | immediate
+    none
 },
 {
     KEY_OR,
     N_(" OR "),
     do_calc,
-    binop
+    none
 },
 {
     KEY_AND,
     N_(" AND "),
     do_calc,
-    binop
+    none
 },       
 {
     KEY_XOR,
     N_(" XOR "),
     do_calc,
-    binop
+    none
 },
 {
     KEY_XNOR,
     N_(" XNOR "),
     do_calc,
-    binop
+    none
 },
 {
     KEY_FINC_CTRM,
@@ -458,50 +458,50 @@ struct button buttons[NKEYS] = {
 {
     KEY_LEFT_SHIFT,
     NULL,
-    do_pending,
-    pending
+    do_lshift,
+    none
 },
 {
     KEY_RIGHT_SHIFT,
     NULL,
-    do_pending,
-    pending
+    do_rshift,
+    none
 },
 {
     KEY_STORE,
     NULL,
-    do_pending,
-    pending
+    do_sto,
+    none
 },
 {
     KEY_RECALL,
     NULL,
-    do_pending,
-    pending
+    do_rcl,
+    regrcl
 },
 {
     KEY_EXCHANGE,
     NULL,
-    do_pending,
-    pending
+    do_exchange,
+    none
 },
 {
-    KEY_ACCURACY_MENU,
+    KEY_SET_ACCURACY,
     NULL,
-    do_pending,
-    pending
+    do_accuracy,
+    none
 },
 {
-    KEY_CONSTANTS_MENU,
+    KEY_CONSTANT,
     NULL,
-    do_pending,
-    pending
+    do_constant,
+    con
 },
 {
-    KEY_FUNCTIONS_MENU,
+    KEY_FUNCTION,
     NULL,
-    do_pending,
-    pending
+    do_function,
+    none
 },
 };
 
@@ -547,15 +547,13 @@ do_calctool(int argc, char **argv)
     read_cfdefs();             /* Read constant/function definitions. */
     make_frames();             /* Create gcalctool window frames. */
 
-    v->current    = copy_button_info(&buttons[KEY_CALCULATE]);
+    v->current    = KEY_CALCULATE;
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
-    v->pending    = -1;        /* No initial pending command. */
     v->hyperbolic = 0;         /* Normal trig functions initially. */
     v->inverse    = 0;         /* No inverse functions initially. */
-    v->down       = 0;         /* No mouse presses initially. */
     v->warn_change_mode = 1;   /* Warn user when changing modes. */
 
     srand48((long) time((time_t *) 0));   /* Seed random number generator. */

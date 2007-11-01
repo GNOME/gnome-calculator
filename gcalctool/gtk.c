@@ -42,6 +42,12 @@
 #include "ce_parser.h"
 #include "mpmath.h"
 
+/* Popup menu types. */
+/* FIXME: This enum could be removed */
+enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
+                 M_RCL,  M_RSHF, M_STO, M_NONE };
+#define MAXMENUS       9          /* Maximum number of popup menus. */
+
 #define MAX_ACCELERATORS 8
 struct button_widget {
     int key;
@@ -49,35 +55,6 @@ struct button_widget {
     enum menu_type mtype;
     guint accelerator_mods[MAX_ACCELERATORS];
     guint accelerator_keys[MAX_ACCELERATORS];
-};
-
-enum {
-    BUT_0,
-    BUT_1,
-    BUT_2,
-    BUT_3,
-    BUT_4,
-    BUT_5,
-    BUT_6,
-    BUT_7,
-    BUT_8,
-    BUT_9,
-    BUT_A,
-    BUT_B,
-    BUT_C,
-    BUT_D,
-    BUT_E,
-    BUT_F,
-    BUT_CLEAR_BASIC,
-    BUT_CLEAR_ADVANCED,
-    BUT_LEFT_SHIFT,
-    BUT_RIGHT_SHIFT,
-    BUT_ACCURACY_MENU,
-    BUT_CONSTANTS_MENU,
-    BUT_FUNCTIONS_MENU,
-    BUT_STORE,
-    BUT_RECALL,
-    BUT_EXCHANGE
 };
 
 /*  This table shows the keyboard values that are currently being used:
@@ -173,15 +150,15 @@ static struct button_widget button_widgets[] = {
     { GDK_SHIFT_MASK, 0 },
     { GDK_greater, 0 }},
 
-    {KEY_ACCURACY_MENU,      "accuracy", M_ACC,
+    {KEY_SET_ACCURACY,       "accuracy", M_ACC,
     { GDK_SHIFT_MASK, 0 },
     { GDK_A,          0 }},
 
-    {KEY_CONSTANTS_MENU,     "constants", M_CON,
+    {KEY_CONSTANT,           "constants", M_CON,
     { GDK_SHIFT_MASK, 0,              0 },
     { GDK_numbersign, GDK_numbersign, 0 }},
 
-    {KEY_FUNCTIONS_MENU,     "functions", M_FUN,
+    {KEY_FUNCTION,           "functions", M_FUN,
     { GDK_SHIFT_MASK, 0 },
     { GDK_F,          0 }},
 
@@ -451,6 +428,8 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *menus[MAXMENUS];
 
     GtkWidget *buttons[NBUTTONS];
+    GtkWidget *digit_buttons[16];
+    GtkWidget *clear_buttons[2];
 
     GtkWidget *bas_panel;      /* Panel containing basic mode widgets. */
     GtkWidget *adv_panel;      /* Panel containing advanced mode widgets. */
@@ -599,7 +578,7 @@ set_bit_panel()
             mpcmim(MP1, MP2);
             if (mpeq(MP1, MP2)) {
                 char *bit_str, label[3], tmp[MAXLINE];
-                int toclear = (v->current->id == KEY_CLEAR_ENTRY)
+                int toclear = (v->current == KEY_CLEAR_ENTRY)
                               ? TRUE : FALSE;
 
                 bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
@@ -755,8 +734,8 @@ set_error_state(int error)
         gtk_widget_set_sensitive(X->buttons[i], !v->error);
     }
     /* Clr button always sensitive. */
-    gtk_widget_set_sensitive(X->buttons[BUT_CLEAR_BASIC], TRUE);
-    gtk_widget_set_sensitive(X->buttons[BUT_CLEAR_ADVANCED], TRUE);
+    gtk_widget_set_sensitive(X->clear_buttons[0], TRUE);
+    gtk_widget_set_sensitive(X->clear_buttons[1], TRUE);
 
     if (!v->error) {
         grey_buttons(v->base);
@@ -1076,27 +1055,13 @@ beep()
     gdk_beep();
 }
 
-
-/*ARGSUSED*/
-static void
-button_cb(GtkWidget *widget)
+static void do_button(struct button *n, int arg)
 {
-    struct button *n;
+    struct exprm_state *e;
     
-    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
-    assert(n);
-
     switch (v->syntax) {
         case npa:
-            if (v->pending >= 0) {
-                if (v->current != NULL) {
-                    free(v->current);
-                }
-                v->current = copy_button_info(n);
-                do_pending();
-            } else {
-                process_item(n);
-            }
+            process_item(n, arg);
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
@@ -1105,24 +1070,28 @@ button_cb(GtkWidget *widget)
             break;
 
         case exprs:
-            if ((n->flags) & pending) {
-                if (v->current != NULL) {
-                    free(v->current);
-                }
-                v->current = copy_button_info(n);
-                do_pending();
-            } else {
-                struct exprm_state *e = get_state();
-                memcpy(&(e->button), n, sizeof(struct button));
-                new_state();
-                do_expression();
-                set_bit_panel();
-            }
+            e = get_state();
+            e->value = arg;
+            memcpy(&(e->button), n, sizeof(struct button));
+            new_state();
+            do_expression();
+            set_bit_panel();
             break;
 
         default:
             assert(0);
     }
+}
+
+
+/*ARGSUSED*/
+static void
+button_cb(GtkWidget *widget)
+{
+    struct button *n;
+    
+    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+    do_button(n, 0);
 }
 
 
@@ -1213,12 +1182,8 @@ put_function(int n, char *fun_value, char *fun_name)
 static void
 menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 {
-    enum menu_type mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi),
-                                                             "mtype"));
-
-    v->current_value = '0' + GPOINTER_TO_INT(user_data);
-    
-    handle_menu_selection(X->mrec[mtype], v->current_value);
+    struct button *n = (struct button *) g_object_get_data(G_OBJECT(mi), "button");
+    do_button(n, GPOINTER_TO_INT(user_data));
 }
 
 
@@ -1427,7 +1392,7 @@ set_accuracy_tooltip(int accuracy)
                                        accuracy),
                               accuracy);
     tooltip = g_strdup_printf ("%s %s [A]", desc, current);
-    gtk_widget_set_tooltip_text (X->buttons[BUT_ACCURACY_MENU], tooltip);
+    gtk_widget_set_tooltip_text (GET_WIDGET("calc_accuracy_button"), tooltip);
     g_free(desc);
     g_free(current);
     g_free(tooltip);
@@ -1998,22 +1963,11 @@ get_resource(enum res_type rtype)
 void
 grey_buttons(enum base_type base)
 {
-    gtk_widget_set_sensitive(X->buttons[BUT_0], (0 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_1], (1 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_2], (2 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_3], (3 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_4], (4 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_5], (5 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_6], (6 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_7], (7 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_8], (8 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_9], (9 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_A], (10 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_B], (11 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_C], (12 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_D], (13 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_E], (14 < basevals[(int) base]));
-    gtk_widget_set_sensitive(X->buttons[BUT_F], (15 < basevals[(int) base]));
+    int i, baseval = basevals[(int) base];
+
+    for (i = 0; i < 16; i++) {
+        gtk_widget_set_sensitive(X->digit_buttons[i], i < baseval);
+    }
 }
 
 
@@ -2319,14 +2273,6 @@ menu_pos_func(GtkMenu *menu, gint *x, gint *y,
 }
 
 
-/*ARGSUSED*/
-void
-menu_cancel_cb(GtkWidget *widget)
-{
-    v->pending = -1;
-}
-
-
 static void
 show_menu_for_button(GtkWidget *widget, GdkEventKey *event)
 {
@@ -2345,34 +2291,6 @@ show_menu_for_button(GtkWidget *widget, GdkEventKey *event)
     loc.y += widget->allocation.y;
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
                    (gpointer) &loc, event->keyval, event->time);
-}
-
-
-void
-show_menu()
-{
-    GtkWidget *button = NULL;
-    GdkEvent *event = gtk_get_current_event();
-
-    if (v->current->id == KEY_ACCURACY_MENU) {       /* Acc */
-        button = X->buttons[BUT_ACCURACY_MENU];
-    } else if (v->current->id == KEY_CONSTANTS_MENU) {  /* Con */
-        button = X->buttons[BUT_CONSTANTS_MENU];
-    } else if (v->current->id == KEY_EXCHANGE) {        /* Exch */
-        button = X->buttons[BUT_EXCHANGE];
-    } else if (v->current->id == KEY_FUNCTIONS_MENU) {  /* Fun */
-        button = X->buttons[BUT_FUNCTIONS_MENU];
-    } else if (v->current->id == KEY_LEFT_SHIFT) {      /* < */
-        button = X->buttons[BUT_LEFT_SHIFT];
-    } else if (v->current->id == KEY_RECALL) {          /* Rcl */
-        button = X->buttons[BUT_RECALL];
-    } else if (v->current->id == KEY_RIGHT_SHIFT) {     /* > */
-        button = X->buttons[BUT_RIGHT_SHIFT];
-    } else if (v->current->id == KEY_STORE) {           /* Sto */
-        button = X->buttons[BUT_STORE];
-    }
-
-    show_menu_for_button(button, (GdkEventKey *) event);
 }
 
 
@@ -2510,12 +2428,11 @@ insert_ascii_cb(GtkWidget *widget)
 static void
 shift_left_cb(GtkWidget *widget)
 {
-    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
+    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
                                                    "shiftcount"));
 
     if (v->started) {
-        choice += (choice < 10) ? '0' : 'A' - 10;
-        handle_menu_selection(X->mrec[(int) M_LSHF], choice);
+        do_button(&buttons[KEY_LEFT_SHIFT], count);
     }
 }
 
@@ -2523,12 +2440,11 @@ shift_left_cb(GtkWidget *widget)
 static void
 shift_right_cb(GtkWidget *widget)
 {
-    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
+    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
                                                    "shiftcount"));
 
     if (v->started) {
-        choice += (choice < 10) ? '0' : 'A' - 10;
-        handle_menu_selection(X->mrec[(int) M_RSHF], choice);
+        do_button(&buttons[KEY_RIGHT_SHIFT], count);
     }
 }
 
@@ -2668,13 +2584,13 @@ mode_radio_cb(GtkWidget *radio)
 static void
 accuracy_radio_cb(GtkWidget *widget)
 {
-    char c;
+    int count;
     
-    c = '0' + GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "index"));
+    count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "index"));
     
     if (v->started && 
         gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
-        handle_menu_selection(X->mrec[(int) M_ACC], c);
+        //FIXME: do_accuracy(count);
     }
 }
 
@@ -2703,8 +2619,6 @@ show_trailing_zeroes_cb(GtkWidget *widget)
         
         set_show_zeroes_toggle(v->show_zeroes);
     }
-
-    v->pending = -1;
 }
 
 
@@ -3013,7 +2927,6 @@ create_kframe()
     CONNECT_SIGNAL(shift_left_cb);
     CONNECT_SIGNAL(shift_right_cb);
     CONNECT_SIGNAL(accuracy_radio_cb);
-    CONNECT_SIGNAL(menu_cancel_cb);
     CONNECT_SIGNAL(bit_toggled);
     CONNECT_SIGNAL(dismiss_aframe);
     CONNECT_SIGNAL(aframe_ok_cb);
@@ -3078,7 +2991,16 @@ create_kframe()
         g_object_set_data(G_OBJECT(X->buttons[i]), "mtype", 
                           GINT_TO_POINTER(button_widgets[i].mtype));
     }
+    
+    for (i = 0; i < 16; i++) {
+        SNPRINTF(name, MAXLINE, "calc_%x_button", i);
+        X->digit_buttons[i] = GET_WIDGET(name);
+    }
 
+    SNPRINTF(name, MAXLINE, "calc_%d_button", i);
+    X->clear_buttons[0] = GET_WIDGET("calc_clear_simple_button");
+    X->clear_buttons[1] = GET_WIDGET("calc_clear_advanced_button");
+    
     X->mode_panel = GET_WIDGET("mode_panel");
     X->trig[0] = GET_WIDGET("degrees_radio");
     X->trig[1] = GET_WIDGET("gradians_radio");
@@ -3118,10 +3040,10 @@ create_kframe()
     grey_buttons(v->base);
     if (v->modetype == BASIC) {
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
-                             GTK_WIDGET(X->buttons[BUT_CLEAR_BASIC]));
+                             GTK_WIDGET(X->clear_buttons[0]));
     } else {
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
-                             GTK_WIDGET(X->buttons[BUT_CLEAR_ADVANCED]));
+                             GTK_WIDGET(X->clear_buttons[1]));
     }
 
     X->statusbar = GET_WIDGET("statusbar");
@@ -3199,7 +3121,7 @@ create_kframe()
 
 
 static GtkWidget *
-create_menu_item_with_markup(char *label, int menu_no, int user_data)
+create_menu_item_with_markup(char *label, int menu_no, int index)
 {
     GtkWidget *accel_label;
     GtkWidget *menu_item;
@@ -3212,11 +3134,11 @@ create_menu_item_with_markup(char *label, int menu_no, int user_data)
     gtk_widget_show(accel_label);
     gtk_widget_show(menu_item);
 
-    g_object_set_data(G_OBJECT(menu_item), "mtype", GINT_TO_POINTER(menu_no));
+    g_object_set_data(G_OBJECT(menu_item), "button", X->mrec[menu_no]);
     gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[menu_no]), menu_item);
 
     g_signal_connect(G_OBJECT(menu_item), "activate",
-                     G_CALLBACK(menu_proc_cb), GINT_TO_POINTER(user_data));
+                     G_CALLBACK(menu_proc_cb), GINT_TO_POINTER(index));
     
     return menu_item;
 }
@@ -3233,7 +3155,7 @@ make_frames()
     set_mode(v->modetype);
 
     X->menus[M_ACC] = GET_WIDGET("accuracy_popup");
-    X->mrec[M_ACC] = &buttons[KEY_ACCURACY_MENU];
+    X->mrec[M_ACC] = &buttons[KEY_SET_ACCURACY];
     set_accuracy_menu_item(v->accuracy);
     X->menus[M_LSHF] = GET_WIDGET("left_shift_popup");
     X->mrec[M_LSHF] = &buttons[KEY_LEFT_SHIFT];
@@ -3241,9 +3163,9 @@ make_frames()
     X->mrec[M_RSHF] = &buttons[KEY_RIGHT_SHIFT];
     
     X->menus[M_CON] = GET_WIDGET("constants_popup");
-    X->mrec[M_CON] = &buttons[KEY_CONSTANTS_MENU];
+    X->mrec[M_CON] = &buttons[KEY_CONSTANT];
     X->menus[M_FUN] = GET_WIDGET("functions_popup");
-    X->mrec[M_FUN] = &buttons[KEY_FUNCTIONS_MENU];
+    X->mrec[M_FUN] = &buttons[KEY_FUNCTION];
     for (i = 0; i < MAXCONFUN; i++) {
         X->constant_menu_items[i] = create_menu_item_with_markup("", M_CON, i);
         X->function_menu_items[i] = create_menu_item_with_markup("", M_FUN, i);
