@@ -1072,7 +1072,7 @@ static void do_button(struct button *n, int arg)
         case exprs:
             e = get_state();
             e->value = arg;
-            memcpy(&(e->button), n, sizeof(struct button));
+            MEMCPY(&(e->button), n, sizeof(struct button));
             new_state();
             do_expression();
             set_bit_panel();
@@ -1306,6 +1306,7 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
 }
 
 
+/*ARGSUSED*/
 static GtkTreeModel *
 create_cf_model(enum menu_type mtype, GtkWidget *dialog)
 {
@@ -1854,7 +1855,7 @@ get_menu_entry(enum menu_type mtype, int offset)
             return((offset < 10) ? offset + '0' : offset + 'A' - 10);
 
         default:
-            fprintf(stderr, "need to handle menu type %d\n", mtype);
+            FPRINTF(stderr, "need to handle menu type %d\n", mtype);
     }
 
     return(0);
@@ -2767,6 +2768,7 @@ win_display(enum fcp_type fcptype, int state)
 }
 
 
+/*ARGSUSED*/
 static void
 edit_constants_cb(GtkMenuItem *item)
 {
@@ -2774,6 +2776,7 @@ edit_constants_cb(GtkMenuItem *item)
 }
 
 
+/*ARGSUSED*/
 static void
 edit_functions_cb(GtkMenuItem *item)
 {

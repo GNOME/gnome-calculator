@@ -136,7 +136,7 @@ get_state(void)
 static void
 copy_state(struct exprm_state *dst, struct exprm_state *src)
 {
-    memcpy(dst, src, sizeof(struct exprm_state));
+    MEMCPY(dst, src, sizeof(struct exprm_state));
     dst->expression = gc_strdup(src->expression);
 }
 
@@ -340,7 +340,7 @@ exp_del_char(char **expr, int amount)
     if (len >= 0) {
         e = malloc(len+1);
         assert(e);
-        snprintf(e, len+1, "%s", *expr);
+        SNPRINTF(e, len+1, "%s", *expr);
     }
 
     free(*expr);
@@ -451,8 +451,8 @@ str_replace(char **str, char *from, char *to)
             assert(prefix && postfix);
             memset(prefix, 0, i+1);
             memset(postfix, 0, len-j+1);
-            memcpy(prefix, *str, i);
-            memcpy(postfix, *str+i+flen, len-j);
+            MEMCPY(prefix, *str, i);
+            MEMCPY(postfix, *str+i+flen, len-j);
 
             print = malloc(strlen(to)+i+len-j+1);
             SPRINTF(print, "%s%s%s", prefix, to, postfix);
@@ -558,7 +558,7 @@ do_expression()
         && e->expression
         && !strcmp(e->expression, "Ans")) {
 	    char buf[1024];
-	    snprintf(buf, 128, "%s(Ans)", btext);
+	    SNPRINTF(buf, 128, "%s(Ans)", btext);
 	    exp_replace(buf);
         update_display = 1;
     } else if (e->button.flags & clear) {
@@ -571,7 +571,7 @@ do_expression()
         char reg[3];
         int n = '0' +  i;
 
-        snprintf(reg, 3, "R%c", n);
+        SNPRINTF(reg, 3, "R%c", n);
         exp_append(reg);
     } else if (e->button.flags & con) {
         int *MPval = v->MPcon_vals[e->value];
@@ -587,7 +587,7 @@ do_expression()
             int i;
 
             for (i = 0; i < 10; i++) {
-                snprintf(reg, 3, "R%c", n+i);
+                SNPRINTF(reg, 3, "R%c", n+i);
                 if (exp_has_postfix(e->expression, reg)) {
                     int MP_reg[MP_SIZE];
                     char *reg_val;
@@ -751,7 +751,7 @@ do_calc()      /* Perform arithmetic calculation and display result. */
         mpcdm(&dres, v->MPresult); 
 
     } else if (v->cur_op == KEY_CALCULATE) {      /* Equals */
-        /* do nothing */;
+        /*EMPTY*/;
     }
 
     show_display(v->MPresult);
@@ -1195,12 +1195,6 @@ do_mode(int toclear)           /* Set special calculator mode. */
 
 
 void
-do_none()       /* Null routine for empty buttons. */
-{
-}
-
-
-void
 do_number()
 {
     int offset;
@@ -1522,43 +1516,6 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
         v->cur_op == KEY_TANGENT) {
         mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
         show_display(v->MPtresults[(int) v->ttype]);
-    }
-}
-
-
-void
-push_num(int *MPval)        /* Try to push value onto the numeric stack. */
-{
-    if (v->numsptr < 0) {
-        return;
-    }
-    if (v->numsptr >= MAXSTACK) {
-        STRNCPY(v->display, _("Numeric stack error"), MAXLINE - 1);
-        set_error_state(TRUE);
-        set_display(v->display, FALSE);
-        beep();
-    } else {
-        if (v->MPnumstack[v->numsptr] == NULL) {
-            v->MPnumstack[v->numsptr] =
-                        (int *) LINT_CAST(calloc(1, sizeof(int) * MP_SIZE));
-        }
-        mpstr(MPval, v->MPnumstack[v->numsptr++]);
-    }
-}
-
-
-void
-push_op(int val)     /* Try to push value onto the operand stack. */
-{
-    if (v->opsptr < 0) {
-        return;
-    }
-    if (v->opsptr >= MAXSTACK) {
-        STRNCPY(v->display, _("Operand stack error"), MAXLINE - 1);
-        set_error_state(TRUE);
-        set_display(v->display, FALSE);
-    } else {
-        v->opstack[v->opsptr++] = val;
     }
 }
 

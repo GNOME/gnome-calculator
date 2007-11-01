@@ -593,7 +593,7 @@ refresh_display()
                         char *reg_val;
                         int MP_reg[MP_SIZE];
 
-                        snprintf(reg, 3, "R%c", n+i);
+                        SNPRINTF(reg, 3, "R%c", n+i);
                         do_rcl_reg(i, MP_reg);
                         reg_val = make_number(MP_reg, v->base, FALSE);
                         str_replace(&str, reg, reg_val);
