@@ -210,13 +210,11 @@ enum
 #define RCNAME         ".gcalctoolrc"
 #endif /*RCNAME*/
 
-#ifndef TRUE                    /* Boolean definitions. */
+#undef TRUE                    /* Boolean definitions. */
 #define TRUE           1
-#endif /*TRUE*/
 
-#ifndef FALSE
+#undef FALSE
 #define FALSE          0
-#endif /*FALSE*/
 
 #define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
 

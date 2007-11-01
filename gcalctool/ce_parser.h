@@ -44,7 +44,7 @@ int ce_udf_parse(char *expression);
 
 void reset_ce_tokeniser();
 
-/* UTILITY NEEDED BECAUSE GNU SOURCE NOT ALWAYS AWAILABLE. */
+/* UTILITY NEEDED BECAUSE GNU SOURCE NOT ALWAYS AVAILABLE. */
 
 static inline char *
 ce_strndup(char *str, int len)

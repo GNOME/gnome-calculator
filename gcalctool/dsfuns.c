@@ -23,6 +23,7 @@
  */
 
 #include <stdlib.h>
+#include "calctool.h"
 #include "dsdefs.h"
 
 #define WM_WIDTH_FACTOR  10

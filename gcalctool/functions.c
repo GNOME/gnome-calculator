@@ -61,6 +61,7 @@ gc_strdup(char *str)
     return(dup);
 }
 
+
 void
 make_exp(char *number, int t[MP_SIZE])
 {
@@ -94,7 +95,9 @@ make_exp(char *number, int t[MP_SIZE])
 
     free(a);
 }
-void
+
+
+static void
 update_undo_redo_button_sensitivity(void)
 {
     int undo = 0;
@@ -111,6 +114,7 @@ update_undo_redo_button_sensitivity(void)
     set_redo_and_undo_button_sensitivity(undo, redo);
 }
 
+
 void
 clear_undo_history(void)
 {
@@ -126,26 +130,28 @@ clear_undo_history(void)
     update_undo_redo_button_sensitivity();
 }
 
+
 struct exprm_state *
 get_state(void)
 {
     return &(v->h.e[v->h.current]);
 }
 
-void
-copy_state(struct exprm_state *dst,
-	   struct exprm_state *src)
+
+static void
+copy_state(struct exprm_state *dst, struct exprm_state *src)
 {
     memcpy(dst, src, sizeof(struct exprm_state));
     dst->expression = gc_strdup(src->expression);
 }
 
-void
+
+static void
 purge_redo_history(void)
 {
-
     if (v->h.current != v->h.end) {
 	int i = v->h.current;
+
 	do {
 	    i = ((i + 1) % UNDO_HISTORY_LENGTH);
 	    free(v->h.e[i].expression);
@@ -155,6 +161,7 @@ purge_redo_history(void)
 
     v->h.end = v->h.current;
 }
+
 
 void
 new_state(void)
@@ -188,11 +195,13 @@ perform_undo(void)
     update_undo_redo_button_sensitivity();
 }
 
-int
+
+static int
 is_undo_step()
 {
     return(v->h.current != v->h.begin);
 }
+
 
 void
 perform_redo(void)
@@ -205,6 +214,7 @@ perform_redo(void)
     }
     update_undo_redo_button_sensitivity();
 }
+
 
 static void
 do_accuracy()     /* Set display accuracy. */
@@ -225,6 +235,7 @@ do_accuracy()     /* Set display accuracy. */
         }
     }
 }
+
 
 void
 do_business()     /* Perform special business mode calculations. */
@@ -294,6 +305,7 @@ exp_insert(char *text)
     insert_to_cursor(text);
     get_expr_from_display();
 }
+
 
 void 
 exp_del() 
@@ -463,7 +475,7 @@ str_replace(char **str, char *from, char *to)
 }
 
 
-void
+static void
 trig_filter(char **func)
 {
     char *tokens[4][3] = {
@@ -794,9 +806,9 @@ do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
     /* Assumes the SIN=0, COS=1, TAN=2. */
     
     enum trigfunc_type conv_table[3][4] = {
-	{sin_t, asin_t, sinh_t, asinh_t},
-	{cos_t, acos_t, cosh_t, acosh_t},
-	{tan_t, atan_t, tanh_t, atanh_t},
+	{ sin_t, asin_t, sinh_t, asinh_t },
+	{ cos_t, acos_t, cosh_t, acosh_t },
+	{ tan_t, atan_t, tanh_t, atanh_t },
     };
     
     int inverse = (v->inverse) ? 1 : 0;
@@ -836,43 +848,43 @@ void
 do_base(enum base_type b)    /* Change the current base setting. */
 {    
     switch (v->syntax) {
-    case npa:
-        v->base = b;
-        put_resource(R_BASE, Rbstr[(int) v->base]);
-        grey_buttons(v->base);
+        case npa:
+            v->base = b;
+            put_resource(R_BASE, Rbstr[(int) v->base]);
+            grey_buttons(v->base);
 
-        v->pending = -1;
-        if (v->rstate) {
-            make_registers();
-        }
-	break;
+            v->pending = -1;
+            if (v->rstate) {
+                make_registers();
+            }
+	    break;
 	
-    case exprs: {
-	struct exprm_state *e = get_state();
-	int MP[MP_SIZE];
-	int ret = usable_num(MP);
-	if (ret) {
-	    update_statusbar(_("No sane value to convert"), 
-			     "gtk-dialog-error");
-	} else if (!v->ghost_zero) {
-	    mpstr(MP, e->ans);
-	    exp_replace("Ans");
-	}
-        v->base = b;
-        put_resource(R_BASE, Rbstr[(int) v->base]);
-        grey_buttons(v->base);
-        make_registers();
-	clear_undo_history();
-    }
-    break;
+        case exprs: {
+	    struct exprm_state *e = get_state();
+	    int MP[MP_SIZE];
+	    int ret = usable_num(MP);
+
+	    if (ret) {
+	        update_statusbar(_("No sane value to convert"), 
+			         "gtk-dialog-error");
+	    } else if (!v->ghost_zero) {
+	        mpstr(MP, e->ans);
+	        exp_replace("Ans");
+	    }
+            v->base = b;
+            put_resource(R_BASE, Rbstr[(int) v->base]);
+            grey_buttons(v->base);
+            make_registers();
+	    clear_undo_history();
+        }
+        break;
     
-    default:
-	assert(0);
+        default:
+	    assert(0);
     }
     
     refresh_display();
 }
-
 
 
 static void
@@ -1099,33 +1111,33 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
 {
     int MP1[MP_SIZE];
 
-    if (v->current->id == KEY_MASK_32) {                  /* &32 */
+    if (v->current->id == KEY_MASK_32) {                     /* &32 */
         calc_u32(s, t);
-    } else if (v->current->id == KEY_MASK_16) {           /* &16 */
+    } else if (v->current->id == KEY_MASK_16) {              /* &16 */
         calc_u16(s, t);
-    } else if (v->current->id == KEY_E_POW_X) {         /* e^x  */
+    } else if (v->current->id == KEY_E_POW_X) {              /* e^x  */
         mpstr(s, MP1);
         mpexp(MP1, t);
-    } else if (v->current->id == KEY_10_POW_X) {         /* 10^x */
+    } else if (v->current->id == KEY_10_POW_X) {             /* 10^x */
         calc_tenpowx(s, t);
-    } else if (v->current->id == KEY_NATURAL_LOGARITHM) {           /* Ln */
+    } else if (v->current->id == KEY_NATURAL_LOGARITHM) {    /* Ln */
         mpstr(s, MP1);
         mpln(MP1, t);
-    } else if (v->current->id == KEY_LOGARITHM) {          /* Log */
+    } else if (v->current->id == KEY_LOGARITHM) {            /* Log */
         mplog10(s, t);
-    } else if (v->current->id == KEY_RANDOM) {         /* Rand */
+    } else if (v->current->id == KEY_RANDOM) {               /* Rand */
         calc_rand(t);
-    } else if (v->current->id == KEY_SQUARE_ROOT) {         /* Sqrt */
+    } else if (v->current->id == KEY_SQUARE_ROOT) {          /* Sqrt */
         mpstr(s, MP1);
         mpsqrt(MP1, t);
-    } else if (v->current->id == KEY_NOT) {          /* NOT */
+    } else if (v->current->id == KEY_NOT) {                  /* NOT */
         calc_not(t, s);
-    } else if (v->current->id == KEY_RECIPROCAL) {          /* 1/x */
+    } else if (v->current->id == KEY_RECIPROCAL) {           /* 1/x */
         calc_inv(s, t);
-    } else if (v->current->id == KEY_FACTORIAL) {         /* x! */
+    } else if (v->current->id == KEY_FACTORIAL) {            /* x! */
         do_factorial(s, MP1);
         mpstr(MP1, t);
-    } else if (v->current->id == KEY_SQUARE) {          /* x^2 */
+    } else if (v->current->id == KEY_SQUARE) {               /* x^2 */
         mpstr(s, MP1);
         mpmul(MP1, MP1, t);
     } else if (v->current->id == KEY_CHANGE_SIGN) {          /* +/- */
@@ -1399,7 +1411,7 @@ do_pending()
         do_constant();
 	v->new_input = 1;
 	syntaxdep_show_display();
-    } else if (v->pending == KEY_EXCHANGE) {          /* Exch */
+    } else if (v->pending == KEY_EXCHANGE) {                 /* Exch */
         do_exchange();
 	v->new_input = 1;
 	syntaxdep_show_display();
@@ -1412,18 +1424,18 @@ do_pending()
        do_rcl();
        v->new_input = 1;
        syntaxdep_show_display();
-    } else if (v->pending == KEY_LEFT_SHIFT) {          /* < */
+    } else if (v->pending == KEY_LEFT_SHIFT) {               /* < */
         do_shift(left);
 	v->new_input = 1;
 	syntaxdep_show_display();
-    } else if (v->pending == KEY_RIGHT_SHIFT) {          /* > */
+    } else if (v->pending == KEY_RIGHT_SHIFT) {              /* > */
         do_shift(right);
 	v->new_input = 1;
 	syntaxdep_show_display();
-    } else if (v->pending == KEY_ACCURACY_MENU) {           /* Acc */
+    } else if (v->pending == KEY_ACCURACY_MENU) {            /* Acc */
         do_accuracy();
 	syntaxdep_show_display();
-    } else if (v->pending == KEY_START_BLOCK) {          /* ( */
+    } else if (v->pending == KEY_START_BLOCK) {              /* ( */
         do_paren();
         return;
     } else if (v->pending < 0) {
@@ -1457,7 +1469,7 @@ do_portionfunc(int num[MP_SIZE])
 {
     int MP1[MP_SIZE];
 
-    if (v->current->id == KEY_ABSOLUTE_VALUE) {                       /* Abs */
+    if (v->current->id == KEY_ABSOLUTE_VALUE) {                 /* Abs */
         mpstr(num, MP1);
         mpabs(MP1, num);
 

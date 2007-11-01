@@ -43,8 +43,7 @@
 #include "mpmath.h"
 
 #define MAX_ACCELERATORS 8
-struct button_widget
-{
+struct button_widget {
     int key;
     char *widget_name;
     enum menu_type mtype;
@@ -93,7 +92,7 @@ enum {
  *-----------+-----------------------------------------------------
  */
     
-struct button_widget button_widgets[] = {
+static struct button_widget button_widgets[] = {
     {KEY_0,                  "0", M_NONE,
     { 0,     GDK_SHIFT_MASK, 0,        0,             0 },
     { GDK_0, GDK_0,          GDK_KP_0, GDK_KP_Insert, 0 }},
@@ -450,11 +449,11 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     GtkWidget *buttons[NBUTTONS];
 
-    GtkWidget *bas_panel;              /* Panel containing widgets used in basic mode */
-    GtkWidget *adv_panel;              /* Panel containing widgets used in advanced mode */
-    GtkWidget *fin_panel;              /* Panel containing widgets used in financial mode */
-    GtkWidget *sci_panel;              /* Panel containing widgets used in scientific mode */
-    GtkWidget *mode_panel;             /* Panel containing scientific mode widgets */
+    GtkWidget *bas_panel;      /* Panel containing basic mode widgets. */
+    GtkWidget *adv_panel;      /* Panel containing advanced mode widgets. */
+    GtkWidget *fin_panel;      /* Panel containing financial mode widgets. */
+    GtkWidget *sci_panel;      /* Panel containing scientific mode widgets. */
+    GtkWidget *mode_panel;     /* Panel containing scientific mode widgets. */
     
     /* Scientific mode widgets */
     GtkWidget *hyp;                    /* Hyperbolic mode. */
@@ -471,8 +470,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
 
 typedef struct Xobject *XVars;
 
-enum
-{
+enum {
     COLUMN_NUMBER,
     COLUMN_VALUE,
     COLUMN_DESCRIPTION,
@@ -518,6 +516,7 @@ main(int argc, char **argv)
     return(0);
 }
 
+
 void 
 update_statusbar(gchar *text, const gchar *imagename)
 {
@@ -532,17 +531,11 @@ update_statusbar(gchar *text, const gchar *imagename)
     gtk_statusbar_push(GTK_STATUSBAR(X->statusbar), 0, text); 
 }
 
-void
-bin_str(int MP_value[MP_SIZE], 
-        char *str, 
-        int maxbits)
-{
-    int MP0[MP_SIZE];
-    int MP1[MP_SIZE];
-    int MP2[MP_SIZE];
-    int MP3[MP_SIZE];
-    int i;
 
+static void
+bin_str(int MP_value[MP_SIZE], char *str, int maxbits)
+{
+    int i, MP0[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE];
     int neg = 0;
 
     MPstr_to_num("0", DEC, MP0);
@@ -575,6 +568,7 @@ bin_str(int MP_value[MP_SIZE],
     return;
 }
 
+
 /* Set new title for a window. */
 
 void
@@ -590,57 +584,60 @@ set_title(enum fcp_type fcptype, char *str)
     gtk_window_set_title(GTK_WINDOW(f), _(str));
 }
 
-void
+
+static void
 set_bit_panel()
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
     char str[64], label[3];
     int ret = usable_num(MP);
-    
+
     switch (v->syntax) {
-    case npa:
-        MPstr_to_num(v->display, v->base, MP1);
-        mpcmim(MP1, MP2);
-        if (mpeq(MP1, MP2)) {
-            char *bit_str, label[3], tmp[MAXLINE];
-            int toclear = (v->current->id == KEY_CLEAR_ENTRY) ? TRUE : FALSE;
-                  
-            bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
-            bit_str_len = strlen(bit_str);
-            if (bit_str_len <= MAXBITS) {
-                gtk_widget_set_sensitive(X->bit_panel, TRUE);
-                
-                STRCPY(label, " 0");
-                for (i = 0; i < MAXBITS; i++) {
-                    label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
-                    gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+        case npa:
+            MPstr_to_num(v->display, v->base, MP1);
+            mpcmim(MP1, MP2);
+            if (mpeq(MP1, MP2)) {
+                char *bit_str, label[3], tmp[MAXLINE];
+                int toclear = (v->current->id == KEY_CLEAR_ENTRY)
+                              ? TRUE : FALSE;
+
+                bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
+                bit_str_len = strlen(bit_str);
+                if (bit_str_len <= MAXBITS) {
+                    gtk_widget_set_sensitive(X->bit_panel, TRUE);
+
+                    STRCPY(label, " 0");
+                    for (i = 0; i < MAXBITS; i++) {
+                        label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+                        gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+                    }
+
+                    return;
                 }
-                
+            }
+            gtk_widget_set_sensitive(X->bit_panel, FALSE);
+            break;
+
+        case exprs:
+            if (ret || !is_integer(MP)) {
+                gtk_widget_set_sensitive(X->bit_panel, FALSE);
                 return;
             }
-        }
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
-        break;
-        
-    case exprs:
-        if (ret || !is_integer(MP)) {
-            gtk_widget_set_sensitive(X->bit_panel, FALSE);
-            return;
-        }
-        bin_str(MP, str, 64);
-        gtk_widget_set_sensitive(X->bit_panel, TRUE);
-        
-        STRCPY(label, " 0");
-        for (i = 0; i < 64; i++) {
-            label[1] = str[64 - i - 1];
-            gtk_label_set_text(GTK_LABEL(X->bits[64 - i - 1]), label);
-        }
-        break;
+            bin_str(MP, str, 64);
+            gtk_widget_set_sensitive(X->bit_panel, TRUE);
+
+            STRCPY(label, " 0");
+            for (i = 0; i < 64; i++) {
+                label[1] = str[64 - i - 1];
+                gtk_label_set_text(GTK_LABEL(X->bits[64 - i - 1]), label);
+            }
+            break;
     }
 }
 
-void
+
+static void
 scroll_right()
 {
     if (!v->started) {
@@ -659,10 +656,10 @@ scroll_right()
     }
 }
 
+
 void
 set_display(char *str, int minimize_changes)
 {
-
     char localized[MAX_LOCALIZED];
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
@@ -674,10 +671,10 @@ set_display(char *str, int minimize_changes)
     if (str == NULL || *str == 0) {
         str = " ";
     } else {
-      if (!v->noparens) {
-              localize_number(localized, str);
-        str = localized;
-      }
+        if (!v->noparens) {
+            localize_number(localized, str);
+            str = localized;
+        }
     }
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
@@ -700,7 +697,6 @@ set_display(char *str, int minimize_changes)
                 done = TRUE;
             }
         }
-             
  
         if (!done) {
             gtk_text_buffer_delete(buffer, &start, &end);
@@ -720,7 +716,9 @@ write_display(char *str)
     GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
-    if (str == NULL ) str = " ";
+    if (str == NULL ) {
+        str = " ";
+    }
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_text_buffer_get_bounds(buffer, &start, &end);
@@ -732,6 +730,7 @@ write_display(char *str)
     scroll_right();
     g_free(text);
 }
+
 
 /* When an error condition occurs:
  *
@@ -844,7 +843,7 @@ set_mode(enum mode_type mode)
             gtk_widget_show(X->adv_panel);
             gtk_widget_hide(X->fin_panel);
             gtk_widget_show_all(X->mode_panel);
-                        if (v->bitcalculating_mode) {
+            if (v->bitcalculating_mode) {
                 gtk_widget_show_all(X->bit_panel);
             } else {
                 gtk_widget_hide(X->bit_panel);
@@ -862,21 +861,21 @@ set_mode(enum mode_type mode)
     h += r->height;
 
     if (GTK_WIDGET_VISIBLE(X->fin_panel)) {
-      gtk_widget_size_request(X->fin_panel, r);
-      w = MAX(w, r->width);
-      h += r->height;
+        gtk_widget_size_request(X->fin_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
     }
 
     if (GTK_WIDGET_VISIBLE(X->mode_panel)) {
-      gtk_widget_size_request(X->mode_panel, r);
-      w = MAX(w, r->width);
-          h += r->height;
+        gtk_widget_size_request(X->mode_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
     }
 
     if (GTK_WIDGET_VISIBLE(X->sci_panel)) {
-      gtk_widget_size_request(X->sci_panel, r);
-      w = MAX(w, r->width);
-      h += r->height;
+        gtk_widget_size_request(X->sci_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
     }
   
     /* For initial display. */
@@ -911,6 +910,7 @@ set_item(enum item_type itemtype, int val)
             break;
     }
 }
+
 
 /*ARGSUSED*/
 static void
@@ -960,6 +960,7 @@ about_cb(GtkWidget *widget)
             NULL);
 }
 
+
 static void
 cell_edited(GtkCellRendererText *cell, const gchar *path_string,
             const gchar *new_text, gpointer data)
@@ -1002,6 +1003,7 @@ cell_edited(GtkCellRendererText *cell, const gchar *path_string,
     gtk_tree_path_free(path);
 }
 
+
 static void
 add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
 {
@@ -1028,6 +1030,7 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
                                                 NULL);
     }
 }
+
 
 /*ARGSUSED*/
 static void
@@ -1071,7 +1074,8 @@ void
 base_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-	do_base((enum base_type) g_object_get_data(G_OBJECT(widget), "response_id"));
+	do_base((enum base_type) g_object_get_data(G_OBJECT(widget), 
+                                                   "response_id"));
 }
 
 
@@ -1080,6 +1084,7 @@ beep()
 {
     gdk_beep();
 }
+
 
 /*ARGSUSED*/
 static void
@@ -1129,6 +1134,7 @@ button_cb(GtkWidget *widget)
     }
 }
 
+
 static void
 help_display(void)
 {
@@ -1166,9 +1172,9 @@ help_display(void)
         GtkWidget *d;
         
         d = gtk_message_dialog_new(NULL,
-                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                                   error->message);
+                           GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                           GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                           error->message);
         gtk_dialog_run(GTK_DIALOG(d));
         gtk_widget_destroy(d);
         g_error_free(error);
@@ -1178,6 +1184,7 @@ help_display(void)
     g_free (command);
     g_free (uri);
 }
+
 
 static void
 put_constant(int n, char *con_value, char *con_name)
@@ -1197,6 +1204,7 @@ put_constant(int n, char *con_value, char *con_name)
     gconf_client_set_string(X->client, key, con_name, NULL);
 }
 
+
 static void
 put_function(int n, char *fun_value, char *fun_name)
 {
@@ -1214,7 +1222,8 @@ put_function(int n, char *fun_value, char *fun_name)
 static void
 menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 {
-    enum menu_type mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), "mtype"));
+    enum menu_type mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi),
+                                                             "mtype"));
 
     v->current_value = '0' + GPOINTER_TO_INT(user_data);
     
@@ -1255,6 +1264,7 @@ put_resource(enum res_type rtype, char *value)
     SNPRINTF(cstr, MAXLINE, "/apps/%s/%s", v->appname, key);
     gconf_client_set_string(X->client, cstr, value, NULL);
 }
+
 
 /* Create popup window for editing constants/functions. */
 
@@ -1416,7 +1426,8 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
         ui = glade_xml_new(UI_FILE, "cfframe", NULL);
         dialog = glade_xml_get_widget(ui, "cfframe");
         treeview = glade_xml_get_widget(ui, "cfframe_treeview");
-        glade_xml_signal_connect(ui, "cfframe_response_cb", G_CALLBACK(cfframe_response_cb));
+        glade_xml_signal_connect(ui, "cfframe_response_cb",
+                                 G_CALLBACK(cfframe_response_cb));
 
         g_object_set_data(G_OBJECT(dialog), "mtype", (gpointer) mtype);
         gtk_dialog_set_default_response(GTK_DIALOG(dialog), 
@@ -1447,26 +1458,27 @@ create_cfframe(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
-static void update_mode_widgets(int mode)
+static void 
+update_mode_widgets(int mode)
 {
     GtkWidget *widget;
     
     switch (mode) {
-    case FINANCIAL:
-        widget = GET_WIDGET("view_financial_menu");
-        break;
-        
-    case SCIENTIFIC:
-        widget = GET_WIDGET("view_scientific_menu");
-        break;
-        
-    case ADVANCED:
-        widget = GET_WIDGET("view_advanced_menu");
-        break;
-        
-    default:
-        widget = GET_WIDGET("view_advanced_menu");
-        break;
+        case FINANCIAL:
+            widget = GET_WIDGET("view_financial_menu");
+            break;
+
+        case SCIENTIFIC:
+            widget = GET_WIDGET("view_scientific_menu");
+            break;
+
+        case ADVANCED:
+            widget = GET_WIDGET("view_advanced_menu");
+            break;
+
+        default:
+            widget = GET_WIDGET("view_advanced_menu");
+            break;
     }
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
 }
@@ -1506,6 +1518,7 @@ set_accuracy_tooltip(int accuracy)
     g_free(tooltip);
 }
 
+
 static void
 set_accuracy_toggle(int val)
 {
@@ -1519,6 +1532,7 @@ set_accuracy_toggle(int val)
     }
 }
 
+
 static void
 set_show_tsep_toggle(int state)
 {
@@ -1528,6 +1542,7 @@ set_show_tsep_toggle(int state)
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 }
 
+
 static void
 set_show_bitcalculating_toggle(int state)
 {
@@ -1536,6 +1551,7 @@ set_show_bitcalculating_toggle(int state)
     mi = GET_WIDGET("show_bitcalculating_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
 }
+
 
 static void
 set_show_zeroes_toggle(int state)
@@ -1549,6 +1565,7 @@ set_show_zeroes_toggle(int state)
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
     v->doing_mi = 0;
 }
+
 
 static void
 reset_mode_display(int toclear)
@@ -1581,6 +1598,7 @@ reset_mode_display(int toclear)
     make_registers();
     do_mode(toclear);
 }
+
 
 static void
 save_win_position()
@@ -1638,7 +1656,8 @@ cm_response_cb(GtkDialog *dialog, int response)
 static void
 cm_warning_cb(GtkWidget *button)
 {
-    v->warn_change_mode = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button));
+    v->warn_change_mode = !gtk_toggle_button_get_active(
+                                                   GTK_TOGGLE_BUTTON(button));
 }
 
 
@@ -1648,24 +1667,27 @@ create_change_mode_dialog()
     GtkWidget *check, *button;
 
     X->cm_dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
-                                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                                          GTK_MESSAGE_WARNING,
-                                          GTK_BUTTONS_CANCEL,
-                                          "%s",
-                                          _("Changing Modes Clears Calculation"));
+                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                          GTK_MESSAGE_WARNING,
+                          GTK_BUTTONS_CANCEL,
+                          "%s",
+                          _("Changing Modes Clears Calculation"));
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(X->cm_dialog),
-                                             "%s",
-                                             _("When you change modes, the current calculation "
-                                               "will be cleared, and the base will be reset to "
-                                               "decimal."));
+                          "%s",
+                          _("When you change modes, the current calculation "
+                          "will be cleared, and the base will be reset to "
+                          "decimal."));
 
     check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
-    gtk_box_pack_end(GTK_BOX(GTK_MESSAGE_DIALOG(X->cm_dialog)->label->parent), check, FALSE, FALSE, 0);
+    gtk_box_pack_end(GTK_BOX(GTK_MESSAGE_DIALOG(X->cm_dialog)->label->parent),
+                     check, FALSE, FALSE, 0);
     gtk_widget_show(check);
 
-    button = gtk_dialog_add_button(GTK_DIALOG(X->cm_dialog), _("C_hange Mode"), GTK_RESPONSE_ACCEPT);
+    button = gtk_dialog_add_button(GTK_DIALOG(X->cm_dialog),
+                                   _("C_hange Mode"), GTK_RESPONSE_ACCEPT);
     gtk_button_set_image(GTK_BUTTON(button),
-                         gtk_image_new_from_stock(GTK_STOCK_REFRESH, GTK_ICON_SIZE_BUTTON));
+                         gtk_image_new_from_stock(GTK_STOCK_REFRESH,
+                                                  GTK_ICON_SIZE_BUTTON));
     /* Set default focus on affirmative button */
     gtk_widget_grab_focus(button);
 
@@ -1679,7 +1701,8 @@ create_change_mode_dialog()
     g_signal_connect(X->cm_dialog, "response",
                      G_CALLBACK(cm_response_cb), NULL);
 
-    gtk_window_set_position(GTK_WINDOW(X->cm_dialog), GTK_WIN_POS_CENTER_ON_PARENT);
+    gtk_window_set_position(GTK_WINDOW(X->cm_dialog),
+                            GTK_WIN_POS_CENTER_ON_PARENT);
 }
 
 
@@ -1694,6 +1717,7 @@ show_change_mode_dialog()
 }
 
 
+/*ARGSUSED*/
 static gboolean
 bit_toggled(GtkWidget *event_box, GdkEventButton *event)
 {
@@ -1701,7 +1725,8 @@ bit_toggled(GtkWidget *event_box, GdkEventButton *event)
     unsigned long long lval;
     int n, MP1[MP_SIZE], index;
 
-    index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "widget_index"));
+    index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box),
+                                              "widget_index"));
     n = MAXBITS - index - 1;
     MPstr_to_num(v->display, v->base, MP1);
     mpcmd(MP1, &number);
@@ -1748,6 +1773,7 @@ menu_item_select_cb(GtkWidget *widget)
 }
 
 
+/*ARGSUSED*/
 static void
 menu_item_deselect_cb(GtkWidget *widget)
 {
@@ -1776,6 +1802,7 @@ update_copy_paste_status()
     gtk_widget_set_sensitive(GTK_WIDGET(X->paste), can_paste);
 }
 
+
 static void
 set_menubar_tooltip(gchar *menu_name)
 {
@@ -1787,6 +1814,7 @@ set_menubar_tooltip(gchar *menu_name)
     g_object_set_data(G_OBJECT(menu), "tooltip", tooltip);
     gtk_widget_set_tooltip_text(menu, NULL);
 }
+
 
 static void
 create_mem_menu(enum menu_type mtype)
@@ -1815,6 +1843,7 @@ mem_response(GtkDialog *dialog, int response)
     put_resource(R_REGS, "false");
     gtk_widget_hide(X->rframe);
 }
+
 
 /*ARGSUSED*/
 static gboolean
@@ -2082,6 +2111,7 @@ handle_selection()  /* Handle the GET function key being pressed. */
 }
 
 
+/*ARGSUSED*/
 static void 
 popup_paste_cb(GtkMenuItem *menuitem)
 {
@@ -2089,6 +2119,7 @@ popup_paste_cb(GtkMenuItem *menuitem)
 }
 
 
+/*ARGSUSED*/
 static void
 for_each_menu(GtkWidget *widget, gpointer data)
 {
@@ -2108,6 +2139,7 @@ for_each_menu(GtkWidget *widget, gpointer data)
 }
 
 
+/*ARGSUSED*/
 static void
 buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu)
 {
@@ -2115,6 +2147,7 @@ buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu)
 }
 
 
+/*ARGSUSED*/
 static void 
 help_cb(GtkWidget *widget)
 {
@@ -2152,6 +2185,7 @@ check_for_localized_numeric_point(int keyval)
 
     return(strcmp(outbuf, X->lnp) == 0);
 }
+
 
 void
 get_expr_from_display()
@@ -2204,6 +2238,7 @@ insert_to_cursor(char *text)
 }
 
 
+/*ARGSUSED*/
 static gboolean
 display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
 {
@@ -2215,6 +2250,7 @@ display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
 }
 
 
+/*ARGSUSED*/
 static gboolean
 display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
 {
@@ -2259,6 +2295,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
     return(FALSE);
 }
+
 
 void
 load_resources()        /* Load gconf configuration database for gcalctool. */
@@ -2306,6 +2343,7 @@ make_hostname(Display *dpy)
 }
 
 
+/*ARGSUSED*/
 static gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 {
@@ -2316,6 +2354,7 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 
     return(FALSE);
 }
+
 
 static void
 set_win_position()
@@ -2425,6 +2464,7 @@ show_menu_for_button(GtkWidget *widget, GdkEventKey *event)
                    (gpointer) &loc, event->keyval, event->time);
 }
 
+
 void
 show_menu()
 {
@@ -2518,88 +2558,115 @@ menu_button_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
 /* Handle menu bar menu selection. */
 
-static void edit_cb(GtkWidget *widget)
+/*ARGSUSED*/
+static void 
+edit_cb(GtkWidget *widget)
 {
-    if (v->started)
+    if (v->started) {
         update_copy_paste_status();
+    }
 }
 
-static void copy_cb(GtkWidget *widget)
+
+/*ARGSUSED*/
+static void 
+copy_cb(GtkWidget *widget)
 {
-    if (v->started)
+    if (v->started) {
         get_display();
+    }
 }
 
-static void paste_cb(GtkWidget *widget)
+
+/*ARGSUSED*/
+static void 
+paste_cb(GtkWidget *widget)
 {
-    if (v->started)
+    if (v->started) {
         handle_selection();
+    }
 }
 
-static void undo_cb(GtkWidget *widget)
+
+/*ARGSUSED*/
+static void
+undo_cb(GtkWidget *widget)
 {
-    if (v->started)
-    {
+    if (v->started) {
         perform_undo();
         refresh_display();
     }
 }
-        
-static void redo_cb(GtkWidget *widget)
+
+
+/*ARGSUSED*/
+static void
+redo_cb(GtkWidget *widget)
 {
-    if (v->started)
-    {
+    if (v->started) {
         perform_redo();
         refresh_display();
     }
 }
 
-static void insert_ascii_cb(GtkWidget *widget)
+
+/*ARGSUSED*/
+static void
+insert_ascii_cb(GtkWidget *widget)
 {
-    if (v->started)
+    if (v->started) {
         show_ascii_frame();
+    }
 }
 
-static void shift_left_cb(GtkWidget *widget)
+
+static void
+shift_left_cb(GtkWidget *widget)
 {
-    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "shiftcount"));
-    
-    if (v->started)
-    {
+    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
+                                                   "shiftcount"));
+
+    if (v->started) {
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_LSHF], choice);
     }
 }
 
-static void shift_right_cb(GtkWidget *widget)
+
+static void
+shift_right_cb(GtkWidget *widget)
 {
-    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "shiftcount"));
-    
-    if (v->started)
-    {
+    int choice = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
+                                                   "shiftcount"));
+
+    if (v->started) {
         choice += (choice < 10) ? '0' : 'A' - 10;
         handle_menu_selection(X->mrec[(int) M_RSHF], choice);
     }
 }
 
-static void show_bitcalculating_cb(GtkWidget *widget)
+/*ARGSUSED*/
+static void 
+show_bitcalculating_cb(GtkWidget *widget)
 {
-    if (v->started)
-    {
-          v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
-          set_mode(v->modetype);
-          put_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+    if (v->started) {
+        v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
+        set_mode(v->modetype);
+        put_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
     }
 }
 
-static void show_registers_cb(GtkWidget *widget)
+
+/*ARGSUSED*/
+static void
+show_registers_cb(GtkWidget *widget)
 {
-    if (v->started)
-    {
+    if (v->started) {
         v->rstate = !v->rstate;
         do_memory();
     }
 }
+
 
 /*ARGSUSED*/
 static void
@@ -2621,18 +2688,19 @@ arithmetic_mode_cb(GtkWidget *widget)
             clear_undo_history();
             break;
 
-    case exprs: {
-        struct exprm_state *e = get_state();
-        MPstr_to_num("0", DEC, e->ans);
-        exp_del();
-        show_display(e->ans);
-        update_statusbar(
-                         _("Activated expression mode with operator precedence"), "");
-   }
+        case exprs: {
+            struct exprm_state *e = get_state();
+
+            MPstr_to_num("0", DEC, e->ans);
+            exp_del();
+            show_display(e->ans);
+            update_statusbar(
+                 _("Activated expression mode with operator precedence"), "");
+        }
         break;
         
-    default:
-        assert(0);
+        default:
+            assert(0);
     }
     put_resource(R_SYNTAX, Rsstr[v->syntax]);
     set_mode(v->modetype);
@@ -2648,8 +2716,9 @@ mode_radio_cb(GtkWidget *radio)
     int immediate = 0;    /* Set if we can change mode without warning user. */
     int complete = 0;     /* Set if the user has completed a calculation. */
 
-    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(radio)))
+    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(radio))) {
         return;
+    }
 
     if (!v->started) {
         return;
@@ -2679,13 +2748,12 @@ mode_radio_cb(GtkWidget *radio)
             }
             break;
 
-            case exprs: {
+        case exprs: {
                           struct exprm_state *e = get_state();
             if (!e->expression || !strcmp(e->expression, "Ans")) {
                 complete = 1;   /* Calculation is complete. */
             }
         }
-            break;
     }
 
     if (complete) {
@@ -2717,24 +2785,30 @@ accuracy_radio_cb(GtkWidget *widget)
     
     c = '0' + GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "index"));
     
-    if (v->started && gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
+    if (v->started && 
+        gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
         handle_menu_selection(X->mrec[(int) M_ACC], c);
+    }
 }
+
 
 /*ARGSUSED*/
 static void
 accuracy_other_cb(GtkWidget *widget)
 {
-    if (v->started)    
+    if (v->started) {
         show_precision_frame();
+    }
 }
+
 
 /*ARGSUSED*/
 static void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
     if (!v->doing_mi) {
-        v->show_zeroes = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
+        v->show_zeroes = gtk_check_menu_item_get_active(
+                                               GTK_CHECK_MENU_ITEM(widget));
 
         syntaxdep_show_display();
         put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
@@ -2772,8 +2846,7 @@ spframe_key_cb(GtkWidget *widget, GdkEventKey *event)
         update_statusbar(_("Accuracy value out of range"),
                          "gtk-dialog-error");
         beep();
-    }
-    else if (event->keyval == GDK_Escape) {
+    } else if (event->keyval == GDK_Escape) {
         gtk_widget_hide(X->spframe);
     }    
 
@@ -2803,12 +2876,14 @@ spframe_ok_cb(GtkButton *button)
     gtk_widget_hide(X->spframe);
 }
 
+
 /*ARGSUSED*/
 void
 trig_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget), "response_id"));
+        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
+                                                       "response_id"));
 }
 
 
@@ -2890,6 +2965,7 @@ win_display(enum fcp_type fcptype, int state)
     }
 }
 
+
 static void
 create_kframe()
 {
@@ -2913,8 +2989,7 @@ create_kframe()
     
     
     X->ui = glade_xml_new(UI_FILE, NULL, NULL);
-    if (X->ui == NULL)
-    {
+    if (X->ui == NULL) {
         GtkWidget *dialog;
         
         dialog = gtk_message_dialog_new(NULL, 0,
@@ -2953,10 +3028,13 @@ create_kframe()
                            make_number(v->MPmvals[i], v->base, TRUE));
     }
 
-    // When connecting up signals, would ideally use autoconnect but not sure how to get the build process
-    // working. See http://library.gnome.org/devel/libglade/unstable and
-    // http://www.jamesh.id.au/software/libglade/ for some information on how to get this to work
-    //glade_xml_signal_autoconnect(X->ui);
+    /* When connecting up signals, would ideally use autoconnect but not 
+     * sure how to get the build process working. 
+     * See http://library.gnome.org/devel/libglade/unstable and
+     * http://www.jamesh.id.au/software/libglade/ 
+     * for some information on how to get this to work
+     * glade_xml_signal_autoconnect(X->ui);
+     */
     CONNECT_SIGNAL(kframe_key_press_cb);
     CONNECT_SIGNAL(button_cb);
     CONNECT_SIGNAL(menu_button_button_press_cb);
@@ -3010,10 +3088,10 @@ create_kframe()
 
     X->menubar = GET_WIDGET("menubar");
 
-    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), (v->modetype != BASIC));
+    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), 
+                             (v->modetype != BASIC));
 
     X->scrolledwindow = GET_WIDGET("display_scroll"),
-
 
     X->display_item = GET_WIDGET("displayitem"),
     gtk_widget_ensure_style(X->display_item);
@@ -3068,11 +3146,14 @@ create_kframe()
     X->inv = GET_WIDGET("inverse_check");
     X->hyp = GET_WIDGET("hyperbolic_check");
     for (i = 0; i < 3; i++)
-        g_object_set_data(G_OBJECT(X->trig[i]), "response_id", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(X->trig[i]),
+                          "response_id", GINT_TO_POINTER(i));
     for (i = 0; i < 4; i++)
-        g_object_set_data(G_OBJECT(X->base[i]), "response_id", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(X->base[i]),
+                          "response_id", GINT_TO_POINTER(i));
     for (i = 0; i < 3; i++)        
-        g_object_set_data(G_OBJECT(X->disp[i]), "response_id", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(X->disp[i]),
+                          "response_id", GINT_TO_POINTER(i));
       
     X->bit_panel = GET_WIDGET("bit_panel");
     //gtk_widget_set_direction(table, GTK_TEXT_DIR_LTR);
@@ -3081,16 +3162,19 @@ create_kframe()
         SNPRINTF(name, MAXLINE, "bit_label_%d", i);
         X->bits[i] = GET_WIDGET(name);
         SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)), "widget_index", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
+                          "widget_index", GINT_TO_POINTER(i));
     }
 
     set_accuracy_tooltip(v->accuracy);
 
     grey_buttons(v->base);
     if (v->modetype == BASIC) {
-        gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->buttons[BUT_CLEAR_BASIC]));
+        gtk_window_set_focus(GTK_WINDOW(X->kframe),
+                             GTK_WIDGET(X->buttons[BUT_CLEAR_BASIC]));
     } else {
-        gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->buttons[BUT_CLEAR_ADVANCED]));
+        gtk_window_set_focus(GTK_WINDOW(X->kframe),
+                             GTK_WIDGET(X->buttons[BUT_CLEAR_ADVANCED]));
     }
 
     X->statusbar = GET_WIDGET("statusbar");
@@ -3137,29 +3221,35 @@ create_kframe()
     set_redo_and_undo_button_sensitivity(0, 0);
     
     /* Connect up menu callbacks */
-    for (i = 1; i < 16; i++)
-    {
+    for (i = 1; i < 16; i++) {
         SNPRINTF(name, MAXLINE, "shift_left%d_menu", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)), "shiftcount", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
+                          "shiftcount", GINT_TO_POINTER(i));
         SNPRINTF(name, MAXLINE, "shift_right%d_menu", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)), "shiftcount", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
+                          "shiftcount", GINT_TO_POINTER(i));
     }
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_basic_menu")), "calcmode", GINT_TO_POINTER(BASIC));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_advanced_menu")), "calcmode", GINT_TO_POINTER(ADVANCED));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_financial_menu")), "calcmode", GINT_TO_POINTER(FINANCIAL));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_scientific_menu")), "calcmode", GINT_TO_POINTER(SCIENTIFIC));
+    g_object_set_data(G_OBJECT(GET_WIDGET("view_basic_menu")),
+                      "calcmode", GINT_TO_POINTER(BASIC));
+    g_object_set_data(G_OBJECT(GET_WIDGET("view_advanced_menu")),
+                      "calcmode", GINT_TO_POINTER(ADVANCED));
+    g_object_set_data(G_OBJECT(GET_WIDGET("view_financial_menu")),
+                      "calcmode", GINT_TO_POINTER(FINANCIAL));
+    g_object_set_data(G_OBJECT(GET_WIDGET("view_scientific_menu")),
+                      "calcmode", GINT_TO_POINTER(SCIENTIFIC));
 
     /* Make shortcuts for accuracy menus */
     accel_group = gtk_accel_group_new();
     gtk_window_add_accel_group(GTK_WINDOW(X->kframe), accel_group);
-    for (i = 0; i < 10; i++)
-    {
+    for (i = 0; i < 10; i++) {
         SNPRINTF(name, MAXLINE, "acc_item%d", i);
         widget = GET_WIDGET(name);
         g_object_set_data(G_OBJECT(widget), "index", GINT_TO_POINTER(i));
-        gtk_widget_add_accelerator(widget, "activate", accel_group, GDK_0 + i, GDK_CONTROL_MASK, 0);
+        gtk_widget_add_accelerator(widget, "activate", accel_group,
+                                   GDK_0 + i, GDK_CONTROL_MASK, 0);
     }
 }
+
 
 void
 make_frames()
