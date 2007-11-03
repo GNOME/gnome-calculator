@@ -1082,17 +1082,6 @@ static void do_button(struct button *n, int arg)
 }
 
 
-/*ARGSUSED*/
-static void
-button_cb(GtkWidget *widget)
-{
-    struct button *n;
-    
-    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
-    do_button(n, 0);
-}
-
-
 static void
 help_display(void)
 {
@@ -2122,6 +2111,59 @@ display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
 
 
 /*ARGSUSED*/
+static void
+menu_pos_func(GtkMenu *menu, gint *x, gint *y,
+              gboolean *push_in, gpointer user_data)
+{
+    GdkPoint *loc = (GdkPoint *) user_data;
+
+    *x = loc->x;
+    *y = loc->y;
+}
+
+
+/*ARGSUSED*/
+static void
+button_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    struct button *n;
+    enum menu_type mtype;
+    GtkWidget *menu;
+    GdkPoint loc;
+    
+    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
+    mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "mtype"));
+    
+    if (mtype == M_NONE) {
+        do_button(n, 0);
+    } else {
+        /* If gcalctool is being driven by gok, the on-screen keyboard 
+         * assistive technology, it's possible that the event returned by 
+         * gtk_get_current_event() is NULL. If this is the case, we need 
+         * to fudge the popping up on the menu associated with this menu 
+         * button.
+         */
+
+        update_constants_menu();
+        update_functions_menu();
+        update_memory_menus();
+
+        menu = X->menus[mtype];
+        if (event == NULL) {
+            gdk_window_get_origin(widget->window, &loc.x, &loc.y);
+            loc.x += widget->allocation.x;
+            loc.y += widget->allocation.y;
+            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
+                           (gpointer) &loc, 0, gtk_get_current_event_time());
+        } else if (event->button == 1) {
+            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+                           event->button, event->time);
+        }
+    }
+}
+
+
+/*ARGSUSED*/
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
@@ -2185,7 +2227,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         while (button_widgets[i].accelerator_keys[j] != 0) {
             if (button_widgets[i].accelerator_keys[j] == event->keyval &&
                 (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
-                button_cb(button);
+                button_cb(button, NULL);
                 return(TRUE);
             }
             j++;
@@ -2292,39 +2334,6 @@ show_ascii_frame()      /* Display ASCII popup. */
 }
 
 
-/*ARGSUSED*/
-static void
-menu_pos_func(GtkMenu *menu, gint *x, gint *y,
-              gboolean *push_in, gpointer user_data)
-{
-    GdkPoint *loc = (GdkPoint *) user_data;
-
-    *x = loc->x;
-    *y = loc->y;
-}
-
-
-static void
-show_menu_for_button(GtkWidget *widget, GdkEventKey *event)
-{
-    GdkPoint loc;
-    GtkWidget *menu;
-    enum menu_type mtype;
-    
-    update_constants_menu();
-    update_functions_menu();
-    update_memory_menus();
-
-    mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "mtype"));
-    menu = X->menus[mtype];
-    gdk_window_get_origin(widget->window, &loc.x, &loc.y);
-    loc.x += widget->allocation.x;
-    loc.y += widget->allocation.y;
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
-                   (gpointer) &loc, event->keyval, event->time);
-}
-
-
 static void
 show_precision_frame()      /* Display Set Precision popup. */
 {
@@ -2342,55 +2351,6 @@ make_reg(int n, char *str)
     gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(str));
     gtk_entry_set_text(GTK_ENTRY(X->regs[n]), str);
 }
-
-
-/*ARGSUSED*/
-static void 
-menu_button_button_press_cb(GtkButton *widget)
-{
-    GtkWidget *menu;
-    GdkEventButton *event = (GdkEventButton *) gtk_get_current_event();
-    enum menu_type mtype;
-
-    mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "mtype"));
-    menu = X->menus[mtype];
-
-/* If gcalctool is being driven by gok, the on-screen keyboard 
- * assistive technology, it's possible that the event returned by 
- * gtk_get_current_event() is NULL. If this is the case, we need 
- * to fudge the popping up on the menu associated with this menu 
- * button.
- */
-    
-    // FIXME: merge with show_menu_for_button()
-
-    update_constants_menu();
-    update_functions_menu();
-    update_memory_menus();
-
-    if (event == NULL) {
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                       1, gtk_get_current_event_time());
-    } else if (event->button == 1) {
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                       event->button, event->time);
-    }
-}
-
-
-/*ARGSUSED*/
-static gboolean
-menu_button_key_press_cb(GtkWidget *widget, GdkEventKey *event)
-{
-    if (event->keyval == GDK_space) {
-        show_menu_for_button(widget, event);
-
-        return(TRUE);
-    }
-
-    return(FALSE);
-}
-
 
 /* Handle menu bar menu selection. */
 
@@ -2926,8 +2886,6 @@ create_kframe()
      */
     CONNECT_SIGNAL(kframe_key_press_cb);
     CONNECT_SIGNAL(button_cb);
-    CONNECT_SIGNAL(menu_button_button_press_cb);
-    CONNECT_SIGNAL(menu_button_key_press_cb);
     CONNECT_SIGNAL(menu_item_select_cb);
     CONNECT_SIGNAL(menu_item_deselect_cb);
     CONNECT_SIGNAL(mode_radio_cb);
