@@ -1194,7 +1194,7 @@ update_popup_label(GtkWidget *menu_item, gchar *text)
 {
     GtkWidget *label;
     label = (GtkWidget *)gtk_container_get_children(GTK_CONTAINER(menu_item))->data;
-    gtk_label_set_markup(GTK_LABEL(label), text);
+    gtk_label_set_markup_with_mnemonic(GTK_LABEL(label), text);
 }
 
 static void
