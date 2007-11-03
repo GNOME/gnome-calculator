@@ -20,8 +20,6 @@
  */
 #include "config.h"
 
-// FIXME: Acc works in all modes
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -1366,21 +1364,15 @@ update_mode_widgets(int mode)
 
 
 void
-set_accuracy_menu_item(int accuracy)
+update_accuracy(int accuracy)
 {
     GtkWidget *label;
     char text[MAXLINE];
+    char *desc, *current, *tooltip;
 
     SNPRINTF(text, MAXLINE, _("Other (%d) ..."), accuracy);
     label = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_text(GTK_LABEL(label), text);
-}
-
-
-void
-set_accuracy_tooltip(int accuracy)
-{
-    char *desc, *current, *tooltip;
 
     desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric places.",
                                     "Set accuracy from 0 to %d numeric places.",
@@ -1404,12 +1396,12 @@ static void
 set_accuracy_toggle(int val)
 {
     char name[MAXLINE];
-    GtkWidget *acc;
+    GtkWidget *radio;
 
     if (val >= 0 && val <= 9) {
         SNPRINTF(name, MAXLINE, "acc_item%d", val);
-        acc = GET_WIDGET(name);
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(acc), TRUE);
+        radio = GET_WIDGET(name);
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(radio), TRUE);
     }
 }
 
@@ -2140,8 +2132,46 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         event->state = 0;
         event->keyval = GDK_KP_Decimal;
     }
-
+    
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
+
+    /* Accuracy shortcuts */
+    if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC)
+    {
+        switch (event->keyval) {
+            case GDK_0:
+                do_accuracy(0);
+                return (TRUE);
+            case GDK_1:
+                do_accuracy(1);
+                return (TRUE);
+            case GDK_2:
+                do_accuracy(2);
+                return (TRUE);
+            case GDK_3:
+                do_accuracy(3);
+                return (TRUE);
+            case GDK_4:
+                do_accuracy(4);
+                return (TRUE);
+            case GDK_5:
+                do_accuracy(5);
+                return (TRUE);
+            case GDK_6:
+                do_accuracy(6);
+                return (TRUE);
+            case GDK_7:
+                do_accuracy(7);
+                return (TRUE);
+            case GDK_8:
+                do_accuracy(8);
+                return (TRUE);
+            case GDK_9:
+                do_accuracy(9);
+                return (TRUE);
+        }
+    }
+
     for (i = 0; i < NBUTTONS; i++) {
         button = X->buttons[i];
         
@@ -2587,11 +2617,11 @@ accuracy_radio_cb(GtkWidget *widget)
 {
     int count;
     
-    count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "index"));
+    count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "accuracy"));
     
     if (v->started && 
         gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
-        //FIXME: do_accuracy(count);
+        do_accuracy(count);
     }
 }
 
@@ -2668,8 +2698,7 @@ spframe_ok_cb(GtkButton *button)
     SNPRINTF(intval, MAXLINE, "%d", v->accuracy);
     put_resource(R_ACCURACY, intval);
 
-    set_accuracy_menu_item(v->accuracy);
-    set_accuracy_tooltip(v->accuracy);
+    update_accuracy(v->accuracy);
     set_accuracy_toggle(v->accuracy);
 
     make_registers();
@@ -2920,6 +2949,7 @@ create_kframe()
     CONNECT_SIGNAL(show_thousands_separator_cb);
     CONNECT_SIGNAL(show_bitcalculating_cb);
     CONNECT_SIGNAL(show_registers_cb);
+    CONNECT_SIGNAL(accuracy_radio_cb);
     CONNECT_SIGNAL(accuracy_other_cb);
     CONNECT_SIGNAL(arithmetic_mode_cb);
     CONNECT_SIGNAL(mouse_button_cb);
@@ -2929,7 +2959,6 @@ create_kframe()
     CONNECT_SIGNAL(buffer_populate_popup_cb);
     CONNECT_SIGNAL(shift_left_cb);
     CONNECT_SIGNAL(shift_right_cb);
-    CONNECT_SIGNAL(accuracy_radio_cb);
     CONNECT_SIGNAL(bit_toggled);
     CONNECT_SIGNAL(dismiss_aframe);
     CONNECT_SIGNAL(aframe_ok_cb);
@@ -3038,8 +3067,6 @@ create_kframe()
                           "widget_index", GINT_TO_POINTER(i));
     }
 
-    set_accuracy_tooltip(v->accuracy);
-
     grey_buttons(v->base);
     if (v->modetype == BASIC) {
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
@@ -3116,9 +3143,7 @@ create_kframe()
     for (i = 0; i < 10; i++) {
         SNPRINTF(name, MAXLINE, "acc_item%d", i);
         widget = GET_WIDGET(name);
-        g_object_set_data(G_OBJECT(widget), "index", GINT_TO_POINTER(i));
-        gtk_widget_add_accelerator(widget, "activate", accel_group,
-                                   GDK_0 + i, GDK_CONTROL_MASK, 0);
+        g_object_set_data(G_OBJECT(widget), "accuracy", GINT_TO_POINTER(i));
     }
 }
 
@@ -3159,7 +3184,7 @@ make_frames()
 
     X->menus[M_ACC] = GET_WIDGET("accuracy_popup");
     X->mrec[M_ACC] = &buttons[KEY_SET_ACCURACY];
-    set_accuracy_menu_item(v->accuracy);
+    update_accuracy(v->accuracy);
     X->menus[M_LSHF] = GET_WIDGET("left_shift_popup");
     X->mrec[M_LSHF] = &buttons[KEY_LEFT_SHIFT];
     X->menus[M_RSHF] = GET_WIDGET("right_shift_popup");

@@ -202,10 +202,10 @@ void
 perform_redo(void)
 {
     if (v->h.current != v->h.end) {
-	v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
-	update_statusbar("", "");
+        v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+        update_statusbar("", "");
     } else {
-	update_statusbar("No redo steps", "gtk-dialog-warning");
+        update_statusbar("No redo steps", "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
 }
@@ -215,12 +215,11 @@ void
 do_accuracy(int value)     /* Set display accuracy. */
 {
     char intval[5];
-
+    
     v->accuracy = value;
     SPRINTF(intval, "%d", v->accuracy);
     put_resource(R_ACCURACY, intval);
-    set_accuracy_menu_item(v->accuracy);
-    set_accuracy_tooltip(v->accuracy);
+    update_accuracy(v->accuracy);
     make_registers();
     clear_undo_history();
     syntaxdep_show_display();
