@@ -793,6 +793,7 @@ ui_set_mode(enum mode_type mode)
     GtkRequisition *r;
     gint w, h;
     char *hostname, title[MAXLINE];
+    GtkWidget *radio;      
   
     switch (mode) {
         case BASIC:
@@ -802,6 +803,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
+            radio = GET_WIDGET("view_basic_menu");
             break;
 
         case ADVANCED:
@@ -811,6 +813,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
+            radio = GET_WIDGET("view_advanced_menu");
             break;
 
         case FINANCIAL:
@@ -820,6 +823,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
+            radio = GET_WIDGET("view_financial_menu");
             break;
 
         case SCIENTIFIC:
@@ -833,9 +837,27 @@ ui_set_mode(enum mode_type mode)
                 gtk_widget_hide(X->bit_panel);
             }
             gtk_widget_show(X->sci_panel);
+            radio = GET_WIDGET("view_scientific_menu");
             break;
+        
+        default:
+            assert(FALSE);
+            return;
     }
-  
+    
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(radio), TRUE);
+    
+    /* Disable widgets not applicable in this mode */
+    radio = GET_WIDGET("show_trailing_zeroes_menu");
+    gtk_widget_set_sensitive(radio, v->modetype == SCIENTIFIC);
+    radio = GET_WIDGET("show_bitcalculating_menu");
+    gtk_widget_set_sensitive(radio, v->modetype == SCIENTIFIC);
+    radio = GET_WIDGET("show_registers_menu");
+    gtk_widget_set_sensitive(radio, v->modetype != BASIC);
+    if (v->modetype == BASIC) {
+        gtk_dialog_response(GTK_DIALOG(X->rframe), GTK_RESPONSE_CLOSE);
+    }
+
     r = g_new0(GtkRequisition, 1);
     gtk_widget_size_request(X->menubar, r);
     w = r->width;
@@ -1328,32 +1350,6 @@ create_cf_model(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
-static void 
-update_mode_widgets(int mode)
-{
-    GtkWidget *widget;
-    
-    switch (mode) {
-        case FINANCIAL:
-            widget = GET_WIDGET("view_financial_menu");
-            break;
-
-        case SCIENTIFIC:
-            widget = GET_WIDGET("view_scientific_menu");
-            break;
-
-        case ADVANCED:
-            widget = GET_WIDGET("view_advanced_menu");
-            break;
-
-        default:
-            widget = GET_WIDGET("view_advanced_menu");
-            break;
-    }
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
-}
-
-
 void
 ui_set_accuracy(int accuracy)
 {
@@ -1448,23 +1444,8 @@ ui_make_registers()            /* Calculate memory register frame values. */
 
 
 static void
-reset_mode_display(int toclear)
+reset_mode_display(void)
 {
-    GtkWidget *radio;
-    
-/* If the new mode is BASIC, then we need to dismiss the memory register
- * window (if it's being displayed), as there is no way to interact with it.
- */
-
-    radio = GET_WIDGET("show_trailing_zeroes_menu");
-    gtk_widget_set_sensitive(radio, v->modetype == SCIENTIFIC);
-    radio = GET_WIDGET("show_registers_menu");
-    gtk_widget_set_sensitive(radio, v->modetype != BASIC);
-
-    if (v->modetype == BASIC) {
-        gtk_dialog_response(GTK_DIALOG(X->rframe), GTK_RESPONSE_CLOSE);
-    }
-
     switch (v->syntax) {
         case npa:
             show_display(v->MPdisp_val);
@@ -1474,9 +1455,7 @@ reset_mode_display(int toclear)
             refresh_display();
             break;
     }
-
     ui_make_registers();
-    do_mode(toclear);
 }
 
 
@@ -1510,7 +1489,8 @@ change_mode(int mode)
     set_show_zeroes_toggle(v->show_zeroes);
     set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
 
-    reset_mode_display(TRUE);
+    reset_mode_display();
+    do_mode(TRUE);
 }
 
 
@@ -1521,7 +1501,7 @@ cm_response_cb(GtkDialog *dialog, int response)
     if (response == GTK_RESPONSE_ACCEPT) {
         change_mode(X->mode);
     } else {
-        update_mode_widgets(v->modetype);
+        ui_set_mode(v->modetype);
     }
 
     gtk_widget_destroy(X->cm_dialog);
@@ -2517,8 +2497,8 @@ mode_radio_cb(GtkWidget *radio)
 
     if (immediate) {
         v->modetype = X->mode;
-        reset_mode_display(FALSE);
-
+        reset_mode_display();
+        do_mode(FALSE);
     } else {
         if (v->warn_change_mode) {
             show_change_mode_dialog();
@@ -2975,8 +2955,6 @@ create_kframe()
     X->status_image = gtk_image_new_from_stock("", GTK_ICON_SIZE_BUTTON);
     gtk_widget_show(X->status_image);
     gtk_box_pack_start(GTK_BOX(X->statusbar), X->status_image, FALSE, TRUE, 0);
-
-    update_mode_widgets(v->modetype);
 
     /* Use loaded Arithmetic Precedence mode setting. */
     if (v->syntax == exprs) {
