@@ -40,7 +40,6 @@
 #include "ce_parser.h"
 #include "mpmath.h"
 #include "display.h"
-#include "graphics.h"
 #include "get.h"
 
 /* Popup menu types. */
@@ -482,7 +481,7 @@ main(int argc, char **argv)
 
     gtk_init(&argc, &argv);
 
-    X->lnp = get_localized_numeric_point();
+    X->lnp = ui_get_localized_numeric_point();
 
     gtk_rc_get_default_files();
 
@@ -498,7 +497,7 @@ main(int argc, char **argv)
 
 
 void 
-update_statusbar(gchar *text, const gchar *imagename)
+ui_set_statusbar(gchar *text, const gchar *imagename)
 {
     GtkImage *image = GTK_IMAGE(X->status_image);
 
@@ -552,16 +551,9 @@ bin_str(int MP_value[MP_SIZE], char *str, int maxbits)
 /* Set new title for a window. */
 
 void
-set_title(enum fcp_type fcptype, char *str)
+ui_set_title(char *str)
 {
-    GtkWidget *f = NULL;
-
-    if (fcptype == FCP_KEY) {
-        f = X->kframe;
-    } else if (fcptype == FCP_REG) {
-        f = X->rframe;
-    }
-    gtk_window_set_title(GTK_WINDOW(f), _(str));
+    gtk_window_set_title(GTK_WINDOW(X->kframe), _(str));
 }
 
 
@@ -638,7 +630,7 @@ scroll_right()
 
 
 void
-set_display(char *str, int minimize_changes)
+ui_set_display(char *str, int minimize_changes)
 {
     char localized[MAX_LOCALIZED];
     GtkTextIter start, end;
@@ -687,7 +679,7 @@ set_display(char *str, int minimize_changes)
 
 
 void
-write_display(char *str)
+ui_write_display(char *str)
 {
     gchar *text;
     GtkTextIter start, end;
@@ -720,7 +712,7 @@ write_display(char *str)
  */
 
 void
-set_error_state(int error)
+ui_set_error_state(int error)
 {
     int i;
 
@@ -734,7 +726,7 @@ set_error_state(int error)
     gtk_widget_set_sensitive(X->clear_buttons[1], TRUE);
 
     if (!v->error) {
-        grey_buttons(v->base);
+        ui_set_base(v->base);
     }
 
     gtk_widget_set_sensitive(X->mode_panel, !v->error);
@@ -757,14 +749,14 @@ set_error_state(int error)
 
 
 void
-set_hyp_item(int state)
+ui_set_hyperbolic_state(int state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyp), state);
 }
 
 
 void
-set_inv_item(int state)
+ui_set_inverse_state(int state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inv), state);
 }
@@ -780,7 +772,7 @@ set_memory_toggle(int state)
 
 
 void
-set_mode(enum mode_type mode)
+ui_set_mode(enum mode_type mode)
 {
     GtkRequisition *r;
     gint w, h;
@@ -1046,7 +1038,7 @@ base_cb(GtkWidget *widget)
 
 
 void
-beep()
+ui_beep()
 {
     gdk_beep();
 }
@@ -1061,7 +1053,7 @@ static void do_button(struct button *n, int arg)
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
-                set_display(v->fnum, TRUE);
+                ui_set_display(v->fnum, TRUE);
             }
             break;
 
@@ -1338,7 +1330,7 @@ update_mode_widgets(int mode)
 
 
 void
-update_accuracy(int accuracy)
+ui_set_accuracy(int accuracy)
 {
     GtkWidget *label;
     char text[MAXLINE];
@@ -1414,6 +1406,22 @@ set_show_zeroes_toggle(int state)
 }
 
 
+void
+ui_make_registers()            /* Calculate memory register frame values. */
+{
+    char *mval, key[MAXLINE];
+    int n;
+
+    for (n = 0; n < MAXREGS; n++) {
+        mval = make_number(v->MPmvals[n], v->base, TRUE);
+        gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
+        gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
+        SNPRINTF(key, MAXLINE, "register%d", n);
+        set_resource(key, mval);
+    }
+}
+
+
 static void
 reset_mode_display(int toclear)
 {
@@ -1442,7 +1450,7 @@ reset_mode_display(int toclear)
             break;
     }
 
-    make_registers();
+    ui_make_registers();
     do_mode(toclear);
 }
 
@@ -1464,7 +1472,7 @@ change_mode(int mode)
     X->mode = mode;
     v->modetype = mode;
     set_item(BASEITEM, DEC);
-    grey_buttons(v->base);
+    ui_set_base(v->base);
     set_item(NUMITEM, FIX);
     v->accuracy = 9;
     set_accuracy_toggle(v->accuracy);
@@ -1594,7 +1602,7 @@ bit_toggled(GtkWidget *event_box, GdkEventButton *event)
 
 
 void 
-set_redo_and_undo_button_sensitivity(int undo, int redo)
+ui_set_undo_enabled(int undo, int redo)
 {
     gtk_widget_set_sensitive(X->undo, undo); 
     gtk_widget_set_sensitive(X->redo, redo);
@@ -1724,7 +1732,7 @@ disp_cb(GtkWidget *widget)
 }
 
 
-void
+static void
 get_constant(int n)
 {
     char nkey[MAXLINE], *nline;
@@ -1768,7 +1776,7 @@ get_display()              /* The Copy function key has been pressed. */
 }
 
 
-void
+static void
 get_function(int n)
 {
     char nkey[MAXLINE], *nline;
@@ -1790,7 +1798,7 @@ get_function(int n)
 
 
 char *
-get_localized_numeric_point(void)
+ui_get_localized_numeric_point(void)
 {
     const char *decimal_point;
 
@@ -1886,7 +1894,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             if (!ret) {
                 show_display(v->MPdisp_val);
             } else {
-                update_statusbar(_("Clipboard contained malformed calculation"),
+                ui_set_statusbar(_("Clipboard contained malformed calculation"),
                                  "gtk-dialog-error");
             }
             break;
@@ -1905,7 +1913,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 
 
 void
-grey_buttons(enum base_type base)
+ui_set_base(enum base_type base)
 {
     int i, baseval = basevals[(int) base];
 
@@ -2000,7 +2008,7 @@ check_for_localized_numeric_point(int keyval)
 
 
 void
-get_expr_from_display()
+ui_parse_display()
 {
     char *text;
     GtkTextIter start, end;
@@ -2034,7 +2042,7 @@ delete_from_cursor()
 
 
 void
-insert_to_cursor(char *text)
+ui_insert_display(char *text)
 {
     gtk_text_buffer_insert_at_cursor(X->display_buffer,
                                      text,
@@ -2047,7 +2055,7 @@ static gboolean
 display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
 {
     if (v->syntax == exprs) {
-        get_expr_from_display();
+        ui_parse_display();
     } 
 
     return(FALSE);
@@ -2311,13 +2319,6 @@ show_precision_frame()      /* Display Set Precision popup. */
 }
 
 
-void
-make_reg(int n, char *str)
-{
-    gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(str));
-    gtk_entry_set_text(GTK_ENTRY(X->regs[n]), str);
-}
-
 /* Handle menu bar menu selection. */
 
 /*ARGSUSED*/
@@ -2411,7 +2412,7 @@ show_bitcalculating_cb(GtkWidget *widget)
 {
     if (v->started) {
         v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
-        set_mode(v->modetype);
+        ui_set_mode(v->modetype);
         set_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
     }
 }
@@ -2444,7 +2445,7 @@ arithmetic_mode_cb(GtkWidget *widget)
             v->noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
             show_display(v->MPdisp_val);
-            update_statusbar(_("Activated no operator precedence mode"), "");
+            ui_set_statusbar(_("Activated no operator precedence mode"), "");
             clear_undo_history();
             break;
 
@@ -2454,7 +2455,7 @@ arithmetic_mode_cb(GtkWidget *widget)
             MPstr_to_num("0", DEC, e->ans);
             exp_del();
             show_display(e->ans);
-            update_statusbar(
+            ui_set_statusbar(
                  _("Activated expression mode with operator precedence"), "");
         }
         break;
@@ -2463,7 +2464,7 @@ arithmetic_mode_cb(GtkWidget *widget)
             assert(0);
     }
     set_resource(R_SYNTAX, Rsstr[v->syntax]);
-    set_mode(v->modetype);
+    ui_set_mode(v->modetype);
     // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
                                (v->syntax == exprs));
@@ -2573,7 +2574,7 @@ show_trailing_zeroes_cb(GtkWidget *widget)
 
         syntaxdep_show_display();
         set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
-        make_registers();
+        ui_make_registers();
         
         set_show_zeroes_toggle(v->show_zeroes);
     }
@@ -2602,9 +2603,9 @@ static gboolean
 spframe_key_cb(GtkWidget *widget, GdkEventKey *event)
 {
     if (event->keyval == GDK_minus) {
-        update_statusbar(_("Accuracy value out of range"),
+        ui_set_statusbar(_("Accuracy value out of range"),
                          "gtk-dialog-error");
-        beep();
+        ui_beep();
     } else if (event->keyval == GDK_Escape) {
         gtk_widget_hide(X->spframe);
     }    
@@ -2623,10 +2624,10 @@ spframe_ok_cb(GtkButton *button)
 
     set_int_resource(R_ACCURACY, v->accuracy);
 
-    update_accuracy(v->accuracy);
+    ui_set_accuracy(v->accuracy);
     set_accuracy_toggle(v->accuracy);
 
-    make_registers();
+    ui_make_registers();
     refresh_display();
 
     gtk_widget_hide(X->spframe);
@@ -2644,7 +2645,7 @@ trig_cb(GtkWidget *widget)
 
 
 void
-start_tool()
+ui_start()
 {
     v->started = 1;
     set_item(BASEITEM, v->base);
@@ -2690,34 +2691,25 @@ show_thousands_separator_cb(GtkWidget *widget)
 
     syntaxdep_show_display();
     set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
-    make_registers();
+    ui_make_registers();
 }
 
 
 void
-win_display(enum fcp_type fcptype, int state)
+ui_set_registers_visible(int state)
 {
-    GtkWidget *f = NULL;
-
-    if (fcptype == FCP_REG) {
-        v->rstate = state;
-        f = X->rframe;
-    }
-
-    gtk_widget_realize(f);
-    if (state && gdk_window_is_visible(f->window)) {
-        gdk_window_raise(f->window);
+    v->rstate = state;
+    gtk_widget_realize(X->rframe);
+    if (state && gdk_window_is_visible(X->rframe->window)) {
+        gdk_window_raise(X->rframe->window);
         return;
     }
+
     if (state) {
-        if (fcptype == FCP_REG) {
-            ds_position_popup(X->kframe, f, DS_POPUP_ABOVE);
-        }
-    }
-    if (state) {
-        gtk_widget_show(f);
+        ds_position_popup(X->kframe, X->rframe, DS_POPUP_ABOVE);
+        gtk_widget_show(X->rframe);
     } else {
-        gtk_widget_hide(f);
+        gtk_widget_hide(X->rframe);
     }
 }
 
@@ -2922,7 +2914,7 @@ create_kframe()
 
     atk_object_set_role(gtk_widget_get_accessible(X->display_item), 
                                                   ATK_ROLE_EDITBAR);
-    set_display("0.00", FALSE);
+    ui_set_display("0.00", FALSE);
 
     gtk_widget_realize(X->kframe);
     gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
@@ -2992,7 +2984,7 @@ create_kframe()
                           "widget_index", GINT_TO_POINTER(i));
     }
 
-    grey_buttons(v->base);
+    ui_set_base(v->base);
     if (v->modetype == BASIC) {
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
                              GTK_WIDGET(X->clear_buttons[0]));
@@ -3042,7 +3034,7 @@ create_kframe()
     set_menubar_tooltip("help_menu");
     set_menubar_tooltip("about_menu");
 
-    set_redo_and_undo_button_sensitivity(0, 0);
+    ui_set_undo_enabled(FALSE, FALSE);
     
     /* Connect up menu callbacks */
     for (i = 1; i < 16; i++) {
@@ -3097,19 +3089,34 @@ create_menu_item_with_markup(char *label, int menu_no, int index)
 }
 
 
+static void
+read_cfdefs()        /* Read constant/function definitions. */
+{
+    int n;
+
+    for (n = 0; n < MAXCONFUN; n++) {
+        get_constant(n);
+        STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
+        get_function(n);
+    }
+}
+
+
 void
-make_frames()
+ui_init()
 {
     int i;
+    
+    read_cfdefs();
     
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     create_kframe();                     /* Create main gcalctool window. */
-    set_mode(v->modetype);
+    ui_set_mode(v->modetype);
 
     X->menus[M_ACC] = GET_WIDGET("accuracy_popup");
     X->mrec[M_ACC] = &buttons[KEY_SET_ACCURACY];
-    update_accuracy(v->accuracy);
+    ui_set_accuracy(v->accuracy);
     X->menus[M_LSHF] = GET_WIDGET("left_shift_popup");
     X->mrec[M_LSHF] = &buttons[KEY_LEFT_SHIFT];
     X->menus[M_RSHF] = GET_WIDGET("right_shift_popup");

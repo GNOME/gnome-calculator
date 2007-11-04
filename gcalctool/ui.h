@@ -24,40 +24,29 @@
 
 #include "calctool.h"
 
-void set_redo_and_undo_button_sensitivity(int undo, int redo);
+void ui_init();
+void ui_start();
 
-void insert_to_cursor(char *text);
+void ui_make_registers(void);
+void ui_set_undo_enabled(int undo, int redo);
 
-void get_expr_from_display();
+void ui_set_display(char *, int);
+void ui_write_display(char *); /* FIXME: What is the difference between ui_write_display() and ui_set_display() */
+void ui_insert_display(char *text);
+void ui_parse_display(void);
 
-void win_display(enum fcp_type, int);
+void ui_set_registers_visible(int);
+void ui_set_accuracy(int);
+void ui_set_mode(enum mode_type);
+void ui_set_base(enum base_type);
+void ui_set_inverse_state(int);
+void ui_set_hyperbolic_state(int);
 
-char *get_localized_numeric_point(void);
+void ui_set_title(char *);
+void ui_set_error_state(int);
+void ui_set_statusbar(gchar *, const gchar *);
 
-void beep();
-
-void get_constant(int);
-
-void get_function(int);
-
-void grey_buttons(enum base_type);
-
-void make_frames();
-
-void make_reg(int, char *);
-
-void set_display(char *, int);
-
-void write_display(char *);
-
-void start_tool();
-
-void set_error_state(int);
-void update_accuracy(int);
-void set_mode(enum mode_type);
-void set_title(enum fcp_type, char *);
-void update_statusbar(gchar *, const gchar *);
-void set_inv_item(int);
-void set_hyp_item(int);
+void ui_beep(void);
+char *ui_get_localized_numeric_point(void);
 
 #endif /* UI_H */

@@ -58,9 +58,6 @@ enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY,  M_FIN,
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
-/* Main calctool window types. */
-enum fcp_type  { FCP_KEY, FCP_REG, FCP_MODE };
-
 enum item_type { BASEITEM, TTYPEITEM, NUMITEM,
                  HYPITEM,  INVITEM,   OPITEM,  MODEITEM };
 
@@ -297,7 +294,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */
 
     enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
-    enum fcp_type curwin;           /* Window current event occured in. */
     enum mode_type modetype;        /* Current calculator mode. */
     enum num_type dtype;            /* Number display mode. */
     enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
@@ -305,7 +301,6 @@ struct calcVars {                      /* Calctool variables and options. */
     enum syntax syntax;             /* Calculation syntax mode */
 
     int accuracy;      /* Number of digits precision (Max 9). */
-    int beep;          /* Indicates whether there is a beep sound on error. */
     int cur_op;        /* Current arithmetic operation. */
     int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int error;         /* Indicates some kind of display error. */

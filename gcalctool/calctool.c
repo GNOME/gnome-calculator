@@ -28,7 +28,6 @@
 #include "get.h"
 #include "display.h"
 #include "functions.h"
-#include "graphics.h"
 #include "ui.h"
 
 time_t time();
@@ -491,9 +490,9 @@ doerr(char *errmes)
         case npa:
             strncpy(v->display, errmes, MAXLINE - 1);
             v->display[MAXLINE - 1] = '\0';
-            set_error_state(TRUE);
-            set_display(v->display, FALSE);
-            beep();
+            ui_set_error_state(TRUE);
+            ui_set_display(v->display, FALSE);
+            ui_beep();
             break;
 
         case exprs:
@@ -574,8 +573,7 @@ do_calctool(int argc, char **argv)
     load_resources();          /* Get resources from various places. */
     read_resources();          /* Read resources from merged database. */
     get_options(argc, argv);   /* Get command line arguments. */
-    read_cfdefs();             /* Read constant/function definitions. */
-    make_frames();             /* Create gcalctool window frames. */
+    ui_init();             /* Create gcalctool window frames. */
 
     v->current    = KEY_CALCULATE;
     v->shelf      = NULL;      /* No selection for shelf initially. */
@@ -591,9 +589,9 @@ do_calctool(int argc, char **argv)
     do_clear();                /* Initialise and clear display. */
 
     if (v->rstate == TRUE) {   /* Show the memory register window? */
-        make_registers();
+        ui_make_registers();
         if (!v->iconic) {
-            win_display(FCP_REG, TRUE);
+            ui_set_registers_visible(TRUE);
         }
     }
 
@@ -603,5 +601,5 @@ do_calctool(int argc, char **argv)
 
     memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
 
-    start_tool();                    /* Display the calculator. */
+    ui_start();                    /* Display the calculator. */
 }

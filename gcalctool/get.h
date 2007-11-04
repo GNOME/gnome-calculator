@@ -60,7 +60,6 @@ int get_int_resource(char *key, int *value);
 const char *get_radix();
 const char *get_tsep();
 void get_options(int, char **);
-void read_cfdefs();
 void read_str(char **, char *);
 
 #endif /* GET_H */

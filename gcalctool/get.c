@@ -35,7 +35,6 @@
 #include "get.h"
 #include "display.h"
 #include "mp.h"
-#include "ui.h" /* FIXME: Needed for get_constant() and get_function() */
 
 /* Various string values read/written as X resources. */
 
@@ -340,19 +339,6 @@ init_vars()    /* Setup default values for various variables. */
     n = 0;
     for (i = 0; i < MAXREGS; i++) {
         mpcim(&n, v->MPmvals[i]);
-    }
-}
-
-
-void
-read_cfdefs()        /* Read constant/function definitions. */
-{
-    int n;
-
-    for (n = 0; n < MAXCONFUN; n++) {
-        get_constant(n);
-        STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
-        get_function(n);
     }
 }
 

@@ -129,7 +129,7 @@ clear_display(int initialise)
     mpcim(&i, v->MPdisp_val);
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
-    set_display(v->display, FALSE);
+    ui_set_display(v->display, FALSE);
     v->ghost_zero = 1;
 
     if (initialise == TRUE) {
@@ -137,8 +137,8 @@ clear_display(int initialise)
         v->opsptr     = 0;            /* Clear parentheses stacks. */
         v->numsptr    = 0;
         v->noparens   = 0;
-        set_hyp_item(FALSE);          /* Also clears v->hyperbolic. */
-        set_inv_item(FALSE);          /* Also clears v->inverse. */
+        ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
+        ui_set_inverse_state(FALSE);          /* Also clears v->inverse. */
     }
 }
 
@@ -396,7 +396,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int exp      = 0;
     int exp_sign = 1;
     int negate = 0;
-    char *lnp = get_localized_numeric_point();
+    char *lnp = ui_get_localized_numeric_point();
     assert(lnp);
 
     i = 0;
@@ -531,8 +531,8 @@ paren_disp(int key)
     }
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
-    v->show_paren = 1;       /* Hack to get set_display to really display it. */
-    set_display(&v->display[n], FALSE);
+    v->show_paren = 1;       /* Hack to get ui_set_display to really display it. */
+    ui_set_display(&v->display[n], FALSE);
     v->show_paren = 0;
 }
 
@@ -547,7 +547,7 @@ process_item(struct button *button, int arg)
         if (v->current != KEY_CLEAR) {
             return;
         }
-        set_error_state(FALSE);
+        ui_set_error_state(FALSE);
     }
     
     if (v->noparens > 0) {
@@ -566,7 +566,7 @@ show_display(int *MPval)
 {
     if (!v->error) {
         STRNCPY(v->display, make_number(MPval, v->base, FALSE), MAXLINE - 1);
-        set_display(v->display, FALSE);
+        ui_set_display(v->display, FALSE);
     }
 }
 
@@ -611,7 +611,7 @@ refresh_display()
                         str_replace(&str, reg, reg_val);
                     }
                 }
-                write_display(str);
+                ui_write_display(str);
                 free(str);
                 v->ghost_zero = 0;
             } else {

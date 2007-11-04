@@ -32,7 +32,6 @@
 #include "mp.h"
 #include "mpmath.h"
 #include "display.h"
-#include "graphics.h"
 #include "ce_parser.h"
 #include "lr_parser.h"
 #include "ui.h"
@@ -116,7 +115,7 @@ update_undo_redo_button_sensitivity(void)
 	undo = 1;
     }
 
-    set_redo_and_undo_button_sensitivity(undo, redo);
+    ui_set_undo_enabled(undo, redo);
 }
 
 
@@ -192,10 +191,10 @@ void
 perform_undo(void)
 {
     if (v->h.current != v->h.begin) {
-	v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
-	update_statusbar("", "");
+        v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
+        ui_set_statusbar("", "");
     } else {
-	update_statusbar("No undo history", "gtk-dialog-warning");
+        ui_set_statusbar("No undo history", "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
 }
@@ -213,9 +212,9 @@ perform_redo(void)
 {
     if (v->h.current != v->h.end) {
         v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
-        update_statusbar("", "");
+        ui_set_statusbar("", "");
     } else {
-        update_statusbar("No redo steps", "gtk-dialog-warning");
+        ui_set_statusbar("No redo steps", "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
 }
@@ -226,8 +225,8 @@ do_accuracy(int value)     /* Set display accuracy. */
 {
     v->accuracy = value;
     set_int_resource(R_ACCURACY, v->accuracy);
-    update_accuracy(v->accuracy);
-    make_registers();
+    ui_set_accuracy(v->accuracy);
+    ui_make_registers();
     clear_undo_history();
     syntaxdep_show_display();
 }
@@ -293,13 +292,13 @@ exp_insert(char *text)
 {
     // struct exprm_state *e;
     // e = get_state();
-    // write_display(e->expression);
+    // ui_write_display(e->expression);
     if (v->ghost_zero) {
-        write_display("");
+        ui_write_display("");
         v->ghost_zero = 0;
     }
-    insert_to_cursor(text);
-    get_expr_from_display();
+    ui_insert_display(text);
+    ui_parse_display();
 }
 
 
@@ -531,10 +530,10 @@ do_expression()
             return;
     }
 
-    update_statusbar("", "");
+    ui_set_statusbar("", "");
 
     if (e->button.flags & dpoint) {
-        btext = get_localized_numeric_point();
+        btext = ui_get_localized_numeric_point();
     } else {
         btext = e->button.symname;
     }
@@ -570,7 +569,7 @@ do_expression()
     } else if (e->button.flags & clear) {
         exp_del();
         update_display = 1;
-        set_error_state(FALSE);
+        ui_set_error_state(FALSE);
         MPstr_to_num("0", DEC, e->ans);
     } else if (e->button.flags & regrcl) {
         int i = e->value;
@@ -650,7 +649,7 @@ do_expression()
                         default:
                             message = _("Malformed expression");
                     }
-                    update_statusbar(message, "gtk-dialog-error");
+                    ui_set_statusbar(message, "gtk-dialog-error");
                 }
             } else {
                 perform_undo();
@@ -851,7 +850,7 @@ do_clear()       /* Clear the calculator display and re-initialise. */
 {
     clear_display(TRUE);
     if (v->error) {
-        set_display("", FALSE);
+        ui_set_display("", FALSE);
     }
     initialise();
 }
@@ -873,10 +872,10 @@ do_base(enum base_type b)    /* Change the current base setting. */
         case npa:
             v->base = b;
             set_resource(R_BASE, Rbstr[(int) v->base]);
-            grey_buttons(v->base);
+            ui_set_base(v->base);
 
             if (v->rstate) {
-                make_registers();
+                ui_make_registers();
             }
 	        break;
 	
@@ -885,7 +884,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
             ret = usable_num(MP);
 
             if (ret) {
-                update_statusbar(_("No sane value to convert"), 
+                ui_set_statusbar(_("No sane value to convert"), 
                                  "gtk-dialog-error");
             } else if (!v->ghost_zero) {
                 mpstr(MP, e->ans);
@@ -893,8 +892,8 @@ do_base(enum base_type b)    /* Change the current base setting. */
             }
             v->base = b;
             set_resource(R_BASE, Rbstr[(int) v->base]);
-            grey_buttons(v->base);
-            make_registers();
+            ui_set_base(v->base);
+            ui_make_registers();
             clear_undo_history();
             break;
     
@@ -960,12 +959,12 @@ do_delete()     /* Remove the last numeric character typed. */
         v->pointed = 0;
     }
 
-    set_display(v->display, TRUE);
+    ui_set_display(v->display, TRUE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        set_display(v->fnum, FALSE);
+        ui_set_display(v->fnum, FALSE);
     }
 }
 
@@ -984,7 +983,7 @@ do_exchange(int index)         /* Exchange display with memory register. */
             mpstr(v->MPdisp_val, MPtemp);
             mpstr(v->MPmvals[index], v->MPdisp_val);
             mpstr(MPtemp, v->MPmvals[index]);
-            make_registers();
+            ui_make_registers();
             break;
 
         case exprs:
@@ -993,7 +992,7 @@ do_exchange(int index)         /* Exchange display with memory register. */
             n = e->value;
             
             if (ret) {
-                update_statusbar(_("No sane value to store"), 
+                ui_set_statusbar(_("No sane value to store"), 
                                  "gtk-dialog-error");
             } else {
                 mpstr(v->MPmvals[n], MPtemp);
@@ -1001,7 +1000,7 @@ do_exchange(int index)         /* Exchange display with memory register. */
                 mpstr(MPtemp, e->ans);	      
                 exp_replace("Ans");
                 refresh_display();
-                make_registers();
+                ui_make_registers();
             }
             break;
 
@@ -1031,7 +1030,7 @@ do_expno()           /* Get exponential number. */
     v->toclear = 0;
     v->key_exp = 1;
     v->exp_posn = strchr(v->display, '+');
-    set_display(v->display, FALSE);
+    ui_set_display(v->display, FALSE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1112,9 +1111,9 @@ do_function(int index)      /* Perform a user defined function. */
     }
 
     if (!ret) {
-        update_statusbar("", "");
+        ui_set_statusbar("", "");
     } else { 
-        update_statusbar(_("Malformed function"), "gtk-dialog-error");
+        ui_set_statusbar(_("Malformed function"), "gtk-dialog-error");
     }
     v->new_input = 1;
 }
@@ -1161,7 +1160,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
              } else {
                  *v->exp_posn = '+';
              }
-             set_display(v->display, FALSE);
+             ui_set_display(v->display, FALSE);
              MPstr_to_num(v->display, v->base, s);
              v->key_exp = 0;
          } else {
@@ -1182,9 +1181,9 @@ do_immed()
 void
 do_memory()
 {
-    make_registers();
+    ui_make_registers();
     set_boolean_resource(R_REGS, v->rstate == TRUE);
-    win_display(FCP_REG, v->rstate);
+    ui_set_registers_visible(v->rstate);
 }
 
 
@@ -1193,7 +1192,7 @@ do_mode(int toclear)           /* Set special calculator mode. */
 {
     set_main_title(v->modetype);
     set_resource(R_MODE, Rmstr[(int) v->modetype]);
-    set_mode(v->modetype);
+    ui_set_mode(v->modetype);
     if (toclear) {
         do_clear();
     }
@@ -1215,7 +1214,7 @@ do_number()
         SNPRINTF(v->display+offset, MAXLINE-offset, "%s", buttons[v->current].symname);
     }
 
-    set_display(v->display, TRUE);
+    ui_set_display(v->display, TRUE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
@@ -1230,7 +1229,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
     switch (v->syntax) {
     case npa:
         if (v->rstate) {
-            make_registers();
+            ui_make_registers();
         }
         break;
         
@@ -1239,12 +1238,12 @@ do_numtype(enum num_type n)   /* Set number display type. */
         int MP[MP_SIZE];
         int ret = usable_num(MP);
         if (ret) {
-            update_statusbar(_("No sane value to convert"),
+            ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else if (!v->ghost_zero) {
             mpstr(MP, e->ans);
             exp_replace("Ans");
-            make_registers();
+            ui_make_registers();
         }
 	clear_undo_history();
 
@@ -1262,14 +1261,14 @@ do_numtype(enum num_type n)   /* Set number display type. */
 void
 do_paren()
 {
-    update_statusbar("", "");
+    ui_set_statusbar("", "");
 
     switch (v->current) {
         case KEY_START_BLOCK:
             if (v->noparens == 0) {
                 if (v->cur_op == -1) {
                     v->display[0] = 0;
-                    update_statusbar(_("Cleared display, prefix without an operator is not allowed"), "");
+                    ui_set_statusbar(_("Cleared display, prefix without an operator is not allowed"), "");
                 } else {
                     paren_disp(v->cur_op);
                 }
@@ -1290,7 +1289,7 @@ do_paren()
                     show_display(v->MPdisp_val);
                     return;
                 } else {
-                    update_statusbar(_("Malformed parenthesis expression"), 
+                    ui_set_statusbar(_("Malformed parenthesis expression"), 
                                      "gtk-dialog-error");
                 }
             }
@@ -1317,7 +1316,7 @@ do_sto(int index)
         case exprs:
             ret = usable_num(v->MPmvals[index]);
             if (ret) {
-                update_statusbar(_("No sane value to store"), 
+                ui_set_statusbar(_("No sane value to store"), 
                                  "gtk-dialog-error");
             }
             break;
@@ -1326,7 +1325,7 @@ do_sto(int index)
             assert(0);
     }
 
-    make_registers();
+    ui_make_registers();
 }
 
 
@@ -1415,7 +1414,7 @@ do_point()                   /* Handle numeric point. */
         }
         v->pointed = 1;
     }
-    set_display(v->display, FALSE);
+    ui_set_display(v->display, FALSE);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1480,7 +1479,7 @@ do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display val
             n = e->value;
             ret = usable_num(MPval);
             if (ret || !is_integer(MPval)) {
-                update_statusbar(_("No sane value to do bitwise shift"), 
+                ui_set_statusbar(_("No sane value to do bitwise shift"), 
                                  "gtk-dialog-error");
                 break;
             }
@@ -1541,12 +1540,12 @@ set_main_title(enum mode_type modetype)  /* Set the title for main window. */
         SNPRINTF(title, MAXLINE, "%s - %s", v->tool_label, 
                  _(mstrs[(int) modetype]));
     }
-    set_title(FCP_KEY, title);
+    ui_set_title(title);
 }
 
 
 void
 show_error(char *message)
 {
-    update_statusbar(message, "gtk-dialog-error");
+    ui_set_statusbar(message, "gtk-dialog-error");
 }

@@ -17,19 +17,22 @@ gcalctool_SOURCES = \
 	calctool.c \
 	calctool.h \
 	display.c \
+	display.h \
 	dsfuns.c \
 	dsdefs.h \
 	get.c \
+	get.h \
 	functions.c \
 	functions.h \
-	graphics.c \
 	mp.c \
+	mp.h \
 	mpmath.c \
 	mpmath.h \
 	parser.c \
 	parser.h \
 	parser_mac.h \
 	gtk.c \
+	ui.h \
 	ce_parser.c \
 	ce_parser.h \
 	ce_parser.tab.h \
