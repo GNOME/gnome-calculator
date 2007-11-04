@@ -19,28 +19,50 @@
  *  02111-1307, USA.
  */
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
+#ifndef UI_H
+#define UI_H
 
-#include "graphics.h"
+#include "calctool.h"
 
-#include "display.h"
-#include "ce_parser.h"
-#include "lr_parser.h"
-#include "functions.h"
-#include "ui.h"
+void set_redo_and_undo_button_sensitivity(int undo, int redo);
 
+void insert_to_cursor(char *text);
 
-void
-make_registers()            /* Calculate memory register frame values. */
-{
-    char *mval;
-    int n;
+void get_expr_from_display();
 
-    for (n = 0; n < MAXREGS; n++) {
-        mval = make_number(v->MPmvals[n], v->base, TRUE);
-        make_reg(n, mval);
-        put_resource(((int) R_REG0) + n, mval);
-    }
-}
+void win_display(enum fcp_type, int);
+
+char *get_localized_numeric_point(void);
+
+void beep();
+
+void get_constant(int);
+
+void get_function(int);
+
+void grey_buttons(enum base_type);
+
+void load_resources();
+
+char *get_resource(enum res_type);
+
+void make_frames();
+
+void make_reg(int, char *);
+
+void set_display(char *, int);
+
+void write_display(char *);
+
+void start_tool();
+
+void put_resource(enum res_type, char *);
+void set_error_state(int);
+void update_accuracy(int);
+void set_mode(enum mode_type);
+void set_title(enum fcp_type, char *);
+void update_statusbar(gchar *, const gchar *);
+void set_inv_item(int);
+void set_hyp_item(int);
+
+#endif /* UI_H */

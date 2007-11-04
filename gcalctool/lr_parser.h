@@ -31,7 +31,6 @@
 #include <assert.h>
 #include <errno.h>
 #include "calctool.h"
-#include "extern.h"
 #include "parser.h"
 #include "parser_mac.h"
 

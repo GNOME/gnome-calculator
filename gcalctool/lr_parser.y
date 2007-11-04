@@ -26,6 +26,7 @@
 #include <errno.h>
 #include "calctool.h"
 #include "functions.h"
+#include "display.h"
 #include "mpmath.h"
 
 #include "parser.h"

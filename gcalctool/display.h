@@ -1,8 +1,8 @@
 
 /*  $Header$
  *
- *  Copyright (C) 2004-2007 Sami Pietila
- *
+ *  Copyright (c) 1987-2007 Sun Microsystems, Inc. All Rights Reserved.
+ *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
@@ -19,31 +19,20 @@
  *  02111-1307, USA.
  */
 
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
-#include "mp.h"
+#include "calctool.h"
 
-#define ANS 1
+void initialise();
+void localize_number(char *, const char *);
+char *make_fixed(int *, char *, int, int, int);
+char *make_number(int *, int, int);
+void clear_display(int);
+void MPstr_to_num(char *, enum base_type, int *);
+void paren_disp(int);
+void refresh_display();
+void show_display(int *);
+void process_item(struct button *, int);
 
-#define PARSER_ERR_INVALID_BASE			10000
-#define PARSER_ERR_TOO_LONG_NUMBER 		10001
-#define PARSER_ERR_BITWISEOP		    	10002
-#define PARSER_ERR_MODULUSOP		    	10003
-
-struct parser_state {
-    int flags;
-    char *buff;
-    int i;
-    int error;
-    int ret[MP_SIZE];
-    int ncount;
-};
-
-void cp(int s[MP_SIZE], int t[MP_SIZE]);
-void ret(int s[MP_SIZE]);
-void iret(int s[MP_SIZE]);
-
-void check_numbase(char *num);
-
-#endif /*PARSER_H*/
+#endif /* DISPLAY_H */

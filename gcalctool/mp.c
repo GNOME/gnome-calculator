@@ -38,8 +38,16 @@
  */
 
 #include <stdio.h>
+
+#include "mp.h"
 #include "calctool.h"
-#include "extern.h"
+#include "display.h"
+#include "functions.h" /* FIXME: Only for show_error() */
+
+#define C_abs(x)    ((x) >= 0 ? (x) : -(x))
+#define dabs(x)     (double) C_abs(x)
+#define min(a, b)   ((a) <= (b) ? (a) : (b))
+#define max(a, b)   ((a) >= (b) ? (a) : (b))
 
 static struct {
     int b, t, m, mxr, r[MP_SIZE];

@@ -29,8 +29,21 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
-#include "calctool.h"
-#include "extern.h"
+
+#include "get.h"
+#include "display.h"
+#include "mp.h"
+#include "ui.h" /* FIXME: Move the gconf stuff from ui.c to here */
+
+/* Various string values read/written as X resources. */
+
+char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
+char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
+char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
+                              "SCIENTIFIC" };
+char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
+char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
+char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 static int get_bool_resource(enum res_type, int *);
 static int get_str_resource(enum res_type, char *);

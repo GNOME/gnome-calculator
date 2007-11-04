@@ -23,6 +23,7 @@
 #define CALCTOOL_H
 
 #include "config.h"
+#include "mp.h"
 
 #include <string.h>
 #include <unistd.h>
@@ -31,8 +32,6 @@
 #include <math.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-
-#define MP_SIZE      1000     /* Size of the multiple precision values. */
 
 #define FCLOSE       (void) fclose     /* To make lint happy. */
 #define FPRINTF      (void) fprintf
@@ -212,8 +211,6 @@ enum
 
 #define MPMATH_ERR		    	20001
 
-typedef unsigned long  BOOLEAN;
-
 enum button_flags {
     none         = 0,          /* No flags */
     enter        = (1 << 2),   /* Expression is entered */
@@ -347,167 +344,10 @@ struct calcVars {                      /* Calctool variables and options. */
 
 typedef struct calcVars *Vars;
 
+extern Vars v;                 /* Calctool variables and options. */
+extern int basevals[];         /* Supported arithmetic bases. */
+extern struct button buttons[];         /* Calculator button values. */
 
-/* MP definitions. */
-
-#define C_abs(x)    ((x) >= 0 ? (x) : -(x))
-#define dabs(x)     (double) C_abs(x)
-#define min(a, b)   ((a) <= (b) ? (a) : (b))
-#define max(a, b)   ((a) >= (b) ? (a) : (b))
-#define dmax(a, b)  (double) max(a, b)
-#define dmin(a, b)  (double) min(a, b)
-
-struct button *button_for_value(int);
-
-void syntaxdep_show_display();
-char *button_str(int);
-char *convert(char *);
-char *gc_strdup(char *str);
-const char *get_radix();
-char *get_resource(enum res_type);
-const char *get_tsep();
-char *make_fixed(int *, char *, int, int, int);
-char *make_number(int *, int, BOOLEAN);
-char *set_bool(int);
-
-char *get_localized_numeric_point(void);
-
-unsigned short *get_but_data();
-
-int button_mods(int);
-int button_value(int);
-int do_rcl_reg(int reg, int value[MP_SIZE]);
-int do_sto_reg(int reg, int value[MP_SIZE]);
-int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
-int get_int_resource(enum res_type, int *);
-int main(int, char **);
-
-void beep();
-void build_word_map();
-void clear_display(int);
-void display_prop_sheet();
-void do_base(enum base_type);
-void do_business();
-void do_calc();
-void do_lr_calc();
-void do_expression();
-void do_calctool(int, char **);
-void do_clear();
-void do_clear_entry();
-void do_delete();
-void do_numtype(enum num_type);
-void do_expno();
-void do_immed();
-void do_memory();
-void do_mode(int);
-void do_number();
-void do_paren();
-void do_lshift();
-void do_rshift();
-void do_sto();
-void do_rcl();
-void do_exchange();
-void do_accuracy();
-void do_constant();
-void do_function();
-void do_point();
-void do_portion();
-void do_trig();
-void do_trigtype(enum trig_type);
-void do_percent();
 void doerr(char *);
-void exp_del();
-void get_constant(int);
-void get_function(int);
-void get_options(int, char **);
-void grey_buttons(enum base_type);
-void initialise();
-void init_args();
-void init_frame_sizes();
-void init_vars();
-void init_Xvars(int *, char **);
-void key_init();
-void localize_number(char *, const char *);
-void load_resources();
-void make_frames();
-void make_menus();
-void make_reg(int, char *);
-void make_registers();
-void mperr();
-void MPstr_to_num(char *, enum base_type, int *);
-void paren_disp(int);
-void process_item(struct button *, int);
-void process_str(char *);
-void put_resource(enum res_type, char *);
-void read_cfdefs();
-void read_resources();
-void read_str(char **, char *);
-void refresh_display();
-void save_resources();
-void update_accuracy(int);
-void set_display(char *, int);
-void write_display(char *);
-void set_error_state(int);
-void set_hyp_item(int);
-void set_ins_key();
-void set_inv_item(int);
-void set_main_title(enum mode_type);
-void set_mode(enum mode_type);
-void set_title(enum fcp_type, char *);
-void show_change_mode_dialog();
-void show_display(int *);
-void show_error(char *);
-void srand48();
-void start_tool();
-void str_replace(char **, char *, char *);
-void switch_hands(int);
-void update_statusbar(gchar *, const gchar *);
-void usage(char *);
-void win_display(enum fcp_type, int);
-void set_redo_and_undo_button_sensitivity(int undo, int redo);
-
-/* Global Brent MP routines in mp.c. */
-int mpeq(int *, int *);
-int mpge(int *, int *);
-int mpgt(int *, int *);
-int mple(int *, int *);
-int mplt(int *, int *);
-
-void mpabs(int *, int *);
-void mpadd(int *, int *, int *);
-void mpaddi(int *, int *, int *);
-void mpasin(int *, int *);
-void mpatan(int *, int *);
-void mpcdm(double *, int *);
-void mpcim(int *, int *);
-void mpcmd(int *, double *);
-void mpcmf(int *, int *);
-void mpcmi(int *, int *);
-void mpcmim(int *, int *);
-void mpcos(int *, int *);
-void mpcosh(int *, int *);
-void mpdiv(int *, int *, int *);
-void mpdivi(int *, int *, int *);
-void mpexp(int *, int *);
-void mpln(int *, int *);
-void mpmul(int *, int *, int *);
-void mpmuli(int *, int *, int *);
-void mpneg(int *, int *);
-void mppi(int *);
-void mppwr(int *, int *, int *);
-void mppwr2(int *, int *, int *);
-void mpset(int *, int *, int *);
-void mpsin(int *, int *);
-void mpsinh(int *, int *);
-void mpsqrt(int *, int *);
-void mpstr(int *, int *);
-void mpsub(int *, int *, int *);
-void mptanh(int *, int *);
-
-void make_exp(char *number, int t[MP_SIZE]);
-void exp_replace(char *text);
-void insert_to_cursor(char *text);
-void get_expr_from_display();
-void delete_from_cursor();
 
 #endif /*CALCTOOL_H*/

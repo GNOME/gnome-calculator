@@ -23,46 +23,18 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
-#include "calctool.h"
 
+#include "calctool.h"
+#include "get.h"
+#include "display.h"
 #include "functions.h"
+#include "graphics.h"
+#include "ui.h"
 
 time_t time();
 
-static void init_text();
-
-double max_fix[MAXBASES] = {
-    1.298074214e+33,    /* Binary. */
-    2.037035976e+90,    /* Octal. */
-    1.000000000e+100,   /* Decimal */
-    2.582249878e+120    /* Hexadecimal. */
-};
-
-char *calc_res[] = {
-    "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
-    "showzeroes", "showthousands", "syntax", "xposition", "yposition",
-    "register0", "register1", "register2", "register3", "register4",
-    "register5", "register6", "register7", "register8", "register9", "bitcalculating"
-};
-
-char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-    N_("Basic"), N_("Advanced"), N_("Financial"), 
-    N_("Scientific"), N_("Expression")
-};
-
-char digits[] = "0123456789ABCDEF";
 int basevals[4] = { 2, 8, 10, 16 };
 
-
-/* Various string values read/written as X resources. */
-
-char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
-char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
-                              "SCIENTIFIC" };
-char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
-char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
-char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 Vars v;            /* Calctool variables and options. */
 
@@ -505,6 +477,64 @@ struct button buttons[NKEYS] = {
 },
 };
 
+
+/* Calctools' customised math library error-handling routine. */
+
+void
+doerr(char *errmes)
+{
+    if (!v->started) {
+        return;
+    }
+
+    switch (v->syntax) {
+        case npa:
+            strncpy(v->display, errmes, MAXLINE - 1);
+            v->display[MAXLINE - 1] = '\0';
+            set_error_state(TRUE);
+            set_display(v->display, FALSE);
+            beep();
+            break;
+
+        case exprs:
+            v->math_error = -MPMATH_ERR;
+            break;
+    }
+}
+
+static void
+init_text()         /* Setup constant strings. */
+{
+    STRNCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[1], _("square root of 2"), MAXLINE - 1);
+    STRNCPY(v->con_names[2], _("e"), MAXLINE - 1);
+    STRNCPY(v->con_names[3], _("pi"), MAXLINE - 1);
+    STRNCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[5], _("degrees in a radian"), MAXLINE - 1);
+    STRNCPY(v->con_names[6], _("2 ^ 20"), MAXLINE - 1);
+    STRNCPY(v->con_names[7], _("Gram-to-ounce conversion factor"), MAXLINE - 1);
+    STRNCPY(v->con_names[8], 
+           _("Kilojoule-to-British-thermal-unit conversion factor"),
+            MAXLINE - 1);
+    STRNCPY(v->con_names[9], 
+           _("Cubic-centimeter-to-cubic-inch conversion factor"), MAXLINE - 1);
+}
+
+
+/* Default math library exception handling routine. */
+
+/*ARGSUSED*/
+int
+matherr(exc)
+struct exception *exc;
+{
+    doerr(_("Error"));
+
+    return(1);
+}
+
 void
 do_calctool(int argc, char **argv)
 {
@@ -574,62 +604,4 @@ do_calctool(int argc, char **argv)
     memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
 
     start_tool();                    /* Display the calculator. */
-}
-
-
-/* Calctools' customised math library error-handling routine. */
-
-void
-doerr(char *errmes)
-{
-    if (!v->started) {
-        return;
-    }
-
-    switch (v->syntax) {
-        case npa:
-            strncpy(v->display, errmes, MAXLINE - 1);
-            v->display[MAXLINE - 1] = '\0';
-            set_error_state(TRUE);
-            set_display(v->display, FALSE);
-            beep();
-            break;
-
-        case exprs:
-            v->math_error = -MPMATH_ERR;
-            break;
-    }
-}
-
-static void
-init_text()         /* Setup constant strings. */
-{
-    STRNCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[1], _("square root of 2"), MAXLINE - 1);
-    STRNCPY(v->con_names[2], _("e"), MAXLINE - 1);
-    STRNCPY(v->con_names[3], _("pi"), MAXLINE - 1);
-    STRNCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[5], _("degrees in a radian"), MAXLINE - 1);
-    STRNCPY(v->con_names[6], _("2 ^ 20"), MAXLINE - 1);
-    STRNCPY(v->con_names[7], _("Gram-to-ounce conversion factor"), MAXLINE - 1);
-    STRNCPY(v->con_names[8], 
-           _("Kilojoule-to-British-thermal-unit conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[9], 
-           _("Cubic-centimeter-to-cubic-inch conversion factor"), MAXLINE - 1);
-}
-
-
-/* Default math library exception handling routine. */
-
-/*ARGSUSED*/
-int
-matherr(exc)
-struct exception *exc;
-{
-    doerr(_("Error"));
-
-    return(1);
 }

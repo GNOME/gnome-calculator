@@ -20,15 +20,10 @@
 #include <assert.h>
 #include <errno.h>
 
-#include "calctool.h"    /* FIXME: include only needed stuff. */
 #include "mpmath.h"
-#include "extern.h"
-
-static void mpacos(int *, int *);
-static void mpacosh(int *, int *);
-static void mpasinh(int *, int *);
-static void mpatanh(int *, int *);
-
+#include "mp.h"
+#include "calctool.h"
+#include "display.h" /* FIXME: Needed to MPstr_to_num() */
 
 BOOLEAN
 ibool(double x)
@@ -332,71 +327,6 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
             assert(0);
             break;
     }
-}
-
-
-/* Calculate selected trigonometric function */
-
-int
-calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
-{
-    switch (type) {
-        case sin_t: 
-            to_rad(s1, s1);
-            mpsin(s1, t1);
-            break;
-
-        case cos_t:
-            to_rad(s1, s1);
-            mpcos(s1, t1);
-            break;
-
-        case tan_t:
-            to_rad(s1, s1);
-            mptan(s1, t1);
-            break;
-
-        case sinh_t:
-            mpsinh(s1, t1);
-            break;
-
-        case cosh_t:
-            mpcosh(s1, t1);
-            break;
-
-        case tanh_t:
-            mptanh(s1, t1);
-            break;
-
-        case asin_t:
-            mpasin(s1, t1);
-            do_trig_typeconv(v->ttype, t1, t1);
-            break;
-
-        case acos_t:
-            mpacos(s1, t1);
-            do_trig_typeconv(v->ttype, t1, t1);
-            break;
-
-        case atan_t:
-            mpatan(s1, t1);
-            do_trig_typeconv(v->ttype, t1, t1);
-            break;
-
-        case asinh_t:
-            mpasinh(s1, t1);
-            break;
-
-        case acosh_t:
-            mpacosh(s1, t1);
-            break;
-
-        case atanh_t:
-            mpatanh(s1, t1);
-            break;
-    }
-
-    return(0);
 }
 
 
@@ -798,7 +728,7 @@ calc_term(int t[MP_SIZE])
 
 
 void
-calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
+calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
 {
   /* Implementation derived from old code.
    * Using BOOLEAN is strange at least. Assumed that
@@ -816,10 +746,15 @@ calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir)
      * number. That can cause very strange results (and bugs).
      */
 
-    assert(times >= 0);
-
-    while (times--) {
-        temp = (dir == right) ? temp >> 1 : temp << 1;
+    if (times > 0)
+    {
+        while (times--) {
+            temp = temp << 1;
+        }
+    } else {
+        while (times++) {
+            temp = temp >> 1;
+        }
     }
 
     dval = setbool(temp);
@@ -864,4 +799,68 @@ calc_epowy(int s[MP_SIZE], int t[MP_SIZE])
     
     mpstr(s, MP1);
     mpexp(MP1, t);
+}
+
+/* Calculate selected trigonometric function */
+
+int
+calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
+{
+    switch (type) {
+        case sin_t: 
+            to_rad(s1, s1);
+            mpsin(s1, t1);
+            break;
+
+        case cos_t:
+            to_rad(s1, s1);
+            mpcos(s1, t1);
+            break;
+
+        case tan_t:
+            to_rad(s1, s1);
+            mptan(s1, t1);
+            break;
+
+        case sinh_t:
+            mpsinh(s1, t1);
+            break;
+
+        case cosh_t:
+            mpcosh(s1, t1);
+            break;
+
+        case tanh_t:
+            mptanh(s1, t1);
+            break;
+
+        case asin_t:
+            mpasin(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case acos_t:
+            mpacos(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case atan_t:
+            mpatan(s1, t1);
+            do_trig_typeconv(v->ttype, t1, t1);
+            break;
+
+        case asinh_t:
+            mpasinh(s1, t1);
+            break;
+
+        case acosh_t:
+            mpacosh(s1, t1);
+            break;
+
+        case atanh_t:
+            mpatanh(s1, t1);
+            break;
+    }
+
+    return(0);
 }

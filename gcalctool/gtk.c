@@ -18,7 +18,6 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  *  02111-1307, USA.
  */
-#include "config.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -27,18 +26,30 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <netdb.h>
-#include "calctool.h"
-#include "extern.h"
-#include "dsdefs.h"
-#include "functions.h"
-#include "lr_parser.h"
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <glade/glade.h>
 #include <gconf/gconf-client.h>
+
+#include "ui.h"
+
+#include "config.h"
+#include "dsdefs.h"
+#include "functions.h"
+#include "lr_parser.h"
 #include "ce_parser.h"
 #include "mpmath.h"
+#include "display.h"
+#include "graphics.h"
+#include "get.h"
+
+static char *calc_res[] = {
+    "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
+    "showzeroes", "showthousands", "syntax", "xposition", "yposition",
+    "register0", "register1", "register2", "register3", "register4",
+    "register5", "register6", "register7", "register8", "register9", "bitcalculating"
+};
 
 /* Popup menu types. */
 /* FIXME: This enum could be removed */
@@ -1564,7 +1575,7 @@ create_change_mode_dialog()
 }
 
 
-void
+static void
 show_change_mode_dialog()
 {
     if (X->cm_dialog == NULL) {

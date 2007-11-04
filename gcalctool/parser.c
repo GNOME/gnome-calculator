@@ -24,9 +24,8 @@
 #include <errno.h>
 #include <ctype.h>
 
-#include "calctool.h"
-#include "extern.h"
 #include "parser.h"
+#include "calctool.h"
 
 struct parser_state parser_state;
 

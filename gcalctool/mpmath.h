@@ -22,6 +22,10 @@
 #ifndef MPMATH_H
 #define MPMATH_H
 
+#include "mp.h"
+
+typedef unsigned long  BOOLEAN;
+
 /* function parameters: t=target, s=source) */
 
 BOOLEAN ibool(double x);
@@ -59,7 +63,7 @@ void calc_rate(int t[MP_SIZE]);
 void calc_sln(int t[MP_SIZE]);
 void calc_syd(int t[MP_SIZE]);
 void calc_term(int t[MP_SIZE]);
-void calc_rshift(int s[MP_SIZE], int t[MP_SIZE], int times, enum shiftd dir);
+void calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times);
 void calc_epowy(int s[MP_SIZE], int t[MP_SIZE]);
 
 /* return true if parameter is integer */

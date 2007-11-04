@@ -30,7 +30,6 @@ gcalctool_SOURCES = \
 	parser.h \
 	parser_mac.h \
 	gtk.c \
-	extern.h \
 	ce_parser.c \
 	ce_parser.h \
 	ce_parser.tab.h \

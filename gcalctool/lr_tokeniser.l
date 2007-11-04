@@ -27,7 +27,8 @@
 #include <string.h>
 #include <sys/types.h>
 #include "calctool.h"
-#include "extern.h"
+#include "display.h"
+#include "functions.h" /* FIXME: Needed for gc_strdup() */
 #include "lr_parser.h"
 #include "lr_parser.tab.h"
 %}

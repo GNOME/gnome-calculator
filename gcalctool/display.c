@@ -22,10 +22,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "calctool.h"
-#include "extern.h"
+
+#include "display.h"
+
+#include "mp.h"
 #include "mpmath.h"
 #include "functions.h"
+#include "ui.h"
+
+static char digits[] = "0123456789ABCDEF";
+
+static double max_fix[MAXBASES] = {
+    1.298074214e+33,    /* Binary. */
+    2.037035976e+90,    /* Octal. */
+    1.000000000e+100,   /* Decimal */
+    2.582249878e+120    /* Hexadecimal. */
+};
 
 static char *make_eng_sci(int *, int);
 
@@ -238,7 +250,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 /* Convert MP number to character string in the given base. */
 
 char *
-make_number(int *MPnumber, int base, BOOLEAN ignoreError)
+make_number(int *MPnumber, int base, int ignoreError)
 {
     double number, val;
     

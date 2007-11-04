@@ -1,8 +1,8 @@
 
 /*  $Header$
  *
- *  Copyright (C) 2004-2007 Sami Pietila
- *
+ *  Copyright (c) 1987-2007 Sun Microsystems, Inc. All Rights Reserved.
+ *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
@@ -19,31 +19,9 @@
  *  02111-1307, USA.
  */
 
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
-#include "mp.h"
+void make_registers();
 
-#define ANS 1
-
-#define PARSER_ERR_INVALID_BASE			10000
-#define PARSER_ERR_TOO_LONG_NUMBER 		10001
-#define PARSER_ERR_BITWISEOP		    	10002
-#define PARSER_ERR_MODULUSOP		    	10003
-
-struct parser_state {
-    int flags;
-    char *buff;
-    int i;
-    int error;
-    int ret[MP_SIZE];
-    int ncount;
-};
-
-void cp(int s[MP_SIZE], int t[MP_SIZE]);
-void ret(int s[MP_SIZE]);
-void iret(int s[MP_SIZE]);
-
-void check_numbase(char *num);
-
-#endif /*PARSER_H*/
+#endif /* GRAPHICS_H */

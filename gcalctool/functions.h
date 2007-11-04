@@ -23,16 +23,58 @@
 #define FUNCTIONS_H
 
 #include "calctool.h"
-#include "extern.h"
 
-void do_factorial(int *, int *);
+void show_error(char *);
+void str_replace(char **, char *, char *);
+void set_main_title(enum mode_type);
+void syntaxdep_show_display();
+char *gc_strdup(char *str);
+int usable_num(int MPnum[MP_SIZE]);
+
+void make_exp(char *number, int t[MP_SIZE]);
 void exp_append(char *text);
+void exp_replace(char *text);
+void exp_del();
 
 struct exprm_state *get_state(void);
 void new_state(void);
+
 void perform_undo(void);
 void perform_redo(void);
 void clear_undo_history(void);
-int usable_num(int MPnum[MP_SIZE]);
+
+void do_base(enum base_type);
+void do_business();
+void do_calc();
+void do_lr_calc();
+void do_expression();
+void do_calctool(int, char **);
+void do_clear();
+void do_clear_entry();
+void do_delete();
+void do_numtype(enum num_type);
+void do_expno();
+void do_immed();
+void do_memory();
+void do_mode(int);
+void do_number();
+void do_paren();
+void do_lshift();
+void do_rshift();
+void do_sto();
+void do_rcl();
+void do_exchange();
+void do_accuracy();
+void do_constant();
+void do_function();
+void do_point();
+void do_portion();
+void do_trig();
+void do_trigtype(enum trig_type);
+void do_percent();
+void do_factorial(int *, int *);
+int do_rcl_reg(int reg, int value[MP_SIZE]);
+int do_sto_reg(int reg, int value[MP_SIZE]);
+int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 
 #endif /*FUNCTIONS_H*/

@@ -21,8 +21,8 @@
 
 #include "ce_parser.h"
 #include "limits.h"
-#include "extern.h"
 #include "calctool.h"
+#include "functions.h" /* FIXME: Needed for gc_strdup() */
 
 /* TODO: This file is almost identical to lr-parser. */
 

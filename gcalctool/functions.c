@@ -27,15 +27,25 @@
 #include <assert.h>
 
 #include "functions.h"
-#include "calctool.h"
+
+#include "get.h"
+#include "mp.h"
 #include "mpmath.h"
+#include "display.h"
+#include "graphics.h"
 #include "ce_parser.h"
 #include "lr_parser.h"
+#include "ui.h"
 
 static int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
 
 static void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
 static void do_portionfunc(int num[MP_SIZE]);
+
+char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
+    N_("Basic"), N_("Advanced"), N_("Financial"), 
+    N_("Scientific"), N_("Expression")
+};
 
 char *
 gc_strdup(char *str)
@@ -1478,7 +1488,11 @@ do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display val
                 break;
             }
 
-            calc_rshift(MPval, e->ans, n, dir);
+            if (dir == left) {
+                calc_shift(MPval, e->ans, n);
+            } else {
+                calc_shift(MPval, e->ans, -n);
+            }
 
             exp_replace("Ans");
             break;

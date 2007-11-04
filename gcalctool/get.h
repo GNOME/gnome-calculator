@@ -19,23 +19,10 @@
  *  02111-1307, USA.
  */
 
-#ifndef EXTERN_H
-#define EXTERN_H
+#ifndef GET_H
+#define GET_H
 
-extern Vars v;                 /* Calctool variables and options. */
-
-extern char *base_str[];       /* Strings for each base value. */
-extern char *base_desc[];      /* Tooltips for each base value. */
-extern char *calc_res[];       /* Calctool X resources. */
-extern char digits[];          /* Valid numerical digits. */
-extern char *dtype_str[];      /* Strings for each display mode value. */
-extern char *dtype_desc[];     /* Tooltips for each display mode value. */
-extern char *hyp_desc;         /* Tooltip for hyperbolic option. */
-extern char *inv_desc;         /* Tooltip for inverse option. */
-extern char *mstrs[];          /* Mode titles for the popup panel. */
-extern char *opts[];           /* Command line option strings. */
-extern char *ttype_str[];      /* Strings for each trig type value. */
-extern char *ttype_desc[];     /* Tooltips for each trig type value. */
+#include "calctool.h"
 
 extern char *Rbstr[];          /* Base mode X resource strings. */
 extern char *Rdstr[];          /* Display mode X resource strings. */
@@ -44,11 +31,16 @@ extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern char *Rsstr[];          /* Syntax resource strings. */
 extern char *Rcstr[];          /* Bitcalculating mode. */
 
-extern double max_fix[];       /* Maximum showable fixed values. */
+void read_resources();
+char *convert(char *);
+void init_vars();
+char *set_bool(int);
+void usage(char *);
+int get_int_resource(enum res_type, int *);
+const char *get_radix();
+const char *get_tsep();
+void get_options(int, char **);
+void read_cfdefs();
+void read_str(char **, char *);
 
-extern int basevals[];         /* Supported arithmetic bases. */
-extern int cur_pos[];          /* Current positions - left/right handed. */
-
-extern struct button buttons[];         /* Calculator button values. */
-
-#endif /*EXTERN_H*/
+#endif /* GET_H */
