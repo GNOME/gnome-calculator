@@ -976,8 +976,8 @@ about_cb(GtkWidget *widget)
 
 
 static void
-cell_edited(GtkCellRendererText *cell, const gchar *path_string,
-            const gchar *new_text, gpointer data)
+cell_edited_cb(GtkCellRendererText *cell, const gchar *path_string,
+               const gchar *new_text, gpointer data)
 {
     GtkTreeModel *model = (GtkTreeModel *) data;
     GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
@@ -1018,7 +1018,7 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
     renderer = gtk_cell_renderer_text_new();
     if (editable) {
         g_signal_connect(G_OBJECT(renderer), "edited",
-                         G_CALLBACK(cell_edited), model);
+                         G_CALLBACK(cell_edited_cb), model);
     }
     g_object_set_data(G_OBJECT(renderer), "column", GINT_TO_POINTER(colno));
 
@@ -1569,7 +1569,7 @@ show_change_mode_dialog()
 
 /*ARGSUSED*/
 static gboolean
-bit_toggled(GtkWidget *event_box, GdkEventButton *event)
+bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
     double number;
     unsigned long long lval;
@@ -1683,7 +1683,7 @@ update_memory_menus()
 
 /*ARGSUSED*/
 static void
-mem_response(GtkDialog *dialog, int response)
+rframe_response_cb(GtkDialog *dialog, int response)
 {
     set_memory_toggle(FALSE);
     set_boolean_resource(R_REGS, FALSE);
@@ -1693,7 +1693,7 @@ mem_response(GtkDialog *dialog, int response)
 
 /*ARGSUSED*/
 static gboolean
-dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+aframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     gtk_widget_hide(widget);
 
@@ -1703,7 +1703,7 @@ dismiss_aframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
 /*ARGSUSED*/
 static gboolean
-dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+rframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     gtk_dialog_response(GTK_DIALOG(widget), GTK_RESPONSE_DELETE_EVENT);
 
@@ -1713,7 +1713,7 @@ dismiss_rframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
 /*ARGSUSED*/
 static gboolean
-dismiss_spframe(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+spframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     gtk_widget_hide(X->spframe);
 
@@ -2826,17 +2826,17 @@ create_kframe()
     CONNECT_SIGNAL(buffer_populate_popup_cb);
     CONNECT_SIGNAL(shift_left_cb);
     CONNECT_SIGNAL(shift_right_cb);
-    CONNECT_SIGNAL(bit_toggled);
-    CONNECT_SIGNAL(dismiss_aframe);
+    CONNECT_SIGNAL(bit_toggle_cb);
+    CONNECT_SIGNAL(aframe_delete_cb);
     CONNECT_SIGNAL(aframe_ok_cb);
     CONNECT_SIGNAL(aframe_cancel_cb);
     CONNECT_SIGNAL(aframe_key_cb);
-    CONNECT_SIGNAL(dismiss_spframe);
+    CONNECT_SIGNAL(spframe_delete_cb);
     CONNECT_SIGNAL(spframe_ok_cb);
     CONNECT_SIGNAL(spframe_cancel_cb);
     CONNECT_SIGNAL(spframe_key_cb);
-    CONNECT_SIGNAL(dismiss_rframe);
-    CONNECT_SIGNAL(mem_response);
+    CONNECT_SIGNAL(rframe_delete_cb);
+    CONNECT_SIGNAL(rframe_response_cb);
     CONNECT_SIGNAL(edit_constants_cb);
     CONNECT_SIGNAL(edit_functions_cb);
     CONNECT_SIGNAL(edit_constants_response_cb);
