@@ -24,6 +24,19 @@
 
 #include "calctool.h"
 
+#define R_ACCURACY "accuracy"
+#define R_BASE     "base"
+#define R_DISPLAY  "display"
+#define R_MODE     "modetype"
+#define R_REGS     "showregisters"
+#define R_TRIG     "trigtype"
+#define R_ZEROES   "showzeroes"
+#define R_TSEP     "showthousands"
+#define R_SYNTAX   "syntax"
+#define R_BITCALC  "bitcalculating"
+#define R_XPOS     "xposition"
+#define R_YPOS     "yposition"
+
 extern char *Rbstr[];          /* Base mode X resource strings. */
 extern char *Rdstr[];          /* Display mode X resource strings. */
 extern char *Rmstr[];          /* Mode mode X resource strings. */
@@ -31,12 +44,19 @@ extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern char *Rsstr[];          /* Syntax resource strings. */
 extern char *Rcstr[];          /* Bitcalculating mode. */
 
+void load_resources();
 void read_resources();
 char *convert(char *);
 void init_vars();
-char *set_bool(int);
 void usage(char *);
-int get_int_resource(enum res_type, int *);
+
+void set_resource(char *key, char *value);
+void set_int_resource(char *key, int value);
+void set_boolean_resource(char *key, int value);
+
+char *get_resource(char *key);
+int get_int_resource(char *key, int *value);
+
 const char *get_radix();
 const char *get_tsep();
 void get_options(int, char **);

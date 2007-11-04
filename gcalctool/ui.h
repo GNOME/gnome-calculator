@@ -42,10 +42,6 @@ void get_function(int);
 
 void grey_buttons(enum base_type);
 
-void load_resources();
-
-char *get_resource(enum res_type);
-
 void make_frames();
 
 void make_reg(int, char *);
@@ -56,7 +52,6 @@ void write_display(char *);
 
 void start_tool();
 
-void put_resource(enum res_type, char *);
 void set_error_state(int);
 void update_accuracy(int);
 void set_mode(enum mode_type);

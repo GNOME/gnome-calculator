@@ -30,7 +30,6 @@
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <glade/glade.h>
-#include <gconf/gconf-client.h>
 
 #include "ui.h"
 
@@ -43,13 +42,6 @@
 #include "display.h"
 #include "graphics.h"
 #include "get.h"
-
-static char *calc_res[] = {
-    "accuracy", "base", "display", "modetype", "showregisters", "trigtype",
-    "showzeroes", "showthousands", "syntax", "xposition", "yposition",
-    "register0", "register1", "register2", "register3", "register4",
-    "register5", "register6", "register7", "register8", "register9", "bitcalculating"
-};
 
 /* Popup menu types. */
 /* FIXME: This enum could be removed */
@@ -398,7 +390,6 @@ static struct button_widget button_widgets[] = {
 struct Xobject {               /* Gtk+/Xlib graphics object. */
     GdkAtom clipboard_atom;
     GdkAtom primary_atom;
-    GConfClient *client;
 
     GladeXML  *ui;
     
@@ -1150,12 +1141,12 @@ put_constant(int n, char *con_value, char *con_name)
  * character of ".".
  */
 
-    SNPRINTF(key, MAXLINE, "/apps/%s/constant%1dvalue", v->appname, n);
-    gconf_client_set_string(X->client, key, cstr, NULL);
+    SNPRINTF(key, MAXLINE, "constant%1dvalue", n);
+    set_resource(key, cstr);
     g_free(cstr);
 
-    SNPRINTF(key, MAXLINE, "/apps/%s/constant%1dname", v->appname, n);
-    gconf_client_set_string(X->client, key, con_name, NULL);
+    SNPRINTF(key, MAXLINE, "constant%1dname", n);
+    set_resource(key, con_name);
 }
 
 
@@ -1164,11 +1155,11 @@ put_function(int n, char *fun_value, char *fun_name)
 {
     char key[MAXLINE];
 
-    SNPRINTF(key, MAXLINE, "/apps/%s/function%1dvalue", v->appname, n);
-    gconf_client_set_string(X->client, key, fun_value, NULL);
+    SNPRINTF(key, MAXLINE, "function%1dvalue", n);
+    set_resource(key, fun_value);
 
-    SNPRINTF(key, MAXLINE, "/apps/%s/function%1dname", v->appname, n);
-    gconf_client_set_string(X->client, key, fun_name, NULL);
+    SNPRINTF(key, MAXLINE, "function%1dname", n);
+    set_resource(key, fun_name);
 }
 
 
@@ -1178,19 +1169,6 @@ menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
 {
     struct button *n = (struct button *) g_object_get_data(G_OBJECT(mi), "button");
     do_button(n, GPOINTER_TO_INT(user_data));
-}
-
-
-/* Put gcalctool resource into deskset database. */
-
-void
-put_resource(enum res_type rtype, char *value)
-{
-    char cstr[MAXLINE], key[MAXLINE];
-
-    STRNCPY(key, calc_res[(int) rtype], MAXLINE - 1);
-    SNPRINTF(cstr, MAXLINE, "/apps/%s/%s", v->appname, key);
-    gconf_client_set_string(X->client, cstr, value, NULL);
 }
 
 
@@ -1472,14 +1450,11 @@ reset_mode_display(int toclear)
 static void
 save_win_position()
 {
-    char intval[MAXLINE];
     int x, y;
 
     (void) gdk_window_get_origin(X->kframe->window, &x, &y);
-    SNPRINTF(intval, MAXLINE, "%d", x);
-    put_resource(R_XPOS, intval);
-    SNPRINTF(intval, MAXLINE, "%d", y);
-    put_resource(R_YPOS, intval);
+    set_int_resource(R_XPOS, x);
+    set_int_resource(R_YPOS, y);
 }
 
 
@@ -1496,11 +1471,11 @@ change_mode(int mode)
 
     v->show_tsep = FALSE;
     set_show_tsep_toggle(v->show_tsep);
-    put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
+    set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
 
     v->show_zeroes = FALSE;
     set_show_zeroes_toggle(v->show_zeroes);
-    put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
+    set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
 
     reset_mode_display(TRUE);
 }
@@ -1705,7 +1680,7 @@ static void
 mem_response(GtkDialog *dialog, int response)
 {
     set_memory_toggle(FALSE);
-    put_resource(R_REGS, "false");
+    set_boolean_resource(R_REGS, FALSE);
     gtk_widget_hide(X->rframe);
 }
 
@@ -1755,13 +1730,13 @@ get_constant(int n)
     char nkey[MAXLINE], *nline;
     char vkey[MAXLINE], *vline;
 
-    SNPRINTF(nkey, MAXLINE, "/apps/%s/constant%1dname", v->appname, n);
-    if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
+    SNPRINTF(nkey, MAXLINE, "constant%1dname", n);
+    if ((nline = get_resource(nkey)) == NULL) {
         return;
     }   
  
-    SNPRINTF(vkey, MAXLINE, "/apps/%s/constant%1dvalue", v->appname, n);
-    if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
+    SNPRINTF(vkey, MAXLINE, "constant%1dvalue", n);
+    if ((vline = get_resource(vkey)) == NULL) {
         return;
     }   
 
@@ -1799,13 +1774,13 @@ get_function(int n)
     char nkey[MAXLINE], *nline;
     char vkey[MAXLINE], *vline;
  
-    SNPRINTF(nkey, MAXLINE, "/apps/%s/function%1dname", v->appname, n);
-    if ((nline = gconf_client_get_string(X->client, nkey, NULL)) == NULL) {
+    SNPRINTF(nkey, MAXLINE, "function%1dname", n);
+    if ((nline = get_resource(nkey)) == NULL) {
         return;  
     }    
  
-    SNPRINTF(vkey, MAXLINE, "/apps/%s/function%1dvalue", v->appname, n);
-    if ((vline = gconf_client_get_string(X->client, vkey, NULL)) == NULL) {
+    SNPRINTF(vkey, MAXLINE, "function%1dvalue", n);
+    if ((vline = get_resource(vkey)) == NULL) {
         return;
     }   
  
@@ -1926,20 +1901,6 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             assert(0);
     }
     free(text);
-}
-
-
-/* Get gcalctool resource from merged database. */
-
-char *
-get_resource(enum res_type rtype)
-{
-    char cstr[MAXLINE], key[MAXLINE];
-
-    STRNCPY(key, calc_res[(int) rtype], MAXLINE - 1);
-    SNPRINTF(cstr, MAXLINE, "/apps/%s/%s", v->appname, key);
-
-    return(gconf_client_get_string(X->client, cstr, NULL));
 }
 
 
@@ -2254,17 +2215,6 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 }
 
 
-void
-load_resources()        /* Load gconf configuration database for gcalctool. */
-{ 
-    char str[MAXLINE];
-
-    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
-    X->client = gconf_client_get_default();
-    gconf_client_add_dir(X->client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
-}
-
-
 static char *
 make_hostname(Display *dpy)
 {
@@ -2462,7 +2412,7 @@ show_bitcalculating_cb(GtkWidget *widget)
     if (v->started) {
         v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
         set_mode(v->modetype);
-        put_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+        set_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
     }
 }
 
@@ -2512,7 +2462,7 @@ arithmetic_mode_cb(GtkWidget *widget)
         default:
             assert(0);
     }
-    put_resource(R_SYNTAX, Rsstr[v->syntax]);
+    set_resource(R_SYNTAX, Rsstr[v->syntax]);
     set_mode(v->modetype);
     // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
@@ -2622,7 +2572,7 @@ show_trailing_zeroes_cb(GtkWidget *widget)
                                                GTK_CHECK_MENU_ITEM(widget));
 
         syntaxdep_show_display();
-        put_resource(R_ZEROES, set_bool(v->show_zeroes == TRUE));
+        set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
         make_registers();
         
         set_show_zeroes_toggle(v->show_zeroes);
@@ -2667,13 +2617,11 @@ spframe_key_cb(GtkWidget *widget, GdkEventKey *event)
 static void
 spframe_ok_cb(GtkButton *button)
 {
-    char intval[MAXLINE];
     int val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
 
     v->accuracy = val;
 
-    SNPRINTF(intval, MAXLINE, "%d", v->accuracy);
-    put_resource(R_ACCURACY, intval);
+    set_int_resource(R_ACCURACY, v->accuracy);
 
     update_accuracy(v->accuracy);
     set_accuracy_toggle(v->accuracy);
@@ -2741,7 +2689,7 @@ show_thousands_separator_cb(GtkWidget *widget)
     v->show_tsep = !v->show_tsep;
 
     syntaxdep_show_display();
-    put_resource(R_TSEP, set_bool(v->show_tsep == TRUE));
+    set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
     make_registers();
 }
 

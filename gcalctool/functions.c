@@ -224,11 +224,8 @@ perform_redo(void)
 void
 do_accuracy(int value)     /* Set display accuracy. */
 {
-    char intval[5];
-    
     v->accuracy = value;
-    SPRINTF(intval, "%d", v->accuracy);
-    put_resource(R_ACCURACY, intval);
+    set_int_resource(R_ACCURACY, v->accuracy);
     update_accuracy(v->accuracy);
     make_registers();
     clear_undo_history();
@@ -875,7 +872,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
     switch (v->syntax) {
         case npa:
             v->base = b;
-            put_resource(R_BASE, Rbstr[(int) v->base]);
+            set_resource(R_BASE, Rbstr[(int) v->base]);
             grey_buttons(v->base);
 
             if (v->rstate) {
@@ -895,7 +892,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
                 exp_replace("Ans");
             }
             v->base = b;
-            put_resource(R_BASE, Rbstr[(int) v->base]);
+            set_resource(R_BASE, Rbstr[(int) v->base]);
             grey_buttons(v->base);
             make_registers();
             clear_undo_history();
@@ -1186,7 +1183,7 @@ void
 do_memory()
 {
     make_registers();
-    put_resource(R_REGS, set_bool(v->rstate == TRUE));
+    set_boolean_resource(R_REGS, v->rstate == TRUE);
     win_display(FCP_REG, v->rstate);
 }
 
@@ -1195,7 +1192,7 @@ void
 do_mode(int toclear)           /* Set special calculator mode. */
 {
     set_main_title(v->modetype);
-    put_resource(R_MODE, Rmstr[(int) v->modetype]);
+    set_resource(R_MODE, Rmstr[(int) v->modetype]);
     set_mode(v->modetype);
     if (toclear) {
         do_clear();
@@ -1228,7 +1225,7 @@ void
 do_numtype(enum num_type n)   /* Set number display type. */
 {
     v->dtype = n;
-    put_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
+    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
 
     switch (v->syntax) {
     case npa:
@@ -1523,7 +1520,7 @@ void
 do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 {
     v->ttype = t;
-    put_resource(R_TRIG, Rtstr[(int) v->ttype]);
+    set_resource(R_TRIG, Rtstr[(int) v->ttype]);
     if (v->cur_op == KEY_COSINE ||
         v->cur_op == KEY_SINE ||
         v->cur_op == KEY_TANGENT) {

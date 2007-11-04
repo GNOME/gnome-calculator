@@ -29,18 +29,20 @@
 #include "ce_parser.h"
 #include "lr_parser.h"
 #include "functions.h"
+#include "get.h"
 #include "ui.h"
 
 
 void
 make_registers()            /* Calculate memory register frame values. */
 {
-    char *mval;
+    char *mval, key[MAXLINE];
     int n;
 
     for (n = 0; n < MAXREGS; n++) {
         mval = make_number(v->MPmvals[n], v->base, TRUE);
         make_reg(n, mval);
-        put_resource(((int) R_REG0) + n, mval);
+        SNPRINTF(key, MAXLINE, "register%d", n);
+        set_resource(key, mval);
     }
 }

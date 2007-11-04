@@ -29,11 +29,13 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
+#include <assert.h>
+#include <gconf/gconf-client.h>
 
 #include "get.h"
 #include "display.h"
 #include "mp.h"
-#include "ui.h" /* FIXME: Move the gconf stuff from ui.c to here */
+#include "ui.h" /* FIXME: Needed for get_constant() and get_function() */
 
 /* Various string values read/written as X resources. */
 
@@ -45,10 +47,54 @@ char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
 char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
-static int get_bool_resource(enum res_type, int *);
-static int get_str_resource(enum res_type, char *);
+static GConfClient *client = NULL;
 
-static void getparam(char *, char **, char *);
+void
+load_resources()        /* Load gconf configuration database for gcalctool. */
+{ 
+    char str[MAXLINE];
+
+    assert(client == NULL);
+    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
+    client = gconf_client_get_default();
+    gconf_client_add_dir(client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
+}
+
+
+char *
+get_resource(char *key)
+{
+    char key_name[MAXLINE];
+    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);
+    return(gconf_client_get_string(client, key_name, NULL));
+}
+
+
+void
+set_resource(char *key, char *value)
+{
+    gconf_client_set_string(client, key, value, NULL);
+}
+
+
+void
+set_int_resource(char *key, int value)
+{
+    char intvalue[MAXLINE];
+    SNPRINTF(intvalue, MAXLINE, "%d", value);
+    set_resource(key, intvalue);
+}
+
+
+void
+set_boolean_resource(char *key, int value)
+{
+    if (value) {
+        set_resource(key, "true");
+    } else {
+        set_resource(key, "false");
+    }
+}
 
 
 char *
@@ -76,12 +122,12 @@ convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
 /* Get boolean resource from database. */
 
 static int
-get_bool_resource(enum res_type rtype, int *boolval)
+get_boolean_resource(char *key, int *boolval)
 {
     char *val, tempstr[MAXLINE];
     int len, n;
 
-    if ((val = get_resource(rtype)) == NULL) {
+    if ((val = get_resource(key)) == NULL) {
         g_free(val);
         return(0);
     }
@@ -106,11 +152,11 @@ get_bool_resource(enum res_type rtype, int *boolval)
 /* Get integer resource from database. */
 
 int
-get_int_resource(enum res_type rtype, int *intval)
+get_int_resource(char *key, int *intval)
 {
     char *val;
  
-    if ((val = get_resource(rtype)) == NULL) {
+    if ((val = get_resource(key)) == NULL) {
         g_free(val);
         return(0);
     }
@@ -140,6 +186,18 @@ get_radix()
     } else {
         return(radix);
     }
+}
+
+
+static void
+getparam(char *s, char *argv[], char *errmes)
+{
+    if (*argv != NULL && argv[0][0] != '-') {
+        STRNCPY(s, *argv, MAXLINE - 1);
+    } else { 
+        FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
+        exit(1);                        
+    }                                  
 }
 
 
@@ -185,27 +243,15 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 }
 
 
-static void
-getparam(char *s, char *argv[], char *errmes)
-{
-    if (*argv != NULL && argv[0][0] != '-') {
-        STRNCPY(s, *argv, MAXLINE - 1);
-    } else { 
-        FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
-        exit(1);                        
-    }                                  
-}
-
-
 /* Get a string resource from database. */
 
 static int
-get_str_resource(enum res_type rtype, char *strval)
+get_str_resource(char *key, char *strval)
 {
     char *val;
     int i, len;
 
-    if ((val = get_resource(rtype)) == NULL) {
+    if ((val = get_resource(key)) == NULL) {
         g_free(val);
         return(0);
     }
@@ -315,7 +361,7 @@ void
 read_resources()    /* Read all possible resources from the database. */
 {
     int boolval, i, intval;
-    char str[MAXLINE];
+    char key[MAXLINE], str[MAXLINE];
 
     if (get_int_resource(R_ACCURACY, &intval)) {
         v->accuracy = intval;
@@ -327,7 +373,8 @@ read_resources()    /* Read all possible resources from the database. */
     }
 
     for (i = 0; i < MAXREGS; i++) {
-        if (get_str_resource(R_REG0 + i, str)) {
+        SNPRINTF(key, MAXLINE, "register%d", i);
+        if (get_str_resource(key, str)) {
             MPstr_to_num(str, DEC, v->MPmvals[i]);
         }
     }
@@ -426,15 +473,15 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
-    if (get_bool_resource(R_REGS, &boolval)) {
+    if (get_boolean_resource(R_REGS, &boolval)) {
         v->rstate = boolval;
     }
 
-    if (get_bool_resource(R_ZEROES, &boolval)) {
+    if (get_boolean_resource(R_ZEROES, &boolval)) {
         v->show_zeroes = boolval;
     }
 
-    if (get_bool_resource(R_TSEP, &boolval)) {
+    if (get_boolean_resource(R_TSEP, &boolval)) {
         v->show_tsep = boolval;
     }
 }
@@ -452,13 +499,6 @@ read_str(char **str, char *value)
     } else {
         *str = NULL;
     }
-}
-
-
-char *
-set_bool(int value)
-{
-    return(value ? "true" : "false");
 }
 
 

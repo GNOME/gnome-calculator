@@ -69,14 +69,6 @@ enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
 
 enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
-/* Resources. */
-enum res_type { R_ACCURACY, R_BASE, R_DISPLAY, R_MODE, R_REGS, R_TRIG,
-                R_ZEROES,   R_TSEP, R_SYNTAX,  R_XPOS, R_YPOS,
-                R_REG0,     R_REG1, R_REG2,    R_REG3, R_REG4,
-                R_REG5,     R_REG6, R_REG7,    R_REG8, R_REG9,
-				R_BITCALC
-};
-
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
 enum trig_func {SIN=0, COS=1, TAN=2};       
