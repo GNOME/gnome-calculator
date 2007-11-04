@@ -44,10 +44,9 @@ extern char *Rtstr[];          /* Trig mode X resource strings. */
 extern char *Rsstr[];          /* Syntax resource strings. */
 extern char *Rcstr[];          /* Bitcalculating mode. */
 
-void load_resources();
+void resources_init();
 void read_resources();
 char *convert(char *);
-void init_vars();
 void usage(char *);
 
 void set_resource(char *key, char *value);
@@ -59,7 +58,6 @@ int get_int_resource(char *key, int *value);
 
 const char *get_radix();
 const char *get_tsep();
-void get_options(int, char **);
 void read_str(char **, char *);
 
 #endif /* GET_H */

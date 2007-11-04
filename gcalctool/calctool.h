@@ -150,8 +150,6 @@ enum
 
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 
-#define INC            { argc--; argv++; }
-
 #ifndef LINT_CAST
 #ifdef  lint
 #define LINT_CAST(arg)  (arg ? 0 : 0)
@@ -278,8 +276,6 @@ struct calcVars {                      /* Calctool variables and options. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
     const char *tsep;                  /* Locale specific thousands seperator. */
-    char *titleline;                   /* Value of titleline (if present). */
-    char *tool_label;                  /* Title line for calculator window. */
 
     int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
     int MPdebug;                       /* If set, debug info. to stderr. */

@@ -26,7 +26,6 @@
 
 void show_error(char *);
 void str_replace(char **, char *, char *);
-void set_main_title(enum mode_type);
 void syntaxdep_show_display();
 char *gc_strdup(char *str);
 int usable_num(int MPnum[MP_SIZE]);
@@ -48,7 +47,6 @@ void do_business();
 void do_calc();
 void do_lr_calc();
 void do_expression();
-void do_calctool(int, char **);
 void do_clear();
 void do_clear_entry();
 void do_delete();

@@ -25,6 +25,7 @@
 #include "calctool.h"
 
 void ui_init();
+void ui_load();
 void ui_start();
 
 void ui_make_registers(void);
@@ -42,7 +43,6 @@ void ui_set_base(enum base_type);
 void ui_set_inverse_state(int);
 void ui_set_hyperbolic_state(int);
 
-void ui_set_title(char *);
 void ui_set_error_state(int);
 void ui_set_statusbar(gchar *, const gchar *);
 

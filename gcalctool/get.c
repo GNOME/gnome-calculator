@@ -48,17 +48,6 @@ char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 static GConfClient *client = NULL;
 
-void
-load_resources()        /* Load gconf configuration database for gcalctool. */
-{ 
-    char str[MAXLINE];
-
-    assert(client == NULL);
-    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
-    client = gconf_client_get_default();
-    gconf_client_add_dir(client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
-}
-
 
 char *
 get_resource(char *key)
@@ -72,7 +61,9 @@ get_resource(char *key)
 void
 set_resource(char *key, char *value)
 {
-    gconf_client_set_string(client, key, value, NULL);
+    char key_name[MAXLINE];
+    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);    
+    gconf_client_set_string(client, key_name, value, NULL);
 }
 
 
@@ -188,60 +179,6 @@ get_radix()
 }
 
 
-static void
-getparam(char *s, char *argv[], char *errmes)
-{
-    if (*argv != NULL && argv[0][0] != '-') {
-        STRNCPY(s, *argv, MAXLINE - 1);
-    } else { 
-        FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
-        exit(1);                        
-    }                                  
-}
-
-
-void
-get_options(int argc, char *argv[])      /* Extract command line options. */
-{
-    char next[MAXLINE];       /* The next command line parameter. */
-
-    INC;
-    while (argc > 0) {
-        if (argv[0][0] == '-') {
-            switch (argv[0][1]) {
-                case 'D' :                   /* MP debug info. to stderr. */
-                    v->MPdebug = TRUE;
-                    break;
-
-                case 'E' :                   /* MP errors to stderr. */
-                    v->MPerrors = TRUE;
-                    break;
-
-                case 'a' : 
-                    INC;
-                    getparam(next, argv, _("-a needs accuracy value"));
-                    v->accuracy = atoi(next);
-                    if (v->accuracy < 0 || v->accuracy > MAXACC) {
-                        FPRINTF(stderr, 
-                                _("%s: accuracy should be in the range 0-%d\n"),
-                                v->progname, MAXACC);
-                        v->accuracy = 9;
-                    }
-                    break;
-
-                case '?' :
-                case 'v' : 
-                    usage(v->progname);
-                    break;
-            }
-            INC;
-        } else {
-            INC;
-        }
-    }
-}
-
-
 /* Get a string resource from database. */
 
 static int
@@ -285,60 +222,6 @@ get_tsep()
         return(",");
     } else {
         return(tsep);
-    }
-}
-
-
-static void
-init_constant(int n, gchar *value)
-{
-    gchar *str = g_strdup(value);
-
-    MPstr_to_num(str, DEC, v->MPcon_vals[n]);
-    g_free(str);
-}
-
-
-void
-init_vars()    /* Setup default values for various variables. */
-{
-    int acc, i, n, size;
-
-    v->ghost_zero    = 1;      /* Display initially has empty content. */
-    v->accuracy      = 9;      /* Initial accuracy. */
-    v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
-    v->base          = DEC;    /* Initial base. */
-    v->dtype         = FIX;    /* Initial number display mode. */
-    v->ttype         = DEG;    /* Initial trigonometric type. */
-    v->modetype      = BASIC;  /* Initial calculator mode. */
-    v->rstate        = 0;      /* No memory register frame display initially. */
-    v->iconic        = FALSE;  /* Calctool not iconic by default. */
-    v->MPdebug       = FALSE;  /* No debug info by default. */
-    v->MPerrors      = FALSE;               /* No error information. */
-    acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
-    size             = MP_SIZE;
-    mpset(&acc, &size, &size);
-
-    v->error       = 0;            /* No calculator error initially. */
-    v->key_exp     = 0;            /* Not entering an exponent number. */
-    v->titleline   = NULL;         /* No User supplied title line. */
-
-    read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */
-
-    init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
-    init_constant(1, "1.4142135623");          /* square root of 2 */
-    init_constant(2, "2.7182818284");          /* e */
-    init_constant(3, "3.1415926536");          /* pi */
-    init_constant(4, "0.3937007");             /* cms <=> inch. */
-    init_constant(5, "57.295779513");          /* degrees/radian. */
-    init_constant(6, "1048576.0");             /* 2 ^ 20. */
-    init_constant(7, "0.0353");                /* grams <=> ounce. */
-    init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
-    init_constant(9, "0.0610");                /* cms3 <=> inches3. */
-
-    n = 0;
-    for (i = 0; i < MAXREGS; i++) {
-        mpcim(&n, v->MPmvals[i]);
     }
 }
 
@@ -489,10 +372,12 @@ read_str(char **str, char *value)
 
 
 void
-usage(char *progname)
-{
-    FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
-    FPRINTF(stderr, _("\t\t [-?] [-v] [-?]\n"));
-    exit(1);
+resources_init()        /* Load gconf configuration database for gcalctool. */
+{ 
+    char str[MAXLINE];
+
+    assert(client == NULL);
+    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
+    client = gconf_client_get_default();
+    gconf_client_add_dir(client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
 }

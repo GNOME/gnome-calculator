@@ -41,11 +41,6 @@ static int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
 static void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
 static void do_portionfunc(int num[MP_SIZE]);
 
-char *mstrs[] = {              /* Mode titles to be added to the titlebar. */
-    N_("Basic"), N_("Advanced"), N_("Financial"), 
-    N_("Scientific"), N_("Expression")
-};
-
 char *
 gc_strdup(char *str)
 {
@@ -1181,7 +1176,6 @@ do_immed()
 void
 do_memory()
 {
-    ui_make_registers();
     set_boolean_resource(R_REGS, v->rstate == TRUE);
     ui_set_registers_visible(v->rstate);
 }
@@ -1190,7 +1184,6 @@ do_memory()
 void
 do_mode(int toclear)           /* Set special calculator mode. */
 {
-    set_main_title(v->modetype);
     set_resource(R_MODE, Rmstr[(int) v->modetype]);
     ui_set_mode(v->modetype);
     if (toclear) {
@@ -1527,22 +1520,6 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
         show_display(v->MPtresults[(int) v->ttype]);
     }
 }
-
-
-void
-set_main_title(enum mode_type modetype)  /* Set the title for main window. */
-{
-    char title[MAXLINE];
-
-    if (modetype == BASIC) {
-        STRNCPY(title, v->tool_label, MAXLINE - 1);
-    } else {
-        SNPRINTF(title, MAXLINE, "%s - %s", v->tool_label, 
-                 _(mstrs[(int) modetype]));
-    }
-    ui_set_title(title);
-}
-
 
 void
 show_error(char *message)

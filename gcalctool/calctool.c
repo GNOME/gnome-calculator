@@ -534,47 +534,114 @@ struct exception *exc;
     return(1);
 }
 
-void
-do_calctool(int argc, char **argv)
+
+static void
+getparam(char *s, char *argv[], char *errmes)
 {
-    char *ptr;
-    int i;
+    if (*argv != NULL && argv[0][0] != '-') {
+        STRNCPY(s, *argv, MAXLINE - 1);
+    } else { 
+        FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
+        exit(1);                        
+    }                                  
+}
 
-    v->progname = argv[0];     /* Save programs name. */
-    v->appname  = NULL;
 
-    if ((ptr = strrchr(argv[0], '/')) != NULL) {
-        read_str(&v->appname, ptr+1);
-    } else {
-        read_str(&v->appname, argv[0]);
-    }
+void
+usage(char *progname)
+{
+    FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
+    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
+    FPRINTF(stderr, _("\t\t [-?] [-v] [-h]\n"));
+    exit(1);
+}
 
-/*  Search through all the command line arguments, looking for -name.
- *  If it's present, then this name with be used, when looking for X resources
- *  for this application. When the rest of the command line arguments are
- *  checked later on, then the -name argument (if found) is ignored.
- */
+#define INC { argc--; argv++; }
 
-    for (i = 0; i < argc; i++) {
-        if (EQUAL(argv[i], "-name")) {
-            if ((i+1) > argc) {
-                usage(v->progname);
+void
+get_options(int argc, char *argv[])      /* Extract command line options. */
+{
+    char next[MAXLINE];       /* The next command line parameter. */
+
+    INC;
+    while (argc > 0) {
+        if (argv[0][0] == '-') {
+            switch (argv[0][1]) {
+                case 'D' :                   /* MP debug info. to stderr. */
+                    v->MPdebug = TRUE;
+                    break;
+
+                case 'E' :                   /* MP errors to stderr. */
+                    v->MPerrors = TRUE;
+                    break;
+
+                case 'a' : 
+                    INC;
+                    getparam(next, argv, _("-a needs accuracy value"));
+                    v->accuracy = atoi(next);
+                    if (v->accuracy < 0 || v->accuracy > MAXACC) {
+                        FPRINTF(stderr, 
+                                _("%s: accuracy should be in the range 0-%d\n"),
+                                v->progname, MAXACC);
+                        v->accuracy = 9;
+                    }
+                    break;
+                
+                case 'n' :
+                    if (strcmp(argv[0], "-name") == 0)
+                    {
+                        INC;
+                        read_str(&v->appname, argv[0]);
+                    }
+                    break;
+
+                case '?' :
+                case 'v' : 
+                case 'h' :                 
+                    usage(v->progname);
+                    break;
             }
-            read_str(&v->appname, argv[i+1]);
-            break;
+            INC;
+        } else {
+            INC;
         }
     }
+}
 
-    v->radix = get_radix();    /* Locale specific radix string. */
-    v->tsep  = get_tsep();     /* Locale specific thousands seperator. */
 
-    init_text();               /* Setup text strings depending upon language. */
-    init_vars();               /* Setup default values for variables. */
-    load_resources();          /* Get resources from various places. */
-    read_resources();          /* Read resources from merged database. */
-    get_options(argc, argv);   /* Get command line arguments. */
-    ui_init();             /* Create gcalctool window frames. */
+static void
+init_constant(int n, gchar *value)
+{
+    gchar *str = g_strdup(value);
 
+    MPstr_to_num(str, DEC, v->MPcon_vals[n]);
+    g_free(str);
+}
+
+
+static void
+init_state(void)
+{
+    int acc, i, n, size;
+
+    v->ghost_zero    = 1;      /* Display initially has empty content. */
+    v->accuracy      = 9;      /* Initial accuracy. */
+    v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
+    v->base          = DEC;    /* Initial base. */
+    v->dtype         = FIX;    /* Initial number display mode. */
+    v->ttype         = DEG;    /* Initial trigonometric type. */
+    v->modetype      = BASIC;  /* Initial calculator mode. */
+    v->rstate        = 0;      /* No memory register frame display initially. */
+    v->iconic        = FALSE;  /* Calctool not iconic by default. */
+    v->MPdebug       = FALSE;  /* No debug info by default. */
+    v->MPerrors      = FALSE;               /* No error information. */
+    acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
+    size             = MP_SIZE;
+    mpset(&acc, &size, &size);
+
+    v->error       = 0;            /* No calculator error initially. */
+    v->key_exp     = 0;            /* Not entering an exponent number. */
+    
     v->current    = KEY_CALCULATE;
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
@@ -584,22 +651,67 @@ do_calctool(int argc, char **argv)
     v->inverse    = 0;         /* No inverse functions initially. */
     v->warn_change_mode = 1;   /* Warn user when changing modes. */
 
+    read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */
+
+    init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
+    init_constant(1, "1.4142135623");          /* square root of 2 */
+    init_constant(2, "2.7182818284");          /* e */
+    init_constant(3, "3.1415926536");          /* pi */
+    init_constant(4, "0.3937007");             /* cms <=> inch. */
+    init_constant(5, "57.295779513");          /* degrees/radian. */
+    init_constant(6, "1048576.0");             /* 2 ^ 20. */
+    init_constant(7, "0.0353");                /* grams <=> ounce. */
+    init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
+    init_constant(9, "0.0610");                /* cms3 <=> inches3. */
+
+    n = 0;
+    for (i = 0; i < MAXREGS; i++) {
+        mpcim(&n, v->MPmvals[i]);
+    }   
+}
+
+
+int
+main(int argc, char **argv)
+{
+    char *ptr;
+    
+    v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
+
+    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
+
+    v->progname = argv[0];     /* Save programs name. */
+    v->appname  = NULL;
+    if ((ptr = strrchr(argv[0], '/')) != NULL) {
+        read_str(&v->appname, ptr+1);
+    } else {
+        read_str(&v->appname, argv[0]);
+    }
+    
+    init_state();
+    
+    get_options(argc, argv);   /* Get command line arguments. */
+    ui_init(&argc, &argv);     /* Initialise UI */
+    resources_init();          /* Initialise configuration */
+
+    v->radix = get_radix();    /* Locale specific radix string. */
+    v->tsep  = get_tsep();     /* Locale specific thousands seperator. */
+
+    init_text();               /* Setup text strings depending upon language. */
+    read_resources();          /* Read resources from merged database. */
+    ui_load();
+
     srand48((long) time((time_t *) 0));   /* Seed random number generator. */
 
     do_clear();                /* Initialise and clear display. */
-
-    if (v->rstate == TRUE) {   /* Show the memory register window? */
-        ui_make_registers();
-        if (!v->iconic) {
-            ui_set_registers_visible(TRUE);
-        }
-    }
-
-    set_main_title(v->modetype);
 
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
 
     memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
 
     ui_start();                    /* Display the calculator. */
+    
+    return(0);
 }

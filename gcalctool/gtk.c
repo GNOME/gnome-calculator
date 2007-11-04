@@ -57,6 +57,18 @@ struct button_widget {
     guint accelerator_keys[MAX_ACCELERATORS];
 };
 
+/* Window titles dependant on mode */
+static char *titles[] = {
+    N_("Calculator"), N_("Calculator - Advanced"), N_("Calculator - Financial"),
+    N_("Calculator - Scientific")
+};
+
+/* Window titles dependant on mode and hostname */
+static char *hostname_titles[] = {
+    N_("Calculator [%s]"), N_("Calculator [%s] - Advanced"), N_("Calculator [%s] - Financial"),
+    N_("Calculator [%s] - Scientific")
+};
+
 /*  This table shows the keyboard values that are currently being used:
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -469,32 +481,6 @@ enum {
 
 static XVars X;
 
-int
-main(int argc, char **argv)
-{
-    v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
-    X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
-
-    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
-
-    gtk_init(&argc, &argv);
-
-    X->lnp = ui_get_localized_numeric_point();
-
-    gtk_rc_get_default_files();
-
-    v->home = (char *) g_get_home_dir();
-    gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
-
-    gtk_window_set_default_icon_name("gnome-calculator");
-
-    do_calctool(argc, argv);
-
-    return(0);
-}
-
 
 void 
 ui_set_statusbar(gchar *text, const gchar *imagename)
@@ -545,15 +531,6 @@ bin_str(int MP_value[MP_SIZE], char *str, int maxbits)
     }
 
     return;
-}
-
-
-/* Set new title for a window. */
-
-void
-ui_set_title(char *str)
-{
-    gtk_window_set_title(GTK_WINDOW(X->kframe), _(str));
 }
 
 
@@ -771,11 +748,51 @@ set_memory_toggle(int state)
 }
 
 
+static char *
+make_hostname()
+{
+    Display *dpy = GDK_DISPLAY();
+    char client_hostname[MAXHOSTNAMELEN + 4];
+    char hostname[MAXHOSTNAMELEN];
+    char *display = DisplayString(dpy);
+    char *scanner = display;
+
+    GETHOSTNAME(hostname, MAXHOSTNAMELEN);
+
+    while (*scanner) {
+        scanner++;
+    }
+
+    while (*scanner != ':') {
+        scanner--;
+    }
+
+    *scanner = '\0';
+                                            
+    if (strcmp(display, hostname) &&        
+        strcmp(display, "localhost") &&     
+        strcmp(display, "unix") &&          
+        strcmp(display, "")) {              
+        SPRINTF(client_hostname, " [%s] ", hostname);
+    } else {                                
+        STRCPY(client_hostname, "");        
+    }                                       
+
+    *scanner = ':';
+    
+    if (client_hostname[0] == '\0')
+        return NULL;
+    else
+        return(strdup(client_hostname));                
+}
+
+
 void
 ui_set_mode(enum mode_type mode)
 {
     GtkRequisition *r;
     gint w, h;
+    char *hostname, title[MAXLINE];
   
     switch (mode) {
         case BASIC:
@@ -850,6 +867,14 @@ ui_set_mode(enum mode_type mode)
     gtk_window_resize(GTK_WINDOW(X->kframe), w, h);
   
     g_free(r);
+    
+    if((hostname = make_hostname())) {
+        SNPRINTF(title, MAXLINE, hostname_titles[mode], hostname);
+        g_free(hostname);
+    } else {
+        SNPRINTF(title, MAXLINE, titles[mode]);
+    }
+    gtk_window_set_title(GTK_WINDOW(X->kframe), title);
 }
 
 
@@ -2223,41 +2248,6 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 }
 
 
-static char *
-make_hostname(Display *dpy)
-{
-    char client_hostname[MAXHOSTNAMELEN + 4];
-    char hostname[MAXHOSTNAMELEN];
-    char *display = DisplayString(dpy);
-    char *scanner = display;
-
-    GETHOSTNAME(hostname, MAXHOSTNAMELEN);
-
-    while (*scanner) {
-        scanner++;
-    }
-
-    while (*scanner != ':') {
-        scanner--;
-    }
-
-    *scanner = '\0';
-                                            
-    if (strcmp(display, hostname) &&        
-        strcmp(display, "localhost") &&     
-        strcmp(display, "unix") &&          
-        strcmp(display, "")) {              
-        SPRINTF(client_hostname, " [%s] ", hostname);
-    } else {                                
-        STRCPY(client_hostname, "");        
-    }                                       
-
-    *scanner = ':';                         
-
-    return(strdup(client_hostname));                
-}
-
-
 /*ARGSUSED*/
 static gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
@@ -2698,6 +2688,7 @@ show_thousands_separator_cb(GtkWidget *widget)
 void
 ui_set_registers_visible(int state)
 {
+    ui_make_registers();    
     v->rstate = state;
     gtk_widget_realize(X->rframe);
     if (state && gdk_window_is_visible(X->rframe->window)) {
@@ -2734,26 +2725,14 @@ static void
 create_kframe()
 {
     int i;
-    char *hn, name[MAXLINE];
+    char name[MAXLINE];
     GtkWidget *widget;
     PangoFontDescription *font_desc;
     GtkSizeGroup *size_group;
     GtkAccelGroup *accel_group;
     GdkGeometry geometry;
     GtkWidget *treeview;
-
-    v->tool_label = NULL;
-    if (v->titleline == NULL) {
-        hn = make_hostname(GDK_DISPLAY());
-        v->tool_label = malloc(MAXLINE);
-
-        SNPRINTF(v->tool_label, MAXLINE, "%s %s", _("Calculator"), hn);
-        g_free(hn);
-    } else {
-        read_str(&v->tool_label, v->titleline);
-    }
-    
-    
+   
     X->ui = glade_xml_new(UI_FILE, NULL, NULL);
     if (X->ui == NULL) {
         GtkWidget *dialog;
@@ -2917,7 +2896,6 @@ create_kframe()
     ui_set_display("0.00", FALSE);
 
     gtk_widget_realize(X->kframe);
-    gtk_window_set_title(GTK_WINDOW(X->kframe), _(v->tool_label));
     set_win_position();
 
     X->bas_panel = GET_WIDGET("basic_panel");
@@ -3103,10 +3081,27 @@ read_cfdefs()        /* Read constant/function definitions. */
 
 
 void
-ui_init()
+ui_init(int *argc, char ***argv)
+{  
+    X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
+        
+    gtk_init(argc, argv);
+
+    X->lnp = ui_get_localized_numeric_point();
+
+    gtk_rc_get_default_files();
+
+    v->home = (char *) g_get_home_dir();
+    gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
+
+    gtk_window_set_default_icon_name("gnome-calculator");
+}
+
+void
+ui_load()
 {
     int i;
-    
+
     read_cfdefs();
     
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
@@ -3159,4 +3154,11 @@ ui_init()
     set_show_zeroes_toggle(v->show_zeroes);
     set_show_bitcalculating_toggle(v->bitcalculating_mode);
     set_memory_toggle(v->rstate);
+    
+    ui_set_mode(v->modetype);
+    
+    /* Show the memory register window? */
+    if (v->rstate == TRUE && !v->iconic) {
+        ui_set_registers_visible(TRUE);
+    }
 }
