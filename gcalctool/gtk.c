@@ -416,6 +416,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *aframe_ch;
 
     GtkWidget *display_item;           /* Calculator display. */
+    GtkTextBuffer *display_buffer;     /* Buffer used in display */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
     GtkWidget *rframe;                 /* Register window. */
@@ -638,7 +639,6 @@ void
 set_display(char *str, int minimize_changes)
 {
     char localized[MAX_LOCALIZED];
-    GtkTextBuffer *buffer;
     GtkTextIter start, end;
     gchar *text;
     gint diff;
@@ -653,9 +653,8 @@ set_display(char *str, int minimize_changes)
             str = localized;
         }
     }
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
-    text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
+    text = gtk_text_buffer_get_text(X->display_buffer, &start, &end, TRUE);
     diff = strcmp (text, str);
     if (diff != 0) {
         len1 = strlen(text);
@@ -665,20 +664,19 @@ set_display(char *str, int minimize_changes)
         if (minimize_changes) {
             if (len1 < len2 && strncmp(text, str, len1) == 0) {
                 /* Text insertion */
-                gtk_text_buffer_insert(buffer, &end, str + len1, -1);
+                gtk_text_buffer_insert(X->display_buffer, &end, str + len1, -1);
                 done = TRUE;
             } else if (len1 > len2 && strncmp(text, str, len2) == 0) {
                /* Text deletion */
-                gtk_text_buffer_get_iter_at_offset (buffer, &start, len2);
-                gtk_text_buffer_delete(buffer, &start, &end); 
+                gtk_text_buffer_get_iter_at_offset (X->display_buffer, &start, len2);
+                gtk_text_buffer_delete(X->display_buffer, &start, &end); 
                 done = TRUE;
             }
         }
  
         if (!done) {
-            gtk_text_buffer_delete(buffer, &start, &end);
-
-            gtk_text_buffer_insert(buffer, &end, str, -1);
+            gtk_text_buffer_delete(X->display_buffer, &start, &end);
+            gtk_text_buffer_insert(X->display_buffer, &end, str, -1);
         }
     }
     scroll_right();
@@ -690,20 +688,18 @@ void
 write_display(char *str)
 {
     gchar *text;
-    GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
     if (str == NULL ) {
         str = " ";
     }
 
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
-    text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
+    text = gtk_text_buffer_get_text(X->display_buffer, &start, &end, TRUE);
 
-    gtk_text_buffer_delete(buffer, &start, &end);
+    gtk_text_buffer_delete(X->display_buffer, &start, &end);
     
-    gtk_text_buffer_insert(buffer, &end, str, -1);
+    gtk_text_buffer_insert(X->display_buffer, &end, str, -1);
     scroll_right();
     g_free(text);
 }
@@ -1650,13 +1646,10 @@ menu_item_deselect_cb(GtkWidget *widget)
 static void
 update_copy_paste_status()
 {
-    GtkTextBuffer *buffer;
     gboolean can_paste;
     gboolean can_copy;
     
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    
-    can_copy = gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(buffer));
+    can_copy = gtk_text_buffer_get_has_selection(X->display_buffer);
     can_paste = gtk_clipboard_wait_is_text_available(
                             gtk_clipboard_get(X->clipboard_atom));
     
@@ -1770,16 +1763,13 @@ static void
 get_display()              /* The Copy function key has been pressed. */
 {
     gchar *string = NULL;
-    GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-
-    if (gtk_text_buffer_get_selection_bounds(buffer, &start, &end) == TRUE) {
-        string = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
+    if (gtk_text_buffer_get_selection_bounds(X->display_buffer, &start, &end) == TRUE) {
+        string = gtk_text_buffer_get_text(X->display_buffer, &start, &end, FALSE);
     } else {
-        gtk_text_buffer_get_bounds(buffer, &start, &end);
-        string = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
+        gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
+        string = gtk_text_buffer_get_text(X->display_buffer, &start, &end, FALSE);
     }
 
     if (v->shelf != NULL) {
@@ -2041,17 +2031,14 @@ void
 get_expr_from_display()
 {
     char *text;
-    GtkTextBuffer *buffer;
     GtkTextIter start, end;
 
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
     
-    text = gtk_text_buffer_get_text(
-                 gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item)),
-                                 &start,
-                                 &end,
-                                 FALSE);
+    text = gtk_text_buffer_get_text(X->display_buffer,
+                                    &start,
+                                    &end,
+                                    FALSE);
     exp_replace(text);
 }
 
@@ -2059,20 +2046,17 @@ get_expr_from_display()
 void
 delete_from_cursor()
 {
-    GtkTextBuffer *buffer;
     GtkTextIter start, end, loc;
     gint pos;
 
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
+    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
 
-    g_object_get(G_OBJECT(buffer), "cursor-position", &pos, NULL);
-
-    gtk_text_buffer_get_iter_at_offset(buffer,
+    gtk_text_buffer_get_iter_at_offset(X->display_buffer,
                                        &loc,
                                        pos);
 
-    gtk_text_buffer_backspace(buffer, &loc, TRUE, TRUE);
+    gtk_text_buffer_backspace(X->display_buffer, &loc, TRUE, TRUE);
 
 }
 
@@ -2080,9 +2064,7 @@ delete_from_cursor()
 void
 insert_to_cursor(char *text)
 {
-    GtkTextBuffer *buffer = NULL;
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
-    gtk_text_buffer_insert_at_cursor(buffer,
+    gtk_text_buffer_insert_at_cursor(X->display_buffer,
                                      text,
                                      strlen(text));
 }
@@ -2164,6 +2146,18 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
 
 
 /*ARGSUSED*/
+static void
+select_display_entry(int offset)
+{
+    GtkTextIter iter;
+    
+    gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, offset);
+    gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    gtk_widget_grab_focus(X->display_item);
+}
+
+
+/*ARGSUSED*/
 static gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
@@ -2212,6 +2206,17 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
                 do_accuracy(9);
                 return (TRUE);
         }
+    }
+    
+    /* Connect home and end keys to move into the display entry */
+    if (event->keyval == GDK_Home)
+    {
+        select_display_entry(0);
+        return (TRUE);
+    } else if (event->keyval == GDK_End)
+    {
+        select_display_entry(-1);
+        return (TRUE);
     }
 
     for (i = 0; i < NBUTTONS; i++) {
@@ -2944,6 +2949,7 @@ create_kframe()
     X->scrolledwindow = GET_WIDGET("display_scroll"),
 
     X->display_item = GET_WIDGET("displayitem"),
+    X->display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_widget_ensure_style(X->display_item);
     font_desc = pango_font_description_copy(X->display_item->style->font_desc);
     pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
