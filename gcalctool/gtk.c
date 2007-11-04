@@ -2503,6 +2503,7 @@ arithmetic_mode_cb(GtkWidget *widget)
     }
     put_resource(R_SYNTAX, Rsstr[v->syntax]);
     set_mode(v->modetype);
+    // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
                                (v->syntax == exprs));
 }
@@ -2956,6 +2957,7 @@ create_kframe()
     gtk_widget_modify_font(X->display_item, font_desc);
     pango_font_description_free(font_desc);
     gtk_widget_set_name(X->display_item, "displayitem");
+    // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
                                (v->syntax == exprs));
 
