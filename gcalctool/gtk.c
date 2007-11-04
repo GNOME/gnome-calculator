@@ -1470,36 +1470,29 @@ save_win_position()
 }
 
 
-static void
-change_mode(int mode)
-{
-    X->mode = mode;
-    v->modetype = mode;
-    set_item(BASEITEM, DEC);
-    ui_set_base(v->base);
-    set_item(NUMITEM, FIX);
-    v->accuracy = 9;
-    set_accuracy_toggle(v->accuracy);
-
-    v->show_tsep = FALSE;
-    set_show_tsep_toggle(v->show_tsep);
-    set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
-
-    v->show_zeroes = FALSE;
-    set_show_zeroes_toggle(v->show_zeroes);
-    set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
-
-    reset_mode_display();
-    do_mode(TRUE);
-}
-
-
 /*ARGSUSED*/
 static void
 cm_response_cb(GtkDialog *dialog, int response)
 {
     if (response == GTK_RESPONSE_ACCEPT) {
-        change_mode(X->mode);
+        X->mode = mode;
+        v->modetype = mode;
+        set_item(BASEITEM, DEC);
+        ui_set_base(v->base);
+        set_item(NUMITEM, FIX);
+        v->accuracy = 9;
+        set_accuracy_toggle(v->accuracy);
+
+        v->show_tsep = FALSE;
+        set_show_tsep_toggle(v->show_tsep);
+        set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
+
+        v->show_zeroes = FALSE;
+        set_show_zeroes_toggle(v->show_zeroes);
+        set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
+
+        reset_mode_display();
+        do_mode(TRUE);
     } else {
         ui_set_mode(v->modetype);
     }
