@@ -68,8 +68,8 @@ enum num_type { ENG, FIX, SCI, MAXDISPMODES };
 enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
 enum syntax {
-    npa = 0,                 /* Non-precedence arithmetic */
-    exprs,                   /* Expression with arithmetic precedence */
+    NPA = 0,      /* Non-precedence arithmetic */
+    EXPRS,        /* Expression with arithmetic precedence */
     MAXSYNTAX
 };
 

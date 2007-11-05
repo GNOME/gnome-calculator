@@ -582,11 +582,11 @@ refresh_display()
     struct exprm_state *e;
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             show_display(v->MPdisp_val);
             break;
 
-        case exprs:
+        case EXPRS:
             e = get_state();
 
             if (e->expression && strlen(e->expression)) {

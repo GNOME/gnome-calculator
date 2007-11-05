@@ -753,7 +753,7 @@ set_bit_panel()
     int ret = usable_num(MP);
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             MPstr_to_num(v->display, v->base, MP1);
             mpcmim(MP1, MP2);
             if (mpeq(MP1, MP2)) {
@@ -778,7 +778,7 @@ set_bit_panel()
             gtk_widget_set_sensitive(X->bit_panel, FALSE);
             break;
 
-        case exprs:
+        case EXPRS:
             if (ret || !is_integer(MP)) {
                 gtk_widget_set_sensitive(X->bit_panel, FALSE);
                 return;
@@ -1111,7 +1111,7 @@ static void do_button(struct button *n, int arg)
     struct exprm_state *e;
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             process_item(n, arg);
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
@@ -1120,7 +1120,7 @@ static void do_button(struct button *n, int arg)
             }
             break;
 
-        case exprs:
+        case EXPRS:
             e = get_state();
             e->value = arg;
             MEMCPY(&(e->button), n, sizeof(struct button));
@@ -1420,11 +1420,11 @@ static void
 reset_mode_display(void)
 {
     switch (v->syntax) {
-        case npa:
+        case NPA:
             show_display(v->MPdisp_val);
             break;
 
-        case exprs:
+        case EXPRS:
             refresh_display();
             break;
         
@@ -1798,6 +1798,7 @@ get_menu_entry(enum menu_type mtype, int offset)
 static void
 get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
+    int ret;
     gchar *dstp, *end_buffer, *srcp, *text;
 
     if (buffer == NULL) {
@@ -1855,9 +1856,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     *dstp++ = '\0';
 
     switch (v->syntax) {
-        case npa: {
-            int ret = lr_parse((char *) text, v->MPdisp_val);
-
+        case NPA:
+            ret = lr_parse((char *) text, v->MPdisp_val);
             if (!ret) {
                 show_display(v->MPdisp_val);
             } else {
@@ -1865,9 +1865,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
                                  "gtk-dialog-error");
             }
             break;
-        }
     
-        case exprs:
+        case EXPRS:
             exp_append((char *) text);
             refresh_display();
             break;
@@ -1998,7 +1997,7 @@ ui_insert_display(char *text)
 static gboolean
 display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
 {
-    if (v->syntax == exprs) {
+    if (v->syntax == EXPRS) {
         ui_parse_display();
     } 
 
@@ -2396,6 +2395,8 @@ show_registers_cb(GtkWidget *widget)
 static void
 arithmetic_mode_cb(GtkWidget *widget)
 {
+    struct exprm_state *e;
+    
     if (!v->started) {
         return;
     }
@@ -2404,7 +2405,7 @@ arithmetic_mode_cb(GtkWidget *widget)
 
     v->syntax = v->syntax ^ 1;
     switch (v->syntax) {
-        case npa:
+        case NPA:
             v->noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
             show_display(v->MPdisp_val);
@@ -2412,16 +2413,14 @@ arithmetic_mode_cb(GtkWidget *widget)
             clear_undo_history();
             break;
 
-        case exprs: {
-            struct exprm_state *e = get_state();
-
+        case EXPRS:
+            e = get_state();
             MPstr_to_num("0", DEC, e->ans);
             exp_del();
             show_display(e->ans);
             ui_set_statusbar(
                  _("Activated expression mode with operator precedence"), "");
-        }
-        break;
+            break;
         
         default:
             assert(0);
@@ -2430,7 +2429,7 @@ arithmetic_mode_cb(GtkWidget *widget)
     ui_set_mode(v->modetype);
     // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
-                               (v->syntax == exprs));
+                               (v->syntax == EXPRS));
 }
 
 
@@ -2467,14 +2466,14 @@ mode_radio_cb(GtkWidget *radio)
  */
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             if (v->old_cal_value < 0 ||
                 v->old_cal_value == KEY_CALCULATE) {
                 complete = 1;    /* Calculation is complete. */
             }
             break;
 
-        case exprs:
+        case EXPRS:
             e = get_state();
             if (!e->expression || !strcmp(e->expression, "Ans")) {
                 complete = 1;   /* Calculation is complete. */
@@ -2613,6 +2612,8 @@ trig_cb(GtkWidget *widget)
 void
 ui_start()
 {
+    struct exprm_state *e;
+    
     v->started = 1;
     ui_set_base(v->base);
     ui_set_trigonometric_mode(v->ttype);
@@ -2621,21 +2622,19 @@ ui_start()
     gtk_widget_show(X->kframe);
 
     switch (v->syntax) { 
-        case npa:
+        case NPA:
             break;
 
-             case exprs: {
+        case EXPRS:
             /* Init expression mode.
              * This must be executed after do_base is called at init.
              * FIXME: The init code here is duplicated elsewhere.
              */
-            struct exprm_state *e = get_state();
-
+            e = get_state();
             MPstr_to_num("0", DEC, e->ans);
             exp_del();
             show_display(e->ans);
-        }
-        break;
+            break;
 
         default:
             assert(0);
@@ -2917,7 +2916,7 @@ create_kframe()
     gtk_widget_set_name(X->display_item, "displayitem");
     // FIXME: We can't allow the display to be editable. See bug #326938
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
-                               (v->syntax == exprs));
+                               (v->syntax == EXPRS));
     atk_object_set_role(gtk_widget_get_accessible(X->display_item), 
                                                   ATK_ROLE_EDITBAR);
 
@@ -3080,7 +3079,7 @@ ui_load()
     set_memory_toggle(v->rstate);
     
     /* Use loaded Arithmetic Precedence mode setting. */
-    if (v->syntax == exprs) {
+    if (v->syntax == EXPRS) {
         widget = GET_WIDGET("arithmetic_precedence_menu");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
     } else {

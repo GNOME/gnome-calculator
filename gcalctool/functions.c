@@ -873,7 +873,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
     int ret, MP[MP_SIZE];
     
     switch (v->syntax) {
-        case npa:
+        case NPA:
             v->base = b;
             set_resource(R_BASE, Rbstr[(int) v->base]);
             ui_set_base(v->base);
@@ -883,7 +883,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
             }
 	        break;
 	
-        case exprs:
+        case EXPRS:
             e = get_state();
             ret = usable_num(MP);
 
@@ -919,12 +919,12 @@ do_constant(int index)
     assert(index <= 9);
     
     switch (v->syntax) {
-        case npa:
+        case NPA:
             MPval = v->MPcon_vals[index];
             mpstr(MPval, v->MPdisp_val);
             break;
 
-        case exprs:
+        case EXPRS:
 	        e = get_state();
             do_expression();
             break;
@@ -983,14 +983,14 @@ do_exchange(int index)         /* Exchange display with memory register. */
     int n;
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             mpstr(v->MPdisp_val, MPtemp);
             mpstr(v->MPmvals[index], v->MPdisp_val);
             mpstr(MPtemp, v->MPmvals[index]);
             ui_make_registers();
             break;
 
-        case exprs:
+        case EXPRS:
             e = get_state();
             ret = usable_num(MPexpr);
             n = e->value;
@@ -1098,13 +1098,13 @@ do_function(int index)      /* Perform a user defined function. */
     assert(index <= 9);
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             str = v->fun_vals[index];
             assert(str);
             ret = lr_udf_parse(str);
             break;
 
-        case exprs:
+        case EXPRS:
             str = v->fun_vals[index];
             assert(str);
             ret = ce_udf_parse(str);
@@ -1225,32 +1225,32 @@ do_number()
 void
 do_numtype(enum num_type n)   /* Set number display type. */
 {
+    struct exprm_state *e;
+    int ret, MP[MP_SIZE];
+
     v->dtype = n;
     set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
 
     switch (v->syntax) {
-    case npa:
-        if (v->rstate) {
-            ui_make_registers();
-        }
-        break;
+        case NPA:
+            if (v->rstate) {
+                ui_make_registers();
+            }
+            break;
         
-    case exprs: {
-     	struct exprm_state *e = get_state();
-        int MP[MP_SIZE];
-        int ret = usable_num(MP);
-        if (ret) {
-            ui_set_statusbar(_("No sane value to convert"),
-                             "gtk-dialog-error");
-        } else if (!v->ghost_zero) {
-            mpstr(MP, e->ans);
-            exp_replace("Ans");
-            ui_make_registers();
-        }
-	clear_undo_history();
-
-    }
-    break;
+        case EXPRS:
+            e = get_state();
+            ret = usable_num(MP);
+            if (ret) {
+                ui_set_statusbar(_("No sane value to convert"),
+                                 "gtk-dialog-error");
+            } else if (!v->ghost_zero) {
+                mpstr(MP, e->ans);
+                exp_replace("Ans");
+                ui_make_registers();
+            }
+            clear_undo_history();
+            break;
 
     default:
         assert(0);
@@ -1311,11 +1311,11 @@ do_sto(int index)
     int ret;
     
     switch (v->syntax) {
-        case npa:
+        case NPA:
             mpstr(v->MPdisp_val, v->MPmvals[index]);
             break;
 
-        case exprs:
+        case EXPRS:
             ret = usable_num(v->MPmvals[index]);
             if (ret) {
                 ui_set_statusbar(_("No sane value to store"), 
@@ -1352,11 +1352,11 @@ void
 do_rcl(int index)
 {
     switch (v->syntax) {
-        case npa:
+        case NPA:
             mpstr(v->MPmvals[index], v->MPdisp_val);
             break;
 
-        case exprs:
+        case EXPRS:
             do_expression();
             break;
 
@@ -1390,11 +1390,11 @@ void
 syntaxdep_show_display()
 {
     switch (v->syntax) {
-        case npa:
+        case NPA:
             show_display(v->MPdisp_val);
             break;
 
-        case exprs:
+        case EXPRS:
      	    refresh_display();
             break;
 
@@ -1459,7 +1459,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
     int MPtemp[MP_SIZE], MPval[MP_SIZE];
     
     switch (v->syntax) {
-        case npa:
+        case NPA:
             MPstr_to_num(v->display, v->base, MPtemp);
             mpcmd(MPtemp, &dval);
             temp = ibool(dval);
@@ -1476,7 +1476,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
             mpstr(v->MPdisp_val, v->MPlast_input);
             break;
 
-        case exprs:
+        case EXPRS:
             e = get_state();
             n = e->value;
             ret = usable_num(MPval);

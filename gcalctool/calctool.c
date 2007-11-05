@@ -482,7 +482,7 @@ doerr(char *errmes)
     }
 
     switch (v->syntax) {
-        case npa:
+        case NPA:
             strncpy(v->display, errmes, MAXLINE - 1);
             v->display[MAXLINE - 1] = '\0';
             ui_set_error_state(TRUE);
@@ -490,7 +490,7 @@ doerr(char *errmes)
             ui_beep();
             break;
 
-        case exprs:
+        case EXPRS:
             v->math_error = -MPMATH_ERR;
             break;
         

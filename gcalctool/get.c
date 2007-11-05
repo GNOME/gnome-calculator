@@ -310,7 +310,7 @@ read_resources()    /* Read all possible resources from the database. */
     }
 
     /* Set expression (arithmetic precedence) mode as default. */
-    v->syntax = exprs;
+    v->syntax = EXPRS;
 
     if (get_str_resource(R_SYNTAX, str)) {
         for (i = 0; i < MAXSYNTAX; i++) {
