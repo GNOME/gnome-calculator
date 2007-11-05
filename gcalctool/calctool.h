@@ -58,9 +58,6 @@ enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY,  M_FIN,
 
 enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
 
-enum item_type { BASEITEM, TTYPEITEM, NUMITEM,
-                 HYPITEM,  INVITEM,   OPITEM,  MODEITEM };
-
 /* Calculator modes. */
 enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
 
