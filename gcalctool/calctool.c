@@ -284,19 +284,19 @@ struct button buttons[NKEYS] = {
 {
     KEY_SINE,
     N_("Sin"),
-    do_trig,
+    do_sine,
     func
 },
 {
     KEY_COSINE,
     N_("Cos"),
-    do_trig,
+    do_cosine,
     func
 },
 {
     KEY_TANGENT,
     N_("Tan"),
-    do_trig,
+    do_tangent,
     func
 },
 {

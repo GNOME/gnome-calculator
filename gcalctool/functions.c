@@ -36,11 +36,6 @@
 #include "lr_parser.h"
 #include "ui.h"
 
-static int do_trigfunc(int s[MP_SIZE], int t[MP_SIZE]);
-
-static void do_immedfunc(int s[MP_SIZE], int t[MP_SIZE]);
-static void do_portionfunc(int num[MP_SIZE]);
-
 char *
 gc_strdup(char *str)
 {
@@ -770,36 +765,79 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 }
 
 
-static int
-do_trigfunc(int s[MP_SIZE], int t[MP_SIZE])
+void
+do_sine()
 {
-    enum trig_func tfunc;
-    int sin_key, cos_key, tan_key;
+    enum trigfunc_type type;
+    if (v->inverse)
+    {
+        if (v->hyperbolic) {
+            type = asinh_t;
+        } else {
+            type = asin_t;
+        }
 
-    if (v->current < 0) {
-        return(-EINVAL);
+    } else {
+        if (v->hyperbolic) {
+            type = sinh_t;
+        } else {
+            type = sin_t;
+        }
     }
+    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
 
-    sin_key = (v->current == KEY_SINE) ? 1 : 0;
-    cos_key = (v->current == KEY_COSINE) ? 1 : 0;
-    tan_key = (v->current == KEY_TANGENT) ? 1 : 0;
-  
-    if (sin_key) {
-        tfunc = SIN;
-    } else if (cos_key) {
-        tfunc = COS;
-    } else if (tan_key) {
-        tfunc = TAN;
-    } else assert(0);
-  
-    return(do_tfunc(s, t, tfunc));
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+        
+void
+do_cosine()
+{
+    enum trigfunc_type type;
+    if (v->inverse)
+    {
+        if (v->hyperbolic) {
+            type = acosh_t;
+        } else {
+            type = acos_t;
+        }
+
+    } else {
+        if (v->hyperbolic) {
+            type = cosh_t;
+        } else {
+            type = cos_t;
+        }
+    }
+    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
+
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
 }
 
 
 void
-do_trig() 
+do_tangent()        
 {
-    do_trigfunc(v->MPdisp_val, v->MPresult);
+    enum trigfunc_type type;
+    if (v->inverse)
+    {
+        if (v->hyperbolic) {
+            type = atanh_t;
+        } else {
+            type = atan_t;
+        }
+
+    } else {
+        if (v->hyperbolic) {
+            type = tanh_t;
+        } else {
+            type = tan_t;
+        }
+    }
+    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
+
     show_display(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
@@ -811,32 +849,6 @@ do_percent()
     calc_percent(v->MPdisp_val, v->MPresult);
     show_display(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
-}
-
-int
-do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc)
-{
-    /* Assumes the SIN=0, COS=1, TAN=2. */
-    
-    enum trigfunc_type conv_table[3][4] = {
-	{ sin_t, asin_t, sinh_t, asinh_t },
-	{ cos_t, acos_t, cosh_t, acosh_t },
-	{ tan_t, atan_t, tanh_t, atanh_t },
-    };
-    
-    int inverse = (v->inverse) ? 1 : 0;
-    int hyperbolic = (v->hyperbolic) ? 2 : 0;
-    int mode = (inverse | hyperbolic);
-
-    assert(tfunc < 3); 
-    
-    if (v->current < 0) {
-        return -EINVAL;
-    }
-    
-    calc_trigfunc(conv_table[tfunc][mode], s, t);
-    
-    return(0);
 }
 
 

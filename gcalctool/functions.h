@@ -67,12 +67,13 @@ void do_constant();
 void do_function();
 void do_point();
 void do_portion();
-void do_trig();
+void do_sine();
+void do_cosine();
+void do_tangent();
 void do_trigtype(enum trig_type);
 void do_percent();
 void do_factorial(int *, int *);
 int do_rcl_reg(int reg, int value[MP_SIZE]);
 int do_sto_reg(int reg, int value[MP_SIZE]);
-int do_tfunc(int s[MP_SIZE], int t[MP_SIZE], enum trig_func tfunc);
 
 #endif /*FUNCTIONS_H*/

@@ -154,9 +154,9 @@ exp:
 | exp '^' exp {calc_xpowy($1, $3, $$);}
 | exp 'e' exp {calc_xtimestenpowx($1, $3, $$);}
 
-| exp 'K' {do_tfunc($1, $$, SIN);}
-| exp 'J' {do_tfunc($1, $$, COS);}
-| exp 'L' {do_tfunc($1, $$, TAN);}
+| exp 'K' {do_sine($1, $$);}
+| exp 'J' {do_cosine($1, $$);}
+| exp 'L' {do_tangent($1, $$);}
 
 | exp 'G' {mplog10($1, $$);}
 | exp 's' {mpsqrt($1, $$);}

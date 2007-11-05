@@ -65,8 +65,6 @@ enum num_type { ENG, FIX, SCI };            /* Number display mode. */
 
 enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
 
-enum trig_func {SIN=0, COS=1, TAN=2};       
-
 /* Abbreviations for the gcalctool keyboard */
 
 enum
