@@ -500,11 +500,8 @@ do_expression()
     /* FIXME: These match existing behaviour before Glade patches
      * these should be acted on lower down in this function */
     switch (e->button.id) {
-        case KEY_LEFT_SHIFT:
-            do_lshift(e->value);
-            return;
-        case KEY_RIGHT_SHIFT:
-            do_rshift(e->value);
+        case KEY_SHIFT:
+            do_shift(e->value);
             return;
         case KEY_SET_ACCURACY:
             do_accuracy(e->value);
@@ -1452,8 +1449,8 @@ do_portion()
 }
 
 
-static void
-do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display value. */
+void
+do_shift(int count)     /* Perform bitwise shift on display value. */
 {
     int n, ret;
     BOOLEAN temp;
@@ -1466,11 +1463,11 @@ do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display val
             MPstr_to_num(v->display, v->base, MPtemp);
             mpcmd(MPtemp, &dval);
             temp = ibool(dval);
-	  
-            if (dir == left) {
+
+            if (count < 0) {
+                temp = temp >> -count;
+            } else {
                 temp = temp << count;
-            } else if (dir == right) {
-                temp = temp >> count;
             }
 
             dval = setbool(temp);
@@ -1489,11 +1486,7 @@ do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display val
                 break;
             }
 
-            if (dir == left) {
-                calc_shift(MPval, e->ans, n);
-            } else {
-                calc_shift(MPval, e->ans, -n);
-            }
+            calc_shift(MPval, e->ans, n);
 
             exp_replace("Ans");
             break;
@@ -1504,19 +1497,6 @@ do_shift(enum shiftd dir, int count)     /* Perform bitwise shift on display val
     
     v->new_input = 1;
     syntaxdep_show_display();
-}
-
-
-// FIXME: Make one shift function using sign
-void
-do_lshift(int count)
-{
-    do_shift(left, count);
-}
-
-void do_rshift(int count)
-{
-    do_shift(right, count);
 }
 
 

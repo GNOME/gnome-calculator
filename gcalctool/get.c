@@ -36,6 +36,8 @@
 #include "display.h"
 #include "mp.h"
 
+#define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
+
 /* Various string values read/written as X resources. */
 
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };

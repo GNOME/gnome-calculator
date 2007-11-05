@@ -154,11 +154,11 @@ static struct button_widget button_widgets[] = {
     { 0, 0 },
     { GDK_Delete, 0 }},
 
-    {KEY_LEFT_SHIFT,         "shift_left", M_LSHF,
+    {KEY_SHIFT,              "shift_left", M_LSHF,
     { GDK_SHIFT_MASK, 0 },
     { GDK_less, 0 }},
 
-    {KEY_RIGHT_SHIFT,        "shift_right", M_RSHF,
+    {KEY_SHIFT,              "shift_right", M_RSHF,
     { GDK_SHIFT_MASK, 0 },
     { GDK_greater, 0 }},
 
@@ -792,6 +792,9 @@ set_bit_panel()
                 gtk_label_set_text(GTK_LABEL(X->bits[64 - i - 1]), label);
             }
             break;
+        
+        default:
+            assert(FALSE);
     }
 }
 
@@ -1106,7 +1109,7 @@ ui_beep()
 static void do_button(struct button *n, int arg)
 {
     struct exprm_state *e;
-    
+
     switch (v->syntax) {
         case npa:
             process_item(n, arg);
@@ -1424,6 +1427,9 @@ reset_mode_display(void)
         case exprs:
             refresh_display();
             break;
+        
+        default:
+            assert(FALSE);
     }
     ui_make_registers();
 }
@@ -2347,7 +2353,7 @@ shift_left_cb(GtkWidget *widget)
                                                    "shiftcount"));
 
     if (v->started) {
-        do_button(&buttons[KEY_LEFT_SHIFT], count);
+        do_button(&buttons[KEY_SHIFT], count);
     }
 }
 
@@ -2359,7 +2365,7 @@ shift_right_cb(GtkWidget *widget)
                                                    "shiftcount"));
 
     if (v->started) {
-        do_button(&buttons[KEY_RIGHT_SHIFT], count);
+        do_button(&buttons[KEY_SHIFT], -count);
     }
 }
 
@@ -2432,6 +2438,7 @@ arithmetic_mode_cb(GtkWidget *widget)
 static void
 mode_radio_cb(GtkWidget *radio)
 {
+    struct exprm_state *e;
     int immediate = 0;    /* Set if we can change mode without warning user. */
     int complete = 0;     /* Set if the user has completed a calculation. */
 
@@ -2467,12 +2474,15 @@ mode_radio_cb(GtkWidget *radio)
             }
             break;
 
-        case exprs: {
-                          struct exprm_state *e = get_state();
+        case exprs:
+            e = get_state();
             if (!e->expression || !strcmp(e->expression, "Ans")) {
                 complete = 1;   /* Calculation is complete. */
             }
-        }
+            break;
+        
+        default:
+            assert(FALSE);
     }
 
     if (complete) {
@@ -3028,9 +3038,9 @@ ui_load()
     X->menus[M_ACC] = GET_WIDGET("accuracy_popup");
     X->mrec[M_ACC] = &buttons[KEY_SET_ACCURACY];
     X->menus[M_LSHF] = GET_WIDGET("left_shift_popup");
-    X->mrec[M_LSHF] = &buttons[KEY_LEFT_SHIFT];
+    X->mrec[M_LSHF] = &buttons[KEY_SHIFT];
     X->menus[M_RSHF] = GET_WIDGET("right_shift_popup");
-    X->mrec[M_RSHF] = &buttons[KEY_RIGHT_SHIFT];
+    X->mrec[M_RSHF] = &buttons[KEY_SHIFT];
     
     X->menus[M_CON] = GET_WIDGET("constants_popup");
     X->mrec[M_CON] = &buttons[KEY_CONSTANT];

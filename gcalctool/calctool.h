@@ -52,21 +52,28 @@
 
 /* Menu bar menu types. */
 
-enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY,  M_FIN,
-	       M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES,
+enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY, M_FIN,
+               M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES,
                M_LR_ARITH, M_OP_ARITH };
 
-enum base_type { BIN, OCT, DEC, HEX };      /* Base definitions. */
+enum base_type { BIN, OCT, DEC, HEX, MAXBASES };      /* Base definitions. */
 
 /* Calculator modes. */
-enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC };
+enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC, MAXMODES };
 
-enum num_type { ENG, FIX, SCI };            /* Number display mode. */
+/* Number display mode. */
+enum num_type { ENG, FIX, SCI, MAXDISPMODES };
 
-enum trig_type { DEG, GRAD, RAD };          /* Trigonometric types. */
+/* Trigonometric types. */
+enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
+
+enum syntax {
+    npa = 0,                 /* Non-precedence arithmetic */
+    exprs,                   /* Expression with arithmetic precedence */
+    MAXSYNTAX
+};
 
 /* Abbreviations for the gcalctool keyboard */
-
 enum
 {
     KEY_0,
@@ -132,8 +139,7 @@ enum
     KEY_FINC_SLN,
     KEY_FINC_SYD,
     KEY_FINC_TERM,
-    KEY_LEFT_SHIFT,
-    KEY_RIGHT_SHIFT,
+    KEY_SHIFT,
     KEY_STORE,
     KEY_RECALL,
     KEY_EXCHANGE,
@@ -142,8 +148,6 @@ enum
     KEY_FUNCTION,
     NKEYS
 };
-
-#define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 
 #ifndef LINT_CAST
 #ifdef  lint
@@ -161,23 +165,14 @@ enum
 #endif /*MAXLINE*/
 
 #define MAXACC         99         /* Max. number of digits after numeric point. */
-#define MAXBASES       4          /* Maximum number of numeric bases. */
+
 #define MAXCONFUN      10         /* Maximum number of constants/functions. */
-#define MAXDISPMODES   3          /* Maximum number of display modes. */
-#define MAXMODES       4          /* Maximum number of calculator modes. */
 #define MAXREGS        10         /* Maximum number of memory registers. */
-#define MAXSTACK       256        /* Parenthese stack size. */
-#define MAXTRIGMODES   3          /* Maximum number of trig. modes. */
-#define MAXSYNTAX      2          /* Number of syntaxes in calculator */
 #define MAXBITCALC     2          /* Choices for bitcalculating */
 
 #ifndef MIN
 #define MIN(x,y)       ((x) < (y) ? (x) : (y))
 #endif /*MIN*/
-
-#ifndef CFNAME
-#define CFNAME         ".gcalctoolcf"
-#endif /*CFNAME*/
 
 #ifndef RCNAME
 #define RCNAME         ".gcalctoolrc"
@@ -208,16 +203,6 @@ enum button_flags {
     postfixop    = (1 << 14),  /* Unary postfix operation */
     prefixop     = (1 << 15),  /* Unary prefix operation */
     dpoint       = (1 << 16)   /* Decimal point */
-};
-
-enum shiftd {
-    left = 0,
-    right 
-};
-
-enum syntax {
-    npa = 0,                 /* Non-precedence arithmetic */
-    exprs,                   /* Expression with arithmetic precedence */
 };
 
 struct button {
@@ -279,7 +264,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int MPexpr_val[MP_SIZE];           /* Value of the current expression. */
     int MPlast_input[MP_SIZE];         /* Previous number input by user. */
     int MPmvals[MAXREGS][MP_SIZE];     /* Memory register values. */
-    int *MPnumstack[MAXSTACK];         /* Numeric stack for parens. */
     int MPresult[MP_SIZE];             /* Current calculator total value. */
     int MPimresult[MP_SIZE];           /* Current intermediate result. */
     int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */
@@ -308,7 +292,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
     int old_cal_value;      /* Previous calculation operator. */
     int opsptr;        /* Pointer into the parentheses operand stack. */
-    int opstack[MAXSTACK];  /* Stack containing parentheses input. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */

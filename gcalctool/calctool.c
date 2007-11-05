@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <sys/types.h>
 
 #include "calctool.h"
@@ -427,15 +428,9 @@ struct button buttons[NKEYS] = {
     none
 },
 {
-    KEY_LEFT_SHIFT,
+    KEY_SHIFT,
     NULL,
-    do_lshift,
-    none
-},
-{
-    KEY_RIGHT_SHIFT,
-    NULL,
-    do_rshift,
+    do_shift,
     none
 },
 {
@@ -498,6 +493,9 @@ doerr(char *errmes)
         case exprs:
             v->math_error = -MPMATH_ERR;
             break;
+        
+        default:
+            assert(FALSE);
     }
 }
 
