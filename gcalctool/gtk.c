@@ -1929,9 +1929,9 @@ hyp_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 void
-inv_cb(GtkWidget *button)
+inv_cb(GtkWidget *widget)
 {
-    v->inverse = !v->inverse;
+    v->inverse = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 }
 
 
@@ -1966,21 +1966,12 @@ ui_parse_display()
 }
 
 
-void
-delete_from_cursor()
+int
+ui_get_cursor(void)
 {
-    GtkTextIter start, end, loc;
     gint pos;
-
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
     g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
-
-    gtk_text_buffer_get_iter_at_offset(X->display_buffer,
-                                       &loc,
-                                       pos);
-
-    gtk_text_buffer_backspace(X->display_buffer, &loc, TRUE, TRUE);
-
+    return pos;
 }
 
 
