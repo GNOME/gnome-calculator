@@ -641,7 +641,7 @@ ui_set_mode(enum mode_type mode)
     GtkRequisition *r;
     gint w, h;
     char *hostname, title[MAXLINE];
-    GtkWidget *radio;      
+    GtkWidget *menu;      
   
     switch (mode) {
         case BASIC:
@@ -651,7 +651,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
-            radio = GET_WIDGET("view_basic_menu");
+            menu = GET_WIDGET("view_basic_menu");
             break;
 
         case ADVANCED:
@@ -661,7 +661,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
-            radio = GET_WIDGET("view_advanced_menu");
+            menu = GET_WIDGET("view_advanced_menu");
             break;
 
         case FINANCIAL:
@@ -671,7 +671,7 @@ ui_set_mode(enum mode_type mode)
             gtk_widget_hide(X->mode_panel);
             gtk_widget_hide(X->bit_panel);
             gtk_widget_hide(X->sci_panel);
-            radio = GET_WIDGET("view_financial_menu");
+            menu = GET_WIDGET("view_financial_menu");
             break;
 
         case SCIENTIFIC:
@@ -685,13 +685,14 @@ ui_set_mode(enum mode_type mode)
                 gtk_widget_hide(X->bit_panel);
             }
             gtk_widget_show(X->sci_panel);
-            radio = GET_WIDGET("view_scientific_menu");
+            menu = GET_WIDGET("view_scientific_menu");
             break;
         
         default:
             assert(FALSE);
             return;
     }
+   
     
     r = g_new0(GtkRequisition, 1);
     gtk_widget_size_request(X->menubar, r);
@@ -732,6 +733,8 @@ ui_set_mode(enum mode_type mode)
         SNPRINTF(title, MAXLINE, titles[mode]);
     }
     gtk_window_set_title(GTK_WINDOW(X->kframe), title);
+
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), TRUE);
 }
 
 
@@ -1687,9 +1690,9 @@ update_memory_menus()
 static void
 set_memory_toggle(int state)
 {
-    GtkWidget *radio = GET_WIDGET("show_registers_menu");
+    GtkWidget *menu = GET_WIDGET("show_registers_menu");
 
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(radio), state);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
 }
 
 
@@ -3116,8 +3119,8 @@ ui_load()
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
     }
 
-    ui_set_display("0.00", FALSE);    
-    ui_set_mode(v->modetype);    
+    ui_set_display("0.00", FALSE);
+    ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);
     ui_set_base(v->base);
     ui_set_accuracy(v->accuracy);
