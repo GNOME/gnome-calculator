@@ -463,25 +463,15 @@ str_replace(char **str, char *from, char *to)
 void
 do_expression()
 {
-    char *btext = NULL;
-    struct exprm_state *e;
-    int i, non_empty_expression;
+    int i;
     char buf[MAXLINE];
+    struct exprm_state *e;
     
     e = get_state();
 
     ui_set_statusbar("", "");
 
-    if (e->button.id == KEY_NUMERIC_POINT) {
-        btext = ui_get_localized_numeric_point();
-    } else {
-        btext = e->button.symname;
-    }
-    btext = gc_strdup(btext);
-  
-    non_empty_expression = !!(e->expression && strlen(e->expression));
-    
-    if (non_empty_expression) {
+    if (e->expression != NULL && strlen(e->expression) > 0) {
         if (!strcmp(e->expression, "Ans")) {
             if (e->button.flags & NUMBER) {
                 exp_del(); 
@@ -500,7 +490,7 @@ do_expression()
     if ((e->button.flags & (PREFIXOP | FUNC)) 
         && e->expression
         && !strcmp(e->expression, "Ans")) {
-	    SNPRINTF(buf, MAXLINE, "%s(Ans)", btext);
+	    SNPRINTF(buf, MAXLINE, "%s(Ans)", e->button.symname);
 	    exp_replace(buf);
     } else {
         switch (e->button.id) {
@@ -617,15 +607,18 @@ do_expression()
             }
             break;
 
+        case KEY_NUMERIC_POINT:
+            exp_append(ui_get_localized_numeric_point());
+            break;
+
         default:
-            exp_append(btext);
+            exp_append(e->button.symname);
             if (e->button.flags & FUNC) {
                 exp_append("(");
             }
             break;
         }
     }
-    free(btext);
 
     refresh_display();
 }
