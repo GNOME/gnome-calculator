@@ -163,7 +163,6 @@ enum
 #define MPMATH_ERR		    	20001
 
 enum button_flags {
-    none         = 0,          /* No flags */
     NUMBER       = (1 << 3),   /* Number button */
     FUNC         = (1 << 6),   /* Function */
     POSTFIXOP    = (1 << 14),  /* Unary postfix operation */

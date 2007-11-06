@@ -154,67 +154,67 @@ struct button buttons[NKEYS] = {
     KEY_CALCULATE,
     NULL,
     do_calc,
-    none
+    0
 },
 {
     KEY_CLEAR,
     NULL,
     do_clear,
-    none
+    0
 },
 {
     KEY_CLEAR_ENTRY,
     NULL,
     do_clear_entry,
-    none
+    0
 },
 {
     KEY_START_BLOCK,
     "(",
     do_paren,
-    none
+    0
 },
 {
     KEY_END_BLOCK,
     ")",
     do_paren,
-    none
+    0
 },
 {
     KEY_ADD,
     "+",
     do_calc,
-    none
+    0
 },
 {
     KEY_SUBTRACT,
     "-",
     do_calc,
-    none
+    0
 },
 {
     KEY_MULTIPLY,
     "*",
     do_calc,
-    none
+    0
 },
 {
     KEY_DIVIDE,
     "/",
     do_calc,
-    none
+    0
 },
 {
     KEY_BACKSPACE,
     NULL,
     do_delete,
-    none
+    0
 },
 {
     KEY_CHANGE_SIGN,
     NULL,
     do_immed, 
-    none
+    0
 },
 {
     KEY_INTEGER,
@@ -232,7 +232,7 @@ struct button buttons[NKEYS] = {
     KEY_PERCENTAGE,
     "%",
     do_percent,  
-    none
+    0
 },
 {
     KEY_SQUARE,
@@ -250,7 +250,7 @@ struct button buttons[NKEYS] = {
     KEY_RECIPROCAL,
     NULL,
     do_immed, 
-    none
+    0
 },
 {
     KEY_E_POW_X,
@@ -280,7 +280,7 @@ struct button buttons[NKEYS] = {
     KEY_RANDOM,
     "Rand",
     do_immed, 
-    none
+    0
 },
 {
     KEY_SIN,
@@ -388,139 +388,139 @@ struct button buttons[NKEYS] = {
     KEY_MODULUS_DIVIDE,
     " Mod ",
     do_calc,
-    none
+    0
 },
 {
     KEY_EXPONENTIAL,
     "e",
     do_expno,
-    none
+    0
 },
 {
     KEY_NOT,
     "~",
     do_immed, 
-    none
+    0
 },
 {
     KEY_OR,
     " OR ",
     do_calc,
-    none
+    0
 },
 {
     KEY_AND,
     " AND ",
     do_calc,
-    none
+    0
 },       
 {
     KEY_XOR,
     " XOR ",
     do_calc,
-    none
+    0
 },
 {
     KEY_XNOR,
     " XNOR ",
     do_calc,
-    none
+    0
 },
 {
     KEY_FINC_CTRM,
     "Ctrm",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_DDB,
     "Ddb",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_FV,
     "Fv",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_PMT,
     "Pmt",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_PV,
     "Pv",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_RATE,
     "Rate",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_SLN,
     "Sln",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_SYD,
     "Syd",
     do_business,
-    none
+    0
 },
 {
     KEY_FINC_TERM,
     "Term",
     do_business,
-    none
+    0
 },
 {
     KEY_SHIFT,
     NULL,
     do_shift,
-    none
+    0
 },
 {
     KEY_STORE,
     NULL,
     do_sto,
-    none
+    0
 },
 {
     KEY_RECALL,
     NULL,
     do_rcl,
-    none
+    0
 },
 {
     KEY_EXCHANGE,
     NULL,
     do_exchange,
-    none
+    0
 },
 {
     KEY_SET_ACCURACY,
     NULL,
     do_accuracy,
-    none
+    0
 },
 {
     KEY_CONSTANT,
     NULL,
     do_constant,
-    none
+    0
 },
 {
     KEY_FUNCTION,
     NULL,
     do_function,
-    none
+    0
 },
 };
 
