@@ -2719,7 +2719,6 @@ create_kframe()
     PangoFontDescription *font_desc;
     GtkSizeGroup *size_group;
     GtkAccelGroup *accel_group;
-    GdkGeometry geometry;
     GtkWidget *treeview;
    
     X->ui = glade_xml_new(UI_FILE, NULL, NULL);
@@ -2903,8 +2902,6 @@ create_kframe()
     
     gtk_dialog_set_default_response(GTK_DIALOG(X->con_dialog), 
                                     GTK_RESPONSE_ACCEPT);
-    gtk_window_set_geometry_hints(GTK_WINDOW(X->con_dialog), X->con_dialog,
-                                  &geometry, GDK_HINT_MIN_SIZE);
 
     /* Make constant tree model */
     X->constants_model = create_cf_model(M_CON, X->con_dialog);    
@@ -2927,8 +2924,6 @@ create_kframe()
                                     GTK_RESPONSE_ACCEPT);
     gtk_window_set_transient_for(GTK_WINDOW(X->fun_dialog), 
                                  GTK_WINDOW(X->kframe));
-    gtk_window_set_geometry_hints(GTK_WINDOW(X->fun_dialog), X->fun_dialog,
-                                  &geometry, GDK_HINT_MIN_SIZE);
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), X->functions_model);
     gtk_tree_selection_set_mode(
                                 gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
