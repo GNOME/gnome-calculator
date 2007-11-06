@@ -463,7 +463,6 @@ str_replace(char **str, char *from, char *to)
 void
 do_expression()
 {
-    int update_display = 0; // Update whole display. Looses cursor position.
     char *btext = NULL;
     struct exprm_state *e;
     int non_empty_expression;
@@ -505,7 +504,6 @@ do_expression()
         if (!strcmp(e->expression, "Ans")) {
             if (e->button.flags & number) {
                 exp_del(); 
-                update_display = 1;
             }	
         }
     } else {
@@ -524,10 +522,8 @@ do_expression()
 	    char buf[1024];
 	    SNPRINTF(buf, 128, "%s(Ans)", btext);
 	    exp_replace(buf);
-        update_display = 1;
     } else if (e->button.flags & clear) {
         exp_del();
-        update_display = 1;
         ui_set_error_state(FALSE);
         MPstr_to_num("0", DEC, e->ans);
     } else if (e->button.flags & regrcl) {
@@ -567,10 +563,8 @@ do_expression()
         exp_del_char(&e->expression, 1);
     } else if (e->button.flags & neg) {
         exp_negate();
-        update_display = 1;
     } else if (e->button.flags & inv) {
         exp_inv();
-        update_display = 1;
     } else if (e->button.flags & enter) {
         if (e->expression) {
             if (strcmp(e->expression, "Ans")) {
@@ -580,7 +574,6 @@ do_expression()
                 if (!ret) {
                     mpstr(MPval, e->ans);
                     exp_replace("Ans");
-                    update_display = 1;
                 } else {
                     char *message = NULL;
                     
@@ -614,7 +607,6 @@ do_expression()
                 perform_undo();
                 if (is_undo_step()) {
                     perform_undo();
-                    update_display = 1;
                 }
             }
         }
@@ -623,15 +615,10 @@ do_expression()
         if (e->button.flags & func) {
             exp_append("(");
         }
-    }
-    
+    }   
     free(btext);
-    btext = NULL;
-    
-    update_display = 1;
-    if (update_display) {
-        refresh_display();
-    }
+
+    refresh_display();
 }
 
 
