@@ -641,14 +641,12 @@ do_calc()      /* Perform arithmetic calculation and display result. */
     double dval, dres;
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
-    if (!(v->opsptr && !v->show_paren)) {  /* Don't do if processing parens. */
-        if (v->current == KEY_CALCULATE && 
-            v->old_cal_value == KEY_CALCULATE) {
-            if (v->new_input) {
-                mpstr(v->MPlast_input, v->MPresult);
-            } else {
-                mpstr(v->MPlast_input, v->MPdisp_val);
-            }
+    if (v->current == KEY_CALCULATE && 
+        v->old_cal_value == KEY_CALCULATE) {
+        if (v->new_input) {
+            mpstr(v->MPlast_input, v->MPresult);
+        } else {
+            mpstr(v->MPlast_input, v->MPdisp_val);
         }
     }
     

@@ -3131,7 +3131,7 @@ ui_load()
     
     /* Show the memory register window? */
     ui_make_registers();
-    if (v->rstate == TRUE && !v->iconic) {
+    if (v->rstate == TRUE) {
         ui_set_registers_visible(TRUE);
     }
 

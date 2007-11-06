@@ -72,32 +72,16 @@ enum syntax {
 /* Abbreviations for the gcalctool keyboard */
 enum
 {
-    KEY_0,
-    KEY_1,
-    KEY_2,
-    KEY_3,
-    KEY_4,
-    KEY_5,
-    KEY_6,
-    KEY_7,
-    KEY_8,
-    KEY_9,
-    KEY_A,
-    KEY_B,
-    KEY_C,
-    KEY_D,
-    KEY_E,
-    KEY_F,
+    KEY_0, KEY_1, KEY_2, KEY_3,
+    KEY_4, KEY_5, KEY_6, KEY_7,
+    KEY_8, KEY_9, KEY_A, KEY_B,
+    KEY_C, KEY_D, KEY_E, KEY_F,
     KEY_NUMERIC_POINT,
     KEY_CALCULATE,
-    KEY_CLEAR,
-    KEY_CLEAR_ENTRY,
-    KEY_START_BLOCK,
-    KEY_END_BLOCK,
-    KEY_ADD,
-    KEY_SUBTRACT,
-    KEY_MULTIPLY,
-    KEY_DIVIDE,
+    KEY_CLEAR, KEY_CLEAR_ENTRY,
+    KEY_START_BLOCK, KEY_END_BLOCK,
+    KEY_ADD, KEY_SUBTRACT,
+    KEY_MULTIPLY, KEY_DIVIDE,
     KEY_BACKSPACE,
     KEY_CHANGE_SIGN,
     KEY_INTEGER,
@@ -111,18 +95,9 @@ enum
     KEY_X_POW_Y,
     KEY_FACTORIAL,
     KEY_RANDOM,
-    KEY_SIN,
-    KEY_SINH,
-    KEY_ASIN,
-    KEY_ASINH,
-    KEY_COS,
-    KEY_COSH,
-    KEY_ACOS,
-    KEY_ACOSH,
-    KEY_TAN,
-    KEY_TANH,
-    KEY_ATAN,
-    KEY_ATANH,
+    KEY_SIN, KEY_SINH, KEY_ASIN, KEY_ASINH,
+    KEY_COS, KEY_COSH, KEY_ACOS, KEY_ACOSH,
+    KEY_TAN, KEY_TANH, KEY_ATAN, KEY_ATANH,
     KEY_NATURAL_LOGARITHM,
     KEY_LOGARITHM,
     KEY_ABSOLUTE_VALUE,
@@ -130,11 +105,7 @@ enum
     KEY_MASK_32,
     KEY_MODULUS_DIVIDE,
     KEY_EXPONENTIAL,
-    KEY_NOT,
-    KEY_OR,
-    KEY_AND,
-    KEY_XOR,
-    KEY_XNOR,
+    KEY_NOT, KEY_OR, KEY_AND, KEY_XOR, KEY_XNOR,
     KEY_FINC_CTRM,
     KEY_FINC_DDB,
     KEY_FINC_FV,
@@ -145,9 +116,7 @@ enum
     KEY_FINC_SYD,
     KEY_FINC_TERM,
     KEY_SHIFT,
-    KEY_STORE,
-    KEY_RECALL,
-    KEY_EXCHANGE,
+    KEY_STORE, KEY_RECALL, KEY_EXCHANGE,
     KEY_SET_ACCURACY,
     KEY_CONSTANT,
     KEY_FUNCTION,
@@ -232,37 +201,28 @@ struct exprm_state_history {
   struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
 };
 
-struct menu {
-    char *title;             /* Menu title. */
-    int  total;              /* Number of menu entries. */
-    int  index;              /* Index into menu string array. */
-    int  defval;             /* Default menu item position (from 1). */
-};
-
 struct calcVars {                      /* Calctool variables and options. */
     struct exprm_state_history h;      /* History of expression mode states */
 
     int current;                       /* Current button/character pressed. */
   
     char *appname;                     /* Application name for resources. */
-    char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
+    char *home;                        /* Pathname for users home directory. */
+    char *progname;                    /* Name of this program. */
+    
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
     char fnum[MAX_DIGITS];             /* Scratchpad for fixed numbers. */
-    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
-    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
-    char *home;                        /* Pathname for users home directory. */
-    char *iconlabel;                   /* The calctool icon label. */
-    char op_item_text[5];              /* Operand item panel string. */
-    char opstr[5];                     /* Operand string during pending op. */
-    char *progname;                    /* Name of this program. */
-    char pstr[5];                      /* Current button text string. */
     const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
     const char *tsep;                  /* Locale specific thousands seperator. */
 
+    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
+    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
+    char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
     int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
+
     int MPdebug;                       /* If set, debug info. to stderr. */
     int MPerrors;                      /* If set, output errors to stderr. */
     int MPdisp_val[MP_SIZE];           /* Value of the current display. */
@@ -287,14 +247,11 @@ struct calcVars {                      /* Calctool variables and options. */
     int ghost_zero;    /* Flag to indicate display with "0", actually 
                            having empty content. */
     int math_error;    /* Math error (used in expression mode) */
-    int iconic;        /* Set if window is currently iconic. */
     int key_exp;       /* Set if entering exponent number. */
-    int ndisplay;      /* Height of the numerical display. */
     int new_input;     /* New number input since last op. */
     int noparens;      /* Count of left brackets still to be matched. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
     int old_cal_value;      /* Previous calculation operator. */
-    int opsptr;        /* Pointer into the parentheses operand stack. */
     int pointed;       /* Whether a decimal point has been given. */
     int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */

@@ -683,7 +683,6 @@ init_state(void)
     v->ttype         = DEG;    /* Initial trigonometric type. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
     v->rstate        = 0;      /* No memory register frame display initially. */
-    v->iconic        = FALSE;  /* Calctool not iconic by default. */
     v->MPdebug       = FALSE;  /* No debug info by default. */
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
@@ -696,11 +695,8 @@ init_state(void)
     v->current    = KEY_CALCULATE;
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
-    v->opsptr     = 0;         /* Nothing on the parentheses op stack. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
     v->warn_change_mode = 1;   /* Warn user when changing modes. */
-
-    read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */
 
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */

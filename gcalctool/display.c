@@ -134,7 +134,6 @@ clear_display(int initialise)
 
     if (initialise == TRUE) {
         v->show_paren = 0;
-        v->opsptr     = 0;            /* Clear parentheses stacks. */
         v->numsptr    = 0;
         v->noparens   = 0;
         ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
@@ -482,7 +481,7 @@ paren_disp(int key)
     switch (key) {
     case -1:
     case KEY_CLEAR:
-        v->noparens = v->opsptr = v->numsptr = 0;
+        v->noparens = v->numsptr = 0;
         v->cur_op = -1;
         i = 0;
         mpcim(&i, v->MPdisp_val);
@@ -498,7 +497,7 @@ paren_disp(int key)
         } else if (v->display[n-1] == '(') {
             v->noparens--;
             if (!v->noparens) {
-                v->opsptr = v->numsptr = 0;
+                v->numsptr = 0;
                 v->cur_op = -1;
                 show_display(v->MPdisp_val);
                 return;
@@ -554,8 +553,6 @@ process_item(struct button *button, int arg)
         do_paren();
         return;
     }
-
-    STRCPY(v->opstr, v->op_item_text);
 
     (*button->func)(arg);
 }
