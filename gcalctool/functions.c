@@ -460,33 +460,6 @@ str_replace(char **str, char *from, char *to)
 }
 
 
-static void
-trig_filter(char **func)
-{
-    char *tokens[4][3] = {
-        { "Sin",   "Cos",   "Tan"   },
-        { "Asin",  "Acos",  "Atan"  },
-        { "Sinh",  "Cosh",  "Tanh"  },
-        { "Asinh", "Acosh", "Atanh" },
-    };
-
-    int i;
-    int inverse    = (v->inverse)    ? 1 : 0;
-    int hyperbolic = (v->hyperbolic) ? 2 : 0;
-    int mode       = (inverse | hyperbolic);
-
-    assert(func);
-  
-    if (mode) {
-        for (i = 0; i < 3; i++) {
-            if (!strcmp(*func, tokens[0][i])) {
-	        str_replace(func, tokens[0][i], tokens[mode][i]);
-            }
-        }
-    }
-}
-
-
 void
 do_expression()
 {
@@ -525,7 +498,6 @@ do_expression()
         btext = e->button.symname;
     }
     btext = gc_strdup(btext);
-    trig_filter(&btext);
   
     non_empty_expression = !!(e->expression && strlen(e->expression));
     
@@ -685,65 +657,85 @@ do_calc()      /* Perform arithmetic calculation and display result. */
         v->cur_op = -1;
     }
 
-    if (v->cur_op == KEY_COSINE ||          /* Cos */
-        v->cur_op == KEY_SINE ||            /* Sin */
-        v->cur_op == KEY_TANGENT ||         /* Tan */
-	v->cur_op == -1) {                  /* Undefined */
-        mpstr(v->MPdisp_val, v->MPresult);
+    switch (v->cur_op) {
+        case KEY_SIN:
+        case KEY_SINH:
+        case KEY_ASIN:
+        case KEY_ASINH:
+        case KEY_COS:
+        case KEY_COSH:
+        case KEY_ACOS:
+        case KEY_ACOSH:
+        case KEY_TAN:
+        case KEY_TANH:
+        case KEY_ATAN:
+        case KEY_ATANH:
+        case -1:
+            mpstr(v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_ADD) {     /* Addition */
-        mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
+        case KEY_ADD:
+            mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_SUBTRACT) {     /* Subtraction. */
-        mpsub(v->MPresult, v->MPdisp_val, v->MPresult);
+        case KEY_SUBTRACT:
+            mpsub(v->MPresult, v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_MULTIPLY) {     /* Multiplication */
-        mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
+        case KEY_MULTIPLY:
+            mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_DIVIDE) {     /* Division. */
-        mpdiv(v->MPresult, v->MPdisp_val, v->MPresult);
+        case KEY_DIVIDE:
+            mpdiv(v->MPresult, v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_MODULUS_DIVIDE) {     /* Modulus. */
-        mpcmim(v->MPresult, MP1);
-        mpcmim(v->MPdisp_val, MP2);
-        if (!mpeq(v->MPresult, MP1) || !mpeq(v->MPdisp_val, MP2)) {
-            doerr(_("Error, operands must be integers"));
-        }
+        case KEY_MODULUS_DIVIDE:
+            mpcmim(v->MPresult, MP1);
+            mpcmim(v->MPdisp_val, MP2);
+            if (!mpeq(v->MPresult, MP1) || !mpeq(v->MPdisp_val, MP2)) {
+                doerr(_("Error, operands must be integers"));
+            }
 
-        mpdiv(v->MPresult, v->MPdisp_val, MP1);
-        mpcmim(MP1, MP1);
-        mpmul(MP1, v->MPdisp_val, MP2);
-        mpsub(v->MPresult, MP2, v->MPresult);
+            mpdiv(v->MPresult, v->MPdisp_val, MP1);
+            mpcmim(MP1, MP1);
+            mpmul(MP1, v->MPdisp_val, MP2);
+            mpsub(v->MPresult, MP2, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_X_POW_Y) {    /* y^x */
-        calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
+        case KEY_X_POW_Y:
+            calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_AND) {     /* AND */
-        mpcmd(v->MPresult, &dres);
-        mpcmd(v->MPdisp_val, &dval);
-        dres = setbool(ibool(dres) & ibool(dval));
-        mpcdm(&dres, v->MPresult);
+        case KEY_AND:
+            mpcmd(v->MPresult, &dres);
+            mpcmd(v->MPdisp_val, &dval);
+            dres = setbool(ibool(dres) & ibool(dval));
+            mpcdm(&dres, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_OR) {      /* OR */
-        mpcmd(v->MPresult, &dres);
-        mpcmd(v->MPdisp_val, &dval);
-        dres = setbool(ibool(dres) | ibool(dval));
-        mpcdm(&dres, v->MPresult);
+        case KEY_OR:
+            mpcmd(v->MPresult, &dres);
+            mpcmd(v->MPdisp_val, &dval);
+            dres = setbool(ibool(dres) | ibool(dval));
+            mpcdm(&dres, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_XOR) {     /* XOR */
-        mpcmd(v->MPresult, &dres);
-        mpcmd(v->MPdisp_val, &dval);
-        dres = setbool(ibool(dres) ^ ibool(dval));
-        mpcdm(&dres, v->MPresult); 
+        case KEY_XOR:
+            mpcmd(v->MPresult, &dres);
+            mpcmd(v->MPdisp_val, &dval);
+            dres = setbool(ibool(dres) ^ ibool(dval));
+            mpcdm(&dres, v->MPresult);
+            break;
 
-    } else if (v->cur_op == KEY_XNOR) {    /* XNOR */
-        mpcmd(v->MPresult, &dres);
-        mpcmd(v->MPdisp_val, &dval);
-        dres = setbool(~ibool(dres) ^ ibool(dval));
-        mpcdm(&dres, v->MPresult); 
+        case KEY_XNOR:
+            mpcmd(v->MPresult, &dres);
+            mpcmd(v->MPdisp_val, &dval);
+            dres = setbool(~ibool(dres) ^ ibool(dval));
+            mpcdm(&dres, v->MPresult);
 
-    } else if (v->cur_op == KEY_CALCULATE) {      /* Equals */
-        /*EMPTY*/;
+        default:
+            break;
     }
 
     show_display(v->MPresult);
@@ -763,85 +755,115 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 
 
 void
-do_sine()
+do_sin(void)
 {
-    enum trigfunc_type type;
-    if (v->inverse)
-    {
-        if (v->hyperbolic) {
-            type = asinh_t;
-        } else {
-            type = asin_t;
-        }
-
-    } else {
-        if (v->hyperbolic) {
-            type = sinh_t;
-        } else {
-            type = sin_t;
-        }
-    }
-    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
-
-    show_display(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
-}
-
-        
-void
-do_cosine()
-{
-    enum trigfunc_type type;
-    if (v->inverse)
-    {
-        if (v->hyperbolic) {
-            type = acosh_t;
-        } else {
-            type = acos_t;
-        }
-
-    } else {
-        if (v->hyperbolic) {
-            type = cosh_t;
-        } else {
-            type = cos_t;
-        }
-    }
-    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
-
+    calc_trigfunc(sin_t, v->MPdisp_val, v->MPresult);
     show_display(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
 
 void
-do_tangent()        
+do_sinh(void)
 {
-    enum trigfunc_type type;
-    if (v->inverse)
-    {
-        if (v->hyperbolic) {
-            type = atanh_t;
-        } else {
-            type = atan_t;
-        }
-
-    } else {
-        if (v->hyperbolic) {
-            type = tanh_t;
-        } else {
-            type = tan_t;
-        }
-    }
-    calc_trigfunc(type, v->MPdisp_val, v->MPresult);
-
+    calc_trigfunc(sinh_t, v->MPdisp_val, v->MPresult);
     show_display(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
 
 void
-do_percent()
+do_asin(void)
+{
+    calc_trigfunc(asin_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_asinh(void)
+{
+    calc_trigfunc(asinh_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_cos(void)
+{
+    calc_trigfunc(cos_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_cosh(void)
+{
+    calc_trigfunc(cosh_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_acos(void)
+{
+    calc_trigfunc(acos_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_acosh(void)
+{
+    calc_trigfunc(acosh_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+      
+void
+do_tan(void)
+{
+    calc_trigfunc(tan_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_tanh(void)
+{
+    calc_trigfunc(tanh_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_atan(void)
+{
+    calc_trigfunc(atan_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_atanh(void)
+{
+    calc_trigfunc(atanh_t, v->MPdisp_val, v->MPresult);
+    show_display(v->MPresult);
+    mpstr(v->MPresult, v->MPdisp_val);
+}
+
+
+void
+do_percent(void)
 {
     calc_percent(v->MPdisp_val, v->MPresult);
     show_display(v->MPresult);
@@ -1505,11 +1527,25 @@ do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
 {
     v->ttype = t;
     set_resource(R_TRIG, Rtstr[(int) v->ttype]);
-    if (v->cur_op == KEY_COSINE ||
-        v->cur_op == KEY_SINE ||
-        v->cur_op == KEY_TANGENT) {
-        mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
-        show_display(v->MPtresults[(int) v->ttype]);
+    switch (v->cur_op) {
+        case KEY_SIN:
+        case KEY_SINH:
+        case KEY_ASIN:
+        case KEY_ASINH:
+        case KEY_COS:
+        case KEY_COSH:
+        case KEY_ACOS:
+        case KEY_ACOSH:
+        case KEY_TAN:
+        case KEY_TANH:
+        case KEY_ATAN:
+        case KEY_ATANH:
+            mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
+            show_display(v->MPtresults[(int) v->ttype]);
+            break;
+        
+        default:
+            break;
     }
 }
 

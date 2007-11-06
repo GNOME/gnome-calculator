@@ -146,31 +146,9 @@ exp:
 | exp '-' exp {mpsub($1, $3, $$);}
 | exp '*' exp {mpmul($1, $3, $$);}
 | exp '/' exp {mpdiv($1, $3, $$);}
-| exp '&' exp {calc_and($$, $1, $3);}
-| exp '|' exp {calc_or($$, $1, $3);}
-| exp 'n' exp {calc_xnor($$, $1, $3);}
-| exp 'x' exp {calc_xor($$, $1, $3);} 
-
 | exp '^' exp {calc_xpowy($1, $3, $$);}
 | exp 'e' exp {calc_xtimestenpowx($1, $3, $$);}
-
-| exp 'K' {do_sine($1, $$);}
-| exp 'J' {do_cosine($1, $$);}
-| exp 'L' {do_tangent($1, $$);}
-
-| exp 'G' {mplog10($1, $$);}
-| exp 's' {mpsqrt($1, $$);}
-| exp 'N' {mpln($1, $$);}
-| exp 'u' {mpabs($1, $$);}
-| exp ':' {mpcmf($1, $$);}
-| exp 'i' {mpcmim($1, $$);}
-| exp 'c' {mpneg($1, $$);}
 | exp '!' {do_factorial($1, $$);}
-| exp '~' {calc_not($1, $$);}
-| exp ']' {calc_u16($1, $$);}
-| exp '[' {calc_u32($1, $$);}
-| exp '}' {calc_tenpowx($1, $$);}
-| exp '{' {mpexp($1, $$);}
 | exp '%' {calc_percent($1, $$);}
 
 | func {cp($1, $$);}

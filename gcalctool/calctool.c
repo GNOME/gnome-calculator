@@ -35,11 +35,11 @@ time_t time();
 
 int basevals[4] = { 2, 8, 10, 16 };
 
-
-Vars v;            /* Calctool variables and options. */
+/* Calctool variables and options. */
+Vars v;
 
 // FIXME: Sort this list
-// FIXME: Stop being translatable (parser would break)
+/* Note that none of these strings can be translated as the parser expects them to be correct */
 struct button buttons[NKEYS] = {
 
 /* id,
@@ -50,103 +50,103 @@ struct button buttons[NKEYS] = {
 
 {
     KEY_0,
-    N_("0"),
+    "0",
     do_number,
     number
 },
 {
     KEY_1,
-    N_("1"),
+    "1",
     do_number,
     number
 },
 {
     KEY_2,
-    N_("2"),
+    "2",
     do_number,
     number
 },    
 {     
     KEY_3,
-    N_("3"),
+    "3",
     do_number,
     number
 },
 {
     KEY_4,
-    N_("4"),
+    "4",
     do_number,
     number
 },
 {
     KEY_5,
-    N_("5"),
+    "5",
     do_number,
     number
 },
 {
     KEY_6,
-    N_("6"),
+    "6",
     do_number,
     number
 },
 {
     KEY_7,
-    N_("7"),
+    "7",
     do_number,
     number
 },
 {
     KEY_8,
-    N_("8"),
+    "8",
     do_number,
     number
 },
 {
     KEY_9,
-    N_("9"),
+    "9",
     do_number,
     number
 },
 {
     KEY_A,
-    N_("A"),
+    "A",
     do_number,
     number
 },
 {
     KEY_B,
-    N_("B"),
+    "B",
     do_number,
     number
 },    
 {     
     KEY_C,
-    N_("C"),
+    "C",
     do_number,
     number
 },
 {
     KEY_D,
-    N_("D"),
+    "D",
     do_number,
     number
 },
 {
     KEY_E,
-    N_("E"),
+    "E",
     do_number,
     number
 },
 {
     KEY_F,
-    N_("F"),
+    "F",
     do_number,
     number
 },
 {    
     KEY_NUMERIC_POINT,
-    N_("."),
+    ".",
     do_point,
     number | dpoint
 },
@@ -170,37 +170,37 @@ struct button buttons[NKEYS] = {
 },
 {
     KEY_START_BLOCK,
-    "(", /* Do not translate this as the equation solver expects this character always */
+    "(",
     do_paren,
     none
 },
 {
     KEY_END_BLOCK,
-    ")", /* Do not translate this as the equation solver expects this character always */
+    ")",
     do_paren,
     none
 },
 {
     KEY_ADD,
-    N_("+"),
+    "+",
     do_calc,
     none
 },
 {
     KEY_SUBTRACT,
-    N_("-"),
+    "-",
     do_calc,
     none
 },
 {
     KEY_MULTIPLY,
-    N_("*"),
+    "*",
     do_calc,
     none
 },
 {
     KEY_DIVIDE,
-    N_("/"),
+    "/",
     do_calc,
     none
 },
@@ -218,31 +218,31 @@ struct button buttons[NKEYS] = {
 },
 {
     KEY_INTEGER,
-    N_("Int"),
+    "Int",
     do_portion,
     func
 },
 {
     KEY_FRACTION,
-    N_("Frac"),
+    "Frac",
     do_portion,
     func  
 },
 {
     KEY_PERCENTAGE,
-    N_("%"),
+    "%",
     do_percent,  
     none
 },
 {
     KEY_SQUARE,
-    N_("^2"),
+    "^2",
     do_immed,  
     postfixop
 },
 {
     KEY_SQUARE_ROOT,
-    N_("Sqrt"),
+    "Sqrt",
     do_immed, 
     func
 },
@@ -254,176 +254,229 @@ struct button buttons[NKEYS] = {
 },
 {
     KEY_E_POW_X,
-    N_("e^"),
+    "e^",
     do_immed, 
     prefixop
 },
 {
     KEY_10_POW_X,
-    N_("10^"),
+    "10^",
     do_immed, 
     prefixop
 },       
 {
     KEY_X_POW_Y,
-    N_("^"),
+    "^",
     do_calc,
     postfixop
 },
 {
     KEY_FACTORIAL,
-    N_("!"),
+    "!",
     do_immed, 
     postfixop
 },
 {
     KEY_RANDOM,
-    N_("Rand"),
+    "Rand",
     do_immed, 
     none
 },
 {
-    KEY_SINE,
-    N_("Sin"),
-    do_sine,
+    KEY_SIN,
+    "Sin",
+    do_sin,
     func
 },
 {
-    KEY_COSINE,
-    N_("Cos"),
-    do_cosine,
+    KEY_SINH,
+    "Sinh",
+    do_sinh,
     func
 },
 {
-    KEY_TANGENT,
-    N_("Tan"),
-    do_tangent,
+    KEY_ASIN,
+    "Asin",
+    do_asin,
+    func
+},
+{
+    KEY_ASINH,
+    "Asinh",
+    do_asinh,
+    func
+},
+{
+    KEY_COS,
+    "Cos",
+    do_cos,
+    func
+},
+{
+    KEY_COSH,
+    "Cosh",
+    do_cosh,
+    func
+},
+{
+    KEY_ACOS,
+    "Acos",
+    do_acos,
+    func
+},
+{
+    KEY_ACOSH,
+    "Acosh",
+    do_acosh,
+    func
+},
+{
+    KEY_TAN,
+    "Tan",
+    do_tan,
+    func
+},
+{
+    KEY_TANH,
+    "Tanh",
+    do_tanh,
+    func
+},
+{
+    KEY_ATAN,
+    "Atan",
+    do_atan,
+    func
+},
+{
+    KEY_TAN,
+    "Atanh",
+    do_atanh,
     func
 },
 {
     KEY_NATURAL_LOGARITHM,
-    N_("Ln"),
+    "Ln",
     do_immed, 
     func
 },
 {
     KEY_LOGARITHM,
-    N_("Log"),
+    "Log",
     do_immed, 
     func
 },
 {
     KEY_ABSOLUTE_VALUE,
-    /* Note to translators: Abs is short for Absolute. */
-    N_("Abs"),
+    "Abs",
     do_portion,
     func
 },
 {
     KEY_MASK_16,
-    N_("u16"),
+    "u16",
     do_immed,  
     func
 },            
 {
     KEY_MASK_32,
-    N_("u32"),
+    "u32",
     do_immed,  
     func
 },
 {
     KEY_MODULUS_DIVIDE,
-    N_(" Mod "),
+    " Mod ",
     do_calc,
     none
 },
 {
     KEY_EXPONENTIAL,
-    N_("e"),
+    "e",
     do_expno,
     expnum
 },
 {
     KEY_NOT,
-    N_("~"),
+    "~",
     do_immed, 
     none
 },
 {
     KEY_OR,
-    N_(" OR "),
+    " OR ",
     do_calc,
     none
 },
 {
     KEY_AND,
-    N_(" AND "),
+    " AND ",
     do_calc,
     none
 },       
 {
     KEY_XOR,
-    N_(" XOR "),
+    " XOR ",
     do_calc,
     none
 },
 {
     KEY_XNOR,
-    N_(" XNOR "),
+    " XNOR ",
     do_calc,
     none
 },
 {
     KEY_FINC_CTRM,
-    N_("Ctrm"),
+    "Ctrm",
     do_business,
     none
 },
 {
     KEY_FINC_DDB,
-    N_("Ddb"),
+    "Ddb",
     do_business,
     none
 },
 {
     KEY_FINC_FV,
-    N_("Fv"),
+    "Fv",
     do_business,
     none
 },
 {
     KEY_FINC_PMT,
-    N_("Pmt"),
+    "Pmt",
     do_business,
     none
 },
 {
     KEY_FINC_PV,
-    N_("Pv"),
+    "Pv",
     do_business,
     none
 },
 {
     KEY_FINC_RATE,
-    N_("Rate"),
+    "Rate",
     do_business,
     none
 },
 {
     KEY_FINC_SLN,
-    N_("Sln"),
+    "Sln",
     do_business,
     none
 },
 {
     KEY_FINC_SYD,
-    N_("Syd"),
+    "Syd",
     do_business,
     none
 },
 {
     KEY_FINC_TERM,
-    N_("Term"),
+    "Term",
     do_business,
     none
 },
@@ -645,8 +698,6 @@ init_state(void)
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->opsptr     = 0;         /* Nothing on the parentheses op stack. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
-    v->hyperbolic = 0;         /* Normal trig functions initially. */
-    v->inverse    = 0;         /* No inverse functions initially. */
     v->warn_change_mode = 1;   /* Warn user when changing modes. */
 
     read_str(&v->iconlabel, _("calculator"));  /* Default icon label. */

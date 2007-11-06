@@ -50,13 +50,8 @@
 #define STRNCAT      (void) strncat
 #define UNLINK       (void) unlink
 
-/* Menu bar menu types. */
-
-enum mb_type { M_ABOUT, M_ASCII, M_BASIC, M_ADV, M_CONTENTS, M_COPY, M_FIN,
-               M_PASTE, M_QUIT,  M_REGS,  M_SCI, M_EXP, M_TSEP, M_ZEROES,
-               M_LR_ARITH, M_OP_ARITH };
-
-enum base_type { BIN, OCT, DEC, HEX, MAXBASES };      /* Base definitions. */
+/* Base definitions. */
+enum base_type { BIN, OCT, DEC, HEX, MAXBASES };
 
 /* Calculator modes. */
 enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC, MAXMODES };
@@ -67,6 +62,7 @@ enum num_type { ENG, FIX, SCI, MAXDISPMODES };
 /* Trigonometric types. */
 enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
+/* Syntax mode. */
 enum syntax {
     NPA = 0,      /* Non-precedence arithmetic */
     EXPRS,        /* Expression with arithmetic precedence */
@@ -115,9 +111,18 @@ enum
     KEY_X_POW_Y,
     KEY_FACTORIAL,
     KEY_RANDOM,
-    KEY_SINE,
-    KEY_COSINE,
-    KEY_TANGENT,
+    KEY_SIN,
+    KEY_SINH,
+    KEY_ASIN,
+    KEY_ASINH,
+    KEY_COS,
+    KEY_COSH,
+    KEY_ACOS,
+    KEY_ACOSH,
+    KEY_TAN,
+    KEY_TANH,
+    KEY_ATAN,
+    KEY_ATANH,
     KEY_NATURAL_LOGARITHM,
     KEY_LOGARITHM,
     KEY_ABSOLUTE_VALUE,
@@ -282,9 +287,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int ghost_zero;    /* Flag to indicate display with "0", actually 
                            having empty content. */
     int math_error;    /* Math error (used in expression mode) */
-    int hyperbolic;    /* If set, trig functions will be hyperbolic. */
     int iconic;        /* Set if window is currently iconic. */
-    int inverse;       /* If set, trig and log functions will be inversed. */
     int key_exp;       /* Set if entering exponent number. */
     int ndisplay;      /* Height of the numerical display. */
     int new_input;     /* New number input since last op. */

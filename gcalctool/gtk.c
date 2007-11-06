@@ -314,15 +314,15 @@ static struct button_widget button_widgets[] = {
     { GDK_SHIFT_MASK, 0 },
     { GDK_question, 0 }},
 
-    {KEY_SINE,               "sine", M_NONE,
+    {KEY_SIN,                "sine", M_NONE,
     { GDK_SHIFT_MASK, 0 },
     { GDK_K, 0 }},
 
-    {KEY_COSINE,             "cosine", M_NONE,
+    {KEY_COS,                "cosine", M_NONE,
     { GDK_SHIFT_MASK, 0 },
     { GDK_J, 0 }},
 
-    {KEY_TANGENT,            "tangent", M_NONE,
+    {KEY_TAN,                "tangent", M_NONE,
     { GDK_SHIFT_MASK, 0 },
     { GDK_L, 0 }},
 
@@ -517,10 +517,52 @@ ui_set_accuracy(int accuracy)
 }
 
 
+static void
+ui_update_trig_mode()
+{
+    static char *sine_labels[]      = {N_("Sin"), N_("Sinh"),
+                                       N_("Sin<sup>-1</sup>"),
+                                       N_("Sinh<sup>-1</sup>")};
+    static int  sine_functions[]    = {KEY_SIN, KEY_SINH, KEY_ASIN, KEY_ASINH};
+    static char *cosine_labels[]    = {N_("Cos"), N_("Cosh"),
+                                       N_("Cos<sup>-1</sup>"),
+                                       N_("Cosh<sup>-1</sup>")};
+    static int  cosine_functions[]  = {KEY_COS, KEY_COSH, KEY_ACOS, KEY_ACOSH};
+    static char *tangent_labels[]   = {N_("Tan"), N_("Tanh"),
+                                       N_("Tan<sup>-1</sup>"),
+                                       N_("Tanh<sup>-1</sup>")};
+    static int  tangent_functions[] = {KEY_TAN, KEY_TANH, KEY_ATAN, KEY_ATANH};
+    int index = 0;
+
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->hyp))) {
+        index |= 0x1;
+    }
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->inv))) {
+        index |= 0x2;
+    }
+
+    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("sine_label")),
+                         sine_labels[index]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_sine_button")), "button", 
+                      &buttons[sine_functions[index]]);
+
+    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("cosine_label")),
+                         cosine_labels[index]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_cosine_button")), "button", 
+                      &buttons[cosine_functions[index]]);
+
+    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("tangent_label")),
+                         tangent_labels[index]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_tangent_button")), "button", 
+                      &buttons[tangent_functions[index]]);
+}
+
+
 void
 ui_set_hyperbolic_state(int state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyp), state);
+    ui_update_trig_mode();
 }
 
 
@@ -528,6 +570,7 @@ void
 ui_set_inverse_state(int state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inv), state);
+    ui_update_trig_mode();
 }
 
 
@@ -1923,7 +1966,7 @@ help_cb(GtkWidget *widget)
 void
 hyp_cb(GtkWidget *widget)
 {
-    v->hyperbolic = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+    ui_update_trig_mode();
 }
 
 
@@ -1931,7 +1974,7 @@ hyp_cb(GtkWidget *widget)
 void
 inv_cb(GtkWidget *widget)
 {
-    v->inverse = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+    ui_update_trig_mode();
 }
 
 
@@ -3084,6 +3127,7 @@ ui_load()
     ui_set_base(v->base);
     ui_set_accuracy(v->accuracy);
     ui_set_undo_enabled(FALSE, FALSE);
+    ui_update_trig_mode();
     
     /* Show the memory register window? */
     ui_make_registers();
