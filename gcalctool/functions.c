@@ -465,33 +465,14 @@ do_expression()
 {
     char *btext = NULL;
     struct exprm_state *e;
-    int non_empty_expression;
+    int i, non_empty_expression;
+    char buf[MAXLINE];
     
     e = get_state();
 
-    /* FIXME: These match existing behaviour before Glade patches
-     * these should be acted on lower down in this function */
-    switch (e->button.id) {
-        case KEY_SHIFT:
-            do_shift(e->value);
-            return;
-        case KEY_SET_ACCURACY:
-            do_accuracy(e->value);
-            return;
-        case KEY_FUNCTION:
-            do_function(e->value);
-            return;
-        case KEY_STORE:
-            do_sto(e->value);
-            return;
-        case KEY_EXCHANGE:
-            do_exchange(e->value);
-            return;
-    }
-
     ui_set_statusbar("", "");
 
-    if (e->button.flags & dpoint) {
+    if (e->button.id == KEY_NUMERIC_POINT) {
         btext = ui_get_localized_numeric_point();
     } else {
         btext = e->button.symname;
@@ -502,12 +483,12 @@ do_expression()
     
     if (non_empty_expression) {
         if (!strcmp(e->expression, "Ans")) {
-            if (e->button.flags & number) {
+            if (e->button.flags & NUMBER) {
                 exp_del(); 
             }	
         }
     } else {
-        if (e->button.flags & postfixop) {
+        if (e->button.flags & POSTFIXOP) {
             int MP1[MP_SIZE];
             char *zero = NULL;
             do_zero(MP1);
@@ -516,106 +497,134 @@ do_expression()
         }
     }
 
-    if ((e->button.flags & (prefixop | func)) 
+    if ((e->button.flags & (PREFIXOP | FUNC)) 
         && e->expression
         && !strcmp(e->expression, "Ans")) {
-	    char buf[1024];
-	    SNPRINTF(buf, 128, "%s(Ans)", btext);
+	    SNPRINTF(buf, MAXLINE, "%s(Ans)", btext);
 	    exp_replace(buf);
-    } else if (e->button.flags & clear) {
-        exp_del();
-        ui_set_error_state(FALSE);
-        MPstr_to_num("0", DEC, e->ans);
-    } else if (e->button.flags & regrcl) {
-        int i = e->value;
-        char reg[3];
-        int n = '0' +  i;
+    } else {
+        switch (e->button.id) {
+        case KEY_CLEAR:
+        case KEY_CLEAR_ENTRY:
+            exp_del();
+            ui_set_error_state(FALSE);
+            MPstr_to_num("0", DEC, e->ans);
+            break;
+            
+        case KEY_SHIFT:
+            do_shift(e->value);
+            return;
 
-        SNPRINTF(reg, 3, "R%c", n);
-        exp_append(reg);
-    } else if (e->button.flags & con) {
-        int *MPval = v->MPcon_vals[e->value];
-        exp_append(make_number(MPval, v->base, FALSE));
-    } else if (e->button.flags & bsp) {
-        if (exp_has_postfix(e->expression, "Ans")) { 
-            char *ans = make_number(e->ans, v->base, FALSE);   
+        case KEY_SET_ACCURACY:
+            do_accuracy(e->value);
+            return;
 
-            str_replace(&e->expression, "Ans", ans);
-        } else {
-            char reg[3];
-            int n = '0';
-            int i;
+        case KEY_FUNCTION:
+            do_function(e->value);
+            return;
 
-            for (i = 0; i < 10; i++) {
-                SNPRINTF(reg, 3, "R%c", n+i);
-                if (exp_has_postfix(e->expression, reg)) {
-                    int MP_reg[MP_SIZE];
-                    char *reg_val;
+        case KEY_STORE:
+            do_sto(e->value);
+            return;
 
-                    do_rcl_reg(i, MP_reg);
-                    reg_val = make_number(MP_reg, v->base, FALSE);
-                    /* Remove "Rx" postfix. */
-                    exp_del_char(&e->expression, 2);
-                    exp_append(reg_val);
+        case KEY_EXCHANGE:
+            do_exchange(e->value);
+            return;
+
+        case KEY_RECALL:
+            SNPRINTF(buf, MAXLINE, "R%d", e->value);
+            exp_append(buf);
+            break;
+
+        case KEY_CONSTANT:
+            exp_append(make_number(v->MPcon_vals[e->value], v->base, FALSE));
+            break;
+
+        case KEY_BACKSPACE:
+            if (exp_has_postfix(e->expression, "Ans")) { 
+                char *ans = make_number(e->ans, v->base, FALSE);
+                str_replace(&e->expression, "Ans", ans);
+            } else {
+                for (i = 0; i < 10; i++) {
+                    SNPRINTF(buf, MAXLINE, "R%d", i);
+                    if (exp_has_postfix(e->expression, buf)) {
+                        int MP_reg[MP_SIZE];
+                        char *reg_val;
+                        
+                        do_rcl_reg(i, MP_reg);
+                        reg_val = make_number(MP_reg, v->base, FALSE);
+                        /* Remove "Rx" postfix. */
+                        exp_del_char(&e->expression, 2);
+                        exp_append(reg_val);
+                    }
                 }
             }
-        }
-        exp_del_char(&e->expression, 1);
-    } else if (e->button.flags & neg) {
-        exp_negate();
-    } else if (e->button.flags & inv) {
-        exp_inv();
-    } else if (e->button.flags & enter) {
-        if (e->expression) {
-            if (strcmp(e->expression, "Ans")) {
-                int MPval[MP_SIZE];
-                int ret = ce_parse(e->expression, MPval);
+            exp_del_char(&e->expression, 1);
+            break;
             
-                if (!ret) {
-                    mpstr(MPval, e->ans);
-                    exp_replace("Ans");
-                } else {
-                    char *message = NULL;
+        case KEY_CHANGE_SIGN:
+            exp_negate();
+            break;
+            
+        case KEY_RECIPROCAL:
+            exp_inv();
+            break;
+
+        case KEY_CALCULATE:
+            if (e->expression) {
+                if (strcmp(e->expression, "Ans")) {
+                    int MPval[MP_SIZE];
+                    int ret = ce_parse(e->expression, MPval);
                     
-                    switch (ret) {
+                    if (!ret) {
+                        mpstr(MPval, e->ans);
+                        exp_replace("Ans");
+                    } else {
+                        char *message = NULL;
+                        
+                        switch (ret) {
                         case -PARSER_ERR_INVALID_BASE:
                             message = _("Invalid number for the current base");
                             break;
-
+                            
                         case -PARSER_ERR_TOO_LONG_NUMBER:
                             message = _("Too long number");
                             break;
-
+                            
                         case -PARSER_ERR_BITWISEOP:
                             message = _("Invalid bitwise operation parameter(s)");
                             break;
-
+                            
                         case -PARSER_ERR_MODULUSOP:
                             message = _("Invalid modulus operation parameter(s)");
                             break;
-                        
+                            
                         case -MPMATH_ERR:
                             message = _("Math operation error");
                             break;
-                        
+                            
                         default:
                             message = _("Malformed expression");
+                        }
+                        ui_set_statusbar(message, "gtk-dialog-error");
                     }
-                    ui_set_statusbar(message, "gtk-dialog-error");
-                }
-            } else {
-                perform_undo();
-                if (is_undo_step()) {
+                } else {
                     perform_undo();
+                    if (is_undo_step()) {
+                        perform_undo();
+                    }
                 }
             }
+            break;
+
+        default:
+            exp_append(btext);
+            if (e->button.flags & FUNC) {
+                exp_append("(");
+            }
+            break;
         }
-    } else {
-        exp_append(btext);
-        if (e->button.flags & func) {
-            exp_append("(");
-        }
-    }   
+    }
     free(btext);
 
     refresh_display();

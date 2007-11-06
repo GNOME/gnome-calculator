@@ -52,121 +52,121 @@ struct button buttons[NKEYS] = {
     KEY_0,
     "0",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_1,
     "1",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_2,
     "2",
     do_number,
-    number
+    NUMBER
 },    
 {     
     KEY_3,
     "3",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_4,
     "4",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_5,
     "5",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_6,
     "6",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_7,
     "7",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_8,
     "8",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_9,
     "9",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_A,
     "A",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_B,
     "B",
     do_number,
-    number
+    NUMBER
 },    
 {     
     KEY_C,
     "C",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_D,
     "D",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_E,
     "E",
     do_number,
-    number
+    NUMBER
 },
 {
     KEY_F,
     "F",
     do_number,
-    number
+    NUMBER
 },
 {    
     KEY_NUMERIC_POINT,
     ".",
     do_point,
-    number | dpoint
+    NUMBER
 },
 {
     KEY_CALCULATE,
     NULL,
     do_calc,
-    enter
+    none
 },
 {
     KEY_CLEAR,
     NULL,
     do_clear,
-    clear
+    none
 },
 {
     KEY_CLEAR_ENTRY,
     NULL,
     do_clear_entry,
-    clear
+    none
 },
 {
     KEY_START_BLOCK,
@@ -208,25 +208,25 @@ struct button buttons[NKEYS] = {
     KEY_BACKSPACE,
     NULL,
     do_delete,
-    bsp
+    none
 },
 {
     KEY_CHANGE_SIGN,
     NULL,
     do_immed, 
-    neg
+    none
 },
 {
     KEY_INTEGER,
     "Int",
     do_portion,
-    func
+    FUNC
 },
 {
     KEY_FRACTION,
     "Frac",
     do_portion,
-    func  
+    FUNC  
 },
 {
     KEY_PERCENTAGE,
@@ -238,43 +238,43 @@ struct button buttons[NKEYS] = {
     KEY_SQUARE,
     "^2",
     do_immed,  
-    postfixop
+    POSTFIXOP
 },
 {
     KEY_SQUARE_ROOT,
     "Sqrt",
     do_immed, 
-    func
+    FUNC
 },
 {
     KEY_RECIPROCAL,
     NULL,
     do_immed, 
-    inv
+    none
 },
 {
     KEY_E_POW_X,
     "e^",
     do_immed, 
-    prefixop
+    PREFIXOP
 },
 {
     KEY_10_POW_X,
     "10^",
     do_immed, 
-    prefixop
+    PREFIXOP
 },       
 {
     KEY_X_POW_Y,
     "^",
     do_calc,
-    postfixop
+    POSTFIXOP
 },
 {
     KEY_FACTORIAL,
     "!",
     do_immed, 
-    postfixop
+    POSTFIXOP
 },
 {
     KEY_RANDOM,
@@ -286,103 +286,103 @@ struct button buttons[NKEYS] = {
     KEY_SIN,
     "Sin",
     do_sin,
-    func
+    FUNC
 },
 {
     KEY_SINH,
     "Sinh",
     do_sinh,
-    func
+    FUNC
 },
 {
     KEY_ASIN,
     "Asin",
     do_asin,
-    func
+    FUNC
 },
 {
     KEY_ASINH,
     "Asinh",
     do_asinh,
-    func
+    FUNC
 },
 {
     KEY_COS,
     "Cos",
     do_cos,
-    func
+    FUNC
 },
 {
     KEY_COSH,
     "Cosh",
     do_cosh,
-    func
+    FUNC
 },
 {
     KEY_ACOS,
     "Acos",
     do_acos,
-    func
+    FUNC
 },
 {
     KEY_ACOSH,
     "Acosh",
     do_acosh,
-    func
+    FUNC
 },
 {
     KEY_TAN,
     "Tan",
     do_tan,
-    func
+    FUNC
 },
 {
     KEY_TANH,
     "Tanh",
     do_tanh,
-    func
+    FUNC
 },
 {
     KEY_ATAN,
     "Atan",
     do_atan,
-    func
+    FUNC
 },
 {
     KEY_TAN,
     "Atanh",
     do_atanh,
-    func
+    FUNC
 },
 {
     KEY_NATURAL_LOGARITHM,
     "Ln",
     do_immed, 
-    func
+    FUNC
 },
 {
     KEY_LOGARITHM,
     "Log",
     do_immed, 
-    func
+    FUNC
 },
 {
     KEY_ABSOLUTE_VALUE,
     "Abs",
     do_portion,
-    func
+    FUNC
 },
 {
     KEY_MASK_16,
     "u16",
     do_immed,  
-    func
+    FUNC
 },            
 {
     KEY_MASK_32,
     "u32",
     do_immed,  
-    func
+    FUNC
 },
 {
     KEY_MODULUS_DIVIDE,
@@ -394,7 +394,7 @@ struct button buttons[NKEYS] = {
     KEY_EXPONENTIAL,
     "e",
     do_expno,
-    expnum
+    none
 },
 {
     KEY_NOT,
@@ -496,7 +496,7 @@ struct button buttons[NKEYS] = {
     KEY_RECALL,
     NULL,
     do_rcl,
-    regrcl
+    none
 },
 {
     KEY_EXCHANGE,
@@ -514,7 +514,7 @@ struct button buttons[NKEYS] = {
     KEY_CONSTANT,
     NULL,
     do_constant,
-    con
+    none
 },
 {
     KEY_FUNCTION,

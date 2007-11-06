@@ -164,19 +164,10 @@ enum
 
 enum button_flags {
     none         = 0,          /* No flags */
-    enter        = (1 << 2),   /* Expression is entered */
-    number       = (1 << 3),   /* Number button */
-    func         = (1 << 6),   /* Function */
-    bsp          = (1 << 7),   /* Backspace */
-    clear        = (1 << 8),   /* Clear display */
-    neg          = (1 << 9),   /* Negate display */
-    inv          = (1 << 10),  /* Reciprocial */
-    con          = (1 << 11),  /* Constant */
-    regrcl       = (1 << 12),  /* Recall register */
-    expnum       = (1 << 13),  /* Exponential number */
-    postfixop    = (1 << 14),  /* Unary postfix operation */
-    prefixop     = (1 << 15),  /* Unary prefix operation */
-    dpoint       = (1 << 16)   /* Decimal point */
+    NUMBER       = (1 << 3),   /* Number button */
+    FUNC         = (1 << 6),   /* Function */
+    POSTFIXOP    = (1 << 14),  /* Unary postfix operation */
+    PREFIXOP     = (1 << 15),  /* Unary prefix operation */
 };
 
 struct button {
