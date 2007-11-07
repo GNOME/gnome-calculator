@@ -709,7 +709,7 @@ init_state(void)
     init_constant(9, "0.0610");                /* cms3 <=> inches3. */
 
     n = 0;
-    for (i = 0; i < MAXREGS; i++) {
+    for (i = 0; i < MAX_REGISTERS; i++) {
         mpcim(&n, v->MPmvals[i]);
     }   
 }

@@ -42,17 +42,10 @@
 #include "display.h"
 #include "get.h"
 
-/* Popup menu types. */
-/* FIXME: This enum could be removed */
-enum menu_type { M_ACC,  M_CON,  M_EXCH, M_FUN,  M_LSHF,
-                 M_RCL,  M_RSHF, M_STO, M_NONE };
-#define MAXMENUS       9          /* Maximum number of popup menus. */
-
 #define MAX_ACCELERATORS 8
 struct button_widget {
     int key;
     char *widget_name;
-    enum menu_type mtype;
     guint accelerator_mods[MAX_ACCELERATORS];
     guint accelerator_keys[MAX_ACCELERATORS];
 };
@@ -82,303 +75,303 @@ static char *hostname_titles[] = {
  */
     
 static struct button_widget button_widgets[] = {
-    {KEY_0,                  "0", M_NONE,
+    {KEY_0,                  "0",
     { 0,     GDK_SHIFT_MASK, 0,        0,             0 },
     { GDK_0, GDK_0,          GDK_KP_0, GDK_KP_Insert, 0 }},
 
-    {KEY_1,                  "1", M_NONE,
+    {KEY_1,                  "1",
     { 0,     GDK_SHIFT_MASK, 0,        0,          0,       0 },
     { GDK_1, GDK_1,          GDK_KP_1, GDK_KP_End, GDK_R13, 0 }},
 
-    {KEY_2,                  "2", M_NONE,
+    {KEY_2,                  "2",
     { 0,     GDK_SHIFT_MASK, 0,        0,           0 }, 
     { GDK_2, GDK_2,          GDK_KP_2, GDK_KP_Down, 0 }},
 
-    {KEY_3,                  "3", M_NONE,
+    {KEY_3,                  "3",
     { 0,     GDK_SHIFT_MASK, 0,        0,                0,       0 },
     { GDK_3, GDK_3,          GDK_KP_3, GDK_KP_Page_Down, GDK_R15, 0 }},
 
-    {KEY_4,                  "4", M_NONE,
+    {KEY_4,                  "4",
     { 0,     GDK_SHIFT_MASK, 0,        0,           0 },
     { GDK_4, GDK_4,          GDK_KP_4, GDK_KP_Left, 0 }},
 
-    {KEY_5,                  "5", M_NONE,
+    {KEY_5,                  "5",
     { 0,     GDK_SHIFT_MASK, 0,        0,            0,       0 },
     { GDK_5, GDK_5,          GDK_KP_5, GDK_KP_Begin, GDK_R11, 0 }},
 
-    {KEY_6,                  "6", M_NONE,
+    {KEY_6,                  "6",
     { 0,     GDK_SHIFT_MASK, 0,        0,            0 },
     { GDK_6, GDK_6,          GDK_KP_6, GDK_KP_Right, 0 }},
 
-    {KEY_7,                  "7", M_NONE,
+    {KEY_7,                  "7",
     { 0,     GDK_SHIFT_MASK, 0,        0,           0,      0 },
     { GDK_7, GDK_7,          GDK_KP_7, GDK_KP_Home, GDK_R7, 0 }},
 
-    {KEY_8,                  "8", M_NONE,
+    {KEY_8,                  "8",
     { 0,     GDK_SHIFT_MASK, 0,        0,         0 },
     { GDK_8, GDK_8,          GDK_KP_8, GDK_KP_Up, 0 }},
 
-    {KEY_9,                  "9", M_NONE,
+    {KEY_9,                  "9",
     { 0,     GDK_SHIFT_MASK, 0,        0,              0,      0 },
     { GDK_9, GDK_9,          GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 }},
 
-    {KEY_A,                  "a", M_NONE,
+    {KEY_A,                  "a",
     { 0,     0 },
     { GDK_a, 0 }},
 
-    {KEY_B,                  "b", M_NONE,
+    {KEY_B,                  "b",
     { 0,     0 },
     { GDK_b, 0 }},
 
-    {KEY_C,                  "c", M_NONE,
+    {KEY_C,                  "c",
     { 0,     0 },
     { GDK_c, 0 }},
 
-    {KEY_D,                  "d", M_NONE,
+    {KEY_D,                  "d",
     { 0,     0 },
     { GDK_d, 0 }},
 
-    {KEY_E,                  "e", M_NONE,
+    {KEY_E,                  "e",
     { 0,     0 },
     { GDK_e, 0 }},
 
-    {KEY_F,                  "f", M_NONE,
+    {KEY_F,                  "f",
     { 0,     0 },
     { GDK_f, 0 }},
 
-    {KEY_CLEAR,              "clear_simple", M_NONE,
+    {KEY_CLEAR,              "clear_simple",
     { 0, 0 },
     { GDK_Delete, 0 }},
     
-    {KEY_CLEAR,              "clear_advanced", M_NONE,
+    {KEY_CLEAR,              "clear_advanced",
     { 0, 0 },
     { GDK_Delete, 0 }},
 
-    {KEY_SHIFT,              "shift_left", M_LSHF,
+    {KEY_SHIFT,              "shift_left",
     { GDK_SHIFT_MASK, 0 },
     { GDK_less, 0 }},
 
-    {KEY_SHIFT,              "shift_right", M_RSHF,
+    {KEY_SHIFT,              "shift_right",
     { GDK_SHIFT_MASK, 0 },
     { GDK_greater, 0 }},
 
-    {KEY_SET_ACCURACY,       "accuracy", M_ACC,
+    {KEY_SET_ACCURACY,       "accuracy",
     { GDK_SHIFT_MASK, 0 },
     { GDK_A,          0 }},
 
-    {KEY_CONSTANT,           "constants", M_CON,
+    {KEY_CONSTANT,           "constants",
     { GDK_SHIFT_MASK, 0,              0 },
     { GDK_numbersign, GDK_numbersign, 0 }},
 
-    {KEY_FUNCTION,           "functions", M_FUN,
+    {KEY_FUNCTION,           "functions",
     { GDK_SHIFT_MASK, 0 },
     { GDK_F,          0 }},
 
-    {KEY_STORE,              "store", M_STO,
+    {KEY_STORE,              "store",
     { GDK_SHIFT_MASK, 0 },
     { GDK_S, 0 }},
 
-    {KEY_RECALL,             "recall", M_RCL,
+    {KEY_RECALL,             "recall",
     { GDK_SHIFT_MASK, 0 },
     { GDK_R, 0 }},
 
-    {KEY_EXCHANGE,           "exchange", M_EXCH,
+    {KEY_EXCHANGE,           "exchange",
     { GDK_SHIFT_MASK, 0 },
     { GDK_X, 0 }},
 
-    {KEY_CLEAR_ENTRY,        "clear_entry_simple", M_NONE,
+    {KEY_CLEAR_ENTRY,        "clear_entry_simple",
     { GDK_CONTROL_MASK, 0,          0 },
     { GDK_BackSpace,    GDK_Escape, 0 }},
 
-    {KEY_CLEAR_ENTRY,        "clear_entry_advanced", M_NONE,
+    {KEY_CLEAR_ENTRY,        "clear_entry_advanced",
     { GDK_CONTROL_MASK, 0,          0 },
     { GDK_BackSpace,    GDK_Escape, 0 }},
 
-    {KEY_BACKSPACE,          "backspace_simple", M_NONE,
+    {KEY_BACKSPACE,          "backspace_simple",
     { 0, 0 },
     { GDK_BackSpace, 0 }},
 
-    {KEY_BACKSPACE,          "backspace_advanced", M_NONE,
+    {KEY_BACKSPACE,          "backspace_advanced",
     { 0, 0 },
     { GDK_BackSpace, 0 }},
 
-    {KEY_NUMERIC_POINT,      "numeric_point", M_NONE,
+    {KEY_NUMERIC_POINT,      "numeric_point",
     { 0,          0,              0,             0 },
     { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 }},
 
-    {KEY_CALCULATE,          "result", M_NONE,
+    {KEY_CALCULATE,          "result",
     { 0,         0,            0,          GDK_SHIFT_MASK, 0 },
     { GDK_equal, GDK_KP_Enter, GDK_Return, GDK_equal,      0 }},
 
-    {KEY_START_BLOCK,        "start_group", M_NONE,
+    {KEY_START_BLOCK,        "start_group",
     { GDK_SHIFT_MASK, 0 },
     { GDK_parenleft, 0 }},
 
-    {KEY_END_BLOCK,          "end_group", M_NONE,
+    {KEY_END_BLOCK,          "end_group",
     { GDK_SHIFT_MASK, 0 },
     { GDK_parenright, 0 }},
 
-    {KEY_ADD,                "add", M_NONE,
+    {KEY_ADD,                "add",
     { GDK_SHIFT_MASK, 0,        0,          0 },
     { GDK_plus,       GDK_plus, GDK_KP_Add, 0 }},
 
-    {KEY_SUBTRACT,           "subtract", M_NONE,
+    {KEY_SUBTRACT,           "subtract",
     { 0,         0,               0,      0 },
     { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 }},
 
-    {KEY_MULTIPLY,           "multiply", M_NONE,
+    {KEY_MULTIPLY,           "multiply",
     { GDK_SHIFT_MASK, 0,               0,     0,      0 },
     { GDK_asterisk,   GDK_KP_Multiply, GDK_x, GDK_R6, 0 }},
 
-    {KEY_DIVIDE,             "divide", M_NONE,
+    {KEY_DIVIDE,             "divide",
     { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
     { GDK_slash, GDK_slash,      GDK_KP_Divide, GDK_R5, GDK_slash,      0 }},
 
-    {KEY_CHANGE_SIGN,        "change_sign_simple", M_NONE,
+    {KEY_CHANGE_SIGN,        "change_sign_simple",
     { GDK_SHIFT_MASK, 0 },
     { GDK_C,          0 }},
 
-    {KEY_CHANGE_SIGN,        "change_sign_advanced", M_NONE,
+    {KEY_CHANGE_SIGN,        "change_sign_advanced",
     { GDK_SHIFT_MASK, 0 },
     { GDK_C,          0 }},
 
-    {KEY_INTEGER,            "integer_portion", M_NONE,
+    {KEY_INTEGER,            "integer_portion",
     { 0, 0 },
     { GDK_i, 0 }},
 
-    {KEY_FRACTION,           "fractional_portion", M_NONE,
+    {KEY_FRACTION,           "fractional_portion",
     { GDK_SHIFT_MASK, 0 },
     { GDK_colon, 0 }},
 
-    {KEY_PERCENTAGE,         "percentage", M_NONE,
+    {KEY_PERCENTAGE,         "percentage",
     { GDK_SHIFT_MASK, 0 },
     { GDK_percent, 0 }},
 
-    {KEY_SQUARE,             "square", M_NONE,
+    {KEY_SQUARE,             "square",
     { GDK_SHIFT_MASK, 0 },
     { GDK_at, 0 }},
 
-    {KEY_SQUARE_ROOT,        "sqrt", M_NONE,
+    {KEY_SQUARE_ROOT,        "sqrt",
     { 0, 0 },   
     { GDK_s, 0 }},
 
-    {KEY_RECIPROCAL,         "reciprocal", M_NONE,
+    {KEY_RECIPROCAL,         "reciprocal",
     { 0, 0 },
     { GDK_r, 0 }},
 
-    {KEY_ABSOLUTE_VALUE,     "abs", M_NONE,
+    {KEY_ABSOLUTE_VALUE,     "abs",
     { 0, 0 },
     { GDK_u, 0 }},
 
-    {KEY_MASK_16,            "mask_16", M_NONE,
+    {KEY_MASK_16,            "mask_16",
     { 0, 0 },        
     { GDK_bracketright, 0 }},
 
-    {KEY_MASK_32,            "mask_32", M_NONE,
+    {KEY_MASK_32,            "mask_32",
     { 0, 0 },
     { GDK_bracketleft, 0 }},
 
-    {KEY_MODULUS_DIVIDE,     "modulus_divide", M_NONE,
+    {KEY_MODULUS_DIVIDE,     "modulus_divide",
     { GDK_SHIFT_MASK, 0 },
     { GDK_M,          0 }},
 
-    {KEY_EXPONENTIAL,        "exponential", M_NONE,
+    {KEY_EXPONENTIAL,        "exponential",
     { GDK_SHIFT_MASK, 0 },
     { GDK_E,          0 }},
 
-    {KEY_E_POW_X,            "pow_e", M_NONE,
+    {KEY_E_POW_X,            "pow_e",
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceleft, 0 }},
 
-    {KEY_10_POW_X,           "pow_10", M_NONE,
+    {KEY_10_POW_X,           "pow_10",
     { GDK_SHIFT_MASK, 0 },
     { GDK_braceright, 0 }},
 
-    {KEY_X_POW_Y,            "x_pow_y", M_NONE,
+    {KEY_X_POW_Y,            "x_pow_y",
     { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
     { GDK_caret,      GDK_asciicircum, 0 }},
 
-    {KEY_NATURAL_LOGARITHM,  "natural_logarithm", M_NONE,
+    {KEY_NATURAL_LOGARITHM,  "natural_logarithm",
     { GDK_SHIFT_MASK, 0 },
     { GDK_N, 0 }},
 
-    {KEY_LOGARITHM,          "logarithm", M_NONE,
+    {KEY_LOGARITHM,          "logarithm",
     { GDK_SHIFT_MASK, 0 },
     { GDK_G, 0 }},
 
-    {KEY_FACTORIAL,          "factorial", M_NONE,
+    {KEY_FACTORIAL,          "factorial",
     { GDK_SHIFT_MASK, 0 },
     { GDK_exclam, 0 }},
 
-    {KEY_RANDOM,             "random", M_NONE,
+    {KEY_RANDOM,             "random",
     { GDK_SHIFT_MASK, 0 },
     { GDK_question, 0 }},
 
-    {KEY_SIN,                "sine", M_NONE,
+    {KEY_SIN,                "sine",
     { GDK_SHIFT_MASK, 0 },
     { GDK_K, 0 }},
 
-    {KEY_COS,                "cosine", M_NONE,
+    {KEY_COS,                "cosine",
     { GDK_SHIFT_MASK, 0 },
     { GDK_J, 0 }},
 
-    {KEY_TAN,                "tangent", M_NONE,
+    {KEY_TAN,                "tangent",
     { GDK_SHIFT_MASK, 0 },
     { GDK_L, 0 }},
 
-    {KEY_NOT,                "not", M_NONE,
+    {KEY_NOT,                "not",
     { GDK_SHIFT_MASK, 0 },
     { GDK_asciitilde, 0 }},
 
-    {KEY_OR,                 "or", M_NONE,
+    {KEY_OR,                 "or",
     { GDK_SHIFT_MASK, 0 },
     { GDK_bar, 0 }},
 
-    {KEY_AND,                "and", M_NONE,
+    {KEY_AND,                "and",
     { GDK_SHIFT_MASK, 0 },
     { GDK_ampersand, 0 }},
 
-    {KEY_XOR,                "xor", M_NONE,
+    {KEY_XOR,                "xor",
     { 0 },
     { 0 }},
 
-    {KEY_XNOR,               "xnor", M_NONE,
+    {KEY_XNOR,               "xnor",
     { 0, 0 },
     { GDK_n, 0 }},
 
-    {KEY_FINC_CTRM,          "finc_compounding_term", M_NONE,
+    {KEY_FINC_CTRM,          "finc_compounding_term",
     { 0, 0 },
     { GDK_m, 0 }},
 
-    {KEY_FINC_DDB,           "finc_double_declining_depreciation", M_NONE,
+    {KEY_FINC_DDB,           "finc_double_declining_depreciation",
     { GDK_SHIFT_MASK, 0 },
     { GDK_D,          0 }},
 
-    {KEY_FINC_FV,            "finc_future_value", M_NONE,
+    {KEY_FINC_FV,            "finc_future_value",
     { 0, 0 },
     { GDK_v, 0 }},
 
-    {KEY_FINC_PMT,           "finc_periodic_payment", M_NONE,
+    {KEY_FINC_PMT,           "finc_periodic_payment",
     { GDK_SHIFT_MASK, 0 },
     { GDK_P, 0 }},
 
-    {KEY_FINC_PV,            "finc_present_value", M_NONE,
+    {KEY_FINC_PV,            "finc_present_value",
     { 0, 0 },
     { GDK_p, 0 }},
 
-    {KEY_FINC_RATE,          "finc_periodic_interest_rate", M_NONE,
+    {KEY_FINC_RATE,          "finc_periodic_interest_rate",
     { GDK_SHIFT_MASK, 0 },
     { GDK_T, 0 }},
 
-    {KEY_FINC_SLN,           "finc_straight_line_depreciation", M_NONE,
+    {KEY_FINC_SLN,           "finc_straight_line_depreciation",
     { 0, 0 },
     { GDK_l, 0 }},
 
-    {KEY_FINC_SYD,           "finc_sum_of_the_years_digits_depreciation", M_NONE,
+    {KEY_FINC_SYD,           "finc_sum_of_the_years_digits_depreciation",
     { 0, 0 },
     { GDK_Y, 0 }},
 
-    {KEY_FINC_TERM,          "finc_term", M_NONE,
+    {KEY_FINC_TERM,          "finc_term",
     { 0, 0 },
     { GDK_T, 0 }},
 };
@@ -419,11 +412,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *status_image;           /* Statusbar image */
     GtkWidget *statusbar; 
 
-    GtkWidget *undo;                   /* Undo menuitem */ 
-    GtkWidget *redo;                   /* Redo menuitem */ 
-    GtkWidget *copy;                   /* Copy menuitem */
-    GtkWidget *paste;	               /* Paste menuitem */
-    
     GtkWidget *aframe;                 /* ASCII window. */
     GtkWidget *aframe_ch;
 
@@ -432,11 +420,10 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
     GtkWidget *rframe;                 /* Register window. */
-    GtkWidget *regs[MAXREGS];          /* Memory registers. */
+    GtkWidget *regs[MAX_REGISTERS];          /* Memory registers. */
 
     GtkWidget *spframe;                /* Set Precision window. */
     GtkWidget *spframe_val;
-    GtkWidget *menus[MAXMENUS];
 
     GtkWidget *buttons[NBUTTONS];
     GtkWidget *digit_buttons[16];
@@ -449,22 +436,21 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *mode_panel;     /* Panel containing scientific mode widgets. */
     
     /* Labels for popup menus */
-    GtkWidget *constant_menu_items[MAXCONFUN];
-    GtkWidget *function_menu_items[MAXCONFUN];
-    GtkWidget *memory_store_items[MAXREGS];
-    GtkWidget *memory_recall_items[MAXREGS];
-    GtkWidget *memory_exchange_items[MAXREGS];
+    GtkWidget *constant_menu_labels[MAX_CONSTANTS];
+    GtkWidget *function_menu_labels[MAX_FUNCTIONS];
+    GtkWidget *memory_store_labels[MAX_REGISTERS];
+    GtkWidget *memory_recall_labels[MAX_REGISTERS];
+    GtkWidget *memory_exchange_labels[MAX_REGISTERS];
     
     /* Scientific mode widgets */
-    GtkWidget *hyp;                    /* Hyperbolic mode. */
-    GtkWidget *inv;                    /* Inverse mode. */
+    GtkWidget *hyperbolic_toggle;                    /* Hyperbolic mode. */
+    GtkWidget *inverse_toggle;                    /* Inverse mode. */
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
     int menuval;                  /* Index to button array at menu time. */
     char *lnp;                    /* Localized numerical point (UTF8 format) */
-    struct button *mrec[MAXMENUS];
 };
 
 typedef struct Xobject *XVars;
@@ -478,6 +464,53 @@ enum {
 };
 
 static XVars X;
+
+
+void
+ui_set_syntax_mode(enum syntax mode)
+{
+    struct exprm_state *e;
+    GtkWidget *widget;
+
+    /* TODO: Always do clear things when mode is changed. */      
+    v->syntax = mode;
+    switch (v->syntax) {
+        case NPA:
+            v->noparens = 0;
+            MPstr_to_num("0", DEC, v->MPdisp_val);
+            show_display(v->MPdisp_val);
+            ui_set_statusbar(_("Activated no operator precedence mode"), "");
+            clear_undo_history();
+            break;
+
+        case EXPRS:
+            e = get_state();
+            MPstr_to_num("0", DEC, e->ans);
+            exp_del();
+            show_display(e->ans);
+            ui_set_statusbar(
+                 _("Activated expression mode with operator precedence"), "");
+            break;
+        
+        default:
+            assert(0);
+    }
+    set_resource(R_SYNTAX, Rsstr[v->syntax]);
+    ui_set_mode(v->modetype);
+    // FIXME: We can't allow the display to be editable. See bug #326938
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
+                               (v->syntax == EXPRS));
+    
+    /* Use loaded Arithmetic Precedence mode setting. */
+    // FIXME: Merge with arithmetic_mode_cb()
+    if (v->syntax == EXPRS) {
+        widget = GET_WIDGET("arithmetic_precedence_menu");
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
+    } else {
+        widget = GET_WIDGET("ltr_precedence_menu");
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
+    }
+}
 
 
 void
@@ -534,34 +567,34 @@ ui_update_trig_mode()
     static int  tangent_functions[] = {KEY_TAN, KEY_TANH, KEY_ATAN, KEY_ATANH};
     int index = 0;
 
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->hyp))) {
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->hyperbolic_toggle))) {
         index |= 0x1;
     }
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->inv))) {
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X->inverse_toggle))) {
         index |= 0x2;
     }
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("sine_label")),
                          sine_labels[index]);
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_sine_button")), "button", 
-                      &buttons[sine_functions[index]]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_sine_button")), "calc_function",
+                      GINT_TO_POINTER(sine_functions[index]));
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("cosine_label")),
                          cosine_labels[index]);
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_cosine_button")), "button", 
-                      &buttons[cosine_functions[index]]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_cosine_button")), "calc_function",
+                      GINT_TO_POINTER(cosine_functions[index]));
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("tangent_label")),
                          tangent_labels[index]);
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_tangent_button")), "button", 
-                      &buttons[tangent_functions[index]]);
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_tangent_button")), "calc_function", 
+                      GINT_TO_POINTER(tangent_functions[index]));
 }
 
 
 void
 ui_set_hyperbolic_state(gboolean state)
 {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyp), state);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyperbolic_toggle), state);
     ui_update_trig_mode();
 }
 
@@ -569,7 +602,7 @@ ui_set_hyperbolic_state(gboolean state)
 void
 ui_set_inverse_state(gboolean state)
 {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inv), state);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inverse_toggle), state);
     ui_update_trig_mode();
 }
 
@@ -639,8 +672,8 @@ ui_set_show_trailing_zeroes(gboolean visible)
 void 
 ui_set_undo_enabled(gboolean undo, gboolean redo)
 {
-    gtk_widget_set_sensitive(X->undo, undo); 
-    gtk_widget_set_sensitive(X->redo, redo);
+    gtk_widget_set_sensitive(GET_WIDGET("undo_menu"), undo); 
+    gtk_widget_set_sensitive(GET_WIDGET("redo_menu"), redo);
 }
 
 
@@ -1179,13 +1212,13 @@ ui_beep()
     gdk_beep();
 }
 
-static void do_button(struct button *n, int arg)
+static void do_button(int function, int arg)
 {
     struct exprm_state *e;
 
     switch (v->syntax) {
         case NPA:
-            process_item(n, arg);
+            process_item(&buttons[function], arg);
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
@@ -1196,7 +1229,7 @@ static void do_button(struct button *n, int arg)
         case EXPRS:
             e = get_state();
             e->value = arg;
-            MEMCPY(&(e->button), n, sizeof(struct button));
+            MEMCPY(&(e->button), &buttons[function], sizeof(struct button));
             new_state();
             do_expression();
             set_bit_panel();
@@ -1293,22 +1326,48 @@ put_function(int n, char *fun_value, char *fun_name)
 
 /*ARGSUSED*/
 static void
-menu_proc_cb(GtkMenuItem *mi, gpointer user_data)
+constant_menu_cb(GtkMenuItem *menu)
 {
-    struct button *n = (struct button *) g_object_get_data(G_OBJECT(mi), "button");
-    do_button(n, GPOINTER_TO_INT(user_data));
+    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "constant_id"));
+    do_button(KEY_CONSTANT, arg);
 }
 
 
-/* Create popup window for editing constants/functions. */
-
+/*ARGSUSED*/
 static void
-update_popup_label(GtkWidget *menu_item, gchar *text)
+function_menu_cb(GtkMenuItem *menu)
 {
-    GtkWidget *label;
-    label = (GtkWidget *)gtk_container_get_children(GTK_CONTAINER(menu_item))->data;
-    gtk_label_set_markup_with_mnemonic(GTK_LABEL(label), text);
+    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "function_id"));
+    do_button(KEY_FUNCTION, arg);
 }
+
+
+/*ARGSUSED*/
+static void
+store_menu_cb(GtkMenuItem *menu)
+{
+    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
+    do_button(KEY_STORE, arg);
+}
+
+
+/*ARGSUSED*/
+static void
+recall_menu_cb(GtkMenuItem *menu)
+{
+    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
+    do_button(KEY_RECALL, arg);
+}
+
+
+/*ARGSUSED*/
+static void
+exchange_menu_cb(GtkMenuItem *menu)
+{
+    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
+    do_button(KEY_EXCHANGE, arg);
+}
+
 
 static void
 update_constants_menu(void)
@@ -1316,12 +1375,12 @@ update_constants_menu(void)
     char mline[MAXLINE];
     int i;
 
-    for (i = 0; i < MAXCONFUN; i++) {
+    for (i = 0; i < MAX_CONSTANTS; i++) {
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                  make_number(v->MPcon_vals[i], DEC, TRUE), 
                  v->con_names[i]);
-        update_popup_label(X->constant_menu_items[i], mline);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->constant_menu_labels[i]), mline);
     }
 }
 
@@ -1332,16 +1391,16 @@ update_functions_menu(void)
     char mline[MAXLINE];
     int i;
 
-    for (i = 0; i < MAXCONFUN; i++) {
+    for (i = 0; i < MAX_FUNCTIONS; i++) {
         if (strlen(v->fun_vals[i]) != 0) {
             SNPRINTF(mline, MAXLINE,
                      "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
                      _("F"), i, v->fun_vals[i], v->fun_names[i]);
-            gtk_widget_show(X->function_menu_items[i]);
-            update_popup_label(X->function_menu_items[i], mline);
+            gtk_widget_show(gtk_widget_get_parent(X->function_menu_labels[i]));
+            gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->function_menu_labels[i]), mline);
         }
         else
-            gtk_widget_hide(X->function_menu_items[i]);
+            gtk_widget_hide(gtk_widget_get_parent(X->function_menu_labels[i]));
     }
 }
 
@@ -1408,29 +1467,42 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
 
 /*ARGSUSED*/
 static GtkTreeModel *
-create_cf_model(enum menu_type mtype, GtkWidget *dialog)
+create_constants_model()
 {
     gint i = 0;
     GtkListStore *model;
     GtkTreeIter iter;
-    gchar *value, *description;
 
     model = gtk_list_store_new(NUM_COLUMNS, G_TYPE_INT, G_TYPE_STRING,
                                G_TYPE_STRING, G_TYPE_BOOLEAN);   
-    for (i = 0; i < MAXCONFUN; i++) {
+    for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
-        if (mtype == M_CON) {
-            value = g_strdup(make_number(v->MPcon_vals[i], DEC, TRUE));
-            description = g_strdup(v->con_names[i]);
-        } else {
-            value       = g_strdup(v->fun_vals[i]);
-            description = g_strdup(v->fun_names[i]);
-        }
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
-                           COLUMN_VALUE, value,
-                           COLUMN_DESCRIPTION, description,
+                           COLUMN_EDITABLE, TRUE,
+                           -1);
+    }
+
+    return(GTK_TREE_MODEL(model));
+}
+
+
+/*ARGSUSED*/
+static GtkTreeModel *
+create_functions_model()
+{
+    gint i = 0;
+    GtkListStore *model;
+    GtkTreeIter iter;
+
+    model = gtk_list_store_new(NUM_COLUMNS, G_TYPE_INT, G_TYPE_STRING,
+                               G_TYPE_STRING, G_TYPE_BOOLEAN);   
+    for (i = 0; i < MAX_FUNCTIONS; i++) {
+        gtk_list_store_append(model, &iter);
+        
+        gtk_list_store_set(model, &iter,
+                           COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
                            -1);
     }
@@ -1445,7 +1517,7 @@ ui_make_registers()            /* Calculate memory register frame values. */
     char *mval, key[MAXLINE];
     int n;
 
-    for (n = 0; n < MAXREGS; n++) {
+    for (n = 0; n < MAX_REGISTERS; n++) {
         mval = make_number(v->MPmvals[n], v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
@@ -1634,14 +1706,14 @@ update_memory_menus()
     char mstr[MAXLINE];
     int i;
 
-    for (i = 0; i < MAXREGS; i++) {
+    for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
         /* translators: R is the short form of register used inter alia
         in popup menus */
                 _("R"), i, make_number(v->MPmvals[i], v->base, TRUE));
-        update_popup_label(X->memory_store_items[i], mstr);
-        update_popup_label(X->memory_recall_items[i], mstr);
-        update_popup_label(X->memory_exchange_items[i], mstr);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_store_labels[i]), mstr);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_recall_labels[i]), mstr);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_exchange_labels[i]), mstr);
     }
 }
 
@@ -1766,25 +1838,6 @@ ui_get_localized_numeric_point(void)
     decimal_point = localeconv()->decimal_point;
 
     return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
-}
-
-
-int
-get_menu_entry(enum menu_type mtype, int offset)
-{
-    switch (mtype) {
-        case M_ACC :
-            return(offset + '0');
-
-        case M_LSHF :
-        case M_RSHF :
-            return((offset < 10) ? offset + '0' : offset + 'A' - 10);
-
-        default:
-            FPRINTF(stderr, "need to handle menu type %d\n", mtype);
-    }
-
-    return(0);
 }
 
 
@@ -2015,16 +2068,16 @@ menu_pos_func(GtkMenu *menu, gint *x, gint *y,
 static void
 button_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    struct button *n;
-    enum menu_type mtype;
+    int function;
     GtkWidget *menu;
     GdkPoint loc;
     
-    n = (struct button *) g_object_get_data(G_OBJECT(widget), "button");
-    mtype = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "mtype"));
+    function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
+                                                 "calc_function"));
+    menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
     
-    if (mtype == M_NONE) {
-        do_button(n, 0);
+    if (menu == NULL) {
+        do_button(function, 0);
     } else {
         /* If gcalctool is being driven by gok, the on-screen keyboard 
          * assistive technology, it's possible that the event returned by 
@@ -2037,7 +2090,6 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
         update_functions_menu();
         update_memory_menus();
 
-        menu = X->menus[mtype];
         if (event == NULL) {
             gdk_window_get_origin(widget->window, &loc.x, &loc.y);
             loc.x += widget->allocation.x;
@@ -2228,8 +2280,8 @@ edit_cb(GtkWidget *widget)
     can_paste = gtk_clipboard_wait_is_text_available(
                             gtk_clipboard_get(X->clipboard_atom));
     
-    gtk_widget_set_sensitive(GTK_WIDGET(X->copy), can_copy);
-    gtk_widget_set_sensitive(GTK_WIDGET(X->paste), can_paste);
+    gtk_widget_set_sensitive(GET_WIDGET("copy_menu"), can_copy);
+    gtk_widget_set_sensitive(GET_WIDGET("paste_menu"), can_paste);
 }
 
 
@@ -2330,27 +2382,15 @@ insert_ascii_cb(GtkWidget *widget)
 
 
 static void
-shift_left_cb(GtkWidget *widget)
+shift_cb(GtkWidget *widget)
 {
     int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
                                                    "shiftcount"));
-
     if (v->started) {
-        do_button(&buttons[KEY_SHIFT], count);
+        do_button(KEY_SHIFT, count);
     }
 }
 
-
-static void
-shift_right_cb(GtkWidget *widget)
-{
-    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
-                                                   "shiftcount"));
-
-    if (v->started) {
-        do_button(&buttons[KEY_SHIFT], -count);
-    }
-}
 
 /*ARGSUSED*/
 static void 
@@ -2378,45 +2418,15 @@ show_registers_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
 static void
 arithmetic_mode_cb(GtkWidget *widget)
 {
-    struct exprm_state *e;
-    
-    if (!v->started) {
-        return;
+    enum syntax mode;
+
+    mode = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)) ? EXPRS : NPA;
+    if (v->started) {
+        ui_set_syntax_mode(mode);
     }
-
-    /* TODO: Always do clear things when mode is changed. */
-
-    v->syntax = v->syntax ^ 1;
-    switch (v->syntax) {
-        case NPA:
-            v->noparens = 0;
-            MPstr_to_num("0", DEC, v->MPdisp_val);
-            show_display(v->MPdisp_val);
-            ui_set_statusbar(_("Activated no operator precedence mode"), "");
-            clear_undo_history();
-            break;
-
-        case EXPRS:
-            e = get_state();
-            MPstr_to_num("0", DEC, e->ans);
-            exp_del();
-            show_display(e->ans);
-            ui_set_statusbar(
-                 _("Activated expression mode with operator precedence"), "");
-            break;
-        
-        default:
-            assert(0);
-    }
-    set_resource(R_SYNTAX, Rsstr[v->syntax]);
-    ui_set_mode(v->modetype);
-    // FIXME: We can't allow the display to be editable. See bug #326938
-    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
-                               (v->syntax == EXPRS));
 }
 
 
@@ -2713,14 +2723,18 @@ create_kframe()
     CONNECT_SIGNAL(show_registers_cb);
     CONNECT_SIGNAL(accuracy_radio_cb);
     CONNECT_SIGNAL(accuracy_other_cb);
+    CONNECT_SIGNAL(constant_menu_cb);
+    CONNECT_SIGNAL(function_menu_cb);
+    CONNECT_SIGNAL(store_menu_cb);
+    CONNECT_SIGNAL(recall_menu_cb);
+    CONNECT_SIGNAL(exchange_menu_cb);
     CONNECT_SIGNAL(arithmetic_mode_cb);
     CONNECT_SIGNAL(mouse_button_cb);
     CONNECT_SIGNAL(display_focus_in_cb);
     CONNECT_SIGNAL(display_focus_out_cb);
     /* Detect when populating the right-click menu to enable pasting */
     CONNECT_SIGNAL(buffer_populate_popup_cb);
-    CONNECT_SIGNAL(shift_left_cb);
-    CONNECT_SIGNAL(shift_right_cb);
+    CONNECT_SIGNAL(shift_cb);
     CONNECT_SIGNAL(bit_toggle_cb);
     CONNECT_SIGNAL(aframe_delete_cb);
     CONNECT_SIGNAL(aframe_ok_cb);
@@ -2737,6 +2751,8 @@ create_kframe()
     CONNECT_SIGNAL(edit_constants_response_cb);
     CONNECT_SIGNAL(edit_functions_response_cb);
 
+    X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
+    X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     X->kframe       = GET_WIDGET("calc_window");
     X->aframe       = GET_WIDGET("ascii_window");
     X->aframe_ch    = GET_WIDGET("ascii_entry");
@@ -2752,6 +2768,7 @@ create_kframe()
     X->sci_panel    = GET_WIDGET("scientific_panel");
     X->adv_panel    = GET_WIDGET("advanced_panel");
     X->fin_panel    = GET_WIDGET("financial_panel");
+    X->bit_panel    = GET_WIDGET("bit_panel");
     X->clear_buttons[0] = GET_WIDGET("calc_clear_simple_button");
     X->clear_buttons[1] = GET_WIDGET("calc_clear_advanced_button");   
     X->mode_panel   = GET_WIDGET("mode_panel");
@@ -2765,19 +2782,14 @@ create_kframe()
     X->disp[0]      = GET_WIDGET("engineering_radio");
     X->disp[1]      = GET_WIDGET("fixed_point_radio");
     X->disp[2]      = GET_WIDGET("scientific_radio");
-    X->inv          = GET_WIDGET("inverse_check");
-    X->hyp          = GET_WIDGET("hyperbolic_check");
-    X->bit_panel    = GET_WIDGET("bit_panel");
+    X->inverse_toggle    = GET_WIDGET("inverse_check");
+    X->hyperbolic_toggle = GET_WIDGET("hyperbolic_check");
     X->statusbar    = GET_WIDGET("statusbar");
-    X->undo         = GET_WIDGET("undo_menu");
-    X->redo         = GET_WIDGET("redo_menu");
-    X->copy         = GET_WIDGET("copy_menu");
-    X->paste        = GET_WIDGET("paste_menu");
     for (i = 0; i < 16; i++) {
         SNPRINTF(name, MAXLINE, "calc_%x_button", i);
         X->digit_buttons[i] = GET_WIDGET(name);
     }
-    for (i = 0; i < MAXREGS; i++) {
+    for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(name, MAXLINE, "register_entry_%d", i);
         X->regs[i] = GET_WIDGET(name);
     }
@@ -2792,10 +2804,57 @@ create_kframe()
         
         gtk_size_group_add_widget(size_group, X->buttons[i]);
         
-        g_object_set_data(G_OBJECT(X->buttons[i]), "button", 
-                          &buttons[button_widgets[i].key]);
-        g_object_set_data(G_OBJECT(X->buttons[i]), "mtype", 
-                          GINT_TO_POINTER(button_widgets[i].mtype));
+        g_object_set_data(G_OBJECT(X->buttons[i]), "calc_function", 
+                          GINT_TO_POINTER(button_widgets[i].key));
+    }
+
+    /* Make popup buttons */
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_accuracy_button")),
+                      "calc_menu", GET_WIDGET("accuracy_popup"));
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_shift_left_button")),
+                      "calc_menu", GET_WIDGET("left_shift_popup"));
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_shift_right_button")),
+                      "calc_menu", GET_WIDGET("right_shift_popup"));
+    
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_constants_button")),
+                      "calc_menu", GET_WIDGET("constants_popup"));
+    for (i = 0; i < MAX_CONSTANTS; i++) {
+        SNPRINTF(name, MAXLINE, "constant_menu_item%d", i);
+        widget = GET_WIDGET(name);
+        g_object_set_data(G_OBJECT(widget), "constant_id", GINT_TO_POINTER(i));
+        X->constant_menu_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+    }
+
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_functions_button")),
+                      "calc_menu", GET_WIDGET("functions_popup"));
+    for (i = 0; i < MAX_FUNCTIONS; i++) {
+        SNPRINTF(name, MAXLINE, "function_menu_item%d", i);
+        widget = GET_WIDGET(name);
+        g_object_set_data(G_OBJECT(widget), "function_id", GINT_TO_POINTER(i));
+        X->function_menu_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+    }
+
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_store_button")),
+                      "calc_menu", GET_WIDGET("memory_store_popup"));
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_recall_button")),
+                      "calc_menu", GET_WIDGET("memory_recall_popup"));
+    g_object_set_data(G_OBJECT(GET_WIDGET("calc_exchange_button")),
+                      "calc_menu", GET_WIDGET("memory_exchange_popup"));
+    for (i = 0; i < MAX_REGISTERS; i++) {
+        SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
+        widget = GET_WIDGET(name);
+        g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
+        X->memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+        
+        SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
+        widget = GET_WIDGET(name);
+        g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
+        X->memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+        
+        SNPRINTF(name, MAXLINE, "exchange_menu_item%d", i);
+        widget = GET_WIDGET(name);
+        g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
+        X->memory_exchange_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 
     /* Load bit panel */
@@ -2848,7 +2907,7 @@ create_kframe()
                                     GTK_RESPONSE_ACCEPT);
 
     /* Make constant tree model */
-    X->constants_model = create_cf_model(M_CON, X->con_dialog);    
+    X->constants_model = create_constants_model();
     treeview = GET_WIDGET("edit_constants_treeview");
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), X->constants_model);
     gtk_tree_selection_set_mode(
@@ -2862,7 +2921,7 @@ create_kframe()
                   COLUMN_DESCRIPTION, TRUE);
 
     /* Make function tree model */
-    X->functions_model = create_cf_model(M_FUN, X->fun_dialog);
+    X->functions_model = create_functions_model();
     treeview = GET_WIDGET("edit_functions_treeview");
     gtk_dialog_set_default_response(GTK_DIALOG(X->fun_dialog), 
                                     GTK_RESPONSE_ACCEPT);
@@ -2919,7 +2978,7 @@ create_kframe()
                           "shiftcount", GINT_TO_POINTER(i));
         SNPRINTF(name, MAXLINE, "shift_right%d_menu", i);
         g_object_set_data(G_OBJECT(GET_WIDGET(name)),
-                          "shiftcount", GINT_TO_POINTER(i));
+                          "shiftcount", GINT_TO_POINTER(-i));
     }
     g_object_set_data(G_OBJECT(GET_WIDGET("view_basic_menu")),
                       "calcmode", GINT_TO_POINTER(BASIC));
@@ -2941,37 +3000,15 @@ create_kframe()
 }
 
 
-static GtkWidget *
-create_menu_item_with_markup(char *label, int menu_no, int index)
-{
-    GtkWidget *accel_label;
-    GtkWidget *menu_item;
-
-    accel_label = gtk_label_new(NULL); 
-    gtk_label_set_markup_with_mnemonic(GTK_LABEL(accel_label), label); 
-    gtk_misc_set_alignment(GTK_MISC(accel_label), 0.0, 0.5);
-    menu_item = gtk_menu_item_new(); 
-    gtk_container_add(GTK_CONTAINER(menu_item), accel_label);
-    gtk_widget_show(accel_label);
-    gtk_widget_show(menu_item);
-
-    g_object_set_data(G_OBJECT(menu_item), "button", X->mrec[menu_no]);
-    gtk_menu_shell_append(GTK_MENU_SHELL(X->menus[menu_no]), menu_item);
-
-    g_signal_connect(G_OBJECT(menu_item), "activate",
-                     G_CALLBACK(menu_proc_cb), GINT_TO_POINTER(index));
-    
-    return menu_item;
-}
-
-
 static void
 read_cfdefs()        /* Read constant/function definitions. */
 {
     int n;
 
-    for (n = 0; n < MAXCONFUN; n++) {
+    for (n = 0; n < MAX_CONSTANTS; n++) {
         get_constant(n);
+    }
+    for (n = 0; n < MAX_FUNCTIONS; n++) {
         STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
         get_function(n);
     }
@@ -2998,67 +3035,18 @@ ui_init(int *argc, char ***argv)
 void
 ui_load()
 {
-    int i, boolval;
-    GtkWidget *widget;
+    int boolval;
 
     read_cfdefs();
     
-    X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
-    X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
-    create_kframe();                     /* Create main gcalctool window. */
-
-    X->menus[M_ACC] = GET_WIDGET("accuracy_popup");
-    X->mrec[M_ACC] = &buttons[KEY_SET_ACCURACY];
-    X->menus[M_LSHF] = GET_WIDGET("left_shift_popup");
-    X->mrec[M_LSHF] = &buttons[KEY_SHIFT];
-    X->menus[M_RSHF] = GET_WIDGET("right_shift_popup");
-    X->mrec[M_RSHF] = &buttons[KEY_SHIFT];
-    
-    X->menus[M_CON] = GET_WIDGET("constants_popup");
-    X->mrec[M_CON] = &buttons[KEY_CONSTANT];
-    X->menus[M_FUN] = GET_WIDGET("functions_popup");
-    X->mrec[M_FUN] = &buttons[KEY_FUNCTION];
-    for (i = 0; i < MAXCONFUN; i++) {
-        X->constant_menu_items[i] = create_menu_item_with_markup("", M_CON, i);
-        X->function_menu_items[i] = create_menu_item_with_markup("", M_FUN, i);
-    }
-    
-    X->menus[M_STO] = GET_WIDGET("memory_store_popup");
-    X->mrec[M_STO] = &buttons[KEY_STORE];
-    X->menus[M_RCL] = GET_WIDGET("memory_recall_popup");
-    X->mrec[M_RCL] = &buttons[KEY_RECALL];
-    X->menus[M_EXCH] = GET_WIDGET("memory_exchange_popup");
-    X->mrec[M_EXCH] = &buttons[KEY_EXCHANGE];
-    for (i = 0; i < MAXREGS; i++) {
-        // FIXME: These labels should be replaced with GtkTreeModel labels
-        X->memory_store_items[i] = create_menu_item_with_markup("", M_STO, i);
-        X->memory_recall_items[i] = create_menu_item_with_markup("", M_RCL, i);
-        X->memory_exchange_items[i] = create_menu_item_with_markup("", M_EXCH, i);
-    }
-    
-    // This matches existing behaviour we can't do in Glade. But is it needed?
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_ACC]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_LSHF]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_RSHF]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_CON]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_FUN]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_STO]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_RCL]), 1);
-    gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_EXCH]), 1);
+    /* Create main gcalctool window. */
+    create_kframe();
 
     ui_set_show_thousands_seperator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
     ui_set_show_bitcalculating(v->bitcalculating_mode);
     
-    /* Use loaded Arithmetic Precedence mode setting. */
-    if (v->syntax == EXPRS) {
-        widget = GET_WIDGET("arithmetic_precedence_menu");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
-    } else {
-        widget = GET_WIDGET("ltr_precedence_menu");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
-    }
-
+    ui_set_syntax_mode(v->syntax);
     ui_set_display("0.00", FALSE);
     ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);

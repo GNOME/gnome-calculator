@@ -140,8 +140,9 @@ enum
 
 #define MAXACC         99         /* Max. number of digits after numeric point. */
 
-#define MAXCONFUN      10         /* Maximum number of constants/functions. */
-#define MAXREGS        10         /* Maximum number of memory registers. */
+#define MAX_CONSTANTS 10
+#define MAX_FUNCTIONS 10
+#define MAX_REGISTERS 10         /* Maximum number of memory registers. */
 #define MAXBITCALC     2          /* Choices for bitcalculating */
 
 #ifndef MIN
@@ -208,17 +209,17 @@ struct calcVars {                      /* Calctool variables and options. */
     char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
     const char *tsep;                  /* Locale specific thousands seperator. */
 
-    char fun_names[MAXREGS][MAXLINE];  /* Function names from .gcalctoolcf. */
-    char fun_vals[MAXREGS][MAXLINE];   /* Function defs from .gcalctoolcf. */
-    char con_names[MAXREGS][MAXLINE];  /* Selectable constant names. */
-    int MPcon_vals[MAXREGS][MP_SIZE];  /* Selectable constants. */
+    char fun_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
+    char fun_vals[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
+    char con_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
+    int MPcon_vals[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
 
     int MPdebug;                       /* If set, debug info. to stderr. */
     int MPerrors;                      /* If set, output errors to stderr. */
     int MPdisp_val[MP_SIZE];           /* Value of the current display. */
     int MPexpr_val[MP_SIZE];           /* Value of the current expression. */
     int MPlast_input[MP_SIZE];         /* Previous number input by user. */
-    int MPmvals[MAXREGS][MP_SIZE];     /* Memory register values. */
+    int MPmvals[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
     int MPresult[MP_SIZE];             /* Current calculator total value. */
     int MPimresult[MP_SIZE];           /* Current intermediate result. */
     int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */

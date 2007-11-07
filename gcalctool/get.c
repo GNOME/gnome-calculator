@@ -241,7 +241,7 @@ read_resources()    /* Read all possible resources from the database. */
         }
     }
 
-    for (i = 0; i < MAXREGS; i++) {
+    for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(key, MAXLINE, "register%d", i);
         if (get_str_resource(key, str)) {
             MPstr_to_num(str, DEC, v->MPmvals[i]);
