@@ -530,16 +530,12 @@ struct button buttons[NKEYS] = {
 void
 doerr(char *errmes)
 {
-    if (!v->started) {
-        return;
-    }
-
     switch (v->syntax) {
         case NPA:
             strncpy(v->display, errmes, MAXLINE - 1);
             v->display[MAXLINE - 1] = '\0';
             ui_set_error_state(TRUE);
-            ui_set_display(v->display, FALSE);
+            ui_set_display(v->display);
             ui_beep();
             break;
 

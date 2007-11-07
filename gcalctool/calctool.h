@@ -246,7 +246,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int show_tsep;     /* Set if the thousands seperator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
-    int started;       /* Set just before window is displayed. */
     int toclear;       /* Indicates if display should be cleared. */
     int warn_change_mode;    /* Should we warn user when changing modes? */
     int bitcalculating_mode;  /* 0 = no, else yes */

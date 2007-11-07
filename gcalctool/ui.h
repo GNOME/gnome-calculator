@@ -31,7 +31,8 @@ void ui_start();
 void ui_make_registers(void);
 void ui_set_undo_enabled(gboolean, gboolean);
 
-void ui_set_display(char *, gboolean);
+void ui_set_display(char *);
+gchar *ui_get_display(void);
 int ui_get_cursor(void);
 
 void ui_set_syntax_mode(enum syntax);

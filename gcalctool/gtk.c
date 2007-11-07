@@ -420,10 +420,10 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
     GtkWidget *rframe;                 /* Register window. */
-    GtkWidget *regs[MAX_REGISTERS];          /* Memory registers. */
+    GtkWidget *regs[MAX_REGISTERS];    /* Memory registers. */
 
     GtkWidget *spframe;                /* Set Precision window. */
-    GtkWidget *spframe_val;
+    GtkWidget *precision_spin;
 
     GtkWidget *buttons[NBUTTONS];
     GtkWidget *digit_buttons[16];
@@ -548,7 +548,7 @@ ui_set_accuracy(int accuracy)
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
     }
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->precision_spin), 
                               (double)accuracy);
 
     set_int_resource(R_ACCURACY, accuracy);
@@ -937,10 +937,6 @@ set_bit_panel()
 static void
 scroll_right()
 {
-    if (!v->started) {
-        return;
-    }
-
     if (GTK_WIDGET_VISIBLE(
                    GTK_SCROLLED_WINDOW(X->scrolledwindow)->hscrollbar)) {
         GtkAdjustment *set;
@@ -955,14 +951,9 @@ scroll_right()
 
 
 void
-ui_set_display(char *str, gboolean minimize_changes)
+ui_set_display(char *str)
 {
     char localized[MAX_LOCALIZED];
-    GtkTextIter start, end;
-    gchar *text;
-    gint diff;
-    gint len1, len2;
-    gboolean done;
 
     if (str == NULL || str[0] == '\0') {
         str = " ";
@@ -972,34 +963,8 @@ ui_set_display(char *str, gboolean minimize_changes)
             str = localized;
         }
     }
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
-    text = gtk_text_buffer_get_text(X->display_buffer, &start, &end, TRUE);
-    diff = strcmp (text, str);
-    if (diff != 0) {
-        len1 = strlen(text);
-        len2 = strlen(str);
-
-        done = FALSE;
-        if (minimize_changes) {
-            if (len1 < len2 && strncmp(text, str, len1) == 0) {
-                /* Text insertion */
-                gtk_text_buffer_insert(X->display_buffer, &end, str + len1, -1);
-                done = TRUE;
-            } else if (len1 > len2 && strncmp(text, str, len2) == 0) {
-               /* Text deletion */
-                gtk_text_buffer_get_iter_at_offset (X->display_buffer, &start, len2);
-                gtk_text_buffer_delete(X->display_buffer, &start, &end); 
-                done = TRUE;
-            }
-        }
- 
-        if (!done) {
-            gtk_text_buffer_delete(X->display_buffer, &start, &end);
-            gtk_text_buffer_insert(X->display_buffer, &end, str, -1);
-        }
-    }
+    gtk_text_buffer_set_text(X->display_buffer, str, -1);
     scroll_right();
-    g_free(text);
 }
 
 
@@ -1049,6 +1014,85 @@ ui_set_error_state(gboolean error)
     SET_MENUBAR_ITEM_STATE("show_registers_menu",  !v->error); 
     SET_MENUBAR_ITEM_STATE("arithmetic_precedence_menu", !v->error); 
     SET_MENUBAR_ITEM_STATE("about_menu",           !v->error);
+}
+
+
+void
+ui_beep()
+{
+    gdk_beep();
+}
+
+
+char *
+ui_get_localized_numeric_point(void)
+{
+    const char *decimal_point;
+
+    decimal_point = localeconv()->decimal_point;
+
+    return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
+}
+
+
+void
+ui_set_base(enum base_type base)
+{
+    int i, baseval = basevals[(int) base];
+    
+    v->base = base;
+
+    for (i = 0; i < 16; i++) {
+        gtk_widget_set_sensitive(X->digit_buttons[i], i < baseval);
+    }   
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->base[base]), 1);
+}
+
+
+void
+ui_set_registers_visible(gboolean visible)
+{
+    GtkWidget *menu;
+    ui_make_registers();
+
+    menu = GET_WIDGET("show_registers_menu");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);   
+
+    gtk_widget_realize(X->rframe);
+
+    if (visible) {
+        if (gdk_window_is_visible(X->rframe->window)) {
+            gdk_window_raise(X->rframe->window);
+            return;
+        }
+        ds_position_popup(X->kframe, X->rframe, DS_POPUP_ABOVE);
+        gtk_widget_show(X->rframe);
+    } else {
+        gtk_widget_hide(X->rframe);
+    }
+    
+    set_boolean_resource(R_REGS, visible);
+}
+
+
+gchar *
+ui_get_display(void)
+{
+    GtkTextIter start, end;
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);   
+    return gtk_text_buffer_get_text(X->display_buffer,
+                                    &start,
+                                    &end,
+                                    FALSE);
+}
+
+
+int
+ui_get_cursor(void)
+{
+    gint pos;
+    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
+    return pos;
 }
 
 
@@ -1198,6 +1242,31 @@ aframe_activate_cb(GtkWidget *entry)
 
 
 /*ARGSUSED*/
+static void
+rframe_response_cb(GtkWidget *dialog, int response_id)
+{
+    ui_set_registers_visible(FALSE);
+}
+
+
+static gboolean
+rframe_delete_cb(GtkWidget *dialog)
+{
+    rframe_response_cb(dialog, GTK_RESPONSE_OK);
+    return(TRUE);
+}
+
+
+/*ARGSUSED*/
+void
+disp_cb(GtkWidget *widget)
+{
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+        do_numtype((enum num_type) g_object_get_data(G_OBJECT(widget), "numeric_mode"));
+}
+
+
+/*ARGSUSED*/
 void
 base_cb(GtkWidget *widget)
 {
@@ -1211,12 +1280,6 @@ base_cb(GtkWidget *widget)
 }
 
 
-void
-ui_beep()
-{
-    gdk_beep();
-}
-
 static void do_button(int function, int arg)
 {
     struct exprm_state *e;
@@ -1227,7 +1290,7 @@ static void do_button(int function, int arg)
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
-                ui_set_display(v->fnum, TRUE);
+                ui_set_display(v->fnum);
             }
             break;
 
@@ -1723,30 +1786,6 @@ update_memory_menus()
 }
 
 
-/*ARGSUSED*/
-static void
-rframe_response_cb(GtkWidget *dialog, int response_id)
-{
-    ui_set_registers_visible(FALSE);
-}
-
-static gboolean
-rframe_delete_cb(GtkWidget *dialog)
-{
-    rframe_response_cb(dialog, GTK_RESPONSE_OK);
-    return(TRUE);
-}
-
-
-/*ARGSUSED*/
-void
-disp_cb(GtkWidget *widget)
-{
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_numtype((enum num_type) g_object_get_data(G_OBJECT(widget), "numeric_mode"));
-}
-
-
 static void
 get_constant(int n)
 {
@@ -1777,8 +1816,7 @@ get_display()              /* The Copy function key has been pressed. */
     if (gtk_text_buffer_get_selection_bounds(X->display_buffer, &start, &end) == TRUE) {
         string = gtk_text_buffer_get_text(X->display_buffer, &start, &end, FALSE);
     } else {
-        gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
-        string = gtk_text_buffer_get_text(X->display_buffer, &start, &end, FALSE);
+        string = ui_get_display();
     }
 
     if (v->shelf != NULL) {
@@ -1812,14 +1850,232 @@ get_function(int n)
 }
 
 
-char *
-ui_get_localized_numeric_point(void)
+static gboolean
+check_for_localized_numeric_point(int keyval)
 {
-    const char *decimal_point;
+    gchar outbuf[10];        /* Minumum size 6. */
+    gunichar ch;
 
-    decimal_point = localeconv()->decimal_point;
+    ch = gdk_keyval_to_unicode(keyval);
+    g_return_val_if_fail(g_unichar_validate(ch), FALSE);
 
-    return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
+    outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
+
+    return(strcmp(outbuf, X->lnp) == 0);
+}
+
+
+/*ARGSUSED*/
+static void 
+help_cb(GtkWidget *widget)
+{
+    help_display();
+}
+
+
+/*ARGSUSED*/
+void
+hyp_cb(GtkWidget *widget)
+{
+    ui_update_trig_mode();
+}
+
+
+/*ARGSUSED*/
+void
+inv_cb(GtkWidget *widget)
+{
+    ui_update_trig_mode();
+}
+
+
+/*ARGSUSED*/
+static gboolean
+display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
+{
+    if (v->syntax == EXPRS) {
+        exp_replace(ui_get_display());
+    }
+    return(FALSE);
+}
+
+
+/*ARGSUSED*/
+static gboolean
+display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
+{
+    v->ghost_zero = 0;
+    return(FALSE);
+}
+
+
+/*ARGSUSED*/
+static void
+menu_pos_func(GtkMenu *menu, gint *x, gint *y,
+              gboolean *push_in, gpointer user_data)
+{
+    GdkPoint *loc = (GdkPoint *) user_data;
+
+    *x = loc->x;
+    *y = loc->y;
+}
+
+
+/*ARGSUSED*/
+static void
+button_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    int function;
+    GtkWidget *menu;
+    GdkPoint loc;
+    
+    function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
+                                                 "calc_function"));
+    menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
+    
+    if (menu == NULL) {
+        do_button(function, 0);
+    } else {
+        /* If gcalctool is being driven by gok, the on-screen keyboard 
+         * assistive technology, it's possible that the event returned by 
+         * gtk_get_current_event() is NULL. If this is the case, we need 
+         * to fudge the popping up on the menu associated with this menu 
+         * button.
+         */
+
+        update_constants_menu();
+        update_functions_menu();
+        update_memory_menus();
+
+        if (event == NULL) {
+            gdk_window_get_origin(widget->window, &loc.x, &loc.y);
+            loc.x += widget->allocation.x;
+            loc.y += widget->allocation.y;
+            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
+                           (gpointer) &loc, 0, gtk_get_current_event_time());
+        } else if (event->button == 1) {
+            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+                           event->button, event->time);
+        }
+    }
+}
+
+
+/*ARGSUSED*/
+static void
+select_display_entry(int offset)
+{
+    GtkTextIter iter;
+    
+    gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, offset);
+    gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    gtk_widget_grab_focus(X->display_item);
+}
+
+
+/*ARGSUSED*/
+static gboolean
+kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
+{
+    int i, j, state;
+    GtkWidget *button;
+
+    if (check_for_localized_numeric_point(event->keyval) == TRUE) {
+        event->state = 0;
+        event->keyval = GDK_KP_Decimal;
+    }
+    
+    state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
+
+    /* Accuracy shortcuts */
+    if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC) {
+        switch (event->keyval) {
+            case GDK_0:
+                do_accuracy(0);
+                return (TRUE);
+            case GDK_1:
+                do_accuracy(1);
+                return (TRUE);
+            case GDK_2:
+                do_accuracy(2);
+                return (TRUE);
+            case GDK_3:
+                do_accuracy(3);
+                return (TRUE);
+            case GDK_4:
+                do_accuracy(4);
+                return (TRUE);
+            case GDK_5:
+                do_accuracy(5);
+                return (TRUE);
+            case GDK_6:
+                do_accuracy(6);
+                return (TRUE);
+            case GDK_7:
+                do_accuracy(7);
+                return (TRUE);
+            case GDK_8:
+                do_accuracy(8);
+                return (TRUE);
+            case GDK_9:
+                do_accuracy(9);
+                return (TRUE);
+        }
+    }
+    
+    /* Connect home and end keys to move into the display entry */
+    if (event->keyval == GDK_Home) {
+        select_display_entry(0);
+        return (TRUE);
+    } else if (event->keyval == GDK_End) {
+        select_display_entry(-1);
+        return (TRUE);
+    }
+
+    for (i = 0; i < NBUTTONS; i++) {
+        button = X->buttons[i];
+        
+        /* Check any parent widgets are visible */
+        if (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
+            !GTK_WIDGET_VISIBLE(button) || !GTK_WIDGET_IS_SENSITIVE(button)) {
+            continue;
+        }
+
+        j = 0;
+        while (button_widgets[i].accelerator_keys[j] != 0) {
+            if (button_widgets[i].accelerator_keys[j] == event->keyval &&
+                (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
+                button_cb(button, NULL);
+                return(TRUE);
+            }
+            j++;
+        }
+    }
+
+    return(FALSE);
+}
+
+
+/*ARGSUSED*/
+static void 
+edit_cb(GtkWidget *widget)
+{
+    gboolean can_paste, can_copy;
+    
+    can_copy = gtk_text_buffer_get_has_selection(X->display_buffer);
+    can_paste = gtk_clipboard_wait_is_text_available(
+                            gtk_clipboard_get(X->clipboard_atom));
+    
+    gtk_widget_set_sensitive(GET_WIDGET("copy_menu"), can_copy);
+    gtk_widget_set_sensitive(GET_WIDGET("paste_menu"), can_paste);
+}
+
+
+/*ARGSUSED*/
+static void 
+copy_cb(GtkWidget *widget)
+{
+    get_display();
 }
 
 
@@ -1907,283 +2163,6 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 }
 
 
-void
-ui_set_base(enum base_type base)
-{
-    int i, baseval = basevals[(int) base];
-    
-    v->base = base;
-
-    for (i = 0; i < 16; i++) {
-        gtk_widget_set_sensitive(X->digit_buttons[i], i < baseval);
-    }   
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->base[base]), 1);
-}
-
-
-void
-ui_set_registers_visible(gboolean visible)
-{
-    GtkWidget *menu;
-    ui_make_registers();
-
-    menu = GET_WIDGET("show_registers_menu");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);   
-
-    gtk_widget_realize(X->rframe);
-
-    if (visible) {
-        if (gdk_window_is_visible(X->rframe->window)) {
-            gdk_window_raise(X->rframe->window);
-            return;
-        }
-        ds_position_popup(X->kframe, X->rframe, DS_POPUP_ABOVE);
-        gtk_widget_show(X->rframe);
-    } else {
-        gtk_widget_hide(X->rframe);
-    }
-    
-    set_boolean_resource(R_REGS, visible);
-}
-
-
-/*ARGSUSED*/
-static void 
-help_cb(GtkWidget *widget)
-{
-    if (v->started)
-        help_display();
-}
-
-
-/*ARGSUSED*/
-void
-hyp_cb(GtkWidget *widget)
-{
-    ui_update_trig_mode();
-}
-
-
-/*ARGSUSED*/
-void
-inv_cb(GtkWidget *widget)
-{
-    ui_update_trig_mode();
-}
-
-
-static gboolean
-check_for_localized_numeric_point(int keyval)
-{
-    gchar outbuf[10];        /* Minumum size 6. */
-    gunichar ch;
-
-    ch = gdk_keyval_to_unicode(keyval);
-    g_return_val_if_fail(g_unichar_validate(ch), FALSE);
-
-    outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
-
-    return(strcmp(outbuf, X->lnp) == 0);
-}
-
-
-static void
-ui_parse_display()
-{
-    char *text;
-    GtkTextIter start, end;
-
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
-    
-    text = gtk_text_buffer_get_text(X->display_buffer,
-                                    &start,
-                                    &end,
-                                    FALSE);
-    exp_replace(text);
-}
-
-
-int
-ui_get_cursor(void)
-{
-    gint pos;
-    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
-    return pos;
-}
-
-
-/*ARGSUSED*/
-static gboolean
-display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
-{
-    if (v->syntax == EXPRS) {
-        ui_parse_display();
-    } 
-
-    return(FALSE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
-{
-    v->ghost_zero = 0;
-
-    return(FALSE);
-}
-
-
-/*ARGSUSED*/
-static void
-menu_pos_func(GtkMenu *menu, gint *x, gint *y,
-              gboolean *push_in, gpointer user_data)
-{
-    GdkPoint *loc = (GdkPoint *) user_data;
-
-    *x = loc->x;
-    *y = loc->y;
-}
-
-
-/*ARGSUSED*/
-static void
-button_cb(GtkWidget *widget, GdkEventButton *event)
-{
-    int function;
-    GtkWidget *menu;
-    GdkPoint loc;
-    
-    function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
-                                                 "calc_function"));
-    menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
-    
-    if (menu == NULL) {
-        do_button(function, 0);
-    } else {
-        /* If gcalctool is being driven by gok, the on-screen keyboard 
-         * assistive technology, it's possible that the event returned by 
-         * gtk_get_current_event() is NULL. If this is the case, we need 
-         * to fudge the popping up on the menu associated with this menu 
-         * button.
-         */
-
-        update_constants_menu();
-        update_functions_menu();
-        update_memory_menus();
-
-        if (event == NULL) {
-            gdk_window_get_origin(widget->window, &loc.x, &loc.y);
-            loc.x += widget->allocation.x;
-            loc.y += widget->allocation.y;
-            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
-                           (gpointer) &loc, 0, gtk_get_current_event_time());
-        } else if (event->button == 1) {
-            gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                           event->button, event->time);
-        }
-    }
-}
-
-
-/*ARGSUSED*/
-static void
-select_display_entry(int offset)
-{
-    GtkTextIter iter;
-    
-    gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, offset);
-    gtk_text_buffer_place_cursor(X->display_buffer, &iter);
-    gtk_widget_grab_focus(X->display_item);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
-{
-    int i, j, state;
-    GtkWidget *button;
-
-    if (check_for_localized_numeric_point(event->keyval) == TRUE) {
-        event->state = 0;
-        event->keyval = GDK_KP_Decimal;
-    }
-    
-    state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
-
-    /* Accuracy shortcuts */
-    if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC)
-    {
-        switch (event->keyval) {
-            case GDK_0:
-                do_accuracy(0);
-                return (TRUE);
-            case GDK_1:
-                do_accuracy(1);
-                return (TRUE);
-            case GDK_2:
-                do_accuracy(2);
-                return (TRUE);
-            case GDK_3:
-                do_accuracy(3);
-                return (TRUE);
-            case GDK_4:
-                do_accuracy(4);
-                return (TRUE);
-            case GDK_5:
-                do_accuracy(5);
-                return (TRUE);
-            case GDK_6:
-                do_accuracy(6);
-                return (TRUE);
-            case GDK_7:
-                do_accuracy(7);
-                return (TRUE);
-            case GDK_8:
-                do_accuracy(8);
-                return (TRUE);
-            case GDK_9:
-                do_accuracy(9);
-                return (TRUE);
-        }
-    }
-    
-    /* Connect home and end keys to move into the display entry */
-    if (event->keyval == GDK_Home)
-    {
-        select_display_entry(0);
-        return (TRUE);
-    } else if (event->keyval == GDK_End)
-    {
-        select_display_entry(-1);
-        return (TRUE);
-    }
-
-    for (i = 0; i < NBUTTONS; i++) {
-        button = X->buttons[i];
-        
-        /* Check any parent widgets are visible */
-        if (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
-            !GTK_WIDGET_VISIBLE(button) || !GTK_WIDGET_IS_SENSITIVE(button)) {
-            continue;
-        }
-
-        j = 0;
-        while (button_widgets[i].accelerator_keys[j] != 0) {
-            if (button_widgets[i].accelerator_keys[j] == event->keyval &&
-                (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
-                button_cb(button, NULL);
-                return(TRUE);
-            }
-            j++;
-        }
-    }
-
-    return(FALSE);
-}
-
-
 /*ARGSUSED*/
 static gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
@@ -2197,79 +2176,9 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 }
 
 
-static void
-set_win_position()
-{
-    int intval, screen_height, screen_width;
-    int x = 0, y = 0;
-
-    screen_width = gdk_screen_get_width(gdk_screen_get_default());
-    screen_height = gdk_screen_get_height(gdk_screen_get_default());
-
-    if (get_int_resource(R_XPOS, &intval)) {
-        x = intval;
-        if (x < 0 || x > screen_width) {
-            x = 0;
-        }
-    }
-
-    if (get_int_resource(R_YPOS, &intval)) {
-        y = intval;
-        if (y < 0 || y > screen_height) {
-            y = 0;
-        }
-    }
-
-    gtk_window_move(GTK_WINDOW(X->kframe), x, y);
-}
-
-static void
-show_ascii_frame()      /* Display ASCII popup. */
-{
-    if (!GTK_WIDGET_VISIBLE(X->aframe)) {
-        ds_position_popup(X->kframe, X->aframe, DS_POPUP_LEFT);
-    }
-    gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->aframe_ch));
-    gtk_widget_show(X->aframe);
-}
-
-
-static void
-show_precision_frame()      /* Display Set Precision popup. */
-{
-    if (!GTK_WIDGET_VISIBLE(X->spframe)) {
-        ds_position_popup(X->kframe, X->spframe, DS_POPUP_LEFT);
-    }
-    
-    gtk_window_set_focus(GTK_WINDOW(X->spframe), GTK_WIDGET(X->spframe_val));
-    gtk_widget_show(X->spframe);
-}
-
-
-/* Handle menu bar menu selection. */
-
 /*ARGSUSED*/
 static void 
-edit_cb(GtkWidget *widget)
-{
-    gboolean can_paste;
-    gboolean can_copy;
-    
-    if (!v->started) {
-        return;
-    }
-    
-    can_copy = gtk_text_buffer_get_has_selection(X->display_buffer);
-    can_paste = gtk_clipboard_wait_is_text_available(
-                            gtk_clipboard_get(X->clipboard_atom));
-    
-    gtk_widget_set_sensitive(GET_WIDGET("copy_menu"), can_copy);
-    gtk_widget_set_sensitive(GET_WIDGET("paste_menu"), can_paste);
-}
-
-
-static void
-handle_selection()  /* Handle the GET function key being pressed. */
+paste_cb(GtkWidget *widget)
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X->clipboard_atom),
                                get_proc, NULL);
@@ -2278,29 +2187,9 @@ handle_selection()  /* Handle the GET function key being pressed. */
 
 /*ARGSUSED*/
 static void 
-popup_paste_cb(GtkMenuItem *menuitem)
+popup_paste_cb(GtkWidget *menu)
 {
-    handle_selection();
-}
-
-
-/*ARGSUSED*/
-static void 
-copy_cb(GtkWidget *widget)
-{
-    if (v->started) {
-        get_display();
-    }
-}
-
-
-/*ARGSUSED*/
-static void 
-paste_cb(GtkWidget *widget)
-{
-    if (v->started) {
-        handle_selection();
-    }
+    paste_cb(menu);
 }
 
 
@@ -2308,10 +2197,8 @@ paste_cb(GtkWidget *widget)
 static void
 undo_cb(GtkWidget *widget)
 {
-    if (v->started) {
-        perform_undo();
-        refresh_display();
-    }
+    perform_undo();
+    refresh_display();
 }
 
 
@@ -2319,13 +2206,12 @@ undo_cb(GtkWidget *widget)
 static void
 redo_cb(GtkWidget *widget)
 {
-    if (v->started) {
-        perform_redo();
-        refresh_display();
-    }
+    perform_redo();
+    refresh_display();
 }
 
 
+//FIXME
 /*ARGSUSED*/
 static void
 for_each_menu(GtkWidget *widget, gpointer data)
@@ -2358,9 +2244,11 @@ buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu)
 static void
 insert_ascii_cb(GtkWidget *widget)
 {
-    if (v->started) {
-        show_ascii_frame();
+    if (!GTK_WIDGET_VISIBLE(X->aframe)) {
+        ds_position_popup(X->kframe, X->aframe, DS_POPUP_LEFT);
     }
+    gtk_window_set_focus(GTK_WINDOW(X->kframe), GTK_WIDGET(X->aframe_ch));
+    gtk_widget_show(X->aframe);
 }
 
 
@@ -2369,9 +2257,7 @@ shift_cb(GtkWidget *widget)
 {
     int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
                                                    "shiftcount"));
-    if (v->started) {
-        do_button(KEY_SHIFT, count);
-    }
+    do_button(KEY_SHIFT, count);
 }
 
 
@@ -2379,12 +2265,9 @@ shift_cb(GtkWidget *widget)
 static void 
 show_bitcalculating_cb(GtkWidget *widget)
 {
-    gboolean visible;
-    
+    gboolean visible;  
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    if (v->started) {
-        ui_set_show_bitcalculating(visible);
-    }
+    ui_set_show_bitcalculating(visible);
 }
 
 
@@ -2392,12 +2275,9 @@ show_bitcalculating_cb(GtkWidget *widget)
 static void
 show_registers_cb(GtkWidget *widget)
 {
-    gboolean visible;
-    
+    gboolean visible;    
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));   
-    if (v->started) {
-        ui_set_registers_visible(visible);
-    }
+    ui_set_registers_visible(visible);
 }
 
 
@@ -2405,11 +2285,8 @@ static void
 arithmetic_mode_cb(GtkWidget *widget)
 {
     enum syntax mode;
-
     mode = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)) ? EXPRS : NPA;
-    if (v->started) {
-        ui_set_syntax_mode(mode);
-    }
+    ui_set_syntax_mode(mode);
 }
 
 
@@ -2423,10 +2300,6 @@ mode_radio_cb(GtkWidget *menu)
     int complete = 0;     /* Set if the user has completed a calculation. */
 
     if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu))) {
-        return;
-    }
-
-    if (!v->started) {
         return;
     }
 
@@ -2487,11 +2360,8 @@ static void
 accuracy_radio_cb(GtkWidget *widget)
 {
     int count;
-    
     count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "accuracy"));
-    
-    if (v->started && 
-        gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
         do_accuracy(count);
     }
 }
@@ -2501,9 +2371,11 @@ accuracy_radio_cb(GtkWidget *widget)
 static void
 accuracy_other_cb(GtkWidget *widget)
 {
-    if (v->started) {
-        show_precision_frame();
-    }
+    if (!GTK_WIDGET_VISIBLE(X->spframe)) {
+        ds_position_popup(X->kframe, X->spframe, DS_POPUP_LEFT);
+    }    
+    gtk_window_set_focus(GTK_WINDOW(X->spframe), GTK_WIDGET(X->precision_spin));
+    gtk_widget_show(X->spframe);
 }
 
 
@@ -2511,13 +2383,10 @@ accuracy_other_cb(GtkWidget *widget)
 static void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
-    gboolean visible;
-    
+    gboolean visible;    
     visible = gtk_check_menu_item_get_active(
                   GTK_CHECK_MENU_ITEM(widget));
-    if (v->started) {
-        ui_set_show_trailing_zeroes(visible);
-    }
+    ui_set_show_trailing_zeroes(visible);
 }
 
 
@@ -2535,7 +2404,7 @@ spframe_response_cb(GtkWidget *dialog, gint response_id)
 {
     int val;
     if (response_id == GTK_RESPONSE_OK) {
-        val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
+        val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->precision_spin));
         ui_set_accuracy(val);
     }
     
@@ -2576,9 +2445,7 @@ show_thousands_separator_cb(GtkWidget *widget)
     gboolean visible;
     
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    if (v->started) {
-        ui_set_show_thousands_seperator(visible);
-    }
+    ui_set_show_thousands_seperator(visible);
 }
 
 
@@ -2595,6 +2462,33 @@ static void
 edit_functions_cb(GtkMenuItem *item)
 {
     gtk_widget_show(X->fun_dialog);
+}
+
+
+static void
+set_win_position()
+{
+    int intval, screen_height, screen_width;
+    int x = 0, y = 0;
+
+    screen_width = gdk_screen_get_width(gdk_screen_get_default());
+    screen_height = gdk_screen_get_height(gdk_screen_get_default());
+
+    if (get_int_resource(R_XPOS, &intval)) {
+        x = intval;
+        if (x < 0 || x > screen_width) {
+            x = 0;
+        }
+    }
+
+    if (get_int_resource(R_YPOS, &intval)) {
+        y = intval;
+        if (y < 0 || y > screen_height) {
+            y = 0;
+        }
+    }
+
+    gtk_window_move(GTK_WINDOW(X->kframe), x, y);
 }
 
 
@@ -2689,7 +2583,7 @@ create_kframe()
     X->aframe       = GET_WIDGET("ascii_dialog");
     X->aframe_ch    = GET_WIDGET("ascii_entry");
     X->spframe      = GET_WIDGET("precision_dialog");
-    X->spframe_val  = GET_WIDGET("spframe_spin");
+    X->precision_spin  = GET_WIDGET("spframe_spin");
     X->rframe       = GET_WIDGET("register_dialog");
     X->con_dialog   = GET_WIDGET("edit_constants_dialog");
     X->fun_dialog   = GET_WIDGET("edit_functions_dialog");
@@ -2832,7 +2726,7 @@ create_kframe()
                                  GTK_WINDOW(X->kframe));
 
     /* Can't set max length for spin buttons in Glade 2 */
-    gtk_entry_set_max_length(GTK_ENTRY(X->spframe_val), 2);
+    gtk_entry_set_max_length(GTK_ENTRY(X->precision_spin), 2);
 
     gtk_dialog_set_default_response(GTK_DIALOG(X->con_dialog), 
                                     GTK_RESPONSE_ACCEPT);
@@ -2979,7 +2873,7 @@ ui_load()
     ui_set_show_bitcalculating(v->bitcalculating_mode);
     
     ui_set_syntax_mode(v->syntax);
-    ui_set_display("0.00", FALSE);
+    ui_set_display("0.00");
     ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);
     ui_set_base(v->base);
@@ -3007,7 +2901,6 @@ ui_start()
 {
     struct exprm_state *e;
     
-    v->started = 1;
     ui_set_base(v->base);
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->dtype);

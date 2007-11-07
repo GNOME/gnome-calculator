@@ -848,7 +848,7 @@ do_clear()       /* Clear the calculator display and re-initialise. */
 {
     clear_display(TRUE);
     if (v->error) {
-        ui_set_display("", FALSE);
+        ui_set_display("");
     }
     initialise();
 }
@@ -954,12 +954,12 @@ do_delete()     /* Remove the last numeric character typed. */
         v->pointed = 0;
     }
 
-    ui_set_display(v->display, TRUE);
+    ui_set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
         STRCPY(v->fnum, v->display);
-        ui_set_display(v->fnum, FALSE);
+        ui_set_display(v->fnum);
     }
 }
 
@@ -1025,7 +1025,7 @@ do_expno()           /* Get exponential number. */
     v->toclear = 0;
     v->key_exp = 1;
     v->exp_posn = strchr(v->display, '+');
-    ui_set_display(v->display, FALSE);
+    ui_set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1155,7 +1155,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
              } else {
                  *v->exp_posn = '+';
              }
-             ui_set_display(v->display, FALSE);
+             ui_set_display(v->display);
              MPstr_to_num(v->display, v->base, s);
              v->key_exp = 0;
          } else {
@@ -1199,7 +1199,7 @@ do_number()
         SNPRINTF(v->display+offset, MAXLINE-offset, "%s", buttons[v->current].symname);
     }
 
-    ui_set_display(v->display, TRUE);
+    ui_set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
     v->new_input = 1;
 }
@@ -1397,7 +1397,7 @@ do_point()                   /* Handle numeric point. */
         }
         v->pointed = 1;
     }
-    ui_set_display(v->display, FALSE);
+    ui_set_display(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 

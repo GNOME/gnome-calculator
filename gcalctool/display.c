@@ -129,7 +129,7 @@ clear_display(int initialise)
     mpcim(&i, v->MPdisp_val);
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
-    ui_set_display(v->display, FALSE);
+    ui_set_display(v->display);
     v->ghost_zero = 1;
 
     if (initialise == TRUE) {
@@ -531,7 +531,7 @@ paren_disp(int key)
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
     v->show_paren = 1;       /* Hack to get ui_set_display to really display it. */
-    ui_set_display(&v->display[n], FALSE);
+    ui_set_display(&v->display[n]);
     v->show_paren = 0;
 }
 
@@ -563,7 +563,7 @@ show_display(int *MPval)
 {
     if (!v->error) {
         STRNCPY(v->display, make_number(MPval, v->base, FALSE), MAXLINE - 1);
-        ui_set_display(v->display, FALSE);
+        ui_set_display(v->display);
     }
 }
 
@@ -608,7 +608,7 @@ refresh_display()
                         str_replace(&str, reg, reg_val);
                     }
                 }
-                ui_set_display(str, FALSE);
+                ui_set_display(str);
                 free(str);
                 v->ghost_zero = 0;
             } else {
