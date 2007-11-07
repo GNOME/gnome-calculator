@@ -547,6 +547,14 @@ ui_set_accuracy(int accuracy)
         widget = GET_WIDGET(text);
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
     }
+
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
+                              (double)accuracy);
+
+    set_int_resource(R_ACCURACY, accuracy);
+    
+    ui_make_registers();
+    refresh_display();
 }
 
 
@@ -1157,38 +1165,35 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
 
 /*ARGSUSED*/
 static void
-aframe_cancel_cb(GtkButton *button, gpointer user_data)
-{
-    gtk_widget_hide(X->aframe);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-aframe_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
-{
-    g_return_val_if_fail(GTK_IS_WIDGET(widget), FALSE);
-
-    if (event->keyval == GDK_Escape) {
-        gtk_widget_hide(X->aframe);
-    }    
-
-    return(FALSE);
-}
- 
-
-/*ARGSUSED*/
-static void
-aframe_ok_cb(GtkButton *button, gpointer user_data)
+aframe_response_cb(GtkWidget *dialog, gint response_id)
 {
     char *ch;
     int val;
 
-    ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
-    val = ch[0];
-    mpcim(&val, v->MPdisp_val);
-    show_display(v->MPdisp_val);
-    gtk_widget_hide(X->aframe);
+    if (response_id == GTK_RESPONSE_OK) {
+        ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
+        val = ch[0];
+        mpcim(&val, v->MPdisp_val);
+        show_display(v->MPdisp_val);
+    }
+    
+    gtk_widget_hide(dialog);
+}
+
+
+static gboolean
+aframe_delete_cb(GtkWidget *dialog)
+{
+    aframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    return(TRUE);
+}
+
+
+/*ARGSUSED*/
+static void
+aframe_activate_cb(GtkWidget *entry)
+{
+    aframe_response_cb(X->aframe, GTK_RESPONSE_OK);
 }
 
 
@@ -1720,38 +1725,15 @@ update_memory_menus()
 
 /*ARGSUSED*/
 static void
-rframe_response_cb(GtkDialog *dialog, int response)
+rframe_response_cb(GtkWidget *dialog, int response_id)
 {
     ui_set_registers_visible(FALSE);
 }
 
-
-/*ARGSUSED*/
 static gboolean
-aframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+rframe_delete_cb(GtkWidget *dialog)
 {
-    gtk_widget_hide(widget);
-
-    return(TRUE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-rframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    gtk_dialog_response(GTK_DIALOG(widget), GTK_RESPONSE_DELETE_EVENT);
-
-    return(TRUE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-spframe_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer user_data)
-{
-    gtk_widget_hide(X->spframe);
-
+    rframe_response_cb(dialog, GTK_RESPONSE_OK);
     return(TRUE);
 }
 
@@ -2258,6 +2240,7 @@ show_precision_frame()      /* Display Set Precision popup. */
     if (!GTK_WIDGET_VISIBLE(X->spframe)) {
         ds_position_popup(X->kframe, X->spframe, DS_POPUP_LEFT);
     }
+    
     gtk_window_set_focus(GTK_WINDOW(X->spframe), GTK_WIDGET(X->spframe_val));
     gtk_widget_show(X->spframe);
 }
@@ -2547,46 +2530,32 @@ quit_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
 static void
-spframe_cancel_cb(GtkButton *button)
+spframe_response_cb(GtkWidget *dialog, gint response_id)
 {
-    gtk_widget_hide(X->spframe);
+    int val;
+    if (response_id == GTK_RESPONSE_OK) {
+        val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
+        ui_set_accuracy(val);
+    }
+    
+    gtk_widget_hide(dialog);
 }
 
 
-/*ARGSUSED*/
 static gboolean
-spframe_key_cb(GtkWidget *widget, GdkEventKey *event)
+spframe_delete_cb(GtkWidget *dialog)
 {
-    if (event->keyval == GDK_minus) {
-        ui_set_statusbar(_("Accuracy value out of range"),
-                         "gtk-dialog-error");
-        ui_beep();
-    } else if (event->keyval == GDK_Escape) {
-        gtk_widget_hide(X->spframe);
-    }    
-
-    return(FALSE);
+    spframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    return(TRUE);
 }
 
 
 /*ARGSUSED*/
 static void
-spframe_ok_cb(GtkButton *button)
+spframe_activate_cb(GtkWidget *spin)
 {
-    int val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->spframe_val));
-
-    v->accuracy = val;
-
-    set_int_resource(R_ACCURACY, v->accuracy);
-
-    ui_set_accuracy(v->accuracy);
-
-    ui_make_registers();
-    refresh_display();
-
-    gtk_widget_hide(X->spframe);
+    spframe_response_cb(X->spframe, GTK_RESPONSE_OK);
 }
 
 
@@ -2597,41 +2566,6 @@ trig_cb(GtkWidget *widget)
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
         do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
                                                        "trig_mode"));
-}
-
-
-void
-ui_start()
-{
-    struct exprm_state *e;
-    
-    v->started = 1;
-    ui_set_base(v->base);
-    ui_set_trigonometric_mode(v->ttype);
-    ui_set_numeric_mode(v->dtype);
-
-    gtk_widget_show(X->kframe);
-
-    switch (v->syntax) { 
-        case NPA:
-            break;
-
-        case EXPRS:
-            /* Init expression mode.
-             * This must be executed after do_base is called at init.
-             * FIXME: The init code here is duplicated elsewhere.
-             */
-            e = get_state();
-            MPstr_to_num("0", DEC, e->ans);
-            exp_del();
-            show_display(e->ans);
-            break;
-
-        default:
-            assert(0);
-    }
-
-    gtk_main();
 }
 
 
@@ -2737,13 +2671,11 @@ create_kframe()
     CONNECT_SIGNAL(shift_cb);
     CONNECT_SIGNAL(bit_toggle_cb);
     CONNECT_SIGNAL(aframe_delete_cb);
-    CONNECT_SIGNAL(aframe_ok_cb);
-    CONNECT_SIGNAL(aframe_cancel_cb);
-    CONNECT_SIGNAL(aframe_key_cb);
+    CONNECT_SIGNAL(aframe_activate_cb);
+    CONNECT_SIGNAL(aframe_response_cb);
     CONNECT_SIGNAL(spframe_delete_cb);
-    CONNECT_SIGNAL(spframe_ok_cb);
-    CONNECT_SIGNAL(spframe_cancel_cb);
-    CONNECT_SIGNAL(spframe_key_cb);
+    CONNECT_SIGNAL(spframe_activate_cb);
+    CONNECT_SIGNAL(spframe_response_cb);
     CONNECT_SIGNAL(rframe_delete_cb);
     CONNECT_SIGNAL(rframe_response_cb);
     CONNECT_SIGNAL(edit_constants_cb);
@@ -2754,7 +2686,7 @@ create_kframe()
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     X->kframe       = GET_WIDGET("calc_window");
-    X->aframe       = GET_WIDGET("ascii_window");
+    X->aframe       = GET_WIDGET("ascii_dialog");
     X->aframe_ch    = GET_WIDGET("ascii_entry");
     X->spframe      = GET_WIDGET("precision_dialog");
     X->spframe_val  = GET_WIDGET("spframe_spin");
@@ -2899,10 +2831,9 @@ create_kframe()
     gtk_window_set_transient_for(GTK_WINDOW(X->con_dialog),
                                  GTK_WINDOW(X->kframe));
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(X->spframe_val), 
-                              (double) v->accuracy); // FIXME
+    /* Can't set max length for spin buttons in Glade 2 */
     gtk_entry_set_max_length(GTK_ENTRY(X->spframe_val), 2);
-    
+
     gtk_dialog_set_default_response(GTK_DIALOG(X->con_dialog), 
                                     GTK_RESPONSE_ACCEPT);
 
@@ -3032,6 +2963,7 @@ ui_init(int *argc, char ***argv)
     gtk_window_set_default_icon_name("gnome-calculator");
 }
 
+
 void
 ui_load()
 {
@@ -3068,4 +3000,38 @@ ui_load()
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
                              GTK_WIDGET(X->clear_buttons[1]));
     }
+}
+
+void
+ui_start()
+{
+    struct exprm_state *e;
+    
+    v->started = 1;
+    ui_set_base(v->base);
+    ui_set_trigonometric_mode(v->ttype);
+    ui_set_numeric_mode(v->dtype);
+
+    gtk_widget_show(X->kframe);
+
+    switch (v->syntax) { 
+        case NPA:
+            break;
+
+        case EXPRS:
+            /* Init expression mode.
+             * This must be executed after do_base is called at init.
+             * FIXME: The init code here is duplicated elsewhere.
+             */
+            e = get_state();
+            MPstr_to_num("0", DEC, e->ans);
+            exp_del();
+            show_display(e->ans);
+            break;
+
+        default:
+            assert(0);
+    }
+
+    gtk_main();
 }

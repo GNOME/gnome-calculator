@@ -6615,132 +6615,6 @@
   </child>
 </widget>
 
-<widget class="GtkWindow" id="ascii_window">
-  <property name="title" translatable="yes">Insert ASCII Value</property>
-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
-  <property name="window_position">GTK_WIN_POS_NONE</property>
-  <property name="modal">False</property>
-  <property name="resizable">False</property>
-  <property name="destroy_with_parent">False</property>
-  <property name="decorated">True</property>
-  <property name="skip_taskbar_hint">False</property>
-  <property name="skip_pager_hint">False</property>
-  <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
-  <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
-  <signal name="delete_event" handler="aframe_delete_cb" last_modification_time="Wed, 31 Oct 2007 04:41:44 GMT"/>
-  <signal name="key_press_event" handler="aframe_key_cb" last_modification_time="Wed, 31 Oct 2007 04:43:04 GMT"/>
-
-  <child>
-    <widget class="GtkVBox" id="vbox1">
-      <property name="border_width">12</property>
-      <property name="visible">True</property>
-      <property name="homogeneous">False</property>
-      <property name="spacing">12</property>
-
-      <child>
-	<widget class="GtkHBox" id="hbox21">
-	  <property name="visible">True</property>
-	  <property name="homogeneous">False</property>
-	  <property name="spacing">0</property>
-
-	  <child>
-	    <widget class="GtkLabel" id="label39">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Ch_aracter:</property>
-	      <property name="use_underline">True</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="mnemonic_widget">ascii_entry</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">False</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkEntry" id="ascii_entry">
-	      <property name="visible">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="editable">True</property>
-	      <property name="visibility">True</property>
-	      <property name="max_length">1</property>
-	      <property name="text" translatable="yes"></property>
-	      <property name="has_frame">True</property>
-	      <property name="invisible_char">●</property>
-	      <property name="activates_default">False</property>
-	      <signal name="activate" handler="aframe_ok_cb" last_modification_time="Wed, 31 Oct 2007 04:42:22 GMT"/>
-	    </widget>
-	    <packing>
-	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">False</property>
-	    </packing>
-	  </child>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">True</property>
-	  <property name="fill">True</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkHButtonBox" id="hbuttonbox1">
-	  <property name="visible">True</property>
-	  <property name="layout_style">GTK_BUTTONBOX_END</property>
-	  <property name="spacing">12</property>
-
-	  <child>
-	    <widget class="GtkButton" id="button1">
-	      <property name="visible">True</property>
-	      <property name="can_default">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="label">gtk-cancel</property>
-	      <property name="use_stock">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
-	      <signal name="clicked" handler="aframe_cancel_cb" last_modification_time="Wed, 31 Oct 2007 04:42:41 GMT"/>
-	    </widget>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="button2">
-	      <property name="visible">True</property>
-	      <property name="can_default">True</property>
-	      <property name="has_default">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="label" translatable="yes">_Insert</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
-	      <signal name="clicked" handler="aframe_ok_cb" last_modification_time="Wed, 31 Oct 2007 04:42:31 GMT"/>
-	    </widget>
-	  </child>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">True</property>
-	  <property name="fill">True</property>
-	</packing>
-      </child>
-    </widget>
-  </child>
-</widget>
-
 <widget class="GtkDialog" id="register_dialog">
   <property name="border_width">5</property>
   <property name="title" translatable="yes">Memory Registers</property>
@@ -7481,131 +7355,6 @@
   </child>
 </widget>
 
-<widget class="GtkWindow" id="precision_dialog">
-  <property name="title" translatable="yes">Set Precision</property>
-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
-  <property name="window_position">GTK_WIN_POS_NONE</property>
-  <property name="modal">False</property>
-  <property name="resizable">False</property>
-  <property name="destroy_with_parent">False</property>
-  <property name="decorated">True</property>
-  <property name="skip_taskbar_hint">False</property>
-  <property name="skip_pager_hint">False</property>
-  <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
-  <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
-  <signal name="delete_event" handler="spframe_delete_cb" last_modification_time="Wed, 31 Oct 2007 06:04:37 GMT"/>
-  <signal name="key_press_event" handler="spframe_key_cb" last_modification_time="Wed, 31 Oct 2007 06:04:33 GMT"/>
-
-  <child>
-    <widget class="GtkVBox" id="vbox3">
-      <property name="border_width">12</property>
-      <property name="visible">True</property>
-      <property name="homogeneous">False</property>
-      <property name="spacing">12</property>
-
-      <child>
-	<widget class="GtkHBox" id="hbox22">
-	  <property name="visible">True</property>
-	  <property name="homogeneous">False</property>
-	  <property name="spacing">6</property>
-
-	  <child>
-	    <widget class="GtkLabel" id="label52">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Significant _places:</property>
-	      <property name="use_underline">True</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="mnemonic_widget">spframe_spin</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">False</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkSpinButton" id="spframe_spin">
-	      <property name="visible">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="climb_rate">1</property>
-	      <property name="digits">0</property>
-	      <property name="numeric">True</property>
-	      <property name="update_policy">GTK_UPDATE_IF_VALID</property>
-	      <property name="snap_to_ticks">False</property>
-	      <property name="wrap">False</property>
-	      <property name="adjustment">1 0 99 1 10 10</property>
-	    </widget>
-	    <packing>
-	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">False</property>
-	    </packing>
-	  </child>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">True</property>
-	  <property name="fill">True</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkHButtonBox" id="hbuttonbox2">
-	  <property name="visible">True</property>
-	  <property name="layout_style">GTK_BUTTONBOX_END</property>
-	  <property name="spacing">12</property>
-
-	  <child>
-	    <widget class="GtkButton" id="button3">
-	      <property name="visible">True</property>
-	      <property name="can_default">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="label">gtk-cancel</property>
-	      <property name="use_stock">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
-	      <signal name="clicked" handler="spframe_cancel_cb" last_modification_time="Wed, 31 Oct 2007 06:04:24 GMT"/>
-	    </widget>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="button4">
-	      <property name="visible">True</property>
-	      <property name="can_default">True</property>
-	      <property name="has_default">True</property>
-	      <property name="can_focus">True</property>
-	      <property name="label" translatable="yes">_Set</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">True</property>
-	      <signal name="clicked" handler="spframe_ok_cb" last_modification_time="Wed, 31 Oct 2007 06:04:17 GMT"/>
-	    </widget>
-	  </child>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">True</property>
-	  <property name="fill">True</property>
-	</packing>
-      </child>
-    </widget>
-  </child>
-</widget>
-
 <widget class="GtkMenu" id="constants_popup">
 
   <child>
@@ -7622,7 +7371,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7631,7 +7380,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7640,7 +7389,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7649,7 +7398,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7658,7 +7407,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7667,7 +7416,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7676,7 +7425,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7685,7 +7434,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7694,7 +7443,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 
@@ -7703,7 +7452,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="constant_menu_cb" />
+      <signal name="activate" handler="constant_menu_cb"/>
     </widget>
   </child>
 </widget>
@@ -7718,13 +7467,13 @@
       <signal name="activate" handler="edit_functions_cb" last_modification_time="Wed, 31 Oct 2007 07:55:07 GMT"/>
     </widget>
   </child>
-  
+
   <child>
     <widget class="GtkMenuItem" id="function_menu_item0">
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7733,7 +7482,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7742,7 +7491,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7751,7 +7500,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7760,7 +7509,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7769,7 +7518,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7778,7 +7527,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7787,7 +7536,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7796,7 +7545,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 
@@ -7805,7 +7554,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="function_menu_cb" />
+      <signal name="activate" handler="function_menu_cb"/>
     </widget>
   </child>
 </widget>
@@ -7987,12 +7736,13 @@
 </widget>
 
 <widget class="GtkMenu" id="memory_store_popup">
+
   <child>
     <widget class="GtkMenuItem" id="store_menu_item0">
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8001,7 +7751,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8010,7 +7760,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8019,7 +7769,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8028,7 +7778,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8037,7 +7787,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8046,7 +7796,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8055,7 +7805,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8064,7 +7814,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 
@@ -8073,18 +7823,19 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="store_menu_cb" />
+      <signal name="activate" handler="store_menu_cb"/>
     </widget>
   </child>
 </widget>
 
 <widget class="GtkMenu" id="memory_exchange_popup">
+
   <child>
     <widget class="GtkMenuItem" id="exchange_menu_item0">
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8093,7 +7844,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8102,7 +7853,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8111,7 +7862,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8120,7 +7871,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8129,7 +7880,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8138,7 +7889,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8147,7 +7898,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8156,7 +7907,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 
@@ -8165,18 +7916,19 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="exchange_menu_cb" />
+      <signal name="activate" handler="exchange_menu_cb"/>
     </widget>
   </child>
 </widget>
 
 <widget class="GtkMenu" id="memory_recall_popup">
+
   <child>
     <widget class="GtkMenuItem" id="recall_menu_item0">
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8185,7 +7937,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8194,7 +7946,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8203,7 +7955,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8212,7 +7964,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8221,7 +7973,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8230,7 +7982,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8239,7 +7991,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8248,7 +8000,7 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
     </widget>
   </child>
 
@@ -8257,7 +8009,264 @@
       <property name="visible">True</property>
       <property name="label"></property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="recall_menu_cb" />
+      <signal name="activate" handler="recall_menu_cb"/>
+    </widget>
+  </child>
+</widget>
+
+<widget class="GtkDialog" id="ascii_dialog">
+  <property name="border_width">6</property>
+  <property name="title" translatable="yes">Insert ASCII Value</property>
+  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="window_position">GTK_WIN_POS_NONE</property>
+  <property name="modal">False</property>
+  <property name="resizable">False</property>
+  <property name="destroy_with_parent">False</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
+  <property name="urgency_hint">False</property>
+  <property name="has_separator">False</property>
+  <accessibility>
+    <atkproperty name="AtkObject::accessible_name" translatable="yes">Insert ASCII Value</atkproperty>
+  </accessibility>
+  <signal name="response" handler="aframe_response_cb" last_modification_time="Wed, 07 Nov 2007 06:27:37 GMT"/>
+  <signal name="delete_event" handler="aframe_delete_cb" last_modification_time="Wed, 07 Nov 2007 06:34:38 GMT"/>
+
+  <child internal-child="vbox">
+    <widget class="GtkVBox" id="dialog-vbox3">
+      <property name="visible">True</property>
+      <property name="homogeneous">False</property>
+      <property name="spacing">0</property>
+
+      <child internal-child="action_area">
+	<widget class="GtkHButtonBox" id="dialog-action_area3">
+	  <property name="visible">True</property>
+	  <property name="layout_style">GTK_BUTTONBOX_END</property>
+
+	  <child>
+	    <widget class="GtkButton" id="button8">
+	      <property name="visible">True</property>
+	      <property name="can_default">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="label">gtk-cancel</property>
+	      <property name="use_stock">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">True</property>
+	      <property name="response_id">-6</property>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="button9">
+	      <property name="visible">True</property>
+	      <property name="can_default">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="label" translatable="yes">_Insert</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">True</property>
+	      <property name="response_id">-5</property>
+	    </widget>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">False</property>
+	  <property name="fill">True</property>
+	  <property name="pack_type">GTK_PACK_END</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkHBox" id="hbox21">
+	  <property name="border_width">5</property>
+	  <property name="visible">True</property>
+	  <property name="homogeneous">False</property>
+	  <property name="spacing">0</property>
+
+	  <child>
+	    <widget class="GtkLabel" id="label39">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Ch_aracter:</property>
+	      <property name="use_underline">True</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="mnemonic_widget">ascii_entry</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkEntry" id="ascii_entry">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="editable">True</property>
+	      <property name="visibility">True</property>
+	      <property name="max_length">1</property>
+	      <property name="text" translatable="yes"></property>
+	      <property name="has_frame">True</property>
+	      <property name="invisible_char">●</property>
+	      <property name="activates_default">False</property>
+	      <signal name="activate" handler="aframe_activate_cb" last_modification_time="Wed, 07 Nov 2007 06:32:52 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">True</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
+    </widget>
+  </child>
+</widget>
+
+<widget class="GtkDialog" id="precision_dialog">
+  <property name="border_width">6</property>
+  <property name="title" translatable="yes">Set Precision</property>
+  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="window_position">GTK_WIN_POS_NONE</property>
+  <property name="modal">False</property>
+  <property name="resizable">False</property>
+  <property name="destroy_with_parent">False</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
+  <property name="urgency_hint">False</property>
+  <property name="has_separator">False</property>
+  <signal name="response" handler="spframe_response_cb" last_modification_time="Wed, 07 Nov 2007 06:30:13 GMT"/>
+  <signal name="delete_event" handler="spframe_delete_cb" last_modification_time="Wed, 07 Nov 2007 06:34:54 GMT"/>
+
+  <child internal-child="vbox">
+    <widget class="GtkVBox" id="dialog-vbox4">
+      <property name="visible">True</property>
+      <property name="homogeneous">False</property>
+      <property name="spacing">0</property>
+
+      <child internal-child="action_area">
+	<widget class="GtkHButtonBox" id="dialog-action_area4">
+	  <property name="visible">True</property>
+	  <property name="layout_style">GTK_BUTTONBOX_END</property>
+
+	  <child>
+	    <widget class="GtkButton" id="button10">
+	      <property name="visible">True</property>
+	      <property name="can_default">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="label">gtk-cancel</property>
+	      <property name="use_stock">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">True</property>
+	      <property name="response_id">-6</property>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="button11">
+	      <property name="visible">True</property>
+	      <property name="can_default">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="label" translatable="yes">_Set</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">True</property>
+	      <property name="response_id">-5</property>
+	    </widget>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">False</property>
+	  <property name="fill">True</property>
+	  <property name="pack_type">GTK_PACK_END</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkHBox" id="hbox22">
+	  <property name="border_width">5</property>
+	  <property name="visible">True</property>
+	  <property name="homogeneous">False</property>
+	  <property name="spacing">6</property>
+
+	  <child>
+	    <widget class="GtkLabel" id="label52">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Significant _places:</property>
+	      <property name="use_underline">True</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="mnemonic_widget">spframe_spin</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkSpinButton" id="spframe_spin">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="climb_rate">1</property>
+	      <property name="digits">0</property>
+	      <property name="numeric">True</property>
+	      <property name="update_policy">GTK_UPDATE_IF_VALID</property>
+	      <property name="snap_to_ticks">False</property>
+	      <property name="wrap">False</property>
+	      <property name="adjustment">1 0 99 1 10 10</property>
+	      <signal name="activate" handler="spframe_activate_cb" last_modification_time="Wed, 07 Nov 2007 06:32:41 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">True</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
     </widget>
   </child>
 </widget>
