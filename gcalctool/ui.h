@@ -42,6 +42,9 @@ void ui_set_inverse_state(gboolean);
 void ui_set_hyperbolic_state(gboolean);
 void ui_set_trigonometric_mode(enum trig_type);
 void ui_set_numeric_mode(enum base_type);
+void ui_set_show_thousands_seperator(gboolean);
+void ui_set_show_bitcalculating(gboolean);
+void ui_set_show_trailing_zeroes(gboolean);
 
 void ui_set_error_state(gboolean);
 void ui_set_statusbar(gchar *, const gchar *);

@@ -462,7 +462,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
-    int mode;                     /* The new mode. */
     int menuval;                  /* Index to button array at menu time. */
     char *lnp;                    /* Localized numerical point (UTF8 format) */
     struct button *mrec[MAXMENUS];
@@ -487,6 +486,8 @@ ui_set_accuracy(int accuracy)
     GtkWidget *widget;
     char text[MAXLINE];
     char *desc, *current, *tooltip;
+    
+    v->accuracy = accuracy;
 
     SNPRINTF(text, MAXLINE, _("Other (%d) ..."), accuracy);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
@@ -584,6 +585,54 @@ void
 ui_set_numeric_mode(enum base_type mode)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->disp[mode]), 1);
+}
+
+
+void
+ui_set_show_thousands_seperator(gboolean visible)
+{
+    GtkWidget *menu;
+
+    v->show_tsep = visible;
+    set_boolean_resource(R_TSEP, v->show_tsep);
+
+    menu = GET_WIDGET("show_thousands_separator_menu");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
+
+    syntaxdep_show_display();
+    ui_make_registers();
+}
+
+
+void
+ui_set_show_bitcalculating(gboolean visible)
+{
+    GtkWidget *menu;
+    
+    v->bitcalculating_mode = visible;
+    ui_set_mode(v->modetype);
+    set_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+
+    menu = GET_WIDGET("show_bitcalculating_menu");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
+}
+
+
+void
+ui_set_show_trailing_zeroes(gboolean visible)
+{
+    GtkWidget *menu;
+
+    v->show_zeroes = visible;
+    set_boolean_resource(R_ZEROES, visible);
+
+    syntaxdep_show_display();
+    ui_make_registers();
+
+    menu = GET_WIDGET("show_trailing_zeroes_menu");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
+    menu = GET_WIDGET("acc_trailing_zeroes_item");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
 }
 
 
@@ -1390,38 +1439,6 @@ create_cf_model(enum menu_type mtype, GtkWidget *dialog)
 }
 
 
-static void
-set_show_tsep_toggle(int state)
-{
-    GtkWidget *mi;
-
-    mi = GET_WIDGET("show_thousands_separator_menu");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
-}
-
-
-static void
-set_show_bitcalculating_toggle(int state)
-{
-    GtkWidget *mi;
-
-    mi = GET_WIDGET("show_bitcalculating_menu");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), state);
-}
-
-
-static void
-set_show_zeroes_toggle(int state)
-{
-    GtkWidget *menu;
-
-    menu = GET_WIDGET("show_trailing_zeroes_menu");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
-    menu = GET_WIDGET("acc_trailing_zeroes_item");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
-}
-
-
 void
 ui_make_registers()            /* Calculate memory register frame values. */
 {
@@ -1471,22 +1488,14 @@ save_win_position()
 static void
 change_mode(int mode)
 {
-    X->mode = mode;
     v->modetype = mode;
-    v->base = DEC;
-    ui_set_base(v->base);
+
+    ui_set_base(DEC);
     ui_set_numeric_mode(FIX);
-    v->accuracy = 9;
-    ui_set_accuracy(v->accuracy);
+    ui_set_accuracy(9);
+    ui_set_show_thousands_seperator(FALSE);
+    ui_set_show_trailing_zeroes(FALSE);
 
-    v->show_tsep = FALSE;
-    set_show_tsep_toggle(v->show_tsep);
-    set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
-
-    v->show_zeroes = FALSE;
-    set_show_zeroes_toggle(v->show_zeroes);
-    set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
-    
     reset_mode_display();
     do_mode(TRUE);
 }
@@ -1867,6 +1876,8 @@ void
 ui_set_base(enum base_type base)
 {
     int i, baseval = basevals[(int) base];
+    
+    v->base = base;
 
     for (i = 0; i < 16; i++) {
         gtk_widget_set_sensitive(X->digit_buttons[i], i < baseval);
@@ -2345,10 +2356,11 @@ shift_right_cb(GtkWidget *widget)
 static void 
 show_bitcalculating_cb(GtkWidget *widget)
 {
+    gboolean visible;
+    
+    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
     if (v->started) {
-        v->bitcalculating_mode = v->bitcalculating_mode ^ 1;
-        ui_set_mode(v->modetype);
-        set_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+        ui_set_show_bitcalculating(visible);
     }
 }
 
@@ -2359,10 +2371,8 @@ show_registers_cb(GtkWidget *widget)
 {
     gboolean visible;
     
-    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    
+    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));   
     if (v->started) {
-        set_boolean_resource(R_REGS, visible);
         ui_set_registers_visible(visible);
     }
 }
@@ -2415,6 +2425,7 @@ static void
 mode_radio_cb(GtkWidget *menu)
 {
     struct exprm_state *e;
+    int mode;             /* The new mode. */
     int immediate = 0;    /* Set if we can change mode without warning user. */
     int complete = 0;     /* Set if the user has completed a calculation. */
 
@@ -2426,7 +2437,7 @@ mode_radio_cb(GtkWidget *menu)
         return;
     }
 
-    X->mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
+    mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
 
 /* If the user has completed a calculation and we are going to a
  * new mode that is "compatible" with this one, then just change
@@ -2469,11 +2480,11 @@ mode_radio_cb(GtkWidget *menu)
     }
 
     if (immediate) {
-        v->modetype = X->mode;
+        v->modetype = mode;
         reset_mode_display();
         do_mode(FALSE);
     } else if (request_change_mode()) {
-        change_mode(X->mode);
+        change_mode(mode);
     }
 }
 
@@ -2507,14 +2518,13 @@ accuracy_other_cb(GtkWidget *widget)
 static void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
-    v->show_zeroes = gtk_check_menu_item_get_active(
-                         GTK_CHECK_MENU_ITEM(widget));
-
-    syntaxdep_show_display();
-    set_boolean_resource(R_ZEROES, v->show_zeroes);
-    ui_make_registers();
+    gboolean visible;
     
-    set_show_zeroes_toggle(v->show_zeroes);
+    visible = gtk_check_menu_item_get_active(
+                  GTK_CHECK_MENU_ITEM(widget));
+    if (v->started) {
+        ui_set_show_trailing_zeroes(visible);
+    }
 }
 
 
@@ -2619,15 +2629,12 @@ ui_start()
 static void
 show_thousands_separator_cb(GtkWidget *widget)
 {
-    if (!v->started) {
-        return;
+    gboolean visible;
+    
+    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
+    if (v->started) {
+        ui_set_show_thousands_seperator(visible);
     }
-
-    v->show_tsep = !v->show_tsep;
-
-    syntaxdep_show_display();
-    set_boolean_resource(R_TSEP, v->show_tsep == TRUE);
-    ui_make_registers();
 }
 
 
@@ -3039,9 +3046,9 @@ ui_load()
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_RCL]), 1);
     gtk_container_set_border_width(GTK_CONTAINER(X->menus[M_EXCH]), 1);
 
-    set_show_tsep_toggle(v->show_tsep);
-    set_show_zeroes_toggle(v->show_zeroes);
-    set_show_bitcalculating_toggle(v->bitcalculating_mode);
+    ui_set_show_thousands_seperator(v->show_tsep);
+    ui_set_show_trailing_zeroes(v->show_zeroes);
+    ui_set_show_bitcalculating(v->bitcalculating_mode);
     
     /* Use loaded Arithmetic Precedence mode setting. */
     if (v->syntax == EXPRS) {
