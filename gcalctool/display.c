@@ -608,7 +608,7 @@ refresh_display()
                         str_replace(&str, reg, reg_val);
                     }
                 }
-                ui_write_display(str);
+                ui_set_display(str, FALSE);
                 free(str);
                 v->ghost_zero = 0;
             } else {

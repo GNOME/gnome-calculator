@@ -32,9 +32,6 @@ void ui_make_registers(void);
 void ui_set_undo_enabled(int, int);
 
 void ui_set_display(char *, int);
-void ui_write_display(char *); /* FIXME: What is the difference between ui_write_display() and ui_set_display() */
-void ui_insert_display(char *);
-void ui_parse_display(void);
 int ui_get_cursor(void);
 
 void ui_set_registers_visible(int);

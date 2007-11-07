@@ -277,21 +277,6 @@ exp_append(char *text)
 }
 
 
-void
-exp_insert(char *text)
-{
-    // struct exprm_state *e;
-    // e = get_state();
-    // ui_write_display(e->expression);
-    if (v->ghost_zero) {
-        ui_write_display("");
-        v->ghost_zero = 0;
-    }
-    ui_insert_display(text);
-    ui_parse_display();
-}
-
-
 void 
 exp_del() 
 {

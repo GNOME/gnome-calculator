@@ -875,10 +875,10 @@ ui_set_display(char *str, int minimize_changes)
     gint len1, len2;
     gboolean done;
 
-    if (str == NULL || *str == 0) {
+    if (str == NULL || str[0] == '\0') {
         str = " ";
     } else {
-        if (!v->noparens) {
+        if (v->noparens == 0) {
             localize_number(localized, str);
             str = localized;
         }
@@ -909,27 +909,6 @@ ui_set_display(char *str, int minimize_changes)
             gtk_text_buffer_insert(X->display_buffer, &end, str, -1);
         }
     }
-    scroll_right();
-    g_free(text);
-}
-
-
-void
-ui_write_display(char *str)
-{
-    gchar *text;
-    GtkTextIter start, end;
-
-    if (str == NULL ) {
-        str = " ";
-    }
-
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
-    text = gtk_text_buffer_get_text(X->display_buffer, &start, &end, TRUE);
-
-    gtk_text_buffer_delete(X->display_buffer, &start, &end);
-    
-    gtk_text_buffer_insert(X->display_buffer, &end, str, -1);
     scroll_right();
     g_free(text);
 }
@@ -1996,7 +1975,7 @@ check_for_localized_numeric_point(int keyval)
 }
 
 
-void
+static void
 ui_parse_display()
 {
     char *text;
@@ -2018,15 +1997,6 @@ ui_get_cursor(void)
     gint pos;
     g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
     return pos;
-}
-
-
-void
-ui_insert_display(char *text)
-{
-    gtk_text_buffer_insert_at_cursor(X->display_buffer,
-                                     text,
-                                     strlen(text));
 }
 
 
