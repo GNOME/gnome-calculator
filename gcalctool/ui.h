@@ -29,21 +29,21 @@ void ui_load();
 void ui_start();
 
 void ui_make_registers(void);
-void ui_set_undo_enabled(int, int);
+void ui_set_undo_enabled(gboolean, gboolean);
 
-void ui_set_display(char *, int);
+void ui_set_display(char *, gboolean);
 int ui_get_cursor(void);
 
-void ui_set_registers_visible(int);
+void ui_set_registers_visible(gboolean);
 void ui_set_accuracy(int);
 void ui_set_mode(enum mode_type);
 void ui_set_base(enum base_type);
-void ui_set_inverse_state(int);
-void ui_set_hyperbolic_state(int);
+void ui_set_inverse_state(gboolean);
+void ui_set_hyperbolic_state(gboolean);
 void ui_set_trigonometric_mode(enum trig_type);
 void ui_set_numeric_mode(enum base_type);
 
-void ui_set_error_state(int);
+void ui_set_error_state(gboolean);
 void ui_set_statusbar(gchar *, const gchar *);
 
 void ui_beep(void);

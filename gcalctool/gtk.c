@@ -559,7 +559,7 @@ ui_update_trig_mode()
 
 
 void
-ui_set_hyperbolic_state(int state)
+ui_set_hyperbolic_state(gboolean state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->hyp), state);
     ui_update_trig_mode();
@@ -567,7 +567,7 @@ ui_set_hyperbolic_state(int state)
 
 
 void
-ui_set_inverse_state(int state)
+ui_set_inverse_state(gboolean state)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X->inv), state);
     ui_update_trig_mode();
@@ -589,7 +589,7 @@ ui_set_numeric_mode(enum base_type mode)
 
 
 void 
-ui_set_undo_enabled(int undo, int redo)
+ui_set_undo_enabled(gboolean undo, gboolean redo)
 {
     gtk_widget_set_sensitive(X->undo, undo); 
     gtk_widget_set_sensitive(X->redo, redo);
@@ -866,7 +866,7 @@ scroll_right()
 
 
 void
-ui_set_display(char *str, int minimize_changes)
+ui_set_display(char *str, gboolean minimize_changes)
 {
     char localized[MAX_LOCALIZED];
     GtkTextIter start, end;
@@ -927,7 +927,7 @@ ui_set_display(char *str, int minimize_changes)
  */
 
 void
-ui_set_error_state(int error)
+ui_set_error_state(gboolean error)
 {
     int i;
 
@@ -1416,12 +1416,10 @@ set_show_zeroes_toggle(int state)
 {
     GtkWidget *menu;
 
-    v->doing_mi = 1;    /* Hack to get mstz_proc() to just return. */
     menu = GET_WIDGET("show_trailing_zeroes_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
     menu = GET_WIDGET("acc_trailing_zeroes_item");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
-    v->doing_mi = 0;
 }
 
 
@@ -1666,22 +1664,11 @@ update_memory_menus()
 }
 
 
-static void
-set_memory_toggle(int state)
-{
-    GtkWidget *menu = GET_WIDGET("show_registers_menu");
-
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), state);
-}
-
-
 /*ARGSUSED*/
 static void
 rframe_response_cb(GtkDialog *dialog, int response)
 {
-    set_memory_toggle(FALSE);
-    set_boolean_resource(R_REGS, FALSE);
-    gtk_widget_hide(X->rframe);
+    ui_set_registers_visible(FALSE);
 }
 
 
@@ -1916,22 +1903,28 @@ ui_set_base(enum base_type base)
 
 
 void
-ui_set_registers_visible(int state)
+ui_set_registers_visible(gboolean visible)
 {
-    ui_make_registers();    
-    v->rstate = state;
-    gtk_widget_realize(X->rframe);
-    if (state && gdk_window_is_visible(X->rframe->window)) {
-        gdk_window_raise(X->rframe->window);
-        return;
-    }
+    GtkWidget *menu;
+    ui_make_registers();
 
-    if (state) {
+    menu = GET_WIDGET("show_registers_menu");
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);   
+
+    gtk_widget_realize(X->rframe);
+
+    if (visible) {
+        if (gdk_window_is_visible(X->rframe->window)) {
+            gdk_window_raise(X->rframe->window);
+            return;
+        }
         ds_position_popup(X->kframe, X->rframe, DS_POPUP_ABOVE);
         gtk_widget_show(X->rframe);
     } else {
         gtk_widget_hide(X->rframe);
     }
+    
+    set_boolean_resource(R_REGS, visible);
 }
 
 
@@ -2391,9 +2384,13 @@ show_bitcalculating_cb(GtkWidget *widget)
 static void
 show_registers_cb(GtkWidget *widget)
 {
+    gboolean visible;
+    
+    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
+    
     if (v->started) {
-        v->rstate = !v->rstate;
-        do_memory();
+        set_boolean_resource(R_REGS, visible);
+        ui_set_registers_visible(visible);
     }
 }
 
@@ -2442,13 +2439,13 @@ arithmetic_mode_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 static void
-mode_radio_cb(GtkWidget *radio)
+mode_radio_cb(GtkWidget *menu)
 {
     struct exprm_state *e;
     int immediate = 0;    /* Set if we can change mode without warning user. */
     int complete = 0;     /* Set if the user has completed a calculation. */
 
-    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(radio))) {
+    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu))) {
         return;
     }
 
@@ -2456,7 +2453,7 @@ mode_radio_cb(GtkWidget *radio)
         return;
     }
 
-    X->mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(radio), "calcmode"));
+    X->mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
 
 /* If the user has completed a calculation and we are going to a
  * new mode that is "compatible" with this one, then just change
@@ -2541,16 +2538,14 @@ accuracy_other_cb(GtkWidget *widget)
 static void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
-    if (!v->doing_mi) {
-        v->show_zeroes = gtk_check_menu_item_get_active(
-                                               GTK_CHECK_MENU_ITEM(widget));
+    v->show_zeroes = gtk_check_menu_item_get_active(
+                         GTK_CHECK_MENU_ITEM(widget));
 
-        syntaxdep_show_display();
-        set_boolean_resource(R_ZEROES, v->show_zeroes == TRUE);
-        ui_make_registers();
-        
-        set_show_zeroes_toggle(v->show_zeroes);
-    }
+    syntaxdep_show_display();
+    set_boolean_resource(R_ZEROES, v->show_zeroes);
+    ui_make_registers();
+    
+    set_show_zeroes_toggle(v->show_zeroes);
 }
 
 
@@ -3027,7 +3022,7 @@ ui_init(int *argc, char ***argv)
 void
 ui_load()
 {
-    int i;
+    int i, boolval;
     GtkWidget *widget;
 
     read_cfdefs();
@@ -3078,7 +3073,6 @@ ui_load()
     set_show_tsep_toggle(v->show_tsep);
     set_show_zeroes_toggle(v->show_zeroes);
     set_show_bitcalculating_toggle(v->bitcalculating_mode);
-    set_memory_toggle(v->rstate);
     
     /* Use loaded Arithmetic Precedence mode setting. */
     if (v->syntax == EXPRS) {
@@ -3099,9 +3093,8 @@ ui_load()
     
     /* Show the memory register window? */
     ui_make_registers();
-    if (v->rstate == TRUE) {
-        ui_set_registers_visible(TRUE);
-    }
+    if (get_boolean_resource(R_REGS, &boolval))
+        ui_set_registers_visible(boolval);
 
     /* Focus on the clear button */
     if (v->modetype == BASIC) {

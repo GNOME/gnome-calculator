@@ -682,7 +682,6 @@ init_state(void)
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
-    v->rstate        = 0;      /* No memory register frame display initially. */
     v->MPdebug       = FALSE;  /* No debug info by default. */
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */

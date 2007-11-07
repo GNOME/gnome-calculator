@@ -55,6 +55,7 @@ void set_boolean_resource(char *key, int value);
 
 char *get_resource(char *key);
 int get_int_resource(char *key, int *value);
+int get_boolean_resource(char *key, int *value);
 
 const char *get_radix();
 const char *get_tsep();

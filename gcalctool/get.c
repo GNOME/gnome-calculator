@@ -111,9 +111,7 @@ convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
 }
 
 
-/* Get boolean resource from database. */
-
-static int
+int
 get_boolean_resource(char *key, int *boolval)
 {
     char *val, tempstr[MAXLINE];
@@ -342,10 +340,6 @@ read_resources()    /* Read all possible resources from the database. */
         } else {
             v->bitcalculating_mode = i;
         }
-    }
-
-    if (get_boolean_resource(R_REGS, &boolval)) {
-        v->rstate = boolval;
     }
 
     if (get_boolean_resource(R_ZEROES, &boolval)) {

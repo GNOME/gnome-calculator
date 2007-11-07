@@ -53,7 +53,6 @@ void do_delete();
 void do_numtype(enum num_type);
 void do_expno();
 void do_immed();
-void do_memory();
 void do_mode(int);
 void do_number();
 void do_paren();

@@ -232,7 +232,6 @@ struct calcVars {                      /* Calctool variables and options. */
 
     int accuracy;      /* Number of digits precision (Max 9). */
     int cur_op;        /* Current arithmetic operation. */
-    int doing_mi;      /* Set if adjusting the "show zeroes" menu item. */
     int error;         /* Indicates some kind of display error. */
     int ghost_zero;    /* Flag to indicate display with "0", actually 
                            having empty content. */
@@ -241,9 +240,8 @@ struct calcVars {                      /* Calctool variables and options. */
     int new_input;     /* New number input since last op. */
     int noparens;      /* Count of left brackets still to be matched. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
-    int old_cal_value;      /* Previous calculation operator. */
+    int old_cal_value; /* Previous calculation operator. */
     int pointed;       /* Whether a decimal point has been given. */
-    int rstate;        /* Indicates if memory register frame is displayed. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int show_tsep;     /* Set if the thousands seperator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */

@@ -184,7 +184,7 @@ perform_undo(void)
         v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
         ui_set_statusbar("", "");
     } else {
-        ui_set_statusbar("No undo history", "gtk-dialog-warning");
+        ui_set_statusbar(_("No undo history"), "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
 }
@@ -204,7 +204,7 @@ perform_redo(void)
         v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
         ui_set_statusbar("", "");
     } else {
-        ui_set_statusbar("No redo steps", "gtk-dialog-warning");
+        ui_set_statusbar(_("No redo steps"), "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
 }
@@ -871,10 +871,7 @@ do_base(enum base_type b)    /* Change the current base setting. */
             v->base = b;
             set_resource(R_BASE, Rbstr[(int) v->base]);
             ui_set_base(v->base);
-
-            if (v->rstate) {
-                ui_make_registers();
-            }
+            ui_make_registers();
 	        break;
 	
         case EXPRS:
@@ -1177,14 +1174,6 @@ do_immed()
 
 
 void
-do_memory()
-{
-    set_boolean_resource(R_REGS, v->rstate == TRUE);
-    ui_set_registers_visible(v->rstate);
-}
-
-
-void
 do_mode(int toclear)           /* Set special calculator mode. */
 {
     set_resource(R_MODE, Rmstr[(int) v->modetype]);
@@ -1227,9 +1216,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
 
     switch (v->syntax) {
         case NPA:
-            if (v->rstate) {
-                ui_make_registers();
-            }
+            ui_make_registers();
             break;
         
         case EXPRS:
