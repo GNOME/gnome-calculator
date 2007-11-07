@@ -406,7 +406,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     
     GtkWidget *kframe;                 /* Main window. */
  
-    GtkWidget *cm_dialog;              /* Change Mode dialog. */
     GtkTreeModel *constants_model;
     GtkWidget *con_dialog;             /* Edit constants dialog. */
     
@@ -1493,53 +1492,32 @@ change_mode(int mode)
 }
 
 
-/*ARGSUSED*/
-static void
-cm_response_cb(GtkDialog *dialog, int response)
+static gboolean
+request_change_mode()
 {
-    if (response == GTK_RESPONSE_ACCEPT) {
-        change_mode(X->mode);
-    } else {
-        ui_set_mode(v->modetype);
-    }
+    GtkWidget *dialog, *request_check, *button;
+    gint response;
+    
+    if (!v->warn_change_mode)
+        return TRUE;
 
-    gtk_widget_destroy(X->cm_dialog);
-    X->cm_dialog = NULL;
-}
-
-
-/*ARGSUSED*/
-static void
-cm_warning_cb(GtkWidget *button)
-{
-    v->warn_change_mode = !gtk_toggle_button_get_active(
-                                                   GTK_TOGGLE_BUTTON(button));
-}
-
-
-static void
-create_change_mode_dialog()
-{
-    GtkWidget *check, *button;
-
-    X->cm_dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
+    dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
                           GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
                           GTK_MESSAGE_WARNING,
                           GTK_BUTTONS_CANCEL,
                           "%s",
                           _("Changing Modes Clears Calculation"));
-    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(X->cm_dialog),
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
                           "%s",
                           _("When you change modes, the current calculation "
                           "will be cleared, and the base will be reset to "
                           "decimal."));
 
-    check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
-    gtk_box_pack_end(GTK_BOX(GTK_MESSAGE_DIALOG(X->cm_dialog)->label->parent),
-                     check, FALSE, FALSE, 0);
-    gtk_widget_show(check);
+    request_check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
+    gtk_box_pack_end(GTK_BOX(GTK_DIALOG(dialog)->vbox),
+                     request_check, FALSE, FALSE, 0);
 
-    button = gtk_dialog_add_button(GTK_DIALOG(X->cm_dialog),
+    button = gtk_dialog_add_button(GTK_DIALOG(dialog),
                                    _("C_hange Mode"), GTK_RESPONSE_ACCEPT);
     gtk_button_set_image(GTK_BUTTON(button),
                          gtk_image_new_from_stock(GTK_STOCK_REFRESH,
@@ -1547,29 +1525,24 @@ create_change_mode_dialog()
     /* Set default focus on affirmative button */
     gtk_widget_grab_focus(button);
 
-    gtk_dialog_set_alternative_button_order(GTK_DIALOG(X->cm_dialog),
+    gtk_dialog_set_alternative_button_order(GTK_DIALOG(dialog),
                                             GTK_RESPONSE_ACCEPT,
                                             GTK_RESPONSE_CANCEL,
                                             -1);
 
-    g_signal_connect((gpointer) check, "toggled",
-                     G_CALLBACK(cm_warning_cb), NULL);
-    g_signal_connect(X->cm_dialog, "response",
-                     G_CALLBACK(cm_response_cb), NULL);
-
-    gtk_window_set_position(GTK_WINDOW(X->cm_dialog),
+    gtk_window_set_position(GTK_WINDOW(dialog),
                             GTK_WIN_POS_CENTER_ON_PARENT);
-}
+    
+    gtk_widget_show_all(dialog);
+    response = gtk_dialog_run(GTK_DIALOG(dialog));
+    
+    // FIXME: Save this in GConf
+    v->warn_change_mode = !gtk_toggle_button_get_active(
+                             GTK_TOGGLE_BUTTON(request_check));
+    
+    gtk_widget_destroy(dialog);
 
-
-static void
-show_change_mode_dialog()
-{
-    if (X->cm_dialog == NULL) {
-        create_change_mode_dialog();
-    }
-
-    gtk_window_present(GTK_WINDOW(X->cm_dialog));
+    return response == GTK_RESPONSE_ACCEPT;
 }
 
 
@@ -2499,12 +2472,8 @@ mode_radio_cb(GtkWidget *menu)
         v->modetype = X->mode;
         reset_mode_display();
         do_mode(FALSE);
-    } else {
-        if (v->warn_change_mode) {
-            show_change_mode_dialog();
-        } else {
-            change_mode(X->mode);
-        }
+    } else if (request_change_mode()) {
+        change_mode(X->mode);
     }
 }
 
