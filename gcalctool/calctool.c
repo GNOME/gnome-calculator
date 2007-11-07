@@ -691,7 +691,6 @@ init_state(void)
     v->shelf      = NULL;      /* No selection for shelf initially. */
     v->noparens   = 0;         /* No unmatched brackets initially. */
     v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
-    v->warn_change_mode = 1;   /* Warn user when changing modes. */
 
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */

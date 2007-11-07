@@ -451,6 +451,8 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
 
     int menuval;                  /* Index to button array at menu time. */
     char *lnp;                    /* Localized numerical point (UTF8 format) */
+
+    int warn_change_mode;    /* Should we warn user when changing modes? */
 };
 
 typedef struct Xobject *XVars;
@@ -1647,7 +1649,7 @@ request_change_mode()
     GtkWidget *dialog, *request_check, *button;
     gint response;
     
-    if (!v->warn_change_mode)
+    if (!X->warn_change_mode)
         return TRUE;
 
     dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
@@ -1686,7 +1688,7 @@ request_change_mode()
     response = gtk_dialog_run(GTK_DIALOG(dialog));
     
     // FIXME: Save this in GConf
-    v->warn_change_mode = !gtk_toggle_button_get_active(
+    X->warn_change_mode = !gtk_toggle_button_get_active(
                              GTK_TOGGLE_BUTTON(request_check));
     
     gtk_widget_destroy(dialog);
@@ -2900,6 +2902,8 @@ void
 ui_start()
 {
     struct exprm_state *e;
+    
+    X->warn_change_mode = TRUE; // FIXME: Load from GConf
     
     ui_set_base(v->base);
     ui_set_trigonometric_mode(v->ttype);
