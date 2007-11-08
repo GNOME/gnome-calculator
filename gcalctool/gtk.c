@@ -1505,6 +1505,14 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
 }
 
 
+static gboolean
+edit_constants_delete_cb(GtkDialog *dialog)
+{
+    edit_constants_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    return TRUE;
+}
+
+
 static void
 edit_functions_response_cb(GtkDialog *dialog, gint id)
 {
@@ -1532,6 +1540,14 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
     }
 
     gtk_widget_hide(GTK_WIDGET(dialog));
+}
+
+
+static gboolean
+edit_functions_delete_cb(GtkDialog *dialog)
+{
+    edit_functions_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    return TRUE;
 }
 
 
@@ -2576,7 +2592,9 @@ create_kframe()
     CONNECT_SIGNAL(rframe_response_cb);
     CONNECT_SIGNAL(edit_constants_cb);
     CONNECT_SIGNAL(edit_functions_cb);
+    CONNECT_SIGNAL(edit_constants_delete_cb);    
     CONNECT_SIGNAL(edit_constants_response_cb);
+    CONNECT_SIGNAL(edit_constants_delete_cb);    
     CONNECT_SIGNAL(edit_functions_response_cb);
 
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
