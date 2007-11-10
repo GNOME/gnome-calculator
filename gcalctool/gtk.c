@@ -523,7 +523,7 @@ ui_set_accuracy(int accuracy)
     char *desc, *current, *tooltip;
     
     v->accuracy = accuracy;
-
+    
     SNPRINTF(text, MAXLINE, _("Other (%d) ..."), accuracy);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_text(GTK_LABEL(widget), text);
@@ -557,6 +557,9 @@ ui_set_accuracy(int accuracy)
     
     ui_make_registers();
     refresh_display();
+    
+    /* Hide the manual dialog */
+    gtk_widget_hide(X->spframe);
 }
 
 
@@ -2596,6 +2599,7 @@ create_kframe()
     CONNECT_SIGNAL(edit_constants_response_cb);
     CONNECT_SIGNAL(edit_constants_delete_cb);    
     CONNECT_SIGNAL(edit_functions_response_cb);
+    CONNECT_SIGNAL(edit_functions_delete_cb);
 
     X->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     X->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
