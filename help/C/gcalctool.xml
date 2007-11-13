@@ -2140,6 +2140,26 @@ after entering the exponent.</para>
 <para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
          </sect2>
 
+         <sect2 id="gcalctool-change-modes">
+                <title>Changing Modes</title>
+                <para>If the user tries to change modes when a partial
+calculation is being displayed, a warning dialog is displayed, telling
+the user that the current calculation will be cleared, and the base will 
+be reset to decimal.</para>
+                <para>There is a checkbox present, that if checked, prevents the dialog from being shown again.</para>
+                <para>If the user presses the <guibutton>Cancel</guibutton> button, the change mode operation is cancelled. If the user presses the <guibutton>Change Mode</guibutton> button, the mode is changed and has the following side-effects:
+<itemizedlist>
+<listitem><para>Clears the display.</para></listitem>
+   <listitem><para>Sets the base to decimal.</para></listitem>
+   <listitem><para>Sets the numeric display to fixed.</para></listitem>
+   <listitem><para>Sets the accuracy to nine places after the numeric point.</para></listitem>
+   <listitem><para>Clears the display of the thousands separator.</para></listitem>
+   <listitem><para>Clears the display of trailing zeroes after the numeric point.</para></listitem>
+   <listitem><para>Dismisses the register window if the new mode is Basic.</para></listitem>
+</itemizedlist>
+</para>
+         </sect2>
+
   </sect1>
 <!-- ============= Keyboard Shortcuts ============================= -->
   <sect1 id="gcalctool-keyboard-shortcut"> 
