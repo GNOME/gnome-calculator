@@ -513,13 +513,8 @@ ui_set_syntax_mode(enum syntax mode)
     /* Save the syntax mode */
     set_resource(R_SYNTAX, Rsstr[v->syntax]);
 
-    
     /* ??? */
     ui_set_mode(v->modetype);
-    
-    /* */
-    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
-                               (v->syntax == EXPRS));
     
     /* Update menu */
     if (v->syntax == EXPRS) {
@@ -573,7 +568,7 @@ ui_set_accuracy(int accuracy)
     set_int_resource(R_ACCURACY, accuracy);
     
     ui_make_registers();
-    refresh_display();
+    refresh_display(-1);
     
     /* Hide the manual dialog */
     gtk_widget_hide(X->spframe);
@@ -740,9 +735,9 @@ make_hostname()
     *scanner = ':';
     
     if (client_hostname[0] == '\0')
-        return NULL;
+        return (NULL);
     else
-        return(strdup(client_hostname));                
+        return (strdup(client_hostname));                
 }
 
 
@@ -752,7 +747,13 @@ ui_set_mode(enum mode_type mode)
     GtkRequisition *r;
     gint w, h;
     char *hostname, title[MAXLINE];
-    GtkWidget *menu;      
+    GtkWidget *menu;
+    
+    refresh_display(-1);
+    ui_make_registers();
+    
+    /* Save mode */
+    set_resource(R_MODE, Rmstr[(int) v->modetype]);
   
     switch (mode) {
         case BASIC:
@@ -973,9 +974,10 @@ scroll_right()
 
 
 void
-ui_set_display(char *str)
+ui_set_display(char *str, int cursor)
 {
     char localized[MAX_LOCALIZED];
+    GtkTextIter iter;
 
     if (str == NULL || str[0] == '\0') {
         str = " ";
@@ -986,7 +988,13 @@ ui_set_display(char *str)
         }
     }
     gtk_text_buffer_set_text(X->display_buffer, str, -1);
-    scroll_right();
+    
+    if (cursor < 0) {
+        scroll_right();
+    } else {        
+        gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, cursor);
+        gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    }
 }
 
 
@@ -1053,7 +1061,7 @@ ui_get_localized_numeric_point(void)
 
     decimal_point = localeconv()->decimal_point;
 
-    return(g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
+    return (g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
 }
 
 
@@ -1075,6 +1083,7 @@ void
 ui_set_registers_visible(gboolean visible)
 {
     GtkWidget *menu;
+
     ui_make_registers();
 
     menu = GET_WIDGET("show_registers_menu");
@@ -1102,10 +1111,10 @@ ui_get_display(void)
 {
     GtkTextIter start, end;
     gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);   
-    return gtk_text_buffer_get_text(X->display_buffer,
-                                    &start,
-                                    &end,
-                                    FALSE);
+    return (gtk_text_buffer_get_text(X->display_buffer,
+                                     &start,
+                                     &end,
+                                     FALSE));
 }
 
 
@@ -1114,7 +1123,7 @@ ui_get_cursor(void)
 {
     gint pos;
     g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
-    return pos;
+    return (pos);
 }
 
 
@@ -1251,7 +1260,7 @@ static gboolean
 aframe_delete_cb(GtkWidget *dialog)
 {
     aframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return(TRUE);
+    return (TRUE);
 }
 
 
@@ -1275,7 +1284,7 @@ static gboolean
 rframe_delete_cb(GtkWidget *dialog)
 {
     rframe_response_cb(dialog, GTK_RESPONSE_OK);
-    return(TRUE);
+    return (TRUE);
 }
 
 
@@ -1304,7 +1313,13 @@ base_cb(GtkWidget *widget)
 
 static void do_button(int function, int arg)
 {
-    struct exprm_state *e;
+    int cursor;
+    
+    if (gtk_widget_is_focus(X->display_item)) {
+        cursor = ui_get_cursor();
+    } else {
+        cursor = -1;
+    }
 
     switch (v->syntax) {
         case NPA:
@@ -1312,16 +1327,12 @@ static void do_button(int function, int arg)
             set_bit_panel();
             if (v->new_input && v->dtype == FIX) {
                 STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
-                ui_set_display(v->fnum);
+                ui_set_display(v->fnum, -1);
             }
             break;
 
         case EXPRS:
-            e = get_state();
-            e->value = arg;
-            MEMCPY(&(e->button), &buttons[function], sizeof(struct button));
-            new_state();
-            do_expression();
+            do_expression(function, arg, cursor);
             set_bit_panel();
             break;
 
@@ -1339,7 +1350,6 @@ help_display(void)
     const char *lang;
     char *uri = NULL;
     GdkScreen *gscreen;
-
     int i;
     
     const char * const * langs = g_get_language_names ();
@@ -1529,7 +1539,7 @@ static gboolean
 edit_constants_delete_cb(GtkDialog *dialog)
 {
     edit_constants_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return TRUE;
+    return (TRUE);
 }
 
 
@@ -1567,7 +1577,7 @@ static gboolean
 edit_functions_delete_cb(GtkDialog *dialog)
 {
     edit_functions_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return TRUE;
+    return (TRUE);
 }
 
 
@@ -1590,7 +1600,7 @@ create_constants_model()
                            -1);
     }
 
-    return(GTK_TREE_MODEL(model));
+    return (GTK_TREE_MODEL(model));
 }
 
 
@@ -1613,7 +1623,7 @@ create_functions_model()
                            -1);
     }
 
-    return(GTK_TREE_MODEL(model));
+    return (GTK_TREE_MODEL(model));
 }
 
 
@@ -1630,25 +1640,6 @@ ui_make_registers()            /* Calculate memory register frame values. */
         SNPRINTF(key, MAXLINE, "register%d", n);
         set_resource(key, mval);
     }
-}
-
-
-static void
-reset_mode_display(void)
-{
-    switch (v->syntax) {
-        case NPA:
-            show_display(v->MPdisp_val);
-            break;
-
-        case EXPRS:
-            refresh_display();
-            break;
-        
-        default:
-            assert(FALSE);
-    }
-    ui_make_registers();
 }
 
 
@@ -1673,9 +1664,10 @@ change_mode(int mode)
     ui_set_accuracy(9);
     ui_set_show_thousands_seperator(FALSE);
     ui_set_show_trailing_zeroes(FALSE);
+    ui_set_mode(v->modetype);
 
-    reset_mode_display();
-    do_mode(TRUE);
+    /* Reset display */
+    do_clear();
 }
 
 
@@ -1685,8 +1677,9 @@ request_change_mode()
     GtkWidget *dialog, *request_check, *button;
     gint response;
     
-    if (!X->warn_change_mode)
-        return TRUE;
+    if (!X->warn_change_mode) {
+        return (TRUE);
+    }
 
     dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
                           GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -1729,7 +1722,7 @@ request_change_mode()
     
     gtk_widget_destroy(dialog);
 
-    return response == GTK_RESPONSE_ACCEPT;
+    return (response == GTK_RESPONSE_ACCEPT);
 }
 
 
@@ -1761,7 +1754,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     show_display(v->MPdisp_val);
     v->toclear = 0;
 
-    return(TRUE);
+    return (TRUE);
 }
 
 
@@ -1899,7 +1892,7 @@ check_for_localized_numeric_point(int keyval)
 
     outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
 
-    return(strcmp(outbuf, X->lnp) == 0);
+    return (strcmp(outbuf, X->lnp) == 0);
 }
 
 
@@ -1929,12 +1922,12 @@ inv_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 static gboolean
-display_focus_out_cb(GtkWidget *widget, GdkEventKey *event)
+display_focus_out_cb(GtkWidget *widget)
 {
     if (v->syntax == EXPRS) {
         exp_replace(ui_get_display());
     }
-    return(FALSE);
+    return (FALSE);
 }
 
 
@@ -1943,7 +1936,7 @@ static gboolean
 display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
 {
     v->ghost_zero = 0;
-    return(FALSE);
+    return (FALSE);
 }
 
 
@@ -2017,7 +2010,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
     int i, j, state;
     GtkWidget *button;
-
+    
     if (check_for_localized_numeric_point(event->keyval) == TRUE) {
         event->state = 0;
         event->keyval = GDK_KP_Decimal;
@@ -2062,12 +2055,14 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     }
     
     /* Connect home and end keys to move into the display entry */
-    if (event->keyval == GDK_Home) {
-        select_display_entry(0);
-        return (TRUE);
-    } else if (event->keyval == GDK_End) {
-        select_display_entry(-1);
-        return (TRUE);
+    if (!gtk_widget_is_focus(X->display_item)) {
+        if (event->keyval == GDK_Home) { /* || event->keyval == GDK_Left) { */
+            select_display_entry(0);
+            return (TRUE);
+        } else if (event->keyval == GDK_End) { /* || event->keyval == GDK_Right) { */
+            select_display_entry(-1);
+            return (TRUE);
+        }
     }
 
     for (i = 0; i < NBUTTONS; i++) {
@@ -2084,13 +2079,13 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             if (button_widgets[i].accelerator_keys[j] == event->keyval &&
                 (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
                 button_cb(button, NULL);
-                return(TRUE);
+                return (TRUE);
             }
             j++;
         }
     }
 
-    return(FALSE);
+    return (FALSE);
 }
 
 
@@ -2190,8 +2185,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             break;
     
         case EXPRS:
-            exp_append((char *) text);
-            refresh_display();
+            exp_insert((char *) text, ui_get_cursor()); // FIXME: Move out of gtk.c
+            refresh_display(-1);
             break;
     
         default:
@@ -2210,7 +2205,7 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
                                    get_proc, NULL);
     }
 
-    return(FALSE);
+    return (FALSE);
 }
 
 
@@ -2236,7 +2231,7 @@ static void
 undo_cb(GtkWidget *widget)
 {
     perform_undo();
-    refresh_display();
+    refresh_display(-1);
 }
 
 
@@ -2245,11 +2240,10 @@ static void
 redo_cb(GtkWidget *widget)
 {
     perform_redo();
-    refresh_display();
+    refresh_display(-1);
 }
 
 
-//FIXME
 /*ARGSUSED*/
 static void
 for_each_menu(GtkWidget *widget, gpointer data)
@@ -2357,8 +2351,7 @@ mode_radio_cb(GtkWidget *menu)
         ((v->modetype != SCIENTIFIC) ||
          (v->dtype == FIX && v->base == DEC))) {
         v->modetype = mode;
-        reset_mode_display();
-        do_mode(FALSE);
+        ui_set_mode(v->modetype);
     } else {
         if (request_change_mode()) {
             change_mode(mode);
@@ -2428,7 +2421,7 @@ static gboolean
 spframe_delete_cb(GtkWidget *dialog)
 {
     spframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return(TRUE);
+    return (TRUE);
 }
 
 
@@ -2885,7 +2878,6 @@ ui_load()
     ui_set_show_bitcalculating(v->bitcalculating_mode);
     
     ui_set_syntax_mode(v->syntax);
-    ui_set_display("0.00");
     ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);
     ui_set_base(v->base);

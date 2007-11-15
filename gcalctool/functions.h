@@ -31,12 +31,11 @@ char *gc_strdup(char *str);
 int usable_num(int MPnum[MP_SIZE]);
 
 void make_exp(char *number, int t[MP_SIZE]);
-void exp_append(char *text);
+int exp_insert(char *text, int);
 void exp_replace(char *text);
 void exp_del();
 
 struct exprm_state *get_state(void);
-void new_state(void);
 
 void perform_undo(void);
 void perform_redo(void);
@@ -53,7 +52,6 @@ void do_delete();
 void do_numtype(enum num_type);
 void do_expno();
 void do_immed();
-void do_mode(int);
 void do_number();
 void do_paren();
 void do_shift(int);

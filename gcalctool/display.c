@@ -129,7 +129,7 @@ clear_display(int initialise)
     mpcim(&i, v->MPdisp_val);
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
-    ui_set_display(v->display);
+    ui_set_display(v->display, -1);
     v->ghost_zero = 1;
 
     if (initialise == TRUE) {
@@ -142,13 +142,11 @@ clear_display(int initialise)
 }
 
 
+/* TODO: perhaps this function should be renamed to reset. */
 void
 initialise()
 {
-    /* TODO: perhaps this function should be renamed to reset. */
-
     int i;
-    struct exprm_state *e;
  
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = -1;         /* No arithmetic operator defined yet. */
@@ -160,9 +158,7 @@ initialise()
   
     v->new_input = 1;               /* Value zero is on calculator display */
 
-    e = get_state();
-    free(e->expression);
-    e->expression = NULL;
+    exp_del();
 }
 
 
@@ -531,7 +527,7 @@ paren_disp(int key)
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
     v->show_paren = 1;       /* Hack to get ui_set_display to really display it. */
-    ui_set_display(&v->display[n]);
+    ui_set_display(&v->display[n], -1);
     v->show_paren = 0;
 }
 
@@ -563,7 +559,7 @@ show_display(int *MPval)
 {
     if (!v->error) {
         STRNCPY(v->display, make_number(MPval, v->base, FALSE), MAXLINE - 1);
-        ui_set_display(v->display);
+        ui_set_display(v->display, -1);
     }
 }
 
@@ -571,11 +567,11 @@ show_display(int *MPval)
 /* In arithmetic precedence mode this routine should be called to redraw 
  * the display.
  */
-
 void
-refresh_display()
+refresh_display(int cursor)
 {
-    char localized[MAX_LOCALIZED];
+    int i, MP_reg[MP_SIZE];
+    char localized[MAX_LOCALIZED], *str, *ans, reg[3];
     struct exprm_state *e;
 
     switch (v->syntax) {
@@ -585,39 +581,28 @@ refresh_display()
 
         case EXPRS:
             e = get_state();
-
-            if (e->expression && strlen(e->expression)) {
-                char *str = gc_strdup(e->expression);
-                char *ans = make_number(e->ans, v->base, TRUE);
-
-                localize_number(localized, ans);
-                str_replace(&str, "Ans", localized);
-
-                { /* Replace registers with values. */
-                    char reg[3];
-                    int n = '0';
-                    int i;
-
-                    for (i = 0; i < 10; i++) {
-                        char *reg_val;
-                        int MP_reg[MP_SIZE];
-
-                        SNPRINTF(reg, 3, "R%c", n+i);
-                        do_rcl_reg(i, MP_reg);
-                        reg_val = make_number(MP_reg, v->base, FALSE);
-                        str_replace(&str, reg, reg_val);
-                    }
-                }
-                ui_set_display(str);
-                free(str);
-                v->ghost_zero = 0;
-            } else {
-                int MP1[MP_SIZE];
-
-                do_zero(MP1);
-                show_display(MP1);
-                v->ghost_zero = 1;
+            if (e->expression[0] == '\0') {
+                do_zero(MP_reg);
+                str = gc_strdup(make_number(MP_reg, v->base, FALSE));
+            } else {           
+                str = gc_strdup(e->expression);
             }
+            ans = make_number(e->ans, v->base, TRUE);
+
+            localize_number(localized, ans);
+            str_replace(&str, "Ans", localized);
+
+            /* Replace registers with values. */
+            for (i = 0; i < 10; i++) {
+                SNPRINTF(reg, 3, "R%d", i);
+                do_rcl_reg(i, MP_reg);
+                str_replace(&str, reg, make_number(MP_reg, v->base, FALSE));
+            }
+
+            printf("\"%s\" -> \"%s\"\n", e->expression, str);
+            ui_set_display(str, cursor);
+            free(str);
+            v->ghost_zero = 0;
             break;
 
         default:
@@ -639,7 +624,7 @@ gboolean display_is_result(void)
 
         case EXPRS:
             e = get_state();
-            if (!e->expression || !strcmp(e->expression, "Ans")) {
+            if (strcmp(e->expression, "Ans") == 0) {
                 return TRUE;
             }
             break;

@@ -535,7 +535,7 @@ doerr(char *errmes)
             strncpy(v->display, errmes, MAXLINE - 1);
             v->display[MAXLINE - 1] = '\0';
             ui_set_error_state(TRUE);
-            ui_set_display(v->display);
+            ui_set_display(v->display, -1);
             ui_beep();
             break;
 
@@ -706,7 +706,9 @@ init_state(void)
     n = 0;
     for (i = 0; i < MAX_REGISTERS; i++) {
         mpcim(&n, v->MPmvals[i]);
-    }   
+    }
+    
+    exp_del();
 }
 
 

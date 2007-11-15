@@ -177,9 +177,8 @@ struct button {
     enum button_flags flags; /* Misc flags */
 };
 
-struct exprm_state {       /* Expression mode state */
-    struct button button;  /* Current button/character pressed. */
-    int value;
+/* Expression mode state */
+struct exprm_state {
     int ans[MP_SIZE];      /* Previously calculated answer */
     char *expression;      /* Expression entered by user */
 };

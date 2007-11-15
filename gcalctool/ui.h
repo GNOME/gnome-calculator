@@ -31,7 +31,7 @@ void ui_start();
 void ui_make_registers(void);
 void ui_set_undo_enabled(gboolean, gboolean);
 
-void ui_set_display(char *);
+void ui_set_display(char *, int);
 gchar *ui_get_display(void);
 int ui_get_cursor(void);
 

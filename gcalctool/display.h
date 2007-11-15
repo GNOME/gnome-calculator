@@ -31,7 +31,7 @@ char *make_number(int *, int, int);
 void clear_display(int);
 void MPstr_to_num(char *, enum base_type, int *);
 void paren_disp(int);
-void refresh_display();
+void refresh_display(int);
 void show_display(int *);
 void process_item(struct button *, int);
 gboolean display_is_result(void);
