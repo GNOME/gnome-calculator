@@ -34,5 +34,6 @@ void paren_disp(int);
 void refresh_display();
 void show_display(int *);
 void process_item(struct button *, int);
+gboolean display_is_result(void);
 
 #endif /* DISPLAY_H */

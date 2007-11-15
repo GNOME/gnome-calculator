@@ -2315,10 +2315,7 @@ arithmetic_mode_cb(GtkWidget *widget)
 static void
 mode_radio_cb(GtkWidget *menu)
 {
-    struct exprm_state *e;
     int mode;             /* The new mode. */
-    int immediate = 0;    /* Set if we can change mode without warning user. */
-    int complete = 0;     /* Set if the user has completed a calculation. */
 
     if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu))) {
         return;
@@ -2339,39 +2336,15 @@ mode_radio_cb(GtkWidget *menu)
  *
  * (unless we are in Scientific mode with Decimal numeric base and Fixed).
  */
-
-    switch (v->syntax) {
-        case NPA:
-            if (v->old_cal_value < 0 ||
-                v->old_cal_value == KEY_CALCULATE) {
-                complete = 1;    /* Calculation is complete. */
-            }
-            break;
-
-        case EXPRS:
-            e = get_state();
-            if (!e->expression || !strcmp(e->expression, "Ans")) {
-                complete = 1;   /* Calculation is complete. */
-            }
-            break;
-        
-        default:
-            assert(FALSE);
-    }
-
-    if (complete) {
+    if (display_is_result()) {
         if ((v->modetype != SCIENTIFIC) ||
             (v->dtype == FIX && v->base == DEC)) {
-            immediate = 1;
+            v->modetype = mode;
+            reset_mode_display();
+            do_mode(FALSE);
+        } else if (request_change_mode()) {
+            change_mode(mode);
         }
-    }
-
-    if (immediate) {
-        v->modetype = mode;
-        reset_mode_display();
-        do_mode(FALSE);
-    } else if (request_change_mode()) {
-        change_mode(mode);
     }
 }
 

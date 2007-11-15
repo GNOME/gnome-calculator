@@ -624,3 +624,29 @@ refresh_display()
             assert(0);
     }
 }
+
+gboolean display_is_result(void)
+{
+    struct exprm_state *e;
+
+    switch (v->syntax) {
+        case NPA:
+            if (v->old_cal_value < 0 ||
+                v->old_cal_value == KEY_CALCULATE) {
+                return TRUE;
+            }
+            break;
+
+        case EXPRS:
+            e = get_state();
+            if (!e->expression || !strcmp(e->expression, "Ans")) {
+                return TRUE;
+            }
+            break;
+        
+        default:
+            assert(FALSE);
+    }
+    
+    return FALSE;
+}
