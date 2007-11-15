@@ -2336,13 +2336,14 @@ mode_radio_cb(GtkWidget *menu)
  *
  * (unless we are in Scientific mode with Decimal numeric base and Fixed).
  */
-    if (display_is_result()) {
-        if ((v->modetype != SCIENTIFIC) ||
-            (v->dtype == FIX && v->base == DEC)) {
-            v->modetype = mode;
-            reset_mode_display();
-            do_mode(FALSE);
-        } else if (request_change_mode()) {
+    if (display_is_result() &&
+        ((v->modetype != SCIENTIFIC) ||
+         (v->dtype == FIX && v->base == DEC))) {
+        v->modetype = mode;
+        reset_mode_display();
+        do_mode(FALSE);
+    } else {
+        if (request_change_mode()) {
             change_mode(mode);
         }
     }
