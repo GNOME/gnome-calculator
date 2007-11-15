@@ -599,7 +599,6 @@ refresh_display(int cursor)
                 str_replace(&str, reg, make_number(MP_reg, v->base, FALSE));
             }
 
-            printf("\"%s\" -> \"%s\"\n", e->expression, str);
             ui_set_display(str, cursor);
             free(str);
             v->ghost_zero = 0;

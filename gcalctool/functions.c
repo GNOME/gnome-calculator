@@ -440,8 +440,6 @@ do_expression(int function, int arg, int cursor)
     char buf[MAXLINE];
     struct exprm_state *e;
     
-    printf("cursor = %d\n", cursor);
-
     new_state();
     e = get_state();
 
