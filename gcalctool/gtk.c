@@ -468,20 +468,17 @@ enum {
 static XVars X;
 
 
-void
-ui_set_syntax_mode(enum syntax mode)
+/* FIXME: Move this into display.c (reset_display) */
+static void
+reset_display(void)
 {
     struct exprm_state *e;
-    GtkWidget *widget;
 
-    /* TODO: Always do clear things when mode is changed. */      
-    v->syntax = mode;
     switch (v->syntax) {
         case NPA:
             v->noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
             show_display(v->MPdisp_val);
-            ui_set_statusbar(_("Activated no operator precedence mode"), "");
             clear_undo_history();
             break;
 
@@ -490,21 +487,41 @@ ui_set_syntax_mode(enum syntax mode)
             MPstr_to_num("0", DEC, e->ans);
             exp_del();
             show_display(e->ans);
-            ui_set_statusbar(
-                 _("Activated expression mode with operator precedence"), "");
             break;
         
         default:
             assert(0);
     }
+}
+
+void
+ui_set_syntax_mode(enum syntax mode)
+{
+    GtkWidget *widget;
+
+    v->syntax = mode;
+    
+    reset_display();
+    
+    if (mode == NPA) {
+        ui_set_statusbar(_("Activated no operator precedence mode"), "");
+    } else {
+        ui_set_statusbar(
+            _("Activated expression mode with operator precedence"), "");
+    }
+    
+    /* Save the syntax mode */
     set_resource(R_SYNTAX, Rsstr[v->syntax]);
+
+    
+    /* ??? */
     ui_set_mode(v->modetype);
-    // FIXME: We can't allow the display to be editable. See bug #326938
+    
+    /* */
     gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
                                (v->syntax == EXPRS));
     
-    /* Use loaded Arithmetic Precedence mode setting. */
-    // FIXME: Merge with arithmetic_mode_cb()
+    /* Update menu */
     if (v->syntax == EXPRS) {
         widget = GET_WIDGET("arithmetic_precedence_menu");
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
@@ -2769,9 +2786,6 @@ create_kframe()
     gtk_widget_modify_font(X->display_item, font_desc);
     pango_font_description_free(font_desc);
     gtk_widget_set_name(X->display_item, "displayitem");
-    // FIXME: We can't allow the display to be editable. See bug #326938
-    gtk_text_view_set_editable(GTK_TEXT_VIEW(X->display_item), 
-                               (v->syntax == EXPRS));
     atk_object_set_role(gtk_widget_get_accessible(X->display_item), 
                                                   ATK_ROLE_EDITBAR);
 
@@ -2897,8 +2911,6 @@ ui_load()
 void
 ui_start()
 {
-    struct exprm_state *e;
-    
     X->warn_change_mode = TRUE; // FIXME: Load from GConf
     
     ui_set_base(v->base);
@@ -2907,24 +2919,10 @@ ui_start()
 
     gtk_widget_show(X->kframe);
 
-    switch (v->syntax) { 
-        case NPA:
-            break;
-
-        case EXPRS:
-            /* Init expression mode.
-             * This must be executed after do_base is called at init.
-             * FIXME: The init code here is duplicated elsewhere.
-             */
-            e = get_state();
-            MPstr_to_num("0", DEC, e->ans);
-            exp_del();
-            show_display(e->ans);
-            break;
-
-        default:
-            assert(0);
-    }
+    /* Init expression mode.
+     * This must be executed after do_base is called at init.
+     */    
+    reset_display();
 
     gtk_main();
 }
