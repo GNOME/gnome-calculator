@@ -39,6 +39,15 @@ gcalctool_SOURCES = \
 	lr_parser.c \
 	lr_parser.h \
 	lr_parser.tab.h
+	
+CLEANFILES = \
+	ce_parser.tab.h \
+	ce_parser.tab.c \
+	lex.ce.c \
+	lex.lr.c \
+	libparser.a \
+	lr_parser.tab.h \
+	lr_parser.tab.c
 
 gcalctool_LDADD = \
 	$(PACKAGE_LIBS) \
@@ -56,34 +65,34 @@ libparser.a: \
 	$(AR) r libparser.a $^
 	$(RANLIB) libparser.a
 
-ce_parser.o: ce_parser.c ce_parser.h
+ce_parser.o: ce_parser.c ce_parser.h calctool.h
 	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/ce_parser.c
 
-lr_parser.o: lr_parser.c lr_parser.h
+lr_parser.o: lr_parser.c lr_parser.h calctool.h
 	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lr_parser.c
 
-lex.ce.o: lex.ce.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $^
+lex.ce.o: lex.ce.c calctool.h
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lex.ce.c
 
-lex.lr.o: lex.lr.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $^
+lex.lr.o: lex.lr.c calctool.h
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lex.lr.c
 
 ce_parser.tab.o: ce_parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $^
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/ce_parser.tab.c
 
-ce_parser.tab.c: ce_parser.y
+ce_parser.tab.c: ce_parser.y calctool.h
 	bison -d -p ce -d $(srcdir)/ce_parser.y
 
 lr_parser.tab.o: lr_parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $^
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lr_parser.tab.c
 
-lr_parser.tab.c: lr_parser.y
+lr_parser.tab.c: lr_parser.y calctool.h
 	bison -d -p lr $(srcdir)/lr_parser.y
 
 lex.ce.c: ce_parser.tab.c ce_tokeniser.l
 	$(LEX) -Pce $(srcdir)/ce_tokeniser.l
 
-lex.lr.c: lr_parser.tab.c lr_tokeniser.l
+lex.lr.c: lr_parser.tab.c lr_tokeniser.l calctool.h
 	$(LEX) -i -Plr $(srcdir)/lr_tokeniser.l
 
 code-format: 
