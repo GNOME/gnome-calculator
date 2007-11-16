@@ -2119,7 +2119,7 @@ static void
 get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
     int ret;
-    gchar *dstp, *end_buffer, *srcp, *text;
+    gchar *dstp, *end_buffer, *srcp, *text, c;
 
     if (buffer == NULL) {
         return;
@@ -2128,50 +2128,61 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     end_buffer = (gchar *) (buffer + strlen(buffer));
     text = malloc(strlen(buffer)+1);
 
-    srcp = (gchar *) buffer;
     dstp = text;
-    while (srcp < end_buffer) {
-
+    for (srcp = (gchar *) buffer; srcp < end_buffer; srcp++) {
         /* If the clipboard buffer contains any occurances of the "thousands
          * separator", remove them.
          */
         if (*srcp == v->tsep[0]) {
             if (strstr(srcp, v->tsep) == srcp) {
-                srcp += strlen(v->tsep);
-            } else {
-                *dstp++ = *srcp++;
-            }
-        } else {
-
-            /* If an "A", "B", "C", "D" or "F" character is encountered, it 
-             * will be converted to its lowercase equivalent. If an "E" is 
-             * found,  and the next character is a "-" or a "+", then it 
-             * remains as an upper case "E" (it's assumed to be a possible 
-             * exponential number), otherwise its converted to a lower case 
-             * "e". See bugs #455889 and #469245 for more details.
-             */
-            switch (*srcp) {
-                case 'A':
-                case 'B':
-                case 'C':
-                case 'D':
-                case 'F': *dstp++ = tolower(*srcp);
-                          srcp++;
-                          break;
-
-                case 'E': if (srcp < (end_buffer-1)) {
-                              if (*(srcp+1) != '-' &&
-                                  *(srcp+1) != '+') {
-                                  *dstp++ = tolower(*srcp);
-                                  srcp++;
-                                  break;
-                              }
-                          }
-                          /*FALLTHROUGH*/
-
-                default:  *dstp++ = *srcp++;
+                srcp += strlen(v->tsep) - 1;
+                continue;
             }
         }
+
+        /* If an "A", "B", "C", "D" or "F" character is encountered, it 
+         * will be converted to its lowercase equivalent. If an "E" is 
+         * found,  and the next character is a "-" or a "+", then it 
+         * remains as an upper case "E" (it's assumed to be a possible 
+         * exponential number), otherwise its converted to a lower case 
+         * "e". See bugs #455889 and #469245 for more details.
+         */
+        switch (*srcp) {
+            /* Replace tabs with spaces */
+            case '\t':
+                c = ' ';
+                break;
+                
+            /* Terminate on newlines */
+            case '\r':
+            case '\n':
+                c = '\0';
+                break;
+                
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+            case 'F':
+                c = tolower(*srcp);
+                break;
+
+            case 'E':
+                c = *srcp;
+                if (srcp < (end_buffer-1)) {
+                    if (*(srcp+1) != '-' &&
+                        *(srcp+1) != '+') {
+                        c = tolower(*srcp);
+                    }
+                }
+                break;
+            
+            default:
+                c = *srcp;
+                break;
+        }
+        
+        *dstp++ = c;
     }
     *dstp++ = '\0';
 
