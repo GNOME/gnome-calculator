@@ -180,6 +180,8 @@ new_state(void)
 void
 perform_undo(void)
 {
+    struct exprm_state *e;
+    
     if (v->h.current != v->h.begin) {
         v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
         ui_set_statusbar("", "");
@@ -187,6 +189,9 @@ perform_undo(void)
         ui_set_statusbar(_("No undo history"), "gtk-dialog-warning");
     }
     update_undo_redo_button_sensitivity();
+    
+    e = get_state();
+    refresh_display(e->cursor);
 }
 
 
@@ -443,6 +448,8 @@ do_expression(int function, int arg, int cursor)
     new_state();
     e = get_state();
 
+    e->cursor = cursor;
+
     ui_set_statusbar("", "");
 
     /* Starting a number after a calculation clears the display */
@@ -505,13 +512,23 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case KEY_CALCULATE:
+            /* If showing a result display the calculation that caused
+             * this result */
+            /* TODO: Work out why two undo steps are required and why
+             * the cursor must be taken from the first undo */
             if (strcmp(e->expression, "Ans") == 0) {
                 perform_undo();
+                e = get_state();
+                cursor = e->cursor;
                 if (is_undo_step()) {
                     perform_undo();
                 }
+
+            /* Do nothing */                
             } else if (e->expression[0] == '\0') {
-                ; /* Do nothing */
+                ;
+                
+            /* Solve the equation */
             } else {
                 int MPval[MP_SIZE];
                 char *message = NULL;
@@ -520,6 +537,7 @@ do_expression(int function, int arg, int cursor)
                     case 0:
                         mpstr(MPval, e->ans);
                         exp_replace("Ans");
+                        cursor = -1;
                         break;
 
                     case -PARSER_ERR_INVALID_BASE:

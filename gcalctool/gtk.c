@@ -2231,7 +2231,6 @@ static void
 undo_cb(GtkWidget *widget)
 {
     perform_undo();
-    refresh_display(-1);
 }
 
 
