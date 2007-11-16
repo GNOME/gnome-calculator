@@ -264,10 +264,11 @@ exp_insert(char *text, int cursor)
     } else {
         display = ui_get_display();
         SNPRINTF(buf, MAXLINE, "%.*s%s%s", cursor, display, text, display + cursor);
+        cursor += strlen(text);
     }
     exp_replace(buf);
     
-    return cursor + strlen(text);
+    return cursor;
 }
 
 

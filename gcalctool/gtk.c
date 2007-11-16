@@ -990,10 +990,14 @@ ui_set_display(char *str, int cursor)
     gtk_text_buffer_set_text(X->display_buffer, str, -1);
     
     if (cursor < 0) {
-        scroll_right();
+        gtk_text_buffer_get_end_iter(X->display_buffer, &iter);
     } else {        
         gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, cursor);
-        gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    }
+    gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    
+    if (cursor < 0) {
+        scroll_right();
     }
 }
 
@@ -1118,12 +1122,18 @@ ui_get_display(void)
 }
 
 
-int
-ui_get_cursor(void)
+static int
+get_cursor(void)
 {
     gint pos;
     g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
-    return (pos);
+    
+    /* Convert the last position to -1 */
+    if (pos == gtk_text_buffer_get_char_count(X->display_buffer)) {
+        return (-1);
+    } else {
+        return (pos);
+    }
 }
 
 
@@ -1313,14 +1323,6 @@ base_cb(GtkWidget *widget)
 
 static void do_button(int function, int arg)
 {
-    int cursor;
-    
-    if (gtk_widget_is_focus(X->display_item)) {
-        cursor = ui_get_cursor();
-    } else {
-        cursor = -1;
-    }
-
     switch (v->syntax) {
         case NPA:
             process_item(&buttons[function], arg);
@@ -1332,7 +1334,7 @@ static void do_button(int function, int arg)
             break;
 
         case EXPRS:
-            do_expression(function, arg, cursor);
+            do_expression(function, arg, get_cursor());
             set_bit_panel();
             break;
 
@@ -2185,7 +2187,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             break;
     
         case EXPRS:
-            exp_insert((char *) text, ui_get_cursor()); // FIXME: Move out of gtk.c
+            exp_insert((char *) text, get_cursor()); // FIXME: Move out of gtk.c
             refresh_display(-1);
             break;
     
