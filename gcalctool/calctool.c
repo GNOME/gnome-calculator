@@ -671,7 +671,6 @@ init_state(void)
 {
     int acc, i, n, size;
 
-    v->ghost_zero    = 1;      /* Display initially has empty content. */
     v->accuracy      = 9;      /* Initial accuracy. */
     v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
     v->base          = DEC;    /* Initial base. */

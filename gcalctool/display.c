@@ -130,7 +130,6 @@ clear_display(int initialise)
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
     ui_set_display(v->display, -1);
-    v->ghost_zero = 1;
 
     if (initialise == TRUE) {
         v->show_paren = 0;
@@ -601,7 +600,6 @@ refresh_display(int cursor)
 
             ui_set_display(str, cursor);
             free(str);
-            v->ghost_zero = 0;
             break;
 
         default:

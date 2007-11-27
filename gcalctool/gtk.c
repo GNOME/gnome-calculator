@@ -978,6 +978,7 @@ ui_set_display(char *str, int cursor)
             str = localized;
         }
     }
+    
     gtk_text_buffer_set_text(X->display_buffer, str, -1);
     
     if (cursor < 0) {
@@ -1914,26 +1915,6 @@ inv_cb(GtkWidget *widget)
 
 
 /*ARGSUSED*/
-static gboolean
-display_focus_out_cb(GtkWidget *widget)
-{
-    if (v->syntax == EXPRS) {
-        exp_replace(ui_get_display());
-    }
-    return (FALSE);
-}
-
-
-/*ARGSUSED*/
-static gboolean
-display_focus_in_cb(GtkWidget *widget, GdkEventKey *event)
-{
-    v->ghost_zero = 0;
-    return (FALSE);
-}
-
-
-/*ARGSUSED*/
 static void
 menu_pos_func(GtkMenu *menu, gint *x, gint *y,
               gboolean *push_in, gpointer user_data)
@@ -2566,8 +2547,6 @@ create_kframe()
     CONNECT_SIGNAL(exchange_menu_cb);
     CONNECT_SIGNAL(arithmetic_mode_cb);
     CONNECT_SIGNAL(mouse_button_cb);
-    CONNECT_SIGNAL(display_focus_in_cb);
-    CONNECT_SIGNAL(display_focus_out_cb);
     /* Detect when populating the right-click menu to enable pasting */
     CONNECT_SIGNAL(buffer_populate_popup_cb);
     CONNECT_SIGNAL(shift_cb);

@@ -872,7 +872,7 @@ do_base(enum base_type b)
             if (ret) {
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
-            } else if (!v->ghost_zero) {
+            } else {
                 mpstr(MP, e->ans);
                 exp_replace("Ans");
             }
@@ -1216,7 +1216,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
             if (ret) {
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
-            } else if (!v->ghost_zero) {
+            } else {
                 mpstr(MP, e->ans);
                 exp_replace("Ans");
                 ui_make_registers();

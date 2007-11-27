@@ -234,8 +234,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int accuracy;      /* Number of digits precision (Max 9). */
     int cur_op;        /* Current arithmetic operation. */
     int error;         /* Indicates some kind of display error. */
-    int ghost_zero;    /* Flag to indicate display with "0", actually 
-                           having empty content. */
     int math_error;    /* Math error (used in expression mode) */
     int key_exp;       /* Set if entering exponent number. */
     int new_input;     /* New number input since last op. */
