@@ -1727,11 +1727,27 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     double number;
     unsigned long long lval;
     int n, MP1[MP_SIZE], index;
+    struct exprm_state *e =  get_state();
 
     index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box),
                                               "bit_index"));
     n = MAXBITS - index - 1;
-    MPstr_to_num(v->display, v->base, MP1);
+
+    switch (v->syntax) {
+    case NPA:
+        MPstr_to_num(v->display, v->base, MP1);
+        break;
+    case EXPRS: 
+        {
+            int ret = usable_num(e->ans);
+            assert(!ret);
+            mpstr(e->ans, MP1);
+        }
+        break;
+    default:
+        assert(FALSE);
+    }
+
     mpcmd(MP1, &number);
     lval = (long long) number;
 
@@ -1742,12 +1758,25 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
         lval |=  (1LL << n);
         gtk_label_set_text(GTK_LABEL(X->bits[index]), " 1");
     }
-
     number = (double) lval;
-    mpcdm(&number, v->MPdisp_val);
-    show_display(v->MPdisp_val);
-    v->toclear = 0;
 
+    switch (v->syntax) {
+    case NPA:
+        mpcdm(&number, v->MPdisp_val);
+        show_display(v->MPdisp_val);
+        break;
+    case EXPRS: 
+        {
+            mpcdm(&number, e->ans);
+            exp_replace("Ans");
+            refresh_display(-1);
+        }
+        break;
+    default:
+        assert(FALSE);
+    }
+
+    v->toclear = 0;
     return (TRUE);
 }
 
