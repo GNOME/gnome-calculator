@@ -62,6 +62,9 @@ static char *hostname_titles[] = {
     N_("Calculator [%s] - Scientific")
 };
 
+/* FIXME: Config value for boolean bitcalculating mode is a string... */
+static char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
+
 /*  This table shows the keyboard values that are currently being used:
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -449,10 +452,10 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
-    int menuval;                  /* Index to button array at menu time. */
     char *lnp;                    /* Localized numerical point (UTF8 format) */
 
-    int warn_change_mode;    /* Should we warn user when changing modes? */
+    gboolean warn_change_mode;    /* Should we warn user when changing modes? */
+    gboolean bitcalculating_mode;
 };
 
 typedef struct Xobject *XVars;
@@ -666,10 +669,10 @@ void
 ui_set_show_bitcalculating(gboolean visible)
 {
     GtkWidget *menu;
-    
-    v->bitcalculating_mode = visible;
+
+    X->bitcalculating_mode = visible;
     ui_set_mode(v->modetype);
-    set_resource(R_BITCALC, Rcstr[v->bitcalculating_mode]);
+    set_resource(R_BITCALC, Rcstr[visible ? 1 : 0]);
 
     menu = GET_WIDGET("show_bitcalculating_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
@@ -748,64 +751,30 @@ ui_set_mode(enum mode_type mode)
     gint w, h;
     char *hostname, title[MAXLINE];
     GtkWidget *menu;
-    
+
     refresh_display(-1);
     ui_make_registers();
     
     /* Save mode */
     set_resource(R_MODE, Rmstr[(int) v->modetype]);
-  
-    switch (mode) {
-        case BASIC:
-            gtk_widget_show(X->bas_panel);
-            gtk_widget_hide(X->adv_panel);
-            gtk_widget_hide(X->fin_panel);
-            gtk_widget_hide(X->mode_panel);
-            gtk_widget_hide(X->bit_panel);
-            gtk_widget_hide(X->sci_panel);
-            menu = GET_WIDGET("view_basic_menu");
-            break;
-
-        case ADVANCED:
-            gtk_widget_hide(X->bas_panel);
-            gtk_widget_show(X->adv_panel);
-            gtk_widget_hide(X->fin_panel);
-            gtk_widget_hide(X->mode_panel);
-            gtk_widget_hide(X->bit_panel);
-            gtk_widget_hide(X->sci_panel);
-            menu = GET_WIDGET("view_advanced_menu");
-            break;
-
-        case FINANCIAL:
-            gtk_widget_hide(X->bas_panel);
-            gtk_widget_show(X->adv_panel);
-            gtk_widget_show(X->fin_panel);
-            gtk_widget_hide(X->mode_panel);
-            gtk_widget_hide(X->bit_panel);
-            gtk_widget_hide(X->sci_panel);
-            menu = GET_WIDGET("view_financial_menu");
-            break;
-
-        case SCIENTIFIC:
-            gtk_widget_hide(X->bas_panel);
-            gtk_widget_show(X->adv_panel);
-            gtk_widget_hide(X->fin_panel);
-            gtk_widget_show_all(X->mode_panel);
-            if (v->bitcalculating_mode) {
-                gtk_widget_show_all(X->bit_panel);
-            } else {
-                gtk_widget_hide(X->bit_panel);
-            }
-            gtk_widget_show(X->sci_panel);
-            menu = GET_WIDGET("view_scientific_menu");
-            break;
-        
-        default:
-            assert(FALSE);
-            return;
-    }
-   
     
+    /* Show/enable the widgets used in this mode */
+    g_object_set(G_OBJECT(X->bas_panel),  "visible", mode == BASIC, NULL);
+    g_object_set(G_OBJECT(X->adv_panel),  "visible", mode != BASIC, NULL);
+    g_object_set(G_OBJECT(X->fin_panel),  "visible", mode == FINANCIAL, NULL);
+    g_object_set(G_OBJECT(X->mode_panel), "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X->sci_panel),  "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X->bit_panel),  "visible",
+                 mode == SCIENTIFIC && X->bitcalculating_mode, NULL);
+    gtk_widget_set_sensitive(GET_WIDGET("show_bitcalculating_menu"),
+                             mode == SCIENTIFIC);
+    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
+                             mode == SCIENTIFIC);
+    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"),
+                             mode != BASIC);
+    
+    /* HACK: Some horrible hack down below to keep the buttons the same size.
+     * There must be a safer way of doing this... */
     r = g_new0(GtkRequisition, 1);
     gtk_widget_size_request(X->menubar, r);
     w = r->width;
@@ -831,13 +800,13 @@ ui_set_mode(enum mode_type mode)
         w = MAX(w, r->width);
         h += r->height;
     }
+    g_free(r);
   
     /* For initial display. */
     gtk_window_set_default_size(GTK_WINDOW(X->kframe), w, h);
     gtk_window_resize(GTK_WINDOW(X->kframe), w, h);
-  
-    g_free(r);
-    
+
+    /* Set the title */
     if((hostname = make_hostname())) {
         SNPRINTF(title, MAXLINE, hostname_titles[mode], hostname);
         g_free(hostname);
@@ -846,6 +815,28 @@ ui_set_mode(enum mode_type mode)
     }
     gtk_window_set_title(GTK_WINDOW(X->kframe), title);
 
+    /* Update the menu */
+    switch (mode) {
+        case BASIC:
+            menu = GET_WIDGET("view_basic_menu");
+            break;
+
+        case ADVANCED:
+            menu = GET_WIDGET("view_advanced_menu");
+            break;
+
+        case FINANCIAL:
+            menu = GET_WIDGET("view_financial_menu");
+            break;
+
+        case SCIENTIFIC:
+            menu = GET_WIDGET("view_scientific_menu");
+            break;
+        
+        default:
+            assert(FALSE);
+            return;
+    }
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), TRUE);
 }
 
@@ -2879,15 +2870,21 @@ void
 ui_load()
 {
     int boolval;
+    char *resource;
+    gboolean show_bit;
 
     read_cfdefs();
     
     /* Create main gcalctool window. */
     create_kframe();
+    
+    /* Load configuration */
+    resource = get_resource(R_BITCALC);
+    show_bit = resource != NULL && strcmp(resource, Rcstr[0]) != 0;
 
     ui_set_show_thousands_seperator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
-    ui_set_show_bitcalculating(v->bitcalculating_mode);
+    ui_set_show_bitcalculating(show_bit);
     
     ui_set_syntax_mode(v->syntax);
     ui_set_mode(v->modetype);

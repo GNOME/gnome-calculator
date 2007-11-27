@@ -247,7 +247,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int show_tsep;     /* Set if the thousands seperator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int toclear;       /* Indicates if display should be cleared. */
-    int bitcalculating_mode;  /* 0 = no, else yes */
 };
 
 typedef struct calcVars *Vars;

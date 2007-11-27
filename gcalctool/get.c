@@ -46,7 +46,6 @@ char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL",
                               "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
-char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 static GConfClient *client = NULL;
 
@@ -322,23 +321,6 @@ read_resources()    /* Read all possible resources from the database. */
                     v->progname, str);
         } else {
             v->syntax = i;
-        }
-    }
-
-    v->bitcalculating_mode = 0;            /* default = off. */
-
-    if (get_str_resource(R_BITCALC, str)) {
-        for (i = 0; i < MAXBITCALC; i++) {
-            if (EQUAL(str, Rcstr[i])) {
-                break;
-            }
-        }
-      
-        if (i == MAXBITCALC) {
-            FPRINTF(stderr, _("%s: invalid bitcalc choice [%s]\n"), 
-                    v->progname, str);
-        } else {
-            v->bitcalculating_mode = i;
         }
     }
 
