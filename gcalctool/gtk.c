@@ -683,7 +683,7 @@ ui_set_show_bitcalculating(gboolean visible)
          * toggled, causing the displayed integer value to be adjusted 
          * accordingly.
          */
-        ui_set_statusbar(_("Bit calculation extension activated. Click on bit value to toggle them."), "");
+        ui_set_statusbar(_("Bit calculation extension activated. Click on bit values to toggle them."), "");
     } else {
         ui_set_statusbar("", "");
     }
@@ -1745,18 +1745,17 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     n = MAXBITS - index - 1;
 
     switch (v->syntax) {
-    case NPA:
-        MPstr_to_num(v->display, v->base, MP1);
-        break;
-    case EXPRS: 
-        {
+        case NPA:
+            MPstr_to_num(v->display, v->base, MP1);
+            break;
+        case EXPRS: {
             int ret = usable_num(e->ans);
             assert(!ret);
             mpstr(e->ans, MP1);
         }
         break;
-    default:
-        assert(FALSE);
+        default:
+            assert(FALSE);
     }
 
     mpcmd(MP1, &number);
@@ -1772,19 +1771,17 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     number = (double) lval;
 
     switch (v->syntax) {
-    case NPA:
-        mpcdm(&number, v->MPdisp_val);
-        show_display(v->MPdisp_val);
-        break;
-    case EXPRS: 
-        {
+        case NPA:
+            mpcdm(&number, v->MPdisp_val);
+            show_display(v->MPdisp_val);
+            break;
+        case EXPRS:
             mpcdm(&number, e->ans);
             exp_replace("Ans");
             refresh_display(-1);
-        }
-        break;
-    default:
-        assert(FALSE);
+            break;
+        default:
+            assert(FALSE);
     }
 
     v->toclear = 0;
