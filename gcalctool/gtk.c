@@ -676,6 +676,17 @@ ui_set_show_bitcalculating(gboolean visible)
 
     menu = GET_WIDGET("show_bitcalculating_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
+
+    if (visible) {
+        /* Translators: When the bit calculation extension is visible, by 
+         * clicking on any of these individual bits, their value can be 
+         * toggled, causing the displayed integer value to be adjusted 
+         * accordingly.
+         */
+        ui_set_statusbar(_("Bit calculation extension activated. Click on bit value to toggle them."), "");
+    } else {
+        ui_set_statusbar("", "");
+    }
 }
 
 
