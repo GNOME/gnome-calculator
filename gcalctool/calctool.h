@@ -134,6 +134,8 @@ enum
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
+#define DEFAULT_ACCURACY 9
+
 #ifndef MAXLINE
 #define MAXLINE        512        /* Length of character strings. */
 #endif /*MAXLINE*/

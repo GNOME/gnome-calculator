@@ -224,7 +224,7 @@
 		      <property name="tooltip" translatable="yes">Scientific</property>
 		      <property name="label" translatable="yes">_Scientific</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">True</property>
+		      <property name="active">False</property>
 		      <property name="group">view_basic_menu</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -327,7 +327,7 @@
 		      <property name="tooltip" translatable="yes">Use Arithmetic Precedence</property>
 		      <property name="label" translatable="yes">A_rithmetic Precedence</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">True</property>
+		      <property name="active">False</property>
 		      <property name="group">ltr_precedence_menu</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -461,7 +461,7 @@
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
-		      <property name="active">True</property>
+		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
 		      <signal name="toggled" handler="trig_cb"/>
@@ -6588,7 +6588,7 @@
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item_other">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_Other (10) ...</property>
+      <property name="label" translatable="yes">_Other (%d) ...</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6598,6 +6598,21 @@
 
   <child>
     <widget class="GtkSeparatorMenuItem" id="separator4">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="acc_item_default">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Reset to _Default (%d)</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="accuracy_default_cb" last_modification_time="Sun, 02 Dec 2007 08:57:01 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkSeparatorMenuItem" id="separator5">
       <property name="visible">True</property>
     </widget>
   </child>

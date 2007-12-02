@@ -539,9 +539,9 @@ ui_set_accuracy(int accuracy)
     
     v->accuracy = accuracy;
     
-    SNPRINTF(text, MAXLINE, _("Other (%d) ..."), accuracy);
+    SNPRINTF(text, MAXLINE, _("_Other (%d) ..."), accuracy);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
-    gtk_label_set_text(GTK_LABEL(widget), text);
+    gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 
     desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric places.",
                                     "Set accuracy from 0 to %d numeric places.",
@@ -1117,7 +1117,7 @@ gchar *
 ui_get_display(void)
 {
     GtkTextIter start, end;
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);   
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
     return (gtk_text_buffer_get_text(X->display_buffer,
                                      &start,
                                      &end,
@@ -1666,7 +1666,7 @@ change_mode(int mode)
 
     ui_set_base(DEC);
     ui_set_numeric_mode(FIX);
-    ui_set_accuracy(9);
+    ui_set_accuracy(DEFAULT_ACCURACY);
     ui_set_show_thousands_seperator(FALSE);
     ui_set_show_trailing_zeroes(FALSE);
     ui_set_mode(v->modetype);
@@ -2407,6 +2407,14 @@ accuracy_other_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 static void
+accuracy_default_cb(GtkWidget *widget)
+{
+    do_accuracy(DEFAULT_ACCURACY);
+}
+
+
+/*ARGSUSED*/
+static void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
     gboolean visible;    
@@ -2577,6 +2585,7 @@ create_kframe()
     CONNECT_SIGNAL(show_registers_cb);
     CONNECT_SIGNAL(accuracy_radio_cb);
     CONNECT_SIGNAL(accuracy_other_cb);
+    CONNECT_SIGNAL(accuracy_default_cb);    
     CONNECT_SIGNAL(constant_menu_cb);
     CONNECT_SIGNAL(function_menu_cb);
     CONNECT_SIGNAL(store_menu_cb);
@@ -2790,7 +2799,6 @@ create_kframe()
     add_cf_column(GTK_TREE_VIEW(treeview), _("Description"),
                   COLUMN_DESCRIPTION, TRUE);
 
-
     X->display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X->display_item));
     gtk_widget_ensure_style(X->display_item);
     font_desc = pango_font_description_copy(X->display_item->style->font_desc);
@@ -2886,8 +2894,9 @@ void
 ui_load()
 {
     int boolval;
-    char *resource;
+    char *resource, text[MAXLINE];
     gboolean show_bit;
+    GtkWidget *widget;
 
     read_cfdefs();
     
@@ -2923,6 +2932,11 @@ ui_load()
         gtk_window_set_focus(GTK_WINDOW(X->kframe),
                              GTK_WIDGET(X->clear_buttons[1]));
     }
+
+    /* Set default accuracy menu item */
+    SNPRINTF(text, MAXLINE, _("Reset to _Default (%d)"), DEFAULT_ACCURACY);
+    widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_default")));
+    gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 }
 
 void

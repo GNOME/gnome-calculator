@@ -630,7 +630,7 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                         FPRINTF(stderr, 
                                 _("%s: accuracy should be in the range 0-%d\n"),
                                 v->progname, MAXACC);
-                        v->accuracy = 9;
+                        v->accuracy = DEFAULT_ACCURACY;
                     }
                     break;
                 
@@ -671,7 +671,7 @@ init_state(void)
 {
     int acc, i, n, size;
 
-    v->accuracy      = 9;      /* Initial accuracy. */
+    v->accuracy      = DEFAULT_ACCURACY;
     v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
     v->base          = DEC;    /* Initial base. */
     v->dtype         = FIX;    /* Initial number display mode. */
