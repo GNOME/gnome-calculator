@@ -650,10 +650,8 @@ do_calc()      /* Perform arithmetic calculation and display result. */
             break;
 
         case KEY_MODULUS_DIVIDE:
-            mpcmim(v->MPresult, MP1);
-            mpcmim(v->MPdisp_val, MP2);
-            if (!mpeq(v->MPresult, MP1) || !mpeq(v->MPdisp_val, MP2)) {
-                doerr(_("Error, operands must be integers"));
+            if (!is_integer(v->MPresult) || !is_integer(v->MPdisp_val)) {
+                ui_set_statusbar(_("Error, operands must be integers"), "");
             }
 
             mpdiv(v->MPresult, v->MPdisp_val, MP1);
