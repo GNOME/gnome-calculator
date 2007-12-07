@@ -651,13 +651,14 @@ do_calc()      /* Perform arithmetic calculation and display result. */
 
         case KEY_MODULUS_DIVIDE:
             if (!is_integer(v->MPresult) || !is_integer(v->MPdisp_val)) {
-                ui_set_statusbar(_("Error, operands must be integers"), "");
+                ui_set_statusbar(_("Error, operands must be integers"),
+                                 "gtk-dialog-error");
+            } else {
+                mpdiv(v->MPresult, v->MPdisp_val, MP1);
+                mpcmim(MP1, MP1);
+                mpmul(MP1, v->MPdisp_val, MP2);
+                mpsub(v->MPresult, MP2, v->MPresult);
             }
-
-            mpdiv(v->MPresult, v->MPdisp_val, MP1);
-            mpcmim(MP1, MP1);
-            mpmul(MP1, v->MPdisp_val, MP2);
-            mpsub(v->MPresult, MP2, v->MPresult);
             break;
 
         case KEY_X_POW_Y:
