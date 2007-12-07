@@ -214,12 +214,10 @@ calc_modulus(int op1[MP_SIZE],
 {
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
-    mpcmim(op1, MP1);
-    mpcmim(op2, MP2);
-    if (!mpeq(op1, MP1) || !mpeq(op2, MP2)) {
-	return -EINVAL;
+    if (!is_integer(op1) || !is_integer(op2)) {
+        return -EINVAL;
     }
-    
+
     mpdiv(op1, op2, MP1);
     mpcmim(MP1, MP1);
     mpmul(MP1, op2, MP2);
