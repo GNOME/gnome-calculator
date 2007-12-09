@@ -763,11 +763,22 @@ ui_set_mode(enum mode_type mode)
     char *hostname, title[MAXLINE];
     GtkWidget *menu;
 
-    refresh_display(-1);
-    ui_make_registers();
+    if (v->modetype != mode) {
+        v->modetype = mode;
+
+        ui_set_base(DEC);
+        ui_set_numeric_mode(FIX);
+        ui_set_accuracy(DEFAULT_ACCURACY);
+        ui_set_show_thousands_seperator(FALSE);
+        ui_set_show_trailing_zeroes(FALSE);
+        ui_make_registers();
+
+        /* Reset display */
+        do_clear();
+    }
     
     /* Save mode */
-    set_resource(R_MODE, Rmstr[(int) v->modetype]);
+    set_resource(R_MODE, Rmstr[(int)mode]);
     
     /* Show/enable the widgets used in this mode */
     g_object_set(G_OBJECT(X->bas_panel),  "visible", mode == BASIC, NULL);
@@ -1659,23 +1670,6 @@ save_win_position()
 }
 
 
-static void
-change_mode(int mode)
-{
-    v->modetype = mode;
-
-    ui_set_base(DEC);
-    ui_set_numeric_mode(FIX);
-    ui_set_accuracy(DEFAULT_ACCURACY);
-    ui_set_show_thousands_seperator(FALSE);
-    ui_set_show_trailing_zeroes(FALSE);
-    ui_set_mode(v->modetype);
-
-    /* Reset display */
-    do_clear();
-}
-
-
 static gboolean
 request_change_mode()
 {
@@ -1724,7 +1718,7 @@ request_change_mode()
     // FIXME: Save this in GConf
     X->warn_change_mode = !gtk_toggle_button_get_active(
                              GTK_TOGGLE_BUTTON(request_check));
-    
+
     gtk_widget_destroy(dialog);
 
     return (response == GTK_RESPONSE_ACCEPT);
@@ -2374,8 +2368,10 @@ mode_radio_cb(GtkWidget *menu)
         v->modetype = mode;
         ui_set_mode(v->modetype);
     } else {
-        if (request_change_mode()) {
-            change_mode(mode);
+        if (mode != v->modetype && request_change_mode()) {
+            ui_set_mode(mode);
+        } else {
+            ui_set_mode(v->modetype);
         }
     }
 }
