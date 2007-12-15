@@ -273,7 +273,7 @@ exp_insert(char *text, int cursor)
 
 
 void
-exp_del()
+exp_clear()
 {
     exp_replace("Ans");
 }
@@ -319,7 +319,8 @@ exp_backspace(int cursor)
     char buf[MAXLINE] = "", *display;
     struct exprm_state *e = get_state();
     int i, MP_reg[MP_SIZE];
-    
+
+    /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
             char *ans = make_number(e->ans, v->base, FALSE);
@@ -348,6 +349,21 @@ exp_backspace(int cursor)
 
     exp_replace(buf);
     return cursor - 1;
+}
+
+
+static int
+exp_delete(int cursor)
+{
+    char buf[MAXLINE] = "", *display;
+    
+    if (cursor >= 0) {
+        display = ui_get_display();
+        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor, display, display + cursor + 1);
+        exp_replace(buf);
+    }
+
+    return cursor;
 }
 
 
@@ -463,7 +479,7 @@ do_expression(int function, int arg, int cursor)
     switch (buttons[function].id) {
         case KEY_CLEAR:
         case KEY_CLEAR_ENTRY:
-            exp_del();
+            exp_clear();
             ui_set_error_state(FALSE);
             MPstr_to_num("0", DEC, e->ans);
             break;
@@ -500,6 +516,10 @@ do_expression(int function, int arg, int cursor)
 
         case KEY_BACKSPACE:
             cursor = exp_backspace(cursor);
+            break;
+        
+        case KEY_DELETE:
+            cursor = exp_delete(cursor);
             break;
 
         case KEY_CHANGE_SIGN:
@@ -908,7 +928,7 @@ do_constant(int index)
 
 /* Remove the last numeric character typed. */
 void
-do_delete()
+do_backspace()
 {
     size_t len;
 
@@ -939,6 +959,13 @@ do_delete()
         STRCPY(v->fnum, v->display);
         ui_set_display(v->fnum, -1);
     }
+}
+
+
+void
+do_delete()
+{
+    /* Not required in ltr mode */
 }
 
 

@@ -143,11 +143,11 @@ static struct button_widget button_widgets[] = {
     { GDK_f, 0 }},
 
     {KEY_CLEAR,              "clear_simple",
-    { 0, 0 },
+    { GDK_SHIFT_MASK, 0 },
     { GDK_Delete, 0 }},
     
     {KEY_CLEAR,              "clear_advanced",
-    { 0, 0 },
+    { GDK_SHIFT_MASK, 0 },
     { GDK_Delete, 0 }},
 
     {KEY_SHIFT,              "shift_left",
@@ -197,7 +197,7 @@ static struct button_widget button_widgets[] = {
     {KEY_BACKSPACE,          "backspace_advanced",
     { 0, 0 },
     { GDK_BackSpace, 0 }},
-
+    
     {KEY_NUMERIC_POINT,      "numeric_point",
     { 0,          0,              0,             0 },
     { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 }},
@@ -488,7 +488,7 @@ reset_display(void)
         case EXPRS:
             e = get_state();
             MPstr_to_num("0", DEC, e->ans);
-            exp_del();
+            exp_clear();
             show_display(e->ans);
             break;
         
@@ -2016,13 +2016,14 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     int i, j, state;
     GtkWidget *button;
     
+    /* Only look at the modifiers we use */
+    state = event->state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
+    
     if (check_for_localized_numeric_point(event->keyval) == TRUE) {
         event->state = 0;
         event->keyval = GDK_KP_Decimal;
     }
     
-    state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
-
     /* Accuracy shortcuts */
     if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC) {
         switch (event->keyval) {
@@ -2069,6 +2070,12 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return (TRUE);
         }
     }
+    
+    /* Delete in display */
+    if (event->keyval == GDK_Delete && state == 0) {
+        do_button(KEY_DELETE, 0);
+        return (TRUE);
+    }
 
     for (i = 0; i < NBUTTONS; i++) {
         button = X->buttons[i];
@@ -2079,14 +2086,12 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             continue;
         }
 
-        j = 0;
-        while (button_widgets[i].accelerator_keys[j] != 0) {
+        for (j = 0; button_widgets[i].accelerator_keys[j] != 0; j++) {
             if (button_widgets[i].accelerator_keys[j] == event->keyval &&
-                (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
+                button_widgets[i].accelerator_mods[j] == state) {
                 button_cb(button, NULL);
                 return (TRUE);
             }
-            j++;
         }
     }
 
@@ -2657,7 +2662,7 @@ create_kframe()
     for (i = 0; i < NBUTTONS; i++) {
         SNPRINTF(name, MAXLINE, "calc_%s_button", 
                  button_widgets[i].widget_name);
-        X->buttons[i] = GET_WIDGET(name);
+        X->buttons[i] = GET_WIDGET(name);            
         assert(X->buttons[i] != NULL);
         
         gtk_size_group_add_widget(size_group, X->buttons[i]);

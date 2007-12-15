@@ -207,6 +207,12 @@ struct button buttons[NKEYS] = {
 {
     KEY_BACKSPACE,
     NULL,
+    do_backspace,
+    0
+},
+{
+    KEY_DELETE,
+    NULL,
     do_delete,
     0
 },
@@ -707,7 +713,7 @@ init_state(void)
         mpcim(&n, v->MPmvals[i]);
     }
     
-    exp_del();
+    exp_clear();
 }
 
 

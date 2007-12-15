@@ -157,7 +157,7 @@ initialise()
   
     v->new_input = 1;               /* Value zero is on calculator display */
 
-    exp_del();
+    exp_clear();
 }
 
 

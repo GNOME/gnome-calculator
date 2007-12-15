@@ -33,7 +33,7 @@ int usable_num(int MPnum[MP_SIZE]);
 void make_exp(char *number, int t[MP_SIZE]);
 int exp_insert(char *text, int);
 void exp_replace(char *text);
-void exp_del();
+void exp_clear();
 
 struct exprm_state *get_state(void);
 
@@ -48,6 +48,7 @@ void do_lr_calc();
 void do_expression();
 void do_clear();
 void do_clear_entry();
+void do_backspace();
 void do_delete();
 void do_numtype(enum num_type);
 void do_expno();
