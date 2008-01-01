@@ -2,7 +2,7 @@
 
 /*  $Header: /cvs/gnome/gcalctool/gcalctool/lr_parser.y,v 1.9 2006/09/13 17:41:46 sampie Exp $
  *
- *  Copyright (C) 2004-2007 Sami Pietila
+ *  Copyright (C) 2004-2008 Sami Pietila
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

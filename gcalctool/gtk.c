@@ -1,7 +1,7 @@
 
 /*  $Header$
  *
- *  Copyright (c) 1987-2007 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -1193,7 +1193,7 @@ about_cb(GtkWidget *widget)
     gtk_show_about_dialog(GTK_WINDOW(X->kframe),
             "name",_("Gcalctool"),
             "version", VERSION,
-            "copyright", _("\xc2\xa9 1986-2007 The Gcalctool authors"),
+            "copyright", _("\xc2\xa9 1986-2008 The Gcalctool authors"),
             "license", license_trans,
             "comments", _("Calculator with financial and scientific modes."),
             "authors", authors,

@@ -2,7 +2,7 @@
 
 /*  $Header: /cvs/gnome/gcalctool/gcalctool/ce_parser.y,v 1.16 2006/12/08 15:54:43 richb Exp $
  *
- *  Copyright (C) 2004-2007 Sami Pietila
+ *  Copyright (C) 2004-2008 Sami Pietila
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
