@@ -475,11 +475,10 @@ mpatanh(int *MPx, int *MPretval)
  */
 
 void
-mplog10(int *MPx, int *MPretval)
+mplogn(int n, int *MPx, int *MPretval)
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE], n;
+    int MP1[MP_SIZE], MP2[MP_SIZE];
 
-    n = 10;
     mpcim(&n, MP1);
     mpln(MP1, MP1);
     mpln(MPx, MP2);

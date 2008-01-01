@@ -4385,29 +4385,6 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_modulus_divide_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
-	      <property name="label" translatable="yes">Mod</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Modulus Division</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkButton" id="calc_random_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Random number in the range 0.0 to 1.0 [?]</property>
@@ -4477,52 +4454,6 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_logarithm_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
-	      <property name="label" translatable="yes">Log</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Base 10 Log</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">7</property>
-	      <property name="right_attach">8</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_natural_logarithm_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Natural log [N]</property>
-	      <property name="label" translatable="yes">Ln</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Natural log</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkButton" id="calc_not_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise NOT [~]</property>
@@ -4570,29 +4501,6 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_mask_32_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
-	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">32 bit unsigned integer</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">3</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkButton" id="calc_or_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Bitwise OR [|]</property>
@@ -4633,29 +4541,6 @@
 	      <property name="right_attach">3</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_exponential_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
-	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Exponential</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">2</property>
-	      <property name="right_attach">3</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
@@ -5066,6 +4951,162 @@
 	      <property name="right_attach">6</property>
 	      <property name="top_attach">2</property>
 	      <property name="bottom_attach">3</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_modulus_divide_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
+	      <property name="label" translatable="yes">Mod</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">6</property>
+	      <property name="right_attach">7</property>
+	      <property name="top_attach">2</property>
+	      <property name="bottom_attach">3</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_exponential_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
+	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">7</property>
+	      <property name="right_attach">8</property>
+	      <property name="top_attach">2</property>
+	      <property name="bottom_attach">3</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_mask_32_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
+	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">2</property>
+	      <property name="right_attach">3</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_natural_logarithm_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Natural log [N]</property>
+	      <property name="label" translatable="yes">Ln</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">3</property>
+	      <property name="right_attach">4</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_logarithm_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkLabel" id="label56">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;10&lt;/sub&gt;</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">True</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0.5</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">4</property>
+	      <property name="right_attach">5</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_logarithm2_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Base 2 log [H]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkLabel" id="label55">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;2&lt;/sub&gt;</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">True</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0.5</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">5</property>
+	      <property name="right_attach">6</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>

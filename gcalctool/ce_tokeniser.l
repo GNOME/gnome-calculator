@@ -72,6 +72,7 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}+
 "int"|"Int"|"INT" {return tINT;}
 "ln"|"Ln"|"LN" {return tLN;}
 "log"|"Log"|"LOG" {return tLOG10;}
+"log2"|"Log2"|"LOG2" {return tLOG2;}
 "mod"|"Mod"|"MOD" {return tMOD;}
 "not"|"Not"|"NOT" {return tNOT;}
 "or"|"Or"|"OR" {return tOR;}

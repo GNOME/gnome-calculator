@@ -37,7 +37,7 @@ enum trigfunc_type { sin_t, cos_t, tan_t, sinh_t, cosh_t, tanh_t,
 
 int calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE]);
 
-void mplog10(int *MPx, int *MPretval);
+void mplogn(int n, int *MPx, int *MPretval);
 void calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
 void calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
 void calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);

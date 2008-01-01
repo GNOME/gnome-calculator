@@ -65,6 +65,7 @@ HEXS [0-9]|[A-F]|" "
 "Int" {return tINT;}
 "Ln" {return tLN;}
 "Log" {return tLOG10;}
+"Log2" {return tLOG2;}
 "NOT" {return tNOT;}
 "OR" {return tOR;}
 "Pi" {return tPI;}

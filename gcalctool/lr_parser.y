@@ -63,6 +63,7 @@ extern struct parser_state parser_state;
 %token tINT
 %token tLN
 %token tLOG10
+%token tLOG2
 %token tNOT
 %token tOR
 %token tPI
@@ -155,8 +156,10 @@ exp:
 ;
 
 func:
-  tLOG10 parenthesis {mplog10($2, $$);}
-| term tLOG10 {mplog10($1, $$);}
+  tLOG10 parenthesis {mplogn(10, $2, $$);}
+| term tLOG10 {mplogn(10, $1, $$);}
+| tLOG2 parenthesis {mplogn(2, $2, $$);}
+| term tLOG2 {mplogn(2, $1, $$);}
 | tSQRT parenthesis {mpsqrt($2, $$);}
 | term tSQRT {mpsqrt($1, $$);}
 | tLN parenthesis {mpln($2, $$);}

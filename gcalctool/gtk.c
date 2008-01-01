@@ -302,6 +302,10 @@ static struct button_widget button_widgets[] = {
     { GDK_SHIFT_MASK, 0 },
     { GDK_G, 0 }},
 
+    {KEY_LOGARITHM2,         "logarithm2",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_H, 0 }},
+
     {KEY_FACTORIAL,          "factorial",
     { GDK_SHIFT_MASK, 0 },
     { GDK_exclam, 0 }},

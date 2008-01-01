@@ -1145,7 +1145,11 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
             break;
 
         case KEY_LOGARITHM:
-            mplog10(s, t);
+            mplogn(10, s, t);
+            break;
+
+        case KEY_LOGARITHM2:
+            mplogn(2, s, t);
             break;
 
         case KEY_RANDOM:

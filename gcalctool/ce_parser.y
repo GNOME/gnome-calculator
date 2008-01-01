@@ -63,6 +63,7 @@
 %token tINT
 %token tLN
 %token tLOG10
+%token tLOG2
 %token tMOD
 %token tNOT
 %token tOR
@@ -223,7 +224,8 @@ reg:
   ;
 
 func:
-  tLOG10 term %prec HIGH {mplog10($2, $$);}
+  tLOG10 term %prec HIGH {mplogn(10, $2, $$);}
+| tLOG2 term %prec HIGH {mplogn(2, $2, $$);}
 | tSQRT term %prec HIGH {mpsqrt($2, $$);}
 | tLN term %prec HIGH {mpln($2, $$);}
 | tRAND %prec HIGH {calc_rand($$);}

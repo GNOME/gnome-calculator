@@ -373,6 +373,12 @@ struct button buttons[NKEYS] = {
     FUNC
 },
 {
+    KEY_LOGARITHM2,
+    "Log2",
+    do_immed, 
+    FUNC
+},
+{
     KEY_ABSOLUTE_VALUE,
     "Abs",
     do_portion,
