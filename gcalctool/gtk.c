@@ -881,58 +881,18 @@ ui_set_statusbar(gchar *text, const gchar *imagename)
     gtk_statusbar_push(GTK_STATUSBAR(X->statusbar), 0, text); 
 }
 
-
-static void
-bin_str(int MP_value[MP_SIZE], char *str, int maxbits)
-{
-    int i, MP0[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE];
-    int neg = 0;
-
-    MPstr_to_num("0", DEC, MP0);
-    MPstr_to_num("1", DEC, MP1);
-    MPstr_to_num("2", DEC, MP2);
-
-    if (mplt(MP_value, MP0)) {
-        mpcmim(MP_value, MP0);
-        mpadd(MP0, MP1, MP0);
-        neg = 1;
-    } else {
-        mpcmim(MP_value, MP0);
-    }
-    
-    for (i = 0; i < maxbits; i++) {
-        double lsb;               /* Least significant bit. */
-        calc_and(MP3, MP0, MP1);
-        mpcmd(MP3, &lsb);
-
-        if (lsb == 0) {
-            str[maxbits - i -1] = (neg) ? '1' : '0';
-        } else {
-            str[maxbits - i -1] = (neg) ? '0' : '1';
-        } 
-
-        mpdiv(MP0, MP2, MP3);
-        mpcmim(MP3, MP0);
-    }
-
-    return;
-}
-
-
 static void
 set_bit_panel()
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
-    char str[64], label[3];
-    int ret = usable_num(MP);
+    char *bit_str, label[3], tmp[MAXLINE];
 
     switch (v->syntax) {
         case NPA:
             MPstr_to_num(v->display, v->base, MP1);
             mpcmim(MP1, MP2);
             if (mpeq(MP1, MP2)) {
-                char *bit_str, label[3], tmp[MAXLINE];
                 int toclear = (v->current == KEY_CLEAR_ENTRY)
                               ? TRUE : FALSE;
 
@@ -953,19 +913,29 @@ set_bit_panel()
             gtk_widget_set_sensitive(X->bit_panel, FALSE);
             break;
 
-        case EXPRS:
-            if (ret || !is_integer(MP)) {
-                gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                return;
-            }
-            bin_str(MP, str, 64);
-            gtk_widget_set_sensitive(X->bit_panel, TRUE);
-
-            STRCPY(label, " 0");
-            for (i = 0; i < 64; i++) {
-                label[1] = str[64 - i - 1];
-                gtk_label_set_text(GTK_LABEL(X->bits[64 - i - 1]), label);
-            }
+          case EXPRS: 
+              {
+                  int ret = usable_num(MP);
+                  if (ret || !is_integer(MP)) {
+                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
+                      return;
+                  }
+                  char *bit_str, label[3], tmp[MAXLINE];
+                  bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
+                  bit_str_len = strlen(bit_str);
+                  if (bit_str_len <= MAXBITS) {
+                      gtk_widget_set_sensitive(X->bit_panel, TRUE);
+                      
+                      STRCPY(label, " 0");
+                      for (i = 0; i < MAXBITS; i++) {
+                          label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+                          gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+                      }
+                  } else {
+                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
+                  }
+                  
+              }
             break;
         
         default:
