@@ -186,6 +186,7 @@ struct exprm_state {
     int ans[MP_SIZE];      /* Previously calculated answer */
     char *expression;      /* Expression entered by user */
     int cursor;
+    int clear;             /* Clear command issued */
 };
 
 /* Circular list of Arithmetic Precedence Mode states*/ 

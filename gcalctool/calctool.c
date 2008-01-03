@@ -762,7 +762,10 @@ main(int argc, char **argv)
     show_display(v->MPdisp_val);     /* Output in correct display mode. */
 
     memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
-
+    struct exprm_state *e;
+    e = get_state();
+    e->clear = 1;              /* Clear initial state as if clear was pressed */
+    
     ui_start();                    /* Display the calculator. */
     
     return(0);

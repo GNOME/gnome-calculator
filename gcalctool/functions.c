@@ -194,6 +194,15 @@ perform_undo(void)
     refresh_display(e->cursor);
 }
 
+struct exprm_state *
+peek_previous_state(void)
+{
+    if (v->h.current != v->h.begin) {
+        return &(v->h.e[(v->h.current - 1) % UNDO_HISTORY_LENGTH]);
+    } else {
+        return NULL;
+    }
+}
 
 static int
 is_undo_step()
@@ -460,12 +469,14 @@ void
 do_expression(int function, int arg, int cursor)
 {
     char buf[MAXLINE];
-    struct exprm_state *e;
+    struct exprm_state *e, *ex;
     
     new_state();
     e = get_state();
+    ex = peek_previous_state();
 
     e->cursor = cursor;
+    e->clear = 0;
 
     ui_set_statusbar("", "");
 
@@ -479,6 +490,7 @@ do_expression(int function, int arg, int cursor)
     switch (buttons[function].id) {
         case KEY_CLEAR:
         case KEY_CLEAR_ENTRY:
+            e->clear = 1;
             exp_clear();
             ui_set_error_state(FALSE);
             MPstr_to_num("0", DEC, e->ans);
@@ -597,7 +609,8 @@ do_expression(int function, int arg, int cursor)
         default:
             /* If display is a number then perform functions on that number */
             if ((buttons[function].flags & (PREFIXOP | FUNC))
-                && strcmp(e->expression, "Ans") == 0) {
+                && !strcmp(e->expression, "Ans")
+                && !(ex && ex->clear)) {
                 SNPRINTF(buf, MAXLINE, "%s(%s)",
                          buttons[function].symname,
                          e->expression);
@@ -605,7 +618,11 @@ do_expression(int function, int arg, int cursor)
             } else {
                 if (buttons[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
-                    cursor = exp_insert(buf, cursor);
+                    if (!ex || ex->clear) {
+                        exp_replace(buf);
+                    } else {
+                        cursor = exp_insert(buf, cursor);
+                    }
                 } else {
                     cursor = exp_insert(buttons[function].symname, cursor);
                 }
