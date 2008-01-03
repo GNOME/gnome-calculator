@@ -2104,6 +2104,20 @@ after entering the exponent.</para>
 		</table>
     </sect3>
     </sect2> 
+<!-- ============= Undo and Redo ======================== -->
+  <sect2 id="gcalctool-undo-redo">
+    <title>To Undo and Redo</title>
+                <para>To undo your previous action, choose
+                  <menuchoice>
+                         <guimenu>Edit</guimenu>
+                         <guimenuitem>Undo</guimenuitem>
+                  </menuchoice>.  You can undo up to 15 past actions.</para>
+                <para>If you want to redo an action you just undo'ed, choose
+                  <menuchoice>
+                         <guimenu>Edit</guimenu>
+                         <guimenuitem>Redo</guimenuitem>
+                  </menuchoice>. You can redo up to 15 undo'ed actions.</para>
+  </sect2>
 <!-- ============= Quitting ============================= -->
   <sect2 id="gcalctool-quit"> 
     <title>To Quit</title> 
@@ -2151,7 +2165,7 @@ after entering the exponent.</para>
 <listitem><para>Makes all calculator menu items unavailable, except <menuchoice><guimenu>Calculator</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> and <menuchoice><guimenu>Help</guimenu><guimenuitem>Contents</guimenuitem></menuchoice>.</para></listitem>
 </itemizedlist>
 </para>
-<para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycap>Delete</keycap>.</para>
+<para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycombo><keycap>Shift</keycap><keycap>Delete</keycap></keycombo>.</para>
          </sect2>
 
          <sect2 id="gcalctool-change-modes">
@@ -2196,7 +2210,7 @@ the addition of:
                 <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>, <xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/>, and <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> provide a quick reference for all of the &app; keyboard shortcuts.</para>
                 <para>When you use the keyboard shortcut for any of the calculator
                       buttons that have a menu associated with them, that menu is displayed.
-                      You can then use the arrow keys to select a menu item or the menu items shortcut.</para>
+                      You can then use the arrow keys to select a menu item or the menu item's shortcut.</para>
                 <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
                   <title>Quick Reference for Keyboard Shortcuts of &app; Buttons</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
@@ -2614,19 +2628,19 @@ the addition of:
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>b</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Bin</guilabel></para></entry>
                              <entry><para>Set the numeric base to binary.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>d</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Dec</guilabel></para></entry>
                              <entry><para>Set the numeric base to decimal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>f</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Fix</guilabel></para></entry>
                              <entry><para>Set the display type to fixed-point format.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
@@ -2638,7 +2652,7 @@ the addition of:
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>i</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Inv</guilabel></para></entry>
                              <entry><para>Select the inverse option for use with the trigonometric functions.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
@@ -2650,19 +2664,19 @@ the addition of:
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>o</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Oct</guilabel></para></entry>
                              <entry><para>Set the numeric base to octal.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>r</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Radians</guilabel></para></entry>
                              <entry><para>Set the trigonometric type to radians.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>s</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Sci</guilabel></para></entry>
                              <entry><para>Set the display type to scientific format.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
@@ -2703,71 +2717,101 @@ the addition of:
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>b</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Basic </guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Basic mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-basic-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Copy the current value in the display area to the clipboard</para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>e</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Bitcalculating Extension</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the bitcalculation extension</para> </entry>
+                             <entry><para><xref linkend="gcalctool-calc-bit-manipulation-ext"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>f</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Financial </guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Financial mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-financial-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>h</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Help</guimenu> <guimenuitem>Contents</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the &app; online help </para> </entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>i</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Insert ASCII Value</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the <guilabel>Insert ASCII Value</guilabel> dialog</para> </entry>
                              <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>K</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>k</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Thousands Separator</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the thousands separator
 </para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions-separator"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>l</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Left-to-right Precedence</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para> Calculate results using left-to-right precedence</para> </entry>
+                             <entry><para><xref linkend="gcalctool-manage-order"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>m</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Memory Registers</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the <guilabel>Memory Registers</guilabel> window</para> </entry>
                              <entry><para><xref linkend="gcalctool-mem-reg"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Calculator</guimenu> <guimenuitem>Quit</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Quit the &app; application</para> </entry>
                              <entry><para><xref linkend="gcalctool-quit"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>r</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Arithmetic Precedence</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Calculate results using arithmetic precedence</para> </entry>
+                             <entry><para><xref linkend="gcalctool-manage-order"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Scientific </guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Scientific mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-scientific-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>t</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Trailing Zeroes</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Show trailing zeroes</para> </entry>
                              <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Paste the current value in the clipboard to the display area </para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>F1</keycap></para></entry>
-                             <entry><para> <menuchoice> <guimenu>Help</guimenu> <guimenuitem>Contents</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Display the &app; online help </para> </entry>
-                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>z</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Undo</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Undo previous action</para> </entry>
+                             <entry><para><xref linkend="gcalctool-undo-redo"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Shift</keycap><keycap>Ctrl</keycap><keycap>z</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Redo</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Redo an undo'ed action</para> </entry>
+                             <entry><para><xref linkend="gcalctool-undo-redo"/></para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
