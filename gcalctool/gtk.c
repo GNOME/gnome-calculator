@@ -223,8 +223,8 @@ static struct button_widget button_widgets[] = {
     { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 }},
 
     {KEY_MULTIPLY,           "multiply",
-    { GDK_SHIFT_MASK, 0,               0,     0,      0 },
-    { GDK_asterisk,   GDK_KP_Multiply, GDK_x, GDK_R6, 0 }},
+    { GDK_SHIFT_MASK, 0,               0,      0 },
+    { GDK_asterisk,   GDK_KP_Multiply, GDK_R6, 0 }},
 
     {KEY_DIVIDE,             "divide",
     { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
@@ -339,8 +339,8 @@ static struct button_widget button_widgets[] = {
     { GDK_ampersand, 0 }},
 
     {KEY_XOR,                "xor",
-    { 0 },
-    { 0 }},
+    { 0,     0 },
+    { GDK_x, 0 }},
 
     {KEY_XNOR,               "xnor",
     { 0, 0 },
