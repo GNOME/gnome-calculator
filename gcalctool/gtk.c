@@ -391,10 +391,6 @@ static struct button_widget button_widgets[] = {
 #define GET_WIDGET(name) \
           glade_xml_get_widget(X->ui, (name))
 
-#define SET_MENUBAR_ITEM_STATE(name, state) \
-          g_object_set_data(G_OBJECT(GET_WIDGET(name)), "sensitive", \
-                            GINT_TO_POINTER(state));
-
 #define CONNECT_SIGNAL(name) glade_xml_signal_connect(X->ui, #name, \
                        G_CALLBACK(name))
 
@@ -1022,20 +1018,28 @@ ui_set_error_state(gboolean error)
 
     gtk_widget_set_sensitive(X->mode_panel, !v->error);
 
-    // FIXME: Isn't this missing a whole lot of widgets?
-    SET_MENUBAR_ITEM_STATE("copy_menu",            !v->error);
-    SET_MENUBAR_ITEM_STATE("paste_menu",           !v->error); 
-    SET_MENUBAR_ITEM_STATE("insert_ascii_menu",    !v->error); 
-    SET_MENUBAR_ITEM_STATE("view_basic_menu",      !v->error); 
-    SET_MENUBAR_ITEM_STATE("view_advanced_menu",   !v->error); 
-    SET_MENUBAR_ITEM_STATE("view_financial_menu",  !v->error); 
-    SET_MENUBAR_ITEM_STATE("view_scientific_menu", !v->error); 
-    SET_MENUBAR_ITEM_STATE("show_trailing_zeroes_menu",
-                           !v->error && (v->modetype == SCIENTIFIC)); 
-    SET_MENUBAR_ITEM_STATE("show_thousands_separator_menu",  !v->error); 
-    SET_MENUBAR_ITEM_STATE("show_registers_menu",  !v->error); 
-    SET_MENUBAR_ITEM_STATE("arithmetic_precedence_menu", !v->error); 
-    SET_MENUBAR_ITEM_STATE("about_menu",           !v->error);
+    gtk_widget_set_sensitive(GET_WIDGET("copy_menu"),            !v->error);
+    gtk_widget_set_sensitive(GET_WIDGET("paste_menu"),           !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("undo_menu"),            !v->error);
+    gtk_widget_set_sensitive(GET_WIDGET("redo_menu"),            !v->error);
+    gtk_widget_set_sensitive(GET_WIDGET("insert_ascii_menu"),    !v->error); 
+
+    gtk_widget_set_sensitive(GET_WIDGET("view_basic_menu"),      !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("view_advanced_menu"),   !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("view_financial_menu"),  !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("view_scientific_menu"), !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
+                             !v->error && (v->modetype == SCIENTIFIC)); 
+    gtk_widget_set_sensitive(GET_WIDGET("show_thousands_separator_menu"),
+                             !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("show_bitcalculating_menu"), !v->error);
+    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), !v->error); 
+    gtk_widget_set_sensitive(GET_WIDGET("ltr_precedence_menu"), !v->error);
+
+    gtk_widget_set_sensitive(GET_WIDGET("arithmetic_precedence_menu"),
+                             !v->error); 
+
+    gtk_widget_set_sensitive(GET_WIDGET("about_menu"), !v->error);
 }
 
 
