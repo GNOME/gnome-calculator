@@ -2525,7 +2525,7 @@ create_kframe()
                                         GTK_BUTTONS_NONE,
                                         N_("Error loading user interface"));
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-                                                 N_("The user interace file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
+                                                 N_("The user interface file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
         gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
         
         gtk_dialog_run(GTK_DIALOG(dialog));
