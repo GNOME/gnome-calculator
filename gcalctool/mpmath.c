@@ -212,7 +212,7 @@ calc_modulus(int op1[MP_SIZE],
 	     int op2[MP_SIZE], 
 	     int result[MP_SIZE])
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE];
+    int MP1[MP_SIZE], MP2[MP_SIZE], val;
 
     if (!is_integer(op1) || !is_integer(op2)) {
         return -EINVAL;
@@ -222,6 +222,13 @@ calc_modulus(int op1[MP_SIZE],
     mpcmim(MP1, MP1);
     mpmul(MP1, op2, MP2);
     mpsub(op1, MP2, result);
+
+    val = 0;
+    mpcim(&val, MP1);
+    if ((mplt(op2, MP1) && mpgt(result, MP1)) || mplt(result, MP1)) { 
+        mpadd(result, op2, result);
+    }
+
     return 0;
 }
 

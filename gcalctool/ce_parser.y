@@ -148,13 +148,11 @@ value:
 
 exp: 
   term {cp($1, $$);}
-| '-' exp %prec NEG {mpneg($2, $$);}
-| '+' exp %prec POS {cp($2, $$);}
 
 | exp '+' exp {mpadd($1, $3, $$);}
 | exp '-' exp {mpsub($1, $3, $$);}
 
-| exp tMOD exp {
+| exp tMOD exp %prec MED {
     if (!is_integer($1) || !is_integer($3)) {
 	parser_state.error = -PARSER_ERR_MODULUSOP;
     } else {

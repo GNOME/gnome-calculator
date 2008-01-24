@@ -691,10 +691,19 @@ do_calc()      /* Perform arithmetic calculation and display result. */
                 ui_set_statusbar(_("Error, operands must be integers"),
                                  "gtk-dialog-error");
             } else {
+                int val;
+
                 mpdiv(v->MPresult, v->MPdisp_val, MP1);
                 mpcmim(MP1, MP1);
                 mpmul(MP1, v->MPdisp_val, MP2);
                 mpsub(v->MPresult, MP2, v->MPresult);
+
+                val = 0;
+                mpcim(&val, MP1);
+                if ((mplt(v->MPdisp_val, MP1) && mpgt(v->MPresult, MP1)) ||
+                    mplt(v->MPresult, MP1)) { 
+                    mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
+                }
             }
             break;
 
