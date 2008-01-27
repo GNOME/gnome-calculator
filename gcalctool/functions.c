@@ -615,6 +615,11 @@ do_expression(int function, int arg, int cursor)
                          buttons[function].symname,
                          e->expression);
                 exp_replace(buf);
+            } else if ((((buttons[function].id == KEY_ADD) 
+                         || (buttons[function].id == KEY_SUBTRACT))
+                        && !strcmp(e->expression, "Ans")
+                        && (ex && ex->clear))) {
+                exp_replace(buttons[function].symname);
             } else {
                 if (buttons[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
