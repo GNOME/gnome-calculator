@@ -775,6 +775,7 @@ ui_set_mode(enum mode_type mode)
 
         /* Reset display */
         do_clear();
+        ui_set_statusbar("", "");
     }
     
     /* Save mode */
