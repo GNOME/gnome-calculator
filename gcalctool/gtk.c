@@ -831,10 +831,10 @@ ui_set_mode(enum mode_type mode)
 
     /* Set the title */
     if((hostname = make_hostname())) {
-        SNPRINTF(title, MAXLINE, hostname_titles[mode], hostname);
+        SNPRINTF(title, MAXLINE, gettext(hostname_titles[mode]), hostname);
         g_free(hostname);
     } else {
-        SNPRINTF(title, MAXLINE, titles[mode]);
+        SNPRINTF(title, MAXLINE, gettext(titles[mode]));
     }
     gtk_window_set_title(GTK_WINDOW(X->kframe), title);
 
