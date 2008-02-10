@@ -104,7 +104,7 @@
 		      <accelerator key="Z" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image4">
+			<widget class="GtkImage" id="image7">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-undo</property>
 			  <property name="icon_size">1</property>
@@ -129,7 +129,7 @@
 		      <accelerator key="Z" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image5">
+			<widget class="GtkImage" id="image8">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-redo</property>
 			  <property name="icon_size">1</property>
@@ -180,7 +180,7 @@
 		      <property name="tooltip" translatable="yes">Basic</property>
 		      <property name="label" translatable="yes">_Basic</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">False</property>
+		      <property name="active">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="mode_radio_cb"/>
@@ -313,7 +313,7 @@
 		      <property name="tooltip" translatable="yes">Use Left-right Precedence</property>
 		      <property name="label" translatable="yes">_Left-to-right Precedence</property>
 		      <property name="use_underline">True</property>
-		      <property name="active">False</property>
+		      <property name="active">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="on_left-to-right_precedence1_activate" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
@@ -353,11 +353,24 @@
 		    <widget class="GtkImageMenuItem" id="help_menu">
 		      <property name="visible">True</property>
 		      <property name="tooltip" translatable="yes">Show help contents</property>
-		      <property name="label">gtk-help</property>
-		      <property name="use_stock">True</property>
+		      <property name="label" translatable="yes">_Help</property>
+		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
-		      <signal name="activate" handler="help_cb" last_modification_time="Sat, 13 Oct 2007 00:52:33 GMT"/>
+		      <signal name="activate" handler="help_cb" last_modification_time="Sun, 10 Feb 2008 11:39:08 GMT"/>
+		      <accelerator key="F1" modifiers="0" signal="activate"/>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image9">
+			  <property name="visible">True</property>
+			  <property name="stock">gtk-help</property>
+			  <property name="icon_size">1</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 
