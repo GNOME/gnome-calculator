@@ -566,7 +566,7 @@ init_text()         /* Setup constant strings. */
     STRNCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"),
             MAXLINE - 1);
     STRNCPY(v->con_names[1], _("square root of 2"), MAXLINE - 1);
-    STRNCPY(v->con_names[2], _("e"), MAXLINE - 1);
+    STRNCPY(v->con_names[2], _("Euler's Number (e)"), MAXLINE - 1);
     STRNCPY(v->con_names[3], _("pi"), MAXLINE - 1);
     STRNCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"),
             MAXLINE - 1);

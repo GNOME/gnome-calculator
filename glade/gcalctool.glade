@@ -270,10 +270,20 @@
 		  <child>
 		    <widget class="GtkCheckMenuItem" id="show_bitcalculating_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show bitcalculating extension</property>
-		      <property name="label" translatable="yes">Show Bitcalculating _Extension</property>
+		      <property name="tooltip" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
+and zeroes shown. When the number being displayed in
+in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show bit editor</property>
+		      <property name="label" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
+and zeroes shown. When the number being displayed in
+in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show Bit _Editor</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
+		      <accessibility>
+			<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
+and zeroes shown. When the number being displayed in
+in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show Bit Editor</atkproperty>
+			<atkproperty name="AtkObject::accessible_description" translatable="yes">Show bit editor</atkproperty>
+		      </accessibility>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_bitcalculating_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
@@ -813,7 +823,9 @@
 	    <widget class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Sum-of-the years'-digits depreciation [y]</property>
-	      <property name="label" translatable="yes">Syd</property>
+	      <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
+The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
+http://en.wikipedia.org/wiki/Depreciation">Syd</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -837,7 +849,8 @@
 	    <widget class="GtkButton" id="calc_finc_straight_line_depreciation_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Straight-line depreciation [l]</property>
-	      <property name="label" translatable="yes">Sln</property>
+	      <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
+http://en.wikipedia.org/wiki/Depreciation">Sln</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -861,7 +874,12 @@
 	    <widget class="GtkButton" id="calc_finc_periodic_interest_rate_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Periodic interest rate [T]</property>
-	      <property name="label" translatable="yes">Rate</property>
+	      <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
+http://en.wikipedia.org/wiki/Interest
+
+                              
+
+">Rate</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -885,7 +903,8 @@
 	    <widget class="GtkButton" id="calc_finc_present_value_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Present value [p]</property>
-	      <property name="label" translatable="yes">Pv</property>
+	      <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
+http://en.wikipedia.org/wiki/Present_value">Pv</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -909,7 +928,8 @@
 	    <widget class="GtkButton" id="calc_finc_periodic_payment_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Periodic payment [P]</property>
-	      <property name="label" translatable="yes">Pmt</property>
+	      <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
+http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -933,7 +953,8 @@
 	    <widget class="GtkButton" id="calc_finc_future_value_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Future value [v]</property>
-	      <property name="label" translatable="yes">Fv</property>
+	      <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
+http://en.wikipedia.org/wiki/Future_value">Fv</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -957,7 +978,8 @@
 	    <widget class="GtkButton" id="calc_finc_double_declining_depreciation_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Double-declining depreciation [D]</property>
-	      <property name="label" translatable="yes">Ddb</property>
+	      <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
+http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -981,7 +1003,9 @@
 	    <widget class="GtkButton" id="calc_finc_compounding_term_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Compounding term [m]</property>
-	      <property name="label" translatable="yes">Ctrm</property>
+	      <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
+See also:
+http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -1005,7 +1029,8 @@
 	    <widget class="GtkButton" id="calc_finc_term_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Payment period [t]</property>
-	      <property name="label" translatable="yes">Term</property>
+	      <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
+http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4688,7 +4713,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label11">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="E to the x">e&lt;sup&gt;x&lt;/sup&gt;</property>
+		  <property name="label" translatable="yes" comments="E to the power of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">e&lt;sup&gt;x&lt;/sup&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4779,7 +4804,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label13">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="X to the y">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
+		  <property name="label" translatable="yes" comments="X to the power of y. Note that this label uses mark up and the &quot;y&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4824,7 +4849,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label12">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="10 to the x">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
+		  <property name="label" translatable="yes" comments="10 to thepower of  x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5033,7 +5058,7 @@
 	    <widget class="GtkButton" id="calc_natural_logarithm_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Natural log [N]</property>
-	      <property name="label" translatable="yes">Ln</property>
+	      <property name="label" translatable="yes" comments="Natural logarithm">Ln</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -5801,7 +5826,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label24">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;</property>
+		      <property name="label" translatable="yes" comments="x squared. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">True</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -7035,7 +7060,9 @@
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
 	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">register 0</atkproperty>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 0.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 0</atkproperty>
 	      </accessibility>
 	    </widget>
 	    <packing>
@@ -7058,6 +7085,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 1.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 1</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7079,6 +7111,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 2.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 2</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7100,6 +7137,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 3.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 3</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7121,6 +7163,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 4.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 4</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7142,6 +7189,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 5.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 5</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7163,6 +7215,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 6.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 6</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7184,6 +7241,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 7.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 7</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7205,6 +7267,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 8.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 8</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>
@@ -7226,6 +7293,11 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">●</property>
 	      <property name="activates_default">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="This is accessible name for memory register 9.  It is spoken
+by screen readers such as Orca, to help people who are
+blind or have low vision.">register 9</atkproperty>
+	      </accessibility>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>

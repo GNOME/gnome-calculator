@@ -678,12 +678,16 @@ ui_set_show_bitcalculating(gboolean visible)
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
 
     if (visible) {
-        /* Translators: When the bit calculation extension is visible, by 
-         * clicking on any of these individual bits, their value can be 
-         * toggled, causing the displayed integer value to be adjusted 
-         * accordingly.
+        /* Translators: When the bit editor is visible, there will be two
+         * rows of ones and zeroes shown. When the number being displayed in
+         * in the calculator is an integer value, these ones and zeroes will
+         * be sensitive, and they will correspond to the value of each of 
+         * the bits in the displayed integer number. By clicking on any of 
+         * the labels for these ones and zeroes, their value can be toggled
+         * (a one becomes a zero and a zero becomes a one), causing the 
+         * displayed integer value to be adjusted accordingly.
          */
-        ui_set_statusbar(_("Bit calculation extension activated. Click on bit values to toggle them."), "");
+        ui_set_statusbar(_("Bit editor activated. Click on bit values to toggle them."), "");
     } else {
         ui_set_statusbar("", "");
     }
