@@ -1637,7 +1637,7 @@ ui_make_registers()            /* Calculate memory register frame values. */
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
         SNPRINTF(key, MAXLINE, "register%d", n);
-        set_resource(key, mval);
+        set_resource(key, make_number(v->MPmvals[n], DEC, TRUE));
     }
 }
 
