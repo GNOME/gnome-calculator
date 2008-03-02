@@ -600,6 +600,11 @@ getparam(char *s, char *argv[], char *errmes)
     if (*argv != NULL && argv[0][0] != '-') {
         STRNCPY(s, *argv, MAXLINE - 1);
     } else { 
+        /* Translators: the following string contains two strings that
+         * are passed to it: the first is the gcalctool program name and
+         * the second is an error message (see the last parameter in the 
+         * getparam() call in the get_options() routine below.
+         */
         FPRINTF(stderr, _("%s: %s as next argument.\n"), v->progname, errmes);
         exit(1);                        
     }                                  
@@ -609,6 +614,10 @@ getparam(char *s, char *argv[], char *errmes)
 void
 usage(char *progname)
 {
+    /* Translators: the following string contains two strings that
+     * are passed to it: the first is the gcalctool program name and
+     * the second is the program version number.
+     */
     FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
     FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
     FPRINTF(stderr, _("\t\t [-?] [-v] [-h]\n"));
