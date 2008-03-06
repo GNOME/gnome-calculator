@@ -208,10 +208,10 @@ struct calcVars {                      /* Calctool variables and options. */
     
     char display[MAXLINE];             /* Current calculator display. */
     char *exp_posn;                    /* Position of the exponent sign. */
-    char fnum[MAX_DIGITS];             /* Scratchpad for fixed numbers. */
+    char fnum[MAX_LOCALIZED];          /* Scratchpad for fixed numbers. */
     const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
-    char snum[MAX_DIGITS];             /* Scratchpad for scientific numbers. */
+    char snum[MAX_LOCALIZED];          /* Scratchpad for scientific numbers. */
     const char *tsep;                  /* Locale specific thousands seperator. */
 
     char fun_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
