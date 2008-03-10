@@ -917,12 +917,12 @@ set_bit_panel()
 
           case EXPRS: 
               {
+                  char *bit_str, label[3], tmp[MAXLINE];
                   int ret = usable_num(MP);
                   if (ret || !is_integer(MP)) {
                       gtk_widget_set_sensitive(X->bit_panel, FALSE);
                       return;
                   }
-                  char *bit_str, label[3], tmp[MAXLINE];
                   bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
                   bit_str_len = strlen(bit_str);
                   if (bit_str_len <= MAXBITS) {
