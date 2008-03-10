@@ -207,12 +207,12 @@ static struct button_widget button_widgets[] = {
     { GDK_equal, GDK_KP_Enter, GDK_Return, GDK_equal,      0 }},
 
     {KEY_START_BLOCK,        "start_group",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenleft, 0 }},
+    { 0,             GDK_SHIFT_MASK, 0 },
+    { GDK_parenleft, GDK_parenleft,  0 }},
 
     {KEY_END_BLOCK,          "end_group",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_parenright, 0 }},
+    { 0,              GDK_SHIFT_MASK, 0 },
+    { GDK_parenright, GDK_parenright, 0 }},
 
     {KEY_ADD,                "add",
     { GDK_SHIFT_MASK, 0,        0,          0 },
