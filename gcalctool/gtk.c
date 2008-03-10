@@ -543,15 +543,16 @@ ui_set_accuracy(int accuracy)
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 
-    desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric places.",
-                                    "Set accuracy from 0 to %d numeric places.",
-                                    MAXACC),
+    /* Translators: The accuracy range will always be plural, so no need to
+     *             use ngettext here.
+     */
+    desc = g_strdup_printf(_("Set accuracy from 0 to %d numeric places."),
                            MAXACC);
 
-    /* Translator: This refers to the current accuracy setting */
-    current = g_strdup_printf(ngettext("Currently set to %d places.",
+    /* Translators: This refers to the current accuracy setting */
+    current = g_strdup_printf(ngettext("Currently set to %d place.",
                                        "Currently set to %d places.",
-                                       accuracy),
+                                       accuracy == 1),
                               accuracy);
     tooltip = g_strdup_printf ("%s %s [A]", desc, current);
     gtk_widget_set_tooltip_text (GET_WIDGET("calc_accuracy_button"), tooltip);
