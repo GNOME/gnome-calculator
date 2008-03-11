@@ -292,7 +292,11 @@ int
 usable_num(int MPnum[MP_SIZE])
 {
     struct exprm_state *e = get_state();
-    return ce_parse(e->expression, MPnum);
+    if (e->expression[0] == '\0') {
+        return ce_parse("0", MPnum);
+    } else {
+        return ce_parse(e->expression, MPnum);
+    }
 }
 
 
