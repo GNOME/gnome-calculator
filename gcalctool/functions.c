@@ -284,7 +284,7 @@ exp_insert(char *text, int cursor)
 void
 exp_clear()
 {
-    exp_replace("Ans");
+    exp_replace("");
 }
 
 
