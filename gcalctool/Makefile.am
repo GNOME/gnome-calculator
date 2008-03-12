@@ -121,3 +121,6 @@ EXTRA_DIST = \
 	ce_tokeniser.l \
 	lr_parser.y \
 	lr_tokeniser.l
+
+test: gcalctool
+	./gcalctool -u
