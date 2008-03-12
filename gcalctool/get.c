@@ -333,22 +333,6 @@ read_resources()    /* Read all possible resources from the database. */
     }
 }
 
-
-void
-read_str(char **str, char *value)
-{
-    if (*str != NULL) {
-        (void) free(*str);
-    }
-    if (value != NULL && strlen(value)) {
-        *str = (char *) malloc((unsigned) (strlen(value) + 1));
-        STRCPY(*str, value);
-    } else {
-        *str = NULL;
-    }
-}
-
-
 void
 resources_init()        /* Load gconf configuration database for gcalctool. */
 { 

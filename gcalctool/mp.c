@@ -1212,7 +1212,7 @@ L10:
     v->dtype = FIX;
     v->accuracy = MAX_DIGITS;
     mpcmf(&x[1], tmp);
-    STRCPY(disp, make_number(tmp, v->base, FALSE));
+    STRNCPY(disp, make_number(tmp, v->base, FALSE), MAXLINE - 1);
 
     if (disp[0] == '1') {
         y[ll+1]++;

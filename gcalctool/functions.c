@@ -337,7 +337,10 @@ exp_backspace(int cursor)
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
             char *ans = make_number(e->ans, v->base, FALSE);
-            str_replace(&e->expression, "Ans", ans);
+            char *t;
+            t = str_replace(e->expression, "Ans", ans);
+            free(e->expression);
+            e->expression = t;
         } else {
             for (i = 0; i < 10; i++) {
                 SNPRINTF(buf, MAXLINE, "R%d", i);
@@ -428,44 +431,30 @@ exp_inv()
 }
 
 
-void
-str_replace(char **str, char *from, char *to)
+char *
+str_replace(char *str, char *from, char *to)
 {
-    int i, flen, len;
-
-    assert(str);
-    assert(from);
-    assert(to);
-
-    if (!*str) {
-        return;
-    }
-
-    i = 0;
-    len = strlen(*str);
-    flen = strlen(from);
-
-    for (i = 0; len-i >= flen; i++) {
-        if (!strncasecmp(from, *str+i, flen)) {
-            char *print;
-            int j = i+flen;
-            char *prefix = malloc(i+1);
-            char *postfix = malloc(len-j+1);
-
-            assert(prefix && postfix);
-            memset(prefix, 0, i+1);
-            memset(postfix, 0, len-j+1);
-            MEMCPY(prefix, *str, i);
-            MEMCPY(postfix, *str+i+flen, len-j);
-
-            print = malloc(strlen(to)+i+len-j+1);
-            SPRINTF(print, "%s%s%s", prefix, to, postfix);
-            free(prefix);
-            free(postfix);
-            free(*str);
-            *str = print;
+    char output[MAXLINE];
+    int offset = 0;
+    char *c;
+    int flen = strlen(from);
+    int tlen = strlen(to);
+    
+    for (c = str; *c && offset < MAXLINE - 1; c++, offset++) {
+        if (strncasecmp(from, c, flen) == 0) {
+            SNPRINTF(output + offset, MAXLINE - offset, to);
+            c += flen - 1;
+            offset += tlen - 1;
+        } else {
+            output[offset] = *c;
         }
     }
+
+    if (offset >= MAXLINE)
+        offset = MAXLINE - 1;
+    output[offset] = '\0';
+    
+    return strdup(output);
 }
 
 
@@ -991,7 +980,7 @@ do_backspace()
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
-        STRCPY(v->fnum, v->display);
+        STRNCPY(v->fnum, v->display, MAX_LOCALIZED - 1);
         ui_set_display(v->fnum, -1);
     }
 }
@@ -1051,7 +1040,7 @@ do_expno()
 {
     v->pointed = (strchr(v->display, '.') != NULL);
     if (!v->new_input) {
-        STRCPY(v->display, "1.0 +");
+        STRNCPY(v->display, "1.0 +", MAX_LOCALIZED - 1);
         v->new_input = v->pointed = 1;
     } else if (!v->pointed) {
         STRNCAT(v->display, ". +", 3);
@@ -1431,7 +1420,7 @@ do_point()                   /* Handle numeric point. */
 {
     if (!v->pointed) {
         if (v->toclear) {
-            STRCPY(v->display, ".");
+            STRNCPY(v->display, ".", MAX_LOCALIZED - 1);
             v->toclear = 0;
         } else {
             STRCAT(v->display, ".");

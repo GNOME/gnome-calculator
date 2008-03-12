@@ -58,6 +58,5 @@ int get_boolean_resource(char *key, int *value);
 
 const char *get_radix();
 const char *get_tsep();
-void read_str(char **, char *);
 
 #endif /* GET_H */

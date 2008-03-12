@@ -654,14 +654,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                         v->accuracy = DEFAULT_ACCURACY;
                     }
                     break;
-                
-                case 'n' :
-                    if (strcmp(argv[0], "-name") == 0)
-                    {
-                        INC;
-                        read_str(&v->appname, argv[0]);
-                    }
-                    break;
 
                 case '?' :
                 case 'v' : 
@@ -745,11 +737,10 @@ main(int argc, char **argv)
     textdomain(GETTEXT_PACKAGE);
 
     v->progname = argv[0];     /* Save programs name. */
-    v->appname  = NULL;
     if ((ptr = strrchr(argv[0], '/')) != NULL) {
-        read_str(&v->appname, ptr+1);
+        v->appname = strdup(ptr+1);
     } else {
-        read_str(&v->appname, argv[0]);
+        v->appname = strdup(argv[0]);
     }
     
     init_state();

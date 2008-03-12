@@ -25,7 +25,7 @@
 #include "calctool.h"
 
 void show_error(char *);
-void str_replace(char **, char *, char *);
+char *str_replace(char *, char *, char *);
 void syntaxdep_show_display();
 char *gc_strdup(char *str);
 int usable_num(int MPnum[MP_SIZE]);
@@ -45,7 +45,7 @@ void do_base(enum base_type);
 void do_business();
 void do_calc();
 void do_lr_calc();
-void do_expression();
+void do_expression(int function, int arg, int cursor);
 void do_clear();
 void do_clear_entry();
 void do_backspace();

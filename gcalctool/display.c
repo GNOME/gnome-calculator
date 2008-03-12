@@ -46,7 +46,7 @@ static char *make_eng_sci(int *, int);
  */
 
 void
-localize_number(char *dest, const char *src)
+localize_number(char *dest, const char *src, int dest_length)
 {
     char tnum[MAX_LOCALIZED], *dstp;
 
@@ -88,7 +88,7 @@ localize_number(char *dest, const char *src)
         }
         *dstp++ = '\0';
     } else {
-        STRCPY(dest, src);
+        STRNCPY(dest, src, dest_length - 1);
     }
     dstp = strchr(dest, '.');
     if (dstp != NULL) {
@@ -168,7 +168,7 @@ initialise()
 char *
 make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 {
-    char half[4], *optr;
+    char half[MAXLINE], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
@@ -186,7 +186,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 
     mppwr(MP1base, &v->accuracy, MP1);
     /* FIXME: string const. if MPstr_to_num can get it */
-    SPRINTF(half, "0.5");
+    SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
@@ -276,7 +276,7 @@ make_number(int *MPnumber, int base, int ignoreError)
 static char *
 make_eng_sci(int *MPnumber, int base)
 {
-    char half[4], fixed[MAX_DIGITS], *optr;
+    char half[MAXLINE], fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
     int i, dval, len, n;
@@ -335,7 +335,7 @@ make_eng_sci(int *MPnumber, int base)
         }
     }
  
-    STRCPY(fixed, make_fixed(MPmant, v->fnum, base, MAX_DIGITS-6, TRUE));
+    STRNCPY(fixed, make_fixed(MPmant, v->fnum, base, MAX_DIGITS-6, TRUE), MAX_DIGITS - 1);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -350,7 +350,7 @@ make_eng_sci(int *MPnumber, int base)
         *optr++ = '+';
     }
  
-    SPRINTF(half, "0.5");
+    SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP1);
     mpaddi(MP1, &exp, MPval);
     n = 1;
@@ -570,7 +570,7 @@ void
 refresh_display(int cursor)
 {
     int i, MP_reg[MP_SIZE];
-    char localized[MAX_LOCALIZED], *str, *ans, reg[3];
+    char localized[MAX_LOCALIZED], *str, *ans, reg[3], *t;
     struct exprm_state *e;
 
     switch (v->syntax) {
@@ -588,14 +588,18 @@ refresh_display(int cursor)
             }
             ans = make_number(e->ans, v->base, TRUE);
 
-            localize_number(localized, ans);
-            str_replace(&str, "Ans", localized);
+            localize_number(localized, ans, MAX_LOCALIZED);
+            t = str_replace(str, "Ans", localized);
+            free(str);
+            str = t;
 
             /* Replace registers with values. */
             for (i = 0; i < 10; i++) {
                 SNPRINTF(reg, 3, "R%d", i);
                 do_rcl_reg(i, MP_reg);
-                str_replace(&str, reg, make_number(MP_reg, v->base, FALSE));
+                t = str_replace(str, reg, make_number(MP_reg, v->base, FALSE));
+                free(str);
+                str = t;
             }
 
             ui_set_display(str, cursor);
