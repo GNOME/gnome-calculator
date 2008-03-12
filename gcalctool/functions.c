@@ -338,7 +338,7 @@ exp_backspace(int cursor)
         if (exp_has_postfix(e->expression, "Ans")) {
             char *ans = make_number(e->ans, v->base, FALSE);
             char *t;
-            t = str_replace(&e->expression, "Ans", ans);
+            t = str_replace(e->expression, "Ans", ans);
             free(e->expression);
             e->expression = t;
         } else {
