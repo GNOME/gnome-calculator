@@ -25,7 +25,7 @@
 #include "calctool.h"
 
 void show_error(char *);
-void str_replace(char **, char *, char *);
+char *str_replace(char *, char *, char *);
 void syntaxdep_show_display();
 char *gc_strdup(char *str);
 int usable_num(int MPnum[MP_SIZE]);

@@ -725,7 +725,7 @@ static char *
 make_hostname()
 {
     Display *dpy = GDK_DISPLAY();
-    char client_hostname[MAXHOSTNAMELEN + 4];
+    char client_hostname[MAXLINE] = "";
     char hostname[MAXHOSTNAMELEN];
     char *display = DisplayString(dpy);
     char *scanner = display;
@@ -746,10 +746,8 @@ make_hostname()
         strcmp(display, "localhost") &&     
         strcmp(display, "unix") &&          
         strcmp(display, "")) {              
-        SPRINTF(client_hostname, " [%s] ", hostname);
-    } else {                                
-        STRCPY(client_hostname, "");        
-    }                                       
+        SNPRINTF(client_hostname, MAXLINE, " [%s] ", hostname);
+    }
 
     *scanner = ':';
     
@@ -888,7 +886,7 @@ set_bit_panel()
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
-    char *bit_str, label[3], tmp[MAXLINE];
+    char *bit_str, label[MAXLINE], tmp[MAXLINE];
 
     switch (v->syntax) {
         case NPA:
@@ -903,9 +901,12 @@ set_bit_panel()
                 if (bit_str_len <= MAXBITS) {
                     gtk_widget_set_sensitive(X->bit_panel, TRUE);
 
-                    STRCPY(label, " 0");
                     for (i = 0; i < MAXBITS; i++) {
-                        label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+                        if (i < bit_str_len) {
+                            SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
+                        } else {
+                            SNPRINTF(label, MAXLINE, " 0");
+                        }
                         gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
                     }
 
@@ -928,9 +929,12 @@ set_bit_panel()
                   if (bit_str_len <= MAXBITS) {
                       gtk_widget_set_sensitive(X->bit_panel, TRUE);
                       
-                      STRCPY(label, " 0");
                       for (i = 0; i < MAXBITS; i++) {
-                          label[1] = (i < bit_str_len) ? bit_str[bit_str_len-i-1] : '0';
+                          if (i < bit_str_len) {
+                              SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
+                          } else {
+                              SNPRINTF(label, MAXLINE, " 0");
+                          }
                           gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
                       }
                   } else {
@@ -972,7 +976,7 @@ ui_set_display(char *str, int cursor)
         str = " ";
     } else {
         if (v->noparens == 0) {
-            localize_number(localized, str);
+            localize_number(localized, str, MAX_LOCALIZED);
             str = localized;
         }
     }
@@ -2851,7 +2855,7 @@ read_cfdefs()        /* Read constant/function definitions. */
         get_constant(n);
     }
     for (n = 0; n < MAX_FUNCTIONS; n++) {
-        STRCPY(v->fun_vals[n], "");    /* Initially empty function strings. */
+        STRNCPY(v->fun_vals[n], "", MAXLINE - 1);    /* Initially empty function strings. */
         get_function(n);
     }
 }
