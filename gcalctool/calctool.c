@@ -26,6 +26,7 @@
 #include <sys/types.h>
 
 #include "calctool.h"
+#include "unittest.h"
 #include "get.h"
 #include "display.h"
 #include "functions.h"
@@ -619,10 +620,11 @@ usage(char *progname)
      * the second is the program version number.
      */
     FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-a accuracy] "), progname);
+    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-u] [-a accuracy] "), progname);
     FPRINTF(stderr, _("\t\t [-?] [-v] [-h]\n"));
     exit(1);
 }
+
 
 #define INC { argc--; argv++; }
 
@@ -661,6 +663,10 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
                         INC;
                         read_str(&v->appname, argv[0]);
                     }
+                    break;
+                
+                case 'u':
+                    unittest();
                     break;
 
                 case '?' :
