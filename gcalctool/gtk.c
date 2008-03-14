@@ -543,10 +543,9 @@ ui_set_accuracy(int accuracy)
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 
-    /* Translators: The accuracy range will always be plural, so no need to
-     *             use ngettext here.
-     */
-    desc = g_strdup_printf(_("Set accuracy from 0 to %d numeric places."),
+    desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric place.",
+                                    "Set accuracy from 0 to %d numeric places.",
+                                    MAXACC),
                            MAXACC);
 
     /* Translators: This refers to the current accuracy setting */
