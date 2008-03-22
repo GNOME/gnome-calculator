@@ -9,9 +9,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Gcalctool HEAD\n"
+"Project-Id-Version: Gcalctool 5.22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-14 12:32+0000\n"
+"POT-Creation-Date: 2008-03-11 03:56+0000\n"
 "PO-Revision-Date: 2008-03-09 12:29+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -69,12 +69,21 @@ msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
 msgid "Error"
 msgstr "Viga"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:608
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s järgmise argumendina.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:621
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -83,20 +92,20 @@ msgstr ""
 "%s versioon %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
+#: ../gcalctool/calctool.c:622
 #, c-format
 msgid "Usage: %s: [-D] [-E] [-a accuracy] "
 msgstr "Kasutamine: %s: [-D] [-E] [-a täpsus] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:623
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:648
 msgid "-a needs accuracy value"
 msgstr "-a vajab täpsuse väärtust"
 
-#: ../gcalctool/calctool.c:643 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:652 ../gcalctool/get.c:237
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: täpsus peab olema vahemikus 0-%d\n"
@@ -312,7 +321,7 @@ msgstr "Tanh<sup>-1</sup>"
 #.
 #: ../gcalctool/gtk.c:690
 msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr ""
+msgstr "Bitiredaktor on aktiveeritud. Biti väärtuse muutmiseks klõpsa bitil."
 
 #: ../gcalctool/gtk.c:1151
 msgid "translator-credits"
@@ -437,7 +446,7 @@ msgstr "Kirjeldus"
 #: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
-msgstr ""
+msgstr "Määra _vaikimisi (%d)"
 
 #: ../gcalctool/mp.c:3364
 msgid "Negative X and non-integer Y not supported"
@@ -514,7 +523,7 @@ msgstr "10 astendamine kuvatava väärtusega [}]"
 
 #: ../glade/gcalctool.glade.h:23
 msgid "10 to the x"
-msgstr ""
+msgstr "10 astmele x"
 
 #. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
 #: ../glade/gcalctool.glade.h:25
@@ -1289,7 +1298,7 @@ msgstr "Juhuslik arv vahemikus 0.0 kuni 1.0 [?]"
 #.
 #: ../glade/gcalctool.glade.h:261
 msgid "Rate"
-msgstr ""
+msgstr "Intress"
 
 #. Retrieve from register
 #: ../glade/gcalctool.glade.h:263
@@ -1409,14 +1418,14 @@ msgstr "Nihutamine paremale"
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
 #: ../glade/gcalctool.glade.h:296
 msgid "Show Bit Editor"
-msgstr ""
+msgstr "Bitiredaktori näitamine"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
 #: ../glade/gcalctool.glade.h:300
 msgid "Show Bit _Editor"
-msgstr ""
+msgstr "Näita _bitiredaktorit"
 
 #: ../glade/gcalctool.glade.h:301
 msgid "Show T_housands Separator"
@@ -1431,7 +1440,7 @@ msgstr "Näita lõpusolevaid _nulle"
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
 #: ../glade/gcalctool.glade.h:306
 msgid "Show bit editor"
-msgstr ""
+msgstr "Bitiredaktori näitamine"
 
 #: ../glade/gcalctool.glade.h:307
 msgid "Show help contents"
@@ -1502,11 +1511,11 @@ msgstr "Registrisse salvestamine"
 
 #: ../glade/gcalctool.glade.h:328
 msgid "Straight-line depreciation"
-msgstr ""
+msgstr "Lineaarne amortisatsioon"
 
 #: ../glade/gcalctool.glade.h:329
 msgid "Straight-line depreciation [l]"
-msgstr ""
+msgstr "Lineaarne amortisatsioon [l]"
 
 #: ../glade/gcalctool.glade.h:330
 msgid "Subtract"
@@ -1691,7 +1700,7 @@ msgstr ""
 
 #: ../glade/gcalctool.glade.h:381
 msgid "_Help"
-msgstr "_Abiteave"
+msgstr "A_bi"
 
 #: ../glade/gcalctool.glade.h:382
 msgid "_Insert"
