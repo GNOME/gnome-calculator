@@ -689,15 +689,12 @@ do_calc()      /* Perform arithmetic calculation and display result. */
                 ui_set_statusbar(_("Error, operands must be integers"),
                                  "gtk-dialog-error");
             } else {
-                int val;
-
                 mpdiv(v->MPresult, v->MPdisp_val, MP1);
                 mpcmim(MP1, MP1);
                 mpmul(MP1, v->MPdisp_val, MP2);
                 mpsub(v->MPresult, MP2, v->MPresult);
 
-                val = 0;
-                mpcim(&val, MP1);
+                do_zero(MP1);
                 if ((mplt(v->MPdisp_val, MP1) && mpgt(v->MPresult, MP1)) ||
                     mplt(v->MPresult, MP1)) { 
                     mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
@@ -1075,8 +1072,7 @@ do_factorial(int *MPval, int *MPres)
 
     mpstr(MPval, MPa);
     mpcmim(MPval, MP1);
-    i = 0;
-    mpcim(&i, MP2);
+    do_zero(MP2);
     if (mpeq(MPval, MP1) && mpge(MPval, MP2)) {   /* Only positive integers. */
         i = 1;
         if (mpeq(MP1, MP2)) {                     /* Special case for 0! */

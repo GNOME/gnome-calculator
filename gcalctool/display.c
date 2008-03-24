@@ -121,12 +121,9 @@ char_val(char chr)
 void
 clear_display(int initialise)
 {
-    int i;
-    
     v->pointed = 0;
     v->toclear = 1;
-    i = 0;
-    mpcim(&i, v->MPdisp_val);
+    do_zero(v->MPdisp_val);
     STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
             MAXLINE - 1);
     ui_set_display(v->display, -1);
@@ -145,15 +142,12 @@ clear_display(int initialise)
 void
 initialise()
 {
-    int i;
- 
     v->error         = 0;           /* Currently no display error. */
     v->cur_op        = -1;         /* No arithmetic operator defined yet. */
     v->old_cal_value = -1;
-    i = 0;
-    mpcim(&i, v->MPresult);         /* No previous result yet. */
-    mpcim(&i, v->MPdisp_val);         
-    mpcim(&i, v->MPlast_input);
+    do_zero(v->MPresult);         /* No previous result yet. */
+    do_zero(v->MPdisp_val);         
+    do_zero(v->MPlast_input);
   
     v->new_input = 1;               /* Value zero is on calculator display */
 
@@ -176,8 +170,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
  
     optr = str;
     mpabs(MPnumber, MPval);
-    n = 0;
-    mpcim(&n, MP1);
+    do_zero(MP1);
     if (mplt(MPnumber, MP1)) {
         *optr++ = '-';
     }
@@ -290,8 +283,7 @@ make_eng_sci(int *MPnumber, int base)
     }
     optr = v->snum;
     mpabs(MPnumber, MPval);
-    n = 0;
-    mpcim(&n, MP1);
+    do_zero(MP1);
     if (mplt(MPnumber, MP1)) {
         *optr++ = '-';
     }
@@ -308,8 +300,7 @@ make_eng_sci(int *MPnumber, int base)
     mpcim(&n, MP1);
     mpdiv(MP1, MP10base, MPatmp);
 
-    n = 0;
-    mpcim(&n, MP1);
+    do_zero(MP1);
     if (!mpeq(MPmant, MP1)) {
         while (!eng && mpge(MPmant, MP10base)) {
             exp += 10;
@@ -393,8 +384,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     char *lnp = ui_get_localized_numeric_point();
     assert(lnp);
 
-    i = 0;
-    mpcim(&i, MPval);
+    do_zero(MPval);
     mpcim(&basevals[(int) base], MPbase);
 
     optr = str;
@@ -458,7 +448,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
 void
 paren_disp(int key)
 {
-    int i, n;
+    int n;
     char *text;
 
 /*  If the character is a Delete, clear the whole line, and exit parenthesis
@@ -478,8 +468,7 @@ paren_disp(int key)
     case KEY_CLEAR:
         v->noparens = v->numsptr = 0;
         v->cur_op = -1;
-        i = 0;
-        mpcim(&i, v->MPdisp_val);
+        do_zero(v->MPdisp_val);
         show_display(v->MPdisp_val);
         return;
     case KEY_BACKSPACE:

@@ -170,8 +170,7 @@ calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
 {
     int MP0[MP_SIZE], val;
 
-    val = 0;
-    mpcim(&val, MP0);
+    do_zero(MP0);
 
     /* Check if both x and y are zero. If yes, then just return 1.
      * See gcalctool bug #451286.
@@ -212,7 +211,7 @@ calc_modulus(int op1[MP_SIZE],
 	     int op2[MP_SIZE], 
 	     int result[MP_SIZE])
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE], val;
+    int MP1[MP_SIZE], MP2[MP_SIZE];
 
     if (!is_integer(op1) || !is_integer(op2)) {
         return -EINVAL;
@@ -223,8 +222,7 @@ calc_modulus(int op1[MP_SIZE],
     mpmul(MP1, op2, MP2);
     mpsub(op1, MP2, result);
 
-    val = 0;
-    mpcim(&val, MP1);
+    do_zero(MP1);
     if ((mplt(op2, MP1) && mpgt(result, MP1)) || mplt(result, MP1)) { 
         mpadd(result, op2, result);
     }
@@ -361,8 +359,7 @@ mpacos(int *MPx, int *MPretval)
     int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE], val;
 
     mppi(MPpi);
-    val = 0;
-    mpcim(&val, MP0);
+    do_zero(MP0);
     val = 1;
     mpcim(&val, MP1);
     val = -1;
@@ -409,8 +406,7 @@ mpacosh(int *MPx, int *MPretval)
     mpcim(&val, MP1);
     if (mplt(MPx, MP1)) {
         doerr(_("Error"));
-        val = 0;
-        mpcim(&val, MPretval);
+        do_zero(MPretval);
     } else {
         mpmul(MPx, MPx, MP1);
         val = -1;
@@ -455,8 +451,7 @@ mpatanh(int *MPx, int *MPretval)
     int MP3[MP_SIZE], MPn1[MP_SIZE];
     int val;
 
-    val = 0;
-    mpcim(&val, MP0);
+    do_zero(MP0);
     val = 1;
     mpcim(&val, MP1);
     val = -1;
@@ -539,8 +534,7 @@ calc_ddb(int t[MP_SIZE])
     int val;
     int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
 
-    i = 0;
-    mpcim(&i, MPbv);
+    do_zero(MPbv);
     mpcmi(v->MPmvals[3], &len);
     for (i = 0; i < len; i++) {
         mpsub(v->MPmvals[0], MPbv, MP1);
