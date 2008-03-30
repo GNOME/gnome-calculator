@@ -12,74 +12,81 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-16 16:48+0100\n"
-"PO-Revision-Date: 2008-02-16 18:07+0100\n"
-"Last-Translator: wadim dziedzic <nikdo@aviary.pl>\n"
+"POT-Creation-Date: 2008-03-30 18:26+0200\n"
+"PO-Revision-Date: 2008-03-30 18:18+0100\n"
+"Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
 "Language-Team: Polish <translators@gnomepl.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: ../gcalctool/calctool.c:566
+#: ../gcalctool/calctool.c:567
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Współczynnik konwersji kilometrów na mile"
 
-#: ../gcalctool/calctool.c:568
+#: ../gcalctool/calctool.c:569
 msgid "square root of 2"
 msgstr "pierwiastek kwadratowy z 2"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:570
 msgid "Euler's Number (e)"
 msgstr "Liczba Eulera (e)"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:571
 msgid "pi"
 msgstr "pi"
 
-#: ../gcalctool/calctool.c:571
+#: ../gcalctool/calctool.c:572
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Współczynnik konwersji centymetrów na cale"
 
-#: ../gcalctool/calctool.c:573
+#: ../gcalctool/calctool.c:574
 msgid "degrees in a radian"
 msgstr "stopnie w radianach"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:575
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:576
 msgid "Gram-to-ounce conversion factor"
 msgstr "Współczynnik konwersji grama na uncję"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:578
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Współczynnik konwersji kilodżuli na brytyjskie jednostki termiczne"
 
-#: ../gcalctool/calctool.c:580
+#: ../gcalctool/calctool.c:581
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Współczynnik konwersji centymetrów sześciennych na cale sześcienne"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591
-#: ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981
-#: ../gcalctool/mpmath.c:372
-#: ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
+#: ../gcalctool/calctool.c:592 ../gcalctool/display.c:255
+#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
+#: ../gcalctool/mpmath.c:461
 msgid "Error"
 msgstr "Błąd"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:609
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s jako następny argument.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:622
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -88,21 +95,20 @@ msgstr ""
 "%s wersja %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
+#: ../gcalctool/calctool.c:623
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "Użycie: %s: [-D] [-E] [-a dokładność] "
+msgid "Usage: %s: [-D] [-E] [-u] [-a accuracy] "
+msgstr "Użycie: %s: [-D] [-E] [-u] [-a dokładność] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:624
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:649
 msgid "-a needs accuracy value"
 msgstr "-a wymaga dokładnej wartości"
 
-#: ../gcalctool/calctool.c:643
-#: ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:653 ../gcalctool/get.c:237
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: dokładność musi mieścić się w zakresie 0-%d\n"
@@ -115,57 +121,55 @@ msgstr "Brak historii cofania"
 msgid "No redo steps"
 msgstr "Brak historii powtarzania"
 
-#: ../gcalctool/functions.c:577
+#: ../gcalctool/functions.c:570
 msgid "Invalid number for the current base"
 msgstr "Niepoprawna liczba dla bieżącego systemu"
 
-#: ../gcalctool/functions.c:581
+#: ../gcalctool/functions.c:574
 msgid "Too long number"
 msgstr "Za długa liczba"
 
-#: ../gcalctool/functions.c:585
+#: ../gcalctool/functions.c:578
 msgid "Invalid bitwise operation parameter(s)"
 msgstr "Niepoprawny parametr operacji bitowej"
 
-#: ../gcalctool/functions.c:589
+#: ../gcalctool/functions.c:582
 msgid "Invalid modulus operation parameter(s)"
 msgstr "Niepoprawny parametr operacji modulo"
 
-#: ../gcalctool/functions.c:593
+#: ../gcalctool/functions.c:586
 msgid "Math operation error"
 msgstr "Błąd operacji matematycznej"
 
-#: ../gcalctool/functions.c:597
+#: ../gcalctool/functions.c:590
 msgid "Malformed expression"
 msgstr "Niepoprawnie zdefiniowane wyrażenie"
 
-#: ../gcalctool/functions.c:696
+#: ../gcalctool/functions.c:689
 msgid "Error, operands must be integers"
 msgstr "Błąd, argumenty muszą być liczbami całkowitymi"
 
-#: ../gcalctool/functions.c:923
-#: ../gcalctool/functions.c:1278
+#: ../gcalctool/functions.c:913 ../gcalctool/functions.c:1267
 msgid "No sane value to convert"
 msgstr "Brak poprawnej wartości do przekształcenia"
 
-#: ../gcalctool/functions.c:1023
-#: ../gcalctool/functions.c:1351
+#: ../gcalctool/functions.c:1013 ../gcalctool/functions.c:1340
 msgid "No sane value to store"
 msgstr "Brak poprawnej wartości do przechowania"
 
-#: ../gcalctool/functions.c:1144
+#: ../gcalctool/functions.c:1133
 msgid "Malformed function"
 msgstr "Niepoprawnie zbudowana funkcja"
 
-#: ../gcalctool/functions.c:1306
+#: ../gcalctool/functions.c:1295
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Wyczyszczony wyświetlacz, prefiks bez operatora nie jest dozwolony"
 
-#: ../gcalctool/functions.c:1327
+#: ../gcalctool/functions.c:1316
 msgid "Malformed parenthesis expression"
 msgstr "Niepoprawnie zdefiniowane nawiasy"
 
-#: ../gcalctool/functions.c:1503
+#: ../gcalctool/functions.c:1492
 msgid "No sane value to do bitwise shift"
 msgstr "Brak poprawnej wartości dla przesunięcia bitowego"
 
@@ -194,8 +198,7 @@ msgstr "%s: niepoprawny tryb trygonometryczny [%s]\n"
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: niepoprawny tryb składni [%s]\n"
 
-#: ../gcalctool/gtk.c:55
-#: ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -239,32 +242,30 @@ msgstr "Aktywny tryb bez kolejności działań"
 msgid "Activated expression mode with operator precedence"
 msgstr "Aktywny tryb wyrażeń z kolejnością wykonywania działań"
 
-#: ../gcalctool/gtk.c:542
-#: ../glade/gcalctool.glade.h:389
+#: ../gcalctool/gtk.c:542 ../glade/gcalctool.glade.h:389
 #, no-c-format
 msgid "_Other (%d) ..."
 msgstr "_Inna (%d) ..."
 
 #: ../gcalctool/gtk.c:546
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places."
+msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Ustawianie dokładności od 0 do %d miejsca dziesiętnego."
-msgstr[1] "Ustawianie dokładności od 0 do %d miejsc dziesiętnych."
-msgstr[2] "Ustawianie dokładności od 0 do %d miejsc dziesiętnych."
+msgstr[0] "Ustawianie dokładności od 0 do %d miejsca po przecinku."
+msgstr[1] "Ustawianie dokładności od 0 do %d miejsc po przecinku."
+msgstr[2] "Ustawianie dokładności od 0 do %d miejsc po przecinku."
 
-#. Translator: This refers to the current accuracy setting
+#. Translators: This refers to the current accuracy setting
 #: ../gcalctool/gtk.c:552
 #, c-format
-msgid "Currently set to %d places."
+msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
 msgstr[0] "Ustawiona na %d miejsce."
 msgstr[1] "Ustawiona na %d miejsca."
 msgstr[2] "Ustawiona na %d miejsc."
 
 #. Factorial
-#: ../gcalctool/gtk.c:584
-#: ../glade/gcalctool.glade.h:314
+#: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
 msgid "Sin"
 msgstr "Sin"
 
@@ -281,8 +282,7 @@ msgid "Sinh<sup>-1</sup>"
 msgstr "Sinh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:588
-#: ../glade/gcalctool.glade.h:140
+#: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
 msgid "Cos"
 msgstr "Cos"
 
@@ -299,8 +299,7 @@ msgid "Cosh<sup>-1</sup>"
 msgstr "Cosh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:592
-#: ../glade/gcalctool.glade.h:339
+#: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
 msgid "Tan"
 msgstr "Tan"
 
@@ -327,13 +326,15 @@ msgstr "Tanh<sup>-1</sup>"
 #.
 #: ../gcalctool/gtk.c:690
 msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr "Edytor bitowy włączony. Kliknięcie na wartości bitu powoduje jej przełączenie."
+msgstr ""
+"Edytor bitowy włączony. Kliknięcie na wartości bitu powoduje jej "
+"przełączenie."
 
-#: ../gcalctool/gtk.c:1151
+#: ../gcalctool/gtk.c:1155
 msgid "translator-credits"
 msgstr "GNOME PL Team <translators@gnomepl.org>"
 
-#: ../gcalctool/gtk.c:1154
+#: ../gcalctool/gtk.c:1158
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -345,7 +346,7 @@ msgstr ""
 "opublikowanej przez Free Software Foundation w wersji 2 lub (zależnie\n"
 "od twojego wyboru) którejkolwiek późniejszej\n"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1162
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -357,7 +358,7 @@ msgstr ""
 "KONKRETNEGO ZASTOSOWANIA. Szczegóły można znaleźć w GNU\n"
 "General Public License.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1166
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -367,94 +368,94 @@ msgstr ""
 "Jeśli jej brak, napisz na adres Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1173
+#: ../gcalctool/gtk.c:1177
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1179
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Autorzy Gcalctool"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1181
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator z trybem finansowym i naukowym."
 
-#: ../gcalctool/gtk.c:1479
-#: ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1483 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1497
-#: ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1501 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1671
+#: ../gcalctool/gtk.c:1675
 msgid "Changing Modes Clears Calculation"
 msgstr "Zmiana trybu usuwa obliczenia"
 
-#: ../gcalctool/gtk.c:1674
-msgid "When you change modes, the current calculation will be cleared, and the base will be reset to decimal."
-msgstr "Podczas zmiany trybów, bieżące obliczenia zostaną usunięte, a system zostanie zmieniony na dziesiętny."
-
 #: ../gcalctool/gtk.c:1678
+msgid ""
+"When you change modes, the current calculation will be cleared, and the base "
+"will be reset to decimal."
+msgstr ""
+"Podczas zmiany trybów, bieżące obliczenia zostaną usunięte, a system "
+"zostanie zmieniony na dziesiętny."
+
+#: ../gcalctool/gtk.c:1682
 msgid "_Do not warn me again"
 msgstr "_Bez ostrzeżenia w przyszłości"
 
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1687
 msgid "C_hange Mode"
 msgstr "Zmień _tryb"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1820
+#: ../gcalctool/gtk.c:1824
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
+#: ../gcalctool/gtk.c:2190
 msgid "Clipboard contained malformed calculation"
 msgstr "Schowek zawiera niepoprawnie zbudowane obliczenie"
 
-#: ../gcalctool/gtk.c:2258
+#: ../gcalctool/gtk.c:2262
 msgid "Paste"
 msgstr "Wklej"
 
-#: ../gcalctool/gtk.c:2531
+#: ../gcalctool/gtk.c:2535
 msgid "Error loading user interface"
 msgstr "Błąd wczytywania interfejsu użytkownika"
 
-#: ../gcalctool/gtk.c:2533
+#: ../gcalctool/gtk.c:2537
 #, c-format
-msgid "The user interface file %s is missing or unable to be loaded. Please check your installation."
+msgid ""
+"The user interface file %s is missing or unable to be loaded. Please check "
+"your installation."
 msgstr "Brak pliku interfejsu %s. Proszę zweryfikować instalację."
 
-#: ../gcalctool/gtk.c:2761
-#: ../gcalctool/gtk.c:2779
+#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
 msgid "No."
 msgstr "Nr."
 
-#: ../gcalctool/gtk.c:2763
-#: ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2767 ../gcalctool/gtk.c:2785
 msgid "Value"
 msgstr "Wartość"
 
-#: ../gcalctool/gtk.c:2765
-#: ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2769 ../gcalctool/gtk.c:2787
 msgid "Description"
 msgstr "Opis"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921
-#: ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2925 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
-msgstr "Przywróć _domyślną (%s)"
+msgstr "Przywróć _domyślną (%d)"
 
 #: ../gcalctool/mp.c:3364
 msgid "Negative X and non-integer Y not supported"
 msgstr "Ujemne X i niecałkowite Y nie są obsługiwane"
 
-#: ../gcalctool/mpmath.c:273
+#: ../gcalctool/mpmath.c:271
 msgid "Error, cannot calculate cosine"
 msgstr "Błąd, nie można obliczyć cosinusa"
 
@@ -649,8 +650,12 @@ msgid "<i>x</i><sup><i>y</i></sup>"
 msgstr "<i>x</i><sup><i>y</i></sup>"
 
 #: ../glade/gcalctool.glade.h:64
-msgid "<small><i><b>Note:</b> All constant values are specified in the decimal numeric base.</i></small>"
-msgstr "<small><i><b>Uwaga:</b>wszystkie wartości stałych są określane w systemie dziesiętnym.</i></small>"
+msgid ""
+"<small><i><b>Note:</b> All constant values are specified in the decimal "
+"numeric base.</i></small>"
+msgstr ""
+"<small><i><b>Uwaga:</b>wszystkie wartości stałych są określane w systemie "
+"dziesiętnym.</i></small>"
 
 #. "R0" is the abbreviation for "Register 0", used in the memory register dialog
 #: ../glade/gcalctool.glade.h:66
@@ -857,7 +862,9 @@ msgstr "Usunięcie wyświetlanej wartości [Esc]"
 
 #: ../glade/gcalctool.glade.h:128
 msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Usunięcie wyświetlanej wartości i dowolnego częściowego obliczenia [Shift Del]"
+msgstr ""
+"Usunięcie wyświetlanej wartości i dowolnego częściowego obliczenia [Shift "
+"Del]"
 
 #: ../glade/gcalctool.glade.h:129
 msgid "Clear entry"
@@ -1870,121 +1877,177 @@ msgstr "√"
 
 #~ msgid "Expression"
 #~ msgstr "Wyrażenie"
+
 #~ msgid "/"
 #~ msgstr "/"
+
 #~ msgid "*"
 #~ msgstr "*"
+
 #~ msgid "Chs"
 #~ msgstr "Chs"
+
 #~ msgid "-"
 #~ msgstr "-"
+
 #~ msgid "Sqrt"
 #~ msgstr "Sqrt"
+
 #~ msgid "Recip"
 #~ msgstr "Odwrotność"
+
 #~ msgid "^2"
 #~ msgstr "^2"
+
 #~ msgid "&amp;16"
 #~ msgstr "&amp;16"
+
 #~ msgid "&amp;32"
 #~ msgstr "&amp;32"
+
 #~ msgid "32 bit unsigned integer"
 #~ msgstr "32-bitowa wartość całkowitoliczbowa bez znaku"
+
 #~ msgid " Mod "
 #~ msgstr " Mod "
+
 #~ msgid "Exponential"
 #~ msgstr "Wykładnicza"
+
 #~ msgid "e"
 #~ msgstr "e"
+
 #~ msgid "e^"
 #~ msgstr "e^"
+
 #~ msgid "^"
 #~ msgstr "^"
+
 #~ msgid "!"
 #~ msgstr "!"
+
 #~ msgid "Log"
 #~ msgstr "Log"
+
 #~ msgid "Or"
 #~ msgstr "Or"
+
 #~ msgid " Or "
 #~ msgstr " Or "
+
 #~ msgid "And"
 #~ msgstr "And"
+
 #~ msgid " And "
 #~ msgstr " And "
+
 #~ msgid "Not"
 #~ msgstr "Not"
+
 #~ msgid "~"
 #~ msgstr "~"
+
 #~ msgid "Xor"
 #~ msgstr "Xor"
+
 #~ msgid " Xor "
 #~ msgstr " Xor "
+
 #~ msgid "Xnor"
 #~ msgstr "Xnor"
+
 #~ msgid " Xnor "
 #~ msgstr " Xnor "
+
 #~ msgid "Numeric stack error"
 #~ msgstr "Liczbowy błąd stosu"
+
 #~ msgid "Operand stack error"
 #~ msgstr "Operatorowy błąd stosu"
+
 #~ msgid "calculator"
 #~ msgstr "kalkulator"
+
 #~ msgid "%s: invalid bitcalc choice [%s]\n"
 #~ msgstr "%s: niepoprawny wybór bitcalc [%s]\n"
+
 #~ msgid "1 place"
 #~ msgstr "1 miejsce"
+
 #~ msgid "2 places"
 #~ msgstr "2 miejsca"
+
 #~ msgid "3 places"
 #~ msgstr "3 miejsca"
+
 #~ msgid "4 places"
 #~ msgstr "4 miejsca"
+
 #~ msgid "5 places"
 #~ msgstr "5 miejsc"
+
 #~ msgid "6 places"
 #~ msgstr "6 miejsc"
+
 #~ msgid "7 places"
 #~ msgstr "7 miejsc"
+
 #~ msgid "8 places"
 #~ msgstr "8 miejsc"
+
 #~ msgid "9 places"
 #~ msgstr "9 miejsc"
+
 #~ msgid "Show Bitcalculating _Extension"
 #~ msgstr "Pokaż _rozszerzenie do obliczeń bitowych"
+
 #~ msgid "Show bitcalculating extension"
 #~ msgstr "Pokazuje rozszerzenie do obliczeń bitowych"
+
 #~ msgid "0 significant places"
 #~ msgstr "0 znaczących miejsc"
+
 #~ msgid "1 significant place"
 #~ msgstr "1 znaczące miejsce"
+
 #~ msgid "2 significant places"
 #~ msgstr "2 znaczące miejsca"
+
 #~ msgid "3 significant places"
 #~ msgstr "3 znaczące miejsca"
+
 #~ msgid "4 significant places"
 #~ msgstr "4 znaczące miejsca"
+
 #~ msgid "5 significant places"
 #~ msgstr "5 znaczących miejsc"
+
 #~ msgid "6 significant places"
 #~ msgstr "6 znaczących miejsc"
+
 #~ msgid "7 significant places"
 #~ msgstr "7 znaczących miejsc"
+
 #~ msgid "8 significant places"
 #~ msgstr "8 znaczących miejsc"
+
 #~ msgid "9 significant places"
 #~ msgstr "9 znaczących miejsc"
+
 #~ msgid "_Other (10) ..."
 #~ msgstr "_Inne (10) ..."
+
 #~ msgid "Set other precision"
 #~ msgstr "Ustawienie innej dokładności"
+
 #~ msgid "Note:"
 #~ msgstr "Uwaga:"
+
 #~ msgid ""
 #~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 #~ msgstr ""
 #~ "Ustawianie dokładności od 0 do %d miejsc dziesiętnych. Aktualnie jest %d. "
 #~ "[a]"
+
 #~ msgid "Accuracy value out of range"
 #~ msgstr "Wartość dokładności poza zakresem"
-
