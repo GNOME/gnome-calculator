@@ -48,7 +48,7 @@ EXTRA_DIST = \
 	gcalctoolrc \
 	gcalctool.desktop.in \
 	gnome-doc-utils.make	\
-	m4			\
+	m4/*.m4			\
 	intltool-extract.in     \
 	intltool-merge.in       \
 	intltool-update.in      \
