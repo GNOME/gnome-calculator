@@ -915,34 +915,29 @@ set_bit_panel()
             gtk_widget_set_sensitive(X->bit_panel, FALSE);
             break;
 
-          case EXPRS: 
-              {
-                  char *bit_str, label[3], tmp[MAXLINE];
-                  int ret = usable_num(MP);
-                  if (ret || !is_integer(MP)) {
-                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                      return;
-                  }
-                  bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
-                  bit_str_len = strlen(bit_str);
-                  if (bit_str_len <= MAXBITS) {
-                      gtk_widget_set_sensitive(X->bit_panel, TRUE);
-                      
-                      for (i = 0; i < MAXBITS; i++) {
-                          if (i < bit_str_len) {
-                              SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-                          } else {
-                              SNPRINTF(label, MAXLINE, " 0");
-                          }
-                          gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-                      }
-                  } else {
-                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                  }
-                  
-              }
+        case EXPRS: 
+            if (usable_num(MP) || !is_integer(MP)) {
+                gtk_widget_set_sensitive(X->bit_panel, FALSE);
+                return;
+            }
+            bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
+            bit_str_len = strlen(bit_str);
+            if (bit_str_len <= MAXBITS) {
+                gtk_widget_set_sensitive(X->bit_panel, TRUE);
+                
+                for (i = 0; i < MAXBITS; i++) {
+                    if (i < bit_str_len) {
+                        SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
+                    } else {
+                        SNPRINTF(label, MAXLINE, " 0");
+                    }
+                    gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+                }
+            } else {
+                gtk_widget_set_sensitive(X->bit_panel, FALSE);
+            }
             break;
-        
+
         default:
             assert(FALSE);
     }
