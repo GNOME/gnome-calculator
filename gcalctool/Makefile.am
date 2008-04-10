@@ -72,19 +72,19 @@ lr_parser.o: lr_parser.c lr_parser.h calctool.h
 	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lr_parser.c
 
 lex.ce.o: lex.ce.c calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lex.ce.c
+	$(COMPILE) -c $(INCLUDES) -o $@ lex.ce.c
 
 lex.lr.o: lex.lr.c calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lex.lr.c
+	$(COMPILE) -c $(INCLUDES) -o $@ lex.lr.c
 
 ce_parser.tab.o: ce_parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/ce_parser.tab.c
+	$(COMPILE) -c $(INCLUDES) -o $@ ce_parser.tab.c
 
 ce_parser.tab.c: ce_parser.y calctool.h
 	bison -d -p ce -d $(srcdir)/ce_parser.y
 
 lr_parser.tab.o: lr_parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/lr_parser.tab.c
+	$(COMPILE) -c $(INCLUDES) -o $@ lr_parser.tab.c
 
 lr_parser.tab.c: lr_parser.y calctool.h
 	bison -d -p lr $(srcdir)/lr_parser.y
