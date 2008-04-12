@@ -225,6 +225,13 @@ get_tsep()
 }
 
 
+int
+get_tsep_count()
+{
+    return 3;
+}
+
+
 void
 read_resources()    /* Read all possible resources from the database. */
 {

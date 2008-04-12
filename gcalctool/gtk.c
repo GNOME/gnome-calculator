@@ -650,7 +650,7 @@ ui_set_numeric_mode(enum base_type mode)
 
 
 void
-ui_set_show_thousands_seperator(gboolean visible)
+ui_set_show_thousands_separator(gboolean visible)
 {
     GtkWidget *menu;
 
@@ -771,7 +771,7 @@ ui_set_mode(enum mode_type mode)
         ui_set_base(DEC);
         ui_set_numeric_mode(FIX);
         ui_set_accuracy(DEFAULT_ACCURACY);
-        ui_set_show_thousands_seperator(FALSE);
+        ui_set_show_thousands_separator(FALSE);
         ui_set_show_trailing_zeroes(FALSE);
         ui_make_registers();
 
@@ -970,7 +970,7 @@ ui_set_display(char *str, int cursor)
         str = " ";
     } else {
         if (v->noparens == 0) {
-            localize_number(localized, str, MAX_LOCALIZED);
+            localize_expression(localized, str, MAX_LOCALIZED);
             str = localized;
         }
     }
@@ -2466,7 +2466,7 @@ show_thousands_separator_cb(GtkWidget *widget)
     gboolean visible;
     
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    ui_set_show_thousands_seperator(visible);
+    ui_set_show_thousands_separator(visible);
 }
 
 
@@ -2894,7 +2894,7 @@ ui_load(void)
     resource = get_resource(R_BITCALC);
     show_bit = resource != NULL && strcmp(resource, Rcstr[0]) != 0;
 
-    ui_set_show_thousands_seperator(v->show_tsep);
+    ui_set_show_thousands_separator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
     ui_set_show_bitcalculating(show_bit);
     
