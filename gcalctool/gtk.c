@@ -1595,6 +1595,8 @@ create_constants_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
+                           COLUMN_VALUE, g_strdup(make_number(v->MPcon_vals[i], DEC, TRUE)),
+                           COLUMN_DESCRIPTION, g_strdup(v->con_names[i]),
                            -1);
     }
 
@@ -1618,6 +1620,8 @@ create_functions_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
+                           COLUMN_VALUE, g_strdup(v->fun_vals[i]),
+                           COLUMN_DESCRIPTION, g_strdup(v->fun_names[i]),
                            -1);
     }
 
