@@ -48,7 +48,7 @@ static char *make_eng_sci(int *, int);
 void
 localize_expression(char *dest, const char *src, int dest_length)
 {
-    GString *output = g_string_sized_new(dest_length);
+    GString *clean, *output;
     const char *c, *d;
     int digit_count = -1;
     gboolean after_radix = FALSE;
@@ -60,21 +60,25 @@ localize_expression(char *dest, const char *src, int dest_length)
     }
     
     /* Remove separators if not supported */
-    if(!v->show_tsep) {
-        for (c = src; *c; c++) {
-            if (strncmp(c, v->tsep, strlen(v->radix)) == 0) {
-                c += strlen(v->radix) - 1;
-            }
-            else {
-                g_string_append_c(output, *c);
-            }
+    clean = g_string_sized_new(strlen(src));
+    for (c = src; *c; c++) {
+        if (strncmp(c, v->tsep, strlen(v->radix)) == 0) {
+            c += strlen(v->radix) - 1;
         }
-        STRNCPY(dest, output->str, dest_length - 1);
+        else {
+            g_string_append_c(clean, *c);
+        }
+    }
+
+    if (!v->show_tsep) {
+        STRNCPY(dest, clean->str, dest_length - 1);
+        g_string_free(clean, TRUE);
         return;
     }
-    
+
     /* Scan expression looking for numbers and inserting separators */
-    for (c = src; *c; c++) {
+    output = g_string_sized_new(dest_length);
+    for (c = clean->str; *c; c++) {
         /* Insert separators between digits */
         if (*c >= '0' && *c <= '9') {
             /* Read ahead to find the number of digits */
@@ -108,6 +112,8 @@ localize_expression(char *dest, const char *src, int dest_length)
     }
     
     STRNCPY(dest, output->str, dest_length - 1);
+    g_string_free(output, TRUE);
+    g_string_free(clean, TRUE);    
 }
 
 
