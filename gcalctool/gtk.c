@@ -881,7 +881,7 @@ ui_set_statusbar(gchar *text, const gchar *imagename)
 }
 
 static void
-set_bit_panel()
+set_bit_panel(void)
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
@@ -2878,7 +2878,7 @@ ui_init(int *argc, char ***argv)
 
 
 void
-ui_load()
+ui_load(void)
 {
     int boolval;
     char *resource, text[MAXLINE];
@@ -2927,7 +2927,7 @@ ui_load()
 }
 
 void
-ui_start()
+ui_start(void)
 {
     X->warn_change_mode = TRUE; // FIXME: Load from GConf
     

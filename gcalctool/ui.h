@@ -24,9 +24,9 @@
 
 #include "calctool.h"
 
-void ui_init();
-void ui_load();
-void ui_start();
+void ui_init(int *argc, char ***argv);
+void ui_load(void);
+void ui_start(void);
 
 void ui_make_registers(void);
 void ui_set_undo_enabled(gboolean, gboolean);
