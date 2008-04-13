@@ -7,6 +7,14 @@
 gcalctool change history.
 =========================
 
+2008-04-12 Robert Ancell <robert.ancell@gmail.com>
+
+    * gcalctool/gtk.c: Correctly populate the constant and function menus (Bug #527545)
+    * gcalctool/gtk.c:
+      gcalctool/functions.[ch]:
+      gcalctool/ui.h: Fix compiler warnings (Bug #527318)
+    * Fix a number of thousands separator issues (Bug #527669).
+
 2008-04-10 Robert Ancell <robert.ancell@gmail.com>
 
     * gcalctool/ce_parser.y: Change parser precedence to perform negation after
@@ -15,6 +23,7 @@ gcalctool change history.
       po/POTFILES.skip:
       m4/Makefile.am:
       configure.in: Fix build so make distcheck works (Bug #526702)
+    * gcalctool/gtk.c: Remove shadowed variables (Bug #526976)
 
 2008-03-08 Robert Ancell <robert.ancell@gmail.com>
 

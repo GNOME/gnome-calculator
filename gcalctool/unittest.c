@@ -85,7 +85,10 @@ test_parser()
     test("1!", "1", 0);
     test("5!", "120", 0);
     //FIXME: Need to update do_factorial() test("0.1!", "", 0);
-    //FIXME: Need to update do_factorial() test("-1!", "", 0);    
+    //FIXME: Need to update do_factorial() test("-1!", "", 0);
+    
+    test("-10^2", "-100", 0);
+    test("(-10)^2", "100", 0);    
 
     test("Sqrt(4)", "2", 0);
     test("Sqrt(2)", "1.4142135", 0);

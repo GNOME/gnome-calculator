@@ -215,20 +215,20 @@ static struct button_widget button_widgets[] = {
     { GDK_parenright, GDK_parenright, 0 }},
 
     {KEY_ADD,                "add",
-    { GDK_SHIFT_MASK, 0,        0,          0 },
-    { GDK_plus,       GDK_plus, GDK_KP_Add, 0 }},
+    { 0,        GDK_SHIFT_MASK, 0,          0 },
+    { GDK_plus, GDK_plus,       GDK_KP_Add, 0 }},
 
     {KEY_SUBTRACT,           "subtract",
-    { 0,         0,               0,      0 },
-    { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 }},
+    { 0,         GDK_SHIFT_MASK, 0,               0,      0 },
+    { GDK_minus, GDK_minus,      GDK_KP_Subtract, GDK_R4, 0 }},
 
     {KEY_MULTIPLY,           "multiply",
-    { 0,            GDK_SHIFT_MASK, 0,               0,      0 },
-    { GDK_asterisk, GDK_asterisk,   GDK_KP_Multiply, GDK_R6, 0 }},
+    { 0,            GDK_SHIFT_MASK, 0,            GDK_SHIFT_MASK, 0,               0,      0 },
+    { GDK_asterisk, GDK_asterisk,   GDK_multiply, GDK_multiply,   GDK_KP_Multiply, GDK_R6, 0 }},
 
     {KEY_DIVIDE,             "divide",
-    { 0,         GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
-    { GDK_slash, GDK_slash,      GDK_KP_Divide, GDK_R5, GDK_slash,      0 }},
+    { 0,         GDK_SHIFT_MASK, 0,            GDK_SHIFT_MASK, 0,             0,      GDK_SHIFT_MASK, 0 },
+    { GDK_slash, GDK_slash,      GDK_division, GDK_division,   GDK_KP_Divide, GDK_R5, GDK_slash,      0 }},
 
     {KEY_CHANGE_SIGN,        "change_sign_simple",
     { GDK_SHIFT_MASK, 0 },
@@ -650,7 +650,7 @@ ui_set_numeric_mode(enum base_type mode)
 
 
 void
-ui_set_show_thousands_seperator(gboolean visible)
+ui_set_show_thousands_separator(gboolean visible)
 {
     GtkWidget *menu;
 
@@ -771,7 +771,7 @@ ui_set_mode(enum mode_type mode)
         ui_set_base(DEC);
         ui_set_numeric_mode(FIX);
         ui_set_accuracy(DEFAULT_ACCURACY);
-        ui_set_show_thousands_seperator(FALSE);
+        ui_set_show_thousands_separator(FALSE);
         ui_set_show_trailing_zeroes(FALSE);
         ui_make_registers();
 
@@ -881,7 +881,7 @@ ui_set_statusbar(gchar *text, const gchar *imagename)
 }
 
 static void
-set_bit_panel()
+set_bit_panel(void)
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
@@ -915,34 +915,29 @@ set_bit_panel()
             gtk_widget_set_sensitive(X->bit_panel, FALSE);
             break;
 
-          case EXPRS: 
-              {
-                  char *bit_str, label[3], tmp[MAXLINE];
-                  int ret = usable_num(MP);
-                  if (ret || !is_integer(MP)) {
-                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                      return;
-                  }
-                  bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
-                  bit_str_len = strlen(bit_str);
-                  if (bit_str_len <= MAXBITS) {
-                      gtk_widget_set_sensitive(X->bit_panel, TRUE);
-                      
-                      for (i = 0; i < MAXBITS; i++) {
-                          if (i < bit_str_len) {
-                              SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-                          } else {
-                              SNPRINTF(label, MAXLINE, " 0");
-                          }
-                          gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-                      }
-                  } else {
-                      gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                  }
-                  
-              }
+        case EXPRS: 
+            if (usable_num(MP) || !is_integer(MP)) {
+                gtk_widget_set_sensitive(X->bit_panel, FALSE);
+                return;
+            }
+            bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
+            bit_str_len = strlen(bit_str);
+            if (bit_str_len <= MAXBITS) {
+                gtk_widget_set_sensitive(X->bit_panel, TRUE);
+                
+                for (i = 0; i < MAXBITS; i++) {
+                    if (i < bit_str_len) {
+                        SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
+                    } else {
+                        SNPRINTF(label, MAXLINE, " 0");
+                    }
+                    gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+                }
+            } else {
+                gtk_widget_set_sensitive(X->bit_panel, FALSE);
+            }
             break;
-        
+
         default:
             assert(FALSE);
     }
@@ -975,7 +970,7 @@ ui_set_display(char *str, int cursor)
         str = " ";
     } else {
         if (v->noparens == 0) {
-            localize_number(localized, str, MAX_LOCALIZED);
+            localize_expression(localized, str, MAX_LOCALIZED);
             str = localized;
         }
     }
@@ -1600,6 +1595,8 @@ create_constants_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
+                           COLUMN_VALUE, g_strdup(make_number(v->MPcon_vals[i], DEC, TRUE)),
+                           COLUMN_DESCRIPTION, g_strdup(v->con_names[i]),
                            -1);
     }
 
@@ -1623,6 +1620,8 @@ create_functions_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
+                           COLUMN_VALUE, g_strdup(v->fun_vals[i]),
+                           COLUMN_DESCRIPTION, g_strdup(v->fun_names[i]),
                            -1);
     }
 
@@ -2467,7 +2466,7 @@ show_thousands_separator_cb(GtkWidget *widget)
     gboolean visible;
     
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    ui_set_show_thousands_seperator(visible);
+    ui_set_show_thousands_separator(visible);
 }
 
 
@@ -2879,7 +2878,7 @@ ui_init(int *argc, char ***argv)
 
 
 void
-ui_load()
+ui_load(void)
 {
     int boolval;
     char *resource, text[MAXLINE];
@@ -2895,7 +2894,7 @@ ui_load()
     resource = get_resource(R_BITCALC);
     show_bit = resource != NULL && strcmp(resource, Rcstr[0]) != 0;
 
-    ui_set_show_thousands_seperator(v->show_tsep);
+    ui_set_show_thousands_separator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
     ui_set_show_bitcalculating(show_bit);
     
@@ -2928,7 +2927,7 @@ ui_load()
 }
 
 void
-ui_start()
+ui_start(void)
 {
     X->warn_change_mode = TRUE; // FIXME: Load from GConf
     

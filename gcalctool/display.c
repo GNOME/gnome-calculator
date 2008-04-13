@@ -46,60 +46,68 @@ static char *make_eng_sci(int *, int);
  */
 
 void
-localize_number(char *dest, const char *src, int dest_length)
+localize_expression(char *dest, const char *src, int dest_length)
 {
-    char tnum[MAX_LOCALIZED], *dstp;
+    GString *output = g_string_sized_new(dest_length);
+    const char *c, *d;
+    int digit_count = -1;
+    gboolean after_radix = FALSE;
 
-    if (!v->error && v->show_tsep && v->base == DEC) {
-        const char *radixp, *srcp;
-        int n, i;
-        size_t tsep_len;
-
-        /* Process the fractional part (if any). */
-        srcp = src + strlen(src) - 1;
-        dstp = tnum;
-        if ((radixp = strchr(src, '.')) != NULL) {
-            while (srcp != radixp) {
-                *dstp++ = *srcp--;
-            }
-            *dstp++ = *srcp--;
-        }
-
-        /* Process the integer part, add in thousand separators. */
-        tsep_len = strlen(v->tsep);
-        n = 0;
-        while (srcp >= src) {
-            *dstp++ = *srcp--;
-            n++;
-            if (n == 3 && srcp >= src && *srcp != '-') {
-                for (i = tsep_len - 1; i >= 0; i--) {
-                    *dstp++ = v->tsep[i];
-                }
-                n = 0;
-            }
-        }
-        *dstp++ = '\0';
-
-        /* Move from scratch pad to fnum, reversing the character order. */
-        srcp = tnum + strlen(tnum) - 1;
-        dstp = dest;
-        while (srcp >= tnum) {
-            *dstp++ = *srcp--;
-        }
-        *dstp++ = '\0';
-    } else {
+    /* Only modify if valid */
+    if (v->error || v->base != DEC) {
         STRNCPY(dest, src, dest_length - 1);
+        return;
     }
-    dstp = strchr(dest, '.');
-    if (dstp != NULL) {
-        size_t radix_len;
-
-        radix_len = strlen(v->radix);
-        if (radix_len != 1) {
-            memmove(dstp + radix_len, dstp + 1, strlen (dstp + 1) + 1);
+    
+    /* Remove separators if not supported */
+    if(!v->show_tsep) {
+        for (c = src; *c; c++) {
+            if (strncmp(c, v->tsep, strlen(v->radix)) == 0) {
+                c += strlen(v->radix) - 1;
+            }
+            else {
+                g_string_append_c(output, *c);
+            }
         }
-        MEMCPY(dstp, v->radix, radix_len);
+        STRNCPY(dest, output->str, dest_length - 1);
+        return;
     }
+    
+    /* Scan expression looking for numbers and inserting separators */
+    for (c = src; *c; c++) {
+        /* Insert separators between digits */
+        if (*c >= '0' && *c <= '9') {
+            /* Read ahead to find the number of digits */
+            if (digit_count < 0) {
+                digit_count = 1;
+                for (d = c + 1; *d >= '0' && *d <= '9'; d++)
+                    digit_count++;
+            }
+            
+            g_string_append_c(output, *c);
+            
+            /* Insert separator after nth digit */
+            if (!after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
+                g_string_append(output, v->tsep);
+            }
+            digit_count--;
+        }
+        /* Ignore digits after the radix */
+        else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
+            digit_count = -1;
+            after_radix = TRUE;
+            c += strlen(v->radix) - 1;
+            g_string_append(output, v->radix);
+        }
+        /* Reset when encountering other characters (e.g. '+') */
+        else {
+            digit_count = -1;
+            after_radix = FALSE;
+            g_string_append_c(output, *c);
+        }
+    }
+    
+    STRNCPY(dest, output->str, dest_length - 1);
 }
 
 
@@ -577,7 +585,7 @@ refresh_display(int cursor)
             }
             ans = make_number(e->ans, v->base, TRUE);
 
-            localize_number(localized, ans, MAX_LOCALIZED);
+            localize_expression(localized, ans, MAX_LOCALIZED);
             t = str_replace(str, "Ans", localized);
             free(str);
             str = t;

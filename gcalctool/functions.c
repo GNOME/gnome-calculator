@@ -205,7 +205,7 @@ peek_previous_state(void)
 }
 
 static int
-is_undo_step()
+is_undo_step(void)
 {
     return(v->h.current != v->h.begin);
 }
@@ -237,7 +237,7 @@ do_accuracy(int value)     /* Set display accuracy. */
 
 
 void
-do_business()     /* Perform special business mode calculations. */
+do_business(void)     /* Perform special business mode calculations. */
 {
     if (v->current == KEY_FINC_CTRM) {
         calc_ctrm(v->MPdisp_val);
@@ -282,7 +282,7 @@ exp_insert(char *text, int cursor)
 
 
 void
-exp_clear()
+exp_clear(void)
 {
     exp_replace("");
 }
@@ -396,7 +396,7 @@ exp_replace(char *text)
 
 
 static void
-exp_negate()
+exp_negate(void)
 {
     struct exprm_state *e = get_state();
 
@@ -414,7 +414,7 @@ exp_negate()
 
 
 static void
-exp_inv()
+exp_inv(void)
 {
     struct exprm_state *e = get_state();
 
@@ -632,7 +632,7 @@ do_expression(int function, int arg, int cursor)
 
 
 void
-do_calc()      /* Perform arithmetic calculation and display result. */
+do_calc(void)      /* Perform arithmetic calculation and display result. */
 {
     double dval, dres;
     int MP1[MP_SIZE], MP2[MP_SIZE];
@@ -872,7 +872,7 @@ do_percent(void)
 
 /* Clear the calculator display and re-initialise. */
 void
-do_clear()
+do_clear(void)
 {
     clear_display(TRUE);
     if (v->error) {
@@ -884,7 +884,7 @@ do_clear()
 
 /* Clear the calculator display. */
 void
-do_clear_entry()
+do_clear_entry(void)
 {
     clear_display(FALSE);
 }
@@ -949,7 +949,7 @@ do_constant(int index)
 
 /* Remove the last numeric character typed. */
 void
-do_backspace()
+do_backspace(void)
 {
     size_t len;
 
@@ -984,7 +984,7 @@ do_backspace()
 
 
 void
-do_delete()
+do_delete(void)
 {
     /* Not required in ltr mode */
 }
@@ -1033,7 +1033,7 @@ do_exchange(int index)
 
 /* Get exponential number. */
 void
-do_expno()
+do_expno(void)
 {
     v->pointed = (strchr(v->display, '.') != NULL);
     if (!v->new_input) {
@@ -1218,7 +1218,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
 
 
 void
-do_immed()
+do_immed(void)
 {
     do_immedfunc(v->MPdisp_val, v->MPdisp_val);
     show_display(v->MPdisp_val);
@@ -1226,7 +1226,7 @@ do_immed()
 
 
 void
-do_number()
+do_number(void)
 {
     int offset;
 
@@ -1283,7 +1283,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
 
 
 void
-do_paren()
+do_paren(void)
 {
     ui_set_statusbar("", "");
 
@@ -1394,7 +1394,7 @@ do_rcl_reg(int reg, int value[MP_SIZE])
 
 
 void
-syntaxdep_show_display()
+syntaxdep_show_display(void)
 {
     switch (v->syntax) {
         case NPA:
@@ -1412,7 +1412,7 @@ syntaxdep_show_display()
 
 
 void
-do_point()                   /* Handle numeric point. */
+do_point(void)                   /* Handle numeric point. */
 {
     if (!v->pointed) {
         if (v->toclear) {
@@ -1453,7 +1453,7 @@ do_portionfunc(int num[MP_SIZE])
 
 
 void
-do_portion()
+do_portion(void)
 {
     do_portionfunc(v->MPdisp_val);
     show_display(v->MPdisp_val);

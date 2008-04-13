@@ -210,7 +210,8 @@ struct calcVars {                      /* Calctool variables and options. */
     const char *radix;                 /* Locale specific radix string. */
     char *shelf;                       /* PUT selection shelf contents. */
     char snum[MAX_LOCALIZED];          /* Scratchpad for scientific numbers. */
-    const char *tsep;                  /* Locale specific thousands seperator. */
+    const char *tsep;                  /* Locale specific thousands separator. */
+    int tsep_count;                    /* Number of digits between separator. */
 
     char fun_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
     char fun_vals[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
@@ -245,7 +246,7 @@ struct calcVars {                      /* Calctool variables and options. */
     int old_cal_value; /* Previous calculation operator. */
     int pointed;       /* Whether a decimal point has been given. */
     int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
-    int show_tsep;     /* Set if the thousands seperator should be shown. */
+    int show_tsep;     /* Set if the thousands separator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int toclear;       /* Indicates if display should be cleared. */
 };
