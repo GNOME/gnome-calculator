@@ -944,27 +944,12 @@ set_bit_panel(void)
 }
 
 
-static void
-scroll_right()
-{
-    if (GTK_WIDGET_VISIBLE(
-                   GTK_SCROLLED_WINDOW(X->scrolledwindow)->hscrollbar)) {
-        GtkAdjustment *set;
-
-        set = gtk_scrolled_window_get_hadjustment(
-                                GTK_SCROLLED_WINDOW(X->scrolledwindow));
-        gtk_adjustment_set_value(set, set->upper);
-        gtk_scrolled_window_set_hadjustment(
-                                GTK_SCROLLED_WINDOW(X->scrolledwindow), set);
-    }
-}
-
-
 void
 ui_set_display(char *str, int cursor)
 {
     char localized[MAX_LOCALIZED];
     GtkTextIter iter;
+    GtkAdjustment *adj;
 
     if (str == NULL || str[0] == '\0') {
         str = " ";
@@ -974,7 +959,7 @@ ui_set_display(char *str, int cursor)
             str = localized;
         }
     }
-    
+
     gtk_text_buffer_set_text(X->display_buffer, str, -1);
     
     if (cursor < 0) {
@@ -984,8 +969,11 @@ ui_set_display(char *str, int cursor)
     }
     gtk_text_buffer_place_cursor(X->display_buffer, &iter);
     
+    /* Align to the right */
     if (cursor < 0) {
-        scroll_right();
+        adj = gtk_scrolled_window_get_hadjustment(
+                 GTK_SCROLLED_WINDOW(X->scrolledwindow));
+        gtk_adjustment_set_value(adj, adj->upper - adj->page_size);
     }
 }
 
