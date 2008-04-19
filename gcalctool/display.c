@@ -48,7 +48,7 @@ static char *make_eng_sci(int *, int);
 void
 localize_expression(char *dest, const char *src, int dest_length)
 {
-    GString *output = g_string_sized_new(dest_length);
+    GString *clean, *output;
     const char *c, *d;
     int digit_count = -1;
     gboolean after_radix = FALSE;
@@ -58,23 +58,27 @@ localize_expression(char *dest, const char *src, int dest_length)
         STRNCPY(dest, src, dest_length - 1);
         return;
     }
-    
+
     /* Remove separators if not supported */
-    if(!v->show_tsep) {
-        for (c = src; *c; c++) {
-            if (strncmp(c, v->tsep, strlen(v->radix)) == 0) {
-                c += strlen(v->radix) - 1;
-            }
-            else {
-                g_string_append_c(output, *c);
-            }
+    clean = g_string_sized_new(strlen(src));
+    for (c = src; *c; c++) {
+        if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+            c += strlen(v->tsep) - 1;
         }
-        STRNCPY(dest, output->str, dest_length - 1);
+        else {
+            g_string_append_c(clean, *c);
+        }
+    }
+
+    if (!v->show_tsep) {
+        STRNCPY(dest, clean->str, dest_length - 1);
+        g_string_free(clean, TRUE);
         return;
     }
-    
+
     /* Scan expression looking for numbers and inserting separators */
-    for (c = src; *c; c++) {
+    output = g_string_sized_new(dest_length);
+    for (c = clean->str; *c; c++) {
         /* Insert separators between digits */
         if (*c >= '0' && *c <= '9') {
             /* Read ahead to find the number of digits */
@@ -108,6 +112,8 @@ localize_expression(char *dest, const char *src, int dest_length)
     }
     
     STRNCPY(dest, output->str, dest_length - 1);
+    g_string_free(output, TRUE);
+    g_string_free(clean, TRUE);    
 }
 
 
@@ -137,7 +143,6 @@ clear_display(int initialise)
     ui_set_display(v->display, -1);
 
     if (initialise == TRUE) {
-        v->show_paren = 0;
         v->numsptr    = 0;
         v->noparens   = 0;
         ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
@@ -174,7 +179,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
-    int dval, n;
+    int dval, n, i;
  
     optr = str;
     mpabs(MPnumber, MPval);
@@ -208,7 +213,8 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-            *optr++ = '.';
+            for (i = 0; i < strlen(v->radix); i++)
+                *optr++ = v->radix[i];
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -227,15 +233,16 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     }
     v->pointed = 0;
 
-    if (!v->show_zeroes && v->accuracy != 0) {
-        optr = str + strlen(str) - 1;
-        while (*optr == '0') {
-            optr--;
+    /* Strip off trailing zeroes */
+    if (!v->show_zeroes) {
+        for (i = strlen(str) - 1; i > 1 && str[i] == '0'; i--) {
+            str[i] = '\0';
         }
-    if (optr < str || *optr != '.') {
-        optr++;
-    }
-        *optr = '\0';
+        
+        /* If no fractional part discard radix */
+        if (strlen(str) >= strlen(v->radix) && strcmp(str + strlen(str) - strlen(v->radix), v->radix) == 0) {
+            str[strlen(str) - strlen(v->radix)] = '\0';
+        }
     }
 
     return(str);
@@ -522,9 +529,7 @@ paren_disp(int key)
     }
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
-    v->show_paren = 1;       /* Hack to get ui_set_display to really display it. */
     ui_set_display(&v->display[n], -1);
-    v->show_paren = 0;
 }
 
 

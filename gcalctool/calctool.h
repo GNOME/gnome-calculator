@@ -245,7 +245,6 @@ struct calcVars {                      /* Calctool variables and options. */
     int numsptr;       /* Pointer into the parenthese numeric stack. */
     int old_cal_value; /* Previous calculation operator. */
     int pointed;       /* Whether a decimal point has been given. */
-    int show_paren;    /* Set if we wish to show DISPLAYITEM during parens. */
     int show_tsep;     /* Set if the thousands separator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
     int toclear;       /* Indicates if display should be cleared. */
