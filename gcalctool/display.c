@@ -58,12 +58,12 @@ localize_expression(char *dest, const char *src, int dest_length)
         STRNCPY(dest, src, dest_length - 1);
         return;
     }
-    
+
     /* Remove separators if not supported */
     clean = g_string_sized_new(strlen(src));
     for (c = src; *c; c++) {
-        if (strncmp(c, v->tsep, strlen(v->radix)) == 0) {
-            c += strlen(v->radix) - 1;
+        if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+            c += strlen(v->tsep) - 1;
         }
         else {
             g_string_append_c(clean, *c);
