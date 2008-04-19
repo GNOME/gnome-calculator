@@ -10,6 +10,8 @@ gcalctool change history.
 2008-04-19 Robert Ancell <robert.ancell@gmail.com>
 
     * gcalctool/display.c: Use correct radix when converting numbers to strings (Bug #527669).
+    * gcalctool/functions.c: Convert localized UTF-8 radix and separator characters into
+      english equivalents since the parser is 8-bit and not localized (Bug #527669).
 
 2008-04-13 Robert Ancell <robert.ancell@gmail.com>
 

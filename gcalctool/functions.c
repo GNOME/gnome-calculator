@@ -557,9 +557,26 @@ do_expression(int function, int arg, int cursor)
             /* Solve the equation */
             } else {
                 int MPval[MP_SIZE];
-                char *message = NULL;
+                char *c, *message = NULL;
+                GString *clean;
+                int result;
                 
-                switch (ce_parse(e->expression, MPval)) {
+                /* Remove thousands separators and use english radix */
+                clean = g_string_sized_new(strlen(e->expression));
+                for (c = e->expression; *c; c++) {
+                    if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+                        c += strlen(v->tsep) - 1;
+                    } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
+                        g_string_append_c(clean, '.');
+                        c += strlen(v->radix) - 1;
+                    } else {
+                        g_string_append_c(clean, *c);
+                    }
+                }
+                result = ce_parse(clean->str, MPval);
+                g_string_free(clean, TRUE);
+                
+                switch (result) {
                     case 0:
                         mpstr(MPval, e->ans);
                         exp_replace("Ans");
