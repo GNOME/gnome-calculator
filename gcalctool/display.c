@@ -186,7 +186,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
-    int dval, n;
+    int dval, n, i;
  
     optr = str;
     mpabs(MPnumber, MPval);
@@ -221,7 +221,8 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
-            *optr++ = '.';
+            for (i = 0; i < strlen(v->radix); i++)
+                *optr++ = v->radix[i];
         }
         mpmul(MPval, MP1base, MPval);
         mpcmi(MPval, &dval);
@@ -240,15 +241,16 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     }
     v->pointed = 0;
 
-    if (!v->show_zeroes && v->accuracy != 0) {
-        optr = str + strlen(str) - 1;
-        while (*optr == '0') {
-            optr--;
+    /* Strip off trailing zeroes */
+    if (!v->show_zeroes) {
+        for (i = strlen(str) - 1; i > 1 && str[i] == '0'; i--) {
+            str[i] = '\0';
         }
-    if (optr < str || *optr != '.') {
-        optr++;
-    }
-        *optr = '\0';
+        
+        /* If no fractional part discard radix */
+        if (strlen(str) >= strlen(v->radix) && strcmp(str + strlen(str) - strlen(v->radix), v->radix) == 0) {
+            str[strlen(str) - strlen(v->radix)] = '\0';
+        }
     }
 
     return(str);
