@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 4.5.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-17 12:25+0100\n"
-"PO-Revision-Date: 2008-02-17 12:25+0100\n"
+"POT-Creation-Date: 2008-04-19 12:10+0200\n"
+"PO-Revision-Date: 2008-04-19 12:11+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -17,61 +17,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gcalctool/calctool.c:566
+#: ../gcalctool/calctool.c:567
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Faktor for konvertering fra kilometer til mile"
 
-#: ../gcalctool/calctool.c:568
+#: ../gcalctool/calctool.c:569
 msgid "square root of 2"
 msgstr "kvadratroten av 2"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:570
 msgid "Euler's Number (e)"
 msgstr "Eulers tall (e)"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:571
 msgid "pi"
 msgstr "pi"
 
-#: ../gcalctool/calctool.c:571
+#: ../gcalctool/calctool.c:572
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Faktor for konvertering fra centimeter til tommer"
 
-#: ../gcalctool/calctool.c:573
+#: ../gcalctool/calctool.c:574
 msgid "degrees in a radian"
 msgstr "grader i en radian"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:575
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:576
 msgid "Gram-to-ounce conversion factor"
 msgstr "Faktor for konvertering fra gram til unse"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:578
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Faktor for konvertering fra kilojoule til britisk varmeenhet"
 
-#: ../gcalctool/calctool.c:580
+#: ../gcalctool/calctool.c:581
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Faktor for konvertering fra kubikkcentimeter til kubikktommer"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591 ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:372 ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
+#: ../gcalctool/calctool.c:592 ../gcalctool/display.c:270
+#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
+#: ../gcalctool/mpmath.c:461
 msgid "Error"
 msgstr "Feil"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:609
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s som neste argument.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:622
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -80,20 +89,20 @@ msgstr ""
 "%s versjon %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
+#: ../gcalctool/calctool.c:623
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "Bruk: %s: [-D] [-E] [-a presisjon] "
+msgid "Usage: %s: [-D] [-E] [-u] [-a accuracy] "
+msgstr "Bruk: %s: [-D] [-E] [-u] [-a presisjon] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:624
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:649
 msgid "-a needs accuracy value"
 msgstr "-a trenger presisjonsverdi"
 
-#: ../gcalctool/calctool.c:643 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:653 ../gcalctool/get.c:244
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: presisjon må være mellom 0-%d\n"
@@ -106,79 +115,79 @@ msgstr "Ingen angrehistorikk"
 msgid "No redo steps"
 msgstr "Ingen steg å gjenta"
 
-#: ../gcalctool/functions.c:577
+#: ../gcalctool/functions.c:587
 msgid "Invalid number for the current base"
 msgstr "Ugyldig tall for denne basen"
 
-#: ../gcalctool/functions.c:581
+#: ../gcalctool/functions.c:591
 msgid "Too long number"
 msgstr "For langt tall"
 
-#: ../gcalctool/functions.c:585
+#: ../gcalctool/functions.c:595
 msgid "Invalid bitwise operation parameter(s)"
 msgstr "Ugyldig(e) parameter(e) til bitvis operasjon"
 
-#: ../gcalctool/functions.c:589
+#: ../gcalctool/functions.c:599
 msgid "Invalid modulus operation parameter(s)"
 msgstr "Ugyldig(e) parameter(e) til modulus-operasjon"
 
-#: ../gcalctool/functions.c:593
+#: ../gcalctool/functions.c:603
 msgid "Math operation error"
 msgstr "Feil med matteoperasjon"
 
-#: ../gcalctool/functions.c:597
+#: ../gcalctool/functions.c:607
 msgid "Malformed expression"
 msgstr "Feilutformet uttrykk"
 
-#: ../gcalctool/functions.c:696
+#: ../gcalctool/functions.c:706
 msgid "Error, operands must be integers"
 msgstr "Feil, operand må være heltall"
 
-#: ../gcalctool/functions.c:923 ../gcalctool/functions.c:1278
+#: ../gcalctool/functions.c:930 ../gcalctool/functions.c:1284
 msgid "No sane value to convert"
 msgstr "Ingen fornuftige verdier å konvertere"
 
-#: ../gcalctool/functions.c:1023 ../gcalctool/functions.c:1351
+#: ../gcalctool/functions.c:1030 ../gcalctool/functions.c:1357
 msgid "No sane value to store"
 msgstr "Ingen fornuftige verdier å lagre"
 
-#: ../gcalctool/functions.c:1144
+#: ../gcalctool/functions.c:1150
 msgid "Malformed function"
 msgstr "Ugyldig funksjon"
 
-#: ../gcalctool/functions.c:1306
+#: ../gcalctool/functions.c:1312
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Tømte skjermen, prefiks uten operator er ikke tillatt"
 
-#: ../gcalctool/functions.c:1327
+#: ../gcalctool/functions.c:1333
 msgid "Malformed parenthesis expression"
 msgstr "Ugyldig parentesuttrykk"
 
-#: ../gcalctool/functions.c:1503
+#: ../gcalctool/functions.c:1509
 msgid "No sane value to do bitwise shift"
 msgstr "Ingen verdi å bruke til bitvis skift"
 
-#: ../gcalctool/get.c:258
+#: ../gcalctool/get.c:265
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: basen skal være 2, 8, 10 eller 16\n"
 
-#: ../gcalctool/get.c:273
+#: ../gcalctool/get.c:280
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: ugyldig skjermmodus [%s]\n"
 
-#: ../gcalctool/get.c:288
+#: ../gcalctool/get.c:295
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: ugyldig modus [%s]\n"
 
-#: ../gcalctool/get.c:302
+#: ../gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: ugyldig trigonometrisk modus [%s]\n"
 
-#: ../gcalctool/get.c:320
+#: ../gcalctool/get.c:327
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: ugyldig syntaksmodus [%s]\n"
@@ -234,15 +243,15 @@ msgstr "_Annet (%d) ..."
 
 #: ../gcalctool/gtk.c:546
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places."
+msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
 msgstr[0] "Sett presisjon fra 0 til %d siffer."
 msgstr[1] "Sett presisjon fra 0 til %d sifre"
 
-#. Translator: This refers to the current accuracy setting
+#. Translators: This refers to the current accuracy setting
 #: ../gcalctool/gtk.c:552
 #, c-format
-msgid "Currently set to %d places."
+msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
 msgstr[0] "For tiden satt til %d plass."
 msgstr[1] "For tiden satt til %d plasser."
@@ -313,14 +322,14 @@ msgstr ""
 "Utvidelsen for bit-kalkulering er aktivert. Trykk på bit-verdiene for å slå "
 "dem av/på."
 
-#: ../gcalctool/gtk.c:1151
+#: ../gcalctool/gtk.c:1138
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Espen Stefansen <libbe AT stefansen DOT net>\n"
 "Eskild Hustvedt <i18n@zerodogg.org>"
 
-#: ../gcalctool/gtk.c:1154
+#: ../gcalctool/gtk.c:1141
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -332,7 +341,7 @@ msgstr ""
 "Software Foundation; enten versjon 2 av lisensen, eller (hvis du ønsker det) "
 "enhver senere versjon.\n"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1145
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -343,7 +352,7 @@ msgstr ""
 "GARANTI, ikke engang implisitt garanti om at det er SALGBART eller PASSER ET "
 "BESTEMT FORMÅL. Se GNU General Public License for detaljer.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1149
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -353,31 +362,31 @@ msgstr ""
 "Gcalctool. Hvis dette ikke er tilfelle, kan du skrive til Free Software "
 "Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n"
 
-#: ../gcalctool/gtk.c:1173
+#: ../gcalctool/gtk.c:1160
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1162
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Utviklerene av Gcalctool"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1164
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator med finans- og vitenskapelig modus."
 
-#: ../gcalctool/gtk.c:1479 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1466 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1484 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1671
+#: ../gcalctool/gtk.c:1662
 msgid "Changing Modes Clears Calculation"
 msgstr "Endring av modus tømmer beregningen"
 
-#: ../gcalctool/gtk.c:1674
+#: ../gcalctool/gtk.c:1665
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -385,33 +394,33 @@ msgstr ""
 "Når du bytter modus vil eksisterende kalkulasjon bli nullstilt og basis satt "
 "til desimal."
 
-#: ../gcalctool/gtk.c:1678
+#: ../gcalctool/gtk.c:1669
 msgid "_Do not warn me again"
 msgstr "_Ikke advar meg igjen"
 
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1674
 msgid "C_hange Mode"
 msgstr "B_ytt modus"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1820
+#: ../gcalctool/gtk.c:1811
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
+#: ../gcalctool/gtk.c:2177
 msgid "Clipboard contained malformed calculation"
 msgstr "Utklippstavlen inneholdt feilutformet beregning"
 
-#: ../gcalctool/gtk.c:2258
+#: ../gcalctool/gtk.c:2249
 msgid "Paste"
 msgstr "Lim inn"
 
-#: ../gcalctool/gtk.c:2531
+#: ../gcalctool/gtk.c:2522
 msgid "Error loading user interface"
 msgstr "Feil ved lesing av brukergrensesnitt"
 
-#: ../gcalctool/gtk.c:2533
+#: ../gcalctool/gtk.c:2524
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -420,20 +429,20 @@ msgstr ""
 "Brukergrensesnittfilen %s mangler eller kunne ikke bli lastet. Sjekk "
 "installasjonen din."
 
-#: ../gcalctool/gtk.c:2761 ../gcalctool/gtk.c:2779
+#: ../gcalctool/gtk.c:2752 ../gcalctool/gtk.c:2770
 msgid "No."
 msgstr "No."
 
-#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2754 ../gcalctool/gtk.c:2772
 msgid "Value"
 msgstr "Verdi"
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2756 ../gcalctool/gtk.c:2774
 msgid "Description"
 msgstr "Beskrivelse"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2912 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "Sett til _forvalg (%d)"
@@ -442,7 +451,7 @@ msgstr "Sett til _forvalg (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negativ X og ikke-heltall Y er ikke støttet"
 
-#: ../gcalctool/mpmath.c:273
+#: ../gcalctool/mpmath.c:271
 msgid "Error, cannot calculate cosine"
 msgstr "Feil. Kan ikke beregne cosinus"
 
