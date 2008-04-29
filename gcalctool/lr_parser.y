@@ -33,8 +33,6 @@
 #include "parser_mac.h"
 #include "lr_parser.h"
 
-extern struct parser_state parser_state;
-
 %}
 
 %union {
@@ -119,7 +117,7 @@ seq:
 udf:
   value '=' {
   cp($1, v->MPdisp_val);
-  show_display(v->MPdisp_val);
+  display_set_number(v->MPdisp_val);
   }
 | value '=' tSTO '(' tINUMBER ')' {
   int val;
@@ -132,8 +130,8 @@ udf:
   do_sto_reg(val, $1);
 }
 | tCLR {
-  initialise();
-  show_display(v->MPdisp_val);
+  display_reset();
+  display_set_number(v->MPdisp_val);
 }
 ;
 

@@ -24,6 +24,7 @@
 #include "display.h"
 #include "functions.h"
 #include "calctool.h"
+#include "ce_parser.h"
 
 static void
 test(char *expression, char *expected, int expected_error)
@@ -42,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    make_fixed(result, result_str, DEC, 10, FALSE);   
+    make_fixed(result_str, MAXLINE, result, DEC, 10, FALSE);   
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else

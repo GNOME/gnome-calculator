@@ -452,7 +452,10 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
+    //FIXME: Obsolete?
     char *lnp;                    /* Localized numerical point (UTF8 format) */
+    
+    char *shelf;                       /* PUT selection shelf contents. */   
 
     gboolean warn_change_mode;    /* Should we warn user when changing modes? */
     gboolean bitcalculating_mode;
@@ -479,9 +482,9 @@ reset_display(void)
 
     switch (v->syntax) {
         case NPA:
-            v->noparens = 0;
+            v->ltr.noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
-            show_display(v->MPdisp_val);
+            display_set_number(v->MPdisp_val);
             clear_undo_history();
             break;
 
@@ -489,7 +492,7 @@ reset_display(void)
             e = get_state();
             MPstr_to_num("0", DEC, e->ans);
             exp_clear();
-            show_display(e->ans);
+            display_set_number(e->ans);
             break;
         
         default:
@@ -571,7 +574,7 @@ ui_set_accuracy(int accuracy)
     set_int_resource(R_ACCURACY, accuracy);
     
     ui_make_registers();
-    refresh_display(-1);
+    display_refresh(-1);
     
     /* Hide the manual dialog */
     gtk_widget_hide(X->spframe);
@@ -885,7 +888,7 @@ set_bit_panel(void)
 {
     int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
     int MP[MP_SIZE];
-    char *bit_str, label[MAXLINE], tmp[MAXLINE];
+    char bit_str[MAXLINE], label[MAXLINE];
 
     switch (v->syntax) {
         case NPA:
@@ -895,7 +898,7 @@ set_bit_panel(void)
                 int toclear = (v->current == KEY_CLEAR_ENTRY)
                               ? TRUE : FALSE;
 
-                bit_str = make_fixed(MP1, tmp, BIN, MAXLINE, toclear);
+                make_fixed(bit_str, MAXLINE, MP1, BIN, MAXLINE, toclear);
                 bit_str_len = strlen(bit_str);
                 if (bit_str_len <= MAXBITS) {
                     gtk_widget_set_sensitive(X->bit_panel, TRUE);
@@ -920,7 +923,7 @@ set_bit_panel(void)
                 gtk_widget_set_sensitive(X->bit_panel, FALSE);
                 return;
             }
-            bit_str = make_fixed(MP, tmp, BIN, MAXLINE, FALSE);
+            make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
             bit_str_len = strlen(bit_str);
             if (bit_str_len <= MAXBITS) {
                 gtk_widget_set_sensitive(X->bit_panel, TRUE);
@@ -954,7 +957,7 @@ ui_set_display(char *str, int cursor)
     if (str == NULL || str[0] == '\0') {
         str = " ";
     } else {
-        if (v->noparens == 0) {
+        if (v->ltr.noparens == 0) {
             localize_expression(localized, str, MAX_LOCALIZED);
             str = localized;
         }
@@ -1243,7 +1246,7 @@ aframe_response_cb(GtkWidget *dialog, gint response_id)
         ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
         val = ch[0];
         mpcim(&val, v->MPdisp_val);
-        show_display(v->MPdisp_val);
+        display_set_number(v->MPdisp_val);
     }
     
     gtk_widget_hide(dialog);
@@ -1309,11 +1312,25 @@ static void do_button(int function, int arg)
 {
     switch (v->syntax) {
         case NPA:
-            process_item(&buttons[function], arg);
+            v->current = buttons[function].id;
+
+            if (v->error) {
+                /* Must press a valid key first. */
+                if (v->current != KEY_CLEAR) {
+                    return;
+                }
+                ui_set_error_state(FALSE);
+            }
+    
+            if (v->ltr.noparens > 0) {
+                do_paren();
+                return;
+            }
+
+            buttons[function].func(arg);
             set_bit_panel();
-            if (v->new_input && v->dtype == FIX) {
-                STRNCPY(v->fnum, v->display, MAX_DIGITS - 1);
-                ui_set_display(v->fnum, -1);
+            if (v->ltr.new_input && v->dtype == FIX) {
+                display_set_string(v->display);
             }
             break;
 
@@ -1458,13 +1475,14 @@ exchange_menu_cb(GtkMenuItem *menu)
 static void
 update_constants_menu(void)
 {
-    char mline[MAXLINE];
+    char mline[MAXLINE], value[MAXLINE];
     int i;
 
     for (i = 0; i < MAX_CONSTANTS; i++) {
+        make_number(value, MAXLINE, v->MPcon_vals[i], DEC, TRUE);
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
-                 make_number(v->MPcon_vals[i], DEC, TRUE), 
+                 value, 
                  v->con_names[i]);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->constant_menu_labels[i]), mline);
     }
@@ -1574,16 +1592,18 @@ create_constants_model()
     gint i = 0;
     GtkListStore *model;
     GtkTreeIter iter;
+    char constant[MAXLINE];
 
     model = gtk_list_store_new(NUM_COLUMNS, G_TYPE_INT, G_TYPE_STRING,
                                G_TYPE_STRING, G_TYPE_BOOLEAN);   
     for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
+        make_number(constant, MAXLINE, v->MPcon_vals[i], DEC, TRUE);
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
-                           COLUMN_VALUE, g_strdup(make_number(v->MPcon_vals[i], DEC, TRUE)),
+                           COLUMN_VALUE, g_strdup(constant),
                            COLUMN_DESCRIPTION, g_strdup(v->con_names[i]),
                            -1);
     }
@@ -1620,15 +1640,16 @@ create_functions_model()
 void
 ui_make_registers()            /* Calculate memory register frame values. */
 {
-    char *mval, key[MAXLINE];
+    char mval[MAXLINE], key[MAXLINE], value[MAXLINE];
     int n;
 
     for (n = 0; n < MAX_REGISTERS; n++) {
-        mval = make_number(v->MPmvals[n], v->base, TRUE);
+        make_number(mval, MAXLINE, v->MPmvals[n], v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
         SNPRINTF(key, MAXLINE, "register%d", n);
-        set_resource(key, make_number(v->MPmvals[n], DEC, TRUE));
+        make_number(value, MAXLINE, v->MPmvals[n], DEC, TRUE);
+        set_resource(key, value);
     }
 }
 
@@ -1741,18 +1762,18 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     switch (v->syntax) {
         case NPA:
             mpcdm(&number, v->MPdisp_val);
-            show_display(v->MPdisp_val);
+            display_set_number(v->MPdisp_val);
             break;
         case EXPRS:
             mpcdm(&number, e->ans);
             exp_replace("Ans");
-            refresh_display(-1);
+            display_refresh(-1);
             break;
         default:
             assert(FALSE);
     }
 
-    v->toclear = 0;
+    v->ltr.toclear = 0;
     return (TRUE);
 }
 
@@ -1801,14 +1822,15 @@ set_menubar_tooltip(gchar *menu_name)
 static void
 update_memory_menus()
 {
-    char mstr[MAXLINE];
+    char mstr[MAXLINE], value[MAXLINE];
     int i;
 
     for (i = 0; i < MAX_REGISTERS; i++) {
+        make_number(value, MAXLINE, v->MPmvals[i], v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
         /* translators: R is the short form of register used inter alia
         in popup menus */
-                _("R"), i, make_number(v->MPmvals[i], v->base, TRUE));
+                _("R"), i, value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_store_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_recall_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_exchange_labels[i]), mstr);
@@ -1849,13 +1871,13 @@ get_display()              /* The Copy function key has been pressed. */
         string = ui_get_display();
     }
 
-    if (v->shelf != NULL) {
-        free(v->shelf);
+    if (X->shelf != NULL) {
+        free(X->shelf);
     }
-    v->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
+    X->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
     g_free(string);
 
-    gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), v->shelf, -1);
+    gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), X->shelf, -1);
 }
 
 
@@ -2172,7 +2194,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
         case NPA:
             ret = lr_parse((char *) text, v->MPdisp_val);
             if (!ret) {
-                show_display(v->MPdisp_val);
+                display_set_number(v->MPdisp_val);
             } else {
                 ui_set_statusbar(_("Clipboard contained malformed calculation"),
                                  "gtk-dialog-error");
@@ -2181,7 +2203,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     
         case EXPRS:
             exp_insert((char *) text, get_cursor()); // FIXME: Move out of gtk.c
-            refresh_display(-1);
+            display_refresh(-1);
             break;
     
         default:
@@ -2234,7 +2256,7 @@ static void
 redo_cb(GtkWidget *widget)
 {
     perform_redo();
-    refresh_display(-1);
+    display_refresh(-1);
 }
 
 
@@ -2438,16 +2460,6 @@ spframe_activate_cb(GtkWidget *spin)
 
 
 /*ARGSUSED*/
-void
-trig_cb(GtkWidget *widget)
-{
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
-                                                       "trig_mode"));
-}
-
-
-/*ARGSUSED*/
 static void
 show_thousands_separator_cb(GtkWidget *widget)
 {
@@ -2542,7 +2554,6 @@ create_kframe()
     CONNECT_SIGNAL(mode_radio_cb);
     CONNECT_SIGNAL(inv_cb);
     CONNECT_SIGNAL(hyp_cb);
-    CONNECT_SIGNAL(trig_cb);
     CONNECT_SIGNAL(base_cb);
     CONNECT_SIGNAL(disp_cb);
     CONNECT_SIGNAL(quit_cb);
@@ -2855,6 +2866,7 @@ ui_init(int *argc, char ***argv)
     gtk_init(argc, argv);
 
     X->lnp = ui_get_localized_numeric_point();
+    X->shelf      = NULL;      /* No selection for shelf initially. */
 
     gtk_rc_get_default_files();
 

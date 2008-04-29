@@ -191,7 +191,7 @@ perform_undo(void)
     update_undo_redo_button_sensitivity();
     
     e = get_state();
-    refresh_display(e->cursor);
+    display_refresh(e->cursor);
 }
 
 struct exprm_state *
@@ -258,7 +258,7 @@ do_business(void)     /* Perform special business mode calculations. */
     } else if (v->current == KEY_FINC_TERM) {
         calc_term(v->MPdisp_val);
     }
-    show_display(v->MPdisp_val);
+    display_set_number(v->MPdisp_val);
 }
 
 
@@ -329,16 +329,15 @@ exp_has_postfix(char *str, char *postfix)
 static int
 exp_backspace(int cursor)
 {
-    char buf[MAXLINE] = "", *display;
+    char buf[MAXLINE] = "", buf2[MAXLINE], *t;
     struct exprm_state *e = get_state();
     int i, MP_reg[MP_SIZE];
 
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
-            char *ans = make_number(e->ans, v->base, FALSE);
-            char *t;
-            t = str_replace(e->expression, "Ans", ans);
+            make_number(buf, MAXLINE, e->ans, v->base, FALSE);
+            t = str_replace(e->expression, "Ans", buf);
             free(e->expression);
             e->expression = t;
         } else {
@@ -346,9 +345,9 @@ exp_backspace(int cursor)
                 SNPRINTF(buf, MAXLINE, "R%d", i);
                 if (exp_has_postfix(e->expression, buf)) {
                     do_rcl_reg(i, MP_reg);
-                    display = make_number(MP_reg, v->base, FALSE);
+                    make_number(buf2, MAXLINE, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
-                    SNPRINTF(buf, MAXLINE, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, display);
+                    SNPRINTF(buf, MAXLINE, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
                     exp_replace(buf);
                     return cursor - 1;
                 }
@@ -357,8 +356,8 @@ exp_backspace(int cursor)
 
         SNPRINTF(buf, MAXLINE, "%.*s", strlen(e->expression) - 1, e->expression);
     } else if (cursor > 0) {
-        display = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor - 1, display, display + cursor);
+        t = ui_get_display();
+        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor - 1, t, t + cursor);
     } else {
         return cursor; /* At the start of the line */
     }
@@ -516,7 +515,8 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case KEY_CONSTANT:
-            cursor = exp_insert(make_number(v->MPcon_vals[arg], v->base, FALSE), cursor);
+            make_number(buf, MAXLINE, v->MPcon_vals[arg], v->base, FALSE);
+            cursor = exp_insert(buf, cursor);
             break;
 
         case KEY_BACKSPACE:
@@ -644,7 +644,7 @@ do_expression(int function, int arg, int cursor)
             }
             break;
     }
-    refresh_display(cursor);
+    display_refresh(cursor);
 }
 
 
@@ -655,8 +655,8 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
     if (v->current == KEY_CALCULATE &&
-        v->old_cal_value == KEY_CALCULATE) {
-        if (v->new_input) {
+        v->ltr.old_cal_value == KEY_CALCULATE) {
+        if (v->ltr.new_input) {
             mpstr(v->MPlast_input, v->MPresult);
         } else {
             mpstr(v->MPlast_input, v->MPdisp_val);
@@ -664,11 +664,11 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
     }
 
     if (v->current != KEY_CALCULATE &&
-        v->old_cal_value == KEY_CALCULATE) {
-        v->cur_op = -1;
+        v->ltr.old_cal_value == KEY_CALCULATE) {
+        v->ltr.cur_op = -1;
     }
 
-    switch (v->cur_op) {
+    switch (v->ltr.cur_op) {
         case KEY_SIN:
         case KEY_SINH:
         case KEY_ASIN:
@@ -754,19 +754,19 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
             break;
     }
 
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
 
     if (!(v->current == KEY_CALCULATE &&
-          v->old_cal_value == KEY_CALCULATE)) {
+          v->ltr.old_cal_value == KEY_CALCULATE)) {
         mpstr(v->MPdisp_val, v->MPlast_input);
     }
 
     mpstr(v->MPresult, v->MPdisp_val);
     if (v->current != KEY_CALCULATE) {
-        v->cur_op = v->current;
+        v->ltr.cur_op = v->current;
     }
-    v->old_cal_value = v->current;
-    v->new_input     = v->key_exp = 0;
+    v->ltr.old_cal_value = v->current;
+    v->ltr.new_input     = v->ltr.key_exp = 0;
 }
 
 
@@ -774,7 +774,7 @@ void
 do_sin(void)
 {
     calc_trigfunc(sin_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -783,7 +783,7 @@ void
 do_sinh(void)
 {
     calc_trigfunc(sinh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -792,7 +792,7 @@ void
 do_asin(void)
 {
     calc_trigfunc(asin_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -801,7 +801,7 @@ void
 do_asinh(void)
 {
     calc_trigfunc(asinh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -810,7 +810,7 @@ void
 do_cos(void)
 {
     calc_trigfunc(cos_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -819,7 +819,7 @@ void
 do_cosh(void)
 {
     calc_trigfunc(cosh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -828,7 +828,7 @@ void
 do_acos(void)
 {
     calc_trigfunc(acos_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -837,7 +837,7 @@ void
 do_acosh(void)
 {
     calc_trigfunc(acosh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -846,7 +846,7 @@ void
 do_tan(void)
 {
     calc_trigfunc(tan_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -855,7 +855,7 @@ void
 do_tanh(void)
 {
     calc_trigfunc(tanh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -864,7 +864,7 @@ void
 do_atan(void)
 {
     calc_trigfunc(atan_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -873,7 +873,7 @@ void
 do_atanh(void)
 {
     calc_trigfunc(atanh_t, v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -882,7 +882,7 @@ void
 do_percent(void)
 {
     calc_percent(v->MPdisp_val, v->MPresult);
-    show_display(v->MPresult);
+    display_set_number(v->MPresult);
     mpstr(v->MPresult, v->MPdisp_val);
 }
 
@@ -891,11 +891,11 @@ do_percent(void)
 void
 do_clear(void)
 {
-    clear_display(TRUE);
+    display_clear(TRUE);
     if (v->error) {
         ui_set_display("", -1);
     }
-    initialise();
+    display_reset();
 }
 
 
@@ -903,7 +903,7 @@ do_clear(void)
 void
 do_clear_entry(void)
 {
-    clear_display(FALSE);
+    display_clear(FALSE);
 }
 
 
@@ -945,7 +945,7 @@ do_base(enum base_type b)
             break;
     }
 
-    refresh_display(-1);
+    display_refresh(-1);
 }
 
 
@@ -959,7 +959,7 @@ do_constant(int index)
 
     MPval = v->MPcon_vals[index];
     mpstr(MPval, v->MPdisp_val);
-    v->new_input = 1;
+    v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
 
@@ -979,23 +979,22 @@ do_backspace(void)
  *  the exponent sign, then this reverts to entering a fixed point number.
  */
 
-    if (v->key_exp && !(strchr(v->display, '+'))) {
-        v->key_exp = 0;
+    if (v->ltr.key_exp && !(strchr(v->display, '+'))) {
+        v->ltr.key_exp = 0;
         v->display[strlen(v->display)-1] = '\0';
     }
 
 /* If we've backspaced over the numeric point, clear the pointed flag. */
 
-    if (v->pointed && !(strchr(v->display, '.'))) {
-        v->pointed = 0;
+    if (v->ltr.pointed && !(strchr(v->display, '.'))) {
+        v->ltr.pointed = 0;
     }
 
-    ui_set_display(v->display, -1);
+    display_set_string(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 
     if (v->dtype == FIX) {
-        STRNCPY(v->fnum, v->display, MAX_LOCALIZED - 1);
-        ui_set_display(v->fnum, -1);
+        display_set_string(v->display);
     }
 }
 
@@ -1034,7 +1033,7 @@ do_exchange(int index)
                 mpstr(MPexpr, v->MPmvals[index]);
                 mpstr(MPtemp, e->ans);
                 exp_replace("Ans");
-                refresh_display(-1);
+                display_refresh(-1);
                 ui_make_registers();
             }
             break;
@@ -1043,7 +1042,7 @@ do_exchange(int index)
             assert(0);
     }
 
-    v->new_input = 1;
+    v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
 
@@ -1052,20 +1051,20 @@ do_exchange(int index)
 void
 do_expno(void)
 {
-    v->pointed = (strchr(v->display, '.') != NULL);
-    if (!v->new_input) {
+    v->ltr.pointed = (strchr(v->display, '.') != NULL);
+    if (!v->ltr.new_input) {
         STRNCPY(v->display, "1.0 +", MAX_LOCALIZED - 1);
-        v->new_input = v->pointed = 1;
-    } else if (!v->pointed) {
+        v->ltr.new_input = v->ltr.pointed = 1;
+    } else if (!v->ltr.pointed) {
         STRNCAT(v->display, ". +", 3);
-        v->pointed = 1;
-    } else if (!v->key_exp) {
+        v->ltr.pointed = 1;
+    } else if (!v->ltr.key_exp) {
         STRNCAT(v->display, " +", 2);
     }
-    v->toclear = 0;
-    v->key_exp = 1;
-    v->exp_posn = strchr(v->display, '+');
-    ui_set_display(v->display, -1);
+    v->ltr.toclear = 0;
+    v->ltr.key_exp = 1;
+    v->ltr.exp_posn = strchr(v->display, '+');
+    display_set_string(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1149,7 +1148,7 @@ do_function(int index)      /* Perform a user defined function. */
     } else {
         ui_set_statusbar(_("Malformed function"), "gtk-dialog-error");
     }
-    v->new_input = 1;
+    v->ltr.new_input = 1;
 }
 
 
@@ -1217,15 +1216,15 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
             break;
 
         case KEY_CHANGE_SIGN:
-            if (v->key_exp) {
-                if (*v->exp_posn == '+') {
-                    *v->exp_posn = '-';
+            if (v->ltr.key_exp) {
+                if (*v->ltr.exp_posn == '+') {
+                    *v->ltr.exp_posn = '-';
                 } else {
-                    *v->exp_posn = '+';
+                    *v->ltr.exp_posn = '+';
                 }
-                ui_set_display(v->display, -1);
+                display_set_string(v->display);
                 MPstr_to_num(v->display, v->base, s);
-                v->key_exp = 0;
+                v->ltr.key_exp = 0;
             } else {
                 mpneg(s, t);
             }
@@ -1238,7 +1237,7 @@ void
 do_immed(void)
 {
     do_immedfunc(v->MPdisp_val, v->MPdisp_val);
-    show_display(v->MPdisp_val);
+    display_set_number(v->MPdisp_val);
 }
 
 
@@ -1247,9 +1246,9 @@ do_number(void)
 {
     int offset;
 
-    if (v->toclear) {
+    if (v->ltr.toclear) {
         offset = 0;
-        v->toclear = 0;
+        v->ltr.toclear = 0;
     } else {
         offset = strlen(v->display);
     }
@@ -1257,9 +1256,9 @@ do_number(void)
         SNPRINTF(v->display+offset, MAXLINE-offset, "%s", buttons[v->current].symname);
     }
 
-    ui_set_display(v->display, -1);
+    display_set_string(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
-    v->new_input = 1;
+    v->ltr.new_input = 1;
 }
 
 
@@ -1295,7 +1294,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
         assert(0);
     }
 
-    refresh_display(-1);
+    display_refresh(-1);
 }
 
 
@@ -1306,20 +1305,20 @@ do_paren(void)
 
     switch (v->current) {
         case KEY_START_BLOCK:
-            if (v->noparens == 0) {
-                if (v->cur_op == -1) {
+            if (v->ltr.noparens == 0) {
+                if (v->ltr.cur_op == -1) {
                     v->display[0] = 0;
                     ui_set_statusbar(_("Cleared display, prefix without an operator is not allowed"), "");
                 } else {
-                    paren_disp(v->cur_op);
+                    paren_disp(v->ltr.cur_op);
                 }
             }
-            v->noparens++;
+            v->ltr.noparens++;
             break;
 
         case KEY_END_BLOCK:
-            v->noparens--;
-            if (!v->noparens) {
+            v->ltr.noparens--;
+            if (!v->ltr.noparens) {
                 int ret, i = 0;
                 while (v->display[i++] != '(') {
                     /* do nothing */;
@@ -1327,7 +1326,7 @@ do_paren(void)
 
                 ret = lr_parse(&v->display[i], v->MPdisp_val);
                 if (!ret) {
-                    show_display(v->MPdisp_val);
+                    display_set_number(v->MPdisp_val);
                     return;
                 } else {
                     ui_set_statusbar(_("Malformed parenthesis expression"),
@@ -1388,7 +1387,7 @@ void
 do_rcl(int index)
 {
     mpstr(v->MPmvals[index], v->MPdisp_val);
-    v->new_input = 1;
+    v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
 
@@ -1415,11 +1414,11 @@ syntaxdep_show_display(void)
 {
     switch (v->syntax) {
         case NPA:
-            show_display(v->MPdisp_val);
+            display_set_number(v->MPdisp_val);
             break;
 
         case EXPRS:
-     	    refresh_display(-1);
+     	    display_refresh(-1);
             break;
 
         default:
@@ -1431,16 +1430,16 @@ syntaxdep_show_display(void)
 void
 do_point(void)                   /* Handle numeric point. */
 {
-    if (!v->pointed) {
-        if (v->toclear) {
+    if (!v->ltr.pointed) {
+        if (v->ltr.toclear) {
             STRNCPY(v->display, ".", MAX_LOCALIZED - 1);
-            v->toclear = 0;
+            v->ltr.toclear = 0;
         } else {
             STRCAT(v->display, ".");
         }
-        v->pointed = 1;
+        v->ltr.pointed = 1;
     }
-    ui_set_display(v->display, -1);
+    display_set_string(v->display);
     MPstr_to_num(v->display, v->base, v->MPdisp_val);
 }
 
@@ -1473,7 +1472,7 @@ void
 do_portion(void)
 {
     do_portionfunc(v->MPdisp_val);
-    show_display(v->MPdisp_val);
+    display_set_number(v->MPdisp_val);
 }
 
 
@@ -1499,7 +1498,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 
             dval = setbool(temp);
             mpcdm(&dval, v->MPdisp_val);
-            show_display(v->MPdisp_val);
+            display_set_number(v->MPdisp_val);
             mpstr(v->MPdisp_val, v->MPlast_input);
             break;
 
@@ -1520,37 +1519,10 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
             assert(0);
     }
 
-    v->new_input = 1;
+    v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
 
-
-void
-do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
-{
-    v->ttype = t;
-    set_resource(R_TRIG, Rtstr[(int) v->ttype]);
-    switch (v->cur_op) {
-        case KEY_SIN:
-        case KEY_SINH:
-        case KEY_ASIN:
-        case KEY_ASINH:
-        case KEY_COS:
-        case KEY_COSH:
-        case KEY_ACOS:
-        case KEY_ACOSH:
-        case KEY_TAN:
-        case KEY_TANH:
-        case KEY_ATAN:
-        case KEY_ATANH:
-            mpstr(v->MPtresults[(int) v->ttype], v->MPdisp_val);
-            show_display(v->MPtresults[(int) v->ttype]);
-            break;
-
-        default:
-            break;
-    }
-}
 
 void
 show_error(char *message)

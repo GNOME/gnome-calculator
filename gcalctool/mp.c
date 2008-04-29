@@ -1206,13 +1206,13 @@ L10:
 
     accuracy = v->accuracy;
     dtype = v->dtype;
-    pointed = v->pointed;
-    toclear = v->toclear;
+    pointed = v->ltr.pointed;
+    toclear = v->ltr.toclear;
 
     v->dtype = FIX;
     v->accuracy = MAX_DIGITS;
     mpcmf(&x[1], tmp);
-    STRNCPY(disp, make_number(tmp, v->base, FALSE), MAXLINE - 1);
+    make_number(disp, MAXLINE, tmp, v->base, FALSE);
 
     if (disp[0] == '1') {
         y[ll+1]++;
@@ -1220,8 +1220,8 @@ L10:
 
     v->accuracy = accuracy;
     v->dtype = dtype;
-    v->pointed = pointed;
-    v->toclear = toclear;
+    v->ltr.pointed = pointed;
+    v->ltr.toclear = toclear;
 }
 
 

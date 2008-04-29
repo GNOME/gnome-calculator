@@ -36,6 +36,7 @@
 
 extern struct parser_state parser_state;
 
+int celex();
 int ceerror();                   /* dummy definition TODO: this is a douple */
 int ceparse();                   /* dummy definition. */
 int ceerror(char *s);

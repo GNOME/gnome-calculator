@@ -75,7 +75,6 @@ void do_tan(void);
 void do_tanh(void);
 void do_atan(void);
 void do_atanh(void);
-void do_trigtype(enum trig_type);
 void do_percent(void);
 void do_factorial(int *, int *);
 int do_rcl_reg(int reg, int value[MP_SIZE]);

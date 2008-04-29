@@ -195,6 +195,18 @@ struct exprm_state_history {
   struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
 };
 
+struct ltrCalcVars {
+    int new_input;     /* New number input since last op. */
+    int noparens;      /* Count of left brackets still to be matched. */
+    int pointed;       /* Whether a decimal point has been given. */
+    
+    int cur_op;        /* Current arithmetic operation. */
+    int key_exp;       /* Set if entering exponent number. */
+    int old_cal_value; /* Previous calculation operator. */
+    int toclear;       /* Indicates if display should be cleared. */
+    char *exp_posn;    /* Position of the exponent sign. */
+};
+
 struct calcVars {                      /* Calctool variables and options. */
     struct exprm_state_history h;      /* History of expression mode states */
 
@@ -205,11 +217,7 @@ struct calcVars {                      /* Calctool variables and options. */
     char *progname;                    /* Name of this program. */
     
     char display[MAXLINE];             /* Current calculator display. */
-    char *exp_posn;                    /* Position of the exponent sign. */
-    char fnum[MAX_LOCALIZED];          /* Scratchpad for fixed numbers. */
     const char *radix;                 /* Locale specific radix string. */
-    char *shelf;                       /* PUT selection shelf contents. */
-    char snum[MAX_LOCALIZED];          /* Scratchpad for scientific numbers. */
     const char *tsep;                  /* Locale specific thousands separator. */
     int tsep_count;                    /* Number of digits between separator. */
 
@@ -218,15 +226,11 @@ struct calcVars {                      /* Calctool variables and options. */
     char con_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
     int MPcon_vals[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
 
-    int MPdebug;                       /* If set, debug info. to stderr. */
     int MPerrors;                      /* If set, output errors to stderr. */
     int MPdisp_val[MP_SIZE];           /* Value of the current display. */
-    int MPexpr_val[MP_SIZE];           /* Value of the current expression. */
     int MPlast_input[MP_SIZE];         /* Previous number input by user. */
     int MPmvals[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
     int MPresult[MP_SIZE];             /* Current calculator total value. */
-    int MPimresult[MP_SIZE];           /* Current intermediate result. */
-    int MPtresults[3][MP_SIZE];        /* Current trigonometric results. */
 
     enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
     enum mode_type modetype;        /* Current calculator mode. */
@@ -236,25 +240,21 @@ struct calcVars {                      /* Calctool variables and options. */
     enum syntax syntax;             /* Calculation syntax mode */
 
     int accuracy;      /* Number of digits precision (Max 9). */
-    int cur_op;        /* Current arithmetic operation. */
+
     int error;         /* Indicates some kind of display error. */
     int math_error;    /* Math error (used in expression mode) */
-    int key_exp;       /* Set if entering exponent number. */
-    int new_input;     /* New number input since last op. */
-    int noparens;      /* Count of left brackets still to be matched. */
-    int numsptr;       /* Pointer into the parenthese numeric stack. */
-    int old_cal_value; /* Previous calculation operator. */
-    int pointed;       /* Whether a decimal point has been given. */
     int show_tsep;     /* Set if the thousands separator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
-    int toclear;       /* Indicates if display should be cleared. */
+    
+    /* Legacy left to right mode variables */
+    struct ltrCalcVars ltr;
 };
 
 typedef struct calcVars *Vars;
 
-extern Vars v;                 /* Calctool variables and options. */
-extern int basevals[];         /* Supported arithmetic bases. */
-extern struct button buttons[];         /* Calculator button values. */
+extern Vars v;                   /* Calctool variables and options. */
+extern int basevals[];           /* Supported arithmetic bases. */
+extern struct button buttons[];  /* Calculator button values. */
 
 void doerr(char *);
 

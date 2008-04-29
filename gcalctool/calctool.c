@@ -545,10 +545,8 @@ doerr(char *errmes)
 {
     switch (v->syntax) {
         case NPA:
-            strncpy(v->display, errmes, MAXLINE - 1);
-            v->display[MAXLINE - 1] = '\0';
             ui_set_error_state(TRUE);
-            ui_set_display(v->display, -1);
+            display_set_string(errmes);
             ui_beep();
             break;
 
@@ -620,7 +618,7 @@ usage(char *progname)
      * the second is the program version number.
      */
     FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-D] [-E] [-u] [-a accuracy] "), progname);
+    FPRINTF(stderr, _("Usage: %s: [-E] [-u] [-a accuracy] "), progname);
     FPRINTF(stderr, _("\t\t [-?] [-v] [-h]\n"));
     exit(1);
 }
@@ -636,10 +634,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
     while (argc > 0) {
         if (argv[0][0] == '-') {
             switch (argv[0][1]) {
-                case 'D' :                   /* MP debug info. to stderr. */
-                    v->MPdebug = TRUE;
-                    break;
-
                 case 'E' :                   /* MP errors to stderr. */
                     v->MPerrors = TRUE;
                     break;
@@ -695,19 +689,16 @@ init_state(void)
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
-    v->MPdebug       = FALSE;  /* No debug info by default. */
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
     size             = MP_SIZE;
     mpset(&acc, &size, &size);
 
-    v->error       = 0;            /* No calculator error initially. */
-    v->key_exp     = 0;            /* Not entering an exponent number. */
-    
+    v->error       = 0;            /* No calculator error initially. */    
     v->current    = KEY_CALCULATE;
-    v->shelf      = NULL;      /* No selection for shelf initially. */
-    v->noparens   = 0;         /* No unmatched brackets initially. */
-    v->numsptr    = 0;         /* Nothing on the parenthese numeric stack. */
+
+    v->ltr.key_exp    = 0;         /* Not entering an exponent number. */    
+    v->ltr.noparens   = 0;         /* No unmatched brackets initially. */
 
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */
@@ -766,7 +757,7 @@ main(int argc, char **argv)
 
     do_clear();                /* Initialise and clear display. */
 
-    show_display(v->MPdisp_val);     /* Output in correct display mode. */
+    display_set_number(v->MPdisp_val);     /* Output in correct display mode. */
 
     memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
     e = get_state();

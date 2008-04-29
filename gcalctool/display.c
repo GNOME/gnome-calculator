@@ -39,8 +39,6 @@ static double max_fix[MAXBASES] = {
     2.582249878e+120    /* Hexadecimal. */
 };
 
-static char *make_eng_sci(int *, int);
-
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base, use the "right" radix character.
  */
@@ -133,36 +131,32 @@ char_val(char chr)
 
 
 void
-clear_display(int initialise)
+display_clear(int initialise)
 {
-    v->pointed = 0;
-    v->toclear = 1;
+    v->ltr.pointed = 0;
+    v->ltr.toclear = 1;
     do_zero(v->MPdisp_val);
-    STRNCPY(v->display, make_number(v->MPdisp_val, v->base, FALSE), 
-            MAXLINE - 1);
-    ui_set_display(v->display, -1);
+    display_set_number(v->MPdisp_val);
 
     if (initialise == TRUE) {
-        v->numsptr    = 0;
-        v->noparens   = 0;
+        v->ltr.noparens   = 0;
         ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
         ui_set_inverse_state(FALSE);          /* Also clears v->inverse. */
     }
 }
 
 
-/* TODO: perhaps this function should be renamed to reset. */
 void
-initialise()
+display_reset()
 {
-    v->error         = 0;           /* Currently no display error. */
-    v->cur_op        = -1;         /* No arithmetic operator defined yet. */
-    v->old_cal_value = -1;
-    do_zero(v->MPresult);         /* No previous result yet. */
+    v->error             = 0;         /* Currently no display error. */
+    v->ltr.cur_op        = -1;        /* No arithmetic operator defined yet. */
+    v->ltr.old_cal_value = -1;
+    do_zero(v->MPresult);             /* No previous result yet. */
     do_zero(v->MPdisp_val);         
     do_zero(v->MPlast_input);
   
-    v->new_input = 1;               /* Value zero is on calculator display */
+    v->ltr.new_input = 1;             /* Value zero is on calculator display */
 
     exp_clear();
 }
@@ -172,8 +166,8 @@ initialise()
  * maximum number of digits specified.
  */
 
-char *
-make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
+void
+make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int toclear)
 {
     char half[MAXLINE], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
@@ -181,7 +175,7 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     int ddig;                   /* Number of digits to left of decimal sep. */
     int dval, n, i;
  
-    optr = str;
+    optr = target;
     mpabs(MPnumber, MPval);
     do_zero(MP1);
     if (mplt(MPnumber, MP1)) {
@@ -229,60 +223,28 @@ make_fixed(int *MPnumber, char *str, int base, int cmax, int toclear)
     }    
     *optr++ = '\0';
     if (toclear == TRUE) {
-        v->toclear = 1;
+        v->ltr.toclear = 1;
     }
-    v->pointed = 0;
+    v->ltr.pointed = 0;
 
     /* Strip off trailing zeroes */
     if (!v->show_zeroes) {
-        for (i = strlen(str) - 1; i > 1 && str[i] == '0'; i--) {
-            str[i] = '\0';
+        for (i = strlen(target) - 1; i > 1 && target[i] == '0'; i--) {
+            target[i] = '\0';
         }
         
         /* If no fractional part discard radix */
-        if (strlen(str) >= strlen(v->radix) && strcmp(str + strlen(str) - strlen(v->radix), v->radix) == 0) {
-            str[strlen(str) - strlen(v->radix)] = '\0';
+        if (strlen(target) >= strlen(v->radix) && strcmp(target + strlen(target) - strlen(v->radix), v->radix) == 0) {
+            target[strlen(target) - strlen(v->radix)] = '\0';
         }
-    }
-
-    return(str);
-}
-
-
-/* Convert MP number to character string in the given base. */
-
-char *
-make_number(int *MPnumber, int base, int ignoreError)
-{
-    double number, val;
-    
-/*  NOTE: make_number can currently set v->error when converting to a double.
- *        This is to provide the same look&feel as V3 even though gcalctool
- *        now does internal arithmetic to "infinite" precision.
- *
- *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
- *        order to do these tests.
- */
-
-    mpcmd(MPnumber, &number);
-    val = fabs(number);
-    if (v->error && !ignoreError) {
-	  return(_("Error"));
-	}
-    if ((v->dtype == ENG) ||
-        (v->dtype == SCI) ||
-        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
-        return(make_eng_sci(MPnumber, base));
-    } else {
-        return(make_fixed(MPnumber, v->fnum, base, MAX_DIGITS, TRUE));
     }
 }
 
 
 /* Convert engineering or scientific number in the given base. */
 
-static char *
-make_eng_sci(int *MPnumber, int base)
+void
+make_eng_sci(char *target, int target_len, int *MPnumber, int base)
 {
     char half[MAXLINE], fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
@@ -296,7 +258,7 @@ make_eng_sci(int *MPnumber, int base)
     if (v->dtype == ENG) {
         eng = 1;
     }
-    optr = v->snum;
+    optr = target;
     mpabs(MPnumber, MPval);
     do_zero(MP1);
     if (mplt(MPnumber, MP1)) {
@@ -341,7 +303,7 @@ make_eng_sci(int *MPnumber, int base)
         }
     }
  
-    STRNCPY(fixed, make_fixed(MPmant, v->fnum, base, MAX_DIGITS-6, TRUE), MAX_DIGITS - 1);
+    make_fixed(fixed, MAX_DIGITS, MPmant, base, MAX_DIGITS-6, TRUE);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -377,10 +339,39 @@ make_eng_sci(int *MPnumber, int base)
         mpaddi(MPval, &dval, MPval);
     }
     *optr++    = '\0';
-    v->toclear = 1;
-    v->pointed = 0;
+    v->ltr.toclear = 1;
+    v->ltr.pointed = 0;
+}
 
-    return(v->snum);
+
+/* Convert MP number to character string in the given base. */
+
+void
+make_number(char *target, int target_len, int *MPnumber, int base, int ignoreError)
+{
+    double number, val;
+    
+/*  NOTE: make_number can currently set v->error when converting to a double.
+ *        This is to provide the same look&feel as V3 even though gcalctool
+ *        now does internal arithmetic to "infinite" precision.
+ *
+ *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+ *        order to do these tests.
+ */
+
+    mpcmd(MPnumber, &number);
+    val = fabs(number);
+    if (v->error && !ignoreError) {
+        STRNCPY(target, _("Error"), target_len - 1);
+        return;
+	}
+    if ((v->dtype == ENG) ||
+        (v->dtype == SCI) ||
+        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
+        make_eng_sci(target, target_len, MPnumber, base);
+    } else {
+        make_fixed(target, target_len, MPnumber, base, MAX_DIGITS, TRUE);
+    }
 }
 
 
@@ -447,7 +438,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     }
     exp *= exp_sign;
 
-    if (v->key_exp) {
+    if (v->ltr.key_exp) {
         mppwr(MPbase, &exp, MP1);
         mpmul(MPval, MP1, MPval);
     }
@@ -481,10 +472,10 @@ paren_disp(int key)
     switch (key) {
     case -1:
     case KEY_CLEAR:
-        v->noparens = v->numsptr = 0;
-        v->cur_op = -1;
+        v->ltr.noparens = 0;
+        v->ltr.cur_op = -1;
         do_zero(v->MPdisp_val);
-        show_display(v->MPdisp_val);
+        display_set_number(v->MPdisp_val);
         return;
     case KEY_BACKSPACE:
         if (!n) {
@@ -492,16 +483,15 @@ paren_disp(int key)
         }
 
         if (v->display[n-1] == ')') {
-            v->noparens++;
+            v->ltr.noparens++;
         } else if (v->display[n-1] == '(') {
-            v->noparens--;
-            if (!v->noparens) {
-                v->numsptr = 0;
-                v->cur_op = -1;
-                show_display(v->MPdisp_val);
+            v->ltr.noparens--;
+            if (!v->ltr.noparens) {
+                v->ltr.cur_op = -1;
+                display_set_number(v->MPdisp_val);
                 return;
             }
-        } else if (v->display[n-1] == ')') v->noparens++;
+        } else if (v->display[n-1] == ')') v->ltr.noparens++;
         v->display[n-1] = '\0';
         break;
 
@@ -512,7 +502,7 @@ paren_disp(int key)
  * to avoid the confusion of showing something like "0(".
  */
 
-        if (v->noparens == 1 && v->cur_op == -1) {
+        if (v->ltr.noparens == 1 && v->ltr.cur_op == -1) {
             n = 0;
             v->display[0] = '\0';
         }
@@ -532,74 +522,60 @@ paren_disp(int key)
     ui_set_display(&v->display[n], -1);
 }
 
-
 void
-process_item(struct button *button, int arg)
-{
-    v->current = button->id;
-
-    if (v->error) {
-        /* Must press a valid key first. */
-        if (v->current != KEY_CLEAR) {
-            return;
-        }
-        ui_set_error_state(FALSE);
-    }
-    
-    if (v->noparens > 0) {
-        do_paren();
-        return;
-    }
-
-    (*button->func)(arg);
-}
-
-
-void
-show_display(int *MPval)
+display_set_number(int *MPval)
 {
     if (!v->error) {
-        STRNCPY(v->display, make_number(MPval, v->base, FALSE), MAXLINE - 1);
+        make_number(v->display, MAXLINE, MPval, v->base, FALSE);
         ui_set_display(v->display, -1);
     }
 }
 
+void
+display_set_string(char *value)
+{
+    if(value != v->display)
+        STRNCPY(value, v->display, MAX_DIGITS - 1);
+    ui_set_display(v->display, -1);
+}
 
 /* In arithmetic precedence mode this routine should be called to redraw 
  * the display.
  */
 void
-refresh_display(int cursor)
+display_refresh(int cursor)
 {
     int i, MP_reg[MP_SIZE];
-    char localized[MAX_LOCALIZED], *str, *ans, reg[3], *t;
+    char localized[MAX_LOCALIZED], *str, reg[3], *t;
     struct exprm_state *e;
+    char x[MAX_LOCALIZED], xx[MAX_LOCALIZED], ans[MAX_LOCALIZED];
 
     switch (v->syntax) {
         case NPA:
-            show_display(v->MPdisp_val);
+            display_set_number(v->MPdisp_val);
             break;
 
         case EXPRS:
             e = get_state();
             if (e->expression[0] == '\0') {
                 do_zero(MP_reg);
-                str = gc_strdup(make_number(MP_reg, v->base, FALSE));
+                make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+                str = x;
             } else {           
                 str = gc_strdup(e->expression);
             }
-            ans = make_number(e->ans, v->base, TRUE);
-
+        
+            /* Substitute answer register */
+            make_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
             localize_expression(localized, ans, MAX_LOCALIZED);
-            t = str_replace(str, "Ans", localized);
-            free(str);
-            str = t;
+            str = str_replace(str, "Ans", localized);
 
             /* Replace registers with values. */
             for (i = 0; i < 10; i++) {
                 SNPRINTF(reg, 3, "R%d", i);
                 do_rcl_reg(i, MP_reg);
-                t = str_replace(str, reg, make_number(MP_reg, v->base, FALSE));
+                make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+                t = str_replace(str, reg, xx);
                 free(str);
                 str = t;
             }
@@ -619,8 +595,8 @@ gboolean display_is_result(void)
 
     switch (v->syntax) {
         case NPA:
-            if (v->old_cal_value < 0 ||
-                v->old_cal_value == KEY_CALCULATE) {
+            if (v->ltr.old_cal_value < 0 ||
+                v->ltr.old_cal_value == KEY_CALCULATE) {
                 return TRUE;
             }
             break;

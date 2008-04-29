@@ -24,16 +24,17 @@
 
 #include "calctool.h"
 
-void initialise();
+void display_reset();
 void localize_expression(char *, const char *, int);
-char *make_fixed(int *, char *, int, int, int);
-char *make_number(int *, int, int);
-void clear_display(int);
-void MPstr_to_num(char *, enum base_type, int *);
+void display_clear(int);
 void paren_disp(int);
-void refresh_display(int);
-void show_display(int *);
-void process_item(struct button *, int);
+void display_refresh(int);
+void display_set_number(int *);
+void display_set_string(char *);
 gboolean display_is_result(void);
+
+void MPstr_to_num(char *, enum base_type, int *);
+void make_fixed(char *, int, int *, int, int, int);
+void make_number(char *, int, int *, int, int);
 
 #endif /* DISPLAY_H */

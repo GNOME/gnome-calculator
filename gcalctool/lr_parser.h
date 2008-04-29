@@ -36,6 +36,7 @@
 
 extern struct parser_state parser_state;
 
+int lrlex();
 int lrerror();            /* Dummy definition. */
 int lrparse();            /* Dummy definition. */
 int ceerror(char *s);
