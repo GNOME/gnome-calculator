@@ -41,29 +41,36 @@ static double max_fix[MAXBASES] = {
 
 static char *make_eng_sci(int *, int);
 
-/* Add in the thousand separators characters if required and if we are
- * currently in the decimal numeric base, use the "right" radix character.
- */
-
+/* Add in the thousand separators characters if required */
 void
-localize_expression(char *dest, const char *src, int dest_length)
+localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 {
     GString *clean, *output;
     const char *c, *d;
-    int digit_count = -1;
+    int digit_count = -1, read_cursor, new_cursor;
     gboolean after_radix = FALSE;
-
+    
     /* Only modify if valid */
     if (v->error || v->base != DEC) {
         STRNCPY(dest, src, dest_length - 1);
         return;
     }
+    
+    if (cursor) {
+        new_cursor = *cursor;
+    } else {
+        new_cursor = -1;
+    }
 
     /* Remove separators if not supported */
     clean = g_string_sized_new(strlen(src));
-    for (c = src; *c; c++) {
+    for (c = src, read_cursor = 1; *c; c++, read_cursor++) {
         if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
             c += strlen(v->tsep) - 1;
+            if (new_cursor >= read_cursor) {
+                new_cursor--;
+            }
+            read_cursor--;
         }
         else {
             g_string_append_c(clean, *c);
@@ -78,14 +85,15 @@ localize_expression(char *dest, const char *src, int dest_length)
 
     /* Scan expression looking for numbers and inserting separators */
     output = g_string_sized_new(dest_length);
-    for (c = clean->str; *c; c++) {
+    for (c = clean->str, read_cursor = 1; *c; c++, read_cursor++) {
         /* Insert separators between digits */
         if (*c >= '0' && *c <= '9') {
             /* Read ahead to find the number of digits */
             if (digit_count < 0) {
                 digit_count = 1;
-                for (d = c + 1; *d >= '0' && *d <= '9'; d++)
+                for (d = c + 1; *d >= '0' && *d <= '9'; d++) {
                     digit_count++;
+                }
             }
             
             g_string_append_c(output, *c);
@@ -93,6 +101,10 @@ localize_expression(char *dest, const char *src, int dest_length)
             /* Insert separator after nth digit */
             if (!after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
                 g_string_append(output, v->tsep);
+                if (new_cursor > read_cursor) {
+                    new_cursor++;
+                }
+                read_cursor++;
             }
             digit_count--;
         }
@@ -113,7 +125,11 @@ localize_expression(char *dest, const char *src, int dest_length)
     
     STRNCPY(dest, output->str, dest_length - 1);
     g_string_free(output, TRUE);
-    g_string_free(clean, TRUE);    
+    g_string_free(clean, TRUE);
+    
+    if (cursor != NULL && *cursor != -1) {
+        *cursor = new_cursor;
+    }
 }
 
 
@@ -604,7 +620,7 @@ refresh_display(int cursor)
             }
             ans = make_number(e->ans, v->base, TRUE);
 
-            localize_expression(localized, ans, MAX_LOCALIZED);
+            localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
             t = str_replace(str, "Ans", localized);
             free(str);
             str = t;
@@ -617,7 +633,7 @@ refresh_display(int cursor)
                 free(str);
                 str = t;
             }
-
+        
             ui_set_display(str, cursor);
             free(str);
             break;

@@ -25,7 +25,7 @@
 #include "calctool.h"
 
 void initialise();
-void localize_expression(char *, const char *, int);
+void localize_expression(char *, const char *, int, int *);
 char *make_fixed(int *, char *, int, int, int);
 char *make_number(int *, int, int);
 void clear_display(int);

@@ -954,8 +954,8 @@ ui_set_display(char *str, int cursor)
     if (str == NULL || str[0] == '\0') {
         str = " ";
     } else {
-        if (v->noparens == 0) {
-            localize_expression(localized, str, MAX_LOCALIZED);
+        if (v->syntax == EXPRS || (v->syntax == NPA && v->noparens == 0)) {
+            localize_expression(localized, str, MAX_LOCALIZED, &cursor);
             str = localized;
         }
     }
