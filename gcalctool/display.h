@@ -25,7 +25,7 @@
 #include "calctool.h"
 
 void display_reset();
-void localize_expression(char *, const char *, int);
+void localize_expression(char *, const char *, int, int *);
 void display_clear(int);
 void paren_disp(int);
 void display_refresh(int);
