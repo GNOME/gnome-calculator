@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 08:59+0000\n"
-"PO-Revision-Date: 2008-02-26 20:35+0100\n"
+"POT-Creation-Date: 2008-04-29 10:26+0000\n"
+"PO-Revision-Date: 2008-05-07 21:50+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,61 +20,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gcalctool/calctool.c:566
+#: ../gcalctool/calctool.c:565
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Omrekeningsfactor kilometer-naar-mijl"
 
-#: ../gcalctool/calctool.c:568
+#: ../gcalctool/calctool.c:567
 msgid "square root of 2"
 msgstr "vierkantswortel van 2"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:568
 msgid "Euler's Number (e)"
 msgstr "Euler's getal (e)"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:569
 msgid "pi"
 msgstr "pi"
 
-#: ../gcalctool/calctool.c:571
+#: ../gcalctool/calctool.c:570
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Omrekeningsfactor centimeter-naar-inch"
 
-#: ../gcalctool/calctool.c:573
+#: ../gcalctool/calctool.c:572
 msgid "degrees in a radian"
 msgstr "graden in een radiaal"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:573
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:574
 msgid "Gram-to-ounce conversion factor"
 msgstr "Omrekeningsfactor gram-naar-ounce"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:576
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Omrekeningsfactor kilojoules-naar-BTU"
 
-#: ../gcalctool/calctool.c:580
+#: ../gcalctool/calctool.c:579
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Omrekeningsfactor kubieke centimeter-naar-kubieke inch"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591 ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:372 ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
+#: ../gcalctool/calctool.c:590 ../gcalctool/display.c:365
+#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
+#: ../gcalctool/mpmath.c:461
 msgid "Error"
 msgstr "Fout"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:607
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s als volgende argument.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:620
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -83,23 +92,25 @@ msgstr ""
 "%s versie %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
+# nauwkeurigheid/precisie
+#: ../gcalctool/calctool.c:621
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "Gebruik: %s: [-D] [-E] [-a precisie] "
+msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+msgstr "Gebruik: %s: [-E] [-u] [-a nauwkeurigheid] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:622
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+# precisiewaarde/nauwkeurigheidswaarde<
+#: ../gcalctool/calctool.c:643
 msgid "-a needs accuracy value"
-msgstr "-a vereist precisiewaarde"
+msgstr "-a vereist nauwkeurigheidswaarde"
 
-#: ../gcalctool/calctool.c:643 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:647 ../gcalctool/get.c:244
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: precisie moet in het interval 0-%d liggen\n"
+msgstr "%s: nauwkeurigheid moet in het interval 0-%d liggen\n"
 
 # herstelhistorie
 #: ../gcalctool/functions.c:189
@@ -110,79 +121,79 @@ msgstr "Herstelgeschiedenis leeg"
 msgid "No redo steps"
 msgstr "Geen bewerkingen beschikbaar"
 
-#: ../gcalctool/functions.c:577
+#: ../gcalctool/functions.c:587
 msgid "Invalid number for the current base"
 msgstr "Getal past niet bij huidig grondtal"
 
-#: ../gcalctool/functions.c:581
+#: ../gcalctool/functions.c:591
 msgid "Too long number"
 msgstr "Getal is te lang"
 
-#: ../gcalctool/functions.c:585
+#: ../gcalctool/functions.c:595
 msgid "Invalid bitwise operation parameter(s)"
 msgstr "Ongeldige bitsgewijze bewerkingsparameter(s)"
 
-#: ../gcalctool/functions.c:589
+#: ../gcalctool/functions.c:599
 msgid "Invalid modulus operation parameter(s)"
 msgstr "Voor deze berekening moeten de te bewerken getallen geheel zijn"
 
-#: ../gcalctool/functions.c:593
+#: ../gcalctool/functions.c:603
 msgid "Math operation error"
 msgstr "Fout bij wiskundige bewerking"
 
-#: ../gcalctool/functions.c:597
+#: ../gcalctool/functions.c:607
 msgid "Malformed expression"
 msgstr "Vorm van uitdrukking is niet goed"
 
-#: ../gcalctool/functions.c:696
+#: ../gcalctool/functions.c:706
 msgid "Error, operands must be integers"
 msgstr "Fout, de operandi moeten gehele getallen zijn"
 
-#: ../gcalctool/functions.c:923 ../gcalctool/functions.c:1278
+#: ../gcalctool/functions.c:930 ../gcalctool/functions.c:1283
 msgid "No sane value to convert"
 msgstr "Omrekenen is zinloos"
 
-#: ../gcalctool/functions.c:1023 ../gcalctool/functions.c:1351
+#: ../gcalctool/functions.c:1029 ../gcalctool/functions.c:1356
 msgid "No sane value to store"
 msgstr "Opslaan is zinloos"
 
-#: ../gcalctool/functions.c:1144
+#: ../gcalctool/functions.c:1149
 msgid "Malformed function"
 msgstr "Vorm van functie is niet goed"
 
-#: ../gcalctool/functions.c:1306
+#: ../gcalctool/functions.c:1311
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Weergave gewist, voorvoegsel zonder een operator is niet toegestaan"
 
-#: ../gcalctool/functions.c:1327
+#: ../gcalctool/functions.c:1332
 msgid "Malformed parenthesis expression"
 msgstr "Foutieve haakjes"
 
-#: ../gcalctool/functions.c:1503
+#: ../gcalctool/functions.c:1508
 msgid "No sane value to do bitwise shift"
 msgstr "Bitsgewijs verschuiven is zinloos"
 
-#: ../gcalctool/get.c:258
+#: ../gcalctool/get.c:265
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: grondtal moet 2, 8, 10 of 16 zijn\n"
 
-#: ../gcalctool/get.c:273
+#: ../gcalctool/get.c:280
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: ongeldige weergavestand [%s]\n"
 
-#: ../gcalctool/get.c:288
+#: ../gcalctool/get.c:295
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: ongeldige stand [%s]\n"
 
-#: ../gcalctool/get.c:302
+#: ../gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: ongeldige goniometrische stand [%s]\n"
 
-#: ../gcalctool/get.c:320
+#: ../gcalctool/get.c:327
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: ongeldige syntaxis-stand [%s]\n"
@@ -223,82 +234,82 @@ msgstr "Rekenmachine [%s] - financieel"
 msgid "Calculator [%s] - Scientific"
 msgstr "Rekenmachine [%s] - wetenschappelijk"
 
-#: ../gcalctool/gtk.c:510
+#: ../gcalctool/gtk.c:513
 msgid "Activated no operator precedence mode"
 msgstr "Geen prioriteit voor bewerkingen geactiveerd"
 
-#: ../gcalctool/gtk.c:513
+#: ../gcalctool/gtk.c:516
 msgid "Activated expression mode with operator precedence"
 msgstr "Uitdrukkingen met rekenkundige prioriteit voor bewerkingen geactiveerd"
 
-#: ../gcalctool/gtk.c:542 ../glade/gcalctool.glade.h:389
+#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:389
 #, no-c-format
 msgid "_Other (%d) ..."
 msgstr "_Anders (%d) ..."
 
-#: ../gcalctool/gtk.c:546
+#: ../gcalctool/gtk.c:549
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places."
+msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Nauwkeurigheid instellen op 0 tot %d decimalen."
+msgstr[0] "Nauwkeurigheid instellen op 0 tot %d decimaal."
 msgstr[1] "Nauwkeurigheid instellen op 0 tot %d decimalen."
 
-#. Translator: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:552
+#. Translators: This refers to the current accuracy setting
+#: ../gcalctool/gtk.c:555
 #, c-format
-msgid "Currently set to %d places."
+msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
 msgstr[0] "Momenteel ingesteld op %d plaats."
 msgstr[1] "Momenteel ingesteld op %d plaatsen."
 
 #. Factorial
-#: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
+#: ../gcalctool/gtk.c:587 ../glade/gcalctool.glade.h:314
 msgid "Sin"
 msgstr "Sin"
 
-#: ../gcalctool/gtk.c:584
+#: ../gcalctool/gtk.c:587
 msgid "Sinh"
 msgstr "Sinh"
 
-#: ../gcalctool/gtk.c:585
+#: ../gcalctool/gtk.c:588
 msgid "Sin<sup>-1</sup>"
 msgstr "Sin<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:586
+#: ../gcalctool/gtk.c:589
 msgid "Sinh<sup>-1</sup>"
 msgstr "Sinh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
+#: ../gcalctool/gtk.c:591 ../glade/gcalctool.glade.h:140
 msgid "Cos"
 msgstr "Cos"
 
-#: ../gcalctool/gtk.c:588
+#: ../gcalctool/gtk.c:591
 msgid "Cosh"
 msgstr "Cosh"
 
-#: ../gcalctool/gtk.c:589
+#: ../gcalctool/gtk.c:592
 msgid "Cos<sup>-1</sup>"
 msgstr "Cos<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:590
+#: ../gcalctool/gtk.c:593
 msgid "Cosh<sup>-1</sup>"
 msgstr "Cosh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
+#: ../gcalctool/gtk.c:595 ../glade/gcalctool.glade.h:339
 msgid "Tan"
 msgstr "Tan"
 
-#: ../gcalctool/gtk.c:592
+#: ../gcalctool/gtk.c:595
 msgid "Tanh"
 msgstr "Tanh"
 
-#: ../gcalctool/gtk.c:593
+#: ../gcalctool/gtk.c:596
 msgid "Tan<sup>-1</sup>"
 msgstr "Tan<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:594
+#: ../gcalctool/gtk.c:597
 msgid "Tanh<sup>-1</sup>"
 msgstr "Tanh<sup>-1</sup>"
 
@@ -311,11 +322,11 @@ msgstr "Tanh<sup>-1</sup>"
 #. * (a one becomes a zero and a zero becomes a one), causing the
 #. * displayed integer value to be adjusted accordingly.
 #.
-#: ../gcalctool/gtk.c:690
+#: ../gcalctool/gtk.c:693
 msgid "Bit editor activated. Click on bit values to toggle them."
 msgstr "Rekenen met bits ingeschakeld. Klik op bitwaarden om om te schakelen."
 
-#: ../gcalctool/gtk.c:1151
+#: ../gcalctool/gtk.c:1141
 msgid "translator-credits"
 msgstr ""
 "Wouter Bolsterlee\n"
@@ -326,7 +337,7 @@ msgstr ""
 "\n"
 "Kijk voor meer informatie op http://nl.gnome.org/"
 
-#: ../gcalctool/gtk.c:1154
+#: ../gcalctool/gtk.c:1144
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -343,7 +354,7 @@ msgstr ""
 "die is gepubliceerd door de Free Software Foundation; versie 2 of\n"
 "(naar uw keuze) enige latere versie.\n"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1148
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -360,7 +371,7 @@ msgstr ""
 "van VERHANDELBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.  Zie\n"
 "voor meer bijzonderheden de Algemene Openbare Licentie van GNU.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1152
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -376,32 +387,32 @@ msgstr ""
 "Floor,\n"
 "Boston, MA 02110-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1173
+#: ../gcalctool/gtk.c:1163
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1165
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 De makers van Gcalctool"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1167
 msgid "Calculator with financial and scientific modes."
 msgstr "Rekenmachine met financiële en wetenschappelijke standen."
 
-#: ../gcalctool/gtk.c:1479 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1484 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1502 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
 # Stand wijzigen wist berekening
-#: ../gcalctool/gtk.c:1671
+#: ../gcalctool/gtk.c:1683
 msgid "Changing Modes Clears Calculation"
 msgstr "Wijzigen van modus wist de berekening"
 
-#: ../gcalctool/gtk.c:1674
+#: ../gcalctool/gtk.c:1686
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -409,33 +420,33 @@ msgstr ""
 "Wanneer u de stand wijzigt, zal de huidige berekening worden gewist en "
 "zullen getallen weer worden ingesteld op decimaal."
 
-#: ../gcalctool/gtk.c:1678
+#: ../gcalctool/gtk.c:1690
 msgid "_Do not warn me again"
 msgstr "_Niet meer waarschuwen"
 
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1695
 msgid "C_hange Mode"
 msgstr "_Stand wijzigen"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1820
+#: ../gcalctool/gtk.c:1833
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
+#: ../gcalctool/gtk.c:2199
 msgid "Clipboard contained malformed calculation"
 msgstr "Klembord bevatte onjuist gevormde berekening"
 
-#: ../gcalctool/gtk.c:2258
+#: ../gcalctool/gtk.c:2271
 msgid "Paste"
 msgstr "Plakken"
 
-#: ../gcalctool/gtk.c:2531
+#: ../gcalctool/gtk.c:2534
 msgid "Error loading user interface"
 msgstr "Fout bij het laden van de gebruikersinterface"
 
-#: ../gcalctool/gtk.c:2533
+#: ../gcalctool/gtk.c:2536
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -445,20 +456,20 @@ msgstr ""
 "Controleer uw installatie."
 
 # nummer (dus niet 'nee')
-#: ../gcalctool/gtk.c:2761 ../gcalctool/gtk.c:2779
+#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
 msgid "No."
 msgstr "Nr."
 
-#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
 msgid "Value"
 msgstr "Getal"
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2767 ../gcalctool/gtk.c:2785
 msgid "Description"
 msgstr "Omschrijving"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2924 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "_Terugzetten op standaard (%d)"
@@ -467,7 +478,7 @@ msgstr "_Terugzetten op standaard (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negatieve X en niet gehele Y worden niet ondersteund"
 
-#: ../gcalctool/mpmath.c:273
+#: ../gcalctool/mpmath.c:271
 msgid "Error, cannot calculate cosine"
 msgstr "Fout, kan cosinus niet berekenen"
 
