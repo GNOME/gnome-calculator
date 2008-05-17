@@ -24,16 +24,9 @@
 
 #include "calctool.h"
 
-void show_error(char *);
-char *str_replace(char *, char *, char *);
 void syntaxdep_show_display(void);
-char *gc_strdup(char *str);
-int usable_num(int MPnum[MP_SIZE]);
 
 void make_exp(char *number, int t[MP_SIZE]);
-int exp_insert(char *text, int);
-void exp_replace(char *text);
-void exp_clear(void);
 
 struct exprm_state *get_state(void);
 

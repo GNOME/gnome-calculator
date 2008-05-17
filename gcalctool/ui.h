@@ -48,9 +48,8 @@ void ui_set_show_bitcalculating(gboolean);
 void ui_set_show_trailing_zeroes(gboolean);
 
 void ui_set_error_state(gboolean);
-void ui_set_statusbar(gchar *, const gchar *);
+void ui_set_statusbar(const gchar *, const gchar *);
 
 void ui_beep(void);
-char *ui_get_localized_numeric_point(void);
 
 #endif /* UI_H */

@@ -452,9 +452,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
-    //FIXME: Obsolete?
-    char *lnp;                    /* Localized numerical point (UTF8 format) */
-    
     char *shelf;                       /* PUT selection shelf contents. */   
 
     gboolean warn_change_mode;    /* Should we warn user when changing modes? */
@@ -491,7 +488,7 @@ reset_display(void)
         case EXPRS:
             e = get_state();
             MPstr_to_num("0", DEC, e->ans);
-            exp_clear();
+            display_clear(FALSE);
             display_set_number(e->ans);
             break;
         
@@ -870,7 +867,7 @@ ui_set_mode(enum mode_type mode)
 
 
 void 
-ui_set_statusbar(gchar *text, const gchar *imagename)
+ui_set_statusbar(const gchar *text, const gchar *imagename)
 {
     GtkImage *image = GTK_IMAGE(X->status_image);
 
@@ -919,7 +916,7 @@ set_bit_panel(void)
             break;
 
         case EXPRS: 
-            if (usable_num(MP) || !is_integer(MP)) {
+            if (display_is_usable_number(MP) || !is_integer(MP)) {
                 gtk_widget_set_sensitive(X->bit_panel, FALSE);
                 return;
             }
@@ -1042,17 +1039,6 @@ void
 ui_beep()
 {
     gdk_beep();
-}
-
-
-char *
-ui_get_localized_numeric_point(void)
-{
-    const char *decimal_point;
-
-    decimal_point = localeconv()->decimal_point;
-
-    return (g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
 }
 
 
@@ -1738,7 +1724,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
             MPstr_to_num(v->display, v->base, MP1);
             break;
         case EXPRS: {
-            int ret = usable_num(e->ans);
+            int ret = display_is_usable_number(e->ans);
             assert(!ret);
             mpstr(e->ans, MP1);
         }
@@ -1766,7 +1752,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
             break;
         case EXPRS:
             mpcdm(&number, e->ans);
-            exp_replace("Ans");
+            display_set_string("Ans");
             display_refresh(-1);
             break;
         default:
@@ -1913,7 +1899,7 @@ check_for_localized_numeric_point(int keyval)
 
     outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
 
-    return (strcmp(outbuf, X->lnp) == 0);
+    return (strcmp(outbuf, v->radix) == 0);
 }
 
 
@@ -2202,7 +2188,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             break;
     
         case EXPRS:
-            exp_insert((char *) text, get_cursor()); // FIXME: Move out of gtk.c
+            display_insert((char *) text, get_cursor()); // FIXME: Move out of gtk.c
             display_refresh(-1);
             break;
     
@@ -2865,7 +2851,6 @@ ui_init(int *argc, char ***argv)
         
     gtk_init(argc, argv);
 
-    X->lnp = ui_get_localized_numeric_point();
     X->shelf      = NULL;      /* No selection for shelf initially. */
 
     gtk_rc_get_default_files();

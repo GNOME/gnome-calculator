@@ -25,19 +25,57 @@
 
 #include "display.h"
 
-#include "mp.h"
 #include "mpmath.h"
 #include "functions.h"
 #include "ui.h"
+#include "ce_parser.h" // For ce_parse()
 
-static char digits[] = "0123456789ABCDEF";
+static gboolean
+exp_has_postfix(char *str, char *postfix)
+{
+    int len, plen;
 
-static double max_fix[MAXBASES] = {
-    1.298074214e+33,    /* Binary. */
-    2.037035976e+90,    /* Octal. */
-    1.000000000e+100,   /* Decimal */
-    2.582249878e+120    /* Hexadecimal. */
-};
+    if (!str) {
+        return FALSE;
+    }
+
+    assert(postfix);
+
+    len = strlen(str);
+    plen = strlen(postfix);
+
+    if (plen > len) {
+        return FALSE;
+    }
+
+    return strcasecmp(str + len - plen, postfix) == 0;
+}
+
+static char *
+str_replace(char *str, char *from, char *to)
+{
+    char output[MAXLINE];
+    int offset = 0;
+    char *c;
+    int flen = strlen(from);
+    int tlen = strlen(to);
+    
+    for (c = str; *c && offset < MAXLINE - 1; c++, offset++) {
+        if (strncasecmp(from, c, flen) == 0) {
+            SNPRINTF(output + offset, MAXLINE - offset, to);
+            c += flen - 1;
+            offset += tlen - 1;
+        } else {
+            output[offset] = *c;
+        }
+    }
+
+    if (offset >= MAXLINE)
+        offset = MAXLINE - 1;
+    output[offset] = '\0';
+    
+    return strdup(output);
+}
 
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base, use the "right" radix character.
@@ -135,33 +173,29 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 }
 
 
-static int
-char_val(char chr)
-{
-    if (chr >= '0' && chr <= '9') {
-        return(chr - '0');
-    } else if (chr >= 'a' && chr <= 'f') {
-        return(chr - 'a' + 10);
-    } else if (chr >= 'A' && chr <= 'F') {
-        return(chr - 'A' + 10);
-    } else {
-        return(-1);
-    }
-}
-
-
 void
 display_clear(int initialise)
 {
-    v->ltr.pointed = 0;
-    v->ltr.toclear = 1;
-    do_zero(v->MPdisp_val);
-    display_set_number(v->MPdisp_val);
+    switch(v->syntax) {
+    case NPA:
+        v->ltr.pointed = 0;
+        v->ltr.toclear = 1;
+        do_zero(v->MPdisp_val);
+        display_set_number(v->MPdisp_val);
 
-    if (initialise == TRUE) {
-        v->ltr.noparens   = 0;
-        ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
-        ui_set_inverse_state(FALSE);          /* Also clears v->inverse. */
+        if (initialise == TRUE) {
+            v->ltr.noparens   = 0;
+            ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
+            ui_set_inverse_state(FALSE);          /* Also clears v->inverse. */
+        }
+        break;
+
+    case EXPRS:
+        display_set_string("");
+        break;
+
+    default:
+        assert(0);
     }
 }
 
@@ -178,296 +212,8 @@ display_reset()
   
     v->ltr.new_input = 1;             /* Value zero is on calculator display */
 
-    exp_clear();
+    display_clear(TRUE);
 }
-
-
-/* Convert MP number to fixed number string in the given base to the
- * maximum number of digits specified.
- */
-
-void
-make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int toclear)
-{
-    char half[MAXLINE], *optr;
-    int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
-    int ndig;                   /* Total number of digits to generate. */
-    int ddig;                   /* Number of digits to left of decimal sep. */
-    int dval, n, i;
- 
-    optr = target;
-    mpabs(MPnumber, MPval);
-    do_zero(MP1);
-    if (mplt(MPnumber, MP1)) {
-        *optr++ = '-';
-    }
-
-    mpcim(&basevals[base], MP1base);
-
-    mppwr(MP1base, &v->accuracy, MP1);
-    /* FIXME: string const. if MPstr_to_num can get it */
-    SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, DEC, MP2);
-    mpdiv(MP2, MP1, MP1);
-    mpadd(MPval, MP1, MPval);
-
-    n = 1;
-    mpcim(&n, MP2);
-    if (mplt(MPval, MP2)) {
-        ddig = 0;
-        *optr++ = '0';
-        cmax--;
-    } else {
-        for (ddig = 0; mpge(MPval, MP2); ddig++) {
-            mpdiv(MPval, MP1base, MPval);
-        }
-    }
- 
-    ndig = MIN(ddig + v->accuracy, --cmax);
-
-    while (ndig-- > 0) {
-        if (ddig-- == 0) {
-            for (i = 0; i < strlen(v->radix); i++)
-                *optr++ = v->radix[i];
-        }
-        mpmul(MPval, MP1base, MPval);
-        mpcmi(MPval, &dval);
-
-        if (dval > basevals[base]-1) {
-            dval = basevals[base]-1;
-        }
-
-        *optr++ = digits[dval];
-        dval = -dval;
-        mpaddi(MPval, &dval, MPval);
-    }    
-    *optr++ = '\0';
-    if (toclear == TRUE) {
-        v->ltr.toclear = 1;
-    }
-    v->ltr.pointed = 0;
-
-    /* Strip off trailing zeroes */
-    if (!v->show_zeroes) {
-        for (i = strlen(target) - 1; i > 1 && target[i] == '0'; i--) {
-            target[i] = '\0';
-        }
-        
-        /* If no fractional part discard radix */
-        if (strlen(target) >= strlen(v->radix) && strcmp(target + strlen(target) - strlen(v->radix), v->radix) == 0) {
-            target[strlen(target) - strlen(v->radix)] = '\0';
-        }
-    }
-}
-
-
-/* Convert engineering or scientific number in the given base. */
-
-void
-make_eng_sci(char *target, int target_len, int *MPnumber, int base)
-{
-    char half[MAXLINE], fixed[MAX_DIGITS], *optr;
-    int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
-    int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
-    int i, dval, len, n;
-    int MPmant[MP_SIZE];        /* Mantissa. */
-    int ddig;                   /* Number of digits in exponent. */
-    int eng = 0;                /* Set if this is an engineering number. */
-    int exp = 0;                /* Exponent */
-    
-    if (v->dtype == ENG) {
-        eng = 1;
-    }
-    optr = target;
-    mpabs(MPnumber, MPval);
-    do_zero(MP1);
-    if (mplt(MPnumber, MP1)) {
-        *optr++ = '-';
-    }
-    mpstr(MPval, MPmant);
-
-    mpcim(&basevals[base], MP1base);
-    n = 3;
-    mppwr(MP1base, &n, MP3base);
-
-    n = 10;
-    mppwr(MP1base, &n, MP10base);
-
-    n = 1;
-    mpcim(&n, MP1);
-    mpdiv(MP1, MP10base, MPatmp);
-
-    do_zero(MP1);
-    if (!mpeq(MPmant, MP1)) {
-        while (!eng && mpge(MPmant, MP10base)) {
-            exp += 10;
-            mpmul(MPmant, MPatmp, MPmant);
-        }
- 
-        while ((!eng &&  mpge(MPmant, MP1base)) ||
-                (eng && (mpge(MPmant, MP3base) || exp % 3 != 0))) {
-            exp += 1;
-            mpdiv(MPmant, MP1base, MPmant);
-        }
- 
-        while (!eng && mplt(MPmant, MPatmp)) {
-            exp -= 10;
-            mpmul(MPmant, MP10base, MPmant);
-        }
- 
-        n = 1;
-        mpcim(&n, MP1);
-        while (mplt(MPmant, MP1) || (eng && exp % 3 != 0)) {
-            exp -= 1;
-            mpmul(MPmant, MP1base, MPmant);
-        }
-    }
- 
-    make_fixed(fixed, MAX_DIGITS, MPmant, base, MAX_DIGITS-6, TRUE);
-    len = strlen(fixed);
-    for (i = 0; i < len; i++) {
-        *optr++ = fixed[i];
-    }
- 
-    *optr++ = 'e';
- 
-    if (exp < 0) {
-        exp = -exp;
-        *optr++ = '-';
-    } else {
-        *optr++ = '+';
-    }
- 
-    SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, DEC, MP1);
-    mpaddi(MP1, &exp, MPval);
-    n = 1;
-    mpcim(&n, MP1);
-    for (ddig = 0; mpge(MPval, MP1); ddig++) {
-        mpdiv(MPval, MP1base, MPval);
-    }
- 
-    if (ddig == 0) {
-        *optr++ = '0';
-    }
- 
-    while (ddig-- > 0) {
-        mpmul(MPval, MP1base, MPval);
-        mpcmi(MPval, &dval);
-        *optr++ = digits[dval];
-        dval = -dval;
-        mpaddi(MPval, &dval, MPval);
-    }
-    *optr++    = '\0';
-    v->ltr.toclear = 1;
-    v->ltr.pointed = 0;
-}
-
-
-/* Convert MP number to character string in the given base. */
-
-void
-make_number(char *target, int target_len, int *MPnumber, int base, int ignoreError)
-{
-    double number, val;
-    
-/*  NOTE: make_number can currently set v->error when converting to a double.
- *        This is to provide the same look&feel as V3 even though gcalctool
- *        now does internal arithmetic to "infinite" precision.
- *
- *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
- *        order to do these tests.
- */
-
-    mpcmd(MPnumber, &number);
-    val = fabs(number);
-    if (v->error && !ignoreError) {
-        STRNCPY(target, _("Error"), target_len - 1);
-        return;
-	}
-    if ((v->dtype == ENG) ||
-        (v->dtype == SCI) ||
-        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
-        make_eng_sci(target, target_len, MPnumber, base);
-    } else {
-        make_fixed(target, target_len, MPnumber, base, MAX_DIGITS, TRUE);
-    }
-}
-
-
-/* Convert string into an MP number, in the given base
- */
-
-void
-MPstr_to_num(char *str, enum base_type base, int *MPval)
-{
-    char *optr;
-    int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
-    int i, inum;
-    int exp      = 0;
-    int exp_sign = 1;
-    int negate = 0;
-    char *lnp = ui_get_localized_numeric_point();
-    assert(lnp);
-
-    do_zero(MPval);
-    mpcim(&basevals[(int) base], MPbase);
-
-    optr = str;
-
-    /* Remove any initial spaces or tabs. */
-    while (*optr == ' ' || *optr == '\t') {
-        optr++;
-    }
-
-    /* Check if this is a negative number. */
-    if (*optr == '-') {
-        negate = 1;
-        optr++;
-    }
-
-    while ((inum = char_val(*optr)) >= 0) {
-        mpmul(MPval, MPbase, MPval);
-        mpaddi(MPval, &inum, MPval);
-        optr++;
-    }
-
-    if (*optr == '.' || *optr == *lnp) {
-        optr++;
-        for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
-            mppwr(MPbase, &i, MP1);
-            mpcim(&inum, MP2);
-            mpdiv(MP2, MP1, MP1);
-            mpadd(MPval, MP1, MPval);
-        optr++;
-        }
-    }
-
-    while (*optr == ' ') {
-        optr++;
-    }
- 
-    if (*optr != '\0') {
-        if (*optr == '-') {
-            exp_sign = -1;
-        }
- 
-        while ((inum = char_val(*++optr)) >= 0) {
-            exp = exp * basevals[(int) base] + inum;
-        }
-    }
-    exp *= exp_sign;
-
-    if (v->ltr.key_exp) {
-        mppwr(MPbase, &exp, MP1);
-        mpmul(MPval, MP1, MPval);
-    }
-
-    if (negate == 1) {
-        mpneg(MPval, MPval);
-    }
-}
-
 
 /* Append the latest parenthesis char to the display item. */
 
@@ -554,9 +300,208 @@ display_set_number(int *MPval)
 void
 display_set_string(char *value)
 {
-    if(value != v->display)
-        STRNCPY(value, v->display, MAX_DIGITS - 1);
-    ui_set_display(v->display, -1);
+    struct exprm_state *e;
+    
+    switch(v->syntax) {
+    case NPA:
+        if(value != v->display)
+            STRNCPY(value, v->display, MAX_DIGITS - 1);
+        ui_set_display(v->display, -1);
+        break;
+
+    case EXPRS:
+        e = get_state();
+        free(e->expression);
+        e->expression = strdup(value);
+        break;
+
+    default:
+        assert(0);
+    }
+}
+
+void
+display_set_error(const char *message)
+{
+    ui_set_statusbar(message, "gtk-dialog-error");
+}
+
+static void
+copy_state(struct exprm_state *dst, struct exprm_state *src)
+{
+    MEMCPY(dst, src, sizeof(struct exprm_state));
+    dst->expression = strdup(src->expression);
+}
+
+static void
+update_undo_redo_button_sensitivity(void)
+{
+    int undo = 0;
+    int redo = 0;
+
+    if (v->h.current != v->h.end) {
+        redo = 1;
+    }
+
+    if (v->h.current != v->h.begin) {
+        undo = 1;
+    }
+
+    ui_set_undo_enabled(undo, redo);
+}
+
+void display_clear_stack(void)
+{
+    int i = v->h.begin;
+    while (i != v->h.end) {
+        if (i != v->h.current) {
+            free(v->h.e[i].expression);
+            v->h.e[i].expression = NULL;
+        }
+        i = ((i + 1) % UNDO_HISTORY_LENGTH);
+    }
+    v->h.begin = v->h.end = v->h.current;
+    update_undo_redo_button_sensitivity();   
+}
+
+void display_push(void)
+{
+    int c;
+
+    if (v->h.current != v->h.end) {
+        int i = v->h.current;
+
+        do {
+            i = ((i + 1) % UNDO_HISTORY_LENGTH);
+            free(v->h.e[i].expression);
+            v->h.e[i].expression = strdup("Ans");
+        } while (i != v->h.end);
+    }
+
+    v->h.end = v->h.current;
+
+    c = v->h.current;
+    v->h.end = v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+    if (v->h.current == v->h.begin) {
+        free(v->h.e[v->h.begin].expression);
+        v->h.e[v->h.begin].expression = NULL;
+        v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
+    }
+
+    copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
+    update_undo_redo_button_sensitivity();   
+}
+
+void display_pop(void)
+{
+    struct exprm_state *e;
+    
+    if (v->h.current != v->h.begin) {
+        v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
+        ui_set_statusbar("", "");
+    } else {
+        ui_set_statusbar(_("No undo history"), "gtk-dialog-warning");
+    }
+    update_undo_redo_button_sensitivity();
+    
+    e = get_state();
+    display_refresh(e->cursor);
+}
+
+void
+display_unpop(void)
+{
+    if (v->h.current != v->h.end) {
+        v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+        ui_set_statusbar("", "");
+    } else {
+        ui_set_statusbar(_("No redo steps"), "gtk-dialog-warning");
+    }
+    update_undo_redo_button_sensitivity();
+}
+
+int
+display_insert(const char *text, int cursor)
+{
+    char buf[MAXLINE], *display;
+    struct exprm_state *e = get_state();
+    
+    if (cursor < 0) {
+        SNPRINTF(buf, MAXLINE, "%s%s", e->expression, text);
+    } else {
+        display = ui_get_display();
+        SNPRINTF(buf, MAXLINE, "%.*s%s%s", cursor, display, text, display + cursor);
+        cursor += strlen(text);
+    }
+    display_set_string(buf);
+    
+    return cursor;
+}
+
+int
+display_backspace(int cursor)
+{
+    char buf[MAXLINE] = "", buf2[MAXLINE], *t;
+    struct exprm_state *e = get_state();
+    int i, MP_reg[MP_SIZE];
+
+    /* If cursor is at end of the line then delete the last character preserving accuracy */
+    if (cursor < 0) {
+        if (exp_has_postfix(e->expression, "Ans")) {
+            make_number(buf, MAXLINE, e->ans, v->base, FALSE);
+            t = str_replace(e->expression, "Ans", buf);
+            free(e->expression);
+            e->expression = t;
+        } else {
+            for (i = 0; i < 10; i++) {
+                SNPRINTF(buf, MAXLINE, "R%d", i);
+                if (exp_has_postfix(e->expression, buf)) {
+                    do_rcl_reg(i, MP_reg);
+                    make_number(buf2, MAXLINE, MP_reg, v->base, FALSE);
+                    /* Remove "Rx" postfix and replace with backspaced number */
+                    SNPRINTF(buf, MAXLINE, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
+                    display_set_string(buf);
+                    return cursor - 1;
+                }
+            }
+        }
+
+        SNPRINTF(buf, MAXLINE, "%.*s", strlen(e->expression) - 1, e->expression);
+    } else if (cursor > 0) {
+        t = ui_get_display();
+        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor - 1, t, t + cursor);
+    } else {
+        return cursor; /* At the start of the line */
+    }
+
+    display_set_string(buf);
+    return cursor - 1;
+}
+
+int
+display_delete(int cursor)
+{
+    char buf[MAXLINE] = "", *display;
+    
+    if (cursor >= 0) {
+        display = ui_get_display();
+        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor, display, display + cursor + 1);
+        display_set_string(buf);
+    }
+
+    return cursor;
+}
+
+int
+display_surround(const char *prefix, const char *suffix, int cursor)
+{
+    struct exprm_state *e = get_state();
+    char buffer[MAXLINE];
+    
+    SNPRINTF(buffer, MAXLINE, "%s%s%s", prefix, e->expression, suffix);
+    display_set_string(buffer);
+    
+    return cursor;
 }
 
 /* In arithmetic precedence mode this routine should be called to redraw 
@@ -577,12 +522,12 @@ display_refresh(int cursor)
 
         case EXPRS:
             e = get_state();
-            if (e->expression[0] == '\0') {
+            if (display_is_empty()) {
                 do_zero(MP_reg);
                 make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
                 str = x;
             } else {           
-                str = gc_strdup(e->expression);
+                str = strdup(e->expression);
             }
         
             /* Substitute answer register */
@@ -609,7 +554,26 @@ display_refresh(int cursor)
     }
 }
 
-gboolean display_is_result(void)
+gboolean
+display_is_empty(void)
+{
+    struct exprm_state *e;
+
+    switch (v->syntax) {
+        case NPA:
+            return v->ltr.toclear;
+
+        case EXPRS:
+            e = get_state();
+            return strcmp(e->expression, "") == 0;
+        
+        default:
+            assert(FALSE);
+    }
+}
+
+gboolean
+display_is_result(void)
 {
     struct exprm_state *e;
 
@@ -633,4 +597,53 @@ gboolean display_is_result(void)
     }
     
     return FALSE;
+}
+
+gboolean
+display_is_usable_number(int MPnum[MP_SIZE])
+{
+    struct exprm_state *e = get_state();
+    if (display_is_empty()) {
+        return ce_parse("0", MPnum);
+    } else {
+        return ce_parse(e->expression, MPnum);
+    }
+}
+
+void
+display_init(void)
+{
+    int i;
+
+    memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history */
+    for (i = 0; i < UNDO_HISTORY_LENGTH; i++)
+        v->h.e[i].expression = strdup("");
+}
+
+int
+display_solve(int *result)
+{
+    struct exprm_state *e;
+    char *c;
+    GString *clean;
+    int errorCode;
+
+    e = get_state();    
+
+    /* Remove thousands separators and use english radix */
+    clean = g_string_sized_new(strlen(e->expression));
+    for (c = e->expression; *c; c++) {
+        if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+            c += strlen(v->tsep) - 1;
+        } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
+            g_string_append_c(clean, '.');
+            c += strlen(v->radix) - 1;
+        } else {
+            g_string_append_c(clean, *c);
+        }
+    }
+    errorCode = ce_parse(clean->str, result);
+    g_string_free(clean, TRUE);
+    
+    return errorCode;
 }

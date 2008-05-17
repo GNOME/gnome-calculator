@@ -33,8 +33,7 @@
 #include <gconf/gconf-client.h>
 
 #include "get.h"
-#include "display.h"
-#include "mp.h"
+#include "mpmath.h"
 
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 

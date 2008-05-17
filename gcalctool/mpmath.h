@@ -23,6 +23,7 @@
 #define MPMATH_H
 
 #include "mp.h"
+#include "calctool.h"
 
 typedef unsigned long  BOOLEAN;
 
@@ -75,5 +76,9 @@ is_integer(int MPnum[MP_SIZE]);
 */
 int
 is_natural(int MPnum[MP_SIZE]);
+
+void MPstr_to_num(char *, enum base_type, int *);
+void make_fixed(char *, int, int *, int, int, int);
+void make_number(char *, int, int *, int, int);
 
 #endif /*MPMATH_H*/

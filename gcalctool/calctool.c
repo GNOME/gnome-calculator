@@ -31,6 +31,7 @@
 #include "display.h"
 #include "functions.h"
 #include "ui.h"
+#include "mpmath.h"
 
 time_t time();
 
@@ -715,8 +716,6 @@ init_state(void)
     for (i = 0; i < MAX_REGISTERS; i++) {
         mpcim(&n, v->MPmvals[i]);
     }
-    
-    exp_clear();
 }
 
 
@@ -724,7 +723,6 @@ int
 main(int argc, char **argv)
 {
     char *ptr;
-    struct exprm_state *e;
     
     v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
 
@@ -739,31 +737,26 @@ main(int argc, char **argv)
         v->appname = strdup(argv[0]);
     }
     
+    srand48((long) time((time_t *) 0));   /* Seed random number generator. */    
+    
+    v->radix = get_radix();    /* Locale specific radix string. */
+    v->tsep  = get_tsep();     /* Locale specific thousands separator. */
+    v->tsep_count = get_tsep_count();
+    
     init_state();
     
     get_options(argc, argv);   /* Get command line arguments. */
     ui_init(&argc, &argv);     /* Initialise UI */
     resources_init();          /* Initialise configuration */
-
-    v->radix = get_radix();    /* Locale specific radix string. */
-    v->tsep  = get_tsep();     /* Locale specific thousands separator. */
-    v->tsep_count = get_tsep_count();
+    display_init();
 
     init_text();               /* Setup text strings depending upon language. */
     read_resources();          /* Read resources from merged database. */
     ui_load();
 
-    srand48((long) time((time_t *) 0));   /* Seed random number generator. */
-
     do_clear();                /* Initialise and clear display. */
 
-    display_set_number(v->MPdisp_val);     /* Output in correct display mode. */
-
-    memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history*/
-    e = get_state();
-    e->clear = 1;              /* Clear initial state as if clear was pressed */
-    
-    ui_start();                    /* Display the calculator. */
+    ui_start();                /* Display the calculator. */
     
     return(0);
 }

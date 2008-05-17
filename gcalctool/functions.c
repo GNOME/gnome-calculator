@@ -36,26 +36,6 @@
 #include "lr_parser.h"
 #include "ui.h"
 
-char *
-gc_strdup(char *str)
-{
-    char *dup;
-    int len;
-
-    if (!str) {
-        return NULL;
-    }
-
-    len = strlen(str);
-    dup = malloc(len+1);
-    assert(dup);
-    memset(dup, 0, len+1);
-    strncpy(dup, str, len);
-
-    return(dup);
-}
-
-
 void
 make_exp(char *number, int t[MP_SIZE])
 {
@@ -67,7 +47,7 @@ make_exp(char *number, int t[MP_SIZE])
     int MP_b[MP_SIZE];
 
     assert(number);
-    a = gc_strdup(number);
+    a = strdup(number);
     assert(a);
 
     for (i = 0; !((a[i] == 'e') || (a[i] == 'E')); i++) {
@@ -91,37 +71,10 @@ make_exp(char *number, int t[MP_SIZE])
 }
 
 
-static void
-update_undo_redo_button_sensitivity(void)
-{
-    int undo = 0;
-    int redo = 0;
-
-    if (v->h.current != v->h.end) {
-        redo = 1;
-    }
-
-    if (v->h.current != v->h.begin) {
-        undo = 1;
-    }
-
-    ui_set_undo_enabled(undo, redo);
-}
-
-
 void
 clear_undo_history(void)
 {
-    int i = v->h.begin;
-    while (i != v->h.end) {
-        if (i != v->h.current) {
-            free(v->h.e[i].expression);
-            v->h.e[i].expression = NULL;
-        }
-        i = ((i + 1) % UNDO_HISTORY_LENGTH);
-    }
-    v->h.begin = v->h.end = v->h.current;
-    update_undo_redo_button_sensitivity();
+    display_clear_stack();
 }
 
 
@@ -132,77 +85,12 @@ get_state(void)
 }
 
 
-static void
-copy_state(struct exprm_state *dst, struct exprm_state *src)
-{
-    MEMCPY(dst, src, sizeof(struct exprm_state));
-    dst->expression = gc_strdup(src->expression);
-}
-
-
-static void
-purge_redo_history(void)
-{
-    if (v->h.current != v->h.end) {
-        int i = v->h.current;
-
-        do {
-            i = ((i + 1) % UNDO_HISTORY_LENGTH);
-            free(v->h.e[i].expression);
-            v->h.e[i].expression = gc_strdup("Ans");
-        } while (i != v->h.end);
-    }
-
-    v->h.end = v->h.current;
-}
-
-
-static void
-new_state(void)
-{
-    int c;
-
-    purge_redo_history();
-
-    c = v->h.current;
-    v->h.end = v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
-    if (v->h.current == v->h.begin) {
-        free(v->h.e[v->h.begin].expression);
-        v->h.e[v->h.begin].expression = NULL;
-        v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
-    }
-
-    copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
-    update_undo_redo_button_sensitivity();
-}
-
-
 void
 perform_undo(void)
 {
-    struct exprm_state *e;
-    
-    if (v->h.current != v->h.begin) {
-        v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
-        ui_set_statusbar("", "");
-    } else {
-        ui_set_statusbar(_("No undo history"), "gtk-dialog-warning");
-    }
-    update_undo_redo_button_sensitivity();
-    
-    e = get_state();
-    display_refresh(e->cursor);
+    display_pop();
 }
 
-struct exprm_state *
-peek_previous_state(void)
-{
-    if (v->h.current != v->h.begin) {
-        return &(v->h.e[(v->h.current - 1) % UNDO_HISTORY_LENGTH]);
-    } else {
-        return NULL;
-    }
-}
 
 static int
 is_undo_step(void)
@@ -214,13 +102,7 @@ is_undo_step(void)
 void
 perform_redo(void)
 {
-    if (v->h.current != v->h.end) {
-        v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
-        ui_set_statusbar("", "");
-    } else {
-        ui_set_statusbar(_("No redo steps"), "gtk-dialog-warning");
-    }
-    update_undo_redo_button_sensitivity();
+    display_unpop();
 }
 
 
@@ -262,198 +144,17 @@ do_business(void)     /* Perform special business mode calculations. */
 }
 
 
-int
-exp_insert(char *text, int cursor)
-{
-    char buf[MAXLINE], *display;
-    struct exprm_state *e = get_state();
-    
-    if (cursor < 0) {
-        SNPRINTF(buf, MAXLINE, "%s%s", e->expression, text);
-    } else {
-        display = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s%s", cursor, display, text, display + cursor);
-        cursor += strlen(text);
-    }
-    exp_replace(buf);
-    
-    return cursor;
-}
-
-
-void
-exp_clear(void)
-{
-    exp_replace("");
-}
-
-
-int
-usable_num(int MPnum[MP_SIZE])
-{
-    struct exprm_state *e = get_state();
-    if (e->expression[0] == '\0') {
-        return ce_parse("0", MPnum);
-    } else {
-        return ce_parse(e->expression, MPnum);
-    }
-}
-
-
-static int
-exp_has_postfix(char *str, char *postfix)
-{
-    int len, plen;
-
-    if (!str) {
-        return(0);
-    }
-
-    assert(postfix);
-
-    len = strlen(str);
-    plen = strlen(postfix);
-
-    if (plen > len) {
-        return(0);
-    }
-
-    if (!strcasecmp(str + len - plen, postfix)) {
-        return(1);
-    } else {
-        return(0);
-    }
-}
-
-
-static int
-exp_backspace(int cursor)
-{
-    char buf[MAXLINE] = "", buf2[MAXLINE], *t;
-    struct exprm_state *e = get_state();
-    int i, MP_reg[MP_SIZE];
-
-    /* If cursor is at end of the line then delete the last character preserving accuracy */
-    if (cursor < 0) {
-        if (exp_has_postfix(e->expression, "Ans")) {
-            make_number(buf, MAXLINE, e->ans, v->base, FALSE);
-            t = str_replace(e->expression, "Ans", buf);
-            free(e->expression);
-            e->expression = t;
-        } else {
-            for (i = 0; i < 10; i++) {
-                SNPRINTF(buf, MAXLINE, "R%d", i);
-                if (exp_has_postfix(e->expression, buf)) {
-                    do_rcl_reg(i, MP_reg);
-                    make_number(buf2, MAXLINE, MP_reg, v->base, FALSE);
-                    /* Remove "Rx" postfix and replace with backspaced number */
-                    SNPRINTF(buf, MAXLINE, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
-                    exp_replace(buf);
-                    return cursor - 1;
-                }
-            }
-        }
-
-        SNPRINTF(buf, MAXLINE, "%.*s", strlen(e->expression) - 1, e->expression);
-    } else if (cursor > 0) {
-        t = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor - 1, t, t + cursor);
-    } else {
-        return cursor; /* At the start of the line */
-    }
-
-    exp_replace(buf);
-    return cursor - 1;
-}
-
-
-static int
-exp_delete(int cursor)
-{
-    char buf[MAXLINE] = "", *display;
-    
-    if (cursor >= 0) {
-        display = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor, display, display + cursor + 1);
-        exp_replace(buf);
-    }
-
-    return cursor;
-}
-
-
-void
-exp_replace(char *text)
-{
-    struct exprm_state *e;
-    e = get_state();
-    if (e->expression != NULL) {
-        free(e->expression);
-    }
-    e->expression = gc_strdup(text);
-}
-
-
 static void
 exp_negate(void)
 {
-    struct exprm_state *e = get_state();
-
-    /* Ending zero + parenthesis + minus */
-    int len = strlen(e->expression) + 4;
-    char *exp = malloc(len);
-
-    assert(exp);
-    if (snprintf(exp, len, "-(%s)", e->expression) < 0) {
-        assert(0);
-    }
-    free(e->expression);
-    e->expression = exp;
+    display_surround("-(", ")", 0); // FIXME: Cursor
 }
 
 
 static void
 exp_inv(void)
 {
-    struct exprm_state *e = get_state();
-
-    /* Ending zero + 1/ + parenthesis */
-    int len = strlen(e->expression) + 5;
-    char *exp = malloc(len);
-
-    assert(exp);
-    if (snprintf(exp, len, "1/(%s)", e->expression) < 0) {
-        assert(0);
-    }
-    free(e->expression);
-    e->expression = exp;
-}
-
-
-char *
-str_replace(char *str, char *from, char *to)
-{
-    char output[MAXLINE];
-    int offset = 0;
-    char *c;
-    int flen = strlen(from);
-    int tlen = strlen(to);
-    
-    for (c = str; *c && offset < MAXLINE - 1; c++, offset++) {
-        if (strncasecmp(from, c, flen) == 0) {
-            SNPRINTF(output + offset, MAXLINE - offset, to);
-            c += flen - 1;
-            offset += tlen - 1;
-        } else {
-            output[offset] = *c;
-        }
-    }
-
-    if (offset >= MAXLINE)
-        offset = MAXLINE - 1;
-    output[offset] = '\0';
-    
-    return strdup(output);
+    display_surround("1/(", ")", 0); // FIXME: Cursor
 }
 
 
@@ -461,29 +162,26 @@ void
 do_expression(int function, int arg, int cursor)
 {
     char buf[MAXLINE];
-    struct exprm_state *e, *ex;
+    struct exprm_state *e;
     
-    new_state();
+    display_push();
     e = get_state();
-    ex = peek_previous_state();
 
     e->cursor = cursor;
-    e->clear = 0;
 
     ui_set_statusbar("", "");
 
     /* Starting a number after a calculation clears the display */
-    if (strcmp(e->expression, "Ans") == 0) {
+    if (display_is_result()) {
         if (buttons[function].flags & NUMBER) {
-            exp_replace("");
+            display_set_string("");
         }
     }
 
     switch (buttons[function].id) {
         case KEY_CLEAR:
         case KEY_CLEAR_ENTRY:
-            e->clear = 1;
-            exp_clear();
+            display_clear(FALSE);
             ui_set_error_state(FALSE);
             MPstr_to_num("0", DEC, e->ans);
             break;
@@ -511,20 +209,20 @@ do_expression(int function, int arg, int cursor)
 
         case KEY_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
-            cursor = exp_insert(buf, cursor);
+            cursor = display_insert(buf, cursor);
             break;
 
         case KEY_CONSTANT:
             make_number(buf, MAXLINE, v->MPcon_vals[arg], v->base, FALSE);
-            cursor = exp_insert(buf, cursor);
+            cursor = display_insert(buf, cursor);
             break;
 
         case KEY_BACKSPACE:
-            cursor = exp_backspace(cursor);
+            cursor = display_backspace(cursor);
             break;
         
         case KEY_DELETE:
-            cursor = exp_delete(cursor);
+            cursor = display_delete(cursor);
             break;
 
         case KEY_CHANGE_SIGN:
@@ -542,7 +240,7 @@ do_expression(int function, int arg, int cursor)
              * this result */
             /* TODO: Work out why two undo steps are required and why
              * the cursor must be taken from the first undo */
-            if (strcmp(e->expression, "Ans") == 0) {
+            if (display_is_result()) {
                 perform_undo();
                 e = get_state();
                 cursor = e->cursor;
@@ -551,35 +249,20 @@ do_expression(int function, int arg, int cursor)
                 }
 
             /* Do nothing */                
-            } else if (e->expression[0] == '\0') {
+            } else if (display_is_empty()) {
                 ;
                 
             /* Solve the equation */
             } else {
                 int MPval[MP_SIZE];
-                char *c, *message = NULL;
-                GString *clean;
                 int result;
+                const char *message = NULL;
                 
-                /* Remove thousands separators and use english radix */
-                clean = g_string_sized_new(strlen(e->expression));
-                for (c = e->expression; *c; c++) {
-                    if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
-                        c += strlen(v->tsep) - 1;
-                    } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
-                        g_string_append_c(clean, '.');
-                        c += strlen(v->radix) - 1;
-                    } else {
-                        g_string_append_c(clean, *c);
-                    }
-                }
-                result = ce_parse(clean->str, MPval);
-                g_string_free(clean, TRUE);
-                
+                result = display_solve(MPval);
                 switch (result) {
                     case 0:
                         mpstr(MPval, e->ans);
-                        exp_replace("Ans");
+                        display_set_string("Ans");
                         cursor = -1;
                         break;
 
@@ -613,33 +296,20 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case KEY_NUMERIC_POINT:
-            cursor = exp_insert(ui_get_localized_numeric_point(), cursor);
+            cursor = display_insert(v->radix, cursor);
             break;
 
         default:
             /* If display is a number then perform functions on that number */
-            if ((buttons[function].flags & (PREFIXOP | FUNC))
-                && !strcmp(e->expression, "Ans")
-                && !(ex && ex->clear)) {
-                SNPRINTF(buf, MAXLINE, "%s(%s)",
-                         buttons[function].symname,
-                         e->expression);
-                exp_replace(buf);
-            } else if ((((buttons[function].id == KEY_ADD) 
-                         || (buttons[function].id == KEY_SUBTRACT))
-                        && !strcmp(e->expression, "Ans")
-                        && (ex && ex->clear))) {
-                exp_replace(buttons[function].symname);
+            if (buttons[function].flags & (PREFIXOP | FUNC) && display_is_result()) {
+                SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
+                display_surround(buf, ")", 0); // FIXME: Cursor
             } else {
                 if (buttons[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
-                    if (!ex || ex->clear) {
-                        exp_replace(buf);
-                    } else {
-                        cursor = exp_insert(buf, cursor);
-                    }
+                    cursor = display_insert(buf, cursor);
                 } else {
-                    cursor = exp_insert(buttons[function].symname, cursor);
+                    cursor = display_insert(buttons[function].symname, cursor);
                 }
             }
             break;
@@ -924,14 +594,14 @@ do_base(enum base_type b)
 
         case EXPRS:
             e = get_state();
-            ret = usable_num(MP);
+            ret = display_is_usable_number(MP);
 
             if (ret) {
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
             } else {
                 mpstr(MP, e->ans);
-                exp_replace("Ans");
+                display_set_string("Ans");
             }
             v->base = b;
             set_resource(R_BASE, Rbstr[(int) v->base]);
@@ -1025,14 +695,14 @@ do_exchange(int index)
         case EXPRS:
             e = get_state();
 
-            if (usable_num(MPexpr)) {
+            if (display_is_usable_number(MPexpr)) {
                 ui_set_statusbar(_("No sane value to store"),
                                  "gtk-dialog-error");
             } else {
                 mpstr(v->MPmvals[index], MPtemp);
                 mpstr(MPexpr, v->MPmvals[index]);
                 mpstr(MPtemp, e->ans);
-                exp_replace("Ans");
+                display_set_string("Ans");
                 display_refresh(-1);
                 ui_make_registers();
             }
@@ -1278,13 +948,13 @@ do_numtype(enum num_type n)   /* Set number display type. */
 
         case EXPRS:
             e = get_state();
-            ret = usable_num(MP);
+            ret = display_is_usable_number(MP);
             if (ret) {
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
             } else {
                 mpstr(MP, e->ans);
-                exp_replace("Ans");
+                display_set_string("Ans");
                 ui_make_registers();
             }
             clear_undo_history();
@@ -1352,7 +1022,7 @@ do_sto(int index)
             break;
 
         case EXPRS:
-            if (usable_num(v->MPmvals[index])) {
+            if (display_is_usable_number(v->MPmvals[index])) {
                 ui_set_statusbar(_("No sane value to store"),
                                  "gtk-dialog-error");
             }
@@ -1504,7 +1174,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 
         case EXPRS:
             e = get_state();
-            if (usable_num(MPval) || !is_integer(MPval)) {
+            if (display_is_usable_number(MPval) || !is_integer(MPval)) {
                 ui_set_statusbar(_("No sane value to do bitwise shift"),
                                  "gtk-dialog-error");
                 break;
@@ -1512,7 +1182,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 
             calc_shift(MPval, e->ans, count);
 
-            exp_replace("Ans");
+            display_set_string("Ans");
             break;
 
         default:
@@ -1521,11 +1191,4 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 
     v->ltr.new_input = 1;
     syntaxdep_show_display();
-}
-
-
-void
-show_error(char *message)
-{
-    ui_set_statusbar(message, "gtk-dialog-error");
 }

@@ -21,6 +21,7 @@
 
 #include "unittest.h"
 
+#include "mpmath.h"
 #include "display.h"
 #include "functions.h"
 #include "calctool.h"

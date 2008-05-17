@@ -21,9 +21,15 @@
 #include <errno.h>
 
 #include "mpmath.h"
-#include "mp.h"
-#include "calctool.h"
-#include "display.h" /* FIXME: Needed to MPstr_to_num() */
+
+static char digits[] = "0123456789ABCDEF";
+
+static double max_fix[MAXBASES] = {
+    1.298074214e+33,    /* Binary. */
+    2.037035976e+90,    /* Octal. */
+    1.000000000e+100,   /* Decimal */
+    2.582249878e+120    /* Hexadecimal. */
+};
 
 BOOLEAN
 ibool(double x)
@@ -784,7 +790,7 @@ is_natural(int MPnum[MP_SIZE])
 {    
     int MP1[MP_SIZE];
     if (!is_integer(MPnum)) {
-	return 0;
+        return 0;
     }
     mpabs(MPnum, MP1);
     return mpeq(MPnum, MP1);
@@ -862,3 +868,303 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
 
     return(0);
 }
+
+/* Convert MP number to fixed number string in the given base to the
+ * maximum number of digits specified.
+ */
+
+void
+make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int toclear)
+{
+    char half[MAXLINE], *optr;
+    int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
+    int ndig;                   /* Total number of digits to generate. */
+    int ddig;                   /* Number of digits to left of decimal sep. */
+    int dval, n, i;
+ 
+    optr = target;
+    mpabs(MPnumber, MPval);
+    do_zero(MP1);
+    if (mplt(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
+
+    mpcim(&basevals[base], MP1base);
+
+    mppwr(MP1base, &v->accuracy, MP1);
+    /* FIXME: string const. if MPstr_to_num can get it */
+    SNPRINTF(half, MAXLINE, "0.5");
+    MPstr_to_num(half, DEC, MP2);
+    mpdiv(MP2, MP1, MP1);
+    mpadd(MPval, MP1, MPval);
+
+    n = 1;
+    mpcim(&n, MP2);
+    if (mplt(MPval, MP2)) {
+        ddig = 0;
+        *optr++ = '0';
+        cmax--;
+    } else {
+        for (ddig = 0; mpge(MPval, MP2); ddig++) {
+            mpdiv(MPval, MP1base, MPval);
+        }
+    }
+ 
+    ndig = MIN(ddig + v->accuracy, --cmax);
+
+    while (ndig-- > 0) {
+        if (ddig-- == 0) {
+            for (i = 0; i < strlen(v->radix); i++)
+                *optr++ = v->radix[i];
+        }
+        mpmul(MPval, MP1base, MPval);
+        mpcmi(MPval, &dval);
+
+        if (dval > basevals[base]-1) {
+            dval = basevals[base]-1;
+        }
+
+        *optr++ = digits[dval];
+        dval = -dval;
+        mpaddi(MPval, &dval, MPval);
+    }    
+    *optr++ = '\0';
+    if (toclear == TRUE) {
+        v->ltr.toclear = 1;
+    }
+    v->ltr.pointed = 0;
+
+    /* Strip off trailing zeroes */
+    if (!v->show_zeroes) {
+        for (i = strlen(target) - 1; i > 1 && target[i] == '0'; i--) {
+            target[i] = '\0';
+        }
+        
+        /* If no fractional part discard radix */
+        if (strlen(target) >= strlen(v->radix) && strcmp(target + strlen(target) - strlen(v->radix), v->radix) == 0) {
+            target[strlen(target) - strlen(v->radix)] = '\0';
+        }
+    }
+}
+
+
+/* Convert engineering or scientific number in the given base. */
+
+void
+make_eng_sci(char *target, int target_len, int *MPnumber, int base)
+{
+    char half[MAXLINE], fixed[MAX_DIGITS], *optr;
+    int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
+    int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
+    int i, dval, len, n;
+    int MPmant[MP_SIZE];        /* Mantissa. */
+    int ddig;                   /* Number of digits in exponent. */
+    int eng = 0;                /* Set if this is an engineering number. */
+    int exp = 0;                /* Exponent */
+    
+    if (v->dtype == ENG) {
+        eng = 1;
+    }
+    optr = target;
+    mpabs(MPnumber, MPval);
+    do_zero(MP1);
+    if (mplt(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
+    mpstr(MPval, MPmant);
+
+    mpcim(&basevals[base], MP1base);
+    n = 3;
+    mppwr(MP1base, &n, MP3base);
+
+    n = 10;
+    mppwr(MP1base, &n, MP10base);
+
+    n = 1;
+    mpcim(&n, MP1);
+    mpdiv(MP1, MP10base, MPatmp);
+
+    do_zero(MP1);
+    if (!mpeq(MPmant, MP1)) {
+        while (!eng && mpge(MPmant, MP10base)) {
+            exp += 10;
+            mpmul(MPmant, MPatmp, MPmant);
+        }
+ 
+        while ((!eng &&  mpge(MPmant, MP1base)) ||
+                (eng && (mpge(MPmant, MP3base) || exp % 3 != 0))) {
+            exp += 1;
+            mpdiv(MPmant, MP1base, MPmant);
+        }
+ 
+        while (!eng && mplt(MPmant, MPatmp)) {
+            exp -= 10;
+            mpmul(MPmant, MP10base, MPmant);
+        }
+ 
+        n = 1;
+        mpcim(&n, MP1);
+        while (mplt(MPmant, MP1) || (eng && exp % 3 != 0)) {
+            exp -= 1;
+            mpmul(MPmant, MP1base, MPmant);
+        }
+    }
+ 
+    make_fixed(fixed, MAX_DIGITS, MPmant, base, MAX_DIGITS-6, TRUE);
+    len = strlen(fixed);
+    for (i = 0; i < len; i++) {
+        *optr++ = fixed[i];
+    }
+ 
+    *optr++ = 'e';
+ 
+    if (exp < 0) {
+        exp = -exp;
+        *optr++ = '-';
+    } else {
+        *optr++ = '+';
+    }
+ 
+    SNPRINTF(half, MAXLINE, "0.5");
+    MPstr_to_num(half, DEC, MP1);
+    mpaddi(MP1, &exp, MPval);
+    n = 1;
+    mpcim(&n, MP1);
+    for (ddig = 0; mpge(MPval, MP1); ddig++) {
+        mpdiv(MPval, MP1base, MPval);
+    }
+ 
+    if (ddig == 0) {
+        *optr++ = '0';
+    }
+ 
+    while (ddig-- > 0) {
+        mpmul(MPval, MP1base, MPval);
+        mpcmi(MPval, &dval);
+        *optr++ = digits[dval];
+        dval = -dval;
+        mpaddi(MPval, &dval, MPval);
+    }
+    *optr++    = '\0';
+    v->ltr.toclear = 1;
+    v->ltr.pointed = 0;
+}
+
+
+/* Convert MP number to character string in the given base. */
+
+void
+make_number(char *target, int target_len, int *MPnumber, int base, int ignoreError)
+{
+    double number, val;
+    
+/*  NOTE: make_number can currently set v->error when converting to a double.
+ *        This is to provide the same look&feel as V3 even though gcalctool
+ *        now does internal arithmetic to "infinite" precision.
+ *
+ *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+ *        order to do these tests.
+ */
+
+    mpcmd(MPnumber, &number);
+    val = fabs(number);
+    if (v->error && !ignoreError) {
+        STRNCPY(target, _("Error"), target_len - 1);
+        return;
+	}
+    if ((v->dtype == ENG) ||
+        (v->dtype == SCI) ||
+        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
+        make_eng_sci(target, target_len, MPnumber, base);
+    } else {
+        make_fixed(target, target_len, MPnumber, base, MAX_DIGITS, TRUE);
+    }
+}
+
+
+static int
+char_val(char chr)
+{
+    if (chr >= '0' && chr <= '9') {
+        return(chr - '0');
+    } else if (chr >= 'a' && chr <= 'f') {
+        return(chr - 'a' + 10);
+    } else if (chr >= 'A' && chr <= 'F') {
+        return(chr - 'A' + 10);
+    } else {
+        return(-1);
+    }
+}
+
+
+/* Convert string into an MP number, in the given base
+ */
+
+void
+MPstr_to_num(char *str, enum base_type base, int *MPval)
+{
+    char *optr;
+    int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
+    int i, inum;
+    int exp      = 0;
+    int exp_sign = 1;
+    int negate = 0;
+
+    do_zero(MPval);
+    mpcim(&basevals[(int) base], MPbase);
+
+    optr = str;
+
+    /* Remove any initial spaces or tabs. */
+    while (*optr == ' ' || *optr == '\t') {
+        optr++;
+    }
+
+    /* Check if this is a negative number. */
+    if (*optr == '-') {
+        negate = 1;
+        optr++;
+    }
+
+    while ((inum = char_val(*optr)) >= 0) {
+        mpmul(MPval, MPbase, MPval);
+        mpaddi(MPval, &inum, MPval);
+        optr++;
+    }
+
+    if (*optr == '.' || *optr == *v->radix) {
+        optr++;
+        for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
+            mppwr(MPbase, &i, MP1);
+            mpcim(&inum, MP2);
+            mpdiv(MP2, MP1, MP1);
+            mpadd(MPval, MP1, MPval);
+        optr++;
+        }
+    }
+
+    while (*optr == ' ') {
+        optr++;
+    }
+ 
+    if (*optr != '\0') {
+        if (*optr == '-') {
+            exp_sign = -1;
+        }
+ 
+        while ((inum = char_val(*++optr)) >= 0) {
+            exp = exp * basevals[(int) base] + inum;
+        }
+    }
+    exp *= exp_sign;
+
+    if (v->ltr.key_exp) {
+        mppwr(MPbase, &exp, MP1);
+        mpmul(MPval, MP1, MPval);
+    }
+
+    if (negate == 1) {
+        mpneg(MPval, MPval);
+    }
+}
+

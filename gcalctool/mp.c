@@ -40,9 +40,9 @@
 #include <stdio.h>
 
 #include "mp.h"
+#include "mpmath.h"
 #include "calctool.h"
 #include "display.h"
-#include "functions.h" /* FIXME: Only for show_error() */
 
 #define C_abs(x)    ((x) >= 0 ? (x) : -(x))
 #define dabs(x)     (double) C_abs(x)
@@ -3361,7 +3361,7 @@ mppwr2(int *x, int *y, int *z)
     else goto L70;
 
 L10:
-    show_error(_("Negative X and non-integer Y not supported"));
+    display_set_error(_("Negative X and non-integer Y not supported"));
     goto L50;
 
 /* HERE X IS ZERO, RETURN ZERO IF Y POSITIVE, OTHERWISE ERROR */

@@ -22,7 +22,6 @@
 #include "ce_parser.h"
 #include "limits.h"
 #include "calctool.h"
-#include "functions.h" /* FIXME: Needed for gc_strdup() */
 
 /* TODO: This file is almost identical to lr-parser. */
 
@@ -39,7 +38,7 @@ ce_parse_(char *expression, int result[MP_SIZE], int flags)
 
     if (strlen(expression)) {
         parser_state.i = 0;
-        parser_state.buff = gc_strdup(expression);
+        parser_state.buff = strdup(expression);
 		v->math_error = 0;
         ret = ceparse();
         free(parser_state.buff);
