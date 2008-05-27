@@ -105,7 +105,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
     /* Remove separators if not supported */
     clean = g_string_sized_new(strlen(src));
     for (c = src, read_cursor = 1; *c; c++, read_cursor++) {
-        if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+        if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
             c += strlen(v->tsep) - 1;
             if (new_cursor >= read_cursor) {
                 new_cursor--;
@@ -633,7 +633,7 @@ display_solve(int *result)
     /* Remove thousands separators and use english radix */
     clean = g_string_sized_new(strlen(e->expression));
     for (c = e->expression; *c; c++) {
-        if (strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
+        if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
             c += strlen(v->tsep) - 1;
         } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
             g_string_append_c(clean, '.');
