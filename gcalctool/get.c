@@ -218,7 +218,7 @@ get_tsep()
     }
 
     if (tsep == NULL) {
-        return(",");
+        return("");
     } else {
         return(tsep);
     }

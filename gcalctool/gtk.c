@@ -1042,14 +1042,10 @@ ui_beep()
 }
 
 
-char *
+const char *
 ui_get_localized_numeric_point(void)
 {
-    const char *decimal_point;
-
-    decimal_point = localeconv()->decimal_point;
-
-    return (g_locale_to_utf8(decimal_point, -1, NULL, NULL, NULL));
+    return strdup(v->radix);
 }
 
 

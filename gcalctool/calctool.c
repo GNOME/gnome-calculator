@@ -743,15 +743,15 @@ main(int argc, char **argv)
         v->appname = strdup(argv[0]);
     }
     
-    init_state();
-    
     get_options(argc, argv);   /* Get command line arguments. */
-    ui_init(&argc, &argv);     /* Initialise UI */
-    resources_init();          /* Initialise configuration */
-
+    
     v->radix = get_radix();    /* Locale specific radix string. */
     v->tsep  = get_tsep();     /* Locale specific thousands separator. */
     v->tsep_count = get_tsep_count();
+    
+    init_state();
+    ui_init(&argc, &argv);     /* Initialise UI */
+    resources_init();          /* Initialise configuration */
 
     init_text();               /* Setup text strings depending upon language. */
     read_resources();          /* Read resources from merged database. */

@@ -51,6 +51,6 @@ void ui_set_error_state(gboolean);
 void ui_set_statusbar(gchar *, const gchar *);
 
 void ui_beep(void);
-char *ui_get_localized_numeric_point(void);
+const char *ui_get_localized_numeric_point(void);
 
 #endif /* UI_H */
