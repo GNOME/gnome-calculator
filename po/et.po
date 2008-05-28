@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gcalctool HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-14 12:32+0000\n"
-"PO-Revision-Date: 2008-04-04 14:02+0300\n"
+"POT-Creation-Date: 2008-04-29 10:26+0000\n"
+"PO-Revision-Date: 2008-05-27 16:15+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -20,61 +20,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gcalctool/calctool.c:566
+#: ../gcalctool/calctool.c:565
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Kilomeeterist miiliks teisendamise tegur"
 
-#: ../gcalctool/calctool.c:568
+#: ../gcalctool/calctool.c:567
 msgid "square root of 2"
 msgstr "ruutjuur kahest"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:568
 msgid "Euler's Number (e)"
 msgstr "Euleri arv (e)"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:569
 msgid "pi"
 msgstr "pii"
 
-#: ../gcalctool/calctool.c:571
+#: ../gcalctool/calctool.c:570
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Sentimeetrist tolliks teisendamise tegur"
 
-#: ../gcalctool/calctool.c:573
+#: ../gcalctool/calctool.c:572
 msgid "degrees in a radian"
 msgstr "kraadid radiaanides"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:573
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:574
 msgid "Gram-to-ounce conversion factor"
 msgstr "Grammist untsiks teisendamise tegur"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:576
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Kilodžaulist Briti soojusühikuks teisendamise tegur"
 
-#: ../gcalctool/calctool.c:580
+#: ../gcalctool/calctool.c:579
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591 ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:372 ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
+#: ../gcalctool/calctool.c:590 ../gcalctool/display.c:365
+#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
+#: ../gcalctool/mpmath.c:461
 msgid "Error"
 msgstr "Viga"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:607
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s järgmise argumendina.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:620
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -83,20 +92,20 @@ msgstr ""
 "%s versioon %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
+#: ../gcalctool/calctool.c:621
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "Kasutamine: %s: [-D] [-E] [-a täpsus] "
+msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+msgstr "Kasutamine: %s: [-E] [-u] [-a täpsus] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:622
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:643
 msgid "-a needs accuracy value"
 msgstr "-a vajab täpsuse väärtust"
 
-#: ../gcalctool/calctool.c:643 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:647 ../gcalctool/get.c:244
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: täpsus peab olema vahemikus 0-%d\n"
@@ -109,79 +118,79 @@ msgstr "Tühistamiste ajalugu puudub"
 msgid "No redo steps"
 msgstr "Puuduvad taastamise sammud"
 
-#: ../gcalctool/functions.c:577
+#: ../gcalctool/functions.c:587
 msgid "Invalid number for the current base"
 msgstr "Vigane number selle süsteemi jaoks"
 
-#: ../gcalctool/functions.c:581
+#: ../gcalctool/functions.c:591
 msgid "Too long number"
 msgstr "Liiga pikk arv"
 
-#: ../gcalctool/functions.c:585
+#: ../gcalctool/functions.c:595
 msgid "Invalid bitwise operation parameter(s)"
 msgstr "Bitikaupa tehtel on vigane parameeter (parameetrid)"
 
-#: ../gcalctool/functions.c:589
+#: ../gcalctool/functions.c:599
 msgid "Invalid modulus operation parameter(s)"
 msgstr "Vigane jagamistehte parameeter (või parameetrid)"
 
-#: ../gcalctool/functions.c:593
+#: ../gcalctool/functions.c:603
 msgid "Math operation error"
 msgstr "Viga tehtel"
 
-#: ../gcalctool/functions.c:597
+#: ../gcalctool/functions.c:607
 msgid "Malformed expression"
 msgstr "Vigane avaldis"
 
-#: ../gcalctool/functions.c:696
+#: ../gcalctool/functions.c:706
 msgid "Error, operands must be integers"
 msgstr "Viga, operandid peavad olema täisarvud"
 
-#: ../gcalctool/functions.c:923 ../gcalctool/functions.c:1278
+#: ../gcalctool/functions.c:930 ../gcalctool/functions.c:1283
 msgid "No sane value to convert"
 msgstr ""
 
-#: ../gcalctool/functions.c:1023 ../gcalctool/functions.c:1351
+#: ../gcalctool/functions.c:1029 ../gcalctool/functions.c:1356
 msgid "No sane value to store"
 msgstr ""
 
-#: ../gcalctool/functions.c:1144
+#: ../gcalctool/functions.c:1149
 msgid "Malformed function"
 msgstr "Vigane funktsioon"
 
-#: ../gcalctool/functions.c:1306
+#: ../gcalctool/functions.c:1311
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr ""
 
-#: ../gcalctool/functions.c:1327
+#: ../gcalctool/functions.c:1332
 msgid "Malformed parenthesis expression"
 msgstr "Avaldises on vigaselt vormindatud sulud"
 
-#: ../gcalctool/functions.c:1503
+#: ../gcalctool/functions.c:1508
 msgid "No sane value to do bitwise shift"
 msgstr ""
 
-#: ../gcalctool/get.c:258
+#: ../gcalctool/get.c:265
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: numbrisüsteemi põhi peab olema 2, 8, 10 või 16\n"
 
-#: ../gcalctool/get.c:273
+#: ../gcalctool/get.c:280
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: vigane kuvarežiim [%s]\n"
 
-#: ../gcalctool/get.c:288
+#: ../gcalctool/get.c:295
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: vigane režiim [%s]\n"
 
-#: ../gcalctool/get.c:302
+#: ../gcalctool/get.c:309
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: vigane trigonomeetriline režiim [%s]\n"
 
-#: ../gcalctool/get.c:320
+#: ../gcalctool/get.c:327
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: vigane süntaksirežiim [%s]\n"
@@ -222,82 +231,82 @@ msgstr "Kalkulaator [%s] - Rahandus"
 msgid "Calculator [%s] - Scientific"
 msgstr "Kalkulaator [%s] - Teaduslik"
 
-#: ../gcalctool/gtk.c:510
+#: ../gcalctool/gtk.c:513
 msgid "Activated no operator precedence mode"
 msgstr "Avaldiste lahendamine toimub nüüd järjekorras vasakult paremale"
 
-#: ../gcalctool/gtk.c:513
+#: ../gcalctool/gtk.c:516
 msgid "Activated expression mode with operator precedence"
 msgstr "Avaldiste lahendamine toimub nüüd tehete järjekorra alusel"
 
-#: ../gcalctool/gtk.c:542 ../glade/gcalctool.glade.h:389
+#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:389
 #, no-c-format
 msgid "_Other (%d) ..."
 msgstr "_Muud (%d) ..."
 
-#: ../gcalctool/gtk.c:546
+#: ../gcalctool/gtk.c:549
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places."
+msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
 msgstr[0] "Täpsuse seadmine 0-st kuni %d. komakohani."
 msgstr[1] "Täpsuse seadmine 0-st kuni %d. komakohani."
 
-#. Translator: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:552
+#. Translators: This refers to the current accuracy setting
+#: ../gcalctool/gtk.c:555
 #, c-format
-msgid "Currently set to %d places."
+msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
-msgstr[0] "Hetkel määratud %d koht."
-msgstr[1] "Hetkel määratud %d kohta."
+msgstr[0] "Hetkel on määratud %d koht."
+msgstr[1] "Hetkel on määratud %d kohta."
 
 #. Factorial
-#: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
+#: ../gcalctool/gtk.c:587 ../glade/gcalctool.glade.h:314
 msgid "Sin"
 msgstr "Sin"
 
-#: ../gcalctool/gtk.c:584
+#: ../gcalctool/gtk.c:587
 msgid "Sinh"
 msgstr "Sinh"
 
-#: ../gcalctool/gtk.c:585
+#: ../gcalctool/gtk.c:588
 msgid "Sin<sup>-1</sup>"
 msgstr "Sin<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:586
+#: ../gcalctool/gtk.c:589
 msgid "Sinh<sup>-1</sup>"
 msgstr "Sinh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
+#: ../gcalctool/gtk.c:591 ../glade/gcalctool.glade.h:140
 msgid "Cos"
 msgstr "Cos"
 
-#: ../gcalctool/gtk.c:588
+#: ../gcalctool/gtk.c:591
 msgid "Cosh"
 msgstr "Cosh"
 
-#: ../gcalctool/gtk.c:589
+#: ../gcalctool/gtk.c:592
 msgid "Cos<sup>-1</sup>"
 msgstr "Cos<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:590
+#: ../gcalctool/gtk.c:593
 msgid "Cosh<sup>-1</sup>"
 msgstr "Cosh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
+#: ../gcalctool/gtk.c:595 ../glade/gcalctool.glade.h:339
 msgid "Tan"
 msgstr "Tan"
 
-#: ../gcalctool/gtk.c:592
+#: ../gcalctool/gtk.c:595
 msgid "Tanh"
 msgstr "Tanh"
 
-#: ../gcalctool/gtk.c:593
+#: ../gcalctool/gtk.c:596
 msgid "Tan<sup>-1</sup>"
 msgstr "Tan<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:594
+#: ../gcalctool/gtk.c:597
 msgid "Tanh<sup>-1</sup>"
 msgstr "Tanh<sup>-1</sup>"
 
@@ -310,17 +319,17 @@ msgstr "Tanh<sup>-1</sup>"
 #. * (a one becomes a zero and a zero becomes a one), causing the
 #. * displayed integer value to be adjusted accordingly.
 #.
-#: ../gcalctool/gtk.c:690
+#: ../gcalctool/gtk.c:693
 msgid "Bit editor activated. Click on bit values to toggle them."
 msgstr "Bitiredaktor on aktiveeritud. Biti väärtuse muutmiseks klõpsa bitil."
 
-#: ../gcalctool/gtk.c:1151
+#: ../gcalctool/gtk.c:1141
 msgid "translator-credits"
 msgstr ""
 "Priit Laes <amd@tt.ee>, 2004.\n"
 "Ivar Smolin <okul@linux.ee>, 2005-2008."
 
-#: ../gcalctool/gtk.c:1154
+#: ../gcalctool/gtk.c:1144
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -332,7 +341,7 @@ msgstr ""
 "Vaba Tarkvara Fondi poolt avaldatud; kas Litsentsi versioon number 2\n"
 "või (vastavalt Teie valikule) ükskõik milline hilisem versioon.\n"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1148
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -344,7 +353,7 @@ msgstr ""
 "GARANTIITAvõi SOBIVUSELE TEATUD KINDLAKS EESMÄRGIKS.\n"
 "Üksikasjade suhtes vaata GNU Üldist Avalikku Litsentsi.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1152
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -354,31 +363,31 @@ msgstr ""
 "Gcalctool'ga, kui ei, siis võtke ühendust Free Software Foundation'iga,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1173
+#: ../gcalctool/gtk.c:1163
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1165
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Gcalctool'i autorid"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1167
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulaator koos finants- ja teadusarvutuste toega."
 
-#: ../gcalctool/gtk.c:1479 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1484 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1502 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1671
+#: ../gcalctool/gtk.c:1683
 msgid "Changing Modes Clears Calculation"
 msgstr "Režiimimuutus nullib arvutused"
 
-#: ../gcalctool/gtk.c:1674
+#: ../gcalctool/gtk.c:1686
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -386,33 +395,33 @@ msgstr ""
 "Režiimi muutmise tagajärjel nullitakse praegused arvutused ja numbrisüsteem "
 "seatakse kümnendsüsteemiks."
 
-#: ../gcalctool/gtk.c:1678
+#: ../gcalctool/gtk.c:1690
 msgid "_Do not warn me again"
 msgstr "_Hoiatust rohkem mitte kuvada"
 
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1695
 msgid "C_hange Mode"
 msgstr "_Muuda režiimi"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1820
+#: ../gcalctool/gtk.c:1833
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
+#: ../gcalctool/gtk.c:2199
 msgid "Clipboard contained malformed calculation"
 msgstr "Lõikelaud sisaldas vigast arvutust"
 
-#: ../gcalctool/gtk.c:2258
+#: ../gcalctool/gtk.c:2271
 msgid "Paste"
 msgstr "Aseta"
 
-#: ../gcalctool/gtk.c:2531
+#: ../gcalctool/gtk.c:2534
 msgid "Error loading user interface"
 msgstr "Viga kasutajaliidese laadimisel"
 
-#: ../gcalctool/gtk.c:2533
+#: ../gcalctool/gtk.c:2536
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -421,20 +430,20 @@ msgstr ""
 "Kasutajaliidese fail %s on puudu või pole seda võimalik laadida. Palun "
 "kontrolli programmi paigaldust."
 
-#: ../gcalctool/gtk.c:2761 ../gcalctool/gtk.c:2779
+#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
 msgid "No."
 msgstr "Nr."
 
-#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
 msgid "Value"
 msgstr "Väärtus"
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2767 ../gcalctool/gtk.c:2785
 msgid "Description"
 msgstr "Kirjeldus"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2924 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "Määra _vaikimisi (%d)"
@@ -443,7 +452,7 @@ msgstr "Määra _vaikimisi (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negatiivne X ja mittetäisarvuline Y pole toetatud"
 
-#: ../gcalctool/mpmath.c:273
+#: ../gcalctool/mpmath.c:271
 msgid "Error, cannot calculate cosine"
 msgstr "Viga, koosiinust ei saa arvutada"
 
