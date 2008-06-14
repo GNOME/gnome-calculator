@@ -943,6 +943,27 @@ set_bit_panel(void)
     }
 }
 
+static gboolean
+redo_display(gpointer data)
+{
+    gchar *text;
+    GtkTextIter start, end, cursor;
+    gint cursor_position;
+
+    gtk_text_buffer_get_start_iter(X->display_buffer, &start);
+    gtk_text_buffer_get_end_iter(X->display_buffer, &end);
+    text = gtk_text_buffer_get_text(X->display_buffer, &start, &end, FALSE);
+    
+    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &cursor_position, NULL);
+
+    gtk_text_buffer_set_text(X->display_buffer, text, -1);    
+    gtk_text_buffer_get_iter_at_offset(X->display_buffer, &cursor, cursor_position);
+    gtk_text_buffer_place_cursor(X->display_buffer, &cursor);
+
+    g_free(text);
+    
+    return FALSE;
+}
 
 void
 ui_set_display(char *str, int cursor)
@@ -968,6 +989,14 @@ ui_set_display(char *str, int cursor)
         gtk_text_buffer_get_iter_at_offset(X->display_buffer, &iter, cursor);
     }
     gtk_text_buffer_place_cursor(X->display_buffer, &iter);
+    gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(X->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
+    
+    /* This is a workaround for bug #524602.
+     * Basically the above code can cause the display to disappear when going from
+     * a display that is wider than the widget to one that is thinner. The following
+     * causes the display to be set twice which seems to work the second time.
+     */
+    g_idle_add(redo_display, NULL);
     
     /* Align to the right */
     if (cursor < 0) {
