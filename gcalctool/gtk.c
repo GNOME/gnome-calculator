@@ -119,44 +119,44 @@ static struct button_widget button_widgets[] = {
     { GDK_9, GDK_9,          GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 }},
 
     {KEY_A,                  "a",
-    { 0,     0 },
-    { GDK_a, 0 }},
+    { 0,     0,     0 },
+    { GDK_a, GDK_A, 0 }},
 
     {KEY_B,                  "b",
-    { 0,     0 },
-    { GDK_b, 0 }},
+    { 0,     0,     0 },
+    { GDK_b, GDK_B, 0 }},
 
     {KEY_C,                  "c",
-    { 0,     0 },
-    { GDK_c, 0 }},
+    { 0,     0,     0 },
+    { GDK_c, GDK_C, 0 }},
 
     {KEY_D,                  "d",
-    { 0,     0 },
-    { GDK_d, 0 }},
+    { 0,     0,     0 },
+    { GDK_d, GDK_D, 0 }},
 
     {KEY_E,                  "e",
-    { 0,     0 },
-    { GDK_e, 0 }},
+    { 0,     0,     0 },
+    { GDK_e, GDK_E, 0 }},
 
     {KEY_F,                  "f",
-    { 0,     0 },
-    { GDK_f, 0 }},
+    { 0,     0,     0 },
+    { GDK_f, GDK_F, 0 }},
 
     {KEY_CLEAR,              "clear_simple",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_Delete, 0 }},
+    { GDK_Delete,     0 }},
     
     {KEY_CLEAR,              "clear_advanced",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_Delete, 0 }},
+    { GDK_Delete,     0 }},
 
     {KEY_SHIFT,              "shift_left",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_less, 0 }},
+    { GDK_less,       0 }},
 
     {KEY_SHIFT,              "shift_right",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_greater, 0 }},
+    { GDK_greater,    0 }},
 
     {KEY_SET_ACCURACY,       "accuracy",
     { GDK_SHIFT_MASK, 0 },
@@ -172,15 +172,15 @@ static struct button_widget button_widgets[] = {
 
     {KEY_STORE,              "store",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_S, 0 }},
+    { GDK_S,          0 }},
 
     {KEY_RECALL,             "recall",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_R, 0 }},
+    { GDK_R,          0 }},
 
     {KEY_EXCHANGE,           "exchange",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_X, 0 }},
+    { GDK_X,          0 }},
 
     {KEY_CLEAR_ENTRY,        "clear_entry_simple",
     { GDK_CONTROL_MASK, 0,          0 },
@@ -191,15 +191,15 @@ static struct button_widget button_widgets[] = {
     { GDK_BackSpace,    GDK_Escape, 0 }},
 
     {KEY_BACKSPACE,          "backspace_simple",
-    { 0, 0 },
+    { 0,             0 },
     { GDK_BackSpace, 0 }},
 
     {KEY_BACKSPACE,          "backspace_advanced",
-    { 0, 0 },
+    { 0,             0 },
     { GDK_BackSpace, 0 }},
     
     {KEY_NUMERIC_POINT,      "numeric_point",
-    { 0,          0,              0,             0 },
+    { 0,          0,              0,             0,                0 },
     { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 }},
 
     {KEY_CALCULATE,          "result",
@@ -239,39 +239,39 @@ static struct button_widget button_widgets[] = {
     { GDK_C,          0 }},
 
     {KEY_INTEGER,            "integer_portion",
-    { 0, 0 },
-    { GDK_i, 0 }},
+    { 0,     0,     0 },
+    { GDK_i, GDK_I, 0 }},
 
     {KEY_FRACTION,           "fractional_portion",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_colon, 0 }},
+    { GDK_colon,      0 }},
 
     {KEY_PERCENTAGE,         "percentage",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_percent, 0 }},
+    { GDK_percent,    0 }},
 
     {KEY_SQUARE,             "square",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_at, 0 }},
+    { GDK_at,         0 }},
 
     {KEY_SQUARE_ROOT,        "sqrt",
-    { 0, 0 },   
-    { GDK_s, 0 }},
+    { 0,     0,     0 },   
+    { GDK_s, GDK_S, 0 }},
 
     {KEY_RECIPROCAL,         "reciprocal",
-    { 0, 0 },
-    { GDK_r, 0 }},
+    { 0,     0,     0 },
+    { GDK_r, GDK_R, 0 }},
 
     {KEY_ABSOLUTE_VALUE,     "abs",
-    { 0, 0 },
-    { GDK_u, 0 }},
+    { 0,     0,     0 },
+    { GDK_u, GDK_U, 0 }},
 
     {KEY_MASK_16,            "mask_16",
-    { 0, 0 },        
+    { 0,                0 },
     { GDK_bracketright, 0 }},
 
     {KEY_MASK_32,            "mask_32",
-    { 0, 0 },
+    { 0,               0 },
     { GDK_bracketleft, 0 }},
 
     {KEY_MODULUS_DIVIDE,     "modulus_divide",
@@ -284,7 +284,7 @@ static struct button_widget button_widgets[] = {
 
     {KEY_E_POW_X,            "pow_e",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_braceleft, 0 }},
+    { GDK_braceleft,  0 }},
 
     {KEY_10_POW_X,           "pow_10",
     { GDK_SHIFT_MASK, 0 },
@@ -296,35 +296,35 @@ static struct button_widget button_widgets[] = {
 
     {KEY_NATURAL_LOGARITHM,  "natural_logarithm",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_N, 0 }},
+    { GDK_N,          0 }},
 
     {KEY_LOGARITHM,          "logarithm",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_G, 0 }},
+    { GDK_G,          0 }},
 
     {KEY_LOGARITHM2,         "logarithm2",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_H, 0 }},
+    { GDK_H,          0 }},
 
     {KEY_FACTORIAL,          "factorial",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_exclam, 0 }},
+    { GDK_exclam,     0 }},
 
     {KEY_RANDOM,             "random",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_question, 0 }},
+    { GDK_question,   0 }},
 
     {KEY_SIN,                "sine",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_K, 0 }},
+    { GDK_K,          0 }},
 
     {KEY_COS,                "cosine",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_J, 0 }},
+    { GDK_J,          0 }},
 
     {KEY_TAN,                "tangent",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_L, 0 }},
+    { GDK_L,          0 }},
 
     {KEY_NOT,                "not",
     { GDK_SHIFT_MASK, 0 },
@@ -332,55 +332,55 @@ static struct button_widget button_widgets[] = {
 
     {KEY_OR,                 "or",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_bar, 0 }},
+    { GDK_bar,        0 }},
 
     {KEY_AND,                "and",
     { GDK_SHIFT_MASK, 0 },
     { GDK_ampersand, 0 }},
 
     {KEY_XOR,                "xor",
-    { 0,     0 },
-    { GDK_x, 0 }},
+    { 0,     0,     0 },
+    { GDK_x, GDK_X, 0 }},
 
     {KEY_XNOR,               "xnor",
-    { 0, 0 },
-    { GDK_n, 0 }},
+    { 0,     0,     0 },
+    { GDK_n, GDK_N, 0 }},
 
     {KEY_FINC_CTRM,          "finc_compounding_term",
-    { 0, 0 },
-    { GDK_m, 0 }},
+    { 0,     0,     0 },
+    { GDK_m, GDK_M, 0 }},
 
     {KEY_FINC_DDB,           "finc_double_declining_depreciation",
     { GDK_SHIFT_MASK, 0 },
     { GDK_D,          0 }},
 
     {KEY_FINC_FV,            "finc_future_value",
-    { 0, 0 },
-    { GDK_v, 0 }},
+    { 0,     0,     0 },
+    { GDK_v, GDK_V, 0 }},
 
     {KEY_FINC_PMT,           "finc_periodic_payment",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_P, 0 }},
+    { GDK_P,          0 }},
 
     {KEY_FINC_PV,            "finc_present_value",
-    { 0, 0 },
-    { GDK_p, 0 }},
+    { 0,     0,     0 },
+    { GDK_p, GDK_P, 0 }},
 
     {KEY_FINC_RATE,          "finc_periodic_interest_rate",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_T, 0 }},
+    { GDK_T,          0 }},
 
     {KEY_FINC_SLN,           "finc_straight_line_depreciation",
-    { 0, 0 },
-    { GDK_l, 0 }},
+    { 0,     0,     0 },
+    { GDK_l, GDK_L, 0 }},
 
     {KEY_FINC_SYD,           "finc_sum_of_the_years_digits_depreciation",
-    { 0, 0 },
-    { GDK_Y, 0 }},
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_Y,          0 }},
 
     {KEY_FINC_TERM,          "finc_term",
-    { 0, 0 },
-    { GDK_T, 0 }},
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_T,          0 }},
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
 
