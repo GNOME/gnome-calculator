@@ -891,7 +891,7 @@ set_bit_panel(void)
         case NPA:
             MPstr_to_num(v->display, v->base, MP1);
             mpcmim(MP1, MP2);
-            if (mpeq(MP1, MP2)) {
+            if (mp_is_equal(MP1, MP2)) {
                 int toclear = (v->current == KEY_CLEAR_ENTRY)
                               ? TRUE : FALSE;
 
@@ -1226,12 +1226,10 @@ static void
 aframe_response_cb(GtkWidget *dialog, gint response_id)
 {
     char *ch;
-    int val;
 
     if (response_id == GTK_RESPONSE_OK) {
         ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
-        val = ch[0];
-        mpcim(&val, v->MPdisp_val);
+        mp_set_from_integer(ch[0], v->MPdisp_val);
         display_set_number(v->MPdisp_val);
     }
     
@@ -1733,7 +1731,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
             assert(FALSE);
     }
 
-    mpcmd(MP1, &number);
+    number = mp_cast_to_double(MP1);
     lval = (long long) number;
 
     if (lval & (1LL << n)) {
@@ -1747,11 +1745,11 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 
     switch (v->syntax) {
         case NPA:
-            mpcdm(&number, v->MPdisp_val);
+            mp_set_from_double(number, v->MPdisp_val);
             display_set_number(v->MPdisp_val);
             break;
         case EXPRS:
-            mpcdm(&number, e->ans);
+            mp_set_from_double(number, e->ans);
             display_set_string("Ans");
             display_refresh(-1);
             break;

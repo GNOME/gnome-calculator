@@ -121,12 +121,12 @@ udf:
   }
 | value '=' tSTO '(' tINUMBER ')' {
   int val;
-  mpcmi($5, &val);
+  val = mp_cast_to_int($5);
   do_sto_reg(val, $1);
 }
 | value tSTO '(' tINUMBER ')' {
   int val;
-  mpcmi($4, &val);
+  val = mp_cast_to_int($4);
   do_sto_reg(val, $1);
 }
 | tCLR {
@@ -190,8 +190,7 @@ term:
 
 rcl:
   tRCL '(' tINUMBER ')' {
-    int val;
-    mpcmi($3, &val);
+    int val = mp_cast_to_int($3);
     do_rcl_reg(val, $$);
   }
   ;

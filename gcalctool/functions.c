@@ -381,9 +381,10 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
                 mpmul(MP1, v->MPdisp_val, MP2);
                 mpsub(v->MPresult, MP2, v->MPresult);
 
-                do_zero(MP1);
-                if ((mplt(v->MPdisp_val, MP1) && mpgt(v->MPresult, MP1)) ||
-                    mplt(v->MPresult, MP1)) { 
+                mp_set_from_integer(0, MP1);
+                if ((mp_is_less_than(v->MPdisp_val, MP1)
+		     && mp_is_greater_than(v->MPresult, MP1)) ||
+                    mp_is_less_than(v->MPresult, MP1)) { 
                     mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
                 }
             }
@@ -394,31 +395,31 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
             break;
 
         case KEY_AND:
-            mpcmd(v->MPresult, &dres);
-            mpcmd(v->MPdisp_val, &dval);
+            dres = mp_cast_to_double(v->MPresult);
+            dval = mp_cast_to_double(v->MPdisp_val);
             dres = setbool(ibool(dres) & ibool(dval));
-            mpcdm(&dres, v->MPresult);
+            mp_set_from_double(dres, v->MPresult);
             break;
 
         case KEY_OR:
-            mpcmd(v->MPresult, &dres);
-            mpcmd(v->MPdisp_val, &dval);
+            dres = mp_cast_to_double(v->MPresult);
+            dval = mp_cast_to_double(v->MPdisp_val);
             dres = setbool(ibool(dres) | ibool(dval));
-            mpcdm(&dres, v->MPresult);
+            mp_set_from_double(dres, v->MPresult);
             break;
 
         case KEY_XOR:
-            mpcmd(v->MPresult, &dres);
-            mpcmd(v->MPdisp_val, &dval);
+            dres = mp_cast_to_double(v->MPresult);
+            dval = mp_cast_to_double(v->MPdisp_val);
             dres = setbool(ibool(dres) ^ ibool(dval));
-            mpcdm(&dres, v->MPresult);
+            mp_set_from_double(dres, v->MPresult);
             break;
 
         case KEY_XNOR:
-            mpcmd(v->MPresult, &dres);
-            mpcmd(v->MPdisp_val, &dval);
+            dres = mp_cast_to_double(v->MPresult);
+            dval = mp_cast_to_double(v->MPdisp_val);
             dres = setbool(~ibool(dres) ^ ibool(dval));
-            mpcdm(&dres, v->MPresult);
+            mp_set_from_double(dres, v->MPresult);
 
         default:
             break;
@@ -758,21 +759,21 @@ do_factorial(int *MPval, int *MPres)
 
     mpstr(MPval, MPa);
     mpcmim(MPval, MP1);
-    do_zero(MP2);
-    if (mpeq(MPval, MP1) && mpge(MPval, MP2)) {   /* Only positive integers. */
-        i = 1;
-        if (mpeq(MP1, MP2)) {                     /* Special case for 0! */
-            mpcim(&i, MPres);
+    mp_set_from_integer(0, MP2);
+    if (mp_is_equal(MPval, MP1)
+	&& mp_is_equal(MPval, MP2)) {   /* Only positive integers. */
+        if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
+            mp_set_from_integer(1, MPres);
             return;
         }
-        mpcim(&i, MPa);
-        mpcmi(MP1, &i);
+        mp_set_from_integer(1, MPa);
+        i = mp_cast_to_int(MP1);
         if (!i) {
             matherr((struct exception *) NULL);
         } else {
             while (i > 0) {
                 mpmuli(MPa, &i, MPa);
-                mpcmd(MPa, &val);
+                val = mp_cast_to_double(MPa);
                 if (v->error) {
                     mperr();
                     return;
@@ -1157,7 +1158,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
     switch (v->syntax) {
         case NPA:
             MPstr_to_num(v->display, v->base, MPtemp);
-            mpcmd(MPtemp, &dval);
+            dval = mp_cast_to_double(MPtemp);
             temp = ibool(dval);
 
             if (count < 0) {
@@ -1167,7 +1168,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
             }
 
             dval = setbool(temp);
-            mpcdm(&dval, v->MPdisp_val);
+            mp_set_from_double(dval, v->MPdisp_val);
             display_set_number(v->MPdisp_val);
             mpstr(v->MPdisp_val, v->MPlast_input);
             break;

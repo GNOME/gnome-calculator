@@ -25,21 +25,24 @@
 #define MP_SIZE      1000     /* Size of the multiple precision values. */
 
 void mperr();
-int mpeq(int *, int *);
-int mpge(int *, int *);
-int mpgt(int *, int *);
-int mple(int *, int *);
-int mplt(int *, int *);
+
+int mp_is_equal(const int *, const int *);
+int mp_is_greater_equal(const int *, const int *);
+int mp_is_greater_than(const int *, const int *);
+int mp_is_less_equal(const int *, const int *);
+int mp_is_less_than(const int *, const int *);
+
+double mp_cast_to_double(const int *);
+int    mp_cast_to_int(const int *);
+void   mp_set_from_double(double, int *);
+void   mp_set_from_integer(int, int *);
+
 void mpabs(int *, int *);
 void mpadd(int *, int *, int *);
 void mpaddi(int *, int *, int *);
 void mpasin(int *, int *);
 void mpatan(int *, int *);
-void mpcdm(double *, int *);
-void mpcim(int *, int *);
-void mpcmd(int *, double *);
 void mpcmf(int *, int *);
-void mpcmi(int *, int *);
 void mpcmim(int *, int *);
 void mpcos(int *, int *);
 void mpcosh(int *, int *);

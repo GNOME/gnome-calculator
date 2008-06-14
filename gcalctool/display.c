@@ -180,7 +180,7 @@ display_clear(int initialise)
     case NPA:
         v->ltr.pointed = 0;
         v->ltr.toclear = 1;
-        do_zero(v->MPdisp_val);
+        mp_set_from_integer(0, v->MPdisp_val);
         display_set_number(v->MPdisp_val);
 
         if (initialise == TRUE) {
@@ -206,9 +206,9 @@ display_reset()
     v->error             = 0;         /* Currently no display error. */
     v->ltr.cur_op        = -1;        /* No arithmetic operator defined yet. */
     v->ltr.old_cal_value = -1;
-    do_zero(v->MPresult);             /* No previous result yet. */
-    do_zero(v->MPdisp_val);         
-    do_zero(v->MPlast_input);
+    mp_set_from_integer(0, v->MPresult);   /* No previous result yet. */
+    mp_set_from_integer(0, v->MPdisp_val);         
+    mp_set_from_integer(0, v->MPlast_input);
   
     v->ltr.new_input = 1;             /* Value zero is on calculator display */
 
@@ -240,7 +240,7 @@ paren_disp(int key)
     case KEY_CLEAR:
         v->ltr.noparens = 0;
         v->ltr.cur_op = -1;
-        do_zero(v->MPdisp_val);
+        mp_set_from_integer(0, v->MPdisp_val);
         display_set_number(v->MPdisp_val);
         return;
     case KEY_BACKSPACE:
@@ -523,7 +523,7 @@ display_refresh(int cursor)
         case EXPRS:
             e = get_state();
             if (display_is_empty()) {
-                do_zero(MP_reg);
+                mp_set_from_integer(0, MP_reg);
                 make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
                 str = x;
             } else {           

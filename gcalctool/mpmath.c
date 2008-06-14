@@ -62,10 +62,10 @@ calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
     double dres, dval;
 
-    mpcmd(s1, &dres);
-    mpcmd(s2, &dval);
+    dres = mp_cast_to_double(s1);
+    dval = mp_cast_to_double(s2);
     dres = setbool(ibool(dres) & ibool(dval));
-    mpcdm(&dres, t);
+    mp_set_from_double(dres, t);
 }
 
 
@@ -74,10 +74,10 @@ calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
     double dres, dval;
 
-    mpcmd(s1, &dres);
-    mpcmd(s2, &dval);
+    dres = mp_cast_to_double(s1);
+    dval = mp_cast_to_double(s2);
     dres = setbool(ibool(dres) | ibool(dval));
-    mpcdm(&dres, t);
+    mp_set_from_double(dres, t);
 }
 
 
@@ -86,10 +86,10 @@ calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
     double dres, dval;
 
-    mpcmd(s1, &dres);
-    mpcmd(s2, &dval);
+    dres = mp_cast_to_double(s1);
+    dval = mp_cast_to_double(s2);
     dres = setbool(ibool(dres) ^ ibool(dval));
-    mpcdm(&dres, t);
+    mp_set_from_double(dres, t);
 }
 
 
@@ -98,52 +98,45 @@ calc_xnor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 {
     double dres, dval;
 
-    mpcmd(s1, &dres);
-    mpcmd(s2, &dval);
+    dres = mp_cast_to_double(s1);
+    dval = mp_cast_to_double(s2);
     dres = setbool(~ibool(dres) ^ ibool(dval));
-    mpcdm(&dres, t);
+    mp_set_from_double(dres, t);
 }
 
 
 void
 calc_not(int s1[MP_SIZE], int t[MP_SIZE])
 {
-    double dval;
-
-    mpcmd(s1, &dval);
+    double dval = mp_cast_to_double(s1);
+    
     dval = setbool(~ibool(dval));
-    mpcdm(&dval, t);
+    mp_set_from_double(dval, t);
 }
 
 
 void
 calc_rand(int t[MP_SIZE])
 {
-    double dval = drand48();
-
-    mpcdm(&dval, t);
+    mp_set_from_double(drand48(), t);
 }
 
 
 void
 calc_u32(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    double dval;
-
-    mpcmd(s1, &dval);
+    double dval = mp_cast_to_double(s1);
     dval = setbool(ibool(dval));
-    mpcdm(&dval, t1);
+    mp_set_from_double(dval, t1);
 }
 
 
 void
 calc_u16(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    double dval;
-
-    mpcmd(s1, &dval);
+    double dval = mp_cast_to_double(s1);
     dval = setbool(ibool(dval) & 0xffff);
-    mpcdm(&dval, t1);
+    mp_set_from_double(dval, t1);
 }
 
 
@@ -152,9 +145,8 @@ calc_inv(int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
 {
     int MP1[MP_SIZE];
     int MP2[MP_SIZE];
-    int i = 1;
 
-    mpcim(&i, MP1);
+    mp_set_from_integer(1, MP1);
     mpstr(s1, MP2);
     mpdiv(MP1, MP2, t1);
 }
@@ -164,9 +156,7 @@ void
 calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])   /* Calculate 10^x */
 {
     int MP1[MP_SIZE];
-    int i = 10;
-
-    mpcim(&i, MP1);
+    mp_set_from_integer(10, MP1);
     mppwr2(MP1, s1, t1);
 }
 
@@ -174,25 +164,22 @@ calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])   /* Calculate 10^x */
 void
 calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
 {
-    int MP0[MP_SIZE], val;
+    int MP0[MP_SIZE];
 
-    do_zero(MP0);
+    mp_set_from_integer(0, MP0);
 
     /* Check if both x and y are zero. If yes, then just return 1.
      * See gcalctool bug #451286.
      */
-    if (mpeq(MPx, MP0) && mpeq(MPy, MP0)) {
-        val = 1;
-        mpcim(&val, MPres);
+    if (mp_is_equal(MPx, MP0) && mp_is_equal(MPy, MP0)) {
+        mp_set_from_integer(1, MPres);
 
-    } else if (mplt(MPx, MP0)) {          /* Is x < 0 ? */
+    } else if (mp_is_less_than(MPx, MP0)) {          /* Is x < 0 ? */
         int MPtmp[MP_SIZE];
 
         mpcmim(MPy, MPtmp);
-        if (mpeq(MPtmp, MPy)) {   /* Is y == int(y) ? */
-            int y;
-
-            mpcmi(MPy, &y);
+        if (mp_is_equal(MPtmp, MPy)) {   /* Is y == int(y) ? */
+            int y = mp_cast_to_int(MPy);
             mppwr(MPx, &y, MPres);
         } else {        /* y != int(y). Force mppwr2 to generate an error. */
             mppwr2(MPx, MPy, MPres);
@@ -228,8 +215,10 @@ calc_modulus(int op1[MP_SIZE],
     mpmul(MP1, op2, MP2);
     mpsub(op1, MP2, result);
 
-    do_zero(MP1);
-    if ((mplt(op2, MP1) && mpgt(result, MP1)) || mplt(result, MP1)) { 
+    mp_set_from_integer(0, MP1);
+    if ((mp_is_less_than(op2, MP1)
+	 && mp_is_greater_than(result, MP1)) ||
+	mp_is_less_than(result, MP1)) { 
         mpadd(result, op2, result);
     }
 
@@ -246,20 +235,9 @@ calc_percent(int s1[MP_SIZE], int t1[MP_SIZE])
 }
 
 void
-do_zero(int t1[MP_SIZE])
-{
-    int i = 0;
-
-    mpcim(&i, t1);
-}
-
-
-void
 do_e(int t1[MP_SIZE])
 {
-    double e = 2.71828182846;
-
-    mpcdm(&e, t1);
+    mp_set_from_double(2.71828182846, t1);
 }
 
 
@@ -272,7 +250,7 @@ mptan(int s1[MP_SIZE], int t1[MP_SIZE])
 
     mpsin(s1, MPsin);
     mpcos(s1, MPcos);
-    mpcmd(MPcos, &cval);
+    cval = mp_cast_to_double(MPcos);
     if (cval == 0.0) {
         doerr(_("Error, cannot calculate cosine"));
     }
@@ -285,19 +263,17 @@ mptan(int s1[MP_SIZE], int t1[MP_SIZE])
 static void
 to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    int i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int MP1[MP_SIZE], MP2[MP_SIZE];
 
     if (v->ttype == DEG) {
         mppi(MP1);
         mpmul(s1, MP1, MP2);
-        i = 180;
-        mpcim(&i, MP1);
+        mp_set_from_integer(180, MP1);
         mpdiv(MP2, MP1, t1);
     } else if (v->ttype == GRAD) {
         mppi(MP1);
         mpmul(s1, MP1, MP2);
-        i = 200;
-        mpcim(&i, MP1);
+        mp_set_from_integer(200, MP1);
         mpdiv(MP2, MP1, t1);
     } else {
         mpstr(s1, t1);
@@ -308,13 +284,12 @@ to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
 static void
 do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    int i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int MP1[MP_SIZE], MP2[MP_SIZE];
   
     switch (ttype) {
 
         case DEG:
-            i = 180;
-            mpcim(&i, MP1);
+            mp_set_from_integer(180, MP1);
             mpmul(s1, MP1, MP2);
             mppi(MP1);
             mpdiv(MP2, MP1, t1);
@@ -325,8 +300,7 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
 
         case GRAD:
-            i = 200;
-            mpcim(&i, MP1);
+            mp_set_from_integer(200, MP1);
             mpmul(s1, MP1, MP2);
             mppi(MP1);
             mpdiv(MP2, MP1, t1);
@@ -365,21 +339,19 @@ mpacos(int *MPx, int *MPretval)
     int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE], val;
 
     mppi(MPpi);
-    do_zero(MP0);
-    val = 1;
-    mpcim(&val, MP1);
-    val = -1;
-    mpcim(&val, MPn1);
+    mp_set_from_integer(0, MP0);
+    mp_set_from_integer(1, MP1);
+    mp_set_from_integer(-1, MPn1);
 
-    if (mpgt(MPx, MP1) || mplt(MPx, MPn1)) {
+    if (mp_is_greater_than(MPx, MP1) || mp_is_less_than(MPx, MPn1)) {
         doerr(_("Error"));
         mpstr(MP0, MPretval);
-    } else if (mpeq(MPx, MP0)) {
+    } else if (mp_is_equal(MPx, MP0)) {
         val = 2;
         mpdivi(MPpi, &val, MPretval);
-    } else if (mpeq(MPx, MP1)) {
+    } else if (mp_is_equal(MPx, MP1)) {
         mpstr(MP0, MPretval);
-    } else if (mpeq(MPx, MPn1)) {
+    } else if (mp_is_equal(MPx, MPn1)) {
         mpstr(MPpi, MPretval);
     } else { 
         mpmul(MPx, MPx, MP2);
@@ -387,7 +359,7 @@ mpacos(int *MPx, int *MPretval)
         mpsqrt(MP2, MP2);
         mpdiv(MP2, MPx, MP2);
         mpatan(MP2, MPy);
-        if (mpgt(MPx, MP0)) {
+        if (mp_is_greater_than(MPx, MP0)) {
             mpstr(MPy, MPretval);
         } else {
             mpadd(MPy, MPpi, MPretval);
@@ -406,16 +378,15 @@ mpacos(int *MPx, int *MPretval)
 static void
 mpacosh(int *MPx, int *MPretval)
 {
-    int MP1[MP_SIZE], val;
+    int MP1[MP_SIZE];
 
-    val = 1;
-    mpcim(&val, MP1);
-    if (mplt(MPx, MP1)) {
+    mp_set_from_integer(1, MP1);
+    if (mp_is_less_than(MPx, MP1)) {
         doerr(_("Error"));
-        do_zero(MPretval);
+        mp_set_from_integer(0, MPretval);
     } else {
+        int val = -1;
         mpmul(MPx, MPx, MP1);
-        val = -1;
         mpaddi(MP1, &val, MP1);
         mpsqrt(MP1, MP1);
         mpadd(MPx, MP1, MP1);
@@ -455,15 +426,12 @@ mpatanh(int *MPx, int *MPretval)
 {
     int MP0[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
     int MP3[MP_SIZE], MPn1[MP_SIZE];
-    int val;
 
-    do_zero(MP0);
-    val = 1;
-    mpcim(&val, MP1);
-    val = -1;
-    mpcim(&val, MPn1);
+    mp_set_from_integer(0, MP0);
+    mp_set_from_integer(1, MP1);
+    mp_set_from_integer(-1, MPn1);
 
-    if (mpge(MPx, MP1) || mple(MPx, MPn1)) {
+    if (mp_is_greater_equal(MPx, MP1) || mp_is_less_equal(MPx, MPn1)) {
         doerr(_("Error"));
         mpstr(MP0, MPretval);
     } else {
@@ -487,7 +455,7 @@ mplogn(int n, int *MPx, int *MPretval)
 {
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
-    mpcim(&n, MP1);
+    mp_set_from_integer(n, MP1);
     mpln(MP1, MP1);
     mpln(MPx, MP2);
     mpdiv(MP2, MP1, MPretval);
@@ -540,8 +508,8 @@ calc_ddb(int t[MP_SIZE])
     int val;
     int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
 
-    do_zero(MPbv);
-    mpcmi(v->MPmvals[3], &len);
+    mp_set_from_integer(0, MPbv);
+    len = mp_cast_to_int(v->MPmvals[3]);
     for (i = 0; i < len; i++) {
         mpsub(v->MPmvals[0], MPbv, MP1);
         val = 2;
@@ -648,8 +616,7 @@ calc_rate(int t[MP_SIZE])
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
     mpdiv(v->MPmvals[0], v->MPmvals[1], MP1);
-    val = 1;
-    mpcim(&val, MP2);
+    mp_set_from_integer(1, MP2);
     mpdiv(MP2, v->MPmvals[2], MP3);
     mppwr2(MP1, MP3, MP4);
     val = -1;
@@ -696,8 +663,7 @@ calc_syd(int t[MP_SIZE])
     mpaddi(MP2, &val, MP3);
     mpaddi(v->MPmvals[2], &val, MP2);
     mpmul(v->MPmvals[2], MP2, MP4);
-    val = 2;
-    mpcim(&val, MP2);
+    mp_set_from_integer(2, MP2);
     mpdiv(MP4, MP2, MP1);
     mpdiv(MP3, MP1, MP2);
     mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
@@ -739,9 +705,8 @@ calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
    * boolean means BINARY representation
    */
 
-    double dval;
     BOOLEAN temp;
-    mpcmd(s, &dval);
+    double dval = mp_cast_to_double(s);
     temp = ibool(dval);
 
     /* There is a reason to do shift like this. Reason is that
@@ -762,26 +727,25 @@ calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
     }
 
     dval = setbool(temp);
-    mpcdm(&dval, t);
+    mp_set_from_double(dval, t);
 }
 
 
 int
 is_integer(int MPnum[MP_SIZE])
 {
-    int i = 10000;
     int MPtt[MP_SIZE], MP0[MP_SIZE], MP1[MP_SIZE];
 
     /* Multiplication and division by 10000 is used to get around a 
      * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
      * mpcmim() routine in mp.c, when the exponent is less than 1.
      */
-    mpcim(&i, MPtt);
+    mp_set_from_integer(10000, MPtt);
     mpmul(MPnum, MPtt, MP0);
     mpdiv(MP0, MPtt, MP0);
     mpcmim(MP0, MP1);
 
-    return mpeq(MP0, MP1);
+    return mp_is_equal(MP0, MP1);
 }
 
 
@@ -793,7 +757,7 @@ is_natural(int MPnum[MP_SIZE])
         return 0;
     }
     mpabs(MPnum, MP1);
-    return mpeq(MPnum, MP1);
+    return mp_is_equal(MPnum, MP1);
 }
 
 void
@@ -880,16 +844,16 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
-    int dval, n, i;
+    int dval, i;
  
     optr = target;
     mpabs(MPnumber, MPval);
-    do_zero(MP1);
-    if (mplt(MPnumber, MP1)) {
+    mp_set_from_integer(0, MP1);
+    if (mp_is_less_than(MPnumber, MP1)) {
         *optr++ = '-';
     }
 
-    mpcim(&basevals[base], MP1base);
+    mp_set_from_integer(basevals[base], MP1base);
 
     mppwr(MP1base, &v->accuracy, MP1);
     /* FIXME: string const. if MPstr_to_num can get it */
@@ -898,14 +862,13 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
     mpdiv(MP2, MP1, MP1);
     mpadd(MPval, MP1, MPval);
 
-    n = 1;
-    mpcim(&n, MP2);
-    if (mplt(MPval, MP2)) {
+    mp_set_from_integer(1, MP2);
+    if (mp_is_less_than(MPval, MP2)) {
         ddig = 0;
         *optr++ = '0';
         cmax--;
     } else {
-        for (ddig = 0; mpge(MPval, MP2); ddig++) {
+        for (ddig = 0; mp_is_greater_equal(MPval, MP2); ddig++) {
             mpdiv(MPval, MP1base, MPval);
         }
     }
@@ -918,7 +881,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
                 *optr++ = v->radix[i];
         }
         mpmul(MPval, MP1base, MPval);
-        mpcmi(MPval, &dval);
+        dval = mp_cast_to_int(MPval);
 
         if (dval > basevals[base]-1) {
             dval = basevals[base]-1;
@@ -967,44 +930,42 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
     }
     optr = target;
     mpabs(MPnumber, MPval);
-    do_zero(MP1);
-    if (mplt(MPnumber, MP1)) {
+    mp_set_from_integer(0, MP1);
+    if (mp_is_less_than(MPnumber, MP1)) {
         *optr++ = '-';
     }
     mpstr(MPval, MPmant);
 
-    mpcim(&basevals[base], MP1base);
+    mp_set_from_integer(basevals[base], MP1base);
     n = 3;
     mppwr(MP1base, &n, MP3base);
 
     n = 10;
     mppwr(MP1base, &n, MP10base);
 
-    n = 1;
-    mpcim(&n, MP1);
+    mp_set_from_integer(1, MP1);
     mpdiv(MP1, MP10base, MPatmp);
 
-    do_zero(MP1);
-    if (!mpeq(MPmant, MP1)) {
-        while (!eng && mpge(MPmant, MP10base)) {
+    mp_set_from_integer(0, MP1);
+    if (!mp_is_equal(MPmant, MP1)) {
+        while (!eng && mp_is_greater_equal(MPmant, MP10base)) {
             exp += 10;
             mpmul(MPmant, MPatmp, MPmant);
         }
  
-        while ((!eng &&  mpge(MPmant, MP1base)) ||
-                (eng && (mpge(MPmant, MP3base) || exp % 3 != 0))) {
+        while ((!eng &&  mp_is_greater_equal(MPmant, MP1base)) ||
+                (eng && (mp_is_greater_equal(MPmant, MP3base) || exp % 3 != 0))) {
             exp += 1;
             mpdiv(MPmant, MP1base, MPmant);
         }
  
-        while (!eng && mplt(MPmant, MPatmp)) {
+        while (!eng && mp_is_less_than(MPmant, MPatmp)) {
             exp -= 10;
             mpmul(MPmant, MP10base, MPmant);
         }
  
-        n = 1;
-        mpcim(&n, MP1);
-        while (mplt(MPmant, MP1) || (eng && exp % 3 != 0)) {
+        mp_set_from_integer(1, MP1);
+        while (mp_is_less_than(MPmant, MP1) || (eng && exp % 3 != 0)) {
             exp -= 1;
             mpmul(MPmant, MP1base, MPmant);
         }
@@ -1028,9 +989,8 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
     SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP1);
     mpaddi(MP1, &exp, MPval);
-    n = 1;
-    mpcim(&n, MP1);
-    for (ddig = 0; mpge(MPval, MP1); ddig++) {
+    mp_set_from_integer(1, MP1);
+    for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
         mpdiv(MPval, MP1base, MPval);
     }
  
@@ -1040,7 +1000,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
  
     while (ddig-- > 0) {
         mpmul(MPval, MP1base, MPval);
-        mpcmi(MPval, &dval);
+        dval = mp_cast_to_int(MPval);
         *optr++ = digits[dval];
         dval = -dval;
         mpaddi(MPval, &dval, MPval);
@@ -1056,7 +1016,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
 void
 make_number(char *target, int target_len, int *MPnumber, int base, int ignoreError)
 {
-    double number, val;
+    double val;
     
 /*  NOTE: make_number can currently set v->error when converting to a double.
  *        This is to provide the same look&feel as V3 even though gcalctool
@@ -1066,7 +1026,8 @@ make_number(char *target, int target_len, int *MPnumber, int base, int ignoreErr
  *        order to do these tests.
  */
 
-    mpcmd(MPnumber, &number);
+    double number = mp_cast_to_double(MPnumber);
+
     val = fabs(number);
     if (v->error && !ignoreError) {
         STRNCPY(target, _("Error"), target_len - 1);
@@ -1110,8 +1071,8 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     int exp_sign = 1;
     int negate = 0;
 
-    do_zero(MPval);
-    mpcim(&basevals[(int) base], MPbase);
+    mp_set_from_integer(0, MPval);
+    mp_set_from_integer(basevals[(int) base], MPbase);
 
     optr = str;
 
@@ -1136,7 +1097,7 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
         optr++;
         for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
             mppwr(MPbase, &i, MP1);
-            mpcim(&inum, MP2);
+            mp_set_from_integer(inum, MP2);
             mpdiv(MP2, MP1, MP1);
             mpadd(MPval, MP1, MPval);
         optr++;

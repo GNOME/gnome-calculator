@@ -682,7 +682,7 @@ init_constant(int n, gchar *value)
 static void
 init_state(void)
 {
-    int acc, i, n, size;
+    int acc, i, size;
 
     v->accuracy      = DEFAULT_ACCURACY;
     v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
@@ -712,9 +712,8 @@ init_state(void)
     init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
     init_constant(9, "0.0610");                /* cms3 <=> inches3. */
 
-    n = 0;
     for (i = 0; i < MAX_REGISTERS; i++) {
-        mpcim(&n, v->MPmvals[i]);
+        mp_set_from_integer(0, v->MPmvals[i]);
     }
 }
 
