@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-08 10:02+0400\n"
-"PO-Revision-Date: 2008-04-08 00:47+0300\n"
-"Last-Translator: Yuriy Penkin <yura.penkin@gmail.com>\n"
+"POT-Creation-Date: 2008-06-27 02:02+0400\n"
+"PO-Revision-Date: 2008-06-25 23:05+0300\n"
+"Last-Translator: Yuriy Penkin <yuriy.penkin@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,52 +25,52 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../gcalctool/calctool.c:567
+#: ../gcalctool/calctool.c:566
 msgid "Kilometer-to-mile conversion factor"
 msgstr "Коэффициент преобразования километров в мили"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:568
 msgid "square root of 2"
 msgstr "Квадратный корень из 2"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:569
 msgid "Euler's Number (e)"
-msgstr "Число Эйлера (e)"
+msgstr "Число e"
+
+#: ../gcalctool/calctool.c:570
+msgid "pi"
+msgstr "Число π"
 
 #: ../gcalctool/calctool.c:571
-msgid "pi"
-msgstr "pi"
-
-#: ../gcalctool/calctool.c:572
 msgid "Centimeter-to-inch conversion factor"
 msgstr "Коэффициент преобразования сантиметров в дюймы"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:573
 msgid "degrees in a radian"
-msgstr "градусы в радианы"
+msgstr "Градусы в радианы"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:574
 msgid "2 ^ 20"
 msgstr "2 ^ 20"
 
-#: ../gcalctool/calctool.c:576
+#: ../gcalctool/calctool.c:575
 msgid "Gram-to-ounce conversion factor"
 msgstr "Коэффициент преобразования грамма в унцию"
 
-#: ../gcalctool/calctool.c:578
+#: ../gcalctool/calctool.c:577
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "Коэффициент преобразования килоджоулей в британские терм. единицы"
 
-#: ../gcalctool/calctool.c:581
+#: ../gcalctool/calctool.c:580
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Коэффициент преобразования куб. сантиметров в куб. дюймы"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:592 ../gcalctool/display.c:255
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
-#: ../gcalctool/mpmath.c:461
+#: ../gcalctool/calctool.c:591 ../gcalctool/mp.c:1974
+#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:385
+#: ../gcalctool/mpmath.c:435 ../gcalctool/mpmath.c:1033
 msgid "Error"
 msgstr "Ошибка"
 
@@ -79,7 +79,7 @@ msgstr "Ошибка"
 #. * the second is an error message (see the last parameter in the
 #. * getparam() call in the get_options() routine below.
 #.
-#: ../gcalctool/calctool.c:609
+#: ../gcalctool/calctool.c:608
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s как следующий аргумент.\n"
@@ -88,7 +88,7 @@ msgstr "%s: %s как следующий аргумент.\n"
 #. * are passed to it: the first is the gcalctool program name and
 #. * the second is the program version number.
 #.
-#: ../gcalctool/calctool.c:622
+#: ../gcalctool/calctool.c:621
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -97,105 +97,105 @@ msgstr ""
 "%s версии %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:623
+#: ../gcalctool/calctool.c:622
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-u] [-a accuracy] "
-msgstr "Применение: %s: [-D] [-E] [-u] [-a accuracy]"
+msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+msgstr "Применение: %s: [-E] [-u] [-a точность] "
 
-#: ../gcalctool/calctool.c:624
+#: ../gcalctool/calctool.c:623
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:649
+#: ../gcalctool/calctool.c:644
 msgid "-a needs accuracy value"
 msgstr "`-a' требует значения точности"
 
-#: ../gcalctool/calctool.c:653 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:648 ../gcalctool/get.c:243
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: точность должна быть в диапазоне 0-%d\n"
 
-#: ../gcalctool/functions.c:189
+#: ../gcalctool/display.c:403
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
-#: ../gcalctool/functions.c:221
+#: ../gcalctool/display.c:418
 msgid "No redo steps"
 msgstr "Нет действий, которые можно вернуть"
 
-#: ../gcalctool/functions.c:570
+#: ../gcalctool/functions.c:270
 msgid "Invalid number for the current base"
 msgstr "Неверное число для текущего основания"
 
-#: ../gcalctool/functions.c:574
+#: ../gcalctool/functions.c:274
 msgid "Too long number"
 msgstr "Слишком длинное число"
 
-#: ../gcalctool/functions.c:578
+#: ../gcalctool/functions.c:278
 msgid "Invalid bitwise operation parameter(s)"
 msgstr "Неверные параметры побитовой операции"
 
-#: ../gcalctool/functions.c:582
+#: ../gcalctool/functions.c:282
 msgid "Invalid modulus operation parameter(s)"
 msgstr "Неверные параметры операции модуля"
 
-#: ../gcalctool/functions.c:586
+#: ../gcalctool/functions.c:286
 msgid "Math operation error"
 msgstr "Ошибка математической операции"
 
-#: ../gcalctool/functions.c:590
+#: ../gcalctool/functions.c:290
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: ../gcalctool/functions.c:689
+#: ../gcalctool/functions.c:376
 msgid "Error, operands must be integers"
 msgstr "Ошибка, операторы должны быть целыми"
 
-#: ../gcalctool/functions.c:913 ../gcalctool/functions.c:1267
+#: ../gcalctool/functions.c:601 ../gcalctool/functions.c:954
 msgid "No sane value to convert"
 msgstr "Некорректное для преобразования значение"
 
-#: ../gcalctool/functions.c:1013 ../gcalctool/functions.c:1340
+#: ../gcalctool/functions.c:700 ../gcalctool/functions.c:1027
 msgid "No sane value to store"
 msgstr "Некорректное для сохранения значение"
 
-#: ../gcalctool/functions.c:1133
+#: ../gcalctool/functions.c:820
 msgid "Malformed function"
 msgstr "Некорректная функция"
 
-#: ../gcalctool/functions.c:1295
+#: ../gcalctool/functions.c:982
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "Дисплей очищен, нельзя вводить префикс без оператора"
 
-#: ../gcalctool/functions.c:1316
+#: ../gcalctool/functions.c:1003
 msgid "Malformed parenthesis expression"
 msgstr "Скобки расставлены неверно"
 
-#: ../gcalctool/functions.c:1492
+#: ../gcalctool/functions.c:1179
 msgid "No sane value to do bitwise shift"
 msgstr "Невозможно вычислить корректное значение побитового сдвига"
 
-#: ../gcalctool/get.c:258
+#: ../gcalctool/get.c:264
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: база должна быть 2, 8, 10 или 16\n"
 
-#: ../gcalctool/get.c:273
+#: ../gcalctool/get.c:279
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: неверный режим отображения [%s]\n"
 
-#: ../gcalctool/get.c:288
+#: ../gcalctool/get.c:294
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: неверны режим [%s]\n"
 
-#: ../gcalctool/get.c:302
+#: ../gcalctool/get.c:308
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: неверный тригонометрический режим [%s]\n"
 
-#: ../gcalctool/get.c:320
+#: ../gcalctool/get.c:326
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: неверный режим синтаксиса [%s]\n"
@@ -269,53 +269,53 @@ msgstr[2] "Сейчас установлено %d значащих цифр."
 #. Factorial
 #: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
 msgid "Sin"
-msgstr "Sin"
+msgstr "sin"
 
 #: ../gcalctool/gtk.c:584
 msgid "Sinh"
-msgstr "Sh"
+msgstr "sh"
 
 #: ../gcalctool/gtk.c:585
 msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
+msgstr "sin<sup>-1</sup>"
 
 #: ../gcalctool/gtk.c:586
 msgid "Sinh<sup>-1</sup>"
-msgstr "Sh<sup>-1</sup>"
+msgstr "sh<sup>-1</sup>"
 
 #. Factorial
 #: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
 msgid "Cos"
-msgstr "Cos"
+msgstr "cos"
 
 #: ../gcalctool/gtk.c:588
 msgid "Cosh"
-msgstr "Ch"
+msgstr "ch"
 
 #: ../gcalctool/gtk.c:589
 msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
+msgstr "cos<sup>-1</sup>"
 
 #: ../gcalctool/gtk.c:590
 msgid "Cosh<sup>-1</sup>"
-msgstr "Ch<sup>-1</sup>"
+msgstr "ch<sup>-1</sup>"
 
 #. Factorial
 #: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
 msgid "Tan"
-msgstr "Tg"
+msgstr "tg"
 
 #: ../gcalctool/gtk.c:592
 msgid "Tanh"
-msgstr "Th"
+msgstr "th"
 
 #: ../gcalctool/gtk.c:593
 msgid "Tan<sup>-1</sup>"
-msgstr "Tg<sup>-1</sup>"
+msgstr "tg<sup>-1</sup>"
 
 #: ../gcalctool/gtk.c:594
 msgid "Tanh<sup>-1</sup>"
-msgstr "Th<sup>-1</sup>"
+msgstr "th<sup>-1</sup>"
 
 #. Translators: When the bit editor is visible, there will be two
 #. * rows of ones and zeroes shown. When the number being displayed in
@@ -331,11 +331,11 @@ msgid "Bit editor activated. Click on bit values to toggle them."
 msgstr ""
 "Двоичный редактор включён. Щёлкните на значении бита, чтобы изменить его."
 
-#: ../gcalctool/gtk.c:1155
+#: ../gcalctool/gtk.c:1156
 msgid "translator-credits"
 msgstr "Андрей Носенко <awn@bcs.zp.ua>"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1159
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -346,7 +346,7 @@ msgstr ""
 "распространять его и или модифицировать на условиях Универсальной\n"
 " общественной лицензии GNU версии 2 либо любой более поздней версии.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1163
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -361,7 +361,7 @@ msgstr ""
 "дополнительных сведений обратитесь к Универсальной Общественной\n"
 " Лицензии GNU.\n"
 
-#: ../gcalctool/gtk.c:1166
+#: ../gcalctool/gtk.c:1167
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -372,31 +372,31 @@ msgstr ""
 "программного обеспечения по адресу Free Software Foundation, Inc.,\n"
 "59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1178
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1179
+#: ../gcalctool/gtk.c:1180
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 авторы Gcalctool"
 
-#: ../gcalctool/gtk.c:1181
+#: ../gcalctool/gtk.c:1182
 msgid "Calculator with financial and scientific modes."
 msgstr "Калькулятор с финансовым и научным режимами."
 
-#: ../gcalctool/gtk.c:1483 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1501 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1515 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1675
+#: ../gcalctool/gtk.c:1696
 msgid "Changing Modes Clears Calculation"
 msgstr "Изменение режимов очищает вычисление"
 
-#: ../gcalctool/gtk.c:1678
+#: ../gcalctool/gtk.c:1699
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -404,34 +404,33 @@ msgstr ""
 "Когда режим изменяется, текущее вычисление очищается и основание становится "
 "снова десятичным."
 
-#: ../gcalctool/gtk.c:1682
+#: ../gcalctool/gtk.c:1703
 msgid "_Do not warn me again"
 msgstr "Не _предупреждать больше"
 
-#: ../gcalctool/gtk.c:1687
+#: ../gcalctool/gtk.c:1708
 msgid "C_hange Mode"
 msgstr "_Изменить режим"
 
-# По моему у нас все уже привыкли к `R' для обозначения регистров
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1824
+#: ../gcalctool/gtk.c:1846
 msgid "R"
-msgstr "R"
+msgstr "П"
 
-#: ../gcalctool/gtk.c:2190
+#: ../gcalctool/gtk.c:2212
 msgid "Clipboard contained malformed calculation"
 msgstr "Буфер обмена содержит некорректное выражение"
 
-#: ../gcalctool/gtk.c:2262
+#: ../gcalctool/gtk.c:2284
 msgid "Paste"
 msgstr "Вставить"
 
-#: ../gcalctool/gtk.c:2535
+#: ../gcalctool/gtk.c:2547
 msgid "Error loading user interface"
 msgstr "Не удалось загрузить пользовательский интерфейс"
 
-#: ../gcalctool/gtk.c:2537
+#: ../gcalctool/gtk.c:2549
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -440,29 +439,29 @@ msgstr ""
 "Файл пользовательского интерфейса %s не найден или не может быть загружен. "
 "Проверьте правильность установки."
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2776 ../gcalctool/gtk.c:2794
 msgid "No."
 msgstr "No."
 
-#: ../gcalctool/gtk.c:2767 ../gcalctool/gtk.c:2785
+#: ../gcalctool/gtk.c:2778 ../gcalctool/gtk.c:2796
 msgid "Value"
 msgstr "Значение"
 
-#: ../gcalctool/gtk.c:2769 ../gcalctool/gtk.c:2787
+#: ../gcalctool/gtk.c:2780 ../gcalctool/gtk.c:2798
 msgid "Description"
 msgstr "Описание"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2925 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2936 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "_Установить по умолчанию (%d)"
 
-#: ../gcalctool/mp.c:3364
+#: ../gcalctool/mp.c:3325
 msgid "Negative X and non-integer Y not supported"
 msgstr "Отрицательное значение Х и не-целое значение Y не поддерживаются"
 
-#: ../gcalctool/mpmath.c:271
+#: ../gcalctool/mpmath.c:255
 msgid "Error, cannot calculate cosine"
 msgstr "Ошибка, невозможно определить косинус"
 
@@ -639,7 +638,7 @@ msgstr "9"
 #. Shift left
 #: ../glade/gcalctool.glade.h:57
 msgid "<"
-msgstr "<"
+msgstr "<<"
 
 #. Factorial
 #: ../glade/gcalctool.glade.h:59
@@ -661,7 +660,7 @@ msgid ""
 "<small><i><b>Note:</b> All constant values are specified in the decimal "
 "numeric base.</i></small>"
 msgstr ""
-"<small><i><b>Замечание:</b> Значения всех констант даны в десятичной системе "
+"<small><i><b>Замечание:</b> Значения всех констант указываются в десятичной системе "
 "счисления.</i></small>"
 
 #. "R0" is the abbreviation for "Register 0", used in the memory register dialog
@@ -722,7 +721,7 @@ msgstr "="
 #. Shift right
 #: ../glade/gcalctool.glade.h:88
 msgid ">"
-msgstr ">"
+msgstr ">>"
 
 #: ../glade/gcalctool.glade.h:89
 msgid "A"
@@ -739,7 +738,7 @@ msgstr "Операции в о_бычном порядке"
 #. Abs is short for Absolute
 #: ../glade/gcalctool.glade.h:93
 msgid "Abs"
-msgstr "Abs"
+msgstr "|x|"
 
 #: ../glade/gcalctool.glade.h:94
 msgid "Absolute value"
@@ -747,7 +746,7 @@ msgstr "Модуль"
 
 #: ../glade/gcalctool.glade.h:95
 msgid "Absolute value [u]"
-msgstr "Абсолютное значение [u]"
+msgstr "Модуль [u]"
 
 #. Accuracy
 #: ../glade/gcalctool.glade.h:97
@@ -776,7 +775,7 @@ msgstr "B"
 
 #: ../glade/gcalctool.glade.h:103
 msgid "Backspace"
-msgstr "Забой"
+msgstr "Стереть"
 
 #: ../glade/gcalctool.glade.h:104
 msgid "Base 10 log [G]"
@@ -833,7 +832,7 @@ msgstr "Побитовое исключающее \"ИЛИ\" [x]"
 #. Bksp is short for Backspace
 #: ../glade/gcalctool.glade.h:118
 msgid "Bksp"
-msgstr "Забой"
+msgstr "←"
 
 #: ../glade/gcalctool.glade.h:120
 msgid "CE"
@@ -878,7 +877,7 @@ msgstr "Очистить запись"
 
 #: ../glade/gcalctool.glade.h:130
 msgid "Click a _value or description to edit it:"
-msgstr "Щелкните на з_начении или описании для редактирования:"
+msgstr "Для правки щёлкните на з_начении или на описании:"
 
 #. Clr is short for Clear
 #: ../glade/gcalctool.glade.h:132
@@ -895,7 +894,7 @@ msgstr "Составное выражение [m]"
 
 #: ../glade/gcalctool.glade.h:135
 msgid "Con"
-msgstr "Const"
+msgstr "const"
 
 #: ../glade/gcalctool.glade.h:136
 msgid "Constants"
@@ -918,7 +917,7 @@ msgstr "Косинус [J]"
 #. http://en.wikipedia.org/wiki/Compound_interest
 #: ../glade/gcalctool.glade.h:145
 msgid "Ctrm"
-msgstr "Ctrm"
+msgstr "ctrm"
 
 #: ../glade/gcalctool.glade.h:146
 msgid "D"
@@ -928,7 +927,7 @@ msgstr "D"
 #. http://en.wikipedia.org/wiki/Depreciation
 #: ../glade/gcalctool.glade.h:149
 msgid "Ddb"
-msgstr "Ddb"
+msgstr "ddb"
 
 #: ../glade/gcalctool.glade.h:150
 msgid "De_grees"
@@ -960,23 +959,23 @@ msgstr "e в степени x"
 
 #: ../glade/gcalctool.glade.h:157
 msgid "E_ng"
-msgstr "E_ng"
+msgstr "_Инж"
 
 #: ../glade/gcalctool.glade.h:158
 msgid "Edit Constants"
-msgstr "Редактировать константы"
+msgstr "Правка констант"
 
 #: ../glade/gcalctool.glade.h:159
 msgid "Edit Constants..."
-msgstr "Редактировать константы..."
+msgstr "Правка констант..."
 
 #: ../glade/gcalctool.glade.h:160
 msgid "Edit Functions"
-msgstr "Редактировать функции"
+msgstr "Правка функций"
 
 #: ../glade/gcalctool.glade.h:161
 msgid "Edit Functions..."
-msgstr "Редактировать функции..."
+msgstr "Правка функций..."
 
 #: ../glade/gcalctool.glade.h:162
 msgid "End group of calculations [)]"
@@ -984,25 +983,25 @@ msgstr "Закончить группу вычислений [)]"
 
 #: ../glade/gcalctool.glade.h:163
 msgid "Enter an exponential number [E]"
-msgstr "Ввести десятичную экспоненту [e]"
+msgstr "Ввести число с плавающей запятой [e]"
 
 #. Exchange with register
 #: ../glade/gcalctool.glade.h:165
 msgid "Exch"
-msgstr "Exch"
+msgstr "П↔X"
 
 #: ../glade/gcalctool.glade.h:166
 msgid "Exchange displayed value with memory register [X]"
-msgstr "Обменять между собой отображаемое значение и регистр памяти [X]"
+msgstr "Обменять между собой отображаемое значение и ячейку памяти [X]"
 
 #: ../glade/gcalctool.glade.h:167
 msgid "Exchange with register"
-msgstr "Обмен c регистром"
+msgstr "Обмен c ячейкой"
 
 #. Exponential
 #: ../glade/gcalctool.glade.h:169
 msgid "Exp"
-msgstr "Exp"
+msgstr "e"
 
 #: ../glade/gcalctool.glade.h:171
 msgid "Factorial"
@@ -1019,7 +1018,7 @@ msgstr "Финансовый"
 #. Fractional portion
 #: ../glade/gcalctool.glade.h:175
 msgid "Frac"
-msgstr "Frac"
+msgstr "frac"
 
 #: ../glade/gcalctool.glade.h:176
 msgid "Fractional portion"
@@ -1031,7 +1030,7 @@ msgstr "Дробная часть отображаемого значения [:
 
 #: ../glade/gcalctool.glade.h:178
 msgid "Fun"
-msgstr "F(x)"
+msgstr "f(x)"
 
 #: ../glade/gcalctool.glade.h:179
 msgid "Future value"
@@ -1045,11 +1044,11 @@ msgstr "Будущее значение [v]"
 #. http://en.wikipedia.org/wiki/Future_value
 #: ../glade/gcalctool.glade.h:183
 msgid "Fv"
-msgstr "Fv"
+msgstr "fv"
 
 #: ../glade/gcalctool.glade.h:184
 msgid "Gr_adians"
-msgstr "Гр_адианы"
+msgstr "Гр_ады"
 
 #: ../glade/gcalctool.glade.h:185
 msgid "H_yp"
@@ -1118,7 +1117,7 @@ msgstr "Вставить значение ASCII"
 #. Integer portion
 #: ../glade/gcalctool.glade.h:202
 msgid "Int"
-msgstr "Int"
+msgstr "int"
 
 #: ../glade/gcalctool.glade.h:203
 msgid "Integer portion"
@@ -1135,7 +1134,7 @@ msgstr "Левая скобка"
 #. Natural logarithm
 #: ../glade/gcalctool.glade.h:207
 msgid "Ln"
-msgstr "Ln"
+msgstr "ln"
 
 #. Factorial
 #: ../glade/gcalctool.glade.h:209
@@ -1149,11 +1148,11 @@ msgstr "log<sub>2</sub>"
 
 #: ../glade/gcalctool.glade.h:212
 msgid "Memory Registers"
-msgstr "Регистры памяти"
+msgstr "Ячейки памяти"
 
 #: ../glade/gcalctool.glade.h:213
 msgid "Mod"
-msgstr "Mod"
+msgstr "mod"
 
 #: ../glade/gcalctool.glade.h:214
 msgid "Modulus Division [M]"
@@ -1169,7 +1168,7 @@ msgstr "Умножить [*]"
 
 #: ../glade/gcalctool.glade.h:217
 msgid "NOT"
-msgstr "НЕ"
+msgstr "NOT"
 
 #: ../glade/gcalctool.glade.h:218
 msgid "Natural log [N]"
@@ -1219,7 +1218,6 @@ msgstr "Цифра 9"
 msgid "Numeric point"
 msgstr "Десятичная точка"
 
-# По моему у нас все уже привыкли к `R' для обозначения регистров
 #: ../glade/gcalctool.glade.h:230
 msgid "OR"
 msgstr "OR"
@@ -1265,7 +1263,7 @@ msgstr "Периодическая оплата [P]"
 #. http://en.wikipedia.org/wiki/Amortization_schedule
 #: ../glade/gcalctool.glade.h:243
 msgid "Pmt"
-msgstr "Pmt"
+msgstr "pmt"
 
 #: ../glade/gcalctool.glade.h:244
 msgid "Present value"
@@ -1287,12 +1285,12 @@ msgstr "Выйти из калькулятора"
 
 #: ../glade/gcalctool.glade.h:250
 msgid "Raise displayed value to the power of y [^]"
-msgstr "Возвести отображаемое значение в степень y [^]"
+msgstr "Возвести отображаемое значение в степень [^]"
 
 #. Random number
 #: ../glade/gcalctool.glade.h:252
 msgid "Rand"
-msgstr "Rand"
+msgstr "rand"
 
 #: ../glade/gcalctool.glade.h:253
 msgid "Random number"
@@ -1310,12 +1308,12 @@ msgstr "Произвольное число в диапазоне от 0.0 до 
 #.
 #: ../glade/gcalctool.glade.h:261
 msgid "Rate"
-msgstr "Rate"
+msgstr "rate"
 
 #. Retrieve from register
 #: ../glade/gcalctool.glade.h:263
 msgid "Rcl"
-msgstr "Rcl"
+msgstr "П→X"
 
 #: ../glade/gcalctool.glade.h:264
 msgid "Reciprocal"
@@ -1339,11 +1337,11 @@ msgstr "Область результата"
 
 #: ../glade/gcalctool.glade.h:271
 msgid "Retrieve from register"
-msgstr "Извлечь из регистра памяти"
+msgstr "Извлечь из ячейки памяти"
 
 #: ../glade/gcalctool.glade.h:272
 msgid "Retrieve memory register to display [R]"
-msgstr "Извлечь значение из регистра памяти на экран [R]"
+msgstr "Извлечь значение из ячейки памяти на экран [R]"
 
 #: ../glade/gcalctool.glade.h:273
 msgid "Right bracket"
@@ -1400,7 +1398,7 @@ msgstr "Установить восьмиричную систему (база 8
 
 #: ../glade/gcalctool.glade.h:286
 msgid "Set trigonometric type to degrees"
-msgstr "Тригонометрические функции работают с градусами"
+msgstr "Режим работы тригонометрических функций — градусы"
 
 #: ../glade/gcalctool.glade.h:287
 msgid "Set trigonometric type to gradians"
@@ -1431,22 +1429,22 @@ msgstr "Сдвиг вправо"
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
 #: ../glade/gcalctool.glade.h:296
 msgid "Show Bit Editor"
-msgstr "Показать двоичный редактор"
+msgstr "Двоичный редактор"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
 #: ../glade/gcalctool.glade.h:300
 msgid "Show Bit _Editor"
-msgstr "Показать двоичный р_едактор"
+msgstr "Двоичный р_едактор"
 
 #: ../glade/gcalctool.glade.h:301
 msgid "Show T_housands Separator"
-msgstr "Показывать разделитель _тысяч"
+msgstr "Разделитель _тысяч"
 
 #: ../glade/gcalctool.glade.h:302
 msgid "Show _Trailing Zeroes"
-msgstr "_Показывать незначащие нули после запятой"
+msgstr "Незначащие нули после _запятой"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
@@ -1461,7 +1459,7 @@ msgstr "Показать содержание справки"
 
 #: ../glade/gcalctool.glade.h:308
 msgid "Show memory registers"
-msgstr "Показывать регистры памяти"
+msgstr "Показать ячейки памяти"
 
 #: ../glade/gcalctool.glade.h:309
 msgid "Show the About Gcalctool dialog"
@@ -1469,11 +1467,11 @@ msgstr "Отобразить диалог \"О программе Gcalctool\""
 
 #: ../glade/gcalctool.glade.h:310
 msgid "Show thousands separator"
-msgstr "Показывать разделитель тысяч"
+msgstr "Показать разделитель тысяч"
 
 #: ../glade/gcalctool.glade.h:311
 msgid "Show trailing zeroes"
-msgstr "Показывать финальные нули"
+msgstr "Показать незначащие нули после запятой"
 
 #: ../glade/gcalctool.glade.h:312
 msgid "Significant _places:"
@@ -1487,7 +1485,7 @@ msgstr "Синус [K]"
 #. http://en.wikipedia.org/wiki/Depreciation
 #: ../glade/gcalctool.glade.h:318
 msgid "Sln"
-msgstr "Sln"
+msgstr "sln"
 
 #: ../glade/gcalctool.glade.h:319
 msgid "Square"
@@ -1503,7 +1501,7 @@ msgstr "Квадратный корень"
 
 #: ../glade/gcalctool.glade.h:322
 msgid "Square root [s]"
-msgstr "Квадрантый корень [s]"
+msgstr "Квадратый корень [s]"
 
 #: ../glade/gcalctool.glade.h:323
 msgid "Start group of calculations [(]"
@@ -1512,15 +1510,15 @@ msgstr "Начать группу вычислений [(]"
 #. Store to register
 #: ../glade/gcalctool.glade.h:325
 msgid "Sto"
-msgstr "Sto"
+msgstr "X→П"
 
 #: ../glade/gcalctool.glade.h:326
 msgid "Store displayed value in memory register [S]"
-msgstr "Сохранить отображаемое значение в регистре памяти [S]"
+msgstr "Сохранить отображаемое значение в ячейки памяти [S]"
 
 #: ../glade/gcalctool.glade.h:327
 msgid "Store to register"
-msgstr "Сохранить в регистре"
+msgstr "Сохранить в ячейки"
 
 #: ../glade/gcalctool.glade.h:328
 msgid "Straight-line depreciation"
@@ -1540,18 +1538,18 @@ msgstr "Вычесть [-]"
 
 #: ../glade/gcalctool.glade.h:332
 msgid "Sum-of-the years'-digits depreciation"
-msgstr "Сумма-лет' — амортизация цифр"
+msgstr "Сумма-лет — амортизация цифр"
 
 #: ../glade/gcalctool.glade.h:333
 msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Сумма-лет' — амортизация цифр [y]"
+msgstr "Сумма-лет — амортизация цифр [y]"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 #. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
 #. http://en.wikipedia.org/wiki/Depreciation
 #: ../glade/gcalctool.glade.h:337
 msgid "Syd"
-msgstr "Syd"
+msgstr "syd"
 
 #: ../glade/gcalctool.glade.h:340
 msgid "Tangent [L]"
@@ -1565,7 +1563,7 @@ msgstr "10 в степени x"
 #. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: ../glade/gcalctool.glade.h:344
 msgid "Term"
-msgstr "Term"
+msgstr "term"
 
 #: ../glade/gcalctool.glade.h:345
 msgid "Undo"
@@ -1597,7 +1595,7 @@ msgstr "XNOR"
 
 #: ../glade/gcalctool.glade.h:352
 msgid "XOR"
-msgstr "ИЛИ"
+msgstr "XOR"
 
 #: ../glade/gcalctool.glade.h:353
 msgid "_0 significant places"
@@ -1709,7 +1707,7 @@ msgstr "_Финансовый"
 
 #: ../glade/gcalctool.glade.h:380
 msgid "_Fix"
-msgstr "_Fix"
+msgstr "_Фикс"
 
 #: ../glade/gcalctool.glade.h:381
 msgid "_Help"
@@ -1733,7 +1731,7 @@ msgstr "Операции _слева направо"
 
 #: ../glade/gcalctool.glade.h:386
 msgid "_Memory Registers"
-msgstr "_Регистры памяти"
+msgstr "_Ячейки памяти"
 
 #: ../glade/gcalctool.glade.h:387
 msgid "_Oct"
@@ -1749,7 +1747,7 @@ msgstr "_Вернуть"
 
 #: ../glade/gcalctool.glade.h:392
 msgid "_Sci"
-msgstr "_Sci"
+msgstr "_Науч"
 
 #: ../glade/gcalctool.glade.h:393
 msgid "_Scientific"
@@ -1757,7 +1755,7 @@ msgstr "_Научный"
 
 #: ../glade/gcalctool.glade.h:394
 msgid "_Set"
-msgstr "_Set"
+msgstr "_Установить"
 
 #: ../glade/gcalctool.glade.h:395
 msgid "_Undo"
@@ -1883,178 +1881,3 @@ msgstr "−"
 msgid "√"
 msgstr "√"
 
-#~ msgid "Expression"
-#~ msgstr "Выражение"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "Chs"
-#~ msgstr "Chs"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-#~ msgid "Sqrt"
-#~ msgstr "Sqrt"
-
-#~ msgid "Recip"
-#~ msgstr "Recip"
-
-#~ msgid "^2"
-#~ msgstr "^2"
-
-#~ msgid "&amp;16"
-#~ msgstr "&amp;16"
-
-#~ msgid "&amp;32"
-#~ msgstr "&amp;32"
-
-#~ msgid "32 bit unsigned integer"
-#~ msgstr "32-битное беззнаковое целое"
-
-#~ msgid " Mod "
-#~ msgstr " Mod "
-
-#~ msgid "Exponential"
-#~ msgstr "Экспонента"
-
-#~ msgid "e"
-#~ msgstr "e"
-
-#~ msgid "e^"
-#~ msgstr "e^"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "!"
-#~ msgstr "!"
-
-#~ msgid "Log"
-#~ msgstr "Log"
-
-#~ msgid "Or"
-#~ msgstr "Or"
-
-#~ msgid " Or "
-#~ msgstr " Or "
-
-#~ msgid "And"
-#~ msgstr "And"
-
-#~ msgid " And "
-#~ msgstr " And "
-
-#~ msgid "Not"
-#~ msgstr "Not"
-
-#~ msgid "~"
-#~ msgstr "~"
-
-#~ msgid "Xor"
-#~ msgstr "Xor"
-
-#~ msgid " Xor "
-#~ msgstr " Xor "
-
-#~ msgid "Xnor"
-#~ msgstr "Xnor"
-
-#~ msgid " Xnor "
-#~ msgstr " Xnor "
-
-#~ msgid "Numeric stack error"
-#~ msgstr "Ошибка числового стека"
-
-#~ msgid "Operand stack error"
-#~ msgstr "Ошибка стека операнда"
-
-#~ msgid "calculator"
-#~ msgstr "калькулятор"
-
-#~ msgid "%s: invalid bitcalc choice [%s]\n"
-#~ msgstr "%s: некорректный выбор битовой маски [%s]\n"
-
-#~ msgid "1 place"
-#~ msgstr "1 разряд"
-
-#~ msgid "2 places"
-#~ msgstr "2 разряда"
-
-#~ msgid "3 places"
-#~ msgstr "3 разряда"
-
-#~ msgid "4 places"
-#~ msgstr "4 разряда"
-
-#~ msgid "5 places"
-#~ msgstr "5 разрядов"
-
-#~ msgid "6 places"
-#~ msgstr "6 разрядов"
-
-#~ msgid "7 places"
-#~ msgstr "7 разрядов"
-
-#~ msgid "8 places"
-#~ msgstr "8 разрядов"
-
-#~ msgid "9 places"
-#~ msgstr "9 разрядов"
-
-#~ msgid "Show Bitcalculating _Extension"
-#~ msgstr "Показывать функции для работы с б_итами"
-
-#~ msgid "Show bitcalculating extension"
-#~ msgstr "Показывать функции для работы с битами"
-
-#~ msgid "0 significant places"
-#~ msgstr "0 значащих цифр"
-
-#~ msgid "1 significant place"
-#~ msgstr "1 значащая цифра"
-
-#~ msgid "2 significant places"
-#~ msgstr "2 значащие цифры"
-
-#~ msgid "3 significant places"
-#~ msgstr "3 значащие цифры"
-
-#~ msgid "4 significant places"
-#~ msgstr "4 значащие цифры"
-
-#~ msgid "5 significant places"
-#~ msgstr "5 значащих цифр"
-
-#~ msgid "6 significant places"
-#~ msgstr "6 значащих цифр"
-
-#~ msgid "7 significant places"
-#~ msgstr "7 значащих цифр"
-
-#~ msgid "8 significant places"
-#~ msgstr "8 значащих цифр"
-
-#~ msgid "9 significant places"
-#~ msgstr "9 значащих цифр"
-
-#~ msgid "_Other (10) ..."
-#~ msgstr "_Другая (10) ..."
-
-#~ msgid "Set other precision"
-#~ msgstr "Установить другую точность"
-
-#~ msgid "Note:"
-#~ msgstr "Примечание:"
-
-#~ msgid ""
-#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-#~ msgstr ""
-#~ "Установить точность от 0 до %d значащих цифр. Текущая точность %d. [a]"
-
-#~ msgid "Accuracy value out of range"
-#~ msgstr "Значение точности выходит за пределы диапазона"
