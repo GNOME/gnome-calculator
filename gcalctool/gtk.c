@@ -603,17 +603,17 @@ ui_update_trig_mode()
     }
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("sine_label")),
-                         sine_labels[index]);
+                         _(sine_labels[index]));
     g_object_set_data(G_OBJECT(GET_WIDGET("calc_sine_button")), "calc_function",
                       GINT_TO_POINTER(sine_functions[index]));
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("cosine_label")),
-                         cosine_labels[index]);
+                         _(cosine_labels[index]));
     g_object_set_data(G_OBJECT(GET_WIDGET("calc_cosine_button")), "calc_function",
                       GINT_TO_POINTER(cosine_functions[index]));
 
     gtk_label_set_markup(GTK_LABEL(GET_WIDGET("tangent_label")),
-                         tangent_labels[index]);
+                         _(tangent_labels[index]));
     g_object_set_data(G_OBJECT(GET_WIDGET("calc_tangent_button")), "calc_function", 
                       GINT_TO_POINTER(tangent_functions[index]));
 }
