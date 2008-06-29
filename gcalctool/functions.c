@@ -761,7 +761,7 @@ do_factorial(int *MPval, int *MPres)
     mpcmim(MPval, MP1);
     mp_set_from_integer(0, MP2);
     if (mp_is_equal(MPval, MP1)
-	&& mp_is_equal(MPval, MP2)) {   /* Only positive integers. */
+	&& mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
         if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
             mp_set_from_integer(1, MPres);
             return;
