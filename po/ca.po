@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-18 15:34+0100\n"
-"PO-Revision-Date: 2008-02-17 12:56+0100\n"
+"POT-Creation-Date: 2008-07-02 00:10+0200\n"
+"PO-Revision-Date: 2008-07-02 00:11+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan  <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Factor de conversió de centímetres a polzades"
 
 #: ../gcalctool/calctool.c:573
 msgid "degrees in a radian"
-msgstr "graus en un radià"
+msgstr "Graus en un radià"
 
 #: ../gcalctool/calctool.c:574
 msgid "2 ^ 20"
@@ -57,23 +57,32 @@ msgstr "Factor de conversió de quilojouls a unitats britàniques de temperatura
 
 #: ../gcalctool/calctool.c:580
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Factor de conversió de centímetres cúbics o polzades cúbiques"
+msgstr "Factor de conversió de centímetres cúbics a polzades cúbiques"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591 ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:372 ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
+#: ../gcalctool/calctool.c:591 ../gcalctool/mp.c:1974
+#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:385
+#: ../gcalctool/mpmath.c:435 ../gcalctool/mpmath.c:1033
 msgid "Error"
 msgstr "Error"
 
-#: ../gcalctool/calctool.c:603
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is an error message (see the last parameter in the
+#. * getparam() call in the get_options() routine below.
+#.
+#: ../gcalctool/calctool.c:608
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s: %s com a següent argument.\n"
 
-#: ../gcalctool/calctool.c:612
+#. Translators: the following string contains two strings that
+#. * are passed to it: the first is the gcalctool program name and
+#. * the second is the program version number.
+#.
+#: ../gcalctool/calctool.c:621
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -82,105 +91,105 @@ msgstr ""
 "%s versió %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:613
-#, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
+#: ../gcalctool/calctool.c:622
+#, fuzzy, c-format
+msgid "Usage: %s: [-E] [-u] [-a accuracy] "
 msgstr "Forma d'ús: %s: [-D] [-E] [-a precisió] "
 
-#: ../gcalctool/calctool.c:614
+#: ../gcalctool/calctool.c:623
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:639
+#: ../gcalctool/calctool.c:644
 msgid "-a needs accuracy value"
 msgstr "-a necessita un valor d'exactitud"
 
-#: ../gcalctool/calctool.c:643 ../gcalctool/get.c:237
+#: ../gcalctool/calctool.c:648 ../gcalctool/get.c:243
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: l'exactitud ha d'anar de 0 a %d\n"
 
-#: ../gcalctool/functions.c:189
+#: ../gcalctool/display.c:403
 msgid "No undo history"
 msgstr "Sense historial per a desfer"
 
-#: ../gcalctool/functions.c:221
+#: ../gcalctool/display.c:418
 msgid "No redo steps"
 msgstr "Sense passos per a refer"
 
-#: ../gcalctool/functions.c:577
+#: ../gcalctool/functions.c:270
 msgid "Invalid number for the current base"
 msgstr "El nombre no és vàlid per la base actual"
 
-#: ../gcalctool/functions.c:581
+#: ../gcalctool/functions.c:274
 msgid "Too long number"
 msgstr "El nombre és massa llarg"
 
-#: ../gcalctool/functions.c:585
+#: ../gcalctool/functions.c:278
 msgid "Invalid bitwise operation parameter(s)"
-msgstr "Els paràmetres de la operació a nivell de bits no és vàlid"
+msgstr "Els paràmetres de l'operació a nivell de bits no són vàlids"
 
-#: ../gcalctool/functions.c:589
+#: ../gcalctool/functions.c:282
 msgid "Invalid modulus operation parameter(s)"
-msgstr "El paràmetre de la operació del mòdul no és vàlid"
+msgstr "Els paràmetres de l'operació del mòdul no són vàlids"
 
-#: ../gcalctool/functions.c:593
+#: ../gcalctool/functions.c:286
 msgid "Math operation error"
 msgstr "Error en una operació matemàtica"
 
-#: ../gcalctool/functions.c:597
+#: ../gcalctool/functions.c:290
 msgid "Malformed expression"
 msgstr "Expressió mal escrita"
 
-#: ../gcalctool/functions.c:696
+#: ../gcalctool/functions.c:376
 msgid "Error, operands must be integers"
 msgstr "S'ha produït un error, els operands han de ser enters"
 
-#: ../gcalctool/functions.c:923 ../gcalctool/functions.c:1278
+#: ../gcalctool/functions.c:601 ../gcalctool/functions.c:954
 msgid "No sane value to convert"
 msgstr "No és un valor adequat a convertir"
 
-#: ../gcalctool/functions.c:1023 ../gcalctool/functions.c:1351
+#: ../gcalctool/functions.c:700 ../gcalctool/functions.c:1027
 msgid "No sane value to store"
 msgstr "No és un valor adequat per emmagatzemar"
 
-#: ../gcalctool/functions.c:1144
+#: ../gcalctool/functions.c:820
 msgid "Malformed function"
 msgstr "Funció mal escrita"
 
-#: ../gcalctool/functions.c:1306
+#: ../gcalctool/functions.c:982
 msgid "Cleared display, prefix without an operator is not allowed"
 msgstr "S'ha netejat la pantalla, no està permès un prefix sense operador"
 
-#: ../gcalctool/functions.c:1327
+#: ../gcalctool/functions.c:1003
 msgid "Malformed parenthesis expression"
 msgstr "Expressió amb parèntesis mal escrita"
 
-#: ../gcalctool/functions.c:1503
+#: ../gcalctool/functions.c:1179
 msgid "No sane value to do bitwise shift"
 msgstr "No és un valor adequat per a fer un desplaçament bit a bit"
 
-#: ../gcalctool/get.c:258
+#: ../gcalctool/get.c:264
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: la base ha de ser 2, 8, 10 o 16\n"
 
-#: ../gcalctool/get.c:273
+#: ../gcalctool/get.c:279
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: el mode d'aparença no és vàlid [%s]\n"
 
-#: ../gcalctool/get.c:288
+#: ../gcalctool/get.c:294
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s: el mode no és vàlid [%s]\n"
 
-#: ../gcalctool/get.c:302
+#: ../gcalctool/get.c:308
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: el mode trigonomètric no és vàlid [%s]\n"
 
-#: ../gcalctool/get.c:320
+#: ../gcalctool/get.c:326
 #, c-format
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: el mode de sintaxi no és vàlid [%s]\n"
@@ -236,16 +245,16 @@ msgid "_Other (%d) ..."
 msgstr "_Altre (%d) ..."
 
 #: ../gcalctool/gtk.c:546
-#, c-format
-msgid "Set accuracy from 0 to %d numeric places."
+#, fuzzy, c-format
+msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
 msgstr[0] "Estableix la precisió de 0 a %d posició numèrica."
 msgstr[1] "Estableix la precisió de 0 a %d posicions numèriques."
 
-#. Translator: This refers to the current accuracy setting
+#. Translators: This refers to the current accuracy setting
 #: ../gcalctool/gtk.c:552
-#, c-format
-msgid "Currently set to %d places."
+#, fuzzy, c-format
+msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
 msgstr[0] "Actualment establert a %d posició."
 msgstr[1] "Actualment establert a %d posicions."
@@ -315,14 +324,14 @@ msgid "Bit editor activated. Click on bit values to toggle them."
 msgstr ""
 "Editor de bits activat. Feu clic en els valors dels bits per a commutar-los."
 
-#: ../gcalctool/gtk.c:1151
+#: ../gcalctool/gtk.c:1156
 msgid "translator-credits"
 msgstr ""
 "Blanca Biosca <b_biosca@hotmail.com>\n"
 "Josep Puigdemont <josep.puigdemont@gmail.com>\n"
 "Joan Duran <jodufi@gmail.com>"
 
-#: ../gcalctool/gtk.c:1154
+#: ../gcalctool/gtk.c:1159
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -334,7 +343,7 @@ msgstr ""
 "publicada per la Free Software Foundation; bé sota la versió 2 de la\n"
 "Llicència o bé (si ho preferiu) sota qualsevol versió posterior.\n"
 
-#: ../gcalctool/gtk.c:1158
+#: ../gcalctool/gtk.c:1163
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -346,7 +355,7 @@ msgstr ""
 "o ADEQUACIÓ PER A CAP PROPÒSIT PARTICULAR. Vegeu la Llicència Pública\n"
 "General GNU per a obtenir-ne més detalls.\n"
 
-#: ../gcalctool/gtk.c:1162
+#: ../gcalctool/gtk.c:1167
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -357,31 +366,31 @@ msgstr ""
 "Software Foundation, Inc., 51 Francklin Street, Fifth Floor, Boston,\n"
 "MA 02111-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1173
+#: ../gcalctool/gtk.c:1178
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1175
+#: ../gcalctool/gtk.c:1180
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Els autors del Gcalctool"
 
-#: ../gcalctool/gtk.c:1177
+#: ../gcalctool/gtk.c:1182
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora amb mode financer i científic"
 
-#: ../gcalctool/gtk.c:1479 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1515 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1671
+#: ../gcalctool/gtk.c:1696
 msgid "Changing Modes Clears Calculation"
 msgstr "Si es canvia el mode es neteja el càlcul"
 
-#: ../gcalctool/gtk.c:1674
+#: ../gcalctool/gtk.c:1699
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -389,33 +398,33 @@ msgstr ""
 "Quan canvieu de mode, el càlcul actual es netejarà i es reiniciarà a la "
 "basedecimal."
 
-#: ../gcalctool/gtk.c:1678
+#: ../gcalctool/gtk.c:1703
 msgid "_Do not warn me again"
 msgstr "_No em tornis a avisar"
 
-#: ../gcalctool/gtk.c:1683
+#: ../gcalctool/gtk.c:1708
 msgid "C_hange Mode"
 msgstr "Can_via el mode"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1820
+#: ../gcalctool/gtk.c:1846
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
+#: ../gcalctool/gtk.c:2212
 msgid "Clipboard contained malformed calculation"
 msgstr "El porta-retalls contenia un càlcul mal format"
 
-#: ../gcalctool/gtk.c:2258
+#: ../gcalctool/gtk.c:2284
 msgid "Paste"
 msgstr "Enganxa"
 
-#: ../gcalctool/gtk.c:2531
+#: ../gcalctool/gtk.c:2547
 msgid "Error loading user interface"
 msgstr "S'ha produït un error en carregar la interfície d'usuari"
 
-#: ../gcalctool/gtk.c:2533
+#: ../gcalctool/gtk.c:2549
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -424,29 +433,29 @@ msgstr ""
 "Falta o no es pot carregar el fitxer de la interfície d'usuari %s. Comproveu "
 "la instal·lació."
 
-#: ../gcalctool/gtk.c:2761 ../gcalctool/gtk.c:2779
+#: ../gcalctool/gtk.c:2776 ../gcalctool/gtk.c:2794
 msgid "No."
 msgstr "Núm."
 
-#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2778 ../gcalctool/gtk.c:2796
 msgid "Value"
 msgstr "Valor"
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2780 ../gcalctool/gtk.c:2798
 msgid "Description"
 msgstr "Descripció"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2936 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "Reinicia a la pre_determinada (%d)"
 
-#: ../gcalctool/mp.c:3364
+#: ../gcalctool/mp.c:3325
 msgid "Negative X and non-integer Y not supported"
 msgstr "No està implementat X negativa i Y no entera"
 
-#: ../gcalctool/mpmath.c:273
+#: ../gcalctool/mpmath.c:255
 msgid "Error, cannot calculate cosine"
 msgstr "S'ha produït un error, no s'ha pogut calcular el cosinus"
 
@@ -487,7 +496,7 @@ msgstr "+"
 #. Numeric point
 #: ../glade/gcalctool.glade.h:14
 msgid "."
-msgstr "."
+msgstr ","
 
 #. Numeric 0
 #: ../glade/gcalctool.glade.h:16
@@ -854,7 +863,7 @@ msgstr "Neteja el valor mostrat [Escapada]"
 #: ../glade/gcalctool.glade.h:128
 msgid "Clear displayed value and any partial calculation [Shift Delete]"
 msgstr ""
-"Neteja el valor mostrat i qualsevol càlcul parcial [Majúscules escapada]"
+"Neteja el valor mostrat i qualsevol càlcul parcial [Majúscules supressió]"
 
 #: ../glade/gcalctool.glade.h:129
 msgid "Clear entry"
@@ -1007,11 +1016,11 @@ msgstr "Frac"
 
 #: ../glade/gcalctool.glade.h:176
 msgid "Fractional portion"
-msgstr "Porció fraccionada"
+msgstr "Part fraccionada"
 
 #: ../glade/gcalctool.glade.h:177
 msgid "Fractional portion of displayed value [:]"
-msgstr "Porció fraccionada del valor mostrat [:]"
+msgstr "Part fraccionada del valor mostrat [:]"
 
 #: ../glade/gcalctool.glade.h:178
 msgid "Fun"
@@ -1106,11 +1115,11 @@ msgstr "Int"
 
 #: ../glade/gcalctool.glade.h:203
 msgid "Integer portion"
-msgstr "Porció sencera"
+msgstr "Part entera"
 
 #: ../glade/gcalctool.glade.h:204
 msgid "Integer portion of displayed value [i]"
-msgstr "Porció sencera del valor mostrat [i]"
+msgstr "Part entera del valor mostrat [i]"
 
 #: ../glade/gcalctool.glade.h:205
 msgid "Left bracket"
@@ -1201,7 +1210,7 @@ msgstr "9 numèric"
 
 #: ../glade/gcalctool.glade.h:229
 msgid "Numeric point"
-msgstr "Punt numèric"
+msgstr "Separador decimal"
 
 #: ../glade/gcalctool.glade.h:230
 msgid "OR"
