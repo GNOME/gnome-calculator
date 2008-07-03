@@ -36,8 +36,10 @@ double mp_cast_to_double(const int *);
 int    mp_cast_to_int(const int *);
 void   mp_set_from_double(double, int *);
 void   mp_set_from_integer(int, int *);
+void   mp_set_from_mp(const int *, int *);
 
-void mpabs(int *, int *);
+void mp_abs(const int *, int *);
+
 void mpadd(int *, int *, int *);
 void mpaddi(int *, int *, int *);
 void mpasin(int *, int *);
@@ -60,7 +62,6 @@ void mpset(int *, int *, int *);
 void mpsin(int *, int *);
 void mpsinh(int *, int *);
 void mpsqrt(int *, int *);
-void mpstr(int *, int *);
 void mpsub(int *, int *, int *);
 void mptanh(int *, int *);
 

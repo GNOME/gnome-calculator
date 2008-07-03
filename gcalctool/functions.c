@@ -261,7 +261,7 @@ do_expression(int function, int arg, int cursor)
                 result = display_solve(MPval);
                 switch (result) {
                     case 0:
-                        mpstr(MPval, e->ans);
+                        mp_set_from_mp(MPval, e->ans);
                         display_set_string("Ans");
                         cursor = -1;
                         break;
@@ -327,9 +327,9 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
     if (v->current == KEY_CALCULATE &&
         v->ltr.old_cal_value == KEY_CALCULATE) {
         if (v->ltr.new_input) {
-            mpstr(v->MPlast_input, v->MPresult);
+            mp_set_from_mp(v->MPlast_input, v->MPresult);
         } else {
-            mpstr(v->MPlast_input, v->MPdisp_val);
+            mp_set_from_mp(v->MPlast_input, v->MPdisp_val);
         }
     }
 
@@ -352,7 +352,7 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
         case KEY_ATAN:
         case KEY_ATANH:
         case -1:
-            mpstr(v->MPdisp_val, v->MPresult);
+            mp_set_from_mp(v->MPdisp_val, v->MPresult);
             break;
 
         case KEY_ADD:
@@ -429,10 +429,10 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
 
     if (!(v->current == KEY_CALCULATE &&
           v->ltr.old_cal_value == KEY_CALCULATE)) {
-        mpstr(v->MPdisp_val, v->MPlast_input);
+        mp_set_from_mp(v->MPdisp_val, v->MPlast_input);
     }
 
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
     if (v->current != KEY_CALCULATE) {
         v->ltr.cur_op = v->current;
     }
@@ -446,7 +446,7 @@ do_sin(void)
 {
     calc_trigfunc(sin_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -455,7 +455,7 @@ do_sinh(void)
 {
     calc_trigfunc(sinh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -464,7 +464,7 @@ do_asin(void)
 {
     calc_trigfunc(asin_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -473,7 +473,7 @@ do_asinh(void)
 {
     calc_trigfunc(asinh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -482,7 +482,7 @@ do_cos(void)
 {
     calc_trigfunc(cos_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -491,7 +491,7 @@ do_cosh(void)
 {
     calc_trigfunc(cosh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -500,7 +500,7 @@ do_acos(void)
 {
     calc_trigfunc(acos_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -509,7 +509,7 @@ do_acosh(void)
 {
     calc_trigfunc(acosh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -518,7 +518,7 @@ do_tan(void)
 {
     calc_trigfunc(tan_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -527,7 +527,7 @@ do_tanh(void)
 {
     calc_trigfunc(tanh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -536,7 +536,7 @@ do_atan(void)
 {
     calc_trigfunc(atan_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -545,7 +545,7 @@ do_atanh(void)
 {
     calc_trigfunc(atanh_t, v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -554,7 +554,7 @@ do_percent(void)
 {
     calc_percent(v->MPdisp_val, v->MPresult);
     display_set_number(v->MPresult);
-    mpstr(v->MPresult, v->MPdisp_val);
+    mp_set_from_mp(v->MPresult, v->MPdisp_val);
 }
 
 
@@ -601,7 +601,7 @@ do_base(enum base_type b)
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
             } else {
-                mpstr(MP, e->ans);
+                mp_set_from_mp(MP, e->ans);
                 display_set_string("Ans");
             }
             v->base = b;
@@ -629,7 +629,7 @@ do_constant(int index)
     assert(index <= 9);
 
     MPval = v->MPcon_vals[index];
-    mpstr(MPval, v->MPdisp_val);
+    mp_set_from_mp(MPval, v->MPdisp_val);
     v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
@@ -687,9 +687,9 @@ do_exchange(int index)
 
     switch (v->syntax) {
         case NPA:
-            mpstr(v->MPdisp_val, MPtemp);
-            mpstr(v->MPmvals[index], v->MPdisp_val);
-            mpstr(MPtemp, v->MPmvals[index]);
+            mp_set_from_mp(v->MPdisp_val, MPtemp);
+            mp_set_from_mp(v->MPmvals[index], v->MPdisp_val);
+            mp_set_from_mp(MPtemp, v->MPmvals[index]);
             ui_make_registers();
             break;
 
@@ -700,9 +700,9 @@ do_exchange(int index)
                 ui_set_statusbar(_("No sane value to store"),
                                  "gtk-dialog-error");
             } else {
-                mpstr(v->MPmvals[index], MPtemp);
-                mpstr(MPexpr, v->MPmvals[index]);
-                mpstr(MPtemp, e->ans);
+                mp_set_from_mp(v->MPmvals[index], MPtemp);
+                mp_set_from_mp(MPexpr, v->MPmvals[index]);
+                mp_set_from_mp(MPtemp, e->ans);
                 display_set_string("Ans");
                 display_refresh(-1);
                 ui_make_registers();
@@ -757,7 +757,7 @@ do_factorial(int *MPval, int *MPres)
  *        order to check this.
  */
 
-    mpstr(MPval, MPa);
+    mp_set_from_mp(MPval, MPa);
     mpcmim(MPval, MP1);
     mp_set_from_integer(0, MP2);
     if (mp_is_equal(MPval, MP1)
@@ -784,7 +784,7 @@ do_factorial(int *MPval, int *MPres)
     } else {
         matherr((struct exception *) NULL);
     }
-    mpstr(MPa, MPres);
+    mp_set_from_mp(MPa, MPres);
 }
 
 
@@ -838,7 +838,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
             break;
 
         case KEY_E_POW_X:
-            mpstr(s, MP1);
+            mp_set_from_mp(s, MP1);
             mpexp(MP1, t);
             break;
 
@@ -847,7 +847,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
             break;
 
         case KEY_NATURAL_LOGARITHM:
-            mpstr(s, MP1);
+            mp_set_from_mp(s, MP1);
             mpln(MP1, t);
             break;
 
@@ -864,7 +864,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
             break;
 
         case KEY_SQUARE_ROOT:
-            mpstr(s, MP1);
+            mp_set_from_mp(s, MP1);
             mpsqrt(MP1, t);
             break;
 
@@ -878,11 +878,11 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
 
         case KEY_FACTORIAL:
             do_factorial(s, MP1);
-            mpstr(MP1, t);
+            mp_set_from_mp(MP1, t);
             break;
 
         case KEY_SQUARE:
-            mpstr(s, MP1);
+            mp_set_from_mp(s, MP1);
             mpmul(MP1, MP1, t);
             break;
 
@@ -954,7 +954,7 @@ do_numtype(enum num_type n)   /* Set number display type. */
                 ui_set_statusbar(_("No sane value to convert"),
                                  "gtk-dialog-error");
             } else {
-                mpstr(MP, e->ans);
+                mp_set_from_mp(MP, e->ans);
                 display_set_string("Ans");
                 ui_make_registers();
             }
@@ -1019,7 +1019,7 @@ do_sto(int index)
 {
     switch (v->syntax) {
         case NPA:
-            mpstr(v->MPdisp_val, v->MPmvals[index]);
+            mp_set_from_mp(v->MPdisp_val, v->MPmvals[index]);
             break;
 
         case EXPRS:
@@ -1046,7 +1046,7 @@ int
 do_sto_reg(int reg, int value[MP_SIZE])
 {
     if ((reg >= 0) && (reg <= 10)) {
-        mpstr(value, v->MPmvals[reg]);
+        mp_set_from_mp(value, v->MPmvals[reg]);
         return(0);
     } else {
         return(-EINVAL);
@@ -1057,7 +1057,7 @@ do_sto_reg(int reg, int value[MP_SIZE])
 void
 do_rcl(int index)
 {
-    mpstr(v->MPmvals[index], v->MPdisp_val);
+    mp_set_from_mp(v->MPmvals[index], v->MPdisp_val);
     v->ltr.new_input = 1;
     syntaxdep_show_display();
 }
@@ -1072,7 +1072,7 @@ int
 do_rcl_reg(int reg, int value[MP_SIZE])
 {
     if ((reg >= 0) && (reg <= 10)) {
-        mpstr(v->MPmvals[reg], value);
+        mp_set_from_mp(v->MPmvals[reg], value);
         return(0);
     } else {
         return(-EINVAL);
@@ -1122,17 +1122,17 @@ do_portionfunc(int num[MP_SIZE])
 
     switch (v->current) {
         case KEY_ABSOLUTE_VALUE:
-            mpstr(num, MP1);
-            mpabs(MP1, num);
+            mp_set_from_mp(num, MP1);
+            mp_abs(MP1, num);
             break;
 
         case KEY_FRACTION:
-            mpstr(num, MP1);
+            mp_set_from_mp(num, MP1);
             mpcmf(MP1, num);
             break;
 
         case KEY_INTEGER:
-            mpstr(num, MP1);
+            mp_set_from_mp(num, MP1);
             mpcmim(MP1, num);
             break;
     }
@@ -1170,7 +1170,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
             dval = setbool(temp);
             mp_set_from_double(dval, v->MPdisp_val);
             display_set_number(v->MPdisp_val);
-            mpstr(v->MPdisp_val, v->MPlast_input);
+            mp_set_from_mp(v->MPdisp_val, v->MPlast_input);
             break;
 
         case EXPRS:

@@ -1753,7 +1753,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
         case EXPRS: {
             int ret = display_is_usable_number(e->ans);
             assert(!ret);
-            mpstr(e->ans, MP1);
+            mp_set_from_mp(e->ans, MP1);
         }
         break;
         default:

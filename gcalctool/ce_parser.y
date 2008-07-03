@@ -225,7 +225,7 @@ func:
 | tSQRT term %prec HIGH {mpsqrt($2, $$);}
 | tLN term %prec HIGH {mpln($2, $$);}
 | tRAND %prec HIGH {calc_rand($$);}
-| tABS term %prec HIGH {mpabs($2, $$);}
+| tABS term %prec HIGH {mp_abs($2, $$);}
 | tFRAC term %prec HIGH {mpcmf($2, $$);}
 | tINT term %prec HIGH {mpcmim($2, $$);}
 | tCHS term %prec HIGH {mpneg($2, $$);}

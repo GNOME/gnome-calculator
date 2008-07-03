@@ -106,16 +106,13 @@ static void mpunfl(int *);
 
 
 void
-mpabs(int *x, int *y)
+mp_abs(const int *x, int *y)
 {
 
 /* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 
-    --y;                      /* Parameter adjustments */
-    --x;
-
-    mpstr(&x[1], &y[1]);
-    y[1] = C_abs(y[1]);
+    mp_set_from_mp(x, y);
+    y[0] = C_abs(y[0]);
 }
 
 
@@ -164,7 +161,7 @@ mpadd2(int *x, int *y, int *z, int *y1, int *trunc)
 /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
 
 L10:
-    mpstr(&y[1], &z[1]);
+    mp_set_from_mp(&y[1], &z[1]);
     z[1] = y1[1];
     return;
 
@@ -174,7 +171,7 @@ L20:
 /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */
 
 L30:
-    mpstr(&x[1], &z[1]);
+    mp_set_from_mp(&x[1], &z[1]);
     return;
 
 /* COMPARE SIGNS */
@@ -478,7 +475,7 @@ L20:
 
 /* SET ADDITIVE TERM TO X */
 
-    mpstr(&y[1], &MP.r[i2 - 1]);
+    mp_set_from_mp(&y[1], &MP.r[i2 - 1]);
     i = 1;
     id = 0;
 
@@ -582,7 +579,7 @@ L30:
 L40:
     i2 = i3 - (MP.t + 2);
     mp_set_from_integer(1, &MP.r[i2 - 1]);
-    mpstr(&MP.r[i2 - 1], &MP.r[i3 - 1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
     mpsub(&MP.r[i2 - 1], &x[1], &MP.r[i2 - 1]);
     mpadd(&MP.r[i3 - 1], &x[1], &MP.r[i3 - 1]);
     mpmul(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
@@ -625,7 +622,7 @@ mpatan(int *x, int *y)
     return;
 
 L10:
-    mpstr(&x[1], &MP.r[i3 - 1]);
+    mp_set_from_mp(&x[1], &MP.r[i3 - 1]);
     ie = C_abs(x[2]);
     if (ie <= 2) mpcmr(&x[1], &rx);
 
@@ -650,7 +647,7 @@ L20:
 /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
 
 L30:
-    mpstr(&MP.r[i3 - 1], &y[1]);
+    mp_set_from_mp(&MP.r[i3 - 1], &y[1]);
     mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
     i = 1;
     ts = MP.t;
@@ -1052,7 +1049,7 @@ L20:
 
     if (x2 > 0) goto L30;
 
-    mpstr(&x[1], &y[1]);
+    mp_set_from_mp(&x[1], &y[1]);
     return;
 
 /* CLEAR ACCUMULATOR */
@@ -1170,7 +1167,7 @@ mpcmim(int *x, int *y)
     --x;
 
     mpchk(&c__1, &c__4);
-    mpstr(&x[1], &y[1]);
+    mp_set_from_mp(&x[1], &y[1]);
     if (y[1] == 0) {
         return;
     }
@@ -1441,7 +1438,7 @@ L10:
 
 /* SEE IF ABS(X) .LE. 1 */
 
-    mpabs(&x[1], &y[1]);
+    mp_abs(&x[1], &y[1]);
     if (mpcmpi(&y[1], &c__1) <= 0) goto L20;
 
 /*  HERE ABS(X) .GT. 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
@@ -1487,7 +1484,7 @@ mpcosh(int *x, int *y)
 L10:
     mpchk(&c__5, &c__12);
     i2 = (MP.t << 2) + 11;
-    mpabs(&x[1], &MP.r[i2 - 1]);
+    mp_abs(&x[1], &MP.r[i2 - 1]);
 
 /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
  *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
@@ -1791,7 +1788,7 @@ L40:
 /* CHECK FOR DIVISION BY B */
 
     if (j != MP.b) goto L50;
-    mpstr(&x[1], &z[1]);
+    mp_set_from_mp(&x[1], &z[1]);
     if (re <= -MP.m) goto L240;
     z[1] = rs;
     z[2] = re - 1;
@@ -1801,7 +1798,7 @@ L40:
 
 L50:
     if (j != 1) goto L60;
-    mpstr(&x[1], &z[1]);
+    mp_set_from_mp(&x[1], &z[1]);
     z[1] = rs;
     return;
 
@@ -2053,7 +2050,7 @@ L70:
 /* SAVE SIGN AND WORK WITH ABS(X) */
 
     xs = x[1];
-    mpabs(&x[1], &MP.r[i3 - 1]);
+    mp_abs(&x[1], &MP.r[i3 - 1]);
 
 /*  IF ABS(X) .GT. M POSSIBLE THAT INT(X) OVERFLOWS,
  *  SO DIVIDE BY 32.
@@ -2211,7 +2208,7 @@ L20:
     goto L10;
 
 L40:
-    mpstr(&x[1], &MP.r[i2 - 1]);
+    mp_set_from_mp(&x[1], &MP.r[i2 - 1]);
     rlb = log((float) MP.b);
 
 /* COMPUTE APPROXIMATELY OPTIMAL Q (AND DIVIDE X BY 2**Q) */
@@ -2234,8 +2231,8 @@ L40:
 
 L60:
     if (MP.r[i2 - 1] == 0) goto L10;
-    mpstr(&MP.r[i2 - 1], &y[1]);
-    mpstr(&MP.r[i2 - 1], &MP.r[i3 - 1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &y[1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
     i = 1;
     ts = MP.t;
 
@@ -2412,7 +2409,7 @@ mpln(int *x, int *y)
 /* MOVE X TO LOCAL STORAGE */
 
 L20:
-    mpstr(&x[1], &MP.r[i2 - 1]);
+    mp_set_from_mp(&x[1], &MP.r[i2 - 1]);
     y[1] = 0;
     k = 0;
 
@@ -2513,7 +2510,7 @@ L10:
 
 L30:
     ts = MP.t;
-    mpstr(&x[1], &MP.r[i3 - 1]);
+    mp_set_from_mp(&x[1], &MP.r[i3 - 1]);
     mpdivi(&x[1], &c__4, &MP.r[i2 - 1]);
     mpaddq(&MP.r[i2 - 1], &c_n1, &c__3, &MP.r[i2 - 1]);
     mpmul(&x[1], &MP.r[i2 - 1], &MP.r[i2 - 1]);
@@ -2807,7 +2804,7 @@ L20:
     return;
 
 L40:
-    mpstr(&x[1], &z[1]);
+    mp_set_from_mp(&x[1], &z[1]);
     z[1] = rs;
     z[2] = x[2] + 1;
     return;
@@ -2991,7 +2988,7 @@ mpneg(int *x, int *y)
     --y;             /* Parameter adjustments */
     --x;
 
-    mpstr(&x[1], &y[1]);
+    mp_set_from_mp(&x[1], &y[1]);
     y[1] = -y[1];
 }
 
@@ -3276,12 +3273,12 @@ L50:
 /* MOVE X */
 
 L60:
-    mpstr(&x[1], &y[1]);
+    mp_set_from_mp(&x[1], &y[1]);
 
 /* IF N .LT. 0 FORM RECIPROCAL */
 
     if (*n < 0) mprec(&y[1], &y[1]);
-    mpstr(&y[1], &MP.r[i2 - 1]);
+    mp_set_from_mp(&y[1], &MP.r[i2 - 1]);
 
 /* SET PRODUCT TERM TO ONE */
 
@@ -3489,7 +3486,7 @@ L50:
 
 L70:
     MP.t = ts;
-    mpstr(&MP.r[i2 - 1], &y[1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &y[1]);
 
 /* RESTORE M AND CHECK FOR OVERFLOW (UNDERFLOW IMPOSSIBLE) */
 
@@ -3531,7 +3528,7 @@ mproot(int *x, int *n, int *y)
 
     mpchk(&c__4, &c__10);
     if (*n != 1) goto L10;
-    mpstr(&x[1], &y[1]);
+    mp_set_from_mp(&x[1], &y[1]);
     return;
 
 L10:
@@ -3703,7 +3700,7 @@ L160:
     return;
 
 L170:
-    mpstr(&MP.r[i2 - 1], &y[1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &y[1]);
 }
 
 
@@ -3846,7 +3843,7 @@ L20:
     ie = C_abs(x[2]);
     if (ie <= 2) mpcmr(&x[1], &rx);
 
-    mpabs(&x[1], &MP.r[i2 - 1]);
+    mp_abs(&x[1], &MP.r[i2 - 1]);
 
 /* USE MPSIN1 IF ABS(X) .LE. 1 */
 
@@ -3978,14 +3975,14 @@ L20:
 
 L40:
     if (*is == 0) mp_set_from_integer(1, &MP.r[i2 - 1]);
-    if (*is != 0) mpstr(&x[1], &MP.r[i2 - 1]);
+    if (*is != 0) mp_set_from_mp(&x[1], &MP.r[i2 - 1]);
 
     y[1] = 0;
     i = 1;
     ts = MP.t;
     if (*is == 0) goto L50;
 
-    mpstr(&MP.r[i2 - 1], &y[1]);
+    mp_set_from_mp(&MP.r[i2 - 1], &y[1]);
     i = 2;
 
 /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
@@ -4057,7 +4054,7 @@ L10:
 
 /* WORK WITH ABS(X) */
 
-    mpabs(&x[1], &MP.r[i3 - 1]);
+    mp_abs(&x[1], &MP.r[i3 - 1]);
     if (MP.r[i3] <= 0) goto L20;
 
 /*  HERE ABS(X) .GE. 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
@@ -4138,40 +4135,23 @@ L40:
 
 
 void
-mpstr(int *x, int *y)
+mp_set_from_mp(const int *x, int *y)
 {
-    int i__1;
-
-    static int i, j, t2;
 
 /*  SETS Y = X FOR MP X AND Y.
  *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
  */
 
-    --y;                /* Parameter adjustments */
-    --x;
+/* HERE X AND Y MUST HAVE THE SAME ADDRESS */    
+    if (x == y) return;
 
-    j = x[1];
-    y[1] = j + 1;
-    if (j == x[1]) goto L10;
+/* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
+    if (x[0] == 0) {
+      y[0] = 0;
+      return;
+    }
 
-/* HERE X(1) AND Y(1) MUST HAVE THE SAME ADDRESS */
-
-    x[1] = j;
-    return;
-
-/* HERE X(1) AND Y(1) HAVE DIFFERENT ADDRESSES */
-
-L10:
-    y[1] = j;
-
-/* NO NEED TO MOVE X(2), ... IF X(1) = 0 */
-
-    if (j == 0) return;
-
-    t2 = MP.t + 2;
-    i__1 = t2;
-    for (i = 2; i <= i__1; ++i) y[i] = x[i];
+    memcpy (y, x, (MP.t + 2)*sizeof(int));
 }
 
 
@@ -4223,7 +4203,7 @@ L10:
 /* SAVE SIGN AND WORK WITH ABS(X) */
 
     xs = x[1];
-    mpabs(&x[1], &MP.r[i2 - 1]);
+    mp_abs(&x[1], &MP.r[i2 - 1]);
 
 /* SEE IF ABS(X) SO LARGE THAT RESULT IS +-1 */
 

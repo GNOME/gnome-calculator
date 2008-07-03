@@ -147,7 +147,7 @@ calc_inv(int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
     int MP2[MP_SIZE];
 
     mp_set_from_integer(1, MP1);
-    mpstr(s1, MP2);
+    mp_set_from_mp(s1, MP2);
     mpdiv(MP1, MP2, t1);
 }
 
@@ -276,7 +276,7 @@ to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
         mp_set_from_integer(200, MP1);
         mpdiv(MP2, MP1, t1);
     } else {
-        mpstr(s1, t1);
+        mp_set_from_mp(s1, t1);
     }
 }
 
@@ -296,7 +296,7 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
 
         case RAD:
-            mpstr(s1, t1);
+            mp_set_from_mp(s1, t1);
             break;
 
         case GRAD:
@@ -345,14 +345,14 @@ mpacos(int *MPx, int *MPretval)
 
     if (mp_is_greater_than(MPx, MP1) || mp_is_less_than(MPx, MPn1)) {
         doerr(_("Error"));
-        mpstr(MP0, MPretval);
+        mp_set_from_mp(MP0, MPretval);
     } else if (mp_is_equal(MPx, MP0)) {
         val = 2;
         mpdivi(MPpi, &val, MPretval);
     } else if (mp_is_equal(MPx, MP1)) {
-        mpstr(MP0, MPretval);
+        mp_set_from_mp(MP0, MPretval);
     } else if (mp_is_equal(MPx, MPn1)) {
-        mpstr(MPpi, MPretval);
+        mp_set_from_mp(MPpi, MPretval);
     } else { 
         mpmul(MPx, MPx, MP2);
         mpsub(MP1, MP2, MP2);
@@ -360,7 +360,7 @@ mpacos(int *MPx, int *MPretval)
         mpdiv(MP2, MPx, MP2);
         mpatan(MP2, MPy);
         if (mp_is_greater_than(MPx, MP0)) {
-            mpstr(MPy, MPretval);
+            mp_set_from_mp(MPy, MPretval);
         } else {
             mpadd(MPy, MPpi, MPretval);
         }
@@ -433,7 +433,7 @@ mpatanh(int *MPx, int *MPretval)
 
     if (mp_is_greater_equal(MPx, MP1) || mp_is_less_equal(MPx, MPn1)) {
         doerr(_("Error"));
-        mpstr(MP0, MPretval);
+        mp_set_from_mp(MP0, MPretval);
     } else {
         mpadd(MP1, MPx, MP2);
         mpsub(MP1, MPx, MP3);
@@ -515,7 +515,7 @@ calc_ddb(int t[MP_SIZE])
         val = 2;
         mpmuli(MP1, &val, MP2);
         mpdiv(MP2, v->MPmvals[2], t);
-        mpstr(MPbv, MP1);
+        mp_set_from_mp(MPbv, MP1);
         mpadd(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
     }
 }
@@ -756,7 +756,7 @@ is_natural(int MPnum[MP_SIZE])
     if (!is_integer(MPnum)) {
         return 0;
     }
-    mpabs(MPnum, MP1);
+    mp_abs(MPnum, MP1);
     return mp_is_equal(MPnum, MP1);
 }
 
@@ -765,7 +765,7 @@ calc_epowy(int s[MP_SIZE], int t[MP_SIZE])
 {
     int MP1[MP_SIZE];
     
-    mpstr(s, MP1);
+    mp_set_from_mp(s, MP1);
     mpexp(MP1, t);
 }
 
@@ -847,7 +847,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
     int dval, i;
  
     optr = target;
-    mpabs(MPnumber, MPval);
+    mp_abs(MPnumber, MPval);
     mp_set_from_integer(0, MP1);
     if (mp_is_less_than(MPnumber, MP1)) {
         *optr++ = '-';
@@ -929,12 +929,12 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
         eng = 1;
     }
     optr = target;
-    mpabs(MPnumber, MPval);
+    mp_abs(MPnumber, MPval);
     mp_set_from_integer(0, MP1);
     if (mp_is_less_than(MPnumber, MP1)) {
         *optr++ = '-';
     }
-    mpstr(MPval, MPmant);
+    mp_set_from_mp(MPval, MPmant);
 
     mp_set_from_integer(basevals[base], MP1base);
     n = 3;
