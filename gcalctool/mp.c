@@ -73,7 +73,7 @@ static int c__239 = 239;
 static int c__7   = 7;
 static int c__16  = 16;
 
-static double mppow_di(double *, int *);
+static double mppow_di(double *, int);
 static double mppow_ri(float *, int *);
 
 static int mpcmpi(int *, int *);
@@ -889,64 +889,39 @@ L100:
 }
 
 
-void
-mp_set_from_integer(int ix, int *z)
-{
-    int i__1;
-
-    static int i;
-
 /*  CONVERTS INTEGER IX TO MULTIPLE-PRECISION Z.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
-
-    --z;            /* Parameter adjustments */
+void
+mp_set_from_integer(int ix, int *z)
+{
+    int i;
 
     mpchk(&c__1, &c__4);
-    if (ix < 0)  goto L20;
-    else if (ix == 0) goto L10;
-    else goto L30;
+    if (ix < 0) {
+        ix = -ix;
+        z[0] = -1;
+    }
+    else if (ix == 0) {
+        z[0] = 0;
+        return;
+    }
+    else
+        z[0] = 1;
 
-L10:
-    z[1] = 0;
-    return;
+    /* SET EXPONENT TO T */
+    z[1] = MP.t;
 
-L20:
-    ix = -ix;
-    z[1] = -1;
-    goto L40;
+    /* CLEAR FRACTION */
+    for (i = 2; i <= MP.t; ++i) z[i] = 0;
 
-L30:
-    z[1] = 1;
+    /* INSERT IX */
+    z[MP.t + 1] = ix;
 
-/* SET EXPONENT TO T */
-
-L40:
-    z[2] = MP.t;
-
-/* CLEAR FRACTION */
-
-    i__1 = MP.t;
-    for (i = 2; i <= i__1; ++i) z[i + 1] = 0;
-
-/* INSERT IX */
-
-    z[MP.t + 2] = ix;
-
-/* NORMALIZE BY CALLING MPMUL2 */
-
-    mpmul2(&z[1], &c__1, &z[1], &c__1);
+    /* NORMALIZE BY CALLING MPMUL2 */
+    mpmul2(z, &c__1, z, &c__1);
 }
 
-
-double
-mp_cast_to_double(const int *x)
-{
-    int i__1;
-    double d__1, ret_val = 0.0;
-
-    static int i, tm;
-    static double db, dz2;
 
 /*  CONVERTS MULTIPLE-PRECISION X TO DOUBLE-PRECISION,
  *  AND RETURNS RESULT.
@@ -955,48 +930,46 @@ mp_cast_to_double(const int *x)
  *  EXPONENT IS LARGE.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
-
-    --x;         /* Parameter adjustments */
+double
+mp_cast_to_double(const int *x)
+{
+    int i, tm = 0;
+    double d__1, db, dz2, ret_val = 0.0;
 
     mpchk(&c__1, &c__4);
-    if (x[1] == 0) return 0.0;
+    if (x[0] == 0)
+        return 0.0;
 
-/* DB = DFLOAT(B) IS NOT ANSI STANDARD, SO USE FLOAT AND DBLE */
-
+    /* DB = DFLOAT(B) IS NOT ANSI STANDARD, SO USE FLOAT AND DBLE */
     db = (double) ((float) MP.b);
-    i__1 = MP.t;
-    for (i = 1; i <= i__1; ++i) {
-        ret_val = db * ret_val + (double) ((float) x[i + 2]);
+    for (i = 1; i <= MP.t; ++i) {
+        ret_val = db * ret_val + (double) ((float) x[i + 1]);
         tm = i;
 
-/* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
-
+        /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
         dz2 = ret_val + 1.;
 
-/*  TEST BELOW NOT ALWAYS EQUIVALENT TO - IF (DZ2.LE.DZ) GO TO 20,
- *  FOR EXAMPLE ON CYBER 76.
- */
-        if (dz2 - ret_val <= 0.) goto L20;
+        /*  TEST BELOW NOT ALWAYS EQUIVALENT TO - IF (DZ2.LE.DZ) GO TO 20,
+         *  FOR EXAMPLE ON CYBER 76.
+         */
+        if (dz2 - ret_val <= 0.)
+            break;
     }
 
-/* NOW ALLOW FOR EXPONENT */
+    /* NOW ALLOW FOR EXPONENT */
+    ret_val *= mppow_di(&db, x[1] - tm);
 
-L20:
-    i__1 = x[2] - tm;
-    ret_val *= mppow_di(&db, &i__1);
-
-/* CHECK REASONABLENESS OF RESULT. */
-
+    /* CHECK REASONABLENESS OF RESULT. */
     if (ret_val <= 0.) goto L30;
 
-/* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
-
-    if ((d__1 = (double) ((float) x[2]) - (log(ret_val) / log((double)
+    /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
+    if ((d__1 = (double) ((float) x[1]) - (log(ret_val) / log((double)
                 ((float) MP.b)) + .5), C_abs(d__1)) > .6) {
         goto L30;
     }
 
-    if (x[1] < 0) ret_val = -ret_val;
+    if (x[0] < 0)
+        ret_val = -ret_val;
     return ret_val;
 
 /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
@@ -1006,7 +979,7 @@ L20:
 L30:
     if (v->MPerrors) {
         FPRINTF(stderr, "*** FLOATING-POINT OVER/UNDER-FLOW IN "
-		"MP_CAST_TO_DOUBLE ***\n");
+                        "MP_CAST_TO_DOUBLE ***\n");
     }
 
     mperr();
@@ -1015,73 +988,55 @@ L30:
 }
 
 
-void
-mpcmf(int *x, int *y)
-{
-    int i__1;
-
-    static int i;
-    static int x2, il, ip, xs;
-
 /*  FOR MP X AND Y, RETURNS FRACTIONAL PART OF X IN Y,
  *  I.E., Y = X - INTEGER PART OF X (TRUNCATED TOWARDS 0).
  */
+void
+mpcmf(int *x, int *y)
+{
+    int i, x2, il, ip, xs;
 
-    --y;                   /* Parameter adjustments */
-    --x;
+    /* RETURN 0 IF X = 0 */    
+    if (x[0] == 0) {
+        y[0] = 0;
+        return;
+    }
 
-    if (x[1] != 0) goto L20;
+    x2 = x[1];
 
-/* RETURN 0 IF X = 0 */
+    /* RETURN 0 IF EXPONENT SO LARGE THAT NO FRACTIONAL PART */
+    if (x2 >= MP.t)
+    {
+        y[0] = 0;
+        return;            
+    }
 
-L10:
-    y[1] = 0;
-    return;
+    /* IF EXPONENT NOT POSITIVE CAN RETURN X */
+    if (x2 <= 0) {
+        mp_set_from_mp(x, y);
+        return;
+    }
 
-L20:
-    x2 = x[2];
-
-/* RETURN 0 IF EXPONENT SO LARGE THAT NO FRACTIONAL PART */
-
-    if (x2 >= MP.t) goto L10;
-
-/* IF EXPONENT NOT POSITIVE CAN RETURN X */
-
-    if (x2 > 0) goto L30;
-
-    mp_set_from_mp(&x[1], &y[1]);
-    return;
-
-/* CLEAR ACCUMULATOR */
-
-L30:
-    i__1 = x2;
-    for (i = 1; i <= i__1; ++i) MP.r[i - 1] = 0;
+    /* CLEAR ACCUMULATOR */
+    for (i = 1; i <= x2; ++i)
+        MP.r[i - 1] = 0;
 
     il = x2 + 1;
 
-/* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
-
-    i__1 = MP.t;
-    for (i = il; i <= i__1; ++i) MP.r[i - 1] = x[i + 2];
+    /* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
+    for (i = il; i <= MP.t; ++i)
+        MP.r[i - 1] = x[i + 1];
 
     for (i = 1; i <= 4; ++i) {
         ip = i + MP.t;
         MP.r[ip - 1] = 0;
     }
-    xs = x[1];
+    xs = x[0];
 
-/* NORMALIZE RESULT AND RETURN */
-
-    mpnzr(&xs, &x2, &y[1], &c__1);
+    /* NORMALIZE RESULT AND RETURN */
+    mpnzr(&xs, &x2, y, &c__1);
 }
 
-
-int
-mp_cast_to_int(const int *x)
-{
-    int i__1, ret_val = 0;
-    static int i, j, k, j1, x2, kx, xs, izs;
 
 /*  CONVERTS MULTIPLE-PRECISION X TO INTEGER, AND
  *  RETURNS RESULT.
@@ -1093,53 +1048,55 @@ mp_cast_to_int(const int *x)
  *  ((X(1).NE.0).AND.(X(2).GT.0).AND.(IZ.EQ.0)) IS TRUE ON
  *  RETURN FROM MP_CAST_TO_INST.
  */
+int
+mp_cast_to_int(const int *x)
+{
+    int i, j, k, j1, x2, kx, xs, izs, ret_val = 0;
 
-    --x;             /* Parameter adjustments */
+    xs = x[0];
+    if (xs == 0)
+        return 0;
 
-    xs = x[1];
-    if (xs == 0) return 0;
+    if (x[1] <= 0)
+        return 0;
 
-    if (x[2] <= 0) return 0;
-
-    x2 = x[2];
-    i__1 = x2;
-    for (i = 1; i <= i__1; ++i) {
+    x2 = x[1];
+    for (i = 1; i <= x2; ++i) {
         izs = ret_val;
         ret_val = MP.b * ret_val;
-        if (i <= MP.t) ret_val += x[i + 2];
+        if (i <= MP.t)
+            ret_val += x[i + 1];
 
-/* CHECK FOR SIGNS OF INTEGER OVERFLOW */
-
-        if (ret_val <= 0 || ret_val <= izs) goto L30;
+        /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
+        if (ret_val <= 0 || ret_val <= izs)
+            return 0;
     }
 
-/*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY
- *  HAVE OCCURRED).
- */
-
+    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY
+     *  HAVE OCCURRED).
+     */
     j = ret_val;
-    i__1 = x2;
-    for (i = 1; i <= i__1; ++i) {
+    for (i = 1; i <= x2; ++i) {
         j1 = j / MP.b;
         k = x2 + 1 - i;
         kx = 0;
-        if (k <= MP.t) kx = x[k + 2];
-        if (kx != j - MP.b * j1) goto L30;
+        if (k <= MP.t)
+            kx = x[k + 1];
+        if (kx != j - MP.b * j1)
+            return 0;
         j = j1;
     }
-    if (j != 0) goto L30;
+    if (j != 0)
+        return 0;
 
-/* RESULT CORRECT SO RESTORE SIGN AND RETURN */
-
+    /* RESULT CORRECT SO RESTORE SIGN AND RETURN */
     ret_val = xs * ret_val;
     return ret_val;
 
-/*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
- *  RETURN ZERO.
- */
-
-L30:
-    return 0;
+    /* Old comment about returning zero: */
+    /*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
+     *  RETURN ZERO.
+     */
 }
 
 
@@ -1955,7 +1912,7 @@ L240:
 int
 mp_is_equal(const int *x, const int *y)
 {
-/* RETURNS LOGICAL VALUE OF (X == Y) FOR MP X AND Y. */
+    /* RETURNS LOGICAL VALUE OF (X == Y) FOR MP X AND Y. */
     return (mpcomp(x, y) == 0);
 }
 
@@ -2348,7 +2305,7 @@ L30:
 int
 mp_is_greater_equal(const int *x, const int *y)
 {
-/* RETURNS LOGICAL VALUE OF (X >= Y) FOR MP X AND Y. */
+    /* RETURNS LOGICAL VALUE OF (X >= Y) FOR MP X AND Y. */
     return (mpcomp(x, y) >= 0);
 }
 
@@ -2356,7 +2313,7 @@ mp_is_greater_equal(const int *x, const int *y)
 int
 mp_is_greater_than(const int *x, const int *y)
 {
-/* RETURNS LOGICAL VALUE OF (X > Y) FOR MP X AND Y. */
+    /* RETURNS LOGICAL VALUE OF (X > Y) FOR MP X AND Y. */
     return (mpcomp(x, y) > 0);
 }
 
@@ -2364,7 +2321,7 @@ mp_is_greater_than(const int *x, const int *y)
 int
 mp_is_less_equal(const int *x, const int *y)
 {
-/* RETURNS LOGICAL VALUE OF (X <= Y) FOR MP X AND Y. */
+    /* RETURNS LOGICAL VALUE OF (X <= Y) FOR MP X AND Y. */
     return (mpcomp(x, y) <= 0);
 }
 
@@ -4269,14 +4226,14 @@ mpunfl(int *x)
 
 
 static double
-mppow_di(double *ap, int *bp)
+mppow_di(double *ap, int bp)
 {
     double pow, x;
     int n;
 
     pow = 1;
     x   = *ap;
-    n   = *bp;
+    n   = bp;
 
     if (n != 0) { 
         if (n < 0) {
