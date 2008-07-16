@@ -59,19 +59,13 @@ static int c__0   = 0;
 static int c__1   = 1;
 static int c__4   = 4;
 static int c__2   = 2;
-static int c__6   = 6;
 static int c__5   = 5;
-static int c__12  = 12;
 static int c_n2   = -2;
-static int c__10  = 10;
 static int c__32  = 32;
 static int c__3   = 3;
 static int c__8   = 8;
-static int c__14  = 14;
 static int c_n1   = -1;
 static int c__239 = 239;
-static int c__7   = 7;
-static int c__16  = 16;
 
 static double mppow_di(double *, int);
 static double mppow_ri(float *, int *);
@@ -85,7 +79,7 @@ static void mpadd2(int *, int *, int *, int *, int *);
 static void mpadd3(int *, int *, int *, int *, int *);
 static void mpaddq(int *, int *, int *, int *);
 static void mpart1(int *, int *);
-static void mpchk(int *, int *);
+static void mpchk(int , int );
 static void mpcmr(int *, float *);
 static void mpcqm(int *, int *, int *);
 static void mpcrm(float *, int *);
@@ -180,7 +174,7 @@ L40:
     s = x[1] * y1[1];
     if (C_abs(s) <= 1) goto L60;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     if (v->MPerrors) {
         FPRINTF(stderr, "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
     }
@@ -414,7 +408,7 @@ mpaddi(int *x, int *iy, int *z)
     --z;               /* Parameter adjustments */
     --x;
 
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
     mp_set_from_integer(*iy, &MP.r[MP.t + 4]);
     mpadd(&x[1], &MP.r[MP.t + 4], &z[1]);
 }
@@ -432,7 +426,7 @@ mpaddq(int *x, int *i, int *j, int *y)
     --y;               /* Parameter adjustments */
     --x;
 
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
     mpcqm(i, j, &MP.r[MP.t + 4]);
     mpadd(&x[1], &MP.r[MP.t + 4], &y[1]);
 }
@@ -454,7 +448,7 @@ mpart1(int *n, int *y)
 
     --y;                  /* Parameter adjustments */
 
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
     if (*n > 1) goto L20;
 
     if (v->MPerrors) {
@@ -545,7 +539,7 @@ mpasin(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i3 = (MP.t << 2) + 11;
     if (x[1] == 0) goto L30;
 
@@ -612,7 +606,7 @@ mpatan(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = MP.t * 3 + 9;
     i3 = i2 + MP.t + 2;
     if (x[1] != 0) {
@@ -712,7 +706,7 @@ mp_set_from_double(double dx, int *z)
 
     --z;              /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     i2 = MP.t + 4;
 
 /* CHECK SIGN */
@@ -821,7 +815,7 @@ L130:
 
 
 static void
-mpchk(int *i, int *j)
+mpchk(int i, int j)
 {
     static int ib, mx;
 
@@ -872,7 +866,7 @@ L80:
 /* CHECK THAT SPACE IN COMMON IS SUFFICIENT */
 
 L100:
-    mx = *i * MP.t + *j;
+    mx = i * MP.t + j;
     if (MP.mxr >= mx) return;
 
 /* HERE COMMON IS TOO SMALL, SO GIVE ERROR MESSAGE. */
@@ -882,7 +876,7 @@ L100:
           "*** MXR TOO SMALL OR NOT SET TO DIM(R) BEFORE CALL TO AN MP ROUTINE ***\n");
         FPRINTF(stderr, 
           "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n*** ACTUALLY MXR = %d, AND T = %d  ***\n",
-          *i, *j, mx, MP.mxr, MP.t);
+          i, j, mx, MP.mxr, MP.t);
     }
 
     mperr();
@@ -897,7 +891,7 @@ mp_set_from_integer(int ix, int *z)
 {
     int i;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     if (ix < 0) {
         ix = -ix;
         z[0] = -1;
@@ -936,7 +930,7 @@ mp_cast_to_double(const int *x)
     int i, tm = 0;
     double d__1, db, dz2, ret_val = 0.0;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     if (x[0] == 0)
         return 0.0;
 
@@ -1123,7 +1117,7 @@ mpcmim(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     mp_set_from_mp(&x[1], &y[1]);
     if (y[1] == 0) {
         return;
@@ -1195,7 +1189,7 @@ mpcmpi(int *x, int *i)
 
     --x;              /* Parameter adjustments */
 
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
 
 /* CONVERT I TO MULTIPLE-PRECISION AND COMPARE */
 
@@ -1220,7 +1214,7 @@ mpcmpr(int *x, float *ri)
 
     --x;              /* Parameter adjustments */
 
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
 
 /* CONVERT RI TO MULTIPLE-PRECISION AND COMPARE */
 
@@ -1247,7 +1241,7 @@ mpcmr(int *x, float *rz)
 
     --x;               /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     *rz = (float) 0.0;
     if (x[1] == 0) return;
 
@@ -1390,7 +1384,7 @@ mpcos(int *x, int *y)
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
 L10:
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = MP.t * 3 + 12;
 
 /* SEE IF ABS(X) .LE. 1 */
@@ -1439,7 +1433,7 @@ mpcosh(int *x, int *y)
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
 L10:
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = (MP.t << 2) + 11;
     mp_abs(&x[1], &MP.r[i2 - 1]);
 
@@ -1512,7 +1506,7 @@ mpcrm(float *rx, int *z)
 
     --z;                   /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     i2 = MP.t + 4;
 
 /* CHECK SIGN */
@@ -1632,7 +1626,7 @@ mpdiv(int *x, int *y, int *z)
     --y;
     --x;
 
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
 
 /* CHECK FOR DIVISION BY ZERO */
 
@@ -1891,7 +1885,7 @@ L200:
 /* CARRY NEGATIVE SO OVERFLOW MUST HAVE OCCURRED */
 
 L210:
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n");
@@ -1949,7 +1943,7 @@ mpexp(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
     i2 = (MP.t << 1) + 7;
     i3 = i2 + MP.t + 2;
 
@@ -2140,7 +2134,7 @@ mpexp1(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__3, &c__8);
+    mpchk(3, 8);
     i2 = MP.t + 5;
     i3 = i2 + MP.t + 2;
 
@@ -2348,7 +2342,7 @@ mpln(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__6, &c__14);
+    mpchk(6, 14);
     i2 = (MP.t << 2) + 11;
     i3 = i2 + MP.t + 2;
 
@@ -2439,7 +2433,7 @@ mplns(int *x, int *y)
     --y;                 /* Parameter adjustments */
     --x;
 
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = (MP.t << 1) + 7;
     i3 = i2 + MP.t + 2;
     i4 = i3 + MP.t + 2;
@@ -2552,7 +2546,7 @@ mpmaxr(int *x)
 
     --x;                /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     it = MP.b - 1;
 
 /* SET FRACTION DIGITS TO B-1 */
@@ -2612,7 +2606,7 @@ mpmul(int *x, int *y, int *z)
     --y;
     --x;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
     i2 = MP.t + 4;
     i2p = i2 + 1;
 
@@ -2751,7 +2745,7 @@ L20:
     if (j != MP.b)   goto L50;
     if (x[2] < MP.m) goto L40;
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** OVERFLOW OCCURRED IN MPMUL2 ***\n");
@@ -2859,7 +2853,7 @@ L110:
 /* CAN ONLY GET HERE IF INTEGER OVERFLOW OCCURRED */
 
 L130:
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n");
@@ -2900,7 +2894,7 @@ mpmulq(int *x, int *i, int *j, int *y)
     --x;
 
     if (*j != 0) goto L20;
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n");
@@ -3117,7 +3111,7 @@ mpovfl(int *x)
 
     --x;                 /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
 /* SET X TO LARGEST POSSIBLE POSITIVE NUMBER */
 
@@ -3150,7 +3144,7 @@ mppi(int *x)
 
     --x;                /* Parameter adjustments */
 
-    mpchk(&c__3, &c__8);
+    mpchk(3, 8);
 
 /* ALLOW SPACE FOR MPART1 */
 
@@ -3204,7 +3198,7 @@ L10:
 /* N .LT. 0 */
 
 L20:
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
     n2 = -n2;
     if (x[1] != 0) goto L60;
 
@@ -3218,7 +3212,7 @@ L20:
 /* N .GT. 0 */
 
 L40:
-    mpchk(&c__2, &c__6);
+    mpchk(2, 6);
     if (x[1] != 0) goto L60;
 
 /* X = 0, N .GT. 0, SO Y = 0 */
@@ -3270,7 +3264,7 @@ mppwr2(int *x, int *y, int *z)
     --y;
     --x;
 
-    mpchk(&c__7, &c__16);
+    mpchk(7, 16);
     if (x[1] < 0)  goto L10;
     else if (x[1] == 0) goto L30;
     else goto L70;
@@ -3338,7 +3332,7 @@ mprec(int *x, int *y)
 
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
 
 /* MPADDI REQUIRES 2T+6 WORDS. */
 
@@ -3483,7 +3477,7 @@ mproot(int *x, int *n, int *y)
 
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
     if (*n != 1) goto L10;
     mp_set_from_mp(&x[1], &y[1]);
     return;
@@ -3765,7 +3759,7 @@ L60:
 /* CHECK LEGALITY OF B, T, M AND MXR (AT LEAST T+4) */
 
 L80:
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 }
 
 
@@ -3787,7 +3781,7 @@ mpsin(int *x, int *y)
     --y;               /* Parameter adjustments */
     --x;
 
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = (MP.t << 2) + 11;
     if (x[1] != 0) goto L20;
 
@@ -3906,7 +3900,7 @@ mpsin1(int *x, int *y, int *is)
     --y;               /* Parameter adjustments */
     --x;
 
-    mpchk(&c__3, &c__8);
+    mpchk(3, 8);
     if (x[1] != 0) goto L20;
 
 /* SIN(0) = 0, COS(0) = 1 */
@@ -4006,7 +4000,7 @@ mpsinh(int *x, int *y)
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
 L10:
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i3 = (MP.t << 2) + 11;
 
 /* WORK WITH ABS(X) */
@@ -4062,7 +4056,7 @@ mpsqrt(int *x, int *y)
     --y;           /* Parameter adjustments */
     --x;
 
-    mpchk(&c__4, &c__10);
+    mpchk(4, 10);
 
 /* MPROOT NEEDS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
 
@@ -4154,7 +4148,7 @@ mptanh(int *x, int *y)
 /* CHECK LEGALITY OF B, T, M AND MXR */
 
 L10:
-    mpchk(&c__5, &c__12);
+    mpchk(5, 12);
     i2 = (MP.t << 2) + 11;
 
 /* SAVE SIGN AND WORK WITH ABS(X) */
@@ -4212,7 +4206,7 @@ mpunfl(int *x)
 
     --x;             /* Parameter adjustments */
 
-    mpchk(&c__1, &c__4);
+    mpchk(1, 4);
 
 /*  THE UNDERFLOWING NUMBER IS SET TO ZERO
  *  AN ALTERNATIVE WOULD BE TO CALL MPMINR (X) AND RETURN,
