@@ -201,7 +201,7 @@ term:
 | 'e' '^' term {calc_epowy($3, $$);} 
 | term '!' {do_factorial($1 ,$$);}
 | term '%' {calc_percent($1, $$);}
-| '-' term %prec NEG {mpneg($2, $$);}
+| '-' term %prec NEG {mp_invert_sign($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
 | term '^' term {calc_xpowy($1, $3, $$);}
 
@@ -228,7 +228,7 @@ func:
 | tABS term %prec HIGH {mp_abs($2, $$);}
 | tFRAC term %prec HIGH {mpcmf($2, $$);}
 | tINT term %prec HIGH {mpcmim($2, $$);}
-| tCHS term %prec HIGH {mpneg($2, $$);}
+| tCHS term %prec HIGH {mp_invert_sign($2, $$);}
 
 | tSIN term %prec HIGH {calc_trigfunc(sin_t, $2, $$);}
 | tCOS term %prec HIGH {calc_trigfunc(cos_t, $2, $$);}

@@ -184,7 +184,7 @@ term:
   number {cp($1, $$);}
 | rcl {cp($1, $$);}
 | parenthesis {cp($1, $$);}
-| '-' term %prec POS {mpneg($2, $$);}
+| '-' term %prec POS {mp_invert_sign($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
 ;
 

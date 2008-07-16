@@ -180,7 +180,7 @@ calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
         mpcmim(MPy, MPtmp);
         if (mp_is_equal(MPtmp, MPy)) {   /* Is y == int(y) ? */
             int y = mp_cast_to_int(MPy);
-            mppwr(MPx, &y, MPres);
+            mppwr(MPx, y, MPres);
         } else {        /* y != int(y). Force mppwr2 to generate an error. */
             mppwr2(MPx, MPy, MPres);
         }
@@ -336,7 +336,7 @@ static void
 mpacos(int *MPx, int *MPretval)
 {
     int MP0[MP_SIZE],  MP1[MP_SIZE],  MP2[MP_SIZE];
-    int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE], val;
+    int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE];
 
     mppi(MPpi);
     mp_set_from_integer(0, MP0);
@@ -347,8 +347,7 @@ mpacos(int *MPx, int *MPretval)
         doerr(_("Error"));
         mp_set_from_mp(MP0, MPretval);
     } else if (mp_is_equal(MPx, MP0)) {
-        val = 2;
-        mpdivi(MPpi, &val, MPretval);
+        mpdivi(MPpi, 2, MPretval);
     } else if (mp_is_equal(MPx, MP1)) {
         mp_set_from_mp(MP0, MPretval);
     } else if (mp_is_equal(MPx, MPn1)) {
@@ -385,9 +384,8 @@ mpacosh(int *MPx, int *MPretval)
         doerr(_("Error"));
         mp_set_from_integer(0, MPretval);
     } else {
-        int val = -1;
         mpmul(MPx, MPx, MP1);
-        mpaddi(MP1, &val, MP1);
+        mpaddi(MP1, -1, MP1);
         mpsqrt(MP1, MP1);
         mpadd(MPx, MP1, MP1);
         mpln(MP1, MPretval);
@@ -403,11 +401,10 @@ mpacosh(int *MPx, int *MPretval)
 static void
 mpasinh(int *MPx, int *MPretval)
 {
-    int MP1[MP_SIZE], val;
+    int MP1[MP_SIZE];
  
     mpmul(MPx, MPx, MP1);
-    val = 1;
-    mpaddi(MP1, &val, MP1);
+    mpaddi(MP1, 1, MP1);
     mpsqrt(MP1, MP1);
     mpadd(MPx, MP1, MP1);
     mpln(MP1, MPretval);
@@ -473,13 +470,11 @@ calc_ctrm(int t[MP_SIZE])
  *          RESULT = log(MEM1 / MEM2) / log(1 + MEM0)
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
     mpdiv(v->MPmvals[1], v->MPmvals[2], MP1);
     mpln(MP1, MP2);
-    val = 1;
-    mpaddi(v->MPmvals[0], &val, MP3);
+    mpaddi(v->MPmvals[0], 1, MP3);
     mpln(MP3, MP4);
     mpdiv(MP2, MP4, t);
 }
@@ -505,15 +500,13 @@ calc_ddb(int t[MP_SIZE])
 
     int i;
     int len;
-    int val;
     int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
 
     mp_set_from_integer(0, MPbv);
     len = mp_cast_to_int(v->MPmvals[3]);
     for (i = 0; i < len; i++) {
         mpsub(v->MPmvals[0], MPbv, MP1);
-        val = 2;
-        mpmuli(MP1, &val, MP2);
+        mpmuli(MP1, 2, MP2);
         mpdiv(MP2, v->MPmvals[2], t);
         mp_set_from_mp(MPbv, MP1);
         mpadd(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
@@ -532,14 +525,11 @@ calc_fv(int t[MP_SIZE])
  *          RESULT = MEM0 * (pow(1 + MEM1, MEM2) - 1) / MEM1
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
   
-    val = 1;
-    mpaddi(v->MPmvals[1], &val, MP1);
+    mpaddi(v->MPmvals[1], 1, MP1);
     mppwr2(MP1, v->MPmvals[2], MP2);
-    val = -1;
-    mpaddi(MP2, &val, MP3);
+    mpaddi(MP2, -1, MP3);
     mpmul(v->MPmvals[0], MP3, MP4);
     mpdiv(MP4, v->MPmvals[1], t);
 }
@@ -556,18 +546,13 @@ calc_pmt(int t[MP_SIZE])
  *          RESULT = MEM0 * (MEM1 / (1 - pow(MEM1 + 1, -1 * MEM2)))
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    val = 1;
-    mpaddi(v->MPmvals[1], &val, MP1);
-    val = -1;
-    mpmuli(v->MPmvals[2], &val, MP2);
+    mpaddi(v->MPmvals[1], 1, MP1);
+    mpmuli(v->MPmvals[2], -1, MP2);
     mppwr2(MP1, MP2, MP3);
-    val = -1;
-    mpmuli(MP3, &val, MP4);
-    val = 1;
-    mpaddi(MP4, &val, MP1);
+    mpmuli(MP3, -1, MP4);
+    mpaddi(MP4, 1, MP1);
     mpdiv(v->MPmvals[1], MP1, MP2);
     mpmul(v->MPmvals[0], MP2, t);
 }
@@ -584,18 +569,13 @@ calc_pv(int t[MP_SIZE])
  *          RESULT = MEM0 * (1 - pow(1 + MEM1, -1 * MEM2)) / MEM1
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    val = 1;
-    mpaddi(v->MPmvals[1], &val, MP1);
-    val = -1;
-    mpmuli(v->MPmvals[2], &val, MP2);
+    mpaddi(v->MPmvals[1], 1, MP1);
+    mpmuli(v->MPmvals[2], -1, MP2);
     mppwr2(MP1, MP2, MP3);
-    val = -1;
-    mpmuli(MP3, &val, MP4);
-    val = 1;
-    mpaddi(MP4, &val, MP1);
+    mpmuli(MP3, -1, MP4);
+    mpaddi(MP4, 1, MP1);
     mpdiv(MP1, v->MPmvals[1], MP2);
     mpmul(v->MPmvals[0], MP2, t);
 }
@@ -612,15 +592,13 @@ calc_rate(int t[MP_SIZE])
  *          RESULT = pow(MEM0 / MEM1, 1 / MEM2) - 1
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
     mpdiv(v->MPmvals[0], v->MPmvals[1], MP1);
     mp_set_from_integer(1, MP2);
     mpdiv(MP2, v->MPmvals[2], MP3);
     mppwr2(MP1, MP3, MP4);
-    val = -1;
-    mpaddi(MP4, &val, t);
+    mpaddi(MP4, -1, t);
 }
 
 
@@ -655,13 +633,11 @@ calc_syd(int t[MP_SIZE])
  *                   (MEM2 * (MEM2 + 1) / 2)
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
     mpsub(v->MPmvals[2], v->MPmvals[3], MP2);
-    val = 1;
-    mpaddi(MP2, &val, MP3);
-    mpaddi(v->MPmvals[2], &val, MP2);
+    mpaddi(MP2, 1, MP3);
+    mpaddi(v->MPmvals[2], 1, MP2);
     mpmul(v->MPmvals[2], MP2, MP4);
     mp_set_from_integer(2, MP2);
     mpdiv(MP4, MP2, MP1);
@@ -682,16 +658,13 @@ calc_term(int t[MP_SIZE])
  *          RESULT = log(1 + (MEM1 * MEM2 / MEM0)) / log(1 + MEM2)
  */
 
-    int val;
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    val = 1;
-    mpaddi(v->MPmvals[2], &val, MP1);
+    mpaddi(v->MPmvals[2], 1, MP1);
     mpln(MP1, MP2);
     mpmul(v->MPmvals[1], v->MPmvals[2], MP1);
     mpdiv(MP1, v->MPmvals[0], MP3);
-    val = 1;
-    mpaddi(MP3, &val, MP4);
+    mpaddi(MP3, 1, MP4);
     mpln(MP4, MP1);
     mpdiv(MP1, MP2, t);
 }
@@ -855,7 +828,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
 
     mp_set_from_integer(basevals[base], MP1base);
 
-    mppwr(MP1base, &v->accuracy, MP1);
+    mppwr(MP1base, v->accuracy, MP1);
     /* FIXME: string const. if MPstr_to_num can get it */
     SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP2);
@@ -889,7 +862,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
 
         *optr++ = digits[dval];
         dval = -dval;
-        mpaddi(MPval, &dval, MPval);
+        mpaddi(MPval, dval, MPval);
     }    
     *optr++ = '\0';
     if (toclear == TRUE) {
@@ -919,7 +892,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
     char half[MAXLINE], fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
-    int i, dval, len, n;
+    int i, dval, len;
     int MPmant[MP_SIZE];        /* Mantissa. */
     int ddig;                   /* Number of digits in exponent. */
     int eng = 0;                /* Set if this is an engineering number. */
@@ -937,11 +910,9 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
     mp_set_from_mp(MPval, MPmant);
 
     mp_set_from_integer(basevals[base], MP1base);
-    n = 3;
-    mppwr(MP1base, &n, MP3base);
+    mppwr(MP1base, 3, MP3base);
 
-    n = 10;
-    mppwr(MP1base, &n, MP10base);
+    mppwr(MP1base, 10, MP10base);
 
     mp_set_from_integer(1, MP1);
     mpdiv(MP1, MP10base, MPatmp);
@@ -988,7 +959,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
  
     SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP1);
-    mpaddi(MP1, &exp, MPval);
+    mpaddi(MP1, exp, MPval);
     mp_set_from_integer(1, MP1);
     for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
         mpdiv(MPval, MP1base, MPval);
@@ -1003,7 +974,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
         dval = mp_cast_to_int(MPval);
         *optr++ = digits[dval];
         dval = -dval;
-        mpaddi(MPval, &dval, MPval);
+        mpaddi(MPval, dval, MPval);
     }
     *optr++    = '\0';
     v->ltr.toclear = 1;
@@ -1089,14 +1060,14 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
 
     while ((inum = char_val(*optr)) >= 0) {
         mpmul(MPval, MPbase, MPval);
-        mpaddi(MPval, &inum, MPval);
+        mpaddi(MPval, inum, MPval);
         optr++;
     }
 
     if (*optr == '.' || *optr == *v->radix) {
         optr++;
         for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
-            mppwr(MPbase, &i, MP1);
+            mppwr(MPbase, i, MP1);
             mp_set_from_integer(inum, MP2);
             mpdiv(MP2, MP1, MP1);
             mpadd(MPval, MP1, MPval);
@@ -1120,12 +1091,12 @@ MPstr_to_num(char *str, enum base_type base, int *MPval)
     exp *= exp_sign;
 
     if (v->ltr.key_exp) {
-        mppwr(MPbase, &exp, MP1);
+        mppwr(MPbase, exp, MP1);
         mpmul(MPval, MP1, MPval);
     }
 
     if (negate == 1) {
-        mpneg(MPval, MPval);
+        mp_invert_sign(MPval, MPval);
     }
 }
 

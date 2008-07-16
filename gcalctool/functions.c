@@ -61,7 +61,7 @@ make_exp(char *number, int t[MP_SIZE])
     MPstr_to_num(b, v->base, MP_b);
     if (a[i+1] == '-') {
         int MP_c[MP_SIZE];
-        mpneg(MP_b, MP_c);
+        mp_invert_sign(MP_b, MP_c);
         calc_xtimestenpowx(MP_a, MP_c, t);
     } else {
         calc_xtimestenpowx(MP_a, MP_b, t);
@@ -772,7 +772,7 @@ do_factorial(int *MPval, int *MPres)
             matherr((struct exception *) NULL);
         } else {
             while (i > 0) {
-                mpmuli(MPa, &i, MPa);
+                mpmuli(MPa, i, MPa);
                 val = mp_cast_to_double(MPa);
                 if (v->error) {
                     mperr();
@@ -897,7 +897,7 @@ do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
                 MPstr_to_num(v->display, v->base, s);
                 v->ltr.key_exp = 0;
             } else {
-                mpneg(s, t);
+                mp_invert_sign(s, t);
             }
             break;
     }
