@@ -10,6 +10,6 @@ DOC_FIGURES = figures/gcalctool_advanced_window.png     \
               figures/gcalctool_menu_symbol.png		\
               figures/gcalctool_scientific_window.png
 
-DOC_LINGUAS = ca de es fr it ko oc pt_BR sv 
+DOC_LINGUAS = ca de es fr it ja ko oc pt_BR sv 
 
-SUBDIRS = bg ja zh_CN zh_HK zh_TW
+SUBDIRS = bg zh_CN zh_HK zh_TW
