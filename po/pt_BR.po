@@ -1,21 +1,22 @@
 # Brazilian Portuguese translation of gcalctool.
-# Copyright (C) 2003-2007 Free Software Foundation, Inc.
+# Copyright (C) 2003-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003.
 # Joao Emanuel <deathbird1981@yahoo.com.br>, 2003.
 # Estêvão Samuel Procópio <tevaum@gmail.com>, 2004.
 # Raphael Higino <phhigino@gmail.com>, 2004.
 # Afonso Celso Medina <medina@maua.br>, 2005.
+# Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2007-2008.
 # Og Maciel <ogmaciel@ubuntu.com>, 2007-2008.
-# Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2007-2008.
+# Fabrício Godoy <skarllot@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-29 10:26+0000\n"
-"PO-Revision-Date: 2008-05-01 08:42-0500\n"
-"Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
+"PO-Revision-Date: 2008-07-22 22:35-0300\n"
+"Last-Translator: Fabrício Godoy <skarllot@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,11 +66,8 @@ msgstr "Fator de conversão de centímetros cúbicos para polegadas cúbicas"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:590
-#: ../gcalctool/display.c:365
-#: ../gcalctool/mp.c:1981
-#: ../gcalctool/mpmath.c:369
-#: ../gcalctool/mpmath.c:408
+#: ../gcalctool/calctool.c:590 ../gcalctool/display.c:365
+#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:369 ../gcalctool/mpmath.c:408
 #: ../gcalctool/mpmath.c:461
 msgid "Error"
 msgstr "Erro"
@@ -110,8 +108,7 @@ msgstr "\t\t [-?] [-v] [-h]\n"
 msgid "-a needs accuracy value"
 msgstr "-a necessita do valor de precisão"
 
-#: ../gcalctool/calctool.c:647
-#: ../gcalctool/get.c:244
+#: ../gcalctool/calctool.c:647 ../gcalctool/get.c:244
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: precisão deveria estar no intervalo 0-%d\n"
@@ -152,13 +149,11 @@ msgstr "Expressão mal formada"
 msgid "Error, operands must be integers"
 msgstr "Erro: os operandos devem ser inteiros"
 
-#: ../gcalctool/functions.c:930
-#: ../gcalctool/functions.c:1283
+#: ../gcalctool/functions.c:930 ../gcalctool/functions.c:1283
 msgid "No sane value to convert"
 msgstr "Nenhum valor sano para converter"
 
-#: ../gcalctool/functions.c:1029
-#: ../gcalctool/functions.c:1356
+#: ../gcalctool/functions.c:1029 ../gcalctool/functions.c:1356
 msgid "No sane value to store"
 msgstr "Nenhum valor sano para armazenar"
 
@@ -203,8 +198,7 @@ msgstr "%s: modo trigonométrico inválido [%s]\n"
 msgid "%s: invalid syntax mode [%s]\n"
 msgstr "%s: modo de sintaxe inválido [%s]\n"
 
-#: ../gcalctool/gtk.c:55
-#: ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -248,8 +242,7 @@ msgstr "Nenhum modo de precedência de operadores ativado"
 msgid "Activated expression mode with operator precedence"
 msgstr "Modo de expressão com precedência de operador ativado"
 
-#: ../gcalctool/gtk.c:545
-#: ../glade/gcalctool.glade.h:389
+#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:389
 #, no-c-format
 msgid "_Other (%d) ..."
 msgstr "_Outro (%d) ..."
@@ -270,8 +263,7 @@ msgstr[0] "Atualmente definida como %d casa."
 msgstr[1] "Atualmente definida como %d casas."
 
 #. Factorial
-#: ../gcalctool/gtk.c:587
-#: ../glade/gcalctool.glade.h:314
+#: ../gcalctool/gtk.c:587 ../glade/gcalctool.glade.h:314
 msgid "Sin"
 msgstr "Sen"
 
@@ -288,8 +280,7 @@ msgid "Sinh<sup>-1</sup>"
 msgstr "Senh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:591
-#: ../glade/gcalctool.glade.h:140
+#: ../gcalctool/gtk.c:591 ../glade/gcalctool.glade.h:140
 msgid "Cos"
 msgstr "Cos"
 
@@ -306,8 +297,7 @@ msgid "Cosh<sup>-1</sup>"
 msgstr "Cosh<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:595
-#: ../glade/gcalctool.glade.h:339
+#: ../gcalctool/gtk.c:595 ../glade/gcalctool.glade.h:339
 msgid "Tan"
 msgstr "Tan"
 
@@ -334,7 +324,9 @@ msgstr "Tanh<sup>-1</sup>"
 #.
 #: ../gcalctool/gtk.c:693
 msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr "Editor binário ativado. Clique nos valores binários para habilitá-los desabilitá-los."
+msgstr ""
+"Editor binário ativado. Clique nos valores binários para habilitá-los "
+"desabilitá-los."
 
 #: ../gcalctool/gtk.c:1141
 msgid "translator-credits"
@@ -369,7 +361,8 @@ msgid ""
 msgstr ""
 "Gcalctool é distribuído na expectativa de ser útil,\n"
 "mas SEM QUALQUER GARANTIA; sem mesmo a garantia implícita de\n"
-"COMERCIALIZAÇÃO ou de ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. Consulte a\n"
+"COMERCIALIZAÇÃO ou de ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. Consulte "
+"a\n"
 "Licença Pública Geral GNU para obter mais detalhes.\n"
 
 #: ../gcalctool/gtk.c:1152
@@ -378,8 +371,10 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 msgstr ""
-"Você deve ter recebido uma cópia da Licença Pública Geral GNU (GNU General Public License)\n"
-"junto com o Gcalctool; caso contrário, escreva para a Free Software Foundation, Inc.,\n"
+"Você deve ter recebido uma cópia da Licença Pública Geral GNU (GNU General "
+"Public License)\n"
+"junto com o Gcalctool; caso contrário, escreva para a Free Software "
+"Foundation, Inc.,\n"
 "51 Temple Place, Fifth Floor, Boston, MA 02110-1301 USA\n"
 
 #: ../gcalctool/gtk.c:1163
@@ -394,13 +389,11 @@ msgstr "© 1987-2008 Autores do Gcalctool"
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora com modos financeiro e científico."
 
-#: ../gcalctool/gtk.c:1484
-#: ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1484 ../glade/gcalctool.glade.h:119
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1502
-#: ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1502 ../glade/gcalctool.glade.h:170
 msgid "F"
 msgstr "F"
 
@@ -409,8 +402,12 @@ msgid "Changing Modes Clears Calculation"
 msgstr "Trocar de Modo Limpa o Cálculo"
 
 #: ../gcalctool/gtk.c:1686
-msgid "When you change modes, the current calculation will be cleared, and the base will be reset to decimal."
-msgstr "Quando você troca de modo, o cálculo atual é limpo e a base é redefinida para decimal."
+msgid ""
+"When you change modes, the current calculation will be cleared, and the base "
+"will be reset to decimal."
+msgstr ""
+"Quando você troca de modo, o cálculo atual é limpo e a base é redefinida "
+"para decimal."
 
 #: ../gcalctool/gtk.c:1690
 msgid "_Do not warn me again"
@@ -440,27 +437,27 @@ msgstr "Erro ao carregar a interface de usuário"
 
 #: ../gcalctool/gtk.c:2536
 #, c-format
-msgid "The user interface file %s is missing or unable to be loaded. Please check your installation."
-msgstr "O arquivo de interface de usuário %s está faltando ou não pode ser carregado. Por favor, verifique sua instalação."
+msgid ""
+"The user interface file %s is missing or unable to be loaded. Please check "
+"your installation."
+msgstr ""
+"O arquivo de interface de usuário %s está faltando ou não pode ser "
+"carregado. Por favor, verifique sua instalação."
 
-#: ../gcalctool/gtk.c:2763
-#: ../gcalctool/gtk.c:2781
+#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
 msgid "No."
 msgstr "Nº"
 
-#: ../gcalctool/gtk.c:2765
-#: ../gcalctool/gtk.c:2783
+#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
 msgid "Value"
 msgstr "Valor"
 
-#: ../gcalctool/gtk.c:2767
-#: ../gcalctool/gtk.c:2785
+#: ../gcalctool/gtk.c:2767 ../gcalctool/gtk.c:2785
 msgid "Description"
 msgstr "Descrição"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2924
-#: ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2924 ../glade/gcalctool.glade.h:269
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "Restaurar _Padrão (%d)"
@@ -666,8 +663,12 @@ msgid "<i>x</i><sup><i>y</i></sup>"
 msgstr "<i>x</i><sup><i>y</i></sup>"
 
 #: ../glade/gcalctool.glade.h:64
-msgid "<small><i><b>Note:</b> All constant values are specified in the decimal numeric base.</i></small>"
-msgstr "<small><i><b>Nota:</b> Todos os valores constantes são especificados na base numérica decimal.</i></small>"
+msgid ""
+"<small><i><b>Note:</b> All constant values are specified in the decimal "
+"numeric base.</i></small>"
+msgstr ""
+"<small><i><b>Nota:</b> Todos os valores constantes são especificados na base "
+"numérica decimal.</i></small>"
 
 #. "R0" is the abbreviation for "Register 0", used in the memory register dialog
 #: ../glade/gcalctool.glade.h:66
@@ -1888,211 +1889,312 @@ msgstr "√"
 
 #~ msgid "Expression"
 #~ msgstr "Expressão"
+
 #~ msgid "/"
 #~ msgstr "/"
+
 #~ msgid "*"
 #~ msgstr "*"
+
 #~ msgid "Chs"
 #~ msgstr "Chs"
+
 #~ msgid "-"
 #~ msgstr "-"
+
 #~ msgid "Sqrt"
 #~ msgstr "Raiz"
+
 #~ msgid "Recip"
 #~ msgstr "Recíp"
+
 #~ msgid "^2"
 #~ msgstr "^2"
+
 #~ msgid "&amp;16"
 #~ msgstr "&amp;16"
+
 #~ msgid "&amp;32"
 #~ msgstr "&amp;32"
+
 #~ msgid "32 bit unsigned integer"
 #~ msgstr "Valor inteiro de 32 bits sem sinal"
+
 #~ msgid " Mod "
 #~ msgstr " Mód "
+
 #~ msgid "Exponential"
 #~ msgstr "Exponencial"
+
 #~ msgid "e"
 #~ msgstr "e"
+
 #~ msgid "e^"
 #~ msgstr "e^"
+
 #~ msgid "^"
 #~ msgstr "^"
+
 #~ msgid "!"
 #~ msgstr "!"
+
 #~ msgid "Log"
 #~ msgstr "Log"
+
 #~ msgid "Or"
 #~ msgstr "Ou"
+
 #~ msgid " Or "
 #~ msgstr " Ou "
+
 #~ msgid "And"
 #~ msgstr "E"
+
 #~ msgid " And "
 #~ msgstr " E "
+
 #~ msgid "Not"
 #~ msgstr "Não"
+
 #~ msgid "~"
 #~ msgstr "~"
+
 #~ msgid "Xor"
 #~ msgstr "Xou"
+
 #~ msgid " Xor "
 #~ msgstr " Xou "
+
 #~ msgid "Xnor"
 #~ msgstr "Xnou"
+
 #~ msgid " Xnor "
 #~ msgstr " Xnou "
+
 #~ msgid "Numeric stack error"
 #~ msgstr "Erro de pilha numérica"
+
 #~ msgid "Operand stack error"
 #~ msgstr "Erro de pilha de operandos"
+
 #~ msgid "calculator"
 #~ msgstr "calculadora"
+
 #~ msgid "%s: invalid bitcalc choice [%s]\n"
 #~ msgstr "%s: escolha de bitcálc inválido [%s]\n"
+
 #~ msgid "1 place"
 #~ msgstr "1 casa"
+
 #~ msgid "2 places"
 #~ msgstr "2 casas"
+
 #~ msgid "3 places"
 #~ msgstr "3 casas"
+
 #~ msgid "4 places"
 #~ msgstr "4 casas"
+
 #~ msgid "5 places"
 #~ msgstr "5 casas"
+
 #~ msgid "6 places"
 #~ msgstr "6 casas"
+
 #~ msgid "7 places"
 #~ msgstr "7 casas"
+
 #~ msgid "8 places"
 #~ msgstr "8 casas"
+
 #~ msgid "9 places"
 #~ msgstr "9 casas"
+
 #~ msgid "Show Bitcalculating _Extension"
 #~ msgstr "Exibir _Extensão BitCálculo"
+
 #~ msgid "Show bitcalculating extension"
 #~ msgstr "Mostra extensão bitcálculo"
+
 #~ msgid "0 significant places"
 #~ msgstr "0 casa significativas"
+
 #~ msgid "1 significant place"
 #~ msgstr "1 casa significativa"
+
 #~ msgid "2 significant places"
 #~ msgstr "2 casas significativas"
+
 #~ msgid "3 significant places"
 #~ msgstr "3 casas significativas"
+
 #~ msgid "4 significant places"
 #~ msgstr "4 casas significativas"
+
 #~ msgid "5 significant places"
 #~ msgstr "5 casas significativas"
+
 #~ msgid "6 significant places"
 #~ msgstr "6 casas significativas"
+
 #~ msgid "7 significant places"
 #~ msgstr "7 casas significativas"
+
 #~ msgid "8 significant places"
 #~ msgstr "8 casas significativas"
+
 #~ msgid "9 significant places"
 #~ msgstr "9 casas significativas"
+
 #~ msgid "_Other (10) ..."
 #~ msgstr "_Outro (10) ..."
+
 #~ msgid "Set other precision"
 #~ msgstr "Define outra precisão"
+
 #~ msgid "Note:"
 #~ msgstr "Nota:"
+
 #~ msgid ""
 #~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
 #~ msgstr ""
 #~ "Define precisão de 0 a %d casas decimais. Definida atualmente para %d "
 #~ "casas. [a]"
+
 #~ msgid "Accuracy value out of range"
 #~ msgstr "Valor de precisão fora dos limites"
+
 #~ msgid "Perform calculations"
 #~ msgstr "Executar cálculos"
+
 #~ msgid "Previous expression"
 #~ msgstr "Expressão anterior"
+
 #~ msgid "+/-"
 #~ msgstr "+/-"
+
 #~ msgid "*10^"
 #~ msgstr "*10^"
+
 #~ msgid "abs"
 #~ msgstr "abs"
+
 #~ msgid "acosh"
 #~ msgstr "acosh"
+
 #~ msgid "acos"
 #~ msgstr "acos"
+
 #~ msgid "and"
 #~ msgstr "e"
+
 #~ msgid "asinh"
 #~ msgstr "asenh"
+
 #~ msgid "asin"
 #~ msgstr "asen"
+
 #~ msgid "atanh"
 #~ msgstr "atanh"
+
 #~ msgid "atan"
 #~ msgstr "atan"
+
 #~ msgid "cbrt"
 #~ msgstr "rz. cúb."
+
 #~ msgid "chs"
 #~ msgstr "chs"
+
 #~ msgid "clr"
 #~ msgstr "clr"
+
 #~ msgid "cosh"
 #~ msgstr "cosh"
+
 #~ msgid "cos"
 #~ msgstr "cos"
+
 #~ msgid "ddb"
 #~ msgstr "ddb"
+
 #~ msgid "frac"
 #~ msgstr "fraç"
+
 #~ msgid "fv"
 #~ msgstr "vf"
+
 #~ msgid "int"
 #~ msgstr "int"
+
 #~ msgid "ln"
 #~ msgstr "ln"
+
 #~ msgid "log"
 #~ msgstr "log"
+
 #~ msgid "not"
 #~ msgstr "não"
+
 #~ msgid "or"
 #~ msgstr "ou"
+
 #~ msgid "pmt"
 #~ msgstr "pgt"
+
 #~ msgid "pv"
 #~ msgstr "pv"
+
 #~ msgid "rand"
 #~ msgstr "rand"
+
 #~ msgid "rate"
 #~ msgstr "taxa"
+
 #~ msgid "rcl"
 #~ msgstr "rcl"
+
 #~ msgid "sinh"
 #~ msgstr "senh"
+
 #~ msgid "sin"
 #~ msgstr "sen"
+
 #~ msgid "sln"
 #~ msgstr "sln"
+
 #~ msgid "sqrt"
 #~ msgstr "raiz"
+
 #~ msgid "sto"
 #~ msgstr "arm"
+
 #~ msgid "syd"
 #~ msgstr "syd"
+
 #~ msgid "tanh"
 #~ msgstr "tanh"
+
 #~ msgid "tan"
 #~ msgstr "tan"
+
 #~ msgid "term"
 #~ msgstr "term"
+
 #~ msgid "xnor"
 #~ msgstr "xnou"
+
 #~ msgid "xor"
 #~ msgstr "xou"
+
 #~ msgid "ans"
 #~ msgstr "resp"
+
 #~ msgid "_Quit"
 #~ msgstr "_Sair"
+
 #~ msgid "_Copy"
 #~ msgstr "_Copiar"
+
 #~ msgid "_About"
 #~ msgstr "_Sobre"
-
