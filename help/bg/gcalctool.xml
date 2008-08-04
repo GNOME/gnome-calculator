@@ -4,7 +4,7 @@
 <!ENTITY appversion "5.5.37">
 <!ENTITY manrevision "2.9">
 <!ENTITY date "March 2005">
-<!ENTITY app "<application>Calculator</application>">
+<!ENTITY app "<application>gcalctool</application>">
 <!ENTITY appname "Calculator">
 ]>
 <!-- 
@@ -15,37 +15,63 @@
   Template last modified Feb 06, 2003
 -->
 <!-- =============Document Header ============================= -->
-<article id="index" lang="bg.new">
+<article id="index" lang="bg">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-    <title>Ръководство за <application>Калкулатор</application>, версия &manrevision;</title>       
+    <title><application>gcalctool</application> Manual</title>       
+
+    <abstract role="description">
+      <para>
+      gcalctool is a calculator for GNOME. It includes basic, advanced, 
+      financial, and scientific modes and uses a multiple precision package 
+      to do its arithmetic to give a high degree of accuracy.
+      </para>
+    </abstract>
 
     <copyright> 
       <year>2003</year> 
       <year>2004</year> 
       <year>2005</year> 	
       <holder>Sun Microsystems</holder> 
-    </copyright>
+    </copyright> 
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2005</year>
-   <holder>Ростислав "zbrox" Райков (zbrox@i-space.org)</holder>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
    -->
-    <publisher> 
+    <publisher role="maintainer"> 
       <publishername>Проект за документация на GNOME</publishername> 
     </publisher> 
 
-   &legal;
+     <legalnotice id="legalnotice">
+	<para>Предоставя се разрешение за копиране, разпространение и/или промяна на този документ, съгласно условията на „Лиценза за свободна документация на GNU“, версия 1.1 или всяка следваща версия, издадена от Фондация „Свободен софтуер“; без „Непроменливи раздели“, „Текстове на предната корица“, както и „Текстове на задната корица“. Копие на лиценза може да бъде намерено <ulink type="help" url="ghelp:fdl">тук</ulink> или във файла COPYING-DOCS, разпространяван с това ръководство.</para>
+         <para>Това ръководство е част от колекция ръководства за GNOME, разпространявани под GFDL. Ако искате да разпространявате това ръководство отделно, можете да го направите, като включите копие на лиценза към ръководството, както е описано в раздел 6 от лиценза.</para>
+
+	<para>Много от имената, използвани от компании, за да отличават собствените си продукти и услуги, са регистрирани търговски марки. Когато такива имена присъстват в която и да е документация за GNOME и членовете на проекта за документация на GNOME са осведомени за съответните търговски марки, тогава имената са с главни букви или начални главни букви.</para>
+
+	<para>ДОКУМЕНТЪТ И ПРОМЕНЕНИТЕ МУ ВЕРСИИ СЕ ПРЕДОСТАВЯТ ПОД УСЛОВИЯТА НА ЛИЦЕНЗА ЗА СВОБОДНА ДОКУМЕНТАЦИЯ НА GNU, С ДОПЪЛНИТЕЛНОТО ПОЯСНЕНИЕ, ЧЕ: <orderedlist>
+		<listitem>
+		  <para>ДОКУМЕНТЪТ СЕ ПРЕДОСТАВЯ НА БАЗА „КАКТО Е“, БЕЗ КАКВАТО И ДА Е ГАРАНЦИЯ, ПРЯКА ИЛИ КОСВЕНА, ВКЛЮЧИТЕЛНО БЕЗ ОГРАНИЧЕНИЯ И ГАРАНЦИИ, ЧЕ ДОКУМЕНТЪТ ИЛИ ПРОМЕНЕНАТА МУ ВЕРСИЯ СА БЕЗ ДЕФЕКТИ, ГОДНИ ЗА КОНКРЕТНА УПОТРЕБА ИЛИ НЕНАРУШАВАЩИ. ЦЕЛИЯТ РИСК ОТНОСНО КАЧЕСТВОТО, ТОЧНОСТТА И ХАРАКТЕРИСТИКИТЕ НАДОКУМЕНТА ИЛИ ПРОМЕНЕНАТА МУ ВЕРСИЯ Е ЗА ВАША СМЕТКА. АКО НЯКОЙ ДОКУМЕНТ ИЛИ ПРОМЕНЕНАТА МУ ВЕРСИЯ СЕ ОКАЖЕ ДЕФЕКТЕН В КАКВОТО И ДА Е ОТНОШЕНИЕ, ВИЕ (НЕ ПЪРВОНАЧАЛНИЯ АВТОР ИЛИ КОЙТО И ДА Е ДОПРИНЕСЪЛ ЗА РАЗРАБОТКАТА) ПОЕМАТЕ РАЗХОДИТЕ ЗА ВСЯКАКВО НЕОБХОДИМО ОБСЛУЖВАНЕ, ПОПРАВКА ИЛИ КОРЕКЦИИ. ТОВА ОТКАЗВАНЕ ОТ ГАРАНЦИЯТА ПРЕДСТАВЛЯВА СЪЩЕСТВЕНА ЧАСТ ОТ ТОЗИ ЛИЦЕНЗ. НЕ Е РАЗРЕШЕНА УПОТРЕБАТА НА КОЙТО И ДА Е ДОКУМЕНТ ИЛИ ПРОМЕНЕНАТА ВЕРСИЯ НА ДОКУМЕНТА, ОСВЕН ПРИ СПАЗВАНЕ НА ТОЗИ ОТКАЗ ОТ ГАРАНЦИЯ; И</para>
+		</listitem>
+		<listitem>
+		  <para>ПРИ НИКАКВИ ОБСТОЯТЕЛСТВА И ПОД НИКАКВА ЮРИДИЧЕСКА ОСНОВА, НЕЗАВИСИМО ДАЛИ Е В НАРУШЕНИЕ (ВКЛЮЧИТЕЛНО ПРИЧИНЕНО ОТ НЕБРЕЖНОСТ), ДОГОВОР ИЛИ ДРУГО, АВТОРЪТ, ПЪРВОНАЧАЛНИЯТ АВТОР ИЛИ КОЙТО И ДА Е ДОПРИНЕСЪЛ ЗАРАЗРАБОТКАТА, ИЛИ КОЙТО И ДА Е ДИСТРИБУТОР НА ДОКУМЕНТА ИЛИ ПРОМЕНЕНАТА МУ ВЕРСИЯ, ИЛИ КОЙТО И ДА Е ДОСТАВЧИК НА КОЯТО И ДА Е ОТ ИЗБРОЕНИТЕ СТРАНИ, НЯМА ДА БЪДЕ ОТГОВОРЕН ПРЕД НИКОГО ЗА ВСИЧКИ ПРЕКИ, КОСВЕНИ, СПЕЦИАЛНИ, СЛУЧАЙНИ ИЛИ ПОСЛЕДСТВЕНИ ЩЕТИ ОТ КАКЪВТО И ДА Е ХАРАКТЕР, ВКЛЮЧИТЕЛНО, БЕЗ ОГРАНИЧЕНИЯ, ЩЕТИ ЗА ЗАГУБА НА ДОБРОЖЕЛАТЕЛНОСТ, СПИРАНЕ НА РАБОТАТА, КОМПЮТЪРНА ПОВРЕДА ИЛИ НЕИЗПРАВНОСТ, ИЛИ ВСЯКАКВИ ДРУГИ ЩЕТИ ИЛИ ЗАГУБИ, ВЪЗНИКНАЛИ ИЛИ СВЪРЗАНИ С УПОТРЕБАТА НА ДОКУМЕНТА ИЛИ ПРОМЕНЕНИТЕ МУ ВЕРСИИ, ДОРИ И КОГАТО ТАЗИ СТРАНА Е БИЛА ИНФОРМИРАНА ЗА ВЪЗМОЖНОСТТА ОТ ТАКИВА ЩЕТИ.</para>
+		</listitem>
+	  </orderedlist></para>
+  </legalnotice>
+
+
    <!-- This file  contains link to license for the documentation (GNU FDL), and 
         other legal stuff such as "NO WARRANTY" statement. Please do not change 
 	any of this. -->
 
     <authorgroup> 
-      <corpauthor>Sun Microsystems Inc.</corpauthor>
+      <corpauthor> Sun Microsystems Inc.</corpauthor>
+
+<!-- gdocteam@sun.com (Sun Java Desktop System Documentation Team) -->
       
 <!-- This is appropriate place for other contributors: translators,
      maintainers,  etc. Commented out by default.
@@ -64,8 +90,8 @@
 
     <revhistory>
     <revision> 
-		<revnumber>Ръководство за Калкулатор, версия &manrevision;</revnumber> 
-		<date>&date;</date> 
+		<revnumber>Ръководство за Калкулатор, версия 2.9</revnumber> 
+		<date>March 2005</date> 
 		<revdescription> 
 	  		<para role="author">Екипът по документацията на Sun Java Desktop System</para>
 	  		<para role="publisher">Проект за документация на GNOME</para>
@@ -145,10 +171,12 @@
       </revision> 
     </revhistory> 
 
-    <releaseinfo>Това ръководство описва <application>Калкулатор</application>, версия 5.5.37</releaseinfo> 
+    <releaseinfo>This manual describes version 5.5.37 of Calculator.
+    </releaseinfo> 
     <legalnotice> 
       <title>Обратна връзка</title> 
-      <para>За да докладвате за грешка или да направите предложение относно програмата <application>Калкулатор</application> или това ръководство, следвайте указанията, описани в <ulink url="ghelp:gnome-feedback" type="help">Страницата за обратна връзка на GNOME</ulink>.</para>
+      <para>To report a bug or make a suggestion regarding the <application>gcalctool</application> application or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
 <!-- Translators may also add here feedback address for translations -->
     </legalnotice> 
   </articleinfo> 
@@ -164,7 +192,7 @@
 <!-- ============= Introduction ============================== -->
   <sect1 id="gcalctool-intro"> 
     <title>Въведение</title> 
-    <para>Програмата <application>Калкулатор</application> предоставя следните режими за различни видове математическа функционалност:</para>
+    <para>The <application>gcalctool</application> application provides the following modes for different types of mathematical functionality: </para>
      <variablelist>
         <varlistentry>
         <term><link linkend="gcalctool-basic-mode">Основен</link></term>
@@ -184,7 +212,7 @@
         </varlistentry>
      </variablelist>
 
-    <para>Може да използвате <application>Калкулатора</application> в следните бройни системи:</para>
+    <para>You can use <application>gcalctool</application> in the following numbering systems:</para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
           <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -224,7 +252,7 @@
 
   <sect1 id="gcalctool-get-start"> 
     <title>Първи стъпки</title> 
-    <para>Може да стартирате <application>Калкулатора</application> по следните начини:</para>
+    <para>You can start <application>gcalctool</application> in the following ways:</para>
     <variablelist>
       <varlistentry>
         <term>От менюто</term>
@@ -239,27 +267,27 @@
         </listitem>
       </varlistentry>
     </variablelist>
-    <para>Когато стартирате <application><application>Калкулатора</application></application> се появява следният прозорец:</para>
+    <para>When you start <application>gcalctool</application>, the following window is displayed:</para>
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-basic"> 
-	<title>Прозорецът на <application>Калкулатор</application> в основен режим</title> 
+	<title><application>gcalctool</application> Basic Mode Window</title> 
 	<screenshot> 
 	  <mediaobject> 
 	    <imageobject><imagedata fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
 	    </imageobject>
 	    <textobject> 
-	      <phrase>Показва в основен режим прозореца на <application>Калкулатора</application>.</phrase> 
+	      <phrase>Shows <application>gcalctool</application> Basic mode window.  </phrase> 
 	    </textobject> 
 	  </mediaobject> 
 	</screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
-                <para>Прозорецът на <application><application>Калкулатора</application></application> съдържа следните елементи:</para>
+                <para>The <application><application>gcalctool</application></application> window contains the following elements: </para>
                 <variablelist>
                   <varlistentry> <term>Лента с менюта</term>
                          <listitem>
-                                <para>Менютата на лентата с менюта съдържат всички командите, които можете да използвате при работа с <application><application>Калкулатора</application></application>.</para>
+                                <para>The menus on the menubar contain all of the commands that you need to work with <application><application>gcalctool</application></application>.</para>
                          </listitem>
                   </varlistentry>
                   <varlistentry> <term>Район на преглед</term>
@@ -274,7 +302,7 @@
                   </varlistentry>
                   <varlistentry> <term>Изскачащо меню</term>
                          <listitem>
-                <para>Символът <inlinemediaobject><imageobject><imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/></imageobject><textobject><phrase>Показва символа за изскачащо меню.</phrase></textobject></inlinemediaobject> върху бутон на <application>Калкулатора</application> показва, че ще се появи изскачащо меню, когато натиснете този бутон.</para>
+                <para>The <inlinemediaobject><imageobject><imagedata fileref="figures/gcalctool_menu_symbol.png" format="PNG"/></imageobject><textobject><phrase>Показва символа за изскачащо меню.</phrase></textobject></inlinemediaobject> symbol on a <application>gcalctool</application> button indicates that a popup menu is displayed when you click on that button.</para>
                          </listitem>
                   </varlistentry>
 <varlistentry>
@@ -295,13 +323,13 @@
                 <para>За да извършите пресмятане, използвайте един от следните методи:</para>
                 <itemizedlist>
                   <listitem>
-                         <para>Натискайте бутоните на <application>Калкулатора</application>, за да въвеждате числа и функции.</para>
+                         <para>Click on the <application>gcalctool</application> buttons to enter numbers and functions.</para>
                   </listitem>
                   <listitem>
-                         <para>Изберете прозореца на <application>Калкулатора</application> и после използвайте клавиатурата или цифровите бутони, за да определите пресмятането, което искате да извършите. За пълен списък на клавиатурните бързи клавиши, вижте </para>
+                         <para>Give focus to the <application>gcalctool</application> window, then use the keyboard or numeric keypad to specify the calculation that you want to perform. For a complete list of keyboard shortcuts, see <xref linkend="gcalctool-keyboard-shortcut"/>.</para>
                   </listitem>
                 </itemizedlist>
-                <para>Програмата <application>Калкулатор</application> автоматично показва числата с повече от 40 цифри и малки числа като експоненциални числа. Например, следната таблица показва стойността, която се показва, когато използвате десетична основа с точност до 2 значими позиции:</para>
+                <para>The <application>gcalctool</application> application automatically displays numbers with more than 40 digits, and small numbers, as exponential numbers. For example, the following table shows the value that is displayed when you use the decimal numeric base with an accuracy of 2 significant places: </para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
           <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -327,13 +355,15 @@
         </tgroup>
       </informaltable>
 
-      <para>За информация относно как да въвеждате число в експоненциален формат, вижте </para>
+      <para>За информация относно как да въвеждате число в експоненциален формат, вижте</para>
 
     <sect3 id="gcalctool-calc-functions-separator">
                 <title>Показване на разделител при големите числа</title> 
       <para>За да вмъкнете разделител между всеки три цифри от ляво на десетичната запетая при десетичната основа, изберете <menuchoice><guimenu>Изглед</guimenu><guimenuitem>Показване на разделителя за хилядите</guimenuitem></menuchoice>.</para>
       <note>
-      <para>Разделителният символ не се показва, когато използвате локалата C.</para>
+      <para>Different countries and cultures have varying conventions for how to communicate. These conventions include the language spoken and the character used as a numeric separator.</para>
+      <para><application>gcalctool</application> has been internationalized so user's can adapt to their own conventions. This is done by setting a specific locale. We can't determine what locales will exist, except for a standard one called the C locale.</para>
+      <para>When you use the C locale, the separator character is not displayed.</para>
       </note>
     </sect3>
 
@@ -349,10 +379,11 @@
    
     <sect2 id="gcalctool-basic-mode"> 
       <title>Извършване на основни пресмятания</title> 
-      <para>Основният режим се показва по подразбиране, когато стартирате за пръв път <application>Калкулатора</application>. За да извикате изрично основния режим, изберете <menuchoice><guimenu>Изглед</guimenu><guimenuitem>Основен режим</guimenuitem></menuchoice>.</para>
+      <para>Basic mode is displayed by default when you first start <application>gcalctool</application>. To explicitly invoke Basic mode, choose <menuchoice><guimenu>View</guimenu><guimenuitem>Basic</guimenuitem></menuchoice>.  </para>
+      <para>The calculator memory registers are unavailable in Basic Mode. In other words, <menuchoice><guimenu>View</guimenu><guimenuitem>Memory Registers</guimenuitem></menuchoice> is inactive.</para>
     <sect3 id="gcalctool-simple-calc"> 
       <title>Извършване на прости пресмятания</title> 
-      <para>За да извършите прости пресмятания, използвайте бутоните описани в </para>
+      <para>За да извършите прости пресмятания, използвайте бутоните описани в</para>
                 <table id="gcalctool-TBL-simple-calc" frame="all">
                   <title>Извършване на прости пресмятания</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
@@ -394,35 +425,35 @@
                              <entry><para>Пресмятане на резултат</para> </entry>
                              <entry><para><guibutton>=</guibutton></para></entry>
                              <entry><para>Показва резултата от текущото пресмятане в текущата бройна система.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton><guibutton>2</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Събиране</para> </entry>
                              <entry><para><guibutton>+</guibutton></para></entry>
                              <entry><para>Добавя към текущата стойност в района на преглед, следващото число, което въведете.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton><guibutton>2</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Изваждане</para> </entry>
                              <entry><para><guibutton>-</guibutton></para></entry>
                              <entry><para>Изважда от текущата стойност в района на преглед, следващото число, което въведете.</para></entry>
-                             <entry><para>3 <guibutton>-</guibutton><guibutton>2</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>3 <guibutton>-</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Умножение</para> </entry>
                              <entry><para><guibutton>*</guibutton></para></entry>
                              <entry><para>Умножава текущата стойност в района на преглед по следващото число, което въведете.</para></entry>
-                             <entry><para>3 <guibutton>*</guibutton><guibutton>2</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>3 <guibutton>*</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>6</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Делене</para> </entry>
                              <entry><para><guibutton>/</guibutton></para></entry>
                              <entry><para>Разделя текущата стойност в района на преглед на следващото число, което въведете.</para></entry>
-                             <entry><para>6 <guibutton>/</guibutton><guibutton>3</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>2</para></entry>
                            </row>
 			<row valign="top">
@@ -439,7 +470,7 @@
     </sect3>
     <sect3 id="gcalctool-erase-char"> 
       <title>Изтриване на символи</title> 
-      <para>За да изтриете символи, използвайте бутоните описани в </para>
+      <para>За да изтриете символи, използвайте бутоните описани в</para>
                 <table id="gcalctool-TBL-erase-char" frame="all">
                   <title>Изтриване на символи</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
@@ -467,21 +498,29 @@
                              <entry><para>Backspace</para> </entry>
                              <entry><para><guibutton>Bksp</guibutton></para></entry>
                              <entry><para>Премахва най-крайния дясностоящ символ от района на преглед.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton><guibutton>2</guibutton><guibutton>2</guibutton><guibutton>Bksp</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Bksp</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Изчистване на запис</para> </entry>
                              <entry><para><guibutton>CE</guibutton></para></entry>
-                             <entry><para>Премахва текущата стойност от района на преглед.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton><guibutton>2</guibutton><guibutton>2</guibutton><guibutton>CE</guibutton><guibutton>=</guibutton></para></entry>
-                             <entry><para>1</para></entry>
+                             <entry><para>Премахва текущата стойност от района на преглед.</para>
+                                    <para>This is only really meaningful if the Calculator is not in Arithmetic Precedence mode.</para>
+                                    <para>In Arithmetic Precedence mode, this operation is the same as <guibutton>Clr</guibutton></para></entry>
+                             <entry><para>If the calculator is not in Arithmetic Precedence mode:</para>
+                                    <para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>CE</guibutton> <guibutton>=</guibutton></para>
+                                    <para>If the calculator is in Arithmetic Precedence mode:</para>
+                                    <para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>CE</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>If the calculator is not in Arithmetic Precedence mode:</para>
+                                    <para>1</para>
+                                    <para>If the calculator is in Arithmetic Precedence mode:</para>
+                                    <para>0</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Изчистване</para> </entry>
                              <entry><para><guibutton>Изч</guibutton></para></entry>
                              <entry><para>Занулява текущата стойност в района на преглед и премахва предишни пресметнати резултати. <guibutton>Изч</guibutton> също така маха избора от <guilabel>Хип</guilabel> и <guilabel>Инв</guilabel> опциите в Научен режим.</para></entry>
-                             <entry><para>1 <guibutton>+</guibutton><guibutton>2</guibutton><guibutton>2</guibutton><guibutton>Clr</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton></para></entry>
                              <entry><para>0</para></entry>
                            </row>
 			 </tbody>
@@ -509,13 +548,13 @@
     <para>Когато преминете към Разширен режим, следните бутони се появяавт в дясно от бутоните на Основния режим.</para>
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-advanced"> 
-	<title>Бутони на разширения режим на <application>Калкулатор</application></title> 
+	<title><application>gcalctool</application> Advanced Mode Buttons</title> 
 	<screenshot> 
 	  <mediaobject> 
 	    <imageobject><imagedata fileref="figures/gcalctool_advanced_window.png" format="PNG"/> 
 	    </imageobject>
 	    <textobject> 
-	      <phrase>Показва бутоните на Разширения режим на <application>Калкулатора</application>.</phrase> 
+	      <phrase>Shows <application>gcalctool</application> Advanced mode buttons.  </phrase> 
 	    </textobject> 
 	  </mediaobject> 
 	</screenshot> 
@@ -547,9 +586,9 @@
                            <row valign="top">
                              <entry><para>Процент</para> </entry>
                              <entry><para><guibutton>%</guibutton></para></entry>
-                             <entry><para>Използва следващия номер, който въведете, за да пресметне процента от текущата стойност в района на преглед.</para></entry>
-                             <entry><para>200 <guibutton>%</guibutton><guibutton>2</guibutton><guibutton>=</guibutton></para></entry>
-                             <entry><para>4</para></entry>
+                             <entry><para>Divides the current value by 100.</para></entry>
+                             <entry><para>560 <guibutton>%</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>5.60</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Реципрочност</para> </entry>
@@ -563,7 +602,10 @@
                              <entry><para>Корен квадратен</para> </entry>
                              <entry><para><guibutton>кркв</guibutton></para></entry>
                              <entry><para>Пресмята квадратния корен на текущата стойност в района на преглед.</para></entry>
-                             <entry><para>9 <guibutton>кркв</guibutton></para></entry>
+                             <entry><para>For arithmetic precedence mode:</para>
+                             <para><guibutton>Sqrt</guibutton> 9 <guibutton>)</guibutton><guibutton>=</guibutton></para>
+                             <para>For non-arithmetic precedence mode:</para>
+                             <para>9 <guibutton>кркв</guibutton></para></entry>
                              <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
@@ -599,8 +641,8 @@
                              <entry><para><guibutton>(</guibutton> и <guibutton>)</guibutton></para></entry>
                              <entry><para>Предоставя предимство в аритметичните пресмятания, ако не използвате Аритметично предимство. Вижте също <xref linkend="gcalctool-manage-order"/>. Пресмятанията в скобите се извършват първи. Може да влагате скобите едни в други до каквото ниво пожелаете. Когато последната скоба е затворена, района на преглед се обновява.</para></entry>
                            <entry>
-                               <para>2 <guibutton>+</guibutton><guibutton>3</guibutton><guibutton>*</guibutton><guibutton>4</guibutton><guibutton>=</guibutton></para>
-                               <para>2 <guibutton>+</guibutton><guibutton>(</guibutton><guibutton>3</guibutton><guibutton>*</guibutton><guibutton>4</guibutton><guibutton>)</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para>
+                               <para>2 <guibutton>+</guibutton> <guibutton>(</guibutton> <guibutton>3</guibutton> <guibutton>*</guibutton> <guibutton>4</guibutton> <guibutton>)</guibutton></para>
                              </entry>
                              <entry> <para>20</para>
                                <para>14</para>
@@ -613,8 +655,16 @@
 
 <sect3 id="gcalctool-mem-reg"> 
       <title>Използване на паметовите регистри на калкулатора</title> 
-      <para>Може да запазвате стойности, в който и да е от десетте паметови регистри на <application>Калкулатора</application>: <guilabel>R0</guilabel> до <guilabel>R9</guilabel>.</para>
-      <para><xref linkend="gcalctool-TBL-mem-reg"/> описва паметовите функции, които можете да използвате.</para>
+      <para>You can store values in any of the ten <application>gcalctool</application> memory registers <guilabel>R0</guilabel> to <guilabel>R9</guilabel>. To display the memory registers, choose 
+	<menuchoice> 
+	  <guimenu>View</guimenu> 
+	  <guimenuitem>Memory Registers</guimenuitem> 
+	</menuchoice>. 
+      </para>
+      <para>The memory registers can be dismissed by either choosing 
+            <menuchoice><guimenu>View</guimenu><guimenuitem>Memory Registers</guimenuitem></menuchoice> 
+            again, or by clicking on the <guibutton>Close</guibutton> button in the memory register window.</para>
+        <para><xref linkend="gcalctool-TBL-mem-reg"/> описва паметовите функции, които можете да използвате.</para>
                 <table id="gcalctool-TBL-mem-reg" frame="all">
                   <title>Паметови функции</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
@@ -642,7 +692,7 @@
                              <entry><para>Запазване на стойност в паметов регистър</para> </entry>
                              <entry><para><guibutton>Пам</guibutton></para></entry>
                              <entry><para>Запазва текущото съдържание на района на преглед в определения паметов регистър. Натиснете <guibutton>Пам</guibutton> и после изберете регистър от изскачащото меню.</para>
-                                   <para>За да изчистите паметов регистър по време на сесия на <application>Калкулатора</application>:</para>
+                                   <para>To clear a memory register during a <application>gcalctool</application> session:</para>
                                      <orderedlist>
                                        <listitem><para>Натиснете <guibutton>Изч</guibutton>.</para></listitem>
                                        <listitem><para>Натиснете <guibutton>Пам</guibutton>.</para></listitem>
@@ -710,13 +760,13 @@
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-financial"> 
-	<title>Бутоните на <application>Калкулатора</application> за Финансов режим</title> 
+	<title><application>gcalctool</application> Financial Mode Buttons</title> 
 	<screenshot> 
 	  <mediaobject> 
 	    <imageobject><imagedata fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
 	    </imageobject>
 	    <textobject> 
-	      <phrase>Показва бутоните за Финансов режим на <application>Калкулатора</application>.</phrase> 
+	      <phrase>Shows <application>gcalctool</application> Financial mode buttons.  </phrase> 
 	    </textobject> 
 	  </mediaobject> 
 	</screenshot> 
@@ -766,7 +816,7 @@
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>Току що сте депозирали $8000 в сметка, която изплаща годишна лихва от 9%, начислявани месечно. Имайки предвид годишната лихва, определяте, че месечната лихва е 0.09 / 12 = 0.0075. За да пресметнете нужния времеви период, да удвоите Вашата инвестиия, сложете следните стойности в първите три паметови регистри:</para>
+                             <entry><para>You have just deposited $8000 in an account that pays an annual interest rate of 9%, compounded monthly. Given the annual interest rate, you determine that the simple monthly interest rate is 0.09 / 12 = 0.0075. To calculate the time period necessary to double your investment, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Регистър 0</term>
@@ -781,7 +831,7 @@
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>УсПо</guibutton>.</para></entry>
+                             <para>Click <guibutton>Ctrm</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>92.77</para>
                                     <para>Инвестицията се удвоява по стойност за 92.77 месеца.</para></entry>
                            </row>
@@ -828,7 +878,7 @@
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>ДПО</guibutton>.</para></entry>
+                             <para>Click <guibutton>Ddb</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>790.12</para>
                                     <para>Разхода по обезценяването на четвъртата година е $790.12.</para></entry>
                            </row>
@@ -867,7 +917,7 @@
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>БСт</guibutton>.</para></entry>
+                             <para>Click <guibutton>Fv</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>183047.86</para>
                                     <para>На края на 20те години, сумата в сметката е $183,047.86.</para></entry>
                            </row>
@@ -891,7 +941,7 @@
                                 </varlistentry>
                              </variablelist> 
                              </entry>
-                             <entry><para>Обмисляте ипотека за $120,000 за 30 години при годишна лихва от 11.0%. Имайки предвид годишната лихва, месечната лихва е 0.11 / 12 = 0.00917. Срокът е 30 * 12 = 360 месеца. За да пресметнете месечните погасителни вноски за тази ипотека, сложете следните стойности в първите три паметови регистри:</para>
+                             <entry><para>You are considering a $120,000 mortgage for 30 years at an annual interest rate of 11.0%. Given the annual interest rate, you determine that the simple monthly interest rate is 0.11 / 12 = 0.00917. The term is 30 * 12 = 360 months. To calculate the monthly repayment for this mortgage, put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
                                 <term>Регистър 0</term>
@@ -906,7 +956,7 @@
                                 <listitem><para>360</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>ППл</guibutton>.</para></entry>
+                             <para>Click <guibutton>Pmt</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>1143.15</para>
                                     <para>Месечните разплащания са $1143.15.</para></entry>
                            </row>
@@ -946,7 +996,7 @@
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>ТСт</guibutton>.</para></entry>
+                             <para>Click <guibutton>Pv</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>456427.28</para>
                                     <para>$1,000,000 за 20 години ще струва $456,427.28 в днешна валута.</para></entry>
                            </row>
@@ -985,7 +1035,7 @@
                                 <listitem><para>60</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>Лихва</guibutton>.</para></entry>
+                             <para>Click <guibutton>Rate</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>.00678</para>
                                     <para>Месечната лихва е 0.678%. Годишната лихва е 0.678% * 12 = 8.14%.</para></entry>
                            </row>
@@ -1024,7 +1074,7 @@
                                 <listitem><para>6</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>ОПЛ</guibutton>.</para></entry>
+                             <para>Click <guibutton>Sln</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>1183.33</para>
                                     <para>Годишното обезценяване е $1183.33.</para></entry>
                            </row>
@@ -1071,7 +1121,7 @@
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>Амо</guibutton>.</para></entry>
+                             <para>Click <guibutton>Syd</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>1014.29</para>
                                     <para>Разходът по обезценяването на четвъртата година е $1014.29.</para></entry>
                            </row>
@@ -1110,7 +1160,7 @@
                                 <listitem><para>0.11</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Натиснете <guibutton>Период</guibutton>.</para></entry>
+                             <para>Click <guibutton>Term</guibutton><guibutton> =</guibutton></para></entry>
                              <entry><para>20.32</para>
                                     <para>$120,000 се акумулират в сметката за 20.32 години.</para></entry>
                            </row>
@@ -1126,13 +1176,13 @@
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-scientific"> 
-	<title>Бутоните за Научен режим на <application>Калкулатора</application></title> 
+	<title><application>gcalctool</application> Scientific Mode Buttons</title> 
 	<screenshot> 
 	  <mediaobject> 
 	    <imageobject><imagedata fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
 	    </imageobject>
 	    <textobject> 
-	      <phrase>Показва бутоните за Научния режим на <application>Калкулатора</application></phrase> 
+	      <phrase>Shows <application>gcalctool</application> Scientific mode buttons.  </phrase> 
 	    </textobject> 
 	  </mediaobject> 
 	</screenshot> 
@@ -1140,7 +1190,7 @@
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-set-acc"> 
       <title>Настройване на точността</title> 
-      <para>За да настроите точността на района на преглед и паметовите регистри, натиснете <guibutton>Точ</guibutton>, после изберете от изскачащото меню нивото на точност, което Ви е нужно. Текущата точност е индикирана с черен кръг. Може да се показват до 30 значими знака след десетичната запетая. Стандартната точност е 9 позиции.</para>
+      <para>To set the accuracy of the display area and of the memory registers, click <guibutton>Acc</guibutton>, then select from the popup menu the accuracy level that you require. The current accuracy level is indicated by a preceding black circle in the popup menu. Up to 99 significant places can be displayed. The default accuracy is 9 significant places. </para>
 <para>За да настроите точността над 9, изберете <guilabel>Друго (9)·...</guilabel> и изберете нивото на точност, което Ви е нужно в появилия се прозорец.</para>
       <para>По подразбиране, завършващите нули не се показват. За да се показват крайните нули, натиснете <guibutton>Точ</guibutton> и после <guilabel>Показване на крайните нули</guilabel> или изберете <menuchoice><guimenu>Изглед</guimenu><guimenuitem>Показване на крайните нули</guimenuitem></menuchoice>. Отметка отбелязва дали опцията е включена или не. За да скриете крайните нули, изберете отново <menuchoice><guimenu>Изглед</guimenu><guimenuitem>Показване на крайните нули</guimenuitem></menuchoice>.</para>
       <para>Примерите в следната таблица показват как настройките на точността влияят на <replaceable>x</replaceable> в района на преглед, когато използвате десетична основа с включена опцията <guimenuitem>Показване на крайните нули</guimenuitem>, за пресмятането <literal>1 / 8 = <replaceable>x</replaceable></literal>:</para>
@@ -1175,7 +1225,7 @@
     </sect3>
     <sect3 id="gcalctool-num-base"> 
       <title>Определяне на бройната система</title> 
-      <para>За да настроите броичната система, изберете един от бутоните описани в </para>
+      <para>За да настроите броичната система, изберете един от бутоните описани в</para>
                 <table id="gcalctool-TBL-num-base" frame="all">
                   <title>Определяне на бройната система</title> 
                   <tgroup cols="3" colsep="1" rowsep="1">
@@ -1206,7 +1256,7 @@
                            <row valign="top">
                              <entry><para>Десетична основа</para> </entry>
                              <entry><para><guibutton>Дес</guibutton></para></entry>
-                             <entry><para>Настройва бройната система на десетична, тоест с основа 10. Десетичната бройна система е стандартната бройна основа. Ако преминете от Научен режим към друг режим, <application>Калкулатора</application> автоматично настройва бройната система на десетична.</para></entry>
+                             <entry><para>Sets the numeric base to decimal, that is, base 10. Decimal is the default numeric base. If you change from Scientific mode to another mode, <application>gcalctool</application> automatically sets the numeric base to decimal.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Шестнайсетична основа</para> </entry>
@@ -1245,7 +1295,7 @@
                            <row valign="top">
                              <entry><para>Фиксирана точка</para> </entry>
                              <entry><para><guibutton>Фик</guibutton></para></entry>
-                             <entry><para>Настройва вида на изгледа към формата с фиксирана точка. Резултатите не се показват в научен стил. Това е стандартния формат на показване. Ако преминете от научен към основен или финансов режим, <application>Калкулаторът</application> автоматично ще настрои формата към фиксирана точка.</para></entry>
+                             <entry><para>Sets the display type to fixed-point format. Results are not displayed in scientific notation. Fixed-point is the default display type.  If you change from scientific mode to either basic mode or financial mode, <application>gcalctool</application> automatically sets the display type to fixed-point format.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Научен формат</para> </entry>
@@ -1473,9 +1523,9 @@
                          <tbody> 
                            <row valign="top">
                              <entry><para>Обикновен логаритъм с основа 10</para> </entry>
-                             <entry><para><guibutton>Лог</guibutton></para></entry>
-                             <entry><para>Пресмята стандартния логаритъм на текущата стойност в района на преглед.</para></entry>
-                             <entry><para>10 <guibutton>Лог</guibutton></para></entry>
+                             <entry><para>Log<subscript><replaceable>10</replaceable></subscript></para></entry>
+                             <entry><para>Calculates the common logarithm (base 10) of the current value in the display area.</para></entry>
+                             <entry><para>10 Log<subscript><replaceable>10</replaceable></subscript></para></entry>
                              <entry><para>1</para></entry>
                            </row>
                            <row valign="top">
@@ -1485,11 +1535,18 @@
                              <entry><para>10 <guibutton>НЛ</guibutton></para></entry>
                              <entry><para>2.30</para></entry>
                            </row>
+                           <row valign="top">
+                             <entry><para>Common Logarithm Base 2</para> </entry>
+                             <entry><para>Log<subscript><replaceable>2</replaceable></subscript></para></entry>
+                             <entry><para>Calculates the common logarithm (base 2) of the current value in the display area.</para></entry>
+                             <entry><para>10 Log<subscript><replaceable>2</replaceable></subscript></para></entry>
+                             <entry><para>3.32</para></entry>
+                           </row>
 			 </tbody>
 		  </tgroup>
 		</table>
                 <note>
-                  <para>Обикновения антилогаритъм и натуралния антилогаритъм не се поддържат в тази верися на <application>Калкулатора</application>.</para>
+                  <para>Common antilogarithm and natural antilogarithm are not supported in this version of <application>gcalctool</application>.</para>
                 </note>
     </sect3>
     <sect3 id="gcalctool-logic-calc"> 
@@ -1520,42 +1577,50 @@
                          <tbody> 
                            <row valign="top">
                              <entry><para>Побитово ИЛИ</para> </entry>
-                             <entry><para><guibutton>Или</guibutton></para></entry>
+                             <entry><para><guibutton>OR</guibutton></para></entry>
                              <entry><para>Извършва побитова операция ИЛИ с текущата стойност на района на преглед и следващото число, което въведете, възприемайки и двете числа като неподписани дълги цели числа.</para></entry>
-                             <entry><para>10001000 <guibutton>Или</guibutton> 00010001</para></entry>
+                             <entry><para>10001000 <guibutton>OR</guibutton> 00010001</para></entry>
                              <entry><para>10011001</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Побитово И</para> </entry>
-                             <entry><para><guibutton>И</guibutton></para></entry>
+                             <entry><para><guibutton>AND</guibutton></para></entry>
                              <entry><para>Извършва побитова операция И с текущата стойност на района на преглед и следващото число, което въведете, възприемайки и двете числа като неподписани дълги цели числа.</para></entry>
-                             <entry><para>10101010·<guibutton>И</guibutton>·00110011</para></entry>
-                             <entry><para>00110011</para></entry>
+                             <entry><para>10101010 <guibutton>AND</guibutton> 00110011</para></entry>
+                             <entry><para>100010</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Побитово Не</para> </entry>
-                             <entry><para><guibutton>Не</guibutton></para></entry>
+                             <entry><para><guibutton>NOT</guibutton></para></entry>
                              <entry><para>Извършва побитова операция НЕ с текущата стойност на района на преглед, възприемайки числото като неподписано дълго цяло число.</para></entry>
-                             <entry><para>1357ACE·<guibutton>Не</guibutton></para></entry>
+                             <entry><para>For arithmetic precedence mode:</para>
+                             <para><guibutton>NOT</guibutton> 1357ACE</para>
+                             <para>For non-arithmetic precedence mode:</para>
+                             <para>1357ACE <guibutton>NOT</guibutton></para></entry>
                              <entry><para>FECA8531</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Побитово XOR</para> </entry>
-                             <entry><para><guibutton>Xor</guibutton></para></entry>
+                             <entry><para><guibutton>XOR</guibutton></para></entry>
                              <entry><para>Извършва побитова операция XOR с текущата стойност на района на преглед и следващото число, което въведете, възприемайки и двете числа като неподписани дълги цели числа.</para></entry>
-                             <entry><para>1100 <guibutton>Xor</guibutton> 1010</para></entry>
+                             <entry><para>1100 <guibutton>XOR</guibutton> 1010</para></entry>
                              <entry><para>110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Побитово XNOR</para> </entry>
-                             <entry><para><guibutton>Xnor</guibutton></para></entry>
+                             <entry><para><guibutton>XNOR</guibutton></para></entry>
                              <entry><para>Извършва побитова операция XNOR с текущата стойност на района на преглед и следващото число, което въведете, възприемайки и двете числа като неподписани дълги цели числа.</para></entry>
-                             <entry><para>1100 <guibutton>Xnor</guibutton> 1010</para></entry>
+                             <entry><para>1100 <guibutton>XNOR</guibutton> 1010</para></entry>
                              <entry><para>11111111111111111111111111111001</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
 		</table>
+    </sect3>
+    <sect3 id="gcalctool-calc-bit-manipulation-ext">
+      <title>To Perform Bit Manipulations on Integers</title>
+      <para>To change the values of individuals bits in integer values, choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Bit Editor</guimenuitem></menuchoice>. This option is only available in Scientific mode.</para>
+      <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
     </sect3>
     <sect3 id="gcalctool-enter-exp"> 
       <title>Въвеждане на експоненциални числа</title> 
@@ -1576,68 +1641,94 @@
   </varlistentry>
 </variablelist>
 
-      <para>Когато натиснете <guibutton>Екс</guibutton>, калкулаторът показва <literal>. +</literal>, за да представи <replaceable>основата</replaceable> на степен следващото число, което въведете. За да промените знака на числото, използвайте бутона <guibutton>+/-</guibutton> в последното действие за операцията. Следният пример показва стойността, която се показва, когато използвате десетична бройна система:</para>
+<para>When you click <guibutton>Exp</guibutton>, the calculator displays <literal>. +</literal> to represent 
+<replaceable>base</replaceable> to the power of the next number that you enter. </para>
+<para>To change the sign of the number, use the <guibutton>+/-</guibutton> button before the <guibutton>Exp</guibutton> button.
+How you change the sign of the exponent (the power to which the number is raised) depends on whether you are in
+arithmetic precedence mode or not. In arithmetic precedence mode, use <guibutton>-</guibutton> after the
+<guibutton>Exp</guibutton> button, otherwise use the <guibutton>+/-</guibutton> button
+after entering the exponent.</para>
 
-      <informaltable frame="all">
-        <tgroup cols="2" colsep="1" rowsep="1">
-          <colspec colname="COLSPEC0" colwidth="50*"/>
-          <colspec colname="COLSPEC1" colwidth="50*"/>
-          <thead>
-            <row valign="top">
-              <entry colname="COLSPEC0">
-                <para>Въведено</para></entry>
-              <entry colname="COLSPEC1">
-                <para>Формат на калкулатора</para></entry>
-            </row>
-          </thead>
-          <tbody>
-            <row valign="top">
-              <entry><para><guibutton>5</guibutton> <guibutton>Екс</guibutton> <guibutton>2</guibutton> <guibutton>=</guibutton> <guibutton>+/-</guibutton></para></entry>
-              <entry><para>-500</para></entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
+<para>To enter a decimal number in exponential format, in arithmetic precedence mode, use the guidelines in the following table: </para>
+          <informaltable frame="all">
+            <tgroup cols="3" colsep="1" rowsep="1">
+                   <colspec colname="COLSPEC0" colwidth="50*"/>
+                   <colspec colname="COLSPEC1" colwidth="50*"/>
+                   <thead>
+                          <row valign="top">
+                            <entry colname="COLSPEC0">
+                                   <para>Число</para></entry>
+                            <entry colname="COLSPEC1">
+                                   <para>Enter</para></entry>
+                            <entry colname="COLSPEC2">
+                                   <para>Показано число</para></entry>
+                          </row>
+                   </thead> 
+                   <tbody> 
+                     <row valign="top">
+                       <entry><para>1200000000</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>+</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton></para></entry>
+                       <entry><para>1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-1200000000</para></entry>
+                       <entry><para><guibutton>-</guibutton> 12 <guibutton>Exp</guibutton> <guibutton>+</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>0.00000012</para></entry>
+                       <entry><para>12 <guibutton>Exp</guibutton> <guibutton>-</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>1.2e-7</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-0.00000012</para></entry>
+                       <entry><para><guibutton>-</guibutton> 12 <guibutton>Exp</guibutton> <guibutton>-</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1.2e-7</para></entry>
+                     </row>
+                   </tbody>
+            </tgroup>
+          </informaltable>
 
-      <para>За да въведете число в експоненциален формат, използвайте насоките от следната таблица:</para>
-                <informaltable frame="all">
-                  <tgroup cols="3" colsep="1" rowsep="1">
-                         <colspec colname="COLSPEC0" colwidth="50*"/>
-                         <colspec colname="COLSPEC1" colwidth="50*"/>
-                         <thead>
-                                <row valign="top">
-                                  <entry colname="COLSPEC0">
-                                         <para>Число</para></entry>
-                                  <entry colname="COLSPEC1">
-                                         <para>Enter</para></entry>
-                                  <entry colname="COLSPEC2">
-                                         <para>Показано число</para></entry>
-                                </row>
-                         </thead> 
-                         <tbody> 
-                           <row valign="top">
-                             <entry><para>1200000000</para></entry>
-                             <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>=</guibutton></para></entry>
-                             <entry><para>1200000000</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>-1200000000</para></entry>
-                             <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>=</guibutton><guibutton>+/-</guibutton></para></entry>
-                             <entry><para>-1200000000</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>0.00000012</para></entry>
-                             <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>+/-</guibutton></para></entry>
-                             <entry><para>1.2e-7</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>-0.00000012</para></entry>
-                             <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>+/-</guibutton><guibutton>+/-</guibutton></para></entry>
-                             <entry><para>-1.2e-7</para></entry>
-                           </row>
-			 </tbody>
-		  </tgroup>
-		</informaltable>
+<para>To enter a decimal number in exponential format, in non-arithmetic precedence mode, use the guidelines in the following table: </para>
+          <informaltable frame="all">
+            <tgroup cols="3" colsep="1" rowsep="1">
+                   <colspec colname="COLSPEC0" colwidth="50*"/>
+                   <colspec colname="COLSPEC1" colwidth="50*"/>
+                   <thead>
+                          <row valign="top">
+                            <entry colname="COLSPEC0">
+                                   <para>Число</para></entry>
+                            <entry colname="COLSPEC1">
+                                   <para>Enter</para></entry>
+                            <entry colname="COLSPEC2">
+                                   <para>Показано число</para></entry>
+                          </row>
+                   </thead> 
+                   <tbody> 
+                     <row valign="top">
+                       <entry><para>1200000000</para></entry>
+                       <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>=</guibutton></para></entry>
+                       <entry><para>1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-1200000000</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>=</guibutton> </para></entry>
+                       <entry><para>-1200000000</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>0.00000012</para></entry>
+                       <entry><para>12 <guibutton>Екс</guibutton><guibutton>8</guibutton><guibutton>+/-</guibutton></para></entry>
+                       <entry><para>1.2e-7</para></entry>
+                     </row>
+                     <row valign="top">
+                       <entry><para>-0.00000012</para></entry>
+                       <entry><para>12 <guibutton>+/-</guibutton> <guibutton>Exp</guibutton> <guibutton>8</guibutton> <guibutton>+/-</guibutton> </para></entry>
+                       <entry><para>-1.2e-7</para></entry>
+                     </row>
+                   </tbody>
+            </tgroup>
+          </informaltable>
+
     </sect3>
     <sect3 id="gcalctool-edit-const"> 
       <title>Използване на постоянни стойности</title> 
@@ -1663,7 +1754,7 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>Програмата <application>Калкулатор</application> предоставя 10 стандартни константни стойности, както са описани в следната таблица:</para>
+      <para>The <application>gcalctool</application> application provides ten default constant values, as described in the following table:</para>
                 <informaltable frame="all">
                   <tgroup cols="3" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
@@ -1788,7 +1879,7 @@
         </tgroup>
       </informaltable>
 
-      <para>Програмата <application>Калкулатор</application> не предоставя стандартни функции. Може да запазвате до 10 функции.</para>
+      <para>The <application>gcalctool</application> application does not provide any default functions. You can store up to ten functions. </para>
       <para>За да запазите нова функция или редактирате съществуваща, извършете следните стъпки:</para>
       <orderedlist>
         <listitem>
@@ -1798,7 +1889,7 @@
       <para>В прозореца за <guilabel>Редактиране на функции</guilabel>, изберете празен запис или функцията, която искате да презапишете.</para>
         </listitem>
         <listitem>
-      <para>Изберете полето за Стойност и въведете нова стойност. Използвайте бързи клавиши за да извикате бутон от калкулатора. Например, въведете <literal>90K</literal>, за да пресметнете синус от 90.</para>
+      <para>Click on the Value field, then enter the new value. Use the keyboard shortcuts to invoke a <application>gcalctool</application> button. For example, enter <literal>90K</literal> to calculate sine(90).</para>
         </listitem>
         <listitem>
       <para>Изберете полето Описание и после въведете ново описание. Например, <literal>Синус от·90</literal>.</para>
@@ -1846,7 +1937,7 @@
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
                              <entry><para>Премества текущата неподписана 32-битова двоична стойност в района на преглед с определен брой позиции на дясно. Натиснете <guibutton>&gt;</guibutton>, после изберете броя на позициите от появилото се меню. Броят може да бъде до 15 места надясно.</para></entry>
                              <entry><para>1011 <guibutton>&gt;</guibutton><guilabel>1 позиция</guilabel></para></entry>
-                             <entry><para>101</para></entry>
+                             <entry><para>101 </para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Взимане на 16-битово неподписано цяло число</para> </entry>
@@ -1936,7 +2027,7 @@
                              <entry><para>x на степен <replaceable>y</replaceable></para> </entry>
                              <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
                              <entry><para>Повдига текущата стойност в района на преглед на степен от следващата стойност, която въведете.</para></entry>
-                             <entry><para>2 <replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript><guibutton>4</guibutton><guibutton>=</guibutton></para></entry>
+                             <entry><para>2 <replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>16</para></entry>
                            </row>
                            <row valign="top">
@@ -1945,6 +2036,13 @@
                              <entry><para>Пресмята факториел от текущата стойност в района на преглед. <replaceable>x</replaceable> факториел е <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. Тази функция е приложима само към положителни цели числа.</para></entry>
                              <entry><para>4 <guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
                              <entry><para>24</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Modulus Division</para> </entry>
+                             <entry><para><guibutton>Mod</guibutton></para></entry>
+                             <entry><para>Divides the current integer value in the display area by the next integer number that you enter, displaying the remainder.</para></entry>
+                             <entry><para>15 <guibutton>Mod</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Генератор на произволни числа</para> </entry>
@@ -1965,15 +2063,33 @@
 		</table>
     </sect3>
     </sect2> 
+<!-- ============= Undo and Redo ======================== -->
+  <sect2 id="gcalctool-undo-redo">
+    <title>To Undo and Redo</title>
+                <para>To undo your previous action, choose
+                  <menuchoice>
+                         <guimenu>Edit</guimenu>
+                         <guimenuitem>Undo</guimenuitem>
+                  </menuchoice>.  You can undo up to 15 past actions.</para>
+                <para>If you want to redo an action you just undo'ed, choose
+                  <menuchoice>
+                         <guimenu>Edit</guimenu>
+                         <guimenuitem>Redo</guimenuitem>
+                  </menuchoice>. You can redo up to 15 undo'ed actions.</para>
+  </sect2>
 <!-- ============= Quitting ============================= -->
   <sect2 id="gcalctool-quit"> 
     <title>Затваряне на програмата</title> 
-                <para>За да затворите програмата <application>Калкулатор</application>, изберете <menuchoice><guimenu>Калкулатор</guimenu><guimenuitem>Напускане</guimenuitem></menuchoice>.</para>
-                <para>Когато затваряте програмата <application>Калкулатор</application>, текущите стойност на следните настройки се запазват и автоматично се прилагат следващия път, когато стартирате <application>Калкулатора</application>:</para>
+                <para>To quit <application>gcalctool</application>, choose
+                  <menuchoice>
+                         <guimenu>Calculator</guimenu>
+                         <guimenuitem>Quit</guimenuitem>
+                  </menuchoice>.  </para>
+                <para>When you quit <application>gcalctool</application>, the current values of the following settings are stored and automatically applied the next time you start <application>gcalctool</application>: </para>
                   <itemizedlist>
                     <listitem><para>Режим: <link linkend="gcalctool-basic-mode">Основен</link>, <link linkend="gcalctool-advanced-mode">Разширен</link>, <link linkend="gcalctool-financial-mode">Финансов</link> или <link linkend="gcalctool-scientific-mode">Научен</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-set-acc">Точност</link></para></listitem>
-                    <listitem><para><link linkend="gcalctool-mem-reg">Прозорецът за паметовите регистри</link> показан и скрит.</para></listitem>
+                    <listitem><para><link linkend="gcalctool-mem-reg">Memory Registers window</link> displayed or not displayed, plus the contents of each memory register</para></listitem>
                     <listitem><para><link linkend="gcalctool-num-base">Бройна система</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-display-type">Вид на изгледа</link></para></listitem>
                     <listitem><para><link linkend="gcalctool-trig-type">Тригонометричен тип</link></para></listitem>
@@ -1991,25 +2107,71 @@
 	<para>По подразбиране, пресмятанията се извършват използвайки аритметично предимство. Тоест, предимството на аритметичните оператори се взима предвид и резултатът просто се пресмята щом натиснете <guibutton>Enter</guibutton>.</para>
 	<para>В следния пример, резултатът от пресмятането е 22, защото операторът по умножението, <literal>*</literal>, има предимство пред оператора за събирането, <literal>+</literal>.</para>
 
-	<screen><literal>4 + 3 * 6 = 22</literal></screen>
+	<screen><literal>4 + 3 * 6 = 22 </literal></screen>
 
-	<para>Ако не искате да пресмятате с аритметично предимство, изберете <menuchoice><guimenu>Изглед</guimenu><guimenuitem>Използване на аритметично предимство</guimenuitem></menuchoice> и се уверете, че тази опция не е избрана.</para>
+	<para>If you do not wish to apply arithmetic precedence to your calculations, select <menuchoice><guimenu>View</guimenu><guimenuitem>Left-to-right Precedence</guimenuitem></menuchoice>. </para>
 	<para>Ако изберете да не прилагате аритметично предимство, тогава резултатът от пресмятането в примера е 42, защото пресмятането е извършено от ляво на дясно.</para>
          </sect2> 
 
          <sect2 id="gcalctool-recognize-error">
                 <title>Условия за грешка</title>
-                <para>Ако извършите невалидно пресмятане, <application>Калкулаторът</application> показва съобщение за грешка условията за грешка както следва: <itemizedlist><listitem><para>Показва думата <literal>Грешка</literal> в района на преглед.</para></listitem><listitem><para>Показва съобщение за грешка в лентата за състоянието.</para></listitem><listitem><para>Прави неналични всички калкулаторни бутони, освен <guibutton>Изч</guibutton>.</para></listitem><listitem><para>Прави всички калкулаторни опции да бъдат неналични.</para></listitem><listitem><para>Прави всички елементи от менюто на калкулатора неналични, с изключение на <menuchoice><guimenu>Калкулатор</guimenu><guimenuitem>Напускане</guimenuitem></menuchoice> и <menuchoice><guimenu>Помощ</guimenu><guimenuitem>Ръководство</guimenuitem></menuchoice>.</para></listitem></itemizedlist></para>
-<para>За да изчистите условиетое за грешка, натиснете <guibutton>Изч</guibutton> или клавиша <keycap>Delete</keycap>.</para>
+                <para>If you perform an invalid calculation, <application>gcalctool</application> indicates the error condition as follows:
+<itemizedlist>
+<listitem><para>Показва думата <literal>Грешка</literal> в района на преглед.</para></listitem>
+<listitem><para>Показва съобщение за грешка в лентата за състоянието.</para></listitem>
+<listitem><para>Прави неналични всички калкулаторни бутони, освен <guibutton>Изч</guibutton>.</para></listitem>
+<listitem><para>Прави всички калкулаторни опции да бъдат неналични.</para></listitem>
+<listitem><para>Прави всички елементи от менюто на калкулатора неналични, с изключение на <menuchoice><guimenu>Калкулатор</guimenu><guimenuitem>Напускане</guimenuitem></menuchoice> и <menuchoice><guimenu>Помощ</guimenu><guimenuitem>Ръководство</guimenuitem></menuchoice>.</para></listitem>
+</itemizedlist>
+</para>
+<para>To clear the error condition, click <guibutton>Clr</guibutton> or press <keycombo><keycap>Shift</keycap><keycap>Delete</keycap></keycombo>.</para>
+         </sect2>
+
+         <sect2 id="gcalctool-change-modes">
+                <title>Changing Modes</title>
+                <para>If the user tries to change modes when a partial
+calculation is being displayed, a warning dialog is displayed, telling
+the user that the current calculation will be cleared, and the base will 
+be reset to decimal.</para>
+                <para>There is a checkbox present, that if checked, prevents the dialog from being shown again.</para>
+                <para>If the user presses the <guibutton>Cancel</guibutton> button, the change mode operation is cancelled. If the user presses the <guibutton>Change Mode</guibutton> button, the mode is changed and has the following side-effects:
+<itemizedlist>
+<listitem><para>Clears the display.</para></listitem>
+   <listitem><para>Sets the base to decimal.</para></listitem>
+   <listitem><para>Sets the numeric display to fixed.</para></listitem>
+   <listitem><para>Sets the accuracy to nine places after the numeric point.</para></listitem>
+   <listitem><para>Clears the display of the thousands separator.</para></listitem>
+   <listitem><para>Clears the display of trailing zeroes after the numeric point.</para></listitem>
+   <listitem><para>Dismisses the register window if the new mode is Basic.</para></listitem>
+</itemizedlist>
+</para>
+         </sect2>
+
+         <sect2 id="gcalctool-changing-display-area">
+                <title>Changing The Display Area</title>
+                <para>In arithmetic precedence mode, it is possible
+to use the mouse to click on the display area and edit 
+it.</para>
+                <para>All the normal keyboard shortcuts will work, plus
+the addition of:
+<itemizedlist>
+    <listitem><para><keycombo><keycap>Ctrl</keycap><keycap>Delete</keycap></keycombo> which will delete the character to the right of the text cursor</para></listitem>
+    <listitem><para><keycap>Home</keycap> which moves the text cursor to the beginning of the display area</para></listitem> 
+    <listitem><para><keycap>End</keycap> which moves the text cursor to the end of the display area</para></listitem> 
+</itemizedlist>
+</para>
          </sect2>
 
   </sect1>
 <!-- ============= Keyboard Shortcuts ============================= -->
   <sect1 id="gcalctool-keyboard-shortcut"> 
     <title>Бърза справка: Бързи клавиши</title> 
-                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>, <xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/>, и <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> предоставят бърза справка за всички бързи клавиши на <application>Калкулатора</application>.</para>
+                <para><xref linkend="gcalctool-TBL-keyboard-shortcut-button"/>, <xref linkend="gcalctool-TBL-keyboard-shortcut-sci-options"/>, and <xref linkend="gcalctool-TBL-keyboard-shortcut-menu"/> provide a quick reference for all of the <application>gcalctool</application> keyboard shortcuts.</para>
+                <para>When you use the keyboard shortcut for any of the calculator
+                      buttons that have a menu associated with them, that menu is displayed.
+                      You can then use the arrow keys to select a menu item or the menu item's shortcut.</para>
                 <table id="gcalctool-TBL-keyboard-shortcut-button" frame="all">
-                  <title>Бърза справка за клавиатурните бързи клавиши на <application>Калкулатора</application>: Бутони</title> 
+                  <title>Quick Reference for Keyboard Shortcuts of <application>gcalctool</application> Buttons</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -2036,69 +2198,69 @@
                            </row>
                            <row valign="top">
                              <entry><para><keycap>A</keycap> </para></entry>
-                             <entry><para><guibutton>A</guibutton> </para></entry>
-                             <entry><para>Шестадесетични числа</para> </entry>
-                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><keycap>a</keycap> </para></entry>
                              <entry><para><guibutton>Точ</guibutton> </para></entry>
                              <entry><para>Точност</para> </entry>
                              <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>B</keycap> </para></entry>
+                             <entry><para><keycap>a</keycap> </para></entry>
+                             <entry><para><guibutton>A</guibutton> </para></entry>
+                             <entry><para>Шестадесетични числа</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>b</keycap> </para></entry>
                              <entry><para><guibutton>B</guibutton> </para></entry>
                              <entry><para>Шестадесетични числа</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>C</keycap> </para></entry>
-                             <entry><para><guibutton>C</guibutton> </para></entry>
-                             <entry><para>Шестадесетични числа</para> </entry>
-                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><keycap>c</keycap></para></entry>
+                             <entry><para><keycap>C</keycap></para></entry>
                              <entry><para><guibutton>+/-</guibutton></para></entry>
                              <entry><para>Промяна на аритметичния знак</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-adv-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>D</keycap> </para></entry>
-                             <entry><para><guibutton>D</guibutton> </para></entry>
+                             <entry><para><keycap>c</keycap> </para></entry>
+                             <entry><para><guibutton>C</guibutton> </para></entry>
                              <entry><para>Шестадесетични числа</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>d</keycap></para></entry>
+                             <entry><para><keycap>D</keycap></para></entry>
                              <entry><para><guibutton>ДПО</guibutton></para></entry>
                              <entry><para>Двойно-понижаващо обезценяване</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>E</keycap> </para></entry>
-                             <entry><para><guibutton>E</guibutton> </para></entry>
+                             <entry><para><keycap>d</keycap> </para></entry>
+                             <entry><para><guibutton>D</guibutton> </para></entry>
                              <entry><para>Шестадесетични числа</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><keycap>E</keycap> </para></entry>
                              <entry><para><guibutton>Екс</guibutton> </para></entry>
                              <entry><para>Експонента</para> </entry>
                              <entry><para><xref linkend="gcalctool-enter-exp"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>F</keycap> </para></entry>
-                             <entry><para><guibutton>F</guibutton> </para></entry>
+                             <entry><para><keycap>e</keycap> </para></entry>
+                             <entry><para><guibutton>E</guibutton> </para></entry>
                              <entry><para>Шестадесетични числа</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>f</keycap> </para></entry>
+                             <entry><para><keycap>F</keycap> </para></entry>
                              <entry><para><guibutton>Фнк</guibutton> </para></entry>
                              <entry><para>Функция</para> </entry>
                              <entry><para><xref linkend="gcalctool-edit-func"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>f</keycap> </para></entry>
+                             <entry><para><guibutton>F</guibutton> </para></entry>
+                             <entry><para>Шестадесетични числа</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>G</keycap></para></entry>
@@ -2135,6 +2297,12 @@
                              <entry><para><guibutton>ОПЛ</guibutton></para></entry>
                              <entry><para>Обезценяване на права линия</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>M</keycap></para></entry>
+                             <entry><para><guibutton>Mod</guibutton></para></entry>
+                             <entry><para>Modulus Division</para> </entry>
+                             <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycap>m</keycap></para></entry>
@@ -2227,7 +2395,7 @@
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>y</keycap></para></entry>
+                             <entry><para><keycap>^</keycap></para></entry>
                              <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
                              <entry><para>x на степен <replaceable>y</replaceable></para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
@@ -2263,7 +2431,7 @@
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>*</keycap> или <keycap>x</keycap></para></entry>
+                             <entry><para><keycap>*</keycap></para></entry>
                              <entry><para><guibutton>*</guibutton></para></entry>
                              <entry><para>Умножение</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-simple-calc"/></para> </entry>
@@ -2341,7 +2509,7 @@
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>^</keycap></para></entry>
+                             <entry><para><keycap>x</keycap></para></entry>
                              <entry><para><guibutton>Xor</guibutton></para></entry>
                              <entry><para>Побитово XOR</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logic-calc"/></para> </entry>
@@ -2384,7 +2552,7 @@
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>Delete</keycap></para></entry>
+                             <entry><para><keycombo><keycap>Shift</keycap><keycap>Delete</keycap></keycombo></para></entry>
                              <entry><para><guibutton>Изч</guibutton></para></entry>
                              <entry><para>Изчистване</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
@@ -2393,7 +2561,7 @@
 		  </tgroup>
 		</table>
                 <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
-                  <title>Бърза справка за клавиатурните бързи клавиши на <application>Калкулатора</application>: Научен режим</title> 
+                  <title>Quick Reference for Keyboard Shortcuts of <application>gcalctool</application> Scientific Mode Options</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -2419,19 +2587,19 @@
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>b</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Дво</guilabel></para></entry>
                              <entry><para>Настройва бройната система към двоична.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>D</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>d</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Дес</guilabel></para></entry>
                              <entry><para>Настройване на бройната система към десетична</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>f</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Фик</guilabel></para></entry>
                              <entry><para>Настройване на вида изглед към фиксирана точка</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
@@ -2443,7 +2611,7 @@
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>i</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Инв</guilabel></para></entry>
                              <entry><para>Изберете обръщащата опция за използване с тригонометричните функции.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
@@ -2455,19 +2623,19 @@
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>O</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>o</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Осм</guilabel></para></entry>
                              <entry><para>Настройва бройната система към осмична.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-base"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>r</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Радиани</guilabel></para></entry>
                              <entry><para>Настройване на тригонометричния тип към радиани.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-type"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>s</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Нау</guilabel></para></entry>
                              <entry><para>Настройване на изгледа към научен формат</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-display-type"/></para> </entry>
@@ -2488,7 +2656,7 @@
 		  </tgroup>
 		</table>
                 <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
-                  <title>Бърза справка за клавиатурните бързи клавиши на <application>Калкулатора</application>: Елементи на менютата</title> 
+                  <title>Quick Reference for Keyboard Shortcuts of <application>gcalctool</application> Menu Items</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -2508,70 +2676,100 @@
                          </thead> 
                          <tbody> 
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>b</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Основен</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Преминаване към Основен режим</para> </entry>
                              <entry><para><xref linkend="gcalctool-basic-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Редактиране</guimenu> <guimenuitem>Копиране</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Копиране на текущата стойност от района на преглед във временната памет</para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>e</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Show Bitcalculating Extension</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the bitcalculation extension</para> </entry>
+                             <entry><para><xref linkend="gcalctool-calc-bit-manipulation-ext"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>f</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Финансов</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Преминаване към Финансов режим</para> </entry>
                              <entry><para><xref linkend="gcalctool-financial-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>I</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>h</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Помощ</guimenu> <guimenuitem>Ръководство</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Display the <application>gcalctool</application> online help </para> </entry>
+                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>i</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Редактиране</guimenu> <guimenuitem>Вмъкване на ASCII стойност</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Показване на прозореца за <guilabel>Вмъкване на·стойност на ASCII</guilabel></para> </entry>
                              <entry><para><xref linkend="gcalctool-ins-ascii"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>K</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>k</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Показване на разделителя за хилядите</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Показване на разделителя за хилядите</para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions-separator"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>l</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Left-to-right Precedence</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para> Calculate results using left-to-right precedence</para> </entry>
+                             <entry><para><xref linkend="gcalctool-manage-order"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>m</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Паметови регистри</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Показване на прозореца за <guilabel>Паметови регистри</guilabel></para> </entry>
                              <entry><para><xref linkend="gcalctool-mem-reg"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Калкулатор</guimenu> <guimenuitem>Напускане</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Затваряне на програмата <application>Калкулатор</application></para> </entry>
+                             <entry><para>Quit the <application>gcalctool</application> application</para> </entry>
                              <entry><para><xref linkend="gcalctool-quit"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>r</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Arithmetic Precedence</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Calculate results using arithmetic precedence</para> </entry>
+                             <entry><para><xref linkend="gcalctool-manage-order"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Научен</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Преминаване към Научен режим</para> </entry>
                              <entry><para><xref linkend="gcalctool-scientific-mode"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>T</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>t</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Изглед</guimenu> <guimenuitem>Показване на крайните нули</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Показване на завършващите нули</para> </entry>
                              <entry><para><xref linkend="gcalctool-set-acc"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo></para></entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>Редактиране</guimenu> <guimenuitem>Поставяне</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Поставя текущата стойност от временната памет в района на преглед.</para> </entry>
                              <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycap>F1</keycap></para></entry>
-                             <entry><para> <menuchoice> <guimenu>Помощ</guimenu> <guimenuitem>Ръководство</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Показва от Интернет помощта за <application>Калкулатора</application>.</para> </entry>
-                             <entry><para><xref linkend="gcalctool-intro"/></para> </entry>
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>z</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Редактиране</guimenu> <guimenuitem>Undo</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Undo previous action</para> </entry>
+                             <entry><para><xref linkend="gcalctool-undo-redo"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Shift</keycap><keycap>Ctrl</keycap><keycap>z</keycap></keycombo></para></entry>
+                             <entry><para> <menuchoice> <guimenu>Редактиране</guimenu> <guimenuitem>Redo</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Redo an undo'ed action</para> </entry>
+                             <entry><para><xref linkend="gcalctool-undo-redo"/></para> </entry>
                            </row>
 			 </tbody>
 		  </tgroup>
