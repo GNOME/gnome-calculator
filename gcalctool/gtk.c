@@ -1183,7 +1183,7 @@ about_cb(GtkWidget *widget)
             "authors", authors,
             "documenters", documenters,
             "translator_credits", translator_credits,
-            "logo-icon-name", "gnome-calculator",
+            "logo-icon-name", "accessories-calculator",
             NULL);
 }
 
@@ -2885,7 +2885,7 @@ ui_init(int *argc, char ***argv)
     v->home = (char *) g_get_home_dir();
     gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
 
-    gtk_window_set_default_icon_name("gnome-calculator");
+    gtk_window_set_default_icon_name("accessories-calculator");
 }
 
 
