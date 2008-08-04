@@ -124,7 +124,7 @@ seq:
 udf:
   value '=' {
   cp($1, v->MPdisp_val);
-  display_set_number(v->MPdisp_val);
+  display_set_number(&v->display, v->MPdisp_val);
   }
 | value '=' tSTO '(' tNUMBER ')' {
   int val = mp_cast_to_int($5);
@@ -135,8 +135,8 @@ udf:
   do_sto_reg(val, $1);
 }
 | tCLR {
-  display_reset();
-  display_set_number(v->MPdisp_val);
+  display_reset(&v->display);
+  display_set_number(&v->display, v->MPdisp_val);
 }
 ;
 
@@ -267,8 +267,7 @@ rcl:
 number:
   tNUMBER {cp($1, $$);}
 | tANS {
-  struct exprm_state *e = get_state();
-  cp(e->ans, $$);
+  cp(display_get_answer(&v->display), $$);
 }
 ;
 

@@ -26,7 +26,7 @@
 /* TODO: This file is almost identical to ce-parser. */
 
 int 
-lr_parse_(char *expression, int result[MP_SIZE], int flags)
+lr_parse_(const char *expression, int result[MP_SIZE], int flags)
 {
     int ret = 0;
 
@@ -61,7 +61,7 @@ lr_parse_(char *expression, int result[MP_SIZE], int flags)
 
 
 int 
-lr_parse(char *expression, int result[MP_SIZE])
+lr_parse(const char *expression, int result[MP_SIZE])
 {
     return(lr_parse_(expression, result, ANS));
 }

@@ -1033,7 +1033,7 @@ char_val(char chr)
  */
 
 void
-MPstr_to_num(char *str, enum base_type base, int *MPval)
+MPstr_to_num(const char *str, enum base_type base, int *MPval)
 {
     char *optr;
     int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];

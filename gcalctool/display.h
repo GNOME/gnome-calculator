@@ -1,4 +1,3 @@
-
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
@@ -22,33 +21,66 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "calctool.h"
+#include <glib.h>
 
-void display_init(void);
+#include "mp.h"
 
-void display_reset(void);
+#define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
+#define MAX_DISPLAY 512
+
+/* Expression mode state */
+struct exprm_state {
+    int ans[MP_SIZE];      /* Previously calculated answer */
+    char *expression;      /* Expression entered by user */
+    int cursor;
+};
+
+/* Circular list of Arithmetic Precedence Mode states*/ 
+struct exprm_state_history {
+  unsigned int begin;
+  unsigned int end;
+  unsigned int current;
+  struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
+};
+
+typedef struct
+{
+    char display[MAX_DISPLAY];             /* Current calculator display. */
+    struct exprm_state_history h;      /* History of expression mode states */
+} GCDisplay;
+
+void display_init(GCDisplay *);
+
+void display_reset(GCDisplay *);
 void localize_expression(char *, const char *, int, int *);
-void display_clear(int);
-void paren_disp(int);
-void display_refresh(int);
-void display_set_number(int *);
-void display_set_string(char *);
-void display_set_error(const char *);
+void display_clear(GCDisplay *, int);
+void paren_disp(GCDisplay *, int);
+void display_refresh(GCDisplay *, int);
 
-void display_clear_stack(void);
-void display_push(void);
-void display_pop(void);
-void display_unpop(void);
+const char *display_get_text(GCDisplay *);
+int *display_get_answer(GCDisplay *);
+int display_get_cursor(GCDisplay *);
 
-int display_insert(const char *, int);
-int display_backspace(int cursor);
-int display_delete(int);
-int display_surround(const char *, const char *, int);
+void display_set_number(GCDisplay *, int *);
+void display_set_string(GCDisplay *, const char *);
+void display_set_cursor(GCDisplay *, int);
+void display_set_error(GCDisplay *, const char *);
 
-gboolean display_is_empty(void);
-gboolean display_is_result(void);
-gboolean display_is_usable_number(int *);
+void display_clear_stack(GCDisplay *);
+void display_push(GCDisplay *);
+void display_pop(GCDisplay *);
+void display_unpop(GCDisplay *);
+gboolean display_is_undo_step(GCDisplay *display);
 
-int display_solve(int *);
+int display_insert(GCDisplay *, const char *, int);
+int display_backspace(GCDisplay *, int cursor);
+int display_delete(GCDisplay *, int);
+int display_surround(GCDisplay *, const char *, const char *, int);
+
+gboolean display_is_empty(GCDisplay *);
+gboolean display_is_result(GCDisplay *);
+gboolean display_is_usable_number(GCDisplay *, int *);
+
+int display_solve(GCDisplay *, int *);
 
 #endif /* DISPLAY_H */

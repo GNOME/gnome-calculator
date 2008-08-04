@@ -1,4 +1,3 @@
-
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
@@ -30,6 +29,12 @@
 #include "ui.h"
 #include "ce_parser.h" // For ce_parse()
 
+static struct exprm_state *
+get_state(GCDisplay *display)
+{
+    return &(display->h.e[display->h.current]);
+}
+
 static gboolean
 exp_has_postfix(char *str, char *postfix)
 {
@@ -54,15 +59,15 @@ exp_has_postfix(char *str, char *postfix)
 static char *
 str_replace(char *str, char *from, char *to)
 {
-    char output[MAXLINE];
+    char output[MAX_DISPLAY];
     int offset = 0;
     char *c;
     int flen = strlen(from);
     int tlen = strlen(to);
     
-    for (c = str; *c && offset < MAXLINE - 1; c++, offset++) {
+    for (c = str; *c && offset < MAX_DISPLAY - 1; c++, offset++) {
         if (strncasecmp(from, c, flen) == 0) {
-            SNPRINTF(output + offset, MAXLINE - offset, to);
+            SNPRINTF(output + offset, MAX_DISPLAY - offset, to);
             c += flen - 1;
             offset += tlen - 1;
         } else {
@@ -70,8 +75,8 @@ str_replace(char *str, char *from, char *to)
         }
     }
 
-    if (offset >= MAXLINE)
-        offset = MAXLINE - 1;
+    if (offset >= MAX_DISPLAY)
+        offset = MAX_DISPLAY - 1;
     output[offset] = '\0';
     
     return strdup(output);
@@ -174,14 +179,14 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 
 
 void
-display_clear(int initialise)
+display_clear(GCDisplay *display, int initialise)
 {
     switch(v->syntax) {
     case NPA:
         v->ltr.pointed = 0;
         v->ltr.toclear = 1;
         mp_set_from_integer(0, v->MPdisp_val);
-        display_set_number(v->MPdisp_val);
+        display_set_number(display, v->MPdisp_val);
 
         if (initialise == TRUE) {
             v->ltr.noparens   = 0;
@@ -191,7 +196,7 @@ display_clear(int initialise)
         break;
 
     case EXPRS:
-        display_set_string("");
+        display_set_string(display, "");
         break;
 
     default:
@@ -201,7 +206,7 @@ display_clear(int initialise)
 
 
 void
-display_reset()
+display_reset(GCDisplay *display)
 {
     v->error             = 0;         /* Currently no display error. */
     v->ltr.cur_op        = -1;        /* No arithmetic operator defined yet. */
@@ -212,13 +217,63 @@ display_reset()
   
     v->ltr.new_input = 1;             /* Value zero is on calculator display */
 
-    display_clear(TRUE);
+    display_clear(display, TRUE);
+}
+
+const char *
+display_get_text(GCDisplay *display)
+{
+    struct exprm_state *e;
+    
+    switch(v->syntax) {
+    case NPA:
+        return display->display;
+
+    case EXPRS:
+        e = get_state(display);
+        return e->expression;
+
+    default:
+        assert(0);
+    }
+}
+
+int *display_get_answer(GCDisplay *display)
+{
+    struct exprm_state *e;
+    switch(v->syntax) {
+    case NPA:
+        return NULL; // FIXME?
+
+    case EXPRS:
+        e = get_state(display);
+        return e->ans;
+
+    default:
+        assert(0);
+    }
+}
+
+int
+display_get_cursor(GCDisplay *display)
+{
+    struct exprm_state *e;
+    switch(v->syntax) {
+    case NPA:
+        return -1; // FIXME?
+
+    case EXPRS:
+        e = get_state(display);
+        return e->cursor;
+
+    default:
+        assert(0);
+    }
 }
 
 /* Append the latest parenthesis char to the display item. */
-
 void
-paren_disp(int key)
+paren_disp(GCDisplay *display, int key)
 {
     int n;
     char *text;
@@ -233,7 +288,7 @@ paren_disp(int key)
  *  Otherwise just append the character.
  */
 
-    n = strlen(v->display);
+    n = strlen(display->display);
     text = buttons[key].symname;
     switch (key) {
     case -1:
@@ -241,24 +296,24 @@ paren_disp(int key)
         v->ltr.noparens = 0;
         v->ltr.cur_op = -1;
         mp_set_from_integer(0, v->MPdisp_val);
-        display_set_number(v->MPdisp_val);
+        display_set_number(display, v->MPdisp_val);
         return;
     case KEY_BACKSPACE:
         if (!n) {
             return;
         }
 
-        if (v->display[n-1] == ')') {
+        if (display->display[n-1] == ')') {
             v->ltr.noparens++;
-        } else if (v->display[n-1] == '(') {
+        } else if (display->display[n-1] == '(') {
             v->ltr.noparens--;
             if (!v->ltr.noparens) {
                 v->ltr.cur_op = -1;
-                display_set_number(v->MPdisp_val);
+                display_set_number(display, v->MPdisp_val);
                 return;
             }
-        } else if (v->display[n-1] == ')') v->ltr.noparens++;
-        v->display[n-1] = '\0';
+        } else if (display->display[n-1] == ')') v->ltr.noparens++;
+        display->display[n-1] = '\0';
         break;
 
     case KEY_START_BLOCK:
@@ -270,7 +325,7 @@ paren_disp(int key)
 
         if (v->ltr.noparens == 1 && v->ltr.cur_op == -1) {
             n = 0;
-            v->display[0] = '\0';
+            display->display[0] = '\0';
         }
         text = "(";
         break;
@@ -281,36 +336,36 @@ paren_disp(int key)
     }
 
     if (text) {
-        SNPRINTF(v->display+n, MAXLINE-n, "%s", text);
+        SNPRINTF(display->display+n, MAX_DISPLAY-n, "%s", text);
     }
 
     n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
-    ui_set_display(&v->display[n], -1);
+    ui_set_display(&display->display[n], -1);
 }
 
 void
-display_set_number(int *MPval)
+display_set_number(GCDisplay *display, int *MPval)
 {
     if (!v->error) {
-        make_number(v->display, MAXLINE, MPval, v->base, FALSE);
-        ui_set_display(v->display, -1);
+        make_number(display->display, MAX_DISPLAY, MPval, v->base, FALSE);
+        ui_set_display(display->display, -1);
     }
 }
 
 void
-display_set_string(char *value)
+display_set_string(GCDisplay *display, const char *value)
 {
     struct exprm_state *e;
     
     switch(v->syntax) {
     case NPA:
-        if(value != v->display)
-            STRNCPY(value, v->display, MAX_DIGITS - 1);
-        ui_set_display(v->display, -1);
+        if(value != display->display)
+            STRNCPY(display->display, value, MAX_DIGITS - 1);
+        ui_set_display(display->display, -1);
         break;
 
     case EXPRS:
-        e = get_state();
+        e = get_state(display);
         free(e->expression);
         e->expression = strdup(value);
         break;
@@ -321,7 +376,25 @@ display_set_string(char *value)
 }
 
 void
-display_set_error(const char *message)
+display_set_cursor(GCDisplay *display, int cursor)
+{
+    struct exprm_state *e;
+    switch(v->syntax) {
+    case NPA:
+        break; // FIXME?
+
+    case EXPRS:
+        e = get_state(display);
+        e->cursor = cursor;
+        break;
+
+    default:
+        assert(0);
+    }   
+}
+
+void
+display_set_error(GCDisplay *display, const char *message)
 {
     ui_set_statusbar(message, "gtk-dialog-error");
 }
@@ -334,172 +407,173 @@ copy_state(struct exprm_state *dst, struct exprm_state *src)
 }
 
 static void
-update_undo_redo_button_sensitivity(void)
+update_undo_redo_button_sensitivity(GCDisplay *display)
 {
     int undo = 0;
     int redo = 0;
 
-    if (v->h.current != v->h.end) {
+    if (display->h.current != display->h.end) {
         redo = 1;
     }
 
-    if (v->h.current != v->h.begin) {
+    if (display->h.current != display->h.begin) {
         undo = 1;
     }
 
     ui_set_undo_enabled(undo, redo);
 }
 
-void display_clear_stack(void)
+void display_clear_stack(GCDisplay *display)
 {
-    int i = v->h.begin;
-    while (i != v->h.end) {
-        if (i != v->h.current) {
-            free(v->h.e[i].expression);
-            v->h.e[i].expression = NULL;
+    int i = display->h.begin;
+    while (i != display->h.end) {
+        if (i != display->h.current) {
+            free(display->h.e[i].expression);
+            display->h.e[i].expression = NULL;
         }
         i = ((i + 1) % UNDO_HISTORY_LENGTH);
     }
-    v->h.begin = v->h.end = v->h.current;
-    update_undo_redo_button_sensitivity();   
+    display->h.begin = display->h.end = display->h.current;
+    update_undo_redo_button_sensitivity(display);
 }
 
-void display_push(void)
+void display_push(GCDisplay *display)
 {
     int c;
 
-    if (v->h.current != v->h.end) {
-        int i = v->h.current;
+    if (display->h.current != display->h.end) {
+        int i = display->h.current;
 
         do {
             i = ((i + 1) % UNDO_HISTORY_LENGTH);
-            free(v->h.e[i].expression);
-            v->h.e[i].expression = strdup("Ans");
-        } while (i != v->h.end);
+            free(display->h.e[i].expression);
+            display->h.e[i].expression = strdup("Ans");
+        } while (i != display->h.end);
     }
 
-    v->h.end = v->h.current;
+    display->h.end = display->h.current;
 
-    c = v->h.current;
-    v->h.end = v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
-    if (v->h.current == v->h.begin) {
-        free(v->h.e[v->h.begin].expression);
-        v->h.e[v->h.begin].expression = NULL;
-        v->h.begin = ((v->h.begin + 1) % UNDO_HISTORY_LENGTH);
+    c = display->h.current;
+    display->h.end = display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
+    if (display->h.current == display->h.begin) {
+        free(display->h.e[display->h.begin].expression);
+        display->h.e[display->h.begin].expression = NULL;
+        display->h.begin = ((display->h.begin + 1) % UNDO_HISTORY_LENGTH);
     }
 
-    copy_state(&(v->h.e[v->h.current]), &(v->h.e[c]));
-    update_undo_redo_button_sensitivity();   
+    copy_state(&(display->h.e[display->h.current]), &(display->h.e[c]));
+    update_undo_redo_button_sensitivity(display);
 }
 
-void display_pop(void)
+void display_pop(GCDisplay *display)
 {
-    struct exprm_state *e;
-    
-    if (v->h.current != v->h.begin) {
-        v->h.current = ((v->h.current - 1) % UNDO_HISTORY_LENGTH);
+    if (display->h.current != display->h.begin) {
+        display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
         ui_set_statusbar("", "");
     } else {
         ui_set_statusbar(_("No undo history"), "gtk-dialog-warning");
     }
-    update_undo_redo_button_sensitivity();
+    update_undo_redo_button_sensitivity(display);
     
-    e = get_state();
-    display_refresh(e->cursor);
+    display_refresh(display, display_get_cursor(display));
 }
 
 void
-display_unpop(void)
+display_unpop(GCDisplay *display)
 {
-    if (v->h.current != v->h.end) {
-        v->h.current = ((v->h.current + 1) % UNDO_HISTORY_LENGTH);
+    if (display->h.current != display->h.end) {
+        display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
         ui_set_statusbar("", "");
     } else {
         ui_set_statusbar(_("No redo steps"), "gtk-dialog-warning");
     }
-    update_undo_redo_button_sensitivity();
+    update_undo_redo_button_sensitivity(display);
+}
+
+gboolean
+display_is_undo_step(GCDisplay *display)
+{
+    return(display->h.current != display->h.begin);
 }
 
 int
-display_insert(const char *text, int cursor)
+display_insert(GCDisplay *display, const char *text, int cursor)
 {
-    char buf[MAXLINE], *display;
-    struct exprm_state *e = get_state();
+    char buf[MAX_DISPLAY], *currentText;
     
     if (cursor < 0) {
-        SNPRINTF(buf, MAXLINE, "%s%s", e->expression, text);
+        SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
     } else {
-        display = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s%s", cursor, display, text, display + cursor);
+        currentText = ui_get_display();
+        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s%s", cursor, currentText, text, currentText + cursor);
         cursor += strlen(text);
     }
-    display_set_string(buf);
+    display_set_string(display, buf);
     
     return cursor;
 }
 
 int
-display_backspace(int cursor)
+display_backspace(GCDisplay *display, int cursor)
 {
-    char buf[MAXLINE] = "", buf2[MAXLINE], *t;
-    struct exprm_state *e = get_state();
+    char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY], *t;
+    struct exprm_state *e = get_state(display);
     int i, MP_reg[MP_SIZE];
 
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
-            make_number(buf, MAXLINE, e->ans, v->base, FALSE);
+            make_number(buf, MAX_DISPLAY, e->ans, v->base, FALSE);
             t = str_replace(e->expression, "Ans", buf);
             free(e->expression);
             e->expression = t;
         } else {
             for (i = 0; i < 10; i++) {
-                SNPRINTF(buf, MAXLINE, "R%d", i);
+                SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
                 if (exp_has_postfix(e->expression, buf)) {
                     do_rcl_reg(i, MP_reg);
-                    make_number(buf2, MAXLINE, MP_reg, v->base, FALSE);
+                    make_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
-                    SNPRINTF(buf, MAXLINE, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
-                    display_set_string(buf);
+                    SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
+                    display_set_string(display, buf);
                     return cursor - 1;
                 }
             }
         }
 
-        SNPRINTF(buf, MAXLINE, "%.*s", strlen(e->expression) - 1, e->expression);
+        SNPRINTF(buf, MAX_DISPLAY, "%.*s", strlen(e->expression) - 1, e->expression);
     } else if (cursor > 0) {
         t = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor - 1, t, t + cursor);
+        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor - 1, t, t + cursor);
     } else {
         return cursor; /* At the start of the line */
     }
 
-    display_set_string(buf);
+    display_set_string(display, buf);
     return cursor - 1;
 }
 
 int
-display_delete(int cursor)
+display_delete(GCDisplay *display, int cursor)
 {
-    char buf[MAXLINE] = "", *display;
+    char buf[MAX_DISPLAY] = "", *text;
     
     if (cursor >= 0) {
-        display = ui_get_display();
-        SNPRINTF(buf, MAXLINE, "%.*s%s", cursor, display, display + cursor + 1);
-        display_set_string(buf);
+        text = ui_get_display();
+        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor, text, text + cursor + 1);
+        display_set_string(display, buf);
     }
 
     return cursor;
 }
 
 int
-display_surround(const char *prefix, const char *suffix, int cursor)
+display_surround(GCDisplay *display, const char *prefix, const char *suffix, int cursor)
 {
-    struct exprm_state *e = get_state();
-    char buffer[MAXLINE];
+    char buffer[MAX_DISPLAY];
     
-    SNPRINTF(buffer, MAXLINE, "%s%s%s", prefix, e->expression, suffix);
-    display_set_string(buffer);
+    SNPRINTF(buffer, MAX_DISPLAY, "%s%s%s", prefix, display_get_text(display), suffix);
+    display_set_string(display, buffer);
     
     return cursor;
 }
@@ -508,7 +582,7 @@ display_surround(const char *prefix, const char *suffix, int cursor)
  * the display.
  */
 void
-display_refresh(int cursor)
+display_refresh(GCDisplay *display, int cursor)
 {
     int i, MP_reg[MP_SIZE];
     char localized[MAX_LOCALIZED], *str, reg[3], *t;
@@ -517,12 +591,12 @@ display_refresh(int cursor)
 
     switch (v->syntax) {
         case NPA:
-            display_set_number(v->MPdisp_val);
+            display_set_number(display, v->MPdisp_val);
             break;
 
         case EXPRS:
-            e = get_state();
-            if (display_is_empty()) {
+            e = get_state(display);
+            if (display_is_empty(display)) {
                 mp_set_from_integer(0, MP_reg);
                 make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
                 str = x;
@@ -555,17 +629,14 @@ display_refresh(int cursor)
 }
 
 gboolean
-display_is_empty(void)
+display_is_empty(GCDisplay *display)
 {
-    struct exprm_state *e;
-
     switch (v->syntax) {
         case NPA:
             return v->ltr.toclear;
 
         case EXPRS:
-            e = get_state();
-            return strcmp(e->expression, "") == 0;
+            return strcmp(display_get_text(display), "") == 0;
         
         default:
             assert(FALSE);
@@ -573,10 +644,8 @@ display_is_empty(void)
 }
 
 gboolean
-display_is_result(void)
+display_is_result(GCDisplay *display)
 {
-    struct exprm_state *e;
-
     switch (v->syntax) {
         case NPA:
             if (v->ltr.old_cal_value < 0 ||
@@ -586,8 +655,7 @@ display_is_result(void)
             break;
 
         case EXPRS:
-            e = get_state();
-            if (strcmp(e->expression, "Ans") == 0) {
+            if (strcmp(display_get_text(display), "Ans") == 0) {
                 return TRUE;
             }
             break;
@@ -600,39 +668,37 @@ display_is_result(void)
 }
 
 gboolean
-display_is_usable_number(int MPnum[MP_SIZE])
+display_is_usable_number(GCDisplay *display, int MPnum[MP_SIZE])
 {
-    struct exprm_state *e = get_state();
-    if (display_is_empty()) {
+    if (display_is_empty(display)) {
         return ce_parse("0", MPnum);
     } else {
-        return ce_parse(e->expression, MPnum);
+        return ce_parse(display_get_text(display), MPnum);
     }
 }
 
 void
-display_init(void)
+display_init(GCDisplay *display)
 {
     int i;
 
-    memset(&(v->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history */
+    memset(&(display->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history */
     for (i = 0; i < UNDO_HISTORY_LENGTH; i++)
-        v->h.e[i].expression = strdup("");
+        display->h.e[i].expression = strdup("");
 }
 
 int
-display_solve(int *result)
+display_solve(GCDisplay *display, int *result)
 {
-    struct exprm_state *e;
-    char *c;
     GString *clean;
     int errorCode;
+    const char *c, *text;
 
-    e = get_state();    
+    text = display_get_text(display);
 
     /* Remove thousands separators and use english radix */
-    clean = g_string_sized_new(strlen(e->expression));
-    for (c = e->expression; *c; c++) {
+    clean = g_string_sized_new(strlen(text));
+    for (c = text; *c; c++) {
         if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
             c += strlen(v->tsep) - 1;
         } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {

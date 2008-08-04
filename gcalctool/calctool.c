@@ -547,7 +547,7 @@ doerr(char *errmes)
     switch (v->syntax) {
         case NPA:
             ui_set_error_state(TRUE);
-            display_set_string(errmes);
+            display_set_string(&v->display, errmes);
             ui_beep();
             break;
 
@@ -747,7 +747,7 @@ main(int argc, char **argv)
     get_options(argc, argv);   /* Get command line arguments. */
     ui_init(&argc, &argv);     /* Initialise UI */
     resources_init();          /* Initialise configuration */
-    display_init();
+    display_init(&v->display);
 
     init_text();               /* Setup text strings depending upon language. */
     read_resources();          /* Read resources from merged database. */

@@ -3155,7 +3155,7 @@ mppwr2(int *x, int *y, int *z)
     else goto L70;
 
 L10:
-    display_set_error(_("Negative X and non-integer Y not supported"));
+    display_set_error(&v->display, _("Negative X and non-integer Y not supported"));
     goto L50;
 
 /* HERE X IS ZERO, RETURN ZERO IF Y POSITIVE, OTHERWISE ERROR */

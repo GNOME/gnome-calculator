@@ -475,21 +475,21 @@ static XVars X;
 static void
 reset_display(void)
 {
-    struct exprm_state *e;
+    int *ans;
 
     switch (v->syntax) {
         case NPA:
             v->ltr.noparens = 0;
             MPstr_to_num("0", DEC, v->MPdisp_val);
-            display_set_number(v->MPdisp_val);
+            display_set_number(&v->display, v->MPdisp_val);
             clear_undo_history();
             break;
 
         case EXPRS:
-            e = get_state();
-            MPstr_to_num("0", DEC, e->ans);
-            display_clear(FALSE);
-            display_set_number(e->ans);
+            ans = display_get_answer(&v->display);
+            MPstr_to_num("0", DEC, ans);
+            display_clear(&v->display, FALSE);
+            display_set_number(&v->display, ans);
             break;
         
         default:
@@ -571,7 +571,7 @@ ui_set_accuracy(int accuracy)
     set_int_resource(R_ACCURACY, accuracy);
     
     ui_make_registers();
-    display_refresh(-1);
+    display_refresh(&v->display, -1);
     
     /* Hide the manual dialog */
     gtk_widget_hide(X->spframe);
@@ -889,7 +889,7 @@ set_bit_panel(void)
 
     switch (v->syntax) {
         case NPA:
-            MPstr_to_num(v->display, v->base, MP1);
+            MPstr_to_num(display_get_text(&v->display), v->base, MP1);
             mpcmim(MP1, MP2);
             if (mp_is_equal(MP1, MP2)) {
                 int toclear = (v->current == KEY_CLEAR_ENTRY)
@@ -916,7 +916,7 @@ set_bit_panel(void)
             break;
 
         case EXPRS: 
-            if (display_is_usable_number(MP) || !is_integer(MP)) {
+            if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
                 gtk_widget_set_sensitive(X->bit_panel, FALSE);
                 return;
             }
@@ -1259,7 +1259,7 @@ aframe_response_cb(GtkWidget *dialog, gint response_id)
     if (response_id == GTK_RESPONSE_OK) {
         ch = (char *) gtk_entry_get_text(GTK_ENTRY(X->aframe_ch));
         mp_set_from_integer(ch[0], v->MPdisp_val);
-        display_set_number(v->MPdisp_val);
+        display_set_number(&v->display, v->MPdisp_val);
     }
     
     gtk_widget_hide(dialog);
@@ -1343,7 +1343,7 @@ static void do_button(int function, int arg)
             buttons[function].func(arg);
             set_bit_panel();
             if (v->ltr.new_input && v->dtype == FIX) {
-                display_set_string(v->display);
+                display_set_string(&v->display, display_get_text(&v->display));
             }
             break;
 
@@ -1740,7 +1740,6 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     double number;
     unsigned long long lval;
     int n, MP1[MP_SIZE], index;
-    struct exprm_state *e =  get_state();
 
     index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box),
                                               "bit_index"));
@@ -1748,12 +1747,12 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 
     switch (v->syntax) {
         case NPA:
-            MPstr_to_num(v->display, v->base, MP1);
+            MPstr_to_num(display_get_text(&v->display), v->base, MP1);
             break;
         case EXPRS: {
-            int ret = display_is_usable_number(e->ans);
+            int ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
             assert(!ret);
-            mp_set_from_mp(e->ans, MP1);
+            mp_set_from_mp(display_get_answer(&v->display), MP1);
         }
         break;
         default:
@@ -1775,12 +1774,12 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     switch (v->syntax) {
         case NPA:
             mp_set_from_double(number, v->MPdisp_val);
-            display_set_number(v->MPdisp_val);
+            display_set_number(&v->display, v->MPdisp_val);
             break;
         case EXPRS:
-            mp_set_from_double(number, e->ans);
-            display_set_string("Ans");
-            display_refresh(-1);
+            mp_set_from_double(number, display_get_answer(&v->display));
+            display_set_string(&v->display, "Ans");
+            display_refresh(&v->display, -1);
             break;
         default:
             assert(FALSE);
@@ -2207,7 +2206,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
         case NPA:
             ret = lr_parse((char *) text, v->MPdisp_val);
             if (!ret) {
-                display_set_number(v->MPdisp_val);
+                display_set_number(&v->display, v->MPdisp_val);
             } else {
                 ui_set_statusbar(_("Clipboard contained malformed calculation"),
                                  "gtk-dialog-error");
@@ -2215,8 +2214,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
             break;
     
         case EXPRS:
-            display_insert((char *) text, get_cursor()); // FIXME: Move out of gtk.c
-            display_refresh(-1);
+            display_insert(&v->display, (char *) text, get_cursor()); // FIXME: Move out of gtk.c
+            display_refresh(&v->display, -1);
             break;
     
         default:
@@ -2269,7 +2268,7 @@ static void
 redo_cb(GtkWidget *widget)
 {
     perform_redo();
-    display_refresh(-1);
+    display_refresh(&v->display, -1);
 }
 
 
@@ -2376,7 +2375,7 @@ mode_radio_cb(GtkWidget *menu)
  *
  * (unless we are in Scientific mode with Decimal numeric base and Fixed).
  */
-    if (display_is_result() &&
+    if (display_is_result(&v->display) &&
         ((v->modetype != SCIENTIFIC) ||
          (v->dtype == FIX && v->base == DEC))) {
         v->modetype = mode;

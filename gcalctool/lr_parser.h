@@ -40,7 +40,7 @@ int lrlex();
 int lrerror();            /* Dummy definition. */
 int lrparse();            /* Dummy definition. */
 int ceerror(char *s);
-int lr_parse(char *expression, int result[MP_SIZE]);
+int lr_parse(const char *expression, int result[MP_SIZE]);
 int lr_udf_parse(char *expression);
 
 void reset_lr_tokeniser();

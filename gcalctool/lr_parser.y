@@ -117,7 +117,7 @@ seq:
 udf:
   value '=' {
   cp($1, v->MPdisp_val);
-  display_set_number(v->MPdisp_val);
+  display_set_number(&v->display, v->MPdisp_val);
   }
 | value '=' tSTO '(' tINUMBER ')' {
   int val;
@@ -130,8 +130,8 @@ udf:
   do_sto_reg(val, $1);
 }
 | tCLR {
-  display_reset();
-  display_set_number(v->MPdisp_val);
+  display_reset(&v->display);
+  display_set_number(&v->display, v->MPdisp_val);
 }
 ;
 

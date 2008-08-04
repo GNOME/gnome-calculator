@@ -28,8 +28,6 @@ void syntaxdep_show_display(void);
 
 void make_exp(char *number, int t[MP_SIZE]);
 
-struct exprm_state *get_state(void);
-
 void perform_undo(void);
 void perform_redo(void);
 void clear_undo_history(void);

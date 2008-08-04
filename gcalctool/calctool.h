@@ -22,9 +22,6 @@
 #ifndef CALCTOOL_H
 #define CALCTOOL_H
 
-#include "config.h"
-#include "mp.h"
-
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -32,6 +29,10 @@
 #include <math.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+
+#include "config.h"
+#include "mp.h"
+#include "display.h"
 
 #define FCLOSE       (void) fclose     /* To make lint happy. */
 #define FPRINTF      (void) fprintf
@@ -161,8 +162,6 @@ enum
 #undef FALSE
 #define FALSE          0
 
-#define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
-
 #define MPMATH_ERR		    	20001
 
 enum button_flags {
@@ -179,21 +178,6 @@ struct button {
     enum button_flags flags; /* Misc flags */
 };
 
-/* Expression mode state */
-struct exprm_state {
-    int ans[MP_SIZE];      /* Previously calculated answer */
-    char *expression;      /* Expression entered by user */
-    int cursor;
-};
-
-/* Circular list of Arithmetic Precedence Mode states*/ 
-struct exprm_state_history {
-  unsigned int begin;
-  unsigned int end;
-  unsigned int current;
-  struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
-};
-
 struct ltrCalcVars {
     int new_input;     /* New number input since last op. */
     int noparens;      /* Count of left brackets still to be matched. */
@@ -203,19 +187,17 @@ struct ltrCalcVars {
     int key_exp;       /* Set if entering exponent number. */
     int old_cal_value; /* Previous calculation operator. */
     int toclear;       /* Indicates if display should be cleared. */
-    char *exp_posn;    /* Position of the exponent sign. */
 };
 
 struct calcVars {                      /* Calctool variables and options. */
-    struct exprm_state_history h;      /* History of expression mode states */
-
     int current;                       /* Current button/character pressed. */
   
     char *appname;                     /* Application name for resources. */
     char *home;                        /* Pathname for users home directory. */
     char *progname;                    /* Name of this program. */
     
-    char display[MAXLINE];             /* Current calculator display. */
+    GCDisplay display;
+    
     const char *radix;                 /* Locale specific radix string. */
     const char *tsep;                  /* Locale specific thousands separator. */
     int tsep_count;                    /* Number of digits between separator. */
