@@ -61,13 +61,6 @@ enum num_type { ENG, FIX, SCI, MAXDISPMODES };
 /* Trigonometric types. */
 enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
-/* Syntax mode. */
-enum syntax {
-    NPA = 0,      /* Non-precedence arithmetic */
-    EXPRS,        /* Expression with arithmetic precedence */
-    MAXSYNTAX
-};
-
 /* Abbreviations for the gcalctool keyboard */
 enum
 {
@@ -174,19 +167,7 @@ enum button_flags {
 struct button {
     int id;
     char *symname;           /* Expression function name */
-    void (*func)();          /* Function to obey on button press. */
     enum button_flags flags; /* Misc flags */
-};
-
-struct ltrCalcVars {
-    int new_input;     /* New number input since last op. */
-    int noparens;      /* Count of left brackets still to be matched. */
-    int pointed;       /* Whether a decimal point has been given. */
-    
-    int cur_op;        /* Current arithmetic operation. */
-    int key_exp;       /* Set if entering exponent number. */
-    int old_cal_value; /* Previous calculation operator. */
-    int toclear;       /* Indicates if display should be cleared. */
 };
 
 struct calcVars {                      /* Calctool variables and options. */
@@ -218,17 +199,12 @@ struct calcVars {                      /* Calctool variables and options. */
     enum num_type dtype;            /* Number display mode. */
     enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
 
-    enum syntax syntax;             /* Calculation syntax mode */
-
     int accuracy;      /* Number of digits precision (Max 9). */
 
     int error;         /* Indicates some kind of display error. */
     int math_error;    /* Math error (used in expression mode) */
     int show_tsep;     /* Set if the thousands separator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
-    
-    /* Legacy left to right mode variables */
-    struct ltrCalcVars ltr;
 };
 
 typedef struct calcVars *Vars;

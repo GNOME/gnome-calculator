@@ -44,7 +44,6 @@ char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
 char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
                               "SCIENTIFIC" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
-char *Rsstr[MAXSYNTAX]    = { "ARITHMETIC", "ARITHMETIC_PRECEDENCE" };
 
 static GConfClient *client = NULL;
 
@@ -309,24 +308,6 @@ read_resources()    /* Read all possible resources from the database. */
                     v->progname, str);
         } else {
             v->ttype = (enum trig_type) i;
-        }
-    }
-
-    /* Set expression (arithmetic precedence) mode as default. */
-    v->syntax = EXPRS;
-
-    if (get_str_resource(R_SYNTAX, str)) {
-        for (i = 0; i < MAXSYNTAX; i++) {
-            if (EQUAL(str, Rsstr[i])) {
-                break;
-            }
-        }
-
-        if (i == MAXSYNTAX) {
-            FPRINTF(stderr, _("%s: invalid syntax mode [%s]\n"), 
-                    v->progname, str);
-        } else {
-            v->syntax = i;
         }
     }
 

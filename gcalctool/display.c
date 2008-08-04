@@ -181,27 +181,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 void
 display_clear(GCDisplay *display, int initialise)
 {
-    switch(v->syntax) {
-    case NPA:
-        v->ltr.pointed = 0;
-        v->ltr.toclear = 1;
-        mp_set_from_integer(0, v->MPdisp_val);
-        display_set_number(display, v->MPdisp_val);
-
-        if (initialise == TRUE) {
-            v->ltr.noparens   = 0;
-            ui_set_hyperbolic_state(FALSE);          /* Also clears v->hyperbolic. */
-            ui_set_inverse_state(FALSE);          /* Also clears v->inverse. */
-        }
-        break;
-
-    case EXPRS:
-        display_set_string(display, "");
-        break;
-
-    default:
-        assert(0);
-    }
+    display_set_string(display, "");
 }
 
 
@@ -209,138 +189,28 @@ void
 display_reset(GCDisplay *display)
 {
     v->error             = 0;         /* Currently no display error. */
-    v->ltr.cur_op        = -1;        /* No arithmetic operator defined yet. */
-    v->ltr.old_cal_value = -1;
     mp_set_from_integer(0, v->MPresult);   /* No previous result yet. */
     mp_set_from_integer(0, v->MPdisp_val);         
     mp_set_from_integer(0, v->MPlast_input);
   
-    v->ltr.new_input = 1;             /* Value zero is on calculator display */
-
     display_clear(display, TRUE);
 }
 
 const char *
 display_get_text(GCDisplay *display)
 {
-    struct exprm_state *e;
-    
-    switch(v->syntax) {
-    case NPA:
-        return display->display;
-
-    case EXPRS:
-        e = get_state(display);
-        return e->expression;
-
-    default:
-        assert(0);
-    }
+    return get_state(display)->expression;
 }
 
 int *display_get_answer(GCDisplay *display)
 {
-    struct exprm_state *e;
-    switch(v->syntax) {
-    case NPA:
-        return NULL; // FIXME?
-
-    case EXPRS:
-        e = get_state(display);
-        return e->ans;
-
-    default:
-        assert(0);
-    }
+    return get_state(display)->ans;
 }
 
 int
 display_get_cursor(GCDisplay *display)
 {
-    struct exprm_state *e;
-    switch(v->syntax) {
-    case NPA:
-        return -1; // FIXME?
-
-    case EXPRS:
-        e = get_state(display);
-        return e->cursor;
-
-    default:
-        assert(0);
-    }
-}
-
-/* Append the latest parenthesis char to the display item. */
-void
-paren_disp(GCDisplay *display, int key)
-{
-    int n;
-    char *text;
-
-/*  If the character is a Delete, clear the whole line, and exit parenthesis
- *  processing.
- *
- *  If the character is a Back Space, remove the last character. If the last
- *  character was a left parenthesis, decrement the parentheses count. If
- *  the parentheses count is zero, exit parenthesis processing.
- *
- *  Otherwise just append the character.
- */
-
-    n = strlen(display->display);
-    text = buttons[key].symname;
-    switch (key) {
-    case -1:
-    case KEY_CLEAR:
-        v->ltr.noparens = 0;
-        v->ltr.cur_op = -1;
-        mp_set_from_integer(0, v->MPdisp_val);
-        display_set_number(display, v->MPdisp_val);
-        return;
-    case KEY_BACKSPACE:
-        if (!n) {
-            return;
-        }
-
-        if (display->display[n-1] == ')') {
-            v->ltr.noparens++;
-        } else if (display->display[n-1] == '(') {
-            v->ltr.noparens--;
-            if (!v->ltr.noparens) {
-                v->ltr.cur_op = -1;
-                display_set_number(display, v->MPdisp_val);
-                return;
-            }
-        } else if (display->display[n-1] == ')') v->ltr.noparens++;
-        display->display[n-1] = '\0';
-        break;
-
-    case KEY_START_BLOCK:
-
-/* If this is the first left parenthesis being displayed and there is no
- * current arithmetic operand, then the current display is initially cleared
- * to avoid the confusion of showing something like "0(".
- */
-
-        if (v->ltr.noparens == 1 && v->ltr.cur_op == -1) {
-            n = 0;
-            display->display[0] = '\0';
-        }
-        text = "(";
-        break;
-        
-    case KEY_END_BLOCK:
-        text = ")";
-        break;
-    }
-
-    if (text) {
-        SNPRINTF(display->display+n, MAX_DISPLAY-n, "%s", text);
-    }
-
-    n = (n < MAX_DIGITS) ? 0 : n - MAX_DIGITS;
-    ui_set_display(&display->display[n], -1);
+    return get_state(display)->cursor;
 }
 
 void
@@ -357,40 +227,18 @@ display_set_string(GCDisplay *display, const char *value)
 {
     struct exprm_state *e;
     
-    switch(v->syntax) {
-    case NPA:
-        if(value != display->display)
-            STRNCPY(display->display, value, MAX_DIGITS - 1);
-        ui_set_display(display->display, -1);
-        break;
-
-    case EXPRS:
-        e = get_state(display);
-        free(e->expression);
-        e->expression = strdup(value);
-        break;
-
-    default:
-        assert(0);
-    }
+    e = get_state(display);
+    free(e->expression);
+    e->expression = strdup(value);
 }
 
 void
 display_set_cursor(GCDisplay *display, int cursor)
 {
     struct exprm_state *e;
-    switch(v->syntax) {
-    case NPA:
-        break; // FIXME?
 
-    case EXPRS:
-        e = get_state(display);
-        e->cursor = cursor;
-        break;
-
-    default:
-        assert(0);
-    }   
+    e = get_state(display);
+    e->cursor = cursor;
 }
 
 void
@@ -589,80 +437,45 @@ display_refresh(GCDisplay *display, int cursor)
     struct exprm_state *e;
     char x[MAX_LOCALIZED], xx[MAX_LOCALIZED], ans[MAX_LOCALIZED];
 
-    switch (v->syntax) {
-        case NPA:
-            display_set_number(display, v->MPdisp_val);
-            break;
-
-        case EXPRS:
-            e = get_state(display);
-            if (display_is_empty(display)) {
-                mp_set_from_integer(0, MP_reg);
-                make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
-                str = x;
-            } else {           
-                str = strdup(e->expression);
-            }
-        
-            /* Substitute answer register */
-            make_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
-            localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
-            str = str_replace(str, "Ans", localized);
-
-            /* Replace registers with values. */
-            for (i = 0; i < 10; i++) {
-                SNPRINTF(reg, 3, "R%d", i);
-                do_rcl_reg(i, MP_reg);
-                make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
-                t = str_replace(str, reg, xx);
-                free(str);
-                str = t;
-            }
-
-            ui_set_display(str, cursor);
-            free(str);
-            break;
-
-        default:
-            assert(0);
+    e = get_state(display);
+    if (display_is_empty(display)) {
+        mp_set_from_integer(0, MP_reg);
+        make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        str = x;
+    } else {           
+        str = strdup(e->expression);
     }
+        
+    /* Substitute answer register */
+    make_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
+    localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
+    str = str_replace(str, "Ans", localized);
+
+    /* Replace registers with values. */
+    for (i = 0; i < 10; i++) {
+        SNPRINTF(reg, 3, "R%d", i);
+        do_rcl_reg(i, MP_reg);
+        make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        t = str_replace(str, reg, xx);
+        free(str);
+        str = t;
+    }
+    
+    ui_set_display(str, cursor);
+    free(str);
 }
 
 gboolean
 display_is_empty(GCDisplay *display)
 {
-    switch (v->syntax) {
-        case NPA:
-            return v->ltr.toclear;
-
-        case EXPRS:
-            return strcmp(display_get_text(display), "") == 0;
-        
-        default:
-            assert(FALSE);
-    }
+    return strcmp(display_get_text(display), "") == 0;
 }
 
 gboolean
 display_is_result(GCDisplay *display)
 {
-    switch (v->syntax) {
-        case NPA:
-            if (v->ltr.old_cal_value < 0 ||
-                v->ltr.old_cal_value == KEY_CALCULATE) {
-                return TRUE;
-            }
-            break;
-
-        case EXPRS:
-            if (strcmp(display_get_text(display), "Ans") == 0) {
-                return TRUE;
-            }
-            break;
-        
-        default:
-            assert(FALSE);
-    }
+    if (strcmp(display_get_text(display), "Ans") == 0)
+        return TRUE;
     
     return FALSE;
 }

@@ -36,7 +36,6 @@
 #include "config.h"
 #include "dsdefs.h"
 #include "functions.h"
-#include "lr_parser.h"
 #include "ce_parser.h"
 #include "mpmath.h"
 #include "display.h"
@@ -477,56 +476,10 @@ reset_display(void)
 {
     int *ans;
 
-    switch (v->syntax) {
-        case NPA:
-            v->ltr.noparens = 0;
-            MPstr_to_num("0", DEC, v->MPdisp_val);
-            display_set_number(&v->display, v->MPdisp_val);
-            clear_undo_history();
-            break;
-
-        case EXPRS:
-            ans = display_get_answer(&v->display);
-            MPstr_to_num("0", DEC, ans);
-            display_clear(&v->display, FALSE);
-            display_set_number(&v->display, ans);
-            break;
-        
-        default:
-            assert(0);
-    }
-}
-
-void
-ui_set_syntax_mode(enum syntax mode)
-{
-    GtkWidget *widget;
-
-    v->syntax = mode;
-    
-    reset_display();
-    
-    if (mode == NPA) {
-        ui_set_statusbar(_("Activated no operator precedence mode"), "");
-    } else {
-        ui_set_statusbar(
-            _("Activated expression mode with operator precedence"), "");
-    }
-    
-    /* Save the syntax mode */
-    set_resource(R_SYNTAX, Rsstr[v->syntax]);
-
-    /* ??? */
-    ui_set_mode(v->modetype);
-    
-    /* Update menu */
-    if (v->syntax == EXPRS) {
-        widget = GET_WIDGET("arithmetic_precedence_menu");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
-    } else {
-        widget = GET_WIDGET("ltr_precedence_menu");
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(widget), TRUE);
-    }
+    ans = display_get_answer(&v->display);
+    MPstr_to_num("0", DEC, ans);
+    display_clear(&v->display, FALSE);
+    display_set_number(&v->display, ans);
 }
 
 
@@ -883,63 +836,29 @@ ui_set_statusbar(const gchar *text, const gchar *imagename)
 static void
 set_bit_panel(void)
 {
-    int bit_str_len, i, MP1[MP_SIZE], MP2[MP_SIZE];
+    int bit_str_len, i;
     int MP[MP_SIZE];
     char bit_str[MAXLINE], label[MAXLINE];
 
-    switch (v->syntax) {
-        case NPA:
-            MPstr_to_num(display_get_text(&v->display), v->base, MP1);
-            mpcmim(MP1, MP2);
-            if (mp_is_equal(MP1, MP2)) {
-                int toclear = (v->current == KEY_CLEAR_ENTRY)
-                              ? TRUE : FALSE;
-
-                make_fixed(bit_str, MAXLINE, MP1, BIN, MAXLINE, toclear);
-                bit_str_len = strlen(bit_str);
-                if (bit_str_len <= MAXBITS) {
-                    gtk_widget_set_sensitive(X->bit_panel, TRUE);
-
-                    for (i = 0; i < MAXBITS; i++) {
-                        if (i < bit_str_len) {
-                            SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-                        } else {
-                            SNPRINTF(label, MAXLINE, " 0");
-                        }
-                        gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-                    }
-
-                    return;
-                }
-            }
-            gtk_widget_set_sensitive(X->bit_panel, FALSE);
-            break;
-
-        case EXPRS: 
-            if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
-                gtk_widget_set_sensitive(X->bit_panel, FALSE);
-                return;
-            }
-            make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
-            bit_str_len = strlen(bit_str);
-            if (bit_str_len <= MAXBITS) {
-                gtk_widget_set_sensitive(X->bit_panel, TRUE);
-                
-                for (i = 0; i < MAXBITS; i++) {
-                    if (i < bit_str_len) {
-                        SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-                    } else {
-                        SNPRINTF(label, MAXLINE, " 0");
-                    }
-                    gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-                }
+    if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+        return;
+    }
+    make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
+    bit_str_len = strlen(bit_str);
+    if (bit_str_len <= MAXBITS) {
+        gtk_widget_set_sensitive(X->bit_panel, TRUE);
+        
+        for (i = 0; i < MAXBITS; i++) {
+            if (i < bit_str_len) {
+                SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
             } else {
-                gtk_widget_set_sensitive(X->bit_panel, FALSE);
+                SNPRINTF(label, MAXLINE, " 0");
             }
-            break;
-
-        default:
-            assert(FALSE);
+            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+        }
+    } else {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);
     }
 }
 
@@ -975,10 +894,8 @@ ui_set_display(char *str, int cursor)
     if (str == NULL || str[0] == '\0') {
         str = " ";
     } else {
-        if (v->syntax == EXPRS || (v->syntax == NPA && v->ltr.noparens == 0)) {
-            localize_expression(localized, str, MAX_LOCALIZED, &cursor);
-            str = localized;
-        }
+        localize_expression(localized, str, MAX_LOCALIZED, &cursor);
+        str = localized;
     }
 
     gtk_text_buffer_set_text(X->display_buffer, str, -1);
@@ -1055,10 +972,6 @@ ui_set_error_state(gboolean error)
                              !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("show_bitcalculating_menu"), !v->error);
     gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), !v->error); 
-    gtk_widget_set_sensitive(GET_WIDGET("ltr_precedence_menu"), !v->error);
-
-    gtk_widget_set_sensitive(GET_WIDGET("arithmetic_precedence_menu"),
-                             !v->error); 
 
     gtk_widget_set_sensitive(GET_WIDGET("about_menu"), !v->error);
 }
@@ -1323,38 +1236,8 @@ base_cb(GtkWidget *widget)
 
 static void do_button(int function, int arg)
 {
-    switch (v->syntax) {
-        case NPA:
-            v->current = buttons[function].id;
-
-            if (v->error) {
-                /* Must press a valid key first. */
-                if (v->current != KEY_CLEAR) {
-                    return;
-                }
-                ui_set_error_state(FALSE);
-            }
-    
-            if (v->ltr.noparens > 0) {
-                do_paren();
-                return;
-            }
-
-            buttons[function].func(arg);
-            set_bit_panel();
-            if (v->ltr.new_input && v->dtype == FIX) {
-                display_set_string(&v->display, display_get_text(&v->display));
-            }
-            break;
-
-        case EXPRS:
-            do_expression(function, arg, get_cursor());
-            set_bit_panel();
-            break;
-
-        default:
-            assert(0);
-    }
+    do_expression(function, arg, get_cursor());
+    set_bit_panel();
 }
 
 
@@ -1745,19 +1628,9 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
                                               "bit_index"));
     n = MAXBITS - index - 1;
 
-    switch (v->syntax) {
-        case NPA:
-            MPstr_to_num(display_get_text(&v->display), v->base, MP1);
-            break;
-        case EXPRS: {
-            int ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
-            assert(!ret);
-            mp_set_from_mp(display_get_answer(&v->display), MP1);
-        }
-        break;
-        default:
-            assert(FALSE);
-    }
+    int ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
+    assert(!ret);
+    mp_set_from_mp(display_get_answer(&v->display), MP1);
 
     number = mp_cast_to_double(MP1);
     lval = (long long) number;
@@ -1771,21 +1644,10 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     }
     number = (double) lval;
 
-    switch (v->syntax) {
-        case NPA:
-            mp_set_from_double(number, v->MPdisp_val);
-            display_set_number(&v->display, v->MPdisp_val);
-            break;
-        case EXPRS:
-            mp_set_from_double(number, display_get_answer(&v->display));
-            display_set_string(&v->display, "Ans");
-            display_refresh(&v->display, -1);
-            break;
-        default:
-            assert(FALSE);
-    }
+    mp_set_from_double(number, display_get_answer(&v->display));
+    display_set_string(&v->display, "Ans");
+    display_refresh(&v->display, -1);
 
-    v->ltr.toclear = 0;
     return (TRUE);
 }
 
@@ -2134,7 +1996,6 @@ copy_cb(GtkWidget *widget)
 static void
 get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
-    int ret;
     gchar *dstp, *end_buffer, *srcp, *text, c;
 
     if (buffer == NULL) {
@@ -2202,25 +2063,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     }
     *dstp++ = '\0';
 
-    switch (v->syntax) {
-        case NPA:
-            ret = lr_parse((char *) text, v->MPdisp_val);
-            if (!ret) {
-                display_set_number(&v->display, v->MPdisp_val);
-            } else {
-                ui_set_statusbar(_("Clipboard contained malformed calculation"),
-                                 "gtk-dialog-error");
-            }
-            break;
-    
-        case EXPRS:
-            display_insert(&v->display, (char *) text, get_cursor()); // FIXME: Move out of gtk.c
-            display_refresh(&v->display, -1);
-            break;
-    
-        default:
-            assert(0);
-    }
+    display_insert(&v->display, (char *) text, get_cursor()); // FIXME: Move out of gtk.c
+    display_refresh(&v->display, -1);
     free(text);
 }
 
@@ -2338,15 +2182,6 @@ show_registers_cb(GtkWidget *widget)
     gboolean visible;    
     visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));   
     ui_set_registers_visible(visible);
-}
-
-
-static void
-arithmetic_mode_cb(GtkWidget *widget)
-{
-    enum syntax mode;
-    mode = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)) ? EXPRS : NPA;
-    ui_set_syntax_mode(mode);
 }
 
 
@@ -2589,7 +2424,6 @@ create_kframe()
     CONNECT_SIGNAL(store_menu_cb);
     CONNECT_SIGNAL(recall_menu_cb);
     CONNECT_SIGNAL(exchange_menu_cb);
-    CONNECT_SIGNAL(arithmetic_mode_cb);
     CONNECT_SIGNAL(mouse_button_cb);
     /* Detect when populating the right-click menu to enable pasting */
     CONNECT_SIGNAL(buffer_populate_popup_cb);
@@ -2742,8 +2576,6 @@ create_kframe()
     set_menubar_tooltip("show_thousands_separator_menu");
     set_menubar_tooltip("show_bitcalculating_menu");
     set_menubar_tooltip("show_registers_menu");
-    set_menubar_tooltip("ltr_precedence_menu");
-    set_menubar_tooltip("arithmetic_precedence_menu");
     set_menubar_tooltip("help_menu");
     set_menubar_tooltip("about_menu");
 
@@ -2909,7 +2741,6 @@ ui_load(void)
     ui_set_show_trailing_zeroes(v->show_zeroes);
     ui_set_show_bitcalculating(show_bit);
     
-    ui_set_syntax_mode(v->syntax);
     ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);
     ui_set_base(v->base);

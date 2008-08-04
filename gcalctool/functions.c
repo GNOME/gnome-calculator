@@ -33,7 +33,6 @@
 #include "mpmath.h"
 #include "display.h"
 #include "ce_parser.h"
-#include "lr_parser.h"
 #include "ui.h"
 
 void
@@ -71,7 +70,7 @@ make_exp(char *number, int t[MP_SIZE])
 }
 
 
-void
+static void
 clear_undo_history(void)
 {
     display_clear_stack(&v->display);
@@ -104,32 +103,6 @@ do_accuracy(int value)     /* Set display accuracy. */
 }
 
 
-void
-do_business(void)     /* Perform special business mode calculations. */
-{
-    if (v->current == KEY_FINC_CTRM) {
-        calc_ctrm(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_DDB) {
-        calc_ddb(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_FV) {
-        calc_fv(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_PMT) {
-        calc_pmt(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_PV) {
-        calc_pv(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_RATE) {
-        calc_rate(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_SLN) {
-        calc_sln(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_SYD) {
-        calc_syd(v->MPdisp_val);
-    } else if (v->current == KEY_FINC_TERM) {
-        calc_term(v->MPdisp_val);
-    }
-    display_set_number(&v->display, v->MPdisp_val);
-}
-
-
 static void
 exp_negate(void)
 {
@@ -141,6 +114,179 @@ static void
 exp_inv(void)
 {
     display_surround(&v->display, "1/(", ")", 0); // FIXME: Cursor
+}
+
+static void
+do_function(int index)      /* Perform a user defined function. */
+{
+    char *str;
+    int ret;
+
+    assert(index >= 0);
+    assert(index <= 9);
+
+    str = v->fun_vals[index];
+    assert(str);
+    ret = ce_udf_parse(str);
+
+    if (!ret) {
+        ui_set_statusbar("", "");
+    } else {
+        ui_set_statusbar(_("Malformed function"), "gtk-dialog-error");
+    }
+}
+
+static void
+do_shift(int count)     /* Perform bitwise shift on display value. */
+{
+    int MPval[MP_SIZE];
+
+    if (display_is_usable_number(&v->display, MPval) || !is_integer(MPval)) {
+        ui_set_statusbar(_("No sane value to do bitwise shift"),
+                         "gtk-dialog-error");
+    }
+    else {
+        calc_shift(MPval, display_get_answer(&v->display), count);
+        display_set_string(&v->display, "Ans");
+    }
+
+    syntaxdep_show_display();
+}
+
+
+/* Clear the calculator display and re-initialise. */
+void
+do_clear(void)
+{
+    display_clear(&v->display, TRUE);
+    if (v->error) {
+        ui_set_display("", -1);
+    }
+    display_reset(&v->display);
+}
+
+
+/* Change the current base setting. */
+void
+do_base(enum base_type b)
+{
+    int ret, MP[MP_SIZE];
+
+    ret = display_is_usable_number(&v->display, MP);
+
+    if (ret) {
+        ui_set_statusbar(_("No sane value to convert"),
+                         "gtk-dialog-error");
+    } else {
+        mp_set_from_mp(MP, display_get_answer(&v->display));
+        display_set_string(&v->display, "Ans");
+    }
+    v->base = b;
+    set_resource(R_BASE, Rbstr[(int) v->base]);
+    ui_set_base(v->base);
+    ui_make_registers();
+    clear_undo_history();
+
+    display_refresh(&v->display, -1);
+}
+
+
+/* Exchange display with memory register. */
+static void
+do_exchange(int index)
+{
+    int MPtemp[MP_SIZE];
+    int MPexpr[MP_SIZE];
+
+    if (display_is_usable_number(&v->display, MPexpr)) {
+        ui_set_statusbar(_("No sane value to store"),
+                         "gtk-dialog-error");
+    } else {
+        mp_set_from_mp(v->MPmvals[index], MPtemp);
+        mp_set_from_mp(MPexpr, v->MPmvals[index]);
+        mp_set_from_mp(MPtemp, display_get_answer(&v->display));
+        display_set_string(&v->display, "Ans");
+        display_refresh(&v->display, -1);
+        ui_make_registers();
+    }
+
+    syntaxdep_show_display();
+}
+
+
+void
+do_numtype(enum num_type n)   /* Set number display type. */
+{
+    int ret, MP[MP_SIZE];
+
+    v->dtype = n;
+    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
+
+    ret = display_is_usable_number(&v->display, MP);
+    if (ret) {
+        ui_set_statusbar(_("No sane value to convert"),
+                         "gtk-dialog-error");
+    } else {
+        mp_set_from_mp(MP, display_get_answer(&v->display));
+        display_set_string(&v->display, "Ans");
+        ui_make_registers();
+    }
+    clear_undo_history();
+
+    display_refresh(&v->display, -1);
+}
+
+
+static void
+do_sto(int index)
+{
+    if (display_is_usable_number(&v->display, v->MPmvals[index])) {
+        ui_set_statusbar(_("No sane value to store"),
+                         "gtk-dialog-error");
+    }
+
+    ui_make_registers();
+}
+
+
+/* Return: 0 = success, otherwise failed.
+ *
+ * TODO: remove hardcoding from reg ranges.
+ */
+
+int
+do_sto_reg(int reg, int value[MP_SIZE])
+{
+    if ((reg >= 0) && (reg <= 10)) {
+        mp_set_from_mp(value, v->MPmvals[reg]);
+        return(0);
+    } else {
+        return(-EINVAL);
+    }
+}
+
+
+/* Return: 0 = success, otherwise failed.
+ *
+ * TODO: remove hardcoding from reg ranges.
+ */
+
+int
+do_rcl_reg(int reg, int value[MP_SIZE])
+{
+    if ((reg >= 0) && (reg <= 10)) {
+        mp_set_from_mp(v->MPmvals[reg], value);
+        return(0);
+    } else {
+        return(-EINVAL);
+    }
+}
+
+
+void
+syntaxdep_show_display(void)
+{
+    display_refresh(&v->display, -1);
 }
 
 
@@ -300,870 +446,4 @@ do_expression(int function, int arg, int cursor)
             break;
     }
     display_refresh(&v->display, cursor);
-}
-
-
-void
-do_calc(void)      /* Perform arithmetic calculation and display result. */
-{
-    double dval, dres;
-    int MP1[MP_SIZE], MP2[MP_SIZE];
-
-    if (v->current == KEY_CALCULATE &&
-        v->ltr.old_cal_value == KEY_CALCULATE) {
-        if (v->ltr.new_input) {
-            mp_set_from_mp(v->MPlast_input, v->MPresult);
-        } else {
-            mp_set_from_mp(v->MPlast_input, v->MPdisp_val);
-        }
-    }
-
-    if (v->current != KEY_CALCULATE &&
-        v->ltr.old_cal_value == KEY_CALCULATE) {
-        v->ltr.cur_op = -1;
-    }
-
-    switch (v->ltr.cur_op) {
-        case KEY_SIN:
-        case KEY_SINH:
-        case KEY_ASIN:
-        case KEY_ASINH:
-        case KEY_COS:
-        case KEY_COSH:
-        case KEY_ACOS:
-        case KEY_ACOSH:
-        case KEY_TAN:
-        case KEY_TANH:
-        case KEY_ATAN:
-        case KEY_ATANH:
-        case -1:
-            mp_set_from_mp(v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_ADD:
-            mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_SUBTRACT:
-            mpsub(v->MPresult, v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_MULTIPLY:
-            mpmul(v->MPresult, v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_DIVIDE:
-            mpdiv(v->MPresult, v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_MODULUS_DIVIDE:
-            if (!is_integer(v->MPresult) || !is_integer(v->MPdisp_val)) {
-                ui_set_statusbar(_("Error, operands must be integers"),
-                                 "gtk-dialog-error");
-            } else {
-                mpdiv(v->MPresult, v->MPdisp_val, MP1);
-                mpcmim(MP1, MP1);
-                mpmul(MP1, v->MPdisp_val, MP2);
-                mpsub(v->MPresult, MP2, v->MPresult);
-
-                mp_set_from_integer(0, MP1);
-                if ((mp_is_less_than(v->MPdisp_val, MP1)
-		     && mp_is_greater_than(v->MPresult, MP1)) ||
-                    mp_is_less_than(v->MPresult, MP1)) { 
-                    mpadd(v->MPresult, v->MPdisp_val, v->MPresult);
-                }
-            }
-            break;
-
-        case KEY_X_POW_Y:
-            calc_xpowy(v->MPresult, v->MPdisp_val, v->MPresult);
-            break;
-
-        case KEY_AND:
-            dres = mp_cast_to_double(v->MPresult);
-            dval = mp_cast_to_double(v->MPdisp_val);
-            dres = setbool(ibool(dres) & ibool(dval));
-            mp_set_from_double(dres, v->MPresult);
-            break;
-
-        case KEY_OR:
-            dres = mp_cast_to_double(v->MPresult);
-            dval = mp_cast_to_double(v->MPdisp_val);
-            dres = setbool(ibool(dres) | ibool(dval));
-            mp_set_from_double(dres, v->MPresult);
-            break;
-
-        case KEY_XOR:
-            dres = mp_cast_to_double(v->MPresult);
-            dval = mp_cast_to_double(v->MPdisp_val);
-            dres = setbool(ibool(dres) ^ ibool(dval));
-            mp_set_from_double(dres, v->MPresult);
-            break;
-
-        case KEY_XNOR:
-            dres = mp_cast_to_double(v->MPresult);
-            dval = mp_cast_to_double(v->MPdisp_val);
-            dres = setbool(~ibool(dres) ^ ibool(dval));
-            mp_set_from_double(dres, v->MPresult);
-
-        default:
-            break;
-    }
-
-    display_set_number(&v->display, v->MPresult);
-
-    if (!(v->current == KEY_CALCULATE &&
-          v->ltr.old_cal_value == KEY_CALCULATE)) {
-        mp_set_from_mp(v->MPdisp_val, v->MPlast_input);
-    }
-
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-    if (v->current != KEY_CALCULATE) {
-        v->ltr.cur_op = v->current;
-    }
-    v->ltr.old_cal_value = v->current;
-    v->ltr.new_input     = v->ltr.key_exp = 0;
-}
-
-
-void
-do_sin(void)
-{
-    calc_trigfunc(sin_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_sinh(void)
-{
-    calc_trigfunc(sinh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_asin(void)
-{
-    calc_trigfunc(asin_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_asinh(void)
-{
-    calc_trigfunc(asinh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_cos(void)
-{
-    calc_trigfunc(cos_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_cosh(void)
-{
-    calc_trigfunc(cosh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_acos(void)
-{
-    calc_trigfunc(acos_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_acosh(void)
-{
-    calc_trigfunc(acosh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_tan(void)
-{
-    calc_trigfunc(tan_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_tanh(void)
-{
-    calc_trigfunc(tanh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_atan(void)
-{
-    calc_trigfunc(atan_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_atanh(void)
-{
-    calc_trigfunc(atanh_t, v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-void
-do_percent(void)
-{
-    calc_percent(v->MPdisp_val, v->MPresult);
-    display_set_number(&v->display, v->MPresult);
-    mp_set_from_mp(v->MPresult, v->MPdisp_val);
-}
-
-
-/* Clear the calculator display and re-initialise. */
-void
-do_clear(void)
-{
-    display_clear(&v->display, TRUE);
-    if (v->error) {
-        ui_set_display("", -1);
-    }
-    display_reset(&v->display);
-}
-
-
-/* Clear the calculator display. */
-void
-do_clear_entry(void)
-{
-    display_clear(&v->display, FALSE);
-}
-
-
-/* Change the current base setting. */
-void
-do_base(enum base_type b)
-{
-    int ret, MP[MP_SIZE];
-
-    switch (v->syntax) {
-        case NPA:
-            v->base = b;
-            set_resource(R_BASE, Rbstr[(int) v->base]);
-            ui_set_base(v->base);
-            ui_make_registers();
-            break;
-
-        case EXPRS:
-            ret = display_is_usable_number(&v->display, MP);
-
-            if (ret) {
-                ui_set_statusbar(_("No sane value to convert"),
-                                 "gtk-dialog-error");
-            } else {
-                mp_set_from_mp(MP, display_get_answer(&v->display));
-                display_set_string(&v->display, "Ans");
-            }
-            v->base = b;
-            set_resource(R_BASE, Rbstr[(int) v->base]);
-            ui_set_base(v->base);
-            ui_make_registers();
-            clear_undo_history();
-            break;
-
-        default:
-            assert(0);
-            break;
-    }
-
-    display_refresh(&v->display, -1);
-}
-
-
-void
-do_constant(int index)
-{
-    int *MPval;
-
-    assert(index >= 0);
-    assert(index <= 9);
-
-    MPval = v->MPcon_vals[index];
-    mp_set_from_mp(MPval, v->MPdisp_val);
-    v->ltr.new_input = 1;
-    syntaxdep_show_display();
-}
-
-
-/* Remove the last numeric character typed. */
-void
-do_backspace(void)
-{
-    size_t len;
-    char buffer[MAX_DISPLAY];
-    
-    SNPRINTF(buffer, MAX_DISPLAY, display_get_text(&v->display));
-
-    len = strlen(buffer);
-    if (len > 0) {
-        buffer[len-1] = '\0';
-    }
-
-    /*  If we were entering a scientific number, and we have backspaced over
-     *  the exponent sign, then this reverts to entering a fixed point number.
-     */
-    if (v->ltr.key_exp && !(strchr(buffer, '+'))) {
-        v->ltr.key_exp = 0;
-        buffer[strlen(buffer)-1] = '\0';
-    }
-
-    /* If we've backspaced over the numeric point, clear the pointed flag. */
-    if (v->ltr.pointed && !(strchr(buffer, '.'))) {
-        v->ltr.pointed = 0;
-    }
-
-    display_set_string(&v->display, buffer);
-    MPstr_to_num(buffer, v->base, v->MPdisp_val);
-}
-
-
-void
-do_delete(void)
-{
-    /* Not required in ltr mode */
-}
-
-
-/* Exchange display with memory register. */
-void
-do_exchange(int index)
-{
-    int MPtemp[MP_SIZE];
-    int MPexpr[MP_SIZE];
-
-    switch (v->syntax) {
-        case NPA:
-            mp_set_from_mp(v->MPdisp_val, MPtemp);
-            mp_set_from_mp(v->MPmvals[index], v->MPdisp_val);
-            mp_set_from_mp(MPtemp, v->MPmvals[index]);
-            ui_make_registers();
-            break;
-
-        case EXPRS:
-            if (display_is_usable_number(&v->display, MPexpr)) {
-                ui_set_statusbar(_("No sane value to store"),
-                                 "gtk-dialog-error");
-            } else {
-                mp_set_from_mp(v->MPmvals[index], MPtemp);
-                mp_set_from_mp(MPexpr, v->MPmvals[index]);
-                mp_set_from_mp(MPtemp, display_get_answer(&v->display));
-                display_set_string(&v->display, "Ans");
-                display_refresh(&v->display, -1);
-                ui_make_registers();
-            }
-            break;
-
-        default:
-            assert(0);
-    }
-
-    v->ltr.new_input = 1;
-    syntaxdep_show_display();
-}
-
-
-/* Get exponential number. */
-void
-do_expno(void)
-{
-    char buffer[MAX_DISPLAY];
-    
-    SNPRINTF(buffer, MAX_DISPLAY, display_get_text(&v->display));    
-    
-    v->ltr.pointed = (strchr(buffer, '.') != NULL);
-    if (!v->ltr.new_input) {
-        STRNCPY(buffer, "1.0 +", MAX_LOCALIZED - 1);
-        v->ltr.new_input = v->ltr.pointed = 1;
-    } else if (!v->ltr.pointed) {
-        STRNCAT(buffer, ". +", 3);
-        v->ltr.pointed = 1;
-    } else if (!v->ltr.key_exp) {
-        STRNCAT(buffer, " +", 2);
-    }
-    v->ltr.toclear = 0;
-    v->ltr.key_exp = 1;
-    display_set_string(&v->display, buffer);
-    MPstr_to_num(buffer, v->base, v->MPdisp_val);
-}
-
-
-/* Calculate the factorial of MPval. */
-
-void
-do_factorial(int *MPval, int *MPres)
-{
-    double val;
-    int i, MPa[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
-
-/*  NOTE: do_factorial, on each iteration of the loop, will attempt to
- *        convert the current result to a double. If v->error is set,
- *        then we've overflowed. This is to provide the same look&feel
- *        as V3.
- *
- *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
- *        order to check this.
- */
-
-    mp_set_from_mp(MPval, MPa);
-    mpcmim(MPval, MP1);
-    mp_set_from_integer(0, MP2);
-    if (mp_is_equal(MPval, MP1)
-	&& mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
-        if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
-            mp_set_from_integer(1, MPres);
-            return;
-        }
-        mp_set_from_integer(1, MPa);
-        i = mp_cast_to_int(MP1);
-        if (!i) {
-            matherr((struct exception *) NULL);
-        } else {
-            while (i > 0) {
-                mpmuli(MPa, i, MPa);
-                val = mp_cast_to_double(MPa);
-                if (v->error) {
-                    mperr();
-                    return;
-                }
-                i--;
-            }
-        }
-    } else {
-        matherr((struct exception *) NULL);
-    }
-    mp_set_from_mp(MPa, MPres);
-}
-
-
-void
-do_function(int index)      /* Perform a user defined function. */
-{
-    char *str;
-    int ret;
-
-    assert(index >= 0);
-    assert(index <= 9);
-
-    switch (v->syntax) {
-        case NPA:
-            str = v->fun_vals[index];
-            assert(str);
-            ret = lr_udf_parse(str);
-            break;
-
-        case EXPRS:
-            str = v->fun_vals[index];
-            assert(str);
-            ret = ce_udf_parse(str);
-            break;
-
-        default:
-            assert(0);
-    }
-
-    if (!ret) {
-        ui_set_statusbar("", "");
-    } else {
-        ui_set_statusbar(_("Malformed function"), "gtk-dialog-error");
-    }
-    v->ltr.new_input = 1;
-}
-
-
-static void
-do_immedfunc(int s[MP_SIZE], int t[MP_SIZE])
-{
-    int MP1[MP_SIZE];
-
-    switch (v->current) {
-        case KEY_MASK_32:
-            calc_u32(s, t);
-            break;
-
-        case KEY_MASK_16:
-            calc_u16(s, t);
-            break;
-
-        case KEY_E_POW_X:
-            mp_set_from_mp(s, MP1);
-            mpexp(MP1, t);
-            break;
-
-        case KEY_10_POW_X:
-            calc_tenpowx(s, t);
-            break;
-
-        case KEY_NATURAL_LOGARITHM:
-            mp_set_from_mp(s, MP1);
-            mpln(MP1, t);
-            break;
-
-        case KEY_LOGARITHM:
-            mplogn(10, s, t);
-            break;
-
-        case KEY_LOGARITHM2:
-            mplogn(2, s, t);
-            break;
-
-        case KEY_RANDOM:
-            calc_rand(t);
-            break;
-
-        case KEY_SQUARE_ROOT:
-            mp_set_from_mp(s, MP1);
-            mpsqrt(MP1, t);
-            break;
-
-        case KEY_NOT:
-            calc_not(t, s);
-            break;
-
-        case KEY_RECIPROCAL:
-            calc_inv(s, t);
-            break;
-
-        case KEY_FACTORIAL:
-            do_factorial(s, MP1);
-            mp_set_from_mp(MP1, t);
-            break;
-
-        case KEY_SQUARE:
-            mp_set_from_mp(s, MP1);
-            mpmul(MP1, MP1, t);
-            break;
-
-        case KEY_CHANGE_SIGN:
-            // NOTE: Exponential sign changing is completely broken
-            mp_invert_sign(s, t);
-            break;
-    }
-}
-
-
-void
-do_immed(void)
-{
-    do_immedfunc(v->MPdisp_val, v->MPdisp_val);
-    display_set_number(&v->display, v->MPdisp_val);
-}
-
-
-void
-do_number(void)
-{
-    int offset;
-    char buffer[MAX_DISPLAY];
-    
-    SNPRINTF(buffer, MAX_DISPLAY, display_get_text(&v->display));
-
-    if (v->ltr.toclear) {
-        offset = 0;
-        v->ltr.toclear = 0;
-    } else {
-        offset = strlen(buffer);
-    }
-
-    if (offset < MAX_DISPLAY) {
-        SNPRINTF(buffer+offset, MAX_DISPLAY-offset, "%s", buttons[v->current].symname);
-    }
-
-    display_set_string(&v->display, buffer);
-    MPstr_to_num(buffer, v->base, v->MPdisp_val);
-    v->ltr.new_input = 1;
-}
-
-
-void
-do_numtype(enum num_type n)   /* Set number display type. */
-{
-    int ret, MP[MP_SIZE];
-
-    v->dtype = n;
-    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
-
-    switch (v->syntax) {
-        case NPA:
-            ui_make_registers();
-            break;
-
-        case EXPRS:
-            ret = display_is_usable_number(&v->display, MP);
-            if (ret) {
-                ui_set_statusbar(_("No sane value to convert"),
-                                 "gtk-dialog-error");
-            } else {
-                mp_set_from_mp(MP, display_get_answer(&v->display));
-                display_set_string(&v->display, "Ans");
-                ui_make_registers();
-            }
-            clear_undo_history();
-            break;
-
-    default:
-        assert(0);
-    }
-
-    display_refresh(&v->display, -1);
-}
-
-
-void
-do_paren(void)
-{
-    ui_set_statusbar("", "");
-
-    switch (v->current) {
-        case KEY_START_BLOCK:
-            if (v->ltr.noparens == 0) {
-                if (v->ltr.cur_op == -1) {
-                    display_set_string(&v->display, "");
-                    ui_set_statusbar(_("Cleared display, prefix without an operator is not allowed"), "");
-                } else {
-                    paren_disp(&v->display, v->ltr.cur_op);
-                }
-            }
-            v->ltr.noparens++;
-            break;
-
-        case KEY_END_BLOCK:
-            v->ltr.noparens--;
-            if (!v->ltr.noparens) {
-                int ret, i = 0;
-                const char *text = display_get_text(&v->display);
-                while (text[i++] != '(') {
-                    /* do nothing */;
-                }
-
-                ret = lr_parse(&text[i], v->MPdisp_val);
-                if (!ret) {
-                    display_set_number(&v->display, v->MPdisp_val);
-                    return;
-                } else {
-                    ui_set_statusbar(_("Malformed parenthesis expression"),
-                                     "gtk-dialog-error");
-                }
-            }
-            break;
-
-        default:
-            /* Queue event */
-            break;
-    }
-    paren_disp(&v->display, v->current);
-}
-
-
-void
-do_sto(int index)
-{
-    switch (v->syntax) {
-        case NPA:
-            mp_set_from_mp(v->MPdisp_val, v->MPmvals[index]);
-            break;
-
-        case EXPRS:
-            if (display_is_usable_number(&v->display, v->MPmvals[index])) {
-                ui_set_statusbar(_("No sane value to store"),
-                                 "gtk-dialog-error");
-            }
-            break;
-
-        default:
-            assert(0);
-    }
-
-    ui_make_registers();
-}
-
-
-/* Return: 0 = success, otherwise failed.
- *
- * TODO: remove hardcoding from reg ranges.
- */
-
-int
-do_sto_reg(int reg, int value[MP_SIZE])
-{
-    if ((reg >= 0) && (reg <= 10)) {
-        mp_set_from_mp(value, v->MPmvals[reg]);
-        return(0);
-    } else {
-        return(-EINVAL);
-    }
-}
-
-
-void
-do_rcl(int index)
-{
-    mp_set_from_mp(v->MPmvals[index], v->MPdisp_val);
-    v->ltr.new_input = 1;
-    syntaxdep_show_display();
-}
-
-
-/* Return: 0 = success, otherwise failed.
- *
- * TODO: remove hardcoding from reg ranges.
- */
-
-int
-do_rcl_reg(int reg, int value[MP_SIZE])
-{
-    if ((reg >= 0) && (reg <= 10)) {
-        mp_set_from_mp(v->MPmvals[reg], value);
-        return(0);
-    } else {
-        return(-EINVAL);
-    }
-}
-
-
-void
-syntaxdep_show_display(void)
-{
-    switch (v->syntax) {
-        case NPA:
-            display_set_number(&v->display, v->MPdisp_val);
-            break;
-
-        case EXPRS:
-     	    display_refresh(&v->display, -1);
-            break;
-
-        default:
-            assert(0);
-    }
-}
-
-
-void
-do_point(void)                   /* Handle numeric point. */
-{
-    char buffer[MAX_DISPLAY];
-    
-    SNPRINTF(buffer, MAX_DISPLAY, display_get_text(&v->display));
-    
-    if (!v->ltr.pointed) {
-        if (v->ltr.toclear) {
-            STRNCPY(buffer, ".", MAX_LOCALIZED - 1);
-            v->ltr.toclear = 0;
-        } else {
-            STRCAT(buffer, ".");
-        }
-        v->ltr.pointed = 1;
-    }
-    display_set_string(&v->display, buffer);
-    MPstr_to_num(buffer, v->base, v->MPdisp_val);
-}
-
-
-static void
-do_portionfunc(int num[MP_SIZE])
-{
-    int MP1[MP_SIZE];
-
-    switch (v->current) {
-        case KEY_ABSOLUTE_VALUE:
-            mp_set_from_mp(num, MP1);
-            mp_abs(MP1, num);
-            break;
-
-        case KEY_FRACTION:
-            mp_set_from_mp(num, MP1);
-            mpcmf(MP1, num);
-            break;
-
-        case KEY_INTEGER:
-            mp_set_from_mp(num, MP1);
-            mpcmim(MP1, num);
-            break;
-    }
-}
-
-
-void
-do_portion(void)
-{
-    do_portionfunc(v->MPdisp_val);
-    display_set_number(&v->display, v->MPdisp_val);
-}
-
-
-void
-do_shift(int count)     /* Perform bitwise shift on display value. */
-{
-    BOOLEAN temp;
-    double dval;
-    int MPtemp[MP_SIZE], MPval[MP_SIZE];
-
-    switch (v->syntax) {
-        case NPA:
-            MPstr_to_num(display_get_text(&v->display), v->base, MPtemp);
-            dval = mp_cast_to_double(MPtemp);
-            temp = ibool(dval);
-
-            if (count < 0) {
-                temp = temp >> -count;
-            } else {
-                temp = temp << count;
-            }
-
-            dval = setbool(temp);
-            mp_set_from_double(dval, v->MPdisp_val);
-            display_set_number(&v->display, v->MPdisp_val);
-            mp_set_from_mp(v->MPdisp_val, v->MPlast_input);
-            break;
-
-        case EXPRS:
-            if (display_is_usable_number(&v->display, MPval) || !is_integer(MPval)) {
-                ui_set_statusbar(_("No sane value to do bitwise shift"),
-                                 "gtk-dialog-error");
-                break;
-            }
-
-            calc_shift(MPval, display_get_answer(&v->display), count);
-            display_set_string(&v->display, "Ans");
-            break;
-
-        default:
-            assert(0);
-    }
-
-    v->ltr.new_input = 1;
-    syntaxdep_show_display();
 }

@@ -865,10 +865,6 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
         mpaddi(MPval, dval, MPval);
     }    
     *optr++ = '\0';
-    if (toclear == TRUE) {
-        v->ltr.toclear = 1;
-    }
-    v->ltr.pointed = 0;
 
     /* Strip off trailing zeroes */
     if (!v->show_zeroes) {
@@ -977,8 +973,6 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
         mpaddi(MPval, dval, MPval);
     }
     *optr++    = '\0';
-    v->ltr.toclear = 1;
-    v->ltr.pointed = 0;
 }
 
 
@@ -1035,7 +1029,7 @@ char_val(char chr)
 void
 MPstr_to_num(const char *str, enum base_type base, int *MPval)
 {
-    char *optr;
+    const char *optr;
     int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
     int i, inum;
     int exp      = 0;
@@ -1090,13 +1084,54 @@ MPstr_to_num(const char *str, enum base_type base, int *MPval)
     }
     exp *= exp_sign;
 
-    if (v->ltr.key_exp) {
-        mppwr(MPbase, exp, MP1);
-        mpmul(MPval, MP1, MPval);
-    }
-
     if (negate == 1) {
         mp_invert_sign(MPval, MPval);
     }
 }
 
+
+/* Calculate the factorial of MPval. */
+void
+calc_factorial(int *MPval, int *MPres)
+{
+    double val;
+    int i, MPa[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
+
+/*  NOTE: do_factorial, on each iteration of the loop, will attempt to
+ *        convert the current result to a double. If v->error is set,
+ *        then we've overflowed. This is to provide the same look&feel
+ *        as V3.
+ *
+ *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+ *        order to check this.
+ */
+
+    mp_set_from_mp(MPval, MPa);
+    mpcmim(MPval, MP1);
+    mp_set_from_integer(0, MP2);
+    if (mp_is_equal(MPval, MP1)
+	&& mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
+        if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
+            mp_set_from_integer(1, MPres);
+            return;
+        }
+        mp_set_from_integer(1, MPa);
+        i = mp_cast_to_int(MP1);
+        if (!i) {
+            matherr((struct exception *) NULL);
+        } else {
+            while (i > 0) {
+                mpmuli(MPa, i, MPa);
+                val = mp_cast_to_double(MPa);
+                if (v->error) {
+                    mperr();
+                    return;
+                }
+                i--;
+            }
+        }
+    } else {
+        matherr((struct exception *) NULL);
+    }
+    mp_set_from_mp(MPa, MPres);
+}

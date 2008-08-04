@@ -66,6 +66,7 @@ void calc_syd(int t[MP_SIZE]);
 void calc_term(int t[MP_SIZE]);
 void calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times);
 void calc_epowy(int s[MP_SIZE], int t[MP_SIZE]);
+void calc_factorial(int *, int *);
 
 /* return true if parameter is integer */
 int

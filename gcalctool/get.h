@@ -32,7 +32,6 @@
 #define R_TRIG     "trigtype"
 #define R_ZEROES   "showzeroes"
 #define R_TSEP     "showthousands"
-#define R_SYNTAX   "syntax"
 #define R_BITCALC  "bitcalculating"
 #define R_XPOS     "xposition"
 #define R_YPOS     "yposition"

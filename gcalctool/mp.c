@@ -1030,8 +1030,6 @@ mpcmim(int *x, int *y)
 {
     int tmp[MP_SIZE];     /* Temporary store for the number. */
     int accuracy;         /* Temporary story for the accuracy. */
-    int pointed;          /* Whether a decimal point has been given. */
-    int toclear;          /* Indicates if display should be cleared. */
     char disp[MAXLINE];   /* Setup a string to store what would be displayed */
     enum num_type dtype;  /* Setup a temp display type variable */
 
@@ -1086,8 +1084,6 @@ L10:
 
     accuracy = v->accuracy;
     dtype = v->dtype;
-    pointed = v->ltr.pointed;
-    toclear = v->ltr.toclear;
 
     v->dtype = FIX;
     v->accuracy = MAX_DIGITS;
@@ -1100,8 +1096,6 @@ L10:
 
     v->accuracy = accuracy;
     v->dtype = dtype;
-    v->ltr.pointed = pointed;
-    v->ltr.toclear = toclear;
 }
 
 

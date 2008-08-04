@@ -199,7 +199,7 @@ term:
 | term '/' term {mpdiv($1, $3, $$);}
 | term '*' term {mpmul($1, $3, $$);}
 | 'e' '^' term {calc_epowy($3, $$);} 
-| term '!' {do_factorial($1 ,$$);}
+| term '!' {calc_factorial($1 ,$$);}
 | term '%' {calc_percent($1, $$);}
 | '-' term %prec NEG {mp_invert_sign($2, $$);}
 | '+' term %prec POS {cp($2, $$);}

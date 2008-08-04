@@ -53,487 +53,406 @@ struct button buttons[NKEYS] = {
 {
     KEY_0,
     "0",
-    do_number,
     NUMBER
 },
 {
     KEY_1,
     "1",
-    do_number,
     NUMBER
 },
 {
     KEY_2,
     "2",
-    do_number,
     NUMBER
 },    
 {     
     KEY_3,
     "3",
-    do_number,
     NUMBER
 },
 {
     KEY_4,
     "4",
-    do_number,
     NUMBER
 },
 {
     KEY_5,
     "5",
-    do_number,
     NUMBER
 },
 {
     KEY_6,
     "6",
-    do_number,
     NUMBER
 },
 {
     KEY_7,
     "7",
-    do_number,
     NUMBER
 },
 {
     KEY_8,
     "8",
-    do_number,
     NUMBER
 },
 {
     KEY_9,
     "9",
-    do_number,
     NUMBER
 },
 {
     KEY_A,
     "A",
-    do_number,
     NUMBER
 },
 {
     KEY_B,
     "B",
-    do_number,
     NUMBER
 },    
 {     
     KEY_C,
     "C",
-    do_number,
     NUMBER
 },
 {
     KEY_D,
     "D",
-    do_number,
     NUMBER
 },
 {
     KEY_E,
     "E",
-    do_number,
     NUMBER
 },
 {
     KEY_F,
     "F",
-    do_number,
     NUMBER
 },
 {    
     KEY_NUMERIC_POINT,
     ".",
-    do_point,
     NUMBER
 },
 {
     KEY_CALCULATE,
     NULL,
-    do_calc,
     0
 },
 {
     KEY_CLEAR,
     NULL,
-    do_clear,
     0
 },
 {
     KEY_CLEAR_ENTRY,
     NULL,
-    do_clear_entry,
     0
 },
 {
     KEY_START_BLOCK,
     "(",
-    do_paren,
     0
 },
 {
     KEY_END_BLOCK,
     ")",
-    do_paren,
     0
 },
 {
     KEY_ADD,
     "+",
-    do_calc,
     0
 },
 {
     KEY_SUBTRACT,
     "-",
-    do_calc,
     0
 },
 {
     KEY_MULTIPLY,
     "*",
-    do_calc,
     0
 },
 {
     KEY_DIVIDE,
     "/",
-    do_calc,
     0
 },
 {
     KEY_BACKSPACE,
     NULL,
-    do_backspace,
     0
 },
 {
     KEY_DELETE,
     NULL,
-    do_delete,
     0
 },
 {
     KEY_CHANGE_SIGN,
     NULL,
-    do_immed, 
     0
 },
 {
     KEY_INTEGER,
     "Int",
-    do_portion,
     FUNC
 },
 {
     KEY_FRACTION,
     "Frac",
-    do_portion,
     FUNC  
 },
 {
     KEY_PERCENTAGE,
     "%",
-    do_percent,  
     0
 },
 {
     KEY_SQUARE,
     "^2",
-    do_immed,  
     POSTFIXOP
 },
 {
     KEY_SQUARE_ROOT,
     "Sqrt",
-    do_immed, 
     FUNC
 },
 {
     KEY_RECIPROCAL,
     NULL,
-    do_immed, 
     0
 },
 {
     KEY_E_POW_X,
     "e^",
-    do_immed, 
     PREFIXOP
 },
 {
     KEY_10_POW_X,
     "10^",
-    do_immed, 
     PREFIXOP
 },       
 {
     KEY_X_POW_Y,
     "^",
-    do_calc,
     POSTFIXOP
 },
 {
     KEY_FACTORIAL,
     "!",
-    do_immed, 
     POSTFIXOP
 },
 {
     KEY_RANDOM,
     "Rand",
-    do_immed, 
     0
 },
 {
     KEY_SIN,
     "Sin",
-    do_sin,
     FUNC
 },
 {
     KEY_SINH,
     "Sinh",
-    do_sinh,
     FUNC
 },
 {
     KEY_ASIN,
     "Asin",
-    do_asin,
     FUNC
 },
 {
     KEY_ASINH,
     "Asinh",
-    do_asinh,
     FUNC
 },
 {
     KEY_COS,
     "Cos",
-    do_cos,
     FUNC
 },
 {
     KEY_COSH,
     "Cosh",
-    do_cosh,
     FUNC
 },
 {
     KEY_ACOS,
     "Acos",
-    do_acos,
     FUNC
 },
 {
     KEY_ACOSH,
     "Acosh",
-    do_acosh,
     FUNC
 },
 {
     KEY_TAN,
     "Tan",
-    do_tan,
     FUNC
 },
 {
     KEY_TANH,
     "Tanh",
-    do_tanh,
     FUNC
 },
 {
     KEY_ATAN,
     "Atan",
-    do_atan,
     FUNC
 },
 {
     KEY_TAN,
     "Atanh",
-    do_atanh,
     FUNC
 },
 {
     KEY_NATURAL_LOGARITHM,
     "Ln",
-    do_immed, 
     FUNC
 },
 {
     KEY_LOGARITHM,
     "Log",
-    do_immed, 
     FUNC
 },
 {
     KEY_LOGARITHM2,
     "Log2",
-    do_immed, 
     FUNC
 },
 {
     KEY_ABSOLUTE_VALUE,
     "Abs",
-    do_portion,
     FUNC
 },
 {
     KEY_MASK_16,
     "u16",
-    do_immed,  
     FUNC
 },            
 {
     KEY_MASK_32,
     "u32",
-    do_immed,  
     FUNC
 },
 {
     KEY_MODULUS_DIVIDE,
     " Mod ",
-    do_calc,
     0
 },
 {
     KEY_EXPONENTIAL,
     "e",
-    do_expno,
     0
 },
 {
     KEY_NOT,
     "~",
-    do_immed, 
     0
 },
 {
     KEY_OR,
     " OR ",
-    do_calc,
     0
 },
 {
     KEY_AND,
     " AND ",
-    do_calc,
     0
 },       
 {
     KEY_XOR,
     " XOR ",
-    do_calc,
     0
 },
 {
     KEY_XNOR,
     " XNOR ",
-    do_calc,
     0
 },
 {
     KEY_FINC_CTRM,
     "Ctrm",
-    do_business,
     0
 },
 {
     KEY_FINC_DDB,
     "Ddb",
-    do_business,
     0
 },
 {
     KEY_FINC_FV,
     "Fv",
-    do_business,
     0
 },
 {
     KEY_FINC_PMT,
     "Pmt",
-    do_business,
     0
 },
 {
     KEY_FINC_PV,
     "Pv",
-    do_business,
     0
 },
 {
     KEY_FINC_RATE,
     "Rate",
-    do_business,
     0
 },
 {
     KEY_FINC_SLN,
     "Sln",
-    do_business,
     0
 },
 {
     KEY_FINC_SYD,
     "Syd",
-    do_business,
     0
 },
 {
     KEY_FINC_TERM,
     "Term",
-    do_business,
     0
 },
 {
     KEY_SHIFT,
     NULL,
-    do_shift,
     0
 },
 {
     KEY_STORE,
     NULL,
-    do_sto,
     0
 },
 {
     KEY_RECALL,
     NULL,
-    do_rcl,
     0
 },
 {
     KEY_EXCHANGE,
     NULL,
-    do_exchange,
     0
 },
 {
     KEY_SET_ACCURACY,
     NULL,
-    do_accuracy,
     0
 },
 {
     KEY_CONSTANT,
     NULL,
-    do_constant,
     0
 },
 {
     KEY_FUNCTION,
     NULL,
-    do_function,
     0
 },
 };
@@ -544,20 +463,7 @@ struct button buttons[NKEYS] = {
 void
 doerr(char *errmes)
 {
-    switch (v->syntax) {
-        case NPA:
-            ui_set_error_state(TRUE);
-            display_set_string(&v->display, errmes);
-            ui_beep();
-            break;
-
-        case EXPRS:
-            v->math_error = -MPMATH_ERR;
-            break;
-        
-        default:
-            assert(FALSE);
-    }
+    v->math_error = -MPMATH_ERR;
 }
 
 static void
@@ -697,9 +603,6 @@ init_state(void)
 
     v->error       = 0;            /* No calculator error initially. */    
     v->current    = KEY_CALCULATE;
-
-    v->ltr.key_exp    = 0;         /* Not entering an exponent number. */    
-    v->ltr.noparens   = 0;         /* No unmatched brackets initially. */
 
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */

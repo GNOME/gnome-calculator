@@ -54,7 +54,6 @@ void display_init(GCDisplay *);
 void display_reset(GCDisplay *);
 void localize_expression(char *, const char *, int, int *);
 void display_clear(GCDisplay *, int);
-void paren_disp(GCDisplay *, int);
 void display_refresh(GCDisplay *, int);
 
 const char *display_get_text(GCDisplay *);
