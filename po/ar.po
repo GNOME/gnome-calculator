@@ -1,73 +1,73 @@
-# translation of gcalctool.HEAD.ar.po to Arabic
+# translation of gcalctool.HEAD.po to Arabic
 # This file is distributed under the same license as the gcalctool package.
 # Copyright (C) 2003 THE gcalctool'S COPYRIGHT HOLDER
 #
 #
 # Arafat Medini <lumina@silverpen.de>, 2003.
 # Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2003.
-# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007.
+# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2008.
 # Djihed Afifi <djihed@gmail.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool.gnome-2-16.ar\n"
+"Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-29 02:12+0100\n"
-"PO-Revision-Date: 2008-02-27 11:49+0100\n"
-"Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
+"POT-Creation-Date: 2008-08-06 09:17+0100\n"
+"PO-Revision-Date: 2008-07-28 19:37+0300\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : "
-"3\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../gcalctool/calctool.c:566
+#: ../gcalctool/calctool.c:472
 msgid "Kilometer-to-mile conversion factor"
 msgstr "معامل التحويل من الكيلومتر إلى الميل"
 
-#: ../gcalctool/calctool.c:568
+#: ../gcalctool/calctool.c:474
 msgid "square root of 2"
 msgstr "الجذر التربيعي لـ 2"
 
-#: ../gcalctool/calctool.c:569
+#: ../gcalctool/calctool.c:475
 msgid "Euler's Number (e)"
 msgstr "رقم أولر (e)"
 
-#: ../gcalctool/calctool.c:570
+#: ../gcalctool/calctool.c:476
 msgid "pi"
 msgstr "pi"
 
-#: ../gcalctool/calctool.c:571
+#: ../gcalctool/calctool.c:477
 msgid "Centimeter-to-inch conversion factor"
 msgstr "معامل التحويل من السنتمتر إلى البوصة"
 
-#: ../gcalctool/calctool.c:573
+#: ../gcalctool/calctool.c:479
 msgid "degrees in a radian"
 msgstr "الدرجات بالقطر"
 
-#: ../gcalctool/calctool.c:574
+#: ../gcalctool/calctool.c:480
 msgid "2 ^ 20"
 msgstr "2 للقوة 20"
 
-#: ../gcalctool/calctool.c:575
+#: ../gcalctool/calctool.c:481
 msgid "Gram-to-ounce conversion factor"
 msgstr "معامل التحويل من الغرام إلى الأونس"
 
-#: ../gcalctool/calctool.c:577
+#: ../gcalctool/calctool.c:483
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
 msgstr "كيلوجول أو وحدات الحرارة البريطانية"
 
-#: ../gcalctool/calctool.c:580
+#: ../gcalctool/calctool.c:486
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "سنتيمرات مكعبة أو إنشات مكعبة"
 
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:591 ../gcalctool/mp.c:1820
+#: ../gcalctool/calctool.c:497 ../gcalctool/mp.c:1814
 #: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:1004
+#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
 msgid "Error"
 msgstr "خطأ"
 
@@ -76,7 +76,7 @@ msgstr "خطأ"
 #. * the second is an error message (see the last parameter in the
 #. * getparam() call in the get_options() routine below.
 #.
-#: ../gcalctool/calctool.c:608
+#: ../gcalctool/calctool.c:514
 #, c-format
 msgid "%s: %s as next argument.\n"
 msgstr "%s:·%s كالعامل التلي.\n"
@@ -85,7 +85,7 @@ msgstr "%s:·%s كالعامل التلي.\n"
 #. * are passed to it: the first is the gcalctool program name and
 #. * the second is the program version number.
 #.
-#: ../gcalctool/calctool.c:621
+#: ../gcalctool/calctool.c:527
 #, c-format
 msgid ""
 "%s version %s\n"
@@ -94,225 +94,200 @@ msgstr ""
 "%s إصدار %s\n"
 "\n"
 
-#: ../gcalctool/calctool.c:622
+#: ../gcalctool/calctool.c:528
 #, fuzzy, c-format
 msgid "Usage: %s: [-E] [-u] [-a accuracy] "
 msgstr "الاستعمال:·%s:·[-D]·[-E]·[-a·accuracy]·"
 
-#: ../gcalctool/calctool.c:623
+#: ../gcalctool/calctool.c:529
 msgid "\t\t [-?] [-v] [-h]\n"
 msgstr "\t\t [-?] [-v] [-h]\n"
 
-#: ../gcalctool/calctool.c:644
+#: ../gcalctool/calctool.c:550
 msgid "-a needs accuracy value"
 msgstr "لا يوجد قيمة للدقّة "
 
-#: ../gcalctool/calctool.c:648 ../gcalctool/get.c:243
+#: ../gcalctool/calctool.c:554 ../gcalctool/get.c:242
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: يجب أن تكون الدقة بين 0-%d\n"
+msgstr "%s: يجب أن تكون الدقة بين 0-%Id\n"
 
-#: ../gcalctool/display.c:403
+#: ../gcalctool/display.c:322
 msgid "No undo history"
 msgstr "لاتاريخ مراجعة"
 
-#: ../gcalctool/display.c:418
+#: ../gcalctool/display.c:336
 msgid "No redo steps"
 msgstr "لاخطوات مراجعة"
 
-#: ../gcalctool/functions.c:270
-msgid "Invalid number for the current base"
-msgstr "عدد غير صحيح للقاعدة الحالية"
-
-#: ../gcalctool/functions.c:274
-msgid "Too long number"
-msgstr "عدد طويل جدا"
-
-#: ../gcalctool/functions.c:278
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "معطيات العملية الثنائية غير صالحة"
-
-#: ../gcalctool/functions.c:282
-msgid "Invalid modulus operation parameter(s)"
-msgstr "معطيات العملية غير صالحة"
-
-#: ../gcalctool/functions.c:286
-msgid "Math operation error"
-msgstr "خطأ في عملية حسابية"
-
-#: ../gcalctool/functions.c:290
-msgid "Malformed expression"
-msgstr "جملة غير صالحة"
-
-#: ../gcalctool/functions.c:376
-msgid "Error, operands must be integers"
-msgstr "خطأ, يجب أن يكون المعملان صحيحين"
-
-#: ../gcalctool/functions.c:601 ../gcalctool/functions.c:954
-msgid "No sane value to convert"
-msgstr "لا قيمة صالحة للتحويل"
-
-#: ../gcalctool/functions.c:700 ../gcalctool/functions.c:1027
-msgid "No sane value to store"
-msgstr "لا قيمة صالحة للحفظ"
-
-#: ../gcalctool/functions.c:820
+#: ../gcalctool/functions.c:135
 msgid "Malformed function"
 msgstr "وظيفة غير صالحة"
 
-#: ../gcalctool/functions.c:982
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "تم مسح الشاشة, عدد أولي من دون عملية غير مسموح"
-
-#: ../gcalctool/functions.c:1003
-msgid "Malformed parenthesis expression"
-msgstr "جملة بأقواس غير صالحة"
-
-#: ../gcalctool/functions.c:1179
+#: ../gcalctool/functions.c:145
 msgid "No sane value to do bitwise shift"
 msgstr "لا قيمة صالحة للتحويل"
 
-#: ../gcalctool/get.c:264
+#: ../gcalctool/functions.c:178 ../gcalctool/functions.c:227
+msgid "No sane value to convert"
+msgstr "لا قيمة صالحة للتحويل"
+
+#: ../gcalctool/functions.c:202 ../gcalctool/functions.c:244
+msgid "No sane value to store"
+msgstr "لا قيمة صالحة للحفظ"
+
+#: ../gcalctool/functions.c:401
+msgid "Invalid number for the current base"
+msgstr "عدد غير صحيح للقاعدة الحالية"
+
+#: ../gcalctool/functions.c:405
+msgid "Too long number"
+msgstr "عدد طويل جدا"
+
+#: ../gcalctool/functions.c:409
+msgid "Invalid bitwise operation parameter(s)"
+msgstr "معطيات العملية الثنائية غير صالحة"
+
+#: ../gcalctool/functions.c:413
+msgid "Invalid modulus operation parameter(s)"
+msgstr "معطيات العملية غير صالحة"
+
+#: ../gcalctool/functions.c:417
+msgid "Math operation error"
+msgstr "خطأ في عملية حسابية"
+
+#: ../gcalctool/functions.c:421
+msgid "Malformed expression"
+msgstr "جملة غير صالحة"
+
+#: ../gcalctool/get.c:263
 #, c-format
 msgid "%s: base should be 2, 8, 10 or 16\n"
 msgstr "%s: يجب أن يكون أساس النظام  أو 8 أو 10 أو 16 2\n"
 
-#: ../gcalctool/get.c:279
+#: ../gcalctool/get.c:278
 #, c-format
 msgid "%s: invalid display mode [%s]\n"
 msgstr "%s: نمط عرض غير صحيح [%s]\n"
 
-#: ../gcalctool/get.c:294
+#: ../gcalctool/get.c:293
 #, c-format
 msgid "%s: invalid mode [%s]\n"
 msgstr "%s:·نمط غير صحيح [%s]\n"
 
-#: ../gcalctool/get.c:308
+#: ../gcalctool/get.c:307
 #, c-format
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: نسق ثلاثاتي غير سليم [%s]\n"
 
-#: ../gcalctool/get.c:326
-#, c-format
-msgid "%s: invalid syntax mode [%s]\n"
-msgstr "%s: نمط عرض غير صحيح [%s]\n"
-
-#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:54 ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "آلة حاسبة"
 
-#: ../gcalctool/gtk.c:55
+#: ../gcalctool/gtk.c:54
 msgid "Calculator - Advanced"
 msgstr "آلة حاسبة - متقدم"
 
-#: ../gcalctool/gtk.c:55
+#: ../gcalctool/gtk.c:54
 msgid "Calculator - Financial"
 msgstr "آلة حاسبة - مالي"
 
-#: ../gcalctool/gtk.c:56
+#: ../gcalctool/gtk.c:55
 msgid "Calculator - Scientific"
 msgstr "آلة حاسبة - علمي"
 
-#: ../gcalctool/gtk.c:61
+#: ../gcalctool/gtk.c:60
 #, c-format
 msgid "Calculator [%s]"
 msgstr "آلة حاسبة [%s]"
 
-#: ../gcalctool/gtk.c:61
+#: ../gcalctool/gtk.c:60
 #, c-format
 msgid "Calculator [%s] - Advanced"
 msgstr "آلة حاسبة [%s] - متقدم"
 
-#: ../gcalctool/gtk.c:61
+#: ../gcalctool/gtk.c:60
 #, c-format
 msgid "Calculator [%s] - Financial"
 msgstr "آلة حاسبة [%s] - مالي"
 
-#: ../gcalctool/gtk.c:62
+#: ../gcalctool/gtk.c:61
 #, c-format
 msgid "Calculator [%s] - Scientific"
 msgstr "آلة حاسبة [%s] - علمي"
 
-#: ../gcalctool/gtk.c:510
-msgid "Activated no operator precedence mode"
-msgstr "تم تفعيل نسق عدم السماح بسبق العمليات"
-
-#: ../gcalctool/gtk.c:513
-msgid "Activated expression mode with operator precedence"
-msgstr "تم تفعيل نسق العبارة مع سبق العمليات"
-
-#: ../gcalctool/gtk.c:542 ../glade/gcalctool.glade.h:389
+#: ../gcalctool/gtk.c:495 ../glade/gcalctool.glade.h:385
 #, no-c-format
 msgid "_Other (%d) ..."
-msgstr "آ_خر (%d) ..."
+msgstr "آ_خر (%Id) ..."
 
-#: ../gcalctool/gtk.c:546
+#: ../gcalctool/gtk.c:499
 #, fuzzy, c-format
 msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "ضبط درجة الدقّة من 0 إلى %d خانات رقمية"
-msgstr[1] "ضبط درجة الدقّة من 0 إلى %d خانات رقمية"
-msgstr[2] "ضبط درجة الدقّة من 0 إلى %d خانات رقمية"
-msgstr[3] "ضبط درجة الدقّة من 0 إلى %d خانة رقمية"
+msgstr[0] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
+msgstr[1] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
+msgstr[2] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
+msgstr[3] "ضبط درجة الدقّة من 0 إلى %Id خانة رقمية"
 
 #. Translators: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:552
+#: ../gcalctool/gtk.c:505
 #, fuzzy, c-format
 msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
-msgstr[0] "محددة حاليا بـ %d أرقام"
-msgstr[1] "محددة حاليا بـ %d أرقام"
-msgstr[2] "محددة حاليا بـ %d أرقام"
-msgstr[3] "محددة حاليا بـ %d رقم"
+msgstr[0] "محددة حاليا بـ %Id أرقام"
+msgstr[1] "محددة حاليا بـ %Id أرقام"
+msgstr[2] "محددة حاليا بـ %Id أرقام"
+msgstr[3] "محددة حاليا بـ %Id رقم"
 
 #. Factorial
-#: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
+#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
 msgid "Sin"
 msgstr "جب"
 
-#: ../gcalctool/gtk.c:584
+#: ../gcalctool/gtk.c:537
 msgid "Sinh"
 msgstr "جب ه"
 
-#: ../gcalctool/gtk.c:585
+#: ../gcalctool/gtk.c:538
 msgid "Sin<sup>-1</sup>"
 msgstr "جب<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:586
+#: ../gcalctool/gtk.c:539
 msgid "Sinh<sup>-1</sup>"
 msgstr "جب ه<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
+#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
 msgid "Cos"
 msgstr "تجب"
 
-#: ../gcalctool/gtk.c:588
+#: ../gcalctool/gtk.c:541
 msgid "Cosh"
 msgstr "تجب ه"
 
-#: ../gcalctool/gtk.c:589
+#: ../gcalctool/gtk.c:542
 msgid "Cos<sup>-1</sup>"
 msgstr "تجب<sup>-1</sup>"
 
-#: ../gcalctool/gtk.c:590
+#: ../gcalctool/gtk.c:543
 msgid "Cosh<sup>-1</sup>"
 msgstr "تجب ه<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
+#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
 msgid "Tan"
 msgstr "ظل"
 
-#: ../gcalctool/gtk.c:592
+#: ../gcalctool/gtk.c:545
 msgid "Tanh"
 msgstr "ظل ه"
 
-#: ../gcalctool/gtk.c:593
+#: ../gcalctool/gtk.c:546
 msgid "Tan<sup>-1</sup>"
 msgstr "ظل<sup>1</sup>"
 
-#: ../gcalctool/gtk.c:594
+#: ../gcalctool/gtk.c:547
 msgid "Tanh<sup>-1</sup>"
 msgstr "ظل ه<sup>-1</sup>"
 
@@ -325,11 +300,11 @@ msgstr "ظل ه<sup>-1</sup>"
 #. * (a one becomes a zero and a zero becomes a one), causing the
 #. * displayed integer value to be adjusted accordingly.
 #.
-#: ../gcalctool/gtk.c:690
+#: ../gcalctool/gtk.c:643
 msgid "Bit editor activated. Click on bit values to toggle them."
 msgstr "تم تفعيل محرر البتات. اضغط على القيم لعكسها."
 
-#: ../gcalctool/gtk.c:1156
+#: ../gcalctool/gtk.c:1069
 msgid "translator-credits"
 msgstr ""
 "Djihed Afifi جهاد عفيفي (djihed@gmail.com)\n"
@@ -337,7 +312,7 @@ msgstr ""
 "Yazid Delenda يزيد دلندة (yazo1624@yahoo.co.uk)\n"
 "Sohaib Afifi صهيب عفيفي (sohaibafifi@gmail.com)"
 
-#: ../gcalctool/gtk.c:1159
+#: ../gcalctool/gtk.c:1072
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -349,7 +324,7 @@ msgstr ""
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
 
-#: ../gcalctool/gtk.c:1163
+#: ../gcalctool/gtk.c:1076
 msgid ""
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -361,7 +336,7 @@ msgstr ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
 
-#: ../gcalctool/gtk.c:1167
+#: ../gcalctool/gtk.c:1080
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
@@ -371,31 +346,31 @@ msgstr ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1178
+#: ../gcalctool/gtk.c:1091
 msgid "Gcalctool"
 msgstr "برنامج Gcalctool"
 
-#: ../gcalctool/gtk.c:1180
+#: ../gcalctool/gtk.c:1093
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "حقوق النسخ © 1986-2008 لمؤلفي الألة الحاسبة"
 
-#: ../gcalctool/gtk.c:1182
+#: ../gcalctool/gtk.c:1095
 msgid "Calculator with financial and scientific modes."
 msgstr "آلة حاسبة مالية وعلمية"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:119
+#: ../gcalctool/gtk.c:1380 ../glade/gcalctool.glade.h:118
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1515 ../glade/gcalctool.glade.h:170
+#: ../gcalctool/gtk.c:1398 ../glade/gcalctool.glade.h:169
 msgid "F"
 msgstr "F"
 
-#: ../gcalctool/gtk.c:1696
+#: ../gcalctool/gtk.c:1579
 msgid "Changing Modes Clears Calculation"
 msgstr "تغيير النسق سيمسح الحساب."
 
-#: ../gcalctool/gtk.c:1699
+#: ../gcalctool/gtk.c:1582
 msgid ""
 "When you change modes, the current calculation will be cleared, and the base "
 "will be reset to decimal."
@@ -403,33 +378,29 @@ msgstr ""
 "عند تغيير النسق يتم مسح العملية الحالية، و يتم إعادة تحديدة القاعدة إلى "
 "عشرية."
 
-#: ../gcalctool/gtk.c:1703
+#: ../gcalctool/gtk.c:1586
 msgid "_Do not warn me again"
 msgstr "لا _تنبهني ثانيةً."
 
-#: ../gcalctool/gtk.c:1708
+#: ../gcalctool/gtk.c:1591
 msgid "C_hange Mode"
 msgstr "_نسق التغيير"
 
 #. translators: R is the short form of register used inter alia
 #. in popup menus
-#: ../gcalctool/gtk.c:1846
+#: ../gcalctool/gtk.c:1707
 msgid "R"
 msgstr "سجل"
 
-#: ../gcalctool/gtk.c:2212
-msgid "Clipboard contained malformed calculation"
-msgstr "تحتوي ذاكرة النصوص على عملية غير صالحة"
-
-#: ../gcalctool/gtk.c:2284
+#: ../gcalctool/gtk.c:2127
 msgid "Paste"
 msgstr "الصق"
 
-#: ../gcalctool/gtk.c:2547
+#: ../gcalctool/gtk.c:2381
 msgid "Error loading user interface"
 msgstr "خطأ عند تحميل واجهة المستخدم"
 
-#: ../gcalctool/gtk.c:2549
+#: ../gcalctool/gtk.c:2383
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -437,25 +408,25 @@ msgid ""
 msgstr ""
 "ملف واجهة المستخدم %s مفقود أو لا يمكن تحميله. الرجاء التأكد من التثبيت."
 
-#: ../gcalctool/gtk.c:2776 ../gcalctool/gtk.c:2794
+#: ../gcalctool/gtk.c:2607 ../gcalctool/gtk.c:2625
 msgid "No."
 msgstr "لا."
 
-#: ../gcalctool/gtk.c:2778 ../gcalctool/gtk.c:2796
+#: ../gcalctool/gtk.c:2609 ../gcalctool/gtk.c:2627
 msgid "Value"
 msgstr "قيمة"
 
-#: ../gcalctool/gtk.c:2780 ../gcalctool/gtk.c:2798
+#: ../gcalctool/gtk.c:2611 ../gcalctool/gtk.c:2629
 msgid "Description"
 msgstr "وصف"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2936 ../glade/gcalctool.glade.h:269
+#: ../gcalctool/gtk.c:2766 ../glade/gcalctool.glade.h:268
 #, no-c-format
 msgid "Reset to _Default (%d)"
-msgstr "أ_عد الضبط للإفتراضي (%d)"
+msgstr "أ_عد الضبط للإفتراضي (%Id)"
 
-#: ../gcalctool/mp.c:3158
+#: ../gcalctool/mp.c:3152
 msgid "Negative X and non-integer Y not supported"
 msgstr "س سلبي و ع غير صحيح غير مدعوم"
 
@@ -729,571 +700,567 @@ msgstr "A"
 msgid "AND"
 msgstr "و"
 
-#: ../glade/gcalctool.glade.h:91
-msgid "A_rithmetic Precedence"
-msgstr "الأولوية ال_حسابية"
-
 #. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:93
+#: ../glade/gcalctool.glade.h:92
 msgid "Abs"
 msgstr "قمط"
 
-#: ../glade/gcalctool.glade.h:94
+#: ../glade/gcalctool.glade.h:93
 msgid "Absolute value"
 msgstr "القيمة المطلقة"
 
-#: ../glade/gcalctool.glade.h:95
+#: ../glade/gcalctool.glade.h:94
 msgid "Absolute value [u]"
 msgstr "القيمة المطلقة"
 
 #. Accuracy
-#: ../glade/gcalctool.glade.h:97
+#: ../glade/gcalctool.glade.h:96
 msgid "Acc"
 msgstr "درجة الدقة"
 
-#: ../glade/gcalctool.glade.h:98
+#: ../glade/gcalctool.glade.h:97
 msgid "Accuracy"
 msgstr "درجة الدقة"
 
-#: ../glade/gcalctool.glade.h:99
+#: ../glade/gcalctool.glade.h:98
 msgid "Add"
 msgstr "اضف"
 
-#: ../glade/gcalctool.glade.h:100
+#: ../glade/gcalctool.glade.h:99
 msgid "Add [+]"
 msgstr "أضِف [+]"
 
-#: ../glade/gcalctool.glade.h:101
+#: ../glade/gcalctool.glade.h:100
 msgid "Advanced"
 msgstr "متقدم"
 
-#: ../glade/gcalctool.glade.h:102
+#: ../glade/gcalctool.glade.h:101
 msgid "B"
 msgstr "B"
 
-#: ../glade/gcalctool.glade.h:103
+#: ../glade/gcalctool.glade.h:102
 msgid "Backspace"
 msgstr "إرتداد"
 
-#: ../glade/gcalctool.glade.h:104
+#: ../glade/gcalctool.glade.h:103
 msgid "Base 10 log [G]"
 msgstr "لوغاريتم أساس 10"
 
-#: ../glade/gcalctool.glade.h:105
+#: ../glade/gcalctool.glade.h:104
 msgid "Base 2 log [H]"
 msgstr "لوغاريتم أساس 2 [H]"
 
-#: ../glade/gcalctool.glade.h:106
+#: ../glade/gcalctool.glade.h:105
 msgid "Basic"
 msgstr "أساسي"
 
-#: ../glade/gcalctool.glade.h:107
+#: ../glade/gcalctool.glade.h:106
 msgid "Bitwise AND"
 msgstr "و ثنائي"
 
-#: ../glade/gcalctool.glade.h:108
+#: ../glade/gcalctool.glade.h:107
 msgid "Bitwise AND [&]"
 msgstr "و ثنائي"
 
-#: ../glade/gcalctool.glade.h:109
+#: ../glade/gcalctool.glade.h:108
 msgid "Bitwise NOT"
 msgstr "لا ثنائي"
 
-#: ../glade/gcalctool.glade.h:110
+#: ../glade/gcalctool.glade.h:109
 msgid "Bitwise NOT [~]"
 msgstr "نفي ثنائي"
 
-#: ../glade/gcalctool.glade.h:111
+#: ../glade/gcalctool.glade.h:110
 msgid "Bitwise OR"
 msgstr "أو ثنائي"
 
-#: ../glade/gcalctool.glade.h:112
+#: ../glade/gcalctool.glade.h:111
 msgid "Bitwise OR [|]"
 msgstr "أو ثنائي"
 
-#: ../glade/gcalctool.glade.h:113
+#: ../glade/gcalctool.glade.h:112
 msgid "Bitwise XNOR"
 msgstr "أو حصري مقلوب ثنائي"
 
-#: ../glade/gcalctool.glade.h:114
+#: ../glade/gcalctool.glade.h:113
 msgid "Bitwise XNOR [n]"
 msgstr "لا أو ثنائي"
 
-#: ../glade/gcalctool.glade.h:115
+#: ../glade/gcalctool.glade.h:114
 msgid "Bitwise XOR"
 msgstr "أو حصري ثنائي"
 
-#: ../glade/gcalctool.glade.h:116
+#: ../glade/gcalctool.glade.h:115
 msgid "Bitwise XOR [x]"
 msgstr "س أو ثنائي"
 
 #. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:118
+#: ../glade/gcalctool.glade.h:117
 msgid "Bksp"
 msgstr "إرتداد"
 
-#: ../glade/gcalctool.glade.h:120
+#: ../glade/gcalctool.glade.h:119
 msgid "CE"
 msgstr "مسح كلي"
 
-#: ../glade/gcalctool.glade.h:121
+#: ../glade/gcalctool.glade.h:120
 msgid "Calculate result"
 msgstr "احسب النتيحة"
 
-#: ../glade/gcalctool.glade.h:122
+#: ../glade/gcalctool.glade.h:121
 msgid "Calculate result [=]"
 msgstr "احسب النتيحة [=]"
 
-#: ../glade/gcalctool.glade.h:123
+#: ../glade/gcalctool.glade.h:122
 msgid "Ch_aracter:"
 msgstr "_حرف"
 
-#: ../glade/gcalctool.glade.h:124
+#: ../glade/gcalctool.glade.h:123
 msgid "Change Sign [C]"
 msgstr "غيّر الإشارة [C]"
 
-#: ../glade/gcalctool.glade.h:125
+#: ../glade/gcalctool.glade.h:124
 msgid "Change sign"
 msgstr "غيّر الإشارة"
 
-#: ../glade/gcalctool.glade.h:126
+#: ../glade/gcalctool.glade.h:125
 msgid "Clear"
 msgstr "امسح"
 
-#: ../glade/gcalctool.glade.h:127
+#: ../glade/gcalctool.glade.h:126
 msgid "Clear displayed value [Escape]"
 msgstr "امسح القيمة المعروضة [Escape]"
 
-#: ../glade/gcalctool.glade.h:128
+#: ../glade/gcalctool.glade.h:127
 msgid "Clear displayed value and any partial calculation [Shift Delete]"
 msgstr "امسح القيمة المعروضة و كل عملية جزئية [Shift Delete]"
 
-#: ../glade/gcalctool.glade.h:129
+#: ../glade/gcalctool.glade.h:128
 msgid "Clear entry"
 msgstr "امسح الخانة"
 
-#: ../glade/gcalctool.glade.h:130
+#: ../glade/gcalctool.glade.h:129
 msgid "Click a _value or description to edit it:"
 msgstr "اضغط على القيمة أو الوصف للتعديل"
 
 #. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:132
+#: ../glade/gcalctool.glade.h:131
 msgid "Clr"
 msgstr "مسح"
 
-#: ../glade/gcalctool.glade.h:133
+#: ../glade/gcalctool.glade.h:132
 msgid "Compounding term"
 msgstr "جزء مركّب"
 
-#: ../glade/gcalctool.glade.h:134
+#: ../glade/gcalctool.glade.h:133
 msgid "Compounding term [m]"
 msgstr "مفرد التعريف"
 
-#: ../glade/gcalctool.glade.h:135
+#: ../glade/gcalctool.glade.h:134
 msgid "Con"
 msgstr "أرقام ثابتة"
 
-#: ../glade/gcalctool.glade.h:136
+#: ../glade/gcalctool.glade.h:135
 msgid "Constants"
 msgstr "ثوابت"
 
-#: ../glade/gcalctool.glade.h:137
+#: ../glade/gcalctool.glade.h:136
 msgid "Constants [#]"
 msgstr "ثوابت"
 
-#: ../glade/gcalctool.glade.h:138
+#: ../glade/gcalctool.glade.h:137
 msgid "Copy selection"
 msgstr "نسخ المنتقى"
 
-#: ../glade/gcalctool.glade.h:141
+#: ../glade/gcalctool.glade.h:140
 msgid "Cosine [J]"
 msgstr "تجب"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
 #. See also:
 #. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:145
+#: ../glade/gcalctool.glade.h:144
 msgid "Ctrm"
 msgstr "ممرك"
 
-#: ../glade/gcalctool.glade.h:146
+#: ../glade/gcalctool.glade.h:145
 msgid "D"
 msgstr "D"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
 #. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:149
+#: ../glade/gcalctool.glade.h:148
 msgid "Ddb"
 msgstr "إتم"
 
-#: ../glade/gcalctool.glade.h:150
+#: ../glade/gcalctool.glade.h:149
 msgid "De_grees"
 msgstr "_درجات"
 
-#: ../glade/gcalctool.glade.h:151
+#: ../glade/gcalctool.glade.h:150
 msgid "Divide"
 msgstr "اقسم"
 
-#: ../glade/gcalctool.glade.h:152
+#: ../glade/gcalctool.glade.h:151
 msgid "Divide [/]"
 msgstr "قسمة [/]"
 
-#: ../glade/gcalctool.glade.h:153
+#: ../glade/gcalctool.glade.h:152
 msgid "Double-declining depreciation"
 msgstr "استهلاك اصول ثابتة ثنائية"
 
-#: ../glade/gcalctool.glade.h:154
+#: ../glade/gcalctool.glade.h:153
 msgid "Double-declining depreciation [D]"
 msgstr "استهلاك اصول ثابتة ثنائية [D]"
 
-#: ../glade/gcalctool.glade.h:155
+#: ../glade/gcalctool.glade.h:154
 msgid "E"
 msgstr "E"
 
-#: ../glade/gcalctool.glade.h:156
+#: ../glade/gcalctool.glade.h:155
 msgid "E to the x"
 msgstr " E للقوة س"
 
-#: ../glade/gcalctool.glade.h:157
+#: ../glade/gcalctool.glade.h:156
 msgid "E_ng"
 msgstr "_هندسي"
 
-#: ../glade/gcalctool.glade.h:158
+#: ../glade/gcalctool.glade.h:157
 msgid "Edit Constants"
 msgstr "تعديل الأرقام الثابته"
 
-#: ../glade/gcalctool.glade.h:159
+#: ../glade/gcalctool.glade.h:158
 msgid "Edit Constants..."
 msgstr "تعدبل الأرقام الثابته"
 
-#: ../glade/gcalctool.glade.h:160
+#: ../glade/gcalctool.glade.h:159
 msgid "Edit Functions"
 msgstr "تعديل الوظائف"
 
-#: ../glade/gcalctool.glade.h:161
+#: ../glade/gcalctool.glade.h:160
 msgid "Edit Functions..."
 msgstr "تعديل الوظائف"
 
-#: ../glade/gcalctool.glade.h:162
+#: ../glade/gcalctool.glade.h:161
 msgid "End group of calculations [)]"
 msgstr "انهي مجموعة حسابات [)]"
 
-#: ../glade/gcalctool.glade.h:163
+#: ../glade/gcalctool.glade.h:162
 msgid "Enter an exponential number [E]"
 msgstr "أدخل عدد أسي [E]"
 
 #. Exchange with register
-#: ../glade/gcalctool.glade.h:165
+#: ../glade/gcalctool.glade.h:164
 msgid "Exch"
 msgstr "استبدال"
 
-#: ../glade/gcalctool.glade.h:166
+#: ../glade/gcalctool.glade.h:165
 msgid "Exchange displayed value with memory register [X]"
 msgstr "استبدل القيمة المعروضة بسجل الذاكرة [X]"
 
-#: ../glade/gcalctool.glade.h:167
+#: ../glade/gcalctool.glade.h:166
 msgid "Exchange with register"
 msgstr "استبدل بالسجل"
 
 #. Exponential
-#: ../glade/gcalctool.glade.h:169
+#: ../glade/gcalctool.glade.h:168
 msgid "Exp"
 msgstr "أسّي"
 
-#: ../glade/gcalctool.glade.h:171
+#: ../glade/gcalctool.glade.h:170
 msgid "Factorial"
 msgstr "عاملي"
 
-#: ../glade/gcalctool.glade.h:172
+#: ../glade/gcalctool.glade.h:171
 msgid "Factorial of displayed value [!]"
 msgstr "عاملي العدد المعروض"
 
-#: ../glade/gcalctool.glade.h:173
+#: ../glade/gcalctool.glade.h:172
 msgid "Financial"
 msgstr "مالي"
 
 #. Fractional portion
-#: ../glade/gcalctool.glade.h:175
+#: ../glade/gcalctool.glade.h:174
 msgid "Frac"
 msgstr "كسر"
 
-#: ../glade/gcalctool.glade.h:176
+#: ../glade/gcalctool.glade.h:175
 msgid "Fractional portion"
 msgstr "الجزء الكسري"
 
-#: ../glade/gcalctool.glade.h:177
+#: ../glade/gcalctool.glade.h:176
 msgid "Fractional portion of displayed value [:]"
 msgstr "الجزء الكسري للقيمة المعروضة [:]"
 
-#: ../glade/gcalctool.glade.h:178
+#: ../glade/gcalctool.glade.h:177
 msgid "Fun"
 msgstr "دالة"
 
-#: ../glade/gcalctool.glade.h:179
+#: ../glade/gcalctool.glade.h:178
 msgid "Future value"
 msgstr "القيمة المستقبلية"
 
-#: ../glade/gcalctool.glade.h:180
+#: ../glade/gcalctool.glade.h:179
 msgid "Future value [v]"
 msgstr "قيمة التحجيم"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
 #. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:183
+#: ../glade/gcalctool.glade.h:182
 msgid "Fv"
 msgstr "القيمة المقبلة"
 
-#: ../glade/gcalctool.glade.h:184
+#: ../glade/gcalctool.glade.h:183
 msgid "Gr_adians"
 msgstr "الم_يولات"
 
-#: ../glade/gcalctool.glade.h:185
+#: ../glade/gcalctool.glade.h:184
 msgid "H_yp"
 msgstr "H_yp"
 
-#: ../glade/gcalctool.glade.h:186
+#: ../glade/gcalctool.glade.h:185
 msgid "He_x"
 msgstr "_سادس عشري"
 
-#: ../glade/gcalctool.glade.h:187
+#: ../glade/gcalctool.glade.h:186
 msgid "Hexadecimal digit A"
 msgstr "رقم A (بالنظام السادس عشري)"
 
-#: ../glade/gcalctool.glade.h:188
+#: ../glade/gcalctool.glade.h:187
 msgid "Hexadecimal digit A [a]"
 msgstr "رقم A (بالنظام السادس عشري) [a]"
 
-#: ../glade/gcalctool.glade.h:189
+#: ../glade/gcalctool.glade.h:188
 msgid "Hexadecimal digit B"
 msgstr "رقم B بالنظام السادس عشري"
 
-#: ../glade/gcalctool.glade.h:190
+#: ../glade/gcalctool.glade.h:189
 msgid "Hexadecimal digit B [b]"
 msgstr "رقم B بالنظام السادس عشري [b]"
 
-#: ../glade/gcalctool.glade.h:191
+#: ../glade/gcalctool.glade.h:190
 msgid "Hexadecimal digit C"
 msgstr "رقم C بالنظام السادس عشري"
 
-#: ../glade/gcalctool.glade.h:192
+#: ../glade/gcalctool.glade.h:191
 msgid "Hexadecimal digit C [c]"
 msgstr "رقم C بالنظام السادس عشري [c]"
 
-#: ../glade/gcalctool.glade.h:193
+#: ../glade/gcalctool.glade.h:192
 msgid "Hexadecimal digit D"
 msgstr "رقم D (بنظام سادس عشري)"
 
-#: ../glade/gcalctool.glade.h:194
+#: ../glade/gcalctool.glade.h:193
 msgid "Hexadecimal digit D [d]"
 msgstr "رقم D (بنظام سادس عشري) [d]"
 
-#: ../glade/gcalctool.glade.h:195
+#: ../glade/gcalctool.glade.h:194
 msgid "Hexadecimal digit E"
 msgstr "رقم E (بالنظام السادس عشري)"
 
-#: ../glade/gcalctool.glade.h:196
+#: ../glade/gcalctool.glade.h:195
 msgid "Hexadecimal digit E [e]"
 msgstr "رقم E (بالنظام السادس عشري) [e]"
 
-#: ../glade/gcalctool.glade.h:197
+#: ../glade/gcalctool.glade.h:196
 msgid "Hexadecimal digit F"
 msgstr "رقم F (بالنظام السادس عشري)"
 
-#: ../glade/gcalctool.glade.h:198
+#: ../glade/gcalctool.glade.h:197
 msgid "Hexadecimal digit F [f]"
 msgstr "رقم F (بالنظام السادس عشري) [f]"
 
-#: ../glade/gcalctool.glade.h:199
+#: ../glade/gcalctool.glade.h:198
 msgid "Insert ASCII Value"
 msgstr "ادخل قيمة بترميز ASCII. "
 
-#: ../glade/gcalctool.glade.h:200
+#: ../glade/gcalctool.glade.h:199
 msgid "Insert ASCII value"
 msgstr "ادخل قيمة بترميز ASCII. "
 
 #. Integer portion
-#: ../glade/gcalctool.glade.h:202
+#: ../glade/gcalctool.glade.h:201
 msgid "Int"
 msgstr "عدد صحيح"
 
-#: ../glade/gcalctool.glade.h:203
+#: ../glade/gcalctool.glade.h:202
 msgid "Integer portion"
 msgstr "الجزء الصحيح"
 
-#: ../glade/gcalctool.glade.h:204
+#: ../glade/gcalctool.glade.h:203
 msgid "Integer portion of displayed value [i]"
 msgstr "الجزء الصحيح للقيمة المعروضة [:]"
 
-#: ../glade/gcalctool.glade.h:205
+#: ../glade/gcalctool.glade.h:204
 msgid "Left bracket"
 msgstr "القوس الأيسر"
 
 #. Natural logarithm
-#: ../glade/gcalctool.glade.h:207
+#: ../glade/gcalctool.glade.h:206
 msgid "Ln"
 msgstr "لو"
 
 #. Factorial
-#: ../glade/gcalctool.glade.h:209
+#: ../glade/gcalctool.glade.h:208
 msgid "Log<sub>10</sub>"
 msgstr "لو<sub>10</sub>"
 
 #. Factorial
-#: ../glade/gcalctool.glade.h:211
+#: ../glade/gcalctool.glade.h:210
 msgid "Log<sub>2</sub>"
 msgstr "لو<sub>2</sub>"
 
-#: ../glade/gcalctool.glade.h:212
+#: ../glade/gcalctool.glade.h:211
 msgid "Memory Registers"
 msgstr "سجلات الذاكرة"
 
-#: ../glade/gcalctool.glade.h:213
+#: ../glade/gcalctool.glade.h:212
 msgid "Mod"
 msgstr "باقي"
 
-#: ../glade/gcalctool.glade.h:214
+#: ../glade/gcalctool.glade.h:213
 msgid "Modulus Division [M]"
 msgstr "القسمة الباقية [M]"
 
-#: ../glade/gcalctool.glade.h:215
+#: ../glade/gcalctool.glade.h:214
 msgid "Multiply"
 msgstr "اضرب"
 
-#: ../glade/gcalctool.glade.h:216
+#: ../glade/gcalctool.glade.h:215
 msgid "Multiply [*]"
 msgstr "ضرب [*]"
 
-#: ../glade/gcalctool.glade.h:217
+#: ../glade/gcalctool.glade.h:216
 msgid "NOT"
 msgstr "لا"
 
-#: ../glade/gcalctool.glade.h:218
+#: ../glade/gcalctool.glade.h:217
 msgid "Natural log [N]"
 msgstr "لوغاريتم طبيعي"
 
-#: ../glade/gcalctool.glade.h:219
+#: ../glade/gcalctool.glade.h:218
 msgid "Numeric 0"
 msgstr "0 رقمي"
 
-#: ../glade/gcalctool.glade.h:220
+#: ../glade/gcalctool.glade.h:219
 msgid "Numeric 1"
 msgstr "1 رقمي"
 
-#: ../glade/gcalctool.glade.h:221
+#: ../glade/gcalctool.glade.h:220
 msgid "Numeric 2"
 msgstr "2 رقمية"
 
-#: ../glade/gcalctool.glade.h:222
+#: ../glade/gcalctool.glade.h:221
 msgid "Numeric 3"
 msgstr "3 رقمية"
 
-#: ../glade/gcalctool.glade.h:223
+#: ../glade/gcalctool.glade.h:222
 msgid "Numeric 4"
 msgstr "4 رقمية"
 
-#: ../glade/gcalctool.glade.h:224
+#: ../glade/gcalctool.glade.h:223
 msgid "Numeric 5"
 msgstr "5 رقمية"
 
-#: ../glade/gcalctool.glade.h:225
+#: ../glade/gcalctool.glade.h:224
 msgid "Numeric 6"
 msgstr "6 رقمية"
 
-#: ../glade/gcalctool.glade.h:226
+#: ../glade/gcalctool.glade.h:225
 msgid "Numeric 7"
 msgstr "7 رقمية"
 
-#: ../glade/gcalctool.glade.h:227
+#: ../glade/gcalctool.glade.h:226
 msgid "Numeric 8"
 msgstr "8 رقمية"
 
-#: ../glade/gcalctool.glade.h:228
+#: ../glade/gcalctool.glade.h:227
 msgid "Numeric 9"
 msgstr "9 رقمية"
 
-#: ../glade/gcalctool.glade.h:229
+#: ../glade/gcalctool.glade.h:228
 msgid "Numeric point"
 msgstr "فاصل رقمي"
 
-#: ../glade/gcalctool.glade.h:230
+#: ../glade/gcalctool.glade.h:229
 msgid "OR"
 msgstr "أو"
 
-#: ../glade/gcalctool.glade.h:231
+#: ../glade/gcalctool.glade.h:230
 msgid "Paste selection"
 msgstr "لصق المنتقى"
 
-#: ../glade/gcalctool.glade.h:232
+#: ../glade/gcalctool.glade.h:231
 msgid "Payment period"
 msgstr "مدة الدفع"
 
-#: ../glade/gcalctool.glade.h:233
+#: ../glade/gcalctool.glade.h:232
 msgid "Payment period [t]"
 msgstr "مدة الدفع [t]"
 
-#: ../glade/gcalctool.glade.h:234
+#: ../glade/gcalctool.glade.h:233
 msgid "Percentage"
 msgstr "نسبة مئوية"
 
-#: ../glade/gcalctool.glade.h:236
+#: ../glade/gcalctool.glade.h:235
 #, no-c-format
 msgid "Percentage [%]"
 msgstr "نسبة مئوية [%]"
 
-#: ../glade/gcalctool.glade.h:237
+#: ../glade/gcalctool.glade.h:236
 msgid "Periodic interest rate"
 msgstr "معدل ربح دوري"
 
-#: ../glade/gcalctool.glade.h:238
+#: ../glade/gcalctool.glade.h:237
 msgid "Periodic interest rate [T]"
 msgstr "معدل ربح ضرفي"
 
-#: ../glade/gcalctool.glade.h:239
+#: ../glade/gcalctool.glade.h:238
 msgid "Periodic payment"
 msgstr "الدفع الدوري"
 
-#: ../glade/gcalctool.glade.h:240
+#: ../glade/gcalctool.glade.h:239
 msgid "Periodic payment [P]"
 msgstr "الدفع الدوري"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
 #. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:243
+#: ../glade/gcalctool.glade.h:242
 msgid "Pmt"
 msgstr "دد"
 
-#: ../glade/gcalctool.glade.h:244
+#: ../glade/gcalctool.glade.h:243
 msgid "Present value"
 msgstr "القيمة الحالية"
 
-#: ../glade/gcalctool.glade.h:245
+#: ../glade/gcalctool.glade.h:244
 msgid "Present value [p]"
 msgstr "القيمة الحالية"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
 #. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:248
+#: ../glade/gcalctool.glade.h:247
 msgid "Pv"
 msgstr "قح"
 
-#: ../glade/gcalctool.glade.h:249
+#: ../glade/gcalctool.glade.h:248
 msgid "Quit the calculator"
 msgstr "اغلق الحاسبة"
 
-#: ../glade/gcalctool.glade.h:250
+#: ../glade/gcalctool.glade.h:249
 msgid "Raise displayed value to the power of y [^]"
 msgstr "ارفع العدد المعروض إلى القوة ص"
 
 #. Random number
-#: ../glade/gcalctool.glade.h:252
+#: ../glade/gcalctool.glade.h:251
 msgid "Rand"
 msgstr "عشوائي"
 
-#: ../glade/gcalctool.glade.h:253
+#: ../glade/gcalctool.glade.h:252
 msgid "Random number"
 msgstr "رقم عشوائي"
 
-#: ../glade/gcalctool.glade.h:254
+#: ../glade/gcalctool.glade.h:253
 msgid "Random number in the range 0.0 to 1.0 [?]"
 msgstr "أعداد عشوائية بين 0.0 و 1.0"
 
@@ -1303,780 +1270,597 @@ msgstr "أعداد عشوائية بين 0.0 و 1.0"
 #.
 #.
 #.
-#: ../glade/gcalctool.glade.h:261
+#: ../glade/gcalctool.glade.h:260
 msgid "Rate"
 msgstr "النسبة"
 
 #. Retrieve from register
-#: ../glade/gcalctool.glade.h:263
+#: ../glade/gcalctool.glade.h:262
 msgid "Rcl"
 msgstr "استخراج"
 
-#: ../glade/gcalctool.glade.h:264
+#: ../glade/gcalctool.glade.h:263
 msgid "Reciprocal"
 msgstr "مقلوب"
 
-#: ../glade/gcalctool.glade.h:265
+#: ../glade/gcalctool.glade.h:264
 msgid "Reciprocal [r]"
 msgstr "مقلوب"
 
-#: ../glade/gcalctool.glade.h:266
+#: ../glade/gcalctool.glade.h:265
 msgid "Redo"
 msgstr "إعادة"
 
-#: ../glade/gcalctool.glade.h:267
+#: ../glade/gcalctool.glade.h:266
 msgid "Remove rightmost character from displayed value [Backspace]"
 msgstr "احذف المحرف الموجود على أقصى يمين القيمة المعروضة [Backspace]"
 
-#: ../glade/gcalctool.glade.h:270
+#: ../glade/gcalctool.glade.h:269
 msgid "Result Region"
 msgstr "منطقة النتيجة"
 
-#: ../glade/gcalctool.glade.h:271
+#: ../glade/gcalctool.glade.h:270
 msgid "Retrieve from register"
 msgstr "استخرج من السجل"
 
-#: ../glade/gcalctool.glade.h:272
+#: ../glade/gcalctool.glade.h:271
 msgid "Retrieve memory register to display [R]"
 msgstr "استخرج سجل الذاكرة للشاشة [R]"
 
-#: ../glade/gcalctool.glade.h:273
+#: ../glade/gcalctool.glade.h:272
 msgid "Right bracket"
 msgstr "القوس الأيمن"
 
-#: ../glade/gcalctool.glade.h:274
+#: ../glade/gcalctool.glade.h:273
 msgid "Scientific"
 msgstr "علمي"
 
-#: ../glade/gcalctool.glade.h:275
+#: ../glade/gcalctool.glade.h:274
 msgid "Set Precision"
 msgstr "تحديد الدقّة"
 
-#: ../glade/gcalctool.glade.h:276
+#: ../glade/gcalctool.glade.h:275
 msgid "Set accuracy from 0 to 9 numeric places [A]"
 msgstr "ضبط درجة الدقّة من 0 إلى 9 خانات رقمية [A]"
 
-#: ../glade/gcalctool.glade.h:277
+#: ../glade/gcalctool.glade.h:276
 msgid "Set display type to engineering format"
 msgstr "اضبط نوع الشاشة للتهيئة الهندسية"
 
-#: ../glade/gcalctool.glade.h:278
+#: ../glade/gcalctool.glade.h:277
 msgid "Set display type to fixed-point format"
 msgstr "اضبط نوع الشاشة لتهيئة النقطة التقريبية"
 
-#: ../glade/gcalctool.glade.h:279
+#: ../glade/gcalctool.glade.h:278
 msgid "Set display type to scientific format"
 msgstr "اضبط نوع الشاشة للتهيئة العلمية"
 
-#: ../glade/gcalctool.glade.h:280
+#: ../glade/gcalctool.glade.h:279
 msgid "Set hyperbolic option for trigonometric functions"
 msgstr "اضبط الخيار الزائدي للدوال المثلثية"
 
-#: ../glade/gcalctool.glade.h:281
+#: ../glade/gcalctool.glade.h:280
 msgid "Set inverse option for trigonometric functions"
 msgstr "اضبط الخيار المعكوس للدوال المثلثية"
 
-#: ../glade/gcalctool.glade.h:282
+#: ../glade/gcalctool.glade.h:281
 msgid "Set numeric base to binary (base 2)"
 msgstr "اضبط القاعدة العددية كثنائية (القاعدة 2)"
 
-#: ../glade/gcalctool.glade.h:283
+#: ../glade/gcalctool.glade.h:282
 msgid "Set numeric base to decimal (base 10)"
 msgstr "اضبط القاعدة العددية كعشرية (القاعدة 10)"
 
-#: ../glade/gcalctool.glade.h:284
+#: ../glade/gcalctool.glade.h:283
 msgid "Set numeric base to hexadecimal (base 16)"
 msgstr "اضبط القاعدة العددية كسادس عشرية (القاعدة 16"
 
-#: ../glade/gcalctool.glade.h:285
+#: ../glade/gcalctool.glade.h:284
 msgid "Set numeric base to octal (base 8)"
 msgstr "اضبط القاعدة العددية كثمانية (القاعدة 8)"
 
-#: ../glade/gcalctool.glade.h:286
+#: ../glade/gcalctool.glade.h:285
 msgid "Set trigonometric type to degrees"
 msgstr "اضبط النوع المثلثاتي كدرجات"
 
-#: ../glade/gcalctool.glade.h:287
+#: ../glade/gcalctool.glade.h:286
 msgid "Set trigonometric type to gradians"
 msgstr "اضبط·النوع·المثلثاتي·كميولات"
 
-#: ../glade/gcalctool.glade.h:288
+#: ../glade/gcalctool.glade.h:287
 msgid "Set trigonometric type to radians"
 msgstr "ضبط·النوع·المثلثاتي·كأقطار"
 
-#: ../glade/gcalctool.glade.h:289
+#: ../glade/gcalctool.glade.h:288
 msgid "Shift displayed value 1-15 places to the left [<]"
 msgstr "نقل القيمة المعروضة 15 خانة لليسار [<]"
 
-#: ../glade/gcalctool.glade.h:290
+#: ../glade/gcalctool.glade.h:289
 msgid "Shift displayed value 1-15 places to the right [>]"
 msgstr "نقل القيمة المعروضة 15 خانة لليمين [>]"
 
-#: ../glade/gcalctool.glade.h:291
+#: ../glade/gcalctool.glade.h:290
 msgid "Shift left"
 msgstr "نقل لليسار"
 
-#: ../glade/gcalctool.glade.h:292
+#: ../glade/gcalctool.glade.h:291
 msgid "Shift right"
 msgstr "نقل لليمين"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:296
+#: ../glade/gcalctool.glade.h:295
 msgid "Show Bit Editor"
 msgstr "أعرض محرر البتات"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:300
+#: ../glade/gcalctool.glade.h:299
 msgid "Show Bit _Editor"
 msgstr "أعرض محرر ال_بتات"
 
-#: ../glade/gcalctool.glade.h:301
+#: ../glade/gcalctool.glade.h:300
 msgid "Show T_housands Separator"
 msgstr "اظهر ال_فواصل الألفية"
 
-#: ../glade/gcalctool.glade.h:302
+#: ../glade/gcalctool.glade.h:301
 msgid "Show _Trailing Zeroes"
 msgstr "اظهر الأ_صفار الذيلية"
 
 #. When the bit editor is visible, there will be two rows of ones
 #. and zeroes shown. When the number being displayed in
 #. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:306
+#: ../glade/gcalctool.glade.h:305
 msgid "Show bit editor"
 msgstr "أعرض محرر البتات"
 
-#: ../glade/gcalctool.glade.h:307
+#: ../glade/gcalctool.glade.h:306
 msgid "Show help contents"
 msgstr "إظهار محتويات المساعدة"
 
-#: ../glade/gcalctool.glade.h:308
+#: ../glade/gcalctool.glade.h:307
 msgid "Show memory registers"
 msgstr "أظهر سجلات الذاكرة"
 
-#: ../glade/gcalctool.glade.h:309
+#: ../glade/gcalctool.glade.h:308
 msgid "Show the About Gcalctool dialog"
 msgstr "إظهار حوار حول."
 
-#: ../glade/gcalctool.glade.h:310
+#: ../glade/gcalctool.glade.h:309
 msgid "Show thousands separator"
 msgstr "اظهر الفواصل الألفية"
 
-#: ../glade/gcalctool.glade.h:311
+#: ../glade/gcalctool.glade.h:310
 msgid "Show trailing zeroes"
 msgstr "اظهر الأصفار الذيلية"
 
-#: ../glade/gcalctool.glade.h:312
+#: ../glade/gcalctool.glade.h:311
 msgid "Significant _places:"
 msgstr "الأرقام ا_لكسرية:"
 
-#: ../glade/gcalctool.glade.h:315
+#: ../glade/gcalctool.glade.h:314
 msgid "Sine [K]"
 msgstr "جب"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
 #. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:318
+#: ../glade/gcalctool.glade.h:317
 msgid "Sln"
 msgstr "إخم"
 
-#: ../glade/gcalctool.glade.h:319
+#: ../glade/gcalctool.glade.h:318
 msgid "Square"
 msgstr "المربع"
 
-#: ../glade/gcalctool.glade.h:320
+#: ../glade/gcalctool.glade.h:319
 msgid "Square [@]"
 msgstr "الجذر التربيعي"
 
-#: ../glade/gcalctool.glade.h:321
+#: ../glade/gcalctool.glade.h:320
 msgid "Square root"
 msgstr "الجذر التربيعي"
 
-#: ../glade/gcalctool.glade.h:322
+#: ../glade/gcalctool.glade.h:321
 msgid "Square root [s]"
 msgstr "الجذر التربيعي [s]"
 
-#: ../glade/gcalctool.glade.h:323
+#: ../glade/gcalctool.glade.h:322
 msgid "Start group of calculations [(]"
 msgstr "ابدأ مجموعة حسابات [(]"
 
 #. Store to register
-#: ../glade/gcalctool.glade.h:325
+#: ../glade/gcalctool.glade.h:324
 msgid "Sto"
 msgstr "حفظ"
 
-#: ../glade/gcalctool.glade.h:326
+#: ../glade/gcalctool.glade.h:325
 msgid "Store displayed value in memory register [S]"
 msgstr "احفظ القيمة المعروضة في سجل الذاكرة"
 
-#: ../glade/gcalctool.glade.h:327
+#: ../glade/gcalctool.glade.h:326
 msgid "Store to register"
 msgstr "احفظ في السجل"
 
-#: ../glade/gcalctool.glade.h:328
+#: ../glade/gcalctool.glade.h:327
 msgid "Straight-line depreciation"
 msgstr "تخفيض الخط المستقيم"
 
-#: ../glade/gcalctool.glade.h:329
+#: ../glade/gcalctool.glade.h:328
 msgid "Straight-line depreciation [l]"
 msgstr "تخفيض الخط المستقيم"
 
-#: ../glade/gcalctool.glade.h:330
+#: ../glade/gcalctool.glade.h:329
 msgid "Subtract"
 msgstr "اطرح"
 
-#: ../glade/gcalctool.glade.h:331
+#: ../glade/gcalctool.glade.h:330
 msgid "Subtract [-]"
 msgstr "اطرح [-]"
 
-#: ../glade/gcalctool.glade.h:332
+#: ../glade/gcalctool.glade.h:331
 msgid "Sum-of-the years'-digits depreciation"
 msgstr "جمع إنتقاص السنة الرقمي"
 
-#: ../glade/gcalctool.glade.h:333
+#: ../glade/gcalctool.glade.h:332
 msgid "Sum-of-the years'-digits depreciation [y]"
 msgstr "جمع إنتقاص السنة الرقمي [y]"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 #. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
 #. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:337
+#: ../glade/gcalctool.glade.h:336
 msgid "Syd"
 msgstr "جسر"
 
-#: ../glade/gcalctool.glade.h:340
+#: ../glade/gcalctool.glade.h:339
 msgid "Tangent [L]"
 msgstr "ظل"
 
-#: ../glade/gcalctool.glade.h:341
+#: ../glade/gcalctool.glade.h:340
 msgid "Ten to the x"
 msgstr "عشرة للقوة س"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
 #. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:344
+#: ../glade/gcalctool.glade.h:343
 msgid "Term"
 msgstr "عبارة"
 
-#: ../glade/gcalctool.glade.h:345
+#: ../glade/gcalctool.glade.h:344
 msgid "Undo"
 msgstr "تراجع"
 
-#: ../glade/gcalctool.glade.h:346
-msgid "Use Arithmetic Precedence"
-msgstr "استعمل الأولوية الحسابية"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "Use Left-right Precedence"
-msgstr "استخدم أولوية من اليسار إلى اليمين"
-
-#: ../glade/gcalctool.glade.h:348
+#: ../glade/gcalctool.glade.h:345
 msgid "User-defined functions"
 msgstr "الدوال المحددة من طرف المستخدم"
 
-#: ../glade/gcalctool.glade.h:349
+#: ../glade/gcalctool.glade.h:346
 msgid "User-defined functions [F]"
 msgstr "الدوال المحددة من طرف المستخدم [F]"
 
-#: ../glade/gcalctool.glade.h:350
+#: ../glade/gcalctool.glade.h:347
 msgid "X to the y"
 msgstr "ص للقوة س"
 
-#: ../glade/gcalctool.glade.h:351
+#: ../glade/gcalctool.glade.h:348
 msgid "XNOR"
 msgstr "أو حصري مقلوب"
 
-#: ../glade/gcalctool.glade.h:352
+#: ../glade/gcalctool.glade.h:349
 msgid "XOR"
 msgstr "أو حصري"
 
-#: ../glade/gcalctool.glade.h:353
+#: ../glade/gcalctool.glade.h:350
 msgid "_0 significant places"
 msgstr "_0 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:354
+#: ../glade/gcalctool.glade.h:351
 msgid "_1 place"
 msgstr "_1 مكان"
 
-#: ../glade/gcalctool.glade.h:355
+#: ../glade/gcalctool.glade.h:352
 msgid "_1 significant place"
 msgstr "_1 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:356
+#: ../glade/gcalctool.glade.h:353
 msgid "_2 places"
 msgstr "_2 أماكن"
 
-#: ../glade/gcalctool.glade.h:357
+#: ../glade/gcalctool.glade.h:354
 msgid "_2 significant places"
 msgstr "_2 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:358
+#: ../glade/gcalctool.glade.h:355
 msgid "_3 places"
 msgstr "_3 أماكن"
 
-#: ../glade/gcalctool.glade.h:359
+#: ../glade/gcalctool.glade.h:356
 msgid "_3 significant places"
 msgstr "_3 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:360
+#: ../glade/gcalctool.glade.h:357
 msgid "_4 places"
 msgstr "_4 أماكن"
 
-#: ../glade/gcalctool.glade.h:361
+#: ../glade/gcalctool.glade.h:358
 msgid "_4 significant places"
 msgstr "_4 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:362
+#: ../glade/gcalctool.glade.h:359
 msgid "_5 places"
 msgstr "_5 أماكن"
 
-#: ../glade/gcalctool.glade.h:363
+#: ../glade/gcalctool.glade.h:360
 msgid "_5 significant places"
 msgstr "_5 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:364
+#: ../glade/gcalctool.glade.h:361
 msgid "_6 places"
 msgstr "_6 أماكن"
 
-#: ../glade/gcalctool.glade.h:365
+#: ../glade/gcalctool.glade.h:362
 msgid "_6 significant places"
 msgstr "_ أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:366
+#: ../glade/gcalctool.glade.h:363
 msgid "_7 places"
 msgstr "_7 أماكن"
 
-#: ../glade/gcalctool.glade.h:367
+#: ../glade/gcalctool.glade.h:364
 msgid "_7 significant places"
 msgstr "_7 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:368
+#: ../glade/gcalctool.glade.h:365
 msgid "_8 places"
 msgstr "_8 أماكن"
 
-#: ../glade/gcalctool.glade.h:369
+#: ../glade/gcalctool.glade.h:366
 msgid "_8 significant places"
 msgstr "_8 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:370
+#: ../glade/gcalctool.glade.h:367
 msgid "_9 places"
 msgstr "_9 أماكن"
 
-#: ../glade/gcalctool.glade.h:371
+#: ../glade/gcalctool.glade.h:368
 msgid "_9 significant places"
 msgstr "9 أرقام كسرية"
 
-#: ../glade/gcalctool.glade.h:372
+#: ../glade/gcalctool.glade.h:369
 msgid "_Advanced"
 msgstr "م_تقدم"
 
-#: ../glade/gcalctool.glade.h:373
+#: ../glade/gcalctool.glade.h:370
 msgid "_Basic"
 msgstr "_أساسي"
 
-#: ../glade/gcalctool.glade.h:374
+#: ../glade/gcalctool.glade.h:371
 msgid "_Bin"
 msgstr "_ثنائي"
 
-#: ../glade/gcalctool.glade.h:375
+#: ../glade/gcalctool.glade.h:372
 msgid "_Calculator"
 msgstr "آ_لة حاسبة"
 
-#: ../glade/gcalctool.glade.h:376
+#: ../glade/gcalctool.glade.h:373
 msgid "_Contents"
 msgstr "م_حتويات"
 
-#: ../glade/gcalctool.glade.h:377
+#: ../glade/gcalctool.glade.h:374
 msgid "_Dec"
 msgstr "_عشري"
 
-#: ../glade/gcalctool.glade.h:378
+#: ../glade/gcalctool.glade.h:375
 msgid "_Edit"
 msgstr "_تحرير"
 
-#: ../glade/gcalctool.glade.h:379
+#: ../glade/gcalctool.glade.h:376
 msgid "_Financial"
 msgstr "_مصرفي"
 
-#: ../glade/gcalctool.glade.h:380
+#: ../glade/gcalctool.glade.h:377
 msgid "_Fix"
 msgstr "_تقريبي"
 
-#: ../glade/gcalctool.glade.h:381
+#: ../glade/gcalctool.glade.h:378
 msgid "_Help"
 msgstr "م_ساعدة"
 
-#: ../glade/gcalctool.glade.h:382
+#: ../glade/gcalctool.glade.h:379
 msgid "_Insert"
 msgstr "_ادرج"
 
-#: ../glade/gcalctool.glade.h:383
+#: ../glade/gcalctool.glade.h:380
 msgid "_Insert ASCII value..."
 msgstr "ا_دخل قيمة بترميز ASCII..."
 
-#: ../glade/gcalctool.glade.h:384
+#: ../glade/gcalctool.glade.h:381
 msgid "_Inv"
 msgstr "_Inv"
 
-#: ../glade/gcalctool.glade.h:385
-msgid "_Left-to-right Precedence"
-msgstr "أولويّة من الي_سار إلى اليمين"
-
-#: ../glade/gcalctool.glade.h:386
+#: ../glade/gcalctool.glade.h:382
 msgid "_Memory Registers"
 msgstr "_سجلات الذاكرة"
 
-#: ../glade/gcalctool.glade.h:387
+#: ../glade/gcalctool.glade.h:383
 msgid "_Oct"
 msgstr "_ثماني"
 
-#: ../glade/gcalctool.glade.h:390
+#: ../glade/gcalctool.glade.h:386
 msgid "_Radians"
 msgstr "الأق_طار"
 
-#: ../glade/gcalctool.glade.h:391
+#: ../glade/gcalctool.glade.h:387
 msgid "_Redo"
 msgstr "_إعادة"
 
-#: ../glade/gcalctool.glade.h:392
+#: ../glade/gcalctool.glade.h:388
 msgid "_Sci"
 msgstr "_علمي"
 
-#: ../glade/gcalctool.glade.h:393
+#: ../glade/gcalctool.glade.h:389
 msgid "_Scientific"
 msgstr "_علميّ"
 
-#: ../glade/gcalctool.glade.h:394
+#: ../glade/gcalctool.glade.h:390
 msgid "_Set"
 msgstr "_حدّد"
 
-#: ../glade/gcalctool.glade.h:395
+#: ../glade/gcalctool.glade.h:391
 msgid "_Undo"
 msgstr "_تراجع"
 
-#: ../glade/gcalctool.glade.h:396
+#: ../glade/gcalctool.glade.h:392
 msgid "_View"
 msgstr "_عرض"
 
-#: ../glade/gcalctool.glade.h:397
+#: ../glade/gcalctool.glade.h:393
 msgid "e to the power of displayed value [{]"
 msgstr "هـ أس العدد المعروض"
 
 #. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:399
+#: ../glade/gcalctool.glade.h:395
 msgid "e<sup>x</sup>"
 msgstr "هـ<sup>س</sup>"
 
-#: ../glade/gcalctool.glade.h:400
+#: ../glade/gcalctool.glade.h:396
 msgid "ex"
 msgstr "ex"
 
 #. This is accessible name for memory register 0.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
+#: ../glade/gcalctool.glade.h:400
 msgid "register 0"
 msgstr "register 0"
 
 #. This is accessible name for memory register 1.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
+#: ../glade/gcalctool.glade.h:404
 msgid "register 1"
 msgstr "register 1"
 
 #. This is accessible name for memory register 2.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
+#: ../glade/gcalctool.glade.h:408
 msgid "register 2"
 msgstr "register 2"
 
 #. This is accessible name for memory register 3.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
+#: ../glade/gcalctool.glade.h:412
 msgid "register 3"
 msgstr "register 3"
 
 #. This is accessible name for memory register 4.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
+#: ../glade/gcalctool.glade.h:416
 msgid "register 4"
 msgstr "register 4"
 
 #. This is accessible name for memory register 5.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
+#: ../glade/gcalctool.glade.h:420
 msgid "register 5"
 msgstr "register 5"
 
 #. This is accessible name for memory register 6.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
+#: ../glade/gcalctool.glade.h:424
 msgid "register 6"
 msgstr "register 6"
 
 #. This is accessible name for memory register 7.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
+#: ../glade/gcalctool.glade.h:428
 msgid "register 7"
 msgstr "register 7"
 
 #. This is accessible name for memory register 8.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
+#: ../glade/gcalctool.glade.h:432
 msgid "register 8"
 msgstr "register 8"
 
 #. This is accessible name for memory register 9.  It is spoken
 #. by screen readers such as Orca, to help people who are
 #. blind or have low vision.
-#: ../glade/gcalctool.glade.h:440
+#: ../glade/gcalctool.glade.h:436
 msgid "register 9"
 msgstr "register 9"
 
-#: ../glade/gcalctool.glade.h:441
+#: ../glade/gcalctool.glade.h:437
 msgid "x2"
 msgstr "س2"
 
-#: ../glade/gcalctool.glade.h:442
+#: ../glade/gcalctool.glade.h:438
 msgid "xy"
 msgstr "س‌ع"
 
 #. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:444
+#: ../glade/gcalctool.glade.h:440
 msgid "±"
 msgstr "±"
 
 #. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:446
+#: ../glade/gcalctool.glade.h:442
 msgid "×"
 msgstr "×"
 
 #. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:448
+#: ../glade/gcalctool.glade.h:444
 msgid "÷"
 msgstr "÷"
 
 #. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:450
+#: ../glade/gcalctool.glade.h:446
 msgid "−"
 msgstr "−"
 
 #. This is a square root sign
-#: ../glade/gcalctool.glade.h:452
+#: ../glade/gcalctool.glade.h:448
 msgid "√"
 msgstr "√"
 
-#~ msgid "e"
-#~ msgstr "هـ"
+#~ msgid "Error, operands must be integers"
+#~ msgstr "خطأ, يجب أن يكون المعملان صحيحين"
 
-#~ msgid "Show Bitcalculating _Extension"
-#~ msgstr "اعرض ا_متداد حساب الثنائيات"
+#~ msgid "Cleared display, prefix without an operator is not allowed"
+#~ msgstr "تم مسح الشاشة, عدد أولي من دون عملية غير مسموح"
 
-#~ msgid "Show bitcalculating extension"
-#~ msgstr "اعرض امتداد حساب الثنائيات"
+#~ msgid "Malformed parenthesis expression"
+#~ msgstr "جملة بأقواس غير صالحة"
 
-#~ msgid "  "
-#~ msgstr "  "
+#~ msgid "%s: invalid syntax mode [%s]\n"
+#~ msgstr "%s: نمط عرض غير صحيح [%s]\n"
 
-#~ msgid " 0"
-#~ msgstr " 0"
+#~ msgid "Activated no operator precedence mode"
+#~ msgstr "تم تفعيل نسق عدم السماح بسبق العمليات"
 
-#, fuzzy
-#~ msgid "Retreive from register"
-#~ msgstr "استخرج من السجل"
+#~ msgid "Activated expression mode with operator precedence"
+#~ msgstr "تم تفعيل نسق العبارة مع سبق العمليات"
 
-#~ msgid "32 bit unsigned integer"
-#~ msgstr "رقم صحيح موجب بسعة 32 بت"
+#~ msgid "Clipboard contained malformed calculation"
+#~ msgstr "تحتوي ذاكرة النصوص على عملية غير صالحة"
 
-#, fuzzy
-#~ msgid "Base 10 Log"
-#~ msgstr "لوغاريتم أساس 10"
+#~ msgid "A_rithmetic Precedence"
+#~ msgstr "الأولوية ال_حسابية"
 
-#~ msgid "Exponential"
-#~ msgstr "أسّي"
+#~ msgid "Use Arithmetic Precedence"
+#~ msgstr "استعمل الأولوية الحسابية"
 
-#~ msgid "Log"
-#~ msgstr "لغ"
+#~ msgid "Use Left-right Precedence"
+#~ msgstr "استخدم أولوية من اليسار إلى اليمين"
 
-#~ msgid "Modulus Division"
-#~ msgstr "القسمة الباقية"
-
-#~ msgid "Natural log"
-#~ msgstr "لوغاريتم طبيعي"
-
-#~ msgid "_Other (10) ..."
-#~ msgstr "آ_خر (10) ..."
-
-#~ msgid "Expression"
-#~ msgstr "تعبير"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "Chs"
-#~ msgstr "جتا"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-#~ msgid "Sqrt"
-#~ msgstr "جذر ت"
-
-#~ msgid "Recip"
-#~ msgstr "مقلوب"
-
-#~ msgid "^2"
-#~ msgstr "^2"
-
-#~ msgid "&amp;16"
-#~ msgstr "&amp;16"
-
-#~ msgid "&amp;32"
-#~ msgstr "&amp;32"
-
-#~ msgid " Mod "
-#~ msgstr "باقي"
-
-#~ msgid "e^"
-#~ msgstr "هـ^"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "!"
-#~ msgstr "!"
-
-#, fuzzy
-#~ msgid " AND "
-#~ msgstr "و"
-
-#~ msgid "~"
-#~ msgstr "~"
-
-#, fuzzy
-#~ msgid " XOR "
-#~ msgstr "أو"
-
-#, fuzzy
-#~ msgid " XNOR "
-#~ msgstr "أو"
-
-#~ msgid "Numeric stack error"
-#~ msgstr "خطأ رقمي للكومة"
-
-#~ msgid "Operand stack error"
-#~ msgstr "خطأ في طرف بالعملية الرياضية"
-
-#~ msgid "calculator"
-#~ msgstr "آلة حاسبة"
-
-#~ msgid "%s: invalid bitcalc choice [%s]\n"
-#~ msgstr "%s: خيار حساب ثنائي غير صحيح [%s]\n"
-
-#~ msgid "1 place"
-#~ msgstr "1 مكان"
-
-#~ msgid "2 places"
-#~ msgstr "2 أماكن"
-
-#~ msgid "3 places"
-#~ msgstr "3 أماكن"
-
-#~ msgid "4 places"
-#~ msgstr "4 أماكن"
-
-#~ msgid "5 places"
-#~ msgstr "5 أماكن"
-
-#~ msgid "6 places"
-#~ msgstr "6 أماكن"
-
-#~ msgid "7 places"
-#~ msgstr "7 أماكن"
-
-#~ msgid "8 places"
-#~ msgstr "8 أماكن"
-
-#~ msgid "9 places"
-#~ msgstr "9 أماكن"
-
-#~ msgid "0 significant places"
-#~ msgstr "0 أرقام كسرية"
-
-#~ msgid "1 significant place"
-#~ msgstr "1 أرقام كسرية"
-
-#~ msgid "2 significant places"
-#~ msgstr "2 أرقام كسرية"
-
-#~ msgid "3 significant places"
-#~ msgstr "3 أرقام كسرية"
-
-#~ msgid "4 significant places"
-#~ msgstr "4 أرقام كسرية"
-
-#~ msgid "5 significant places"
-#~ msgstr "5 أرقام كسرية"
-
-#~ msgid "6 significant places"
-#~ msgstr "6 أرقام كسرية"
-
-#~ msgid "7 significant places"
-#~ msgstr "7 أرقام كسرية"
-
-#~ msgid "8 significant places"
-#~ msgstr "8 أرقام كسرية"
-
-#~ msgid "9 significant places"
-#~ msgstr "9 أرقام كسرية"
-
-#~ msgid "Set other precision"
-#~ msgstr "حدد دقة الآخر"
-
-#~ msgid "Note:"
-#~ msgstr "ملاحظة:"
-
-#~ msgid "Accuracy value out of range"
-#~ msgstr "قيمة الدقة خارج المجال"
-
-#~ msgid "Or"
-#~ msgstr "أو"
-
-#~ msgid "And"
-#~ msgstr "و"
-
-#~ msgid "Not"
-#~ msgstr "لا"
-
-#~ msgid "Xor"
-#~ msgstr "Xor"
-
-#~ msgid " Xor "
-#~ msgstr "س أو"
-
-#~ msgid "Xnor"
-#~ msgstr "Xnor"
-
-#~ msgid " Xnor "
-#~ msgstr "لا أو"
-
-#~ msgid ""
-#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-#~ msgstr "ضبط درجة الدقّة من 0 إلى 9%d خانات رقمية. محددة حاليا بـ  %d."
-
-#~ msgid "Perform calculations"
-#~ msgstr "تأدية حسابات"
+#~ msgid "_Left-to-right Precedence"
+#~ msgstr "أولويّة من الي_سار إلى اليمين"
