@@ -1,3 +1,4 @@
+
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
@@ -31,7 +32,7 @@
 #include "ce_parser.h" // For ce_parse()
 #include "register.h"
 
-static struct exprm_state *
+static GCDisplayState *
 get_state(GCDisplay *display)
 {
     return &(display->h.e[display->h.current]);
@@ -227,7 +228,7 @@ display_set_number(GCDisplay *display, int *MPval)
 void
 display_set_string(GCDisplay *display, const char *value, int cursor)
 {
-    struct exprm_state *e;
+    GCDisplayState *e;
     
     e = get_state(display);
     free(e->expression);
@@ -238,7 +239,7 @@ display_set_string(GCDisplay *display, const char *value, int cursor)
 void
 display_set_cursor(GCDisplay *display, int cursor)
 {
-    struct exprm_state *e;
+    GCDisplayState *e;
 
     e = get_state(display);
     e->cursor = cursor;
@@ -251,9 +252,9 @@ display_set_error(GCDisplay *display, const char *message)
 }
 
 static void
-copy_state(struct exprm_state *dst, struct exprm_state *src)
+copy_state(GCDisplayState *dst, GCDisplayState *src)
 {
-    MEMCPY(dst, src, sizeof(struct exprm_state));
+    MEMCPY(dst, src, sizeof(GCDisplayState));
     dst->expression = strdup(src->expression);
 }
 
@@ -367,7 +368,7 @@ void
 display_backspace(GCDisplay *display)
 {
     char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY], *t;
-    struct exprm_state *e = get_state(display);
+    GCDisplayState *e = get_state(display);
     int i, MP_reg[MP_SIZE], cursor;
     
     cursor = display_get_cursor(display);
@@ -434,7 +435,7 @@ display_refresh(GCDisplay *display)
 {
     int i, MP_reg[MP_SIZE];
     char localized[MAX_LOCALIZED], *str, reg[3], *t;
-    struct exprm_state *e;
+    GCDisplayState *e;
     char x[MAX_LOCALIZED], xx[MAX_LOCALIZED], ans[MAX_LOCALIZED];
     int cursor = display_get_cursor(display);
 
@@ -496,7 +497,7 @@ display_init(GCDisplay *display)
 {
     int i;
 
-    memset(&(display->h), 0, sizeof(struct exprm_state_history)); /* clear expression mode state history */
+    memset(&(display->h), 0, sizeof(GCDisplayHistory)); /* clear expression mode state history */
     for (i = 0; i < UNDO_HISTORY_LENGTH; i++)
         display->h.e[i].expression = strdup("");
 }

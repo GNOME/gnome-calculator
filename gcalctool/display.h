@@ -30,24 +30,24 @@
 #define MAX_DISPLAY 512
 
 /* Expression mode state */
-struct exprm_state {
+typedef struct {
     int ans[MP_SIZE];      /* Previously calculated answer */
     char *expression;      /* Expression entered by user */
     int cursor;
-};
+} GCDisplayState;
 
 /* Circular list of Arithmetic Precedence Mode states*/ 
-struct exprm_state_history {
+typedef struct {
   unsigned int begin;
   unsigned int end;
   unsigned int current;
-  struct exprm_state e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
-};
+  GCDisplayState e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
+} GCDisplayHistory;
 
 typedef struct
 {
-    char display[MAX_DISPLAY];             /* Current calculator display. */
-    struct exprm_state_history h;      /* History of expression mode states */
+    char display[MAX_DISPLAY];  /* Current calculator display. */
+    GCDisplayHistory h;         /* History of expression mode states */
 } GCDisplay;
 
 void display_init(GCDisplay *);
