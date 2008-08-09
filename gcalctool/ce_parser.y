@@ -25,7 +25,7 @@
 #include <math.h>
 #include <errno.h>
 #include "calctool.h"
-#include "functions.h"
+#include "register.h"
 #include "display.h"
 #include "mpmath.h"
 #include "parser.h"
