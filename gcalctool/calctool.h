@@ -171,8 +171,6 @@ struct button {
 };
 
 struct calcVars {                      /* Calctool variables and options. */
-    int current;                       /* Current button/character pressed. */
-  
     char *appname;                     /* Application name for resources. */
     char *home;                        /* Pathname for users home directory. */
     char *progname;                    /* Name of this program. */

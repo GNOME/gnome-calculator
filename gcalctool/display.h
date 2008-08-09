@@ -53,15 +53,14 @@ void display_init(GCDisplay *);
 
 void display_reset(GCDisplay *);
 void localize_expression(char *, const char *, int, int *);
-void display_clear(GCDisplay *, int);
-void display_refresh(GCDisplay *, int);
+void display_clear(GCDisplay *);
+void display_refresh(GCDisplay *);
 
-const char *display_get_text(GCDisplay *);
 int *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
 void display_set_number(GCDisplay *, int *);
-void display_set_string(GCDisplay *, const char *);
+void display_set_string(GCDisplay *, const char *, int);
 void display_set_cursor(GCDisplay *, int);
 void display_set_error(GCDisplay *, const char *);
 
@@ -71,10 +70,10 @@ void display_pop(GCDisplay *);
 void display_unpop(GCDisplay *);
 gboolean display_is_undo_step(GCDisplay *display);
 
-int display_insert(GCDisplay *, const char *, int);
-int display_backspace(GCDisplay *, int cursor);
-int display_delete(GCDisplay *, int);
-int display_surround(GCDisplay *, const char *, const char *, int);
+void display_insert(GCDisplay *, const char *);
+void display_backspace(GCDisplay *);
+void display_delete(GCDisplay *);
+void display_surround(GCDisplay *, const char *, const char *);
 
 gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);

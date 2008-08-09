@@ -179,24 +179,24 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 
 
 void
-display_clear(GCDisplay *display, int initialise)
+display_clear(GCDisplay *display)
 {
-    display_set_string(display, "");
+    display_set_string(display, "", -1);
 }
 
 
 void
 display_reset(GCDisplay *display)
 {
-    v->error             = 0;         /* Currently no display error. */
+    v->error = 0;         /* Currently no display error. */
     mp_set_from_integer(0, v->MPresult);   /* No previous result yet. */
     mp_set_from_integer(0, v->MPdisp_val);         
     mp_set_from_integer(0, v->MPlast_input);
   
-    display_clear(display, TRUE);
+    display_clear(display);
 }
 
-const char *
+static const char *
 display_get_text(GCDisplay *display)
 {
     return get_state(display)->expression;
@@ -223,13 +223,14 @@ display_set_number(GCDisplay *display, int *MPval)
 }
 
 void
-display_set_string(GCDisplay *display, const char *value)
+display_set_string(GCDisplay *display, const char *value, int cursor)
 {
     struct exprm_state *e;
     
     e = get_state(display);
     free(e->expression);
     e->expression = strdup(value);
+    e->cursor = cursor;
 }
 
 void
@@ -323,7 +324,7 @@ void display_pop(GCDisplay *display)
     }
     update_undo_redo_button_sensitivity(display);
     
-    display_refresh(display, display_get_cursor(display));
+    display_refresh(display);
 }
 
 void
@@ -344,10 +345,11 @@ display_is_undo_step(GCDisplay *display)
     return(display->h.current != display->h.begin);
 }
 
-int
-display_insert(GCDisplay *display, const char *text, int cursor)
+void
+display_insert(GCDisplay *display, const char *text)
 {
     char buf[MAX_DISPLAY], *currentText;
+    int cursor = display_get_cursor(display);
     
     if (cursor < 0) {
         SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
@@ -356,17 +358,17 @@ display_insert(GCDisplay *display, const char *text, int cursor)
         SNPRINTF(buf, MAX_DISPLAY, "%.*s%s%s", cursor, currentText, text, currentText + cursor);
         cursor += strlen(text);
     }
-    display_set_string(display, buf);
-    
-    return cursor;
+    display_set_string(display, buf, cursor);
 }
 
-int
-display_backspace(GCDisplay *display, int cursor)
+void
+display_backspace(GCDisplay *display)
 {
     char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY], *t;
     struct exprm_state *e = get_state(display);
-    int i, MP_reg[MP_SIZE];
+    int i, MP_reg[MP_SIZE], cursor;
+    
+    cursor = display_get_cursor(display);
 
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
@@ -383,8 +385,8 @@ display_backspace(GCDisplay *display, int cursor)
                     make_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
                     SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
-                    display_set_string(display, buf);
-                    return cursor - 1;
+                    display_set_string(display, buf, cursor - 1);
+                    return;
                 }
             }
         }
@@ -394,48 +396,45 @@ display_backspace(GCDisplay *display, int cursor)
         t = ui_get_display();
         SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor - 1, t, t + cursor);
     } else {
-        return cursor; /* At the start of the line */
+        return; /* At the start of the line */
     }
 
-    display_set_string(display, buf);
-    return cursor - 1;
+    display_set_string(display, buf, cursor - 1);
 }
 
-int
-display_delete(GCDisplay *display, int cursor)
+void
+display_delete(GCDisplay *display)
 {
     char buf[MAX_DISPLAY] = "", *text;
+    int cursor = display_get_cursor(display);    
     
     if (cursor >= 0) {
         text = ui_get_display();
         SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor, text, text + cursor + 1);
-        display_set_string(display, buf);
+        display_set_string(display, buf, cursor);
     }
-
-    return cursor;
 }
 
-int
-display_surround(GCDisplay *display, const char *prefix, const char *suffix, int cursor)
+void
+display_surround(GCDisplay *display, const char *prefix, const char *suffix)
 {
     char buffer[MAX_DISPLAY];
     
     SNPRINTF(buffer, MAX_DISPLAY, "%s%s%s", prefix, display_get_text(display), suffix);
-    display_set_string(display, buffer);
-    
-    return cursor;
+    display_set_string(display, buffer, -1);
 }
 
 /* In arithmetic precedence mode this routine should be called to redraw 
  * the display.
  */
 void
-display_refresh(GCDisplay *display, int cursor)
+display_refresh(GCDisplay *display)
 {
     int i, MP_reg[MP_SIZE];
     char localized[MAX_LOCALIZED], *str, reg[3], *t;
     struct exprm_state *e;
     char x[MAX_LOCALIZED], xx[MAX_LOCALIZED], ans[MAX_LOCALIZED];
+    int cursor = display_get_cursor(display);
 
     e = get_state(display);
     if (display_is_empty(display)) {

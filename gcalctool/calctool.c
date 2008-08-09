@@ -602,7 +602,6 @@ init_state(void)
     mpset(&acc, &size, &size);
 
     v->error       = 0;            /* No calculator error initially. */    
-    v->current    = KEY_CALCULATE;
 
     init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
     init_constant(1, "1.4142135623");          /* square root of 2 */

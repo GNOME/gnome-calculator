@@ -104,19 +104,6 @@ do_accuracy(int value)     /* Set display accuracy. */
 
 
 static void
-exp_negate(void)
-{
-    display_surround(&v->display, "-(", ")", 0); // FIXME: Cursor
-}
-
-
-static void
-exp_inv(void)
-{
-    display_surround(&v->display, "1/(", ")", 0); // FIXME: Cursor
-}
-
-static void
 do_function(int index)      /* Perform a user defined function. */
 {
     char *str;
@@ -147,7 +134,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
     }
     else {
         calc_shift(MPval, display_get_answer(&v->display), count);
-        display_set_string(&v->display, "Ans");
+        display_set_string(&v->display, "Ans", -1);
     }
 
     syntaxdep_show_display();
@@ -158,7 +145,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 void
 do_clear(void)
 {
-    display_clear(&v->display, TRUE);
+    display_clear(&v->display);
     if (v->error) {
         ui_set_display("", -1);
     }
@@ -179,7 +166,7 @@ do_base(enum base_type b)
                          "gtk-dialog-error");
     } else {
         mp_set_from_mp(MP, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans");
+        display_set_string(&v->display, "Ans", -1);
     }
     v->base = b;
     set_resource(R_BASE, Rbstr[(int) v->base]);
@@ -187,7 +174,8 @@ do_base(enum base_type b)
     ui_make_registers();
     clear_undo_history();
 
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
@@ -205,8 +193,8 @@ do_exchange(int index)
         mp_set_from_mp(v->MPmvals[index], MPtemp);
         mp_set_from_mp(MPexpr, v->MPmvals[index]);
         mp_set_from_mp(MPtemp, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans");
-        display_refresh(&v->display, -1);
+        display_set_string(&v->display, "Ans", -1);
+        display_refresh(&v->display);
         ui_make_registers();
     }
 
@@ -228,12 +216,13 @@ do_numtype(enum num_type n)   /* Set number display type. */
                          "gtk-dialog-error");
     } else {
         mp_set_from_mp(MP, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans");
+        display_set_string(&v->display, "Ans", -1);
         ui_make_registers();
     }
     clear_undo_history();
 
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
@@ -286,7 +275,8 @@ do_rcl_reg(int reg, int value[MP_SIZE])
 void
 syntaxdep_show_display(void)
 {
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
@@ -306,14 +296,14 @@ do_expression(int function, int arg, int cursor)
     /* Starting a number after a calculation clears the display */
     if (display_is_result(&v->display)) {
         if (buttons[function].flags & NUMBER) {
-            display_set_string(&v->display, "");
+            display_clear(&v->display);
         }
     }
 
     switch (buttons[function].id) {
         case KEY_CLEAR:
         case KEY_CLEAR_ENTRY:
-            display_clear(&v->display, FALSE);
+            display_clear(&v->display);
             ui_set_error_state(FALSE);
             MPstr_to_num("0", DEC, ans);
             break;
@@ -336,35 +326,32 @@ do_expression(int function, int arg, int cursor)
 
         case KEY_EXCHANGE:
             do_exchange(arg);
-            cursor = -1;
             return;
 
         case KEY_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
-            cursor = display_insert(&v->display, buf, cursor);
+            display_insert(&v->display, buf);
             break;
 
         case KEY_CONSTANT:
             make_number(buf, MAXLINE, v->MPcon_vals[arg], v->base, FALSE);
-            cursor = display_insert(&v->display, buf, cursor);
+            display_insert(&v->display, buf);
             break;
 
         case KEY_BACKSPACE:
-            cursor = display_backspace(&v->display, cursor);
+            display_backspace(&v->display);
             break;
         
         case KEY_DELETE:
-            cursor = display_delete(&v->display, cursor);
+            display_delete(&v->display);
             break;
 
         case KEY_CHANGE_SIGN:
-            exp_negate();
-            cursor = -1;
+            display_surround(&v->display, "-(", ")");
             break;
 
         case KEY_RECIPROCAL:
-            exp_inv();
-            cursor = -1;
+            display_surround(&v->display, "1/(", ")");
             break;
 
         case KEY_CALCULATE:
@@ -393,8 +380,7 @@ do_expression(int function, int arg, int cursor)
                 switch (result) {
                     case 0:
                         mp_set_from_mp(MPval, ans);
-                        display_set_string(&v->display, "Ans");
-                        cursor = -1;
+                        display_set_string(&v->display, "Ans", -1);
                         break;
 
                     case -PARSER_ERR_INVALID_BASE:
@@ -427,23 +413,23 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case KEY_NUMERIC_POINT:
-            cursor = display_insert(&v->display, v->radix, cursor);
+            display_insert(&v->display, v->radix);
             break;
 
         default:
             /* If display is a number then perform functions on that number */
             if (buttons[function].flags & (PREFIXOP | FUNC) && display_is_result(&v->display)) {
                 SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
-                display_surround(&v->display, buf, ")", 0); // FIXME: Cursor
+                display_surround(&v->display, buf, ")");
             } else {
                 if (buttons[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
-                    cursor = display_insert(&v->display, buf, cursor);
+                    display_insert(&v->display, buf);
                 } else {
-                    cursor = display_insert(&v->display, buttons[function].symname, cursor);
+                    display_insert(&v->display, buttons[function].symname);
                 }
             }
             break;
     }
-    display_refresh(&v->display, cursor);
+    display_refresh(&v->display);
 }

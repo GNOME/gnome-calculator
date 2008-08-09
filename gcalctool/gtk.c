@@ -478,7 +478,7 @@ reset_display(void)
 
     ans = display_get_answer(&v->display);
     MPstr_to_num("0", DEC, ans);
-    display_clear(&v->display, FALSE);
+    display_clear(&v->display);
     display_set_number(&v->display, ans);
 }
 
@@ -524,7 +524,8 @@ ui_set_accuracy(int accuracy)
     set_int_resource(R_ACCURACY, accuracy);
     
     ui_make_registers();
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
     
     /* Hide the manual dialog */
     gtk_widget_hide(X->spframe);
@@ -1645,8 +1646,8 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     number = (double) lval;
 
     mp_set_from_double(number, display_get_answer(&v->display));
-    display_set_string(&v->display, "Ans");
-    display_refresh(&v->display, -1);
+    display_set_string(&v->display, "Ans", -1);
+    display_refresh(&v->display);
 
     return (TRUE);
 }
@@ -2063,8 +2064,10 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     }
     *dstp++ = '\0';
 
-    display_insert(&v->display, (char *) text, get_cursor()); // FIXME: Move out of gtk.c
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, get_cursor()); // FIXME: Move out of gtk.c
+    display_insert(&v->display, (char *) text);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
     free(text);
 }
 
@@ -2112,7 +2115,8 @@ static void
 redo_cb(GtkWidget *widget)
 {
     perform_redo();
-    display_refresh(&v->display, -1);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
