@@ -31,6 +31,8 @@ gcalctool_SOURCES = \
 	parser.c \
 	parser.h \
 	parser_mac.h \
+	register.c \
+	register.h \
 	gtk.c \
 	ui.h \
         unittest.c \

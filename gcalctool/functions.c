@@ -183,32 +183,6 @@ do_sto(int index)
 }
 
 
-/* Return: 0 = success, otherwise failed.
- *
- * TODO: remove hardcoding from reg ranges.
- */
-
-void
-do_sto_reg(int reg, int value[MP_SIZE])
-{
-    if ((reg >= 0) && (reg <= 10))
-        mp_set_from_mp(value, v->MPmvals[reg]);
-}
-
-
-/* Return: 0 = success, otherwise failed.
- *
- * TODO: remove hardcoding from reg ranges.
- */
-
-void
-do_rcl_reg(int reg, int value[MP_SIZE])
-{
-    if ((reg >= 0) && (reg <= 10))
-        mp_set_from_mp(v->MPmvals[reg], value);
-}
-
-
 void
 do_expression(int function, int arg, int cursor)
 {

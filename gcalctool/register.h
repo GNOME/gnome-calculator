@@ -1,7 +1,6 @@
 
 /*  $Header$
  *
- *  Copyright (c) 2004-2008 Sami Pietila
  *  Copyright (c) 2008 Robert Ancell
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -20,9 +19,12 @@
  *  02111-1307, USA.
  */
 
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef REGISTER_H
+#define REGISTER_H
 
-void do_expression(int function, int arg, int cursor);
+#include "mp.h"
 
-#endif /*FUNCTIONS_H*/
+void do_rcl_reg(int reg, int value[MP_SIZE]);
+void do_sto_reg(int reg, int value[MP_SIZE]);
+
+#endif /*REGISTER_H*/

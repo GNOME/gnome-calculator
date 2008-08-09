@@ -29,6 +29,7 @@
 #include "functions.h"
 #include "ui.h"
 #include "ce_parser.h" // For ce_parse()
+#include "register.h"
 
 static struct exprm_state *
 get_state(GCDisplay *display)
