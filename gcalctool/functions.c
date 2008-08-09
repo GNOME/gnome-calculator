@@ -2,6 +2,7 @@
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 2008 Robert Ancell
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,40 +35,6 @@
 #include "display.h"
 #include "ce_parser.h"
 #include "ui.h"
-
-void
-make_exp(char *number, int t[MP_SIZE])
-{
-    int i;
-    char *a = NULL;
-    char *b = NULL;
-
-    int MP_a[MP_SIZE];
-    int MP_b[MP_SIZE];
-
-    assert(number);
-    a = strdup(number);
-    assert(a);
-
-    for (i = 0; !((a[i] == 'e') || (a[i] == 'E')); i++) {
-        assert(a[i]);
-    }
-
-    a[i] = 0;
-    b = &a[i+2];
-
-    MPstr_to_num(a, v->base, MP_a);
-    MPstr_to_num(b, v->base, MP_b);
-    if (a[i+1] == '-') {
-        int MP_c[MP_SIZE];
-        mp_invert_sign(MP_b, MP_c);
-        calc_xtimestenpowx(MP_a, MP_c, t);
-    } else {
-        calc_xtimestenpowx(MP_a, MP_b, t);
-    }
-
-    free(a);
-}
 
 
 static void

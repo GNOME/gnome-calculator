@@ -1,7 +1,8 @@
 
 /*  $Header$
  *
- *  Copyright (C) 2004-2008 Sami Pietila
+ *  Copyright (c) 2004-2008 Sami Pietila
+ *  Copyright (c) 2008 Robert Ancell
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,7 +28,6 @@
 void do_expression(int function, int arg, int cursor);
 
 // FIXME: Not functions
-void make_exp(char *number, int t[MP_SIZE]);
 void do_rcl_reg(int reg, int value[MP_SIZE]);
 void do_sto_reg(int reg, int value[MP_SIZE]);
 

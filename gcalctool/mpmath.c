@@ -1090,6 +1090,41 @@ MPstr_to_num(const char *str, enum base_type base, int *MPval)
 }
 
 
+void
+mp_set_from_string(char *number, int t[MP_SIZE])
+{
+    int i;
+    char *a = NULL;
+    char *b = NULL;
+
+    int MP_a[MP_SIZE];
+    int MP_b[MP_SIZE];
+
+    assert(number);
+    a = strdup(number);
+    assert(a);
+
+    for (i = 0; !((a[i] == 'e') || (a[i] == 'E')); i++) {
+        assert(a[i]);
+    }
+
+    a[i] = 0;
+    b = &a[i+2];
+
+    MPstr_to_num(a, v->base, MP_a);
+    MPstr_to_num(b, v->base, MP_b);
+    if (a[i+1] == '-') {
+        int MP_c[MP_SIZE];
+        mp_invert_sign(MP_b, MP_c);
+        calc_xtimestenpowx(MP_a, MP_c, t);
+    } else {
+        calc_xtimestenpowx(MP_a, MP_b, t);
+    }
+
+    free(a);
+}
+
+
 /* Calculate the factorial of MPval. */
 void
 calc_factorial(int *MPval, int *MPres)

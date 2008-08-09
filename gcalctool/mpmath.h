@@ -78,7 +78,9 @@ is_integer(int MPnum[MP_SIZE]);
 int
 is_natural(int MPnum[MP_SIZE]);
 
+// FIXME: These should be merged together
 void MPstr_to_num(const char *, enum base_type, int *);
+void mp_set_from_string(char *number, int t[MP_SIZE]);
 void make_fixed(char *, int, int *, int, int, int);
 void make_number(char *, int, int *, int, int);
 

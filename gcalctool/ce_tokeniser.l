@@ -105,7 +105,7 @@ return tREG;
 {DEC_NUM}{EXP}{DEC_NUM} {
 if (v->base == HEX) REJECT;
 if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-make_exp(yytext, celval.int_t);
+mp_set_from_string(yytext, celval.int_t);
 return tNUMBER;
 }
 
