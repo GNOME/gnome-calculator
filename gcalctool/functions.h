@@ -24,19 +24,11 @@
 
 #include "calctool.h"
 
-void syntaxdep_show_display(void);
-
-void make_exp(char *number, int t[MP_SIZE]);
-
-void perform_undo(void);
-void perform_redo(void);
-
-void do_base(enum base_type);
 void do_expression(int function, int arg, int cursor);
-void do_clear(void);
-void do_numtype(enum num_type);
-void do_accuracy(int);
-int do_rcl_reg(int reg, int value[MP_SIZE]);
-int do_sto_reg(int reg, int value[MP_SIZE]);
+
+// FIXME: Not functions
+void make_exp(char *number, int t[MP_SIZE]);
+void do_rcl_reg(int reg, int value[MP_SIZE]);
+void do_sto_reg(int reg, int value[MP_SIZE]);
 
 #endif /*FUNCTIONS_H*/

@@ -490,8 +490,6 @@ ui_set_accuracy(int accuracy)
     char text[MAXLINE];
     char *desc, *current, *tooltip;
     
-    v->accuracy = accuracy;
-    
     SNPRINTF(text, MAXLINE, _("_Other (%d) ..."), accuracy);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
@@ -614,7 +612,9 @@ ui_set_show_thousands_separator(gboolean visible)
     menu = GET_WIDGET("show_thousands_separator_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
 
-    syntaxdep_show_display();
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
+
     ui_make_registers();
 }
 
@@ -656,7 +656,9 @@ ui_set_show_trailing_zeroes(gboolean visible)
     v->show_zeroes = visible;
     set_boolean_resource(R_ZEROES, visible);
 
-    syntaxdep_show_display();
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);    
+
     ui_make_registers();
 
     menu = GET_WIDGET("show_trailing_zeroes_menu");
@@ -711,6 +713,70 @@ make_hostname()
 }
 
 
+gchar *
+ui_get_display(void)
+{
+    GtkTextIter start, end;
+    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
+    return (gtk_text_buffer_get_text(X->display_buffer,
+                                     &start,
+                                     &end,
+                                     FALSE));
+}
+
+
+static int
+get_cursor(void)
+{
+    gint pos;
+    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
+    
+    /* Convert the last position to -1 */
+    if (pos == gtk_text_buffer_get_char_count(X->display_buffer)) {
+        return (-1);
+    } else {
+        return (pos);
+    }
+}
+
+
+static void
+set_bit_panel(void)
+{
+    int bit_str_len, i;
+    int MP[MP_SIZE];
+    char bit_str[MAXLINE], label[MAXLINE];
+
+    if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+        return;
+    }
+    make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
+    bit_str_len = strlen(bit_str);
+    if (bit_str_len <= MAXBITS) {
+        gtk_widget_set_sensitive(X->bit_panel, TRUE);
+        
+        for (i = 0; i < MAXBITS; i++) {
+            if (i < bit_str_len) {
+                SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
+            } else {
+                SNPRINTF(label, MAXLINE, " 0");
+            }
+            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
+        }
+    } else {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+    }
+}
+
+
+static void do_button(int function, int arg)
+{
+    do_expression(function, arg, get_cursor());
+    set_bit_panel();
+}
+
+
 void
 ui_set_mode(enum mode_type mode)
 {
@@ -724,13 +790,13 @@ ui_set_mode(enum mode_type mode)
 
         ui_set_base(DEC);
         ui_set_numeric_mode(FIX);
-        ui_set_accuracy(DEFAULT_ACCURACY);
+        do_button(KEY_SET_ACCURACY, DEFAULT_ACCURACY);
         ui_set_show_thousands_separator(FALSE);
         ui_set_show_trailing_zeroes(FALSE);
         ui_make_registers();
 
         /* Reset display */
-        do_clear();
+        display_reset(&v->display);
         ui_set_statusbar("", "");
     }
     
@@ -834,34 +900,6 @@ ui_set_statusbar(const gchar *text, const gchar *imagename)
     gtk_statusbar_push(GTK_STATUSBAR(X->statusbar), 0, text); 
 }
 
-static void
-set_bit_panel(void)
-{
-    int bit_str_len, i;
-    int MP[MP_SIZE];
-    char bit_str[MAXLINE], label[MAXLINE];
-
-    if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
-        return;
-    }
-    make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
-    bit_str_len = strlen(bit_str);
-    if (bit_str_len <= MAXBITS) {
-        gtk_widget_set_sensitive(X->bit_panel, TRUE);
-        
-        for (i = 0; i < MAXBITS; i++) {
-            if (i < bit_str_len) {
-                SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-            } else {
-                SNPRINTF(label, MAXLINE, " 0");
-            }
-            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-        }
-    } else {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
-    }
-}
 
 static gboolean
 redo_display(gpointer data)
@@ -1023,33 +1061,6 @@ ui_set_registers_visible(gboolean visible)
     }
     
     set_boolean_resource(R_REGS, visible);
-}
-
-
-gchar *
-ui_get_display(void)
-{
-    GtkTextIter start, end;
-    gtk_text_buffer_get_bounds(X->display_buffer, &start, &end);
-    return (gtk_text_buffer_get_text(X->display_buffer,
-                                     &start,
-                                     &end,
-                                     FALSE));
-}
-
-
-static int
-get_cursor(void)
-{
-    gint pos;
-    g_object_get(G_OBJECT(X->display_buffer), "cursor-position", &pos, NULL);
-    
-    /* Convert the last position to -1 */
-    if (pos == gtk_text_buffer_get_char_count(X->display_buffer)) {
-        return (-1);
-    } else {
-        return (pos);
-    }
 }
 
 
@@ -1217,7 +1228,7 @@ void
 disp_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_numtype((enum num_type) g_object_get_data(G_OBJECT(widget), "numeric_mode"));
+        do_button(KEY_SET_NUMBERTYPE, (int)g_object_get_data(G_OBJECT(widget), "numeric_mode"));
 }
 
 
@@ -1230,15 +1241,8 @@ base_cb(GtkWidget *widget)
     base = (enum base_type) g_object_get_data(G_OBJECT(widget),
                                               "base_mode");
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-        do_base(base);
+        do_button(KEY_SET_BASE, base);
     }
-}
-
-
-static void do_button(int function, int arg)
-{
-    do_expression(function, arg, get_cursor());
-    set_bit_panel();
 }
 
 
@@ -1899,34 +1903,34 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC) {
         switch (event->keyval) {
             case GDK_0:
-                do_accuracy(0);
+                do_button(KEY_SET_ACCURACY, 0);
                 return (TRUE);
             case GDK_1:
-                do_accuracy(1);
+                do_button(KEY_SET_ACCURACY, 1);
                 return (TRUE);
             case GDK_2:
-                do_accuracy(2);
+                do_button(KEY_SET_ACCURACY, 2);
                 return (TRUE);
             case GDK_3:
-                do_accuracy(3);
+                do_button(KEY_SET_ACCURACY, 3);
                 return (TRUE);
             case GDK_4:
-                do_accuracy(4);
+                do_button(KEY_SET_ACCURACY, 4);
                 return (TRUE);
             case GDK_5:
-                do_accuracy(5);
+                do_button(KEY_SET_ACCURACY, 5);
                 return (TRUE);
             case GDK_6:
-                do_accuracy(6);
+                do_button(KEY_SET_ACCURACY, 6);
                 return (TRUE);
             case GDK_7:
-                do_accuracy(7);
+                do_button(KEY_SET_ACCURACY, 7);
                 return (TRUE);
             case GDK_8:
-                do_accuracy(8);
+                do_button(KEY_SET_ACCURACY, 8);
                 return (TRUE);
             case GDK_9:
-                do_accuracy(9);
+                do_button(KEY_SET_ACCURACY, 9);
                 return (TRUE);
         }
     }
@@ -2106,7 +2110,7 @@ popup_paste_cb(GtkWidget *menu)
 static void
 undo_cb(GtkWidget *widget)
 {
-    perform_undo();
+    do_button(KEY_UNDO, 0);
 }
 
 
@@ -2114,7 +2118,7 @@ undo_cb(GtkWidget *widget)
 static void
 redo_cb(GtkWidget *widget)
 {
-    perform_redo();
+    do_button(KEY_REDO, 0);    
     display_set_cursor(&v->display, -1);
     display_refresh(&v->display);
 }
@@ -2236,7 +2240,7 @@ accuracy_radio_cb(GtkWidget *widget)
     int count;
     count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "accuracy"));
     if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
-        do_accuracy(count);
+        do_button(KEY_SET_ACCURACY, count);
     }
 }
 
@@ -2257,7 +2261,7 @@ accuracy_other_cb(GtkWidget *widget)
 static void
 accuracy_default_cb(GtkWidget *widget)
 {
-    do_accuracy(DEFAULT_ACCURACY);
+    do_button(KEY_SET_ACCURACY, DEFAULT_ACCURACY);
 }
 
 
@@ -2287,7 +2291,7 @@ spframe_response_cb(GtkWidget *dialog, gint response_id)
     int val;
     if (response_id == GTK_RESPONSE_OK) {
         val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->precision_spin));
-        ui_set_accuracy(val);
+        do_button(KEY_SET_ACCURACY, val);
     }
     
     gtk_widget_hide(dialog);
@@ -2783,9 +2787,6 @@ ui_start(void)
 
     gtk_widget_show(X->kframe);
 
-    /* Init expression mode.
-     * This must be executed after do_base is called at init.
-     */    
     reset_display();
 
     gtk_main();

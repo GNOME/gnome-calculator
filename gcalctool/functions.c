@@ -77,21 +77,7 @@ clear_undo_history(void)
 }
 
 
-void
-perform_undo(void)
-{
-    display_pop(&v->display);
-}
-
-
-void
-perform_redo(void)
-{
-    display_unpop(&v->display);
-}
-
-
-void
+static void
 do_accuracy(int value)     /* Set display accuracy. */
 {
     v->accuracy = value;
@@ -99,7 +85,9 @@ do_accuracy(int value)     /* Set display accuracy. */
     ui_set_accuracy(v->accuracy);
     ui_make_registers();
     clear_undo_history();
-    syntaxdep_show_display();
+
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);    
 }
 
 
@@ -137,24 +125,13 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
         display_set_string(&v->display, "Ans", -1);
     }
 
-    syntaxdep_show_display();
-}
-
-
-/* Clear the calculator display and re-initialise. */
-void
-do_clear(void)
-{
-    display_clear(&v->display);
-    if (v->error) {
-        ui_set_display("", -1);
-    }
-    display_reset(&v->display);
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
 /* Change the current base setting. */
-void
+static void
 do_base(enum base_type b)
 {
     int ret, MP[MP_SIZE];
@@ -198,11 +175,12 @@ do_exchange(int index)
         ui_make_registers();
     }
 
-    syntaxdep_show_display();
+    display_set_cursor(&v->display, -1);
+    display_refresh(&v->display);
 }
 
 
-void
+static void
 do_numtype(enum num_type n)   /* Set number display type. */
 {
     int ret, MP[MP_SIZE];
@@ -243,15 +221,11 @@ do_sto(int index)
  * TODO: remove hardcoding from reg ranges.
  */
 
-int
+void
 do_sto_reg(int reg, int value[MP_SIZE])
 {
-    if ((reg >= 0) && (reg <= 10)) {
+    if ((reg >= 0) && (reg <= 10))
         mp_set_from_mp(value, v->MPmvals[reg]);
-        return(0);
-    } else {
-        return(-EINVAL);
-    }
 }
 
 
@@ -260,23 +234,11 @@ do_sto_reg(int reg, int value[MP_SIZE])
  * TODO: remove hardcoding from reg ranges.
  */
 
-int
+void
 do_rcl_reg(int reg, int value[MP_SIZE])
 {
-    if ((reg >= 0) && (reg <= 10)) {
+    if ((reg >= 0) && (reg <= 10))
         mp_set_from_mp(v->MPmvals[reg], value);
-        return(0);
-    } else {
-        return(-EINVAL);
-    }
-}
-
-
-void
-syntaxdep_show_display(void)
-{
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);
 }
 
 
@@ -314,6 +276,22 @@ do_expression(int function, int arg, int cursor)
 
         case KEY_SET_ACCURACY:
             do_accuracy(arg);
+            return;
+
+        case KEY_SET_BASE:
+            do_base(arg);
+            return;
+
+        case KEY_SET_NUMBERTYPE:
+            do_numtype(arg);
+            return;        
+        
+        case KEY_UNDO:
+            display_pop(&v->display);
+            return;
+
+        case KEY_REDO:
+            display_unpop(&v->display);
             return;
 
         case KEY_FUNCTION:
@@ -360,10 +338,10 @@ do_expression(int function, int arg, int cursor)
             /* TODO: Work out why two undo steps are required and why
              * the cursor must be taken from the first undo */
             if (display_is_result(&v->display)) {
-                perform_undo();
+                display_pop(&v->display);
                 cursor = display_get_cursor(&v->display);
                 if (display_is_undo_step(&v->display)) {
-                    perform_undo();
+                    display_pop(&v->display);
                 }
 
             /* Do nothing */                

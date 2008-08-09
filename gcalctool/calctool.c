@@ -446,6 +446,26 @@ struct button buttons[NKEYS] = {
     0
 },
 {
+    KEY_SET_BASE,
+    NULL,
+    0
+},
+{
+    KEY_SET_NUMBERTYPE,
+    NULL,
+    0
+},
+{
+    KEY_UNDO,
+    NULL,
+    0
+},
+{
+    KEY_REDO,
+    NULL,
+    0
+},
+{
     KEY_CONSTANT,
     NULL,
     0
@@ -654,8 +674,6 @@ main(int argc, char **argv)
     init_text();               /* Setup text strings depending upon language. */
     read_resources();          /* Read resources from merged database. */
     ui_load();
-
-    do_clear();                /* Initialise and clear display. */
 
     ui_start();                /* Display the calculator. */
     
