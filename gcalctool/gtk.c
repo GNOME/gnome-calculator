@@ -1731,11 +1731,14 @@ get_constant(int n)
  
     SNPRINTF(vkey, MAXLINE, "constant%1dvalue", n);
     if ((vline = get_resource(vkey)) == NULL) {
+        g_free(nline);
         return;
     }   
 
     MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
     STRNCPY(v->con_names[n], nline, MAXLINE - 1);
+    g_free(nline);
+    g_free(vline);
 }
 
 
@@ -1769,16 +1772,19 @@ get_function(int n)
  
     SNPRINTF(nkey, MAXLINE, "function%1dname", n);
     if ((nline = get_resource(nkey)) == NULL) {
-        return;  
+        return;
     }    
  
     SNPRINTF(vkey, MAXLINE, "function%1dvalue", n);
     if ((vline = get_resource(vkey)) == NULL) {
+        g_free(nline);
         return;
     }   
  
     STRNCPY(v->fun_vals[n], convert(vline), MAXLINE - 1);
     STRNCPY(v->fun_names[n], nline, MAXLINE - 1);
+    g_free(nline);
+    g_free(vline);
 }
 
 
@@ -2714,6 +2720,8 @@ read_cfdefs()        /* Read constant/function definitions. */
 void
 ui_init(int *argc, char ***argv)
 {  
+    gchar *path;
+    
     X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
         
     gtk_init(argc, argv);
@@ -2723,7 +2731,9 @@ ui_init(int *argc, char ***argv)
     gtk_rc_get_default_files();
 
     v->home = (char *) g_get_home_dir();
-    gtk_rc_parse(g_build_path(v->home, RCNAME, NULL));
+    path = g_build_path(v->home, RCNAME, NULL);
+    gtk_rc_parse(path);
+    g_free(path);
 
     gtk_window_set_default_icon_name("accessories-calculator");
 }
@@ -2744,7 +2754,12 @@ ui_load(void)
     
     /* Load configuration */
     resource = get_resource(R_BITCALC);
-    show_bit = resource != NULL && strcmp(resource, Rcstr[0]) != 0;
+    if(resource) {
+        show_bit = strcmp(resource, Rcstr[0]) != 0;
+        g_free(resource);
+    } else {
+        show_bit = FALSE;
+    }
 
     ui_set_show_thousands_separator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
