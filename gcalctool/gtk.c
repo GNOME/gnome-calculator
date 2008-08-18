@@ -1121,7 +1121,6 @@ cell_edited_cb(GtkCellRendererText *cell, const gchar *path_string,
     GtkTreeModel *model = (GtkTreeModel *) data;
     GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
     GtkTreeIter iter;
-    gchar *old_text;
     gint *column;
 
     column = g_object_get_data(G_OBJECT(cell), "column");
@@ -1130,17 +1129,13 @@ cell_edited_cb(GtkCellRendererText *cell, const gchar *path_string,
 
     switch (GPOINTER_TO_INT(column)) {
         case COLUMN_VALUE:
-            gtk_tree_model_get(model, &iter, column, &old_text, -1);
-            g_free(old_text); 
             gtk_list_store_set(GTK_LIST_STORE(model), &iter, column,
-                           g_strdup(new_text), -1);
+                               g_strdup(new_text), -1);
             break;
 
         case COLUMN_DESCRIPTION:
-            gtk_tree_model_get(model, &iter, column, &old_text, -1);
-            g_free(old_text);
             gtk_list_store_set(GTK_LIST_STORE(model), &iter, column,
-                     g_strdup(new_text), -1);
+                               g_strdup(new_text), -1);
             break;
     }
  
@@ -1505,8 +1500,8 @@ create_constants_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
-                           COLUMN_VALUE, g_strdup(constant),
-                           COLUMN_DESCRIPTION, g_strdup(v->con_names[i]),
+                           COLUMN_VALUE, constant,
+                           COLUMN_DESCRIPTION, v->con_names[i],
                            -1);
     }
 
@@ -1530,8 +1525,8 @@ create_functions_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
-                           COLUMN_VALUE, g_strdup(v->fun_vals[i]),
-                           COLUMN_DESCRIPTION, g_strdup(v->fun_names[i]),
+                           COLUMN_VALUE, v->fun_vals[i],
+                           COLUMN_DESCRIPTION, v->fun_names[i],
                            -1);
     }
 
