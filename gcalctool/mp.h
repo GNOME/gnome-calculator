@@ -41,8 +41,10 @@ void   mp_set_from_mp(const int *, int *);
 void mp_abs(const int *, int *);
 void mp_invert_sign(const int *, int *);
 
-void mpadd(int *, int *, int *);
-void mpaddi(int *, int, int *);
+void mp_add(const int *, const int *, int *);
+void mp_add_integer(const int *, int, int *);
+void mp_subtract(const int *, const int *, int *);
+
 void mpasin(int *, int *);
 void mpatan(int *, int *);
 void mpcmf(int *, int *);
@@ -56,13 +58,12 @@ void mpln(int *, int *);
 void mpmul(int *, int *, int *);
 void mpmuli(int *, int, int *);
 void mppi(int *);
-void mppwr(int *, int, int *);
+void mppwr(const int *, int, int *);
 void mppwr2(int *, int *, int *);
 void mpset(int *, int *, int *);
 void mpsin(int *, int *);
 void mpsinh(int *, int *);
 void mpsqrt(int *, int *);
-void mpsub(int *, int *, int *);
 void mptanh(int *, int *);
 
 #endif /* MP_H */

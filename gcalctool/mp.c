@@ -61,9 +61,9 @@ static int mp_compare_mp_to_float(const int *, float);
 static int mp_compare_mp_to_mp(const int *, const int *);
 static int pow_ii(int, int);
 
-static void mpadd2(int *, int *, int *, int *, int);
-static void mpadd3(int *, int *, int, int, int *);
-static void mpaddq(int *, int, int, int *);
+static void mpadd2(const int *, const int *, int *, int, int);
+static void mpadd3(const int *, const int *, int, int, int *);
+static void mp_add_fraction(const int *, int, int, int *);
 static void mpart1(int, int *);
 static void mpchk(int , int );
 static float mp_cast_to_float(const int *);
@@ -77,7 +77,7 @@ static void mpmaxr(int *);
 static void mpmlp(int *, int *, int *, int *);
 static void mpmul2(int *, int, int *, int);
 static void mpmulq(int *, int, int, int *);
-static void mpnzr(int *, int *, int *, int);
+static void mpnzr(int, int *, int *, int);
 static void mpovfl(int *);
 static void mprec(int *, int *);
 static void mproot(int *, int, int *);
@@ -96,50 +96,46 @@ mp_abs(const int *x, int *y)
 }
 
 
-void
-mpadd(int *x, int *y, int *z)
-{
 
 /*  ADDS X AND Y, FORMING RESULT IN Z, WHERE X, Y AND Z ARE MP
  *  NUMBERS.  FOUR GUARD DIGITS ARE USED, AND THEN R*-ROUNDING.
  */
-    mpadd2(x, y, z, y, 0);
+void
+mp_add(const int *x, const int *y, int *z)
+{
+    mpadd2(x, y, z, y[0], 0);
 }
 
-/*  CALLED BY MPADD, MPSUB ETC.
- *  X, Y AND Z ARE MP NUMBERS, Y1 AND TRUNC ARE INTEGERS.
- *  TO FORCE CALL BY REFERENCE RATHER THAN VALUE/RESULT, Y1 IS
- *  DECLARED AS AN ARRAY, BUT ONLY Y1(1) IS EVER USED.
- *  SETS Z = X + Y1(1)*ABS(Y), WHERE Y1(1) = +- Y(1).
- *  IF TRUNC.EQ.0 R*-ROUNDING IS USED, OTHERWISE TRUNCATION.
+/*  CALLED BY MP_ADD, MP_SUBTRACT ETC.
+ *  X, Y AND Z ARE MP NUMBERS, Y_SIGN AND TRUNC ARE INTEGERS.
+ *  SETS Z = X + Y_SIGN*ABS(Y), WHERE Y_SIGN = +- Y[0].
+ *  IF TRUNC == 0 R*-ROUNDING IS USED, OTHERWISE TRUNCATION.
  *  R*-ROUNDING IS DEFINED IN KUKI AND CODI, COMM. ACM
  *  16(1973), 223.  (SEE ALSO BRENT, IEEE TC-22(1973), 601.)
  *  CHECK FOR X OR Y ZERO
  */
 static void
-mpadd2(int *x, int *y, int *z, int *y1, int trunc)
+mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
 {
-    int i__2;
-
-    int j, s;
-    int ed, re, rs, med;
+    int sign_prod;
+    int exp_diff, exp_result, med;
 
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
     if (x[0] == 0) {
         mp_set_from_mp(y, z);
-        z[0] = y1[0];
+        z[0] = y_sign;
         return;
     }
 
     /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */    
-    if (y1[0] == 0) {
+    if (y_sign == 0  ||  y[0] == 0) {
         mp_set_from_mp(x, z);
         return;
     }
 
     /* COMPARE SIGNS */
-    s = x[0] * y1[0];
-    if (C_abs(s) > 1) {
+    sign_prod = y_sign * x[0];
+    if (C_abs(sign_prod) > 1) {
         mpchk(1, 4);
         if (v->MPerrors) {
             FPRINTF(stderr, "*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
@@ -149,61 +145,68 @@ mpadd2(int *x, int *y, int *z, int *y1, int trunc)
         return;
     }
 
-    /* COMPARE EXPONENTS */
-    ed = x[1] - y[1];
-    med = C_abs(ed);
-    if (ed < 0) {
-        /* HERE EXPONENT(Y) .GE. EXPONENT(X) */
-        if (med > MP.t) {
-            mp_set_from_mp(y, z);
-            z[0] = y1[0];
-            return;
-        }
-    } else if (ed == 0) {
-        /* EXPONENTS EQUAL SO COMPARE SIGNS, THEN FRACTIONS IF NEC. */
-        if (s <= 0) {
-            for (j = 1; j <= MP.t; ++j) {
-                if ((i__2 = x[j + 1] - y[j + 1]) < 0)
-                    goto L100;
-                else if (i__2 == 0)
-                    continue;
-                else
-                    goto L130;
-            }
 
-            /* RESULT IS ZERO */
-            z[0] = 0;
-            return;
-        }
-    } else {
-        /* ABS(X) .GT. ABS(Y) */
+
+    /* COMPARE EXPONENTS */
+    exp_diff = x[1] - y[1];
+    med = C_abs(exp_diff);
+    if (exp_diff < 0) {
+        /* HERE EXPONENT(Y)  >  EXPONENT(X) */
         if (med > MP.t) {
+	  /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning:
+	     still true with rounding??  */
+            mp_set_from_mp(y, z);
+            z[0] = y_sign;
+            return;
+	}
+        goto L10;
+    } else if (exp_diff > 0) {
+        /* HERE EXPONENT(X)  >  EXPONENT(Y) */
+        if (med > MP.t) {
+	  /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning:
+	     still true with rounding??  */
             mp_set_from_mp(x, z);
             return;
         }
-        goto L130;
-    }
+        goto L20;
+    } else {
+        /* EXPONENTS EQUAL SO COMPARE SIGNS, THEN FRACTIONS IF NEC. */
+        if (sign_prod < 0) {
+	    /* signs are not equal.  find out which mantissa is
+	       larger. */
+	    int j;
+            for (j = 2; j <= MP.t + 1; j++) {
+	        int i = x[j] - y[j];
+                if (i < 0)
+                    goto L10;
+                else if (i > 0)
+                    goto L20;
+            }
 
-L100:
-    rs = y1[0];
-    re = y[1];
-    mpadd3(x, y, s, med, &re);
+            /* both mantissas equal, so result is zero. */
+            z[0] = 0;
+            return;
+        }
+    }
+    
+L10:
+    exp_result = y[1];
+    mpadd3(x, y, sign_prod, med, &exp_result);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mpnzr(&rs, &re, z, trunc);
+    mpnzr(y_sign, &exp_result, z, trunc);
     return;
 
-L130:
-    rs = x[0];
-    re = x[1];
-    mpadd3(y, x, s, med, &re);
+L20:
+    exp_result = x[1];
+    mpadd3(y, x, sign_prod, med, &exp_result);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mpnzr(&rs, &re, z, trunc);
+    mpnzr(x[0], &exp_result, z, trunc);
     return;
 }
 
 /* CALLED BY MPADD2, DOES INNER LOOPS OF ADDITION */
 static void
-mpadd3(int *x, int *y, int s, int med, int *re)
+mpadd3(const int *x, const int *y, int s, int med, int *re)
 {
     int i__1;
 
@@ -355,11 +358,11 @@ L160:
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mpaddi(int *x, int iy, int *z)
+mp_add_integer(const int *x, int iy, int *z)
 {
     mpchk(2, 6);
     mp_set_from_integer(iy, &MP.r[MP.t + 4]);
-    mpadd(x, &MP.r[MP.t + 4], z);
+    mp_add(x, &MP.r[MP.t + 4], z);
 }
 
 
@@ -368,11 +371,11 @@ mpaddi(int *x, int iy, int *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 static void
-mpaddq(int *x, int i, int j, int *y)
+mp_add_fraction(const int *x, int i, int j, int *y)
 {
     mpchk(2, 6);
     mp_set_from_fraction(i, j, &MP.r[MP.t + 4]);
-    mpadd(x, &MP.r[MP.t + 4], y);
+    mp_add(x, &MP.r[MP.t + 4], y);
 }
 
 
@@ -445,9 +448,9 @@ L50:
 
     MP.t = ts;
 
-/* ADD TO SUM, USING MPADD2 (FASTER THAN MPADD) */
+/* ADD TO SUM */
 
-    mpadd2(&MP.r[i2 - 1], y, y, y, 0);
+    mp_add(&MP.r[i2 - 1], y, y);
     if (MP.r[i2 - 1] != 0) goto L30;
 
 L60:
@@ -481,8 +484,8 @@ mpasin(int *x, int *y)
         i2 = i3 - (MP.t + 2);
         mp_set_from_integer(1, &MP.r[i2 - 1]);
         mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
-        mpsub(&MP.r[i2 - 1], x, &MP.r[i2 - 1]);
-        mpadd(&MP.r[i3 - 1], x, &MP.r[i3 - 1]);
+        mp_subtract(&MP.r[i2 - 1], x, &MP.r[i2 - 1]);
+        mp_add(&MP.r[i3 - 1], x, &MP.r[i3 - 1]);
         mpmul(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
         mproot(&MP.r[i3 - 1], -2, &MP.r[i3 - 1]);
         mpmul(x, &MP.r[i3 - 1], y);
@@ -554,9 +557,9 @@ L20:
 
     q <<= 1;
     mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &y[1]);
-    mpaddi(&y[1], 1, &y[1]);
+    mp_add_integer(&y[1], 1, &y[1]);
     mpsqrt(&y[1], &y[1]);
-    mpaddi(&y[1], 1, &y[1]);
+    mp_add_integer(&y[1], 1, &y[1]);
     mpdiv(&MP.r[i3 - 1], &y[1], &MP.r[i3 - 1]);
     goto L20;
 
@@ -579,7 +582,7 @@ L40:
     mpmulq(&MP.r[i3 - 1], -i, i + 2, &MP.r[i3 - 1]);
     i += 2;
     MP.t = ts;
-    mpadd(&y[1], &MP.r[i3 - 1], &y[1]);
+    mp_add(&y[1], &MP.r[i3 - 1], &y[1]);
     if (MP.r[i3 - 1] != 0) goto L40;
 
 /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
@@ -631,30 +634,18 @@ mp_set_from_double(double dx, int *z)
 
 /* CHECK SIGN */
 
-    if (dx < 0.) goto L20;
-    else if (dx == 0) goto L10;
-    else goto L30;
+    if (dx < 0.)  {
+      rs = -1;
+      dj = -dx;
+    } else if (dx > 0.)  {
+      rs = 1;
+      dj = dx;
+    } else {
+      z[1] = 0;
+      return;
+    } 
 
-/* IF DX = 0D0 RETURN 0 */
 
-L10:
-    z[1] = 0;
-    return;
-
-/* DX .LT. 0D0 */
-
-L20:
-    rs = -1;
-    dj = -dx;
-    goto L40;
-
-/* DX .GT. 0D0 */
-
-L30:
-    rs = 1;
-    dj = dx;
-
-L40:
     ie = 0;
 
 L50:
@@ -695,7 +686,7 @@ L70:
 
 /* NORMALIZE RESULT */
 
-    mpnzr(&rs, &re, &z[1], 0);
+    mpnzr(rs, &re, &z[1], 0);
 
 /* Computing MAX */
 
@@ -894,7 +885,7 @@ mp_cast_to_double(const int *x)
 void
 mpcmf(int *x, int *y)
 {
-    int i, x2, il, ip, xs;
+    int i, x2, il, ip;
 
     /* RETURN 0 IF X = 0 */    
     if (x[0] == 0) {
@@ -931,10 +922,9 @@ mpcmf(int *x, int *y)
         ip = i + MP.t;
         MP.r[ip - 1] = 0;
     }
-    xs = x[0];
 
     /* NORMALIZE RESULT AND RETURN */
-    mpnzr(&xs, &x2, y, 1);
+    mpnzr(x[0], &x2, y, 1);
 }
 
 
@@ -1256,7 +1246,7 @@ L10:
     mppi(&MP.r[i2 - 1]);
     mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
     --MP.t;
-    mpsub(&MP.r[i2 - 1], &y[1], &y[1]);
+    mp_subtract(&MP.r[i2 - 1], &y[1], &y[1]);
     mpsin(&y[1], &y[1]);
     return;
 
@@ -1300,7 +1290,7 @@ L10:
     MP.m += 2;
     mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
     mprec(&MP.r[i2 - 1], &y[1]);
-    mpadd(&MP.r[i2 - 1], &y[1], &y[1]);
+    mp_add(&MP.r[i2 - 1], &y[1], &y[1]);
 
 /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
  *  ACT ACCORDINGLY.
@@ -1424,7 +1414,7 @@ L70:
 
 /* NORMALIZE RESULT */
 
-    mpnzr(&rs, &re, &z[1], 0);
+    mpnzr(rs, &re, &z[1], 0);
 
 /* Computing MAX */
 
@@ -1660,7 +1650,7 @@ L100:
 /* NORMALIZE AND ROUND RESULT */
 
 L120:
-    mpnzr(&rs, &re, &z[1], 0);
+    mpnzr(rs, &re, &z[1], 0);
     return;
 
 /* HERE NEED SIMULATED DOUBLE-PRECISION DIVISION */
@@ -1812,7 +1802,7 @@ L10:
 /* USE MPEXP1 HERE */
 
     mpexp1(&x[1], &y[1]);
-    mpaddi(&y[1], 1, &y[1]);
+    mp_add_integer(&y[1], 1, &y[1]);
     return;
 
 /*  SEE IF ABS(X) SO LARGE THAT EXP(X) WILL CERTAINLY OVERFLOW
@@ -1871,7 +1861,7 @@ L70:
 
     MP.r[i3 - 1] = xs * MP.r[i3 - 1];
     mpexp1(&MP.r[i3 - 1], &y[1]);
-    mpaddi(&y[1], 1, &y[1]);
+    mp_add_integer(&y[1], 1, &y[1]);
 
 /*  COMPUTE E-2 OR 1/E USING TWO EXTRA DIGITS IN CASE ABS(X) LARGE
  *  (BUT ONLY ONE EXTRA DIGIT IF T .LT. 4)
@@ -1899,7 +1889,7 @@ L80:
     ++i;
     mpdivi(&MP.r[i2 - 1], i * xs, &MP.r[i2 - 1]);
     MP.t = ts;
-    mpadd2(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1], &
+    mpadd2(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1],
             MP.r[i2 - 1], 0);
     if (MP.r[i2 - 1] != 0) goto L80;
 
@@ -1908,7 +1898,7 @@ L80:
 L90:
     MP.t = ts;
     if (xs > 0) {
-        mpaddi(&MP.r[i3 - 1], 2, &MP.r[i3 - 1]);
+        mp_add_integer(&MP.r[i3 - 1], 2, &MP.r[i3 - 1]);
     }
     mppwr(&MP.r[i3 - 1], ix, &MP.r[i3 - 1]);
 
@@ -2048,7 +2038,7 @@ L70:
     ++i;
     mpdivi(&MP.r[i3 - 1], i, &MP.r[i3 - 1]);
     MP.t = ts;
-    mpadd2(&MP.r[i3 - 1], &y[1], &y[1], &y[1], 0);
+    mpadd2(&MP.r[i3 - 1], &y[1], &y[1], y[1], 0);
     if (MP.r[i3 - 1] != 0) goto L70;
 
 L80:
@@ -2059,7 +2049,7 @@ L80:
 
     i__1 = q;
     for (i = 1; i <= i__1; ++i) {
-        mpaddi(&y[1], 2, &MP.r[i2 - 1]);
+        mp_add_integer(&y[1], 2, &MP.r[i2 - 1]);
         mpmul(&MP.r[i2 - 1], &y[1], &y[1]);
     }
 }
@@ -2217,7 +2207,7 @@ L20:
 /* LOOP TO GET APPROXIMATE LN(X) USING SINGLE-PRECISION */
 
 L30:
-    mpaddi(&MP.r[i2 - 1], -1, &MP.r[i3 - 1]);
+    mp_add_integer(&MP.r[i2 - 1], -1, &MP.r[i3 - 1]);
 
 /* IF POSSIBLE GO TO CALL MPLNS */
 
@@ -2238,7 +2228,7 @@ L30:
 
 /* UPDATE Y AND COMPUTE ACCURATE EXP OF APPROXIMATE LOG */
 
-    mpsub(&y[1], &MP.r[i3 - 1], &y[1]);
+    mp_subtract(&y[1], &MP.r[i3 - 1], &y[1]);
     mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
 
 /* COMPUTE RESIDUAL WHOSE LOG IS STILL TO BE FOUND */
@@ -2260,7 +2250,7 @@ L30:
 
 L50:
     mplns(&MP.r[i3 - 1], &MP.r[i3 - 1]);
-    mpadd(&y[1], &MP.r[i3 - 1], &y[1]);
+    mp_add(&y[1], &MP.r[i3 - 1], &y[1]);
 }
 
 
@@ -2313,11 +2303,11 @@ L30:
     ts = MP.t;
     mp_set_from_mp(&x[1], &MP.r[i3 - 1]);
     mpdivi(&x[1], 4, &MP.r[i2 - 1]);
-    mpaddq(&MP.r[i2 - 1], -1, 3, &MP.r[i2 - 1]);
+    mp_add_fraction(&MP.r[i2 - 1], -1, 3, &MP.r[i2 - 1]);
     mpmul(&x[1], &MP.r[i2 - 1], &MP.r[i2 - 1]);
-    mpaddq(&MP.r[i2 - 1], 1, 2, &MP.r[i2 - 1]);
+    mp_add_fraction(&MP.r[i2 - 1], 1, 2, &MP.r[i2 - 1]);
     mpmul(&x[1], &MP.r[i2 - 1], &MP.r[i2 - 1]);
-    mpaddi(&MP.r[i2 - 1], -1, &MP.r[i2 - 1]);
+    mp_add_integer(&MP.r[i2 - 1], -1, &MP.r[i2 - 1]);
     mpmul(&x[1], &MP.r[i2 - 1], &y[1]);
 
 /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
@@ -2333,9 +2323,9 @@ L30:
 L40:
     mpexp1(&y[1], &MP.r[i4 - 1]);
     mpmul(&MP.r[i3 - 1], &MP.r[i4 - 1], &MP.r[i2 - 1]);
-    mpadd(&MP.r[i4 - 1], &MP.r[i2 - 1], &MP.r[i4 - 1]);
-    mpadd(&MP.r[i3 - 1], &MP.r[i4 - 1], &MP.r[i4 - 1]);
-    mpsub(&y[1], &MP.r[i4 - 1], &y[1]);
+    mp_add(&MP.r[i4 - 1], &MP.r[i2 - 1], &MP.r[i4 - 1]);
+    mp_add(&MP.r[i3 - 1], &MP.r[i4 - 1], &MP.r[i4 - 1]);
+    mp_subtract(&y[1], &MP.r[i4 - 1], &y[1]);
     if (MP.t >= ts) goto L60;
 
 /*  FOLLOWING LOOP COMPUTES NEXT VALUE OF T TO USE.
@@ -2535,7 +2525,7 @@ L10:
 /* NORMALIZE AND ROUND RESULT */
 
 L60:
-    mpnzr(&rs, &re, &z[1], 0);
+    mpnzr(rs, &re, &z[1], 0);
     return;
 
 L70:
@@ -2671,7 +2661,7 @@ L80:
 /* NORMALIZE AND ROUND OR TRUNCATE RESULT */
 
 L100:
-    mpnzr(&rs, &re, &z[1], trunc);
+    mpnzr(rs, &re, &z[1], trunc);
     return;
 
 /* HERE J IS TOO LARGE FOR SINGLE-PRECISION MULTIPLICATION */
@@ -2785,7 +2775,7 @@ mp_invert_sign(const int *x, int *y)
 
 
 static void
-mpnzr(int *rs, int *re, int *z, int trunc)
+mpnzr(int rs, int *re, int *z, int trunc)
 {
     int i__1;
 
@@ -2793,14 +2783,14 @@ mpnzr(int *rs, int *re, int *z, int trunc)
 
 /*  ASSUMES LONG (I.E. (T+4)-DIGIT) FRACTION IN
  *  R, SIGN = RS, EXPONENT = RE.  NORMALIZES,
- *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS RS AND RE
- *  ARE NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC.EQ.0
+ *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS RE IS
+ *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
 
     --z;                 /* Parameter adjustments */
 
     i2 = MP.t + 4;
-    if (*rs != 0) goto L20;
+    if (rs != 0) goto L20;
 
 /* STORE ZERO IN Z */
 
@@ -2811,7 +2801,7 @@ L10:
 /* CHECK THAT SIGN = +-1 */
 
 L20:
-    if (C_abs(*rs) <= 1) goto L40;
+    if (C_abs(rs) <= 1) goto L40;
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
@@ -2922,7 +2912,7 @@ L170:
 
 /* STORE RESULT IN Z */
 
-    z[1] = *rs;
+    z[1] = rs;
     z[2] = *re;
     i__1 = MP.t;
     for (i = 1; i <= i__1; ++i) z[i + 2] = MP.r[i - 1];
@@ -2968,10 +2958,8 @@ mpovfl(int *x)
 void
 mppi(int *x)
 {
-    float r__1;
-
     int i2;
-    float rx;
+    float prec;
 
 /*  SETS MP X = PI TO THE AVAILABLE PRECISION.
  *  USES PI/4 = 4.ARCTAN(1/5) - ARCTAN(1/239).
@@ -2980,8 +2968,6 @@ mppi(int *x)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 
-    --x;                /* Parameter adjustments */
-
     mpchk(3, 8);
 
 /* ALLOW SPACE FOR MPART1 */
@@ -2989,14 +2975,14 @@ mppi(int *x)
     i2 = (MP.t << 1) + 7;
     mpart1(5, &MP.r[i2 - 1]);
     mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
-    mpart1(239, &x[1]);
-    mpsub(&MP.r[i2 - 1], &x[1], &x[1]);
-    mpmuli(&x[1], 4, &x[1]);
+    mpart1(239, x);
+    mp_subtract(&MP.r[i2 - 1], x, x);
+    mpmuli(x, 4, x);
 
 /* RETURN IF ERROR IS LESS THAN 0.01 */
 
-    rx = mp_cast_to_float(&x[1]);
-    if ((r__1 = rx - (float)3.1416, dabs(r__1)) < (float) 0.01) return;
+    prec = dabs(mp_cast_to_float(x) - 3.1416);
+    if (prec < 0.01) return;
 
 /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
 
@@ -3009,7 +2995,7 @@ mppi(int *x)
 
 
 void
-mppwr(int *x, int n, int *y)
+mppwr(const int *x, int n, int *y)
 {
     int i2, n2, ns;
 
@@ -3023,35 +3009,27 @@ mppwr(int *x, int n, int *y)
 
     i2 = MP.t + 5;
     n2 = n;
-    if (n2 < 0)  goto L20;
-    else if (n2 == 0) goto L10;
-    else              goto L40;
-
-/* N = 0, RETURN Y = 1. */
-
-L10:
-    mp_set_from_integer(1, &y[1]);
-    return;
-
-/* N .LT. 0 */
-
-L20:
-    mpchk(4, 10);
-    n2 = -n2;
-    if (x[1] != 0) goto L60;
-
-    if (v->MPerrors) {
+    if (n2 < 0) {
+      /* N < 0 */
+      mpchk(4, 10);
+      n2 = -n2;
+      if (x[1] != 0) goto L60;
+      
+      if (v->MPerrors) {
         FPRINTF(stderr, "*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n");
+      }
+      
+      mperr();
+      goto L50;
+    } else if (n2 == 0) {
+      /* N == 0, RETURN Y = 1. */
+      mp_set_from_integer(1, &y[1]);
+      return;
+    } else  {
+      /* N > 0 */
+      mpchk(2, 6);
+      if (x[1] != 0) goto L60;
     }
-
-    mperr();
-    goto L50;
-
-/* N .GT. 0 */
-
-L40:
-    mpchk(2, 6);
-    if (x[1] != 0) goto L60;
 
 /* X = 0, N .GT. 0, SO Y = 0 */
 
@@ -3172,7 +3150,7 @@ mprec(int *x, int *y)
 
     mpchk(4, 10);
 
-/* MPADDI REQUIRES 2T+6 WORDS. */
+/* MP_ADD_INTEGER REQUIRES 2T+6 WORDS. */
 
     i2 = (MP.t << 1) + 7;
     i3 = i2 + MP.t + 2;
@@ -3226,7 +3204,7 @@ L20:
 
 L30:
     mpmul(&x[1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
-    mpaddi(&MP.r[i3 - 1], -1, &MP.r[i3 - 1]);
+    mp_add_integer(&MP.r[i3 - 1], -1, &MP.r[i3 - 1]);
 
 /* TEMPORARILY REDUCE T */
 
@@ -3237,7 +3215,7 @@ L30:
 /* RESTORE T */
 
     MP.t = ts3;
-    mpsub(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
+    mp_subtract(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
     if (MP.t >= ts) goto L50;
 
 /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE
@@ -3427,7 +3405,7 @@ L110:
 L120:
     mppwr(&MP.r[i2 - 1], np, &MP.r[i3 - 1]);
     mpmul(&x[1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
-    mpaddi(&MP.r[i3 - 1], -1, &MP.r[i3 - 1]);
+    mp_add_integer(&MP.r[i3 - 1], -1, &MP.r[i3 - 1]);
 
 /* TEMPORARILY REDUCE T */
 
@@ -3439,7 +3417,7 @@ L120:
 /* RESTORE T */
 
     MP.t = ts3;
-    mpsub(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
+    mp_subtract(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
 
 /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE BECAUSE
  *  NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
@@ -3639,13 +3617,13 @@ mpsin(int *x, int *y)
         mpart1(5, &MP.r[i3 - 1]);
         mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
         mpart1(239, y);
-        mpsub(&MP.r[i3 - 1], y, &y[1]);
+        mp_subtract(&MP.r[i3 - 1], y, &y[1]);
         mpdiv(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
         mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
         mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
 
         /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
-        mpaddq(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
+        mp_add_fraction(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
         xs = -xs * MP.r[i2 - 1];
         if (xs == 0) {
             y[0] = 0;
@@ -3656,9 +3634,8 @@ mpsin(int *x, int *y)
         mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
 
         /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (MP.r[i2] > 0)  {
-            mpaddi(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-        }
+        if (MP.r[i2] > 0)
+            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
 
         if (MP.r[i2 - 1] == 0) {
             y[0] = 0;
@@ -3672,7 +3649,7 @@ mpsin(int *x, int *y)
          *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
          */
         if (MP.r[i2] > 0) {
-            mpaddi(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
+            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
             mpmul(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
             mpsin1(&MP.r[i2 - 1], y, 0);
         } else {
@@ -3778,12 +3755,12 @@ mpsin1(int *x, int *y, int is)
 
         i += 2;
         MP.t = ts;
-        mpadd2(&MP.r[i2 - 1], y, y, y, 0);
+        mpadd2(&MP.r[i2 - 1], y, y, *y, 0);
     } while(MP.r[i2 - 1] != 0);
 
     MP.t = ts;
     if (is == 0)
-        mpaddi(y, 1, y);
+        mp_add_integer(y, 1, y);
 }
 
 /*  RETURNS Y = SINH(X) FOR MP NUMBERS X AND Y, X NOT TOO LARGE.
@@ -3812,9 +3789,9 @@ mpsinh(int *x, int *y)
     if (MP.r[i3] <= 0) {
         i2 = i3 - (MP.t + 2);
         mpexp1(&MP.r[i3 - 1], &MP.r[i2 - 1]);
-        mpaddi(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
+        mp_add_integer(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
         mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], y);
-        mpaddi(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
+        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
         mpdiv(y, &MP.r[i3 - 1], y);
     }
     /*  HERE ABS(X) .GE. 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
@@ -3824,7 +3801,7 @@ mpsinh(int *x, int *y)
         MP.m += 2;
         mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
         mprec(&MP.r[i3 - 1], y);
-        mpsub(&MP.r[i3 - 1], y, y);
+        mp_subtract(&MP.r[i3 - 1], y, y);
 
         /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
          *  STATEMENT 30 WILL ACT ACCORDINGLY.
@@ -3892,12 +3869,9 @@ mp_set_from_mp(const int *x, int *y)
  *  FOUR GUARD DIGITS ARE USED, AND THEN R*-ROUNDING
  */
 void
-mpsub(int *x, int *y, int *z)
+mp_subtract(const int *x, const int *y, int *z)
 {
-    int y1[1];
-
-    y1[0] = -y[0];
-    mpadd2(x, y, z, y1, 0);
+    mpadd2(x, y, z, -y[0], 0);
 }
 
 
@@ -3939,13 +3913,13 @@ mptanh(int *x, int *y)
     if (MP.r[i2] > 0) {
         /* HERE ABS(X) .GE. 1/2 SO USE MPEXP */
         mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mpaddi(&MP.r[i2 - 1], -1, y);
-        mpaddi(&MP.r[i2 - 1], 1, &MP.r[i2 - 1]);
+        mp_add_integer(&MP.r[i2 - 1], -1, y);
+        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i2 - 1]);
         mpdiv(y, &MP.r[i2 - 1], y);
     } else {
         /* HERE ABS(X) .LT. 1/2, SO USE MPEXP1 TO AVOID CANCELLATION */
         mpexp1(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mpaddi(&MP.r[i2 - 1], 2, y);
+        mp_add_integer(&MP.r[i2 - 1], 2, y);
         mpdiv(&MP.r[i2 - 1], y, y);
     }
 

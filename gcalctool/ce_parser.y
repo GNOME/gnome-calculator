@@ -147,8 +147,8 @@ value:
 exp: 
   term {cp($1, $$);}
 
-| exp '+' exp {mpadd($1, $3, $$);}
-| exp '-' exp {mpsub($1, $3, $$);}
+| exp '+' exp {mp_add($1, $3, $$);}
+| exp '-' exp {mp_subtract($1, $3, $$);}
 
 | exp tMOD exp %prec MED {
     if (!is_integer($1) || !is_integer($3)) {
@@ -164,25 +164,25 @@ exp:
     if (!is_natural($1) || !is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_and($$, $1, $3);
+    calc_and($1, $3, $$);
 }
 | exp tOR exp {
     if (!is_natural($1) || !is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_or($$, $1, $3);
+    calc_or($1, $3, $$);
 }
 | exp tXNOR exp {
     if (!is_natural($1) || !is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_xnor($$, $1, $3);
+    calc_xnor($1, $3, $$);
 }
 | exp tXOR exp {
     if (!is_natural($1) || !is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_xor($$, $1, $3);
+    calc_xor($1, $3, $$);
 }
 | '~' exp {
     if (!is_natural($2)) {

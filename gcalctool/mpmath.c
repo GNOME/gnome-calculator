@@ -58,7 +58,7 @@ setbool(BOOLEAN p)
 
 
 void
-calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
+calc_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
     double dres, dval;
 
@@ -70,7 +70,7 @@ calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 
 
 void
-calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
+calc_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
     double dres, dval;
 
@@ -82,7 +82,7 @@ calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 
 
 void
-calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
+calc_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
     double dres, dval;
 
@@ -94,7 +94,7 @@ calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 
 
 void
-calc_xnor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
+calc_xnor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
     double dres, dval;
 
@@ -106,7 +106,7 @@ calc_xnor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE])
 
 
 void
-calc_not(int s1[MP_SIZE], int t[MP_SIZE])
+calc_not(const int s1[MP_SIZE], int t[MP_SIZE])
 {
     double dval = mp_cast_to_double(s1);
     
@@ -123,7 +123,7 @@ calc_rand(int t[MP_SIZE])
 
 
 void
-calc_u32(int s1[MP_SIZE], int t1[MP_SIZE])
+calc_u32(const int s1[MP_SIZE], int t1[MP_SIZE])
 {
     double dval = mp_cast_to_double(s1);
     dval = setbool(ibool(dval));
@@ -132,7 +132,7 @@ calc_u32(int s1[MP_SIZE], int t1[MP_SIZE])
 
 
 void
-calc_u16(int s1[MP_SIZE], int t1[MP_SIZE])
+calc_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
 {
     double dval = mp_cast_to_double(s1);
     dval = setbool(ibool(dval) & 0xffff);
@@ -141,7 +141,7 @@ calc_u16(int s1[MP_SIZE], int t1[MP_SIZE])
 
 
 void
-calc_inv(int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
+calc_inv(const int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
 {
     int MP1[MP_SIZE];
     int MP2[MP_SIZE];
@@ -213,13 +213,13 @@ calc_modulus(int op1[MP_SIZE],
     mpdiv(op1, op2, MP1);
     mpcmim(MP1, MP1);
     mpmul(MP1, op2, MP2);
-    mpsub(op1, MP2, result);
+    mp_subtract(op1, MP2, result);
 
     mp_set_from_integer(0, MP1);
     if ((mp_is_less_than(op2, MP1)
 	 && mp_is_greater_than(result, MP1)) ||
 	mp_is_less_than(result, MP1)) { 
-        mpadd(result, op2, result);
+        mp_add(result, op2, result);
     }
 
     return 0;
@@ -354,14 +354,14 @@ mpacos(int *MPx, int *MPretval)
         mp_set_from_mp(MPpi, MPretval);
     } else { 
         mpmul(MPx, MPx, MP2);
-        mpsub(MP1, MP2, MP2);
+        mp_subtract(MP1, MP2, MP2);
         mpsqrt(MP2, MP2);
         mpdiv(MP2, MPx, MP2);
         mpatan(MP2, MPy);
         if (mp_is_greater_than(MPx, MP0)) {
             mp_set_from_mp(MPy, MPretval);
         } else {
-            mpadd(MPy, MPpi, MPretval);
+            mp_add(MPy, MPpi, MPretval);
         }
     }
 }
@@ -385,9 +385,9 @@ mpacosh(int *MPx, int *MPretval)
         mp_set_from_integer(0, MPretval);
     } else {
         mpmul(MPx, MPx, MP1);
-        mpaddi(MP1, -1, MP1);
+        mp_add_integer(MP1, -1, MP1);
         mpsqrt(MP1, MP1);
-        mpadd(MPx, MP1, MP1);
+        mp_add(MPx, MP1, MP1);
         mpln(MP1, MPretval);
     }
 }
@@ -404,9 +404,9 @@ mpasinh(int *MPx, int *MPretval)
     int MP1[MP_SIZE];
  
     mpmul(MPx, MPx, MP1);
-    mpaddi(MP1, 1, MP1);
+    mp_add_integer(MP1, 1, MP1);
     mpsqrt(MP1, MP1);
-    mpadd(MPx, MP1, MP1);
+    mp_add(MPx, MP1, MP1);
     mpln(MP1, MPretval);
 }
 
@@ -432,8 +432,8 @@ mpatanh(int *MPx, int *MPretval)
         doerr(_("Error"));
         mp_set_from_mp(MP0, MPretval);
     } else {
-        mpadd(MP1, MPx, MP2);
-        mpsub(MP1, MPx, MP3);
+        mp_add(MP1, MPx, MP2);
+        mp_subtract(MP1, MPx, MP3);
         mpdiv(MP2, MP3, MP3);
         mpln(MP3, MP3);
         MPstr_to_num("0.5", DEC, MP1);
@@ -474,7 +474,7 @@ calc_ctrm(int t[MP_SIZE])
 
     mpdiv(v->MPmvals[1], v->MPmvals[2], MP1);
     mpln(MP1, MP2);
-    mpaddi(v->MPmvals[0], 1, MP3);
+    mp_add_integer(v->MPmvals[0], 1, MP3);
     mpln(MP3, MP4);
     mpdiv(MP2, MP4, t);
 }
@@ -505,11 +505,11 @@ calc_ddb(int t[MP_SIZE])
     mp_set_from_integer(0, MPbv);
     len = mp_cast_to_int(v->MPmvals[3]);
     for (i = 0; i < len; i++) {
-        mpsub(v->MPmvals[0], MPbv, MP1);
+        mp_subtract(v->MPmvals[0], MPbv, MP1);
         mpmuli(MP1, 2, MP2);
         mpdiv(MP2, v->MPmvals[2], t);
         mp_set_from_mp(MPbv, MP1);
-        mpadd(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
+        mp_add(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
     }
 }
 
@@ -527,9 +527,9 @@ calc_fv(int t[MP_SIZE])
 
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
   
-    mpaddi(v->MPmvals[1], 1, MP1);
+    mp_add_integer(v->MPmvals[1], 1, MP1);
     mppwr2(MP1, v->MPmvals[2], MP2);
-    mpaddi(MP2, -1, MP3);
+    mp_add_integer(MP2, -1, MP3);
     mpmul(v->MPmvals[0], MP3, MP4);
     mpdiv(MP4, v->MPmvals[1], t);
 }
@@ -548,11 +548,11 @@ calc_pmt(int t[MP_SIZE])
 
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    mpaddi(v->MPmvals[1], 1, MP1);
+    mp_add_integer(v->MPmvals[1], 1, MP1);
     mpmuli(v->MPmvals[2], -1, MP2);
     mppwr2(MP1, MP2, MP3);
     mpmuli(MP3, -1, MP4);
-    mpaddi(MP4, 1, MP1);
+    mp_add_integer(MP4, 1, MP1);
     mpdiv(v->MPmvals[1], MP1, MP2);
     mpmul(v->MPmvals[0], MP2, t);
 }
@@ -571,11 +571,11 @@ calc_pv(int t[MP_SIZE])
 
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    mpaddi(v->MPmvals[1], 1, MP1);
+    mp_add_integer(v->MPmvals[1], 1, MP1);
     mpmuli(v->MPmvals[2], -1, MP2);
     mppwr2(MP1, MP2, MP3);
     mpmuli(MP3, -1, MP4);
-    mpaddi(MP4, 1, MP1);
+    mp_add_integer(MP4, 1, MP1);
     mpdiv(MP1, v->MPmvals[1], MP2);
     mpmul(v->MPmvals[0], MP2, t);
 }
@@ -598,7 +598,7 @@ calc_rate(int t[MP_SIZE])
     mp_set_from_integer(1, MP2);
     mpdiv(MP2, v->MPmvals[2], MP3);
     mppwr2(MP1, MP3, MP4);
-    mpaddi(MP4, -1, t);
+    mp_add_integer(MP4, -1, t);
 }
 
 
@@ -615,7 +615,7 @@ calc_sln(int t[MP_SIZE])
   
     int MP1[MP_SIZE];
 
-    mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
+    mp_subtract(v->MPmvals[0], v->MPmvals[1], MP1);
     mpdiv(MP1, v->MPmvals[2], t);
 }
 
@@ -635,14 +635,14 @@ calc_syd(int t[MP_SIZE])
 
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    mpsub(v->MPmvals[2], v->MPmvals[3], MP2);
-    mpaddi(MP2, 1, MP3);
-    mpaddi(v->MPmvals[2], 1, MP2);
+    mp_subtract(v->MPmvals[2], v->MPmvals[3], MP2);
+    mp_add_integer(MP2, 1, MP3);
+    mp_add_integer(v->MPmvals[2], 1, MP2);
     mpmul(v->MPmvals[2], MP2, MP4);
     mp_set_from_integer(2, MP2);
     mpdiv(MP4, MP2, MP1);
     mpdiv(MP3, MP1, MP2);
-    mpsub(v->MPmvals[0], v->MPmvals[1], MP1);
+    mp_subtract(v->MPmvals[0], v->MPmvals[1], MP1);
     mpmul(MP1, MP2, t);
 }
 
@@ -660,11 +660,11 @@ calc_term(int t[MP_SIZE])
 
     int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
 
-    mpaddi(v->MPmvals[2], 1, MP1);
+    mp_add_integer(v->MPmvals[2], 1, MP1);
     mpln(MP1, MP2);
     mpmul(v->MPmvals[1], v->MPmvals[2], MP1);
     mpdiv(MP1, v->MPmvals[0], MP3);
-    mpaddi(MP3, 1, MP4);
+    mp_add_integer(MP3, 1, MP4);
     mpln(MP4, MP1);
     mpdiv(MP1, MP2, t);
 }
@@ -833,7 +833,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
     SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP2);
     mpdiv(MP2, MP1, MP1);
-    mpadd(MPval, MP1, MPval);
+    mp_add(MPval, MP1, MPval);
 
     mp_set_from_integer(1, MP2);
     if (mp_is_less_than(MPval, MP2)) {
@@ -862,7 +862,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
 
         *optr++ = digits[dval];
         dval = -dval;
-        mpaddi(MPval, dval, MPval);
+        mp_add_integer(MPval, dval, MPval);
     }    
     *optr++ = '\0';
 
@@ -955,7 +955,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
  
     SNPRINTF(half, MAXLINE, "0.5");
     MPstr_to_num(half, DEC, MP1);
-    mpaddi(MP1, exp, MPval);
+    mp_add_integer(MP1, exp, MPval);
     mp_set_from_integer(1, MP1);
     for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
         mpdiv(MPval, MP1base, MPval);
@@ -970,7 +970,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
         dval = mp_cast_to_int(MPval);
         *optr++ = digits[dval];
         dval = -dval;
-        mpaddi(MPval, dval, MPval);
+        mp_add_integer(MPval, dval, MPval);
     }
     *optr++    = '\0';
 }
@@ -1054,7 +1054,7 @@ MPstr_to_num(const char *str, enum base_type base, int *MPval)
 
     while ((inum = char_val(*optr)) >= 0) {
         mpmul(MPval, MPbase, MPval);
-        mpaddi(MPval, inum, MPval);
+        mp_add_integer(MPval, inum, MPval);
         optr++;
     }
 
@@ -1064,7 +1064,7 @@ MPstr_to_num(const char *str, enum base_type base, int *MPval)
             mppwr(MPbase, i, MP1);
             mp_set_from_integer(inum, MP2);
             mpdiv(MP2, MP1, MP1);
-            mpadd(MPval, MP1, MPval);
+            mp_add(MPval, MP1, MPval);
         optr++;
         }
     }
@@ -1091,7 +1091,7 @@ MPstr_to_num(const char *str, enum base_type base, int *MPval)
 
 
 void
-mp_set_from_string(char *number, int t[MP_SIZE])
+mp_set_from_string(const char *number, int t[MP_SIZE])
 {
     int i;
     char *a = NULL;

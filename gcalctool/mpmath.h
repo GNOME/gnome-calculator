@@ -39,19 +39,18 @@ enum trigfunc_type { sin_t, cos_t, tan_t, sinh_t, cosh_t, tanh_t,
 int calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE]);
 
 void mplogn(int n, int *MPx, int *MPretval);
-void calc_and(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
-void calc_or(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
-void calc_xor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
-void calc_xnor(int t[MP_SIZE], int s1[MP_SIZE], int s2[MP_SIZE]);
-void calc_not(int t[MP_SIZE], int s1[MP_SIZE]);
+void calc_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void calc_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void calc_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void calc_xnor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void calc_not(const int s1[MP_SIZE], int t[MP_SIZE]);
 void calc_rand(int t[MP_SIZE]);
-void calc_u32(int s1[MP_SIZE], int t1[MP_SIZE]);
-void calc_u16(int s1[MP_SIZE], int t1[MP_SIZE]);
+void calc_u32(const int s1[MP_SIZE], int t1[MP_SIZE]);
+void calc_u16(const int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_percent(int s1[MP_SIZE], int t1[MP_SIZE]);
-void calc_inv(int s1[MP_SIZE], int t1[MP_SIZE]);
+void calc_inv(const int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE]);
 void calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]);
-void do_zero(int t1[MP_SIZE]);
 void do_e(int t1[MP_SIZE]);
 void calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE]);
 int calc_modulus(int op1[MP_SIZE], int op2[MP_SIZE], int result[MP_SIZE]);
@@ -80,7 +79,7 @@ is_natural(int MPnum[MP_SIZE]);
 
 // FIXME: These should be merged together
 void MPstr_to_num(const char *, enum base_type, int *);
-void mp_set_from_string(char *number, int t[MP_SIZE]);
+void mp_set_from_string(const char *number, int t[MP_SIZE]);
 void make_fixed(char *, int, int *, int, int, int);
 void make_number(char *, int, int *, int, int);
 
