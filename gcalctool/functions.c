@@ -189,6 +189,19 @@ do_expression(int function, int arg, int cursor)
     char buf[MAXLINE];
     int *ans;
     
+    switch (buttons[function].id) {
+        case KEY_UNDO:
+            display_pop(&v->display);
+            return;
+
+        case KEY_REDO:
+            display_unpop(&v->display);
+            return;
+
+        default:
+            break;
+    }
+    
     display_push(&v->display);
 
     display_set_cursor(&v->display, cursor);
@@ -227,14 +240,6 @@ do_expression(int function, int arg, int cursor)
             do_numtype(arg);
             return;        
         
-        case KEY_UNDO:
-            display_pop(&v->display);
-            return;
-
-        case KEY_REDO:
-            display_unpop(&v->display);
-            return;
-
         case KEY_FUNCTION:
             do_function(arg);
             return;

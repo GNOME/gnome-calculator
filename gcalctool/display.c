@@ -292,7 +292,7 @@ void display_clear_stack(GCDisplay *display)
 void display_push(GCDisplay *display)
 {
     int c;
-
+    
     if (display->h.current != display->h.end) {
         int i = display->h.current;
 
