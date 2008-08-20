@@ -3617,7 +3617,7 @@ mpsin(int *x, int *y)
         mpart1(5, &MP.r[i3 - 1]);
         mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
         mpart1(239, y);
-        mp_subtract(&MP.r[i3 - 1], y, &y[1]);
+        mp_subtract(&MP.r[i3 - 1], y, y);
         mpdiv(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
         mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
         mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
