@@ -84,13 +84,10 @@ static void mproot(int *, int, int *);
 static void mpsin1(int *, int *, int);
 static void mpunfl(int *);
 
-
+/* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 void
 mp_abs(const int *x, int *y)
 {
-
-/* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
-
     mp_set_from_mp(x, y);
     y[0] = C_abs(y[0]);
 }
@@ -145,26 +142,24 @@ mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
         return;
     }
 
-
-
     /* COMPARE EXPONENTS */
     exp_diff = x[1] - y[1];
     med = C_abs(exp_diff);
     if (exp_diff < 0) {
         /* HERE EXPONENT(Y)  >  EXPONENT(X) */
         if (med > MP.t) {
-	  /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning:
-	     still true with rounding??  */
+            /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning:
+             still true with rounding??  */
             mp_set_from_mp(y, z);
             z[0] = y_sign;
             return;
-	}
+        }
         goto L10;
     } else if (exp_diff > 0) {
         /* HERE EXPONENT(X)  >  EXPONENT(Y) */
         if (med > MP.t) {
-	  /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning:
-	     still true with rounding??  */
+            /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning:
+             still true with rounding??  */
             mp_set_from_mp(x, z);
             return;
         }
@@ -172,17 +167,17 @@ mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
     } else {
         /* EXPONENTS EQUAL SO COMPARE SIGNS, THEN FRACTIONS IF NEC. */
         if (sign_prod < 0) {
-	    /* signs are not equal.  find out which mantissa is
-	       larger. */
-	    int j;
+            /* signs are not equal.  find out which mantissa is
+             larger. */
+            int j;
             for (j = 2; j <= MP.t + 1; j++) {
-	        int i = x[j] - y[j];
+                int i = x[j] - y[j];
                 if (i < 0)
                     goto L10;
                 else if (i > 0)
                     goto L20;
             }
-
+            
             /* both mantissas equal, so result is zero. */
             z[0] = 0;
             return;
@@ -208,8 +203,6 @@ L20:
 static void
 mpadd3(const int *x, const int *y, int s, int med, int *re)
 {
-    int i__1;
-
     int c, i, j, i2, i2p, ted;
 
     ted = MP.t + med;
@@ -226,126 +219,99 @@ mpadd3(const int *x, const int *y, int s, int med, int *re)
     if (s < 0) goto L130;
 
     /* HERE DO ADDITION, EXPONENT(Y) .GE. EXPONENT(X) */
-    if (i <= MP.t) goto L40;
+    if (i > MP.t) {
+        do {
+            j = i - med;
+            MP.r[i - 1] = x[j + 1];
+            --i;
+        } while (i > MP.t);
+    }
 
-L30:
-    j = i - med;
-    MP.r[i - 1] = x[j + 1];
-    --i;
-    if (i > MP.t) goto L30;
+    while (i > med) {
+        j = i - med;
+        c = y[i + 1] + x[j + 1] + c;
 
-L40:
-    if (i <= med) goto L60;
+        /* NO CARRY GENERATED HERE */
+        if (c < MP.b) {
+            MP.r[i - 1] = c;
+            c = 0;
+            --i;
+        /* CARRY GENERATED HERE */
+        } else {
+            MP.r[i - 1] = c - MP.b;
+            c = 1;
+            --i;
+        }
+    }
 
-    j = i - med;
-    c = y[i + 1] + x[j + 1] + c;
-    if (c < MP.b) goto L50;
+    while (i > 0)
+    {
+        c = y[i + 1] + c;
+        if (c < MP.b) goto L70;
 
-/* CARRY GENERATED HERE */
-
-    MP.r[i - 1] = c - MP.b;
-    c = 1;
-    --i;
-    goto L40;
-
-/* NO CARRY GENERATED HERE */
-
-L50:
-    MP.r[i - 1] = c;
-    c = 0;
-    --i;
-    goto L40;
-
-L60:
-    if (i <= 0) goto L90;
-
-    c = y[i + 1] + c;
-    if (c < MP.b) goto L70;
-
-    MP.r[i - 1] = 0;
-    c = 1;
-    --i;
-    goto L60;
+        MP.r[i - 1] = 0;
+        c = 1;
+        --i;
+    }
+    
+    /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
+    if (c != 0) {
+        i2p = i2 + 1;
+        for (j = 2; j <= i2; ++j) {
+            i = i2p - j;
+            MP.r[i] = MP.r[i - 1];
+        }
+        MP.r[0] = 1;
+        ++(*re);
+    }
+    return;
 
 L70:
     MP.r[i - 1] = c;
     --i;
 
-/* NO CARRY POSSIBLE HERE */
-
-L80:
-    if (i <= 0) return;
-
-    MP.r[i - 1] = y[i + 1];
-    --i;
-    goto L80;
-
-L90:
-    if (c == 0) return;
-
-/* MUST SHIFT RIGHT HERE AS CARRY OFF END */
-
-    i2p = i2 + 1;
-    i__1 = i2;
-    for (j = 2; j <= i__1; ++j) {
-        i = i2p - j;
-        MP.r[i] = MP.r[i - 1];
-    }
-    MP.r[0] = 1;
-    ++(*re);
+    /* NO CARRY POSSIBLE HERE */
+    for (; i > 0; i--)
+        MP.r[i - 1] = y[i + 1];
     return;
 
-/* HERE DO SUBTRACTION, ABS(Y) .GT. ABS(X) */
-
+    /* HERE DO SUBTRACTION, ABS(Y) .GT. ABS(X) */
 L110:
     j = i - med;
     MP.r[i - 1] = c - x[j + 1];
     c = 0;
-    if (MP.r[i - 1] >= 0) goto L120;
 
-/* BORROW GENERATED HERE */
-
-    c = -1;
-    MP.r[i - 1] += MP.b;
-
-L120:
+    /* BORROW GENERATED HERE */    
+    if (MP.r[i - 1] < 0) {
+        c = -1;
+        MP.r[i - 1] += MP.b;
+    }
     --i;
-
 L130:
-    if (i > MP.t) goto L110;
+    if (i > MP.t)
+        goto L110;
 
-L140:
-    if (i <= med) goto L160;
+    for(; i > med; i--) {
+        j = i - med;
+        c = y[i + 1] + c - x[j + 1];
+        if (c >= 0) {
+            /* NO BORROW GENERATED HERE */
+            MP.r[i - 1] = c;
+            c = 0;
+        } else {
+            /* BORROW GENERATED HERE */            
+            MP.r[i - 1] = c + MP.b;
+            c = -1;
+        }
+    }
 
-    j = i - med;
-    c = y[i + 1] + c - x[j + 1];
-    if (c >= 0) goto L150;
+    for (; i > 0; i--) {
+        c = y[i + 1] + c;
+        if (c >= 0) goto L70;
 
-/* BORROW GENERATED HERE */
-
-    MP.r[i - 1] = c + MP.b;
-    c = -1;
-    --i;
-    goto L140;
-
-/* NO BORROW GENERATED HERE */
-
-L150:
-    MP.r[i - 1] = c;
-    c = 0;
-    --i;
-    goto L140;
-
-L160:
-    if (i <= 0) return;
-
-    c = y[i + 1] + c;
-    if (c >= 0) goto L70;
-
-    MP.r[i - 1] = c + MP.b;
-    c = -1;
-    --i;
-    goto L160;
+        MP.r[i - 1] = c + MP.b;
+        c = -1;
+    }
 }
 
 
@@ -404,56 +370,47 @@ mpart1(int n, int *y)
     i2 = MP.t + 5;
     ts = MP.t;
 
-/* SET SUM TO X = 1/N */
-
+    /* SET SUM TO X = 1/N */
     mp_set_from_fraction(1, n, y);
 
-/* SET ADDITIVE TERM TO X */
-
+    /* SET ADDITIVE TERM TO X */
     mp_set_from_mp(y, &MP.r[i2 - 1]);
     i = 1;
     id = 0;
 
-/* ASSUME AT LEAST 16-BIT WORD. */
-
+    /* ASSUME AT LEAST 16-BIT WORD. */
     b2 = max(MP.b, 64);
-    if (n < b2) id = b2 * 7 * b2 / (n * n);
+    if (n < b2)
+        id = b2 * 7 * b2 / (n * n);
 
-/* MAIN LOOP.  FIRST REDUCE T IF POSSIBLE */
+    /* MAIN LOOP.  FIRST REDUCE T IF POSSIBLE */
+    do {
+        MP.t = ts + 2 + MP.r[i2] - y[1];
+        if (MP.t < 2)
+            break;
 
-L30:
-    MP.t = ts + 2 + MP.r[i2] - y[1];
-    if (MP.t < 2) goto L60;
+        MP.t = min(MP.t,ts);
 
-    MP.t = min(MP.t,ts);
+        /*  IF (I+2)*N**2 IS NOT REPRESENTABLE AS AN INTEGER THE DIVISION
+         *  FOLLOWING HAS TO BE PERFORMED IN SEVERAL STEPS.
+         */
+        if (i >= id) {
+            mpmulq(&MP.r[i2 - 1], -i, i + 2, &MP.r[i2 - 1]);
+            mpdivi(&MP.r[i2 - 1], n, &MP.r[i2 - 1]);
+            mpdivi(&MP.r[i2 - 1], n, &MP.r[i2 - 1]);
+        }
+        else {
+            mpmulq(&MP.r[i2 - 1], -i, (i + 2)*n*n, &MP.r[i2 - 1]);
+        }
 
-/*  IF (I+2)*N**2 IS NOT REPRESENTABLE AS AN INTEGER THE DIVISION
- *  FOLLOWING HAS TO BE PERFORMED IN SEVERAL STEPS.
- */
+        i += 2;
 
-    if (i >= id) goto L40;
+        /* RESTORE T */
+        MP.t = ts;
 
-    mpmulq(&MP.r[i2 - 1], -i, (i + 2)*n*n, &MP.r[i2 - 1]);
-    goto L50;
-
-L40:
-    mpmulq(&MP.r[i2 - 1], -i, i + 2, &MP.r[i2 - 1]);
-    mpdivi(&MP.r[i2 - 1], n, &MP.r[i2 - 1]);
-    mpdivi(&MP.r[i2 - 1], n, &MP.r[i2 - 1]);
-
-L50:
-    i += 2;
-
-/* RESTORE T */
-
-    MP.t = ts;
-
-/* ADD TO SUM */
-
-    mp_add(&MP.r[i2 - 1], y, y);
-    if (MP.r[i2 - 1] != 0) goto L30;
-
-L60:
+        /* ADD TO SUM */
+        mp_add(&MP.r[i2 - 1], y, y);
+    } while (MP.r[i2 - 1] != 0);
     MP.t = ts;
 }
 
@@ -468,8 +425,6 @@ L60:
 void
 mpasin(int *x, int *y)
 {
-    int i__1;
-
     int i2, i3;
 
     mpchk(5, 12);
@@ -504,18 +459,9 @@ mpasin(int *x, int *y)
 
     /* X = +-1 SO RETURN +-PI/2 */
     mppi(y);
-    i__1 = MP.r[i3 - 1] << 1;
-    mpdivi(y, i__1, y);
+    mpdivi(y, MP.r[i3 - 1] << 1, y);
 }
 
-
-void
-mpatan(int *x, int *y)
-{
-    float r__1;
-
-    int i, q, i2, i3, ie, ts;
-    float rx = 0.0, ry;
 
 /*  RETURNS Y = ARCTAN(X) FOR MP X AND Y, USING AN O(T.M(T)) METHOD
  *  WHICH COULD EASILY BE MODIFIED TO AN O(SQRT(T)M(T))
@@ -527,97 +473,85 @@ mpatan(int *x, int *y)
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
+void
+mpatan(int *x, int *y)
+{
+    float r__1;
 
-    --y;                 /* Parameter adjustments */
-    --x;
+    int i, q, i2, i3, ie, ts;
+    float rx = 0.0, ry;
+
 
     mpchk(5, 12);
     i2 = MP.t * 3 + 9;
     i3 = i2 + MP.t + 2;
-    if (x[1] != 0) {
-        goto L10;
+    if (x[0] == 0) {
+        y[0] = 0;
+        return;
     }
-    y[1] = 0;
-    return;
 
-L10:
-    mp_set_from_mp(&x[1], &MP.r[i3 - 1]);
-    ie = C_abs(x[2]);
-    if (ie <= 2) rx = mp_cast_to_float(&x[1]);
+    mp_set_from_mp(x, &MP.r[i3 - 1]);
+    ie = C_abs(x[1]);
+    if (ie <= 2)
+        rx = mp_cast_to_float(x);
 
     q = 1;
 
-/* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
+    /* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
+    while (MP.r[i3] >= 0)
+    {
+        if (MP.r[i3] == 0 && (MP.r[i3 + 1] + 1) << 1 <= MP.b)
+            break;
 
-L20:
-    if (MP.r[i3] < 0) goto L30;
+        q <<= 1;
+        mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], y);
+        mp_add_integer(y, 1, y);
+        mpsqrt(y, y);
+        mp_add_integer(y, 1, y);
+        mpdiv(&MP.r[i3 - 1], y, &MP.r[i3 - 1]);
+    }
 
-    if (MP.r[i3] == 0 && (MP.r[i3 + 1] + 1) << 1 <= MP.b)
-    goto L30;
-
-    q <<= 1;
-    mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &y[1]);
-    mp_add_integer(&y[1], 1, &y[1]);
-    mpsqrt(&y[1], &y[1]);
-    mp_add_integer(&y[1], 1, &y[1]);
-    mpdiv(&MP.r[i3 - 1], &y[1], &MP.r[i3 - 1]);
-    goto L20;
-
-/* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
-
-L30:
-    mp_set_from_mp(&MP.r[i3 - 1], &y[1]);
+    /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
+    mp_set_from_mp(&MP.r[i3 - 1], y);
     mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
     i = 1;
     ts = MP.t;
 
-/* SERIES LOOP.  REDUCE T IF POSSIBLE. */
+    /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
+    do {
+        MP.t = ts + 2 + MP.r[i3];
+        if (MP.t <= 2)
+            break;
 
-L40:
-    MP.t = ts + 2 + MP.r[i3];
-    if (MP.t <= 2) goto L50;
+        MP.t = min(MP.t,ts);
+        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
+        mpmulq(&MP.r[i3 - 1], -i, i + 2, &MP.r[i3 - 1]);
+        i += 2;
+        MP.t = ts;
+        mp_add(y, &MP.r[i3 - 1], y);
+    } while(MP.r[i3 - 1] != 0);
 
-    MP.t = min(MP.t,ts);
-    mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
-    mpmulq(&MP.r[i3 - 1], -i, i + 2, &MP.r[i3 - 1]);
-    i += 2;
+    /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
     MP.t = ts;
-    mp_add(&y[1], &MP.r[i3 - 1], &y[1]);
-    if (MP.r[i3 - 1] != 0) goto L40;
+    mpmuli(y, q, y);
 
-/* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
+    /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
+     *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
+     */
+    if (ie > 2)
+        return;
 
-L50:
-    MP.t = ts;
-    mpmuli(&y[1], q, &y[1]);
-
-/*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
- *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
- */
-
-    if (ie > 2) return;
-
-    ry = mp_cast_to_float(&y[1]);
+    ry = mp_cast_to_float(y);
     if ((r__1 = ry - atan(rx), dabs(r__1)) < dabs(ry) * (float).01)
         return;
 
-/* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
-
-    if (v->MPerrors) {
+    /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
+    if (v->MPerrors)
         FPRINTF(stderr, "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n");
-    }
 
     mperr();
 }
 
-
-void
-mp_set_from_double(double dx, int *z)
-{
-    int i__1;
-
-    int i, k, i2, ib, ie, re, tp, rs;
-    double db, dj;
 
 /*  CONVERTS DOUBLE-PRECISION NUMBER DX TO MULTIPLE-PRECISION Z.
  *  SOME NUMBERS WILL NOT CONVERT EXACTLY ON MACHINES
@@ -626,102 +560,84 @@ mp_set_from_double(double dx, int *z)
  *  SO MAY BE OMITTED IF DOUBLE-PRECISION IS NOT AVAILABLE.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
+void
+mp_set_from_double(double dx, int *z)
+{
+    int i, k, i2, ib, ie, re, tp, rs;
+    double db, dj;
 
-    --z;              /* Parameter adjustments */
 
     mpchk(1, 4);
     i2 = MP.t + 4;
 
-/* CHECK SIGN */
-
+    /* CHECK SIGN */
     if (dx < 0.)  {
-      rs = -1;
-      dj = -dx;
+        rs = -1;
+        dj = -dx;
     } else if (dx > 0.)  {
-      rs = 1;
-      dj = dx;
+        rs = 1;
+        dj = dx;
     } else {
-      z[1] = 0;
-      return;
+        z[0] = 0;
+        return;
     } 
-
 
     ie = 0;
 
-L50:
-    if (dj < 1.) goto L60;
+    while (dj >= 1.) {
+        /* INCREASE IE AND DIVIDE DJ BY 16. */
+        ++ie;
+        dj *= .0625;
+    }
 
-/* INCREASE IE AND DIVIDE DJ BY 16. */
+    while (dj < .0625) {
+        --ie;
+        dj *= 16.;
+    }
 
-    ++ie;
-    dj *= .0625;
-    goto L50;
-
-L60:
-    if (dj >= .0625) goto L70;
-
-    --ie;
-    dj *= 16.;
-    goto L60;
-
-/*  NOW DJ IS DY DIVIDED BY SUITABLE POWER OF 16
- *  SET EXPONENT TO 0
- */
-
-L70:
+    /*  NOW DJ IS DY DIVIDED BY SUITABLE POWER OF 16
+     *  SET EXPONENT TO 0
+     */
     re = 0;
 
-/* DB = DFLOAT(B) IS NOT ANSI STANDARD SO USE FLOAT AND DBLE */
-
+    /* DB = DFLOAT(B) IS NOT ANSI STANDARD SO USE FLOAT AND DBLE */
     db = (double) ((float) MP.b);
 
-/* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
-
-    i__1 = i2;
-    for (i = 1; i <= i__1; ++i) {
+    /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
+    for (i = 1; i <= i2; ++i) {
         dj = db * dj;
         MP.r[i - 1] = (int) dj;
         dj -= (double) ((float) MP.r[i - 1]);
     }
 
-/* NORMALIZE RESULT */
+    /* NORMALIZE RESULT */
+    mpnzr(rs, &re, z, 0);
 
-    mpnzr(rs, &re, &z[1], 0);
-
-/* Computing MAX */
-
-    i__1 = MP.b * 7 * MP.b;
-    ib = max(i__1, 32767) / 16;
+    /* Computing MAX */
+    ib = max(MP.b * 7 * MP.b, 32767) / 16;
     tp = 1;
 
-/* NOW MULTIPLY BY 16**IE */
-
-    if (ie < 0)  goto L90;
-    else if (ie == 0) goto L130;
-    else goto L110;
-
-L90:
-    k = -ie;
-    i__1 = k;
-    for (i = 1; i <= i__1; ++i) {
-        tp <<= 4;
-        if (tp <= ib && tp != MP.b && i < k) continue;
-        mpdivi(&z[1], tp, &z[1]);
-        tp = 1;
+    /* NOW MULTIPLY BY 16**IE */
+    if (ie < 0) {
+        k = -ie;
+        for (i = 1; i <= k; ++i) {
+            tp <<= 4;
+            if (tp <= ib && tp != MP.b && i < k)
+                continue;
+            mpdivi(z, tp, z);
+            tp = 1;
+        }
+    } else if (ie == 0) {
+        return;
+    } else {
+        for (i = 1; i <= ie; ++i) {
+            tp <<= 4;
+            if (tp <= ib && tp != MP.b && i < ie)
+                continue;
+            mpmuli(z, tp, z);
+            tp = 1;
+        }
     }
-    return;
-
-L110:
-    i__1 = ie;
-    for (i = 1; i <= i__1; ++i) {
-        tp <<= 4;
-        if (tp <= ib && tp != MP.b && i < ie) continue;
-        mpmuli(&z[1], tp, &z[1]);
-        tp = 1;
-    }
-
-L130:
-    return;
 }
 
 
@@ -1086,6 +1002,11 @@ mp_compare_mp_to_float(const int *x, float ri)
 }
 
 
+/*  CONVERTS MULTIPLE-PRECISION X TO SINGLE-PRECISION.
+ *  ASSUMES X IN ALLOWABLE RANGE.  THERE IS SOME LOSS OF
+ *  ACCURACY IF THE EXPONENT IS LARGE.
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
 static float
 mp_cast_to_float(const int *x)
 {
@@ -1095,12 +1016,6 @@ mp_cast_to_float(const int *x)
 
     int i, tm = 0;
     float rb, rz2;
-
-/*  CONVERTS MULTIPLE-PRECISION X TO SINGLE-PRECISION.
- *  ASSUMES X IN ALLOWABLE RANGE.  THERE IS SOME LOSS OF
- *  ACCURACY IF THE EXPONENT IS LARGE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 
     --x;               /* Parameter adjustments */
 
@@ -1153,118 +1068,92 @@ L30:
 }
 
 
-static int
-mp_compare_mp_to_mp(const int *x, const int *y)
-{
-    int i__1, i__2;
-
-    int i, t2;
-
 /*  COMPARES THE MULTIPLE-PRECISION NUMBERS X AND Y,
  *  RETURNING +1 IF X .GT. Y,
  *            -1 IF X .LT. Y,
  *  AND        0 IF X .EQ. Y.
  */
+static int
+mp_compare_mp_to_mp(const int *x, const int *y)
+{
+    int i__2;
+
+    int i, t2;
 
     if (x[0] < y[0]) 
-      return -1;  /* X .LT. Y */
+        return -1;  /* X .LT. Y */
     if (x[0] > y[0])
-      return 1;  /* X .GT. Y */
+        return 1;  /* X .GT. Y */
 
-/* SIGN(X) = SIGN(Y), SEE IF ZERO */
-
+    /* SIGN(X) = SIGN(Y), SEE IF ZERO */
     if (x[0] == 0)
-      return 0;  /* X == Y == 0 */
+        return 0;  /* X == Y == 0 */
 
-
-
-    --y;             /* Parameter adjustments */
-    --x;
-
-
-/* HAVE TO COMPARE EXPONENTS AND FRACTIONS */
-
+    /* HAVE TO COMPARE EXPONENTS AND FRACTIONS */
     t2 = MP.t + 2;
-    i__1 = t2;
-    for (i = 2; i <= i__1; ++i) {
-        if ((i__2 = x[i] - y[i]) < 0) goto L60;
-        else if (i__2 == 0) continue;
-        else goto L70;
+    for (i = 2; i <= t2; ++i) {
+        i__2 = x[i-1] - y[i-1];
+        /* ABS(X) .LT. ABS(Y) */
+        if (i__2 < 0) {
+            return -x[0];
+        } else if (i__2 == 0) {
+            continue;
+        /* ABS(X) .GT. ABS(Y) */
+        } else {
+            return x[0];
+        }
     }
 
-/* NUMBERS EQUAL */
-
+    /* NUMBERS EQUAL */
     return 0;
-
-/* ABS(X) .LT. ABS(Y) */
-
-L60:
-    return -x[1];
-
-/* ABS(X) .GT. ABS(Y) */
-
-L70:
-    return x[1];
 }
 
 
+/*  RETURNS Y = COS(X) FOR MP X AND Y, USING MPSIN AND MPSIN1.
+ *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
+ */
 void
 mpcos(int *x, int *y)
 {
     int i2;
 
-/*  RETURNS Y = COS(X) FOR MP X AND Y, USING MPSIN AND MPSIN1.
- *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
- */
+    /* COS(0) = 1 */    
+    if (x[0] == 0) {
+        mp_set_from_integer(1, y);
+        return;
+    }
 
-    --y;              /* Parameter adjustments */
-    --x;
-
-    if (x[1] != 0) goto L10;
-
-/* COS(0) = 1 */
-
-    mp_set_from_integer(1, &y[1]);
-    return;
-
-/* CHECK LEGALITY OF B, T, M AND MXR */
-
-L10:
+    /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(5, 12);
     i2 = MP.t * 3 + 12;
 
-/* SEE IF ABS(X) .LE. 1 */
-
-    mp_abs(&x[1], &y[1]);
-    if (mp_compare_mp_to_int(&y[1], 1) <= 0) goto L20;
-
-/*  HERE ABS(X) .GT. 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
- *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
- */
-
-    ++MP.t;
-    mppi(&MP.r[i2 - 1]);
-    mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-    --MP.t;
-    mp_subtract(&MP.r[i2 - 1], &y[1], &y[1]);
-    mpsin(&y[1], &y[1]);
-    return;
-
-/* HERE ABS(X) .LE. 1 SO USE POWER SERIES */
-
-L20:
-    mpsin1(&y[1], &y[1], 0);
+    /* SEE IF ABS(X) .LE. 1 */
+    mp_abs(x, y);
+    if (mp_compare_mp_to_int(y, 1) <= 0) {
+        /* HERE ABS(X) .LE. 1 SO USE POWER SERIES */
+        mpsin1(y, y, 0);
+    } else {
+        /*  HERE ABS(X) .GT. 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
+         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
+         */
+        ++MP.t;
+        mppi(&MP.r[i2 - 1]);
+        mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
+        --MP.t;
+        mp_subtract(&MP.r[i2 - 1], y, y);
+        mpsin(y, y);
+    }
 }
 
 
+/*  RETURNS Y = COSH(X) FOR MP NUMBERS X AND Y, X NOT TOO LARGE.
+ *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
+ */
 void
 mpcosh(int *x, int *y)
 {
     int i2;
 
-/*  RETURNS Y = COSH(X) FOR MP NUMBERS X AND Y, X NOT TOO LARGE.
- *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
- */
 
     --y;               /* Parameter adjustments */
     --x;
