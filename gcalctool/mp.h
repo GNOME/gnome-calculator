@@ -60,7 +60,7 @@ void mpmuli(int *, int, int *);
 void mppi(int *);
 void mppwr(const int *, int, int *);
 void mppwr2(int *, int *, int *);
-void mpset(int *, int *, int *);
+void mpset(int, int, int);
 void mpsin(int *, int *);
 void mpsinh(int *, int *);
 void mpsqrt(int *, int *);

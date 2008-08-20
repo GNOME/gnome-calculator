@@ -619,7 +619,7 @@ init_state(void)
     v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
     size             = MP_SIZE;
-    mpset(&acc, &size, &size);
+    mpset(acc, size, size);
 
     v->error       = 0;            /* No calculator error initially. */    
 

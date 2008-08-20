@@ -70,11 +70,11 @@ static float mp_cast_to_float(const int *);
 static void mp_set_from_fraction(int, int, int *);
 static void mp_set_from_float(float, int *);
 static void mpexp1(int *, int *);
-static void mpext(int *, int *, int *);
+static void mpext(int, int, int *);
 static void mpgcd(int *, int *);
 static void mplns(int *, int *);
 static void mpmaxr(int *);
-static void mpmlp(int *, int *, int *, int *);
+static void mpmlp(int *, int *, int, int);
 static void mpmul2(int *, int, int *, int);
 static void mpmulq(int *, int, int, int *);
 static void mpnzr(int, int *, int *, int);
@@ -1387,7 +1387,7 @@ L30:
 
     mpmul(x, &MP.r[i2 - 1], z);
     iz3 = z[2];
-    mpext(&i, &iz3, z);
+    mpext(i, iz3, z);
 
 /* RESTORE M, CORRECT EXPONENT AND RETURN */
 
@@ -1924,15 +1924,15 @@ L80:
  *  CAN BE.  X IS AN MP NUMBER, I AND J ARE INTEGERS.
  */
 static void
-mpext(int *i, int *j, int *x)
+mpext(int i, int j, int *x)
 {
     int q, s;
 
-    if (x[0] == 0 || MP.t <= 2 || *i == 0)
+    if (x[0] == 0 || MP.t <= 2 || i == 0)
         return;
 
     /* COMPUTE MAXIMUM POSSIBLE ERROR IN THE LAST PLACE */
-    q = (*j + 1) / *i + 1;
+    q = (j + 1) / i + 1;
     s = MP.b * x[MP.t] + x[MP.t + 1];
 
     /* SET LAST TWO DIGITS TO ZERO */    
@@ -2251,11 +2251,11 @@ mpmaxr(int *x)
  *  WHICH SAVES TIME AT THE EXPENSE OF SPACE.
  */
 static void
-mpmlp(int *u, int *v, int *w, int *j)
+mpmlp(int *u, int *v, int w, int j)
 {
     int i;
-    for (i = 0; i < *j; i++)
-        u[i] += *w * v[i];
+    for (i = 0; i < j; i++)
+        u[i] += w * v[i];
 }
 
 
@@ -2275,7 +2275,7 @@ mpmlp(int *u, int *v, int *w, int *j)
 void
 mpmul(int *x, int *y, int *z)
 {
-    int i__1, i__2, i__3, i__4;
+    int i__1, i__2;
 
     int c, i, j, i2, j1, re, ri, xi, rs, i2p;
 
@@ -2316,9 +2316,7 @@ L10:
 
 /* Computing MIN */
 
-        i__3 = MP.t, i__4 = i2 - i;
-        i__2 = min(i__3,i__4);
-        mpmlp(&MP.r[i], &y[2], &xi, &i__2);
+        mpmlp(&MP.r[i], &y[2], xi, min(MP.t, i2 - i));
         --c;
         if (c > 0) continue;
 
@@ -3257,11 +3255,6 @@ L170:
 }
 
 
-void
-mpset(int *idecpl, int *itmax2, int *maxdr)
-{
-    int i, k, w, i2, w2, wn;
-
 /*  SETS BASE (B) AND NUMBER OF DIGITS (T) TO GIVE THE
  *  EQUIVALENT OF AT LEAST IDECPL DECIMAL DIGITS.
  *  IDECPL SHOULD BE POSITIVE.
@@ -3284,8 +3277,12 @@ mpset(int *idecpl, int *itmax2, int *maxdr)
  *           AND MXR WITHOUT CALLING MPSET.
  *  FIRST SET MXR
  */
+void
+mpset(int idecpl, int itmax2, int maxdr)
+{
+    int i, k, w, i2, w2, wn;
 
-    MP.mxr = *maxdr;
+    MP.mxr = maxdr;
 
 /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
 
@@ -3319,7 +3316,7 @@ mpset(int *idecpl, int *itmax2, int *maxdr)
 
 L40:
     MP.m = w / 4;
-    if (*idecpl > 0) goto L60;
+    if (idecpl > 0) goto L60;
 
     if (v->MPerrors) {
         FPRINTF(stderr, "*** IDECPL .LE. 0 IN CALL TO MPSET ***\n");
@@ -3335,13 +3332,13 @@ L60:
 
 /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
 
-    MP.t = (int) ((float) (*idecpl) * log((float)10.) / log((float) MP.b) + 
+    MP.t = (int) ((float) (idecpl) * log((float)10.) / log((float) MP.b) + 
                   (float) 2.0);
 
 /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
 
     i2 = MP.t + 2;
-    if (i2 <= *itmax2) goto L80;
+    if (i2 <= itmax2) goto L80;
 
     if (v->MPerrors) {
         FPRINTF(stderr, 
@@ -3353,7 +3350,7 @@ L60:
 
 /* REDUCE TO MAXIMUM ALLOWED BY DIMENSION STATEMENTS */
 
-    MP.t = *itmax2 - 2;
+    MP.t = itmax2 - 2;
 
 /* CHECK LEGALITY OF B, T, M AND MXR (AT LEAST T+4) */
 
@@ -3628,7 +3625,7 @@ mpsqrt(int *x, int *y)
         i = MP.r[i2 + 1];
         mpmul(x, &MP.r[i2 - 1], y);
         iy3 = y[2];
-        mpext(&i, &iy3, y);
+        mpext(i, iy3, y);
     }
 }
 
