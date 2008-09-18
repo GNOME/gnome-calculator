@@ -7,20 +7,20 @@
 # Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2003.
 # Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2008.
 # Djihed Afifi <djihed@gmail.com>, 2006.
+# Anas Afif Emad <anas.e87@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-26 14:44+0100\n"
-"PO-Revision-Date: 2008-07-28 19:37+0300\n"
-"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"POT-Creation-Date: 2008-08-26 14:21+0000\n"
+"PO-Revision-Date: 2008-09-16 15:34+0300\n"
+"Last-Translator: Anas Afif Emad <anas.e87@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../gcalctool/calctool.c:492
 msgid "Kilometer-to-mile conversion factor"
@@ -65,9 +65,12 @@ msgstr "سنتيمرات مكعبة أو إنشات مكعبة"
 #. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
 #. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
 #.
-#: ../gcalctool/calctool.c:517 ../gcalctool/mp.c:1633
-#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
+#: ../gcalctool/calctool.c:517
+#: ../gcalctool/mp.c:1633
+#: ../gcalctool/mpmath.c:347
+#: ../gcalctool/mpmath.c:384
+#: ../gcalctool/mpmath.c:432
+#: ../gcalctool/mpmath.c:998
 msgid "Error"
 msgstr "خطأ"
 
@@ -95,9 +98,9 @@ msgstr ""
 "\n"
 
 #: ../gcalctool/calctool.c:548
-#, fuzzy, c-format
+#, c-format
 msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-msgstr "الاستعمال:·%s:·[-D]·[-E]·[-a·accuracy]·"
+msgstr "الاستعمال: %s: [-E] [-u] [-a الدقّة] "
 
 #: ../gcalctool/calctool.c:549
 msgid "\t\t [-?] [-v] [-h]\n"
@@ -107,7 +110,8 @@ msgstr "\t\t [-?] [-v] [-h]\n"
 msgid "-a needs accuracy value"
 msgstr "لا يوجد قيمة للدقّة "
 
-#: ../gcalctool/calctool.c:574 ../gcalctool/get.c:242
+#: ../gcalctool/calctool.c:574
+#: ../gcalctool/get.c:242
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: يجب أن تكون الدقة بين 0-%Id\n"
@@ -128,11 +132,13 @@ msgstr "وظيفة غير صالحة"
 msgid "No sane value to do bitwise shift"
 msgstr "لا قيمة صالحة للتحويل"
 
-#: ../gcalctool/functions.c:109 ../gcalctool/functions.c:160
+#: ../gcalctool/functions.c:109
+#: ../gcalctool/functions.c:160
 msgid "No sane value to convert"
 msgstr "لا قيمة صالحة للتحويل"
 
-#: ../gcalctool/functions.c:134 ../gcalctool/functions.c:178
+#: ../gcalctool/functions.c:134
+#: ../gcalctool/functions.c:178
 msgid "No sane value to store"
 msgstr "لا قيمة صالحة للحفظ"
 
@@ -180,7 +186,8 @@ msgstr "%s:·نمط غير صحيح [%s]\n"
 msgid "%s: invalid trigonometric mode [%s]\n"
 msgstr "%s: نسق ثلاثاتي غير سليم [%s]\n"
 
-#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
+#: ../gcalctool/gtk.c:55
+#: ../gcalctool.desktop.in.h:1
 msgid "Calculator"
 msgstr "آلة حاسبة"
 
@@ -216,32 +223,38 @@ msgstr "آلة حاسبة [%s] - مالي"
 msgid "Calculator [%s] - Scientific"
 msgstr "آلة حاسبة [%s] - علمي"
 
-#: ../gcalctool/gtk.c:494 ../glade/gcalctool.glade.h:385
+#: ../gcalctool/gtk.c:494
+#: ../glade/gcalctool.glade.h:385
 #, no-c-format
 msgid "_Other (%d) ..."
 msgstr "آ_خر (%Id) ..."
 
 #: ../gcalctool/gtk.c:498
-#, fuzzy, c-format
+#, c-format
 msgid "Set accuracy from 0 to %d numeric place."
 msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
-msgstr[1] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
-msgstr[2] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية"
-msgstr[3] "ضبط درجة الدقّة من 0 إلى %Id خانة رقمية"
+msgstr[0] "ضبط درجة الدقّة من 0 إلى %Id خانات رقمية."
+msgstr[1] "ضبط الدقّة من 0 إلى خانة رقمية واحدة."
+msgstr[2] "ضبط الدقّة من 0 إلى خانتين رقميتين."
+msgstr[3] "ضبط الدقّة من 0 إلى %d خانات رقمية."
+msgstr[4] "ضبط الدقّة من 0 إلى %d خانة رقمية."
+msgstr[5] "ضبط الدقّة من 0 إلى %d خانة رقمية."
 
 #. Translators: This refers to the current accuracy setting
 #: ../gcalctool/gtk.c:504
-#, fuzzy, c-format
+#, c-format
 msgid "Currently set to %d place."
 msgid_plural "Currently set to %d places."
-msgstr[0] "محددة حاليا بـ %Id أرقام"
-msgstr[1] "محددة حاليا بـ %Id أرقام"
-msgstr[2] "محددة حاليا بـ %Id أرقام"
-msgstr[3] "محددة حاليا بـ %Id رقم"
+msgstr[0] "محددة حالياً بلا خانات"
+msgstr[1] "محددة حالياً بخانة واحدة."
+msgstr[2] "مححددة حالياً بخانتين."
+msgstr[3] "محددة حالياً بـ %d خانات."
+msgstr[4] "محددة حالياً بـ %d خانة."
+msgstr[5] "محددة حالياً بـ %d خانة."
 
 #. Factorial
-#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
+#: ../gcalctool/gtk.c:537
+#: ../glade/gcalctool.glade.h:313
 msgid "Sin"
 msgstr "جب"
 
@@ -258,7 +271,8 @@ msgid "Sinh<sup>-1</sup>"
 msgstr "جب ه<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
+#: ../gcalctool/gtk.c:541
+#: ../glade/gcalctool.glade.h:139
 msgid "Cos"
 msgstr "تجب"
 
@@ -275,7 +289,8 @@ msgid "Cosh<sup>-1</sup>"
 msgstr "تجب ه<sup>-1</sup>"
 
 #. Factorial
-#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
+#: ../gcalctool/gtk.c:545
+#: ../glade/gcalctool.glade.h:338
 msgid "Tan"
 msgstr "ظل"
 
@@ -310,7 +325,8 @@ msgstr ""
 "Djihed Afifi جهاد عفيفي (djihed@gmail.com)\n"
 "Yousef Raffah يوسف رفه (yousef@raffah.com) \n"
 "Yazid Delenda يزيد دلندة (yazo1624@yahoo.co.uk)\n"
-"Sohaib Afifi صهيب عفيفي (sohaibafifi@gmail.com)"
+"Sohaib Afifi صهيب عفيفي (sohaibafifi@gmail.com)\n"
+"Anas A. Emad أنس عفيف عماد (anas.e87@gmail.com)"
 
 #: ../gcalctool/gtk.c:1085
 msgid ""
@@ -358,11 +374,13 @@ msgstr "حقوق النسخ © 1986-2008 لمؤلفي الألة الحاسبة"
 msgid "Calculator with financial and scientific modes."
 msgstr "آلة حاسبة مالية وعلمية"
 
-#: ../gcalctool/gtk.c:1381 ../glade/gcalctool.glade.h:118
+#: ../gcalctool/gtk.c:1381
+#: ../glade/gcalctool.glade.h:118
 msgid "C"
 msgstr "C"
 
-#: ../gcalctool/gtk.c:1399 ../glade/gcalctool.glade.h:169
+#: ../gcalctool/gtk.c:1399
+#: ../glade/gcalctool.glade.h:169
 msgid "F"
 msgstr "F"
 
@@ -371,12 +389,8 @@ msgid "Changing Modes Clears Calculation"
 msgstr "تغيير النسق سيمسح الحساب."
 
 #: ../gcalctool/gtk.c:1583
-msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-"عند تغيير النسق يتم مسح العملية الحالية، و يتم إعادة تحديدة القاعدة إلى "
-"عشرية."
+msgid "When you change modes, the current calculation will be cleared, and the base will be reset to decimal."
+msgstr "عند تغيير النسق يتم مسح العملية الحالية، و يتم إعادة تحديدة القاعدة إلى عشرية."
 
 #: ../gcalctool/gtk.c:1587
 msgid "_Do not warn me again"
@@ -402,26 +416,27 @@ msgstr "خطأ عند تحميل واجهة المستخدم"
 
 #: ../gcalctool/gtk.c:2393
 #, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"ملف واجهة المستخدم %s مفقود أو لا يمكن تحميله. الرجاء التأكد من التثبيت."
+msgid "The user interface file %s is missing or unable to be loaded. Please check your installation."
+msgstr "ملف واجهة المستخدم %s مفقود أو لا يمكن تحميله. الرجاء التأكد من التثبيت."
 
-#: ../gcalctool/gtk.c:2617 ../gcalctool/gtk.c:2635
+#: ../gcalctool/gtk.c:2617
+#: ../gcalctool/gtk.c:2635
 msgid "No."
 msgstr "لا."
 
-#: ../gcalctool/gtk.c:2619 ../gcalctool/gtk.c:2637
+#: ../gcalctool/gtk.c:2619
+#: ../gcalctool/gtk.c:2637
 msgid "Value"
 msgstr "قيمة"
 
-#: ../gcalctool/gtk.c:2621 ../gcalctool/gtk.c:2639
+#: ../gcalctool/gtk.c:2621
+#: ../gcalctool/gtk.c:2639
 msgid "Description"
 msgstr "وصف"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2785 ../glade/gcalctool.glade.h:268
+#: ../gcalctool/gtk.c:2785
+#: ../glade/gcalctool.glade.h:268
 #, no-c-format
 msgid "Reset to _Default (%d)"
 msgstr "أ_عد الضبط للإفتراضي (%Id)"
@@ -625,12 +640,8 @@ msgid "<i>x</i><sup><i>y</i></sup>"
 msgstr "<i>س</i><sup><i>ص</i></sup>"
 
 #: ../glade/gcalctool.glade.h:64
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>ملاحظة:</b>يجب أن تكون كل القيم الثابته بالنظام العشري</i></"
-"small>"
+msgid "<small><i><b>Note:</b> All constant values are specified in the decimal numeric base.</i></small>"
+msgstr "<small><i><b>ملاحظة:</b>يجب أن تكون كل القيم الثابته بالنظام العشري</i></small>"
 
 #. "R0" is the abbreviation for "Register 0", used in the memory register dialog
 #: ../glade/gcalctool.glade.h:66
@@ -1834,33 +1845,24 @@ msgstr "√"
 
 #~ msgid "Error, operands must be integers"
 #~ msgstr "خطأ, يجب أن يكون المعملان صحيحين"
-
 #~ msgid "Cleared display, prefix without an operator is not allowed"
 #~ msgstr "تم مسح الشاشة, عدد أولي من دون عملية غير مسموح"
-
 #~ msgid "Malformed parenthesis expression"
 #~ msgstr "جملة بأقواس غير صالحة"
-
 #~ msgid "%s: invalid syntax mode [%s]\n"
 #~ msgstr "%s: نمط عرض غير صحيح [%s]\n"
-
 #~ msgid "Activated no operator precedence mode"
 #~ msgstr "تم تفعيل نسق عدم السماح بسبق العمليات"
-
 #~ msgid "Activated expression mode with operator precedence"
 #~ msgstr "تم تفعيل نسق العبارة مع سبق العمليات"
-
 #~ msgid "Clipboard contained malformed calculation"
 #~ msgstr "تحتوي ذاكرة النصوص على عملية غير صالحة"
-
 #~ msgid "A_rithmetic Precedence"
 #~ msgstr "الأولوية ال_حسابية"
-
 #~ msgid "Use Arithmetic Precedence"
 #~ msgstr "استعمل الأولوية الحسابية"
-
 #~ msgid "Use Left-right Precedence"
 #~ msgstr "استخدم أولوية من اليسار إلى اليمين"
-
 #~ msgid "_Left-to-right Precedence"
 #~ msgstr "أولويّة من الي_سار إلى اليمين"
+
