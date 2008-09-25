@@ -1623,13 +1623,13 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
     double number;
     unsigned long long lval;
-    int n, MP1[MP_SIZE], index;
+    int n, MP1[MP_SIZE], index, ret;
 
     index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box),
                                               "bit_index"));
     n = MAXBITS - index - 1;
 
-    int ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
+    ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
     assert(!ret);
     mp_set_from_mp(display_get_answer(&v->display), MP1);
 
