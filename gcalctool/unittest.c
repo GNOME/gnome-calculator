@@ -83,6 +83,11 @@ test_parser()
     //FIXME: Need to update mperr() test("1/2", "0.5", 0);
     //FIXME: Need to update mperr() test("1/0", "", 0);
     //FIXME: Need to update mperr() test("0/0", "", 0);
+    test("2/2", "1", 0);
+    test("1203/1", "1203", 0);
+    test("-0/32352.689", "0", 0);
+    test("1/4", "0.25", 0);
+    test("(-3)/(-6)", "0.5", 0);
 
     test("1+2*3", "7", 0);    
     test("(1+2)*3", "9", 0);

@@ -357,7 +357,7 @@ mpacos(int *MPx, int *MPretval)
         mp_subtract(MP1, MP2, MP2);
         mpsqrt(MP2, MP2);
         mpdiv(MP2, MPx, MP2);
-        mpatan(MP2, MPy);
+        mp_atan(MP2, MPy);
         if (mp_is_greater_than(MPx, MP0)) {
             mp_set_from_mp(MPy, MPretval);
         } else {
@@ -786,7 +786,7 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
 
         case atan_t:
-            mpatan(s1, t1);
+            mp_atan(s1, t1);
             do_trig_typeconv(v->ttype, t1, t1);
             break;
 
