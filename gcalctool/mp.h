@@ -24,7 +24,12 @@
 
 #define MP_SIZE      1000     /* Size of the multiple precision values. */
 
-void mperr();
+/* If we're not using GNU C, elide __attribute__ */
+#ifndef __GNUC__
+#  define  __attribute__(x)  /*NOTHING*/
+#endif
+
+void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
 int mp_is_equal(const int *, const int *);
 int mp_is_greater_equal(const int *, const int *);

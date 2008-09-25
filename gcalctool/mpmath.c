@@ -1159,7 +1159,7 @@ calc_factorial(int *MPval, int *MPres)
                 mpmuli(MPa, i, MPa);
                 val = mp_cast_to_double(MPa);
                 if (v->error) {
-                    mperr();
+                    mperr("Error calculating factorial\n");
                     return;
                 }
                 i--;

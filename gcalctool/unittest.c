@@ -80,6 +80,9 @@ test_parser()
     test("0.001-40000", "-39999.999", 0);
     test("40000000-40000000", "0", 0);
     test("2*3", "6", 0);
+    test("-2*3", "-6", 0);
+    test("2*-3", "-6", 0);
+    test("-2*-3", "6", 0);
     //FIXME: Need to update mperr() test("1/2", "0.5", 0);
     //FIXME: Need to update mperr() test("1/0", "", 0);
     //FIXME: Need to update mperr() test("0/0", "", 0);
@@ -96,15 +99,14 @@ test_parser()
     test("1%", "0.01", 0);
     test("2^2", "4", 0);
     test("2^-1", "0.5", 0);
+    test("-10^2", "-100", 0);
+    test("(-10)^2", "100", 0);    
     test("0!", "1", 0);    
     test("1!", "1", 0);
     test("5!", "120", 0);
     //FIXME: Need to update do_factorial() test("0.1!", "", 0);
     //FIXME: Need to update do_factorial() test("-1!", "", 0);
     
-    test("-10^2", "-100", 0);
-    test("(-10)^2", "100", 0);    
-
     test("Sqrt(4)", "2", 0);
     test("Sqrt(2)", "1.4142135", 0);
     
