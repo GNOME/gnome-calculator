@@ -42,7 +42,7 @@
 char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
 char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
 char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
-                              "SCIENTIFIC" };
+                              "SCIENTIFIC", "PROGRAMMING" };
 char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 
 static GConfClient *client = NULL;

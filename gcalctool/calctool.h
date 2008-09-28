@@ -53,7 +53,12 @@
 enum base_type { BIN, OCT, DEC, HEX, MAXBASES };
 
 /* Calculator modes. */
-enum mode_type { BASIC, ADVANCED, FINANCIAL, SCIENTIFIC, MAXMODES };
+enum mode_type { BASIC, 
+                 ADVANCED,
+                 FINANCIAL,
+                 SCIENTIFIC,
+                 PROGRAMMING,
+                 MAXMODES };
 
 /* Number display mode. */
 enum num_type { ENG, FIX, SCI, MAXDISPMODES };
@@ -143,7 +148,6 @@ enum
 #define MAX_CONSTANTS 10
 #define MAX_FUNCTIONS 10
 #define MAX_REGISTERS 10         /* Maximum number of memory registers. */
-#define MAXBITCALC     2          /* Choices for bitcalculating */
 
 #ifndef MIN
 #define MIN(x,y)       ((x) < (y) ? (x) : (y))

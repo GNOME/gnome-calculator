@@ -234,6 +234,21 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkRadioMenuItem" id="view_programming_menu">
+		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Programming</property>
+		      <property name="label" translatable="yes">_Programming</property>
+		      <property name="use_underline">True</property>
+		      <property name="active">False</property>
+		      <property name="group">view_basic_menu</property>
+		      <signal name="select" handler="menu_item_select_cb"/>
+		      <signal name="deselect" handler="menu_item_deselect_cb"/>
+		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sun, 27 Sep 2008 22:50:04 GMT"/>
+		      <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator1">
 		      <property name="visible">True</property>
 		    </widget>
@@ -264,30 +279,6 @@
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
 		      <signal name="activate" handler="show_thousands_separator_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
 		      <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkCheckMenuItem" id="show_bitcalculating_menu">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
-and zeroes shown. When the number being displayed in
-in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show bit editor</property>
-		      <property name="label" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
-and zeroes shown. When the number being displayed in
-in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show Bit _Editor</property>
-		      <property name="use_underline">True</property>
-		      <property name="active">False</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes" comments="When the bit editor is visible, there will be two rows of ones
-and zeroes shown. When the number being displayed in
-in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.">Show Bit Editor</atkproperty>
-			<atkproperty name="AtkObject::accessible_description" translatable="yes">Show bit editor</atkproperty>
-		      </accessibility>
-		      <signal name="select" handler="menu_item_select_cb"/>
-		      <signal name="deselect" handler="menu_item_deselect_cb"/>
-		      <signal name="activate" handler="show_bitcalculating_cb" last_modification_time="Sat, 13 Oct 2007 00:50:25 GMT"/>
-		      <accelerator key="E" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 

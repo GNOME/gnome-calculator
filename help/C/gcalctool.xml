@@ -205,6 +205,10 @@
         <term><link linkend="gcalctool-scientific-mode">Scientific </link></term>
         <listitem><para>Provides many additional mathematical functions, including trigonometric and bitwise functions. You can also store your own functions and constants, when you use Scientific mode.</para></listitem>
         </varlistentry>
+		<varlistentry>
+		<term><link linkend="gcalctool-programming-mode">Programming </link></term>
+		<listitem><para>Provides functions useful to a programmer. Currently the same thing as the scientific mode, but with a bit editor.</para></listitem>
+		</varlistentry>
      </variablelist>
 
     <para>You can use &app; in the following numbering systems:</para>
@@ -1657,11 +1661,6 @@ To calculate the time period necessary to accumulate $120,000, put the following
 		  </tgroup>
 		</table>
     </sect3>
-    <sect3 id="gcalctool-calc-bit-manipulation-ext">
-      <title>To Perform Bit Manipulations on Integers</title>
-      <para>To change the values of individuals bits in integer values, choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Bit Editor</guimenuitem></menuchoice>. This option is only available in Scientific mode.</para>
-      <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
-    </sect3>
     <sect3 id="gcalctool-enter-exp"> 
       <title>To Enter Exponential Numbers</title> 
       <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button.</para>
@@ -2106,6 +2105,36 @@ after entering the exponent.</para>
 		</table>
     </sect3>
     </sect2> 
+    <sect2 id="gcalctool-programming-mode">
+      <title>To Perform Programming Calculations</title>
+      <para>To change to Programming mode, choose 
+	<menuchoice> 
+	  <guimenu>View</guimenu> 
+	  <guimenuitem>Programming</guimenuitem> 
+	</menuchoice>. 
+      </para>
+    <para>When you change to Programming mode, the following widget is displayed above the Scientific mode buttons:</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-programming"> 
+	<title>&app; Programming Mode Buttons</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/gcalctool_programming_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Shows &app; Programming mode buttons.  </phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+    <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-calc-bit-manipulation-ext">
+      <title>To Perform Bit Manipulations on Integers</title>
+      <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's in the Bit Editor. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
+    </sect3>
+    </sect2>
 <!-- ============= Undo and Redo ======================== -->
   <sect2 id="gcalctool-undo-redo">
     <title>To Undo and Redo</title>
@@ -2731,12 +2760,6 @@ the addition of:
                              <entry><para><xref linkend="gcalctool-calc-functions"/></para> </entry>
                            </row>
                            <row valign="top">
-                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>e</keycap></keycombo></para></entry>
-                             <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Show Bitcalculating Extension</guimenuitem> </menuchoice> </para></entry>
-                             <entry><para>Display the bitcalculation extension</para> </entry>
-                             <entry><para><xref linkend="gcalctool-calc-bit-manipulation-ext"/></para> </entry>
-                           </row>
-                           <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>f</keycap></keycombo></para></entry>
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Financial </guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Financial mode</para> </entry>
@@ -2772,6 +2795,12 @@ the addition of:
                              <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Memory Registers</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Display the <guilabel>Memory Registers</guilabel> window</para> </entry>
                              <entry><para><xref linkend="gcalctool-mem-reg"/></para> </entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Ctrl</keycap><keycap>p</keycap></keycombo></para></entry>
+							 <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Programming</guimenuitem> </menuchoice> </para></entry>
+                             <entry><para>Change to Programming mode</para> </entry>
+                             <entry><para><xref linkend="gcalctool-programming-mode"/></para> </entry>
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo></para></entry>

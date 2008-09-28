@@ -53,17 +53,14 @@ struct button_widget {
 /* Window titles dependant on mode */
 static char *titles[] = {
     N_("Calculator"), N_("Calculator - Advanced"), N_("Calculator - Financial"),
-    N_("Calculator - Scientific")
+    N_("Calculator - Scientific"), N_("Calculator - Programming")
 };
 
 /* Window titles dependant on mode and hostname */
 static char *hostname_titles[] = {
     N_("Calculator [%s]"), N_("Calculator [%s] - Advanced"), N_("Calculator [%s] - Financial"),
-    N_("Calculator [%s] - Scientific")
+    N_("Calculator [%s] - Scientific"), N_("Calculator [%s] - Programming")
 };
-
-/* FIXME: Config value for boolean bitcalculating mode is a string... */
-static char *Rcstr[MAXBITCALC]   = { "NO_BITCALCULATING_MODE", "BITCALCULATING_MODE" };
 
 /*  This table shows the keyboard values that are currently being used:
  *
@@ -455,7 +452,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     char *shelf;                       /* PUT selection shelf contents. */   
 
     gboolean warn_change_mode;    /* Should we warn user when changing modes? */
-    gboolean bitcalculating_mode;
 };
 
 typedef struct Xobject *XVars;
@@ -621,35 +617,6 @@ ui_set_show_thousands_separator(gboolean visible)
 
 
 void
-ui_set_show_bitcalculating(gboolean visible)
-{
-    GtkWidget *menu;
-
-    X->bitcalculating_mode = visible;
-    ui_set_mode(v->modetype);
-    set_resource(R_BITCALC, Rcstr[visible ? 1 : 0]);
-
-    menu = GET_WIDGET("show_bitcalculating_menu");
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);
-
-    if (visible) {
-        /* Translators: When the bit editor is visible, there will be two
-         * rows of ones and zeroes shown. When the number being displayed in
-         * in the calculator is an integer value, these ones and zeroes will
-         * be sensitive, and they will correspond to the value of each of 
-         * the bits in the displayed integer number. By clicking on any of 
-         * the labels for these ones and zeroes, their value can be toggled
-         * (a one becomes a zero and a zero becomes a one), causing the 
-         * displayed integer value to be adjusted accordingly.
-         */
-        ui_set_statusbar(_("Bit editor activated. Click on bit values to toggle them."), "");
-    } else {
-        ui_set_statusbar("", "");
-    }
-}
-
-
-void
 ui_set_show_trailing_zeroes(gboolean visible)
 {
     GtkWidget *menu;
@@ -808,14 +775,13 @@ ui_set_mode(enum mode_type mode)
     g_object_set(G_OBJECT(X->bas_panel),  "visible", mode == BASIC, NULL);
     g_object_set(G_OBJECT(X->adv_panel),  "visible", mode != BASIC, NULL);
     g_object_set(G_OBJECT(X->fin_panel),  "visible", mode == FINANCIAL, NULL);
-    g_object_set(G_OBJECT(X->mode_panel), "visible", mode == SCIENTIFIC, NULL);
-    g_object_set(G_OBJECT(X->sci_panel),  "visible", mode == SCIENTIFIC, NULL);
-    g_object_set(G_OBJECT(X->bit_panel),  "visible",
-                 mode == SCIENTIFIC && X->bitcalculating_mode, NULL);
-    gtk_widget_set_sensitive(GET_WIDGET("show_bitcalculating_menu"),
-                             mode == SCIENTIFIC);
+    g_object_set(G_OBJECT(X->mode_panel), "visible", 
+                 mode == SCIENTIFIC || mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X->sci_panel),  "visible", 
+                 mode == SCIENTIFIC || mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X->bit_panel),  "visible", mode == PROGRAMMING, NULL);
     gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
-                             mode == SCIENTIFIC);
+                             mode == SCIENTIFIC || mode == PROGRAMMING);
     gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"),
                              mode != BASIC);
     
@@ -879,6 +845,10 @@ ui_set_mode(enum mode_type mode)
             menu = GET_WIDGET("view_scientific_menu");
             break;
         
+        case PROGRAMMING:
+            menu = GET_WIDGET("view_programming_menu");
+            break;
+
         default:
             assert(FALSE);
             return;
@@ -1007,10 +977,10 @@ ui_set_error_state(gboolean error)
     gtk_widget_set_sensitive(GET_WIDGET("view_financial_menu"),  !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("view_scientific_menu"), !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
-                             !v->error && (v->modetype == SCIENTIFIC)); 
+                             !v->error && (v->modetype == SCIENTIFIC || 
+                                           v->modetype == PROGRAMMING)); 
     gtk_widget_set_sensitive(GET_WIDGET("show_thousands_separator_menu"),
                              !v->error); 
-    gtk_widget_set_sensitive(GET_WIDGET("show_bitcalculating_menu"), !v->error);
     gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), !v->error); 
 
     gtk_widget_set_sensitive(GET_WIDGET("about_menu"), !v->error);
@@ -1902,7 +1872,8 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     }
     
     /* Accuracy shortcuts */
-    if (state == GDK_CONTROL_MASK && v->modetype == SCIENTIFIC) {
+    if (state == GDK_CONTROL_MASK && (v->modetype == SCIENTIFIC || 
+                                      v->modetype == PROGRAMMING)) {
         switch (event->keyval) {
             case GDK_0:
                 do_button(KEY_SET_ACCURACY, 0);
@@ -2176,16 +2147,6 @@ shift_cb(GtkWidget *widget)
 
 
 /*ARGSUSED*/
-static void 
-show_bitcalculating_cb(GtkWidget *widget)
-{
-    gboolean visible;  
-    visible = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget));
-    ui_set_show_bitcalculating(visible);
-}
-
-
-/*ARGSUSED*/
 static void
 show_registers_cb(GtkWidget *widget)
 {
@@ -2221,7 +2182,7 @@ mode_radio_cb(GtkWidget *menu)
  * (unless we are in Scientific mode with Decimal numeric base and Fixed).
  */
     if (display_is_result(&v->display) &&
-        ((v->modetype != SCIENTIFIC) ||
+        ((v->modetype != SCIENTIFIC && v->modetype != PROGRAMMING) ||
          (v->dtype == FIX && v->base == DEC))) {
         v->modetype = mode;
         ui_set_mode(v->modetype);
@@ -2424,7 +2385,6 @@ create_kframe()
     CONNECT_SIGNAL(about_cb);
     CONNECT_SIGNAL(show_trailing_zeroes_cb);
     CONNECT_SIGNAL(show_thousands_separator_cb);
-    CONNECT_SIGNAL(show_bitcalculating_cb);
     CONNECT_SIGNAL(show_registers_cb);
     CONNECT_SIGNAL(accuracy_radio_cb);
     CONNECT_SIGNAL(accuracy_other_cb);
@@ -2584,7 +2544,6 @@ create_kframe()
     set_menubar_tooltip("view_scientific_menu");
     set_menubar_tooltip("show_trailing_zeroes_menu");
     set_menubar_tooltip("show_thousands_separator_menu");
-    set_menubar_tooltip("show_bitcalculating_menu");
     set_menubar_tooltip("show_registers_menu");
     set_menubar_tooltip("help_menu");
     set_menubar_tooltip("about_menu");
@@ -2685,6 +2644,8 @@ create_kframe()
                       "calcmode", GINT_TO_POINTER(FINANCIAL));
     g_object_set_data(G_OBJECT(GET_WIDGET("view_scientific_menu")),
                       "calcmode", GINT_TO_POINTER(SCIENTIFIC));
+    g_object_set_data(G_OBJECT(GET_WIDGET("view_programming_menu")),
+                      "calcmode", GINT_TO_POINTER(PROGRAMMING));
 
     /* Make shortcuts for accuracy menus */
     accel_group = gtk_accel_group_new();
@@ -2738,8 +2699,7 @@ void
 ui_load(void)
 {
     int boolval;
-    char *resource, text[MAXLINE];
-    gboolean show_bit;
+    char text[MAXLINE];
     GtkWidget *widget;
 
     read_cfdefs();
@@ -2748,17 +2708,8 @@ ui_load(void)
     create_kframe();
     
     /* Load configuration */
-    resource = get_resource(R_BITCALC);
-    if(resource) {
-        show_bit = strcmp(resource, Rcstr[0]) != 0;
-        g_free(resource);
-    } else {
-        show_bit = FALSE;
-    }
-
     ui_set_show_thousands_separator(v->show_tsep);
     ui_set_show_trailing_zeroes(v->show_zeroes);
-    ui_set_show_bitcalculating(show_bit);
     
     ui_set_mode(v->modetype);
     ui_set_numeric_mode(FIX);
