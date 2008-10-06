@@ -820,39 +820,24 @@
                            <row valign="top">
                              <entry><para>Compounding Term</para> </entry>
                              <entry><para><guibutton>Ctrm</guibutton></para></entry>
-                             <entry><para>Calculates the number of compounding periods necessary to increase an investment of present value <replaceable>pv</replaceable> to a future value of <replaceable>fv</replaceable>, at a fixed interest rate of <replaceable>int</replaceable> per compounding period. </para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>pv</replaceable>, the present value</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
+                             <entry><para>Calculates the number of compounding periods necessary to increase an investment from a present value to a future value, at a fixed interest rate per compounding period.</para>
                              </entry>
-                             <entry><para>You have just deposited $8000 in an account that pays an annual interest rate of 9%, compounded monthly. Given the annual interest rate, you determine that the simple monthly interest rate is 0.09 / 12 = 0.0075. To calculate the time period necessary to double your investment, put the following values into the first three memory registers:</para>
+                             <entry><para>You have just deposited $8000 in an account that pays an annual interest rate of 9%, compounded monthly. Given the annual interest rate, you determine that the simple monthly interest rate is 0.09 / 12 = 0.0075. To calculate the time period necessary to double your investment, click <guibutton>Ctrm</guibutton>, and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Periodic Interest Rate</term>
                                 <listitem><para>0.0075</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Future Value</term>
                                 <listitem><para>16000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Present Value</term>
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Ctrm</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>92.77</para>
                                     <para>The investment doubles in value in 92.77 months.</para></entry>
                            </row>
@@ -861,88 +846,54 @@
                              <entry><para><guibutton>Ddb</guibutton></para></entry>
                              <entry><para>Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method.
 </para>
-                              <para>This function uses the following memory registers:</para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 3</term>
-                                <listitem><para><replaceable>period</replaceable>, the time period for depreciation allowance</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You have just purchased an office machine for $8000. The useful life of this machine is six years. The salvage value after six years is $900.
-To calculate the depreciation expense for the fourth year, using the double-declining balance method, put the following values into the first four memory registers:</para>
+To calculate the depreciation expense for the fourth year, using the double-declining balance method, click <guibutton>Ddb</guibutton> and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Cost</term>
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Salvage</term>
                                 <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Life</term>
                                 <listitem><para>6</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 3</term>
+                                <term>Period</term>
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Ddb</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>790.12</para>
                                     <para>The depreciation expense for the fourth year is $790.12.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Future Value</para> </entry>
                              <entry><para><guibutton>Fv</guibutton></para></entry>
-                             <entry><para>Calculates the future value of an investment based on a series of equal payments, each of amount <replaceable>pmt</replaceable>, at a periodic interest rate of <replaceable>int</replaceable>, over the number of payment periods in the term.
+                             <entry><para>Calculates the future value of an investment based on a series of equal payments at a specific periodic interest rate, over the number of payment periods in the term.
 </para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable>, the number of periods</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You plan to deposit $4000 in a bank account on the last day of each year for the next 20 years. The account pays 8% interest, compounded annually. Interest is paid on the last day of each year. 
-To calculate the value of your account in 20 years, put the following values into the first three memory registers:</para>
+To calculate the value of your account in 20 years, press <guibutton>Fv</guibutton> and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Periodic Payment</term>
                                 <listitem><para>4000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Periodic Interest Rate</term>
                                 <listitem><para>0.08</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Number Of Periods</term>
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Fv</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>183047.86</para>
                                     <para>At the end of 20 years, the value of the account is $183,047.86.</para></entry>
                            </row>
@@ -951,121 +902,76 @@ To calculate the value of your account in 20 years, put the following values int
                              <entry><para><guibutton>Pmt</guibutton></para></entry>
                              <entry><para>Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. 
 </para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>prin</replaceable>, the principal</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable>, the term</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
-                             <entry><para>You are considering a $120,000 mortgage for 30 years at an annual interest rate of 11.0%. Given the annual interest rate, you determine that the simple monthly interest rate is 0.11 / 12 = 0.00917. The term is 30 * 12 = 360 months. To calculate the monthly repayment for this mortgage, put the following values into the first three memory registers:</para>
+                             <entry><para>You are considering a $120,000 mortgage for 30 years at an annual interest rate of 11.0%. Given the annual interest rate, you determine that the simple monthly interest rate is 0.11 / 12 = 0.00917. The term is 30 * 12 = 360 months. To calculate the monthly repayment for this mortgage, press <guibutton>Pmt</guibutton> and put the following values into the txt entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Principal</term>
                                 <listitem><para>120000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Periodic Interest Rate</term>
                                 <listitem><para>0.00917</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Term</term>
                                 <listitem><para>360</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Pmt</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>1143.15</para>
                                     <para>The monthly repayment is $1143.15.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Present Value</para> </entry>
                              <entry><para><guibutton>Pv</guibutton></para></entry>
-                             <entry><para>Calculates the present value of an investment based on a series of equal payments, each of amount <replaceable>pmt</replaceable>, discounted at a periodic interest rate of <replaceable>int</replaceable>, over the number of payment periods in the term.
+                             <entry><para>Calculates the present value of an investment based on a series of equal payments, discounted at a periodic interest rate, over the number of payment periods in the term.
 </para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable>, the number of periods</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You have just won a million dollars. The prize is awarded in 20 annual payments of $50,000 each. Annual payments are received at the end of each year. If you were to accept the annual payments of $50,000, you would invest the money at a rate of 9%, compounded annually.</para>
                                     <para>However, you are given the option of receiving a single lump-sum payment of $400,000 instead of the million dollars annuity. 
-To calculate which option is worth more in today's dollars, put the following values into the first three memory registers:</para>
+To calculate which option is worth more in today's dollars, press <guibutton>Pv</guibutton> and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Periodic Payment</term>
                                 <listitem><para>50000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Periodic Interest Rate</term>
                                 <listitem><para>0.09</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Number Of Periods</term>
                                 <listitem><para>20</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Pv</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>456427.28</para>
                                     <para>The $1,000,000 paid over 20 years is worth $456,427.28 in present dollars.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Periodic Interest Rate</para> </entry>
                              <entry><para><guibutton>Rate</guibutton></para></entry>
-                             <entry><para>Calculates the periodic interest necessary to increase an investment of present value <replaceable>pv</replaceable> to a future value of <replaceable>fv</replaceable>, over the number of compounding periods in <replaceable>term</replaceable>.
+                             <entry><para>Calculates the periodic interest necessary to increase an investment of a present value to a future value, over a number of compounding periods.
 </para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>pv</replaceable>, the present value</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>n</replaceable>, the term</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You have invested $20,000 in a bond. The bond matures in five years, and has a maturity value of $30,000. Interest is compounded monthly. The term is 5 * 12 = 60 months.
-To calculate the periodic interest rate for this investment, put the following values into the first three memory registers:</para>
+To calculate the periodic interest rate for this investment, press <guibutton>Rate</guibutton> and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Future Value</term>
                                 <listitem><para>30000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Present Value</term>
                                 <listitem><para>20000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Term</term>
                                 <listitem><para>60</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Rate</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>.00678</para>
                                     <para>The monthly interest rate is 0.678%. The annual interest rate is 0.678% * 12 = 8.14%.
 </para></entry>
@@ -1075,39 +981,24 @@ To calculate the periodic interest rate for this investment, put the following v
                              <entry><para><guibutton>Sln</guibutton></para></entry>
                              <entry><para>Calculates the straight-line depreciation of an asset for one period. The depreciable cost is <replaceable>cost</replaceable> - <replaceable>salvage</replaceable>. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated.
 </para>
-                              <para>This function uses the following memory registers:</para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You have just purchased an office machine for $8000. The useful life of this machine is six years. The salvage value after six years is $900.
-To calculate the yearly depreciation expense, using the straight-line method, put the following values into the first three memory registers:</para>
+To calculate the yearly depreciation expense, using the straight-line method, prss <guibutton>Sln</guibutton>, and put the following values into the first three memory registers:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Cost</term>
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Salvage</term>
                                 <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Life</term>
                                 <listitem><para>6</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Sln</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>1183.33</para>
                                     <para>The yearly depreciation expense is $1183.33.</para></entry>
                            </row>
@@ -1117,88 +1008,53 @@ To calculate the yearly depreciation expense, using the straight-line method, pu
                              <entry><para>Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 The depreciable cost is <replaceable>cost</replaceable> - <replaceable>salvage</replaceable>. The useful life is the number of periods, typically years, over which an asset is depreciated.
 </para>
-                              <para>This function uses the following memory registers:</para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>cost</replaceable>, the amount paid for the asset</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>salvage</replaceable>, the value of the asset at the end of its life</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>life</replaceable>, the useful life of the asset</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 3</term>
-                                <listitem><para><replaceable>period</replaceable>, the time period for depreciation allowance</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
                              </entry>
                              <entry><para>You have just purchased an office machine for $8000. The useful life of this machine is six years. The salvage value after six years is $900.
-To calculate the depreciation expense for the fourth year, using the sum-of-the-years'-digits method, put the following values into the first four memory registers:</para>
+To calculate the depreciation expense for the fourth year, using the sum-of-the-years'-digits method, press <guibutton>Syd</guibutton>, and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Cost</term>
                                 <listitem><para>8000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Salvage</term>
                                 <listitem><para>900</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Life</term>
                                 <listitem><para>6</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 3</term>
+                                <term>Period</term>
                                 <listitem><para>4</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Syd</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>1014.29</para>
                                     <para>The depreciation expense for the fourth year is $1014.29.</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Payment Period</para> </entry>
                              <entry><para><guibutton>Term</guibutton></para></entry>
-                             <entry><para>Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of <replaceable>fv</replaceable>, at a periodic interest rate of <replaceable>int</replaceable>. Each payment is equal to amount <replaceable>pmt</replaceable>.
-</para>
-                              <para>This function uses the following memory registers: </para>
-                             <variablelist>
-                                <varlistentry>
-                                <term>Register 0</term>
-                                <listitem><para><replaceable>pmt</replaceable>, the periodic payment</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 1</term>
-                                <listitem><para><replaceable>fv</replaceable>, the future value</para></listitem>
-                                </varlistentry>
-                                <varlistentry>
-                                <term>Register 2</term>
-                                <listitem><para><replaceable>int</replaceable>, the periodic interest rate</para></listitem>
-                                </varlistentry>
-                             </variablelist> 
+                             <entry><para>Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a certain periodic interest rate.</para>
                              </entry>
                              <entry><para>You plan to deposit $1800 in a bank account on the last day of each year. The account pays 11% interest, compounded annually. Interest is paid on the last day of each year. 
-To calculate the time period necessary to accumulate $120,000, put the following values into the first three memory registers:</para>
+To calculate the time period necessary to accumulate $120,000, press <guibutton>Term</guibutton>, and put the following values into the text entries:</para>
                              <variablelist>
                                 <varlistentry>
-                                <term>Register 0</term>
+                                <term>Periodic Payment</term>
                                 <listitem><para>1800</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 1</term>
+                                <term>Future Value</term>
                                 <listitem><para>120000</para></listitem>
                                 </varlistentry>
                                 <varlistentry>
-                                <term>Register 2</term>
+                                <term>Periodic Interest Rate</term>
                                 <listitem><para>0.11</para></listitem>
                                 </varlistentry>
                              </variablelist> 
-                             <para>Click <guibutton>Term</guibutton><guibutton> =</guibutton></para></entry>
+                             <para>Click <guibutton>Calculate</guibutton></para></entry>
                              <entry><para>20.32</para>
                                     <para>$120,000 accumulates in the account in 20.32 years.</para></entry>
                            </row>

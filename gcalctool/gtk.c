@@ -37,6 +37,7 @@
 #include "config.h"
 #include "dsdefs.h"
 #include "functions.h"
+#include "financial.h"
 #include "ce_parser.h"
 #include "mpmath.h"
 #include "display.h"
@@ -60,6 +61,19 @@ static char *titles[] = {
 static char *hostname_titles[] = {
     N_("Calculator [%s]"), N_("Calculator [%s] - Advanced"), N_("Calculator [%s] - Financial"),
     N_("Calculator [%s] - Scientific"), N_("Calculator [%s] - Programming")
+};
+
+/* The names of each field in the dialogs for the financial functions */
+static char *finc_dialog_fields[FINC_NUM_DIALOGS][4] = {
+    {"ctrm_pint", "ctrm_fv", "ctrm_pv", NULL},
+    {"ddb_cost", "ddb_salvage", "ddb_life", "ddb_period"},
+    {"fv_pmt", "fv_pint", "fv_n", NULL},
+    {"pmt_prin", "pmt_pint", "pmt_n", NULL},
+    {"pv_pmt", "pv_pint", "pv_n", NULL},
+    {"rate_fv", "rate_pv", "rate_n", NULL},
+    {"sln_cost", "sln_salvage", "sln_life", NULL},
+    {"syd_cost", "syd_salvage", "syd_life", "syd_period"},
+    {"term_pmt", "term_fv", "term_pint", NULL},
 };
 
 /*  This table shows the keyboard values that are currently being used:
@@ -396,6 +410,7 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GdkAtom primary_atom;
 
     GladeXML  *ui;
+    GladeXML  *financial;
     
     GtkWidget *kframe;                 /* Main window. */
  
@@ -466,6 +481,7 @@ enum {
 
 static XVars X;
 
+static void setup_finc_dialogs ();
 
 /* FIXME: Move this into display.c (reset_display) */
 static void
@@ -744,6 +760,12 @@ static void do_button(int function, int arg)
     set_bit_panel();
 }
 
+static void
+do_finc(char* dialog)
+{
+    gtk_dialog_run(GTK_DIALOG(glade_xml_get_widget(X->financial, dialog)));
+    gtk_widget_hide(GTK_WIDGET(glade_xml_get_widget(X->financial, dialog)));
+}
 
 void
 ui_set_mode(enum mode_type mode)
@@ -799,6 +821,9 @@ ui_set_mode(enum mode_type mode)
         gtk_widget_size_request(X->fin_panel, r);
         w = MAX(w, r->width);
         h += r->height;
+        if (X->financial == NULL) {
+            setup_finc_dialogs();
+        }
     }
 
     if (GTK_WIDGET_VISIBLE(X->mode_panel)) {
@@ -1340,6 +1365,82 @@ exchange_menu_cb(GtkMenuItem *menu)
 
 
 static void
+finc_response_cb(GtkWidget *widget, gint response_id, void* dialog_pointer)
+{
+    int dialog = GPOINTER_TO_INT (dialog_pointer);
+    int i;
+    int arg[4][MP_SIZE];
+    GtkWidget *entry;
+    if (response_id != GTK_RESPONSE_OK) {
+        return;
+    }
+
+    for (i = 0; i < 4; i++) {
+        if (finc_dialog_fields[dialog][i] == NULL) {
+            continue;
+        }
+        entry = glade_xml_get_widget(X->financial,
+                                     finc_dialog_fields[dialog][i]);
+        MPstr_to_num(gtk_entry_get_text(GTK_ENTRY(entry)), DEC, arg[i]);
+    }
+    do_finc_expression(dialog, arg[0], arg[1], arg[2], arg[3]);
+}
+
+
+static void
+setup_finc_dialogs(void) {
+    GtkWidget *button;
+    X->financial = glade_xml_new(PACKAGE_GLADE_DIR "/financial.glade", NULL, 
+                                 NULL);
+    glade_xml_signal_connect_data(X->financial, "finc_ctrm_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_CTRM_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_ddb_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_DDB_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_fv_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_FV_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_pmt_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_PMT_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_pv_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_PV_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_rate_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_RATE_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_sln_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_SLN_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_syd_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_SYD_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_term_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_TERM_DIALOG));
+
+    button = GET_WIDGET("calc_finc_compounding_term_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "ctrm_dialog");
+    button = GET_WIDGET("calc_finc_double_declining_depreciation_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "ddb_dialog");
+    button = GET_WIDGET("calc_finc_future_value_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "fv_dialog");
+    button = GET_WIDGET("calc_finc_periodic_payment_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "pmt_dialog");
+    button = GET_WIDGET("calc_finc_present_value_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "pv_dialog");
+    button = GET_WIDGET("calc_finc_periodic_interest_rate_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "rate_dialog");
+    button = GET_WIDGET("calc_finc_straight_line_depreciation_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "sln_dialog");
+    button = GET_WIDGET("calc_finc_sum_of_the_years_digits_depreciation_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "syd_dialog");
+    button = GET_WIDGET("calc_finc_term_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "term_dialog");
+}
+
+static void
 update_constants_menu(void)
 {
     char mline[MAXLINE], value[MAXLINE];
@@ -1811,13 +1912,18 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
     int function;
     GtkWidget *menu;
     GdkPoint loc;
+    char* dialog;
     
     function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
                                                  "calc_function"));
     menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
-    
-    if (menu == NULL) {
+   
+    dialog = g_object_get_data(G_OBJECT(widget), "finc_dialog");
+
+    if (menu == NULL && dialog == NULL) {
         do_button(function, 0);
+    } else if (dialog != NULL) {
+        do_finc(dialog);
     } else {
         /* If gcalctool is being driven by gok, the on-screen keyboard 
          * assistive technology, it's possible that the event returned by 

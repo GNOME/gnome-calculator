@@ -28,6 +28,8 @@ gcalctool_SOURCES = \
 	mp.h \
 	mpmath.c \
 	mpmath.h \
+	financial.c \
+	financial.h \
 	parser.c \
 	parser.h \
 	parser_mac.h \
@@ -35,8 +37,8 @@ gcalctool_SOURCES = \
 	register.h \
 	gtk.c \
 	ui.h \
-        unittest.c \
-        unittest.h \
+	unittest.c \
+	unittest.h \
 	ce_parser.c \
 	ce_parser.h \
 	ce_parser.tab.h
@@ -51,7 +53,7 @@ gcalctool_LDADD = \
 	$(PACKAGE_LIBS) \
 	$(GNOME_UTILS_LIBS) \
 	$(GCONF_LIBS) \
-        libparser.a
+	libparser.a
 
 libparser.a: \
 	lex.ce.o\

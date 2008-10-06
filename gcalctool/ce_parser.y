@@ -53,11 +53,8 @@
 %token tCLR
 %token tCOS
 %token tCOSH
-%token tCTRM
-%token tDDB
 %token tEXP
 %token tFRAC
-%token tFV
 %token tINT
 %token tLN
 %token tLOG10
@@ -66,20 +63,14 @@
 %token tNOT
 %token tOR
 %token tPI
-%token tPMT
-%token tPV
 %token tRAND
-%token tRATE
 %token tRCL
 %token tSIN
 %token tSINH
-%token tSLN
 %token tSQRT
 %token tSTO
-%token tSYD
 %token tTAN
 %token tTANH
-%token tTERM
 %token tU16
 %token tU32
 %token tXNOR
@@ -245,16 +236,6 @@ func:
 
 | tU32 term %prec HIGH {calc_u32($2, $$);}
 | tU16 term %prec HIGH {calc_u16($2, $$);}
-
-| tCTRM %prec HIGH {calc_ctrm($$);}
-| tDDB %prec HIGH {calc_ddb($$);}
-| tFV %prec HIGH {calc_fv($$);}
-| tPMT %prec HIGH {calc_pmt($$);}
-| tPV %prec HIGH {calc_pv($$);}
-| tRATE %prec HIGH {calc_rate($$);}
-| tSLN %prec HIGH {calc_sln($$);}
-| tSYD %prec HIGH {calc_syd($$);}
-| tTERM %prec HIGH {calc_term($$);}
 ;
 
 rcl:
