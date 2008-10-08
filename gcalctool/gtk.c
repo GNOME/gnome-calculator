@@ -448,7 +448,9 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *adv_panel;      /* Panel containing advanced mode widgets. */
     GtkWidget *fin_panel;      /* Panel containing financial mode widgets. */
     GtkWidget *sci_panel;      /* Panel containing scientific mode widgets. */
-    GtkWidget *mode_panel;     /* Panel containing scientific mode widgets. */
+    GtkWidget *prog_panel;     /* Panel containing programming mode widgets. */
+    GtkWidget *sci_mode_panel; /* Panel containing scientific mode widgets. */
+    GtkWidget *prog_mode_panel;/* Panel containing programming mode widgets. */
     
     /* Labels for popup menus */
     GtkWidget *constant_menu_labels[MAX_CONSTANTS];
@@ -797,10 +799,13 @@ ui_set_mode(enum mode_type mode)
     g_object_set(G_OBJECT(X->bas_panel),  "visible", mode == BASIC, NULL);
     g_object_set(G_OBJECT(X->adv_panel),  "visible", mode != BASIC, NULL);
     g_object_set(G_OBJECT(X->fin_panel),  "visible", mode == FINANCIAL, NULL);
-    g_object_set(G_OBJECT(X->mode_panel), "visible", 
-                 mode == SCIENTIFIC || mode == PROGRAMMING, NULL);
-    g_object_set(G_OBJECT(X->sci_panel),  "visible", 
-                 mode == SCIENTIFIC || mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X->sci_mode_panel), "visible", 
+                          mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X->prog_mode_panel), "visible", 
+                          mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X->sci_panel),  "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X->prog_panel),  "visible", 
+                 mode == PROGRAMMING, NULL);
     g_object_set(G_OBJECT(X->bit_panel),  "visible", mode == PROGRAMMING, NULL);
     gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
                              mode == SCIENTIFIC || mode == PROGRAMMING);
@@ -826,14 +831,26 @@ ui_set_mode(enum mode_type mode)
         }
     }
 
-    if (GTK_WIDGET_VISIBLE(X->mode_panel)) {
-        gtk_widget_size_request(X->mode_panel, r);
+    if (GTK_WIDGET_VISIBLE(X->sci_mode_panel)) {
+        gtk_widget_size_request(X->sci_mode_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
+    }
+
+    if (GTK_WIDGET_VISIBLE(X->prog_mode_panel)) {
+        gtk_widget_size_request(X->prog_mode_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
 
     if (GTK_WIDGET_VISIBLE(X->sci_panel)) {
         gtk_widget_size_request(X->sci_panel, r);
+        w = MAX(w, r->width);
+        h += r->height;
+    }
+    
+    if (GTK_WIDGET_VISIBLE(X->prog_panel)) {
+        gtk_widget_size_request(X->prog_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
@@ -989,7 +1006,8 @@ ui_set_error_state(gboolean error)
         ui_set_base(v->base);
     }
 
-    gtk_widget_set_sensitive(X->mode_panel, !v->error);
+    gtk_widget_set_sensitive(X->sci_mode_panel, !v->error);
+    gtk_widget_set_sensitive(X->prog_mode_panel, !v->error);
 
     gtk_widget_set_sensitive(GET_WIDGET("copy_menu"),            !v->error);
     gtk_widget_set_sensitive(GET_WIDGET("paste_menu"),           !v->error); 
@@ -2536,12 +2554,14 @@ create_kframe()
     X->display_item = GET_WIDGET("displayitem"),
     X->bas_panel    = GET_WIDGET("basic_panel");
     X->sci_panel    = GET_WIDGET("scientific_panel");
+    X->prog_panel   = GET_WIDGET("programming_panel");
     X->adv_panel    = GET_WIDGET("advanced_panel");
     X->fin_panel    = GET_WIDGET("financial_panel");
     X->bit_panel    = GET_WIDGET("bit_panel");
     X->clear_buttons[0] = GET_WIDGET("calc_clear_simple_button");
     X->clear_buttons[1] = GET_WIDGET("calc_clear_advanced_button");   
-    X->mode_panel   = GET_WIDGET("mode_panel");
+    X->sci_mode_panel = GET_WIDGET("scientific_mode_panel");
+    X->prog_mode_panel = GET_WIDGET("programming_mode_panel");
     X->trig[0]      = GET_WIDGET("degrees_radio");
     X->trig[1]      = GET_WIDGET("gradians_radio");
     X->trig[2]      = GET_WIDGET("radians_radio");

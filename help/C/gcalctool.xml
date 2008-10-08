@@ -195,7 +195,7 @@
         </varlistentry>
   <varlistentry>
         <term><link linkend="gcalctool-advanced-mode">Advanced </link></term>
-        <listitem><para>Provides advanced calculator functions. You can store numbers in 10 different memory registers, and easily retrieve and replace the numbers in the memory registers. You can use all of the Advanced functions in Financial and Scientific modes.</para></listitem>
+        <listitem><para>Provides advanced calculator functions. You can store numbers in 10 different memory registers, and easily retrieve and replace the numbers in the memory registers. You can use all of the Advanced functions in Financial, Scientific and Programming modes.</para></listitem>
         </varlistentry>
         <varlistentry>
         <term><link linkend="gcalctool-financial-mode">Financial </link></term>
@@ -203,11 +203,11 @@
         </varlistentry>
         <varlistentry>
         <term><link linkend="gcalctool-scientific-mode">Scientific </link></term>
-        <listitem><para>Provides many additional mathematical functions, including trigonometric and bitwise functions. You can also store your own functions and constants, when you use Scientific mode.</para></listitem>
+        <listitem><para>Provides many additional mathematical functions, including trigonometric functions. You can also store your own functions and constants, when you use Scientific mode.</para></listitem>
         </varlistentry>
 		<varlistentry>
 		<term><link linkend="gcalctool-programming-mode">Programming </link></term>
-		<listitem><para>Provides functions useful to a programmer. Currently the same thing as the scientific mode, but with a bit editor.</para></listitem>
+		<listitem><para>Provides functions useful to a programmer, including bitwise functions and a bit editor.</para></listitem>
 		</varlistentry>
      </variablelist>
 
@@ -300,7 +300,7 @@
                   </varlistentry>
                   <varlistentry> <term>Mode area</term>
                          <listitem>
-                                <para>The mode area displays the buttons for the current mode. The Basic mode buttons are always displayed. Advanced mode buttons are also available in Financial and Scientific modes.  </para>
+                                <para>The mode area displays the buttons for the current mode. The Basic mode buttons are always displayed. Advanced mode buttons are also available in Financial, Scientific and Programming modes.  </para>
                          </listitem>
                   </varlistentry>
                   <varlistentry> <term>Popup Menu</term>
@@ -1123,50 +1123,6 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
 		  </tgroup>
 		</informaltable>
     </sect3>
-    <sect3 id="gcalctool-num-base"> 
-      <title>To Set the Numeric Base</title> 
-      <para>To set the numeric base, select one of the buttons described in <xref linkend="gcalctool-TBL-num-base"/>. </para>
-                <table id="gcalctool-TBL-num-base" frame="all">
-                  <title>Setting the Numeric Base</title> 
-                  <tgroup cols="3" colsep="1" rowsep="1">
-                         <colspec colname="COLSPEC0" colwidth="50*"/>
-                         <colspec colname="COLSPEC1"/>
-                         <colspec colname="COLSPEC2" colwidth="50*"/>
-                         <thead>
-                                <row valign="top">
-                                  <entry colname="COLSPEC0">
-                                         <para>Function</para></entry>
-                                  <entry colname="COLSPEC1">
-                                         <para>Button</para></entry>
-                                  <entry colname="COLSPEC2">
-                                         <para>Description</para></entry>
-                                </row>
-                         </thead> 
-                         <tbody> 
-                           <row valign="top">
-                             <entry><para>Binary Base</para> </entry>
-                             <entry><para><guibutton>Bin</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to binary, that is, base 2.</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Octal Base</para> </entry>
-                             <entry><para><guibutton>Oct</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to octal, that is, base 8.</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Decimal Base</para> </entry>
-                             <entry><para><guibutton>Dec</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to decimal, that is, base 10. Decimal is the default numeric base. If you change from Scientific mode to another mode, &app; automatically sets the numeric base to decimal.</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Hexadecimal Base</para> </entry>
-                             <entry><para><guibutton>Hex</guibutton></para></entry>
-                             <entry><para>Sets the numeric base to hexadecimal, that is, base 16.</para></entry>
-                           </row>
-			 </tbody>
-		  </tgroup>
-		</table>
-    </sect3>
     <sect3 id="gcalctool-display-type"> 
       <title>To Set the Display Type</title> 
       <para>To set the display type, select one of the buttons described in <xref linkend="gcalctool-TBL-display-type"/>. </para>
@@ -1449,74 +1405,6 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                   <para>Common antilogarithm and natural antilogarithm are not supported in this version of &app;.</para>
                 </note>
     </sect3>
-    <sect3 id="gcalctool-logic-calc"> 
-      <title>To Perform Bitwise Calculations</title> 
-      <para>To perform bitwise calculations, use the buttons described in <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
-                <table id="gcalctool-TBL-logic-calc" frame="all">
-                  <title>Performing Bitwise Calculations</title> 
-                  <tgroup cols="5" colsep="1" rowsep="1">
-                         <colspec colname="COLSPEC0" colwidth="50*"/>
-                         <colspec colname="COLSPEC1"/>
-                         <colspec colname="COLSPEC2" colwidth="50*"/>
-                         <colspec colname="COLSPEC3" colwidth="50*"/>
-                         <colspec colname="COLSPEC4" colwidth="50*"/>
-                         <thead>
-                                <row valign="top">
-                                  <entry colname="COLSPEC0">
-                                         <para>Function</para></entry>
-                                  <entry colname="COLSPEC1">
-                                         <para>Button</para></entry>
-                                  <entry colname="COLSPEC2">
-                                         <para>Description</para></entry>
-                                  <entry colname="COLSPEC3">
-                                         <para>Example</para></entry>
-                                  <entry colname="COLSPEC4">
-                                         <para>Result</para></entry>
-                                </row>
-                         </thead> 
-                         <tbody> 
-                           <row valign="top">
-                             <entry><para>Bitwise OR</para> </entry>
-                             <entry><para><guibutton>OR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>10001000 <guibutton>OR</guibutton> 00010001</para></entry>
-                             <entry><para>10011001</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Bitwise AND</para> </entry>
-                             <entry><para><guibutton>AND</guibutton></para></entry>
-                             <entry><para>Performs a bitwise AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>10101010 <guibutton>AND</guibutton> 00110011</para></entry>
-                             <entry><para>100010</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Bitwise NOT</para> </entry>
-                             <entry><para><guibutton>NOT</guibutton></para></entry>
-                             <entry><para>Performs a bitwise NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
-                             <entry><para>For arithmetic precedence mode:</para>
-                             <para><guibutton>NOT</guibutton> 1357ACE</para>
-                             <para>For non-arithmetic precedence mode:</para>
-                             <para>1357ACE <guibutton>NOT</guibutton></para></entry>
-                             <entry><para>FECA8531</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Bitwise XOR</para> </entry>
-                             <entry><para><guibutton>XOR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>1100 <guibutton>XOR</guibutton> 1010</para></entry>
-                             <entry><para>110</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Bitwise XNOR</para> </entry>
-                             <entry><para><guibutton>XNOR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
-                             <entry><para>1100 <guibutton>XNOR</guibutton> 1010</para></entry>
-                             <entry><para>11111111111111111111111111111001</para></entry>
-                           </row>
-			 </tbody>
-		  </tgroup>
-		</table>
-    </sect3>
     <sect3 id="gcalctool-enter-exp"> 
       <title>To Enter Exponential Numbers</title> 
       <para>To enter exponential numbers, use the <guibutton>Exp</guibutton> button.</para>
@@ -1797,6 +1685,220 @@ after entering the exponent.</para>
         </listitem>
       </orderedlist>
     </sect3>
+    <sect3 id="gcalctool-misc-calc"> 
+      <title>To Perform Miscellaneous Scientific Calculations</title> 
+      <para>To perform miscellaneous scientific calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
+                <table id="gcalctool-TBL-misc-calc" frame="all">
+                  <title>Performing Miscellaneous Scientific Calculations</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Function</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Button</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Description</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Example</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Result</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                                                      <row valign="top">
+                             <entry><para>e to the <replaceable>x</replaceable> power</para> </entry>
+                             <entry><para>e<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>Calculates the value of <literal>e</literal> raised to the power of the current value in the display area.</para></entry>
+                             <entry><para>2 e<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>7.39</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>10 to the <replaceable>x</replaceable> power</para> </entry>
+                             <entry><para>10<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>Calculates the value of 10 raised to the power of the current value in the display area.</para></entry>
+                             <entry><para>2 10<superscript><replaceable>x</replaceable></superscript></para></entry>
+                             <entry><para>100</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>x to the <replaceable>y</replaceable> power</para> </entry>
+                             <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
+                             <entry><para>Raises the current value in the display area to the power of the next value that you enter.</para></entry>
+                             <entry><para>2 <replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>16</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><replaceable>x</replaceable> Factorial</para> </entry>
+                             <entry><para><guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
+                             <entry><para>Calculates the factorial of the current value in the display area. <replaceable>x</replaceable> factorial is <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. This function applies only to positive integers.</para></entry>
+                             <entry><para>4 <guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
+                             <entry><para>24</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Modulus Division</para> </entry>
+                             <entry><para><guibutton>Mod</guibutton></para></entry>
+                             <entry><para>Divides the current integer value in the display area by the next integer number that you enter, displaying the remainder.</para></entry>
+                             <entry><para>15 <guibutton>Mod</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
+                             <entry><para>3</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Random Number Generator</para> </entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>Generates a random number in the range 0.0 to 1.0 then displays the random number in the display area.</para></entry>
+                             <entry><para><guibutton>Rand</guibutton></para></entry>
+                             <entry><para>0.14</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    </sect2> 
+    <sect2 id="gcalctool-programming-mode">
+      <title>To Perform Programming Calculations</title>
+      <para>To change to Programming mode, choose 
+	<menuchoice> 
+	  <guimenu>View</guimenu> 
+	  <guimenuitem>Programming</guimenuitem> 
+	</menuchoice>. 
+      </para>
+    <para>When you change to Programming mode, the following widget is displayed above the Base and Advanced mode buttons:</para>
+
+    <!-- ==== Figure ==== -->
+      <figure id="gcalctool-FIG-programming"> 
+	<title>&app; Programming Mode Buttons</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/gcalctool_programming_window.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Shows &app; Programming mode buttons.  </phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+    <!-- ==== End of Figure ==== -->
+    <sect3 id="gcalctool-num-base"> 
+      <title>To Set the Numeric Base</title> 
+      <para>To set the numeric base, select one of the buttons described in <xref linkend="gcalctool-TBL-num-base"/>. </para>
+                <table id="gcalctool-TBL-num-base" frame="all">
+                  <title>Setting the Numeric Base</title> 
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Function</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Button</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Description</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Binary Base</para> </entry>
+                             <entry><para><guibutton>Bin</guibutton></para></entry>
+                             <entry><para>Sets the numeric base to binary, that is, base 2.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Octal Base</para> </entry>
+                             <entry><para><guibutton>Oct</guibutton></para></entry>
+                             <entry><para>Sets the numeric base to octal, that is, base 8.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Decimal Base</para> </entry>
+                             <entry><para><guibutton>Dec</guibutton></para></entry>
+                             <entry><para>Sets the numeric base to decimal, that is, base 10. Decimal is the default numeric base. If you change from Programming mode to another mode, &app; automatically sets the numeric base to decimal.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Hexadecimal Base</para> </entry>
+                             <entry><para><guibutton>Hex</guibutton></para></entry>
+                             <entry><para>Sets the numeric base to hexadecimal, that is, base 16.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
+    <sect3 id="gcalctool-calc-bit-manipulation-ext">
+      <title>To Perform Bit Manipulations on Integers</title>
+      <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's in the Bit Editor. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
+    </sect3>
+    <sect3 id="gcalctool-logic-calc"> 
+      <title>To Perform Bitwise Calculations</title> 
+      <para>To perform bitwise calculations, use the buttons described in <xref linkend="gcalctool-TBL-logic-calc"/>. </para>
+                <table id="gcalctool-TBL-logic-calc" frame="all">
+                  <title>Performing Bitwise Calculations</title> 
+                  <tgroup cols="5" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <colspec colname="COLSPEC3" colwidth="50*"/>
+                         <colspec colname="COLSPEC4" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Function</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Button</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Description</para></entry>
+                                  <entry colname="COLSPEC3">
+                                         <para>Example</para></entry>
+                                  <entry colname="COLSPEC4">
+                                         <para>Result</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>Bitwise OR</para> </entry>
+                             <entry><para><guibutton>OR</guibutton></para></entry>
+                             <entry><para>Performs a bitwise OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>10001000 <guibutton>OR</guibutton> 00010001</para></entry>
+                             <entry><para>10011001</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Bitwise AND</para> </entry>
+                             <entry><para><guibutton>AND</guibutton></para></entry>
+                             <entry><para>Performs a bitwise AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>10101010 <guibutton>AND</guibutton> 00110011</para></entry>
+                             <entry><para>100010</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Bitwise NOT</para> </entry>
+                             <entry><para><guibutton>NOT</guibutton></para></entry>
+                             <entry><para>Performs a bitwise NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
+                             <entry><para>For arithmetic precedence mode:</para>
+                             <para><guibutton>NOT</guibutton> 1357ACE</para>
+                             <para>For non-arithmetic precedence mode:</para>
+                             <para>1357ACE <guibutton>NOT</guibutton></para></entry>
+                             <entry><para>FECA8531</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Bitwise XOR</para> </entry>
+                             <entry><para><guibutton>XOR</guibutton></para></entry>
+                             <entry><para>Performs a bitwise XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>1100 <guibutton>XOR</guibutton> 1010</para></entry>
+                             <entry><para>110</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Bitwise XNOR</para> </entry>
+                             <entry><para><guibutton>XNOR</guibutton></para></entry>
+                             <entry><para>Performs a bitwise XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>1100 <guibutton>XNOR</guibutton> 1010</para></entry>
+                             <entry><para>11111111111111111111111111111001</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
     <sect3 id="gcalctool-num-manip"> 
       <title>To Manipulate Binary Numbers</title> 
       <para>To manipulate binary numbers, use the buttons described in <xref linkend="gcalctool-TBL-num-manip"/>. </para>
@@ -1881,11 +1983,11 @@ after entering the exponent.</para>
       </informaltable>
 
     </sect3>
-    <sect3 id="gcalctool-misc-calc"> 
-      <title>To Perform Miscellaneous Scientific Calculations</title> 
-      <para>To perform miscellaneous scientific calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-calc"/>. </para>
-                <table id="gcalctool-TBL-misc-calc" frame="all">
-                  <title>Performing Miscellaneous Scientific Calculations</title> 
+	<sect3 id="gcalctool-misc-prog">
+      <title>To Perform Miscellaneous Programming Calculations</title> 
+      <para>To perform miscellaneous programming calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-prog"/>. </para>
+                <table id="gcalctool-TBL-misc-prog" frame="all">
+                  <title>Performing Miscellaneous Programming Calculations</title> 
                   <tgroup cols="5" colsep="1" rowsep="1">
                          <colspec colname="COLSPEC0" colwidth="50*"/>
                          <colspec colname="COLSPEC1"/>
@@ -1907,48 +2009,6 @@ after entering the exponent.</para>
                                 </row>
                          </thead> 
                          <tbody> 
-                                                      <row valign="top">
-                             <entry><para>e to the <replaceable>x</replaceable> power</para> </entry>
-                             <entry><para>e<superscript><replaceable>x</replaceable></superscript></para></entry>
-                             <entry><para>Calculates the value of <literal>e</literal> raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 e<superscript><replaceable>x</replaceable></superscript></para></entry>
-                             <entry><para>7.39</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>10 to the <replaceable>x</replaceable> power</para> </entry>
-                             <entry><para>10<superscript><replaceable>x</replaceable></superscript></para></entry>
-                             <entry><para>Calculates the value of 10 raised to the power of the current value in the display area.</para></entry>
-                             <entry><para>2 10<superscript><replaceable>x</replaceable></superscript></para></entry>
-                             <entry><para>100</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>x to the <replaceable>y</replaceable> power</para> </entry>
-                             <entry><para><replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript></para></entry>
-                             <entry><para>Raises the current value in the display area to the power of the next value that you enter.</para></entry>
-                             <entry><para>2 <replaceable>x</replaceable><superscript><replaceable>y</replaceable></superscript> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
-                             <entry><para>16</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><replaceable>x</replaceable> Factorial</para> </entry>
-                             <entry><para><guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
-                             <entry><para>Calculates the factorial of the current value in the display area. <replaceable>x</replaceable> factorial is <replaceable>x</replaceable>*(<replaceable>x</replaceable>-1)*(<replaceable>x</replaceable>-2)...*1. This function applies only to positive integers.</para></entry>
-                             <entry><para>4 <guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
-                             <entry><para>24</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Modulus Division</para> </entry>
-                             <entry><para><guibutton>Mod</guibutton></para></entry>
-                             <entry><para>Divides the current integer value in the display area by the next integer number that you enter, displaying the remainder.</para></entry>
-                             <entry><para>15 <guibutton>Mod</guibutton> <guibutton>4</guibutton> <guibutton>=</guibutton></para></entry>
-                             <entry><para>3</para></entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para>Random Number Generator</para> </entry>
-                             <entry><para><guibutton>Rand</guibutton></para></entry>
-                             <entry><para>Generates a random number in the range 0.0 to 1.0 then displays the random number in the display area.</para></entry>
-                             <entry><para><guibutton>Rand</guibutton></para></entry>
-                             <entry><para>0.14</para></entry>
-                           </row>
                            <row valign="top">
                              <entry><para>Hexadecimal Numerals</para> </entry>
                              <entry><para><guibutton>A</guibutton> to <guibutton>F</guibutton> inclusive</para></entry>
@@ -1959,37 +2019,7 @@ after entering the exponent.</para>
 			 </tbody>
 		  </tgroup>
 		</table>
-    </sect3>
-    </sect2> 
-    <sect2 id="gcalctool-programming-mode">
-      <title>To Perform Programming Calculations</title>
-      <para>To change to Programming mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Programming</guimenuitem> 
-	</menuchoice>. 
-      </para>
-    <para>When you change to Programming mode, the following widget is displayed above the Scientific mode buttons:</para>
-
-    <!-- ==== Figure ==== -->
-      <figure id="gcalctool-FIG-programming"> 
-	<title>&app; Programming Mode Buttons</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_programming_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Programming mode buttons.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-    <!-- ==== End of Figure ==== -->
-    <sect3 id="gcalctool-calc-bit-manipulation-ext">
-      <title>To Perform Bit Manipulations on Integers</title>
-      <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's in the Bit Editor. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
-    </sect3>
+	 </sect3>
     </sect2>
 <!-- ============= Undo and Redo ======================== -->
   <sect2 id="gcalctool-undo-redo">

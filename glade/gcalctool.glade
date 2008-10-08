@@ -243,7 +243,7 @@
 		      <property name="group">view_basic_menu</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
-		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sun, 27 Sep 2008 22:50:04 GMT"/>
+		      <signal name="activate" handler="mode_radio_cb" last_modification_time="Sat, 27 Sep 2008 22:50:04 GMT"/>
 		      <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
@@ -413,7 +413,121 @@
       </child>
 
       <child>
-	<widget class="GtkVBox" id="mode_panel">
+	<widget class="GtkHBox" id="programming_mode_panel">
+	  <property name="visible">True</property>
+	  <property name="homogeneous">False</property>
+	  <property name="spacing">0</property>
+
+	  <child>
+	    <widget class="GtkHBox" id="hbox6">
+	      <property name="visible">True</property>
+	      <property name="homogeneous">False</property>
+	      <property name="spacing">0</property>
+
+	      <child>
+		<widget class="GtkRadioButton" id="binary_radio">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Set numeric base to binary (base 2)</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">_Bin</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		  <signal name="toggled" handler="base_cb"/>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkRadioButton" id="octal_radio">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Set numeric base to octal (base 8)</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">_Oct</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		  <property name="group">binary_radio</property>
+		  <signal name="toggled" handler="base_cb"/>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkRadioButton" id="decimal_radio">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Set numeric base to decimal (base 10)</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">_Dec</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		  <property name="group">binary_radio</property>
+		  <signal name="toggled" handler="base_cb"/>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkRadioButton" id="hexadecimal_radio">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Set numeric base to hexadecimal (base 16)</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">He_x</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		  <property name="group">binary_radio</property>
+		  <signal name="toggled" handler="base_cb"/>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">True</property>
+	      <property name="pack_type">GTK_PACK_END</property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">False</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkVBox" id="scientific_mode_panel">
 	  <property name="border_width">6</property>
 	  <property name="visible">True</property>
 	  <property name="homogeneous">False</property>
@@ -488,175 +602,6 @@
 		      <property name="draw_indicator">True</property>
 		      <property name="group">degrees_radio</property>
 		      <signal name="toggled" handler="trig_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-		</widget>
-		<packing>
-		  <property name="padding">0</property>
-		  <property name="expand">False</property>
-		  <property name="fill">True</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkHBox" id="hbox6">
-		  <property name="visible">True</property>
-		  <property name="homogeneous">False</property>
-		  <property name="spacing">0</property>
-
-		  <child>
-		    <widget class="GtkRadioButton" id="binary_radio">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set numeric base to binary (base 2)</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Bin</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <signal name="toggled" handler="base_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkRadioButton" id="octal_radio">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set numeric base to octal (base 8)</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Oct</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <property name="group">binary_radio</property>
-		      <signal name="toggled" handler="base_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkRadioButton" id="decimal_radio">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set numeric base to decimal (base 10)</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Dec</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <property name="group">binary_radio</property>
-		      <signal name="toggled" handler="base_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkRadioButton" id="hexadecimal_radio">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set numeric base to hexadecimal (base 16)</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">He_x</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <property name="group">binary_radio</property>
-		      <signal name="toggled" handler="base_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-		</widget>
-		<packing>
-		  <property name="padding">0</property>
-		  <property name="expand">False</property>
-		  <property name="fill">True</property>
-		  <property name="pack_type">GTK_PACK_END</property>
-		</packing>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">True</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkHBox" id="hbox7">
-	      <property name="visible">True</property>
-	      <property name="homogeneous">False</property>
-	      <property name="spacing">0</property>
-
-	      <child>
-		<widget class="GtkHBox" id="hbox8">
-		  <property name="visible">True</property>
-		  <property name="homogeneous">False</property>
-		  <property name="spacing">0</property>
-
-		  <child>
-		    <widget class="GtkCheckButton" id="inverse_check">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set inverse option for trigonometric functions</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Inv</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <signal name="toggled" handler="inv_cb"/>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkCheckButton" id="hyperbolic_check">
-		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set hyperbolic option for trigonometric functions</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">H_yp</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
-		      <signal name="toggled" handler="hyp_cb"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -757,6 +702,78 @@
 	      <property name="fill">True</property>
 	    </packing>
 	  </child>
+
+	  <child>
+	    <widget class="GtkHBox" id="hbox7">
+	      <property name="visible">True</property>
+	      <property name="homogeneous">False</property>
+	      <property name="spacing">0</property>
+
+	      <child>
+		<widget class="GtkHBox" id="hbox8">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkCheckButton" id="inverse_check">
+		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Set inverse option for trigonometric functions</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">_Inv</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <property name="active">False</property>
+		      <property name="inconsistent">False</property>
+		      <property name="draw_indicator">True</property>
+		      <signal name="toggled" handler="inv_cb"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkCheckButton" id="hyperbolic_check">
+		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Set hyperbolic option for trigonometric functions</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">H_yp</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <property name="active">False</property>
+		      <property name="inconsistent">False</property>
+		      <property name="draw_indicator">True</property>
+		      <signal name="toggled" handler="hyp_cb"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">False</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<placeholder/>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">True</property>
+	    </packing>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>
@@ -780,8 +797,7 @@
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Sum-of-the years'-digits depreciation [y]</property>
 	      <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-http://en.wikipedia.org/wiki/Depreciation">Syd</property>
+The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -833,7 +849,7 @@ http://en.wikipedia.org/wiki/Depreciation">Sln</property>
 	      <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
 http://en.wikipedia.org/wiki/Interest
 
-                              
+                                  
 
 ">Rate</property>
 	      <property name="use_underline">True</property>
@@ -3975,34 +3991,11 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	<widget class="GtkTable" id="scientific_panel">
 	  <property name="border_width">6</property>
 	  <property name="visible">True</property>
-	  <property name="n_rows">4</property>
+	  <property name="n_rows">2</property>
 	  <property name="n_columns">8</property>
 	  <property name="homogeneous">True</property>
 	  <property name="row_spacing">6</property>
 	  <property name="column_spacing">6</property>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_d_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit D [d]</property>
-	      <property name="label" translatable="yes">D</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit D</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">0</property>
-	      <property name="right_attach">1</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
 
 	  <child>
 	    <widget class="GtkButton" id="calc_functions_button">
@@ -4010,9 +4003,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="tooltip" translatable="yes">User-defined functions [F]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">User-defined functions</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4038,10 +4028,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes">Fun</atkproperty>
-			<atkproperty name="AtkObject::accessible_description" translatable="yes">User-defined functions</atkproperty>
-		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4080,164 +4066,11 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_shift_left_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the left [&lt;]</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift left</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkHBox" id="hbox11">
-		  <property name="visible">True</property>
-		  <property name="homogeneous">False</property>
-		  <property name="spacing">3</property>
-
-		  <child>
-		    <widget class="GtkLabel" id="label7">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes" comments="Shift left">&lt;</property>
-		      <property name="use_underline">False</property>
-		      <property name="use_markup">False</property>
-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
-		      <property name="wrap">False</property>
-		      <property name="selectable">False</property>
-		      <property name="xalign">0.5</property>
-		      <property name="yalign">0.5</property>
-		      <property name="xpad">0</property>
-		      <property name="ypad">0</property>
-		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		      <property name="width_chars">-1</property>
-		      <property name="single_line_mode">False</property>
-		      <property name="angle">0</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift left</atkproperty>
-		      </accessibility>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkArrow" id="arrow5">
-		      <property name="visible">True</property>
-		      <property name="arrow_type">GTK_ARROW_DOWN</property>
-		      <property name="shadow_type">GTK_SHADOW_OUT</property>
-		      <property name="xalign">0.5</property>
-		      <property name="yalign">0.5</property>
-		      <property name="xpad">0</property>
-		      <property name="ypad">0</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">False</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-		</widget>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">0</property>
-	      <property name="right_attach">1</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_shift_right_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the right [&gt;]</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift right</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkHBox" id="hbox10">
-		  <property name="visible">True</property>
-		  <property name="homogeneous">False</property>
-		  <property name="spacing">3</property>
-
-		  <child>
-		    <widget class="GtkLabel" id="label6">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes" comments="Shift right">&gt;</property>
-		      <property name="use_underline">False</property>
-		      <property name="use_markup">False</property>
-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
-		      <property name="wrap">False</property>
-		      <property name="selectable">False</property>
-		      <property name="xalign">0.5</property>
-		      <property name="yalign">0.5</property>
-		      <property name="xpad">0</property>
-		      <property name="ypad">0</property>
-		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		      <property name="width_chars">-1</property>
-		      <property name="single_line_mode">False</property>
-		      <property name="angle">0</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes">Shift right</atkproperty>
-		      </accessibility>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkArrow" id="arrow4">
-		      <property name="visible">True</property>
-		      <property name="arrow_type">GTK_ARROW_DOWN</property>
-		      <property name="shadow_type">GTK_SHADOW_OUT</property>
-		      <property name="xalign">0.5</property>
-		      <property name="yalign">0.5</property>
-		      <property name="xpad">0</property>
-		      <property name="ypad">0</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">False</property>
-		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-		</widget>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">2</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkButton" id="calc_constants_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Constants [#]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Constants</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4263,10 +4096,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes">Con</atkproperty>
-			<atkproperty name="AtkObject::accessible_description" translatable="yes">Constants</atkproperty>
-		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4305,14 +4134,127 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  </child>
 
 	  <child>
+	    <widget class="GtkButton" id="calc_natural_logarithm_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Natural log [N]</property>
+	      <property name="label" translatable="yes" comments="Natural logarithm">Ln</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_logarithm_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkLabel" id="label56">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;10&lt;/sub&gt;</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">True</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0.5</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_logarithm2_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Base 2 log [H]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkLabel" id="label55">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;2&lt;/sub&gt;</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">True</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0.5</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">2</property>
+	      <property name="right_attach">3</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_exponential_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
+	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">2</property>
+	      <property name="right_attach">3</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
 	    <widget class="GtkButton" id="calc_accuracy_button">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Set accuracy from 0 to 9 numeric places [A]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Accuracy</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4338,9 +4280,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
-		      <accessibility>
-			<atkproperty name="AtkObject::accessible_name" translatable="yes">Acc</atkproperty>
-		      </accessibility>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -4373,8 +4312,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">8</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
@@ -4386,9 +4325,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Random number</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
@@ -4396,307 +4332,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">8</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_xor_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise XOR [x]</property>
-	      <property name="label" translatable="yes">XOR</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XOR</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_xnor_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise XNOR [n]</property>
-	      <property name="label" translatable="yes">XNOR</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise XNOR</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">7</property>
-	      <property name="right_attach">8</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_not_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise NOT [~]</property>
-	      <property name="label" translatable="yes">NOT</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise NOT</atkproperty>
-		<atkproperty name="AtkObject::accessible_description" translatable="yes">Bitwise NOT [~]</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">5</property>
-	      <property name="right_attach">6</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_and_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise AND [&amp;]</property>
-	      <property name="label" translatable="yes">AND</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise AND</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">4</property>
-	      <property name="right_attach">5</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_or_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise OR [|]</property>
-	      <property name="label" translatable="yes">OR</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Bitwise OR</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">3</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_mask_16_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">16-bit unsigned integer value of display (])</property>
-	      <property name="label" translatable="yes" comments="16 bit unsigned integer">&amp;16</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">16 bit unsigned integer</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">2</property>
-	      <property name="right_attach">3</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_f_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit F [f]</property>
-	      <property name="label" translatable="yes">F</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit F</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">2</property>
-	      <property name="right_attach">3</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_c_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit C [c]</property>
-	      <property name="label" translatable="yes">C</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit C</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">2</property>
-	      <property name="right_attach">3</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_b_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit B [b]</property>
-	      <property name="label" translatable="yes">B</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit B</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">2</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_e_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit E [e]</property>
-	      <property name="label" translatable="yes">E</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit E</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">2</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_a_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit A [a]</property>
-	      <property name="label" translatable="yes">A</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Hexadecimal digit A</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">0</property>
-	      <property name="right_attach">1</property>
-	      <property name="top_attach">3</property>
-	      <property name="bottom_attach">4</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_pow_e_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">e to the power of displayed value [{]</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">E to the x</atkproperty>
-	      </accessibility>
-	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkLabel" id="label11">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="E to the power of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">e&lt;sup&gt;x&lt;/sup&gt;</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">True</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_name" translatable="yes">ex</atkproperty>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">E to the x</atkproperty>
-		  </accessibility>
-		</widget>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">3</property>
-	      <property name="right_attach">4</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
@@ -4706,10 +4343,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="tooltip" translatable="yes">Factorial of displayed value [!]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">Factorial</atkproperty>
-		<atkproperty name="AtkObject::accessible_description" translatable="yes">Factorial</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4729,10 +4362,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_name" translatable="yes">Factorial</atkproperty>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Factorial</atkproperty>
-		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4741,8 +4370,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">7</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
@@ -4752,9 +4381,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="tooltip" translatable="yes">Raise displayed value to the power of y [^]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">X to the y</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4774,10 +4400,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_name" translatable="yes">xy</atkproperty>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">X to the y</atkproperty>
-		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4786,8 +4408,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">6</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
@@ -4797,9 +4419,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="tooltip" translatable="yes">10 to the power of displayed value [}]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
-	      <accessibility>
-		<atkproperty name="AtkObject::accessible_name" translatable="yes">10 to the x</atkproperty>
-	      </accessibility>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
@@ -4819,10 +4438,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
 		  <property name="angle">0</property>
-		  <accessibility>
-		    <atkproperty name="AtkObject::accessible_name" translatable="yes">10x</atkproperty>
-		    <atkproperty name="AtkObject::accessible_description" translatable="yes">Ten to the x</atkproperty>
-		  </accessibility>
 		</widget>
 	      </child>
 	    </widget>
@@ -4831,23 +4446,23 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">5</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_cosine_button">
+	    <widget class="GtkButton" id="calc_pow_e_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Cosine [J]</property>
+	      <property name="tooltip" translatable="yes">e to the power of displayed value [{]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="cosine_label">
+		<widget class="GtkLabel" id="label11">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Cos</property>
+		  <property name="label" translatable="yes" comments="E to the power of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">e&lt;sup&gt;x&lt;/sup&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4867,48 +4482,30 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">3</property>
 	      <property name="right_attach">4</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_sine_button">
+	    <widget class="GtkButton" id="calc_modulus_divide_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Sine [K]</property>
+	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
+	      <property name="label" translatable="yes">Mod</property>
+	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkLabel" id="sine_label">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Sin</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">True</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-	      </child>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">4</property>
-	      <property name="right_attach">5</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="left_attach">6</property>
+	      <property name="right_attach">7</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
@@ -4943,105 +4540,25 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">5</property>
 	      <property name="right_attach">6</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_modulus_divide_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
-	      <property name="label" translatable="yes">Mod</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_exponential_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
-	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">7</property>
-	      <property name="right_attach">8</property>
-	      <property name="top_attach">2</property>
-	      <property name="bottom_attach">3</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_mask_32_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
-	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">2</property>
-	      <property name="right_attach">3</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_natural_logarithm_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Natural log [N]</property>
-	      <property name="label" translatable="yes" comments="Natural logarithm">Ln</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">3</property>
-	      <property name="right_attach">4</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_logarithm_button">
+	    <widget class="GtkButton" id="calc_sine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
+	      <property name="tooltip" translatable="yes">Sine [K]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="label56">
+		<widget class="GtkLabel" id="sine_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;10&lt;/sub&gt;</property>
+		  <property name="label" translatable="yes" comments="Factorial">Sin</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5063,23 +4580,23 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="right_attach">5</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 
 	  <child>
-	    <widget class="GtkButton" id="calc_logarithm2_button">
+	    <widget class="GtkButton" id="calc_cosine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Base 2 log [H]</property>
+	      <property name="tooltip" translatable="yes">Cosine [J]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="label55">
+		<widget class="GtkLabel" id="cosine_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;2&lt;/sub&gt;</property>
+		  <property name="label" translatable="yes" comments="Factorial">Cos</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5097,12 +4614,427 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      </child>
 	    </widget>
 	    <packing>
+	      <property name="left_attach">3</property>
+	      <property name="right_attach">4</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="padding">0</property>
+	  <property name="expand">True</property>
+	  <property name="fill">True</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkTable" id="programming_panel">
+	  <property name="border_width">6</property>
+	  <property name="visible">True</property>
+	  <property name="n_rows">2</property>
+	  <property name="n_columns">8</property>
+	  <property name="homogeneous">True</property>
+	  <property name="row_spacing">6</property>
+	  <property name="column_spacing">6</property>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_d_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit D [d]</property>
+	      <property name="label" translatable="yes">D</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_e_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit E [e]</property>
+	      <property name="label" translatable="yes">E</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_f_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit F [f]</property>
+	      <property name="label" translatable="yes">F</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">2</property>
+	      <property name="right_attach">3</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_a_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit A [a]</property>
+	      <property name="label" translatable="yes">A</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_b_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit B [b]</property>
+	      <property name="label" translatable="yes">B</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_c_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Hexadecimal digit C [c]</property>
+	      <property name="label" translatable="yes">C</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">2</property>
+	      <property name="right_attach">3</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_xnor_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Bitwise XNOR [n]</property>
+	      <property name="label" translatable="yes">XNOR</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">6</property>
+	      <property name="right_attach">7</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_mask_32_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
+	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">4</property>
+	      <property name="right_attach">5</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_not_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Bitwise NOT [~]</property>
+	      <property name="label" translatable="yes">NOT</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">7</property>
+	      <property name="right_attach">8</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_xor_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Bitwise XOR [x]</property>
+	      <property name="label" translatable="yes">XOR</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">5</property>
+	      <property name="right_attach">6</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_and_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Bitwise AND [&amp;]</property>
+	      <property name="label" translatable="yes">AND</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
 	      <property name="left_attach">5</property>
 	      <property name="right_attach">6</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">expand|shrink|fill</property>
-	      <property name="y_options">expand|shrink|fill</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_or_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Bitwise OR [|]</property>
+	      <property name="label" translatable="yes">OR</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">6</property>
+	      <property name="right_attach">7</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_mask_16_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">16-bit unsigned integer value of display (])</property>
+	      <property name="label" translatable="yes" comments="16 bit unsigned integer">&amp;16</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">3</property>
+	      <property name="right_attach">4</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_shift_left_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the left [&lt;]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkHBox" id="hbox11">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">3</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label7">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes" comments="Shift left">&lt;</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkArrow" id="arrow5">
+		      <property name="visible">True</property>
+		      <property name="arrow_type">GTK_ARROW_DOWN</property>
+		      <property name="shadow_type">GTK_SHADOW_OUT</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">3</property>
+	      <property name="right_attach">4</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_shift_right_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the right [&gt;]</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+
+	      <child>
+		<widget class="GtkHBox" id="hbox10">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">3</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label6">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes" comments="Shift right">&gt;</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkArrow" id="arrow4">
+		      <property name="visible">True</property>
+		      <property name="arrow_type">GTK_ARROW_DOWN</property>
+		      <property name="shadow_type">GTK_SHADOW_OUT</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">4</property>
+	      <property name="right_attach">5</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
 	    </packing>
 	  </child>
 	</widget>
