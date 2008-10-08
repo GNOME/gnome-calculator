@@ -467,8 +467,6 @@ struct Xobject {               /* Gtk+/Xlib graphics object. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
 
     char *shelf;                       /* PUT selection shelf contents. */   
-
-    gboolean warn_change_mode;    /* Should we warn user when changing modes? */
 };
 
 typedef struct Xobject *XVars;
@@ -786,10 +784,6 @@ ui_set_mode(enum mode_type mode)
         ui_set_show_thousands_separator(FALSE);
         ui_set_show_trailing_zeroes(FALSE);
         ui_make_registers();
-
-        /* Reset display */
-        display_reset(&v->display);
-        ui_set_statusbar("", "");
     }
     
     /* Save mode */
@@ -1651,61 +1645,6 @@ save_win_position()
 }
 
 
-static gboolean
-request_change_mode()
-{
-    GtkWidget *dialog, *request_check, *button;
-    gint response;
-    
-    if (!X->warn_change_mode) {
-        return (TRUE);
-    }
-
-    dialog = gtk_message_dialog_new(GTK_WINDOW(X->kframe),
-                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                          GTK_MESSAGE_WARNING,
-                          GTK_BUTTONS_CANCEL,
-                          "%s",
-                          _("Changing Modes Clears Calculation"));
-    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-                          "%s",
-                          _("When you change modes, the current calculation "
-                          "will be cleared, and the base will be reset to "
-                          "decimal."));
-
-    request_check = gtk_check_button_new_with_mnemonic(_("_Do not warn me again"));
-    gtk_box_pack_end(GTK_BOX(GTK_DIALOG(dialog)->vbox),
-                     request_check, FALSE, FALSE, 0);
-
-    button = gtk_dialog_add_button(GTK_DIALOG(dialog),
-                                   _("C_hange Mode"), GTK_RESPONSE_ACCEPT);
-    gtk_button_set_image(GTK_BUTTON(button),
-                         gtk_image_new_from_stock(GTK_STOCK_REFRESH,
-                                                  GTK_ICON_SIZE_BUTTON));
-    /* Set default focus on affirmative button */
-    gtk_widget_grab_focus(button);
-
-    gtk_dialog_set_alternative_button_order(GTK_DIALOG(dialog),
-                                            GTK_RESPONSE_ACCEPT,
-                                            GTK_RESPONSE_CANCEL,
-                                            -1);
-
-    gtk_window_set_position(GTK_WINDOW(dialog),
-                            GTK_WIN_POS_CENTER_ON_PARENT);
-    
-    gtk_widget_show_all(dialog);
-    response = gtk_dialog_run(GTK_DIALOG(dialog));
-    
-    // FIXME: Save this in GConf
-    X->warn_change_mode = !gtk_toggle_button_get_active(
-                             GTK_TOGGLE_BUTTON(request_check));
-
-    gtk_widget_destroy(dialog);
-
-    return (response == GTK_RESPONSE_ACCEPT);
-}
-
-
 /*ARGSUSED*/
 static gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
@@ -2052,9 +1991,15 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     for (i = 0; i < NBUTTONS; i++) {
         button = X->buttons[i];
         
-        /* Check any parent widgets are visible */
-        if (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
-            !GTK_WIDGET_VISIBLE(button) || !GTK_WIDGET_IS_SENSITIVE(button)) {
+        /* Check if function is available */
+        if (!GTK_WIDGET_IS_SENSITIVE(button)) {
+            continue;
+        }        
+        
+        /* In basic mode only allow buttons that the user can see */
+        if (v->modetype == BASIC &&
+            (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
+             !GTK_WIDGET_VISIBLE(button))) {
             continue;
         }
 
@@ -2291,32 +2236,7 @@ mode_radio_cb(GtkWidget *menu)
     }
 
     mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
-
-/* If the user has completed a calculation and we are going to a
- * new mode that is "compatible" with this one, then just change
- * modes. Otherwise display a dialog warning the user that the
- * current calculation will be cleared.
- *
- * Incompatible modes are:
- *
- * Scientific -> Basic
- * Scientific -> Advanced
- * Scientific -> Financial
- *
- * (unless we are in Scientific mode with Decimal numeric base and Fixed).
- */
-    if (display_is_result(&v->display) &&
-        ((v->modetype != SCIENTIFIC && v->modetype != PROGRAMMING) ||
-         (v->dtype == FIX && v->base == DEC))) {
-        v->modetype = mode;
-        ui_set_mode(v->modetype);
-    } else {
-        if (mode != v->modetype && request_change_mode()) {
-            ui_set_mode(mode);
-        } else {
-            ui_set_mode(v->modetype);
-        }
-    }
+    ui_set_mode(mode);
 }
 
 
@@ -2867,8 +2787,6 @@ ui_load(void)
 void
 ui_start(void)
 {
-    X->warn_change_mode = TRUE; // FIXME: Load from GConf
-    
     ui_set_base(v->base);
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->dtype);
