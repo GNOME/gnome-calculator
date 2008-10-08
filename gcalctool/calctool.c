@@ -600,7 +600,7 @@ init_constant(int n, gchar *value)
 {
     gchar *str = g_strdup(value);
 
-    MPstr_to_num(str, DEC, v->MPcon_vals[n]);
+    MPstr_to_num(str, 10, v->MPcon_vals[n]);
     g_free(str);
 }
 

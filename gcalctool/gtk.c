@@ -490,7 +490,7 @@ reset_display(void)
     int *ans;
 
     ans = display_get_answer(&v->display);
-    MPstr_to_num("0", DEC, ans);
+    MPstr_to_num("0", 10, ans);
     display_clear(&v->display);
     display_set_number(&v->display, ans);
 }
@@ -1393,7 +1393,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, void* dialog_pointer)
         }
         entry = glade_xml_get_widget(X->financial,
                                      finc_dialog_fields[dialog][i]);
-        MPstr_to_num(gtk_entry_get_text(GTK_ENTRY(entry)), DEC, arg[i]);
+        MPstr_to_num(gtk_entry_get_text(GTK_ENTRY(entry)), 10, arg[i]);
     }
     do_finc_expression(dialog, arg[0], arg[1], arg[2], arg[3]);
 }
@@ -1508,7 +1508,7 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
-                MPstr_to_num(value, DEC, v->MPcon_vals[number]);
+                MPstr_to_num(value, 10, v->MPcon_vals[number]);
                 STRNCPY(v->con_names[number], description, MAXLINE - 1);
                 put_constant(number, value, description);
             } while (gtk_tree_model_iter_next(X->constants_model, &iter));
@@ -1758,7 +1758,7 @@ get_constant(int n)
         return;
     }   
 
-    MPstr_to_num(vline, DEC, v->MPcon_vals[n]);
+    MPstr_to_num(vline, 10, v->MPcon_vals[n]);
     STRNCPY(v->con_names[n], nline, MAXLINE - 1);
     g_free(nline);
     g_free(vline);

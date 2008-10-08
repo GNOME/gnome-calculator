@@ -221,7 +221,7 @@ do_expression(int function, int arg, int cursor)
         case KEY_CLEAR_ENTRY:
             display_clear(&v->display);
             ui_set_error_state(FALSE);
-            MPstr_to_num("0", DEC, ans);
+            MPstr_to_num("0", 10, ans);
             break;
 
         case KEY_SHIFT:

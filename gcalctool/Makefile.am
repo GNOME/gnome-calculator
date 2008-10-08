@@ -26,6 +26,8 @@ gcalctool_SOURCES = \
 	functions.h \
 	mp.c \
 	mp.h \
+	mp-convert.c \        
+	mp-trigonometric.c \
 	mpmath.c \
 	mpmath.h \
 	financial.c \

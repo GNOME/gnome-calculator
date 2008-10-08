@@ -19,67 +19,23 @@
  *  02111-1307, USA.
  */
 
-/*  This maths library is based on the MP multi-precision floating-point
- *  arithmetic package originally written in FORTRAN by Richard Brent,
- *  Computer Centre, Australian National University in the 1970's.
- *
- *  It has been converted from FORTRAN into C using the freely available
- *  f2c translator, available via netlib on research.att.com.
- *
- *  The subsequently converted C code has then been tidied up, mainly to
- *  remove any dependencies on the libI77 and libF77 support libraries.
- *
- *  FOR A GENERAL DESCRIPTION OF THE PHILOSOPHY AND DESIGN OF MP,
- *  SEE - R. P. BRENT, A FORTRAN MULTIPLE-PRECISION ARITHMETIC
- *  PACKAGE, ACM TRANS. MATH. SOFTWARE 4 (MARCH 1978), 57-70.
- *  SOME ADDITIONAL DETAILS ARE GIVEN IN THE SAME ISSUE, 71-81.
- *  FOR DETAILS OF THE IMPLEMENTATION, CALLING SEQUENCES ETC. SEE
- *  THE MP USERS GUIDE.
- */
-
 #include <stdio.h>
 
 #include "mp.h"
+#include "mp-internal.h"
 #include "mpmath.h"
 #include "calctool.h"
 #include "display.h"
 
-#define min(a, b)   ((a) <= (b) ? (a) : (b))
-#define max(a, b)   ((a) >= (b) ? (a) : (b))
-
-static struct {
-    int b, t, m, mxr, r[MP_SIZE];
-} MP;
-
-static double mppow_di(double, int);
-static double mppow_ri(float, int);
-
-static int mp_compare_mp_to_int(const int *, int);
 static int mp_compare_mp_to_float(const int *, float);
-static int mp_compare_mp_to_mp(const int *, const int *);
 static int pow_ii(int, int);
 
-static void mpadd2(const int *, const int *, int *, int, int);
 static int  mpadd3(const int *, const int *, int, int);
-static void mp_add_fraction(const int *, int, int, int *);
-static void mpart1(int, int *);
-static void mpchk(int , int );
-static float mp_cast_to_float(const int *);
-static void mp_set_from_fraction(int, int, int *);
-static void mp_set_from_float(float, int *);
-static void mpexp1(const int *, int *);
 static void mpext(int, int, int *);
-static void mpgcd(int *, int *);
 static void mplns(const int *, int *);
 static void mpmaxr(int *);
 static void mpmlp(int *, const int *, int, int);
-static void mpmul2(int *, int, int *, int);
-static void mpmulq(int *, int, int, int *);
-static void mpnzr(int, int *, int *, int);
 static void mpovfl(int *, const char *);
-static void mprec(const int *, int *);
-static void mproot(int *, int, int *);
-static void mpsin1(int *, int *, int);
 static void mpunfl(int *);
 
 /* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
@@ -109,7 +65,7 @@ mp_add(const int *x, const int *y, int *z)
  *  16(1973), 223.  (SEE ALSO BRENT, IEEE TC-22(1973), 601.)
  *  CHECK FOR X OR Y ZERO
  */
-static void
+void
 mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
 {
     int sign_prod;
@@ -334,7 +290,7 @@ mp_add_integer(const int *x, int iy, int *z)
  *  DIMENSION OF R MUST BE AT LEAST 2T+6
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
-static void
+void
 mp_add_fraction(const int *x, int i, int j, int *y)
 {
     mpchk(2, 6);
@@ -349,7 +305,7 @@ mp_add_fraction(const int *x, int i, int j, int *y)
  *  AT LEAST 2T+6
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
-static void
+void
 mpart1(int n, int *y)
 {
     int i, b2, i2, id, ts;
@@ -407,218 +363,11 @@ mpart1(int n, int *y)
 }
 
 
-/*  RETURNS Y = ARCSIN(X), ASSUMING ABS(X) <= 1,
- *  FOR MP NUMBERS X AND Y.
- *  Y IS IN THE RANGE -PI/2 TO +PI/2.
- *  METHOD IS TO USE MP_ATAN, SO TIME IS O(M(T)T).
- *  DIMENSION OF R MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mpasin(int *x, int *y)
-{
-    int i2, i3;
-
-    mpchk(5, 12);
-    i3 = (MP.t << 2) + 11;
-    if (x[0] == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    if (x[1] <= 0) {
-        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X**2)) */
-        i2 = i3 - (MP.t + 2);
-        mp_set_from_integer(1, &MP.r[i2 - 1]);
-        mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
-        mp_subtract(&MP.r[i2 - 1], x, &MP.r[i2 - 1]);
-        mp_add(&MP.r[i3 - 1], x, &MP.r[i3 - 1]);
-        mpmul(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mproot(&MP.r[i3 - 1], -2, &MP.r[i3 - 1]);
-        mpmul(x, &MP.r[i3 - 1], y);
-        mp_atan(y, y);
-        return;
-    }
-
-    /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
-    mp_set_from_integer(x[0], &MP.r[i3 - 1]);
-    if (! mp_is_equal(x, &MP.r[i3 - 1])) {
-        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***\n");
-    }
-
-    /* X == +-1 SO RETURN +-PI/2 */
-    mppi(y);
-    mpdivi(y, MP.r[i3 - 1] << 1, y);
-}
-
-
-/*  RETURNS Y = ARCTAN(X) FOR MP X AND Y, USING AN O(T.M(T)) METHOD
- *  WHICH COULD EASILY BE MODIFIED TO AN O(SQRT(T)M(T))
- *  METHOD (AS IN MPEXP1). Y IS IN THE RANGE -PI/2 TO +PI/2.
- *  FOR AN ASYMPTOTICALLY FASTER METHOD, SEE - FAST MULTIPLE-
- *  PRECISION EVALUATION OF ELEMENTARY FUNCTIONS
- *  (BY R. P. BRENT), J. ACM 23 (1976), 242-251,
- *  AND THE COMMENTS IN MPPIGL.
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_atan(const int *x, int *y)
-{
-    int i, q, i2, i3, ts;
-    float rx = 0.0, ry;
-
-
-    mpchk(5, 12);
-    i2 = MP.t * 3 + 9;
-    i3 = i2 + MP.t + 2;
-    if (x[0] == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    mp_set_from_mp(x, &MP.r[i3 - 1]);
-    if (abs(x[1]) <= 2)
-        rx = mp_cast_to_float(x);
-
-    q = 1;
-
-    /* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
-    while (MP.r[i3] >= 0)
-    {
-        if (MP.r[i3] == 0 && (MP.r[i3 + 1] + 1) << 1 <= MP.b)
-            break;
-
-        q <<= 1;
-        mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], y);
-        mp_add_integer(y, 1, y);
-        mpsqrt(y, y);
-        mp_add_integer(y, 1, y);
-        mpdiv(&MP.r[i3 - 1], y, &MP.r[i3 - 1]);
-    }
-
-    /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
-    mp_set_from_mp(&MP.r[i3 - 1], y);
-    mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
-    i = 1;
-    ts = MP.t;
-
-    /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
-    while ( (MP.t = ts + 2 + MP.r[i3]) > 1) {
-        MP.t = min(MP.t,ts);
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
-        mpmulq(&MP.r[i3 - 1], -i, i + 2, &MP.r[i3 - 1]);
-        i += 2;
-        MP.t = ts;
-        mp_add(y, &MP.r[i3 - 1], y);
-	if (MP.r[i3 - 1] == 0) break;
-    }
-
-    /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
-    MP.t = ts;
-    mpmuli(y, q, y);
-
-    /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
-     *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
-     */
-    if (abs(x[1]) > 2)
-        return;
-
-    ry = mp_cast_to_float(y);
-    if (fabs(ry - atan(rx)) < fabs(ry) * (float).01)
-        return;
-
-    /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
-    mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***\n");
-}
-
-
-/*  CONVERTS DOUBLE-PRECISION NUMBER DX TO MULTIPLE-PRECISION Z.
- *  SOME NUMBERS WILL NOT CONVERT EXACTLY ON MACHINES
- *  WITH BASE OTHER THAN TWO, FOUR OR SIXTEEN.
- *  THIS ROUTINE IS NOT CALLED BY ANY OTHER ROUTINE IN MP,
- *  SO MAY BE OMITTED IF DOUBLE-PRECISION IS NOT AVAILABLE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_set_from_double(double dx, int *z)
-{
-    int i, k, i2, ib, ie, re, tp, rs;
-    double db, dj;
-
-
-    mpchk(1, 4);
-    i2 = MP.t + 4;
-
-    /* CHECK SIGN */
-    if (dx < 0.)  {
-        rs = -1;
-        dj = -dx;
-    } else if (dx > 0.)  {
-        rs = 1;
-        dj = dx;
-    } else {
-        z[0] = 0;
-        return;
-    } 
-
-    /* INCREASE IE AND DIVIDE DJ BY 16. */
-    for (ie = 0; dj >= 1.0; ie++)
-      dj *= 1.0/16.0;
-
-    for ( ; dj < 1.0/16.0; ie--)
-      dj *= 16.;
-
-    /*  NOW DJ IS DY DIVIDED BY SUITABLE POWER OF 16
-     *  SET EXPONENT TO 0
-     */
-    re = 0;
-
-    db = (double) MP.b;
-
-    /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
-    for (i = 0; i < i2; i++) {
-        dj = db * dj;
-        MP.r[i] = (int) dj;
-        dj -= (double) MP.r[i];
-    }
-
-    /* NORMALIZE RESULT */
-    mpnzr(rs, &re, z, 0);
-
-    /* Computing MAX */
-    ib = max(MP.b * 7 * MP.b, 32767) / 16;
-    tp = 1;
-
-    /* NOW MULTIPLY BY 16**IE */
-    if (ie < 0) {
-        k = -ie;
-        for (i = 1; i <= k; ++i) {
-            tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < k)
-                continue;
-            mpdivi(z, tp, z);
-            tp = 1;
-        }
-    } else if (ie > 0) {
-        for (i = 1; i <= ie; ++i) {
-            tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < ie)
-                continue;
-            mpmuli(z, tp, z);
-            tp = 1;
-        }
-    }
-
-    return;
-}
-
-
 /*  CHECKS LEGALITY OF B, T, M AND MXR.
  *  THE CONDITION ON MXR (THE DIMENSION OF R IN COMMON) IS THAT
  *  MXR >= (I*T + J)
  */
-static void
+void
 mpchk(int i, int j)
 {
     int ib, mx;
@@ -648,96 +397,6 @@ mpchk(int i, int j)
           "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n*** ACTUALLY MXR = %d, AND T = %d  ***\n",
           i, j, mx, MP.mxr, MP.t);
 }
-
-
-/*  CONVERTS INTEGER IX TO MULTIPLE-PRECISION Z.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_set_from_integer(int ix, int *z)
-{
-    mpchk(1, 4);
-
-    if (ix == 0) {
-        z[0] = 0;
-        return;
-    }
-
-    if (ix < 0) {
-        ix = -ix;
-        z[0] = -1;
-    }
-    else
-        z[0] = 1;
-
-    /* SET EXPONENT TO T */
-    z[1] = MP.t;
-
-    /* CLEAR FRACTION */
-    memset(&z[2], 0, (MP.t-1)*sizeof(int));
-
-    /* INSERT IX */
-    z[MP.t + 1] = ix;
-
-    /* NORMALIZE BY CALLING MPMUL2 */
-    mpmul2(z, 1, z, 1);
-}
-
-
-/*  CONVERTS MULTIPLE-PRECISION X TO DOUBLE-PRECISION,
- *  AND RETURNS RESULT.
- *  ASSUMES X IS IN ALLOWABLE RANGE FOR DOUBLE-PRECISION
- *  NUMBERS.   THERE IS SOME LOSS OF ACCURACY IF THE
- *  EXPONENT IS LARGE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-double
-mp_cast_to_double(const int *x)
-{
-    int i, tm = 0;
-    double d__1, db, dz2, ret_val = 0.0;
-
-    mpchk(1, 4);
-    if (x[0] == 0)
-        return 0.0;
-
-    db = (double) MP.b;
-    for (i = 1; i <= MP.t; ++i) {
-        ret_val = db * ret_val + (double) x[i + 1];
-        tm = i;
-
-        /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
-        dz2 = ret_val + 1.;
-
-        /*  TEST BELOW NOT ALWAYS EQUIVALENT TO - IF (DZ2.LE.DZ) GO TO 20,
-         *  FOR EXAMPLE ON CYBER 76.
-         */
-        if (dz2 - ret_val <= 0.)
-            break;
-    }
-
-    /* NOW ALLOW FOR EXPONENT */
-    ret_val *= mppow_di(db, x[1] - tm);
-
-    /* CHECK REASONABLENESS OF RESULT. */
-    /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
-    if (ret_val <= 0. ||
-        ((d__1 = (double) ((float) x[1]) - (log(ret_val) / log((double)
-                ((float) MP.b)) + .5), abs(d__1)) > .6)) {
-        /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
-         *  TRY USING MPCMDE INSTEAD.
-         */
-        mperr("*** FLOATING-POINT OVER/UNDER-FLOW IN MP_CAST_TO_DOUBLE ***\n");
-        return 0.0;
-    }
-    else
-    {
-        if (x[0] < 0)
-            ret_val = -ret_val;
-        return ret_val;
-    }
-}
-
 
 /*  FOR MP X AND Y, RETURNS FRACTIONAL PART OF X IN Y,
  *  I.E., Y = X - INTEGER PART OF X (TRUNCATED TOWARDS 0).
@@ -775,67 +434,6 @@ mpcmf(const int *x, int *y)
     /* NORMALIZE RESULT AND RETURN */
     mpnzr(x[0], &offset_exp, y, 1);
 }
-
-
-/*  CONVERTS MULTIPLE-PRECISION X TO INTEGER, AND
- *  RETURNS RESULT.
- *  ASSUMING THAT X NOT TOO LARGE (ELSE USE MPCMIM).
- *  X IS TRUNCATED TOWARDS ZERO.
- *  IF INT(X)IS TOO LARGE TO BE REPRESENTED AS A SINGLE-
- *  PRECISION INTEGER, IZ IS RETURNED AS ZERO.  THE USER
- *  MAY CHECK FOR THIS POSSIBILITY BY TESTING IF
- *  ((X(1).NE.0).AND.(X(2).GT.0).AND.(IZ.EQ.0)) IS TRUE ON
- *  RETURN FROM MP_CAST_TO_INST.
- */
-int
-mp_cast_to_int(const int *x)
-{
-    int i, j, k, j1, x2, kx, xs, izs, ret_val = 0;
-
-    xs = x[0];
-    /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */    
-    if (xs == 0  ||  x[1] <= 0)
-        return 0;
-
-    x2 = x[1];
-    for (i = 1; i <= x2; ++i) {
-        izs = ret_val;
-        ret_val = MP.b * ret_val;
-        if (i <= MP.t)
-            ret_val += x[i + 1];
-
-        /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
-        if (ret_val <= 0 || ret_val <= izs)
-            return 0;
-    }
-
-    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY
-     *  HAVE OCCURRED).
-     */
-    j = ret_val;
-    for (i = 1; i <= x2; ++i) {
-        j1 = j / MP.b;
-        k = x2 + 1 - i;
-        kx = 0;
-        if (k <= MP.t)
-            kx = x[k + 1];
-        if (kx != j - MP.b * j1)
-            return 0;
-        j = j1;
-    }
-    if (j != 0)
-        return 0;
-
-    /* RESULT CORRECT SO RESTORE SIGN AND RETURN */
-    ret_val = xs * ret_val;
-    return ret_val;
-
-    /* Old comment about returning zero: */
-    /*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
-     *  RETURN ZERO.
-     */
-}
-
 
 /* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
  * USE IF Y TOO LARGE TO BE REPRESENTABLE AS A SINGLE-PRECISION INTEGER. 
@@ -896,25 +494,6 @@ mpcmim(const int *x, int *y)
     v->dtype = dtype;
 }
 
-
-/*  COMPARES MP NUMBER X WITH INTEGER I, RETURNING
- *      +1 IF X  >  I,
- *       0 IF X == I,
- *      -1 IF X  <  I
- *  DIMENSION OF R IN COMMON AT LEAST 2T+6
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-static int
-mp_compare_mp_to_int(const int *x, int i)
-{
-    mpchk(2, 6);
-
-    /* CONVERT I TO MULTIPLE-PRECISION AND COMPARE */
-    mp_set_from_integer(i, &MP.r[MP.t + 4]);
-    return mp_compare_mp_to_mp(x, &MP.r[MP.t + 4]);
-}
-
-
 /*  COMPARES MP NUMBER X WITH REAL NUMBER RI, RETURNING
  *      +1 IF X .GT. RI,
  *       0 IF X .EQ. RI,
@@ -932,61 +511,12 @@ mp_compare_mp_to_float(const int *x, float ri)
     return mp_compare_mp_to_mp(x, &MP.r[MP.t + 4]);
 }
 
-
-/*  CONVERTS MULTIPLE-PRECISION X TO SINGLE-PRECISION.
- *  ASSUMES X IN ALLOWABLE RANGE.  THERE IS SOME LOSS OF
- *  ACCURACY IF THE EXPONENT IS LARGE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-static float
-mp_cast_to_float(const int *x)
-{
-    float rz = 0.0;
-
-    int i, tm = 0;
-    float rb, rz2;
-    
-    mpchk(1, 4);
-    if (x[0] == 0)
-        return 0.0;
-
-    rb = (float) MP.b;
-    for (i = 1; i <= MP.t; ++i) {
-        rz = rb * rz + (float) x[i + 1];
-        tm = i;
-
-        /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
-        rz2 = rz + (float) 1.0;
-        if (rz2 <= rz)
-            break;
-    }
-
-    /* NOW ALLOW FOR EXPONENT */
-    rz *= mppow_ri(rb, x[1] - tm);
-
-    /* CHECK REASONABLENESS OF RESULT */
-    /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
-    if (rz <= (float)0. ||
-        fabs((float) x[1] - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
-        /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
-         *  TRY USING MPCMRE INSTEAD.
-         */
-        mperr("*** FLOATING-POINT OVER/UNDER-FLOW IN MP_CAST_TO_FLOAT ***\n");
-        return 0.0;
-    }
-
-    if (x[0] < 0)
-        rz = -(double)(rz);
-    return rz;
-}
-
-
 /*  COMPARES THE MULTIPLE-PRECISION NUMBERS X AND Y,
  *  RETURNING +1 IF X  >  Y,
  *            -1 IF X  <  Y,
  *  AND        0 IF X  == Y.
  */
-static int
+int
 mp_compare_mp_to_mp(const int *x, const int *y)
 {
     int i, t2;
@@ -1017,188 +547,6 @@ mp_compare_mp_to_mp(const int *x, const int *y)
     /* NUMBERS EQUAL */
     return 0;
 }
-
-
-/*  RETURNS Y = COS(X) FOR MP X AND Y, USING MPSIN AND MPSIN1.
- *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
- */
-void
-mpcos(int *x, int *y)
-{
-    int i2;
-
-    /* COS(0) = 1 */    
-    if (x[0] == 0) {
-        mp_set_from_integer(1, y);
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i2 = MP.t * 3 + 12;
-
-    /* SEE IF ABS(X) <= 1 */
-    mp_abs(x, y);
-    if (mp_compare_mp_to_int(y, 1) <= 0) {
-        /* HERE ABS(X) <= 1 SO USE POWER SERIES */
-        mpsin1(y, y, 0);
-    } else {
-        /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
-         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
-         */
-        ++MP.t;
-        mppi(&MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-        --MP.t;
-        mp_subtract(&MP.r[i2 - 1], y, y);
-        mpsin(y, y);
-    }
-}
-
-
-/*  RETURNS Y = COSH(X) FOR MP NUMBERS X AND Y, X NOT TOO LARGE.
- *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
- */
-void
-mpcosh(const int *x, int *y)
-{
-    int i2;
-
-    if (x[0] == 0) {
-      /* COSH(0) == 1 */
-      mp_set_from_integer(1, y);
-      return;
-    }
-
-/* CHECK LEGALITY OF B, T, M AND MXR */
-
-    mpchk(5, 12);
-    i2 = (MP.t << 2) + 11;
-    mp_abs(x, &MP.r[i2 - 1]);
-
-/*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
- *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
- */
-
-    MP.m += 2;
-    mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-    mprec(&MP.r[i2 - 1], y);
-    mp_add(&MP.r[i2 - 1], y, y);
-
-/*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
- *  ACT ACCORDINGLY.
- */
-
-    MP.m += -2;
-    mpdivi(y, 2, y);
-}
-
-
-/* CONVERTS THE RATIONAL NUMBER I/J TO MULTIPLE PRECISION Q. */
-static void
-mp_set_from_fraction(int i, int j, int *q)
-{
-    mpgcd(&i, &j);
-
-    if (j == 0) {
-      mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
-      q[0] = 0;
-      return;
-    }
-
-    if (j < 0) {
-      i = -i;
-      j = -j;
-    }
-
-    mp_set_from_integer(i, q);
-    if (j != 1) mpdivi(q, j, q);
-}
-
-
-/*  CONVERTS SINGLE-PRECISION NUMBER RX TO MULTIPLE-PRECISION Z.
- *  SOME NUMBERS WILL NOT CONVERT EXACTLY ON MACHINES
- *  WITH BASE OTHER THAN TWO, FOUR OR SIXTEEN.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-static void
-mp_set_from_float(float rx, int *z)
-{
-    int i, k, i2, ib, ie, re, tp, rs;
-    float rb, rj;
-    
-    mpchk(1, 4);
-    i2 = MP.t + 4;
-
-    /* CHECK SIGN */
-    if (rx < (float) 0.0) {
-        rs = -1;
-        rj = -(double)(rx);
-    } else if (rx > (float) 0.0) {
-        rs = 1;
-        rj = rx;
-    } else {
-        /* IF RX = 0E0 RETURN 0 */
-        z[0] = 0;
-        return;
-    }
-
-    ie = 0;
-
-    /* INCREASE IE AND DIVIDE RJ BY 16. */    
-    while (rj >= (float)1.0) {
-        ++ie;
-        rj *= (float) 0.0625;
-    }
-
-    while (rj < (float).0625) {
-        --ie;
-        rj *= (float)16.0;
-    }
-
-    /*  NOW RJ IS DY DIVIDED BY SUITABLE POWER OF 16.
-     *  SET EXPONENT TO 0
-     */
-    re = 0;
-    rb = (float) MP.b;
-
-    /* CONVERSION LOOP (ASSUME SINGLE-PRECISION OPS. EXACT) */
-    for (i = 0; i < i2; i++) {
-        rj = rb * rj;
-        MP.r[i] = (int) rj;
-        rj -= (float) MP.r[i];
-    }
-
-    /* NORMALIZE RESULT */
-    mpnzr(rs, &re, z, 0);
-
-    /* Computing MAX */
-    ib = max(MP.b * 7 * MP.b, 32767) / 16;
-    tp = 1;
-
-    /* NOW MULTIPLY BY 16**IE */
-    if (ie < 0)  {
-        k = -ie;
-        for (i = 1; i <= k; ++i) {
-            tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < k)
-                continue;
-            mpdivi(z, tp, z);
-            tp = 1;
-        }
-    } else if (ie > 0)  {
-        for (i = 1; i <= ie; ++i) {
-            tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < ie)
-                continue;
-            mpmuli(z, tp, z);
-            tp = 1;
-        }
-    }
-
-    return;
-}
-
 
 /*  SETS Z = X/Y, FOR MP X, Y AND Z.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 4T+10
@@ -1621,7 +969,7 @@ mpexp(const int *x, int *y)
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 3T+8
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
-static void
+void
 mpexp1(const int *x, int *y)
 {
     int i, q, i2, i3, ib, ic, ts;
@@ -1738,7 +1086,7 @@ mpext(int i, int j, int *x)
  *  GREATEST COMMON DIVISOR OF K AND L.
  *  SAVE INPUT PARAMETERS IN LOCAL VARIABLES
  */
-static void
+void
 mpgcd(int *k, int *l)
 {
     int i, j;
@@ -2117,7 +1465,7 @@ mpmul(const int *x, const int *y, int *z)
  *  EVEN IF SOME DIGITS ARE GREATER THAN B-1.
  *  RESULT IS ROUNDED IF TRUNC == 0, OTHERWISE TRUNCATED.
  */
-static void
+void
 mpmul2(int *x, int iy, int *z, int trunc)
 {
     int c, i, c1, c2, j1, j2;
@@ -2250,7 +1598,7 @@ mpmuli(int *x, int iy, int *z)
 
 
 /* MULTIPLIES MP X BY I/J, GIVING MP Y */
-static void
+void
 mpmulq(int *x, int i, int j, int *y)
 {
     int is, js;
@@ -2295,7 +1643,7 @@ mp_invert_sign(const int *x, int *y)
  *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS RE IS
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
-static void
+void
 mpnzr(int rs, int *re, int *z, int trunc)
 {
     int i__1;
@@ -2583,7 +1931,7 @@ mppwr2(int *x, int *y, int *z)
  *  NEWTONS METHOD IS USED, SO FINAL ONE OR TWO DIGITS MAY
  *  NOT BE CORRECT.
  */
-static void
+void
 mprec(const int *x, int *y)
 {
     /* Initialized data */
@@ -2689,7 +2037,7 @@ mprec(const int *x, int *y)
  *  USING NEWTONS METHOD WITHOUT DIVISIONS.   SPACE = 4T+10
  *  (BUT Y(1) MAY BE R(3T+9))
  */
-static void
+void
 mproot(int *x, int n, int *y)
 {
     /* Initialized data */
@@ -2915,239 +2263,6 @@ mpset(int idecpl, int itmax2, int maxdr)
     mpchk(1, 4);
 }
 
-
-/*  RETURNS Y = SIN(X) FOR MP X AND Y,
- *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
- *  TIME IS O(M(T)T/LOG(T)).
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mpsin(int *x, int *y)
-{
-    int i2, i3, ie, xs;
-    float rx = 0.0, ry;
-
-    mpchk(5, 12);
-    
-    i2 = (MP.t << 2) + 11;
-    if (x[0] == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    xs = x[0];
-    ie = abs(x[1]);
-    if (ie <= 2)
-        rx = mp_cast_to_float(x);
-
-    mp_abs(x, &MP.r[i2 - 1]);
-
-    /* USE MPSIN1 IF ABS(X) .LE. 1 */
-    if (mp_compare_mp_to_int(&MP.r[i2 - 1], 1) <= 0)
-    {
-        mpsin1(&MP.r[i2 - 1], y, 1);
-    }
-    /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
-     *  PRECOMPUTED AND SAVED IN COMMON).
-     *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MPART1
-     */
-    else {
-        i3 = (MP.t << 1) + 7;
-        mpart1(5, &MP.r[i3 - 1]);
-        mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
-        mpart1(239, y);
-        mp_subtract(&MP.r[i3 - 1], y, y);
-        mpdiv(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
-        mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-
-        /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
-        mp_add_fraction(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
-        xs = -xs * MP.r[i2 - 1];
-        if (xs == 0) {
-            y[0] = 0;
-            return;
-        }
-
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
-
-        /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (MP.r[i2] > 0)
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-
-        if (MP.r[i2 - 1] == 0) {
-            y[0] = 0;
-            return;
-        }        
-
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-
-        /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
-         *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
-         */
-        if (MP.r[i2] > 0) {
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-            mpmul(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], y, 0);
-        } else {
-            mpmul(&MP.r[i2 - 1], y, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], y, 1);
-        }
-    }
-
-    y[0] = xs;
-    if (ie > 2)
-        return;
-
-    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) .LE. 100
-     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
-     */
-    if (fabs(rx) > (float)100.)
-        return;
-
-    ry = mp_cast_to_float(y);
-    if (fabs(ry - sin(rx)) < (float) 0.01)
-        return;
-
-    /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
-     *  B**(T-1) IS TOO SMALL.
-     */
-    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n");
-}
-
-
-/*  COMPUTES Y = SIN(X) IF IS != 0, Y = COS(X) IF IS == 0,
- *  USING TAYLOR SERIES.   ASSUMES ABS(X) .LE. 1.
- *  X AND Y ARE MP NUMBERS, IS AN INTEGER.
- *  TIME IS O(M(T)T/LOG(T)).   THIS COULD BE REDUCED TO
- *  O(SQRT(T)M(T)) AS IN MPEXP1, BUT NOT WORTHWHILE UNLESS
- *  T IS VERY LARGE.  ASYMPTOTICALLY FASTER METHODS ARE
- *  DESCRIBED IN THE REFERENCES GIVEN IN COMMENTS
- *  TO MP_ATAN AND MPPIGL.
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 3T+8
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-static void
-mpsin1(int *x, int *y, int is)
-{
-    int i, b2, i2, i3, ts;
-
-    mpchk(3, 8);
-
-    /* SIN(0) = 0, COS(0) = 1 */
-    if (x[0] == 0) {
-        y[0] = 0;
-        if (is == 0)
-            mp_set_from_integer(1, y);
-        return;
-    }
-
-    i2 = MP.t + 5;
-    i3 = i2 + MP.t + 2;
-    b2 = max(MP.b,64) << 1;
-    mpmul(x, x, &MP.r[i3 - 1]);
-    if (mp_compare_mp_to_int(&MP.r[i3 - 1], 1) > 0) {
-        mperr("*** ABS(X) .GT. 1 IN CALL TO MPSIN1 ***\n");
-    }
-
-    if (is == 0)
-        mp_set_from_integer(1, &MP.r[i2 - 1]);
-    if (is != 0)
-        mp_set_from_mp(x, &MP.r[i2 - 1]);
-
-    y[0] = 0;
-    i = 1;
-    ts = MP.t;
-    if (is != 0) {
-        mp_set_from_mp(&MP.r[i2 - 1], y);
-        i = 2;
-    }
-
-    /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
-    do {
-        MP.t = MP.r[i2] + ts + 2;
-        if (MP.t <= 2)
-            break;
-
-        MP.t = min(MP.t,ts);
-
-        /* PUT R(I3) FIRST IN CASE ITS DIGITS ARE MAINLY ZERO */
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i2 - 1]);
-
-        /*  IF I*(I+1) IS NOT REPRESENTABLE AS AN INTEGER, THE FOLLOWING
-         *  DIVISION BY I*(I+1) HAS TO BE SPLIT UP.
-         */
-        if (i > b2) {
-            mpdivi(&MP.r[i2 - 1], -i, &MP.r[i2 - 1]);
-            mpdivi(&MP.r[i2 - 1], i + 1, &MP.r[i2 - 1]);
-        } else {
-            mpdivi(&MP.r[i2 - 1], -i * (i + 1), &MP.r[i2 - 1]);
-        }
-
-        i += 2;
-        MP.t = ts;
-        mpadd2(&MP.r[i2 - 1], y, y, *y, 0);
-    } while(MP.r[i2 - 1] != 0);
-
-    MP.t = ts;
-    if (is == 0)
-        mp_add_integer(y, 1, y);
-}
-
-/*  RETURNS Y = SINH(X) FOR MP NUMBERS X AND Y, X NOT TOO LARGE.
- *  METHOD IS TO USE MPEXP OR MPEXP1, SPACE = 5T+12
- *  SAVE SIGN OF X AND CHECK FOR ZERO, SINH(0) = 0
- */
-void
-mpsinh(int *x, int *y)
-{
-    int i2, i3, xs;
-
-    xs = x[0];
-    if (xs == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i3 = (MP.t << 2) + 11;
-
-    /* WORK WITH ABS(X) */
-    mp_abs(x, &MP.r[i3 - 1]);
-
-    /* HERE ABS(X) .LT. 1 SO USE MPEXP1 TO AVOID CANCELLATION */
-    if (MP.r[i3] <= 0) {
-        i2 = i3 - (MP.t + 2);
-        mpexp1(&MP.r[i3 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], y);
-        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
-        mpdiv(y, &MP.r[i3 - 1], y);
-    }
-    /*  HERE ABS(X) .GE. 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
-     *  INCREASE M TO AVOID OVERFLOW IF SINH(X) REPRESENTABLE
-     */
-    else {
-        MP.m += 2;
-        mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mprec(&MP.r[i3 - 1], y);
-        mp_subtract(&MP.r[i3 - 1], y, y);
-
-        /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
-         *  STATEMENT 30 WILL ACT ACCORDINGLY.
-         */
-        MP.m += -2;
-    }
-
-    /* DIVIDE BY TWO AND RESTORE SIGN */
-    mpdivi(y, xs << 1, y);
-}
-
-
 /*  RETURNS Y = SQRT(X), USING SUBROUTINE MPROOT IF X .GT. 0.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 4T+10
  *  (BUT Y(1) MAY BE R(3T+9)).  X AND Y ARE MP NUMBERS.
@@ -3175,27 +2290,6 @@ mpsqrt(int *x, int *y)
     }
 }
 
-
-/*  SETS Y = X FOR MP X AND Y.
- *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
- */
-void
-mp_set_from_mp(const int *x, int *y)
-{
-    /* HERE X AND Y MUST HAVE THE SAME ADDRESS */    
-    if (x == y)
-        return;
-
-    /* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
-    if (x[0] == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    memcpy (y, x, (MP.t + 2)*sizeof(int));
-}
-
-
 /*  SUBTRACTS Y FROM X, FORMING RESULT IN Z, FOR MP X, Y AND Z.
  *  FOUR GUARD DIGITS ARE USED, AND THEN R*-ROUNDING
  */
@@ -3204,60 +2298,6 @@ mp_subtract(const int *x, const int *y, int *z)
 {
     mpadd2(x, y, z, -y[0], 0);
 }
-
-
-/*  RETURNS Y = TANH(X) FOR MP NUMBERS X AND Y,
- *  USING MPEXP OR MPEXP1, SPACE = 5T+12
- */
-void
-mptanh(int *x, int *y)
-{
-    float r__1;
-
-    int i2, xs;
-
-    /* TANH(0) = 0 */    
-    if (x[0] == 0) {
-        y[0] = 0;
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i2 = (MP.t << 2) + 11;
-
-    /* SAVE SIGN AND WORK WITH ABS(X) */
-    xs = x[0];
-    mp_abs(x, &MP.r[i2 - 1]);
-
-    /* SEE IF ABS(X) SO LARGE THAT RESULT IS +-1 */
-    r__1 = (float) MP.t * (float).5 * log((float) MP.b);
-    mp_set_from_float(r__1, y);
-    if (mp_compare_mp_to_mp(&MP.r[i2 - 1], y) > 0) {
-        /* HERE ABS(X) IS VERY LARGE */
-        mp_set_from_integer(xs, y);
-        return;
-    }
-
-    /* HERE ABS(X) NOT SO LARGE */
-    mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-    if (MP.r[i2] > 0) {
-        /* HERE ABS(X) .GE. 1/2 SO USE MPEXP */
-        mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], -1, y);
-        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i2 - 1]);
-        mpdiv(y, &MP.r[i2 - 1], y);
-    } else {
-        /* HERE ABS(X) .LT. 1/2, SO USE MPEXP1 TO AVOID CANCELLATION */
-        mpexp1(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], 2, y);
-        mpdiv(&MP.r[i2 - 1], y, y);
-    }
-
-    /* RESTORE SIGN */
-    y[0] = xs * y[0];
-}
-
 
 /*  CALLED ON MULTIPLE-PRECISION UNDERFLOW, IE WHEN THE
  *  EXPONENT OF MP NUMBER X WOULD BE LESS THAN -M.
@@ -3277,29 +2317,6 @@ mpunfl(int *x)
     x[0] = 0;
 }
 
-
-static double
-mppow_di(double ap, int bp)
-{
-    double pow = 1.0;
-
-    if (bp != 0) { 
-        if (bp < 0) {
-            if (ap == 0) return(pow);
-            bp = -bp;
-            ap = 1/ap;
-        }
-        for (;;) { 
-            if (bp & 01) pow *= ap;
-            if (bp >>= 1) ap *= ap;
-            else break;
-        }
-    }
-
-    return(pow);
-}
-
-
 static int
 pow_ii(int x, int n)
 {
@@ -3309,28 +2326,6 @@ pow_ii(int x, int n)
         for (;;) { 
             if (n & 01) pow *= x;
             if (n >>= 1) x *= x;
-            else break;
-        }
-    }
-
-    return(pow);
-}
-
-
-static double
-mppow_ri(float ap, int bp)
-{
-    double pow = 1.0;
-
-    if (bp != 0) { 
-        if (bp < 0) {
-            if (ap == 0) return(pow);
-            bp = -bp;
-            ap = 1/ap;
-        }
-        for (;;) { 
-            if (bp & 01)  pow *= ap;
-            if (bp >>= 1) ap *= ap;
             else break;
         }
     }

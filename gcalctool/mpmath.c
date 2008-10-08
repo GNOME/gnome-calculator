@@ -20,6 +20,7 @@
 #include <assert.h>
 #include <errno.h>
 
+#include "mp.h"
 #include "mpmath.h"
 
 static char digits[] = "0123456789ABCDEF";
@@ -139,7 +140,6 @@ calc_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
     mp_set_from_double(dval, t1);
 }
 
-
 void
 calc_inv(const int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
 {
@@ -150,16 +150,6 @@ calc_inv(const int s1[MP_SIZE], int t1[MP_SIZE])     /* Calculate 1/x */
     mp_set_from_mp(s1, MP2);
     mpdiv(MP1, MP2, t1);
 }
-
-
-void 
-calc_tenpowx(int s1[MP_SIZE], int t1[MP_SIZE])   /* Calculate 10^x */
-{
-    int MP1[MP_SIZE];
-    mp_set_from_integer(10, MP1);
-    mppwr2(MP1, s1, t1);
-}
-
 
 void
 calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
@@ -187,16 +177,6 @@ calc_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
     } else {
         mppwr2(MPx, MPy, MPres);
     }
-}
-
-
-void 
-calc_xtimestenpowx(int s1[MP_SIZE], int s2[MP_SIZE], int t1[MP_SIZE])
-{
-    int MP1[MP_SIZE];
-
-    calc_tenpowx(s2, MP1);
-    mpmul(s1, MP1, t1);
 }
 
 int
@@ -230,7 +210,7 @@ calc_percent(int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int MP1[MP_SIZE];
 
-    MPstr_to_num("0.01", DEC, MP1);
+    MPstr_to_num("0.01", 10, MP1);
     mpmul(s1, MP1, t1);
 }
 
@@ -238,23 +218,6 @@ void
 do_e(int t1[MP_SIZE])
 {
     mp_set_from_double(2.71828182846, t1);
-}
-
-
-static void 
-mptan(int s1[MP_SIZE], int t1[MP_SIZE])
-{
-    int MPcos[MP_SIZE]; 
-    int MPsin[MP_SIZE];
-    double cval;
-
-    mpsin(s1, MPsin);
-    mpcos(s1, MPcos);
-    cval = mp_cast_to_double(MPcos);
-    if (cval == 0.0) {
-        doerr(_("Error, cannot calculate cosine"));
-    }
-    mpdiv(MPsin, MPcos, t1);
 }
 
 
@@ -311,136 +274,6 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
     }
 }
-
-
-/*  The following MP routines were not in the Brent FORTRAN package. They are
- *  derived here, in terms of the existing routines.
- */
-
-/*  MP precision arc cosine.
- *
- *  1. If (x < -1.0  or x > 1.0) then report DOMAIN error and return 0.0.
- *
- *  2. If (x = 0.0) then acos(x) = PI/2.
- *
- *  3. If (x = 1.0) then acos(x) = 0.0
- *
- *  4. If (x = -1.0) then acos(x) = PI.
- *
- *  5. If (0.0 < x < 1.0) then  acos(x) = atan(sqrt(1-(x**2)) / x)
- *
- *  6. If (-1.0 < x < 0.0) then acos(x) = atan(sqrt(1-(x**2)) / x) + PI
- */
-
-static void
-mpacos(int *MPx, int *MPretval)
-{
-    int MP0[MP_SIZE],  MP1[MP_SIZE],  MP2[MP_SIZE];
-    int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE];
-
-    mppi(MPpi);
-    mp_set_from_integer(0, MP0);
-    mp_set_from_integer(1, MP1);
-    mp_set_from_integer(-1, MPn1);
-
-    if (mp_is_greater_than(MPx, MP1) || mp_is_less_than(MPx, MPn1)) {
-        doerr(_("Error"));
-        mp_set_from_mp(MP0, MPretval);
-    } else if (mp_is_equal(MPx, MP0)) {
-        mpdivi(MPpi, 2, MPretval);
-    } else if (mp_is_equal(MPx, MP1)) {
-        mp_set_from_mp(MP0, MPretval);
-    } else if (mp_is_equal(MPx, MPn1)) {
-        mp_set_from_mp(MPpi, MPretval);
-    } else { 
-        mpmul(MPx, MPx, MP2);
-        mp_subtract(MP1, MP2, MP2);
-        mpsqrt(MP2, MP2);
-        mpdiv(MP2, MPx, MP2);
-        mp_atan(MP2, MPy);
-        if (mp_is_greater_than(MPx, MP0)) {
-            mp_set_from_mp(MPy, MPretval);
-        } else {
-            mp_add(MPy, MPpi, MPretval);
-        }
-    }
-}
-
-
-/*  MP precision hyperbolic arc cosine.
- *
- *  1. If (x < 1.0) then report DOMAIN error and return 0.0.
- *
- *  2. acosh(x) = log(x + sqrt(x**2 - 1))
- */
-
-static void
-mpacosh(int *MPx, int *MPretval)
-{
-    int MP1[MP_SIZE];
-
-    mp_set_from_integer(1, MP1);
-    if (mp_is_less_than(MPx, MP1)) {
-        doerr(_("Error"));
-        mp_set_from_integer(0, MPretval);
-    } else {
-        mpmul(MPx, MPx, MP1);
-        mp_add_integer(MP1, -1, MP1);
-        mpsqrt(MP1, MP1);
-        mp_add(MPx, MP1, MP1);
-        mpln(MP1, MPretval);
-    }
-}
-
-
-/*  MP precision hyperbolic arc sine.
- *
- *  1. asinh(x) = log(x + sqrt(x**2 + 1))
- */
-
-static void
-mpasinh(int *MPx, int *MPretval)
-{
-    int MP1[MP_SIZE];
- 
-    mpmul(MPx, MPx, MP1);
-    mp_add_integer(MP1, 1, MP1);
-    mpsqrt(MP1, MP1);
-    mp_add(MPx, MP1, MP1);
-    mpln(MP1, MPretval);
-}
-
-
-/*  MP precision hyperbolic arc tangent.
- *
- *  1. If (x <= -1.0 or x >= 1.0) then report a DOMAIn error and return 0.0.
- *
- *  2. atanh(x) = 0.5 * log((1 + x) / (1 - x))
- */
-
-static void
-mpatanh(int *MPx, int *MPretval)
-{
-    int MP0[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
-    int MP3[MP_SIZE], MPn1[MP_SIZE];
-
-    mp_set_from_integer(0, MP0);
-    mp_set_from_integer(1, MP1);
-    mp_set_from_integer(-1, MPn1);
-
-    if (mp_is_greater_equal(MPx, MP1) || mp_is_less_equal(MPx, MPn1)) {
-        doerr(_("Error"));
-        mp_set_from_mp(MP0, MPretval);
-    } else {
-        mp_add(MP1, MPx, MP2);
-        mp_subtract(MP1, MPx, MP3);
-        mpdiv(MP2, MP3, MP3);
-        mpln(MP3, MP3);
-        MPstr_to_num("0.5", DEC, MP1);
-        mpmul(MP1, MP3, MPretval);
-    }
-}
-
 
 /*  MP precision common log.
  *
@@ -619,7 +452,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
     mppwr(MP1base, v->accuracy, MP1);
     /* FIXME: string const. if MPstr_to_num can get it */
     SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, DEC, MP2);
+    MPstr_to_num(half, 10, MP2);
     mpdiv(MP2, MP1, MP1);
     mp_add(MPval, MP1, MPval);
 
@@ -742,7 +575,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
     }
  
     SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, DEC, MP1);
+    MPstr_to_num(half, 10, MP1);
     mp_add_integer(MP1, exp, MPval);
     mp_set_from_integer(1, MP1);
     for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
@@ -794,124 +627,6 @@ make_number(char *target, int target_len, int *MPnumber, int base, int ignoreErr
         make_fixed(target, target_len, MPnumber, base, MAX_DIGITS, TRUE);
     }
 }
-
-
-static int
-char_val(char chr)
-{
-    if (chr >= '0' && chr <= '9') {
-        return(chr - '0');
-    } else if (chr >= 'a' && chr <= 'f') {
-        return(chr - 'a' + 10);
-    } else if (chr >= 'A' && chr <= 'F') {
-        return(chr - 'A' + 10);
-    } else {
-        return(-1);
-    }
-}
-
-
-/* Convert string into an MP number, in the given base
- */
-
-void
-MPstr_to_num(const char *str, enum base_type base, int *MPval)
-{
-    const char *optr;
-    int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
-    int i, inum;
-    int exp      = 0;
-    int exp_sign = 1;
-    int negate = 0;
-
-    mp_set_from_integer(0, MPval);
-    mp_set_from_integer(basevals[(int) base], MPbase);
-
-    optr = str;
-
-    /* Remove any initial spaces or tabs. */
-    while (*optr == ' ' || *optr == '\t') {
-        optr++;
-    }
-
-    /* Check if this is a negative number. */
-    if (*optr == '-') {
-        negate = 1;
-        optr++;
-    }
-
-    while ((inum = char_val(*optr)) >= 0) {
-        mpmul(MPval, MPbase, MPval);
-        mp_add_integer(MPval, inum, MPval);
-        optr++;
-    }
-
-    if (*optr == '.' || *optr == *v->radix) {
-        optr++;
-        for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
-            mppwr(MPbase, i, MP1);
-            mp_set_from_integer(inum, MP2);
-            mpdiv(MP2, MP1, MP1);
-            mp_add(MPval, MP1, MPval);
-        optr++;
-        }
-    }
-
-    while (*optr == ' ') {
-        optr++;
-    }
- 
-    if (*optr != '\0') {
-        if (*optr == '-') {
-            exp_sign = -1;
-        }
- 
-        while ((inum = char_val(*++optr)) >= 0) {
-            exp = exp * basevals[(int) base] + inum;
-        }
-    }
-    exp *= exp_sign;
-
-    if (negate == 1) {
-        mp_invert_sign(MPval, MPval);
-    }
-}
-
-
-void
-mp_set_from_string(const char *number, int t[MP_SIZE])
-{
-    int i;
-    char *a = NULL;
-    char *b = NULL;
-
-    int MP_a[MP_SIZE];
-    int MP_b[MP_SIZE];
-
-    assert(number);
-    a = strdup(number);
-    assert(a);
-
-    for (i = 0; !((a[i] == 'e') || (a[i] == 'E')); i++) {
-        assert(a[i]);
-    }
-
-    a[i] = 0;
-    b = &a[i+2];
-
-    MPstr_to_num(a, v->base, MP_a);
-    MPstr_to_num(b, v->base, MP_b);
-    if (a[i+1] == '-') {
-        int MP_c[MP_SIZE];
-        mp_invert_sign(MP_b, MP_c);
-        calc_xtimestenpowx(MP_a, MP_c, t);
-    } else {
-        calc_xtimestenpowx(MP_a, MP_b, t);
-    }
-
-    free(a);
-}
-
 
 /* Calculate the factorial of MPval. */
 void
