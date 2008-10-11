@@ -390,8 +390,8 @@ static struct button_widget button_widgets[] = {
     { GDK_Y,          0 }},
 
     {KEY_FINC_TERM,          "finc_term",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_T,          0 }},
+    { 0,      0,      0 },
+    { GDK_t, GDK_T,   0 }},
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
 
