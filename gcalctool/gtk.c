@@ -66,7 +66,7 @@ static char *hostname_titles[] = {
 /* The names of each field in the dialogs for the financial functions */
 static char *finc_dialog_fields[FINC_NUM_DIALOGS][4] = {
     {"ctrm_pint", "ctrm_fv", "ctrm_pv", NULL},
-    {"ddb_cost", "ddb_salvage", "ddb_life", "ddb_period"},
+    {"ddb_cost", "ddb_life", "ddb_period", NULL},
     {"fv_pmt", "fv_pint", "fv_n", NULL},
     {"pmt_prin", "pmt_pint", "pmt_n", NULL},
     {"pv_pmt", "pv_pint", "pv_n", NULL},

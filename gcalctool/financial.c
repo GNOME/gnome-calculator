@@ -22,6 +22,9 @@
 #include "mp.h"
 #include "mpmath.h"
 
+#include <libintl.h>
+#define _ gettext
+
 void
 calc_ctrm(int t[MP_SIZE], int pint[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE])
 {
@@ -43,12 +46,11 @@ calc_ctrm(int t[MP_SIZE], int pint[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE])
 
 
 void
-calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
-         int life[MP_SIZE], int period[MP_SIZE])
+calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int life[MP_SIZE],
+         int period[MP_SIZE])
 {
 
 /*  Ddb   - cost    (amount paid for asset).
- *          salvage (value of asset at end of its life).
  *          life    (useful life of the asset).
  *          period  (time period for depreciation allowance).
  *
@@ -60,7 +62,6 @@ calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
  *            }
  *          RESULT = VAL
  *
- *          FIXME: Why isn't the salvage parameter used?
  */
 
     int i;
@@ -75,6 +76,12 @@ calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
         mpdiv(MP2, life, t);
         mp_set_from_mp(MPbv, MP1);
         mp_add(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
+    }
+
+    if (len >= 0) {
+        display_set_error (&v->display, 
+                           ("Error: the number of periods must be positive"));
+        mp_set_from_integer(0, t);
     }
 }
 
@@ -246,7 +253,7 @@ do_finc_expression(int function, int arg1[MP_SIZE], int arg2[MP_SIZE],
             calc_ctrm(result, arg1, arg2, arg3);
             break;
         case FINC_DDB_DIALOG:
-            calc_ddb(result, arg1, arg2, arg3, arg4);
+            calc_ddb(result, arg1, arg2, arg3);
             break;
         case FINC_FV_DIALOG:
             calc_fv(result, arg1, arg2, arg3);
