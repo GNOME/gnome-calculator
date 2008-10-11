@@ -57,6 +57,8 @@ void localize_expression(char *, const char *, int, int *);
 void display_clear(GCDisplay *);
 void display_refresh(GCDisplay *);
 
+gboolean display_get_integer(GCDisplay *display, gint64 *value);
+gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value);
 int *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
