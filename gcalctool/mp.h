@@ -85,6 +85,7 @@ void   mp_set_from_mp(const int *, int *);
 void   mp_set_from_float(float, int *);
 void   mp_set_from_double(double, int *);
 void   mp_set_from_integer(int, int *);
+void   mp_set_from_uint64(int, int *);
 void   mp_set_from_fraction(int, int, int *);
 float  mp_cast_to_float(const int *);
 double mp_cast_to_double(const int *);

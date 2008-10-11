@@ -205,6 +205,54 @@ display_get_text(GCDisplay *display)
     return get_state(display)->expression;
 }
 
+gboolean display_get_integer(GCDisplay *display, gint64 *value)
+{
+    const char *text;
+    char buf[MAX_DISPLAY];
+    gchar *endptr;
+    guint bases[] = {2, 8, 10, 16};
+
+    text = display_get_text(display);
+    if (text[0] == '\0') {
+        text = "0";
+    }
+    else if (display_is_result(display)) {
+        make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        text = buf;
+    }
+    
+    *value = g_ascii_strtoll(text, &endptr, bases[v->base]);
+    if(*endptr != '\0' || ((*value == G_MAXINT64 || *value == G_MININT64) && errno == ERANGE))
+        return FALSE;
+    return TRUE;
+}
+
+gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
+{
+    const char *text;
+    char buf[MAX_DISPLAY];
+    gchar *endptr;
+    guint bases[] = {2, 8, 10, 16};
+
+    text = display_get_text(display);
+    if (text[0] == '\0') {
+        text = "0";
+    }
+    else if (display_is_result(display)) {
+        make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        text = buf;
+    }
+    
+    /* strtoull() treats the string like a 2's complement number which is not what we want */
+    if(text[0] == '-')
+        return FALSE;
+
+    *value = g_ascii_strtoull(text, &endptr, bases[v->base]);
+    if(*endptr != '\0' || (*value == G_MAXUINT64 && errno == ERANGE))
+        return FALSE;
+    return TRUE;
+}
+
 int *display_get_answer(GCDisplay *display)
 {
     return get_state(display)->ans;

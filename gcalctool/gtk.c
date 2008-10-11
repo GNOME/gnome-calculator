@@ -727,29 +727,23 @@ get_cursor(void)
 static void
 set_bit_panel(void)
 {
-    int bit_str_len, i;
-    int MP[MP_SIZE];
-    char bit_str[MAXLINE], label[MAXLINE];
-
-    if (display_is_usable_number(&v->display, MP) || !is_integer(MP)) {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+    int i;
+    const gchar *label;
+    guint64 value;
+    
+    if (!display_get_unsigned_integer(&v->display, &value))
+    {
+        gtk_widget_set_sensitive(X->bit_panel, FALSE);        
         return;
     }
-    make_fixed(bit_str, MAXLINE, MP, BIN, MAXLINE, FALSE);
-    bit_str_len = strlen(bit_str);
-    if (bit_str_len <= MAXBITS) {
-        gtk_widget_set_sensitive(X->bit_panel, TRUE);
-        
-        for (i = 0; i < MAXBITS; i++) {
-            if (i < bit_str_len) {
-                SNPRINTF(label, MAXLINE, " %c", bit_str[bit_str_len-i-1]);
-            } else {
-                SNPRINTF(label, MAXLINE, " 0");
-            }
-            gtk_label_set_text(GTK_LABEL(X->bits[MAXBITS - i - 1]), label);
-        }
-    } else {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);
+    gtk_widget_set_sensitive(X->bit_panel, TRUE);
+
+    for (i = 0; i < MAXBITS; i++) {
+        if (value & (1LL << (MAXBITS-i-1)))
+            label = " 1";
+        else
+            label = " 0";
+        gtk_label_set_text(GTK_LABEL(X->bits[i]), label);
     }
 }
 
@@ -1649,33 +1643,31 @@ save_win_position()
 static gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
-    double number;
-    unsigned long long lval;
-    int n, MP1[MP_SIZE], index, ret;
+    guint64 value;
+    int index;
+    const gchar *text;
+    char buf[MAX_DISPLAY];
+    int MP[MP_SIZE];
+    
+    index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index"));
+    assert(display_get_unsigned_integer(&v->display, &value));
+    value ^= (1LL << (MAXBITS - index - 1));
+    
+    /* FIXME: Convert to since we don't support setting MP numbers from 64 bit integers */
+    SNPRINTF(buf, MAX_DISPLAY, "%llu", value);
+    MPstr_to_num(buf, 10, MP);
 
-    index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box),
-                                              "bit_index"));
-    n = MAXBITS - index - 1;
-
-    ret = display_is_usable_number(&v->display, display_get_answer(&v->display));
-    assert(!ret);
-    mp_set_from_mp(display_get_answer(&v->display), MP1);
-
-    number = mp_cast_to_double(MP1);
-    lval = (long long) number;
-
-    if (lval & (1LL << n)) {
-        lval &= ~(1LL << n);
-        gtk_label_set_text(GTK_LABEL(X->bits[index]), " 0");
-    } else {
-        lval |=  (1LL << n);
-        gtk_label_set_text(GTK_LABEL(X->bits[index]), " 1");
-    }
-    number = (double) lval;
-
-    mp_set_from_double(number, display_get_answer(&v->display));
-    display_set_string(&v->display, "Ans", -1);
+    /* FIXME: Set as string as display_set_number doesn't store correctly */
+    make_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
+    display_set_string(&v->display, buf, -1);
     display_refresh(&v->display);
+
+    text = gtk_label_get_text(GTK_LABEL(X->bits[index]));
+    if (strcmp(text, " 0") == 0)
+        text = " 1";
+    else
+        text = " 0";        
+    gtk_label_set_text(GTK_LABEL(X->bits[index]), text);
 
     return (TRUE);
 }
