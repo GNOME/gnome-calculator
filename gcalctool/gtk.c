@@ -1388,7 +1388,11 @@ finc_response_cb(GtkWidget *widget, gint response_id, void* dialog_pointer)
         entry = glade_xml_get_widget(X->financial,
                                      finc_dialog_fields[dialog][i]);
         MPstr_to_num(gtk_entry_get_text(GTK_ENTRY(entry)), 10, arg[i]);
+        gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
+    gtk_widget_grab_focus(glade_xml_get_widget(X->financial, 
+                                               finc_dialog_fields[dialog][0]));
+
     do_finc_expression(dialog, arg[0], arg[1], arg[2], arg[3]);
 }
 
