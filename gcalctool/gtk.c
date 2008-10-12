@@ -65,15 +65,15 @@ static char *hostname_titles[] = {
 
 /* The names of each field in the dialogs for the financial functions */
 static char *finc_dialog_fields[FINC_NUM_DIALOGS][4] = {
-    {"ctrm_pint", "ctrm_fv", "ctrm_pv", NULL},
-    {"ddb_cost", "ddb_life", "ddb_period", NULL},
-    {"fv_pmt", "fv_pint", "fv_n", NULL},
-    {"pmt_prin", "pmt_pint", "pmt_n", NULL},
-    {"pv_pmt", "pv_pint", "pv_n", NULL},
-    {"rate_fv", "rate_pv", "rate_n", NULL},
-    {"sln_cost", "sln_salvage", "sln_life", NULL},
-    {"syd_cost", "syd_salvage", "syd_life", "syd_period"},
-    {"term_pmt", "term_fv", "term_pint", NULL},
+    {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL},
+    {"ddb_cost",  "ddb_life",    "ddb_period", NULL},
+    {"fv_pmt",    "fv_pint",     "fv_n",       NULL},
+    {"pmt_prin",  "pmt_pint",    "pmt_n",      NULL},
+    {"pv_pmt",    "pv_pint",     "pv_n",       NULL},
+    {"rate_fv",   "rate_pv",     "rate_n",     NULL},
+    {"sln_cost",  "sln_salvage", "sln_life",   NULL},
+    {"syd_cost",  "syd_salvage", "syd_life",   "syd_period"},
+    {"term_pmt",  "term_fv",     "term_pint",  NULL},
 };
 
 /*  This table shows the keyboard values that are currently being used:
@@ -1371,7 +1371,7 @@ exchange_menu_cb(GtkMenuItem *menu)
 
 
 static void
-finc_response_cb(GtkWidget *widget, gint response_id, void* dialog_pointer)
+finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
 {
     int dialog = GPOINTER_TO_INT (dialog_pointer);
     int i;
@@ -1398,7 +1398,8 @@ finc_response_cb(GtkWidget *widget, gint response_id, void* dialog_pointer)
 
 
 static void
-setup_finc_dialogs(void) {
+setup_finc_dialogs(void)
+{
     GtkWidget *button;
     X->financial = glade_xml_new(PACKAGE_GLADE_DIR "/financial.glade", NULL, 
                                  NULL);
