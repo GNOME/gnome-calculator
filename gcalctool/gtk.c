@@ -1299,9 +1299,8 @@ put_constant(int n, char *con_value, char *con_name)
     char key[MAXLINE];
     char *cstr = g_strdup(con_value);
 
-/* Constants are written out with no thousands seaparator and with a radix
- * character of ".".
- */
+    /* NOTE: Constants are written out with no thousands separator and with a
+       radix character of ".". */
 
     SNPRINTF(key, MAXLINE, "constant%1dvalue", n);
     set_resource(key, cstr);
