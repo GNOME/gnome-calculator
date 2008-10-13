@@ -63,8 +63,10 @@ static char *hostname_titles[] = {
     N_("Calculator [%s] - Scientific"), N_("Calculator [%s] - Programming")
 };
 
+#define FINC_NUM_ARGS 4
+
 /* The names of each field in the dialogs for the financial functions */
-static char *finc_dialog_fields[FINC_NUM_DIALOGS][4] = {
+static char *finc_dialog_fields[FINC_NUM_DIALOGS][FINC_NUM_ARGS] = {
     {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL},
     {"ddb_cost",  "ddb_life",    "ddb_period", NULL},
     {"fv_pmt",    "fv_pint",     "fv_n",       NULL},
@@ -1370,17 +1372,50 @@ exchange_menu_cb(GtkMenuItem *menu)
 
 
 static void
+finc_activate_cb(GtkWidget *widget, void *pointer) {
+    gint i, dialog;
+    GtkWidget *next_widget, *dialog_widget;
+    const char* widget_name = glade_get_widget_name(widget);
+    for (dialog = 0; dialog < FINC_NUM_DIALOGS; dialog++) {
+        for (i = 0; i < FINC_NUM_ARGS; i++) {
+            if (finc_dialog_fields[dialog][i] == NULL ||
+                g_ascii_strcasecmp(widget_name, 
+                                   finc_dialog_fields[dialog][i])) {
+                continue;
+            }
+            
+            if (i < FINC_NUM_ARGS - 1 &&
+                finc_dialog_fields[dialog][i+1] != NULL) {
+                next_widget = glade_xml_get_widget(X->financial,
+                                                   finc_dialog_fields[dialog][i+1]);
+                gtk_widget_grab_focus(next_widget);
+                return;
+            }
+            else {
+                dialog_widget = gtk_widget_get_toplevel(widget);
+				if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
+                	gtk_dialog_response(GTK_DIALOG(dialog_widget),
+                                        GTK_RESPONSE_OK);
+                    return;
+                }
+            }
+        }
+    }
+}
+
+
+static void
 finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
 {
     int dialog = GPOINTER_TO_INT (dialog_pointer);
     int i;
-    int arg[4][MP_SIZE];
+    int arg[FINC_NUM_ARGS][MP_SIZE];
     GtkWidget *entry;
     if (response_id != GTK_RESPONSE_OK) {
         return;
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < FINC_NUM_ARGS; i++) {
         if (finc_dialog_fields[dialog][i] == NULL) {
             continue;
         }
@@ -1429,6 +1464,9 @@ setup_finc_dialogs(void)
     glade_xml_signal_connect_data(X->financial, "finc_term_response_cb", 
                              G_CALLBACK(finc_response_cb), 
                              GINT_TO_POINTER(FINC_TERM_DIALOG));
+
+	glade_xml_signal_connect(X->financial, "finc_activate_cb", 
+                             G_CALLBACK(finc_activate_cb));
 
     button = GET_WIDGET("calc_finc_compounding_term_button");
     g_object_set_data(G_OBJECT(button), "finc_dialog", "ctrm_dialog");
