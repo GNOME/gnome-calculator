@@ -133,6 +133,7 @@ udf:
 
 value: 
   exp {cp($1, $$);}
+| tPI %prec HIGH {mppi($$);} 
 ;
 
 exp: 
