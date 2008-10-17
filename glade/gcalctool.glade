@@ -5,7 +5,7 @@
 
 <widget class="GtkWindow" id="calc_window">
   <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-  <property name="title" translatable="yes"></property>
+  <property name="title"></property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -37,7 +37,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="menuitem1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">_Calculator</property>
+	      <property name="label" translatable="yes" comments="Calculator menu">_Calculator</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -46,7 +46,7 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="quit_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Quit the calculator</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Calculator|Quit menu item">Quit the calculator</property>
 		      <property name="label">gtk-quit</property>
 		      <property name="use_stock">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -62,7 +62,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="edit_menu">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">_Edit</property>
+	      <property name="label" translatable="yes" comments="Edit menu">_Edit</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -71,7 +71,7 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="copy_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Copy selection</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Edit|Copy menu item">Copy selection</property>
 		      <property name="label">gtk-copy</property>
 		      <property name="use_stock">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -83,7 +83,7 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="paste_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Paste selection</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Edit|Paste menu item">Paste selection</property>
 		      <property name="label">gtk-paste</property>
 		      <property name="use_stock">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -95,8 +95,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="undo_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Undo</property>
-		      <property name="label" translatable="yes">_Undo</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Edit|Undo menu item">Undo</property>
+		      <property name="label" translatable="yes" comments="Edit|Undo menu item">_Undo</property>
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -120,8 +120,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="redo_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Redo</property>
-		      <property name="label" translatable="yes">_Redo</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Edit|Redo menu item">Redo</property>
+		      <property name="label" translatable="yes" comments="Edit|Redo menu item">_Redo</property>
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -151,8 +151,8 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="insert_ascii_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Insert ASCII value</property>
-		      <property name="label" translatable="yes">_Insert ASCII value...</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Edit|Insert ASCII value menu item">Insert ASCII value</property>
+		      <property name="label" translatable="yes" comments="Edit|Insert ASCII value menu item">_Insert ASCII value...</property>
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -168,7 +168,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="menuitem3">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">_View</property>
+	      <property name="label" translatable="yes" comments="View menu">_View</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -177,8 +177,8 @@
 		  <child>
 		    <widget class="GtkRadioMenuItem" id="view_basic_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Basic</property>
-		      <property name="label" translatable="yes">_Basic</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Basic menu item">Basic</property>
+		      <property name="label" translatable="yes" comments="View|Basic menu item">_Basic</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -191,8 +191,8 @@
 		  <child>
 		    <widget class="GtkRadioMenuItem" id="view_advanced_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Advanced</property>
-		      <property name="label" translatable="yes">_Advanced</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Advanced menu item">Advanced</property>
+		      <property name="label" translatable="yes" comments="View|Advanced menu item">_Advanced</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <property name="group">view_basic_menu</property>
@@ -206,8 +206,8 @@
 		  <child>
 		    <widget class="GtkRadioMenuItem" id="view_financial_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Financial</property>
-		      <property name="label" translatable="yes">_Financial</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Financial menu item">Financial</property>
+		      <property name="label" translatable="yes" comments="View|Financial menu item">_Financial</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <property name="group">view_basic_menu</property>
@@ -221,8 +221,8 @@
 		  <child>
 		    <widget class="GtkRadioMenuItem" id="view_scientific_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Scientific</property>
-		      <property name="label" translatable="yes">_Scientific</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Scientific menu item">Scientific</property>
+		      <property name="label" translatable="yes" comments="View|Scientific menu item">_Scientific</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <property name="group">view_basic_menu</property>
@@ -236,8 +236,8 @@
 		  <child>
 		    <widget class="GtkRadioMenuItem" id="view_programming_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Programming</property>
-		      <property name="label" translatable="yes">_Programming</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Programming menu item">Programming</property>
+		      <property name="label" translatable="yes" comments="View|Programming menu item">_Programming</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <property name="group">view_basic_menu</property>
@@ -257,8 +257,8 @@
 		  <child>
 		    <widget class="GtkCheckMenuItem" id="show_trailing_zeroes_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show trailing zeroes</property>
-		      <property name="label" translatable="yes">Show _Trailing Zeroes</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Show Trailing Zeroes menu item">Show trailing zeroes</property>
+		      <property name="label" translatable="yes" comments="View|Show Trailing Zeroes menu item">Show _Trailing Zeroes</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -271,8 +271,8 @@
 		  <child>
 		    <widget class="GtkCheckMenuItem" id="show_thousands_separator_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show thousands separator</property>
-		      <property name="label" translatable="yes">Show T_housands Separator</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Show Thousands Separator menu item">Show thousands separator</property>
+		      <property name="label" translatable="yes" comments="View|Show Thousands Separator menu item">Show T_housands Separator</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -291,8 +291,8 @@
 		  <child>
 		    <widget class="GtkCheckMenuItem" id="show_registers_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show memory registers</property>
-		      <property name="label" translatable="yes">_Memory Registers</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the View|Memory Registers menu item">Show memory registers</property>
+		      <property name="label" translatable="yes" comments="View|Memory Registers menu item">_Memory Registers</property>
 		      <property name="use_underline">True</property>
 		      <property name="active">False</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -309,7 +309,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="menuitem4">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">_Help</property>
+	      <property name="label" translatable="yes" comments="Help menu">_Help</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -318,8 +318,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="help_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show help contents</property>
-		      <property name="label" translatable="yes">_Contents</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Help|Contents menu">Show help contents</property>
+		      <property name="label" translatable="yes" comments="Help|Contents menu">_Contents</property>
 		      <property name="use_underline">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
 		      <signal name="deselect" handler="menu_item_deselect_cb"/>
@@ -343,7 +343,7 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="about_menu">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Show the About Gcalctool dialog</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the Help|About menu">Show the About Gcalctool dialog</property>
 		      <property name="label">gtk-about</property>
 		      <property name="use_stock">True</property>
 		      <signal name="select" handler="menu_item_select_cb"/>
@@ -427,9 +427,9 @@
 	      <child>
 		<widget class="GtkRadioButton" id="binary_radio">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Set numeric base to binary (base 2)</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the base 2 radio button">Set numeric base to binary (base 2)</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">_Bin</property>
+		  <property name="label" translatable="yes" comments="Base 2 radio button">_Bin</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
@@ -448,9 +448,9 @@
 	      <child>
 		<widget class="GtkRadioButton" id="octal_radio">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Set numeric base to octal (base 8)</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the base 8 radio button">Set numeric base to octal (base 8)</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">_Oct</property>
+		  <property name="label" translatable="yes" comments="Base 8 radio button">_Oct</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
@@ -470,9 +470,9 @@
 	      <child>
 		<widget class="GtkRadioButton" id="decimal_radio">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Set numeric base to decimal (base 10)</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the base 10 radio button">Set numeric base to decimal (base 10)</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">_Dec</property>
+		  <property name="label" translatable="yes" comments="Base 10 radio button">_Dec</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
@@ -492,9 +492,9 @@
 	      <child>
 		<widget class="GtkRadioButton" id="hexadecimal_radio">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Set numeric base to hexadecimal (base 16)</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the base 16 radio button">Set numeric base to hexadecimal (base 16)</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">He_x</property>
+		  <property name="label" translatable="yes" comments="Base 16 radio button">He_x</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
@@ -548,9 +548,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="degrees_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set trigonometric type to degrees</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the degrees radio button">Set trigonometric type to degrees</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">De_grees</property>
+		      <property name="label" translatable="yes" comments="Degrees radio button">De_grees</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -569,9 +569,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="gradians_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set trigonometric type to gradians</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the gradians radio button">Set trigonometric type to gradians</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">Gr_adians</property>
+		      <property name="label" translatable="yes" comments="Gradians radio button">Gr_adians</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -591,9 +591,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="radians_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set trigonometric type to radians</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the radian radio button">Set trigonometric type to radians</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Radians</property>
+		      <property name="label" translatable="yes" comments="Radian radio button">_Radians</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -626,9 +626,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="engineering_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set display type to engineering format</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the engineering display radio button">Set display type to engineering format</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">E_ng</property>
+		      <property name="label" translatable="yes" comments="Engineering display radio button">E_ng</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -647,9 +647,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="fixed_point_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set display type to fixed-point format</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the fixed-point display radio button">Set display type to fixed-point format</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Fix</property>
+		      <property name="label" translatable="yes" comments="Fixed-point display radio button">_Fix</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -669,9 +669,9 @@
 		  <child>
 		    <widget class="GtkRadioButton" id="scientific_radio">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set display type to scientific format</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the scientific display radio button">Set display type to scientific format</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Sci</property>
+		      <property name="label" translatable="yes" comments="Scientific display radio button">_Sci</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -718,9 +718,9 @@
 		  <child>
 		    <widget class="GtkCheckButton" id="inverse_check">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set inverse option for trigonometric functions</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the inverse check box">Set inverse option for trigonometric functions</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">_Inv</property>
+		      <property name="label" translatable="yes" comments="Inverse check box">_Inv</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -739,9 +739,9 @@
 		  <child>
 		    <widget class="GtkCheckButton" id="hyperbolic_check">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Set hyperbolic option for trigonometric functions</property>
+		      <property name="tooltip" translatable="yes" comments="Tooltip for the hyperbolic check box">Set hyperbolic option for trigonometric functions</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">H_yp</property>
+		      <property name="label" translatable="yes" comments="Hyperbolic check box">H_yp</property>
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
@@ -795,7 +795,7 @@
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Sum-of-the years'-digits depreciation [Y]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Syd] button">Sum-of-the years'-digits depreciation [Y]</property>
 	      <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
 	      <property name="use_underline">True</property>
@@ -820,7 +820,7 @@ The depreciable cost is cost - salvage. The useful life is the number of periods
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_straight_line_depreciation_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Straight-line depreciation [l]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Sln] button">Straight-line depreciation [l]</property>
 	      <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
 http://en.wikipedia.org/wiki/Depreciation">Sln</property>
 	      <property name="use_underline">True</property>
@@ -845,7 +845,7 @@ http://en.wikipedia.org/wiki/Depreciation">Sln</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_periodic_interest_rate_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Periodic interest rate [T]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Rate] button">Periodic interest rate [T]</property>
 	      <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
 http://en.wikipedia.org/wiki/Interest
 
@@ -874,7 +874,7 @@ http://en.wikipedia.org/wiki/Interest
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_present_value_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Present value [p]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Pv] button">Present value [p]</property>
 	      <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
 http://en.wikipedia.org/wiki/Present_value">Pv</property>
 	      <property name="use_underline">True</property>
@@ -899,7 +899,7 @@ http://en.wikipedia.org/wiki/Present_value">Pv</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_periodic_payment_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Periodic payment [P]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Pmt] button">Periodic payment [P]</property>
 	      <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
 http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
 	      <property name="use_underline">True</property>
@@ -924,7 +924,7 @@ http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_future_value_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Future value [v]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Fv] button">Future value [v]</property>
 	      <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
 http://en.wikipedia.org/wiki/Future_value">Fv</property>
 	      <property name="use_underline">True</property>
@@ -949,7 +949,7 @@ http://en.wikipedia.org/wiki/Future_value">Fv</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_double_declining_depreciation_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Double-declining depreciation [D]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Ddb] button">Double-declining depreciation [D]</property>
 	      <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
 http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
 	      <property name="use_underline">True</property>
@@ -974,7 +974,7 @@ http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_compounding_term_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Compounding term [m]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Ctrm] button">Compounding term [m]</property>
 	      <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
 See also:
 http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
@@ -1000,7 +1000,7 @@ http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_term_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Payment period [t]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Term] button">Payment period [t]</property>
 	      <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
 http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <property name="use_underline">True</property>
@@ -2200,7 +2200,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_marker_label0">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">63</property>
+		  <property name="label" translatable="yes" comments="Label for the most significant bit (bit 63) on the bit editor">63</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -2228,7 +2228,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_maker_label3">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">31</property>
+		  <property name="label" translatable="yes" comments="Label for bit 31 on the bit editor">31</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -2256,7 +2256,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_marker_label2">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">32</property>
+		  <property name="label" translatable="yes" comments="Label for bit 32 on the bit editor">32</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -2284,7 +2284,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_marker_label5">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">0</property>
+		  <property name="label" translatable="yes" comments="Label for the least significant bit (bit 0) on the bit editor">0</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -3496,7 +3496,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_marker_label1">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">47</property>
+		  <property name="label" translatable="yes" comments="Label for bit 47 on the bit editor">47</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -3524,7 +3524,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="bit_marker_label4">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">15</property>
+		  <property name="label" translatable="yes" comments="Label for bit 15 on the bit editor">15</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -4000,7 +4000,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_functions_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">User-defined functions [F]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Fun] button">User-defined functions [F]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4014,7 +4014,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <child>
 		    <widget class="GtkLabel" id="label9">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Fun</property>
+		      <property name="label" translatable="yes" comments="Functions button">Fun</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4068,7 +4068,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_constants_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Constants [#]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Con] button">Constants [#]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4082,7 +4082,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <child>
 		    <widget class="GtkLabel" id="label8">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Con</property>
+		      <property name="label" translatable="yes" comments="Constants button">Con</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4136,7 +4136,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_natural_logarithm_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Natural log [N]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the natural log button">Natural log [N]</property>
 	      <property name="label" translatable="yes" comments="Natural logarithm">Ln</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4156,7 +4156,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_logarithm_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Base 10 log [G]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the log base 10 button">Base 10 log [G]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4194,7 +4194,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_logarithm2_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Base 2 log [H]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the log base 2 button">Base 2 log [H]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4232,7 +4232,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_exponential_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Enter an exponential number [E]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the exponential button">Enter an exponential number [E]</property>
 	      <property name="label" translatable="yes" comments="Exponential">Exp</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4252,7 +4252,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_accuracy_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Set accuracy from 0 to 9 numeric places [A]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the accuracy button">Set accuracy from 0 to 9 numeric places [A]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4320,7 +4320,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_random_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Random number in the range 0.0 to 1.0 [?]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the random number button">Random number in the range 0.0 to 1.0 [?]</property>
 	      <property name="label" translatable="yes" comments="Random number">Rand</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4340,7 +4340,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_factorial_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Factorial of displayed value [!]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the factorial button">Factorial of displayed value [!]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4378,7 +4378,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_x_pow_y_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Raise displayed value to the power of y [^]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the x to the power of y button">Raise displayed value to the power of y [^]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4416,7 +4416,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_pow_10_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">10 to the power of displayed value [}]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the 10 to the power of x button">10 to the power of displayed value [}]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4424,7 +4424,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="label12">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="10 to thepower of  x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
+		  <property name="label" translatable="yes" comments="10 to thepower of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4454,7 +4454,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_pow_e_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">e to the power of displayed value [{]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the e to the power of x button">e to the power of displayed value [{]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4492,8 +4492,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_modulus_divide_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Modulus Division [M]</property>
-	      <property name="label" translatable="yes">Mod</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the modulus division button">Modulus Division [M]</property>
+	      <property name="label" translatable="yes" comments="Modulus division button">Mod</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4512,7 +4512,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_tangent_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Tangent [L]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the tangent button">Tangent [L]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4550,7 +4550,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_sine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Sine [K]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the sine button">Sine [K]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4588,7 +4588,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_cosine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Cosine [J]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the cosine button">Cosine [J]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4643,8 +4643,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_d_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit D [d]</property>
-	      <property name="label" translatable="yes">D</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit D button">Hexadecimal digit D [d]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit D button">D</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4663,8 +4663,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_e_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit E [e]</property>
-	      <property name="label" translatable="yes">E</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit E button">Hexadecimal digit E [e]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit E button">E</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4683,8 +4683,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_f_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit F [f]</property>
-	      <property name="label" translatable="yes">F</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit F button">Hexadecimal digit F [f]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit F button">F</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4703,8 +4703,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_a_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit A [a]</property>
-	      <property name="label" translatable="yes">A</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit A button">Hexadecimal digit A [a]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit A button">A</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4723,8 +4723,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_b_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit B [b]</property>
-	      <property name="label" translatable="yes">B</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit B button">Hexadecimal digit B [b]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit B button">B</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4743,8 +4743,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_c_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Hexadecimal digit C [c]</property>
-	      <property name="label" translatable="yes">C</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the hexadecimal digit C button">Hexadecimal digit C [c]</property>
+	      <property name="label" translatable="yes" comments="Hexadecimal digit C button">C</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4763,8 +4763,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_xnor_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise XNOR [n]</property>
-	      <property name="label" translatable="yes">XNOR</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean exclusive NOR button">Bitwise XNOR [n]</property>
+	      <property name="label" translatable="yes" comments="Boolean exclusive NOR button">XNOR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4783,7 +4783,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_mask_32_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">32-bit unsigned integer value of display ([)</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the 32 bit mask button">32-bit unsigned integer value of display ([)</property>
 	      <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4803,8 +4803,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_not_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise NOT [~]</property>
-	      <property name="label" translatable="yes">NOT</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean NOT button">Bitwise NOT [~]</property>
+	      <property name="label" translatable="yes" comments="Boolean NOT button">NOT</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4823,8 +4823,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_xor_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise XOR [x]</property>
-	      <property name="label" translatable="yes">XOR</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean exlcusive OR button">Bitwise XOR [x]</property>
+	      <property name="label" translatable="yes" comments="Boolean exlcusive OR button">XOR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4843,8 +4843,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_and_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise AND [&amp;]</property>
-	      <property name="label" translatable="yes">AND</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean AND button">Bitwise AND [&amp;]</property>
+	      <property name="label" translatable="yes" comments="Boolean AND button">AND</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4863,8 +4863,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_or_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Bitwise OR [|]</property>
-	      <property name="label" translatable="yes">OR</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean OR button">Bitwise OR [|]</property>
+	      <property name="label" translatable="yes" comments="Boolean OR button">OR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
@@ -4883,7 +4883,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_mask_16_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">16-bit unsigned integer value of display (])</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the 16 bit mask button">16-bit unsigned integer value of display (])</property>
 	      <property name="label" translatable="yes" comments="16 bit unsigned integer">&amp;16</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4903,7 +4903,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_shift_left_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the left [&lt;]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the shift left button">Shift displayed value 1-15 places to the left [&lt;]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4918,7 +4918,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		    <widget class="GtkLabel" id="label7">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes" comments="Shift left">&lt;</property>
+		      <property name="label" translatable="yes" comments="Shift left button">&lt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4972,7 +4972,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_shift_right_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Shift displayed value 1-15 places to the right [&gt;]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the right shift button">Shift displayed value 1-15 places to the right [&gt;]</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4987,7 +4987,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		    <widget class="GtkLabel" id="label6">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes" comments="Shift right">&gt;</property>
+		      <property name="label" translatable="yes" comments="Shift right button">&gt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5067,8 +5067,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_backspace_simple_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value [Backspace]</property>
-		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the backspace button">Remove rightmost character from displayed value [Backspace]</property>
+		  <property name="label" translatable="yes" comments="Backspace button. Bksp is short for Backspace">Bksp</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5090,8 +5090,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_change_sign_simple_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Change Sign [C]</property>
-		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the change sign button">Change Sign [C]</property>
+		  <property name="label" translatable="yes" comments="Change sign button">±</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5113,8 +5113,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_clear_simple_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation [Shift Delete]</property>
-		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the clear button">Clear displayed value and any partial calculation [Shift Delete]</property>
+		  <property name="label" translatable="yes" comments="Clear button. Clr is short for Clear">Clr</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5136,8 +5136,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_clear_entry_simple_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value [Escape]</property>
-		  <property name="label" translatable="yes">CE</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the clear displayed value button">Clear displayed value [Escape]</property>
+		  <property name="label" translatable="yes" comments="Clear displayed value button">CE</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5179,8 +5179,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_start_group_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Start group of calculations [(]</property>
-		  <property name="label" translatable="yes" comments="Left bracket">(</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the start calculation group button">Start group of calculations [(]</property>
+		  <property name="label" translatable="yes" comments="Start calculation group button">(</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5202,7 +5202,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_reciprocal_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Reciprocal [r]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the reciprocal button">Reciprocal [r]</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
 		  <accessibility>
@@ -5213,7 +5213,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <child>
 		    <widget class="GtkLabel" id="label20">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">1/&lt;i&gt;x&lt;/i&gt;</property>
+		      <property name="label" translatable="yes" comments="Reciprocal button">1/&lt;i&gt;x&lt;/i&gt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">True</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5247,7 +5247,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_percentage_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Percentage [%]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the percentage button">Percentage [%]</property>
 		  <property name="label" translatable="yes" comments="This is a percentage sign">%</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -5270,7 +5270,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_end_group_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">End group of calculations [)]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the end calculation group button">End group of calculations [)]</property>
 		  <property name="label" translatable="yes" comments="Right bracket">)</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -5293,7 +5293,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_backspace_advanced_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Remove rightmost character from displayed value [Backspace]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the backspace button">Remove rightmost character from displayed value [Backspace]</property>
 		  <property name="label" translatable="yes" comments="Bksp is short for Backspace">Bksp</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -5316,8 +5316,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_change_sign_advanced_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Change Sign [C]</property>
-		  <property name="label" translatable="yes" comments="This is a plus-minus sign (+/-)">±</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the change sign button">Change Sign [C]</property>
+		  <property name="label" translatable="yes" comments="Change sign button">±</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5339,8 +5339,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_sqrt_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Square root [s]</property>
-		  <property name="label" translatable="yes" comments="This is a square root sign">√</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the square root button">Square root [s]</property>
+		  <property name="label" translatable="yes" comments="Square root button">√</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5363,8 +5363,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_abs_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Absolute value [u]</property>
-		  <property name="label" translatable="yes" comments="Abs is short for Absolute">Abs</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the absolute value button">Absolute value [u]</property>
+		  <property name="label" translatable="yes" comments="Absolute value button. Abs is short for Absolute">Abs</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5386,8 +5386,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_fractional_portion_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Fractional portion of displayed value [:]</property>
-		  <property name="label" translatable="yes" comments="Fractional portion">Frac</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the fractional portion button">Fractional portion of displayed value [:]</property>
+		  <property name="label" translatable="yes" comments="Fractional portion button">Frac</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5409,8 +5409,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_integer_portion_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Integer portion of displayed value [i]</property>
-		  <property name="label" translatable="yes" comments="Integer portion">Int</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the integer portion button">Integer portion of displayed value [i]</property>
+		  <property name="label" translatable="yes" comments="Integer portion button">Int</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5432,8 +5432,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_clear_entry_advanced_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value [Escape]</property>
-		  <property name="label" translatable="yes">CE</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the clear displayed value button">Clear displayed value [Escape]</property>
+		  <property name="label" translatable="yes" comments="Clear displayed value button">CE</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5455,7 +5455,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_exchange_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Exchange displayed value with memory register [X]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the memory exchange button">Exchange displayed value with memory register [X]</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
 		  <accessibility>
@@ -5472,7 +5472,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <child>
 			<widget class="GtkLabel" id="label21">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes" comments="Exchange with register">Exch</property>
+			  <property name="label" translatable="yes" comments="Memory exchange button. Exch is short for Exchange">Exch</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5530,7 +5530,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_recall_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Retrieve memory register to display [R]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the memory recall button">Retrieve memory register to display [R]</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
 		  <accessibility>
@@ -5547,7 +5547,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <child>
 			<widget class="GtkLabel" id="label22">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes" comments="Retrieve from register">Rcl</property>
+			  <property name="label" translatable="yes" comments="Memory recall button. Rcl is short for Recall">Rcl</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5605,8 +5605,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_clear_advanced_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Clear displayed value and any partial calculation [Shift Delete]</property>
-		  <property name="label" translatable="yes" comments="Clr is short for Clear">Clr</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the clear display button">Clear displayed value and any partial calculation [Shift Delete]</property>
+		  <property name="label" translatable="yes" comments="Clear display button. Clr is short for Clear">Clr</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5628,7 +5628,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_store_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Store displayed value in memory register [S]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the memory store button">Store displayed value in memory register [S]</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
 		  <accessibility>
@@ -5645,7 +5645,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		      <child>
 			<widget class="GtkLabel" id="label23">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes" comments="Store to register">Sto</property>
+			  <property name="label" translatable="yes" comments="Memory store button. Sto is short for Store">Sto</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5703,7 +5703,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_square_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Square [@]</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the x to the power of 2 button">Square [@]</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
 		  <accessibility>
@@ -5714,7 +5714,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <child>
 		    <widget class="GtkLabel" id="label24">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes" comments="x squared. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;</property>
+		      <property name="label" translatable="yes" comments="x to the power of 2 button">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">True</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5767,7 +5767,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_4_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 4">4</property>
+		  <property name="label" translatable="yes" comments="Numeric 4 button">4</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5789,7 +5789,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_7_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 7">7</property>
+		  <property name="label" translatable="yes" comments="Numeric 7 button">7</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5811,7 +5811,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_8_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 8">8</property>
+		  <property name="label" translatable="yes" comments="Numeric 8 button">8</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5833,7 +5833,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_9_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 9">9</property>
+		  <property name="label" translatable="yes" comments="Numeric 9 button">9</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5855,7 +5855,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_5_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 5">5</property>
+		  <property name="label" translatable="yes" comments="Numeric 5 button">5</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5877,7 +5877,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_6_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 6">6</property>
+		  <property name="label" translatable="yes" comments="Numeric 6 button">6</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5899,8 +5899,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_divide_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Divide [/]</property>
-		  <property name="label" translatable="yes" comments="this is a division sign (÷)">÷</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the division button">Divide [/]</property>
+		  <property name="label" translatable="yes" comments="Division button">÷</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5922,7 +5922,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_1_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 1">1</property>
+		  <property name="label" translatable="yes" comments="Numeric 1 button">1</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5944,7 +5944,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_2_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 2">2</property>
+		  <property name="label" translatable="yes" comments="Numeric 2 button">2</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5966,7 +5966,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_0_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 0">0</property>
+		  <property name="label" translatable="yes" comments="Numeric 0 button">0</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -5988,8 +5988,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_numeric_point_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Numeric point</property>
-		  <property name="label" translatable="yes" comments="Numeric point">.</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the numeric point button">Numeric point</property>
+		  <property name="label" translatable="yes" comments="Numeric point button">.</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6011,8 +6011,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_result_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Calculate result [=]</property>
-		  <property name="label" translatable="yes" comments="This is the calculate result button (=)">=</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the solve button">Calculate result [=]</property>
+		  <property name="label" translatable="yes" comments="Solve button (clicking this solves the displayed calculation)">=</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6034,7 +6034,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_3_button">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Numeric 3">3</property>
+		  <property name="label" translatable="yes" comments="Numeric 3 button">3</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6056,8 +6056,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_multiply_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Multiply [*]</property>
-		  <property name="label" translatable="yes" comments="This is a multiplication sign (*)">×</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the multiplication button">Multiply [*]</property>
+		  <property name="label" translatable="yes" comments="Multiplication button">×</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6080,8 +6080,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_subtract_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Subtract [-]</property>
-		  <property name="label" translatable="yes" comments="This is a minus sign (-)">−</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the subtraction button">Subtract [-]</property>
+		  <property name="label" translatable="yes" comments="Subtraction button">−</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6104,8 +6104,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkButton" id="calc_add_button">
 		  <property name="visible">True</property>
-		  <property name="tooltip" translatable="yes">Add [+]</property>
-		  <property name="label" translatable="yes">+</property>
+		  <property name="tooltip" translatable="yes" comments="Tooltip for the addition button">Add [+]</property>
+		  <property name="label" translatable="yes" comments="Addition button">+</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6164,7 +6164,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left1_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_1 place</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 1 bit">_1 place</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6173,7 +6173,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left2_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_2 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 2 bits">_2 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6182,7 +6182,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left3_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_3 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 3 bits">_3 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6191,7 +6191,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left4_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_4 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 4 bits">_4 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6200,7 +6200,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left5_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_5 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 5 bits">_5 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6209,7 +6209,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left6_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_6 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 6 bits">_6 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6218,7 +6218,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left7_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_7 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 7 bits">_7 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6227,7 +6227,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left8_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_8 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 8 bits">_8 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6236,7 +6236,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left9_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_9 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 9 bits">_9 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6245,7 +6245,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left10_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">10 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 10 bits">10 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6254,7 +6254,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left11_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">11 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 11 bits">11 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6263,7 +6263,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left12_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">12 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 12 bits">12 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6272,7 +6272,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left13_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">13 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 13 bits">13 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6281,7 +6281,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left14_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">14 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 14 bits">14 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6290,7 +6290,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_left15_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">15 places</property>
+      <property name="label" translatable="yes" comments="Left Shift Popup: Menu item to shift left by 15 bits">15 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6305,7 +6305,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right1_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_1 place</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 1 bit">_1 place</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6314,7 +6314,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right2_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_2 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 2 bits">_2 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6323,7 +6323,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right3_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_3 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 3 bits">_3 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6332,7 +6332,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right4_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_4 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 4 bits">_4 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6341,7 +6341,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right5_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_5 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 5 bits">_5 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6350,7 +6350,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right6_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_6 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 6 bits">_6 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6359,7 +6359,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right7_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_7 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 7 bits">_7 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6368,7 +6368,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right8_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_8 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 8 bits">_8 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6377,7 +6377,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right9_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_9 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 9 bits">_9 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6386,7 +6386,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right10_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">10 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 10 bits">10 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6395,7 +6395,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right11_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">11 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 11 bits">11 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6404,7 +6404,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right12_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">12 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 12 bits">12 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6413,7 +6413,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right13_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">13 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 13 bits">13 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6422,7 +6422,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right14_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">14 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 14 bits">14 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6431,7 +6431,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="shift_right15_menu">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">15 places</property>
+      <property name="label" translatable="yes" comments="Right Shift Popup: Menu item to shift right by 15 bits">15 places</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="shift_cb" last_modification_time="Sat, 13 Oct 2007 03:00:00 GMT"/>
     </widget>
@@ -6446,7 +6446,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item0">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_0 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 0 significant places">_0 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <signal name="activate" handler="accuracy_radio_cb" last_modification_time="Sat, 13 Oct 2007 03:03:03 GMT"/>
@@ -6456,7 +6456,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item1">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_1 significant place</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 1 significant place">_1 significant place</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6467,7 +6467,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item2">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_2 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 2 significant places">_2 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6478,7 +6478,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item3">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_3 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 3 significant places">_3 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6489,7 +6489,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item4">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_4 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 4 significant places">_4 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6500,7 +6500,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item5">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_5 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 5 significant places">_5 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6511,7 +6511,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item6">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_6 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 6 significant places">_6 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6522,7 +6522,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item7">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_7 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 7 significant places">_7 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6533,7 +6533,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item8">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_8 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 8 significant places">_8 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6544,7 +6544,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item9">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_9 significant places</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to set accuracy to 9 significant places">_9 significant places</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6555,7 +6555,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item_other">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">_Other (%d) ...</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.">_Other (%d) ...</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6572,7 +6572,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="acc_item_default">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Reset to _Default (%d)</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.">Reset to _Default (%d)</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="accuracy_default_cb" last_modification_time="Sun, 02 Dec 2007 08:57:01 GMT"/>
     </widget>
@@ -6587,7 +6587,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkCheckMenuItem" id="acc_trailing_zeroes_item">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Show _Trailing Zeroes</property>
+      <property name="label" translatable="yes" comments="Accuracy Popup: Check menu item to enable trailing zeroes">Show _Trailing Zeroes</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <signal name="activate" handler="show_trailing_zeroes_cb"/>
@@ -7210,7 +7210,7 @@ blind or have low vision.">register 9</atkproperty>
   <property name="border_width">5</property>
   <property name="width_request">380</property>
   <property name="height_request">300</property>
-  <property name="title" translatable="yes">Edit Constants</property>
+  <property name="title" translatable="yes" comments="Title of edit constants dialog">Edit Constants</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -7296,7 +7296,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label51">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Click a _value or description to edit it:</property>
+	      <property name="label" translatable="yes" comments="Edit Constants Dialog: Instructions in dialog">Click a _value or description to edit it:</property>
 	      <property name="use_underline">True</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -7351,7 +7351,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label50">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">&lt;small&gt;&lt;i&gt;&lt;b&gt;Note:&lt;/b&gt; All constant values are specified in the decimal numeric base.&lt;/i&gt;&lt;/small&gt;</property>
+	      <property name="label" translatable="yes" comments="Edit Constants Dialog: Note about what base numbers will be entered as">&lt;small&gt;&lt;i&gt;&lt;b&gt;Note:&lt;/b&gt; All constant values are specified in the decimal numeric base.&lt;/i&gt;&lt;/small&gt;</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">True</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -7388,7 +7388,7 @@ blind or have low vision.">register 9</atkproperty>
   <child>
     <widget class="GtkMenuItem" id="edit_constants1">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Edit Constants...</property>
+      <property name="label" translatable="yes" comments="Menu item in the constants menu to show the Edit Constants dialog">Edit Constants...</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="edit_constants_cb" last_modification_time="Wed, 31 Oct 2007 07:53:36 GMT"/>
     </widget>
@@ -7490,7 +7490,7 @@ blind or have low vision.">register 9</atkproperty>
   <child>
     <widget class="GtkMenuItem" id="menuitem6">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Edit Functions...</property>
+      <property name="label" translatable="yes" comments="Menu item in the constants menu to show the Edit Functions dialog">Edit Functions...</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="edit_functions_cb" last_modification_time="Wed, 31 Oct 2007 07:55:07 GMT"/>
     </widget>
@@ -7591,7 +7591,7 @@ blind or have low vision.">register 9</atkproperty>
   <property name="border_width">5</property>
   <property name="width_request">380</property>
   <property name="height_request">300</property>
-  <property name="title" translatable="yes">Edit Functions</property>
+  <property name="title" translatable="yes" comments="Title of edit functions dialog">Edit Functions</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -7677,7 +7677,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label53">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Click a _value or description to edit it:</property>
+	      <property name="label" translatable="yes" comments="Edit Functions Dialog: Instructions in dialog">Click a _value or description to edit it:</property>
 	      <property name="use_underline">True</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -7732,7 +7732,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label54">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">&lt;small&gt;&lt;i&gt;&lt;b&gt;Note:&lt;/b&gt; All constant values are specified in the decimal numeric base.&lt;/i&gt;&lt;/small&gt;</property>
+	      <property name="label" translatable="yes" comments="Edit Function Dialog: Note about what base numbers will be entered as">&lt;small&gt;&lt;i&gt;&lt;b&gt;Note:&lt;/b&gt; All constant values are specified in the decimal numeric base.&lt;/i&gt;&lt;/small&gt;</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">True</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -8045,7 +8045,7 @@ blind or have low vision.">register 9</atkproperty>
 
 <widget class="GtkDialog" id="ascii_dialog">
   <property name="border_width">6</property>
-  <property name="title" translatable="yes">Insert ASCII Value</property>
+  <property name="title" translatable="yes" comments="Title of insert ASCII dialog">Insert ASCII Value</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -8094,7 +8094,7 @@ blind or have low vision.">register 9</atkproperty>
 	      <property name="visible">True</property>
 	      <property name="can_default">True</property>
 	      <property name="can_focus">True</property>
-	      <property name="label" translatable="yes">_Insert</property>
+	      <property name="label" translatable="yes" comments="Insert ASCII dialog: Button to insert selected character">_Insert</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
@@ -8120,7 +8120,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label39">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Ch_aracter:</property>
+	      <property name="label" translatable="yes" comments="Insert ASCII dialog: Label before character entry">Ch_aracter:</property>
 	      <property name="use_underline">True</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -8175,7 +8175,7 @@ blind or have low vision.">register 9</atkproperty>
 
 <widget class="GtkDialog" id="precision_dialog">
   <property name="border_width">6</property>
-  <property name="title" translatable="yes">Set Precision</property>
+  <property name="title" translatable="yes" comments="Title of set precision dialog">Set Precision</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
@@ -8221,7 +8221,7 @@ blind or have low vision.">register 9</atkproperty>
 	      <property name="visible">True</property>
 	      <property name="can_default">True</property>
 	      <property name="can_focus">True</property>
-	      <property name="label" translatable="yes">_Set</property>
+	      <property name="label" translatable="yes" comments="Set Precision Dialog: Button to apply settings">_Set</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
@@ -8247,7 +8247,7 @@ blind or have low vision.">register 9</atkproperty>
 	  <child>
 	    <widget class="GtkLabel" id="label52">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Significant _places:</property>
+	      <property name="label" translatable="yes" comments="Set Precision Dialog: Label before the significant places spin button">Significant _places:</property>
 	      <property name="use_underline">True</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
