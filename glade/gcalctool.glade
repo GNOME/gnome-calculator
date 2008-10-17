@@ -4252,7 +4252,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_accuracy_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the accuracy button">Set accuracy from 0 to 9 numeric places [A]</property>
+	      <property name="tooltip" comments="Variable label button - text set inside gtk.c">(Set accuracy from 0 to N numeric places [A])</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4266,7 +4266,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		  <child>
 		    <widget class="GtkLabel" id="label10">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes" comments="Accuracy">Acc</property>
+		      <property name="label" translatable="yes" comments="Accuracy button">Acc</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4520,7 +4520,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="tangent_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Tan</property>
+		  <property name="label" comments="Variable label button - text set inside gtk.c">(Tan)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4558,7 +4558,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="sine_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Sin</property>
+		  <property name="label" comments="Variable label button - text set inside gtk.c">(Sin)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4596,7 +4596,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="cosine_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Cos</property>
+		  <property name="label" comments="Variable label button - text set inside gtk.c">(Cos)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -5248,7 +5248,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 		<widget class="GtkButton" id="calc_percentage_button">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes" comments="Tooltip for the percentage button">Percentage [%]</property>
-		  <property name="label" translatable="yes" comments="This is a percentage sign">%</property>
+		  <property name="label" translatable="yes" comments="The percentage button">%</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">False</property>
@@ -6555,7 +6555,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkRadioMenuItem" id="acc_item_other">
       <property name="visible">True</property>
-      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.">_Other (%d) ...</property>
+      <property name="label" comments="Variable label button - text set inside gtk.c">(_Other (N) ...)</property>
       <property name="use_underline">True</property>
       <property name="active">False</property>
       <property name="group">acc_item0</property>
@@ -6572,7 +6572,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
   <child>
     <widget class="GtkMenuItem" id="acc_item_default">
       <property name="visible">True</property>
-      <property name="label" translatable="yes" comments="Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.">Reset to _Default (%d)</property>
+      <property name="label" comments="Set and translated inside gtk.c">Reset to _Default (%d)</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="accuracy_default_cb" last_modification_time="Sun, 02 Dec 2007 08:57:01 GMT"/>
     </widget>

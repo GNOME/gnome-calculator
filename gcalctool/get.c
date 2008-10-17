@@ -239,6 +239,8 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_int_resource(R_ACCURACY, &intval)) {
         v->accuracy = intval;
         if (v->accuracy < 0 || v->accuracy > MAXACC) {
+            /* Translators: A log message displayed when an invalid accuracy
+               is read from the configuration */
             FPRINTF(stderr, _("%s: accuracy should be in the range 0-%d\n"), 
                     v->progname, MAXACC);
             v->accuracy = 9;
@@ -260,6 +262,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXBASES) {
+            /* Translators: A log message displayed when an invalid
+               base is read from the configuration */            
             FPRINTF(stderr, _("%s: base should be 2, 8, 10 or 16\n"), 
                     v->progname);
         } else {
@@ -275,6 +279,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXDISPMODES) {
+            /* Translators: A log message displayed when an invalid
+               display mode is read from the configuration */
             FPRINTF(stderr, _("%s: invalid display mode [%s]\n"), 
                     v->progname, str);
         } else {
@@ -290,6 +296,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXMODES) {
+            /* Translators: This message is a log message displayed when
+               an invalid mode is read from the configuration */            
             FPRINTF(stderr, _("%s: invalid mode [%s]\n"), v->progname, str);
         } else {
             v->modetype = (enum mode_type) i;
@@ -304,6 +312,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
        
         if (i == MAXTRIGMODES) {
+            /* Translators: This message is a log message displayed when
+               an invalid trigonometric mode is read from the configuration */
             FPRINTF(stderr, _("%s: invalid trigonometric mode [%s]\n"), 
                     v->progname, str);
         } else {

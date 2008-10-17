@@ -53,14 +53,30 @@ struct button_widget {
 
 /* Window titles dependant on mode */
 static char *titles[] = {
-    N_("Calculator"), N_("Calculator - Advanced"), N_("Calculator - Financial"),
-    N_("Calculator - Scientific"), N_("Calculator - Programming")
+    /* Translators: The window title when in basic mode */
+    N_("Calculator"),
+    /* Translators: The window title when in advanced mode */    
+    N_("Calculator - Advanced"),
+    /* Translators: The window title when in financial mode */
+    N_("Calculator - Financial"),
+    /* Translators: The window title when in scientific mode */
+    N_("Calculator - Scientific"),
+    /* Translators: The window title when in programming mode */
+    N_("Calculator - Programming")
 };
 
 /* Window titles dependant on mode and hostname */
 static char *hostname_titles[] = {
-    N_("Calculator [%s]"), N_("Calculator [%s] - Advanced"), N_("Calculator [%s] - Financial"),
-    N_("Calculator [%s] - Scientific"), N_("Calculator [%s] - Programming")
+    /* Translators: The window title when in basic mode. %s is replaced with the hostname. */
+    N_("Calculator [%s]"),
+    /* Translators: The window title when in advanced mode. %s is replaced with the hostname. */
+    N_("Calculator [%s] - Advanced"),
+    /* Translators: The window title when in financial mode. %s is replaced with the hostname. */
+    N_("Calculator [%s] - Financial"),
+    /* Translators: The window title when in scientific mode. %s is replaced with the hostname. */
+    N_("Calculator [%s] - Scientific"),
+    /* Translators: The window title when in programming mode. %s is replaced with the hostname. */
+    N_("Calculator [%s] - Programming")
 };
 
 #define FINC_NUM_ARGS 4
@@ -505,25 +521,16 @@ ui_set_accuracy(int accuracy)
     char text[MAXLINE];
     char *desc, *current, *tooltip;
     
+    /* Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy. */
     SNPRINTF(text, MAXLINE, _("_Other (%d) ..."), accuracy);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 
-    desc = g_strdup_printf(ngettext("Set accuracy from 0 to %d numeric place.",
-                                    "Set accuracy from 0 to %d numeric places.",
-                                    MAXACC),
-                           MAXACC);
-
-    /* Translators: This refers to the current accuracy setting */
-    current = g_strdup_printf(ngettext("Currently set to %d place.",
-                                       "Currently set to %d places.",
-                                       accuracy == 1),
-                              accuracy);
-    tooltip = g_strdup_printf ("%s %s [A]", desc, current);
-    gtk_widget_set_tooltip_text (GET_WIDGET("calc_accuracy_button"), tooltip);
-    g_free(desc);
-    g_free(current);
-    g_free(tooltip);
+    gtk_widget_set_tooltip_text (GET_WIDGET("calc_accuracy_button"),
+                                 /* Translators: Tooltip for accuracy button */
+                                 ngettext("Set accuracy from 0 to %d numeric place. [A]",
+                                          "Set accuracy from 0 to %d numeric places. [A]",
+                                          MAXACC));
     
     if (accuracy >= 0 && accuracy <= 9) {
         SNPRINTF(text, MAXLINE, "acc_item%d", accuracy);
@@ -548,17 +555,35 @@ ui_set_accuracy(int accuracy)
 static void
 ui_update_trig_mode()
 {
-    static char *sine_labels[]      = {N_("Sin"), N_("Sinh"),
-                                       N_("Sin<sup>-1</sup>"),
-                                       N_("Sinh<sup>-1</sup>")};
+    static char *sine_labels[]      = {
+        /* Translators: The sine button */
+        N_("Sin"),
+        /* Translators: The hyperbolic sine button */
+        N_("Sinh"),
+        /* Translators: The inverse sine button */        
+        N_("Sin<sup>-1</sup>"),
+        /* Translators: The inverse hyperbolic sine button */
+        N_("Sinh<sup>-1</sup>")};
     static int  sine_functions[]    = {KEY_SIN, KEY_SINH, KEY_ASIN, KEY_ASINH};
-    static char *cosine_labels[]    = {N_("Cos"), N_("Cosh"),
-                                       N_("Cos<sup>-1</sup>"),
-                                       N_("Cosh<sup>-1</sup>")};
+    static char *cosine_labels[]    = {
+        /* Translators: The cosine button */
+        N_("Cos"),
+        /* Translators: The hyperbolic cosine button */
+        N_("Cosh"),
+        /* Translators: The inverse cosine button */        
+        N_("Cos<sup>-1</sup>"),
+        /* Translators: The inverse hyperbolic cosine button */
+        N_("Cosh<sup>-1</sup>")};
     static int  cosine_functions[]  = {KEY_COS, KEY_COSH, KEY_ACOS, KEY_ACOSH};
-    static char *tangent_labels[]   = {N_("Tan"), N_("Tanh"),
-                                       N_("Tan<sup>-1</sup>"),
-                                       N_("Tanh<sup>-1</sup>")};
+    static char *tangent_labels[]   = {
+        /* Translators: The tangent button */
+        N_("Tan"),
+        /* Translators: The hyperbolic tangent button */
+        N_("Tanh"),
+        /* Translators: The inverse tangent button */        
+        N_("Tan<sup>-1</sup>"),
+        /* Translators: The inverse hyperbolic tangent button */
+        N_("Tanh<sup>-1</sup>")};
     static int  tangent_functions[] = {KEY_TAN, KEY_TANH, KEY_ATAN, KEY_ATANH};
     int index = 0;
 
@@ -1082,40 +1107,42 @@ about_cb(GtkWidget *widget)
         "Sun Microsystems",
         NULL
     };
+    
+    /* Translators: The translator credits. Please translate this with your name(s). */
     const gchar *translator_credits = _("translator-credits");
 
-    const char *license[] = {
-        N_("Gcalctool is free software; you can redistribute it and/or modify\n"
-        "it under the terms of the GNU General Public License as published by\n"
-        "the Free Software Foundation; either version 2 of the License, or\n"
-        "(at your option) any later version.\n"),
-        N_("Gcalctool is distributed in the hope that it will be useful,\n"
-        "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-        "GNU General Public License for more details.\n"),
-        N_("You should have received a copy of the GNU General Public License\n"
-        "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-        "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n")
+    char *license[] = {
+        /* Translators: The license this software is under (GPL2+) */
+        _("Gcalctool is free software; you can redistribute it and/or modify\n"
+          "it under the terms of the GNU General Public License as published by\n"
+          "the Free Software Foundation; either version 2 of the License, or\n"
+          "(at your option) any later version.\n"
+          "\n"
+          "Gcalctool is distributed in the hope that it will be useful,\n"
+          "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+          "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+          "GNU General Public License for more details.\n"
+          "\n"
+          "You should have received a copy of the GNU General Public License\n"
+          "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n")
     };
 
-    char *license_trans = g_strconcat(_(license[0]), "\n", 
-                                      _(license[1]), "\n",
-                                      _(license[2]), "\n", 
-                                      NULL);
-
     gtk_show_about_dialog(GTK_WINDOW(X->kframe),
-            "name",_("Gcalctool"),
-            "version", VERSION,
-            "copyright", _("\xc2\xa9 1986-2008 The Gcalctool authors"),
-            "license", license_trans,
-            "comments", _("Calculator with financial and scientific modes."),
-            "authors", authors,
-            "documenters", documenters,
-            "translator_credits", translator_credits,
-            "logo-icon-name", "accessories-calculator",
-            NULL);
+                          /* Translators: Program name in the about dialog */
+                          "name", _("Gcalctool"),
+                          "version", VERSION,
+                          /* Translators: Copyright notice in the about dialog */
+                          "copyright", _("\xc2\xa9 1986-2008 The Gcalctool authors"),
+                          "license", license,
+                          /* Translators: Short description in the about dialog */
+                          "comments", _("Calculator with financial and scientific modes."),
+                          "authors", authors,
+                          "documenters", documenters,
+                          "translator_credits", translator_credits,
+                          "logo-icon-name", "accessories-calculator",
+                          NULL);
 }
-
 
 static void
 cell_edited_cb(GtkCellRendererText *cell, const gchar *path_string,
@@ -1765,7 +1792,7 @@ update_memory_menus()
     for (i = 0; i < MAX_REGISTERS; i++) {
         make_number(value, MAXLINE, v->MPmvals[i], v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
-        /* translators: R is the short form of register used inter alia
+        /* Translators: R is the short form of register used inter alia
         in popup menus */
                 _("R"), i, value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_store_labels[i]), mstr);
@@ -2208,6 +2235,7 @@ for_each_menu(GtkWidget *widget, gpointer data)
     if (strcmp(G_OBJECT_TYPE_NAME(widget), "GtkImageMenuItem") == 0) {  
         GtkWidget *label = gtk_bin_get_child(GTK_BIN(widget));
 
+        // FIXME: WTF?
         if (strcmp(gtk_label_get_text(GTK_LABEL(label)), _("Paste")) == 0) {
             if (gtk_clipboard_wait_is_text_available(
                         gtk_clipboard_get(X->clipboard_atom))) {
@@ -2427,8 +2455,10 @@ create_kframe()
         dialog = gtk_message_dialog_new(NULL, 0,
                                         GTK_MESSAGE_ERROR,
                                         GTK_BUTTONS_NONE,
+                                        /* Translators: Title of the error dialog when unable to load the UI files */
                                         N_("Error loading user interface"));
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
+                                                 /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file */
                                                  N_("The user interface file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
         gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
         
@@ -2653,10 +2683,13 @@ create_kframe()
     gtk_tree_selection_set_mode(
                                 gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
                                 GTK_SELECTION_SINGLE);
+    /* Translators: Edit Constants Dialog: Constant number column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("No."),
                   COLUMN_NUMBER, FALSE);
+    /* Translators: Edit Constants Dialog: Constant value column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("Value"),
                   COLUMN_VALUE, TRUE);
+    /* Translators: Edit Constants Dialog: Constant description column title */    
     add_cf_column(GTK_TREE_VIEW(treeview), _("Description"),
                   COLUMN_DESCRIPTION, TRUE);
 
@@ -2671,10 +2704,13 @@ create_kframe()
     gtk_tree_selection_set_mode(
                                 gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
                                 GTK_SELECTION_SINGLE);
+    /* Translators: Edit Functions Dialog: Function number column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("No."),
                   COLUMN_NUMBER, FALSE);
+    /* Translators: Edit Functions Dialog: Function value column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("Value"),
                   COLUMN_VALUE, TRUE);
+    /* Translators: Edit Functions Dialog: Function description column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("Description"),
                   COLUMN_DESCRIPTION, TRUE);
 
@@ -2813,6 +2849,7 @@ ui_load(void)
     }
 
     /* Set default accuracy menu item */
+    /* Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value. */
     SNPRINTF(text, MAXLINE, _("Reset to _Default (%d)"), DEFAULT_ACCURACY);
     widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_default")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);

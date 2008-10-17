@@ -74,6 +74,8 @@ do_function(int index)      /* Perform a user defined function. */
     if (!ret) {
         ui_set_statusbar("", "");
     } else {
+        /* Translators: This message is displayed in the status bar when an
+           invalid user-defined function is executed */
         ui_set_statusbar(_("Malformed function"), "gtk-dialog-error");
     }
 }
@@ -84,6 +86,8 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
     int MPval[MP_SIZE];
 
     if (display_is_usable_number(&v->display, MPval) || !is_integer(MPval)) {
+        /* Translators: This message is displayed in the status bar when a bit
+           shift operation is performed and the display does not contain a number */
         ui_set_statusbar(_("No sane value to do bitwise shift"),
                          "gtk-dialog-error");
     }

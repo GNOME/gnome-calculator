@@ -486,27 +486,6 @@ doerr(char *errmes)
     v->math_error = -MPMATH_ERR;
 }
 
-static void
-init_text()         /* Setup constant strings. */
-{
-    STRNCPY(v->con_names[0], _("Kilometer-to-mile conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[1], _("square root of 2"), MAXLINE - 1);
-    STRNCPY(v->con_names[2], _("Euler's Number (e)"), MAXLINE - 1);
-    STRNCPY(v->con_names[3], _("pi"), MAXLINE - 1);
-    STRNCPY(v->con_names[4], _("Centimeter-to-inch conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[5], _("degrees in a radian"), MAXLINE - 1);
-    STRNCPY(v->con_names[6], _("2 ^ 20"), MAXLINE - 1);
-    STRNCPY(v->con_names[7], _("Gram-to-ounce conversion factor"), MAXLINE - 1);
-    STRNCPY(v->con_names[8], 
-           _("Kilojoule-to-British-thermal-unit conversion factor"),
-            MAXLINE - 1);
-    STRNCPY(v->con_names[9], 
-           _("Cubic-centimeter-to-cubic-inch conversion factor"), MAXLINE - 1);
-}
-
-
 /* Default math library exception handling routine. */
 
 /*ARGSUSED*/
@@ -514,6 +493,7 @@ int
 matherr(exc)
 struct exception *exc;
 {
+    // FIXME: Useless string
     doerr(_("Error"));
 
     return(1);
@@ -525,7 +505,8 @@ getparam(char *s, char *argv[], char *errmes)
 {
     if (*argv != NULL && argv[0][0] != '-') {
         STRNCPY(s, *argv, MAXLINE - 1);
-    } else { 
+    } else {
+        // FIXME: Useless string
         /* Translators: the following string contains two strings that
          * are passed to it: the first is the gcalctool program name and
          * the second is an error message (see the last parameter in the 
@@ -540,13 +521,13 @@ getparam(char *s, char *argv[], char *errmes)
 void
 usage(char *progname)
 {
-    /* Translators: the following string contains two strings that
-     * are passed to it: the first is the gcalctool program name and
-     * the second is the program version number.
-     */
-    FPRINTF(stderr, _("%s version %s\n\n"), progname, VERSION);
-    FPRINTF(stderr, _("Usage: %s: [-E] [-u] [-a accuracy] "), progname);
-    FPRINTF(stderr, _("\t\t [-?] [-v] [-h]\n"));
+    /* Translators: This message is displayed on the command line when
+       help is requested. %1$s and $3$s are replaced with the name
+       of the program and %2$s with the version string */
+    FPRINTF(stderr, _("%1$s version %2$s\n"
+                      "\n"
+                      "Usage: %3$s: [-E] [-u] [-a accuracy] [-?] [-v] [-h]\n"),
+            progname, VERSION, progname);
     exit(1);
 }
 
@@ -567,11 +548,14 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 
                 case 'a' : 
                     INC;
+                    // FIXME: Useless string
                     getparam(next, argv, _("-a needs accuracy value"));
                     v->accuracy = atoi(next);
                     if (v->accuracy < 0 || v->accuracy > MAXACC) {
-                        FPRINTF(stderr, 
-                                _("%s: accuracy should be in the range 0-%d\n"),
+                        /* Translators: This message is displayed when an invalid accuracy value is passed
+                           as a command line argument. %1$s is replaced with the name of the program and %2$d
+                           is replaced with the maximum supported accuracy value */
+                        FPRINTF(stderr, _("%1$s: accuracy should be in the range 0-%2$d\n"),
                                 v->progname, MAXACC);
                         v->accuracy = DEFAULT_ACCURACY;
                     }
@@ -596,9 +580,11 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 
 
 static void
-init_constant(int n, gchar *value)
+init_constant(int n, const gchar *name, const gchar *value)
 {
     gchar *str = g_strdup(value);
+
+    STRNCPY(v->con_names[n], name, MAXLINE - 1);
 
     MPstr_to_num(str, 10, v->MPcon_vals[n]);
     g_free(str);
@@ -623,16 +609,26 @@ init_state(void)
 
     v->error       = 0;            /* No calculator error initially. */    
 
-    init_constant(0, "0.621");                 /* kms/hr <=> miles/hr. */
-    init_constant(1, "1.4142135623");          /* square root of 2 */
-    init_constant(2, "2.7182818284");          /* e */
-    init_constant(3, "3.1415926536");          /* pi */
-    init_constant(4, "0.3937007");             /* cms <=> inch. */
-    init_constant(5, "57.295779513");          /* degrees/radian. */
-    init_constant(6, "1048576.0");             /* 2 ^ 20. */
-    init_constant(7, "0.0353");                /* grams <=> ounce. */
-    init_constant(8, "0.948");                 /* Kjoules <=> BTU's. */
-    init_constant(9, "0.0610");                /* cms3 <=> inches3. */
+    /* Translators: This is the label for the default constant, the number of miles in one kilometer (0.621) */
+    init_constant(0, _("Kilometer-to-mile conversion factor"), "0.621");
+    /* Translators: This is the label for the default constant, the square root of 2 (1.41421) */
+    init_constant(1, _("square root of 2"), "1.4142135623");
+    /* Translators: This is the label for the default constant, Euler's number (2.71828) */
+    init_constant(2, _("Euler's Number (e)"), "2.7182818284");
+    /* Translators: This is the label for the default constant, π (3.14159) */
+    init_constant(3, _("π"), "3.1415926536");
+    /* Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370) */
+    init_constant(4, _("Centimeter-to-inch conversion factor"), "0.3937007");
+    /* Translators: This is the label for the default constant, the number of degrees in a radian (57.2958) */
+    init_constant(5, _("degrees in a radian"), "57.295779513");
+    /* Translators: This is the label for the default constant, 2 to the power of 20 (1048576) */
+    init_constant(6, _("2 ^ 20"), "1048576.0");
+    /* Translators: This is the label for the default constant, the number of ounces in one gram (0.0353) */
+    init_constant(7, _("Gram-to-ounce conversion factor"), "0.0353");
+    /* Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948) */
+    init_constant(8, _("Kilojoule-to-British-thermal-unit conversion factor"), "0.948");
+    /* Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610) */
+    init_constant(9, _("Cubic-centimeter-to-cubic-inch conversion factor"), "0.0610");
 
     for (i = 0; i < MAX_REGISTERS; i++) {
         mp_set_from_integer(0, v->MPmvals[i]);
@@ -671,7 +667,6 @@ main(int argc, char **argv)
     resources_init();          /* Initialise configuration */
     display_init(&v->display);
 
-    init_text();               /* Setup text strings depending upon language. */
     read_resources();          /* Read resources from merged database. */
     ui_load();
 
