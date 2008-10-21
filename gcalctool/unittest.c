@@ -120,9 +120,13 @@ test_parser()
 
     test("Abs(1)", "1", 0);
     test("Abs(-1)", "1", 0);
-    
+
     test("Sin(0)", "0", 0);
+    test("Sin(45) - 1/Sqrt(2)", "0", 0);
+    test("Sin(20) + Sin(-20)", "0", 0);
     test("Cos(0)", "1", 0);
+    test("Cos(45) - 1/Sqrt(2)", "0", 0);
+    test("Cos(20) - Cos(-20)", "0", 0);
     test("Tan(0)", "0", 0);
 
     test("Acos(0)", "90", 0);
@@ -140,8 +144,15 @@ test_parser()
 
     test("Sinh(0)", "0", 0);
     test("Sinh(10) - (e^(10)-e^(-10))/2", "0", 0);
+    test("Sinh(-10) +Sinh(10)", "0", 0);
 
     test("Cosh(-5)^2 - Sinh(-5)^2", "1", 0);
+    test("Tanh(0)", "0", 0);
+    test("Tanh(10) - Sinh(10)/Cosh(10)", "0", 0);
+
+
+    test("Atanh(0)", "0", 0);
+    test("Atanh(1/10) - 1/2*Ln(11/9)", "0", 0);
 
     v->ttype = DEG;
     test("Sin(90)", "1", 0);
