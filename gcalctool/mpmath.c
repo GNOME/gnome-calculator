@@ -371,38 +371,38 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
     switch (type) {
         case sin_t: 
             to_rad(s1, s1);
-            mpsin(s1, t1);
+            mp_sin(s1, t1);
             break;
 
         case cos_t:
             to_rad(s1, s1);
-            mpcos(s1, t1);
+            mp_cos(s1, t1);
             break;
 
         case tan_t:
             to_rad(s1, s1);
-            mptan(s1, t1);
+            mp_tan(s1, t1);
             break;
 
         case sinh_t:
-            mpsinh(s1, t1);
+            mp_sinh(s1, t1);
             break;
 
         case cosh_t:
-            mpcosh(s1, t1);
+            mp_cosh(s1, t1);
             break;
 
         case tanh_t:
-            mptanh(s1, t1);
+            mp_tanh(s1, t1);
             break;
 
         case asin_t:
-            mpasin(s1, t1);
+            mp_asin(s1, t1);
             do_trig_typeconv(v->ttype, t1, t1);
             break;
 
         case acos_t:
-            mpacos(s1, t1);
+            mp_acos(s1, t1);
             do_trig_typeconv(v->ttype, t1, t1);
             break;
 
@@ -412,15 +412,15 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
 
         case asinh_t:
-            mpasinh(s1, t1);
+            mp_asinh(s1, t1);
             break;
 
         case acosh_t:
-            mpacosh(s1, t1);
+            mp_acosh(s1, t1);
             break;
 
         case atanh_t:
-            mpatanh(s1, t1);
+            mp_atanh(s1, t1);
             break;
     }
 

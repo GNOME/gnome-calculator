@@ -93,18 +93,18 @@ void   MPstr_to_num(const char *, int, int *);
 void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]);
 
 /* mp-trigonometric.c */
-void mpcos(int *x, int *y);
-void mpcosh(const int *x, int *y);
-void mpsin(int *x, int *y);
-void mpasin(int *, int *);
-void mpsinh(int *x, int *y);
-void mpasinh(int *MPx, int *MPretval);
-void mpacosh(int *MPx, int *MPretval);
-void mpacos(int *MPx, int *MPretval);
-void mptan(int *s1, int *t1);
-void mp_atan(const int *, int *);
-void mptanh(int *x, int *y);
-void mpatanh(int *MPx, int *MPretval);
+void mp_cos(const int *x, int *z);
+void mp_cosh(const int *x, int *z);
+void mp_sin(const int *x, int *z);
+void mp_asin(const int *x, int *z);
+void mp_sinh(const int *x, int *z);
+void mp_asinh(const int *x, int *z);
+void mp_acosh(const int *x, int *z);
+void mp_acos(const int *x, int *z);
+void mp_tan(const int *x, int *z);
+void mp_atan(const int *x, int *z);
+void mp_tanh(const int *x, int *z);
+void mp_atanh(const int *x, int *z);
 
 
 #endif /* MP_H */
