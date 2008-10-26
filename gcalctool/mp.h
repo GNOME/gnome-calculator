@@ -73,12 +73,12 @@ void mpexp(const int *, int *);
 void mpln(int *, int *);
 void mpmul(const int *, const int *, int *);
 void mpmuli(int *, int, int *);
-void mppi(int *);
+void mp_get_pi(int *z);
 void mppwr(const int *, int, int *);
 void mppwr2(int *, int *, int *);
 void mpset(int, int, int);
-void mproot(int *, int, int *);
-void mpsqrt(int *, int *);
+void mp_root(const int *x, int n, int *z);
+void mp_sqrt(const int *x, int *z);
 
 /* mp-convert.c */
 void   mp_set_from_mp(const int *, int *);

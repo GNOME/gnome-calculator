@@ -32,7 +32,7 @@ struct {
 void mpchk(int i, int j);
 void mpgcd(int *, int *);
 void mpmul2(int *, int, int *, int);
-void mpnzr(int, int *, int *, int);
+void mp_get_normalized_register(int reg_sign, int *reg_exp, int *z, int trunc);
 void mpexp1(const int *, int *);
 void mpmulq(int *, int, int, int *);
 void mp_reciprocal(const int *, int *);

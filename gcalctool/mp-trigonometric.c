@@ -135,11 +135,11 @@ mpsin1(const int *x, int *z, int do_sin)
  *
  *  1. If (x < -1  or x > 1) then report DOMAIN error and return 0.
  *
- *  2. If (x = 0) then acos(x) = PI/2.
+ *  2. If (x == 0) then acos(x) = PI/2.
  *
- *  3. If (x = 1) then acos(x) = 0
+ *  3. If (x == 1) then acos(x) = 0
  *
- *  4. If (x = -1) then acos(x) = PI.
+ *  4. If (x == -1) then acos(x) = PI.
  *
  *  5. If (0 < x < 1) then  acos(x) = atan(sqrt(1-x^2) / x)
  *
@@ -151,7 +151,7 @@ mp_acos(const int *x, int *z)
     int MP1[MP_SIZE],  MP2[MP_SIZE];
     int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE];
 
-    mppi(MPpi);
+    mp_get_pi(MPpi);
     mp_set_from_integer(1, MP1);
     mp_set_from_integer(-1, MPn1);
 
@@ -167,7 +167,7 @@ mp_acos(const int *x, int *z)
     } else { 
         mpmul(x, x, MP2);
         mp_subtract(MP1, MP2, MP2);
-        mpsqrt(MP2, MP2);
+        mp_sqrt(MP2, MP2);
         mpdiv(MP2, x, MP2);
         mp_atan(MP2, MPy);
         if (x[0] > 0) {
@@ -197,7 +197,7 @@ mp_acosh(const int *x, int *z)
     } else {
         mpmul(x, x, MP1);
         mp_add_integer(MP1, -1, MP1);
-        mpsqrt(MP1, MP1);
+        mp_sqrt(MP1, MP1);
         mp_add(x, MP1, MP1);
         mpln(MP1, z);
     }
@@ -231,7 +231,7 @@ mp_asin(const int *x, int *z)
         mp_subtract(&MP.r[i2 - 1], x, &MP.r[i2 - 1]);
         mp_add(&MP.r[i3 - 1], x, &MP.r[i3 - 1]);
         mpmul(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mproot(&MP.r[i3 - 1], -2, &MP.r[i3 - 1]);
+        mp_root(&MP.r[i3 - 1], -2, &MP.r[i3 - 1]);
         mpmul(x, &MP.r[i3 - 1], z);
         mp_atan(z, z);
         return;
@@ -244,7 +244,7 @@ mp_asin(const int *x, int *z)
     }
 
     /* X == +-1 SO RETURN +-PI/2 */
-    mppi(z);
+    mp_get_pi(z);
     mpdivi(z, MP.r[i3 - 1] << 1, z);
 }
 
@@ -260,7 +260,7 @@ mp_asinh(const int *x, int *z)
  
     mpmul(x, x, MP1);
     mp_add_integer(MP1, 1, MP1);
-    mpsqrt(MP1, MP1);
+    mp_sqrt(MP1, MP1);
     mp_add(x, MP1, MP1);
     mpln(MP1, z);
 }
@@ -306,7 +306,7 @@ mp_atan(const int *x, int *z)
         q <<= 1;
         mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], z);
         mp_add_integer(z, 1, z);
-        mpsqrt(z, z);
+        mp_sqrt(z, z);
         mp_add_integer(z, 1, z);
         mpdiv(&MP.r[i3 - 1], z, &MP.r[i3 - 1]);
     }
@@ -404,7 +404,7 @@ mp_cos(const int *x, int *z)
          *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
          */
         ++MP.t;
-        mppi(&MP.r[i2 - 1]);
+        mp_get_pi(&MP.r[i2 - 1]);
         mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
         --MP.t;
         mp_subtract(&MP.r[i2 - 1], z, z);

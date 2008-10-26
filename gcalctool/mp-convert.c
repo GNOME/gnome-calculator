@@ -103,7 +103,7 @@ mp_set_from_float(float rx, int *z)
     }
 
     /* NORMALIZE RESULT */
-    mpnzr(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;
@@ -182,7 +182,7 @@ mp_set_from_double(double dx, int *z)
     }
 
     /* NORMALIZE RESULT */
-    mpnzr(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;

@@ -133,7 +133,7 @@ udf:
 
 value: 
   exp {cp($1, $$);}
-| tPI %prec HIGH {mppi($$);} 
+| tPI %prec HIGH {mp_get_pi($$);} 
 ;
 
 exp: 
@@ -214,7 +214,7 @@ reg:
 func:
   tLOG10 term %prec HIGH {mplogn(10, $2, $$);}
 | tLOG2 term %prec HIGH {mplogn(2, $2, $$);}
-| tSQRT term %prec HIGH {mpsqrt($2, $$);}
+| tSQRT term %prec HIGH {mp_sqrt($2, $$);}
 | tLN term %prec HIGH {mpln($2, $$);}
 | tRAND %prec HIGH {calc_rand($$);}
 | tABS term %prec HIGH {mp_abs($2, $$);}

@@ -229,12 +229,12 @@ to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
     if (v->ttype == DEG) {
-        mppi(MP1);
+        mp_get_pi(MP1);
         mpmul(s1, MP1, MP2);
         mp_set_from_integer(180, MP1);
         mpdiv(MP2, MP1, t1);
     } else if (v->ttype == GRAD) {
-        mppi(MP1);
+        mp_get_pi(MP1);
         mpmul(s1, MP1, MP2);
         mp_set_from_integer(200, MP1);
         mpdiv(MP2, MP1, t1);
@@ -254,7 +254,7 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
         case DEG:
             mp_set_from_integer(180, MP1);
             mpmul(s1, MP1, MP2);
-            mppi(MP1);
+            mp_get_pi(MP1);
             mpdiv(MP2, MP1, t1);
             break;
 
@@ -265,7 +265,7 @@ do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
         case GRAD:
             mp_set_from_integer(200, MP1);
             mpmul(s1, MP1, MP2);
-            mppi(MP1);
+            mp_get_pi(MP1);
             mpdiv(MP2, MP1, t1);
             break;
 

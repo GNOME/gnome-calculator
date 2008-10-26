@@ -138,13 +138,13 @@ mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
 L10:
     exp_result = y[1] + mpadd3(x, y, sign_prod, med);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mpnzr(y_sign, &exp_result, z, trunc);
+    mp_get_normalized_register(y_sign, &exp_result, z, trunc);
     return;
 
 L20:
     exp_result = x[1] + mpadd3(y, x, sign_prod, med);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mpnzr(x[0], &exp_result, z, trunc);
+    mp_get_normalized_register(x[0], &exp_result, z, trunc);
     return;
 }
 
@@ -432,7 +432,7 @@ mpcmf(const int *x, int *y)
     memset(MP.r + MP.t, 0, 4*sizeof(int));
 
     /* NORMALIZE RESULT AND RETURN */
-    mpnzr(x[0], &offset_exp, y, 1);
+    mp_get_normalized_register(x[0], &offset_exp, y, 1);
 }
 
 /* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
@@ -634,7 +634,7 @@ mpdivi(const int *x, int iy, int *z)
 
     /* CHECK FOR ZERO DIVIDEND */
     if (rs == 0) {
-        mpnzr(rs, &re, z, 0);
+        mp_get_normalized_register(rs, &re, z, 0);
         return;
     }
 
@@ -706,7 +706,7 @@ mpdivi(const int *x, int iy, int *z)
             goto L210;
         
         /* NORMALIZE AND ROUND RESULT */
-        mpnzr(rs, &re, z, 0);
+        mp_get_normalized_register(rs, &re, z, 0);
         return;
     }
     
@@ -768,7 +768,7 @@ mpdivi(const int *x, int iy, int *z)
         
         ++k;
         if (k > i2) {
-            mpnzr(rs, &re, z, 0);
+            mp_get_normalized_register(rs, &re, z, 0);
             return;
         }
         ++i;
@@ -1047,7 +1047,7 @@ mpexp1(const int *x, int *y)
 }
 
 
-/*  ROUTINE CALLED BY MPDIV AND MPSQRT TO ENSURE THAT
+/*  ROUTINE CALLED BY MPDIV AND MP_SQRT TO ENSURE THAT
  *  RESULTS ARE REPRESENTED EXACTLY IN T-2 DIGITS IF THEY
  *  CAN BE.  X IS AN MP NUMBER, I AND J ARE INTEGERS.
  */
@@ -1456,7 +1456,7 @@ mpmul(const int *x, const int *y, int *z)
     }
 
     /* NORMALIZE AND ROUND RESULT */
-    mpnzr(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, z, 0);
 }
 
 
@@ -1560,7 +1560,7 @@ mpmul2(int *x, int iy, int *z, int trunc)
         /* NORMALIZE AND ROUND OR TRUNCATE RESULT */
         if (c == 0)
         {
-            mpnzr(rs, &re, z, trunc);
+            mp_get_normalized_register(rs, &re, z, trunc);
             return;
         }
         
@@ -1639,12 +1639,12 @@ mp_invert_sign(const int *x, int *y)
 
 
 /*  ASSUMES LONG (I.E. (T+4)-DIGIT) FRACTION IN
- *  R, SIGN = RS, EXPONENT = RE.  NORMALIZES,
- *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS RE IS
+ *  R, SIGN = REG_SIGN, EXPONENT = REG_EXP.  NORMALIZES,
+ *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS REG_EXP IS
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
 void
-mpnzr(int rs, int *re, int *z, int trunc)
+mp_get_normalized_register(int reg_sign, int *reg_exp, int *z, int trunc)
 {
     int i__1;
 
@@ -1652,15 +1652,16 @@ mpnzr(int rs, int *re, int *z, int trunc)
     int round;
 
     i2 = MP.t + 4;
-    if (rs == 0) {
+    if (reg_sign == 0) {
         /* STORE ZERO IN Z */
         z[0] = 0;
         return;
     }
     
     /* CHECK THAT SIGN = +-1 */
-    if (abs(rs) > 1) {
-        mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MPNZR.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+    if (abs(reg_sign) > 1) {
+        mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_GET_NORMALIZED_REGISTER.\n"
+	      "POSSIBLE OVERWRITING PROBLEM ***\n");
         z[0] = 0;
         return;
     }
@@ -1680,7 +1681,7 @@ mpnzr(int rs, int *re, int *z, int trunc)
 
     if (is != 0) {
         /* NORMALIZE */
-        *re -= is;
+        *reg_exp -= is;
         i2m = i2 - is;
         for (j = 1; j <= i2m; ++j) {
             k = j + is;
@@ -1740,27 +1741,27 @@ mpnzr(int rs, int *re, int *z, int trunc)
 
             /* EXCEPTIONAL CASE, ROUNDED UP TO .10000... */
             if (j > MP.t) {
-                ++(*re);
+                ++(*reg_exp);
                 MP.r[0] = 1;
             }
         }
     }
 
     /* CHECK FOR OVERFLOW */
-    if (*re > MP.m) {
-        mpovfl(z, "*** OVERFLOW OCCURRED IN MPNZR ***\n");
+    if (*reg_exp > MP.m) {
+        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_GET_NORMALIZED_REGISTER ***\n");
         return;
     }
 
     /* CHECK FOR UNDERFLOW */
-    if (*re < -MP.m) {
+    if (*reg_exp < -MP.m) {
         mpunfl(z);
         return;
     }
     
     /* STORE RESULT IN Z */
-    z[0] = rs;
-    z[1] = *re;
+    z[0] = reg_sign;
+    z[1] = *reg_exp;
     for (i = 1; i <= MP.t; ++i)
         z[i + 1] = MP.r[i - 1];
 }
@@ -1792,18 +1793,18 @@ mpovfl(int *x, const char *error)
 }
 
 
-void
-mppi(int *x)
-{
-    int i2;
-    float prec;
-
-/*  SETS MP X = PI TO THE AVAILABLE PRECISION.
+/*  SETS MP Z = PI TO THE AVAILABLE PRECISION.
  *  USES PI/4 = 4.ARCTAN(1/5) - ARCTAN(1/239).
  *  TIME IS O(T**2).
  *  DIMENSION OF R MUST BE AT LEAST 3T+8
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
+void
+mp_get_pi(int *z)
+{
+    int i2;
+    float prec;
+
 
     mpchk(3, 8);
 
@@ -1812,17 +1813,17 @@ mppi(int *x)
     i2 = (MP.t << 1) + 7;
     mp_atan1N(5, &MP.r[i2 - 1]);
     mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
-    mp_atan1N(239, x);
-    mp_subtract(&MP.r[i2 - 1], x, x);
-    mpmuli(x, 4, x);
+    mp_atan1N(239, z);
+    mp_subtract(&MP.r[i2 - 1], z, z);
+    mpmuli(z, 4, z);
 
 /* RETURN IF ERROR IS LESS THAN 0.01 */
 
-    prec = fabs(mp_cast_to_float(x) - 3.1416);
+    prec = fabs(mp_cast_to_float(z) - 3.1416);
     if (prec < 0.01) return;
 
     /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
-    mperr("*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n");
+    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***\n");
 }
 
 
@@ -1925,7 +1926,7 @@ mppwr2(int *x, int *y, int *z)
 
 
 /*  RETURNS Z = 1/X, FOR MP X AND Z.
- *  MPROOT (X, -1, Z) HAS THE SAME EFFECT.
+ *  MP_ROOT (X, -1, Z) HAS THE SAME EFFECT.
  *  DIMENSION OF R MUST BE AT LEAST 4*T+10 IN CALLING PROGRAM
  *  (BUT Z(1) MAY BE R(3T+9)).
  *  NEWTONS METHOD IS USED, SO FINAL ONE OR TWO DIGITS MAY
@@ -2032,33 +2033,33 @@ mp_reciprocal(const int *x, int *z)
 }
 
 
-/*  RETURNS Y = X**(1/N) FOR INTEGER N, ABS(N) <= MAX (B, 64).
- *  AND MP NUMBERS X AND Y,
+/*  RETURNS Z = X^(1/N) FOR INTEGER N, ABS(N) <= MAX (B, 64).
+ *  AND MP NUMBERS X AND Z,
  *  USING NEWTONS METHOD WITHOUT DIVISIONS.   SPACE = 4T+10
- *  (BUT Y(1) MAY BE R(3T+9))
+ *  (BUT Z.EXP MAY BE R(3T+9))
  */
 void
-mproot(int *x, int n, int *y)
+mp_root(const int *x, int n, int *z)
 {
     /* Initialized data */
     static const int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
 
     float r__1;
 
-    int i2, i3, ex, np, ts, it0, ts2, ts3, xes;
+    int i2, i3, ex, np, ts, it0, ts2, ts3;
     float rx;
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(4, 10);
 
     if (n == 1) {
-        mp_set_from_mp(x, y);
+        mp_set_from_mp(x, z);
         return;
     }
 
     if (n == 0) {
-        mperr("*** N = 0 IN CALL TO MPROOT ***\n");
-        y[0] = 0;
+        mperr("*** N == 0 IN CALL TO MP_ROOT ***\n");
+        z[0] = 0;
         return;
     }
 
@@ -2069,47 +2070,47 @@ mproot(int *x, int n, int *y)
 
     /* LOSS OF ACCURACY IF NP LARGE, SO ONLY ALLOW NP <= MAX (B, 64) */
     if (np > max(MP.b, 64)) {
-        mperr("*** ABS(N) TOO LARGE IN CALL TO MPROOT ***\n");
-        y[0] = 0;
+        mperr("*** ABS(N) TOO LARGE IN CALL TO MP_ROOT ***\n");
+        z[0] = 0;
         return;
     }
 
     /* LOOK AT SIGN OF X */
     if (x[0] == 0) {
-        /* X = 0 HERE, RETURN 0 IF N POSITIVE, ERROR IF NEGATIVE */
-        y[0] = 0;
+        /* X == 0 HERE, RETURN 0 IF N POSITIVE, ERROR IF NEGATIVE */
+        z[0] = 0;
         if (n > 0)
             return;
 
-        mperr("*** X = 0 AND N NEGATIVE IN CALL TO MPROOT ***\n");
-        y[0] = 0;
+        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***\n");
+        z[0] = 0;
         return;
     }
     
     if (x[0] < 0  &&  np % 2 == 0) {
-        mperr("*** X NEGATIVE AND N EVEN IN CALL TO MPROOT ***\n");
-        y[0] = 0;
+        mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***\n");
+        z[0] = 0;
         return;
     }
 
-    /* GET EXPONENT AND DIVIDE BY NP */
-    xes = x[1];
-    ex = xes / np;
+    /* DIVIDE EXPONENT BY NP */
+    ex = x[1] / np;
 
     /* REDUCE EXPONENT SO RX NOT TOO LARGE OR SMALL. */
-    x[1] = 0;
-    rx = mp_cast_to_float(x);
+    {
+      int tmp_x[MP_SIZE];
+      mp_set_from_mp(x, tmp_x);
+      tmp_x[1] = 0;
+      rx = mp_cast_to_float(tmp_x);
+    }
 
     /* USE SINGLE-PRECISION ROOT FOR FIRST APPROXIMATION */
-    r__1 = exp(((float) (np * ex - xes) * log((float) MP.b) - 
+    r__1 = exp(((float) (np * ex - x[1]) * log((float) MP.b) - 
            log((fabs(rx)))) / (float) np);
     mp_set_from_float(r__1, &MP.r[i2 - 1]);
 
     /* SIGN OF APPROXIMATION SAME AS THAT OF X */
     MP.r[i2 - 1] = x[0];
-
-    /* RESTORE EXPONENT */
-    x[1] = xes;
 
     /* CORRECT EXPONENT OF FIRST APPROXIMATION */
     MP.r[i2] -= ex;
@@ -2167,7 +2168,7 @@ mproot(int *x, int n, int *y)
              *  OR THAT THE INITIAL APPROXIMATION OBTAINED USING ALOG AND EXP
              *  IS NOT ACCURATE ENOUGH.
              */
-            mperr("*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
+            mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
         }
     }
 
@@ -2175,11 +2176,11 @@ mproot(int *x, int n, int *y)
     MP.t = ts;
     if (n >= 0) {
         mppwr(&MP.r[i2 - 1], n - 1, &MP.r[i2 - 1]);
-        mpmul(x, &MP.r[i2 - 1], y);
+        mpmul(x, &MP.r[i2 - 1], z);
         return;
     }
 
-    mp_set_from_mp(&MP.r[i2 - 1], y);
+    mp_set_from_mp(&MP.r[i2 - 1], z);
 }
 
 
@@ -2263,30 +2264,30 @@ mpset(int idecpl, int itmax2, int maxdr)
     mpchk(1, 4);
 }
 
-/*  RETURNS Y = SQRT(X), USING SUBROUTINE MPROOT IF X > 0.
+/*  RETURNS Z = SQRT(X), USING SUBROUTINE MP_ROOT IF X > 0.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 4T+10
- *  (BUT Y(1) MAY BE R(3T+9)).  X AND Y ARE MP NUMBERS.
+ *  (BUT Z.EXP MAY BE R(3T+9)).  X AND Z ARE MP NUMBERS.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mpsqrt(int *x, int *y)
+mp_sqrt(const int *x, int *z)
 {
     int i, i2, iy3;
 
     mpchk(4, 10);
 
-    /* MPROOT NEEDS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
+    /* MP_ROOT NEEDS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
     i2 = MP.t * 3 + 9;
     if (x[0] < 0) {
-        mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MPSQRT ***\n");
+        mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MP_SQRT ***\n");
     } else if (x[0] == 0) {
-        y[0] = 0;
+        z[0] = 0;
     } else {
-        mproot(x, -2, &MP.r[i2 - 1]);
+        mp_root(x, -2, &MP.r[i2 - 1]);
         i = MP.r[i2 + 1];
-        mpmul(x, &MP.r[i2 - 1], y);
-        iy3 = y[2];
-        mpext(i, iy3, y);
+        mpmul(x, &MP.r[i2 - 1], z);
+        iy3 = z[2];
+        mpext(i, iy3, z);
     }
 }
 
