@@ -30,6 +30,7 @@
 static int mp_compare_mp_to_float(const int *, float);
 static int pow_ii(int, int);
 
+static void mpadd2(const int *, const int *, int *, int, int);
 static int  mpadd3(const int *, const int *, int, int);
 static void mpext(int, int, int *);
 static void mplns(const int *, int *);
@@ -65,7 +66,7 @@ mp_add(const int *x, const int *y, int *z)
  *  16(1973), 223.  (SEE ALSO BRENT, IEEE TC-22(1973), 601.)
  *  CHECK FOR X OR Y ZERO
  */
-void
+static void
 mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
 {
     int sign_prod;
@@ -88,7 +89,8 @@ mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
     sign_prod = y_sign * x[0];
     if (abs(sign_prod) > 1) {
         mpchk(1, 4);
-        mperr("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+        mperr("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
+	      "POSSIBLE OVERWRITING PROBLEM ***\n");
         z[0] = 0;
         return;
     }
@@ -903,8 +905,7 @@ mpexp(const int *x, int *y)
         ++i;
         mpdivi(&MP.r[i2 - 1], i * xs, &MP.r[i2 - 1]);
         MP.t = ts;
-        mpadd2(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1],
-               MP.r[i2 - 1], 0);
+        mp_add(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
     } while (MP.r[i2 - 1] != 0);
 
     /* RAISE E OR 1/E TO POWER IX */
@@ -1032,7 +1033,7 @@ mpexp1(const int *x, int *y)
         ++i;
         mpdivi(&MP.r[i3 - 1], i, &MP.r[i3 - 1]);
         MP.t = ts;
-        mpadd2(&MP.r[i3 - 1], y, y, y[0], 0);
+        mp_add(&MP.r[i3 - 1], y, y);
     } while (MP.r[i3 - 1] != 0);
 
     MP.t = ts;

@@ -122,7 +122,7 @@ mpsin1(const int *x, int *z, int do_sin)
 
         i += 2;
         MP.t = ts;
-        mpadd2(&MP.r[i2 - 1], z, z, *z, 0);
+        mp_add(&MP.r[i2 - 1], z, z);
     } while(MP.r[i2 - 1] != 0);
 
     MP.t = ts;
