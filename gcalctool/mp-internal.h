@@ -35,8 +35,8 @@ void mpmul2(int *, int, int *, int);
 void mpnzr(int, int *, int *, int);
 void mpexp1(const int *, int *);
 void mpmulq(int *, int, int, int *);
-void mprec(const int *, int *);
+void mp_reciprocal(const int *, int *);
 void mpadd2(const int *, const int *, int *, int, int);
-void mpart1(int, int *);
+void mp_atan1N(int n, int *z);
 
 #endif /* MP_INTERNAL_H */

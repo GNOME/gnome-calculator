@@ -299,21 +299,21 @@ mp_add_fraction(const int *x, int i, int j, int *y)
 }
 
 
-/*  COMPUTES MP Y = ARCTAN(1/N), ASSUMING INTEGER N > 1.
+/*  COMPUTES MP Z = ARCTAN(1/N), ASSUMING INTEGER N > 1.
  *  USES SERIES ARCTAN(X) = X - X**3/3 + X**5/5 - ...
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE
  *  AT LEAST 2T+6
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mpart1(int n, int *y)
+mp_atan1N(int n, int *z)
 {
     int i, b2, i2, id, ts;
 
     mpchk(2, 6);
     if (n <= 1) {
-        mperr("*** N .LE. 1 IN CALL TO MPART1 ***\n");
-        y[0] = 0;
+        mperr("*** N <= 1 IN CALL TO MP_ATAN1N ***\n");
+        z[0] = 0;
         return;
     }
 
@@ -321,10 +321,10 @@ mpart1(int n, int *y)
     ts = MP.t;
 
     /* SET SUM TO X = 1/N */
-    mp_set_from_fraction(1, n, y);
+    mp_set_from_fraction(1, n, z);
 
     /* SET ADDITIVE TERM TO X */
-    mp_set_from_mp(y, &MP.r[i2 - 1]);
+    mp_set_from_mp(z, &MP.r[i2 - 1]);
     i = 1;
     id = 0;
 
@@ -334,7 +334,7 @@ mpart1(int n, int *y)
         id = b2 * 7 * b2 / (n * n);
 
     /* MAIN LOOP.  FIRST REDUCE T IF POSSIBLE */
-    while  ((MP.t = ts + 2 + MP.r[i2] - y[1]) > 1) {
+    while  ((MP.t = ts + 2 + MP.r[i2] - z[1]) > 1) {
 
         MP.t = min(MP.t,ts);
 
@@ -356,7 +356,7 @@ mpart1(int n, int *y)
         MP.t = ts;
 
         /* ADD TO SUM */
-        mp_add(&MP.r[i2 - 1], y, y);
+        mp_add(&MP.r[i2 - 1], z, z);
 	if (MP.r[i2 - 1] == 0) break;
     }
     MP.t = ts;
@@ -378,7 +378,7 @@ mpchk(int i, int j)
     if (MP.t <= 1)
         mperr("*** T = %d ILLEGAL IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n", MP.t);
     if (MP.m <= MP.t)
-        mperr("*** M .LE. T IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n");
+        mperr("*** M <= T IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n");
 
     /*  8*B*B-1 SHOULD BE REPRESENTABLE, IF NOT WILL OVERFLOW
      *  AND MAY BECOME NEGATIVE, SO CHECK FOR THIS
@@ -495,9 +495,9 @@ mpcmim(const int *x, int *y)
 }
 
 /*  COMPARES MP NUMBER X WITH REAL NUMBER RI, RETURNING
- *      +1 IF X .GT. RI,
- *       0 IF X .EQ. RI,
- *      -1 IF X .LT. RI
+ *      +1 IF X > RI,
+ *       0 IF X == RI,
+ *      -1 IF X < RI
  *  DIMENSION OF R IN COMMON AT LEAST 2T+6
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
@@ -573,14 +573,14 @@ mpdiv(const int *x, const int *y, int *z)
         return;
     }
 
-    /* SPACE USED BY MPREC IS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
+    /* SPACE USED BY MP_RECIPROCAL IS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
     i2 = MP.t * 3 + 9;
 
-    /* INCREASE M TO AVOID OVERFLOW IN MPREC */
+    /* INCREASE M TO AVOID OVERFLOW IN MP_RECIPROCAL */
     MP.m += 2;
 
     /* FORM RECIPROCAL OF Y */
-    mprec(y, &MP.r[i2 - 1]);
+    mp_reciprocal(y, &MP.r[i2 - 1]);
 
     /* SET EXPONENT OF R(I2) TO ZERO TO AVOID OVERFLOW IN MPMUL */
     ie = MP.r[i2];
@@ -864,7 +864,7 @@ mpexp(const int *x, int *y)
     xs = x[0];
     mp_abs(x, &MP.r[i3 - 1]);
 
-    /*  IF ABS(X) .GT. M POSSIBLE THAT INT(X) OVERFLOWS,
+    /*  IF ABS(X) > M POSSIBLE THAT INT(X) OVERFLOWS,
      *  SO DIVIDE BY 32.
      */
     if (fabs(rx) > (float) MP.m) {
@@ -881,7 +881,7 @@ mpexp(const int *x, int *y)
     mp_add_integer(y, 1, y);
 
     /*  COMPUTE E-2 OR 1/E USING TWO EXTRA DIGITS IN CASE ABS(X) LARGE
-     *  (BUT ONLY ONE EXTRA DIGIT IF T .LT. 4)
+     *  (BUT ONLY ONE EXTRA DIGIT IF T < 4)
      */
     tss = MP.t;
     ts = MP.t + 2;
@@ -1216,7 +1216,7 @@ mpln(int *x, int *y)
 
 
 /*  RETURNS MP Y = LN(1+X) IF X IS AN MP NUMBER SATISFYING THE
- *  CONDITION ABS(X) .LT. 1/B, ERROR OTHERWISE.
+ *  CONDITION ABS(X) < 1/B, ERROR OTHERWISE.
  *  USES NEWTONS METHOD TO SOLVE THE EQUATION
  *  EXP1(-Y) = X, THEN REVERSES SIGN OF Y.
  *  (HERE EXP1(Y) = EXP(Y) - 1 IS COMPUTED USING MPEXP1).
@@ -1241,7 +1241,7 @@ mplns(const int *x, int *y)
 
     /* CHECK THAT ABS(X) < 1/B */
     if (x[1] + 1 > 0) {
-        mperr("*** ABS(X) .GE. 1/B IN CALL TO MPLNS ***\n");
+        mperr("*** ABS(X) >= 1/B IN CALL TO MPLNS ***\n");
         y[0] = 0;
         return;
     }
@@ -1699,7 +1699,7 @@ mpnzr(int rs, int *re, int *z, int trunc)
         b2 = MP.b / 2;
         if (b2 << 1 != MP.b) {
             round = 0;
-            /* ODD BASE, ROUND IF R(T+1)... .GT. 1/2 */
+            /* ODD BASE, ROUND IF R(T+1)... > 1/2 */
             for (i = 1; i <= 4; ++i) {
                 it = MP.t + i;
                 if ((i__1 = MP.r[it - 1] - b2) < 0)
@@ -1713,7 +1713,7 @@ mpnzr(int rs, int *re, int *z, int trunc)
             }
         }
         else {
-            /*  B EVEN.  ROUND IF R(T+1).GE.B2 UNLESS R(T) ODD AND ALL ZEROS
+            /*  B EVEN.  ROUND IF R(T+1) >= B2 UNLESS R(T) ODD AND ALL ZEROS
              *  AFTER R(T+2).
              */
             round = 1;
@@ -1807,12 +1807,12 @@ mppi(int *x)
 
     mpchk(3, 8);
 
-/* ALLOW SPACE FOR MPART1 */
+/* ALLOW SPACE FOR MP_ATAN1N */
 
     i2 = (MP.t << 1) + 7;
-    mpart1(5, &MP.r[i2 - 1]);
+    mp_atan1N(5, &MP.r[i2 - 1]);
     mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
-    mpart1(239, x);
+    mp_atan1N(239, x);
     mp_subtract(&MP.r[i2 - 1], x, x);
     mpmuli(x, 4, x);
 
@@ -1862,9 +1862,9 @@ mppwr(const int *x, int n, int *y)
     /* MOVE X */
     mp_set_from_mp(x, y);
 
-    /* IF N .LT. 0 FORM RECIPROCAL */
+    /* IF N < 0 FORM RECIPROCAL */
     if (n < 0)
-        mprec(y, y);
+        mp_reciprocal(y, y);
     mp_set_from_mp(y, &MP.r[i2 - 1]);
 
     /* SET PRODUCT TERM TO ONE */
@@ -1885,7 +1885,7 @@ mppwr(const int *x, int n, int *y)
 
 
 /*  RETURNS Z = X**Y FOR MP NUMBERS X, Y AND Z, WHERE X IS
- *  POSITIVE (X .EQ. 0 ALLOWED IF Y .GT. 0).  SLOWER THAN
+ *  POSITIVE (X == 0 ALLOWED IF Y > 0).  SLOWER THAN
  *  MPPWR AND MPQPWR, SO USE THEM IF POSSIBLE.
  *  DIMENSION OF R IN COMMON AT LEAST 7T+16
  *  CHECK LEGALITY OF B, T, M AND MXR
@@ -1924,15 +1924,15 @@ mppwr2(int *x, int *y, int *z)
 }
 
 
-/*  RETURNS Y = 1/X, FOR MP X AND Y.
- *  MPROOT (X, -1, Y) HAS THE SAME EFFECT.
+/*  RETURNS Z = 1/X, FOR MP X AND Z.
+ *  MPROOT (X, -1, Z) HAS THE SAME EFFECT.
  *  DIMENSION OF R MUST BE AT LEAST 4*T+10 IN CALLING PROGRAM
- *  (BUT Y(1) MAY BE R(3T+9)).
+ *  (BUT Z(1) MAY BE R(3T+9)).
  *  NEWTONS METHOD IS USED, SO FINAL ONE OR TWO DIGITS MAY
  *  NOT BE CORRECT.
  */
 void
-mprec(const int *x, int *y)
+mp_reciprocal(const int *x, int *z)
 {
     /* Initialized data */
     static int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
@@ -1949,8 +1949,8 @@ mprec(const int *x, int *y)
     i2 = (MP.t << 1) + 7;
     i3 = i2 + MP.t + 2;
     if (x[0] == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPREC ***\n");
-        y[0] = 0;
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_RECIPROCAL ***\n");
+        z[0] = 0;
         return;
     }
 
@@ -1974,7 +1974,7 @@ mprec(const int *x, int *y)
     /* SAVE T (NUMBER OF DIGITS) */
     ts = MP.t;
 
-    /* START WITH SMALL T TO SAVE TIME. ENSURE THAT B**(T-1) .GE. 100 */
+    /* START WITH SMALL T TO SAVE TIME. ENSURE THAT B**(T-1) >= 100 */
     MP.t = 3;
     if (MP.b < 10)
         MP.t = it[MP.b - 1];
@@ -2015,24 +2015,24 @@ mprec(const int *x, int *y)
             /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
              *  OR THAT THE STARTING APPROXIMATION IS NOT ACCURATE ENOUGH.
              */
-            mperr("*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
+            mperr("*** ERROR OCCURRED IN MP_RECIPROCAL, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
         }
     }
 
     /* MOVE RESULT TO Y AND RETURN AFTER RESTORING T */
     MP.t = ts;
-    mp_set_from_mp(&MP.r[i2 - 1], y);
+    mp_set_from_mp(&MP.r[i2 - 1], z);
 
     /* RESTORE M AND CHECK FOR OVERFLOW (UNDERFLOW IMPOSSIBLE) */
     MP.m += -2;
-    if (y[1] <= MP.m)
+    if (z[1] <= MP.m)
         return;
 
-    mpovfl(y, "*** OVERFLOW OCCURRED IN MPREC ***\n");
+    mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***\n");
 }
 
 
-/*  RETURNS Y = X**(1/N) FOR INTEGER N, ABS(N) .LE. MAX (B, 64).
+/*  RETURNS Y = X**(1/N) FOR INTEGER N, ABS(N) <= MAX (B, 64).
  *  AND MP NUMBERS X AND Y,
  *  USING NEWTONS METHOD WITHOUT DIVISIONS.   SPACE = 4T+10
  *  (BUT Y(1) MAY BE R(3T+9))
@@ -2120,7 +2120,7 @@ mproot(int *x, int n, int *y)
     /* START WITH SMALL T TO SAVE TIME */
     MP.t = 3;
 
-    /* ENSURE THAT B**(T-1) .GE. 100 */
+    /* ENSURE THAT B**(T-1) >= 100 */
     if (MP.b < 10)
         MP.t = it[MP.b - 1];
     
@@ -2189,12 +2189,12 @@ mproot(int *x, int n, int *y)
  *  ITMAX2 IS THE DIMENSION OF ARRAYS USED FOR MP NUMBERS,
  *  SO AN ERROR OCCURS IF THE COMPUTED T EXCEEDS ITMAX2 - 2.
  *  MPSET ALSO SETS
- *        MXR = MAXDR (DIMENSION OF R IN COMMON, .GE. T+4), AND
+ *        MXR = MAXDR (DIMENSION OF R IN COMMON, >= T+4), AND
  *          M = (W-1)/4 (MAXIMUM ALLOWABLE EXPONENT),
  *  WHERE W IS THE LARGEST INTEGER OF THE FORM 2**K-1 WHICH IS
- *  REPRESENTABLE IN THE MACHINE, K .LE. 47
+ *  REPRESENTABLE IN THE MACHINE, K <= 47
  *  THE COMPUTED B AND T SATISFY THE CONDITIONS 
- *  (T-1)*LN(B)/LN(10) .GE. IDECPL   AND   8*B*B-1 .LE. W .
+ *  (T-1)*LN(B)/LN(10) >= IDECPL   AND   8*B*B-1 <= W .
  *  APPROXIMATELY MINIMAL T AND MAXIMAL B SATISFYING
  *  THESE CONDITIONS ARE CHOSEN.
  *  PARAMETERS IDECPL, ITMAX2 AND MAXDR ARE INTEGERS.
@@ -2216,13 +2216,13 @@ mpset(int idecpl, int itmax2, int maxdr)
     w = 0;
     k = 0;
 
-    /*  ON CYBER 76 HAVE TO FIND K .LE. 47, SO ONLY LOOP
+    /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
      *  47 TIMES AT MOST.  IF GENUINE INTEGER WORDLENGTH
      *  EXCEEDS 47 BITS THIS RESTRICTION CAN BE RELAXED.
      */
     for (i = 1; i <= 47; ++i) {
         /*  INTEGER OVERFLOW WILL EVENTUALLY OCCUR HERE
-         *  IF WORDLENGTH .LT. 48 BITS
+         *  IF WORDLENGTH < 48 BITS
          */
         w2 = w + w;
         wn = w2 + 1;
@@ -2239,11 +2239,11 @@ mpset(int idecpl, int itmax2, int maxdr)
     /* SET MAXIMUM EXPONENT TO (W-1)/4 */
     MP.m = w / 4;
     if (idecpl <= 0) {
-        mperr("*** IDECPL .LE. 0 IN CALL TO MPSET ***\n");
+        mperr("*** IDECPL <= 0 IN CALL TO MPSET ***\n");
         return;
     }
 
-    /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) .LE. W */
+    /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) <= W */
     MP.b = pow_ii(2, (k - 3) / 2);
 
     /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
@@ -2263,7 +2263,7 @@ mpset(int idecpl, int itmax2, int maxdr)
     mpchk(1, 4);
 }
 
-/*  RETURNS Y = SQRT(X), USING SUBROUTINE MPROOT IF X .GT. 0.
+/*  RETURNS Y = SQRT(X), USING SUBROUTINE MPROOT IF X > 0.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 4T+10
  *  (BUT Y(1) MAY BE R(3T+9)).  X AND Y ARE MP NUMBERS.
  *  CHECK LEGALITY OF B, T, M AND MXR

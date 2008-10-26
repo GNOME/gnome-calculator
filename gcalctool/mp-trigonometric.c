@@ -31,6 +31,9 @@
 // FIXME: Needed for doerr
 #include "calctool.h"
 
+
+
+
 /*  COMPARES MP NUMBER X WITH INTEGER I, RETURNING
  *      +1 IF X  >  I,
  *       0 IF X == I,
@@ -48,8 +51,9 @@ mp_compare_mp_to_int(const int *x, int i)
     return mp_compare_mp_to_mp(x, &MP.r[MP.t + 4]);
 }
 
+
 /*  COMPUTES Z = SIN(X) IF DO_SIN != 0, Z = COS(X) IF DO_SIN == 0,
- *  USING TAYLOR SERIES.   ASSUMES ABS(X) >= 1.
+ *  USING TAYLOR SERIES.   ASSUMES ABS(X) <= 1.
  *  X AND Y ARE MP NUMBERS, IS AN INTEGER.
  *  TIME IS O(M(T)T/LOG(T)).   THIS COULD BE REDUCED TO
  *  O(SQRT(T)M(T)) AS IN MPEXP1, BUT NOT WORTHWHILE UNLESS
@@ -126,57 +130,21 @@ mpsin1(const int *x, int *z, int do_sin)
         mp_add_integer(z, 1, z);
 }
 
-/*  RETURNS Z = COS(X) FOR MP X AND Z, USING MP_SIN AND MPSIN1.
- *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
- */
-void
-mp_cos(const int *x, int *z)
-{
-    int i2;
-
-    /* COS(0) = 1 */    
-    if (x[0] == 0) {
-        mp_set_from_integer(1, z);
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i2 = MP.t * 3 + 12;
-
-    /* SEE IF ABS(X) <= 1 */
-    mp_abs(x, z);
-    if (mp_compare_mp_to_int(z, 1) <= 0) {
-        /* HERE ABS(X) <= 1 SO USE POWER SERIES */
-        mpsin1(z, z, 0);
-    } else {
-        /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
-         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
-         */
-        ++MP.t;
-        mppi(&MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-        --MP.t;
-        mp_subtract(&MP.r[i2 - 1], z, z);
-        mp_sin(z, z);
-    }
-}
 
 /*  MP precision arc cosine.
  *
- *  1. If (x < -1.0  or x > 1.0) then report DOMAIN error and return 0.0.
+ *  1. If (x < -1  or x > 1) then report DOMAIN error and return 0.
  *
- *  2. If (x = 0.0) then acos(x) = PI/2.
+ *  2. If (x = 0) then acos(x) = PI/2.
  *
- *  3. If (x = 1.0) then acos(x) = 0.0
+ *  3. If (x = 1) then acos(x) = 0
  *
- *  4. If (x = -1.0) then acos(x) = PI.
+ *  4. If (x = -1) then acos(x) = PI.
  *
- *  5. If (0.0 < x < 1.0) then  acos(x) = atan(sqrt(1-(x**2)) / x)
+ *  5. If (0 < x < 1) then  acos(x) = atan(sqrt(1-x^2) / x)
  *
- *  6. If (-1.0 < x < 0.0) then acos(x) = atan(sqrt(1-(x**2)) / x) + PI
+ *  6. If (-1 < x < 0) then acos(x) = atan(sqrt(1-x^2) / x) + PI
  */
-
 void
 mp_acos(const int *x, int *z)
 {
@@ -210,45 +178,12 @@ mp_acos(const int *x, int *z)
     }
 }
 
-/*  RETURNS Z = COSH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
- *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
- */
-void
-mp_cosh(const int *x, int *z)
-{
-    int i2;
-
-    /* COSH(0) == 1 */    
-    if (x[0] == 0) {
-      mp_set_from_integer(1, z);
-      return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i2 = (MP.t << 2) + 11;
-    mp_abs(x, &MP.r[i2 - 1]);
-
-    /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
-     *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
-     */
-    MP.m += 2;
-    mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-    mprec(&MP.r[i2 - 1], z);
-    mp_add(&MP.r[i2 - 1], z, z);
-
-    /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
-     *  ACT ACCORDINGLY.
-     */
-    MP.m += -2;
-    mpdivi(z, 2, z);
-}
 
 /*  MP precision hyperbolic arc cosine.
  *
  *  1. If (x < 1) then report DOMAIN error and return 0.
  *
- *  2. acosh(x) = log(x + sqrt(x**2 - 1))
+ *  2. acosh(x) = log(x + sqrt(x^2 - 1))
  */
 void
 mp_acosh(const int *x, int *z)
@@ -268,107 +203,6 @@ mp_acosh(const int *x, int *z)
     }
 }
 
-/*  RETURNS Z = SIN(X) FOR MP X AND Z,
- *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
- *  TIME IS O(M(T)T/LOG(T)).
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_sin(const int *x, int *z)
-{
-    int i2, i3, ie, xs;
-    float rx = 0.0, ry;
-
-    mpchk(5, 12);
-    
-    i2 = (MP.t << 2) + 11;
-    if (x[0] == 0) {
-        z[0] = 0;
-        return;
-    }
-
-    xs = x[0];
-    ie = abs(x[1]);
-    if (ie <= 2)
-        rx = mp_cast_to_float(x);
-
-    mp_abs(x, &MP.r[i2 - 1]);
-
-    /* USE MPSIN1 IF ABS(X) <= 1 */
-    if (mp_compare_mp_to_int(&MP.r[i2 - 1], 1) <= 0)
-    {
-        mpsin1(&MP.r[i2 - 1], z, 1);
-    }
-    /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
-     *  PRECOMPUTED AND SAVED IN COMMON).
-     *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MPART1
-     */
-    else {
-        i3 = (MP.t << 1) + 7;
-        mpart1(5, &MP.r[i3 - 1]);
-        mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
-        mpart1(239, z);
-        mp_subtract(&MP.r[i3 - 1], z, z);
-        mpdiv(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
-        mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-
-        /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
-        mp_add_fraction(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
-        xs = -xs * MP.r[i2 - 1];
-        if (xs == 0) {
-            z[0] = 0;
-            return;
-        }
-
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
-
-        /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (MP.r[i2] > 0)
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-
-        if (MP.r[i2 - 1] == 0) {
-            z[0] = 0;
-            return;
-        }        
-
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-
-        /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
-         *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
-         */
-        if (MP.r[i2] > 0) {
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], z, 0);
-        } else {
-            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], z, 1);
-        }
-    }
-
-    z[0] = xs;
-    if (ie > 2)
-        return;
-
-    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) <= 100
-     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
-     */
-    if (fabs(rx) > (float)100.)
-        return;
-
-    ry = mp_cast_to_float(z);
-    if (fabs(ry - sin(rx)) < (float) 0.01)
-        return;
-
-    /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
-     *  B**(T-1) IS TOO SMALL.
-     */
-    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n");
-}
 
 /*  RETURNS Z = ARCSIN(X), ASSUMING ABS(X) <= 1,
  *  FOR MP NUMBERS X AND Z.
@@ -390,7 +224,7 @@ mp_asin(const int *x, int *z)
     }
 
     if (x[1] <= 0) {
-        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X**2)) */
+        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
         i2 = i3 - (MP.t + 2);
         mp_set_from_integer(1, &MP.r[i2 - 1]);
         mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
@@ -414,61 +248,11 @@ mp_asin(const int *x, int *z)
     mpdivi(z, MP.r[i3 - 1] << 1, z);
 }
 
-/*  RETURNS Z = SINH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
- *  METHOD IS TO USE MPEXP OR MPEXP1, SPACE = 5T+12
- *  SAVE SIGN OF X AND CHECK FOR ZERO, SINH(0) = 0
- */
-void
-mp_sinh(const int *x, int *z)
-{
-    int i2, i3, xs;
-
-    xs = x[0];
-    if (xs == 0) {
-        z[0] = 0;
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
-    i3 = (MP.t << 2) + 11;
-
-    /* WORK WITH ABS(X) */
-    mp_abs(x, &MP.r[i3 - 1]);
-
-    /* HERE ABS(X) < 1 SO USE MPEXP1 TO AVOID CANCELLATION */
-    if (MP.r[i3] <= 0) {
-        i2 = i3 - (MP.t + 2);
-        mpexp1(&MP.r[i3 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], z);
-        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
-        mpdiv(z, &MP.r[i3 - 1], z);
-    }
-    /*  HERE ABS(X) >= 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
-     *  INCREASE M TO AVOID OVERFLOW IF SINH(X) REPRESENTABLE
-     */
-    else {
-        MP.m += 2;
-        mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mprec(&MP.r[i3 - 1], z);
-        mp_subtract(&MP.r[i3 - 1], z, z);
-
-        /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
-         *  STATEMENT 30 WILL ACT ACCORDINGLY.
-         */
-        MP.m += -2;
-    }
-
-    /* DIVIDE BY TWO AND RESTORE SIGN */
-    mpdivi(z, xs << 1, z);
-}
 
 /*  MP precision hyperbolic arc sine.
  *
- *  1. asinh(x) = log(x + sqrt(x**2 + 1))
+ *  1. asinh(x) = log(x + sqrt(x^2 + 1))
  */
-
 void
 mp_asinh(const int *x, int *z)
 {
@@ -481,20 +265,6 @@ mp_asinh(const int *x, int *z)
     mpln(MP1, z);
 }
 
-void 
-mp_tan(const int x[MP_SIZE], int z[MP_SIZE])
-{
-    int MPcos[MP_SIZE]; 
-    int MPsin[MP_SIZE];
-
-    mp_sin(x, MPsin);
-    mp_cos(x, MPcos);
-    /* Check if COS(x) == 0 */
-    if (MPcos[0] == 0) {
-        doerr(_("Error, cannot calculate cosine"));
-    }
-    mpdiv(MPsin, MPcos, z);
-}
 
 /*  RETURNS Z = ARCTAN(X) FOR MP X AND Z, USING AN O(T.M(T)) METHOD
  *  WHICH COULD EASILY BE MODIFIED TO AN O(SQRT(T)M(T))
@@ -576,6 +346,278 @@ mp_atan(const int *x, int *z)
     mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***\n");
 }
 
+
+/*  MP precision hyperbolic arc tangent.
+ *
+ *  1. If (x <= -1 or x >= 1) then report a DOMAIN error and return 0.
+ *
+ *  2. atanh(x) = 0.5 * log((1 + x) / (1 - x))
+ */
+void
+mp_atanh(const int *x, int *z)
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+    int MP3[MP_SIZE], MPn1[MP_SIZE];
+
+    mp_set_from_integer(1, MP1);
+    mp_set_from_integer(-1, MPn1);
+
+    if (mp_is_greater_equal(x, MP1) || mp_is_less_equal(x, MPn1)) {
+        doerr(_("Error"));
+        z[0] = 0;
+    } else {
+        mp_add(MP1, x, MP2);
+        mp_subtract(MP1, x, MP3);
+        mpdiv(MP2, MP3, MP3);
+        mpln(MP3, MP3);
+        MPstr_to_num("0.5", 10, MP1);
+        mpmul(MP1, MP3, z);
+    }
+}
+
+
+/*  RETURNS Z = COS(X) FOR MP X AND Z, USING MP_SIN AND MPSIN1.
+ *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
+ */
+void
+mp_cos(const int *x, int *z)
+{
+    int i2;
+
+    /* COS(0) = 1 */    
+    if (x[0] == 0) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
+    /* CHECK LEGALITY OF B, T, M AND MXR */
+    mpchk(5, 12);
+    i2 = MP.t * 3 + 12;
+
+    /* SEE IF ABS(X) <= 1 */
+    mp_abs(x, z);
+    if (mp_compare_mp_to_int(z, 1) <= 0) {
+        /* HERE ABS(X) <= 1 SO USE POWER SERIES */
+        mpsin1(z, z, 0);
+    } else {
+        /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
+         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
+         */
+        ++MP.t;
+        mppi(&MP.r[i2 - 1]);
+        mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
+        --MP.t;
+        mp_subtract(&MP.r[i2 - 1], z, z);
+        mp_sin(z, z);
+    }
+}
+
+
+/*  RETURNS Z = COSH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
+ *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
+ */
+void
+mp_cosh(const int *x, int *z)
+{
+    int i2;
+
+    /* COSH(0) == 1 */    
+    if (x[0] == 0) {
+      mp_set_from_integer(1, z);
+      return;
+    }
+
+    /* CHECK LEGALITY OF B, T, M AND MXR */
+    mpchk(5, 12);
+    i2 = (MP.t << 2) + 11;
+    mp_abs(x, &MP.r[i2 - 1]);
+
+    /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
+     *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
+     */
+    MP.m += 2;
+    mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
+    mp_reciprocal(&MP.r[i2 - 1], z);
+    mp_add(&MP.r[i2 - 1], z, z);
+
+    /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
+     *  ACT ACCORDINGLY.
+     */
+    MP.m += -2;
+    mpdivi(z, 2, z);
+}
+
+
+/*  RETURNS Z = SIN(X) FOR MP X AND Z,
+ *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
+ *  TIME IS O(M(T)T/LOG(T)).
+ *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
+void
+mp_sin(const int *x, int *z)
+{
+    int i2, i3, ie, xs;
+    float rx = 0.0, ry;
+
+    mpchk(5, 12);
+    
+    i2 = (MP.t << 2) + 11;
+    if (x[0] == 0) {
+        z[0] = 0;
+        return;
+    }
+
+    xs = x[0];
+    ie = abs(x[1]);
+    if (ie <= 2)
+        rx = mp_cast_to_float(x);
+
+    mp_abs(x, &MP.r[i2 - 1]);
+
+    /* USE MPSIN1 IF ABS(X) <= 1 */
+    if (mp_compare_mp_to_int(&MP.r[i2 - 1], 1) <= 0)
+    {
+        mpsin1(&MP.r[i2 - 1], z, 1);
+    }
+    /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
+     *  PRECOMPUTED AND SAVED IN COMMON).
+     *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MP_ATAN1N
+     */
+    else {
+        i3 = (MP.t << 1) + 7;
+        mp_atan1N(5, &MP.r[i3 - 1]);
+        mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
+        mp_atan1N(239, z);
+        mp_subtract(&MP.r[i3 - 1], z, z);
+        mpdiv(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
+        mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
+        mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
+
+        /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
+        mp_add_fraction(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
+        xs = -xs * MP.r[i2 - 1];
+        if (xs == 0) {
+            z[0] = 0;
+            return;
+        }
+
+        MP.r[i2 - 1] = 1;
+        mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
+
+        /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
+        if (MP.r[i2] > 0)
+            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
+
+        if (MP.r[i2 - 1] == 0) {
+            z[0] = 0;
+            return;
+        }        
+
+        MP.r[i2 - 1] = 1;
+        mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
+
+        /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
+         *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
+         */
+        if (MP.r[i2] > 0) {
+            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
+            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
+            mpsin1(&MP.r[i2 - 1], z, 0);
+        } else {
+            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
+            mpsin1(&MP.r[i2 - 1], z, 1);
+        }
+    }
+
+    z[0] = xs;
+    if (ie > 2)
+        return;
+
+    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) <= 100
+     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
+     */
+    if (fabs(rx) > (float)100.)
+        return;
+
+    ry = mp_cast_to_float(z);
+    if (fabs(ry - sin(rx)) < (float) 0.01)
+        return;
+
+    /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
+     *  B**(T-1) IS TOO SMALL.
+     */
+    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n");
+}
+
+
+/*  RETURNS Z = SINH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
+ *  METHOD IS TO USE MPEXP OR MPEXP1, SPACE = 5T+12
+ *  SAVE SIGN OF X AND CHECK FOR ZERO, SINH(0) = 0
+ */
+void
+mp_sinh(const int *x, int *z)
+{
+    int i2, i3, xs;
+
+    xs = x[0];
+    if (xs == 0) {
+        z[0] = 0;
+        return;
+    }
+
+    /* CHECK LEGALITY OF B, T, M AND MXR */
+    mpchk(5, 12);
+    i3 = (MP.t << 2) + 11;
+
+    /* WORK WITH ABS(X) */
+    mp_abs(x, &MP.r[i3 - 1]);
+
+    /* HERE ABS(X) < 1 SO USE MPEXP1 TO AVOID CANCELLATION */
+    if (MP.r[i3] <= 0) {
+        i2 = i3 - (MP.t + 2);
+        mpexp1(&MP.r[i3 - 1], &MP.r[i2 - 1]);
+        mp_add_integer(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
+        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], z);
+        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
+        mpdiv(z, &MP.r[i3 - 1], z);
+    }
+    /*  HERE ABS(X) >= 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
+     *  INCREASE M TO AVOID OVERFLOW IF SINH(X) REPRESENTABLE
+     */
+    else {
+        MP.m += 2;
+        mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
+        mp_reciprocal(&MP.r[i3 - 1], z);
+        mp_subtract(&MP.r[i3 - 1], z, z);
+
+        /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
+         *  STATEMENT 30 WILL ACT ACCORDINGLY.
+         */
+        MP.m += -2;
+    }
+
+    /* DIVIDE BY TWO AND RESTORE SIGN */
+    mpdivi(z, xs << 1, z);
+}
+
+
+void 
+mp_tan(const int x[MP_SIZE], int z[MP_SIZE])
+{
+    int MPcos[MP_SIZE]; 
+    int MPsin[MP_SIZE];
+
+    mp_sin(x, MPsin);
+    mp_cos(x, MPcos);
+    /* Check if COS(x) == 0 */
+    if (MPcos[0] == 0) {
+        doerr(_("Error, cannot calculate cosine"));
+    }
+    mpdiv(MPsin, MPcos, z);
+}
+
+
 /*  RETURNS Z = TANH(X) FOR MP NUMBERS X AND Z,
  *  USING MPEXP OR MPEXP1, SPACE = 5T+12
  */
@@ -626,33 +668,4 @@ mp_tanh(const int *x, int *z)
 
     /* RESTORE SIGN */
     z[0] = xs * z[0];
-}
-
-/*  MP precision hyperbolic arc tangent.
- *
- *  1. If (x <= -1 or x >= 1) then report a DOMAIN error and return 0.
- *
- *  2. atanh(x) = 0.5 * log((1 + x) / (1 - x))
- */
-
-void
-mp_atanh(const int *x, int *z)
-{
-    int MP1[MP_SIZE], MP2[MP_SIZE];
-    int MP3[MP_SIZE], MPn1[MP_SIZE];
-
-    mp_set_from_integer(1, MP1);
-    mp_set_from_integer(-1, MPn1);
-
-    if (mp_is_greater_equal(x, MP1) || mp_is_less_equal(x, MPn1)) {
-        doerr(_("Error"));
-        z[0] = 0;
-    } else {
-        mp_add(MP1, x, MP2);
-        mp_subtract(MP1, x, MP3);
-        mpdiv(MP2, MP3, MP3);
-        mpln(MP3, MP3);
-        MPstr_to_num("0.5", 10, MP1);
-        mpmul(MP1, MP3, z);
-    }
 }
