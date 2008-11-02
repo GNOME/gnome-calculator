@@ -86,6 +86,7 @@ static char *finc_dialog_fields[FINC_NUM_DIALOGS][FINC_NUM_ARGS] = {
     {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL},
     {"ddb_cost",  "ddb_life",    "ddb_period", NULL},
     {"fv_pmt",    "fv_pint",     "fv_n",       NULL},
+    {"gpm_cost",  "gpm_margin",  NULL,         NULL},
     {"pmt_prin",  "pmt_pint",    "pmt_n",      NULL},
     {"pv_pmt",    "pv_pint",     "pv_n",       NULL},
     {"rate_fv",   "rate_pv",     "rate_n",     NULL},
@@ -98,7 +99,7 @@ static char *finc_dialog_fields[FINC_NUM_DIALOGS][FINC_NUM_ARGS] = {
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
  *-----------+-----------------------------------------------------
- *  Lower:   |  a b c d e f     i     l m n   p   r s t u v   x
+ *  Lower:   |  a b c d e f g   i     l m n   p   r s t u v   x
  *  Upper:   |  A   C D E F G     J K L M N   P   R S T       X Y
  *  Numeric: |  0 1 2 3 4 5 6 7 8 9
  *  Other:   |  @ . + - * / = % ( ) # < > [ ] { } | & ~ ^ ? ! :
@@ -386,6 +387,10 @@ static struct button_widget button_widgets[] = {
     {KEY_FINC_FV,            "finc_future_value",
     { 0,     0,     0 },
     { GDK_v, GDK_V, 0 }},
+
+    {KEY_FINC_GPM,           "finc_gross_profit_margin",
+    { 0,     0,     0 },
+    { GDK_g, GDK_G, 0 }},
 
     {KEY_FINC_PMT,           "finc_periodic_payment",
     { GDK_SHIFT_MASK, 0 },
@@ -1474,6 +1479,9 @@ setup_finc_dialogs(void)
     glade_xml_signal_connect_data(X->financial, "finc_fv_response_cb", 
                              G_CALLBACK(finc_response_cb), 
                              GINT_TO_POINTER(FINC_FV_DIALOG));
+    glade_xml_signal_connect_data(X->financial, "finc_gpm_response_cb", 
+                             G_CALLBACK(finc_response_cb), 
+                             GINT_TO_POINTER(FINC_GPM_DIALOG));
     glade_xml_signal_connect_data(X->financial, "finc_pmt_response_cb", 
                              G_CALLBACK(finc_response_cb), 
                              GINT_TO_POINTER(FINC_PMT_DIALOG));
@@ -1502,6 +1510,8 @@ setup_finc_dialogs(void)
     g_object_set_data(G_OBJECT(button), "finc_dialog", "ddb_dialog");
     button = GET_WIDGET("calc_finc_future_value_button");
     g_object_set_data(G_OBJECT(button), "finc_dialog", "fv_dialog");
+    button = GET_WIDGET("calc_finc_gross_profit_margin_button");
+    g_object_set_data(G_OBJECT(button), "finc_dialog", "gpm_dialog");
     button = GET_WIDGET("calc_finc_periodic_payment_button");
     g_object_set_data(G_OBJECT(button), "finc_dialog", "pmt_dialog");
     button = GET_WIDGET("calc_finc_present_value_button");

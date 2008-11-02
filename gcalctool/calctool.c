@@ -391,6 +391,11 @@ struct button buttons[NKEYS] = {
     0
 },
 {
+    KEY_FINC_GPM,
+    "Gpm",
+    0
+},
+{
     KEY_FINC_PMT,
     "Pmt",
     0

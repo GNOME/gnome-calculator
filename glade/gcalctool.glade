@@ -808,10 +808,10 @@ The depreciable cost is cost - salvage. The useful life is the number of periods
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">7</property>
-	      <property name="right_attach">8</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
@@ -833,8 +833,8 @@ http://en.wikipedia.org/wiki/Depreciation">Sln</property>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
+	      <property name="left_attach">7</property>
+	      <property name="right_attach">8</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
@@ -862,8 +862,8 @@ http://en.wikipedia.org/wiki/Interest
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">5</property>
-	      <property name="right_attach">6</property>
+	      <property name="left_attach">6</property>
+	      <property name="right_attach">7</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
@@ -887,8 +887,8 @@ http://en.wikipedia.org/wiki/Present_value">Pv</property>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">4</property>
-	      <property name="right_attach">5</property>
+	      <property name="left_attach">5</property>
+	      <property name="right_attach">6</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
@@ -912,8 +912,8 @@ http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">3</property>
-	      <property name="right_attach">4</property>
+	      <property name="left_attach">4</property>
+	      <property name="right_attach">5</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
@@ -939,6 +939,31 @@ http://en.wikipedia.org/wiki/Future_value">Fv</property>
 	    <packing>
 	      <property name="left_attach">2</property>
 	      <property name="right_attach">3</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_finc_gross_profit_margin_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Gpm] button">Gross Profit Margin [g]</property>
+	      <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
+http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <accessibility>
+		<atkproperty name="AtkObject::accessible_name" translatable="yes">Gross Profit Margin</atkproperty>
+		<atkproperty name="AtkObject::accessible_description" translatable="yes">Gross Profit Margin [g]</atkproperty>
+	      </accessibility>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">3</property>
+	      <property name="right_attach">4</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">expand|shrink|fill</property>
@@ -1013,8 +1038,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <signal name="clicked" handler="button_cb"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">0</property>
-	      <property name="right_attach">1</property>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
 	      <property name="x_options">expand|shrink|fill</property>

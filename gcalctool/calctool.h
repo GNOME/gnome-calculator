@@ -108,6 +108,7 @@ enum
     KEY_FINC_CTRM,
     KEY_FINC_DDB,
     KEY_FINC_FV,
+    KEY_FINC_GPM,
     KEY_FINC_PMT,
     KEY_FINC_PV,
     KEY_FINC_RATE,

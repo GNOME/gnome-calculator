@@ -108,6 +108,24 @@ calc_fv(int t[MP_SIZE], int pmt[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
 
 
 void
+calc_gpm(int t[MP_SIZE], int cost[MP_SIZE], int margin[MP_SIZE])
+{
+
+/*  Gpm   - cost (cost of sale).
+ *          margin (gross profit margin.
+ *
+ *          RESULT = cost / (1 - margin)
+ */
+
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+
+    mp_set_from_integer(1, MP1);
+    mp_subtract(MP1, margin, MP2);
+    mpdiv(cost, MP2, t);
+}
+
+
+void
 calc_pmt(int t[MP_SIZE], int prin[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
 {
 
@@ -257,6 +275,9 @@ do_finc_expression(int function, int arg1[MP_SIZE], int arg2[MP_SIZE],
             break;
         case FINC_FV_DIALOG:
             calc_fv(result, arg1, arg2, arg3);
+            break;
+        case FINC_GPM_DIALOG:
+            calc_gpm(result, arg1, arg2);
             break;
         case FINC_PMT_DIALOG:
             calc_pmt(result, arg1, arg2, arg3);
