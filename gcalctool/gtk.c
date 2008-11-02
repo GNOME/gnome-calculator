@@ -1239,50 +1239,26 @@ base_cb(GtkWidget *widget)
 static void
 help_display(void)
 {
+    GdkScreen *screen;
     GError *error = NULL;
-    char *command;
-    const char *lang;
-    char *uri = NULL;
-    GdkScreen *gscreen;
-    int i;
-    
-    const char * const * langs = g_get_language_names ();
-    
-    for (i = 0; langs[i]; i++) {
-        lang = langs[i];
-        if (strchr (lang, '.')) {
-            continue;
-        }
-        
-        uri = g_build_filename(PACKAGE_DATA_DIR,
-                               "/gnome/help/gcalctool/",
-                               lang,
-                               "/gcalctool.xml",
-                               NULL);
-        
-        if (g_file_test (uri, G_FILE_TEST_EXISTS)) {
-            break;
-        }
-    }
-    
-    command = g_strconcat ("gnome-open ghelp://", uri, NULL);
-    gscreen = gdk_screen_get_default();
-    gdk_spawn_command_line_on_screen (gscreen, command, &error);
-    if (error) {
+ 
+    screen = gtk_widget_get_screen (GTK_WIDGET (X->kframe));
+    gtk_show_uri (screen, "g1help:gcalctool", gtk_get_current_event_time (), &error);
+ 
+    if (error != NULL)
+    {
         GtkWidget *d;
+        d = gtk_message_dialog_new (GTK_WINDOW (X->kframe), 
+                                    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                    GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+                                    "%s", "Unable to open help file");
+        gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
+                                                  "%s", error->message);
+        g_signal_connect (d, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_window_present (GTK_WINDOW (d));
         
-        d = gtk_message_dialog_new(NULL,
-                           GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                           GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                           error->message);
-        gtk_dialog_run(GTK_DIALOG(d));
-        gtk_widget_destroy(d);
-        g_error_free(error);
-        error = NULL;
+        g_error_free (error);
     }
-    
-    g_free (command);
-    g_free (uri);
 }
 
 
