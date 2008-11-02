@@ -1781,7 +1781,7 @@ static void
 mpovfl(int *x, const char *error)
 {
     if (v->MPerrors) {
-        FPRINTF(stderr, error);
+        FPRINTF(stderr, "%s", error);
     }
     
     mpchk(1, 4);

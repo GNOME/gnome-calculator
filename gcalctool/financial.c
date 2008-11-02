@@ -23,7 +23,6 @@
 #include "mpmath.h"
 
 #include <libintl.h>
-#define _ gettext
 
 void
 calc_ctrm(int t[MP_SIZE], int pint[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE])

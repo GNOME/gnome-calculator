@@ -34,6 +34,9 @@
 #include "ce_parser.tab.h"
 %}
 
+%option noinput
+%option nounput
+
 DECIMAL	"."|","
 SIGN	"+"|"-" 
 CHARACTER [a-z]|[A-Z]

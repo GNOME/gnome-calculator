@@ -70,7 +70,7 @@ str_replace(char *str, char *from, char *to)
     
     for (c = str; *c && offset < MAX_DISPLAY - 1; c++, offset++) {
         if (strncasecmp(from, c, flen) == 0) {
-            SNPRINTF(output + offset, MAX_DISPLAY - offset, to);
+            SNPRINTF(output + offset, MAX_DISPLAY - offset, "%s", to);
             c += flen - 1;
             offset += tlen - 1;
         } else {

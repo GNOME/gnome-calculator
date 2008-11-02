@@ -23,16 +23,12 @@
 #include <string.h>
 #include <math.h>
 #include <libintl.h>
-#define _ gettext
 
 #include "mp.h"
 #include "mp-internal.h"
 
 // FIXME: Needed for doerr
 #include "calctool.h"
-
-
-
 
 /*  COMPARES MP NUMBER X WITH INTEGER I, RETURNING
  *      +1 IF X  >  I,

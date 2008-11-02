@@ -524,7 +524,6 @@ ui_set_accuracy(int accuracy)
 {
     GtkWidget *widget;
     char text[MAXLINE];
-    char *desc, *current, *tooltip;
     
     /* Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy. */
     SNPRINTF(text, MAXLINE, _("_Other (%d) ..."), accuracy);
@@ -885,7 +884,7 @@ ui_set_mode(enum mode_type mode)
         SNPRINTF(title, MAXLINE, gettext(hostname_titles[mode]), hostname);
         g_free(hostname);
     } else {
-        SNPRINTF(title, MAXLINE, gettext(titles[mode]));
+        SNPRINTF(title, MAXLINE, "%s", gettext(titles[mode]));
     }
     gtk_window_set_title(GTK_WINDOW(X->kframe), title);
 
@@ -1314,9 +1313,9 @@ help_display(void)
         GtkWidget *d;
         
         d = gtk_message_dialog_new(NULL,
-                           GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                           GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                           error->message);
+                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                                   "%s", error->message);
         gtk_dialog_run(GTK_DIALOG(d));
         gtk_widget_destroy(d);
         g_error_free(error);
