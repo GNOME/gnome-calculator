@@ -2757,6 +2757,9 @@ create_kframe()
         widget = GET_WIDGET(name);
         g_object_set_data(G_OBJECT(widget), "accuracy", GINT_TO_POINTER(i));
     }
+
+    /* Localize label for numeric point */
+    gtk_button_set_label(GTK_BUTTON(GET_WIDGET("calc_numeric_point_button")), v->radix);
 }
 
 
