@@ -4,6 +4,42 @@
  *  All Rights Reserved.
  */
  
+Overview of changes in gcalctool 5.25.1
+
+    * Added a programming mode that contains the bit editor (Robin Sonefors, Bug #501508).
+    
+    * Made finacial operations GUI-based not register based (Robin Sonefors, Bug #318686).
+    
+    * Added Gross Profit Margin Ration Financial Function (Robin Sonefors, Bug #150663).
+    
+    * Don't clear display when changing modes and allow all functions to work in all non-basic
+      modes (Robert Ancell, Bug #554133).    
+   
+    * Set decimal point label to be based on LC_NUMERIC as users can set their numerical
+      representation to different to their language settings (Robin Sonefors, Bug #557331).
+      
+    * More refactoring in MP math library (Klaus Niederkrueger, Robert Ancell, Bug #524091).
+
+    * Fixed GtkSpinButton warning (Robin Sonefors, Bug #553965).
+
+    * Only update bit panel when display contains a solved number (Robert Ancell, Bug #548690).
+
+    * Remove inline declaration so can compile in C89 (Jens Granseuer, Bug #553307).
+    
+    * Open help with gtk_show_uri() (Thomas Andersen, Bug #556207).
+
+    * Added translator comments (Robert Ancell)
+
+    * Updated translations: bg (Alexander Shopov),
+                            da (Ask H. Larsen, Kenneth Nielsen),
+                            es (Jorge Gonzalez),
+                            et (Ivar Smolin),
+                            fi (Ilkka Tuohela),
+                            mk (Jovan Naumovski),
+                            pt_BR (Vladimir Melo, Leonardo Ferreira Fontenelle)
+
+    * Updated help: es (Jorge Gonzalez)
+
 Overview of changes in gcalctool 5.24.0
 
     * Updated translations: af (Friedel Wolff), ar (Anas Afif Emad, Khaled Hosny),
