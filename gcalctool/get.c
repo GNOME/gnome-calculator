@@ -52,7 +52,7 @@ char *
 get_resource(char *key)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     return(gconf_client_get_string(client, key_name, NULL));
 }
 
@@ -61,7 +61,7 @@ void
 set_resource(char *key, char *value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
     gconf_client_set_string(client, key_name, value, NULL);
 }
 
@@ -239,6 +239,8 @@ read_resources()    /* Read all possible resources from the database. */
     if (get_int_resource(R_ACCURACY, &intval)) {
         v->accuracy = intval;
         if (v->accuracy < 0 || v->accuracy > MAXACC) {
+            /* Translators: A log message displayed when an invalid accuracy
+               is read from the configuration */
             FPRINTF(stderr, _("%s: accuracy should be in the range 0-%d\n"), 
                     v->progname, MAXACC);
             v->accuracy = 9;
@@ -260,6 +262,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXBASES) {
+            /* Translators: A log message displayed when an invalid
+               base is read from the configuration */            
             FPRINTF(stderr, _("%s: base should be 2, 8, 10 or 16\n"), 
                     v->progname);
         } else {
@@ -275,6 +279,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXDISPMODES) {
+            /* Translators: A log message displayed when an invalid
+               display mode is read from the configuration */
             FPRINTF(stderr, _("%s: invalid display mode [%s]\n"), 
                     v->progname, str);
         } else {
@@ -290,6 +296,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
 
         if (i == MAXMODES) {
+            /* Translators: This message is a log message displayed when
+               an invalid mode is read from the configuration */            
             FPRINTF(stderr, _("%s: invalid mode [%s]\n"), v->progname, str);
         } else {
             v->modetype = (enum mode_type) i;
@@ -304,6 +312,8 @@ read_resources()    /* Read all possible resources from the database. */
         }
        
         if (i == MAXTRIGMODES) {
+            /* Translators: This message is a log message displayed when
+               an invalid trigonometric mode is read from the configuration */
             FPRINTF(stderr, _("%s: invalid trigonometric mode [%s]\n"), 
                     v->progname, str);
         } else {
@@ -323,10 +333,7 @@ read_resources()    /* Read all possible resources from the database. */
 void
 resources_init()        /* Load gconf configuration database for gcalctool. */
 { 
-    char str[MAXLINE];
-
     assert(client == NULL);
-    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
     client = gconf_client_get_default();
-    gconf_client_add_dir(client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
+    gconf_client_add_dir(client, "/apps/gcalctool", GCONF_CLIENT_PRELOAD_NONE, NULL);
 }
