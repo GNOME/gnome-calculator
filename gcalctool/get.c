@@ -52,7 +52,7 @@ char *
 get_resource(char *key)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     return(gconf_client_get_string(client, key_name, NULL));
 }
 
@@ -61,7 +61,7 @@ void
 set_resource(char *key, char *value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/%s/%s", v->appname, key);    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
     gconf_client_set_string(client, key_name, value, NULL);
 }
 
@@ -333,10 +333,7 @@ read_resources()    /* Read all possible resources from the database. */
 void
 resources_init()        /* Load gconf configuration database for gcalctool. */
 { 
-    char str[MAXLINE];
-
     assert(client == NULL);
-    SNPRINTF(str, MAXLINE, "/apps/%s", v->appname);
     client = gconf_client_get_default();
-    gconf_client_add_dir(client, str, GCONF_CLIENT_PRELOAD_NONE, NULL);
+    gconf_client_add_dir(client, "/apps/gcalctool", GCONF_CLIENT_PRELOAD_NONE, NULL);
 }
