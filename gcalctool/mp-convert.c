@@ -523,7 +523,7 @@ MPstr_to_num(const char *str, int base, int *MPval)
             mp_set_from_integer(inum, MP2);
             mpdiv(MP2, MP1, MP1);
             mp_add(MPval, MP1, MPval);
-        optr++;
+            optr++;
         }
     }
 

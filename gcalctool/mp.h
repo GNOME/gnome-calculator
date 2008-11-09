@@ -47,6 +47,8 @@
 #  define  __attribute__(x)  /*NOTHING*/
 #endif
 
+void mp_set_show_errors(int show_errors);
+
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
 int mp_compare_mp_to_mp(const int *x, const int *y);

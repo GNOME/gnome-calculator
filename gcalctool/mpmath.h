@@ -67,7 +67,7 @@ int
 is_natural(int MPnum[MP_SIZE]);
 
 // FIXME: These should be merged together
-void make_fixed(char *, int, int *, int, int, int);
-void make_number(char *, int, int *, int, int);
+void make_fixed(char *, int, const int *, int, int, int);
+void make_number(char *, int, const int *, int, int);
 
 #endif /*MPMATH_H*/

@@ -33,23 +33,24 @@
 #include <gconf/gconf-client.h>
 
 #include "get.h"
+#include "register.h"
 #include "mpmath.h"
 
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 
 /* Various string values read/written as X resources. */
 
-char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
-char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
-                              "SCIENTIFIC", "PROGRAMMING" };
-char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
+const char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
+const char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
+const char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
+                                    "SCIENTIFIC", "PROGRAMMING" };
+const char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
 
 static GConfClient *client = NULL;
 
 
 char *
-get_resource(char *key)
+get_resource(const char *key)
 {
     char key_name[MAXLINE];
     SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
@@ -58,7 +59,7 @@ get_resource(char *key)
 
 
 void
-set_resource(char *key, char *value)
+set_resource(const char *key, const char *value)
 {
     char key_name[MAXLINE];
     SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
@@ -67,7 +68,7 @@ set_resource(char *key, char *value)
 
 
 void
-set_int_resource(char *key, int value)
+set_int_resource(const char *key, int value)
 {
     char intvalue[MAXLINE];
     SNPRINTF(intvalue, MAXLINE, "%d", value);
@@ -76,7 +77,7 @@ set_int_resource(char *key, int value)
 
 
 void
-set_boolean_resource(char *key, int value)
+set_boolean_resource(const char *key, int value)
 {
     if (value) {
         set_resource(key, "true");
@@ -87,7 +88,7 @@ set_boolean_resource(char *key, int value)
 
 
 char *
-convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
+convert(const char *line)       /* Convert .gcalctoolcf line to ascii values. */
 {
     static char output[MAXLINE];   /* Converted output record. */
     int i;                  /* Position within input line. */
@@ -109,7 +110,7 @@ convert(char *line)       /* Convert .gcalctoolcf line to ascii values. */
 
 
 int
-get_boolean_resource(char *key, int *boolval)
+get_boolean_resource(const char *key, int *boolval)
 {
     char *val, tempstr[MAXLINE];
     int len, n;
@@ -139,7 +140,7 @@ get_boolean_resource(char *key, int *boolval)
 /* Get integer resource from database. */
 
 int
-get_int_resource(char *key, int *intval)
+get_int_resource(const char *key, int *intval)
 {
     char *val;
  
@@ -161,7 +162,7 @@ get_int_resource(char *key, int *intval)
 const char *
 get_radix()
 {
-    char *radix;
+    const char *radix;
 
     setlocale(LC_NUMERIC, "");
     if ((radix = nl_langinfo(RADIXCHAR)) != NULL) {
@@ -179,7 +180,7 @@ get_radix()
 /* Get a string resource from database. */
 
 static int
-get_str_resource(char *key, char *strval)
+get_str_resource(const char *key, char *strval)
 {
     char *val;
     int i, len;
@@ -250,7 +251,9 @@ read_resources()    /* Read all possible resources from the database. */
     for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(key, MAXLINE, "register%d", i);
         if (get_str_resource(key, str)) {
-            MPstr_to_num(str, 10, v->MPmvals[i]);
+            int temp[MP_SIZE];
+            MPstr_to_num(str, 10, temp);
+            register_set(i, temp);
         }
     }
 

@@ -20,19 +20,159 @@
  */
 
 #include "register.h"
+#include "get.h"
 #include "calctool.h"
+#include "mpmath.h"
 
-void
-do_sto_reg(int reg, int value[MP_SIZE])
+static const char *default_constants[][2] =
 {
-    if ((reg >= 0) && (reg <= 10))
-        mp_set_from_mp(value, v->MPmvals[reg]);
+    /* Translators: This is the label for the default constant, the number of miles in one kilometer (0.621) */
+    { N_("Kilometer-to-mile conversion factor"), "0.621" },
+    /* Translators: This is the label for the default constant, the square root of 2 (1.41421) */
+    { N_("square root of 2"), "1.4142135623" },
+    /* Translators: This is the label for the default constant, Euler's number (2.71828) */
+    { N_("Euler's Number (e)"), "2.7182818284" },
+    /* Translators: This is the label for the default constant, π (3.14159) */
+    { N_("π"), "3.1415926536" },
+    /* Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370) */
+    { N_("Centimeter-to-inch conversion factor"), "0.3937007" },
+    /* Translators: This is the label for the default constant, the number of degrees in a radian (57.2958) */
+    { N_("degrees in a radian"), "57.295779513" },
+    /* Translators: This is the label for the default constant, 2 to the power of 20 (1048576) */
+    { N_("2 ^ 20"), "1048576.0" },
+    /* Translators: This is the label for the default constant, the number of ounces in one gram (0.0353) */
+    { N_("Gram-to-ounce conversion factor"), "0.0353" },
+    /* Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948) */
+    { N_("Kilojoule-to-British-thermal-unit conversion factor"), "0.948" },
+    /* Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610) */
+    { N_("Cubic-centimeter-to-cubic-inch conversion factor"), "0.0610" }
+};
+
+void register_init()
+{
+    int i;
+    for (i = 0; i < MAX_REGISTERS; i++) {
+        mp_set_from_integer(0, v->registers[i]);
+    }
+    
+    for (i = 0; i < MAX_CONSTANTS; i++) {
+        char nkey[MAXLINE], *nline;
+        char vkey[MAXLINE], *vline = NULL;
+        int value[MP_SIZE];
+
+        SNPRINTF(nkey, MAXLINE, "constant%1dname", i);
+        nline = get_resource(nkey);
+        if (nline) {
+            SNPRINTF(vkey, MAXLINE, "constant%1dvalue", i);
+            vline = get_resource(vkey);
+            if (vline == NULL)
+                g_free(nline);
+        }
+
+        if (nline && vline) {
+            MPstr_to_num(vline, 10, value);
+            constant_set(i, nline, value);
+            g_free(nline);
+            g_free(vline);
+        }
+        else {
+            MPstr_to_num(default_constants[i][1], 10, value);
+            constant_set(i, default_constants[i][0], value);
+        }
+    }
+    
+    for (i = 0; i < MAX_FUNCTIONS; i++) {
+        char nkey[MAXLINE], *nline;
+        char vkey[MAXLINE], *vline;
+        
+        SNPRINTF(nkey, MAXLINE, "function%1dname", i);
+        nline = get_resource(nkey);
+        if (nline) {
+            SNPRINTF(vkey, MAXLINE, "function%1dvalue", i);
+            vline = get_resource(vkey);
+            if (vline == NULL)
+                g_free(nline);
+        }
+ 
+        if (nline && vline) {
+            function_set(i, nline, convert(vline));
+            g_free(nline);
+            g_free(vline);
+        }
+        else {
+            function_set(i, "", "");
+        }
+    }
 }
 
 
 void
-do_rcl_reg(int reg, int value[MP_SIZE])
+register_set(int index, int value[MP_SIZE])
 {
-    if ((reg >= 0) && (reg <= 10))
-        mp_set_from_mp(v->MPmvals[reg], value);
+    if ((index >= 0) && (index <= 10))
+        mp_set_from_mp(value, v->registers[index]);
+}
+
+
+void
+register_get(int index, int value[MP_SIZE])
+{
+    if ((index >= 0) && (index <= 10))
+        mp_set_from_mp(v->registers[index], value);
+}
+
+
+void constant_set(int index, const char *name, int value[MP_SIZE])
+{
+    char key[MAXLINE], temp[MAXLINE];
+
+    STRNCPY(v->constant_names[index], name, MAXLINE - 1);
+    mp_set_from_mp(value, v->constant_values[index]);
+
+    SNPRINTF(key, MAXLINE, "constant%1dname", index);
+    set_resource(key, name);
+
+    /* NOTE: Constants are written out with no thousands separator and with a
+       radix character of ".". */
+    make_number(temp, MAXLINE, value, 10, TRUE);   
+    SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
+    set_resource(key, temp);
+}
+
+
+const char *constant_get_name(int index)
+{
+    return v->constant_names[index];
+}
+
+
+const int *constant_get_value(int index)
+{
+    return v->constant_values[index];
+}
+
+
+void function_set(int index, const char *name, const char *value)
+{
+    char key[MAXLINE];
+
+    STRNCPY(v->function_names[index], name, MAXLINE - 1);        
+    STRNCPY(v->function_values[index], value, MAXLINE - 1);
+    
+    SNPRINTF(key, MAXLINE, "function%1dname", index);
+    set_resource(key, name);
+    SNPRINTF(key, MAXLINE, "function%1dvalue", index);
+    set_resource(key, value);
+}
+
+
+const char *function_get_name(int index)
+{
+    return v->function_names[index];
+}
+
+
+const char *function_get_value(int index)
+{
+    return v->function_values[index];
 }

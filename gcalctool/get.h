@@ -35,24 +35,23 @@
 #define R_XPOS     "xposition"
 #define R_YPOS     "yposition"
 
-extern char *Rbstr[];          /* Base mode X resource strings. */
-extern char *Rdstr[];          /* Display mode X resource strings. */
-extern char *Rmstr[];          /* Mode mode X resource strings. */
-extern char *Rtstr[];          /* Trig mode X resource strings. */
-extern char *Rsstr[];          /* Syntax resource strings. */
+extern const char *Rbstr[];          /* Base mode X resource strings. */
+extern const char *Rdstr[];          /* Display mode X resource strings. */
+extern const char *Rmstr[];          /* Mode mode X resource strings. */
+extern const char *Rtstr[];          /* Trig mode X resource strings. */
+extern const char *Rsstr[];          /* Syntax resource strings. */
 
 void resources_init();
 void read_resources();
-char *convert(char *);
-void usage(char *);
+char *convert(const char *);
 
-void set_resource(char *key, char *value);
-void set_int_resource(char *key, int value);
-void set_boolean_resource(char *key, int value);
+void set_resource(const char *key, const char *value);
+void set_int_resource(const char *key, int value);
+void set_boolean_resource(const char *key, int value);
 
-char *get_resource(char *key);
-int get_int_resource(char *key, int *value);
-int get_boolean_resource(char *key, int *value);
+char *get_resource(const char *key);
+int get_int_resource(const char *key, int *value);
+int get_boolean_resource(const char *key, int *value);
 
 const char *get_radix();
 const char *get_tsep();

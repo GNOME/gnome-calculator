@@ -74,7 +74,7 @@ ce_parse(const char *expression, int result[MP_SIZE])
 
 
 int 
-ce_udf_parse(char *expression)
+ce_udf_parse(const char *expression)
 {
     int dummy[MP_SIZE];
 

@@ -169,7 +169,6 @@ enum
 enum button_flags {
     NUMBER       = (1 << 3),   /* Number button */
     FUNC         = (1 << 6),   /* Function */
-    POSTFIXOP    = (1 << 14),  /* Unary postfix operation */
     PREFIXOP     = (1 << 15),  /* Unary prefix operation */
 };
 
@@ -180,8 +179,6 @@ struct button {
 };
 
 struct calcVars {                      /* Calctool variables and options. */
-    char *appname;                     /* Application name for resources. */
-    char *home;                        /* Pathname for users home directory. */
     char *progname;                    /* Name of this program. */
     
     GCDisplay display;
@@ -190,20 +187,19 @@ struct calcVars {                      /* Calctool variables and options. */
     const char *tsep;                  /* Locale specific thousands separator. */
     int tsep_count;                    /* Number of digits between separator. */
 
-    char fun_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
-    char fun_vals[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
-    char con_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
-    int MPcon_vals[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
+    char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
+    int constant_values[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
+    
+    char function_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
+    char function_values[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
 
-    int MPerrors;                      /* If set, output errors to stderr. */
     int MPdisp_val[MP_SIZE];           /* Value of the current display. */
-    int MPlast_input[MP_SIZE];         /* Previous number input by user. */
-    int MPmvals[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
-    int MPresult[MP_SIZE];             /* Current calculator total value. */
+
+    int registers[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
 
     enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
     enum mode_type modetype;        /* Current calculator mode. */
-    enum num_type dtype;            /* Number display mode. */
+    enum num_type  dtype;           /* Number display mode. */
     enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
 
     int accuracy;      /* Number of digits precision (Max 9). */

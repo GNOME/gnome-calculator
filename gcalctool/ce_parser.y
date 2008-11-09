@@ -119,11 +119,11 @@ udf:
   }
 | value '=' tSTO '(' tNUMBER ')' {
   int val = mp_cast_to_int($5);
-  do_sto_reg(val, $1);
+  register_set(val, $1);
 }
 | value tSTO '(' tNUMBER ')' {
   int val = mp_cast_to_int($4);
-  do_sto_reg(val, $1);
+  register_set(val, $1);
 }
 | tCLR {
   display_reset(&v->display);
@@ -208,7 +208,7 @@ parenthesis:
   ;
 
 reg: 
-  tREG {do_rcl_reg($1, $$);}
+  tREG {register_get($1, $$);}
   ;
 
 func:
@@ -242,7 +242,7 @@ func:
 rcl:
   tRCL '(' tNUMBER ')' {
     int val = mp_cast_to_int($3);
-    do_rcl_reg(val, $$);
+    register_get(val, $$);
   }
   ;
 

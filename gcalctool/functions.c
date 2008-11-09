@@ -30,6 +30,7 @@
 #include "functions.h"
 
 #include "get.h"
+#include "register.h"
 #include "mp.h"
 #include "mpmath.h"
 #include "display.h"
@@ -61,16 +62,12 @@ do_accuracy(int value)     /* Set display accuracy. */
 static void
 do_function(int index)      /* Perform a user defined function. */
 {
-    char *str;
     int ret;
 
     assert(index >= 0);
     assert(index <= 9);
 
-    str = v->fun_vals[index];
-    assert(str);
-    ret = ce_udf_parse(str);
-
+    ret = ce_udf_parse(function_get_value(index));
     if (!ret) {
         ui_set_statusbar("", "");
     } else {
@@ -138,8 +135,8 @@ do_exchange(int index)
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     } else {
-        mp_set_from_mp(v->MPmvals[index], MPtemp);
-        mp_set_from_mp(MPexpr, v->MPmvals[index]);
+        register_get(index, MPtemp);
+        register_set(index, MPexpr);
         mp_set_from_mp(MPtemp, display_get_answer(&v->display));
         display_set_string(&v->display, "Ans", -1);
         display_refresh(&v->display);
@@ -178,10 +175,14 @@ do_numtype(enum num_type n)   /* Set number display type. */
 static void
 do_sto(int index)
 {
-    if (display_is_usable_number(&v->display, v->MPmvals[index])) {
+    int temp[MP_SIZE];
+    
+    if (display_is_usable_number(&v->display, temp)) {
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     }
+    else
+        register_set(index, temp);
 
     ui_make_registers();
 }
@@ -262,7 +263,7 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case KEY_CONSTANT:
-            make_number(buf, MAXLINE, v->MPcon_vals[arg], v->base, FALSE);
+            make_number(buf, MAXLINE, constant_get_value(arg), v->base, FALSE);
             display_insert(&v->display, buf);
             break;
 

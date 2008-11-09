@@ -42,6 +42,7 @@
 #include "mpmath.h"
 #include "display.h"
 #include "get.h"
+#include "register.h"
 
 #define MAX_ACCELERATORS 8
 struct button_widget {
@@ -955,6 +956,7 @@ redo_display(gpointer data)
     return FALSE;
 }
 
+
 void
 ui_set_display(char *str, int cursor)
 {
@@ -1006,7 +1008,6 @@ ui_set_display(char *str, int cursor)
  * When the error condition is cleared, resensitise everything, setting
  * the numeric base buttons correctly.
  */
-
 void
 ui_set_error_state(gboolean error)
 {
@@ -1303,37 +1304,6 @@ help_display(void)
 }
 
 
-static void
-put_constant(int n, char *con_value, char *con_name)
-{
-    char key[MAXLINE];
-    char *cstr = g_strdup(con_value);
-
-    /* NOTE: Constants are written out with no thousands separator and with a
-       radix character of ".". */
-
-    SNPRINTF(key, MAXLINE, "constant%1dvalue", n);
-    set_resource(key, cstr);
-    g_free(cstr);
-
-    SNPRINTF(key, MAXLINE, "constant%1dname", n);
-    set_resource(key, con_name);
-}
-
-
-static void
-put_function(int n, char *fun_value, char *fun_name)
-{
-    char key[MAXLINE];
-
-    SNPRINTF(key, MAXLINE, "function%1dvalue", n);
-    set_resource(key, fun_value);
-
-    SNPRINTF(key, MAXLINE, "function%1dname", n);
-    set_resource(key, fun_name);
-}
-
-
 /*ARGSUSED*/
 static void
 constant_menu_cb(GtkMenuItem *menu)
@@ -1508,11 +1478,11 @@ update_constants_menu(void)
     int i;
 
     for (i = 0; i < MAX_CONSTANTS; i++) {
-        make_number(value, MAXLINE, v->MPcon_vals[i], DEC, TRUE);
+        make_number(value, MAXLINE, constant_get_value(i), DEC, TRUE);
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                  value, 
-                 v->con_names[i]);
+                 constant_get_name(i));
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->constant_menu_labels[i]), mline);
     }
 }
@@ -1525,10 +1495,15 @@ update_functions_menu(void)
     int i;
 
     for (i = 0; i < MAX_FUNCTIONS; i++) {
-        if (strlen(v->fun_vals[i]) != 0) {
+        const char *name, *value;
+        
+        name = function_get_name(i);
+        value = function_get_value(i);
+        
+        if (strlen(value) != 0) {
             SNPRINTF(mline, MAXLINE,
                      "<span weight=\"bold\">%s_%1d:</span> %s [%s]", 
-                     _("F"), i, v->fun_vals[i], v->fun_names[i]);
+                     _("F"), i, value, name);
             gtk_widget_show(gtk_widget_get_parent(X->function_menu_labels[i]));
             gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->function_menu_labels[i]), mline);
         }
@@ -1553,13 +1528,13 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
     if (id == GTK_RESPONSE_ACCEPT) {
         if (gtk_tree_model_get_iter_first(X->constants_model, &iter)) {
             do {
+                int temp[MP_SIZE];
                 gtk_tree_model_get(X->constants_model, &iter,
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
-                MPstr_to_num(value, 10, v->MPcon_vals[number]);
-                STRNCPY(v->con_names[number], description, MAXLINE - 1);
-                put_constant(number, value, description);
+                MPstr_to_num(value, 10, temp);
+                constant_set(number, description, temp);
             } while (gtk_tree_model_iter_next(X->constants_model, &iter));
         }
     }
@@ -1595,9 +1570,7 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
-                STRNCPY(v->fun_vals[number], convert(value), MAXLINE - 1);
-                STRNCPY(v->fun_names[number], description, MAXLINE - 1);
-                put_function(number, value, description);
+                function_set(number, description, convert(value));
             } while (gtk_tree_model_iter_next(X->functions_model, &iter));
         }
     }
@@ -1628,12 +1601,12 @@ create_constants_model()
     for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
-        make_number(constant, MAXLINE, v->MPcon_vals[i], DEC, TRUE);
+        make_number(constant, MAXLINE, constant_get_value(i), DEC, TRUE);
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
                            COLUMN_VALUE, constant,
-                           COLUMN_DESCRIPTION, v->con_names[i],
+                           COLUMN_DESCRIPTION, constant_get_name(i),
                            -1);
     }
 
@@ -1657,8 +1630,8 @@ create_functions_model()
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
-                           COLUMN_VALUE, v->fun_vals[i],
-                           COLUMN_DESCRIPTION, v->fun_names[i],
+                           COLUMN_VALUE, function_get_value(i),
+                           COLUMN_DESCRIPTION, function_get_name(i),
                            -1);
     }
 
@@ -1673,11 +1646,15 @@ ui_make_registers()            /* Calculate memory register frame values. */
     int n;
 
     for (n = 0; n < MAX_REGISTERS; n++) {
-        make_number(mval, MAXLINE, v->MPmvals[n], v->base, TRUE);
+        int temp[MP_SIZE];
+        
+        register_get(n, temp);
+        make_number(mval, MAXLINE, temp, v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
+
         SNPRINTF(key, MAXLINE, "register%d", n);
-        make_number(value, MAXLINE, v->MPmvals[n], DEC, TRUE);
+        make_number(value, MAXLINE, temp, DEC, TRUE);
         set_resource(key, value);
     }
 }
@@ -1776,41 +1753,17 @@ update_memory_menus()
     int i;
 
     for (i = 0; i < MAX_REGISTERS; i++) {
-        make_number(value, MAXLINE, v->MPmvals[i], v->base, TRUE);
+        int temp[MP_SIZE];
+        register_get(i, temp);
+        make_number(value, MAXLINE, temp, v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
-        /* Translators: R is the short form of register used inter alia
-        in popup menus */
+        /* Translators: R is the short form of register used inter alia in popup menus */
                 _("R"), i, value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_store_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_recall_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X->memory_exchange_labels[i]), mstr);
     }
 }
-
-
-static void
-get_constant(int n)
-{
-    char nkey[MAXLINE], *nline;
-    char vkey[MAXLINE], *vline;
-
-    SNPRINTF(nkey, MAXLINE, "constant%1dname", n);
-    if ((nline = get_resource(nkey)) == NULL) {
-        return;
-    }   
- 
-    SNPRINTF(vkey, MAXLINE, "constant%1dvalue", n);
-    if ((vline = get_resource(vkey)) == NULL) {
-        g_free(nline);
-        return;
-    }   
-
-    MPstr_to_num(vline, 10, v->MPcon_vals[n]);
-    STRNCPY(v->con_names[n], nline, MAXLINE - 1);
-    g_free(nline);
-    g_free(vline);
-}
-
 
 static void
 get_display()              /* The Copy function key has been pressed. */
@@ -1831,30 +1784,6 @@ get_display()              /* The Copy function key has been pressed. */
     g_free(string);
 
     gtk_clipboard_set_text(gtk_clipboard_get(X->clipboard_atom), X->shelf, -1);
-}
-
-
-static void
-get_function(int n)
-{
-    char nkey[MAXLINE], *nline;
-    char vkey[MAXLINE], *vline;
- 
-    SNPRINTF(nkey, MAXLINE, "function%1dname", n);
-    if ((nline = get_resource(nkey)) == NULL) {
-        return;
-    }    
- 
-    SNPRINTF(vkey, MAXLINE, "function%1dvalue", n);
-    if ((vline = get_resource(vkey)) == NULL) {
-        g_free(nline);
-        return;
-    }   
- 
-    STRNCPY(v->fun_vals[n], convert(vline), MAXLINE - 1);
-    STRNCPY(v->fun_names[n], nline, MAXLINE - 1);
-    g_free(nline);
-    g_free(vline);
 }
 
 
@@ -2763,25 +2692,11 @@ create_kframe()
 }
 
 
-static void
-read_cfdefs()        /* Read constant/function definitions. */
-{
-    int n;
-
-    for (n = 0; n < MAX_CONSTANTS; n++) {
-        get_constant(n);
-    }
-    for (n = 0; n < MAX_FUNCTIONS; n++) {
-        STRNCPY(v->fun_vals[n], "", MAXLINE - 1);    /* Initially empty function strings. */
-        get_function(n);
-    }
-}
-
-
 void
 ui_init(int *argc, char ***argv)
 {  
     gchar *path;
+    const gchar *home;
     
     X = (XVars) LINT_CAST(calloc(1, sizeof(struct Xobject)));
         
@@ -2791,8 +2706,8 @@ ui_init(int *argc, char ***argv)
 
     gtk_rc_get_default_files();
 
-    v->home = (char *) g_get_home_dir();
-    path = g_build_path(v->home, RCNAME, NULL);
+    home = g_get_home_dir();
+    path = g_build_path(home, RCNAME, NULL);
     gtk_rc_parse(path);
     g_free(path);
 
@@ -2807,8 +2722,6 @@ ui_load(void)
     char text[MAXLINE];
     GtkWidget *widget;
 
-    read_cfdefs();
-    
     /* Create main gcalctool window. */
     create_kframe();
     

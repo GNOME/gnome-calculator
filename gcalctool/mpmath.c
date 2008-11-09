@@ -432,7 +432,7 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
  */
 
 void
-make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int toclear)
+make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax, int toclear)
 {
     char half[MAXLINE], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
@@ -504,7 +504,7 @@ make_fixed(char *target, int target_len, int *MPnumber, int base, int cmax, int 
 /* Convert engineering or scientific number in the given base. */
 
 void
-make_eng_sci(char *target, int target_len, int *MPnumber, int base)
+make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
 {
     char half[MAXLINE], fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
@@ -600,7 +600,7 @@ make_eng_sci(char *target, int target_len, int *MPnumber, int base)
 /* Convert MP number to character string in the given base. */
 
 void
-make_number(char *target, int target_len, int *MPnumber, int base, int ignoreError)
+make_number(char *target, int target_len, const int *MPnumber, int base, int ignoreError)
 {
     double val;
     

@@ -192,9 +192,7 @@ void
 display_reset(GCDisplay *display)
 {
     v->error = 0;         /* Currently no display error. */
-    mp_set_from_integer(0, v->MPresult);   /* No previous result yet. */
     mp_set_from_integer(0, v->MPdisp_val);         
-    mp_set_from_integer(0, v->MPlast_input);
   
     display_clear(display);
 }
@@ -432,7 +430,7 @@ display_backspace(GCDisplay *display)
             for (i = 0; i < 10; i++) {
                 SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
                 if (exp_has_postfix(e->expression, buf)) {
-                    do_rcl_reg(i, MP_reg);
+                    register_get(i, MP_reg);
                     make_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
                     SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
@@ -504,7 +502,7 @@ display_refresh(GCDisplay *display)
     /* Replace registers with values. */
     for (i = 0; i < 10; i++) {
         SNPRINTF(reg, 3, "R%d", i);
-        do_rcl_reg(i, MP_reg);
+        register_get(i, MP_reg);
         make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
         t = str_replace(str, reg, xx);
         free(str);

@@ -27,6 +27,9 @@
 #include "calctool.h"
 #include "display.h"
 
+/* True if errors should be printed to stderr */
+static int mp_show_errors = 0;
+
 static int mp_compare_mp_to_float(const int *, float);
 static int pow_ii(int, int);
 
@@ -38,6 +41,13 @@ static void mpmaxr(int *);
 static void mpmlp(int *, const int *, int, int);
 static void mpovfl(int *, const char *);
 static void mpunfl(int *);
+
+
+void
+mp_set_show_errors(int show_errors)
+{
+    mp_show_errors = show_errors;
+}
 
 /* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 void
@@ -800,7 +810,7 @@ mperr(const char *format, ...)
 {
     va_list args;
     
-    if (v->MPerrors) {
+    if (mp_show_errors) {
         va_start(args, format);
         (void)vfprintf(stderr, format, args);
         va_end(args);
@@ -1780,7 +1790,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, int *z, int trunc)
 static void
 mpovfl(int *x, const char *error)
 {
-    if (v->MPerrors) {
+    if (mp_show_errors) {
         FPRINTF(stderr, "%s", error);
     }
     

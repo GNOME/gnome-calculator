@@ -42,446 +42,95 @@ Vars v;
 
 // FIXME: Sort this list
 /* Note that none of these strings can be translated as the parser expects them to be correct */
+/* id, symname flags */
 struct button buttons[NKEYS] = {
-
-/* id,
-   symname
-   func
-   flags
- */
-
-{
-    KEY_0,
-    "0",
-    NUMBER
-},
-{
-    KEY_1,
-    "1",
-    NUMBER
-},
-{
-    KEY_2,
-    "2",
-    NUMBER
-},    
-{     
-    KEY_3,
-    "3",
-    NUMBER
-},
-{
-    KEY_4,
-    "4",
-    NUMBER
-},
-{
-    KEY_5,
-    "5",
-    NUMBER
-},
-{
-    KEY_6,
-    "6",
-    NUMBER
-},
-{
-    KEY_7,
-    "7",
-    NUMBER
-},
-{
-    KEY_8,
-    "8",
-    NUMBER
-},
-{
-    KEY_9,
-    "9",
-    NUMBER
-},
-{
-    KEY_A,
-    "A",
-    NUMBER
-},
-{
-    KEY_B,
-    "B",
-    NUMBER
-},    
-{     
-    KEY_C,
-    "C",
-    NUMBER
-},
-{
-    KEY_D,
-    "D",
-    NUMBER
-},
-{
-    KEY_E,
-    "E",
-    NUMBER
-},
-{
-    KEY_F,
-    "F",
-    NUMBER
-},
-{    
-    KEY_NUMERIC_POINT,
-    ".",
-    NUMBER
-},
-{
-    KEY_CALCULATE,
-    NULL,
-    0
-},
-{
-    KEY_CLEAR,
-    NULL,
-    0
-},
-{
-    KEY_CLEAR_ENTRY,
-    NULL,
-    0
-},
-{
-    KEY_START_BLOCK,
-    "(",
-    0
-},
-{
-    KEY_END_BLOCK,
-    ")",
-    0
-},
-{
-    KEY_ADD,
-    "+",
-    0
-},
-{
-    KEY_SUBTRACT,
-    "-",
-    0
-},
-{
-    KEY_MULTIPLY,
-    "*",
-    0
-},
-{
-    KEY_DIVIDE,
-    "/",
-    0
-},
-{
-    KEY_BACKSPACE,
-    NULL,
-    0
-},
-{
-    KEY_DELETE,
-    NULL,
-    0
-},
-{
-    KEY_CHANGE_SIGN,
-    NULL,
-    0
-},
-{
-    KEY_INTEGER,
-    "Int",
-    FUNC
-},
-{
-    KEY_FRACTION,
-    "Frac",
-    FUNC  
-},
-{
-    KEY_PERCENTAGE,
-    "%",
-    0
-},
-{
-    KEY_SQUARE,
-    "^2",
-    POSTFIXOP
-},
-{
-    KEY_SQUARE_ROOT,
-    "Sqrt",
-    FUNC
-},
-{
-    KEY_RECIPROCAL,
-    NULL,
-    0
-},
-{
-    KEY_E_POW_X,
-    "e^",
-    PREFIXOP
-},
-{
-    KEY_10_POW_X,
-    "10^",
-    PREFIXOP
-},       
-{
-    KEY_X_POW_Y,
-    "^",
-    POSTFIXOP
-},
-{
-    KEY_FACTORIAL,
-    "!",
-    POSTFIXOP
-},
-{
-    KEY_RANDOM,
-    "Rand",
-    0
-},
-{
-    KEY_SIN,
-    "Sin",
-    FUNC
-},
-{
-    KEY_SINH,
-    "Sinh",
-    FUNC
-},
-{
-    KEY_ASIN,
-    "Asin",
-    FUNC
-},
-{
-    KEY_ASINH,
-    "Asinh",
-    FUNC
-},
-{
-    KEY_COS,
-    "Cos",
-    FUNC
-},
-{
-    KEY_COSH,
-    "Cosh",
-    FUNC
-},
-{
-    KEY_ACOS,
-    "Acos",
-    FUNC
-},
-{
-    KEY_ACOSH,
-    "Acosh",
-    FUNC
-},
-{
-    KEY_TAN,
-    "Tan",
-    FUNC
-},
-{
-    KEY_TANH,
-    "Tanh",
-    FUNC
-},
-{
-    KEY_ATAN,
-    "Atan",
-    FUNC
-},
-{
-    KEY_TAN,
-    "Atanh",
-    FUNC
-},
-{
-    KEY_NATURAL_LOGARITHM,
-    "Ln",
-    FUNC
-},
-{
-    KEY_LOGARITHM,
-    "Log",
-    FUNC
-},
-{
-    KEY_LOGARITHM2,
-    "Log2",
-    FUNC
-},
-{
-    KEY_ABSOLUTE_VALUE,
-    "Abs",
-    FUNC
-},
-{
-    KEY_MASK_16,
-    "u16",
-    FUNC
-},            
-{
-    KEY_MASK_32,
-    "u32",
-    FUNC
-},
-{
-    KEY_MODULUS_DIVIDE,
-    " Mod ",
-    0
-},
-{
-    KEY_EXPONENTIAL,
-    "e",
-    0
-},
-{
-    KEY_NOT,
-    "~",
-    0
-},
-{
-    KEY_OR,
-    " OR ",
-    0
-},
-{
-    KEY_AND,
-    " AND ",
-    0
-},       
-{
-    KEY_XOR,
-    " XOR ",
-    0
-},
-{
-    KEY_XNOR,
-    " XNOR ",
-    0
-},
-{
-    KEY_FINC_CTRM,
-    "Ctrm",
-    0
-},
-{
-    KEY_FINC_DDB,
-    "Ddb",
-    0
-},
-{
-    KEY_FINC_FV,
-    "Fv",
-    0
-},
-{
-    KEY_FINC_GPM,
-    "Gpm",
-    0
-},
-{
-    KEY_FINC_PMT,
-    "Pmt",
-    0
-},
-{
-    KEY_FINC_PV,
-    "Pv",
-    0
-},
-{
-    KEY_FINC_RATE,
-    "Rate",
-    0
-},
-{
-    KEY_FINC_SLN,
-    "Sln",
-    0
-},
-{
-    KEY_FINC_SYD,
-    "Syd",
-    0
-},
-{
-    KEY_FINC_TERM,
-    "Term",
-    0
-},
-{
-    KEY_SHIFT,
-    NULL,
-    0
-},
-{
-    KEY_STORE,
-    NULL,
-    0
-},
-{
-    KEY_RECALL,
-    NULL,
-    0
-},
-{
-    KEY_EXCHANGE,
-    NULL,
-    0
-},
-{
-    KEY_SET_ACCURACY,
-    NULL,
-    0
-},
-{
-    KEY_SET_BASE,
-    NULL,
-    0
-},
-{
-    KEY_SET_NUMBERTYPE,
-    NULL,
-    0
-},
-{
-    KEY_UNDO,
-    NULL,
-    0
-},
-{
-    KEY_REDO,
-    NULL,
-    0
-},
-{
-    KEY_CONSTANT,
-    NULL,
-    0
-},
-{
-    KEY_FUNCTION,
-    NULL,
-    0
-},
+{ KEY_0,                 "0", NUMBER },
+{ KEY_1,                 "1", NUMBER },
+{ KEY_2,                 "2", NUMBER },    
+{ KEY_3,                 "3", NUMBER },
+{ KEY_4,                 "4", NUMBER },
+{ KEY_5,                 "5", NUMBER },
+{ KEY_6,                 "6", NUMBER },
+{ KEY_7,                 "7", NUMBER },
+{ KEY_8,                 "8", NUMBER },
+{ KEY_9,                 "9", NUMBER },
+{ KEY_A,                 "A", NUMBER },
+{ KEY_B,                 "B", NUMBER },    
+{ KEY_C,                 "C", NUMBER },
+{ KEY_D,                 "D", NUMBER },
+{ KEY_E,                 "E", NUMBER },
+{ KEY_F,                 "F", NUMBER },
+{ KEY_NUMERIC_POINT,     ".", NUMBER },
+{ KEY_CALCULATE,         NULL, 0 },
+{ KEY_CLEAR,             NULL, 0 },
+{ KEY_CLEAR_ENTRY,       NULL, 0 },
+{ KEY_START_BLOCK,       "(", 0 },
+{ KEY_END_BLOCK,         ")", 0 },
+{ KEY_ADD,               "+", 0 },
+{ KEY_SUBTRACT,          "-", 0 },
+{ KEY_MULTIPLY,          "*", 0 },
+{ KEY_DIVIDE,            "/", 0 },
+{ KEY_BACKSPACE,         NULL, 0 },
+{ KEY_DELETE,            NULL, 0 },
+{ KEY_CHANGE_SIGN,       NULL, 0 },
+{ KEY_INTEGER,           "Int", FUNC },
+{ KEY_FRACTION,          "Frac", FUNC },
+{ KEY_PERCENTAGE,        "%", 0 },
+{ KEY_SQUARE,            "^2", 0 },
+{ KEY_SQUARE_ROOT,       "Sqrt", FUNC },
+{ KEY_RECIPROCAL,        NULL, 0 },
+{ KEY_E_POW_X,           "e^", PREFIXOP },
+{ KEY_10_POW_X,          "10^", PREFIXOP },       
+{ KEY_X_POW_Y,           "^", 0 },
+{ KEY_FACTORIAL,         "!", 0 },
+{ KEY_RANDOM,            "Rand", 0 },
+{ KEY_SIN,               "Sin", FUNC },
+{ KEY_SINH,              "Sinh", FUNC },
+{ KEY_ASIN,              "Asin", FUNC },
+{ KEY_ASINH,             "Asinh", FUNC },
+{ KEY_COS,               "Cos", FUNC },
+{ KEY_COSH,              "Cosh", FUNC },
+{ KEY_ACOS,              "Acos", FUNC },
+{ KEY_ACOSH,             "Acosh", FUNC },
+{ KEY_TAN,               "Tan", FUNC },
+{ KEY_TANH,              "Tanh", FUNC },
+{ KEY_ATAN,              "Atan", FUNC },
+{ KEY_TAN,               "Atanh", FUNC },
+{ KEY_NATURAL_LOGARITHM, "Ln", FUNC },
+{ KEY_LOGARITHM,         "Log", FUNC },
+{ KEY_LOGARITHM2,        "Log2", FUNC },
+{ KEY_ABSOLUTE_VALUE,    "Abs", FUNC },
+{ KEY_MASK_16,           "u16", FUNC },            
+{ KEY_MASK_32,           "u32", FUNC },
+{ KEY_MODULUS_DIVIDE,    " Mod ", 0 },
+{ KEY_EXPONENTIAL,       "e", 0 },
+{ KEY_NOT,               "~", 0 },
+{ KEY_OR,                " OR ", 0 },
+{ KEY_AND,               " AND ", 0 },       
+{ KEY_XOR,               " XOR ", 0 },
+{ KEY_XNOR,              " XNOR ", 0 },
+{ KEY_FINC_CTRM,         "Ctrm", 0 },
+{ KEY_FINC_DDB,          "Ddb", 0 },
+{ KEY_FINC_FV,           "Fv", 0 },
+{ KEY_FINC_GPM,          "Gpm", 0 },
+{ KEY_FINC_PMT,          "Pmt", 0 },
+{ KEY_FINC_PV,           "Pv", 0 },
+{ KEY_FINC_RATE,         "Rate", 0 },
+{ KEY_FINC_SLN,          "Sln", 0 },
+{ KEY_FINC_SYD ,         "Syd", 0 },
+{ KEY_FINC_TERM,         "Term", 0 },
+{ KEY_SHIFT,             NULL, 0 },
+{ KEY_STORE,             NULL, 0 },
+{ KEY_RECALL,            NULL, 0 },
+{ KEY_EXCHANGE,          NULL, 0 },
+{ KEY_SET_ACCURACY,      NULL, 0 },
+{ KEY_SET_BASE,          NULL, 0 },
+{ KEY_SET_NUMBERTYPE,    NULL, 0 },
+{ KEY_UNDO,              NULL, 0 },
+{ KEY_REDO,              NULL, 0 },
+{ KEY_CONSTANT,          NULL, 0 },
+{ KEY_FUNCTION,          NULL, 0 }
 };
-
 
 /* Calctools' customised math library error-handling routine. */
 
@@ -523,8 +172,8 @@ getparam(char *s, char *argv[], char *errmes)
 }
 
 
-void
-usage(char *progname)
+static void
+usage(const char *progname)
 {
     /* Translators: This message is displayed on the command line when
        help is requested. %1$s and $3$s are replaced with the name
@@ -548,7 +197,7 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
         if (argv[0][0] == '-') {
             switch (argv[0][1]) {
                 case 'E' :                   /* MP errors to stderr. */
-                    v->MPerrors = TRUE;
+                    mp_set_show_errors(TRUE);
                     break;
 
                 case 'a' : 
@@ -585,18 +234,6 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 
 
 static void
-init_constant(int n, const gchar *name, const gchar *value)
-{
-    gchar *str = g_strdup(value);
-
-    STRNCPY(v->con_names[n], name, MAXLINE - 1);
-
-    MPstr_to_num(str, 10, v->MPcon_vals[n]);
-    g_free(str);
-}
-
-
-static void
 init_state(void)
 {
     int acc, i, size;
@@ -607,37 +244,11 @@ init_state(void)
     v->dtype         = FIX;    /* Initial number display mode. */
     v->ttype         = DEG;    /* Initial trigonometric type. */
     v->modetype      = BASIC;  /* Initial calculator mode. */
-    v->MPerrors      = FALSE;               /* No error information. */
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
     size             = MP_SIZE;
     mpset(acc, size, size);
 
     v->error       = 0;            /* No calculator error initially. */    
-
-    /* Translators: This is the label for the default constant, the number of miles in one kilometer (0.621) */
-    init_constant(0, _("Kilometer-to-mile conversion factor"), "0.621");
-    /* Translators: This is the label for the default constant, the square root of 2 (1.41421) */
-    init_constant(1, _("square root of 2"), "1.4142135623");
-    /* Translators: This is the label for the default constant, Euler's number (2.71828) */
-    init_constant(2, _("Euler's Number (e)"), "2.7182818284");
-    /* Translators: This is the label for the default constant, π (3.14159) */
-    init_constant(3, _("π"), "3.1415926536");
-    /* Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370) */
-    init_constant(4, _("Centimeter-to-inch conversion factor"), "0.3937007");
-    /* Translators: This is the label for the default constant, the number of degrees in a radian (57.2958) */
-    init_constant(5, _("degrees in a radian"), "57.295779513");
-    /* Translators: This is the label for the default constant, 2 to the power of 20 (1048576) */
-    init_constant(6, _("2 ^ 20"), "1048576.0");
-    /* Translators: This is the label for the default constant, the number of ounces in one gram (0.0353) */
-    init_constant(7, _("Gram-to-ounce conversion factor"), "0.0353");
-    /* Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948) */
-    init_constant(8, _("Kilojoule-to-British-thermal-unit conversion factor"), "0.948");
-    /* Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610) */
-    init_constant(9, _("Cubic-centimeter-to-cubic-inch conversion factor"), "0.0610");
-
-    for (i = 0; i < MAX_REGISTERS; i++) {
-        mp_set_from_integer(0, v->MPmvals[i]);
-    }
 }
 
 
@@ -653,11 +264,6 @@ main(int argc, char **argv)
     textdomain(GETTEXT_PACKAGE);
 
     v->progname = argv[0];     /* Save programs name. */
-    if ((ptr = strrchr(argv[0], '/')) != NULL) {
-        v->appname = strdup(ptr+1);
-    } else {
-        v->appname = strdup(argv[0]);
-    }
     
     srand48((long) time((time_t *) 0));   /* Seed random number generator. */    
     
@@ -668,11 +274,13 @@ main(int argc, char **argv)
     init_state();
     
     get_options(argc, argv);   /* Get command line arguments. */
-    ui_init(&argc, &argv);     /* Initialise UI */
     resources_init();          /* Initialise configuration */
+    register_init();
+    read_resources();          /* Read resources from merged database. */
+
+    ui_init(&argc, &argv);     /* Initialise UI */
     display_init(&v->display);
 
-    read_resources();          /* Read resources from merged database. */
     ui_load();
 
     ui_start();                /* Display the calculator. */
