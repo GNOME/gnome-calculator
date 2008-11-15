@@ -20,6 +20,7 @@
   <property name="urgency_hint">False</property>
   <signal name="delete_event" handler="quit_cb"/>
   <signal name="key_press_event" handler="kframe_key_press_cb"/>
+  <signal name="key_release_event" handler="kframe_key_release_cb"/>
 
   <child>
     <widget class="GtkVBox" id="kvbox">
@@ -949,7 +950,7 @@ http://en.wikipedia.org/wiki/Future_value">Fv</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_finc_gross_profit_margin_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Gpm] button">Gross Profit Margin [g]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the [Gpm] button">Gross Profit Margin [I]</property>
 	      <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
 http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
 	      <property name="use_underline">True</property>
@@ -4161,12 +4162,32 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_natural_logarithm_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the natural log button">Natural log [N]</property>
-	      <property name="label" translatable="yes" comments="Natural logarithm">Ln</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Ln)</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
+
+          <child>
+            <widget class="GtkLabel" id="natural_logarithm_label">
+              <property name="visible">True</property>
+              <property name="label" comments="Variable label button - text set inside gtk.c">(Ln)</property>
+              <property name="use_underline">False</property>
+              <property name="use_markup">True</property>
+              <property name="justify">GTK_JUSTIFY_LEFT</property>
+              <property name="wrap">False</property>
+              <property name="selectable">False</property>
+              <property name="xalign">0.5</property>
+              <property name="yalign">0.5</property>
+              <property name="xpad">0</property>
+              <property name="ypad">0</property>
+              <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+              <property name="width_chars">-1</property>
+              <property name="single_line_mode">False</property>
+              <property name="angle">0</property>
+            </widget>
+          </child>
+
 	    </widget>
 	    <packing>
 	      <property name="left_attach">0</property>
@@ -4181,15 +4202,15 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_logarithm_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the log base 10 button">Base 10 log [G]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Log)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="label56">
+		<widget class="GtkLabel" id="logarithm_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;10&lt;/sub&gt;</property>
+		  <property name="label" comments="Varable label button - text set inside gtk.c">(Log)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4219,15 +4240,15 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_logarithm2_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the log base 2 button">Base 2 log [H]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Log2)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="label55">
+		<widget class="GtkLabel" id="logarithm2_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="Factorial">Log&lt;sub&gt;2&lt;/sub&gt;</property>
+		  <property name="label" comments="Variable function button - text set inside gtk.c">(Log2)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4391,10 +4412,10 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      </child>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
+	      <property name="left_attach">4</property>
+	      <property name="right_attach">5</property>
+	      <property name="top_attach">0</property>
+	      <property name="bottom_attach">1</property>
 	      <property name="x_options">fill</property>
 	      <property name="y_options"></property>
 	    </packing>
@@ -4403,91 +4424,15 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_x_pow_y_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the x to the power of y button">Raise displayed value to the power of y [^]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(X^Y)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
 
 	      <child>
-		<widget class="GtkLabel" id="label13">
+		<widget class="GtkLabel" id="x_pow_y_label">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="X to the power of y. Note that this label uses mark up and the &quot;y&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">True</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">5</property>
-	      <property name="right_attach">6</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="x_options">fill</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_pow_10_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the 10 to the power of x button">10 to the power of displayed value [}]</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkLabel" id="label12">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="10 to thepower of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">True</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-	      </child>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">4</property>
-	      <property name="right_attach">5</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="x_options">fill</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_pow_e_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the e to the power of x button">e to the power of displayed value [{]</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-
-	      <child>
-		<widget class="GtkLabel" id="label11">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes" comments="E to the power of x. Note that this label uses mark up and the &quot;x&quot; is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.">e&lt;sup&gt;x&lt;/sup&gt;</property>
+		  <property name="label" comments="Variable function button - text set inside gtk.c">(X^Y)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4507,26 +4452,6 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">3</property>
 	      <property name="right_attach">4</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	      <property name="x_options">fill</property>
-	      <property name="y_options"></property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <widget class="GtkButton" id="calc_modulus_divide_button">
-	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the modulus division button">Modulus Division [M]</property>
-	      <property name="label" translatable="yes" comments="Modulus division button">Mod</property>
-	      <property name="use_underline">True</property>
-	      <property name="relief">GTK_RELIEF_NORMAL</property>
-	      <property name="focus_on_click">False</property>
-	      <signal name="clicked" handler="button_cb"/>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">6</property>
-	      <property name="right_attach">7</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
 	      <property name="x_options">fill</property>
@@ -4537,7 +4462,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_tangent_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the tangent button">Tangent [L]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Tan)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4545,7 +4470,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="tangent_label">
 		  <property name="visible">True</property>
-		  <property name="label" comments="Variable label button - text set inside gtk.c">(Tan)</property>
+		  <property name="label" comments="Variable function button - text set inside gtk.c">(Tan)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4565,8 +4490,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">5</property>
 	      <property name="right_attach">6</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="x_options">fill</property>
 	      <property name="y_options"></property>
 	    </packing>
@@ -4575,7 +4500,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_sine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the sine button">Sine [K]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Sin)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4583,7 +4508,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="sine_label">
 		  <property name="visible">True</property>
-		  <property name="label" comments="Variable label button - text set inside gtk.c">(Sin)</property>
+		  <property name="label" comments="Variable function button - text set inside gtk.c">(Sin)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4603,8 +4528,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">4</property>
 	      <property name="right_attach">5</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="x_options">fill</property>
 	      <property name="y_options"></property>
 	    </packing>
@@ -4613,7 +4538,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_cosine_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the cosine button">Cosine [J]</property>
+	      <property name="tooltip" comments="Variable function button - text set inside gtk.c">(Cos)</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">False</property>
 	      <signal name="clicked" handler="button_cb"/>
@@ -4621,7 +4546,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	      <child>
 		<widget class="GtkLabel" id="cosine_label">
 		  <property name="visible">True</property>
-		  <property name="label" comments="Variable label button - text set inside gtk.c">(Cos)</property>
+		  <property name="label" comments="Variable function button - text set inside gtk.c">(Cos)</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -4641,8 +4566,8 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">3</property>
 	      <property name="right_attach">4</property>
-	      <property name="top_attach">0</property>
-	      <property name="bottom_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="x_options">fill</property>
 	      <property name="y_options"></property>
 	    </packing>
@@ -4788,7 +4713,7 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	  <child>
 	    <widget class="GtkButton" id="calc_xnor_button">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean exclusive NOR button">Bitwise XNOR [n]</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the boolean exclusive NOR button">Bitwise XNOR [{]</property>
 	      <property name="label" translatable="yes" comments="Boolean exclusive NOR button">XNOR</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
@@ -4798,6 +4723,26 @@ http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
 	    <packing>
 	      <property name="left_attach">6</property>
 	      <property name="right_attach">7</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="calc_modulus_divide_button">
+	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes" comments="Tooltip for the modulus division button">Modulus Division [M]</property>
+	      <property name="label" translatable="yes" comments="Modulus division button">Mod</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">False</property>
+	      <signal name="clicked" handler="button_cb"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">7</property>
+	      <property name="right_attach">8</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
 	      <property name="x_options">fill</property>
