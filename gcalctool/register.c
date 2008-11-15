@@ -21,8 +21,15 @@
 
 #include "register.h"
 #include "get.h"
-#include "calctool.h"
 #include "mpmath.h"
+
+static char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
+static int constant_values[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
+
+static char function_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
+static char function_values[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
+
+static int registers[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
 
 static const char *default_constants[][2] =
 {
@@ -52,7 +59,7 @@ void register_init()
 {
     int i;
     for (i = 0; i < MAX_REGISTERS; i++) {
-        mp_set_from_integer(0, v->registers[i]);
+        mp_set_from_integer(0, registers[i]);
     }
     
     for (i = 0; i < MAX_CONSTANTS; i++) {
@@ -110,7 +117,7 @@ void
 register_set(int index, int value[MP_SIZE])
 {
     if ((index >= 0) && (index <= 10))
-        mp_set_from_mp(value, v->registers[index]);
+        mp_set_from_mp(value, registers[index]);
 }
 
 
@@ -118,7 +125,7 @@ void
 register_get(int index, int value[MP_SIZE])
 {
     if ((index >= 0) && (index <= 10))
-        mp_set_from_mp(v->registers[index], value);
+        mp_set_from_mp(registers[index], value);
 }
 
 
@@ -126,8 +133,8 @@ void constant_set(int index, const char *name, int value[MP_SIZE])
 {
     char key[MAXLINE], temp[MAXLINE];
 
-    STRNCPY(v->constant_names[index], name, MAXLINE - 1);
-    mp_set_from_mp(value, v->constant_values[index]);
+    STRNCPY(constant_names[index], name, MAXLINE - 1);
+    mp_set_from_mp(value, constant_values[index]);
 
     SNPRINTF(key, MAXLINE, "constant%1dname", index);
     set_resource(key, name);
@@ -142,13 +149,13 @@ void constant_set(int index, const char *name, int value[MP_SIZE])
 
 const char *constant_get_name(int index)
 {
-    return v->constant_names[index];
+    return constant_names[index];
 }
 
 
 const int *constant_get_value(int index)
 {
-    return v->constant_values[index];
+    return constant_values[index];
 }
 
 
@@ -156,8 +163,8 @@ void function_set(int index, const char *name, const char *value)
 {
     char key[MAXLINE];
 
-    STRNCPY(v->function_names[index], name, MAXLINE - 1);        
-    STRNCPY(v->function_values[index], value, MAXLINE - 1);
+    STRNCPY(function_names[index], name, MAXLINE - 1);        
+    STRNCPY(function_values[index], value, MAXLINE - 1);
     
     SNPRINTF(key, MAXLINE, "function%1dname", index);
     set_resource(key, name);
@@ -168,11 +175,11 @@ void function_set(int index, const char *name, const char *value)
 
 const char *function_get_name(int index)
 {
-    return v->function_names[index];
+    return function_names[index];
 }
 
 
 const char *function_get_value(int index)
 {
-    return v->function_values[index];
+    return function_values[index];
 }

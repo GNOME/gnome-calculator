@@ -187,15 +187,7 @@ struct calcVars {                      /* Calctool variables and options. */
     const char *tsep;                  /* Locale specific thousands separator. */
     int tsep_count;                    /* Number of digits between separator. */
 
-    char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
-    int constant_values[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
-    
-    char function_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
-    char function_values[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
-
     int MPdisp_val[MP_SIZE];           /* Value of the current display. */
-
-    int registers[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
 
     enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
     enum mode_type modetype;        /* Current calculator mode. */
