@@ -789,6 +789,9 @@ static void do_button(int function, int arg)
 static void
 do_finc(char* dialog)
 {
+    if (X->financial == NULL) {
+        setup_finc_dialogs();
+    }
     gtk_dialog_run(GTK_DIALOG(glade_xml_get_widget(X->financial, dialog)));
     gtk_widget_hide(GTK_WIDGET(glade_xml_get_widget(X->financial, dialog)));
 }
@@ -846,9 +849,6 @@ ui_set_mode(enum mode_type mode)
         gtk_widget_size_request(X->fin_panel, r);
         w = MAX(w, r->width);
         h += r->height;
-        if (X->financial == NULL) {
-            setup_finc_dialogs();
-        }
     }
 
     if (GTK_WIDGET_VISIBLE(X->sci_mode_panel)) {
@@ -1270,8 +1270,7 @@ base_cb(GtkWidget *widget)
 {
     enum base_type base;
 
-    base = (enum base_type) g_object_get_data(G_OBJECT(widget),
-                                              "base_mode");
+    base = (enum base_type) g_object_get_data(G_OBJECT(widget), "base_mode");
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
         do_button(KEY_SET_BASE, base);
     }
@@ -1412,7 +1411,6 @@ finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
 static void
 setup_finc_dialogs(void)
 {
-    GtkWidget *button;
     X->financial = glade_xml_new(PACKAGE_GLADE_DIR "/financial.glade", NULL, 
                                  NULL);
     glade_xml_signal_connect_data(X->financial, "finc_ctrm_response_cb", 
@@ -1449,26 +1447,6 @@ setup_finc_dialogs(void)
 	glade_xml_signal_connect(X->financial, "finc_activate_cb", 
                              G_CALLBACK(finc_activate_cb));
 
-    button = GET_WIDGET("calc_finc_compounding_term_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "ctrm_dialog");
-    button = GET_WIDGET("calc_finc_double_declining_depreciation_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "ddb_dialog");
-    button = GET_WIDGET("calc_finc_future_value_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "fv_dialog");
-    button = GET_WIDGET("calc_finc_gross_profit_margin_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "gpm_dialog");
-    button = GET_WIDGET("calc_finc_periodic_payment_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "pmt_dialog");
-    button = GET_WIDGET("calc_finc_present_value_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "pv_dialog");
-    button = GET_WIDGET("calc_finc_periodic_interest_rate_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "rate_dialog");
-    button = GET_WIDGET("calc_finc_straight_line_depreciation_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "sln_dialog");
-    button = GET_WIDGET("calc_finc_sum_of_the_years_digits_depreciation_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "syd_dialog");
-    button = GET_WIDGET("calc_finc_term_button");
-    g_object_set_data(G_OBJECT(button), "finc_dialog", "term_dialog");
 }
 
 static void
@@ -1671,6 +1649,7 @@ save_win_position()
 }
 
 
+// FIXME: Move out of gtk.c
 /*ARGSUSED*/
 static gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
@@ -2689,6 +2668,28 @@ create_kframe()
 
     /* Localize label for numeric point */
     gtk_button_set_label(GTK_BUTTON(GET_WIDGET("calc_numeric_point_button")), v->radix);
+
+    /* Setup financial functions */
+    widget = GET_WIDGET("calc_finc_compounding_term_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "ctrm_dialog");
+    widget = GET_WIDGET("calc_finc_double_declining_depreciation_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "ddb_dialog");
+    widget = GET_WIDGET("calc_finc_future_value_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "fv_dialog");
+    widget = GET_WIDGET("calc_finc_gross_profit_margin_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "gpm_dialog");
+    widget = GET_WIDGET("calc_finc_periodic_payment_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "pmt_dialog");
+    widget = GET_WIDGET("calc_finc_present_value_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "pv_dialog");
+    widget = GET_WIDGET("calc_finc_periodic_interest_rate_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "rate_dialog");
+    widget = GET_WIDGET("calc_finc_straight_line_depreciation_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "sln_dialog");
+    widget = GET_WIDGET("calc_finc_sum_of_the_years_digits_depreciation_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "syd_dialog");
+    widget = GET_WIDGET("calc_finc_term_button");
+    g_object_set_data(G_OBJECT(widget), "finc_dialog", "term_dialog");
 }
 
 
