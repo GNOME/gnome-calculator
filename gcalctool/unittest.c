@@ -44,7 +44,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    make_fixed(result_str, MAXLINE, result, DEC, 10, FALSE);   
+    make_fixed(result_str, MAXLINE, result, DEC, 100);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -101,7 +101,7 @@ test_parser()
     test("(-10)^2", "100", 0);    
 
     test("Sqrt(4)", "2", 0);
-    test("Sqrt(2)", "1.4142135", 0);
+    test("Sqrt(2)", "1.414213562", 0);
     
     test("Int(3.2)", "3", 0);
     test("Frac(3.2)", "0.2", 0);

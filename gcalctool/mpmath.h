@@ -25,16 +25,9 @@
 #include "mp.h"
 #include "calctool.h"
 
-typedef unsigned long  BOOLEAN;
-
-/* function parameters: t=target, s=source) */
-
-BOOLEAN ibool(double x);
-double setbool(BOOLEAN p);
-
 /* Trigonometric functions types */
-enum trigfunc_type { sin_t, cos_t, tan_t, sinh_t, cosh_t, tanh_t,
-		     asin_t, acos_t, atan_t, asinh_t, acosh_t, atanh_t };
+enum trigfunc_type { sin_t,   cos_t,  tan_t,  sinh_t,  cosh_t,  tanh_t,
+                     asin_t, acos_t, atan_t, asinh_t, acosh_t, atanh_t };
 
 int calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE]);
 
@@ -80,7 +73,7 @@ is_natural(int MPnum[MP_SIZE]);
 // FIXME: These should be merged together
 void MPstr_to_num(const char *, enum base_type, int *);
 void mp_set_from_string(const char *number, int t[MP_SIZE]);
-void make_fixed(char *, int, int *, int, int, int);
-void make_number(char *, int, int *, int, int);
+void make_fixed(char *, int, const int *, int, int);
+void make_number(char *, int, const int *, int, int);
 
 #endif /*MPMATH_H*/
