@@ -32,87 +32,95 @@ static double max_fix[MAXBASES] = {
     2.582249878e+120    /* Hexadecimal. */
 };
 
-BOOLEAN
-ibool(double x)
-{
-    BOOLEAN p = (BOOLEAN) x;
 
-    return(p);
+static int hex_to_int(char digit)
+{
+    if (digit >= '0' && digit <= '9')
+        return digit - '0';
+    if (digit >= 'A' && digit <= 'F')
+        return digit - 'A' + 10;
+    if (digit >= 'a' && digit <= 'f')
+        return digit - 'a' + 10;
+    return 0;
 }
 
 
-double
-setbool(BOOLEAN p)
+static void
+calc_bitwise(const int s1[MP_SIZE], const int s2[MP_SIZE], int (*bitwise_operator)(int, int), int t[MP_SIZE])
 {
-    BOOLEAN q;
-    double val;
+    char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
+    int offset1, offset2, offset_out;
+    
+    make_fixed(text1, MAX_DIGITS, s1, HEX, MAX_DIGITS);
+    make_fixed(text2, MAX_DIGITS, s2, HEX, MAX_DIGITS);
+    offset1 = strlen(text1) - 1;
+    offset2 = strlen(text2) - 1;
+    offset_out = offset1 > offset2 ? offset1 : offset2;
+    
+    /* Be at least 32 bits wide so inverse operations make sense */
+    if (offset_out < 7)
+        offset_out = 7;
 
-    q = p & 0x80000000;
-    p &= 0x7fffffff;
-    val = p;
-    if (q) {
-        val += 2147483648.0;
+    /* Perform bitwise operator on each character from right to left */
+    for (text_out[offset_out+1] = '\0'; offset_out >= 0; offset_out--) {
+        int v1 = 0, v2 = 0;
+        
+        if (offset1 >= 0) {
+            v1 = hex_to_int(text1[offset1]);
+            offset1--;
+        }
+        if (offset2 >= 0) {
+            v2 = hex_to_int(text2[offset2]);
+            offset2--;
+        }
+        text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
-
-    return(val);
+    
+    MPstr_to_num(text_out, 16, t);
 }
+
+
+static int calc_bitwise_and(int v1, int v2) { return v1 & v2; }
+static int calc_bitwise_or(int v1, int v2) { return v1 | v2; }
+static int calc_bitwise_xor(int v1, int v2) { return v1 ^ v2; }
+static int calc_bitwise_xnor(int v1, int v2) { return v1 ^ v2 ^ 0xF; }
+static int calc_bitwise_not(int v1, int dummy) { return v1 ^ 0xF; }
 
 
 void
 calc_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
-    double dres, dval;
-
-    dres = mp_cast_to_double(s1);
-    dval = mp_cast_to_double(s2);
-    dres = setbool(ibool(dres) & ibool(dval));
-    mp_set_from_double(dres, t);
+    calc_bitwise(s1, s2, calc_bitwise_and, t);
 }
 
 
 void
 calc_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
-    double dres, dval;
-
-    dres = mp_cast_to_double(s1);
-    dval = mp_cast_to_double(s2);
-    dres = setbool(ibool(dres) | ibool(dval));
-    mp_set_from_double(dres, t);
+    calc_bitwise(s1, s2, calc_bitwise_or, t);
 }
 
 
 void
 calc_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
-    double dres, dval;
-
-    dres = mp_cast_to_double(s1);
-    dval = mp_cast_to_double(s2);
-    dres = setbool(ibool(dres) ^ ibool(dval));
-    mp_set_from_double(dres, t);
+    calc_bitwise(s1, s2, calc_bitwise_xor, t);
 }
 
 
 void
 calc_xnor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
 {
-    double dres, dval;
-
-    dres = mp_cast_to_double(s1);
-    dval = mp_cast_to_double(s2);
-    dres = setbool(~ibool(dres) ^ ibool(dval));
-    mp_set_from_double(dres, t);
+    calc_bitwise(s1, s2, calc_bitwise_xnor, t);
 }
 
 
 void
 calc_not(const int s1[MP_SIZE], int t[MP_SIZE])
 {
-    double dval = mp_cast_to_double(s1);
-    
-    dval = setbool(~ibool(dval));
-    mp_set_from_double(dval, t);
+    int dummy[MP_SIZE];
+    mp_set_from_integer(0, dummy);
+    calc_bitwise(s1, dummy, calc_bitwise_not, t);    
 }
 
 
@@ -126,18 +134,28 @@ calc_rand(int t[MP_SIZE])
 void
 calc_u32(const int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    double dval = mp_cast_to_double(s1);
-    dval = setbool(ibool(dval));
-    mp_set_from_double(dval, t1);
+    char text[MAX_DIGITS];
+    size_t len, offset;
+    
+    /* Convert to a hexadecimal string and use last 8 characters */
+    make_fixed(text, MAX_DIGITS, s1, HEX, MAX_DIGITS);
+    len = strlen(text);
+    offset = len > 8 ? len - 8: 0;
+    MPstr_to_num(text + offset, 16, t1);
 }
 
 
 void
 calc_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
 {
-    double dval = mp_cast_to_double(s1);
-    dval = setbool(ibool(dval) & 0xffff);
-    mp_set_from_double(dval, t1);
+    char text[MAX_DIGITS];
+    size_t len, offset;
+    
+    /* Convert to a hexadecimal string and use last 4 characters */
+    make_fixed(text, MAX_DIGITS, s1, HEX, MAX_DIGITS);
+    len = strlen(text);
+    offset = len > 4 ? len - 4: 0;
+    MPstr_to_num(text + offset, 16, t1);
 }
 
 void
@@ -294,34 +312,52 @@ mplogn(int n, int *MPx, int *MPretval)
 void
 calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
 {
-  /* Implementation derived from old code.
-   * Using BOOLEAN is strange at least. Assumed that
-   * boolean means BINARY representation
-   */
+    char text[MAX_DIGITS+1], text_out[MAX_DIGITS];
+    size_t i, length, out_length;
+    int upper_offset, lower_offset;
 
-    BOOLEAN temp;
-    double dval = mp_cast_to_double(s);
-    temp = ibool(dval);
-
-    /* There is a reason to do shift like this. Reason is that
-     * processors define shift only in a certain range. i386 uses only 5
-     * bits to describe shiftable amount. So, shift 32 times gives original
-     * number. That can cause very strange results (and bugs).
-     */
-
-    if (times > 0)
-    {
-        while (times--) {
-            temp = temp << 1;
-        }
+    make_fixed(text, MAX_DIGITS+1, s, HEX, MAX_DIGITS);
+    length = out_length = strlen(text);
+    
+    /* How many nibbles we are offset by */
+    if (times >= 0) {
+        upper_offset = times/4;
+        lower_offset = upper_offset + 1;
     } else {
-        while (times++) {
-            temp = temp >> 1;
-        }
+        lower_offset = times/4;
+        upper_offset = lower_offset - 1;
     }
-
-    dval = setbool(temp);
-    mp_set_from_double(dval, t);
+    
+    /* If shifting left need more space for digits */
+    if (times >= 0) {
+        size_t extra = (times+3) / 4; 
+        out_length += extra;
+        upper_offset -= extra;
+        lower_offset -= extra;
+        if (out_length > MAX_DIGITS)
+            return; // FIXME
+    }
+       
+    for (i = 0; i < out_length; i++) {
+        int upper_bits = 0, lower_bits = 0;
+        
+        if (i+upper_offset >= 0 && i+upper_offset < length)
+            upper_bits = hex_to_int(text[i+upper_offset]);
+        if (i+lower_offset >= 0 && i+lower_offset < length)
+            lower_bits = hex_to_int(text[i+lower_offset]);
+        
+        if (times >= 0) {
+            upper_bits <<= times % 4;
+            lower_bits >>= 4 - (times % 4);
+        } else {
+            upper_bits <<= 4 - (-times % 4);
+            lower_bits >>= -times % 4;
+        }
+        text_out[i] = digits[(upper_bits | lower_bits) & 0xF];
+    }
+    text_out[i] = '\0';
+    
+    MPstr_to_num(text_out, HEX, t);
 }
 
 
@@ -432,7 +468,7 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
  */
 
 void
-make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax, int toclear)
+make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax)
 {
     char half[MAXLINE], *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
@@ -559,7 +595,7 @@ make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
         }
     }
  
-    make_fixed(fixed, MAX_DIGITS, MPmant, base, MAX_DIGITS-6, TRUE);
+    make_fixed(fixed, MAX_DIGITS, MPmant, base, MAX_DIGITS-6);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -624,7 +660,7 @@ make_number(char *target, int target_len, const int *MPnumber, int base, int ign
         (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(target, target_len, MPnumber, base);
     } else {
-        make_fixed(target, target_len, MPnumber, base, MAX_DIGITS, TRUE);
+        make_fixed(target, target_len, MPnumber, base, MAX_DIGITS);
     }
 }
 

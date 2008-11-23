@@ -44,7 +44,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    make_fixed(result_str, MAXLINE, result, DEC, 10, FALSE);   
+    make_fixed(result_str, MAXLINE, result, DEC, 100);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -66,7 +66,7 @@ test_parser()
     test("256", "256", 0);
     test("1.00", "1", 0);
     test("1.01", "1.01", 0);
-    test("pi", "3.1415926", 0);
+    test("pi", "3.141592654", 0);
     test("1e+3", "1000", 0);
     test("1e-3", "0.001", 0);
     test("1e9", "1000000000", 0);
@@ -111,7 +111,7 @@ test_parser()
     //FIXME: Need to update do_factorial() test("-1!", "", 0);
     
     test("Sqrt(4)", "2", 0);
-    test("Sqrt(2)", "1.4142135", 0);
+    test("Sqrt(2)", "1.414213562", 0);
     
     test("Int(3.2)", "3", 0);
     test("Frac(3.2)", "0.2", 0);
