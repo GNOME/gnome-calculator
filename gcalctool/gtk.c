@@ -1577,9 +1577,8 @@ request_change_mode()
     gtk_widget_show_all(dialog);
     response = gtk_dialog_run(GTK_DIALOG(dialog));
     
-    // FIXME: Save this in GConf
-    X->warn_change_mode = !gtk_toggle_button_get_active(
-                             GTK_TOGGLE_BUTTON(request_check));
+    X->warn_change_mode = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(request_check));
+    set_boolean_resource(R_CHMODE, X->warn_change_mode);
 
     gtk_widget_destroy(dialog);
 
@@ -2712,6 +2711,9 @@ ui_load(void)
 
     read_cfdefs();
     
+    if(!get_boolean_resource(R_CHMODE, &X->warn_change_mode))
+        X->warn_change_mode = TRUE;
+    
     /* Create main gcalctool window. */
     create_kframe();
     
@@ -2758,8 +2760,6 @@ ui_load(void)
 void
 ui_start(void)
 {
-    X->warn_change_mode = TRUE; // FIXME: Load from GConf
-    
     ui_set_base(v->base);
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->dtype);

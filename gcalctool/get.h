@@ -35,6 +35,7 @@
 #define R_BITCALC  "bitcalculating"
 #define R_XPOS     "xposition"
 #define R_YPOS     "yposition"
+#define R_CHMODE   "warn_change_mode"
 
 extern char *Rbstr[];          /* Base mode X resource strings. */
 extern char *Rdstr[];          /* Display mode X resource strings. */
