@@ -690,52 +690,13 @@ calc_term(int t[MP_SIZE])
 void
 calc_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
 {
-    char text[MAX_DIGITS+1], text_out[MAX_DIGITS];
-    size_t i, length, out_length;
-    int upper_offset, lower_offset;
-
-    make_fixed(text, MAX_DIGITS+1, s, HEX, MAX_DIGITS);
-    length = out_length = strlen(text);
-    
-    /* How many nibbles we are offset by */
-    if (times >= 0) {
-        upper_offset = times/4;
-        lower_offset = upper_offset + 1;
-    } else {
-        lower_offset = times/4;
-        upper_offset = lower_offset - 1;
+    if (times >= 0)
+        mpmuli(s, times*2, t);
+    else {
+        int temp[MP_SIZE];
+        mpdivi(s, -times*2, temp);
+        mpcmim(temp, t);
     }
-    
-    /* If shifting left need more space for digits */
-    if (times >= 0) {
-        size_t extra = (times+3) / 4; 
-        out_length += extra;
-        upper_offset -= extra;
-        lower_offset -= extra;
-        if (out_length > MAX_DIGITS)
-            return; // FIXME
-    }
-       
-    for (i = 0; i < out_length; i++) {
-        int upper_bits = 0, lower_bits = 0;
-        
-        if (i+upper_offset >= 0 && i+upper_offset < length)
-            upper_bits = hex_to_int(text[i+upper_offset]);
-        if (i+lower_offset >= 0 && i+lower_offset < length)
-            lower_bits = hex_to_int(text[i+lower_offset]);
-        
-        if (times >= 0) {
-            upper_bits <<= times % 4;
-            lower_bits >>= 4 - (times % 4);
-        } else {
-            upper_bits <<= 4 - (-times % 4);
-            lower_bits >>= -times % 4;
-        }
-        text_out[i] = digits[(upper_bits | lower_bits) & 0xF];
-    }
-    text_out[i] = '\0';
-    
-    MPstr_to_num(text_out, HEX, t);
 }
 
 
