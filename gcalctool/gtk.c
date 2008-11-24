@@ -1783,6 +1783,16 @@ hyp_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 void
+trig_cb(GtkWidget *widget)
+{
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
+                                                       "trig_mode"));
+}
+
+
+/*ARGSUSED*/
+void
 inv_cb(GtkWidget *widget)
 {
     ui_update_trig_mode();
@@ -2376,6 +2386,7 @@ create_kframe()
     CONNECT_SIGNAL(menu_item_select_cb);
     CONNECT_SIGNAL(menu_item_deselect_cb);
     CONNECT_SIGNAL(mode_radio_cb);
+    CONNECT_SIGNAL(trig_cb);
     CONNECT_SIGNAL(inv_cb);
     CONNECT_SIGNAL(hyp_cb);
     CONNECT_SIGNAL(base_cb);

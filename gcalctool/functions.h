@@ -23,6 +23,9 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#include "calctool.h"
+void do_trigtype(enum trig_type t);
+
 void do_expression(int function, int arg, int cursor);
 
 #endif /*FUNCTIONS_H*/
