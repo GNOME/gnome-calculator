@@ -4,6 +4,20 @@
  *  All Rights Reserved.
  */
  
+Overview of changes in gcalctool 5.24.2
+
+    * Remember setting to ignore change mode warning between instances (Robert Ancell, Bug #556407)
+
+    * Always read configuration from /apps/gcalctool not /apps/(appname) as
+      the application name is different when symlinked (Matt Keenan, Bug #559260).
+      
+    * Open help with gtk_show_uri() (Thomas Andersen, Bug #556207).
+    
+    * Removed double conversion in boolean and 32 bit and 16 bit mask operations so
+      they can handle larger numbers (Robert Ancell, Bug #509988)
+    
+    * Updated translations: et (Ivar Smolin), pt_BR (Leonardo Ferreira Fontenelle), uk (Maxim Dziumanenko).
+ 
 Overview of changes in gcalctool 5.24.1
 
     * Fixed GtkSpinButton warning (Robin Sonefors, Bug #553965)
