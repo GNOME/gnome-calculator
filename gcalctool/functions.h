@@ -23,6 +23,10 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+// FIXME: Merge into do_expression
+#include "calctool.h"
+void do_trigtype(enum trig_type t);
+
 void do_expression(int function, int arg, int cursor);
 
 #endif /*FUNCTIONS_H*/

@@ -45,6 +45,14 @@ clear_undo_history(void)
 }
 
 
+void
+do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
+{
+    v->ttype = t;
+    set_resource(R_TRIG, Rtstr[(int) v->ttype]);
+}
+
+
 static void
 do_accuracy(int value)     /* Set display accuracy. */
 {

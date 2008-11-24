@@ -1920,6 +1920,16 @@ hyp_cb(GtkWidget *widget)
 
 /*ARGSUSED*/
 void
+trig_cb(GtkWidget *widget)
+{
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
+                                                       "trig_mode"));
+}
+
+
+/*ARGSUSED*/
+void
 inv_cb(GtkWidget *widget)
 {
     ui_update_modifier_mode();
