@@ -47,114 +47,108 @@ typedef struct {
     int id;
     char *symname;           /* Expression function name */
     enum button_flags flags; /* Misc flags */
-} Button;
+} Function;
 
 // FIXME: Sort this list
 /* Note that none of these strings can be translated as the parser expects them to be correct */
 /* id, symname flags */
-static Button buttons[NKEYS] = {
-{ KEY_0,                 "0", NUMBER },
-{ KEY_1,                 "1", NUMBER },
-{ KEY_2,                 "2", NUMBER },    
-{ KEY_3,                 "3", NUMBER },
-{ KEY_4,                 "4", NUMBER },
-{ KEY_5,                 "5", NUMBER },
-{ KEY_6,                 "6", NUMBER },
-{ KEY_7,                 "7", NUMBER },
-{ KEY_8,                 "8", NUMBER },
-{ KEY_9,                 "9", NUMBER },
-{ KEY_A,                 "A", NUMBER },
-{ KEY_B,                 "B", NUMBER },    
-{ KEY_C,                 "C", NUMBER },
-{ KEY_D,                 "D", NUMBER },
-{ KEY_E,                 "E", NUMBER },
-{ KEY_F,                 "F", NUMBER },
-{ KEY_NUMERIC_POINT,     ".", NUMBER },
-{ KEY_CALCULATE,         NULL, 0 },
-{ KEY_CLEAR,             NULL, 0 },
-{ KEY_CLEAR_ENTRY,       NULL, 0 },
-{ KEY_START_BLOCK,       "(", 0 },
-{ KEY_END_BLOCK,         ")", 0 },
-{ KEY_ADD,               "+", 0 },
-{ KEY_SUBTRACT,          "-", 0 },
-{ KEY_MULTIPLY,          "*", 0 },
-{ KEY_DIVIDE,            "/", 0 },
-{ KEY_BACKSPACE,         NULL, 0 },
-{ KEY_DELETE,            NULL, 0 },
-{ KEY_CHANGE_SIGN,       NULL, 0 },
-{ KEY_INTEGER,           "Int", FUNC },
-{ KEY_FRACTION,          "Frac", FUNC },
-{ KEY_PERCENTAGE,        "%", 0 },
-{ KEY_SQUARE,            "^2", 0 },
-{ KEY_SQUARE_ROOT,       "Sqrt", FUNC },
-{ KEY_RECIPROCAL,        NULL, 0 },
-{ KEY_E_POW_X,           "e^", PREFIXOP },
-{ KEY_10_POW_X,          "10^", PREFIXOP },       
-{ KEY_2_POW_X,           "2^", PREFIXOP },
-{ KEY_X_POW_Y,           "^", 0 },
-{ KEY_X_POW_Y_INV,       "^(1/(", 0 },
-{ KEY_FACTORIAL,         "!", 0 },
-{ KEY_RANDOM,            "Rand", 0 },
-{ KEY_SIN,               "Sin", FUNC },
-{ KEY_SINH,              "Sinh", FUNC },
-{ KEY_ASIN,              "Asin", FUNC },
-{ KEY_ASINH,             "Asinh", FUNC },
-{ KEY_COS,               "Cos", FUNC },
-{ KEY_COSH,              "Cosh", FUNC },
-{ KEY_ACOS,              "Acos", FUNC },
-{ KEY_ACOSH,             "Acosh", FUNC },
-{ KEY_TAN,               "Tan", FUNC },
-{ KEY_TANH,              "Tanh", FUNC },
-{ KEY_ATAN,              "Atan", FUNC },
-{ KEY_TAN,               "Atanh", FUNC },
-{ KEY_NATURAL_LOGARITHM, "Ln", FUNC },
-{ KEY_LOGARITHM,         "Log", FUNC },
-{ KEY_LOGARITHM2,        "Log2", FUNC },
-{ KEY_ABSOLUTE_VALUE,    "Abs", FUNC },
-{ KEY_MASK_16,           "u16", FUNC },            
-{ KEY_MASK_32,           "u32", FUNC },
-{ KEY_MODULUS_DIVIDE,    " Mod ", 0 },
-{ KEY_EXPONENTIAL,       "e", 0 },
-{ KEY_NOT,               "~", 0 },
-{ KEY_OR,                " OR ", 0 },
-{ KEY_AND,               " AND ", 0 },       
-{ KEY_XOR,               " XOR ", 0 },
-{ KEY_XNOR,              " XNOR ", 0 },
-{ KEY_FINC_CTRM,         "Ctrm", 0 },
-{ KEY_FINC_DDB,          "Ddb", 0 },
-{ KEY_FINC_FV,           "Fv", 0 },
-{ KEY_FINC_GPM,          "Gpm", 0 },
-{ KEY_FINC_PMT,          "Pmt", 0 },
-{ KEY_FINC_PV,           "Pv", 0 },
-{ KEY_FINC_RATE,         "Rate", 0 },
-{ KEY_FINC_SLN,          "Sln", 0 },
-{ KEY_FINC_SYD ,         "Syd", 0 },
-{ KEY_FINC_TERM,         "Term", 0 },
-{ KEY_SHIFT,             NULL, 0 },
-{ KEY_STORE,             NULL, 0 },
-{ KEY_RECALL,            NULL, 0 },
-{ KEY_EXCHANGE,          NULL, 0 },
-{ KEY_SET_ACCURACY,      NULL, 0 },
-{ KEY_SET_BASE,          NULL, 0 },
-{ KEY_SET_NUMBERTYPE,    NULL, 0 },
-{ KEY_UNDO,              NULL, 0 },
-{ KEY_REDO,              NULL, 0 },
-{ KEY_CONSTANT,          NULL, 0 },
-{ KEY_FUNCTION,          NULL, 0 }
+static Function functions[NFUNCTIONS] = {
+{ FN_0,                 "0", NUMBER },
+{ FN_1,                 "1", NUMBER },
+{ FN_2,                 "2", NUMBER },    
+{ FN_3,                 "3", NUMBER },
+{ FN_4,                 "4", NUMBER },
+{ FN_5,                 "5", NUMBER },
+{ FN_6,                 "6", NUMBER },
+{ FN_7,                 "7", NUMBER },
+{ FN_8,                 "8", NUMBER },
+{ FN_9,                 "9", NUMBER },
+{ FN_A,                 "A", NUMBER },
+{ FN_B,                 "B", NUMBER },    
+{ FN_C,                 "C", NUMBER },
+{ FN_D,                 "D", NUMBER },
+{ FN_E,                 "E", NUMBER },
+{ FN_F,                 "F", NUMBER },
+{ FN_NUMERIC_POINT,     ".", NUMBER },
+{ FN_CALCULATE,         NULL, 0 },
+{ FN_CLEAR,             NULL, 0 },
+{ FN_CLEAR_ENTRY,       NULL, 0 },
+{ FN_START_BLOCK,       "(", 0 },
+{ FN_END_BLOCK,         ")", 0 },
+{ FN_ADD,               "+", 0 },
+{ FN_SUBTRACT,          "-", 0 },
+{ FN_MULTIPLY,          "*", 0 },
+{ FN_DIVIDE,            "/", 0 },
+{ FN_BACKSPACE,         NULL, 0 },
+{ FN_DELETE,            NULL, 0 },
+{ FN_CHANGE_SIGN,       NULL, 0 },
+{ FN_INTEGER,           "Int", FUNC },
+{ FN_FRACTION,          "Frac", FUNC },
+{ FN_PERCENTAGE,        "%", 0 },
+{ FN_SQUARE,            "^2", 0 },
+{ FN_SQUARE_ROOT,       "Sqrt", FUNC },
+{ FN_RECIPROCAL,        NULL, 0 },
+{ FN_E_POW_X,           "e^", PREFIXOP },
+{ FN_10_POW_X,          "10^", PREFIXOP },       
+{ FN_2_POW_X,           "2^", PREFIXOP },
+{ FN_X_POW_Y,           "^", 0 },
+{ FN_X_POW_Y_INV,       "^(1/(", 0 },
+{ FN_FACTORIAL,         "!", 0 },
+{ FN_RANDOM,            "Rand", 0 },
+{ FN_SIN,               "Sin", FUNC },
+{ FN_SINH,              "Sinh", FUNC },
+{ FN_ASIN,              "Asin", FUNC },
+{ FN_ASINH,             "Asinh", FUNC },
+{ FN_COS,               "Cos", FUNC },
+{ FN_COSH,              "Cosh", FUNC },
+{ FN_ACOS,              "Acos", FUNC },
+{ FN_ACOSH,             "Acosh", FUNC },
+{ FN_TAN,               "Tan", FUNC },
+{ FN_TANH,              "Tanh", FUNC },
+{ FN_ATAN,              "Atan", FUNC },
+{ FN_TAN,               "Atanh", FUNC },
+{ FN_NATURAL_LOGARITHM, "Ln", FUNC },
+{ FN_LOGARITHM,         "Log", FUNC },
+{ FN_LOGARITHM2,        "Log2", FUNC },
+{ FN_ABSOLUTE_VALUE,    "Abs", FUNC },
+{ FN_MASK_16,           "u16", FUNC },            
+{ FN_MASK_32,           "u32", FUNC },
+{ FN_MODULUS_DIVIDE,    " Mod ", 0 },
+{ FN_EXPONENTIAL,       "e", 0 },
+{ FN_NOT,               "~", 0 },
+{ FN_OR,                " OR ", 0 },
+{ FN_AND,               " AND ", 0 },       
+{ FN_XOR,               " XOR ", 0 },
+{ FN_XNOR,              " XNOR ", 0 },
+{ FN_TOGGLE_BIT,        NULL, 0 },
+{ FN_FINC_CTRM,         "Ctrm", 0 },
+{ FN_FINC_DDB,          "Ddb", 0 },
+{ FN_FINC_FV,           "Fv", 0 },
+{ FN_FINC_GPM,          "Gpm", 0 },
+{ FN_FINC_PMT,          "Pmt", 0 },
+{ FN_FINC_PV,           "Pv", 0 },
+{ FN_FINC_RATE,         "Rate", 0 },
+{ FN_FINC_SLN,          "Sln", 0 },
+{ FN_FINC_SYD ,         "Syd", 0 },
+{ FN_FINC_TERM,         "Term", 0 },
+{ FN_SHIFT,             NULL, 0 },
+{ FN_STORE,             NULL, 0 },
+{ FN_RECALL,            NULL, 0 },
+{ FN_EXCHANGE,          NULL, 0 },
+{ FN_SET_ACCURACY,      NULL, 0 },
+{ FN_SET_BASE,          NULL, 0 },
+{ FN_SET_NUMBERTYPE,    NULL, 0 },
+{ FN_SET_TRIG_TYPE,     NULL, 0 },
+{ FN_UNDO,              NULL, 0 },
+{ FN_REDO,              NULL, 0 },
+{ FN_CONSTANT,          NULL, 0 },
+{ FN_FUNCTION,          NULL, 0 }
 };
 
 static void
 clear_undo_history(void)
 {
     display_clear_stack(&v->display);
-}
-
-
-void
-do_trigtype(enum trig_type t)    /* Change the current trigonometric type. */
-{
-    v->ttype = t;
-    set_resource(R_TRIG, Rtstr[(int) v->ttype]);
 }
 
 
@@ -306,13 +300,15 @@ do_expression(int function, int arg, int cursor)
 {
     char buf[MAXLINE];
     int *ans;
+    int enabled;
+    guint64 bit_value;
     
-    switch (buttons[function].id) {
-        case KEY_UNDO:
+    switch (functions[function].id) {
+        case FN_UNDO:
             display_pop(&v->display);
             return;
 
-        case KEY_REDO:
+        case FN_REDO:
             display_unpop(&v->display);
             return;
 
@@ -329,74 +325,96 @@ do_expression(int function, int arg, int cursor)
 
     /* Starting a number after a calculation clears the display */
     if (display_is_result(&v->display)) {
-        if (buttons[function].flags & NUMBER) {
+        if (functions[function].flags & NUMBER) {
             display_clear(&v->display);
         }
     }
 
-    switch (buttons[function].id) {
-        case KEY_CLEAR:
-        case KEY_CLEAR_ENTRY:
+    switch (functions[function].id) {
+        case FN_CLEAR:
+        case FN_CLEAR_ENTRY:
             display_clear(&v->display);
             ui_set_error_state(FALSE);
             MPstr_to_num("0", 10, ans);
             break;
 
-        case KEY_SHIFT:
+        case FN_SHIFT:
             do_shift(arg);
             return;
 
-        case KEY_SET_ACCURACY:
+        case FN_SET_ACCURACY:
             do_accuracy(arg);
             return;
 
-        case KEY_SET_BASE:
+        case FN_SET_BASE:
             do_base(arg);
             return;
+        
+        case FN_SET_TRIG_TYPE:
+            v->ttype = arg;
+            set_resource(R_TRIG, Rtstr[arg]);
+            return;
 
-        case KEY_SET_NUMBERTYPE:
+        case FN_SET_NUMBERTYPE:
             do_numtype(arg);
             return;        
         
-        case KEY_FUNCTION:
+        case FN_FUNCTION:
             do_function(arg);
             return;
 
-        case KEY_STORE:
+        case FN_STORE:
             do_sto(arg);
             return;
 
-        case KEY_EXCHANGE:
+        case FN_EXCHANGE:
             do_exchange(arg);
             return;
 
-        case KEY_RECALL:
+        case FN_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
             display_insert(&v->display, buf);
             break;
 
-        case KEY_CONSTANT:
+        case FN_CONSTANT:
             make_number(buf, MAXLINE, constant_get_value(arg), v->base, FALSE);
             display_insert(&v->display, buf);
             break;
 
-        case KEY_BACKSPACE:
+        case FN_BACKSPACE:
             display_backspace(&v->display);
             break;
         
-        case KEY_DELETE:
+        case FN_DELETE:
             display_delete(&v->display);
             break;
 
-        case KEY_CHANGE_SIGN:
+        case FN_CHANGE_SIGN:
             display_surround(&v->display, "-(", ")");
             break;
 
-        case KEY_RECIPROCAL:
+        case FN_RECIPROCAL:
             display_surround(&v->display, "1/(", ")");
             break;
 
-        case KEY_CALCULATE:
+        case FN_TOGGLE_BIT:
+            if (display_get_unsigned_integer(&v->display, &bit_value)) {
+                char buf[MAX_DISPLAY];
+                int MP[MP_SIZE];
+
+                bit_value ^= (1LL << (63 - arg));
+    
+                /* FIXME: Convert to since we don't support setting MP numbers from 64 bit integers */
+                SNPRINTF(buf, MAX_DISPLAY, "%llu", bit_value);
+                MPstr_to_num(buf, 10, MP);
+
+                /* FIXME: Set as string as display_set_number doesn't store correctly */
+                make_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
+                display_set_string(&v->display, buf, -1);
+            }
+            break;
+
+        case FN_CALCULATE:
             /* If showing a result display the calculation that caused
              * this result */
             /* TODO: Work out why two undo steps are required and why
@@ -454,24 +472,28 @@ do_expression(int function, int arg, int cursor)
             }
             break;
 
-        case KEY_NUMERIC_POINT:
+        case FN_NUMERIC_POINT:
             display_insert(&v->display, v->radix);
             break;
 
         default:
             /* If display is a number then perform functions on that number */
-            if (buttons[function].flags & (PREFIXOP | FUNC) && display_is_result(&v->display)) {
-                SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
+            if (functions[function].flags & (PREFIXOP | FUNC) && display_is_result(&v->display)) {
+                SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
                 display_surround(&v->display, buf, ")");
             } else {
-                if (buttons[function].flags & FUNC) {
-                    SNPRINTF(buf, MAXLINE, "%s(", buttons[function].symname);
+                if (functions[function].flags & FUNC) {
+                    SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
                     display_insert(&v->display, buf);
                 } else {
-                    display_insert(&v->display, buttons[function].symname);
+                    display_insert(&v->display, functions[function].symname);
                 }
             }
             break;
     }
+
     display_refresh(&v->display);
+    
+    enabled = display_get_unsigned_integer(&v->display, &bit_value);
+    ui_set_bitfield(enabled, bit_value);
 }

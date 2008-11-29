@@ -110,275 +110,275 @@ static char *finc_dialog_fields[FINC_NUM_DIALOGS][FINC_NUM_ARGS] = {
  */
     
 static struct button_widget button_widgets[] = {
-    {KEY_0,                  "0",
+    {FN_0,                  "0",
     { 0,     0,        0,             0 },
     { GDK_0, GDK_KP_0, GDK_KP_Insert, 0 }},
 
-    {KEY_1,                  "1",
+    {FN_1,                  "1",
     { 0,     0,        0,          0,       0 },
     { GDK_1, GDK_KP_1, GDK_KP_End, GDK_R13, 0 }},
 
-    {KEY_2,                  "2",
+    {FN_2,                  "2",
     { 0,     0,        0,           0 }, 
     { GDK_2, GDK_KP_2, GDK_KP_Down, 0 }},
 
-    {KEY_3,                  "3",
+    {FN_3,                  "3",
     { 0,     0,        0,                0,       0 },
     { GDK_3, GDK_KP_3, GDK_KP_Page_Down, GDK_R15, 0 }},
 
-    {KEY_4,                  "4",
+    {FN_4,                  "4",
     { 0,     0,        0,           0 },
     { GDK_4, GDK_KP_4, GDK_KP_Left, 0 }},
 
-    {KEY_5,                  "5",
+    {FN_5,                  "5",
     { 0,     0,        0,            0,       0 },
     { GDK_5, GDK_KP_5, GDK_KP_Begin, GDK_R11, 0 }},
 
-    {KEY_6,                  "6",
+    {FN_6,                  "6",
     { 0,     0,        0,            0 },
     { GDK_6, GDK_KP_6, GDK_KP_Right, 0 }},
 
-    {KEY_7,                  "7",
+    {FN_7,                  "7",
     { 0,     0,        0,           0,      0 },
     { GDK_7, GDK_KP_7, GDK_KP_Home, GDK_R7, 0 }},
 
-    {KEY_8,                  "8",
+    {FN_8,                  "8",
     { 0,     0,        0,         0 },
     { GDK_8, GDK_KP_8, GDK_KP_Up, 0 }},
 
-    {KEY_9,                  "9",
+    {FN_9,                  "9",
     { 0,     0,        0,              0,      0 },
     { GDK_9, GDK_KP_9, GDK_KP_Page_Up, GDK_R9, 0 }},
 
-    {KEY_A,                  "a",
+    {FN_A,                  "a",
     { 0,     0 },
     { GDK_a, 0 }},
 
-    {KEY_B,                  "b",
+    {FN_B,                  "b",
     { 0,     0 },
     { GDK_b, 0 }},
 
-    {KEY_C,                  "c",
+    {FN_C,                  "c",
     { 0,     0 },
     { GDK_c, 0 }},
 
-    {KEY_D,                  "d",
+    {FN_D,                  "d",
     { 0,     0 },
     { GDK_d, 0 }},
 
-    {KEY_E,                  "e",
+    {FN_E,                  "e",
     { 0,     0 },
     { GDK_e, 0 }},
 
-    {KEY_F,                  "f",
+    {FN_F,                  "f",
     { 0,     0 },
     { GDK_f, 0 }},
 
-    {KEY_CLEAR,              "clear_simple",
+    {FN_CLEAR,              "clear_simple",
     { 0,          0 },
     { GDK_Delete, 0 }},
     
-    {KEY_CLEAR,              "clear_advanced",
+    {FN_CLEAR,              "clear_advanced",
     { 0,          0 },
     { GDK_Delete, 0 }},
 
-    {KEY_SHIFT,              "shift_left",
+    {FN_SHIFT,              "shift_left",
     { 0,        0 },
     { GDK_less, 0 }},
 
-    {KEY_SHIFT,              "shift_right",
+    {FN_SHIFT,              "shift_right",
     { 0,           0 },
     { GDK_greater, 0 }},
 
-    {KEY_SET_ACCURACY,       "accuracy",
+    {FN_SET_ACCURACY,       "accuracy",
     { 0,     0 },
     { GDK_A, 0 }},
 
-    {KEY_CONSTANT,           "constants",
+    {FN_CONSTANT,           "constants",
     { 0,              0 },
     { GDK_numbersign, 0 }},
 
-    {KEY_FUNCTION,           "functions",
+    {FN_FUNCTION,           "functions",
     { 0,     0 },
     { GDK_F, 0 }},
 
-    {KEY_STORE,              "store",
+    {FN_STORE,              "store",
     { 0,     0 },
     { GDK_S, 0 }},
 
-    {KEY_RECALL,             "recall",
+    {FN_RECALL,             "recall",
     { 0,     0 },
     { GDK_R, 0 }},
 
-    {KEY_EXCHANGE,           "exchange",
+    {FN_EXCHANGE,           "exchange",
     { 0,     0 },
     { GDK_X, 0 }},
 
-    {KEY_CLEAR_ENTRY,        "clear_entry_simple",
+    {FN_CLEAR_ENTRY,        "clear_entry_simple",
     { GDK_CONTROL_MASK, 0,          0 },
     { GDK_BackSpace,    GDK_Escape, 0 }},
 
-    {KEY_CLEAR_ENTRY,        "clear_entry_advanced",
+    {FN_CLEAR_ENTRY,        "clear_entry_advanced",
     { GDK_CONTROL_MASK, 0,          0 },
     { GDK_BackSpace,    GDK_Escape, 0 }},
 
-    {KEY_BACKSPACE,          "backspace_simple",
+    {FN_BACKSPACE,          "backspace_simple",
     { 0,             0 },
     { GDK_BackSpace, 0 }},
 
-    {KEY_BACKSPACE,          "backspace_advanced",
+    {FN_BACKSPACE,          "backspace_advanced",
     { 0,             0 },
     { GDK_BackSpace, 0 }},
     
-    {KEY_NUMERIC_POINT,      "numeric_point",
+    {FN_NUMERIC_POINT,      "numeric_point",
     { 0,          0,              0,             0,                0 },
     { GDK_period, GDK_KP_Decimal, GDK_KP_Delete, GDK_KP_Separator, 0 }},
 
-    {KEY_CALCULATE,          "result",
+    {FN_CALCULATE,          "result",
     { 0,         0,            0,          0 },
     { GDK_equal, GDK_KP_Enter, GDK_Return, 0 }},
 
-    {KEY_START_BLOCK,        "start_group",
+    {FN_START_BLOCK,        "start_group",
     { 0,             0 },
     { GDK_parenleft, 0 }},
 
-    {KEY_END_BLOCK,          "end_group",
+    {FN_END_BLOCK,          "end_group",
     { 0,              0 },
     { GDK_parenright, 0 }},
 
-    {KEY_ADD,                "add",
+    {FN_ADD,                "add",
     { 0,        0,          0 },
     { GDK_plus, GDK_KP_Add, 0 }},
 
-    {KEY_SUBTRACT,           "subtract",
+    {FN_SUBTRACT,           "subtract",
     { 0,         0,               0,      0 },
     { GDK_minus, GDK_KP_Subtract, GDK_R4, 0 }},
 
-    {KEY_MULTIPLY,           "multiply",
+    {FN_MULTIPLY,           "multiply",
     { 0,            0,            0,               0,      0 },
     { GDK_asterisk, GDK_multiply, GDK_KP_Multiply, GDK_R6, 0 }},
 
-    {KEY_DIVIDE,             "divide",
+    {FN_DIVIDE,             "divide",
     { 0,         0,            0,             0,      0 },
     { GDK_slash, GDK_division, GDK_KP_Divide, GDK_R5, 0 }},
 
-    {KEY_CHANGE_SIGN,        "change_sign_simple",
+    {FN_CHANGE_SIGN,        "change_sign_simple",
     { 0,     0 },
     { GDK_C, 0 }},
 
-    {KEY_CHANGE_SIGN,        "change_sign_advanced",
+    {FN_CHANGE_SIGN,        "change_sign_advanced",
     { 0,     0 },
     { GDK_C, 0 }},
 
-    {KEY_INTEGER,            "integer_portion",
+    {FN_INTEGER,            "integer_portion",
     { 0,     0 },
     { GDK_i, 0 }},
 
-    {KEY_FRACTION,           "fractional_portion",
+    {FN_FRACTION,           "fractional_portion",
     { 0,         0 },
     { GDK_colon, 0 }},
 
-    {KEY_PERCENTAGE,         "percentage",
+    {FN_PERCENTAGE,         "percentage",
     { 0,           0 },
     { GDK_percent, 0 }},
 
-    {KEY_SQUARE,             "square",
+    {FN_SQUARE,             "square",
     { 0,      0 },
     { GDK_at, 0 }},
 
-    {KEY_SQUARE_ROOT,        "sqrt",
+    {FN_SQUARE_ROOT,        "sqrt",
     { 0,     0 },
     { GDK_s, 0 }},
 
-    {KEY_RECIPROCAL,         "reciprocal",
+    {FN_RECIPROCAL,         "reciprocal",
     { 0,     0 },
     { GDK_r, 0 }},
 
-    {KEY_ABSOLUTE_VALUE,     "abs",
+    {FN_ABSOLUTE_VALUE,     "abs",
     { 0,     0 },
     { GDK_u, 0 }},
 
-    {KEY_MASK_16,            "mask_16",
+    {FN_MASK_16,            "mask_16",
     { 0,                0 },
     { GDK_bracketright, 0 }},
 
-    {KEY_MASK_32,            "mask_32",
+    {FN_MASK_32,            "mask_32",
     { 0,               0 },
     { GDK_bracketleft, 0 }},
 
-    {KEY_MODULUS_DIVIDE,     "modulus_divide",
+    {FN_MODULUS_DIVIDE,     "modulus_divide",
     { 0,     0 },
     { GDK_M, 0 }},
 
-    {KEY_EXPONENTIAL,        "exponential",
+    {FN_EXPONENTIAL,        "exponential",
     { 0,     0 },
     { GDK_E, 0 }},
 
-    {KEY_FACTORIAL,          "factorial",
+    {FN_FACTORIAL,          "factorial",
     { 0,          0 },
     { GDK_exclam, 0 }},
 
-    {KEY_RANDOM,             "random",
+    {FN_RANDOM,             "random",
     { 0,            0 },
     { GDK_question, 0 }},
 
-    {KEY_NOT,                "not",
+    {FN_NOT,                "not",
     { 0,              0 },
     { GDK_asciitilde, 0 }},
 
-    {KEY_OR,                 "or",
+    {FN_OR,                 "or",
     { 0,       0 },
     { GDK_bar, 0 }},
 
-    {KEY_AND,                "and",
+    {FN_AND,                "and",
     { 0,             0 },
     { GDK_ampersand, 0 }},
 
-    {KEY_XOR,                "xor",
+    {FN_XOR,                "xor",
     { 0,     0 },
     { GDK_x, 0 }},
 
-    {KEY_XNOR,               "xnor",
+    {FN_XNOR,               "xnor",
     { 0,     0 },
     { GDK_braceleft, 0 }},
 
-    {KEY_FINC_CTRM,          "finc_compounding_term",
+    {FN_FINC_CTRM,          "finc_compounding_term",
     { 0,     0 },
     { GDK_m, 0 }},
 
-    {KEY_FINC_DDB,           "finc_double_declining_depreciation",
+    {FN_FINC_DDB,           "finc_double_declining_depreciation",
     { 0,     0 },
     { GDK_D, 0 }},
 
-    {KEY_FINC_FV,            "finc_future_value",
+    {FN_FINC_FV,            "finc_future_value",
     { 0,     0 },
     { GDK_v, 0 }},
 
-    {KEY_FINC_GPM,           "finc_gross_profit_margin",
+    {FN_FINC_GPM,           "finc_gross_profit_margin",
     { 0,     0 },
     { GDK_I, 0 }},
 
-    {KEY_FINC_PMT,           "finc_periodic_payment",
+    {FN_FINC_PMT,           "finc_periodic_payment",
     { 0,     0 },
     { GDK_P, 0 }},
 
-    {KEY_FINC_PV,            "finc_present_value",
+    {FN_FINC_PV,            "finc_present_value",
     { 0,     0 },
     { GDK_p, 0 }},
 
-    {KEY_FINC_RATE,          "finc_periodic_interest_rate",
+    {FN_FINC_RATE,          "finc_periodic_interest_rate",
     { 0,     0 },
     { GDK_T, 0 }},
 
-    {KEY_FINC_SLN,           "finc_straight_line_depreciation",
+    {FN_FINC_SLN,           "finc_straight_line_depreciation",
     { 0,     0 },
     { GDK_l, 0 }},
 
-    {KEY_FINC_SYD,           "finc_sum_of_the_years_digits_depreciation",
+    {FN_FINC_SYD,           "finc_sum_of_the_years_digits_depreciation",
     { 0,     0 },
     { GDK_Y, 0 }},
 
-    {KEY_FINC_TERM,          "finc_term",
+    {FN_FINC_TERM,          "finc_term",
     { 0,     0 },
     { GDK_t, 0 }},
 };
@@ -386,59 +386,59 @@ static struct button_widget button_widgets[] = {
 
 /* All functions that share widget with other functions. */
 static struct button_widget widgetless_buttons[] = {
-    {KEY_SIN,                "sine",
+    {FN_SIN,                "sine",
     { 0,     0 },
     { GDK_k, 0 }},
 
-    {KEY_ASIN,                "sine",
+    {FN_ASIN,                "sine",
     { 0,     0 },
     { GDK_K, 0 }},
 
-    {KEY_COS,                "cosine",
+    {FN_COS,                "cosine",
     { 0,     0 },
     { GDK_j, 0 }},
 
-    {KEY_ACOS,                "cosine",
+    {FN_ACOS,                "cosine",
     { 0,     0 },
     { GDK_J, 0 }},
 
-    {KEY_TAN,                "tangent",
+    {FN_TAN,                "tangent",
     { 0,     0 },
     { GDK_w, 0 }},
 
-    {KEY_ATAN,                "tangent",
+    {FN_ATAN,                "tangent",
     { 0,     0 },
     { GDK_W, 0 }},
 
-    {KEY_NATURAL_LOGARITHM,  "natural_logarithm",
+    {FN_NATURAL_LOGARITHM,  "natural_logarithm",
     { 0,     0 },
     { GDK_n, 0 }},
 
-    {KEY_E_POW_X,            "pow_e",
+    {FN_E_POW_X,            "pow_e",
     { 0,             0 },
     { GDK_N, 0 }},
 
-    {KEY_LOGARITHM,          "logarithm",
+    {FN_LOGARITHM,          "logarithm",
     { 0,     0 },
     { GDK_g, 0 }},
 
-    {KEY_10_POW_X,           "pow_10",
+    {FN_10_POW_X,           "pow_10",
     { 0,              0 },
     { GDK_G, 0 }},
 
-    {KEY_LOGARITHM2,         "logarithm2",
+    {FN_LOGARITHM2,         "logarithm2",
     { 0,     0 },
     { GDK_h, 0 }},
 
-    {KEY_2_POW_X,            "logarithm2",
+    {FN_2_POW_X,            "logarithm2",
     { 0,     0 },
     { GDK_H, 0 }},
 
-    {KEY_X_POW_Y,            "x_pow_y",
+    {FN_X_POW_Y,            "x_pow_y",
     { 0,     0,         0,               0 },
     { GDK_o, GDK_caret, GDK_asciicircum, 0 }},
 
-    {KEY_X_POW_Y_INV,        "x_pow_y",
+    {FN_X_POW_Y_INV,        "x_pow_y",
     { 0,     0 },
     { GDK_O, 0 }},
 };
@@ -604,7 +604,7 @@ ui_update_modifier_mode()
         N_("Hyperbolic Sine [k]"),
         /* Translators: The hyperbolic inverse sine tooltip */
         N_("Hyperbolic Inverse Sine [K]")};
-    static int  sine_functions[]    = {KEY_SIN, KEY_ASIN, KEY_SINH, KEY_ASINH};
+    static int  sine_functions[]    = {FN_SIN, FN_ASIN, FN_SINH, FN_ASINH};
     static char *cosine_labels[]    = {
         /* Translators: The cosine button */
         N_("Cos"),
@@ -623,7 +623,7 @@ ui_update_modifier_mode()
         N_("Hyperbolic Cosine [j]"),
         /* Translators: The hyperbolic inverse cosine tooltip */
         N_("Hyperbolic Inverse Cosine [J]")};
-    static int  cosine_functions[]  = {KEY_COS, KEY_ACOS, KEY_COSH, KEY_ACOSH};
+    static int  cosine_functions[]  = {FN_COS, FN_ACOS, FN_COSH, FN_ACOSH};
     static char *tangent_labels[]   = {
         /* Translators: The tangent button */
         N_("Tan"),
@@ -642,7 +642,7 @@ ui_update_modifier_mode()
         N_("Hyperbolic Tangent [w]"),
         /* Translators: The hyperbolic inverse tangent tooltip */
         N_("Hyperbolic Inverse Tangent [W]")};
-    static int  tangent_functions[] = {KEY_TAN, KEY_ATAN, KEY_TANH, KEY_ATANH};
+    static int  tangent_functions[] = {FN_TAN, FN_ATAN, FN_TANH, FN_ATANH};
     
 	static char *ln_labels[]        = {
         /* Translators: The natural logaritm button */
@@ -654,7 +654,7 @@ ui_update_modifier_mode()
         N_("Natural log [n]"),
         /* Translators: Tooltip for the e to the power of x button */
         N_("e to the power of the displayed value [N]")};
-    static int ln_functions[]       = {KEY_NATURAL_LOGARITHM, KEY_E_POW_X};
+    static int ln_functions[]       = {FN_NATURAL_LOGARITHM, FN_E_POW_X};
     
     static char *log_labels[]       = {
         /* Translators: The 10-based logaritm button */
@@ -666,7 +666,7 @@ ui_update_modifier_mode()
         N_("Base 10 log [g]"),
         /* Translators: Tooltip for the 10 to the power of x button */
         N_("10 to the power of displayed value [G]")};
-    static int log_functions[]      = {KEY_LOGARITHM, KEY_10_POW_X};
+    static int log_functions[]      = {FN_LOGARITHM, FN_10_POW_X};
     
     static char *log2_labels[]      = {
         /* Translators: The 2-based logaritm button */
@@ -678,7 +678,7 @@ ui_update_modifier_mode()
         N_("Base 2 log [h]"),
         /* Translators: Tooltip for the 2 to the power of x button */
         N_("2 to the power of the displayed value [H]")};
-    static int log2_functions[]     = {KEY_LOGARITHM2, KEY_2_POW_X};
+    static int log2_functions[]     = {FN_LOGARITHM2, FN_2_POW_X};
 
     static char *x_pow_y_labels[]   = {
         /* Translators: The x to the power of y button */
@@ -690,7 +690,7 @@ ui_update_modifier_mode()
         N_("Raise displayed value to the power of y [o]"),
         /* Translators: Tooltip for the x to the power of reciprocal y button */
         N_("Raise displayed value to the power of reciprocal y [O]")};
-    static int x_pow_y_functions[]  = {KEY_X_POW_Y, KEY_X_POW_Y_INV};
+    static int x_pow_y_functions[]  = {FN_X_POW_Y, FN_X_POW_Y_INV};
     
     int index = 0;
 
@@ -877,23 +877,16 @@ get_cursor(void)
     }
 }
 
-
-static void
-set_bit_panel(void)
+void
+ui_set_bitfield(int enabled, guint64 bits)
 {
     int i;
     const gchar *label;
-    guint64 value;
     
-    if (!display_get_unsigned_integer(&v->display, &value))
-    {
-        gtk_widget_set_sensitive(X->bit_panel, FALSE);        
-        return;
-    }
-    gtk_widget_set_sensitive(X->bit_panel, TRUE);
+    gtk_widget_set_sensitive(X->bit_panel, enabled);
 
     for (i = 0; i < MAXBITS; i++) {
-        if (value & (1LL << (MAXBITS-i-1)))
+        if (bits & (1LL << (MAXBITS-i-1)))
             label = " 1";
         else
             label = " 0";
@@ -901,11 +894,9 @@ set_bit_panel(void)
     }
 }
 
-
 static void do_button(int function, int arg)
 {
     do_expression(function, arg, get_cursor());
-    set_bit_panel();
 }
 
 static void
@@ -931,7 +922,7 @@ ui_set_mode(enum mode_type mode)
 
         ui_set_base(DEC);
         ui_set_numeric_mode(FIX);
-        do_button(KEY_SET_ACCURACY, DEFAULT_ACCURACY);
+        do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
         ui_set_show_thousands_separator(FALSE);
         ui_set_show_trailing_zeroes(FALSE);
         ui_make_registers();
@@ -1382,7 +1373,7 @@ void
 disp_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_button(KEY_SET_NUMBERTYPE, (int)g_object_get_data(G_OBJECT(widget), "numeric_mode"));
+        do_button(FN_SET_NUMBERTYPE, (int)g_object_get_data(G_OBJECT(widget), "numeric_mode"));
 }
 
 
@@ -1394,7 +1385,7 @@ base_cb(GtkWidget *widget)
 
     base = (enum base_type) g_object_get_data(G_OBJECT(widget), "base_mode");
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-        do_button(KEY_SET_BASE, base);
+        do_button(FN_SET_BASE, base);
     }
 }
 
@@ -1430,7 +1421,7 @@ static void
 constant_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "constant_id"));
-    do_button(KEY_CONSTANT, arg);
+    do_button(FN_CONSTANT, arg);
 }
 
 
@@ -1439,7 +1430,7 @@ static void
 function_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "function_id"));
-    do_button(KEY_FUNCTION, arg);
+    do_button(FN_FUNCTION, arg);
 }
 
 
@@ -1448,7 +1439,7 @@ static void
 store_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
-    do_button(KEY_STORE, arg);
+    do_button(FN_STORE, arg);
 }
 
 
@@ -1457,7 +1448,7 @@ static void
 recall_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
-    do_button(KEY_RECALL, arg);
+    do_button(FN_RECALL, arg);
 }
 
 
@@ -1466,7 +1457,7 @@ static void
 exchange_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
-    do_button(KEY_EXCHANGE, arg);
+    do_button(FN_EXCHANGE, arg);
 }
 
 
@@ -1771,37 +1762,13 @@ save_win_position()
 }
 
 
-// FIXME: Move out of gtk.c
 /*ARGSUSED*/
 static gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
-    guint64 value;
     int index;
-    const gchar *text;
-    char buf[MAX_DISPLAY];
-    int MP[MP_SIZE];
-    
     index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index"));
-    assert(display_get_unsigned_integer(&v->display, &value));
-    value ^= (1LL << (MAXBITS - index - 1));
-    
-    /* FIXME: Convert to since we don't support setting MP numbers from 64 bit integers */
-    SNPRINTF(buf, MAX_DISPLAY, "%llu", value);
-    MPstr_to_num(buf, 10, MP);
-
-    /* FIXME: Set as string as display_set_number doesn't store correctly */
-    make_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
-    display_set_string(&v->display, buf, -1);
-    display_refresh(&v->display);
-
-    text = gtk_label_get_text(GTK_LABEL(X->bits[index]));
-    if (strcmp(text, " 0") == 0)
-        text = " 1";
-    else
-        text = " 0";        
-    gtk_label_set_text(GTK_LABEL(X->bits[index]), text);
-
+    do_button(FN_TOGGLE_BIT, index);
     return (TRUE);
 }
 
@@ -1924,8 +1891,7 @@ void
 trig_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-        do_trigtype((enum trig_type) g_object_get_data(G_OBJECT(widget),
-                                                       "trig_mode"));
+        do_button(FN_SET_TRIG_TYPE, (int)g_object_get_data(G_OBJECT(widget), "trig_mode"));
 }
 
 
@@ -2026,34 +1992,34 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
                                       v->modetype == PROGRAMMING)) {
         switch (event->keyval) {
             case GDK_0:
-                do_button(KEY_SET_ACCURACY, 0);
+                do_button(FN_SET_ACCURACY, 0);
                 return (TRUE);
             case GDK_1:
-                do_button(KEY_SET_ACCURACY, 1);
+                do_button(FN_SET_ACCURACY, 1);
                 return (TRUE);
             case GDK_2:
-                do_button(KEY_SET_ACCURACY, 2);
+                do_button(FN_SET_ACCURACY, 2);
                 return (TRUE);
             case GDK_3:
-                do_button(KEY_SET_ACCURACY, 3);
+                do_button(FN_SET_ACCURACY, 3);
                 return (TRUE);
             case GDK_4:
-                do_button(KEY_SET_ACCURACY, 4);
+                do_button(FN_SET_ACCURACY, 4);
                 return (TRUE);
             case GDK_5:
-                do_button(KEY_SET_ACCURACY, 5);
+                do_button(FN_SET_ACCURACY, 5);
                 return (TRUE);
             case GDK_6:
-                do_button(KEY_SET_ACCURACY, 6);
+                do_button(FN_SET_ACCURACY, 6);
                 return (TRUE);
             case GDK_7:
-                do_button(KEY_SET_ACCURACY, 7);
+                do_button(FN_SET_ACCURACY, 7);
                 return (TRUE);
             case GDK_8:
-                do_button(KEY_SET_ACCURACY, 8);
+                do_button(FN_SET_ACCURACY, 8);
                 return (TRUE);
             case GDK_9:
-                do_button(KEY_SET_ACCURACY, 9);
+                do_button(FN_SET_ACCURACY, 9);
                 return (TRUE);
         }
     }
@@ -2071,7 +2037,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0) {
-        do_button(KEY_DELETE, 0);
+        do_button(FN_DELETE, 0);
         return (TRUE);
     }
 
@@ -2272,7 +2238,7 @@ popup_paste_cb(GtkWidget *menu)
 static void
 undo_cb(GtkWidget *widget)
 {
-    do_button(KEY_UNDO, 0);
+    do_button(FN_UNDO, 0);
 }
 
 
@@ -2280,7 +2246,7 @@ undo_cb(GtkWidget *widget)
 static void
 redo_cb(GtkWidget *widget)
 {
-    do_button(KEY_REDO, 0);    
+    do_button(FN_REDO, 0);    
     display_set_cursor(&v->display, -1);
     display_refresh(&v->display);
 }
@@ -2332,7 +2298,7 @@ shift_cb(GtkWidget *widget)
 {
     int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
                                                    "shiftcount"));
-    do_button(KEY_SHIFT, count);
+    do_button(FN_SHIFT, count);
 }
 
 
@@ -2368,7 +2334,7 @@ accuracy_radio_cb(GtkWidget *widget)
     int count;
     count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "accuracy"));
     if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
-        do_button(KEY_SET_ACCURACY, count);
+        do_button(FN_SET_ACCURACY, count);
     }
 }
 
@@ -2389,7 +2355,7 @@ accuracy_other_cb(GtkWidget *widget)
 static void
 accuracy_default_cb(GtkWidget *widget)
 {
-    do_button(KEY_SET_ACCURACY, DEFAULT_ACCURACY);
+    do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
 }
 
 
@@ -2419,7 +2385,7 @@ spframe_response_cb(GtkWidget *dialog, gint response_id)
     int val;
     if (response_id == GTK_RESPONSE_OK) {
         val = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(X->precision_spin));
-        do_button(KEY_SET_ACCURACY, val);
+        do_button(FN_SET_ACCURACY, val);
     }
     
     gtk_widget_hide(dialog);
@@ -2542,6 +2508,7 @@ create_kframe()
     CONNECT_SIGNAL(hyp_cb);
     CONNECT_SIGNAL(base_cb);
     CONNECT_SIGNAL(disp_cb);
+    CONNECT_SIGNAL(trig_cb);    
     CONNECT_SIGNAL(quit_cb);
     CONNECT_SIGNAL(edit_cb);
     CONNECT_SIGNAL(copy_cb);

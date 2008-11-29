@@ -23,6 +23,8 @@
 #ifndef UI_H
 #define UI_H
 
+#include <stdint.h>
+
 #include "calctool.h"
 
 void ui_init(int *argc, char ***argv);
@@ -33,6 +35,7 @@ void ui_make_registers(void);
 void ui_set_undo_enabled(gboolean, gboolean);
 
 void ui_set_display(char *, int);
+void ui_set_bitfield(int enabled, guint64 bits);
 gchar *ui_get_display(void);
 
 void ui_set_registers_visible(gboolean);
