@@ -23,14 +23,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <limits.h>
-#include <sys/param.h>
-#include <sys/stat.h>
-#include <netdb.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <glade/glade.h>
+
+#include <limits.h>
+#include <sys/param.h>
+#include <unistd.h>
+#include <netdb.h>
 
 #include "ui.h"
 

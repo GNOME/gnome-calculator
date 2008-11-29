@@ -20,6 +20,7 @@
  */
 
 #include <stdio.h>
+#include <math.h>
 
 #include "mp.h"
 #include "mp-internal.h"

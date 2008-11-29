@@ -19,7 +19,10 @@
  *  02111-1307, USA.
  */
 
+#include <stdio.h>
+
 #include "register.h"
+#include "calctool.h"
 #include "get.h"
 #include "mpmath.h"
 
@@ -131,7 +134,7 @@ register_get(int index, int value[MP_SIZE])
 
 void constant_set(int index, const char *name, int value[MP_SIZE])
 {
-    char key[MAXLINE], temp[MAXLINE];
+    char key[MAXLINE], temp[MAX_LOCALIZED];
 
     STRNCPY(constant_names[index], name, MAXLINE - 1);
     mp_set_from_mp(value, constant_values[index]);
@@ -141,7 +144,7 @@ void constant_set(int index, const char *name, int value[MP_SIZE])
 
     /* NOTE: Constants are written out with no thousands separator and with a
        radix character of ".". */
-    make_number(temp, MAXLINE, value, 10, TRUE);   
+    make_number(temp, MAX_LOCALIZED, value, DEC, TRUE);   
     SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
     set_resource(key, temp);
 }

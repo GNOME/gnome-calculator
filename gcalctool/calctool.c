@@ -32,107 +32,14 @@
 #include "functions.h"
 #include "ui.h"
 #include "mpmath.h"
+#include "register.h"
 
 time_t time();
 
 int basevals[4] = { 2, 8, 10, 16 };
 
 /* Calctool variables and options. */
-Vars v;
-
-// FIXME: Sort this list
-/* Note that none of these strings can be translated as the parser expects them to be correct */
-/* id, symname flags */
-struct button buttons[NKEYS] = {
-{ KEY_0,                 "0", NUMBER },
-{ KEY_1,                 "1", NUMBER },
-{ KEY_2,                 "2", NUMBER },    
-{ KEY_3,                 "3", NUMBER },
-{ KEY_4,                 "4", NUMBER },
-{ KEY_5,                 "5", NUMBER },
-{ KEY_6,                 "6", NUMBER },
-{ KEY_7,                 "7", NUMBER },
-{ KEY_8,                 "8", NUMBER },
-{ KEY_9,                 "9", NUMBER },
-{ KEY_A,                 "A", NUMBER },
-{ KEY_B,                 "B", NUMBER },    
-{ KEY_C,                 "C", NUMBER },
-{ KEY_D,                 "D", NUMBER },
-{ KEY_E,                 "E", NUMBER },
-{ KEY_F,                 "F", NUMBER },
-{ KEY_NUMERIC_POINT,     ".", NUMBER },
-{ KEY_CALCULATE,         NULL, 0 },
-{ KEY_CLEAR,             NULL, 0 },
-{ KEY_CLEAR_ENTRY,       NULL, 0 },
-{ KEY_START_BLOCK,       "(", 0 },
-{ KEY_END_BLOCK,         ")", 0 },
-{ KEY_ADD,               "+", 0 },
-{ KEY_SUBTRACT,          "-", 0 },
-{ KEY_MULTIPLY,          "*", 0 },
-{ KEY_DIVIDE,            "/", 0 },
-{ KEY_BACKSPACE,         NULL, 0 },
-{ KEY_DELETE,            NULL, 0 },
-{ KEY_CHANGE_SIGN,       NULL, 0 },
-{ KEY_INTEGER,           "Int", FUNC },
-{ KEY_FRACTION,          "Frac", FUNC },
-{ KEY_PERCENTAGE,        "%", 0 },
-{ KEY_SQUARE,            "^2", 0 },
-{ KEY_SQUARE_ROOT,       "Sqrt", FUNC },
-{ KEY_RECIPROCAL,        NULL, 0 },
-{ KEY_E_POW_X,           "e^", PREFIXOP },
-{ KEY_10_POW_X,          "10^", PREFIXOP },       
-{ KEY_2_POW_X,           "2^", PREFIXOP },
-{ KEY_X_POW_Y,           "^", 0 },
-{ KEY_X_POW_Y_INV,       "^(1/(", 0 },
-{ KEY_FACTORIAL,         "!", 0 },
-{ KEY_RANDOM,            "Rand", 0 },
-{ KEY_SIN,               "Sin", FUNC },
-{ KEY_SINH,              "Sinh", FUNC },
-{ KEY_ASIN,              "Asin", FUNC },
-{ KEY_ASINH,             "Asinh", FUNC },
-{ KEY_COS,               "Cos", FUNC },
-{ KEY_COSH,              "Cosh", FUNC },
-{ KEY_ACOS,              "Acos", FUNC },
-{ KEY_ACOSH,             "Acosh", FUNC },
-{ KEY_TAN,               "Tan", FUNC },
-{ KEY_TANH,              "Tanh", FUNC },
-{ KEY_ATAN,              "Atan", FUNC },
-{ KEY_TAN,               "Atanh", FUNC },
-{ KEY_NATURAL_LOGARITHM, "Ln", FUNC },
-{ KEY_LOGARITHM,         "Log", FUNC },
-{ KEY_LOGARITHM2,        "Log2", FUNC },
-{ KEY_ABSOLUTE_VALUE,    "Abs", FUNC },
-{ KEY_MASK_16,           "u16", FUNC },            
-{ KEY_MASK_32,           "u32", FUNC },
-{ KEY_MODULUS_DIVIDE,    " Mod ", 0 },
-{ KEY_EXPONENTIAL,       "e", 0 },
-{ KEY_NOT,               "~", 0 },
-{ KEY_OR,                " OR ", 0 },
-{ KEY_AND,               " AND ", 0 },       
-{ KEY_XOR,               " XOR ", 0 },
-{ KEY_XNOR,              " XNOR ", 0 },
-{ KEY_FINC_CTRM,         "Ctrm", 0 },
-{ KEY_FINC_DDB,          "Ddb", 0 },
-{ KEY_FINC_FV,           "Fv", 0 },
-{ KEY_FINC_GPM,          "Gpm", 0 },
-{ KEY_FINC_PMT,          "Pmt", 0 },
-{ KEY_FINC_PV,           "Pv", 0 },
-{ KEY_FINC_RATE,         "Rate", 0 },
-{ KEY_FINC_SLN,          "Sln", 0 },
-{ KEY_FINC_SYD ,         "Syd", 0 },
-{ KEY_FINC_TERM,         "Term", 0 },
-{ KEY_SHIFT,             NULL, 0 },
-{ KEY_STORE,             NULL, 0 },
-{ KEY_RECALL,            NULL, 0 },
-{ KEY_EXCHANGE,          NULL, 0 },
-{ KEY_SET_ACCURACY,      NULL, 0 },
-{ KEY_SET_BASE,          NULL, 0 },
-{ KEY_SET_NUMBERTYPE,    NULL, 0 },
-{ KEY_UNDO,              NULL, 0 },
-{ KEY_REDO,              NULL, 0 },
-{ KEY_CONSTANT,          NULL, 0 },
-{ KEY_FUNCTION,          NULL, 0 }
-};
+CalculatorVariables *v;
 
 /* Calctools' customised math library error-handling routine. */
 
@@ -238,7 +145,7 @@ get_options(int argc, char *argv[])      /* Extract command line options. */
 static void
 init_state(void)
 {
-    int acc, i, size;
+    int acc, size;
 
     v->accuracy      = DEFAULT_ACCURACY;
     v->show_zeroes   = FALSE;  /* Don't show trailing zeroes. */
@@ -249,7 +156,6 @@ init_state(void)
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
     size             = MP_SIZE;
     mpset(acc, size, size);
-
     v->error       = 0;            /* No calculator error initially. */    
 }
 
@@ -257,9 +163,7 @@ init_state(void)
 int
 main(int argc, char **argv)
 {
-    char *ptr;
-    
-    v = (Vars)  LINT_CAST(calloc(1, sizeof(struct calcVars)));
+    v = (CalculatorVariables *)LINT_CAST(calloc(1, sizeof(CalculatorVariables)));
 
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");

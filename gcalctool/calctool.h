@@ -23,12 +23,8 @@
 #define CALCTOOL_H
 
 #include <string.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <locale.h>
-#include <math.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
 
 #include "config.h"
 #include "mp.h"
@@ -152,35 +148,20 @@ enum
 #define MAX_FUNCTIONS 10
 #define MAX_REGISTERS 10         /* Maximum number of memory registers. */
 
-#ifndef MIN
-#define MIN(x,y)       ((x) < (y) ? (x) : (y))
-#endif /*MIN*/
-
 #ifndef RCNAME
 #define RCNAME         ".gcalctoolrc"
 #endif /*RCNAME*/
 
-#undef TRUE                    /* Boolean definitions. */
+/* Boolean definitions. */
+#undef TRUE
 #define TRUE           1
-
 #undef FALSE
 #define FALSE          0
 
 #define MPMATH_ERR		    	20001
 
-enum button_flags {
-    NUMBER       = (1 << 3),   /* Number button */
-    FUNC         = (1 << 6),   /* Function */
-    PREFIXOP     = (1 << 15),  /* Unary prefix operation */
-};
-
-struct button {
-    int id;
-    char *symname;           /* Expression function name */
-    enum button_flags flags; /* Misc flags */
-};
-
-struct calcVars {                      /* Calctool variables and options. */
+/* Calctool variables and options. */
+typedef struct {
     char *progname;                    /* Name of this program. */
     
     GCDisplay display;
@@ -202,13 +183,10 @@ struct calcVars {                      /* Calctool variables and options. */
     int math_error;    /* Math error (used in expression mode) */
     int show_tsep;     /* Set if the thousands separator should be shown. */
     int show_zeroes;   /* Set if trailing zeroes should be shown. */
-};
+} CalculatorVariables;
 
-typedef struct calcVars *Vars;
-
-extern Vars v;                   /* Calctool variables and options. */
+extern CalculatorVariables *v; /* Calctool variables and options. */
 extern int basevals[];           /* Supported arithmetic bases. */
-extern struct button buttons[];  /* Calculator button values. */
 
 void doerr(char *);
 

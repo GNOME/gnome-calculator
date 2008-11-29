@@ -19,8 +19,9 @@
 
 #include <assert.h>
 #include <errno.h>
+#include <stdio.h>
+#include <math.h>
 
-#include "mp.h"
 #include "mpmath.h"
 
 static char digits[] = "0123456789ABCDEF";
@@ -431,7 +432,7 @@ calc_trigfunc(enum trigfunc_type type, int s1[MP_SIZE], int t1[MP_SIZE])
 void
 make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax)
 {
-    char half[MAXLINE], *optr;
+    char *optr;
     int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
     int ndig;                   /* Total number of digits to generate. */
     int ddig;                   /* Number of digits to left of decimal sep. */
@@ -447,9 +448,7 @@ make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax
     mp_set_from_integer(basevals[base], MP1base);
 
     mppwr(MP1base, v->accuracy, MP1);
-    /* FIXME: string const. if MPstr_to_num can get it */
-    SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, 10, MP2);
+    MPstr_to_num("0.5", 10, MP2);
     mpdiv(MP2, MP1, MP1);
     mp_add(MPval, MP1, MPval);
 
@@ -464,7 +463,7 @@ make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax
         }
     }
  
-    ndig = MIN(ddig + v->accuracy, --cmax);
+    ndig = (ddig + v->accuracy) < (--cmax) ? (ddig + v->accuracy) : (--cmax);
 
     while (ndig-- > 0) {
         if (ddig-- == 0) {
@@ -503,7 +502,7 @@ make_fixed(char *target, int target_len, const int *MPnumber, int base, int cmax
 void
 make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
 {
-    char half[MAXLINE], fixed[MAX_DIGITS], *optr;
+    char fixed[MAX_DIGITS], *optr;
     int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
     int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
     int i, dval, len;
@@ -571,8 +570,7 @@ make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
         *optr++ = '+';
     }
  
-    SNPRINTF(half, MAXLINE, "0.5");
-    MPstr_to_num(half, 10, MP1);
+    MPstr_to_num("0.5", 10, MP1);
     mp_add_integer(MP1, exp, MPval);
     mp_set_from_integer(1, MP1);
     for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
