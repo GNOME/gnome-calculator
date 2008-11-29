@@ -87,6 +87,7 @@
 %left '+' '-'
 %left '*' '/'
 %left MED
+%left LNEG
 %left NEG
 %left POS
 %right '^'
@@ -176,12 +177,6 @@ exp:
     }
     calc_xor($1, $3, $$);
 }
-| '~' exp {
-    if (!is_natural($2)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
-    }
-    calc_not($2, $$);
-}
 ;
 
 
@@ -193,6 +188,12 @@ term:
 | 'e' '^' term {calc_epowy($3, $$);} 
 | term '!' {calc_factorial($1 ,$$);}
 | term '%' {calc_percent($1, $$);}
+| '~' term %prec LNEG {
+    if (!is_natural($2)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    }
+    calc_not($2, $$);
+}
 | '-' term %prec NEG {mp_invert_sign($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
 | term '^' term {calc_xpowy($1, $3, $$);}
