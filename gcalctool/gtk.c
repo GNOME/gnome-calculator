@@ -342,6 +342,62 @@ static struct button_widget button_widgets[] = {
     { 0,     0 },
     { GDK_braceleft, 0 }},
 
+    {FN_SIN,                "sine",
+    { 0,     0 },
+    { GDK_k, 0 }},
+
+    {FN_ASIN,                "sine",
+    { 0,     0 },
+    { GDK_K, 0 }},
+
+    {FN_COS,                 "cosine",
+    { 0,     0 },
+    { GDK_j, 0 }},
+
+    {FN_ACOS,                "cosine",
+    { 0,     0 },
+    { GDK_J, 0 }},
+
+    {FN_TAN,                 "tangent",
+    { 0,     0 },
+    { GDK_w, 0 }},
+
+    {FN_ATAN,                "tangent",
+    { 0,     0 },
+    { GDK_W, 0 }},
+
+    {FN_NATURAL_LOGARITHM,  "natural_logarithm",
+    { 0,     0 },
+    { GDK_n, 0 }},
+
+    {FN_E_POW_X,            "natural_logarithm",
+    { 0,             0 },
+    { GDK_N, 0 }},
+
+    {FN_LOGARITHM,          "logarithm",
+    { 0,     0 },
+    { GDK_g, 0 }},
+
+    {FN_10_POW_X,           "logarithm",
+    { 0,              0 },
+    { GDK_G, 0 }},
+
+    {FN_LOGARITHM2,         "logarithm2",
+    { 0,     0 },
+    { GDK_h, 0 }},
+
+    {FN_2_POW_X,            "logarithm2",
+    { 0,     0 },
+    { GDK_H, 0 }},
+
+    {FN_X_POW_Y,            "x_pow_y",
+    { 0,     0,         0,               0 },
+    { GDK_o, GDK_caret, GDK_asciicircum, 0 }},
+
+    {FN_X_POW_Y_INV,        "x_pow_y",
+    { 0,     0 },
+    { GDK_O, 0 }},
+    
     {FN_FINC_CTRM,          "finc_compounding_term",
     { 0,     0 },
     { GDK_m, 0 }},
@@ -380,70 +436,9 @@ static struct button_widget button_widgets[] = {
 
     {FN_FINC_TERM,          "finc_term",
     { 0,     0 },
-    { GDK_t, 0 }},
+    { GDK_t, 0 }}
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
-
-/* All functions that share widget with other functions. */
-static struct button_widget widgetless_buttons[] = {
-    {FN_SIN,                "sine",
-    { 0,     0 },
-    { GDK_k, 0 }},
-
-    {FN_ASIN,                "sine",
-    { 0,     0 },
-    { GDK_K, 0 }},
-
-    {FN_COS,                "cosine",
-    { 0,     0 },
-    { GDK_j, 0 }},
-
-    {FN_ACOS,                "cosine",
-    { 0,     0 },
-    { GDK_J, 0 }},
-
-    {FN_TAN,                "tangent",
-    { 0,     0 },
-    { GDK_w, 0 }},
-
-    {FN_ATAN,                "tangent",
-    { 0,     0 },
-    { GDK_W, 0 }},
-
-    {FN_NATURAL_LOGARITHM,  "natural_logarithm",
-    { 0,     0 },
-    { GDK_n, 0 }},
-
-    {FN_E_POW_X,            "pow_e",
-    { 0,             0 },
-    { GDK_N, 0 }},
-
-    {FN_LOGARITHM,          "logarithm",
-    { 0,     0 },
-    { GDK_g, 0 }},
-
-    {FN_10_POW_X,           "pow_10",
-    { 0,              0 },
-    { GDK_G, 0 }},
-
-    {FN_LOGARITHM2,         "logarithm2",
-    { 0,     0 },
-    { GDK_h, 0 }},
-
-    {FN_2_POW_X,            "logarithm2",
-    { 0,     0 },
-    { GDK_H, 0 }},
-
-    {FN_X_POW_Y,            "x_pow_y",
-    { 0,     0,         0,               0 },
-    { GDK_o, GDK_caret, GDK_asciicircum, 0 }},
-
-    {FN_X_POW_Y_INV,        "x_pow_y",
-    { 0,     0 },
-    { GDK_O, 0 }},
-};
-
-#define NVARBUTTONS (sizeof(widgetless_buttons) / sizeof(struct button_widget))
 
 #define UI_FILE PACKAGE_GLADE_DIR "/gcalctool.glade"
 
@@ -2067,20 +2062,6 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             if (button_widgets[i].accelerator_keys[j] == event->keyval &&
                 button_widgets[i].accelerator_mods[j] == state) {
                 button_cb(button, NULL);
-                return (TRUE);
-            }
-        }
-    }
-
-    /* There should be no variable buttons in basic mode */
-    if (v->modetype == BASIC) {
-        return (FALSE);
-    }
-    for (i = 0; i < NVARBUTTONS; i++) {
-        for (j = 0; widgetless_buttons[i].accelerator_keys[j] != 0; j++) {
-            if (widgetless_buttons[i].accelerator_keys[j] == event->keyval &&
-                widgetless_buttons[i].accelerator_mods[j] == state) {
-                do_button(widgetless_buttons[i].key, 0);
                 return (TRUE);
             }
         }
