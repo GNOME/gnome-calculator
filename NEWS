@@ -4,6 +4,46 @@
  *  All Rights Reserved.
  */
  
+Overview of changes in gcalctool 5.25.2
+
+    * Changed the scientific UI so that inverse operations (e.g. Ln/e^x) are controlled by the shift key.
+      The following shortcut keys have changed:
+
+      Function     | Old | New
+      --------------------------
+      Sine         | K   | k
+      Inv. Sine    | -   | K
+      Cosine       | J   | j
+      Inv. Cosine  | -   | J
+      Tangent      | L   | w
+      Inv. Tangent | -   | W
+      Natural Log  | N   | n
+      e^x          | {   | N
+      Log          | G   | g
+      10^x         | }   | G
+      Log_2        | H   | h
+      2^x          | -   | H
+      x^y          | ^   | ^ or o
+      x^(1/y)      | -   | O
+      
+      (Robin Sonefors, Bug #379476).
+
+    * Fixed crash where financial dialogs are activated from other modes on startup
+      (Robin Sonefors, Bug #560196).
+
+    * Give binary invert operation higher precedence so that ~X and X == 0 (Sami Pietilä, Bug #562251)
+    
+    * Fixed calculation errors for boolean operations on very large numbers (Robert Ancell, Bug #509988)
+
+    * Always read configuration from /apps/gcalctool not /apps/(appname) as the application
+      name is different when symlinked (e.g. the gnome-calculator symlink) (Matt Keenan, Bug #559260).
+
+    * Correct gconf key names in man page (Robert Ancell, Bug #559458).
+
+    * Updated translations: es (Jorge Gonzalez)
+
+    * Updated help: es (Jorge Gonzalez)
+
 Overview of changes in gcalctool 5.25.1
 
     * Added a programming mode that contains the bit editor (Robin Sonefors, Bug #501508).
