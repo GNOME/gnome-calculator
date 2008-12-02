@@ -121,7 +121,7 @@ void mp_sinh(const int *x, int *z);
 void mp_tan(const int *x, int *z);
 void mp_tanh(const int *x, int *z);
 
-/* mp-boolean.c */
+/* mp-binary.c */
 void mp_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
 void mp_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
 void mp_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);

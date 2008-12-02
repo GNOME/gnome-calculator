@@ -26,7 +26,7 @@ gcalctool_SOURCES = \
 	functions.h \
 	mp.c \
 	mp.h \
-	mp-boolean.c \
+	mp-binary.c \
 	mp-convert.c \
 	mp-internal.h \
 	mp-trigonometric.c \
