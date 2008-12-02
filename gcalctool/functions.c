@@ -334,7 +334,7 @@ do_expression(int function, int arg, int cursor)
         case FN_CLEAR_ENTRY:
             display_clear(&v->display);
             ui_set_error_state(FALSE);
-            MPstr_to_num("0", 10, ans);
+            mp_set_from_string("0", 10, ans);
             break;
 
         case FN_SHIFT:
@@ -376,8 +376,7 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case FN_CONSTANT:
-            mp_cast_to_number(buf, MAXLINE, constant_get_value(arg), v->base, FALSE);
-            display_insert(&v->display, buf);
+            display_insert_number(&v->display, constant_get_value(arg));
             break;
 
         case FN_BACKSPACE:
@@ -403,13 +402,10 @@ do_expression(int function, int arg, int cursor)
 
                 bit_value ^= (1LL << (63 - arg));
     
-                /* FIXME: Convert to since we don't support setting MP numbers from 64 bit integers */
+                /* FIXME: Convert to string since we don't support setting MP numbers from 64 bit integers */
                 SNPRINTF(buf, MAX_DISPLAY, "%llu", bit_value);
-                MPstr_to_num(buf, 10, MP);
-
-                /* FIXME: Set as string as display_set_number doesn't store correctly */
-                mp_cast_to_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
-                display_set_string(&v->display, buf, -1);
+                mp_set_from_string(buf, 10, MP);
+                display_set_number(&v->display, MP);
             }
             break;
 

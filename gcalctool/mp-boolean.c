@@ -21,8 +21,8 @@ mp_bitwise(const int s1[MP_SIZE], const int s2[MP_SIZE], int (*bitwise_operator)
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
     int offset1, offset2, offset_out;
     
-    mp_cast_to_fixed(text1, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
-    mp_cast_to_fixed(text2, MAX_DIGITS, s2, HEX, MAX_DIGITS, MAX_DIGITS);
+    mp_cast_to_string(text1, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
+    mp_cast_to_string(text2, MAX_DIGITS, s2, HEX, MAX_DIGITS, MAX_DIGITS);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = offset1 > offset2 ? offset1 : offset2;
@@ -46,7 +46,7 @@ mp_bitwise(const int s1[MP_SIZE], const int s2[MP_SIZE], int (*bitwise_operator)
         text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
     
-    MPstr_to_num(text_out, 16, t);
+    mp_set_from_string(text_out, 16, t);
 }
 
 
@@ -101,10 +101,10 @@ mp_mask_u32(const int s1[MP_SIZE], int t1[MP_SIZE])
     size_t len, offset;
     
     /* Convert to a hexadecimal string and use last 8 characters */
-    mp_cast_to_fixed(text, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
+    mp_cast_to_string(text, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
     len = strlen(text);
     offset = len > 8 ? len - 8: 0;
-    MPstr_to_num(text + offset, 16, t1);
+    mp_set_from_string(text + offset, 16, t1);
 }
 
 
@@ -115,10 +115,10 @@ mp_mask_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
     size_t len, offset;
     
     /* Convert to a hexadecimal string and use last 4 characters */
-    mp_cast_to_fixed(text, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
+    mp_cast_to_string(text, MAX_DIGITS, s1, HEX, MAX_DIGITS, MAX_DIGITS);
     len = strlen(text);
     offset = len > 4 ? len - 4: 0;
-    MPstr_to_num(text + offset, 16, t1);
+    mp_set_from_string(text + offset, 16, t1);
 }
 
 

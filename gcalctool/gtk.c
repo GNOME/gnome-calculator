@@ -534,9 +534,8 @@ reset_display(void)
     int *ans;
 
     ans = display_get_answer(&v->display);
-    MPstr_to_num("0", 10, ans);
+    mp_set_from_integer(0, ans);
     display_clear(&v->display);
-    display_set_number(&v->display, ans);
 }
 
 
@@ -1389,7 +1388,7 @@ help_display(void)
 {
     GdkScreen *screen;
     GError *error = NULL;
-   
+
     screen = gtk_widget_get_screen (GTK_WIDGET (X->kframe));
     gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
  
@@ -1505,7 +1504,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
         }
         entry = glade_xml_get_widget(X->financial,
                                      finc_dialog_fields[dialog][i]);
-        MPstr_to_num(gtk_entry_get_text(GTK_ENTRY(entry)), 10, arg[i]);
+        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
     gtk_widget_grab_focus(glade_xml_get_widget(X->financial, 
@@ -1562,7 +1561,7 @@ update_constants_menu(void)
     int i;
 
     for (i = 0; i < MAX_CONSTANTS; i++) {
-        mp_cast_to_number(value, MAXLINE, constant_get_value(i), DEC, TRUE);
+        display_make_number(value, MAXLINE, constant_get_value(i), DEC, TRUE);
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                  value, 
@@ -1617,7 +1616,7 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
-                MPstr_to_num(value, 10, temp);
+                mp_set_from_string(value, 10, temp);
                 constant_set(number, description, temp);
             } while (gtk_tree_model_iter_next(X->constants_model, &iter));
         }
@@ -1685,7 +1684,7 @@ create_constants_model()
     for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
-        mp_cast_to_number(constant, MAXLINE, constant_get_value(i), DEC, TRUE);
+        display_make_number(constant, MAXLINE, constant_get_value(i), DEC, TRUE);
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
@@ -1733,12 +1732,12 @@ ui_make_registers()            /* Calculate memory register frame values. */
         int temp[MP_SIZE];
         
         register_get(n, temp);
-        mp_cast_to_number(mval, MAXLINE, temp, v->base, TRUE);
+        display_make_number(mval, MAXLINE, temp, v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
 
         SNPRINTF(key, MAXLINE, "register%d", n);
-        mp_cast_to_number(value, MAXLINE, temp, DEC, TRUE);
+        display_make_number(value, MAXLINE, temp, DEC, TRUE);
         set_resource(key, value);
     }
 }
@@ -1816,7 +1815,7 @@ update_memory_menus()
     for (i = 0; i < MAX_REGISTERS; i++) {
         int temp[MP_SIZE];
         register_get(i, temp);
-        mp_cast_to_number(value, MAXLINE, temp, v->base, TRUE);
+        display_make_number(value, MAXLINE, temp, v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
         /* Translators: R is the short form of register used inter alia in popup menus */
                 _("R"), i, value);

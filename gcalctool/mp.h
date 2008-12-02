@@ -101,14 +101,11 @@ void   mp_set_from_double(double, int *);
 void   mp_set_from_integer(int, int *);
 void   mp_set_from_fraction(int, int, int *);
 void   mp_set_from_random(int t[MP_SIZE]);
+void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]);
 float  mp_cast_to_float(const int *);
 double mp_cast_to_double(const int *);
 int    mp_cast_to_int(const int *);
-// FIXME: These should be merged together
-void   MPstr_to_num(const char *, int, int *);
-void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]); 
-void   mp_cast_to_fixed(char *, int, const int *, int, int, int);
-void   mp_cast_to_number(char *, int, const int *, int, int);
+void   mp_cast_to_string(char *, int, const int *, int, int, int);
 
 /* mp-trigonometric.c */
 void mp_acos(const int *x, int *z);

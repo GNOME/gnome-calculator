@@ -46,7 +46,6 @@ typedef struct {
 
 typedef struct
 {
-    char display[MAX_DISPLAY];  /* Current calculator display. */
     GCDisplayHistory h;         /* History of expression mode states */
 } GCDisplay;
 
@@ -62,7 +61,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value);
 int *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
-void display_set_number(GCDisplay *, int *);
+void display_set_number(GCDisplay *, const int *);
 void display_set_string(GCDisplay *, const char *, int);
 void display_set_cursor(GCDisplay *, int);
 void display_set_error(GCDisplay *, const char *);
@@ -74,6 +73,7 @@ void display_unpop(GCDisplay *);
 gboolean display_is_undo_step(GCDisplay *display);
 
 void display_insert(GCDisplay *, const char *);
+void display_insert_number(GCDisplay *display, const int *);
 void display_backspace(GCDisplay *);
 void display_delete(GCDisplay *);
 void display_surround(GCDisplay *, const char *, const char *);
@@ -83,5 +83,7 @@ gboolean display_is_result(GCDisplay *);
 gboolean display_is_usable_number(GCDisplay *, int *);
 
 int display_solve(GCDisplay *, int *);
+
+void display_make_number(char *target, int target_len, const int *MPnumber, int base, int ignoreError);
 
 #endif /* DISPLAY_H */

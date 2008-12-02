@@ -80,13 +80,13 @@ void register_init()
         }
 
         if (nline && vline) {
-            MPstr_to_num(vline, 10, value);
+            mp_set_from_string(vline, 10, value);
             constant_set(i, nline, value);
             g_free(nline);
             g_free(vline);
         }
         else {
-            MPstr_to_num(default_constants[i][1], 10, value);
+            mp_set_from_string(default_constants[i][1], 10, value);
             constant_set(i, default_constants[i][0], value);
         }
     }
@@ -134,7 +134,7 @@ register_get(int index, int value[MP_SIZE])
 
 void constant_set(int index, const char *name, int value[MP_SIZE])
 {
-    char key[MAXLINE], temp[MAX_LOCALIZED];
+    char key[MAXLINE], text[MAX_LOCALIZED];
 
     STRNCPY(constant_names[index], name, MAXLINE - 1);
     mp_set_from_mp(value, constant_values[index]);
@@ -144,9 +144,9 @@ void constant_set(int index, const char *name, int value[MP_SIZE])
 
     /* NOTE: Constants are written out with no thousands separator and with a
        radix character of ".". */
-    mp_cast_to_number(temp, MAX_LOCALIZED, value, DEC, TRUE);   
+    mp_cast_to_string(text, MAX_LOCALIZED, value, DEC, MAX_DIGITS, MAX_DIGITS);
     SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
-    set_resource(key, temp);
+    set_resource(key, text);
 }
 
 

@@ -366,7 +366,7 @@ mp_atanh(const int *x, int *z)
         mp_subtract(MP1, x, MP3);
         mpdiv(MP2, MP3, MP3);
         mpln(MP3, MP3);
-        MPstr_to_num("0.5", 10, MP1);
+        mp_set_from_string("0.5", 10, MP1);
         mpmul(MP1, MP3, z);
     }
 }

@@ -488,7 +488,7 @@ mpcmim(const int *x, int *y)
 
     // FIXME: Won't this have completely different behaviour depending on base?
     mpcmf(x, tmp);
-    mp_cast_to_fixed(disp, MAXLINE, tmp, v->base, MAX_DIGITS, MAX_DIGITS);
+    mp_cast_to_string(disp, MAXLINE, tmp, v->base, MAX_DIGITS, MAX_DIGITS);
     if (disp[0] == '1') {
         y[ll]++;
     }
@@ -2398,7 +2398,7 @@ mp_factorial(int *MPval, int *MPres)
     mpcmim(MPval, MP1);
     mp_set_from_integer(0, MP2);
     if (mp_is_equal(MPval, MP1)
-        && mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
+	&& mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
         if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
             mp_set_from_integer(1, MPres);
             return;
@@ -2426,8 +2426,8 @@ mp_factorial(int *MPval, int *MPres)
 
 int
 mp_modulus_divide(int op1[MP_SIZE], 
-                  int op2[MP_SIZE], 
-                  int result[MP_SIZE])
+		  int op2[MP_SIZE], 
+		  int result[MP_SIZE])
 {
     int MP1[MP_SIZE], MP2[MP_SIZE];
 
@@ -2442,8 +2442,8 @@ mp_modulus_divide(int op1[MP_SIZE],
 
     mp_set_from_integer(0, MP1);
     if ((mp_is_less_than(op2, MP1)
-         && mp_is_greater_than(result, MP1)) ||
-        mp_is_less_than(result, MP1)) { 
+	 && mp_is_greater_than(result, MP1)) ||
+	mp_is_less_than(result, MP1)) { 
         mp_add(result, op2, result);
     }
 
@@ -2483,7 +2483,7 @@ mp_percent(int s1[MP_SIZE], int t1[MP_SIZE])
 {
     int MP1[MP_SIZE];
 
-    MPstr_to_num("0.01", 10, MP1);
+    mp_set_from_string("0.01", 10, MP1);
     mpmul(s1, MP1, t1);
 }
 

@@ -215,7 +215,7 @@ gboolean display_get_integer(GCDisplay *display, gint64 *value)
         text = "0";
     }
     else if (display_is_result(display)) {
-        mp_cast_to_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        display_make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
         text = buf;
     }
     
@@ -237,7 +237,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
         text = "0";
     }
     else if (display_is_result(display)) {
-        mp_cast_to_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        display_make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
         text = buf;
     }
     
@@ -263,12 +263,11 @@ display_get_cursor(GCDisplay *display)
 }
 
 void
-display_set_number(GCDisplay *display, int *MPval)
+display_set_number(GCDisplay *display, const int *MPval)
 {
-    if (!v->error) {
-        mp_cast_to_number(display->display, MAX_DISPLAY, MPval, v->base, FALSE);
-        ui_set_display(display->display, -1);
-    }
+   char text[MAX_DISPLAY];
+   display_make_number(text, MAX_DISPLAY, MPval, v->base, FALSE);
+   display_set_string(display, text, -1);
 }
 
 void
@@ -411,6 +410,15 @@ display_insert(GCDisplay *display, const char *text)
 }
 
 void
+display_insert_number(GCDisplay *display, const int value[MP_SIZE])
+{
+    char text[MAX_DISPLAY];
+    display_make_number(text, MAX_DISPLAY, value, v->base, FALSE);
+    display_insert(display, text);
+}
+
+
+void
 display_backspace(GCDisplay *display)
 {
     char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY], *t;
@@ -422,7 +430,7 @@ display_backspace(GCDisplay *display)
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
-            mp_cast_to_number(buf, MAX_DISPLAY, e->ans, v->base, FALSE);
+            display_make_number(buf, MAX_DISPLAY, e->ans, v->base, FALSE);
             t = str_replace(e->expression, "Ans", buf);
             free(e->expression);
             e->expression = t;
@@ -431,7 +439,7 @@ display_backspace(GCDisplay *display)
                 SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
                 if (exp_has_postfix(e->expression, buf)) {
                     register_get(i, MP_reg);
-                    mp_cast_to_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
+                    display_make_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
                     SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
                     display_set_string(display, buf, cursor - 1);
@@ -488,14 +496,14 @@ display_refresh(GCDisplay *display)
     e = get_state(display);
     if (display_is_empty(display)) {
         mp_set_from_integer(0, MP_reg);
-        mp_cast_to_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        display_make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
         str = x;
     } else {           
         str = strdup(e->expression);
     }
         
     /* Substitute answer register */
-    mp_cast_to_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
+    display_make_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
     localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
     str = str_replace(str, "Ans", localized);
 
@@ -503,7 +511,7 @@ display_refresh(GCDisplay *display)
     for (i = 0; i < 10; i++) {
         SNPRINTF(reg, 3, "R%d", i);
         register_get(i, MP_reg);
-        mp_cast_to_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        display_make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
         t = str_replace(str, reg, xx);
         free(str);
         str = t;
@@ -573,4 +581,138 @@ display_solve(GCDisplay *display, int *result)
     g_string_free(clean, TRUE);
     
     return errorCode;
+}
+
+
+/* Convert engineering or scientific number in the given base. */
+void
+make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
+{
+    static char digits[] = "0123456789ABCDEF";   
+    char fixed[MAX_DIGITS], *optr;
+    int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
+    int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
+    int i, dval, len;
+    int MPmant[MP_SIZE];        /* Mantissa. */
+    int ddig;                   /* Number of digits in exponent. */
+    int eng = 0;                /* Set if this is an engineering number. */
+    int exp = 0;                /* Exponent */
+    
+    if (v->dtype == ENG) {
+        eng = 1;
+    }
+    optr = target;
+    mp_abs(MPnumber, MPval);
+    mp_set_from_integer(0, MP1);
+    if (mp_is_less_than(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
+    mp_set_from_mp(MPval, MPmant);
+
+    mp_set_from_integer(basevals[base], MP1base);
+    mppwr(MP1base, 3, MP3base);
+
+    mppwr(MP1base, 10, MP10base);
+
+    mp_set_from_integer(1, MP1);
+    mpdiv(MP1, MP10base, MPatmp);
+
+    mp_set_from_integer(0, MP1);
+    if (!mp_is_equal(MPmant, MP1)) {
+        while (!eng && mp_is_greater_equal(MPmant, MP10base)) {
+            exp += 10;
+            mpmul(MPmant, MPatmp, MPmant);
+        }
+ 
+        while ((!eng &&  mp_is_greater_equal(MPmant, MP1base)) ||
+                (eng && (mp_is_greater_equal(MPmant, MP3base) || exp % 3 != 0))) {
+            exp += 1;
+            mpdiv(MPmant, MP1base, MPmant);
+        }
+ 
+        while (!eng && mp_is_less_than(MPmant, MPatmp)) {
+            exp -= 10;
+            mpmul(MPmant, MP10base, MPmant);
+        }
+ 
+        mp_set_from_integer(1, MP1);
+        while (mp_is_less_than(MPmant, MP1) || (eng && exp % 3 != 0)) {
+            exp -= 1;
+            mpmul(MPmant, MP1base, MPmant);
+        }
+    }
+ 
+    mp_cast_to_string(fixed, MAX_DIGITS, MPmant, base, v->accuracy, MAX_DIGITS-6);
+    len = strlen(fixed);
+    for (i = 0; i < len; i++) {
+        *optr++ = fixed[i];
+    }
+ 
+    *optr++ = 'e';
+ 
+    if (exp < 0) {
+        exp = -exp;
+        *optr++ = '-';
+    } else {
+        *optr++ = '+';
+    }
+ 
+    mp_set_from_string("0.5", 10, MP1);
+    mp_add_integer(MP1, exp, MPval);
+    mp_set_from_integer(1, MP1);
+    for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
+        mpdiv(MPval, MP1base, MPval);
+    }
+ 
+    if (ddig == 0) {
+        *optr++ = '0';
+    }
+ 
+    while (ddig-- > 0) {
+        mpmul(MPval, MP1base, MPval);
+        dval = mp_cast_to_int(MPval);
+        *optr++ = digits[dval];
+        dval = -dval;
+        mp_add_integer(MPval, dval, MPval);
+    }
+    *optr++    = '\0';
+}
+
+
+/* Convert MP number to character string in the given base. */
+void
+display_make_number(char *target, int target_len, const int *MPnumber, int base, int ignoreError)
+{
+    static double max_fix[MAXBASES] = {
+       1.298074214e+33,    /* Binary. */
+       2.037035976e+90,    /* Octal. */
+       1.000000000e+100,   /* Decimal */
+       2.582249878e+120    /* Hexadecimal. */
+    };
+
+    double val;
+    
+    /*  NOTE: display_make_number can currently set v->error when converting to a double.
+     *        This is to provide the same look&feel as V3 even though gcalctool
+     *        now does internal arithmetic to "infinite" precision.
+     *
+     *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+     *        order to do these tests.
+     */
+
+    double number = mp_cast_to_double(MPnumber);
+
+    val = fabs(number);
+    if (v->error && !ignoreError) {
+        STRNCPY(target, _("Error"), target_len - 1);
+        return;
+    }
+    // FIXME: Do this based on the number of digits, not actual values
+    if ((v->dtype == ENG) ||
+        (v->dtype == SCI) ||
+        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
+        make_eng_sci(target, target_len, MPnumber, base);
+    } else {
+        mp_cast_to_string(target, target_len, MPnumber, base, v->accuracy, MAX_DIGITS);
+    }
 }

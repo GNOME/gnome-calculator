@@ -106,28 +106,28 @@ return tNUMBER;
 {BIN_NUM} {
 if (v->base != BIN) REJECT;
 if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-MPstr_to_num(yytext, basevals[v->base], celval.int_t);
+mp_set_from_string(yytext, basevals[v->base], celval.int_t);
 return tNUMBER;
 }
 
 {OCT_NUM} {
 if (v->base != OCT) REJECT;
 if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-MPstr_to_num(yytext, basevals[v->base], celval.int_t);
+mp_set_from_string(yytext, basevals[v->base], celval.int_t);
 return tNUMBER;
 }
 
 {DEC_NUM} {
 if (v->base != DEC) REJECT;
 if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-MPstr_to_num(yytext, basevals[v->base], celval.int_t);
+mp_set_from_string(yytext, basevals[v->base], celval.int_t);
 return tNUMBER;
 }
 
 {HEX_NUM} {
 if (v->base != HEX) REJECT;
 if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-MPstr_to_num(yytext, basevals[v->base], celval.int_t);
+mp_set_from_string(yytext, basevals[v->base], celval.int_t);
 return tNUMBER;
 }
 

@@ -252,7 +252,7 @@ read_resources()    /* Read all possible resources from the database. */
         SNPRINTF(key, MAXLINE, "register%d", i);
         if (get_str_resource(key, str)) {
             int temp[MP_SIZE];
-            MPstr_to_num(str, 10, temp);
+            mp_set_from_string(str, 10, temp);
             register_set(i, temp);
         }
     }
