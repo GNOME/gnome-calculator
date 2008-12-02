@@ -31,7 +31,7 @@
 #include "display.h"
 #include "functions.h"
 #include "ui.h"
-#include "mpmath.h"
+#include "mp.h"
 #include "register.h"
 
 time_t time();
@@ -41,8 +41,59 @@ int basevals[4] = { 2, 8, 10, 16 };
 /* Calctool variables and options. */
 CalculatorVariables *v;
 
-/* Calctools' customised math library error-handling routine. */
+/* Change type to radian */
+void
+to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
 
+    if (v->ttype == DEG) {
+        mp_get_pi(MP1);
+        mpmul(s1, MP1, MP2);
+        mp_set_from_integer(180, MP1);
+        mpdiv(MP2, MP1, t1);
+    } else if (v->ttype == GRAD) {
+        mp_get_pi(MP1);
+        mpmul(s1, MP1, MP2);
+        mp_set_from_integer(200, MP1);
+        mpdiv(MP2, MP1, t1);
+    } else {
+        mp_set_from_mp(s1, t1);
+    }
+}
+
+void
+do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE])
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+  
+    switch (ttype) {
+
+        case DEG:
+            mp_set_from_integer(180, MP1);
+            mpmul(s1, MP1, MP2);
+            mp_get_pi(MP1);
+            mpdiv(MP2, MP1, t1);
+            break;
+
+        case RAD:
+            mp_set_from_mp(s1, t1);
+            break;
+
+        case GRAD:
+            mp_set_from_integer(200, MP1);
+            mpmul(s1, MP1, MP2);
+            mp_get_pi(MP1);
+            mpdiv(MP2, MP1, t1);
+            break;
+
+        default:
+            assert(0);
+            break;
+    }
+}
+
+/* Calctools' customised math library error-handling routine. */
 void
 doerr(char *errmes)
 {

@@ -53,6 +53,12 @@ void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
 int mp_compare_mp_to_mp(const int *x, const int *y);
 
+/* return true if parameter is integer */
+int mp_is_integer(int MPnum[MP_SIZE]);
+
+/* return true if parameter is natural number, that is, a positive integer */
+int mp_is_natural(int MPnum[MP_SIZE]);
+
 int mp_is_equal(const int *, const int *);
 int mp_is_greater_equal(const int *, const int *);
 int mp_is_greater_than(const int *, const int *);
@@ -73,6 +79,7 @@ void mpdiv(const int *, const int *, int *);
 void mpdivi(const int *, int, int *);
 void mpexp(const int *, int *);
 void mpln(int *, int *);
+void mp_logarithm(int n, int *MPx, int *MPretval);
 void mpmul(const int *, const int *, int *);
 void mpmuli(int *, int, int *);
 void mp_get_pi(int *z);
@@ -81,6 +88,11 @@ void mppwr2(int *, int *, int *);
 void mpset(int, int, int);
 void mp_root(const int *x, int n, int *z);
 void mp_sqrt(const int *x, int *z);
+void mp_factorial(int *, int *);
+int mp_modulus_divide(int op1[MP_SIZE], int op2[MP_SIZE], int result[MP_SIZE]);
+void mp_percent(int s1[MP_SIZE], int t1[MP_SIZE]);
+void mp_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]);
+void mp_epowy(int s[MP_SIZE], int t[MP_SIZE]);
 
 /* mp-convert.c */
 void   mp_set_from_mp(const int *, int *);
@@ -88,11 +100,15 @@ void   mp_set_from_float(float, int *);
 void   mp_set_from_double(double, int *);
 void   mp_set_from_integer(int, int *);
 void   mp_set_from_fraction(int, int, int *);
+void   mp_set_from_random(int t[MP_SIZE]);
 float  mp_cast_to_float(const int *);
 double mp_cast_to_double(const int *);
 int    mp_cast_to_int(const int *);
+// FIXME: These should be merged together
 void   MPstr_to_num(const char *, int, int *);
-void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]);
+void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]); 
+void   mp_cast_to_fixed(char *, int, const int *, int, int, int);
+void   mp_cast_to_number(char *, int, const int *, int, int);
 
 /* mp-trigonometric.c */
 void mp_acos(const int *x, int *z);
@@ -108,5 +124,14 @@ void mp_sinh(const int *x, int *z);
 void mp_tan(const int *x, int *z);
 void mp_tanh(const int *x, int *z);
 
+/* mp-boolean.c */
+void mp_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void mp_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void mp_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void mp_xnor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE]);
+void mp_not(const int s1[MP_SIZE], int t[MP_SIZE]);
+void mp_mask_u32(const int s1[MP_SIZE], int t1[MP_SIZE]);
+void mp_mask_u16(const int s1[MP_SIZE], int t1[MP_SIZE]);
+void mp_shift(int s[MP_SIZE], int t[MP_SIZE], int times);
 
 #endif /* MP_H */

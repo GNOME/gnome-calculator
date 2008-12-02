@@ -40,7 +40,6 @@
 #include "functions.h"
 #include "financial.h"
 #include "ce_parser.h"
-#include "mpmath.h"
 #include "display.h"
 #include "get.h"
 #include "register.h"
@@ -639,7 +638,7 @@ ui_update_modifier_mode()
         N_("Hyperbolic Inverse Tangent [W]")};
     static int  tangent_functions[] = {FN_TAN, FN_ATAN, FN_TANH, FN_ATANH};
     
-	static char *ln_labels[]        = {
+    static char *ln_labels[]        = {
         /* Translators: The natural logaritm button */
         N_("Ln"),
         /* Translators: The e to the power of x button */
@@ -1390,7 +1389,7 @@ help_display(void)
 {
     GdkScreen *screen;
     GError *error = NULL;
- 
+   
     screen = gtk_widget_get_screen (GTK_WIDGET (X->kframe));
     gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
  
@@ -1478,8 +1477,8 @@ finc_activate_cb(GtkWidget *widget, void *pointer) {
             }
             else {
                 dialog_widget = gtk_widget_get_toplevel(widget);
-				if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
-                	gtk_dialog_response(GTK_DIALOG(dialog_widget),
+                if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
+                    gtk_dialog_response(GTK_DIALOG(dialog_widget),
                                         GTK_RESPONSE_OK);
                     return;
                 }
@@ -1552,9 +1551,8 @@ setup_finc_dialogs(void)
                              G_CALLBACK(finc_response_cb), 
                              GINT_TO_POINTER(FINC_TERM_DIALOG));
 
-	glade_xml_signal_connect(X->financial, "finc_activate_cb", 
+    glade_xml_signal_connect(X->financial, "finc_activate_cb", 
                              G_CALLBACK(finc_activate_cb));
-
 }
 
 static void
@@ -1564,7 +1562,7 @@ update_constants_menu(void)
     int i;
 
     for (i = 0; i < MAX_CONSTANTS; i++) {
-        make_number(value, MAXLINE, constant_get_value(i), DEC, TRUE);
+        mp_cast_to_number(value, MAXLINE, constant_get_value(i), DEC, TRUE);
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                  value, 
@@ -1687,7 +1685,7 @@ create_constants_model()
     for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
-        make_number(constant, MAXLINE, constant_get_value(i), DEC, TRUE);
+        mp_cast_to_number(constant, MAXLINE, constant_get_value(i), DEC, TRUE);
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
@@ -1735,12 +1733,12 @@ ui_make_registers()            /* Calculate memory register frame values. */
         int temp[MP_SIZE];
         
         register_get(n, temp);
-        make_number(mval, MAXLINE, temp, v->base, TRUE);
+        mp_cast_to_number(mval, MAXLINE, temp, v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X->regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X->regs[n]), mval);
 
         SNPRINTF(key, MAXLINE, "register%d", n);
-        make_number(value, MAXLINE, temp, DEC, TRUE);
+        mp_cast_to_number(value, MAXLINE, temp, DEC, TRUE);
         set_resource(key, value);
     }
 }
@@ -1818,7 +1816,7 @@ update_memory_menus()
     for (i = 0; i < MAX_REGISTERS; i++) {
         int temp[MP_SIZE];
         register_get(i, temp);
-        make_number(value, MAXLINE, temp, v->base, TRUE);
+        mp_cast_to_number(value, MAXLINE, temp, v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
         /* Translators: R is the short form of register used inter alia in popup menus */
                 _("R"), i, value);

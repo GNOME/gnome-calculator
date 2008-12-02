@@ -24,7 +24,7 @@
 #include "register.h"
 #include "calctool.h"
 #include "get.h"
-#include "mpmath.h"
+#include "mp.h"
 
 static char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
 static int constant_values[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
@@ -144,7 +144,7 @@ void constant_set(int index, const char *name, int value[MP_SIZE])
 
     /* NOTE: Constants are written out with no thousands separator and with a
        radix character of ".". */
-    make_number(temp, MAX_LOCALIZED, value, DEC, TRUE);   
+    mp_cast_to_number(temp, MAX_LOCALIZED, value, DEC, TRUE);   
     SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
     set_resource(key, temp);
 }

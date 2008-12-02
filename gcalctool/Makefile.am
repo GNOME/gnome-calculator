@@ -26,11 +26,10 @@ gcalctool_SOURCES = \
 	functions.h \
 	mp.c \
 	mp.h \
+	mp-boolean.c \
 	mp-convert.c \
 	mp-internal.h \
 	mp-trigonometric.c \
-	mpmath.c \
-	mpmath.h \
 	financial.c \
 	financial.h \
 	parser.c \

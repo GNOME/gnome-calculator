@@ -26,7 +26,7 @@
 
 #include "display.h"
 
-#include "mpmath.h"
+#include "mp.h"
 #include "functions.h"
 #include "ui.h"
 #include "ce_parser.h" // For ce_parse()
@@ -215,7 +215,7 @@ gboolean display_get_integer(GCDisplay *display, gint64 *value)
         text = "0";
     }
     else if (display_is_result(display)) {
-        make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        mp_cast_to_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
         text = buf;
     }
     
@@ -237,7 +237,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
         text = "0";
     }
     else if (display_is_result(display)) {
-        make_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
+        mp_cast_to_number(buf, MAX_DISPLAY, display_get_answer(display), v->base, FALSE);
         text = buf;
     }
     
@@ -266,7 +266,7 @@ void
 display_set_number(GCDisplay *display, int *MPval)
 {
     if (!v->error) {
-        make_number(display->display, MAX_DISPLAY, MPval, v->base, FALSE);
+        mp_cast_to_number(display->display, MAX_DISPLAY, MPval, v->base, FALSE);
         ui_set_display(display->display, -1);
     }
 }
@@ -422,7 +422,7 @@ display_backspace(GCDisplay *display)
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
-            make_number(buf, MAX_DISPLAY, e->ans, v->base, FALSE);
+            mp_cast_to_number(buf, MAX_DISPLAY, e->ans, v->base, FALSE);
             t = str_replace(e->expression, "Ans", buf);
             free(e->expression);
             e->expression = t;
@@ -431,7 +431,7 @@ display_backspace(GCDisplay *display)
                 SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
                 if (exp_has_postfix(e->expression, buf)) {
                     register_get(i, MP_reg);
-                    make_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
+                    mp_cast_to_number(buf2, MAX_DISPLAY, MP_reg, v->base, FALSE);
                     /* Remove "Rx" postfix and replace with backspaced number */
                     SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
                     display_set_string(display, buf, cursor - 1);
@@ -488,14 +488,14 @@ display_refresh(GCDisplay *display)
     e = get_state(display);
     if (display_is_empty(display)) {
         mp_set_from_integer(0, MP_reg);
-        make_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        mp_cast_to_number(x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
         str = x;
     } else {           
         str = strdup(e->expression);
     }
         
     /* Substitute answer register */
-    make_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
+    mp_cast_to_number(ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
     localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
     str = str_replace(str, "Ans", localized);
 
@@ -503,7 +503,7 @@ display_refresh(GCDisplay *display)
     for (i = 0; i < 10; i++) {
         SNPRINTF(reg, 3, "R%d", i);
         register_get(i, MP_reg);
-        make_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        mp_cast_to_number(xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
         t = str_replace(str, reg, xx);
         free(str);
         str = t;

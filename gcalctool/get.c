@@ -34,7 +34,7 @@
 
 #include "get.h"
 #include "register.h"
-#include "mpmath.h"
+#include "mp.h"
 
 #define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
 

@@ -21,7 +21,6 @@
 
 #include "unittest.h"
 
-#include "mpmath.h"
 #include "display.h"
 #include "functions.h"
 #include "calctool.h"
@@ -44,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    make_fixed(result_str, MAXLINE, result, DEC, 100);
+    mp_cast_to_fixed(result_str, MAXLINE, result, DEC, 100, 100);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else

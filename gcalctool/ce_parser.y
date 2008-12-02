@@ -27,7 +27,6 @@
 #include "calctool.h"
 #include "register.h"
 #include "display.h"
-#include "mpmath.h"
 #include "parser.h"
 #include "parser_mac.h"
 #include "ce_parser.h"
@@ -144,38 +143,38 @@ exp:
 | exp '-' exp {mp_subtract($1, $3, $$);}
 
 | exp tMOD exp %prec MED {
-    if (!is_integer($1) || !is_integer($3)) {
+    if (!mp_is_integer($1) || !mp_is_integer($3)) {
 	parser_state.error = -PARSER_ERR_MODULUSOP;
     } else {
-      if (calc_modulus($1, $3, $$)) {
+      if (mp_modulus_divide($1, $3, $$)) {
         parser_state.error = -EINVAL;
       }			   
     }
 }
 
 | exp tAND exp {
-    if (!is_natural($1) || !is_natural($3)) {
+    if (!mp_is_natural($1) || !mp_is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_and($1, $3, $$);
+    mp_and($1, $3, $$);
 }
 | exp tOR exp {
-    if (!is_natural($1) || !is_natural($3)) {
+    if (!mp_is_natural($1) || !mp_is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_or($1, $3, $$);
+    mp_or($1, $3, $$);
 }
 | exp tXNOR exp {
-    if (!is_natural($1) || !is_natural($3)) {
+    if (!mp_is_natural($1) || !mp_is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_xnor($1, $3, $$);
+    mp_xnor($1, $3, $$);
 }
 | exp tXOR exp {
-    if (!is_natural($1) || !is_natural($3)) {
+    if (!mp_is_natural($1) || !mp_is_natural($3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_xor($1, $3, $$);
+    mp_xor($1, $3, $$);
 }
 ;
 
@@ -185,18 +184,18 @@ term:
 | rcl {cp($1, $$);}
 | term '/' term {mpdiv($1, $3, $$);}
 | term '*' term {mpmul($1, $3, $$);}
-| 'e' '^' term {calc_epowy($3, $$);} 
-| term '!' {calc_factorial($1 ,$$);}
-| term '%' {calc_percent($1, $$);}
+| 'e' '^' term {mp_epowy($3, $$);} 
+| term '!' {mp_factorial($1 ,$$);}
+| term '%' {mp_percent($1, $$);}
 | '~' term %prec LNEG {
-    if (!is_natural($2)) {
+    if (!mp_is_natural($2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    calc_not($2, $$);
+    mp_not($2, $$);
 }
 | '-' term %prec NEG {mp_invert_sign($2, $$);}
 | '+' term %prec POS {cp($2, $$);}
-| term '^' term {calc_xpowy($1, $3, $$);}
+| term '^' term {mp_xpowy($1, $3, $$);}
 
 | func {cp($1, $$);}
 | reg {cp($1, $$);}
@@ -213,31 +212,31 @@ reg:
   ;
 
 func:
-  tLOG10 term %prec HIGH {mplogn(10, $2, $$);}
-| tLOG2 term %prec HIGH {mplogn(2, $2, $$);}
+  tLOG10 term %prec HIGH {mp_logarithm(10, $2, $$);}
+| tLOG2 term %prec HIGH {mp_logarithm(2, $2, $$);}
 | tSQRT term %prec HIGH {mp_sqrt($2, $$);}
 | tLN term %prec HIGH {mpln($2, $$);}
-| tRAND %prec HIGH {calc_rand($$);}
+| tRAND %prec HIGH {mp_set_from_random($$);}
 | tABS term %prec HIGH {mp_abs($2, $$);}
 | tFRAC term %prec HIGH {mpcmf($2, $$);}
 | tINT term %prec HIGH {mpcmim($2, $$);}
 | tCHS term %prec HIGH {mp_invert_sign($2, $$);}
 
-| tSIN term %prec HIGH {calc_trigfunc(sin_t, $2, $$);}
-| tCOS term %prec HIGH {calc_trigfunc(cos_t, $2, $$);}
-| tTAN term %prec HIGH {calc_trigfunc(tan_t, $2, $$);}
-| tASIN term %prec HIGH {calc_trigfunc(asin_t, $2, $$);}
-| tACOS term %prec HIGH {calc_trigfunc(acos_t, $2, $$);}
-| tATAN term %prec HIGH {calc_trigfunc(atan_t, $2, $$);}
-| tSINH term %prec HIGH {calc_trigfunc(sinh_t, $2, $$);}
-| tCOSH term %prec HIGH {calc_trigfunc(cosh_t, $2, $$);}
-| tTANH term %prec HIGH {calc_trigfunc(tanh_t, $2, $$);}
-| tASINH term %prec HIGH {calc_trigfunc(asinh_t, $2, $$);}
-| tACOSH term %prec HIGH {calc_trigfunc(acosh_t, $2, $$);}
-| tATANH term %prec HIGH {calc_trigfunc(atanh_t, $2, $$);}
+| tSIN term %prec HIGH {to_rad($2, $2); mp_sin($2, $$);}
+| tCOS term %prec HIGH {to_rad($2, $2); mp_cos($2, $$);}
+| tTAN term %prec HIGH {to_rad($2, $2); mp_tan($2, $$);}
+| tASIN term %prec HIGH {mp_asin($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
+| tACOS term %prec HIGH {mp_acos($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
+| tATAN term %prec HIGH {mp_atan($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
+| tSINH term %prec HIGH {mp_sinh($2, $$);}
+| tCOSH term %prec HIGH {mp_cosh($2, $$);}
+| tTANH term %prec HIGH {mp_tanh($2, $$);}
+| tASINH term %prec HIGH {mp_asinh($2, $$);}
+| tACOSH term %prec HIGH {mp_acosh($2, $$);}
+| tATANH term %prec HIGH {mp_atanh($2, $$);}
 
-| tU32 term %prec HIGH {calc_u32($2, $$);}
-| tU16 term %prec HIGH {calc_u16($2, $$);}
+| tU32 term %prec HIGH {mp_mask_u32($2, $$);}
+| tU16 term %prec HIGH {mp_mask_u16($2, $$);}
 ;
 
 rcl:

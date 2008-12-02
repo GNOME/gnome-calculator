@@ -1,4 +1,4 @@
-
+ 
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
@@ -21,10 +21,10 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <errno.h>
 
 #include "mp.h"
 #include "mp-internal.h"
-#include "mpmath.h"
 #include "calctool.h"
 #include "display.h"
 
@@ -101,7 +101,7 @@ mpadd2(const int *x, const int *y, int *z, int y_sign, int trunc)
     if (abs(sign_prod) > 1) {
         mpchk(1, 4);
         mperr("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
-	      "POSSIBLE OVERWRITING PROBLEM ***\n");
+              "POSSIBLE OVERWRITING PROBLEM ***\n");
         z[0] = 0;
         return;
     }
@@ -370,7 +370,7 @@ mp_atan1N(int n, int *z)
 
         /* ADD TO SUM */
         mp_add(&MP.r[i2 - 1], z, z);
-	if (MP.r[i2 - 1] == 0) break;
+        if (MP.r[i2 - 1] == 0) break;
     }
     MP.t = ts;
 }
@@ -440,7 +440,7 @@ mpcmf(const int *x, int *y)
 
     /* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
     memcpy (MP.r + offset_exp, x + (offset_exp + 2),
-	    (MP.t - offset_exp)*sizeof(int));
+            (MP.t - offset_exp)*sizeof(int));
 
     memset(MP.r + MP.t, 0, 4*sizeof(int));
 
@@ -457,9 +457,7 @@ void
 mpcmim(const int *x, int *y)
 {
     int tmp[MP_SIZE];     /* Temporary store for the number. */
-    int accuracy;         /* Temporary story for the accuracy. */
     char disp[MAXLINE];   /* Setup a string to store what would be displayed */
-    enum num_type dtype;  /* Setup a temp display type variable */
 
     int i, il, ll;
 
@@ -488,23 +486,12 @@ mpcmim(const int *x, int *y)
         y[i + 1] = 0;
     }
 
-    /* Fix for Sun bugtraq bug #4006391 - problem with Int function for numbers
-     * like 4800 when internal representation in something like 4799.999999999.
-     */
-    accuracy = v->accuracy;
-    dtype = v->dtype;
-
-    v->dtype = FIX;
-    v->accuracy = MAX_DIGITS;
+    // FIXME: Won't this have completely different behaviour depending on base?
     mpcmf(x, tmp);
-    make_number(disp, MAXLINE, tmp, v->base, FALSE);
-
+    mp_cast_to_fixed(disp, MAXLINE, tmp, v->base, MAX_DIGITS, MAX_DIGITS);
     if (disp[0] == '1') {
         y[ll]++;
     }
-
-    v->accuracy = accuracy;
-    v->dtype = dtype;
 }
 
 /*  COMPARES MP NUMBER X WITH REAL NUMBER RI, RETURNING
@@ -548,10 +535,10 @@ mp_compare_mp_to_mp(const int *x, const int *y)
     for (i = 2; i <= t2; ++i) {
         int i2 = x[i-1] - y[i-1];
         if (i2 < 0) {
-	    /* ABS(X)  <  ABS(Y) */
+            /* ABS(X)  <  ABS(Y) */
             return -x[0];
         }
-	if (i2 > 0) {
+        if (i2 > 0) {
             /* ABS(X)  >  ABS(Y) */
             return x[0];
         }
@@ -792,6 +779,36 @@ L210:
     mpchk(1, 4);
     mperr("*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n");
     z[0] = 0;
+}
+
+
+int
+mp_is_integer(int MPnum[MP_SIZE])
+{
+    int MPtt[MP_SIZE], MP0[MP_SIZE], MP1[MP_SIZE];
+
+    /* Multiplication and division by 10000 is used to get around a 
+     * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
+     * mpcmim() routine in mp.c, when the exponent is less than 1.
+     */
+    mp_set_from_integer(10000, MPtt);
+    mpmul(MPnum, MPtt, MP0);
+    mpdiv(MP0, MPtt, MP0);
+    mpcmim(MP0, MP1);
+
+    return mp_is_equal(MP0, MP1);
+}
+
+
+int
+mp_is_natural(int MPnum[MP_SIZE])
+{    
+    int MP1[MP_SIZE];
+    if (!mp_is_integer(MPnum)) {
+        return 0;
+    }
+    mp_abs(MPnum, MP1);
+    return mp_is_equal(MPnum, MP1);
 }
 
 
@@ -1224,6 +1241,22 @@ mpln(int *x, int *y)
             return;
         }
     }
+}
+
+
+/*  MP precision common log.
+ *
+ *  1. log10(x) = log10(e) * log(x)
+ */
+void
+mp_logarithm(int n, int *MPx, int *MPretval)
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+
+    mp_set_from_integer(n, MP1);
+    mpln(MP1, MP1);
+    mpln(MPx, MP2);
+    mpdiv(MP2, MP1, MPretval);
 }
 
 
@@ -1673,7 +1706,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, int *z, int trunc)
     /* CHECK THAT SIGN = +-1 */
     if (abs(reg_sign) > 1) {
         mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_GET_NORMALIZED_REGISTER.\n"
-	      "POSSIBLE OVERWRITING PROBLEM ***\n");
+              "POSSIBLE OVERWRITING PROBLEM ***\n");
         z[0] = 0;
         return;
     }
@@ -2344,4 +2377,121 @@ pow_ii(int x, int n)
     }
 
     return(pow);
+}
+
+/* Calculate the factorial of MPval. */
+void
+mp_factorial(int *MPval, int *MPres)
+{
+    double val;
+    int i, MPa[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
+
+    /*  NOTE: do_factorial, on each iteration of the loop, will attempt to
+     *        convert the current result to a double. If v->error is set,
+     *        then we've overflowed. This is to provide the same look&feel
+     *        as V3.
+     *
+     *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+     *        order to check this.
+     */
+    mp_set_from_mp(MPval, MPa);
+    mpcmim(MPval, MP1);
+    mp_set_from_integer(0, MP2);
+    if (mp_is_equal(MPval, MP1)
+        && mp_is_greater_equal(MPval, MP2)) {   /* Only positive integers. */
+        if (mp_is_equal(MP1, MP2)) {    /* Special case for 0! */
+            mp_set_from_integer(1, MPres);
+            return;
+        }
+        mp_set_from_integer(1, MPa);
+        i = mp_cast_to_int(MP1);
+        if (!i) {
+            matherr((struct exception *) NULL);
+        } else {
+            while (i > 0) {
+                mpmuli(MPa, i, MPa);
+                val = mp_cast_to_double(MPa);
+                if (v->error) {
+                    mperr("Error calculating factorial\n");
+                    return;
+                }
+                i--;
+            }
+        }
+    } else {
+        matherr((struct exception *) NULL);
+    }
+    mp_set_from_mp(MPa, MPres);
+}
+
+int
+mp_modulus_divide(int op1[MP_SIZE], 
+                  int op2[MP_SIZE], 
+                  int result[MP_SIZE])
+{
+    int MP1[MP_SIZE], MP2[MP_SIZE];
+
+    if (!mp_is_integer(op1) || !mp_is_integer(op2)) {
+        return -EINVAL;
+    }
+
+    mpdiv(op1, op2, MP1);
+    mpcmim(MP1, MP1);
+    mpmul(MP1, op2, MP2);
+    mp_subtract(op1, MP2, result);
+
+    mp_set_from_integer(0, MP1);
+    if ((mp_is_less_than(op2, MP1)
+         && mp_is_greater_than(result, MP1)) ||
+        mp_is_less_than(result, MP1)) { 
+        mp_add(result, op2, result);
+    }
+
+    return 0;
+}
+
+void
+mp_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
+{
+    int MP0[MP_SIZE];
+
+    mp_set_from_integer(0, MP0);
+
+    /* Check if both x and y are zero. If yes, then just return 1.
+     * See gcalctool bug #451286.
+     */
+    if (mp_is_equal(MPx, MP0) && mp_is_equal(MPy, MP0)) {
+        mp_set_from_integer(1, MPres);
+
+    } else if (mp_is_less_than(MPx, MP0)) {          /* Is x < 0 ? */
+        int MPtmp[MP_SIZE];
+
+        mpcmim(MPy, MPtmp);
+        if (mp_is_equal(MPtmp, MPy)) {   /* Is y == int(y) ? */
+            int y = mp_cast_to_int(MPy);
+            mppwr(MPx, y, MPres);
+        } else {        /* y != int(y). Force mppwr2 to generate an error. */
+            mppwr2(MPx, MPy, MPres);
+        }
+    } else {
+        mppwr2(MPx, MPy, MPres);
+    }
+}
+
+void
+mp_percent(int s1[MP_SIZE], int t1[MP_SIZE])
+{
+    int MP1[MP_SIZE];
+
+    MPstr_to_num("0.01", 10, MP1);
+    mpmul(s1, MP1, t1);
+}
+
+void
+mp_epowy(int s[MP_SIZE], int t[MP_SIZE])
+{
+    int MP1[MP_SIZE];
+    
+    mp_set_from_mp(s, MP1);
+    mpexp(MP1, t);
 }

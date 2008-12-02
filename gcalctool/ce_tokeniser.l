@@ -28,7 +28,7 @@
 #include <sys/types.h>
 #include "calctool.h"
 #include "display.h"
-#include "mpmath.h"
+#include "mp.h"
 #include "functions.h" /* FIXME: Needed for gc_strdup() */
 #include "ce_parser.h"
 #include "ce_parser.tab.h"

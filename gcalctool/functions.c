@@ -32,7 +32,6 @@
 #include "get.h"
 #include "register.h"
 #include "mp.h"
-#include "mpmath.h"
 #include "display.h"
 #include "ce_parser.h"
 #include "ui.h"
@@ -189,14 +188,14 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 {
     int MPval[MP_SIZE];
 
-    if (display_is_usable_number(&v->display, MPval) || !is_integer(MPval)) {
+    if (display_is_usable_number(&v->display, MPval) || !mp_is_integer(MPval)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
         ui_set_statusbar(_("No sane value to do bitwise shift"),
                          "gtk-dialog-error");
     }
     else {
-        calc_shift(MPval, display_get_answer(&v->display), count);
+        mp_shift(MPval, display_get_answer(&v->display), count);
         display_set_string(&v->display, "Ans", -1);
     }
 
@@ -377,7 +376,7 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case FN_CONSTANT:
-            make_number(buf, MAXLINE, constant_get_value(arg), v->base, FALSE);
+            mp_cast_to_number(buf, MAXLINE, constant_get_value(arg), v->base, FALSE);
             display_insert(&v->display, buf);
             break;
 
@@ -409,7 +408,7 @@ do_expression(int function, int arg, int cursor)
                 MPstr_to_num(buf, 10, MP);
 
                 /* FIXME: Set as string as display_set_number doesn't store correctly */
-                make_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
+                mp_cast_to_number(buf, MAX_DISPLAY, MP, v->base, FALSE);
                 display_set_string(&v->display, buf, -1);
             }
             break;

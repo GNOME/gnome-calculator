@@ -19,8 +19,8 @@
  */
 
 #include "financial.h"
+#include "calctool.h"
 #include "mp.h"
-#include "mpmath.h"
 
 #include <libintl.h>
 

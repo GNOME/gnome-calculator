@@ -125,6 +125,11 @@ typedef struct {
 extern CalculatorVariables *v; /* Calctool variables and options. */
 extern int basevals[];           /* Supported arithmetic bases. */
 
+/* Change type to radian */
+void to_rad(int s1[MP_SIZE], int t1[MP_SIZE]);
+
+void do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE]);
+
 void doerr(char *);
 
 #endif /*CALCTOOL_H*/

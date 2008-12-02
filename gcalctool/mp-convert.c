@@ -30,6 +30,15 @@
 // FIXME: Needed for v->radix
 #include "calctool.h"
 
+static char digits[] = "0123456789ABCDEF";
+
+static double max_fix[MAXBASES] = {
+    1.298074214e+33,    /* Binary. */
+    2.037035976e+90,    /* Octal. */
+    1.000000000e+100,   /* Decimal */
+    2.582249878e+120    /* Hexadecimal. */
+};
+
 /*  SETS Y = X FOR MP X AND Y.
  *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
  */
@@ -130,6 +139,12 @@ mp_set_from_float(float rx, int *z)
     }
 
     return;
+}
+
+void
+mp_set_from_random(int t[MP_SIZE])
+{
+    mp_set_from_double(drand48(), t);
 }
 
 /*  CONVERTS DOUBLE-PRECISION NUMBER DX TO MULTIPLE-PRECISION Z.
@@ -589,4 +604,201 @@ mp_set_from_string(const char *number, int base, int t[MP_SIZE])
     }
 
     free(a);
+}
+
+
+/* Convert MP number to fixed number string in the given base to the
+ * maximum number of digits specified.
+ */
+void
+mp_cast_to_fixed(char *target, int target_len, const int *MPnumber, int base, int accuracy, int cmax)
+{
+    char *optr;
+    int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
+    int ndig;                   /* Total number of digits to generate. */
+    int ddig;                   /* Number of digits to left of decimal sep. */
+    int dval, i;
+ 
+    optr = target;
+    mp_abs(MPnumber, MPval);
+    mp_set_from_integer(0, MP1);
+    if (mp_is_less_than(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
+
+    mp_set_from_integer(basevals[base], MP1base);
+
+    mppwr(MP1base, accuracy, MP1);
+    MPstr_to_num("0.5", 10, MP2);
+    mpdiv(MP2, MP1, MP1);
+    mp_add(MPval, MP1, MPval);
+
+    mp_set_from_integer(1, MP2);
+    if (mp_is_less_than(MPval, MP2)) {
+        ddig = 0;
+        *optr++ = '0';
+        cmax--;
+    } else {
+        for (ddig = 0; mp_is_greater_equal(MPval, MP2); ddig++) {
+            mpdiv(MPval, MP1base, MPval);
+        }
+    }
+ 
+    ndig = (ddig + accuracy) < (--cmax) ? (ddig + accuracy) : (--cmax);
+
+    while (ndig-- > 0) {
+        if (ddig-- == 0) {
+            for (i = 0; i < strlen(v->radix); i++)
+                *optr++ = v->radix[i];
+        }
+        mpmul(MPval, MP1base, MPval);
+        dval = mp_cast_to_int(MPval);
+
+        if (dval > basevals[base]-1) {
+            dval = basevals[base]-1;
+        }
+
+        *optr++ = digits[dval];
+        dval = -dval;
+        mp_add_integer(MPval, dval, MPval);
+    }    
+    *optr++ = '\0';
+
+    /* Strip off trailing zeroes */
+    if (!v->show_zeroes) {
+        for (i = strlen(target) - 1; i > 1 && target[i] == '0'; i--) {
+            target[i] = '\0';
+        }
+        
+        /* If no fractional part discard radix */
+        if (strlen(target) >= strlen(v->radix) && strcmp(target + strlen(target) - strlen(v->radix), v->radix) == 0) {
+            target[strlen(target) - strlen(v->radix)] = '\0';
+        }
+    }
+}
+
+
+/* Convert engineering or scientific number in the given base. */
+void
+make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
+{
+    char fixed[MAX_DIGITS], *optr;
+    int MP1[MP_SIZE], MPatmp[MP_SIZE], MPval[MP_SIZE];
+    int MP1base[MP_SIZE], MP3base[MP_SIZE], MP10base[MP_SIZE];
+    int i, dval, len;
+    int MPmant[MP_SIZE];        /* Mantissa. */
+    int ddig;                   /* Number of digits in exponent. */
+    int eng = 0;                /* Set if this is an engineering number. */
+    int exp = 0;                /* Exponent */
+    
+    if (v->dtype == ENG) {
+        eng = 1;
+    }
+    optr = target;
+    mp_abs(MPnumber, MPval);
+    mp_set_from_integer(0, MP1);
+    if (mp_is_less_than(MPnumber, MP1)) {
+        *optr++ = '-';
+    }
+    mp_set_from_mp(MPval, MPmant);
+
+    mp_set_from_integer(basevals[base], MP1base);
+    mppwr(MP1base, 3, MP3base);
+
+    mppwr(MP1base, 10, MP10base);
+
+    mp_set_from_integer(1, MP1);
+    mpdiv(MP1, MP10base, MPatmp);
+
+    mp_set_from_integer(0, MP1);
+    if (!mp_is_equal(MPmant, MP1)) {
+        while (!eng && mp_is_greater_equal(MPmant, MP10base)) {
+            exp += 10;
+            mpmul(MPmant, MPatmp, MPmant);
+        }
+ 
+        while ((!eng &&  mp_is_greater_equal(MPmant, MP1base)) ||
+                (eng && (mp_is_greater_equal(MPmant, MP3base) || exp % 3 != 0))) {
+            exp += 1;
+            mpdiv(MPmant, MP1base, MPmant);
+        }
+ 
+        while (!eng && mp_is_less_than(MPmant, MPatmp)) {
+            exp -= 10;
+            mpmul(MPmant, MP10base, MPmant);
+        }
+ 
+        mp_set_from_integer(1, MP1);
+        while (mp_is_less_than(MPmant, MP1) || (eng && exp % 3 != 0)) {
+            exp -= 1;
+            mpmul(MPmant, MP1base, MPmant);
+        }
+    }
+ 
+    mp_cast_to_fixed(fixed, MAX_DIGITS, MPmant, base, v->accuracy, MAX_DIGITS-6);
+    len = strlen(fixed);
+    for (i = 0; i < len; i++) {
+        *optr++ = fixed[i];
+    }
+ 
+    *optr++ = 'e';
+ 
+    if (exp < 0) {
+        exp = -exp;
+        *optr++ = '-';
+    } else {
+        *optr++ = '+';
+    }
+ 
+    MPstr_to_num("0.5", 10, MP1);
+    mp_add_integer(MP1, exp, MPval);
+    mp_set_from_integer(1, MP1);
+    for (ddig = 0; mp_is_greater_equal(MPval, MP1); ddig++) {
+        mpdiv(MPval, MP1base, MPval);
+    }
+ 
+    if (ddig == 0) {
+        *optr++ = '0';
+    }
+ 
+    while (ddig-- > 0) {
+        mpmul(MPval, MP1base, MPval);
+        dval = mp_cast_to_int(MPval);
+        *optr++ = digits[dval];
+        dval = -dval;
+        mp_add_integer(MPval, dval, MPval);
+    }
+    *optr++    = '\0';
+}
+
+
+/* Convert MP number to character string in the given base. */
+void
+mp_cast_to_number(char *target, int target_len, const int *MPnumber, int base, int ignoreError)
+{
+    double val;
+    
+    /*  NOTE: mp_cast_to_number can currently set v->error when converting to a double.
+     *        This is to provide the same look&feel as V3 even though gcalctool
+     *        now does internal arithmetic to "infinite" precision.
+     *
+     *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
+     *        order to do these tests.
+     */
+
+    double number = mp_cast_to_double(MPnumber);
+
+    val = fabs(number);
+    if (v->error && !ignoreError) {
+        STRNCPY(target, _("Error"), target_len - 1);
+        return;
+    }
+    // FIXME: Do this based on the number of digits, not actual values
+    if ((v->dtype == ENG) ||
+        (v->dtype == SCI) ||
+        (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
+        make_eng_sci(target, target_len, MPnumber, base);
+    } else {
+        mp_cast_to_fixed(target, target_len, MPnumber, base, v->accuracy, MAX_DIGITS);
+    }
 }
