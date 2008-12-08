@@ -46,7 +46,7 @@
 
 #define MAX_ACCELERATORS 8
 struct button_widget {
-    int key;
+    int function;
     char *widget_name;
     guint accelerator_mods[MAX_ACCELERATORS];
     guint accelerator_keys[MAX_ACCELERATORS];
@@ -1916,10 +1916,8 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
     GdkPoint loc;
     char* dialog;
     
-    function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
-                                                 "calc_function"));
+    function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "calc_function"));
     menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
-   
     dialog = g_object_get_data(G_OBJECT(widget), "finc_dialog");
 
     if (menu == NULL && dialog == NULL) {
@@ -2055,10 +2053,21 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             continue;
         }
 
+        // FIXME: This is a bit hacky - needs to be rethought
         for (j = 0; button_widgets[i].accelerator_keys[j] != 0; j++) {
-            if (button_widgets[i].accelerator_keys[j] == event->keyval &&
-                button_widgets[i].accelerator_mods[j] == state) {
-                button_cb(button, NULL);
+            if (button_widgets[i].accelerator_keys[j] == event->keyval) {
+                // A few shortcuts have modifiers
+                if (button_widgets[i].accelerator_mods[j] != 0 &&
+                    button_widgets[i].accelerator_mods[j] != state)
+                   continue;
+
+                // Hack if this is a multi-function button
+                if (GPOINTER_TO_INT(g_object_get_data(G_OBJECT(button), "calc_function")) !=
+                    button_widgets[i].function) {
+                   do_button(button_widgets[i].function, 0);
+                } else {
+                   button_cb(button, NULL);
+                }
                 return (TRUE);
             }
         }
@@ -2584,7 +2593,7 @@ create_kframe()
         gtk_size_group_add_widget(size_group, X->buttons[i]);
         
         g_object_set_data(G_OBJECT(X->buttons[i]), "calc_function", 
-                          GINT_TO_POINTER(button_widgets[i].key));
+                          GINT_TO_POINTER(button_widgets[i].function));
     }
 
     /* Make popup buttons */
