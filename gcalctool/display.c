@@ -642,7 +642,7 @@ make_eng_sci(char *target, int target_len, const int *MPnumber, int base)
         }
     }
  
-    mp_cast_to_string(fixed, MAX_DIGITS, MPmant, base, v->accuracy, MAX_DIGITS-6);
+    mp_cast_to_string(fixed, MAX_DIGITS, MPmant, basevals[base], v->accuracy);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -713,6 +713,6 @@ display_make_number(char *target, int target_len, const int *MPnumber, int base,
         (v->dtype == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(target, target_len, MPnumber, base, v->accuracy, MAX_DIGITS);
+        mp_cast_to_string(target, target_len, MPnumber, basevals[base], v->accuracy);
     }
 }

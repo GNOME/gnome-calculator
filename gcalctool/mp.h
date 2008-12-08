@@ -53,6 +53,9 @@ void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
 int mp_compare_mp_to_mp(const int *x, const int *y);
 
+int mp_is_zero(const int *x);
+int mp_is_negative(const int *x);
+
 /* return true if parameter is integer */
 int mp_is_integer(int MPnum[MP_SIZE]);
 
@@ -105,7 +108,7 @@ void   mp_set_from_string(const char *number, int base, int t[MP_SIZE]);
 float  mp_cast_to_float(const int *);
 double mp_cast_to_double(const int *);
 int    mp_cast_to_int(const int *);
-void   mp_cast_to_string(char *, int, const int *, int, int, int);
+void   mp_cast_to_string(char *, int, const int *, int, int);
 
 /* mp-trigonometric.c */
 void mp_acos(const int *x, int *z);

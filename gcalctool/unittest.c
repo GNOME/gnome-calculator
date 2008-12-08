@@ -43,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    mp_cast_to_string(result_str, MAXLINE, result, DEC, 100, 100);
+    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 100);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -66,9 +66,9 @@ test_parser()
     test("1.00", "1", 0);
     test("1.01", "1.01", 0);
     test("pi", "3.141592654", 0);
+    test("1e3", "1000", 0);
     test("1e+3", "1000", 0);
     test("1e-3", "0.001", 0);
-    test("1e9", "1000000000", 0);
 
     test("0+0", "0", 0);
     test("1+1", "2", 0);
@@ -162,11 +162,12 @@ test_parser()
     v->ttype = GRAD;
     test("Sin(100)", "1", 0);
 
+    v->base = HEX;
     test("3 And 5", "1", 0);
     test("3 Or 5", "7", 0);
     test("3 Xor 5", "6", 0);
-    test("3 Xnor 5", "4294967289", 0);
-    test("~ 122", "4294967173", 0);
+    test("3 Xnor 5", "FFFFFFF9", 0);
+    test("~7A", "FFFFFF85", 0);
 }
 
 

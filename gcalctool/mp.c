@@ -456,10 +456,7 @@ mpcmf(const int *x, int *y)
 void
 mpcmim(const int *x, int *y)
 {
-    int tmp[MP_SIZE];     /* Temporary store for the number. */
-    char disp[MAXLINE];   /* Setup a string to store what would be displayed */
-
-    int i, il, ll;
+    int i, il;
 
     mpchk(1, 4);
     mp_set_from_mp(x, y);
@@ -468,7 +465,6 @@ mpcmim(const int *x, int *y)
     }
 
     il = y[1] + 1;
-    ll = il;
 
     /* IF EXPONENT LARGE ENOUGH RETURN Y = X */
     if (il > MP.t) {
@@ -484,13 +480,6 @@ mpcmim(const int *x, int *y)
     /* SET FRACTION TO ZERO */
     for (i = il; i <= MP.t; ++i) {
         y[i + 1] = 0;
-    }
-
-    // FIXME: Won't this have completely different behaviour depending on base?
-    mpcmf(x, tmp);
-    mp_cast_to_string(disp, MAXLINE, tmp, v->base, MAX_DIGITS, MAX_DIGITS);
-    if (disp[0] == '1') {
-        y[ll]++;
     }
 }
 
@@ -1145,6 +1134,22 @@ mpgcd(int *k, int *l)
     /* HERE J IS THE GCD OF K AND L */
     *k = *k / i;
     *l = *l / i;
+}
+
+
+int
+mp_is_zero(const int *x)
+{
+    return x[0] == 0;
+}
+
+
+int 
+mp_is_negative(const int *x)
+{
+    int zero[MP_SIZE];
+    mp_set_from_integer(0, zero);
+    return mp_is_less_than(x, zero);
 }
 
 

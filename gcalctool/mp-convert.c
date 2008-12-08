@@ -21,6 +21,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <math.h>
 #include <assert.h>
 
@@ -478,88 +479,112 @@ mp_cast_to_double(const int *x)
 /* Convert MP number to fixed number string in the given base to the
  * maximum number of digits specified.
  */
-// FIXME: Rewrite
 void
-mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, int accuracy, int cmax)
+mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, int accuracy)
 {
     static char digits[] = "0123456789ABCDEF";
-    char *optr;
-    int MP1base[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE], MPval[MP_SIZE];
-    int ndig;                   /* Total number of digits to generate. */
-    int ddig;                   /* Number of digits to left of decimal sep. */
-    int dval, i;
- 
+    char *optr, *start, *end, *last_non_zero;
+    int number[MP_SIZE], integer_component[MP_SIZE], fractional_component[MP_SIZE], MPbase[MP_SIZE], temp[MP_SIZE];
+   
     optr = target;
-    mp_abs(MPnumber, MPval);
-    mp_set_from_integer(0, MP1);
-    if (mp_is_less_than(MPnumber, MP1)) {
+
+    /* Insert sign */
+    if (mp_is_negative(MPnumber)) {
         *optr++ = '-';
+        mp_abs(MPnumber, number);
+    } else  {
+        mp_set_from_mp(MPnumber, number);	
     }
+   
+    /* Add rounding factor */
+    mp_set_from_integer(base, MPbase);
+    mppwr(MPbase, -(accuracy+1), temp);
+    mpmuli(temp, base, temp);
+    mpdivi(temp, 2, temp);
+    mp_add(number, temp, number);
 
-    mp_set_from_integer(basevals[base], MP1base);
+    /* Split into integer and fractional component */
+    mpcmim(number, integer_component);
+    mpcmf(number, fractional_component);  
 
-    mppwr(MP1base, accuracy, MP1);
-    mp_set_from_string("0.5", 10, MP2);
-    mpdiv(MP2, MP1, MP1);
-    mp_add(MPval, MP1, MPval);
-
-    mp_set_from_integer(1, MP2);
-    if (mp_is_less_than(MPval, MP2)) {
-        ddig = 0;
-        *optr++ = '0';
-        cmax--;
-    } else {
-        for (ddig = 0; mp_is_greater_equal(MPval, MP2); ddig++) {
-            mpdiv(MPval, MP1base, MPval);
-        }
+    /* Write out the integer component least significant digit to most */
+    start = optr;
+    mp_set_from_mp(integer_component, temp);
+    do {
+        int t[MP_SIZE], t2[MP_SIZE], t3[MP_SIZE];
+       
+        mpdivi(temp, base, t);
+        mpcmim(t, t);
+        mpmuli(t, base, t2);
+       
+        mp_subtract(temp, t2, t3);
+        mpcmim(t3, t3);
+        *optr++ = digits[mp_cast_to_int(t3)];
+       
+        mp_set_from_mp(t, temp);
+    } while (!mp_is_zero(temp));
+    end = optr - 1;
+   
+    /* Reverse digits */
+    while(start < end) {
+        char t;
+        t = *start;
+        *start = *end;
+        *end = t;
+        start++;
+        end--;
     }
- 
-    ndig = (ddig + accuracy) < (--cmax) ? (ddig + accuracy) : (--cmax);
-
-    while (ndig-- > 0) {
-        if (ddig-- == 0) {
-            for (i = 0; i < strlen(v->radix); i++)
-                *optr++ = v->radix[i];
-        }
-        mpmul(MPval, MP1base, MPval);
-        dval = mp_cast_to_int(MPval);
-
-        if (dval > basevals[base]-1) {
-            dval = basevals[base]-1;
-        }
-
-        *optr++ = digits[dval];
-        dval = -dval;
-        mp_add_integer(MPval, dval, MPval);
-    }    
-    *optr++ = '\0';
-
-    /* Strip off trailing zeroes */
-    if (!v->show_zeroes) {
-        for (i = strlen(target) - 1; i > 1 && target[i] == '0'; i--) {
-            target[i] = '\0';
-        }
-        
-        /* If no fractional part discard radix */
-        if (strlen(target) >= strlen(v->radix) && strcmp(target + strlen(target) - strlen(v->radix), v->radix) == 0) {
-            target[strlen(target) - strlen(v->radix)] = '\0';
-        }
+   
+    /* Stop if there is no fractional component or not showing fractional part */
+    if ((mp_is_zero(fractional_component) && !v->show_zeroes) || accuracy == 0) {
+        *optr = '\0';
+        return;
     }
+   
+    last_non_zero = optr;
+    *optr++ = '.';
+   
+    /* Write out the fractional component */
+    mp_set_from_mp(fractional_component, temp);
+    do {
+        int d;
+        int digit[MP_SIZE];
+
+        mpmuli(temp, base, temp);
+        mpcmim(temp, digit);
+        d = mp_cast_to_int(digit);
+       
+        *optr++ = digits[d];
+        if(d != 0)
+	   last_non_zero = optr;
+        mp_subtract(temp, digit, temp);
+        accuracy--;
+    } while (!mp_is_zero(temp) && accuracy > 0);
+
+    /* Strip trailing zeroes */
+    if (!v->show_zeroes)
+       optr = last_non_zero;
+
+    *optr = '\0';
 }
 
 
 static int
-char_val(char chr)
+char_val(char chr, int base)
 {
+    int value;
     if (chr >= '0' && chr <= '9') {
-        return(chr - '0');
+        value = chr - '0';
     } else if (chr >= 'a' && chr <= 'f') {
-        return(chr - 'a' + 10);
+        value = chr - 'a' + 10;
     } else if (chr >= 'A' && chr <= 'F') {
-        return(chr - 'A' + 10);
+        value = chr - 'A' + 10;
     } else {
-        return(-1);
+        return -1;
     }
+    if (value >= base)
+       return -1;
+    return value;
 }
 
 
@@ -569,17 +594,13 @@ void
 mp_set_from_string(const char *str, int base, int *MPval)
 {
     const char *optr;
-    int MP1[MP_SIZE], MP2[MP_SIZE], MPbase[MP_SIZE];
-    int i, inum;
+    int inum;
     int negate = 0;
-
-    mp_set_from_integer(0, MPval);
-    mp_set_from_integer(base, MPbase);
 
     optr = str;
 
-    /* Remove any initial spaces or tabs. */
-    while (*optr == ' ' || *optr == '\t') {
+    /* Remove leading whitespace */
+    while (isspace(*optr)) {
         optr++;
     }
 
@@ -589,48 +610,65 @@ mp_set_from_string(const char *str, int base, int *MPval)
         optr++;
     }
 
-    while ((inum = char_val(*optr)) >= 0) {
-        mpmul(MPval, MPbase, MPval);
+    /* Convert integer part */
+    mp_set_from_integer(0, MPval);
+    while ((inum = char_val(*optr, base)) >= 0) {
+        mpmuli(MPval, base, MPval);
         mp_add_integer(MPval, inum, MPval);
         optr++;
     }
-
+   
+    /* Convert fractional part */
     if (*optr == '.' || *optr == *v->radix) {
+        int numerator[MP_SIZE], denominator[MP_SIZE];
+       
         optr++;
-        for (i = 1; (inum = char_val(*optr)) >= 0; i++) {
-            mppwr(MPbase, i, MP1);
-            mp_set_from_integer(inum, MP2);
-            mpdiv(MP2, MP1, MP1);
-            mp_add(MPval, MP1, MPval);
+
+        mp_set_from_integer(0, numerator);
+        mp_set_from_integer(1, denominator);
+        while ((inum = char_val(*optr, base)) >= 0) {
+	    mpmuli(denominator, base, denominator);
+	    mpmuli(numerator, base, numerator);
+	    mp_add_integer(numerator, inum, numerator);
             optr++;
         }
+        mpdiv(numerator, denominator, numerator);
+        mp_add(MPval, numerator, MPval);
     }
    
+    /* Convert exponential part */
     if (*optr == 'e' || *optr == 'E') {
         int negate = 0;
-        int MPexponent[MP_SIZE], temp1[MP_SIZE], temp2[MP_SIZE];
-        optr++;
+        int MPbase[MP_SIZE], MPexponent[MP_SIZE], temp[MP_SIZE];
+
+        optr++;       
+
+        /* Get sign */
         if (*optr == '-') {
 	    negate = 1;
 	    optr++;
+	} else if (*optr == '+') {
+	    optr++;
 	}
+
+        /* Get magnitude */
         mp_set_from_integer(0, MPexponent);
-        while ((inum = char_val(*optr)) >= 0) {
-            mpmul(MPval, MPbase, MPval);
-            mp_add_integer(MPval, inum, MPval);
+        while ((inum = char_val(*optr, base)) >= 0) {
+            mpmuli(MPexponent, base, MPexponent);
+            mp_add_integer(MPexponent, inum, MPexponent);
             optr++;
         }
-        if (negate == 1) {
+        if (negate) {
             mp_invert_sign(MPexponent, MPexponent);
         }
-       
-        mppwr2(MPbase, MPexponent, temp1);
-        mpmul(MPval, temp1, temp2);
-        mp_set_from_mp(temp2, MPval);
+
+        mp_set_from_integer(base, MPbase);       
+        mppwr2(MPbase, MPexponent, temp);
+        mpmul(MPval, temp, MPval);
     }
 
     /* Strip trailing whitespace */
-    while (*optr == ' ') {
+    while (isspace(*optr)) {
         optr++;
     }
    

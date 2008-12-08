@@ -259,9 +259,6 @@ do_numtype(enum num_type n)   /* Set number display type. */
 {
     int ret, MP[MP_SIZE];
 
-    v->dtype = n;
-    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
-
     ret = display_is_usable_number(&v->display, MP);
     if (ret) {
         ui_set_statusbar(_("No sane value to convert"),
@@ -269,9 +266,12 @@ do_numtype(enum num_type n)   /* Set number display type. */
     } else {
         mp_set_from_mp(MP, display_get_answer(&v->display));
         display_set_string(&v->display, "Ans", -1);
-        ui_make_registers();
     }
     clear_undo_history();
+   
+    v->dtype = n;
+    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
+    ui_make_registers();
 
     display_set_cursor(&v->display, -1);
     display_refresh(&v->display);

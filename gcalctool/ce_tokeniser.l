@@ -44,8 +44,7 @@ BIN     [0-1]
 OCT     [0-7]
 DEC	[0-9]
 HEX     [0-9]|[A-F]|[a-f]
-EXP     "e+"|"e-"|"E+"|"E-"
-NEP     "e"
+EXP     "e"|"e+"|"e-"|"E"|"E+"|"E-"
 HEX_NUM {HEX}+|{HEX}*{DECIMAL}{HEX}*
 DEC_NUM{DEC}+|{DEC}*{DECIMAL}{DEC}*
 OCT_NUM{OCT}+|{OCT}*{DECIMAL}{OCT}*
