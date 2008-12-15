@@ -4,6 +4,16 @@
  *  All Rights Reserved.
  */
  
+Overview of changes in gcalctool 5.25.3
+
+    * Made exponential numbers work without a sign, e.g. '1e2' works
+      the same as '1e+2' (Robert Ancell).
+
+    * Correctly calculate exponential numbers in binary mode and
+      convert correctly when changing bases (Robert Ancell, Bug #516159).
+
+    * Fix broken accelerator keys from changes in 5.25.2 (Robert Ancell, Bug #379476).
+ 
 Overview of changes in gcalctool 5.25.2
 
     * Changed the scientific UI so that inverse operations (e.g. Ln/e^x) are controlled by the shift key.
