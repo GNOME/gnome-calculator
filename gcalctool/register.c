@@ -61,8 +61,17 @@ static const char *default_constants[][2] =
 void register_init()
 {
     int i;
+    char key[MAXLINE], *value;
+
     for (i = 0; i < MAX_REGISTERS; i++) {
-        mp_set_from_integer(0, registers[i]);
+        SNPRINTF(key, MAXLINE, "register%d", i);
+        value = get_resource(key);
+        if (value) {
+            int temp[MP_SIZE];
+            mp_set_from_string(value, 10, temp);
+            g_free(value);
+            register_set(i, temp);
+        }
     }
     
     for (i = 0; i < MAX_CONSTANTS; i++) {
@@ -105,7 +114,7 @@ void register_init()
         }
  
         if (nline && vline) {
-            function_set(i, nline, convert(vline));
+            function_set(i, nline, vline);
             g_free(nline);
             g_free(vline);
         }

@@ -536,7 +536,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
     }
    
     /* Stop if there is no fractional component or not showing fractional part */
-    if ((mp_is_zero(fractional_component) && !v->show_zeroes) || accuracy == 0) {
+    if ((mp_is_zero(fractional_component) && !v->display.show_zeroes) || accuracy == 0) {
         *optr = '\0';
         return;
     }
@@ -562,7 +562,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
     } while (!mp_is_zero(temp) && accuracy > 0);
 
     /* Strip trailing zeroes */
-    if (!v->show_zeroes)
+    if (!v->display.show_zeroes)
        optr = last_non_zero;
 
     *optr = '\0';

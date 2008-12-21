@@ -114,8 +114,7 @@ seq:
 
 udf:
   value '=' {
-  cp($1, v->MPdisp_val);
-  display_set_number(&v->display, v->MPdisp_val);
+  display_set_number(&v->display, $1);
   }
 | value '=' tSTO '(' tNUMBER ')' {
   int val = mp_cast_to_int($5);
@@ -126,8 +125,7 @@ udf:
   register_set(val, $1);
 }
 | tCLR {
-  display_reset(&v->display);
-  display_set_number(&v->display, v->MPdisp_val);
+  display_clear(&v->display);
 }
 ;
 

@@ -44,27 +44,37 @@ typedef struct {
   GCDisplayState e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
 } GCDisplayHistory;
 
+/* Number display mode. */
+typedef enum { ENG, FIX, SCI, MAXDISPMODES } DisplayFormat;
+
 typedef struct
 {
-    GCDisplayHistory h;         /* History of expression mode states */
+    GCDisplayHistory h;   /* History of expression mode states */
+    int show_tsep;        /* Set if the thousands separator should be shown. */
+    int show_zeroes;      /* Set if trailing zeroes should be shown. */
+    DisplayFormat format;  /* Number display mode. */
+    int base;
 } GCDisplay;
 
 void display_init(GCDisplay *);
+void display_set_accuracy(GCDisplay *display, int accuracy);
+void display_set_show_thousands_separator(GCDisplay *display, gboolean visible);
+void display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible);
+void display_set_base(GCDisplay *display, int base);
+void display_set_format(GCDisplay *display, DisplayFormat format);
 
-void display_reset(GCDisplay *);
 void localize_expression(char *, const char *, int, int *);
 void display_clear(GCDisplay *);
-void display_refresh(GCDisplay *);
 
 gboolean display_get_integer(GCDisplay *display, gint64 *value);
 gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value);
 int *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
-void display_set_number(GCDisplay *, const int *);
-void display_set_string(GCDisplay *, const char *, int);
-void display_set_cursor(GCDisplay *, int);
-void display_set_error(GCDisplay *, const char *);
+void display_set_number(GCDisplay *display, const int *);
+void display_set_string(GCDisplay *display, const char *, int);
+void display_set_cursor(GCDisplay *display, int);
+void display_set_error(GCDisplay *display, const char *);
 
 void display_clear_stack(GCDisplay *);
 void display_push(GCDisplay *);
@@ -72,18 +82,18 @@ void display_pop(GCDisplay *);
 void display_unpop(GCDisplay *);
 gboolean display_is_undo_step(GCDisplay *display);
 
-void display_insert(GCDisplay *, const char *);
-void display_insert_number(GCDisplay *display, const int *);
+void display_insert(GCDisplay *display, int, const char *);
+void display_insert_number(GCDisplay *display, int, const int *);
 void display_backspace(GCDisplay *);
 void display_delete(GCDisplay *);
-void display_surround(GCDisplay *, const char *, const char *);
+void display_surround(GCDisplay *display, const char *, const char *);
 
 gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);
-gboolean display_is_usable_number(GCDisplay *, int *);
+gboolean display_is_usable_number(GCDisplay *display, int *);
 
-int display_solve(GCDisplay *, int *);
+int display_solve(GCDisplay *display, int *);
 
-void display_make_number(char *target, int target_len, const int *MPnumber, int base, int ignoreError);
+void display_make_number(GCDisplay *display, char *target, int target_len, const int *MPnumber, int base, int ignoreError);
 
 #endif /* DISPLAY_H */

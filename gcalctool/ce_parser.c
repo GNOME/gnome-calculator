@@ -39,7 +39,7 @@ ce_parse_(const char *expression, int result[MP_SIZE], int flags)
     if (strlen(expression)) {
         parser_state.i = 0;
         parser_state.buff = strdup(expression);
-		v->math_error = 0;
+        v->math_error = 0;
         ret = ceparse();
         free(parser_state.buff);
     }
@@ -53,9 +53,9 @@ ce_parse_(const char *expression, int result[MP_SIZE], int flags)
             return -EINVAL;
         }
 
-		if (v->math_error) {
-		  return v->math_error;
-		}
+        if (v->math_error) {
+            return v->math_error;
+        }
 
         if (flags & ANS) {
             memcpy(result, parser_state.ret, sizeof(int)*MP_SIZE);

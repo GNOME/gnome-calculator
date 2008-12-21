@@ -22,53 +22,21 @@
 #ifndef CALCTOOL_H
 #define CALCTOOL_H
 
-#include <string.h>
-#include <stdlib.h>
 #include <glib/gi18n.h>
 
 #include "config.h"
 #include "mp.h"
 #include "display.h"
 
-#define FCLOSE       (void) fclose     /* To make lint happy. */
-#define FPRINTF      (void) fprintf
-#define FPUTS        (void) fputs
-#define GETHOSTNAME  (void) gethostname
-#define MEMCPY       (void) memcpy
-#define MEMSET       (void) memset
-#define MKSTEMP      (void) mkstemp
-#define REWIND       (void) rewind
+/* To make lint happy. */
 #define SNPRINTF     (void) snprintf
-#define SSCANF       (void) sscanf
-#define STRCAT       (void) strcat
 #define STRNCPY      (void) strncpy
-#define STRNCAT      (void) strncat
-#define UNLINK       (void) unlink
 
 /* Base definitions. */
-enum base_type { BIN, OCT, DEC, HEX, MAXBASES };
-
-/* Calculator modes. */
-enum mode_type { BASIC, 
-                 ADVANCED,
-                 FINANCIAL,
-                 SCIENTIFIC,
-                 PROGRAMMING,
-                 MAXMODES };
-
-/* Number display mode. */
-enum num_type { ENG, FIX, SCI, MAXDISPMODES };
+typedef enum { BIN, OCT, DEC, HEX, MAXBASES } BaseType;
 
 /* Trigonometric types. */
-enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
-
-#ifndef LINT_CAST
-#ifdef  lint
-#define LINT_CAST(arg)  (arg ? 0 : 0)
-#else
-#define LINT_CAST(arg)  (arg)
-#endif /*lint*/
-#endif /*LINT_CAST*/
+typedef enum { DEG, GRAD, RAD, MAXTRIGMODES } TrigType;
 
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
@@ -77,7 +45,7 @@ enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
 #ifndef MAXLINE
 #define MAXLINE        512        /* Length of character strings. */
-#endif /*MAXLINE*/
+#endif
 
 #define MAXACC         99         /* Max. number of digits after numeric point. */
 
@@ -87,9 +55,8 @@ enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
 #ifndef RCNAME
 #define RCNAME         ".gcalctoolrc"
-#endif /*RCNAME*/
+#endif
 
-/* Boolean definitions. */
 #undef TRUE
 #define TRUE           1
 #undef FALSE
@@ -99,36 +66,29 @@ enum trig_type { DEG, GRAD, RAD, MAXTRIGMODES };
 
 /* Calctool variables and options. */
 typedef struct {
-    char *progname;                    /* Name of this program. */
-    
-    GCDisplay display;
-    
-    const char *radix;                 /* Locale specific radix string. */
-    const char *tsep;                  /* Locale specific thousands separator. */
-    int tsep_count;                    /* Number of digits between separator. */
+    char *progname;           /* Name of this program. */
 
-    int MPdisp_val[MP_SIZE];           /* Value of the current display. */
+    GCDisplay display;        /* Display stack */
 
-    enum base_type base;            /* Current base: BIN, OCT, DEC or HEX. */
-    enum mode_type modetype;        /* Current calculator mode. */
-    enum num_type  dtype;           /* Number display mode. */
-    enum trig_type ttype;           /* Trig. type (deg, grad or rad). */
+    const char *radix;        /* Locale specific radix string. */
+    const char *tsep;         /* Locale specific thousands separator. */
+    int tsep_count;           /* Number of digits between separator. */
 
-    int accuracy;      /* Number of digits precision (Max 9). */
+    BaseType base;            /* Numeric base (BIN, OCT, DEC or HEX). */
+    TrigType ttype;           /* Trigonometric type (DEG, GRAD or RAD). */
+    int accuracy;             /* Number of digits precision. */
 
-    int error;         /* Indicates some kind of display error. */
-    int math_error;    /* Math error (used in expression mode) */
-    int show_tsep;     /* Set if the thousands separator should be shown. */
-    int show_zeroes;   /* Set if trailing zeroes should be shown. */
+    int error;                /* true if there is a display error */
+    int math_error;           /* Math error */
 } CalculatorVariables;
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
-extern int basevals[];           /* Supported arithmetic bases. */
+extern int basevals[];         /* Supported arithmetic bases. */
 
 /* Change type to radian */
 void to_rad(int s1[MP_SIZE], int t1[MP_SIZE]);
 
-void do_trig_typeconv(enum trig_type ttype, int s1[MP_SIZE], int t1[MP_SIZE]);
+void do_trig_typeconv(TrigType ttype, int s1[MP_SIZE], int t1[MP_SIZE]);
 
 void doerr(char *);
 

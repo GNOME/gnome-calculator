@@ -19,6 +19,7 @@
  *  02111-1307, USA.
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <errno.h>
@@ -1830,7 +1831,7 @@ static void
 mpovfl(int *x, const char *error)
 {
     if (mp_show_errors) {
-        FPRINTF(stderr, "%s", error);
+        fprintf(stderr, "%s", error);
     }
     
     mpchk(1, 4);

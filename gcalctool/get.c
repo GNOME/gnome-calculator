@@ -40,11 +40,8 @@
 
 /* Various string values read/written as X resources. */
 
-const char *Rbstr[MAXBASES]     = { "BIN", "OCT", "DEC", "HEX" };
-const char *Rdstr[MAXDISPMODES] = { "ENG", "FIX", "SCI" };
-const char *Rmstr[MAXMODES]     = { "BASIC", "ADVANCED", "FINANCIAL", 
-                                    "SCIENTIFIC", "PROGRAMMING" };
-const char *Rtstr[MAXTRIGMODES] = { "DEG", "GRAD", "RAD" };
+const char *Rbstr[] = { "BIN", "OCT", "DEC", "HEX", NULL };
+const char *Rtstr[] = { "DEG", "GRAD", "RAD", NULL };
 
 static GConfClient *client = NULL;
 
@@ -87,25 +84,24 @@ set_boolean_resource(const char *key, int value)
 }
 
 
-char *
-convert(const char *line)       /* Convert .gcalctoolcf line to ascii values. */
+void set_enumerated_resource(const char *key, const char *values[], int value)
 {
-    static char output[MAXLINE];   /* Converted output record. */
-    int i;                  /* Position within input line. */
-    int len;
-    int n = 0;              /* Position within output line. */
+   set_resource(key, values[value]);
+}
 
-    len = strlen(line);
-    for (i = 0; i < len; i++) {
-        if (line[i] == ' ') {
-            continue;
-        } else {
-            output[n++] = line[i];
-        }
-    }
-    output[n] = '\0';
 
-    return(output);
+int
+get_int_resource(const char *key, int *intval)
+{
+    char *val;
+ 
+    val = get_resource(key);
+    if (!val)
+        return(FALSE);
+    *intval = atoi(val);
+
+    g_free(val);
+    return(TRUE);
 }
 
 
@@ -115,10 +111,9 @@ get_boolean_resource(const char *key, int *boolval)
     char *val, tempstr[MAXLINE];
     int len, n;
 
-    if ((val = get_resource(key)) == NULL) {
-        g_free(val);
-        return(0);
-    }
+    val = get_resource(key);
+    if (!val)
+        return(FALSE);
     STRNCPY(tempstr, val, MAXLINE - 1);
     g_free(val);
     len = strlen(tempstr);
@@ -133,25 +128,27 @@ get_boolean_resource(const char *key, int *boolval)
         *boolval = FALSE;
     }
 
-    return(1);
+    return(TRUE);
 }
 
 
-/* Get integer resource from database. */
-
 int
-get_int_resource(const char *key, int *intval)
+get_enumerated_resource(const char *key, const char *values[], int *value)
 {
     char *val;
- 
-    if ((val = get_resource(key)) == NULL) {
-        g_free(val);
-        return(0);
-    }
-    *intval = atoi(val);
+    int i;
 
-    g_free(val);
-    return(1);
+    val = get_resource(key);
+    if (!val)
+       return(FALSE);
+   
+    for (i = 0; values[i]; i++)
+       if (strcmp(values[i], val) == 0) {
+           *value = i;
+           return(TRUE);
+       }
+ 
+   return(FALSE);
 }
 
 
@@ -174,31 +171,6 @@ get_radix()
     } else {
         return(radix);
     }
-}
-
-
-/* Get a string resource from database. */
-
-static int
-get_str_resource(const char *key, char *strval)
-{
-    char *val;
-    int i, len;
-
-    if ((val = get_resource(key)) == NULL) {
-        g_free(val);
-        return(0);
-    }
-    STRNCPY(strval, val, MAXLINE - 1);
-    g_free(val);
-    len = strlen(strval);
-    for (i = 0; i < len; i++) {
-        if (islower((int) strval[i])) {
-            strval[i] = toupper((int) strval[i]);
-        }
-    }
-
-    return(1);
 }
 
 
@@ -232,109 +204,7 @@ get_tsep_count()
 
 
 void
-read_resources()    /* Read all possible resources from the database. */
-{
-    int boolval, i, intval;
-    char key[MAXLINE], str[MAXLINE];
-
-    if (get_int_resource(R_ACCURACY, &intval)) {
-        v->accuracy = intval;
-        if (v->accuracy < 0 || v->accuracy > MAXACC) {
-            /* Translators: A log message displayed when an invalid accuracy
-               is read from the configuration */
-            FPRINTF(stderr, _("%s: accuracy should be in the range 0-%d\n"), 
-                    v->progname, MAXACC);
-            v->accuracy = 9;
-        }
-    }
-
-    for (i = 0; i < MAX_REGISTERS; i++) {
-        SNPRINTF(key, MAXLINE, "register%d", i);
-        if (get_str_resource(key, str)) {
-            int temp[MP_SIZE];
-            mp_set_from_string(str, 10, temp);
-            register_set(i, temp);
-        }
-    }
-
-    if (get_str_resource(R_BASE, str)) {
-        for (i = 0; i < MAXBASES; i++) {
-            if (EQUAL(str, Rbstr[i])) {
-                break;
-            }
-        }
-
-        if (i == MAXBASES) {
-            /* Translators: A log message displayed when an invalid
-               base is read from the configuration */            
-            FPRINTF(stderr, _("%s: base should be 2, 8, 10 or 16\n"), 
-                    v->progname);
-        } else {
-            v->base = (enum base_type) i;
-        }
-    }
-
-    if (get_str_resource(R_DISPLAY, str)) {
-        for (i = 0; i < MAXDISPMODES; i++) {
-            if (EQUAL(str, Rdstr[i])) {
-                break;
-            }
-        }
-
-        if (i == MAXDISPMODES) {
-            /* Translators: A log message displayed when an invalid
-               display mode is read from the configuration */
-            FPRINTF(stderr, _("%s: invalid display mode [%s]\n"), 
-                    v->progname, str);
-        } else {
-            v->dtype = (enum num_type) i;
-        }
-    }
-
-    if (get_str_resource(R_MODE, str)) {
-        for (i = 0; i < MAXMODES; i++) {
-            if (EQUAL(str, Rmstr[i])) {
-                break;
-            }
-        }
-
-        if (i == MAXMODES) {
-            /* Translators: This message is a log message displayed when
-               an invalid mode is read from the configuration */            
-            FPRINTF(stderr, _("%s: invalid mode [%s]\n"), v->progname, str);
-        } else {
-            v->modetype = (enum mode_type) i;
-        }
-    }
-
-    if (get_str_resource(R_TRIG, str)) {  
-        for (i = 0; i < MAXTRIGMODES; i++) {
-            if (EQUAL(str, Rtstr[i])) {
-                break;
-            }
-        }
-       
-        if (i == MAXTRIGMODES) {
-            /* Translators: This message is a log message displayed when
-               an invalid trigonometric mode is read from the configuration */
-            FPRINTF(stderr, _("%s: invalid trigonometric mode [%s]\n"), 
-                    v->progname, str);
-        } else {
-            v->ttype = (enum trig_type) i;
-        }
-    }
-
-    if (get_boolean_resource(R_ZEROES, &boolval)) {
-        v->show_zeroes = boolval;
-    }
-
-    if (get_boolean_resource(R_TSEP, &boolval)) {
-        v->show_tsep = boolval;
-    }
-}
-
-void
-resources_init()        /* Load gconf configuration database for gcalctool. */
+resources_init()
 { 
     assert(client == NULL);
     client = gconf_client_get_default();

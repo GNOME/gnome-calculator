@@ -36,16 +36,16 @@
 #include "ce_parser.h"
 #include "ui.h"
 
-enum button_flags {
+typedef enum {
     NUMBER       = (1 << 3),   /* Number button */
     FUNC         = (1 << 6),   /* Function */
     PREFIXOP     = (1 << 15),  /* Unary prefix operation */
-};
+} ButtonFlags;
 
 typedef struct {
     int id;
     char *symname;           /* Expression function name */
-    enum button_flags flags; /* Misc flags */
+    ButtonFlags flags; /* Misc flags */
 } Function;
 
 // FIXME: Sort this list
@@ -156,12 +156,10 @@ do_accuracy(int value)     /* Set display accuracy. */
 {
     v->accuracy = value;
     set_int_resource(R_ACCURACY, v->accuracy);
+    display_set_accuracy(&v->display, value);
     ui_set_accuracy(v->accuracy);
     ui_make_registers();
     clear_undo_history();
-
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);    
 }
 
 
@@ -198,15 +196,12 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
         mp_shift(MPval, display_get_answer(&v->display), count);
         display_set_string(&v->display, "Ans", -1);
     }
-
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);
 }
 
 
 /* Change the current base setting. */
 static void
-do_base(enum base_type b)
+do_base(BaseType b)
 {
     int ret, MP[MP_SIZE];
 
@@ -220,13 +215,11 @@ do_base(enum base_type b)
         display_set_string(&v->display, "Ans", -1);
     }
     v->base = b;
-    set_resource(R_BASE, Rbstr[(int) v->base]);
+    set_enumerated_resource(R_BASE, Rbstr, (int) v->base);
+    display_set_base(&v->display, basevals[v->base]);
     ui_set_base(v->base);
     ui_make_registers();
     clear_undo_history();
-
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);
 }
 
 
@@ -245,17 +238,13 @@ do_exchange(int index)
         register_set(index, MPexpr);
         mp_set_from_mp(MPtemp, display_get_answer(&v->display));
         display_set_string(&v->display, "Ans", -1);
-        display_refresh(&v->display);
         ui_make_registers();
     }
-
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);
 }
 
 
 static void
-do_numtype(enum num_type n)   /* Set number display type. */
+do_numtype(DisplayFormat n)   /* Set number display type. */
 {
     int ret, MP[MP_SIZE];
 
@@ -269,12 +258,8 @@ do_numtype(enum num_type n)   /* Set number display type. */
     }
     clear_undo_history();
    
-    v->dtype = n;
-    set_resource(R_DISPLAY, Rdstr[(int) v->dtype]);
+    display_set_format(&v->display, n);
     ui_make_registers();
-
-    display_set_cursor(&v->display, -1);
-    display_refresh(&v->display);
 }
 
 
@@ -283,10 +268,9 @@ do_sto(int index)
 {
     int temp[MP_SIZE];
     
-    if (display_is_usable_number(&v->display, temp)) {
+    if (display_is_usable_number(&v->display, temp))
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
-    }
     else
         register_set(index, temp);
 
@@ -351,7 +335,7 @@ do_expression(int function, int arg, int cursor)
         
         case FN_SET_TRIG_TYPE:
             v->ttype = arg;
-            set_resource(R_TRIG, Rtstr[arg]);
+            set_enumerated_resource(R_TRIG, Rtstr, arg);
             return;
 
         case FN_SET_NUMBERTYPE:
@@ -372,11 +356,11 @@ do_expression(int function, int arg, int cursor)
 
         case FN_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
-            display_insert(&v->display, buf);
+            display_insert(&v->display, display_get_cursor(&v->display), buf);
             break;
 
         case FN_CONSTANT:
-            display_insert_number(&v->display, constant_get_value(arg));
+            display_insert_number(&v->display, display_get_cursor(&v->display), constant_get_value(arg));
             break;
 
         case FN_BACKSPACE:
@@ -468,7 +452,7 @@ do_expression(int function, int arg, int cursor)
             break;
 
         case FN_NUMERIC_POINT:
-            display_insert(&v->display, v->radix);
+            display_insert(&v->display, display_get_cursor(&v->display), v->radix);
             break;
 
         default:
@@ -479,16 +463,14 @@ do_expression(int function, int arg, int cursor)
             } else {
                 if (functions[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
-                    display_insert(&v->display, buf);
+                    display_insert(&v->display, display_get_cursor(&v->display), buf);
                 } else {
-                    display_insert(&v->display, functions[function].symname);
+                    display_insert(&v->display, display_get_cursor(&v->display), functions[function].symname);
                 }
             }
             break;
     }
 
-    display_refresh(&v->display);
-    
     enabled = display_get_unsigned_integer(&v->display, &bit_value);
     ui_set_bitfield(enabled, bit_value);
 }

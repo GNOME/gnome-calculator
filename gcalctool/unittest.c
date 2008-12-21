@@ -54,8 +54,6 @@ test(char *expression, char *expected, int expected_error)
 void
 test_parser()
 {
-    v->modetype = SCIENTIFIC;
-    
     test("0", "0", 0);
     test("1", "1", 0);
     test("+1", "1", 0);

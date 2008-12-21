@@ -35,23 +35,20 @@
 #define R_XPOS     "xposition"
 #define R_YPOS     "yposition"
 
-extern const char *Rbstr[];          /* Base mode X resource strings. */
-extern const char *Rdstr[];          /* Display mode X resource strings. */
-extern const char *Rmstr[];          /* Mode mode X resource strings. */
-extern const char *Rtstr[];          /* Trig mode X resource strings. */
-extern const char *Rsstr[];          /* Syntax resource strings. */
+extern const char *Rbstr[];
+extern const char *Rtstr[];
 
 void resources_init();
-void read_resources();
-char *convert(const char *);
 
 void set_resource(const char *key, const char *value);
 void set_int_resource(const char *key, int value);
 void set_boolean_resource(const char *key, int value);
+void set_enumerated_resource(const char *key, const char *values[], int value);
 
 char *get_resource(const char *key);
 int get_int_resource(const char *key, int *value);
 int get_boolean_resource(const char *key, int *value);
+int get_enumerated_resource(const char *key, const char *values[], int *value);
 
 const char *get_radix();
 const char *get_tsep();
