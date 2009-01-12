@@ -281,31 +281,7 @@ static struct button_widget button_widgets[] = {
     {KEY_EXPONENTIAL,        "exponential",
     { GDK_SHIFT_MASK, 0 },
     { GDK_E,          0 }},
-
-    {KEY_E_POW_X,            "pow_e",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_braceleft,  0 }},
-
-    {KEY_10_POW_X,           "pow_10",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_braceright, 0 }},
-
-    {KEY_X_POW_Y,            "x_pow_y",
-    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
-    { GDK_caret,      GDK_asciicircum, 0 }},
-
-    {KEY_NATURAL_LOGARITHM,  "natural_logarithm",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_N,          0 }},
-
-    {KEY_LOGARITHM,          "logarithm",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_G,          0 }},
-
-    {KEY_LOGARITHM2,         "logarithm2",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_H,          0 }},
-
+    
     {KEY_FACTORIAL,          "factorial",
     { GDK_SHIFT_MASK, 0 },
     { GDK_exclam,     0 }},
@@ -313,18 +289,6 @@ static struct button_widget button_widgets[] = {
     {KEY_RANDOM,             "random",
     { GDK_SHIFT_MASK, 0 },
     { GDK_question,   0 }},
-
-    {KEY_SIN,                "sine",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_K,          0 }},
-
-    {KEY_COS,                "cosine",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_J,          0 }},
-
-    {KEY_TAN,                "tangent",
-    { GDK_SHIFT_MASK, 0 },
-    { GDK_L,          0 }},
 
     {KEY_NOT,                "not",
     { GDK_SHIFT_MASK, 0 },
@@ -345,7 +309,43 @@ static struct button_widget button_widgets[] = {
     {KEY_XNOR,               "xnor",
     { 0,     0,     0 },
     { GDK_n, GDK_N, 0 }},
+    
+    {KEY_SIN,                "sine",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_K,          0 }},
 
+    {KEY_COS,                "cosine",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_J,          0 }},
+
+    {KEY_TAN,                "tangent",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_L,          0 }},
+    
+    {KEY_NATURAL_LOGARITHM,  "natural_logarithm",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_N,          0 }},
+
+    {KEY_E_POW_X,            "pow_e",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_braceleft,  0 }},
+
+    {KEY_LOGARITHM,          "logarithm",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_G,          0 }},
+    
+    {KEY_10_POW_X,           "pow_10",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_braceright, 0 }},
+
+    {KEY_LOGARITHM2,         "logarithm2",
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_H,          0 }},
+    
+    {KEY_X_POW_Y,            "x_pow_y",
+    { GDK_SHIFT_MASK, GDK_SHIFT_MASK,  0 },
+    { GDK_caret,      GDK_asciicircum, 0 }},
+    
     {KEY_FINC_CTRM,          "finc_compounding_term",
     { 0,     0,     0 },
     { GDK_m, GDK_M, 0 }},
@@ -380,7 +380,7 @@ static struct button_widget button_widgets[] = {
 
     {KEY_FINC_TERM,          "finc_term",
     { GDK_SHIFT_MASK, 0 },
-    { GDK_T,          0 }},
+    { GDK_T,          0 }}
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
 
