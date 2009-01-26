@@ -125,11 +125,18 @@ mp_mask_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
 void
 mp_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
 {
-    if (times >= 0)
-        mpmuli(s, times*2, t);
+    int i, multiplier = 1;
+    
+    if (times >= 0) {
+        for (i = 0; i < times; i++)
+            multiplier *= 2;
+        mpmuli(s, multiplier, t);
+    }
     else {
         int temp[MP_SIZE];
-        mpdivi(s, -times*2, temp);
+        for (i = 0; i < -times; i++)
+            multiplier *= 2;
+        mpdivi(s, multiplier, temp);
         mpcmim(temp, t);
     }
 }
