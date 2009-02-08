@@ -2157,7 +2157,10 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
     }
     *dstp++ = '\0';
 
-    display_insert(&v->display, get_cursor(), (char *)text);
+    if (display_is_result(&v->display))
+        display_set_string(&v->display, (char *)text, -1);
+    else
+        display_insert(&v->display, get_cursor(), (char *)text);        
     display_set_cursor(&v->display, -1);
     free(text);
 }
