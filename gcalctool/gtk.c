@@ -2109,7 +2109,7 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
         /* If the clipboard buffer contains any occurances of the "thousands
          * separator", remove them.
          */
-        if (strncmp(srcp, v->tsep, strlen(v->tsep)) == 0) {
+        if (v->tsep[0] != '\0' && strncmp(srcp, v->tsep, strlen(v->tsep)) == 0) {
             srcp += strlen(v->tsep) - 1;
             continue;
         }
