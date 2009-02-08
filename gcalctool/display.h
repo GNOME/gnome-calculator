@@ -62,8 +62,6 @@ void display_set_show_thousands_separator(GCDisplay *display, gboolean visible);
 void display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible);
 void display_set_base(GCDisplay *display, int base);
 void display_set_format(GCDisplay *display, DisplayFormat format);
-
-void localize_expression(char *, const char *, int, int *);
 void display_clear(GCDisplay *);
 
 gboolean display_get_integer(GCDisplay *display, gint64 *value);

@@ -451,10 +451,6 @@ do_expression(int function, int arg, int cursor)
             }
             break;
 
-        case FN_NUMERIC_POINT:
-            display_insert(&v->display, display_get_cursor(&v->display), v->radix);
-            break;
-
         default:
             /* If display is a number then perform functions on that number */
             if (functions[function].flags & (PREFIXOP | FUNC) && display_is_result(&v->display)) {

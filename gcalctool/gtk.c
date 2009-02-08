@@ -1051,11 +1051,9 @@ ui_set_display(char *str, int cursor)
     GtkTextIter iter;
     GtkAdjustment *adj;
 
-    if (str == NULL || str[0] == '\0') {
+    // ???
+    if (str[0] == '\0') {
         str = " ";
-    } else {
-        localize_expression(localized, str, MAX_LOCALIZED, &cursor);
-        str = localized;
     }
 
     gtk_text_buffer_set_text(X.display_buffer, str, -1);
@@ -2118,6 +2116,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
                 continue;
             }
         }
+        
+        // FIXME: Replace decimal point with "."
 
         /* If an "A", "B", "C", "D" or "F" character is encountered, it 
          * will be converted to its lowercase equivalent. If an "E" is 

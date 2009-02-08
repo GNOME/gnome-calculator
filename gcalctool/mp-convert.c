@@ -556,7 +556,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
        
         *optr++ = digits[d];
         if(d != 0)
-	   last_non_zero = optr;
+            last_non_zero = optr;
         mp_subtract(temp, digit, temp);
         accuracy--;
     } while (!mp_is_zero(temp) && accuracy > 0);

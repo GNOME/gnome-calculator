@@ -85,6 +85,8 @@ str_replace(char *str, char *from, char *to)
         offset = MAX_DISPLAY - 1;
     output[offset] = '\0';
     
+    free(str);
+    
     return strdup(output);
 }
 
@@ -93,10 +95,10 @@ str_replace(char *str, char *from, char *to)
  */
 
 /* Add in the thousand separators characters if required */
-void
+static void
 localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 {
-    GString *clean, *output;
+    GString *output;
     const char *c, *d;
     int digit_count = -1, read_cursor, new_cursor;
     gboolean after_radix = FALSE;
@@ -113,30 +115,9 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
         new_cursor = -1;
     }
 
-    /* Remove separators if not supported */
-    clean = g_string_sized_new(strlen(src));
-    for (c = src, read_cursor = 1; *c; c++, read_cursor++) {
-        if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
-            c += strlen(v->tsep) - 1;
-            if (new_cursor >= read_cursor) {
-                new_cursor--;
-            }
-            read_cursor--;
-        }
-        else {
-            g_string_append_c(clean, *c);
-        }
-    }
-
-    if (!v->display.show_tsep) {
-        STRNCPY(dest, clean->str, dest_length - 1);
-        g_string_free(clean, TRUE);
-        return;
-    }
-
     /* Scan expression looking for numbers and inserting separators */
     output = g_string_sized_new(dest_length);
-    for (c = clean->str, read_cursor = 1; *c; c++, read_cursor++) {
+    for (c = src, read_cursor = 1; *c; c++, read_cursor++) {
         /* Insert separators between digits */
         if (*c >= '0' && *c <= '9') {
             /* Read ahead to find the number of digits */
@@ -150,7 +131,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
             g_string_append_c(output, *c);
             
             /* Insert separator after nth digit */
-            if (!after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
+            if (v->display.show_tsep && !after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
                 g_string_append(output, v->tsep);
                 if (new_cursor > read_cursor) {
                     new_cursor++;
@@ -160,11 +141,11 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
             digit_count--;
         }
         /* Ignore digits after the radix */
-        else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
+        else if (*c == '.') {
             digit_count = -1;
             after_radix = TRUE;
-            c += strlen(v->radix) - 1;
             g_string_append(output, v->radix);
+            // FIXME: Handle cursor if radix is more than one character?
         }
         /* Reset when encountering other characters (e.g. '+') */
         else {
@@ -176,7 +157,6 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
     
     STRNCPY(dest, output->str, dest_length - 1);
     g_string_free(output, TRUE);
-    g_string_free(clean, TRUE);
     
     if (cursor != NULL && *cursor != -1) {
         *cursor = new_cursor;
@@ -275,36 +255,33 @@ static void
 display_refresh(GCDisplay *display)
 {
     int i, MP_reg[MP_SIZE];
-    char localized[MAX_LOCALIZED], *str, reg[3], *t;
+    char localized[MAX_LOCALIZED], temp[MAX_LOCALIZED], *str, reg[3];
     GCDisplayState *e;
-    char x[MAX_LOCALIZED], xx[MAX_LOCALIZED], ans[MAX_LOCALIZED];
     int cursor = display_get_cursor(display);
 
     e = get_state(display);
     if (display_is_empty(display)) {
         mp_set_from_integer(0, MP_reg);
-        display_make_number(display, x, MAX_LOCALIZED, MP_reg, v->base, FALSE);
-        str = x;
+        display_make_number(display, temp, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        str = strdup(temp);
     } else {           
         str = strdup(e->expression);
     }
         
     /* Substitute answer register */
-    display_make_number(display, ans, MAX_LOCALIZED, e->ans, v->base, TRUE);
-    localize_expression(localized, ans, MAX_LOCALIZED, &cursor);
-    str = str_replace(str, "Ans", localized);
+    display_make_number(display, temp, MAX_LOCALIZED, e->ans, v->base, TRUE);
+    str = str_replace(str, "Ans", temp);
 
     /* Replace registers with values. */
     for (i = 0; i < 10; i++) {
         SNPRINTF(reg, 3, "R%d", i);
         register_get(i, MP_reg);
-        display_make_number(display, xx, MAX_LOCALIZED, MP_reg, v->base, FALSE);
-        t = str_replace(str, reg, xx);
-        free(str);
-        str = t;
+        display_make_number(display, temp, MAX_LOCALIZED, MP_reg, v->base, FALSE);
+        str = str_replace(str, reg, temp);
     }
-    
-    ui_set_display(str, cursor);
+
+    localize_expression(localized, str, MAX_LOCALIZED, &cursor);
+    ui_set_display(localized, cursor);
     free(str);
 }
 
@@ -481,9 +458,7 @@ display_backspace(GCDisplay *display)
     if (cursor < 0) {
         if (exp_has_postfix(e->expression, "Ans")) {
             display_make_number(display, buf, MAX_DISPLAY, e->ans, v->base, FALSE);
-            t = str_replace(e->expression, "Ans", buf);
-            free(e->expression);
-            e->expression = t;
+            e->expression = str_replace(e->expression, "Ans", buf);
         } else {
             for (i = 0; i < 10; i++) {
                 SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
@@ -633,26 +608,11 @@ void display_set_format(GCDisplay *display, DisplayFormat type)
 int
 display_solve(GCDisplay *display, int *result)
 {
-    GString *clean;
+    const char *text;
     int errorCode;
-    const char *c, *text;
 
     text = display_get_text(display);
-
-    /* Remove thousands separators and use english radix */
-    clean = g_string_sized_new(strlen(text));
-    for (c = text; *c; c++) {
-        if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0) {
-            c += strlen(v->tsep) - 1;
-        } else if (strncmp(c, v->radix, strlen(v->radix)) == 0) {
-            g_string_append_c(clean, '.');
-            c += strlen(v->radix) - 1;
-        } else {
-            g_string_append_c(clean, *c);
-        }
-    }
-    errorCode = ce_parse(clean->str, result);
-    g_string_free(clean, TRUE);
+    errorCode = ce_parse(text, result);
     
     return errorCode;
 }
@@ -749,7 +709,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const int *MPnumb
         dval = -dval;
         mp_add_integer(MPval, dval, MPval);
     }
-    *optr++    = '\0';
+    *optr++  = '\0';
 }
 
 
