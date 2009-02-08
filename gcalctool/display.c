@@ -103,12 +103,6 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
     int digit_count = -1, read_cursor, new_cursor;
     gboolean after_radix = FALSE;
     
-    /* Only modify if valid */
-    if (v->error || v->base != DEC) {
-        STRNCPY(dest, src, dest_length - 1);
-        return;
-    }
-    
     if (cursor) {
         new_cursor = *cursor;
     } else {
@@ -131,7 +125,8 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
             g_string_append_c(output, *c);
             
             /* Insert separator after nth digit */
-            if (v->display.show_tsep && !after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
+            if (v->display.show_tsep && v->base == DEC &&
+                !after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
                 g_string_append(output, v->tsep);
                 if (new_cursor > read_cursor) {
                     new_cursor++;
