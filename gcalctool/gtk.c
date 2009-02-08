@@ -177,12 +177,12 @@ static struct button_widget button_widgets[] = {
     { GDK_f, 0 }},
 
     {FN_CLEAR,              "clear_simple",
-    { 0,          0 },
-    { GDK_Delete, 0 }},
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_Delete,     0 }},
     
     {FN_CLEAR,              "clear_advanced",
-    { 0,          0 },
-    { GDK_Delete, 0 }},
+    { GDK_SHIFT_MASK, 0 },
+    { GDK_Delete,     0 }},
 
     {FN_SHIFT,              "shift_left",
     { 0,        0 },
@@ -2005,7 +2005,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     }
     
     /* Delete in display */
-    if (event->keyval == GDK_Delete && state == 0) {
+    if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
         do_button(FN_DELETE, 0);
         return (TRUE);
     }
@@ -2016,14 +2016,14 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
                                      TRUE);
         return (TRUE);
     }
-
+    
     for (i = 0; i < NBUTTONS; i++) {
         button = X.buttons[i];
         
         /* Check if function is available */
         if (!GTK_WIDGET_IS_SENSITIVE(button)) {
             continue;
-        }        
+        }
         
         /* In basic mode only allow buttons that the user can see */
         if (X.mode == BASIC &&
@@ -2034,11 +2034,13 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
         // FIXME: This is a bit hacky - needs to be rethought
         for (j = 0; button_widgets[i].accelerator_keys[j] != 0; j++) {
-            if (button_widgets[i].accelerator_keys[j] == event->keyval) {
-                // A few shortcuts have modifiers
-                if (button_widgets[i].accelerator_mods[j] != 0 &&
-                    button_widgets[i].accelerator_mods[j] != state)
-                   continue;
+            if (button_widgets[i].accelerator_keys[j] == event->keyval &&
+                (button_widgets[i].accelerator_mods[j] & ~GDK_SHIFT_MASK) == state) {
+                
+                // If we use shift for this shortcut then check it was in the original mask
+                if ((button_widgets[i].accelerator_mods[j] & GDK_SHIFT_MASK) &&
+                    !(event->state & GDK_SHIFT_MASK))
+                    continue;
 
                 // Hack if this is a multi-function button
                 if (GPOINTER_TO_INT(g_object_get_data(G_OBJECT(button), "calc_function")) !=
