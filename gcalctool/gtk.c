@@ -1047,7 +1047,6 @@ redo_display(gpointer data)
 void
 ui_set_display(char *str, int cursor)
 {
-    char localized[MAX_LOCALIZED];
     GtkTextIter iter;
     GtkAdjustment *adj;
 
@@ -2110,15 +2109,26 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
         /* If the clipboard buffer contains any occurances of the "thousands
          * separator", remove them.
          */
-        if (*srcp == v->tsep[0]) {
-            if (strstr(srcp, v->tsep) == srcp) {
-                srcp += strlen(v->tsep) - 1;
-                continue;
-            }
+        if (strncmp(srcp, v->tsep, strlen(v->tsep)) == 0) {
+            srcp += strlen(v->tsep) - 1;
+            continue;
         }
         
-        // FIXME: Replace decimal point with "."
+        /* Replace radix with "." */
+        else if (strncmp(srcp, v->radix, strlen(v->radix)) == 0) {
+            c = '.';
+        }
 
+        /* Replace tabs with spaces */        
+        else if (*srcp == '\t') {
+            c = ' ';
+        }
+        
+        /* Terminate on newlines */        
+        else if (*srcp == '\r' || *srcp == '\n') {
+            c = '\0';
+        }
+        
         /* If an "A", "B", "C", "D" or "F" character is encountered, it 
          * will be converted to its lowercase equivalent. If an "E" is 
          * found,  and the next character is a "-" or a "+", then it 
@@ -2126,27 +2136,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
          * exponential number), otherwise its converted to a lower case 
          * "e". See bugs #455889 and #469245 for more details.
          */
-        switch (*srcp) {
-            /* Replace tabs with spaces */
-            case '\t':
-                c = ' ';
-                break;
-                
-            /* Terminate on newlines */
-            case '\r':
-            case '\n':
-                c = '\0';
-                break;
-                
-            case 'A':
-            case 'B':
-            case 'C':
-            case 'D':
-            case 'F':
-                c = tolower(*srcp);
-                break;
-
-            case 'E':
+        else if (*srcp >= 'A' && *srcp <= 'F') {
+            if (*srcp == 'E') {
                 c = *srcp;
                 if (srcp < (end_buffer-1)) {
                     if (*(srcp+1) != '-' &&
@@ -2154,12 +2145,13 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
                         c = tolower(*srcp);
                     }
                 }
-                break;
-            
-            default:
-                c = *srcp;
-                break;
+            }
+            else
+                c = tolower(*srcp);
         }
+        
+        else
+            c = *srcp;
         
         *dstp++ = c;
     }
