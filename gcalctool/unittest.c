@@ -43,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 100);
+    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 10);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -126,6 +126,7 @@ test_parser()
     
     test("Ln(e^1)", "1", 0);
 
+    v->ttype = DEG;    
     test("Sin(0)", "0", 0);
     test("Sin(45) - 1/Sqrt(2)", "0", 0);
     test("Sin(20) + Sin(-20)", "0", 0);
