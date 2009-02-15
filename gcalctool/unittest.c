@@ -110,6 +110,12 @@ test_parser()
     test("Sqrt(4)", "2", 0);
     test("Sqrt(2)", "1.414213562", 0);
     
+    test("0 Mod 7", "0", 0);
+    test("6 Mod 7", "6", 0);
+    test("7 Mod 7", "0", 0);
+    test("8 Mod 7", "1", 0);
+    test("-1 Mod 7", "6", 0);
+    
     test("Int(3.2)", "3", 0);
     test("Frac(3.2)", "0.2", 0);
     test("Int(-3.2)", "-3", 0);
@@ -117,6 +123,8 @@ test_parser()
 
     test("Abs(1)", "1", 0);
     test("Abs(-1)", "1", 0);
+    
+    test("Ln(e^1)", "1", 0);
 
     test("Sin(0)", "0", 0);
     test("Sin(45) - 1/Sqrt(2)", "0", 0);
@@ -146,7 +154,6 @@ test_parser()
     test("Cosh(-5)^2 - Sinh(-5)^2", "1", 0);
     test("Tanh(0)", "0", 0);
     test("Tanh(10) - Sinh(10)/Cosh(10)", "0", 0);
-
 
     test("Atanh(0)", "0", 0);
     test("Atanh(1/10) - 1/2*Ln(11/9)", "0", 0);
