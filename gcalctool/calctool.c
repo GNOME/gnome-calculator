@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <sys/types.h>
+#include <math.h>
+#include <glib.h>
 
 #include "calctool.h"
 #include "unittest.h"
@@ -113,17 +115,53 @@ matherr(struct exception *exc)
     return(1);
 }
 
+static void
+version()
+{
+    /* FIXME: Mark for translation post 2.26 */
+    fprintf(stderr, "%1$s %2$s\n", v->progname, VERSION);
+    exit(1);
+}
 
 static void
-usage(const char *progname)
+usage(int show_gtk)
 {
-    /* Translators: This message is displayed on the command line when
-       help is requested. %1$s and $3$s are replaced with the name
-       of the program and %2$s with the version string */
-    fprintf(stderr, _("%1$s version %2$s\n"
-                      "\n"
-                      "Usage: %3$s: [-u] [-?] [-v] [-h]\n"),
-            progname, VERSION, progname);
+    /* FIXME: Mark for translation post 2.26 */
+    fprintf(stderr,
+            "Usage:\n"
+            "  %s - Perform mathematical calculations\n", v->progname);
+
+    fprintf(stderr,
+            "\n");
+
+    fprintf(stderr,
+            "Help Options:\n"
+            "  -v, --version                   Show release version\n"
+            "  -h, -?, --help                  Show help options\n"
+            "  --help-all                      Show all help options\n"
+            "  --help-gtk                      Show GTK+ options\n");
+    fprintf(stderr,
+            "\n");
+    
+    if (show_gtk) {
+        fprintf(stderr,    
+                "GTK+ Options\n"
+                "  --class=CLASS                   Program class as used by the window manager\n"
+                "  --name=NAME                     Program name as used by the window manager\n"
+                "  --screen=SCREEN                 X screen to use\n"
+                "  --sync                          Make X calls synchronous\n"
+                "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+                "  --g-fatal-warnings              Make all warnings fatal\n");
+        fprintf(stderr,
+                "\n");
+    }
+
+    fprintf(stderr,
+            "Application Options:\n"
+            "  -u, --unittest                  Perform unittests\n");
+    fprintf(stderr,
+            "\n");
+
     exit(1);
 }
 
@@ -134,21 +172,29 @@ get_options(int argc, char *argv[])
     char *arg;
    
     for (i = 1; i < argc; i++) {
-       arg = argv[i];
-       if (arg[0] == '-' && arg[2] == '\0')
-       {
-          switch (arg[1]) {
-          case 'u':
-             unittest();
-             break;
-             
-          case '?' :
-          case 'v' : 
-          case 'h' :                 
-             usage(v->progname);
-             break;
-          }
-       }
+        arg = argv[i];
+
+        if (strcmp(arg, "-v") == 0 || 
+                 strcmp(arg, "--version") == 0 ||
+                 strcmp(arg, "-?") == 0) {
+            version();
+        }
+        else if (strcmp(arg, "-h") == 0 || 
+                 strcmp(arg, "--help") == 0) {
+            usage(FALSE);
+        }
+        else if (strcmp(arg, "--help-all") == 0) {
+            usage(TRUE);
+        }
+        else if (strcmp(arg, "-u") == 0 ||
+            strcmp(arg, "--unittest") == 0) {
+            unittest();
+        }
+        else {
+            /* FIXME: Mark for translation post 2.26 */
+            fprintf(stderr, "Unknown argument '%s'\n", arg);
+            usage(FALSE);
+        }
     }
 }
 
@@ -203,7 +249,7 @@ main(int argc, char **argv)
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-    v->progname = argv[0];
+    v->progname = g_path_get_basename(argv[0]);
     
     /* Seed random number generator. */   
     srand48((long) time((time_t *) 0));
