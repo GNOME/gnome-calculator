@@ -196,6 +196,8 @@ main(int argc, char **argv)
 {
     memset(&calc_state, 0, sizeof(calc_state));
     v = &calc_state;
+    
+    g_type_init();
 
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
