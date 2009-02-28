@@ -2830,7 +2830,7 @@ ui_load(void)
     ui_set_show_trailing_zeroes(v->display.show_zeroes);
     
     ui_set_mode(X.mode);
-    ui_set_numeric_mode(FIX);
+    ui_set_numeric_mode(v->display.format);
     ui_set_base(v->base);
     ui_set_accuracy(v->accuracy);
     ui_set_undo_enabled(FALSE, FALSE);

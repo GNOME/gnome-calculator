@@ -546,7 +546,7 @@ display_init(GCDisplay *display)
         display->show_tsep = i;
     else
         display->show_tsep = FALSE;
-   
+
     if (get_enumerated_resource(R_DISPLAY, display_types, &i))
        display->format = (DisplayFormat) i;
     else
