@@ -130,10 +130,18 @@ test_parser()
     test("Sin(0)", "0", 0);
     test("Sin(45) - 1/Sqrt(2)", "0", 0);
     test("Sin(20) + Sin(-20)", "0", 0);
+    test("Sin(90)", "1", 0);
+    test("Sin(180)", "0", 0);
+   
     test("Cos(0)", "1", 0);
     test("Cos(45) - 1/Sqrt(2)", "0", 0);
     test("Cos(20) - Cos(-20)", "0", 0);
+    test("Cos(90)", "0", 0);
+    test("Cos(180)", "-1", 0);
+
     test("Tan(0)", "0", 0);
+    test("Tan(10) - Sin(10)/Cos(10)", "0", 0);
+    test("Tan(90)", "", 0);
 
     test("Acos(0)", "90", 0);
     test("Acos(1)", "0", 0);
