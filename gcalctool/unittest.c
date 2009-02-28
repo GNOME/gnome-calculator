@@ -43,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 10);
+    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 9);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -76,6 +76,7 @@ test_parser()
     test("0.001+40000", "40000.001", 0);
     test("2-3", "-1", 0);
     test("3-2", "1", 0);
+    test("1-0.9-0.1", "0", 0);   
     test("40000-0.001", "39999.999", 0);
     test("0.001-40000", "-39999.999", 0);
     test("40000000-40000000", "0", 0);
