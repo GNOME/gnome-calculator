@@ -1886,7 +1886,7 @@ void
 mppwr(const int *x, int n, int *y)
 {
     int i2, n2, ns;
-
+   
     i2 = MP.t + 5;
     n2 = n;
     if (n2 < 0) {
@@ -1946,7 +1946,7 @@ void
 mppwr2(int *x, int *y, int *z)
 {
     int i2;
-
+   
     mpchk(7, 16);
 
     if (x[0] < 0) {
@@ -2456,31 +2456,14 @@ mp_modulus_divide(int op1[MP_SIZE],
     return 0;
 }
 
+/* Do x^y */
 void
-mp_xpowy(int MPx[MP_SIZE], int MPy[MP_SIZE], int MPres[MP_SIZE]) /* Do x^y */
+mp_xpowy(int x[MP_SIZE], int y[MP_SIZE], int res[MP_SIZE])
 {
-    int MP0[MP_SIZE];
-
-    mp_set_from_integer(0, MP0);
-
-    /* Check if both x and y are zero. If yes, then just return 1.
-     * See gcalctool bug #451286.
-     */
-    if (mp_is_equal(MPx, MP0) && mp_is_equal(MPy, MP0)) {
-        mp_set_from_integer(1, MPres);
-
-    } else if (mp_is_less_than(MPx, MP0)) {          /* Is x < 0 ? */
-        int MPtmp[MP_SIZE];
-
-        mpcmim(MPy, MPtmp);
-        if (mp_is_equal(MPtmp, MPy)) {   /* Is y == int(y) ? */
-            int y = mp_cast_to_int(MPy);
-            mppwr(MPx, y, MPres);
-        } else {        /* y != int(y). Force mppwr2 to generate an error. */
-            mppwr2(MPx, MPy, MPres);
-        }
+    if (mp_is_integer(y)) {
+        mppwr(x, mp_cast_to_int(y), res);
     } else {
-        mppwr2(MPx, MPy, MPres);
+        mppwr2(x, y, res);
     }
 }
 
