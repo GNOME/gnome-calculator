@@ -142,7 +142,7 @@ test_parser()
 
     test("Tan(0)", "0", 0);
     test("Tan(10) - Sin(10)/Cos(10)", "0", 0);
-    test("Tan(90)", "", 0);
+    test("Tan(90)", "", -20001);
 
     test("Acos(0)", "90", 0);
     test("Acos(1)", "0", 0);

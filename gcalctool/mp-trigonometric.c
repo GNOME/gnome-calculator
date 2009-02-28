@@ -378,7 +378,7 @@ mp_atanh(const int *x, int *z)
 void
 mp_cos(const int *x, int *z)
 {
-    int i2;
+    int t[MP_SIZE];
 
     /* COS(0) = 1 */    
     if (x[0] == 0) {
@@ -388,7 +388,6 @@ mp_cos(const int *x, int *z)
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(5, 12);
-    i2 = MP.t * 3 + 12;
 
     /* SEE IF ABS(X) <= 1 */
     mp_abs(x, z);
@@ -399,11 +398,9 @@ mp_cos(const int *x, int *z)
         /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
          *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
          */
-        ++MP.t;
-        mp_get_pi(&MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-        --MP.t;
-        mp_subtract(&MP.r[i2 - 1], z, z);
+        mp_get_pi(t);
+        mpdivi(t, 2, t);
+        mp_subtract(t, z, z);
         mp_sin(z, z);
     }
 }
@@ -526,7 +523,8 @@ mp_sin(const int *x, int *z)
         }
     }
 
-    z[0] = xs;
+    if (z[0] != 0)
+        z[0] = xs;
     if (ie > 2)
         return;
 
@@ -601,14 +599,14 @@ mp_sinh(const int *x, int *z)
 void 
 mp_tan(const int x[MP_SIZE], int z[MP_SIZE])
 {
-    int MPcos[MP_SIZE]; 
-    int MPsin[MP_SIZE];
+    int MPcos[MP_SIZE], MPsin[MP_SIZE];
 
     mp_sin(x, MPsin);
     mp_cos(x, MPcos);
     /* Check if COS(x) == 0 */
-    if (MPcos[0] == 0) {
+    if (mp_is_zero(MPcos)) {
         doerr(_("Error, cannot calculate cosine"));
+        return;
     }
     mpdiv(MPsin, MPcos, z);
 }
