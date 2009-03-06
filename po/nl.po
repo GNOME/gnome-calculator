@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the gcalctool package.
 #
 # Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2003.
-# Tino Meinen <a.t.meinen@chello.nl>, 2003–2006, 2008.
+# Tino Meinen <tino.meinen@gmail.com>, 2003–2006, 2008, 2009.
 # Jaap Woldringh <jjh.woldringh@planet.nl>, 2007.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2007, 2009.
 #
@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-23 14:39+0100\n"
-"PO-Revision-Date: 2008-05-07 21:50+0200\n"
-"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"POT-Creation-Date: 2009-03-06 23:57+0100\n"
+"PO-Revision-Date: 2009-03-06 01:05+0900\n"
+"Last-Translator: Tino Meinen <tino.meinen@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -483,7 +483,7 @@ msgstr "_Terugzetten op standaard (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negatieve X en niet gehele Y worden niet ondersteund"
 
-#: ../gcalctool/mp-trigonometric.c:611
+#: ../gcalctool/mp-trigonometric.c:608
 msgid "Error, cannot calculate cosine"
 msgstr "Fout, kan cosinus niet berekenen"
 
@@ -546,6 +546,7 @@ msgstr "Rekenkundige, wetenschappelijke of financiële berekeningen uitvoeren"
 msgid "C_alculate"
 msgstr "_Berekenen"
 
+# Waarde/aanschafwaarde/kosten
 #. Gross Profit Margin Dialog: Label before cost input
 #: ../glade/financial.glade.h:4
 msgid "C_ost:"
@@ -557,7 +558,10 @@ msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
 msgstr ""
+"Geeft de periodieke aflossing van een lening waarbij de betalingen aan het "
+"einde van elke periode plaatsvinden."
 
+# Wordt soms vertaald als "Som der jaareenheden"
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:8
 msgid ""
@@ -567,13 +571,20 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
+"Geeft het afschrijvingsbedrag van activa over een bepaalde termijn volgens "
+"de Sum-Of-The-Years'-Digits methode. Bij deze versnelde afschrijvingsmethode "
+"zijn de afschrijvingbedragen groter in de begintermijnen. De looptijd is het "
+"aantal termijnen, gewoonlijk in jaren, waarin activa worden afgeschreven."
 
+# wordt soms vertaald als dubbele degressieve afschrijvingsmethode
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:10
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
+"Geeft het afschrijvingsbedrag van activa over een bepaalde termijn volgens "
+"de 'Double-declining balance'-methode."
 
 #. Future Value Dialog: Description of calculation
 #: ../glade/financial.glade.h:12
@@ -582,6 +593,9 @@ msgid ""
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
 msgstr ""
+"Geeft de toekomstige waarde van een investering op basis van een reeks "
+"gelijke betalingen bij een discontopercentage over het aantal "
+"betalingstermijnen in de periode."
 
 #. Compounding Term Dialog: Description of calculation
 #: ../glade/financial.glade.h:14
@@ -590,6 +604,9 @@ msgid ""
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
 msgstr ""
+"Geeft het aantal perioden met samengestelde interest dat nodig is om een "
+"investering vanaf de huidige waarde naar de toekomstige waarde te brengen, "
+"bij een vast rentepercentage per periode."
 
 #. Payment Period Dialog: Description of calculation
 #: ../glade/financial.glade.h:16
@@ -606,6 +623,7 @@ msgid ""
 "future value, over the number of compounding periods. "
 msgstr ""
 
+# zie definitie toekomstige waarde
 #. Present Value Dialog: Description of calculation
 #: ../glade/financial.glade.h:20
 msgid ""
@@ -632,13 +650,11 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #: ../glade/financial.glade.h:26
-#, fuzzy
 msgid "Compounding Term"
 msgstr "Afkooptermijn"
 
 #. Title of Double-Declining Depreciation dialog
 #: ../glade/financial.glade.h:28
-#, fuzzy
 msgid "Double-Declining Depreciation"
 msgstr "Dubbele degressieve afschrijving"
 
@@ -689,13 +705,11 @@ msgstr "Huidige _waarde:"
 
 #. Title of Straight-Line Depreciation dialog
 #: ../glade/financial.glade.h:48
-#, fuzzy
 msgid "Straight-Line Depreciation"
 msgstr "Lineaire afschrijving"
 
 #. Title of Sum-Of-The-Years'-Digits Depreciation dialog
 #: ../glade/financial.glade.h:50
-#, fuzzy
 msgid "Sum-Of-The-Years'-Digits Depreciation"
 msgstr "Sum-of-the years'-digits afschrijving"
 
@@ -712,7 +726,7 @@ msgstr "_Toekomstige waarde"
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
 #: ../glade/financial.glade.h:56
 msgid "_Life:"
-msgstr ""
+msgstr "_Looptijd:"
 
 #. Gross Profit Margin Dialog: Label before margin input
 #: ../glade/financial.glade.h:58
@@ -734,16 +748,16 @@ msgstr "_Periode:"
 msgid "_Periodic Payment:"
 msgstr "_Periodieke betaling:"
 
+# kapitaal/hoofdkapitaal
 #. Periodic Payment Dialog: Label before principal input
 #: ../glade/financial.glade.h:66
-#, fuzzy
 msgid "_Principal:"
-msgstr "_Financieel"
+msgstr "_Kapitaal:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../glade/financial.glade.h:68
 msgid "_Salvage:"
-msgstr ""
+msgstr "_Restwaarde:"
 
 #. Periodic Interest Rate Dialog: Label before term input
 #: ../glade/financial.glade.h:70
@@ -1303,25 +1317,27 @@ msgstr "Toekomstige waarde [v]"
 msgid "Fv"
 msgstr "Tw"
 
+# Bruto winstmarge
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
 #. http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../glade/gcalctool.glade.h:220
 msgid "Gpm"
-msgstr ""
+msgstr "Bwm"
 
 #. Gradians radio button
 #: ../glade/gcalctool.glade.h:222
 msgid "Gr_adians"
 msgstr "Gr_ads"
 
+# omzet na aftrek van alle kosten
 #. Tooltip for the [Gpm] button
 #: ../glade/gcalctool.glade.h:225
 msgid "Gross Profit Margin [I]"
-msgstr ""
+msgstr "Bruto winstmarge [I]"
 
 #: ../glade/gcalctool.glade.h:226
 msgid "Gross Profit Margin [g]"
-msgstr ""
+msgstr "Bruto winstmarge [g]"
 
 #. Hyperbolic check box
 #: ../glade/gcalctool.glade.h:228
@@ -1792,14 +1808,14 @@ msgstr "Sum-of-the years'-digits afschrijving"
 
 #. Tooltip for the [Syd] button
 #: ../glade/gcalctool.glade.h:402
-#, fuzzy
 msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Sum-of-the years'-digits afschrijving [y]"
+msgstr "Sum-of-the years'-digits afschrijving [Y]"
 
 #: ../glade/gcalctool.glade.h:403
 msgid "Sum-of-the years'-digits depreciation [y]"
 msgstr "Sum-of-the years'-digits afschrijving [y]"
 
+# Depreciable cost is [kost minus restwaarde]
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 #. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../glade/gcalctool.glade.h:406
