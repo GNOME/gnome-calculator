@@ -3,16 +3,16 @@
 # Copyright (C) 2004, 2008 Free Software Foundation, Inc.
 # Mika Mononen <mejm@futis.net>, 2003,
 # Sami Pesonen <sampeson@iki.fi>, 2003-2004.
-# Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008.
+# Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008-2009.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-18 19:12+0300\n"
-"PO-Revision-Date: 2008-09-29 06:30+0300\n"
-"Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
+"POT-Creation-Date: 2009-03-11 14:27+0200\n"
+"PO-Revision-Date: 2009-03-11 14:28+0200\n"
+"Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -347,12 +347,12 @@ msgstr "x<sup>1/<i>y</i></sup>"
 #. Translators: Tooltip for the x to the power of y button
 #: ../gcalctool/gtk.c:670
 msgid "Raise displayed value to the power of y [o]"
-msgstr "Nosta näytetty arvo potenssiin y [o]"
+msgstr "Korota näytetty arvo potenssiin y [o]"
 
 #. Translators: Tooltip for the x to the power of reciprocal y button
 #: ../gcalctool/gtk.c:672
 msgid "Raise displayed value to the power of reciprocal y [O]"
-msgstr ""
+msgstr "Korota näytetty arvo potenssiin 1/y (käänteisarvo) [O]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
 #: ../gcalctool/gtk.c:1202
@@ -478,7 +478,7 @@ msgstr "Palauta _oletusarvoon (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negatiivista X ja ei-kokonaislukua Y ei tueta"
 
-#: ../gcalctool/mp-trigonometric.c:611
+#: ../gcalctool/mp-trigonometric.c:608
 msgid "Error, cannot calculate cosine"
 msgstr "Virhe, kosinia ei voi laskea"
 
@@ -564,6 +564,11 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
+"Laskee vähennysten määrän hankinnalle tietyllä aikajaksolla käyttäen Sum-Of-"
+"The-Years'-Digits-menetelmää. Tämä poistotapa kiihdyttää vähennysten määrää "
+"siten, että suurempi vähennyskulu tapahtuu aiemmissa jaksoissa verrattuna "
+"myöhempiin jaksoihin. Hyötyaika on jaksojen määrä, tyypillisesti vuosia, "
+"jonka aikana hankinta poistetaan. "
 
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:10
@@ -571,6 +576,8 @@ msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
+"Laskee vähennysten määrän hankinnalle tietylle aikajaksolle "
+"kaksoispienennysten tasapainotusmenetelmää."
 
 #. Future Value Dialog: Description of calculation
 #: ../glade/financial.glade.h:12
@@ -579,6 +586,8 @@ msgid ""
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
 msgstr ""
+"Laskee sijoituksen tulevan arvon tasasuuruisten maksujen sarjan pohjalta "
+"jaksottaisella korkotasolla maksujaksojen määrän yli."
 
 #. Compounding Term Dialog: Description of calculation
 #: ../glade/financial.glade.h:14
@@ -587,6 +596,9 @@ msgid ""
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
 msgstr ""
+"Laskee yhteenlasketun korkojaksojen määrän, joka tarvitaan kasvattamaan "
+"sijoituksen nykyarvo tulevaan arvoon kiinteällä korkotasolla korkojaksojen "
+"yli."
 
 #. Payment Period Dialog: Description of calculation
 #: ../glade/financial.glade.h:16
@@ -595,6 +607,8 @@ msgid ""
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
 "rate."
 msgstr ""
+"Laskee maksujaksojen määrän, joka tarvitaan annuiteetin ajan kasvamaan "
+"tulevaan arvoon jaksottaisella korkotasolla."
 
 #. Periodic Interest Rate Dialog: Description of calculation
 #: ../glade/financial.glade.h:18
@@ -602,6 +616,8 @@ msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
+"Laskee tarvittavan jaksottaisen koron, jolla sijoitus kasvaa tulevaan arvoon "
+"korkojaksojen määrän aikana."
 
 #. Present Value Dialog: Description of calculation
 #: ../glade/financial.glade.h:20
@@ -610,6 +626,8 @@ msgid ""
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
+"Laskee sijoituksen nykyisen arvon pohjautuen sarjaan tasasuuruisia maksuja "
+"vähennettynä jaksottaisella korkotasolla maksujaksojen ajanjakson aikana."
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../glade/financial.glade.h:22
@@ -617,6 +635,8 @@ msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
+"Laskee tuotteen jälleenmyyntihinnan pohjautuen tuotteen hintaan ja haluttuun "
+"bruttokatteeseen."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:24
@@ -626,11 +646,15 @@ msgid ""
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
+"Laskee tasapoiston vähennykset hankinnasta yhdelle jaksolle. Tasapoiston "
+"menetelmässä vähennykset jakautuvat tasaisiin vähennyskuluihin hankinnan "
+"hyödyllisen eliniän ajaksi. Hyödyllinen elinikä on jaksojen määrä, "
+"tyypillisesti vuosia, jonka aikana hankinta poistetaan."
 
 #. Title of Compounding Term dialog
 #: ../glade/financial.glade.h:26
 msgid "Compounding Term"
-msgstr ""
+msgstr "Korkojakso"
 
 #. Title of Double-Declining Depreciation dialog
 #: ../glade/financial.glade.h:28
@@ -650,7 +674,7 @@ msgstr "Tuleva _arvo:"
 #. Title of Gross Profit Margin dialog
 #: ../glade/financial.glade.h:34 ../glade/gcalctool.glade.h:223
 msgid "Gross Profit Margin"
-msgstr ""
+msgstr "Bruttokate"
 
 #. Title of Payment Period dialog
 #: ../glade/financial.glade.h:36
@@ -730,12 +754,12 @@ msgstr "_Toistuva maksu:"
 #. Periodic Payment Dialog: Label before principal input
 #: ../glade/financial.glade.h:66
 msgid "_Principal:"
-msgstr ""
+msgstr "_Peruspääoma:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../glade/financial.glade.h:68
 msgid "_Salvage:"
-msgstr ""
+msgstr "_Maksu:"
 
 #. Periodic Interest Rate Dialog: Label before term input
 #: ../glade/financial.glade.h:70
@@ -1296,7 +1320,7 @@ msgstr "Fv"
 #. http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../glade/gcalctool.glade.h:220
 msgid "Gpm"
-msgstr ""
+msgstr "kate"
 
 #. Gradians radio button
 #: ../glade/gcalctool.glade.h:222
@@ -1306,11 +1330,11 @@ msgstr "_Graadit"
 #. Tooltip for the [Gpm] button
 #: ../glade/gcalctool.glade.h:225
 msgid "Gross Profit Margin [I]"
-msgstr ""
+msgstr "Bruttokateprosentti [I]"
 
 #: ../glade/gcalctool.glade.h:226
 msgid "Gross Profit Margin [g]"
-msgstr ""
+msgstr "Bruttokateprosentti [g]"
 
 #. Hyperbolic check box
 #: ../glade/gcalctool.glade.h:228
