@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 5.25.90\n"
+"Project-Id-Version: gcalctool 5.25.92\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-03 07:14+0800\n"
-"PO-Revision-Date: 2009-02-04 20:54+0800\n"
-"Last-Translator: Abel Cheung <abel@oaka.org>\n"
+"POT-Creation-Date: 2009-03-15 17:35+0800\n"
+"PO-Revision-Date: 2009-03-15 17:35+0800\n"
+"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,35 +17,24 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. FIXME: Useless string
-#: ../gcalctool/calctool.c:111 ../gcalctool/display.c:781
+#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:736
 #: ../gcalctool/mp.c:826 ../gcalctool/mp-trigonometric.c:155
 #: ../gcalctool/mp-trigonometric.c:191 ../gcalctool/mp-trigonometric.c:362
 msgid "Error"
 msgstr "錯誤"
 
-#. Translators: This message is displayed on the command line when
-#. help is requested. %1$s and $3$s are replaced with the name
-#. of the program and %2$s with the version string
-#: ../gcalctool/calctool.c:123
-#, c-format
-msgid ""
-"%1$s version %2$s\n"
-"\n"
-"Usage: %3$s: [-u] [-?] [-v] [-h]\n"
-msgstr ""
-
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../gcalctool/calctool.c:177
+#: ../gcalctool/calctool.c:223
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s：準確度必須在 0 至 %d 之內\n"
 
-#: ../gcalctool/display.c:418
+#: ../gcalctool/display.c:390
 msgid "No undo history"
 msgstr "沒有復原紀錄"
 
-#: ../gcalctool/display.c:433
+#: ../gcalctool/display.c:405
 msgid "No redo steps"
 msgstr "沒有重做步驟"
 
@@ -115,7 +104,6 @@ msgstr "計數機 - 科學"
 
 #. Translators: The window title when in programming mode
 #: ../gcalctool/gtk.c:69
-#| msgid "Calculator - Advanced"
 msgid "Calculator - Programming"
 msgstr "計數機 - 程式"
 
@@ -157,12 +145,10 @@ msgstr "其它[_O] (%d) ..."
 
 #. Translators: Tooltip for accuracy button
 #: ../gcalctool/gtk.c:546
-#, fuzzy, c-format
-#| msgid "Set accuracy from 0 to %d numeric place."
-#| msgid_plural "Set accuracy from 0 to %d numeric places."
+#, c-format
 msgid "Set accuracy from 0 to %d numeric place. [A]"
 msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgstr[0] "將準確度設定為小數點後 0 至 %d 位。"
+msgstr[0] "將準確度設定為小數點後 0 至 %d 位。[A]"
 
 #. Translators: The sine button
 #: ../gcalctool/gtk.c:571
@@ -186,27 +172,23 @@ msgstr "Sinh<sup>-1</sup>"
 
 #. Translators: The sine tooltip
 #: ../gcalctool/gtk.c:580
-#, fuzzy
-#| msgid "Sine [K]"
 msgid "Sine [k]"
-msgstr "正弦 [K]"
+msgstr "正弦 [k]"
 
 #. Translators: The inverse sine tooltip
 #: ../gcalctool/gtk.c:582
-#, fuzzy
-#| msgid "Sine [K]"
 msgid "Inverse Sine [K]"
-msgstr "正弦 [K]"
+msgstr "反正弦 [K]"
 
 #. Translators: The hyperbolic sine tooltip
 #: ../gcalctool/gtk.c:584
 msgid "Hyperbolic Sine [k]"
-msgstr ""
+msgstr "雙曲正弦 [k]"
 
 #. Translators: The hyperbolic inverse sine tooltip
 #: ../gcalctool/gtk.c:586
 msgid "Hyperbolic Inverse Sine [K]"
-msgstr ""
+msgstr "反雙曲正弦 [K]"
 
 #. Translators: The cosine button
 #: ../gcalctool/gtk.c:590
@@ -230,27 +212,23 @@ msgstr "Cosh<sup>-1</sup>"
 
 #. Translators: The cosine tooltip
 #: ../gcalctool/gtk.c:599
-#, fuzzy
-#| msgid "Cosine [J]"
 msgid "Cosine [j]"
-msgstr "餘弦 [J]"
+msgstr "餘弦 [j]"
 
 #. Translators: The inverse cosine tooltip
 #: ../gcalctool/gtk.c:601
-#, fuzzy
-#| msgid "Cosine [J]"
 msgid "Inverse Cosine [J]"
-msgstr "餘弦 [J]"
+msgstr "反餘弦 [J]"
 
 #. Translators: The hyperbolic cosine tooltip
 #: ../gcalctool/gtk.c:603
 msgid "Hyperbolic Cosine [j]"
-msgstr ""
+msgstr "雙曲餘弦 [j]"
 
 #. Translators: The hyperbolic inverse cosine tooltip
 #: ../gcalctool/gtk.c:605
 msgid "Hyperbolic Inverse Cosine [J]"
-msgstr ""
+msgstr "反雙曲餘弦 [J]"
 
 #. Translators: The tangent button
 #: ../gcalctool/gtk.c:609
@@ -274,29 +252,23 @@ msgstr "Tanh<sup>-1</sup>"
 
 #. Translators: The tangent tooltip
 #: ../gcalctool/gtk.c:618
-#, fuzzy
-#| msgid "Tangent [L]"
 msgid "Tangent [w]"
-msgstr "正切 [L]"
+msgstr "正切 [w]"
 
 #. Translators: The inverse tangent tooltip
 #: ../gcalctool/gtk.c:620
-#, fuzzy
-#| msgid "Tangent [L]"
 msgid "Inverse Tangent [W]"
-msgstr "正切 [L]"
+msgstr "反正切 [W]"
 
 #. Translators: The hyperbolic tangent tooltip
 #: ../gcalctool/gtk.c:622
-#, fuzzy
-#| msgid "Periodic payment [P]"
 msgid "Hyperbolic Tangent [w]"
-msgstr "分期付款 [P]"
+msgstr "雙曲正切 [w]"
 
 #. Translators: The hyperbolic inverse tangent tooltip
 #: ../gcalctool/gtk.c:624
 msgid "Hyperbolic Inverse Tangent [W]"
-msgstr ""
+msgstr "反雙曲正切 [W]"
 
 #. Translators: The natural logaritm button
 #: ../gcalctool/gtk.c:629
@@ -305,24 +277,18 @@ msgstr "ln"
 
 #. Translators: The e to the power of x button
 #: ../gcalctool/gtk.c:631
-#, fuzzy
-#| msgid "10<sup><i>x</i></sup>"
 msgid "e<sup><i>x</i></sup>"
-msgstr "<small>10</small><sup><small><i>x</i></small></sup>"
+msgstr "e<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the natural log button
 #: ../gcalctool/gtk.c:634
-#, fuzzy
-#| msgid "Natural log [N]"
 msgid "Natural log [n]"
-msgstr "自然對數 [N]"
+msgstr "自然對數 [n]"
 
 #. Translators: Tooltip for the e to the power of x button
 #: ../gcalctool/gtk.c:636
-#, fuzzy
-#| msgid "e to the power of displayed value [{]"
 msgid "e to the power of the displayed value [N]"
-msgstr "ℯ 的 x 次方，x 是畫面中的數值 [{]"
+msgstr "e 的 x 次方，x 是畫面中的數值 [N]"
 
 #. Translators: The 10-based logaritm button
 #: ../gcalctool/gtk.c:641
@@ -332,21 +298,17 @@ msgstr "log"
 #. Translators: The 10 to the power of x button
 #: ../gcalctool/gtk.c:643
 msgid "10<sup><i>x</i></sup>"
-msgstr "<small>10</small><sup><small><i>x</i></small></sup>"
+msgstr "10<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 10 button
 #: ../gcalctool/gtk.c:646
-#, fuzzy
-#| msgid "Base 10 log [G]"
 msgid "Base 10 log [g]"
-msgstr "10 為底數的對數 [G]"
+msgstr "以 10 為底的對數 [g]"
 
 #. Translators: Tooltip for the 10 to the power of x button
 #: ../gcalctool/gtk.c:648
-#, fuzzy
-#| msgid "10 to the power of displayed value [}]"
 msgid "10 to the power of displayed value [G]"
-msgstr "10 的 x 次方，x 是畫面中的數值 [}]"
+msgstr "10 的 x 次方，x 是畫面中的數值 [G]"
 
 #. Translators: The 2-based logaritm button
 #: ../gcalctool/gtk.c:653
@@ -355,45 +317,33 @@ msgstr "Log<sub>2</sub>"
 
 #. Translators: The 2 to the power of x button
 #: ../gcalctool/gtk.c:655
-#, fuzzy
-#| msgid "10<sup><i>x</i></sup>"
 msgid "2<sup><i>x</i></sup>"
-msgstr "<small>10</small><sup><small><i>x</i></small></sup>"
+msgstr "2<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 2 button
 #: ../gcalctool/gtk.c:658
-#, fuzzy
-#| msgid "Base 2 log [H]"
 msgid "Base 2 log [h]"
-msgstr "2 為底數的對數 [H]"
+msgstr "以 2 為底的對數 [g]"
 
 #. Translators: Tooltip for the 2 to the power of x button
 #: ../gcalctool/gtk.c:660
-#, fuzzy
-#| msgid "e to the power of displayed value [{]"
 msgid "2 to the power of the displayed value [H]"
-msgstr "ℯ 的 x 次方，x 是畫面中的數值 [{]"
+msgstr "2 的 x 次方，x 是畫面中的數值 [H]"
 
 #. Translators: The x to the power of y button
 #: ../gcalctool/gtk.c:665
-#, fuzzy
-#| msgid "10<sup><i>x</i></sup>"
 msgid "x<sup><i>y</i></sup>"
-msgstr "<small>10</small><sup><small><i>x</i></small></sup>"
+msgstr "x<sup><i>y</i></sup>"
 
 #. Translators: The x to the power of reciprocal y button
 #: ../gcalctool/gtk.c:667
-#, fuzzy
-#| msgid "10<sup><i>x</i></sup>"
 msgid "x<sup>1/<i>y</i></sup>"
-msgstr "<small>10</small><sup><small><i>x</i></small></sup>"
+msgstr "x<sup>1/<i>y</i></sup>"
 
 #. Translators: Tooltip for the x to the power of y button
 #: ../gcalctool/gtk.c:670
-#, fuzzy
-#| msgid "Raise displayed value to the power of y [^]"
 msgid "Raise displayed value to the power of y [o]"
-msgstr "計算畫面中的數值的 y 次方 [^]"
+msgstr "計算畫面中的數值的 y 次方 [o]"
 
 #. Translators: Tooltip for the x to the power of reciprocal y button
 #: ../gcalctool/gtk.c:672
@@ -403,7 +353,7 @@ msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "計算畫面中的數值的 y 次方 [^]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../gcalctool/gtk.c:1205
+#: ../gcalctool/gtk.c:1202
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
@@ -414,7 +364,7 @@ msgstr ""
 "Ching-Hung Lin <2billlin@yahoo.com.tw>, 2004"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../gcalctool/gtk.c:1209
+#: ../gcalctool/gtk.c:1206
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -430,55 +380,68 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 msgstr ""
+"Gcalctool 是自由軟件，你可以遵照自由軟件基金會  \n"
+"(Free Software Foundation)出版的 GNU 通用公共許可證條款\n"
+"(GNU General Public License) 第二版來修改和重新發佈\n"
+"這一程式，或者自由選擇使用任何更新的版本。\n"
+"\n"
+"發佈 Gcalctool 的目的是希望它有用，\n"
+"但沒有任何擔保。甚至沒有適合特定目的\n"
+"而隱含的擔保。更詳細的情況請參閱 GNU \n"
+"通用公共許可證。\n"
+"\n"
+"你應該已經和程式一起收到一份 GNU 通用公共許可證的副本。\n"
+"如果還沒有，寫信給： Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
 # (Abel) 嘗試反其道而行，不保留軟體名稱，令用家不需自己理解 "gcalctool"
 # 是甚麼東西；不值得為 calctool 的歴史擾亂用家
 #. Translators: Program name in the about dialog
-#: ../gcalctool/gtk.c:1226
+#: ../gcalctool/gtk.c:1223
 msgid "Gcalctool"
 msgstr "計數機"
 
 #. Translators: Copyright notice in the about dialog
-#: ../gcalctool/gtk.c:1229
+#: ../gcalctool/gtk.c:1226
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Gcalctool 作者羣"
 
 #. Translators: Short description in the about dialog
-#: ../gcalctool/gtk.c:1232
+#: ../gcalctool/gtk.c:1229
 msgid "Calculator with financial and scientific modes."
 msgstr "附有財務及科學計算模式的計數機。"
 
-#: ../gcalctool/gtk.c:1383
+#: ../gcalctool/gtk.c:1380
 msgid "Unable to open help file"
-msgstr ""
+msgstr "無法開啟求助檔案。"
 
 #. Hexadecimal digit C button
-#: ../gcalctool/gtk.c:1548 ../glade/gcalctool.glade.h:129
+#: ../gcalctool/gtk.c:1545 ../glade/gcalctool.glade.h:129
 msgid "C"
 msgstr "C"
 
 #. Hexadecimal digit F button
-#: ../gcalctool/gtk.c:1571 ../glade/gcalctool.glade.h:200
+#: ../gcalctool/gtk.c:1568 ../glade/gcalctool.glade.h:200
 msgid "F"
 msgstr "F"
 
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../gcalctool/gtk.c:1803
+#: ../gcalctool/gtk.c:1800
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../gcalctool/gtk.c:2229
+#: ../gcalctool/gtk.c:2226
 msgid "Paste"
 msgstr "貼上"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../gcalctool/gtk.c:2449
+#: ../gcalctool/gtk.c:2446
 msgid "Error loading user interface"
 msgstr "載入使用者介面時發生錯誤"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
-#: ../gcalctool/gtk.c:2452
+#: ../gcalctool/gtk.c:2449
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -487,25 +450,25 @@ msgstr "使用者介面檔 %s 遺失或無法載入。請檢查你的安裝。"
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../gcalctool/gtk.c:2679 ../gcalctool/gtk.c:2700
+#: ../gcalctool/gtk.c:2676 ../gcalctool/gtk.c:2697
 msgid "No."
 msgstr "常數"
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../gcalctool/gtk.c:2682 ../gcalctool/gtk.c:2703
+#: ../gcalctool/gtk.c:2679 ../gcalctool/gtk.c:2700
 msgid "Value"
 msgstr "數值"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../gcalctool/gtk.c:2685 ../gcalctool/gtk.c:2706
+#: ../gcalctool/gtk.c:2682 ../gcalctool/gtk.c:2703
 msgid "Description"
 msgstr "描述"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../gcalctool/gtk.c:2858
+#: ../gcalctool/gtk.c:2855
 #, c-format
 msgid "Reset to _Default (%d)"
 msgstr "重設為預設值[_D] (%d)"
@@ -514,7 +477,7 @@ msgstr "重設為預設值[_D] (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "不支援 X 為負數而 Y 不是整數的情況"
 
-#: ../gcalctool/mp-trigonometric.c:611
+#: ../gcalctool/mp-trigonometric.c:608
 msgid "Error, cannot calculate cosine"
 msgstr "出現錯誤，無法計算餘弦值"
 
@@ -536,7 +499,7 @@ msgstr "歐拉數 (e)"
 #. Translators: This is the label for the default constant, π (3.14159)
 #: ../gcalctool/register.c:46
 msgid "π"
-msgstr ""
+msgstr "π"
 
 #. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
 #: ../gcalctool/register.c:48
@@ -579,17 +542,15 @@ msgstr "計算(_A)"
 
 #. Gross Profit Margin Dialog: Label before cost input
 #: ../glade/financial.glade.h:4
-#, fuzzy
-#| msgid "Cos"
 msgid "C_ost:"
-msgstr "cos"
+msgstr "花費(_O):"
 
 #. Periodic Payment Dialog: Description of calculation
 #: ../glade/financial.glade.h:6
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
-msgstr ""
+msgstr "計算出定期支付的貸款數額，支付款項的時刻為每個付款期間結束時。"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:8
@@ -652,7 +613,7 @@ msgstr ""
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
-msgstr ""
+msgstr "計算轉售價格的產品，根據產品成本和希望的毛利率。"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:24
@@ -665,152 +626,118 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #: ../glade/financial.glade.h:26
-#, fuzzy
-#| msgid "Compounding term"
 msgid "Compounding Term"
 msgstr "複利期間"
 
 #. Title of Double-Declining Depreciation dialog
 #: ../glade/financial.glade.h:28
-#, fuzzy
-#| msgid "Double-declining depreciation"
 msgid "Double-Declining Depreciation"
-msgstr "倍數餘額遞減"
+msgstr "雙倍餘額遞減折舊法"
 
 #. Title of Future Value dialog
 #: ../glade/financial.glade.h:30
-#, fuzzy
-#| msgid "Future value"
 msgid "Future Value"
 msgstr "未來值"
 
 #. Payment Period Dialog: Label before future value input
 #: ../glade/financial.glade.h:32
-#, fuzzy
-#| msgid "Future value"
 msgid "Future _Value:"
-msgstr "未來值"
+msgstr "未來值(_V):"
 
 #. Title of Gross Profit Margin dialog
 #: ../glade/financial.glade.h:34 ../glade/gcalctool.glade.h:223
 msgid "Gross Profit Margin"
-msgstr ""
+msgstr "毛利率"
 
 #. Title of Payment Period dialog
 #: ../glade/financial.glade.h:36
-#, fuzzy
-#| msgid "Payment period"
 msgid "Payment Period"
 msgstr "付款期間"
 
 #. Title of Periodic Interest Rate dialog
 #: ../glade/financial.glade.h:38
-#, fuzzy
-#| msgid "Periodic interest rate"
 msgid "Periodic Interest Rate"
 msgstr "定期利率"
 
 #. Payment Period Dialog: Label before periodic interest rate input
 #: ../glade/financial.glade.h:40
-#, fuzzy
-#| msgid "Periodic interest rate"
 msgid "Periodic Interest _Rate:"
-msgstr "定期利率"
+msgstr "定期利率(_R):"
 
 #. Title of Periodic Payment dialog
 #: ../glade/financial.glade.h:42
-#, fuzzy
-#| msgid "Periodic payment"
 msgid "Periodic Payment"
-msgstr "分期付款"
+msgstr "定期付款"
 
 #. Title of Present Value dialog
 #: ../glade/financial.glade.h:44
-#, fuzzy
-#| msgid "Present value"
 msgid "Present Value"
 msgstr "現值"
 
 #. Periodic Interest Rate Dialog: Label before present value input
 #: ../glade/financial.glade.h:46
-#, fuzzy
-#| msgid "Present value"
 msgid "Present _Value:"
-msgstr "現值"
+msgstr "現值(_V):"
 
 #. Title of Straight-Line Depreciation dialog
 #: ../glade/financial.glade.h:48
-#, fuzzy
-#| msgid "Straight-line depreciation"
 msgid "Straight-Line Depreciation"
-msgstr "直線折舊"
+msgstr "直線折舊法"
 
 #. Title of Sum-Of-The-Years'-Digits Depreciation dialog
 #: ../glade/financial.glade.h:50
-#, fuzzy
-#| msgid "Sum-of-the years'-digits depreciation"
 msgid "Sum-Of-The-Years'-Digits Depreciation"
-msgstr "年數合計折舊"
+msgstr "年數總和折舊法"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../glade/financial.glade.h:52
-#, fuzzy
-#| msgid "Cos"
 msgid "_Cost:"
-msgstr "cos"
+msgstr "花費(_C):"
 
 #. Periodic Interest Rate Dialog: Label before future value input
 #: ../glade/financial.glade.h:54
-#, fuzzy
-#| msgid "Future value"
 msgid "_Future Value:"
-msgstr "未來值"
+msgstr "未來值(_F):"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
 #: ../glade/financial.glade.h:56
 msgid "_Life:"
-msgstr ""
+msgstr "年限(_L):"
 
 #. Gross Profit Margin Dialog: Label before margin input
 #: ../glade/financial.glade.h:58
 msgid "_Margin:"
-msgstr ""
+msgstr "盈餘(_M):"
 
 #. Present Value Dialog: Label before number of periods input
 #: ../glade/financial.glade.h:60
 msgid "_Number Of Periods:"
-msgstr ""
+msgstr "週期數(_N):"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
 #: ../glade/financial.glade.h:62
 msgid "_Period:"
-msgstr ""
+msgstr "週期(_P):"
 
 #. Payment Period Dialog: Label before periodic payment input
 #: ../glade/financial.glade.h:64
-#, fuzzy
-#| msgid "Periodic payment"
 msgid "_Periodic Payment:"
-msgstr "分期付款"
+msgstr "定期付款(_P):"
 
 #. Periodic Payment Dialog: Label before principal input
 #: ../glade/financial.glade.h:66
-#, fuzzy
-#| msgid "_Financial"
 msgid "_Principal:"
-msgstr "財務計算模式(_F)"
+msgstr "本金(_P):"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../glade/financial.glade.h:68
 msgid "_Salvage:"
-msgstr ""
+msgstr "剩餘價值(_S):"
 
 #. Periodic Interest Rate Dialog: Label before term input
 #: ../glade/financial.glade.h:70
-#, fuzzy
-#| msgid "Term"
 msgid "_Term:"
-msgstr "Term"
+msgstr "期數(_T):"
 
 #. The percentage button
 #: ../glade/gcalctool.glade.h:3
@@ -856,7 +783,7 @@ msgstr "1"
 #. Reciprocal button
 #: ../glade/gcalctool.glade.h:19
 msgid "1/<i>x</i>"
-msgstr "<small>1</small>/<i>x</i>"
+msgstr "1/<i>x</i>"
 
 #: ../glade/gcalctool.glade.h:20
 msgid "1/x"
@@ -981,7 +908,7 @@ msgstr "<i>x</i>!"
 #. x to the power of 2 button
 #: ../glade/gcalctool.glade.h:68
 msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup><small>2</small></sup>"
+msgstr "<i>x</i><sup>2</sup>"
 
 #. Edit Function Dialog: Note about what base numbers will be entered as
 #: ../glade/gcalctool.glade.h:70
@@ -1064,7 +991,7 @@ msgstr "AND"
 #. Absolute value button. Abs is short for Absolute
 #: ../glade/gcalctool.glade.h:100
 msgid "Abs"
-msgstr "|<i>x</i>|"
+msgstr "Abs"
 
 #: ../glade/gcalctool.glade.h:101
 msgid "Absolute value"
@@ -1125,10 +1052,8 @@ msgstr "逐位 OR [|]"
 
 #. Tooltip for the boolean exclusive NOR button
 #: ../glade/gcalctool.glade.h:123
-#, fuzzy
-#| msgid "Bitwise XNOR [n]"
 msgid "Bitwise XNOR [{]"
-msgstr "邏輯 XNOR [n]"
+msgstr "邏輯 XNOR [{]"
 
 #. Tooltip for the boolean exlcusive OR button
 #: ../glade/gcalctool.glade.h:125
@@ -1370,7 +1295,7 @@ msgstr "Fv"
 #. http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../glade/gcalctool.glade.h:220
 msgid "Gpm"
-msgstr ""
+msgstr "Gpm"
 
 #. Gradians radio button
 #: ../glade/gcalctool.glade.h:222
@@ -1380,11 +1305,11 @@ msgstr "梯度(_A)"
 #. Tooltip for the [Gpm] button
 #: ../glade/gcalctool.glade.h:225
 msgid "Gross Profit Margin [I]"
-msgstr ""
+msgstr "毛利率 [I]"
 
 #: ../glade/gcalctool.glade.h:226
 msgid "Gross Profit Margin [g]"
-msgstr ""
+msgstr "毛利率 [g]"
 
 #. Hyperbolic check box
 #: ../glade/gcalctool.glade.h:228
@@ -1594,7 +1519,7 @@ msgstr "現值 [p]"
 #. Tooltip for the View|Programming menu item
 #: ../glade/gcalctool.glade.h:299
 msgid "Programming"
-msgstr ""
+msgstr "軟件開發"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
 #. http://en.wikipedia.org/wiki/Present_value
@@ -1856,10 +1781,8 @@ msgstr "年數合計折舊"
 
 #. Tooltip for the [Syd] button
 #: ../glade/gcalctool.glade.h:402
-#, fuzzy
-#| msgid "Sum-of-the years'-digits depreciation [y]"
 msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "年數合計折舊 [y]"
+msgstr "年數總和折舊法 [Y]"
 
 #: ../glade/gcalctool.glade.h:403
 msgid "Sum-of-the years'-digits depreciation [y]"
@@ -2071,7 +1994,7 @@ msgstr "_8"
 #. View|Programming menu item
 #: ../glade/gcalctool.glade.h:487
 msgid "_Programming"
-msgstr ""
+msgstr "軟件開發(_P)"
 
 #. Radian radio button
 #: ../glade/gcalctool.glade.h:489
@@ -2429,185 +2352,3 @@ msgstr "√"
 
 #~ msgid "A_rithmetic Precedence"
 #~ msgstr "正常四則運算優先次序(_R)"
-
-# (Abel) 這個根本是用來顯示運算結果的二進位表示方式
-#~ msgid "Show Bitcalculating _Extension"
-#~ msgstr "展示二進位表示法(_E)"
-
-#~ msgid "Show bitcalculating extension"
-#~ msgstr "展示二進位表示法"
-
-#~ msgid "Use Arithmetic Precedence"
-#~ msgstr "使用正常的四則運算優先次序"
-
-#~ msgid "Use Left-right Precedence"
-#~ msgstr "四則運算並非跟隨正常次序，而是從左至右計算"
-
-#~ msgid "_Left-to-right Precedence"
-#~ msgstr "四則運算從左至右計算(_L)"
-
-#~ msgid "Retreive from register"
-#~ msgstr "讀取暫存器中的數值"
-
-#~ msgid "Expression"
-#~ msgstr "算式"
-
-#~ msgid "/"
-#~ msgstr "÷"
-
-#~ msgid "*"
-#~ msgstr "×"
-
-#~ msgid "Chs"
-#~ msgstr "Chs"
-
-#~ msgid "-"
-#~ msgstr "－"
-
-#~ msgid "Sqrt"
-#~ msgstr "√"
-
-#~ msgid "Recip"
-#~ msgstr "倒數"
-
-#~ msgid "^2"
-#~ msgstr "^2"
-
-#~ msgid "&amp;16"
-#~ msgstr "&amp;16"
-
-#~ msgid "&amp;32"
-#~ msgstr "&amp;32"
-
-#~ msgid "32 bit unsigned integer"
-#~ msgstr "轉換成無正負的 32 位元整數"
-
-#~ msgid " Mod "
-#~ msgstr " Mod "
-
-#~ msgid "Exponential"
-#~ msgstr "定點小數的指數"
-
-#~ msgid "e^"
-#~ msgstr "ℯ^"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "!"
-#~ msgstr "!"
-
-#~ msgid "Or"
-#~ msgstr "OR"
-
-#~ msgid "And"
-#~ msgstr "AND"
-
-#~ msgid " And "
-#~ msgstr " AND "
-
-#~ msgid "Not"
-#~ msgstr "NOT"
-
-#~ msgid "~"
-#~ msgstr "~"
-
-#~ msgid "Xor"
-#~ msgstr "XOR"
-
-#~ msgid " Xor "
-#~ msgstr " XOR "
-
-#~ msgid "Xnor"
-#~ msgstr "XNOR"
-
-#~ msgid " Xnor "
-#~ msgstr " XNOR "
-
-#~ msgid "Numeric stack error"
-#~ msgstr "數字堆疊錯誤"
-
-#~ msgid "Operand stack error"
-#~ msgstr "運算子的堆疊錯誤"
-
-#~ msgid "calculator"
-#~ msgstr "計算機"
-
-#~ msgid "%s: invalid bitcalc choice [%s]\n"
-#~ msgstr "%s：位元運算模式 [%s] 無效\n"
-
-#~ msgid "1 place"
-#~ msgstr "1 個位"
-
-#~ msgid "2 places"
-#~ msgstr "2 個位"
-
-#~ msgid "3 places"
-#~ msgstr "3 個位"
-
-#~ msgid "4 places"
-#~ msgstr "4 個位"
-
-#~ msgid "5 places"
-#~ msgstr "5 個位"
-
-#~ msgid "6 places"
-#~ msgstr "6 個位"
-
-#~ msgid "7 places"
-#~ msgstr "7 個位"
-
-#~ msgid "8 places"
-#~ msgstr "8 個位"
-
-#~ msgid "9 places"
-#~ msgstr "9 個位"
-
-#~ msgid "0 significant places"
-#~ msgstr "0 位有效數字"
-
-#~ msgid "1 significant place"
-#~ msgstr "1 位有效數字"
-
-#~ msgid "2 significant places"
-#~ msgstr "2 位有效數字"
-
-#~ msgid "3 significant places"
-#~ msgstr "3 位有效數字"
-
-#~ msgid "4 significant places"
-#~ msgstr "4 位有效數字"
-
-#~ msgid "5 significant places"
-#~ msgstr "5 位有效數字"
-
-#~ msgid "6 significant places"
-#~ msgstr "6 位有效數字"
-
-#~ msgid "7 significant places"
-#~ msgstr "7 位有效數字"
-
-#~ msgid "8 significant places"
-#~ msgstr "8 位有效數字"
-
-#~ msgid "9 significant places"
-#~ msgstr "9 位有效數字"
-
-#~ msgid "_Other (10) ..."
-#~ msgstr "其它，預設為 1_0 ..."
-
-#~ msgid "Set other precision"
-#~ msgstr "自選精確度"
-
-#~ msgid "Note:"
-#~ msgstr "注意:"
-
-#~ msgid ""
-#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-#~ msgstr "將準確度設定為小數點後 0 至 %d 個數字，目前為 %d 位。 [a]"
-
-#~ msgid "Accuracy value out of range"
-#~ msgstr "精確度超出可接受的範圍"
-
-#~ msgid "Perform calculations"
-#~ msgstr "進行計算"
