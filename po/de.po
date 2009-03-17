@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-19 01:11+0100\n"
-"PO-Revision-Date: 2009-01-19 01:06+0100\n"
-"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"POT-Creation-Date: 2009-03-17 16:57+0100\n"
+"PO-Revision-Date: 2009-03-17 16:58+0100\n"
+"Last-Translator: Christian Kirbach\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,38 +27,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. FIXME: Useless string
-#: ../gcalctool/calctool.c:111 ../gcalctool/display.c:781
+#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:736
 #: ../gcalctool/mp.c:826 ../gcalctool/mp-trigonometric.c:155
 #: ../gcalctool/mp-trigonometric.c:191 ../gcalctool/mp-trigonometric.c:362
 msgid "Error"
 msgstr "Fehler"
 
-#. Translators: This message is displayed on the command line when
-#. help is requested. %1$s and $3$s are replaced with the name
-#. of the program and %2$s with the version string
-#: ../gcalctool/calctool.c:123
-#, c-format
-msgid ""
-"%1$s version %2$s\n"
-"\n"
-"Usage: %3$s: [-u] [-?] [-v] [-h]\n"
-msgstr ""
-"%1$s Version %2$s\n"
-"\n"
-"Aufruf: %3$s: [-u] [-?] [-v] [-h]\n"
-
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../gcalctool/calctool.c:177
+#: ../gcalctool/calctool.c:223
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: Die Genauigkeit muss im Bereich von 0 bis %d liegen\n"
 
-#: ../gcalctool/display.c:418
+#: ../gcalctool/display.c:390
 msgid "No undo history"
 msgstr "Keine Rückgängig-Chronik"
 
-#: ../gcalctool/display.c:433
+#: ../gcalctool/display.c:405
 msgid "No redo steps"
 msgstr "Keine Rückgängig-Schritte"
 
@@ -376,7 +362,7 @@ msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "Den angezeigten Wert hoch reziprokem y nehmen [O]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../gcalctool/gtk.c:1205
+#: ../gcalctool/gtk.c:1202
 msgid "translator-credits"
 msgstr ""
 "Christian Neumair <chris@gnome-de.org>\n"
@@ -385,7 +371,7 @@ msgstr ""
 "Christian Kirbach <Christian.Kirbach@googlemail.com>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../gcalctool/gtk.c:1209
+#: ../gcalctool/gtk.c:1206
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -401,53 +387,66 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 msgstr ""
+"Gcalctool ist freie Software. Sie können es unter den Bedingungen der GNU "
+"General Public License, wie von der Free Software Foundation veröffentlicht, "
+"weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder "
+"(nach Ihrer Option) jeder späteren Version. \n"
+"\n"
+"Die Veröffentlichung von Gcalctool erfolgt in der Hoffnung, dass es Ihnen "
+"von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die "
+"implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN "
+"BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.\n"
+"\n"
+"Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem "
+"Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software "
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA.\n"
 
 #. Translators: Program name in the about dialog
-#: ../gcalctool/gtk.c:1226
+#: ../gcalctool/gtk.c:1223
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../gcalctool/gtk.c:1229
+#: ../gcalctool/gtk.c:1226
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Die Gcalctool-Autoren"
 
 #. Translators: Short description in the about dialog
-#: ../gcalctool/gtk.c:1232
+#: ../gcalctool/gtk.c:1229
 msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
-#: ../gcalctool/gtk.c:1383
+#: ../gcalctool/gtk.c:1380
 msgid "Unable to open help file"
 msgstr "Die Hilfedatei konnte nicht geöffnet werden"
 
 #. Hexadecimal digit C button
-#: ../gcalctool/gtk.c:1548 ../glade/gcalctool.glade.h:129
+#: ../gcalctool/gtk.c:1545 ../glade/gcalctool.glade.h:129
 msgid "C"
 msgstr "C"
 
 #. Hexadecimal digit F button
-#: ../gcalctool/gtk.c:1571 ../glade/gcalctool.glade.h:200
+#: ../gcalctool/gtk.c:1568 ../glade/gcalctool.glade.h:200
 msgid "F"
 msgstr "F"
 
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../gcalctool/gtk.c:1803
+#: ../gcalctool/gtk.c:1800
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../gcalctool/gtk.c:2229
+#: ../gcalctool/gtk.c:2226
 msgid "Paste"
 msgstr "Einfügen"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../gcalctool/gtk.c:2449
+#: ../gcalctool/gtk.c:2446
 msgid "Error loading user interface"
 msgstr "Fehler beim Laden der Benutzeroberfläche"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
-#: ../gcalctool/gtk.c:2452
+#: ../gcalctool/gtk.c:2449
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -458,25 +457,25 @@ msgstr ""
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../gcalctool/gtk.c:2679 ../gcalctool/gtk.c:2700
+#: ../gcalctool/gtk.c:2676 ../gcalctool/gtk.c:2697
 msgid "No."
 msgstr "Nr."
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../gcalctool/gtk.c:2682 ../gcalctool/gtk.c:2703
+#: ../gcalctool/gtk.c:2679 ../gcalctool/gtk.c:2700
 msgid "Value"
 msgstr "Wert"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../gcalctool/gtk.c:2685 ../gcalctool/gtk.c:2706
+#: ../gcalctool/gtk.c:2682 ../gcalctool/gtk.c:2703
 msgid "Description"
 msgstr "Beschreibung"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../gcalctool/gtk.c:2858
+#: ../gcalctool/gtk.c:2855
 #, c-format
 msgid "Reset to _Default (%d)"
 msgstr "Auf Vorgabe _zurücksetzen (%d)"
@@ -485,7 +484,7 @@ msgstr "Auf Vorgabe _zurücksetzen (%d)"
 msgid "Negative X and non-integer Y not supported"
 msgstr "Negative X und nicht ganzzahlige Y sind nicht unterstützt"
 
-#: ../gcalctool/mp-trigonometric.c:611
+#: ../gcalctool/mp-trigonometric.c:608
 msgid "Error, cannot calculate cosine"
 msgstr "Fehler: Berechnung des Kosinus nicht möglich"
 
@@ -566,7 +565,6 @@ msgstr ""
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:8
-#, fuzzy
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
@@ -574,8 +572,12 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
-"Berechnet den zulässigen Abschreibungssatz eines Wirtschaftsguts für einen "
-"gegebenen Zeitraum ..."
+"Berechnet den zulässigen Abschreibungssatz eines Wirtschaftsguts für \n"
+"einen gegebenen Zeitraum nach der Sum-of-the-Years-Digits-Methode. Diese "
+"Methode erhöht die Abschreibungsrate so, dass in zeitnahen Perioden mehr "
+"Abschreibungskosten entstehen als in zeitferneren Perioden. Die sinnvolle "
+"Lebenszeit des Abschreibungsobjekts ist die Anzahl der Perioden, "
+"typischerweise Jahre, in denen das Wirtschaftsguts abgeschrieben wird. "
 
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:10
@@ -651,14 +653,17 @@ msgstr ""
 
 #. Straight-Line Depreciation Dialog: Description of calculation
 #: ../glade/financial.glade.h:24
-#, fuzzy
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
-"Berechnet die direkte Abschreibung eines Wirtschaftsguts über eine Periode."
+"Berechnet die lineare Abschreibungsrate eines Wirtschaftsguts pro Periode. "
+"Die Methode der linearen Abschreibung teilt die Gesamtabschreibung über "
+"einen gewissen Zeitraum gleichmäßig auf jede einzelne Periode auf. Die "
+"sinnvolle Lebenszeit des Abschreibungsobjekts ist die Anzahl der Perioden, "
+"typischerweise Jahre, in denen das Wirtschaftsguts abgeschrieben wird. "
 
 #. Title of Compounding Term dialog
 #: ../glade/financial.glade.h:26
@@ -723,9 +728,8 @@ msgstr "Lineare Abschreibung"
 # CHECK
 #. Title of Sum-Of-The-Years'-Digits Depreciation dialog
 #: ../glade/financial.glade.h:50
-#, fuzzy
 msgid "Sum-Of-The-Years'-Digits Depreciation"
-msgstr "Sum-of-the-Years-Zahlenabschreibung"
+msgstr "Sum-of-the-Years-Digits-Abschreibung"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../glade/financial.glade.h:52
@@ -739,7 +743,6 @@ msgstr "Zukünftiger _Wert:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
 #: ../glade/financial.glade.h:56
-#, fuzzy
 msgid "_Life:"
 msgstr "_Lebensdauer:"
 
@@ -766,7 +769,7 @@ msgstr "_Periodische Zahlung"
 #. Periodic Payment Dialog: Label before principal input
 #: ../glade/financial.glade.h:66
 msgid "_Principal:"
-msgstr ""
+msgstr "_Grundkapital:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../glade/financial.glade.h:68
@@ -1822,20 +1825,18 @@ msgstr "Subtrahieren [-]"
 # CHECK
 #: ../glade/gcalctool.glade.h:400
 msgid "Sum-of-the years'-digits depreciation"
-msgstr "Sum-of-the-Years-Zahlenabschreibung"
+msgstr "Sum-of-the-Years-Digits-Abschreibung"
 
 # CHECK
 #. Tooltip for the [Syd] button
 #: ../glade/gcalctool.glade.h:402
-#, fuzzy
 msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Sum-of-the-Years-Zahlenabschreibung [Y]"
+msgstr "Sum-of-the-Years-Digits-Abschreibung [Y]"
 
 # CHECK
 #: ../glade/gcalctool.glade.h:403
-#, fuzzy
 msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Sum-of-the-Years-Zahlenabschreibung [y]"
+msgstr "Sum-of-the-Years-Digits-Abschreibung [y]"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
 #. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
@@ -2177,6 +2178,15 @@ msgstr "−"
 #: ../glade/gcalctool.glade.h:552
 msgid "√"
 msgstr "√"
+
+#~ msgid ""
+#~ "%1$s version %2$s\n"
+#~ "\n"
+#~ "Usage: %3$s: [-u] [-?] [-v] [-h]\n"
+#~ msgstr ""
+#~ "%1$s Version %2$s\n"
+#~ "\n"
+#~ "Aufruf: %3$s: [-u] [-?] [-v] [-h]\n"
 
 #~ msgid "pi"
 #~ msgstr "Pi"
