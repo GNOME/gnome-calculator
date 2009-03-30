@@ -194,7 +194,7 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
     }
     else {
         mp_shift(MPval, display_get_answer(&v->display), count);
-        display_set_string(&v->display, "Ans", -1);
+        display_set_answer(&v->display);
     }
 }
 
@@ -213,7 +213,7 @@ do_base(BaseType b)
                              "gtk-dialog-error");
         } else {
             mp_set_from_mp(MP, display_get_answer(&v->display));
-            display_set_string(&v->display, "Ans", -1);
+            display_set_answer(&v->display);
             clear_undo_history();
         }
     }
@@ -239,7 +239,7 @@ do_exchange(int index)
         register_get(index, MPtemp);
         register_set(index, MPexpr);
         mp_set_from_mp(MPtemp, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans", -1);
+        display_set_answer(&v->display);
         ui_make_registers();
     }
 }
@@ -259,7 +259,7 @@ do_numtype(DisplayFormat n)   /* Set number display type. */
                              "gtk-dialog-error");
         } else {
             mp_set_from_mp(MP, display_get_answer(&v->display));
-            display_set_string(&v->display, "Ans", -1);
+            display_set_answer(&v->display);
             clear_undo_history();
         }
     }
@@ -425,7 +425,7 @@ do_expression(int function, int arg, int cursor)
                 switch (result) {
                     case 0:
                         mp_set_from_mp(MPval, ans);
-                        display_set_string(&v->display, "Ans", -1);
+                        display_set_answer(&v->display);
                         break;
 
                     case -PARSER_ERR_INVALID_BASE:

@@ -246,6 +246,13 @@ display_set_number(GCDisplay *display, const int *MPval)
 }
 
 
+void
+display_set_answer(GCDisplay *display)
+{
+    display_set_string(display, "Ans", -1);
+}
+
+
 static void
 display_refresh(GCDisplay *display)
 {
@@ -290,7 +297,7 @@ display_set_string(GCDisplay *display, const char *value, int cursor)
     free(e->expression);
     e->expression = strdup(value);
     e->cursor = cursor;
-
+    
     display_refresh(display);
 }
 

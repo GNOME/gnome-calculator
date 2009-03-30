@@ -70,6 +70,7 @@ int *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
 void display_set_number(GCDisplay *display, const int *);
+void display_set_answer(GCDisplay *display);
 void display_set_string(GCDisplay *display, const char *, int);
 void display_set_cursor(GCDisplay *display, int);
 void display_set_error(GCDisplay *display, const char *);
