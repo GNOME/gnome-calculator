@@ -205,21 +205,23 @@ do_base(BaseType b)
 {
     int ret, MP[MP_SIZE];
 
-    ret = display_is_usable_number(&v->display, MP);
-
-    if (ret) {
-        ui_set_statusbar(_("No sane value to convert"),
-                         "gtk-dialog-error");
-    } else {
-        mp_set_from_mp(MP, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans", -1);
+    if (!display_is_empty(&v->display))
+    {   
+        ret = display_is_usable_number(&v->display, MP);
+        if (ret) {
+            ui_set_statusbar(_("No sane value to convert"),
+                             "gtk-dialog-error");
+        } else {
+            mp_set_from_mp(MP, display_get_answer(&v->display));
+            display_set_string(&v->display, "Ans", -1);
+            clear_undo_history();
+        }
     }
     v->base = b;
     set_enumerated_resource(R_BASE, Rbstr, (int) v->base);
     display_set_base(&v->display, basevals[v->base]);
     ui_set_base(v->base);
     ui_make_registers();
-    clear_undo_history();
 }
 
 
@@ -248,15 +250,19 @@ do_numtype(DisplayFormat n)   /* Set number display type. */
 {
     int ret, MP[MP_SIZE];
 
-    ret = display_is_usable_number(&v->display, MP);
-    if (ret) {
-        ui_set_statusbar(_("No sane value to convert"),
-                         "gtk-dialog-error");
-    } else {
-        mp_set_from_mp(MP, display_get_answer(&v->display));
-        display_set_string(&v->display, "Ans", -1);
+    /* Convert display if it contains a number */
+    if (!display_is_empty(&v->display))
+    {
+        ret = display_is_usable_number(&v->display, MP);
+        if (ret) {
+            ui_set_statusbar(_("No sane value to convert"),
+                             "gtk-dialog-error");
+        } else {
+            mp_set_from_mp(MP, display_get_answer(&v->display));
+            display_set_string(&v->display, "Ans", -1);
+            clear_undo_history();
+        }
     }
-    clear_undo_history();
    
     display_set_format(&v->display, n);
     ui_make_registers();
