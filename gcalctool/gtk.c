@@ -26,7 +26,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
-#include <glade/glade.h>
 
 #include <limits.h>
 #include <sys/param.h>
@@ -83,20 +82,18 @@ static char *hostname_titles[] = {
     N_("Calculator [%s] - Programming")
 };
 
-#define FINC_NUM_ARGS 4
-
 /* The names of each field in the dialogs for the financial functions */
-static char *finc_dialog_fields[FINC_NUM_DIALOGS][FINC_NUM_ARGS] = {
-    {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL},
-    {"ddb_cost",  "ddb_life",    "ddb_period", NULL},
-    {"fv_pmt",    "fv_pint",     "fv_n",       NULL},
-    {"gpm_cost",  "gpm_margin",  NULL,         NULL},
-    {"pmt_prin",  "pmt_pint",    "pmt_n",      NULL},
-    {"pv_pmt",    "pv_pint",     "pv_n",       NULL},
-    {"rate_fv",   "rate_pv",     "rate_n",     NULL},
-    {"sln_cost",  "sln_salvage", "sln_life",   NULL},
-    {"syd_cost",  "syd_salvage", "syd_life",   "syd_period"},
-    {"term_pmt",  "term_fv",     "term_pint",  NULL},
+static char *finc_dialog_fields[FINC_NUM_DIALOGS][5] = {
+    {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL,         NULL},
+    {"ddb_cost",  "ddb_life",    "ddb_period", NULL,         NULL},
+    {"fv_pmt",    "fv_pint",     "fv_n",       NULL,         NULL},
+    {"gpm_cost",  "gpm_margin",  NULL,         NULL,         NULL},
+    {"pmt_prin",  "pmt_pint",    "pmt_n",      NULL,         NULL},
+    {"pv_pmt",    "pv_pint",     "pv_n",       NULL,         NULL},
+    {"rate_fv",   "rate_pv",     "rate_n",     NULL,         NULL},
+    {"sln_cost",  "sln_salvage", "sln_life",   NULL,         NULL},
+    {"syd_cost",  "syd_salvage", "syd_life",   "syd_period", NULL},
+    {"term_pmt",  "term_fv",     "term_pint",  NULL,         NULL},
 };
 
 /*  This table shows the keyboard values that are currently being used:
@@ -442,15 +439,14 @@ static struct button_widget button_widgets[] = {
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
 
-#define UI_FILE PACKAGE_GLADE_DIR "/gcalctool.glade"
+#define UI_FILE PACKAGE_UI_DIR "/gcalctool.ui"
 
-#define  MAXBITS    64      /* Bit panel: number of bit fields. */
+#define MAXBITS 64      /* Bit panel: number of bit fields. */
 
 #define GET_WIDGET(name) \
-          glade_xml_get_widget(X.ui, (name))
-
-#define CONNECT_SIGNAL(name) glade_xml_signal_connect(X.ui, #name, \
-                       G_CALLBACK(name))
+          GTK_WIDGET(gtk_builder_get_object(X.ui, (name)))
+#define GET_FINC_WIDGET(name) \
+          GTK_WIDGET(gtk_builder_get_object(X.financial, (name)))
 
 /* Gtk+/Xlib graphics object. */
 typedef struct {
@@ -459,8 +455,8 @@ typedef struct {
    
     ModeType mode;  /* Current calculator mode. */   
 
-    GladeXML  *ui;
-    GladeXML  *financial;
+    GtkBuilder *ui;
+    GtkBuilder *financial;
     
     GtkWidget *kframe;                 /* Main window. */
  
@@ -879,8 +875,8 @@ do_finc(char* dialog)
     if (X.financial == NULL) {
         setup_finc_dialogs();
     }
-    gtk_dialog_run(GTK_DIALOG(glade_xml_get_widget(X.financial, dialog)));
-    gtk_widget_hide(GTK_WIDGET(glade_xml_get_widget(X.financial, dialog)));
+    gtk_dialog_run(GTK_DIALOG(GET_FINC_WIDGET(dialog)));
+    gtk_widget_hide(GTK_WIDGET(GET_FINC_WIDGET(dialog)));
 }
 
 void
@@ -1182,8 +1178,8 @@ ui_set_registers_visible(gboolean visible)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 about_cb(GtkWidget *widget)
 {
     const gchar *authors[] = {
@@ -1291,8 +1287,8 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 aframe_response_cb(GtkWidget *dialog, gint response_id)
 {
     char *ch;
@@ -1308,7 +1304,8 @@ aframe_response_cb(GtkWidget *dialog, gint response_id)
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 aframe_delete_cb(GtkWidget *dialog)
 {
     aframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
@@ -1316,23 +1313,24 @@ aframe_delete_cb(GtkWidget *dialog)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 aframe_activate_cb(GtkWidget *entry)
 {
     aframe_response_cb(X.aframe, GTK_RESPONSE_OK);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 rframe_response_cb(GtkWidget *dialog, int response_id)
 {
     ui_set_registers_visible(FALSE);
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 rframe_delete_cb(GtkWidget *dialog)
 {
     rframe_response_cb(dialog, GTK_RESPONSE_OK);
@@ -1340,7 +1338,7 @@ rframe_delete_cb(GtkWidget *dialog)
 }
 
 
-/*ARGSUSED*/
+G_MODULE_EXPORT
 void
 disp_cb(GtkWidget *widget)
 {
@@ -1349,7 +1347,7 @@ disp_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
+G_MODULE_EXPORT
 void
 base_cb(GtkWidget *widget)
 {
@@ -1388,8 +1386,8 @@ help_display(void)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 constant_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "constant_id"));
@@ -1397,8 +1395,8 @@ constant_menu_cb(GtkMenuItem *menu)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 function_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "function_id"));
@@ -1406,8 +1404,8 @@ function_menu_cb(GtkMenuItem *menu)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 store_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
@@ -1415,8 +1413,8 @@ store_menu_cb(GtkMenuItem *menu)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 recall_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
@@ -1424,8 +1422,8 @@ recall_menu_cb(GtkMenuItem *menu)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 exchange_menu_cb(GtkMenuItem *menu)
 {
     int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
@@ -1433,61 +1431,55 @@ exchange_menu_cb(GtkMenuItem *menu)
 }
 
 
-static void
-finc_activate_cb(GtkWidget *widget, void *pointer) {
-    gint i, dialog;
-    GtkWidget *next_widget, *dialog_widget;
-    const char* widget_name = glade_get_widget_name(widget);
-    for (dialog = 0; dialog < FINC_NUM_DIALOGS; dialog++) {
-        for (i = 0; i < FINC_NUM_ARGS; i++) {
-            if (finc_dialog_fields[dialog][i] == NULL ||
-                g_ascii_strcasecmp(widget_name, 
-                                   finc_dialog_fields[dialog][i])) {
-                continue;
-            }
-            
-            if (i < FINC_NUM_ARGS - 1 &&
-                finc_dialog_fields[dialog][i+1] != NULL) {
-                next_widget = glade_xml_get_widget(X.financial,
-                                                   finc_dialog_fields[dialog][i+1]);
-                gtk_widget_grab_focus(next_widget);
-                return;
-            }
-            else {
-                dialog_widget = gtk_widget_get_toplevel(widget);
-                if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
-                    gtk_dialog_response(GTK_DIALOG(dialog_widget),
-                                        GTK_RESPONSE_OK);
-                    return;
-                }
-            }
+G_MODULE_EXPORT
+void
+finc_activate_cb(GtkWidget *widget) {
+    gint dialog, field;
+
+    dialog = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
+    field = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_field"));
+    
+    if (finc_dialog_fields[dialog][field+1] == NULL) {
+        GtkWidget *dialog_widget;
+        dialog_widget = gtk_widget_get_toplevel(widget);
+        if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
+            gtk_dialog_response(GTK_DIALOG(dialog_widget),
+                                GTK_RESPONSE_OK);
+            return;
         }
+    }
+    else {
+        GtkWidget *next_widget;
+        next_widget = GET_FINC_WIDGET(finc_dialog_fields[dialog][field+1]);
+        gtk_widget_grab_focus(next_widget);
     }
 }
 
 
-static void
-finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
+G_MODULE_EXPORT
+void
+finc_response_cb(GtkWidget *widget, gint response_id)
 {
-    int dialog = GPOINTER_TO_INT (dialog_pointer);
+    int dialog;
     int i;
-    MPNumber arg[FINC_NUM_ARGS];
+    MPNumber arg[4];
     GtkWidget *entry;
+
     if (response_id != GTK_RESPONSE_OK) {
         return;
     }
+    
+    dialog = GPOINTER_TO_INT (g_object_get_data(G_OBJECT(widget), "finc_dialog"));
 
-    for (i = 0; i < FINC_NUM_ARGS; i++) {
+    for (i = 0; i < 4; i++) {
         if (finc_dialog_fields[dialog][i] == NULL) {
             continue;
         }
-        entry = glade_xml_get_widget(X.financial,
-                                     finc_dialog_fields[dialog][i]);
+        entry = GET_FINC_WIDGET(finc_dialog_fields[dialog][i]);
         mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
-    gtk_widget_grab_focus(glade_xml_get_widget(X.financial, 
-                                               finc_dialog_fields[dialog][0]));
+    gtk_widget_grab_focus(GET_FINC_WIDGET(finc_dialog_fields[dialog][0]));
 
     do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
 }
@@ -1496,41 +1488,51 @@ finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
 static void
 setup_finc_dialogs(void)
 {
-    X.financial = glade_xml_new(PACKAGE_GLADE_DIR "/financial.glade", NULL, 
-                                 NULL);
-    glade_xml_signal_connect_data(X.financial, "finc_ctrm_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_CTRM_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_ddb_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_DDB_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_fv_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_FV_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_gpm_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_GPM_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_pmt_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_PMT_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_pv_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_PV_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_rate_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_RATE_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_sln_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_SLN_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_syd_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_SYD_DIALOG));
-    glade_xml_signal_connect_data(X.financial, "finc_term_response_cb", 
-                             G_CALLBACK(finc_response_cb), 
-                             GINT_TO_POINTER(FINC_TERM_DIALOG));
-
-    glade_xml_signal_connect(X.financial, "finc_activate_cb", 
-                             G_CALLBACK(finc_activate_cb));
+    GError *error = NULL;
+    int i, j;
+    
+    // FIXME: Use same code as main UI
+    X.financial = gtk_builder_new();
+    gtk_builder_add_from_file(X.financial, PACKAGE_UI_DIR "/financial.ui", &error);
+    if (error != NULL)
+    {
+        g_object_unref(X.financial);
+        X.financial = NULL;
+        g_warning("Error loading financial UI: %s\n", error->message);
+        return;
+    }
+    
+    g_object_set_data(gtk_builder_get_object(X.financial, "ctrm_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_CTRM_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "ddb_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_DDB_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "fv_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_FV_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "gpm_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_GPM_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "pmt_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_PMT_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "pv_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_PV_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "rate_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_RATE_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "sln_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_SLN_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "syd_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_SYD_DIALOG));
+    g_object_set_data(gtk_builder_get_object(X.financial, "term_dialog"),
+                      "finc_dialog", GINT_TO_POINTER(FINC_TERM_DIALOG));
+    
+    for (i = 0; i < FINC_NUM_DIALOGS; i++) {
+        for (j = 0; finc_dialog_fields[i][j]; j++) {
+            GObject *o;
+            o = gtk_builder_get_object(X.financial, finc_dialog_fields[i][j]);
+            g_object_set_data(o, "finc_field", GINT_TO_POINTER(j));
+            g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
+        }
+    }
+    
+    gtk_builder_connect_signals(X.financial, NULL);
 }
 
 static void
@@ -1575,7 +1577,8 @@ update_functions_menu(void)
 }
 
 
-static void
+G_MODULE_EXPORT
+void
 edit_constants_response_cb(GtkDialog *dialog, gint id)
 {
     GtkTreeIter iter;
@@ -1605,7 +1608,8 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 edit_constants_delete_cb(GtkDialog *dialog)
 {
     edit_constants_response_cb(dialog, GTK_RESPONSE_CANCEL);
@@ -1613,7 +1617,8 @@ edit_constants_delete_cb(GtkDialog *dialog)
 }
 
 
-static void
+G_MODULE_EXPORT
+void
 edit_functions_response_cb(GtkDialog *dialog, gint id)
 {
     GtkTreeIter iter;
@@ -1641,7 +1646,8 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 edit_functions_delete_cb(GtkDialog *dialog)
 {
     edit_functions_response_cb(dialog, GTK_RESPONSE_CANCEL);
@@ -1649,7 +1655,6 @@ edit_functions_delete_cb(GtkDialog *dialog)
 }
 
 
-/*ARGSUSED*/
 static GtkTreeModel *
 create_constants_model()
 {
@@ -1676,7 +1681,6 @@ create_constants_model()
 }
 
 
-/*ARGSUSED*/
 static GtkTreeModel *
 create_functions_model()
 {
@@ -1733,8 +1737,8 @@ save_win_position()
 }
 
 
-/*ARGSUSED*/
-static gboolean
+G_MODULE_EXPORT
+gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
     int index;
@@ -1744,7 +1748,8 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 }
 
 
-static void
+G_MODULE_EXPORT
+void
 menu_item_select_cb(GtkWidget *widget)
 {
     GtkStatusbar *statusbar = GTK_STATUSBAR(X.statusbar);
@@ -1760,8 +1765,8 @@ menu_item_select_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 menu_item_deselect_cb(GtkWidget *widget)
 {
     GtkStatusbar *statusbar = GTK_STATUSBAR(X.statusbar);
@@ -1841,15 +1846,15 @@ check_for_localized_numeric_point(int keyval)
 }
 
 
-/*ARGSUSED*/
-static void 
+G_MODULE_EXPORT
+void 
 help_cb(GtkWidget *widget)
 {
     help_display();
 }
 
 
-/*ARGSUSED*/
+G_MODULE_EXPORT
 void
 hyp_cb(GtkWidget *widget)
 {
@@ -1857,7 +1862,7 @@ hyp_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
+G_MODULE_EXPORT
 void
 trig_cb(GtkWidget *widget)
 {
@@ -1866,7 +1871,7 @@ trig_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
+G_MODULE_EXPORT
 void
 inv_cb(GtkWidget *widget)
 {
@@ -1874,7 +1879,6 @@ inv_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
 static void
 menu_pos_func(GtkMenu *menu, gint *x, gint *y,
               gboolean *push_in, gpointer user_data)
@@ -1886,8 +1890,8 @@ menu_pos_func(GtkMenu *menu, gint *x, gint *y,
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 button_cb(GtkWidget *widget, GdkEventButton *event)
 {
     int function;
@@ -1929,7 +1933,6 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
 }
 
 
-/*ARGSUSED*/
 static void
 select_display_entry(int offset)
 {
@@ -1941,8 +1944,8 @@ select_display_entry(int offset)
 }
 
 
-/*ARGSUSED*/
-static gboolean
+G_MODULE_EXPORT
+gboolean
 kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
     int i, j, state;
@@ -2058,7 +2061,8 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event)
 {
     if (event->keyval == GDK_Shift_L || event->keyval == GDK_Shift_R) {
@@ -2070,8 +2074,8 @@ kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event)
 }
 
 
-/*ARGSUSED*/
-static void 
+G_MODULE_EXPORT
+void 
 edit_cb(GtkWidget *widget)
 {
     gboolean can_paste, can_copy;
@@ -2085,15 +2089,14 @@ edit_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void 
+G_MODULE_EXPORT
+void 
 copy_cb(GtkWidget *widget)
 {
     get_display();
 }
 
 
-/*ARGSUSED*/
 static void
 get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 {
@@ -2168,8 +2171,8 @@ get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
 }
 
 
-/*ARGSUSED*/
-static gboolean
+G_MODULE_EXPORT
+gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 {
     if (event->button == 2) {
@@ -2181,8 +2184,8 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 }
 
 
-/*ARGSUSED*/
-static void 
+G_MODULE_EXPORT
+void 
 paste_cb(GtkWidget *widget)
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X.clipboard_atom),
@@ -2190,31 +2193,30 @@ paste_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void 
+G_MODULE_EXPORT
+void 
 popup_paste_cb(GtkWidget *menu)
 {
     paste_cb(menu);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 undo_cb(GtkWidget *widget)
 {
     do_button(FN_UNDO, 0);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 redo_cb(GtkWidget *widget)
 {
     do_button(FN_REDO, 0);    
 }
 
 
-/*ARGSUSED*/
 static void
 for_each_menu(GtkWidget *widget, gpointer data)
 {
@@ -2235,27 +2237,28 @@ for_each_menu(GtkWidget *widget, gpointer data)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu)
 {
     gtk_container_foreach(GTK_CONTAINER(menu), for_each_menu, NULL);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 insert_ascii_cb(GtkWidget *widget)
 {
     if (!GTK_WIDGET_VISIBLE(X.aframe)) {
         ds_position_popup(X.kframe, X.aframe, DS_POPUP_LEFT);
     }
-    gtk_window_set_focus(GTK_WINDOW(X.kframe), GTK_WIDGET(X.aframe_ch));
+    gtk_widget_grab_focus(GTK_WIDGET(X.aframe_ch));
     gtk_widget_show(X.aframe);
 }
 
 
-static void
+G_MODULE_EXPORT
+void
 shift_cb(GtkWidget *widget)
 {
     int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
@@ -2264,8 +2267,8 @@ shift_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 show_registers_cb(GtkWidget *widget)
 {
     gboolean visible;    
@@ -2274,8 +2277,8 @@ show_registers_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 mode_radio_cb(GtkWidget *menu)
 {
     int mode;             /* The new mode. */
@@ -2289,8 +2292,8 @@ mode_radio_cb(GtkWidget *menu)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 accuracy_radio_cb(GtkWidget *widget)
 {
     int count;
@@ -2301,28 +2304,28 @@ accuracy_radio_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 accuracy_other_cb(GtkWidget *widget)
 {
     if (!GTK_WIDGET_VISIBLE(X.spframe)) {
         ds_position_popup(X.kframe, X.spframe, DS_POPUP_LEFT);
     }    
-    gtk_window_set_focus(GTK_WINDOW(X.spframe), GTK_WIDGET(X.precision_spin));
+    gtk_widget_grab_focus(GTK_WIDGET(X.precision_spin));
     gtk_widget_show(X.spframe);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 accuracy_default_cb(GtkWidget *widget)
 {
     do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 show_trailing_zeroes_cb(GtkWidget *widget)
 {
     gboolean visible;    
@@ -2332,8 +2335,8 @@ show_trailing_zeroes_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 quit_cb(GtkWidget *widget)
 {
     save_win_position();
@@ -2341,7 +2344,8 @@ quit_cb(GtkWidget *widget)
 }
 
 
-static void
+G_MODULE_EXPORT
+void
 spframe_response_cb(GtkWidget *dialog, gint response_id)
 {
     int val;
@@ -2354,7 +2358,8 @@ spframe_response_cb(GtkWidget *dialog, gint response_id)
 }
 
 
-static gboolean
+G_MODULE_EXPORT
+gboolean
 spframe_delete_cb(GtkWidget *dialog)
 {
     spframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
@@ -2362,16 +2367,16 @@ spframe_delete_cb(GtkWidget *dialog)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 spframe_activate_cb(GtkWidget *spin)
 {
     spframe_response_cb(X.spframe, GTK_RESPONSE_OK);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 show_thousands_separator_cb(GtkWidget *widget)
 {
     gboolean visible;
@@ -2381,16 +2386,16 @@ show_thousands_separator_cb(GtkWidget *widget)
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 edit_constants_cb(GtkMenuItem *item)
 {
     gtk_widget_show(X.con_dialog);
 }
 
 
-/*ARGSUSED*/
-static void
+G_MODULE_EXPORT
+void
 edit_functions_cb(GtkMenuItem *item)
 {
     gtk_widget_show(X.fun_dialog);
@@ -2434,9 +2439,11 @@ create_kframe()
     GtkSizeGroup *size_group;
     GtkAccelGroup *accel_group;
     GtkWidget *treeview;
+    GError *error = NULL;
    
-    X.ui = glade_xml_new(UI_FILE, NULL, NULL);
-    if (X.ui == NULL) {
+    X.ui = gtk_builder_new();
+    gtk_builder_add_from_file(X.ui, UI_FILE, &error);
+    if (error != NULL) {
         GtkWidget *dialog;
         
         dialog = gtk_message_dialog_new(NULL, 0,
@@ -2444,6 +2451,7 @@ create_kframe()
                                         GTK_BUTTONS_NONE,
                                         /* Translators: Title of the error dialog when unable to load the UI files */
                                         N_("Error loading user interface"));
+        // FIXME: Use error->message
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
                                                  /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file */
                                                  N_("The user interface file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
@@ -2452,65 +2460,7 @@ create_kframe()
         gtk_dialog_run(GTK_DIALOG(dialog));
         exit(0);
     }
-    
-    /* When connecting up signals, would ideally use autoconnect but not 
-     * sure how to get the build process working. 
-     * See http://library.gnome.org/devel/libglade/unstable and
-     * http://www.jamesh.id.au/software/libglade/ 
-     * for some information on how to get this to work
-     * glade_xml_signal_autoconnect(X.ui);
-     */
-    CONNECT_SIGNAL(kframe_key_press_cb);
-    CONNECT_SIGNAL(kframe_key_release_cb);
-    CONNECT_SIGNAL(button_cb);
-    CONNECT_SIGNAL(menu_item_select_cb);
-    CONNECT_SIGNAL(menu_item_deselect_cb);
-    CONNECT_SIGNAL(mode_radio_cb);
-    CONNECT_SIGNAL(inv_cb);
-    CONNECT_SIGNAL(hyp_cb);
-    CONNECT_SIGNAL(base_cb);
-    CONNECT_SIGNAL(disp_cb);
-    CONNECT_SIGNAL(trig_cb);    
-    CONNECT_SIGNAL(quit_cb);
-    CONNECT_SIGNAL(edit_cb);
-    CONNECT_SIGNAL(copy_cb);
-    CONNECT_SIGNAL(paste_cb);
-    CONNECT_SIGNAL(insert_ascii_cb);
-    CONNECT_SIGNAL(undo_cb);
-    CONNECT_SIGNAL(redo_cb);
-    CONNECT_SIGNAL(help_cb);
-    CONNECT_SIGNAL(about_cb);
-    CONNECT_SIGNAL(show_trailing_zeroes_cb);
-    CONNECT_SIGNAL(show_thousands_separator_cb);
-    CONNECT_SIGNAL(show_registers_cb);
-    CONNECT_SIGNAL(accuracy_radio_cb);
-    CONNECT_SIGNAL(accuracy_other_cb);
-    CONNECT_SIGNAL(accuracy_default_cb);    
-    CONNECT_SIGNAL(constant_menu_cb);
-    CONNECT_SIGNAL(function_menu_cb);
-    CONNECT_SIGNAL(store_menu_cb);
-    CONNECT_SIGNAL(recall_menu_cb);
-    CONNECT_SIGNAL(exchange_menu_cb);
-    CONNECT_SIGNAL(mouse_button_cb);
-    /* Detect when populating the right-click menu to enable pasting */
-    CONNECT_SIGNAL(buffer_populate_popup_cb);
-    CONNECT_SIGNAL(shift_cb);
-    CONNECT_SIGNAL(bit_toggle_cb);
-    CONNECT_SIGNAL(aframe_delete_cb);
-    CONNECT_SIGNAL(aframe_activate_cb);
-    CONNECT_SIGNAL(aframe_response_cb);
-    CONNECT_SIGNAL(spframe_delete_cb);
-    CONNECT_SIGNAL(spframe_activate_cb);
-    CONNECT_SIGNAL(spframe_response_cb);
-    CONNECT_SIGNAL(rframe_delete_cb);
-    CONNECT_SIGNAL(rframe_response_cb);
-    CONNECT_SIGNAL(edit_constants_cb);
-    CONNECT_SIGNAL(edit_functions_cb);
-    CONNECT_SIGNAL(edit_constants_delete_cb);    
-    CONNECT_SIGNAL(edit_constants_response_cb);
-    CONNECT_SIGNAL(edit_constants_delete_cb);    
-    CONNECT_SIGNAL(edit_functions_response_cb);
-    CONNECT_SIGNAL(edit_functions_delete_cb);
+    gtk_builder_connect_signals(X.ui, NULL);
 
     X.clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     X.primary_atom = gdk_atom_intern("PRIMARY", FALSE);
@@ -2726,11 +2676,7 @@ create_kframe()
         g_object_set_data(G_OBJECT(X.disp[i]),
                           "numeric_mode", GINT_TO_POINTER(i));
 
-    /* Put status image into statusbar (glade doesn't support child widgets
-     * in statusbars) */
-    X.status_image = gtk_image_new_from_stock("", GTK_ICON_SIZE_BUTTON);
-    gtk_widget_show(X.status_image);
-    gtk_box_pack_start(GTK_BOX(X.statusbar), X.status_image, FALSE, TRUE, 0);
+    X.status_image = GET_WIDGET("status_image");
 
     /* Set modes for menu items */
     for (i = 1; i < 16; i++) {
@@ -2841,15 +2787,6 @@ ui_load(void)
     if (get_boolean_resource(R_REGS, &boolval))
         ui_set_registers_visible(boolval);
 
-    /* Focus on the clear button */
-    if (X.mode == BASIC) {
-        gtk_window_set_focus(GTK_WINDOW(X.kframe),
-                             GTK_WIDGET(X.clear_buttons[0]));
-    } else {
-        gtk_window_set_focus(GTK_WINDOW(X.kframe),
-                             GTK_WIDGET(X.clear_buttons[1]));
-    }
-
     /* Set default accuracy menu item */
     /* Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value. */
     SNPRINTF(text, MAXLINE, _("Reset to _Default (%d)"), DEFAULT_ACCURACY);
@@ -2864,6 +2801,13 @@ ui_start(void)
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->display.format);
 
+    /* Focus on the clear button */
+    if (X.mode == BASIC) {
+        gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[0]));
+    } else {
+        gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[1]));
+    }
+    
     gtk_widget_show(X.kframe);
 
     gtk_main();

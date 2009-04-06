@@ -26,15 +26,9 @@ DISTCLEANFILES =                \
 	intltool-extract        \
 	intltool-merge          \
 	intltool-update		\
-	gnome-doc-utils.make	\
-	gcalctool.desktop
+	gnome-doc-utils.make
 
-SUBDIRS = po gcalctool glade help m4
-
-SCHEMAS_FILE = gcalctool.schemas
-
-schemadir = $(GCONF_SCHEMA_FILE_DIR)
-schema_DATA = $(SCHEMAS_FILE)
+SUBDIRS = po gcalctool data help m4
 
 EXTRA_DIST = \
 	autogen.sh \
@@ -46,22 +40,9 @@ EXTRA_DIST = \
 	MAINTAINERS \
 	TODO \
 	gcalctoolrc \
-	gcalctool.desktop.in \
 	gnome-doc-utils.make	\
 	intltool-extract.in     \
 	intltool-merge.in       \
 	intltool-update.in      \
-	$(schema_DATA) \
 	omf.make \
 	xmldocs.make
-
-Utilitiesdir = $(datadir)/applications
-Utilities_in_files = gcalctool.desktop.in
-Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
-
-if GCONF_SCHEMAS_INSTALL
-# Install the gcalctool schema file.
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-endif

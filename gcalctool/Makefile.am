@@ -4,7 +4,7 @@ INCLUDES = \
 	-I$(includedir) \
 	$(DISABLE_DEPRECATED) \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	-DPACKAGE_GLADE_DIR=\""$(datadir)/gcalctool"\" \
+	-DPACKAGE_UI_DIR=\""$(datadir)/gcalctool"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DPACKAGE_PIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
 	$(PACKAGE_CFLAGS) \
