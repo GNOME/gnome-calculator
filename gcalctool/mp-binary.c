@@ -16,7 +16,7 @@ static int hex_to_int(char digit)
 
 
 static void
-mp_bitwise(const int s1[MP_SIZE], const int s2[MP_SIZE], int (*bitwise_operator)(int, int), int t[MP_SIZE])
+mp_bitwise(const MPNumber *s1, const MPNumber *s2, int (*bitwise_operator)(int, int), MPNumber *t)
 {
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
     int offset1, offset2, offset_out;
@@ -58,44 +58,44 @@ static int mp_bitwise_not(int v1, int dummy) { return v1 ^ 0xF; }
 
 
 void
-mp_and(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
+mp_and(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
 {
     mp_bitwise(s1, s2, mp_bitwise_and, t);
 }
 
 
 void
-mp_or(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
+mp_or(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
 {
     mp_bitwise(s1, s2, mp_bitwise_or, t);
 }
 
 
 void
-mp_xor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
+mp_xor(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
 {
     mp_bitwise(s1, s2, mp_bitwise_xor, t);
 }
 
 
 void
-mp_xnor(const int s1[MP_SIZE], const int s2[MP_SIZE], int t[MP_SIZE])
+mp_xnor(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
 {
     mp_bitwise(s1, s2, mp_bitwise_xnor, t);
 }
 
 
 void
-mp_not(const int s1[MP_SIZE], int t[MP_SIZE])
+mp_not(const MPNumber *s1, MPNumber *t)
 {
-    int dummy[MP_SIZE];
-    mp_set_from_integer(0, dummy);
-    mp_bitwise(s1, dummy, mp_bitwise_not, t);
+    MPNumber temp;
+    mp_set_from_integer(0, &temp);
+    mp_bitwise(s1, &temp, mp_bitwise_not, t);
 }
 
 
 void
-mp_mask_u32(const int s1[MP_SIZE], int t1[MP_SIZE])
+mp_mask_u32(const MPNumber *s1, MPNumber *t1)
 {
     char text[MAX_DIGITS];
     size_t len, offset;
@@ -109,7 +109,7 @@ mp_mask_u32(const int s1[MP_SIZE], int t1[MP_SIZE])
 
 
 void
-mp_mask_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
+mp_mask_u16(const MPNumber *s1, MPNumber *t1)
 {
     char text[MAX_DIGITS];
     size_t len, offset;
@@ -123,7 +123,7 @@ mp_mask_u16(const int s1[MP_SIZE], int t1[MP_SIZE])
 
 
 void
-mp_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
+mp_shift(MPNumber *s, MPNumber *t, int times)
 {
     int i, multiplier = 1;
     
@@ -133,10 +133,10 @@ mp_shift(int s[MP_SIZE], int t[MP_SIZE], int times)
         mpmuli(s, multiplier, t);
     }
     else {
-        int temp[MP_SIZE];
+        MPNumber temp;
         for (i = 0; i < -times; i++)
             multiplier *= 2;
-        mpdivi(s, multiplier, temp);
-        mpcmim(temp, t);
+        mpdivi(s, multiplier, &temp);
+        mpcmim(&temp, t);
     }
 }

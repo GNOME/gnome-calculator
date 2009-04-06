@@ -26,7 +26,7 @@
 /* TODO: This file is almost identical to lr-parser. */
 
 int 
-ce_parse_(const char *expression, int result[MP_SIZE], int flags)
+ce_parse_(const char *expression, MPNumber *result, int flags)
 {
     int ret = 0;
 
@@ -58,16 +58,16 @@ ce_parse_(const char *expression, int result[MP_SIZE], int flags)
         }
 
         if (flags & ANS) {
-            memcpy(result, parser_state.ret, sizeof(int)*MP_SIZE);
+            mp_set_from_mp(&parser_state.ret, result);
         }
 
-		return 0;
+        return 0;
     }
 }
 
 
 int 
-ce_parse(const char *expression, int result[MP_SIZE])
+ce_parse(const char *expression, MPNumber *result)
 {
     return(ce_parse_(expression, result, ANS));
 }
@@ -76,7 +76,6 @@ ce_parse(const char *expression, int result[MP_SIZE])
 int 
 ce_udf_parse(const char *expression)
 {
-    int dummy[MP_SIZE];
-
-    return(ce_parse_(expression, dummy, 0));
+    MPNumber temp;
+    return(ce_parse_(expression, &temp, 0));
 }

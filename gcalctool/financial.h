@@ -23,8 +23,7 @@
 
 #include "mp.h"
 
-void do_finc_expression(int function, int arg1[MP_SIZE], int arg2[MP_SIZE],
-                        int arg3[MP_SIZE], int arg4[MP_SIZE]);
+void do_finc_expression(int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3, MPNumber *arg4);
 
 enum finc_dialogs {
     FINC_CTRM_DIALOG,
@@ -37,7 +36,7 @@ enum finc_dialogs {
     FINC_SLN_DIALOG,
     FINC_SYD_DIALOG,
     FINC_TERM_DIALOG,
-	FINC_NUM_DIALOGS,
+    FINC_NUM_DIALOGS,
 };
 
 #endif /* FINANCIAL_H */

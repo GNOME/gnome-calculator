@@ -25,7 +25,7 @@
 #include <libintl.h>
 
 void
-calc_ctrm(int t[MP_SIZE], int pint[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE])
+calc_ctrm(MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
 {
 
 /*  Cterm - pint (periodic interest rate).
@@ -34,19 +34,18 @@ calc_ctrm(int t[MP_SIZE], int pint[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE])
  *
  *          RESULT = log(fv / pv) / log(1 + pint)
  */    
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mpdiv(fv, pv, MP1);
-    mpln(MP1, MP2);
-    mp_add_integer(pint, 1, MP3);
-    mpln(MP3, MP4);
-    mpdiv(MP2, MP4, t);
+    mpdiv(fv, pv, &MP1);
+    mpln(&MP1, &MP2);
+    mp_add_integer(pint, 1, &MP3);
+    mpln(&MP3, &MP4);
+    mpdiv(&MP2, &MP4, t);
 }
 
 
 void
-calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int life[MP_SIZE],
-         int period[MP_SIZE])
+calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
 {
 
 /*  Ddb   - cost    (amount paid for asset).
@@ -65,16 +64,16 @@ calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int life[MP_SIZE],
 
     int i;
     int len;
-    int MPbv[MP_SIZE], MP1[MP_SIZE], MP2[MP_SIZE];
+    MPNumber MPbv, MP1, MP2;
 
-    mp_set_from_integer(0, MPbv);
+    mp_set_from_integer(0, &MPbv);
     len = mp_cast_to_int(period);
     for (i = 0; i < len; i++) {
-        mp_subtract(cost, MPbv, MP1);
-        mpmuli(MP1, 2, MP2);
-        mpdiv(MP2, life, t);
-        mp_set_from_mp(MPbv, MP1);
-        mp_add(MP1, t, MPbv); /* TODO: why result is MPbv, for next loop? */
+        mp_subtract(cost, &MPbv, &MP1);
+        mpmuli(&MP1, 2, &MP2);
+        mpdiv(&MP2, life, t);
+        mp_set_from_mp(&MPbv, &MP1);
+        mp_add(&MP1, t, &MPbv); /* TODO: why result is MPbv, for next loop? */
     }
 
     if (len >= 0) {
@@ -86,7 +85,7 @@ calc_ddb(int t[MP_SIZE], int cost[MP_SIZE], int life[MP_SIZE],
 
 
 void
-calc_fv(int t[MP_SIZE], int pmt[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
+calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 {
 
 /*  Fv    - pmt (periodic payment).
@@ -96,18 +95,18 @@ calc_fv(int t[MP_SIZE], int pmt[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
  *          RESULT = pmt * (pow(1 + pint, n) - 1) / pint
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
   
-    mp_add_integer(pint, 1, MP1);
-    mppwr2(MP1, n, MP2);
-    mp_add_integer(MP2, -1, MP3);
-    mpmul(pmt, MP3, MP4);
-    mpdiv(MP4, pint, t);
+    mp_add_integer(pint, 1, &MP1);
+    mppwr2(&MP1, n, &MP2);
+    mp_add_integer(&MP2, -1, &MP3);
+    mpmul(pmt, &MP3, &MP4);
+    mpdiv(&MP4, pint, t);
 }
 
 
 void
-calc_gpm(int t[MP_SIZE], int cost[MP_SIZE], int margin[MP_SIZE])
+calc_gpm(MPNumber *t, MPNumber *cost, MPNumber *margin)
 {
 
 /*  Gpm   - cost (cost of sale).
@@ -116,16 +115,16 @@ calc_gpm(int t[MP_SIZE], int cost[MP_SIZE], int margin[MP_SIZE])
  *          RESULT = cost / (1 - margin)
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE];
+    MPNumber MP1, MP2;
 
-    mp_set_from_integer(1, MP1);
-    mp_subtract(MP1, margin, MP2);
-    mpdiv(cost, MP2, t);
+    mp_set_from_integer(1, &MP1);
+    mp_subtract(&MP1, margin, &MP2);
+    mpdiv(cost, &MP2, t);
 }
 
 
 void
-calc_pmt(int t[MP_SIZE], int prin[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
+calc_pmt(MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
 {
 
 /*  Pmt   - prin (principal).
@@ -135,20 +134,20 @@ calc_pmt(int t[MP_SIZE], int prin[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
  *          RESULT = prin * (pint / (1 - pow(pint + 1, -1 * n)))
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mp_add_integer(pint, 1, MP1);
-    mpmuli(n, -1, MP2);
-    mppwr2(MP1, MP2, MP3);
-    mpmuli(MP3, -1, MP4);
-    mp_add_integer(MP4, 1, MP1);
-    mpdiv(pint, MP1, MP2);
-    mpmul(prin, MP2, t);
+    mp_add_integer(pint, 1, &MP1);
+    mpmuli(n, -1, &MP2);
+    mppwr2(&MP1, &MP2, &MP3);
+    mpmuli(&MP3, -1, &MP4);
+    mp_add_integer(&MP4, 1, &MP1);
+    mpdiv(pint, &MP1, &MP2);
+    mpmul(prin, &MP2, t);
 }
 
 
 void
-calc_pv(int t[MP_SIZE], int pmt[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
+calc_pv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 {
 
 /*  Pv    - pmt (periodic payment).
@@ -158,20 +157,20 @@ calc_pv(int t[MP_SIZE], int pmt[MP_SIZE], int pint[MP_SIZE], int n[MP_SIZE])
  *          RESULT = pmt * (1 - pow(1 + pint, -1 * n)) / pint
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mp_add_integer(pint, 1, MP1);
-    mpmuli(n, -1, MP2);
-    mppwr2(MP1, MP2, MP3);
-    mpmuli(MP3, -1, MP4);
-    mp_add_integer(MP4, 1, MP1);
-    mpdiv(MP1, pint, MP2);
-    mpmul(pmt, MP2, t);
+    mp_add_integer(pint, 1, &MP1);
+    mpmuli(n, -1, &MP2);
+    mppwr2(&MP1, &MP2, &MP3);
+    mpmuli(&MP3, -1, &MP4);
+    mp_add_integer(&MP4, 1, &MP1);
+    mpdiv(&MP1, pint, &MP2);
+    mpmul(pmt, &MP2, t);
 }
 
 
 void
-calc_rate(int t[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE], int n[MP_SIZE])
+calc_rate(MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
 {
 
 /*  Rate  - fv (future value).
@@ -181,19 +180,18 @@ calc_rate(int t[MP_SIZE], int fv[MP_SIZE], int pv[MP_SIZE], int n[MP_SIZE])
  *          RESULT = pow(fv / pv, 1 / n) - 1
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mpdiv(fv, pv, MP1);
-    mp_set_from_integer(1, MP2);
-    mpdiv(MP2, n, MP3);
-    mppwr2(MP1, MP3, MP4);
-    mp_add_integer(MP4, -1, t);
+    mpdiv(fv, pv, &MP1);
+    mp_set_from_integer(1, &MP2);
+    mpdiv(&MP2, n, &MP3);
+    mppwr2(&MP1, &MP3, &MP4);
+    mp_add_integer(&MP4, -1, t);
 }
 
 
 void
-calc_sln(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
-		 int life[MP_SIZE])
+calc_sln(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
 {
 
 /*  Sln   - cost    (cost of the asset).
@@ -203,16 +201,14 @@ calc_sln(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
  *          RESULT = (cost - salvage) / life
  */
   
-    int MP1[MP_SIZE];
-
-    mp_subtract(cost, salvage, MP1);
-    mpdiv(MP1, life, t);
+    MPNumber MP1;
+    mp_subtract(cost, salvage, &MP1);
+    mpdiv(&MP1, life, t);
 }
 
 
 void
-calc_syd(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
-         int life[MP_SIZE], int period[MP_SIZE])
+calc_syd(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life, MPNumber *period)
 {
 
 /*  Syd   - cost    (cost of the asset).
@@ -224,22 +220,22 @@ calc_syd(int t[MP_SIZE], int cost[MP_SIZE], int salvage[MP_SIZE],
  *                   (life * (life + 1)) / 2
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mp_subtract(life, period, MP2);
-    mp_add_integer(MP2, 1, MP3);
-    mp_add_integer(life, 1, MP2);
-    mpmul(life, MP2, MP4);
-    mp_set_from_integer(2, MP2);
-    mpdiv(MP4, MP2, MP1);
-    mpdiv(MP3, MP1, MP2);
-    mp_subtract(cost, salvage, MP1);
-    mpmul(MP1, MP2, t);
+    mp_subtract(life, period, &MP2);
+    mp_add_integer(&MP2, 1, &MP3);
+    mp_add_integer(life, 1, &MP2);
+    mpmul(life, &MP2, &MP4);
+    mp_set_from_integer(2, &MP2);
+    mpdiv(&MP4, &MP2, &MP1);
+    mpdiv(&MP3, &MP1, &MP2);
+    mp_subtract(cost, salvage, &MP1);
+    mpmul(&MP1, &MP2, t);
 }
 
 
 void
-calc_term(int t[MP_SIZE], int pmt[MP_SIZE], int fv[MP_SIZE], int pint[MP_SIZE])
+calc_term(MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
 {
 
 /*  Term  - pmt (periodic payment).
@@ -249,53 +245,52 @@ calc_term(int t[MP_SIZE], int pmt[MP_SIZE], int fv[MP_SIZE], int pint[MP_SIZE])
  *          RESULT = log(1 + (fv * pint / pmt)) / log(1 + pint)
  */
 
-    int MP1[MP_SIZE], MP2[MP_SIZE], MP3[MP_SIZE], MP4[MP_SIZE];
+    MPNumber MP1, MP2, MP3, MP4;
 
-    mp_add_integer(pint, 1, MP1);
-    mpln(MP1, MP2);
-    mpmul(fv, pint, MP1);
-    mpdiv(MP1, pmt, MP3);
-    mp_add_integer(MP3, 1, MP4);
-    mpln(MP4, MP1);
-    mpdiv(MP1, MP2, t);
+    mp_add_integer(pint, 1, &MP1);
+    mpln(&MP1, &MP2);
+    mpmul(fv, pint, &MP1);
+    mpdiv(&MP1, pmt, &MP3);
+    mp_add_integer(&MP3, 1, &MP4);
+    mpln(&MP4, &MP1);
+    mpdiv(&MP1, &MP2, t);
 } 
 
 void
-do_finc_expression(int function, int arg1[MP_SIZE], int arg2[MP_SIZE],
-                        int arg3[MP_SIZE], int arg4[MP_SIZE])
+do_finc_expression(int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3, MPNumber *arg4)
 {
-	int result[MP_SIZE];
-	switch (function) {
-        case FINC_CTRM_DIALOG:
-            calc_ctrm(result, arg1, arg2, arg3);
-            break;
-        case FINC_DDB_DIALOG:
-            calc_ddb(result, arg1, arg2, arg3);
-            break;
-        case FINC_FV_DIALOG:
-            calc_fv(result, arg1, arg2, arg3);
-            break;
-        case FINC_GPM_DIALOG:
-            calc_gpm(result, arg1, arg2);
-            break;
-        case FINC_PMT_DIALOG:
-            calc_pmt(result, arg1, arg2, arg3);
-            break;
-        case FINC_PV_DIALOG:
-            calc_pv(result, arg1, arg2, arg3);
-            break;
-        case FINC_RATE_DIALOG:
-            calc_rate(result, arg1, arg2, arg3);
-            break;
-        case FINC_SLN_DIALOG:
-            calc_sln(result, arg1, arg2, arg3);
-            break;
-        case FINC_SYD_DIALOG:
-            calc_syd(result, arg1, arg2, arg3, arg4);
-            break;
-        case FINC_TERM_DIALOG:
-            calc_term(result, arg1, arg2, arg3);
-            break;
+    MPNumber result;
+    switch (function) {
+     case FINC_CTRM_DIALOG:
+       calc_ctrm(&result, arg1, arg2, arg3);
+       break;
+     case FINC_DDB_DIALOG:
+       calc_ddb(&result, arg1, arg2, arg3);
+       break;
+     case FINC_FV_DIALOG:
+       calc_fv(&result, arg1, arg2, arg3);
+       break;
+     case FINC_GPM_DIALOG:
+       calc_gpm(&result, arg1, arg2);
+       break;
+     case FINC_PMT_DIALOG:
+       calc_pmt(&result, arg1, arg2, arg3);
+       break;
+     case FINC_PV_DIALOG:
+       calc_pv(&result, arg1, arg2, arg3);
+       break;
+     case FINC_RATE_DIALOG:
+       calc_rate(&result, arg1, arg2, arg3);
+       break;
+     case FINC_SLN_DIALOG:
+       calc_sln(&result, arg1, arg2, arg3);
+       break;
+     case FINC_SYD_DIALOG:
+       calc_syd(&result, arg1, arg2, arg3, arg4);
+       break;
+     case FINC_TERM_DIALOG:
+       calc_term(&result, arg1, arg2, arg3);
+       break;
     }
-    display_set_number(&v->display, result);
+    display_set_number(&v->display, &result);
 }

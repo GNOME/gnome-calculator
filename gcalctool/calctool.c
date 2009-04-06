@@ -46,37 +46,37 @@ CalculatorVariables *v;
 
 /* Change type to radian */
 void
-to_rad(int s1[MP_SIZE], int t1[MP_SIZE])
+to_rad(const MPNumber *s1, MPNumber *t1)
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE];
+    MPNumber MP1, MP2;
 
     if (v->ttype == DEG) {
-        mp_get_pi(MP1);
-        mpmul(s1, MP1, MP2);
-        mp_set_from_integer(180, MP1);
-        mpdiv(MP2, MP1, t1);
+        mp_get_pi(&MP1);
+        mpmul(s1, &MP1, &MP2);
+        mp_set_from_integer(180, &MP1);
+        mpdiv(&MP2, &MP1, t1);
     } else if (v->ttype == GRAD) {
-        mp_get_pi(MP1);
-        mpmul(s1, MP1, MP2);
-        mp_set_from_integer(200, MP1);
-        mpdiv(MP2, MP1, t1);
+        mp_get_pi(&MP1);
+        mpmul(s1, &MP1, &MP2);
+        mp_set_from_integer(200, &MP1);
+        mpdiv(&MP2, &MP1, t1);
     } else {
         mp_set_from_mp(s1, t1);
     }
 }
 
 void
-do_trig_typeconv(TrigType ttype, int s1[MP_SIZE], int t1[MP_SIZE])
+do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1)
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE];
+    MPNumber MP1, MP2;
   
     switch (ttype) {
 
         case DEG:
-            mp_set_from_integer(180, MP1);
-            mpmul(s1, MP1, MP2);
-            mp_get_pi(MP1);
-            mpdiv(MP2, MP1, t1);
+            mp_set_from_integer(180, &MP1);
+            mpmul(s1, &MP1, &MP2);
+            mp_get_pi(&MP1);
+            mpdiv(&MP2, &MP1, t1);
             break;
 
         case RAD:
@@ -84,10 +84,10 @@ do_trig_typeconv(TrigType ttype, int s1[MP_SIZE], int t1[MP_SIZE])
             break;
 
         case GRAD:
-            mp_set_from_integer(200, MP1);
-            mpmul(s1, MP1, MP2);
-            mp_get_pi(MP1);
-            mpdiv(MP2, MP1, t1);
+            mp_set_from_integer(200, &MP1);
+            mpmul(s1, &MP1, &MP2);
+            mp_get_pi(&MP1);
+            mpdiv(&MP2, &MP1, t1);
             break;
 
         default:
@@ -202,11 +202,10 @@ get_options(int argc, char *argv[])
 static void
 init_state(void)
 {
-    int acc, size, i;
+    int acc, i;
 
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
-    size             = MP_SIZE;
-    mpset(acc, size, size);
+    mpset(acc, MP_SIZE);
 
     v->error         = FALSE;  /* No calculator error initially. */
     v->radix         = get_radix();    /* Locale specific radix string. */

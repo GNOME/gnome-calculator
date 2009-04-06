@@ -40,7 +40,7 @@ int celex();
 int ceerror();                   /* dummy definition TODO: this is a douple */
 int ceparse();                   /* dummy definition. */
 int ceerror(char *s);
-int ce_parse(const char *expression, int result[MP_SIZE]);
+int ce_parse(const char *expression, MPNumber *result);
 int ce_udf_parse(const char *expression);
 
 void reset_ce_tokeniser();

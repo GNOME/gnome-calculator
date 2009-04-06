@@ -27,12 +27,12 @@
 #include "mp.h"
 
 static char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
-static int constant_values[MAX_CONSTANTS][MP_SIZE];  /* Selectable constants. */
+static MPNumber constant_values[MAX_CONSTANTS];  /* Selectable constants. */
 
 static char function_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
 static char function_values[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
 
-static int registers[MAX_REGISTERS][MP_SIZE];     /* Memory register values. */
+static MPNumber registers[MAX_REGISTERS];     /* Memory register values. */
 
 static const char *default_constants[][2] =
 {
@@ -67,17 +67,17 @@ void register_init()
         SNPRINTF(key, MAXLINE, "register%d", i);
         value = get_resource(key);
         if (value) {
-            int temp[MP_SIZE];
-            mp_set_from_string(value, 10, temp);
+            MPNumber temp;
+            mp_set_from_string(value, 10, &temp);
             g_free(value);
-            register_set(i, temp);
+            register_set(i, &temp);
         }
     }
     
     for (i = 0; i < MAX_CONSTANTS; i++) {
         char nkey[MAXLINE], *nline;
         char vkey[MAXLINE], *vline = NULL;
-        int value[MP_SIZE];
+        MPNumber value;
 
         SNPRINTF(nkey, MAXLINE, "constant%1dname", i);
         nline = get_resource(nkey);
@@ -89,14 +89,14 @@ void register_init()
         }
 
         if (nline && vline) {
-            mp_set_from_string(vline, 10, value);
-            constant_set(i, nline, value);
+            mp_set_from_string(vline, 10, &value);
+            constant_set(i, nline, &value);
             g_free(nline);
             g_free(vline);
         }
         else {
-            mp_set_from_string(default_constants[i][1], 10, value);
-            constant_set(i, default_constants[i][0], value);
+            mp_set_from_string(default_constants[i][1], 10, &value);
+            constant_set(i, default_constants[i][0], &value);
         }
     }
     
@@ -126,27 +126,27 @@ void register_init()
 
 
 void
-register_set(int index, int value[MP_SIZE])
+register_set(int index, MPNumber *value)
 {
     if ((index >= 0) && (index <= 10))
-        mp_set_from_mp(value, registers[index]);
+        mp_set_from_mp(value, &registers[index]);
 }
 
 
 void
-register_get(int index, int value[MP_SIZE])
+register_get(int index, MPNumber *value)
 {
     if ((index >= 0) && (index <= 10))
-        mp_set_from_mp(registers[index], value);
+        mp_set_from_mp(&registers[index], value);
 }
 
 
-void constant_set(int index, const char *name, int value[MP_SIZE])
+void constant_set(int index, const char *name, MPNumber *value)
 {
     char key[MAXLINE], text[MAX_LOCALIZED];
 
     STRNCPY(constant_names[index], name, MAXLINE - 1);
-    mp_set_from_mp(value, constant_values[index]);
+    mp_set_from_mp(value, &constant_values[index]);
 
     SNPRINTF(key, MAXLINE, "constant%1dname", index);
     set_resource(key, name);
@@ -165,9 +165,9 @@ const char *constant_get_name(int index)
 }
 
 
-const int *constant_get_value(int index)
+const MPNumber *constant_get_value(int index)
 {
-    return constant_values[index];
+    return &constant_values[index];
 }
 
 

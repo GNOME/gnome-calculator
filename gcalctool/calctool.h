@@ -86,9 +86,9 @@ extern CalculatorVariables *v; /* Calctool variables and options. */
 extern int basevals[];         /* Supported arithmetic bases. */
 
 /* Change type to radian */
-void to_rad(int s1[MP_SIZE], int t1[MP_SIZE]);
+void to_rad(const MPNumber *s1, MPNumber *t1);
 
-void do_trig_typeconv(TrigType ttype, int s1[MP_SIZE], int t1[MP_SIZE]);
+void do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1);
 
 void doerr(char *);
 

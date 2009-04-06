@@ -25,17 +25,28 @@
 #define min(a, b)   ((a) <= (b) ? (a) : (b))
 #define max(a, b)   ((a) >= (b) ? (a) : (b))
 
+/* Evil global variables that must be removed */
 struct {
-    int b, t, m, mxr, r[MP_SIZE];
+    /* Base */
+    int b;
+
+    /* Number of digits */
+    int t;
+
+    /* Min/max exponent value */
+    int m;
+
+    /* ??? */
+    int r[MP_SIZE];
 } MP;
 
 void mpchk(int i, int j);
 void mpgcd(int *, int *);
-void mpmul2(int *, int, int *, int);
-void mp_get_normalized_register(int reg_sign, int *reg_exp, int *z, int trunc);
-void mpexp1(const int *, int *);
-void mpmulq(int *, int, int, int *);
-void mp_reciprocal(const int *, int *);
-void mp_atan1N(int n, int *z);
+void mpmul2(MPNumber *, int, MPNumber *, int);
+void mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc);
+void mpexp1(const MPNumber *, MPNumber *);
+void mpmulq(MPNumber *, int, int, MPNumber *);
+void mp_reciprocal(const MPNumber *, MPNumber *);
+void mp_atan1N(int n, MPNumber *z);
 
 #endif /* MP_INTERNAL_H */

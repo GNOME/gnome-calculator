@@ -30,10 +30,10 @@ static void
 test(char *expression, char *expected, int expected_error)
 {
     int error;
-    int result[MP_SIZE];
+    MPNumber result;
     char result_str[MAXLINE];
     
-    error = ce_parse(expression, result);
+    error = ce_parse(expression, &result);
     if(error != 0 || error != expected_error)
     {
         if(error == expected_error)
@@ -43,7 +43,7 @@ test(char *expression, char *expected, int expected_error)
         return;
     }
     
-    mp_cast_to_string(result_str, MAXLINE, result, basevals[v->base], 9);
+    mp_cast_to_string(result_str, MAXLINE, &result, basevals[v->base], 9);
     if(strcmp(result_str, expected) != 0)
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
     else
@@ -111,7 +111,12 @@ test_parser()
     test("5!", "120", 0);
     //FIXME: Need to update do_factorial() test("0.1!", "", 0);
     //FIXME: Need to update do_factorial() test("-1!", "", 0);
-    
+
+    test("2^0", "1", 0);
+    test("2^1", "2", 0);
+    test("2^2", "4", 0);
+    test("2^-1", "0.5", 0);
+    test("2^100", "1267650600228229401496703205376", 0);
     test("Sqrt(4)", "2", 0);
     test("Sqrt(2)", "1.414213562", 0);
     

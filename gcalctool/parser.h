@@ -36,13 +36,12 @@ struct parser_state {
     char *buff;
     int i;
     int error;
-    int ret[MP_SIZE];
+    MPNumber ret;
     int ncount;
 };
 
-void cp(int s[MP_SIZE], int t[MP_SIZE]);
-void ret(int s[MP_SIZE]);
-void iret(int s[MP_SIZE]);
+void cp(const MPNumber *s, MPNumber *t);
+void ret(const MPNumber *s);
 
 void check_numbase(char *num);
 

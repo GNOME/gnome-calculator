@@ -34,7 +34,7 @@
 %}
 
 %union {
-  int int_t[MP_SIZE];
+  MPNumber int_t;
   int integer;
 }
 
@@ -98,7 +98,7 @@
 
 statement: 
   seq
-| value {ret($1);}
+| value {ret(&$1);}
 | error {
   yyclearin; 
   reset_ce_tokeniser();
@@ -114,15 +114,15 @@ seq:
 
 udf:
   value '=' {
-  display_set_number(&v->display, $1);
+  display_set_number(&v->display, &$1);
   }
 | value '=' tSTO '(' tNUMBER ')' {
-  int val = mp_cast_to_int($5);
-  register_set(val, $1);
+  int val = mp_cast_to_int(&$5);
+  register_set(val, &$1);
 }
 | value tSTO '(' tNUMBER ')' {
-  int val = mp_cast_to_int($4);
-  register_set(val, $1);
+  int val = mp_cast_to_int(&$4);
+  register_set(val, &$1);
 }
 | tCLR {
   display_clear(&v->display);
@@ -130,124 +130,124 @@ udf:
 ;
 
 value: 
-  exp {cp($1, $$);}
-| tPI %prec HIGH {mp_get_pi($$);} 
+  exp {cp(&$1, &$$);}
+| tPI %prec HIGH {mp_get_pi(&$$);} 
 ;
 
 exp: 
-  term {cp($1, $$);}
+  term {cp(&$1, &$$);}
 
-| exp '+' exp {mp_add($1, $3, $$);}
-| exp '-' exp {mp_subtract($1, $3, $$);}
+| exp '+' exp {mp_add(&$1, &$3, &$$);}
+| exp '-' exp {mp_subtract(&$1, &$3, &$$);}
 
 | exp tMOD exp %prec MED {
-    if (!mp_is_integer($1) || !mp_is_integer($3)) {
+    if (!mp_is_integer(&$1) || !mp_is_integer(&$3)) {
 	parser_state.error = -PARSER_ERR_MODULUSOP;
     } else {
-      if (mp_modulus_divide($1, $3, $$)) {
+      if (mp_modulus_divide(&$1, &$3, &$$)) {
         parser_state.error = -EINVAL;
       }			   
     }
 }
 
 | exp tAND exp {
-    if (!mp_is_natural($1) || !mp_is_natural($3)) {
+    if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_and($1, $3, $$);
+    mp_and(&$1, &$3, &$$);
 }
 | exp tOR exp {
-    if (!mp_is_natural($1) || !mp_is_natural($3)) {
+    if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_or($1, $3, $$);
+    mp_or(&$1, &$3, &$$);
 }
 | exp tXNOR exp {
-    if (!mp_is_natural($1) || !mp_is_natural($3)) {
+    if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_xnor($1, $3, $$);
+    mp_xnor(&$1, &$3, &$$);
 }
 | exp tXOR exp {
-    if (!mp_is_natural($1) || !mp_is_natural($3)) {
+    if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_xor($1, $3, $$);
+    mp_xor(&$1, &$3, &$$);
 }
 ;
 
 
 term:
-  number {cp($1, $$);}
-| rcl {cp($1, $$);}
-| term '/' term {mpdiv($1, $3, $$);}
-| term '*' term {mpmul($1, $3, $$);}
-| 'e' '^' term {mp_epowy($3, $$);} 
-| term '!' {mp_factorial($1 ,$$);}
-| term '%' {mp_percent($1, $$);}
+  number {cp(&$1, &$$);}
+| rcl {cp(&$1, &$$);}
+| term '/' term {mpdiv(&$1, &$3, &$$);}
+| term '*' term {mpmul(&$1, &$3, &$$);}
+| 'e' '^' term {mp_epowy(&$3, &$$);} 
+| term '!' {mp_factorial(&$1, &$$);}
+| term '%' {mp_percent(&$1, &$$);}
 | '~' term %prec LNEG {
-    if (!mp_is_natural($2)) {
+    if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_not($2, $$);
+    mp_not(&$2, &$$);
 }
-| '-' term %prec NEG {mp_invert_sign($2, $$);}
-| '+' term %prec POS {cp($2, $$);}
-| term '^' term {mp_xpowy($1, $3, $$);}
+| '-' term %prec NEG {mp_invert_sign(&$2, &$$);}
+| '+' term %prec POS {cp(&$2, &$$);}
+| term '^' term {mp_xpowy(&$1, &$3, &$$);}
 
-| func {cp($1, $$);}
-| reg {cp($1, $$);}
+| func {cp(&$1, &$$);}
+| reg {cp(&$1, &$$);}
 
-| parenthesis {cp($1, $$);}
+| parenthesis {cp(&$1, &$$);}
 ;
 
 parenthesis:
-  '(' exp ')' {cp($2, $$);}
+  '(' exp ')' {cp(&$2, &$$);}
   ;
 
 reg: 
-  tREG {register_get($1, $$);}
+  tREG {register_get($1, &$$);}
   ;
 
 func:
-  tLOG10 term %prec HIGH {mp_logarithm(10, $2, $$);}
-| tLOG2 term %prec HIGH {mp_logarithm(2, $2, $$);}
-| tSQRT term %prec HIGH {mp_sqrt($2, $$);}
-| tLN term %prec HIGH {mpln($2, $$);}
-| tRAND %prec HIGH {mp_set_from_random($$);}
-| tABS term %prec HIGH {mp_abs($2, $$);}
-| tFRAC term %prec HIGH {mpcmf($2, $$);}
-| tINT term %prec HIGH {mpcmim($2, $$);}
-| tCHS term %prec HIGH {mp_invert_sign($2, $$);}
+  tLOG10 term %prec HIGH {mp_logarithm(10, &$2, &$$);}
+| tLOG2 term %prec HIGH {mp_logarithm(2, &$2, &$$);}
+| tSQRT term %prec HIGH {mp_sqrt(&$2, &$$);}
+| tLN term %prec HIGH {mpln(&$2, &$$);}
+| tRAND %prec HIGH {mp_set_from_random(&$$);}
+| tABS term %prec HIGH {mp_abs(&$2, &$$);}
+| tFRAC term %prec HIGH {mpcmf(&$2, &$$);}
+| tINT term %prec HIGH {mpcmim(&$2, &$$);}
+| tCHS term %prec HIGH {mp_invert_sign(&$2, &$$);}
 
-| tSIN term %prec HIGH {to_rad($2, $2); mp_sin($2, $$);}
-| tCOS term %prec HIGH {to_rad($2, $2); mp_cos($2, $$);}
-| tTAN term %prec HIGH {to_rad($2, $2); mp_tan($2, $$);}
-| tASIN term %prec HIGH {mp_asin($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
-| tACOS term %prec HIGH {mp_acos($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
-| tATAN term %prec HIGH {mp_atan($2, $$); do_trig_typeconv(v->ttype, $$, $$);}
-| tSINH term %prec HIGH {mp_sinh($2, $$);}
-| tCOSH term %prec HIGH {mp_cosh($2, $$);}
-| tTANH term %prec HIGH {mp_tanh($2, $$);}
-| tASINH term %prec HIGH {mp_asinh($2, $$);}
-| tACOSH term %prec HIGH {mp_acosh($2, $$);}
-| tATANH term %prec HIGH {mp_atanh($2, $$);}
+| tSIN term %prec HIGH {to_rad(&$2, &$2); mp_sin(&$2, &$$);}
+| tCOS term %prec HIGH {to_rad(&$2, &$2); mp_cos(&$2, &$$);}
+| tTAN term %prec HIGH {to_rad(&$2, &$2); mp_tan(&$2, &$$);}
+| tASIN term %prec HIGH {mp_asin(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
+| tACOS term %prec HIGH {mp_acos(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
+| tATAN term %prec HIGH {mp_atan(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
+| tSINH term %prec HIGH {mp_sinh(&$2, &$$);}
+| tCOSH term %prec HIGH {mp_cosh(&$2, &$$);}
+| tTANH term %prec HIGH {mp_tanh(&$2, &$$);}
+| tASINH term %prec HIGH {mp_asinh(&$2, &$$);}
+| tACOSH term %prec HIGH {mp_acosh(&$2, &$$);}
+| tATANH term %prec HIGH {mp_atanh(&$2, &$$);}
 
-| tU32 term %prec HIGH {mp_mask_u32($2, $$);}
-| tU16 term %prec HIGH {mp_mask_u16($2, $$);}
+| tU32 term %prec HIGH {mp_mask_u32(&$2, &$$);}
+| tU16 term %prec HIGH {mp_mask_u16(&$2, &$$);}
 ;
 
 rcl:
   tRCL '(' tNUMBER ')' {
-    int val = mp_cast_to_int($3);
-    register_get(val, $$);
+    int val = mp_cast_to_int(&$3);
+    register_get(val, &$$);
   }
   ;
 
 number:
-  tNUMBER {cp($1, $$);}
+  tNUMBER {cp(&$1, &$$);}
 | tANS {
-  cp(display_get_answer(&v->display), $$);
+  cp(display_get_answer(&v->display), &$$);
 }
 ;
 
@@ -260,8 +260,8 @@ int ceerror(char *s)
 
 #if 0
 
-| '(' lexp ')' {cp($2, $$);}
+| '(' lexp ')' {cp(&$2, &$$);}
 
-| term term {mpmul($1, $2, $$);}
+| term term {mpmul(&$1, &$2, &$$);}
 
 #endif

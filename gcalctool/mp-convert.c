@@ -35,15 +35,15 @@
  *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
  */
 void
-mp_set_from_mp(const int *x, int *y)
+mp_set_from_mp(const MPNumber *x, MPNumber *y)
 {
     /* HERE X AND Y MUST HAVE THE SAME ADDRESS */    
     if (x == y)
         return;
 
     /* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
-    if (x[0] == 0) {
-        y[0] = 0;
+    if (x->data[0] == 0) {
+        y->data[0] = 0;
         return;
     }
 
@@ -56,7 +56,7 @@ mp_set_from_mp(const int *x, int *y)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_set_from_float(float rx, int *z)
+mp_set_from_float(float rx, MPNumber *z)
 {
     int i, k, i2, ib, ie, re, tp, rs;
     float rb, rj;
@@ -73,7 +73,7 @@ mp_set_from_float(float rx, int *z)
         rj = rx;
     } else {
         /* IF RX = 0E0 RETURN 0 */
-        z[0] = 0;
+        z->data[0] = 0;
         return;
     }
 
@@ -134,7 +134,7 @@ mp_set_from_float(float rx, int *z)
 }
 
 void
-mp_set_from_random(int t[MP_SIZE])
+mp_set_from_random(MPNumber *t)
 {
     mp_set_from_double(drand48(), t);
 }
@@ -147,7 +147,7 @@ mp_set_from_random(int t[MP_SIZE])
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_set_from_double(double dx, int *z)
+mp_set_from_double(double dx, MPNumber *z)
 {
     int i, k, i2, ib, ie, re, tp, rs;
     double db, dj;
@@ -163,7 +163,7 @@ mp_set_from_double(double dx, int *z)
         rs = 1;
         dj = dx;
     } else {
-        z[0] = 0;
+        z->data[0] = 0;
         return;
     } 
 
@@ -223,30 +223,30 @@ mp_set_from_double(double dx, int *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_set_from_integer(int ix, int *z)
+mp_set_from_integer(int ix, MPNumber *z)
 {
     mpchk(1, 4);
 
     if (ix == 0) {
-        z[0] = 0;
+        z->data[0] = 0;
         return;
     }
 
     if (ix < 0) {
         ix = -ix;
-        z[0] = -1;
+        z->data[0] = -1;
     }
     else
-        z[0] = 1;
+        z->data[0] = 1;
 
     /* SET EXPONENT TO T */
-    z[1] = MP.t;
+    z->data[1] = MP.t;
 
     /* CLEAR FRACTION */
-    memset(&z[2], 0, (MP.t-1)*sizeof(int));
+    memset(&z->data[2], 0, (MP.t-1)*sizeof(int));
 
     /* INSERT IX */
-    z[MP.t + 1] = ix;
+    z->data[MP.t + 1] = ix;
 
     /* NORMALIZE BY CALLING MPMUL2 */
     mpmul2(z, 1, z, 1);
@@ -254,13 +254,13 @@ mp_set_from_integer(int ix, int *z)
 
 /* CONVERTS THE RATIONAL NUMBER I/J TO MULTIPLE PRECISION Q. */
 void
-mp_set_from_fraction(int i, int j, int *q)
+mp_set_from_fraction(int i, int j, MPNumber *q)
 {
     mpgcd(&i, &j);
 
     if (j == 0) {
       mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
-      q[0] = 0;
+      q->data[0] = 0;
       return;
     }
 
@@ -284,21 +284,21 @@ mp_set_from_fraction(int i, int j, int *q)
  *  RETURN FROM MP_CAST_TO_INST.
  */
 int
-mp_cast_to_int(const int *x)
+mp_cast_to_int(const MPNumber *x)
 {
     int i, j, k, j1, x2, kx, xs, izs, ret_val = 0;
 
-    xs = x[0];
+    xs = x->data[0];
     /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */    
-    if (xs == 0  ||  x[1] <= 0)
+    if (xs == 0  ||  x->data[1] <= 0)
         return 0;
 
-    x2 = x[1];
+    x2 = x->data[1];
     for (i = 1; i <= x2; ++i) {
         izs = ret_val;
         ret_val = MP.b * ret_val;
         if (i <= MP.t)
-            ret_val += x[i + 1];
+            ret_val += x->data[i + 1];
 
         /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
         if (ret_val <= 0 || ret_val <= izs)
@@ -314,7 +314,7 @@ mp_cast_to_int(const int *x)
         k = x2 + 1 - i;
         kx = 0;
         if (k <= MP.t)
-            kx = x[k + 1];
+            kx = x->data[k + 1];
         if (kx != j - MP.b * j1)
             return 0;
         j = j1;
@@ -359,7 +359,7 @@ mppow_ri(float ap, int bp)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 float
-mp_cast_to_float(const int *x)
+mp_cast_to_float(const MPNumber *x)
 {
     float rz = 0.0;
 
@@ -367,12 +367,12 @@ mp_cast_to_float(const int *x)
     float rb, rz2;
     
     mpchk(1, 4);
-    if (x[0] == 0)
+    if (x->data[0] == 0)
         return 0.0;
 
     rb = (float) MP.b;
     for (i = 1; i <= MP.t; ++i) {
-        rz = rb * rz + (float) x[i + 1];
+        rz = rb * rz + (float) x->data[i + 1];
         tm = i;
 
         /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
@@ -382,12 +382,12 @@ mp_cast_to_float(const int *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    rz *= mppow_ri(rb, x[1] - tm);
+    rz *= mppow_ri(rb, x->data[1] - tm);
 
     /* CHECK REASONABLENESS OF RESULT */
     /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
     if (rz <= (float)0. ||
-        fabs((float) x[1] - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
+        fabs((float) x->data[1] - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMRE INSTEAD.
          */
@@ -395,7 +395,7 @@ mp_cast_to_float(const int *x)
         return 0.0;
     }
 
-    if (x[0] < 0)
+    if (x->data[0] < 0)
         rz = -(double)(rz);
     return rz;
 }
@@ -429,18 +429,18 @@ mppow_di(double ap, int bp)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 double
-mp_cast_to_double(const int *x)
+mp_cast_to_double(const MPNumber *x)
 {
     int i, tm = 0;
     double d__1, db, dz2, ret_val = 0.0;
 
     mpchk(1, 4);
-    if (x[0] == 0)
+    if (x->data[0] == 0)
         return 0.0;
 
     db = (double) MP.b;
     for (i = 1; i <= MP.t; ++i) {
-        ret_val = db * ret_val + (double) x[i + 1];
+        ret_val = db * ret_val + (double) x->data[i + 1];
         tm = i;
 
         /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
@@ -454,12 +454,12 @@ mp_cast_to_double(const int *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    ret_val *= mppow_di(db, x[1] - tm);
+    ret_val *= mppow_di(db, x->data[1] - tm);
 
     /* CHECK REASONABLENESS OF RESULT. */
     /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
     if (ret_val <= 0. ||
-        ((d__1 = (double) ((float) x[1]) - (log(ret_val) / log((double)
+        ((d__1 = (double) ((float) x->data[1]) - (log(ret_val) / log((double)
                 ((float) MP.b)) + .5), abs(d__1)) > .6)) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMDE INSTEAD.
@@ -469,7 +469,7 @@ mp_cast_to_double(const int *x)
     }
     else
     {
-        if (x[0] < 0)
+        if (x->data[0] < 0)
             ret_val = -ret_val;
         return ret_val;
     }
@@ -480,49 +480,49 @@ mp_cast_to_double(const int *x)
  * maximum number of digits specified.
  */
 void
-mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, int accuracy)
+mp_cast_to_string(char *target, int target_len, const MPNumber *MPnumber, int base, int accuracy)
 {
     static char digits[] = "0123456789ABCDEF";
     char *optr, *start, *end, *last_non_zero;
-    int number[MP_SIZE], integer_component[MP_SIZE], fractional_component[MP_SIZE], MPbase[MP_SIZE], temp[MP_SIZE];
+    MPNumber number, integer_component, fractional_component, MPbase, temp;
    
     optr = target;
 
     /* Insert sign */
     if (mp_is_negative(MPnumber)) {
         *optr++ = '-';
-        mp_abs(MPnumber, number);
+        mp_abs(MPnumber, &number);
     } else  {
-        mp_set_from_mp(MPnumber, number);	
+        mp_set_from_mp(MPnumber, &number);	
     }
    
     /* Add rounding factor */
-    mp_set_from_integer(base, MPbase);
-    mppwr(MPbase, -(accuracy+1), temp);
-    mpmuli(temp, base, temp);
-    mpdivi(temp, 2, temp);
-    mp_add(number, temp, number);
+    mp_set_from_integer(base, &MPbase);
+    mppwr(&MPbase, -(accuracy+1), &temp);
+    mpmuli(&temp, base, &temp);
+    mpdivi(&temp, 2, &temp);
+    mp_add(&number, &temp, &number);
 
     /* Split into integer and fractional component */
-    mpcmim(number, integer_component);
-    mpcmf(number, fractional_component);  
+    mpcmim(&number, &integer_component);
+    mpcmf(&number, &fractional_component);  
 
     /* Write out the integer component least significant digit to most */
     start = optr;
-    mp_set_from_mp(integer_component, temp);
+    mp_set_from_mp(&integer_component, &temp);
     do {
-        int t[MP_SIZE], t2[MP_SIZE], t3[MP_SIZE];
+        MPNumber t, t2, t3;
        
-        mpdivi(temp, base, t);
-        mpcmim(t, t);
-        mpmuli(t, base, t2);
+        mpdivi(&temp, base, &t);
+        mpcmim(&t, &t);
+        mpmuli(&t, base, &t2);
        
-        mp_subtract(temp, t2, t3);
-        mpcmim(t3, t3);
-        *optr++ = digits[mp_cast_to_int(t3)];
+        mp_subtract(&temp, &t2, &t3);
+        mpcmim(&t3, &t3);
+        *optr++ = digits[mp_cast_to_int(&t3)];
        
-        mp_set_from_mp(t, temp);
-    } while (!mp_is_zero(temp));
+        mp_set_from_mp(&t, &temp);
+    } while (!mp_is_zero(&temp));
     end = optr - 1;
    
     /* Reverse digits */
@@ -536,7 +536,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
     }
    
     /* Stop if there is no fractional component or not showing fractional part */
-    if ((mp_is_zero(fractional_component) && !v->display.show_zeroes) || accuracy == 0) {
+    if ((mp_is_zero(&fractional_component) && !v->display.show_zeroes) || accuracy == 0) {
         *optr = '\0';
         return;
     }
@@ -545,21 +545,21 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
     *optr++ = '.';
    
     /* Write out the fractional component */
-    mp_set_from_mp(fractional_component, temp);
+    mp_set_from_mp(&fractional_component, &temp);
     do {
         int d;
-        int digit[MP_SIZE];
+        MPNumber digit;
 
-        mpmuli(temp, base, temp);
-        mpcmim(temp, digit);
-        d = mp_cast_to_int(digit);
+        mpmuli(&temp, base, &temp);
+        mpcmim(&temp, &digit);
+        d = mp_cast_to_int(&digit);
        
         *optr++ = digits[d];
         if(d != 0)
             last_non_zero = optr;
-        mp_subtract(temp, digit, temp);
+        mp_subtract(&temp, &digit, &temp);
         accuracy--;
-    } while (!mp_is_zero(temp) && accuracy > 0);
+    } while (!mp_is_zero(&temp) && accuracy > 0);
 
     /* Strip trailing zeroes */
     if (!v->display.show_zeroes)
@@ -591,7 +591,7 @@ char_val(char chr, int base)
 /* Convert string into an MP number, in the given base
  */
 void
-mp_set_from_string(const char *str, int base, int *MPval)
+mp_set_from_string(const char *str, int base, MPNumber *MPval)
 {
     const char *optr;
     int inum;
@@ -620,26 +620,26 @@ mp_set_from_string(const char *str, int base, int *MPval)
    
     /* Convert fractional part */
     if (*optr == '.' || *optr == *v->radix) {
-        int numerator[MP_SIZE], denominator[MP_SIZE];
+        MPNumber numerator, denominator;
        
         optr++;
 
-        mp_set_from_integer(0, numerator);
-        mp_set_from_integer(1, denominator);
+        mp_set_from_integer(0, &numerator);
+        mp_set_from_integer(1, &denominator);
         while ((inum = char_val(*optr, base)) >= 0) {
-	    mpmuli(denominator, base, denominator);
-	    mpmuli(numerator, base, numerator);
-	    mp_add_integer(numerator, inum, numerator);
+	    mpmuli(&denominator, base, &denominator);
+	    mpmuli(&numerator, base, &numerator);
+	    mp_add_integer(&numerator, inum, &numerator);
             optr++;
         }
-        mpdiv(numerator, denominator, numerator);
-        mp_add(MPval, numerator, MPval);
+        mpdiv(&numerator, &denominator, &numerator);
+        mp_add(MPval, &numerator, MPval);
     }
    
     /* Convert exponential part */
     if (*optr == 'e' || *optr == 'E') {
         int negate = 0;
-        int MPbase[MP_SIZE], MPexponent[MP_SIZE], temp[MP_SIZE];
+        MPNumber MPbase, MPexponent, temp;
 
         optr++;       
 
@@ -652,19 +652,19 @@ mp_set_from_string(const char *str, int base, int *MPval)
 	}
 
         /* Get magnitude */
-        mp_set_from_integer(0, MPexponent);
+        mp_set_from_integer(0, &MPexponent);
         while ((inum = char_val(*optr, base)) >= 0) {
-            mpmuli(MPexponent, base, MPexponent);
-            mp_add_integer(MPexponent, inum, MPexponent);
+            mpmuli(&MPexponent, base, &MPexponent);
+            mp_add_integer(&MPexponent, inum, &MPexponent);
             optr++;
         }
         if (negate) {
-            mp_invert_sign(MPexponent, MPexponent);
+            mp_invert_sign(&MPexponent, &MPexponent);
         }
 
-        mp_set_from_integer(base, MPbase);       
-        mppwr2(MPbase, MPexponent, temp);
-        mpmul(MPval, temp, MPval);
+        mp_set_from_integer(base, &MPbase);       
+        mppwr2(&MPbase, &MPexponent, &temp);
+        mpmul(MPval, &temp, MPval);
     }
 
     /* Strip trailing whitespace */

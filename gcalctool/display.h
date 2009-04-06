@@ -31,7 +31,7 @@
 
 /* Expression mode state */
 typedef struct {
-    int ans[MP_SIZE];      /* Previously calculated answer */
+    MPNumber ans;          /* Previously calculated answer */
     char *expression;      /* Expression entered by user */
     int cursor;
 } GCDisplayState;
@@ -66,10 +66,10 @@ void display_clear(GCDisplay *);
 
 gboolean display_get_integer(GCDisplay *display, gint64 *value);
 gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value);
-int *display_get_answer(GCDisplay *);
+MPNumber *display_get_answer(GCDisplay *);
 int display_get_cursor(GCDisplay *);
 
-void display_set_number(GCDisplay *display, const int *);
+void display_set_number(GCDisplay *display, const MPNumber *);
 void display_set_answer(GCDisplay *display);
 void display_set_string(GCDisplay *display, const char *, int);
 void display_set_cursor(GCDisplay *display, int);
@@ -82,17 +82,17 @@ void display_unpop(GCDisplay *);
 gboolean display_is_undo_step(GCDisplay *display);
 
 void display_insert(GCDisplay *display, int, const char *);
-void display_insert_number(GCDisplay *display, int, const int *);
+void display_insert_number(GCDisplay *display, int, const MPNumber *);
 void display_backspace(GCDisplay *);
 void display_delete(GCDisplay *);
 void display_surround(GCDisplay *display, const char *, const char *);
 
 gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);
-gboolean display_is_usable_number(GCDisplay *display, int *);
+gboolean display_is_usable_number(GCDisplay *display, MPNumber *);
 
-int display_solve(GCDisplay *display, int *);
+int display_solve(GCDisplay *display, MPNumber *);
 
-void display_make_number(GCDisplay *display, char *target, int target_len, const int *MPnumber, int base, int ignoreError);
+void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base, int ignoreError);
 
 #endif /* DISPLAY_H */

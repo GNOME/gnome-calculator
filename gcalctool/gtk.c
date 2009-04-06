@@ -1298,10 +1298,10 @@ aframe_response_cb(GtkWidget *dialog, gint response_id)
     char *ch;
 
     if (response_id == GTK_RESPONSE_OK) {
-        int value[MP_SIZE];
+        MPNumber value;
         ch = (char *) gtk_entry_get_text(GTK_ENTRY(X.aframe_ch));
-        mp_set_from_integer(ch[0], value);
-        display_set_number(&v->display, value);
+        mp_set_from_integer(ch[0], &value);
+        display_set_number(&v->display, &value);
     }
     
     gtk_widget_hide(dialog);
@@ -1369,7 +1369,7 @@ help_display(void)
     GError *error = NULL;
 
     screen = gtk_widget_get_screen (GTK_WIDGET (X.kframe));
-    gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
+   //gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
  
     if (error != NULL)
     {
@@ -1471,7 +1471,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
 {
     int dialog = GPOINTER_TO_INT (dialog_pointer);
     int i;
-    int arg[FINC_NUM_ARGS][MP_SIZE];
+    MPNumber arg[FINC_NUM_ARGS];
     GtkWidget *entry;
     if (response_id != GTK_RESPONSE_OK) {
         return;
@@ -1483,13 +1483,13 @@ finc_response_cb(GtkWidget *widget, gint response_id, void *dialog_pointer)
         }
         entry = glade_xml_get_widget(X.financial,
                                      finc_dialog_fields[dialog][i]);
-        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, arg[i]);
+        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
     gtk_widget_grab_focus(glade_xml_get_widget(X.financial, 
                                                finc_dialog_fields[dialog][0]));
 
-    do_finc_expression(dialog, arg[0], arg[1], arg[2], arg[3]);
+    do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
 }
 
 
@@ -1590,13 +1590,13 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
     if (id == GTK_RESPONSE_ACCEPT) {
         if (gtk_tree_model_get_iter_first(X.constants_model, &iter)) {
             do {
-                int temp[MP_SIZE];
+                MPNumber temp;
                 gtk_tree_model_get(X.constants_model, &iter,
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
-                mp_set_from_string(value, 10, temp);
-                constant_set(number, description, temp);
+                mp_set_from_string(value, 10, &temp);
+                constant_set(number, description, &temp);
             } while (gtk_tree_model_iter_next(X.constants_model, &iter));
         }
     }
@@ -1708,15 +1708,15 @@ ui_make_registers()            /* Calculate memory register frame values. */
     int n;
 
     for (n = 0; n < MAX_REGISTERS; n++) {
-        int temp[MP_SIZE];
+        MPNumber temp;
         
-        register_get(n, temp);
-        display_make_number(&v->display, mval, MAXLINE, temp, v->base, TRUE);
+        register_get(n, &temp);
+        display_make_number(&v->display, mval, MAXLINE, &temp, v->base, TRUE);
         gtk_entry_set_width_chars(GTK_ENTRY(X.regs[n]), strlen(mval));
         gtk_entry_set_text(GTK_ENTRY(X.regs[n]), mval);
 
         SNPRINTF(key, MAXLINE, "register%d", n);
-        display_make_number(&v->display, value, MAXLINE, temp, DEC, TRUE);
+        display_make_number(&v->display, value, MAXLINE, &temp, DEC, TRUE);
         set_resource(key, value);
     }
 }
@@ -1792,9 +1792,9 @@ update_memory_menus()
     int i;
 
     for (i = 0; i < MAX_REGISTERS; i++) {
-        int temp[MP_SIZE];
-        register_get(i, temp);
-        display_make_number(&v->display, value, MAXLINE, temp, v->base, TRUE);
+        MPNumber temp;
+        register_get(i, &temp);
+        display_make_number(&v->display, value, MAXLINE, &temp, v->base, TRUE);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s",
         /* Translators: R is the short form of register used inter alia in popup menus */
                 _("R"), i, value);

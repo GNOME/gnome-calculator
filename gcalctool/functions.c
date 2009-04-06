@@ -184,16 +184,16 @@ do_function(int index)      /* Perform a user defined function. */
 static void
 do_shift(int count)     /* Perform bitwise shift on display value. */
 {
-    int MPval[MP_SIZE];
+    MPNumber MPval;
 
-    if (display_is_usable_number(&v->display, MPval) || !mp_is_integer(MPval)) {
+    if (display_is_usable_number(&v->display, &MPval) || !mp_is_integer(&MPval)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
         ui_set_statusbar(_("No sane value to do bitwise shift"),
                          "gtk-dialog-error");
     }
     else {
-        mp_shift(MPval, display_get_answer(&v->display), count);
+        mp_shift(&MPval, display_get_answer(&v->display), count);
         display_set_answer(&v->display);
     }
 }
@@ -203,16 +203,17 @@ do_shift(int count)     /* Perform bitwise shift on display value. */
 static void
 do_base(BaseType b)
 {
-    int ret, MP[MP_SIZE];
+    int ret;
+    MPNumber MP;
 
     if (!display_is_empty(&v->display))
     {   
-        ret = display_is_usable_number(&v->display, MP);
+        ret = display_is_usable_number(&v->display, &MP);
         if (ret) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
-            mp_set_from_mp(MP, display_get_answer(&v->display));
+            mp_set_from_mp(&MP, display_get_answer(&v->display));
             display_set_answer(&v->display);
             clear_undo_history();
         }
@@ -229,16 +230,15 @@ do_base(BaseType b)
 static void
 do_exchange(int index)
 {
-    int MPtemp[MP_SIZE];
-    int MPexpr[MP_SIZE];
+    MPNumber MPtemp, MPexpr;
 
-    if (display_is_usable_number(&v->display, MPexpr)) {
+    if (display_is_usable_number(&v->display, &MPexpr)) {
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     } else {
-        register_get(index, MPtemp);
-        register_set(index, MPexpr);
-        mp_set_from_mp(MPtemp, display_get_answer(&v->display));
+        register_get(index, &MPtemp);
+        register_set(index, &MPexpr);
+        mp_set_from_mp(&MPtemp, display_get_answer(&v->display));
         display_set_answer(&v->display);
         ui_make_registers();
     }
@@ -248,17 +248,18 @@ do_exchange(int index)
 static void
 do_numtype(DisplayFormat n)   /* Set number display type. */
 {
-    int ret, MP[MP_SIZE];
+    int ret;
+    MPNumber MP;
 
     /* Convert display if it contains a number */
     if (!display_is_empty(&v->display))
     {
-        ret = display_is_usable_number(&v->display, MP);
+        ret = display_is_usable_number(&v->display, &MP);
         if (ret) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
-            mp_set_from_mp(MP, display_get_answer(&v->display));
+            mp_set_from_mp(&MP, display_get_answer(&v->display));
             display_set_answer(&v->display);
             clear_undo_history();
         }
@@ -272,13 +273,13 @@ do_numtype(DisplayFormat n)   /* Set number display type. */
 static void
 do_sto(int index)
 {
-    int temp[MP_SIZE];
+    MPNumber temp;
     
-    if (display_is_usable_number(&v->display, temp))
+    if (display_is_usable_number(&v->display, &temp))
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     else
-        register_set(index, temp);
+        register_set(index, &temp);
 
     ui_make_registers();
 }
@@ -288,7 +289,7 @@ void
 do_expression(int function, int arg, int cursor)
 {
     char buf[MAXLINE];
-    int *ans;
+    MPNumber *ans;
     int enabled;
     guint64 bit_value;
     
@@ -388,14 +389,14 @@ do_expression(int function, int arg, int cursor)
         case FN_TOGGLE_BIT:
             if (display_get_unsigned_integer(&v->display, &bit_value)) {
                 char buf[MAX_DISPLAY];
-                int MP[MP_SIZE];
+                MPNumber MP;
 
                 bit_value ^= (1LL << (63 - arg));
     
                 /* FIXME: Convert to string since we don't support setting MP numbers from 64 bit integers */
                 SNPRINTF(buf, MAX_DISPLAY, "%llu", bit_value);
-                mp_set_from_string(buf, 10, MP);
-                display_set_number(&v->display, MP);
+                mp_set_from_string(buf, 10, &MP);
+                display_set_number(&v->display, &MP);
             }
             break;
 
@@ -417,14 +418,14 @@ do_expression(int function, int arg, int cursor)
                 
             /* Solve the equation */
             } else {
-                int MPval[MP_SIZE];
+                MPNumber MPval;
                 int result;
                 const char *message = NULL;
                 
-                result = display_solve(&v->display, MPval);
+                result = display_solve(&v->display, &MPval);
                 switch (result) {
                     case 0:
-                        mp_set_from_mp(MPval, ans);
+                        mp_set_from_mp(&MPval, ans);
                         display_set_answer(&v->display);
                         break;
 

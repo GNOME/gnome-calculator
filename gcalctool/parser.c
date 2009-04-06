@@ -31,16 +31,16 @@ struct parser_state parser_state;
 
 
 void 
-cp(int s[MP_SIZE], int t[MP_SIZE])
+cp(const MPNumber *s, MPNumber *t)
 {
-    memcpy(t, s, sizeof(int)*MP_SIZE);
+    mp_set_from_mp(s, t);
 }
 
 
 void 
-ret(int s[MP_SIZE])     /* Copy result value. */
+ret(const MPNumber *s)     /* Copy result value. */
 {
-    memcpy(parser_state.ret, s, sizeof(int)*MP_SIZE);
+    mp_set_from_mp(s, &parser_state.ret);
     parser_state.flags |= ANS;
 }
 

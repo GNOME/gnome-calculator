@@ -38,13 +38,15 @@
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 static int
-mp_compare_mp_to_int(const int *x, int i)
+mp_compare_mp_to_int(const MPNumber *x, int i)
 {
+    MPNumber t;
+   
     mpchk(2, 6);
 
     /* CONVERT I TO MULTIPLE-PRECISION AND COMPARE */
-    mp_set_from_integer(i, &MP.r[MP.t + 4]);
-    return mp_compare_mp_to_mp(x, &MP.r[MP.t + 4]);
+    mp_set_from_integer(i, &t);
+    return mp_compare_mp_to_mp(x, &t);
 }
 
 
@@ -60,66 +62,65 @@ mp_compare_mp_to_int(const int *x, int i)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 static void
-mpsin1(const int *x, int *z, int do_sin)
+mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 {
-    int i, b2, i2, i3, ts;
+    int i, b2, ts;
+    MPNumber t1, t2;
 
     mpchk(3, 8);
 
     /* SIN(0) = 0, COS(0) = 1 */
-    if (x[0] == 0) {
-        z[0] = 0;
+    if (x->data[0] == 0) {
+        z->data[0] = 0;
         if (do_sin == 0)
             mp_set_from_integer(1, z);
         return;
     }
 
-    i2 = MP.t + 5;
-    i3 = i2 + MP.t + 2;
     b2 = max(MP.b,64) << 1;
-    mpmul(x, x, &MP.r[i3 - 1]);
-    if (mp_compare_mp_to_int(&MP.r[i3 - 1], 1) > 0) {
+    mpmul(x, x, &t2);
+    if (mp_compare_mp_to_int(&t2, 1) > 0) {
         mperr("*** ABS(X) > 1 IN CALL TO MPSIN1 ***\n");
     }
 
     if (do_sin == 0)
-        mp_set_from_integer(1, &MP.r[i2 - 1]);
+        mp_set_from_integer(1, &t1);
     if (do_sin != 0)
-        mp_set_from_mp(x, &MP.r[i2 - 1]);
+        mp_set_from_mp(x, &t1);
 
-    z[0] = 0;
+    z->data[0] = 0;
     i = 1;
     ts = MP.t;
     if (do_sin != 0) {
-        mp_set_from_mp(&MP.r[i2 - 1], z);
+        mp_set_from_mp(&t1, z);
         i = 2;
     }
 
     /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
     do {
-        MP.t = MP.r[i2] + ts + 2;
+        MP.t = t1.data[1] + ts + 2;
         if (MP.t <= 2)
             break;
 
         MP.t = min(MP.t,ts);
 
         /* PUT R(I3) FIRST IN CASE ITS DIGITS ARE MAINLY ZERO */
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i2 - 1]);
+        mpmul(&t2, &t1, &t1);
 
         /*  IF I*(I+1) IS NOT REPRESENTABLE AS AN INTEGER, THE FOLLOWING
          *  DIVISION BY I*(I+1) HAS TO BE SPLIT UP.
          */
         if (i > b2) {
-            mpdivi(&MP.r[i2 - 1], -i, &MP.r[i2 - 1]);
-            mpdivi(&MP.r[i2 - 1], i + 1, &MP.r[i2 - 1]);
+            mpdivi(&t1, -i, &t1);
+            mpdivi(&t1, i + 1, &t1);
         } else {
-            mpdivi(&MP.r[i2 - 1], -i * (i + 1), &MP.r[i2 - 1]);
+            mpdivi(&t1, -i * (i + 1), &t1);
         }
 
         i += 2;
         MP.t = ts;
-        mp_add(&MP.r[i2 - 1], z, z);
-    } while(MP.r[i2 - 1] != 0);
+        mp_add(&t1, z, z);
+    } while(t1.data[0] != 0);
 
     MP.t = ts;
     if (do_sin == 0)
@@ -142,34 +143,34 @@ mpsin1(const int *x, int *z, int do_sin)
  *  6. If (-1 < x < 0) then acos(x) = atan(sqrt(1-x^2) / x) + PI
  */
 void
-mp_acos(const int *x, int *z)
+mp_acos(const MPNumber *x, MPNumber *z)
 {
-    int MP1[MP_SIZE],  MP2[MP_SIZE];
-    int MPn1[MP_SIZE], MPpi[MP_SIZE], MPy[MP_SIZE];
+    MPNumber MP1, MP2;
+    MPNumber MPn1, MPpi, MPy;
 
-    mp_get_pi(MPpi);
-    mp_set_from_integer(1, MP1);
-    mp_set_from_integer(-1, MPn1);
+    mp_get_pi(&MPpi);
+    mp_set_from_integer(1, &MP1);
+    mp_set_from_integer(-1, &MPn1);
 
-    if (mp_is_greater_than(x, MP1) || mp_is_less_than(x, MPn1)) {
+    if (mp_is_greater_than(x, &MP1) || mp_is_less_than(x, &MPn1)) {
         doerr(_("Error"));
-        z[0] = 0;
-    } else if (x[0] == 0) {
-        mpdivi(MPpi, 2, z);
-    } else if (mp_is_equal(x, MP1)) {
-        z[0] = 0;
-    } else if (mp_is_equal(x, MPn1)) {
-        mp_set_from_mp(MPpi, z);
+        z->data[0] = 0;
+    } else if (x->data[0] == 0) {
+        mpdivi(&MPpi, 2, z);
+    } else if (mp_is_equal(x, &MP1)) {
+        z->data[0] = 0;
+    } else if (mp_is_equal(x, &MPn1)) {
+        mp_set_from_mp(&MPpi, z);
     } else { 
-        mpmul(x, x, MP2);
-        mp_subtract(MP1, MP2, MP2);
-        mp_sqrt(MP2, MP2);
-        mpdiv(MP2, x, MP2);
-        mp_atan(MP2, MPy);
-        if (x[0] > 0) {
-            mp_set_from_mp(MPy, z);
+        mpmul(x, x, &MP2);
+        mp_subtract(&MP1, &MP2, &MP2);
+        mp_sqrt(&MP2, &MP2);
+        mpdiv(&MP2, x, &MP2);
+        mp_atan(&MP2, &MPy);
+        if (x->data[0] > 0) {
+            mp_set_from_mp(&MPy, z);
         } else {
-            mp_add(MPy, MPpi, z);
+            mp_add(&MPy, &MPpi, z);
         }
     }
 }
@@ -182,20 +183,20 @@ mp_acos(const int *x, int *z)
  *  2. acosh(x) = log(x + sqrt(x^2 - 1))
  */
 void
-mp_acosh(const int *x, int *z)
+mp_acosh(const MPNumber *x, MPNumber *z)
 {
-    int MP1[MP_SIZE];
+    MPNumber MP1;
 
-    mp_set_from_integer(1, MP1);
-    if (mp_is_less_than(x, MP1)) {
+    mp_set_from_integer(1, &MP1);
+    if (mp_is_less_than(x, &MP1)) {
         doerr(_("Error"));
         mp_set_from_integer(0, z);
     } else {
-        mpmul(x, x, MP1);
-        mp_add_integer(MP1, -1, MP1);
-        mp_sqrt(MP1, MP1);
-        mp_add(x, MP1, MP1);
-        mpln(MP1, z);
+        mpmul(x, x, &MP1);
+        mp_add_integer(&MP1, -1, &MP1);
+        mp_sqrt(&MP1, &MP1);
+        mp_add(x, &MP1, &MP1);
+        mpln(&MP1, z);
     }
 }
 
@@ -208,40 +209,38 @@ mp_acosh(const int *x, int *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_asin(const int *x, int *z)
+mp_asin(const MPNumber *x, MPNumber *z)
 {
-    int i2, i3;
+    MPNumber t1, t2;
 
     mpchk(5, 12);
-    i3 = (MP.t << 2) + 11;
-    if (x[0] == 0) {
-        z[0] = 0;
+    if (x->data[0] == 0) {
+        z->data[0] = 0;
         return;
     }
 
-    if (x[1] <= 0) {
+    if (x->data[1] <= 0) {
         /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
-        i2 = i3 - (MP.t + 2);
-        mp_set_from_integer(1, &MP.r[i2 - 1]);
-        mp_set_from_mp(&MP.r[i2 - 1], &MP.r[i3 - 1]);
-        mp_subtract(&MP.r[i2 - 1], x, &MP.r[i2 - 1]);
-        mp_add(&MP.r[i3 - 1], x, &MP.r[i3 - 1]);
-        mpmul(&MP.r[i2 - 1], &MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mp_root(&MP.r[i3 - 1], -2, &MP.r[i3 - 1]);
-        mpmul(x, &MP.r[i3 - 1], z);
+        mp_set_from_integer(1, &t1);
+        mp_set_from_mp(&t1, &t2);
+        mp_subtract(&t1, x, &t1);
+        mp_add(&t2, x, &t2);
+        mpmul(&t1, &t2, &t2);
+        mp_root(&t2, -2, &t2);
+        mpmul(x, &t2, z);
         mp_atan(z, z);
         return;
     }
 
     /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
-    mp_set_from_integer(x[0], &MP.r[i3 - 1]);
-    if (! mp_is_equal(x, &MP.r[i3 - 1])) {
+    mp_set_from_integer(x->data[0], &t2);
+    if (!mp_is_equal(x, &t2)) {
         mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***\n");
     }
 
     /* X == +-1 SO RETURN +-PI/2 */
     mp_get_pi(z);
-    mpdivi(z, MP.r[i3 - 1] << 1, z);
+    mpdivi(z, t2.data[0] << 1, z);
 }
 
 
@@ -250,15 +249,15 @@ mp_asin(const int *x, int *z)
  *  1. asinh(x) = log(x + sqrt(x^2 + 1))
  */
 void
-mp_asinh(const int *x, int *z)
+mp_asinh(const MPNumber *x, MPNumber *z)
 {
-    int MP1[MP_SIZE];
+    MPNumber MP1;
  
-    mpmul(x, x, MP1);
-    mp_add_integer(MP1, 1, MP1);
-    mp_sqrt(MP1, MP1);
-    mp_add(x, MP1, MP1);
-    mpln(MP1, z);
+    mpmul(x, x, &MP1);
+    mp_add_integer(&MP1, 1, &MP1);
+    mp_sqrt(&MP1, &MP1);
+    mp_add(x, &MP1, &MP1);
+    mpln(&MP1, z);
 }
 
 
@@ -273,55 +272,53 @@ mp_asinh(const int *x, int *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_atan(const int *x, int *z)
+mp_atan(const MPNumber *x, MPNumber *z)
 {
-    int i, q, i2, i3, ts;
+    int i, q, ts;
     float rx = 0.0, ry;
-
+    MPNumber t1, t2;
 
     mpchk(5, 12);
-    i2 = MP.t * 3 + 9;
-    i3 = i2 + MP.t + 2;
-    if (x[0] == 0) {
-        z[0] = 0;
+    if (x->data[0] == 0) {
+        z->data[0] = 0;
         return;
     }
 
-    mp_set_from_mp(x, &MP.r[i3 - 1]);
-    if (abs(x[1]) <= 2)
+    mp_set_from_mp(x, &t2);
+    if (abs(x->data[1]) <= 2)
         rx = mp_cast_to_float(x);
 
     q = 1;
 
     /* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
-    while (MP.r[i3] >= 0)
+    while (t2.data[1] >= 0)
     {
-        if (MP.r[i3] == 0 && (MP.r[i3 + 1] + 1) << 1 <= MP.b)
+        if (t2.data[1] == 0 && (t2.data[2] + 1) << 1 <= MP.b)
             break;
 
         q <<= 1;
-        mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], z);
+        mpmul(&t2, &t2, z);
         mp_add_integer(z, 1, z);
         mp_sqrt(z, z);
         mp_add_integer(z, 1, z);
-        mpdiv(&MP.r[i3 - 1], z, &MP.r[i3 - 1]);
+        mpdiv(&t2, z, &t2);
     }
 
     /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
-    mp_set_from_mp(&MP.r[i3 - 1], z);
-    mpmul(&MP.r[i3 - 1], &MP.r[i3 - 1], &MP.r[i2 - 1]);
+    mp_set_from_mp(&t2, z);
+    mpmul(&t2, &t2, &t1);
     i = 1;
     ts = MP.t;
 
     /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
-    while ( (MP.t = ts + 2 + MP.r[i3]) > 1) {
+    while ((MP.t = ts + 2 + t2.data[1]) > 1) {
         MP.t = min(MP.t,ts);
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], &MP.r[i3 - 1]);
-        mpmulq(&MP.r[i3 - 1], -i, i + 2, &MP.r[i3 - 1]);
+        mpmul(&t2, &t1, &t2);
+        mpmulq(&t2, -i, i + 2, &t2);
         i += 2;
         MP.t = ts;
-        mp_add(z, &MP.r[i3 - 1], z);
-	if (MP.r[i3 - 1] == 0) break;
+        mp_add(z, &t2, z);
+	if (t2.data[0] == 0) break;
     }
 
     /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
@@ -331,7 +328,7 @@ mp_atan(const int *x, int *z)
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
      *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
      */
-    if (abs(x[1]) > 2)
+    if (abs(x->data[1]) > 2)
         return;
 
     ry = mp_cast_to_float(z);
@@ -350,24 +347,24 @@ mp_atan(const int *x, int *z)
  *  2. atanh(x) = 0.5 * log((1 + x) / (1 - x))
  */
 void
-mp_atanh(const int *x, int *z)
+mp_atanh(const MPNumber *x, MPNumber *z)
 {
-    int MP1[MP_SIZE], MP2[MP_SIZE];
-    int MP3[MP_SIZE], MPn1[MP_SIZE];
+    MPNumber MP1, MP2;
+    MPNumber MP3, MPn1;
 
-    mp_set_from_integer(1, MP1);
-    mp_set_from_integer(-1, MPn1);
+    mp_set_from_integer(1, &MP1);
+    mp_set_from_integer(-1, &MPn1);
 
-    if (mp_is_greater_equal(x, MP1) || mp_is_less_equal(x, MPn1)) {
+    if (mp_is_greater_equal(x, &MP1) || mp_is_less_equal(x, &MPn1)) {
         doerr(_("Error"));
-        z[0] = 0;
+        z->data[0] = 0;
     } else {
-        mp_add(MP1, x, MP2);
-        mp_subtract(MP1, x, MP3);
-        mpdiv(MP2, MP3, MP3);
-        mpln(MP3, MP3);
-        mp_set_from_string("0.5", 10, MP1);
-        mpmul(MP1, MP3, z);
+        mp_add(&MP1, x, &MP2);
+        mp_subtract(&MP1, x, &MP3);
+        mpdiv(&MP2, &MP3, &MP3);
+        mpln(&MP3, &MP3);
+        mp_set_from_string("0.5", 10, &MP1);
+        mpmul(&MP1, &MP3, z);
     }
 }
 
@@ -376,12 +373,12 @@ mp_atanh(const int *x, int *z)
  *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
  */
 void
-mp_cos(const int *x, int *z)
+mp_cos(const MPNumber *x, MPNumber *z)
 {
-    int t[MP_SIZE];
+    MPNumber t;
 
     /* COS(0) = 1 */    
-    if (x[0] == 0) {
+    if (x->data[0] == 0) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -398,9 +395,9 @@ mp_cos(const int *x, int *z)
         /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
          *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
          */
-        mp_get_pi(t);
-        mpdivi(t, 2, t);
-        mp_subtract(t, z, z);
+        mp_get_pi(&t);
+        mpdivi(&t, 2, &t);
+        mp_subtract(&t, z, z);
         mp_sin(z, z);
     }
 }
@@ -410,28 +407,27 @@ mp_cos(const int *x, int *z)
  *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
  */
 void
-mp_cosh(const int *x, int *z)
+mp_cosh(const MPNumber *x, MPNumber *z)
 {
-    int i2;
+    MPNumber t;
 
     /* COSH(0) == 1 */    
-    if (x[0] == 0) {
+    if (x->data[0] == 0) {
       mp_set_from_integer(1, z);
       return;
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(5, 12);
-    i2 = (MP.t << 2) + 11;
-    mp_abs(x, &MP.r[i2 - 1]);
+    mp_abs(x, &t);
 
     /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
      *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
      */
     MP.m += 2;
-    mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-    mp_reciprocal(&MP.r[i2 - 1], z);
-    mp_add(&MP.r[i2 - 1], z, z);
+    mpexp(&t, &t);
+    mp_reciprocal(&t, z);
+    mp_add(&t, z, z);
 
     /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
      *  ACT ACCORDINGLY.
@@ -448,83 +444,81 @@ mp_cosh(const int *x, int *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_sin(const int *x, int *z)
+mp_sin(const MPNumber *x, MPNumber *z)
 {
-    int i2, i3, ie, xs;
+    int ie, xs;
     float rx = 0.0, ry;
+    MPNumber t1, t2;
 
     mpchk(5, 12);
     
-    i2 = (MP.t << 2) + 11;
-    if (x[0] == 0) {
-        z[0] = 0;
+    if (x->data[0] == 0) {
+        z->data[0] = 0;
         return;
     }
 
-    xs = x[0];
-    ie = abs(x[1]);
+    xs = x->data[0];
+    ie = abs(x->data[1]);
     if (ie <= 2)
         rx = mp_cast_to_float(x);
 
-    mp_abs(x, &MP.r[i2 - 1]);
+    mp_abs(x, &t1);
 
     /* USE MPSIN1 IF ABS(X) <= 1 */
-    if (mp_compare_mp_to_int(&MP.r[i2 - 1], 1) <= 0)
+    if (mp_compare_mp_to_int(&t1, 1) <= 0)
     {
-        mpsin1(&MP.r[i2 - 1], z, 1);
+        mpsin1(&t1, z, 1);
     }
     /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
      *  PRECOMPUTED AND SAVED IN COMMON).
      *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MP_ATAN1N
      */
     else {
-        i3 = (MP.t << 1) + 7;
-        mp_atan1N(5, &MP.r[i3 - 1]);
-        mpmuli(&MP.r[i3 - 1], 4, &MP.r[i3 - 1]);
+        mp_atan1N(5, &t2);
+        mpmuli(&t2, 4, &t2);
         mp_atan1N(239, z);
-        mp_subtract(&MP.r[i3 - 1], z, z);
-        mpdiv(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-        mpdivi(&MP.r[i2 - 1], 8, &MP.r[i2 - 1]);
-        mpcmf(&MP.r[i2 - 1], &MP.r[i2 - 1]);
+        mp_subtract(&t2, z, z);
+        mpdiv(&t1, z, &t1);
+        mpdivi(&t1, 8, &t1);
+        mpcmf(&t1, &t1);
 
         /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
-        mp_add_fraction(&MP.r[i2 - 1], -1, 2, &MP.r[i2 - 1]);
-        xs = -xs * MP.r[i2 - 1];
+        mp_add_fraction(&t1, -1, 2, &t1);
+        xs = -xs * t1.data[0];
         if (xs == 0) {
-            z[0] = 0;
+            z->data[0] = 0;
             return;
         }
 
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 4, &MP.r[i2 - 1]);
+        t1.data[0] = 1;
+        mpmuli(&t1, 4, &t1);
 
         /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (MP.r[i2] > 0)
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
+        if (t1.data[1] > 0)
+            mp_add_integer(&t1, -2, &t1);
 
-        if (MP.r[i2 - 1] == 0) {
-            z[0] = 0;
+        if (t1.data[0] == 0) {
+            z->data[0] = 0;
             return;
         }        
 
-        MP.r[i2 - 1] = 1;
-        mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
+        t1.data[0] = 1;
+        mpmuli(&t1, 2, &t1);
 
         /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
          *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
          */
-        if (MP.r[i2] > 0) {
-            mp_add_integer(&MP.r[i2 - 1], -2, &MP.r[i2 - 1]);
-            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], z, 0);
+        if (t1.data[1] > 0) {
+            mp_add_integer(&t1, -2, &t1);
+            mpmul(&t1, z, &t1);
+            mpsin1(&t1, z, 0);
         } else {
-            mpmul(&MP.r[i2 - 1], z, &MP.r[i2 - 1]);
-            mpsin1(&MP.r[i2 - 1], z, 1);
+            mpmul(&t1, z, &t1);
+            mpsin1(&t1, z, 1);
         }
     }
 
-    if (z[0] != 0)
-        z[0] = xs;
+    z->data[0] = xs;
     if (ie > 2)
         return;
 
@@ -550,40 +544,39 @@ mp_sin(const int *x, int *z)
  *  SAVE SIGN OF X AND CHECK FOR ZERO, SINH(0) = 0
  */
 void
-mp_sinh(const int *x, int *z)
+mp_sinh(const MPNumber *x, MPNumber *z)
 {
-    int i2, i3, xs;
+    int xs;
+    MPNumber t1, t2;
 
-    xs = x[0];
+    xs = x->data[0];
     if (xs == 0) {
-        z[0] = 0;
+        z->data[0] = 0;
         return;
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(5, 12);
-    i3 = (MP.t << 2) + 11;
 
     /* WORK WITH ABS(X) */
-    mp_abs(x, &MP.r[i3 - 1]);
+    mp_abs(x, &t2);
 
     /* HERE ABS(X) < 1 SO USE MPEXP1 TO AVOID CANCELLATION */
-    if (MP.r[i3] <= 0) {
-        i2 = i3 - (MP.t + 2);
-        mpexp1(&MP.r[i3 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], 2, &MP.r[i3 - 1]);
-        mpmul(&MP.r[i3 - 1], &MP.r[i2 - 1], z);
-        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i3 - 1]);
-        mpdiv(z, &MP.r[i3 - 1], z);
+    if (t2.data[1] <= 0) {
+        mpexp1(&t2, &t1);
+        mp_add_integer(&t1, 2, &t2);
+        mpmul(&t2, &t1, z);
+        mp_add_integer(&t1, 1, &t2);
+        mpdiv(z, &t2, z);
     }
     /*  HERE ABS(X) >= 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
      *  INCREASE M TO AVOID OVERFLOW IF SINH(X) REPRESENTABLE
      */
     else {
         MP.m += 2;
-        mpexp(&MP.r[i3 - 1], &MP.r[i3 - 1]);
-        mp_reciprocal(&MP.r[i3 - 1], z);
-        mp_subtract(&MP.r[i3 - 1], z, z);
+        mpexp(&t2, &t2);
+        mp_reciprocal(&t2, z);
+        mp_subtract(&t2, z, z);
 
         /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
          *  STATEMENT 30 WILL ACT ACCORDINGLY.
@@ -597,18 +590,18 @@ mp_sinh(const int *x, int *z)
 
 
 void 
-mp_tan(const int x[MP_SIZE], int z[MP_SIZE])
+mp_tan(const MPNumber *x, MPNumber *z)
 {
-    int MPcos[MP_SIZE], MPsin[MP_SIZE];
+    MPNumber MPcos, MPsin;
 
-    mp_sin(x, MPsin);
-    mp_cos(x, MPcos);
+    mp_sin(x, &MPsin);
+    mp_cos(x, &MPcos);
     /* Check if COS(x) == 0 */
-    if (mp_is_zero(MPcos)) {
+    if (mp_is_zero(&MPcos)) {
         doerr(_("Error, cannot calculate cosine"));
         return;
     }
-    mpdiv(MPsin, MPcos, z);
+    mpdiv(&MPsin, &MPcos, z);
 }
 
 
@@ -616,50 +609,49 @@ mp_tan(const int x[MP_SIZE], int z[MP_SIZE])
  *  USING MPEXP OR MPEXP1, SPACE = 5T+12
  */
 void
-mp_tanh(const int *x, int *z)
+mp_tanh(const MPNumber *x, MPNumber *z)
 {
     float r__1;
-
-    int i2, xs;
+    int xs;
+    MPNumber t;
 
     /* TANH(0) = 0 */    
-    if (x[0] == 0) {
-        z[0] = 0;
+    if (x->data[0] == 0) {
+        z->data[0] = 0;
         return;
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
     mpchk(5, 12);
-    i2 = (MP.t << 2) + 11;
 
     /* SAVE SIGN AND WORK WITH ABS(X) */
-    xs = x[0];
-    mp_abs(x, &MP.r[i2 - 1]);
+    xs = x->data[0];
+    mp_abs(x, &t);
 
     /* SEE IF ABS(X) SO LARGE THAT RESULT IS +-1 */
     r__1 = (float) MP.t * (float).5 * log((float) MP.b);
     mp_set_from_float(r__1, z);
-    if (mp_compare_mp_to_mp(&MP.r[i2 - 1], z) > 0) {
+    if (mp_compare_mp_to_mp(&t, z) > 0) {
         /* HERE ABS(X) IS VERY LARGE */
         mp_set_from_integer(xs, z);
         return;
     }
 
     /* HERE ABS(X) NOT SO LARGE */
-    mpmuli(&MP.r[i2 - 1], 2, &MP.r[i2 - 1]);
-    if (MP.r[i2] > 0) {
+    mpmuli(&t, 2, &t);
+    if (t.data[1] > 0) {
         /* HERE ABS(X) >= 1/2 SO USE MPEXP */
-        mpexp(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], -1, z);
-        mp_add_integer(&MP.r[i2 - 1], 1, &MP.r[i2 - 1]);
-        mpdiv(z, &MP.r[i2 - 1], z);
+        mpexp(&t, &t);
+        mp_add_integer(&t, -1, z);
+        mp_add_integer(&t, 1, &t);
+        mpdiv(z, &t, z);
     } else {
         /* HERE ABS(X) < 1/2, SO USE MPEXP1 TO AVOID CANCELLATION */
-        mpexp1(&MP.r[i2 - 1], &MP.r[i2 - 1]);
-        mp_add_integer(&MP.r[i2 - 1], 2, z);
-        mpdiv(&MP.r[i2 - 1], z, z);
+        mpexp1(&t, &t);
+        mp_add_integer(&t, 2, z);
+        mpdiv(&t, z, z);
     }
 
     /* RESTORE SIGN */
-    z[0] = xs * z[0];
+    z->data[0] = xs * z->data[0];
 }
