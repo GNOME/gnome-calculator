@@ -1215,7 +1215,8 @@ about_cb(GtkWidget *widget)
           "\n"
           "You should have received a copy of the GNU General Public License\n"
           "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n")
+          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"),
+        NULL
     };
 
     gtk_show_about_dialog(GTK_WINDOW(X.kframe),
