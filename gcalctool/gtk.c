@@ -1211,7 +1211,8 @@ about_cb(GtkWidget *widget)
           "\n"
           "You should have received a copy of the GNU General Public License\n"
           "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n")
+          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"),
+        NULL
     };
 
     gtk_show_about_dialog(GTK_WINDOW(X.kframe),
@@ -2452,6 +2453,7 @@ create_kframe()
                                         /* Translators: Title of the error dialog when unable to load the UI files */
                                         N_("Error loading user interface"));
         // FIXME: Use error->message
+        g_warning("Unable to load file %s: %s\n", UI_FILE, error->message);
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
                                                  /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file */
                                                  N_("The user interface file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
