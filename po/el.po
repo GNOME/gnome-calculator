@@ -1,4 +1,4 @@
-# translation of gcalctool.HEAD.po to Greek
+# translation of gcalctool.gnome-2-26.po to Greek
 # Nikos Charonitakis <frolix68@yahoo.gr>, 2003.
 # Kostas Papadimas <pkst@gnome.org>, 2003,2004, 2006, 2008.
 # Jennie Petoumenou <epetoumenou@gmail.com>, 2009.
@@ -10,10 +10,10 @@
 # kostas:23Feb2004, update
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-02-15 09:43+0000\n"
-"PO-Revision-Date: 2009-03-07 21:59+0100\n"
+"Project-Id-Version: gcalctool.gnome-2-26\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-29 17:57+0300\n"
+"PO-Revision-Date: 2009-04-17 11:44+0200\n"
 "Last-Translator: Jennie Petoumenou <epetoumenou@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "MIME-Version: 1.0\n"
@@ -22,372 +22,1893 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#. Payment Period Dialog: Button to calculate result
+#: ../data/financial.ui.h:2
+msgid "C_alculate"
+msgstr "_Υπολογισμός"
+
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/financial.ui.h:4
+msgid "C_ost:"
+msgstr "_Κόστος:"
+
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/financial.ui.h:6
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Υπολογίζει το ποσό της περιοδικής πληρωμής (δόσης) του δανείου, αν η πληρωμή "
+"των δόσεων γίνεται στο τέλος κάθε περιόδου."
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:8
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Υπολογίζει την απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη χρονική "
+"περίοδο με βάση τη μέθοδο της φθίνουσας απόσβεσης με συντελεστή τα έτη ζωής. "
+"Αυτή η μέθοδος απόσβεσης προβλέπει αυξανόμενο ρυθμό απόσβεσης, έτσι ώστε η "
+"απόσβεση να είναι μεγαλύτερη στην αρχή της χρονικής περιόδου. Η ωφέλιμη ζωή "
+"είναι ο αριθμός των περιόδων, συνήθως ετών, κατά τη διάρκεια των οποίων "
+"συντελείται η απόσβεση."
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:10
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Υπολογίζει την απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη χρονική "
+"περίοδο με βάση τη μέθοδο της φθίνουσας απόσβεσης με διπλάσιο ρυθμό."
+
+#. Future Value Dialog: Description of calculation
+#: ../data/financial.ui.h:12
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Υπολογίζει τη μελλοντική αξία μιας επένδυσης που συνίσταται σε μια σειρά "
+"ισόποσων πληρωμών και η οποία υπόκειται σε συγκεκριμένο περιοδικό επιτόκιο "
+"καθ' όλη τη διάρκεια των πληρωμών."
+
+#. Compounding Term Dialog: Description of calculation
+#: ../data/financial.ui.h:14
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Υπολογίζει τον αριθμό των περιόδων ανατοκισμού που απαιτούνται για να "
+"ανέλθει η τιμή μιας επένδυσης από την τρέχουσα στη μελλοντική αξία, αν το "
+"επιτόκιο είναι σταθερό ανά περίοδο ανατοκισμού."
+
+#. Payment Period Dialog: Description of calculation
+#: ../data/financial.ui.h:16
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Υπολογίζει τον αριθμό των περιόδων πληρωμής που απαιτούνται κατά τη διάρκεια "
+"μιας απλής ετήσιας προσόδου για την επίτευξη μιας μελλοντικής αξίας, με βάση "
+"συγκεκριμένο περιοδικό επιτόκιο."
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/financial.ui.h:18
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Υπολογίζει το περιοδικό επιτόκιο που απαιτείται προκειμένου να ανέλθει η "
+"αξία τηςεπένδυσης σε συγκεκριμένη μελλοντική αξία μετά από ορισμένο αριθμό "
+"περιόδων ανατοκισμού."
+
+#. Present Value Dialog: Description of calculation
+#: ../data/financial.ui.h:20
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Υπολογίζει την τρέχουσα αξία μιας επένδυσης που συνίσταται σε μια σειρά "
+"ισόποσων πληρωμών και η οποία υπόκειται σε συγκεκριμένο περιοδικό επιτόκιο "
+"καθ' όλη τη διάρκεια των πληρωμών."
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/financial.ui.h:22
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Υπολογίζει την αξία μεταπώλησης ενός προϊόντος, με βάση το κόστος του "
+"προϊόντος και το επιθυμητό μικτό περιθώριο κέρδους."
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:24
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Υπολογίζει τη σταθερή απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη "
+"περίοδο. Στη σταθερή μέθοδο απόσβεσης, η αποσβεστέα αξία διαιρείται δια της "
+"ωφέλιμης ζωής του στοιχείου ενεργητικού. Η ωφέλιμη ζωή είναι ο αριθμός των "
+"περιόδων, συνήθως ετών, κατά τη διάρκεια των οποίων συντελείται η απόσβεση."
+
+#. Title of Compounding Term dialog
+#: ../data/financial.ui.h:26
+msgid "Compounding Term"
+msgstr "Διάρκεια ανατοκισμού"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../data/financial.ui.h:28
+msgid "Double-Declining Depreciation"
+msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
+
+#. Title of Future Value dialog
+#: ../data/financial.ui.h:30
+msgid "Future Value"
+msgstr "Μελλοντική αξία"
+
+#. Payment Period Dialog: Label before future value input
+#: ../data/financial.ui.h:32
+msgid "Future _Value:"
+msgstr "Μελλοντική α_ξία:"
+
+#. Title of Gross Profit Margin dialog
+#: ../data/financial.ui.h:34 ../data/gcalctool.ui.h:209
+msgid "Gross Profit Margin"
+msgstr "Μικτό περιθώριο κέρδους"
+
+#. Title of Payment Period dialog
+#: ../data/financial.ui.h:36
+msgid "Payment Period"
+msgstr "Περίοδος πληρωμής"
+
+#. Title of Periodic Interest Rate dialog
+#: ../data/financial.ui.h:38
+msgid "Periodic Interest Rate"
+msgstr "Περιοδικό επιτόκιο"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/financial.ui.h:40
+msgid "Periodic Interest _Rate:"
+msgstr "Περιοδικό επι_τόκιο:"
+
+#. Title of Periodic Payment dialog
+#: ../data/financial.ui.h:42
+msgid "Periodic Payment"
+msgstr "Περιοδική πληρωμή"
+
+#. Title of Present Value dialog
+#: ../data/financial.ui.h:44
+msgid "Present Value"
+msgstr "Τρέχουσα αξία"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/financial.ui.h:46
+msgid "Present _Value:"
+msgstr "Τρέχουσα _αξία:"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../data/financial.ui.h:48
+msgid "Straight-Line Depreciation"
+msgstr "Σταθερή απόσβεση"
+
+#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#: ../data/financial.ui.h:50
+msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/financial.ui.h:52
+msgid "_Cost:"
+msgstr "_Κόστος:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/financial.ui.h:54
+msgid "_Future Value:"
+msgstr "Μελλοντική α_ξία:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/financial.ui.h:56
+msgid "_Life:"
+msgstr "_Ζωή:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/financial.ui.h:58
+msgid "_Margin:"
+msgstr "Περι_θώριο:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/financial.ui.h:60
+msgid "_Number Of Periods:"
+msgstr "Αριθ_μός περιόδων:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/financial.ui.h:62
+msgid "_Period:"
+msgstr "Πε_ρίοδος:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/financial.ui.h:64
+msgid "_Periodic Payment:"
+msgstr "_Περιοδική πληρωμή:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/financial.ui.h:66
+msgid "_Principal:"
+msgstr "Κύρ_ια:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/financial.ui.h:68
+msgid "_Salvage:"
+msgstr "_Υπολειμματική αξία:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/financial.ui.h:70
+msgid "_Term:"
+msgstr "_Διάρκεια:"
+
+#. Translators: The window title when in basic mode
+#: ../data/gcalctool.desktop.in.h:1 ../gcalctool/gtk.c:60
+msgid "Calculator"
+msgstr "Αριθμομηχανή"
+
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Εκτελεί αριθμητικούς, επιστημονικούς ή εμπορικούς υπολογισμούς"
+
+#. The percentage button
+#: ../data/gcalctool.ui.h:3
+#, no-c-format
+msgid "%"
+msgstr "%"
+
+#. Subtraction button
+#: ../data/gcalctool.ui.h:5
+msgid "&#x2212;"
+msgstr ""
+
+#. Square root button
+#: ../data/gcalctool.ui.h:7
+msgid "&#x221A;"
+msgstr ""
+
+#. Change sign button
+#: ../data/gcalctool.ui.h:9
+msgid "&#xB1;"
+msgstr ""
+
+#. Multiplication button
+#: ../data/gcalctool.ui.h:11
+msgid "&#xD7;"
+msgstr ""
+
+#. Division button
+#: ../data/gcalctool.ui.h:13
+msgid "&#xF7;"
+msgstr ""
+
+#. 16 bit unsigned integer
+#: ../data/gcalctool.ui.h:15
+msgid "&16"
+msgstr "&16"
+
+#. 32 bit unsigned integer
+#: ../data/gcalctool.ui.h:17
+msgid "&32"
+msgstr "&32"
+
+#. Start calculation group button
+#: ../data/gcalctool.ui.h:19
+msgid "("
+msgstr "("
+
+#: ../data/gcalctool.ui.h:20
+#, fuzzy
+msgid "(Cos)"
+msgstr "Cos"
+
+#: ../data/gcalctool.ui.h:21
+#, fuzzy
+msgid "(Ln)"
+msgstr "Ln"
+
+#: ../data/gcalctool.ui.h:22
+#, fuzzy
+msgid "(Log)"
+msgstr "Log"
+
+#: ../data/gcalctool.ui.h:23
+#, fuzzy
+msgid "(Log2)"
+msgstr "Log"
+
+#: ../data/gcalctool.ui.h:24
+#, fuzzy
+msgid "(Set accuracy from 0 to N numeric places [A])"
+msgstr "Ορισμός ακρίβειας από 0 έως %d δεκαδικό ψηφίο. [A]"
+
+#: ../data/gcalctool.ui.h:25
+#, fuzzy
+msgid "(Sin)"
+msgstr "Sin"
+
+#: ../data/gcalctool.ui.h:26
+#, fuzzy
+msgid "(Tan)"
+msgstr "Tan"
+
+#: ../data/gcalctool.ui.h:27
+msgid "(X^Y)"
+msgstr ""
+
+#. Right bracket
+#: ../data/gcalctool.ui.h:29
+msgid ")"
+msgstr ")"
+
+#. Addition button
+#: ../data/gcalctool.ui.h:31
+msgid "+"
+msgstr "+"
+
+#. Numeric 0 button
+#: ../data/gcalctool.ui.h:33
+msgid "0"
+msgstr "0"
+
+#. Numeric 1 button
+#: ../data/gcalctool.ui.h:35
+msgid "1"
+msgstr "1"
+
+#. Reciprocal button
+#: ../data/gcalctool.ui.h:37
+msgid "1/<i>x</i>"
+msgstr "1/<i>x</i>"
+
+#: ../data/gcalctool.ui.h:38
+msgid "1/x"
+msgstr "1/x"
+
+#. Right Shift Popup: Menu item to shift right by 10 bits
+#: ../data/gcalctool.ui.h:40
+msgid "10 places"
+msgstr "10 θέσεις"
+
+#. Right Shift Popup: Menu item to shift right by 11 bits
+#: ../data/gcalctool.ui.h:42
+msgid "11 places"
+msgstr "11 θέσεις"
+
+#. Right Shift Popup: Menu item to shift right by 12 bits
+#: ../data/gcalctool.ui.h:44
+msgid "12 places"
+msgstr "12 θέσεις"
+
+#. Right Shift Popup: Menu item to shift right by 13 bits
+#: ../data/gcalctool.ui.h:46
+msgid "13 places"
+msgstr "13 θέσεις"
+
+#. Right Shift Popup: Menu item to shift right by 14 bits
+#: ../data/gcalctool.ui.h:48
+msgid "14 places"
+msgstr "14 θέσεις"
+
+#. Label for bit 15 on the bit editor
+#: ../data/gcalctool.ui.h:50
+msgid "15"
+msgstr "15"
+
+#. Right Shift Popup: Menu item to shift right by 15 bits
+#: ../data/gcalctool.ui.h:52
+msgid "15 places"
+msgstr "15 θέσεις"
+
+#: ../data/gcalctool.ui.h:53
+msgid "16-bit unsigned integer value of display (])"
+msgstr "Τιμή του αριθμού που ακολουθεί ως unsigned ακεραίου 16-bit (])"
+
+#. Numeric 2 button
+#: ../data/gcalctool.ui.h:55
+msgid "2"
+msgstr "2"
+
+#. Numeric 3 button
+#: ../data/gcalctool.ui.h:57
+msgid "3"
+msgstr "3"
+
+#. Label for bit 31 on the bit editor
+#: ../data/gcalctool.ui.h:59
+msgid "31"
+msgstr "31"
+
+#. Label for bit 32 on the bit editor
+#: ../data/gcalctool.ui.h:61
+msgid "32"
+msgstr "32"
+
+#: ../data/gcalctool.ui.h:62
+msgid "32-bit unsigned integer value of display ([)"
+msgstr "Τιμή του αριθμού που ακολουθεί ως unsigned ακεραίου 32-bit ([)"
+
+#. Numeric 4 button
+#: ../data/gcalctool.ui.h:64
+msgid "4"
+msgstr "4"
+
+#. Label for bit 47 on the bit editor
+#: ../data/gcalctool.ui.h:66
+msgid "47"
+msgstr "47"
+
+#. Numeric 5 button
+#: ../data/gcalctool.ui.h:68
+msgid "5"
+msgstr "5"
+
+#. Numeric 6 button
+#: ../data/gcalctool.ui.h:70
+msgid "6"
+msgstr "6"
+
+#. Label for the most significant bit (bit 63) on the bit editor
+#: ../data/gcalctool.ui.h:72
+msgid "63"
+msgstr "63"
+
+#. Numeric 7 button
+#: ../data/gcalctool.ui.h:74
+msgid "7"
+msgstr "7"
+
+#. Numeric 8 button
+#: ../data/gcalctool.ui.h:76
+msgid "8"
+msgstr "8"
+
+#. Numeric 9 button
+#: ../data/gcalctool.ui.h:78
+msgid "9"
+msgstr "9"
+
+#. Shift left button
+#: ../data/gcalctool.ui.h:80
+msgid "<"
+msgstr "<"
+
+#. Factorial
+#: ../data/gcalctool.ui.h:82
+msgid "<i>x</i>!"
+msgstr "<i>x</i>!"
+
+#. x to the power of 2 button
+#: ../data/gcalctool.ui.h:84
+msgid "<i>x</i><sup>2</sup>"
+msgstr "<i>x</i><sup>2</sup>"
+
+#. Edit Function Dialog: Note about what base numbers will be entered as
+#: ../data/gcalctool.ui.h:86
+msgid ""
+"<small><i><b>Note:</b> All constant values are specified in the decimal "
+"numeric base.</i></small>"
+msgstr ""
+"<small><i><b>Σημείωση:</b> Όλες οι τιμές σταθερών καθορίζονται σε δεκαδική "
+"αριθμητική βάση.</i></small>"
+
+#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
+#: ../data/gcalctool.ui.h:88
+msgid "<span weight=\"bold\">R0</span>"
+msgstr "<span weight=\"bold\">Μ0</span>"
+
+#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
+#: ../data/gcalctool.ui.h:90
+msgid "<span weight=\"bold\">R1</span>"
+msgstr "<span weight=\"bold\">Μ1</span>"
+
+#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
+#: ../data/gcalctool.ui.h:92
+msgid "<span weight=\"bold\">R2</span>"
+msgstr "<span weight=\"bold\">Μ2</span>"
+
+#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
+#: ../data/gcalctool.ui.h:94
+msgid "<span weight=\"bold\">R3</span>"
+msgstr "<span weight=\"bold\">Μ3</span>"
+
+#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
+#: ../data/gcalctool.ui.h:96
+msgid "<span weight=\"bold\">R4</span>"
+msgstr "<span weight=\"bold\">Μ4</span>"
+
+#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
+#: ../data/gcalctool.ui.h:98
+msgid "<span weight=\"bold\">R5</span>"
+msgstr "<span weight=\"bold\">Μ5</span>"
+
+#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
+#: ../data/gcalctool.ui.h:100
+msgid "<span weight=\"bold\">R6</span>"
+msgstr "<span weight=\"bold\">Μ6</span>"
+
+#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
+#: ../data/gcalctool.ui.h:102
+msgid "<span weight=\"bold\">R7</span>"
+msgstr "<span weight=\"bold\">Μ7</span>"
+
+#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
+#: ../data/gcalctool.ui.h:104
+msgid "<span weight=\"bold\">R8</span>"
+msgstr "<span weight=\"bold\">Μ8</span>"
+
+#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
+#: ../data/gcalctool.ui.h:106
+msgid "<span weight=\"bold\">R9</span>"
+msgstr "<span weight=\"bold\">Μ9</span>"
+
+#. Solve button (clicking this solves the displayed calculation)
+#: ../data/gcalctool.ui.h:108
+msgid "="
+msgstr "="
+
+#. Shift right button
+#: ../data/gcalctool.ui.h:110
+msgid ">"
+msgstr ">"
+
+#. Hexadecimal digit A button
+#: ../data/gcalctool.ui.h:112
+msgid "A"
+msgstr "A"
+
+#. Boolean AND button
+#: ../data/gcalctool.ui.h:114
+msgid "AND"
+msgstr "AND"
+
+#. Absolute value button. Abs is short for Absolute
+#: ../data/gcalctool.ui.h:116
+msgid "Abs"
+msgstr "Abs"
+
+#: ../data/gcalctool.ui.h:117
+msgid "Absolute value"
+msgstr "Απόλυτη τιμή"
+
+#: ../data/gcalctool.ui.h:118
+msgid "Absolute value [u]"
+msgstr "Απόλυτη τιμή [u]"
+
+#. Accuracy button
+#: ../data/gcalctool.ui.h:120
+msgid "Acc"
+msgstr "Acc"
+
+#: ../data/gcalctool.ui.h:121
+msgid "Add"
+msgstr "Πρόσθεση"
+
+#: ../data/gcalctool.ui.h:122
+msgid "Add [+]"
+msgstr "Πρόσθεση [+]"
+
+#: ../data/gcalctool.ui.h:123
+msgid "Advanced"
+msgstr "Προχωρημένη"
+
+#. Hexadecimal digit B button
+#: ../data/gcalctool.ui.h:125
+msgid "B"
+msgstr "B"
+
+#: ../data/gcalctool.ui.h:126
+msgid "Backspace"
+msgstr "Backspace"
+
+#: ../data/gcalctool.ui.h:127
+msgid "Basic"
+msgstr "Βασική"
+
+#: ../data/gcalctool.ui.h:128
+msgid "Bitwise AND [&]"
+msgstr "Bitwise AND [&]"
+
+#: ../data/gcalctool.ui.h:129
+msgid "Bitwise NOT [~]"
+msgstr "Bitwise NOT [~]"
+
+#: ../data/gcalctool.ui.h:130
+msgid "Bitwise OR [|]"
+msgstr "Bitwise OR [|]"
+
+#: ../data/gcalctool.ui.h:131
+msgid "Bitwise XNOR [{]"
+msgstr "Bitwise XNOR [{]"
+
+#: ../data/gcalctool.ui.h:132
+msgid "Bitwise XOR [x]"
+msgstr "Bitwise XOR [x]"
+
+#. Bksp is short for Backspace
+#: ../data/gcalctool.ui.h:134
+msgid "Bksp"
+msgstr "Bksp"
+
+#. Hexadecimal digit C button
+#: ../data/gcalctool.ui.h:136 ../gcalctool/gtk.c:1548
+msgid "C"
+msgstr "C"
+
+#. Clear displayed value button
+#: ../data/gcalctool.ui.h:138
+msgid "CE"
+msgstr "CE"
+
+#: ../data/gcalctool.ui.h:139
+msgid "Calculate result"
+msgstr "Υπολογισμός αποτελέσματος"
+
+#: ../data/gcalctool.ui.h:140
+msgid "Calculate result [=]"
+msgstr "Υπολογισμός αποτελέσματος [=]"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/gcalctool.ui.h:142
+msgid "Ch_aracter:"
+msgstr "Χα_ρακτήρας:"
+
+#: ../data/gcalctool.ui.h:143
+msgid "Change Sign [C]"
+msgstr "Αλλαγή προσήμου [C]"
+
+#: ../data/gcalctool.ui.h:144
+msgid "Change sign"
+msgstr "Αλλαγή προσήμου"
+
+#: ../data/gcalctool.ui.h:145
+msgid "Clear"
+msgstr "Εκκαθάριση"
+
+#: ../data/gcalctool.ui.h:146
+msgid "Clear displayed value [Escape]"
+msgstr "Εκκαθάριση εμφανιζόμενης τιμής [Escape]"
+
+#: ../data/gcalctool.ui.h:147
+msgid "Clear displayed value and any partial calculation [Shift Delete]"
+msgstr ""
+"Εκκαθάριση εμφανιζόμενης τιμής και ανολοκλήρωτων υπολογισμών [Shift Delete]"
+
+#: ../data/gcalctool.ui.h:148
+msgid "Clear entry"
+msgstr "Εκκαθάριση καταχώρησης"
+
+#. Edit Functions Dialog: Instructions in dialog
+#: ../data/gcalctool.ui.h:150
+msgid "Click a _value or description to edit it:"
+msgstr "Κλικ σε τι_μή ή περιγραφή για επεξεργασία:"
+
+#. Clear display button. Clr is short for Clear
+#: ../data/gcalctool.ui.h:152
+msgid "Clr"
+msgstr "Clr"
+
+#: ../data/gcalctool.ui.h:153
+msgid "Compounding term"
+msgstr "Διάρκεια ανατοκισμού"
+
+#: ../data/gcalctool.ui.h:154
+msgid "Compounding term [m]"
+msgstr "Διάρκεια ανατοκισμού [m]"
+
+#. Constants button
+#: ../data/gcalctool.ui.h:156
+msgid "Con"
+msgstr "Con"
+
+#: ../data/gcalctool.ui.h:157
+msgid "Constants [#]"
+msgstr "Σταθερές [#]"
+
+#: ../data/gcalctool.ui.h:158
+msgid "Copy selection"
+msgstr "Αντιγραφή επιλογής"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/gcalctool.ui.h:160
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Hexadecimal digit D button
+#: ../data/gcalctool.ui.h:162
+msgid "D"
+msgstr "D"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:164
+msgid "Ddb"
+msgstr "Ddb"
+
+#. Degrees radio button
+#: ../data/gcalctool.ui.h:166
+msgid "De_grees"
+msgstr "Μοί_ρες"
+
+#: ../data/gcalctool.ui.h:167
+msgid "Divide"
+msgstr "Διαίρεση"
+
+#: ../data/gcalctool.ui.h:168
+msgid "Divide [/]"
+msgstr "Διαίρεση [/]"
+
+#: ../data/gcalctool.ui.h:169
+msgid "Double-declining depreciation"
+msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
+
+#: ../data/gcalctool.ui.h:170
+msgid "Double-declining depreciation [D]"
+msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού [D]"
+
+#. Hexadecimal digit E button
+#: ../data/gcalctool.ui.h:172
+msgid "E"
+msgstr "E"
+
+#. Engineering display radio button
+#: ../data/gcalctool.ui.h:174
+msgid "E_ng"
+msgstr "E_ng"
+
+#. Title of edit constants dialog
+#: ../data/gcalctool.ui.h:176
+msgid "Edit Constants"
+msgstr "Επεξεργασία σταθερών"
+
+#. Menu item in the constants menu to show the Edit Constants dialog
+#: ../data/gcalctool.ui.h:178
+msgid "Edit Constants..."
+msgstr "Επεξεργασία σταθερών..."
+
+#. Title of edit functions dialog
+#: ../data/gcalctool.ui.h:180
+msgid "Edit Functions"
+msgstr "Επεξεργασία συναρτήσεων"
+
+#. Menu item in the constants menu to show the Edit Functions dialog
+#: ../data/gcalctool.ui.h:182
+msgid "Edit Functions..."
+msgstr "Επεξεργασία συναρτήσεων..."
+
+#: ../data/gcalctool.ui.h:183
+msgid "End group of calculations [)]"
+msgstr "Τερματισμός ομάδας υπολογισμών [)]"
+
+#: ../data/gcalctool.ui.h:184
+msgid "Enter an exponential number [E]"
+msgstr "Εισαγωγή εκθετικού αριθμού [E]"
+
+#. Memory exchange button. Exch is short for Exchange
+#: ../data/gcalctool.ui.h:186
+msgid "Exch"
+msgstr "ΜExch"
+
+#: ../data/gcalctool.ui.h:187
+msgid "Exchange displayed value with memory register [X]"
+msgstr "Ανταλλαγή εμφανιζόμενης τιμής με τιμή μνήμης [X]"
+
+#: ../data/gcalctool.ui.h:188
+msgid "Exchange with register"
+msgstr "Ανταλλαγή με μνήμη"
+
+#. Exponential
+#: ../data/gcalctool.ui.h:190
+msgid "Exp"
+msgstr "Exp"
+
+#. Hexadecimal digit F button
+#: ../data/gcalctool.ui.h:192 ../gcalctool/gtk.c:1571
+msgid "F"
+msgstr "F"
+
+#: ../data/gcalctool.ui.h:193
+msgid "Factorial of displayed value [!]"
+msgstr "Παραγοντικό της εμφανιζόμενης τιμής [!]"
+
+#: ../data/gcalctool.ui.h:194
+msgid "Financial"
+msgstr "Εμπορική"
+
+#. Fractional portion button
+#: ../data/gcalctool.ui.h:196
+msgid "Frac"
+msgstr "Frac"
+
+#: ../data/gcalctool.ui.h:197
+msgid "Fractional portion"
+msgstr "Κλασματικό μέρος"
+
+#: ../data/gcalctool.ui.h:198
+msgid "Fractional portion of displayed value [:]"
+msgstr "Κλασματικό μέρος εμφανιζόμενης τιμής [:]"
+
+#. Functions button
+#: ../data/gcalctool.ui.h:200
+msgid "Fun"
+msgstr "Fun"
+
+#: ../data/gcalctool.ui.h:201
+msgid "Future value"
+msgstr "Μελλοντική αξία"
+
+#: ../data/gcalctool.ui.h:202
+msgid "Future value [v]"
+msgstr "Μελλοντική αξία [v]"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/gcalctool.ui.h:204
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/gcalctool.ui.h:206
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Gradians radio button
+#: ../data/gcalctool.ui.h:208
+msgid "Gr_adians"
+msgstr "Β_αθμοί"
+
+#: ../data/gcalctool.ui.h:210
+msgid "Gross Profit Margin [I]"
+msgstr "Μικτό περιθώριο κέρδους [I]"
+
+#: ../data/gcalctool.ui.h:211
+msgid "Gross Profit Margin [g]"
+msgstr "Μικτό περιθώριο κέρδους [g]"
+
+#. Hyperbolic check box
+#: ../data/gcalctool.ui.h:213
+msgid "H_yp"
+msgstr "H_yp"
+
+#. Base 16 radio button
+#: ../data/gcalctool.ui.h:215
+msgid "He_x"
+msgstr "He_x"
+
+#: ../data/gcalctool.ui.h:216
+msgid "Hexadecimal digit A [a]"
+msgstr "Δεκαεξαδικό ψηφίο A [a]"
+
+#: ../data/gcalctool.ui.h:217
+msgid "Hexadecimal digit B [b]"
+msgstr "Δεκαεξαδικό ψηφίο B [b]"
+
+#: ../data/gcalctool.ui.h:218
+msgid "Hexadecimal digit C [c]"
+msgstr "Δεκαεξαδικό ψηφίο C [c]"
+
+#: ../data/gcalctool.ui.h:219
+msgid "Hexadecimal digit D [d]"
+msgstr "Δεκαεξαδικό ψηφίο D [d]"
+
+#: ../data/gcalctool.ui.h:220
+msgid "Hexadecimal digit E [e]"
+msgstr "Δεκαεξαδικό ψηφίο Ε [e]"
+
+#: ../data/gcalctool.ui.h:221
+msgid "Hexadecimal digit F [f]"
+msgstr "Δεκαεξαδικό ψηφίο F [f]"
+
+#. Title of insert ASCII dialog
+#: ../data/gcalctool.ui.h:223
+msgid "Insert ASCII Value"
+msgstr "Εισαγωγή τιμής ASCII"
+
+#: ../data/gcalctool.ui.h:224
+msgid "Insert ASCII value"
+msgstr "Εισαγωγή τιμής ASCII"
+
+#. Integer portion button
+#: ../data/gcalctool.ui.h:226
+msgid "Int"
+msgstr "Int"
+
+#: ../data/gcalctool.ui.h:227
+msgid "Integer portion"
+msgstr "Ακέραιο μέρος"
+
+#: ../data/gcalctool.ui.h:228
+msgid "Integer portion of displayed value [i]"
+msgstr "Ακέραιο μέρος της εμφανιζόμενης τιμής [i]"
+
+#: ../data/gcalctool.ui.h:229
+msgid "Left bracket"
+msgstr "Αριστερή αγκύλη"
+
+#: ../data/gcalctool.ui.h:230
+msgid "Memory Registers"
+msgstr "Μνήμες"
+
+#. Modulus division button
+#: ../data/gcalctool.ui.h:232
+msgid "Mod"
+msgstr "Mod"
+
+#: ../data/gcalctool.ui.h:233
+msgid "Modulus Division [M]"
+msgstr "Υπόλοιπο διαίρεσης ακεραίων (Modulus Division) [M]"
+
+#: ../data/gcalctool.ui.h:234
+msgid "Multiply"
+msgstr "Πολλαπλασιασμός"
+
+#: ../data/gcalctool.ui.h:235
+msgid "Multiply [*]"
+msgstr "Πολλαπλασιασμός [*]"
+
+#. Boolean NOT button
+#: ../data/gcalctool.ui.h:237
+msgid "NOT"
+msgstr "NOT"
+
+#: ../data/gcalctool.ui.h:238
+msgid "Numeric 0"
+msgstr "Αριθμητικό 0"
+
+#: ../data/gcalctool.ui.h:239
+msgid "Numeric 1"
+msgstr "Αριθμητικό 1"
+
+#: ../data/gcalctool.ui.h:240
+msgid "Numeric 2"
+msgstr "Αριθμητικό 2"
+
+#: ../data/gcalctool.ui.h:241
+msgid "Numeric 3"
+msgstr "Αριθμητικό 3"
+
+#: ../data/gcalctool.ui.h:242
+msgid "Numeric 4"
+msgstr "Αριθμητικό 4"
+
+#: ../data/gcalctool.ui.h:243
+msgid "Numeric 5"
+msgstr "Αριθμητικό 5"
+
+#: ../data/gcalctool.ui.h:244
+msgid "Numeric 6"
+msgstr "Αριθμητικό 6"
+
+#: ../data/gcalctool.ui.h:245
+msgid "Numeric 7"
+msgstr "Αριθμητικό 7"
+
+#: ../data/gcalctool.ui.h:246
+msgid "Numeric 8"
+msgstr "Αριθμητικό 8"
+
+#: ../data/gcalctool.ui.h:247
+msgid "Numeric 9"
+msgstr "Αριθμητικό 9"
+
+#: ../data/gcalctool.ui.h:248
+msgid "Numeric point"
+msgstr "Υποδιαστολή"
+
+#. Boolean OR button
+#: ../data/gcalctool.ui.h:250
+msgid "OR"
+msgstr "OR"
+
+#: ../data/gcalctool.ui.h:251
+msgid "Paste selection"
+msgstr "Επικόλληση επιλογής"
+
+#: ../data/gcalctool.ui.h:252
+msgid "Payment period"
+msgstr "Περίοδος πληρωμής"
+
+#: ../data/gcalctool.ui.h:253
+msgid "Payment period [t]"
+msgstr "Περίοδος πληρωμής [t]"
+
+#: ../data/gcalctool.ui.h:254
+msgid "Percentage"
+msgstr "Ποσοστό"
+
+#: ../data/gcalctool.ui.h:256
+#, no-c-format
+msgid "Percentage [%]"
+msgstr "Ποσοστό [%]"
+
+#: ../data/gcalctool.ui.h:257
+msgid "Periodic interest rate"
+msgstr "Περιοδικό επιτόκιο"
+
+#: ../data/gcalctool.ui.h:258
+msgid "Periodic interest rate [T]"
+msgstr "Περιοδικό επιτόκιο [T]"
+
+#: ../data/gcalctool.ui.h:259
+msgid "Periodic payment"
+msgstr "Περιοδική πληρωμή "
+
+#: ../data/gcalctool.ui.h:260
+msgid "Periodic payment [P]"
+msgstr "Περιοδική πληρωμή (δόση) [P]"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/gcalctool.ui.h:262
+msgid "Pmt"
+msgstr "Pmt"
+
+#: ../data/gcalctool.ui.h:263
+msgid "Present value"
+msgstr "Τρέχουσα αξία "
+
+#: ../data/gcalctool.ui.h:264
+msgid "Present value [p]"
+msgstr "Τρέχουσα αξία [p]"
+
+#: ../data/gcalctool.ui.h:265
+msgid "Programming"
+msgstr "Προγραμματιστική"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/gcalctool.ui.h:267
+msgid "Pv"
+msgstr "Pv"
+
+#: ../data/gcalctool.ui.h:268
+msgid "Quit the calculator"
+msgstr "Έξοδος από την αριθμομηχανή"
+
+#. Random number
+#: ../data/gcalctool.ui.h:270
+msgid "Rand"
+msgstr "Rand"
+
+#: ../data/gcalctool.ui.h:271
+msgid "Random number in the range 0.0 to 1.0 [?]"
+msgstr "Τυχαίος αριθμός μεταξύ 0.0 και 1.0 [?]"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/gcalctool.ui.h:273
+msgid "Rate"
+msgstr "Rate"
+
+#. Memory recall button. Rcl is short for Recall
+#: ../data/gcalctool.ui.h:275
+msgid "Rcl"
+msgstr "ΜRcl"
+
+#: ../data/gcalctool.ui.h:276
+msgid "Reciprocal"
+msgstr "Αντίστροφο"
+
+#: ../data/gcalctool.ui.h:277
+msgid "Reciprocal [r]"
+msgstr "Αντίστροφο [r]"
+
+#: ../data/gcalctool.ui.h:278
+msgid "Redo"
+msgstr "Ακύρωση αναίρεσης"
+
+#: ../data/gcalctool.ui.h:279
+msgid "Remove rightmost character from displayed value [Backspace]"
+msgstr "Διαγραφή του δεξιότερου χαρακτήρα στην οθόνη [Backspace]"
+
+#: ../data/gcalctool.ui.h:280
+msgid "Result Region"
+msgstr "Περιοχή αποτελέσματος"
+
+#: ../data/gcalctool.ui.h:281
+msgid "Retrieve from register"
+msgstr "Ανάκτηση από μνήμη"
+
+#: ../data/gcalctool.ui.h:282
+msgid "Retrieve memory register to display [R]"
+msgstr "Ανάκτηση από μνήμη και εμφάνιση [R]"
+
+#: ../data/gcalctool.ui.h:283
+msgid "Right bracket"
+msgstr "Δεξιά αγκύλη"
+
+#: ../data/gcalctool.ui.h:284
+msgid "Scientific"
+msgstr "Επιστημονική"
+
+#. Title of set precision dialog
+#: ../data/gcalctool.ui.h:286
+msgid "Set Precision"
+msgstr "Ορισμός ακρίβειας"
+
+#: ../data/gcalctool.ui.h:287
+msgid "Set display type to engineering format"
+msgstr "Τεχνολογική μορφή εμφάνισης"
+
+#: ../data/gcalctool.ui.h:288
+msgid "Set display type to fixed-point format"
+msgstr "Εμφάνιση σταθερής υποδιαστολής"
+
+#: ../data/gcalctool.ui.h:289
+msgid "Set display type to scientific format"
+msgstr "Επιστημονική μορφή εμφάνισης"
+
+#: ../data/gcalctool.ui.h:290
+msgid "Set hyperbolic option for trigonometric functions"
+msgstr "Υπερβολικές τριγωνομετρικές συναρτήσεις"
+
+#: ../data/gcalctool.ui.h:291
+msgid "Set inverse option for trigonometric functions"
+msgstr "Αντίστροφες τριγωνομετρικές συναρτήσεις"
+
+#: ../data/gcalctool.ui.h:292
+msgid "Set numeric base to binary (base 2)"
+msgstr "Δυαδική αριθμητική βάση (βάση 2)"
+
+#: ../data/gcalctool.ui.h:293
+msgid "Set numeric base to decimal (base 10)"
+msgstr "Δεκαδική αριθμητική βάση (βάση 10)"
+
+#: ../data/gcalctool.ui.h:294
+msgid "Set numeric base to hexadecimal (base 16)"
+msgstr "Δεκαεξαδική αριθμητική βάση (βάση 16)"
+
+#: ../data/gcalctool.ui.h:295
+msgid "Set numeric base to octal (base 8)"
+msgstr "Οκταδική αριθμητική βάση (βάση 8)"
+
+#: ../data/gcalctool.ui.h:296
+msgid "Set trigonometric type to degrees"
+msgstr "Τριγωνομετρικοί υπολογισμοί σε μοίρες"
+
+#: ../data/gcalctool.ui.h:297
+msgid "Set trigonometric type to gradians"
+msgstr "Τριγωνομετρικοί υπολογισμοί σε βαθμούς (grad)"
+
+#: ../data/gcalctool.ui.h:298
+msgid "Set trigonometric type to radians"
+msgstr "Τριγωνομετρικοί υπολογισμοί σε ακτίνια (rad)"
+
+#: ../data/gcalctool.ui.h:299
+msgid "Shift displayed value 1-15 places to the left [<]"
+msgstr "Μετατόπιση εμφανιζόμενης τιμής 1-15 θέσεις στα αριστερά [<]"
+
+#: ../data/gcalctool.ui.h:300
+msgid "Shift displayed value 1-15 places to the right [>]"
+msgstr "Μετατόπιση εμφανιζόμενης τιμής 1-15 θέσεις στα δεξιά [>]"
+
+#. View|Show Thousands Separator menu item
+#: ../data/gcalctool.ui.h:302
+msgid "Show T_housands Separator"
+msgstr "Εμφάνιση διαχωριστικού _χιλιάδων"
+
+#. Accuracy Popup: Check menu item to enable trailing zeroes
+#: ../data/gcalctool.ui.h:304
+msgid "Show _Trailing Zeroes"
+msgstr "Εμφάνιση _μηδενικών στο τέλος"
+
+#: ../data/gcalctool.ui.h:305
+msgid "Show help contents"
+msgstr "Προβολή περιεχομένων βοήθειας"
+
+#: ../data/gcalctool.ui.h:306
+msgid "Show memory registers"
+msgstr "Εμφάνιση μνημών"
+
+#: ../data/gcalctool.ui.h:307
+msgid "Show the About Gcalctool dialog"
+msgstr "Προβολή του διαλόγου Περί Gcalctool "
+
+#: ../data/gcalctool.ui.h:308
+msgid "Show thousands separator"
+msgstr "Εμφάνιση διαχωριστικού χιλιάδων"
+
+#: ../data/gcalctool.ui.h:309
+msgid "Show trailing zeroes"
+msgstr "Εμφάνιση μηδενικών στο τέλος"
+
+#. Set Precision Dialog: Label before the significant places spin button
+#: ../data/gcalctool.ui.h:311
+msgid "Significant _places:"
+msgstr "Σημαντικά _ψηφία:"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:313
+msgid "Sln"
+msgstr "Sln"
+
+#: ../data/gcalctool.ui.h:314
+msgid "Square"
+msgstr "Τετράγωνο"
+
+#: ../data/gcalctool.ui.h:315
+msgid "Square [@]"
+msgstr "Τετράγωνο [@]"
+
+#: ../data/gcalctool.ui.h:316
+msgid "Square root"
+msgstr "Τετραγωνική ρίζα"
+
+#: ../data/gcalctool.ui.h:317
+msgid "Square root [s]"
+msgstr "Τετραγωνική ρίζα [s]"
+
+#: ../data/gcalctool.ui.h:318
+msgid "Start group of calculations [(]"
+msgstr "Έναρξη ομάδας υπολογισμών [(]"
+
+#. Memory store button. Sto is short for Store
+#: ../data/gcalctool.ui.h:320
+msgid "Sto"
+msgstr "ΜSto"
+
+#: ../data/gcalctool.ui.h:321
+msgid "Store displayed value in memory register [S]"
+msgstr "Αποθήκευση εμφανιζόμενης τιμής στη μνήμη [S]"
+
+#: ../data/gcalctool.ui.h:322
+msgid "Store to register"
+msgstr "Αποθήκευση σε μνήμη"
+
+#: ../data/gcalctool.ui.h:323
+msgid "Straight-line depreciation"
+msgstr "Σταθερή απόσβεση"
+
+#: ../data/gcalctool.ui.h:324
+msgid "Straight-line depreciation [l]"
+msgstr "Σταθερή απόσβεση [l]"
+
+#: ../data/gcalctool.ui.h:325
+msgid "Subtract"
+msgstr "Αφαίρεση"
+
+#: ../data/gcalctool.ui.h:326
+msgid "Subtract [-]"
+msgstr "Αφαίρεση [-]"
+
+#: ../data/gcalctool.ui.h:327
+msgid "Sum-of-the years'-digits depreciation"
+msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
+
+#: ../data/gcalctool.ui.h:328
+msgid "Sum-of-the years'-digits depreciation [Y]"
+msgstr "Απόσβεση με συντελεστή τα έτη ζωής [Y]"
+
+#: ../data/gcalctool.ui.h:329
+msgid "Sum-of-the years'-digits depreciation [y]"
+msgstr "Απόσβεση με συντελεστή τα έτη ζωής [y]"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:331
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/gcalctool.ui.h:333
+msgid "Term"
+msgstr "Term"
+
+#: ../data/gcalctool.ui.h:334
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: ../data/gcalctool.ui.h:335
+msgid "User-defined functions [F]"
+msgstr "Συναρτήσεις ορισμένες από το χρήστη [F]"
+
+#. Boolean exclusive NOR button
+#: ../data/gcalctool.ui.h:337
+msgid "XNOR"
+msgstr "XNOR"
+
+#. Boolean exlcusive OR button
+#: ../data/gcalctool.ui.h:339
+msgid "XOR"
+msgstr "XOR"
+
+#. Accuracy Popup: Menu item to set accuracy to 0 significant places
+#: ../data/gcalctool.ui.h:341
+msgid "_0 significant places"
+msgstr "_0 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 1 bit
+#: ../data/gcalctool.ui.h:343
+msgid "_1 place"
+msgstr "_1 θέση"
+
+#. Accuracy Popup: Menu item to set accuracy to 1 significant place
+#: ../data/gcalctool.ui.h:345
+msgid "_1 significant place"
+msgstr "_1 σημαντικό ψηφίο"
+
+#. Right Shift Popup: Menu item to shift right by 2 bits
+#: ../data/gcalctool.ui.h:347
+msgid "_2 places"
+msgstr "_2 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 2 significant places
+#: ../data/gcalctool.ui.h:349
+msgid "_2 significant places"
+msgstr "_2 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 3 bits
+#: ../data/gcalctool.ui.h:351
+msgid "_3 places"
+msgstr "_3 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 3 significant places
+#: ../data/gcalctool.ui.h:353
+msgid "_3 significant places"
+msgstr "_3 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 4 bits
+#: ../data/gcalctool.ui.h:355
+msgid "_4 places"
+msgstr "_4 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 4 significant places
+#: ../data/gcalctool.ui.h:357
+msgid "_4 significant places"
+msgstr "_4 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 5 bits
+#: ../data/gcalctool.ui.h:359
+msgid "_5 places"
+msgstr "_5 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 5 significant places
+#: ../data/gcalctool.ui.h:361
+msgid "_5 significant places"
+msgstr "_5 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 6 bits
+#: ../data/gcalctool.ui.h:363
+msgid "_6 places"
+msgstr "_6 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 6 significant places
+#: ../data/gcalctool.ui.h:365
+msgid "_6 significant places"
+msgstr "_6 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 7 bits
+#: ../data/gcalctool.ui.h:367
+msgid "_7 places"
+msgstr "_7 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 7 significant places
+#: ../data/gcalctool.ui.h:369
+msgid "_7 significant places"
+msgstr "7 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 8 bits
+#: ../data/gcalctool.ui.h:371
+msgid "_8 places"
+msgstr "_8 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 8 significant places
+#: ../data/gcalctool.ui.h:373
+msgid "_8 significant places"
+msgstr "_8 σημαντικά ψηφία"
+
+#. Right Shift Popup: Menu item to shift right by 9 bits
+#: ../data/gcalctool.ui.h:375
+msgid "_9 places"
+msgstr "_9 θέσεις"
+
+#. Accuracy Popup: Menu item to set accuracy to 9 significant places
+#: ../data/gcalctool.ui.h:377
+msgid "_9 significant places"
+msgstr "_9 σημαντικά ψηφία"
+
+#. View|Advanced menu item
+#: ../data/gcalctool.ui.h:379
+msgid "_Advanced"
+msgstr "Π_ροχωρημένη"
+
+#. View|Basic menu item
+#: ../data/gcalctool.ui.h:381
+msgid "_Basic"
+msgstr "_Βασική"
+
+#. Base 2 radio button
+#: ../data/gcalctool.ui.h:383
+msgid "_Bin"
+msgstr "_Bin"
+
+#. Calculator menu
+#: ../data/gcalctool.ui.h:385
+msgid "_Calculator"
+msgstr "Αρ_ιθμομηχανή"
+
+#. Base 10 radio button
+#: ../data/gcalctool.ui.h:387
+msgid "_Dec"
+msgstr "_Dec"
+
+#. Edit menu
+#: ../data/gcalctool.ui.h:389
+msgid "_Edit"
+msgstr "_Επεξεργασία"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:391
+msgid "_Financial"
+msgstr "Ε_μπορική"
+
+#. Fixed-point display radio button
+#: ../data/gcalctool.ui.h:393
+msgid "_Fix"
+msgstr "_Fix"
+
+#. Help menu
+#: ../data/gcalctool.ui.h:395
+msgid "_Help"
+msgstr "Βοή_θεια"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/gcalctool.ui.h:397
+msgid "_Insert"
+msgstr "_Εισαγωγή"
+
+#. Edit|Insert ASCII value menu item
+#: ../data/gcalctool.ui.h:399
+msgid "_Insert ASCII value..."
+msgstr "Ε_ισαγωγή τιμής ASCII..."
+
+#. Inverse check box
+#: ../data/gcalctool.ui.h:401
+msgid "_Inv"
+msgstr "_Inv"
+
+#. View|Memory Registers menu item
+#: ../data/gcalctool.ui.h:403
+msgid "_Memory Registers"
+msgstr "_Μνήμες"
+
+#. Base 8 radio button
+#: ../data/gcalctool.ui.h:405
+msgid "_Oct"
+msgstr "_Oct"
+
+#. View|Programming menu item
+#: ../data/gcalctool.ui.h:407
+msgid "_Programming"
+msgstr "_Προγραμματιστική"
+
+#. Radian radio button
+#: ../data/gcalctool.ui.h:409
+msgid "_Radians"
+msgstr "Α_κτίνια"
+
+#. Scientific display radio button
+#: ../data/gcalctool.ui.h:411
+msgid "_Sci"
+msgstr "_Sci"
+
+#. View|Scientific menu item
+#: ../data/gcalctool.ui.h:413
+msgid "_Scientific"
+msgstr "Επι_στημονική"
+
+#. Set Precision Dialog: Button to apply settings
+#: ../data/gcalctool.ui.h:415
+msgid "_Set"
+msgstr "Ο_ρισμός"
+
+#. View menu
+#: ../data/gcalctool.ui.h:417
+msgid "_View"
+msgstr "Προ_βολή"
+
+#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:419
+msgid "register 0"
+msgstr "μνήμη 0"
+
+#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:421
+msgid "register 1"
+msgstr "μνήμη 1"
+
+#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:423
+msgid "register 2"
+msgstr "μνήμη 2"
+
+#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:425
+msgid "register 3"
+msgstr "μνήμη 3"
+
+#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:427
+msgid "register 4"
+msgstr "μνήμη 4"
+
+#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:429
+msgid "register 5"
+msgstr "μνήμη 5"
+
+#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:431
+msgid "register 6"
+msgstr "μνήμη 6"
+
+#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:433
+msgid "register 7"
+msgstr "μνήμη 7"
+
+#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:435
+msgid "register 8"
+msgstr "μνήμη 8"
+
+#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:437
+msgid "register 9"
+msgstr "μνήμη 9"
+
+#: ../data/gcalctool.ui.h:438
+msgid "x2"
+msgstr "x2"
+
 #. FIXME: Useless string
-#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:736
-#: ../gcalctool/mp.c:826 ../gcalctool/mp-trigonometric.c:155
-#: ../gcalctool/mp-trigonometric.c:191 ../gcalctool/mp-trigonometric.c:362
+#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:745
+#: ../gcalctool/mp.c:818 ../gcalctool/mp-trigonometric.c:156
+#: ../gcalctool/mp-trigonometric.c:192 ../gcalctool/mp-trigonometric.c:359
 msgid "Error"
 msgstr "Σφάλμα"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../gcalctool/calctool.c:223
+#: ../gcalctool/calctool.c:222
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: η ακρίβεια θα πρέπει να είναι στο εύρος του 0-%d\n"
+msgstr "%s: η ακρίβεια θα πρέπει να είναι μεταξύ 0-%d\n"
 
-#: ../gcalctool/display.c:390
+#: ../gcalctool/display.c:398
 msgid "No undo history"
 msgstr "Δεν υπάρχει ιστορικό αναίρεσης"
 
-#: ../gcalctool/display.c:405
+#: ../gcalctool/display.c:413
 msgid "No redo steps"
-msgstr "Δεν υπάρχουν βήματα ακύρωσης αναίρεσης"
+msgstr "Δεν υπάρχει ιστορικό ακυρώσεων αναίρεσης"
 
 #. Translators: This message is displayed in the status bar when an
 #. invalid user-defined function is executed
 #: ../gcalctool/functions.c:180
 msgid "Malformed function"
-msgstr "Λανθασμένα διατυπωμένη εξίσωση"
+msgstr "Λανθασμένη διατύπωση συνάρτησης"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
 #: ../gcalctool/functions.c:192
 msgid "No sane value to do bitwise shift"
-msgstr "Δεν υπάρχει λογική τιμή για bitwise shift"
+msgstr "Δε δόθηκε θεμιτή τιμή για τη μετατόπιση κατά bit."
 
-#: ../gcalctool/functions.c:211 ../gcalctool/functions.c:253
+#: ../gcalctool/functions.c:213 ../gcalctool/functions.c:259
 msgid "No sane value to convert"
-msgstr "Δεν υπάρχει λογική τιμή για μετατροπή"
+msgstr "Δε δόθηκε θεμιτή τιμή για τη μετατροπή"
 
-#: ../gcalctool/functions.c:234 ../gcalctool/functions.c:272
+#: ../gcalctool/functions.c:236 ../gcalctool/functions.c:279
 msgid "No sane value to store"
-msgstr "Δεν υπάρχει λογική τιμή για αποθήκευση"
+msgstr "Δε δόθηκε θεμιτή τιμή για αποθήκευση"
 
-#: ../gcalctool/functions.c:426
+#: ../gcalctool/functions.c:433
 msgid "Invalid number for the current base"
-msgstr "Μη έγκυρος αριθμός για τη τρέχουσα βάση"
+msgstr "Μη έγκυρος αριθμός στην τρέχουσα βάση"
 
-#: ../gcalctool/functions.c:430
+#: ../gcalctool/functions.c:437
 msgid "Too long number"
 msgstr "Πολύ μακρύς αριθμός"
 
-#: ../gcalctool/functions.c:434
+#: ../gcalctool/functions.c:441
 msgid "Invalid bitwise operation parameter(s)"
-msgstr "Μη έγκυρες παράμετροι bitwise"
+msgstr "Μη έγκυρες παράμετροι για την πράξη κατά bit."
 
-#: ../gcalctool/functions.c:438
+#: ../gcalctool/functions.c:445
 msgid "Invalid modulus operation parameter(s)"
-msgstr "Μη έγκυρες παράμετροι modulus "
+msgstr "Μη έγκυρες παράμετροι για τον υπολογισμό υπολοίπου"
 
-#: ../gcalctool/functions.c:442
+#: ../gcalctool/functions.c:449
 msgid "Math operation error"
-msgstr "Σφάλμα λειτουργίας Math"
+msgstr "Σφάλμα μαθηματικού υπολογισμού"
 
-#: ../gcalctool/functions.c:446
+#: ../gcalctool/functions.c:453
 msgid "Malformed expression"
-msgstr "Λανθασμένη διατύπωση"
-
-#. Translators: The window title when in basic mode
-#: ../gcalctool/gtk.c:61 ../gcalctool.desktop.in.h:1
-msgid "Calculator"
-msgstr "Αριθμομηχανή"
+msgstr "Λανθασμένη διατύπωση έκφρασης"
 
 #. Translators: The window title when in advanced mode
-#: ../gcalctool/gtk.c:63
+#: ../gcalctool/gtk.c:62
 msgid "Calculator - Advanced"
-msgstr "Αριθμομηχανή - Προχωρημένη λειτουργία"
+msgstr "Αριθμομηχανή - Προχωρημένη"
 
 #. Translators: The window title when in financial mode
-#: ../gcalctool/gtk.c:65
+#: ../gcalctool/gtk.c:64
 msgid "Calculator - Financial"
 msgstr "Αριθμομηχανή - Οικονομική"
 
 #. Translators: The window title when in scientific mode
-#: ../gcalctool/gtk.c:67
+#: ../gcalctool/gtk.c:66
 msgid "Calculator - Scientific"
 msgstr "Αριθμομηχανή- Επιστημονική"
 
 #. Translators: The window title when in programming mode
-#: ../gcalctool/gtk.c:69
-#| msgid "Calculator - Advanced"
+#: ../gcalctool/gtk.c:68
 msgid "Calculator - Programming"
-msgstr "Αριθμομηχανή - Προγραμματισμός"
+msgstr "Αριθμομηχανή - Προγραμματιστική"
 
 #. Translators: The window title when in basic mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:75
+#: ../gcalctool/gtk.c:74
 #, c-format
 msgid "Calculator [%s]"
 msgstr "Αριθμομηχανή [%s]"
 
 #. Translators: The window title when in advanced mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:77
+#: ../gcalctool/gtk.c:76
 #, c-format
 msgid "Calculator [%s] - Advanced"
 msgstr "Αριθμομηχανή [%s] - Προχωρημένη"
 
 #. Translators: The window title when in financial mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:79
+#: ../gcalctool/gtk.c:78
 #, c-format
 msgid "Calculator [%s] - Financial"
 msgstr "Αριθμομηχανή [%s] - Οικονομική"
 
 #. Translators: The window title when in scientific mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:81
+#: ../gcalctool/gtk.c:80
 #, c-format
 msgid "Calculator [%s] - Scientific"
 msgstr "Αριθμομηχανή [%s] - Επιστημονική"
 
 #. Translators: The window title when in programming mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:83
+#: ../gcalctool/gtk.c:82
 #, c-format
-#| msgid "Calculator [%s] - Advanced"
 msgid "Calculator [%s] - Programming"
-msgstr "Αριθμομηχανή [%s] - Προγραμματισμός"
+msgstr "Αριθμομηχανή [%s] - Προγραμματιστική"
 
 #. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../gcalctool/gtk.c:540
+#: ../gcalctool/gtk.c:536
 #, c-format
 msgid "_Other (%d) ..."
 msgstr "Ά_λλο (%d) ... "
 
 #. Translators: Tooltip for accuracy button
-#: ../gcalctool/gtk.c:546
+#: ../gcalctool/gtk.c:542
 #, c-format
-#| msgid "Set accuracy from 0 to 9 numeric places [A]"
 msgid "Set accuracy from 0 to %d numeric place. [A]"
 msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
 msgstr[0] "Ορισμός ακρίβειας από 0 έως %d δεκαδικό ψηφίο. [A]"
 msgstr[1] "Ορισμός ακρίβειας από 0 έως %d δεκαδικά ψηφία [A]"
 
 #. Translators: The sine button
-#: ../gcalctool/gtk.c:571
+#: ../gcalctool/gtk.c:567
 msgid "Sin"
 msgstr "Sin"
 
 #. Translators: The inverse sine button
-#: ../gcalctool/gtk.c:573
+#: ../gcalctool/gtk.c:569
 msgid "Sin<sup>-1</sup>"
 msgstr "Sin<sup>-1</sup>"
 
 #. Translators: The hyperbolic sine button
-#: ../gcalctool/gtk.c:575
+#: ../gcalctool/gtk.c:571
 msgid "Sinh"
 msgstr "Sinh"
 
 #. Translators: The inverse hyperbolic sine button
-#: ../gcalctool/gtk.c:577
+#: ../gcalctool/gtk.c:573
 msgid "Sinh<sup>-1</sup>"
 msgstr "Sinh<sup>-1</sup>"
 
 #. Translators: The sine tooltip
-#: ../gcalctool/gtk.c:580
-#| msgid "Sine [K]"
+#: ../gcalctool/gtk.c:576
 msgid "Sine [k]"
 msgstr "Ημίτονο [k]"
 
 #. Translators: The inverse sine tooltip
-#: ../gcalctool/gtk.c:582
-#| msgid "Sine [K]"
+#: ../gcalctool/gtk.c:578
 msgid "Inverse Sine [K]"
 msgstr "Αντίστροφο ημίτονο [K]"
 
 #. Translators: The hyperbolic sine tooltip
-#: ../gcalctool/gtk.c:584
+#: ../gcalctool/gtk.c:580
 msgid "Hyperbolic Sine [k]"
 msgstr "Υπερβολικό ημίτονο [k]"
 
 #. Translators: The hyperbolic inverse sine tooltip
-#: ../gcalctool/gtk.c:586
+#: ../gcalctool/gtk.c:582
 msgid "Hyperbolic Inverse Sine [K]"
 msgstr "Υπερβολικό αντίστροφο ημίτονο [K]"
 
 #. Translators: The cosine button
-#: ../gcalctool/gtk.c:590
+#: ../gcalctool/gtk.c:586
 msgid "Cos"
 msgstr "Cos"
 
 #. Translators: The inverse cosine button
-#: ../gcalctool/gtk.c:592
+#: ../gcalctool/gtk.c:588
 msgid "Cos<sup>-1</sup>"
 msgstr "Cos<sup>-1</sup>"
 
 #. Translators: The hyperbolic cosine button
-#: ../gcalctool/gtk.c:594
+#: ../gcalctool/gtk.c:590
 msgid "Cosh"
 msgstr "Cosh"
 
 #. Translators: The inverse hyperbolic cosine button
-#: ../gcalctool/gtk.c:596
+#: ../gcalctool/gtk.c:592
 msgid "Cosh<sup>-1</sup>"
 msgstr "Cosh<sup>-1</sup>"
 
 #. Translators: The cosine tooltip
-#: ../gcalctool/gtk.c:599
-#| msgid "Cosine [J]"
+#: ../gcalctool/gtk.c:595
 msgid "Cosine [j]"
 msgstr "Συνημίτονο [j]"
 
 #. Translators: The inverse cosine tooltip
-#: ../gcalctool/gtk.c:601
-#| msgid "Cosine [J]"
+#: ../gcalctool/gtk.c:597
 msgid "Inverse Cosine [J]"
 msgstr "Αντίστροφο συνημίτονο [J]"
 
 #. Translators: The hyperbolic cosine tooltip
-#: ../gcalctool/gtk.c:603
+#: ../gcalctool/gtk.c:599
 msgid "Hyperbolic Cosine [j]"
 msgstr "Υπερβολικό συνημίτονο [j]"
 
 #. Translators: The hyperbolic inverse cosine tooltip
-#: ../gcalctool/gtk.c:605
+#: ../gcalctool/gtk.c:601
 msgid "Hyperbolic Inverse Cosine [J]"
 msgstr "Υπερβολικό αντίστροφο συνημίτονο [J]"
 
 #. Translators: The tangent button
-#: ../gcalctool/gtk.c:609
+#: ../gcalctool/gtk.c:605
 msgid "Tan"
 msgstr "Tan"
 
 #. Translators: The inverse tangent button
-#: ../gcalctool/gtk.c:611
+#: ../gcalctool/gtk.c:607
 msgid "Tan<sup>-1</sup>"
 msgstr "Tan<sup>-1</sup>"
 
 #. Translators: The hyperbolic tangent button
-#: ../gcalctool/gtk.c:613
+#: ../gcalctool/gtk.c:609
 msgid "Tanh"
 msgstr "Tanh"
 
 #. Translators: The inverse hyperbolic tangent button
-#: ../gcalctool/gtk.c:615
+#: ../gcalctool/gtk.c:611
 msgid "Tanh<sup>-1</sup>"
 msgstr "Tanh<sup>-1</sup>"
 
 #. Translators: The tangent tooltip
-#: ../gcalctool/gtk.c:618
-#| msgid "Tangent [L]"
+#: ../gcalctool/gtk.c:614
 msgid "Tangent [w]"
 msgstr "Εφαπτομένη [w]"
 
 #. Translators: The inverse tangent tooltip
-#: ../gcalctool/gtk.c:620
-#| msgid "Tangent [L]"
+#: ../gcalctool/gtk.c:616
 msgid "Inverse Tangent [W]"
 msgstr "Αντίστροφη εφαπτομένη [W]"
 
 #. Translators: The hyperbolic tangent tooltip
-#: ../gcalctool/gtk.c:622
-#| msgid "Periodic payment [P]"
+#: ../gcalctool/gtk.c:618
 msgid "Hyperbolic Tangent [w]"
 msgstr "Υπερβολική εφαπτομένη [w]"
 
 #. Translators: The hyperbolic inverse tangent tooltip
-#: ../gcalctool/gtk.c:624
+#: ../gcalctool/gtk.c:620
 msgid "Hyperbolic Inverse Tangent [W]"
 msgstr "Υπερβολική αντίστροφη εφαπτομένη [W]"
 
 #. Translators: The natural logaritm button
-#: ../gcalctool/gtk.c:629
+#: ../gcalctool/gtk.c:625
 msgid "Ln"
 msgstr "Ln"
 
 #. Translators: The e to the power of x button
-#: ../gcalctool/gtk.c:631
-#| msgid "10<sup><i>x</i></sup>"
+#: ../gcalctool/gtk.c:627
 msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the natural log button
-#: ../gcalctool/gtk.c:634
-#| msgid "Natural log [N]"
+#: ../gcalctool/gtk.c:630
 msgid "Natural log [n]"
 msgstr "Φυσικός λογάριθμος [n]"
 
 #. Translators: Tooltip for the e to the power of x button
-#: ../gcalctool/gtk.c:636
-#| msgid "e to the power of displayed value [{]"
+#: ../gcalctool/gtk.c:632
 msgid "e to the power of the displayed value [N]"
-msgstr "Το e υψωμένο στην ακόλουθη δύναμη  [N]"
+msgstr "Το e υψωμένο στη δύναμη που ακολουθεί [N]"
 
 #. Translators: The 10-based logaritm button
-#: ../gcalctool/gtk.c:641
+#: ../gcalctool/gtk.c:637
 msgid "Log"
 msgstr "Log"
 
 #. Translators: The 10 to the power of x button
-#: ../gcalctool/gtk.c:643
+#: ../gcalctool/gtk.c:639
 msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 10 button
-#: ../gcalctool/gtk.c:646
-#| msgid "Base 10 log [G]"
+#: ../gcalctool/gtk.c:642
 msgid "Base 10 log [g]"
 msgstr "Λογάριθμος με βάση το 10 [g]"
 
 #. Translators: Tooltip for the 10 to the power of x button
-#: ../gcalctool/gtk.c:648
-#| msgid "10 to the power of displayed value [}]"
+#: ../gcalctool/gtk.c:644
 msgid "10 to the power of displayed value [G]"
-msgstr "Το 10 υψωμένο στην ακόλουθη δύναμη [G]"
+msgstr "Το 10 υψωμένο στη δύναμη που ακολουθεί [G]"
 
 #. Translators: The 2-based logaritm button
-#: ../gcalctool/gtk.c:653
+#: ../gcalctool/gtk.c:649
 msgid "Log<sub>2</sub>"
 msgstr "Log<sub>2</sub>"
 
 #. Translators: The 2 to the power of x button
-#: ../gcalctool/gtk.c:655
-#| msgid "10<sup><i>x</i></sup>"
+#: ../gcalctool/gtk.c:651
 msgid "2<sup><i>x</i></sup>"
 msgstr "2<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 2 button
-#: ../gcalctool/gtk.c:658
-#| msgid "Base 2 log [H]"
+#: ../gcalctool/gtk.c:654
 msgid "Base 2 log [h]"
 msgstr "Λογάριθμος με βάση το 2 [h]"
 
 #. Translators: Tooltip for the 2 to the power of x button
-#: ../gcalctool/gtk.c:660
-#| msgid "e to the power of displayed value [{]"
+#: ../gcalctool/gtk.c:656
 msgid "2 to the power of the displayed value [H]"
-msgstr "Το 2 υψωμένο στην ακόλουθη δύναμη [H]"
+msgstr "Το 2 υψωμένο στη δύναμη που ακολουθεί [H]"
 
 #. Translators: The x to the power of y button
-#: ../gcalctool/gtk.c:665
-#| msgid "10<sup><i>x</i></sup>"
+#: ../gcalctool/gtk.c:661
 msgid "x<sup><i>y</i></sup>"
 msgstr "x<sup><i>y</i></sup>"
 
 #. Translators: The x to the power of reciprocal y button
-#: ../gcalctool/gtk.c:667
-#| msgid "10<sup><i>x</i></sup>"
+#: ../gcalctool/gtk.c:663
 msgid "x<sup>1/<i>y</i></sup>"
 msgstr "x<sup>1/<i>y</i></sup>"
 
 #. Translators: Tooltip for the x to the power of y button
-#: ../gcalctool/gtk.c:670
-#| msgid "Raise displayed value to the power of y [^]"
+#: ../gcalctool/gtk.c:666
 msgid "Raise displayed value to the power of y [o]"
 msgstr "Ύψωση της εμφανιζόμενης τιμής στη δύναμη του y [o]"
 
 #. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../gcalctool/gtk.c:672
-#| msgid "Raise displayed value to the power of y [^]"
+#: ../gcalctool/gtk.c:668
 msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "Ύψωση της εμφανιζόμενης τιμής στην αντίστροφη δύναμη του y [o]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../gcalctool/gtk.c:1202
+#: ../gcalctool/gtk.c:1198
 msgid "translator-credits"
 msgstr ""
-"Κώστας Παπαδήμας <pkst@gnome.org> "
+"Κώστας Παπαδήμας <pkst@gnome.org>\n"
 "Τζένη Πετούμενου <epetoumenou@gmail.com>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../gcalctool/gtk.c:1206
+#: ../gcalctool/gtk.c:1202
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -403,108 +1924,104 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 msgstr ""
-"Το Gcalctool είναι ελεύθερο λογισμικό. Μπορείτε να το αναδιανέμετε ή/"
-"και να το τροποποιείτε μέσω των όρων της GNU General Public License όπως "
-"αυτή δημοσιεύτηκε από το Free Software Foundation, έκδοση 2 , ή "
-"(προαιρετικά) οποιαδήποτε νεότερη έκδοση.\n"
+"Το Gcalctool είναι ελεύθερο λογισμικό. Επιτρέπεται η αναδιανομή ή/και \n"
+"τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας Χρήσης \n"
+"GNU (GPL), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου \n"
+"Λογισμικού (FSS) — είτε της έκδοσης 2 της Άδειας, είτε (κατ' επιλογήν \n"
+"σας) οποιασδήποτε μεταγενέστερης έκδοσης. \n"
 "\n"
-"Το Gcalctool διανέμεται με την ελπίδα οτι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ - χωρίς ακόμη και την έμμεση εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ. Για περισσότερες λεπτομέρειες δείτε τη GNU General Public License.\n"
+"Το Gcalctool διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο, \n"
+"παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ — χωρίς ούτε και την σιωπηρή \n"
+"εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΙΔΙΚΟ ΣΚΟΠΟ. \n"
+"Για περισσότερες λεπτομέρειες ανατρέξτε στη Γενική Άδεια Δημόσιας \n"
+"Χρήσης GNU.\n"
 "\n"
-"Θα πρέπει να έχετε λάβει ένα αντίγραφο της GNU General Public License μαζί "
-"με το Gcalctool. Αν όχι, γράψτε στο Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \n"
+"Χρήσης GNU μαζί με το Gcalctool. Αν όχι, γράψτε στο Free Software \n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, \n"
+"USA\n"
 
 #. Translators: Program name in the about dialog
-#: ../gcalctool/gtk.c:1223
+#: ../gcalctool/gtk.c:1220
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../gcalctool/gtk.c:1226
+#: ../gcalctool/gtk.c:1223
 msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 Οι συντελεστές του Gcalctool"
+msgstr "© 1986-2008 Συγγραφείς του Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../gcalctool/gtk.c:1229
+#: ../gcalctool/gtk.c:1226
 msgid "Calculator with financial and scientific modes."
 msgstr "Αριθμομηχανή με εμπορικές και επιστημονικές λειτουργίες."
 
-#: ../gcalctool/gtk.c:1380
+#: ../gcalctool/gtk.c:1379
 msgid "Unable to open help file"
 msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
 
-#. Hexadecimal digit C button
-#: ../gcalctool/gtk.c:1545 ../glade/gcalctool.glade.h:129
-msgid "C"
-msgstr "C"
-
-#. Hexadecimal digit F button
-#: ../gcalctool/gtk.c:1568 ../glade/gcalctool.glade.h:200
-msgid "F"
-msgstr "F"
-
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../gcalctool/gtk.c:1800
+#: ../gcalctool/gtk.c:1806
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../gcalctool/gtk.c:2226
+#: ../gcalctool/gtk.c:2229
 msgid "Paste"
 msgstr "Επικόλληση"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../gcalctool/gtk.c:2446
+#: ../gcalctool/gtk.c:2454
 msgid "Error loading user interface"
-msgstr "Σφάλμα φόρτωσης γραφικού περιβάλλοντος"
+msgstr "Σφάλμα φόρτωσης διεπαφής χρήστη"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
-#: ../gcalctool/gtk.c:2449
+#: ../gcalctool/gtk.c:2459
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
 "your installation."
 msgstr ""
-"Το αρχείο γραφικού περιβάλλοντος χρήστη %s λείπει ή είναι αδύνατο να "
-"φορτωθεί. Παρακαλώ ελέγξτε την εγκατάσταση σας."
+"Το αρχείο διεπαφής χρήστη %s λείπει ή είναι αδύνατο να φορτωθεί. Παρακαλώ "
+"ελέγξτε την εγκατάσταση σας."
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../gcalctool/gtk.c:2676 ../gcalctool/gtk.c:2697
+#: ../gcalctool/gtk.c:2628 ../gcalctool/gtk.c:2649
 msgid "No."
-msgstr "No."
+msgstr "Αρ."
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../gcalctool/gtk.c:2679 ../gcalctool/gtk.c:2700
+#: ../gcalctool/gtk.c:2631 ../gcalctool/gtk.c:2652
 msgid "Value"
 msgstr "Τιμή"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../gcalctool/gtk.c:2682 ../gcalctool/gtk.c:2703
+#: ../gcalctool/gtk.c:2634 ../gcalctool/gtk.c:2655
 msgid "Description"
 msgstr "Περιγραφή"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../gcalctool/gtk.c:2855
+#: ../gcalctool/gtk.c:2794
 #, c-format
 msgid "Reset to _Default (%d)"
-msgstr "Επαναφορά σε _προεπιλογή (%d)"
+msgstr "Επαναφορά στην _προεπιλεγμένη (%d)"
 
-#: ../gcalctool/mp.c:1953
+#: ../gcalctool/mp.c:1931
 msgid "Negative X and non-integer Y not supported"
-msgstr "Δεν υποστηρίζεται το αρνητικό X και μη-ακέραιο Y"
+msgstr "Δεν υποστηρίζονται αρνητικά X και μη ακέραια Y"
 
-#: ../gcalctool/mp-trigonometric.c:611
+#: ../gcalctool/mp-trigonometric.c:601
 msgid "Error, cannot calculate cosine"
 msgstr "Σφάλμα, αδυναμία υπολογισμού συνημίτονου"
 
 #. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
 #: ../gcalctool/register.c:40
 msgid "Kilometer-to-mile conversion factor"
-msgstr "Συντελεστής μετατροπής χιλιομέτρων-σε-μίλια"
+msgstr "Συντελεστής μετατροπής χιλιομέτρων σε μίλια"
 
 #. Translators: This is the label for the default constant, the square root of 2 (1.41421)
 #: ../gcalctool/register.c:42
@@ -524,12 +2041,12 @@ msgstr "π"
 #. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
 #: ../gcalctool/register.c:48
 msgid "Centimeter-to-inch conversion factor"
-msgstr "Συντελεστής μετατροπής εκατοστών-σε-ίντσες"
+msgstr "Συντελεστής μετατροπής εκατοστών σε ίντσες"
 
 #. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
 #: ../gcalctool/register.c:50
 msgid "degrees in a radian"
-msgstr "μοίρες σε ένα ακτίνιο"
+msgstr "μοίρες ανά ακτίνιο"
 
 #. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
 #: ../gcalctool/register.c:52
@@ -539,1631 +2056,38 @@ msgstr "2 ^ 20"
 #. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
 #: ../gcalctool/register.c:54
 msgid "Gram-to-ounce conversion factor"
-msgstr "Συντελεστής μετατροπής γραμμαρίων-σε-ουγγιές"
+msgstr "Συντελεστής μετατροπής γραμμαρίων σε ουγγιές"
 
 #. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
 #: ../gcalctool/register.c:56
 msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Συντελεστής μετατροπής Kilojoule σε Βρετανικές θερμικές μονάδες"
+msgstr "Συντελεστής μετατροπής Kilojoule σε βρετανικές θερμικές μονάδες"
 
 #. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
 #: ../gcalctool/register.c:58
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Συντελεστής μετατροπής από κυβικά εκατοστά-σε-κυβικές ίντσες"
+msgstr "Συντελεστής μετατροπής κυβικών εκατοστών σε κυβικές ίντσες"
 
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Εκτελεί αριθμητικούς, επιστημονικούς ή εμπορικούς υπολογισμούς"
+#~ msgid "_Contents"
+#~ msgstr "_Περιεχόμενα"
 
-#. Payment Period Dialog: Button to calculate result
-#: ../glade/financial.glade.h:2
-#| msgid "Calculator"
-msgid "C_alculate"
-msgstr "_Υπολογισμός"
+#~ msgid "_Redo"
+#~ msgstr "Α_κύρωση αναίρεσης"
 
-#. Gross Profit Margin Dialog: Label before cost input
-#: ../glade/financial.glade.h:4
-#| msgid "Cos"
-msgid "C_ost:"
-msgstr "_Κόστος:"
+#~ msgid "_Undo"
+#~ msgstr "Α_ναίρεση"
 
-#. Periodic Payment Dialog: Description of calculation
-#: ../glade/financial.glade.h:6
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period. "
-msgstr "Υπολογίζει το ποσό της περιοδικής πληρωμής (δόσης) του δανείου, όπου η πληρωμή των δόσεων γίνεται στο τέλος κάθε περιόδου."
+#~ msgid "±"
+#~ msgstr "±"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:8
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
-msgstr ""
-"Υπολογίζει την απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη χρονική περίοδο με βάση τη μέθοδο της φθίνουσας απόσβεσης με συντελεστή τα έτη ζωής. Αυτή η μέθοδος απόσβεσης προβλέπει αυξανόμενο ρυθμό απόσβεσης, έτσι ώστε η απόσβεση να είναι μεγαλύτερη στην αρχή της χρονικής περιόδου. Η ωφέλιμη ζωή είναι ο αριθμός των "
-"περιόδων, συνήθως ετών, κατά τη διάρκεια των οποίων συντελείται η απόσβεση."
+#~ msgid "×"
+#~ msgstr "×"
 
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:10
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr "Υπολογίζει την απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη χρονική περίοδο με βάση τη μέθοδο της φθίνουσας απόσβεσης με διπλάσιο ρυθμό."
+#~ msgid "÷"
+#~ msgstr "÷"
 
-#. Future Value Dialog: Description of calculation
-#: ../glade/financial.glade.h:12
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr "Υπολογίζει τη μελλοντική τιμή μιας επένδυσης με βάση μια σειρά ισόποσων πληρωμών με βάση περιοδικό επιτόκιο για συγκεκριμένο αριθμό δόσεων."
+#~ msgid "−"
+#~ msgstr "−"
 
-#. Compounding Term Dialog: Description of calculation
-#: ../glade/financial.glade.h:14
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr "Υπολογίζει τον αριθμό των περιόδων ανατοκισμού που απαιτούνται για να ανέλθει η τιμή μιας επένδυσης από την τρέχουσα σε μελλοντική αξία, αν το επιτόκιο είναι σταθερό ανά περίοδο ανατοκισμού."
-
-#. Payment Period Dialog: Description of calculation
-#: ../glade/financial.glade.h:16
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr "Υπολογίζει τον αριθμό των δόσεων που απαιτούνται κατά τη διάρκεια μιας απλής ετήσιας προσόδου για την επίτευξη μιας μελλοντικής τιμής, με βάση συγκεκριμένο περιοδικό επιτόκιο."
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: ../glade/financial.glade.h:18
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods. "
-msgstr "Υπολογίζει το περιοδικό επιτόκιο που απαιτείται προκειμένου να ανέλθει η επένδυση σε συγκεκριμένη μελλοντική τιμή μετά από έναν αριθμό περιόδων ανατοκισμού."
-
-#. Present Value Dialog: Description of calculation
-#: ../glade/financial.glade.h:20
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term. "
-msgstr "Υπολογίζει την τρέχουσα τιμή μιας επένδυσης με βάση μία σειρά ισόποσων πληρωμών μειωμένων σύμφωνα με ένα περιοδικό επιτόκιο και για το συνολικό αριθμό περιόδων πληρωμής (δόσεων)."
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: ../glade/financial.glade.h:22
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr "Υπολογίζει την αξία μεταπώλησης ενός προϊόντος, με βάση το κόστος του προϊόντος και το επιθυμητό μικτό περιθώριο κέρδους."
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:24
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated. "
-msgstr "Υπολογίζει τη σταθερή απόσβεση ενός στοιχείου ενεργητικού για συγκεκριμένη περίοδο. Στη σταθερή μέθοδο απόσβεσης, η αποσβεστέα αξία διαιρείται δια της ωφέλιμης ζωής του στοιχείου ενεργητικού. Η ωφέλιμη ζωή είναι ο αριθμός των περιόδων, συνήθως ετών, κατά τη διάρκεια των οποίων συντελείται η απόσβεση."
-
-#. Title of Compounding Term dialog
-#: ../glade/financial.glade.h:26
-#| msgid "Compounding term"
-msgid "Compounding Term"
-msgstr "Διάρκεια ανατοκισμού"
-
-#. Title of Double-Declining Depreciation dialog
-#: ../glade/financial.glade.h:28
-#| msgid "Double-declining depreciation"
-msgid "Double-Declining Depreciation"
-msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
-
-#. Title of Future Value dialog
-#: ../glade/financial.glade.h:30
-#| msgid "Future value"
-msgid "Future Value"
-msgstr "Μελλοντική αξία"
-
-#. Payment Period Dialog: Label before future value input
-#: ../glade/financial.glade.h:32
-#| msgid "Future value"
-msgid "Future _Value:"
-msgstr "Μελλοντική α_ξία:"
-
-#. Title of Gross Profit Margin dialog
-#: ../glade/financial.glade.h:34 ../glade/gcalctool.glade.h:223
-msgid "Gross Profit Margin"
-msgstr "Μικτό περιθώριο κέρδους"
-
-#. Title of Payment Period dialog
-#: ../glade/financial.glade.h:36
-#| msgid "Payment period"
-msgid "Payment Period"
-msgstr "Περίοδος πληρωμής"
-
-#. Title of Periodic Interest Rate dialog
-#: ../glade/financial.glade.h:38
-#| msgid "Periodic interest rate"
-msgid "Periodic Interest Rate"
-msgstr "Περιοδικό επιτόκιο"
-
-#. Payment Period Dialog: Label before periodic interest rate input
-#: ../glade/financial.glade.h:40
-#| msgid "Periodic interest rate"
-msgid "Periodic Interest _Rate:"
-msgstr "Περιοδικό επι_τόκιο:"
-
-#. Title of Periodic Payment dialog
-#: ../glade/financial.glade.h:42
-#| msgid "Periodic payment"
-msgid "Periodic Payment"
-msgstr "Περιοδική πληρωμή"
-
-#. Title of Present Value dialog
-#: ../glade/financial.glade.h:44
-#| msgid "Present value"
-msgid "Present Value"
-msgstr "Τρέχουσα αξία "
-
-#. Periodic Interest Rate Dialog: Label before present value input
-#: ../glade/financial.glade.h:46
-#| msgid "Present value"
-msgid "Present _Value:"
-msgstr "Τρέχουσα _αξία:"
-
-#. Title of Straight-Line Depreciation dialog
-#: ../glade/financial.glade.h:48
-#| msgid "Straight-line depreciation"
-msgid "Straight-Line Depreciation"
-msgstr "Σταθερή απόσβεση"
-
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
-#: ../glade/financial.glade.h:50
-#| msgid "Sum-of-the years'-digits depreciation"
-msgid "Sum-Of-The-Years'-Digits Depreciation"
-msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../glade/financial.glade.h:52
-#| msgid "Cos"
-msgid "_Cost:"
-msgstr "_Κόστος:"
-
-#. Periodic Interest Rate Dialog: Label before future value input
-#: ../glade/financial.glade.h:54
-#| msgid "Future value"
-msgid "_Future Value:"
-msgstr "Μελλοντική α_ξία:"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
-#: ../glade/financial.glade.h:56
-msgid "_Life:"
-msgstr "_Ζωή:"
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: ../glade/financial.glade.h:58
-msgid "_Margin:"
-msgstr "Περι_θώριο:"
-
-#. Present Value Dialog: Label before number of periods input
-#: ../glade/financial.glade.h:60
-msgid "_Number Of Periods:"
-msgstr "Αριθ_μός περιόδων:"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
-#: ../glade/financial.glade.h:62
-msgid "_Period:"
-msgstr "Πε_ρίοδος:"
-
-#. Payment Period Dialog: Label before periodic payment input
-#: ../glade/financial.glade.h:64
-#| msgid "Periodic payment"
-msgid "_Periodic Payment:"
-msgstr "_Περιοδική πληρωμή:"
-
-#. Periodic Payment Dialog: Label before principal input
-#: ../glade/financial.glade.h:66
-#| msgid "_Financial"
-msgid "_Principal:"
-msgstr "Κύρ_ια:"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../glade/financial.glade.h:68
-msgid "_Salvage:"
-msgstr "_Υπολειμματική αξία:"
-
-#. Periodic Interest Rate Dialog: Label before term input
-#: ../glade/financial.glade.h:70
-#| msgid "Term"
-msgid "_Term:"
-msgstr "_Διάρκεια:"
-
-#. The percentage button
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Start calculation group button
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#. Addition button
-#: ../glade/gcalctool.glade.h:13
-msgid "+"
-msgstr "+"
-
-#. Numeric 0 button
-#: ../glade/gcalctool.glade.h:15
-msgid "0"
-msgstr "0"
-
-#. Numeric 1 button
-#: ../glade/gcalctool.glade.h:17
-msgid "1"
-msgstr "1"
-
-#. Reciprocal button
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../glade/gcalctool.glade.h:22
-msgid "10 places"
-msgstr "10 ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../glade/gcalctool.glade.h:24
-msgid "11 places"
-msgstr "11 ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../glade/gcalctool.glade.h:26
-msgid "12 places"
-msgstr "12 ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../glade/gcalctool.glade.h:28
-msgid "13 places"
-msgstr "13 ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 ψηφία"
-
-#. Label for bit 15 on the bit editor
-#: ../glade/gcalctool.glade.h:32
-msgid "15"
-msgstr "15"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../glade/gcalctool.glade.h:34
-msgid "15 places"
-msgstr "15 ψηφία"
-
-#. Tooltip for the 16 bit mask button
-#: ../glade/gcalctool.glade.h:36
-msgid "16-bit unsigned integer value of display (])"
-msgstr "16-bit τιμή ακεραίου χωρίς πρόσημο της εμφάνισης (])"
-
-#. Numeric 2 button
-#: ../glade/gcalctool.glade.h:38
-msgid "2"
-msgstr "2"
-
-#. Numeric 3 button
-#: ../glade/gcalctool.glade.h:40
-msgid "3"
-msgstr "3"
-
-#. Label for bit 31 on the bit editor
-#: ../glade/gcalctool.glade.h:42
-msgid "31"
-msgstr "31"
-
-#. Label for bit 32 on the bit editor
-#: ../glade/gcalctool.glade.h:44
-msgid "32"
-msgstr "32"
-
-#. Tooltip for the 32 bit mask button
-#: ../glade/gcalctool.glade.h:46
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "32-bit τιμή ακεραίου χωρίς πρόσημο της εμφάνισης ([)"
-
-#. Numeric 4 button
-#: ../glade/gcalctool.glade.h:48
-msgid "4"
-msgstr "4"
-
-#. Label for bit 47 on the bit editor
-#: ../glade/gcalctool.glade.h:50
-msgid "47"
-msgstr "47"
-
-#. Numeric 5 button
-#: ../glade/gcalctool.glade.h:52
-msgid "5"
-msgstr "5"
-
-#. Numeric 6 button
-#: ../glade/gcalctool.glade.h:54
-msgid "6"
-msgstr "6"
-
-#. Label for the most significant bit (bit 63) on the bit editor
-#: ../glade/gcalctool.glade.h:56
-msgid "63"
-msgstr "63"
-
-#. Numeric 7 button
-#: ../glade/gcalctool.glade.h:58
-msgid "7"
-msgstr "7"
-
-#. Numeric 8 button
-#: ../glade/gcalctool.glade.h:60
-msgid "8"
-msgstr "8"
-
-#. Numeric 9 button
-#: ../glade/gcalctool.glade.h:62
-msgid "9"
-msgstr "9"
-
-#. Shift left button
-#: ../glade/gcalctool.glade.h:64
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:66
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x to the power of 2 button
-#: ../glade/gcalctool.glade.h:68
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. Edit Function Dialog: Note about what base numbers will be entered as
-#: ../glade/gcalctool.glade.h:70
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Σημείωση:</b> Όλες οι σταθερές τιμές καθορίζονται σε δεκαδική "
-"αριθμητική βάση.</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:86
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:88
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:90
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. Solve button (clicking this solves the displayed calculation)
-#: ../glade/gcalctool.glade.h:92
-msgid "="
-msgstr "="
-
-#. Shift right button
-#: ../glade/gcalctool.glade.h:94
-msgid ">"
-msgstr ">"
-
-#. Hexadecimal digit A button
-#: ../glade/gcalctool.glade.h:96
-msgid "A"
-msgstr "A"
-
-#. Boolean AND button
-#: ../glade/gcalctool.glade.h:98
-msgid "AND"
-msgstr "AND"
-
-#. Absolute value button. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:100
-msgid "Abs"
-msgstr "Abs"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "Absolute value"
-msgstr "Απόλυτη τιμή"
-
-#. Tooltip for the absolute value button
-#: ../glade/gcalctool.glade.h:103
-msgid "Absolute value [u]"
-msgstr "Απόλυτη τιμή [u]"
-
-#. Accuracy button
-#: ../glade/gcalctool.glade.h:105
-msgid "Acc"
-msgstr "Acc"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Add"
-msgstr "Πρόσθεση"
-
-#. Tooltip for the addition button
-#: ../glade/gcalctool.glade.h:108
-msgid "Add [+]"
-msgstr "Πρόσθεση [+]"
-
-#. Tooltip for the View|Advanced menu item
-#: ../glade/gcalctool.glade.h:110
-msgid "Advanced"
-msgstr "Προχωρημένη"
-
-#. Hexadecimal digit B button
-#: ../glade/gcalctool.glade.h:112
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Backspace"
-msgstr "Backspace"
-
-#. Tooltip for the View|Basic menu item
-#: ../glade/gcalctool.glade.h:115
-msgid "Basic"
-msgstr "Βασική"
-
-#. Tooltip for the boolean AND button
-#: ../glade/gcalctool.glade.h:117
-msgid "Bitwise AND [&]"
-msgstr "Bitwise AND [&]"
-
-#. Tooltip for the boolean NOT button
-#: ../glade/gcalctool.glade.h:119
-msgid "Bitwise NOT [~]"
-msgstr "Bitwise NOT [~]"
-
-#. Tooltip for the boolean OR button
-#: ../glade/gcalctool.glade.h:121
-msgid "Bitwise OR [|]"
-msgstr "Bitwise OR [|]"
-
-#. Tooltip for the boolean exclusive NOR button
-#: ../glade/gcalctool.glade.h:123
-#| msgid "Bitwise XNOR [n]"
-msgid "Bitwise XNOR [{]"
-msgstr "Bitwise XNOR [{]"
-
-#. Tooltip for the boolean exlcusive OR button
-#: ../glade/gcalctool.glade.h:125
-msgid "Bitwise XOR [x]"
-msgstr "Bitwise XOR [x]"
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:127
-msgid "Bksp"
-msgstr "Bksp"
-
-#. Clear displayed value button
-#: ../glade/gcalctool.glade.h:131
-msgid "CE"
-msgstr "CE"
-
-#: ../glade/gcalctool.glade.h:132
-msgid "Calculate result"
-msgstr "Υπολογισμός αποτελέσματος"
-
-#. Tooltip for the solve button
-#: ../glade/gcalctool.glade.h:134
-msgid "Calculate result [=]"
-msgstr "Υπολογισμός αποτελέσματος  [=]"
-
-#. Insert ASCII dialog: Label before character entry
-#: ../glade/gcalctool.glade.h:136
-msgid "Ch_aracter:"
-msgstr "Χα_ρακτήρας:"
-
-#. Tooltip for the change sign button
-#: ../glade/gcalctool.glade.h:138
-msgid "Change Sign [C]"
-msgstr "Αλλαγή προσήμου [C]"
-
-#: ../glade/gcalctool.glade.h:139
-msgid "Change sign"
-msgstr "Αλλαγή προσήμου"
-
-#: ../glade/gcalctool.glade.h:140
-msgid "Clear"
-msgstr "Εκκαθάριση"
-
-#. Tooltip for the clear displayed value button
-#: ../glade/gcalctool.glade.h:142
-msgid "Clear displayed value [Escape]"
-msgstr "Εκκαθάριση εμφανιζόμενης τιμής [Escape]"
-
-#. Tooltip for the clear display button
-#: ../glade/gcalctool.glade.h:144
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Εκκαθάριση εμφανιζόμενης τιμής και προσωρινών υπολογισμών [Shift Delete]"
-
-#: ../glade/gcalctool.glade.h:145
-msgid "Clear entry"
-msgstr "Εκκαθάριση καταχώρησης"
-
-#. Edit Functions Dialog: Instructions in dialog
-#: ../glade/gcalctool.glade.h:147
-msgid "Click a _value or description to edit it:"
-msgstr "Κλικ σε τι_μή ή περιγραφή για επεξεργασία:"
-
-#. Clear display button. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:149
-msgid "Clr"
-msgstr "Clr"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "Compounding term"
-msgstr "Διάρκεια ανατοκισμού"
-
-#. Tooltip for the [Ctrm] button
-#: ../glade/gcalctool.glade.h:152
-msgid "Compounding term [m]"
-msgstr "Διάρκεια ανατοκισμού [m]"
-
-#. Constants button
-#: ../glade/gcalctool.glade.h:154
-msgid "Con"
-msgstr "Con"
-
-#. Tooltip for the [Con] button
-#: ../glade/gcalctool.glade.h:156
-msgid "Constants [#]"
-msgstr "Σταθερές [#]"
-
-#. Tooltip for the Edit|Copy menu item
-#: ../glade/gcalctool.glade.h:158
-msgid "Copy selection"
-msgstr "Αντιγραφή επιλογής"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:162
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Hexadecimal digit D button
-#: ../glade/gcalctool.glade.h:164
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:167
-msgid "Ddb"
-msgstr "Ddb"
-
-#. Degrees radio button
-#: ../glade/gcalctool.glade.h:169
-msgid "De_grees"
-msgstr "Μοί_ρες"
-
-#: ../glade/gcalctool.glade.h:170
-msgid "Divide"
-msgstr "Διαίρεση"
-
-#. Tooltip for the division button
-#: ../glade/gcalctool.glade.h:172
-msgid "Divide [/]"
-msgstr "Διαίρεση [/]"
-
-#: ../glade/gcalctool.glade.h:173
-msgid "Double-declining depreciation"
-msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
-
-#. Tooltip for the [Ddb] button
-#: ../glade/gcalctool.glade.h:175
-msgid "Double-declining depreciation [D]"
-msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού [D]"
-
-#. Hexadecimal digit E button
-#: ../glade/gcalctool.glade.h:177
-msgid "E"
-msgstr "E"
-
-#. Engineering display radio button
-#: ../glade/gcalctool.glade.h:179
-msgid "E_ng"
-msgstr "E_ng"
-
-#. Title of edit constants dialog
-#: ../glade/gcalctool.glade.h:181
-msgid "Edit Constants"
-msgstr "Επεξεργασία Σταθερών"
-
-#. Menu item in the constants menu to show the Edit Constants dialog
-#: ../glade/gcalctool.glade.h:183
-msgid "Edit Constants..."
-msgstr "Επεξεργασία σταθερών..."
-
-#. Title of edit functions dialog
-#: ../glade/gcalctool.glade.h:185
-msgid "Edit Functions"
-msgstr "Επεξεργασία Εξισώσεων"
-
-#. Menu item in the constants menu to show the Edit Functions dialog
-#: ../glade/gcalctool.glade.h:187
-msgid "Edit Functions..."
-msgstr "Επεξεργασία εξισώσεων..."
-
-#. Tooltip for the end calculation group button
-#: ../glade/gcalctool.glade.h:189
-msgid "End group of calculations [)]"
-msgstr "Τερματισμός ομάδας υπολογισμών [)]"
-
-#. Tooltip for the exponential button
-#: ../glade/gcalctool.glade.h:191
-msgid "Enter an exponential number [E]"
-msgstr "Εισαγωγή ενός εκθετικού αριθμού [E]"
-
-#. Memory exchange button. Exch is short for Exchange
-#: ../glade/gcalctool.glade.h:193
-msgid "Exch"
-msgstr "Exch"
-
-#. Tooltip for the memory exchange button
-#: ../glade/gcalctool.glade.h:195
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Ανταλλαγή εμφανιζόμενης τιμής με μνήμη  [X]"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Exchange with register"
-msgstr "Ανταλλαγή με μνήμη"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:198
-msgid "Exp"
-msgstr "Exp"
-
-#. Tooltip for the factorial button
-#: ../glade/gcalctool.glade.h:202
-msgid "Factorial of displayed value [!]"
-msgstr "Παραγοντικό της εμφανιζόμενης τιμής  [!]"
-
-#. Tooltip for the View|Financial menu item
-#: ../glade/gcalctool.glade.h:204
-msgid "Financial"
-msgstr "Εμπορική"
-
-#. Fractional portion button
-#: ../glade/gcalctool.glade.h:206
-msgid "Frac"
-msgstr "Frac"
-
-#: ../glade/gcalctool.glade.h:207
-msgid "Fractional portion"
-msgstr "Κλασματικό μερίδιο"
-
-#. Tooltip for the fractional portion button
-#: ../glade/gcalctool.glade.h:209
-msgid "Fractional portion of displayed value [:]"
-msgstr "Κλασματικό μερίδιο εμφανιζόμενης τιμής  [:]"
-
-#. Functions button
-#: ../glade/gcalctool.glade.h:211
-msgid "Fun"
-msgstr "Fun"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Future value"
-msgstr "Μελλοντική αξία"
-
-#. Tooltip for the [Fv] button
-#: ../glade/gcalctool.glade.h:214
-msgid "Future value [v]"
-msgstr "Μελλοντική αξία [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:217
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
-#. http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../glade/gcalctool.glade.h:220
-msgid "Gpm"
-msgstr "Gpm"
-
-#. Gradians radio button
-#: ../glade/gcalctool.glade.h:222
-msgid "Gr_adians"
-msgstr "Gr_adians"
-
-#. Tooltip for the [Gpm] button
-#: ../glade/gcalctool.glade.h:225
-msgid "Gross Profit Margin [I]"
-msgstr "Μικτό περιθώριο κέρδους [I]"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Gross Profit Margin [g]"
-msgstr "Μικτό περιθώριο κέρδους [g]"
-
-#. Hyperbolic check box
-#: ../glade/gcalctool.glade.h:228
-msgid "H_yp"
-msgstr "H_yp"
-
-#. Base 16 radio button
-#: ../glade/gcalctool.glade.h:230
-msgid "He_x"
-msgstr "He_x"
-
-#. Tooltip for the hexadecimal digit A button
-#: ../glade/gcalctool.glade.h:232
-msgid "Hexadecimal digit A [a]"
-msgstr "Δεκαεξαδικό ψηφίο [a]"
-
-#. Tooltip for the hexadecimal digit B button
-#: ../glade/gcalctool.glade.h:234
-msgid "Hexadecimal digit B [b]"
-msgstr "Δεκαεξαδικό ψηφίο B [b]"
-
-#. Tooltip for the hexadecimal digit C button
-#: ../glade/gcalctool.glade.h:236
-msgid "Hexadecimal digit C [c]"
-msgstr "Δεκαεξαδικό ψηφίο C [c]"
-
-#. Tooltip for the hexadecimal digit D button
-#: ../glade/gcalctool.glade.h:238
-msgid "Hexadecimal digit D [d]"
-msgstr "Δεκαεξαδικό ψηφίο D [d]"
-
-#. Tooltip for the hexadecimal digit E button
-#: ../glade/gcalctool.glade.h:240
-msgid "Hexadecimal digit E [e]"
-msgstr "Δεκαεξαδικό ψηφίο Ε [e]"
-
-#. Tooltip for the hexadecimal digit F button
-#: ../glade/gcalctool.glade.h:242
-msgid "Hexadecimal digit F [f]"
-msgstr "Δεκαεξαδικό ψηφίο F [f]"
-
-#. Title of insert ASCII dialog
-#: ../glade/gcalctool.glade.h:244
-msgid "Insert ASCII Value"
-msgstr "Εισαγωγή τιμής ASCII"
-
-#. Tooltip for the Edit|Insert ASCII value menu item
-#: ../glade/gcalctool.glade.h:246
-msgid "Insert ASCII value"
-msgstr "Εισαγωγή τιμής ASCII"
-
-#. Integer portion button
-#: ../glade/gcalctool.glade.h:248
-msgid "Int"
-msgstr "Int"
-
-#: ../glade/gcalctool.glade.h:249
-msgid "Integer portion"
-msgstr "Ακέραιος"
-
-#. Tooltip for the integer portion button
-#: ../glade/gcalctool.glade.h:251
-msgid "Integer portion of displayed value [i]"
-msgstr "Κομμάτι ακεραίου της εμφανιζόμενης τιμής [i]"
-
-#: ../glade/gcalctool.glade.h:252
-msgid "Left bracket"
-msgstr "Αριστερή αγκύλη"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Memory Registers"
-msgstr "Μνήμη"
-
-#. Modulus division button
-#: ../glade/gcalctool.glade.h:255
-msgid "Mod"
-msgstr "Mod"
-
-#. Tooltip for the modulus division button
-#: ../glade/gcalctool.glade.h:257
-msgid "Modulus Division [M]"
-msgstr "Υπόλοιπο διαίρεσης ακεραίων [M]"
-
-#: ../glade/gcalctool.glade.h:258
-msgid "Multiply"
-msgstr "Πολλαπλασιασμός"
-
-#. Tooltip for the multiplication button
-#: ../glade/gcalctool.glade.h:260
-msgid "Multiply [*]"
-msgstr "Πολλαπλασιασμός [*]"
-
-#. Boolean NOT button
-#: ../glade/gcalctool.glade.h:262
-msgid "NOT"
-msgstr "NOT"
-
-#: ../glade/gcalctool.glade.h:263
-msgid "Numeric 0"
-msgstr "Αριθμητικό 0"
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Numeric 1"
-msgstr "Αριθμητικό 1"
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Numeric 2"
-msgstr "Αριθμητικό 2"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Numeric 3"
-msgstr "Αριθμητικό 3"
-
-#: ../glade/gcalctool.glade.h:267
-msgid "Numeric 4"
-msgstr "Αριθμητικό 4"
-
-#: ../glade/gcalctool.glade.h:268
-msgid "Numeric 5"
-msgstr "Αριθμητικό 5"
-
-#: ../glade/gcalctool.glade.h:269
-msgid "Numeric 6"
-msgstr "Αριθμητικό 6"
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Numeric 7"
-msgstr "Αριθμητικό 7"
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Numeric 8"
-msgstr "Αριθμητικό 8"
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Numeric 9"
-msgstr "Αριθμητικό 9"
-
-#. Tooltip for the numeric point button
-#: ../glade/gcalctool.glade.h:274
-msgid "Numeric point"
-msgstr "Υποδιαστολή"
-
-#. Boolean OR button
-#: ../glade/gcalctool.glade.h:276
-msgid "OR"
-msgstr "OR"
-
-#. Tooltip for the Edit|Paste menu item
-#: ../glade/gcalctool.glade.h:278
-msgid "Paste selection"
-msgstr "Επικόλληση επιλογής"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Payment period"
-msgstr "Περίοδος πληρωμής"
-
-#. Tooltip for the [Term] button
-#: ../glade/gcalctool.glade.h:281
-msgid "Payment period [t]"
-msgstr "Περίοδος πληρωμής [t]"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Percentage"
-msgstr "Ποσοστό"
-
-#. Tooltip for the percentage button
-#: ../glade/gcalctool.glade.h:285
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Ποσοστό [%]"
-
-#: ../glade/gcalctool.glade.h:286
-msgid "Periodic interest rate"
-msgstr "Περιοδικό επιτόκιο"
-
-#. Tooltip for the [Rate] button
-#: ../glade/gcalctool.glade.h:288
-msgid "Periodic interest rate [T]"
-msgstr "Περιοδικό επιτόκιο [T]"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Periodic payment"
-msgstr "Περιοδική πληρωμή "
-
-#. Tooltip for the [Pmt] button
-#: ../glade/gcalctool.glade.h:291
-msgid "Periodic payment [P]"
-msgstr "Περιοδική πληρωμή [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:294
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../glade/gcalctool.glade.h:295
-msgid "Present value"
-msgstr "Τρέχουσα αξία "
-
-#. Tooltip for the [Pv] button
-#: ../glade/gcalctool.glade.h:297
-msgid "Present value [p]"
-msgstr "Τρέχουσα αξία [p]"
-
-#. Tooltip for the View|Programming menu item
-#: ../glade/gcalctool.glade.h:299
-msgid "Programming"
-msgstr "Προγραμματισμός"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:302
-msgid "Pv"
-msgstr "Pv"
-
-#. Tooltip for the Calculator|Quit menu item
-#: ../glade/gcalctool.glade.h:304
-msgid "Quit the calculator"
-msgstr "Έξοδος από την αριθμομηχανή"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:306
-msgid "Rand"
-msgstr "Rand"
-
-#. Tooltip for the random number button
-#: ../glade/gcalctool.glade.h:308
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Τυχαίος αριθμός στο εύρος 0.0 στο 1.0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:315
-msgid "Rate"
-msgstr "Τόκος"
-
-#. Memory recall button. Rcl is short for Recall
-#: ../glade/gcalctool.glade.h:317
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../glade/gcalctool.glade.h:318
-msgid "Reciprocal"
-msgstr "Αντιστροφή"
-
-#. Tooltip for the reciprocal button
-#: ../glade/gcalctool.glade.h:320
-msgid "Reciprocal [r]"
-msgstr "Αντιστροφή [r]"
-
-#. Tooltip for the Edit|Redo menu item
-#: ../glade/gcalctool.glade.h:322
-msgid "Redo"
-msgstr "Ακύρωση αναίρεσης"
-
-#. Tooltip for the backspace button
-#: ../glade/gcalctool.glade.h:324
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "Αφαίρεση του πιο δεξιού χαρακτήρα από την εμφανιζόμενη τιμή [%]"
-
-#: ../glade/gcalctool.glade.h:325
-msgid "Result Region"
-msgstr "Περιοχή αποτελέσματος"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Retrieve from register"
-msgstr "Ανάκτηση από μνήμη"
-
-#. Tooltip for the memory recall button
-#: ../glade/gcalctool.glade.h:328
-msgid "Retrieve memory register to display [R]"
-msgstr "Ανάκτηση από μνήμη για εμφάνιση  [R]"
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Right bracket"
-msgstr "Δεξιά αγκύλη"
-
-#. Tooltip for the View|Scientific menu item
-#: ../glade/gcalctool.glade.h:331
-msgid "Scientific"
-msgstr "Επιστημονική"
-
-#. Title of set precision dialog
-#: ../glade/gcalctool.glade.h:333
-msgid "Set Precision"
-msgstr "Ορισμός ακρίβειας"
-
-#. Tooltip for the engineering display radio button
-#: ../glade/gcalctool.glade.h:335
-msgid "Set display type to engineering format"
-msgstr "Ορισμός μορφής εμφάνισης σε μηχανολογική μορφή"
-
-#. Tooltip for the fixed-point display radio button
-#: ../glade/gcalctool.glade.h:337
-msgid "Set display type to fixed-point format"
-msgstr "Ορισμός εμφάνισης σε μορφή σταθερού σημείου"
-
-#. Tooltip for the scientific display radio button
-#: ../glade/gcalctool.glade.h:339
-msgid "Set display type to scientific format"
-msgstr "Ορισμός μορφής εμφάνισης σε επιστημονική μορφή"
-
-#. Tooltip for the hyperbolic check box
-#: ../glade/gcalctool.glade.h:341
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Ορισμός υπερβολικής επιλογής για τριγωνομετρικές εξισώσεις"
-
-#. Tooltip for the inverse check box
-#: ../glade/gcalctool.glade.h:343
-msgid "Set inverse option for trigonometric functions"
-msgstr "Ορισμός αντίστροφης επιλογής για τριγωνομετρικές εξισώσεις"
-
-#. Tooltip for the base 2 radio button
-#: ../glade/gcalctool.glade.h:345
-msgid "Set numeric base to binary (base 2)"
-msgstr "Ορισμός αριθμητικής βάσης σε δυαδική (βάση 2)"
-
-#. Tooltip for the base 10 radio button
-#: ../glade/gcalctool.glade.h:347
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Ορισμός αριθμητικής βάσης σε δεκαδική (βάση 10)"
-
-#. Tooltip for the base 16 radio button
-#: ../glade/gcalctool.glade.h:349
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Ορισμός αριθμητικής βάσης σε δεκαεξαδική (βάση 16)"
-
-#. Tooltip for the base 8 radio button
-#: ../glade/gcalctool.glade.h:351
-msgid "Set numeric base to octal (base 8)"
-msgstr "Ορισμός αριθμητικής βάσης σε οκταδική (βάση 8)"
-
-#. Tooltip for the degrees radio button
-#: ../glade/gcalctool.glade.h:353
-msgid "Set trigonometric type to degrees"
-msgstr "Ορισμός τριγωνομετρικού τύπου σε μοίρες"
-
-#. Tooltip for the gradians radio button
-#: ../glade/gcalctool.glade.h:355
-msgid "Set trigonometric type to gradians"
-msgstr "Ορισμός τριγωνομετρικού τύπου σε ακτίνια"
-
-#. Tooltip for the radian radio button
-#: ../glade/gcalctool.glade.h:357
-msgid "Set trigonometric type to radians"
-msgstr "Ορισμός τριγωνομετρικού τύπου σε ακτίνια"
-
-#. Tooltip for the shift left button
-#: ../glade/gcalctool.glade.h:359
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Μετατόπιση εμφανιζόμενης τιμής 1-15 σημεία στα αριστερά  [<]"
-
-#. Tooltip for the right shift button
-#: ../glade/gcalctool.glade.h:361
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Μετατόπιση εμφανιζόμενης τιμής 1-15 σημεία στα δεξιά  [>]"
-
-#. View|Show Thousands Separator menu item
-#: ../glade/gcalctool.glade.h:363
-msgid "Show T_housands Separator"
-msgstr "Προβολή Εμφάνιση διαχωριστικού _χιλιάδων"
-
-#. Accuracy Popup: Check menu item to enable trailing zeroes
-#: ../glade/gcalctool.glade.h:365
-msgid "Show _Trailing Zeroes"
-msgstr "Εμφάνιση _μηδενικών στο τέλος"
-
-#. Tooltip for the Help|Contents menu
-#: ../glade/gcalctool.glade.h:367
-msgid "Show help contents"
-msgstr "Προβολή περιεχομένων βοήθειας"
-
-#. Tooltip for the View|Memory Registers menu item
-#: ../glade/gcalctool.glade.h:369
-msgid "Show memory registers"
-msgstr "Εμφάνιση μνημών"
-
-#. Tooltip for the Help|About menu
-#: ../glade/gcalctool.glade.h:371
-msgid "Show the About Gcalctool dialog"
-msgstr "Προβολή του διαλόγου Περί Gcalctool "
-
-#. Tooltip for the View|Show Thousands Separator menu item
-#: ../glade/gcalctool.glade.h:373
-msgid "Show thousands separator"
-msgstr "Προβολή διαχωριστικού χιλιάδων"
-
-#. Tooltip for the View|Show Trailing Zeroes menu item
-#: ../glade/gcalctool.glade.h:375
-msgid "Show trailing zeroes"
-msgstr "Εμφάνιση μηδενικών στο τέλος"
-
-#. Set Precision Dialog: Label before the significant places spin button
-#: ../glade/gcalctool.glade.h:377
-msgid "Significant _places:"
-msgstr "Σημαντικά _ψηφία:"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:380
-msgid "Sln"
-msgstr "Sln"
-
-#: ../glade/gcalctool.glade.h:381
-msgid "Square"
-msgstr "Τετράγωνο"
-
-#. Tooltip for the x to the power of 2 button
-#: ../glade/gcalctool.glade.h:383
-msgid "Square [@]"
-msgstr "Τετράγωνο [@]"
-
-#: ../glade/gcalctool.glade.h:384
-msgid "Square root"
-msgstr "Τετραγωνική ρίζα"
-
-#. Tooltip for the square root button
-#: ../glade/gcalctool.glade.h:386
-msgid "Square root [s]"
-msgstr "Τετραγωνική ρίζα [s]"
-
-#. Tooltip for the start calculation group button
-#: ../glade/gcalctool.glade.h:388
-msgid "Start group of calculations [(]"
-msgstr "Έναρξη ομάδας υπολογισμών  [(]"
-
-#. Memory store button. Sto is short for Store
-#: ../glade/gcalctool.glade.h:390
-msgid "Sto"
-msgstr "Sto"
-
-#. Tooltip for the memory store button
-#: ../glade/gcalctool.glade.h:392
-msgid "Store displayed value in memory register [S]"
-msgstr "Αποθήκευση εμφανιζόμενης τιμής στη μνήμη [S]"
-
-#: ../glade/gcalctool.glade.h:393
-msgid "Store to register"
-msgstr "Αποθήκευση στη μνήμη"
-
-#: ../glade/gcalctool.glade.h:394
-msgid "Straight-line depreciation"
-msgstr "Σταθερή απόσβεση"
-
-#. Tooltip for the [Sln] button
-#: ../glade/gcalctool.glade.h:396
-msgid "Straight-line depreciation [l]"
-msgstr "Σταθερή απόσβεση [l]"
-
-#: ../glade/gcalctool.glade.h:397
-msgid "Subtract"
-msgstr "Αφαίρεση"
-
-#. Tooltip for the subtraction button
-#: ../glade/gcalctool.glade.h:399
-msgid "Subtract [-]"
-msgstr "Αφαίρεση  [-]"
-
-#: ../glade/gcalctool.glade.h:400
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
-
-#. Tooltip for the [Syd] button
-#: ../glade/gcalctool.glade.h:402
-#| msgid "Sum-of-the years'-digits depreciation [y]"
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Απόσβεση με συντελεστή τα έτη ζωής [Y]"
-
-#: ../glade/gcalctool.glade.h:403
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Απόσβεση με συντελεστή τα έτη ζωής [y]"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:406
-msgid "Syd"
-msgstr "Syd"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:409
-msgid "Term"
-msgstr "Διάρκεια"
-
-#. Tooltip for the Edit|Undo menu item
-#: ../glade/gcalctool.glade.h:411
-msgid "Undo"
-msgstr "Αναίρεση"
-
-#. Tooltip for the [Fun] button
-#: ../glade/gcalctool.glade.h:413
-msgid "User-defined functions [F]"
-msgstr "Εξισώσεις ορισμένες από το χρήστη [F]"
-
-#. Boolean exclusive NOR button
-#: ../glade/gcalctool.glade.h:415
-msgid "XNOR"
-msgstr "XNOR"
-
-#. Boolean exlcusive OR button
-#: ../glade/gcalctool.glade.h:417
-msgid "XOR"
-msgstr "XOR"
-
-#. Accuracy Popup: Menu item to set accuracy to 0 significant places
-#: ../glade/gcalctool.glade.h:419
-msgid "_0 significant places"
-msgstr "_0 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../glade/gcalctool.glade.h:421
-msgid "_1 place"
-msgstr "_1 ψηφίο"
-
-#. Accuracy Popup: Menu item to set accuracy to 1 significant place
-#: ../glade/gcalctool.glade.h:423
-msgid "_1 significant place"
-msgstr "_1 σημαντικό ψηφίο"
-
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../glade/gcalctool.glade.h:425
-msgid "_2 places"
-msgstr "_2 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 2 significant places
-#: ../glade/gcalctool.glade.h:427
-msgid "_2 significant places"
-msgstr "_2 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../glade/gcalctool.glade.h:429
-msgid "_3 places"
-msgstr "_3 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 3 significant places
-#: ../glade/gcalctool.glade.h:431
-msgid "_3 significant places"
-msgstr "_3 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../glade/gcalctool.glade.h:433
-msgid "_4 places"
-msgstr "_4 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 4 significant places
-#: ../glade/gcalctool.glade.h:435
-msgid "_4 significant places"
-msgstr "_4 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../glade/gcalctool.glade.h:437
-msgid "_5 places"
-msgstr "_5 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 5 significant places
-#: ../glade/gcalctool.glade.h:439
-msgid "_5 significant places"
-msgstr "_5 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../glade/gcalctool.glade.h:441
-msgid "_6 places"
-msgstr "_6 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 6 significant places
-#: ../glade/gcalctool.glade.h:443
-msgid "_6 significant places"
-msgstr "_6 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../glade/gcalctool.glade.h:445
-msgid "_7 places"
-msgstr "_7 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 7 significant places
-#: ../glade/gcalctool.glade.h:447
-msgid "_7 significant places"
-msgstr "7 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../glade/gcalctool.glade.h:449
-msgid "_8 places"
-msgstr "_8 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 8 significant places
-#: ../glade/gcalctool.glade.h:451
-msgid "_8 significant places"
-msgstr "_8 σημαντικά ψηφία"
-
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../glade/gcalctool.glade.h:453
-msgid "_9 places"
-msgstr "_9 ψηφία"
-
-#. Accuracy Popup: Menu item to set accuracy to 9 significant places
-#: ../glade/gcalctool.glade.h:455
-msgid "_9 significant places"
-msgstr "_9 σημαντικά ψηφία"
-
-#. View|Advanced menu item
-#: ../glade/gcalctool.glade.h:457
-msgid "_Advanced"
-msgstr "Π_ροχωρημένη"
-
-#. View|Basic menu item
-#: ../glade/gcalctool.glade.h:459
-msgid "_Basic"
-msgstr "_Βασική"
-
-#. Base 2 radio button
-#: ../glade/gcalctool.glade.h:461
-msgid "_Bin"
-msgstr "_Bin"
-
-#. Calculator menu
-#: ../glade/gcalctool.glade.h:463
-msgid "_Calculator"
-msgstr "Αρ_ιθμομηχανή"
-
-#. Help|Contents menu
-#: ../glade/gcalctool.glade.h:465
-msgid "_Contents"
-msgstr "_Περιεχόμενα"
-
-#. Base 10 radio button
-#: ../glade/gcalctool.glade.h:467
-msgid "_Dec"
-msgstr "_Dec"
-
-#. Edit menu
-#: ../glade/gcalctool.glade.h:469
-msgid "_Edit"
-msgstr "_Επεξεργασία"
-
-#. View|Financial menu item
-#: ../glade/gcalctool.glade.h:471
-msgid "_Financial"
-msgstr "Ε_μπορική"
-
-#. Fixed-point display radio button
-#: ../glade/gcalctool.glade.h:473
-msgid "_Fix"
-msgstr "_Fix"
-
-#. Help menu
-#: ../glade/gcalctool.glade.h:475
-msgid "_Help"
-msgstr "Βοή_θεια"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: ../glade/gcalctool.glade.h:477
-msgid "_Insert"
-msgstr "_Εισαγωγή"
-
-#. Edit|Insert ASCII value menu item
-#: ../glade/gcalctool.glade.h:479
-msgid "_Insert ASCII value..."
-msgstr "Ε_ισαγωγή τιμής ASCII..."
-
-#. Inverse check box
-#: ../glade/gcalctool.glade.h:481
-msgid "_Inv"
-msgstr "_Inv"
-
-#. View|Memory Registers menu item
-#: ../glade/gcalctool.glade.h:483
-msgid "_Memory Registers"
-msgstr "_Μνήμες"
-
-#. Base 8 radio button
-#: ../glade/gcalctool.glade.h:485
-msgid "_Oct"
-msgstr "_Oct"
-
-#. View|Programming menu item
-#: ../glade/gcalctool.glade.h:487
-msgid "_Programming"
-msgstr "_Προγραμματισμός"
-
-#. Radian radio button
-#: ../glade/gcalctool.glade.h:489
-msgid "_Radians"
-msgstr "Α_κτίνια"
-
-#. Edit|Redo menu item
-#: ../glade/gcalctool.glade.h:491
-msgid "_Redo"
-msgstr "Α_κύρωση αναίρεσης"
-
-#. Scientific display radio button
-#: ../glade/gcalctool.glade.h:493
-msgid "_Sci"
-msgstr "_Sci"
-
-#. View|Scientific menu item
-#: ../glade/gcalctool.glade.h:495
-msgid "_Scientific"
-msgstr "Επι_στημονική"
-
-#. Set Precision Dialog: Button to apply settings
-#: ../glade/gcalctool.glade.h:497
-msgid "_Set"
-msgstr "Ο_ρισμός"
-
-#. Edit|Undo menu item
-#: ../glade/gcalctool.glade.h:499
-msgid "_Undo"
-msgstr "Α_ναίρεση"
-
-#. View menu
-#: ../glade/gcalctool.glade.h:501
-msgid "_View"
-msgstr "Προ_βολή"
-
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:505
-msgid "register 0"
-msgstr "μνήμη 0"
-
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:509
-msgid "register 1"
-msgstr "μνήμη 1"
-
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:513
-msgid "register 2"
-msgstr "μνήμη 2"
-
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:517
-msgid "register 3"
-msgstr "μνήμη 3"
-
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:521
-msgid "register 4"
-msgstr "μνήμη 4"
-
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:525
-msgid "register 5"
-msgstr "μνήμη 5"
-
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:529
-msgid "register 6"
-msgstr "μνήμη 6"
-
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:533
-msgid "register 7"
-msgstr "μνήμη 7"
-
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:537
-msgid "register 8"
-msgstr "μνήμη 8"
-
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:541
-msgid "register 9"
-msgstr "μνήμη 9"
-
-#: ../glade/gcalctool.glade.h:542
-msgid "x2"
-msgstr "x2"
-
-#. Change sign button
-#: ../glade/gcalctool.glade.h:544
-msgid "±"
-msgstr "±"
-
-#. Multiplication button
-#: ../glade/gcalctool.glade.h:546
-msgid "×"
-msgstr "×"
-
-#. Division button
-#: ../glade/gcalctool.glade.h:548
-msgid "÷"
-msgstr "÷"
-
-#. Subtraction button
-#: ../glade/gcalctool.glade.h:550
-msgid "−"
-msgstr "−"
-
-#. Square root button
-#: ../glade/gcalctool.glade.h:552
-msgid "√"
-msgstr "√"
-
+#~ msgid "√"
+#~ msgstr "√"
