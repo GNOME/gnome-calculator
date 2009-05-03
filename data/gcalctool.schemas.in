@@ -19,8 +19,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/accuracy</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>9</default>
       <locale name="C">
-        <default>9</default>
         <short>Accuracy value</short>
         <long>
           The number of digits displayed after the numeric point.
@@ -33,8 +33,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/base</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>DEC</default>
       <locale name="C">
-        <default>DEC</default>
         <short>Numeric Base</short>
         <long>
           The initial numeric base. Valid values are 
@@ -49,9 +49,9 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/display</applyto> 
       <key>/schemas/apps/gcalctool/display</key> 
       <owner>gcalctool</owner> 
-      <type>string</type> 
+      <type>string</type>
+      <default>FIX</default> 
       <locale name="C"> 
-        <default>FIX</default> 
         <short>Display Mode</short> 
         <long> 
           The initial display mode. Valid values are
@@ -66,8 +66,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/mode</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>BASIC</default>
       <locale name="C"> 
-        <default>BASIC</default>
         <short>Mode</short>
         <long> 
           The initial calculator mode. Valid values are
@@ -83,8 +83,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/showzeroes</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>false</default>
       <locale name="C">
-        <default>false</default>
         <short>Show Trailing Zeroes</short>
         <long>
           Indicates whether any trailing zeroes after the 
@@ -96,9 +96,9 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/showhelp</applyto> 
       <key>/schemas/apps/gcalctool/showhelp</key> 
       <owner>gcalctool</owner> 
-      <type>string</type> 
+      <type>string</type>
+      <default>false</default> 
       <locale name="C">  
-        <default>false</default> 
         <short>Show Help</short> 
         <long>  
           Indicates whether tooltip help should be enabled.
@@ -110,8 +110,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/showregisters</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>false</default>
       <locale name="C">
-        <default>false</default>
         <short>Show Registers</short>
         <long>
           Indicates whether the memory register window is 
@@ -124,8 +124,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/righthanded</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>true</default>
       <locale name="C">
-        <default>true</default>
         <short>Right Handed</short>
         <long>
           Indicates whether the calculator is started with a
@@ -137,9 +137,9 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/trigtype</applyto> 
       <key>/schemas/apps/gcalctool/trigtype</key> 
       <owner>gcalctool</owner> 
-      <type>string</type> 
+      <type>string</type>
+      <default>DEG</default> 
       <locale name="C"> 
-        <default>DEG</default> 
         <short>Trigonometric type</short> 
         <long> 
           The initial trigonometric type. Valid values are
@@ -154,8 +154,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <key>/schemas/apps/gcalctool/beep</key>
       <owner>gcalctool</owner>
       <type>string</type>
+      <default>true</default>
       <locale name="C">
-        <default>true</default>
         <short>Beep</short>
         <long>
           Indicates whether a beep should sound in the
