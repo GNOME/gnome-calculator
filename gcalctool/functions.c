@@ -141,7 +141,9 @@ static Function functions[NFUNCTIONS] = {
 { FN_UNDO,              NULL, 0 },
 { FN_REDO,              NULL, 0 },
 { FN_CONSTANT,          NULL, 0 },
-{ FN_FUNCTION,          NULL, 0 }
+{ FN_FUNCTION,          NULL, 0 },
+{ FN_PASTE,             NULL, 0 },
+{ FN_INSERT_CHARACTER,  NULL, 0 }
 };
 
 static void
@@ -151,8 +153,9 @@ clear_undo_history(void)
 }
 
 
+/* Set display accuracy. */
 static void
-do_accuracy(int value)     /* Set display accuracy. */
+do_accuracy(int value)
 {
     v->accuracy = value;
     set_int_resource(R_ACCURACY, v->accuracy);
@@ -163,8 +166,9 @@ do_accuracy(int value)     /* Set display accuracy. */
 }
 
 
+/* Perform a user defined function. */
 static void
-do_function(int index)      /* Perform a user defined function. */
+do_function(int index)
 {
     int ret;
 
@@ -181,8 +185,83 @@ do_function(int index)      /* Perform a user defined function. */
     }
 }
 
+
 static void
-do_shift(int count)     /* Perform bitwise shift on display value. */
+do_paste(const char *text)
+{
+    const char *input;
+    char c, *output, *clean_text;
+
+    /* Copy input to modify, no operation can make the clean string longer than
+     * the original string */
+    clean_text = strdup(text);
+    
+    output = clean_text;
+    for (input = text; *input; input++) {
+        /* If the clipboard buffer contains any occurances of the "thousands
+         * separator", remove them.
+         */
+        if (v->tsep[0] != '\0' && strncmp(input, v->tsep, strlen(v->tsep)) == 0) {
+            input += strlen(v->tsep) - 1;
+            continue;
+        }
+        
+        /* Replace radix with "." */
+        else if (strncmp(input, v->radix, strlen(v->radix)) == 0) {
+            input += strlen(v->radix) - 1;
+            c = '.';
+        }
+
+        /* Replace tabs with spaces */        
+        else if (*input == '\t') {
+            c = ' ';
+        }
+        
+        /* Terminate on newlines */        
+        else if (*input == '\r' || *input == '\n') {
+            c = '\0';
+        }
+        
+        /* If an "A", "B", "C", "D" or "F" character is encountered, it 
+         * will be converted to its lowercase equivalent. If an "E" is 
+         * found,  and the next character is a "-" or a "+", then it 
+         * remains as an upper case "E" (it's assumed to be a possible 
+         * exponential number), otherwise its converted to a lower case 
+         * "e". See bugs #455889 and #469245 for more details.
+         */
+        else if (*input >= 'A' && *input <= 'F') {
+            c = *input;
+            if (*input == 'E') {
+                if (*(input+1) != '-' && *(input+1) != '+')
+                    c = tolower(*input);
+            }
+            else
+                c = tolower(*input);
+        }
+        
+        else
+            c = *input;
+        
+        *output++ = c;
+    }
+    *output++ = '\0';
+
+    display_insert_at_cursor(&v->display, clean_text);
+}
+
+
+static void
+do_insert_character(const char *text)
+{
+    MPNumber value;
+    mp_set_from_integer(text[0], &value);
+    display_set_number(&v->display, &value);
+}
+
+
+/* Perform bitwise shift on display value. */
+static void
+do_shift(int count)
 {
     MPNumber MPval;
 
@@ -352,6 +431,14 @@ do_expression(int function, int arg, int cursor)
         case FN_FUNCTION:
             do_function(arg);
             return;
+        
+        case FN_PASTE:
+            do_paste((const char *)arg); // FIXME: Probably not 64 bit safe
+            return;
+        
+        case FN_INSERT_CHARACTER:
+            do_insert_character((const char *)arg); // FIXME: Probably not 64 bit safe
+            return;        
 
         case FN_STORE:
             do_sto(arg);
@@ -363,11 +450,11 @@ do_expression(int function, int arg, int cursor)
 
         case FN_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
-            display_insert(&v->display, display_get_cursor(&v->display), buf);
+            display_insert_at_cursor(&v->display, buf);
             break;
 
         case FN_CONSTANT:
-            display_insert_number(&v->display, display_get_cursor(&v->display), constant_get_value(arg));
+            display_insert_number_at_cursor(&v->display, constant_get_value(arg));
             break;
 
         case FN_BACKSPACE:
@@ -466,9 +553,9 @@ do_expression(int function, int arg, int cursor)
             } else {
                 if (functions[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
-                    display_insert(&v->display, display_get_cursor(&v->display), buf);
+                    display_insert_at_cursor(&v->display, buf);
                 } else {
-                    display_insert(&v->display, display_get_cursor(&v->display), functions[function].symname);
+                    display_insert_at_cursor(&v->display, functions[function].symname);
                 }
             }
             break;

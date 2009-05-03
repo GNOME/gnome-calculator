@@ -1292,14 +1292,12 @@ G_MODULE_EXPORT
 void
 aframe_response_cb(GtkWidget *dialog, gint response_id)
 {
-    char *ch;
-
-    if (response_id == GTK_RESPONSE_OK) {
-        MPNumber value;
-        ch = (char *) gtk_entry_get_text(GTK_ENTRY(X.aframe_ch));
-        mp_set_from_integer(ch[0], &value);
-        display_set_number(&v->display, &value);
-    }
+    const gchar *text;
+    
+    text = gtk_entry_get_text(GTK_ENTRY(X.aframe_ch));
+    
+    if (response_id == GTK_RESPONSE_OK)
+        do_button(FN_INSERT_CHARACTER, GPOINTER_TO_INT(text));
     
     gtk_widget_hide(dialog);
 }
@@ -2099,76 +2097,10 @@ copy_cb(GtkWidget *widget)
 
 
 static void
-get_proc(GtkClipboard *clipboard, const gchar *buffer, gpointer data)
+on_paste(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
-    gchar *dstp, *end_buffer, *srcp, *text, c;
-
-    if (buffer == NULL) {
-        return;
-    }
-
-    end_buffer = (gchar *) (buffer + strlen(buffer));
-    text = malloc(strlen(buffer)+1);
-
-    dstp = text;
-    for (srcp = (gchar *) buffer; srcp < end_buffer; srcp++) {
-        /* If the clipboard buffer contains any occurances of the "thousands
-         * separator", remove them.
-         */
-        if (v->tsep[0] != '\0' && strncmp(srcp, v->tsep, strlen(v->tsep)) == 0) {
-            srcp += strlen(v->tsep) - 1;
-            continue;
-        }
-        
-        /* Replace radix with "." */
-        else if (strncmp(srcp, v->radix, strlen(v->radix)) == 0) {
-            c = '.';
-        }
-
-        /* Replace tabs with spaces */        
-        else if (*srcp == '\t') {
-            c = ' ';
-        }
-        
-        /* Terminate on newlines */        
-        else if (*srcp == '\r' || *srcp == '\n') {
-            c = '\0';
-        }
-        
-        /* If an "A", "B", "C", "D" or "F" character is encountered, it 
-         * will be converted to its lowercase equivalent. If an "E" is 
-         * found,  and the next character is a "-" or a "+", then it 
-         * remains as an upper case "E" (it's assumed to be a possible 
-         * exponential number), otherwise its converted to a lower case 
-         * "e". See bugs #455889 and #469245 for more details.
-         */
-        else if (*srcp >= 'A' && *srcp <= 'F') {
-            if (*srcp == 'E') {
-                c = *srcp;
-                if (srcp < (end_buffer-1)) {
-                    if (*(srcp+1) != '-' &&
-                        *(srcp+1) != '+') {
-                        c = tolower(*srcp);
-                    }
-                }
-            }
-            else
-                c = tolower(*srcp);
-        }
-        
-        else
-            c = *srcp;
-        
-        *dstp++ = c;
-    }
-    *dstp++ = '\0';
-
-    if (display_is_result(&v->display))
-        display_set_string(&v->display, (char *)text, -1);
-    else
-        display_insert(&v->display, get_cursor(), (char *)text);        
-    display_set_cursor(&v->display, -1);
-    free(text);
+    if (text != NULL)
+        do_button(FN_PASTE, GPOINTER_TO_INT(text));
 }
 
 
@@ -2178,7 +2110,7 @@ mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 {
     if (event->button == 2) {
         gtk_clipboard_request_text(gtk_clipboard_get(X.primary_atom),
-                                   get_proc, NULL);
+                                   on_paste, NULL);
     }
 
     return (FALSE);
@@ -2190,7 +2122,7 @@ void
 paste_cb(GtkWidget *widget)
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X.clipboard_atom),
-                               get_proc, NULL);
+                               on_paste, NULL);
 }
 
 

@@ -85,6 +85,8 @@ enum
     FN_REDO,
     FN_CONSTANT,
     FN_FUNCTION,
+    FN_PASTE,
+    FN_INSERT_CHARACTER,
     NFUNCTIONS
 };
 

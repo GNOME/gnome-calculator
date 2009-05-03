@@ -440,11 +440,23 @@ display_insert(GCDisplay *display, int cursor, const char *text)
 }
 
 void
+display_insert_at_cursor(GCDisplay *display, const char *text)
+{
+    display_insert(display, display_get_cursor(display), text);
+}
+
+void
 display_insert_number(GCDisplay *display, int cursor, const MPNumber *value)
 {
     char text[MAX_DISPLAY];
     display_make_number(display, text, MAX_DISPLAY, value, v->base, FALSE);
     display_insert(display, cursor, text);
+}
+
+void
+display_insert_number_at_cursor(GCDisplay *display, const MPNumber *value)
+{
+    display_insert_number(display, display_get_cursor(display), value);
 }
 
 
