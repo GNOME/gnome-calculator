@@ -279,6 +279,11 @@ init_state(void)
        v->ttype = (TrigType) i;
     else
        v->ttype = DEG;  
+
+    if (get_int_resource(R_WORDLEN, &i))
+       v->wordlen = i;
+    else
+       v->wordlen = 64;
 }
 
 

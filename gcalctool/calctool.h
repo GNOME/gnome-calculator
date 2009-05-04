@@ -76,6 +76,7 @@ typedef struct {
 
     BaseType base;            /* Numeric base (BIN, OCT, DEC or HEX). */
     TrigType ttype;           /* Trigonometric type (DEG, GRAD or RAD). */
+    int wordlen;              /* Length of word for bitwise operations */
     int accuracy;             /* Number of digits precision. */
 
     int error;                /* true if there is a display error */

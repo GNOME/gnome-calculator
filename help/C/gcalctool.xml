@@ -1860,6 +1860,45 @@ after entering the exponent.</para>
 		  </tgroup>
 		</table>
     </sect3>
+    <sect3 id="gcalctool-word-length">
+      <title>To Set the Word Length</title>
+      <para>The word length can be altered, to make the bitwise functions behave differently. To set the word length, select one of the buttons described in <xref linkend="gcalctool-TBL-word-length"/>. </para>
+                <table id="gcalctool-TBL-word-length" frame="all">
+                  <title>Setting the Word Length</title>
+                  <tgroup cols="3" colsep="1" rowsep="1">
+                         <colspec colname="COLSPEC0" colwidth="50*"/>
+                         <colspec colname="COLSPEC1"/>
+                         <colspec colname="COLSPEC2" colwidth="50*"/>
+                         <thead>
+                                <row valign="top">
+                                  <entry colname="COLSPEC0">
+                                         <para>Function</para></entry>
+                                  <entry colname="COLSPEC1">
+                                         <para>Button</para></entry>
+                                  <entry colname="COLSPEC2">
+                                         <para>Description</para></entry>
+                                </row>
+                         </thead> 
+                         <tbody> 
+                           <row valign="top">
+                             <entry><para>64 bit word</para> </entry>
+                             <entry><para><guibutton>64 bit</guibutton></para></entry>
+                             <entry><para>Sets the word length to 64 bits. 64 bits is the default word length.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>32 bit word</para> </entry>
+                             <entry><para><guibutton>32 bit</guibutton></para></entry>
+                             <entry><para>Sets the word length to 32 bits.</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>16 bit word</para> </entry>
+                             <entry><para><guibutton>16 bit</guibutton></para></entry>
+                             <entry><para>Sets the word length to 16 bits.</para></entry>
+                           </row>
+			 </tbody>
+		  </tgroup>
+		</table>
+    </sect3>
     <sect3 id="gcalctool-calc-bit-manipulation-ext">
       <title>To Perform Bit Manipulations on Integers</title>
       <para>If the calculator display shows an integer value, then each of the bits in that integer value is displayed as a collection of 0's and 1's in the Bit Editor. By clicking on any of these individual bits, their value can be toggled, causing the displayed integer value to be adjusted accordingly.</para>
@@ -1893,40 +1932,37 @@ after entering the exponent.</para>
                            <row valign="top">
                              <entry><para>Bitwise OR</para> </entry>
                              <entry><para><guibutton>OR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise OR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise OR operation on the current value in the display area and the next number that you enter.</para></entry>
                              <entry><para>10001000 <guibutton>OR</guibutton> 00010001</para></entry>
                              <entry><para>10011001</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Bitwise AND</para> </entry>
                              <entry><para><guibutton>AND</guibutton></para></entry>
-                             <entry><para>Performs a bitwise AND operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise AND operation on the current value in the display area and the next number that you enter.</para></entry>
                              <entry><para>10101010 <guibutton>AND</guibutton> 00110011</para></entry>
                              <entry><para>100010</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Bitwise NOT</para> </entry>
                              <entry><para><guibutton>NOT</guibutton></para></entry>
-                             <entry><para>Performs a bitwise NOT operation on the current value in the display area, treating the number as an unsigned long integer.</para></entry>
-                             <entry><para>For arithmetic precedence mode:</para>
-                             <para><guibutton>NOT</guibutton> 1357ACE</para>
-                             <para>For non-arithmetic precedence mode:</para>
-                             <para>1357ACE <guibutton>NOT</guibutton></para></entry>
+                             <entry><para>Performs a bitwise NOT operation on the current value in the display area, using the word size configured in <xref linkend="gcalctool-word-length"/>.</para></entry>
+                             <entry><para><guibutton>NOT</guibutton> 1357ACE</para></entry>
                              <entry><para>FECA8531</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Bitwise XOR</para> </entry>
                              <entry><para><guibutton>XOR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise XOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise XOR operation on the current value in the display area and the next number that you enter.</para></entry>
                              <entry><para>1100 <guibutton>XOR</guibutton> 1010</para></entry>
                              <entry><para>110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Bitwise XNOR</para> </entry>
                              <entry><para><guibutton>XNOR</guibutton></para></entry>
-                             <entry><para>Performs a bitwise XNOR operation on the current value in the display area and the next number that you enter, treating both numbers as unsigned long integers.</para></entry>
+                             <entry><para>Performs a bitwise XNOR operation on the current value in the display area and the next number that you enter.</para></entry>
                              <entry><para>1100 <guibutton>XNOR</guibutton> 1010</para></entry>
-                             <entry><para>11111111111111111111111111111001</para></entry>
+                             <entry><para>1001</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -1961,30 +1997,37 @@ after entering the exponent.</para>
                            <row valign="top">
                              <entry><para>Left Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&lt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the left. Click <guibutton>&lt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
+                             <entry><para>Shifts the current value in the display area, the specified number of places to the left. Click <guibutton>&lt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places left. </para></entry>
                              <entry><para>111 <guibutton>&lt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>1110</para></entry>
                            </row>
                            <row valign="top">
                              <entry><para>Right Shift <replaceable>n</replaceable></para> </entry>
                              <entry><para><guibutton>&gt;</guibutton></para></entry>
-                             <entry><para>Shifts the current unsigned 32-bit binary value in the display area, the specified number of places to the right. Click <guibutton>&gt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
+                             <entry><para>Shifts the current value in the display area, the specified number of places to the right. Click <guibutton>&gt;</guibutton>, then select the number of shift places from the popup menu. The number can be shifted up to 15 places right.</para></entry>
                              <entry><para>1011 <guibutton>&gt;</guibutton> <guilabel>1 place</guilabel></para></entry>
                              <entry><para>101 </para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Get a 16-Bit Unsigned Integer</para> </entry>
-                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>Truncates the current value in the display area and returns a 16-bit unsigned integer.</para></entry>
-                             <entry><para>FFFFF <guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>FFFF</para></entry>
+                             <entry><para>Truncating a number</para> </entry>
+                             <entry><para><guibutton>Trunc</guibutton></para></entry>
+                             <entry><para>Truncates the current value in the display area to the word size configured in <xref linkend="gcalctool-word-length"/>.</para></entry>
+                             <entry><para>FFFFFFFFFF <guibutton>Trunc</guibutton></para></entry>
+                             <entry><para>FFFFFFFF</para></entry>
                            </row>
                            <row valign="top">
-                             <entry><para>Get a 32-Bit Unsigned Integer</para> </entry>
-                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
-                             <entry><para>Truncates the current value in the display area and returns a 32-bit unsigned integer.</para></entry>
-                             <entry><para>FFFFFFFFFF <guibutton>&amp;32</guibutton></para></entry>
-                             <entry><para>FFFFFFFF</para></entry>
+                             <entry><para>Get the 1's complement</para> </entry>
+                             <entry><para><guibutton>1's</guibutton></para></entry>
+                             <entry><para>Calculates the 1's complement for the current value in the display area, using the word size configured in <xref linkend="gcalctool-word-length"/>.</para></entry>
+                             <entry><para>D723 <guibutton>1's</guibutton></para></entry>
+                             <entry><para>FFFF28DC</para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para>Get the 2's complement</para> </entry>
+                             <entry><para><guibutton>2's</guibutton></para></entry>
+                             <entry><para>Calculates the 2's complement for the current value in the display area, using the word size configured in <xref linkend="gcalctool-word-length"/>.</para></entry>
+                             <entry><para>D723 <guibutton>2's</guibutton></para></entry>
+                             <entry><para>FFFF28DD</para></entry>
                            </row>
 			 </tbody>
 		  </tgroup>
@@ -2446,6 +2489,18 @@ the addition of:
                              <entry><para><xref linkend="gcalctool-TBL-financial-calc"/></para> </entry>
                            </row>
                            <row valign="top">
+                             <entry><para><keycap>Z</keycap></para></entry>
+                             <entry><para><guibutton>2's</guibutton></para></entry>
+                             <entry><para>2's complement</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycap>z</keycap></para></entry>
+                             <entry><para><guibutton>1's</guibutton></para></entry>
+                             <entry><para>1's complement</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para></entry>
+                           </row>
+                           <row valign="top">
                              <entry><para><keycap>!</keycap></para></entry>
                              <entry><para><guibutton><replaceable>x</replaceable>!</guibutton></para></entry>
                              <entry><para><replaceable>x</replaceable> factorial</para> </entry>
@@ -2549,14 +2604,8 @@ the addition of:
                            </row>
                            <row valign="top">
                              <entry><para><keycap>[</keycap></para></entry>
-                             <entry><para><guibutton>&amp;32</guibutton></para></entry>
-                             <entry><para>Get a 32-bit unsigned integer</para> </entry>
-                             <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
-                           </row>
-                           <row valign="top">
-                             <entry><para><keycap>]</keycap></para></entry>
-                             <entry><para><guibutton>&amp;16</guibutton></para></entry>
-                             <entry><para>Get a 16-bit unsigned integer</para> </entry>
+                             <entry><para><guibutton>Trunc</guibutton></para></entry>
+                             <entry><para>Truncates the number</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-num-manip"/></para> </entry>
                            </row>
                            <row valign="top">
@@ -2613,6 +2662,24 @@ the addition of:
                                 </row>
                          </thead> 
                          <tbody> 
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>1</keycap></keycombo></para></entry>
+                             <entry><para><guilabel>16 bit</guilabel></para></entry>
+                             <entry><para>Set the word size to 16 bits.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-word-length"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>3</keycap></keycombo></para></entry>
+                             <entry><para><guilabel>32 bit</guilabel></para></entry>
+                             <entry><para>Set the word size to 32 bits.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-word-length"/></para></entry>
+                           </row>
+                           <row valign="top">
+                             <entry><para><keycombo><keycap>Alt</keycap><keycap>6</keycap></keycombo></para></entry>
+                             <entry><para><guilabel>64 bit</guilabel></para></entry>
+                             <entry><para>Set the word size to 64 bits.</para></entry>
+                             <entry><para><xref linkend="gcalctool-TBL-word-length"/></para></entry>
+                           </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Alt</keycap><keycap>a</keycap></keycombo></para></entry>
                              <entry><para><guilabel>Gradians</guilabel></para></entry>

@@ -110,9 +110,10 @@ static Function functions[NFUNCTIONS] = {
 { FN_LOGARITHM,         "Log", FUNC },
 { FN_LOGARITHM2,        "Log2", FUNC },
 { FN_ABSOLUTE_VALUE,    "Abs", FUNC },
-{ FN_MASK_16,           "u16", FUNC },            
-{ FN_MASK_32,           "u32", FUNC },
+{ FN_TRUNC,             "Trunc", FUNC },
 { FN_MODULUS_DIVIDE,    " Mod ", 0 },
+{ FN_1S_COMPLEMENT,     "1s", FUNC },
+{ FN_2S_COMPLEMENT,     "2s", FUNC },
 { FN_EXPONENTIAL,       "e", 0 },
 { FN_NOT,               "~", 0 },
 { FN_OR,                " OR ", 0 },
@@ -138,6 +139,7 @@ static Function functions[NFUNCTIONS] = {
 { FN_SET_BASE,          NULL, 0 },
 { FN_SET_NUMBERTYPE,    NULL, 0 },
 { FN_SET_TRIG_TYPE,     NULL, 0 },
+{ FN_SET_WORDLEN,       NULL, 0 },
 { FN_UNDO,              NULL, 0 },
 { FN_REDO,              NULL, 0 },
 { FN_CONSTANT,          NULL, 0 },
@@ -324,6 +326,16 @@ do_exchange(int index)
 }
 
 
+/* Set word size for bitwise operations. */
+static void
+do_wordlen(int len)
+{
+    mp_set_wordlen(len);
+    v->wordlen = len;
+    set_int_resource(R_WORDLEN, len);
+}
+
+
 static void
 do_numtype(DisplayFormat n)   /* Set number display type. */
 {
@@ -426,7 +438,11 @@ do_expression(int function, int arg, int cursor)
 
         case FN_SET_NUMBERTYPE:
             do_numtype(arg);
-            return;        
+            return;
+
+        case FN_SET_WORDLEN:
+            do_wordlen(arg);
+            return;
         
         case FN_FUNCTION:
             do_function(arg);
@@ -537,6 +553,13 @@ do_expression(int function, int arg, int cursor)
                          * 6 MOD 1.2 */
                         message = _("Invalid modulus operation");
                         break;
+
+                    case -PARSER_ERR_OVERFLOW:
+                        /* Translators; Error displayd to user when they
+                         * perform a bitwise operation on numbers greater
+                         * than the current word */
+                       message = _("Overflow. Try a bigger word size");
+                       break;
 
                     case -MPMATH_ERR:
                         message = v->math_error_text;

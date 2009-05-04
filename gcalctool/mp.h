@@ -135,13 +135,16 @@ void mp_tan(const MPNumber *x, MPNumber *z);
 void mp_tanh(const MPNumber *x, MPNumber *z);
 
 /* mp-binary.c */
+void mp_set_wordlen(int);
+int  mp_is_overflow(const MPNumber *s1);
 void mp_and(const MPNumber *s1, const MPNumber *s2, MPNumber *t);
 void mp_or(const MPNumber *s1, const MPNumber *s2, MPNumber *t);
 void mp_xor(const MPNumber *s1, const MPNumber *s2, MPNumber *t);
 void mp_xnor(const MPNumber *s1, const MPNumber *s2, MPNumber *t);
 void mp_not(const MPNumber *s1, MPNumber *t);
-void mp_mask_u32(const MPNumber *s1, MPNumber *t1);
-void mp_mask_u16(const MPNumber *s1, MPNumber *t1);
+void mp_mask(const MPNumber *s1, MPNumber *t1);
 void mp_shift(MPNumber *s, MPNumber *t, int times);
+void mp_1s_complement(const MPNumber *s, MPNumber *res);
+void mp_2s_complement(const MPNumber *s, MPNumber *res);
 
 #endif /* MP_H */

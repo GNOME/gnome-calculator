@@ -59,6 +59,8 @@
 %token tLOG10
 %token tLOG2
 %token tMOD
+%token t1S
+%token t2S
 %token tNOT
 %token tOR
 %token tPI
@@ -70,8 +72,7 @@
 %token tSTO
 %token tTAN
 %token tTANH
-%token tU16
-%token tU32
+%token tTRUNC
 %token tXNOR
 %token tXOR
 
@@ -188,6 +189,8 @@ term:
 | '~' term %prec LNEG {
     if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2)) {
+	parser_state.error = -PARSER_ERR_OVERFLOW;
     }
     mp_not(&$2, &$$);
 }
@@ -233,8 +236,23 @@ func:
 | tACOSH term %prec HIGH {mp_acosh(&$2, &$$);}
 | tATANH term %prec HIGH {mp_atanh(&$2, &$$);}
 
-| tU32 term %prec HIGH {mp_mask_u32(&$2, &$$);}
-| tU16 term %prec HIGH {mp_mask_u16(&$2, &$$);}
+| tTRUNC term %prec HIGH {mp_mask(&$2, &$$);}
+| t1S term %prec HIGH  {
+    if (!mp_is_natural(&$2)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2)) {
+	parser_state.error = -PARSER_ERR_OVERFLOW;
+    }
+    mp_1s_complement(&$2, &$$);
+}
+| t2S term %prec HIGH {
+    if (!mp_is_natural(&$2)) {
+	parser_state.error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2)) {
+	parser_state.error = -PARSER_ERR_OVERFLOW;
+    }
+    mp_2s_complement(&$2, &$$);
+}
 ;
 
 rcl:

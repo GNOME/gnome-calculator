@@ -100,10 +100,10 @@ static char *finc_dialog_fields[FINC_NUM_DIALOGS][5] = {
  *
  *           |  a b c d e f g h i j k l m n o p q r s t u v w x y z
  *-----------+-----------------------------------------------------
- *  Lower:   |  a b c d e f g h i j k l m n o p q r s t u v   x
- *  Upper:   |  A   C D E F G H I J K   M N O P Q R S T       X Y
+ *  Lower:   |  a b c d e f g h i j k l m n o p q r s t u v w x   z
+ *  Upper:   |  A   C D E F G H I J K   M N O P Q R S T     W X Y Z
  *  Numeric: |  0 1 2 3 4 5 6 7 8 9
- *  Other:   |  @ . + - * / = % ( ) # < > [ ] { | & ~ ^ ? ! :
+ *  Other:   |  @ . + - * / = % ( ) # < > [   { | & ~ ^ ? ! :
  *           |  BackSpace Delete Return
  *-----------+-----------------------------------------------------
  */
@@ -297,17 +297,21 @@ static struct button_widget button_widgets[] = {
     { 0,     0 },
     { GDK_u, 0 }},
 
-    {FN_MASK_16,            "mask_16",
+    {FN_TRUNC,              "trunc",
     { 0,                0 },
-    { GDK_bracketright, 0 }},
-
-    {FN_MASK_32,            "mask_32",
-    { 0,               0 },
     { GDK_bracketleft, 0 }},
 
     {FN_MODULUS_DIVIDE,     "modulus_divide",
     { 0,     0 },
     { GDK_M, 0 }},
+
+    {FN_1S_COMPLEMENT,      "1s",
+    { 0,     0 },
+    { GDK_z, 0 }},
+
+    {FN_2S_COMPLEMENT,      "2s",
+    { 0,     0 },
+    { GDK_Z, 0 }},
 
     {FN_EXPONENTIAL,        "exponential",
     { 0,     0 },
@@ -508,9 +512,12 @@ typedef struct {
     /* Scientific mode widgets */
     GtkWidget *hyperbolic_toggle;      /* Hyperbolic mode. */
     GtkWidget *inverse_toggle;         /* Inverse mode. */
-    GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
     GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
+
+    /* Programming mode widgets */
+    GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
+    GtkWidget *wordlen[3];             /* Wordlength radio buttons. */
 
     char *shelf;                       /* PUT selection shelf contents. */   
 } GtkUI;
@@ -1152,6 +1159,24 @@ ui_set_base(BaseType base)
 
 
 void
+ui_set_wordlen(int len)
+{
+    v->wordlen = len;
+    switch (len) {
+        case 64:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[0]), 1);
+            break;
+        case 32:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[1]), 1);
+            break;
+        case 16:
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[2]), 1);
+            break;
+    }
+}
+
+
+void
 ui_set_registers_visible(gboolean visible)
 {
     GtkWidget *menu;
@@ -1358,6 +1383,17 @@ base_cb(GtkWidget *widget)
     }
 }
 
+G_MODULE_EXPORT
+void
+word_cb(GtkWidget *widget)
+{
+    int wordlen;
+
+    wordlen = (int) g_object_get_data(G_OBJECT(widget), "wordlen_mode");
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+        do_button(FN_SET_WORDLEN, wordlen);
+    }
+}
 
 static void
 help_display(void)
@@ -2429,6 +2465,9 @@ create_kframe()
     X.disp[0]      = GET_WIDGET("engineering_radio");
     X.disp[1]      = GET_WIDGET("fixed_point_radio");
     X.disp[2]      = GET_WIDGET("scientific_radio");
+    X.wordlen[0]   = GET_WIDGET("64bit_radio");
+    X.wordlen[1]   = GET_WIDGET("32bit_radio");
+    X.wordlen[2]   = GET_WIDGET("16bit_radio");
     X.inverse_toggle    = GET_WIDGET("inverse_check");
     X.hyperbolic_toggle = GET_WIDGET("hyperbolic_check");
     X.statusbar    = GET_WIDGET("statusbar");
@@ -2609,6 +2648,13 @@ create_kframe()
     for (i = 0; i < 3; i++)        
         g_object_set_data(G_OBJECT(X.disp[i]),
                           "numeric_mode", GINT_TO_POINTER(i));
+    
+    g_object_set_data(G_OBJECT(X.wordlen[0]),
+                          "wordlen_mode", GINT_TO_POINTER(64));
+    g_object_set_data(G_OBJECT(X.wordlen[1]),
+                          "wordlen_mode", GINT_TO_POINTER(32));
+    g_object_set_data(G_OBJECT(X.wordlen[2]),
+                          "wordlen_mode", GINT_TO_POINTER(16));
 
     X.status_image = GET_WIDGET("status_image");
 
@@ -2712,6 +2758,7 @@ ui_load(void)
     ui_set_mode(X.mode);
     ui_set_numeric_mode(v->display.format);
     ui_set_base(v->base);
+    ui_set_wordlen(v->wordlen);
     ui_set_accuracy(v->accuracy);
     ui_set_undo_enabled(FALSE, FALSE);
     ui_update_modifier_mode();
@@ -2732,6 +2779,7 @@ void
 ui_start(void)
 {
     ui_set_base(v->base);
+    ui_set_wordlen(v->wordlen);
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->display.format);
 

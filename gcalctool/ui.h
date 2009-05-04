@@ -53,6 +53,7 @@ void ui_set_trigonometric_mode(TrigType);
 void ui_set_numeric_mode(BaseType);
 void ui_set_show_thousands_separator(gboolean);
 void ui_set_show_trailing_zeroes(gboolean);
+void ui_set_wordlen(int);
 
 void ui_set_error_state(gboolean);
 void ui_set_statusbar(const gchar *, const gchar *);

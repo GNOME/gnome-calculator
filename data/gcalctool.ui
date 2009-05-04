@@ -330,6 +330,64 @@
           <object class="GtkHBox" id="programming_mode_panel">
             <property name="visible">True</property>
             <child>
+              <object class="GtkHBox" id="hbox7">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkRadioButton" id="64bit_radio">
+                    <property name="label" translatable="yes" comments="64 bit radio button">_64 bit</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">Makes the bitwise functions use 64 bit mode</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="word_cb"/>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="32bit_radio">
+                    <property name="label" translatable="yes" comments="32 bit radio button">_32 bit</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">Makes the bitwise functions use 32 bit mode</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">64bit_radio</property>
+                    <signal name="toggled" handler="word_cb"/>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="16bit_radio">
+                    <property name="label" translatable="yes" comments="16 bit radio button">_16 bit</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes">Makes the bitwise functions use 16 bit mode</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">64bit_radio</property>
+                    <signal name="toggled" handler="word_cb"/>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">start</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkHBox" id="hbox6">
                 <property name="visible">True</property>
                 <child>
@@ -3042,7 +3100,7 @@
           <object class="GtkTable" id="programming_panel">
             <property name="visible">True</property>
             <property name="border_width">6</property>
-            <property name="n_rows">2</property>
+            <property name="n_rows">3</property>
             <property name="n_columns">8</property>
             <property name="column_spacing">6</property>
             <property name="row_spacing">6</property>
@@ -3059,6 +3117,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3077,6 +3137,8 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3093,6 +3155,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
                 <property name="left_attach">2</property>
                 <property name="right_attach">3</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -3111,8 +3175,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3131,8 +3195,8 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="right_attach">2</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3151,8 +3215,42 @@
               <packing>
                 <property name="left_attach">2</property>
                 <property name="right_attach">3</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_1s_button">
+                <property name="label" translatable="yes" comments="1's complement">1's</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">1's complement [z]</property>
+                <property name="use_underline">True</property>
+                <property name="focus_on_click">False</property>
+                <signal name="clicked" handler="button_cb"/>
+              </object>
+              <packing>
+                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_2s_button">
+                <property name="label" translatable="yes" comments="2's complement">2's</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">2's complement [Z]</property>
+                <property name="use_underline">True</property>
+                <property name="focus_on_click">False</property>
+                <signal name="clicked" handler="button_cb"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3169,8 +3267,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">6</property>
-                <property name="right_attach">7</property>
+                <property name="left_attach">4</property>
+                <property name="right_attach">5</property>
                 <property name="top_attach">1</property>
                 <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -3189,8 +3287,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">7</property>
-                <property name="right_attach">8</property>
+                <property name="left_attach">5</property>
+                <property name="right_attach">6</property>
                 <property name="top_attach">1</property>
                 <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -3198,21 +3296,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="calc_mask_32_button">
-                <property name="label" translatable="yes" comments="32 bit unsigned integer">&amp;32</property>
+              <object class="GtkButton" id="calc_trunc_button">
+                <property name="label" translatable="yes" comments="Truncate displayed value">Trunc</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">32-bit unsigned integer value of display ([)</property>
+                <property name="tooltip_text" translatable="yes">Truncate displayed value to the chosen word size ([)</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">4</property>
-                <property name="right_attach">5</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">0</property>
+                <property name="bottom_attach">1</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3229,8 +3327,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">7</property>
-                <property name="right_attach">8</property>
+                <property name="left_attach">5</property>
+                <property name="right_attach">6</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3247,8 +3345,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">5</property>
-                <property name="right_attach">6</property>
+                <property name="left_attach">3</property>
+                <property name="right_attach">4</property>
                 <property name="top_attach">1</property>
                 <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -3267,8 +3365,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">5</property>
-                <property name="right_attach">6</property>
+                <property name="left_attach">3</property>
+                <property name="right_attach">4</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3285,28 +3383,8 @@
                 <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
-                <property name="left_attach">6</property>
-                <property name="right_attach">7</property>
-                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_mask_16_button">
-                <property name="label" translatable="yes" comments="16 bit unsigned integer">&amp;16</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">16-bit unsigned integer value of display (])</property>
-                <property name="use_underline">True</property>
-                <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb"/>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="right_attach">4</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
+                <property name="left_attach">4</property>
+                <property name="right_attach">5</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3349,6 +3427,8 @@
               <packing>
                 <property name="left_attach">3</property>
                 <property name="right_attach">4</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>
@@ -3391,6 +3471,8 @@
               <packing>
                 <property name="left_attach">4</property>
                 <property name="right_attach">5</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
                 <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                 <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
               </packing>

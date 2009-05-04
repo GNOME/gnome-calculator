@@ -84,8 +84,9 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "sto"|"Sto"|"STO" {return tSTO;}
 "tanh"|"Tanh"|"TANH" {return tTANH;}
 "tan"|"Tan"|"TAN" {return tTAN;}
-"u16"|"u16"|"U16" {return tU16;}
-"u32"|"u32"|"U32" {return tU32;}
+"trunc"|"Trunc"|"TRUNC" {return tTRUNC;}
+"1s"|"1S" {return t1S;}
+"2s"|"2S" {return t2S;}
 "xnor"|"Xnor"|"XNOR" {return tXNOR;}
 "xor"|"Xor"|"XOR" {return tXOR;}
 

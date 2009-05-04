@@ -75,6 +75,7 @@ To change the gconftool target use the - -config-source=blah option to gconftool
             FINANCIAL
             LOGICAL 
             SCIENTIFIC
+            PROGRAMMING
         </long>
       </locale>
     </schema>
@@ -132,6 +133,22 @@ To change the gconftool target use the - -config-source=blah option to gconftool
             DEG (degrees)
             GRAD (grads)
             RAD (radians).
+        </long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/wordlen</applyto>
+      <key>/schemas/apps/gcalctool/wordlen</key>
+      <owner>gcalctool</owner>
+      <type>int</type>
+      <default>64</default>
+      <locale name="C">
+        <short>Word size</short>
+        <long>
+          The size of the words used in bitwise operations. Valid values are
+            16
+            32
+            64.
         </long>
       </locale>
     </schema>
