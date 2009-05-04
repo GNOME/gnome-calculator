@@ -1,9 +1,30 @@
 /*  gcalctool NEWS.
  *
- *  Copyright (c) 1987-2008 Sun Microsystems, Inc.
+ *  Copyright (c) 1987-2009 Sun Microsystems, Inc.
  *  All Rights Reserved.
  */
  
+Overview of changes in gcalctool 5.27.1
+
+    * Convert Glade UI to GtkBuilder UI (Robert Ancell, David King, Bug #556807)
+
+    * Fix display on startup to be replaced on entry (Robert Ancell, Bug #576975)
+    
+    * Make GConf schemas translatable (Robert Ancell, Bug #571948)
+    
+    * Replace MP number arrays with an MPNumber structure (Robert Ancell)
+
+    * Tidied up error messages (Robert Ancell, Bug #521184)
+
+    * Tidied up GConf schema, use native GConf types (Robert Ancell, Bug #493946)
+      This will cause the gconf schema to be incompatible with gcalctool < 5.26.0.
+      Expect settings to reset to defaults when upgrading.  Switching between
+      versions will cause resets.
+
+    * Fix missing license text in about dialog (Robert Ancell, Bug #579174)
+    
+    * Updated translations: es (Jorge Gonzalez), et (Ivar Smolin)
+
 Overview of changes in gcalctool 5.26.0
 
     * Fix button expansion (nowak2000, Bug #575385)
