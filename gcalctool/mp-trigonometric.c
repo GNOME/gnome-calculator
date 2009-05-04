@@ -27,9 +27,6 @@
 #include "mp.h"
 #include "mp-internal.h"
 
-// FIXME: Needed for doerr
-#include "calctool.h"
-
 /*  COMPARES MP NUMBER X WITH INTEGER I, RETURNING
  *      +1 IF X  >  I,
  *       0 IF X == I,
@@ -80,7 +77,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     b2 = max(MP.b,64) << 1;
     mpmul(x, x, &t2);
     if (mp_compare_mp_to_int(&t2, 1) > 0) {
-        mperr("*** ABS(X) > 1 IN CALL TO MPSIN1 ***\n");
+        mperr("*** ABS(X) > 1 IN CALL TO MPSIN1 ***");
     }
 
     if (do_sin == 0)
@@ -153,7 +150,7 @@ mp_acos(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(-1, &MPn1);
 
     if (mp_is_greater_than(x, &MP1) || mp_is_less_than(x, &MPn1)) {
-        doerr(_("Error"));
+        mperr("Error");
         z->data[0] = 0;
     } else if (x->data[0] == 0) {
         mpdivi(&MPpi, 2, z);
@@ -189,7 +186,7 @@ mp_acosh(const MPNumber *x, MPNumber *z)
 
     mp_set_from_integer(1, &MP1);
     if (mp_is_less_than(x, &MP1)) {
-        doerr(_("Error"));
+        mperr("Error");
         mp_set_from_integer(0, z);
     } else {
         mpmul(x, x, &MP1);
@@ -235,7 +232,7 @@ mp_asin(const MPNumber *x, MPNumber *z)
     /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
     mp_set_from_integer(x->data[0], &t2);
     if (!mp_is_equal(x, &t2)) {
-        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***\n");
+        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***");
     }
 
     /* X == +-1 SO RETURN +-PI/2 */
@@ -336,7 +333,7 @@ mp_atan(const MPNumber *x, MPNumber *z)
         return;
 
     /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
-    mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***\n");
+    mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***");
 }
 
 
@@ -356,7 +353,7 @@ mp_atanh(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(-1, &MPn1);
 
     if (mp_is_greater_equal(x, &MP1) || mp_is_less_equal(x, &MPn1)) {
-        doerr(_("Error"));
+        mperr("Error");
         z->data[0] = 0;
     } else {
         mp_add(&MP1, x, &MP2);
@@ -535,7 +532,7 @@ mp_sin(const MPNumber *x, MPNumber *z)
     /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
      *  B**(T-1) IS TOO SMALL.
      */
-    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n");
+    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***");
 }
 
 
@@ -598,7 +595,8 @@ mp_tan(const MPNumber *x, MPNumber *z)
     mp_cos(x, &MPcos);
     /* Check if COS(x) == 0 */
     if (mp_is_zero(&MPcos)) {
-        doerr(_("Error, cannot calculate cosine"));
+        /* Translators: Error displayed when tangent value is undefined */
+        mperr(_("Tangent is infinite"));
         return;
     }
     mpdiv(&MPsin, &MPcos, z);

@@ -754,7 +754,7 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
 
     val = fabs(number);
     if (v->error && !ignoreError) {
-        STRNCPY(target, _("Error"), target_len - 1);
+        target[0] = '\0';
         return;
     }
     // FIXME: Do this based on the number of digits, not actual values

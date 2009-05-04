@@ -27,7 +27,6 @@
 #include "mp.h"
 #include "mp-internal.h"
 #include "calctool.h"
-#include "display.h"
 
 /* True if errors should be printed to stderr */
 static int mp_show_errors = 0;
@@ -101,8 +100,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     sign_prod = y_sign * x->data[0];
     if (abs(sign_prod) > 1) {
         mpchk(1, 4);
-        mperr("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL.\n"
-              "POSSIBLE OVERWRITING PROBLEM ***\n");
+        mperr("*** SIGN NOT 0, +1 OR -1 IN MPADD2 CALL, POSSIBLE OVERWRITING PROBLEM ***");
         z->data[0] = 0;
         return;
     }
@@ -329,7 +327,7 @@ mp_atan1N(int n, MPNumber *z)
 
     mpchk(2, 6);
     if (n <= 1) {
-        mperr("*** N <= 1 IN CALL TO MP_ATAN1N ***\n");
+        mperr("*** N <= 1 IN CALL TO MP_ATAN1N ***");
         z->data[0] = 0;
         return;
     }
@@ -390,18 +388,18 @@ mpchk(int i, int j)
 
     /* CHECK LEGALITY OF B, T AND M */
     if (MP.b <= 1)
-        mperr("*** B = %d ILLEGAL IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n", MP.b);
+        mperr("*** B = %d ILLEGAL IN CALL TO MPCHK, PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***", MP.b);
     if (MP.t <= 1)
-        mperr("*** T = %d ILLEGAL IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n", MP.t);
+        mperr("*** T = %d ILLEGAL IN CALL TO MPCHK, PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***", MP.t);
     if (MP.m <= MP.t)
-        mperr("*** M <= T IN CALL TO MPCHK.\nPERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***\n");
+        mperr("*** M <= T IN CALL TO MPCHK, PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***");
 
     /*  8*B*B-1 SHOULD BE REPRESENTABLE, IF NOT WILL OVERFLOW
      *  AND MAY BECOME NEGATIVE, SO CHECK FOR THIS
      */
     ib = (MP.b << 2) * MP.b - 1;
     if (ib <= 0 || (ib << 1) + 1 <= 0)
-        mperr("*** B TOO LARGE IN CALL TO MPCHK ***\n");
+        mperr("*** B TOO LARGE IN CALL TO MPCHK ***");
 
     /* CHECK THAT SPACE IN COMMON IS SUFFICIENT */
     mx = i * MP.t + j;
@@ -548,7 +546,7 @@ mpdiv(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* CHECK FOR DIVISION BY ZERO */
     if (y->data[0] == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***\n");
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIV ***");
         z->data[0] = 0;
         return;
     }
@@ -584,7 +582,7 @@ mpdiv(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
     else if (z->data[1] > MP.m) {
         /* OVERFLOW HERE */
-        mpovfl(z, "*** OVERFLOW OCCURRED IN MPDIV ***\n");
+        mpovfl(z, "*** OVERFLOW OCCURRED IN MPDIV ***");
     }
 }
 
@@ -602,7 +600,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     rs = x->data[0];
 
     if (iy == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***\n");
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***");
         z->data[0] = 0;
         return;
     }
@@ -759,7 +757,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
 L210:
     /* CARRY NEGATIVE SO OVERFLOW MUST HAVE OCCURRED */
     mpchk(1, 4);
-    mperr("*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***\n");
+    mperr("*** INTEGER OVERFLOW IN MPDIVI, B TOO LARGE ***");
     z->data[0] = 0;
 }
 
@@ -808,14 +806,15 @@ mp_is_equal(const MPNumber *x, const MPNumber *y)
 void
 mperr(const char *format, ...)
 {
+    char text[MAXLINE];
     va_list args;
     
     if (mp_show_errors) {
         va_start(args, format);
-        (void)vfprintf(stderr, format, args);
+        vsnprintf(text, MAXLINE, format, args);
         va_end(args);
     }
-    doerr(_("Error"));
+    doerr(text);
 }
 
 
@@ -862,7 +861,7 @@ mpexp(const MPNumber *x, MPNumber *y)
 
     if (mp_compare_mp_to_float(x, (float) MP.m * rlb) > 0) {
         /* OVERFLOW HERE */
-        mpovfl(y, "*** OVERFLOW IN SUBROUTINE MPEXP ***\n");
+        mpovfl(y, "*** OVERFLOW IN SUBROUTINE MPEXP ***");
         return;
     }
 
@@ -941,7 +940,7 @@ mpexp(const MPNumber *x, MPNumber *y)
                 return;
             }
             if (y->data[1] > MP.m) {
-                mpovfl(y, "*** OVERFLOW IN SUBROUTINE MPEXP ***\n");
+                mpovfl(y, "*** OVERFLOW IN SUBROUTINE MPEXP ***");
                 return;
             }
         }
@@ -961,7 +960,7 @@ mpexp(const MPNumber *x, MPNumber *y)
      *  B**(T-1) IS TOO SMALL, OR THAT M IS TOO SMALL SO THE
      *  RESULT UNDERFLOWED.
      */
-    mperr("*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n");
+    mperr("*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***");
 }
 
 
@@ -992,7 +991,7 @@ mpexp1(const MPNumber *x, MPNumber *y)
 
     /* CHECK THAT ABS(X) < 1 */
     if (x->data[1] > 0) {
-        mperr("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***\n");
+        mperr("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***");
         y->data[0] = 0;
         return;
     }
@@ -1185,7 +1184,7 @@ mpln(MPNumber *x, MPNumber *y)
 
     /* CHECK THAT X IS POSITIVE */
     if (x->data[0] <= 0) {
-        mperr("*** X NONPOSITIVE IN CALL TO MPLN ***\n");
+        mperr("*** X NONPOSITIVE IN CALL TO MPLN ***");
         y->data[0] = 0;
         return;
     }
@@ -1228,7 +1227,7 @@ mpln(MPNumber *x, MPNumber *y)
         /* MAKE SURE NOT LOOPING INDEFINITELY */
         ++k;
         if (k >= 10) {
-            mperr("*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n");
+            mperr("*** ERROR IN MPLN, ITERATION NOT CONVERGING ***");
             return;
         }
     }
@@ -1275,7 +1274,7 @@ mplns(const MPNumber *x, MPNumber *y)
 
     /* CHECK THAT ABS(X) < 1/B */
     if (x->data[1] + 1 > 0) {
-        mperr("*** ABS(X) >= 1/B IN CALL TO MPLNS ***\n");
+        mperr("*** ABS(X) >= 1/B IN CALL TO MPLNS ***");
         y->data[0] = 0;
         return;
     }
@@ -1326,7 +1325,7 @@ mplns(const MPNumber *x, MPNumber *y)
         
         /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
         if (t3.data[0] != 0 && t3.data[1] << 1 > it0 - MP.t) {
-            mperr("*** ERROR OCCURRED IN MPLNS.\nNEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
+            mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
 
@@ -1435,7 +1434,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
         /* CHECK FOR LEGAL BASE B DIGIT */
         if (xi < 0 || xi >= MP.b) {
-            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
             z->data[0] = 0;
             return;
         }
@@ -1447,7 +1446,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
             j1 = i2p - j;
             ri = MP.r[j1 - 1] + c;
             if (ri < 0) {
-                mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n");
+                mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->data[0] = 0;
                 return;
             }
@@ -1455,7 +1454,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
             MP.r[j1 - 1] = ri - MP.b * c;
         }
         if (c != 0) {
-            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
             z->data[0] = 0;
             return;
         }
@@ -1464,7 +1463,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     if (c != 8) {
         if (xi < 0 || xi >= MP.b) {
-            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
             z->data[0] = 0;
             return;
         }
@@ -1474,7 +1473,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
             j1 = i2p - j;
             ri = MP.r[j1 - 1] + c;
             if (ri < 0) {
-                mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***\n");
+                mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->data[0] = 0;
                 return;
             }
@@ -1483,7 +1482,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
         }
         
         if (c != 0) {
-            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL.\nPOSSIBLE OVERWRITING PROBLEM ***\n");
+            mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
             z->data[0] = 0;
             return;
         }
@@ -1524,7 +1523,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             }
             else {
                 mpchk(1, 4);
-                mpovfl(z, "*** OVERFLOW OCCURRED IN MPMUL2 ***\n");
+                mpovfl(z, "*** OVERFLOW OCCURRED IN MPMUL2 ***");
             }
             return;
         }
@@ -1575,7 +1574,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         /* CHECK FOR INTEGER OVERFLOW */
         if (ri < 0) {
             mpchk(1, 4);
-            mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n");
+            mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***");
             z->data[0] = 0;
             return;
         }
@@ -1600,7 +1599,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         
         if (c < 0) {
             mpchk(1, 4);
-            mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***\n");
+            mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***");
             z->data[0] = 0;
             return;
         }
@@ -1639,7 +1638,7 @@ mpmulq(MPNumber *x, int i, int j, MPNumber *y)
 
     if (j == 0) {
         mpchk(1, 4);
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***\n");
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***");
         y->data[0] = 0;
         return;
     }
@@ -1694,8 +1693,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
     
     /* CHECK THAT SIGN = +-1 */
     if (abs(reg_sign) > 1) {
-        mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_GET_NORMALIZED_REGISTER.\n"
-              "POSSIBLE OVERWRITING PROBLEM ***\n");
+        mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_GET_NORMALIZED_REGISTER, POSSIBLE OVERWRITING PROBLEM ***");
         z->data[0] = 0;
         return;
     }
@@ -1783,7 +1781,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
 
     /* CHECK FOR OVERFLOW */
     if (*reg_exp > MP.m) {
-        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_GET_NORMALIZED_REGISTER ***\n");
+        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_GET_NORMALIZED_REGISTER ***");
         return;
     }
 
@@ -1814,7 +1812,7 @@ static void
 mpovfl(MPNumber *x, const char *error)
 {
     if (mp_show_errors) {
-        fprintf(stderr, "%s", error);
+        fprintf(stderr, "%s\n", error);
     }
     
     mpchk(1, 4);
@@ -1823,7 +1821,7 @@ mpovfl(MPNumber *x, const char *error)
     mpmaxr(x);
 
     /* TERMINATE EXECUTION BY CALLING MPERR */
-    mperr("*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***\n");
+    mperr("*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***");
 }
 
 
@@ -1852,7 +1850,7 @@ mp_get_pi(MPNumber *z)
     if (prec < 0.01) return;
 
     /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
-    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***\n");
+    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***");
 }
 
 
@@ -1872,7 +1870,7 @@ mppwr(const MPNumber *x, int n, MPNumber *y)
         mpchk(4, 10);
         n2 = -n2;
         if (x->data[0] == 0) {
-            mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***\n");
+            mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MPPWR ***");
             y->data[0] = 0;
             return;
         }
@@ -1928,15 +1926,14 @@ mppwr2(MPNumber *x, MPNumber *y, MPNumber *z)
     mpchk(7, 16);
 
     if (x->data[0] < 0) {
-        display_set_error(&v->display, _("Negative X and non-integer Y not supported"));
-        mperr("*** Negative X and non-integer Y not supported ***\n");
+        mperr(_("Negative X and non-integer Y not supported"));
         z->data[0] = 0;
     }
     else if (x->data[0] == 0) 
     {
         /* HERE X IS ZERO, RETURN ZERO IF Y POSITIVE, OTHERWISE ERROR */
         if (y->data[0] <= 0) {
-            mperr("*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***\n");
+            mperr("*** X ZERO AND Y NONPOSITIVE IN CALL TO MPPWR2 ***");
         }
         z->data[0] = 0;
     }
@@ -1976,7 +1973,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
     /* MP_ADD_INTEGER REQUIRES 2T+6 WORDS. */
     if (x->data[0] == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_RECIPROCAL ***\n");
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_RECIPROCAL ***");
         z->data[0] = 0;
         return;
     }
@@ -2042,7 +2039,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
             /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
              *  OR THAT THE STARTING APPROXIMATION IS NOT ACCURATE ENOUGH.
              */
-            mperr("*** ERROR OCCURRED IN MP_RECIPROCAL, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
+            mperr("*** ERROR OCCURRED IN MP_RECIPROCAL, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
 
@@ -2055,7 +2052,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     if (z->data[1] <= MP.m)
         return;
 
-    mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***\n");
+    mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***");
 }
 
 
@@ -2085,7 +2082,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     }
 
     if (n == 0) {
-        mperr("*** N == 0 IN CALL TO MP_ROOT ***\n");
+        mperr("*** N == 0 IN CALL TO MP_ROOT ***");
         z->data[0] = 0;
         return;
     }
@@ -2094,7 +2091,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     /* LOSS OF ACCURACY IF NP LARGE, SO ONLY ALLOW NP <= MAX (B, 64) */
     if (np > max(MP.b, 64)) {
-        mperr("*** ABS(N) TOO LARGE IN CALL TO MP_ROOT ***\n");
+        mperr("*** ABS(N) TOO LARGE IN CALL TO MP_ROOT ***");
         z->data[0] = 0;
         return;
     }
@@ -2106,13 +2103,13 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
         if (n > 0)
             return;
 
-        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***\n");
+        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
         z->data[0] = 0;
         return;
     }
     
     if (x->data[0] < 0  &&  np % 2 == 0) {
-        mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***\n");
+        mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***");
         z->data[0] = 0;
         return;
     }
@@ -2192,7 +2189,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
              *  OR THAT THE INITIAL APPROXIMATION OBTAINED USING ALOG AND EXP
              *  IS NOT ACCURATE ENOUGH.
              */
-            mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***\n");
+            mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
 
@@ -2262,7 +2259,7 @@ mpset(int idecpl, int itmax2)
     /* SET MAXIMUM EXPONENT TO (W-1)/4 */
     MP.m = w / 4;
     if (idecpl <= 0) {
-        mperr("*** IDECPL <= 0 IN CALL TO MPSET ***\n");
+        mperr("*** IDECPL <= 0 IN CALL TO MPSET ***");
         return;
     }
 
@@ -2276,7 +2273,7 @@ mpset(int idecpl, int itmax2)
     /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
     i2 = MP.t + 2;
     if (i2 > itmax2) {
-        mperr("ITMAX2 TOO SMALL IN CALL TO MPSET ***\n*** INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***\n", i2);
+        mperr("ITMAX2 TOO SMALL IN CALL TO MPSET, INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", i2);
 
         /* REDUCE TO MAXIMUM ALLOWED BY DIMENSION STATEMENTS */
         MP.t = itmax2 - 2;
@@ -2302,7 +2299,7 @@ mp_sqrt(const MPNumber *x, MPNumber *z)
     /* MP_ROOT NEEDS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
     i2 = MP.t * 3 + 9;
     if (x->data[0] < 0) {
-        mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MP_SQRT ***\n");
+        mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MP_SQRT ***");
     } else if (x->data[0] == 0) {
         z->data[0] = 0;
     } else {
@@ -2370,8 +2367,8 @@ mp_factorial(MPNumber *MPval, MPNumber *MPres)
      *        then we've overflowed. This is to provide the same look&feel
      *        as V3.
      *
-     *  XXX:  Needs to be improved. Shouldn't need to convert to a double in
-     *        order to check this.
+     *  FIXME:  Needs to be improved. Shouldn't need to convert to a double in
+     *          order to check this.  This will remove the requirement on calctool.h
      */
     mp_set_from_mp(MPval, &MPa);
     mpcmim(MPval, &MP1);
@@ -2391,7 +2388,7 @@ mp_factorial(MPNumber *MPval, MPNumber *MPres)
                 mpmuli(&MPa, i, &MPa);
                 val = mp_cast_to_double(&MPa);
                 if (v->error) {
-                    mperr("Error calculating factorial\n");
+                    mperr("Error calculating factorial");
                     return;
                 }
                 i--;

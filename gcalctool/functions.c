@@ -525,18 +525,26 @@ do_expression(int function, int arg, int cursor)
                         break;
 
                     case -PARSER_ERR_BITWISEOP:
-                        message = _("Invalid bitwise operation parameter(s)");
+                        /* Translators: Error displayed to user when they
+                         * perform an invalid bitwise operation, e.g.
+                         * 1 XOR -1 */
+                        message = _("Invalid bitwise operation");
                         break;
 
                     case -PARSER_ERR_MODULUSOP:
-                        message = _("Invalid modulus operation parameter(s)");
+                        /* Translators: Error displayed to user when they
+                         * perform an invalid modulus operation, e.g.
+                         * 6 MOD 1.2 */
+                        message = _("Invalid modulus operation");
                         break;
 
                     case -MPMATH_ERR:
-                        message = _("Math operation error");
+                        message = v->math_error_text;
                         break;
 
                     default:
+                        /* Translators: Error displayed to user when they
+                         * enter an invalid calculation */
                         message = _("Malformed expression");
                         break;
                 }

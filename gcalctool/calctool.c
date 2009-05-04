@@ -101,6 +101,8 @@ void
 doerr(char *errmes)
 {
     v->math_error = -MPMATH_ERR;
+    free(v->math_error_text);
+    v->math_error_text = strdup(errmes);
 }
 
 /* Default math library exception handling routine. */
@@ -109,10 +111,14 @@ doerr(char *errmes)
 int
 matherr(struct exception *exc)
 {
-    // FIXME: Useless string
-    doerr(_("Error"));
+    char text[MAXLINE];
+    
+    /* Translators: Error displayed to user when the math library reports an
+     * error */
+    snprintf(text, MAXLINE, _("Error in math library function %s"), exc->name);
+    doerr(text);
 
-    return(1);
+    return 1;
 }
 
 static void
@@ -211,6 +217,9 @@ init_state(void)
     v->radix         = get_radix();    /* Locale specific radix string. */
     v->tsep          = get_tsep();     /* Locale specific thousands separator. */
     v->tsep_count    = get_tsep_count();
+    
+    v->math_error = 0;
+    v->math_error_text = strdup("");
    
     if (get_int_resource(R_ACCURACY, &i))
         v->accuracy = i;

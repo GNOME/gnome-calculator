@@ -22,6 +22,8 @@
 #ifndef MP_INTERNAL_H
 #define MP_INTERNAL_H
 
+#include <glib/gi18n.h>
+
 #define min(a, b)   ((a) <= (b) ? (a) : (b))
 #define max(a, b)   ((a) >= (b) ? (a) : (b))
 
