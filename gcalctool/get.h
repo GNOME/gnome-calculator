@@ -27,7 +27,7 @@
 #define R_ACCURACY "accuracy"
 #define R_BASE     "base"
 #define R_DISPLAY  "display"
-#define R_MODE     "modetype"
+#define R_MODE     "mode"
 #define R_REGS     "showregisters"
 #define R_TRIG     "trigtype"
 #define R_ZEROES   "showzeroes"

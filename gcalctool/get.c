@@ -51,7 +51,7 @@ get_resource(const char *key)
 {
     char key_name[MAXLINE];
     SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
-    return(gconf_client_get_string(client, key_name, NULL));
+    return gconf_client_get_string(client, key_name, NULL);
 }
 
 
@@ -67,20 +67,18 @@ set_resource(const char *key, const char *value)
 void
 set_int_resource(const char *key, int value)
 {
-    char intvalue[MAXLINE];
-    SNPRINTF(intvalue, MAXLINE, "%d", value);
-    set_resource(key, intvalue);
+    char key_name[MAXLINE];
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
+    gconf_client_set_int(client, key_name, value, NULL);
 }
 
 
 void
 set_boolean_resource(const char *key, int value)
 {
-    if (value) {
-        set_resource(key, "true");
-    } else {
-        set_resource(key, "false");
-    }
+    char key_name[MAXLINE];
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
+    gconf_client_set_bool(client, key_name, value, NULL);
 }
 
 
@@ -93,42 +91,34 @@ void set_enumerated_resource(const char *key, const char *values[], int value)
 int
 get_int_resource(const char *key, int *intval)
 {
-    char *val;
- 
-    val = get_resource(key);
-    if (!val)
-        return(FALSE);
-    *intval = atoi(val);
+    char key_name[MAXLINE];
+    GError *error = NULL;
+    gint v;
 
-    g_free(val);
-    return(TRUE);
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    v = gconf_client_get_int(client, key_name, &error);
+    if (error)
+        return FALSE;
+    *intval = v;
+    
+    return TRUE;
 }
 
 
 int
 get_boolean_resource(const char *key, int *boolval)
 {
-    char *val, tempstr[MAXLINE];
-    int len, n;
-
-    val = get_resource(key);
-    if (!val)
-        return(FALSE);
-    STRNCPY(tempstr, val, MAXLINE - 1);
-    g_free(val);
-    len = strlen(tempstr);
-    for (n = 0; n < len; n++) {
-        if (isupper((int) tempstr[n])) {
-            tempstr[n] = tolower((int) tempstr[n]);
-        }
-    }
-    if (EQUAL(tempstr, "true")) {
-        *boolval = TRUE;
-    } else {
-        *boolval = FALSE;
-    }
-
-    return(TRUE);
+    char key_name[MAXLINE];
+    GError *error = NULL;
+    gboolean v;
+    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    v = gconf_client_get_bool(client, key_name, &error);
+    if (error)
+        return FALSE;
+    *boolval = v;
+    
+    return TRUE;
 }
 
 
@@ -136,26 +126,28 @@ int
 get_enumerated_resource(const char *key, const char *values[], int *value)
 {
     char *val;
-    int i;
+    int i, retval = FALSE;
 
     val = get_resource(key);
     if (!val)
-       return(FALSE);
+       return FALSE;
    
-    for (i = 0; values[i]; i++)
+    for (i = 0; values[i]; i++) {
        if (strcmp(values[i], val) == 0) {
            *value = i;
-           return(TRUE);
+           retval = TRUE;
+           break;
        }
+    }
+    free(val);
  
-   return(FALSE);
+    return retval;
 }
 
 
 /* Return the radix character. For most locales, this is a period. 
  * If nl_langinfo(RADIXCHAR) returns an empty string, return ",".
  */
-
 const char *
 get_radix()
 {
@@ -177,7 +169,6 @@ get_radix()
 /* Return the thousands separator string. For most locales, this is a 
  * comma. 
  */
-
 const char *
 get_tsep()
 {

@@ -18,7 +18,7 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/accuracy</applyto>
       <key>/schemas/apps/gcalctool/accuracy</key>
       <owner>gcalctool</owner>
-      <type>string</type>
+      <type>int</type>
       <default>9</default>
       <locale name="C">
         <short>Accuracy value</short>
@@ -82,8 +82,8 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/showzeroes</applyto>
       <key>/schemas/apps/gcalctool/showzeroes</key>
       <owner>gcalctool</owner>
-      <type>string</type>
-      <default>false</default>
+      <type>bool</type>
+      <default>FALSE</default>
       <locale name="C">
         <short>Show Trailing Zeroes</short>
         <long>
@@ -92,44 +92,30 @@ To change the gconftool target use the - -config-source=blah option to gconftool
         </long>
       </locale>
     </schema>
-    <schema> 
-      <applyto>/apps/gcalctool/showhelp</applyto> 
-      <key>/schemas/apps/gcalctool/showhelp</key> 
-      <owner>gcalctool</owner> 
-      <type>string</type>
-      <default>false</default> 
-      <locale name="C">  
-        <short>Show Help</short> 
-        <long>  
-          Indicates whether tooltip help should be enabled.
-        </long> 
-      </locale> 
+    <schema>
+      <applyto>/apps/gcalctool/showthousands</applyto>
+      <key>/schemas/apps/gcalctool/showthousands</key>
+      <owner>gcalctool</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Show Thousands Separator</short>
+        <long>
+          Indicates whether thousands separators are shown in large numbers.
+        </long>
+      </locale>
     </schema>
     <schema>
       <applyto>/apps/gcalctool/showregisters</applyto>
       <key>/schemas/apps/gcalctool/showregisters</key>
       <owner>gcalctool</owner>
-      <type>string</type>
-      <default>false</default>
+      <type>bool</type>
+      <default>FALSE</default>
       <locale name="C">
         <short>Show Registers</short>
         <long>
           Indicates whether the memory register window is 
           initially displayed.
-        </long>
-      </locale>
-    </schema>
-    <schema>
-      <applyto>/apps/gcalctool/righthanded</applyto>
-      <key>/schemas/apps/gcalctool/righthanded</key>
-      <owner>gcalctool</owner>
-      <type>string</type>
-      <default>true</default>
-      <locale name="C">
-        <short>Right Handed</short>
-        <long>
-          Indicates whether the calculator is started with a
-          "right-handed" display style.
         </long>
       </locale>
     </schema>
@@ -149,18 +135,29 @@ To change the gconftool target use the - -config-source=blah option to gconftool
         </long>
       </locale>
     </schema>
-    <schema>
-      <applyto>/apps/gcalctool/beep</applyto>
-      <key>/schemas/apps/gcalctool/beep</key>
-      <owner>gcalctool</owner>
-      <type>string</type>
-      <default>true</default>
-      <locale name="C">
-        <short>Beep</short>
+    <schema> 
+      <applyto>/apps/gcalctool/xposition</applyto>
+      <key>/schemas/apps/gcalctool/xposition</key> 
+      <owner>gcalctool</owner> 
+      <type>int</type>
+      <default>-1</default> 
+      <locale name="C"> 
+        <short>The initial x-coordinate for the window</short>
         <long>
-          Indicates whether a beep should sound in the
-          event of an error (such as invalid input, or
-          if the display needs to be cleared).
+          The number of pixels to place the window from the left of the screen.
+        </long>
+      </locale>
+    </schema>
+    <schema> 
+      <applyto>/apps/gcalctool/yposition</applyto>
+      <key>/schemas/apps/gcalctool/yposition</key> 
+      <owner>gcalctool</owner> 
+      <type>int</type>
+      <default>-1</default> 
+      <locale name="C"> 
+        <short>The initial y-coordinate for the window</short>
+        <long>
+          The number of pixels to place the window from the top of the screen.
         </long>
       </locale>
     </schema>
