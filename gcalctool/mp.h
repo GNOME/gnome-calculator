@@ -44,11 +44,13 @@
 
 typedef struct
 {
-   /* data[0] = sign (0, -1 or +1)
-    * data[1] = exponent (to base MP.b)
-    * data[2..MP.t+2] = normalized fraction.
+   /* sign (0, -1 or +1)
+    * exponent (to base MP.b)
+    * fraction = normalized fraction.
     */
-   int data[MP_SIZE];
+   int sign;
+   int exponent;
+   int fraction[MP_SIZE-2]; // Size MP.t?
 } MPNumber;
 
 /* If we're not using GNU C, elide __attribute__ */

@@ -42,8 +42,8 @@ mp_set_from_mp(const MPNumber *x, MPNumber *y)
         return;
 
     /* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
-    if (x->data[0] == 0) {
-        y->data[0] = 0;
+    if (x->sign == 0) {
+        y->sign = 0;
         return;
     }
 
@@ -73,7 +73,7 @@ mp_set_from_float(float rx, MPNumber *z)
         rj = rx;
     } else {
         /* IF RX = 0E0 RETURN 0 */
-        z->data[0] = 0;
+        z->sign = 0;
         return;
     }
 
@@ -163,7 +163,7 @@ mp_set_from_double(double dx, MPNumber *z)
         rs = 1;
         dj = dx;
     } else {
-        z->data[0] = 0;
+        z->sign = 0;
         return;
     } 
 
@@ -228,25 +228,25 @@ mp_set_from_integer(int ix, MPNumber *z)
     mpchk(1, 4);
 
     if (ix == 0) {
-        z->data[0] = 0;
+        z->sign = 0;
         return;
     }
 
     if (ix < 0) {
         ix = -ix;
-        z->data[0] = -1;
+        z->sign = -1;
     }
     else
-        z->data[0] = 1;
+        z->sign = 1;
 
     /* SET EXPONENT TO T */
-    z->data[1] = MP.t;
+    z->exponent = MP.t;
 
     /* CLEAR FRACTION */
-    memset(&z->data[2], 0, (MP.t-1)*sizeof(int));
+    memset(z->fraction, 0, (MP.t-1)*sizeof(int));
 
     /* INSERT IX */
-    z->data[MP.t + 1] = ix;
+    z->fraction[MP.t - 1] = ix;
 
     /* NORMALIZE BY CALLING MPMUL2 */
     mpmul2(z, 1, z, 1);
@@ -260,7 +260,7 @@ mp_set_from_fraction(int i, int j, MPNumber *q)
 
     if (j == 0) {
       mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
-      q->data[0] = 0;
+      q->sign = 0;
       return;
     }
 
@@ -288,17 +288,17 @@ mp_cast_to_int(const MPNumber *x)
 {
     int i, j, k, j1, x2, kx, xs, izs, ret_val = 0;
 
-    xs = x->data[0];
+    xs = x->sign;
     /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */    
-    if (xs == 0  ||  x->data[1] <= 0)
+    if (xs == 0  ||  x->exponent <= 0)
         return 0;
 
-    x2 = x->data[1];
+    x2 = x->exponent;
     for (i = 1; i <= x2; ++i) {
         izs = ret_val;
         ret_val = MP.b * ret_val;
         if (i <= MP.t)
-            ret_val += x->data[i + 1];
+            ret_val += x->fraction[i - 1];
 
         /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
         if (ret_val <= 0 || ret_val <= izs)
@@ -314,7 +314,7 @@ mp_cast_to_int(const MPNumber *x)
         k = x2 + 1 - i;
         kx = 0;
         if (k <= MP.t)
-            kx = x->data[k + 1];
+            kx = x->fraction[k - 1];
         if (kx != j - MP.b * j1)
             return 0;
         j = j1;
@@ -367,12 +367,12 @@ mp_cast_to_float(const MPNumber *x)
     float rb, rz2;
     
     mpchk(1, 4);
-    if (x->data[0] == 0)
+    if (x->sign == 0)
         return 0.0;
 
     rb = (float) MP.b;
     for (i = 1; i <= MP.t; ++i) {
-        rz = rb * rz + (float) x->data[i + 1];
+        rz = rb * rz + (float) x->fraction[i - 1];
         tm = i;
 
         /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
@@ -382,12 +382,12 @@ mp_cast_to_float(const MPNumber *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    rz *= mppow_ri(rb, x->data[1] - tm);
+    rz *= mppow_ri(rb, x->exponent - tm);
 
     /* CHECK REASONABLENESS OF RESULT */
     /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
     if (rz <= (float)0. ||
-        fabs((float) x->data[1] - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
+        fabs((float) x->exponent - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMRE INSTEAD.
          */
@@ -395,7 +395,7 @@ mp_cast_to_float(const MPNumber *x)
         return 0.0;
     }
 
-    if (x->data[0] < 0)
+    if (x->sign < 0)
         rz = -(double)(rz);
     return rz;
 }
@@ -435,12 +435,12 @@ mp_cast_to_double(const MPNumber *x)
     double d__1, db, dz2, ret_val = 0.0;
 
     mpchk(1, 4);
-    if (x->data[0] == 0)
+    if (x->sign == 0)
         return 0.0;
 
     db = (double) MP.b;
     for (i = 1; i <= MP.t; ++i) {
-        ret_val = db * ret_val + (double) x->data[i + 1];
+        ret_val = db * ret_val + (double) x->fraction[i - 1];
         tm = i;
 
         /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
@@ -454,12 +454,12 @@ mp_cast_to_double(const MPNumber *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    ret_val *= mppow_di(db, x->data[1] - tm);
+    ret_val *= mppow_di(db, x->exponent - tm);
 
     /* CHECK REASONABLENESS OF RESULT. */
     /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
     if (ret_val <= 0. ||
-        ((d__1 = (double) ((float) x->data[1]) - (log(ret_val) / log((double)
+        ((d__1 = (double) ((float) x->exponent) - (log(ret_val) / log((double)
                 ((float) MP.b)) + .5), abs(d__1)) > .6)) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMDE INSTEAD.
@@ -469,7 +469,7 @@ mp_cast_to_double(const MPNumber *x)
     }
     else
     {
-        if (x->data[0] < 0)
+        if (x->sign < 0)
             ret_val = -ret_val;
         return ret_val;
     }

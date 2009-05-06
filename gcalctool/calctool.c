@@ -268,7 +268,7 @@ main(int argc, char **argv)
     register_init();
     display_init(&v->display);
     ui_init(&argc, &argv);
-   
+
     get_options(argc, argv);
 
     ui_load();

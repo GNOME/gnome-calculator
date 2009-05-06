@@ -67,8 +67,8 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     mpchk(3, 8);
 
     /* SIN(0) = 0, COS(0) = 1 */
-    if (x->data[0] == 0) {
-        z->data[0] = 0;
+    if (x->sign == 0) {
+        z->sign = 0;
         if (do_sin == 0)
             mp_set_from_integer(1, z);
         return;
@@ -85,7 +85,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     if (do_sin != 0)
         mp_set_from_mp(x, &t1);
 
-    z->data[0] = 0;
+    z->sign = 0;
     i = 1;
     ts = MP.t;
     if (do_sin != 0) {
@@ -95,7 +95,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 
     /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
     do {
-        MP.t = t1.data[1] + ts + 2;
+        MP.t = t1.exponent + ts + 2;
         if (MP.t <= 2)
             break;
 
@@ -117,7 +117,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         i += 2;
         MP.t = ts;
         mp_add(&t1, z, z);
-    } while(t1.data[0] != 0);
+    } while(t1.sign != 0);
 
     MP.t = ts;
     if (do_sin == 0)
@@ -151,11 +151,11 @@ mp_acos(const MPNumber *x, MPNumber *z)
 
     if (mp_is_greater_than(x, &MP1) || mp_is_less_than(x, &MPn1)) {
         mperr("Error");
-        z->data[0] = 0;
-    } else if (x->data[0] == 0) {
+        z->sign = 0;
+    } else if (x->sign == 0) {
         mpdivi(&MPpi, 2, z);
     } else if (mp_is_equal(x, &MP1)) {
-        z->data[0] = 0;
+        z->sign = 0;
     } else if (mp_is_equal(x, &MPn1)) {
         mp_set_from_mp(&MPpi, z);
     } else { 
@@ -164,7 +164,7 @@ mp_acos(const MPNumber *x, MPNumber *z)
         mp_sqrt(&MP2, &MP2);
         mpdiv(&MP2, x, &MP2);
         mp_atan(&MP2, &MPy);
-        if (x->data[0] > 0) {
+        if (x->sign > 0) {
             mp_set_from_mp(&MPy, z);
         } else {
             mp_add(&MPy, &MPpi, z);
@@ -211,12 +211,12 @@ mp_asin(const MPNumber *x, MPNumber *z)
     MPNumber t1, t2;
 
     mpchk(5, 12);
-    if (x->data[0] == 0) {
-        z->data[0] = 0;
+    if (x->sign == 0) {
+        z->sign = 0;
         return;
     }
 
-    if (x->data[1] <= 0) {
+    if (x->exponent <= 0) {
         /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
         mp_set_from_integer(1, &t1);
         mp_set_from_mp(&t1, &t2);
@@ -230,14 +230,14 @@ mp_asin(const MPNumber *x, MPNumber *z)
     }
 
     /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
-    mp_set_from_integer(x->data[0], &t2);
+    mp_set_from_integer(x->sign, &t2);
     if (!mp_is_equal(x, &t2)) {
         mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***");
     }
 
     /* X == +-1 SO RETURN +-PI/2 */
     mp_get_pi(z);
-    mpdivi(z, t2.data[0] << 1, z);
+    mpdivi(z, t2.sign << 1, z);
 }
 
 
@@ -276,21 +276,21 @@ mp_atan(const MPNumber *x, MPNumber *z)
     MPNumber t1, t2;
 
     mpchk(5, 12);
-    if (x->data[0] == 0) {
-        z->data[0] = 0;
+    if (x->sign == 0) {
+        z->sign = 0;
         return;
     }
 
     mp_set_from_mp(x, &t2);
-    if (abs(x->data[1]) <= 2)
+    if (abs(x->exponent) <= 2)
         rx = mp_cast_to_float(x);
 
     q = 1;
 
     /* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
-    while (t2.data[1] >= 0)
+    while (t2.exponent >= 0)
     {
-        if (t2.data[1] == 0 && (t2.data[2] + 1) << 1 <= MP.b)
+        if (t2.exponent == 0 && (t2.fraction[0] + 1) << 1 <= MP.b)
             break;
 
         q <<= 1;
@@ -308,14 +308,14 @@ mp_atan(const MPNumber *x, MPNumber *z)
     ts = MP.t;
 
     /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
-    while ((MP.t = ts + 2 + t2.data[1]) > 1) {
+    while ((MP.t = ts + 2 + t2.exponent) > 1) {
         MP.t = min(MP.t,ts);
         mpmul(&t2, &t1, &t2);
         mpmulq(&t2, -i, i + 2, &t2);
         i += 2;
         MP.t = ts;
         mp_add(z, &t2, z);
-	if (t2.data[0] == 0) break;
+	if (t2.sign == 0) break;
     }
 
     /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
@@ -325,7 +325,7 @@ mp_atan(const MPNumber *x, MPNumber *z)
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
      *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
      */
-    if (abs(x->data[1]) > 2)
+    if (abs(x->exponent) > 2)
         return;
 
     ry = mp_cast_to_float(z);
@@ -354,7 +354,7 @@ mp_atanh(const MPNumber *x, MPNumber *z)
 
     if (mp_is_greater_equal(x, &MP1) || mp_is_less_equal(x, &MPn1)) {
         mperr("Error");
-        z->data[0] = 0;
+        z->sign = 0;
     } else {
         mp_add(&MP1, x, &MP2);
         mp_subtract(&MP1, x, &MP3);
@@ -375,7 +375,7 @@ mp_cos(const MPNumber *x, MPNumber *z)
     MPNumber t;
 
     /* COS(0) = 1 */    
-    if (x->data[0] == 0) {
+    if (x->sign == 0) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -409,7 +409,7 @@ mp_cosh(const MPNumber *x, MPNumber *z)
     MPNumber t;
 
     /* COSH(0) == 1 */    
-    if (x->data[0] == 0) {
+    if (x->sign == 0) {
       mp_set_from_integer(1, z);
       return;
     }
@@ -449,13 +449,13 @@ mp_sin(const MPNumber *x, MPNumber *z)
 
     mpchk(5, 12);
     
-    if (x->data[0] == 0) {
-        z->data[0] = 0;
+    if (x->sign == 0) {
+        z->sign = 0;
         return;
     }
 
-    xs = x->data[0];
-    ie = abs(x->data[1]);
+    xs = x->sign;
+    ie = abs(x->exponent);
     if (ie <= 2)
         rx = mp_cast_to_float(x);
 
@@ -481,31 +481,31 @@ mp_sin(const MPNumber *x, MPNumber *z)
 
         /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
         mp_add_fraction(&t1, -1, 2, &t1);
-        xs = -xs * t1.data[0];
+        xs = -xs * t1.sign;
         if (xs == 0) {
-            z->data[0] = 0;
+            z->sign = 0;
             return;
         }
 
-        t1.data[0] = 1;
+        t1.sign = 1;
         mpmuli(&t1, 4, &t1);
 
         /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (t1.data[1] > 0)
+        if (t1.exponent > 0)
             mp_add_integer(&t1, -2, &t1);
 
-        if (t1.data[0] == 0) {
-            z->data[0] = 0;
+        if (t1.sign == 0) {
+            z->sign = 0;
             return;
         }        
 
-        t1.data[0] = 1;
+        t1.sign = 1;
         mpmuli(&t1, 2, &t1);
 
         /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
          *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
          */
-        if (t1.data[1] > 0) {
+        if (t1.exponent > 0) {
             mp_add_integer(&t1, -2, &t1);
             mpmul(&t1, z, &t1);
             mpsin1(&t1, z, 0);
@@ -515,7 +515,7 @@ mp_sin(const MPNumber *x, MPNumber *z)
         }
     }
 
-    z->data[0] = xs;
+    z->sign = xs;
     if (ie > 2)
         return;
 
@@ -546,9 +546,9 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     int xs;
     MPNumber t1, t2;
 
-    xs = x->data[0];
+    xs = x->sign;
     if (xs == 0) {
-        z->data[0] = 0;
+        z->sign = 0;
         return;
     }
 
@@ -559,7 +559,7 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     mp_abs(x, &t2);
 
     /* HERE ABS(X) < 1 SO USE MPEXP1 TO AVOID CANCELLATION */
-    if (t2.data[1] <= 0) {
+    if (t2.exponent <= 0) {
         mpexp1(&t2, &t1);
         mp_add_integer(&t1, 2, &t2);
         mpmul(&t2, &t1, z);
@@ -614,8 +614,8 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     MPNumber t;
 
     /* TANH(0) = 0 */    
-    if (x->data[0] == 0) {
-        z->data[0] = 0;
+    if (x->sign == 0) {
+        z->sign = 0;
         return;
     }
 
@@ -623,7 +623,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     mpchk(5, 12);
 
     /* SAVE SIGN AND WORK WITH ABS(X) */
-    xs = x->data[0];
+    xs = x->sign;
     mp_abs(x, &t);
 
     /* SEE IF ABS(X) SO LARGE THAT RESULT IS +-1 */
@@ -637,7 +637,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
 
     /* HERE ABS(X) NOT SO LARGE */
     mpmuli(&t, 2, &t);
-    if (t.data[1] > 0) {
+    if (t.exponent > 0) {
         /* HERE ABS(X) >= 1/2 SO USE MPEXP */
         mpexp(&t, &t);
         mp_add_integer(&t, -1, z);
@@ -651,5 +651,5 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     }
 
     /* RESTORE SIGN */
-    z->data[0] = xs * z->data[0];
+    z->sign = xs * z->sign;
 }
