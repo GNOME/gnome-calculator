@@ -58,8 +58,7 @@ mp_set_from_mp(const MPNumber *x, MPNumber *y)
 void
 mp_set_from_float(float rx, MPNumber *z)
 {
-    int i, k, i2, ib, ie, re, tp, rs;
-    int r[MP_SIZE];
+    int i, k, i2, ib, ie, tp;
     float rb, rj;
     
     mpchk(1, 4);
@@ -67,10 +66,10 @@ mp_set_from_float(float rx, MPNumber *z)
 
     /* CHECK SIGN */
     if (rx < (float) 0.0) {
-        rs = -1;
+        z->sign = -1;
         rj = -(double)(rx);
     } else if (rx > (float) 0.0) {
-        rs = 1;
+        z->sign = 1;
         rj = rx;
     } else {
         /* IF RX = 0E0 RETURN 0 */
@@ -94,18 +93,18 @@ mp_set_from_float(float rx, MPNumber *z)
     /*  NOW RJ IS DY DIVIDED BY SUITABLE POWER OF 16.
      *  SET EXPONENT TO 0
      */
-    re = 0;
+    z->exponent = 0;
     rb = (float) MP.b;
 
     /* CONVERSION LOOP (ASSUME SINGLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
         rj = rb * rj;
-        r[i] = (int) rj;
-        rj -= (float) r[i];
+        z->fraction[i] = (int) rj;
+        rj -= (float) z->fraction[i];
     }
 
     /* NORMALIZE RESULT */
-    mp_get_normalized_register(rs, &re, r, z, 0);
+    mp_normalize(z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;
@@ -150,8 +149,7 @@ mp_set_from_random(MPNumber *t)
 void
 mp_set_from_double(double dx, MPNumber *z)
 {
-    int i, k, i2, ib, ie, re, tp, rs;
-    int r[MP_SIZE];
+    int i, k, i2, ib, ie, tp;
     double db, dj;
 
     mpchk(1, 4);
@@ -159,10 +157,10 @@ mp_set_from_double(double dx, MPNumber *z)
 
     /* CHECK SIGN */
     if (dx < 0.)  {
-        rs = -1;
+        z->sign = -1;
         dj = -dx;
     } else if (dx > 0.)  {
-        rs = 1;
+        z->sign = 1;
         dj = dx;
     } else {
         z->sign = 0;
@@ -179,19 +177,19 @@ mp_set_from_double(double dx, MPNumber *z)
     /*  NOW DJ IS DY DIVIDED BY SUITABLE POWER OF 16
      *  SET EXPONENT TO 0
      */
-    re = 0;
+    z->exponent = 0;
 
     db = (double) MP.b;
 
     /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
         dj = db * dj;
-        r[i] = (int) dj;
-        dj -= (double) r[i];
+        z->fraction[i] = (int) dj;
+        dj -= (double) z->fraction[i];
     }
 
     /* NORMALIZE RESULT */
-    mp_get_normalized_register(rs, &re, r, z, 0);
+    mp_normalize(z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;

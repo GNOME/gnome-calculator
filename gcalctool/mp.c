@@ -81,9 +81,8 @@ static void
 mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
 {
     int sign_prod;
-    int exp_diff, exp_result, med;
-    int r[MP_SIZE];
-    
+    int exp_diff, med;
+
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
     if (x->sign == 0) {
         mp_set_from_mp(y, z);
@@ -150,14 +149,16 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     
 L10:
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    exp_result = y->exponent + mpadd3(x, y, r, sign_prod, med);
-    mp_get_normalized_register(y_sign, &exp_result, r, z, trunc);
+    z->sign = y_sign;
+    z->exponent = y->exponent + mpadd3(x, y, z->fraction, sign_prod, med);
+    mp_normalize(z, trunc);
     return;
 
 L20:
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    exp_result = x->exponent + mpadd3(y, x, r, sign_prod, med);
-    mp_get_normalized_register(x->sign, &exp_result, r, z, trunc);
+    z->sign = x->sign;
+    z->exponent = x->exponent + mpadd3(y, x, z->fraction, sign_prod, med);
+    mp_normalize(z, trunc);
     return;
 }
 
@@ -400,9 +401,6 @@ mpchk(int i, int j)
 void
 mpcmf(const MPNumber *x, MPNumber *y)
 {
-    int offset_exp;
-    int r[MP_SIZE];
-
     /* RETURN 0 IF X = 0
        OR IF EXPONENT SO LARGE THAT NO FRACTIONAL PART */    
     if (x->sign == 0 || x->exponent >= MP.t) {
@@ -417,17 +415,18 @@ mpcmf(const MPNumber *x, MPNumber *y)
     }
 
     /* CLEAR ACCUMULATOR */
-    offset_exp = x->exponent;
-    memset(r, 0, offset_exp*sizeof(int));
+    y->sign = x->sign;
+    y->exponent = x->exponent;
+    memset(y->fraction, 0, y->exponent*sizeof(int));
 
     /* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
-    memcpy (r + offset_exp, x->fraction + offset_exp,
-            (MP.t - offset_exp)*sizeof(int));
+    memcpy (y->fraction + y->exponent, x->fraction + x->exponent,
+            (MP.t - x->exponent)*sizeof(int));
 
-    memset(r + MP.t, 0, 4*sizeof(int));
+    memset(y->fraction + MP.t, 0, 4*sizeof(int));
 
     /* NORMALIZE RESULT AND RETURN */
-    mp_get_normalized_register(x->sign, &offset_exp, r, y, 1);
+    mp_normalize(y, 1);
 }
 
 /* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
@@ -590,10 +589,9 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
 {
     int i__1;
     int c, i, k, b2, c2, i2, j1, j2, r1;
-    int j11, kh, re, iq, ir, rs, iqj;
-    int r[MP_SIZE];
+    int j11, kh, iq, ir, iqj;
 
-    rs = x->sign;
+    z->sign = x->sign;
 
     if (iy == 0) {
         mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MPDIVI ***");
@@ -603,13 +601,13 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
 
     if (iy < 0) {
         iy = -iy;
-        rs = -rs;
+        z->sign = -z->sign;
     }
 
-    re = x->exponent;
+    z->exponent = x->exponent;
 
     /* CHECK FOR ZERO DIVIDEND */
-    if (rs == 0) {
+    if (z->sign == 0) {
         z->sign = 0;
         return;
     }
@@ -617,20 +615,20 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     /* CHECK FOR DIVISION BY B */
     if (iy == MP.b) {
         mp_set_from_mp(x, z);
-        if (re <= -MP.m)
+        if (z->exponent <= -MP.m)
         {
             mpunfl(z);
             return;
         }
-        z->sign = rs;
-        z->exponent = re - 1;
+        z->sign = z->sign;
+        z->exponent = z->exponent - 1;
         return;
     }
 
     /* CHECK FOR DIVISION BY 1 OR -1 */
     if (iy == 1) {
         mp_set_from_mp(x, z);
-        z->sign = rs;
+        z->sign = z->sign;
         return;
     }
 
@@ -657,16 +655,16 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         } while(r1 == 0);
 
         /* ADJUST EXPONENT AND GET T+4 DIGITS IN QUOTIENT */
-        re = re + 1 - i;
-        r[0] = r1;
+        z->exponent += 1 - i;
+        z->fraction[0] = r1;
         c = MP.b * (c - iy * r1);
         kh = 2;
         if (i < MP.t) {
             kh = MP.t + 1 - i;
             for (k = 1; k < kh; k++) {
                 c += x->fraction[i];
-                r[k] = c / iy;
-                c = MP.b * (c - iy * r[k]);
+                z->fraction[k] = c / iy;
+                c = MP.b * (c - iy * z->fraction[k]);
                 i++;
             }
             if (c < 0)
@@ -675,14 +673,14 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         }
         
         for (k = kh - 1; k < i2; k++) {
-            r[k] = c / iy;
-            c = MP.b * (c - iy * r[k]);
+            z->fraction[k] = c / iy;
+            c = MP.b * (c - iy * z->fraction[k]);
         }
         if (c < 0)
             goto L210;
         
         /* NORMALIZE AND ROUND RESULT */
-        mp_get_normalized_register(rs, &re, r, z, 0);
+        mp_normalize(z, 0);
 
         return;
     }
@@ -701,7 +699,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     } while (i__1 < 0 || (i__1 == 0 && c2 < j2));
 
     /* COMPUTE T+4 QUOTIENT DIGITS */
-    re = re + 1 - i;
+    z->exponent += 1 - i;
     i--;
     k = 1;
 
@@ -732,7 +730,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         iqj = iq / iy;
 
         /* R(K) = QUOTIENT, C = REMAINDER */
-        r[k - 1] = iqj + ir;
+        z->fraction[k - 1] = iqj + ir;
         c = iq - iy * iqj;
         
         if (c < 0)
@@ -740,7 +738,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         
         ++k;
         if (k > i2) {
-            mp_get_normalized_register(rs, &re, r, z, 0);
+            mp_normalize(z, 0);
             return;
         }
     }
@@ -1385,27 +1383,27 @@ void
 mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     int i__1;
-    int c, i, j, i2, j1, re, ri, xi, rs, i2p;
-    int r[MP_SIZE];
+    int c, i, j, i2, j1, ri, xi, i2p;
+    MPNumber r;
 
     mpchk(1, 4);
     i2 = MP.t + 4;
     i2p = i2 + 1;
 
     /* FORM SIGN OF PRODUCT */
-    rs = x->sign * y->sign;
-    if (rs == 0) {
+    r.sign = x->sign * y->sign;
+    if (r.sign == 0) {
         /* SET RESULT TO ZERO */
         z->sign = 0;
         return;
     }
 
     /* FORM EXPONENT OF PRODUCT */
-    re = x->exponent + y->exponent;
+    r.exponent = x->exponent + y->exponent;
 
     /* CLEAR ACCUMULATOR */
     for (i = 0; i < i2; i++)
-        r[i] = 0;
+        r.fraction[i] = 0;
 
     /* PERFORM MULTIPLICATION */
     c = 8;
@@ -1418,7 +1416,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
             continue;
 
         /* Computing MIN */
-        mpmlp(&r[i+1], y->fraction, xi, min(MP.t, i2 - i - 1));
+        mpmlp(&r.fraction[i+1], y->fraction, xi, min(MP.t, i2 - i - 1));
         --c;
         if (c > 0)
             continue;
@@ -1435,14 +1433,14 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
          */
         for (j = 1; j <= i2; ++j) {
             j1 = i2p - j;
-            ri = r[j1 - 1] + c;
+            ri = r.fraction[j1 - 1] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->sign = 0;
                 return;
             }
             c = ri / MP.b;
-            r[j1 - 1] = ri - MP.b * c;
+            r.fraction[j1 - 1] = ri - MP.b * c;
         }
         if (c != 0) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
@@ -1462,14 +1460,14 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
         c = 0;
         for (j = 1; j <= i2; ++j) {
             j1 = i2p - j;
-            ri = r[j1 - 1] + c;
+            ri = r.fraction[j1 - 1] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->sign = 0;
                 return;
             }
             c = ri / MP.b;
-            r[j1 - 1] = ri - MP.b * c;
+            r.fraction[j1 - 1] = ri - MP.b * c;
         }
         
         if (c != 0) {
@@ -1480,7 +1478,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     /* NORMALIZE AND ROUND RESULT */
-    mp_get_normalized_register(rs, &re, r, z, 0);
+    mp_get_normalized_register(&r, z, 0);
 }
 
 
@@ -1493,24 +1491,23 @@ void
 mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
 {
     int c, i, c1, c2, j1, j2;
-    int t1, t3, t4, ij, re, ri = 0, is, ix, rs;
-    int r[MP_SIZE];
+    int t1, t3, t4, ij, ri = 0, is, ix;
     
-    rs = x->sign;
-    if (rs == 0 || iy == 0) {
+    z->sign = x->sign;
+    if (z->sign == 0 || iy == 0) {
         z->sign = 0;
         return;
     }
 
     if (iy < 0) {
         iy = -iy;
-        rs = -rs;
+        z->sign = -z->sign;
 
         /* CHECK FOR MULTIPLICATION BY B */
         if (iy == MP.b) {
             if (x->exponent < MP.m) {
                 mp_set_from_mp(x, z);
-                z->sign = rs;
+                z->sign = z->sign;
                 z->exponent = x->exponent + 1;
             }
             else {
@@ -1522,7 +1519,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
     }
 
     /* SET EXPONENT TO EXPONENT(X) + 4 */
-    re = x->exponent + 4;
+    z->exponent = x->exponent + 4;
 
     /* FORM PRODUCT IN ACCUMULATOR */
     c = 0;
@@ -1551,7 +1548,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             ri = j2 * ix + c2;
             is = ri / MP.b;
             c = j1 * ix + c1 + is;
-            r[i + 3] = ri - MP.b * is;
+            z->fraction[i + 3] = ri - MP.b * is;
         }
     }
     else
@@ -1560,7 +1557,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             i = t1 - ij;
             ri = iy * x->fraction[i - 1] + c;
             c = ri / MP.b;
-            r[i + 3] = ri - MP.b * c;
+            z->fraction[i + 3] = ri - MP.b * c;
         }
 
         /* CHECK FOR INTEGER OVERFLOW */
@@ -1576,7 +1573,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             i = 5 - ij;
             ri = c;
             c = ri / MP.b;
-            r[i - 1] = ri - MP.b * c;
+            z->fraction[i - 1] = ri - MP.b * c;
         }
     }
 
@@ -1585,7 +1582,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         /* NORMALIZE AND ROUND OR TRUNCATE RESULT */
         if (c == 0)
         {
-            mp_get_normalized_register(rs, &re, r, z, trunc);
+            mp_normalize(z, trunc);
             return;
         }
         
@@ -1598,12 +1595,12 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         
         for (ij = 1; ij <= t3; ++ij) {
             i = t4 - ij;
-            r[i] = r[i - 1];
+            z->fraction[i] = z->fraction[i - 1];
         }
         ri = c;
         c = ri / MP.b;
-        r[0] = ri - MP.b * c;
-        ++re;
+        z->fraction[0] = ri - MP.b * c;
+        z->exponent++;
     }
 }
 
@@ -1662,54 +1659,53 @@ mp_invert_sign(const MPNumber *x, MPNumber *y)
     y->sign = -y->sign;
 }
 
+void
+mp_normalize(MPNumber *x, int trunc)
+{
+    mp_get_normalized_register(x, x, trunc);
+}
 
 /*  ASSUMES LONG (I.E. (T+4)-DIGIT) FRACTION IN
  *  R, SIGN = REG_SIGN, EXPONENT = REG_EXP.  NORMALIZES,
  *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS REG_EXP IS
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
+// FIXME: Is r->fraction large enough?  It seems to be in practise but it may be MP.t+4 instead of MP.t
 void
-mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int trunc)
+mp_get_normalized_register(MPNumber *r, MPNumber *z, int trunc)
 {
-    int i__1;
+    int i__1, i, j, b2, i2, i2m, round;
 
-    int i, j, b2, i2, i2m;
-    int round;
-
-    i2 = MP.t + 4;
-    if (reg_sign == 0) {
-        /* STORE ZERO IN Z */
+    /* Normalized zero is zero */
+    if (r->sign == 0) {
         z->sign = 0;
         return;
     }
     
     /* CHECK THAT SIGN = +-1 */
-    if (abs(reg_sign) > 1) {
+    if (abs(r->sign) > 1) {
         mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_GET_NORMALIZED_REGISTER, POSSIBLE OVERWRITING PROBLEM ***");
         z->sign = 0;
         return;
     }
 
-    /* LOOK FOR FIRST NONZERO DIGIT */
-    for (i = 0; i < i2; i++) {
-        if (r[i] > 0)
-            break;
-    }
+    i2 = MP.t + 4;
 
-    /* FRACTION ZERO */
-    if (i >= i2) {
-        z->sign = 0;
-        return;
-    }
-
-    if (i != 0) {
-        /* NORMALIZE */
-        *reg_exp -= i;
+    /* Normalize by shifting the fraction to the left */    
+    if (r->fraction[0] == 0) {
+        /* Find how many places to shift and detect 0 fraction */
+        for (i = 1; i < i2 && r->fraction[i] == 0; i++);
+        if (i == i2) {
+            z->sign = 0;
+            return;
+        }
+        
+        r->exponent -= i;
         i2m = i2 - i;
         for (j = 0; j < i2m; j++)
-            r[j] = r[j + i];
+            r->fraction[j] = r->fraction[j + i];
         for (; j < i2; j++)
-            r[j] = 0;
+            r->fraction[j] = 0;
     }
 
     /* CHECK TO SEE IF TRUNCATION IS DESIRED */
@@ -1722,7 +1718,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int 
             round = 0;
             /* ODD BASE, ROUND IF R(T+1)... > 1/2 */
             for (i = 0; i < 4; i++) {
-                i__1 = r[MP.t + i] - b2;
+                i__1 = r->fraction[MP.t + i] - b2;
                 if (i__1 < 0)
                     break;
                 else if (i__1 == 0)
@@ -1738,12 +1734,12 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int 
              *  AFTER R(T+2).
              */
             round = 1;
-            i__1 = r[MP.t] - b2;
+            i__1 = r->fraction[MP.t] - b2;
             if (i__1 < 0)
                 round = 0;
             else if (i__1 == 0) {
-                if (r[MP.t - 1] % 2 != 0) {
-                    if (r[MP.t + 1] + r[MP.t + 2] + r[MP.t + 3] == 0) {
+                if (r->fraction[MP.t - 1] % 2 != 0) {
+                    if (r->fraction[MP.t + 1] + r->fraction[MP.t + 2] + r->fraction[MP.t + 3] == 0) {
                         round = 0;
                     }
                 }
@@ -1753,37 +1749,35 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int 
         /* ROUND */
         if (round) {
             for (j = MP.t - 1; j >= 0; j--) {
-                ++r[j];
-                if (r[j] < MP.b)
+                ++r->fraction[j];
+                if (r->fraction[j] < MP.b)
                     break;
-                r[j] = 0;
+                r->fraction[j] = 0;
             }
 
             /* EXCEPTIONAL CASE, ROUNDED UP TO .10000... */
             if (j < 0) {
-                ++(*reg_exp);
-                r[0] = 1;
+                r->exponent++;
+                r->fraction[0] = 1;
             }
         }
     }
 
-    /* CHECK FOR OVERFLOW */
-    if (*reg_exp > MP.m) {
+    /* Check for over and underflow */
+    if (r->exponent > MP.m) {
         mpovfl(z, "*** OVERFLOW OCCURRED IN MP_GET_NORMALIZED_REGISTER ***");
         return;
     }
-
-    /* CHECK FOR UNDERFLOW */
-    if (*reg_exp < -MP.m) {
+    if (r->exponent < -MP.m) {
         mpunfl(z);
         return;
     }
     
-    /* STORE RESULT IN Z */
-    z->sign = reg_sign;
-    z->exponent = *reg_exp;
+    /* Copy result */
+    z->sign = r->sign;
+    z->exponent = r->exponent;
     for (i = 0; i < MP.t; i++)
-        z->fraction[i] = r[i];
+        z->fraction[i] = r->fraction[i];
 }
 
 
