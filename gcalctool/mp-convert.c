@@ -286,19 +286,20 @@ mp_set_from_fraction(int i, int j, MPNumber *q)
 int
 mp_cast_to_int(const MPNumber *x)
 {
-    int i, j, k, j1, x2, kx, xs, izs, ret_val = 0;
+    int i, j, x2, xs, ret_val = 0;
 
+    /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */
     xs = x->sign;
-    /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */    
-    if (xs == 0  ||  x->exponent <= 0)
+    if (xs == 0 || x->exponent <= 0)
         return 0;
 
     x2 = x->exponent;
-    for (i = 1; i <= x2; ++i) {
+    for (i = 0; i < x2; i++) {
+        int izs;
         izs = ret_val;
         ret_val = MP.b * ret_val;
-        if (i <= MP.t)
-            ret_val += x->fraction[i - 1];
+        if (i < MP.t)
+            ret_val += x->fraction[i];
 
         /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
         if (ret_val <= 0 || ret_val <= izs)
@@ -309,12 +310,13 @@ mp_cast_to_int(const MPNumber *x)
      *  HAVE OCCURRED).
      */
     j = ret_val;
-    for (i = 1; i <= x2; ++i) {
+    for (i = x2 - 1; i >= 0; i--) {
+        int j1, kx;
+        
         j1 = j / MP.b;
-        k = x2 + 1 - i;
         kx = 0;
-        if (k <= MP.t)
-            kx = x->fraction[k - 1];
+        if (i < MP.t)
+            kx = x->fraction[i];
         if (kx != j - MP.b * j1)
             return 0;
         j = j1;
@@ -323,8 +325,7 @@ mp_cast_to_int(const MPNumber *x)
         return 0;
 
     /* RESULT CORRECT SO RESTORE SIGN AND RETURN */
-    ret_val = xs * ret_val;
-    return ret_val;
+    return xs * ret_val;
 
     /* Old comment about returning zero: */
     /*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
@@ -335,22 +336,29 @@ mp_cast_to_int(const MPNumber *x)
 static double
 mppow_ri(float ap, int bp)
 {
-    double pow = 1.0;
+    double pow;
+    
+    if (bp == 0)
+        return 1.0;
 
-    if (bp != 0) { 
-        if (bp < 0) {
-            if (ap == 0) return(pow);
-            bp = -bp;
-            ap = 1/ap;
-        }
-        for (;;) { 
-            if (bp & 01)  pow *= ap;
-            if (bp >>= 1) ap *= ap;
-            else break;
-        }
+    if (bp < 0) {
+        if (ap == 0)
+            return 1.0;
+        bp = -bp;
+        ap = 1 / ap;
     }
-
-    return(pow);
+    
+    pow = 1.0;
+    for (;;) { 
+        if (bp & 01)
+            pow *= ap;
+        if (bp >>= 1)
+            ap *= ap;
+        else
+            break;
+    }
+    
+    return pow;
 }
 
 /*  CONVERTS MULTIPLE-PRECISION X TO SINGLE-PRECISION.
@@ -361,28 +369,24 @@ mppow_ri(float ap, int bp)
 float
 mp_cast_to_float(const MPNumber *x)
 {
-    float rz = 0.0;
-
-    int i, tm = 0;
-    float rb, rz2;
+    int i;
+    float rb, rz = 0.0;
     
     mpchk(1, 4);
     if (x->sign == 0)
         return 0.0;
 
     rb = (float) MP.b;
-    for (i = 1; i <= MP.t; ++i) {
-        rz = rb * rz + (float) x->fraction[i - 1];
-        tm = i;
+    for (i = 0; i < MP.t; i++) {
+        rz = rb * rz + (float)x->fraction[i];
 
         /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
-        rz2 = rz + (float) 1.0;
-        if (rz2 <= rz)
+        if (rz + 1.0f <= rz)
             break;
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    rz *= mppow_ri(rb, x->exponent - tm);
+    rz *= mppow_ri(rb, x->exponent - i - 1);
 
     /* CHECK REASONABLENESS OF RESULT */
     /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
@@ -397,6 +401,7 @@ mp_cast_to_float(const MPNumber *x)
 
     if (x->sign < 0)
         rz = -(double)(rz);
+
     return rz;
 }
 
@@ -439,17 +444,17 @@ mp_cast_to_double(const MPNumber *x)
         return 0.0;
 
     db = (double) MP.b;
-    for (i = 1; i <= MP.t; ++i) {
-        ret_val = db * ret_val + (double) x->fraction[i - 1];
+    for (i = 0; i < MP.t; i++) {
+        ret_val = db * ret_val + (double) x->fraction[i];
         tm = i;
 
         /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
-        dz2 = ret_val + 1.;
+        dz2 = ret_val + 1.0;
 
         /*  TEST BELOW NOT ALWAYS EQUIVALENT TO - IF (DZ2.LE.DZ) GO TO 20,
          *  FOR EXAMPLE ON CYBER 76.
          */
-        if (dz2 - ret_val <= 0.)
+        if (dz2 - ret_val <= 0.0)
             break;
     }
 

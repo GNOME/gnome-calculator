@@ -649,10 +649,10 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     if (iy < b2) {
         /* LOOK FOR FIRST NONZERO DIGIT IN QUOTIENT */
         do {
-            ++i;
             c = MP.b * c;
-            if (i <= MP.t)
-                c += x->fraction[i - 1];
+            if (i < MP.t)
+                c += x->fraction[i];
+            i++;
             r1 = c / iy;
             if (r1 < 0)
                 goto L210;
@@ -665,11 +665,11 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         kh = 2;
         if (i < MP.t) {
             kh = MP.t + 1 - i;
-            for (k = 2; k <= kh; ++k) {
-                ++i;
-                c += x->fraction[i - 1];
-                MP.r[k - 1] = c / iy;
-                c = MP.b * (c - iy * MP.r[k - 1]);
+            for (k = 1; k < kh; k++) {
+                c += x->fraction[i];
+                MP.r[k] = c / iy;
+                c = MP.b * (c - iy * MP.r[k]);
+                i++;
             }
             if (c < 0)
                 goto L210;
@@ -690,33 +690,25 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     }
     
     /* HERE NEED SIMULATED DOUBLE-PRECISION DIVISION */
-    c2 = 0;
     j1 = iy / MP.b;
-    j2 = iy - j1 * MP.b;
-    j11 = j1 + 1;
 
     /* LOOK FOR FIRST NONZERO DIGIT */
-    while(1) {
-        i++;
+    c2 = 0;
+    j2 = iy - j1 * MP.b;
+    do {
         c = MP.b * c + c2;
-        c2 = 0;
-        if (i <= MP.t)
-            c2 = x->fraction[i - 1];
         i__1 = c - j1;
-        if (i__1 < 0)
-            continue;
-        else if (i__1 == 0) {
-            if (c2 < j2)
-                continue;
-        }
-        break;
-    }
+        c2 = i < MP.t ? x->fraction[i] : 0;
+        i++;
+    } while (i__1 < 0 || (i__1 == 0 && c2 < j2));
 
     /* COMPUTE T+4 QUOTIENT DIGITS */
     re = re + 1 - i;
+    i--;
     k = 1;
 
     /* MAIN LOOP FOR LARGE ABS(IY) CASE */
+    j11 = j1 + 1;
     while(1) {
         /* GET APPROXIMATE QUOTIENT FIRST */
         ir = c / j11;
@@ -736,8 +728,9 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
             iq += iy;
         }
 
-        if (i <= MP.t)
-            iq += x->fraction[i - 1];
+        if (i < MP.t)
+            iq += x->fraction[i];
+        i++;
         iqj = iq / iy;
 
         /* R(K) = QUOTIENT, C = REMAINDER */
@@ -752,7 +745,6 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
             mp_get_normalized_register(rs, &re, z, 0);
             return;
         }
-        ++i;
     }
 
 L210:
@@ -1356,8 +1348,8 @@ mpmaxr(MPNumber *x)
     it = MP.b - 1;
 
     /* SET FRACTION DIGITS TO B-1 */
-    for (i = 1; i <= MP.t; i++)
-        x->fraction[i - 1] = it;
+    for (i = 0; i < MP.t; i++)
+        x->fraction[i] = it;
 
     /* SET SIGN AND EXPONENT */
     x->sign = 1;
@@ -1395,7 +1387,6 @@ void
 mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     int i__1;
-    
     int c, i, j, i2, j1, re, ri, xi, rs, i2p;
 
     mpchk(1, 4);
@@ -1420,15 +1411,15 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
     /* PERFORM MULTIPLICATION */
     c = 8;
     i__1 = MP.t;
-    for (i = 1; i <= i__1; ++i) {
-        xi = x->fraction[i - 1];
+    for (i = 0; i < i__1; i++) {
+        xi = x->fraction[i];
 
         /* FOR SPEED, PUT THE NUMBER WITH MANY ZEROS FIRST */
         if (xi == 0)
             continue;
 
         /* Computing MIN */
-        mpmlp(&MP.r[i], y->fraction, xi, min(MP.t, i2 - i));
+        mpmlp(&MP.r[i+1], y->fraction, xi, min(MP.t, i2 - i - 1));
         --c;
         if (c > 0)
             continue;
