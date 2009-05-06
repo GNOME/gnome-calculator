@@ -37,15 +37,12 @@ struct {
 
     /* Min/max exponent value */
     int m;
-
-    /* ??? */
-    int r[MP_SIZE];
 } MP;
 
 void mpchk(int i, int j);
 void mpgcd(int *, int *);
 void mpmul2(MPNumber *, int, MPNumber *, int);
-void mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc);
+void mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int trunc);
 void mpexp1(const MPNumber *, MPNumber *);
 void mpmulq(MPNumber *, int, int, MPNumber *);
 void mp_reciprocal(const MPNumber *, MPNumber *);

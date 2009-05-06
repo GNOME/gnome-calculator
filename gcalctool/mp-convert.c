@@ -59,6 +59,7 @@ void
 mp_set_from_float(float rx, MPNumber *z)
 {
     int i, k, i2, ib, ie, re, tp, rs;
+    int r[MP_SIZE];
     float rb, rj;
     
     mpchk(1, 4);
@@ -99,12 +100,12 @@ mp_set_from_float(float rx, MPNumber *z)
     /* CONVERSION LOOP (ASSUME SINGLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
         rj = rb * rj;
-        MP.r[i] = (int) rj;
-        rj -= (float) MP.r[i];
+        r[i] = (int) rj;
+        rj -= (float) r[i];
     }
 
     /* NORMALIZE RESULT */
-    mp_get_normalized_register(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, r, z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;
@@ -150,6 +151,7 @@ void
 mp_set_from_double(double dx, MPNumber *z)
 {
     int i, k, i2, ib, ie, re, tp, rs;
+    int r[MP_SIZE];
     double db, dj;
 
     mpchk(1, 4);
@@ -184,12 +186,12 @@ mp_set_from_double(double dx, MPNumber *z)
     /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
         dj = db * dj;
-        MP.r[i] = (int) dj;
-        dj -= (double) MP.r[i];
+        r[i] = (int) dj;
+        dj -= (double) r[i];
     }
 
     /* NORMALIZE RESULT */
-    mp_get_normalized_register(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, r, z, 0);
 
     /* Computing MAX */
     ib = max(MP.b * 7 * MP.b, 32767) / 16;

@@ -35,7 +35,7 @@ static int mp_compare_mp_to_float(const MPNumber *, float);
 static int pow_ii(int, int);
 
 static void mpadd2(const MPNumber *, const MPNumber *, MPNumber *, int, int);
-static int  mpadd3(const MPNumber *, const MPNumber *, int, int);
+static int  mpadd3(const MPNumber *, const MPNumber *, int *, int, int);
 static void mpext(int, int, MPNumber *);
 static void mplns(const MPNumber *, MPNumber *);
 static void mpmaxr(MPNumber *);
@@ -82,6 +82,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
 {
     int sign_prod;
     int exp_diff, exp_result, med;
+    int r[MP_SIZE];
     
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
     if (x->sign == 0) {
@@ -148,15 +149,15 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     }
     
 L10:
-    exp_result = y->exponent + mpadd3(x, y, sign_prod, med);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mp_get_normalized_register(y_sign, &exp_result, z, trunc);
+    exp_result = y->exponent + mpadd3(x, y, r, sign_prod, med);
+    mp_get_normalized_register(y_sign, &exp_result, r, z, trunc);
     return;
 
 L20:
-    exp_result = x->exponent + mpadd3(y, x, sign_prod, med);
     /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
-    mp_get_normalized_register(x->sign, &exp_result, z, trunc);
+    exp_result = x->exponent + mpadd3(y, x, r, sign_prod, med);
+    mp_get_normalized_register(x->sign, &exp_result, r, z, trunc);
     return;
 }
 
@@ -164,20 +165,18 @@ L20:
 /* CALLED BY MPADD2, DOES INNER LOOPS OF ADDITION */
 /* return value is amount by which exponent needs to be increased. */
 static int
-mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
+mpadd3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
 {
     int i, c;
     
     /* CLEAR GUARD DIGITS TO RIGHT OF X DIGITS */
-    for(i = 3; i >= med; i--) {
-        MP.r[MP.t + i] = 0;
-    }
+    for(i = 3; i >= med; i--)
+        r[MP.t + i] = 0;
 
     if (s >= 0) {
         /* HERE DO ADDITION, EXPONENT(Y) >= EXPONENT(X) */
-        for (i = MP.t + 3; i >= MP.t; i--) {
-            MP.r[i] = x->fraction[i - med];
-        }
+        for (i = MP.t + 3; i >= MP.t; i--)
+            r[i] = x->fraction[i - med];
 
         c = 0;
         for (; i >= med; i--) {
@@ -185,11 +184,11 @@ mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
             
             if (c < MP.b) {
                 /* NO CARRY GENERATED HERE */
-                MP.r[i] = c;
+                r[i] = c;
                 c = 0;
             } else {
                 /* CARRY GENERATED HERE */
-                MP.r[i] = c - MP.b;
+                r[i] = c - MP.b;
                 c = 1;
             }
         }
@@ -198,28 +197,25 @@ mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
         {
             c = y->fraction[i] + c;
             if (c < MP.b) {
-                MP.r[i] = c;
+                r[i] = c;
                 i--;
                 
                 /* NO CARRY POSSIBLE HERE */
                 for (; i >= 0; i--)
-                    MP.r[i] = y->fraction[i];
+                    r[i] = y->fraction[i];
+
                 return 0;
             }
             
-            MP.r[i] = 0;
+            r[i] = 0;
             c = 1;
         }
         
         /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
         if (c != 0) {
-            int j;
-
-            for (j = 2; j <= MP.t + 4; j++) {
-                i = MP.t + 5 - j;
-                MP.r[i] = MP.r[i - 1];
-            }
-            MP.r[0] = 1;
+            for (i = MP.t + 3; i > 0; i--)
+                r[i] = r[i - 1];
+            r[0] = 1;
             return 1;
         }
 
@@ -229,13 +225,13 @@ mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
     c = 0;
     for (i = MP.t + med - 1; i >= MP.t; i--) {
         /* HERE DO SUBTRACTION, ABS(Y) > ABS(X) */
-        MP.r[i] = c - x->fraction[i - med];
+        r[i] = c - x->fraction[i - med];
         c = 0;
         
         /* BORROW GENERATED HERE */    
-        if (MP.r[i] < 0) {
+        if (r[i] < 0) {
             c = -1;
-            MP.r[i] += MP.b;
+            r[i] += MP.b;
         }
     }
 
@@ -243,11 +239,11 @@ mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
         c = y->fraction[i] + c - x->fraction[i - med];
         if (c >= 0) {
             /* NO BORROW GENERATED HERE */
-            MP.r[i] = c;
+            r[i] = c;
             c = 0;
         } else {
             /* BORROW GENERATED HERE */            
-            MP.r[i] = c + MP.b;
+            r[i] = c + MP.b;
             c = -1;
         }
     }
@@ -256,19 +252,20 @@ mpadd3(const MPNumber *x, const MPNumber *y, int s, int med)
         c = y->fraction[i] + c;
 
         if (c >= 0) {
-            MP.r[i] = c;
+            r[i] = c;
             i--;
             
             /* NO CARRY POSSIBLE HERE */
             for (; i >= 0; i--)
-                MP.r[i] = y->fraction[i];
+                r[i] = y->fraction[i];
 
             return 0;
         }
         
-        MP.r[i] = c + MP.b;
+        r[i] = c + MP.b;
         c = -1;
     }
+
     return 0;
 }
 
@@ -404,6 +401,7 @@ void
 mpcmf(const MPNumber *x, MPNumber *y)
 {
     int offset_exp;
+    int r[MP_SIZE];
 
     /* RETURN 0 IF X = 0
        OR IF EXPONENT SO LARGE THAT NO FRACTIONAL PART */    
@@ -420,17 +418,16 @@ mpcmf(const MPNumber *x, MPNumber *y)
 
     /* CLEAR ACCUMULATOR */
     offset_exp = x->exponent;
-    memset(MP.r, 0, offset_exp*sizeof(int));
-
+    memset(r, 0, offset_exp*sizeof(int));
 
     /* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
-    memcpy (MP.r + offset_exp, x->fraction + offset_exp,
+    memcpy (r + offset_exp, x->fraction + offset_exp,
             (MP.t - offset_exp)*sizeof(int));
 
-    memset(MP.r + MP.t, 0, 4*sizeof(int));
+    memset(r + MP.t, 0, 4*sizeof(int));
 
     /* NORMALIZE RESULT AND RETURN */
-    mp_get_normalized_register(x->sign, &offset_exp, y, 1);
+    mp_get_normalized_register(x->sign, &offset_exp, r, y, 1);
 }
 
 /* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
@@ -594,6 +591,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
     int i__1;
     int c, i, k, b2, c2, i2, j1, j2, r1;
     int j11, kh, re, iq, ir, rs, iqj;
+    int r[MP_SIZE];
 
     rs = x->sign;
 
@@ -612,7 +610,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
 
     /* CHECK FOR ZERO DIVIDEND */
     if (rs == 0) {
-        mp_get_normalized_register(rs, &re, z, 0);
+        z->sign = 0;
         return;
     }
 
@@ -660,15 +658,15 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
 
         /* ADJUST EXPONENT AND GET T+4 DIGITS IN QUOTIENT */
         re = re + 1 - i;
-        MP.r[0] = r1;
+        r[0] = r1;
         c = MP.b * (c - iy * r1);
         kh = 2;
         if (i < MP.t) {
             kh = MP.t + 1 - i;
             for (k = 1; k < kh; k++) {
                 c += x->fraction[i];
-                MP.r[k] = c / iy;
-                c = MP.b * (c - iy * MP.r[k]);
+                r[k] = c / iy;
+                c = MP.b * (c - iy * r[k]);
                 i++;
             }
             if (c < 0)
@@ -677,14 +675,14 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         }
         
         for (k = kh - 1; k < i2; k++) {
-            MP.r[k] = c / iy;
-            c = MP.b * (c - iy * MP.r[k]);
+            r[k] = c / iy;
+            c = MP.b * (c - iy * r[k]);
         }
         if (c < 0)
             goto L210;
         
         /* NORMALIZE AND ROUND RESULT */
-        mp_get_normalized_register(rs, &re, z, 0);
+        mp_get_normalized_register(rs, &re, r, z, 0);
 
         return;
     }
@@ -734,7 +732,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         iqj = iq / iy;
 
         /* R(K) = QUOTIENT, C = REMAINDER */
-        MP.r[k - 1] = iqj + ir;
+        r[k - 1] = iqj + ir;
         c = iq - iy * iqj;
         
         if (c < 0)
@@ -742,7 +740,7 @@ mpdivi(const MPNumber *x, int iy, MPNumber *z)
         
         ++k;
         if (k > i2) {
-            mp_get_normalized_register(rs, &re, z, 0);
+            mp_get_normalized_register(rs, &re, r, z, 0);
             return;
         }
     }
@@ -1388,6 +1386,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     int i__1;
     int c, i, j, i2, j1, re, ri, xi, rs, i2p;
+    int r[MP_SIZE];
 
     mpchk(1, 4);
     i2 = MP.t + 4;
@@ -1406,7 +1405,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* CLEAR ACCUMULATOR */
     for (i = 0; i < i2; i++)
-        MP.r[i] = 0;
+        r[i] = 0;
 
     /* PERFORM MULTIPLICATION */
     c = 8;
@@ -1419,7 +1418,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
             continue;
 
         /* Computing MIN */
-        mpmlp(&MP.r[i+1], y->fraction, xi, min(MP.t, i2 - i - 1));
+        mpmlp(&r[i+1], y->fraction, xi, min(MP.t, i2 - i - 1));
         --c;
         if (c > 0)
             continue;
@@ -1436,14 +1435,14 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
          */
         for (j = 1; j <= i2; ++j) {
             j1 = i2p - j;
-            ri = MP.r[j1 - 1] + c;
+            ri = r[j1 - 1] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->sign = 0;
                 return;
             }
             c = ri / MP.b;
-            MP.r[j1 - 1] = ri - MP.b * c;
+            r[j1 - 1] = ri - MP.b * c;
         }
         if (c != 0) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MPMUL, POSSIBLE OVERWRITING PROBLEM ***");
@@ -1463,14 +1462,14 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
         c = 0;
         for (j = 1; j <= i2; ++j) {
             j1 = i2p - j;
-            ri = MP.r[j1 - 1] + c;
+            ri = r[j1 - 1] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MPMUL, B TOO LARGE ***");
                 z->sign = 0;
                 return;
             }
             c = ri / MP.b;
-            MP.r[j1 - 1] = ri - MP.b * c;
+            r[j1 - 1] = ri - MP.b * c;
         }
         
         if (c != 0) {
@@ -1481,7 +1480,7 @@ mpmul(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     /* NORMALIZE AND ROUND RESULT */
-    mp_get_normalized_register(rs, &re, z, 0);
+    mp_get_normalized_register(rs, &re, r, z, 0);
 }
 
 
@@ -1495,6 +1494,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
 {
     int c, i, c1, c2, j1, j2;
     int t1, t3, t4, ij, re, ri = 0, is, ix, rs;
+    int r[MP_SIZE];
     
     rs = x->sign;
     if (rs == 0 || iy == 0) {
@@ -1551,7 +1551,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             ri = j2 * ix + c2;
             is = ri / MP.b;
             c = j1 * ix + c1 + is;
-            MP.r[i + 3] = ri - MP.b * is;
+            r[i + 3] = ri - MP.b * is;
         }
     }
     else
@@ -1560,7 +1560,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             i = t1 - ij;
             ri = iy * x->fraction[i - 1] + c;
             c = ri / MP.b;
-            MP.r[i + 3] = ri - MP.b * c;
+            r[i + 3] = ri - MP.b * c;
         }
 
         /* CHECK FOR INTEGER OVERFLOW */
@@ -1576,7 +1576,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
             i = 5 - ij;
             ri = c;
             c = ri / MP.b;
-            MP.r[i - 1] = ri - MP.b * c;
+            r[i - 1] = ri - MP.b * c;
         }
     }
 
@@ -1585,7 +1585,7 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         /* NORMALIZE AND ROUND OR TRUNCATE RESULT */
         if (c == 0)
         {
-            mp_get_normalized_register(rs, &re, z, trunc);
+            mp_get_normalized_register(rs, &re, r, z, trunc);
             return;
         }
         
@@ -1598,11 +1598,11 @@ mpmul2(MPNumber *x, int iy, MPNumber *z, int trunc)
         
         for (ij = 1; ij <= t3; ++ij) {
             i = t4 - ij;
-            MP.r[i] = MP.r[i - 1];
+            r[i] = r[i - 1];
         }
         ri = c;
         c = ri / MP.b;
-        MP.r[0] = ri - MP.b * c;
+        r[0] = ri - MP.b * c;
         ++re;
     }
 }
@@ -1669,7 +1669,7 @@ mp_invert_sign(const MPNumber *x, MPNumber *y)
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
 void
-mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
+mp_get_normalized_register(int reg_sign, int *reg_exp, int *r, MPNumber *z, int trunc)
 {
     int i__1;
 
@@ -1692,7 +1692,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
 
     /* LOOK FOR FIRST NONZERO DIGIT */
     for (i = 0; i < i2; i++) {
-        if (MP.r[i] > 0)
+        if (r[i] > 0)
             break;
     }
 
@@ -1707,9 +1707,9 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
         *reg_exp -= i;
         i2m = i2 - i;
         for (j = 0; j < i2m; j++)
-            MP.r[j] = MP.r[j + i];
+            r[j] = r[j + i];
         for (; j < i2; j++)
-            MP.r[j] = 0;
+            r[j] = 0;
     }
 
     /* CHECK TO SEE IF TRUNCATION IS DESIRED */
@@ -1722,7 +1722,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
             round = 0;
             /* ODD BASE, ROUND IF R(T+1)... > 1/2 */
             for (i = 0; i < 4; i++) {
-                i__1 = MP.r[MP.t + i] - b2;
+                i__1 = r[MP.t + i] - b2;
                 if (i__1 < 0)
                     break;
                 else if (i__1 == 0)
@@ -1738,12 +1738,12 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
              *  AFTER R(T+2).
              */
             round = 1;
-            i__1 = MP.r[MP.t] - b2;
+            i__1 = r[MP.t] - b2;
             if (i__1 < 0)
                 round = 0;
             else if (i__1 == 0) {
-                if (MP.r[MP.t - 1] % 2 != 0) {
-                    if (MP.r[MP.t + 1] + MP.r[MP.t + 2] + MP.r[MP.t + 3] == 0) {
+                if (r[MP.t - 1] % 2 != 0) {
+                    if (r[MP.t + 1] + r[MP.t + 2] + r[MP.t + 3] == 0) {
                         round = 0;
                     }
                 }
@@ -1753,16 +1753,16 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
         /* ROUND */
         if (round) {
             for (j = MP.t - 1; j >= 0; j--) {
-                ++MP.r[j];
-                if (MP.r[j] < MP.b)
+                ++r[j];
+                if (r[j] < MP.b)
                     break;
-                MP.r[j] = 0;
+                r[j] = 0;
             }
 
             /* EXCEPTIONAL CASE, ROUNDED UP TO .10000... */
             if (j < 0) {
                 ++(*reg_exp);
-                MP.r[0] = 1;
+                r[0] = 1;
             }
         }
     }
@@ -1783,7 +1783,7 @@ mp_get_normalized_register(int reg_sign, int *reg_exp, MPNumber *z, int trunc)
     z->sign = reg_sign;
     z->exponent = *reg_exp;
     for (i = 0; i < MP.t; i++)
-        z->fraction[i] = MP.r[i];
+        z->fraction[i] = r[i];
 }
 
 
