@@ -124,51 +124,71 @@ matherr(struct exception *exc)
 static void
 version()
 {
-    /* FIXME: Mark for translation post 2.26 */
+    /* NOTE: Is not translated so can be easily parsed */
     fprintf(stderr, "%1$s %2$s\n", v->progname, VERSION);
-    exit(1);
+}
+
+static void
+solve(const char *equation)
+{
+    int error;
+    MPNumber result;
+    char result_str[MAXLINE];
+    
+    error = ce_parse(equation, &result);
+    if(error != 0) {
+        fprintf(stderr, "Error %d\n", error);
+        exit(1);
+    }
+    else {
+        mp_cast_to_string(result_str, MAXLINE, &result, basevals[v->base], 9);
+        printf("%s\n", result_str);
+        exit(0);
+    }
 }
 
 static void
 usage(int show_gtk)
 {
-    /* FIXME: Mark for translation post 2.26 */
+    /* Translators: Description on how to use gcalctool displayed on command-line */
     fprintf(stderr,
-            "Usage:\n"
-            "  %s - Perform mathematical calculations\n", v->progname);
+            _("Usage:\n"
+              "  %s - Perform mathematical calculations"), v->progname);
 
     fprintf(stderr,
-            "\n");
+            "\n\n");
 
+    /* Translators: Description on gcalctool command-line help options displayed on command-line */
     fprintf(stderr,
-            "Help Options:\n"
-            "  -v, --version                   Show release version\n"
-            "  -h, -?, --help                  Show help options\n"
-            "  --help-all                      Show all help options\n"
-            "  --help-gtk                      Show GTK+ options\n");
+            _("Help Options:\n"
+              "  -v, --version                   Show release version\n"
+              "  -h, -?, --help                  Show help options\n"
+              "  --help-all                      Show all help options\n"
+              "  --help-gtk                      Show GTK+ options"));
     fprintf(stderr,
-            "\n");
+            "\n\n");
     
     if (show_gtk) {
-        fprintf(stderr,    
-                "GTK+ Options\n"
-                "  --class=CLASS                   Program class as used by the window manager\n"
-                "  --name=NAME                     Program name as used by the window manager\n"
-                "  --screen=SCREEN                 X screen to use\n"
-                "  --sync                          Make X calls synchronous\n"
-                "  --gtk-module=MODULES            Load additional GTK+ modules\n"
-                "  --g-fatal-warnings              Make all warnings fatal\n");
+        /* Translators: Description on gcalctool command-line GTK+ options displayed on command-line */
         fprintf(stderr,
-                "\n");
+                _("GTK+ Options:\n"
+                  "  --class=CLASS                   Program class as used by the window manager\n"
+                  "  --name=NAME                     Program name as used by the window manager\n"
+                  "  --screen=SCREEN                 X screen to use\n"
+                  "  --sync                          Make X calls synchronous\n"
+                  "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+                  "  --g-fatal-warnings              Make all warnings fatal"));
+        fprintf(stderr,
+                "\n\n");
     }
 
+    /* Translators: Description on gcalctool application options displayed on command-line */    
     fprintf(stderr,
-            "Application Options:\n"
-            "  -u, --unittest                  Perform unittests\n");
+            _("Application Options:\n"
+              "  -u, --unittest                  Perform unittests\n"
+              "  -s, --solve <equation>          Solve the given equation"));
     fprintf(stderr,
-            "\n");
-
-    exit(1);
+            "\n\n");
 }
 
 void
@@ -184,22 +204,39 @@ get_options(int argc, char *argv[])
                  strcmp(arg, "--version") == 0 ||
                  strcmp(arg, "-?") == 0) {
             version();
+            exit(0);
         }
         else if (strcmp(arg, "-h") == 0 || 
                  strcmp(arg, "--help") == 0) {
             usage(FALSE);
+            exit(0);
         }
         else if (strcmp(arg, "--help-all") == 0) {
             usage(TRUE);
+            exit(0);
+        }
+        else if (strcmp(arg, "-s") == 0 ||
+            strcmp(arg, "--solve") == 0) {
+            i++;
+            if (i >= argc) {
+                /* Translators: Error printed to stderr when user uses --solve argument without an equation */
+                fprintf(stderr, _("Argument --solve requires an equation to solve"));
+                fprintf(stderr, "\n");
+                exit(1);
+            }
+            else
+                solve(argv[i]);
         }
         else if (strcmp(arg, "-u") == 0 ||
             strcmp(arg, "--unittest") == 0) {
             unittest();
         }
         else {
-            /* FIXME: Mark for translation post 2.26 */
-            fprintf(stderr, "Unknown argument '%s'\n", arg);
+            /* Translators: Error printed to stderr when user provides an unknown command-line argument */
+            fprintf(stderr, _("Unknown argument '%s'"), arg);
+            fprintf(stderr, "\n");
             usage(FALSE);
+            exit(1);
         }
     }
 }

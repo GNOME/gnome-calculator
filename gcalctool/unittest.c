@@ -26,6 +26,8 @@
 #include "calctool.h"
 #include "ce_parser.h"
 
+static int fails = 0;
+
 static void
 test(char *expression, char *expected, int expected_error)
 {
@@ -44,8 +46,10 @@ test(char *expression, char *expected, int expected_error)
     }
     
     mp_cast_to_string(result_str, MAXLINE, &result, basevals[v->base], 9);
-    if(strcmp(result_str, expected) != 0)
+    if(strcmp(result_str, expected) != 0) {
+        fails++;
         printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
+    }
     else
         printf("SUCCESS: '%s' -> '%s'\n", expression, result_str);
 }
@@ -201,6 +205,5 @@ void
 unittest()
 {
     test_parser();
-    
-    exit(1);    
+    exit(fails > 0 ? 1 : 0);
 }
