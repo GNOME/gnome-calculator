@@ -33,13 +33,14 @@ struct {
     int b;
 
     /* Number of digits */
+    // This number is temporarily changed across calls to add/subtract/multiply/divide - it should be passed to those calls
     int t;
 
     /* Min/max exponent value */
     int m;
 } MP;
 
-void mpchk(int i, int j);
+void mpchk();
 void mpgcd(int *, int *);
 void mpmul2(MPNumber *, int, MPNumber *, int);
 void mp_normalize(MPNumber *, int trunc);

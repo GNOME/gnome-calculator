@@ -61,7 +61,7 @@ mp_set_from_float(float rx, MPNumber *z)
     int i, k, i2, ib, ie, tp;
     float rb, rj;
     
-    mpchk(1, 4);
+    mpchk();
     i2 = MP.t + 4;
 
     /* CHECK SIGN */
@@ -152,7 +152,7 @@ mp_set_from_double(double dx, MPNumber *z)
     int i, k, i2, ib, ie, tp;
     double db, dj;
 
-    mpchk(1, 4);
+    mpchk();
     i2 = MP.t + 4;
 
     /* CHECK SIGN */
@@ -225,7 +225,7 @@ mp_set_from_double(double dx, MPNumber *z)
 void
 mp_set_from_integer(int ix, MPNumber *z)
 {
-    mpchk(1, 4);
+    mpchk();
 
     if (ix == 0) {
         z->sign = 0;
@@ -372,7 +372,7 @@ mp_cast_to_float(const MPNumber *x)
     int i;
     float rb, rz = 0.0;
     
-    mpchk(1, 4);
+    mpchk();
     if (x->sign == 0)
         return 0.0;
 
@@ -439,7 +439,7 @@ mp_cast_to_double(const MPNumber *x)
     int i, tm = 0;
     double d__1, db, dz2, ret_val = 0.0;
 
-    mpchk(1, 4);
+    mpchk();
     if (x->sign == 0)
         return 0.0;
 

@@ -248,7 +248,7 @@ init_state(void)
     int acc, i;
 
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
-    mpset(acc, MP_SIZE);
+    mp_init(acc, MP_SIZE);
 
     v->error         = FALSE;  /* No calculator error initially. */
     v->radix         = get_radix();    /* Locale specific radix string. */

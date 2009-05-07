@@ -58,7 +58,7 @@ typedef struct
 #  define  __attribute__(x)  /*NOTHING*/
 #endif
 
-void mp_set_show_errors(int show_errors);
+void mp_init(int, int);
 
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
@@ -99,7 +99,6 @@ void mpmuli(MPNumber *, int, MPNumber *);
 void mp_get_pi(MPNumber *z);
 void mppwr(const MPNumber *, int, MPNumber *);
 void mppwr2(MPNumber *, MPNumber *, MPNumber *);
-void mpset(int, int);
 void mp_root(const MPNumber *x, int n, MPNumber *z);
 void mp_sqrt(const MPNumber *x, MPNumber *z);
 void mp_factorial(MPNumber *, MPNumber *);

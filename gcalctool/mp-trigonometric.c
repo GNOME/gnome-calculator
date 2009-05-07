@@ -39,7 +39,7 @@ mp_compare_mp_to_int(const MPNumber *x, int i)
 {
     MPNumber t;
    
-    mpchk(2, 6);
+    mpchk();
 
     /* CONVERT I TO MULTIPLE-PRECISION AND COMPARE */
     mp_set_from_integer(i, &t);
@@ -64,7 +64,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     int i, b2, ts;
     MPNumber t1, t2;
 
-    mpchk(3, 8);
+    mpchk();
 
     /* SIN(0) = 0, COS(0) = 1 */
     if (x->sign == 0) {
@@ -210,7 +210,7 @@ mp_asin(const MPNumber *x, MPNumber *z)
 {
     MPNumber t1, t2;
 
-    mpchk(5, 12);
+    mpchk();
     if (x->sign == 0) {
         z->sign = 0;
         return;
@@ -275,7 +275,7 @@ mp_atan(const MPNumber *x, MPNumber *z)
     float rx = 0.0, ry;
     MPNumber t1, t2;
 
-    mpchk(5, 12);
+    mpchk();
     if (x->sign == 0) {
         z->sign = 0;
         return;
@@ -381,7 +381,7 @@ mp_cos(const MPNumber *x, MPNumber *z)
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
+    mpchk();
 
     /* SEE IF ABS(X) <= 1 */
     mp_abs(x, z);
@@ -415,7 +415,7 @@ mp_cosh(const MPNumber *x, MPNumber *z)
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
+    mpchk();
     mp_abs(x, &t);
 
     /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
@@ -447,7 +447,7 @@ mp_sin(const MPNumber *x, MPNumber *z)
     float rx = 0.0, ry;
     MPNumber t1, t2;
 
-    mpchk(5, 12);
+    mpchk();
     
     if (x->sign == 0) {
         z->sign = 0;
@@ -553,7 +553,7 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
+    mpchk();
 
     /* WORK WITH ABS(X) */
     mp_abs(x, &t2);
@@ -620,7 +620,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     }
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk(5, 12);
+    mpchk();
 
     /* SAVE SIGN AND WORK WITH ABS(X) */
     xs = x->sign;
