@@ -59,6 +59,9 @@ void
 test_parser()
 {
     v->base = DEC;
+    v->ttype = DEG;
+    v->wordlen = 32;
+    v->accuracy = 9;
 
     test("0", "0", 0);
     test("1", "1", 0);

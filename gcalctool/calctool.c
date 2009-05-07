@@ -136,6 +136,11 @@ solve(const char *equation)
     MPNumber result;
     char result_str[MAXLINE];
     
+    v->base = DEC;
+    v->ttype = DEG;
+    v->wordlen = 32;
+    v->accuracy = 9;
+    
     error = ce_parse(equation, &result);
     if(error != 0) {
         fprintf(stderr, "Error %d\n", error);
