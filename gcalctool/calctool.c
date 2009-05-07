@@ -25,7 +25,7 @@
 #include <assert.h>
 #include <sys/types.h>
 #include <math.h>
-#include <glib.h>
+#include <glib-object.h>
 
 #include "calctool.h"
 #include "unittest.h"
@@ -35,6 +35,7 @@
 #include "ui.h"
 #include "mp.h"
 #include "register.h"
+#include "ce_parser.h"
 
 time_t time();
 
