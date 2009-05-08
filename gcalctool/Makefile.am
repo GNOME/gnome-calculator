@@ -85,8 +85,6 @@ code-format:
 	-cs -d0 -di1 -nfc1 -nfca -hnl -i4 -ip0 -l75 -lp -npcs\
 	-nprs -npsl -nut -saf -sai -saw -nsc -nsob -nss
 
-man1_MANS = gcalctool.1
-
 # Install a symlink between gcalctool and gnome-calculator
 install-exec-hook:
 	test -e "$(DESTDIR)$(bindir)/gnome-calculator" \
@@ -98,7 +96,6 @@ uninstall-local:
 	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
 
 EXTRA_DIST = \
-	$(man1_MANS) \
 	ce_parser.y \
 	ce_tokeniser.l
 
