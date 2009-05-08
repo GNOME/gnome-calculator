@@ -8,7 +8,7 @@ PKG_NAME="gcalctool"
 REQUIRED_AUTOMAKE_VERSION=1.7
 
 (test -f $srcdir/configure.in \
-  && test -d $srcdir/gcalctool) || {
+  && test -d $srcdir/src) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level gcalctool directory"
     exit 1
