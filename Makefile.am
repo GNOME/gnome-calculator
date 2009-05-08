@@ -39,7 +39,6 @@ EXTRA_DIST = \
 	ChangeLog-2002 \
 	MAINTAINERS \
 	TODO \
-	gcalctoolrc \
 	gnome-doc-utils.make	\
 	intltool-extract.in     \
 	intltool-merge.in       \
