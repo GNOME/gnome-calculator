@@ -28,7 +28,7 @@ DISTCLEANFILES =                \
 	intltool-update		\
 	gnome-doc-utils.make
 
-SUBDIRS = po gcalctool data help m4
+SUBDIRS = po src data help m4
 
 EXTRA_DIST = \
 	autogen.sh \
