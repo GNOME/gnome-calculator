@@ -1,5 +1,6 @@
 #include "mp.h"
-#include "calctool.h" // FIXME
+#include "mp-internal.h"
+#include "calctool.h" // FIXME: Used for MAX_DIGITS
 
 static char digits[] = "0123456789ABCDEF";
 

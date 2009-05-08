@@ -24,6 +24,11 @@
 
 #include <glib/gi18n.h>
 
+/* If we're not using GNU C, elide __attribute__ */
+#ifndef __GNUC__
+#  define  __attribute__(x)  /*NOTHING*/
+#endif
+
 #define min(a, b)   ((a) <= (b) ? (a) : (b))
 #define max(a, b)   ((a) >= (b) ? (a) : (b))
 
@@ -40,6 +45,7 @@ struct {
     int m;
 } MP;
 
+void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void mpchk();
 void mpgcd(int *, int *);
 void mpmul2(const MPNumber *, int, MPNumber *, int);

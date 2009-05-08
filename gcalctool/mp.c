@@ -39,6 +39,86 @@ static void mpmaxr(MPNumber *);
 static void mpovfl(MPNumber *, const char *);
 static void mpunfl(MPNumber *);
 
+
+/*  SETS BASE (B) AND NUMBER OF DIGITS (T) TO GIVE THE
+ *  EQUIVALENT OF AT LEAST IDECPL DECIMAL DIGITS.
+ *  IDECPL SHOULD BE POSITIVE.
+ *  ITMAX2 IS THE DIMENSION OF ARRAYS USED FOR MP NUMBERS,
+ *  SO AN ERROR OCCURS IF THE COMPUTED T EXCEEDS ITMAX2 - 2.
+ *  MPSET ALSO SETS
+ *        MXR = MAXDR (DIMENSION OF R IN COMMON, >= T+4), AND
+ *          M = (W-1)/4 (MAXIMUM ALLOWABLE EXPONENT),
+ *  WHERE W IS THE LARGEST INTEGER OF THE FORM 2**K-1 WHICH IS
+ *  REPRESENTABLE IN THE MACHINE, K <= 47
+ *  THE COMPUTED B AND T SATISFY THE CONDITIONS 
+ *  (T-1)*LN(B)/LN(10) >= IDECPL   AND   8*B*B-1 <= W .
+ *  APPROXIMATELY MINIMAL T AND MAXIMAL B SATISFYING
+ *  THESE CONDITIONS ARE CHOSEN.
+ *  PARAMETERS IDECPL, ITMAX2 AND MAXDR ARE INTEGERS.
+ *  BEWARE - MPSET WILL CAUSE AN INTEGER OVERFLOW TO OCCUR
+ *  ******   IF WORDLENGTH IS LESS THAN 48 BITS.
+ *           IF THIS IS NOT ALLOWABLE, CHANGE THE DETERMINATION
+ *           OF W (DO 30 ... TO 30 W = WN) OR SET B, T, M,
+ *           AND MXR WITHOUT CALLING MPSET.
+ *  FIRST SET MXR
+ */
+void
+mp_init(int accuracy)
+{
+    int i, k, w, i2, w2, wn;
+
+    /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
+    w = 0;
+    k = 0;
+
+    /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
+     *  47 TIMES AT MOST.  IF GENUINE INTEGER WORDLENGTH
+     *  EXCEEDS 47 BITS THIS RESTRICTION CAN BE RELAXED.
+     */
+    for (i = 1; i <= 47; ++i) {
+        /*  INTEGER OVERFLOW WILL EVENTUALLY OCCUR HERE
+         *  IF WORDLENGTH < 48 BITS
+         */
+        w2 = w + w;
+        wn = w2 + 1;
+
+        /*  APPARENTLY REDUNDANT TESTS MAY BE NECESSARY ON SOME
+         *  MACHINES, DEPENDING ON HOW INTEGER OVERFLOW IS HANDLED
+         */
+        if (wn <= w || wn <= w2 || wn <= 0)
+            break;
+        k = i;
+        w = wn;
+    }
+
+    /* SET MAXIMUM EXPONENT TO (W-1)/4 */
+    MP.m = w / 4;
+    if (accuracy <= 0) {
+        mperr("*** ACCURACY <= 0 IN CALL TO MPSET ***");
+        return;
+    }
+
+    /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) <= W */
+    MP.b = pow_ii(2, (k - 3) / 2);
+
+    /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
+    MP.t = (int) ((float) (accuracy) * log((float)10.) / log((float) MP.b) + 
+                  (float) 2.0);
+
+    /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
+    i2 = MP.t;
+    if (i2 > MP_SIZE) {
+        mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", i2);
+
+        /* REDUCE TO MAXIMUM ALLOWED BY DIMENSION STATEMENTS */
+        MP.t = MP_SIZE;
+    }
+    
+    /* CHECK LEGALITY OF B, T, M AND MXR (AT LEAST T+4) */
+    mpchk();
+}
+
+
 /* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 void
 mp_abs(const MPNumber *x, MPNumber *y)
@@ -2109,84 +2189,6 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     mp_set_from_mp(&t1, z);
 }
 
-
-/*  SETS BASE (B) AND NUMBER OF DIGITS (T) TO GIVE THE
- *  EQUIVALENT OF AT LEAST IDECPL DECIMAL DIGITS.
- *  IDECPL SHOULD BE POSITIVE.
- *  ITMAX2 IS THE DIMENSION OF ARRAYS USED FOR MP NUMBERS,
- *  SO AN ERROR OCCURS IF THE COMPUTED T EXCEEDS ITMAX2 - 2.
- *  MPSET ALSO SETS
- *        MXR = MAXDR (DIMENSION OF R IN COMMON, >= T+4), AND
- *          M = (W-1)/4 (MAXIMUM ALLOWABLE EXPONENT),
- *  WHERE W IS THE LARGEST INTEGER OF THE FORM 2**K-1 WHICH IS
- *  REPRESENTABLE IN THE MACHINE, K <= 47
- *  THE COMPUTED B AND T SATISFY THE CONDITIONS 
- *  (T-1)*LN(B)/LN(10) >= IDECPL   AND   8*B*B-1 <= W .
- *  APPROXIMATELY MINIMAL T AND MAXIMAL B SATISFYING
- *  THESE CONDITIONS ARE CHOSEN.
- *  PARAMETERS IDECPL, ITMAX2 AND MAXDR ARE INTEGERS.
- *  BEWARE - MPSET WILL CAUSE AN INTEGER OVERFLOW TO OCCUR
- *  ******   IF WORDLENGTH IS LESS THAN 48 BITS.
- *           IF THIS IS NOT ALLOWABLE, CHANGE THE DETERMINATION
- *           OF W (DO 30 ... TO 30 W = WN) OR SET B, T, M,
- *           AND MXR WITHOUT CALLING MPSET.
- *  FIRST SET MXR
- */
-void
-mp_init(int idecpl, int itmax2)
-{
-    int i, k, w, i2, w2, wn;
-
-    /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
-    w = 0;
-    k = 0;
-
-    /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
-     *  47 TIMES AT MOST.  IF GENUINE INTEGER WORDLENGTH
-     *  EXCEEDS 47 BITS THIS RESTRICTION CAN BE RELAXED.
-     */
-    for (i = 1; i <= 47; ++i) {
-        /*  INTEGER OVERFLOW WILL EVENTUALLY OCCUR HERE
-         *  IF WORDLENGTH < 48 BITS
-         */
-        w2 = w + w;
-        wn = w2 + 1;
-
-        /*  APPARENTLY REDUNDANT TESTS MAY BE NECESSARY ON SOME
-         *  MACHINES, DEPENDING ON HOW INTEGER OVERFLOW IS HANDLED
-         */
-        if (wn <= w || wn <= w2 || wn <= 0)
-            break;
-        k = i;
-        w = wn;
-    }
-
-    /* SET MAXIMUM EXPONENT TO (W-1)/4 */
-    MP.m = w / 4;
-    if (idecpl <= 0) {
-        mperr("*** IDECPL <= 0 IN CALL TO MPSET ***");
-        return;
-    }
-
-    /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) <= W */
-    MP.b = pow_ii(2, (k - 3) / 2);
-
-    /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
-    MP.t = (int) ((float) (idecpl) * log((float)10.) / log((float) MP.b) + 
-                  (float) 2.0);
-
-    /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
-    i2 = MP.t;
-    if (i2 > itmax2) {
-        mperr("ITMAX2 TOO SMALL IN CALL TO MPSET, INCREASE ITMAX2 AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", i2);
-
-        /* REDUCE TO MAXIMUM ALLOWED BY DIMENSION STATEMENTS */
-        MP.t = itmax2;
-    }
-    
-    /* CHECK LEGALITY OF B, T, M AND MXR (AT LEAST T+4) */
-    mpchk();
-}
 
 /*  RETURNS Z = SQRT(X), USING SUBROUTINE MP_ROOT IF X > 0.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 4T+10

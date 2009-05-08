@@ -40,8 +40,10 @@
 #ifndef MP_H
 #define MP_H
 
-#define MP_SIZE      1000     /* Size of the multiple precision values. */
+/* Size of the multiple precision values */
+#define MP_SIZE 1000
 
+/* Object for a high precision floating point number representation */
 typedef struct
 {
    /* Sign (+1, -1) or 0 for the value zero */
@@ -54,14 +56,10 @@ typedef struct
    int fraction[MP_SIZE]; // Size MP.t?
 } MPNumber;
 
-/* If we're not using GNU C, elide __attribute__ */
-#ifndef __GNUC__
-#  define  __attribute__(x)  /*NOTHING*/
-#endif
-
-void   mp_init(int, int);
-
-void   mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
+/* Initialise the MP state.  Must be called only once and before any other MP function
+ * 'accuracy' is the requested accuracy required.
+ */
+void   mp_init(int accuracy);
 
 /* Returns:
  *  0 if x == y
@@ -79,19 +77,19 @@ int    mp_is_negative(const MPNumber *x);
 /* Return true if x is integer */
 int    mp_is_integer(const MPNumber *x);
 
-/* Return true if x is a natural number (an integer >= 0) */
+/* Return true if x is a natural number (an integer ≥ 0) */
 int    mp_is_natural(const MPNumber *x);
 
 /* Return true if x == y */
 int    mp_is_equal(const MPNumber *x, const MPNumber *y);
 
-/* Return true if x >= y */
+/* Return true if x ≥ y */
 int    mp_is_greater_equal(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x > y */
 int    mp_is_greater_than(const MPNumber *x, const MPNumber *y);
 
-/* Return true if x <= y */
+/* Return true if x ≤ y */
 int    mp_is_less_equal(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x < y */
