@@ -117,7 +117,7 @@ mp_set_from_float(float rx, MPNumber *z)
             tp <<= 4;
             if (tp <= ib && tp != MP.b && i < k)
                 continue;
-            mpdivi(z, tp, z);
+            mp_divide_integer(z, tp, z);
             tp = 1;
         }
     } else if (ie > 0)  {
@@ -125,7 +125,7 @@ mp_set_from_float(float rx, MPNumber *z)
             tp <<= 4;
             if (tp <= ib && tp != MP.b && i < ie)
                 continue;
-            mpmuli(z, tp, z);
+            mp_multiply_integer(z, tp, z);
             tp = 1;
         }
     }
@@ -134,9 +134,9 @@ mp_set_from_float(float rx, MPNumber *z)
 }
 
 void
-mp_set_from_random(MPNumber *t)
+mp_set_from_random(MPNumber *z)
 {
-    mp_set_from_double(drand48(), t);
+    mp_set_from_double(drand48(), z);
 }
 
 /*  CONVERTS DOUBLE-PRECISION NUMBER DX TO MULTIPLE-PRECISION Z.
@@ -202,7 +202,7 @@ mp_set_from_double(double dx, MPNumber *z)
             tp <<= 4;
             if (tp <= ib && tp != MP.b && i < k)
                 continue;
-            mpdivi(z, tp, z);
+            mp_divide_integer(z, tp, z);
             tp = 1;
         }
     } else if (ie > 0) {
@@ -210,7 +210,7 @@ mp_set_from_double(double dx, MPNumber *z)
             tp <<= 4;
             if (tp <= ib && tp != MP.b && i < ie)
                 continue;
-            mpmuli(z, tp, z);
+            mp_multiply_integer(z, tp, z);
             tp = 1;
         }
     }
@@ -270,12 +270,12 @@ mp_set_from_fraction(int i, int j, MPNumber *q)
     }
 
     mp_set_from_integer(i, q);
-    if (j != 1) mpdivi(q, j, q);
+    if (j != 1) mp_divide_integer(q, j, q);
 }
 
 /*  CONVERTS MULTIPLE-PRECISION X TO INTEGER, AND
  *  RETURNS RESULT.
- *  ASSUMING THAT X NOT TOO LARGE (ELSE USE MPCMIM).
+ *  ASSUMING THAT X NOT TOO LARGE (ELSE USE MP_INTEGER_COMPONENT)
  *  X IS TRUNCATED TOWARDS ZERO.
  *  IF INT(X)IS TOO LARGE TO BE REPRESENTED AS A SINGLE-
  *  PRECISION INTEGER, IZ IS RETURNED AS ZERO.  THE USER
@@ -485,14 +485,14 @@ mp_cast_to_double(const MPNumber *x)
  * maximum number of digits specified.
  */
 void
-mp_cast_to_string(char *target, int target_len, const MPNumber *MPnumber, int base, int accuracy)
+mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer, int buffer_length)
 {
     static char digits[] = "0123456789ABCDEF";
     char *optr, *start, *end, *stopper, *last_non_zero;
     MPNumber number, integer_component, fractional_component, MPbase, temp;
    
-    optr = target;
-    stopper = target + target_len - 1;
+    optr = buffer;
+    stopper = buffer + buffer_length - 1;
 
     /* Insert sign */
     if (mp_is_negative(MPnumber)) {
@@ -504,14 +504,14 @@ mp_cast_to_string(char *target, int target_len, const MPNumber *MPnumber, int ba
    
     /* Add rounding factor */
     mp_set_from_integer(base, &MPbase);
-    mppwr(&MPbase, -(accuracy+1), &temp);
-    mpmuli(&temp, base, &temp);
-    mpdivi(&temp, 2, &temp);
+    mp_pwr_integer(&MPbase, -(accuracy+1), &temp);
+    mp_multiply_integer(&temp, base, &temp);
+    mp_divide_integer(&temp, 2, &temp);
     mp_add(&number, &temp, &number);
 
     /* Split into integer and fractional component */
-    mpcmim(&number, &integer_component);
-    mpcmf(&number, &fractional_component);  
+    mp_integer_component(&number, &integer_component);
+    mp_fractional_component(&number, &fractional_component);  
 
     /* Write out the integer component least significant digit to most */
     start = optr;
@@ -519,12 +519,12 @@ mp_cast_to_string(char *target, int target_len, const MPNumber *MPnumber, int ba
     do {
         MPNumber t, t2, t3;
        
-        mpdivi(&temp, base, &t);
-        mpcmim(&t, &t);
-        mpmuli(&t, base, &t2);
+        mp_divide_integer(&temp, base, &t);
+        mp_integer_component(&t, &t);
+        mp_multiply_integer(&t, base, &t2);
        
         mp_subtract(&temp, &t2, &t3);
-        mpcmim(&t3, &t3);
+        mp_integer_component(&t3, &t3);
 
         if (optr == stopper) {
             mperr(_("Number too big to represent"));
@@ -562,8 +562,8 @@ mp_cast_to_string(char *target, int target_len, const MPNumber *MPnumber, int ba
         int d;
         MPNumber digit;
 
-        mpmuli(&temp, base, &temp);
-        mpcmim(&temp, &digit);
+        mp_multiply_integer(&temp, base, &temp);
+        mp_integer_component(&temp, &digit);
         d = mp_cast_to_int(&digit);
        
         if (optr == stopper) {
@@ -631,7 +631,7 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
     /* Convert integer part */
     mp_set_from_integer(0, MPval);
     while ((inum = char_val(*optr, base)) >= 0) {
-        mpmuli(MPval, base, MPval);
+        mp_multiply_integer(MPval, base, MPval);
         mp_add_integer(MPval, inum, MPval);
         optr++;
     }
@@ -645,12 +645,12 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
         mp_set_from_integer(0, &numerator);
         mp_set_from_integer(1, &denominator);
         while ((inum = char_val(*optr, base)) >= 0) {
-	    mpmuli(&denominator, base, &denominator);
-	    mpmuli(&numerator, base, &numerator);
+	    mp_multiply_integer(&denominator, base, &denominator);
+	    mp_multiply_integer(&numerator, base, &numerator);
 	    mp_add_integer(&numerator, inum, &numerator);
             optr++;
         }
-        mpdiv(&numerator, &denominator, &numerator);
+        mp_divide(&numerator, &denominator, &numerator);
         mp_add(MPval, &numerator, MPval);
     }
    
@@ -672,7 +672,7 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
         /* Get magnitude */
         mp_set_from_integer(0, &MPexponent);
         while ((inum = char_val(*optr, base)) >= 0) {
-            mpmuli(&MPexponent, base, &MPexponent);
+            mp_multiply_integer(&MPexponent, base, &MPexponent);
             mp_add_integer(&MPexponent, inum, &MPexponent);
             optr++;
         }
@@ -681,8 +681,8 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
         }
 
         mp_set_from_integer(base, &MPbase);       
-        mppwr2(&MPbase, &MPexponent, &temp);
-        mpmul(MPval, &temp, MPval);
+        mp_pwr(&MPbase, &MPexponent, &temp);
+        mp_multiply(MPval, &temp, MPval);
     }
 
     /* Strip trailing whitespace */

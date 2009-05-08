@@ -53,14 +53,14 @@ to_rad(const MPNumber *s1, MPNumber *t1)
 
     if (v->ttype == DEG) {
         mp_get_pi(&MP1);
-        mpmul(s1, &MP1, &MP2);
+        mp_multiply(s1, &MP1, &MP2);
         mp_set_from_integer(180, &MP1);
-        mpdiv(&MP2, &MP1, t1);
+        mp_divide(&MP2, &MP1, t1);
     } else if (v->ttype == GRAD) {
         mp_get_pi(&MP1);
-        mpmul(s1, &MP1, &MP2);
+        mp_multiply(s1, &MP1, &MP2);
         mp_set_from_integer(200, &MP1);
-        mpdiv(&MP2, &MP1, t1);
+        mp_divide(&MP2, &MP1, t1);
     } else {
         mp_set_from_mp(s1, t1);
     }
@@ -75,9 +75,9 @@ do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1)
 
         case DEG:
             mp_set_from_integer(180, &MP1);
-            mpmul(s1, &MP1, &MP2);
+            mp_multiply(s1, &MP1, &MP2);
             mp_get_pi(&MP1);
-            mpdiv(&MP2, &MP1, t1);
+            mp_divide(&MP2, &MP1, t1);
             break;
 
         case RAD:
@@ -86,9 +86,9 @@ do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1)
 
         case GRAD:
             mp_set_from_integer(200, &MP1);
-            mpmul(s1, &MP1, &MP2);
+            mp_multiply(s1, &MP1, &MP2);
             mp_get_pi(&MP1);
-            mpdiv(&MP2, &MP1, t1);
+            mp_divide(&MP2, &MP1, t1);
             break;
 
         default:
@@ -147,7 +147,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(result_str, MAXLINE, &result, basevals[v->base], 9);
+        mp_cast_to_string(&result, basevals[v->base], 9, result_str, MAXLINE);
         printf("%s\n", result_str);
         exit(0);
     }

@@ -660,39 +660,39 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     mp_set_from_mp(&MPval, &MPmant);
 
     mp_set_from_integer(basevals[base], &MP1base);
-    mppwr(&MP1base, 3, &MP3base);
+    mp_pwr_integer(&MP1base, 3, &MP3base);
 
-    mppwr(&MP1base, 10, &MP10base);
+    mp_pwr_integer(&MP1base, 10, &MP10base);
 
     mp_set_from_integer(1, &MP1);
-    mpdiv(&MP1, &MP10base, &MPatmp);
+    mp_divide(&MP1, &MP10base, &MPatmp);
 
     mp_set_from_integer(0, &MP1);
     if (!mp_is_equal(&MPmant, &MP1)) {
         while (!eng && mp_is_greater_equal(&MPmant, &MP10base)) {
             exp += 10;
-            mpmul(&MPmant, &MPatmp, &MPmant);
+            mp_multiply(&MPmant, &MPatmp, &MPmant);
         }
  
         while ((!eng &&  mp_is_greater_equal(&MPmant, &MP1base)) ||
                 (eng && (mp_is_greater_equal(&MPmant, &MP3base) || exp % 3 != 0))) {
             exp += 1;
-            mpdiv(&MPmant, &MP1base, &MPmant);
+            mp_divide(&MPmant, &MP1base, &MPmant);
         }
  
         while (!eng && mp_is_less_than(&MPmant, &MPatmp)) {
             exp -= 10;
-            mpmul(&MPmant, &MP10base, &MPmant);
+            mp_multiply(&MPmant, &MP10base, &MPmant);
         }
  
         mp_set_from_integer(1, &MP1);
         while (mp_is_less_than(&MPmant, &MP1) || (eng && exp % 3 != 0)) {
             exp -= 1;
-            mpmul(&MPmant, &MP1base, &MPmant);
+            mp_multiply(&MPmant, &MP1base, &MPmant);
         }
     }
  
-    mp_cast_to_string(fixed, MAX_DIGITS, &MPmant, basevals[base], v->accuracy);
+    mp_cast_to_string(&MPmant, basevals[base], v->accuracy, fixed, MAX_DIGITS);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -711,7 +711,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     mp_add_integer(&MP1, exp, &MPval);
     mp_set_from_integer(1, &MP1);
     for (ddig = 0; mp_is_greater_equal(&MPval, &MP1); ddig++) {
-        mpdiv(&MPval, &MP1base, &MPval);
+        mp_divide(&MPval, &MP1base, &MPval);
     }
  
     if (ddig == 0) {
@@ -719,7 +719,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     }
  
     while (ddig-- > 0) {
-        mpmul(&MPval, &MP1base, &MPval);
+        mp_multiply(&MPval, &MP1base, &MPval);
         dval = mp_cast_to_int(&MPval);
         *optr++ = digits[dval];
         dval = -dval;
@@ -763,6 +763,6 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
         (display->format == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(display, target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(target, target_len, MPnumber, basevals[base], v->accuracy);
+        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, target, target_len);
     }
 }

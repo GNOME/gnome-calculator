@@ -19,6 +19,9 @@
  *  02111-1307, USA.
  */
 
+#include <stdio.h>
+#include <stdarg.h>
+
 #include "unittest.h"
 
 #include "display.h"
@@ -28,30 +31,56 @@
 
 static int fails = 0;
 
+static void pass(const char *format, ...) __attribute__((format(printf, 1, 2)));
+static void fail(const char *format, ...) __attribute__((format(printf, 1, 2)));
+
+static void pass(const char *format, ...)
+{
+    va_list args;
+
+    printf(" PASS: ");
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+    printf("\n");    
+}
+
+static void fail(const char *format, ...)
+{
+    va_list args;
+
+    printf("*FAIL: ");
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+    printf("\n");
+    fails++;
+}
+
 static void
 test(char *expression, char *expected, int expected_error)
 {
     int error;
     MPNumber result;
-    char result_str[MAXLINE];
+    char result_str[MAXLINE] = "";
     
     error = ce_parse(expression, &result);
-    if(error != 0 || error != expected_error)
-    {
-        if(error == expected_error)
-            printf("SUCCESS: '%s' -> error %d\n", expression, error);
+
+    if(error == 0) {
+        mp_cast_to_string(&result, basevals[v->base], 9, result_str, MAXLINE);
+        if(expected_error != 0)
+            fail("'%s' -> %s, expected error %d", expression, result_str, expected_error);
+        else if(strcmp(result_str, expected) != 0)
+            fail("'%s' -> '%s', expected '%s'", expression, result_str, expected);
         else
-            printf("FAIL: '%s' -> error %d, expected error %d and result '%s'\n", expression, error, expected_error, expected);
-        return;
+            pass("'%s' -> '%s'", expression, result_str);
     }
-    
-    mp_cast_to_string(result_str, MAXLINE, &result, basevals[v->base], 9);
-    if(strcmp(result_str, expected) != 0) {
-        fails++;
-        printf("FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
+    else {
+        if(error == expected_error)
+            pass("'%s' -> error %d", expression, error);
+        else
+            fail("'%s' -> error %d, expected error %d", expression, error, expected_error);
     }
-    else
-        printf("SUCCESS: '%s' -> '%s'\n", expression, result_str);
 }
 
 
@@ -107,6 +136,7 @@ test_parser()
     test("(-3)/(-6)", "0.5", 0);
 
     test("1+2*3", "7", 0);
+    test("1+(2*3)", "7", 0);    
     test("(1+2)*3", "9", 0);
     
     test("100%", "1", 0);
@@ -118,6 +148,8 @@ test_parser()
     test("-10^2", "-100", 0);
     test("(-10)^2", "100", 0);
     test("4^3^2", "262144", 0);
+    test("4^(3^2)", "262144", 0);    
+    test("(4^3)^2", "4096", 0);
 
     test("0!", "1", 0);
     test("1!", "1", 0);

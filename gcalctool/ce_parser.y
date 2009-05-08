@@ -167,7 +167,7 @@ exp:
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
     }
-    mp_xnor(&$1, &$3, &$$);
+    mp_xnor(&$1, &$3, v->wordlen, &$$);
 }
 | exp tXOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
@@ -181,18 +181,18 @@ exp:
 term:
   number {cp(&$1, &$$);}
 | rcl {cp(&$1, &$$);}
-| term '/' term {mpdiv(&$1, &$3, &$$);}
-| term '*' term {mpmul(&$1, &$3, &$$);}
+| term '/' term {mp_divide(&$1, &$3, &$$);}
+| term '*' term {mp_multiply(&$1, &$3, &$$);}
 | 'e' '^' term {mp_epowy(&$3, &$$);} 
 | term '!' {mp_factorial(&$1, &$$);}
 | term '%' {mp_percent(&$1, &$$);}
 | '~' term %prec LNEG {
     if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2)) {
+    } else if (!mp_is_overflow(&$2, v->wordlen)) {
 	parser_state.error = -PARSER_ERR_OVERFLOW;
     }
-    mp_not(&$2, &$$);
+    mp_not(&$2, v->wordlen, &$$);
 }
 | '-' term %prec NEG {mp_invert_sign(&$2, &$$);}
 | '+' term %prec POS {cp(&$2, &$$);}
@@ -216,11 +216,11 @@ func:
   tLOG10 term %prec HIGH {mp_logarithm(10, &$2, &$$);}
 | tLOG2 term %prec HIGH {mp_logarithm(2, &$2, &$$);}
 | tSQRT term %prec HIGH {mp_sqrt(&$2, &$$);}
-| tLN term %prec HIGH {mpln(&$2, &$$);}
+| tLN term %prec HIGH {mp_ln(&$2, &$$);}
 | tRAND %prec HIGH {mp_set_from_random(&$$);}
 | tABS term %prec HIGH {mp_abs(&$2, &$$);}
-| tFRAC term %prec HIGH {mpcmf(&$2, &$$);}
-| tINT term %prec HIGH {mpcmim(&$2, &$$);}
+| tFRAC term %prec HIGH {mp_fractional_component(&$2, &$$);}
+| tINT term %prec HIGH {mp_integer_component(&$2, &$$);}
 | tCHS term %prec HIGH {mp_invert_sign(&$2, &$$);}
 
 | tSIN term %prec HIGH {to_rad(&$2, &$2); mp_sin(&$2, &$$);}
@@ -236,22 +236,22 @@ func:
 | tACOSH term %prec HIGH {mp_acosh(&$2, &$$);}
 | tATANH term %prec HIGH {mp_atanh(&$2, &$$);}
 
-| tTRUNC term %prec HIGH {mp_mask(&$2, &$$);}
+| tTRUNC term %prec HIGH {mp_mask(&$2, v->wordlen, &$$);}
 | t1S term %prec HIGH  {
     if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2)) {
+    } else if (!mp_is_overflow(&$2, v->wordlen)) {
 	parser_state.error = -PARSER_ERR_OVERFLOW;
     }
-    mp_1s_complement(&$2, &$$);
+    mp_1s_complement(&$2, v->wordlen, &$$);
 }
 | t2S term %prec HIGH {
     if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2)) {
+    } else if (!mp_is_overflow(&$2, v->wordlen)) {
 	parser_state.error = -PARSER_ERR_OVERFLOW;
     }
-    mp_2s_complement(&$2, &$$);
+    mp_2s_complement(&$2, v->wordlen, &$$);
 }
 ;
 
@@ -280,6 +280,6 @@ int ceerror(char *s)
 
 | '(' lexp ')' {cp(&$2, &$$);}
 
-| term term {mpmul(&$1, &$2, &$$);}
+| term term {mp_multiply(&$1, &$2, &$$);}
 
 #endif

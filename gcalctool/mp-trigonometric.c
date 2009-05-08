@@ -75,7 +75,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     }
 
     b2 = max(MP.b,64) << 1;
-    mpmul(x, x, &t2);
+    mp_multiply(x, x, &t2);
     if (mp_compare_mp_to_int(&t2, 1) > 0) {
         mperr("*** ABS(X) > 1 IN CALL TO MPSIN1 ***");
     }
@@ -102,16 +102,16 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         MP.t = min(MP.t,ts);
 
         /* PUT R(I3) FIRST IN CASE ITS DIGITS ARE MAINLY ZERO */
-        mpmul(&t2, &t1, &t1);
+        mp_multiply(&t2, &t1, &t1);
 
         /*  IF I*(I+1) IS NOT REPRESENTABLE AS AN INTEGER, THE FOLLOWING
          *  DIVISION BY I*(I+1) HAS TO BE SPLIT UP.
          */
         if (i > b2) {
-            mpdivi(&t1, -i, &t1);
-            mpdivi(&t1, i + 1, &t1);
+            mp_divide_integer(&t1, -i, &t1);
+            mp_divide_integer(&t1, i + 1, &t1);
         } else {
-            mpdivi(&t1, -i * (i + 1), &t1);
+            mp_divide_integer(&t1, -i * (i + 1), &t1);
         }
 
         i += 2;
@@ -153,16 +153,16 @@ mp_acos(const MPNumber *x, MPNumber *z)
         mperr("Error");
         z->sign = 0;
     } else if (x->sign == 0) {
-        mpdivi(&MPpi, 2, z);
+        mp_divide_integer(&MPpi, 2, z);
     } else if (mp_is_equal(x, &MP1)) {
         z->sign = 0;
     } else if (mp_is_equal(x, &MPn1)) {
         mp_set_from_mp(&MPpi, z);
     } else { 
-        mpmul(x, x, &MP2);
+        mp_multiply(x, x, &MP2);
         mp_subtract(&MP1, &MP2, &MP2);
         mp_sqrt(&MP2, &MP2);
-        mpdiv(&MP2, x, &MP2);
+        mp_divide(&MP2, x, &MP2);
         mp_atan(&MP2, &MPy);
         if (x->sign > 0) {
             mp_set_from_mp(&MPy, z);
@@ -189,11 +189,11 @@ mp_acosh(const MPNumber *x, MPNumber *z)
         mperr("Error");
         mp_set_from_integer(0, z);
     } else {
-        mpmul(x, x, &MP1);
+        mp_multiply(x, x, &MP1);
         mp_add_integer(&MP1, -1, &MP1);
         mp_sqrt(&MP1, &MP1);
         mp_add(x, &MP1, &MP1);
-        mpln(&MP1, z);
+        mp_ln(&MP1, z);
     }
 }
 
@@ -222,9 +222,9 @@ mp_asin(const MPNumber *x, MPNumber *z)
         mp_set_from_mp(&t1, &t2);
         mp_subtract(&t1, x, &t1);
         mp_add(&t2, x, &t2);
-        mpmul(&t1, &t2, &t2);
+        mp_multiply(&t1, &t2, &t2);
         mp_root(&t2, -2, &t2);
-        mpmul(x, &t2, z);
+        mp_multiply(x, &t2, z);
         mp_atan(z, z);
         return;
     }
@@ -237,7 +237,7 @@ mp_asin(const MPNumber *x, MPNumber *z)
 
     /* X == +-1 SO RETURN +-PI/2 */
     mp_get_pi(z);
-    mpdivi(z, t2.sign << 1, z);
+    mp_divide_integer(z, t2.sign << 1, z);
 }
 
 
@@ -250,11 +250,11 @@ mp_asinh(const MPNumber *x, MPNumber *z)
 {
     MPNumber MP1;
  
-    mpmul(x, x, &MP1);
+    mp_multiply(x, x, &MP1);
     mp_add_integer(&MP1, 1, &MP1);
     mp_sqrt(&MP1, &MP1);
     mp_add(x, &MP1, &MP1);
-    mpln(&MP1, z);
+    mp_ln(&MP1, z);
 }
 
 
@@ -294,23 +294,23 @@ mp_atan(const MPNumber *x, MPNumber *z)
             break;
 
         q <<= 1;
-        mpmul(&t2, &t2, z);
+        mp_multiply(&t2, &t2, z);
         mp_add_integer(z, 1, z);
         mp_sqrt(z, z);
         mp_add_integer(z, 1, z);
-        mpdiv(&t2, z, &t2);
+        mp_divide(&t2, z, &t2);
     }
 
     /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
     mp_set_from_mp(&t2, z);
-    mpmul(&t2, &t2, &t1);
+    mp_multiply(&t2, &t2, &t1);
     i = 1;
     ts = MP.t;
 
     /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
     while ((MP.t = ts + 2 + t2.exponent) > 1) {
         MP.t = min(MP.t,ts);
-        mpmul(&t2, &t1, &t2);
+        mp_multiply(&t2, &t1, &t2);
         mpmulq(&t2, -i, i + 2, &t2);
         i += 2;
         MP.t = ts;
@@ -320,7 +320,7 @@ mp_atan(const MPNumber *x, MPNumber *z)
 
     /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
     MP.t = ts;
-    mpmuli(z, q, z);
+    mp_multiply_integer(z, q, z);
 
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
      *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
@@ -358,10 +358,10 @@ mp_atanh(const MPNumber *x, MPNumber *z)
     } else {
         mp_add(&MP1, x, &MP2);
         mp_subtract(&MP1, x, &MP3);
-        mpdiv(&MP2, &MP3, &MP3);
-        mpln(&MP3, &MP3);
+        mp_divide(&MP2, &MP3, &MP3);
+        mp_ln(&MP3, &MP3);
         mp_set_from_string("0.5", 10, &MP1);
-        mpmul(&MP1, &MP3, z);
+        mp_multiply(&MP1, &MP3, z);
     }
 }
 
@@ -393,7 +393,7 @@ mp_cos(const MPNumber *x, MPNumber *z)
          *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
          */
         mp_get_pi(&t);
-        mpdivi(&t, 2, &t);
+        mp_divide_integer(&t, 2, &t);
         mp_subtract(&t, z, z);
         mp_sin(z, z);
     }
@@ -401,7 +401,7 @@ mp_cos(const MPNumber *x, MPNumber *z)
 
 
 /*  RETURNS Z = COSH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
- *  USES MPEXP, DIMENSION OF R IN COMMON AT LEAST 5T+12
+ *  USES MP_EPOWY, DIMENSION OF R IN COMMON AT LEAST 5T+12
  */
 void
 mp_cosh(const MPNumber *x, MPNumber *z)
@@ -418,19 +418,19 @@ mp_cosh(const MPNumber *x, MPNumber *z)
     mpchk();
     mp_abs(x, &t);
 
-    /*  IF ABS(X) TOO LARGE MPEXP WILL PRINT ERROR MESSAGE
+    /*  IF ABS(X) TOO LARGE MP_EPOWY WILL PRINT ERROR MESSAGE
      *  INCREASE M TO AVOID OVERFLOW WHEN COSH(X) REPRESENTABLE
      */
     MP.m += 2;
-    mpexp(&t, &t);
+    mp_epowy(&t, &t);
     mp_reciprocal(&t, z);
     mp_add(&t, z, z);
 
-    /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI WILL
+    /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, mp_divide_integer WILL
      *  ACT ACCORDINGLY.
      */
     MP.m += -2;
-    mpdivi(z, 2, z);
+    mp_divide_integer(z, 2, z);
 }
 
 
@@ -472,12 +472,12 @@ mp_sin(const MPNumber *x, MPNumber *z)
      */
     else {
         mp_atan1N(5, &t2);
-        mpmuli(&t2, 4, &t2);
+        mp_multiply_integer(&t2, 4, &t2);
         mp_atan1N(239, z);
         mp_subtract(&t2, z, z);
-        mpdiv(&t1, z, &t1);
-        mpdivi(&t1, 8, &t1);
-        mpcmf(&t1, &t1);
+        mp_divide(&t1, z, &t1);
+        mp_divide_integer(&t1, 8, &t1);
+        mp_fractional_component(&t1, &t1);
 
         /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
         mp_add_fraction(&t1, -1, 2, &t1);
@@ -488,7 +488,7 @@ mp_sin(const MPNumber *x, MPNumber *z)
         }
 
         t1.sign = 1;
-        mpmuli(&t1, 4, &t1);
+        mp_multiply_integer(&t1, 4, &t1);
 
         /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
         if (t1.exponent > 0)
@@ -500,17 +500,17 @@ mp_sin(const MPNumber *x, MPNumber *z)
         }        
 
         t1.sign = 1;
-        mpmuli(&t1, 2, &t1);
+        mp_multiply_integer(&t1, 2, &t1);
 
         /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
          *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
          */
         if (t1.exponent > 0) {
             mp_add_integer(&t1, -2, &t1);
-            mpmul(&t1, z, &t1);
+            mp_multiply(&t1, z, &t1);
             mpsin1(&t1, z, 0);
         } else {
-            mpmul(&t1, z, &t1);
+            mp_multiply(&t1, z, &t1);
             mpsin1(&t1, z, 1);
         }
     }
@@ -537,7 +537,7 @@ mp_sin(const MPNumber *x, MPNumber *z)
 
 
 /*  RETURNS Z = SINH(X) FOR MP NUMBERS X AND Z, X NOT TOO LARGE.
- *  METHOD IS TO USE MPEXP OR MPEXP1, SPACE = 5T+12
+ *  METHOD IS TO USE MP_EPOWY OR MPEXP1, SPACE = 5T+12
  *  SAVE SIGN OF X AND CHECK FOR ZERO, SINH(0) = 0
  */
 void
@@ -562,27 +562,27 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     if (t2.exponent <= 0) {
         mpexp1(&t2, &t1);
         mp_add_integer(&t1, 2, &t2);
-        mpmul(&t2, &t1, z);
+        mp_multiply(&t2, &t1, z);
         mp_add_integer(&t1, 1, &t2);
-        mpdiv(z, &t2, z);
+        mp_divide(z, &t2, z);
     }
-    /*  HERE ABS(X) >= 1, IF TOO LARGE MPEXP GIVES ERROR MESSAGE
+    /*  HERE ABS(X) >= 1, IF TOO LARGE MP_EPOWY GIVES ERROR MESSAGE
      *  INCREASE M TO AVOID OVERFLOW IF SINH(X) REPRESENTABLE
      */
     else {
         MP.m += 2;
-        mpexp(&t2, &t2);
+        mp_epowy(&t2, &t2);
         mp_reciprocal(&t2, z);
         mp_subtract(&t2, z, z);
 
-        /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, MPDIVI AT
+        /*  RESTORE M.  IF RESULT OVERFLOWS OR UNDERFLOWS, mp_divide_integer AT
          *  STATEMENT 30 WILL ACT ACCORDINGLY.
          */
         MP.m += -2;
     }
 
     /* DIVIDE BY TWO AND RESTORE SIGN */
-    mpdivi(z, xs << 1, z);
+    mp_divide_integer(z, xs << 1, z);
 }
 
 
@@ -599,12 +599,12 @@ mp_tan(const MPNumber *x, MPNumber *z)
         mperr(_("Tangent is infinite"));
         return;
     }
-    mpdiv(&MPsin, &MPcos, z);
+    mp_divide(&MPsin, &MPcos, z);
 }
 
 
 /*  RETURNS Z = TANH(X) FOR MP NUMBERS X AND Z,
- *  USING MPEXP OR MPEXP1, SPACE = 5T+12
+ *  USING MP_EPOWY OR MPEXP1, SPACE = 5T+12
  */
 void
 mp_tanh(const MPNumber *x, MPNumber *z)
@@ -636,18 +636,18 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     }
 
     /* HERE ABS(X) NOT SO LARGE */
-    mpmuli(&t, 2, &t);
+    mp_multiply_integer(&t, 2, &t);
     if (t.exponent > 0) {
-        /* HERE ABS(X) >= 1/2 SO USE MPEXP */
-        mpexp(&t, &t);
+        /* HERE ABS(X) >= 1/2 SO USE MP_EPOWY */
+        mp_epowy(&t, &t);
         mp_add_integer(&t, -1, z);
         mp_add_integer(&t, 1, &t);
-        mpdiv(z, &t, z);
+        mp_divide(z, &t, z);
     } else {
         /* HERE ABS(X) < 1/2, SO USE MPEXP1 TO AVOID CANCELLATION */
         mpexp1(&t, &t);
         mp_add_integer(&t, 2, z);
-        mpdiv(&t, z, z);
+        mp_divide(&t, z, z);
     }
 
     /* RESTORE SIGN */

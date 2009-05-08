@@ -42,10 +42,10 @@ struct {
 
 void mpchk();
 void mpgcd(int *, int *);
-void mpmul2(MPNumber *, int, MPNumber *, int);
+void mpmul2(const MPNumber *, int, MPNumber *, int);
 void mp_normalize(MPNumber *, int trunc);
 void mpexp1(const MPNumber *, MPNumber *);
-void mpmulq(MPNumber *, int, int, MPNumber *);
+void mpmulq(const MPNumber *, int, int, MPNumber *);
 void mp_reciprocal(const MPNumber *, MPNumber *);
 void mp_atan1N(int n, MPNumber *z);
 

@@ -2,7 +2,6 @@
 #include "calctool.h" // FIXME
 
 static char digits[] = "0123456789ABCDEF";
-static int current_wordlen = 64;
 
 static int hex_to_int(char digit)
 {
@@ -17,13 +16,13 @@ static int hex_to_int(char digit)
 
 
 static void
-mp_bitwise(const MPNumber *s1, const MPNumber *s2, int (*bitwise_operator)(int, int), MPNumber *t, int wordlen)
+mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, int), MPNumber *z, int wordlen)
 {
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
     int offset1, offset2, offset_out;
    
-    mp_cast_to_string(text1, MAX_DIGITS, s1, 16, 0);
-    mp_cast_to_string(text2, MAX_DIGITS, s2, 16, 0);
+    mp_cast_to_string(x, 16, 0, text1, MAX_DIGITS);
+    mp_cast_to_string(y, 16, 0, text2, MAX_DIGITS);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
@@ -50,7 +49,7 @@ mp_bitwise(const MPNumber *s1, const MPNumber *s2, int (*bitwise_operator)(int, 
         text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
    
-    mp_set_from_string(text_out, 16, t);
+    mp_set_from_string(text_out, 16, z);
 }
 
 
@@ -62,106 +61,99 @@ static int mp_bitwise_not(int v1, int dummy) { return v1 ^ 0xF; }
 
 
 int
-mp_is_overflow (const MPNumber *s1)
+mp_is_overflow (const MPNumber *x, int wordlen)
 {
     MPNumber tmp1, tmp2;
     mp_set_from_integer(2, &tmp1);
-    mppwr(&tmp1, current_wordlen, &tmp2);
-    return mp_is_greater_than (&tmp2, s1);
+    mp_pwr_integer(&tmp1, wordlen, &tmp2);
+    return mp_is_greater_than (&tmp2, x);
 }
 
 
 void
-mp_set_wordlen (int len)
+mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    current_wordlen = len;
+    mp_bitwise(x, y, mp_bitwise_and, z, 0);
 }
 
 
 void
-mp_and(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
+mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    mp_bitwise(s1, s2, mp_bitwise_and, t, 0);
+    mp_bitwise(x, y, mp_bitwise_or, z, 0);
 }
 
 
 void
-mp_or(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
+mp_xor(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    mp_bitwise(s1, s2, mp_bitwise_or, t, 0);
+    mp_bitwise(x, y, mp_bitwise_xor, z, 0);
 }
 
 
 void
-mp_xor(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
+mp_xnor(const MPNumber *x, const MPNumber *y, int wordlen, MPNumber *z)
 {
-    mp_bitwise(s1, s2, mp_bitwise_xor, t, 0);
+    mp_bitwise(x, y, mp_bitwise_xnor, z, wordlen);
 }
 
 
 void
-mp_xnor(const MPNumber *s1, const MPNumber *s2, MPNumber *t)
-{
-    mp_bitwise(s1, s2, mp_bitwise_xnor, t, 0);
-}
-
-
-void
-mp_not(const MPNumber *s1, MPNumber *t)
+mp_not(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber temp;
     mp_set_from_integer(0, &temp);
-    mp_bitwise(s1, &temp, mp_bitwise_not, t, current_wordlen);
+    mp_bitwise(x, &temp, mp_bitwise_not, z, wordlen);
 }
 
 
 void
-mp_mask(const MPNumber *s1, MPNumber *t1)
+mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
 {
     char text[MAX_DIGITS];
     size_t len, offset;
     
     /* Convert to a hexadecimal string and use last characters */
-    mp_cast_to_string(text, MAX_DIGITS, s1, 16, 0);
+    mp_cast_to_string(x, 16, 0, text, MAX_DIGITS);
     len = strlen(text);
-    offset = current_wordlen / 4;
+    offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
-    mp_set_from_string(text + offset, 16, t1);
+    mp_set_from_string(text + offset, 16, z);
 }
 
 
 void
-mp_shift(MPNumber *s, MPNumber *t, int times)
+mp_shift(const MPNumber *x, int count, MPNumber *z)
 {
     int i, multiplier = 1;
     
-    if (times >= 0) {
-        for (i = 0; i < times; i++)
+    if (count >= 0) {
+        for (i = 0; i < count; i++)
             multiplier *= 2;
-        mpmuli(s, multiplier, t);
+        mp_multiply_integer(x, multiplier, z);
     }
     else {
         MPNumber temp;
-        for (i = 0; i < -times; i++)
+        for (i = 0; i < -count; i++)
             multiplier *= 2;
-        mpdivi(s, multiplier, &temp);
-        mpcmim(&temp, t);
+        mp_divide_integer(x, multiplier, &temp);
+        mp_integer_component(&temp, z);
     }
 }
 
 
 void
-mp_1s_complement(const MPNumber *s, MPNumber *t)
+mp_1s_complement(const MPNumber *x, int wordlen, MPNumber *z)
 {
-    MPNumber temp;
-    mp_set_from_integer(0, &temp);
-    mp_bitwise(s, &temp, mp_bitwise_xnor, t, current_wordlen);
+    MPNumber t;
+    mp_set_from_integer(0, &t);
+    mp_bitwise(x, &t, mp_bitwise_xnor, z, wordlen);
 }
 
 
 void
-mp_2s_complement(const MPNumber *s, MPNumber *t)
+mp_2s_complement(const MPNumber *x, int wordlen, MPNumber *z)
 {
-    mp_1s_complement (s, t);
-    mp_add_integer (t, 1, t);
+    mp_1s_complement (x, wordlen, z);
+    mp_add_integer (z, 1, z);
 }

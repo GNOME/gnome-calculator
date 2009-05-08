@@ -274,7 +274,7 @@ do_shift(int count)
                          "gtk-dialog-error");
     }
     else {
-        mp_shift(&MPval, display_get_answer(&v->display), count);
+        mp_shift(&MPval, count, display_get_answer(&v->display));
         display_set_answer(&v->display);
     }
 }
@@ -330,7 +330,6 @@ do_exchange(int index)
 static void
 do_wordlen(int len)
 {
-    mp_set_wordlen(len);
     v->wordlen = len;
     set_int_resource(R_WORDLEN, len);
 }

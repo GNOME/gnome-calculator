@@ -36,11 +36,11 @@ calc_ctrm(MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
  */    
     MPNumber MP1, MP2, MP3, MP4;
 
-    mpdiv(fv, pv, &MP1);
-    mpln(&MP1, &MP2);
+    mp_divide(fv, pv, &MP1);
+    mp_ln(&MP1, &MP2);
     mp_add_integer(pint, 1, &MP3);
-    mpln(&MP3, &MP4);
-    mpdiv(&MP2, &MP4, t);
+    mp_ln(&MP3, &MP4);
+    mp_divide(&MP2, &MP4, t);
 }
 
 
@@ -70,8 +70,8 @@ calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
     len = mp_cast_to_int(period);
     for (i = 0; i < len; i++) {
         mp_subtract(cost, &MPbv, &MP1);
-        mpmuli(&MP1, 2, &MP2);
-        mpdiv(&MP2, life, t);
+        mp_multiply_integer(&MP1, 2, &MP2);
+        mp_divide(&MP2, life, t);
         mp_set_from_mp(&MPbv, &MP1);
         mp_add(&MP1, t, &MPbv); /* TODO: why result is MPbv, for next loop? */
     }
@@ -98,10 +98,10 @@ calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
     MPNumber MP1, MP2, MP3, MP4;
   
     mp_add_integer(pint, 1, &MP1);
-    mppwr2(&MP1, n, &MP2);
+    mp_pwr(&MP1, n, &MP2);
     mp_add_integer(&MP2, -1, &MP3);
-    mpmul(pmt, &MP3, &MP4);
-    mpdiv(&MP4, pint, t);
+    mp_multiply(pmt, &MP3, &MP4);
+    mp_divide(&MP4, pint, t);
 }
 
 
@@ -119,7 +119,7 @@ calc_gpm(MPNumber *t, MPNumber *cost, MPNumber *margin)
 
     mp_set_from_integer(1, &MP1);
     mp_subtract(&MP1, margin, &MP2);
-    mpdiv(cost, &MP2, t);
+    mp_divide(cost, &MP2, t);
 }
 
 
@@ -137,12 +137,12 @@ calc_pmt(MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
     MPNumber MP1, MP2, MP3, MP4;
 
     mp_add_integer(pint, 1, &MP1);
-    mpmuli(n, -1, &MP2);
-    mppwr2(&MP1, &MP2, &MP3);
-    mpmuli(&MP3, -1, &MP4);
+    mp_multiply_integer(n, -1, &MP2);
+    mp_pwr(&MP1, &MP2, &MP3);
+    mp_multiply_integer(&MP3, -1, &MP4);
     mp_add_integer(&MP4, 1, &MP1);
-    mpdiv(pint, &MP1, &MP2);
-    mpmul(prin, &MP2, t);
+    mp_divide(pint, &MP1, &MP2);
+    mp_multiply(prin, &MP2, t);
 }
 
 
@@ -160,12 +160,12 @@ calc_pv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
     MPNumber MP1, MP2, MP3, MP4;
 
     mp_add_integer(pint, 1, &MP1);
-    mpmuli(n, -1, &MP2);
-    mppwr2(&MP1, &MP2, &MP3);
-    mpmuli(&MP3, -1, &MP4);
+    mp_multiply_integer(n, -1, &MP2);
+    mp_pwr(&MP1, &MP2, &MP3);
+    mp_multiply_integer(&MP3, -1, &MP4);
     mp_add_integer(&MP4, 1, &MP1);
-    mpdiv(&MP1, pint, &MP2);
-    mpmul(pmt, &MP2, t);
+    mp_divide(&MP1, pint, &MP2);
+    mp_multiply(pmt, &MP2, t);
 }
 
 
@@ -182,10 +182,10 @@ calc_rate(MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
 
     MPNumber MP1, MP2, MP3, MP4;
 
-    mpdiv(fv, pv, &MP1);
+    mp_divide(fv, pv, &MP1);
     mp_set_from_integer(1, &MP2);
-    mpdiv(&MP2, n, &MP3);
-    mppwr2(&MP1, &MP3, &MP4);
+    mp_divide(&MP2, n, &MP3);
+    mp_pwr(&MP1, &MP3, &MP4);
     mp_add_integer(&MP4, -1, t);
 }
 
@@ -203,7 +203,7 @@ calc_sln(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
   
     MPNumber MP1;
     mp_subtract(cost, salvage, &MP1);
-    mpdiv(&MP1, life, t);
+    mp_divide(&MP1, life, t);
 }
 
 
@@ -225,12 +225,12 @@ calc_syd(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life, MPNumbe
     mp_subtract(life, period, &MP2);
     mp_add_integer(&MP2, 1, &MP3);
     mp_add_integer(life, 1, &MP2);
-    mpmul(life, &MP2, &MP4);
+    mp_multiply(life, &MP2, &MP4);
     mp_set_from_integer(2, &MP2);
-    mpdiv(&MP4, &MP2, &MP1);
-    mpdiv(&MP3, &MP1, &MP2);
+    mp_divide(&MP4, &MP2, &MP1);
+    mp_divide(&MP3, &MP1, &MP2);
     mp_subtract(cost, salvage, &MP1);
-    mpmul(&MP1, &MP2, t);
+    mp_multiply(&MP1, &MP2, t);
 }
 
 
@@ -248,12 +248,12 @@ calc_term(MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
     MPNumber MP1, MP2, MP3, MP4;
 
     mp_add_integer(pint, 1, &MP1);
-    mpln(&MP1, &MP2);
-    mpmul(fv, pint, &MP1);
-    mpdiv(&MP1, pmt, &MP3);
+    mp_ln(&MP1, &MP2);
+    mp_multiply(fv, pint, &MP1);
+    mp_divide(&MP1, pmt, &MP3);
     mp_add_integer(&MP3, 1, &MP4);
-    mpln(&MP4, &MP1);
-    mpdiv(&MP1, &MP2, t);
+    mp_ln(&MP4, &MP1);
+    mp_divide(&MP1, &MP2, t);
 } 
 
 void
