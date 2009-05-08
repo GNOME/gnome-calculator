@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE article  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" 
-
+    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
 [<!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appversion "5.5.37">
   <!ENTITY manrevision "2.9">
   <!ENTITY date "March 2005">
   <!ENTITY app "<application>gcalctool</application>">
   <!ENTITY appname "Calculator">
+  <!ENTITY ldquo  "&#147;"> <!-- Left Double Quote --> 
+  <!ENTITY rdquo  "&#148;"> <!-- Right Double Quote -->
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -34,7 +35,7 @@
     <copyright> 
       <year>2003</year> 
       <year>2004</year> 
-      <year>2005</year> 	
+      <year>2005</year>
       <holder>Sun Microsystems</holder> 
     </copyright> 
 <!-- translators: uncomment this:
@@ -52,7 +53,7 @@
    &legal;
    <!-- This file  contains link to license for the documentation (GNU FDL), and 
         other legal stuff such as "NO WARRANTY" statement. Please do not change 
-	any of this. -->
+        any of this. -->
 
     <authorgroup> 
       <corpauthor> Sun Microsystems Inc.</corpauthor>
@@ -63,106 +64,106 @@
      maintainers,  etc. Commented out by default.
      
       <othercredit role="translator">
-		<firstname>Latin</firstname> 
-		<surname>Translator 1</surname> 
-		<affiliation> 
-	  		<orgname>Latin Translation Team</orgname> 
-	  		<address> <email>translator@gnome.org</email> </address> 
-		</affiliation>
-		<contrib>Latin translation</contrib>
+                <firstname>Latin</firstname> 
+                <surname>Translator 1</surname> 
+                <affiliation> 
+                          <orgname>Latin Translation Team</orgname> 
+                          <address> <email>translator@gnome.org</email> </address> 
+                </affiliation>
+                <contrib>Latin translation</contrib>
       </othercredit>
 -->
     </authorgroup>
 
     <revhistory>
     <revision> 
-		<revnumber>Calculator Manual V&manrevision;</revnumber> 
-		<date>&date;</date> 
-		<revdescription> 
-	  		<para role="author">Sun Java Desktop System Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>Calculator Manual V&manrevision;</revnumber> 
+                <date>&date;</date> 
+                <revdescription> 
+                          <para role="author">Sun Java Desktop System Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>Calculator Manual V2.8</revnumber> 
-		<date>August 2004</date> 
-		<revdescription> 
-	  		<para role="author">Sun Java Desktop System Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>Calculator Manual V2.8</revnumber> 
+                <date>August 2004</date> 
+                <revdescription> 
+                          <para role="author">Sun Java Desktop System Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.7</revnumber> 
-		<date>February 2004</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.7</revnumber> 
+                <date>February 2004</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team</para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.6</revnumber> 
-		<date>October 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.6</revnumber> 
+                <date>October 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.5</revnumber> 
-		<date>July 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.5</revnumber> 
+                <date>July 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.4</revnumber> 
-		<date>June 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.4</revnumber> 
+                <date>June 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.3</revnumber> 
-		<date>April 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.3</revnumber> 
+                <date>April 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.2</revnumber> 
-		<date>April 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.2</revnumber> 
+                <date>April 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.1</revnumber> 
-		<date>March 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.1</revnumber> 
+                <date>March 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
       <revision> 
-		<revnumber>gcalctool Manual V2.0</revnumber> 
-		<date>March 2003</date> 
-		<revdescription> 
-	  		<para role="author">Sun GNOME Documentation Team
-	  		</para>
-	  		<para role="publisher">GNOME Documentation Project</para>
-		</revdescription> 
+                <revnumber>gcalctool Manual V2.0</revnumber> 
+                <date>March 2003</date> 
+                <revdescription> 
+                          <para role="author">Sun GNOME Documentation Team
+                          </para>
+                          <para role="publisher">GNOME Documentation Project</para>
+                </revdescription> 
       </revision> 
     </revhistory> 
 
@@ -205,10 +206,10 @@
         <term><link linkend="gcalctool-scientific-mode">Scientific </link></term>
         <listitem><para>Provides many additional mathematical functions, including trigonometric functions. You can also store your own functions and constants, when you use Scientific mode.</para></listitem>
         </varlistentry>
-		<varlistentry>
-		<term><link linkend="gcalctool-programming-mode">Programming </link></term>
-		<listitem><para>Provides functions useful to a programmer, including bitwise functions and a bit editor.</para></listitem>
-		</varlistentry>
+                <varlistentry>
+                <term><link linkend="gcalctool-programming-mode">Programming </link></term>
+                <listitem><para>Provides functions useful to a programmer, including bitwise functions and a bit editor.</para></listitem>
+                </varlistentry>
      </variablelist>
 
     <para>You can use &app; in the following numbering systems:</para>
@@ -273,17 +274,17 @@
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-basic"> 
-	<title>&app; Basic Mode Window</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Basic mode window.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
+        <title>&app; Basic Mode Window</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata
+                fileref="figures/gcalctool_basic_window.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Shows &app; Basic mode window.  </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
                 <para>The &app; window contains the following elements: </para>
@@ -309,7 +310,7 @@
                          </listitem>
                   </varlistentry>
 <varlistentry>
-	 <term>Status Bar</term>
+         <term>Status Bar</term>
                          <listitem>
                                 <para>The status bar displays messages on the status of your calculations.  </para>
                          </listitem>
@@ -460,17 +461,17 @@
                              <entry><para>6 <guibutton>/</guibutton> <guibutton>3</guibutton> <guibutton>=</guibutton></para></entry>
                              <entry><para>2</para></entry>
                            </row>
-			<row valign="top">
+                        <row valign="top">
                              <entry><para>Change the arithmetic sign</para> </entry>
                              <entry><para><guibutton>+/-</guibutton></para></entry>
                              <entry><para>Changes a positive number to a negative number, or a negative number to a positive number.</para></entry>
                              <entry><para>8 <guibutton>+/-</guibutton></para></entry>
                              <entry><para>-8</para></entry>
                            </row>
-			 </tbody>
+                         </tbody>
 
-		  </tgroup>
-		</table>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-erase-char"> 
       <title>To Erase Characters</title> 
@@ -527,9 +528,9 @@
                              <entry><para>1 <guibutton>+</guibutton> <guibutton>2</guibutton><guibutton>2</guibutton> <guibutton>Clr</guibutton></para></entry>
                              <entry><para>0</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     
     
@@ -548,30 +549,30 @@
                         <para>The Insert ASCII Value dialog is displayed.</para>
                         <para>Enter the required character in the <guilabel>Character</guilabel> field, then click <guibutton>Insert</guibutton>. The ASCII value of that character, in the current numeric base, appears in the display area. For example, the ASCII value of B in decimal base is 66.</para>
           </sect3>
-	</sect2>
+        </sect2>
 
  <sect2 id="gcalctool-advanced-mode">
     <title>To Perform Advanced Calculations  </title>
   <para>To change to Advanced mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Advanced</guimenuitem> 
-	</menuchoice>. 
+        <menuchoice> 
+          <guimenu>View</guimenu> 
+          <guimenuitem>Advanced</guimenuitem> 
+        </menuchoice>. 
       </para>
     <para>When you change to Advanced mode, the following buttons are displayed to the right of the Basic mode buttons:</para>
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-advanced"> 
-	<title>&app; Advanced Mode Buttons</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_advanced_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Advanced mode buttons.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
+        <title>&app; Advanced Mode Buttons</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata
+                fileref="figures/gcalctool_advanced_window.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Shows &app; Advanced mode buttons.  </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
                 <table id="gcalctool-TBL-adv-calc" frame="all">
@@ -649,9 +650,9 @@
                              <entry><para>Calculates the absolute value of the current value in the display area.</para></entry>
                              <entry><para>-23.45 <guibutton>Abs</guibutton></para></entry>
                              <entry><para>23.45</para></entry>
-			 </row>
-			   <row valign="top">
- 			<entry><para>Parentheses</para> </entry>
+                         </row>
+                           <row valign="top">
+                         <entry><para>Parentheses</para> </entry>
                              <entry><para><guibutton>(</guibutton> and <guibutton>)</guibutton></para></entry>
                              <entry><para>Provide precedence in arithmetic calculations if you are not using Arithmetic Precedence. See also <xref linkend="gcalctool-manage-order"/>. Calculations within parentheses are performed first. You can nest parentheses to any level. When the last parenthesis is matched, the display area is updated.</para></entry>
                            <entry>
@@ -661,19 +662,19 @@
                              <entry> <para>20</para>
                                <para>14</para>
                              </entry>
-		       	
+                               
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
 
 <sect3 id="gcalctool-mem-reg"> 
       <title>To Use the Calculator Memory Registers</title> 
       <para>You can store values in any of the ten &app; memory registers <guilabel>R0</guilabel> to <guilabel>R9</guilabel>. To display the memory registers, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Memory Registers</guimenuitem> 
-	</menuchoice>. 
+        <menuchoice> 
+          <guimenu>View</guimenu> 
+          <guimenuitem>Memory Registers</guimenuitem> 
+        </menuchoice>. 
       </para>
       <para>The memory registers can be dismissed by either choosing 
             <menuchoice><guimenu>View</guimenu><guimenuitem>Memory Registers</guimenuitem></menuchoice> 
@@ -730,9 +731,9 @@
                              <entry><para>44 <guibutton>Exch</guibutton> <guilabel>R2</guilabel></para></entry>
                              <entry><para>The value in the display area changes from 44 to 22, the value in R2 changes from 22 to 44.</para> </entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
       <para>If you use keyboard shortcuts, you can use the keyboard to specify the memory register, as shown in the following examples: </para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
@@ -767,29 +768,29 @@
 
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
-	 <sect2 id="gcalctool-financial-mode"> 
+         <sect2 id="gcalctool-financial-mode"> 
       <title>To Perform Financial Calculations</title> 
       <para>To change to Financial mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Financial</guimenuitem> 
-	</menuchoice>. 
+        <menuchoice> 
+          <guimenu>View</guimenu> 
+          <guimenuitem>Financial</guimenuitem> 
+        </menuchoice>. 
       </para>
      <para>When you change to Financial mode, the following buttons are displayed above the Basic and Advanced mode buttons:</para>
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-financial"> 
-	<title>&app; Financial Mode Buttons</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Financial mode buttons.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
+        <title>&app; Financial Mode Buttons</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata
+                fileref="figures/gcalctool_financial_window.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Shows &app; Financial mode buttons.  </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
       <para>To perform financial calculations, use the buttons described in <xref linkend="gcalctool-TBL-financial-calc"/>. 
@@ -1077,34 +1078,34 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para>20.32</para>
                                     <para>$120,000 accumulates in the account in 20.32 years.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect2> 
     <!-- ================ Usage Subsection ================================ -->
     <sect2 id="gcalctool-scientific-mode"> 
       <title>To Perform Scientific Calculations</title> 
       <para>To change to Scientific mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Scientific</guimenuitem> 
-	</menuchoice>. 
+        <menuchoice> 
+          <guimenu>View</guimenu> 
+          <guimenuitem>Scientific</guimenuitem> 
+        </menuchoice>. 
       </para>
     <para>When you change to Scientific mode, the following buttons are displayed above the Basic and Advanced mode buttons:</para>
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-scientific"> 
-	<title>&app; Scientific Mode Buttons</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Scientific mode buttons.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
+        <title>&app; Scientific Mode Buttons</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata
+                fileref="figures/gcalctool_scientific_window.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Shows &app; Scientific mode buttons.  </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-set-acc"> 
@@ -1138,9 +1139,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para>3 significant places</para></entry>
                              <entry><para>1.250</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</informaltable>
+                         </tbody>
+                  </tgroup>
+                </informaltable>
     </sect3>
     <sect3 id="gcalctool-display-type"> 
       <title>To Set the Display Type</title> 
@@ -1177,9 +1178,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para><guibutton>Sci</guibutton></para></entry>
                              <entry><para>Sets the display type to scientific format. Results are displayed in scientific notation, with a fixed number of numeric digits.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-trig-type"> 
       <title>To Set the Trigonometric Type</title> 
@@ -1216,9 +1217,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para><guibutton>Radians</guibutton></para></entry>
                              <entry><para>Sets the trigonometric type to radians.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-trig-options"> 
       <title>To Set the Trigonometric Options</title> 
@@ -1250,9 +1251,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para><guibutton>Inv</guibutton></para></entry>
                              <entry><para>Selects the inverse option for use with the trigonometric functions.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
       <para>By default, the options described in <xref linkend="gcalctool-TBL-trig-options"/> are not selected. Click <guibutton>Clr</guibutton> to deselect these options. </para>
 
     </sect3>
@@ -1366,9 +1367,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para>0.6 <guilabel>Hyp</guilabel> <guilabel>Inv</guilabel> <guibutton>Tan</guibutton></para></entry>
                              <entry><para>0.693147181</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-logs-calc"> 
       <title>To Calculate Logarithms</title> 
@@ -1417,9 +1418,9 @@ To calculate the time period necessary to accumulate $120,000, press <guibutton>
                              <entry><para>10 Log<subscript><replaceable>2</replaceable></subscript></para></entry>
                              <entry><para>3.32</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
                 <note>
                   <para>Common antilogarithm and natural antilogarithm are not supported in this version of &app;.</para>
                 </note>
@@ -1635,9 +1636,9 @@ after entering the exponent.</para>
                                     <para>Multiply the current value in the display area by this constant, to convert from cubic centimeters to cubic inches. For example, 100 * <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 6.10.</para>
                                     <para>Divide the current value in the display area by this constant, to convert from cubic inches to cubic centimeters. For example, 6.10 / <guibutton>Con</guibutton> <guilabel>C9</guilabel> <keycap>=</keycap> 100.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</informaltable>
+                         </tbody>
+                  </tgroup>
+                </informaltable>
       <para>You can overwrite the default constants to store your own constants.</para>
       <para>To store a new constant or edit an existing constant, perform the following steps:</para>
       <orderedlist>
@@ -1786,34 +1787,34 @@ after entering the exponent.</para>
                              <entry><para><guibutton>Rand</guibutton></para></entry>
                              <entry><para>0.14</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     </sect2> 
     <sect2 id="gcalctool-programming-mode">
       <title>To Perform Programming Calculations</title>
       <para>To change to Programming mode, choose 
-	<menuchoice> 
-	  <guimenu>View</guimenu> 
-	  <guimenuitem>Programming</guimenuitem> 
-	</menuchoice>. 
+        <menuchoice> 
+          <guimenu>View</guimenu> 
+          <guimenuitem>Programming</guimenuitem> 
+        </menuchoice>. 
       </para>
     <para>When you change to Programming mode, the following widget is displayed above the Base and Advanced mode buttons:</para>
 
     <!-- ==== Figure ==== -->
       <figure id="gcalctool-FIG-programming"> 
-	<title>&app; Programming Mode Buttons</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/gcalctool_programming_window.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>Shows &app; Programming mode buttons.  </phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
+        <title>&app; Programming Mode Buttons</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata
+                fileref="figures/gcalctool_programming_window.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Shows &app; Programming mode buttons.  </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
       </figure>
     <!-- ==== End of Figure ==== -->
     <sect3 id="gcalctool-num-base"> 
@@ -1856,9 +1857,9 @@ after entering the exponent.</para>
                              <entry><para><guibutton>Hex</guibutton></para></entry>
                              <entry><para>Sets the numeric base to hexadecimal, that is, base 16.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-word-length">
       <title>To Set the Word Length</title>
@@ -1895,9 +1896,9 @@ after entering the exponent.</para>
                              <entry><para><guibutton>16 bit</guibutton></para></entry>
                              <entry><para>Sets the word length to 16 bits.</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-calc-bit-manipulation-ext">
       <title>To Perform Bit Manipulations on Integers</title>
@@ -1964,9 +1965,9 @@ after entering the exponent.</para>
                              <entry><para>1100 <guibutton>XNOR</guibutton> 1010</para></entry>
                              <entry><para>1001</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
     </sect3>
     <sect3 id="gcalctool-num-manip"> 
       <title>To Manipulate Binary Numbers</title> 
@@ -2029,9 +2030,9 @@ after entering the exponent.</para>
                              <entry><para>D723 <guibutton>2's</guibutton></para></entry>
                              <entry><para>FFFF28DD</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
       <para>If you use keyboard shortcuts, you can use the keyboard to specify the number of places to shift, as shown in the following examples: </para>
       <informaltable frame="all">
         <tgroup cols="2" colsep="1" rowsep="1">
@@ -2059,7 +2060,7 @@ after entering the exponent.</para>
       </informaltable>
 
     </sect3>
-	<sect3 id="gcalctool-misc-prog">
+        <sect3 id="gcalctool-misc-prog">
       <title>To Perform Miscellaneous Programming Calculations</title> 
       <para>To perform miscellaneous programming calculations, use the buttons described in <xref linkend="gcalctool-TBL-misc-prog"/>. </para>
                 <table id="gcalctool-TBL-misc-prog" frame="all">
@@ -2092,10 +2093,10 @@ after entering the exponent.</para>
                              <entry><para><guibutton>B</guibutton></para></entry>
                              <entry><para>B</para></entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
-	 </sect3>
+                         </tbody>
+                  </tgroup>
+                </table>
+         </sect3>
     </sect2>
 <!-- ============= Undo and Redo ======================== -->
   <sect2 id="gcalctool-undo-redo">
@@ -2138,13 +2139,13 @@ after entering the exponent.</para>
 
             <sect2 id="gcalctool-manage-order">
                 <title>Order of Operations</title>
-	<para>By default, calculations are performed using arithmetic precedence. That is, the precedence of the arithmetic operators is taken into consideration and the result is only calculated when you click <guibutton>Return</guibutton>.</para>
-	<para>In the following example, the result of the calculation is 22 because the multiplication operator, <literal>*</literal>, has precedence over the addition operator, <literal>+</literal>.</para>
+        <para>By default, calculations are performed using arithmetic precedence. That is, the precedence of the arithmetic operators is taken into consideration and the result is only calculated when you click <guibutton>Return</guibutton>.</para>
+        <para>In the following example, the result of the calculation is 22 because the multiplication operator, <literal>*</literal>, has precedence over the addition operator, <literal>+</literal>.</para>
 
-	<screen><literal>4 + 3 * 6 = 22 </literal></screen>
+        <screen><literal>4 + 3 * 6 = 22 </literal></screen>
 
-	<para>If you do not wish to apply arithmetic precedence to your calculations, select <menuchoice><guimenu>View</guimenu><guimenuitem>Left-to-right Precedence</guimenuitem></menuchoice>. </para>
-	<para>If you choose not to apply arithmetic precedence, then the result the calculation in the example is 42 because the calculation is performed from left to right.</para>
+        <para>If you do not wish to apply arithmetic precedence to your calculations, select <menuchoice><guimenu>View</guimenu><guimenuitem>Left-to-right Precedence</guimenuitem></menuchoice>. </para>
+        <para>If you choose not to apply arithmetic precedence, then the result the calculation in the example is 42 because the calculation is performed from left to right.</para>
          </sect2> 
 
          <sect2 id="gcalctool-recognize-error">
@@ -2386,8 +2387,8 @@ the addition of:
                              <entry><para>Natural logarithm</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-logs-calc"/></para> </entry>
                            </row>
-						   <row valign="top">
-							 <entry><para><keycap>O</keycap></para></entry>
+                                                   <row valign="top">
+                                                         <entry><para><keycap>O</keycap></para></entry>
                              <entry><para><replaceable>x</replaceable><superscript>1/<replaceable>y</replaceable></superscript></para></entry>
                              <entry><para>x to the reciprocal<replaceable>y</replaceable> power</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-misc-calc"/></para> </entry>
@@ -2639,9 +2640,9 @@ the addition of:
                              <entry><para>Clear</para> </entry>
                              <entry><para><xref linkend="gcalctool-TBL-erase-char"/></para> </entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
                 <table id="gcalctool-TBL-keyboard-shortcut-sci-options" frame="all">
                   <title>Quick Reference for Keyboard Shortcuts of &app; Scientific Mode Options</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
@@ -2752,9 +2753,9 @@ the addition of:
                              <entry><para>Select the hyperbolic option for use with the trigonometric functions.</para></entry>
                              <entry><para><xref linkend="gcalctool-TBL-trig-options"/></para> </entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
                 <table id="gcalctool-TBL-keyboard-shortcut-menu" frame="all">
                   <title>Quick Reference for Keyboard Shortcuts of &app; Menu Items</title> 
                   <tgroup cols="4" colsep="1" rowsep="1">
@@ -2826,7 +2827,7 @@ the addition of:
                            </row>
                            <row valign="top">
                              <entry><para><keycombo><keycap>Ctrl</keycap><keycap>p</keycap></keycombo></para></entry>
-							 <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Programming</guimenuitem> </menuchoice> </para></entry>
+                                                         <entry><para> <menuchoice> <guimenu>View</guimenu> <guimenuitem>Programming</guimenuitem> </menuchoice> </para></entry>
                              <entry><para>Change to Programming mode</para> </entry>
                              <entry><para><xref linkend="gcalctool-programming-mode"/></para> </entry>
                            </row>
@@ -2872,8 +2873,8 @@ the addition of:
                              <entry><para>Redo an undo'ed action</para> </entry>
                              <entry><para><xref linkend="gcalctool-undo-redo"/></para> </entry>
                            </row>
-			 </tbody>
-		  </tgroup>
-		</table>
+                         </tbody>
+                  </tgroup>
+                </table>
   </sect1>
 </article>
