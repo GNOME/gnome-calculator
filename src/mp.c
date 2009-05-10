@@ -2313,12 +2313,3 @@ mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
         mp_pwr(x, y, z);
     }
 }
-
-void
-mp_percent(const MPNumber *x, MPNumber *z)
-{
-    MPNumber t;
-
-    mp_set_from_string("0.01", 10, &t);
-    mp_multiply(x, &t, z);
-}

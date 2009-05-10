@@ -185,7 +185,7 @@ term:
 | term '*' term {mp_multiply(&$1, &$3, &$$);}
 | 'e' '^' term {mp_epowy(&$3, &$$);} 
 | term '!' {mp_factorial(&$1, &$$);}
-| term '%' {mp_percent(&$1, &$$);}
+| term '%' {mp_divide_integer(&$1, 100, &$$);}
 | '~' term %prec LNEG {
     if (!mp_is_natural(&$2)) {
 	parser_state.error = -PARSER_ERR_BITWISEOP;

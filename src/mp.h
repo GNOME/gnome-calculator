@@ -158,9 +158,6 @@ void   mp_factorial(const MPNumber *x, MPNumber *z);
 /* Sets z = x modulo y */
 int    mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
-/* Sets z = x% (i.e. x / 100)*/
-void   mp_percent(const MPNumber *x, MPNumber *z);
-
 /* Sets z = x^y */
 void   mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z);
 

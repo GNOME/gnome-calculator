@@ -315,7 +315,8 @@ mp_atan(const MPNumber *x, MPNumber *z)
         i += 2;
         MP.t = ts;
         mp_add(z, &t2, z);
-	if (t2.sign == 0) break;
+        if (t2.sign == 0)
+            break;
     }
 
     /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
