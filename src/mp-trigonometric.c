@@ -60,7 +60,7 @@ mp_compare_mp_to_int(const MPNumber *x, int i)
 static void
 mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 {
-    int i, b2, ts;
+    int i, b2;
     MPNumber t1, t2;
 
     mpchk();
@@ -86,19 +86,19 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 
     z->sign = 0;
     i = 1;
-    ts = MP.t;
     if (do_sin != 0) {
         mp_set_from_mp(&t1, z);
         i = 2;
     }
 
     /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
-    do {
-        MP.t = t1.exponent + ts + 2;
-        if (MP.t <= 2)
+    for (; ; i+= 2) {
+        int t, ts;
+        
+        t = MP.t + t1.exponent + 2;
+        if (t <= 2)
             break;
-
-        MP.t = min(MP.t,ts);
+        t = min(t, MP.t);
 
         /* PUT R(I3) FIRST IN CASE ITS DIGITS ARE MAINLY ZERO */
         mp_multiply(&t2, &t1, &t1);
@@ -106,19 +106,21 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         /*  IF I*(I+1) IS NOT REPRESENTABLE AS AN INTEGER, THE FOLLOWING
          *  DIVISION BY I*(I+1) HAS TO BE SPLIT UP.
          */
+        ts = MP.t;
+        MP.t = t;
         if (i > b2) {
             mp_divide_integer(&t1, -i, &t1);
             mp_divide_integer(&t1, i + 1, &t1);
         } else {
             mp_divide_integer(&t1, -i * (i + 1), &t1);
         }
-
-        i += 2;
         MP.t = ts;
-        mp_add(&t1, z, z);
-    } while(t1.sign != 0);
 
-    MP.t = ts;
+        mp_add(&t1, z, z);
+        if (t1.sign == 0)
+            break;
+    }
+
     if (do_sin == 0)
         mp_add_integer(z, 1, z);
 }

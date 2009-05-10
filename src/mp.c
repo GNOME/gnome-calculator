@@ -939,7 +939,7 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 void
 mpexp1(const MPNumber *x, MPNumber *y)
 {
-    int i, q, ib, ic, ts;
+    int i, q, ib, ic;
     float rlb;
     MPNumber t1, t2;
 
@@ -984,24 +984,27 @@ mpexp1(const MPNumber *x, MPNumber *y)
     }
     mp_set_from_mp(&t1, y);
     mp_set_from_mp(&t1, &t2);
-    i = 1;
-    ts = MP.t;
 
     /* SUM SERIES, REDUCING T WHERE POSSIBLE */
-    do {
-        MP.t = ts + 2 + t2.exponent - y->exponent;
-        if (MP.t <= 2)
+    for (i = 2; ; i++)  {
+        int t, ts;
+        
+        t = MP.t + 2 + t2.exponent - y->exponent;
+        if (t <= 2)
             break;
+        t = min(t, MP.t);
 
-        MP.t = min(MP.t,ts);
+        ts = MP.t;
+        MP.t = t;
         mp_multiply(&t1, &t2, &t2);
-        ++i;
         mp_divide_integer(&t2, i, &t2);
         MP.t = ts;
-        mp_add(&t2, y, y);
-    } while (t2.sign != 0);
 
-    MP.t = ts;
+        mp_add(&t2, y, y);
+        if (t2.sign == 0)
+            break;
+    }
+
     if (q <= 0)
         return;
 
@@ -1241,8 +1244,7 @@ mplns(const MPNumber *x, MPNumber *y)
         return;
     }
 
-    /* SAVE T AND GET STARTING APPROXIMATION TO -LN(1+X) */
-    ts = MP.t;
+    /* GET STARTING APPROXIMATION TO -LN(1+X) */
     mp_set_from_mp(x, &t2);
     mp_divide_integer(x, 4, &t1);
     mp_add_fraction(&t1, -1, 3, &t1);
@@ -1255,6 +1257,7 @@ mplns(const MPNumber *x, MPNumber *y)
     /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
 
     /* Computing MAX */
+    ts = MP.t;
     MP.t = max(5, 13 - (MP.b << 1));
     if (MP.t <= ts)
     {
@@ -1276,12 +1279,10 @@ mplns(const MPNumber *x, MPNumber *y)
              */
             ts3 = MP.t;
             MP.t = ts;
-
             do {
                 ts2 = MP.t;
                 MP.t = (MP.t + it0) / 2;
             } while (MP.t > ts3);
-
             MP.t = ts2;
         }
         
@@ -1290,10 +1291,10 @@ mplns(const MPNumber *x, MPNumber *y)
             mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
+    MP.t = ts;
 
     /* REVERSE SIGN OF Y AND RETURN */
     y->sign = -y->sign;
-    MP.t = ts;
 }
 
 
@@ -2082,9 +2083,8 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
             mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
-
-    /* RESTORE T */
     MP.t = ts;
+
     if (n >= 0) {
         mp_pwr_integer(&t1, n - 1, &t1);
         mp_multiply(x, &t1, z);
