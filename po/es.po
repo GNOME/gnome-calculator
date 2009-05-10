@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-05-07 23:59+0000\n"
-"PO-Revision-Date: 2009-05-08 20:25+0200\n"
+"POT-Creation-Date: 2009-05-08 02:11+0000\n"
+"PO-Revision-Date: 2009-05-10 11:55+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -346,11 +346,11 @@ msgstr "1"
 #. 1's complement
 #: ../data/gcalctool.ui.h:33
 msgid "1's"
-msgstr ""
+msgstr "C. a 1"
 
 #: ../data/gcalctool.ui.h:34
 msgid "1's complement [z]"
-msgstr ""
+msgstr "Complemento a 1 [z]"
 
 #. Reciprocal button
 #: ../data/gcalctool.ui.h:36
@@ -404,11 +404,11 @@ msgstr "2"
 #. 2's complement
 #: ../data/gcalctool.ui.h:55
 msgid "2's"
-msgstr ""
+msgstr "C. a 2"
 
 #: ../data/gcalctool.ui.h:56
 msgid "2's complement [Z]"
-msgstr ""
+msgstr "Complemento a 2 [Z]"
 
 #. Numeric 3 button
 #: ../data/gcalctool.ui.h:58
@@ -1302,7 +1302,6 @@ msgid "Trunc"
 msgstr "Truncar"
 
 #: ../data/gcalctool.ui.h:339
-#| msgid "Raise displayed value to the power of y [o]"
 msgid "Truncate displayed value to the chosen word size ([)"
 msgstr "Truncar el valor mostrado al tamaño de palabra elegido ([)"
 
@@ -1598,7 +1597,6 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Realice cálculos aritméticos, científicos o financieros"
 
 #: ../data/gcalctool.schemas.in.h:1
-#| msgid "Accuracy"
 msgid "Accuracy value"
 msgstr "Valor de precisión"
 
@@ -1611,6 +1609,8 @@ msgid ""
 "Indicates whether any trailing zeroes after the number point should be shown "
 "in the display value."
 msgstr ""
+"Indica si se debe mostrar en el valor cualquier cero excedente después del "
+"punto del número."
 
 #: ../data/gcalctool.schemas.in.h:4
 msgid "Indicates whether the memory register window is initially displayed."
@@ -1621,27 +1621,22 @@ msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:6
-#| msgid "Mod"
 msgid "Mode"
 msgstr "Modo"
 
 #: ../data/gcalctool.schemas.in.h:7
-#| msgid "Numeric 0"
 msgid "Numeric Base"
 msgstr "Base numérica"
 
 #: ../data/gcalctool.schemas.in.h:8
-#| msgid "Show memory registers"
 msgid "Show Registers"
 msgstr "Mostrar registros"
 
 #: ../data/gcalctool.schemas.in.h:9
-#| msgid "Show T_housands Separator"
 msgid "Show Thousands Separator"
 msgstr "Mostrar separador de miles"
 
 #: ../data/gcalctool.schemas.in.h:10
-#| msgid "Show _Trailing Zeroes"
 msgid "Show Trailing Zeroes"
 msgstr "Mostrar los ceros excedentes"
 
@@ -1697,7 +1692,6 @@ msgid ""
 msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:21
-#| msgid "Set trigonometric type to degrees"
 msgid "Trigonometric type"
 msgstr "Tipo trigonométrico"
 
@@ -1718,6 +1712,8 @@ msgid ""
 "Usage:\n"
 "  %s - Perform mathematical calculations"
 msgstr ""
+"Uso:\n"
+"  %s - Realizar cálculos matemáticos"
 
 #: ../gcalctool/calctool.c:169
 #, c-format
@@ -1755,7 +1751,7 @@ msgstr ""
 #: ../gcalctool/calctool.c:229
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr ""
+msgstr "Parámetro --resolver requiere una ecuación para resolver"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
 #: ../gcalctool/calctool.c:242
@@ -1790,48 +1786,46 @@ msgstr "Función malformada"
 msgid "No sane value to do bitwise shift"
 msgstr "No hay un valor bueno para un desplazamiento de bits"
 
-#: ../gcalctool/functions.c:294 ../gcalctool/functions.c:350
+#: ../gcalctool/functions.c:294 ../gcalctool/functions.c:349
 msgid "No sane value to convert"
 msgstr "No hay un valor bueno para convertir"
 
-#: ../gcalctool/functions.c:317 ../gcalctool/functions.c:370
+#: ../gcalctool/functions.c:317 ../gcalctool/functions.c:369
 msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
-#: ../gcalctool/functions.c:536
+#: ../gcalctool/functions.c:535
 msgid "Invalid number for the current base"
 msgstr "Número inválido para la base actual"
 
-#: ../gcalctool/functions.c:540
+#: ../gcalctool/functions.c:539
 msgid "Too long number"
 msgstr "Número demasiado largo"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
 #. * 1 XOR -1
-#: ../gcalctool/functions.c:547
-#| msgid "Invalid bitwise operation parameter(s)"
+#: ../gcalctool/functions.c:546
 msgid "Invalid bitwise operation"
 msgstr "Operación bit a bit no válida"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid modulus operation, e.g.
 #. * 6 MOD 1.2
-#: ../gcalctool/functions.c:554
-#| msgid "Invalid modulus operation parameter(s)"
+#: ../gcalctool/functions.c:553
 msgid "Invalid modulus operation"
 msgstr "Operación de módulo no válida"
 
 #. Translators; Error displayd to user when they
 #. * perform a bitwise operation on numbers greater
 #. * than the current word
-#: ../gcalctool/functions.c:561
+#: ../gcalctool/functions.c:560
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../gcalctool/functions.c:571
+#: ../gcalctool/functions.c:570
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
@@ -2209,7 +2203,7 @@ msgstr "Descripción"
 msgid "Reset to _Default (%d)"
 msgstr "Restablecer a _predeterminada (%d)"
 
-#: ../gcalctool/mp.c:1834
+#: ../gcalctool/mp.c:1914
 msgid "Negative X and non-integer Y not supported"
 msgstr "Un X negativo y un Y no entero no está soportado"
 
