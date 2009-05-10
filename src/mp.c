@@ -372,71 +372,6 @@ mp_add_fraction(const MPNumber *x, int i, int j, MPNumber *y)
 }
 
 
-/*  COMPUTES MP Z = ARCTAN(1/N), ASSUMING INTEGER N > 1.
- *  USES SERIES ARCTAN(X) = X - X**3/3 + X**5/5 - ...
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE
- *  AT LEAST 2T+6
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_atan1N(int n, MPNumber *z)
-{
-    int i, b2, id, ts;
-    MPNumber t;
-
-    mpchk();
-    if (n <= 1) {
-        mperr("*** N <= 1 IN CALL TO MP_ATAN1N ***");
-        z->sign = 0;
-        return;
-    }
-
-    ts = MP.t;
-
-    /* SET SUM TO X = 1/N */
-    mp_set_from_fraction(1, n, z);
-
-    /* SET ADDITIVE TERM TO X */
-    mp_set_from_mp(z, &t);
-    i = 1;
-    id = 0;
-
-    /* ASSUME AT LEAST 16-BIT WORD. */
-    b2 = max(MP.b, 64);
-    if (n < b2)
-        id = b2 * 7 * b2 / (n * n);
-
-    /* MAIN LOOP.  FIRST REDUCE T IF POSSIBLE */
-    while  ((MP.t = ts + 2 + t.exponent - z->exponent) > 1) {
-
-        MP.t = min(MP.t,ts);
-
-        /*  IF (I+2)*N**2 IS NOT REPRESENTABLE AS AN INTEGER THE DIVISION
-         *  FOLLOWING HAS TO BE PERFORMED IN SEVERAL STEPS.
-         */
-        if (i >= id) {
-            mpmulq(&t, -i, i + 2, &t);
-            mp_divide_integer(&t, n, &t);
-            mp_divide_integer(&t, n, &t);
-        }
-        else {
-            mpmulq(&t, -i, (i + 2)*n*n, &t);
-        }
-
-        i += 2;
-
-        /* RESTORE T */
-        MP.t = ts;
-
-        /* ADD TO SUM */
-        mp_add(&t, z, z);
-        if (t.sign == 0)
-            break;
-    }
-    MP.t = ts;
-}
-
-
 /*  CHECKS LEGALITY OF B, T, M AND MXR.
  *  THE CONDITION ON MXR (THE DIMENSION OF R IN COMMON) IS THAT
  *  MXR >= (I*T + J)
@@ -1808,36 +1743,6 @@ mpovfl(MPNumber *x, const char *error)
     /* TERMINATE EXECUTION BY CALLING MPERR */
     mperr("*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***");
 }
-
-
-/*  SETS MP Z = PI TO THE AVAILABLE PRECISION.
- *  USES PI/4 = 4.ARCTAN(1/5) - ARCTAN(1/239).
- *  TIME IS O(T**2).
- *  DIMENSION OF R MUST BE AT LEAST 3T+8
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_get_pi(MPNumber *z)
-{
-    float prec;
-    MPNumber t;
-
-    mpchk();
-
-    mp_atan1N(5, &t);
-    mp_multiply_integer(&t, 4, &t);
-    mp_atan1N(239, z);
-    mp_subtract(&t, z, z);
-    mp_multiply_integer(z, 4, z);
-
-    /* RETURN IF ERROR IS LESS THAN 0.01 */
-    prec = fabs(mp_cast_to_float(z) - 3.1416);
-    if (prec < 0.01) return;
-
-    /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
-    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***");
-}
-
 
 /*  RETURNS Y = X**N, FOR MP X AND Y, INTEGER N, WITH 0**0 = 1.
  *  R MUST BE DIMENSIONED AT LEAST 4T+10 IN CALLING PROGRAM

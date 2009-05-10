@@ -46,7 +46,6 @@ mp_compare_mp_to_int(const MPNumber *x, int i)
     return mp_compare_mp_to_mp(x, &t);
 }
 
-
 /*  COMPUTES Z = SIN(X) IF DO_SIN != 0, Z = COS(X) IF DO_SIN == 0,
  *  USING TAYLOR SERIES.   ASSUMES ABS(X) <= 1.
  *  X AND Y ARE MP NUMBERS, IS AN INTEGER.
@@ -124,6 +123,96 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         mp_add_integer(z, 1, z);
 }
 
+/*  COMPUTES MP Z = ARCTAN(1/N), ASSUMING INTEGER N > 1.
+ *  USES SERIES ARCTAN(X) = X - X**3/3 + X**5/5 - ...
+ *  DIMENSION OF R IN CALLING PROGRAM MUST BE
+ *  AT LEAST 2T+6
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
+static void
+mp_atan1N(int n, MPNumber *z)
+{
+    int i, b2, id;
+    MPNumber t2;
+
+    mpchk();
+    if (n <= 1) {
+        mperr("*** N <= 1 IN CALL TO MP_ATAN1N ***");
+        z->sign = 0;
+        return;
+    }
+
+    /* SET SUM TO X = 1/N */
+    mp_set_from_fraction(1, n, z);
+
+    /* SET ADDITIVE TERM TO X */
+    mp_set_from_mp(z, &t2);
+
+    /* ASSUME AT LEAST 16-BIT WORD. */
+    b2 = max(MP.b, 64);
+    if (n < b2)
+        id = b2 * 7 * b2 / (n * n);
+    else
+        id = 0;
+
+    /* MAIN LOOP.  FIRST REDUCE T IF POSSIBLE */
+    for (i = 1; ; i += 2) {
+        int t, ts;
+
+        t = MP.t + 2 + t2.exponent - z->exponent;
+        if (t <= 1)
+            break;
+        t = min(t, MP.t);
+
+        /*  IF (I+2)*N**2 IS NOT REPRESENTABLE AS AN INTEGER THE DIVISION
+         *  FOLLOWING HAS TO BE PERFORMED IN SEVERAL STEPS.
+         */
+        ts = MP.t;
+        MP.t = t;
+        if (i >= id) {
+            mpmulq(&t2, -i, i + 2, &t2);
+            mp_divide_integer(&t2, n, &t2);
+            mp_divide_integer(&t2, n, &t2);
+        }
+        else {
+            mpmulq(&t2, -i, (i + 2)*n*n, &t2);
+        }
+        MP.t = ts;
+
+        /* ADD TO SUM */
+        mp_add(&t2, z, z);
+        if (t2.sign == 0)
+            break;
+    }
+}
+
+/*  SETS MP Z = PI TO THE AVAILABLE PRECISION.
+ *  USES PI/4 = 4.ARCTAN(1/5) - ARCTAN(1/239).
+ *  TIME IS O(T**2).
+ *  DIMENSION OF R MUST BE AT LEAST 3T+8
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
+void
+mp_get_pi(MPNumber *z)
+{
+    float prec;
+    MPNumber t;
+
+    mpchk();
+
+    mp_atan1N(5, &t);
+    mp_multiply_integer(&t, 4, &t);
+    mp_atan1N(239, z);
+    mp_subtract(&t, z, z);
+    mp_multiply_integer(z, 4, z);
+
+    /* RETURN IF ERROR IS LESS THAN 0.01 */
+    prec = fabs(mp_cast_to_float(z) - 3.1416);
+    if (prec < 0.01) return;
+
+    /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
+    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***");
+}
 
 /*  MP precision arc cosine.
  *
@@ -271,7 +360,7 @@ mp_asinh(const MPNumber *x, MPNumber *z)
 void
 mp_atan(const MPNumber *x, MPNumber *z)
 {
-    int i, q, ts;
+    int i, q;
     float rx = 0.0, ry;
     MPNumber t1, t2;
 
@@ -285,9 +374,8 @@ mp_atan(const MPNumber *x, MPNumber *z)
     if (abs(x->exponent) <= 2)
         rx = mp_cast_to_float(x);
 
-    q = 1;
-
     /* REDUCE ARGUMENT IF NECESSARY BEFORE USING SERIES */
+    q = 1;
     while (t2.exponent >= 0)
     {
         if (t2.exponent == 0 && (t2.fraction[0] + 1) << 1 <= MP.b)
@@ -304,23 +392,28 @@ mp_atan(const MPNumber *x, MPNumber *z)
     /* USE POWER SERIES NOW ARGUMENT IN (-0.5, 0.5) */
     mp_set_from_mp(&t2, z);
     mp_multiply(&t2, &t2, &t1);
-    i = 1;
-    ts = MP.t;
 
     /* SERIES LOOP.  REDUCE T IF POSSIBLE. */
-    while ((MP.t = ts + 2 + t2.exponent) > 1) {
-        MP.t = min(MP.t,ts);
+    for (i = 1; ; i += 2) {
+        int t, ts;
+        
+        t = MP.t + 2 + t2.exponent;
+        if (t <= 1)
+            break;
+        t = min(t, MP.t);
+        
+        ts = MP.t;
+        MP.t = t;
         mp_multiply(&t2, &t1, &t2);
         mpmulq(&t2, -i, i + 2, &t2);
-        i += 2;
         MP.t = ts;
+
         mp_add(z, &t2, z);
         if (t2.sign == 0)
             break;
     }
 
-    /* RESTORE T, CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
-    MP.t = ts;
+    /* CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
     mp_multiply_integer(z, q, z);
 
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
