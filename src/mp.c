@@ -28,6 +28,8 @@
 #include "mp-internal.h"
 #include "calctool.h" // FIXME: Required for doerr() and MAXLINE
 
+// FIXME: MP.t and MP.m modified inside functions, needs to be fixed to be thread safe
+
 static int mp_compare_mp_to_float(const MPNumber *, float);
 static int pow_ii(int, int);
 
@@ -65,17 +67,18 @@ static void mpunfl(MPNumber *);
 void
 mp_init(int accuracy)
 {
-    int i, k, w, i2, w2, wn;
+    int i, k, w;
 
     /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
-    w = 0;
-    k = 0;
-
     /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
      *  47 TIMES AT MOST.  IF GENUINE INTEGER WORDLENGTH
      *  EXCEEDS 47 BITS THIS RESTRICTION CAN BE RELAXED.
      */
+    w = 0;
+    k = 0;
     for (i = 1; i <= 47; ++i) {
+        int w2, wn;
+
         /*  INTEGER OVERFLOW WILL EVENTUALLY OCCUR HERE
          *  IF WORDLENGTH < 48 BITS
          */
@@ -106,11 +109,8 @@ mp_init(int accuracy)
                   (float) 2.0);
 
     /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
-    i2 = MP.t;
-    if (i2 > MP_SIZE) {
-        mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", i2);
-
-        /* REDUCE TO MAXIMUM ALLOWED BY DIMENSION STATEMENTS */
+    if (MP.t > MP_SIZE) {
+        mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", MP.t);
         MP.t = MP_SIZE;
     }
     
@@ -1265,8 +1265,6 @@ mplns(const MPNumber *x, MPNumber *y)
     mp_multiply(x, &t1, y);
 
     /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
-
-    /* Computing MAX */
     t = max(5, 13 - (MP.b << 1));
     if (t <= MP.t)
     {
