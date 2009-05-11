@@ -35,7 +35,6 @@
 #include "ui.h"
 
 #include "config.h"
-#include "dsdefs.h"
 #include "functions.h"
 #include "financial.h"
 #include "mp-equation.h"
@@ -532,6 +531,96 @@ enum {
 };
 
 static void setup_finc_dialogs ();
+
+#define WM_WIDTH_FACTOR  10
+#define WM_HEIGHT_FACTOR 30
+
+typedef enum {
+    POPUP_RIGHT,     /* Place popup to right of baseframe */
+    POPUP_LEFT,      /* Place popup to left of baseframe */
+    POPUP_ABOVE,     /* Place popup above baseframe */
+    POPUP_BELOW,     /* Place popup below baseframe */
+    POPUP_LOR,       /* Place popup to right or left of baseframe */
+    POPUP_AOB,       /* Place popup above or below baseframe */
+    POPUP_CENTERED   /* Center popup within baseframe */
+} PopupLocation;
+
+static void
+position_popup(GtkWidget *base, GtkWidget *popup, 
+               PopupLocation location_op)
+{
+    int base_x, base_y, base_width, base_height;
+    int popup_x, popup_y, popup_width, popup_height;
+    int screen_width, screen_height;
+    int n;
+
+    gtk_window_get_position(GTK_WINDOW(base), &base_x, &base_y);
+    gtk_window_get_size(GTK_WINDOW(base), &base_width, &base_height);
+    gtk_window_get_position(GTK_WINDOW(popup), &popup_x, &popup_y);
+    gtk_window_get_size(GTK_WINDOW(popup), &popup_width, &popup_height);
+    screen_width = gdk_screen_width();
+    screen_height = gdk_screen_height();
+
+    if (location_op == POPUP_LOR) {
+        if (base_x >= screen_width - base_width - base_x) {
+            location_op = POPUP_LEFT;
+        } else {
+            location_op = POPUP_RIGHT;
+        }
+    } else if (location_op == POPUP_AOB) {
+        if (base_y > screen_height - base_height - base_y) {
+            location_op = POPUP_ABOVE;
+        } else {
+            location_op = POPUP_BELOW;
+        }
+    }
+
+    switch (location_op) {
+        case POPUP_RIGHT:
+            popup_x = base_x + base_width + WM_WIDTH_FACTOR;
+            popup_y = base_y;
+            break;
+
+        case POPUP_LEFT:
+            popup_x = base_x - popup_width - WM_WIDTH_FACTOR;
+            popup_y = base_y;
+            break;
+
+        case POPUP_ABOVE:
+            popup_x = base_x;
+            popup_y = base_y - popup_height - WM_HEIGHT_FACTOR;
+            break;
+
+        case POPUP_BELOW:
+            popup_x = base_x;
+            popup_y = base_y + base_height + WM_HEIGHT_FACTOR;
+            break;
+
+        case POPUP_CENTERED:
+        default:
+            popup_x = base_x + (base_width - popup_width) / 2;
+            popup_y = base_y + (base_height - popup_height) / 2;
+            break;
+    }
+
+    /* Make sure frame doesn't go off side of screen */
+    n = popup_x + popup_width;
+    if (n > screen_width) {
+        popup_x -= (n - screen_width);
+    } else if (popup_x < 0) {
+        popup_x = 0;
+    }
+
+    /* Make sure frame doesn't go off top or bottom */
+    n = popup_y + popup_height;
+    if (n > screen_height) {
+        popup_y -= n - screen_height;
+    } else if (popup_y < 0) {
+        popup_y = 0;
+    }
+
+    gtk_window_move(GTK_WINDOW(popup), popup_x, popup_y);
+}
 
 void
 ui_set_accuracy(int accuracy)
@@ -1193,7 +1282,7 @@ ui_set_registers_visible(gboolean visible)
             gdk_window_raise(X.rframe->window);
             return;
         }
-        ds_position_popup(X.kframe, X.rframe, DS_POPUP_ABOVE);
+        position_popup(X.kframe, X.rframe, POPUP_ABOVE);
         gtk_widget_show(X.rframe);
     } else {
         gtk_widget_hide(X.rframe);
@@ -2219,7 +2308,7 @@ void
 insert_ascii_cb(GtkWidget *widget)
 {
     if (!GTK_WIDGET_VISIBLE(X.aframe)) {
-        ds_position_popup(X.kframe, X.aframe, DS_POPUP_LEFT);
+        position_popup(X.kframe, X.aframe, POPUP_LEFT);
     }
     gtk_widget_grab_focus(GTK_WIDGET(X.aframe_ch));
     gtk_widget_show(X.aframe);
@@ -2278,7 +2367,7 @@ void
 accuracy_other_cb(GtkWidget *widget)
 {
     if (!GTK_WIDGET_VISIBLE(X.spframe)) {
-        ds_position_popup(X.kframe, X.spframe, DS_POPUP_LEFT);
+        position_popup(X.kframe, X.spframe, POPUP_LEFT);
     }    
     gtk_widget_grab_focus(GTK_WIDGET(X.precision_spin));
     gtk_widget_show(X.spframe);

@@ -18,8 +18,6 @@ gcalctool_SOURCES = \
 	calctool.h \
 	display.c \
 	display.h \
-	dsfuns.c \
-	dsdefs.h \
 	get.c \
 	get.h \
 	functions.c \
