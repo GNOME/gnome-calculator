@@ -853,36 +853,46 @@ mp_epowy(const MPNumber *x, MPNumber *z)
     /*  COMPUTE E-2 OR 1/E USING TWO EXTRA DIGITS IN CASE ABS(X) LARGE
      *  (BUT ONLY ONE EXTRA DIGIT IF T < 4)
      */
-    tss = MP.t;
-    ts = MP.t + 2;
     if (MP.t < 4)
-        ts = MP.t + 1;
-    MP.t = ts;
-    t2.sign = 0;
-    mp_set_from_integer(xs, &t1);
-    i = 1;
+        tss = MP.t + 1;
+    else
+        tss = MP.t + 2;
 
     /* LOOP FOR E COMPUTATION. DECREASE T IF POSSIBLE. */
     /* Computing MIN */
-    do {
-        MP.t = min(ts, ts + 2 + t1.exponent);
-        if (MP.t <= 2)
+    ts = MP.t;
+    MP.t = tss;
+    mp_set_from_integer(xs, &t1);
+    MP.t = ts;
+
+    t2.sign = 0;
+    for (i = 2 ; ; i++) {
+        int t;
+        
+        t = min(tss, tss + 2 + t1.exponent);
+        if (t <= 2)
             break;
-        ++i;
+        
+        ts = MP.t;
+        MP.t = t;
         mp_divide_integer(&t1, i * xs, &t1);
         MP.t = ts;
+        
+        ts = MP.t;
+        MP.t = tss;
         mp_add(&t2, &t1, &t2);
-    } while (t1.sign != 0);
+        MP.t = ts;
+        if (t1.sign == 0)
+            break;
+    }
 
     /* RAISE E OR 1/E TO POWER IX */
-    MP.t = ts;
-    if (xs > 0) {
-        mp_add_integer(&t2, 2, &t2);
-    }
-    mp_pwr_integer(&t2, ix, &t2);
-
-    /* RESTORE T NOW */
+    ts = MP.t;
     MP.t = tss;
+    if (xs > 0)
+        mp_add_integer(&t2, 2, &t2);
+    mp_pwr_integer(&t2, ix, &t2);
+    MP.t = ts;
 
     /* MULTIPLY EXPS OF INTEGER AND FRACTIONAL PARTS */
     mp_multiply(z, &t2, z);
@@ -1226,7 +1236,7 @@ mp_logarithm(int n, MPNumber *x, MPNumber *z)
 static void
 mplns(const MPNumber *x, MPNumber *y)
 {
-    int ts, it0, ts2, ts3;
+    int t, it0;
     MPNumber t1, t2, t3;
     
     mpchk();
@@ -1257,33 +1267,37 @@ mplns(const MPNumber *x, MPNumber *y)
     /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
 
     /* Computing MAX */
-    ts = MP.t;
-    MP.t = max(5, 13 - (MP.b << 1));
-    if (MP.t <= ts)
+    t = max(5, 13 - (MP.b << 1));
+    if (t <= MP.t)
     {
-        it0 = (MP.t + 5) / 2;
+        it0 = (t + 5) / 2;
 
         while(1)
         {
+            int ts, ts2, ts3;
+            
+            ts = MP.t;
+            MP.t = t;
             mpexp1(y, &t3);
             mp_multiply(&t2, &t3, &t1);
             mp_add(&t3, &t1, &t3);
             mp_add(&t2, &t3, &t3);
             mp_subtract(y, &t3, y);
-            if (MP.t >= ts)
+            MP.t = ts;
+            if (t >= MP.t)
                 break;
 
             /*  FOLLOWING LOOP COMPUTES NEXT VALUE OF T TO USE.
              *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE,
              *  WE CAN ALMOST DOUBLE T EACH TIME.
              */
-            ts3 = MP.t;
-            MP.t = ts;
+            ts3 = t;
+            t = MP.t;
             do {
-                ts2 = MP.t;
-                MP.t = (MP.t + it0) / 2;
-            } while (MP.t > ts3);
-            MP.t = ts2;
+                ts2 = t;
+                t = (t + it0) / 2;
+            } while (t > ts3);
+            t = ts2;
         }
         
         /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
@@ -1291,7 +1305,6 @@ mplns(const MPNumber *x, MPNumber *y)
             mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
-    MP.t = ts;
 
     /* REVERSE SIGN OF Y AND RETURN */
     y->sign = -y->sign;
@@ -1856,7 +1869,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
     MPNumber tmp_x, t1, t2;
 
-    int ex, ts, it0, ts2, ts3;
+    int ex, it0, t;
     float rx;
 
     /* CHECK LEGALITY OF B, T, M AND MXR */
@@ -1886,43 +1899,47 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     /* CORRECT EXPONENT OF FIRST APPROXIMATION */
     t1.exponent -= ex;
 
-    /* SAVE T (NUMBER OF DIGITS) */
-    ts = MP.t;
-
     /* START WITH SMALL T TO SAVE TIME. ENSURE THAT B**(T-1) >= 100 */
-    MP.t = 3;
     if (MP.b < 10)
-        MP.t = it[MP.b - 1];
-    it0 = (MP.t + 4) / 2;
-    
-    if (MP.t <= ts) {
-        /* MAIN ITERATION LOOP */
+        t = it[MP.b - 1];
+    else
+        t = 3;
+    it0 = (t + 4) / 2;
+
+    /* MAIN ITERATION LOOP */    
+    if (t <= MP.t) {        
         while(1) {
+            int ts, ts2, ts3;
+            
+            ts = MP.t;
+            MP.t = t;
             mp_multiply(x, &t1, &t2);
             mp_add_integer(&t2, -1, &t2);
+            MP.t = ts;
 
             /* TEMPORARILY REDUCE T */
-            ts3 = MP.t;
-            MP.t = (MP.t + it0) / 2;
+            ts = MP.t;
+            MP.t = (t + it0) / 2;
             mp_multiply(&t1, &t2, &t2);
+            MP.t = ts;
 
-            /* RESTORE T */
-            MP.t = ts3;
+            ts = MP.t;
+            MP.t = t;
             mp_subtract(&t1, &t2, &t1);
-            if (MP.t >= ts)
+            MP.t = ts;
+            if (t >= MP.t)
                 break;
 
             /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE
              *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
              */
-            MP.t = ts;
-
+            ts3 = t;
+            t = MP.t;
             do {
-                ts2 = MP.t;
-                MP.t = (MP.t + it0) / 2;
-            } while (MP.t > ts3);
-
-            MP.t = min(ts,ts2);
+                ts2 = t;
+                t = (t + it0) / 2;
+            } while (t > ts3);
+            t = min(ts2, MP.t);
         }
         
         /* RETURN IF NEWTON ITERATION WAS CONVERGING */
@@ -1935,7 +1952,6 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     }
 
     /* MOVE RESULT TO Y AND RETURN AFTER RESTORING T */
-    MP.t = ts;
     mp_set_from_mp(&t1, z);
 
     /* RESTORE M AND CHECK FOR OVERFLOW (UNDERFLOW IMPOSSIBLE) */
@@ -1960,7 +1976,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     float r__1;
 
-    int ex, np, ts, it0, ts2, ts3;
+    int ex, np, it0, t;
     float rx;
     MPNumber t1, t2;
 
@@ -2027,49 +2043,53 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     /* CORRECT EXPONENT OF FIRST APPROXIMATION */
     t1.exponent -= ex;
 
-    /* SAVE T (NUMBER OF DIGITS) */
-    ts = MP.t;
-
     /* START WITH SMALL T TO SAVE TIME */
-    MP.t = 3;
-
     /* ENSURE THAT B**(T-1) >= 100 */
     if (MP.b < 10)
-        MP.t = it[MP.b - 1];
+        t = it[MP.b - 1];
+    else
+        t = 3;        
     
-    if (MP.t <= ts) {
+    if (t <= MP.t) {
         /* IT0 IS A NECESSARY SAFETY FACTOR */
-        it0 = (MP.t + 4) / 2;
+        it0 = (t + 4) / 2;
 
         /* MAIN ITERATION LOOP */
         while(1) {
+            int ts, ts2, ts3;
+
+            ts = MP.t;
+            MP.t = t;
             mp_pwr_integer(&t1, np, &t2);
             mp_multiply(x, &t2, &t2);
             mp_add_integer(&t2, -1, &t2);
+            MP.t = ts;
 
             /* TEMPORARILY REDUCE T */
-            ts3 = MP.t;
-            MP.t = (MP.t + it0) / 2;
+            ts = MP.t;
+            MP.t = (t + it0) / 2;
             mp_multiply(&t1, &t2, &t2);
             mp_divide_integer(&t2, np, &t2);
+            MP.t = ts;
 
-            /* RESTORE T */
-            MP.t = ts3;
+            ts = MP.t;
+            MP.t = t;
             mp_subtract(&t1, &t2, &t1);
-            
+            MP.t = ts;
+
             /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE BECAUSE
              *  NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
              */
-            if (MP.t >= ts)
+            if (t >= MP.t)
                 break;
-            MP.t = ts;
-            
+
+            ts3 = t;
+            t = MP.t;
             do {
-                ts2 = MP.t;
-                MP.t = (MP.t + it0) / 2;
-            } while (MP.t > ts3);
-            
-            MP.t = min(ts,ts2);
+                ts2 = t;
+                t = (t + it0) / 2;
+            } while (t > ts3);
+            t = min(ts2, MP.t);
         }
 
         /*  NOW R(I2) IS X**(-1/NP)
@@ -2083,7 +2103,6 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
             mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
-    MP.t = ts;
 
     if (n >= 0) {
         mp_pwr_integer(&t1, n - 1, &t1);
