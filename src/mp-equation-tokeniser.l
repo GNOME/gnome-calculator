@@ -26,12 +26,10 @@
 #include <locale.h>
 #include <string.h>
 #include <sys/types.h>
+
 #include "calctool.h"
-#include "display.h"
-#include "mp.h"
-#include "functions.h" /* FIXME: Needed for gc_strdup() */
-#include "ce_parser.h"
-#include "ce_parser.tab.h"
+#include "mp-equation.h"
+#include "mp-equation-parser.tab.h"
 %}
 
 %option noinput

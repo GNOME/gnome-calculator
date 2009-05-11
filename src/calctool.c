@@ -35,7 +35,7 @@
 #include "ui.h"
 #include "mp.h"
 #include "register.h"
-#include "ce_parser.h"
+#include "mp-equation.h"
 
 time_t time();
 

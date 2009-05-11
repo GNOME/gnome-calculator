@@ -24,12 +24,10 @@
 #include <stdlib.h> 
 #include <math.h>
 #include <errno.h>
+
 #include "calctool.h"
 #include "register.h"
-#include "display.h"
-#include "parser.h"
-#include "parser_mac.h"
-#include "ce_parser.h"
+#include "mp-equation.h"
 
 %}
 
@@ -99,7 +97,7 @@
 
 statement: 
   seq
-| value {ret(&$1);}
+| value { mp_set_from_mp(&$1, &parser_state.ret); parser_state.flags |= ANS; }
 | error {
   yyclearin; 
   reset_ce_tokeniser();
@@ -131,12 +129,12 @@ udf:
 ;
 
 value: 
-  exp {cp(&$1, &$$);}
+  exp {mp_set_from_mp(&$1, &$$);}
 | tPI %prec HIGH {mp_get_pi(&$$);} 
 ;
 
 exp: 
-  term {cp(&$1, &$$);}
+  term {mp_set_from_mp(&$1, &$$);}
 
 | exp '+' exp {mp_add(&$1, &$3, &$$);}
 | exp '-' exp {mp_subtract(&$1, &$3, &$$);}
@@ -179,8 +177,8 @@ exp:
 
 
 term:
-  number {cp(&$1, &$$);}
-| rcl {cp(&$1, &$$);}
+  number {mp_set_from_mp(&$1, &$$);}
+| rcl {mp_set_from_mp(&$1, &$$);}
 | term '/' term {mp_divide(&$1, &$3, &$$);}
 | term '*' term {mp_multiply(&$1, &$3, &$$);}
 | 'e' '^' term {mp_epowy(&$3, &$$);} 
@@ -195,17 +193,17 @@ term:
     mp_not(&$2, v->wordlen, &$$);
 }
 | '-' term %prec NEG {mp_invert_sign(&$2, &$$);}
-| '+' term %prec POS {cp(&$2, &$$);}
+| '+' term %prec POS {mp_set_from_mp(&$2, &$$);}
 | term '^' term {mp_xpowy(&$1, &$3, &$$);}
 
-| func {cp(&$1, &$$);}
-| reg {cp(&$1, &$$);}
+| func {mp_set_from_mp(&$1, &$$);}
+| reg {mp_set_from_mp(&$1, &$$);}
 
-| parenthesis {cp(&$1, &$$);}
+| parenthesis {mp_set_from_mp(&$1, &$$);}
 ;
 
 parenthesis:
-  '(' exp ')' {cp(&$2, &$$);}
+  '(' exp ')' {mp_set_from_mp(&$2, &$$);}
   ;
 
 reg: 
@@ -263,9 +261,9 @@ rcl:
   ;
 
 number:
-  tNUMBER {cp(&$1, &$$);}
+  tNUMBER {mp_set_from_mp(&$1, &$$);}
 | tANS {
-  cp(display_get_answer(&v->display), &$$);
+  mp_set_from_mp(display_get_answer(&v->display), &$$);
 }
 ;
 
@@ -278,7 +276,7 @@ int ceerror(char *s)
 
 #if 0
 
-| '(' lexp ')' {cp(&$2, &$$);}
+| '(' lexp ')' {mp_set_from_mp(&$2, &$$);}
 
 | term term {mp_multiply(&$1, &$2, &$$);}
 

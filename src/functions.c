@@ -33,7 +33,7 @@
 #include "register.h"
 #include "mp.h"
 #include "display.h"
-#include "ce_parser.h"
+#include "mp-equation.h"
 #include "ui.h"
 
 typedef enum {

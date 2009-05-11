@@ -19,8 +19,17 @@
  *  02111-1307, USA.
  */
 
-#ifndef PARSER_MAC_H
-#define PARSER_MAC_H
+#ifndef CE_PARSER_H
+#define CE_PARSER_H
+
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h>
+#include <math.h>
+#include <assert.h>
+#include <errno.h>
+
+#include "mp.h"
 
 #define PARSER_MIN(a, b) (a < b) ? a : b;
 
@@ -33,4 +42,32 @@
     result = (c) ? c : YY_NULL;\
 }
 
-#endif /*PARSER_MAC_H*/
+#define ANS 1
+
+#define PARSER_ERR_INVALID_BASE     10000
+#define PARSER_ERR_TOO_LONG_NUMBER  10001
+#define PARSER_ERR_BITWISEOP        10002
+#define PARSER_ERR_MODULUSOP        10003
+#define PARSER_ERR_OVERFLOW         10004
+
+struct parser_state {
+    int flags;
+    char *buff;
+    int i;
+    int error;
+    MPNumber ret;
+    int ncount;
+};
+
+extern struct parser_state parser_state;
+
+int ce_parse(const char *expression, MPNumber *result);
+int ce_udf_parse(const char *expression);
+
+int celex();
+int ceerror();                   /* dummy definition TODO: this is a douple */
+int ceparse();                   /* dummy definition. */
+int ceerror(char *s);
+void reset_ce_tokeniser();
+
+#endif

@@ -19,11 +19,11 @@
  *  02111-1307, USA.
  */
 
-#include "ce_parser.h"
+#include "mp-equation.h"
 #include "limits.h"
 #include "calctool.h"
 
-/* TODO: This file is almost identical to lr-parser. */
+struct parser_state parser_state;
 
 int 
 ce_parse_(const char *expression, MPNumber *result, int flags)

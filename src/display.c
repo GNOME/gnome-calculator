@@ -30,7 +30,7 @@
 #include "mp.h"
 #include "functions.h"
 #include "ui.h"
-#include "ce_parser.h" // For ce_parse()
+#include "mp-equation.h" // For ce_parse()
 #include "register.h"
 
 static const char *display_types[] = { "ENG", "FIX", "SCI", NULL };

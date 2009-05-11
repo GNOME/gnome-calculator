@@ -30,25 +30,22 @@ gcalctool_SOURCES = \
 	mp-convert.c \
 	mp-internal.h \
 	mp-trigonometric.c \
+	mp-equation.c \
+	mp-equation.h \
+	mp-equation.tab.h \	
 	financial.c \
 	financial.h \
-	parser.c \
-	parser.h \
-	parser_mac.h \
 	register.c \
 	register.h \
 	gtk.c \
 	ui.h \
 	unittest.c \
-	unittest.h \
-	ce_parser.c \
-	ce_parser.h \
-	ce_parser.tab.h
+	unittest.h
 	
 CLEANFILES = \
-	ce_parser.tab.h \
-	ce_parser.tab.c \
-	lex.ce.c \
+	mp-equation-parser.tab.h \
+	mp-equation-parser.tab.c \
+	mp-equation-lexer.c \
 	libparser.a
 
 gcalctool_LDADD = \
@@ -58,26 +55,26 @@ gcalctool_LDADD = \
 	libparser.a
 
 libparser.a: \
-	lex.ce.o\
-	ce_parser.tab.o\
-	ce_parser.o
+	mp-equation-lexer.o\
+	mp-equation-parser.tab.o\
+	mp-equation.o
 	$(AR) r libparser.a $^
 	$(RANLIB) libparser.a
 
-ce_parser.o: ce_parser.c ce_parser.h calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/ce_parser.c
+mp-equation.o: mp-equation.c mp-equation.h calctool.h
+	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/mp-equation.c
 
-lex.ce.o: lex.ce.c calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ lex.ce.c
+mp-equation-lexer.o: mp-equation-lexer.c calctool.h
+	$(COMPILE) -c $(INCLUDES) -o $@ mp-equation-lexer.c
 
-ce_parser.tab.o: ce_parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ ce_parser.tab.c
+mp-equation-parser.tab.o: mp-equation-parser.tab.c
+	$(COMPILE) -c $(INCLUDES) -o $@ mp-equation-parser.tab.c
 
-ce_parser.tab.c: ce_parser.y calctool.h
-	bison -d -p ce -d $(srcdir)/ce_parser.y
+mp-equation-parser.tab.c: mp-equation-parser.y calctool.h
+	bison -d -p ce -d $(srcdir)/mp-equation-parser.y
 
-lex.ce.c: ce_parser.tab.c ce_tokeniser.l
-	$(LEX) -Pce $(srcdir)/ce_tokeniser.l
+mp-equation-lexer.c: mp-equation-parser.tab.c mp-equation-tokeniser.l
+	$(LEX) -Pce -o $@ $(srcdir)/mp-equation-tokeniser.l
 
 code-format: 
 	ls *[ch] | xargs indent -nbad -bap -bbo -nbc -br\
@@ -96,8 +93,8 @@ uninstall-local:
 	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
 
 EXTRA_DIST = \
-	ce_parser.y \
-	ce_tokeniser.l
+	mp-equation-parser.y \
+	mp-equation-tokeniser.l
 
 test: gcalctool
 	./gcalctool -u

@@ -27,7 +27,7 @@
 #include "display.h"
 #include "functions.h"
 #include "calctool.h"
-#include "ce_parser.h"
+#include "mp-equation.h"
 
 static int fails = 0;
 

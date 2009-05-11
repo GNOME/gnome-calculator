@@ -38,7 +38,7 @@
 #include "dsdefs.h"
 #include "functions.h"
 #include "financial.h"
-#include "ce_parser.h"
+#include "mp-equation.h"
 #include "display.h"
 #include "get.h"
 #include "register.h"
