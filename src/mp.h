@@ -125,6 +125,9 @@ void   mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 /* Sets z = x ÷ y */
 void   mp_divide_integer(const MPNumber *x, int y, MPNumber *z);
 
+/* Sets z = 1 ÷ x */
+void   mp_reciprocal(const MPNumber *, MPNumber *);
+
 /* Sets z = fractional part of x */
 void   mp_fractional_component(const MPNumber *x, MPNumber *z);
 

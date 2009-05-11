@@ -52,6 +52,5 @@ void mpmul2(const MPNumber *, int, MPNumber *, int);
 void mp_normalize(MPNumber *, int trunc);
 void mpexp1(const MPNumber *, MPNumber *);
 void mpmulq(const MPNumber *, int, int, MPNumber *);
-void mp_reciprocal(const MPNumber *, MPNumber *);
 
 #endif /* MP_INTERNAL_H */

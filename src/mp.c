@@ -2232,6 +2232,11 @@ mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if (mp_is_integer(y)) {
         mp_pwr_integer(x, mp_cast_to_int(y), z);
     } else {
-        mp_pwr(x, y, z);
+        MPNumber reciprocal;
+        mp_reciprocal(y, &reciprocal);
+        if (mp_is_integer(&reciprocal))
+            mp_root(x, mp_cast_to_int(&reciprocal), z);
+        else
+            mp_pwr(x, y, z);
     }
 }
