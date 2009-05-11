@@ -19,8 +19,8 @@
  *  02111-1307, USA.
  */
 
-#ifndef CE_PARSER_H
-#define CE_PARSER_H
+#ifndef MP_EQUATION_H
+#define MP_EQUATION_H
 
 #include <stdio.h>
 #include <stdlib.h> 
@@ -61,8 +61,8 @@ struct parser_state {
 
 extern struct parser_state parser_state;
 
-int ce_parse(const char *expression, MPNumber *result);
-int ce_udf_parse(const char *expression);
+int mp_equation_parse(const char *expression, MPNumber *result);
+int mp_equation_udf_parse(const char *expression);
 
 int celex();
 int ceerror();                   /* dummy definition TODO: this is a douple */

@@ -141,7 +141,7 @@ solve(const char *equation)
     v->wordlen = 32;
     v->accuracy = 9;
     
-    error = ce_parse(equation, &result);
+    error = mp_equation_parse(equation, &result);
     if(error != 0) {
         fprintf(stderr, "Error %d\n", error);
         exit(1);

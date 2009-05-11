@@ -30,7 +30,7 @@
 #include "mp.h"
 #include "functions.h"
 #include "ui.h"
-#include "mp-equation.h" // For ce_parse()
+#include "mp-equation.h" // For mp_equation_parse()
 #include "register.h"
 
 static const char *display_types[] = { "ENG", "FIX", "SCI", NULL };
@@ -542,9 +542,9 @@ gboolean
 display_is_usable_number(GCDisplay *display, MPNumber *MPnum)
 {
     if (display_is_empty(display)) {
-        return ce_parse("0", MPnum);
+        return mp_equation_parse("0", MPnum);
     } else {
-        return ce_parse(display_get_text(display), MPnum);
+        return mp_equation_parse(display_get_text(display), MPnum);
     }
 }
 
@@ -628,7 +628,7 @@ display_solve(GCDisplay *display, MPNumber *result)
     int errorCode;
 
     text = display_get_text(display);
-    errorCode = ce_parse(text, result);
+    errorCode = mp_equation_parse(text, result);
     
     return errorCode;
 }

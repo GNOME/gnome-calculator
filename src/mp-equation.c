@@ -26,7 +26,7 @@
 struct parser_state parser_state;
 
 int 
-ce_parse_(const char *expression, MPNumber *result, int flags)
+mp_equation_parse_(const char *expression, MPNumber *result, int flags)
 {
     int ret = 0;
 
@@ -67,15 +67,15 @@ ce_parse_(const char *expression, MPNumber *result, int flags)
 
 
 int 
-ce_parse(const char *expression, MPNumber *result)
+mp_equation_parse(const char *expression, MPNumber *result)
 {
-    return(ce_parse_(expression, result, ANS));
+    return(mp_equation_parse_(expression, result, ANS));
 }
 
 
 int 
-ce_udf_parse(const char *expression)
+mp_equation_udf_parse(const char *expression)
 {
-    MPNumber temp;
-    return(ce_parse_(expression, &temp, 0));
+    MPNumber t;
+    return(mp_equation_parse_(expression, &t, 0));
 }

@@ -69,7 +69,7 @@ test(char *expression, char *expected, int expected_error)
     MPNumber result;
     char result_str[MAXLINE] = "";
     
-    error = ce_parse(expression, &result);
+    error = mp_equation_parse(expression, &result);
 
     if(error == 0) {
         mp_cast_to_string(&result, basevals[v->base], 9, result_str, MAXLINE);

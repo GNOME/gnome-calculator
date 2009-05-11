@@ -177,7 +177,7 @@ do_function(int index)
     assert(index >= 0);
     assert(index <= 9);
 
-    ret = ce_udf_parse(function_get_value(index));
+    ret = mp_equation_udf_parse(function_get_value(index));
     if (!ret) {
         ui_set_statusbar("", "");
     } else {
