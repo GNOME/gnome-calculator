@@ -1311,8 +1311,8 @@ about_cb(GtkWidget *widget)
     /* Translators: The translator credits. Please translate this with your name(s). */
     const gchar *translator_credits = _("translator-credits");
 
-    char *license[] = {
-        /* Translators: The license this software is under (GPL2+) */
+    /* Translators: The license this software is under (GPL2+) */    
+    char *license =
         _("Gcalctool is free software; you can redistribute it and/or modify\n"
           "it under the terms of the GNU General Public License as published by\n"
           "the Free Software Foundation; either version 2 of the License, or\n"
@@ -1325,9 +1325,7 @@ about_cb(GtkWidget *widget)
           "\n"
           "You should have received a copy of the GNU General Public License\n"
           "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"),
-        NULL
-    };
+          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA");
 
     gtk_show_about_dialog(GTK_WINDOW(X.kframe),
                           /* Translators: Program name in the about dialog */
