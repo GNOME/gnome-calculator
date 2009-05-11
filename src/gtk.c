@@ -986,11 +986,16 @@ ui_set_mode(ModeType mode)
     if (X.mode != mode) {
         X.mode = mode;
 
-        ui_set_base(DEC);
-        ui_set_numeric_mode(FIX);
-        do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
-        ui_set_show_thousands_separator(FALSE);
-        ui_set_show_trailing_zeroes(FALSE);
+        // FIXME: These should affect display but not the actual UI settings
+        if (mode != PROGRAMMING)
+            ui_set_base(DEC);
+        if (mode != SCIENTIFIC) {
+            ui_set_numeric_mode(FIX);
+            do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
+        }
+        if (mode == BASIC)
+            ui_set_show_trailing_zeroes(FALSE);
+
         ui_make_registers();
     }
     
