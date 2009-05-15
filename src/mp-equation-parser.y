@@ -25,8 +25,8 @@
 #include <math.h>
 #include <errno.h>
 
-#include "calctool.h"
-#include "register.h"
+#include "calctool.h" // FIXME: Can be removed soon
+#include "register.h" // FIXME: Can be removed soon
 #include "mp-equation.h"
 #include "mp-equation-parser.h"
 #include "mp-equation-lexer.h"

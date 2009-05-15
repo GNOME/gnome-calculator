@@ -547,18 +547,12 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
         end--;
     }
    
-    /* Stop if there is no fractional component or not showing fractional part */
-    if ((mp_is_zero(&fractional_component) && !v->display.show_zeroes) || accuracy == 0) {
-        *optr = '\0';
-        return;
-    }
-   
     last_non_zero = optr;
     *optr++ = '.';
    
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
-    do {
+    while (!mp_is_zero(&temp) && accuracy > 0) {
         int d;
         MPNumber digit;
 
@@ -577,13 +571,19 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
             last_non_zero = optr;
         mp_subtract(&temp, &digit, &temp);
         accuracy--;
-    } while (!mp_is_zero(&temp) && accuracy > 0);
+    }
 
     /* Strip trailing zeroes */
-    if (!v->display.show_zeroes)
+    if (!v->display.show_zeroes || accuracy == 0)
        optr = last_non_zero;
 
     *optr = '\0';
+    
+    /* Remove negative sign if the number was rounded down to zero */
+    if (strcmp(buffer, "-0") == 0) {
+        buffer[0] = '0';
+        buffer[1] = '\0';
+    }
 }
 
 
