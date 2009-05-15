@@ -28,8 +28,15 @@
 #include "calctool.h"
 #include "register.h"
 #include "mp-equation.h"
-
+#include "mp-equation-parser.h"
+#include "mp-equation-lexer.h"
 %}
+
+%define api.pure
+%name-prefix "_mp_equation_"
+%locations
+%parse-param {yyscan_t yyscanner}
+%lex-param {yyscan_t yyscanner}
 
 %union {
   MPNumber int_t;
@@ -97,11 +104,9 @@
 
 statement: 
   seq
-| value { mp_set_from_mp(&$1, &parser_state.ret); parser_state.flags |= ANS; }
+| value { mp_set_from_mp(&$1, &((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->ret); ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->flags |= ANS; }
 | error {
-  yyclearin; 
-  reset_ce_tokeniser();
-  parser_state.error = -EINVAL; 
+  ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -EINVAL; 
   YYABORT;
 }
 ;
@@ -141,35 +146,35 @@ exp:
 
 | exp tMOD exp %prec MED {
     if (!mp_is_integer(&$1) || !mp_is_integer(&$3)) {
-	parser_state.error = -PARSER_ERR_MODULUSOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_MODULUSOP;
     } else {
       if (mp_modulus_divide(&$1, &$3, &$$)) {
-        parser_state.error = -EINVAL;
+        ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -EINVAL;
       }			   
     }
 }
 
 | exp tAND exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_and(&$1, &$3, &$$);
 }
 | exp tOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_or(&$1, &$3, &$$);
 }
 | exp tXNOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_xnor(&$1, &$3, v->wordlen, &$$);
 }
 | exp tXOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_xor(&$1, &$3, &$$);
 }
@@ -186,9 +191,9 @@ term:
 | term '%' {mp_divide_integer(&$1, 100, &$$);}
 | '~' term %prec LNEG {
     if (!mp_is_natural(&$2)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	parser_state.error = -PARSER_ERR_OVERFLOW;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
     mp_not(&$2, v->wordlen, &$$);
 }
@@ -237,17 +242,17 @@ func:
 | tTRUNC term %prec HIGH {mp_mask(&$2, v->wordlen, &$$);}
 | t1S term %prec HIGH  {
     if (!mp_is_natural(&$2)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	parser_state.error = -PARSER_ERR_OVERFLOW;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
     mp_1s_complement(&$2, v->wordlen, &$$);
 }
 | t2S term %prec HIGH {
     if (!mp_is_natural(&$2)) {
-	parser_state.error = -PARSER_ERR_BITWISEOP;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	parser_state.error = -PARSER_ERR_OVERFLOW;
+	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
     mp_2s_complement(&$2, v->wordlen, &$$);
 }
@@ -268,16 +273,3 @@ number:
 ;
 
 %%
-
-int ceerror(char *s)
-{
-  return 0;
-}
-
-#if 0
-
-| '(' lexp ')' {mp_set_from_mp(&$2, &$$);}
-
-| term term {mp_multiply(&$1, &$2, &$$);}
-
-#endif

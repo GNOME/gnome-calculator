@@ -31,17 +31,6 @@
 
 #include "mp.h"
 
-#define PARSER_MIN(a, b) (a < b) ? a : b;
-
-#define YY_INPUT(buf, result, max) {\
-    int l = strlen(parser_state.buff);\
-    int remaining = l - parser_state.i;\
-    int c = PARSER_MIN(remaining, max);\
-    memcpy(buf, parser_state.buff + parser_state.i, c);\
-    parser_state.i += c;\
-    result = (c) ? c : YY_NULL;\
-}
-
 #define ANS 1
 
 #define PARSER_ERR_INVALID_BASE     10000
@@ -50,24 +39,17 @@
 #define PARSER_ERR_MODULUSOP        10003
 #define PARSER_ERR_OVERFLOW         10004
 
-struct parser_state {
+typedef struct {
     int flags;
-    char *buff;
-    int i;
-    int error;
-    MPNumber ret;
-    int ncount;
-};
 
-extern struct parser_state parser_state;
+    int error;
+
+    MPNumber ret;
+} MPEquationParserState;
 
 int mp_equation_parse(const char *expression, MPNumber *result);
 int mp_equation_udf_parse(const char *expression);
 
-int celex();
-int ceerror();                   /* dummy definition TODO: this is a douple */
-int ceparse();                   /* dummy definition. */
-int ceerror(char *s);
-void reset_ce_tokeniser();
+int _mp_equation_error(void *yylloc, MPEquationParserState *state, char *text);
 
 #endif

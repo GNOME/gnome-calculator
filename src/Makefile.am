@@ -30,7 +30,10 @@ gcalctool_SOURCES = \
 	mp-trigonometric.c \
 	mp-equation.c \
 	mp-equation.h \
-	mp-equation.tab.h \	
+	mp-equation-lexer.c \
+	mp-equation-lexer.h \
+	mp-equation-parser.c \
+	mp-equation-parser.h \
 	financial.c \
 	financial.h \
 	register.c \
@@ -41,9 +44,10 @@ gcalctool_SOURCES = \
 	unittest.h
 	
 CLEANFILES = \
-	mp-equation-parser.tab.h \
-	mp-equation-parser.tab.c \
+	mp-equation-parser.h \
+	mp-equation-parser.c \
 	mp-equation-lexer.c \
+	mp-equation-lexer.h \
 	libparser.a
 
 gcalctool_LDADD = \
@@ -54,25 +58,20 @@ gcalctool_LDADD = \
 
 libparser.a: \
 	mp-equation-lexer.o\
-	mp-equation-parser.tab.o\
+	mp-equation-parser.o\
 	mp-equation.o
 	$(AR) r libparser.a $^
 	$(RANLIB) libparser.a
 
-mp-equation.o: mp-equation.c mp-equation.h calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ $(srcdir)/mp-equation.c
+mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y
+	bison -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
 
-mp-equation-lexer.o: mp-equation-lexer.c calctool.h
-	$(COMPILE) -c $(INCLUDES) -o $@ mp-equation-lexer.c
+mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
+	$(LEX) $(srcdir)/mp-equation-lexer.l
 
-mp-equation-parser.tab.o: mp-equation-parser.tab.c
-	$(COMPILE) -c $(INCLUDES) -o $@ mp-equation-parser.tab.c
-
-mp-equation-parser.tab.c: mp-equation-parser.y calctool.h
-	bison -d -p ce -d $(srcdir)/mp-equation-parser.y
-
-mp-equation-lexer.c: mp-equation-parser.tab.c mp-equation-tokeniser.l
-	$(LEX) -Pce -o $@ $(srcdir)/mp-equation-tokeniser.l
+mp-equation-parser.o: mp-equation-lexer.h
+mp-equation-lexer.o: mp-equation-parser.h
+mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
 
 code-format: 
 	ls *[ch] | xargs indent -nbad -bap -bbo -nbc -br\
@@ -92,7 +91,7 @@ uninstall-local:
 
 EXTRA_DIST = \
 	mp-equation-parser.y \
-	mp-equation-tokeniser.l
+	mp-equation-lexer.l
 
 test: gcalctool
 	./gcalctool -u

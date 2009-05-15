@@ -1,4 +1,9 @@
-%option noyywrap
+%option 8bit reentrant bison-locations
+%option never-interactive
+%option noyywrap noinput nounput
+%option prefix="_mp_equation_"
+%option extra-type="MPEquationParserState *"
+%option outfile="mp-equation-lexer.c" header-file="mp-equation-lexer.h"
 
 %{
 
@@ -29,11 +34,8 @@
 
 #include "calctool.h"
 #include "mp-equation.h"
-#include "mp-equation-parser.tab.h"
+#include "mp-equation-parser.h"
 %}
-
-%option noinput
-%option nounput
 
 DECIMAL	"."|","
 SIGN	"+"|"-" 
@@ -89,43 +91,43 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "xor"|"Xor"|"XOR" {return tXOR;}
 
 "R"{DEC}+ {
-celval.integer = atoi(yytext+1);  
+yylval->integer = atoi(yytext+1);  
 return tREG;
 }
 
 
 {DEC_NUM}{EXP}{DEC_NUM} {
 if (v->base == HEX) REJECT;
-if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &celval.int_t);
+if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
+mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
 return tNUMBER;
 }
 
 {BIN_NUM} {
 if (v->base != BIN) REJECT;
-if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &celval.int_t);
+if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
+mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
 return tNUMBER;
 }
 
 {OCT_NUM} {
 if (v->base != OCT) REJECT;
-if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &celval.int_t);
+if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
+mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
 return tNUMBER;
 }
 
 {DEC_NUM} {
 if (v->base != DEC) REJECT;
-if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &celval.int_t);
+if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
+mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
 return tNUMBER;
 }
 
 {HEX_NUM} {
 if (v->base != HEX) REJECT;
-if (strlen(yytext) > MAX_DIGITS) parser_state.error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &celval.int_t);
+if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
+mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
 return tNUMBER;
 }
 
@@ -134,17 +136,3 @@ return tNUMBER;
 .        {return *yytext; }
 
 %% 
-
-void
-reset_ce_tokeniser()
-{
-ce_flush_buffer(YY_CURRENT_BUFFER);
-
-}
-
-#if 0
-// EMPTY BLOCK
-
-
-
-#endif

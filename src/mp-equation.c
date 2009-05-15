@@ -20,29 +20,33 @@
  */
 
 #include "mp-equation.h"
-#include "limits.h"
 #include "calctool.h"
+#include "mp-equation-parser.h"
+#include "mp-equation-lexer.h"
 
-struct parser_state parser_state;
+extern int _mp_equation_parse(yyscan_t yyscanner);
 
 int 
 mp_equation_parse_(const char *expression, MPNumber *result, int flags)
 {
     int ret = 0;
+    MPEquationParserState parser_state;
+    yyscan_t yyscanner;
+    YY_BUFFER_STATE buffer;
 
-    if (!(expression && result)) {
+    if (!(expression && result) || strlen(expression) == 0)
         return(-EINVAL);
-    }
 
-    memset(&parser_state, 0, sizeof(struct parser_state));
+    memset(&parser_state, 0, sizeof(MPEquationParserState));
+    v->math_error = 0;
+        
+    _mp_equation_lex_init_extra(&parser_state, &yyscanner);
+    buffer = _mp_equation__scan_string(expression, yyscanner);
 
-    if (strlen(expression)) {
-        parser_state.i = 0;
-        parser_state.buff = strdup(expression);
-        v->math_error = 0;
-        ret = ceparse();
-        free(parser_state.buff);
-    }
+    ret = _mp_equation_parse(yyscanner);
+
+    _mp_equation__delete_buffer(buffer, yyscanner);
+    _mp_equation_lex_destroy(yyscanner);
 
     ret = (parser_state.error) ? parser_state.error : ret;
 
@@ -78,4 +82,9 @@ mp_equation_udf_parse(const char *expression)
 {
     MPNumber t;
     return(mp_equation_parse_(expression, &t, 0));
+}
+
+int _mp_equation_error(void *yylloc, MPEquationParserState *state, char *text)
+{
+  return 0;
 }
