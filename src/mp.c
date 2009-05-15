@@ -151,6 +151,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     int sign_prod;
     int exp_diff, med;
     int x_largest = 0;
+    MPNumber zt; // Use stack variable because of mp_normalize brokeness
 
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
     if (x->sign == 0) {
@@ -220,16 +221,17 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
         }
     }
 
-    /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */    
+    /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
     if (x_largest) {
-        z->sign = x->sign;
-        z->exponent = x->exponent + mpadd3(y, x, z->fraction, sign_prod, med);
+        zt.sign = x->sign;
+        zt.exponent = x->exponent + mpadd3(y, x, zt.fraction, sign_prod, med);
     }
     else {
-        z->sign = y_sign;
-        z->exponent = y->exponent + mpadd3(x, y, z->fraction, sign_prod, med);
+        zt.sign = y_sign;
+        zt.exponent = y->exponent + mpadd3(x, y, zt.fraction, sign_prod, med);
     }
-    mp_normalize(z, trunc);
+    mp_normalize(&zt, trunc);
+    mp_set_from_mp(&zt, z);
 }
 
 
@@ -1444,7 +1446,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     /* NORMALIZE AND ROUND RESULT */
-    // FIXME: I don't know why but using z->fraction directly does not work
+    // FIXME: Use stack variable because of mp_normalize brokeness
     for (i = 0; i < i2; i++)
         z->fraction[i] = r.fraction[i];
     mp_normalize(z, 0);
@@ -1632,6 +1634,9 @@ mp_invert_sign(const MPNumber *x, MPNumber *y)
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
 // FIXME: Is r->fraction large enough?  It seems to be in practise but it may be MP.t+4 instead of MP.t
+// FIXME: There is some sort of stack corruption/use of unitialised variables here.  Some functions are
+// using stack variables as x otherwise there are corruption errors. e.g. "Cos(45) - 1/Sqrt(2) = -0"
+// (try in scientific mode)
 void
 mp_normalize(MPNumber *x, int trunc)
 {
