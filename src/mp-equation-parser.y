@@ -104,9 +104,9 @@
 
 statement: 
   seq
-| value { mp_set_from_mp(&$1, &((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->ret); ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->flags |= ANS; }
+| value { mp_set_from_mp(&$1, &(_mp_equation_get_extra(yyscanner))->ret); (_mp_equation_get_extra(yyscanner))->flags |= ANS; }
 | error {
-  ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -EINVAL; 
+  (_mp_equation_get_extra(yyscanner))->error = -EINVAL; 
   YYABORT;
 }
 ;
@@ -146,35 +146,35 @@ exp:
 
 | exp tMOD exp %prec MED {
     if (!mp_is_integer(&$1) || !mp_is_integer(&$3)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_MODULUSOP;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_MODULUSOP;
     } else {
       if (mp_modulus_divide(&$1, &$3, &$$)) {
-        ((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -EINVAL;
+        (_mp_equation_get_extra(yyscanner))->error = -EINVAL;
       }			   
     }
 }
 
 | exp tAND exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_and(&$1, &$3, &$$);
 }
 | exp tOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_or(&$1, &$3, &$$);
 }
 | exp tXNOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
-    mp_xnor(&$1, &$3, v->wordlen, &$$);
+    mp_xnor(&$1, &$3, _mp_equation_get_extra(yyscanner)->wordlen, &$$);
 }
 | exp tXOR exp {
     if (!mp_is_natural(&$1) || !mp_is_natural(&$3)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     }
     mp_xor(&$1, &$3, &$$);
 }
@@ -191,11 +191,11 @@ term:
 | term '%' {mp_divide_integer(&$1, 100, &$$);}
 | '~' term %prec LNEG {
     if (!mp_is_natural(&$2)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2, _mp_equation_get_extra(yyscanner)->wordlen)) {
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
-    mp_not(&$2, v->wordlen, &$$);
+    mp_not(&$2, _mp_equation_get_extra(yyscanner)->wordlen, &$$);
 }
 | '-' term %prec NEG {mp_invert_sign(&$2, &$$);}
 | '+' term %prec POS {mp_set_from_mp(&$2, &$$);}
@@ -226,12 +226,12 @@ func:
 | tINT term %prec HIGH {mp_integer_component(&$2, &$$);}
 | tCHS term %prec HIGH {mp_invert_sign(&$2, &$$);}
 
-| tSIN term %prec HIGH {to_rad(&$2, &$2); mp_sin(&$2, &$$);}
-| tCOS term %prec HIGH {to_rad(&$2, &$2); mp_cos(&$2, &$$);}
-| tTAN term %prec HIGH {to_rad(&$2, &$2); mp_tan(&$2, &$$);}
-| tASIN term %prec HIGH {mp_asin(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
-| tACOS term %prec HIGH {mp_acos(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
-| tATAN term %prec HIGH {mp_atan(&$2, &$$); do_trig_typeconv(v->ttype, &$$, &$$);}
+| tSIN term %prec HIGH {mp_sin(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
+| tCOS term %prec HIGH {mp_cos(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
+| tTAN term %prec HIGH {mp_tan(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
+| tASIN term %prec HIGH {mp_asin(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
+| tACOS term %prec HIGH {mp_acos(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
+| tATAN term %prec HIGH {mp_atan(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tSINH term %prec HIGH {mp_sinh(&$2, &$$);}
 | tCOSH term %prec HIGH {mp_cosh(&$2, &$$);}
 | tTANH term %prec HIGH {mp_tanh(&$2, &$$);}
@@ -239,22 +239,22 @@ func:
 | tACOSH term %prec HIGH {mp_acosh(&$2, &$$);}
 | tATANH term %prec HIGH {mp_atanh(&$2, &$$);}
 
-| tTRUNC term %prec HIGH {mp_mask(&$2, v->wordlen, &$$);}
+| tTRUNC term %prec HIGH {mp_mask(&$2, _mp_equation_get_extra(yyscanner)->wordlen, &$$);}
 | t1S term %prec HIGH  {
     if (!mp_is_natural(&$2)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2, _mp_equation_get_extra(yyscanner)->wordlen)) {
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
-    mp_1s_complement(&$2, v->wordlen, &$$);
+    mp_1s_complement(&$2, _mp_equation_get_extra(yyscanner)->wordlen, &$$);
 }
 | t2S term %prec HIGH {
     if (!mp_is_natural(&$2)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
-    } else if (!mp_is_overflow(&$2, v->wordlen)) {
-	((MPEquationParserState *)_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
+    } else if (!mp_is_overflow(&$2, _mp_equation_get_extra(yyscanner)->wordlen)) {
+	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_OVERFLOW;
     }
-    mp_2s_complement(&$2, v->wordlen, &$$);
+    mp_2s_complement(&$2, _mp_equation_get_extra(yyscanner)->wordlen, &$$);
 }
 ;
 

@@ -512,7 +512,9 @@ typedef struct {
     GtkWidget *hyperbolic_toggle;      /* Hyperbolic mode. */
     GtkWidget *inverse_toggle;         /* Inverse mode. */
     GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
-    GtkWidget *trig[MAXTRIGMODES];     /* Trigonometric mode. */
+    GtkWidget *radian_radio;           /* Radian radio button. */
+    GtkWidget *degree_radio;           /* Degree radio button. */
+    GtkWidget *gradian_radio;          /* Gradian radio button. */
 
     /* Programming mode widgets */
     GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
@@ -827,9 +829,22 @@ ui_update_modifier_mode()
 
 
 void
-ui_set_trigonometric_mode(TrigType mode)
+ui_set_trigonometric_mode(MPAngleUnit units)
 {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.trig[mode]), 1);
+    GtkWidget *radio;
+    switch(units) {
+    default:
+    case MP_RADIANS:
+        radio = X.radian_radio;
+        break;
+    case MP_DEGREES:
+        radio = X.degree_radio;
+        break;
+    case MP_GRADIANS:
+        radio = X.gradian_radio;
+        break;
+    }
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio), 1);
 }
 
 
@@ -2545,11 +2560,11 @@ create_kframe()
     X.bit_panel    = GET_WIDGET("bit_panel");
     X.clear_buttons[0] = GET_WIDGET("calc_clear_simple_button");
     X.clear_buttons[1] = GET_WIDGET("calc_clear_advanced_button");   
-    X.sci_mode_panel = GET_WIDGET("scientific_mode_panel");
-    X.prog_mode_panel = GET_WIDGET("programming_mode_panel");
-    X.trig[0]      = GET_WIDGET("degrees_radio");
-    X.trig[1]      = GET_WIDGET("gradians_radio");
-    X.trig[2]      = GET_WIDGET("radians_radio");
+    X.sci_mode_panel   = GET_WIDGET("scientific_mode_panel");
+    X.prog_mode_panel  = GET_WIDGET("programming_mode_panel");
+    X.degree_radio     = GET_WIDGET("degrees_radio");
+    X.gradian_radio    = GET_WIDGET("gradians_radio");
+    X.radian_radio     = GET_WIDGET("radians_radio");
     X.base[0]      = GET_WIDGET("binary_radio");
     X.base[1]      = GET_WIDGET("octal_radio");
     X.base[2]      = GET_WIDGET("decimal_radio");
@@ -2731,9 +2746,9 @@ create_kframe()
     gtk_widget_realize(X.kframe);
     set_win_position();
 
-    for (i = 0; i < 3; i++)
-        g_object_set_data(G_OBJECT(X.trig[i]),
-                          "trig_mode", GINT_TO_POINTER(i));
+    g_object_set_data(G_OBJECT(X.radian_radio), "trig_mode", GINT_TO_POINTER(MP_RADIANS));
+    g_object_set_data(G_OBJECT(X.degree_radio), "trig_mode", GINT_TO_POINTER(MP_DEGREES));
+    g_object_set_data(G_OBJECT(X.gradian_radio), "trig_mode", GINT_TO_POINTER(MP_GRADIANS));
     for (i = 0; i < 4; i++)
         g_object_set_data(G_OBJECT(X.base[i]),
                           "base_mode", GINT_TO_POINTER(i));

@@ -73,7 +73,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         return;
     }
 
-    b2 = max(MP.b,64) << 1;
+    b2 = max(MP.b, 64) << 1;
     mp_multiply(x, x, &t2);
     if (mp_compare_mp_to_int(&t2, 1) > 0) {
         mperr("*** ABS(X) > 1 IN CALL TO MPSIN1 ***");
@@ -81,7 +81,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 
     if (do_sin == 0)
         mp_set_from_integer(1, &t1);
-    if (do_sin != 0)
+    else
         mp_set_from_mp(x, &t1);
 
     z->sign = 0;
@@ -100,14 +100,12 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
             break;
         t = min(t, MP.t);
 
-        /* PUT R(I3) FIRST IN CASE ITS DIGITS ARE MAINLY ZERO */
-        mp_multiply(&t2, &t1, &t1);
-
         /*  IF I*(I+1) IS NOT REPRESENTABLE AS AN INTEGER, THE FOLLOWING
          *  DIVISION BY I*(I+1) HAS TO BE SPLIT UP.
          */
         ts = MP.t;
         MP.t = t;
+        mp_multiply(&t2, &t1, &t1);
         if (i > b2) {
             mp_divide_integer(&t1, -i, &t1);
             mp_divide_integer(&t1, i + 1, &t1);
@@ -115,8 +113,8 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
             mp_divide_integer(&t1, -i * (i + 1), &t1);
         }
         MP.t = ts;
-
         mp_add(&t1, z, z);
+
         if (t1.sign == 0)
             break;
     }
@@ -188,6 +186,58 @@ mp_atan1N(int n, MPNumber *z)
     }
 }
 
+
+/* Convert x to radians */
+static void
+convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    MPNumber t1, t2;
+
+    switch(unit) {
+    default:
+    case MP_RADIANS:
+        mp_set_from_mp(x, z);
+        break;
+
+    case MP_DEGREES:
+        mp_get_pi(&t1);
+        mp_multiply(x, &t1, &t2);
+        mp_divide_integer(&t2, 180, z);
+        break;
+
+    case MP_GRADIANS:        
+        mp_get_pi(&t1);
+        mp_multiply(x, &t1, &t2);
+        mp_divide_integer(&t2, 200, z);
+        break;
+    }
+}
+
+static void
+convert_from_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    MPNumber t1, t2;
+    
+    switch (unit) {
+    default:
+    case MP_RADIANS:
+        mp_set_from_mp(x, z);
+        break;
+        
+    case MP_DEGREES:
+        mp_multiply_integer(x, 180, &t2);
+        mp_get_pi(&t1);
+        mp_divide(&t2, &t1, z);
+        break;
+        
+    case MP_GRADIANS:
+        mp_multiply_integer(x, 200, &t2);
+        mp_get_pi(&t1);
+        mp_divide(&t2, &t1, z);
+        break;
+    }
+}
+
 /*  SETS MP Z = PI TO THE AVAILABLE PRECISION.
  *  USES PI/4 = 4.ARCTAN(1/5) - ARCTAN(1/239).
  *  TIME IS O(T**2).
@@ -208,13 +258,206 @@ mp_get_pi(MPNumber *z)
     mp_subtract(&t, z, z);
     mp_multiply_integer(z, 4, z);
 
-    /* RETURN IF ERROR IS LESS THAN 0.01 */
-    prec = fabs(mp_cast_to_float(z) - 3.1416);
-    if (prec < 0.01) return;
-
     /* FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL */
-    mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***");
+    prec = fabs(mp_cast_to_float(z) - 3.1416);
+    if (prec >= 0.01)
+        mperr("*** ERROR OCCURRED IN MP_GET_PI, RESULT INCORRECT ***");
 }
+
+
+/*  RETURNS Z = SIN(X) FOR MP X AND Z,
+ *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
+ *  TIME IS O(M(T)T/LOG(T)).
+ *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
+void
+mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    int ie, xs;
+    float rx = 0.0;
+    MPNumber t1, t2;
+
+    mpchk();
+    
+    convert_to_radians(x, unit, &t1);
+    
+    if (t1.sign == 0) {
+        z->sign = 0;
+        return;
+    }
+
+    xs = t1.sign;
+    ie = abs(t1.exponent);
+    if (ie <= 2)
+        rx = mp_cast_to_float(&t1);
+
+    mp_abs(&t1, &t1);
+
+    /* USE MPSIN1 IF ABS(X) <= 1 */
+    if (mp_compare_mp_to_int(&t1, 1) <= 0)
+    {
+        mpsin1(&t1, z, 1);
+    }
+    /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
+     *  PRECOMPUTED AND SAVED IN COMMON).
+     *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MP_ATAN1N
+     */
+    else {
+        mp_atan1N(5, &t2);
+        mp_multiply_integer(&t2, 4, &t2);
+        mp_atan1N(239, z);
+        mp_subtract(&t2, z, z);
+        mp_divide(&t1, z, &t1);
+        mp_divide_integer(&t1, 8, &t1);
+        mp_fractional_component(&t1, &t1);
+
+        /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
+        mp_add_fraction(&t1, -1, 2, &t1);
+        xs = -xs * t1.sign;
+        if (xs == 0) {
+            z->sign = 0;
+            return;
+        }
+
+        t1.sign = 1;
+        mp_multiply_integer(&t1, 4, &t1);
+
+        /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
+        if (t1.exponent > 0)
+            mp_add_integer(&t1, -2, &t1);
+
+        if (t1.sign == 0) {
+            z->sign = 0;
+            return;
+        }        
+
+        t1.sign = 1;
+        mp_multiply_integer(&t1, 2, &t1);
+
+        /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
+         *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
+         */
+        if (t1.exponent > 0) {
+            mp_add_integer(&t1, -2, &t1);
+            mp_multiply(&t1, z, &t1);
+            mpsin1(&t1, z, 0);
+        } else {
+            mp_multiply(&t1, z, &t1);
+            mpsin1(&t1, z, 1);
+        }
+    }
+
+    z->sign = xs;
+
+    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) <= 100
+     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
+     */
+    if (ie <= 2 && fabs(rx) <= 100.0) {
+        float ry = mp_cast_to_float(z);
+        /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
+        if (fabs(ry - sin(rx)) >= 0.01)
+            mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***");
+    }
+}
+
+
+/*  RETURNS Z = COS(X) FOR MP X AND Z, USING MP_SIN AND MPSIN1.
+ *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
+ */
+void
+mp_cos(const MPNumber *xi, MPAngleUnit unit, MPNumber *z)
+{
+    MPNumber t;
+
+    /* COS(0) = 1 */    
+    if (xi->sign == 0) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
+    /* CHECK LEGALITY OF B, T, M AND MXR */
+    mpchk();
+
+    convert_to_radians(xi, unit, z);
+
+    /* SEE IF ABS(X) <= 1 */
+    mp_abs(z, z);
+    if (mp_compare_mp_to_int(z, 1) <= 0) {
+        /* HERE ABS(X) <= 1 SO USE POWER SERIES */
+        mpsin1(z, z, 0);
+    } else {
+        /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
+         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
+         */
+        mp_get_pi(&t);
+        mp_divide_integer(&t, 2, &t);
+        mp_subtract(&t, z, z);
+        mp_sin(z, MP_RADIANS, z);
+    }
+}
+
+
+void 
+mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    MPNumber cos_x, sin_x;
+
+    mp_sin(x, unit, &sin_x);
+    mp_cos(x, unit, &cos_x);
+    /* Check if COS(x) == 0 */
+    if (mp_is_zero(&cos_x)) {
+        /* Translators: Error displayed when tangent value is undefined */
+        mperr(_("Tangent is infinite"));
+        return;
+    }
+    mp_divide(&sin_x, &cos_x, z);
+}
+
+
+/*  RETURNS Z = ARCSIN(X), ASSUMING ABS(X) <= 1,
+ *  FOR MP NUMBERS X AND Z.
+ *  Z IS IN THE RANGE -PI/2 TO +PI/2.
+ *  METHOD IS TO USE MP_ATAN, SO TIME IS O(M(T)T).
+ *  DIMENSION OF R MUST BE AT LEAST 5T+12
+ *  CHECK LEGALITY OF B, T, M AND MXR
+ */
+void
+mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    MPNumber t1, t2;
+
+    mpchk();
+    if (x->sign == 0) {
+        z->sign = 0;
+        return;
+    }
+
+    if (x->exponent <= 0) {
+        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
+        mp_set_from_integer(1, &t1);
+        mp_set_from_mp(&t1, &t2);
+        mp_subtract(&t1, x, &t1);
+        mp_add(&t2, x, &t2);
+        mp_multiply(&t1, &t2, &t2);
+        mp_root(&t2, -2, &t2);
+        mp_multiply(x, &t2, z);
+        mp_atan(z, unit, z);
+        return;
+    }
+
+    /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
+    mp_set_from_integer(x->sign, &t2);
+    if (!mp_is_equal(x, &t2))
+        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***");
+
+    /* X == +-1 SO RETURN +-PI/2 */
+    mp_get_pi(z);
+    mp_divide_integer(z, t2.sign << 1, z);
+    
+    convert_from_radians(z, unit, z);
+}
+
 
 /*  MP precision arc cosine.
  *
@@ -231,7 +474,7 @@ mp_get_pi(MPNumber *z)
  *  6. If (-1 < x < 0) then acos(x) = atan(sqrt(1-x^2) / x) + PI
  */
 void
-mp_acos(const MPNumber *x, MPNumber *z)
+mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber MP1, MP2;
     MPNumber MPn1, MPpi, MPy;
@@ -254,98 +497,15 @@ mp_acos(const MPNumber *x, MPNumber *z)
         mp_subtract(&MP1, &MP2, &MP2);
         mp_sqrt(&MP2, &MP2);
         mp_divide(&MP2, x, &MP2);
-        mp_atan(&MP2, &MPy);
+        mp_atan(&MP2, MP_RADIANS, &MPy);
         if (x->sign > 0) {
             mp_set_from_mp(&MPy, z);
         } else {
             mp_add(&MPy, &MPpi, z);
         }
     }
-}
-
-
-/*  MP precision hyperbolic arc cosine.
- *
- *  1. If (x < 1) then report DOMAIN error and return 0.
- *
- *  2. acosh(x) = log(x + sqrt(x^2 - 1))
- */
-void
-mp_acosh(const MPNumber *x, MPNumber *z)
-{
-    MPNumber MP1;
-
-    mp_set_from_integer(1, &MP1);
-    if (mp_is_less_than(x, &MP1)) {
-        mperr("Error");
-        mp_set_from_integer(0, z);
-    } else {
-        mp_multiply(x, x, &MP1);
-        mp_add_integer(&MP1, -1, &MP1);
-        mp_sqrt(&MP1, &MP1);
-        mp_add(x, &MP1, &MP1);
-        mp_ln(&MP1, z);
-    }
-}
-
-
-/*  RETURNS Z = ARCSIN(X), ASSUMING ABS(X) <= 1,
- *  FOR MP NUMBERS X AND Z.
- *  Z IS IN THE RANGE -PI/2 TO +PI/2.
- *  METHOD IS TO USE MP_ATAN, SO TIME IS O(M(T)T).
- *  DIMENSION OF R MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_asin(const MPNumber *x, MPNumber *z)
-{
-    MPNumber t1, t2;
-
-    mpchk();
-    if (x->sign == 0) {
-        z->sign = 0;
-        return;
-    }
-
-    if (x->exponent <= 0) {
-        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
-        mp_set_from_integer(1, &t1);
-        mp_set_from_mp(&t1, &t2);
-        mp_subtract(&t1, x, &t1);
-        mp_add(&t2, x, &t2);
-        mp_multiply(&t1, &t2, &t2);
-        mp_root(&t2, -2, &t2);
-        mp_multiply(x, &t2, z);
-        mp_atan(z, z);
-        return;
-    }
-
-    /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
-    mp_set_from_integer(x->sign, &t2);
-    if (!mp_is_equal(x, &t2)) {
-        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***");
-    }
-
-    /* X == +-1 SO RETURN +-PI/2 */
-    mp_get_pi(z);
-    mp_divide_integer(z, t2.sign << 1, z);
-}
-
-
-/*  MP precision hyperbolic arc sine.
- *
- *  1. asinh(x) = log(x + sqrt(x^2 + 1))
- */
-void
-mp_asinh(const MPNumber *x, MPNumber *z)
-{
-    MPNumber MP1;
- 
-    mp_multiply(x, x, &MP1);
-    mp_add_integer(&MP1, 1, &MP1);
-    mp_sqrt(&MP1, &MP1);
-    mp_add(x, &MP1, &MP1);
-    mp_ln(&MP1, z);
+    
+    convert_from_radians(z, unit, z);
 }
 
 
@@ -360,10 +520,10 @@ mp_asinh(const MPNumber *x, MPNumber *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_atan(const MPNumber *x, MPNumber *z)
+mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     int i, q;
-    float rx = 0.0, ry;
+    float rx = 0.0;
     MPNumber t1, t2;
 
     mpchk();
@@ -421,15 +581,56 @@ mp_atan(const MPNumber *x, MPNumber *z)
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
      *  OF X IS LARGE (WHEN ATAN MIGHT NOT WORK)
      */
-    if (abs(x->exponent) > 2)
-        return;
+    if (abs(x->exponent) <= 2) {
+        float ry = mp_cast_to_float(z);
+        /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
+        if (fabs(ry - atan(rx)) >= fabs(ry) * 0.01)
+            mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***");
+    }
 
-    ry = mp_cast_to_float(z);
-    if (fabs(ry - atan(rx)) < fabs(ry) * (float).01)
-        return;
+    convert_from_radians(z, unit, z);
+}
 
-    /* THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
-    mperr("*** ERROR OCCURRED IN MP_ATAN, RESULT INCORRECT ***");
+
+/*  MP precision hyperbolic arc cosine.
+ *
+ *  1. If (x < 1) then report DOMAIN error and return 0.
+ *
+ *  2. acosh(x) = log(x + sqrt(x^2 - 1))
+ */
+void
+mp_acosh(const MPNumber *x, MPNumber *z)
+{
+    MPNumber MP1;
+
+    mp_set_from_integer(1, &MP1);
+    if (mp_is_less_than(x, &MP1)) {
+        mperr("Error");
+        mp_set_from_integer(0, z);
+    } else {
+        mp_multiply(x, x, &MP1);
+        mp_add_integer(&MP1, -1, &MP1);
+        mp_sqrt(&MP1, &MP1);
+        mp_add(x, &MP1, &MP1);
+        mp_ln(&MP1, z);
+    }
+}
+
+
+/*  MP precision hyperbolic arc sine.
+ *
+ *  1. asinh(x) = log(x + sqrt(x^2 + 1))
+ */
+void
+mp_asinh(const MPNumber *x, MPNumber *z)
+{
+    MPNumber MP1;
+
+    mp_multiply(x, x, &MP1);
+    mp_add_integer(&MP1, 1, &MP1);
+    mp_sqrt(&MP1, &MP1);
+    mp_add(x, &MP1, &MP1);
+    mp_ln(&MP1, z);
 }
 
 
@@ -458,40 +659,6 @@ mp_atanh(const MPNumber *x, MPNumber *z)
         mp_ln(&MP3, &MP3);
         mp_set_from_string("0.5", 10, &MP1);
         mp_multiply(&MP1, &MP3, z);
-    }
-}
-
-
-/*  RETURNS Z = COS(X) FOR MP X AND Z, USING MP_SIN AND MPSIN1.
- *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
- */
-void
-mp_cos(const MPNumber *x, MPNumber *z)
-{
-    MPNumber t;
-
-    /* COS(0) = 1 */    
-    if (x->sign == 0) {
-        mp_set_from_integer(1, z);
-        return;
-    }
-
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk();
-
-    /* SEE IF ABS(X) <= 1 */
-    mp_abs(x, z);
-    if (mp_compare_mp_to_int(z, 1) <= 0) {
-        /* HERE ABS(X) <= 1 SO USE POWER SERIES */
-        mpsin1(z, z, 0);
-    } else {
-        /*  HERE ABS(X) > 1 SO USE COS(X) = SIN(PI/2 - ABS(X)),
-         *  COMPUTING PI/2 WITH ONE GUARD DIGIT.
-         */
-        mp_get_pi(&t);
-        mp_divide_integer(&t, 2, &t);
-        mp_subtract(&t, z, z);
-        mp_sin(z, z);
     }
 }
 
@@ -527,108 +694,6 @@ mp_cosh(const MPNumber *x, MPNumber *z)
      */
     MP.m += -2;
     mp_divide_integer(z, 2, z);
-}
-
-
-/*  RETURNS Z = SIN(X) FOR MP X AND Z,
- *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
- *  TIME IS O(M(T)T/LOG(T)).
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mp_sin(const MPNumber *x, MPNumber *z)
-{
-    int ie, xs;
-    float rx = 0.0, ry;
-    MPNumber t1, t2;
-
-    mpchk();
-    
-    if (x->sign == 0) {
-        z->sign = 0;
-        return;
-    }
-
-    xs = x->sign;
-    ie = abs(x->exponent);
-    if (ie <= 2)
-        rx = mp_cast_to_float(x);
-
-    mp_abs(x, &t1);
-
-    /* USE MPSIN1 IF ABS(X) <= 1 */
-    if (mp_compare_mp_to_int(&t1, 1) <= 0)
-    {
-        mpsin1(&t1, z, 1);
-    }
-    /*  FIND ABS(X) MODULO 2PI (IT WOULD SAVE TIME IF PI WERE
-     *  PRECOMPUTED AND SAVED IN COMMON).
-     *  FOR INCREASED ACCURACY COMPUTE PI/4 USING MP_ATAN1N
-     */
-    else {
-        mp_atan1N(5, &t2);
-        mp_multiply_integer(&t2, 4, &t2);
-        mp_atan1N(239, z);
-        mp_subtract(&t2, z, z);
-        mp_divide(&t1, z, &t1);
-        mp_divide_integer(&t1, 8, &t1);
-        mp_fractional_component(&t1, &t1);
-
-        /* SUBTRACT 1/2, SAVE SIGN AND TAKE ABS */
-        mp_add_fraction(&t1, -1, 2, &t1);
-        xs = -xs * t1.sign;
-        if (xs == 0) {
-            z->sign = 0;
-            return;
-        }
-
-        t1.sign = 1;
-        mp_multiply_integer(&t1, 4, &t1);
-
-        /* IF NOT LESS THAN 1, SUBTRACT FROM 2 */
-        if (t1.exponent > 0)
-            mp_add_integer(&t1, -2, &t1);
-
-        if (t1.sign == 0) {
-            z->sign = 0;
-            return;
-        }        
-
-        t1.sign = 1;
-        mp_multiply_integer(&t1, 2, &t1);
-
-        /*  NOW REDUCED TO FIRST QUADRANT, IF LESS THAN PI/4 USE
-         *  POWER SERIES, ELSE COMPUTE COS OF COMPLEMENT
-         */
-        if (t1.exponent > 0) {
-            mp_add_integer(&t1, -2, &t1);
-            mp_multiply(&t1, z, &t1);
-            mpsin1(&t1, z, 0);
-        } else {
-            mp_multiply(&t1, z, &t1);
-            mpsin1(&t1, z, 1);
-        }
-    }
-
-    z->sign = xs;
-    if (ie > 2)
-        return;
-
-    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) <= 100
-     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
-     */
-    if (fabs(rx) > (float)100.)
-        return;
-
-    ry = mp_cast_to_float(z);
-    if (fabs(ry - sin(rx)) < (float) 0.01)
-        return;
-
-    /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
-     *  B**(T-1) IS TOO SMALL.
-     */
-    mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***");
 }
 
 
@@ -682,23 +747,6 @@ mp_sinh(const MPNumber *x, MPNumber *z)
 }
 
 
-void 
-mp_tan(const MPNumber *x, MPNumber *z)
-{
-    MPNumber MPcos, MPsin;
-
-    mp_sin(x, &MPsin);
-    mp_cos(x, &MPcos);
-    /* Check if COS(x) == 0 */
-    if (mp_is_zero(&MPcos)) {
-        /* Translators: Error displayed when tangent value is undefined */
-        mperr(_("Tangent is infinite"));
-        return;
-    }
-    mp_divide(&MPsin, &MPcos, z);
-}
-
-
 /*  RETURNS Z = TANH(X) FOR MP NUMBERS X AND Z,
  *  USING MP_EPOWY OR MPEXP1, SPACE = 5T+12
  */
@@ -723,7 +771,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     mp_abs(x, &t);
 
     /* SEE IF ABS(X) SO LARGE THAT RESULT IS +-1 */
-    r__1 = (float) MP.t * (float).5 * log((float) MP.b);
+    r__1 = (float) MP.t * 0.5 * log((float) MP.b);
     mp_set_from_float(r__1, z);
     if (mp_compare_mp_to_mp(&t, z) > 0) {
         /* HERE ABS(X) IS VERY LARGE */

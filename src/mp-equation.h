@@ -39,11 +39,23 @@
 #define PARSER_ERR_MODULUSOP        10003
 #define PARSER_ERR_OVERFLOW         10004
 
+/* State for parser */
 typedef struct {
+    /* The numeric base (e.g 2, 8, 10, 16) */
+    int base;
+
+    /* The wordlength for binary operations in bits (e.g. 8, 16, 32) */
+    int wordlen;
+    
+    /* Units for angles (e.g. radians, degrees) */
+    MPAngleUnit angle_units;
+
     int flags;
 
+    /* Error returned from parser */
     int error;
 
+    /* Value returned from parser */
     MPNumber ret;
 } MPEquationParserState;
 

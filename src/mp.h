@@ -56,6 +56,8 @@ typedef struct
    int fraction[MP_SIZE]; // Size MP.t?
 } MPNumber;
 
+typedef enum { MP_RADIANS, MP_DEGREES, MP_GRADIANS } MPAngleUnit;
+
 /* Initialise the MP state.  Must be called only once and before any other MP function
  * 'accuracy' is the requested accuracy required.
  */
@@ -206,22 +208,22 @@ int    mp_cast_to_int(const MPNumber *x);
 void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, char *buffer, int buffer_length);
 
 /* Sets z = sin(x) */
-void   mp_sin(const MPNumber *x, MPNumber *z);
+void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = cos(x) */
-void   mp_cos(const MPNumber *x, MPNumber *z);
+void   mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = tan(x) */
-void   mp_tan(const MPNumber *x, MPNumber *z);
+void   mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = asin(x) */
-void   mp_asin(const MPNumber *x, MPNumber *z);
+void   mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = acos(x) */
-void   mp_acos(const MPNumber *x, MPNumber *z);
+void   mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = atan(x) */
-void   mp_atan(const MPNumber *x, MPNumber *z);
+void   mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 /* Sets z = sinh(x) */
 void   mp_sinh(const MPNumber *x, MPNumber *z);

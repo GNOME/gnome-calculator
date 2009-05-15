@@ -49,7 +49,7 @@ void ui_set_registers_visible(gboolean);
 void ui_set_accuracy(int);
 void ui_set_mode(ModeType);
 void ui_set_base(BaseType);
-void ui_set_trigonometric_mode(TrigType);
+void ui_set_trigonometric_mode(MPAngleUnit unit);
 void ui_set_numeric_mode(BaseType);
 void ui_set_show_thousands_separator(gboolean);
 void ui_set_show_trailing_zeroes(gboolean);

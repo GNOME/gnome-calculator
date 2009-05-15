@@ -93,7 +93,7 @@ void
 test_parser()
 {
     v->base = DEC;
-    v->ttype = DEG;
+    v->ttype = MP_DEGREES;
     v->wordlen = 32;
     v->accuracy = 9;
 
@@ -191,7 +191,7 @@ test_parser()
     
     test("Ln(e^1)", "1", 0);
 
-    v->ttype = DEG;    
+    v->ttype = MP_DEGREES;
     test("Sin(0)", "0", 0);
     test("Sin(45) - 1/Sqrt(2)", "0", 0);
     test("Sin(20) + Sin(-20)", "0", 0);
@@ -232,13 +232,13 @@ test_parser()
     test("Atanh(0)", "0", 0);
     test("Atanh(1/10) - 1/2*Ln(11/9)", "0", 0);
 
-    v->ttype = DEG;
+    v->ttype = MP_DEGREES;
     test("Sin(90)", "1", 0);
     
-    v->ttype = RAD;
+    v->ttype = MP_RADIANS;
     test("Sin(3.14159/2)", "1", 0);
     
-    v->ttype = GRAD;
+    v->ttype = MP_GRADIANS;
     test("Sin(100)", "1", 0);
 
     v->base = HEX;

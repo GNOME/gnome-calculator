@@ -97,37 +97,37 @@ return tREG;
 
 
 {DEC_NUM}{EXP}{DEC_NUM} {
-if (v->base == HEX) REJECT;
+if (_mp_equation_get_extra(yyscanner)->base == 16) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {BIN_NUM} {
-if (v->base != BIN) REJECT;
+if (_mp_equation_get_extra(yyscanner)->base != 2) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {OCT_NUM} {
-if (v->base != OCT) REJECT;
+if (_mp_equation_get_extra(yyscanner)->base != 8) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {DEC_NUM} {
-if (v->base != DEC) REJECT;
+if (_mp_equation_get_extra(yyscanner)->base != 10) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {HEX_NUM} {
-if (v->base != HEX) REJECT;
+if (_mp_equation_get_extra(yyscanner)->base != 16) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, basevals[v->base], &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
 return tNUMBER;
 }
 

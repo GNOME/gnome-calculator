@@ -45,58 +45,6 @@ int basevals[4] = { 2, 8, 10, 16 };
 static CalculatorVariables calc_state;
 CalculatorVariables *v;
 
-/* Change type to radian */
-void
-to_rad(const MPNumber *s1, MPNumber *t1)
-{
-    MPNumber MP1, MP2;
-
-    if (v->ttype == DEG) {
-        mp_get_pi(&MP1);
-        mp_multiply(s1, &MP1, &MP2);
-        mp_set_from_integer(180, &MP1);
-        mp_divide(&MP2, &MP1, t1);
-    } else if (v->ttype == GRAD) {
-        mp_get_pi(&MP1);
-        mp_multiply(s1, &MP1, &MP2);
-        mp_set_from_integer(200, &MP1);
-        mp_divide(&MP2, &MP1, t1);
-    } else {
-        mp_set_from_mp(s1, t1);
-    }
-}
-
-void
-do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1)
-{
-    MPNumber MP1, MP2;
-  
-    switch (ttype) {
-
-        case DEG:
-            mp_set_from_integer(180, &MP1);
-            mp_multiply(s1, &MP1, &MP2);
-            mp_get_pi(&MP1);
-            mp_divide(&MP2, &MP1, t1);
-            break;
-
-        case RAD:
-            mp_set_from_mp(s1, t1);
-            break;
-
-        case GRAD:
-            mp_set_from_integer(200, &MP1);
-            mp_multiply(s1, &MP1, &MP2);
-            mp_get_pi(&MP1);
-            mp_divide(&MP2, &MP1, t1);
-            break;
-
-        default:
-            assert(0);
-            break;
-    }
-}
-
 /* Calctools' customised math library error-handling routine. */
 void
 doerr(char *errmes)
@@ -137,7 +85,7 @@ solve(const char *equation)
     char result_str[MAXLINE];
     
     v->base = DEC;
-    v->ttype = DEG;
+    v->ttype = MP_DEGREES;
     v->wordlen = 32;
     v->accuracy = 9;
     
@@ -282,9 +230,9 @@ init_state(void)
        v->base = DEC;
 
     if (get_enumerated_resource(R_TRIG, Rtstr, &i))
-       v->ttype = (TrigType) i;
+       v->ttype = (MPAngleUnit) i;
     else
-       v->ttype = DEG;  
+       v->ttype = MP_DEGREES;
 
     if (get_int_resource(R_WORDLEN, &i))
        v->wordlen = i;

@@ -30,17 +30,20 @@ int
 mp_equation_parse_(const char *expression, MPNumber *result, int flags)
 {
     int ret = 0;
-    MPEquationParserState parser_state;
+    MPEquationParserState state;
     yyscan_t yyscanner;
     YY_BUFFER_STATE buffer;
 
     if (!(expression && result) || strlen(expression) == 0)
         return(-EINVAL);
 
-    memset(&parser_state, 0, sizeof(MPEquationParserState));
+    memset(&state, 0, sizeof(MPEquationParserState));
+    state.base = basevals[v->base];
+    state.wordlen = v->wordlen;
+    state.angle_units = v->ttype;
     v->math_error = 0;
         
-    _mp_equation_lex_init_extra(&parser_state, &yyscanner);
+    _mp_equation_lex_init_extra(&state, &yyscanner);
     buffer = _mp_equation__scan_string(expression, yyscanner);
 
     ret = _mp_equation_parse(yyscanner);
@@ -48,12 +51,12 @@ mp_equation_parse_(const char *expression, MPNumber *result, int flags)
     _mp_equation__delete_buffer(buffer, yyscanner);
     _mp_equation_lex_destroy(yyscanner);
 
-    ret = (parser_state.error) ? parser_state.error : ret;
+    ret = (state.error) ? state.error : ret;
 
     if (ret) {
         return(ret);
     } else {
-        if ((flags & ANS) != (parser_state.flags & ANS)) {
+        if ((flags & ANS) != (state.flags & ANS)) {
             return -EINVAL;
         }
 
@@ -62,7 +65,7 @@ mp_equation_parse_(const char *expression, MPNumber *result, int flags)
         }
 
         if (flags & ANS) {
-            mp_set_from_mp(&parser_state.ret, result);
+            mp_set_from_mp(&state.ret, result);
         }
 
         return 0;

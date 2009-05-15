@@ -121,10 +121,11 @@ mp_init(int accuracy)
 
 /* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 void
-mp_abs(const MPNumber *x, MPNumber *y)
+mp_abs(const MPNumber *x, MPNumber *z)
 {
-    mp_set_from_mp(x, y);
-    y->sign = abs(y->sign);
+    mp_set_from_mp(x, z);
+    if (z->sign < 0)
+        z->sign = -z->sign;
 }
 
 /*  ADDS X AND Y, FORMING RESULT IN Z, WHERE X, Y AND Z ARE MP
@@ -1954,10 +1955,8 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
     /* RESTORE M AND CHECK FOR OVERFLOW (UNDERFLOW IMPOSSIBLE) */
     MP.m += -2;
-    if (z->exponent <= MP.m)
-        return;
-
-    mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***");
+    if (z->exponent > MP.m)
+        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***");
 }
 
 

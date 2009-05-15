@@ -35,9 +35,6 @@
 /* Base definitions. */
 typedef enum { BIN, OCT, DEC, HEX, MAXBASES } BaseType;
 
-/* Trigonometric types. */
-typedef enum { DEG, GRAD, RAD, MAXTRIGMODES } TrigType;
-
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
@@ -75,7 +72,7 @@ typedef struct {
     int tsep_count;           /* Number of digits between separator. */
 
     BaseType base;            /* Numeric base (BIN, OCT, DEC or HEX). */
-    TrigType ttype;           /* Trigonometric type (DEG, GRAD or RAD). */
+    MPAngleUnit ttype;        /* Angle unit type */
     int wordlen;              /* Length of word for bitwise operations */
     int accuracy;             /* Number of digits precision. */
 
@@ -86,11 +83,6 @@ typedef struct {
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
 extern int basevals[];         /* Supported arithmetic bases. */
-
-/* Change type to radian */
-void to_rad(const MPNumber *s1, MPNumber *t1);
-
-void do_trig_typeconv(TrigType ttype, const MPNumber *s1, MPNumber *t1);
 
 void doerr(char *);
 
