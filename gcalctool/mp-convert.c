@@ -484,7 +484,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
 {
     static char digits[] = "0123456789ABCDEF";
     char *optr, *start, *end, *stopper, *last_non_zero;
-    int number[MP_SIZE], integer_component[MP_SIZE], fractional_component[MP_SIZE], MPbase[MP_SIZE], temp[MP_SIZE];
+    int i, number[MP_SIZE], integer_component[MP_SIZE], fractional_component[MP_SIZE], MPbase[MP_SIZE], temp[MP_SIZE];
    
     optr = target;
     stopper = target + target_len - 1;
@@ -547,7 +547,7 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
    
     /* Write out the fractional component */
     mp_set_from_mp(fractional_component, temp);
-    while (!mp_is_zero(temp) && accuracy > 0) {
+    for (i = accuracy; i > 0 && !mp_is_zero(temp); i--) {
         int d;
         int digit[MP_SIZE];
 
@@ -565,7 +565,6 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
         if(d != 0)
             last_non_zero = optr;
         mp_subtract(temp, digit, temp);
-        accuracy--;
     }
 
     /* Strip trailing zeroes */
