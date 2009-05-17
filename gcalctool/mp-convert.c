@@ -483,10 +483,11 @@ void
 mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, int accuracy)
 {
     static char digits[] = "0123456789ABCDEF";
-    char *optr, *start, *end, *last_non_zero;
+    char *optr, *start, *end, *stopper, *last_non_zero;
     int number[MP_SIZE], integer_component[MP_SIZE], fractional_component[MP_SIZE], MPbase[MP_SIZE], temp[MP_SIZE];
    
     optr = target;
+    stopper = target + target_len - 1;
 
     /* Insert sign */
     if (mp_is_negative(MPnumber)) {
@@ -519,13 +520,19 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
        
         mp_subtract(temp, t2, t3);
         mpcmim(t3, t3);
+
+        if (optr == stopper) {
+            mperr("Number too big to represent");
+            *optr = '\0';
+            return;
+        }
         *optr++ = digits[mp_cast_to_int(t3)];
        
         mp_set_from_mp(t, temp);
     } while (!mp_is_zero(temp));
-    end = optr - 1;
    
     /* Reverse digits */
+    end = optr - 1;
     while(start < end) {
         char t;
         t = *start;
@@ -535,18 +542,12 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
         end--;
     }
    
-    /* Stop if there is no fractional component or not showing fractional part */
-    if ((mp_is_zero(fractional_component) && !v->display.show_zeroes) || accuracy == 0) {
-        *optr = '\0';
-        return;
-    }
-   
     last_non_zero = optr;
     *optr++ = '.';
    
     /* Write out the fractional component */
     mp_set_from_mp(fractional_component, temp);
-    do {
+    while (!mp_is_zero(temp) && accuracy > 0) {
         int d;
         int digit[MP_SIZE];
 
@@ -554,18 +555,30 @@ mp_cast_to_string(char *target, int target_len, const int *MPnumber, int base, i
         mpcmim(temp, digit);
         d = mp_cast_to_int(digit);
        
+        if (optr == stopper) {
+            mperr("Number too big to represent");
+            *optr = '\0';
+            return;
+        }        
         *optr++ = digits[d];
+
         if(d != 0)
             last_non_zero = optr;
         mp_subtract(temp, digit, temp);
         accuracy--;
-    } while (!mp_is_zero(temp) && accuracy > 0);
+    }
 
     /* Strip trailing zeroes */
-    if (!v->display.show_zeroes)
+    if (!v->display.show_zeroes || accuracy == 0)
        optr = last_non_zero;
 
     *optr = '\0';
+    
+    /* Remove negative sign if the number was rounded down to zero */
+    if (strcmp(target, "-0") == 0) {
+        target[0] = '0';
+        target[1] = '\0';
+    }
 }
 
 
