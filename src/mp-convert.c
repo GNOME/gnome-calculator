@@ -490,6 +490,7 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
     static char digits[] = "0123456789ABCDEF";
     char *optr, *start, *end, *stopper, *last_non_zero;
     MPNumber number, integer_component, fractional_component, MPbase, temp;
+    int i;
    
     optr = buffer;
     stopper = buffer + buffer_length - 1;
@@ -552,7 +553,7 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
    
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
-    while (!mp_is_zero(&temp) && accuracy > 0) {
+    for (i = accuracy; i > 0 && !mp_is_zero(&temp); i--) {
         int d;
         MPNumber digit;
 
@@ -570,7 +571,6 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
         if(d != 0)
             last_non_zero = optr;
         mp_subtract(&temp, &digit, &temp);
-        accuracy--;
     }
 
     /* Strip trailing zeroes */
