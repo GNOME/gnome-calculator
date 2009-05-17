@@ -2463,7 +2463,12 @@ mp_xpowy(int x[MP_SIZE], int y[MP_SIZE], int res[MP_SIZE])
     if (mp_is_integer(y)) {
         mppwr(x, mp_cast_to_int(y), res);
     } else {
-        mppwr2(x, y, res);
+        int reciprocal[MP_SIZE];
+        mp_reciprocal(y, reciprocal);
+        if (mp_is_integer(reciprocal))
+            mp_root(x, mp_cast_to_int(reciprocal), res);
+        else
+            mppwr2(x, y, res);
     }
 }
 
