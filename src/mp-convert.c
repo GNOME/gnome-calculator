@@ -44,7 +44,7 @@ mp_set_from_mp(const MPNumber *x, MPNumber *y)
     if (x->sign == 0)
         y->sign = 0;
     else
-        memcpy (y, x, MP.t * sizeof(int));
+        memcpy (y, x, (MP.t + 2) * sizeof(int));
 }
 
 /*  CONVERTS SINGLE-PRECISION NUMBER RX TO MULTIPLE-PRECISION Z.
