@@ -27,9 +27,6 @@
 #include "mp.h"
 #include "mp-internal.h"
 
-// FIXME: Needed for v->radix
-#include "calctool.h"
-
 /*  SETS Y = X FOR MP X AND Y.
  *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
  */
@@ -482,7 +479,7 @@ mp_cast_to_double(const MPNumber *x)
  * maximum number of digits specified.
  */
 void
-mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
 {
     static char digits[] = "0123456789ABCDEF";
     char *optr, *start, *end, *stopper, *last_non_zero;
@@ -571,7 +568,7 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, char *buffer
     }
 
     /* Strip trailing zeroes */
-    if (!v->display.show_zeroes || accuracy == 0)
+    if (trim_zeroes || accuracy == 0)
        optr = last_non_zero;
 
     *optr = '\0';
@@ -634,7 +631,7 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
     }
    
     /* Convert fractional part */
-    if (*optr == '.' || *optr == *v->radix) {
+    if (*optr == '.') {
         MPNumber numerator, denominator;
        
         optr++;

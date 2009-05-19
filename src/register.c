@@ -153,7 +153,7 @@ void constant_set(int index, const char *name, MPNumber *value)
 
     /* NOTE: Constants are written out with no thousands separator and with a
        radix character of ".". */
-    mp_cast_to_string(value, 10, MAX_DIGITS, text, MAX_LOCALIZED);
+    mp_cast_to_string(value, 10, MAX_DIGITS, 1, text, MAX_LOCALIZED);
     SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
     set_resource(key, text);
 }

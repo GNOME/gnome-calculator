@@ -206,9 +206,10 @@ int    mp_cast_to_int(const MPNumber *x);
  * The string is written into 'buffer' which is guaranteed to be at least 'buffer_length' octets in size.
  * If not enough space is available the string is truncated.
  * The numbers are written in 'base' (e.g. 10).
+ * If 'trim_zeroes' is non-zero then strip off trailing zeroes.
  * Fractional components are truncated at 'max_digits' digits.
  */
-void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, char *buffer, int buffer_length);
+void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, int trim_zeroes, char *buffer, int buffer_length);
 
 /* Sets z = sin(x) */
 void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);

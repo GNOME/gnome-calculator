@@ -695,7 +695,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
         }
     }
  
-    mp_cast_to_string(&MPmant, basevals[base], v->accuracy, fixed, MAX_DIGITS);
+    mp_cast_to_string(&MPmant, basevals[base], v->accuracy, !v->display.show_zeroes, fixed, MAX_DIGITS);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -766,6 +766,6 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
         (display->format == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(display, target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, target, target_len);
+        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);
     }
 }

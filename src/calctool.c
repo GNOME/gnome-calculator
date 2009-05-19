@@ -95,7 +95,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, basevals[v->base], 9, result_str, MAXLINE);
+        mp_cast_to_string(&result, basevals[v->base], 9, 1, result_str, MAXLINE);
         printf("%s\n", result_str);
         exit(0);
     }

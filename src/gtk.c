@@ -1621,6 +1621,7 @@ finc_response_cb(GtkWidget *widget, gint response_id)
             continue;
         }
         entry = GET_FINC_WIDGET(finc_dialog_fields[dialog][i]);
+        // FIXME: Have to delocalize the input
         mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
@@ -1743,6 +1744,7 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
                                    COLUMN_NUMBER, &number,
                                    COLUMN_VALUE, &value,
                                    COLUMN_DESCRIPTION, &description, -1);
+                // FIXME: Have to delocalize
                 mp_set_from_string(value, 10, &temp);
                 constant_set(number, description, &temp);
             } while (gtk_tree_model_iter_next(X.constants_model, &iter));

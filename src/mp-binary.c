@@ -22,8 +22,8 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
     int offset1, offset2, offset_out;
    
-    mp_cast_to_string(x, 16, 0, text1, MAX_DIGITS);
-    mp_cast_to_string(y, 16, 0, text2, MAX_DIGITS);
+    mp_cast_to_string(x, 16, 0, 0, text1, MAX_DIGITS);
+    mp_cast_to_string(y, 16, 0, 0, text2, MAX_DIGITS);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
@@ -115,7 +115,7 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
     size_t len, offset;
     
     /* Convert to a hexadecimal string and use last characters */
-    mp_cast_to_string(x, 16, 0, text, MAX_DIGITS);
+    mp_cast_to_string(x, 16, 0, 0, text, MAX_DIGITS);
     len = strlen(text);
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
