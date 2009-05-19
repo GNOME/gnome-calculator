@@ -20,9 +20,12 @@
  *  02111-1307, USA.
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <assert.h>
+
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -1331,7 +1334,7 @@ about_cb(GtkWidget *widget)
     /* Translators: The translator credits. Please translate this with your name(s). */
     const gchar *translator_credits = _("translator-credits");
 
-    /* Translators: The license this software is under (GPL2+) */    
+    /* Translators: The license this software is under (GPL2+) */
     char *license =
         _("Gcalctool is free software; you can redistribute it and/or modify\n"
           "it under the terms of the GNU General Public License as published by\n"

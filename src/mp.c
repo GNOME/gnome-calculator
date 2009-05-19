@@ -181,8 +181,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     if (exp_diff < 0) {
         /* HERE EXPONENT(Y)  >  EXPONENT(X) */
         if (med > MP.t) {
-            /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning:
-             still true with rounding??  */
+            /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning: still true with rounding??  */
             mp_set_from_mp(y, z);
             z->sign = y_sign;
             return;
@@ -191,8 +190,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     } else if (exp_diff > 0) {
         /* HERE EXPONENT(X)  >  EXPONENT(Y) */
         if (med > MP.t) {
-            /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning:
-             still true with rounding??  */
+            /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning: still true with rounding??  */
             mp_set_from_mp(x, z);
             return;
         }
@@ -225,8 +223,7 @@ mpadd2(const MPNumber *x, const MPNumber *y, MPNumber *z, int y_sign, int trunc)
     if (x_largest) {
         zt.sign = x->sign;
         zt.exponent = x->exponent + mpadd3(y, x, zt.fraction, sign_prod, med);
-    }
-    else {
+    } else {
         zt.sign = y_sign;
         zt.exponent = y->exponent + mpadd3(x, y, zt.fraction, sign_prod, med);
     }
@@ -343,7 +340,7 @@ mpadd3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
 }
 
 
-/*  ADDS MULTIPLE-PRECISION X TO INTEGER IY
+/*  ADDS MULTIPLE-PRECISION X TO INTEGER Y
  *  GIVING MULTIPLE-PRECISION Z.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE
  *  AT LEAST 2T+6 (BUT Z(1) MAY BE R(T+5)).
@@ -352,11 +349,11 @@ mpadd3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_add_integer(const MPNumber *x, int iy, MPNumber *z)
+mp_add_integer(const MPNumber *x, int y, MPNumber *z)
 {
     MPNumber t;
     mpchk();
-    mp_set_from_integer(iy, &t);
+    mp_set_from_integer(y, &t);
     mp_add(x, &t, z);
 }
 
@@ -1590,32 +1587,32 @@ mp_multiply_integer(const MPNumber *x, int iy, MPNumber *z)
 
 /* MULTIPLIES MP X BY I/J, GIVING MP Y */
 void
-mpmulq(const MPNumber *x, int i, int j, MPNumber *y)
+mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z)
 {
     int is, js;
 
-    if (j == 0) {
+    if (denominator == 0) {
         mpchk();
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN MPMULQ ***");
-        y->sign = 0;
+        mperr("*** ATTEMPTED DIVISION BY ZERO IN MP_MULTIPLY_FRACTION ***");
+        z->sign = 0;
         return;
     }
 
-    if (i == 0) {
-        y->sign = 0;
+    if (numerator == 0) {
+        z->sign = 0;
         return;
     }
 
     /* REDUCE TO LOWEST TERMS */
-    is = i;
-    js = j;
+    is = numerator;
+    js = denominator;
     mpgcd(&is, &js);
     if (abs(is) == 1) {
         /* HERE IS = +-1 */
-        mp_divide_integer(x, is * js, y);
+        mp_divide_integer(x, is * js, z);
     } else {
-        mp_divide_integer(x, js, y);
-        mpmul2(y, is, y, 0);
+        mp_divide_integer(x, js, z);
+        mpmul2(z, is, z, 0);
     }
 }
 
@@ -1628,8 +1625,7 @@ mp_invert_sign(const MPNumber *x, MPNumber *y)
     y->sign = -y->sign;
 }
 
-/*  ASSUMES LONG (I.E. (T+4)-DIGIT) FRACTION IN
- *  R, SIGN = REG_SIGN, EXPONENT = REG_EXP.  NORMALIZES,
+/*  ASSUMES LONG (I.E. (T+4)-DIGIT) FRACTION IN R.  NORMALIZES,
  *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS REG_EXP IS
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */

@@ -170,12 +170,12 @@ mp_atan1N(int n, MPNumber *z)
         ts = MP.t;
         MP.t = t;
         if (i >= id) {
-            mpmulq(&t2, -i, i + 2, &t2);
+            mp_multiply_fraction(&t2, -i, i + 2, &t2);
             mp_divide_integer(&t2, n, &t2);
             mp_divide_integer(&t2, n, &t2);
         }
         else {
-            mpmulq(&t2, -i, (i + 2)*n*n, &t2);
+            mp_multiply_fraction(&t2, -i, (i + 2)*n*n, &t2);
         }
         MP.t = ts;
 
@@ -567,7 +567,7 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         ts = MP.t;
         MP.t = t;
         mp_multiply(&t2, &t1, &t2);
-        mpmulq(&t2, -i, i + 2, &t2);
+        mp_multiply_fraction(&t2, -i, i + 2, &t2);
         MP.t = ts;
 
         mp_add(z, &t2, z);

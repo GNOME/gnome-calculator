@@ -23,7 +23,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#include <assert.h>
 
 #include "mp.h"
 #include "mp-internal.h"
@@ -42,12 +41,10 @@ mp_set_from_mp(const MPNumber *x, MPNumber *y)
         return;
 
     /* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
-    if (x->sign == 0) {
+    if (x->sign == 0)
         y->sign = 0;
-        return;
-    }
-
-    memcpy (y, x, (MP.t + 2)*sizeof(int));
+    else
+        memcpy (y, x, MP.t * sizeof(int));
 }
 
 /*  CONVERTS SINGLE-PRECISION NUMBER RX TO MULTIPLE-PRECISION Z.
@@ -645,9 +642,9 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
         mp_set_from_integer(0, &numerator);
         mp_set_from_integer(1, &denominator);
         while ((inum = char_val(*optr, base)) >= 0) {
-	    mp_multiply_integer(&denominator, base, &denominator);
-	    mp_multiply_integer(&numerator, base, &numerator);
-	    mp_add_integer(&numerator, inum, &numerator);
+            mp_multiply_integer(&denominator, base, &denominator);
+            mp_multiply_integer(&numerator, base, &numerator);
+            mp_add_integer(&numerator, inum, &numerator);
             optr++;
         }
         mp_divide(&numerator, &denominator, &numerator);

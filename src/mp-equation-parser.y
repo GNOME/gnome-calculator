@@ -104,7 +104,7 @@
 
 statement: 
   seq
-| value { mp_set_from_mp(&$1, &(_mp_equation_get_extra(yyscanner))->ret); (_mp_equation_get_extra(yyscanner))->flags |= ANS; }
+| value { mp_set_from_mp(&$1, &(_mp_equation_get_extra(yyscanner))->ret); (_mp_equation_get_extra(yyscanner))->have_result = 1; }
 | error {
   (_mp_equation_get_extra(yyscanner))->error = -EINVAL; 
   YYABORT;
@@ -268,7 +268,7 @@ rcl:
 number:
   tNUMBER {mp_set_from_mp(&$1, &$$);}
 | tANS {
-  mp_set_from_mp(display_get_answer(&v->display), &$$);
+  mp_set_from_mp(&_mp_equation_get_extra(yyscanner)->ans, &$$);
 }
 ;
 

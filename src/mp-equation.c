@@ -27,7 +27,7 @@
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
 int 
-mp_equation_parse_(const char *expression, MPNumber *result, int flags)
+mp_equation_parse_(const char *expression, MPNumber *result, int need_result)
 {
     int ret = 0;
     MPEquationParserState state;
@@ -41,6 +41,7 @@ mp_equation_parse_(const char *expression, MPNumber *result, int flags)
     state.base = basevals[v->base];
     state.wordlen = v->wordlen;
     state.angle_units = v->ttype;
+    mp_set_from_mp(display_get_answer(&v->display), &state.ans);
     v->math_error = 0;
         
     _mp_equation_lex_init_extra(&state, &yyscanner);
@@ -52,31 +53,24 @@ mp_equation_parse_(const char *expression, MPNumber *result, int flags)
     _mp_equation_lex_destroy(yyscanner);
 
     ret = (state.error) ? state.error : ret;
+    if (ret)
+        return ret;
 
-    if (ret) {
-        return(ret);
-    } else {
-        if ((flags & ANS) != (state.flags & ANS)) {
-            return -EINVAL;
-        }
+    if ((need_result != 0) != (state.have_result != 0))
+        return -EINVAL;
 
-        if (v->math_error) {
-            return v->math_error;
-        }
+    if (v->math_error)
+        return v->math_error;
 
-        if (flags & ANS) {
-            mp_set_from_mp(&state.ret, result);
-        }
-
-        return 0;
-    }
+    mp_set_from_mp(&state.ret, result);
+    return 0;
 }
 
 
 int 
 mp_equation_parse(const char *expression, MPNumber *result)
 {
-    return(mp_equation_parse_(expression, result, ANS));
+    return(mp_equation_parse_(expression, result, 1));
 }
 
 
@@ -84,10 +78,10 @@ int
 mp_equation_udf_parse(const char *expression)
 {
     MPNumber t;
-    return(mp_equation_parse_(expression, &t, 0));
+    return mp_equation_parse_(expression, &t, 0);
 }
 
 int _mp_equation_error(void *yylloc, MPEquationParserState *state, char *text)
 {
-  return 0;
+    return 0;
 }

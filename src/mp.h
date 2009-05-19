@@ -121,6 +121,9 @@ void   mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z);
 /* Sets z = x × y */
 void   mp_multiply_integer(const MPNumber *x, int y, MPNumber *z);
 
+/* Sets z = x × numerator ÷ denominator */
+void   mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z);
+
 /* Sets z = x ÷ y */
 void   mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 

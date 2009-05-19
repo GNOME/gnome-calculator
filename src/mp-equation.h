@@ -22,16 +22,7 @@
 #ifndef MP_EQUATION_H
 #define MP_EQUATION_H
 
-#include <stdio.h>
-#include <stdlib.h> 
-#include <string.h>
-#include <math.h>
-#include <assert.h>
-#include <errno.h>
-
 #include "mp.h"
-
-#define ANS 1
 
 #define PARSER_ERR_INVALID_BASE     10000
 #define PARSER_ERR_TOO_LONG_NUMBER  10001
@@ -50,10 +41,14 @@ typedef struct {
     /* Units for angles (e.g. radians, degrees) */
     MPAngleUnit angle_units;
 
-    int flags;
-
     /* Error returned from parser */
     int error;
+    
+    /* Value of Ans variable */
+    MPNumber ans;
+
+    /* TRUE if have a result */
+    int have_result;
 
     /* Value returned from parser */
     MPNumber ret;
