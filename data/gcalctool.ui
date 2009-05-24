@@ -7,9 +7,9 @@
     <accel-groups>
       <group name="accelgroup1"/>
     </accel-groups>
-    <signal name="key_press_event" handler="kframe_key_press_cb"/>
+    <signal name="key_press_event" handler="main_window_key_press_cb"/>
     <signal name="delete_event" handler="quit_cb"/>
-    <signal name="key_release_event" handler="kframe_key_release_cb"/>
+    <signal name="key_release_event" handler="main_window_key_release_cb"/>
     <child>
       <object class="GtkVBox" id="kvbox">
         <property name="visible">True</property>
@@ -4908,8 +4908,8 @@
     <property name="resizable">False</property>
     <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
-    <signal name="response" handler="rframe_response_cb"/>
-    <signal name="delete_event" handler="rframe_delete_cb"/>
+    <signal name="response" handler="register_dialog_response_cb"/>
+    <signal name="delete_event" handler="register_dialog_delete_cb"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -5941,8 +5941,8 @@
     <property name="resizable">False</property>
     <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
-    <signal name="response" handler="aframe_response_cb"/>
-    <signal name="delete_event" handler="aframe_delete_cb"/>
+    <signal name="response" handler="ascii_dialog_response_cb"/>
+    <signal name="delete_event" handler="ascii_dialog_delete_cb"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
@@ -5969,7 +5969,7 @@
                 <property name="can_focus">True</property>
                 <property name="max_length">1</property>
                 <property name="invisible_char">&#x25CF;</property>
-                <signal name="activate" handler="aframe_activate_cb"/>
+                <signal name="activate" handler="ascii_dialog_activate_cb"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -6036,8 +6036,8 @@
     <property name="resizable">False</property>
     <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
-    <signal name="response" handler="spframe_response_cb"/>
-    <signal name="delete_event" handler="spframe_delete_cb"/>
+    <signal name="response" handler="precision_dialog_response_cb"/>
+    <signal name="delete_event" handler="precision_dialog_delete_cb"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -6051,7 +6051,7 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes" comments="Set Precision Dialog: Label before the significant places spin button">Significant _places:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">spframe_spin</property>
+                <property name="mnemonic_widget">precision_dialog_spin</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -6060,14 +6060,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="spframe_spin">
+              <object class="GtkSpinButton" id="precision_dialog_spin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment1</property>
                 <property name="climb_rate">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
-                <signal name="activate" handler="spframe_activate_cb" after="yes"/>
+                <signal name="activate" handler="precision_dialog_activate_cb" after="yes"/>
               </object>
               <packing>
                 <property name="expand">False</property>

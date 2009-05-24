@@ -456,40 +456,38 @@ static struct button_widget button_widgets[] = {
 
 /* Gtk+/Xlib graphics object. */
 typedef struct {
-    GdkAtom clipboard_atom;
-    GdkAtom primary_atom;
-   
     ModeType mode;  /* Current calculator mode. */   
 
     GtkBuilder *ui;
     GtkBuilder *financial;
     
-    GtkWidget *kframe;                 /* Main window. */
+    GtkWidget *main_window;
  
     GtkTreeModel *constants_model;
-    GtkWidget *con_dialog;             /* Edit constants dialog. */
+    GtkWidget    *constants_dialog;
     
     GtkTreeModel *functions_model;
-    GtkWidget *fun_dialog;             /* Edit functions dialog. */
+    GtkWidget    *function_dialog;
+
     GtkWidget *menubar; // FIXME: Why is this needed?
 
     GtkWidget *bit_panel;
-    GtkWidget *bits[MAXBITS];          /* The 0/1 labels in the bit panel. */
+    GtkWidget *bit_labels[MAXBITS];
 
     GtkWidget *status_image;           /* Statusbar image */
     GtkWidget *statusbar; 
 
-    GtkWidget *aframe;                 /* ASCII window. */
-    GtkWidget *aframe_ch;
+    GtkWidget *ascii_dialog;
+    GtkWidget *ascii_entry;
 
     GtkWidget *display_item;           /* Calculator display. */
     GtkTextBuffer *display_buffer;     /* Buffer used in display */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
-    GtkWidget *rframe;                 /* Register window. */
-    GtkWidget *regs[MAX_REGISTERS];    /* Memory registers. */
+    GtkWidget *register_dialog;
+    GtkWidget *register_entries[MAX_REGISTERS];
 
-    GtkWidget *spframe;                /* Set Precision window. */
+    GtkWidget *precision_dialog;
     GtkWidget *precision_spin;
 
     GtkWidget *buttons[NBUTTONS];
@@ -514,15 +512,17 @@ typedef struct {
     /* Scientific mode widgets */
     GtkWidget *hyperbolic_toggle;      /* Hyperbolic mode. */
     GtkWidget *inverse_toggle;         /* Inverse mode. */
-    GtkWidget *disp[MAXDISPMODES];     /* Numeric display mode. */
+    GtkWidget *display_mode_radios[MAXDISPMODES]; /* Numeric display mode. */
     GtkWidget *radian_radio;           /* Radian radio button. */
     GtkWidget *degree_radio;           /* Degree radio button. */
     GtkWidget *gradian_radio;          /* Gradian radio button. */
 
     /* Programming mode widgets */
-    GtkWidget *base[MAXBASES];         /* Numeric base radio buttons. */
-    GtkWidget *wordlen[3];             /* Wordlength radio buttons. */
+    GtkWidget *base_radios[MAXBASES];
+    GtkWidget *word_length_radios[3];             /* Wordlength radio buttons. */
 
+    GdkAtom clipboard_atom;
+    GdkAtom primary_atom;  
     char *shelf;                       /* PUT selection shelf contents. */   
 } GtkUI;
 static GtkUI X;
@@ -653,7 +653,7 @@ ui_set_accuracy(int accuracy)
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(X.precision_spin), (double)accuracy);
     
     /* Hide the manual dialog */
-    gtk_widget_hide(X.spframe);
+    gtk_widget_hide(X.precision_dialog);
    
     /* Rebuild registers with new format */
     ui_make_registers();
@@ -854,7 +854,7 @@ ui_set_trigonometric_mode(MPAngleUnit units)
 void
 ui_set_numeric_mode(BaseType mode)
 {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.disp[mode]), 1);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.display_mode_radios[mode]), 1);
 }
 
 
@@ -974,7 +974,7 @@ ui_set_bitfield(int enabled, guint64 bits)
             label = " 1";
         else
             label = " 0";
-        gtk_label_set_text(GTK_LABEL(X.bits[i]), label);
+        gtk_label_set_text(GTK_LABEL(X.bit_labels[i]), label);
     }
 }
 
@@ -1079,8 +1079,8 @@ ui_set_mode(ModeType mode)
     g_free(r);
   
     /* For initial display. */
-    gtk_window_set_default_size(GTK_WINDOW(X.kframe), w, h);
-    gtk_window_resize(GTK_WINDOW(X.kframe), w, h);
+    gtk_window_set_default_size(GTK_WINDOW(X.main_window), w, h);
+    gtk_window_resize(GTK_WINDOW(X.main_window), w, h);
 
     /* Set the title */
     if((hostname = make_hostname())) {
@@ -1089,7 +1089,7 @@ ui_set_mode(ModeType mode)
     } else {
         SNPRINTF(title, MAXLINE, "%s", gettext(titles[mode]));
     }
-    gtk_window_set_title(GTK_WINDOW(X.kframe), title);
+    gtk_window_set_title(GTK_WINDOW(X.main_window), title);
 
     /* Update the menu */
     switch (mode) {
@@ -1266,25 +1266,29 @@ ui_set_base(BaseType base)
     for (i = 0; i < 16; i++) {
         gtk_widget_set_sensitive(X.digit_buttons[i], i < baseval);
     }   
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.base[base]), 1);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.base_radios[base]), 1);
 }
 
 
 void
 ui_set_wordlen(int len)
 {
+    GtkWidget *widget;
     v->wordlen = len;
     switch (len) {
         case 64:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[0]), 1);
+            widget = X.word_length_radios[0];
             break;
         case 32:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[1]), 1);
+            widget = X.word_length_radios[1];        
             break;
         case 16:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.wordlen[2]), 1);
+            widget = X.word_length_radios[2];        
             break;
+        default:
+            return;
     }
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), 1);
 }
 
 
@@ -1298,17 +1302,17 @@ ui_set_registers_visible(gboolean visible)
     menu = GET_WIDGET("show_registers_menu");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), visible);   
 
-    gtk_widget_realize(X.rframe);
+    gtk_widget_realize(X.register_dialog);
 
     if (visible) {
-        if (gdk_window_is_visible(X.rframe->window)) {
-            gdk_window_raise(X.rframe->window);
+        if (gdk_window_is_visible(X.register_dialog->window)) {
+            gdk_window_raise(X.register_dialog->window);
             return;
         }
-        position_popup(X.kframe, X.rframe, POPUP_ABOVE);
-        gtk_widget_show(X.rframe);
+        position_popup(X.main_window, X.register_dialog, POPUP_ABOVE);
+        gtk_widget_show(X.register_dialog);
     } else {
-        gtk_widget_hide(X.rframe);
+        gtk_widget_hide(X.register_dialog);
     }
     
     set_boolean_resource(R_REGS, visible);
@@ -1350,7 +1354,7 @@ about_cb(GtkWidget *widget)
           "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
           "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA");
 
-    gtk_show_about_dialog(GTK_WINDOW(X.kframe),
+    gtk_show_about_dialog(GTK_WINDOW(X.main_window),
                           /* Translators: Program name in the about dialog */
                           "name", _("Gcalctool"),
                           "version", VERSION,
@@ -1425,11 +1429,11 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
 
 G_MODULE_EXPORT
 void
-aframe_response_cb(GtkWidget *dialog, gint response_id)
+ascii_dialog_response_cb(GtkWidget *dialog, gint response_id)
 {
     const gchar *text;
     
-    text = gtk_entry_get_text(GTK_ENTRY(X.aframe_ch));
+    text = gtk_entry_get_text(GTK_ENTRY(X.ascii_entry));
     
     if (response_id == GTK_RESPONSE_OK)
         do_button(FN_INSERT_CHARACTER, GPOINTER_TO_INT(text));
@@ -1440,24 +1444,24 @@ aframe_response_cb(GtkWidget *dialog, gint response_id)
 
 G_MODULE_EXPORT
 gboolean
-aframe_delete_cb(GtkWidget *dialog)
+ascii_dialog_delete_cb(GtkWidget *dialog)
 {
-    aframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    ascii_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL);
     return (TRUE);
 }
 
 
 G_MODULE_EXPORT
 void
-aframe_activate_cb(GtkWidget *entry)
+ascii_dialog_activate_cb(GtkWidget *entry)
 {
-    aframe_response_cb(X.aframe, GTK_RESPONSE_OK);
+    ascii_dialog_response_cb(X.ascii_dialog, GTK_RESPONSE_OK);
 }
 
 
 G_MODULE_EXPORT
 void
-rframe_response_cb(GtkWidget *dialog, int response_id)
+register_dialog_response_cb(GtkWidget *dialog, int response_id)
 {
     ui_set_registers_visible(FALSE);
 }
@@ -1465,9 +1469,9 @@ rframe_response_cb(GtkWidget *dialog, int response_id)
 
 G_MODULE_EXPORT
 gboolean
-rframe_delete_cb(GtkWidget *dialog)
+register_dialog_delete_cb(GtkWidget *dialog)
 {
-    rframe_response_cb(dialog, GTK_RESPONSE_OK);
+    register_dialog_response_cb(dialog, GTK_RESPONSE_OK);
     return (TRUE);
 }
 
@@ -1511,13 +1515,13 @@ help_display(void)
     GdkScreen *screen;
     GError *error = NULL;
 
-    screen = gtk_widget_get_screen (GTK_WIDGET (X.kframe));
+    screen = gtk_widget_get_screen (GTK_WIDGET (X.main_window));
    //gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
  
     if (error != NULL)
     {
         GtkWidget *d;
-        d = gtk_message_dialog_new (GTK_WINDOW (X.kframe), 
+        d = gtk_message_dialog_new (GTK_WINDOW (X.main_window), 
                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                     GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, 
                                     "%s", _("Unable to open help file"));
@@ -1863,8 +1867,8 @@ ui_make_registers()            /* Calculate memory register frame values. */
         
         register_get(n, &temp);
         display_make_number(&v->display, mval, MAXLINE, &temp, v->base, TRUE);
-        gtk_entry_set_width_chars(GTK_ENTRY(X.regs[n]), strlen(mval));
-        gtk_entry_set_text(GTK_ENTRY(X.regs[n]), mval);
+        gtk_entry_set_width_chars(GTK_ENTRY(X.register_entries[n]), strlen(mval));
+        gtk_entry_set_text(GTK_ENTRY(X.register_entries[n]), mval);
 
         SNPRINTF(key, MAXLINE, "register%d", n);
         display_make_number(&v->display, value, MAXLINE, &temp, DEC, TRUE);
@@ -1878,7 +1882,7 @@ save_win_position()
 {
     int x, y;
 
-    (void) gdk_window_get_origin(X.kframe->window, &x, &y);
+    (void) gdk_window_get_origin(X.main_window->window, &x, &y);
     set_int_resource(R_XPOS, x);
     set_int_resource(R_YPOS, y);
 }
@@ -2093,7 +2097,7 @@ select_display_entry(int offset)
 
 G_MODULE_EXPORT
 gboolean
-kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
+main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
     int i, j, state;
     GtkWidget *button;
@@ -2171,9 +2175,8 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         button = X.buttons[i];
         
         /* Check if function is available */
-        if (!GTK_WIDGET_IS_SENSITIVE(button)) {
+        if (!GTK_WIDGET_IS_SENSITIVE(button))
             continue;
-        }
         
         /* In basic mode only allow buttons that the user can see */
         if (X.mode == BASIC &&
@@ -2210,7 +2213,7 @@ kframe_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
 G_MODULE_EXPORT
 gboolean
-kframe_key_release_cb(GtkWidget *widget, GdkEventKey *event)
+main_window_key_release_cb(GtkWidget *widget, GdkEventKey *event)
 {
     if (event->keyval == GDK_Shift_L || event->keyval == GDK_Shift_R) {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.inverse_toggle), 
@@ -2330,11 +2333,10 @@ G_MODULE_EXPORT
 void
 insert_ascii_cb(GtkWidget *widget)
 {
-    if (!GTK_WIDGET_VISIBLE(X.aframe)) {
-        position_popup(X.kframe, X.aframe, POPUP_LEFT);
-    }
-    gtk_widget_grab_focus(GTK_WIDGET(X.aframe_ch));
-    gtk_widget_show(X.aframe);
+    if (!GTK_WIDGET_VISIBLE(X.ascii_dialog))
+        position_popup(X.main_window, X.ascii_dialog, POPUP_LEFT);
+    gtk_widget_grab_focus(GTK_WIDGET(X.ascii_entry));
+    gtk_widget_show(X.ascii_dialog);
 }
 
 
@@ -2389,11 +2391,10 @@ G_MODULE_EXPORT
 void
 accuracy_other_cb(GtkWidget *widget)
 {
-    if (!GTK_WIDGET_VISIBLE(X.spframe)) {
-        position_popup(X.kframe, X.spframe, POPUP_LEFT);
-    }    
+    if (!GTK_WIDGET_VISIBLE(X.precision_dialog))
+        position_popup(X.main_window, X.precision_dialog, POPUP_LEFT);
     gtk_widget_grab_focus(GTK_WIDGET(X.precision_spin));
-    gtk_widget_show(X.spframe);
+    gtk_widget_show(X.precision_dialog);
 }
 
 
@@ -2427,7 +2428,7 @@ quit_cb(GtkWidget *widget)
 
 G_MODULE_EXPORT
 void
-spframe_response_cb(GtkWidget *dialog, gint response_id)
+precision_dialog_response_cb(GtkWidget *dialog, gint response_id)
 {
     int val;
     if (response_id == GTK_RESPONSE_OK) {
@@ -2441,18 +2442,18 @@ spframe_response_cb(GtkWidget *dialog, gint response_id)
 
 G_MODULE_EXPORT
 gboolean
-spframe_delete_cb(GtkWidget *dialog)
+precision_dialog_delete_cb(GtkWidget *dialog)
 {
-    spframe_response_cb(dialog, GTK_RESPONSE_CANCEL);
+    precision_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL);
     return (TRUE);
 }
 
 
 G_MODULE_EXPORT
 void
-spframe_activate_cb(GtkWidget *spin)
+precision_dialog_activate_cb(GtkWidget *spin)
 {
-    spframe_response_cb(X.spframe, GTK_RESPONSE_OK);
+    precision_dialog_response_cb(X.precision_dialog, GTK_RESPONSE_OK);
 }
 
 
@@ -2471,7 +2472,7 @@ G_MODULE_EXPORT
 void
 edit_constants_cb(GtkMenuItem *item)
 {
-    gtk_widget_show(X.con_dialog);
+    gtk_widget_show(X.constants_dialog);
 }
 
 
@@ -2479,7 +2480,7 @@ G_MODULE_EXPORT
 void
 edit_functions_cb(GtkMenuItem *item)
 {
-    gtk_widget_show(X.fun_dialog);
+    gtk_widget_show(X.function_dialog);
 }
 
 
@@ -2506,12 +2507,12 @@ set_win_position()
         }
     }
 
-    gtk_window_move(GTK_WINDOW(X.kframe), x, y);
+    gtk_window_move(GTK_WINDOW(X.main_window), x, y);
 }
 
 
 static void
-create_kframe()
+create_main_window()
 {
     int i;
     char name[MAXLINE];
@@ -2546,14 +2547,14 @@ create_kframe()
 
     X.clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
     X.primary_atom = gdk_atom_intern("PRIMARY", FALSE);
-    X.kframe       = GET_WIDGET("calc_window");
-    X.aframe       = GET_WIDGET("ascii_dialog");
-    X.aframe_ch    = GET_WIDGET("ascii_entry");
-    X.spframe      = GET_WIDGET("precision_dialog");
-    X.precision_spin  = GET_WIDGET("spframe_spin");
-    X.rframe       = GET_WIDGET("register_dialog");
-    X.con_dialog   = GET_WIDGET("edit_constants_dialog");
-    X.fun_dialog   = GET_WIDGET("edit_functions_dialog");
+    X.main_window  = GET_WIDGET("calc_window");
+    X.ascii_dialog = GET_WIDGET("ascii_dialog");
+    X.ascii_entry  = GET_WIDGET("ascii_entry");
+    X.precision_dialog = GET_WIDGET("precision_dialog");
+    X.precision_spin   = GET_WIDGET("precision_dialog_spin");
+    X.register_dialog  = GET_WIDGET("register_dialog");
+    X.constants_dialog = GET_WIDGET("edit_constants_dialog");
+    X.function_dialog  = GET_WIDGET("edit_functions_dialog");
     X.menubar      = GET_WIDGET("menubar");
     X.scrolledwindow = GET_WIDGET("display_scroll"),
     X.display_item = GET_WIDGET("displayitem"),
@@ -2570,16 +2571,16 @@ create_kframe()
     X.degree_radio     = GET_WIDGET("degrees_radio");
     X.gradian_radio    = GET_WIDGET("gradians_radio");
     X.radian_radio     = GET_WIDGET("radians_radio");
-    X.base[0]      = GET_WIDGET("binary_radio");
-    X.base[1]      = GET_WIDGET("octal_radio");
-    X.base[2]      = GET_WIDGET("decimal_radio");
-    X.base[3]      = GET_WIDGET("hexadecimal_radio");
-    X.disp[0]      = GET_WIDGET("engineering_radio");
-    X.disp[1]      = GET_WIDGET("fixed_point_radio");
-    X.disp[2]      = GET_WIDGET("scientific_radio");
-    X.wordlen[0]   = GET_WIDGET("64bit_radio");
-    X.wordlen[1]   = GET_WIDGET("32bit_radio");
-    X.wordlen[2]   = GET_WIDGET("16bit_radio");
+    X.base_radios[0]    = GET_WIDGET("binary_radio");
+    X.base_radios[1]    = GET_WIDGET("octal_radio");
+    X.base_radios[2]    = GET_WIDGET("decimal_radio");
+    X.base_radios[3]    = GET_WIDGET("hexadecimal_radio");
+    X.display_mode_radios[0] = GET_WIDGET("engineering_radio");
+    X.display_mode_radios[1] = GET_WIDGET("fixed_point_radio");
+    X.display_mode_radios[2] = GET_WIDGET("scientific_radio");
+    X.word_length_radios[0]  = GET_WIDGET("64bit_radio");
+    X.word_length_radios[1]  = GET_WIDGET("32bit_radio");
+    X.word_length_radios[2]  = GET_WIDGET("16bit_radio");
     X.inverse_toggle    = GET_WIDGET("inverse_check");
     X.hyperbolic_toggle = GET_WIDGET("hyperbolic_check");
     X.statusbar    = GET_WIDGET("statusbar");
@@ -2589,7 +2590,7 @@ create_kframe()
     }
     for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(name, MAXLINE, "register_entry_%d", i);
-        X.regs[i] = GET_WIDGET(name);
+        X.register_entries[i] = GET_WIDGET(name);
     }
 
     /* Load buttons and set them all to be the same size */
@@ -2659,7 +2660,7 @@ create_kframe()
     for (i = 0; i < MAXBITS; i++)
     {
         SNPRINTF(name, MAXLINE, "bit_label_%d", i);
-        X.bits[i] = GET_WIDGET(name);
+        X.bit_labels[i] = GET_WIDGET(name);
         SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
         g_object_set_data(G_OBJECT(GET_WIDGET(name)),
                           "bit_index", GINT_TO_POINTER(i));
@@ -2688,16 +2689,16 @@ create_kframe()
     gtk_widget_set_direction(X.fin_panel, GTK_TEXT_DIR_LTR);
     
     /* Make dialogs transient of the main window */
-    gtk_window_set_transient_for(GTK_WINDOW(X.aframe), GTK_WINDOW(X.kframe));    
-    gtk_window_set_transient_for(GTK_WINDOW(X.spframe), GTK_WINDOW(X.kframe));
-    gtk_window_set_transient_for(GTK_WINDOW(X.rframe), GTK_WINDOW(X.kframe));
-    gtk_window_set_transient_for(GTK_WINDOW(X.con_dialog),
-                                 GTK_WINDOW(X.kframe));
+    gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));    
+    gtk_window_set_transient_for(GTK_WINDOW(X.precision_dialog), GTK_WINDOW(X.main_window));
+    gtk_window_set_transient_for(GTK_WINDOW(X.register_dialog), GTK_WINDOW(X.main_window));
+    gtk_window_set_transient_for(GTK_WINDOW(X.constants_dialog),
+                                 GTK_WINDOW(X.main_window));
 
     /* Can't set max length for spin buttons in Glade 2 */
     gtk_entry_set_max_length(GTK_ENTRY(X.precision_spin), 2);
 
-    gtk_dialog_set_default_response(GTK_DIALOG(X.con_dialog), 
+    gtk_dialog_set_default_response(GTK_DIALOG(X.constants_dialog), 
                                     GTK_RESPONSE_ACCEPT);
 
     /* Make constant tree model */
@@ -2720,10 +2721,10 @@ create_kframe()
     /* Make function tree model */
     X.functions_model = create_functions_model();
     treeview = GET_WIDGET("edit_functions_treeview");
-    gtk_dialog_set_default_response(GTK_DIALOG(X.fun_dialog), 
+    gtk_dialog_set_default_response(GTK_DIALOG(X.function_dialog), 
                                     GTK_RESPONSE_ACCEPT);
-    gtk_window_set_transient_for(GTK_WINDOW(X.fun_dialog), 
-                                 GTK_WINDOW(X.kframe));
+    gtk_window_set_transient_for(GTK_WINDOW(X.function_dialog), 
+                                 GTK_WINDOW(X.main_window));
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), X.functions_model);
     gtk_tree_selection_set_mode(
                                 gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
@@ -2748,24 +2749,24 @@ create_kframe()
     atk_object_set_role(gtk_widget_get_accessible(X.display_item), 
                                                   ATK_ROLE_EDITBAR);
 
-    gtk_widget_realize(X.kframe);
+    gtk_widget_realize(X.main_window);
     set_win_position();
 
     g_object_set_data(G_OBJECT(X.radian_radio), "trig_mode", GINT_TO_POINTER(MP_RADIANS));
     g_object_set_data(G_OBJECT(X.degree_radio), "trig_mode", GINT_TO_POINTER(MP_DEGREES));
     g_object_set_data(G_OBJECT(X.gradian_radio), "trig_mode", GINT_TO_POINTER(MP_GRADIANS));
     for (i = 0; i < 4; i++)
-        g_object_set_data(G_OBJECT(X.base[i]),
+        g_object_set_data(G_OBJECT(X.base_radios[i]),
                           "base_mode", GINT_TO_POINTER(i));
-    for (i = 0; i < 3; i++)        
-        g_object_set_data(G_OBJECT(X.disp[i]),
+    for (i = 0; i < 3; i++)
+        g_object_set_data(G_OBJECT(X.display_mode_radios[i]),
                           "numeric_mode", GINT_TO_POINTER(i));
     
-    g_object_set_data(G_OBJECT(X.wordlen[0]),
+    g_object_set_data(G_OBJECT(X.word_length_radios[0]),
                           "wordlen_mode", GINT_TO_POINTER(64));
-    g_object_set_data(G_OBJECT(X.wordlen[1]),
+    g_object_set_data(G_OBJECT(X.word_length_radios[1]),
                           "wordlen_mode", GINT_TO_POINTER(32));
-    g_object_set_data(G_OBJECT(X.wordlen[2]),
+    g_object_set_data(G_OBJECT(X.word_length_radios[2]),
                           "wordlen_mode", GINT_TO_POINTER(16));
 
     X.status_image = GET_WIDGET("status_image");
@@ -2792,7 +2793,7 @@ create_kframe()
 
     /* Make shortcuts for accuracy menus */
     accel_group = gtk_accel_group_new();
-    gtk_window_add_accel_group(GTK_WINDOW(X.kframe), accel_group);
+    gtk_window_add_accel_group(GTK_WINDOW(X.main_window), accel_group);
     for (i = 0; i < 10; i++) {
         SNPRINTF(name, MAXLINE, "acc_item%d", i);
         widget = GET_WIDGET(name);
@@ -2861,7 +2862,7 @@ ui_load(void)
     GtkWidget *widget;
 
     /* Create main gcalctool window. */
-    create_kframe();
+    create_main_window();
     
     /* Load configuration */
     ui_set_show_thousands_separator(v->display.show_tsep);
@@ -2902,7 +2903,7 @@ ui_start(void)
         gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[1]));
     }
     
-    gtk_widget_show(X.kframe);
+    gtk_widget_show(X.main_window);
 
     gtk_main();
 }
