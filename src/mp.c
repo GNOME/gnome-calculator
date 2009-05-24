@@ -30,8 +30,6 @@
 
 // FIXME: MP.t and MP.m modified inside functions, needs to be fixed to be thread safe
 
-static int mp_compare_mp_to_float(const MPNumber *, float);
-
 /*  SETS X TO THE LARGEST POSSIBLE POSITIVE MP NUMBER
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
