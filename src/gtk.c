@@ -449,8 +449,10 @@ static struct button_widget button_widgets[] = {
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 
+#define GET_OBJECT(name) \
+          gtk_builder_get_object(X.ui, (name))
 #define GET_WIDGET(name) \
-          GTK_WIDGET(gtk_builder_get_object(X.ui, (name)))
+          GTK_WIDGET(GET_OBJECT((name)))
 #define GET_FINC_WIDGET(name) \
           GTK_WIDGET(gtk_builder_get_object(X.financial, (name)))
 
@@ -550,6 +552,16 @@ typedef enum {
     POPUP_CENTERED   /* Center popup within baseframe */
 } PopupLocation;
 
+static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gpointer value)
+{
+    g_object_set_data(gtk_builder_get_object(ui, object_name), name, value);
+}
+
+static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
+{
+    set_data(ui, object_name, name, GINT_TO_POINTER(value));
+}
+
 static void
 position_popup(GtkWidget *base, GtkWidget *popup, 
                PopupLocation location_op)
@@ -567,17 +579,15 @@ position_popup(GtkWidget *base, GtkWidget *popup,
     screen_height = gdk_screen_height();
 
     if (location_op == POPUP_LOR) {
-        if (base_x >= screen_width - base_width - base_x) {
+        if (base_x >= screen_width - base_width - base_x)
             location_op = POPUP_LEFT;
-        } else {
+        else
             location_op = POPUP_RIGHT;
-        }
     } else if (location_op == POPUP_AOB) {
-        if (base_y > screen_height - base_height - base_y) {
+        if (base_y > screen_height - base_height - base_y)
             location_op = POPUP_ABOVE;
-        } else {
+        else
             location_op = POPUP_BELOW;
-        }
     }
 
     switch (location_op) {
@@ -610,19 +620,17 @@ position_popup(GtkWidget *base, GtkWidget *popup,
 
     /* Make sure frame doesn't go off side of screen */
     n = popup_x + popup_width;
-    if (n > screen_width) {
+    if (n > screen_width)
         popup_x -= (n - screen_width);
-    } else if (popup_x < 0) {
+    else if (popup_x < 0)
         popup_x = 0;
-    }
 
     /* Make sure frame doesn't go off top or bottom */
     n = popup_y + popup_height;
-    if (n > screen_height) {
+    if (n > screen_height)
         popup_y -= n - screen_height;
-    } else if (popup_y < 0) {
+    else if (popup_y < 0)
         popup_y = 0;
-    }
 
     gtk_window_move(GTK_WINDOW(popup), popup_x, popup_y);
 }
@@ -635,7 +643,7 @@ ui_set_accuracy(int accuracy)
     
     /* Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy. */
     SNPRINTF(text, MAXLINE, _("_Other (%d) ..."), accuracy);
-    widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_other")));
+    widget = gtk_bin_get_child(GTK_BIN(GET_OBJECT("acc_item_other")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 
     gtk_widget_set_tooltip_text (GET_WIDGET("calc_accuracy_button"),
@@ -771,63 +779,53 @@ ui_update_modifier_mode()
     
     int index = 0;
 
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.inverse_toggle))) {
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.inverse_toggle)))
         index |= 0x1;
-    }
     
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("natural_logarithm_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("natural_logarithm_label")),
                          _(ln_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_natural_logarithm_button"),
                                 _(ln_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_natural_logarithm_button")), 
-                      "calc_function", GINT_TO_POINTER(ln_functions[index]));
+    set_int_data(X.ui, "calc_natural_logarithm_button", "calc_function", ln_functions[index]);
     
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("logarithm_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("logarithm_label")),
                          _(log_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_logarithm_button"),
                                 _(log_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_logarithm_button")),
-                      "calc_function", GINT_TO_POINTER(log_functions[index]));
+    set_int_data(X.ui, "calc_logarithm_button", "calc_function", log_functions[index]);
 
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("logarithm2_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("logarithm2_label")),
                          _(log2_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_logarithm2_button"),
                                 _(log2_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_logarithm2_button")),
-                      "calc_function", GINT_TO_POINTER(log2_functions[index]));
+    set_int_data(X.ui, "calc_logarithm2_button", "calc_function", log2_functions[index]);
 
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("x_pow_y_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("x_pow_y_label")),
                          _(x_pow_y_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_x_pow_y_button"),
                                 _(x_pow_y_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_x_pow_y_button")),
-                      "calc_function", 
-                      GINT_TO_POINTER(x_pow_y_functions[index]));
+    set_int_data(X.ui, "calc_x_pow_y_button", "calc_function", x_pow_y_functions[index]);
     
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.hyperbolic_toggle))) {
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.hyperbolic_toggle)))
         index |= 0x2;
-    }
 
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("sine_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("sine_label")),
                          _(sine_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_sine_button"),
                                 _(sine_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_sine_button")), "calc_function",
-                      GINT_TO_POINTER(sine_functions[index]));
+    set_int_data(X.ui, "calc_sine_button", "calc_function", sine_functions[index]);
 
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("cosine_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("cosine_label")),
                          _(cosine_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_cosine_button"),
                                 _(cosine_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_cosine_button")), "calc_function",
-                      GINT_TO_POINTER(cosine_functions[index]));
+    set_int_data(X.ui, "calc_cosine_button", "calc_function", cosine_functions[index]);
 
-    gtk_label_set_markup(GTK_LABEL(GET_WIDGET("tangent_label")),
+    gtk_label_set_markup(GTK_LABEL(GET_OBJECT("tangent_label")),
                          _(tangent_labels[index]));
     gtk_widget_set_tooltip_text(GET_WIDGET("calc_tangent_button"),
                                 _(tangent_tooltips[index]));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_tangent_button")), "calc_function", 
-                      GINT_TO_POINTER(tangent_functions[index]));
+    set_int_data(X.ui, "calc_tangent_button", "calc_function", tangent_functions[index]);
 }
 
 
@@ -909,29 +907,26 @@ make_hostname()
 
     gethostname(hostname, MAXHOSTNAMELEN);
 
-    while (*scanner) {
+    while (*scanner)
         scanner++;
-    }
 
-    while (*scanner != ':') {
+    while (*scanner != ':')
         scanner--;
-    }
 
     *scanner = '\0';
                                             
     if (strcmp(display, hostname) &&        
         strcmp(display, "localhost") &&     
         strcmp(display, "unix") &&          
-        strcmp(display, "")) {              
+        strcmp(display, ""))
         SNPRINTF(client_hostname, MAXLINE, " [%s] ", hostname);
-    }
 
     *scanner = ':';
     
     if (client_hostname[0] == '\0')
-        return (NULL);
+        return NULL;
     else
-        return (strdup(client_hostname));                
+        return strdup(client_hostname);
 }
 
 
@@ -940,10 +935,7 @@ ui_get_display(void)
 {
     GtkTextIter start, end;
     gtk_text_buffer_get_bounds(X.display_buffer, &start, &end);
-    return (gtk_text_buffer_get_text(X.display_buffer,
-                                     &start,
-                                     &end,
-                                     FALSE));
+    return gtk_text_buffer_get_text(X.display_buffer, &start, &end, FALSE);
 }
 
 
@@ -954,11 +946,10 @@ get_cursor(void)
     g_object_get(G_OBJECT(X.display_buffer), "cursor-position", &pos, NULL);
     
     /* Convert the last position to -1 */
-    if (pos == gtk_text_buffer_get_char_count(X.display_buffer)) {
-        return (-1);
-    } else {
-        return (pos);
-    }
+    if (pos == gtk_text_buffer_get_char_count(X.display_buffer))
+        return -1;
+    else
+        return pos;
 }
 
 void
@@ -986,9 +977,8 @@ static void do_button(int function, int arg)
 static void
 do_finc(char* dialog)
 {
-    if (X.financial == NULL) {
+    if (X.financial == NULL)
         setup_finc_dialogs();
-    }
     gtk_dialog_run(GTK_DIALOG(GET_FINC_WIDGET(dialog)));
     gtk_widget_hide(GTK_WIDGET(GET_FINC_WIDGET(dialog)));
 }
@@ -1021,21 +1011,16 @@ ui_set_mode(ModeType mode)
     set_enumerated_resource(R_MODE, mode_names, (int)mode);
     
     /* Show/enable the widgets used in this mode */
-    g_object_set(G_OBJECT(X.bas_panel),  "visible", mode == BASIC, NULL);
-    g_object_set(G_OBJECT(X.adv_panel),  "visible", mode != BASIC, NULL);
-    g_object_set(G_OBJECT(X.fin_panel),  "visible", mode == FINANCIAL, NULL);
-    g_object_set(G_OBJECT(X.sci_mode_panel), "visible", 
-                          mode == SCIENTIFIC, NULL);
-    g_object_set(G_OBJECT(X.prog_mode_panel), "visible", 
-                          mode == PROGRAMMING, NULL);
-    g_object_set(G_OBJECT(X.sci_panel),  "visible", mode == SCIENTIFIC, NULL);
-    g_object_set(G_OBJECT(X.prog_panel),  "visible", 
-                 mode == PROGRAMMING, NULL);
-    g_object_set(G_OBJECT(X.bit_panel),  "visible", mode == PROGRAMMING, NULL);
-    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
-                             mode == SCIENTIFIC || mode == PROGRAMMING);
-    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"),
-                             mode != BASIC);
+    g_object_set(G_OBJECT(X.bas_panel), "visible", mode == BASIC, NULL);
+    g_object_set(G_OBJECT(X.adv_panel), "visible", mode != BASIC, NULL);
+    g_object_set(G_OBJECT(X.fin_panel), "visible", mode == FINANCIAL, NULL);
+    g_object_set(G_OBJECT(X.sci_mode_panel), "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X.prog_mode_panel), "visible", mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X.sci_panel), "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X.prog_panel), "visible", mode == PROGRAMMING, NULL);
+    g_object_set(G_OBJECT(X.bit_panel), "visible", mode == PROGRAMMING, NULL);
+    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"), mode == SCIENTIFIC || mode == PROGRAMMING);
+    gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), mode != BASIC);
     
     /* HACK: Some horrible hack down below to keep the buttons the same size.
      * There must be a safer way of doing this... */
@@ -1166,17 +1151,15 @@ ui_set_display(char *str, int cursor)
     GtkAdjustment *adj;
 
     // ???
-    if (str[0] == '\0') {
+    if (str[0] == '\0')
         str = " ";
-    }
 
     gtk_text_buffer_set_text(X.display_buffer, str, -1);
     
-    if (cursor < 0) {
+    if (cursor < 0)
         gtk_text_buffer_get_end_iter(X.display_buffer, &iter);
-    } else {        
+    else
         gtk_text_buffer_get_iter_at_offset(X.display_buffer, &iter, cursor);
-    }
     gtk_text_buffer_place_cursor(X.display_buffer, &iter);
     gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(X.display_item), &iter, 0.0, TRUE, 1.0, 0.0);
     
@@ -1214,16 +1197,14 @@ ui_set_error_state(gboolean error)
 
     v->error = error;
 
-    for (i = 0; i < NBUTTONS; i++) {
+    for (i = 0; i < NBUTTONS; i++)
         gtk_widget_set_sensitive(X.buttons[i], !v->error);
-    }
     /* Clr button always sensitive. */
     gtk_widget_set_sensitive(X.clear_buttons[0], TRUE);
     gtk_widget_set_sensitive(X.clear_buttons[1], TRUE);
 
-    if (!v->error) {
+    if (!v->error)
         ui_set_base(v->base);
-    }
 
     gtk_widget_set_sensitive(X.sci_mode_panel, !v->error);
     gtk_widget_set_sensitive(X.prog_mode_panel, !v->error);
@@ -1263,9 +1244,8 @@ ui_set_base(BaseType base)
     
     v->base = base;
 
-    for (i = 0; i < 16; i++) {
+    for (i = 0; i < 16; i++)
         gtk_widget_set_sensitive(X.digit_buttons[i], i < baseval);
-    }   
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.base_radios[base]), 1);
 }
 
@@ -1406,24 +1386,22 @@ add_cf_column(GtkTreeView *treeview, gchar *name, gint colno, gboolean editable)
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
 
     renderer = gtk_cell_renderer_text_new();
-    if (editable) {
+    if (editable)
         g_signal_connect(G_OBJECT(renderer), "edited",
                          G_CALLBACK(cell_edited_cb), model);
-    }
     g_object_set_data(G_OBJECT(renderer), "column", GINT_TO_POINTER(colno));
 
-    if (editable) {
+    if (editable)
         gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(treeview),
                                                 -1, name, renderer,
                                                 "text", colno,
                                                 "editable", COLUMN_EDITABLE,
                                                 NULL);
-    } else {
+    else
         gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(treeview),
                                                 -1, name, renderer,
                                                 "text", colno,
                                                 NULL);
-    }
 }
 
 
@@ -1447,7 +1425,7 @@ gboolean
 ascii_dialog_delete_cb(GtkWidget *dialog)
 {
     ascii_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -1472,7 +1450,7 @@ gboolean
 register_dialog_delete_cb(GtkWidget *dialog)
 {
     register_dialog_response_cb(dialog, GTK_RESPONSE_OK);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -1492,9 +1470,8 @@ base_cb(GtkWidget *widget)
     BaseType base;
 
     base = (BaseType) g_object_get_data(G_OBJECT(widget), "base_mode");
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
         do_button(FN_SET_BASE, base);
-    }
 }
 
 G_MODULE_EXPORT
@@ -1504,9 +1481,8 @@ word_cb(GtkWidget *widget)
     int wordlen;
 
     wordlen = (int) g_object_get_data(G_OBJECT(widget), "wordlen_mode");
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
         do_button(FN_SET_WORDLEN, wordlen);
-    }
 }
 
 static void
@@ -1614,9 +1590,8 @@ finc_response_cb(GtkWidget *widget, gint response_id)
     MPNumber arg[4];
     GtkWidget *entry;
 
-    if (response_id != GTK_RESPONSE_OK) {
+    if (response_id != GTK_RESPONSE_OK)
         return;
-    }
     
     dialog = GPOINTER_TO_INT (g_object_get_data(G_OBJECT(widget), "finc_dialog"));
 
@@ -1652,26 +1627,16 @@ setup_finc_dialogs(void)
         return;
     }
     
-    g_object_set_data(gtk_builder_get_object(X.financial, "ctrm_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_CTRM_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "ddb_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_DDB_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "fv_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_FV_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "gpm_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_GPM_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "pmt_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_PMT_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "pv_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_PV_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "rate_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_RATE_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "sln_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_SLN_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "syd_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_SYD_DIALOG));
-    g_object_set_data(gtk_builder_get_object(X.financial, "term_dialog"),
-                      "finc_dialog", GINT_TO_POINTER(FINC_TERM_DIALOG));
+    set_int_data(X.financial, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
+    set_int_data(X.financial, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
+    set_int_data(X.financial, "fv_dialog", "finc_dialog", FINC_FV_DIALOG);
+    set_int_data(X.financial, "gpm_dialog", "finc_dialog", FINC_GPM_DIALOG);
+    set_int_data(X.financial, "pmt_dialog", "finc_dialog", FINC_PMT_DIALOG);
+    set_int_data(X.financial, "pv_dialog", "finc_dialog", FINC_PV_DIALOG);
+    set_int_data(X.financial, "rate_dialog", "finc_dialog", FINC_RATE_DIALOG);
+    set_int_data(X.financial, "sln_dialog", "finc_dialog", FINC_SLN_DIALOG);
+    set_int_data(X.financial, "syd_dialog", "finc_dialog", FINC_SYD_DIALOG);
+    set_int_data(X.financial, "term_dialog", "finc_dialog", FINC_TERM_DIALOG);
     
     for (i = 0; i < FINC_NUM_DIALOGS; i++) {
         for (j = 0; finc_dialog_fields[i][j]; j++) {
@@ -1736,9 +1701,8 @@ edit_constants_response_cb(GtkDialog *dialog, gint id)
     gchar *value;
     gchar *description;
 
-    if (id == GTK_RESPONSE_HELP) {
+    if (id == GTK_RESPONSE_HELP)
         help_display();
-    }
 
     if (id == GTK_RESPONSE_ACCEPT) {
         if (gtk_tree_model_get_iter_first(X.constants_model, &iter)) {
@@ -1764,7 +1728,7 @@ gboolean
 edit_constants_delete_cb(GtkDialog *dialog)
 {
     edit_constants_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -1777,9 +1741,8 @@ edit_functions_response_cb(GtkDialog *dialog, gint id)
     gchar *value;
     gchar *description;
 
-    if (id == GTK_RESPONSE_HELP) {
+    if (id == GTK_RESPONSE_HELP)
         help_display();
-    }
 
     if (id == GTK_RESPONSE_ACCEPT) {
         if (gtk_tree_model_get_iter_first(X.functions_model, &iter)) {
@@ -1802,7 +1765,7 @@ gboolean
 edit_functions_delete_cb(GtkDialog *dialog)
 {
     edit_functions_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -1828,7 +1791,7 @@ create_constants_model()
                            -1);
     }
 
-    return (GTK_TREE_MODEL(model));
+    return GTK_TREE_MODEL(model);
 }
 
 
@@ -1852,7 +1815,7 @@ create_functions_model()
                            -1);
     }
 
-    return (GTK_TREE_MODEL(model));
+    return GTK_TREE_MODEL(model);
 }
 
 
@@ -1895,7 +1858,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
     int index;
     index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index"));
     do_button(FN_TOGGLE_BIT, index);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -1910,9 +1873,8 @@ menu_item_select_cb(GtkWidget *widget)
     context_id = gtk_statusbar_get_context_id(statusbar, "menuhelp");
 
     tooltip = (gchar *)g_object_get_data(G_OBJECT(widget), "tooltip");
-    if (tooltip) {
+    if (tooltip)
         gtk_statusbar_push(statusbar, context_id, tooltip);
-    }
 }
 
 
@@ -1966,15 +1928,13 @@ get_display()              /* The Copy function key has been pressed. */
     gchar *string = NULL;
     GtkTextIter start, end;
 
-    if (gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end) == TRUE) {
+    if (gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end) == TRUE)
         string = gtk_text_buffer_get_text(X.display_buffer, &start, &end, FALSE);
-    } else {
+    else
         string = ui_get_display();
-    }
 
-    if (X.shelf != NULL) {
+    if (X.shelf != NULL)
         free(X.shelf);
-    }
     X.shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
     g_free(string);
 
@@ -2116,34 +2076,34 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         switch (event->keyval) {
             case GDK_0:
                 do_button(FN_SET_ACCURACY, 0);
-                return (TRUE);
+                return TRUE;
             case GDK_1:
                 do_button(FN_SET_ACCURACY, 1);
-                return (TRUE);
+                return TRUE;
             case GDK_2:
                 do_button(FN_SET_ACCURACY, 2);
-                return (TRUE);
+                return TRUE;
             case GDK_3:
                 do_button(FN_SET_ACCURACY, 3);
-                return (TRUE);
+                return TRUE;
             case GDK_4:
                 do_button(FN_SET_ACCURACY, 4);
-                return (TRUE);
+                return TRUE;
             case GDK_5:
                 do_button(FN_SET_ACCURACY, 5);
-                return (TRUE);
+                return TRUE;
             case GDK_6:
                 do_button(FN_SET_ACCURACY, 6);
-                return (TRUE);
+                return TRUE;
             case GDK_7:
                 do_button(FN_SET_ACCURACY, 7);
-                return (TRUE);
+                return TRUE;
             case GDK_8:
                 do_button(FN_SET_ACCURACY, 8);
-                return (TRUE);
+                return TRUE;
             case GDK_9:
                 do_button(FN_SET_ACCURACY, 9);
-                return (TRUE);
+                return TRUE;
         }
     }
     
@@ -2151,24 +2111,24 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     if (!gtk_widget_is_focus(X.display_item)) {
         if (event->keyval == GDK_Home) { /* || event->keyval == GDK_Left) { */
             select_display_entry(0);
-            return (TRUE);
+            return TRUE;
         } else if (event->keyval == GDK_End) { /* || event->keyval == GDK_Right) { */
             select_display_entry(-1);
-            return (TRUE);
+            return TRUE;
         }
     }
     
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
         do_button(FN_DELETE, 0);
-        return (TRUE);
+        return TRUE;
     }
 
     /* Shift inverse mode based on if shift is pressed */
     if (event->keyval == GDK_Shift_L || event->keyval == GDK_Shift_R) {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.inverse_toggle), 
                                      TRUE);
-        return (TRUE);
+        return TRUE;
     }
     
     for (i = 0; i < NBUTTONS; i++) {
@@ -2181,9 +2141,8 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         /* In basic mode only allow buttons that the user can see */
         if (X.mode == BASIC &&
             (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
-             !GTK_WIDGET_VISIBLE(button))) {
+             !GTK_WIDGET_VISIBLE(button)))
             continue;
-        }
 
         // FIXME: This is a bit hacky - needs to be rethought
         for (j = 0; button_widgets[i].accelerator_keys[j] != 0; j++) {
@@ -2197,17 +2156,16 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
                 // Hack if this is a multi-function button
                 if (GPOINTER_TO_INT(g_object_get_data(G_OBJECT(button), "calc_function")) !=
-                    button_widgets[i].function) {
-                   do_button(button_widgets[i].function, 0);
-                } else {
+                    button_widgets[i].function)
+                    do_button(button_widgets[i].function, 0);
+                else
                    button_cb(button, NULL);
-                }
-                return (TRUE);
+                return TRUE;
             }
         }
     }
 
-    return (FALSE);
+    return FALSE;
 }
 
 
@@ -2218,9 +2176,9 @@ main_window_key_release_cb(GtkWidget *widget, GdkEventKey *event)
     if (event->keyval == GDK_Shift_L || event->keyval == GDK_Shift_R) {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.inverse_toggle), 
                                      FALSE);
-        return (TRUE);
+        return TRUE;
     }
-    return (FALSE);
+    return FALSE;
 }
 
 
@@ -2259,12 +2217,11 @@ G_MODULE_EXPORT
 gboolean
 mouse_button_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    if (event->button == 2) {
+    if (event->button == 2)
         gtk_clipboard_request_text(gtk_clipboard_get(X.primary_atom),
                                    on_paste, NULL);
-    }
 
-    return (FALSE);
+    return FALSE;
 }
 
 
@@ -2366,9 +2323,8 @@ mode_radio_cb(GtkWidget *menu)
 {
     int mode;             /* The new mode. */
 
-    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu))) {
+    if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu)))
         return;
-    }
 
     mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
     ui_set_mode(mode);
@@ -2381,9 +2337,8 @@ accuracy_radio_cb(GtkWidget *widget)
 {
     int count;
     count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "accuracy"));
-    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
         do_button(FN_SET_ACCURACY, count);
-    }
 }
 
 
@@ -2445,7 +2400,7 @@ gboolean
 precision_dialog_delete_cb(GtkWidget *dialog)
 {
     precision_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL);
-    return (TRUE);
+    return TRUE;
 }
 
 
@@ -2495,16 +2450,14 @@ set_win_position()
 
     if (get_int_resource(R_XPOS, &intval)) {
         x = intval;
-        if (x < 0 || x > screen_width) {
+        if (x < 0 || x > screen_width)
             x = 0;
-        }
     }
 
     if (get_int_resource(R_YPOS, &intval)) {
         y = intval;
-        if (y < 0 || y > screen_height) {
+        if (y < 0 || y > screen_height)
             y = 0;
-        }
     }
 
     gtk_window_move(GTK_WINDOW(X.main_window), x, y);
@@ -2545,25 +2498,25 @@ create_main_window()
     }
     gtk_builder_connect_signals(X.ui, NULL);
 
-    X.clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
-    X.primary_atom = gdk_atom_intern("PRIMARY", FALSE);
-    X.main_window  = GET_WIDGET("calc_window");
-    X.ascii_dialog = GET_WIDGET("ascii_dialog");
-    X.ascii_entry  = GET_WIDGET("ascii_entry");
+    X.clipboard_atom   = gdk_atom_intern("CLIPBOARD", FALSE);
+    X.primary_atom     = gdk_atom_intern("PRIMARY", FALSE);
+    X.main_window      = GET_WIDGET("calc_window");
+    X.ascii_dialog     = GET_WIDGET("ascii_dialog");
+    X.ascii_entry      = GET_WIDGET("ascii_entry");
     X.precision_dialog = GET_WIDGET("precision_dialog");
     X.precision_spin   = GET_WIDGET("precision_dialog_spin");
     X.register_dialog  = GET_WIDGET("register_dialog");
     X.constants_dialog = GET_WIDGET("edit_constants_dialog");
     X.function_dialog  = GET_WIDGET("edit_functions_dialog");
-    X.menubar      = GET_WIDGET("menubar");
-    X.scrolledwindow = GET_WIDGET("display_scroll"),
-    X.display_item = GET_WIDGET("displayitem"),
-    X.bas_panel    = GET_WIDGET("basic_panel");
-    X.sci_panel    = GET_WIDGET("scientific_panel");
-    X.prog_panel   = GET_WIDGET("programming_panel");
-    X.adv_panel    = GET_WIDGET("advanced_panel");
-    X.fin_panel    = GET_WIDGET("financial_panel");
-    X.bit_panel    = GET_WIDGET("bit_panel");
+    X.menubar          = GET_WIDGET("menubar");
+    X.scrolledwindow   = GET_WIDGET("display_scroll"),
+    X.display_item     = GET_WIDGET("displayitem"),
+    X.bas_panel        = GET_WIDGET("basic_panel");
+    X.sci_panel        = GET_WIDGET("scientific_panel");
+    X.prog_panel       = GET_WIDGET("programming_panel");
+    X.adv_panel        = GET_WIDGET("advanced_panel");
+    X.fin_panel        = GET_WIDGET("financial_panel");
+    X.bit_panel        = GET_WIDGET("bit_panel");
     X.clear_buttons[0] = GET_WIDGET("calc_clear_simple_button");
     X.clear_buttons[1] = GET_WIDGET("calc_clear_advanced_button");   
     X.sci_mode_panel   = GET_WIDGET("scientific_mode_panel");
@@ -2571,10 +2524,10 @@ create_main_window()
     X.degree_radio     = GET_WIDGET("degrees_radio");
     X.gradian_radio    = GET_WIDGET("gradians_radio");
     X.radian_radio     = GET_WIDGET("radians_radio");
-    X.base_radios[0]    = GET_WIDGET("binary_radio");
-    X.base_radios[1]    = GET_WIDGET("octal_radio");
-    X.base_radios[2]    = GET_WIDGET("decimal_radio");
-    X.base_radios[3]    = GET_WIDGET("hexadecimal_radio");
+    X.base_radios[0]   = GET_WIDGET("binary_radio");
+    X.base_radios[1]   = GET_WIDGET("octal_radio");
+    X.base_radios[2]   = GET_WIDGET("decimal_radio");
+    X.base_radios[3]   = GET_WIDGET("hexadecimal_radio");
     X.display_mode_radios[0] = GET_WIDGET("engineering_radio");
     X.display_mode_radios[1] = GET_WIDGET("fixed_point_radio");
     X.display_mode_radios[2] = GET_WIDGET("scientific_radio");
@@ -2583,7 +2536,7 @@ create_main_window()
     X.word_length_radios[2]  = GET_WIDGET("16bit_radio");
     X.inverse_toggle    = GET_WIDGET("inverse_check");
     X.hyperbolic_toggle = GET_WIDGET("hyperbolic_check");
-    X.statusbar    = GET_WIDGET("statusbar");
+    X.statusbar         = GET_WIDGET("statusbar");
     for (i = 0; i < 16; i++) {
         SNPRINTF(name, MAXLINE, "calc_%x_button", i);
         X.digit_buttons[i] = GET_WIDGET(name);
@@ -2603,20 +2556,15 @@ create_main_window()
         
         gtk_size_group_add_widget(size_group, X.buttons[i]);
         
-        g_object_set_data(G_OBJECT(X.buttons[i]), "calc_function", 
-                          GINT_TO_POINTER(button_widgets[i].function));
+        g_object_set_data(G_OBJECT(X.buttons[i]), "calc_function", GINT_TO_POINTER(button_widgets[i].function));
     }
 
     /* Make popup buttons */
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_accuracy_button")),
-                      "calc_menu", GET_WIDGET("accuracy_popup"));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_shift_left_button")),
-                      "calc_menu", GET_WIDGET("left_shift_popup"));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_shift_right_button")),
-                      "calc_menu", GET_WIDGET("right_shift_popup"));
+    set_data(X.ui, "calc_accuracy_button", "calc_menu", GET_WIDGET("accuracy_popup"));
+    set_data(X.ui, "calc_shift_left_button", "calc_menu", GET_WIDGET("left_shift_popup"));
+    set_data(X.ui, "calc_shift_right_button", "calc_menu", GET_WIDGET("right_shift_popup"));
     
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_constants_button")),
-                      "calc_menu", GET_WIDGET("constants_popup"));
+    set_data(X.ui, "calc_constants_button", "calc_menu", GET_WIDGET("constants_popup"));
     for (i = 0; i < MAX_CONSTANTS; i++) {
         SNPRINTF(name, MAXLINE, "constant_menu_item%d", i);
         widget = GET_WIDGET(name);
@@ -2624,8 +2572,7 @@ create_main_window()
         X.constant_menu_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_functions_button")),
-                      "calc_menu", GET_WIDGET("functions_popup"));
+    set_data(X.ui, "calc_functions_button", "calc_menu", GET_WIDGET("functions_popup"));
     for (i = 0; i < MAX_FUNCTIONS; i++) {
         SNPRINTF(name, MAXLINE, "function_menu_item%d", i);
         widget = GET_WIDGET(name);
@@ -2633,12 +2580,9 @@ create_main_window()
         X.function_menu_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_store_button")),
-                      "calc_menu", GET_WIDGET("memory_store_popup"));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_recall_button")),
-                      "calc_menu", GET_WIDGET("memory_recall_popup"));
-    g_object_set_data(G_OBJECT(GET_WIDGET("calc_exchange_button")),
-                      "calc_menu", GET_WIDGET("memory_exchange_popup"));
+    set_data(X.ui, "calc_store_button", "calc_menu", GET_WIDGET("memory_store_popup"));
+    set_data(X.ui, "calc_recall_button", "calc_menu", GET_WIDGET("memory_recall_popup"));
+    set_data(X.ui, "calc_exchange_button", "calc_menu", GET_WIDGET("memory_exchange_popup"));
     for (i = 0; i < MAX_REGISTERS; i++) {
         SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
         widget = GET_WIDGET(name);
@@ -2657,13 +2601,11 @@ create_main_window()
     }
 
     /* Load bit panel */
-    for (i = 0; i < MAXBITS; i++)
-    {
+    for (i = 0; i < MAXBITS; i++) {
         SNPRINTF(name, MAXLINE, "bit_label_%d", i);
         X.bit_labels[i] = GET_WIDGET(name);
         SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
-                          "bit_index", GINT_TO_POINTER(i));
+        set_int_data(X.ui, name, "bit_index", i);
     }
     
     /* Make menu tooltips displayed in the status bar */
@@ -2683,11 +2625,6 @@ create_main_window()
     set_menubar_tooltip("help_menu");
     set_menubar_tooltip("about_menu");
 
-    // ???
-    widget = GET_WIDGET("kvbox");
-    gtk_widget_set_direction(widget, GTK_TEXT_DIR_LTR);
-    gtk_widget_set_direction(X.fin_panel, GTK_TEXT_DIR_LTR);
-    
     /* Make dialogs transient of the main window */
     gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));    
     gtk_window_set_transient_for(GTK_WINDOW(X.precision_dialog), GTK_WINDOW(X.main_window));
@@ -2705,18 +2642,14 @@ create_main_window()
     X.constants_model = create_constants_model();
     treeview = GET_WIDGET("edit_constants_treeview");
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), X.constants_model);
-    gtk_tree_selection_set_mode(
-                                gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
+    gtk_tree_selection_set_mode(gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
                                 GTK_SELECTION_SINGLE);
     /* Translators: Edit Constants Dialog: Constant number column title */
-    add_cf_column(GTK_TREE_VIEW(treeview), _("No."),
-                  COLUMN_NUMBER, FALSE);
+    add_cf_column(GTK_TREE_VIEW(treeview), _("No."), COLUMN_NUMBER, FALSE);
     /* Translators: Edit Constants Dialog: Constant value column title */
-    add_cf_column(GTK_TREE_VIEW(treeview), _("Value"),
-                  COLUMN_VALUE, TRUE);
+    add_cf_column(GTK_TREE_VIEW(treeview), _("Value"), COLUMN_VALUE, TRUE);
     /* Translators: Edit Constants Dialog: Constant description column title */    
-    add_cf_column(GTK_TREE_VIEW(treeview), _("Description"),
-                  COLUMN_DESCRIPTION, TRUE);
+    add_cf_column(GTK_TREE_VIEW(treeview), _("Description"), COLUMN_DESCRIPTION, TRUE);
 
     /* Make function tree model */
     X.functions_model = create_functions_model();
@@ -2726,8 +2659,7 @@ create_main_window()
     gtk_window_set_transient_for(GTK_WINDOW(X.function_dialog), 
                                  GTK_WINDOW(X.main_window));
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), X.functions_model);
-    gtk_tree_selection_set_mode(
-                                gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
+    gtk_tree_selection_set_mode(gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
                                 GTK_SELECTION_SINGLE);
     /* Translators: Edit Functions Dialog: Function number column title */
     add_cf_column(GTK_TREE_VIEW(treeview), _("No."),
@@ -2756,74 +2688,51 @@ create_main_window()
     g_object_set_data(G_OBJECT(X.degree_radio), "trig_mode", GINT_TO_POINTER(MP_DEGREES));
     g_object_set_data(G_OBJECT(X.gradian_radio), "trig_mode", GINT_TO_POINTER(MP_GRADIANS));
     for (i = 0; i < 4; i++)
-        g_object_set_data(G_OBJECT(X.base_radios[i]),
-                          "base_mode", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(X.base_radios[i]), "base_mode", GINT_TO_POINTER(i));
     for (i = 0; i < 3; i++)
-        g_object_set_data(G_OBJECT(X.display_mode_radios[i]),
-                          "numeric_mode", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(X.display_mode_radios[i]), "numeric_mode", GINT_TO_POINTER(i));
     
-    g_object_set_data(G_OBJECT(X.word_length_radios[0]),
-                          "wordlen_mode", GINT_TO_POINTER(64));
-    g_object_set_data(G_OBJECT(X.word_length_radios[1]),
-                          "wordlen_mode", GINT_TO_POINTER(32));
-    g_object_set_data(G_OBJECT(X.word_length_radios[2]),
-                          "wordlen_mode", GINT_TO_POINTER(16));
+    g_object_set_data(G_OBJECT(X.word_length_radios[0]), "wordlen_mode", GINT_TO_POINTER(64));
+    g_object_set_data(G_OBJECT(X.word_length_radios[1]), "wordlen_mode", GINT_TO_POINTER(32));
+    g_object_set_data(G_OBJECT(X.word_length_radios[2]), "wordlen_mode", GINT_TO_POINTER(16));
 
     X.status_image = GET_WIDGET("status_image");
 
     /* Set modes for menu items */
     for (i = 1; i < 16; i++) {
         SNPRINTF(name, MAXLINE, "shift_left%d_menu", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
-                          "shiftcount", GINT_TO_POINTER(i));
+        set_int_data(X.ui, name, "shiftcount", i);
         SNPRINTF(name, MAXLINE, "shift_right%d_menu", i);
-        g_object_set_data(G_OBJECT(GET_WIDGET(name)),
-                          "shiftcount", GINT_TO_POINTER(-i));
+        set_int_data(X.ui, name, "shiftcount", -i);
     }
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_basic_menu")),
-                      "calcmode", GINT_TO_POINTER(BASIC));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_advanced_menu")),
-                      "calcmode", GINT_TO_POINTER(ADVANCED));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_financial_menu")),
-                      "calcmode", GINT_TO_POINTER(FINANCIAL));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_scientific_menu")),
-                      "calcmode", GINT_TO_POINTER(SCIENTIFIC));
-    g_object_set_data(G_OBJECT(GET_WIDGET("view_programming_menu")),
-                      "calcmode", GINT_TO_POINTER(PROGRAMMING));
+    set_int_data(X.ui, "view_basic_menu", "calcmode", BASIC);
+    set_int_data(X.ui, "view_advanced_menu", "calcmode", ADVANCED);
+    set_int_data(X.ui, "view_financial_menu", "calcmode", FINANCIAL);
+    set_int_data(X.ui, "view_scientific_menu", "calcmode", SCIENTIFIC);
+    set_int_data(X.ui, "view_programming_menu", "calcmode", PROGRAMMING);
 
     /* Make shortcuts for accuracy menus */
     accel_group = gtk_accel_group_new();
     gtk_window_add_accel_group(GTK_WINDOW(X.main_window), accel_group);
     for (i = 0; i < 10; i++) {
         SNPRINTF(name, MAXLINE, "acc_item%d", i);
-        widget = GET_WIDGET(name);
-        g_object_set_data(G_OBJECT(widget), "accuracy", GINT_TO_POINTER(i));
+        set_int_data(X.ui, name, "accuracy", i);
     }
 
     /* Localize label for numeric point */
-    gtk_button_set_label(GTK_BUTTON(GET_WIDGET("calc_numeric_point_button")), v->radix);
+    gtk_button_set_label(GTK_BUTTON(GET_OBJECT("calc_numeric_point_button")), v->radix);
 
     /* Setup financial functions */
-    widget = GET_WIDGET("calc_finc_compounding_term_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "ctrm_dialog");
-    widget = GET_WIDGET("calc_finc_double_declining_depreciation_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "ddb_dialog");
-    widget = GET_WIDGET("calc_finc_future_value_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "fv_dialog");
-    widget = GET_WIDGET("calc_finc_gross_profit_margin_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "gpm_dialog");
-    widget = GET_WIDGET("calc_finc_periodic_payment_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "pmt_dialog");
-    widget = GET_WIDGET("calc_finc_present_value_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "pv_dialog");
-    widget = GET_WIDGET("calc_finc_periodic_interest_rate_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "rate_dialog");
-    widget = GET_WIDGET("calc_finc_straight_line_depreciation_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "sln_dialog");
-    widget = GET_WIDGET("calc_finc_sum_of_the_years_digits_depreciation_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "syd_dialog");
-    widget = GET_WIDGET("calc_finc_term_button");
-    g_object_set_data(G_OBJECT(widget), "finc_dialog", "term_dialog");
+    set_data(X.ui, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
+    set_data(X.ui, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
+    set_data(X.ui, "calc_finc_future_value_button", "finc_dialog", "fv_dialog");
+    set_data(X.ui, "calc_finc_gross_profit_margin_button", "finc_dialog", "gpm_dialog");
+    set_data(X.ui, "calc_finc_periodic_payment_button", "finc_dialog", "pmt_dialog");
+    set_data(X.ui, "calc_finc_present_value_button", "finc_dialog", "pv_dialog");
+    set_data(X.ui, "calc_finc_periodic_interest_rate_button", "finc_dialog", "rate_dialog");
+    set_data(X.ui, "calc_finc_straight_line_depreciation_button", "finc_dialog", "sln_dialog");
+    set_data(X.ui, "calc_finc_sum_of_the_years_digits_depreciation_button", "finc_dialog", "syd_dialog");
+    set_data(X.ui, "calc_finc_term_button", "finc_dialog", "term_dialog");
 }
 
 
@@ -2884,7 +2793,7 @@ ui_load(void)
     /* Set default accuracy menu item */
     /* Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value. */
     SNPRINTF(text, MAXLINE, _("Reset to _Default (%d)"), DEFAULT_ACCURACY);
-    widget = gtk_bin_get_child(GTK_BIN(GET_WIDGET("acc_item_default")));
+    widget = gtk_bin_get_child(GTK_BIN(GET_OBJECT("acc_item_default")));
     gtk_label_set_markup_with_mnemonic(GTK_LABEL(widget), text);
 }
 
@@ -2897,11 +2806,10 @@ ui_start(void)
     ui_set_numeric_mode(v->display.format);
 
     /* Focus on the clear button */
-    if (X.mode == BASIC) {
+    if (X.mode == BASIC)
         gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[0]));
-    } else {
+    else
         gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[1]));
-    }
     
     gtk_widget_show(X.main_window);
 
