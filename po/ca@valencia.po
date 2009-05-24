@@ -1,0 +1,2831 @@
+# Traducció del Gcalctool de l'equip de Softcatalà.
+# Copyright © 2003-2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gcalctool package.
+# Blanca Biosca <b_biosca@hotmail.com>, 2003.
+# Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>, 2005-2007.
+# Joan Duran <jodufi@gmail.com>, 2008, 2009. 
+# Miquel Esplà <miquelespla@gmail.com>, 2009 [valencian variant adaptation].
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gcalctool\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-25 00:15+0200\n"
+"PO-Revision-Date: 2009-01-26 22:07+0100\n"
+"Last-Translator: Joan Duran <jodufi@gmail.com>\n"
+"Language-Team: Catalan  <tradgnome@softcatala.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. FIXME: Useless string
+#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:736
+#: ../gcalctool/mp.c:826 ../gcalctool/mp-trigonometric.c:155
+#: ../gcalctool/mp-trigonometric.c:191 ../gcalctool/mp-trigonometric.c:362
+msgid "Error"
+msgstr "Error"
+
+#. Translators: A log message displayed when an invalid accuracy
+#. is read from the configuration
+#: ../gcalctool/calctool.c:223
+#, c-format
+msgid "%s: accuracy should be in the range 0-%d\n"
+msgstr "%s: l'exactitud ha d'anar de 0 a %d\n"
+
+#: ../gcalctool/display.c:390
+msgid "No undo history"
+msgstr "Sense historial per a desfer"
+
+#: ../gcalctool/display.c:405
+msgid "No redo steps"
+msgstr "Sense passos per a refer"
+
+#. Translators: This message is displayed in the status bar when an
+#. invalid user-defined function is executed
+#: ../gcalctool/functions.c:180
+msgid "Malformed function"
+msgstr "Funció mal escrita"
+
+#. Translators: This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../gcalctool/functions.c:192
+msgid "No sane value to do bitwise shift"
+msgstr "No és un valor adequat per a fer un desplaçament bit a bit"
+
+#: ../gcalctool/functions.c:212 ../gcalctool/functions.c:258
+msgid "No sane value to convert"
+msgstr "No és un valor adequat a convertir"
+
+#: ../gcalctool/functions.c:236 ../gcalctool/functions.c:278
+msgid "No sane value to store"
+msgstr "No és un valor adequat per emmagatzemar"
+
+#: ../gcalctool/functions.c:432
+msgid "Invalid number for the current base"
+msgstr "El nombre no és vàlid per la base actual"
+
+#: ../gcalctool/functions.c:436
+msgid "Too long number"
+msgstr "El nombre és massa llarg"
+
+#: ../gcalctool/functions.c:440
+msgid "Invalid bitwise operation parameter(s)"
+msgstr "Els paràmetres de l'operació a nivell de bits no són vàlids"
+
+#: ../gcalctool/functions.c:444
+msgid "Invalid modulus operation parameter(s)"
+msgstr "Els paràmetres de l'operació del mòdul no són vàlids"
+
+#: ../gcalctool/functions.c:448
+msgid "Math operation error"
+msgstr "Error en una operació matemàtica"
+
+#: ../gcalctool/functions.c:452
+msgid "Malformed expression"
+msgstr "Expressió mal escrita"
+
+#. Translators: The window title when in basic mode
+#: ../gcalctool/gtk.c:61 ../gcalctool.desktop.in.h:1
+msgid "Calculator"
+msgstr "Calculadora"
+
+#. Translators: The window title when in advanced mode
+#: ../gcalctool/gtk.c:63
+msgid "Calculator - Advanced"
+msgstr "Calculadora - Avançat"
+
+#. Translators: The window title when in financial mode
+#: ../gcalctool/gtk.c:65
+msgid "Calculator - Financial"
+msgstr "Calculadora - Financer"
+
+#. Translators: The window title when in scientific mode
+#: ../gcalctool/gtk.c:67
+msgid "Calculator - Scientific"
+msgstr "Calculadora - Científic"
+
+#. Translators: The window title when in programming mode
+#: ../gcalctool/gtk.c:69
+msgid "Calculator - Programming"
+msgstr "Calculadora - Programació"
+
+#. Translators: The window title when in basic mode. %s is replaced with the hostname.
+#: ../gcalctool/gtk.c:75
+#, c-format
+msgid "Calculator [%s]"
+msgstr "Calculadora [%s]"
+
+#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
+#: ../gcalctool/gtk.c:77
+#, c-format
+msgid "Calculator [%s] - Advanced"
+msgstr "Calculadora [%s] - Avançat"
+
+#. Translators: The window title when in financial mode. %s is replaced with the hostname.
+#: ../gcalctool/gtk.c:79
+#, c-format
+msgid "Calculator [%s] - Financial"
+msgstr "Calculadora [%s] - Financer"
+
+#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
+#: ../gcalctool/gtk.c:81
+#, c-format
+msgid "Calculator [%s] - Scientific"
+msgstr "Calculadora [%s] - Científic"
+
+#. Translators: The window title when in programming mode. %s is replaced with the hostname.
+#: ../gcalctool/gtk.c:83
+#, c-format
+msgid "Calculator [%s] - Programming"
+msgstr "Calculadora [%s] - Programació"
+
+#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
+#: ../gcalctool/gtk.c:540
+#, c-format
+msgid "_Other (%d) ..."
+msgstr "_Altre (%d) ..."
+
+#. Translators: Tooltip for accuracy button
+#: ../gcalctool/gtk.c:546
+#, c-format
+msgid "Set accuracy from 0 to %d numeric place. [A]"
+msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+msgstr[0] "Estableix la precisió de 0 a %d posició numèrica. [A]"
+msgstr[1] "Estableix la precisió de 0 a %d posicions numèriques. [A]"
+
+#. Translators: The sine button
+#: ../gcalctool/gtk.c:571
+msgid "Sin"
+msgstr "Sin"
+
+#. Translators: The inverse sine button
+#: ../gcalctool/gtk.c:573
+msgid "Sin<sup>-1</sup>"
+msgstr "Sin<sup>-1</sup>"
+
+#. Translators: The hyperbolic sine button
+#: ../gcalctool/gtk.c:575
+msgid "Sinh"
+msgstr "Sinh"
+
+#. Translators: The inverse hyperbolic sine button
+#: ../gcalctool/gtk.c:577
+msgid "Sinh<sup>-1</sup>"
+msgstr "Sinh<sup>-1</sup>"
+
+#. Translators: The sine tooltip
+#: ../gcalctool/gtk.c:580
+msgid "Sine [k]"
+msgstr "Sinus [k]"
+
+#. Translators: The inverse sine tooltip
+#: ../gcalctool/gtk.c:582
+msgid "Inverse Sine [K]"
+msgstr "Sinus invers [K]"
+
+#. Translators: The hyperbolic sine tooltip
+#: ../gcalctool/gtk.c:584
+msgid "Hyperbolic Sine [k]"
+msgstr "Sinus hiperbòlic [k]"
+
+#. Translators: The hyperbolic inverse sine tooltip
+#: ../gcalctool/gtk.c:586
+msgid "Hyperbolic Inverse Sine [K]"
+msgstr "Sinus invers hiperbòlic [K]"
+
+#. Translators: The cosine button
+#: ../gcalctool/gtk.c:590
+msgid "Cos"
+msgstr "Cos"
+
+#. Translators: The inverse cosine button
+#: ../gcalctool/gtk.c:592
+msgid "Cos<sup>-1</sup>"
+msgstr "Cos<sup>-1</sup>"
+
+#. Translators: The hyperbolic cosine button
+#: ../gcalctool/gtk.c:594
+msgid "Cosh"
+msgstr "Cosh"
+
+#. Translators: The inverse hyperbolic cosine button
+#: ../gcalctool/gtk.c:596
+msgid "Cosh<sup>-1</sup>"
+msgstr "Cosh<sup>-1</sup>"
+
+#. Translators: The cosine tooltip
+#: ../gcalctool/gtk.c:599
+msgid "Cosine [j]"
+msgstr "Cosinus [j]"
+
+#. Translators: The inverse cosine tooltip
+#: ../gcalctool/gtk.c:601
+msgid "Inverse Cosine [J]"
+msgstr "Cosinus invers [J]"
+
+#. Translators: The hyperbolic cosine tooltip
+#: ../gcalctool/gtk.c:603
+msgid "Hyperbolic Cosine [j]"
+msgstr "Cosinus hiperbòlic [j]"
+
+#. Translators: The hyperbolic inverse cosine tooltip
+#: ../gcalctool/gtk.c:605
+msgid "Hyperbolic Inverse Cosine [J]"
+msgstr "Cosinus invers hiperbòlic [J]"
+
+#. Translators: The tangent button
+#: ../gcalctool/gtk.c:609
+msgid "Tan"
+msgstr "Tan"
+
+#. Translators: The inverse tangent button
+#: ../gcalctool/gtk.c:611
+msgid "Tan<sup>-1</sup>"
+msgstr "Tan<sup>-1</sup>"
+
+#. Translators: The hyperbolic tangent button
+#: ../gcalctool/gtk.c:613
+msgid "Tanh"
+msgstr "Tanh"
+
+#. Translators: The inverse hyperbolic tangent button
+#: ../gcalctool/gtk.c:615
+msgid "Tanh<sup>-1</sup>"
+msgstr "Tanh<sup>-1</sup>"
+
+#. Translators: The tangent tooltip
+#: ../gcalctool/gtk.c:618
+msgid "Tangent [w]"
+msgstr "Tangent [w]"
+
+#. Translators: The inverse tangent tooltip
+#: ../gcalctool/gtk.c:620
+msgid "Inverse Tangent [W]"
+msgstr "Tangent inversa [W]"
+
+#. Translators: The hyperbolic tangent tooltip
+#: ../gcalctool/gtk.c:622
+msgid "Hyperbolic Tangent [w]"
+msgstr "Tangent hiperbòlica [w]"
+
+#. Translators: The hyperbolic inverse tangent tooltip
+#: ../gcalctool/gtk.c:624
+msgid "Hyperbolic Inverse Tangent [W]"
+msgstr "Tangent inversa hiperbòlica [W]"
+
+#. Translators: The natural logaritm button
+#: ../gcalctool/gtk.c:629
+msgid "Ln"
+msgstr "Ln"
+
+#. Translators: The e to the power of x button
+#: ../gcalctool/gtk.c:631
+msgid "e<sup><i>x</i></sup>"
+msgstr "e<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the natural log button
+#: ../gcalctool/gtk.c:634
+msgid "Natural log [n]"
+msgstr "Logaritme natural [n]"
+
+#. Translators: Tooltip for the e to the power of x button
+#: ../gcalctool/gtk.c:636
+msgid "e to the power of the displayed value [N]"
+msgstr "e elevat al valor mostrat [N]"
+
+#. Translators: The 10-based logaritm button
+#: ../gcalctool/gtk.c:641
+msgid "Log"
+msgstr "Log"
+
+#. Translators: The 10 to the power of x button
+#: ../gcalctool/gtk.c:643
+msgid "10<sup><i>x</i></sup>"
+msgstr "10<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 10 button
+#: ../gcalctool/gtk.c:646
+msgid "Base 10 log [g]"
+msgstr "Logaritme en base 10 [g]"
+
+#. Translators: Tooltip for the 10 to the power of x button
+#: ../gcalctool/gtk.c:648
+msgid "10 to the power of displayed value [G]"
+msgstr "10 elevat al valor mostrat [G]"
+
+#. Translators: The 2-based logaritm button
+#: ../gcalctool/gtk.c:653
+msgid "Log<sub>2</sub>"
+msgstr "Log<sub>2</sub>"
+
+#. Translators: The 2 to the power of x button
+#: ../gcalctool/gtk.c:655
+msgid "2<sup><i>x</i></sup>"
+msgstr "2<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 2 button
+#: ../gcalctool/gtk.c:658
+msgid "Base 2 log [h]"
+msgstr "Logaritme en base 2 [h]"
+
+#. Translators: Tooltip for the 2 to the power of x button
+#: ../gcalctool/gtk.c:660
+msgid "2 to the power of the displayed value [H]"
+msgstr "2 elevat al valor mostrat [H]"
+
+#. Translators: The x to the power of y button
+#: ../gcalctool/gtk.c:665
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>y</i></sup>"
+
+#. Translators: The x to the power of reciprocal y button
+#: ../gcalctool/gtk.c:667
+msgid "x<sup>1/<i>y</i></sup>"
+msgstr "x<sup>1/<i>y</i></sup>"
+
+#. Translators: Tooltip for the x to the power of y button
+#: ../gcalctool/gtk.c:670
+msgid "Raise displayed value to the power of y [o]"
+msgstr "Eleva el valor mostrat a y [o]"
+
+#. Translators: Tooltip for the x to the power of reciprocal y button
+#: ../gcalctool/gtk.c:672
+msgid "Raise displayed value to the power of reciprocal y [O]"
+msgstr "Eleva el valor mostrat al recíproc de y [O]"
+
+#. Translators: The translator credits. Please translate this with your name(s).
+#: ../gcalctool/gtk.c:1207
+msgid "translator-credits"
+msgstr ""
+"Blanca Biosca <b_biosca@hotmail.com>\n"
+"Josep Puigdemont <josep.puigdemont@gmail.com>\n"
+"Joan Duran <jodufi@gmail.com>\n"
+"Miquel Esplà <miquelespla@gmail.com>"
+
+#: ../gcalctool/gtk.c:1211
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+msgstr ""
+"El gcalctool és programari lliure; podeu redistribuir-lo i/o modificar-lo\n"
+"sota els termes de la Llicència pública general de GNU tal com publica la\n"
+"Free Software Foundation; tant en la versió 2 de la llicència, o (a la\n"
+"vostra opció) una versió posterior.\n"
+"El gcalctool es distribueix amb l'esperança de que siga útil, però\n"
+"SENSE CAP GARANTIA; fins i tot sense la garantia implícita de\n"
+"COMERCIALITZACIÓ o ADEQUACIÓ A UN ÚS CONCRET. Per a més detalls vegeu la\n"
+"Llicència pública general de GNU.\n"
+"Hauríeu d'haver rebut una còpia de la Llicència pública general de GNU\n"
+"amb el gcalctool; si no és així, escriviu a la Free Software Foundation, \n"
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+
+#. Translators: Program name in the about dialog
+#: ../gcalctool/gtk.c:1227
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Translators: Copyright notice in the about dialog
+#: ../gcalctool/gtk.c:1230
+msgid "© 1986-2008 The Gcalctool authors"
+msgstr "© 1986-2008 Els autors del Gcalctool"
+
+#. Translators: Short description in the about dialog
+#: ../gcalctool/gtk.c:1233
+msgid "Calculator with financial and scientific modes."
+msgstr "Calculadora amb mode financer i científic"
+
+#: ../gcalctool/gtk.c:1384
+msgid "Unable to open help file"
+msgstr "No s'ha pogut obrir el fitxer d'ajuda"
+
+#. Hexadecimal digit C button
+#: ../gcalctool/gtk.c:1549 ../glade/gcalctool.glade.h:129
+msgid "C"
+msgstr "C"
+
+#. Hexadecimal digit F button
+#: ../gcalctool/gtk.c:1572 ../glade/gcalctool.glade.h:200
+msgid "F"
+msgstr "F"
+
+#. Translators: R is the short form of register used inter alia in popup menus
+#: ../gcalctool/gtk.c:1804
+msgid "R"
+msgstr "R"
+
+#. FIXME: WTF?
+#: ../gcalctool/gtk.c:2230
+msgid "Paste"
+msgstr "Enganxa"
+
+#. Translators: Title of the error dialog when unable to load the UI files
+#: ../gcalctool/gtk.c:2450
+msgid "Error loading user interface"
+msgstr "S'ha produït un error en carregar la interfície d'usuari"
+
+#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
+#: ../gcalctool/gtk.c:2453
+#, c-format
+msgid ""
+"The user interface file %s is missing or unable to be loaded. Please check "
+"your installation."
+msgstr ""
+"Falta o no es pot carregar el fitxer de la interfície d'usuari %s. Comproveu "
+"la instal·lació."
+
+#. Translators: Edit Constants Dialog: Constant number column title
+#. Translators: Edit Functions Dialog: Function number column title
+#: ../gcalctool/gtk.c:2680 ../gcalctool/gtk.c:2701
+msgid "No."
+msgstr "Núm."
+
+#. Translators: Edit Constants Dialog: Constant value column title
+#. Translators: Edit Functions Dialog: Function value column title
+#: ../gcalctool/gtk.c:2683 ../gcalctool/gtk.c:2704
+msgid "Value"
+msgstr "Valor"
+
+#. Translators: Edit Constants Dialog: Constant description column title
+#. Translators: Edit Functions Dialog: Function description column title
+#: ../gcalctool/gtk.c:2686 ../gcalctool/gtk.c:2707
+msgid "Description"
+msgstr "Descripció"
+
+#. Set default accuracy menu item
+#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
+#: ../gcalctool/gtk.c:2859
+#, c-format
+msgid "Reset to _Default (%d)"
+msgstr "Reinicia a la pre_determinada (%d)"
+
+#: ../gcalctool/mp.c:1953
+msgid "Negative X and non-integer Y not supported"
+msgstr "No està implementat X negativa i Y no entera"
+
+#: ../gcalctool/mp-trigonometric.c:608
+msgid "Error, cannot calculate cosine"
+msgstr "S'ha produït un error, no s'ha pogut calcular el cosinus"
+
+#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
+#: ../gcalctool/register.c:40
+msgid "Kilometer-to-mile conversion factor"
+msgstr "Factor de conversió de quilòmetres a milles"
+
+#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
+#: ../gcalctool/register.c:42
+msgid "square root of 2"
+msgstr "Arrel quadrada de 2"
+
+#. Translators: This is the label for the default constant, Euler's number (2.71828)
+#: ../gcalctool/register.c:44
+msgid "Euler's Number (e)"
+msgstr "Número d'Euler (e)"
+
+#. Translators: This is the label for the default constant, π (3.14159)
+#: ../gcalctool/register.c:46
+msgid "π"
+msgstr "π"
+
+#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
+#: ../gcalctool/register.c:48
+msgid "Centimeter-to-inch conversion factor"
+msgstr "Factor de conversió de centímetres a polzades"
+
+#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
+#: ../gcalctool/register.c:50
+msgid "degrees in a radian"
+msgstr "Graus en un radià"
+
+#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
+#: ../gcalctool/register.c:52
+msgid "2 ^ 20"
+msgstr "2 ^ 20"
+
+# Nota "unça" també és una mesura catalana, en desús, diferent a la imperial
+#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
+#: ../gcalctool/register.c:54
+msgid "Gram-to-ounce conversion factor"
+msgstr "Factor de conversió de grams a unces (imperials)"
+
+#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
+#: ../gcalctool/register.c:56
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
+msgstr "Factor de conversió de quilojouls a unitats britàniques de temperatura"
+
+#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
+#: ../gcalctool/register.c:58
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+msgstr "Factor de conversió de centímetres cúbics a polzades cúbiques"
+
+#: ../gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Realitza càlculs aritmètics, científics o financers"
+
+#. Payment Period Dialog: Button to calculate result
+#: ../glade/financial.glade.h:2
+msgid "C_alculate"
+msgstr "C_alcula"
+
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../glade/financial.glade.h:4
+msgid "C_ost:"
+msgstr "C_ost:"
+
+#. Periodic Payment Dialog: Description of calculation
+#: ../glade/financial.glade.h:6
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Calcula la quantitat del pagament periòdic d'un préstec, on els pagaments es "
+"fan al final de cada període de pagament."
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../glade/financial.glade.h:8
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Calcula la provisió per a depreciació d'un actiu per a un període de temps "
+"especificat, utilitzant el mètode de depreciació per suma dels dígits dels "
+"anys. Este mètode de depreciació accelera el tipus de depreciació, de manera "
+"que els moments de més despeses de depreciació són els primers períodes, i "
+"els de menys els últims. La vida útil és el número de períodes, generalment "
+"en anys, sobre els quals un actiu es deprecia."
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../glade/financial.glade.h:10
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Calcula la provisió per a depreciació d'un actiu per a un període de temps "
+"especificat, amb el mètode de depreciació doble decreixent."
+
+#. Future Value Dialog: Description of calculation
+#: ../glade/financial.glade.h:12
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Calcula el valor futur d'una inversió basat en una sèrie de pagaments iguals "
+"a un tipus d'interés periòdic sobre el número de períodes de pagament en el "
+"termini."
+
+#. Compounding Term Dialog: Description of calculation
+#: ../glade/financial.glade.h:14
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Calcula el número de períodes compostos necessaris per a incrementar una "
+"inversió de valor actual a un valor futur, a un tipus d'interés fix per "
+"període compost."
+
+#. Payment Period Dialog: Description of calculation
+#: ../glade/financial.glade.h:16
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Calcula el número de períodes compostos necessaris durant el període d'un "
+"any ordinari, per a acumular un valor futur, a un tipus d'interés periòdic."
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../glade/financial.glade.h:18
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Calcula l'interés periòdic necessari per a incrementar una inversió a un "
+"valor futur, en el número de períodes compostos."
+
+#. Present Value Dialog: Description of calculation
+#: ../glade/financial.glade.h:20
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Calcula el valor actual d'una inversió basat en una sèrie de pagaments "
+"iguals descomptats a un tipus d'interés periòdic sobre el número de períodes "
+"de pagament en el termini."
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../glade/financial.glade.h:22
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Calcula el preu de revenda d'un producte, basat en el cost del producte i el "
+"percentatge brut de benefici desitjat."
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../glade/financial.glade.h:24
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Calcula la depreciació constant d'un actiu per a un període. El mètode de "
+"depreciació constant divideix el cost depreciable uniformement sobre la vida "
+"útil d'un actiu. La vida útil és el número de períodes, generalment en anys, "
+"sobre els quals un actiu es deprecia."
+
+#. Title of Compounding Term dialog
+#: ../glade/financial.glade.h:26
+msgid "Compounding Term"
+msgstr "Terme compost"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../glade/financial.glade.h:28
+msgid "Double-Declining Depreciation"
+msgstr "Depreciació doble decreixent"
+
+#. Title of Future Value dialog
+#: ../glade/financial.glade.h:30
+msgid "Future Value"
+msgstr "Valor futur"
+
+#. Payment Period Dialog: Label before future value input
+#: ../glade/financial.glade.h:32
+msgid "Future _Value:"
+msgstr "_Valor futur:"
+
+#. Title of Gross Profit Margin dialog
+#: ../glade/financial.glade.h:34 ../glade/gcalctool.glade.h:223
+msgid "Gross Profit Margin"
+msgstr "Marge de benefici brut"
+
+#. Title of Payment Period dialog
+#: ../glade/financial.glade.h:36
+msgid "Payment Period"
+msgstr "Període de pagament"
+
+#. Title of Periodic Interest Rate dialog
+#: ../glade/financial.glade.h:38
+msgid "Periodic Interest Rate"
+msgstr "Tipus d'interés periòdic"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../glade/financial.glade.h:40
+msgid "Periodic Interest _Rate:"
+msgstr "_Tipus d'interés periòdic:"
+
+#. Title of Periodic Payment dialog
+#: ../glade/financial.glade.h:42
+msgid "Periodic Payment"
+msgstr "Pagament periòdic"
+
+#. Title of Present Value dialog
+#: ../glade/financial.glade.h:44
+msgid "Present Value"
+msgstr "Valor actual"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../glade/financial.glade.h:46
+msgid "Present _Value:"
+msgstr "_Valor actual:"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../glade/financial.glade.h:48
+msgid "Straight-Line Depreciation"
+msgstr "Depreciació constant"
+
+#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#: ../glade/financial.glade.h:50
+msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgstr "Depreciació per suma dels dígits dels anys"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../glade/financial.glade.h:52
+msgid "_Cost:"
+msgstr "_Cost:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../glade/financial.glade.h:54
+msgid "_Future Value:"
+msgstr "Valor _futur:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#: ../glade/financial.glade.h:56
+msgid "_Life:"
+msgstr "_Vida:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../glade/financial.glade.h:58
+msgid "_Margin:"
+msgstr "_Marge:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../glade/financial.glade.h:60
+msgid "_Number Of Periods:"
+msgstr "_Número de períodes:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#: ../glade/financial.glade.h:62
+msgid "_Period:"
+msgstr "_Període:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../glade/financial.glade.h:64
+msgid "_Periodic Payment:"
+msgstr "_Pagament periòdic:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../glade/financial.glade.h:66
+msgid "_Principal:"
+msgstr "_Principal:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../glade/financial.glade.h:68
+msgid "_Salvage:"
+msgstr "_Salvament:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../glade/financial.glade.h:70
+msgid "_Term:"
+msgstr "_Termini:"
+
+#. The percentage button
+#: ../glade/gcalctool.glade.h:3
+#, no-c-format
+msgid "%"
+msgstr "%"
+
+#. 16 bit unsigned integer
+#: ../glade/gcalctool.glade.h:5
+msgid "&16"
+msgstr "&16"
+
+#. 32 bit unsigned integer
+#: ../glade/gcalctool.glade.h:7
+msgid "&32"
+msgstr "&32"
+
+#. Start calculation group button
+#: ../glade/gcalctool.glade.h:9
+msgid "("
+msgstr "("
+
+#. Right bracket
+#: ../glade/gcalctool.glade.h:11
+msgid ")"
+msgstr ")"
+
+#. Addition button
+#: ../glade/gcalctool.glade.h:13
+msgid "+"
+msgstr "+"
+
+#. Numeric 0 button
+#: ../glade/gcalctool.glade.h:15
+msgid "0"
+msgstr "0"
+
+#. Numeric 1 button
+#: ../glade/gcalctool.glade.h:17
+msgid "1"
+msgstr "1"
+
+#. Reciprocal button
+#: ../glade/gcalctool.glade.h:19
+msgid "1/<i>x</i>"
+msgstr "1/<i>x</i>"
+
+#: ../glade/gcalctool.glade.h:20
+msgid "1/x"
+msgstr "1/x"
+
+#. Right Shift Popup: Menu item to shift right by 10 bits
+#: ../glade/gcalctool.glade.h:22
+msgid "10 places"
+msgstr "10 posicions"
+
+#. Right Shift Popup: Menu item to shift right by 11 bits
+#: ../glade/gcalctool.glade.h:24
+msgid "11 places"
+msgstr "11 posicions"
+
+#. Right Shift Popup: Menu item to shift right by 12 bits
+#: ../glade/gcalctool.glade.h:26
+msgid "12 places"
+msgstr "12 posicions"
+
+#. Right Shift Popup: Menu item to shift right by 13 bits
+#: ../glade/gcalctool.glade.h:28
+msgid "13 places"
+msgstr "13 posicions"
+
+#. Right Shift Popup: Menu item to shift right by 14 bits
+#: ../glade/gcalctool.glade.h:30
+msgid "14 places"
+msgstr "14 posicions"
+
+#. Label for bit 15 on the bit editor
+#: ../glade/gcalctool.glade.h:32
+msgid "15"
+msgstr "15"
+
+#. Right Shift Popup: Menu item to shift right by 15 bits
+#: ../glade/gcalctool.glade.h:34
+msgid "15 places"
+msgstr "15 posicions"
+
+#. Tooltip for the 16 bit mask button
+#: ../glade/gcalctool.glade.h:36
+msgid "16-bit unsigned integer value of display (])"
+msgstr "Valor enter de 16 bits sense signe (])"
+
+#. Numeric 2 button
+#: ../glade/gcalctool.glade.h:38
+msgid "2"
+msgstr "2"
+
+#. Numeric 3 button
+#: ../glade/gcalctool.glade.h:40
+msgid "3"
+msgstr "3"
+
+#. Label for bit 31 on the bit editor
+#: ../glade/gcalctool.glade.h:42
+msgid "31"
+msgstr "31"
+
+#. Label for bit 32 on the bit editor
+#: ../glade/gcalctool.glade.h:44
+msgid "32"
+msgstr "32"
+
+#. Tooltip for the 32 bit mask button
+#: ../glade/gcalctool.glade.h:46
+msgid "32-bit unsigned integer value of display ([)"
+msgstr "Valor enter de 32 bits sense signe ([)"
+
+#. Numeric 4 button
+#: ../glade/gcalctool.glade.h:48
+msgid "4"
+msgstr "4"
+
+#. Label for bit 47 on the bit editor
+#: ../glade/gcalctool.glade.h:50
+msgid "47"
+msgstr "47"
+
+#. Numeric 5 button
+#: ../glade/gcalctool.glade.h:52
+msgid "5"
+msgstr "5"
+
+#. Numeric 6 button
+#: ../glade/gcalctool.glade.h:54
+msgid "6"
+msgstr "6"
+
+#. Label for the most significant bit (bit 63) on the bit editor
+#: ../glade/gcalctool.glade.h:56
+msgid "63"
+msgstr "63"
+
+#. Numeric 7 button
+#: ../glade/gcalctool.glade.h:58
+msgid "7"
+msgstr "7"
+
+#. Numeric 8 button
+#: ../glade/gcalctool.glade.h:60
+msgid "8"
+msgstr "8"
+
+#. Numeric 9 button
+#: ../glade/gcalctool.glade.h:62
+msgid "9"
+msgstr "9"
+
+#. Shift left button
+#: ../glade/gcalctool.glade.h:64
+msgid "<"
+msgstr "<"
+
+#. Factorial
+#: ../glade/gcalctool.glade.h:66
+msgid "<i>x</i>!"
+msgstr "<i>x</i>!"
+
+#. x to the power of 2 button
+#: ../glade/gcalctool.glade.h:68
+msgid "<i>x</i><sup>2</sup>"
+msgstr "<i>x</i><sup>2</sup>"
+
+#. Edit Function Dialog: Note about what base numbers will be entered as
+#: ../glade/gcalctool.glade.h:70
+msgid ""
+"<small><i><b>Note:</b> All constant values are specified in the decimal "
+"numeric base.</i></small>"
+msgstr ""
+"<small><i><b>Nota:</b> Tots els valors constants estan especificats en la "
+"base numèrica decimal.</i></small>"
+
+#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:72
+msgid "<span weight=\"bold\">R0</span>"
+msgstr "<span weight=\"bold\">R0</span>"
+
+#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:74
+msgid "<span weight=\"bold\">R1</span>"
+msgstr "<span weight=\"bold\">R1</span>"
+
+#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:76
+msgid "<span weight=\"bold\">R2</span>"
+msgstr "<span weight=\"bold\">R2</span>"
+
+#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:78
+msgid "<span weight=\"bold\">R3</span>"
+msgstr "<span weight=\"bold\">R3</span>"
+
+#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:80
+msgid "<span weight=\"bold\">R4</span>"
+msgstr "<span weight=\"bold\">R4</span>"
+
+#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:82
+msgid "<span weight=\"bold\">R5</span>"
+msgstr "<span weight=\"bold\">R5</span>"
+
+#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:84
+msgid "<span weight=\"bold\">R6</span>"
+msgstr "<span weight=\"bold\">R6</span>"
+
+#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:86
+msgid "<span weight=\"bold\">R7</span>"
+msgstr "<span weight=\"bold\">R7</span>"
+
+#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:88
+msgid "<span weight=\"bold\">R8</span>"
+msgstr "<span weight=\"bold\">R8</span>"
+
+#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
+#: ../glade/gcalctool.glade.h:90
+msgid "<span weight=\"bold\">R9</span>"
+msgstr "<span weight=\"bold\">R9</span>"
+
+#. Solve button (clicking this solves the displayed calculation)
+#: ../glade/gcalctool.glade.h:92
+msgid "="
+msgstr "="
+
+#. Shift right button
+#: ../glade/gcalctool.glade.h:94
+msgid ">"
+msgstr ">"
+
+#. Hexadecimal digit A button
+#: ../glade/gcalctool.glade.h:96
+msgid "A"
+msgstr "A"
+
+#. Boolean AND button
+#: ../glade/gcalctool.glade.h:98
+msgid "AND"
+msgstr "AND"
+
+#. Absolute value button. Abs is short for Absolute
+#: ../glade/gcalctool.glade.h:100
+msgid "Abs"
+msgstr "Abs"
+
+#: ../glade/gcalctool.glade.h:101
+msgid "Absolute value"
+msgstr "Valor absolut"
+
+#. Tooltip for the absolute value button
+#: ../glade/gcalctool.glade.h:103
+msgid "Absolute value [u]"
+msgstr "Valor absolut [u]"
+
+#. Accuracy button
+#: ../glade/gcalctool.glade.h:105
+msgid "Acc"
+msgstr "Prc"
+
+#: ../glade/gcalctool.glade.h:106
+msgid "Add"
+msgstr "Suma"
+
+#. Tooltip for the addition button
+#: ../glade/gcalctool.glade.h:108
+msgid "Add [+]"
+msgstr "Suma [+]"
+
+#. Tooltip for the View|Advanced menu item
+#: ../glade/gcalctool.glade.h:110
+msgid "Advanced"
+msgstr "Avançat"
+
+#. Hexadecimal digit B button
+#: ../glade/gcalctool.glade.h:112
+msgid "B"
+msgstr "B"
+
+#: ../glade/gcalctool.glade.h:113
+msgid "Backspace"
+msgstr "Retrocés"
+
+#. Tooltip for the View|Basic menu item
+#: ../glade/gcalctool.glade.h:115
+msgid "Basic"
+msgstr "Bàsic"
+
+#. Tooltip for the boolean AND button
+#: ../glade/gcalctool.glade.h:117
+msgid "Bitwise AND [&]"
+msgstr "AND lògica [&]"
+
+#. Tooltip for the boolean NOT button
+#: ../glade/gcalctool.glade.h:119
+msgid "Bitwise NOT [~]"
+msgstr "NOT lògica [~]"
+
+#. Tooltip for the boolean OR button
+#: ../glade/gcalctool.glade.h:121
+msgid "Bitwise OR [|]"
+msgstr "OR lògica [|]"
+
+#. Tooltip for the boolean exclusive NOR button
+#: ../glade/gcalctool.glade.h:123
+msgid "Bitwise XNOR [{]"
+msgstr "XNOR lògica [{]"
+
+#. Tooltip for the boolean exlcusive OR button
+#: ../glade/gcalctool.glade.h:125
+msgid "Bitwise XOR [x]"
+msgstr "XOR lògica [x]"
+
+#. Bksp is short for Backspace
+#: ../glade/gcalctool.glade.h:127
+msgid "Bksp"
+msgstr "Rtcs"
+
+#. Clear displayed value button
+#: ../glade/gcalctool.glade.h:131
+msgid "CE"
+msgstr "CE"
+
+#: ../glade/gcalctool.glade.h:132
+msgid "Calculate result"
+msgstr "Calcula el resultat"
+
+#. Tooltip for the solve button
+#: ../glade/gcalctool.glade.h:134
+msgid "Calculate result [=]"
+msgstr "Calcula el resultat [=]"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../glade/gcalctool.glade.h:136
+msgid "Ch_aracter:"
+msgstr "C_aràcter:"
+
+#. Tooltip for the change sign button
+#: ../glade/gcalctool.glade.h:138
+msgid "Change Sign [C]"
+msgstr "Canvia el signe [C]"
+
+#: ../glade/gcalctool.glade.h:139
+msgid "Change sign"
+msgstr "Canvia el signe"
+
+#: ../glade/gcalctool.glade.h:140
+msgid "Clear"
+msgstr "Neteja"
+
+#. Tooltip for the clear displayed value button
+#: ../glade/gcalctool.glade.h:142
+msgid "Clear displayed value [Escape]"
+msgstr "Neteja el valor mostrat [Escapada]"
+
+#. Tooltip for the clear display button
+#: ../glade/gcalctool.glade.h:144
+msgid "Clear displayed value and any partial calculation [Shift Delete]"
+msgstr ""
+"Neteja el valor mostrat i qualsevol càlcul parcial [Majúscules supressió]"
+
+#: ../glade/gcalctool.glade.h:145
+msgid "Clear entry"
+msgstr "Neteja l'entrada"
+
+#. Edit Functions Dialog: Instructions in dialog
+#: ../glade/gcalctool.glade.h:147
+msgid "Click a _value or description to edit it:"
+msgstr "Feu clic a un _valor o a una descripció per a editar:"
+
+#. Clear display button. Clr is short for Clear
+#: ../glade/gcalctool.glade.h:149
+msgid "Clr"
+msgstr "Net"
+
+#: ../glade/gcalctool.glade.h:150
+msgid "Compounding term"
+msgstr "Terme compost"
+
+#. Tooltip for the [Ctrm] button
+#: ../glade/gcalctool.glade.h:152
+msgid "Compounding term [m]"
+msgstr "Terme compost [m]"
+
+#. Constants button
+#: ../glade/gcalctool.glade.h:154
+msgid "Con"
+msgstr "Con"
+
+#. Tooltip for the [Con] button
+#: ../glade/gcalctool.glade.h:156
+msgid "Constants [#]"
+msgstr "Constants [#]"
+
+#. Tooltip for the Edit|Copy menu item
+#: ../glade/gcalctool.glade.h:158
+msgid "Copy selection"
+msgstr "Copia la selecció"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
+#. See also:
+#. http://en.wikipedia.org/wiki/Compound_interest
+#: ../glade/gcalctool.glade.h:162
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Hexadecimal digit D button
+#: ../glade/gcalctool.glade.h:164
+msgid "D"
+msgstr "D"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
+#: ../glade/gcalctool.glade.h:167
+msgid "Ddb"
+msgstr "Ddb"
+
+#. Degrees radio button
+#: ../glade/gcalctool.glade.h:169
+msgid "De_grees"
+msgstr "_Graus"
+
+#: ../glade/gcalctool.glade.h:170
+msgid "Divide"
+msgstr "Divideix"
+
+#. Tooltip for the division button
+#: ../glade/gcalctool.glade.h:172
+msgid "Divide [/]"
+msgstr "Divideix [/]"
+
+#: ../glade/gcalctool.glade.h:173
+msgid "Double-declining depreciation"
+msgstr "Depreciació doble decreixent"
+
+#. Tooltip for the [Ddb] button
+#: ../glade/gcalctool.glade.h:175
+msgid "Double-declining depreciation [D]"
+msgstr "Depreciació doble decreixent [D]"
+
+#. Hexadecimal digit E button
+#: ../glade/gcalctool.glade.h:177
+msgid "E"
+msgstr "E"
+
+#. Engineering display radio button
+#: ../glade/gcalctool.glade.h:179
+msgid "E_ng"
+msgstr "E_ng"
+
+#. Title of edit constants dialog
+#: ../glade/gcalctool.glade.h:181
+msgid "Edit Constants"
+msgstr "Edita les constants"
+
+#. Menu item in the constants menu to show the Edit Constants dialog
+#: ../glade/gcalctool.glade.h:183
+msgid "Edit Constants..."
+msgstr "Edita les constants..."
+
+#. Title of edit functions dialog
+#: ../glade/gcalctool.glade.h:185
+msgid "Edit Functions"
+msgstr "Edita les funcions"
+
+#. Menu item in the constants menu to show the Edit Functions dialog
+#: ../glade/gcalctool.glade.h:187
+msgid "Edit Functions..."
+msgstr "Edita les funcions..."
+
+#. Tooltip for the end calculation group button
+#: ../glade/gcalctool.glade.h:189
+msgid "End group of calculations [)]"
+msgstr "Finalitza el grup de càlculs [)]"
+
+#. Tooltip for the exponential button
+#: ../glade/gcalctool.glade.h:191
+msgid "Enter an exponential number [E]"
+msgstr "Introduïu un nombre exponencial [E]"
+
+#. Memory exchange button. Exch is short for Exchange
+#: ../glade/gcalctool.glade.h:193
+msgid "Exch"
+msgstr "Inter"
+
+#. Tooltip for the memory exchange button
+#: ../glade/gcalctool.glade.h:195
+msgid "Exchange displayed value with memory register [X]"
+msgstr "Intercanvia el valor mostrat amb el registre de memòria [X]"
+
+#: ../glade/gcalctool.glade.h:196
+msgid "Exchange with register"
+msgstr "Intercanvia amb el registre"
+
+#. Exponential
+#: ../glade/gcalctool.glade.h:198
+msgid "Exp"
+msgstr "Exp"
+
+#. Tooltip for the factorial button
+#: ../glade/gcalctool.glade.h:202
+msgid "Factorial of displayed value [!]"
+msgstr "Factorial del valor mostrat [!]"
+
+#. Tooltip for the View|Financial menu item
+#: ../glade/gcalctool.glade.h:204
+msgid "Financial"
+msgstr "Financer"
+
+#. Fractional portion button
+#: ../glade/gcalctool.glade.h:206
+msgid "Frac"
+msgstr "Frac"
+
+#: ../glade/gcalctool.glade.h:207
+msgid "Fractional portion"
+msgstr "Part fraccionada"
+
+#. Tooltip for the fractional portion button
+#: ../glade/gcalctool.glade.h:209
+msgid "Fractional portion of displayed value [:]"
+msgstr "Part fraccionada del valor mostrat [:]"
+
+#. Functions button
+#: ../glade/gcalctool.glade.h:211
+msgid "Fun"
+msgstr "Fun"
+
+#: ../glade/gcalctool.glade.h:212
+msgid "Future value"
+msgstr "Valor futur"
+
+#. Tooltip for the [Fv] button
+#: ../glade/gcalctool.glade.h:214
+msgid "Future value [v]"
+msgstr "Valor futur [v]"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
+#. http://en.wikipedia.org/wiki/Future_value
+#: ../glade/gcalctool.glade.h:217
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
+#. http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../glade/gcalctool.glade.h:220
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Gradians radio button
+#: ../glade/gcalctool.glade.h:222
+msgid "Gr_adians"
+msgstr "Gr_adians"
+
+#. Tooltip for the [Gpm] button
+#: ../glade/gcalctool.glade.h:225
+msgid "Gross Profit Margin [I]"
+msgstr "Marge de benefici brut [I]"
+
+#: ../glade/gcalctool.glade.h:226
+msgid "Gross Profit Margin [g]"
+msgstr "Marge de benefici brut [g]"
+
+#. Hyperbolic check box
+#: ../glade/gcalctool.glade.h:228
+msgid "H_yp"
+msgstr "_Hip"
+
+#. Base 16 radio button
+#: ../glade/gcalctool.glade.h:230
+msgid "He_x"
+msgstr "He_x"
+
+#. Tooltip for the hexadecimal digit A button
+#: ../glade/gcalctool.glade.h:232
+msgid "Hexadecimal digit A [a]"
+msgstr "Dígit hexadecimal A [a]"
+
+#. Tooltip for the hexadecimal digit B button
+#: ../glade/gcalctool.glade.h:234
+msgid "Hexadecimal digit B [b]"
+msgstr "Dígit hexadecimal B [b]"
+
+#. Tooltip for the hexadecimal digit C button
+#: ../glade/gcalctool.glade.h:236
+msgid "Hexadecimal digit C [c]"
+msgstr "Dígit hexadecimal C [c]"
+
+#. Tooltip for the hexadecimal digit D button
+#: ../glade/gcalctool.glade.h:238
+msgid "Hexadecimal digit D [d]"
+msgstr "Dígit hexadecimal D [d]"
+
+#. Tooltip for the hexadecimal digit E button
+#: ../glade/gcalctool.glade.h:240
+msgid "Hexadecimal digit E [e]"
+msgstr "Dígit hexadecimal E [e]"
+
+#. Tooltip for the hexadecimal digit F button
+#: ../glade/gcalctool.glade.h:242
+msgid "Hexadecimal digit F [f]"
+msgstr "Dígit hexadecimal F [f]"
+
+#. Title of insert ASCII dialog
+#: ../glade/gcalctool.glade.h:244
+msgid "Insert ASCII Value"
+msgstr "Insereix un valor ASCII"
+
+#. Tooltip for the Edit|Insert ASCII value menu item
+#: ../glade/gcalctool.glade.h:246
+msgid "Insert ASCII value"
+msgstr "Insereix un valor ASCII"
+
+#. Integer portion button
+#: ../glade/gcalctool.glade.h:248
+msgid "Int"
+msgstr "Int"
+
+#: ../glade/gcalctool.glade.h:249
+msgid "Integer portion"
+msgstr "Part entera"
+
+#. Tooltip for the integer portion button
+#: ../glade/gcalctool.glade.h:251
+msgid "Integer portion of displayed value [i]"
+msgstr "Part entera del valor mostrat [i]"
+
+#: ../glade/gcalctool.glade.h:252
+msgid "Left bracket"
+msgstr "Parèntesi esquerre"
+
+#: ../glade/gcalctool.glade.h:253
+msgid "Memory Registers"
+msgstr "Registres de memòria"
+
+#. Modulus division button
+#: ../glade/gcalctool.glade.h:255
+msgid "Mod"
+msgstr "Mod"
+
+#. Tooltip for the modulus division button
+#: ../glade/gcalctool.glade.h:257
+msgid "Modulus Division [M]"
+msgstr "Divisió modular [M]"
+
+#: ../glade/gcalctool.glade.h:258
+msgid "Multiply"
+msgstr "Multiplica"
+
+#. Tooltip for the multiplication button
+#: ../glade/gcalctool.glade.h:260
+msgid "Multiply [*]"
+msgstr "Multiplica [*]"
+
+#. Boolean NOT button
+#: ../glade/gcalctool.glade.h:262
+msgid "NOT"
+msgstr "NOT"
+
+#: ../glade/gcalctool.glade.h:263
+msgid "Numeric 0"
+msgstr "0 numèric"
+
+#: ../glade/gcalctool.glade.h:264
+msgid "Numeric 1"
+msgstr "1 numèric"
+
+#: ../glade/gcalctool.glade.h:265
+msgid "Numeric 2"
+msgstr "2 numèric"
+
+#: ../glade/gcalctool.glade.h:266
+msgid "Numeric 3"
+msgstr "3 numèric"
+
+#: ../glade/gcalctool.glade.h:267
+msgid "Numeric 4"
+msgstr "4 numèric"
+
+#: ../glade/gcalctool.glade.h:268
+msgid "Numeric 5"
+msgstr "5 numèric"
+
+#: ../glade/gcalctool.glade.h:269
+msgid "Numeric 6"
+msgstr "6 numèric"
+
+#: ../glade/gcalctool.glade.h:270
+msgid "Numeric 7"
+msgstr "7 numèric"
+
+#: ../glade/gcalctool.glade.h:271
+msgid "Numeric 8"
+msgstr "8 numèric"
+
+#: ../glade/gcalctool.glade.h:272
+msgid "Numeric 9"
+msgstr "9 numèric"
+
+#. Tooltip for the numeric point button
+#: ../glade/gcalctool.glade.h:274
+msgid "Numeric point"
+msgstr "Separador decimal"
+
+#. Boolean OR button
+#: ../glade/gcalctool.glade.h:276
+msgid "OR"
+msgstr "OR"
+
+#. Tooltip for the Edit|Paste menu item
+#: ../glade/gcalctool.glade.h:278
+msgid "Paste selection"
+msgstr "Enganxa la selecció"
+
+#: ../glade/gcalctool.glade.h:279
+msgid "Payment period"
+msgstr "Període de pagament"
+
+#. Tooltip for the [Term] button
+#: ../glade/gcalctool.glade.h:281
+msgid "Payment period [t]"
+msgstr "Període de pagament [t]"
+
+#: ../glade/gcalctool.glade.h:282
+msgid "Percentage"
+msgstr "Percentatge"
+
+#. Tooltip for the percentage button
+#: ../glade/gcalctool.glade.h:285
+#, no-c-format
+msgid "Percentage [%]"
+msgstr "Percentatge [%]"
+
+#: ../glade/gcalctool.glade.h:286
+msgid "Periodic interest rate"
+msgstr "Tipus d'interés periòdic"
+
+#. Tooltip for the [Rate] button
+#: ../glade/gcalctool.glade.h:288
+msgid "Periodic interest rate [T]"
+msgstr "Tipus d'interés periòdic [T]"
+
+#: ../glade/gcalctool.glade.h:289
+msgid "Periodic payment"
+msgstr "Pagament periòdic"
+
+#. Tooltip for the [Pmt] button
+#: ../glade/gcalctool.glade.h:291
+msgid "Periodic payment [P]"
+msgstr "Pagament periòdic [P]"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
+#. http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../glade/gcalctool.glade.h:294
+msgid "Pmt"
+msgstr "Pmt"
+
+#: ../glade/gcalctool.glade.h:295
+msgid "Present value"
+msgstr "Valor actual"
+
+#. Tooltip for the [Pv] button
+#: ../glade/gcalctool.glade.h:297
+msgid "Present value [p]"
+msgstr "Valor actual [p]"
+
+#. Tooltip for the View|Programming menu item
+#: ../glade/gcalctool.glade.h:299
+msgid "Programming"
+msgstr "Programació"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
+#. http://en.wikipedia.org/wiki/Present_value
+#: ../glade/gcalctool.glade.h:302
+msgid "Pv"
+msgstr "Pv"
+
+#. Tooltip for the Calculator|Quit menu item
+#: ../glade/gcalctool.glade.h:304
+msgid "Quit the calculator"
+msgstr "Ix de la calculadora"
+
+#. Random number
+#: ../glade/gcalctool.glade.h:306
+msgid "Rand"
+msgstr "Rand"
+
+#. Tooltip for the random number button
+#: ../glade/gcalctool.glade.h:308
+msgid "Random number in the range 0.0 to 1.0 [?]"
+msgstr "Nombre aleatori entre 0.0 i 1.0 [?]"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
+#. http://en.wikipedia.org/wiki/Interest
+#.
+#.
+#.
+#.
+#: ../glade/gcalctool.glade.h:315
+msgid "Rate"
+msgstr "Rate"
+
+#. Memory recall button. Rcl is short for Recall
+#: ../glade/gcalctool.glade.h:317
+msgid "Rcl"
+msgstr "Rcpa"
+
+#: ../glade/gcalctool.glade.h:318
+msgid "Reciprocal"
+msgstr "Recíproc"
+
+#. Tooltip for the reciprocal button
+#: ../glade/gcalctool.glade.h:320
+msgid "Reciprocal [r]"
+msgstr "Recíproc [r]"
+
+#. Tooltip for the Edit|Redo menu item
+#: ../glade/gcalctool.glade.h:322
+msgid "Redo"
+msgstr "Refés"
+
+#. Tooltip for the backspace button
+#: ../glade/gcalctool.glade.h:324
+msgid "Remove rightmost character from displayed value [Backspace]"
+msgstr "Suprimeix l'element situat més a la dreta del valor mostrat [Retrocés]"
+
+#: ../glade/gcalctool.glade.h:325
+msgid "Result Region"
+msgstr "Regió del resultat"
+
+#: ../glade/gcalctool.glade.h:326
+msgid "Retrieve from register"
+msgstr "Recupera del registre"
+
+#. Tooltip for the memory recall button
+#: ../glade/gcalctool.glade.h:328
+msgid "Retrieve memory register to display [R]"
+msgstr "Recupera el registre de memòria a la pantalla [R]"
+
+#: ../glade/gcalctool.glade.h:329
+msgid "Right bracket"
+msgstr "Parèntesi dret"
+
+#. Tooltip for the View|Scientific menu item
+#: ../glade/gcalctool.glade.h:331
+msgid "Scientific"
+msgstr "Científica"
+
+#. Title of set precision dialog
+#: ../glade/gcalctool.glade.h:333
+msgid "Set Precision"
+msgstr "Estableix la precisió"
+
+#. Tooltip for the engineering display radio button
+#: ../glade/gcalctool.glade.h:335
+msgid "Set display type to engineering format"
+msgstr "Canvia l'aparença a format d'enginyer"
+
+#. Tooltip for the fixed-point display radio button
+#: ../glade/gcalctool.glade.h:337
+msgid "Set display type to fixed-point format"
+msgstr "Canvia l'aparença a format estable"
+
+#. Tooltip for the scientific display radio button
+#: ../glade/gcalctool.glade.h:339
+msgid "Set display type to scientific format"
+msgstr "Canvia l'aparença a format científic"
+
+#. Tooltip for the hyperbolic check box
+#: ../glade/gcalctool.glade.h:341
+msgid "Set hyperbolic option for trigonometric functions"
+msgstr "Estableix l'opció hiperbòlica per a les funcions trigonomètriques"
+
+#. Tooltip for the inverse check box
+#: ../glade/gcalctool.glade.h:343
+msgid "Set inverse option for trigonometric functions"
+msgstr "Estableix l'opció inversa per a les funcions trigonomètriques"
+
+#. Tooltip for the base 2 radio button
+#: ../glade/gcalctool.glade.h:345
+msgid "Set numeric base to binary (base 2)"
+msgstr "Canvia la base numèrica a binària (base 2)"
+
+#. Tooltip for the base 10 radio button
+#: ../glade/gcalctool.glade.h:347
+msgid "Set numeric base to decimal (base 10)"
+msgstr "Canvia la base numèrica a decimal (base 10)"
+
+#. Tooltip for the base 16 radio button
+#: ../glade/gcalctool.glade.h:349
+msgid "Set numeric base to hexadecimal (base 16)"
+msgstr "Canvia la base numèrica a hexadecimal (base 16)"
+
+#. Tooltip for the base 8 radio button
+#: ../glade/gcalctool.glade.h:351
+msgid "Set numeric base to octal (base 8)"
+msgstr "Canvia la base numèrica a octal (base 8)"
+
+#. Tooltip for the degrees radio button
+#: ../glade/gcalctool.glade.h:353
+msgid "Set trigonometric type to degrees"
+msgstr "Estableix el tipus trigonomètric a graus"
+
+#. Tooltip for the gradians radio button
+#: ../glade/gcalctool.glade.h:355
+msgid "Set trigonometric type to gradians"
+msgstr "Establei el tipus trigonomètric a gradians"
+
+#. Tooltip for the radian radio button
+#: ../glade/gcalctool.glade.h:357
+msgid "Set trigonometric type to radians"
+msgstr "Estableix el tipus trigonomètric a radians"
+
+#. Tooltip for the shift left button
+#: ../glade/gcalctool.glade.h:359
+msgid "Shift displayed value 1-15 places to the left [<]"
+msgstr "Desplaça el valor mostrat d'1 a 15 posicions cap a l'esquerra [<]"
+
+#. Tooltip for the right shift button
+#: ../glade/gcalctool.glade.h:361
+msgid "Shift displayed value 1-15 places to the right [>]"
+msgstr "Desplaça el valor mostrat d'1 a 15 posicions cap a la dreta [>]"
+
+#. View|Show Thousands Separator menu item
+#: ../glade/gcalctool.glade.h:363
+msgid "Show T_housands Separator"
+msgstr "Mostra els _separadors de milers"
+
+#. Accuracy Popup: Check menu item to enable trailing zeroes
+#: ../glade/gcalctool.glade.h:365
+msgid "Show _Trailing Zeroes"
+msgstr "Mostra els _zeros finals"
+
+#. Tooltip for the Help|Contents menu
+#: ../glade/gcalctool.glade.h:367
+msgid "Show help contents"
+msgstr "Mostra els continguts de l'ajuda"
+
+#. Tooltip for the View|Memory Registers menu item
+#: ../glade/gcalctool.glade.h:369
+msgid "Show memory registers"
+msgstr "Mostra els registres de memòria"
+
+#. Tooltip for the Help|About menu
+#: ../glade/gcalctool.glade.h:371
+msgid "Show the About Gcalctool dialog"
+msgstr "Mostra el quadre de diàleg Quant al Gcalctool"
+
+#. Tooltip for the View|Show Thousands Separator menu item
+#: ../glade/gcalctool.glade.h:373
+msgid "Show thousands separator"
+msgstr "Mostra els separadors de milers"
+
+#. Tooltip for the View|Show Trailing Zeroes menu item
+#: ../glade/gcalctool.glade.h:375
+msgid "Show trailing zeroes"
+msgstr "Mostra els zeros finals"
+
+#. Set Precision Dialog: Label before the significant places spin button
+#: ../glade/gcalctool.glade.h:377
+msgid "Significant _places:"
+msgstr "_Posicions significatives:"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
+#: ../glade/gcalctool.glade.h:380
+msgid "Sln"
+msgstr "Sln"
+
+#: ../glade/gcalctool.glade.h:381
+msgid "Square"
+msgstr "Quadrat"
+
+#. Tooltip for the x to the power of 2 button
+#: ../glade/gcalctool.glade.h:383
+msgid "Square [@]"
+msgstr "Quadrat [@]"
+
+#: ../glade/gcalctool.glade.h:384
+msgid "Square root"
+msgstr "Arrel quadrada"
+
+#. Tooltip for the square root button
+#: ../glade/gcalctool.glade.h:386
+msgid "Square root [s]"
+msgstr "Arrel quadrada [s]"
+
+#. Tooltip for the start calculation group button
+#: ../glade/gcalctool.glade.h:388
+msgid "Start group of calculations [(]"
+msgstr "Inicia un grup de càlculs [(]"
+
+#. Memory store button. Sto is short for Store
+#: ../glade/gcalctool.glade.h:390
+msgid "Sto"
+msgstr "Alça"
+
+#. Tooltip for the memory store button
+#: ../glade/gcalctool.glade.h:392
+msgid "Store displayed value in memory register [S]"
+msgstr "Alça el valor mostrat a un registre de memòria [S]"
+
+#: ../glade/gcalctool.glade.h:393
+msgid "Store to register"
+msgstr "Alça al registre"
+
+#: ../glade/gcalctool.glade.h:394
+msgid "Straight-line depreciation"
+msgstr "Depreciació constant"
+
+#. Tooltip for the [Sln] button
+#: ../glade/gcalctool.glade.h:396
+msgid "Straight-line depreciation [l]"
+msgstr "Depreciació constant [l]"
+
+#: ../glade/gcalctool.glade.h:397
+msgid "Subtract"
+msgstr "Resta"
+
+#. Tooltip for the subtraction button
+#: ../glade/gcalctool.glade.h:399
+msgid "Subtract [-]"
+msgstr "Resta [-]"
+
+#: ../glade/gcalctool.glade.h:400
+msgid "Sum-of-the years'-digits depreciation"
+msgstr "Depreciació per suma dels dígits dels anys"
+
+#. Tooltip for the [Syd] button
+#: ../glade/gcalctool.glade.h:402
+msgid "Sum-of-the years'-digits depreciation [Y]"
+msgstr "Depreciació per suma dels dígits dels anys [Y]"
+
+#: ../glade/gcalctool.glade.h:403
+msgid "Sum-of-the years'-digits depreciation [y]"
+msgstr "Depreciació per suma dels dígits dels anys [y]"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
+#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../glade/gcalctool.glade.h:406
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
+#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../glade/gcalctool.glade.h:409
+msgid "Term"
+msgstr "Term"
+
+#. Tooltip for the Edit|Undo menu item
+#: ../glade/gcalctool.glade.h:411
+msgid "Undo"
+msgstr "Desfés"
+
+#. Tooltip for the [Fun] button
+#: ../glade/gcalctool.glade.h:413
+msgid "User-defined functions [F]"
+msgstr "Funcions definides per l'usuari [F]"
+
+#. Boolean exclusive NOR button
+#: ../glade/gcalctool.glade.h:415
+msgid "XNOR"
+msgstr "XNOR"
+
+#. Boolean exlcusive OR button
+#: ../glade/gcalctool.glade.h:417
+msgid "XOR"
+msgstr "XOR"
+
+#. Accuracy Popup: Menu item to set accuracy to 0 significant places
+#: ../glade/gcalctool.glade.h:419
+msgid "_0 significant places"
+msgstr "_0 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 1 bit
+#: ../glade/gcalctool.glade.h:421
+msgid "_1 place"
+msgstr "_1 posició"
+
+#. Accuracy Popup: Menu item to set accuracy to 1 significant place
+#: ../glade/gcalctool.glade.h:423
+msgid "_1 significant place"
+msgstr "_1 posició significativa"
+
+#. Right Shift Popup: Menu item to shift right by 2 bits
+#: ../glade/gcalctool.glade.h:425
+msgid "_2 places"
+msgstr "_2 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 2 significant places
+#: ../glade/gcalctool.glade.h:427
+msgid "_2 significant places"
+msgstr "_2 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 3 bits
+#: ../glade/gcalctool.glade.h:429
+msgid "_3 places"
+msgstr "_3 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 3 significant places
+#: ../glade/gcalctool.glade.h:431
+msgid "_3 significant places"
+msgstr "_3 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 4 bits
+#: ../glade/gcalctool.glade.h:433
+msgid "_4 places"
+msgstr "_4 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 4 significant places
+#: ../glade/gcalctool.glade.h:435
+msgid "_4 significant places"
+msgstr "_4 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 5 bits
+#: ../glade/gcalctool.glade.h:437
+msgid "_5 places"
+msgstr "_5 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 5 significant places
+#: ../glade/gcalctool.glade.h:439
+msgid "_5 significant places"
+msgstr "_5 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 6 bits
+#: ../glade/gcalctool.glade.h:441
+msgid "_6 places"
+msgstr "_6 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 6 significant places
+#: ../glade/gcalctool.glade.h:443
+msgid "_6 significant places"
+msgstr "_6 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 7 bits
+#: ../glade/gcalctool.glade.h:445
+msgid "_7 places"
+msgstr "_7 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 7 significant places
+#: ../glade/gcalctool.glade.h:447
+msgid "_7 significant places"
+msgstr "_7 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 8 bits
+#: ../glade/gcalctool.glade.h:449
+msgid "_8 places"
+msgstr "_8 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 8 significant places
+#: ../glade/gcalctool.glade.h:451
+msgid "_8 significant places"
+msgstr "_8 posicions significatives"
+
+#. Right Shift Popup: Menu item to shift right by 9 bits
+#: ../glade/gcalctool.glade.h:453
+msgid "_9 places"
+msgstr "_9 posicions"
+
+#. Accuracy Popup: Menu item to set accuracy to 9 significant places
+#: ../glade/gcalctool.glade.h:455
+msgid "_9 significant places"
+msgstr "_9 posicions significatives"
+
+#. View|Advanced menu item
+#: ../glade/gcalctool.glade.h:457
+msgid "_Advanced"
+msgstr "_Avançat"
+
+#. View|Basic menu item
+#: ../glade/gcalctool.glade.h:459
+msgid "_Basic"
+msgstr "_Bàsic"
+
+#. Base 2 radio button
+#: ../glade/gcalctool.glade.h:461
+msgid "_Bin"
+msgstr "_Bin"
+
+#. Calculator menu
+#: ../glade/gcalctool.glade.h:463
+msgid "_Calculator"
+msgstr "_Calculadora"
+
+#. Help|Contents menu
+#: ../glade/gcalctool.glade.h:465
+msgid "_Contents"
+msgstr "_Continguts"
+
+#. Base 10 radio button
+#: ../glade/gcalctool.glade.h:467
+msgid "_Dec"
+msgstr "_Dec"
+
+#. Edit menu
+#: ../glade/gcalctool.glade.h:469
+msgid "_Edit"
+msgstr "_Edita"
+
+#. View|Financial menu item
+#: ../glade/gcalctool.glade.h:471
+msgid "_Financial"
+msgstr "_Financer"
+
+#. Fixed-point display radio button
+#: ../glade/gcalctool.glade.h:473
+msgid "_Fix"
+msgstr "_Fix"
+
+#. Help menu
+#: ../glade/gcalctool.glade.h:475
+msgid "_Help"
+msgstr "A_juda"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../glade/gcalctool.glade.h:477
+msgid "_Insert"
+msgstr "_Insereix"
+
+#. Edit|Insert ASCII value menu item
+#: ../glade/gcalctool.glade.h:479
+msgid "_Insert ASCII value..."
+msgstr "_Insereix un valor ASCII..."
+
+#. Inverse check box
+#: ../glade/gcalctool.glade.h:481
+msgid "_Inv"
+msgstr "_Inv"
+
+#. View|Memory Registers menu item
+#: ../glade/gcalctool.glade.h:483
+msgid "_Memory Registers"
+msgstr "_Registres de memòria"
+
+#. Base 8 radio button
+#: ../glade/gcalctool.glade.h:485
+msgid "_Oct"
+msgstr "_Oct"
+
+#. View|Programming menu item
+#: ../glade/gcalctool.glade.h:487
+msgid "_Programming"
+msgstr "_Programació"
+
+#. Radian radio button
+#: ../glade/gcalctool.glade.h:489
+msgid "_Radians"
+msgstr "_Radians"
+
+#. Edit|Redo menu item
+#: ../glade/gcalctool.glade.h:491
+msgid "_Redo"
+msgstr "_Refés"
+
+#. Scientific display radio button
+#: ../glade/gcalctool.glade.h:493
+msgid "_Sci"
+msgstr "_Sci"
+
+#. View|Scientific menu item
+#: ../glade/gcalctool.glade.h:495
+msgid "_Scientific"
+msgstr "_Científic"
+
+#. Set Precision Dialog: Button to apply settings
+#: ../glade/gcalctool.glade.h:497
+msgid "_Set"
+msgstr "E_stableix"
+
+#. Edit|Undo menu item
+#: ../glade/gcalctool.glade.h:499
+msgid "_Undo"
+msgstr "_Desfés"
+
+#. View menu
+#: ../glade/gcalctool.glade.h:501
+msgid "_View"
+msgstr "_Visualitza"
+
+#. This is accessible name for memory register 0.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:505
+msgid "register 0"
+msgstr "registre 0"
+
+#. This is accessible name for memory register 1.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:509
+msgid "register 1"
+msgstr "registre 1"
+
+#. This is accessible name for memory register 2.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:513
+msgid "register 2"
+msgstr "registre 2"
+
+#. This is accessible name for memory register 3.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:517
+msgid "register 3"
+msgstr "registre 3"
+
+#. This is accessible name for memory register 4.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:521
+msgid "register 4"
+msgstr "registre 4"
+
+#. This is accessible name for memory register 5.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:525
+msgid "register 5"
+msgstr "registre 5"
+
+#. This is accessible name for memory register 6.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:529
+msgid "register 6"
+msgstr "registre 6"
+
+#. This is accessible name for memory register 7.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:533
+msgid "register 7"
+msgstr "registre 7"
+
+#. This is accessible name for memory register 8.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:537
+msgid "register 8"
+msgstr "registre 8"
+
+#. This is accessible name for memory register 9.  It is spoken
+#. by screen readers such as Orca, to help people who are
+#. blind or have low vision.
+#: ../glade/gcalctool.glade.h:541
+msgid "register 9"
+msgstr "registre 9"
+
+#: ../glade/gcalctool.glade.h:542
+msgid "x2"
+msgstr "x2"
+
+#. Change sign button
+#: ../glade/gcalctool.glade.h:544
+msgid "±"
+msgstr "±"
+
+#. Multiplication button
+#: ../glade/gcalctool.glade.h:546
+msgid "×"
+msgstr "×"
+
+#. Division button
+#: ../glade/gcalctool.glade.h:548
+msgid "÷"
+msgstr "÷"
+
+#. Subtraction button
+#: ../glade/gcalctool.glade.h:550
+msgid "−"
+msgstr "−"
+
+#. Square root button
+#: ../glade/gcalctool.glade.h:552
+msgid "√"
+msgstr "√"
+
+#~ msgid ""
+#~ "%1$s version %2$s\n"
+#~ "\n"
+#~ "Usage: %3$s: [-u] [-?] [-v] [-h]\n"
+#~ msgstr ""
+#~ "%1$s versió %2$s\n"
+#~ "\n"
+#~ "Forma d'ús: %3$s: [-u] [-?] [-v] [-h]\n"
+
+#~ msgid "pi"
+#~ msgstr "pi"
+
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s com a següent argument.\n"
+
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s versió %s\n"
+#~ "\n"
+
+#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+#~ msgstr "Forma d'ús: %s: [-E] [-u] [-a precisió] "
+
+#~ msgid "\t\t [-?] [-v] [-h]\n"
+#~ msgstr "\t\t [-?] [-v] [-h]\n"
+
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-a necessita un valor d'exactitud"
+
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s: la base ha de ser 2, 8, 10 o 16\n"
+
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: el mode d'aparença no és vàlid [%s]\n"
+
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: el mode no és vàlid [%s]\n"
+
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: el mode trigonomètric no és vàlid [%s]\n"
+
+#~ msgid "Currently set to %d place."
+#~ msgid_plural "Currently set to %d places."
+#~ msgstr[0] "Actualment establert a %d posició."
+#~ msgstr[1] "Actualment establert a %d posicions."
+
+#~ msgid "Bit editor activated. Click on bit values to toggle them."
+#~ msgstr ""
+#~ "Editor de bits activat. Feu clic en els valors dels bits per a commutar-"
+#~ "los."
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ msgstr ""
+#~ "El gcalctool és programari lliure; podeu redistribuir-lo i/o modificar-"
+#~ "lo\n"
+#~ "sota els termes de la Llicència Pública General GNU tal i com ha estat\n"
+#~ "publicada per la Free Software Foundation; bé sota la versió 2 de la\n"
+#~ "Llicència o bé (si ho preferiu) sota qualsevol versió posterior.\n"
+
+#~ msgid ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ msgstr ""
+#~ "El gcalctool es distribueix amb l'expectativa de que serà útil, però\n"
+#~ "SENSE CAP GARANTIA; fins i tot la garantia implícita de COMERCIALITZACIÓ\n"
+#~ "o ADEQUACIÓ PER A CAP PROPÒSIT PARTICULAR. Vegeu la Llicència Pública\n"
+#~ "General GNU per a obtenir-ne més detalls.\n"
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgstr ""
+#~ "Hauríeu d'haver rebut una còpia de la Llicència Pública General GNU\n"
+#~ "juntament amb aquest programa; en cas contrari, escriviu a la Free\n"
+#~ "Software Foundation, Inc., 51 Francklin Street, Fifth Floor, Boston,\n"
+#~ "MA 02111-1301, USA\n"
+
+#~ msgid "Changing Modes Clears Calculation"
+#~ msgstr "Si es canvia el mode es neteja el càlcul"
+
+#~ msgid ""
+#~ "When you change modes, the current calculation will be cleared, and the "
+#~ "base will be reset to decimal."
+#~ msgstr ""
+#~ "Quan canvieu de mode, el càlcul actual es netejarà i es reiniciarà a la "
+#~ "basedecimal."
+
+#~ msgid "_Do not warn me again"
+#~ msgstr "_No em tornis a avisar"
+
+#~ msgid "C_hange Mode"
+#~ msgstr "Can_via el mode"
+
+#~ msgid "."
+#~ msgstr ","
+
+#~ msgid "10 to the x"
+#~ msgstr "10 elevat a x"
+
+#~ msgid "10x"
+#~ msgstr "10x"
+
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "Enter de 16 bits sense signe"
+
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+
+#~ msgid "Accuracy"
+#~ msgstr "Precisió"
+
+#~ msgid "Bitwise AND"
+#~ msgstr "AND lògica"
+
+#~ msgid "Bitwise NOT"
+#~ msgstr "NOT lògica"
+
+#~ msgid "Bitwise OR"
+#~ msgstr "OR lògica"
+
+#~ msgid "Bitwise XNOR"
+#~ msgstr "XNOR lògica"
+
+#~ msgid "Bitwise XOR"
+#~ msgstr "XOR lògica"
+
+#~ msgid "Constants"
+#~ msgstr "Constants"
+
+#~ msgid "E to the x"
+#~ msgstr "E elevat a x"
+
+#~ msgid "Factorial"
+#~ msgstr "Factorial"
+
+#~ msgid "Hexadecimal digit A"
+#~ msgstr "Dígit hexadecimal A"
+
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "Dígit hexadecimal B"
+
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "Dígit hexadecimal C"
+
+#~ msgid "Hexadecimal digit D"
+#~ msgstr "Dígit hexadecimal D"
+
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "Dígit hexadecimal E"
+
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "Dígit hexadecimal F"
+
+#~ msgid "Log<sub>10</sub>"
+#~ msgstr "Log<sub>10</sub>"
+
+#~ msgid "Random number"
+#~ msgstr "Nombre aleatori"
+
+#~ msgid "Set accuracy from 0 to 9 numeric places [A]"
+#~ msgstr "Estableix la precisió de 0 a 9 posicions numèriques [A]"
+
+#~ msgid "Shift left"
+#~ msgstr "Desplaça a l'esquerra"
+
+#~ msgid "Shift right"
+#~ msgstr "Desplaça a la dreta"
+
+#~ msgid "Show Bit Editor"
+#~ msgstr "Mostra l'editor de bits"
+
+#~ msgid "Show Bit _Editor"
+#~ msgstr "Mostra l'_editor de bits"
+
+#~ msgid "Show bit editor"
+#~ msgstr "Mostra l'editor de bits"
+
+#~ msgid "Ten to the x"
+#~ msgstr "Deu elevat a x"
+
+#~ msgid "User-defined functions"
+#~ msgstr "Funcions definides per l'usuari"
+
+#~ msgid "X to the y"
+#~ msgstr "X elevat a y"
+
+#~ msgid "e<sup>x</sup>"
+#~ msgstr "e<sup>x</sup>"
+
+#~ msgid "ex"
+#~ msgstr "ex"
+
+#~ msgid "xy"
+#~ msgstr "xy"
+
+#~ msgid "Error, operands must be integers"
+#~ msgstr "S'ha produït un error, els operands han de ser enters"
+
+#~ msgid "Cleared display, prefix without an operator is not allowed"
+#~ msgstr "S'ha netejat la pantalla, no està permès un prefix sense operador"
+
+#~ msgid "Malformed parenthesis expression"
+#~ msgstr "Expressió amb parèntesis mal escrita"
+
+#~ msgid "%s: invalid syntax mode [%s]\n"
+#~ msgstr "%s: el mode de sintaxi no és vàlid [%s]\n"
+
+# FIXME
+#~ msgid "Activated no operator precedence mode"
+#~ msgstr "S'ha activat el mode de no precedència d'operador"
+
+#~ msgid "Activated expression mode with operator precedence"
+#~ msgstr "S'ha activat el mode d'expressió amb precedència d'operador"
+
+#~ msgid "Clipboard contained malformed calculation"
+#~ msgstr "El porta-retalls contenia un càlcul mal format"
+
+#~ msgid "A_rithmetic Precedence"
+#~ msgstr "Emp_ra la precedència aritmètica"
+
+#~ msgid "Use Arithmetic Precedence"
+#~ msgstr "Empra la precedència aritmètica"
+
+#~ msgid "Use Left-right Precedence"
+#~ msgstr "Empra la precedència d'esquerra a dreta"
+
+#~ msgid "_Left-to-right Precedence"
+#~ msgstr "Precedència d'_esquerra a dreta"
+
+#~ msgid "Expression"
+#~ msgstr "Expressió"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Chs"
+#~ msgstr "Chs"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "Sqrt"
+#~ msgstr "Sqrt"
+
+#~ msgid "Recip"
+#~ msgstr "Recíp"
+
+#~ msgid "^2"
+#~ msgstr "^2"
+
+#~ msgid "&amp;16"
+#~ msgstr "&amp;16"
+
+#~ msgid "&amp;32"
+#~ msgstr "&amp;32"
+
+#~ msgid "32 bit unsigned integer"
+#~ msgstr "Enter de 32 bits sense signe"
+
+#~ msgid " Mod "
+#~ msgstr " Mod "
+
+#~ msgid "Exponential"
+#~ msgstr "Exponencial"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "e^"
+#~ msgstr "e^"
+
+#~ msgid "^"
+#~ msgstr "^"
+
+#~ msgid "!"
+#~ msgstr "!"
+
+#~ msgid "Or"
+#~ msgstr "O"
+
+#~ msgid " Or "
+#~ msgstr " O "
+
+#~ msgid "And"
+#~ msgstr "I"
+
+#~ msgid " And "
+#~ msgstr " I "
+
+#~ msgid "Not"
+#~ msgstr "No"
+
+#~ msgid "~"
+#~ msgstr "~"
+
+#~ msgid "Xor"
+#~ msgstr "Xor"
+
+#~ msgid " Xor "
+#~ msgstr " Xor "
+
+#~ msgid "Xnor"
+#~ msgstr "Xnor"
+
+#~ msgid " Xnor "
+#~ msgstr " Xnor "
+
+#~ msgid "Numeric stack error"
+#~ msgstr "S'ha produït un error numèric en la memòria de pila"
+
+#~ msgid "Operand stack error"
+#~ msgstr "S'ha produït un error en els operadors en la memòria de pila"
+
+#~ msgid "calculator"
+#~ msgstr "calculadora"
+
+#~ msgid "%s: invalid bitcalc choice [%s]\n"
+#~ msgstr "%s: la selecció de càlcul de bits no és vàlida [%s]\n"
+
+#~ msgid "1 place"
+#~ msgstr "1 lloc"
+
+#~ msgid "2 places"
+#~ msgstr "2 llocs"
+
+#~ msgid "3 places"
+#~ msgstr "3 llocs"
+
+#~ msgid "4 places"
+#~ msgstr "4 llocs"
+
+#~ msgid "5 places"
+#~ msgstr "5 llocs"
+
+#~ msgid "6 places"
+#~ msgstr "6 llocs"
+
+#~ msgid "7 places"
+#~ msgstr "7 llocs"
+
+#~ msgid "8 places"
+#~ msgstr "8 llocs"
+
+#~ msgid "9 places"
+#~ msgstr "9 llocs"
+
+#~ msgid "Show Bitcalculating _Extension"
+#~ msgstr "Mostra l'_extensió de càlcul de bits"
+
+#~ msgid "Show bitcalculating extension"
+#~ msgstr "Mostra l'extensió de càlcul de bits"
+
+#~ msgid "0 significant places"
+#~ msgstr "0 llocs significatius"
+
+#~ msgid "1 significant place"
+#~ msgstr "1 lloc significatiu"
+
+#~ msgid "2 significant places"
+#~ msgstr "2 llocs significatius"
+
+#~ msgid "3 significant places"
+#~ msgstr "3 llocs significatius"
+
+#~ msgid "4 significant places"
+#~ msgstr "4 llocs significatius"
+
+#~ msgid "5 significant places"
+#~ msgstr "_5 llocs significatius"
+
+#~ msgid "6 significant places"
+#~ msgstr "_6 llocs significatius"
+
+#~ msgid "7 significant places"
+#~ msgstr "7 llocs significatius"
+
+#~ msgid "8 significant places"
+#~ msgstr "8 llocs significatius"
+
+#~ msgid "9 significant places"
+#~ msgstr "9 llocs significatius"
+
+#~ msgid "_Other (10) ..."
+#~ msgstr "_Altres (10) ..."
+
+#~ msgid "Set other precision"
+#~ msgstr "Estableix una altra precisió"
+
+#~ msgid "Note:"
+#~ msgstr "Avís:"
+
+#~ msgid ""
+#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+#~ msgstr ""
+#~ "Estableix la precisió de 0 a %d llocs numèrics. Actualment està "
+#~ "establerta a %d llocs. [a]"
+
+#~ msgid "Accuracy value out of range"
+#~ msgstr "El valor de la precisió està fora del rang"
+
+#~ msgid "Perform calculations"
+#~ msgstr "Calcula"
+
+#~ msgid "Previous expression"
+#~ msgstr "Expressió prèvia"
+
+#~ msgid "+/-"
+#~ msgstr "+/-"
+
+#~ msgid "abs"
+#~ msgstr "abs"
+
+#~ msgid "acosh"
+#~ msgstr "acosh"
+
+#~ msgid "acos"
+#~ msgstr "acos"
+
+#~ msgid "and"
+#~ msgstr "i"
+
+#~ msgid "asinh"
+#~ msgstr "asinh"
+
+#~ msgid "asin"
+#~ msgstr "sinh"
+
+#~ msgid "atanh"
+#~ msgstr "atanh"
+
+#~ msgid "atan"
+#~ msgstr "atan"
+
+#~ msgid "cbrt"
+#~ msgstr "cbrt"
+
+#~ msgid "chs"
+#~ msgstr "chs"
+
+#~ msgid "clr"
+#~ msgstr "clr"
+
+#~ msgid "cosh"
+#~ msgstr "cosh"
+
+#~ msgid "cos"
+#~ msgstr "cos"
+
+#~ msgid "ddb"
+#~ msgstr "ddb"
+
+#~ msgid "frac"
+#~ msgstr "frac"
+
+#~ msgid "fv"
+#~ msgstr "fv"
+
+#~ msgid "int"
+#~ msgstr "ent"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "mod"
+#~ msgstr "mod"
+
+#~ msgid "not"
+#~ msgstr "no"
+
+#~ msgid "or"
+#~ msgstr "o"
+
+#~ msgid "pv"
+#~ msgstr "pv"
+
+#~ msgid "rand"
+#~ msgstr "rand"
+
+#~ msgid "rate"
+#~ msgstr "ratio"
+
+#~ msgid "rcl"
+#~ msgstr "rcl"
+
+#~ msgid "sinh"
+#~ msgstr "sinh"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "sln"
+#~ msgstr "sln"
+
+#~ msgid "sqrt"
+#~ msgstr "sqrt"
+
+#~ msgid "sto"
+#~ msgstr "sto"
+
+#~ msgid "syd"
+#~ msgstr "syd"
+
+#~ msgid "tanh"
+#~ msgstr "tanh"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "term"
+#~ msgstr "term"
+
+#~ msgid "xnor"
+#~ msgstr "xnor"
+
+#~ msgid "xor"
+#~ msgstr "xor"
+
+#~ msgid "*10^"
+#~ msgstr "*10^"
+
+#~ msgid "ans"
+#~ msgstr "resp"
+
+#~ msgid "_Quit"
+#~ msgstr "_Surt"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copia"
+
+#~ msgid "_About"
+#~ msgstr "_Quant a"
+
+#~ msgid "BASIC"
+#~ msgstr "BÀSIC"
+
+#~ msgid "FINANCIAL"
+#~ msgstr "FINANCER"
+
+#~ msgid "SCIENTIFIC"
+#~ msgstr "CIENTÍFIC"
+
+#~ msgid "Logical OR"
+#~ msgstr "OR lògic"
+
+#~ msgid "Logical AND"
+#~ msgstr "AND lògic"
+
+#~ msgid "Logical NOT"
+#~ msgstr "NOT lògic"
+
+#~ msgid "Logical XOR"
+#~ msgstr "XOR lògic"
+
+#~ msgid "Logical XNOR"
+#~ msgstr "XNOR lògic"
+
+#~ msgid "kilometers per hour or miles per hour"
+#~ msgstr "quilòmetres per hora o milles per hora"
+
+#~ msgid "centimeters or inches"
+#~ msgstr "centímetres o polzades"
+
+#~ msgid "grams or ounces"
+#~ msgstr "grams o unces"
+
+#~ msgid "/Calculator/_Quit"
+#~ msgstr "/Calculadora/_Surt"
+
+#~ msgid "/Edit/sep1"
+#~ msgstr "/Edita/sep1"
+
+#~ msgid "/Edit/_Insert ASCII Value..."
+#~ msgstr "/Edita/_Insereix valor ASCII..."
+
+#~ msgid "/View/_Basic Mode"
+#~ msgstr "/Visualitza/Mode _bàsic"
+
+#~ msgid "/View/_Financial Mode"
+#~ msgstr "/Visualitza/Mode _financer"
+
+#~ msgid "/View/_Scientific Mode"
+#~ msgstr "/Visualitza/Mode _científic"
+
+#~ msgid "/View/sep1"
+#~ msgstr "/Visualitza/sep1"
+
+#~ msgid "/View/Show _Trailing Zeroes"
+#~ msgstr "/Visualitza/Mostra els zeros _finals"
+
+#~ msgid "/View/sep2"
+#~ msgstr "/Visualitza/sep2"
+
+#~ msgid "/View/_Memory Registers"
+#~ msgstr "/Visualitza/_Registres de memòria"
+
+#~ msgid "/sep1"
+#~ msgstr "/sep1"
+
+#~ msgid "Set trigonometric type to gradients"
+#~ msgstr "Canvia el tipus trigonomètric a gradians "
+
+#~ msgid "y to the power of displayed value"
+#~ msgstr "y per la potència del valor mostrat"
+
+#~ msgid "Y to the x"
+#~ msgstr "Y per x"
+
+#~ msgid "*** ERROR OCCURRED IN MPATAN, RESULT INCORRECT ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN ERROR A MPATAN, EL RESULTAT ÉS INCORRECTE ***\n"
+
+#~ msgid ""
+#~ "*** MXR SHOULD BE AT LEAST %d*T + %d = %d  ***\n"
+#~ "*** ACTUALLY MXR = %d, AND T = %d  ***\n"
+#~ msgstr ""
+#~ "*** MXR HA DE SER COM A MÍNIM %d*T + %d = %d  ***\n"
+#~ "*** MXR EN REALITAT ÉS = %d, AND T = %d  ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPDIV ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN SOBREEIXIMENT A MPDIV ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPEXP, RESULT INCORRECT ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN ERROR A MPEXP, EL RESULTAT ÉS INCORRECTE ***\n"
+
+#~ msgid "*** ERROR IN MPLN, ITERATION NOT CONVERGING ***\n"
+#~ msgstr "*** ERROR A MPLN, LA ITERACIÓ NO CONVERGEIX ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPLNS.\n"
+#~ "NEWTON ITERATION NOT CONVERGING PROPERLY ***\n"
+#~ msgstr ""
+#~ "*** S'HA PRODUÏT UN ERROR A MPLNS.\n"
+#~ "LA ITERACIÓ DE NEWTON NO CONVERGEIX CORRECTAMENT ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPMUL2 ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN SOBREEIXIMENT A MPMUL2 ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPNZR ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN SOBREEIXIMENT A MPNZR ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPPI, RESULT INCORRECT ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN ERROR A MPPI, EL RESULTAT ÉS INCORRECTE ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPREC, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** S'HA PRODUÏT UN ERROR A MPREC, LA ITERACIÓ DE NEWTON NO CONVERGEIX "
+#~ "CORRECTAMENT ***\n"
+
+#~ msgid "*** OVERFLOW OCCURRED IN MPREC ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN SOBREEIXIMENT A MPREC2 ***\n"
+
+#~ msgid ""
+#~ "*** ERROR OCCURRED IN MPROOT, NEWTON ITERATION NOT CONVERGING PROPERLY "
+#~ "***\n"
+#~ msgstr ""
+#~ "*** S'HA PRODUÏT UN ERROR A MPROOT, LA ITERACIÓ DE NEWTON NO CONVERGEIX "
+#~ "CORRECTAMENT ***\n"
+
+#~ msgid "*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***\n"
+#~ msgstr "*** S'HA PRODUÏT UN ERROR A MPSIN, EL RESULTAT ÉS INCORRECTE ***\n"
