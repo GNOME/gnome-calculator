@@ -1260,10 +1260,10 @@ ui_set_wordlen(int len)
             widget = X.word_length_radios[0];
             break;
         case 32:
-            widget = X.word_length_radios[1];        
+            widget = X.word_length_radios[1];
             break;
         case 16:
-            widget = X.word_length_radios[2];        
+            widget = X.word_length_radios[2];
             break;
         default:
             return;
@@ -1497,9 +1497,9 @@ help_display(void)
     if (error != NULL)
     {
         GtkWidget *d;
-        d = gtk_message_dialog_new (GTK_WINDOW (X.main_window), 
+        d = gtk_message_dialog_new (GTK_WINDOW (X.main_window),
                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                    GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, 
+                                    GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
                                     "%s", _("Unable to open help file"));
         gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
                                                   "%s", error->message);
@@ -2626,7 +2626,7 @@ create_main_window()
     set_menubar_tooltip("about_menu");
 
     /* Make dialogs transient of the main window */
-    gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));    
+    gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));
     gtk_window_set_transient_for(GTK_WINDOW(X.precision_dialog), GTK_WINDOW(X.main_window));
     gtk_window_set_transient_for(GTK_WINDOW(X.register_dialog), GTK_WINDOW(X.main_window));
     gtk_window_set_transient_for(GTK_WINDOW(X.constants_dialog),
