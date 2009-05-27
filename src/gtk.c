@@ -2740,7 +2740,6 @@ void
 ui_init(int *argc, char ***argv)
 {  
     gchar *path;
-    const gchar *home;
     int value;
 
     gtk_init(argc, argv);
@@ -2754,8 +2753,7 @@ ui_init(int *argc, char ***argv)
     else
         X.mode = BASIC;
 
-    home = g_get_home_dir();
-    path = g_build_path(home, RCNAME, NULL);
+    path = g_build_filename(g_get_home_dir(), RCNAME, NULL);
     gtk_rc_parse(path);
     g_free(path);
 
