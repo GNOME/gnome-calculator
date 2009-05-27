@@ -2804,12 +2804,6 @@ ui_start(void)
     ui_set_wordlen(v->wordlen);
     ui_set_trigonometric_mode(v->ttype);
     ui_set_numeric_mode(v->display.format);
-
-    /* Focus on the clear button */
-    if (X.mode == BASIC)
-        gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[0]));
-    else
-        gtk_widget_grab_focus(GTK_WIDGET(X.clear_buttons[1]));
     
     gtk_widget_show(X.main_window);
 
