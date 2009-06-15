@@ -38,11 +38,10 @@
 %}
 
 DECIMAL	"."|","
-SIGN	"+"|"-" 
-CHARACTER [a-z]|[A-Z]
+SIGN	"+"|"-"|"−"
 BIN     [0-1]
 OCT     [0-7]
-DEC	[0-9]
+DEC     [0-9]
 HEX     [0-9]|[A-F]|[a-f]
 EXP     "e"|"e+"|"e-"|"E"|"E+"|"E-"
 HEX_NUM {HEX}+|{HEX}*{DECIMAL}{HEX}*
@@ -52,10 +51,15 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 
 %%
 
-"abs"|"Abs"|"ABS" {return tABS;}
+"+"     {return tADD;}
+"-"|"−" {return tSUBTRACT;}
+"*"|"×" {return tMULTIPLY;}
+"/"|"÷" {return tDIVIDE;}
+"abs"|"Abs"|"ABS" {return tABS_FUNC;}
+"|" {return tABS;}
 "acosh"|"Acosh"|"ACOSH" {return tACOSH;}
 "acos"|"Acos"|"ACOS" {return tACOS;}
-"and"|"And"|"AND" {return tAND;}
+"∧"|"and"|"And"|"AND" {return tAND;}
 "ans"|"Ans"|"ANS" {return tANS;}
 "asinh"|"Asinh"|"ASINH" {return tASINH;}
 "asin"|"Asin"|"ASIN" {return tASIN;}
@@ -73,14 +77,19 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "log"|"Log"|"LOG" {return tLOG10;}
 "log2"|"Log2"|"LOG2" {return tLOG2;}
 "mod"|"Mod"|"MOD" {return tMOD;}
-"not"|"Not"|"NOT" {return tNOT;}
-"or"|"Or"|"OR" {return tOR;}
-"pi"|"Pi"|"PI" {return tPI;}
+"¬"|"~" {return tNOT;}
+"∨"|"or"|"Or"|"OR" {return tOR;}
+"π"|"pi"|"Pi"|"PI" {return tPI;}
 "rand"|"Rand"|"RAND" {return tRAND;}
 "rcl"|"Rcl"|"RCL" {return tRCL;}
 "sinh"|"Sinh"|"SINH" {return tSINH;}
 "sin"|"Sin"|"SIN" {return tSIN;}
 "sqrt"|"Sqrt"|"SQRT" {return tSQRT;}
+"√" {return tROOT;}
+"∛" {return tROOT3;}
+"∜" {return tROOT4;}
+"²" {return tSQUARED;}
+"³" {return tCUBED;}
 "sto"|"Sto"|"STO" {return tSTO;}
 "tanh"|"Tanh"|"TANH" {return tTANH;}
 "tan"|"Tan"|"TAN" {return tTAN;}
@@ -88,13 +97,12 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "1s"|"1S" {return t1S;}
 "2s"|"2S" {return t2S;}
 "xnor"|"Xnor"|"XNOR" {return tXNOR;}
-"xor"|"Xor"|"XOR" {return tXOR;}
+"⊕"|"xor"|"Xor"|"XOR" {return tXOR;}
 
 "R"{DEC}+ {
 yylval->integer = atoi(yytext+1);  
 return tREG;
 }
-
 
 {DEC_NUM}{EXP}{DEC_NUM} {
 if (_mp_equation_get_extra(yyscanner)->base == 16) REJECT;

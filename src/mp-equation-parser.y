@@ -43,7 +43,12 @@
   int integer;
 }
 
+%token tADD
+%token tSUBTRACT
+%token tMULTIPLY
+%token tDIVIDE
 %token tABS
+%token tABS_FUNC
 %token tACOS
 %token tACOSH
 %token tAND
@@ -73,6 +78,11 @@
 %token tRCL
 %token tSIN
 %token tSINH
+%token tROOT
+%token tROOT3
+%token tROOT4
+%token tSQUARED
+%token tCUBED
 %token tSQRT
 %token tSTO
 %token tTAN
@@ -89,8 +99,7 @@
 %type  <int_t> exp rcl value term reg func number parenthesis
 
 %start statement
-%left '+' '-'
-%left '*' '/'
+%left tADD tSUBTRACT tMULTIPLY tDIVIDE
 %left MED
 %left LNEG
 %left NEG
@@ -98,6 +107,7 @@
 %right '^'
 %right '!'
 %right '%'
+%right tSQUARED tCUBED
 %left HIGH
 
 %%
@@ -141,11 +151,15 @@ value:
 exp: 
   term {mp_set_from_mp(&$1, &$$);}
 
-| exp '+' term '%' {mp_add_integer(&$3, 100, &$3); mp_divide_integer(&$3, 100, &$3); mp_multiply(&$1, &$3, &$$);}
-| exp '-' term '%' {mp_add_integer(&$3, -100, &$3); mp_divide_integer(&$3, -100, &$3); mp_multiply(&$1, &$3, &$$);}
+| exp tADD term '%' {mp_add_integer(&$3, 100, &$3); mp_divide_integer(&$3, 100, &$3); mp_multiply(&$1, &$3, &$$);}
+| exp tSUBTRACT term '%' {mp_add_integer(&$3, -100, &$3); mp_divide_integer(&$3, -100, &$3); mp_multiply(&$1, &$3, &$$);}
 
-| exp '+' exp {mp_add(&$1, &$3, &$$);}
-| exp '-' exp {mp_subtract(&$1, &$3, &$$);}
+| exp tROOT term {MPNumber t; mp_sqrt(&$3, &t); mp_multiply(&$1, &t, &$$);}
+| exp tROOT3 term {MPNumber t; mp_root(&$3, 3, &t); mp_multiply(&$1, &t, &$$);}
+| exp tROOT4 term {MPNumber t; mp_root(&$3, 4, &t); mp_multiply(&$1, &t, &$$);}
+
+| exp tADD exp {mp_add(&$1, &$3, &$$);}
+| exp tSUBTRACT exp {mp_subtract(&$1, &$3, &$$);}
 
 | exp tMOD exp %prec MED {
     if (!mp_is_integer(&$1) || !mp_is_integer(&$3)) {
@@ -187,12 +201,18 @@ exp:
 term:
   number {mp_set_from_mp(&$1, &$$);}
 | rcl {mp_set_from_mp(&$1, &$$);}
-| term '/' term {mp_divide(&$1, &$3, &$$);}
-| term '*' term {mp_multiply(&$1, &$3, &$$);}
+| tROOT term {mp_sqrt(&$2, &$$);}
+| tROOT3 term {mp_root(&$2, 3, &$$);}
+| tROOT4 term {mp_root(&$2, 4, &$$);}
+| term tDIVIDE term {mp_divide(&$1, &$3, &$$);}
+| term tMULTIPLY term {mp_multiply(&$1, &$3, &$$);}
+| tABS exp tABS {mp_abs(&$2, &$$);} 
 | 'e' '^' term {mp_epowy(&$3, &$$);} 
 | term '!' {mp_factorial(&$1, &$$);}
+| term tSQUARED {mp_pwr_integer(&$1, 2, &$$);}
+| term tCUBED {mp_pwr_integer(&$1, 3, &$$);}
 | term '%' {mp_divide_integer(&$1, 100, &$$);}
-| '~' term %prec LNEG {
+| tNOT term %prec LNEG {
     if (!mp_is_natural(&$2)) {
 	(_mp_equation_get_extra(yyscanner))->error = -PARSER_ERR_BITWISEOP;
     } else if (!mp_is_overflow(&$2, _mp_equation_get_extra(yyscanner)->wordlen)) {
@@ -200,8 +220,8 @@ term:
     }
     mp_not(&$2, _mp_equation_get_extra(yyscanner)->wordlen, &$$);
 }
-| '-' term %prec NEG {mp_invert_sign(&$2, &$$);}
-| '+' term %prec POS {mp_set_from_mp(&$2, &$$);}
+| tSUBTRACT term %prec NEG {mp_invert_sign(&$2, &$$);}
+| tADD term %prec POS {mp_set_from_mp(&$2, &$$);}
 | term '^' term {mp_xpowy(&$1, &$3, &$$);}
 
 | func {mp_set_from_mp(&$1, &$$);}
@@ -224,7 +244,7 @@ func:
 | tSQRT term %prec HIGH {mp_sqrt(&$2, &$$);}
 | tLN term %prec HIGH {mp_ln(&$2, &$$);}
 | tRAND %prec HIGH {mp_set_from_random(&$$);}
-| tABS term %prec HIGH {mp_abs(&$2, &$$);}
+| tABS_FUNC term %prec HIGH {mp_abs(&$2, &$$);}
 | tFRAC term %prec HIGH {mp_fractional_component(&$2, &$$);}
 | tINT term %prec HIGH {mp_integer_component(&$2, &$$);}
 | tCHS term %prec HIGH {mp_invert_sign(&$2, &$$);}
