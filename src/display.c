@@ -26,6 +26,7 @@
 #include <math.h>
 #include <errno.h>
 #include <assert.h>
+#include <glib.h>
 
 #include "display.h"
 
@@ -98,6 +99,7 @@ str_replace(char *str, char *from, char *to)
  */
 
 /* Add in the thousand separators characters if required */
+//FIXME: UTF-8
 static void
 localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 {
@@ -257,13 +259,12 @@ display_set_answer(GCDisplay *display)
 
 
 static void
-display_refresh(GCDisplay *display)
+display_make_text(GCDisplay *display, char *localized, int length, int *cursor)
 {
     int i;
     MPNumber MP_reg;
-    char localized[MAX_LOCALIZED], temp[MAX_LOCALIZED], *str, reg[3];
+    char temp[MAX_LOCALIZED], *str, reg[3];
     GCDisplayState *e;
-    int cursor = display_get_cursor(display);
 
     e = get_state(display);
     if (display_is_empty(display)) {
@@ -286,9 +287,20 @@ display_refresh(GCDisplay *display)
         str = str_replace(str, reg, temp);
     }
 
-    localize_expression(localized, str, MAX_LOCALIZED, &cursor);
-    ui_set_display(localized, cursor);
+    localize_expression(localized, str, length, cursor);
     free(str);
+}
+
+
+static void
+display_refresh(GCDisplay *display)
+{
+    char localized[MAX_LOCALIZED];
+    int cursor;
+    
+    cursor = display_get_cursor(display);
+    display_make_text(display, localized, MAX_LOCALIZED, &cursor);
+    ui_set_display(localized, cursor);
 }
 
 
@@ -305,6 +317,7 @@ display_set_string(GCDisplay *display, const char *value, int cursor)
     display_refresh(display);
 }
 
+
 void
 display_set_cursor(GCDisplay *display, int cursor)
 {
@@ -314,6 +327,7 @@ display_set_cursor(GCDisplay *display, int cursor)
     e->cursor = cursor;
     display_refresh(display);
 }
+
 
 void
 display_set_error(GCDisplay *display, const char *message)
@@ -427,54 +441,52 @@ display_is_undo_step(GCDisplay *display)
     return(display->h.current != display->h.begin);
 }
 
+
+//FIXME: UTF-8
 void
-display_insert(GCDisplay *display, int cursor, const char *text)
+display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 {
     char buf[MAX_DISPLAY], *currentText;
     
-    if (cursor < 0) {
+    if (cursor_start < 0) {
         SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
     } else {
         currentText = ui_get_display();
-        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s%s", cursor, currentText, text, currentText + cursor);
-        cursor += strlen(text);
+        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s%s",
+                 g_utf8_offset_to_pointer(currentText, cursor_start) - currentText, currentText,
+                 text,
+                 g_utf8_offset_to_pointer(currentText, cursor_end));
+        cursor_start += strlen(text);
     }
-    display_set_string(display, buf, cursor);
+    display_set_string(display, buf, cursor_start);
 }
 
-void
-display_insert_at_cursor(GCDisplay *display, const char *text)
-{
-    display_insert(display, display_get_cursor(display), text);
-}
 
 void
-display_insert_number(GCDisplay *display, int cursor, const MPNumber *value)
+display_insert_number(GCDisplay *display, int cursor_start, int cursor_end, const MPNumber *value)
 {
     char text[MAX_DISPLAY];
     display_make_number(display, text, MAX_DISPLAY, value, v->base, FALSE);
-    display_insert(display, cursor, text);
-}
-
-void
-display_insert_number_at_cursor(GCDisplay *display, const MPNumber *value)
-{
-    display_insert_number(display, display_get_cursor(display), value);
+    display_insert(display, cursor_start, cursor_end, text);
 }
 
 
 void
-display_backspace(GCDisplay *display)
+display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
 {
-    char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY], *t;
+    char buf[MAX_DISPLAY] = "", buf2[MAX_DISPLAY];
     GCDisplayState *e = get_state(display);
     int i, cursor;
     MPNumber MP_reg;
     
     cursor = display_get_cursor(display);
-
+    
     /* If cursor is at end of the line then delete the last character preserving accuracy */
-    if (cursor < 0) {
+    if (cursor_start < 0) {
+        int len;
+        
+        len = g_utf8_strlen(ui_get_display(), -1);
+        
         if (exp_has_postfix(e->expression, "Ans")) {
             display_make_number(display, buf, MAX_DISPLAY, &e->ans, v->base, FALSE);
             e->expression = str_replace(e->expression, "Ans", buf);
@@ -484,37 +496,31 @@ display_backspace(GCDisplay *display)
                 if (exp_has_postfix(e->expression, buf)) {
                     register_get(i, &MP_reg);
                     display_make_number(display, buf2, MAX_DISPLAY, &MP_reg, v->base, FALSE);
-                    /* Remove "Rx" postfix and replace with backspaced number */
-                    SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 3, buf2);
-                    display_set_string(display, buf, cursor - 1);
-                    return;
+                    SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", strlen(e->expression) - 2, e->expression - 2, buf2);
+                    break;
                 }
             }
         }
 
-        SNPRINTF(buf, MAX_DISPLAY, "%.*s", strlen(e->expression) - 1, e->expression);
-    } else if (cursor > 0) {
-        t = ui_get_display();
-        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor - 1, t, t + cursor);
-    } else {
-        return; /* At the start of the line */
+        display_insert(display, len - 1, len, ""); // FIXME: Not working for empty display
+    } else if (cursor_start != cursor_end) {
+        display_insert(display, cursor_start, cursor_end, "");
+    } else if (cursor_start > 0) {
+        display_insert(display, cursor_start - 1, cursor_start, "");
     }
 
-    display_set_string(display, buf, cursor - 1);
 }
 
 void
-display_delete(GCDisplay *display)
+display_delete(GCDisplay *display, int cursor_start, int cursor_end)
 {
-    char buf[MAX_DISPLAY] = "", *text;
-    int cursor = display_get_cursor(display);    
-    
-    if (cursor >= 0) {
-        text = ui_get_display();
-        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s", cursor, text, text + cursor + 1);
-        display_set_string(display, buf, cursor);
-    }
+    /* Delete selected block */
+    if (cursor_start != cursor_end)
+        display_insert(display, cursor_start, cursor_end, "");
+    else if (cursor_start >= 0)
+        display_insert(display, cursor_start, cursor_start + 1, "");
 }
+
 
 void
 display_surround(GCDisplay *display, const char *prefix, const char *suffix)
@@ -532,6 +538,7 @@ display_is_empty(GCDisplay *display)
     return strcmp(display_get_text(display), "") == 0;
 }
 
+
 gboolean
 display_is_result(GCDisplay *display)
 {
@@ -540,6 +547,7 @@ display_is_result(GCDisplay *display)
     
     return FALSE;
 }
+
 
 gboolean
 display_is_usable_number(GCDisplay *display, MPNumber *MPnum)
@@ -705,7 +713,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
  
     if (exp < 0) {
         exp = -exp;
-        *optr++ = '-';
+        *optr++ = '-';//FIXME: UTF-8
     } else {
         *optr++ = '+';
     }
@@ -766,6 +774,6 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
         (display->format == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(display, target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);
+        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);//FIXME: UTF-8
     }
 }

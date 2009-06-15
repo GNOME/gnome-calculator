@@ -75,17 +75,17 @@ static Function functions[NFUNCTIONS] = {
 { FN_START_BLOCK,       "(", 0 },
 { FN_END_BLOCK,         ")", 0 },
 { FN_ADD,               "+", 0 },
-{ FN_SUBTRACT,          "-", 0 },
-{ FN_MULTIPLY,          "*", 0 },
-{ FN_DIVIDE,            "/", 0 },
+{ FN_SUBTRACT,          "−", 0 },
+{ FN_MULTIPLY,          "×", 0 },
+{ FN_DIVIDE,            "÷", 0 },
 { FN_BACKSPACE,         NULL, 0 },
 { FN_DELETE,            NULL, 0 },
 { FN_CHANGE_SIGN,       NULL, 0 },
 { FN_INTEGER,           "Int", FUNC },
 { FN_FRACTION,          "Frac", FUNC },
 { FN_PERCENTAGE,        "%", 0 },
-{ FN_SQUARE,            "^2", 0 },
-{ FN_SQUARE_ROOT,       "Sqrt", FUNC },
+{ FN_SQUARE,            "²", 0 },
+{ FN_SQUARE_ROOT,       "√", 0 },
 { FN_RECIPROCAL,        NULL, 0 },
 { FN_E_POW_X,           "e^", PREFIXOP },
 { FN_10_POW_X,          "10^", PREFIXOP },       
@@ -111,7 +111,7 @@ static Function functions[NFUNCTIONS] = {
 { FN_LOGARITHM2,        "Log2", FUNC },
 { FN_ABSOLUTE_VALUE,    "Abs", FUNC },
 { FN_TRUNC,             "Trunc", FUNC },
-{ FN_MODULUS_DIVIDE,    " Mod ", 0 },
+{ FN_MODULUS_DIVIDE,    " mod ", 0 },
 { FN_1S_COMPLEMENT,     "1s", FUNC },
 { FN_2S_COMPLEMENT,     "2s", FUNC },
 { FN_EXPONENTIAL,       "e", 0 },
@@ -189,7 +189,7 @@ do_function(int index)
 
 
 static void
-do_paste(const char *text)
+do_paste(int cursor_start, int cursor_end, const char *text)
 {
     const char *input;
     char c, *output, *clean_text;
@@ -248,7 +248,7 @@ do_paste(const char *text)
     }
     *output++ = '\0';
 
-    display_insert_at_cursor(&v->display, clean_text);
+    display_insert(&v->display, cursor_start, cursor_end, clean_text);
 }
 
 
@@ -376,7 +376,7 @@ do_sto(int index)
 
 
 void
-do_expression(int function, int arg, int cursor)
+do_expression(int function, int arg, int cursor_start, int cursor_end)
 {
     char buf[MAXLINE];
     MPNumber *ans;
@@ -398,7 +398,7 @@ do_expression(int function, int arg, int cursor)
     
     display_push(&v->display);
 
-    display_set_cursor(&v->display, cursor);
+    display_set_cursor(&v->display, cursor_start);
     ans = display_get_answer(&v->display);
 
     ui_set_statusbar("", "");
@@ -448,7 +448,7 @@ do_expression(int function, int arg, int cursor)
             return;
         
         case FN_PASTE:
-            do_paste((const char *)arg); // FIXME: Probably not 64 bit safe
+            do_paste(cursor_start, cursor_end, (const char *)arg); // FIXME: Probably not 64 bit safe
             return;
         
         case FN_INSERT_CHARACTER:
@@ -465,19 +465,19 @@ do_expression(int function, int arg, int cursor)
 
         case FN_RECALL:
             SNPRINTF(buf, MAXLINE, "R%d", arg);
-            display_insert_at_cursor(&v->display, buf);
+            display_insert(&v->display, cursor_start, cursor_end, buf);
             break;
 
         case FN_CONSTANT:
-            display_insert_number_at_cursor(&v->display, constant_get_value(arg));
+            display_insert_number(&v->display, cursor_start, cursor_end, constant_get_value(arg));
             break;
 
         case FN_BACKSPACE:
-            display_backspace(&v->display);
+            display_backspace(&v->display, cursor_start, cursor_end);
             break;
         
         case FN_DELETE:
-            display_delete(&v->display);
+            display_delete(&v->display, cursor_start, cursor_end);
             break;
 
         case FN_CHANGE_SIGN:
@@ -509,7 +509,6 @@ do_expression(int function, int arg, int cursor)
              * the cursor must be taken from the first undo */
             if (display_is_result(&v->display)) {
                 display_pop(&v->display);
-                cursor = display_get_cursor(&v->display);
                 if (display_is_undo_step(&v->display)) {
                     display_pop(&v->display);
                 }
@@ -583,9 +582,9 @@ do_expression(int function, int arg, int cursor)
             } else {
                 if (functions[function].flags & FUNC) {
                     SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
-                    display_insert_at_cursor(&v->display, buf);
+                    display_insert(&v->display, cursor_start, cursor_end, buf);
                 } else {
-                    display_insert_at_cursor(&v->display, functions[function].symname);
+                    display_insert(&v->display, cursor_start, cursor_end, functions[function].symname);
                 }
             }
             break;

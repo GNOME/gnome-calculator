@@ -81,12 +81,10 @@ void display_pop(GCDisplay *);
 void display_unpop(GCDisplay *);
 gboolean display_is_undo_step(GCDisplay *display);
 
-void display_insert(GCDisplay *display, int, const char *);
-void display_insert_at_cursor(GCDisplay *display, const char *);
-void display_insert_number(GCDisplay *display, int, const MPNumber *);
-void display_insert_number_at_cursor(GCDisplay *display, const MPNumber *value);
-void display_backspace(GCDisplay *);
-void display_delete(GCDisplay *);
+void display_insert(GCDisplay *display, int, int, const char *);
+void display_insert_number(GCDisplay *display, int, int, const MPNumber *);
+void display_backspace(GCDisplay *, int, int);
+void display_delete(GCDisplay *, int, int);
 void display_surround(GCDisplay *display, const char *, const char *);
 
 gboolean display_is_empty(GCDisplay *);

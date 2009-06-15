@@ -92,6 +92,6 @@ enum
     NFUNCTIONS
 };
 
-void do_expression(int function, int arg, int cursor);
+void do_expression(int function, int arg, int cursor_start, int cursor_end);
 
 #endif /*FUNCTIONS_H*/

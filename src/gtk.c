@@ -939,19 +939,6 @@ ui_get_display(void)
 }
 
 
-static int
-get_cursor(void)
-{
-    gint pos;
-    g_object_get(G_OBJECT(X.display_buffer), "cursor-position", &pos, NULL);
-    
-    /* Convert the last position to -1 */
-    if (pos == gtk_text_buffer_get_char_count(X.display_buffer))
-        return -1;
-    else
-        return pos;
-}
-
 void
 ui_set_bitfield(int enabled, guint64 bits)
 {
@@ -971,7 +958,21 @@ ui_set_bitfield(int enabled, guint64 bits)
 
 static void do_button(int function, int arg)
 {
-    do_expression(function, arg, get_cursor());
+    GtkTextIter start, end;
+    gint cursor_start, cursor_end;
+
+    if(gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end)) {
+        cursor_start = gtk_text_iter_get_offset(&start);
+        cursor_end = gtk_text_iter_get_offset(&end);
+    }
+    else {
+        g_object_get(G_OBJECT(X.display_buffer), "cursor-position", &cursor_start, NULL);
+        if (cursor_start == gtk_text_buffer_get_char_count(X.display_buffer))
+            cursor_start = -1;
+        cursor_end = cursor_start;
+    }
+
+    do_expression(function, arg, cursor_start, cursor_end);
 }
 
 static void
