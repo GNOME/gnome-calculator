@@ -141,6 +141,9 @@ value:
 exp: 
   term {mp_set_from_mp(&$1, &$$);}
 
+| exp '+' term '%' {mp_add_integer(&$3, 100, &$3); mp_divide_integer(&$3, 100, &$3); mp_multiply(&$1, &$3, &$$);}
+| exp '-' term '%' {mp_add_integer(&$3, -100, &$3); mp_divide_integer(&$3, -100, &$3); mp_multiply(&$1, &$3, &$$);}
+
 | exp '+' exp {mp_add(&$1, &$3, &$$);}
 | exp '-' exp {mp_subtract(&$1, &$3, &$$);}
 
