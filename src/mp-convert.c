@@ -580,7 +580,7 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zer
     *optr = '\0';
     
     /* Remove negative sign if the number was rounded down to zero */
-    if (strcmp(buffer, "-0") == 0) {
+    if (strcmp(buffer, "−0") == 0) {
         buffer[0] = '0';
         buffer[1] = '\0';
     }
