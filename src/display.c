@@ -99,7 +99,6 @@ str_replace(char *str, char *from, char *to)
  */
 
 /* Add in the thousand separators characters if required */
-//FIXME: UTF-8
 static void
 localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 {
@@ -116,7 +115,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
 
     /* Scan expression looking for numbers and inserting separators */
     output = g_string_sized_new(dest_length);
-    for (c = src, read_cursor = 1; *c; c++, read_cursor++) {
+    for (c = src, read_cursor = 1; *c; c = g_utf8_next_char(c), read_cursor++) {
         /* Insert separators between digits */
         if (*c >= '0' && *c <= '9') {
             /* Read ahead to find the number of digits */
@@ -127,7 +126,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
                 }
             }
             
-            g_string_append_c(output, *c);
+            g_string_append_unichar(output, g_utf8_get_char(c));
             
             /* Insert separator after nth digit */
             if (v->display.show_tsep && v->base == DEC &&
@@ -151,7 +150,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
         else {
             digit_count = -1;
             after_radix = FALSE;
-            g_string_append_c(output, *c);
+            g_string_append_unichar(output, g_utf8_get_char(c));
         }
     }
     
@@ -219,7 +218,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
     }
     
     /* strtoull() treats the string like a 2's complement number which is not what we want */
-    if(text[0] == '-')
+    if(strncmp(text, "-", strlen("-")) == 0 || strncmp(text, "−", strlen("−")) == 0)
         return FALSE;
 
     *value = g_ascii_strtoull(text, &endptr, bases[v->base]);
@@ -308,6 +307,9 @@ void
 display_set_string(GCDisplay *display, const char *value, int cursor)
 {
     GCDisplayState *e;
+    
+    if (value[0] == '\0')
+        cursor = -1;
     
     e = get_state(display);
     free(e->expression);
@@ -442,23 +444,56 @@ display_is_undo_step(GCDisplay *display)
 }
 
 
-//FIXME: UTF-8
 void
 display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 {
-    char buf[MAX_DISPLAY], *currentText;
+    char buf[MAX_DISPLAY];
     
     if (cursor_start < 0) {
         SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
+        display_set_string(display, buf, -1);
     } else {
-        currentText = ui_get_display();
-        SNPRINTF(buf, MAX_DISPLAY, "%.*s%s%s",
-                 g_utf8_offset_to_pointer(currentText, cursor_start) - currentText, currentText,
-                 text,
-                 g_utf8_offset_to_pointer(currentText, cursor_end));
-        cursor_start += strlen(text);
+        GString *new_text;
+        const char *c;
+        gint cursor, new_cursor;
+        
+        /* Get display text and strip out thousand separators */
+        new_text = g_string_new("");
+        new_cursor = 0;
+        if (cursor_start == 0) {
+            g_string_append(new_text, text);
+            new_cursor += g_utf8_strlen(text, -1);
+        }
+        
+        cursor = 0;
+        for (c = ui_get_display(); *c; c = g_utf8_next_char(c), cursor++) {
+            gboolean use = TRUE;
+            
+            /* Ignore selected part */
+            if (cursor_start != cursor_end && cursor >= cursor_start && cursor < cursor_end)
+                use = FALSE;
+            
+            /* Ignore thousands separators */
+            if (strncmp(c, v->tsep, strlen(v->tsep)) == 0)
+                use = FALSE;
+            
+            /* Copy existing text */
+            if (use) {
+                g_string_append_unichar(new_text, g_utf8_get_char(c));
+                if (cursor < cursor_start)
+                    new_cursor++;
+            }
+            
+            /* Insert text */
+            if ((cursor + 1) == cursor_start) {
+                g_string_append(new_text, text);
+                new_cursor += g_utf8_strlen(text, -1);
+            }
+        }
+        display_set_string(display, new_text->str, new_cursor);
+        g_string_free(new_text, TRUE);
     }
-    display_set_string(display, buf, cursor_start);
+
 }
 
 
@@ -479,6 +514,10 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
     int i, cursor;
     MPNumber MP_reg;
     
+    /* Can't delete empty display */
+    if (display_is_empty(display))
+        return;
+
     cursor = display_get_cursor(display);
     
     /* If cursor is at end of the line then delete the last character preserving accuracy */
@@ -502,7 +541,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
             }
         }
 
-        display_insert(display, len - 1, len, ""); // FIXME: Not working for empty display
+        display_insert(display, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
         display_insert(display, cursor_start, cursor_end, "");
     } else if (cursor_start > 0) {
@@ -666,7 +705,8 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     mp_abs(MPnumber, &MPval);
     mp_set_from_integer(0, &MP1);
     if (mp_is_less_than(MPnumber, &MP1)) {
-        *optr++ = '-';
+        strcpy(optr, "−");
+        optr += strlen("−");
     }
     mp_set_from_mp(&MPval, &MPmant);
 
@@ -713,7 +753,8 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
  
     if (exp < 0) {
         exp = -exp;
-        *optr++ = '-';//FIXME: UTF-8
+        strcpy(optr, "−");
+        optr += strlen("−");
     } else {
         *optr++ = '+';
     }
@@ -774,6 +815,6 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
         (display->format == FIX && val != 0.0 && (val > max_fix[base]))) {
         make_eng_sci(display, target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);//FIXME: UTF-8
+        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);
     }
 }

@@ -491,7 +491,13 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zer
 
     /* Insert sign */
     if (mp_is_negative(MPnumber)) {
-        *optr++ = '-';
+        if (optr + strlen("−") >= stopper) {
+            mperr(_("Number too big to represent"));
+            *optr = '\0';
+            return;
+        }
+        strcpy(optr, "−");
+        optr += strlen("−");
         mp_abs(MPnumber, &number);
     } else  {
         mp_set_from_mp(MPnumber, &number);	
@@ -620,6 +626,9 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
     if (*optr == '-') {
         negate = 1;
         optr++;
+    } else if (strncmp(optr, "−", strlen("−")) == 0) {
+        negate = 1;
+        optr += strlen("−");
     }
 
     /* Convert integer part */
@@ -657,11 +666,14 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
 
         /* Get sign */
         if (*optr == '-') {
-	    negate = 1;
-	    optr++;
-	} else if (*optr == '+') {
-	    optr++;
-	}
+            negate = 1;
+            optr++;
+        } else if (strncmp(optr, "−", strlen("−")) == 0) {
+            negate = 1;
+            optr += strlen("−");
+        } else if (*optr == '+') {
+            optr++;
+        }
 
         /* Get magnitude */
         mp_set_from_integer(0, &MPexponent);
