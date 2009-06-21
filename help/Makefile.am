@@ -11,4 +11,4 @@ DOC_FIGURES = figures/gcalctool_advanced_window.png     \
               figures/gcalctool_scientific_window.png 	\
               figures/gcalctool_programming_window.png
 
-DOC_LINGUAS = bg ca de el es eu fr it ja ko oc pt_BR ru sv zh_CN zh_HK zh_TW
+DOC_LINGUAS = bg ca cs de el es eu fr it ja ko oc pt_BR ru sv zh_CN zh_HK zh_TW
