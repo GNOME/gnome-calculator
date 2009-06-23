@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-24 14:56+0530\n"
-"PO-Revision-Date: 2009-05-31 07:15+0530\n"
+"POT-Creation-Date: 2009-06-19 06:20+0530\n"
+"PO-Revision-Date: 2009-06-19 07:59+0530\n"
 "Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
 "Language-Team: American English <Ubuntu-l10n-tam@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\\n"
 "\n"
 "\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 0.3\n"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/financial.ui.h:2
@@ -633,7 +633,7 @@ msgid "Bksp"
 msgstr "Bksp"
 
 #. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1693
+#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1663
 msgid "C"
 msgstr "C"
 
@@ -805,7 +805,7 @@ msgid "Exp"
 msgstr "அடுக்குகுறி"
 
 #. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1716
+#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1686
 msgid "F"
 msgstr "F"
 
@@ -928,15 +928,15 @@ msgstr "இடது அடைப்புகுறிகள்"
 
 #: ../data/gcalctool.ui.h:230
 msgid "Makes the bitwise functions use 16 bit mode"
-msgstr ""
+msgstr "பிட்வைஸ் செயல்கூறுகளை 16 பிட் பாங்கை பயன்படுத்த வைக்கிறது"
 
 #: ../data/gcalctool.ui.h:231
 msgid "Makes the bitwise functions use 32 bit mode"
-msgstr ""
+msgstr "பிட்வைஸ் செயல்கூறுகளை 32 பிட் பாங்கை பயன்படுத்த வைக்கிறது"
 
 #: ../data/gcalctool.ui.h:232
 msgid "Makes the bitwise functions use 64 bit mode"
-msgstr ""
+msgstr "பிட்வைஸ் செயல்கூறுகளை 64 பிட் பாங்கை பயன்படுத்த வைக்கிறது"
 
 #: ../data/gcalctool.ui.h:233
 msgid "Memory Registers"
@@ -1310,7 +1310,7 @@ msgstr "Trunc"
 
 #: ../data/gcalctool.ui.h:339
 msgid "Truncate displayed value to the chosen word size ([)"
-msgstr ""
+msgstr "தேர்ந்தெடுத்த சொல் அளவுக்கு ([) காட்டும் மதிப்பை கத்தரி"
 
 #: ../data/gcalctool.ui.h:340
 msgid "Undo"
@@ -1615,7 +1615,8 @@ msgstr "காட்சி பாங்கு"
 msgid ""
 "Indicates whether any trailing zeroes after the number point should be shown "
 "in the display value."
-msgstr "எண் புள்ளிக்கு பிறகு வரும் பூஜ்ஜியங்கள் காட்சி மதிப்பில் காட்டப்பட வேண்டுமா என காட்டுகிறது."
+msgstr ""
+"எண் புள்ளிக்கு பிறகு வரும் பூஜ்ஜியங்கள் காட்சி மதிப்பில் காட்டப்பட வேண்டுமா என காட்டுகிறது."
 
 #: ../data/gcalctool.schemas.in.h:4
 msgid "Indicates whether the memory register window is initially displayed."
@@ -1689,7 +1690,8 @@ msgstr "சாளரத்துக்கு ஆரம்ப ஒய் ஆயத
 msgid ""
 "The number of digits displayed after the numeric point. This value must be "
 "in the range 0 to 9."
-msgstr "புள்ளிக்கு பிறகு காட்ட வேண்டிய எண்களின் எண்ணிக்கை. மதிப்புகள் 0 முதல் 9 வரை இருக்கலாம்."
+msgstr ""
+"புள்ளிக்கு பிறகு காட்ட வேண்டிய எண்களின் எண்ணிக்கை. மதிப்புகள் 0 முதல் 9 வரை இருக்கலாம்."
 
 #: ../data/gcalctool.schemas.in.h:18
 msgid "The number of pixels to place the window from the left of the screen."
@@ -1705,7 +1707,7 @@ msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:20
 msgid "The size of the words used in bitwise operations. Valid values are 16 32 64."
-msgstr ""
+msgstr "பிட்வைஸ் செயல்பாடுகளில் பயன்படுத்த சொல் அளவு. செல்லுபடியாகும் மதிப்புகள் 16 32 64."
 
 #: ../data/gcalctool.schemas.in.h:21
 msgid "Trigonometric type"
@@ -1759,26 +1761,35 @@ msgid ""
 "  --gtk-module=MODULES            Load additional GTK+ modules\n"
 "  --g-fatal-warnings              Make all warnings fatal"
 msgstr ""
+"GTK+ தேர்வுகள்:\n"
+"  --class=CLASS                   சாளர மேலாளர் பயன்படுத்தும் நிரல் வகை\n"
+"  --name=NAME                     சாளர மேலாளர் பயன்படுத்தும் நிரல் பெயர்\n"
+"  --screen=SCREEN                 பயன்படுத்த வேண்டிய எக்ஸ் திரை \n"
+"  --sync                          எக்ஸ் அழைப்புக்களை சமகாலப்படுத்துகிறது\n"
+"  --gtk-module=MODULES            கூடுதல் ஜிடிகே GTK+ கூறுகளை ஏற்றுக\n"
+"  --g-fatal-warnings              எல்லா எச்சரிக்கைகளையும் ஆபத்தாக்கு"
 
-#: ../src/calctool.c:141
-#, c-format
+#: ../src/calctool.c:141, c-format
 msgid ""
 "Application Options:\n"
 "  -u, --unittest                  Perform unittests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
+"பயன்பாடு தேர்வுகள்:\n"
+"  -u, --unittest                  அலகுகள் சோதனை செய்கிறது\n"
+"  -s, --solve <equation>          கொடுத்த சமன்பாட்டை தீர்க்கிறது"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
 #: ../src/calctool.c:177
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr ""
+msgstr "--solve துணையலகுக்கு தீர்க்க ஒரு சமன்பாடு தேவை"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
 #: ../src/calctool.c:190
 #, c-format
 msgid "Unknown argument '%s'"
-msgstr ""
+msgstr "தெரியாத துணை அலகு '%s'"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
@@ -1787,11 +1798,11 @@ msgstr ""
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: துல்லியம் இந்த நிலையில் இருக்க வேண்டும் 0-%d\n"
 
-#: ../src/display.c:401
+#: ../src/display.c:417
 msgid "No undo history"
 msgstr "மீட்டமை வரலாறு இல்லலை"
 
-#: ../src/display.c:416
+#: ../src/display.c:432
 msgid "No redo steps"
 msgstr "மீட்டமை படிகள் இல்லலை"
 
@@ -1805,48 +1816,48 @@ msgstr "தவறான செயல்பாடு"
 #. shift operation is performed and the display does not contain a number
 #: ../src/functions.c:273
 msgid "No sane value to do bitwise shift"
-msgstr "பிவைஸ் மாற்றுவதற்கு sane மதிப்பு இல்லை"
+msgstr "பிட் வைஸ் மாற்றுவதற்கு சேன் (sane) மதிப்பு இல்லை"
 
 #: ../src/functions.c:294 ../src/functions.c:349
 msgid "No sane value to convert"
-msgstr "மாற்றுவதற்கு sane மதிப்பு இல்லை"
+msgstr "மாற்றுவதற்கு சேன் (sane) மதிப்பு இல்லை"
 
 #: ../src/functions.c:317 ../src/functions.c:369
 msgid "No sane value to store"
-msgstr "சேமிக்க sane மதிப்பு இல்லை"
+msgstr "சேமிக்க சேன் (sane) மதிப்பு இல்லை"
 
-#: ../src/functions.c:535
+#: ../src/functions.c:534
 msgid "Invalid number for the current base"
 msgstr "நடப்பு அடிமானத்திற்கு செல்லுபடியாகாத எண்"
 
-#: ../src/functions.c:539
+#: ../src/functions.c:538
 msgid "Too long number"
 msgstr "மிகப் பெரிய எண்"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
 #. * 1 XOR -1
-#: ../src/functions.c:546
+#: ../src/functions.c:545
 msgid "Invalid bitwise operation"
 msgstr "செல்லுபடியாகாத பிட்வைஸ் செயல்பாடு "
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid modulus operation, e.g.
 #. * 6 MOD 1.2
-#: ../src/functions.c:553
+#: ../src/functions.c:552
 msgid "Invalid modulus operation"
-msgstr "செல்லுபடியாகாத மாடுலஸ் செயல்பாட்டு"
+msgstr "செல்லுபடியாகாத மாடுலஸ் செயல்பாடு"
 
 #. Translators; Error displayd to user when they
 #. * perform a bitwise operation on numbers greater
 #. * than the current word
-#: ../src/functions.c:560
+#: ../src/functions.c:559
 msgid "Overflow. Try a bigger word size"
-msgstr ""
+msgstr "நிரம்பிவிட்டது. இன்னும் பெரிய சொல் அளவை முயற்சி செய்க"
 
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../src/functions.c:570
+#: ../src/functions.c:569
 msgid "Malformed expression"
 msgstr "தவறான கோவை"
 
@@ -1901,13 +1912,13 @@ msgid "Calculator [%s] - Programming"
 msgstr "கணிப்பான் [%s] - நிரலாக்கம்"
 
 #. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../src/gtk.c:637
+#: ../src/gtk.c:645
 #, c-format
 msgid "_Other (%d) ..."
 msgstr "(_O)வேறு (%d) ..."
 
 #. Translators: Tooltip for accuracy button
-#: ../src/gtk.c:643
+#: ../src/gtk.c:651
 #, c-format
 msgid "Set accuracy from 0 to %d numeric place. [A]"
 msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
@@ -1915,211 +1926,211 @@ msgstr[0] "0 முதல் %d எண்வகை இடத்துக்க�
 msgstr[1] "0 முதல் %d எண்வகை இடங்களுக்கு துல்லியம் அமை. [A]"
 
 #. Translators: The sine button
-#: ../src/gtk.c:668
+#: ../src/gtk.c:676
 msgid "Sin"
 msgstr "சைன்"
 
 #. Translators: The inverse sine button
-#: ../src/gtk.c:670
+#: ../src/gtk.c:678
 msgid "Sin<sup>-1</sup>"
 msgstr "சைன்<sup>-1</sup>"
 
 #. Translators: The hyperbolic sine button
-#: ../src/gtk.c:672
+#: ../src/gtk.c:680
 msgid "Sinh"
 msgstr "சைன் ஹெச்"
 
 #. Translators: The inverse hyperbolic sine button
-#: ../src/gtk.c:674
+#: ../src/gtk.c:682
 msgid "Sinh<sup>-1</sup>"
 msgstr "சைன் ஹெச்<sup>-1</sup>"
 
 #. Translators: The sine tooltip
-#: ../src/gtk.c:677
+#: ../src/gtk.c:685
 msgid "Sine [k]"
 msgstr "Sine [k]"
 
 #. Translators: The inverse sine tooltip
-#: ../src/gtk.c:679
+#: ../src/gtk.c:687
 msgid "Inverse Sine [K]"
 msgstr "தலைகீழ் Sine [K]"
 
 #. Translators: The hyperbolic sine tooltip
-#: ../src/gtk.c:681
+#: ../src/gtk.c:689
 msgid "Hyperbolic Sine [k]"
 msgstr "Hyperbolic Sine [k]"
 
 #. Translators: The hyperbolic inverse sine tooltip
-#: ../src/gtk.c:683
+#: ../src/gtk.c:691
 msgid "Hyperbolic Inverse Sine [K]"
 msgstr "Hyperbolic Inverse Sine [K]"
 
 #. Translators: The cosine button
-#: ../src/gtk.c:687
+#: ../src/gtk.c:695
 msgid "Cos"
 msgstr "காஸ்"
 
 #. Translators: The inverse cosine button
-#: ../src/gtk.c:689
+#: ../src/gtk.c:697
 msgid "Cos<sup>-1</sup>"
 msgstr "காஸ்<sup>-1</sup>"
 
 #. Translators: The hyperbolic cosine button
-#: ../src/gtk.c:691
+#: ../src/gtk.c:699
 msgid "Cosh"
 msgstr "காஸ் ஹெச்"
 
 #. Translators: The inverse hyperbolic cosine button
-#: ../src/gtk.c:693
+#: ../src/gtk.c:701
 msgid "Cosh<sup>-1</sup>"
 msgstr "காஸ்ஹெச்<sup>-1</sup>"
 
 #. Translators: The cosine tooltip
-#: ../src/gtk.c:696
+#: ../src/gtk.c:704
 msgid "Cosine [j]"
 msgstr "Cosine [j]"
 
 #. Translators: The inverse cosine tooltip
-#: ../src/gtk.c:698
+#: ../src/gtk.c:706
 msgid "Inverse Cosine [J]"
 msgstr "தலைகீழ் Cosine [J]"
 
 #. Translators: The hyperbolic cosine tooltip
-#: ../src/gtk.c:700
+#: ../src/gtk.c:708
 msgid "Hyperbolic Cosine [j]"
 msgstr "Hyperbolic Cosine [j]"
 
 #. Translators: The hyperbolic inverse cosine tooltip
-#: ../src/gtk.c:702
+#: ../src/gtk.c:710
 msgid "Hyperbolic Inverse Cosine [J]"
 msgstr "Hyperbolic Inverse Cosine [J]"
 
 #. Translators: The tangent button
-#: ../src/gtk.c:706
+#: ../src/gtk.c:714
 msgid "Tan"
 msgstr "டேன்"
 
 #. Translators: The inverse tangent button
-#: ../src/gtk.c:708
+#: ../src/gtk.c:716
 msgid "Tan<sup>-1</sup>"
 msgstr "டேன்<sup>-1</sup>"
 
 #. Translators: The hyperbolic tangent button
-#: ../src/gtk.c:710
+#: ../src/gtk.c:718
 msgid "Tanh"
 msgstr "டேன் ஹெச்"
 
 #. Translators: The inverse hyperbolic tangent button
-#: ../src/gtk.c:712
+#: ../src/gtk.c:720
 msgid "Tanh<sup>-1</sup>"
 msgstr "டேன் ஹெச்<sup>-1</sup>"
 
 #. Translators: The tangent tooltip
-#: ../src/gtk.c:715
+#: ../src/gtk.c:723
 msgid "Tangent [w]"
 msgstr "Tangent [w]"
 
 #. Translators: The inverse tangent tooltip
-#: ../src/gtk.c:717
+#: ../src/gtk.c:725
 msgid "Inverse Tangent [W]"
 msgstr "தலைகீழ் Tangent [W]"
 
 #. Translators: The hyperbolic tangent tooltip
-#: ../src/gtk.c:719
+#: ../src/gtk.c:727
 msgid "Hyperbolic Tangent [w]"
 msgstr "Hyperbolic Tangent [w]"
 
 #. Translators: The hyperbolic inverse tangent tooltip
-#: ../src/gtk.c:721
+#: ../src/gtk.c:729
 msgid "Hyperbolic Inverse Tangent [W]"
 msgstr "Hyperbolic Inverse Tangent [W]"
 
 #. Translators: The natural logaritm button
-#: ../src/gtk.c:726
+#: ../src/gtk.c:734
 msgid "Ln"
 msgstr "Ln"
 
 #. Translators: The e to the power of x button
-#: ../src/gtk.c:728
+#: ../src/gtk.c:736
 msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the natural log button
-#: ../src/gtk.c:731
+#: ../src/gtk.c:739
 msgid "Natural log [n]"
 msgstr "இயல் log [n]"
 
 #. Translators: Tooltip for the e to the power of x button
-#: ../src/gtk.c:733
+#: ../src/gtk.c:741
 msgid "e to the power of the displayed value [N]"
 msgstr "e ன் வர்க்கம் காட்டப்பட்ட மதிப்பாகும் [N]"
 
 #. Translators: The 10-based logaritm button
-#: ../src/gtk.c:738
+#: ../src/gtk.c:746
 msgid "Log"
 msgstr "பதிவு "
 
 #. Translators: The 10 to the power of x button
-#: ../src/gtk.c:740
+#: ../src/gtk.c:748
 msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 10 button
-#: ../src/gtk.c:743
+#: ../src/gtk.c:751
 msgid "Base 10 log [g]"
 msgstr "அடிமானம் 10 log [g]"
 
 #. Translators: Tooltip for the 10 to the power of x button
-#: ../src/gtk.c:745
+#: ../src/gtk.c:753
 msgid "10 to the power of displayed value [G]"
 msgstr "10 ன் வர்க்கம் காட்டப்பட்ட மதிப்பாகும் [G]"
 
 #. Translators: The 2-based logaritm button
-#: ../src/gtk.c:750
+#: ../src/gtk.c:758
 msgid "Log<sub>2</sub>"
 msgstr "லாக்<sub>2</sub>"
 
 #. Translators: The 2 to the power of x button
-#: ../src/gtk.c:752
+#: ../src/gtk.c:760
 msgid "2<sup><i>x</i></sup>"
 msgstr "2<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 2 button
-#: ../src/gtk.c:755
+#: ../src/gtk.c:763
 msgid "Base 2 log [h]"
 msgstr "அடிமானம் 10 லாக் [h]"
 
 #. Translators: Tooltip for the 2 to the power of x button
-#: ../src/gtk.c:757
+#: ../src/gtk.c:765
 msgid "2 to the power of the displayed value [H]"
 msgstr "e ன் வர்க்கம் காட்டப்பட்ட மதிப்பாகும் [H]"
 
 #. Translators: The x to the power of y button
-#: ../src/gtk.c:762
+#: ../src/gtk.c:770
 msgid "x<sup><i>y</i></sup>"
 msgstr "x<sup><i>y</i></sup>"
 
 #. Translators: The x to the power of reciprocal y button
-#: ../src/gtk.c:764
+#: ../src/gtk.c:772
 msgid "x<sup>1/<i>y</i></sup>"
 msgstr "x<sup>1/<i>y</i></sup>"
 
 #. Translators: Tooltip for the x to the power of y button
-#: ../src/gtk.c:767
+#: ../src/gtk.c:775
 msgid "Raise displayed value to the power of y [o]"
 msgstr "ஏற்றி காட்டப்பட்ட மதிப்பு y ன் வர்க்கம் ஆகும் [o]"
 
 #. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../src/gtk.c:769
+#: ../src/gtk.c:777
 msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "ஏற்றி காட்டப்பட்ட மதிப்பு y ன் தலைகீழ் வர்க்கம் ஆகும் [O]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1335
+#: ../src/gtk.c:1320
 msgid "translator-credits"
 msgstr "மொழிபெயர்ப்பாளர் சன்மானம்"
 
-#: ../src/gtk.c:1339
+#: ../src/gtk.c:1324
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -2150,41 +2161,41 @@ msgstr ""
 "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:1355
+#: ../src/gtk.c:1340
 msgid "Gcalctool"
 msgstr "ஜி கால்கடூல்"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1358
+#: ../src/gtk.c:1343
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1987-2008 ஜி கால்கடூல் ஆசிரியர்கள்"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:1361
+#: ../src/gtk.c:1346
 msgid "Calculator with financial and scientific modes."
 msgstr "கணிப்பானுடன் நிதி தொடர்பான மற்றும் அறிவியல் பாங்குகள்."
 
-#: ../src/gtk.c:1523
+#: ../src/gtk.c:1504
 msgid "Unable to open help file"
 msgstr "உதவி கோப்பினை திறக்க முடியவில்லை"
 
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1952
+#: ../src/gtk.c:1919
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../src/gtk.c:2309
+#: ../src/gtk.c:2270
 msgid "Paste"
 msgstr "ஒட்டு"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:2534
+#: ../src/gtk.c:2489
 msgid "Error loading user interface"
 msgstr "பயனர் இடைமுகத்தை ஏற்றுவதில் பிழை,"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
-#: ../src/gtk.c:2539
+#: ../src/gtk.c:2494
 #, c-format
 msgid ""
 "The user interface file %s is missing or unable to be loaded. Please check "
@@ -2195,34 +2206,34 @@ msgstr ""
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2711 ../src/gtk.c:2732
+#: ../src/gtk.c:2649 ../src/gtk.c:2666
 msgid "No."
 msgstr "இல்லை."
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2714 ../src/gtk.c:2735
+#: ../src/gtk.c:2651 ../src/gtk.c:2669
 msgid "Value"
 msgstr "மதிப்பு"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2717 ../src/gtk.c:2738
+#: ../src/gtk.c:2653 ../src/gtk.c:2672
 msgid "Description"
 msgstr "விபரிப்பு"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2885
+#: ../src/gtk.c:2794
 #, c-format
 msgid "Reset to _Default (%d)"
 msgstr "(_D) முன்னிருப்புக்கு மீட்டமை (%d)"
 
-#: ../src/mp.c:1856
+#: ../src/mp.c:1854
 msgid "Negative X and non-integer Y not supported"
 msgstr "எதிர்மறை X மற்றும் முழு எண்ணில்லா Y துணையில்லை"
 
-#: ../src/mp-convert.c:525 ../src/mp-convert.c:559
+#: ../src/mp-convert.c:495 ../src/mp-convert.c:531 ../src/mp-convert.c:565
 msgid "Number too big to represent"
 msgstr "எண் காட்டுவதற்கு மிகப்பெரிது"
 
@@ -2292,4 +2303,3 @@ msgstr "கியூபிக்-செண்டிமீட்டர்-கி�
 
 #~ msgid "32-bit unsigned integer value of display ([)"
 #~ msgstr "32 பிட் குறியிடாத முழு எண் மதிப்பின் காட்சி ([)"
-
