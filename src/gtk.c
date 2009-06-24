@@ -673,13 +673,13 @@ ui_update_modifier_mode()
 {
     static char *sine_labels[]      = {
         /* Translators: The sine button */
-        N_("Sin"),
+        N_("sin"),
         /* Translators: The inverse sine button */        
-        N_("Sin<sup>-1</sup>"),
+        N_("sin<sup>−1</sup>"),
         /* Translators: The hyperbolic sine button */
-        N_("Sinh"),
+        N_("sinh"),
         /* Translators: The inverse hyperbolic sine button */
-        N_("Sinh<sup>-1</sup>")};
+        N_("sinh<sup>−1</sup>")};
     static char *sine_tooltips[]    = {
         /* Translators: The sine tooltip */
         N_("Sine [k]"),
@@ -692,13 +692,13 @@ ui_update_modifier_mode()
     static int  sine_functions[]    = {FN_SIN, FN_ASIN, FN_SINH, FN_ASINH};
     static char *cosine_labels[]    = {
         /* Translators: The cosine button */
-        N_("Cos"),
+        N_("cos"),
         /* Translators: The inverse cosine button */        
-        N_("Cos<sup>-1</sup>"),
+        N_("cos<sup>−1</sup>"),
         /* Translators: The hyperbolic cosine button */
-        N_("Cosh"),
+        N_("cosh"),
         /* Translators: The inverse hyperbolic cosine button */
-        N_("Cosh<sup>-1</sup>")};
+        N_("cosh<sup>−1</sup>")};
     static char *cosine_tooltips[]  = {
         /* Translators: The cosine tooltip */
         N_("Cosine [j]"),
@@ -711,13 +711,13 @@ ui_update_modifier_mode()
     static int  cosine_functions[]  = {FN_COS, FN_ACOS, FN_COSH, FN_ACOSH};
     static char *tangent_labels[]   = {
         /* Translators: The tangent button */
-        N_("Tan"),
+        N_("tan"),
         /* Translators: The inverse tangent button */        
-        N_("Tan<sup>-1</sup>"),
+        N_("tan<sup>−1</sup>"),
         /* Translators: The hyperbolic tangent button */
-        N_("Tanh"),
+        N_("tanh"),
         /* Translators: The inverse hyperbolic tangent button */
-        N_("Tanh<sup>-1</sup>")};
+        N_("tanh<sup>−1</sup>")};
     static char *tangent_tooltips[] = {
         /* Translators: The tangent tooltip */
         N_("Tangent [w]"),
@@ -731,36 +731,36 @@ ui_update_modifier_mode()
     
     static char *ln_labels[]        = {
         /* Translators: The natural logaritm button */
-        N_("Ln"),
+        N_("ln"),
         /* Translators: The e to the power of x button */
         N_("e<sup><i>x</i></sup>")};
     static char *ln_tooltips[]      = {
         /* Translators: Tooltip for the natural log button */
-        N_("Natural log [n]"),
+        N_("Natural logarithm [n]"),
         /* Translators: Tooltip for the e to the power of x button */
         N_("e to the power of the displayed value [N]")};
     static int ln_functions[]       = {FN_NATURAL_LOGARITHM, FN_E_POW_X};
     
     static char *log_labels[]       = {
         /* Translators: The 10-based logaritm button */
-        N_("Log"),
+        N_("log"),
         /* Translators: The 10 to the power of x button */
         N_("10<sup><i>x</i></sup>")};
     static char *log_tooltips[]     = {
         /* Translators: Tooltip for the log base 10 button */
-        N_("Base 10 log [g]"),
+        N_("Base 10 logarithm [g]"),
         /* Translators: Tooltip for the 10 to the power of x button */
         N_("10 to the power of displayed value [G]")};
     static int log_functions[]      = {FN_LOGARITHM, FN_10_POW_X};
     
     static char *log2_labels[]      = {
         /* Translators: The 2-based logaritm button */
-        N_("Log<sub>2</sub>"),
+        N_("log<sub>2</sub>"),
         /* Translators: The 2 to the power of x button */
         N_("2<sup><i>x</i></sup>")};
     static char *log2_tooltips[]    = {
         /* Translators: Tooltip for the log base 2 button */
-        N_("Base 2 log [h]"),
+        N_("Base 2 logarithm [h]"),
         /* Translators: Tooltip for the 2 to the power of x button */
         N_("2 to the power of the displayed value [H]")};
     static int log2_functions[]     = {FN_LOGARITHM2, FN_2_POW_X};

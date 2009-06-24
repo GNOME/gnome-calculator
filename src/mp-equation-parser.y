@@ -57,7 +57,6 @@
 %token tASINH
 %token tATAN
 %token tATANH
-%token tCBRT
 %token tCHS
 %token tCLR
 %token tCOS
@@ -145,7 +144,6 @@ udf:
 
 value: 
   exp {mp_set_from_mp(&$1, &$$);}
-| tPI %prec HIGH {mp_get_pi(&$$);} 
 ;
 
 exp: 
@@ -200,6 +198,7 @@ exp:
 
 term:
   number {mp_set_from_mp(&$1, &$$);}
+| tPI {mp_get_pi(&$$);}
 | rcl {mp_set_from_mp(&$1, &$$);}
 | tROOT term {mp_sqrt(&$2, &$$);}
 | tROOT3 term {mp_root(&$2, 3, &$$);}
@@ -224,6 +223,7 @@ term:
 | tADD term %prec POS {mp_set_from_mp(&$2, &$$);}
 | term '^' term {mp_xpowy(&$1, &$3, &$$);}
 
+| term func {mp_multiply(&$1, &$2, &$$);}
 | func {mp_set_from_mp(&$1, &$$);}
 | reg {mp_set_from_mp(&$1, &$$);}
 
