@@ -445,7 +445,8 @@ static struct button_widget button_widgets[] = {
 };
 #define NBUTTONS (sizeof(button_widgets) / sizeof(struct button_widget))
 
-#define UI_FILE PACKAGE_UI_DIR "/gcalctool.ui"
+#define UI_FILE      PACKAGE_UI_DIR "/gcalctool.ui"
+#define UI_FINC_FILE PACKAGE_UI_DIR "/financial.ui"
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 
@@ -551,6 +552,29 @@ typedef enum {
     POPUP_AOB,       /* Place popup above or below baseframe */
     POPUP_CENTERED   /* Center popup within baseframe */
 } PopupLocation;
+
+static void load_ui(GtkBuilder *ui, const gchar *filename)
+{
+    GError *error = NULL;
+    GtkWidget *dialog;
+
+    gtk_builder_add_from_file(ui, filename, &error);
+    if (error == NULL)
+        return;
+        
+    dialog = gtk_message_dialog_new(NULL, 0,
+                                    GTK_MESSAGE_ERROR,
+                                    GTK_BUTTONS_NONE,
+                                    /* Translators: Title of the error dialog when unable to load the UI files */
+                                    N_("Error loading user interface"));
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
+                                             /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
+                                             N_("A required file is missing, please check your installation.\n\n%s"), error->message);
+    gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
+    
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    exit(0);
+}
 
 static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gpointer value)
 {
@@ -1614,19 +1638,10 @@ finc_response_cb(GtkWidget *widget, gint response_id)
 static void
 setup_finc_dialogs(void)
 {
-    GError *error = NULL;
     int i, j;
     
-    // FIXME: Use same code as main UI
     X.financial = gtk_builder_new();
-    gtk_builder_add_from_file(X.financial, PACKAGE_UI_DIR "/financial.ui", &error);
-    if (error != NULL)
-    {
-        g_object_unref(X.financial);
-        X.financial = NULL;
-        g_warning("Error loading financial UI: %s\n", error->message);
-        return;
-    }
+    load_ui(X.financial, UI_FINC_FILE);
     
     set_int_data(X.financial, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
     set_int_data(X.financial, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
@@ -2475,28 +2490,9 @@ create_main_window()
     GtkSizeGroup *size_group;
     GtkAccelGroup *accel_group;
     GtkWidget *treeview;
-    GError *error = NULL;
    
     X.ui = gtk_builder_new();
-    gtk_builder_add_from_file(X.ui, UI_FILE, &error);
-    if (error != NULL) {
-        GtkWidget *dialog;
-        
-        dialog = gtk_message_dialog_new(NULL, 0,
-                                        GTK_MESSAGE_ERROR,
-                                        GTK_BUTTONS_NONE,
-                                        /* Translators: Title of the error dialog when unable to load the UI files */
-                                        N_("Error loading user interface"));
-        // FIXME: Use error->message
-        g_warning("Unable to load file %s: %s\n", UI_FILE, error->message);
-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-                                                 /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file */
-                                                 N_("The user interface file %s is missing or unable to be loaded. Please check your installation."), UI_FILE);
-        gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
-        
-        gtk_dialog_run(GTK_DIALOG(dialog));
-        exit(0);
-    }
+    load_ui(X.ui, UI_FILE);
     gtk_builder_connect_signals(X.ui, NULL);
 
     X.clipboard_atom   = gdk_atom_intern("CLIPBOARD", FALSE);
