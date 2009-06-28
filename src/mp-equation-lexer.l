@@ -10,6 +10,7 @@
 /*  $Header: /cvs/gnome/gcalctool/gcalctool/ce_tokeniser.l,v 1.16 2006/12/15 15:27:37 richb Exp $
  *
  *  Copyright (C) 2004-2008 Sami Pietila
+ *  Copyright (C) 2008-2009 Robert Ancell
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -35,19 +36,56 @@
 #include "calctool.h"
 #include "mp-equation.h"
 #include "mp-equation-parser.h"
+
+static int super_atoi(const char *data)
+{
+   int i, value = 0;
+   const char *digits[11] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
+   
+   while(*data != '\0') {
+      for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
+      if(digits[i] == NULL)
+         return 0;
+      value = value * 10 + i;
+      data += strlen(digits[i]);
+   }
+   
+   return value;
+}
+
+static int sub_atoi(const char *data)
+{
+   int i, value = 0;
+   const char *digits[11] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
+
+   while(*data != '\0') {
+      for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
+      if(digits[i] == NULL)
+         return 0;
+      data += strlen(digits[i]);
+      value = value * 10 + i;
+   }
+   
+   return value;
+}
 %}
 
-DECIMAL	"."|","
-SIGN	"+"|"-"|"−"
-BIN     [0-1]
-OCT     [0-7]
-DEC     [0-9]
-HEX     [0-9]|[A-F]|[a-f]
-EXP     "e"|"e+"|"e-"|"E"|"E+"|"E-"
-HEX_NUM {HEX}+|{HEX}*{DECIMAL}{HEX}*
-DEC_NUM{DEC}+|{DEC}*{DECIMAL}{DEC}*
-OCT_NUM{OCT}+|{OCT}*{DECIMAL}{OCT}*
-BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
+DECIMAL	     "."|","
+BIN          [0-1]
+OCT          [0-7]
+DEC          [0-9]
+HEX          [0-9]|[A-F]|[a-f]
+EXP          "e"|"e+"|"e-"|"E"|"E+"|"E-"
+SUPER_DIGITS "⁰"|"¹"|"²"|"³"|"⁴"|"⁵"|"⁶"|"⁷"|"⁸"|"⁹"
+SUB_DIGITS   "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
+FRACTION     "½"|"⅓"|"⅔"|"¼"|"¾"|"⅕"|"⅖"|"⅗"|"⅘"|"⅙"|"⅚"|"⅛"|"⅜"|"⅝"|"⅞"
+
+HEX_NUM {HEX}+|{HEX}*{DECIMAL}{HEX}+
+DEC_NUM {DEC}+|{DEC}*{DECIMAL}{DEC}+|{FRACTION}|{DEC}{FRACTION}
+OCT_NUM {OCT}+|{OCT}*{DECIMAL}{OCT}+
+BIN_NUM {BIN}+|{BIN}*{DECIMAL}{BIN}+
+SUP_NUM {SUPER_DIGITS}+
+SUB_NUM {SUB_DIGITS}+
 
 %%
 
@@ -77,8 +115,7 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "frac"|"Frac"|"FRAC" {return tFRAC;}
 "int"|"Int"|"INT" {return tINT;}
 "ln"|"Ln"|"LN" {return tLN;}
-"log"|"Log"|"LOG" {return tLOG10;}
-"log₂"|"Log₂"|"log_2"|"Log_2"|"LOG_2" {return tLOG2;}
+"log"|"Log"|"LOG" {return tLOG;}
 "mod"|"Mod"|"MOD" {return tMOD;}
 "¬"|"~" {return tNOT;}
 "∨"|"or"|"Or"|"OR" {return tOR;}
@@ -88,8 +125,6 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 "√"|"sqrt"|"Sqrt"|"SQRT" {return tROOT;}
 "∛"|"cbrt"|"Cbrt"|"CBRT" {return tROOT3;}
 "∜" {return tROOT4;}
-"²" {return tSQUARED;}
-"³" {return tCUBED;}
 "sto"|"Sto"|"STO" {return tSTO;}
 "trunc"|"Trunc"|"TRUNC" {return tTRUNC;}
 "ones" {return t1S;}
@@ -101,6 +136,9 @@ BIN_NUM{BIN}+|{BIN}*{DECIMAL}{BIN}*
 yylval->integer = atoi(yytext+1);  
 return tREG;
 }
+
+{SUP_NUM} { yylval->integer = super_atoi(yytext); return tSUPNUM; }
+{SUB_NUM} { yylval->integer = sub_atoi(yytext); return tSUBNUM; }
 
 {DEC_NUM}{EXP}{DEC_NUM} {
 if (_mp_equation_get_extra(yyscanner)->base == 16) REJECT;

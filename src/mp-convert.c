@@ -479,29 +479,19 @@ mp_cast_to_double(const MPNumber *x)
  * maximum number of digits specified.
  */
 void
-mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
 {
     static char digits[] = "0123456789ABCDEF";
-    char *optr, *start, *end, *stopper, *last_non_zero;
     MPNumber number, integer_component, fractional_component, MPbase, temp;
-    int i;
-   
-    optr = buffer;
-    stopper = buffer + buffer_length - 1;
+    int i, last_non_zero;
+    GString *string;
+    
+    string = g_string_sized_new(buffer_length);
 
-    /* Insert sign */
-    if (mp_is_negative(MPnumber)) {
-        if (optr + strlen("−") >= stopper) {
-            mperr(_("Number too big to represent"));
-            *optr = '\0';
-            return;
-        }
-        strcpy(optr, "−");
-        optr += strlen("−");
-        mp_abs(MPnumber, &number);
-    } else  {
-        mp_set_from_mp(MPnumber, &number);	
-    }
+    if (mp_is_negative(x))
+        mp_abs(x, &number);
+    else
+        mp_set_from_mp(x, &number);
    
     /* Add rounding factor */
     mp_set_from_integer(base, &MPbase);
@@ -515,7 +505,6 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zer
     mp_fractional_component(&number, &fractional_component);  
 
     /* Write out the integer component least significant digit to most */
-    start = optr;
     mp_set_from_mp(&integer_component, &temp);
     do {
         MPNumber t, t2, t3;
@@ -527,29 +516,13 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zer
         mp_subtract(&temp, &t2, &t3);
         mp_integer_component(&t3, &t3);
 
-        if (optr == stopper) {
-            mperr(_("Number too big to represent"));
-            *optr = '\0';
-            return;
-        }
-        *optr++ = digits[mp_cast_to_int(&t3)];
+        g_string_prepend_c(string, digits[mp_cast_to_int(&t3)]);
        
         mp_set_from_mp(&t, &temp);
     } while (!mp_is_zero(&temp));
-   
-    /* Reverse digits */
-    end = optr - 1;
-    while(start < end) {
-        char t;
-        t = *start;
-        *start = *end;
-        *end = t;
-        start++;
-        end--;
-    }
-   
-    last_non_zero = optr;
-    *optr++ = '.';
+
+    last_non_zero = string->len;
+    g_string_append_c(string, '.');
    
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
@@ -561,29 +534,24 @@ mp_cast_to_string(const MPNumber *MPnumber, int base, int accuracy, int trim_zer
         mp_integer_component(&temp, &digit);
         d = mp_cast_to_int(&digit);
        
-        if (optr == stopper) {
-            mperr(_("Number too big to represent"));
-            *optr = '\0';
-            return;
-        }        
-        *optr++ = digits[d];
+        g_string_append_c(string, digits[d]);
 
         if(d != 0)
-            last_non_zero = optr;
+            last_non_zero = string->len;
         mp_subtract(&temp, &digit, &temp);
     }
 
     /* Strip trailing zeroes */
     if (trim_zeroes || accuracy == 0)
-       optr = last_non_zero;
-
-    *optr = '\0';
+        g_string_truncate(string, last_non_zero);
     
     /* Remove negative sign if the number was rounded down to zero */
-    if (strcmp(buffer, "−0") == 0) {
-        buffer[0] = '0';
-        buffer[1] = '\0';
-    }
+    if (mp_is_negative(x) && strcmp(string->str, "0") != 0)
+        g_string_prepend(string, "−");
+    
+    // FIXME: Check for truncation
+    strncpy(buffer, string->str, buffer_length);
+    g_string_free(string, TRUE);
 }
 
 
@@ -606,81 +574,93 @@ char_val(char chr, int base)
 }
 
 
-/* Convert string into an MP number, in the given base
- */
+/* Convert string into an MP number */
 void
-mp_set_from_string(const char *str, int base, MPNumber *MPval)
+mp_set_from_string(const char *str, int base, MPNumber *z)
 {
-    const char *optr;
-    int inum;
-    int negate = 0;
+    int i, negate = 0;
+    const char *c, *end;
+    const char *fractions[] = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
+    int numerators[]        = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
+    int denominators[]      = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
+    
+    end = str;
+    while (*end != '\0')
+        end++;
 
-    optr = str;
-
-    /* Remove leading whitespace */
-    while (isspace(*optr)) {
-        optr++;
-    }
-
-    /* Check if this is a negative number. */
-    if (*optr == '-') {
+    /* Check if this is a negative number */
+    c = str;
+    if (*c == '-') {
         negate = 1;
-        optr++;
-    } else if (strncmp(optr, "−", strlen("−")) == 0) {
+        c++;
+    } else if (strncmp(c, "−", strlen("−")) == 0) {
         negate = 1;
-        optr += strlen("−");
+        c += strlen("−");
     }
 
     /* Convert integer part */
-    mp_set_from_integer(0, MPval);
-    while ((inum = char_val(*optr, base)) >= 0) {
-        mp_multiply_integer(MPval, base, MPval);
-        mp_add_integer(MPval, inum, MPval);
-        optr++;
+    mp_set_from_integer(0, z);
+    while ((i = char_val(*c, base)) >= 0) {
+        mp_multiply_integer(z, base, z);
+        mp_add_integer(z, i, z);
+        c++;
+    }
+    
+    /* Look for fraction characters */
+    for (i = 0; fractions[i] != NULL; i++) {
+        if (end - strlen(fractions[i]) < str)
+            continue;
+        if (strcmp(end - strlen(fractions[i]), fractions[i]) == 0)
+            break;
+    }
+    if (fractions[i] != NULL) {
+        MPNumber fraction;
+        mp_set_from_fraction(numerators[i], denominators[i], &fraction);
+        mp_add(z, &fraction, z);
     }
    
     /* Convert fractional part */
-    if (*optr == '.') {
+    if (*c == '.') {
         MPNumber numerator, denominator;
        
-        optr++;
+        c++;
 
         mp_set_from_integer(0, &numerator);
         mp_set_from_integer(1, &denominator);
-        while ((inum = char_val(*optr, base)) >= 0) {
+        while ((i = char_val(*c, base)) >= 0) {
             mp_multiply_integer(&denominator, base, &denominator);
             mp_multiply_integer(&numerator, base, &numerator);
-            mp_add_integer(&numerator, inum, &numerator);
-            optr++;
+            mp_add_integer(&numerator, i, &numerator);
+            c++;
         }
         mp_divide(&numerator, &denominator, &numerator);
-        mp_add(MPval, &numerator, MPval);
+        mp_add(z, &numerator, z);
     }
    
     /* Convert exponential part */
-    if (*optr == 'e' || *optr == 'E') {
+    if (*c == 'e' || *c == 'E') {
         int negate = 0;
         MPNumber MPbase, MPexponent, temp;
 
-        optr++;       
+        c++;
 
         /* Get sign */
-        if (*optr == '-') {
+        if (*c == '-') {
             negate = 1;
-            optr++;
-        } else if (strncmp(optr, "−", strlen("−")) == 0) {
+            c++;
+        } else if (strncmp(c, "−", strlen("−")) == 0) {
             negate = 1;
-            optr += strlen("−");
-        } else if (*optr == '+') {
-            optr++;
+            c += strlen("−");
+        } else if (*c == '+') {
+            c++;
         }
 
         /* Get magnitude */
         mp_set_from_integer(0, &MPexponent);
-        while ((inum = char_val(*optr, base)) >= 0) {
+        while ((i = char_val(*c, base)) >= 0) {
             mp_multiply_integer(&MPexponent, base, &MPexponent);
-            mp_add_integer(&MPexponent, inum, &MPexponent);
-            optr++;
+            mp_add_integer(&MPexponent, i, &MPexponent);
+            c++;
         }
         if (negate) {
             mp_invert_sign(&MPexponent, &MPexponent);
@@ -688,19 +668,13 @@ mp_set_from_string(const char *str, int base, MPNumber *MPval)
 
         mp_set_from_integer(base, &MPbase);       
         mp_pwr(&MPbase, &MPexponent, &temp);
-        mp_multiply(MPval, &temp, MPval);
-    }
-
-    /* Strip trailing whitespace */
-    while (isspace(*optr)) {
-        optr++;
+        mp_multiply(z, &temp, z);
     }
    
-    if (*optr != '\0') {
+    if (c != end) {
        // FIXME: Error decoding
     }
  
-    if (negate == 1) {
-        mp_invert_sign(MPval, MPval);
-    }
+    if (negate == 1)
+        mp_invert_sign(z, z);
 }

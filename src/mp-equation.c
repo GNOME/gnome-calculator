@@ -43,7 +43,7 @@ mp_equation_parse_(const char *expression, MPNumber *result, int need_result)
     state.angle_units = v->ttype;
     mp_set_from_mp(display_get_answer(&v->display), &state.ans);
     v->math_error = 0;
-        
+
     _mp_equation_lex_init_extra(&state, &yyscanner);
     buffer = _mp_equation__scan_string(expression, yyscanner);
 
