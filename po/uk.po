@@ -1,6 +1,7 @@
 # Ukrainian translation to gcalctool.
 # Copyright (C) Free Software foundation, 2003
 # This file is distributed under the same license as the gcalctool package.
+# Kyrylo Polezhajev <polezhajev@ukr.net>, 2009
 # Yury Syrota <yuriy@beer.com>
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006
 #
@@ -8,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-09 15:35+0200\n"
+"POT-Creation-Date: 2009-06-30 17:52+0300\n"
 "PO-Revision-Date: 2007-09-11 14:34+0300\n"
-"Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
+"Last-Translator: Kyrylo Polezhajev <polezhajev@ukr.net>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,1851 +19,2549 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../gcalctool/calctool.c:566
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Коефіцієнт перетворення кілометрів у милі"
+#. Payment Period Dialog: Button to calculate result
+#: ../data/financial.ui.h:2
+msgid "C_alculate"
+msgstr "Розрахувати"
 
-#: ../gcalctool/calctool.c:568
-msgid "square root of 2"
-msgstr "квадратний корінь від 2"
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/financial.ui.h:4
+msgid "C_ost:"
+msgstr "_Ціна"
 
-#: ../gcalctool/calctool.c:569
-msgid "Euler's Number (e)"
-msgstr "Число Єйлера (e)"
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/financial.ui.h:6
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Обчислює кількість періодичної оплати позики, де платежі робляться в кінці "
+"кожного періоду оплати"
 
-#: ../gcalctool/calctool.c:570
-msgid "pi"
-msgstr "Пі"
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:8
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Обчислює допустимие знецінення на активі протягом вказаного періоду часу "
+"використовуючи метод Sum-Of-The-Years-Digits"
 
-#: ../gcalctool/calctool.c:571
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Коефіцієнт перетворення сантиметрів у дюйми"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:10
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Обчислює допустимие знецінення на активі протягом вказаного періоду часу "
+"використовуючи метод double-declining balance"
 
-#: ../gcalctool/calctool.c:573
-msgid "degrees in a radian"
-msgstr "градусів у радіані"
+#. Future Value Dialog: Description of calculation
+#: ../data/financial.ui.h:12
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
 
-#: ../gcalctool/calctool.c:574
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/financial.ui.h:14
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
 
-#: ../gcalctool/calctool.c:575
-msgid "Gram-to-ounce conversion factor"
-msgstr "Коефіцієнт перетворення граму в унцію"
+#. Payment Period Dialog: Description of calculation
+#: ../data/financial.ui.h:16
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
 
-#: ../gcalctool/calctool.c:577
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Коефіцієнт перетворення кілоджоулів у британські термічні одиниці"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/financial.ui.h:18
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:580
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Коефіцієнт перетворення куб. сантиметрів у куб. дюйми"
+#. Present Value Dialog: Description of calculation
+#: ../data/financial.ui.h:20
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:591 ../gcalctool/display.c:262
-#: ../gcalctool/mp.c:1981 ../gcalctool/mpmath.c:372 ../gcalctool/mpmath.c:411
-#: ../gcalctool/mpmath.c:466
-msgid "Error"
-msgstr "Помилка"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/financial.ui.h:22
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is an error message (see the last parameter in the
-#. * getparam() call in the get_options() routine below.
-#.
-#: ../gcalctool/calctool.c:608
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:24
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+
+#. Title of Compounding Term dialog
+#: ../data/financial.ui.h:26
+msgid "Compounding Term"
+msgstr "Термін cкладного відсотка"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../data/financial.ui.h:28
+msgid "Double-Declining Depreciation"
+msgstr "Подвійне нарахування амортизації"
+
+#. Title of Future Value dialog
+#: ../data/financial.ui.h:30
+msgid "Future Value"
+msgstr "Майбутня сума"
+
+#. Payment Period Dialog: Label before future value input
+#: ../data/financial.ui.h:32
+msgid "Future _Value:"
+msgstr "Майбутня _сума:"
+
+#. Title of Gross Profit Margin dialog
+#: ../data/financial.ui.h:34 ../data/gcalctool.ui.h:209
+msgid "Gross Profit Margin"
+msgstr "Коефіцієнт валового прибутку"
+
+#. Title of Payment Period dialog
+#: ../data/financial.ui.h:36
+msgid "Payment Period"
+msgstr "Термін оплати"
+
+#. Title of Periodic Interest Rate dialog
+#: ../data/financial.ui.h:38
+msgid "Periodic Interest Rate"
+msgstr "Ставка відсотка за період"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/financial.ui.h:40
+msgid "Periodic Interest _Rate:"
+msgstr "Ставка відсотка за пе_ріод"
+
+#. Title of Periodic Payment dialog
+#: ../data/financial.ui.h:42
+msgid "Periodic Payment"
+msgstr "Регулярні платежі"
+
+#. Title of Present Value dialog
+#: ../data/financial.ui.h:44
+msgid "Present Value"
+msgstr "Поточна вартість:"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/financial.ui.h:46
+msgid "Present _Value:"
+msgstr "Поточна _вартість:"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../data/financial.ui.h:48
+msgid "Straight-Line Depreciation"
+msgstr "Рівномірне нарахування амортизації"
+
+#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#: ../data/financial.ui.h:50
+msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgstr "Амортизація за сумою років"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/financial.ui.h:52
+msgid "_Cost:"
+msgstr "_Ціна:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/financial.ui.h:54
+msgid "_Future Value:"
+msgstr "_Майбутня сума:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/financial.ui.h:56
+msgid "_Life:"
+msgstr "_Життя:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/financial.ui.h:58
+msgid "_Margin:"
+msgstr "_Запас:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/financial.ui.h:60
+msgid "_Number Of Periods:"
+msgstr "_Кількість періодів:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/financial.ui.h:62
+msgid "_Period:"
+msgstr "_Період:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/financial.ui.h:64
+msgid "_Periodic Payment:"
+msgstr "Регулярні платежі:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/financial.ui.h:66
+msgid "_Principal:"
+msgstr "_Принциповий:"
+
+#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/financial.ui.h:68
+msgid "_Salvage:"
+msgstr "_Порятунок:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/financial.ui.h:70
+msgid "_Term:"
+msgstr "Т.опл:"
+
+#. The percentage button
+#: ../data/gcalctool.ui.h:3
+#, no-c-format
+msgid "%"
+msgstr "%"
+
+#. Subtraction button
+#: ../data/gcalctool.ui.h:5
+msgid "&#x2212;"
+msgstr "&#x2212;"
+
+#. Square root button
+#: ../data/gcalctool.ui.h:7
+msgid "&#x221A;"
+msgstr "&#x221A;"
+
+#. Change sign button
+#: ../data/gcalctool.ui.h:9
+msgid "&#xB1;"
+msgstr "&#xB1;"
+
+#. Multiplication button
+#: ../data/gcalctool.ui.h:11
+msgid "&#xD7;"
+msgstr "&#xD7;"
+
+#. Division button
+#: ../data/gcalctool.ui.h:13
+msgid "&#xF7;"
+msgstr "&#xF7;"
+
+#. Start calculation group button
+#: ../data/gcalctool.ui.h:15
+msgid "("
+msgstr "("
+
+#: ../data/gcalctool.ui.h:16
+msgid "(Ln)"
+msgstr "(ln)"
+
+#: ../data/gcalctool.ui.h:17
+msgid "(Set accuracy from 0 to N numeric places [A])"
+msgstr "(Встановити точність від 0 до 9 числових позицій [A])"
+
+#: ../data/gcalctool.ui.h:18
+msgid "(X^Y)"
+msgstr "(X^Y)"
+
+#: ../data/gcalctool.ui.h:19
+#, fuzzy
+msgid "(cos)"
+msgstr "(cos)"
+
+#: ../data/gcalctool.ui.h:20
+#, fuzzy
+msgid "(log)"
+msgstr "(log)"
+
+#: ../data/gcalctool.ui.h:21
+#, fuzzy
+msgid "(log2)"
+msgstr "(log2)"
+
+#: ../data/gcalctool.ui.h:22
+#, fuzzy
+msgid "(sin)"
+msgstr "(sin)"
+
+#: ../data/gcalctool.ui.h:23
+#, fuzzy
+msgid "(tan)"
+msgstr "(tg)"
+
+#. Right bracket
+#: ../data/gcalctool.ui.h:25
+msgid ")"
+msgstr ")"
+
+#. Addition button
+#: ../data/gcalctool.ui.h:27
+msgid "+"
+msgstr "+"
+
+#. Numeric 0 button
+#: ../data/gcalctool.ui.h:29
+msgid "0"
+msgstr "0"
+
+#. Numeric 1 button
+#: ../data/gcalctool.ui.h:31
+msgid "1"
+msgstr "1"
+
+#. 1's complement
+#: ../data/gcalctool.ui.h:33
+msgid "1's"
+msgstr "До 1"
+
+#: ../data/gcalctool.ui.h:34
+msgid "1's complement [z]"
+msgstr "Доповнення до 1 [z]"
+
+#. Reciprocal button
+#: ../data/gcalctool.ui.h:36
+msgid "1/<i>x</i>"
+msgstr "1/<i>x</i>"
+
+#: ../data/gcalctool.ui.h:37
+msgid "1/x"
+msgstr "1/x"
+
+#. Right Shift Popup: Menu item to shift right by 10 bits
+#: ../data/gcalctool.ui.h:39
+msgid "10 places"
+msgstr "10 позицій"
+
+#. Right Shift Popup: Menu item to shift right by 11 bits
+#: ../data/gcalctool.ui.h:41
+msgid "11 places"
+msgstr "11 позицій"
+
+#. Right Shift Popup: Menu item to shift right by 12 bits
+#: ../data/gcalctool.ui.h:43
+msgid "12 places"
+msgstr "12 позицій"
+
+#. Right Shift Popup: Menu item to shift right by 13 bits
+#: ../data/gcalctool.ui.h:45
+msgid "13 places"
+msgstr "13 позицій"
+
+#. Right Shift Popup: Menu item to shift right by 14 bits
+#: ../data/gcalctool.ui.h:47
+msgid "14 places"
+msgstr "14 позицій"
+
+#. Label for bit 15 on the bit editor
+#: ../data/gcalctool.ui.h:49
+msgid "15"
+msgstr "15"
+
+#. Right Shift Popup: Menu item to shift right by 15 bits
+#: ../data/gcalctool.ui.h:51
+msgid "15 places"
+msgstr "15 позицій"
+
+#. Numeric 2 button
+#: ../data/gcalctool.ui.h:53
+msgid "2"
+msgstr "2"
+
+#. 2's complement
+#: ../data/gcalctool.ui.h:55
+msgid "2's"
+msgstr ""
+
+#: ../data/gcalctool.ui.h:56
+msgid "2's complement [Z]"
+msgstr ""
+
+#. Numeric 3 button
+#: ../data/gcalctool.ui.h:58
+msgid "3"
+msgstr "3"
+
+#. Label for bit 31 on the bit editor
+#: ../data/gcalctool.ui.h:60
+msgid "31"
+msgstr "31"
+
+#. Label for bit 32 on the bit editor
+#: ../data/gcalctool.ui.h:62
+msgid "32"
+msgstr "32"
+
+#. Numeric 4 button
+#: ../data/gcalctool.ui.h:64
+msgid "4"
+msgstr "4"
+
+#. Label for bit 47 on the bit editor
+#: ../data/gcalctool.ui.h:66
+msgid "47"
+msgstr "47"
+
+#. Numeric 5 button
+#: ../data/gcalctool.ui.h:68
+msgid "5"
+msgstr "5"
+
+#. Numeric 6 button
+#: ../data/gcalctool.ui.h:70
+msgid "6"
+msgstr "6"
+
+#. Label for the most significant bit (bit 63) on the bit editor
+#: ../data/gcalctool.ui.h:72
+msgid "63"
+msgstr "63"
+
+#. Numeric 7 button
+#: ../data/gcalctool.ui.h:74
+msgid "7"
+msgstr "7"
+
+#. Numeric 8 button
+#: ../data/gcalctool.ui.h:76
+msgid "8"
+msgstr "8"
+
+#. Numeric 9 button
+#: ../data/gcalctool.ui.h:78
+msgid "9"
+msgstr "9"
+
+#. Shift left button
+#: ../data/gcalctool.ui.h:80
+msgid "<"
+msgstr "<"
+
+#. Factorial
+#: ../data/gcalctool.ui.h:82
+msgid "<i>x</i>!"
+msgstr "<i>x</i>!"
+
+#. x to the power of 2 button
+#: ../data/gcalctool.ui.h:84
+msgid "<i>x</i><sup>2</sup>"
+msgstr "<i>x</i><sup>2</sup>"
+
+#. Edit Function Dialog: Note about what base numbers will be entered as
+#: ../data/gcalctool.ui.h:86
+msgid ""
+"<small><i><b>Note:</b> All constant values are specified in the decimal "
+"numeric base.</i></small>"
+msgstr ""
+"<small><i><b>Примітка:</b> Всі значення констант вказуються у десятковій "
+"системі числення.</i></small>"
+
+#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
+#: ../data/gcalctool.ui.h:88
+msgid "<span weight=\"bold\">R0</span>"
+msgstr "<span weight=\"bold\">R0</span>"
+
+#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
+#: ../data/gcalctool.ui.h:90
+msgid "<span weight=\"bold\">R1</span>"
+msgstr "<span weight=\"bold\">R1</span>"
+
+#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
+#: ../data/gcalctool.ui.h:92
+msgid "<span weight=\"bold\">R2</span>"
+msgstr "<span weight=\"bold\">R2</span>"
+
+#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
+#: ../data/gcalctool.ui.h:94
+msgid "<span weight=\"bold\">R3</span>"
+msgstr "<span weight=\"bold\">R3</span>"
+
+#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
+#: ../data/gcalctool.ui.h:96
+msgid "<span weight=\"bold\">R4</span>"
+msgstr "<span weight=\"bold\">R4</span>"
+
+#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
+#: ../data/gcalctool.ui.h:98
+msgid "<span weight=\"bold\">R5</span>"
+msgstr "<span weight=\"bold\">R5</span>"
+
+#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
+#: ../data/gcalctool.ui.h:100
+msgid "<span weight=\"bold\">R6</span>"
+msgstr "<span weight=\"bold\">R6</span>"
+
+#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
+#: ../data/gcalctool.ui.h:102
+msgid "<span weight=\"bold\">R7</span>"
+msgstr "<span weight=\"bold\">R7</span>"
+
+#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
+#: ../data/gcalctool.ui.h:104
+msgid "<span weight=\"bold\">R8</span>"
+msgstr "<span weight=\"bold\">R8</span>"
+
+#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
+#: ../data/gcalctool.ui.h:106
+msgid "<span weight=\"bold\">R9</span>"
+msgstr "<span weight=\"bold\">R9</span>"
+
+#. Solve button (clicking this solves the displayed calculation)
+#: ../data/gcalctool.ui.h:108
+msgid "="
+msgstr "="
+
+#. Shift right button
+#: ../data/gcalctool.ui.h:110
+msgid ">"
+msgstr ">"
+
+#. Hexadecimal digit A button
+#: ../data/gcalctool.ui.h:112
+msgid "A"
+msgstr "A"
+
+#. Boolean AND button
+#: ../data/gcalctool.ui.h:114
+msgid "AND"
+msgstr "AND"
+
+#. Absolute value button. Abs is short for Absolute
+#: ../data/gcalctool.ui.h:116
+msgid "Abs"
+msgstr "|x|"
+
+#: ../data/gcalctool.ui.h:117
+msgid "Absolute value"
+msgstr "Абсолютне значення"
+
+#: ../data/gcalctool.ui.h:118
+msgid "Absolute value [u]"
+msgstr "Абсолютне значення [u]"
+
+#. Accuracy button
+#: ../data/gcalctool.ui.h:120
+msgid "Acc"
+msgstr "Точн"
+
+#: ../data/gcalctool.ui.h:121
+msgid "Add"
+msgstr "Додати"
+
+#: ../data/gcalctool.ui.h:122
+msgid "Add [+]"
+msgstr "Додати [+]"
+
+#: ../data/gcalctool.ui.h:123
+msgid "Advanced"
+msgstr "Розширений"
+
+#. Hexadecimal digit B button
+#: ../data/gcalctool.ui.h:125
+msgid "B"
+msgstr "B"
+
+#: ../data/gcalctool.ui.h:126
+msgid "Backspace"
+msgstr "Повернутись"
+
+#: ../data/gcalctool.ui.h:127
+msgid "Basic"
+msgstr "Простий"
+
+#: ../data/gcalctool.ui.h:128
+msgid "Bitwise AND [&]"
+msgstr "Побітне AND [&]"
+
+#: ../data/gcalctool.ui.h:129
+msgid "Bitwise NOT [~]"
+msgstr "Побітне NOT [~]"
+
+#: ../data/gcalctool.ui.h:130
+msgid "Bitwise OR [|]"
+msgstr "Бітова операція OR [|]"
+
+#: ../data/gcalctool.ui.h:131
+msgid "Bitwise XNOR [{]"
+msgstr "Побітне XNOR [{]"
+
+#: ../data/gcalctool.ui.h:132
+msgid "Bitwise XOR [x]"
+msgstr "Бітова операція XOR [x]"
+
+#. Bksp is short for Backspace
+#: ../data/gcalctool.ui.h:134
+msgid "Bksp"
+msgstr "Видл"
+
+#. Hexadecimal digit C button
+#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1678
+msgid "C"
+msgstr "C"
+
+#. Clear displayed value button
+#: ../data/gcalctool.ui.h:138
+msgid "CE"
+msgstr "Очщ"
+
+#: ../data/gcalctool.ui.h:139
+msgid "Calculate result"
+msgstr "Обчислити результат"
+
+#: ../data/gcalctool.ui.h:140
+msgid "Calculate result [=]"
+msgstr "Обчислити результат [=]"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/gcalctool.ui.h:142
+msgid "Ch_aracter:"
+msgstr "_Символ:"
+
+#: ../data/gcalctool.ui.h:143
+msgid "Change Sign [C]"
+msgstr "Змінити знак [C]"
+
+#: ../data/gcalctool.ui.h:144
+msgid "Change sign"
+msgstr "Змінити знак"
+
+#: ../data/gcalctool.ui.h:145
+msgid "Clear"
+msgstr "Очистити"
+
+#: ../data/gcalctool.ui.h:146
+msgid "Clear displayed value [Escape]"
+msgstr "Очищає відображуване значення [Escape]"
+
+#: ../data/gcalctool.ui.h:147
+msgid "Clear displayed value and any partial calculation [Shift Delete]"
+msgstr ""
+"Очищає відображуване значення та будь-які частково виконані операції [Shift "
+"Delete]"
+
+#: ../data/gcalctool.ui.h:148
+msgid "Clear entry"
+msgstr "Очистити елемент"
+
+#. Edit Functions Dialog: Instructions in dialog
+#: ../data/gcalctool.ui.h:150
+msgid "Click a _value or description to edit it:"
+msgstr "Щоб відредагувати, натисніть на полі _значення або опису:"
+
+#. Clear display button. Clr is short for Clear
+#: ../data/gcalctool.ui.h:152
+msgid "Clr"
+msgstr "Скас"
+
+#: ../data/gcalctool.ui.h:153
+msgid "Compounding term"
+msgstr "Термін складного відсотка"
+
+#: ../data/gcalctool.ui.h:154
+msgid "Compounding term [m]"
+msgstr "Термін складного відсотка [m]"
+
+#. Constants button
+#: ../data/gcalctool.ui.h:156
+msgid "Con"
+msgstr "Кнст"
+
+#: ../data/gcalctool.ui.h:157
+msgid "Constants [#]"
+msgstr "Константи [#]"
+
+#: ../data/gcalctool.ui.h:158
+msgid "Copy selection"
+msgstr "Копіювати виділене"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/gcalctool.ui.h:160
+msgid "Ctrm"
+msgstr "Тсв"
+
+#. Hexadecimal digit D button
+#: ../data/gcalctool.ui.h:162
+msgid "D"
+msgstr "D"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:164
+msgid "Ddb"
+msgstr "Пна"
+
+#. Degrees radio button
+#: ../data/gcalctool.ui.h:166
+msgid "De_grees"
+msgstr "_Градуси"
+
+#: ../data/gcalctool.ui.h:167
+msgid "Divide"
+msgstr "Поділити"
+
+#: ../data/gcalctool.ui.h:168
+msgid "Divide [/]"
+msgstr "Поділити [/]"
+
+#: ../data/gcalctool.ui.h:169
+msgid "Double-declining depreciation"
+msgstr "Подвійне нарахування амортизації"
+
+#: ../data/gcalctool.ui.h:170
+msgid "Double-declining depreciation [D]"
+msgstr "Подвійне нарахування амортизації [D]"
+
+#. Hexadecimal digit E button
+#: ../data/gcalctool.ui.h:172
+msgid "E"
+msgstr "E"
+
+#. Engineering display radio button
+#: ../data/gcalctool.ui.h:174
+msgid "E_ng"
+msgstr "Ін_ж"
+
+#. Title of edit constants dialog
+#: ../data/gcalctool.ui.h:176
+msgid "Edit Constants"
+msgstr "Редагування констант"
+
+#. Menu item in the constants menu to show the Edit Constants dialog
+#: ../data/gcalctool.ui.h:178
+msgid "Edit Constants..."
+msgstr "Редагувати константи..."
+
+#. Title of edit functions dialog
+#: ../data/gcalctool.ui.h:180
+msgid "Edit Functions"
+msgstr "Редагування функцій"
+
+#. Menu item in the constants menu to show the Edit Functions dialog
+#: ../data/gcalctool.ui.h:182
+msgid "Edit Functions..."
+msgstr "Редагувати функції..."
+
+#: ../data/gcalctool.ui.h:183
+msgid "End group of calculations [)]"
+msgstr "Кінець групи обчислень [)]"
+
+#: ../data/gcalctool.ui.h:184
+msgid "Enter an exponential number [E]"
+msgstr "Ввести експоненціальне число [E]"
+
+#. Memory exchange button. Exch is short for Exchange
+#: ../data/gcalctool.ui.h:186
+msgid "Exch"
+msgstr "Обм"
+
+#: ../data/gcalctool.ui.h:187
+msgid "Exchange displayed value with memory register [X]"
+msgstr "Обміняти значення індикатора зі значенням у пам'яті [X]"
+
+#: ../data/gcalctool.ui.h:188
+msgid "Exchange with register"
+msgstr "Обміняти значення з регістром"
+
+#. Exponential
+#: ../data/gcalctool.ui.h:190
+msgid "Exp"
+msgstr "Exp"
+
+#. Hexadecimal digit F button
+#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1701
+msgid "F"
+msgstr "F"
+
+#: ../data/gcalctool.ui.h:193
+msgid "Factorial of displayed value [!]"
+msgstr "Факторіал показаного числа [!]"
+
+#: ../data/gcalctool.ui.h:194
+msgid "Financial"
+msgstr "Фінансовий"
+
+#. Fractional portion button
+#: ../data/gcalctool.ui.h:196
+msgid "Frac"
+msgstr "Дроб"
+
+#: ../data/gcalctool.ui.h:197
+msgid "Fractional portion"
+msgstr "Дробова частина"
+
+#: ../data/gcalctool.ui.h:198
+msgid "Fractional portion of displayed value [:]"
+msgstr "Дробова частина значення індикатора [:]"
+
+#. Functions button
+#: ../data/gcalctool.ui.h:200
+msgid "Fun"
+msgstr "Фнк"
+
+#: ../data/gcalctool.ui.h:201
+msgid "Future value"
+msgstr "Майбутня сума"
+
+#: ../data/gcalctool.ui.h:202
+msgid "Future value [v]"
+msgstr "Майбутня сума [v]"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/gcalctool.ui.h:204
+msgid "Fv"
+msgstr "Мсум"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/gcalctool.ui.h:206
+msgid "Gpm"
+msgstr "Квп"
+
+#. Gradians radio button
+#: ../data/gcalctool.ui.h:208
+msgid "Gr_adians"
+msgstr "Гр_ади"
+
+#: ../data/gcalctool.ui.h:210
+msgid "Gross Profit Margin [I]"
+msgstr "Коефіцієнт валового прибутку [I]"
+
+#: ../data/gcalctool.ui.h:211
+msgid "Gross Profit Margin [g]"
+msgstr "Коефіцієнт валового прибутку [g]"
+
+#. Hyperbolic check box
+#: ../data/gcalctool.ui.h:213
+msgid "H_yp"
+msgstr "Гі_прб"
+
+#. Base 16 radio button
+#: ../data/gcalctool.ui.h:215
+msgid "He_x"
+msgstr "_Шістн"
+
+#: ../data/gcalctool.ui.h:216
+msgid "Hexadecimal digit A [a]"
+msgstr "Шістнадцяткова цифра A [a]"
+
+#: ../data/gcalctool.ui.h:217
+msgid "Hexadecimal digit B [b]"
+msgstr "Шістнадцяткова цифра B [b]"
+
+#: ../data/gcalctool.ui.h:218
+msgid "Hexadecimal digit C [c]"
+msgstr "Шістнадцяткова цифра C [c]"
+
+#: ../data/gcalctool.ui.h:219
+msgid "Hexadecimal digit D [d]"
+msgstr "Шістнадцяткова цифра D [d]"
+
+#: ../data/gcalctool.ui.h:220
+msgid "Hexadecimal digit E [e]"
+msgstr "Шістнадцяткова цифра E [e]"
+
+#: ../data/gcalctool.ui.h:221
+msgid "Hexadecimal digit F [f]"
+msgstr "Шістнадцяткова цифра F [f]"
+
+#. Title of insert ASCII dialog
+#: ../data/gcalctool.ui.h:223
+msgid "Insert ASCII Value"
+msgstr "Вставлення значення коду ASCII"
+
+#: ../data/gcalctool.ui.h:224
+msgid "Insert ASCII value"
+msgstr "Вставка значення коду ASCII"
+
+#. Integer portion button
+#: ../data/gcalctool.ui.h:226
+msgid "Int"
+msgstr "Ціл"
+
+#: ../data/gcalctool.ui.h:227
+msgid "Integer portion"
+msgstr "Ціла частина"
+
+#: ../data/gcalctool.ui.h:228
+msgid "Integer portion of displayed value [i]"
+msgstr "Ціла частина значення індикатора [i]"
+
+#: ../data/gcalctool.ui.h:229
+msgid "Left bracket"
+msgstr "Ліва дужка"
+
+#: ../data/gcalctool.ui.h:230
+msgid "Makes the bitwise functions use 16 bit mode"
+msgstr "Використовувати 16-бітний режим для двійкових операцій"
+
+#: ../data/gcalctool.ui.h:231
+msgid "Makes the bitwise functions use 32 bit mode"
+msgstr "Використовувати 32-бітний режим для двійкових операцій"
+
+#: ../data/gcalctool.ui.h:232
+msgid "Makes the bitwise functions use 64 bit mode"
+msgstr "Використовувати 64-бітний режим для двійкових операцій"
+
+#: ../data/gcalctool.ui.h:233
+msgid "Memory Registers"
+msgstr "Регістри пам'яті"
+
+#. Modulus division button
+#: ../data/gcalctool.ui.h:235
+msgid "Mod"
+msgstr "Mod"
+
+#: ../data/gcalctool.ui.h:236
+msgid "Modulus Division [M]"
+msgstr "Залишок від цілочислового ділення [M]"
+
+#: ../data/gcalctool.ui.h:237
+msgid "Multiply"
+msgstr "Помножити"
+
+#: ../data/gcalctool.ui.h:238
+msgid "Multiply [*]"
+msgstr "Помножити [*]"
+
+#. Boolean NOT button
+#: ../data/gcalctool.ui.h:240
+msgid "NOT"
+msgstr "NOT"
+
+#: ../data/gcalctool.ui.h:241
+msgid "Numeric 0"
+msgstr "Цифра 0"
+
+#: ../data/gcalctool.ui.h:242
+msgid "Numeric 1"
+msgstr "Цифра 1"
+
+#: ../data/gcalctool.ui.h:243
+msgid "Numeric 2"
+msgstr "Цифра 2"
+
+#: ../data/gcalctool.ui.h:244
+msgid "Numeric 3"
+msgstr "Цифра 3"
+
+#: ../data/gcalctool.ui.h:245
+msgid "Numeric 4"
+msgstr "Цифра 4"
+
+#: ../data/gcalctool.ui.h:246
+msgid "Numeric 5"
+msgstr "Цифра 5"
+
+#: ../data/gcalctool.ui.h:247
+msgid "Numeric 6"
+msgstr "Цифра 6"
+
+#: ../data/gcalctool.ui.h:248
+msgid "Numeric 7"
+msgstr "Цифра 7"
+
+#: ../data/gcalctool.ui.h:249
+msgid "Numeric 8"
+msgstr "Цифра 8"
+
+#: ../data/gcalctool.ui.h:250
+msgid "Numeric 9"
+msgstr "Цифра 9"
+
+#: ../data/gcalctool.ui.h:251
+msgid "Numeric point"
+msgstr "Числова кома"
+
+#. Boolean OR button
+#: ../data/gcalctool.ui.h:253
+msgid "OR"
+msgstr "OR"
+
+#: ../data/gcalctool.ui.h:254
+msgid "Paste selection"
+msgstr "Вставити виділене"
+
+#: ../data/gcalctool.ui.h:255
+msgid "Payment period"
+msgstr "Термін оплати"
+
+#: ../data/gcalctool.ui.h:256
+msgid "Payment period [t]"
+msgstr "Термін оплати [t]"
+
+#: ../data/gcalctool.ui.h:257
+msgid "Percentage"
+msgstr "Відсоток"
+
+#: ../data/gcalctool.ui.h:259
+#, no-c-format
+msgid "Percentage [%]"
+msgstr "Відсоток  [%]"
+
+#: ../data/gcalctool.ui.h:260
+msgid "Periodic interest rate"
+msgstr "Ставка відсотка за період"
+
+#: ../data/gcalctool.ui.h:261
+msgid "Periodic interest rate [T]"
+msgstr "Ставка відсотка за період [T]"
+
+#: ../data/gcalctool.ui.h:262
+msgid "Periodic payment"
+msgstr "Регулярні платежі"
+
+#: ../data/gcalctool.ui.h:263
+msgid "Periodic payment [P]"
+msgstr "Регулярні платежі [P]"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/gcalctool.ui.h:265
+msgid "Pmt"
+msgstr "Рег.пл"
+
+#: ../data/gcalctool.ui.h:266
+msgid "Present value"
+msgstr "Поточна вартість "
+
+#: ../data/gcalctool.ui.h:267
+msgid "Present value [p]"
+msgstr "Поточна вартість [p]"
+
+#: ../data/gcalctool.ui.h:268
+msgid "Programming"
+msgstr "Програмування"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/gcalctool.ui.h:270
+msgid "Pv"
+msgstr "Пот.варт"
+
+#: ../data/gcalctool.ui.h:271
+msgid "Quit the calculator"
+msgstr "Вийти з калькулятора"
+
+#. Random number
+#: ../data/gcalctool.ui.h:273
+msgid "Rand"
+msgstr "Впдк"
+
+#: ../data/gcalctool.ui.h:274
+msgid "Random number in the range 0.0 to 1.0 [?]"
+msgstr "Випадкове число в діапазоні від 0.0 до 1.0 [?]"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/gcalctool.ui.h:276
+msgid "Rate"
+msgstr "Ставк"
+
+#. Memory recall button. Rcl is short for Recall
+#: ../data/gcalctool.ui.h:278
+msgid "Rcl"
+msgstr "Викл"
+
+#: ../data/gcalctool.ui.h:279
+msgid "Reciprocal"
+msgstr "Обернена величина"
+
+#: ../data/gcalctool.ui.h:280
+msgid "Reciprocal [r]"
+msgstr "Обернена величина [r]"
+
+#: ../data/gcalctool.ui.h:281
+msgid "Redo"
+msgstr "Повторити операцію"
+
+#: ../data/gcalctool.ui.h:282
+msgid "Remove rightmost character from displayed value [Backspace]"
+msgstr "Видаляє символ праворуч у відображуваному значенні [Backspace]"
+
+#: ../data/gcalctool.ui.h:283
+msgid "Result Region"
+msgstr "Область результату"
+
+#: ../data/gcalctool.ui.h:284
+msgid "Retrieve from register"
+msgstr "Викликати значення з пам'яті на індикатор"
+
+#: ../data/gcalctool.ui.h:285
+msgid "Retrieve memory register to display [R]"
+msgstr "Викликати значення з пам'яті на індикатор"
+
+#: ../data/gcalctool.ui.h:286
+msgid "Right bracket"
+msgstr "Права дужка"
+
+#: ../data/gcalctool.ui.h:287
+msgid "Scientific"
+msgstr "Науковий"
+
+#. Title of set precision dialog
+#: ../data/gcalctool.ui.h:289
+msgid "Set Precision"
+msgstr "Встановити точність"
+
+#: ../data/gcalctool.ui.h:290
+msgid "Set display type to engineering format"
+msgstr "Встановлює інженерний тип відображення"
+
+#: ../data/gcalctool.ui.h:291
+msgid "Set display type to fixed-point format"
+msgstr "Встановлює тип відображення з фіксованою комою"
+
+#: ../data/gcalctool.ui.h:292
+msgid "Set display type to scientific format"
+msgstr "Встановлює науковий тип відображення"
+
+#: ../data/gcalctool.ui.h:293
+msgid "Set hyperbolic option for trigonometric functions"
+msgstr "Вибрати гіперболічні варіанти тригонометричних функцій"
+
+#: ../data/gcalctool.ui.h:294
+msgid "Set inverse option for trigonometric functions"
+msgstr "Вибрати інверсні варіанти тригонометричних функцій"
+
+#: ../data/gcalctool.ui.h:295
+msgid "Set numeric base to binary (base 2)"
+msgstr "Встановлює двійкову базу числа (база 2)"
+
+#: ../data/gcalctool.ui.h:296
+msgid "Set numeric base to decimal (base 10)"
+msgstr "Встановлює десяткову базу числа (база 10)"
+
+#: ../data/gcalctool.ui.h:297
+msgid "Set numeric base to hexadecimal (base 16)"
+msgstr "Встановлює шістнадцяткову базу числа (база 16)"
+
+#: ../data/gcalctool.ui.h:298
+msgid "Set numeric base to octal (base 8)"
+msgstr "Встановлює вісімкову базу числа (база 8)"
+
+#: ../data/gcalctool.ui.h:299
+msgid "Set trigonometric type to degrees"
+msgstr "Встановлює режим тригонометричних функцій у градуси"
+
+#: ../data/gcalctool.ui.h:300
+msgid "Set trigonometric type to gradians"
+msgstr "Встановлює режим тригонометричних функцій у гради"
+
+#: ../data/gcalctool.ui.h:301
+msgid "Set trigonometric type to radians"
+msgstr "Встановлює режим тригонометричних функцій у радіани"
+
+#: ../data/gcalctool.ui.h:302
+msgid "Shift displayed value 1-15 places to the left [<]"
+msgstr "Здвинути значення на 1-15 позицій ліворуч [<]"
+
+#: ../data/gcalctool.ui.h:303
+msgid "Shift displayed value 1-15 places to the right [>]"
+msgstr "Здвинути значення на 1-15 позицій праворуч [>]"
+
+#. View|Show Thousands Separator menu item
+#: ../data/gcalctool.ui.h:305
+msgid "Show T_housands Separator"
+msgstr "Показувати розділювач _тисячних"
+
+#. Accuracy Popup: Check menu item to enable trailing zeroes
+#: ../data/gcalctool.ui.h:307
+msgid "Show _Trailing Zeroes"
+msgstr "Показувати _завершальні нулі"
+
+#: ../data/gcalctool.ui.h:308
+msgid "Show help contents"
+msgstr "Показати зміст довідки"
+
+#: ../data/gcalctool.ui.h:309
+msgid "Show memory registers"
+msgstr "Показувати регістри пам'яті"
+
+#: ../data/gcalctool.ui.h:310
+msgid "Show the About Gcalctool dialog"
+msgstr "Показати діалог \"Про програму Gcalctool\""
+
+#: ../data/gcalctool.ui.h:311
+msgid "Show thousands separator"
+msgstr "Показувати розділювач тисячних"
+
+#: ../data/gcalctool.ui.h:312
+msgid "Show trailing zeroes"
+msgstr "Показувати завершальні нулі"
+
+#. Set Precision Dialog: Label before the significant places spin button
+#: ../data/gcalctool.ui.h:314
+msgid "Significant _places:"
+msgstr "Значущі _цифри:"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:316
+msgid "Sln"
+msgstr "Рна"
+
+#: ../data/gcalctool.ui.h:317
+msgid "Square"
+msgstr "Квадрат"
+
+#: ../data/gcalctool.ui.h:318
+msgid "Square [@]"
+msgstr "Квадрат [@]"
+
+#: ../data/gcalctool.ui.h:319
+msgid "Square root"
+msgstr "Квадратний корінь"
+
+#: ../data/gcalctool.ui.h:320
+msgid "Square root [s]"
+msgstr "Квадратний корінь [s]"
+
+#: ../data/gcalctool.ui.h:321
+msgid "Start group of calculations [(]"
+msgstr "Початок групи обчислень [(]"
+
+#. Memory store button. Sto is short for Store
+#: ../data/gcalctool.ui.h:323
+msgid "Sto"
+msgstr "Зап"
+
+#: ../data/gcalctool.ui.h:324
+msgid "Store displayed value in memory register [S]"
+msgstr "Запам'ятати значення індикатора у пам'яті [S]"
+
+#: ../data/gcalctool.ui.h:325
+msgid "Store to register"
+msgstr "Регістри пам'яті"
+
+#: ../data/gcalctool.ui.h:326
+msgid "Straight-line depreciation"
+msgstr "Рівномірне нарахування амортизації"
+
+#: ../data/gcalctool.ui.h:327
+msgid "Straight-line depreciation [l]"
+msgstr "Рівномірне нарахування амортизації [l]"
+
+#: ../data/gcalctool.ui.h:328
+msgid "Subtract"
+msgstr "Відняти"
+
+#: ../data/gcalctool.ui.h:329
+msgid "Subtract [-]"
+msgstr "Відняти [-]"
+
+#: ../data/gcalctool.ui.h:330
+msgid "Sum-of-the years'-digits depreciation"
+msgstr "Амортизація за сумою років"
+
+#: ../data/gcalctool.ui.h:331
+msgid "Sum-of-the years'-digits depreciation [Y]"
+msgstr "Амортизація за сумою років [Y]"
+
+#: ../data/gcalctool.ui.h:332
+msgid "Sum-of-the years'-digits depreciation [y]"
+msgstr "Амортизація за сумою років [y]"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:334
+msgid "Syd"
+msgstr "Ам.сум.рок"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/gcalctool.ui.h:336
+msgid "Term"
+msgstr "Т.опл"
+
+#. Truncate displayed value
+#: ../data/gcalctool.ui.h:338
+msgid "Trunc"
+msgstr "Усікання"
+
+#: ../data/gcalctool.ui.h:339
+msgid "Truncate displayed value to the chosen word size ([)"
+msgstr "Усікання відображуваного значення до обраного розміру слова ([)"
+
+#: ../data/gcalctool.ui.h:340
+msgid "Undo"
+msgstr "Вернути операцію"
+
+#: ../data/gcalctool.ui.h:341
+msgid "User-defined functions [F]"
+msgstr "Функції визначені користувачем [F]"
+
+#. Boolean exclusive NOR button
+#: ../data/gcalctool.ui.h:343
+msgid "XNOR"
+msgstr "XNOR"
+
+#. Boolean exlcusive OR button
+#: ../data/gcalctool.ui.h:345
+msgid "XOR"
+msgstr "XOR"
+
+#. Accuracy Popup: Menu item to set accuracy to 0 significant places
+#: ../data/gcalctool.ui.h:347
+msgid "_0 significant places"
+msgstr "_0 значущих позицій"
+
+#. Right Shift Popup: Menu item to shift right by 1 bit
+#: ../data/gcalctool.ui.h:349
+msgid "_1 place"
+msgstr "_1 позицію"
+
+#. Accuracy Popup: Menu item to set accuracy to 1 significant place
+#: ../data/gcalctool.ui.h:351
+msgid "_1 significant place"
+msgstr "_1 значуща позиція"
+
+#. 16 bit radio button
+#: ../data/gcalctool.ui.h:353
+msgid "_16 bit"
+msgstr "_16 біт"
+
+#. Right Shift Popup: Menu item to shift right by 2 bits
+#: ../data/gcalctool.ui.h:355
+msgid "_2 places"
+msgstr "_2 позиції"
+
+#. Accuracy Popup: Menu item to set accuracy to 2 significant places
+#: ../data/gcalctool.ui.h:357
+msgid "_2 significant places"
+msgstr "_2 значущі позиції"
+
+#. Right Shift Popup: Menu item to shift right by 3 bits
+#: ../data/gcalctool.ui.h:359
+msgid "_3 places"
+msgstr "_3 позиції"
+
+#. Accuracy Popup: Menu item to set accuracy to 3 significant places
+#: ../data/gcalctool.ui.h:361
+msgid "_3 significant places"
+msgstr "_3 значущі позиції"
+
+#. 32 bit radio button
+#: ../data/gcalctool.ui.h:363
+msgid "_32 bit"
+msgstr "_32 біт"
+
+#. Right Shift Popup: Menu item to shift right by 4 bits
+#: ../data/gcalctool.ui.h:365
+msgid "_4 places"
+msgstr "_4 позиції"
+
+#. Accuracy Popup: Menu item to set accuracy to 4 significant places
+#: ../data/gcalctool.ui.h:367
+msgid "_4 significant places"
+msgstr "_4 значущі позиції"
+
+#. Right Shift Popup: Menu item to shift right by 5 bits
+#: ../data/gcalctool.ui.h:369
+msgid "_5 places"
+msgstr "_5 позицій"
+
+#. Accuracy Popup: Menu item to set accuracy to 5 significant places
+#: ../data/gcalctool.ui.h:371
+msgid "_5 significant places"
+msgstr "_5 значущих позицій"
+
+#. Right Shift Popup: Menu item to shift right by 6 bits
+#: ../data/gcalctool.ui.h:373
+msgid "_6 places"
+msgstr "_6 позицій"
+
+#. Accuracy Popup: Menu item to set accuracy to 6 significant places
+#: ../data/gcalctool.ui.h:375
+msgid "_6 significant places"
+msgstr "_6 значущих позицій"
+
+#. 64 bit radio button
+#: ../data/gcalctool.ui.h:377
+msgid "_64 bit"
+msgstr "_64 біт"
+
+#. Right Shift Popup: Menu item to shift right by 7 bits
+#: ../data/gcalctool.ui.h:379
+msgid "_7 places"
+msgstr "_7 позицій"
+
+#. Accuracy Popup: Menu item to set accuracy to 7 significant places
+#: ../data/gcalctool.ui.h:381
+msgid "_7 significant places"
+msgstr "_7 значущих позицій"
+
+#. Right Shift Popup: Menu item to shift right by 8 bits
+#: ../data/gcalctool.ui.h:383
+msgid "_8 places"
+msgstr "_8 позицій"
+
+#. Accuracy Popup: Menu item to set accuracy to 8 significant places
+#: ../data/gcalctool.ui.h:385
+msgid "_8 significant places"
+msgstr "_8 значущих позицій"
+
+#. Right Shift Popup: Menu item to shift right by 9 bits
+#: ../data/gcalctool.ui.h:387
+msgid "_9 places"
+msgstr "_9 позицій"
+
+#. Accuracy Popup: Menu item to set accuracy to 9 significant places
+#: ../data/gcalctool.ui.h:389
+msgid "_9 significant places"
+msgstr "_9 значущих позицій"
+
+#. View|Advanced menu item
+#: ../data/gcalctool.ui.h:391
+msgid "_Advanced"
+msgstr "_Розширений"
+
+#. View|Basic menu item
+#: ../data/gcalctool.ui.h:393
+msgid "_Basic"
+msgstr "_Простий"
+
+#. Base 2 radio button
+#: ../data/gcalctool.ui.h:395
+msgid "_Bin"
+msgstr "Дві_йк"
+
+#. Calculator menu
+#: ../data/gcalctool.ui.h:397
+msgid "_Calculator"
+msgstr "_Калькулятор"
+
+#. Base 10 radio button
+#: ../data/gcalctool.ui.h:399
+msgid "_Dec"
+msgstr "Де_сятк"
+
+#. Edit menu
+#: ../data/gcalctool.ui.h:401
+msgid "_Edit"
+msgstr "_Правка"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:403
+msgid "_Financial"
+msgstr "_Фінансовий"
+
+#. Fixed-point display radio button
+#: ../data/gcalctool.ui.h:405
+msgid "_Fix"
+msgstr "_Фікс"
+
+#. Help menu
+#: ../data/gcalctool.ui.h:407
+msgid "_Help"
+msgstr "_Довідка"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/gcalctool.ui.h:409
+msgid "_Insert"
+msgstr "_Вставити"
+
+#. Edit|Insert ASCII value menu item
+#: ../data/gcalctool.ui.h:411
+msgid "_Insert ASCII value..."
+msgstr "_Вставити значення коду ASCII..."
+
+#. Inverse check box
+#: ../data/gcalctool.ui.h:413
+msgid "_Inv"
+msgstr "_Звор"
+
+#. View|Memory Registers menu item
+#: ../data/gcalctool.ui.h:415
+msgid "_Memory Registers"
+msgstr "_Регістри пам'яті"
+
+#. Base 8 radio button
+#: ../data/gcalctool.ui.h:417
+msgid "_Oct"
+msgstr "_Вісімк"
+
+#. View|Programming menu item
+#: ../data/gcalctool.ui.h:419
+msgid "_Programming"
+msgstr "_Програмування"
+
+#. Radian radio button
+#: ../data/gcalctool.ui.h:421
+msgid "_Radians"
+msgstr "_Радіани"
+
+#. Scientific display radio button
+#: ../data/gcalctool.ui.h:423
+msgid "_Sci"
+msgstr "_Наук"
+
+#. View|Scientific menu item
+#: ../data/gcalctool.ui.h:425
+msgid "_Scientific"
+msgstr "_Науковий"
+
+#. Set Precision Dialog: Button to apply settings
+#: ../data/gcalctool.ui.h:427
+msgid "_Set"
+msgstr "_Встановити"
+
+#. View menu
+#: ../data/gcalctool.ui.h:429
+msgid "_View"
+msgstr "_Вигляд"
+
+#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:431
+msgid "register 0"
+msgstr "регістр 0"
+
+#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:433
+msgid "register 1"
+msgstr "регістр 1"
+
+#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:435
+msgid "register 2"
+msgstr "регістр 2"
+
+#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:437
+msgid "register 3"
+msgstr "регістр 4"
+
+#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:439
+msgid "register 4"
+msgstr "регістр 4"
+
+#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:441
+msgid "register 5"
+msgstr "регістр 5"
+
+#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:443
+msgid "register 6"
+msgstr "регістр 6"
+
+#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:445
+msgid "register 7"
+msgstr "регістр 7"
+
+#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:447
+msgid "register 8"
+msgstr "регістр 8"
+
+#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:449
+msgid "register 9"
+msgstr "регістр 9"
+
+#: ../data/gcalctool.ui.h:450
+msgid "x2"
+msgstr "x2"
+
+#. Translators: The window title when in basic mode
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:62
+msgid "Calculator"
+msgstr "Калькулятор"
+
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Виконання арифметичних, наукових або фінансових розрахунків"
+
+#: ../data/gcalctool.schemas.in.h:1
+msgid "Accuracy value"
+msgstr "Значення точності"
+
+#: ../data/gcalctool.schemas.in.h:2
+msgid "Display Mode"
+msgstr "Режим відображення"
+
+#: ../data/gcalctool.schemas.in.h:3
+msgid ""
+"Indicates whether any trailing zeroes after the number point should be shown "
+"in the display value."
+msgstr "Показує що відображуються завершальні нулі"
+
+#: ../data/gcalctool.schemas.in.h:4
+msgid "Indicates whether the memory register window is initially displayed."
+msgstr "Показує що вікно регістірв пам'яті відображується спочатку"
+
+#: ../data/gcalctool.schemas.in.h:5
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Показує що розділювачі тисяч показуються у великих числах"
+
+#: ../data/gcalctool.schemas.in.h:6
+msgid "Mode"
+msgstr "Режим"
+
+#: ../data/gcalctool.schemas.in.h:7
+msgid "Numeric Base"
+msgstr "Система числення"
+
+#: ../data/gcalctool.schemas.in.h:8
+msgid "Show Registers"
+msgstr "Показувати регістри пам'яті"
+
+#: ../data/gcalctool.schemas.in.h:9
+msgid "Show Thousands Separator"
+msgstr "Показувати рзділювач тисячних"
+
+#: ../data/gcalctool.schemas.in.h:10
+msgid "Show Trailing Zeroes"
+msgstr "Показувати завершальні нулі"
+
+#: ../data/gcalctool.schemas.in.h:11
+msgid ""
+"The initial calculator mode. Valid values are BASIC FINANCIAL LOGICAL "
+"SCIENTIFIC PROGRAMMING"
+msgstr ""
+"Початковий режим калькулятора. Правильні значення: BASIC FINANCIAL LOGICAL "
+"SCIENTIFIC PROGRAMMING"
+
+#: ../data/gcalctool.schemas.in.h:12
+msgid ""
+"The initial display mode. Valid values are ENG (engineering) FIX (fixed-"
+"point) SCI (scientific)"
+msgstr ""
+"Початковий режим відображення. Правильні значення: ENG (інженерний) FIX "
+"(фіксована кома) SCI (науковий)"
+
+#: ../data/gcalctool.schemas.in.h:13
+msgid ""
+"The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
+"(decimal) HEX (hexadecimal)"
+msgstr ""
+"Початкова система числення. Правильні значення BIN (двійкова) OCT "
+"(вісімкова) DEC (десяткова) HEX (шістнадцяткова)"
+
+#: ../data/gcalctool.schemas.in.h:14
+msgid ""
+"The initial trigonometric type. Valid values are DEG (degrees) GRAD (grads) "
+"RAD (radians)."
+msgstr ""
+"Початковий тригонометричний тип. Правильні значення: DEG (градуси) GRAD "
+"(grads) RAD (radians)."
+
+#: ../data/gcalctool.schemas.in.h:15
+msgid "The initial x-coordinate for the window"
+msgstr "Початкова x-координата вікна"
+
+#: ../data/gcalctool.schemas.in.h:16
+msgid "The initial y-coordinate for the window"
+msgstr "Початкова y-координата вікна"
+
+#: ../data/gcalctool.schemas.in.h:17
+msgid ""
+"The number of digits displayed after the numeric point. This value must be "
+"in the range 0 to 9."
+msgstr ""
+"Кількість цифр, які відображуються після коми. Це значення повинно бути від "
+"0 до 9."
+
+#: ../data/gcalctool.schemas.in.h:18
+msgid "The number of pixels to place the window from the left of the screen."
+msgstr "Кількість пікселів від вікна до лівого краю екрану"
+
+#: ../data/gcalctool.schemas.in.h:19
+msgid "The number of pixels to place the window from the top of the screen."
+msgstr "Кількість пікселів від вікна до верхнього краю екрану"
+
+#: ../data/gcalctool.schemas.in.h:20
+msgid ""
+"The size of the words used in bitwise operations. Valid values are 16 32 64."
+msgstr ""
+"Розмір слова, який використовується двійковими операціями. Правильні "
+"значеняя: 16, 32, 64."
+
+#: ../data/gcalctool.schemas.in.h:21
+msgid "Trigonometric type"
+msgstr "Тригонометричний тип"
+
+#: ../data/gcalctool.schemas.in.h:22
+msgid "Word size"
+msgstr "Розмір слова"
+
+#. Translators: Error displayed to user when the math library reports an
+#. * error
+#: ../src/calctool.c:67
 #, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s як наступний аргумент.\n"
+msgid "Error in math library function %s"
+msgstr "Помилка у функції %s математичної бібліотеки"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is the program version number.
-#.
-#: ../gcalctool/calctool.c:621
+#: ../src/calctool.c:109
 #, c-format
 msgid ""
-"%s version %s\n"
-"\n"
+"Usage:\n"
+"  %s - Perform mathematical calculations"
 msgstr ""
-"%s версії %s\n"
-"\n"
+"Використання:\n"
+"  %s - Виконує математичні розрахунки"
 
-#: ../gcalctool/calctool.c:622
+#: ../src/calctool.c:117
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "Використання: %s: [-D] [-E] [-a точність] "
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Параметри довідки:\n"
+"  -v, --version                   Показати версію випуску\n"
+"  -h, -?, --help                  Показати параметри довідки\n"
+"  --help-all                      Показати усі параметри довідки\n"
+"  --help-gtk                      Показати параметри GTK+"
 
-#: ../gcalctool/calctool.c:623
-msgid "\t\t [-?] [-v] [-h]\n"
-msgstr "\t\t [-?] [-v] [-h]\n"
+#: ../src/calctool.c:128
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Клас програми, яка використовується вікном "
+"manager\n"
+"  --name=NAME                     Назва програми, яка використовується "
+"вікном manager\n"
+"  --screen=SCREEN                 Використовувати екран X\n"
+"  --sync                          Зробтити виклики X синхронними\n"
+"  --gtk-module=MODULES            Завантажити додаткові модулі GTK+\n"
+"  --g-fatal-warnings              Робтити усі попередження фатальними"
 
-#: ../gcalctool/calctool.c:648
-msgid "-a needs accuracy value"
-msgstr "-a потребує вказування значення точності"
+#: ../src/calctool.c:141
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unittests\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Application Options:\n"
+"  -u, --unittest                  Виконує перевірку одиниць\n"
+"  -s, --solve <equation>          Розв'язує рівняння"
 
-#: ../gcalctool/calctool.c:652 ../gcalctool/get.c:237
+#. Translators: Error printed to stderr when user uses --solve argument without an equation
+#: ../src/calctool.c:177
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Аргумент --solve вимагає рівняння для розв'язання"
+
+#. Translators: Error printed to stderr when user provides an unknown command-line argument
+#: ../src/calctool.c:190
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "Невідомий аргумент '%s'"
+
+#. Translators: A log message displayed when an invalid accuracy
+#. is read from the configuration
+#: ../src/calctool.c:222
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: точність повинна бути у межах 0-%d\n"
 
-#: ../gcalctool/functions.c:189
+#: ../src/display.c:417
 msgid "No undo history"
 msgstr "Історія дій відсутня"
 
-#: ../gcalctool/functions.c:221
+#: ../src/display.c:432
 msgid "No redo steps"
 msgstr "Немає кроків для повтору"
 
-#: ../gcalctool/functions.c:577
-msgid "Invalid number for the current base"
-msgstr "Неправильне число для поточної системи числення"
-
-#: ../gcalctool/functions.c:581
-msgid "Too long number"
-msgstr "Надто велике число"
-
-#: ../gcalctool/functions.c:585
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "Неправильний параметр з двома операндами"
-
-#: ../gcalctool/functions.c:589
-msgid "Invalid modulus operation parameter(s)"
-msgstr "Неправильний параметр для модуля числа"
-
-#: ../gcalctool/functions.c:593
-msgid "Math operation error"
-msgstr "Помилка математичної операції"
-
-#: ../gcalctool/functions.c:597
-msgid "Malformed expression"
-msgstr "Неправильний вираз"
-
-#: ../gcalctool/functions.c:696
-msgid "Error, operands must be integers"
-msgstr "Помилка, операнди мають бути цілими числами"
-
-#: ../gcalctool/functions.c:923 ../gcalctool/functions.c:1278
-msgid "No sane value to convert"
-msgstr "Немає нормального значення для перетворення"
-
-#: ../gcalctool/functions.c:1023 ../gcalctool/functions.c:1351
-msgid "No sane value to store"
-msgstr "Немає нормального значення для зберігання"
-
-#: ../gcalctool/functions.c:1144
+#. Translators: This message is displayed in the status bar when an
+#. invalid user-defined function is executed
+#: ../src/functions.c:186
 msgid "Malformed function"
 msgstr "Неправильна функція"
 
-#: ../gcalctool/functions.c:1306
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Дисплей очищений, префікс без оператора не допускається"
-
-#: ../gcalctool/functions.c:1327
-msgid "Malformed parenthesis expression"
-msgstr "Неправильний вираз з дужками"
-
-#: ../gcalctool/functions.c:1503
+#. Translators: This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/functions.c:273
 msgid "No sane value to do bitwise shift"
 msgstr "Немає нормального значення для двійкового зсуву"
 
-#: ../gcalctool/get.c:258
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s: база повинна бути 2, 8, 10 або 16\n"
+#: ../src/functions.c:294 ../src/functions.c:349
+msgid "No sane value to convert"
+msgstr "Немає нормального значення для перетворення"
 
-#: ../gcalctool/get.c:273
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: неправильний режим відображення [%s]\n"
+#: ../src/functions.c:317 ../src/functions.c:369
+msgid "No sane value to store"
+msgstr "Немає нормального значення для зберігання"
 
-#: ../gcalctool/get.c:288
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: неправильний режим [%s]\n"
+#: ../src/functions.c:534
+msgid "Invalid number for the current base"
+msgstr "Неправильне число для поточної системи числення"
 
-#: ../gcalctool/get.c:302
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: неправильний тригонометричний режим [%s]\n"
+#: ../src/functions.c:538
+msgid "Too long number"
+msgstr "Надто велике число"
 
-#: ../gcalctool/get.c:320
-#, c-format
-msgid "%s: invalid syntax mode [%s]\n"
-msgstr "%s: неправильний синтаксичний режим [%s]\n"
+#. Translators: Error displayed to user when they
+#. * perform an invalid bitwise operation, e.g.
+#. * 1 XOR -1
+#: ../src/functions.c:545
+msgid "Invalid bitwise operation"
+msgstr "Неправильна операція з двома операндами"
 
-#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
-msgid "Calculator"
-msgstr "Калькулятор"
+#. Translators: Error displayed to user when they
+#. * perform an invalid modulus operation, e.g.
+#. * 6 MOD 1.2
+#: ../src/functions.c:552
+msgid "Invalid modulus operation"
+msgstr "Неправильна операція пошуку залишку від ділення"
 
-#: ../gcalctool/gtk.c:55
+#. Translators; Error displayd to user when they
+#. * perform a bitwise operation on numbers greater
+#. * than the current word
+#: ../src/functions.c:559
+msgid "Overflow. Try a bigger word size"
+msgstr "Переповнення. Спробуйте більший розмір слова"
+
+#. Translators: Error displayed to user when they
+#. * enter an invalid calculation
+#: ../src/functions.c:569
+msgid "Malformed expression"
+msgstr "Неправильний вираз"
+
+#. Translators: The window title when in advanced mode
+#: ../src/gtk.c:64
 msgid "Calculator - Advanced"
 msgstr "Калькулятор - Розширений"
 
-#: ../gcalctool/gtk.c:55
+#. Translators: The window title when in financial mode
+#: ../src/gtk.c:66
 msgid "Calculator - Financial"
 msgstr "Калькулятор - Фінансовий"
 
-#: ../gcalctool/gtk.c:56
+#. Translators: The window title when in scientific mode
+#: ../src/gtk.c:68
 msgid "Calculator - Scientific"
 msgstr "Калькулятор - Науковий"
 
-#: ../gcalctool/gtk.c:61
+#. Translators: The window title when in programming mode
+#: ../src/gtk.c:70
+msgid "Calculator - Programming"
+msgstr "Калькулятор - Програмування"
+
+#. Translators: The window title when in basic mode. %s is replaced with the hostname.
+#: ../src/gtk.c:76
 #, c-format
 msgid "Calculator [%s]"
 msgstr "Калькулятор [%s]"
 
-#: ../gcalctool/gtk.c:61
+#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
+#: ../src/gtk.c:78
 #, c-format
 msgid "Calculator [%s] - Advanced"
 msgstr "Калькулятор [%s] - Розширений"
 
-#: ../gcalctool/gtk.c:61
+#. Translators: The window title when in financial mode. %s is replaced with the hostname.
+#: ../src/gtk.c:80
 #, c-format
 msgid "Calculator [%s] - Financial"
 msgstr "Калькулятор [%s] - Фінансовий"
 
-#: ../gcalctool/gtk.c:62
+#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
+#: ../src/gtk.c:82
 #, c-format
 msgid "Calculator [%s] - Scientific"
 msgstr "Калькулятор [%s] - Науковий"
 
-#: ../gcalctool/gtk.c:510
-msgid "Activated no operator precedence mode"
-msgstr "Активовано режим без старшинства операторів"
+#. Translators: The window title when in programming mode. %s is replaced with the hostname.
+#: ../src/gtk.c:84
+#, c-format
+msgid "Calculator [%s] - Programming"
+msgstr "Калькулятор [%s] - Програмування"
 
-#: ../gcalctool/gtk.c:513
-msgid "Activated expression mode with operator precedence"
-msgstr "Активовано режим зі старшинством операторів"
+#. Translators: Title of the error dialog when unable to load the UI files
+#: ../src/gtk.c:569
+msgid "Error loading user interface"
+msgstr "Помилка при завантаженні інтерфейсу користувача"
 
-#: ../gcalctool/gtk.c:542 ../glade/gcalctool.glade.h:389
-#, no-c-format
+#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
+#: ../src/gtk.c:572
+#, fuzzy, c-format
+msgid ""
+"A required file is missing, please check your installation.\n"
+"\n"
+"%s"
+msgstr ""
+"Файл інтерфейсу користувача %s відсутній чи його неможливо завантажити. "
+"Перевірте ваше встановлення."
+
+#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
+#: ../src/gtk.c:669
+#, c-format
 msgid "_Other (%d) ..."
 msgstr "_Інша (%d) ..."
 
-#: ../gcalctool/gtk.c:546
+#. Translators: Tooltip for accuracy button
+#: ../src/gtk.c:675
 #, c-format
-msgid "Set accuracy from 0 to %d numeric places."
-msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Встановити точність від 0 до %d числової позиції"
-msgstr[1] "Встановити точність від 0 до %d числових позицій"
-msgstr[2] "Встановити точність від 0 до %d числових позицій"
+msgid "Set accuracy from 0 to %d numeric place. [A]"
+msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+msgstr[0] "Встановити точність від 0 до %d числових позицій [A]"
+msgstr[1] "Встановити точність від 0 до %d числових позицій [A]"
+msgstr[2] "Встановити точність від 0 до %d числових позицій [A]"
 
-#. Translator: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:552
-#, c-format
-msgid "Currently set to %d places."
-msgid_plural "Currently set to %d places."
-msgstr[0] "Наразі встановлено у %d позицію."
-msgstr[1] "Наразі встановлено у %d позиції."
-msgstr[2] "Наразі встановлено у %d позицій."
+#. Translators: The sine button
+#: ../src/gtk.c:700
+#, fuzzy
+msgid "sin"
+msgstr "sin"
 
-#. Factorial
-#: ../gcalctool/gtk.c:584 ../glade/gcalctool.glade.h:314
-msgid "Sin"
-msgstr "Sin"
+#. Translators: The inverse sine button
+#: ../src/gtk.c:702
+#, fuzzy
+msgid "sin<sup>−1</sup>"
+msgstr "arcsin"
 
-#: ../gcalctool/gtk.c:584
-msgid "Sinh"
-msgstr "Sinh"
+#. Translators: The hyperbolic sine button
+#: ../src/gtk.c:704
+#, fuzzy
+msgid "sinh"
+msgstr "sh"
 
-#: ../gcalctool/gtk.c:585
-msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
+#. Translators: The inverse hyperbolic sine button
+#: ../src/gtk.c:706
+#, fuzzy
+msgid "sinh<sup>−1</sup>"
+msgstr "arsh"
 
-#: ../gcalctool/gtk.c:586
-msgid "Sinh<sup>-1</sup>"
-msgstr "Sinh<sup>-1</sup>"
+#. Translators: The sine tooltip
+#: ../src/gtk.c:709
+msgid "Sine [k]"
+msgstr "Синус [k]"
 
-#. Factorial
-#: ../gcalctool/gtk.c:588 ../glade/gcalctool.glade.h:140
-msgid "Cos"
-msgstr "Cos"
+#. Translators: The inverse sine tooltip
+#: ../src/gtk.c:711
+msgid "Inverse Sine [K]"
+msgstr "Арксинус [K]"
 
-#: ../gcalctool/gtk.c:588
-msgid "Cosh"
-msgstr "Cosh"
+#. Translators: The hyperbolic sine tooltip
+#: ../src/gtk.c:713
+msgid "Hyperbolic Sine [k]"
+msgstr "Гіперболічний синус [k]"
 
-#: ../gcalctool/gtk.c:589
-msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
+#. Translators: The hyperbolic inverse sine tooltip
+#: ../src/gtk.c:715
+msgid "Hyperbolic Inverse Sine [K]"
+msgstr "Гіперболічний арксинус [K]"
 
-#: ../gcalctool/gtk.c:590
-msgid "Cosh<sup>-1</sup>"
-msgstr "Cosh<sup>-1</sup>"
+#. Translators: The cosine button
+#: ../src/gtk.c:719
+#, fuzzy
+msgid "cos"
+msgstr "cos"
 
-#. Factorial
-#: ../gcalctool/gtk.c:592 ../glade/gcalctool.glade.h:339
-msgid "Tan"
-msgstr "Tan"
+#. Translators: The inverse cosine button
+#: ../src/gtk.c:721
+#, fuzzy
+msgid "cos<sup>−1</sup>"
+msgstr "arccos"
 
-#: ../gcalctool/gtk.c:592
-msgid "Tanh"
-msgstr "Tanh"
+#. Translators: The hyperbolic cosine button
+#: ../src/gtk.c:723
+#, fuzzy
+msgid "cosh"
+msgstr "ch"
 
-#: ../gcalctool/gtk.c:593
-msgid "Tan<sup>-1</sup>"
-msgstr "Tan<sup>-1</sup>"
+#. Translators: The inverse hyperbolic cosine button
+#: ../src/gtk.c:725
+#, fuzzy
+msgid "cosh<sup>−1</sup>"
+msgstr "arch"
 
-#: ../gcalctool/gtk.c:594
-msgid "Tanh<sup>-1</sup>"
-msgstr "Tanh<sup>-1</sup>"
+#. Translators: The cosine tooltip
+#: ../src/gtk.c:728
+msgid "Cosine [j]"
+msgstr "Косинус [j]"
 
-#. Translators: When the bit editor is visible, there will be two
-#. * rows of ones and zeroes shown. When the number being displayed in
-#. * in the calculator is an integer value, these ones and zeroes will
-#. * be sensitive, and they will correspond to the value of each of
-#. * the bits in the displayed integer number. By clicking on any of
-#. * the labels for these ones and zeroes, their value can be toggled
-#. * (a one becomes a zero and a zero becomes a one), causing the
-#. * displayed integer value to be adjusted accordingly.
-#.
-#: ../gcalctool/gtk.c:690
-msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr "Активовано редактор бітів. Для зміни значень клацайте на значеннях бітів."
+#. Translators: The inverse cosine tooltip
+#: ../src/gtk.c:730
+msgid "Inverse Cosine [J]"
+msgstr "Арккосинус [J]"
 
-#: ../gcalctool/gtk.c:1151
+#. Translators: The hyperbolic cosine tooltip
+#: ../src/gtk.c:732
+msgid "Hyperbolic Cosine [j]"
+msgstr "Гіперболічний косинус [j]"
+
+#. Translators: The hyperbolic inverse cosine tooltip
+#: ../src/gtk.c:734
+msgid "Hyperbolic Inverse Cosine [J]"
+msgstr "Гіперболічний арккосинус [J]"
+
+#. Translators: The tangent button
+#: ../src/gtk.c:738
+#, fuzzy
+msgid "tan"
+msgstr "tg"
+
+#. Translators: The inverse tangent button
+#: ../src/gtk.c:740
+#, fuzzy
+msgid "tan<sup>−1</sup>"
+msgstr "arctg"
+
+#. Translators: The hyperbolic tangent button
+#: ../src/gtk.c:742
+#, fuzzy
+msgid "tanh"
+msgstr "tgh"
+
+#. Translators: The inverse hyperbolic tangent button
+#: ../src/gtk.c:744
+#, fuzzy
+msgid "tanh<sup>−1</sup>"
+msgstr "arth"
+
+#. Translators: The tangent tooltip
+#: ../src/gtk.c:747
+msgid "Tangent [w]"
+msgstr "Тангенс [w]"
+
+#. Translators: The inverse tangent tooltip
+#: ../src/gtk.c:749
+msgid "Inverse Tangent [W]"
+msgstr "Арктангенс [W]"
+
+#. Translators: The hyperbolic tangent tooltip
+#: ../src/gtk.c:751
+msgid "Hyperbolic Tangent [w]"
+msgstr "Гіперболічний тангенс [w]"
+
+#. Translators: The hyperbolic inverse tangent tooltip
+#: ../src/gtk.c:753
+msgid "Hyperbolic Inverse Tangent [W]"
+msgstr "Гіперболічний арктангенс  [W]"
+
+#. Translators: The natural logaritm button
+#: ../src/gtk.c:758
+#, fuzzy
+msgid "ln"
+msgstr "Рна"
+
+#. Translators: The e to the power of x button
+#: ../src/gtk.c:760
+msgid "e<sup><i>x</i></sup>"
+msgstr "e<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the natural log button
+#: ../src/gtk.c:763
+#, fuzzy
+msgid "Natural logarithm [n]"
+msgstr "Натуральний логарифм [n]"
+
+#. Translators: Tooltip for the e to the power of x button
+#: ../src/gtk.c:765
+msgid "e to the power of the displayed value [N]"
+msgstr "e в степені показаного числа [N]"
+
+#. Translators: The 10-based logaritm button
+#: ../src/gtk.c:770
+#, fuzzy
+msgid "log"
+msgstr "Log"
+
+#. Translators: The 10 to the power of x button
+#: ../src/gtk.c:772
+msgid "10<sup><i>x</i></sup>"
+msgstr "10<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 10 button
+#: ../src/gtk.c:775
+#, fuzzy
+msgid "Base 10 logarithm [g]"
+msgstr "Десятковий логарифм [g]"
+
+#. Translators: Tooltip for the 10 to the power of x button
+#: ../src/gtk.c:777
+msgid "10 to the power of displayed value [G]"
+msgstr "10 у степені показаного числа [G]"
+
+#. Translators: The 2-based logaritm button
+#: ../src/gtk.c:782
+#, fuzzy
+msgid "log<sub>2</sub>"
+msgstr "Log<sub>2</sub>"
+
+#. Translators: The 2 to the power of x button
+#: ../src/gtk.c:784
+msgid "2<sup><i>x</i></sup>"
+msgstr "2<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 2 button
+#: ../src/gtk.c:787
+#, fuzzy
+msgid "Base 2 logarithm [h]"
+msgstr "Двійковий логарифм [h]"
+
+#. Translators: Tooltip for the 2 to the power of x button
+#: ../src/gtk.c:789
+msgid "2 to the power of the displayed value [H]"
+msgstr "e в степені показаного числа [H]"
+
+#. Translators: The x to the power of y button
+#: ../src/gtk.c:794
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>y</i></sup>"
+
+#. Translators: The x to the power of reciprocal y button
+#: ../src/gtk.c:796
+msgid "x<sup>1/<i>y</i></sup>"
+msgstr "x<sup>1/<i>y</i></sup>"
+
+#. Translators: Tooltip for the x to the power of y button
+#: ../src/gtk.c:799
+msgid "Raise displayed value to the power of y [o]"
+msgstr "Підносить відображуване значення у степінь y [o]"
+
+#. Translators: Tooltip for the x to the power of reciprocal y button
+#: ../src/gtk.c:801
+msgid "Raise displayed value to the power of reciprocal y [O]"
+msgstr "Підносить відображуване значення у степінь зворотньої величини y [O]"
+
+#. Translators: The translator credits. Please translate this with your name(s).
+#: ../src/gtk.c:1344
 msgid "translator-credits"
-msgstr "Максим Дзюманенко <dziumanenko@gmail.com>"
+msgstr ""
+"Кирило Полежаєв <polezhajev@ukr.net>\n"
+"Максим Дзюманенко <dziumanenko@gmail.com>"
 
-#: ../gcalctool/gtk.c:1154
+#: ../src/gtk.c:1348
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-"Gcalctool - вільне програмне забезпечення; ви можете\n"
-"розповсюджувати його та/або змінювати на умовах Універсальної\n"
-"публічної ліцензії GNU версії 2 або будь-якій більш старшій версії.\n"
-
-#: ../gcalctool/gtk.c:1158
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-"Gcalctool розповсюджується з надією, що він може бути корисним,\n"
-"але БЕЗ БУДЬ-ЯКОЇ ГАРАНТІЇ, ВИРАЖЕНОЇ ЯВНО ЧИ НЕЯВНО, ВКЛЮЧНО, АЛЕ НЕ "
-"ОБМЕЖУЮЧИСЬ НЕЯВНИМИ ГАРАНТІЯМИ КОМЕРЦІЙНОЇ ЦІННОСТІ ТА ПРИДАТНОСТІ ДЛЯ "
-"ПЕВНОЇ МЕТИ. Для отримання додаткових відомостей зверніться до Універсальної "
-"Публічної Ліцензії GNU.\n"
-
-#: ../gcalctool/gtk.c:1162
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"Разом з програмою Ви мали отримати копію GNU General Public License;\n"
-"якщо це не так, напишіть у Free Software Foundation, Inc.,\n"
-" 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Gcalctool це вільне програмне забезпечення; ви можете розповсюджувати та/або "
+"модифікувати\n"
+"його дотримуючись умов GNU General Public License яка опублікована\n"
+"Фондом Вільного Програмного Забезпечення; ви можете використовувати версію 2 "
+"ліцензії, або\n"
+"будь-якою наступну версією на ваш вибір.\n"
+"\n"
+"Gcalctool розповсюджується з надією, що він буде користним,\n"
+"але БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ;. Дивіться\n"
+"GNU General Public License щоб дізнатися більше.\n"
+"\n"
+"Ви повинні були отримати копію GNU General Public License\n"
+"разом з Gcalctool; якщо ні, звертайтеся до Фонду Вільного Програмного "
+"Забезпечення, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
-#: ../gcalctool/gtk.c:1173
+#. Translators: Program name in the about dialog
+#: ../src/gtk.c:1364
 msgid "Gcalctool"
 msgstr "Калькулятор"
 
-#: ../gcalctool/gtk.c:1175
+#. Translators: Copyright notice in the about dialog
+#: ../src/gtk.c:1367
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Автори Gcalctool"
 
-#: ../gcalctool/gtk.c:1177
+#. Translators: Short description in the about dialog
+#: ../src/gtk.c:1370
 msgid "Calculator with financial and scientific modes."
-msgstr "Калькулятор з фінансовими і науковими функціями"
+msgstr "Калькулятор з фінансовими і науковими функціями."
 
-#: ../gcalctool/gtk.c:1479 ../glade/gcalctool.glade.h:119
-msgid "C"
-msgstr "C"
+#: ../src/gtk.c:1528
+msgid "Unable to open help file"
+msgstr "Неможливо відкрити файл довідки"
 
-#: ../gcalctool/gtk.c:1497 ../glade/gcalctool.glade.h:170
-msgid "F"
-msgstr "F"
-
-#: ../gcalctool/gtk.c:1671
-msgid "Changing Modes Clears Calculation"
-msgstr "Зміна режиму роботи призводить до очищення розрахунків"
-
-#: ../gcalctool/gtk.c:1674
-msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-"При зміні режиму, поточні розрахунки очищаються, та встановлюється десяткова "
-"система числення."
-
-#: ../gcalctool/gtk.c:1678
-msgid "_Do not warn me again"
-msgstr "_Не попереджувати надалі."
-
-#: ../gcalctool/gtk.c:1683
-msgid "C_hange Mode"
-msgstr "З_мінити режим"
-
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1820
+#. Translators: R is the short form of register used inter alia in popup menus
+#: ../src/gtk.c:1934
 msgid "R"
 msgstr "R"
 
-#: ../gcalctool/gtk.c:2186
-msgid "Clipboard contained malformed calculation"
-msgstr "Буфер обміну містить некоректний результат обчислень"
-
-#: ../gcalctool/gtk.c:2258
+#. FIXME: WTF?
+#: ../src/gtk.c:2285
 msgid "Paste"
 msgstr "Вставити"
 
-#: ../gcalctool/gtk.c:2531
-msgid "Error loading user interface"
-msgstr "Помилка при завантаженні інтерфейсу користувача"
-#: ../gcalctool/gtk.c:2533
-#, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"Файл інтерфейсу користувача %s відсутній чи його неможливо завантажити. Перевірте ваше встановлення."
-
-#: ../gcalctool/gtk.c:2761 ../gcalctool/gtk.c:2779
+#. Translators: Edit Constants Dialog: Constant number column title
+#. Translators: Edit Functions Dialog: Function number column title
+#: ../src/gtk.c:2645 ../src/gtk.c:2662
 msgid "No."
 msgstr "№"
 
-#: ../gcalctool/gtk.c:2763 ../gcalctool/gtk.c:2781
+#. Translators: Edit Constants Dialog: Constant value column title
+#. Translators: Edit Functions Dialog: Function value column title
+#: ../src/gtk.c:2647 ../src/gtk.c:2665
 msgid "Value"
 msgstr "Значення"
 
-#: ../gcalctool/gtk.c:2765 ../gcalctool/gtk.c:2783
+#. Translators: Edit Constants Dialog: Constant description column title
+#. Translators: Edit Functions Dialog: Function description column title
+#: ../src/gtk.c:2649 ../src/gtk.c:2668
 msgid "Description"
 msgstr "Опис"
 
 #. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2921 ../glade/gcalctool.glade.h:269
-#, no-c-format
+#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
+#: ../src/gtk.c:2790
+#, c-format
 msgid "Reset to _Default (%d)"
 msgstr "Скинути на _типову (%d)"
 
-#: ../gcalctool/mp.c:3364
+#: ../src/mp.c:1854
 msgid "Negative X and non-integer Y not supported"
 msgstr "Від'ємні X з не цілими Y не підтримуються"
 
-#: ../gcalctool/mpmath.c:273
-msgid "Error, cannot calculate cosine"
-msgstr "Помилка, не вдається обчислити косинус"
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Виконання арифметичних, наукових або фінансових розрахунків"
-
-#. This is a percentage sign
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Left bracket
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#: ../glade/gcalctool.glade.h:12
-msgid "+"
-msgstr "+"
-
-#. Numeric point
-#: ../glade/gcalctool.glade.h:14
-msgid "."
-msgstr ","
-
-#. Numeric 0
-#: ../glade/gcalctool.glade.h:16
-msgid "0"
-msgstr "0"
-
-#. Numeric 1
-#: ../glade/gcalctool.glade.h:18
-msgid "1"
-msgstr "1"
-
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#: ../glade/gcalctool.glade.h:21
-msgid "10 places"
-msgstr "10 позицій"
-
-#: ../glade/gcalctool.glade.h:22
-msgid "10 to the power of displayed value [}]"
-msgstr "10 у степені показаного числа [}]"
-
-#: ../glade/gcalctool.glade.h:23
-msgid "10 to the x"
-msgstr "10 у степені x"
-
-#. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:25
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#: ../glade/gcalctool.glade.h:26
-msgid "10x"
-msgstr "10x"
-
-#: ../glade/gcalctool.glade.h:27
-msgid "11 places"
-msgstr "11 позицій"
-
-#: ../glade/gcalctool.glade.h:28
-msgid "12 places"
-msgstr "12 позицій"
-
-#: ../glade/gcalctool.glade.h:29
-msgid "13 places"
-msgstr "13 позицій"
-
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 позицій"
-
-#: ../glade/gcalctool.glade.h:31
-msgid "15"
-msgstr "15"
-
-#: ../glade/gcalctool.glade.h:32
-msgid "15 places"
-msgstr "15 позицій"
-
-#: ../glade/gcalctool.glade.h:33
-msgid "16 bit unsigned integer"
-msgstr "16 бітне беззнакове ціле"
-
-#: ../glade/gcalctool.glade.h:34
-msgid "16-bit unsigned integer value of display (])"
-msgstr "Вивести у вигляді 16-бітного беззнакового цілого (])"
-
-#. Numeric 2
-#: ../glade/gcalctool.glade.h:36
-msgid "2"
-msgstr "2"
-
-#. Numeric 3
-#: ../glade/gcalctool.glade.h:38
-msgid "3"
-msgstr "3"
-
-#: ../glade/gcalctool.glade.h:39
-msgid "31"
-msgstr "31"
-
-#: ../glade/gcalctool.glade.h:40
-msgid "32"
-msgstr "32"
-
-#: ../glade/gcalctool.glade.h:41
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "Вивести у вигляді 32-бітного беззнакового цілого ([)"
-
-#. Numeric 4
-#: ../glade/gcalctool.glade.h:43
-msgid "4"
-msgstr "4"
-
-#: ../glade/gcalctool.glade.h:44
-msgid "47"
-msgstr "47"
-
-#. Numeric 5
-#: ../glade/gcalctool.glade.h:46
-msgid "5"
-msgstr "5"
-
-#. Numeric 6
-#: ../glade/gcalctool.glade.h:48
-msgid "6"
-msgstr "6"
-
-#: ../glade/gcalctool.glade.h:49
-msgid "63"
-msgstr "63"
-
-#. Numeric 7
-#: ../glade/gcalctool.glade.h:51
-msgid "7"
-msgstr "7"
-
-#. Numeric 8
-#: ../glade/gcalctool.glade.h:53
-msgid "8"
-msgstr "8"
-
-#. Numeric 9
-#: ../glade/gcalctool.glade.h:55
-msgid "9"
-msgstr "9"
-
-#. Shift left
-#: ../glade/gcalctool.glade.h:57
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:59
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x squared. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:61
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. X to the power of y. Note that this label uses mark up and the "y" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:63
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../glade/gcalctool.glade.h:64
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Примітка:</b> Всі значення констант вказуються у десятковій системі числення.</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:66
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:68
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:70
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. This is the calculate result button (=)
-#: ../glade/gcalctool.glade.h:86
-msgid "="
-msgstr "="
-
-#. Shift right
-#: ../glade/gcalctool.glade.h:88
-msgid ">"
-msgstr ">"
-
-#: ../glade/gcalctool.glade.h:89
-msgid "A"
-msgstr "A"
-
-#: ../glade/gcalctool.glade.h:90
-msgid "AND"
-msgstr "AND"
-
-#: ../glade/gcalctool.glade.h:91
-msgid "A_rithmetic Precedence"
-msgstr "Використовувати _арифметичну точність"
-
-#. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:93
-msgid "Abs"
-msgstr "|x|"
-
-#: ../glade/gcalctool.glade.h:94
-msgid "Absolute value"
-msgstr "Абсолютне значення"
-
-#: ../glade/gcalctool.glade.h:95
-msgid "Absolute value [u]"
-msgstr "Абсолютне значення [u]"
-
-#. Accuracy
-#: ../glade/gcalctool.glade.h:97
-msgid "Acc"
-msgstr "Точн"
-
-#: ../glade/gcalctool.glade.h:98
-msgid "Accuracy"
-msgstr "Точність"
-
-#: ../glade/gcalctool.glade.h:99
-msgid "Add"
-msgstr "Додати"
-
-#: ../glade/gcalctool.glade.h:100
-msgid "Add [+]"
-msgstr "Додати [+]"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "Advanced"
-msgstr "Розширений"
-
-#: ../glade/gcalctool.glade.h:102
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:103
-msgid "Backspace"
-msgstr "Повернутись"
-
-#: ../glade/gcalctool.glade.h:104
-msgid "Base 10 log [G]"
-msgstr "Десятковий логарифм [G]"
-
-#: ../glade/gcalctool.glade.h:105
-msgid "Base 2 log [H]"
-msgstr "Двійковий логарифм [H]"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Basic"
-msgstr "Простий"
-
-#: ../glade/gcalctool.glade.h:107
-msgid "Bitwise AND"
-msgstr "Побітне AND"
-
-#: ../glade/gcalctool.glade.h:108
-msgid "Bitwise AND [&]"
-msgstr "Побітне AND [&]"
-
-#: ../glade/gcalctool.glade.h:109
-msgid "Bitwise NOT"
-msgstr "Побітне NOT"
-
-#: ../glade/gcalctool.glade.h:110
-msgid "Bitwise NOT [~]"
-msgstr "Побітне NOT [~]"
-
-#: ../glade/gcalctool.glade.h:111
-msgid "Bitwise OR"
-msgstr "Побітне OR"
-
-#: ../glade/gcalctool.glade.h:112
-msgid "Bitwise OR [|]"
-msgstr "Бітова операція OR [|]"
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Bitwise XNOR"
-msgstr "Побітне XNOR"
-
-#: ../glade/gcalctool.glade.h:114
-msgid "Bitwise XNOR [n]"
-msgstr "Побітне XNOR [n]"
-
-#: ../glade/gcalctool.glade.h:115
-msgid "Bitwise XOR"
-msgstr "Побітне XOR"
-
-#: ../glade/gcalctool.glade.h:116
-msgid "Bitwise XOR [x]"
-msgstr "Бітова операція XOR [x]"
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:118
-msgid "Bksp"
-msgstr "Видл"
-
-#: ../glade/gcalctool.glade.h:120
-msgid "CE"
-msgstr "Очщ"
-
-#: ../glade/gcalctool.glade.h:121
-msgid "Calculate result"
-msgstr "Обчислити результат"
-
-#: ../glade/gcalctool.glade.h:122
-msgid "Calculate result [=]"
-msgstr "Обчислити результат [=]"
-
-#: ../glade/gcalctool.glade.h:123
-msgid "Ch_aracter:"
-msgstr "_Символ:"
-
-#: ../glade/gcalctool.glade.h:124
-msgid "Change Sign [C]"
-msgstr "Змінити знак [C]"
-
-#: ../glade/gcalctool.glade.h:125
-msgid "Change sign"
-msgstr "Змінити знак"
-
-#: ../glade/gcalctool.glade.h:126
-msgid "Clear"
-msgstr "Очистити"
-
-#: ../glade/gcalctool.glade.h:127
-msgid "Clear displayed value [Escape]"
-msgstr "Очищає відображуване значення [Escape]"
-
-#: ../glade/gcalctool.glade.h:128
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Очищає відображуване значення та будь-які частково виконані операції [Shift Delete]"
-
-#: ../glade/gcalctool.glade.h:129
-msgid "Clear entry"
-msgstr "Очистити елемент"
-
-#: ../glade/gcalctool.glade.h:130
-msgid "Click a _value or description to edit it:"
-msgstr "Щоб відредагувати, натисніть на полі _значення або опису:"
-
-#. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:132
-msgid "Clr"
-msgstr "Скас"
-
-#: ../glade/gcalctool.glade.h:133
-msgid "Compounding term"
-msgstr "Термін складного відсотка"
-
-#: ../glade/gcalctool.glade.h:134
-msgid "Compounding term [m]"
-msgstr "Термін складного відсотка [m]"
-
-#: ../glade/gcalctool.glade.h:135
-msgid "Con"
-msgstr "Кнст"
-
-#: ../glade/gcalctool.glade.h:136
-msgid "Constants"
-msgstr "Константи"
-
-#: ../glade/gcalctool.glade.h:137
-msgid "Constants [#]"
-msgstr "Константи [#]"
-
-#: ../glade/gcalctool.glade.h:138
-msgid "Copy selection"
-msgstr "Копіювати виділене"
-
-#: ../glade/gcalctool.glade.h:141
-msgid "Cosine [J]"
-msgstr "Косинус [J]"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:145
-msgid "Ctrm"
-msgstr "Тсв"
-
-#: ../glade/gcalctool.glade.h:146
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:149
-msgid "Ddb"
-msgstr "Пна"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "De_grees"
-msgstr "_Градуси"
-
-#: ../glade/gcalctool.glade.h:151
-msgid "Divide"
-msgstr "Поділити"
-
-#: ../glade/gcalctool.glade.h:152
-msgid "Divide [/]"
-msgstr "Поділити [/]"
-
-#: ../glade/gcalctool.glade.h:153
-msgid "Double-declining depreciation"
-msgstr "Подвійне нарахування амортизації"
-
-#: ../glade/gcalctool.glade.h:154
-msgid "Double-declining depreciation [D]"
-msgstr "Подвійне нарахування амортизації [D]"
-
-#: ../glade/gcalctool.glade.h:155
-msgid "E"
-msgstr "E"
-
-#: ../glade/gcalctool.glade.h:156
-msgid "E to the x"
-msgstr "E у степені x"
-
-#: ../glade/gcalctool.glade.h:157
-msgid "E_ng"
-msgstr "Ін_ж"
-
-#: ../glade/gcalctool.glade.h:158
-msgid "Edit Constants"
-msgstr "Редагування констант"
-
-#: ../glade/gcalctool.glade.h:159
-msgid "Edit Constants..."
-msgstr "Редагувати константи..."
-
-#: ../glade/gcalctool.glade.h:160
-msgid "Edit Functions"
-msgstr "Редагування функцій"
-
-#: ../glade/gcalctool.glade.h:161
-msgid "Edit Functions..."
-msgstr "Редагувати функції..."
-
-#: ../glade/gcalctool.glade.h:162
-msgid "End group of calculations [)]"
-msgstr "Кінець групи обчислень [)]"
-
-#: ../glade/gcalctool.glade.h:163
-msgid "Enter an exponential number [E]"
-msgstr "Ввести експоненціальне число [E]"
-
-#. Exchange with register
-#: ../glade/gcalctool.glade.h:165
-msgid "Exch"
-msgstr "Обм"
-
-#: ../glade/gcalctool.glade.h:166
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Обміняти значення індикатора зі значенням у пам'яті [X]"
-
-#: ../glade/gcalctool.glade.h:167
-msgid "Exchange with register"
-msgstr "Обміняти значення з регістром"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:169
-msgid "Exp"
-msgstr "Exp"
-
-#: ../glade/gcalctool.glade.h:171
-msgid "Factorial"
-msgstr "Факторіал"
-
-#: ../glade/gcalctool.glade.h:172
-msgid "Factorial of displayed value [!]"
-msgstr "Факторіал показаного числа [!]"
-
-#: ../glade/gcalctool.glade.h:173
-msgid "Financial"
-msgstr "Фінансовий"
-
-#. Fractional portion
-#: ../glade/gcalctool.glade.h:175
-msgid "Frac"
-msgstr "Дроб"
-
-#: ../glade/gcalctool.glade.h:176
-msgid "Fractional portion"
-msgstr "Дробова частина"
-
-#: ../glade/gcalctool.glade.h:177
-msgid "Fractional portion of displayed value [:]"
-msgstr "Дробова частина значення індикатора [:]"
-
-#: ../glade/gcalctool.glade.h:178
-msgid "Fun"
-msgstr "Фнк"
-
-#: ../glade/gcalctool.glade.h:179
-msgid "Future value"
-msgstr "Майбутня сума"
-
-#: ../glade/gcalctool.glade.h:180
-msgid "Future value [v]"
-msgstr "Майбутня сума [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:183
-msgid "Fv"
-msgstr "Мсум"
-
-#: ../glade/gcalctool.glade.h:184
-msgid "Gr_adians"
-msgstr "Гр_ади"
-
-#: ../glade/gcalctool.glade.h:185
-msgid "H_yp"
-msgstr "Гі_прб"
-
-#: ../glade/gcalctool.glade.h:186
-msgid "He_x"
-msgstr "_Шістн"
-
-#: ../glade/gcalctool.glade.h:187
-msgid "Hexadecimal digit A"
-msgstr "Шістнадцяткова цифра A"
-
-#: ../glade/gcalctool.glade.h:188
-msgid "Hexadecimal digit A [a]"
-msgstr "Шістнадцяткова цифра A [a]"
-
-#: ../glade/gcalctool.glade.h:189
-msgid "Hexadecimal digit B"
-msgstr "Шістнадцяткова цифра B"
-
-#: ../glade/gcalctool.glade.h:190
-msgid "Hexadecimal digit B [b]"
-msgstr "Шістнадцяткова цифра B [b]"
-
-#: ../glade/gcalctool.glade.h:191
-msgid "Hexadecimal digit C"
-msgstr "Шістнадцяткова цифра C"
-
-#: ../glade/gcalctool.glade.h:192
-msgid "Hexadecimal digit C [c]"
-msgstr "Шістнадцяткова цифра C [c]"
-
-#: ../glade/gcalctool.glade.h:193
-msgid "Hexadecimal digit D"
-msgstr "Шістнадцяткова цифра D"
-
-#: ../glade/gcalctool.glade.h:194
-msgid "Hexadecimal digit D [d]"
-msgstr "Шістнадцяткова цифра D [d]"
-
-#: ../glade/gcalctool.glade.h:195
-msgid "Hexadecimal digit E"
-msgstr "Шістнадцяткова цифра E"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Hexadecimal digit E [e]"
-msgstr "Шістнадцяткова цифра E [e]"
-
-#: ../glade/gcalctool.glade.h:197
-msgid "Hexadecimal digit F"
-msgstr "Шістнадцяткова цифра F"
-
-#: ../glade/gcalctool.glade.h:198
-msgid "Hexadecimal digit F [f]"
-msgstr "Шістнадцяткова цифра F [f]"
-
-#: ../glade/gcalctool.glade.h:199
-msgid "Insert ASCII Value"
-msgstr "Вставлення значення коду ASCII"
-
-#: ../glade/gcalctool.glade.h:200
-msgid "Insert ASCII value"
-msgstr "Вставка значення коду ASCII"
-
-#. Integer portion
-#: ../glade/gcalctool.glade.h:202
-msgid "Int"
-msgstr "Ціл"
-
-#: ../glade/gcalctool.glade.h:203
-msgid "Integer portion"
-msgstr "Ціла частина"
-
-#: ../glade/gcalctool.glade.h:204
-msgid "Integer portion of displayed value [i]"
-msgstr "Ціла частина значення індикатора [i]"
-
-#: ../glade/gcalctool.glade.h:205
-msgid "Left bracket"
-msgstr "Ліва дужка"
-
-#. Natural logarithm
-#: ../glade/gcalctool.glade.h:207
-msgid "Ln"
-msgstr "Ln"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:209
-msgid "Log<sub>10</sub>"
-msgstr "Log<sub>10</sub>"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:211
-msgid "Log<sub>2</sub>"
-msgstr "Log<sub>2</sub>"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Memory Registers"
-msgstr "Регістри пам'яті"
-
-#: ../glade/gcalctool.glade.h:213
-msgid "Mod"
-msgstr "Mod"
-
-#: ../glade/gcalctool.glade.h:214
-msgid "Modulus Division [M]"
-msgstr "Залишок від цілочислового ділення [M]"
-
-#: ../glade/gcalctool.glade.h:215
-msgid "Multiply"
-msgstr "Помножити"
-
-#: ../glade/gcalctool.glade.h:216
-msgid "Multiply [*]"
-msgstr "Помножити [*]"
-
-#: ../glade/gcalctool.glade.h:217
-msgid "NOT"
-msgstr "NOT"
-
-#: ../glade/gcalctool.glade.h:218
-msgid "Natural log [N]"
-msgstr "Натуральний логарифм [N]"
-
-#: ../glade/gcalctool.glade.h:219
-msgid "Numeric 0"
-msgstr "Цифра 0"
-
-#: ../glade/gcalctool.glade.h:220
-msgid "Numeric 1"
-msgstr "Цифра 1"
-
-#: ../glade/gcalctool.glade.h:221
-msgid "Numeric 2"
-msgstr "Цифра 2"
-
-#: ../glade/gcalctool.glade.h:222
-msgid "Numeric 3"
-msgstr "Цифра 3"
-
-#: ../glade/gcalctool.glade.h:223
-msgid "Numeric 4"
-msgstr "Цифра 4"
-
-#: ../glade/gcalctool.glade.h:224
-msgid "Numeric 5"
-msgstr "Цифра 5"
-
-#: ../glade/gcalctool.glade.h:225
-msgid "Numeric 6"
-msgstr "Цифра 6"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Numeric 7"
-msgstr "Цифра 7"
-
-#: ../glade/gcalctool.glade.h:227
-msgid "Numeric 8"
-msgstr "Цифра 8"
-
-#: ../glade/gcalctool.glade.h:228
-msgid "Numeric 9"
-msgstr "Цифра 9"
-
-#: ../glade/gcalctool.glade.h:229
-msgid "Numeric point"
-msgstr "Числова кома"
-
-#: ../glade/gcalctool.glade.h:230
-msgid "OR"
-msgstr "OR"
-
-#: ../glade/gcalctool.glade.h:231
-msgid "Paste selection"
-msgstr "Вставити виділене"
-
-#: ../glade/gcalctool.glade.h:232
-msgid "Payment period"
-msgstr "Термін оплати"
-
-#: ../glade/gcalctool.glade.h:233
-msgid "Payment period [t]"
-msgstr "Термін оплати [t]"
-
-#: ../glade/gcalctool.glade.h:234
-msgid "Percentage"
-msgstr "Відсоток"
-
-#: ../glade/gcalctool.glade.h:236
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Відсоток  [%]"
-
-#: ../glade/gcalctool.glade.h:237
-msgid "Periodic interest rate"
-msgstr "Ставка відсотка за період"
-
-#: ../glade/gcalctool.glade.h:238
-msgid "Periodic interest rate [T]"
-msgstr "Ставка відсотка за період [T]"
-
-#: ../glade/gcalctool.glade.h:239
-msgid "Periodic payment"
-msgstr "Регулярні платежі"
-
-#: ../glade/gcalctool.glade.h:240
-msgid "Periodic payment [P]"
-msgstr "Регулярні платежі [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:243
-msgid "Pmt"
-msgstr "Рег.пл"
-
-#: ../glade/gcalctool.glade.h:244
-msgid "Present value"
-msgstr "Поточна вартість "
-
-#: ../glade/gcalctool.glade.h:245
-msgid "Present value [p]"
-msgstr "Поточна вартість [p]"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:248
-msgid "Pv"
-msgstr "Пот.варт"
-
-#: ../glade/gcalctool.glade.h:249
-msgid "Quit the calculator"
-msgstr "Вийти з калькулятора"
-
-#: ../glade/gcalctool.glade.h:250
-msgid "Raise displayed value to the power of y [^]"
-msgstr "Підносить відображуване значення у степінь y [^]"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:252
-msgid "Rand"
-msgstr "Впдк"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Random number"
-msgstr "Випадкове число"
-
-#: ../glade/gcalctool.glade.h:254
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Випадкове число в діапазоні від 0.0 до 1.0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:261
-msgid "Rate"
-msgstr "Ставк"
-
-#. Retrieve from register
-#: ../glade/gcalctool.glade.h:263
-msgid "Rcl"
-msgstr "Викл"
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Reciprocal"
-msgstr "Обернена величина"
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Reciprocal [r]"
-msgstr "Обернена величина [r]"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Redo"
-msgstr "Повторити операцію"
-
-#: ../glade/gcalctool.glade.h:267
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "Видаляє символ праворуч у відображуваному значенні [Backspace]"
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Result Region"
-msgstr "Область результату"
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Retrieve from register"
-msgstr "Викликати значення з пам'яті на індикатор"
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Retrieve memory register to display [R]"
-msgstr "Викликати значення з пам'яті на індикатор"
-
-#: ../glade/gcalctool.glade.h:273
-msgid "Right bracket"
-msgstr "Права дужка"
-
-#: ../glade/gcalctool.glade.h:274
-msgid "Scientific"
-msgstr "Науковий"
-
-#: ../glade/gcalctool.glade.h:275
-msgid "Set Precision"
-msgstr "Встановити точність"
-
-#: ../glade/gcalctool.glade.h:276
-msgid "Set accuracy from 0 to 9 numeric places [A]"
-msgstr "Встановити точність від 0 до 9 числових позицій [A]"
-
-#: ../glade/gcalctool.glade.h:277
-msgid "Set display type to engineering format"
-msgstr "Встановлює інженерний тип відображення"
-
-#: ../glade/gcalctool.glade.h:278
-msgid "Set display type to fixed-point format"
-msgstr "Встановлює тип відображення з фіксованою комою"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Set display type to scientific format"
-msgstr "Встановлює науковий тип відображення"
-
-#: ../glade/gcalctool.glade.h:280
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Вибрати гіперболічні варіанти тригонометричних функцій"
-
-#: ../glade/gcalctool.glade.h:281
-msgid "Set inverse option for trigonometric functions"
-msgstr "Вибрати інверсні варіанти тригонометричних функцій"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Set numeric base to binary (base 2)"
-msgstr "Встановлює двійкову базу числа (база 2)"
-
-#: ../glade/gcalctool.glade.h:283
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Встановлює десяткову базу числа (база 10)"
-
-#: ../glade/gcalctool.glade.h:284
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Встановлює шістнадцяткову базу числа (база 16)"
-
-#: ../glade/gcalctool.glade.h:285
-msgid "Set numeric base to octal (base 8)"
-msgstr "Встановлює вісімкову базу числа (база 8)"
-
-#: ../glade/gcalctool.glade.h:286
-msgid "Set trigonometric type to degrees"
-msgstr "Встановлює режим тригонометричних функцій у градуси"
-
-#: ../glade/gcalctool.glade.h:287
-msgid "Set trigonometric type to gradians"
-msgstr "Встановлює режим тригонометричних функцій у гради"
-
-#: ../glade/gcalctool.glade.h:288
-msgid "Set trigonometric type to radians"
-msgstr "Встановлює режим тригонометричних функцій у радіани"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Здвинути значення на 1-15 позицій ліворуч [<]"
-
-#: ../glade/gcalctool.glade.h:290
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Здвинути значення на 1-15 позицій праворуч [>]"
-
-#: ../glade/gcalctool.glade.h:291
-msgid "Shift left"
-msgstr "Здвинути ліворуч"
-
-#: ../glade/gcalctool.glade.h:292
-msgid "Shift right"
-msgstr "Здвинути праворуч"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:296
-msgid "Show Bit Editor"
-msgstr "Показати редактор бітів"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:300
-msgid "Show Bit _Editor"
-msgstr "Показати _редактор бітів"
-
-#: ../glade/gcalctool.glade.h:301
-msgid "Show T_housands Separator"
-msgstr "Показувати розділювач _тисячних"
-
-#: ../glade/gcalctool.glade.h:302
-msgid "Show _Trailing Zeroes"
-msgstr "Показувати _завершальні нулі"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:306
-msgid "Show bit editor"
-msgstr "Показати редактор бітів"
-
-#: ../glade/gcalctool.glade.h:307
-msgid "Show help contents"
-msgstr "Показати зміст довідки"
-
-#: ../glade/gcalctool.glade.h:308
-msgid "Show memory registers"
-msgstr "Показувати регістри пам'яті"
-
-#: ../glade/gcalctool.glade.h:309
-msgid "Show the About Gcalctool dialog"
-msgstr "Показати діалог \"Про програму Gcalctool\""
-
-#: ../glade/gcalctool.glade.h:310
-msgid "Show thousands separator"
-msgstr "Показувати розділювач тисячних"
-
-#: ../glade/gcalctool.glade.h:311
-msgid "Show trailing zeroes"
-msgstr "Показувати завершальні нулі"
-
-#: ../glade/gcalctool.glade.h:312
-msgid "Significant _places:"
-msgstr "Значущі _цифри:"
-
-#: ../glade/gcalctool.glade.h:315
-msgid "Sine [K]"
-msgstr "Синус [K]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:318
-msgid "Sln"
-msgstr "Рна"
-
-#: ../glade/gcalctool.glade.h:319
-msgid "Square"
-msgstr "Квадрат"
-
-#: ../glade/gcalctool.glade.h:320
-msgid "Square [@]"
-msgstr "Квадрат [@]"
-
-#: ../glade/gcalctool.glade.h:321
-msgid "Square root"
-msgstr "Квадратний корінь"
-
-#: ../glade/gcalctool.glade.h:322
-msgid "Square root [s]"
-msgstr "Квадратний корінь [s]"
-
-#: ../glade/gcalctool.glade.h:323
-msgid "Start group of calculations [(]"
-msgstr "Початок групи обчислень [(]"
-
-#. Store to register
-#: ../glade/gcalctool.glade.h:325
-msgid "Sto"
-msgstr "Зап"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Store displayed value in memory register [S]"
-msgstr "Запам'ятати значення індикатора у пам'яті [S]"
-
-#: ../glade/gcalctool.glade.h:327
-msgid "Store to register"
-msgstr "Регістри пам'яті"
-
-#: ../glade/gcalctool.glade.h:328
-msgid "Straight-line depreciation"
-msgstr "Рівномірне нарахування амортизації"
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Straight-line depreciation [l]"
-msgstr "Рівномірне нарахування амортизації [l]"
-
-#: ../glade/gcalctool.glade.h:330
-msgid "Subtract"
-msgstr "Відняти"
-
-#: ../glade/gcalctool.glade.h:331
-msgid "Subtract [-]"
-msgstr "Відняти [-]"
-
-#: ../glade/gcalctool.glade.h:332
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Амортизація за сумою років"
-
-#: ../glade/gcalctool.glade.h:333
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Амортизація за сумою років [y]"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:337
-msgid "Syd"
-msgstr "Ам.сум.рок"
-
-#: ../glade/gcalctool.glade.h:340
-msgid "Tangent [L]"
-msgstr "Тангенс [L]"
-
-#: ../glade/gcalctool.glade.h:341
-msgid "Ten to the x"
-msgstr "Десять у степені x"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:344
-msgid "Term"
-msgstr "Т.опл"
-
-#: ../glade/gcalctool.glade.h:345
-msgid "Undo"
-msgstr "Вернути операцію"
-
-#: ../glade/gcalctool.glade.h:346
-msgid "Use Arithmetic Precedence"
-msgstr "Використовувати арифметичну точність"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "Use Left-right Precedence"
-msgstr "Старшинство операцій с_права-наліво"
-
-#: ../glade/gcalctool.glade.h:348
-msgid "User-defined functions"
-msgstr "Функції визначені користувачем"
-
-#: ../glade/gcalctool.glade.h:349
-msgid "User-defined functions [F]"
-msgstr "Функції визначені користувачем [F]"
-
-#: ../glade/gcalctool.glade.h:350
-msgid "X to the y"
-msgstr "X в степені y"
-
-#: ../glade/gcalctool.glade.h:351
-msgid "XNOR"
-msgstr "XNOR"
-
-#: ../glade/gcalctool.glade.h:352
-msgid "XOR"
-msgstr "XOR"
-
-#: ../glade/gcalctool.glade.h:353
-msgid "_0 significant places"
-msgstr "_0 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:354
-msgid "_1 place"
-msgstr "_1 позицію"
-
-#: ../glade/gcalctool.glade.h:355
-msgid "_1 significant place"
-msgstr "_1 значуща позиція"
-
-#: ../glade/gcalctool.glade.h:356
-msgid "_2 places"
-msgstr "_2 позиції"
-
-#: ../glade/gcalctool.glade.h:357
-msgid "_2 significant places"
-msgstr "_2 значущі позиції"
-
-#: ../glade/gcalctool.glade.h:358
-msgid "_3 places"
-msgstr "_3 позиції"
-
-#: ../glade/gcalctool.glade.h:359
-msgid "_3 significant places"
-msgstr "_3 значущі позиції"
-
-#: ../glade/gcalctool.glade.h:360
-msgid "_4 places"
-msgstr "_4 позиції"
-
-#: ../glade/gcalctool.glade.h:361
-msgid "_4 significant places"
-msgstr "_4 значущі позиції"
-
-#: ../glade/gcalctool.glade.h:362
-msgid "_5 places"
-msgstr "_5 позицій"
-
-#: ../glade/gcalctool.glade.h:363
-msgid "_5 significant places"
-msgstr "_5 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:364
-msgid "_6 places"
-msgstr "_6 позицій"
-
-#: ../glade/gcalctool.glade.h:365
-msgid "_6 significant places"
-msgstr "_6 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:366
-msgid "_7 places"
-msgstr "_7 позицій"
-
-#: ../glade/gcalctool.glade.h:367
-msgid "_7 significant places"
-msgstr "_7 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:368
-msgid "_8 places"
-msgstr "_8 позицій"
-
-#: ../glade/gcalctool.glade.h:369
-msgid "_8 significant places"
-msgstr "_8 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:370
-msgid "_9 places"
-msgstr "_9 позицій"
-
-#: ../glade/gcalctool.glade.h:371
-msgid "_9 significant places"
-msgstr "_9 значущих позицій"
-
-#: ../glade/gcalctool.glade.h:372
-msgid "_Advanced"
-msgstr "_Розширений"
-
-#: ../glade/gcalctool.glade.h:373
-msgid "_Basic"
-msgstr "_Простий"
-
-#: ../glade/gcalctool.glade.h:374
-msgid "_Bin"
-msgstr "Дві_йк"
-
-#: ../glade/gcalctool.glade.h:375
-msgid "_Calculator"
-msgstr "_Калькулятор"
-
-#: ../glade/gcalctool.glade.h:376
-msgid "_Contents"
-msgstr "_Зміст"
-
-#: ../glade/gcalctool.glade.h:377
-msgid "_Dec"
-msgstr "Де_сятк"
-
-#: ../glade/gcalctool.glade.h:378
-msgid "_Edit"
-msgstr "_Правка"
-
-#: ../glade/gcalctool.glade.h:379
-msgid "_Financial"
-msgstr "_Фінансовий"
-
-#: ../glade/gcalctool.glade.h:380
-msgid "_Fix"
-msgstr "_Фікс"
-
-#: ../glade/gcalctool.glade.h:381
-msgid "_Help"
-msgstr "_Довідка"
-
-#: ../glade/gcalctool.glade.h:382
-msgid "_Insert"
-msgstr "_Вставити"
-
-#: ../glade/gcalctool.glade.h:383
-msgid "_Insert ASCII value..."
-msgstr "_Вставити значення коду ASCII..."
-
-#: ../glade/gcalctool.glade.h:384
-msgid "_Inv"
-msgstr "_Інв"
-
-#: ../glade/gcalctool.glade.h:385
-msgid "_Left-to-right Precedence"
-msgstr "Старшинство операцій з_ліва-направо"
-
-#: ../glade/gcalctool.glade.h:386
-msgid "_Memory Registers"
-msgstr "_Регістри пам'яті"
-
-#: ../glade/gcalctool.glade.h:387
-msgid "_Oct"
-msgstr "_Вісімк"
-
-#: ../glade/gcalctool.glade.h:390
-msgid "_Radians"
-msgstr "_Радіани"
-
-#: ../glade/gcalctool.glade.h:391
-msgid "_Redo"
-msgstr "Пов_торити"
-
-#: ../glade/gcalctool.glade.h:392
-msgid "_Sci"
-msgstr "_Наук"
-
-#: ../glade/gcalctool.glade.h:393
-msgid "_Scientific"
-msgstr "_Науковий"
-
-#: ../glade/gcalctool.glade.h:394
-msgid "_Set"
-msgstr "_Встановити"
-
-#: ../glade/gcalctool.glade.h:395
-msgid "_Undo"
-msgstr "В_ернути"
-
-#: ../glade/gcalctool.glade.h:396
-msgid "_View"
-msgstr "_Вигляд"
-
-#: ../glade/gcalctool.glade.h:397
-msgid "e to the power of displayed value [{]"
-msgstr "e в степені показаного числа [{]"
-
-#. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:399
-msgid "e<sup>x</sup>"
-msgstr "e<sup>x</sup>"
-
-#: ../glade/gcalctool.glade.h:400
-msgid "ex"
-msgstr "ex"
-
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
-msgid "register 0"
-msgstr "регістр 0"
-
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
-msgid "register 1"
-msgstr "регістр 1"
-
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
-msgid "register 2"
-msgstr "регістр 2"
-
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
-msgid "register 3"
-msgstr "регістр 4"
-
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
-msgid "register 4"
-msgstr "регістр 4"
-
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
-msgid "register 5"
-msgstr "регістр 5"
-
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
-msgid "register 6"
-msgstr "регістр 6"
-
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
-msgid "register 7"
-msgstr "регістр 7"
-
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
-msgid "register 8"
-msgstr "регістр 8"
-
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:440
-msgid "register 9"
-msgstr "регістр 9"
-
-#: ../glade/gcalctool.glade.h:441
-msgid "x2"
-msgstr "x2"
-
-#: ../glade/gcalctool.glade.h:442
-msgid "xy"
-msgstr "xy"
-
-#. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:444
-msgid "±"
-msgstr "±"
-
-#. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:446
-msgid "×"
-msgstr "×"
-
-#. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:448
-msgid "÷"
-msgstr "÷"
-
-#. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:450
-msgid "−"
-msgstr "−"
-
-#. This is a square root sign
-#: ../glade/gcalctool.glade.h:452
-msgid "√"
-msgstr "√"
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:411
+msgid "Tangent is infinite"
+msgstr "Тангенс нескінченний"
 
+#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
+#: ../src/register.c:40
+msgid "Kilometer-to-mile conversion factor"
+msgstr "Коефіцієнт перетворення кілометрів у милі"
+
+#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
+#: ../src/register.c:42
+msgid "square root of 2"
+msgstr "квадратний корінь від 2"
 
+#. Translators: This is the label for the default constant, Euler's number (2.71828)
+#: ../src/register.c:44
+msgid "Euler's Number (e)"
+msgstr "Число Ейлера (e)"
+
+#. Translators: This is the label for the default constant, π (3.14159)
+#: ../src/register.c:46
+msgid "π"
+msgstr "Число Пі (π)"
+
+#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
+#: ../src/register.c:48
+msgid "Centimeter-to-inch conversion factor"
+msgstr "Коефіцієнт перетворення сантиметрів у дюйми"
+
+#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
+#: ../src/register.c:50
+msgid "degrees in a radian"
+msgstr "градусів у радіані"
+
+#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
+#: ../src/register.c:52
+msgid "2 ^ 20"
+msgstr "2 ^ 20"
+
+#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
+#: ../src/register.c:54
+msgid "Gram-to-ounce conversion factor"
+msgstr "Коефіцієнт перетворення граму в унцію"
+
+#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
+#: ../src/register.c:56
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
+msgstr "Коефіцієнт перетворення кілоджоулів у британські термічні одиниці"
+
+#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
+#: ../src/register.c:58
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+msgstr "Коефіцієнт перетворення куб. сантиметрів у куб. дюйми"
+
+#~ msgid "Ln"
+#~ msgstr "Ln"
+
+#~ msgid "Number too big to represent"
+#~ msgstr "Число дуже велике для відображення"
+
+#~ msgid "pi"
+#~ msgstr "Пі"
+
+#~ msgid "Error"
+#~ msgstr "Помилка"
+
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s як наступний аргумент.\n"
+
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s версії %s\n"
+#~ "\n"
+
+#~ msgid "Usage: %s: [-D] [-E] [-a accuracy] "
+#~ msgstr "Використання: %s: [-D] [-E] [-a точність] "
+
+#~ msgid "\t\t [-?] [-v] [-h]\n"
+#~ msgstr "\t\t [-?] [-v] [-h]\n"
+
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-a потребує вказування значення точності"
+
+#~ msgid "Math operation error"
+#~ msgstr "Помилка математичної операції"
+
+#~ msgid "Error, operands must be integers"
+#~ msgstr "Помилка, операнди мають бути цілими числами"
+
+#~ msgid "Cleared display, prefix without an operator is not allowed"
+#~ msgstr "Дисплей очищений, префікс без оператора не допускається"
+
+#~ msgid "Malformed parenthesis expression"
+#~ msgstr "Неправильний вираз з дужками"
+
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s: база повинна бути 2, 8, 10 або 16\n"
+
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: неправильний режим відображення [%s]\n"
+
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: неправильний режим [%s]\n"
+
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: неправильний тригонометричний режим [%s]\n"
+
+#~ msgid "%s: invalid syntax mode [%s]\n"
+#~ msgstr "%s: неправильний синтаксичний режим [%s]\n"
+
+#~ msgid "Activated no operator precedence mode"
+#~ msgstr "Активовано режим без старшинства операторів"
+
+#~ msgid "Activated expression mode with operator precedence"
+#~ msgstr "Активовано режим зі старшинством операторів"
+
+#~ msgid "Set accuracy from 0 to %d numeric places."
+#~ msgid_plural "Set accuracy from 0 to %d numeric places."
+#~ msgstr[0] "Встановити точність від 0 до %d числової позиції"
+#~ msgstr[1] "Встановити точність від 0 до %d числових позицій"
+#~ msgstr[2] "Встановити точність від 0 до %d числових позицій"
+
+#~ msgid "Currently set to %d places."
+#~ msgid_plural "Currently set to %d places."
+#~ msgstr[0] "Наразі встановлено у %d позицію."
+#~ msgstr[1] "Наразі встановлено у %d позиції."
+#~ msgstr[2] "Наразі встановлено у %d позицій."
+
+#~ msgid "Bit editor activated. Click on bit values to toggle them."
+#~ msgstr ""
+#~ "Активовано редактор бітів. Для зміни значень клацайте на значеннях бітів."
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ msgstr ""
+#~ "Gcalctool - вільне програмне забезпечення; ви можете\n"
+#~ "розповсюджувати його та/або змінювати на умовах Універсальної\n"
+#~ "публічної ліцензії GNU версії 2 або будь-якій більш старшій версії.\n"
+
+#~ msgid ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ msgstr ""
+#~ "Gcalctool розповсюджується з надією, що він може бути корисним,\n"
+#~ "але БЕЗ БУДЬ-ЯКОЇ ГАРАНТІЇ, ВИРАЖЕНОЇ ЯВНО ЧИ НЕЯВНО, ВКЛЮЧНО, АЛЕ НЕ "
+#~ "ОБМЕЖУЮЧИСЬ НЕЯВНИМИ ГАРАНТІЯМИ КОМЕРЦІЙНОЇ ЦІННОСТІ ТА ПРИДАТНОСТІ ДЛЯ "
+#~ "ПЕВНОЇ МЕТИ. Для отримання додаткових відомостей зверніться до "
+#~ "Універсальної Публічної Ліцензії GNU.\n"
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgstr ""
+#~ "Разом з програмою Ви мали отримати копію GNU General Public License;\n"
+#~ "якщо це не так, напишіть у Free Software Foundation, Inc.,\n"
+#~ " 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+
+#~ msgid "Changing Modes Clears Calculation"
+#~ msgstr "Зміна режиму роботи призводить до очищення розрахунків"
+
+#~ msgid ""
+#~ "When you change modes, the current calculation will be cleared, and the "
+#~ "base will be reset to decimal."
+#~ msgstr ""
+#~ "При зміні режиму, поточні розрахунки очищаються, та встановлюється "
+#~ "десяткова система числення."
+
+#~ msgid "_Do not warn me again"
+#~ msgstr "_Не попереджувати надалі."
+
+#~ msgid "C_hange Mode"
+#~ msgstr "З_мінити режим"
+
+#~ msgid "Clipboard contained malformed calculation"
+#~ msgstr "Буфер обміну містить некоректний результат обчислень"
+
+#~ msgid "Error, cannot calculate cosine"
+#~ msgstr "Помилка, не вдається обчислити косинус"
+
+#~ msgid "&16"
+#~ msgstr "&16"
+
+#~ msgid "&32"
+#~ msgstr "&32"
+
+#~ msgid "."
+#~ msgstr ","
+
+#~ msgid "10 to the x"
+#~ msgstr "10 у степені x"
+
+#~ msgid "10x"
+#~ msgstr "10x"
+
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "16 бітне беззнакове ціле"
+
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "Вивести у вигляді 16-бітного беззнакового цілого (])"
+
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "Вивести у вигляді 32-бітного беззнакового цілого ([)"
+
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+
+#~ msgid "A_rithmetic Precedence"
+#~ msgstr "Використовувати _арифметичну точність"
+
+#~ msgid "Bitwise AND"
+#~ msgstr "Побітне AND"
+
+#~ msgid "Bitwise NOT"
+#~ msgstr "Побітне NOT"
+
+#~ msgid "Bitwise OR"
+#~ msgstr "Побітне OR"
+
+#~ msgid "Bitwise XNOR"
+#~ msgstr "Побітне XNOR"
+
+#~ msgid "Bitwise XOR"
+#~ msgstr "Побітне XOR"
+
+#~ msgid "Constants"
+#~ msgstr "Константи"
+
+#~ msgid "E to the x"
+#~ msgstr "E у степені x"
+
+#~ msgid "Factorial"
+#~ msgstr "Факторіал"
+
+#~ msgid "Hexadecimal digit A"
+#~ msgstr "Шістнадцяткова цифра A"
+
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "Шістнадцяткова цифра B"
+
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "Шістнадцяткова цифра C"
+
+#~ msgid "Hexadecimal digit D"
+#~ msgstr "Шістнадцяткова цифра D"
+
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "Шістнадцяткова цифра E"
+
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "Шістнадцяткова цифра F"
+
+#~ msgid "Log<sub>10</sub>"
+#~ msgstr "Log<sub>10</sub>"
+
+#~ msgid "Random number"
+#~ msgstr "Випадкове число"
+
+#~ msgid "Shift left"
+#~ msgstr "Здвинути ліворуч"
+
+#~ msgid "Shift right"
+#~ msgstr "Здвинути праворуч"
+
+#~ msgid "Show Bit Editor"
+#~ msgstr "Показати редактор бітів"
+
+#~ msgid "Show Bit _Editor"
+#~ msgstr "Показати _редактор бітів"
+
+#~ msgid "Show bit editor"
+#~ msgstr "Показати редактор бітів"
+
+#~ msgid "Ten to the x"
+#~ msgstr "Десять у степені x"
+
+#~ msgid "Use Arithmetic Precedence"
+#~ msgstr "Використовувати арифметичну точність"
+
+#~ msgid "Use Left-right Precedence"
+#~ msgstr "Старшинство операцій с_права-наліво"
+
+#~ msgid "User-defined functions"
+#~ msgstr "Функції визначені користувачем"
+
+#~ msgid "X to the y"
+#~ msgstr "X в степені y"
+
+#~ msgid "_Contents"
+#~ msgstr "_Зміст"
+
+#~ msgid "_Left-to-right Precedence"
+#~ msgstr "Старшинство операцій з_ліва-направо"
+
+#~ msgid "_Redo"
+#~ msgstr "Пов_торити"
+
+#~ msgid "_Undo"
+#~ msgstr "В_ернути"
+
+#~ msgid "e<sup>x</sup>"
+#~ msgstr "e<sup>x</sup>"
+
+#~ msgid "ex"
+#~ msgstr "ex"
+
+#~ msgid "xy"
+#~ msgstr "xy"
+
+#~ msgid "±"
+#~ msgstr "±"
+
+#~ msgid "×"
+#~ msgstr "×"
+
+#~ msgid "÷"
+#~ msgstr "÷"
+
+#~ msgid "−"
+#~ msgstr "−"
+
+#~ msgid "√"
+#~ msgstr "√"
