@@ -1817,7 +1817,7 @@ get_display()              /* The Copy function key has been pressed. */
     if (gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end) == TRUE) {
         string = gtk_text_buffer_get_text(X.display_buffer, &start, &end, FALSE);
     } else {
-        string = ui_get_display();
+        string = g_strdup(ui_get_display());
     }
 
     if (X.shelf != NULL) {
