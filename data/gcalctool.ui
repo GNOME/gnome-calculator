@@ -3,7 +3,7 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkWindow" id="calc_window">
-    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="events">GDK_BUTTON_PRESS_MASK</property>
     <accel-groups>
       <group name="accelgroup1"/>
     </accel-groups>
@@ -11,7 +11,7 @@
     <signal name="delete_event" handler="quit_cb"/>
     <signal name="key_release_event" handler="main_window_key_release_cb"/>
     <child>
-      <object class="GtkVBox" id="kvbox">
+      <object class="GtkVBox" id="window_vbox">
         <property name="visible">True</property>
         <property name="spacing">6</property>
         <child>
@@ -298,19 +298,20 @@
               <object class="GtkScrolledWindow" id="display_scroll">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="border_width">7</property>
                 <property name="hscrollbar_policy">automatic</property>
                 <property name="vscrollbar_policy">never</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTextView" id="displayitem">
                     <property name="visible">True</property>
-                    <property name="border_width">2</property>
+                    <property name="border_width">1</property>
                     <property name="pixels_above_lines">8</property>
                     <property name="pixels_below_lines">8</property>
                     <property name="editable">False</property>
                     <property name="justification">right</property>
                     <property name="right_margin">6</property>
-                    <property name="buffer">textbuffer1</property>
+                    <property name="buffer">display_buffer</property>
                     <child internal-child="accessible">
                       <object class="AtkObject" id="displayitem-atkobject">
                         <property name="AtkObject::accessible-description" translatable="yes">Result Region</property>
@@ -331,6 +332,7 @@
         <child>
           <object class="GtkHBox" id="programming_mode_panel">
             <property name="visible">True</property>
+            <property name="border_width">8</property>
             <child>
               <object class="GtkHBox" id="hbox7">
                 <property name="visible">True</property>
@@ -473,6 +475,7 @@
             <child>
               <object class="GtkHBox" id="hbox4">
                 <property name="visible">True</property>
+                <property name="border_width">2</property>
                 <child>
                   <object class="GtkHBox" id="hbox5">
                     <property name="visible">True</property>
@@ -595,6 +598,7 @@
             <child>
               <object class="GtkHBox" id="hbox1">
                 <property name="visible">True</property>
+                <property name="border_width">2</property>
                 <child>
                   <object class="GtkHBox" id="hbox8">
                     <property name="visible">True</property>
@@ -652,7 +656,7 @@
         <child>
           <object class="GtkTable" id="financial_panel">
             <property name="visible">True</property>
-            <property name="border_width">6</property>
+            <property name="border_width">8</property>
             <property name="n_rows">2</property>
             <property name="n_columns">8</property>
             <property name="column_spacing">6</property>
@@ -929,6 +933,7 @@
             <child>
               <object class="GtkTable" id="table8">
                 <property name="visible">True</property>
+                <property name="border_width">6</property>
                 <property name="n_rows">4</property>
                 <property name="n_columns">39</property>
                 <child>
@@ -2722,7 +2727,7 @@
         <child>
           <object class="GtkTable" id="scientific_panel">
             <property name="visible">True</property>
-            <property name="border_width">6</property>
+            <property name="border_width">8</property>
             <property name="n_rows">2</property>
             <property name="n_columns">8</property>
             <property name="column_spacing">6</property>
@@ -3099,11 +3104,11 @@
         <child>
           <object class="GtkTable" id="programming_panel">
             <property name="visible">True</property>
-            <property name="border_width">6</property>
+            <property name="border_width">8</property>
             <property name="n_rows">3</property>
-            <property name="n_columns">8</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+            <property name="n_columns">6</property>
+            <property name="column_spacing">22</property>
+            <property name="row_spacing">7</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkButton" id="calc_d_button">
@@ -3478,24 +3483,6 @@
             <child>
               <placeholder/>
             </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
           </object>
           <packing>
             <property name="position">7</property>
@@ -3504,7 +3491,7 @@
         <child>
           <object class="GtkTable" id="table4">
             <property name="visible">True</property>
-            <property name="border_width">6</property>
+            <property name="border_width">8</property>
             <property name="n_rows">5</property>
             <property name="n_columns">2</property>
             <property name="column_spacing">6</property>
@@ -6153,7 +6140,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
+  <object class="GtkTextBuffer" id="display_buffer"/>
   <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
