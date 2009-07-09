@@ -5,14 +5,15 @@
 # Yury Syrota <yuriy@beer.com>
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006
 #
+# wanderlust <wanderlust@ukr.net>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-30 17:52+0300\n"
-"PO-Revision-Date: 2007-09-11 14:34+0300\n"
-"Last-Translator: Kyrylo Polezhajev <polezhajev@ukr.net>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"POT-Creation-Date: 2009-07-09 21:08+0300\n"
+"PO-Revision-Date: 2009-07-07 16:34+0300\n"
+"Last-Translator: wanderlust <wanderlust@ukr.net>\n"
+"Language-Team: ukrainian <Ukrainian <uk@li.org>>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,6 +67,9 @@ msgid ""
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
 msgstr ""
+"Обчислює майбутню вартість інвестицій, яке базується на ряді однакових "
+"платежів при періодичній відсотковій ставці для кількості платіжних етапів "
+"впродовж заданого терміну."
 
 #. Compounding Term Dialog: Description of calculation
 #: ../data/financial.ui.h:14
@@ -74,6 +78,8 @@ msgid ""
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
 msgstr ""
+"Обчислює кількість періодів приросту, необхідних для збільшення поточних "
+"інвестицій у майбутні, при фіксованій відсотковій ставці за період приросту."
 
 #. Payment Period Dialog: Description of calculation
 #: ../data/financial.ui.h:16
@@ -82,6 +88,9 @@ msgid ""
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
 "rate."
 msgstr ""
+"Обчислює кількість платіжних періодів, необхідних протягом терміну "
+"звичайного аннуітету, для накопичення майбутньої вартості для періодичної "
+"відсоткової ставки."
 
 #. Periodic Interest Rate Dialog: Description of calculation
 #: ../data/financial.ui.h:18
@@ -89,6 +98,8 @@ msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
+"Обчислює періодичну ставку, на яку зростає майбутня вартість інвестицій, "
+"протягом вказаних періодів приросту."
 
 #. Present Value Dialog: Description of calculation
 #: ../data/financial.ui.h:20
@@ -97,6 +108,9 @@ msgid ""
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
+"Обчислює поточну вартість інвестицій, яке базується на ряді однакових "
+"платежів при періодичній відсотковій ставці для кількості платіжних етапів "
+"впродовж заданого терміну."
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/financial.ui.h:22
@@ -104,6 +118,8 @@ msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
+"Обчислює вартість перепродажу продукту, залежно від його ціни та бажаної "
+"рентабельності."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:24
@@ -113,6 +129,11 @@ msgid ""
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
+"Обчислює величину витрат на амортизацію власності методом лінійного "
+"(пропорційного) списування за один період. Даний метод ділить вартість "
+"амортизаційних витрат порівну між всіма етапами терміну використання. "
+"Терміном використання називається кількість періодів, зазвичай років, "
+"протягом якого власність знецінюється."
 
 #. Title of Compounding Term dialog
 #: ../data/financial.ui.h:26
@@ -278,27 +299,22 @@ msgid "(X^Y)"
 msgstr "(X^Y)"
 
 #: ../data/gcalctool.ui.h:19
-#, fuzzy
 msgid "(cos)"
 msgstr "(cos)"
 
 #: ../data/gcalctool.ui.h:20
-#, fuzzy
 msgid "(log)"
 msgstr "(log)"
 
 #: ../data/gcalctool.ui.h:21
-#, fuzzy
 msgid "(log2)"
 msgstr "(log2)"
 
 #: ../data/gcalctool.ui.h:22
-#, fuzzy
 msgid "(sin)"
 msgstr "(sin)"
 
 #: ../data/gcalctool.ui.h:23
-#, fuzzy
 msgid "(tan)"
 msgstr "(tg)"
 
@@ -383,11 +399,11 @@ msgstr "2"
 #. 2's complement
 #: ../data/gcalctool.ui.h:55
 msgid "2's"
-msgstr ""
+msgstr "Другий"
 
 #: ../data/gcalctool.ui.h:56
 msgid "2's complement [Z]"
-msgstr ""
+msgstr "2-ге доповнення [Z]"
 
 #. Numeric 3 button
 #: ../data/gcalctool.ui.h:58
@@ -1894,14 +1910,15 @@ msgstr "Помилка при завантаженні інтерфейсу ко
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
 #: ../src/gtk.c:572
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A required file is missing, please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
-"Файл інтерфейсу користувача %s відсутній чи його неможливо завантажити. "
-"Перевірте ваше встановлення."
+"Потрібний файл - відсутній. Перевірте встановлений пакет.\n"
+"\n"
+"%s"
 
 #. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
 #: ../src/gtk.c:669
@@ -1920,25 +1937,21 @@ msgstr[2] "Встановити точність від 0 до %d числови
 
 #. Translators: The sine button
 #: ../src/gtk.c:700
-#, fuzzy
 msgid "sin"
 msgstr "sin"
 
 #. Translators: The inverse sine button
 #: ../src/gtk.c:702
-#, fuzzy
 msgid "sin<sup>−1</sup>"
 msgstr "arcsin"
 
 #. Translators: The hyperbolic sine button
 #: ../src/gtk.c:704
-#, fuzzy
 msgid "sinh"
 msgstr "sh"
 
 #. Translators: The inverse hyperbolic sine button
 #: ../src/gtk.c:706
-#, fuzzy
 msgid "sinh<sup>−1</sup>"
 msgstr "arsh"
 
@@ -1964,25 +1977,21 @@ msgstr "Гіперболічний арксинус [K]"
 
 #. Translators: The cosine button
 #: ../src/gtk.c:719
-#, fuzzy
 msgid "cos"
 msgstr "cos"
 
 #. Translators: The inverse cosine button
 #: ../src/gtk.c:721
-#, fuzzy
 msgid "cos<sup>−1</sup>"
 msgstr "arccos"
 
 #. Translators: The hyperbolic cosine button
 #: ../src/gtk.c:723
-#, fuzzy
 msgid "cosh"
 msgstr "ch"
 
 #. Translators: The inverse hyperbolic cosine button
 #: ../src/gtk.c:725
-#, fuzzy
 msgid "cosh<sup>−1</sup>"
 msgstr "arch"
 
@@ -2008,25 +2017,21 @@ msgstr "Гіперболічний арккосинус [J]"
 
 #. Translators: The tangent button
 #: ../src/gtk.c:738
-#, fuzzy
 msgid "tan"
 msgstr "tg"
 
 #. Translators: The inverse tangent button
 #: ../src/gtk.c:740
-#, fuzzy
 msgid "tan<sup>−1</sup>"
 msgstr "arctg"
 
 #. Translators: The hyperbolic tangent button
 #: ../src/gtk.c:742
-#, fuzzy
 msgid "tanh"
 msgstr "tgh"
 
 #. Translators: The inverse hyperbolic tangent button
 #: ../src/gtk.c:744
-#, fuzzy
 msgid "tanh<sup>−1</sup>"
 msgstr "arth"
 
@@ -2052,9 +2057,8 @@ msgstr "Гіперболічний арктангенс  [W]"
 
 #. Translators: The natural logaritm button
 #: ../src/gtk.c:758
-#, fuzzy
 msgid "ln"
-msgstr "Рна"
+msgstr "Ln"
 
 #. Translators: The e to the power of x button
 #: ../src/gtk.c:760
@@ -2063,7 +2067,6 @@ msgstr "e<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the natural log button
 #: ../src/gtk.c:763
-#, fuzzy
 msgid "Natural logarithm [n]"
 msgstr "Натуральний логарифм [n]"
 
@@ -2074,7 +2077,6 @@ msgstr "e в степені показаного числа [N]"
 
 #. Translators: The 10-based logaritm button
 #: ../src/gtk.c:770
-#, fuzzy
 msgid "log"
 msgstr "Log"
 
@@ -2085,7 +2087,6 @@ msgstr "10<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 10 button
 #: ../src/gtk.c:775
-#, fuzzy
 msgid "Base 10 logarithm [g]"
 msgstr "Десятковий логарифм [g]"
 
@@ -2096,7 +2097,6 @@ msgstr "10 у степені показаного числа [G]"
 
 #. Translators: The 2-based logaritm button
 #: ../src/gtk.c:782
-#, fuzzy
 msgid "log<sub>2</sub>"
 msgstr "Log<sub>2</sub>"
 
@@ -2107,7 +2107,6 @@ msgstr "2<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 2 button
 #: ../src/gtk.c:787
-#, fuzzy
 msgid "Base 2 logarithm [h]"
 msgstr "Двійковий логарифм [h]"
 
