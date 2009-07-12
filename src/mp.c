@@ -97,17 +97,21 @@ mpunfl(MPNumber *x)
 static int
 pow_ii(int x, int n)
 {
-    int pow = 1;
+    int p = 1;
+    
+    if (n <= 0)
+        return 1;
 
-    if (n > 0) {
-        for (;;) { 
-            if (n & 01) pow *= x;
-            if (n >>= 1) x *= x;
-            else break;
-        }
+    for (;;) { 
+        if (n & 01)
+            p *= x;
+        if (n >>= 1)
+            x *= x;
+        else
+            break;
     }
 
-    return(pow);
+    return p;
 }
 
 
@@ -171,7 +175,7 @@ mpext(int i, int j, MPNumber *x)
 void
 mp_init(int accuracy)
 {
-    int i, k, w;
+    int i, k, w, b;
 
     /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
     /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
@@ -207,6 +211,12 @@ mp_init(int accuracy)
 
     /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) <= W */
     MP.b = pow_ii(2, (k - 3) / 2);
+
+    /* Make a multiple of 10 so fractions can be represented exactly */
+    b = 1;
+    while (MP.b % (10 * b) != MP.b)
+        b *= 10;
+    MP.b = b;
 
     /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
     MP.t = (int) ((float) (accuracy) * log((float)10.) / log((float) MP.b) + 
