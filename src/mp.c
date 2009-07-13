@@ -1232,7 +1232,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
  *  EVEN IF SOME DIGITS ARE GREATER THAN B-1.
  *  RESULT IS ROUNDED IF TRUNC == 0, OTHERWISE TRUNCATED.
  */
-void
+static void
 mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
 {
     int c, i, c1, c2, j1, j2;
@@ -1380,7 +1380,7 @@ mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber
         mp_divide_integer(x, is * js, z);
     } else {
         mp_divide_integer(x, js, z);
-        mpmul2(z, is, z, 0);
+        mp_multiply_integer(z, is, z);
     }
 }
 
@@ -1512,8 +1512,8 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
         return;
     }
     
-    /* 0^0 = 1 */
-    if (x->sign == 0 && y->sign == 0) {
+    /* x^0 = 1 */
+    if (y->sign == 0) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -1789,6 +1789,7 @@ mp_factorial(const MPNumber *x, MPNumber *z)
     }
     if (!mp_is_natural(x)) {
         mperr("Cannot take factorial of non-natural number");
+        return;
     }
 
     /* Convert to integer - if couldn't be converted then the factorial would be too big anyway */
@@ -1840,50 +1841,31 @@ mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
 {
-    int n2, ns;
+    int i;
     MPNumber t;
-   
-    n2 = n;
-    if (n2 < 0) {
-        /* N < 0 */
-        n2 = -n2;
-        if (x->sign == 0) {
-            mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE mp_xpowy_integer ***");
-            mp_set_from_integer(0, z);
-            return;
-        }
-    } else if (n2 == 0) {
-        /* N == 0, RETURN Y = 1. */
-        mp_set_from_integer(1, z);
+    
+    /* x^-n invalid */
+    if (x->sign == 0 && n < 0) {
+        mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE mp_xpowy_integer ***");
         return;
-    } else {
-        /* N > 0 */
-        if (x->sign == 0) {
-            mp_set_from_integer(0, z);
-            return;
-        }
+    }
+    
+    /* 0^n = 0 */
+    if (x->sign == 0) {
+        mp_set_from_integer(0, z);
+        return;
     }
 
-    /* MOVE X */
-    mp_set_from_mp(x, z);
+    if (n < 0) {
+        mp_reciprocal(x, &t);
+        n = -n;
+    }
+    else
+        mp_set_from_mp(x, &t);
 
-    /* IF N < 0 FORM RECIPROCAL */
-    if (n < 0)
-        mp_reciprocal(z, z);
-    mp_set_from_mp(z, &t);
-
-    /* SET PRODUCT TERM TO ONE */
+    /* Multply x n times */
     mp_set_from_integer(1, z);
-
-    /* MAIN LOOP, LOOK AT BITS OF N2 FROM RIGHT */
-    while(1) {
-        ns = n2;
-        n2 /= 2;
-        if (n2 << 1 != ns)
-            mp_multiply(z, &t, z);
-        if (n2 <= 0)
-            return;
-        
-        mp_multiply(&t, &t, &t);
+    for (i = 0; i < n; i++) {
+        mp_multiply(z, &t, z);
     }
 }

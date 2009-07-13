@@ -213,30 +213,29 @@ mp_set_from_double(double dx, MPNumber *z)
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 void
-mp_set_from_integer(int ix, MPNumber *z)
+mp_set_from_integer(int x, MPNumber *z)
 {
     memset(z, 0, sizeof(MPNumber));
 
-    if (ix == 0) {
-        z->exponent = 1;
-        return;
-    }
-
-    if (ix < 0) {
-        ix = -ix;
+    if (x < 0) {
+        x = -x;
         z->sign = -1;
     }
-    else
+    else if (x > 0)
         z->sign = 1;
+    else
+        z->sign = 0; /* Optimisation for indicating zero */
 
-    /* SET EXPONENT TO T */
-    z->exponent = MP_T;
-
-    /* INSERT IX */
-    z->fraction[MP_T - 1] = ix;
-
-    /* NORMALIZE BY CALLING MPMUL2 */
-    mpmul2(z, 1, z, 1);
+    z->exponent = 1;
+    z->fraction[0] = x;
+    while (z->fraction[0] >= MP_BASE) {
+        int i;
+        for (i = z->exponent; i >= 0; i--)
+            z->fraction[i] = z->fraction[i-1];
+        z->fraction[0] = z->fraction[1] / MP_BASE;
+        z->fraction[1] = z->fraction[1] % MP_BASE;
+        z->exponent++;
+    }
 }
 
 /* CONVERTS THE RATIONAL NUMBER I/J TO MULTIPLE PRECISION Q. */
