@@ -2,6 +2,7 @@
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 2008-2009 Robert Ancell
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -32,25 +33,17 @@
 #define min(a, b)   ((a) <= (b) ? (a) : (b))
 #define max(a, b)   ((a) >= (b) ? (a) : (b))
 
-/* Evil global variables that must be removed */
-struct {
-    /* Base */
-    int b;
-
-    /* Number of digits */
-    // This number is temporarily changed across calls to add/subtract/multiply/divide - it should be passed to those calls
-    int t;
-
-    /* Min/max exponent value */
-    int m;
-} MP;
+//2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT
+//MP.t = (int) ((float) (accuracy) * log((float)10.) / log((float) MP_BASE) + (float) 2.0);
+//if (MP.t > MP_SIZE) {
+//    mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", MP.t);
+//    MP.t = MP_SIZE;
+//}
+#define MP_T 55
 
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
-void mpchk();
 void mpgcd(int *, int *);
 void mpmul2(const MPNumber *, int, MPNumber *, int);
 void mp_normalize(MPNumber *, int trunc);
-void mpexp1(const MPNumber *, MPNumber *);
-void mpmulq(const MPNumber *, int, int, MPNumber *);
 
 #endif /* MP_INTERNAL_H */

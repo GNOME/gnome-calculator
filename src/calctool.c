@@ -202,7 +202,6 @@ init_state(void)
     int acc, i;
 
     acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
-    mp_init(acc);
 
     v->error         = FALSE;  /* No calculator error initially. */
     v->radix         = get_radix();    /* Locale specific radix string. */

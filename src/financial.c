@@ -98,7 +98,7 @@ calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
     MPNumber MP1, MP2, MP3, MP4;
   
     mp_add_integer(pint, 1, &MP1);
-    mp_pwr(&MP1, n, &MP2);
+    mp_xpowy(&MP1, n, &MP2);
     mp_add_integer(&MP2, -1, &MP3);
     mp_multiply(pmt, &MP3, &MP4);
     mp_divide(&MP4, pint, t);
@@ -138,7 +138,7 @@ calc_pmt(MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
 
     mp_add_integer(pint, 1, &MP1);
     mp_multiply_integer(n, -1, &MP2);
-    mp_pwr(&MP1, &MP2, &MP3);
+    mp_xpowy(&MP1, &MP2, &MP3);
     mp_multiply_integer(&MP3, -1, &MP4);
     mp_add_integer(&MP4, 1, &MP1);
     mp_divide(pint, &MP1, &MP2);
@@ -161,7 +161,7 @@ calc_pv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 
     mp_add_integer(pint, 1, &MP1);
     mp_multiply_integer(n, -1, &MP2);
-    mp_pwr(&MP1, &MP2, &MP3);
+    mp_xpowy(&MP1, &MP2, &MP3);
     mp_multiply_integer(&MP3, -1, &MP4);
     mp_add_integer(&MP4, 1, &MP1);
     mp_divide(&MP1, pint, &MP2);
@@ -185,7 +185,7 @@ calc_rate(MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
     mp_divide(fv, pv, &MP1);
     mp_set_from_integer(1, &MP2);
     mp_divide(&MP2, n, &MP3);
-    mp_pwr(&MP1, &MP3, &MP4);
+    mp_xpowy(&MP1, &MP3, &MP4);
     mp_add_integer(&MP4, -1, t);
 }
 

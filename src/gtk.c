@@ -553,12 +553,21 @@ typedef enum {
     POPUP_CENTERED   /* Center popup within baseframe */
 } PopupLocation;
 
+#include <sys/time.h>
+
 static void load_ui(GtkBuilder *ui, const gchar *filename)
 {
     GError *error = NULL;
     GtkWidget *dialog;
+    struct timeval start, stop;
 
+    gettimeofday(&start, NULL);
     gtk_builder_add_from_file(ui, filename, &error);
+    gettimeofday(&stop, NULL);
+    if (start.tv_usec > stop.tv_usec)
+        printf("t=%lu.%-6lu\n", stop.tv_sec - start.tv_sec - 1, 1000000 + stop.tv_usec - start.tv_usec);
+    else
+        printf("t=%lu.%-6lu\n", stop.tv_sec - start.tv_sec, stop.tv_usec - start.tv_usec);
     if (error == NULL)
         return;
         
@@ -569,7 +578,7 @@ static void load_ui(GtkBuilder *ui, const gchar *filename)
                                     N_("Error loading user interface"));
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
                                              /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
-                                             N_("A required file is missing, please check your installation.\n\n%s"), error->message);
+                                             N_("A required file is missing or damaged, please check your installation.\n\n%s"), error->message);
     gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
     
     gtk_dialog_run(GTK_DIALOG(dialog));

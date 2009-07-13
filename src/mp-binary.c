@@ -66,7 +66,7 @@ mp_is_overflow (const MPNumber *x, int wordlen)
 {
     MPNumber tmp1, tmp2;
     mp_set_from_integer(2, &tmp1);
-    mp_pwr_integer(&tmp1, wordlen, &tmp2);
+    mp_xpowy_integer(&tmp1, wordlen, &tmp2);
     return mp_is_greater_than (&tmp2, x);
 }
 

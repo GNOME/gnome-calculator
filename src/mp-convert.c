@@ -2,6 +2,7 @@
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 2008-2009 Robert Ancell
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -31,17 +32,10 @@
  *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
  */
 void
-mp_set_from_mp(const MPNumber *x, MPNumber *y)
+mp_set_from_mp(const MPNumber *x, MPNumber *z)
 {
-    /* HERE X AND Y MUST HAVE THE SAME ADDRESS */    
-    if (x == y)
-        return;
-
-    /* NO NEED TO COPY X[1],X[2],... IF X[0] == 0 */
-    if (x->sign == 0)
-        y->sign = 0;
-    else
-        memcpy (y, x, (MP.t + 2) * sizeof(int));
+    if (z != x)
+        memcpy(z, x, sizeof(MPNumber));
 }
 
 /*  CONVERTS SINGLE-PRECISION NUMBER RX TO MULTIPLE-PRECISION Z.
@@ -55,8 +49,9 @@ mp_set_from_float(float rx, MPNumber *z)
     int i, k, i2, ib, ie, tp;
     float rb, rj;
     
-    mpchk();
-    i2 = MP.t + 4;
+    i2 = MP_T + 4;
+    
+    memset(z, 0, sizeof(MPNumber));
 
     /* CHECK SIGN */
     if (rx < (float) 0.0) {
@@ -67,7 +62,7 @@ mp_set_from_float(float rx, MPNumber *z)
         rj = rx;
     } else {
         /* IF RX = 0E0 RETURN 0 */
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -88,7 +83,7 @@ mp_set_from_float(float rx, MPNumber *z)
      *  SET EXPONENT TO 0
      */
     z->exponent = 0;
-    rb = (float) MP.b;
+    rb = (float) MP_BASE;
 
     /* CONVERSION LOOP (ASSUME SINGLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
@@ -101,7 +96,7 @@ mp_set_from_float(float rx, MPNumber *z)
     mp_normalize(z, 0);
 
     /* Computing MAX */
-    ib = max(MP.b * 7 * MP.b, 32767) / 16;
+    ib = max(MP_BASE * 7 * MP_BASE, 32767) / 16;
     tp = 1;
 
     /* NOW MULTIPLY BY 16**IE */
@@ -109,7 +104,7 @@ mp_set_from_float(float rx, MPNumber *z)
         k = -ie;
         for (i = 1; i <= k; ++i) {
             tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < k)
+            if (tp <= ib && tp != MP_BASE && i < k)
                 continue;
             mp_divide_integer(z, tp, z);
             tp = 1;
@@ -117,7 +112,7 @@ mp_set_from_float(float rx, MPNumber *z)
     } else if (ie > 0)  {
         for (i = 1; i <= ie; ++i) {
             tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < ie)
+            if (tp <= ib && tp != MP_BASE && i < ie)
                 continue;
             mp_multiply_integer(z, tp, z);
             tp = 1;
@@ -146,8 +141,9 @@ mp_set_from_double(double dx, MPNumber *z)
     int i, k, i2, ib, ie, tp;
     double db, dj;
 
-    mpchk();
-    i2 = MP.t + 4;
+    i2 = MP_T + 4;
+
+    memset(z, 0, sizeof(MPNumber));
 
     /* CHECK SIGN */
     if (dx < 0.)  {
@@ -157,7 +153,7 @@ mp_set_from_double(double dx, MPNumber *z)
         z->sign = 1;
         dj = dx;
     } else {
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     } 
 
@@ -173,7 +169,7 @@ mp_set_from_double(double dx, MPNumber *z)
      */
     z->exponent = 0;
 
-    db = (double) MP.b;
+    db = (double) MP_BASE;
 
     /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
     for (i = 0; i < i2; i++) {
@@ -186,7 +182,7 @@ mp_set_from_double(double dx, MPNumber *z)
     mp_normalize(z, 0);
 
     /* Computing MAX */
-    ib = max(MP.b * 7 * MP.b, 32767) / 16;
+    ib = max(MP_BASE * 7 * MP_BASE, 32767) / 16;
     tp = 1;
 
     /* NOW MULTIPLY BY 16**IE */
@@ -194,7 +190,7 @@ mp_set_from_double(double dx, MPNumber *z)
         k = -ie;
         for (i = 1; i <= k; ++i) {
             tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < k)
+            if (tp <= ib && tp != MP_BASE && i < k)
                 continue;
             mp_divide_integer(z, tp, z);
             tp = 1;
@@ -202,7 +198,7 @@ mp_set_from_double(double dx, MPNumber *z)
     } else if (ie > 0) {
         for (i = 1; i <= ie; ++i) {
             tp <<= 4;
-            if (tp <= ib && tp != MP.b && i < ie)
+            if (tp <= ib && tp != MP_BASE && i < ie)
                 continue;
             mp_multiply_integer(z, tp, z);
             tp = 1;
@@ -219,10 +215,10 @@ mp_set_from_double(double dx, MPNumber *z)
 void
 mp_set_from_integer(int ix, MPNumber *z)
 {
-    mpchk();
+    memset(z, 0, sizeof(MPNumber));
 
     if (ix == 0) {
-        z->sign = 0;
+        z->exponent = 1;
         return;
     }
 
@@ -234,13 +230,10 @@ mp_set_from_integer(int ix, MPNumber *z)
         z->sign = 1;
 
     /* SET EXPONENT TO T */
-    z->exponent = MP.t;
-
-    /* CLEAR FRACTION */
-    memset(z->fraction, 0, (MP.t-1)*sizeof(int));
+    z->exponent = MP_T;
 
     /* INSERT IX */
-    z->fraction[MP.t - 1] = ix;
+    z->fraction[MP_T - 1] = ix;
 
     /* NORMALIZE BY CALLING MPMUL2 */
     mpmul2(z, 1, z, 1);
@@ -248,23 +241,24 @@ mp_set_from_integer(int ix, MPNumber *z)
 
 /* CONVERTS THE RATIONAL NUMBER I/J TO MULTIPLE PRECISION Q. */
 void
-mp_set_from_fraction(int i, int j, MPNumber *q)
+mp_set_from_fraction(int i, int j, MPNumber *z)
 {
     mpgcd(&i, &j);
 
     if (j == 0) {
-      mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
-      q->sign = 0;
-      return;
+        mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
+        mp_set_from_integer(0, z);
+        return;
     }
 
     if (j < 0) {
-      i = -i;
-      j = -j;
+        i = -i;
+        j = -j;
     }
 
-    mp_set_from_integer(i, q);
-    if (j != 1) mp_divide_integer(q, j, q);
+    mp_set_from_integer(i, z);
+    if (j != 1)
+        mp_divide_integer(z, j, z);
 }
 
 /*  CONVERTS MULTIPLE-PRECISION X TO INTEGER, AND
@@ -291,8 +285,8 @@ mp_cast_to_int(const MPNumber *x)
     for (i = 0; i < x2; i++) {
         int izs;
         izs = ret_val;
-        ret_val = MP.b * ret_val;
-        if (i < MP.t)
+        ret_val = MP_BASE * ret_val;
+        if (i < MP_T)
             ret_val += x->fraction[i];
 
         /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
@@ -307,11 +301,11 @@ mp_cast_to_int(const MPNumber *x)
     for (i = x2 - 1; i >= 0; i--) {
         int j1, kx;
         
-        j1 = j / MP.b;
+        j1 = j / MP_BASE;
         kx = 0;
-        if (i < MP.t)
+        if (i < MP_T)
             kx = x->fraction[i];
-        if (kx != j - MP.b * j1)
+        if (kx != j - MP_BASE * j1)
             return 0;
         j = j1;
     }
@@ -366,12 +360,11 @@ mp_cast_to_float(const MPNumber *x)
     int i;
     float rb, rz = 0.0;
     
-    mpchk();
     if (x->sign == 0)
         return 0.0;
 
-    rb = (float) MP.b;
-    for (i = 0; i < MP.t; i++) {
+    rb = (float) MP_BASE;
+    for (i = 0; i < MP_T; i++) {
         rz = rb * rz + (float)x->fraction[i];
 
         /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
@@ -385,7 +378,7 @@ mp_cast_to_float(const MPNumber *x)
     /* CHECK REASONABLENESS OF RESULT */
     /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
     if (rz <= (float)0. ||
-        fabs((float) x->exponent - (log(rz) / log((float) MP.b) + (float).5)) > (float).6) {
+        fabs((float) x->exponent - (log(rz) / log((float) MP_BASE) + (float).5)) > (float).6) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMRE INSTEAD.
          */
@@ -433,12 +426,11 @@ mp_cast_to_double(const MPNumber *x)
     int i, tm = 0;
     double d__1, db, dz2, ret_val = 0.0;
 
-    mpchk();
     if (x->sign == 0)
         return 0.0;
 
-    db = (double) MP.b;
-    for (i = 0; i < MP.t; i++) {
+    db = (double) MP_BASE;
+    for (i = 0; i < MP_T; i++) {
         ret_val = db * ret_val + (double) x->fraction[i];
         tm = i;
 
@@ -459,7 +451,7 @@ mp_cast_to_double(const MPNumber *x)
     /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
     if (ret_val <= 0. ||
         ((d__1 = (double) ((float) x->exponent) - (log(ret_val) / log((double)
-                ((float) MP.b)) + .5), abs(d__1)) > .6)) {
+                ((float) MP_BASE)) + .5), abs(d__1)) > .6)) {
         /*  FOLLOWING MESSAGE INDICATES THAT X IS TOO LARGE OR SMALL -
          *  TRY USING MPCMDE INSTEAD.
          */
@@ -495,7 +487,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
    
     /* Add rounding factor */
     mp_set_from_integer(base, &MPbase);
-    mp_pwr_integer(&MPbase, -(accuracy+1), &temp);
+    mp_xpowy_integer(&MPbase, -(accuracy+1), &temp);
     mp_multiply_integer(&temp, base, &temp);
     mp_divide_integer(&temp, 2, &temp);
     mp_add(&number, &temp, &number);
@@ -556,20 +548,69 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
 
 
 static int
-char_val(char chr, int base)
+char_val(char **c, int base)
 {
-    int value;
-    if (chr >= '0' && chr <= '9') {
-        value = chr - '0';
-    } else if (chr >= 'a' && chr <= 'f') {
-        value = chr - 'a' + 10;
-    } else if (chr >= 'A' && chr <= 'F') {
-        value = chr - 'A' + 10;
+    int i, j, value, offset;
+    const char *digits[][10] = {{"٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"},
+                                {"۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"},
+                                {"߀", "߁", "߂", "߃", "߄", "߅", "߆", "߇", "߈", "߉"},
+                                {"०", "१", "२", "३", "४", "५", "६", "७", "८", "९"},
+                                {"০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"},
+                                {"੦", "੧", "੨", "੩", "੪", "੫", "੬", "੭", "੮", "੯"},
+                                {"૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯"},
+                                {"୦", "୧", "୨", "୩", "୪", "୫", "୬", "୭", "୮", "୯"},
+                                {"௦", "௧", "௨", "௩", "௪", "௫", "௬", "௭", "௮", "௯"},
+                                {"౦", "౧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯"},
+                                {"೦", "೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯"},
+                                {"൦", "൧", "൨", "൩", "൪", "൫", "൬", "൭", "൮", "൯"},
+                                {"๐", "๑", "๒", "๓", "๔", "๕", "๖", "๗", "๘", "๙"},
+                                {"໐", "໑", "໒", "໓", "໔", "໕", "໖", "໗", "໘", "໙"},
+                                {"༠", "༡", "༢", "༣", "༤", "༥", "༦", "༧", "༨", "༩"},
+                                {"၀", "၁", "၂", "၃", "၄", "၅", "၆", "၇", "၈", "၉"},
+                                {"႐", "႑", "႒", "႓", "႔", "႕", "႖", "႗", "႘", "႙"},
+                                {"០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"},
+                                {"᠐", "᠑", "᠒", "᠓", "᠔", "᠕", "᠖", "᠗", "᠘", "᠙"},
+                                {"᥆", "᥇", "᥈", "᥉", "᥊", "᥋", "᥌", "᥍", "᥎", "᥏"},
+                                {"᧐", "᧑", "᧒", "᧓", "᧔", "᧕", "᧖", "᧗", "᧘", "᧙"},
+                                {"᭐", "᭑", "᭒", "᭓", "᭔", "᭕", "᭖", "᭗", "᭘", "᭙"},
+                                {"᮰", "᮱", "᮲", "᮳", "᮴", "᮵", "᮶", "᮷", "᮸", "᮹"},
+                                {"᱀", "᱁", "᱂", "᱃", "᱄", "᱅", "᱆", "᱇", "᱈", "᱉"},
+                                {"᱐", "᱑", "᱒", "᱓", "᱔", "᱕", "᱖", "᱗", "᱘", "᱙"},
+                                {"꘠", "꘡", "꘢", "꘣", "꘤", "꘥", "꘦", "꘧", "꘨", "꘩"},
+                                {"꣐", "꣑", "꣒", "꣓", "꣔", "꣕", "꣖", "꣗", "꣘", "꣙"},
+                                {"꤀", "꤁", "꤂", "꤃", "꤄", "꤅", "꤆", "꤇", "꤈", "꤉"},
+                                {"꩐", "꩑", "꩒", "꩓", "꩔", "꩕", "꩖", "꩗", "꩘", "꩙"},
+                                {"𐒠", "𐒡", "𐒢", "𐒣", "𐒤", "𐒥", "𐒦", "𐒧", "𐒨", "𐒩"},
+                                {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}};
+
+    if (**c >= '0' && **c <= '9') {
+        value = **c - '0';
+        offset = 1;
+    } else if (**c >= 'a' && **c <= 'f') {
+        value = **c - 'a' + 10;
+        offset = 1;
+    } else if (**c >= 'A' && **c <= 'F') {
+        value = **c - 'A' + 10;
+        offset = 1;
     } else {
-        return -1;
+        for (i = 0; digits[i][0]; i++) {
+            for (j = 0; j < 10; j++) {
+                if (strncmp(*c, digits[i][j], strlen(digits[i][j])) == 0)
+                    break;
+            }
+            if (j != 10)
+                break;
+        }
+        if (digits[i][0] == NULL)
+            return -1;
+        value = j;
+        offset = strlen(digits[i][j]);
     }
     if (value >= base)
        return -1;
+    
+    *c += offset;
+
     return value;
 }
 
@@ -578,19 +619,37 @@ char_val(char chr, int base)
 void
 mp_set_from_string(const char *str, int base, MPNumber *z)
 {
-    int i, negate = 0;
+    int i, negate = 0, multiplier = 0;
     const char *c, *end;
-    const char *fractions[] = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
-    int numerators[]        = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
-    int denominators[]      = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
+    gboolean has_fraction = FALSE;
     
+    const char *base_suffixes[] = {"₂", "₈", "₁₆", NULL};
+    int base_values[]           = {2, 8, 16, 10};
+    const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
+    int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
+    int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
+    const char *si_suffixes[]   = {"T", "G", "M", "k", "d", "c", "m", "u", "µ", "n", "p", "f", NULL};
+    int si_multipliers[]        = { 12,   9,   6,   3,  -1,  -2,  -3,  -6,  -6,  -9, -12, -15};
+    
+    /* Find the base */
     end = str;
     while (*end != '\0')
         end++;
+    if (base < 0) {
+        for (i = 0; base_suffixes[i] != NULL; i++) {
+            if (end - strlen(base_suffixes[i]) < str)
+                continue;
+            if (strcmp(end - strlen(base_suffixes[i]), base_suffixes[i]) == 0)
+                break;
+        }
+        base = base_values[i];
+    }
 
-    /* Check if this is a negative number */
+    /* Check if this has a sign */
     c = str;
-    if (*c == '-') {
+    if (*c == '+') {
+        c++;
+    } else if (*c == '-') {
         negate = 1;
         c++;
     } else if (strncmp(c, "−", strlen("−")) == 0) {
@@ -600,13 +659,12 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
 
     /* Convert integer part */
     mp_set_from_integer(0, z);
-    while ((i = char_val(*c, base)) >= 0) {
+    while ((i = char_val((char **)&c, base)) >= 0) {
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
-        c++;
     }
     
-    /* Look for fraction characters */
+    /* Look for fraction characters, e.g. ⅚ */
     for (i = 0; fractions[i] != NULL; i++) {
         if (end - strlen(fractions[i]) < str)
             continue;
@@ -618,20 +676,32 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
         mp_set_from_fraction(numerators[i], denominators[i], &fraction);
         mp_add(z, &fraction, z);
     }
+    
+    if (*c == '.') {
+        has_fraction = TRUE;
+        c++;
+    } else {
+        for (i = 0; si_suffixes[i] != NULL; i++) {
+            if (strncmp(c, si_suffixes[i], strlen(si_suffixes[i])) == 0)
+                break;
+        }
+        if (si_suffixes[i] != NULL) {
+            has_fraction = TRUE;
+            multiplier = si_multipliers[i];
+            c += strlen(si_suffixes[i]);
+        }
+    }
    
     /* Convert fractional part */
-    if (*c == '.') {
+    if (has_fraction) {
         MPNumber numerator, denominator;
-       
-        c++;
 
         mp_set_from_integer(0, &numerator);
         mp_set_from_integer(1, &denominator);
-        while ((i = char_val(*c, base)) >= 0) {
+        while ((i = char_val((char **)&c, base)) >= 0) {
             mp_multiply_integer(&denominator, base, &denominator);
             mp_multiply_integer(&numerator, base, &numerator);
             mp_add_integer(&numerator, i, &numerator);
-            c++;
         }
         mp_divide(&numerator, &denominator, &numerator);
         mp_add(z, &numerator, z);
@@ -657,7 +727,7 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
 
         /* Get magnitude */
         mp_set_from_integer(0, &MPexponent);
-        while ((i = char_val(*c, base)) >= 0) {
+        while ((i = char_val((char **)&c, base)) >= 0) {
             mp_multiply_integer(&MPexponent, base, &MPexponent);
             mp_add_integer(&MPexponent, i, &MPexponent);
             c++;
@@ -667,12 +737,19 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
         }
 
         mp_set_from_integer(base, &MPbase);       
-        mp_pwr(&MPbase, &MPexponent, &temp);
+        mp_xpowy(&MPbase, &MPexponent, &temp);
         mp_multiply(z, &temp, z);
     }
    
     if (c != end) {
        // FIXME: Error decoding
+    }
+    
+    if (multiplier != 0) {
+        MPNumber t;
+        mp_set_from_integer(10, &t);
+        mp_xpowy_integer(&t, multiplier, &t);
+        mp_multiply(z, &t, z);
     }
  
     if (negate == 1)

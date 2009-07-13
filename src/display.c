@@ -711,9 +711,8 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     mp_set_from_mp(&MPval, &MPmant);
 
     mp_set_from_integer(basevals[base], &MP1base);
-    mp_pwr_integer(&MP1base, 3, &MP3base);
-
-    mp_pwr_integer(&MP1base, 10, &MP10base);
+    mp_xpowy_integer(&MP1base, 3, &MP3base);
+    mp_xpowy_integer(&MP1base, 10, &MP10base);
 
     mp_set_from_integer(1, &MP1);
     mp_divide(&MP1, &MP10base, &MPatmp);

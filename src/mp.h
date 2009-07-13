@@ -2,6 +2,7 @@
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 2008-2009 Robert Ancell
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,25 +44,31 @@
 /* Size of the multiple precision values */
 #define MP_SIZE 1000
 
-/* Object for a high precision floating point number representation */
+/* Base for numbers */
+#define MP_BASE 10000
+
+/* Object for a high precision floating point number representation
+ * 
+ * x = sign * (MP_BASE^(exponent-1) + MP_BASE^(exponent-2) + ...)
+ */
 typedef struct
 {
    /* Sign (+1, -1) or 0 for the value zero */
    int sign;
 
-   /* Exponent (to base MP.b) */
+   /* Exponent (to base MP_BASE) */
    int exponent;
 
    /* Normalized fraction */
-   int fraction[MP_SIZE]; // Size MP.t?
+   int fraction[MP_SIZE];
 } MPNumber;
 
-typedef enum { MP_RADIANS, MP_DEGREES, MP_GRADIANS } MPAngleUnit;
-
-/* Initialise the MP state.  Must be called only once and before any other MP function
- * 'accuracy' is the requested accuracy required.
- */
-void   mp_init(int accuracy);
+typedef enum
+{
+    MP_RADIANS,
+    MP_DEGREES,
+    MP_GRADIANS
+} MPAngleUnit;
 
 /* Returns:
  *  0 if x == y
@@ -139,20 +146,17 @@ void   mp_fractional_component(const MPNumber *x, MPNumber *z);
 /* Sets z = integer part of x */
 void   mp_integer_component(const MPNumber *x, MPNumber *z);
 
-/* Sets z = ln(x) */
+/* Sets z = ln x */
 void   mp_ln(const MPNumber *x, MPNumber *z);
 
-/* Sets z = log_n(x) */
-void   mp_logarithm(int n, MPNumber *x, MPNumber *z);
+/* Sets z = log_n x */
+void   mp_logarithm(int n, const MPNumber *x, MPNumber *z);
 
 /* Sets z = π */
 void   mp_get_pi(MPNumber *z);
 
-/* Sets z = x^y */
-void   mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z);
-
-/* Sets z = x^y */
-void   mp_pwr_integer(const MPNumber *x, int y, MPNumber *z);
+/* Sets z = e */
+void   mp_get_eulers(MPNumber *z);
 
 /* Sets z = n√x */
 void   mp_root(const MPNumber *x, int n, MPNumber *z);
@@ -163,11 +167,14 @@ void   mp_sqrt(const MPNumber *x, MPNumber *z);
 /* Sets z = x! */
 void   mp_factorial(const MPNumber *x, MPNumber *z);
 
-/* Sets z = x modulo y */
+/* Sets z = x mod y */
 int    mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x^y */
 void   mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z);
+
+/* Sets z = x^y */
+void   mp_xpowy_integer(const MPNumber *x, int y, MPNumber *z);
 
 /* Sets z = e^x */
 void   mp_epowy(const MPNumber *x, MPNumber *z);
@@ -211,40 +218,40 @@ int    mp_cast_to_int(const MPNumber *x);
  */
 void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, int trim_zeroes, char *buffer, int buffer_length);
 
-/* Sets z = sin(x) */
+/* Sets z = sin x */
 void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = cos(x) */
+/* Sets z = cos x */
 void   mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = tan(x) */
+/* Sets z = tan x */
 void   mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = asin(x) */
+/* Sets z = sin⁻¹ x */
 void   mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = acos(x) */
+/* Sets z = cos⁻¹ x */
 void   mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = atan(x) */
+/* Sets z = tan⁻¹ x */
 void   mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
-/* Sets z = sinh(x) */
+/* Sets z = sinh x */
 void   mp_sinh(const MPNumber *x, MPNumber *z);
 
-/* Sets z = cosh(x) */
+/* Sets z = cosh x */
 void   mp_cosh(const MPNumber *x, MPNumber *z);
 
-/* Sets z = tanh(x) */
+/* Sets z = tanh x */
 void   mp_tanh(const MPNumber *x, MPNumber *z);
 
-/* Sets z = asinh(x) */
+/* Sets z = sinh⁻¹ x */
 void   mp_asinh(const MPNumber *x, MPNumber *z);
 
-/* Sets z = acosh(x) */
+/* Sets z = cosh⁻¹ x */
 void   mp_acosh(const MPNumber *x, MPNumber *z);
 
-/* Sets z = atanh(x) */
+/* Sets z = tanh⁻¹ x */
 void   mp_atanh(const MPNumber *x, MPNumber *z);
 
 /* Returns true if x is cannot be represented in a binary word of length 'wordlen' */

@@ -202,7 +202,7 @@ term:
 | tABS exp tABS {mp_abs(&$2, &$$);}
 | 'e' '^' term {mp_epowy(&$3, &$$);} 
 | term '!' {mp_factorial(&$1, &$$);}
-| term tSUPNUM {mp_pwr_integer(&$1, $2, &$$);}
+| term tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
 | term '%' {mp_divide_integer(&$1, 100, &$$);}
 | tNOT term %prec LNEG {
     if (!mp_is_natural(&$2)) {
@@ -233,18 +233,18 @@ func:
 | tSIN term %prec HIGH {mp_sin(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tCOS term %prec HIGH {mp_cos(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tTAN term %prec HIGH {mp_tan(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
-| tSIN tSUPNUM term %prec HIGH {MPNumber t; mp_sin(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_pwr_integer(&t, $2, &$$);}
-| tCOS tSUPNUM term %prec HIGH {MPNumber t; mp_cos(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_pwr_integer(&t, $2, &$$);}
-| tTAN tSUPNUM term %prec HIGH {MPNumber t; mp_tan(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_pwr_integer(&t, $2, &$$);}
+| tSIN tSUPNUM term %prec HIGH {MPNumber t; mp_sin(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_xpowy_integer(&t, $2, &$$);}
+| tCOS tSUPNUM term %prec HIGH {MPNumber t; mp_cos(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_xpowy_integer(&t, $2, &$$);}
+| tTAN tSUPNUM term %prec HIGH {MPNumber t; mp_tan(&$3, _mp_equation_get_extra(yyscanner)->angle_units, &t); mp_xpowy_integer(&t, $2, &$$);}
 | tASIN term %prec HIGH {mp_asin(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tACOS term %prec HIGH {mp_acos(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tATAN term %prec HIGH {mp_atan(&$2, _mp_equation_get_extra(yyscanner)->angle_units, &$$);}
 | tSINH term %prec HIGH {mp_sinh(&$2, &$$);}
 | tCOSH term %prec HIGH {mp_cosh(&$2, &$$);}
 | tTANH term %prec HIGH {mp_tanh(&$2, &$$);}
-| tSINH tSUPNUM term %prec HIGH {MPNumber t; mp_sinh(&$3, &t); mp_pwr_integer(&t, $2, &$$);}
-| tCOSH tSUPNUM term %prec HIGH {MPNumber t; mp_cosh(&$3, &t); mp_pwr_integer(&t, $2, &$$);}
-| tTANH tSUPNUM term %prec HIGH {MPNumber t; mp_tanh(&$3, &t); mp_pwr_integer(&t, $2, &$$);}
+| tSINH tSUPNUM term %prec HIGH {MPNumber t; mp_sinh(&$3, &t); mp_xpowy_integer(&t, $2, &$$);}
+| tCOSH tSUPNUM term %prec HIGH {MPNumber t; mp_cosh(&$3, &t); mp_xpowy_integer(&t, $2, &$$);}
+| tTANH tSUPNUM term %prec HIGH {MPNumber t; mp_tanh(&$3, &t); mp_xpowy_integer(&t, $2, &$$);}
 | tASINH term %prec HIGH {mp_asinh(&$2, &$$);}
 | tACOSH term %prec HIGH {mp_acosh(&$2, &$$);}
 | tATANH term %prec HIGH {mp_atanh(&$2, &$$);}

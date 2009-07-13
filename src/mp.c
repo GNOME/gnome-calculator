@@ -2,6 +2,7 @@
 /*  $Header$
  *
  *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+ *  Copyright (c) 2008-2009 Robert Ancell
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,90 +29,23 @@
 #include "mp-internal.h"
 #include "calctool.h" // FIXME: Required for doerr() and MAXLINE
 
-// FIXME: MP.t and MP.m modified inside functions, needs to be fixed to be thread safe
 
-/*  SETS X TO THE LARGEST POSSIBLE POSITIVE MP NUMBER
- *  CHECK LEGALITY OF B, T, M AND MXR
+// FIXME: Re-add overflow and underflow detection
+
+
+/*  THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
+ *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
  */
-static void
-mpmaxr(MPNumber *x)
+void
+mperr(const char *format, ...)
 {
-    int i, it;
-
-    mpchk();
-    it = MP.b - 1;
-
-    /* SET FRACTION DIGITS TO B-1 */
-    for (i = 0; i < MP.t; i++)
-        x->fraction[i] = it;
-
-    /* SET SIGN AND EXPONENT */
-    x->sign = 1;
-    x->exponent = MP.m;
-}
-
-
-/*  CALLED ON MULTIPLE-PRECISION OVERFLOW, IE WHEN THE
- *  EXPONENT OF MP NUMBER X WOULD EXCEED M.
- *  AT PRESENT EXECUTION IS TERMINATED WITH AN ERROR MESSAGE
- *  AFTER CALLING MPMAXR(X), BUT IT WOULD BE POSSIBLE TO RETURN,
- *  POSSIBLY UPDATING A COUNTER AND TERMINATING EXECUTION AFTER
- *  A PRESET NUMBER OF OVERFLOWS.  ACTION COULD EASILY BE DETERMINED
- *  BY A FLAG IN LABELLED COMMON.
- *  M MAY HAVE BEEN OVERWRITTEN, SO CHECK B, T, M ETC.
- */
-static void
-mpovfl(MPNumber *x, const char *error)
-{
-    fprintf(stderr, "%s\n", error);
+    char text[MAXLINE];
+    va_list args;
     
-    mpchk();
-
-    /* SET X TO LARGEST POSSIBLE POSITIVE NUMBER */
-    mpmaxr(x);
-
-    /* TERMINATE EXECUTION BY CALLING MPERR */
-    mperr("*** CALL TO MPOVFL, MP OVERFLOW OCCURRED ***");
-}
-
-
-/*  CALLED ON MULTIPLE-PRECISION UNDERFLOW, IE WHEN THE
- *  EXPONENT OF MP NUMBER X WOULD BE LESS THAN -M.
- *  SINCE M MAY HAVE BEEN OVERWRITTEN, CHECK B, T, M ETC.
- */
-static void
-mpunfl(MPNumber *x)
-{
-    mpchk();
-
-    /*  THE UNDERFLOWING NUMBER IS SET TO ZERO
-     *  AN ALTERNATIVE WOULD BE TO CALL MPMINR (X) AND RETURN,
-     *  POSSIBLY UPDATING A COUNTER AND TERMINATING EXECUTION
-     *  AFTER A PRESET NUMBER OF UNDERFLOWS.  ACTION COULD EASILY
-     *  BE DETERMINED BY A FLAG IN LABELLED COMMON.
-     */
-    x->sign = 0;
-}
-
-
-static int
-pow_ii(int x, int n)
-{
-    int p = 1;
-    
-    if (n <= 0)
-        return 1;
-
-    for (;;) { 
-        if (n & 01)
-            p *= x;
-        if (n >>= 1)
-            x *= x;
-        else
-            break;
-    }
-
-    return p;
+    va_start(args, format);
+    vsnprintf(text, MAXLINE, format, args);
+    va_end(args);
+    doerr(text);
 }
 
 
@@ -124,132 +58,41 @@ mpext(int i, int j, MPNumber *x)
 {
     int q, s;
 
-    if (x->sign == 0 || MP.t <= 2 || i == 0)
+    if (x->sign == 0 || MP_T <= 2 || i == 0)
         return;
 
     /* COMPUTE MAXIMUM POSSIBLE ERROR IN THE LAST PLACE */
     q = (j + 1) / i + 1;
-    s = MP.b * x->fraction[MP.t - 2] + x->fraction[MP.t - 1];
+    s = MP_BASE * x->fraction[MP_T - 2] + x->fraction[MP_T - 1];
 
     /* SET LAST TWO DIGITS TO ZERO */    
     if (s <= q) {
-        x->fraction[MP.t - 2] = 0;
-        x->fraction[MP.t - 1] = 0;
+        x->fraction[MP_T - 2] = 0;
+        x->fraction[MP_T - 1] = 0;
         return;
     }
 
-    if (s + q < MP.b * MP.b)
+    if (s + q < MP_BASE * MP_BASE)
         return;
 
     /* ROUND UP HERE */
-    x->fraction[MP.t - 2] = MP.b - 1;
-    x->fraction[MP.t - 1] = MP.b;
+    x->fraction[MP_T - 2] = MP_BASE - 1;
+    x->fraction[MP_T - 1] = MP_BASE;
 
     /* NORMALIZE X (LAST DIGIT B IS OK IN MP_MULTIPLY_INTEGER) */
     mp_multiply_integer(x, 1, x);
 }
 
 
-/*  SETS BASE (B) AND NUMBER OF DIGITS (T) TO GIVE THE
- *  EQUIVALENT OF AT LEAST IDECPL DECIMAL DIGITS.
- *  IDECPL SHOULD BE POSITIVE.
- *  ITMAX2 IS THE DIMENSION OF ARRAYS USED FOR MP NUMBERS,
- *  SO AN ERROR OCCURS IF THE COMPUTED T EXCEEDS ITMAX2 - 2.
- *  MPSET ALSO SETS
- *        MXR = MAXDR (DIMENSION OF R IN COMMON, >= T+4), AND
- *          M = (W-1)/4 (MAXIMUM ALLOWABLE EXPONENT),
- *  WHERE W IS THE LARGEST INTEGER OF THE FORM 2**K-1 WHICH IS
- *  REPRESENTABLE IN THE MACHINE, K <= 47
- *  THE COMPUTED B AND T SATISFY THE CONDITIONS 
- *  (T-1)*LN(B)/LN(10) >= IDECPL   AND   8*B*B-1 <= W .
- *  APPROXIMATELY MINIMAL T AND MAXIMAL B SATISFYING
- *  THESE CONDITIONS ARE CHOSEN.
- *  PARAMETERS IDECPL, ITMAX2 AND MAXDR ARE INTEGERS.
- *  BEWARE - MPSET WILL CAUSE AN INTEGER OVERFLOW TO OCCUR
- *  ******   IF WORDLENGTH IS LESS THAN 48 BITS.
- *           IF THIS IS NOT ALLOWABLE, CHANGE THE DETERMINATION
- *           OF W (DO 30 ... TO 30 W = WN) OR SET B, T, M,
- *           AND MXR WITHOUT CALLING MPSET.
- *  FIRST SET MXR
- */
 void
-mp_init(int accuracy)
+mp_get_eulers(MPNumber *z)
 {
-    int i, k, w, b;
-
-    /* DETERMINE LARGE REPRESENTABLE INTEGER W OF FORM 2**K - 1 */
-    /*  ON CYBER 76 HAVE TO FIND K <= 47, SO ONLY LOOP
-     *  47 TIMES AT MOST.  IF GENUINE INTEGER WORDLENGTH
-     *  EXCEEDS 47 BITS THIS RESTRICTION CAN BE RELAXED.
-     */
-    w = 0;
-    k = 0;
-    for (i = 1; i <= 47; ++i) {
-        int w2, wn;
-
-        /*  INTEGER OVERFLOW WILL EVENTUALLY OCCUR HERE
-         *  IF WORDLENGTH < 48 BITS
-         */
-        w2 = w + w;
-        wn = w2 + 1;
-
-        /*  APPARENTLY REDUNDANT TESTS MAY BE NECESSARY ON SOME
-         *  MACHINES, DEPENDING ON HOW INTEGER OVERFLOW IS HANDLED
-         */
-        if (wn <= w || wn <= w2 || wn <= 0)
-            break;
-        k = i;
-        w = wn;
-    }
-
-    /* SET MAXIMUM EXPONENT TO (W-1)/4 */
-    MP.m = w / 4;
-    if (accuracy <= 0) {
-        mperr("*** ACCURACY <= 0 IN CALL TO MPSET ***");
-        return;
-    }
-
-    /* B IS THE LARGEST POWER OF 2 SUCH THAT (8*B*B-1) <= W */
-    MP.b = pow_ii(2, (k - 3) / 2);
-
-    /* Make a multiple of 10 so fractions can be represented exactly */
-    b = 1;
-    while (MP.b % (10 * b) != MP.b)
-        b *= 10;
-    MP.b = b;
-
-    /* 2E0 BELOW ENSURES AT LEAST ONE GUARD DIGIT */
-    MP.t = (int) ((float) (accuracy) * log((float)10.) / log((float) MP.b) + 
-                  (float) 2.0);
-
-    /* SEE IF T TOO LARGE FOR DIMENSION STATEMENTS */
-    if (MP.t > MP_SIZE) {
-        mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", MP.t);
-        MP.t = MP_SIZE;
-    }
-    
-    /* CHECK LEGALITY OF B, T, M AND MXR (AT LEAST T+4) */
-    mpchk();
+    MPNumber t;
+    mp_set_from_integer(1, &t);
+    mp_epowy(&t, z);
 }
 
 
-/*  CHECKS LEGALITY OF B, T, M AND MXR.
- *  THE CONDITION ON MXR (THE DIMENSION OF R IN COMMON) IS THAT
- *  MXR >= (I*T + J)
- */
-// FIXME: MP.t is changed around calls to add/subtract/multiply/divide - it should not be global
-void
-mpchk()
-{
-    /* CHECK LEGALITY OF T AND M */
-    if (MP.t <= 1)
-        mperr("*** T = %d ILLEGAL IN CALL TO MPCHK, PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***", MP.t);
-    if (MP.m <= MP.t)
-        mperr("*** M <= T IN CALL TO MPCHK, PERHAPS NOT SET BEFORE CALL TO AN MP ROUTINE ***");
-}
-
-
-/* SETS Y = ABS(X) FOR MP NUMBERS X AND Y */
 void
 mp_abs(const MPNumber *x, MPNumber *z)
 {
@@ -268,24 +111,24 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
     
     /* CLEAR GUARD DIGITS TO RIGHT OF X DIGITS */
     for(i = 3; i >= med; i--)
-        r[MP.t + i] = 0;
+        r[MP_T + i] = 0;
 
     if (s >= 0) {
         /* HERE DO ADDITION, EXPONENT(Y) >= EXPONENT(X) */
-        for (i = MP.t + 3; i >= MP.t; i--)
+        for (i = MP_T + 3; i >= MP_T; i--)
             r[i] = x->fraction[i - med];
 
         c = 0;
         for (; i >= med; i--) {
             c = y->fraction[i] + x->fraction[i - med] + c;
             
-            if (c < MP.b) {
+            if (c < MP_BASE) {
                 /* NO CARRY GENERATED HERE */
                 r[i] = c;
                 c = 0;
             } else {
                 /* CARRY GENERATED HERE */
-                r[i] = c - MP.b;
+                r[i] = c - MP_BASE;
                 c = 1;
             }
         }
@@ -293,7 +136,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         for (; i >= 0; i--)
         {
             c = y->fraction[i] + c;
-            if (c < MP.b) {
+            if (c < MP_BASE) {
                 r[i] = c;
                 i--;
                 
@@ -310,7 +153,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         
         /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
         if (c != 0) {
-            for (i = MP.t + 3; i > 0; i--)
+            for (i = MP_T + 3; i > 0; i--)
                 r[i] = r[i - 1];
             r[0] = 1;
             return 1;
@@ -320,7 +163,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
     }
 
     c = 0;
-    for (i = MP.t + med - 1; i >= MP.t; i--) {
+    for (i = MP_T + med - 1; i >= MP_T; i--) {
         /* HERE DO SUBTRACTION, ABS(Y) > ABS(X) */
         r[i] = c - x->fraction[i - med];
         c = 0;
@@ -328,7 +171,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         /* BORROW GENERATED HERE */    
         if (r[i] < 0) {
             c = -1;
-            r[i] += MP.b;
+            r[i] += MP_BASE;
         }
     }
 
@@ -340,7 +183,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
             c = 0;
         } else {
             /* BORROW GENERATED HERE */            
-            r[i] = c + MP.b;
+            r[i] = c + MP_BASE;
             c = -1;
         }
     }
@@ -359,7 +202,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
             return 0;
         }
         
-        r[i] = c + MP.b;
+        r[i] = c + MP_BASE;
         c = -1;
     }
 
@@ -375,6 +218,8 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
     int exp_diff, med;
     int x_largest = 0;
     MPNumber zt; // Use stack variable because of mp_normalize brokeness
+    
+    memset(&zt, 0, sizeof(MPNumber));
 
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
     if (x->sign == 0) {
@@ -392,9 +237,8 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
     /* COMPARE SIGNS */
     sign_prod = y_sign * x->sign;
     if (abs(sign_prod) > 1) {
-        mpchk();
         mperr("*** SIGN NOT 0, +1 OR -1 IN MP_ADD2 CALL, POSSIBLE OVERWRITING PROBLEM ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -403,7 +247,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
     med = abs(exp_diff);
     if (exp_diff < 0) {
         /* HERE EXPONENT(Y)  >  EXPONENT(X) */
-        if (med > MP.t) {
+        if (med > MP_T) {
             /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning: still true with rounding??  */
             mp_set_from_mp(y, z);
             z->sign = y_sign;
@@ -412,7 +256,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
         x_largest = 0;
     } else if (exp_diff > 0) {
         /* HERE EXPONENT(X)  >  EXPONENT(Y) */
-        if (med > MP.t) {
+        if (med > MP_T) {
             /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning: still true with rounding??  */
             mp_set_from_mp(x, z);
             return;
@@ -423,7 +267,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
         if (sign_prod < 0) {
             /* Signs are not equal.  find out which mantissa is larger. */
             int j;
-            for (j = 0; j < MP.t; j++) {
+            for (j = 0; j < MP_T; j++) {
                 int i = x->fraction[j] - y->fraction[j];
                 if (i == 0)
                     continue;
@@ -435,8 +279,8 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
             }
             
             /* Both mantissas equal, so result is zero. */
-            if (j >= MP.t) {
-                z->sign = 0;
+            if (j >= MP_T) {
+                mp_set_from_integer(0, z);
                 return;
             }
         }
@@ -451,7 +295,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
         zt.exponent = y->exponent + mp_add3(x, y, zt.fraction, sign_prod, med);
     }
     mp_normalize(&zt, 0);
-    mp_set_from_mp(&zt, z);   
+    mp_set_from_mp(&zt, z);
 }
 
 
@@ -465,119 +309,81 @@ mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z)
 }
 
 
-/*  ADDS MULTIPLE-PRECISION X TO INTEGER Y
- *  GIVING MULTIPLE-PRECISION Z.
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE
- *  AT LEAST 2T+6 (BUT Z(1) MAY BE R(T+5)).
- *  DIMENSION R(6) BECAUSE RALPH COMPILER ON UNIVAC 1100 COMPUTERS
- *  OBJECTS TO DIMENSION R(1).
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_add_integer(const MPNumber *x, int y, MPNumber *z)
 {
     MPNumber t;
-    mpchk();
     mp_set_from_integer(y, &t);
     mp_add(x, &t, z);
 }
 
 
-/*  ADDS THE RATIONAL NUMBER I/J TO MP NUMBER X, MP RESULT IN Y
- *  DIMENSION OF R MUST BE AT LEAST 2T+6
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_add_fraction(const MPNumber *x, int i, int j, MPNumber *y)
 {
     MPNumber t;
-    mpchk();
     mp_set_from_fraction(i, j, &t);
     mp_add(x, &t, y);
 }
 
 
-/*  FOR MP X AND Y, RETURNS FRACTIONAL PART OF X IN Y,
- *  I.E., Y = X - INTEGER PART OF X (TRUNCATED TOWARDS 0).
- */
 void
-mp_fractional_component(const MPNumber *x, MPNumber *y)
+mp_fractional_component(const MPNumber *x, MPNumber *z)
 {
-    /* RETURN 0 IF X = 0
-       OR IF EXPONENT SO LARGE THAT NO FRACTIONAL PART */    
-    if (x->sign == 0 || x->exponent >= MP.t) {
-        y->sign = 0;
+    int i, shift;
+
+    /* Fractional component of zero is 0 */
+    if (x->sign == 0) {
+        mp_set_from_integer(0, z);
         return;
     }
 
-    /* IF EXPONENT NOT POSITIVE CAN RETURN X */
+    /* All fractional */
     if (x->exponent <= 0) {
-        mp_set_from_mp(x, y);
+        mp_set_from_mp(x, z);
         return;
     }
-
-    /* MOVE FRACTIONAL PART OF X TO ACCUMULATOR */
-    y->sign = x->sign;
-    y->exponent = x->exponent;
-    memset(y->fraction, 0, y->exponent*sizeof(int));
-    if (x != y)
-        memcpy(y->fraction + y->exponent, x->fraction + x->exponent,
-               (MP.t - x->exponent)*sizeof(int));
-    memset(y->fraction + MP.t, 0, 4*sizeof(int));
-
-    /* NORMALIZE RESULT AND RETURN */
-    mp_normalize(y, 1);
+    
+    /* Shift fractional component */
+    shift = x->exponent;
+    for (i = shift; i < MP_SIZE && x->fraction[i] == 0; i++)
+        shift++;
+    z->sign = x->sign;
+    z->exponent = x->exponent - shift;
+    for (i = 0; i < MP_SIZE; i++) {
+        if (i + shift >= MP_SIZE)
+            z->fraction[i] = 0;
+        else
+            z->fraction[i] = x->fraction[i + shift];
+    }
+    if (z->fraction[0] == 0)
+        z->sign = 0;
 }
 
-/* RETURNS Y = INTEGER PART OF X (TRUNCATED TOWARDS 0), FOR MP X AND Y.
- * USE IF Y TOO LARGE TO BE REPRESENTABLE AS A SINGLE-PRECISION INTEGER. 
- * (ELSE COULD USE MPCMI).
- * CHECK LEGALITY OF B, T, M AND MXR
- */
+
 void
-mp_integer_component(const MPNumber *x, MPNumber *y)
+mp_integer_component(const MPNumber *x, MPNumber *z)
 {
     int i;
-
-    mpchk();
-    mp_set_from_mp(x, y);
-    if (y->sign == 0)
-        return;
-
-    /* IF EXPONENT LARGE ENOUGH RETURN Y = X */
-    if (y->exponent >= MP.t) {
+    
+    /* Integer component of zero = 0 */
+    if (x->sign == 0) {
+        mp_set_from_mp(x, z);
         return;
     }
 
-    /* IF EXPONENT SMALL ENOUGH RETURN ZERO */
-    if (y->exponent <= 0) {
-        y->sign = 0;
+    /* If all fractional then no integer component */
+    if (x->exponent <= 0) {
+        mp_set_from_integer(0, z);
         return;
     }
 
-    /* SET FRACTION TO ZERO */
-    for (i = y->exponent; i < MP.t; i++) {
-        y->fraction[i] = 0;
-    }
+    /* Clear fraction */
+    mp_set_from_mp(x, z);    
+    for (i = z->exponent; i < MP_SIZE; i++)
+        z->fraction[i] = 0;
 }
 
-/*  COMPARES MP NUMBER X WITH REAL NUMBER RI, RETURNING
- *      +1 IF X > RI,
- *       0 IF X == RI,
- *      -1 IF X < RI
- *  DIMENSION OF R IN COMMON AT LEAST 2T+6
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-static int
-mp_compare_mp_to_float(const MPNumber *x, float ri)
-{
-    MPNumber t;
-    mpchk();
-
-    /* CONVERT RI TO MULTIPLE-PRECISION AND COMPARE */
-    mp_set_from_float(ri, &t);
-    return mp_compare_mp_to_mp(x, &t);
-}
 
 /*  COMPARES THE MULTIPLE-PRECISION NUMBERS X AND Y,
  *  RETURNING +1 IF X  >  Y,
@@ -608,7 +414,7 @@ mp_compare_mp_to_mp(const MPNumber *x, const MPNumber *y)
         /* ABS(X)  >  ABS(Y) */
         return x->sign;
     }
-    for (i = 0; i < MP.t; i++) {
+    for (i = 0; i < MP_T; i++) {
         i2 = x->fraction[i] - y->fraction[i];
         if (i2 < 0) {
             /* ABS(X)  <  ABS(Y) */
@@ -635,23 +441,18 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     int i, ie, iz3;
     MPNumber t;
 
-    mpchk();
-
-    /* CHECK FOR DIVISION BY ZERO */
+    /* x/0 */
     if (y->sign == 0) {
         mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_DIVIDE ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
-    /* CHECK FOR X = 0 */
+    /* 0/y = 0 */
     if (x->sign == 0) {
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
-
-    /* INCREASE M TO AVOID OVERFLOW IN MP_RECIPROCAL */
-    MP.m += 2;
 
     /* FORM RECIPROCAL OF Y */
     mp_reciprocal(y, &t);
@@ -666,15 +467,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     iz3 = z->fraction[0];
     mpext(i, iz3, z);
 
-    /* RESTORE M, CORRECT EXPONENT AND RETURN */
-    MP.m += -2;
     z->exponent += ie;
-    
-    /* Check for overflow or underflow */
-    if (z->exponent < -MP.m)
-        mpunfl(z);
-    else if (z->exponent > MP.m)
-        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_DIVIDE ***");
 }
 
 
@@ -690,7 +483,7 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
 
     if (iy == 0) {
         mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_DIVIDE_INTEGER ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -704,12 +497,7 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
     z->exponent = x->exponent;
 
     /* CHECK FOR DIVISION BY B */
-    if (iy == MP.b) {
-        if (x->exponent <= -MP.m)
-        {
-            mpunfl(z);
-            return;
-        }
+    if (iy == MP_BASE) {
         mp_set_from_mp(x, z);
         z->exponent--;
         return;
@@ -724,7 +512,7 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
     }
 
     c = 0;
-    i2 = MP.t + 4;
+    i2 = MP_T + 4;
     i = 0;
 
     /*  IF IY*B NOT REPRESENTABLE AS AN INTEGER HAVE TO SIMULATE
@@ -732,12 +520,12 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
      */
 
     /* Computing MAX */
-    b2 = max(MP.b << 3, 32767 / MP.b);
+    b2 = max(MP_BASE << 3, 32767 / MP_BASE);
     if (iy < b2) {
         /* LOOK FOR FIRST NONZERO DIGIT IN QUOTIENT */
         do {
-            c = MP.b * c;
-            if (i < MP.t)
+            c = MP_BASE * c;
+            if (i < MP_T)
                 c += x->fraction[i];
             i++;
             r1 = c / iy;
@@ -748,14 +536,14 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
         /* ADJUST EXPONENT AND GET T+4 DIGITS IN QUOTIENT */
         z->exponent += 1 - i;
         z->fraction[0] = r1;
-        c = MP.b * (c - iy * r1);
+        c = MP_BASE * (c - iy * r1);
         kh = 1;
-        if (i < MP.t) {
-            kh = MP.t + 1 - i;
+        if (i < MP_T) {
+            kh = MP_T + 1 - i;
             for (k = 1; k < kh; k++) {
                 c += x->fraction[i];
                 z->fraction[k] = c / iy;
-                c = MP.b * (c - iy * z->fraction[k]);
+                c = MP_BASE * (c - iy * z->fraction[k]);
                 i++;
             }
             if (c < 0)
@@ -764,7 +552,7 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
         
         for (k = kh; k < i2; k++) {
             z->fraction[k] = c / iy;
-            c = MP.b * (c - iy * z->fraction[k]);
+            c = MP_BASE * (c - iy * z->fraction[k]);
         }
         if (c < 0)
             goto L210;
@@ -776,15 +564,15 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
     }
     
     /* HERE NEED SIMULATED DOUBLE-PRECISION DIVISION */
-    j1 = iy / MP.b;
+    j1 = iy / MP_BASE;
 
     /* LOOK FOR FIRST NONZERO DIGIT */
     c2 = 0;
-    j2 = iy - j1 * MP.b;
+    j2 = iy - j1 * MP_BASE;
     do {
-        c = MP.b * c + c2;
+        c = MP_BASE * c + c2;
         i__1 = c - j1;
-        c2 = i < MP.t ? x->fraction[i] : 0;
+        c2 = i < MP_T ? x->fraction[i] : 0;
         i++;
     } while (i__1 < 0 || (i__1 == 0 && c2 < j2));
 
@@ -807,14 +595,14 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
             iq -= j1;
         }
 
-        iq = iq * MP.b - ir * j2;
+        iq = iq * MP_BASE - ir * j2;
         if (iq < 0) {
             /* HERE IQ NEGATIVE SO IR WAS TOO LARGE */
             ir--;
             iq += iy;
         }
 
-        if (i < MP.t)
+        if (i < MP_T)
             iq += x->fraction[i];
         i++;
         iqj = iq / iy;
@@ -835,9 +623,8 @@ mp_divide_integer(const MPNumber *x, int iy, MPNumber *z)
 
 L210:
     /* CARRY NEGATIVE SO OVERFLOW MUST HAVE OCCURRED */
-    mpchk();
     mperr("*** INTEGER OVERFLOW IN MP_DIVIDE_INTEGER, B TOO LARGE ***");
-    z->sign = 0;
+    mp_set_from_integer(0, z);
 }
 
 
@@ -846,6 +633,7 @@ mp_is_integer(const MPNumber *x)
 {
     MPNumber MPtt, MP0, MP1;
 
+    /* This fix is required for 1/3 repiprocal not being detected as an integer */
     /* Multiplication and division by 10000 is used to get around a 
      * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
      * mp_integer_component() routine in mp.c, when the exponent is less than 1.
@@ -854,8 +642,26 @@ mp_is_integer(const MPNumber *x)
     mp_multiply(x, &MPtt, &MP0);
     mp_divide(&MP0, &MPtt, &MP0);
     mp_integer_component(&MP0, &MP1);
-
     return mp_is_equal(&MP0, &MP1);
+
+    /* Correct way to check for integer */
+    /*int i;
+    
+    // Zero is an integer
+    if (x->sign == 0)
+        return 1;
+
+    // Fractional
+    if (x->exponent <= 0)
+        return 0;
+
+    // Look for fractional components
+    for (i = x->exponent; i < MP_SIZE; i++) {
+        if (x->fraction[i] != 0)
+            return 0;
+    }
+    
+    return 1;*/
 }
 
 
@@ -866,7 +672,6 @@ mp_is_natural(const MPNumber *x)
 }
 
 
-/* RETURNS LOGICAL VALUE OF (X == Y) FOR MP X AND Y. */
 int
 mp_is_equal(const MPNumber *x, const MPNumber *y)
 {
@@ -874,25 +679,85 @@ mp_is_equal(const MPNumber *x, const MPNumber *y)
 }
 
 
-/*  THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
- *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
+/*  Return e^x for |x| < 1 USING AN O(SQRT(T).M(T)) ALGORITHM
+ *  DESCRIBED IN - R. P. BRENT, THE COMPLEXITY OF MULTIPLE-
+ *  PRECISION ARITHMETIC (IN COMPLEXITY OF COMPUTATIONAL PROBLEM
+ *  SOLVING, UNIV. OF QUEENSLAND PRESS, BRISBANE, 1976, 126-165).
+ *  ASYMPTOTICALLY FASTER METHODS EXIST, BUT ARE NOT USEFUL
+ *  UNLESS T IS VERY LARGE. SEE COMMENTS TO MP_ATAN AND MPPIGL.
  */
-void
-mperr(const char *format, ...)
+static void
+mpexp(const MPNumber *x, MPNumber *z)
 {
-    char text[MAXLINE];
-    va_list args;
+    int i, q, ib, ic;
+    float rlb;
+    MPNumber t1, t2;
+
+    /* e^0 = 1 */
+    if (x->sign == 0) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
+    /* CHECK THAT ABS(X) < 1 */
+    if (x->exponent > 0) {
+        mperr("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP ***");
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    mp_set_from_mp(x, &t1);
+    rlb = log((float)MP_BASE);
+
+    /* COMPUTE APPROXIMATELY OPTIMAL Q (AND DIVIDE X BY 2**Q) */
+    q = (int)(sqrt((float)MP_T * 0.48f * rlb) + (float) x->exponent * 1.44f * rlb);
+
+    /* HALVE Q TIMES */
+    if (q > 0) {
+        ib = MP_BASE << 2;
+        ic = 1;
+        for (i = 1; i <= q; ++i) {
+            ic <<= 1;
+            if (ic < ib && ic != MP_BASE && i < q)
+                continue;
+            mp_divide_integer(&t1, ic, &t1);
+            ic = 1;
+        }
+    }
+
+    if (t1.sign == 0) {
+        mp_set_from_integer(0, z);
+        return;
+    }
+    mp_set_from_mp(&t1, z);
+    mp_set_from_mp(&t1, &t2);
+
+    /* SUM SERIES, REDUCING T WHERE POSSIBLE */
+    for (i = 2; ; i++)  {
+        if (MP_T + t2.exponent - z->exponent <= 0)
+            break;
+
+        mp_multiply(&t1, &t2, &t2);
+        mp_divide_integer(&t2, i, &t2);
+
+        mp_add(&t2, z, z);
+        if (t2.sign == 0)
+            break;
+    }
+
+    /* APPLY (X+1)**2 - 1 = X(2 + X) FOR Q ITERATIONS */
+    for (i = 1; i <= q; ++i) {
+        mp_add_integer(z, 2, &t1);
+        mp_multiply(&t1, z, z);
+    }
     
-    va_start(args, format);
-    vsnprintf(text, MAXLINE, format, args);
-    va_end(args);
-    doerr(text);
+    mp_add_integer(z, 1, z);
 }
 
 
 /*  RETURNS Z = EXP(X) FOR MP X AND Z.
  *  EXP OF INTEGER AND FRACTIONAL PARTS OF X ARE COMPUTED
- *  SEPARATELY.  SEE ALSO COMMENTS IN MPEXP1.
+ *  SEPARATELY.  SEE ALSO COMMENTS IN MPEXP.
  *  TIME IS O(SQRT(T)M(T)).
  *  DIMENSION OF R MUST BE AT LEAST 4T+10 IN CALLING PROGRAM
  *  CHECK LEGALITY OF B, T, M AND MXR
@@ -901,41 +766,26 @@ void
 mp_epowy(const MPNumber *x, MPNumber *z)
 {
     float r__1;
-    int i, ie, ix, ts, xs, tss;
+    int i, ix, xs, tss;
     float rx, rz, rlb;
     MPNumber t1, t2;
 
-    mpchk();
-
-    /* CHECK FOR X == 0 */
+    /* x^0 = 1 */
     if (x->sign == 0)  {
         mp_set_from_integer(1, z);
         return;
     }
 
-    /* CHECK IF ABS(X) < 1 */
+    /* If |x| < 1 use mpexp */
     if (x->exponent <= 0) {
-        /* USE MPEXP1 HERE */
-        mpexp1(x, z);
-        mp_add_integer(z, 1, z);
+        mpexp(x, z);
         return;
     }
 
     /*  SEE IF ABS(X) SO LARGE THAT EXP(X) WILL CERTAINLY OVERFLOW
      *  OR UNDERFLOW.  1.01 IS TO ALLOW FOR ERRORS IN ALOG.
      */
-    rlb = log((float) MP.b) * (float)1.01;
-    if (mp_compare_mp_to_float(x, -(double)((float) (MP.m + 1)) * rlb) < 0) {
-        /* UNDERFLOW SO CALL MPUNFL AND RETURN */
-        mpunfl(z);
-        return;
-    }
-
-    if (mp_compare_mp_to_float(x, (float) MP.m * rlb) > 0) {
-        /* OVERFLOW HERE */
-        mpovfl(z, "*** OVERFLOW IN SUBROUTINE MP_EPOWY ***");
-        return;
-    }
+    rlb = log((float)MP_BASE) * 1.01f;
 
     /* NOW SAFE TO CONVERT X TO REAL */
     rx = mp_cast_to_float(x);
@@ -947,9 +797,9 @@ mp_epowy(const MPNumber *x, MPNumber *z)
     /*  IF ABS(X) > M POSSIBLE THAT INT(X) OVERFLOWS,
      *  SO DIVIDE BY 32.
      */
-    if (fabs(rx) > (float) MP.m) {
+    /*if (fabs(rx) > (float)MP.m) {
         mp_divide_integer(&t2, 32, &t2);
-    }
+    }*/
 
     /* GET FRACTIONAL AND INTEGER PARTS OF ABS(X) */
     ix = mp_cast_to_int(&t2);
@@ -957,85 +807,58 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 
     /* ATTACH SIGN TO FRACTIONAL PART AND COMPUTE EXP OF IT */
     t2.sign *= xs;
-    mpexp1(&t2, z);
-    mp_add_integer(z, 1, z);
+    mpexp(&t2, z);
 
     /*  COMPUTE E-2 OR 1/E USING TWO EXTRA DIGITS IN CASE ABS(X) LARGE
      *  (BUT ONLY ONE EXTRA DIGIT IF T < 4)
      */
-    if (MP.t < 4)
-        tss = MP.t + 1;
+    if (MP_T < 4)
+        tss = MP_T + 1;
     else
-        tss = MP.t + 2;
+        tss = MP_T + 2;
 
     /* LOOP FOR E COMPUTATION. DECREASE T IF POSSIBLE. */
     /* Computing MIN */
-    ts = MP.t;
-    MP.t = tss;
     mp_set_from_integer(xs, &t1);
-    MP.t = ts;
 
     t2.sign = 0;
     for (i = 2 ; ; i++) {
-        int t;
-        
-        t = min(tss, tss + 2 + t1.exponent);
-        if (t <= 2)
+        if (min(tss, tss + 2 + t1.exponent) <= 2)
             break;
         
-        ts = MP.t;
-        MP.t = t;
         mp_divide_integer(&t1, i * xs, &t1);
-        MP.t = ts;
-        
-        ts = MP.t;
-        MP.t = tss;
         mp_add(&t2, &t1, &t2);
-        MP.t = ts;
         if (t1.sign == 0)
             break;
     }
 
     /* RAISE E OR 1/E TO POWER IX */
-    ts = MP.t;
-    MP.t = tss;
     if (xs > 0)
         mp_add_integer(&t2, 2, &t2);
-    mp_pwr_integer(&t2, ix, &t2);
-    MP.t = ts;
+    mp_xpowy_integer(&t2, ix, &t2);
 
     /* MULTIPLY EXPS OF INTEGER AND FRACTIONAL PARTS */
     mp_multiply(z, &t2, z);
 
     /* MUST CORRECT RESULT IF DIVIDED BY 32 ABOVE. */
-    if (fabs(rx) > (float) MP.m && z->sign != 0) {
+    /*if (fabs(rx) > (float)MP.m && z->sign != 0) {
         for (i = 1; i <= 5; ++i) {
-            /* SAVE EXPONENT TO AVOID OVERFLOW IN MP_MULTIPLY */
+            // SAVE EXPONENT TO AVOID OVERFLOW IN MP_MULTIPLY
             ie = z->exponent;
             z->exponent = 0;
             mp_multiply(z, z, z);
             z->exponent += ie << 1;
-
-            /* CHECK FOR UNDERFLOW AND OVERFLOW */
-            if (z->exponent < -MP.m) {
-                mpunfl(z);
-                return;
-            }
-            if (z->exponent > MP.m) {
-                mpovfl(z, "*** OVERFLOW IN SUBROUTINE MP_EPOWY ***");
-                return;
-            }
         }
-    }
+    }*/
 
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS ABS(X) LARGE
      *  (WHEN EXP MIGHT OVERFLOW OR UNDERFLOW)
      */
-    if (fabs(rx) > (float)10.0)
+    if (fabs(rx) > 10.0f)
         return;
 
     rz = mp_cast_to_float(z);
-    if ((r__1 = rz - exp(rx), fabs(r__1)) < rz * (float)0.01)
+    if ((r__1 = rz - exp(rx), fabs(r__1)) < rz * 0.01f)
         return;
 
     /*  THE FOLLOWING MESSAGE MAY INDICATE THAT
@@ -1043,96 +866,6 @@ mp_epowy(const MPNumber *x, MPNumber *z)
      *  RESULT UNDERFLOWED.
      */
     mperr("*** ERROR OCCURRED IN MP_EPOWY, RESULT INCORRECT ***");
-}
-
-
-/*  ASSUMES THAT X AND Y ARE MP NUMBERS,  -1 < X < 1.
- *  RETURNS Y = EXP(X) - 1 USING AN O(SQRT(T).M(T)) ALGORITHM
- *  DESCRIBED IN - R. P. BRENT, THE COMPLEXITY OF MULTIPLE-
- *  PRECISION ARITHMETIC (IN COMPLEXITY OF COMPUTATIONAL PROBLEM
- *  SOLVING, UNIV. OF QUEENSLAND PRESS, BRISBANE, 1976, 126-165).
- *  ASYMPTOTICALLY FASTER METHODS EXIST, BUT ARE NOT USEFUL
- *  UNLESS T IS VERY LARGE. SEE COMMENTS TO MP_ATAN AND MPPIGL.
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 3T+8
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
-mpexp1(const MPNumber *x, MPNumber *y)
-{
-    int i, q, ib, ic;
-    float rlb;
-    MPNumber t1, t2;
-
-    mpchk();
-
-    /* CHECK FOR X = 0 */
-    if (x->sign == 0) {
-        y->sign = 0;
-        return;
-    }
-
-    /* CHECK THAT ABS(X) < 1 */
-    if (x->exponent > 0) {
-        mperr("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP1 ***");
-        y->sign = 0;
-        return;
-    }
-
-    mp_set_from_mp(x, &t1);
-    rlb = log((float) MP.b);
-
-    /* COMPUTE APPROXIMATELY OPTIMAL Q (AND DIVIDE X BY 2**Q) */
-    q = (int) (sqrt((float) MP.t * (float).48 * rlb) + (float) x->exponent * 
-              (float)1.44 * rlb);
-
-    /* HALVE Q TIMES */
-    if (q > 0) {
-        ib = MP.b << 2;
-        ic = 1;
-        for (i = 1; i <= q; ++i) {
-            ic <<= 1;
-            if (ic < ib && ic != MP.b && i < q)
-                continue;
-            mp_divide_integer(&t1, ic, &t1);
-            ic = 1;
-        }
-    }
-
-    if (t1.sign == 0) {
-        y->sign = 0;
-        return;
-    }
-    mp_set_from_mp(&t1, y);
-    mp_set_from_mp(&t1, &t2);
-
-    /* SUM SERIES, REDUCING T WHERE POSSIBLE */
-    for (i = 2; ; i++)  {
-        int t, ts;
-        
-        t = MP.t + 2 + t2.exponent - y->exponent;
-        if (t <= 2)
-            break;
-        t = min(t, MP.t);
-
-        ts = MP.t;
-        MP.t = t;
-        mp_multiply(&t1, &t2, &t2);
-        mp_divide_integer(&t2, i, &t2);
-        MP.t = ts;
-
-        mp_add(&t2, y, y);
-        if (t2.sign == 0)
-            break;
-    }
-
-    if (q <= 0)
-        return;
-
-    /* APPLY (X+1)**2 - 1 = X(2 + X) FOR Q ITERATIONS */
-    for (i = 1; i <= q; ++i) {
-        mp_add_integer(y, 2, &t1);
-        mp_multiply(&t1, y, y);
-    }
 }
 
 
@@ -1217,28 +950,25 @@ mp_is_less_equal(const MPNumber *x, const MPNumber *y)
  *  CONDITION ABS(X) < 1/B, ERROR OTHERWISE.
  *  USES NEWTONS METHOD TO SOLVE THE EQUATION
  *  EXP1(-Y) = X, THEN REVERSES SIGN OF Y.
- *  (HERE EXP1(Y) = EXP(Y) - 1 IS COMPUTED USING MPEXP1).
- *  TIME IS O(SQRT(T).M(T)) AS FOR MPEXP1, SPACE = 5T+12.
+ *  TIME IS O(SQRT(T).M(T)) AS FOR MPEXP, SPACE = 5T+12.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
 static void
-mplns(const MPNumber *x, MPNumber *y)
+mplns(const MPNumber *x, MPNumber *z)
 {
     int t, it0;
     MPNumber t1, t2, t3;
     
-    mpchk();
-
-    /* CHECK FOR X = 0 EXACTLY */
+    /* ln(1) = 0 */
     if (x->sign == 0)  {
-        y->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     /* CHECK THAT ABS(X) < 1/B */
-    if (x->exponent + 1 > 0) {
+    if (x->exponent >= 0) {
         mperr("*** ABS(X) >= 1/B IN CALL TO MPLNS ***");
-        y->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -1250,27 +980,25 @@ mplns(const MPNumber *x, MPNumber *y)
     mp_add_fraction(&t1, 1, 2, &t1);
     mp_multiply(x, &t1, &t1);
     mp_add_integer(&t1, -1, &t1);
-    mp_multiply(x, &t1, y);
+    mp_multiply(x, &t1, z);
 
     /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
-    t = max(5, 13 - (MP.b << 1));
-    if (t <= MP.t)
+    t = max(5, 13 - (MP_BASE << 1));
+    if (t <= MP_T)
     {
         it0 = (t + 5) / 2;
 
         while(1)
         {
-            int ts, ts2, ts3;
+            int ts2, ts3;
             
-            ts = MP.t;
-            MP.t = t;
-            mpexp1(y, &t3);
+            mp_epowy(z, &t3);
+            mp_add_integer(&t3, -1, &t3);
             mp_multiply(&t2, &t3, &t1);
             mp_add(&t3, &t1, &t3);
             mp_add(&t2, &t3, &t3);
-            mp_subtract(y, &t3, y);
-            MP.t = ts;
-            if (t >= MP.t)
+            mp_subtract(z, &t3, z);
+            if (t >= MP_T)
                 break;
 
             /*  FOLLOWING LOOP COMPUTES NEXT VALUE OF T TO USE.
@@ -1278,7 +1006,7 @@ mplns(const MPNumber *x, MPNumber *y)
              *  WE CAN ALMOST DOUBLE T EACH TIME.
              */
             ts3 = t;
-            t = MP.t;
+            t = MP_T;
             do {
                 ts2 = t;
                 t = (t + it0) / 2;
@@ -1287,13 +1015,13 @@ mplns(const MPNumber *x, MPNumber *y)
         }
         
         /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
-        if (t3.sign != 0 && t3.exponent << 1 > it0 - MP.t) {
+        if (t3.sign != 0 && t3.exponent << 1 > it0 - MP_T) {
             mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
         }
     }
 
     /* REVERSE SIGN OF Y AND RETURN */
-    y->sign = -y->sign;
+    z->sign = -z->sign;
 }
 
 
@@ -1303,7 +1031,7 @@ mplns(const MPNumber *x, MPNumber *y)
  *  FOR SMALL INTEGER X, MPLNI IS FASTER.
  *  ASYMPTOTICALLY FASTER METHODS EXIST (EG THE GAUSS-SALAMIN
  *  METHOD, SEE MPLNGS), BUT ARE NOT USEFUL UNLESS T IS LARGE.
- *  SEE COMMENTS TO MP_ATAN, MPEXP1 AND MPPIGL.
+ *  SEE COMMENTS TO MP_ATAN, MPEXP AND MPPIGL.
  *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 6T+14.
  *  CHECK LEGALITY OF B, T, M AND MXR
  */
@@ -1314,18 +1042,16 @@ mp_ln(const MPNumber *x, MPNumber *z)
     float rx, rlx;
     MPNumber t1, t2;
     
-    mpchk();
-
     /* CHECK THAT X IS POSITIVE */
     if (x->sign <= 0) {
         mperr("*** X NONPOSITIVE IN CALL TO MP_LN ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     /* MOVE X TO LOCAL STORAGE */
     mp_set_from_mp(x, &t1);
-    z->sign = 0;
+    mp_set_from_integer(0, z);
     k = 0;
 
     /* LOOP TO GET APPROXIMATE LN(X) USING SINGLE-PRECISION */
@@ -1348,7 +1074,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
 
         /* RESTORE EXPONENT AND COMPUTE SINGLE-PRECISION LOG */
         t1.exponent = e;
-        rlx = log(rx) + (float) e * log((float) MP.b);
+        rlx = log(rx) + (float)e * log((float)MP_BASE);
         mp_set_from_float(-(double)rlx, &t2);
 
         /* UPDATE Z AND COMPUTE ACCURATE EXP OF APPROXIMATE LOG */
@@ -1373,7 +1099,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
  *  1. log10(x) = log10(e) * log(x)
  */
 void
-mp_logarithm(int n, MPNumber *x, MPNumber *z)
+mp_logarithm(int n, const MPNumber *x, MPNumber *z)
 {
     MPNumber t1, t2;
 
@@ -1411,9 +1137,10 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
     int c, i, j, i2, xi;
     MPNumber r;
 
-    mpchk();
-    i2 = MP.t + 4;
-
+    i2 = MP_T + 4;
+    
+    memset(&r, 0, sizeof(MPNumber));
+    
     /* FORM SIGN OF PRODUCT */
     z->sign = x->sign * y->sign;
     if (z->sign == 0)
@@ -1422,13 +1149,9 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
     /* FORM EXPONENT OF PRODUCT */
     z->exponent = x->exponent + y->exponent;
     
-    /* CLEAR ACCUMULATOR */
-    for (i = 0; i < i2; i++)
-        r.fraction[i] = 0;
-
     /* PERFORM MULTIPLICATION */
     c = 8;
-    for (i = 0; i < MP.t; i++) {
+    for (i = 0; i < MP_T; i++) {
         xi = x->fraction[i];
 
         /* FOR SPEED, PUT THE NUMBER WITH MANY ZEROS FIRST */
@@ -1436,16 +1159,16 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
             continue;
 
         /* Computing MIN */
-        for (j = 0; j < min(MP.t, i2 - i - 1); j++)
+        for (j = 0; j < min(MP_T, i2 - i - 1); j++)
             r.fraction[i+j+1] += xi * y->fraction[j];
         c--;
         if (c > 0)
             continue;
 
         /* CHECK FOR LEGAL BASE B DIGIT */
-        if (xi < 0 || xi >= MP.b) {
+        if (xi < 0 || xi >= MP_BASE) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MP_MULTIPLY, POSSIBLE OVERWRITING PROBLEM ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
 
@@ -1456,24 +1179,24 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
             int ri = r.fraction[j] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MP_MULTIPLY, B TOO LARGE ***");
-                z->sign = 0;
+                mp_set_from_integer(0, z);
                 return;
             }
-            c = ri / MP.b;
-            r.fraction[j] = ri - MP.b * c;
+            c = ri / MP_BASE;
+            r.fraction[j] = ri - MP_BASE * c;
         }
         if (c != 0) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MP_MULTIPLY, POSSIBLE OVERWRITING PROBLEM ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
         c = 8;
     }
 
     if (c != 8) {
-        if (xi < 0 || xi >= MP.b) {
+        if (xi < 0 || xi >= MP_BASE) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MP_MULTIPLY, POSSIBLE OVERWRITING PROBLEM ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
     
@@ -1482,23 +1205,23 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
             int ri = r.fraction[j] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MP_MULTIPLY, B TOO LARGE ***");
-                z->sign = 0;
+                mp_set_from_integer(0, z);
                 return;
             }
-            c = ri / MP.b;
-            r.fraction[j] = ri - MP.b * c;
+            c = ri / MP_BASE;
+            r.fraction[j] = ri - MP_BASE * c;
         }
         
         if (c != 0) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MP_MULTIPLY, POSSIBLE OVERWRITING PROBLEM ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
     }
 
     /* NORMALIZE AND ROUND RESULT */
     // FIXME: Use stack variable because of mp_normalize brokeness
-    for (i = 0; i < i2; i++)
+    for (i = 0; i < MP_SIZE; i++)
         z->fraction[i] = r.fraction[i];
     mp_normalize(z, 0);
 }
@@ -1517,7 +1240,7 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
     
     z->sign = x->sign;
     if (z->sign == 0 || iy == 0) {
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -1526,16 +1249,10 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
         z->sign = -z->sign;
 
         /* CHECK FOR MULTIPLICATION BY B */
-        if (iy == MP.b) {
-            if (x->exponent < MP.m) {
-                mp_set_from_mp(x, z);
-                z->sign = z->sign;
-                z->exponent = x->exponent + 1;
-            }
-            else {
-                mpchk();
-                mpovfl(z, "*** OVERFLOW OCCURRED IN MPMUL2 ***");
-            }
+        if (iy == MP_BASE) {
+            mp_set_from_mp(x, z);
+            z->sign = z->sign;
+            z->exponent = x->exponent + 1;
             return;
         }
     }
@@ -1545,48 +1262,47 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
 
     /* FORM PRODUCT IN ACCUMULATOR */
     c = 0;
-    t1 = MP.t + 1;
-    t3 = MP.t + 3;
-    t4 = MP.t + 4;
+    t1 = MP_T + 1;
+    t3 = MP_T + 3;
+    t4 = MP_T + 4;
 
     /*  IF IY*B NOT REPRESENTABLE AS AN INTEGER WE HAVE TO SIMULATE
      *  DOUBLE-PRECISION MULTIPLICATION.
      */
 
     /* Computing MAX */
-    if (iy >= max(MP.b << 3, 32767 / MP.b)) {
+    if (iy >= max(MP_BASE << 3, 32767 / MP_BASE)) {
         /* HERE J IS TOO LARGE FOR SINGLE-PRECISION MULTIPLICATION */
-        j1 = iy / MP.b;
-        j2 = iy - j1 * MP.b;
+        j1 = iy / MP_BASE;
+        j2 = iy - j1 * MP_BASE;
 
         /* FORM PRODUCT */
         for (ij = 1; ij <= t4; ++ij) {
-            c1 = c / MP.b;
-            c2 = c - MP.b * c1;
+            c1 = c / MP_BASE;
+            c2 = c - MP_BASE * c1;
             i = t1 - ij;
             ix = 0;
             if (i > 0)
                 ix = x->fraction[i - 1];
             ri = j2 * ix + c2;
-            is = ri / MP.b;
+            is = ri / MP_BASE;
             c = j1 * ix + c1 + is;
-            z->fraction[i + 3] = ri - MP.b * is;
+            z->fraction[i + 3] = ri - MP_BASE * is;
         }
     }
     else
     {
-        for (ij = 1; ij <= MP.t; ++ij) {
+        for (ij = 1; ij <= MP_T; ++ij) {
             i = t1 - ij;
             ri = iy * x->fraction[i - 1] + c;
-            c = ri / MP.b;
-            z->fraction[i + 3] = ri - MP.b * c;
+            c = ri / MP_BASE;
+            z->fraction[i + 3] = ri - MP_BASE * c;
         }
 
         /* CHECK FOR INTEGER OVERFLOW */
         if (ri < 0) {
-            mpchk();
             mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
 
@@ -1594,8 +1310,8 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
         for (ij = 1; ij <= 4; ++ij) {
             i = 5 - ij;
             ri = c;
-            c = ri / MP.b;
-            z->fraction[i - 1] = ri - MP.b * c;
+            c = ri / MP_BASE;
+            z->fraction[i - 1] = ri - MP_BASE * c;
         }
     }
 
@@ -1609,9 +1325,8 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
         }
         
         if (c < 0) {
-            mpchk();
             mperr("*** INTEGER OVERFLOW IN MPMUL2, B TOO LARGE ***");
-            z->sign = 0;
+            mp_set_from_integer(0, z);
             return;
         }
         
@@ -1620,8 +1335,8 @@ mpmul2(const MPNumber *x, int iy, MPNumber *z, int trunc)
             z->fraction[i] = z->fraction[i - 1];
         }
         ri = c;
-        c = ri / MP.b;
-        z->fraction[0] = ri - MP.b * c;
+        c = ri / MP_BASE;
+        z->fraction[0] = ri - MP_BASE * c;
         z->exponent++;
     }
 }
@@ -1646,14 +1361,13 @@ mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber
     int is, js;
 
     if (denominator == 0) {
-        mpchk();
         mperr("*** ATTEMPTED DIVISION BY ZERO IN MP_MULTIPLY_FRACTION ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     if (numerator == 0) {
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -1683,7 +1397,7 @@ mp_invert_sign(const MPNumber *x, MPNumber *y)
  *  AND RETURNS MP RESULT IN Z.  INTEGER ARGUMENTS REG_EXP IS
  *  NOT PRESERVED. R*-ROUNDING IS USED IF TRUNC == 0
  */
-// FIXME: Is r->fraction large enough?  It seems to be in practise but it may be MP.t+4 instead of MP.t
+// FIXME: Is r->fraction large enough?  It seems to be in practise but it may be MP_T+4 instead of MP_T
 // FIXME: There is some sort of stack corruption/use of unitialised variables here.  Some functions are
 // using stack variables as x otherwise there are corruption errors. e.g. "Cos(45) - 1/Sqrt(2) = -0"
 // (try in scientific mode)
@@ -1699,18 +1413,18 @@ mp_normalize(MPNumber *x, int trunc)
     /* CHECK THAT SIGN = +-1 */
     if (abs(x->sign) > 1) {
         mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_NORMALIZE, POSSIBLE OVERWRITING PROBLEM ***");
-        x->sign = 0;
+        mp_set_from_integer(0, x);
         return;
     }
 
-    i2 = MP.t + 4;
+    i2 = MP_T + 4;
 
     /* Normalize by shifting the fraction to the left */    
     if (x->fraction[0] == 0) {
         /* Find how many places to shift and detect 0 fraction */
         for (i = 1; i < i2 && x->fraction[i] == 0; i++);
         if (i == i2) {
-            x->sign = 0;
+            mp_set_from_integer(0, x);
             return;
         }
         
@@ -1727,12 +1441,12 @@ mp_normalize(MPNumber *x, int trunc)
         /*  SEE IF ROUNDING NECESSARY
          *  TREAT EVEN AND ODD BASES DIFFERENTLY
          */
-        b2 = MP.b / 2;
-        if (b2 << 1 != MP.b) {
+        b2 = MP_BASE / 2;
+        if (b2 << 1 != MP_BASE) {
             round = 0;
             /* ODD BASE, ROUND IF R(T+1)... > 1/2 */
             for (i = 0; i < 4; i++) {
-                i__1 = x->fraction[MP.t + i] - b2;
+                i__1 = x->fraction[MP_T + i] - b2;
                 if (i__1 < 0)
                     break;
                 else if (i__1 == 0)
@@ -1748,12 +1462,12 @@ mp_normalize(MPNumber *x, int trunc)
              *  AFTER R(T+2).
              */
             round = 1;
-            i__1 = x->fraction[MP.t] - b2;
+            i__1 = x->fraction[MP_T] - b2;
             if (i__1 < 0)
                 round = 0;
             else if (i__1 == 0) {
-                if (x->fraction[MP.t - 1] % 2 != 0) {
-                    if (x->fraction[MP.t + 1] + x->fraction[MP.t + 2] + x->fraction[MP.t + 3] == 0) {
+                if (x->fraction[MP_T - 1] % 2 != 0) {
+                    if (x->fraction[MP_T + 1] + x->fraction[MP_T + 2] + x->fraction[MP_T + 3] == 0) {
                         round = 0;
                     }
                 }
@@ -1762,9 +1476,9 @@ mp_normalize(MPNumber *x, int trunc)
 
         /* ROUND */
         if (round) {
-            for (j = MP.t - 1; j >= 0; j--) {
+            for (j = MP_T - 1; j >= 0; j--) {
                 ++x->fraction[j];
-                if (x->fraction[j] < MP.b)
+                if (x->fraction[j] < MP_BASE)
                     break;
                 x->fraction[j] = 0;
             }
@@ -1776,112 +1490,37 @@ mp_normalize(MPNumber *x, int trunc)
             }
         }
     }
-
-    /* Check for over and underflow */
-    if (x->exponent > MP.m) {
-        mpovfl(x, "*** OVERFLOW OCCURRED IN MP_NORMALIZE ***");
-        return;
-    }
-    if (x->exponent < -MP.m) {
-        mpunfl(x);
-        return;
-    }
 }
 
 
-/*  RETURNS Y = X**N, FOR MP X AND Y, INTEGER N, WITH 0**0 = 1.
- *  R MUST BE DIMENSIONED AT LEAST 4T+10 IN CALLING PROGRAM
- *  (2T+6 IS ENOUGH IF N NONNEGATIVE).
- */
-void
-mp_pwr_integer(const MPNumber *x, int n, MPNumber *y)
-{
-    int n2, ns;
-    MPNumber t;
-   
-    n2 = n;
-    if (n2 < 0) {
-        /* N < 0 */
-        mpchk();
-        n2 = -n2;
-        if (x->sign == 0) {
-            mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE MP_PWR_INTEGER ***");
-            y->sign = 0;
-            return;
-        }
-    } else if (n2 == 0) {
-        /* N == 0, RETURN Y = 1. */
-        mp_set_from_integer(1, y);
-        return;
-    } else {
-        /* N > 0 */
-        mpchk();
-        if (x->sign == 0) {
-            y->sign = 0;
-            return;
-        }
-    }
-
-    /* MOVE X */
-    mp_set_from_mp(x, y);
-
-    /* IF N < 0 FORM RECIPROCAL */
-    if (n < 0)
-        mp_reciprocal(y, y);
-    mp_set_from_mp(y, &t);
-
-    /* SET PRODUCT TERM TO ONE */
-    mp_set_from_integer(1, y);
-
-    /* MAIN LOOP, LOOK AT BITS OF N2 FROM RIGHT */
-    while(1) {
-        ns = n2;
-        n2 /= 2;
-        if (n2 << 1 != ns)
-            mp_multiply(y, &t, y);
-        if (n2 <= 0)
-            return;
-        
-        mp_multiply(&t, &t, &t);
-    }
-}
-
-
-/*  RETURNS Z = X**Y FOR MP NUMBERS X, Y AND Z, WHERE X IS
- *  POSITIVE (X == 0 ALLOWED IF Y > 0).  SLOWER THAN
- *  MP_PWR_INTEGER AND MPQPWR, SO USE THEM IF POSSIBLE.
- *  DIMENSION OF R IN COMMON AT LEAST 7T+16
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
-void
+static void
 mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     MPNumber t;
 
-    mpchk();
-
+    /* (-x)^y imaginary */
     if (x->sign < 0) {
         mperr(_("Negative X and non-integer Y not supported"));
-        z->sign = 0;
+        mp_set_from_integer(0, z);
+        return;
     }
-    else if (x->sign == 0) 
-    {
-        /* HERE X IS ZERO, RETURN ZERO IF Y POSITIVE, OTHERWISE ERROR */
-        if (y->sign <= 0) {
-            mperr("*** X ZERO AND Y NONPOSITIVE IN CALL TO MP_PWR ***");
-        }
-        z->sign = 0;
-    }
-    else {
-        /*  USUAL CASE HERE, X POSITIVE
-         *  USE MPLN AND MP_EPOWY TO COMPUTE POWER
-         */
-        mp_ln(x, &t);
-        mp_multiply(y, &t, z);
 
-        /* IF X**Y IS TOO LARGE, MP_EPOWY WILL PRINT ERROR MESSAGE */
-        mp_epowy(z, z);
+    /* 0^-y illegal */
+    if (x->sign == 0 && y->sign < 0) {
+        mperr("*** X ZERO AND Y NONPOSITIVE IN CALL TO MP_PWR ***");
+        mp_set_from_integer(0, z);
+        return;
     }
+    
+    /* 0^0 = 1 */
+    if (x->sign == 0 && y->sign == 0) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
+    mp_ln(x, &t);
+    mp_multiply(y, &t, z);
+    mp_epowy(z, z);
 }
 
 
@@ -1903,20 +1542,14 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     int ex, it0, t;
     float rx;
 
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk();
-
     /* MP_ADD_INTEGER REQUIRES 2T+6 WORDS. */
     if (x->sign == 0) {
         mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_RECIPROCAL ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     ex = x->exponent;
-
-    /* TEMPORARILY INCREASE M TO AVOID OVERFLOW */
-    MP.m += 2;
 
     /* SET EXPONENT TO ZERO SO RX NOT TOO LARGE OR SMALL. */
     /* work-around to avoid touching X */
@@ -1925,56 +1558,44 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     rx = mp_cast_to_float(&tmp_x);
 
     /* USE SINGLE-PRECISION RECIPROCAL AS FIRST APPROXIMATION */
-    mp_set_from_float((float)1. / rx, &t1);
+    mp_set_from_float(1.0f / rx, &t1);
 
     /* CORRECT EXPONENT OF FIRST APPROXIMATION */
     t1.exponent -= ex;
 
     /* START WITH SMALL T TO SAVE TIME. ENSURE THAT B**(T-1) >= 100 */
-    if (MP.b < 10)
-        t = it[MP.b - 1];
+    if (MP_BASE < 10)
+        t = it[MP_BASE - 1];
     else
         t = 3;
     it0 = (t + 4) / 2;
 
     /* MAIN ITERATION LOOP */    
-    if (t <= MP.t) {        
+    if (t <= MP_T) {        
         while(1) {
-            int ts, ts2, ts3;
+            int ts2, ts3;
             
-            ts = MP.t;
-            MP.t = t;
             mp_multiply(x, &t1, &t2);
             mp_add_integer(&t2, -1, &t2);
-            MP.t = ts;
-
-            /* TEMPORARILY REDUCE T */
-            ts = MP.t;
-            MP.t = (t + it0) / 2;
             mp_multiply(&t1, &t2, &t2);
-            MP.t = ts;
-
-            ts = MP.t;
-            MP.t = t;
             mp_subtract(&t1, &t2, &t1);
-            MP.t = ts;
-            if (t >= MP.t)
+            if (t >= MP_T)
                 break;
 
             /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE
              *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
              */
             ts3 = t;
-            t = MP.t;
+            t = MP_T;
             do {
                 ts2 = t;
                 t = (t + it0) / 2;
             } while (t > ts3);
-            t = min(ts2, MP.t);
+            t = min(ts2, MP_T);
         }
         
         /* RETURN IF NEWTON ITERATION WAS CONVERGING */
-        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP.t - it0) {
+        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
             /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
              *  OR THAT THE STARTING APPROXIMATION IS NOT ACCURATE ENOUGH.
              */
@@ -1984,11 +1605,6 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
     /* MOVE RESULT TO Y AND RETURN AFTER RESTORING T */
     mp_set_from_mp(&t1, z);
-
-    /* RESTORE M AND CHECK FOR OVERFLOW (UNDERFLOW IMPOSSIBLE) */
-    MP.m += -2;
-    if (z->exponent > MP.m)
-        mpovfl(z, "*** OVERFLOW OCCURRED IN MP_RECIPROCAL ***");
 }
 
 
@@ -2009,9 +1625,6 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     float rx;
     MPNumber t1, t2;
 
-    /* CHECK LEGALITY OF B, T, M AND MXR */
-    mpchk();
-
     if (n == 1) {
         mp_set_from_mp(x, z);
         return;
@@ -2019,34 +1632,31 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     if (n == 0) {
         mperr("*** N == 0 IN CALL TO MP_ROOT ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     np = abs(n);
 
     /* LOSS OF ACCURACY IF NP LARGE, SO ONLY ALLOW NP <= MAX (B, 64) */
-    if (np > max(MP.b, 64)) {
+    if (np > max(MP_BASE, 64)) {
         mperr("*** ABS(N) TOO LARGE IN CALL TO MP_ROOT ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
     /* LOOK AT SIGN OF X */
     if (x->sign == 0) {
         /* X == 0 HERE, RETURN 0 IF N POSITIVE, ERROR IF NEGATIVE */
-        z->sign = 0;
-        if (n > 0)
-            return;
-
-        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
+        if (n <= 0)
+            mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
         return;
     }
     
-    if (x->sign < 0  &&  np % 2 == 0) {
+    if (x->sign < 0 && np % 2 == 0) {
         mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***");
-        z->sign = 0;
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -2062,8 +1672,8 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     }
 
     /* USE SINGLE-PRECISION ROOT FOR FIRST APPROXIMATION */
-    r__1 = exp(((float) (np * ex - x->exponent) * log((float) MP.b) - 
-           log((fabs(rx)))) / (float) np);
+    r__1 = exp(((float)(np * ex - x->exponent) * log((float)MP_BASE) -
+           log((fabs(rx)))) / (float)np);
     mp_set_from_float(r__1, &t1);
 
     /* SIGN OF APPROXIMATION SAME AS THAT OF X */
@@ -2074,57 +1684,45 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     /* START WITH SMALL T TO SAVE TIME */
     /* ENSURE THAT B**(T-1) >= 100 */
-    if (MP.b < 10)
-        t = it[MP.b - 1];
+    if (MP_BASE < 10)
+        t = it[MP_BASE - 1];
     else
         t = 3;        
     
-    if (t <= MP.t) {
+    if (t <= MP_T) {
         /* IT0 IS A NECESSARY SAFETY FACTOR */
         it0 = (t + 4) / 2;
 
         /* MAIN ITERATION LOOP */
         while(1) {
-            int ts, ts2, ts3;
+            int ts2, ts3;
 
-            ts = MP.t;
-            MP.t = t;
-            mp_pwr_integer(&t1, np, &t2);
+            mp_xpowy_integer(&t1, np, &t2);
             mp_multiply(x, &t2, &t2);
             mp_add_integer(&t2, -1, &t2);
-            MP.t = ts;
-
-            /* TEMPORARILY REDUCE T */
-            ts = MP.t;
-            MP.t = (t + it0) / 2;
             mp_multiply(&t1, &t2, &t2);
             mp_divide_integer(&t2, np, &t2);
-            MP.t = ts;
-
-            ts = MP.t;
-            MP.t = t;
             mp_subtract(&t1, &t2, &t1);
-            MP.t = ts;
 
             /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE BECAUSE
              *  NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
              */
-            if (t >= MP.t)
+            if (t >= MP_T)
                 break;
 
             ts3 = t;
-            t = MP.t;
+            t = MP_T;
             do {
                 ts2 = t;
                 t = (t + it0) / 2;
             } while (t > ts3);
-            t = min(ts2, MP.t);
+            t = min(ts2, MP_T);
         }
 
         /*  NOW R(I2) IS X**(-1/NP)
          *  CHECK THAT NEWTON ITERATION WAS CONVERGING
          */
-        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP.t - it0) {
+        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
             /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
              *  OR THAT THE INITIAL APPROXIMATION OBTAINED USING ALOG AND EXP
              *  IS NOT ACCURATE ENOUGH.
@@ -2134,7 +1732,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     }
 
     if (n >= 0) {
-        mp_pwr_integer(&t1, n - 1, &t1);
+        mp_xpowy_integer(&t1, n - 1, &t1);
         mp_multiply(x, &t1, z);
         return;
     }
@@ -2154,14 +1752,12 @@ mp_sqrt(const MPNumber *x, MPNumber *z)
     int i, i2, iy3;
     MPNumber t;
 
-    mpchk();
-
     /* MP_ROOT NEEDS 4T+10 WORDS, BUT CAN OVERLAP SLIGHTLY. */
-    i2 = MP.t * 3 + 9;
+    i2 = MP_T * 3 + 9;
     if (x->sign < 0) {
         mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MP_SQRT ***");
     } else if (x->sign == 0) {
-        z->sign = 0;
+        mp_set_from_integer(0, z);
     } else {
         mp_root(x, -2, &t);
         i = t.fraction[0];
@@ -2224,11 +1820,12 @@ mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     return 0;
 }
 
+
 void
 mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     if (mp_is_integer(y)) {
-        mp_pwr_integer(x, mp_cast_to_int(y), z);
+        mp_xpowy_integer(x, mp_cast_to_int(y), z);
     } else {
         MPNumber reciprocal;
         mp_reciprocal(y, &reciprocal);
@@ -2236,5 +1833,57 @@ mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
             mp_root(x, mp_cast_to_int(&reciprocal), z);
         else
             mp_pwr(x, y, z);
+    }
+}
+
+
+void
+mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
+{
+    int n2, ns;
+    MPNumber t;
+   
+    n2 = n;
+    if (n2 < 0) {
+        /* N < 0 */
+        n2 = -n2;
+        if (x->sign == 0) {
+            mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE mp_xpowy_integer ***");
+            mp_set_from_integer(0, z);
+            return;
+        }
+    } else if (n2 == 0) {
+        /* N == 0, RETURN Y = 1. */
+        mp_set_from_integer(1, z);
+        return;
+    } else {
+        /* N > 0 */
+        if (x->sign == 0) {
+            mp_set_from_integer(0, z);
+            return;
+        }
+    }
+
+    /* MOVE X */
+    mp_set_from_mp(x, z);
+
+    /* IF N < 0 FORM RECIPROCAL */
+    if (n < 0)
+        mp_reciprocal(z, z);
+    mp_set_from_mp(z, &t);
+
+    /* SET PRODUCT TERM TO ONE */
+    mp_set_from_integer(1, z);
+
+    /* MAIN LOOP, LOOK AT BITS OF N2 FROM RIGHT */
+    while(1) {
+        ns = n2;
+        n2 /= 2;
+        if (n2 << 1 != ns)
+            mp_multiply(z, &t, z);
+        if (n2 <= 0)
+            return;
+        
+        mp_multiply(&t, &t, &t);
     }
 }
