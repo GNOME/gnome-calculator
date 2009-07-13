@@ -553,21 +553,12 @@ typedef enum {
     POPUP_CENTERED   /* Center popup within baseframe */
 } PopupLocation;
 
-#include <sys/time.h>
-
 static void load_ui(GtkBuilder *ui, const gchar *filename)
 {
     GError *error = NULL;
     GtkWidget *dialog;
-    struct timeval start, stop;
 
-    gettimeofday(&start, NULL);
     gtk_builder_add_from_file(ui, filename, &error);
-    gettimeofday(&stop, NULL);
-    if (start.tv_usec > stop.tv_usec)
-        printf("t=%lu.%-6lu\n", stop.tv_sec - start.tv_sec - 1, 1000000 + stop.tv_usec - start.tv_usec);
-    else
-        printf("t=%lu.%-6lu\n", stop.tv_sec - start.tv_sec, stop.tv_usec - start.tv_usec);
     if (error == NULL)
         return;
         
