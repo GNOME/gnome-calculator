@@ -420,7 +420,7 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
 
         case FN_SHIFT:
             do_shift(arg);
-            return;
+            break;
 
         case FN_SET_ACCURACY:
             do_accuracy(arg);
