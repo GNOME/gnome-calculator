@@ -33,18 +33,27 @@ extern int _mp_equation_parse(yyscan_t yyscanner);
 static int
 get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 {
-    if (name[0] == 'R' || name[0] == 'r')
+    char *c, *lower_name;
+    int result = 1;
+    
+    lower_name = strdup(name);
+    for (c = lower_name; *c; c++)
+        *c = tolower(*c);
+
+    if (lower_name[0] == 'r')
         register_get(atoi(name+1), z);
-    else if (strcmp(name, "ans") == 0)
+    else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(display_get_answer(&v->display), z);
     else if (strcmp(name, "e") == 0)
         mp_get_eulers(z);
     else if (strcmp(name, "π") == 0)
         mp_get_pi(z);
     else
-        return 0;
+        result = 0;
     
-    return 1;
+    free(lower_name);
+    
+    return result;
 }
 
 static void
@@ -128,7 +137,7 @@ mp_equation_parse(const char *expression, MPNumber *result)
     MPEquationParserState state;
     yyscan_t yyscanner;
     YY_BUFFER_STATE buffer;
-
+    
     if (!(expression && result) || strlen(expression) == 0)
         return(-EINVAL);
 

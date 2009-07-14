@@ -253,7 +253,7 @@ display_set_number(GCDisplay *display, const MPNumber *MPval)
 void
 display_set_answer(GCDisplay *display)
 {
-    display_set_string(display, "Ans", -1);
+    display_set_string(display, "ans", -1);
 }
 
 
@@ -276,7 +276,7 @@ display_make_text(GCDisplay *display, char *localized, int length, int *cursor)
         
     /* Substitute answer register */
     display_make_number(display, temp, MAX_LOCALIZED, &e->ans, v->base, TRUE);
-    str = str_replace(str, "Ans", temp);
+    str = str_replace(str, "ans", temp);
 
     /* Replace registers with values. */
     for (i = 0; i < 10; i++) {
@@ -389,7 +389,7 @@ void display_push(GCDisplay *display)
         do {
             i = ((i + 1) % UNDO_HISTORY_LENGTH);
             free(display->h.e[i].expression);
-            display->h.e[i].expression = strdup("Ans");
+            display->h.e[i].expression = strdup("ans");
         } while (i != display->h.end);
     }
 
@@ -526,9 +526,9 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
         
         len = g_utf8_strlen(ui_get_display(), -1);
         
-        if (exp_has_postfix(e->expression, "Ans")) {
+        if (exp_has_postfix(e->expression, "ans")) {
             display_make_number(display, buf, MAX_DISPLAY, &e->ans, v->base, FALSE);
-            e->expression = str_replace(e->expression, "Ans", buf);
+            e->expression = str_replace(e->expression, "ans", buf);
         } else {
             for (i = 0; i < 10; i++) {
                 SNPRINTF(buf, MAX_DISPLAY, "R%d", i);
@@ -581,7 +581,7 @@ display_is_empty(GCDisplay *display)
 gboolean
 display_is_result(GCDisplay *display)
 {
-    if (strcmp(display_get_text(display), "Ans") == 0)
+    if (strcmp(display_get_text(display), "ans") == 0)
         return TRUE;
     
     return FALSE;

@@ -99,7 +99,8 @@ SUP_NUM  {SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
 GREEKS   "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
 REGISTERS "R₀"|"R₁"|"R₂"|"R₃"|"R₄"|"R₅"|"R₆"|"R₇"|"R₈"|"R₉"
-VARIABLE {REGISTERS}|{GREEKS}|"e"
+ANS       [aA][nN][sS]
+VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}
 VARIABLE_NAME [a-zA-Z]+
 FUNCTION {VARIABLE_NAME}|{VARIABLE_NAME}{INVERSE}|{VARIABLE_NAME}{SUB_NUM}
 
