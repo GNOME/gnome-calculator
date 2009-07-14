@@ -144,7 +144,7 @@ mp_shift(const MPNumber *x, int count, MPNumber *z)
 
 
 void
-mp_1s_complement(const MPNumber *x, int wordlen, MPNumber *z)
+mp_ones_complement(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber t;
     mp_set_from_integer(0, &t);
@@ -153,8 +153,8 @@ mp_1s_complement(const MPNumber *x, int wordlen, MPNumber *z)
 
 
 void
-mp_2s_complement(const MPNumber *x, int wordlen, MPNumber *z)
+mp_twos_complement(const MPNumber *x, int wordlen, MPNumber *z)
 {
-    mp_1s_complement (x, wordlen, z);
+    mp_ones_complement (x, wordlen, z);
     mp_add_integer (z, 1, z);
 }

@@ -93,24 +93,118 @@ test(char *expression, char *expected, int expected_error)
 void
 test_parser()
 {
-    v->base = DEC;
     v->ttype = MP_DEGREES;
     v->wordlen = 32;
     v->accuracy = 9;
-    
+
+    v->base = BIN;
     test("0", "0", 0);
     test("1", "1", 0);
+    test("10", "10", 0);
+    test("210", "", -1);
+
+    v->base = OCT;
+    test("0", "0", 0);
+    test("1", "1", 0);
+    test("2", "2", 0);
+    test("3", "3", 0);
+    test("4", "4", 0);
+    test("5", "5", 0);
+    test("6", "6", 0);
+    test("7", "7", 0);
+    test("76543210", "76543210", 0);
+    test("876543210", "", -1);
+    
+    v->base = DEC;
+    test("0", "0", 0);
+    test("1", "1", 0);
+    test("2", "2", 0);
+    test("3", "3", 0);
+    test("4", "4", 0);
+    test("5", "5", 0);
+    test("6", "6", 0);
+    test("7", "7", 0);
+    test("8", "8", 0);
+    test("9", "9", 0);
+    test("9876543210", "9876543210", 0);
+    test("A9876543210", "", -7);
+
+    v->base = HEX;
+    test("0", "0", 0);
+    test("1", "1", 0);
+    test("2", "2", 0);
+    test("3", "3", 0);
+    test("4", "4", 0);
+    test("5", "5", 0);
+    test("6", "6", 0);
+    test("7", "7", 0);
+    test("8", "8", 0);
+    test("9", "9", 0);
+    test("A", "A", 0);
+    test("B", "B", 0);
+    test("C", "C", 0);
+    test("D", "D", 0);    
+    test("E", "E", 0);
+    test("F", "F", 0);    
+    test("FEDBCA9876543210", "FEDBCA9876543210", 0);
+    test("GFEDBCA9876543210", "", -7);
+
+    v->base = DEC;
     test("+1", "1", 0);
-    test("++1", "1", 0);
+    test("−1", "−1", 0);
+    test("+ 1", "1", 0); // FIXME: Should this be allowed?
+    test("− 1", "−1", 0); // FIXME: Should this be allowed?
+    test("++1", "1", -1);
     test("−−1", "1", 0);
     test("255", "255", 0);
     test("256", "256", 0);
     test("½", "0.5", 0);
-    test("1½", "1.5", 0);    
+    test("1½", "1.5", 0);
     test("1.00", "1", 0);
     test("1.01", "1.01", 0);
+    //test("2A", "2000000000000000", 0);
+    test("2T", "2000000000000", 0);
+    test("2G", "2000000000", 0);
+    test("2M", "2000000", 0);
+    test("2k", "2000", 0);
+    test("2c", "0.02", 0);
+    test("2d", "0.2", 0);
+    test("2c", "0.02", 0);
+    test("2m", "0.002", 0);
+    test("2u", "0.000002", 0);
+    test("2µ", "0.000002", 0);
+    test("2n", "0.000000002", 0);
+    //test("2p", "0.000000000002", 0); // FIXME: Need to print out significant figures, not decimal places
+    //test("2f", "0.000000000000002", 0); // FIXME: Need to print out significant figures, not decimal places
+    //test("2A3", "2300000000000000", 0);
+    test("2T3", "2300000000000", 0);
+    test("2G3", "2300000000", 0);
+    test("2M3", "2300000", 0);
+    test("2k3", "2300", 0);
+    test("2c3", "0.023", 0);
+    test("2d3", "0.23", 0);
+    test("2c3", "0.023", 0);
+    test("2m3", "0.0023", 0);
+    test("2u3", "0.0000023", 0);
+    test("2µ3", "0.0000023", 0);
+    //test("2n3", "0.0000000023", 0); // FIXME: Need to print out significant figures, not decimal places
+    //test("2p3", "0.0000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
+    //test("2f3", "0.0000000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
     test("π", "3.141592654", 0);
-    test("e^1", "2.718281828", 0);
+    test("e", "2.718281828", 0);
+
+    test("2π", "6.283185307", 0);
+    test("2e", "5.436563657", 0);
+    //test("2π²", "19.739208802", 0);
+    //test("2e²", "14.778112198", 0);
+    test("e2", "", -1);
+    test("π2", "", -1);
+    test("πe", "8.539734223", 0);
+    test("eπ", "8.539734223", 0);
+    //test("2πe", "17.079468445", 0);
+    
+    test("١٢٣٤٥٦٧٨٩٠", "1234567890", 0);
+    test("۱۲۳۴۵۶۷۸۹۰", "1234567890", 0);
 
     test("0+0", "0", 0);
     test("1+1", "2", 0);
@@ -169,8 +263,10 @@ test_parser()
     test("5!", "120", 0);
     test("69!", "171122452428141311372468338881272839092270544893520369393648040923257279754140647424000000000000000", 0);
     test("0.1!", "", -20001);
-    test("−1!", "−1", 0); // FIXME: Should be an error
+    test("−1!", "", -20001);
+    test("0−1!", "−1", 0);    
     test("(−1)!", "", -20001);
+    test("−(1!)", "−1", 0);
 
     test("2²", "4", 0);
     test("2³", "8", 0);
@@ -178,14 +274,18 @@ test_parser()
     test("2^0", "1", 0);
     test("2^1", "2", 0);
     test("2^2", "4", 0);
+    test("2⁻¹", "0.5", 0);
+    //test("2⁻", "", -20001); // FIXME: Maybe an error in bison?
     test("2^−1", "0.5", 0);
     test("2^(−1)", "0.5", 0);
-    test("−10^2", "−100", 0);
+    test("−10^2", "100", 0);
     test("(−10)^2", "100", 0);
+    test("−(10^2)", "−100", 0);
     test("2^100", "1267650600228229401496703205376", 0);
     test("4^3^2", "262144", 0);
     test("4^(3^2)", "262144", 0);
     test("(4^3)^2", "4096", 0);
+    //test("e^(iπ)", "1", 0);
     test("√4", "2", 0);
     test("√4−2", "0", 0);
     test("∛8", "2", 0);
@@ -202,11 +302,11 @@ test_parser()
     test("−4^0.5", "", -20001);
     test("−8^(1÷3)", "−2", 0);
     
-    test("0 Mod 7", "0", 0);
-    test("6 Mod 7", "6", 0);
-    test("7 Mod 7", "0", 0);
-    test("8 Mod 7", "1", 0);
-    test("−1 Mod 7", "6", 0);
+    test("0 mod 7", "0", 0);
+    test("6 mod 7", "6", 0);
+    test("7 mod 7", "0", 0);
+    test("8 mod 7", "1", 0);
+    test("−1 mod 7", "6", 0);
     
     test("Int(3.2)", "3", 0);
     test("Frac(3.2)", "0.2", 0);
@@ -216,8 +316,10 @@ test_parser()
     test("|1|", "1", 0);
     test("|−1|", "1", 0);
     test("|3−5|", "2", 0);
-    test("Abs(1)", "1", 0);
-    test("Abs(−1)", "1", 0);
+    test("|e|", "2.718281828", 0);
+    test("|π|", "3.141592654", 0);
+    test("abs 1", "1", 0);
+    test("abs −1", "1", 0);
 
     test("log −1", "", -20001);
     test("log 0", "", -20001);
@@ -230,7 +332,7 @@ test_parser()
     test("ln 0", "", -20001);
     test("ln 1", "0", 0);
     test("ln 2", "0.693147181", 0);
-    test("ln e^1", "1", 0);
+    test("ln e", "1", 0);
     test("2 ln 2", "1.386294361", 0);
 
     v->ttype = MP_DEGREES;
@@ -289,10 +391,15 @@ test_parser()
     v->ttype = MP_GRADIANS;
     test("sin 100", "1", 0);
 
-    v->base = HEX;
     test("3 and 5", "1", 0);
     test("3 or 5", "7", 0);
     test("3 xor 5", "6", 0);
+
+    v->base = HEX;
+    test("ones 1", "FFFFFFFE", 0);
+    test("ones 7FFFFFFF", "80000000", 0);
+    test("twos 1", "FFFFFFFF", 0);
+    test("twos 7FFFFFFF", "80000001", 0);
     test("3 xnor 5", "FFFFFFF9", 0);
     test("~7A", "FFFFFF85", 0);
 }

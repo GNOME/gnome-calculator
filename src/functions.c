@@ -177,7 +177,7 @@ do_function(int index)
     assert(index >= 0);
     assert(index <= 9);
 
-    ret = mp_equation_udf_parse(function_get_value(index));
+    ret = 0;//FIXME: mp_equation_udf_parse(function_get_value(index));
     if (!ret) {
         ui_set_statusbar("", "");
     } else {
@@ -557,6 +557,18 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
                          * perform a bitwise operation on numbers greater
                          * than the current word */
                        message = _("Overflow. Try a bigger word size");
+                       break;
+
+                    case -PARSER_ERR_UNKNOWN_VARIABLE:
+                        /* Translators; Error displayd to user when they
+                         * an unknown variable is entered */
+                       message = _("Unknown variable");
+                       break;
+
+                    case -PARSER_ERR_UNKNOWN_FUNCTION:
+                        /* Translators; Error displayd to user when they
+                         * an unknown function is entered */
+                       message = _("Unknown function");
                        break;
 
                     case -MPMATH_ERR:

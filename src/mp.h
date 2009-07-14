@@ -168,7 +168,7 @@ void   mp_sqrt(const MPNumber *x, MPNumber *z);
 void   mp_factorial(const MPNumber *x, MPNumber *z);
 
 /* Sets z = x mod y */
-int    mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
+void  mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x^y */
 void   mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z);
@@ -279,9 +279,9 @@ void   mp_mask(const MPNumber *x, int wordlen, MPNumber *z);
 void   mp_shift(const MPNumber *x, int count, MPNumber *z);
 
 /* Sets z to be the ones complement of x for word of length 'wordlen' */
-void   mp_1s_complement(const MPNumber *x, int wordlen, MPNumber *z);
+void   mp_ones_complement(const MPNumber *x, int wordlen, MPNumber *z);
 
 /* Sets z to be the twos complement of x for word of length 'wordlen' */
-void   mp_2s_complement(const MPNumber *x, int wordlen, MPNumber *z);
+void   mp_twos_complement(const MPNumber *x, int wordlen, MPNumber *z);
 
 #endif /* MP_H */

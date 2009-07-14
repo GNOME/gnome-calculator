@@ -1799,14 +1799,11 @@ mp_factorial(const MPNumber *x, MPNumber *z)
         mp_multiply_integer(z, i, z);
 }
 
-int
+
+void
 mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     MPNumber t1, t2;
-
-    if (!mp_is_integer(x) || !mp_is_integer(y)) {
-        return -EINVAL;
-    }
 
     mp_divide(x, y, &t1);
     mp_integer_component(&t1, &t1);
@@ -1817,8 +1814,6 @@ mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if ((mp_is_less_than(y, &t1) && mp_is_greater_than(z, &t1)) || mp_is_less_than(z, &t1)) {
         mp_add(z, y, z);
     }
-
-    return 0;
 }
 
 
