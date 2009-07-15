@@ -1199,7 +1199,7 @@ ui_set_display(char *str, int cursor)
     if (cursor < 0) {
         adj = gtk_scrolled_window_get_hadjustment(
                  GTK_SCROLLED_WINDOW(X.scrolledwindow));
-        gtk_adjustment_set_value(adj, adj->upper - adj->page_size);
+        gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj) - gtk_adjustment_get_page_size(adj));
     }
 }
 
@@ -1310,8 +1310,8 @@ ui_set_registers_visible(gboolean visible)
     gtk_widget_realize(X.register_dialog);
 
     if (visible) {
-        if (gdk_window_is_visible(X.register_dialog->window)) {
-            gdk_window_raise(X.register_dialog->window);
+        if (gdk_window_is_visible(gtk_widget_get_window(X.register_dialog))) {
+            gdk_window_raise(gtk_widget_get_window(X.register_dialog));
             return;
         }
         position_popup(X.main_window, X.register_dialog, POPUP_ABOVE);
@@ -1861,7 +1861,7 @@ save_win_position()
 {
     int x, y;
 
-    (void) gdk_window_get_origin(X.main_window->window, &x, &y);
+    (void) gdk_window_get_origin(gtk_widget_get_window(X.main_window), &x, &y);
     set_int_resource(R_XPOS, x);
     set_int_resource(R_YPOS, y);
 }
@@ -2047,7 +2047,7 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
         update_memory_menus();
 
         if (event == NULL) {
-            gdk_window_get_origin(widget->window, &loc.x, &loc.y);
+            gdk_window_get_origin(gtk_widget_get_window(widget), &loc.x, &loc.y);
             loc.x += widget->allocation.x;
             loc.y += widget->allocation.y;
             gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
@@ -2670,7 +2670,7 @@ create_main_window()
 
     X.display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X.display_item));
     gtk_widget_ensure_style(X.display_item);
-    font_desc = pango_font_description_copy(X.display_item->style->font_desc);
+    font_desc = pango_font_description_copy(gtk_widget_get_style(X.display_item)->font_desc);
     pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
     gtk_widget_modify_font(X.display_item, font_desc);
     pango_font_description_free(font_desc);
