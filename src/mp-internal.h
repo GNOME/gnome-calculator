@@ -43,6 +43,6 @@
 
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void mpgcd(int *, int *);
-void mp_normalize(MPNumber *, int trunc);
+void mp_normalize(MPNumber *);
 
 #endif /* MP_INTERNAL_H */

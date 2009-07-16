@@ -28,11 +28,6 @@
 #include "mp.h"
 #include "mp-internal.h"
 
-/*  COMPARES MP NUMBER X WITH INTEGER I, RETURNING
- *      +1 IF X  >  I,
- *       0 IF X == I,
- *      -1 IF X  <  I
- */
 static int
 mp_compare_mp_to_int(const MPNumber *x, int i)
 {
@@ -102,8 +97,8 @@ convert_from_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-/*  COMPUTES Z = SIN(X) IF DO_SIN != 0, Z = COS(X) IF DO_SIN == 0,
- *  USING TAYLOR SERIES.   ASSUMES ABS(X) <= 1.
+/* z = sin(x) -1 >= x >= 1, do_sin = 1
+ * z = cos(x) -1 >= x >= 1, do_sin = 0
  */
 static void
 mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
@@ -135,6 +130,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
         i = 2;
     }
 
+    /* Taylor series */
     /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
     b2 = max(MP_BASE, 64) << 1;
     do {
@@ -161,12 +157,6 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 }
 
 
-/*  RETURNS Z = SIN(X) FOR MP X AND Z,
- *  METHOD IS TO REDUCE X TO (-1, 1) AND USE MPSIN1, SO
- *  TIME IS O(M(T)T/LOG(T)).
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
@@ -252,9 +242,6 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-/*  RETURNS Z = COS(X) FOR MP X AND Z, USING MP_SIN AND MPSIN1.
- *  DIMENSION OF R IN COMMON AT LEAST 5T+12.
- */
 void
 mp_cos(const MPNumber *xi, MPAngleUnit unit, MPNumber *z)
 {
@@ -301,13 +288,6 @@ mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-/*  RETURNS Z = ARCSIN(X), ASSUMING ABS(X) <= 1,
- *  FOR MP NUMBERS X AND Z.
- *  Z IS IN THE RANGE -PI/2 TO +PI/2.
- *  METHOD IS TO USE MP_ATAN, SO TIME IS O(M(T)T).
- *  DIMENSION OF R MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
@@ -345,20 +325,6 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-/*  MP precision arc cosine.
- *
- *  1. If (x < -1  or x > 1) then report DOMAIN error and return 0.
- *
- *  2. If (x == 0) then acos(x) = PI/2.
- *
- *  3. If (x == 1) then acos(x) = 0
- *
- *  4. If (x == -1) then acos(x) = PI.
- *
- *  5. If (0 < x < 1) then  acos(x) = atan(sqrt(1-x^2) / x)
- *
- *  6. If (-1 < x < 0) then acos(x) = atan(sqrt(1-x^2) / x) + PI
- */
 void
 mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
@@ -395,16 +361,6 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-/*  RETURNS Z = ARCTAN(X) FOR MP X AND Z, USING AN O(T.M(T)) METHOD
- *  WHICH COULD EASILY BE MODIFIED TO AN O(SQRT(T)M(T))
- *  METHOD (AS IN MPEXP). Z IS IN THE RANGE -PI/2 TO +PI/2.
- *  FOR AN ASYMPTOTICALLY FASTER METHOD, SEE - FAST MULTIPLE-
- *  PRECISION EVALUATION OF ELEMENTARY FUNCTIONS
- *  (BY R. P. BRENT), J. ACM 23 (1976), 242-251,
- *  AND THE COMMENTS IN MPPIGL.
- *  DIMENSION OF R IN CALLING PROGRAM MUST BE AT LEAST 5T+12
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {

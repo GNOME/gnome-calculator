@@ -28,9 +28,6 @@
 #include "mp.h"
 #include "mp-internal.h"
 
-/*  SETS Y = X FOR MP X AND Y.
- *  SEE IF X AND Y HAVE THE SAME ADDRESS (THEY OFTEN DO)
- */
 void
 mp_set_from_mp(const MPNumber *x, MPNumber *z)
 {
@@ -38,11 +35,7 @@ mp_set_from_mp(const MPNumber *x, MPNumber *z)
         memcpy(z, x, sizeof(MPNumber));
 }
 
-/*  CONVERTS SINGLE-PRECISION NUMBER RX TO MULTIPLE-PRECISION Z.
- *  SOME NUMBERS WILL NOT CONVERT EXACTLY ON MACHINES
- *  WITH BASE OTHER THAN TWO, FOUR OR SIXTEEN.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
+
 void
 mp_set_from_float(float rx, MPNumber *z)
 {
@@ -93,7 +86,7 @@ mp_set_from_float(float rx, MPNumber *z)
     }
 
     /* NORMALIZE RESULT */
-    mp_normalize(z, 0);
+    mp_normalize(z);
 
     /* Computing MAX */
     ib = max(MP_BASE * 7 * MP_BASE, 32767) / 16;
@@ -122,19 +115,7 @@ mp_set_from_float(float rx, MPNumber *z)
     return;
 }
 
-void
-mp_set_from_random(MPNumber *z)
-{
-    mp_set_from_double(drand48(), z);
-}
 
-/*  CONVERTS DOUBLE-PRECISION NUMBER DX TO MULTIPLE-PRECISION Z.
- *  SOME NUMBERS WILL NOT CONVERT EXACTLY ON MACHINES
- *  WITH BASE OTHER THAN TWO, FOUR OR SIXTEEN.
- *  THIS ROUTINE IS NOT CALLED BY ANY OTHER ROUTINE IN MP,
- *  SO MAY BE OMITTED IF DOUBLE-PRECISION IS NOT AVAILABLE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_set_from_double(double dx, MPNumber *z)
 {
@@ -179,7 +160,7 @@ mp_set_from_double(double dx, MPNumber *z)
     }
 
     /* NORMALIZE RESULT */
-    mp_normalize(z, 0);
+    mp_normalize(z);
 
     /* Computing MAX */
     ib = max(MP_BASE * 7 * MP_BASE, 32767) / 16;
@@ -209,9 +190,6 @@ mp_set_from_double(double dx, MPNumber *z)
 }
 
 
-/*  CONVERTS INTEGER IX TO MULTIPLE-PRECISION Z.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_set_from_integer(int x, MPNumber *z)
 {
@@ -238,7 +216,7 @@ mp_set_from_integer(int x, MPNumber *z)
     }
 }
 
-/* CONVERTS THE RATIONAL NUMBER I/J TO MULTIPLE PRECISION Q. */
+
 void
 mp_set_from_fraction(int i, int j, MPNumber *z)
 {
@@ -260,16 +238,14 @@ mp_set_from_fraction(int i, int j, MPNumber *z)
         mp_divide_integer(z, j, z);
 }
 
-/*  CONVERTS MULTIPLE-PRECISION X TO INTEGER, AND
- *  RETURNS RESULT.
- *  ASSUMING THAT X NOT TOO LARGE (ELSE USE MP_INTEGER_COMPONENT)
- *  X IS TRUNCATED TOWARDS ZERO.
- *  IF INT(X)IS TOO LARGE TO BE REPRESENTED AS A SINGLE-
- *  PRECISION INTEGER, IZ IS RETURNED AS ZERO.  THE USER
- *  MAY CHECK FOR THIS POSSIBILITY BY TESTING IF
- *  ((X(1).NE.0).AND.(X(2).GT.0).AND.(IZ.EQ.0)) IS TRUE ON
- *  RETURN FROM MP_CAST_TO_INST.
- */
+
+void
+mp_set_from_random(MPNumber *z)
+{
+    mp_set_from_double(drand48(), z);
+}
+
+
 int
 mp_cast_to_int(const MPNumber *x)
 {
@@ -320,6 +296,7 @@ mp_cast_to_int(const MPNumber *x)
      */
 }
 
+
 static double
 mppow_ri(float ap, int bp)
 {
@@ -348,11 +325,7 @@ mppow_ri(float ap, int bp)
     return pow;
 }
 
-/*  CONVERTS MULTIPLE-PRECISION X TO SINGLE-PRECISION.
- *  ASSUMES X IN ALLOWABLE RANGE.  THERE IS SOME LOSS OF
- *  ACCURACY IF THE EXPONENT IS LARGE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
+
 float
 mp_cast_to_float(const MPNumber *x)
 {
@@ -391,6 +364,7 @@ mp_cast_to_float(const MPNumber *x)
     return rz;
 }
 
+
 static double
 mppow_di(double ap, int bp)
 {
@@ -412,13 +386,7 @@ mppow_di(double ap, int bp)
     return(pow);
 }
 
-/*  CONVERTS MULTIPLE-PRECISION X TO DOUBLE-PRECISION,
- *  AND RETURNS RESULT.
- *  ASSUMES X IS IN ALLOWABLE RANGE FOR DOUBLE-PRECISION
- *  NUMBERS.   THERE IS SOME LOSS OF ACCURACY IF THE
- *  EXPONENT IS LARGE.
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
+
 double
 mp_cast_to_double(const MPNumber *x)
 {
@@ -466,9 +434,6 @@ mp_cast_to_double(const MPNumber *x)
 }
 
 
-/* Convert MP number to fixed number string in the given base to the
- * maximum number of digits specified.
- */
 void
 mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
 {
@@ -614,7 +579,6 @@ char_val(char **c, int base)
 }
 
 
-/* Convert string into an MP number */
 void
 mp_set_from_string(const char *str, int base, MPNumber *z)
 {
