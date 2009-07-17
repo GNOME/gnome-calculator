@@ -112,11 +112,11 @@ static void do_mod(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPN
 %left tNOT
 %left tROOT tROOT3 tROOT4
 %left <name> tVARIABLE tFUNCTION
-%right '^' tINVERSE '!'
 %right <integer> tSUBNUM tSUPNUM
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
 %left UNARY_MINUS
+%right '^' tINVERSE '!'
 
 %type <int_t> exp function
 %start statement
