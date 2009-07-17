@@ -299,9 +299,6 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
 }
 
 
-/*  ADDS X AND Y, FORMING RESULT IN Z, WHERE X, Y AND Z ARE MP
- *  NUMBERS.  FOUR GUARD DIGITS ARE USED, AND THEN R*-ROUNDING.
- */
 void
 mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
@@ -702,7 +699,7 @@ mpexp(const MPNumber *x, MPNumber *z)
         return;
     }
 
-    /* CHECK THAT ABS(X) < 1 */
+    /* Only defined for |x| < 1 */
     if (x->exponent > 0) {
         mperr("*** ABS(X) NOT LESS THAN 1 IN CALL TO MPEXP ***");
         mp_set_from_integer(0, z);
@@ -758,13 +755,6 @@ mpexp(const MPNumber *x, MPNumber *z)
 }
 
 
-/*  RETURNS Z = EXP(X) FOR MP X AND Z.
- *  EXP OF INTEGER AND FRACTIONAL PARTS OF X ARE COMPUTED
- *  SEPARATELY.  SEE ALSO COMMENTS IN MPEXP.
- *  TIME IS O(SQRT(T)M(T)).
- *  DIMENSION OF R MUST BE AT LEAST 4T+10 IN CALLING PROGRAM
- *  CHECK LEGALITY OF B, T, M AND MXR
- */
 void
 mp_epowy(const MPNumber *x, MPNumber *z)
 {
@@ -950,8 +940,6 @@ mp_is_less_equal(const MPNumber *x, const MPNumber *y)
  *  CONDITION ABS(X) < 1/B, ERROR OTHERWISE.
  *  USES NEWTONS METHOD TO SOLVE THE EQUATION
  *  EXP1(-Y) = X, THEN REVERSES SIGN OF Y.
- *  TIME IS O(SQRT(T).M(T)) AS FOR MPEXP, SPACE = 5T+12.
- *  CHECK LEGALITY OF B, T, M AND MXR
  */
 static void
 mplns(const MPNumber *x, MPNumber *z)
@@ -972,7 +960,7 @@ mplns(const MPNumber *x, MPNumber *z)
         return;
     }
 
-    /* GET STARTING APPROXIMATION TO -LN(1+X) */
+    /* Get starting approximation -ln(1+x) ~= -x + x^2/2 - x^3/3 + x^4/4 */
     mp_set_from_mp(x, &t2);
     mp_divide_integer(x, 4, &t1);
     mp_add_fraction(&t1, -1, 3, &t1);
@@ -1333,12 +1321,9 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
 }
 
 
-/* MULTIPLIES MP X BY I/J, GIVING MP Y */
 void
 mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z)
 {
-    int is, js;
-
     if (denominator == 0) {
         mperr("*** ATTEMPTED DIVISION BY ZERO IN MP_MULTIPLY_FRACTION ***");
         mp_set_from_integer(0, z);
@@ -1350,20 +1335,18 @@ mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber
         return;
     }
 
-    /* REDUCE TO LOWEST TERMS */
-    is = numerator;
-    js = denominator;
-    mpgcd(&is, &js);
-    mp_divide_integer(x, js, z);
-    mp_multiply_integer(z, is, z);
+    /* Reduce to lowest terms */
+    mpgcd(&numerator, &denominator);
+    mp_divide_integer(x, denominator, z);
+    mp_multiply_integer(z, numerator, z);
 }
 
 
 void
-mp_invert_sign(const MPNumber *x, MPNumber *y)
+mp_invert_sign(const MPNumber *x, MPNumber *z)
 {
-    mp_set_from_mp(x, y);
-    y->sign = -y->sign;
+    mp_set_from_mp(x, z);
+    z->sign = -z->sign;
 }
 
 
