@@ -69,6 +69,23 @@ set_variable(MPEquationParserState *state, const char *name, MPNumber *x)
 // letters+numbers = numbers+letters+numbers = function
 
 
+static int sub_atoi(const char *data)
+{
+    int i, value = 0;
+    const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
+    
+    do {
+        for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
+        if(digits[i] == NULL)
+            return -1;
+        data += strlen(digits[i]);
+        value = value * 10 + i;
+    } while(*data != '\0');
+
+    return value;
+}
+
+
 static int
 get_function(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z)
 {
@@ -82,7 +99,16 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
     // FIXME: Re Im ?
 
     if (strcmp(lower_name, "log") == 0)
-        mp_logarithm(10, x, z);
+        mp_logarithm(10, x, z); // FIXME: Default to ln
+    else if (strncmp(lower_name, "log", 3) == 0) {
+        int base;
+        
+        base = sub_atoi(lower_name + 3);
+        if (base < 0)
+            result = 0;
+        else
+            mp_logarithm(base, x, z);
+    }
     else if (strcmp(lower_name, "ln") == 0)
         mp_ln(x, z);
     else if (strcmp(lower_name, "sqrt") == 0) // √x
@@ -137,7 +163,7 @@ mp_equation_parse(const char *expression, MPNumber *result)
     MPEquationParserState state;
     yyscan_t yyscanner;
     YY_BUFFER_STATE buffer;
-    
+
     if (!(expression && result) || strlen(expression) == 0)
         return(-EINVAL);
 
