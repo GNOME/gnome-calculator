@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-06-28 06:37+0000\n"
-"PO-Revision-Date: 2009-06-28 13:35+0200\n"
+"POT-Creation-Date: 2009-07-14 03:12+0000\n"
+"PO-Revision-Date: 2009-07-16 09:14+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -1798,7 +1798,7 @@ msgstr "Parámetro «%s» desconocido"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../src/calctool.c:222
+#: ../src/calctool.c:221
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: la precisión debería estar en el rango 0-%d\n"
@@ -1860,9 +1860,21 @@ msgstr "Operación de módulo no válida"
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 
+#. Translators; Error displayd to user when they
+#. * an unknown variable is entered
+#: ../src/functions.c:565
+msgid "Unknown variable"
+msgstr "Variable desconocida"
+
+#. Translators; Error displayd to user when they
+#. * an unknown function is entered
+#: ../src/functions.c:571
+msgid "Unknown function"
+msgstr "Función desconocida"
+
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../src/functions.c:569
+#: ../src/functions.c:581
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
@@ -1925,14 +1937,15 @@ msgstr "Error al cargar la interfaz de usuario"
 #: ../src/gtk.c:572
 #, c-format
 #| msgid ""
-#| "The user interface file %s is missing or unable to be loaded. Please "
-#| "check your installation."
+#| "A required file is missing, please check your installation.\n"
+#| "\n"
+#| "%s"
 msgid ""
-"A required file is missing, please check your installation.\n"
+"A required file is missing or damaged, please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
-"Falta un archivo necesario, compruebe su instalación.\n"
+"Un archivo necesario falta o está dañado, compruebe su instalación.\n"
 "\n"
 "%s"
 
@@ -2244,12 +2257,12 @@ msgstr "Descripción"
 msgid "Reset to _Default (%d)"
 msgstr "Restablecer a _predeterminada (%d)"
 
-#: ../src/mp.c:1854
+#: ../src/mp.c:1503
 msgid "Negative X and non-integer Y not supported"
 msgstr "Un X negativo y un Y no entero no está soportado"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:411
+#: ../src/mp-trigonometric.c:294
 msgid "Tangent is infinite"
 msgstr "La tangente es infinito"
 
