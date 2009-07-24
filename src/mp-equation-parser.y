@@ -92,8 +92,8 @@ static void do_mod(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPN
 }
 %}
 
-%define api.pure
-%name-prefix "_mp_equation_"
+%pure-parser
+%name-prefix="_mp_equation_"
 %locations
 %parse-param {yyscan_t yyscanner}
 %lex-param {yyscan_t yyscanner}

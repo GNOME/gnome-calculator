@@ -64,7 +64,7 @@ libparser.a: \
 	$(RANLIB) libparser.a
 
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y
-	bison -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
+	$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
 
 mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
 	$(LEX) $(srcdir)/mp-equation-lexer.l
