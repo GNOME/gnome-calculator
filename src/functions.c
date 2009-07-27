@@ -177,8 +177,9 @@ do_function(int index)
     assert(index >= 0);
     assert(index <= 9);
 
-    ret = 0;//FIXME: mp_equation_udf_parse(function_get_value(index));
-    if (!ret) {
+    ret = mp_equation_parse(function_get_value(index), display_get_answer(&v->display));
+    if (ret == 0) {
+        display_set_answer(&v->display);
         ui_set_statusbar("", "");
     } else {
         /* Translators: This message is displayed in the status bar when an
@@ -445,7 +446,7 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
         
         case FN_FUNCTION:
             do_function(arg);
-            return;
+            break;
         
         case FN_PASTE:
             do_paste(cursor_start, cursor_end, (const char *)arg); // FIXME: Probably not 64 bit safe
