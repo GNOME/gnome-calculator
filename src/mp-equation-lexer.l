@@ -98,7 +98,7 @@ BIN_NUM {BIN}+|{BIN}*{DECIMAL}{BIN}+
 SUP_NUM  {SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
 GREEKS   "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
-REGISTERS "R₀"|"R₁"|"R₂"|"R₃"|"R₄"|"R₅"|"R₆"|"R₇"|"R₈"|"R₉"
+REGISTERS "R0"|"R1"|"R2"|"R3"|"R4"|"R5"|"R6"|"R7"|"R8"|"R9"
 ANS       [aA][nN][sS]
 VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}
 VARIABLE_NAME [a-zA-Z]+
