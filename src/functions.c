@@ -38,7 +38,6 @@
 
 typedef enum {
     NUMBER       = (1 << 3),   /* Number button */
-    FUNC         = (1 << 6),   /* Function */
     PREFIXOP     = (1 << 15),  /* Unary prefix operation */
 } ButtonFlags;
 
@@ -81,19 +80,19 @@ static Function functions[NFUNCTIONS] = {
 { FN_BACKSPACE,         NULL, 0 },
 { FN_DELETE,            NULL, 0 },
 { FN_CHANGE_SIGN,       NULL, 0 },
-{ FN_INTEGER,           "Int", FUNC },
-{ FN_FRACTION,          "Frac", FUNC },
+{ FN_INTEGER,           " int ", 0 },
+{ FN_FRACTION,          " frac ", 0 },
 { FN_PERCENTAGE,        "%", 0 },
 { FN_SQUARE,            "²", 0 },
 { FN_SQUARE_ROOT,       "√", 0 },
 { FN_RECIPROCAL,        NULL, 0 },
-{ FN_E_POW_X,           "e^", PREFIXOP },
-{ FN_10_POW_X,          "10^", PREFIXOP },       
-{ FN_2_POW_X,           "2^", PREFIXOP },
+{ FN_E_POW_X,           "e^", 0 },
+{ FN_10_POW_X,          "10^", 0 },       
+{ FN_2_POW_X,           "2^", 0 },
 { FN_X_POW_Y,           "^", 0 },
 { FN_X_POW_Y_INV,       "^(1/(", 0 },
 { FN_FACTORIAL,         "!", 0 },
-{ FN_RANDOM,            "Rand", 0 },
+{ FN_RANDOM,            " rand ", 0 },
 { FN_SIN,               " sin ", 0 },
 { FN_SINH,              " sinh ", 0 },
 { FN_ASIN,              " sin⁻¹ ", 0 },
@@ -109,28 +108,28 @@ static Function functions[NFUNCTIONS] = {
 { FN_NATURAL_LOGARITHM, " ln ", 0 },
 { FN_LOGARITHM,         " log ", 0 },
 { FN_LOGARITHM2,        " log₂ ", 0 },
-{ FN_ABSOLUTE_VALUE,    "Abs", FUNC },
-{ FN_TRUNC,             "Trunc", FUNC },
+{ FN_ABSOLUTE_VALUE,    " abs ", 0 },
+{ FN_TRUNC,             " trunc ", 0 },
 { FN_MODULUS_DIVIDE,    " mod ", 0 },
-{ FN_1S_COMPLEMENT,     "ones", FUNC },
-{ FN_2S_COMPLEMENT,     "twos", FUNC },
+{ FN_1S_COMPLEMENT,     " ones ", 0 },
+{ FN_2S_COMPLEMENT,     " twos ", 0 },
 { FN_EXPONENTIAL,       "e", 0 },
 { FN_NOT,               "~", 0 },
-{ FN_OR,                " OR ", 0 },
-{ FN_AND,               " AND ", 0 },       
-{ FN_XOR,               " XOR ", 0 },
-{ FN_XNOR,              " XNOR ", 0 },
+{ FN_OR,                " or ", 0 },
+{ FN_AND,               " and ", 0 },       
+{ FN_XOR,               " xor ", 0 },
+{ FN_XNOR,              " xnor ", 0 },
 { FN_TOGGLE_BIT,        NULL, 0 },
-{ FN_FINC_CTRM,         "Ctrm", 0 },
-{ FN_FINC_DDB,          "Ddb", 0 },
-{ FN_FINC_FV,           "Fv", 0 },
-{ FN_FINC_GPM,          "Gpm", 0 },
-{ FN_FINC_PMT,          "Pmt", 0 },
-{ FN_FINC_PV,           "Pv", 0 },
-{ FN_FINC_RATE,         "Rate", 0 },
-{ FN_FINC_SLN,          "Sln", 0 },
-{ FN_FINC_SYD ,         "Syd", 0 },
-{ FN_FINC_TERM,         "Term", 0 },
+{ FN_FINC_CTRM,         NULL, 0 },
+{ FN_FINC_DDB,          NULL, 0 },
+{ FN_FINC_FV,           NULL, 0 },
+{ FN_FINC_GPM,          NULL, 0 },
+{ FN_FINC_PMT,          NULL, 0 },
+{ FN_FINC_PV,           NULL, 0 },
+{ FN_FINC_RATE,         NULL, 0 },
+{ FN_FINC_SLN,          NULL, 0 },
+{ FN_FINC_SYD ,         NULL, 0 },
+{ FN_FINC_TERM,         NULL, 0 },
 { FN_SHIFT,             NULL, 0 },
 { FN_STORE,             NULL, 0 },
 { FN_RECALL,            NULL, 0 },
@@ -588,18 +587,7 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
             break;
 
         default:
-            /* If display is a number then perform functions on that number */
-            if (functions[function].flags & (PREFIXOP | FUNC) && display_is_result(&v->display)) {
-                SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
-                display_surround(&v->display, buf, ")");
-            } else {
-                if (functions[function].flags & FUNC) {
-                    SNPRINTF(buf, MAXLINE, "%s(", functions[function].symname);
-                    display_insert(&v->display, cursor_start, cursor_end, buf);
-                } else {
-                    display_insert(&v->display, cursor_start, cursor_end, functions[function].symname);
-                }
-            }
+            display_insert(&v->display, cursor_start, cursor_end, functions[function].symname);
             break;
     }
 
