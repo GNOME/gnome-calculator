@@ -26,6 +26,7 @@
 /* Available functions */
 enum
 {
+    FN_SPACE,
     FN_0, FN_1, FN_2, FN_3,
     FN_4, FN_5, FN_6, FN_7,
     FN_8, FN_9, FN_A, FN_B,

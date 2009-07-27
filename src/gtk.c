@@ -2134,6 +2134,12 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         }
     }
     
+    /* Whitespace */
+    if (event->keyval == GDK_space && state == 0) {
+        do_button(FN_SPACE, 0);
+        return TRUE;
+    }
+    
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
         do_button(FN_DELETE, 0);

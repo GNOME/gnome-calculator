@@ -51,6 +51,7 @@ typedef struct {
 /* Note that none of these strings can be translated as the parser expects them to be correct */
 /* id, symname flags */
 static Function functions[NFUNCTIONS] = {
+{ FN_SPACE,             " ", 0},
 { FN_0,                 "0", NUMBER },
 { FN_1,                 "1", NUMBER },
 { FN_2,                 "2", NUMBER },    
