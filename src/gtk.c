@@ -295,7 +295,7 @@ static struct button_widget button_widgets[] = {
     { 0,     0 },
     { GDK_r, 0 }},
 
-    {FN_ABSOLUTE_VALUE,     "abs",
+    {FN_ABSOLUTE_VALUE_FUNC, "abs",
     { 0,     0 },
     { GDK_u, 0 }},
 
@@ -2139,6 +2139,12 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_button(FN_SPACE, 0);
         return TRUE;
     }
+    
+    /* Absolute value */
+    /*if (event->keyval == GDK_bar && state == 0) {
+        do_button(FN_ABSOLUTE_VALUE, 0);
+        return TRUE;
+    }*/
     
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
