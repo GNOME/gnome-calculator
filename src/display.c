@@ -474,7 +474,7 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
                 use = FALSE;
             
             /* Ignore thousands separators */
-            if (strncmp(c, v->tsep, strlen(v->tsep)) == 0)
+            if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0)
                 use = FALSE;
             
             /* Copy existing text */
@@ -540,7 +540,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
                 }
             }
         }
-
+        
         display_insert(display, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
         display_insert(display, cursor_start, cursor_end, "");

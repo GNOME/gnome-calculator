@@ -2187,7 +2187,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
                     button_widgets[i].function)
                     do_button(button_widgets[i].function, 0);
                 else
-                   button_cb(button, NULL);
+                    button_cb(button, NULL);
                 return TRUE;
             }
         }
