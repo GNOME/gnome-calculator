@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-07-14 03:12+0000\n"
-"PO-Revision-Date: 2009-07-16 09:14+0200\n"
+"POT-Creation-Date: 2009-07-27 00:27+0000\n"
+"PO-Revision-Date: 2009-08-04 19:05+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -1644,36 +1644,48 @@ msgid "Show Trailing Zeroes"
 msgstr "Mostrar los ceros excedentes"
 
 #: ../data/gcalctool.schemas.in.h:11
+#| msgid ""
+#| "The initial calculator mode. Valid values are BASIC FINANCIAL LOGICAL "
+#| "SCIENTIFIC PROGRAMMING"
 msgid ""
-"The initial calculator mode. Valid values are BASIC FINANCIAL LOGICAL "
-"SCIENTIFIC PROGRAMMING"
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 msgstr ""
-"El modo inicial de la calculadora. Los valores válidos son BASIC (básico), "
-"FINANCIAL (financiero), SCIENTIFIC (científico), PROGRAMMING (programador)"
+"El modo inicial de la calculadora. Los valores válidos son «BASIC» (básico), "
+"«FINANCIAL» (financiero), «SCIENTIFIC» (científico), «PROGRAMMING» (programador)"
 
 #: ../data/gcalctool.schemas.in.h:12
+#| msgid ""
+#| "The initial display mode. Valid values are ENG (engineering) FIX (fixed-"
+#| "point) SCI (scientific)"
 msgid ""
-"The initial display mode. Valid values are ENG (engineering) FIX (fixed-"
-"point) SCI (scientific)"
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
-"El modo inicial de muestra. Los valores válidos son ENG (ingeniero), FIX "
-"(punto fijo) y SCI (científico)."
+"El modo inicial de muestra. Los valores válidos son «ENG» (ingeniero), "
+"«FIX» (punto fijo) y «SCI» (científico)."
 
 #: ../data/gcalctool.schemas.in.h:13
+#| msgid ""
+#| "The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
+#| "(decimal) HEX (hexadecimal)"
 msgid ""
-"The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
-"(decimal) HEX (hexadecimal)"
+"The initial numeric base. Valid values are \"BIN\" (binary), \"OCT"
+"\" (octal), \"DEC\" (decimal) and \"HEX\" (hexadecimal)"
 msgstr ""
-"La base numérica inicial. Los valores válidos son BIN (binario), OCT "
-"(octal), DEC (decimal) y HEX (hexadecimal)."
+"La base numérica inicial. Los valores válidos son «BIN» (binario), "
+"«OCT» (octal), «DEC» (decimal) y «HEX» (hexadecimal)."
 
 #: ../data/gcalctool.schemas.in.h:14
+#| msgid ""
+#| "The initial trigonometric type. Valid values are DEG (degrees) GRAD "
+#| "(grads) RAD (radians)."
 msgid ""
-"The initial trigonometric type. Valid values are DEG (degrees) GRAD (grads) "
-"RAD (radians)."
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
 msgstr ""
-"El tipo trigonométrico inicial. Los valores válidos son DEG (grados "
-"sexagesimales) GRAD (grados centesimales) y RAD (radianes)."
+"El tipo trigonométrico inicial. Los valores válidos son «DEG» (grados "
+"sexagesimales) «GRAD» (grados centesimales) y «RAD» (radianes)."
 
 #: ../data/gcalctool.schemas.in.h:15
 msgid "The initial x-coordinate for the window"
@@ -1704,8 +1716,12 @@ msgstr ""
 "de la pantalla."
 
 #: ../data/gcalctool.schemas.in.h:20
+#| msgid ""
+#| "The size of the words used in bitwise operations. Valid values are 16 32 "
+#| "64."
 msgid ""
-"The size of the words used in bitwise operations. Valid values are 16 32 64."
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
 msgstr ""
 "El tamaño de las palabras usadas en las operaciones bit a bit. Los valores "
 "válidos son 16, 32 y 64."
@@ -1936,10 +1952,6 @@ msgstr "Error al cargar la interfaz de usuario"
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
 #: ../src/gtk.c:572
 #, c-format
-#| msgid ""
-#| "A required file is missing, please check your installation.\n"
-#| "\n"
-#| "%s"
 msgid ""
 "A required file is missing or damaged, please check your installation.\n"
 "\n"
@@ -2257,12 +2269,12 @@ msgstr "Descripción"
 msgid "Reset to _Default (%d)"
 msgstr "Restablecer a _predeterminada (%d)"
 
-#: ../src/mp.c:1503
+#: ../src/mp.c:1451
 msgid "Negative X and non-integer Y not supported"
 msgstr "Un X negativo y un Y no entero no está soportado"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:294
+#: ../src/mp-trigonometric.c:281
 msgid "Tangent is infinite"
 msgstr "La tangente es infinito"
 
