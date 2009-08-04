@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.help.HEAD\n"
-"POT-Creation-Date: 2009-05-14 00:04+0000\n"
-"PO-Revision-Date: 2009-05-20 20:08+0200\n"
+"POT-Creation-Date: 2009-07-27 01:38+0000\n"
+"PO-Revision-Date: 2009-08-04 20:36+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -69,9 +69,6 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gcalctool.xml:1759(None)
-#| msgid ""
-#| "@@image: 'figures/gcalctool_programming_window.png'; "
-#| "md5=dbb1492fa8bab67b219162d6157b70f4"
 msgid ""
 "@@image: 'figures/gcalctool_programming_window.png'; "
 "md5=4eabc86c0b078da069c585a9dd467dea"
@@ -540,10 +537,6 @@ msgid "Display area"
 msgstr "Área de visualización"
 
 #: C/gcalctool.xml:299(para)
-#| msgid ""
-#| "The display area shows the numbers that you enter, and the results of "
-#| "calculations. If you are not using arithmetic precedence, you can only "
-#| "enter numbers of up to forty digits."
 msgid ""
 "The display area shows the numbers that you enter, and the results of "
 "calculations."
@@ -690,11 +683,6 @@ msgstr ""
 "que se usa como separador numérico."
 
 #: C/gcalctool.xml:370(para)
-#| msgid ""
-#| "<application>gcalctool</application> has been internationalized so user's "
-#| "can adapt to their own conventions. This is done by setting a specific "
-#| "locale. We can't determine what locales will exist, except for a standard "
-#| "one called the C locale."
 msgid ""
 "<application>gcalctool</application> has been internationalized so users can "
 "adapt to their own conventions. This is done by setting a specific locale. "
@@ -1070,9 +1058,6 @@ msgid "Removes the current value from the display area."
 msgstr "Limpia el valor actual del área de visualización."
 
 #: C/gcalctool.xml:513(para)
-#| msgid ""
-#| "In Arithmetic Precedence mode, this operation is the same as "
-#| "<guibutton>Clr</guibutton>"
 msgid "This operation is the same as <guibutton>Clr</guibutton>"
 msgstr "Esta operación es la misma que <guibutton>Clr</guibutton>"
 
@@ -2924,14 +2909,6 @@ msgstr ""
 "potencia del siguiente número que introduzca."
 
 #: C/gcalctool.xml:1441(para)
-#| msgid ""
-#| "To change the sign of the number, use the <guibutton>+/-</guibutton> "
-#| "button before the <guibutton>Exp</guibutton> button. How you change the "
-#| "sign of the exponent (the power to which the number is raised) depends on "
-#| "whether you are in arithmetic precedence mode or not. In arithmetic "
-#| "precedence mode, use <guibutton>-</guibutton> after the <guibutton>Exp</"
-#| "guibutton> button, otherwise use the <guibutton>+/-</guibutton> button "
-#| "after entering the exponent."
 msgid ""
 "To change the sign of the number, use the <guibutton>+/-</guibutton> button "
 "before the <guibutton>Exp</guibutton> button. To change the sign of the "
@@ -2944,9 +2921,6 @@ msgstr ""
 "guibutton> después de pulsar el botón <guibutton>Exp</guibutton>."
 
 #: C/gcalctool.xml:1445(para)
-#| msgid ""
-#| "To enter a decimal number in exponential format, in arithmetic precedence "
-#| "mode, use the guidelines in the following table:"
 msgid ""
 "To enter a decimal number in exponential format, use the guidelines in the "
 "following table:"
@@ -3339,16 +3313,19 @@ msgid "To Use Functions"
 msgstr "Cómo usar las funciones"
 
 #: C/gcalctool.xml:1612(para)
+#| msgid ""
+#| "To show the available functions, click <guibutton>Fun</guibutton>. A "
+#| "popup menu displays the list of defined functions. Select a function from "
+#| "the menu to run that function. If the function is not defined, the value "
+#| "zero is returned."
 msgid ""
 "To show the available functions, click <guibutton>Fun</guibutton>. A popup "
 "menu displays the list of defined functions. Select a function from the menu "
-"to run that function. If the function is not defined, the value zero is "
-"returned."
+"to run that function."
 msgstr ""
 "Para mostrar las funciones disponibles, pulse <guibutton>Fun</guibutton>. Un "
 "menú emergente mostrará la lista de funciones definidas. Seleccione una "
-"función de la lista para ejecutarla. Si la función no está definida, se "
-"devolverá el valor cero."
+"función de la lista para ejecutarla."
 
 #: C/gcalctool.xml:1613(para)
 msgid ""
@@ -3401,22 +3378,27 @@ msgstr ""
 
 #: C/gcalctool.xml:1646(para)
 msgid ""
-"Click on the Value field, then enter the new value. Use the keyboard "
-"shortcuts to invoke a <application>gcalctool</application> button. For "
-"example, enter <literal>90K</literal> to calculate sine(90)."
+"Click on the Value field, then enter the new equation to solve. You can use "
+"\"ans\" for the result of the previous equation and \"R5\" for register 5 "
+"etc. For example, enter <literal>(-R1+sqrt(R1^2-4*R0*R2))/(2*R0)</literal> "
+"to calculate a root of the quadratic equation R0*x^2 + R1*x + R2 = 0."
 msgstr ""
-"Pulse en el campo de valor, después introduzca el nuevo valor. Use los "
-"atajos de teclado para invocar un botón de la <application>Calculadora</"
-"application>. Por ejemplo, introduzca <literal>90K</literal> para calcular "
-"el seno de 90."
+"Pulse en el campo Valor, después introduzca la nueva ecuación para resolver. "
+"Puede usar «ans» para el resultado de la ecuación anterior y «R5» para el "
+"registro 5, etc. Por ejemplo, introduzca <literal>(-R1+sqrt(R1^2-4*R0*R2))/"
+"(2*R0)</literal> para calcular la raíz cuadrada de la ecuación cuadrática "
+"R0*x^2 + R1*x + R2 = 0."
 
 #: C/gcalctool.xml:1649(para)
+#| msgid ""
+#| "Click on the Description field, then enter the new description. For "
+#| "example, <literal>Sine 90</literal>."
 msgid ""
 "Click on the Description field, then enter the new description. For example, "
-"<literal>Sine 90</literal>."
+"<literal>Quadratic Solver</literal>."
 msgstr ""
 "Pulse en el campo de descripción, después introduzca la nueva descripción. "
-"Por ejemplo, <literal>Seno de 90</literal>."
+"Por ejemplo, <literal>Resolutor cuadrático</literal>."
 
 #: C/gcalctool.xml:1652(para)
 msgid ""
@@ -3729,14 +3711,10 @@ msgid "Sets the numeric base to hexadecimal, that is, base 16."
 msgstr "Establece la base numérica a hexadecimal, esto es, base 16."
 
 #: C/gcalctool.xml:1813(title)
-#| msgid "To Set the Numeric Base"
 msgid "To Set the Word Length"
 msgstr "Establecer la longitud de palabra"
 
 #: C/gcalctool.xml:1814(para)
-#| msgid ""
-#| "To set the trigonometric type, select one of the buttons described in "
-#| "<xref linkend=\"gcalctool-TBL-trig-type\"/>."
 msgid ""
 "The word length can be altered, to make the bitwise functions behave "
 "differently. To set the word length, select one of the buttons described in "
@@ -3748,7 +3726,6 @@ msgstr ""
 "word-length\"/>."
 
 #: C/gcalctool.xml:1816(title)
-#| msgid "Setting the Numeric Base"
 msgid "Setting the Word Length"
 msgstr "Establecer la longitud de palabra"
 
@@ -3795,12 +3772,6 @@ msgid "To Perform Bit Manipulations on Integers"
 msgstr "Realizar manipulaciones de bit sobre enteros"
 
 #: C/gcalctool.xml:1853(para)
-#| msgid ""
-#| "If the calculator display shows an integer value, then each of the bits "
-#| "in that integer value is displayed as a collection of 0's and 1's in the "
-#| "Bit Editor. By clicking on any of these individual bits, their value can "
-#| "be toggled, causing the displayed integer value to be adjusted "
-#| "accordingly."
 msgid ""
 "If the calculator display shows an integer value, then each of the bits in "
 "that integer value is displayed as a collection of 0s and 1s in the Bit "
@@ -3838,9 +3809,6 @@ msgid "OR"
 msgstr "OR"
 
 #: C/gcalctool.xml:1884(para)
-#| msgid ""
-#| "Performs a bitwise NOT operation on the current value in the display "
-#| "area, treating the number as an unsigned long integer."
 msgid ""
 "Performs a bitwise OR operation on the current value in the display area and "
 "the next number that you enter."
@@ -3865,9 +3833,6 @@ msgid "AND"
 msgstr "AND"
 
 #: C/gcalctool.xml:1891(para)
-#| msgid ""
-#| "Performs a bitwise NOT operation on the current value in the display "
-#| "area, treating the number as an unsigned long integer."
 msgid ""
 "Performs a bitwise AND operation on the current value in the display area "
 "and the next number that you enter."
@@ -3892,9 +3857,6 @@ msgid "NOT"
 msgstr "NOT"
 
 #: C/gcalctool.xml:1898(para)
-#| msgid ""
-#| "Performs a bitwise NOT operation on the current value in the display "
-#| "area, treating the number as an unsigned long integer."
 msgid ""
 "Performs a bitwise NOT operation on the current value in the display area, "
 "using the word size configured in <xref linkend=\"gcalctool-word-length\"/>."
@@ -3920,9 +3882,6 @@ msgid "XOR"
 msgstr "XOR"
 
 #: C/gcalctool.xml:1905(para)
-#| msgid ""
-#| "Performs a bitwise NOT operation on the current value in the display "
-#| "area, treating the number as an unsigned long integer."
 msgid ""
 "Performs a bitwise XOR operation on the current value in the display area "
 "and the next number that you enter."
@@ -3947,9 +3906,6 @@ msgid "XNOR"
 msgstr "XNOR"
 
 #: C/gcalctool.xml:1912(para)
-#| msgid ""
-#| "Performs a bitwise NOT operation on the current value in the display "
-#| "area, treating the number as an unsigned long integer."
 msgid ""
 "Performs a bitwise XNOR operation on the current value in the display area "
 "and the next number that you enter."
@@ -3962,7 +3918,6 @@ msgid "1100 <guibutton>XNOR</guibutton> 1010"
 msgstr "1100 <guibutton>XNOR</guibutton> 1010"
 
 #: C/gcalctool.xml:1914(para)
-#| msgid "100"
 msgid "1001"
 msgstr "1001"
 
@@ -3992,11 +3947,6 @@ msgid "&lt;"
 msgstr "&lt;"
 
 #: C/gcalctool.xml:1949(para)
-#| msgid ""
-#| "Shifts the current unsigned 32-bit binary value in the display area, the "
-#| "specified number of places to the left. Click <guibutton>&lt;</"
-#| "guibutton>, then select the number of shift places from the popup menu. "
-#| "The number can be shifted up to 15 places left."
 msgid ""
 "Shifts the current value in the display area, the specified number of places "
 "to the left. Click <guibutton>&lt;</guibutton>, then select the number of "
@@ -4026,11 +3976,6 @@ msgid "&gt;"
 msgstr "&gt;"
 
 #: C/gcalctool.xml:1956(para)
-#| msgid ""
-#| "Shifts the current unsigned 32-bit binary value in the display area, the "
-#| "specified number of places to the right. Click <guibutton>&gt;</"
-#| "guibutton>, then select the number of shift places from the popup menu. "
-#| "The number can be shifted up to 15 places right."
 msgid ""
 "Shifts the current value in the display area, the specified number of places "
 "to the right. Click <guibutton>&gt;</guibutton>, then select the number of "
@@ -4051,7 +3996,6 @@ msgid "101"
 msgstr "101"
 
 #: C/gcalctool.xml:1961(para)
-#| msgid "Manipulating Binary Numbers"
 msgid "Truncating a number"
 msgstr "Truncar un número"
 
@@ -4060,9 +4004,6 @@ msgid "Trunc"
 msgstr "Trunc"
 
 #: C/gcalctool.xml:1963(para)
-#| msgid ""
-#| "Raises the current value in the display area to the power of the next "
-#| "value that you enter."
 msgid ""
 "Truncates the current value in the display area to the word size configured "
 "in <xref linkend=\"gcalctool-word-length\"/>."
@@ -4071,7 +4012,6 @@ msgstr ""
 "configurado en <xref linkend=\"gcalctool-word-length\"/>."
 
 #: C/gcalctool.xml:1964(para)
-#| msgid "FFFFFFFFFF <guibutton>&amp;32</guibutton>"
 msgid "FFFFFFFFFF <guibutton>Trunc</guibutton>"
 msgstr "FFFFFFFFFF <guibutton>Trunc</guibutton>"
 
@@ -4097,12 +4037,10 @@ msgstr ""
 "\"gcalctool-word-length\"/>."
 
 #: C/gcalctool.xml:1971(para)
-#| msgid "-23.45 <guibutton>Abs</guibutton>"
 msgid "D723 <guibutton>1's</guibutton>"
 msgstr "D723 <guibutton>C. a 1</guibutton>"
 
 #: C/gcalctool.xml:1972(para)
-#| msgid "FFFF"
 msgid "FFFF28DC"
 msgstr "FFFF28DC"
 
@@ -4124,12 +4062,10 @@ msgstr ""
 "\"gcalctool-word-length\"/>."
 
 #: C/gcalctool.xml:1978(para)
-#| msgid "-23.45 <guibutton>Abs</guibutton>"
 msgid "D723 <guibutton>2's</guibutton>"
 msgstr "D723 <guibutton>C. a 2</guibutton>"
 
 #: C/gcalctool.xml:1979(para)
-#| msgid "FFFF"
 msgid "FFFF28DD"
 msgstr "FFFF28DD"
 
@@ -4203,10 +4139,6 @@ msgstr ""
 "hasta 15 acciones pasadas."
 
 #: C/gcalctool.xml:2057(para)
-#| msgid ""
-#| "If you want to redo an action you just undo'ed, choose "
-#| "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Redo</guimenuitem></"
-#| "menuchoice>. You can redo up to 15 undo'ed actions."
 msgid ""
 "If you want to redo an action you have just undone, choose "
 "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Redo</guimenuitem></"
@@ -4403,9 +4335,6 @@ msgid "Changing The Display Area"
 msgstr "Cambiar el área de visualización"
 
 #: C/gcalctool.xml:2124(para)
-#| msgid ""
-#| "In arithmetic precedence mode, it is possible to use the mouse to click "
-#| "on the display area and edit it."
 msgid ""
 "It is possible to use the mouse to click on the display area and edit it."
 msgstr ""
@@ -4957,17 +4886,14 @@ msgid "Alt"
 msgstr "Alt"
 
 #: C/gcalctool.xml:2603(para)
-#| msgid "Set the numeric base to binary."
 msgid "Set the word size to 16 bits."
 msgstr "Establece el tamaño de palabra a 16 bits."
 
 #: C/gcalctool.xml:2609(para)
-#| msgid "Set the numeric base to binary."
 msgid "Set the word size to 32 bits."
 msgstr "Establece el tamaño de palabra a 32 bits."
 
 #: C/gcalctool.xml:2615(para)
-#| msgid "Set the numeric base to binary."
 msgid "Set the word size to 64 bits."
 msgstr "Establece el tamaño de palabra a 64 bits."
 
@@ -5144,7 +5070,6 @@ msgid "Redo"
 msgstr "Rehacer"
 
 #: C/gcalctool.xml:2795(para)
-#| msgid "Redo an undo'ed action"
 msgid "Redo an undone action"
 msgstr "Rehacer una acción deshecha"
 
@@ -5152,6 +5077,16 @@ msgstr "Rehacer una acción deshecha"
 #: C/gcalctool.xml:0(None)
 msgid "translator-credits"
 msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2009"
+
+#~ msgid ""
+#~ "Click on the Value field, then enter the new value. Use the keyboard "
+#~ "shortcuts to invoke a <application>gcalctool</application> button. For "
+#~ "example, enter <literal>90K</literal> to calculate sine(90)."
+#~ msgstr ""
+#~ "Pulse en el campo de valor, después introduzca el nuevo valor. Use los "
+#~ "atajos de teclado para invocar un botón de la <application>Calculadora</"
+#~ "application>. Por ejemplo, introduzca <literal>90K</literal> para "
+#~ "calcular el seno de 90."
 
 #~ msgid ""
 #~ "This is only really meaningful if the Calculator is not in Arithmetic "
