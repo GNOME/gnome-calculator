@@ -284,7 +284,7 @@ do_shift(int count)
 
 /* Change the current base setting. */
 static void
-do_base(BaseType b)
+do_base(int b)
 {
     int ret;
     MPNumber MP;
@@ -302,8 +302,8 @@ do_base(BaseType b)
         }
     }
     v->base = b;
-    set_enumerated_resource(R_BASE, Rbstr, (int) v->base);
-    display_set_base(&v->display, basevals[v->base]);
+    set_int_resource(R_BASE, v->base);
+    display_set_base(&v->display, v->base);
     ui_set_base(v->base);
     ui_make_registers();
 }

@@ -36,7 +36,6 @@
 #define R_XPOS     "xposition"
 #define R_YPOS     "yposition"
 
-extern const char *Rbstr[];
 extern const char *Rtstr[];
 
 void resources_init();

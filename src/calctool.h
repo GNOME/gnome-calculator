@@ -32,9 +32,6 @@
 #define SNPRINTF     (void) snprintf
 #define STRNCPY      (void) strncpy
 
-/* Base definitions. */
-typedef enum { BIN, OCT, DEC, HEX, MAXBASES } BaseType;
-
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
@@ -71,7 +68,7 @@ typedef struct {
     const char *tsep;         /* Locale specific thousands separator. */
     int tsep_count;           /* Number of digits between separator. */
 
-    BaseType base;            /* Numeric base (BIN, OCT, DEC or HEX). */
+    int base;                 /* Numeric base e.g. 2, 8, 10, 16 */
     MPAngleUnit ttype;        /* Angle unit type */
     int wordlen;              /* Length of word for bitwise operations */
     int accuracy;             /* Number of digits precision. */
@@ -82,7 +79,6 @@ typedef struct {
 } CalculatorVariables;
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
-extern int basevals[];         /* Supported arithmetic bases. */
 
 void doerr(char *);
 

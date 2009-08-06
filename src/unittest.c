@@ -73,7 +73,7 @@ test(char *expression, char *expected, int expected_error)
     error = mp_equation_parse(expression, &result);
 
     if(error == 0) {
-        mp_cast_to_string(&result, basevals[v->base], 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&result, v->base, 9, 1, result_str, MAXLINE);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %d", expression, result_str, expected_error);
         else if(strcmp(result_str, expected) != 0)
@@ -97,13 +97,13 @@ test_parser()
     v->wordlen = 32;
     v->accuracy = 9;
 
-    v->base = BIN;
+    v->base = 2;
     test("0", "0", 0);
     test("1", "1", 0);
     test("10", "10", 0);
     test("210", "", -1);
 
-    v->base = OCT;
+    v->base = 8;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -115,7 +115,7 @@ test_parser()
     test("76543210", "76543210", 0);
     test("876543210", "", -1);
     
-    v->base = DEC;
+    v->base = 10;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -129,7 +129,7 @@ test_parser()
     test("9876543210", "9876543210", 0);
     test("A9876543210", "", -7);
 
-    v->base = HEX;
+    v->base = 16;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -149,7 +149,7 @@ test_parser()
     test("FEDBCA9876543210", "FEDBCA9876543210", 0);
     test("GFEDBCA9876543210", "", -7);
 
-    v->base = DEC;
+    v->base = 10;
     test("+1", "1", 0);
     test("−1", "−1", 0);
     test("+ 1", "1", 0); // FIXME: Should this be allowed?
@@ -405,7 +405,7 @@ test_parser()
     test("3 or 5", "7", 0);
     test("3 xor 5", "6", 0);
 
-    v->base = HEX;
+    v->base = 16;
     test("ones 1", "FFFFFFFE", 0);
     test("ones 7FFFFFFF", "80000000", 0);
     test("twos 1", "FFFFFFFF", 0);

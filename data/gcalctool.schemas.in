@@ -32,16 +32,12 @@ To change the gconftool target use the - -config-source=blah option to gconftool
       <applyto>/apps/gcalctool/base</applyto>
       <key>/schemas/apps/gcalctool/base</key>
       <owner>gcalctool</owner>
-      <type>string</type>
-      <default>DEC</default>
+      <type>int</type>
+      <default>10</default>
       <locale name="C">
         <short>Numeric Base</short>
         <long>
-          The initial numeric base. Valid values are 
-          "BIN" (binary),
-          "OCT" (octal),
-          "DEC" (decimal) and
-          "HEX" (hexadecimal)
+          The numeric base for input and display.
         </long>
       </locale>
     </schema>

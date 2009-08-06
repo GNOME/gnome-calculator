@@ -39,8 +39,6 @@
 
 time_t time();
 
-int basevals[4] = { 2, 8, 10, 16 };
-
 /* Calctool variables and options. */
 static CalculatorVariables calc_state;
 CalculatorVariables *v;
@@ -84,7 +82,7 @@ solve(const char *equation)
     MPNumber result;
     char result_str[MAXLINE];
     
-    v->base = DEC;
+    v->base = 10;
     v->ttype = MP_DEGREES;
     v->wordlen = 32;
     v->accuracy = 9;
@@ -95,7 +93,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, basevals[v->base], 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&result, v->base, 9, 1, result_str, MAXLINE);
         printf("%s\n", result_str);
         exit(0);
     }
@@ -223,10 +221,10 @@ init_state(void)
        v->accuracy = DEFAULT_ACCURACY;
     }
 
-    if (get_enumerated_resource(R_BASE, Rbstr, &i))
-       v->base = (BaseType) i;
+    if (get_int_resource(R_BASE, &i))
+       v->base = i;
     else
-       v->base = DEC;
+       v->base = 10;
 
     if (get_enumerated_resource(R_TRIG, Rtstr, &i))
        v->ttype = (MPAngleUnit) i;

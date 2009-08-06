@@ -168,7 +168,7 @@ mp_equation_parse(const char *expression, MPNumber *result)
         return(-EINVAL);
 
     memset(&state, 0, sizeof(MPEquationParserState));
-    state.base = basevals[v->base];
+    state.base = v->base;
     state.wordlen = v->wordlen;
     state.angle_units = v->ttype;
     state.get_variable = get_variable;

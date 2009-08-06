@@ -129,7 +129,7 @@ localize_expression(char *dest, const char *src, int dest_length, int *cursor)
             g_string_append_unichar(output, g_utf8_get_char(c));
             
             /* Insert separator after nth digit */
-            if (v->display.show_tsep && v->base == DEC &&
+            if (v->display.show_tsep && v->base == 10 &&
                 !after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
                 g_string_append(output, v->tsep);
                 if (new_cursor > read_cursor) {
@@ -710,7 +710,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
     }
     mp_set_from_mp(&MPval, &MPmant);
 
-    mp_set_from_integer(basevals[base], &MP1base);
+    mp_set_from_integer(base, &MP1base);
     mp_xpowy_integer(&MP1base, 3, &MP3base);
     mp_xpowy_integer(&MP1base, 10, &MP10base);
 
@@ -742,7 +742,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
         }
     }
  
-    mp_cast_to_string(&MPmant, basevals[base], v->accuracy, !v->display.show_zeroes, fixed, MAX_DIGITS);
+    mp_cast_to_string(&MPmant, base, v->accuracy, !v->display.show_zeroes, fixed, MAX_DIGITS);
     len = strlen(fixed);
     for (i = 0; i < len; i++) {
         *optr++ = fixed[i];
@@ -784,14 +784,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
 void
 display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base, int ignoreError)
 {
-    static double max_fix[MAXBASES] = {
-       1.298074214e+33,    /* Binary. */
-       2.037035976e+90,    /* Octal. */
-       1.000000000e+100,   /* Decimal */
-       2.582249878e+120    /* Hexadecimal. */
-    };
-
-    double val;
+    double val, max_fix;
     
     /*  NOTE: display_make_number can currently set v->error when converting to a double.
      *        This is to provide the same look&feel as V3 even though gcalctool
@@ -808,12 +801,30 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
         target[0] = '\0';
         return;
     }
+
+    switch (base)
+    {
+    case 2:
+        max_fix = 1.298074214e+33;
+        break;
+    case 8:
+        max_fix = 2.037035976e+90;
+        break;
+    case 10:
+        max_fix = 1.000000000e+100;
+        break;
+    default:
+    case 16:
+        max_fix = 2.582249878e+120;
+        break;
+    }
+    
     // FIXME: Do this based on the number of digits, not actual values
     if ((display->format == ENG) ||
         (display->format == SCI) ||
-        (display->format == FIX && val != 0.0 && (val > max_fix[base]))) {
+        (display->format == FIX && val != 0.0 && (val > max_fix))) {
         make_eng_sci(display, target, target_len, MPnumber, base);
     } else {
-        mp_cast_to_string(MPnumber, basevals[base], v->accuracy, !v->display.show_zeroes, target, target_len);
+        mp_cast_to_string(MPnumber, base, v->accuracy, !v->display.show_zeroes, target, target_len);
     }
 }

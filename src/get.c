@@ -40,7 +40,6 @@
 
 /* Various string values read/written as X resources. */
 
-const char *Rbstr[] = { "BIN", "OCT", "DEC", "HEX", NULL };
 const char *Rtstr[] = { "DEG", "GRAD", "RAD", NULL };
 
 static GConfClient *client = NULL;

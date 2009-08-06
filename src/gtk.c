@@ -521,7 +521,10 @@ typedef struct {
     GtkWidget *gradian_radio;          /* Gradian radio button. */
 
     /* Programming mode widgets */
-    GtkWidget *base_radios[MAXBASES];
+    GtkWidget *binary_radio;
+    GtkWidget *octal_radio;
+    GtkWidget *decimal_radio;
+    GtkWidget *hexadecimal_radio;
     GtkWidget *word_length_radios[3];             /* Wordlength radio buttons. */
 
     GdkAtom clipboard_atom;
@@ -874,7 +877,7 @@ ui_set_trigonometric_mode(MPAngleUnit units)
 
 
 void
-ui_set_numeric_mode(BaseType mode)
+ui_set_numeric_mode(DisplayFormat mode)
 {
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.display_mode_radios[mode]), 1);
 }
@@ -1021,7 +1024,7 @@ ui_set_mode(ModeType mode)
 
         // FIXME: These should affect display but not the actual UI settings
         if (mode != PROGRAMMING)
-            ui_set_base(DEC);
+            ui_set_base(10);
         if (mode != SCIENTIFIC) {
             ui_set_numeric_mode(FIX);
             do_button(FN_SET_ACCURACY, DEFAULT_ACCURACY);
@@ -1263,15 +1266,33 @@ ui_beep()
 
 
 void
-ui_set_base(BaseType base)
+ui_set_base(int base)
 {
-    int i, baseval = basevals[(int) base];
+    GtkWidget *widget;
+    int i;
     
     v->base = base;
 
     for (i = 0; i < 16; i++)
-        gtk_widget_set_sensitive(X.digit_buttons[i], i < baseval);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.base_radios[base]), 1);
+        gtk_widget_set_sensitive(X.digit_buttons[i], i < base);
+    switch (base)
+    {
+    case 2:
+        widget = X.binary_radio;
+        break;
+    case 8:
+        widget = X.octal_radio;
+        break;
+    case 10:
+        widget = X.decimal_radio;
+        break;
+    case 16:
+        widget = X.hexadecimal_radio;
+        break;
+    default:
+        return;
+    }
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
 }
 
 
@@ -1492,9 +1513,9 @@ G_MODULE_EXPORT
 void
 base_cb(GtkWidget *widget)
 {
-    BaseType base;
+    int base;
 
-    base = (BaseType) g_object_get_data(G_OBJECT(widget), "base_mode");
+    base = (int) g_object_get_data(G_OBJECT(widget), "base_mode");
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
         do_button(FN_SET_BASE, base);
 }
@@ -1583,7 +1604,8 @@ exchange_menu_cb(GtkMenuItem *menu)
 
 G_MODULE_EXPORT
 void
-finc_activate_cb(GtkWidget *widget) {
+finc_activate_cb(GtkWidget *widget)
+{
     gint dialog, field;
 
     dialog = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
@@ -1673,7 +1695,7 @@ update_constants_menu(void)
     int i;
 
     for (i = 0; i < MAX_CONSTANTS; i++) {
-        display_make_number(&v->display, value, MAXLINE, constant_get_value(i), DEC, TRUE);
+        display_make_number(&v->display, value, MAXLINE, constant_get_value(i), 10, TRUE);
         SNPRINTF(mline, MAXLINE, 
                  "<span weight=\"bold\">%s_%1d:</span> %s [%s]", _("C"), i, 
                  value, 
@@ -1798,7 +1820,7 @@ create_constants_model()
     for (i = 0; i < MAX_CONSTANTS; i++) {
         gtk_list_store_append(model, &iter);
         
-        display_make_number(&v->display, constant, MAXLINE, constant_get_value(i), DEC, TRUE);
+        display_make_number(&v->display, constant, MAXLINE, constant_get_value(i), 10, TRUE);
         gtk_list_store_set(model, &iter,
                            COLUMN_NUMBER, i,
                            COLUMN_EDITABLE, TRUE,
@@ -1850,7 +1872,7 @@ ui_make_registers()            /* Calculate memory register frame values. */
         gtk_entry_set_text(GTK_ENTRY(X.register_entries[n]), mval);
 
         SNPRINTF(key, MAXLINE, "register%d", n);
-        display_make_number(&v->display, value, MAXLINE, &temp, DEC, TRUE);
+        display_make_number(&v->display, value, MAXLINE, &temp, 10, TRUE);
         set_resource(key, value);
     }
 }
@@ -2533,10 +2555,10 @@ create_main_window()
     X.degree_radio     = GET_WIDGET("degrees_radio");
     X.gradian_radio    = GET_WIDGET("gradians_radio");
     X.radian_radio     = GET_WIDGET("radians_radio");
-    X.base_radios[0]   = GET_WIDGET("binary_radio");
-    X.base_radios[1]   = GET_WIDGET("octal_radio");
-    X.base_radios[2]   = GET_WIDGET("decimal_radio");
-    X.base_radios[3]   = GET_WIDGET("hexadecimal_radio");
+    X.binary_radio     = GET_WIDGET("binary_radio");
+    X.octal_radio      = GET_WIDGET("octal_radio");
+    X.decimal_radio    = GET_WIDGET("decimal_radio");
+    X.hexadecimal_radio      = GET_WIDGET("hexadecimal_radio");
     X.display_mode_radios[0] = GET_WIDGET("engineering_radio");
     X.display_mode_radios[1] = GET_WIDGET("fixed_point_radio");
     X.display_mode_radios[2] = GET_WIDGET("scientific_radio");
@@ -2693,14 +2715,16 @@ create_main_window()
     gtk_widget_realize(X.main_window);
     set_win_position();
 
-    g_object_set_data(G_OBJECT(X.radian_radio), "trig_mode", GINT_TO_POINTER(MP_RADIANS));
-    g_object_set_data(G_OBJECT(X.degree_radio), "trig_mode", GINT_TO_POINTER(MP_DEGREES));
-    g_object_set_data(G_OBJECT(X.gradian_radio), "trig_mode", GINT_TO_POINTER(MP_GRADIANS));
-    for (i = 0; i < 4; i++)
-        g_object_set_data(G_OBJECT(X.base_radios[i]), "base_mode", GINT_TO_POINTER(i));
-    for (i = 0; i < 3; i++)
-        g_object_set_data(G_OBJECT(X.display_mode_radios[i]), "numeric_mode", GINT_TO_POINTER(i));
-    
+    g_object_set_data(G_OBJECT(X.radian_radio),          "trig_mode", GINT_TO_POINTER(MP_RADIANS));
+    g_object_set_data(G_OBJECT(X.degree_radio),          "trig_mode", GINT_TO_POINTER(MP_DEGREES));
+    g_object_set_data(G_OBJECT(X.gradian_radio),         "trig_mode", GINT_TO_POINTER(MP_GRADIANS));
+    g_object_set_data(G_OBJECT(X.binary_radio),          "base_mode", GINT_TO_POINTER(2));
+    g_object_set_data(G_OBJECT(X.octal_radio),           "base_mode", GINT_TO_POINTER(8));
+    g_object_set_data(G_OBJECT(X.decimal_radio),         "base_mode", GINT_TO_POINTER(10));
+    g_object_set_data(G_OBJECT(X.hexadecimal_radio),     "base_mode", GINT_TO_POINTER(16));
+    g_object_set_data(G_OBJECT(X.display_mode_radios[0]), "numeric_mode", GINT_TO_POINTER(ENG));
+    g_object_set_data(G_OBJECT(X.display_mode_radios[1]), "numeric_mode", GINT_TO_POINTER(FIX));
+    g_object_set_data(G_OBJECT(X.display_mode_radios[2]), "numeric_mode", GINT_TO_POINTER(SCI));
     g_object_set_data(G_OBJECT(X.word_length_radios[0]), "wordlen_mode", GINT_TO_POINTER(64));
     g_object_set_data(G_OBJECT(X.word_length_radios[1]), "wordlen_mode", GINT_TO_POINTER(32));
     g_object_set_data(G_OBJECT(X.word_length_radios[2]), "wordlen_mode", GINT_TO_POINTER(16));
