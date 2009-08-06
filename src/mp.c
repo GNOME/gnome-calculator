@@ -631,18 +631,18 @@ L210:
 int
 mp_is_integer(const MPNumber *x)
 {
-    MPNumber MPtt, MP0, MP1;
+    MPNumber t1, t2, t3;
 
     /* This fix is required for 1/3 repiprocal not being detected as an integer */
     /* Multiplication and division by 10000 is used to get around a 
      * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
      * mp_integer_component() routine in mp.c, when the exponent is less than 1.
      */
-    mp_set_from_integer(10000, &MPtt);
-    mp_multiply(x, &MPtt, &MP0);
-    mp_divide(&MP0, &MPtt, &MP0);
-    mp_integer_component(&MP0, &MP1);
-    return mp_is_equal(&MP0, &MP1);
+    mp_set_from_integer(10000, &t3);
+    mp_multiply(x, &t3, &t1);
+    mp_divide(&t1, &t3, &t1);
+    mp_integer_component(&t1, &t2);
+    return mp_is_equal(&t1, &t2);
 
     /* Correct way to check for integer */
     /*int i;
@@ -1574,6 +1574,19 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
+    
+    /* 0^-(1/n) invalid */
+    if (x->sign == 0 && n < 0) {
+        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    /* 0^(1/n) = 0 */
+    if (x->sign == 0) {
+        mp_set_from_integer(0, z);
+        return;
+    }
 
     np = abs(n);
 
@@ -1584,15 +1597,6 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
         return;
     }
 
-    /* LOOK AT SIGN OF X */
-    if (x->sign == 0) {
-        /* X == 0 HERE, RETURN 0 IF N POSITIVE, ERROR IF NEGATIVE */
-        mp_set_from_integer(0, z);
-        if (n <= 0)
-            mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
-        return;
-    }
-    
     if (x->sign < 0 && np % 2 == 0) {
         mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***");
         mp_set_from_integer(0, z);
