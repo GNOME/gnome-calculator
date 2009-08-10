@@ -30,6 +30,7 @@ gcalctool_SOURCES = \
 	mp-trigonometric.c \
 	mp-equation.c \
 	mp-equation.h \
+	mp-equation-private.h \        
 	mp-equation-lexer.c \
 	mp-equation-lexer.h \
 	mp-equation-parser.c \

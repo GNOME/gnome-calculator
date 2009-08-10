@@ -34,10 +34,8 @@
 #define PARSER_ERR_UNKNOWN_FUNCTION 7
 #define PARSER_ERR_INVALID_BASE     8
 
-typedef struct MPEquationParserState MPEquationParserState;
-
-/* State for parser */
-struct MPEquationParserState {
+/* Options for parser */
+typedef struct {
     /* The numeric base (e.g 2, 8, 10, 16) */
     int base;
 
@@ -47,25 +45,22 @@ struct MPEquationParserState {
     /* Units for angles (e.g. radians, degrees) */
     MPAngleUnit angle_units;
     
+    // FIXME:
+    // int enable_builtins;
+    
+    /* Data to pass to callbacks */
+    void *callback_data;
+    
     /* Function to get variable values */
-    int (*get_variable)(MPEquationParserState *state, const char *name, MPNumber *z);
+    int (*get_variable)(const char *name, MPNumber *z, void *data);
     
     /* Function to set variable values */
-    void (*set_variable)(MPEquationParserState *state, const char *name, MPNumber *x);    
+    void (*set_variable)(const char *name, const MPNumber *x, void *data);
 
     /* Function to solve functions */
-    int (*get_function)(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z);
-    
-    // FIXME: get_operator??
+    int (*get_function)(const char *name, const MPNumber *x, MPNumber *z, void *data);
+} MPEquationOptions;
 
-    /* Error returned from parser */
-    int error;
-
-    /* Value returned from parser */
-    MPNumber ret;
-};
-
-int mp_equation_parse(const char *expression, MPNumber *result);
-int _mp_equation_error(void *yylloc, MPEquationParserState *state, char *text);
+int mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result);
 
 #endif

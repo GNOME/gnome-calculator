@@ -25,7 +25,7 @@
 #include "mp.h"
 
 void register_init();
-void register_set(int index, MPNumber *value);
+void register_set(int index, const MPNumber *value);
 void register_get(int index, MPNumber *value);
 
 void constant_set(int index, const char *name, MPNumber *value);

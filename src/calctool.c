@@ -78,16 +78,17 @@ version()
 static void
 solve(const char *equation)
 {
+    MPEquationOptions options;
     int error;
     MPNumber result;
     char result_str[MAXLINE];
     
-    v->base = 10;
-    v->ttype = MP_DEGREES;
-    v->wordlen = 32;
-    v->accuracy = 9;
+    memset(&options, 0, sizeof(options));
+    options.base = 10;
+    options.wordlen = 32;
+    options.angle_units = MP_DEGREES;
     
-    error = mp_equation_parse(equation, &result);
+    error = mp_equation_parse(equation, &options, &result);
     if(error != 0) {
         fprintf(stderr, "Error %d\n", error);
         exit(1);

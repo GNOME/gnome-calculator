@@ -32,7 +32,7 @@
 #include <sys/types.h>
 
 #include "calctool.h"
-#include "mp-equation.h"
+#include "mp-equation-private.h"
 #include "mp-equation-parser.h"
 
 static int super_atoi(const char *data)
@@ -132,37 +132,37 @@ NOT  "¬"|"~"|[nN][oO][tT]
 {INVERSE}  {return tINVERSE;}
 
 {DEC_NUM}{EXP}{DEC_NUM} {
-if (_mp_equation_get_extra(yyscanner)->base == 16) REJECT;
+if (_mp_equation_get_extra(yyscanner)->options->base == 16) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {BIN_NUM} {
-if (_mp_equation_get_extra(yyscanner)->base != 2) REJECT;
+if (_mp_equation_get_extra(yyscanner)->options->base != 2) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {OCT_NUM} {
-if (_mp_equation_get_extra(yyscanner)->base != 8) REJECT;
+if (_mp_equation_get_extra(yyscanner)->options->base != 8) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {DEC_NUM} {
-if (_mp_equation_get_extra(yyscanner)->base != 10) REJECT;
+if (_mp_equation_get_extra(yyscanner)->options->base != 10) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t);
 return tNUMBER;
 }
 
 {HEX_NUM} {
-if (_mp_equation_get_extra(yyscanner)->base != 16) REJECT;
+if (_mp_equation_get_extra(yyscanner)->options->base != 16) REJECT;
 if (strlen(yytext) > MAX_DIGITS) yyextra->error = -PARSER_ERR_TOO_LONG_NUMBER;
-mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->base, &yylval->int_t);
+mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t);
 return tNUMBER;
 }
 

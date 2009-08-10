@@ -24,7 +24,7 @@
 #include <math.h>
 #include <errno.h>
 
-#include "mp-equation.h"
+#include "mp-equation-private.h"
 #include "mp-equation-parser.h"
 #include "mp-equation-lexer.h"
 
@@ -66,20 +66,20 @@ static void do_xnor(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MP
 {
     if (!mp_is_natural(x)) {
 	set_error(yyscanner, -PARSER_ERR_BITWISEOP);
-    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->wordlen)) {
+    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
 	set_error(yyscanner, -PARSER_ERR_OVERFLOW);
     }
-    mp_xnor(x, y, _mp_equation_get_extra(yyscanner)->wordlen, z);
+    mp_xnor(x, y, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
 
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 {
     if (!mp_is_natural(x)) {
 	set_error(yyscanner, -PARSER_ERR_BITWISEOP);
-    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->wordlen)) {
+    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
 	set_error(yyscanner, -PARSER_ERR_OVERFLOW);
     }
-    mp_not(x, _mp_equation_get_extra(yyscanner)->wordlen, z);
+    mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
 
 static void do_mod(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPNumber *z)

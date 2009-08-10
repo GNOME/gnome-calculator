@@ -21,14 +21,13 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdarg.h>
 
 #include "unittest.h"
-
-#include "display.h"
-#include "functions.h"
-#include "calctool.h"
 #include "mp-equation.h"
+
+static MPEquationOptions options;
 
 static int fails = 0;
 
@@ -68,12 +67,12 @@ test(char *expression, char *expected, int expected_error)
 {
     int error;
     MPNumber result;
-    char result_str[MAXLINE] = "";
+    char result_str[1024] = "";
     
-    error = mp_equation_parse(expression, &result);
+    error = mp_equation_parse(expression, &options, &result);
 
     if(error == 0) {
-        mp_cast_to_string(&result, v->base, 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&result, options.base, 9, 1, result_str, 1024);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %d", expression, result_str, expected_error);
         else if(strcmp(result_str, expected) != 0)
@@ -93,17 +92,18 @@ test(char *expression, char *expected, int expected_error)
 void
 test_parser()
 {
-    v->ttype = MP_DEGREES;
-    v->wordlen = 32;
-    v->accuracy = 9;
+    memset(&options, 0, sizeof(options));
+    options.base = 10;
+    options.wordlen = 32;
+    options.angle_units = MP_DEGREES;
 
-    v->base = 2;
+    options.base = 2;
     test("0", "0", 0);
     test("1", "1", 0);
     test("10", "10", 0);
     test("210", "", -1);
 
-    v->base = 8;
+    options.base = 8;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -115,7 +115,7 @@ test_parser()
     test("76543210", "76543210", 0);
     test("876543210", "", -1);
     
-    v->base = 10;
+    options.base = 10;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -129,7 +129,7 @@ test_parser()
     test("9876543210", "9876543210", 0);
     test("A9876543210", "", -7);
 
-    v->base = 16;
+    options.base = 16;
     test("0", "0", 0);
     test("1", "1", 0);
     test("2", "2", 0);
@@ -149,7 +149,7 @@ test_parser()
     test("FEDBCA9876543210", "FEDBCA9876543210", 0);
     test("GFEDBCA9876543210", "", -7);
 
-    v->base = 10;
+    options.base = 10;
     test("+1", "1", 0);
     test("−1", "−1", 0);
     test("+ 1", "1", 0); // FIXME: Should this be allowed?
@@ -345,7 +345,7 @@ test_parser()
     test("ln e", "1", 0);
     test("2 ln 2", "1.386294361", 0);
 
-    v->ttype = MP_DEGREES;
+    options.angle_units = MP_DEGREES;
     test("sin 0", "0", 0);
     test("sin 45 − 1÷√2", "0", 0);
     test("sin 20 + sin(−20)", "0", 0);
@@ -392,20 +392,20 @@ test_parser()
     test("atanh 0", "0", 0);
     test("atanh (1÷10) − 0.5 ln(11÷9)", "0", 0);
 
-    v->ttype = MP_DEGREES;
+    options.angle_units = MP_DEGREES;
     test("sin 90", "1", 0);
     
-    v->ttype = MP_RADIANS;
+    options.angle_units = MP_RADIANS;
     test("sin (π÷2)", "1", 0); // FIXME: Shouldn't need brackets
     
-    v->ttype = MP_GRADIANS;
+    options.angle_units = MP_GRADIANS;
     test("sin 100", "1", 0);
 
     test("3 and 5", "1", 0);
     test("3 or 5", "7", 0);
     test("3 xor 5", "6", 0);
 
-    v->base = 16;
+    options.base = 16;
     test("ones 1", "FFFFFFFE", 0);
     test("ones 7FFFFFFF", "80000000", 0);
     test("twos 1", "FFFFFFFF", 0);

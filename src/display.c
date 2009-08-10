@@ -32,9 +32,9 @@
 
 #include "get.h"
 #include "mp.h"
+#include "mp-equation.h"
 #include "functions.h"
 #include "ui.h"
-#include "mp-equation.h" // For mp_equation_parse()
 #include "register.h"
 
 static const char *display_types[] = { "ENG", "FIX", "SCI", NULL };
@@ -171,7 +171,7 @@ display_clear(GCDisplay *display)
 }
 
 
-static const char *
+const char *
 display_get_text(GCDisplay *display)
 {
     return get_state(display)->expression;
@@ -589,12 +589,13 @@ display_is_result(GCDisplay *display)
 
 
 gboolean
-display_is_usable_number(GCDisplay *display, MPNumber *MPnum)
+display_is_usable_number(GCDisplay *display, MPNumber *z)
 {
     if (display_is_empty(display)) {
-        return mp_equation_parse("0", MPnum);
+        mp_set_from_integer(0, z);
+        return TRUE;
     } else {
-        return mp_equation_parse(display_get_text(display), MPnum);
+        return display_solve(display, z) == 0; // FIXME: Change to MP
     }
 }
 
@@ -671,14 +672,21 @@ void display_set_format(GCDisplay *display, DisplayFormat type)
 }
 
 
+// FIXME: Obsolete
 int
 display_solve(GCDisplay *display, MPNumber *result)
 {
+    MPEquationOptions options;
     const char *text;
     int errorCode;
+    
+    memset(&options, 0, sizeof(options));
+    options.base = v->base;
+    options.wordlen = v->wordlen;
+    options.angle_units = v->ttype;
 
     text = display_get_text(display);
-    errorCode = mp_equation_parse(text, result);
+    errorCode = mp_equation_parse(text, &options, result);
     
     return errorCode;
 }

@@ -22,45 +22,38 @@
 
 #include <ctype.h>
 
-#include "mp-equation.h"
-#include "calctool.h"
-#include "register.h"
+#include "mp-equation-private.h"
 #include "mp-equation-parser.h"
 #include "mp-equation-lexer.h"
+#include "calctool.h" // FIXME v->math_error
 
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
 static int
 get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 {
-    char *c, *lower_name;
     int result = 1;
     
-    lower_name = strdup(name);
-    for (c = lower_name; *c; c++)
-        *c = tolower(*c);
-
-    if (lower_name[0] == 'r')
-        register_get(atoi(name+1), z);
-    else if (strcmp(lower_name, "ans") == 0)
-        mp_set_from_mp(display_get_answer(&v->display), z);
-    else if (strcmp(name, "e") == 0)
+    if (strcmp(name, "e") == 0)
         mp_get_eulers(z);
     else if (strcmp(name, "π") == 0)
         mp_get_pi(z);
+    else if (state->options->get_variable)
+        result = state->options->get_variable(name, z, state->options->callback_data);
     else
         result = 0;
-    
-    free(lower_name);
-    
+
     return result;
 }
 
 static void
-set_variable(MPEquationParserState *state, const char *name, MPNumber *x)
+set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
 {
-    if (name[0] == 'R' || name[0] == 'r')
-        register_set(atoi(name+1), x);
+    if (strcmp(name, "e") == 0 || strcmp(name, "π") == 0)
+        return; // FALSE
+    
+    if (state->options->set_variable)
+        state->options->set_variable(name, x, state->options->callback_data);
 }
 
 // FIXME: Accept "2sin" not "2 sin", i.e. let the tokenizer collect the multiple
@@ -120,17 +113,17 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
     else if (strcmp(lower_name, "frac") == 0)
         mp_fractional_component(x, z);
     else if (strcmp(lower_name, "sin") == 0)
-        mp_sin(x, state->angle_units, z);
+        mp_sin(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "cos") == 0)
-        mp_cos(x, state->angle_units, z);
+        mp_cos(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "tan") == 0)
-        mp_tan(x, state->angle_units, z);    
+        mp_tan(x, state->options->angle_units, z);    
     else if (strcmp(lower_name, "sin⁻¹") == 0 || strcmp(lower_name, "asin") == 0)
-        mp_asin(x, state->angle_units, z);
+        mp_asin(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "cos⁻¹") == 0 || strcmp(lower_name, "acos") == 0)
-        mp_acos(x, state->angle_units, z);
+        mp_acos(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "tan⁻¹") == 0 || strcmp(lower_name, "atan") == 0)
-        mp_atan(x, state->angle_units, z);    
+        mp_atan(x, state->options->angle_units, z);    
     else if (strcmp(lower_name, "sinh") == 0)
         mp_sinh(x, z);
     else if (strcmp(lower_name, "cosh") == 0)
@@ -144,9 +137,11 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
     else if (strcmp(lower_name, "tanh⁻¹") == 0 || strcmp(lower_name, "atanh") == 0)
         mp_atanh(x, z);
     else if (strcmp(lower_name, "ones") == 0)
-        mp_ones_complement(x, state->wordlen, z);
+        mp_ones_complement(x, state->options->wordlen, z);
     else if (strcmp(lower_name, "twos") == 0)
-        mp_twos_complement(x, state->wordlen, z);    
+        mp_twos_complement(x, state->options->wordlen, z);
+    else if (state->options->get_function)
+        result = state->options->get_function(name, x, z, state->options->callback_data);
     else
         result = 0;
     
@@ -156,8 +151,8 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 }
 
 
-int 
-mp_equation_parse(const char *expression, MPNumber *result)
+int
+mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result)
 {
     int ret;
     MPEquationParserState state;
@@ -168,14 +163,12 @@ mp_equation_parse(const char *expression, MPNumber *result)
         return(-EINVAL);
 
     memset(&state, 0, sizeof(MPEquationParserState));
-    state.base = v->base;
-    state.wordlen = v->wordlen;
-    state.angle_units = v->ttype;
+    state.options = options;
     state.get_variable = get_variable;
     state.set_variable = set_variable;
-    state.get_function = get_function;    
+    state.get_function = get_function;
     state.error = 0;
-    v->math_error = 0;
+    v->math_error = 0; // FIXME: Move up one level
 
     _mp_equation_lex_init_extra(&state, &yyscanner);
     buffer = _mp_equation__scan_string(expression, yyscanner);

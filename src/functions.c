@@ -169,6 +169,53 @@ do_accuracy(int value)
 }
 
 
+static int
+get_variable(const char *name, MPNumber *z, void *data)
+{
+    char *c, *lower_name;
+    int result = 1;
+    
+    lower_name = strdup(name);
+    for (c = lower_name; *c; c++)
+        *c = tolower(*c);
+
+    if (lower_name[0] == 'r')
+        register_get(atoi(name+1), z);
+    else if (strcmp(lower_name, "ans") == 0)
+        mp_set_from_mp(display_get_answer(&v->display), z);
+    else
+        result = 0;
+
+    free(lower_name);
+
+    return result;
+}
+
+
+static void
+set_variable(const char *name, const MPNumber *x, void *data)
+{
+    if (name[0] == 'R' || name[0] == 'r')
+        register_set(atoi(name+1), x);
+}
+
+
+static int
+parse(const char *text, MPNumber *z)
+{
+    MPEquationOptions options;
+
+    memset(&options, 0, sizeof(options));
+    options.base = v->base;
+    options.wordlen = v->wordlen;
+    options.angle_units = v->ttype;
+    options.get_variable = get_variable;
+    options.set_variable = set_variable;
+
+    return mp_equation_parse(text, &options, z);
+}
+
+
 /* Perform a user defined function. */
 static void
 do_function(int index)
@@ -178,7 +225,7 @@ do_function(int index)
     assert(index >= 0);
     assert(index <= 9);
 
-    ret = mp_equation_parse(function_get_value(index), display_get_answer(&v->display));
+    ret = parse(function_get_value(index), display_get_answer(&v->display));
     if (ret == 0) {
         display_set_answer(&v->display);
         ui_set_statusbar("", "");
@@ -267,16 +314,16 @@ do_insert_character(const char *text)
 static void
 do_shift(int count)
 {
-    MPNumber MPval;
+    MPNumber z;
 
-    if (display_is_usable_number(&v->display, &MPval) || !mp_is_integer(&MPval)) {
+    if (display_is_usable_number(&v->display, &z) || !mp_is_integer(&z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
         ui_set_statusbar(_("No sane value to do bitwise shift"),
                          "gtk-dialog-error");
     }
     else {
-        mp_shift(&MPval, count, display_get_answer(&v->display));
+        mp_shift(&z, count, display_get_answer(&v->display));
         display_set_answer(&v->display);
     }
 }
@@ -287,16 +334,16 @@ static void
 do_base(int b)
 {
     int ret;
-    MPNumber MP;
+    MPNumber z;
 
     if (!display_is_empty(&v->display))
     {   
-        ret = display_is_usable_number(&v->display, &MP);
+        ret = display_is_usable_number(&v->display, &z);
         if (ret) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
-            mp_set_from_mp(&MP, display_get_answer(&v->display));
+            mp_set_from_mp(&z, display_get_answer(&v->display));
             display_set_answer(&v->display);
             clear_undo_history();
         }
@@ -313,15 +360,15 @@ do_base(int b)
 static void
 do_exchange(int index)
 {
-    MPNumber MPtemp, MPexpr;
+    MPNumber r, z;
 
-    if (display_is_usable_number(&v->display, &MPexpr)) {
+    if (display_is_usable_number(&v->display, &z)) {
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     } else {
-        register_get(index, &MPtemp);
-        register_set(index, &MPexpr);
-        mp_set_from_mp(&MPtemp, display_get_answer(&v->display));
+        register_get(index, &r);
+        register_set(index, &z);
+        mp_set_from_mp(&r, display_get_answer(&v->display));
         display_set_answer(&v->display);
         ui_make_registers();
     }
@@ -341,17 +388,17 @@ static void
 do_numtype(DisplayFormat n)   /* Set number display type. */
 {
     int ret;
-    MPNumber MP;
+    MPNumber z;
 
     /* Convert display if it contains a number */
     if (!display_is_empty(&v->display))
     {
-        ret = display_is_usable_number(&v->display, &MP);
+        ret = display_is_usable_number(&v->display, &z);
         if (ret) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
-            mp_set_from_mp(&MP, display_get_answer(&v->display));
+            mp_set_from_mp(&z, display_get_answer(&v->display));
             display_set_answer(&v->display);
             clear_undo_history();
         }
@@ -521,14 +568,14 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
                 
             /* Solve the equation */
             } else {
-                MPNumber MPval;
+                MPNumber z;
                 int result;
                 const char *message = NULL;
-                
-                result = display_solve(&v->display, &MPval);
+
+                result = parse(display_get_text(&v->display), &z);
                 switch (result) {
                     case 0:
-                        mp_set_from_mp(&MPval, ans);
+                        mp_set_from_mp(&z, ans);
                         display_set_answer(&v->display);
                         break;
 

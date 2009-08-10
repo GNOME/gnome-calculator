@@ -126,7 +126,7 @@ void register_init()
 
 
 void
-register_set(int index, MPNumber *value)
+register_set(int index, const MPNumber *value)
 {
     if ((index >= 0) && (index <= 10))
         mp_set_from_mp(value, &registers[index]);

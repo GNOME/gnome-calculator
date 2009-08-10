@@ -91,6 +91,7 @@ gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);
 gboolean display_is_usable_number(GCDisplay *display, MPNumber *);
 
+const char *display_get_text(GCDisplay *display);
 int display_solve(GCDisplay *display, MPNumber *);
 
 void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base, int ignoreError);
