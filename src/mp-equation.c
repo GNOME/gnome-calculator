@@ -25,7 +25,6 @@
 #include "mp-equation-private.h"
 #include "mp-equation-parser.h"
 #include "mp-equation-lexer.h"
-#include "calctool.h" // FIXME v->math_error
 
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
@@ -160,7 +159,7 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     YY_BUFFER_STATE buffer;
 
     if (!(expression && result) || strlen(expression) == 0)
-        return(-EINVAL);
+        return -EINVAL;
 
     memset(&state, 0, sizeof(MPEquationParserState));
     state.options = options;
@@ -168,7 +167,8 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     state.set_variable = set_variable;
     state.get_function = get_function;
     state.error = 0;
-    v->math_error = 0; // FIXME: Move up one level
+
+    mp_clear_error();
 
     _mp_equation_lex_init_extra(&state, &yyscanner);
     buffer = _mp_equation__scan_string(expression, yyscanner);
@@ -186,8 +186,8 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     if (state.error)
         return state.error;
 
-    if (v->math_error)
-        return v->math_error;
+    if (mp_get_error())
+        return -PARSER_ERR_MP;
 
     mp_set_from_mp(&state.ret, result);
 

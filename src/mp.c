@@ -27,11 +27,10 @@
 
 #include "mp.h"
 #include "mp-internal.h"
-#include "calctool.h" // FIXME: Required for doerr() and MAXLINE
-
 
 // FIXME: Re-add overflow and underflow detection
 
+char *mp_error = NULL;
 
 /*  THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
  *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
@@ -39,13 +38,30 @@
 void
 mperr(const char *format, ...)
 {
-    char text[MAXLINE];
+    char text[1024];
     va_list args;
     
     va_start(args, format);
-    vsnprintf(text, MAXLINE, format, args);
+    vsnprintf(text, 1024, format, args);
     va_end(args);
-    doerr(text);
+
+    if (mp_error)
+        free(mp_error);
+    mp_error = strdup(text);
+}
+
+
+const char *mp_get_error()
+{
+    return mp_error;
+}
+
+
+void mp_clear_error()
+{
+    if (mp_error)
+        free(mp_error);
+    mp_error = NULL;
 }
 
 

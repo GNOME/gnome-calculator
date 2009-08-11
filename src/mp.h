@@ -70,6 +70,13 @@ typedef enum
     MP_GRADIANS
 } MPAngleUnit;
 
+/* Returns error string or NULL if no error */
+// FIXME: Global variable
+const char *mp_get_error();
+
+/* Clear any current error */
+void mp_clear_error();
+
 /* Returns:
  *  0 if x == y
  * <0 if x < y

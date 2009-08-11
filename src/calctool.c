@@ -24,7 +24,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <sys/types.h>
-#include <math.h>
 #include <glib-object.h>
 
 #include "calctool.h"
@@ -42,31 +41,6 @@ time_t time();
 /* Calctool variables and options. */
 static CalculatorVariables calc_state;
 CalculatorVariables *v;
-
-/* Calctools' customised math library error-handling routine. */
-void
-doerr(char *errmes)
-{
-    v->math_error = -MPMATH_ERR;
-    free(v->math_error_text);
-    v->math_error_text = strdup(errmes);
-}
-
-/* Default math library exception handling routine. */
-
-/*ARGSUSED*/
-int
-matherr(struct exception *exc)
-{
-    char text[MAXLINE];
-    
-    /* Translators: Error displayed to user when the math library reports an
-     * error */
-    snprintf(text, MAXLINE, _("Error in math library function %s"), exc->name);
-    doerr(text);
-
-    return 1;
-}
 
 static void
 version()
@@ -207,9 +181,6 @@ init_state(void)
     v->tsep          = get_tsep();     /* Locale specific thousands separator. */
     v->tsep_count    = get_tsep_count();
     
-    v->math_error = 0;
-    v->math_error_text = strdup("");
-   
     if (get_int_resource(R_ACCURACY, &i))
         v->accuracy = i;
     else

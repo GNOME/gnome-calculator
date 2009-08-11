@@ -620,8 +620,8 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
                        message = _("Unknown function");
                        break;
 
-                    case -MPMATH_ERR:
-                        message = v->math_error_text;
+                    case -PARSER_ERR_MP:
+                        message = mp_get_error();
                         break;
 
                     default:

@@ -74,12 +74,8 @@ typedef struct {
     int accuracy;             /* Number of digits precision. */
 
     int error;                /* true if there is a display error */
-    int math_error;           /* Math error */
-    char *math_error_text;    /* Text for math error */
 } CalculatorVariables;
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
-
-void doerr(char *);
 
 #endif /*CALCTOOL_H*/

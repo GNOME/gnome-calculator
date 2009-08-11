@@ -33,6 +33,7 @@
 #define PARSER_ERR_UNKNOWN_VARIABLE 6
 #define PARSER_ERR_UNKNOWN_FUNCTION 7
 #define PARSER_ERR_INVALID_BASE     8
+#define PARSER_ERR_MP               9
 
 /* Options for parser */
 typedef struct {
