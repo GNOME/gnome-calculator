@@ -26,7 +26,6 @@
 #include "mp.h"
 
 #define PARSER_ERR_INVALID          1
-#define PARSER_ERR_TOO_LONG_NUMBER  2
 #define PARSER_ERR_BITWISEOP        3
 #define PARSER_ERR_MODULUSOP        4
 #define PARSER_ERR_OVERFLOW         5

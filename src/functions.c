@@ -583,10 +583,6 @@ do_expression(int function, int arg, int cursor_start, int cursor_end)
                         message = _("Invalid number for the current base");
                         break;
 
-                    case -PARSER_ERR_TOO_LONG_NUMBER:
-                        message = _("Too long number");
-                        break;
-
                     case -PARSER_ERR_BITWISEOP:
                         /* Translators: Error displayed to user when they
                          * perform an invalid bitwise operation, e.g.
