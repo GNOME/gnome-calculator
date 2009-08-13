@@ -1,12 +1,12 @@
-# Brazilian Portuguese translation of gcalctool.
-# Copyright (C) 2003-2008 Free Software Foundation, Inc.
+# Brazilian Portuguese translation of the GNOME Calculator.
+# Copyright (C) 2003-2009 the GNOME Calculator authors.
 # This file is distributed under the same license as the gcalctool package.
 # Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003.
 # Joao Emanuel <deathbird1981@yahoo.com.br>, 2003.
 # Estêvão Samuel Procópio <tevaum@gmail.com>, 2004.
 # Raphael Higino <phhigino@gmail.com>, 2004.
 # Afonso Celso Medina <medina@maua.br>, 2005.
-# Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2007-2008.
+# Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2007-2009.
 # Og Maciel <ogmaciel@ubuntu.com>, 2007-2009.
 # Fabrício Godoy <skarllot@gmail.com>, 2008.
 # Rodrigo L. M. Flores <rodrigomarquesflores@gmail.com>, 2009.
@@ -17,9 +17,9 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-07-22 13:40+0000\n"
+"POT-Creation-Date: 2009-08-13 00:59+0000\n"
 "PO-Revision-Date: 2009-07-22 09:14-0300\n"
-"Last-Translator: Daniel S. Koda <danielskoda@gmail.com>\n"
+"Last-Translator: Leonardo Ferreira Fontenelle <leonardof@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -632,7 +632,7 @@ msgid "Bksp"
 msgstr "Bsp"
 
 #. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1678
+#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1700
 msgid "C"
 msgstr "C"
 
@@ -802,7 +802,7 @@ msgid "Exp"
 msgstr "Exp"
 
 #. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1701
+#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1723
 msgid "F"
 msgstr "F"
 
@@ -1647,51 +1647,40 @@ msgstr "Mostrar separador de milhares"
 msgid "Show Trailing Zeroes"
 msgstr "Mostrar zeros no final"
 
-# http://bugzilla.gnome.org/show_bug.cgi?id=589563
 #: ../data/gcalctool.schemas.in.h:11
 msgid ""
-"The initial calculator mode. Valid values are BASIC FINANCIAL LOGICAL "
-"SCIENTIFIC PROGRAMMING"
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 msgstr ""
-"O modo inicial da calculadora. Valores válidos são BASIC FINANCIAL LOGICAL "
-"SCIENTIFIC PROGRAMMING"
+"O modo inicial da calculadora. Valores válidos são \"BASIC\" (básica), "
+"\"FINANCIAL\" (financeira), \"LOGICAL\" (lógica), \"SCIENTIFIC"
+"\" (científica) ou \"PROGRAMMING\" (programável)"
 
-# http://bugzilla.gnome.org/show_bug.cgi?id=589563
 #: ../data/gcalctool.schemas.in.h:12
 msgid ""
-"The initial display mode. Valid values are ENG (engineering) FIX (fixed-"
-"point) SCI (scientific)"
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
-"O modo de exibição inicial. Valores válidos são ENG (engenharia) FIX (ponto-"
-"fixo) SCI (científico)"
+"O modo de exibição inicial. Valores válidos são \"ENG\" (engenharia), \"FIX"
+"\" (ponto-fixo) e \"SCI\" (científico)"
 
-# http://bugzilla.gnome.org/show_bug.cgi?id=589563
 #: ../data/gcalctool.schemas.in.h:13
 msgid ""
-"The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
-"(decimal) HEX (hexadecimal)"
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
 msgstr ""
-"A base numérica inicial. Valores válidos são BIN (binário) OCT (octal) DEC "
-"(decimal) HEX (hexadecimal)"
+"O tipo trigonométrico inicial. Valores válidos são \"DEG\" (graus), \"GRAD"
+"\" (grados) e \"RAD\" (radianos)."
 
-# http://bugzilla.gnome.org/show_bug.cgi?id=589563
 #: ../data/gcalctool.schemas.in.h:14
-msgid ""
-"The initial trigonometric type. Valid values are DEG (degrees) GRAD (grads) "
-"RAD (radians)."
-msgstr ""
-"O tipo trigonométrico inicial. Valores válidos são DEG (graus) GRAD (grados) "
-"RAD (radianos)."
-
-#: ../data/gcalctool.schemas.in.h:15
 msgid "The initial x-coordinate for the window"
 msgstr "A coordenada X inicial para a janela"
 
-#: ../data/gcalctool.schemas.in.h:16
+#: ../data/gcalctool.schemas.in.h:15
 msgid "The initial y-coordinate for the window"
 msgstr "A coordenada Y inicial para a janela"
 
-#: ../data/gcalctool.schemas.in.h:17
+#: ../data/gcalctool.schemas.in.h:16
 msgid ""
 "The number of digits displayed after the numeric point. This value must be "
 "in the range 0 to 9."
@@ -1699,21 +1688,25 @@ msgstr ""
 "O número de dígitos exibidos após a vírgula decimal. Esse valor deve estar "
 "no intervalo de 0 a 9."
 
-#: ../data/gcalctool.schemas.in.h:18
+#: ../data/gcalctool.schemas.in.h:17
 msgid "The number of pixels to place the window from the left of the screen."
 msgstr "O número de pixels para colocar a janela a partir da esquerda da tela."
 
-#: ../data/gcalctool.schemas.in.h:19
+#: ../data/gcalctool.schemas.in.h:18
 msgid "The number of pixels to place the window from the top of the screen."
 msgstr "O número de pixels para colocar a janela a partir do topo da tela."
 
-# http://bugzilla.gnome.org/show_bug.cgi?id=589563
+#: ../data/gcalctool.schemas.in.h:19
+msgid "The numeric base for input and display."
+msgstr "A base numérica para entrada e exibição."
+
 #: ../data/gcalctool.schemas.in.h:20
 msgid ""
-"The size of the words used in bitwise operations. Valid values are 16 32 64."
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
 msgstr ""
-"O tamanho das palavras usadas em operações bit a bit. Valores válidos são 16 "
-"32 64."
+"O tamanho das palavras usadas em operações bit a bit. Valores válidos são "
+"16, 32 ou 64."
 
 #: ../data/gcalctool.schemas.in.h:21
 msgid "Trigonometric type"
@@ -1723,14 +1716,7 @@ msgstr "Tipo trigonométrico"
 msgid "Word size"
 msgstr "Tamanho da palavra"
 
-#. Translators: Error displayed to user when the math library reports an
-#. * error
-#: ../src/calctool.c:67
-#, c-format
-msgid "Error in math library function %s"
-msgstr "Erro na função %s da biblioteca matemática"
-
-#: ../src/calctool.c:109
+#: ../src/calctool.c:82
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1739,7 +1725,7 @@ msgstr ""
 "Uso:\n"
 "  %s - Executa cálculos matemáticos"
 
-#: ../src/calctool.c:117
+#: ../src/calctool.c:90
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1754,7 +1740,7 @@ msgstr ""
 "  --help-all                      Mostra todas as opções de ajuda\n"
 "  --help-gtk                      Mostra as opções do GTK+"
 
-#: ../src/calctool.c:128
+#: ../src/calctool.c:101
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1777,7 +1763,7 @@ msgstr ""
 "  --gtk-module=MODULES            Carrega módulos adicionais do GTK+\n"
 "  --g-fatal-warnings              Torna todos os avisos fatais"
 
-#: ../src/calctool.c:141
+#: ../src/calctool.c:114
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1789,20 +1775,20 @@ msgstr ""
 "  -s, --solve <equation>          Resolve a equação dada"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:177
+#: ../src/calctool.c:150
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "O argumento --solve requer uma equação para ser resolvida"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:190
+#: ../src/calctool.c:163
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "O argumento \"%s\" é desconhecido"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../src/calctool.c:221
+#: ../src/calctool.c:191
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: a precisão deveria estar no intervalo 0-%d\n"
@@ -1817,68 +1803,64 @@ msgstr "Sem passos para refazer"
 
 #. Translators: This message is displayed in the status bar when an
 #. invalid user-defined function is executed
-#: ../src/functions.c:186
+#: ../src/functions.c:235
 msgid "Malformed function"
 msgstr "Função mal formada"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:273
+#: ../src/functions.c:322
 msgid "No sane value to do bitwise shift"
 msgstr "Nenhum valor sano para efetuar alternação bit a bit"
 
-#: ../src/functions.c:294 ../src/functions.c:349
+#: ../src/functions.c:343 ../src/functions.c:398
 msgid "No sane value to convert"
 msgstr "Nenhum valor sano para converter"
 
-#: ../src/functions.c:317 ../src/functions.c:369
+#: ../src/functions.c:366 ../src/functions.c:418
 msgid "No sane value to store"
 msgstr "Nenhum valor sano para armazenar"
 
-#: ../src/functions.c:534
+#: ../src/functions.c:583
 msgid "Invalid number for the current base"
 msgstr "Número inválido para a base atual"
-
-#: ../src/functions.c:538
-msgid "Too long number"
-msgstr "Número longo demais"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
 #. * 1 XOR -1
-#: ../src/functions.c:545
+#: ../src/functions.c:590
 msgid "Invalid bitwise operation"
 msgstr "Operação bit a bit inválida"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid modulus operation, e.g.
 #. * 6 MOD 1.2
-#: ../src/functions.c:552
+#: ../src/functions.c:597
 msgid "Invalid modulus operation"
 msgstr "Operação módulo inválida"
 
 #. Translators; Error displayd to user when they
 #. * perform a bitwise operation on numbers greater
 #. * than the current word
-#: ../src/functions.c:559
+#: ../src/functions.c:604
 msgid "Overflow. Try a bigger word size"
 msgstr "Estouro de capacidade. Tente um tamanho maior de palavra"
 
 #. Translators; Error displayd to user when they
 #. * an unknown variable is entered
-#: ../src/functions.c:565
+#: ../src/functions.c:610
 msgid "Unknown variable"
 msgstr "Variável desconhecida"
 
 #. Translators; Error displayd to user when they
 #. * an unknown function is entered
-#: ../src/functions.c:571
+#: ../src/functions.c:616
 msgid "Unknown function"
 msgstr "Função desconhecida"
 
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../src/functions.c:581
+#: ../src/functions.c:626
 msgid "Malformed expression"
 msgstr "Expressão mal formada"
 
@@ -1933,12 +1915,12 @@ msgid "Calculator [%s] - Programming"
 msgstr "Calculadora [%s] - Programável"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:569
+#: ../src/gtk.c:572
 msgid "Error loading user interface"
 msgstr "Erro ao carregar a interface de usuário"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:572
+#: ../src/gtk.c:575
 #, c-format
 msgid ""
 "A required file is missing or damaged, please check your installation.\n"
@@ -1951,13 +1933,13 @@ msgstr ""
 "%s"
 
 #. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../src/gtk.c:669
+#: ../src/gtk.c:672
 #, c-format
 msgid "_Other (%d) ..."
 msgstr "_Outro (%d) ..."
 
 #. Translators: Tooltip for accuracy button
-#: ../src/gtk.c:675
+#: ../src/gtk.c:678
 #, c-format
 msgid "Set accuracy from 0 to %d numeric place. [A]"
 msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
@@ -1965,207 +1947,207 @@ msgstr[0] "Define a precisão de 0 a %d casa decimal. [A]"
 msgstr[1] "Define a precisão de 0 a %d casas decimais. [A]"
 
 #. Translators: The sine button
-#: ../src/gtk.c:700
+#: ../src/gtk.c:703
 msgid "sin"
 msgstr "sen"
 
 #. Translators: The inverse sine button
-#: ../src/gtk.c:702
+#: ../src/gtk.c:705
 msgid "sin<sup>−1</sup>"
 msgstr "sen<sup>-1</sup>"
 
 #. Translators: The hyperbolic sine button
-#: ../src/gtk.c:704
+#: ../src/gtk.c:707
 msgid "sinh"
 msgstr "senh"
 
 #. Translators: The inverse hyperbolic sine button
-#: ../src/gtk.c:706
+#: ../src/gtk.c:709
 msgid "sinh<sup>−1</sup>"
 msgstr "senh<sup>-1</sup>"
 
 #. Translators: The sine tooltip
-#: ../src/gtk.c:709
+#: ../src/gtk.c:712
 msgid "Sine [k]"
 msgstr "Seno [k]"
 
 #. Translators: The inverse sine tooltip
-#: ../src/gtk.c:711
+#: ../src/gtk.c:714
 msgid "Inverse Sine [K]"
 msgstr "Inversa do Seno [K]"
 
 #. Translators: The hyperbolic sine tooltip
-#: ../src/gtk.c:713
+#: ../src/gtk.c:716
 msgid "Hyperbolic Sine [k]"
 msgstr "Seno Hiperbólico [k]"
 
 #. Translators: The hyperbolic inverse sine tooltip
-#: ../src/gtk.c:715
+#: ../src/gtk.c:718
 msgid "Hyperbolic Inverse Sine [K]"
 msgstr "Inversa do Seno Hiperbólico [K]"
 
 #. Translators: The cosine button
-#: ../src/gtk.c:719
+#: ../src/gtk.c:722
 msgid "cos"
 msgstr "cos"
 
 #. Translators: The inverse cosine button
-#: ../src/gtk.c:721
+#: ../src/gtk.c:724
 msgid "cos<sup>−1</sup>"
 msgstr "cos<sup>-1</sup>"
 
 #. Translators: The hyperbolic cosine button
-#: ../src/gtk.c:723
+#: ../src/gtk.c:726
 msgid "cosh"
 msgstr "cosh"
 
 #. Translators: The inverse hyperbolic cosine button
-#: ../src/gtk.c:725
+#: ../src/gtk.c:728
 msgid "cosh<sup>−1</sup>"
 msgstr "cosh<sup>-1</sup>"
 
 #. Translators: The cosine tooltip
-#: ../src/gtk.c:728
+#: ../src/gtk.c:731
 msgid "Cosine [j]"
 msgstr "Cosseno [j]"
 
 #. Translators: The inverse cosine tooltip
-#: ../src/gtk.c:730
+#: ../src/gtk.c:733
 msgid "Inverse Cosine [J]"
 msgstr "Inversa do Cosseno [J]"
 
 #. Translators: The hyperbolic cosine tooltip
-#: ../src/gtk.c:732
+#: ../src/gtk.c:735
 msgid "Hyperbolic Cosine [j]"
 msgstr "Cosseno Hiperbólico [j]"
 
 #. Translators: The hyperbolic inverse cosine tooltip
-#: ../src/gtk.c:734
+#: ../src/gtk.c:737
 msgid "Hyperbolic Inverse Cosine [J]"
 msgstr "Inversa do Cosseno Hiperbólico [J]"
 
 #. Translators: The tangent button
-#: ../src/gtk.c:738
+#: ../src/gtk.c:741
 msgid "tan"
 msgstr "tan"
 
 #. Translators: The inverse tangent button
-#: ../src/gtk.c:740
+#: ../src/gtk.c:743
 msgid "tan<sup>−1</sup>"
 msgstr "tan<sup>-1</sup>"
 
 #. Translators: The hyperbolic tangent button
-#: ../src/gtk.c:742
+#: ../src/gtk.c:745
 msgid "tanh"
 msgstr "tanh"
 
 #. Translators: The inverse hyperbolic tangent button
-#: ../src/gtk.c:744
+#: ../src/gtk.c:747
 msgid "tanh<sup>−1</sup>"
 msgstr "tanh<sup>-1</sup>"
 
 #. Translators: The tangent tooltip
-#: ../src/gtk.c:747
+#: ../src/gtk.c:750
 msgid "Tangent [w]"
 msgstr "Tangente [w]"
 
 #. Translators: The inverse tangent tooltip
-#: ../src/gtk.c:749
+#: ../src/gtk.c:752
 msgid "Inverse Tangent [W]"
 msgstr "Inversa da Tangente [W]"
 
 #. Translators: The hyperbolic tangent tooltip
-#: ../src/gtk.c:751
+#: ../src/gtk.c:754
 msgid "Hyperbolic Tangent [w]"
 msgstr "Tangente Hiperbólica [w]"
 
 #. Translators: The hyperbolic inverse tangent tooltip
-#: ../src/gtk.c:753
+#: ../src/gtk.c:756
 msgid "Hyperbolic Inverse Tangent [W]"
 msgstr "Inversa da Tangente Hiperbólica [W]"
 
 #. Translators: The natural logaritm button
-#: ../src/gtk.c:758
+#: ../src/gtk.c:761
 msgid "ln"
 msgstr "ln"
 
 #. Translators: The e to the power of x button
-#: ../src/gtk.c:760
+#: ../src/gtk.c:763
 msgid "e<sup><i>x</i></sup>"
 msgstr "e<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the natural log button
-#: ../src/gtk.c:763
+#: ../src/gtk.c:766
 msgid "Natural logarithm [n]"
 msgstr "Logaritmo natural [n]"
 
 #. Translators: Tooltip for the e to the power of x button
-#: ../src/gtk.c:765
+#: ../src/gtk.c:768
 msgid "e to the power of the displayed value [N]"
 msgstr "e elevado à potência do número exibido [N]"
 
 #. Translators: The 10-based logaritm button
-#: ../src/gtk.c:770
+#: ../src/gtk.c:773
 msgid "log"
 msgstr "log"
 
 #. Translators: The 10 to the power of x button
-#: ../src/gtk.c:772
+#: ../src/gtk.c:775
 msgid "10<sup><i>x</i></sup>"
 msgstr "10<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 10 button
-#: ../src/gtk.c:775
+#: ../src/gtk.c:778
 msgid "Base 10 logarithm [g]"
 msgstr "Logaritmo base 10 [g]"
 
 #. Translators: Tooltip for the 10 to the power of x button
-#: ../src/gtk.c:777
+#: ../src/gtk.c:780
 msgid "10 to the power of displayed value [G]"
 msgstr "10 elevado à potência do número exibido [G]"
 
 #. Translators: The 2-based logaritm button
-#: ../src/gtk.c:782
+#: ../src/gtk.c:785
 msgid "log<sub>2</sub>"
 msgstr "log<sub>2</sub>"
 
 #. Translators: The 2 to the power of x button
-#: ../src/gtk.c:784
+#: ../src/gtk.c:787
 msgid "2<sup><i>x</i></sup>"
 msgstr "2<sup><i>x</i></sup>"
 
 #. Translators: Tooltip for the log base 2 button
-#: ../src/gtk.c:787
+#: ../src/gtk.c:790
 msgid "Base 2 logarithm [h]"
 msgstr "Logaritmo base 2 [h]"
 
 #. Translators: Tooltip for the 2 to the power of x button
-#: ../src/gtk.c:789
+#: ../src/gtk.c:792
 msgid "2 to the power of the displayed value [H]"
 msgstr "2 elevado à potência do número exibido [H]"
 
 #. Translators: The x to the power of y button
-#: ../src/gtk.c:794
+#: ../src/gtk.c:797
 msgid "x<sup><i>y</i></sup>"
 msgstr "x<sup><i>y</i></sup>"
 
 #. Translators: The x to the power of reciprocal y button
-#: ../src/gtk.c:796
+#: ../src/gtk.c:799
 msgid "x<sup>1/<i>y</i></sup>"
 msgstr "x<sup>1/<i>y</i></sup>"
 
 #. Translators: Tooltip for the x to the power of y button
-#: ../src/gtk.c:799
+#: ../src/gtk.c:802
 msgid "Raise displayed value to the power of y [o]"
 msgstr "Eleva o valor exibido à potência de y [o]"
 
 #. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../src/gtk.c:801
+#: ../src/gtk.c:804
 msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "Eleva o valor exibido à potência de y [O]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1344
+#: ../src/gtk.c:1365
 msgid "translator-credits"
 msgstr ""
 "Alexandre Folle de Menezes <afmenez@terra.com.br>\n"
@@ -2179,7 +2161,7 @@ msgstr ""
 "Rodrigo L. M. Flores <rodrigomarquesflores@gmail.com>\n"
 "Daniel S. Koda <danielskoda@gmail.com>"
 
-#: ../src/gtk.c:1348
+#: ../src/gtk.c:1369
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -2211,60 +2193,60 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, EUA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:1364
+#: ../src/gtk.c:1385
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1367
+#: ../src/gtk.c:1388
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Autores do Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:1370
+#: ../src/gtk.c:1391
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora com modos financeiro e científico."
 
-#: ../src/gtk.c:1528
+#: ../src/gtk.c:1549
 msgid "Unable to open help file"
 msgstr "Não foi possível abrir o arquivo de ajuda"
 
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1934
+#: ../src/gtk.c:1956
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../src/gtk.c:2285
+#: ../src/gtk.c:2319
 msgid "Paste"
 msgstr "Colar"
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2645 ../src/gtk.c:2662
+#: ../src/gtk.c:2679 ../src/gtk.c:2696
 msgid "No."
 msgstr "Nº"
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2647 ../src/gtk.c:2665
+#: ../src/gtk.c:2681 ../src/gtk.c:2699
 msgid "Value"
 msgstr "Valor"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2649 ../src/gtk.c:2668
+#: ../src/gtk.c:2683 ../src/gtk.c:2702
 msgid "Description"
 msgstr "Descrição"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2790
+#: ../src/gtk.c:2826
 #, c-format
 msgid "Reset to _Default (%d)"
 msgstr "Restaurar _Padrão (%d)"
 
-#: ../src/mp.c:1451
+#: ../src/mp.c:1467
 msgid "Negative X and non-integer Y not supported"
 msgstr "Não X negativos e Y não-inteiros não são suportados"
 
@@ -2322,6 +2304,12 @@ msgstr "Fator de conversão de quilojoule para unidade térmica Britânica (BTUs
 #: ../src/register.c:58
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Fator de conversão de centímetros cúbicos para polegadas cúbicas"
+
+#~ msgid "Error in math library function %s"
+#~ msgstr "Erro na função %s da biblioteca matemática"
+
+#~ msgid "Too long number"
+#~ msgstr "Número longo demais"
 
 #~ msgid "Error"
 #~ msgstr "Erro"
