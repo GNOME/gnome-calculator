@@ -1,4 +1,4 @@
-# translation of gcalctool-master-po-gl.po to Galician
+# translation of gcalctool.master.po to Galician
 # translation of gcalctool.po to
 # Galician translation of gcalctool.HEAD.gl.po
 # Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc
@@ -14,10 +14,10 @@
 # Antón Méixome <meixome@mancomun.org>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool-master-po-gl\n"
+"Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-09 16:44+0200\n"
-"PO-Revision-Date: 2009-07-08 12:59+0200\n"
+"POT-Creation-Date: 2009-08-15 15:01+0200\n"
+"PO-Revision-Date: 2009-08-10 12:22+0200\n"
 "Last-Translator: Antón Méixome <meixome@mancomun.org>\n"
 "Language-Team: Galician <gnome@mancomun.org>\n"
 "MIME-Version: 1.0\n"
@@ -655,7 +655,7 @@ msgstr "Calcular o resultado [=]"
 #. Insert ASCII dialog: Label before character entry
 #: ../data/gcalctool.ui.h:142
 msgid "Ch_aracter:"
-msgstr "C_arácter"
+msgstr "C_arácter:"
 
 #: ../data/gcalctool.ui.h:143
 msgid "Change Sign [C]"
@@ -1654,31 +1654,28 @@ msgid "Show Trailing Zeroes"
 msgstr "Mostrar os ceros á esquerda"
 
 #: ../data/gcalctool.schemas.in.h:11
-#, fuzzy
 msgid ""
 "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
 "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 msgstr ""
-"O modo de calculadora inicial. Os valores válidos son BÁSICA, FINANCEIRA, "
-"LÓXICA, CIENTÍFICA, PROGRAMACIÓN"
+"O modo de calculadora inicial. Os valores válidos son \"BÁSICA\", "
+"\"FINANCEIRA\", \"LÓXICA\", \"CIENTÍFICA\" e \"PROGRAMACIÓN\""
 
 #: ../data/gcalctool.schemas.in.h:12
-#, fuzzy
 msgid ""
 "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
 "\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
-"O modo de presentación inicial. Os valores válidos son ENG (enxeñaría) FIX "
-"(punto fixo), SCI (científico)"
+"O modo de presentación inicial. Os valores válidos son  \"ENG\" (enxeñaría), "
+"\"FIX\" (punto fixo), SCI (científico)"
 
 #: ../data/gcalctool.schemas.in.h:13
-#, fuzzy
 msgid ""
 "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
 "\" (gradians) and \"RAD\" (radians)."
 msgstr ""
-"O tipo trigonométrico inicial. Os valores válidos son DEG (graos "
-"sexaxesimais), GRAD (graos centígrados), RAD (radián)."
+"O tipo trigonométrico inicial. Os valores válidos son \"DEG\" (graos "
+"sexaxesimais), \"GRAD\" (graos centígrados), \"RAD\" (radián)."
 
 #: ../data/gcalctool.schemas.in.h:14
 msgid "The initial x-coordinate for the window"
@@ -1706,10 +1703,9 @@ msgstr "Distancia en píxeles dende a parte superior da pantalla e a fiestra."
 
 #: ../data/gcalctool.schemas.in.h:19
 msgid "The numeric base for input and display."
-msgstr ""
+msgstr "A base numérica para introdución e presentación."
 
 #: ../data/gcalctool.schemas.in.h:20
-#, fuzzy
 msgid ""
 "The size of the words used in bitwise operations. Valid values are 16, 32 "
 "and 64."
@@ -1725,14 +1721,7 @@ msgstr "Tipo trigonométrico"
 msgid "Word size"
 msgstr "Tamaño da palabra"
 
-#. Translators: Error displayed to user when the math library reports an
-#. * error
-#: ../src/calctool.c:65
-#, c-format
-msgid "Error in math library function %s"
-msgstr "Erro na función %s da libraría de matemáticas"
-
-#: ../src/calctool.c:107
+#: ../src/calctool.c:82
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1741,7 +1730,7 @@ msgstr ""
 "Uso:\n"
 "  %s - Realiza cálculos matemáticos"
 
-#: ../src/calctool.c:115
+#: ../src/calctool.c:90
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1756,7 +1745,7 @@ msgstr ""
 "  --help-all                      Mostra todas as opcións de axuda\n"
 "  --help-gtk                     Mostra as opcións GTK+ "
 
-#: ../src/calctool.c:126
+#: ../src/calctool.c:101
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1779,7 +1768,7 @@ msgstr ""
 "  --gtk-module=MODULES            Cargar módulos GTK+ adicionais\n"
 "  --g-fatal-warnings              Fai que todos os avisos sexan fatais"
 
-#: ../src/calctool.c:139
+#: ../src/calctool.c:114
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1791,20 +1780,20 @@ msgstr ""
 "  -s, --solve <equation>          Resolve a ecuación dada"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:175
+#: ../src/calctool.c:150
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "O argumento --solve require unha ecuación para resolver"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:188
+#: ../src/calctool.c:163
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Argumento descoñecido '%s'"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../src/calctool.c:219
+#: ../src/calctool.c:191
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: a precisión debe estar no intervalo 0-%d\n"
@@ -1819,68 +1808,64 @@ msgstr "Non hai pasos de refacer"
 
 #. Translators: This message is displayed in the status bar when an
 #. invalid user-defined function is executed
-#: ../src/functions.c:188
+#: ../src/functions.c:235
 msgid "Malformed function"
 msgstr "Función formada incorrectamente"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:275
+#: ../src/functions.c:322
 msgid "No sane value to do bitwise shift"
 msgstr "Non hai un valor lóxico para o desprazamento de bit a bit"
 
-#: ../src/functions.c:296 ../src/functions.c:351
+#: ../src/functions.c:343 ../src/functions.c:398
 msgid "No sane value to convert"
 msgstr "Non hai un valor lóxico para converter"
 
-#: ../src/functions.c:319 ../src/functions.c:371
+#: ../src/functions.c:366 ../src/functions.c:418
 msgid "No sane value to store"
 msgstr "Non hai un valor lóxico para almacenar"
 
-#: ../src/functions.c:536
+#: ../src/functions.c:583
 msgid "Invalid number for the current base"
 msgstr "O número non é válido para a base actual"
-
-#: ../src/functions.c:540
-msgid "Too long number"
-msgstr "O número é demasiado longo"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
 #. * 1 XOR -1
-#: ../src/functions.c:547
+#: ../src/functions.c:590
 msgid "Invalid bitwise operation"
 msgstr "Operación bit a bit non válida"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid modulus operation, e.g.
 #. * 6 MOD 1.2
-#: ../src/functions.c:554
+#: ../src/functions.c:597
 msgid "Invalid modulus operation"
 msgstr "Operado de módulo non válido"
 
 #. Translators; Error displayd to user when they
 #. * perform a bitwise operation on numbers greater
 #. * than the current word
-#: ../src/functions.c:561
+#: ../src/functions.c:604
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamento de búfer. Probe cun tamaño maior da palabra"
 
 #. Translators; Error displayd to user when they
 #. * an unknown variable is entered
-#: ../src/functions.c:567
+#: ../src/functions.c:610
 msgid "Unknown variable"
-msgstr ""
+msgstr "Variábel descoñecida"
 
 #. Translators; Error displayd to user when they
 #. * an unknown function is entered
-#: ../src/functions.c:573
+#: ../src/functions.c:616
 msgid "Unknown function"
-msgstr ""
+msgstr "Función descoñecida"
 
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../src/functions.c:583
+#: ../src/functions.c:626
 msgid "Malformed expression"
 msgstr "Expresión formada incorrectamente"
 
@@ -1941,7 +1926,7 @@ msgstr "Erro ao cargar a interface de usuario"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
 #: ../src/gtk.c:575
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A required file is missing or damaged, please check your installation.\n"
 "\n"
@@ -2168,7 +2153,9 @@ msgstr "Elevar o valor que se mostra á potencia do recíproco de y [O]"
 #. Translators: The translator credits. Please translate this with your name(s).
 #: ../src/gtk.c:1365
 msgid "translator-credits"
-msgstr "Suso Baleato <suso.baleato@xunta.es>"
+msgstr ""
+"Suso Baleato <suso.baleato@xunta.es>\n"
+"Antón Méixome <meixome@mancomun.org>, 2009."
 
 #: ../src/gtk.c:1369
 msgid ""
@@ -2255,7 +2242,7 @@ msgstr "Descrición"
 msgid "Reset to _Default (%d)"
 msgstr "Restabelecer os valores _predeterminados (%d)"
 
-#: ../src/mp.c:1451
+#: ../src/mp.c:1467
 msgid "Negative X and non-integer Y not supported"
 msgstr "Un X negativo e un Y non enteiro non está soportado"
 
@@ -2314,9 +2301,8 @@ msgstr "Factor de conversión de Kiloxulios en unidades térmicas británicas"
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Factor de conversión de centímetros cúbicos en polgadas cúbicas"
 
-#~ msgid ""
-#~ "The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
-#~ "(decimal) HEX (hexadecimal)"
-#~ msgstr ""
-#~ "A base numérica inicial. Os valores válidos son BIN (binario), OCT "
-#~ "(octal), DEC (decimal) e HEX (hexadecimal)"
+#~ msgid "Error in math library function %s"
+#~ msgstr "Erro na función %s da libraría de matemáticas"
+
+#~ msgid "Too long number"
+#~ msgstr "O número é demasiado longo"
