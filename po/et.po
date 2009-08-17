@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: Gcalctool HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-07-19 19:51+0000\n"
-"PO-Revision-Date: 2009-07-22 13:18+0300\n"
-"Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
+"POT-Creation-Date: 2009-08-16 06:22+0000\n"
+"PO-Revision-Date: 2009-08-17 18:18+0300\n"
+"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1122,6 +1122,9 @@ msgstr "_2"
 msgid "_Calculator"
 msgstr "_Arvuti"
 
+msgid "_Contents"
+msgstr "_Sisukord"
+
 #. Base 10 radio button
 msgid "_Dec"
 msgstr "_10"
@@ -1170,6 +1173,9 @@ msgstr "_Programmeerimine"
 msgid "_Radians"
 msgstr "_Radiaanid"
 
+msgid "_Redo"
+msgstr "_Taasta"
+
 #. Scientific display radio button
 msgid "_Sci"
 msgstr "_Tead"
@@ -1181,6 +1187,9 @@ msgstr "T_eaduslik"
 #. Set Precision Dialog: Button to apply settings
 msgid "_Set"
 msgstr "_Säti"
+
+msgid "_Undo"
+msgstr "_Unista"
 
 #. View menu
 msgid "_View"
@@ -1269,23 +1278,18 @@ msgid "Show Trailing Zeroes"
 msgstr "Lõpusolevate nullide näitamine"
 
 msgid ""
-"The initial calculator mode. Valid values are BASIC FINANCIAL LOGICAL "
-"SCIENTIFIC PROGRAMMING"
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 msgstr ""
 
 msgid ""
-"The initial display mode. Valid values are ENG (engineering) FIX (fixed-"
-"point) SCI (scientific)"
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
 
 msgid ""
-"The initial numeric base. Valid values are BIN (binary) OCT (octal) DEC "
-"(decimal) HEX (hexadecimal)"
-msgstr ""
-
-msgid ""
-"The initial trigonometric type. Valid values are DEG (degrees) GRAD (grads) "
-"RAD (radians)."
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
 msgstr ""
 
 msgid "The initial x-coordinate for the window"
@@ -1305,8 +1309,12 @@ msgstr ""
 msgid "The number of pixels to place the window from the top of the screen."
 msgstr ""
 
+msgid "The numeric base for input and display."
+msgstr ""
+
 msgid ""
-"The size of the words used in bitwise operations. Valid values are 16 32 64."
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
 msgstr ""
 
 msgid "Trigonometric type"
@@ -1314,12 +1322,6 @@ msgstr "Trigonomeetriline tüüp"
 
 msgid "Word size"
 msgstr "Sõna suurus"
-
-#. Translators: Error displayed to user when the math library reports an
-#. * error
-#, c-format
-msgid "Error in math library function %s"
-msgstr "Viga matemaatikateegi funktsioonis %s"
 
 #, c-format
 msgid ""
@@ -1337,6 +1339,11 @@ msgid ""
 "  --help-all                      Show all help options\n"
 "  --help-gtk                      Show GTK+ options"
 msgstr ""
+"Abiteabe võtmed:\n"
+"  -v, --version             Väljalaske versiooni näitamine\n"
+"  -h, -?, --help            Abiteabe võtmete näitamine\n"
+"  --help-all                Kõikide abiteabe võtmete näitamine\n"
+"  --help-gtk                GTK+ võtmete näitamine"
 
 #, c-format
 msgid ""
@@ -1350,6 +1357,13 @@ msgid ""
 "  --gtk-module=MODULES            Load additional GTK+ modules\n"
 "  --g-fatal-warnings              Make all warnings fatal"
 msgstr ""
+"GTK+ võtmed:\n"
+"  --class=KLASS             Aknahalduri poolt kasutatav programmi klass\n"
+"  --name=NIMI               Aknahalduri poolt kasutatav programmi nimi\n"
+"  --screen=EKRAAN           Kasutatav X'i ekraan\n"
+"  --sync                    X'i kutsungid sünkroonseks\n"
+"  --gtk-module=MOODULID     Täiendavate GTK+ moodulite laadimine\n"
+"  --g-fatal-warnings        Kõikide hoiatuste muutmine fataalseks"
 
 #, c-format
 msgid ""
@@ -1357,11 +1371,14 @@ msgid ""
 "  -u, --unittest                  Perform unittests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
+"Rakenduse võtmed:\n"
+"  -u, --unittest            Unittestide läbiviimine\n"
+"  -s, --solve <equation>    Etteantud võrrandi lahendamine"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr "Argumendile --solve on vaja võrrandit, mida lahendada"
+msgstr "Võtimele --solve on vaja argumendiks võrrandit, mida lahendada"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
 #, c-format
@@ -1398,9 +1415,6 @@ msgstr "Salvestamiseks pole mõistlikku väärtust"
 
 msgid "Invalid number for the current base"
 msgstr "Vigane number selle süsteemi jaoks"
-
-msgid "Too long number"
-msgstr "Liiga pikk arv"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
@@ -1789,15 +1803,14 @@ msgstr "Kilodžaulist Briti soojusühikuks teisendamise tegur"
 msgid "Cubic-centimeter-to-cubic-inch conversion factor"
 msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
 
+#~ msgid "Error in math library function %s"
+#~ msgstr "Viga matemaatikateegi funktsioonis %s"
+
+#~ msgid "Too long number"
+#~ msgstr "Liiga pikk arv"
+
 #~ msgid "%s: %s as next argument.\n"
 #~ msgstr "%s: %s järgmise argumendina.\n"
-
-#~ msgid ""
-#~ "%s version %s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "%s versioon %s\n"
-#~ "\n"
 
 #~ msgid "%s: base should be 2, 8, 10 or 16\n"
 #~ msgstr "%s: numbrisüsteemi põhi peab olema 2, 8, 10 või 16\n"
@@ -1867,14 +1880,8 @@ msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
 #~ msgid "10 to the x"
 #~ msgstr "10 astmele x"
 
-#~ msgid "10x"
-#~ msgstr "10x"
-
 #~ msgid "16 bit unsigned integer"
 #~ msgstr "16-bitine märgita täisarv"
-
-#~ msgid "<i>x</i><sup><i>y</i></sup>"
-#~ msgstr "<i>x</i><sup><i>y</i></sup>"
 
 #~ msgid "Bitwise AND"
 #~ msgstr "Bitikaupa JA-tehe (AND)"
@@ -1891,17 +1898,11 @@ msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
 #~ msgid "Bitwise XOR"
 #~ msgstr "Bitikaupa välistav VÕI-tehe (XOR)"
 
-#~ msgid "Constants"
-#~ msgstr "Konstandid"
-
 #~ msgid "E to the x"
 #~ msgstr "E astmel x"
 
 #~ msgid "Factorial"
 #~ msgstr "Faktoriaal"
-
-#~ msgid "Log<sub>10</sub>"
-#~ msgstr "Log<sub>10</sub>"
 
 #~ msgid "Random number"
 #~ msgstr "Juhuslik arv"
