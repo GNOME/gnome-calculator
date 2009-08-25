@@ -705,7 +705,7 @@ mp_is_equal(const MPNumber *x, const MPNumber *y)
 static void
 mpexp(const MPNumber *x, MPNumber *z)
 {
-    int i, q, ib, ic;
+    int i, q;
     float rlb;
     MPNumber t1, t2;
 
@@ -725,15 +725,17 @@ mpexp(const MPNumber *x, MPNumber *z)
     mp_set_from_mp(x, &t1);
     rlb = log((float)MP_BASE);
 
-    /* COMPUTE APPROXIMATELY OPTIMAL Q (AND DIVIDE X BY 2**Q) */
+    /* Compute approximately optimal q (and divide x by 2^q) */
     q = (int)(sqrt((float)MP_T * 0.48f * rlb) + (float) x->exponent * 1.44f * rlb);
 
     /* HALVE Q TIMES */
     if (q > 0) {
+        int ib, ic;
+
         ib = MP_BASE << 2;
         ic = 1;
         for (i = 1; i <= q; ++i) {
-            ic <<= 1;
+            ic *= 2;
             if (ic < ib && ic != MP_BASE && i < q)
                 continue;
             mp_divide_integer(&t1, ic, &t1);
@@ -761,7 +763,7 @@ mpexp(const MPNumber *x, MPNumber *z)
             break;
     }
 
-    /* APPLY (X+1)**2 - 1 = X(2 + X) FOR Q ITERATIONS */
+    /* Apply (x+1)^2 - 1 = x(2 + x) for q iterations */
     for (i = 1; i <= q; ++i) {
         mp_add_integer(z, 2, &t1);
         mp_multiply(&t1, z, z);

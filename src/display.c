@@ -32,9 +32,9 @@
 
 #include "get.h"
 #include "mp.h"
-#include "mp-equation.h"
 #include "functions.h"
 #include "ui.h"
+#include "mp-equation.h" // For mp_equation_parse()
 #include "register.h"
 
 static const char *display_types[] = { "ENG", "FIX", "SCI", NULL };
@@ -693,7 +693,7 @@ display_solve(GCDisplay *display, MPNumber *result)
 
 
 /* Convert engineering or scientific number in the given base. */
-void
+static void
 make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base)
 {
     static char digits[] = "0123456789ABCDEF";   
