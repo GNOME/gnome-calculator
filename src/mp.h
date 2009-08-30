@@ -204,8 +204,10 @@ void   mp_set_from_fraction(int numerator, int denominator, MPNumber *z);
 /* Sets z to be a uniform random number in the range [0, 1] */
 void   mp_set_from_random(MPNumber *z);
 
-/* Sets z from a string representation in 'text' in base 'base' */
-void   mp_set_from_string(const char *text, int base, MPNumber *z);
+/* Sets z from a string representation in 'text' in base 'base'.
+ * Returns 0 on success.
+ */
+int    mp_set_from_string(const char *text, int base, MPNumber *z);
 
 /* Returns x as a native single-precision floating point number */
 float  mp_cast_to_float(const MPNumber *x);

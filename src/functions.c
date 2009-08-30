@@ -316,7 +316,7 @@ do_shift(int count)
 {
     MPNumber z;
 
-    if (display_is_usable_number(&v->display, &z) || !mp_is_integer(&z)) {
+    if (!display_is_usable_number(&v->display, &z) || !mp_is_integer(&z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
         ui_set_statusbar(_("No sane value to do bitwise shift"),
@@ -333,13 +333,11 @@ do_shift(int count)
 static void
 do_base(int b)
 {
-    int ret;
     MPNumber z;
 
     if (!display_is_empty(&v->display))
     {   
-        ret = display_is_usable_number(&v->display, &z);
-        if (ret) {
+        if (!display_is_usable_number(&v->display, &z)) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
@@ -362,7 +360,7 @@ do_exchange(int index)
 {
     MPNumber r, z;
 
-    if (display_is_usable_number(&v->display, &z)) {
+    if (!display_is_usable_number(&v->display, &z)) {
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     } else {
@@ -387,14 +385,12 @@ do_wordlen(int len)
 static void
 do_numtype(DisplayFormat n)   /* Set number display type. */
 {
-    int ret;
     MPNumber z;
 
     /* Convert display if it contains a number */
     if (!display_is_empty(&v->display))
     {
-        ret = display_is_usable_number(&v->display, &z);
-        if (ret) {
+        if (!display_is_usable_number(&v->display, &z)) {
             ui_set_statusbar(_("No sane value to convert"),
                              "gtk-dialog-error");
         } else {
@@ -414,7 +410,7 @@ do_sto(int index)
 {
     MPNumber temp;
     
-    if (display_is_usable_number(&v->display, &temp))
+    if (!display_is_usable_number(&v->display, &temp))
         ui_set_statusbar(_("No sane value to store"),
                          "gtk-dialog-error");
     else

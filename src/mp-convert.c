@@ -579,7 +579,7 @@ char_val(char **c, int base)
 }
 
 
-void
+int
 mp_set_from_string(const char *str, int base, MPNumber *z)
 {
     int i, negate = 0, multiplier = 0;
@@ -705,7 +705,7 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
     }
    
     if (c != end) {
-       // FIXME: Error decoding
+        return 1;
     }
     
     if (multiplier != 0) {
@@ -717,4 +717,6 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
  
     if (negate == 1)
         mp_invert_sign(z, z);
+    
+    return 0;
 }

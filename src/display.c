@@ -206,7 +206,6 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
     const char *text;
     char buf[MAX_DISPLAY];
     gchar *endptr;
-    guint bases[] = {2, 8, 10, 16};
 
     text = display_get_text(display);
     if (text[0] == '\0') {
@@ -221,7 +220,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
     if(strncmp(text, "-", strlen("-")) == 0 || strncmp(text, "−", strlen("−")) == 0)
         return FALSE;
 
-    *value = g_ascii_strtoull(text, &endptr, bases[v->base]);
+    *value = g_ascii_strtoull(text, &endptr, v->base);
     if(*endptr != '\0' || (*value == G_MAXUINT64 && errno == ERANGE))
         return FALSE;
     return TRUE;
@@ -594,8 +593,11 @@ display_is_usable_number(GCDisplay *display, MPNumber *z)
     if (display_is_empty(display)) {
         mp_set_from_integer(0, z);
         return TRUE;
+    } else if (display_is_result(display)) {
+        mp_set_from_mp(display_get_answer(display), z);
+        return TRUE;
     } else {
-        return display_solve(display, z) == 0; // FIXME: Change to MP
+        return mp_set_from_string(display_get_text(display), v->base, z) == 0;
     }
 }
 
@@ -669,26 +671,6 @@ void display_set_format(GCDisplay *display, DisplayFormat type)
     set_enumerated_resource(R_DISPLAY, display_types, (int) type);
     get_state(display)->cursor = -1;
     display_refresh(display);
-}
-
-
-// FIXME: Obsolete
-int
-display_solve(GCDisplay *display, MPNumber *result)
-{
-    MPEquationOptions options;
-    const char *text;
-    int errorCode;
-    
-    memset(&options, 0, sizeof(options));
-    options.base = v->base;
-    options.wordlen = v->wordlen;
-    options.angle_units = v->ttype;
-
-    text = display_get_text(display);
-    errorCode = mp_equation_parse(text, &options, result);
-    
-    return errorCode;
 }
 
 
@@ -790,7 +772,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *M
 
 /* Convert MP number to character string in the given base. */
 void
-display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base, int ignoreError)
+display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x, int base, int ignoreError)
 {
     double val, max_fix;
     
@@ -802,7 +784,7 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
      *        order to do these tests.
      */
 
-    double number = mp_cast_to_double(MPnumber);
+    double number = mp_cast_to_double(x);
 
     val = fabs(number);
     if (v->error && !ignoreError) {
@@ -831,8 +813,8 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
     if ((display->format == ENG) ||
         (display->format == SCI) ||
         (display->format == FIX && val != 0.0 && (val > max_fix))) {
-        make_eng_sci(display, target, target_len, MPnumber, base);
+        make_eng_sci(display, target, target_len, x, base);
     } else {
-        mp_cast_to_string(MPnumber, base, v->accuracy, !v->display.show_zeroes, target, target_len);
+        mp_cast_to_string(x, base, v->accuracy, !v->display.show_zeroes, target, target_len);
     }
 }
