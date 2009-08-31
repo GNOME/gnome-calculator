@@ -1538,7 +1538,7 @@ help_display(void)
     GError *error = NULL;
 
     screen = gtk_widget_get_screen (GTK_WIDGET (X.main_window));
-   //gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
+    gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
  
     if (error != NULL)
     {
