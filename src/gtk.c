@@ -1060,31 +1060,51 @@ ui_set_mode(ModeType mode)
     w = MAX(w, r->width);
     h += r->height;
 
+#if GTK_CHECK_VERSION (2,17,7)
+    if (gtk_widget_get_visible (GTK_WIDGET (X.fin_panel))) {
+#else
     if (GTK_WIDGET_VISIBLE(X.fin_panel)) {
+#endif
         gtk_widget_size_request(X.fin_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
 
+#if GTK_CHECK_VERSION (2,17,7)
+    if (gtk_widget_get_visible (GTK_WIDGET (X.sci_mode_panel))) {
+#else
     if (GTK_WIDGET_VISIBLE(X.sci_mode_panel)) {
+#endif
         gtk_widget_size_request(X.sci_mode_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
 
+#if GTK_CHECK_VERSION (2,17,7)
+    if (gtk_widget_get_visible (GTK_WIDGET (X.prog_mode_panel))) {
+#else
     if (GTK_WIDGET_VISIBLE(X.prog_mode_panel)) {
+#endif
         gtk_widget_size_request(X.prog_mode_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
 
+#if GTK_CHECK_VERSION (2,17,7)
+    if (gtk_widget_get_visible (GTK_WIDGET (X.sci_panel))) {
+#else
     if (GTK_WIDGET_VISIBLE(X.sci_panel)) {
+#endif
         gtk_widget_size_request(X.sci_panel, r);
         w = MAX(w, r->width);
         h += r->height;
     }
-    
+
+#if GTK_CHECK_VERSION (2,17,7)
+    if (gtk_widget_get_visible (GTK_WIDGET (X.prog_panel))) {
+#else
     if (GTK_WIDGET_VISIBLE(X.prog_panel)) {
+#endif
         gtk_widget_size_request(X.prog_panel, r);
         w = MAX(w, r->width);
         h += r->height;
@@ -1614,7 +1634,11 @@ finc_activate_cb(GtkWidget *widget)
     if (finc_dialog_fields[dialog][field+1] == NULL) {
         GtkWidget *dialog_widget;
         dialog_widget = gtk_widget_get_toplevel(widget);
+#if GTK_CHECK_VERSION (2,17,10)
+        if (gtk_widget_is_toplevel (dialog_widget)) {
+#else
         if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
+#endif
             gtk_dialog_response(GTK_DIALOG(dialog_widget),
                                 GTK_RESPONSE_OK);
             return;
@@ -2047,6 +2071,9 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
     GtkWidget *menu;
     GdkPoint loc;
     char* dialog;
+#if GTK_CHECK_VERSION (2,17,7)
+    GtkAllocation allocation;
+#endif
     
     function = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "calc_function"));
     menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
@@ -2070,8 +2097,14 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
 
         if (event == NULL) {
             gdk_window_get_origin(gtk_widget_get_window(widget), &loc.x, &loc.y);
+#if GTK_CHECK_VERSION (2,17,7)
+            gtk_widget_get_allocation (widget, &allocation);
+            loc.x += allocation.x;
+            loc.y += allocation.y;
+#else
             loc.x += widget->allocation.x;
             loc.y += widget->allocation.y;
+#endif
             gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
                            (gpointer) &loc, 0, gtk_get_current_event_time());
         } else if (event->button == 1) {
@@ -2185,13 +2218,22 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         button = X.buttons[i];
         
         /* Check if function is available */
+#if GTK_CHECK_VERSION (2,17,5)
+        if (!gtk_widget_is_sensitive (button))
+#else
         if (!GTK_WIDGET_IS_SENSITIVE(button))
+#endif
             continue;
         
         /* In basic mode only allow buttons that the user can see */
         if (X.mode == BASIC &&
+#if GTK_CHECK_VERSION (2,17,5)
+            (!gtk_widget_get_visible (gtk_widget_get_parent(button)) ||
+             !gtk_widget_get_visible (button)))
+#else
             (!GTK_WIDGET_VISIBLE(gtk_widget_get_parent(button)) ||
              !GTK_WIDGET_VISIBLE(button)))
+#endif
             continue;
 
         // FIXME: This is a bit hacky - needs to be rethought
@@ -2340,7 +2382,11 @@ G_MODULE_EXPORT
 void
 insert_ascii_cb(GtkWidget *widget)
 {
+#if GTK_CHECK_VERSION (2,17,5)
+    if (!gtk_widget_get_visible (X.ascii_dialog))
+#else
     if (!GTK_WIDGET_VISIBLE(X.ascii_dialog))
+#endif
         position_popup(X.main_window, X.ascii_dialog, POPUP_LEFT);
     gtk_widget_grab_focus(GTK_WIDGET(X.ascii_entry));
     gtk_widget_show(X.ascii_dialog);
@@ -2396,7 +2442,11 @@ G_MODULE_EXPORT
 void
 accuracy_other_cb(GtkWidget *widget)
 {
+#if GTK_CHECK_VERSION (2,17,5)
+    if (!gtk_widget_get_visible (X.precision_dialog))
+#else
     if (!GTK_WIDGET_VISIBLE(X.precision_dialog))
+#endif
         position_popup(X.main_window, X.precision_dialog, POPUP_LEFT);
     gtk_widget_grab_focus(GTK_WIDGET(X.precision_spin));
     gtk_widget_show(X.precision_dialog);
