@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-05-17 04:58+0000\n"
-"PO-Revision-Date: 2009-05-09 19:27+0200\n"
+"POT-Creation-Date: 2009-09-06 10:45+0000\n"
+"PO-Revision-Date: 2009-09-06 19:50+0200\n"
 "Last-Translator: Branko Kokanović <branko.kokanovic@gmail.com>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,536 +20,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. FIXME: Useless string
-#: ../gcalctool/calctool.c:113 ../gcalctool/display.c:736
-#: ../gcalctool/mp.c:826 ../gcalctool/mp-trigonometric.c:155
-#: ../gcalctool/mp-trigonometric.c:191 ../gcalctool/mp-trigonometric.c:362
-msgid "Error"
-msgstr "Greška"
-
-#. Translators: A log message displayed when an invalid accuracy
-#. is read from the configuration
-#: ../gcalctool/calctool.c:223
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: tačnost treba da bude u opsegu 0–%d\n"
-
-#: ../gcalctool/display.c:390
-msgid "No undo history"
-msgstr "Nema istorijata opozivanja"
-
-#: ../gcalctool/display.c:405
-msgid "No redo steps"
-msgstr "Nema istorijata ponavljanja"
-
-#. Translators: This message is displayed in the status bar when an
-#. invalid user-defined function is executed
-#: ../gcalctool/functions.c:180
-msgid "Malformed function"
-msgstr "Neispravna funkcija"
-
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../gcalctool/functions.c:192
-msgid "No sane value to do bitwise shift"
-msgstr "Nema razumne vrednosti za bitovsko pomeranje"
-
-#: ../gcalctool/functions.c:212 ../gcalctool/functions.c:258
-msgid "No sane value to convert"
-msgstr "Nema razumne vrednosti za pretvaranje"
-
-#: ../gcalctool/functions.c:236 ../gcalctool/functions.c:278
-msgid "No sane value to store"
-msgstr "Nema razumne vrednosti za smeštanje"
-
-#: ../gcalctool/functions.c:432
-msgid "Invalid number for the current base"
-msgstr "Neispravan broj za tekuću osnovu"
-
-#: ../gcalctool/functions.c:436
-msgid "Too long number"
-msgstr "Prevelik broj"
-
-#: ../gcalctool/functions.c:440
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "Neispravni parametri operacije nad bitovima"
-
-#: ../gcalctool/functions.c:444
-msgid "Invalid modulus operation parameter(s)"
-msgstr "Neispravni parametri operacije ostatka"
-
-#: ../gcalctool/functions.c:448
-msgid "Math operation error"
-msgstr "Greška u matematičkoj operaciji"
-
-#: ../gcalctool/functions.c:452
-msgid "Malformed expression"
-msgstr "Neispravan izraz"
-
-#. Translators: The window title when in basic mode
-#: ../gcalctool/gtk.c:61 ../gcalctool.desktop.in.h:1
-msgid "Calculator"
-msgstr "Kalkulator"
-
-#. Translators: The window title when in advanced mode
-#: ../gcalctool/gtk.c:63
-msgid "Calculator - Advanced"
-msgstr "Kalkulator - Napredni"
-
-#. Translators: The window title when in financial mode
-#: ../gcalctool/gtk.c:65
-msgid "Calculator - Financial"
-msgstr "Kalkulator - Finansijski"
-
-#. Translators: The window title when in scientific mode
-#: ../gcalctool/gtk.c:67
-msgid "Calculator - Scientific"
-msgstr "Kalkulator - Naučni"
-
-#. Translators: The window title when in programming mode
-#: ../gcalctool/gtk.c:69
-msgid "Calculator - Programming"
-msgstr "Kalkulator - Programerski"
-
-#. Translators: The window title when in basic mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:75
-#, c-format
-msgid "Calculator [%s]"
-msgstr "Kalkulator [%s]"
-
-#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:77
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Kalkulator [%s] - Napredni"
-
-#. Translators: The window title when in financial mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:79
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Kalkulator [%s] - Finansijski"
-
-#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:81
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Kalkulator [%s] - Naučni"
-
-#. Translators: The window title when in programming mode. %s is replaced with the hostname.
-#: ../gcalctool/gtk.c:83
-#, c-format
-msgid "Calculator [%s] - Programming"
-msgstr "Kalkulator [%s] - Programerski"
-
-#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../gcalctool/gtk.c:540
-#, c-format
-msgid "_Other (%d) ..."
-msgstr "_Drugačija (%d) ..."
-
-#. Translators: Tooltip for accuracy button
-#: ../gcalctool/gtk.c:546
-#, c-format
-msgid "Set accuracy from 0 to %d numeric place. [A]"
-msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgstr[0] "Postavlja preciznost na 0 do %d značajno mesto. [A]"
-msgstr[1] "Postavi preciznost na 0 do %d značajna mesta [A]"
-msgstr[2] "Postavi preciznost na 0 do %d značajnih mesta [A]"
-
-#. Translators: The sine button
-#: ../gcalctool/gtk.c:571
-msgid "Sin"
-msgstr "sin"
-
-#. Translators: The inverse sine button
-#: ../gcalctool/gtk.c:573
-msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
-
-#. Translators: The hyperbolic sine button
-#: ../gcalctool/gtk.c:575
-msgid "Sinh"
-msgstr "Sinh"
-
-#. Translators: The inverse hyperbolic sine button
-#: ../gcalctool/gtk.c:577
-msgid "Sinh<sup>-1</sup>"
-msgstr "Sinh<sup>-1</sup>"
-
-#. Translators: The sine tooltip
-#: ../gcalctool/gtk.c:580
-msgid "Sine [k]"
-msgstr "Sinus [k]"
-
-#. Translators: The inverse sine tooltip
-#: ../gcalctool/gtk.c:582
-msgid "Inverse Sine [K]"
-msgstr "Inverzni Sinus [K]"
-
-#. Translators: The hyperbolic sine tooltip
-#: ../gcalctool/gtk.c:584
-msgid "Hyperbolic Sine [k]"
-msgstr "Sinus Hiperbolični [k]"
-
-#. Translators: The hyperbolic inverse sine tooltip
-#: ../gcalctool/gtk.c:586
-msgid "Hyperbolic Inverse Sine [K]"
-msgstr "Inverzni Sinus Hiperbolični [K]"
-
-#. Translators: The cosine button
-#: ../gcalctool/gtk.c:590
-msgid "Cos"
-msgstr "cos"
-
-#. Translators: The inverse cosine button
-#: ../gcalctool/gtk.c:592
-msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
-
-#. Translators: The hyperbolic cosine button
-#: ../gcalctool/gtk.c:594
-msgid "Cosh"
-msgstr "Cosh"
-
-#. Translators: The inverse hyperbolic cosine button
-#: ../gcalctool/gtk.c:596
-msgid "Cosh<sup>-1</sup>"
-msgstr "Cosh<sup>-1</sup>"
-
-#. Translators: The cosine tooltip
-#: ../gcalctool/gtk.c:599
-msgid "Cosine [j]"
-msgstr "Kosinus [j]"
-
-#. Translators: The inverse cosine tooltip
-#: ../gcalctool/gtk.c:601
-msgid "Inverse Cosine [J]"
-msgstr "Inverzni Kosinus [J]"
-
-#. Translators: The hyperbolic cosine tooltip
-#: ../gcalctool/gtk.c:603
-msgid "Hyperbolic Cosine [j]"
-msgstr "Kosinus Hiperbolični [j]"
-
-#. Translators: The hyperbolic inverse cosine tooltip
-#: ../gcalctool/gtk.c:605
-msgid "Hyperbolic Inverse Cosine [J]"
-msgstr "Inverzni Kosinus Hiperbolični [J]"
-
-#. Translators: The tangent button
-#: ../gcalctool/gtk.c:609
-msgid "Tan"
-msgstr "tg"
-
-#. Translators: The inverse tangent button
-#: ../gcalctool/gtk.c:611
-msgid "Tan<sup>-1</sup>"
-msgstr "Tg<sup>-1</sup>"
-
-#. Translators: The hyperbolic tangent button
-#: ../gcalctool/gtk.c:613
-msgid "Tanh"
-msgstr "Tgh"
-
-#. Translators: The inverse hyperbolic tangent button
-#: ../gcalctool/gtk.c:615
-msgid "Tanh<sup>-1</sup>"
-msgstr "Tgh<sup>-1</sup>"
-
-#. Translators: The tangent tooltip
-#: ../gcalctool/gtk.c:618
-msgid "Tangent [w]"
-msgstr "Tangens [w]"
-
-#. Translators: The inverse tangent tooltip
-#: ../gcalctool/gtk.c:620
-msgid "Inverse Tangent [W]"
-msgstr "Inverzni Tangens [W]"
-
-#. Translators: The hyperbolic tangent tooltip
-#: ../gcalctool/gtk.c:622
-msgid "Hyperbolic Tangent [w]"
-msgstr "Tangens Hiperbolični [w]"
-
-#. Translators: The hyperbolic inverse tangent tooltip
-#: ../gcalctool/gtk.c:624
-msgid "Hyperbolic Inverse Tangent [W]"
-msgstr "Inverzni Tangens Hiperbolični [W]"
-
-#. Translators: The natural logaritm button
-#: ../gcalctool/gtk.c:629
-msgid "Ln"
-msgstr "ln"
-
-#. Translators: The e to the power of x button
-#: ../gcalctool/gtk.c:631
-msgid "e<sup><i>x</i></sup>"
-msgstr "e<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the natural log button
-#: ../gcalctool/gtk.c:634
-msgid "Natural log [n]"
-msgstr "Prirodni logaritam [n]"
-
-#. Translators: Tooltip for the e to the power of x button
-#: ../gcalctool/gtk.c:636
-msgid "e to the power of the displayed value [N]"
-msgstr "e na stepen prikazane vrednosti [N]"
-
-#. Translators: The 10-based logaritm button
-#: ../gcalctool/gtk.c:641
-msgid "Log"
-msgstr "log"
-
-#. Translators: The 10 to the power of x button
-#: ../gcalctool/gtk.c:643
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 10 button
-#: ../gcalctool/gtk.c:646
-msgid "Base 10 log [g]"
-msgstr "Logaritam sa osnovom 10 [g]"
-
-#. Translators: Tooltip for the 10 to the power of x button
-#: ../gcalctool/gtk.c:648
-msgid "10 to the power of displayed value [G]"
-msgstr "10 na stepen prikazane vrednosti [G]"
-
-#. Translators: The 2-based logaritm button
-#: ../gcalctool/gtk.c:653
-msgid "Log<sub>2</sub>"
-msgstr "Log<sub>2</sub>"
-
-#. Translators: The 2 to the power of x button
-#: ../gcalctool/gtk.c:655
-msgid "2<sup><i>x</i></sup>"
-msgstr "2<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 2 button
-#: ../gcalctool/gtk.c:658
-msgid "Base 2 log [h]"
-msgstr "Logaritam sa osnovom 2 [h]"
-
-#. Translators: Tooltip for the 2 to the power of x button
-#: ../gcalctool/gtk.c:660
-msgid "2 to the power of the displayed value [H]"
-msgstr "2 na stepen prikazane vrednosti [H]"
-
-#. Translators: The x to the power of y button
-#: ../gcalctool/gtk.c:665
-msgid "x<sup><i>y</i></sup>"
-msgstr "x<sup><i>y</i></sup>"
-
-#. Translators: The x to the power of reciprocal y button
-#: ../gcalctool/gtk.c:667
-msgid "x<sup>1/<i>y</i></sup>"
-msgstr "x<sup>1/<i>y</i></sup>"
-
-#. Translators: Tooltip for the x to the power of y button
-#: ../gcalctool/gtk.c:670
-msgid "Raise displayed value to the power of y [o]"
-msgstr "Digni prikazanu vrednost na stepen y [o]"
-
-#. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../gcalctool/gtk.c:672
-msgid "Raise displayed value to the power of reciprocal y [O]"
-msgstr "Digni prikazanu vrednost na stepen recipročnog y [O]"
-
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../gcalctool/gtk.c:1207
-msgid "translator-credits"
-msgstr ""
-"Danilo Šegan <danilo@prevod.org>\n"
-"Igor Nestorović <igor@prevod.org>\n"
-"Slobodan D. Sredojević <slobo@akrep.be>\n"
-"Branko Kokanović <branko.kokanovic@gmail.com>\n"
-"\n"
-"Prevod.org — prevod na srpski jezik"
-
-#: ../gcalctool/gtk.c:1211
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
-msgstr ""
-"Kalkulator je slobodan softver; možete ga raspodeljivati i/ili ga menjati\n"
-"pod uslovima GNU Opšte Javne Licence (GNU GPL) kako je objavljuje\n"
-"Zadužbina za Slobodni Softver (FSF); bilo verzije 2 te Licence, bilo\n"
-"(po vašem nahođenju) bilo koje novije verzije.\n"
-"\n"
-"Kalkulator se raspodeljuje u nadi da će biti od koristi, ali BEZ IKAKVIH\n"
-"GARANCIJA; čak i bez podrazumevane garancije KORISNOSTI ili\n"
-"PRILAGOĐENOSTI ODREĐENOJ NAMENI.  Vidite GNU Opštu Javnu Licencu za\n"
-"više detalja.\n"
-"Trebali ste da primite primerak GNU Opšte Javne Licence uz Kalkulator;\n"
-"ako niste, pišite Zadužbini za Slobodni Softver (Free Software\n"
-"Foundation, Inc.), 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301 USA\n"
-
-#. Translators: Program name in the about dialog
-#: ../gcalctool/gtk.c:1227
-msgid "Gcalctool"
-msgstr "Gnomov kalkulator"
-
-#. Translators: Copyright notice in the about dialog
-#: ../gcalctool/gtk.c:1230
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 Autori Gnomovog kalkulatora"
-
-#. Translators: Short description in the about dialog
-#: ../gcalctool/gtk.c:1233
-msgid "Calculator with financial and scientific modes."
-msgstr "Kalkulator sa finansijskim i naučnim načinom rada."
-
-#: ../gcalctool/gtk.c:1384
-msgid "Unable to open help file"
-msgstr "Ne mogu da otvorim datoteku za pomoć"
-
-#. Hexadecimal digit C button
-#: ../gcalctool/gtk.c:1549 ../glade/gcalctool.glade.h:129
-msgid "C"
-msgstr "C"
-
-#. Hexadecimal digit F button
-#: ../gcalctool/gtk.c:1572 ../glade/gcalctool.glade.h:200
-msgid "F"
-msgstr "F"
-
-#. Translators: R is the short form of register used inter alia in popup menus
-#: ../gcalctool/gtk.c:1804
-msgid "R"
-msgstr "R"
-
-#. FIXME: WTF?
-#: ../gcalctool/gtk.c:2230
-msgid "Paste"
-msgstr "Ubaci"
-
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../gcalctool/gtk.c:2450
-msgid "Error loading user interface"
-msgstr "Greška pri učitavanju grafičkog sučelja"
-
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the path of the missing file
-#: ../gcalctool/gtk.c:2453
-#, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"Datoteka grafičkog sučelja %s ne postoji ili se ne može učitati. Proverite "
-"Vašu instalaciju."
-
-#. Translators: Edit Constants Dialog: Constant number column title
-#. Translators: Edit Functions Dialog: Function number column title
-#: ../gcalctool/gtk.c:2680 ../gcalctool/gtk.c:2701
-msgid "No."
-msgstr "br."
-
-#. Translators: Edit Constants Dialog: Constant value column title
-#. Translators: Edit Functions Dialog: Function value column title
-#: ../gcalctool/gtk.c:2683 ../gcalctool/gtk.c:2704
-msgid "Value"
-msgstr "Vrednost"
-
-#. Translators: Edit Constants Dialog: Constant description column title
-#. Translators: Edit Functions Dialog: Function description column title
-#: ../gcalctool/gtk.c:2686 ../gcalctool/gtk.c:2707
-msgid "Description"
-msgstr "Opis"
-
-#. Set default accuracy menu item
-#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../gcalctool/gtk.c:2859
-#, c-format
-msgid "Reset to _Default (%d)"
-msgstr "_Postavi na podrazumevano (%d)"
-
-#: ../gcalctool/mp.c:1953
-msgid "Negative X and non-integer Y not supported"
-msgstr "Negativni X i decimalni Y nisu podržani"
-
-#: ../gcalctool/mp-trigonometric.c:608
-msgid "Error, cannot calculate cosine"
-msgstr "Greška, ne mogu da izračunam kosinus"
-
-#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
-#: ../gcalctool/register.c:40
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Činilac za pretvaranje kilometara u milje"
-
-#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
-#: ../gcalctool/register.c:42
-msgid "square root of 2"
-msgstr "kvadratni koren od 2"
-
-#. Translators: This is the label for the default constant, Euler's number (2.71828)
-#: ../gcalctool/register.c:44
-msgid "Euler's Number (e)"
-msgstr "Ojlerov broj (e)"
-
-#. Translators: This is the label for the default constant, π (3.14159)
-#: ../gcalctool/register.c:46
-msgid "π"
-msgstr "π"
-
-#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
-#: ../gcalctool/register.c:48
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Činilac za pretvaranje centimetara u inče"
-
-#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
-#: ../gcalctool/register.c:50
-msgid "degrees in a radian"
-msgstr "stepeni u radijanu"
-
-#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
-#: ../gcalctool/register.c:52
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
-
-#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
-#: ../gcalctool/register.c:54
-msgid "Gram-to-ounce conversion factor"
-msgstr "Činilac za pretvaranje grama u unce"
-
-#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
-#: ../gcalctool/register.c:56
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Činilac za pretvaranje kilodžula u britanske termičke jedinice"
-
-#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
-#: ../gcalctool/register.c:58
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Činilac za pretvaranje kubnih centimetara u kubne inče"
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Obavi aritmetičke, naučne ili finansijske proračune"
-
 #. Payment Period Dialog: Button to calculate result
-#: ../glade/financial.glade.h:2
+#: ../data/financial.ui.h:2
 msgid "C_alculate"
 msgstr "_Izračunaj"
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../glade/financial.glade.h:4
+#: ../data/financial.ui.h:4
 msgid "C_ost:"
 msgstr "_Cena:"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../glade/financial.glade.h:6
+#: ../data/financial.ui.h:6
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -558,7 +40,7 @@ msgstr ""
 "kraju perioda plaćanja."
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:8
+#: ../data/financial.ui.h:8
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
@@ -572,7 +54,7 @@ msgstr ""
 "proizvoda je broj perioda, obično godina, za koje je proizvod amortizovan."
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:10
+#: ../data/financial.ui.h:10
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -581,7 +63,7 @@ msgstr ""
 "metod dvostruko-opadajućeg umanjenja."
 
 #. Future Value Dialog: Description of calculation
-#: ../glade/financial.glade.h:12
+#: ../data/financial.ui.h:12
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -591,7 +73,7 @@ msgstr ""
 "periodičnu kamatnu stopu nad određenim brojem perioda plaćanja."
 
 #. Compounding Term Dialog: Description of calculation
-#: ../glade/financial.glade.h:14
+#: ../data/financial.ui.h:14
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -602,7 +84,7 @@ msgstr ""
 "periodu činiočnog sastava."
 
 #. Payment Period Dialog: Description of calculation
-#: ../glade/financial.glade.h:16
+#: ../data/financial.ui.h:16
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -612,7 +94,7 @@ msgstr ""
 "buduća vrednost po periodičnoj kamatnoj stopi."
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../glade/financial.glade.h:18
+#: ../data/financial.ui.h:18
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -621,7 +103,7 @@ msgstr ""
 "investicije na buduću vrednost nad brojem perioda činiočnog sastava."
 
 #. Present Value Dialog: Description of calculation
-#: ../glade/financial.glade.h:20
+#: ../data/financial.ui.h:20
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -631,7 +113,7 @@ msgstr ""
 "periodičnoj kamatnoj stopi nad datim brojem perioda plaćanja."
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../glade/financial.glade.h:22
+#: ../data/financial.ui.h:22
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -640,7 +122,7 @@ msgstr ""
 "bruto marže."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../glade/financial.glade.h:24
+#: ../data/financial.ui.h:24
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -653,292 +135,347 @@ msgstr ""
 "posle koga je proizvod amortizovan."
 
 #. Title of Compounding Term dialog
-#: ../glade/financial.glade.h:26
+#: ../data/financial.ui.h:26
 msgid "Compounding Term"
 msgstr "Činilac sastava"
 
 #. Title of Double-Declining Depreciation dialog
-#: ../glade/financial.glade.h:28
+#: ../data/financial.ui.h:28
 msgid "Double-Declining Depreciation"
 msgstr "Dvostruko-opadajuće umanjenje"
 
 #. Title of Future Value dialog
-#: ../glade/financial.glade.h:30
+#: ../data/financial.ui.h:30
 msgid "Future Value"
 msgstr "Buduća vrednost"
 
 #. Payment Period Dialog: Label before future value input
-#: ../glade/financial.glade.h:32
+#: ../data/financial.ui.h:32
 msgid "Future _Value:"
 msgstr "Buduća _vrednost"
 
 #. Title of Gross Profit Margin dialog
-#: ../glade/financial.glade.h:34 ../glade/gcalctool.glade.h:223
+#: ../data/financial.ui.h:34 ../data/gcalctool.ui.h:209
 msgid "Gross Profit Margin"
 msgstr "Bruto marža"
 
 #. Title of Payment Period dialog
-#: ../glade/financial.glade.h:36
+#: ../data/financial.ui.h:36
 msgid "Payment Period"
 msgstr "Period za plaćanje"
 
 #. Title of Periodic Interest Rate dialog
-#: ../glade/financial.glade.h:38
+#: ../data/financial.ui.h:38
 msgid "Periodic Interest Rate"
 msgstr "Periodična stopa kamate"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../glade/financial.glade.h:40
+#: ../data/financial.ui.h:40
 msgid "Periodic Interest _Rate:"
 msgstr "Periodična stopa _kamate"
 
 #. Title of Periodic Payment dialog
-#: ../glade/financial.glade.h:42
+#: ../data/financial.ui.h:42
 msgid "Periodic Payment"
 msgstr "Periodično plaćanje"
 
 #. Title of Present Value dialog
-#: ../glade/financial.glade.h:44
+#: ../data/financial.ui.h:44
 msgid "Present Value"
 msgstr "Trenutna vrednost"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../glade/financial.glade.h:46
+#: ../data/financial.ui.h:46
 msgid "Present _Value:"
 msgstr "Trenutna _vrednost:"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../glade/financial.glade.h:48
+#: ../data/financial.ui.h:48
 msgid "Straight-Line Depreciation"
 msgstr "Pravolinijsko umanjenje"
 
 #. Title of Sum-Of-The-Years'-Digits Depreciation dialog
-#: ../glade/financial.glade.h:50
+#: ../data/financial.ui.h:50
 msgid "Sum-Of-The-Years'-Digits Depreciation"
 msgstr "Zbir-cifara-godine umanjenje"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../glade/financial.glade.h:52
+#: ../data/financial.ui.h:52
 msgid "_Cost:"
 msgstr "_Cena:"
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../glade/financial.glade.h:54
+#: ../data/financial.ui.h:54
 msgid "_Future Value:"
 msgstr "_Buduća vrednost:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
-#: ../glade/financial.glade.h:56
+#: ../data/financial.ui.h:56
 msgid "_Life:"
 msgstr "_Životni vek:"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../glade/financial.glade.h:58
+#: ../data/financial.ui.h:58
 msgid "_Margin:"
 msgstr "_Marža:"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../glade/financial.glade.h:60
+#: ../data/financial.ui.h:60
 msgid "_Number Of Periods:"
 msgstr "_Broj perioda:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
-#: ../glade/financial.glade.h:62
+#: ../data/financial.ui.h:62
 msgid "_Period:"
 msgstr "_Period:"
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../glade/financial.glade.h:64
+#: ../data/financial.ui.h:64
 msgid "_Periodic Payment:"
 msgstr "_Periodično plaćanje:"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../glade/financial.glade.h:66
+#: ../data/financial.ui.h:66
 msgid "_Principal:"
 msgstr "_Osnova:"
 
 #. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../glade/financial.glade.h:68
+#: ../data/financial.ui.h:68
 msgid "_Salvage:"
 msgstr "_Krajnja cena:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../glade/financial.glade.h:70
+#: ../data/financial.ui.h:70
 msgid "_Term:"
 msgstr "_Rok:"
 
 #. The percentage button
-#: ../glade/gcalctool.glade.h:3
+#: ../data/gcalctool.ui.h:3
 #, no-c-format
 msgid "%"
 msgstr "%"
 
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
+#. Subtraction button
+#: ../data/gcalctool.ui.h:5
+msgid "&#x2212;"
+msgstr "&#x2212;"
 
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
+#. Square root button
+#: ../data/gcalctool.ui.h:7
+msgid "&#x221A;"
+msgstr "&#x221A;"
+
+#. Change sign button
+#: ../data/gcalctool.ui.h:9
+msgid "&#xB1;"
+msgstr "&#xB1;"
+
+#. Multiplication button
+#: ../data/gcalctool.ui.h:11
+msgid "&#xD7;"
+msgstr "&#xD7;vvvvv"
+
+#. Division button
+#: ../data/gcalctool.ui.h:13
+msgid "&#xF7;"
+msgstr "&#xF7;"
 
 #. Start calculation group button
-#: ../glade/gcalctool.glade.h:9
+#: ../data/gcalctool.ui.h:15
 msgid "("
 msgstr "("
 
+#: ../data/gcalctool.ui.h:16
+msgid "(Ln)"
+msgstr "(ln)"
+
+#: ../data/gcalctool.ui.h:17
+msgid "(Set accuracy from 0 to N numeric places [A])"
+msgstr "(Postavlja preciznost na 0 do N značajnih mesta [A])"
+
+#: ../data/gcalctool.ui.h:18
+msgid "(X^Y)"
+msgstr "(X^Y)"
+
+#: ../data/gcalctool.ui.h:19
+msgid "(cos)"
+msgstr "(cos)"
+
+#: ../data/gcalctool.ui.h:20
+msgid "(log)"
+msgstr "(log)"
+
+#: ../data/gcalctool.ui.h:21
+msgid "(log2)"
+msgstr "(log2)"
+
+#: ../data/gcalctool.ui.h:22
+msgid "(sin)"
+msgstr "(sin)"
+
+#: ../data/gcalctool.ui.h:23
+msgid "(tan)"
+msgstr "(tg)"
+
 #. Right bracket
-#: ../glade/gcalctool.glade.h:11
+#: ../data/gcalctool.ui.h:25
 msgid ")"
 msgstr ")"
 
 #. Addition button
-#: ../glade/gcalctool.glade.h:13
+#: ../data/gcalctool.ui.h:27
 msgid "+"
 msgstr "+"
 
 #. Numeric 0 button
-#: ../glade/gcalctool.glade.h:15
+#: ../data/gcalctool.ui.h:29
 msgid "0"
 msgstr "0"
 
 #. Numeric 1 button
-#: ../glade/gcalctool.glade.h:17
+#: ../data/gcalctool.ui.h:31
 msgid "1"
 msgstr "1"
 
+#. 1's complement
+#: ../data/gcalctool.ui.h:33
+msgid "1's"
+msgstr "kompl. 1"
+
+#: ../data/gcalctool.ui.h:34
+msgid "1's complement [z]"
+msgstr "Komplement jedinice [z]"
+
 #. Reciprocal button
-#: ../glade/gcalctool.glade.h:19
+#: ../data/gcalctool.ui.h:36
 msgid "1/<i>x</i>"
 msgstr "1/<i>x</i>"
 
-#: ../glade/gcalctool.glade.h:20
+#: ../data/gcalctool.ui.h:37
 msgid "1/x"
 msgstr "1/x"
 
 #. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../glade/gcalctool.glade.h:22
+#: ../data/gcalctool.ui.h:39
 msgid "10 places"
 msgstr "10 mesta"
 
 #. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../glade/gcalctool.glade.h:24
+#: ../data/gcalctool.ui.h:41
 msgid "11 places"
 msgstr "11 mesta"
 
 #. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../glade/gcalctool.glade.h:26
+#: ../data/gcalctool.ui.h:43
 msgid "12 places"
 msgstr "12 mesta"
 
 #. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../glade/gcalctool.glade.h:28
+#: ../data/gcalctool.ui.h:45
 msgid "13 places"
 msgstr "13 mesta"
 
 #. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../glade/gcalctool.glade.h:30
+#: ../data/gcalctool.ui.h:47
 msgid "14 places"
 msgstr "14 mesta"
 
 #. Label for bit 15 on the bit editor
-#: ../glade/gcalctool.glade.h:32
+#: ../data/gcalctool.ui.h:49
 msgid "15"
 msgstr "15"
 
 #. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../glade/gcalctool.glade.h:34
+#: ../data/gcalctool.ui.h:51
 msgid "15 places"
 msgstr "15 mesta"
 
-#. Tooltip for the 16 bit mask button
-#: ../glade/gcalctool.glade.h:36
-msgid "16-bit unsigned integer value of display (])"
-msgstr "16-bitna neoznačena celobrojna vrednost prikaza (])"
-
 #. Numeric 2 button
-#: ../glade/gcalctool.glade.h:38
+#: ../data/gcalctool.ui.h:53
 msgid "2"
 msgstr "2"
 
+#. 2's complement
+#: ../data/gcalctool.ui.h:55
+msgid "2's"
+msgstr "kompl. 2"
+
+#: ../data/gcalctool.ui.h:56
+msgid "2's complement [Z]"
+msgstr "Komplement 2 [Z]"
+
 #. Numeric 3 button
-#: ../glade/gcalctool.glade.h:40
+#: ../data/gcalctool.ui.h:58
 msgid "3"
 msgstr "3"
 
 #. Label for bit 31 on the bit editor
-#: ../glade/gcalctool.glade.h:42
+#: ../data/gcalctool.ui.h:60
 msgid "31"
 msgstr "31"
 
 #. Label for bit 32 on the bit editor
-#: ../glade/gcalctool.glade.h:44
+#: ../data/gcalctool.ui.h:62
 msgid "32"
 msgstr "32"
 
-#. Tooltip for the 32 bit mask button
-#: ../glade/gcalctool.glade.h:46
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "32-bitna neoznačena celobrojna vrednost prikaza ([)"
-
 #. Numeric 4 button
-#: ../glade/gcalctool.glade.h:48
+#: ../data/gcalctool.ui.h:64
 msgid "4"
 msgstr "4"
 
 #. Label for bit 47 on the bit editor
-#: ../glade/gcalctool.glade.h:50
+#: ../data/gcalctool.ui.h:66
 msgid "47"
 msgstr "47"
 
 #. Numeric 5 button
-#: ../glade/gcalctool.glade.h:52
+#: ../data/gcalctool.ui.h:68
 msgid "5"
 msgstr "5"
 
 #. Numeric 6 button
-#: ../glade/gcalctool.glade.h:54
+#: ../data/gcalctool.ui.h:70
 msgid "6"
 msgstr "6"
 
 #. Label for the most significant bit (bit 63) on the bit editor
-#: ../glade/gcalctool.glade.h:56
+#: ../data/gcalctool.ui.h:72
 msgid "63"
 msgstr "63"
 
 #. Numeric 7 button
-#: ../glade/gcalctool.glade.h:58
+#: ../data/gcalctool.ui.h:74
 msgid "7"
 msgstr "7"
 
 #. Numeric 8 button
-#: ../glade/gcalctool.glade.h:60
+#: ../data/gcalctool.ui.h:76
 msgid "8"
 msgstr "8"
 
 #. Numeric 9 button
-#: ../glade/gcalctool.glade.h:62
+#: ../data/gcalctool.ui.h:78
 msgid "9"
 msgstr "9"
 
 #. Shift left button
-#: ../glade/gcalctool.glade.h:64
+#: ../data/gcalctool.ui.h:80
 msgid "<"
 msgstr "<"
 
 #. Factorial
-#: ../glade/gcalctool.glade.h:66
+#: ../data/gcalctool.ui.h:82
 msgid "<i>x</i>!"
 msgstr "<i>x</i>!"
 
 #. x to the power of 2 button
-#: ../glade/gcalctool.glade.h:68
+#: ../data/gcalctool.ui.h:84
 msgid "<i>x</i><sup>2</sup>"
 msgstr "<i>x</i><sup>2</sup>"
 
 #. Edit Function Dialog: Note about what base numbers will be entered as
-#: ../glade/gcalctool.glade.h:70
+#: ../data/gcalctool.ui.h:86
 msgid ""
 "<small><i><b>Note:</b> All constant values are specified in the decimal "
 "numeric base.</i></small>"
@@ -947,1214 +484,1884 @@ msgstr ""
 "brojnom sistemu.</i></small>"
 
 #. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
+#: ../data/gcalctool.ui.h:88
 msgid "<span weight=\"bold\">R0</span>"
 msgstr "<span weight=\"bold\">R0</span>"
 
 #. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
+#: ../data/gcalctool.ui.h:90
 msgid "<span weight=\"bold\">R1</span>"
 msgstr "<span weight=\"bold\">R1</span>"
 
 #. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
+#: ../data/gcalctool.ui.h:92
 msgid "<span weight=\"bold\">R2</span>"
 msgstr "<span weight=\"bold\">R2</span>"
 
 #. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
+#: ../data/gcalctool.ui.h:94
 msgid "<span weight=\"bold\">R3</span>"
 msgstr "<span weight=\"bold\">R3</span>"
 
 #. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
+#: ../data/gcalctool.ui.h:96
 msgid "<span weight=\"bold\">R4</span>"
 msgstr "<span weight=\"bold\">R4</span>"
 
 #. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
+#: ../data/gcalctool.ui.h:98
 msgid "<span weight=\"bold\">R5</span>"
 msgstr "<span weight=\"bold\">R5</span>"
 
 #. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
+#: ../data/gcalctool.ui.h:100
 msgid "<span weight=\"bold\">R6</span>"
 msgstr "<span weight=\"bold\">R6</span>"
 
 #. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:86
+#: ../data/gcalctool.ui.h:102
 msgid "<span weight=\"bold\">R7</span>"
 msgstr "<span weight=\"bold\">R7</span>"
 
 #. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:88
+#: ../data/gcalctool.ui.h:104
 msgid "<span weight=\"bold\">R8</span>"
 msgstr "<span weight=\"bold\">R8</span>"
 
 #. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:90
+#: ../data/gcalctool.ui.h:106
 msgid "<span weight=\"bold\">R9</span>"
 msgstr "<span weight=\"bold\">R9</span>"
 
 #. Solve button (clicking this solves the displayed calculation)
-#: ../glade/gcalctool.glade.h:92
+#: ../data/gcalctool.ui.h:108
 msgid "="
 msgstr "="
 
 #. Shift right button
-#: ../glade/gcalctool.glade.h:94
+#: ../data/gcalctool.ui.h:110
 msgid ">"
 msgstr ">"
 
 #. Hexadecimal digit A button
-#: ../glade/gcalctool.glade.h:96
+#: ../data/gcalctool.ui.h:112
 msgid "A"
 msgstr "A"
 
 #. Boolean AND button
-#: ../glade/gcalctool.glade.h:98
+#: ../data/gcalctool.ui.h:114
 msgid "AND"
 msgstr "I"
 
 #. Absolute value button. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:100
+#: ../data/gcalctool.ui.h:116
 msgid "Abs"
 msgstr "Aps"
 
-#: ../glade/gcalctool.glade.h:101
+#: ../data/gcalctool.ui.h:117
 msgid "Absolute value"
 msgstr "Apsolutna vrednost"
 
-#. Tooltip for the absolute value button
-#: ../glade/gcalctool.glade.h:103
+#: ../data/gcalctool.ui.h:118
 msgid "Absolute value [u]"
 msgstr "Apsolutna vrednost [u]"
 
 #. Accuracy button
-#: ../glade/gcalctool.glade.h:105
+#: ../data/gcalctool.ui.h:120
 msgid "Acc"
 msgstr "Prec"
 
-#: ../glade/gcalctool.glade.h:106
+#: ../data/gcalctool.ui.h:121
 msgid "Add"
 msgstr "Saberi"
 
-#. Tooltip for the addition button
-#: ../glade/gcalctool.glade.h:108
+#: ../data/gcalctool.ui.h:122
 msgid "Add [+]"
 msgstr "Saberi [+]"
 
-#. Tooltip for the View|Advanced menu item
-#: ../glade/gcalctool.glade.h:110
+#: ../data/gcalctool.ui.h:123
 msgid "Advanced"
 msgstr "Napredni"
 
 #. Hexadecimal digit B button
-#: ../glade/gcalctool.glade.h:112
+#: ../data/gcalctool.ui.h:125
 msgid "B"
 msgstr "B"
 
-#: ../glade/gcalctool.glade.h:113
+#: ../data/gcalctool.ui.h:126
 msgid "Backspace"
 msgstr "Brisanje"
 
-#. Tooltip for the View|Basic menu item
-#: ../glade/gcalctool.glade.h:115
+#: ../data/gcalctool.ui.h:127
 msgid "Basic"
 msgstr "Osnovni"
 
-#. Tooltip for the boolean AND button
-#: ../glade/gcalctool.glade.h:117
+#: ../data/gcalctool.ui.h:128
 msgid "Bitwise AND [&]"
 msgstr "Bitovno I [&]"
 
-#. Tooltip for the boolean NOT button
-#: ../glade/gcalctool.glade.h:119
+#: ../data/gcalctool.ui.h:129
 msgid "Bitwise NOT [~]"
 msgstr "Bitovna negacija [~]"
 
-#. Tooltip for the boolean OR button
-#: ../glade/gcalctool.glade.h:121
+#: ../data/gcalctool.ui.h:130
 msgid "Bitwise OR [|]"
 msgstr "Bitovno ILI [|]"
 
-#. Tooltip for the boolean exclusive NOR button
-#: ../glade/gcalctool.glade.h:123
+#: ../data/gcalctool.ui.h:131
 msgid "Bitwise XNOR [{]"
 msgstr "Bitovno NILI [{]"
 
-#. Tooltip for the boolean exlcusive OR button
-#: ../glade/gcalctool.glade.h:125
+#: ../data/gcalctool.ui.h:132
 msgid "Bitwise XOR [x]"
 msgstr "Bitovno ILLI [x]"
 
 #. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:127
+#: ../data/gcalctool.ui.h:134
 msgid "Bksp"
 msgstr "Briši"
 
+#. Hexadecimal digit C button
+#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1700
+msgid "C"
+msgstr "C"
+
 #. Clear displayed value button
-#: ../glade/gcalctool.glade.h:131
+#: ../data/gcalctool.ui.h:138
 msgid "CE"
 msgstr "CE"
 
-#: ../glade/gcalctool.glade.h:132
+#: ../data/gcalctool.ui.h:139
 msgid "Calculate result"
 msgstr "Izračunaj rezultat"
 
-#. Tooltip for the solve button
-#: ../glade/gcalctool.glade.h:134
+#: ../data/gcalctool.ui.h:140
 msgid "Calculate result [=]"
 msgstr "Izračunaj rezultat [=]"
 
 #. Insert ASCII dialog: Label before character entry
-#: ../glade/gcalctool.glade.h:136
+#: ../data/gcalctool.ui.h:142
 msgid "Ch_aracter:"
 msgstr "_Znak:"
 
-#. Tooltip for the change sign button
-#: ../glade/gcalctool.glade.h:138
+#: ../data/gcalctool.ui.h:143
 msgid "Change Sign [C]"
 msgstr "Promeni znak [C]"
 
-#: ../glade/gcalctool.glade.h:139
+#: ../data/gcalctool.ui.h:144
 msgid "Change sign"
 msgstr "Promeni znak"
 
-#: ../glade/gcalctool.glade.h:140
+#: ../data/gcalctool.ui.h:145
 msgid "Clear"
 msgstr "Očisti"
 
-#. Tooltip for the clear displayed value button
-#: ../glade/gcalctool.glade.h:142
+#: ../data/gcalctool.ui.h:146
 msgid "Clear displayed value [Escape]"
 msgstr "Očisti prikazanu vrednost [Escape]"
 
-#. Tooltip for the clear display button
-#: ../glade/gcalctool.glade.h:144
+#: ../data/gcalctool.ui.h:147
 msgid "Clear displayed value and any partial calculation [Shift Delete]"
 msgstr ""
 "Očisti prikazanu vrednost i bilo koji delimični proračun [Shift Delete]"
 
-#: ../glade/gcalctool.glade.h:145
+#: ../data/gcalctool.ui.h:148
 msgid "Clear entry"
 msgstr "Očisti unos"
 
 #. Edit Functions Dialog: Instructions in dialog
-#: ../glade/gcalctool.glade.h:147
+#: ../data/gcalctool.ui.h:150
 msgid "Click a _value or description to edit it:"
 msgstr "Kliknite na _vrednost ili opis da ih uredite:"
 
 #. Clear display button. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:149
+#: ../data/gcalctool.ui.h:152
 msgid "Clr"
 msgstr "Očisti"
 
-#: ../glade/gcalctool.glade.h:150
+#: ../data/gcalctool.ui.h:153
 msgid "Compounding term"
 msgstr "Činilac sastava"
 
-#. Tooltip for the [Ctrm] button
-#: ../glade/gcalctool.glade.h:152
+#: ../data/gcalctool.ui.h:154
 msgid "Compounding term [m]"
 msgstr "Činilac sastava [m]"
 
 #. Constants button
-#: ../glade/gcalctool.glade.h:154
+#: ../data/gcalctool.ui.h:156
 msgid "Con"
 msgstr "Kons"
 
-#. Tooltip for the [Con] button
-#: ../glade/gcalctool.glade.h:156
+#: ../data/gcalctool.ui.h:157
 msgid "Constants [#]"
 msgstr "Konstante [#]"
 
-#. Tooltip for the Edit|Copy menu item
-#: ../glade/gcalctool.glade.h:158
+#: ../data/gcalctool.ui.h:158
 msgid "Copy selection"
 msgstr "Umnoži izabrano"
 
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:162
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/gcalctool.ui.h:160
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Hexadecimal digit D button
-#: ../glade/gcalctool.glade.h:164
+#: ../data/gcalctool.ui.h:162
 msgid "D"
 msgstr "D"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:167
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:164
 msgid "Ddb"
 msgstr "Ddb"
 
 #. Degrees radio button
-#: ../glade/gcalctool.glade.h:169
+#: ../data/gcalctool.ui.h:166
 msgid "De_grees"
 msgstr "_Stepeni"
 
-#: ../glade/gcalctool.glade.h:170
+#: ../data/gcalctool.ui.h:167
 msgid "Divide"
 msgstr "Deljenje"
 
-#. Tooltip for the division button
-#: ../glade/gcalctool.glade.h:172
+#: ../data/gcalctool.ui.h:168
 msgid "Divide [/]"
 msgstr "Deljenje [/]"
 
-#: ../glade/gcalctool.glade.h:173
+#: ../data/gcalctool.ui.h:169
 msgid "Double-declining depreciation"
 msgstr "Dvostruko-opadajuće umanjenje"
 
-#. Tooltip for the [Ddb] button
-#: ../glade/gcalctool.glade.h:175
+#: ../data/gcalctool.ui.h:170
 msgid "Double-declining depreciation [D]"
 msgstr "Dvostruko-opadajuće umanjenje [D]"
 
 #. Hexadecimal digit E button
-#: ../glade/gcalctool.glade.h:177
+#: ../data/gcalctool.ui.h:172
 msgid "E"
 msgstr "E"
 
 #. Engineering display radio button
-#: ../glade/gcalctool.glade.h:179
+#: ../data/gcalctool.ui.h:174
 msgid "E_ng"
 msgstr "In_ž"
 
 #. Title of edit constants dialog
-#: ../glade/gcalctool.glade.h:181
+#: ../data/gcalctool.ui.h:176
 msgid "Edit Constants"
 msgstr "Uredi konstante"
 
 #. Menu item in the constants menu to show the Edit Constants dialog
-#: ../glade/gcalctool.glade.h:183
+#: ../data/gcalctool.ui.h:178
 msgid "Edit Constants..."
 msgstr "Uredi konstante..."
 
 #. Title of edit functions dialog
-#: ../glade/gcalctool.glade.h:185
+#: ../data/gcalctool.ui.h:180
 msgid "Edit Functions"
 msgstr "Uredi funkcije"
 
 #. Menu item in the constants menu to show the Edit Functions dialog
-#: ../glade/gcalctool.glade.h:187
+#: ../data/gcalctool.ui.h:182
 msgid "Edit Functions..."
 msgstr "Uredi funkcije..."
 
-#. Tooltip for the end calculation group button
-#: ../glade/gcalctool.glade.h:189
+#: ../data/gcalctool.ui.h:183
 msgid "End group of calculations [)]"
 msgstr "Okončaj skup izračunavanja [)]"
 
-#. Tooltip for the exponential button
-#: ../glade/gcalctool.glade.h:191
+#: ../data/gcalctool.ui.h:184
 msgid "Enter an exponential number [E]"
 msgstr "Unesite eksponencijalni broj [E]"
 
 #. Memory exchange button. Exch is short for Exchange
-#: ../glade/gcalctool.glade.h:193
+#: ../data/gcalctool.ui.h:186
 msgid "Exch"
 msgstr "Zamn"
 
-#. Tooltip for the memory exchange button
-#: ../glade/gcalctool.glade.h:195
+#: ../data/gcalctool.ui.h:187
 msgid "Exchange displayed value with memory register [X]"
 msgstr "Zameni prikazanu vrednost i memorijski registar [X]"
 
-#: ../glade/gcalctool.glade.h:196
+#: ../data/gcalctool.ui.h:188
 msgid "Exchange with register"
 msgstr "Zameni sa registrom"
 
 #. Exponential
-#: ../glade/gcalctool.glade.h:198
+#: ../data/gcalctool.ui.h:190
 msgid "Exp"
 msgstr "Eksp"
 
-#. Tooltip for the factorial button
-#: ../glade/gcalctool.glade.h:202
+#. Hexadecimal digit F button
+#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1723
+msgid "F"
+msgstr "F"
+
+#: ../data/gcalctool.ui.h:193
 msgid "Factorial of displayed value [!]"
 msgstr "Faktorijel prikazane vrednosti [!]"
 
-#. Tooltip for the View|Financial menu item
-#: ../glade/gcalctool.glade.h:204
+#: ../data/gcalctool.ui.h:194
 msgid "Financial"
 msgstr "Finansijski"
 
 #. Fractional portion button
-#: ../glade/gcalctool.glade.h:206
+#: ../data/gcalctool.ui.h:196
 msgid "Frac"
 msgstr "Razl"
 
-#: ../glade/gcalctool.glade.h:207
+#: ../data/gcalctool.ui.h:197
 msgid "Fractional portion"
 msgstr "Razlomljeni deo"
 
-#. Tooltip for the fractional portion button
-#: ../glade/gcalctool.glade.h:209
+#: ../data/gcalctool.ui.h:198
 msgid "Fractional portion of displayed value [:]"
 msgstr "Razlomljeni deo prikazane vrednosti [:]"
 
 #. Functions button
-#: ../glade/gcalctool.glade.h:211
+#: ../data/gcalctool.ui.h:200
 msgid "Fun"
 msgstr "F-je"
 
-#: ../glade/gcalctool.glade.h:212
+#: ../data/gcalctool.ui.h:201
 msgid "Future value"
 msgstr "Buduća vrednost"
 
-#. Tooltip for the [Fv] button
-#: ../glade/gcalctool.glade.h:214
+#: ../data/gcalctool.ui.h:202
 msgid "Future value [v]"
 msgstr "Buduća vrednost [v]"
 
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:217
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/gcalctool.ui.h:204
 msgid "Fv"
 msgstr "Bv"
 
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also:
-#. http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../glade/gcalctool.glade.h:220
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/gcalctool.ui.h:206
 msgid "Gpm"
 msgstr "BM"
 
 #. Gradians radio button
-#: ../glade/gcalctool.glade.h:222
+#: ../data/gcalctool.ui.h:208
 msgid "Gr_adians"
 msgstr "Gr_adijani"
 
-#. Tooltip for the [Gpm] button
-#: ../glade/gcalctool.glade.h:225
+#: ../data/gcalctool.ui.h:210
 msgid "Gross Profit Margin [I]"
 msgstr "Bruto marža [I]"
 
-#: ../glade/gcalctool.glade.h:226
+#: ../data/gcalctool.ui.h:211
 msgid "Gross Profit Margin [g]"
 msgstr "Bruto marža [g]"
 
 #. Hyperbolic check box
-#: ../glade/gcalctool.glade.h:228
+#: ../data/gcalctool.ui.h:213
 msgid "H_yp"
 msgstr "H_yp"
 
 #. Base 16 radio button
-#: ../glade/gcalctool.glade.h:230
+#: ../data/gcalctool.ui.h:215
 msgid "He_x"
 msgstr "_Heks"
 
-#. Tooltip for the hexadecimal digit A button
-#: ../glade/gcalctool.glade.h:232
+#: ../data/gcalctool.ui.h:216
 msgid "Hexadecimal digit A [a]"
 msgstr "Heksadecimalna cifra A [a]"
 
-#. Tooltip for the hexadecimal digit B button
-#: ../glade/gcalctool.glade.h:234
+#: ../data/gcalctool.ui.h:217
 msgid "Hexadecimal digit B [b]"
 msgstr "Heksadecimalna cifra B [b]"
 
-#. Tooltip for the hexadecimal digit C button
-#: ../glade/gcalctool.glade.h:236
+#: ../data/gcalctool.ui.h:218
 msgid "Hexadecimal digit C [c]"
 msgstr "Heksadecimalna cifra C [c]"
 
-#. Tooltip for the hexadecimal digit D button
-#: ../glade/gcalctool.glade.h:238
+#: ../data/gcalctool.ui.h:219
 msgid "Hexadecimal digit D [d]"
 msgstr "Heksadecimalna cifra D [d]"
 
-#. Tooltip for the hexadecimal digit E button
-#: ../glade/gcalctool.glade.h:240
+#: ../data/gcalctool.ui.h:220
 msgid "Hexadecimal digit E [e]"
 msgstr "Heksadecimalna cifra E [e]"
 
-#. Tooltip for the hexadecimal digit F button
-#: ../glade/gcalctool.glade.h:242
+#: ../data/gcalctool.ui.h:221
 msgid "Hexadecimal digit F [f]"
 msgstr "Heksadecimalna cifra F [f]"
 
 #. Title of insert ASCII dialog
-#: ../glade/gcalctool.glade.h:244
+#: ../data/gcalctool.ui.h:223
 msgid "Insert ASCII Value"
 msgstr "Ubaci ASKRI vrednost"
 
-#. Tooltip for the Edit|Insert ASCII value menu item
-#: ../glade/gcalctool.glade.h:246
+#: ../data/gcalctool.ui.h:224
 msgid "Insert ASCII value"
 msgstr "Umetni ASKRI vrednost"
 
 #. Integer portion button
-#: ../glade/gcalctool.glade.h:248
+#: ../data/gcalctool.ui.h:226
 msgid "Int"
 msgstr "Ceo"
 
-#: ../glade/gcalctool.glade.h:249
+#: ../data/gcalctool.ui.h:227
 msgid "Integer portion"
 msgstr "Celobrojni deo"
 
-#. Tooltip for the integer portion button
-#: ../glade/gcalctool.glade.h:251
+#: ../data/gcalctool.ui.h:228
 msgid "Integer portion of displayed value [i]"
 msgstr "Ceo deo prikazane vrednosti [i]"
 
-#: ../glade/gcalctool.glade.h:252
+#: ../data/gcalctool.ui.h:229
 msgid "Left bracket"
 msgstr "Otvorena zagrada"
 
-#: ../glade/gcalctool.glade.h:253
+#: ../data/gcalctool.ui.h:230
+msgid "Makes the bitwise functions use 16 bit mode"
+msgstr "16-bitni način rada za bitovske funkcije"
+
+#: ../data/gcalctool.ui.h:231
+msgid "Makes the bitwise functions use 32 bit mode"
+msgstr "32-bitni način rada za bitovske funkcije"
+
+#: ../data/gcalctool.ui.h:232
+msgid "Makes the bitwise functions use 64 bit mode"
+msgstr "64-bitni način rada za bitovske funkcije"
+
+#: ../data/gcalctool.ui.h:233
 msgid "Memory Registers"
 msgstr "Memorijski registri"
 
 #. Modulus division button
-#: ../glade/gcalctool.glade.h:255
+#: ../data/gcalctool.ui.h:235
 msgid "Mod"
 msgstr "Mod"
 
-#. Tooltip for the modulus division button
-#: ../glade/gcalctool.glade.h:257
+#: ../data/gcalctool.ui.h:236
 msgid "Modulus Division [M]"
 msgstr "Deljenje po modulu [M]"
 
-#: ../glade/gcalctool.glade.h:258
+#: ../data/gcalctool.ui.h:237
 msgid "Multiply"
 msgstr "Množenje"
 
-#. Tooltip for the multiplication button
-#: ../glade/gcalctool.glade.h:260
+#: ../data/gcalctool.ui.h:238
 msgid "Multiply [*]"
 msgstr "Množenje [*]"
 
 #. Boolean NOT button
-#: ../glade/gcalctool.glade.h:262
+#: ../data/gcalctool.ui.h:240
 msgid "NOT"
 msgstr "NE"
 
-#: ../glade/gcalctool.glade.h:263
+#: ../data/gcalctool.ui.h:241
 msgid "Numeric 0"
 msgstr "Broj 0"
 
-#: ../glade/gcalctool.glade.h:264
+#: ../data/gcalctool.ui.h:242
 msgid "Numeric 1"
 msgstr "Broj 1"
 
-#: ../glade/gcalctool.glade.h:265
+#: ../data/gcalctool.ui.h:243
 msgid "Numeric 2"
 msgstr "Broj 2"
 
-#: ../glade/gcalctool.glade.h:266
+#: ../data/gcalctool.ui.h:244
 msgid "Numeric 3"
 msgstr "Broj 3"
 
-#: ../glade/gcalctool.glade.h:267
+#: ../data/gcalctool.ui.h:245
 msgid "Numeric 4"
 msgstr "Broj 4"
 
-#: ../glade/gcalctool.glade.h:268
+#: ../data/gcalctool.ui.h:246
 msgid "Numeric 5"
 msgstr "Broj 5"
 
-#: ../glade/gcalctool.glade.h:269
+#: ../data/gcalctool.ui.h:247
 msgid "Numeric 6"
 msgstr "Broj 6"
 
-#: ../glade/gcalctool.glade.h:270
+#: ../data/gcalctool.ui.h:248
 msgid "Numeric 7"
 msgstr "Cifra 7"
 
-#: ../glade/gcalctool.glade.h:271
+#: ../data/gcalctool.ui.h:249
 msgid "Numeric 8"
 msgstr "Cifra 8"
 
-#: ../glade/gcalctool.glade.h:272
+#: ../data/gcalctool.ui.h:250
 msgid "Numeric 9"
 msgstr "Cifra 9"
 
-#. Tooltip for the numeric point button
-#: ../glade/gcalctool.glade.h:274
+#: ../data/gcalctool.ui.h:251
 msgid "Numeric point"
 msgstr "Decimalni zarez"
 
 #. Boolean OR button
-#: ../glade/gcalctool.glade.h:276
+#: ../data/gcalctool.ui.h:253
 msgid "OR"
 msgstr "ILI"
 
-#. Tooltip for the Edit|Paste menu item
-#: ../glade/gcalctool.glade.h:278
+#: ../data/gcalctool.ui.h:254
 msgid "Paste selection"
 msgstr "Ubaci izabrano"
 
-#: ../glade/gcalctool.glade.h:279
+#: ../data/gcalctool.ui.h:255
 msgid "Payment period"
 msgstr "Period za plaćanje"
 
-#. Tooltip for the [Term] button
-#: ../glade/gcalctool.glade.h:281
+#: ../data/gcalctool.ui.h:256
 msgid "Payment period [t]"
 msgstr "Period za plaćanje [t]"
 
-#: ../glade/gcalctool.glade.h:282
+#: ../data/gcalctool.ui.h:257
 msgid "Percentage"
 msgstr "Procenat"
 
-#. Tooltip for the percentage button
-#: ../glade/gcalctool.glade.h:285
+#: ../data/gcalctool.ui.h:259
 #, no-c-format
 msgid "Percentage [%]"
 msgstr "Procenat [%]"
 
-#: ../glade/gcalctool.glade.h:286
+#: ../data/gcalctool.ui.h:260
 msgid "Periodic interest rate"
 msgstr "Periodična stopa kamate"
 
-#. Tooltip for the [Rate] button
-#: ../glade/gcalctool.glade.h:288
+#: ../data/gcalctool.ui.h:261
 msgid "Periodic interest rate [T]"
 msgstr "Periodična stopa kamate [T]"
 
-#: ../glade/gcalctool.glade.h:289
+#: ../data/gcalctool.ui.h:262
 msgid "Periodic payment"
 msgstr "Periodično plaćanje"
 
-#. Tooltip for the [Pmt] button
-#: ../glade/gcalctool.glade.h:291
+#: ../data/gcalctool.ui.h:263
 msgid "Periodic payment [P]"
 msgstr "Periodično plaćanje [P]"
 
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:294
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/gcalctool.ui.h:265
 msgid "Pmt"
 msgstr "Ppl"
 
-#: ../glade/gcalctool.glade.h:295
+#: ../data/gcalctool.ui.h:266
 msgid "Present value"
 msgstr "Trenutna vrednost"
 
-#. Tooltip for the [Pv] button
-#: ../glade/gcalctool.glade.h:297
+#: ../data/gcalctool.ui.h:267
 msgid "Present value [p]"
 msgstr "Trenutna vrednost [p]"
 
-#. Tooltip for the View|Programming menu item
-#: ../glade/gcalctool.glade.h:299
+#: ../data/gcalctool.ui.h:268
 msgid "Programming"
 msgstr "Programerski"
 
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:302
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/gcalctool.ui.h:270
 msgid "Pv"
 msgstr "Tv"
 
-#. Tooltip for the Calculator|Quit menu item
-#: ../glade/gcalctool.glade.h:304
+#: ../data/gcalctool.ui.h:271
 msgid "Quit the calculator"
 msgstr "Izađi iz kalkulatora"
 
 #. Random number
-#: ../glade/gcalctool.glade.h:306
+#: ../data/gcalctool.ui.h:273
 msgid "Rand"
 msgstr "Sluč"
 
-#. Tooltip for the random number button
-#: ../glade/gcalctool.glade.h:308
+#: ../data/gcalctool.ui.h:274
 msgid "Random number in the range 0.0 to 1.0 [?]"
 msgstr "Slučajan broj u opsegu 0.0 do 1.0 [?]"
 
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:315
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/gcalctool.ui.h:276
 msgid "Rate"
 msgstr "Stopa"
 
 #. Memory recall button. Rcl is short for Recall
-#: ../glade/gcalctool.glade.h:317
+#: ../data/gcalctool.ui.h:278
 msgid "Rcl"
 msgstr "Učt"
 
-#: ../glade/gcalctool.glade.h:318
+#: ../data/gcalctool.ui.h:279
 msgid "Reciprocal"
 msgstr "Recipročna"
 
-#. Tooltip for the reciprocal button
-#: ../glade/gcalctool.glade.h:320
+#: ../data/gcalctool.ui.h:280
 msgid "Reciprocal [r]"
 msgstr "Recipročna [r]"
 
-#. Tooltip for the Edit|Redo menu item
-#: ../glade/gcalctool.glade.h:322
+#: ../data/gcalctool.ui.h:281
 msgid "Redo"
 msgstr "Ponovi"
 
-#. Tooltip for the backspace button
-#: ../glade/gcalctool.glade.h:324
+#: ../data/gcalctool.ui.h:282
 msgid "Remove rightmost character from displayed value [Backspace]"
 msgstr ""
 "Ukloni poslednji znak na desnoj strani iz prikazane vrednosti [Backspace]"
 
-#: ../glade/gcalctool.glade.h:325
+#: ../data/gcalctool.ui.h:283
 msgid "Result Region"
 msgstr "Ciljna oblast"
 
-#: ../glade/gcalctool.glade.h:326
+#: ../data/gcalctool.ui.h:284
 msgid "Retrieve from register"
 msgstr "Učitaj iz registra"
 
-#. Tooltip for the memory recall button
-#: ../glade/gcalctool.glade.h:328
+#: ../data/gcalctool.ui.h:285
 msgid "Retrieve memory register to display [R]"
 msgstr "Učitaj iz memorijskog registra i prikaži [R]"
 
-#: ../glade/gcalctool.glade.h:329
+#: ../data/gcalctool.ui.h:286
 msgid "Right bracket"
 msgstr "Zatvorena zagrada"
 
-#. Tooltip for the View|Scientific menu item
-#: ../glade/gcalctool.glade.h:331
+#: ../data/gcalctool.ui.h:287
 msgid "Scientific"
 msgstr "Naučni"
 
 #. Title of set precision dialog
-#: ../glade/gcalctool.glade.h:333
+#: ../data/gcalctool.ui.h:289
 msgid "Set Precision"
 msgstr "Postavi tačnost"
 
-#. Tooltip for the engineering display radio button
-#: ../glade/gcalctool.glade.h:335
+#: ../data/gcalctool.ui.h:290
 msgid "Set display type to engineering format"
 msgstr "Postavi način prikaza na inženjerski"
 
-#. Tooltip for the fixed-point display radio button
-#: ../glade/gcalctool.glade.h:337
+#: ../data/gcalctool.ui.h:291
 msgid "Set display type to fixed-point format"
 msgstr "Postavi način prikaza na broj u nepokretnom zarezu"
 
-#. Tooltip for the scientific display radio button
-#: ../glade/gcalctool.glade.h:339
+#: ../data/gcalctool.ui.h:292
 msgid "Set display type to scientific format"
 msgstr "Postavi način prikaza na naučni"
 
-#. Tooltip for the hyperbolic check box
-#: ../glade/gcalctool.glade.h:341
+#: ../data/gcalctool.ui.h:293
 msgid "Set hyperbolic option for trigonometric functions"
 msgstr "Koristi hiperboličke trigonometrijske funkcije"
 
-#. Tooltip for the inverse check box
-#: ../glade/gcalctool.glade.h:343
+#: ../data/gcalctool.ui.h:294
 msgid "Set inverse option for trigonometric functions"
 msgstr "Koristi inverzne trigonometrijske funkcije"
 
-#. Tooltip for the base 2 radio button
-#: ../glade/gcalctool.glade.h:345
+#: ../data/gcalctool.ui.h:295
 msgid "Set numeric base to binary (base 2)"
 msgstr "Postavi binarnu brojnu osnovu (osnova 2)"
 
-#. Tooltip for the base 10 radio button
-#: ../glade/gcalctool.glade.h:347
+#: ../data/gcalctool.ui.h:296
 msgid "Set numeric base to decimal (base 10)"
 msgstr "Postavi decimalnu brojnu osnovu (osnova 10)"
 
-#. Tooltip for the base 16 radio button
-#: ../glade/gcalctool.glade.h:349
+#: ../data/gcalctool.ui.h:297
 msgid "Set numeric base to hexadecimal (base 16)"
 msgstr "Postavi heksadecimalnu brojnu osnovu (osnova 16)"
 
-#. Tooltip for the base 8 radio button
-#: ../glade/gcalctool.glade.h:351
+#: ../data/gcalctool.ui.h:298
 msgid "Set numeric base to octal (base 8)"
 msgstr "Postavi oktalnu brojnu osnovu (osnova 8)"
 
-#. Tooltip for the degrees radio button
-#: ../glade/gcalctool.glade.h:353
+#: ../data/gcalctool.ui.h:299
 msgid "Set trigonometric type to degrees"
 msgstr "Trigonometrijske funkcije rade sa stepenima"
 
-#. Tooltip for the gradians radio button
-#: ../glade/gcalctool.glade.h:355
+#: ../data/gcalctool.ui.h:300
 msgid "Set trigonometric type to gradians"
 msgstr "Trigonometrijske funkcije rade sa gradijanima"
 
-#. Tooltip for the radian radio button
-#: ../glade/gcalctool.glade.h:357
+#: ../data/gcalctool.ui.h:301
 msgid "Set trigonometric type to radians"
 msgstr "Trigonometrijske funkcije rade sa radijanima"
 
-#. Tooltip for the shift left button
-#: ../glade/gcalctool.glade.h:359
+#: ../data/gcalctool.ui.h:302
 msgid "Shift displayed value 1-15 places to the left [<]"
 msgstr "Pomeri prikazanu vrednost 1–15 mesta ulevo [<]"
 
-#. Tooltip for the right shift button
-#: ../glade/gcalctool.glade.h:361
+#: ../data/gcalctool.ui.h:303
 msgid "Shift displayed value 1-15 places to the right [>]"
 msgstr "Pomeri prikazanu vrednost 1–15 mesta udesno [>]"
 
 #. View|Show Thousands Separator menu item
-#: ../glade/gcalctool.glade.h:363
+#: ../data/gcalctool.ui.h:305
 msgid "Show T_housands Separator"
 msgstr "Prikaži razdvajač _hiljada"
 
 #. Accuracy Popup: Check menu item to enable trailing zeroes
-#: ../glade/gcalctool.glade.h:365
+#: ../data/gcalctool.ui.h:307
 msgid "Show _Trailing Zeroes"
 msgstr "Prikaži _prateće nule"
 
-#. Tooltip for the Help|Contents menu
-#: ../glade/gcalctool.glade.h:367
+#: ../data/gcalctool.ui.h:308
 msgid "Show help contents"
 msgstr "Prikaži sadržaj pomoći"
 
-#. Tooltip for the View|Memory Registers menu item
-#: ../glade/gcalctool.glade.h:369
+#: ../data/gcalctool.ui.h:309
 msgid "Show memory registers"
 msgstr "Prikaži memorijske registre"
 
-#. Tooltip for the Help|About menu
-#: ../glade/gcalctool.glade.h:371
+#: ../data/gcalctool.ui.h:310
 msgid "Show the About Gcalctool dialog"
 msgstr "Prikaži prozorče o Gnomovom kalkulatoru"
 
-#. Tooltip for the View|Show Thousands Separator menu item
-#: ../glade/gcalctool.glade.h:373
+#: ../data/gcalctool.ui.h:311
 msgid "Show thousands separator"
 msgstr "Prikaži razdvajač hiljada"
 
-#. Tooltip for the View|Show Trailing Zeroes menu item
-#: ../glade/gcalctool.glade.h:375
+#: ../data/gcalctool.ui.h:312
 msgid "Show trailing zeroes"
 msgstr "Prikaži prateće nule"
 
 #. Set Precision Dialog: Label before the significant places spin button
-#: ../glade/gcalctool.glade.h:377
+#: ../data/gcalctool.ui.h:314
 msgid "Significant _places:"
 msgstr "Značajnih _mesta:"
 
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:380
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:316
 msgid "Sln"
 msgstr "Sln"
 
-#: ../glade/gcalctool.glade.h:381
+#: ../data/gcalctool.ui.h:317
 msgid "Square"
 msgstr "Kvadrat"
 
-#. Tooltip for the x to the power of 2 button
-#: ../glade/gcalctool.glade.h:383
+#: ../data/gcalctool.ui.h:318
 msgid "Square [@]"
 msgstr "Kvadrat [@]"
 
-#: ../glade/gcalctool.glade.h:384
+#: ../data/gcalctool.ui.h:319
 msgid "Square root"
 msgstr "Kvadratni koren"
 
-#. Tooltip for the square root button
-#: ../glade/gcalctool.glade.h:386
+#: ../data/gcalctool.ui.h:320
 msgid "Square root [s]"
 msgstr "Kvadratni koren [s]"
 
 # Pokreni više operacija?
 # Pokreni izračunavanje
-#. Tooltip for the start calculation group button
-#: ../glade/gcalctool.glade.h:388
+#: ../data/gcalctool.ui.h:321
 msgid "Start group of calculations [(]"
 msgstr "Pokreni skup izračunavanja [(]"
 
 #. Memory store button. Sto is short for Store
-#: ../glade/gcalctool.glade.h:390
+#: ../data/gcalctool.ui.h:323
 msgid "Sto"
 msgstr "Sni"
 
-#. Tooltip for the memory store button
-#: ../glade/gcalctool.glade.h:392
+#: ../data/gcalctool.ui.h:324
 msgid "Store displayed value in memory register [S]"
 msgstr "Smesti prikazanu vrednost u memorijski registar [S]"
 
-#: ../glade/gcalctool.glade.h:393
+#: ../data/gcalctool.ui.h:325
 msgid "Store to register"
 msgstr "Sačuvaj u registar"
 
-#: ../glade/gcalctool.glade.h:394
+#: ../data/gcalctool.ui.h:326
 msgid "Straight-line depreciation"
 msgstr "Pravolinijsko umanjenje"
 
-#. Tooltip for the [Sln] button
-#: ../glade/gcalctool.glade.h:396
+#: ../data/gcalctool.ui.h:327
 msgid "Straight-line depreciation [l]"
 msgstr "Pravolinijsko umanjenje [l]"
 
-#: ../glade/gcalctool.glade.h:397
+#: ../data/gcalctool.ui.h:328
 msgid "Subtract"
 msgstr "Oduzmi"
 
-#. Tooltip for the subtraction button
-#: ../glade/gcalctool.glade.h:399
+#: ../data/gcalctool.ui.h:329
 msgid "Subtract [-]"
 msgstr "Oduzmi [-]"
 
-#: ../glade/gcalctool.glade.h:400
+#: ../data/gcalctool.ui.h:330
 msgid "Sum-of-the years'-digits depreciation"
 msgstr "Zbir-cifara-godine umanjenje"
 
-#. Tooltip for the [Syd] button
-#: ../glade/gcalctool.glade.h:402
+#: ../data/gcalctool.ui.h:331
 msgid "Sum-of-the years'-digits depreciation [Y]"
 msgstr "Zbir-cifara-godine umanjenje [Y]"
 
-#: ../glade/gcalctool.glade.h:403
+#: ../data/gcalctool.ui.h:332
 msgid "Sum-of-the years'-digits depreciation [y]"
 msgstr "Zbir-cifara-godine umanjenje [y]"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:406
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:334
 msgid "Syd"
 msgstr "Zcg"
 
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:409
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/gcalctool.ui.h:336
 msgid "Term"
 msgstr "Rok"
 
-#. Tooltip for the Edit|Undo menu item
-#: ../glade/gcalctool.glade.h:411
+#. Truncate displayed value
+#: ../data/gcalctool.ui.h:338
+msgid "Trunc"
+msgstr "Ods"
+
+#: ../data/gcalctool.ui.h:339
+msgid "Truncate displayed value to the chosen word size ([)"
+msgstr "Odseca prikazanu vrednost na odabranu dužinu reči ([)"
+
+#: ../data/gcalctool.ui.h:340
 msgid "Undo"
 msgstr "Opozovi"
 
-#. Tooltip for the [Fun] button
-#: ../glade/gcalctool.glade.h:413
+#: ../data/gcalctool.ui.h:341
 msgid "User-defined functions [F]"
 msgstr "Funkcije korisnika [F]"
 
 #. Boolean exclusive NOR button
-#: ../glade/gcalctool.glade.h:415
+#: ../data/gcalctool.ui.h:343
 msgid "XNOR"
 msgstr "NILLI"
 
 #. Boolean exlcusive OR button
-#: ../glade/gcalctool.glade.h:417
+#: ../data/gcalctool.ui.h:345
 msgid "XOR"
 msgstr "ILLI"
 
 #. Accuracy Popup: Menu item to set accuracy to 0 significant places
-#: ../glade/gcalctool.glade.h:419
+#: ../data/gcalctool.ui.h:347
 msgid "_0 significant places"
 msgstr "_0 značajnih mesta"
 
 #. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../glade/gcalctool.glade.h:421
+#: ../data/gcalctool.ui.h:349
 msgid "_1 place"
 msgstr "_1 mesto"
 
 #. Accuracy Popup: Menu item to set accuracy to 1 significant place
-#: ../glade/gcalctool.glade.h:423
+#: ../data/gcalctool.ui.h:351
 msgid "_1 significant place"
 msgstr "_1 značajno mesto"
 
+#. 16 bit radio button
+#: ../data/gcalctool.ui.h:353
+msgid "_16 bit"
+msgstr "_16 bita"
+
 #. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../glade/gcalctool.glade.h:425
+#: ../data/gcalctool.ui.h:355
 msgid "_2 places"
 msgstr "_2 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 2 significant places
-#: ../glade/gcalctool.glade.h:427
+#: ../data/gcalctool.ui.h:357
 msgid "_2 significant places"
 msgstr "_2 značajna mesta"
 
 #. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../glade/gcalctool.glade.h:429
+#: ../data/gcalctool.ui.h:359
 msgid "_3 places"
 msgstr "_3 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 3 significant places
-#: ../glade/gcalctool.glade.h:431
+#: ../data/gcalctool.ui.h:361
 msgid "_3 significant places"
 msgstr "_3 značajna mesta"
 
+#. 32 bit radio button
+#: ../data/gcalctool.ui.h:363
+msgid "_32 bit"
+msgstr "_32 bita"
+
 #. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../glade/gcalctool.glade.h:433
+#: ../data/gcalctool.ui.h:365
 msgid "_4 places"
 msgstr "_4 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 4 significant places
-#: ../glade/gcalctool.glade.h:435
+#: ../data/gcalctool.ui.h:367
 msgid "_4 significant places"
 msgstr "_4 značajna mesta"
 
 #. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../glade/gcalctool.glade.h:437
+#: ../data/gcalctool.ui.h:369
 msgid "_5 places"
 msgstr "_5 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 5 significant places
-#: ../glade/gcalctool.glade.h:439
+#: ../data/gcalctool.ui.h:371
 msgid "_5 significant places"
 msgstr "_5 značajnih mesta"
 
 #. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../glade/gcalctool.glade.h:441
+#: ../data/gcalctool.ui.h:373
 msgid "_6 places"
 msgstr "_6 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 6 significant places
-#: ../glade/gcalctool.glade.h:443
+#: ../data/gcalctool.ui.h:375
 msgid "_6 significant places"
 msgstr "_6 značajnih mesta"
 
+#. 64 bit radio button
+#: ../data/gcalctool.ui.h:377
+msgid "_64 bit"
+msgstr "_64 bita"
+
 #. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../glade/gcalctool.glade.h:445
+#: ../data/gcalctool.ui.h:379
 msgid "_7 places"
 msgstr "_7 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 7 significant places
-#: ../glade/gcalctool.glade.h:447
+#: ../data/gcalctool.ui.h:381
 msgid "_7 significant places"
 msgstr "_7 značajnih mesta"
 
 #. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../glade/gcalctool.glade.h:449
+#: ../data/gcalctool.ui.h:383
 msgid "_8 places"
 msgstr "_8 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 8 significant places
-#: ../glade/gcalctool.glade.h:451
+#: ../data/gcalctool.ui.h:385
 msgid "_8 significant places"
 msgstr "_8 značajnih mesta"
 
 #. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../glade/gcalctool.glade.h:453
+#: ../data/gcalctool.ui.h:387
 msgid "_9 places"
 msgstr "_9 mesta"
 
 #. Accuracy Popup: Menu item to set accuracy to 9 significant places
-#: ../glade/gcalctool.glade.h:455
+#: ../data/gcalctool.ui.h:389
 msgid "_9 significant places"
 msgstr "_9 značajnih mesta"
 
 #. View|Advanced menu item
-#: ../glade/gcalctool.glade.h:457
+#: ../data/gcalctool.ui.h:391
 msgid "_Advanced"
 msgstr "Na_predni"
 
 #. View|Basic menu item
-#: ../glade/gcalctool.glade.h:459
+#: ../data/gcalctool.ui.h:393
 msgid "_Basic"
 msgstr "_Osnovni"
 
 #. Base 2 radio button
-#: ../glade/gcalctool.glade.h:461
+#: ../data/gcalctool.ui.h:395
 msgid "_Bin"
 msgstr "_Bin"
 
 #. Calculator menu
-#: ../glade/gcalctool.glade.h:463
+#: ../data/gcalctool.ui.h:397
 msgid "_Calculator"
 msgstr "_Kalkulator"
 
-#. Help|Contents menu
-#: ../glade/gcalctool.glade.h:465
+#: ../data/gcalctool.ui.h:398
 msgid "_Contents"
 msgstr "_Sadržaj"
 
 #. Base 10 radio button
-#: ../glade/gcalctool.glade.h:467
+#: ../data/gcalctool.ui.h:400
 msgid "_Dec"
 msgstr "_Dec"
 
 #. Edit menu
-#: ../glade/gcalctool.glade.h:469
+#: ../data/gcalctool.ui.h:402
 msgid "_Edit"
 msgstr "_Uređivanje"
 
 #. View|Financial menu item
-#: ../glade/gcalctool.glade.h:471
+#: ../data/gcalctool.ui.h:404
 msgid "_Financial"
 msgstr "_Finansijski"
 
 #. Fixed-point display radio button
-#: ../glade/gcalctool.glade.h:473
+#: ../data/gcalctool.ui.h:406
 msgid "_Fix"
 msgstr "_Razl"
 
 #. Help menu
-#: ../glade/gcalctool.glade.h:475
+#: ../data/gcalctool.ui.h:408
 msgid "_Help"
 msgstr "_Pomoć"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../glade/gcalctool.glade.h:477
+#: ../data/gcalctool.ui.h:410
 msgid "_Insert"
 msgstr "U_metni"
 
 #. Edit|Insert ASCII value menu item
-#: ../glade/gcalctool.glade.h:479
+#: ../data/gcalctool.ui.h:412
 msgid "_Insert ASCII value..."
 msgstr "U_metni ASCII vrednost..."
 
 #. Inverse check box
-#: ../glade/gcalctool.glade.h:481
+#: ../data/gcalctool.ui.h:414
 msgid "_Inv"
 msgstr "_Inv"
 
 #. View|Memory Registers menu item
-#: ../glade/gcalctool.glade.h:483
+#: ../data/gcalctool.ui.h:416
 msgid "_Memory Registers"
 msgstr "_Memorijski registri"
 
 #. Base 8 radio button
-#: ../glade/gcalctool.glade.h:485
+#: ../data/gcalctool.ui.h:418
 msgid "_Oct"
 msgstr "_Okt"
 
 #. View|Programming menu item
-#: ../glade/gcalctool.glade.h:487
+#: ../data/gcalctool.ui.h:420
 msgid "_Programming"
 msgstr "P_rogramerski"
 
 #. Radian radio button
-#: ../glade/gcalctool.glade.h:489
+#: ../data/gcalctool.ui.h:422
 msgid "_Radians"
 msgstr "_Radijani"
 
-#. Edit|Redo menu item
-#: ../glade/gcalctool.glade.h:491
+#: ../data/gcalctool.ui.h:423
 msgid "_Redo"
 msgstr "_Ponovi"
 
 #. Scientific display radio button
-#: ../glade/gcalctool.glade.h:493
+#: ../data/gcalctool.ui.h:425
 msgid "_Sci"
 msgstr "_Nauč"
 
 #. View|Scientific menu item
-#: ../glade/gcalctool.glade.h:495
+#: ../data/gcalctool.ui.h:427
 msgid "_Scientific"
 msgstr "_Naučni"
 
 #. Set Precision Dialog: Button to apply settings
-#: ../glade/gcalctool.glade.h:497
+#: ../data/gcalctool.ui.h:429
 msgid "_Set"
 msgstr "Po_stavi"
 
-#. Edit|Undo menu item
-#: ../glade/gcalctool.glade.h:499
+#: ../data/gcalctool.ui.h:430
 msgid "_Undo"
 msgstr "_Opozovi"
 
 #. View menu
-#: ../glade/gcalctool.glade.h:501
+#: ../data/gcalctool.ui.h:432
 msgid "_View"
 msgstr "P_regled"
 
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:505
+#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:434
 msgid "register 0"
 msgstr "registar 0"
 
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:509
+#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:436
 msgid "register 1"
 msgstr "registar 1"
 
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:513
+#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:438
 msgid "register 2"
 msgstr "registar 2"
 
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:517
+#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:440
 msgid "register 3"
 msgstr "registar 3"
 
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:521
+#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:442
 msgid "register 4"
 msgstr "registar 4"
 
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:525
+#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:444
 msgid "register 5"
 msgstr "registar 5"
 
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:529
+#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:446
 msgid "register 6"
 msgstr "registar 6"
 
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:533
+#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:448
 msgid "register 7"
 msgstr "registar 7"
 
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:537
+#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:450
 msgid "register 8"
 msgstr "registar 8"
 
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:541
+#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
+#: ../data/gcalctool.ui.h:452
 msgid "register 9"
 msgstr "registar 9"
 
-#: ../glade/gcalctool.glade.h:542
+#: ../data/gcalctool.ui.h:453
 msgid "x2"
 msgstr "x2"
 
-#. Change sign button
-#: ../glade/gcalctool.glade.h:544
-msgid "±"
-msgstr "±"
+#. Translators: The window title when in basic mode
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:62
+msgid "Calculator"
+msgstr "Kalkulator"
 
-#. Multiplication button
-#: ../glade/gcalctool.glade.h:546
-msgid "×"
-msgstr "×"
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Obavi aritmetičke, naučne ili finansijske proračune"
 
-#. Division button
-#: ../glade/gcalctool.glade.h:548
-msgid "÷"
-msgstr "÷"
+#: ../data/gcalctool.schemas.in.h:1
+msgid "Accuracy value"
+msgstr "Vrednost preciznosti"
 
-#. Subtraction button
-#: ../glade/gcalctool.glade.h:550
-msgid "−"
-msgstr "−"
+#: ../data/gcalctool.schemas.in.h:2
+msgid "Display Mode"
+msgstr "Način prikaza"
 
-#. Square root button
-#: ../glade/gcalctool.glade.h:552
-msgid "√"
-msgstr "√"
+#: ../data/gcalctool.schemas.in.h:3
+msgid ""
+"Indicates whether any trailing zeroes after the number point should be shown "
+"in the display value."
+msgstr ""
+"Da li da se u prikazanoj vrednosti prikazuju prateće nule posle decimalnog "
+"zareza."
+
+#: ../data/gcalctool.schemas.in.h:4
+msgid "Indicates whether the memory register window is initially displayed."
+msgstr "Da li da memorijski registri budu prikazani po pokretanju."
+
+#: ../data/gcalctool.schemas.in.h:5
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Da li da se razdvajač hiljada prikazuje za velike brojeve."
+
+#: ../data/gcalctool.schemas.in.h:6
+msgid "Mode"
+msgstr "Mod"
+
+#: ../data/gcalctool.schemas.in.h:7
+msgid "Numeric Base"
+msgstr "Brojna osnova"
+
+#: ../data/gcalctool.schemas.in.h:8
+msgid "Show Registers"
+msgstr "Prikaži memorijske registre"
+
+#: ../data/gcalctool.schemas.in.h:9
+msgid "Show Thousands Separator"
+msgstr "Prikaži razdvajač hiljada"
+
+#: ../data/gcalctool.schemas.in.h:10
+msgid "Show Trailing Zeroes"
+msgstr "Prikaži prateće nule"
+
+#: ../data/gcalctool.schemas.in.h:11
+msgid ""
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+msgstr ""
+"Početni način rada kalkulatora. Ispravne vrednosti su „BASIC“ (osnovni), "
+"„FINANCIAL“ (finansijski), „LOGICAL“ (logički), „SCIENTIFIC“ (naučni) "
+"i „PROGRAMMING“ (programerski)"
+
+#: ../data/gcalctool.schemas.in.h:12
+msgid ""
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
+msgstr ""
+"Početni način prikaza. Ispravne vrednosti su „ENG“ (inženjerski), „FIX“ (sa "
+"nepokretnim zarezom) i „SCI“ (naučni)"
+
+#: ../data/gcalctool.schemas.in.h:13
+msgid ""
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
+msgstr ""
+"Početna vrednost načina rada sa trigonometrijskim funkcijama. Ispravne "
+"vrednosti su „DEG“ (stepeni), „GRAD“ (gradijani) i „RAD“ (radijani)"
+
+#: ../data/gcalctool.schemas.in.h:14
+msgid "The initial x-coordinate for the window"
+msgstr "Početna x koordinata glavnog prozora"
+
+#: ../data/gcalctool.schemas.in.h:15
+msgid "The initial y-coordinate for the window"
+msgstr "Početna y koordinata glavnog prozora"
+
+#: ../data/gcalctool.schemas.in.h:16
+msgid ""
+"The number of digits displayed after the numeric point. This value must be "
+"in the range 0 to 9."
+msgstr ""
+"Broj cifara prikazan posle decimalnog zareza. Ova vrednost mora biti od 0 do "
+"9."
+
+#: ../data/gcalctool.schemas.in.h:17
+msgid "The number of pixels to place the window from the left of the screen."
+msgstr "Broj piksela za koje treba pomeriti prozor od leve ivice ekrana."
+
+#: ../data/gcalctool.schemas.in.h:18
+msgid "The number of pixels to place the window from the top of the screen."
+msgstr "Broj piksela za koje treba pomeriti prozor od gornje ivice ekrana."
+
+#: ../data/gcalctool.schemas.in.h:19
+msgid "The numeric base for input and display."
+msgstr "Brojna osnova za unos i prikaz."
+
+#: ../data/gcalctool.schemas.in.h:20
+msgid ""
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
+msgstr ""
+"Dužina reči koja se koristi za bitovske operacije. Ispravne vrednosti su 16, "
+"32 i 64."
+
+#: ../data/gcalctool.schemas.in.h:21
+msgid "Trigonometric type"
+msgstr "Način rada trigonometrijskih funkcija"
+
+#: ../data/gcalctool.schemas.in.h:22
+msgid "Word size"
+msgstr "Dužina reči"
+
+#: ../src/calctool.c:82
+#, c-format
+msgid ""
+"Usage:\n"
+"  %s - Perform mathematical calculations"
+msgstr ""
+"Korišćenje:\n"
+"  %s - Obavlja matematička izračunavanja"
+
+#: ../src/calctool.c:90
+#, c-format
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Opcije pomoći:\n"
+"  -v, --version                   Ispisuje izdanje programa\n"
+"  -h, -?, --help                  Prikazuje opcije pomoći\n"
+"  --help-all                      Prikazuje sve opcije pomoći\n"
+"  --help-gtk                      Prikazuje Gtk+ opcije"
+
+#: ../src/calctool.c:101
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"Gtk+ opcije:\n"
+"  --class=CLASS                   Klasa programa koju koristi upravljač "
+"prozora\n"
+"  --name=NAME                     Ime programa kako ga prikazuje upravljač "
+"prozora\n"
+"  --screen=SCREEN                 Iks ekran koji da koristi\n"
+"  --sync                          Postavlja Iks pozive sinhronim\n"
+"  --gtk-module=MODULES            Učitava dopunske Gtk+ dodatke\n"
+"  --g-fatal-warnings              Postavlja sva upozorenja kao kobna"
+
+#: ../src/calctool.c:114
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unittests\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Opcije programa:\n"
+"  -u, --unittest                  Vrši jedinično testiranje\n"
+"  -s, --solve <equation>          Rešava zadatu jednačinu"
+
+#. Translators: Error printed to stderr when user uses --solve argument without an equation
+#: ../src/calctool.c:150
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Argument --solve zahteva jednačinu za rešavanje"
+
+#. Translators: Error printed to stderr when user provides an unknown command-line argument
+#: ../src/calctool.c:163
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "Nepoznat argument „%s“"
+
+#. Translators: A log message displayed when an invalid accuracy
+#. is read from the configuration
+#: ../src/calctool.c:191
+#, c-format
+msgid "%s: accuracy should be in the range 0-%d\n"
+msgstr "%s: tačnost treba da bude u opsegu 0–%d\n"
+
+#: ../src/display.c:416
+msgid "No undo history"
+msgstr "Nema istorijata opozivanja"
+
+#: ../src/display.c:431
+msgid "No redo steps"
+msgstr "Nema istorijata ponavljanja"
+
+#. Translators: This message is displayed in the status bar when an
+#. invalid user-defined function is executed
+#: ../src/functions.c:235
+msgid "Malformed function"
+msgstr "Neispravna funkcija"
+
+#. Translators: This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/functions.c:322
+msgid "No sane value to do bitwise shift"
+msgstr "Nema razumne vrednosti za bitovsko pomeranje"
+
+#: ../src/functions.c:341 ../src/functions.c:394
+msgid "No sane value to convert"
+msgstr "Nema razumne vrednosti za pretvaranje"
+
+#: ../src/functions.c:364 ../src/functions.c:414
+msgid "No sane value to store"
+msgstr "Nema razumne vrednosti za smeštanje"
+
+#: ../src/functions.c:579
+msgid "Invalid number for the current base"
+msgstr "Neispravan broj za tekuću osnovu"
+
+#. Translators: Error displayed to user when they
+#. * perform an invalid bitwise operation, e.g.
+#. * 1 XOR -1
+#: ../src/functions.c:586
+msgid "Invalid bitwise operation"
+msgstr "Neispravna operacija nad bitovima"
+
+#. Translators: Error displayed to user when they
+#. * perform an invalid modulus operation, e.g.
+#. * 6 MOD 1.2
+#: ../src/functions.c:593
+msgid "Invalid modulus operation"
+msgstr "Neispravna operacija ostatka"
+
+#. Translators; Error displayd to user when they
+#. * perform a bitwise operation on numbers greater
+#. * than the current word
+#: ../src/functions.c:600
+msgid "Overflow. Try a bigger word size"
+msgstr "Prekoračenje. Pokušajte sa većom dužinom reči"
+
+#. Translators; Error displayd to user when they
+#. * an unknown variable is entered
+#: ../src/functions.c:606
+msgid "Unknown variable"
+msgstr "Nepoznata promenljiva"
+
+#. Translators; Error displayd to user when they
+#. * an unknown function is entered
+#: ../src/functions.c:612
+msgid "Unknown function"
+msgstr "Nepoznata funkcija"
+
+#. Translators: Error displayed to user when they
+#. * enter an invalid calculation
+#: ../src/functions.c:622
+msgid "Malformed expression"
+msgstr "Neispravan izraz"
+
+#. Translators: The window title when in advanced mode
+#: ../src/gtk.c:64
+msgid "Calculator - Advanced"
+msgstr "Kalkulator - Napredni"
+
+#. Translators: The window title when in financial mode
+#: ../src/gtk.c:66
+msgid "Calculator - Financial"
+msgstr "Kalkulator - Finansijski"
+
+#. Translators: The window title when in scientific mode
+#: ../src/gtk.c:68
+msgid "Calculator - Scientific"
+msgstr "Kalkulator - Naučni"
+
+#. Translators: The window title when in programming mode
+#: ../src/gtk.c:70
+msgid "Calculator - Programming"
+msgstr "Kalkulator - Programerski"
+
+#. Translators: The window title when in basic mode. %s is replaced with the hostname.
+#: ../src/gtk.c:76
+#, c-format
+msgid "Calculator [%s]"
+msgstr "Kalkulator [%s]"
+
+#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
+#: ../src/gtk.c:78
+#, c-format
+msgid "Calculator [%s] - Advanced"
+msgstr "Kalkulator [%s] - Napredni"
+
+#. Translators: The window title when in financial mode. %s is replaced with the hostname.
+#: ../src/gtk.c:80
+#, c-format
+msgid "Calculator [%s] - Financial"
+msgstr "Kalkulator [%s] - Finansijski"
+
+#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
+#: ../src/gtk.c:82
+#, c-format
+msgid "Calculator [%s] - Scientific"
+msgstr "Kalkulator [%s] - Naučni"
+
+#. Translators: The window title when in programming mode. %s is replaced with the hostname.
+#: ../src/gtk.c:84
+#, c-format
+msgid "Calculator [%s] - Programming"
+msgstr "Kalkulator [%s] - Programerski"
+
+#. Translators: Title of the error dialog when unable to load the UI files
+#: ../src/gtk.c:572
+msgid "Error loading user interface"
+msgstr "Greška pri učitavanju grafičkog sučelja"
+
+#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
+#: ../src/gtk.c:575
+#, c-format
+msgid ""
+"A required file is missing or damaged, please check your installation.\n"
+"\n"
+"%s"
+msgstr ""
+"Potrebna datoteka ne postoji ili je oštećena, proverite instalaciju programa.\n"
+"\n"
+"%s"
+
+#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
+#: ../src/gtk.c:672
+#, c-format
+msgid "_Other (%d) ..."
+msgstr "_Drugačija (%d) ..."
+
+#. Translators: Tooltip for accuracy button
+#: ../src/gtk.c:678
+#, c-format
+msgid "Set accuracy from 0 to %d numeric place. [A]"
+msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+msgstr[0] "Postavlja preciznost na 0 do %d značajno mesto. [A]"
+msgstr[1] "Postavi preciznost na 0 do %d značajna mesta [A]"
+msgstr[2] "Postavi preciznost na 0 do %d značajnih mesta [A]"
+
+#. Translators: The sine button
+#: ../src/gtk.c:703
+msgid "sin"
+msgstr "sin"
+
+#. Translators: The inverse sine button
+#: ../src/gtk.c:705
+msgid "sin<sup>−1</sup>"
+msgstr "sin<sup>-1</sup>"
+
+#. Translators: The hyperbolic sine button
+#: ../src/gtk.c:707
+msgid "sinh"
+msgstr "sh"
+
+#. Translators: The inverse hyperbolic sine button
+#: ../src/gtk.c:709
+msgid "sinh<sup>−1</sup>"
+msgstr "sinh<sup>-1</sup>"
+
+#. Translators: The sine tooltip
+#: ../src/gtk.c:712
+msgid "Sine [k]"
+msgstr "Sinus [k]"
+
+#. Translators: The inverse sine tooltip
+#: ../src/gtk.c:714
+msgid "Inverse Sine [K]"
+msgstr "Inverzni Sinus [K]"
+
+#. Translators: The hyperbolic sine tooltip
+#: ../src/gtk.c:716
+msgid "Hyperbolic Sine [k]"
+msgstr "Sinus Hiperbolični [k]"
+
+#. Translators: The hyperbolic inverse sine tooltip
+#: ../src/gtk.c:718
+msgid "Hyperbolic Inverse Sine [K]"
+msgstr "Inverzni Sinus Hiperbolični [K]"
+
+#. Translators: The cosine button
+#: ../src/gtk.c:722
+msgid "cos"
+msgstr "cos"
+
+#. Translators: The inverse cosine button
+#: ../src/gtk.c:724
+msgid "cos<sup>−1</sup>"
+msgstr "cos<sup>-1</sup>"
+
+#. Translators: The hyperbolic cosine button
+#: ../src/gtk.c:726
+msgid "cosh"
+msgstr "ch"
+
+#. Translators: The inverse hyperbolic cosine button
+#: ../src/gtk.c:728
+msgid "cosh<sup>−1</sup>"
+msgstr "cosh<sup>-1</sup>"
+
+#. Translators: The cosine tooltip
+#: ../src/gtk.c:731
+msgid "Cosine [j]"
+msgstr "Kosinus [j]"
+
+#. Translators: The inverse cosine tooltip
+#: ../src/gtk.c:733
+msgid "Inverse Cosine [J]"
+msgstr "Inverzni Kosinus [J]"
+
+#. Translators: The hyperbolic cosine tooltip
+#: ../src/gtk.c:735
+msgid "Hyperbolic Cosine [j]"
+msgstr "Kosinus Hiperbolični [j]"
+
+#. Translators: The hyperbolic inverse cosine tooltip
+#: ../src/gtk.c:737
+msgid "Hyperbolic Inverse Cosine [J]"
+msgstr "Inverzni Kosinus Hiperbolični [J]"
+
+#. Translators: The tangent button
+#: ../src/gtk.c:741
+msgid "tan"
+msgstr "tg"
+
+#. Translators: The inverse tangent button
+#: ../src/gtk.c:743
+msgid "tan<sup>−1</sup>"
+msgstr "tg<sup>-1</sup>"
+
+#. Translators: The hyperbolic tangent button
+#: ../src/gtk.c:745
+msgid "tanh"
+msgstr "th"
+
+#. Translators: The inverse hyperbolic tangent button
+#: ../src/gtk.c:747
+msgid "tanh<sup>−1</sup>"
+msgstr "tgh<sup>-1</sup>"
+
+#. Translators: The tangent tooltip
+#: ../src/gtk.c:750
+msgid "Tangent [w]"
+msgstr "Tangens [w]"
+
+#. Translators: The inverse tangent tooltip
+#: ../src/gtk.c:752
+msgid "Inverse Tangent [W]"
+msgstr "Inverzni Tangens [W]"
+
+#. Translators: The hyperbolic tangent tooltip
+#: ../src/gtk.c:754
+msgid "Hyperbolic Tangent [w]"
+msgstr "Tangens Hiperbolični [w]"
+
+#. Translators: The hyperbolic inverse tangent tooltip
+#: ../src/gtk.c:756
+msgid "Hyperbolic Inverse Tangent [W]"
+msgstr "Inverzni Tangens Hiperbolični [W]"
+
+#. Translators: The natural logaritm button
+#: ../src/gtk.c:761
+msgid "ln"
+msgstr "ln"
+
+#. Translators: The e to the power of x button
+#: ../src/gtk.c:763
+msgid "e<sup><i>x</i></sup>"
+msgstr "e<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the natural log button
+#: ../src/gtk.c:766
+msgid "Natural logarithm [n]"
+msgstr "Prirodni logaritam [n]"
+
+#. Translators: Tooltip for the e to the power of x button
+#: ../src/gtk.c:768
+msgid "e to the power of the displayed value [N]"
+msgstr "e na stepen prikazane vrednosti [N]"
+
+#. Translators: The 10-based logaritm button
+#: ../src/gtk.c:773
+msgid "log"
+msgstr "log"
+
+#. Translators: The 10 to the power of x button
+#: ../src/gtk.c:775
+msgid "10<sup><i>x</i></sup>"
+msgstr "10<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 10 button
+#: ../src/gtk.c:778
+msgid "Base 10 logarithm [g]"
+msgstr "Logaritam sa osnovom 10 [g]"
+
+#. Translators: Tooltip for the 10 to the power of x button
+#: ../src/gtk.c:780
+msgid "10 to the power of displayed value [G]"
+msgstr "10 na stepen prikazane vrednosti [G]"
+
+#. Translators: The 2-based logaritm button
+#: ../src/gtk.c:785
+msgid "log<sub>2</sub>"
+msgstr "log<sub>2</sub>"
+
+#. Translators: The 2 to the power of x button
+#: ../src/gtk.c:787
+msgid "2<sup><i>x</i></sup>"
+msgstr "2<sup><i>x</i></sup>"
+
+#. Translators: Tooltip for the log base 2 button
+#: ../src/gtk.c:790
+msgid "Base 2 logarithm [h]"
+msgstr "Logaritam sa osnovom 2 [h]"
+
+#. Translators: Tooltip for the 2 to the power of x button
+#: ../src/gtk.c:792
+msgid "2 to the power of the displayed value [H]"
+msgstr "2 na stepen prikazane vrednosti [H]"
+
+#. Translators: The x to the power of y button
+#: ../src/gtk.c:797
+msgid "x<sup><i>y</i></sup>"
+msgstr "x<sup><i>y</i></sup>"
+
+#. Translators: The x to the power of reciprocal y button
+#: ../src/gtk.c:799
+msgid "x<sup>1/<i>y</i></sup>"
+msgstr "x<sup>1/<i>y</i></sup>"
+
+#. Translators: Tooltip for the x to the power of y button
+#: ../src/gtk.c:802
+msgid "Raise displayed value to the power of y [o]"
+msgstr "Digni prikazanu vrednost na stepen y [o]"
+
+#. Translators: Tooltip for the x to the power of reciprocal y button
+#: ../src/gtk.c:804
+msgid "Raise displayed value to the power of reciprocal y [O]"
+msgstr "Digni prikazanu vrednost na stepen recipročnog y [O]"
+
+#. Translators: The translator credits. Please translate this with your name(s).
+#: ../src/gtk.c:1365
+msgid "translator-credits"
+msgstr ""
+"Danilo Šegan <danilo@prevod.org>\n"
+"Igor Nestorović <igor@prevod.org>\n"
+"Slobodan D. Sredojević <slobo@akrep.be>\n"
+"Branko Kokanović <branko.kokanovic@gmail.com>\n"
+"\n"
+"Prevod.org — prevod na srpski jezik"
+
+#: ../src/gtk.c:1369
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Kalkulator je slobodan softver; možete ga raspodeljivati i/ili ga menjati\n"
+"pod uslovima GNU Opšte Javne Licence (GNU GPL) kako je objavljuje\n"
+"Zadužbina za Slobodni Softver (FSF); bilo verzije 2 te Licence, bilo\n"
+"(po vašem nahođenju) bilo koje novije verzije.\n"
+"\n"
+"Kalkulator se raspodeljuje u nadi da će biti od koristi, ali BEZ IKAKVIH\n"
+"GARANCIJA; čak i bez podrazumevane garancije KORISNOSTI ili\n"
+"PRILAGOĐENOSTI ODREĐENOJ NAMENI.  Vidite GNU Opštu Javnu Licencu za\n"
+"više detalja.\n"
+"Trebali ste da primite primerak GNU Opšte Javne Licence uz Kalkulator;\n"
+"ako niste, pišite Zadužbini za Slobodni Softver (Free Software\n"
+"Foundation, Inc.), 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301 USA"
+
+#. Translators: Program name in the about dialog
+#: ../src/gtk.c:1385
+msgid "Gcalctool"
+msgstr "Gnomov kalkulator"
+
+#. Translators: Copyright notice in the about dialog
+#: ../src/gtk.c:1388
+msgid "© 1986-2008 The Gcalctool authors"
+msgstr "© 1986-2008 Autori Gnomovog kalkulatora"
+
+#. Translators: Short description in the about dialog
+#: ../src/gtk.c:1391
+msgid "Calculator with financial and scientific modes."
+msgstr "Kalkulator sa finansijskim i naučnim načinom rada."
+
+#: ../src/gtk.c:1549
+msgid "Unable to open help file"
+msgstr "Ne mogu da otvorim datoteku za pomoć"
+
+#. Translators: R is the short form of register used inter alia in popup menus
+#: ../src/gtk.c:1956
+msgid "R"
+msgstr "R"
+
+#. FIXME: WTF?
+#: ../src/gtk.c:2319
+msgid "Paste"
+msgstr "Ubaci"
+
+#. Translators: Edit Constants Dialog: Constant number column title
+#. Translators: Edit Functions Dialog: Function number column title
+#: ../src/gtk.c:2679 ../src/gtk.c:2696
+msgid "No."
+msgstr "br."
+
+#. Translators: Edit Constants Dialog: Constant value column title
+#. Translators: Edit Functions Dialog: Function value column title
+#: ../src/gtk.c:2681 ../src/gtk.c:2699
+msgid "Value"
+msgstr "Vrednost"
+
+#. Translators: Edit Constants Dialog: Constant description column title
+#. Translators: Edit Functions Dialog: Function description column title
+#: ../src/gtk.c:2683 ../src/gtk.c:2702
+msgid "Description"
+msgstr "Opis"
+
+#. Set default accuracy menu item
+#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
+#: ../src/gtk.c:2826
+#, c-format
+msgid "Reset to _Default (%d)"
+msgstr "_Postavi na podrazumevano (%d)"
+
+#: ../src/mp.c:1469
+msgid "Negative X and non-integer Y not supported"
+msgstr "Negativni X i decimalni Y nisu podržani"
+
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:281
+msgid "Tangent is infinite"
+msgstr "Tangens je beskonačno"
+
+#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
+#: ../src/register.c:40
+msgid "Kilometer-to-mile conversion factor"
+msgstr "Činilac za pretvaranje kilometara u milje"
+
+#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
+#: ../src/register.c:42
+msgid "square root of 2"
+msgstr "kvadratni koren od 2"
+
+#. Translators: This is the label for the default constant, Euler's number (2.71828)
+#: ../src/register.c:44
+msgid "Euler's Number (e)"
+msgstr "Ojlerov broj (e)"
+
+#. Translators: This is the label for the default constant, π (3.14159)
+#: ../src/register.c:46
+msgid "π"
+msgstr "π"
+
+#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
+#: ../src/register.c:48
+msgid "Centimeter-to-inch conversion factor"
+msgstr "Činilac za pretvaranje centimetara u inče"
+
+#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
+#: ../src/register.c:50
+msgid "degrees in a radian"
+msgstr "stepeni u radijanu"
+
+#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
+#: ../src/register.c:52
+msgid "2 ^ 20"
+msgstr "2 ^ 20"
+
+#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
+#: ../src/register.c:54
+msgid "Gram-to-ounce conversion factor"
+msgstr "Činilac za pretvaranje grama u unce"
+
+#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
+#: ../src/register.c:56
+msgid "Kilojoule-to-British-thermal-unit conversion factor"
+msgstr "Činilac za pretvaranje kilodžula u britanske termičke jedinice"
+
+#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
+#: ../src/register.c:58
+msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+msgstr "Činilac za pretvaranje kubnih centimetara u kubne inče"
+
+#~ msgid "Error"
+#~ msgstr "Greška"
+
+#~ msgid "Too long number"
+#~ msgstr "Prevelik broj"
+
+#~ msgid "Math operation error"
+#~ msgstr "Greška u matematičkoj operaciji"
+
+#~ msgid "Sin"
+#~ msgstr "sin"
+
+#~ msgid "Sinh"
+#~ msgstr "Sinh"
+
+#~ msgid "Cos"
+#~ msgstr "cos"
+
+#~ msgid "Cosh"
+#~ msgstr "Cosh"
+
+#~ msgid "Tan"
+#~ msgstr "tg"
+
+#~ msgid "Tanh"
+#~ msgstr "Tgh"
+
+#~ msgid "Log"
+#~ msgstr "log"
+
+#~ msgid "Error, cannot calculate cosine"
+#~ msgstr "Greška, ne mogu da izračunam kosinus"
+
+#~ msgid "&16"
+#~ msgstr "&16"
+
+#~ msgid "&32"
+#~ msgstr "&32"
+
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "16-bitna neoznačena celobrojna vrednost prikaza (])"
+
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "32-bitna neoznačena celobrojna vrednost prikaza ([)"
+
+#~ msgid "±"
+#~ msgstr "±"
+
+#~ msgid "×"
+#~ msgstr "×"
+
+#~ msgid "÷"
+#~ msgstr "÷"
+
+#~ msgid "−"
+#~ msgstr "−"
+
+#~ msgid "√"
+#~ msgstr "√"
 
 #~ msgid "Expression"
 #~ msgstr "Izrazi"
@@ -2203,9 +2410,6 @@ msgstr "√"
 
 #~ msgid " Mod "
 #~ msgstr "Mod "
-
-#~ msgid "Accuracy"
-#~ msgstr "Preciznost"
 
 #~ msgid "Exponential"
 #~ msgstr "Eksponencijalni"
@@ -2528,12 +2732,6 @@ msgstr "√"
 #~ msgid "clr"
 #~ msgstr "clr"
 
-#~ msgid "cosh"
-#~ msgstr "ch"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
 #~ msgid "ddb"
 #~ msgstr "ddb"
 
@@ -2548,12 +2746,6 @@ msgstr "√"
 
 #~ msgid "int"
 #~ msgstr "int"
-
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "log"
-#~ msgstr "log"
 
 #~ msgid "not"
 #~ msgstr "not"
@@ -2573,12 +2765,6 @@ msgstr "√"
 #~ msgid "rcl"
 #~ msgstr "rcl"
 
-#~ msgid "sinh"
-#~ msgstr "sh"
-
-#~ msgid "sin"
-#~ msgstr "sin"
-
 #~ msgid "sln"
 #~ msgstr "sln"
 
@@ -2590,12 +2776,6 @@ msgstr "√"
 
 #~ msgid "syd"
 #~ msgstr "syd"
-
-#~ msgid "tanh"
-#~ msgstr "th"
-
-#~ msgid "tan"
-#~ msgstr "tg"
 
 #~ msgid "term"
 #~ msgstr "term"
