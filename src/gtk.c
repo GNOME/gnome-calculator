@@ -2188,13 +2188,13 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;
         }
     }
-    
-    /* Whitespace */
-    if (event->keyval == GDK_space && state == 0) {
+
+    /* Whitespace (but don't override activating buttons from the keyboard) */
+    if (gtk_widget_is_focus(X.display_item) && event->keyval == GDK_space && state == 0) {
         do_button(FN_SPACE, 0);
         return TRUE;
     }
-    
+
     /* Absolute value */
     /*if (event->keyval == GDK_bar && state == 0) {
         do_button(FN_ABSOLUTE_VALUE, 0);
