@@ -396,8 +396,8 @@ static struct button_widget button_widgets[] = {
     { GDK_H, 0 }},
 
     {FN_X_POW_Y,            "x_pow_y",
-    { 0,     0,         0,               0 },
-    { GDK_o, GDK_caret, GDK_asciicircum, 0 }},
+    { 0,     0,         0,               0,                   0 },
+    { GDK_o, GDK_caret, GDK_asciicircum, GDK_dead_circumflex, 0 }},
 
     {FN_X_POW_Y_INV,        "x_pow_y",
     { 0,     0 },
@@ -529,7 +529,9 @@ typedef struct {
 
     GdkAtom clipboard_atom;
     GdkAtom primary_atom;  
-    char *shelf;                       /* PUT selection shelf contents. */   
+    char *shelf;                       /* PUT selection shelf contents. */
+    
+    int last_function;
 } GtkUI;
 static GtkUI X;
 
@@ -998,8 +1000,17 @@ static void do_button(int function, int arg)
             cursor_start = -1;
         cursor_end = cursor_start;
     }
-
-    do_expression(function, arg, cursor_start, cursor_end);
+    
+    /* Some keyboards don't have a '^' button so convert two multiplies to one '^' */
+    if (cursor_start == cursor_end &&
+        function == FN_MULTIPLY && X.last_function == FN_MULTIPLY) {
+        do_button(FN_BACKSPACE, 0);
+        do_button(FN_X_POW_Y, 0);
+    }
+    else {
+        do_expression(function, arg, cursor_start, cursor_end);
+        X.last_function = function;
+    }
 }
 
 static void
