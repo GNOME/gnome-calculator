@@ -68,6 +68,7 @@ enum
     FN_DELETE,        
     FN_TOGGLE_BIT,
     FN_SHIFT,
+    FN_FACTORIZE,
     FN_STORE,
     FN_RECALL,
     FN_UNDO,

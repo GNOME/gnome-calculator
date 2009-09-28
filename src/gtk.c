@@ -904,6 +904,15 @@ popup_cb(GtkWidget *widget, GdkEventButton *event)
     }
 }
 
+
+G_MODULE_EXPORT
+void
+factorize_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    do_button(FN_FACTORIZE, 0);
+}
+
+
 G_MODULE_EXPORT
 void
 digit_cb(GtkWidget *widget, GdkEventButton *event)
@@ -994,6 +1003,9 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;            
         case GDK_e:
             do_text("×10^");
+            return TRUE;
+        case GDK_f:
+            do_button(FN_FACTORIZE, 0);
             return TRUE;
         case GDK_r:
             do_text("√");

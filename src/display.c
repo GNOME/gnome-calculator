@@ -854,6 +854,66 @@ do_shift(GCDisplay *display, int count)
 }
 
 
+void
+do_factorize()
+{
+    MPNumber value, divisor, tmp, root;
+
+    mp_set_from_integer(2, &divisor);
+    if (!display_is_usable_number(&v->display, &value)) {
+        /* Translators: Error displayed when trying to factorize a non-integer value */
+        ui_set_statusbar(_("Need an integer to factorize"));
+        return;
+    }
+
+    display_clear(&v->display);
+
+    if (mp_is_negative(&value)) {
+        display_insert(&v->display, -1, -1, "−");
+        mp_invert_sign(&value, &value);
+    }
+    
+    mp_set_from_integer(1, &tmp);
+    if (mp_is_equal(&value, &tmp)) {
+        display_insert(&v->display, -1, -1, v->digits[1]);
+        return;
+    }
+
+    while (TRUE) {
+        mp_divide(&value, &divisor, &tmp);
+        if (mp_is_integer(&tmp)) {
+            value = tmp;
+            display_insert_number(&v->display, -1, -1, &divisor);
+            display_insert(&v->display, -1, -1, "×");
+        } else {
+            break;
+        }
+    }
+
+    mp_set_from_integer(3, &divisor);
+    mp_sqrt(&value, &root);
+    while (mp_is_less_equal(&divisor, &root)) {
+        mp_divide(&value, &divisor, &tmp);
+        if (mp_is_integer(&tmp)) {
+            value = tmp;
+            mp_sqrt(&value, &root);
+            display_insert_number(&v->display, -1, -1, &divisor);
+            display_insert(&v->display, -1, -1, "×");
+        } else {
+            mp_add_integer(&divisor, 2, &tmp);
+            divisor = tmp;
+        }
+    }
+
+    mp_set_from_integer(1, &tmp);
+    if (mp_is_greater_than(&value, &tmp)) {
+        display_insert_number(&v->display, -1, -1, &value);
+    } else {
+        display_backspace(&v->display, -1, -1);
+    }
+}
+
+
 static void
 do_sto(GCDisplay *display, int index)
 {
@@ -902,6 +962,10 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
 
         case FN_SHIFT:
             do_shift(display, arg);
+            break;
+
+        case FN_FACTORIZE:
+            do_factorize(display, arg);
             break;
 
         case FN_PASTE:
