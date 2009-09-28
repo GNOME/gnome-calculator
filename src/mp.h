@@ -1,7 +1,5 @@
 
-/*  $Header$
- *
- *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+/*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
  *           
  *  This program is free software; you can redistribute it and/or modify
@@ -175,7 +173,7 @@ void   mp_sqrt(const MPNumber *x, MPNumber *z);
 void   mp_factorial(const MPNumber *x, MPNumber *z);
 
 /* Sets z = x mod y */
-void  mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
+void   mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x^y */
 void   mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z);

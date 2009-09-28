@@ -1,7 +1,4 @@
-
-/*  $Header$
- *
- *  Copyright (C) 2004-2008 Sami Pietila
+/*  Copyright (c) 2004-2008 Sami Pietila
  *  Copyright (c) 2008-2009 Robert Ancell
  *
  *  This program is free software; you can redistribute it and/or modify
