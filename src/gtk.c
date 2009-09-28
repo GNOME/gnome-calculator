@@ -965,6 +965,30 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     if (state == GDK_CONTROL_MASK) {
         switch(event->keyval)
         {
+        case GDK_u:
+            do_text("µ");
+            return TRUE;
+        case GDK_e:
+            do_text("×10^");
+            return TRUE;
+        case GDK_f:
+            do_button(FN_FACTORIZE, 0);
+            return TRUE;
+        case GDK_r:
+            do_text("√");
+            return TRUE;
+        case GDK_i:
+            do_text("⁻¹");
+            return TRUE;
+        case GDK_p:
+            do_text("π");
+            return TRUE;
+        }
+    }
+    if (state == GDK_CONTROL_MASK ||
+        gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.superscript_toggle))) {
+        switch(event->keyval)
+        {
         case GDK_0:
             do_text("⁰");
             return TRUE;
@@ -995,27 +1019,10 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         case GDK_9:
             do_text("⁹");
             return TRUE;
-        case GDK_u:
-            do_text("µ");
-            return TRUE;
-        case GDK_e:
-            do_text("×10^");
-            return TRUE;
-        case GDK_f:
-            do_button(FN_FACTORIZE, 0);
-            return TRUE;
-        case GDK_r:
-            do_text("√");
-            return TRUE;
-        case GDK_i:
-            do_text("⁻¹");
-            return TRUE;
-        case GDK_p:
-            do_text("π");
-            return TRUE;
         }
     }
-    else if (state == GDK_MOD1_MASK) {
+    else if (state == GDK_MOD1_MASK ||
+             gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.subscript_toggle))) {
         switch(event->keyval)
         {
         case GDK_0:
