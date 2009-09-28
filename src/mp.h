@@ -39,6 +39,8 @@
 #ifndef MP_H
 #define MP_H
 
+#include <glib.h>
+
 /* Size of the multiple precision values */
 #define MP_SIZE 1000
 
@@ -183,6 +185,9 @@ void   mp_xpowy_integer(const MPNumber *x, int y, MPNumber *z);
 
 /* Sets z = e^x */
 void   mp_epowy(const MPNumber *x, MPNumber *z);
+
+/* Returns a list of all prime factors in value as MPNumbers */
+GList* mp_factorize(const MPNumber *value);
 
 /* Sets z = x */
 void   mp_set_from_mp(const MPNumber *x, MPNumber *z);

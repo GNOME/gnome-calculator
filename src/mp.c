@@ -1839,3 +1839,69 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     for (i = 0; i < n; i++)
         mp_multiply(z, &t, z);
 }
+
+GList*
+mp_factorize(const MPNumber *orig_value)
+{
+    GList *list = NULL;
+    MPNumber *factor = g_slice_alloc0(sizeof(MPNumber));
+    MPNumber value, tmp, divisor, root;
+
+    mp_abs(orig_value, &value);
+
+    if (mp_is_zero(&value)) {
+        mp_set_from_mp(&value, factor);
+        list = g_list_append(list, factor);
+        return list;
+    }
+
+    mp_set_from_integer(1, &tmp);
+    if (mp_is_equal(&value, &tmp)) {
+        mp_set_from_mp(orig_value, factor);
+        list = g_list_append(list, factor);
+        return list;
+    }
+
+    mp_set_from_integer(2, &divisor);
+    while (TRUE) {
+        mp_divide(&value, &divisor, &tmp);
+        if (mp_is_integer(&tmp)) {
+            value = tmp;
+            mp_set_from_mp(&divisor, factor);
+            list = g_list_append(list, factor);
+            factor = g_slice_alloc0(sizeof(MPNumber));
+        } else {
+            break;
+        }
+    }
+
+    mp_set_from_integer(3, &divisor);
+    mp_sqrt(&value, &root);
+    while (mp_is_less_equal(&divisor, &root)) {
+        mp_divide(&value, &divisor, &tmp);
+        if (mp_is_integer(&tmp)) {
+            value = tmp;
+            mp_sqrt(&value, &root);
+            mp_set_from_mp(&divisor, factor);
+            list = g_list_append(list, factor);
+            factor = g_slice_alloc0(sizeof(MPNumber));
+        } else {
+            mp_add_integer(&divisor, 2, &tmp);
+            divisor = tmp;
+        }
+    }
+
+    mp_set_from_integer(1, &tmp);
+    if (mp_is_greater_than(&value, &tmp)) {
+        mp_set_from_mp(&value, factor);
+        list = g_list_append(list, factor);
+    } else {
+        g_slice_free(MPNumber, factor);
+    }
+
+    if (mp_is_negative(orig_value)) {
+        mp_invert_sign(list->data, list->data);
+    }
+
+    return list;
+}

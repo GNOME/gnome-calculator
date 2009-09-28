@@ -854,59 +854,24 @@ do_shift(GCDisplay *display, int count)
 void
 do_factorize()
 {
-    MPNumber value, divisor, tmp, root;
+    MPNumber value;
 
-    mp_set_from_integer(2, &divisor);
     if (!display_is_usable_number(&v->display, &value)) {
         /* Translators: Error displayed when trying to factorize a non-integer value */
         ui_set_statusbar(_("Need an integer to factorize"));
         return;
     }
-
     display_clear(&v->display);
 
-    if (mp_is_negative(&value)) {
-        display_insert(&v->display, -1, -1, "−");
-        mp_invert_sign(&value, &value);
-    }
+    GList *factors = mp_factorize(&value);
 
-    mp_set_from_integer(1, &tmp);
-    if (mp_is_equal(&value, &tmp)) {
-        display_insert(&v->display, -1, -1, v->digits[1]);
-        return;
-    }
+    display_insert_number(&v->display, -1, -1, factors->data);
+    factors = factors->next;
 
-    while (TRUE) {
-        mp_divide(&value, &divisor, &tmp);
-        if (mp_is_integer(&tmp)) {
-            value = tmp;
-            display_insert_number(&v->display, -1, -1, &divisor);
+    for (; factors != NULL; factors = factors->next) {
             display_insert(&v->display, -1, -1, "×");
-        } else {
-            break;
-        }
-    }
-
-    mp_set_from_integer(3, &divisor);
-    mp_sqrt(&value, &root);
-    while (mp_is_less_equal(&divisor, &root)) {
-        mp_divide(&value, &divisor, &tmp);
-        if (mp_is_integer(&tmp)) {
-            value = tmp;
-            mp_sqrt(&value, &root);
-            display_insert_number(&v->display, -1, -1, &divisor);
-            display_insert(&v->display, -1, -1, "×");
-        } else {
-            mp_add_integer(&divisor, 2, &tmp);
-            divisor = tmp;
-        }
-    }
-
-    mp_set_from_integer(1, &tmp);
-    if (mp_is_greater_than(&value, &tmp)) {
-        display_insert_number(&v->display, -1, -1, &value);
-    } else {
-        display_backspace(&v->display, -1, -1);
+            display_insert_number(&v->display, -1, -1, factors->data);
+            g_slice_free(MPNumber, factors->data);
     }
 }
 
