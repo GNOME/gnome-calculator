@@ -1,7 +1,5 @@
 
-/*  $Header$
- *
- *  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
+/* Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *           
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -19,10 +17,9 @@
  *  02111-1307, USA.
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <assert.h>
 #include <sys/types.h>
 #include <glib-object.h>
 
@@ -30,13 +27,9 @@
 #include "unittest.h"
 #include "get.h"
 #include "display.h"
-#include "functions.h"
 #include "ui.h"
-#include "mp.h"
 #include "register.h"
 #include "mp-equation.h"
-
-time_t time();
 
 /* Calctool variables and options. */
 static CalculatorVariables calc_state;
@@ -58,7 +51,6 @@ solve(const char *equation)
     char result_str[MAXLINE];
     
     memset(&options, 0, sizeof(options));
-    options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
     
@@ -68,7 +60,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, v->base, 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&result, 10, 9, 1, result_str, MAXLINE);
         printf("%s\n", result_str);
         exit(0);
     }
@@ -172,41 +164,27 @@ get_options(int argc, char *argv[])
 static void
 init_state(void)
 {
-    int acc, i;
+    /* Translators: Digits localized for the given language */
+    const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
+    const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
+    gchar **digits;
+    gboolean use_default_digits = FALSE;
+    int i;
 
-    acc              = MAX_DIGITS + 12;     /* MP internal accuracy. */
+    digits = g_strsplit(digit_values, ",", -1);
+    for (i = 0; i < 16; i++) {
+        if (use_default_digits || digits[i] == NULL) {
+            use_default_digits = TRUE;
+            v->digits[i] = strdup(default_digits[i]);
+        }
+        else
+            v->digits[i] = strdup(digits[i]);
+    }
+    g_strfreev(digits);
 
-    v->error         = FALSE;  /* No calculator error initially. */
     v->radix         = get_radix();    /* Locale specific radix string. */
     v->tsep          = get_tsep();     /* Locale specific thousands separator. */
     v->tsep_count    = get_tsep_count();
-    
-    if (get_int_resource(R_ACCURACY, &i))
-        v->accuracy = i;
-    else
-        v->accuracy = DEFAULT_ACCURACY;
-    if (v->accuracy < 0 || v->accuracy > MAXACC) {
-       /* Translators: A log message displayed when an invalid accuracy
-        is read from the configuration */
-       fprintf(stderr, _("%s: accuracy should be in the range 0-%d\n"), 
-               v->progname, MAXACC);
-       v->accuracy = DEFAULT_ACCURACY;
-    }
-
-    if (get_int_resource(R_BASE, &i))
-       v->base = i;
-    else
-       v->base = 10;
-
-    if (get_enumerated_resource(R_TRIG, Rtstr, &i))
-       v->ttype = (MPAngleUnit) i;
-    else
-       v->ttype = MP_DEGREES;
-
-    if (get_int_resource(R_WORDLEN, &i))
-       v->wordlen = i;
-    else
-       v->wordlen = 64;
 }
 
 

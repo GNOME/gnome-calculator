@@ -20,8 +20,6 @@ gcalctool_SOURCES = \
 	display.h \
 	get.c \
 	get.h \
-	functions.c \
-	functions.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \

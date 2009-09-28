@@ -27,37 +27,16 @@
 
 #include "calctool.h"
 
-/* Calculator modes. */
-typedef enum { BASIC, 
-               ADVANCED,
-               FINANCIAL,
-               SCIENTIFIC,
-               PROGRAMMING } ModeType;
-
 void ui_init(int *argc, char ***argv);
 void ui_load(void);
 void ui_start(void);
 
-void ui_make_registers(void);
 void ui_set_undo_enabled(gboolean, gboolean);
 
 void ui_set_display(char *, int);
 void ui_set_bitfield(int enabled, guint64 bits);
+void ui_set_statusbar(const gchar *);
+
 gchar *ui_get_display(void);
-
-void ui_set_registers_visible(gboolean);
-void ui_set_accuracy(int);
-void ui_set_mode(ModeType);
-void ui_set_base(int);
-void ui_set_trigonometric_mode(MPAngleUnit unit);
-void ui_set_numeric_mode(DisplayFormat);
-void ui_set_show_thousands_separator(gboolean);
-void ui_set_show_trailing_zeroes(gboolean);
-void ui_set_wordlen(int);
-
-void ui_set_error_state(gboolean);
-void ui_set_statusbar(const gchar *, const gchar *);
-
-void ui_beep(void);
 
 #endif /* UI_H */

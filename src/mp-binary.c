@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "mp.h"
 #include "mp-internal.h"
 
@@ -21,13 +23,13 @@ static int hex_to_int(char digit)
 static void
 mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, int), MPNumber *z, int wordlen)
 {
-    char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS];
+    char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
    
     mp_cast_to_string(x, 16, 0, 0, text1, MAX_DIGITS);
     mp_cast_to_string(y, 16, 0, 0, text2, MAX_DIGITS);
-    offset1 = strlen(text1) - 1;
-    offset2 = strlen(text2) - 1;
+    offset1 = strlen(text1) - 1 - strlen("₁₆");
+    offset2 = strlen(text2) - 1 - strlen("₁₆");
     offset_out = wordlen / 4 - 1;
     if (offset_out <= 0) {
         offset_out = offset1 > offset2 ? offset1 : offset2;
@@ -52,14 +54,14 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
         text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
    
-    mp_set_from_string(text_out, 16, z);
+    snprintf(text_out2, MAX_DIGITS, "%s₁₆", text_out);
+    mp_set_from_string(text_out2, z);
 }
 
 
 static int mp_bitwise_and(int v1, int v2) { return v1 & v2; }
 static int mp_bitwise_or(int v1, int v2) { return v1 | v2; }
 static int mp_bitwise_xor(int v1, int v2) { return v1 ^ v2; }
-static int mp_bitwise_xnor(int v1, int v2) { return v1 ^ v2 ^ 0xF; }
 static int mp_bitwise_not(int v1, int dummy) { return v1 ^ 0xF; }
 
 
@@ -76,6 +78,12 @@ mp_is_overflow (const MPNumber *x, int wordlen)
 void
 mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
+    if (!mp_is_natural(x) || !mp_is_natural(y))
+    {
+        /* Translators: Error displayed when boolean AND attempted on non-integer values */
+        mperr(_("Boolean AND only defined for natural numbers"));
+    }
+
     mp_bitwise(x, y, mp_bitwise_and, z, 0);
 }
 
@@ -83,6 +91,12 @@ mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
+    if (!mp_is_natural(x) || !mp_is_natural(y))
+    {
+        /* Translators: Error displayed when boolean OR attempted on non-integer values */        
+        mperr(_("Boolean OR only defined for natural numbers"));
+    }
+
     mp_bitwise(x, y, mp_bitwise_or, z, 0);
 }
 
@@ -90,14 +104,13 @@ mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_xor(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
+    if (!mp_is_natural(x) || !mp_is_natural(y))
+    {
+        /* Translators: Error displayed when boolean XOR attempted on non-integer values */
+        mperr(_("Boolean XOR only defined for natural numbers"));
+    }
+
     mp_bitwise(x, y, mp_bitwise_xor, z, 0);
-}
-
-
-void
-mp_xnor(const MPNumber *x, const MPNumber *y, int wordlen, MPNumber *z)
-{
-    mp_bitwise(x, y, mp_bitwise_xnor, z, wordlen);
 }
 
 
@@ -105,6 +118,13 @@ void
 mp_not(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber temp;
+    
+    if (!mp_is_natural(x))
+    {
+        /* Translators: Error displayed when boolean XOR attempted on non-integer values */
+        mperr(_("Boolean NOT only defined for natural numbers"));
+    }
+
     mp_set_from_integer(0, &temp);
     mp_bitwise(x, &temp, mp_bitwise_not, z, wordlen);
 }
@@ -118,10 +138,10 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
     
     /* Convert to a hexadecimal string and use last characters */
     mp_cast_to_string(x, 16, 0, 0, text, MAX_DIGITS);
-    len = strlen(text);
+    len = strlen(text) - strlen("₁₆");
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
-    mp_set_from_string(text + offset, 16, z);
+    mp_set_from_string(text + offset, z);
 }
 
 
@@ -129,6 +149,12 @@ void
 mp_shift(const MPNumber *x, int count, MPNumber *z)
 {
     int i, multiplier = 1;
+    
+    if (!mp_is_integer(x)) {
+        /* Translators: Error displayed when bit shift attempted on non-integer values */
+        mperr(_("Shift only possible on integer values"));
+        return;
+    }
     
     if (count >= 0) {
         for (i = 0; i < count; i++)
@@ -150,7 +176,8 @@ mp_ones_complement(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber t;
     mp_set_from_integer(0, &t);
-    mp_bitwise(x, &t, mp_bitwise_xnor, z, wordlen);
+    mp_bitwise(x, &t, mp_bitwise_xor, z, wordlen);
+    mp_not(z, wordlen, z);
 }
 
 

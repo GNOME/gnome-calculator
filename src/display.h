@@ -45,23 +45,44 @@ typedef struct {
 } GCDisplayHistory;
 
 /* Number display mode. */
-typedef enum { ENG, FIX, SCI, MAXDISPMODES } DisplayFormat;
+typedef enum { DEC, BIN, OCT, HEX, SCI, ENG } DisplayFormat;
 
 typedef struct
 {
-    GCDisplayHistory h;   /* History of expression mode states */
-    int show_tsep;        /* Set if the thousands separator should be shown. */
-    int show_zeroes;      /* Set if trailing zeroes should be shown. */
+    GCDisplayHistory h;    /* History of expression mode states */
+    int show_tsep;         /* Set if the thousands separator should be shown. */
+    int show_zeroes;       /* Set if trailing zeroes should be shown. */
     DisplayFormat format;  /* Number display mode. */
-    int base;
+    int accuracy;          /* Number of digits to show */
+    int word_size;
+    MPAngleUnit angle_unit;
 } GCDisplay;
+
+/* Available functions */
+enum
+{
+    FN_TEXT,
+    FN_CALCULATE,
+    FN_CLEAR,
+    FN_BACKSPACE,
+    FN_DELETE,        
+    FN_TOGGLE_BIT,
+    FN_SHIFT,
+    FN_STORE,
+    FN_RECALL,
+    FN_UNDO,
+    FN_REDO,
+    FN_PASTE,
+    FN_INSERT_CHARACTER
+};
 
 void display_init(GCDisplay *);
 void display_set_accuracy(GCDisplay *display, int accuracy);
 void display_set_show_thousands_separator(GCDisplay *display, gboolean visible);
 void display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible);
-void display_set_base(GCDisplay *display, int base);
 void display_set_format(GCDisplay *display, DisplayFormat format);
+void display_set_word_size(GCDisplay *display, int word_size);
+void display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit);
 void display_clear(GCDisplay *);
 
 gboolean display_get_integer(GCDisplay *display, gint64 *value);
@@ -93,6 +114,8 @@ gboolean display_is_usable_number(GCDisplay *display, MPNumber *);
 
 const char *display_get_text(GCDisplay *display);
 
-void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *MPnumber, int base, int ignoreError);
+void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x);
+
+void display_do_function(GCDisplay *display, int function, int arg, int cursor_start, int cursor_end);
 
 #endif /* DISPLAY_H */

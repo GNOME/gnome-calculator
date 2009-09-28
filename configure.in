@@ -1,7 +1,7 @@
 Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
-AM_INIT_AUTOMAKE(gcalctool, 5.28.0)
+AM_INIT_AUTOMAKE(gcalctool, 5.29.0)
 AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
@@ -14,49 +14,50 @@ AC_PROG_CC
 AM_PROG_CC_STDC
 AC_HEADER_STDC
 
-PKG_CHECK_MODULES(ATK, atk >= 1.5)
-AC_SUBST(ATK_CFLAGS)
-AC_SUBST(ATK_LIBS)
+dnl ###########################################################################
+dnl Dependencies
+dnl ###########################################################################
 
-pkg_modules="gtk+-2.0 >= 2.14.0 gobject-2.0 gdk-x11-2.0 glib-2.0 atk gdk-pixbuf-2.0 gmodule-export-2.0"
-PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
-AC_SUBST(PACKAGE_CFLAGS)
-AC_SUBST(PACKAGE_LIBS)
+GTK_REQUIRED=2.17.5
+GCONF_REQUIRED=1.1.9
+
+PKG_CHECK_MODULES(PACKAGE, [
+    gtk+-2.0 >= $GTK_REQUIRED
+    gconf-2.0 >= $GCONF_REQUIRED
+    gmodule-export-2.0
+])
+
+dnl ###########################################################################
+dnl Determine if a usable lex is available on this system
+dnl ###########################################################################
 
 AM_PROG_LEX
 if [[ "$LEX" != "flex" ]]; then
 	AC_MSG_ERROR(flex is required to create the gcalctool scanners)
 fi
-LFLAGS="-8"
-AC_SUBST(LFLAGS)
+
+dnl ###########################################################################
+dnl Determine if a usable yacc is available on this system
+dnl ###########################################################################
 
 AC_PROG_YACC
-dnl determine if a usable yacc is available on this system
 AC_CHECK_PROG(HAVE_YACC, $YACC, yes, no)
 if [[ "$HAVE_YACC" = "no" ]]; then
 	AC_MSG_ERROR($YACC is not usable as yacc - consider using bison)
 fi
 
 dnl ###########################################################################
-dnl PKG_CONFIG and required versions
+dnl Scrollkeeper checks
 dnl ###########################################################################
-
-PKG_CHECK_MODULES(GCONF, gconf-2.0 >= 1.1.9)
-AC_SUBST(GCONF_CFLAGS)
-AC_SUBST(GCONF_LIBS)
-
-dnl ********************
-dnl scrollkeeper checks
-dnl ********************
 
 AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
 if test x$SCROLLKEEPER_CONFIG = xno; then
   AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
 fi
 
-dnl *******************************
+dnl ###########################################################################
 dnl Internationalization
-dnl *******************************
+dnl ###########################################################################
 
 GETTEXT_PACKAGE=gcalctool
 AC_PREREQ(2.53)
@@ -66,7 +67,10 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 AM_PROG_LIBTOOL
 AM_GLIB_GNU_GETTEXT
 
+dnl ###########################################################################
 dnl Use -Wall if we have gcc.
+dnl ###########################################################################
+
 changequote(,)dnl
 if test "x$GCC" = "xyes"; then
   case " $CFLAGS " in
@@ -76,7 +80,10 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
+dnl ###########################################################################
 dnl Checking for gconftool-2
+dnl ###########################################################################
+
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
 
 if test "x$GCONFTOOL" = xno; then
@@ -85,11 +92,15 @@ fi
 
 AM_GCONF_SOURCE_2
 
-dnl *****************
+dnl ###########################################################################
 dnl API Documentation
-dnl *****************
+dnl ###########################################################################
 
 GNOME_DOC_INIT
+
+dnl ###########################################################################
+dnl Files to generate
+dnl ###########################################################################
 
 AC_OUTPUT([
 Makefile

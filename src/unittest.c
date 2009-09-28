@@ -28,6 +28,7 @@
 #include "mp-equation.h"
 
 static MPEquationOptions options;
+static int base;
 
 static int fails = 0;
 
@@ -72,7 +73,7 @@ test(char *expression, char *expected, int expected_error)
     error = mp_equation_parse(expression, &options, &result);
 
     if(error == 0) {
-        mp_cast_to_string(&result, options.base, 9, 1, result_str, 1024);
+        mp_cast_to_string(&result, base, 9, 1, result_str, 1024);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %d", expression, result_str, expected_error);
         else if(strcmp(result_str, expected) != 0)
@@ -93,63 +94,37 @@ void
 test_parser()
 {
     memset(&options, 0, sizeof(options));
-    options.base = 10;
+    base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
 
-    options.base = 2;
-    test("0", "0", 0);
-    test("1", "1", 0);
-    test("10", "10", 0);
-    test("210", "", -1);
+    base = 2;
+    test("2", "10₂", 0);
 
-    options.base = 8;
-    test("0", "0", 0);
-    test("1", "1", 0);
-    test("2", "2", 0);
-    test("3", "3", 0);
-    test("4", "4", 0);
-    test("5", "5", 0);
-    test("6", "6", 0);
-    test("7", "7", 0);
-    test("76543210", "76543210", 0);
-    test("876543210", "", -1);
+    base = 8;
+    test("16434824", "76543210₈", 0);
     
-    options.base = 10;
-    test("0", "0", 0);
-    test("1", "1", 0);
-    test("2", "2", 0);
-    test("3", "3", 0);
-    test("4", "4", 0);
-    test("5", "5", 0);
-    test("6", "6", 0);
-    test("7", "7", 0);
-    test("8", "8", 0);
-    test("9", "9", 0);
-    test("9876543210", "9876543210", 0);
-    test("A9876543210", "", -7);
+    base = 16;
+    test("18364758544493064720", "FEDCBA9876543210₁₆", 0);
 
-    options.base = 16;
-    test("0", "0", 0);
-    test("1", "1", 0);
-    test("2", "2", 0);
-    test("3", "3", 0);
-    test("4", "4", 0);
-    test("5", "5", 0);
-    test("6", "6", 0);
-    test("7", "7", 0);
-    test("8", "8", 0);
-    test("9", "9", 0);
-    test("A", "A", 0);
-    test("B", "B", 0);
-    test("C", "C", 0);
-    test("D", "D", 0);    
-    test("E", "E", 0);
-    test("F", "F", 0);    
-    test("FEDBCA9876543210", "FEDBCA9876543210", 0);
-    test("GFEDBCA9876543210", "", -7);
+    base = 10;
+    test("0₂", "0", 0); test("0₈", "0", 0); test("0", "0", 0); test("0₁₆", "0", 0);
+    test("1₂", "1", 0); test("1₈", "1", 0); test("1", "1", 0); test("1₁₆", "1", 0);
+    test("2₂", "", -1); test("2₈", "2", 0); test("2", "2", 0); test("2₁₆", "2", 0);
+    test("3₂", "", -1); test("3₈", "3", 0); test("3", "3", 0); test("3₁₆", "3", 0);
+    test("4₂", "", -1); test("4₈", "4", 0); test("4", "4", 0); test("4₁₆", "4", 0);
+    test("5₂", "", -1); test("5₈", "5", 0); test("5", "5", 0); test("5₁₆", "5", 0);
+    test("6₂", "", -1); test("6₈", "6", 0); test("6", "6", 0); test("6₁₆", "6", 0);
+    test("7₂", "", -1); test("7₈", "7", 0); test("7", "7", 0); test("7₁₆", "7", 0);
+    test("8₂", "", -1); test("8₈", "", -1); test("8", "8", 0); test("8₁₆", "8", 0);
+    test("9₂", "", -1); test("9₈", "", -1); test("9", "9", 0); test("9₁₆", "9", 0);
+    test("A₂", "", -1); test("A₈", "", -1); test("A", "", -1); test("A₁₆", "10", 0);
+    test("B₂", "", -1); test("B₈", "", -1); test("B", "", -1); test("B₁₆", "11", 0);
+    test("C₂", "", -1); test("C₈", "", -1); test("C", "", -1); test("C₁₆", "12", 0);
+    test("D₂", "", -1); test("D₈", "", -1); test("D", "", -1); test("D₁₆", "13", 0);
+    test("E₂", "", -1); test("E₈", "", -1); test("E", "", -1); test("E₁₆", "14", 0);
+    test("F₂", "", -1); test("F₈", "", -1); test("F", "", -1); test("F₁₆", "15", 0);
 
-    options.base = 10;
     test("+1", "1", 0);
     test("−1", "−1", 0);
     test("+ 1", "1", 0); // FIXME: Should this be allowed?
@@ -195,9 +170,6 @@ test_parser()
     //test("2p3", "0.0000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
     //test("2f3", "0.0000000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
 
-    test("2e3", "2000", 0);
-    test("2e+3", "2000", 0);
-    test("2e-3", "0.002", 0);
     test("2×10^3", "2000", 0);
     test("2×10^−3", "0.002", 0);
 
@@ -405,13 +377,87 @@ test_parser()
     test("3 or 5", "7", 0);
     test("3 xor 5", "6", 0);
 
-    options.base = 16;
-    test("ones 1", "FFFFFFFE", 0);
-    test("ones 7FFFFFFF", "80000000", 0);
-    test("twos 1", "FFFFFFFF", 0);
-    test("twos 7FFFFFFF", "80000001", 0);
-    test("3 xnor 5", "FFFFFFF9", 0);
-    test("~7A", "FFFFFF85", 0);
+    base = 16;
+    test("ones 1", "FFFFFFFE₁₆", 0);
+    test("ones 7FFFFFFF₁₆", "80000000₁₆", 0);
+    test("twos 1", "FFFFFFFF₁₆", 0);
+    test("twos 7FFFFFFF₁₆", "80000001₁₆", 0);
+    test("~7A₁₆", "FFFFFF85₁₆", 0);
+}
+
+
+static void
+print_number(MPNumber *x)
+{
+    int i, j;
+
+    printf("sign=%d exponent=%d fraction=%d", x->sign, x->exponent, x->fraction[0]);
+    for (i = 1; i < MP_SIZE; i++) {
+        for (j = i; j < MP_SIZE && x->fraction[j] == 0; j++);
+        if (j == MP_SIZE) {
+            printf(",...");
+            break;
+        }
+        printf(",%d", x->fraction[i]);
+    }
+}
+
+static void
+test_string(const char *number)
+{
+    MPNumber t;
+    
+    mp_set_from_string(number, &t);
+
+    printf("MPNumber(%s) -> {", number);
+    print_number(&t);
+    printf("}\n");
+}
+
+static void
+test_integer(int number)
+{
+    MPNumber t;
+    
+    mp_set_from_integer(number, &t);
+
+    printf("MPNumber(%d) -> {", number);
+    print_number(&t);
+    printf("}\n");
+}
+
+#include "mp-internal.h"
+static void
+test_numbers()
+{
+    printf("base=%d\n", MP_BASE);
+    test_integer(0);
+    test_integer(1);
+    test_integer(-1);
+    test_integer(2);
+    test_integer(9999);    
+    test_integer(10000);
+    test_integer(10001);
+    test_integer(2147483647);
+    
+    test_string("0");
+    test_string("1");
+    test_string("-1");
+    test_string("16383");    
+    test_string("16384");
+    test_string("16385");
+    test_string("268435456");
+    
+    test_string("0.1");    
+    test_string("0.5");
+    test_string("0.25");
+    test_string("0.125");
+    test_string("0.0625");
+    test_string("0.00006103515625");
+    test_string("0.000030517578125");
+    
+    test_string("1.00006103515625");
+    test_string("16384.00006103515625");    
 }
 
 
@@ -419,5 +465,6 @@ void
 unittest()
 {
     test_parser();
+    test_numbers();
     exit(fails > 0 ? 1 : 0);
 }

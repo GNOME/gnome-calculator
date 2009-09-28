@@ -35,8 +35,7 @@ enum finc_dialogs {
     FINC_RATE_DIALOG,
     FINC_SLN_DIALOG,
     FINC_SYD_DIALOG,
-    FINC_TERM_DIALOG,
-    FINC_NUM_DIALOGS,
+    FINC_TERM_DIALOG
 };
 
 #endif /* FINANCIAL_H */

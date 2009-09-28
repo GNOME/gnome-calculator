@@ -54,42 +54,14 @@ static void get_function(yyscan_t yyscanner, const char *name, const MPNumber *x
         set_error(yyscanner, -PARSER_ERR_UNKNOWN_FUNCTION);
 }
 
-static void do_bitwise(yyscan_t yyscanner, void (*mp_fn)(const MPNumber *x, const MPNumber *y, MPNumber *z), const MPNumber *x, const MPNumber *y, MPNumber *z)
-{
-    if (!mp_is_natural(x) || !mp_is_natural(y))
-	set_error(yyscanner, -PARSER_ERR_BITWISEOP);
-    else
-        mp_fn(x, y, z);
-}
-
-static void do_xnor(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPNumber *z)
-{
-    if (!mp_is_natural(x)) {
-	set_error(yyscanner, -PARSER_ERR_BITWISEOP);
-    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
-	set_error(yyscanner, -PARSER_ERR_OVERFLOW);
-    }
-    mp_xnor(x, y, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
-}
-
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 {
-    if (!mp_is_natural(x)) {
-	set_error(yyscanner, -PARSER_ERR_BITWISEOP);
-    } else if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
+    if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
 	set_error(yyscanner, -PARSER_ERR_OVERFLOW);
     }
     mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
 
-static void do_mod(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPNumber *z)
-{
-    if (!mp_is_integer(x) || !mp_is_integer(y)) {
-	set_error(yyscanner, -PARSER_ERR_MODULUSOP);
-    } else {
-        mp_modulus_divide(x, y, z);
-    }
-}
 %}
 
 %pure-parser
@@ -143,7 +115,7 @@ exp:
 | tSUBTRACT exp %prec UNARY_MINUS {mp_invert_sign(&$2, &$$);}
 | tADD tNUMBER %prec UNARY_PLUS {mp_set_from_mp(&$2, &$$);}
 | exp tDIVIDE exp {mp_divide(&$1, &$3, &$$);}
-| exp tMOD exp {do_mod(yyscanner, &$1, &$3, &$$);}
+| exp tMOD exp {mp_modulus_divide(&$1, &$3, &$$);}
 | exp tMULTIPLY exp {mp_multiply(&$1, &$3, &$$);}
 | exp tADD exp '%' %prec PERCENTAGE {mp_add_integer(&$3, 100, &$3); mp_divide_integer(&$3, 100, &$3); mp_multiply(&$1, &$3, &$$);}
 | exp tSUBTRACT exp '%' %prec PERCENTAGE {mp_add_integer(&$3, -100, &$3); mp_divide_integer(&$3, -100, &$3); mp_multiply(&$1, &$3, &$$);}
@@ -151,10 +123,9 @@ exp:
 | exp tSUBTRACT exp {mp_subtract(&$1, &$3, &$$);}
 | exp '%' {mp_divide_integer(&$1, 100, &$$);}
 | tNOT exp {do_not(yyscanner, &$2, &$$);}
-| exp tAND exp %prec BOOLEAN_OPERATOR {do_bitwise(yyscanner, mp_and, &$1, &$3, &$$);}
-| exp tOR exp %prec BOOLEAN_OPERATOR {do_bitwise(yyscanner, mp_or, &$1, &$3, &$$);}
-| exp tXOR exp %prec BOOLEAN_OPERATOR {do_bitwise(yyscanner, mp_xor, &$1, &$3, &$$);}
-| exp tXNOR exp %prec BOOLEAN_OPERATOR {do_xnor(yyscanner, &$1, &$3, &$$);}
+| exp tAND exp %prec BOOLEAN_OPERATOR {mp_and(&$1, &$3, &$$);}
+| exp tOR exp %prec BOOLEAN_OPERATOR {mp_or(&$1, &$3, &$$);}
+| exp tXOR exp %prec BOOLEAN_OPERATOR {mp_xor(&$1, &$3, &$$);}
 | tNUMBER {mp_set_from_mp(&$1, &$$);}
 ;
 

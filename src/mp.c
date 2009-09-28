@@ -453,7 +453,8 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* x/0 */
     if (y->sign == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_DIVIDE ***");
+        /* Translators: Error displayed attempted to divide by zero */
+        mperr(_("Division by zero is not defined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -489,7 +490,8 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
 
     /* x/0 */
     if (y == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_DIVIDE_INTEGER ***");
+        /* Translators: Error displayed attempted to divide by zero */
+        mperr(_("Division by zero is not defined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -747,17 +749,13 @@ mpexp(const MPNumber *x, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
+
+    /* Sum series, reducing t where possible */
     mp_set_from_mp(&t1, z);
     mp_set_from_mp(&t1, &t2);
-
-    /* SUM SERIES, REDUCING T WHERE POSSIBLE */
-    for (i = 2; ; i++)  {
-        if (MP_T + t2.exponent - z->exponent <= 0)
-            break;
-
+    for (i = 2; MP_T + t2.exponent - z->exponent > 0; i++) {
         mp_multiply(&t1, &t2, &t2);
         mp_divide_integer(&t2, i, &t2);
-
         mp_add(&t2, z, z);
         if (t2.sign == 0)
             break;
@@ -805,13 +803,6 @@ mp_epowy(const MPNumber *x, MPNumber *z)
     xs = x->sign;
     mp_abs(x, &t2);
 
-    /*  IF ABS(X) > M POSSIBLE THAT INT(X) OVERFLOWS,
-     *  SO DIVIDE BY 32.
-     */
-    /*if (fabs(rx) > (float)MP.m) {
-        mp_divide_integer(&t2, 32, &t2);
-    }*/
-
     /* GET FRACTIONAL AND INTEGER PARTS OF ABS(X) */
     ix = mp_cast_to_int(&t2);
     mp_fractional_component(&t2, &t2);
@@ -850,17 +841,6 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 
     /* MULTIPLY EXPS OF INTEGER AND FRACTIONAL PARTS */
     mp_multiply(z, &t2, z);
-
-    /* MUST CORRECT RESULT IF DIVIDED BY 32 ABOVE. */
-    /*if (fabs(rx) > (float)MP.m && z->sign != 0) {
-        for (i = 1; i <= 5; ++i) {
-            // SAVE EXPONENT TO AVOID OVERFLOW IN MP_MULTIPLY
-            ie = z->exponent;
-            z->exponent = 0;
-            mp_multiply(z, z, z);
-            z->exponent += ie << 1;
-        }
-    }*/
 
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS ABS(X) LARGE
      *  (WHEN EXP MIGHT OVERFLOW OR UNDERFLOW)
@@ -1040,7 +1020,8 @@ mp_ln(const MPNumber *x, MPNumber *z)
     
     /* ln(-x) invalid */
     if (x->sign <= 0) {
-        mperr("*** X NONPOSITIVE IN CALL TO MP_LN ***");
+        /* Translators: Error displayed attempted to take logarithm of negative value */
+        mperr(_("Logarithm of negative values is undefined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1218,6 +1199,58 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
+mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
+{
+    int i, j, offset, y_length;
+    int fraction[MP_SIZE*2];
+
+    /* x*0 or 0*y or 0*0 = 0 */
+    if (x->sign * y->sign == 0) {
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    /* Calculate length of each fraction */
+    y_length = MP_SIZE;
+    while (y_length > 0 && y->fraction[y_length - 1] == 0)
+        y_length--;
+    
+    /* Multiply together */
+    memset(fraction, 0, sizeof(fraction));
+    for (i = MP_SIZE - 1; i >= 0; i--) {
+        if (x->fraction[i] == 0)
+            continue;
+        for (j = y_length - 1; j >= 0; j--) {
+            int pos = i + j + 1;
+            
+            fraction[pos] += x->fraction[i] * y->fraction[j];
+            fraction[pos-1] += fraction[pos] / MP_BASE;
+            fraction[pos] = fraction[pos] % MP_BASE;
+        }
+    }
+
+    offset = 0;
+    for (i = 0; i < MP_SIZE && fraction[offset] == 0; i++)
+        offset++;
+    z->sign = x->sign * y->sign;
+    z->exponent = x->exponent + y->exponent - offset;
+    for (i = 0; i < MP_SIZE; i++) {
+        if (i + offset >= MP_SIZE*2)
+            z->fraction[i] = 0;
+        else
+            z->fraction[i] = fraction[i + offset];
+    }
+    
+    /*for (i = MP_SIZE + offset; i < MP_SIZE * 2; i++) {
+        if (fraction[i] != 0) {
+            printf("truncated\n");
+            break;
+        }
+    }*/
+}
+
+
+void
 mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
 {
     int c, i, c1, c2, j1, j2;
@@ -1343,7 +1376,7 @@ void
 mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z)
 {
     if (denominator == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN MP_MULTIPLY_FRACTION ***");
+        mperr(_("Division by zero is not defined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1466,14 +1499,14 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* (-x)^y imaginary */
     if (x->sign < 0) {
-        mperr(_("Negative X and non-integer Y not supported"));
+        mperr(_("The power of negative numbers only defined for for integer exponents"));
         mp_set_from_integer(0, z);
         return;
     }
 
     /* 0^-y illegal */
     if (x->sign == 0 && y->sign < 0) {
-        mperr("*** X ZERO AND Y NONPOSITIVE IN CALL TO MP_PWR ***");
+        mperr(_("The power of zero is not defined for a negative exponent"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1505,9 +1538,9 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     float rx;
     static int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
 
-    /* 1/x invalid */
+    /* 1/0 invalid */
     if (x->sign == 0) {
-        mperr("*** ATTEMPTED DIVISION BY ZERO IN CALL TO MP_RECIPROCAL ***");
+        mperr(_("Reciprocal of zero is not defined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1588,20 +1621,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     /* x^(1/0) invalid */
     if (n == 0) {
-        mperr("*** N == 0 IN CALL TO MP_ROOT ***");
-        mp_set_from_integer(0, z);
-        return;
-    }
-    
-    /* 0^-(1/n) invalid */
-    if (x->sign == 0 && n < 0) {
-        mperr("*** X == 0 AND N NEGATIVE IN CALL TO MP_ROOT ***");
-        mp_set_from_integer(0, z);
-        return;
-    }
-
-    /* 0^(1/n) = 0 */
-    if (x->sign == 0) {
+        mperr(_("Root must non-zero"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1615,8 +1635,16 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
         return;
     }
 
+    /* 0^(1/n) = 0 for positive n */
+    if (x->sign == 0) {
+        mp_set_from_integer(0, z);
+        if (n <= 0)
+            mperr(_("Negative root of zero is undefined"));
+        return;
+    }
+    
     if (x->sign < 0 && np % 2 == 0) {
-        mperr("*** X NEGATIVE AND N EVEN IN CALL TO MP_ROOT ***");
+        mperr(_("nth root of negative number not defined for even n"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1706,7 +1734,7 @@ void
 mp_sqrt(const MPNumber *x, MPNumber *z)
 {
     if (x->sign < 0)
-        mperr("*** X NEGATIVE IN CALL TO SUBROUTINE MP_SQRT ***");
+        mperr(_("Square root is not defined for negative values"));
     else if (x->sign == 0)
         mp_set_from_integer(0, z);
     else {
@@ -1732,7 +1760,8 @@ mp_factorial(const MPNumber *x, MPNumber *z)
         return;
     }
     if (!mp_is_natural(x)) {
-        mperr("Cannot take factorial of non-natural number");
+        /* Translators: Error displayed when attempted take the factorial of a fractional number */
+        mperr(_("Factorial only defined for natural numbers"));
         return;
     }
 
@@ -1748,6 +1777,11 @@ void
 mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     MPNumber t1, t2;
+
+    if (!mp_is_integer(x) || !mp_is_integer(y)) {
+        /* Translators: Error displayed when attemping to do a modulus division on non-integer numbers */
+        mperr(_("Modulus division only defined for integers"));
+    }
 
     mp_divide(x, y, &t1);
     mp_integer_component(&t1, &t1);
@@ -1782,9 +1816,10 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     int i;
     MPNumber t;
     
-    /* x^-n invalid */
+    /* 0^-n invalid */
     if (x->sign == 0 && n < 0) {
-        mperr("*** ATTEMPT TO RAISE ZERO TO NEGATIVE POWER IN CALL TO SUBROUTINE mp_xpowy_integer ***");
+        /* Translators: Error displayed when attempted to raise 0 to a negative exponent */
+        mperr(_("The power of zero is not defined for a negative exponent"));
         return;
     }
     

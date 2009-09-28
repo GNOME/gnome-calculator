@@ -25,18 +25,12 @@
 #include "calctool.h"
 
 #define R_ACCURACY "accuracy"
-#define R_BASE     "base"
-#define R_DISPLAY  "display"
-#define R_MODE     "mode"
-#define R_REGS     "showregisters"
-#define R_TRIG     "trigtype"
+#define R_DISPLAY  "result_format"
+#define R_MODE     "button_layout"
+#define R_TRIG     "angle_units"
 #define R_ZEROES   "showzeroes"
 #define R_TSEP     "showthousands"
 #define R_WORDLEN  "wordlen"
-#define R_XPOS     "xposition"
-#define R_YPOS     "yposition"
-
-extern const char *Rtstr[];
 
 void resources_init();
 

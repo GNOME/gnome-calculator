@@ -26,15 +26,14 @@
 #include "get.h"
 #include "mp.h"
 
-static char constant_names[MAX_CONSTANTS][MAXLINE];  /* Selectable constant names. */
-static MPNumber constant_values[MAX_CONSTANTS];  /* Selectable constants. */
-
 static char function_names[MAX_FUNCTIONS][MAXLINE];  /* Function names from .gcalctoolcf. */
 static char function_values[MAX_FUNCTIONS][MAXLINE];   /* Function defs from .gcalctoolcf. */
 
 static MPNumber registers[MAX_REGISTERS];     /* Memory register values. */
+static char register_names[MAX_REGISTERS][MAXLINE];  /* Memory register names */
 
-static const char *default_constants[][2] =
+
+static const char *default_registers[][2] =
 {
     /* Translators: This is the label for the default constant, the number of miles in one kilometer (0.621) */
     { N_("Kilometer-to-mile conversion factor"), "0.621" },
@@ -61,42 +60,32 @@ static const char *default_constants[][2] =
 void register_init()
 {
     int i;
-    char key[MAXLINE], *value;
-
-    for (i = 0; i < MAX_REGISTERS; i++) {
-        SNPRINTF(key, MAXLINE, "register%d", i);
-        value = get_resource(key);
-        if (value) {
-            MPNumber temp;
-            mp_set_from_string(value, 10, &temp);
-            g_free(value);
-            register_set(i, &temp);
-        }
-    }
     
-    for (i = 0; i < MAX_CONSTANTS; i++) {
+    for (i = 0; i < MAX_REGISTERS; i++) {
         char nkey[MAXLINE], *nline;
         char vkey[MAXLINE], *vline = NULL;
         MPNumber value;
 
-        SNPRINTF(nkey, MAXLINE, "constant%1dname", i);
+        SNPRINTF(nkey, MAXLINE, "registger%1dname", i);
         nline = get_resource(nkey);
         if (nline) {
-            SNPRINTF(vkey, MAXLINE, "constant%1dvalue", i);
+            SNPRINTF(vkey, MAXLINE, "register%1d", i);
             vline = get_resource(vkey);
             if (vline == NULL)
                 g_free(nline);
         }
 
         if (nline && vline) {
-            mp_set_from_string(vline, 10, &value);
-            constant_set(i, nline, &value);
+            mp_set_from_string(vline, &value);
+            register_set_name(i, nline);
+            register_set_value(i, &value);
             g_free(nline);
             g_free(vline);
         }
         else {
-            mp_set_from_string(default_constants[i][1], 10, &value);
-            constant_set(i, default_constants[i][0], &value);
+            mp_set_from_string(default_registers[i][1], &value);
+            register_set_name(i, default_registers[i][0]);
+            register_set_value(i, &value);
         }
     }
     
@@ -126,48 +115,36 @@ void register_init()
 
 
 void
-register_set(int index, const MPNumber *value)
+register_set_value(int index, const MPNumber *value)
 {
     if ((index >= 0) && (index <= 10))
         mp_set_from_mp(value, &registers[index]);
 }
 
 
-void
-register_get(int index, MPNumber *value)
+const MPNumber *
+register_get_value(int index)
 {
     if ((index >= 0) && (index <= 10))
-        mp_set_from_mp(&registers[index], value);
+        return &registers[index];
+    else
+        return NULL;
 }
 
 
-void constant_set(int index, const char *name, MPNumber *value)
+void register_set_name(int index, const char *name)
 {
-    char key[MAXLINE], text[MAX_LOCALIZED];
-
-    STRNCPY(constant_names[index], name, MAXLINE - 1);
-    mp_set_from_mp(value, &constant_values[index]);
-
-    SNPRINTF(key, MAXLINE, "constant%1dname", index);
+    char key[MAXLINE];
+    
+    STRNCPY(register_names[index], name, MAXLINE - 1);
+    SNPRINTF(key, MAXLINE, "register%1dname", index);
     set_resource(key, name);
-
-    /* NOTE: Constants are written out with no thousands separator and with a
-       radix character of ".". */
-    mp_cast_to_string(value, 10, MAX_DIGITS, 1, text, MAX_LOCALIZED);
-    SNPRINTF(key, MAXLINE, "constant%1dvalue", index);
-    set_resource(key, text);
 }
 
 
-const char *constant_get_name(int index)
+const char *register_get_name(int index)
 {
-    return constant_names[index];
-}
-
-
-const MPNumber *constant_get_value(int index)
-{
-    return &constant_values[index];
+    return register_names[index];
 }
 
 

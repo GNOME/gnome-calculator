@@ -67,7 +67,7 @@ convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 void
 mp_get_pi(MPNumber *z)
 {
-    mp_set_from_string("3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679", 10, z);
+    mp_set_from_string("3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679", z);
 }
 
 
@@ -278,7 +278,7 @@ mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     mp_cos(x, unit, &cos_x);
     if (mp_is_zero(&cos_x)) {
         /* Translators: Error displayed when tangent value is undefined */
-        mperr(_("Tangent is infinite"));
+        mperr(_("Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"));
         return;
     }
     
@@ -314,8 +314,10 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 
     /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
     mp_set_from_integer(x->sign, &t2);
-    if (!mp_is_equal(x, &t2))
-        mperr("*** ABS(X) > 1 IN CALL TO MP_ASIN ***");
+    if (!mp_is_equal(x, &t2)) {
+        /* Translators: Error displayed when inverse sine value is undefined */
+        mperr(_("Inverse sine not defined for values outside [-1, 1]"));
+    }
 
     /* X == +-1 SO RETURN +-PI/2 */
     mp_get_pi(z);
@@ -336,7 +338,8 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     mp_set_from_integer(-1, &MPn1);
 
     if (mp_is_greater_than(x, &t1) || mp_is_less_than(x, &MPn1)) {
-        mperr("Error");
+        /* Translators: Error displayed when inverse cosine value is undefined */
+        mperr(_("Inverse cosine not defined for values outside [-1, 1]"));
         mp_set_from_integer(0, z);
     } else if (x->sign == 0) {
         mp_divide_integer(&pi, 2, z);
@@ -550,7 +553,8 @@ mp_acosh(const MPNumber *x, MPNumber *z)
     /* Check x >= 1 */
     mp_set_from_integer(1, &t);
     if (mp_is_less_than(x, &t)) {
-        mperr("Error");
+        /* Translators: Error displayed when inverse hyperbolic cosine value is undefined */
+        mperr(_("Inverse hyperbolic cosine not defined for values less than or equal to one"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -573,7 +577,8 @@ mp_atanh(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(1, &one);
     mp_set_from_integer(-1, &minus_one);
     if (mp_is_greater_equal(x, &one) || mp_is_less_equal(x, &minus_one)) {
-        mperr("Error");
+        /* Translators: Error displayed when inverse hyperbolic tangent value is undefined */
+        mperr(_("Inverse hyperbolic tangent not defined for values outside [-1, 1]"));
         mp_set_from_integer(0, z);
         return;
     }

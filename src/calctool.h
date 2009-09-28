@@ -35,15 +35,10 @@
 #define MAX_DIGITS     200         /* Maximum displayable number of digits. */
 #define MAX_LOCALIZED  (MAX_DIGITS * (1 + MB_LEN_MAX) + MB_LEN_MAX)
 
-#define DEFAULT_ACCURACY 9
-
 #ifndef MAXLINE
 #define MAXLINE        512        /* Length of character strings. */
 #endif
 
-#define MAXACC         99         /* Max. number of digits after numeric point. */
-
-#define MAX_CONSTANTS 10
 #define MAX_FUNCTIONS 10
 #define MAX_REGISTERS 10         /* Maximum number of memory registers. */
 
@@ -56,26 +51,18 @@
 #undef FALSE
 #define FALSE          0
 
-#define MPMATH_ERR		    	20001
-
 /* Calctool variables and options. */
 typedef struct {
     char *progname;           /* Name of this program. */
 
     GCDisplay display;        /* Display stack */
 
+    const char *digits[16];   /* Localized digit values */
     const char *radix;        /* Locale specific radix string. */
     const char *tsep;         /* Locale specific thousands separator. */
     int tsep_count;           /* Number of digits between separator. */
-
-    int base;                 /* Numeric base e.g. 2, 8, 10, 16 */
-    MPAngleUnit ttype;        /* Angle unit type */
-    int wordlen;              /* Length of word for bitwise operations */
-    int accuracy;             /* Number of digits precision. */
-
-    int error;                /* true if there is a display error */
 } CalculatorVariables;
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
 
-#endif /*CALCTOOL_H*/
+#endif /* CALCTOOL_H */

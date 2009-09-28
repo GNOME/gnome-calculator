@@ -25,12 +25,10 @@
 #include "mp.h"
 
 void register_init();
-void register_set(int index, const MPNumber *value);
-void register_get(int index, MPNumber *value);
-
-void constant_set(int index, const char *name, MPNumber *value);
-const char *constant_get_name(int index);
-const MPNumber *constant_get_value(int index);
+void register_set_value(int index, const MPNumber *value);
+void register_set_name(int index, const char *name);
+const MPNumber *register_get_value(int index);
+const char *register_get_name(int index);
 
 void function_set(int index, const char *name, const char *value);
 const char *function_get_name(int index);

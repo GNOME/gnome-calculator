@@ -40,8 +40,6 @@
 
 /* Various string values read/written as X resources. */
 
-const char *Rtstr[] = { "DEG", "GRAD", "RAD", NULL };
-
 static GConfClient *client = NULL;
 
 
@@ -58,7 +56,7 @@ void
 set_resource(const char *key, const char *value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_string(client, key_name, value, NULL);
 }
 

@@ -504,6 +504,22 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
     /* Remove negative sign if the number was rounded down to zero */
     if (mp_is_negative(x) && strcmp(string->str, "0") != 0)
         g_string_prepend(string, "−");
+
+    switch(base)
+    {
+    case 2:
+        g_string_append(string, "₂");
+        break;
+    case 8:
+        g_string_append(string, "₈");
+        break;
+    default:
+    case 10:
+        break;
+    case 16:
+        g_string_append(string, "₁₆");
+        break;
+    }
     
     // FIXME: Check for truncation
     strncpy(buffer, string->str, buffer_length);
@@ -580,9 +596,9 @@ char_val(char **c, int base)
 
 
 int
-mp_set_from_string(const char *str, int base, MPNumber *z)
+mp_set_from_string(const char *str, MPNumber *z)
 {
-    int i, negate = 0, multiplier = 0;
+    int i, base, negate = 0, multiplier = 0;
     const char *c, *end;
     gboolean has_fraction = FALSE;
     
@@ -598,15 +614,13 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
     end = str;
     while (*end != '\0')
         end++;
-    if (base < 0) {
-        for (i = 0; base_suffixes[i] != NULL; i++) {
-            if (end - strlen(base_suffixes[i]) < str)
-                continue;
-            if (strcmp(end - strlen(base_suffixes[i]), base_suffixes[i]) == 0)
-                break;
-        }
-        base = base_values[i];
+    for (i = 0; base_suffixes[i] != NULL; i++) {
+        if (end - strlen(base_suffixes[i]) < str)
+            continue;
+        if (strcmp(end - strlen(base_suffixes[i]), base_suffixes[i]) == 0)
+            break;
     }
+    base = base_values[i];
 
     /* Check if this has a sign */
     c = str;
@@ -670,40 +684,6 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
         mp_add(z, &numerator, z);
     }
    
-    /* Convert exponential part */
-    if (*c == 'e' || *c == 'E') {
-        int negate = 0;
-        MPNumber MPbase, MPexponent, temp;
-
-        c++;
-
-        /* Get sign */
-        if (*c == '-') {
-            negate = 1;
-            c++;
-        } else if (strncmp(c, "−", strlen("−")) == 0) {
-            negate = 1;
-            c += strlen("−");
-        } else if (*c == '+') {
-            c++;
-        }
-
-        /* Get magnitude */
-        mp_set_from_integer(0, &MPexponent);
-        while ((i = char_val((char **)&c, base)) >= 0) {
-            mp_multiply_integer(&MPexponent, base, &MPexponent);
-            mp_add_integer(&MPexponent, i, &MPexponent);
-            c++;
-        }
-        if (negate) {
-            mp_invert_sign(&MPexponent, &MPexponent);
-        }
-
-        mp_set_from_integer(base, &MPbase);       
-        mp_xpowy(&MPbase, &MPexponent, &temp);
-        mp_multiply(z, &temp, z);
-    }
-   
     if (c != end) {
         return 1;
     }
@@ -717,6 +697,6 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
  
     if (negate == 1)
         mp_invert_sign(z, z);
-    
+
     return 0;
 }

@@ -26,19 +26,13 @@
 #include "mp.h"
 
 #define PARSER_ERR_INVALID          1
-#define PARSER_ERR_BITWISEOP        3
-#define PARSER_ERR_MODULUSOP        4
 #define PARSER_ERR_OVERFLOW         5
 #define PARSER_ERR_UNKNOWN_VARIABLE 6
 #define PARSER_ERR_UNKNOWN_FUNCTION 7
-#define PARSER_ERR_INVALID_BASE     8
 #define PARSER_ERR_MP               9
 
 /* Options for parser */
 typedef struct {
-    /* The numeric base (e.g 2, 8, 10, 16) */
-    int base;
-
     /* The wordlength for binary operations in bits (e.g. 8, 16, 32) */
     int wordlen;
     
