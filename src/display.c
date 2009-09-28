@@ -866,13 +866,15 @@ do_factorize()
     GList *factors = mp_factorize(&value);
 
     display_insert_number(&v->display, -1, -1, factors->data);
-    factors = factors->next;
+    g_slice_free(MPNumber, factors->data);
 
-    for (; factors != NULL; factors = factors->next) {
+    GList *list = factors->next;
+    for (; list != NULL; list = list->next) {
             display_insert(&v->display, -1, -1, "×");
-            display_insert_number(&v->display, -1, -1, factors->data);
-            g_slice_free(MPNumber, factors->data);
+            display_insert_number(&v->display, -1, -1, list->data);
+            g_slice_free(MPNumber, list->data);
     }
+    g_list_free(factors);
 }
 
 
