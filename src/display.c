@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -47,7 +47,7 @@ str_replace(char *str, char *from, char *to)
     char *c;
     int flen = strlen(from);
     int tlen = strlen(to);
-    
+
     for (c = str; *c && offset < MAX_DISPLAY - 1; c++, offset++) {
         if (strncasecmp(from, c, flen) == 0) {
             SNPRINTF(output + offset, MAX_DISPLAY - offset, "%s", to);
@@ -61,9 +61,9 @@ str_replace(char *str, char *from, char *to)
     if (offset >= MAX_DISPLAY)
         offset = MAX_DISPLAY - 1;
     output[offset] = '\0';
-    
+
     free(str);
-    
+
     return strdup(output);
 }
 
@@ -79,7 +79,7 @@ localize_expression(GCDisplay *display, char *dest, const char *src, int dest_le
     const char *c, *d;
     int digit_count = -1, read_cursor, new_cursor;
     gboolean after_radix = FALSE;
-    
+
     if (cursor) {
         new_cursor = *cursor;
     } else {
@@ -98,9 +98,9 @@ localize_expression(GCDisplay *display, char *dest, const char *src, int dest_le
                     digit_count++;
                 }
             }
-            
+
             g_string_append_unichar(output, g_utf8_get_char(c));
-            
+
             /* Insert separator after nth digit */
             if (display->show_tsep && display->format == DEC &&
                 !after_radix && digit_count > 1 && digit_count % v->tsep_count == 1) {
@@ -126,10 +126,10 @@ localize_expression(GCDisplay *display, char *dest, const char *src, int dest_le
             g_string_append_unichar(output, g_utf8_get_char(c));
         }
     }
-    
+
     STRNCPY(dest, output->str, dest_length - 1);
     g_string_free(output, TRUE);
-    
+
     if (cursor != NULL && *cursor != -1) {
         *cursor = new_cursor;
     }
@@ -180,7 +180,7 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
         display_make_number(display, buf, MAX_DISPLAY, display_get_answer(display));
         text = buf;
     }
-    
+
     /* strtoull() treats the string like a 2's complement number which is not what we want */
     if(strncmp(text, "-", strlen("-")) == 0 || strncmp(text, "−", strlen("−")) == 0)
         return FALSE;
@@ -229,7 +229,7 @@ display_make_text(GCDisplay *display, char *localized, int length, int *cursor)
     GCDisplayState *e;
 
     e = get_state(display);
-        
+
     /* Substitute answer register */
     if (display_is_result(display)) {
         char temp[MAX_LOCALIZED];
@@ -249,7 +249,7 @@ display_refresh(GCDisplay *display)
 {
     char localized[MAX_LOCALIZED];
     int cursor;
-    
+
     cursor = display_get_cursor(display);
     display_make_text(display, localized, MAX_LOCALIZED, &cursor);
     ui_set_display(localized, cursor);
@@ -260,15 +260,15 @@ void
 display_set_string(GCDisplay *display, const char *value, int cursor)
 {
     GCDisplayState *e;
-    
+
     if (value[0] == '\0')
         cursor = -1;
-    
+
     e = get_state(display);
     free(e->expression);
     e->expression = strdup(value);
     e->cursor = cursor;
-    
+
     display_refresh(display);
 }
 
@@ -335,7 +335,7 @@ void display_clear_stack(GCDisplay *display)
 void display_push(GCDisplay *display)
 {
     int c;
-    
+
     if (display->h.current != display->h.end) {
         int i = display->h.current;
 
@@ -370,7 +370,7 @@ void display_pop(GCDisplay *display)
         ui_set_statusbar(_("No undo history"));
     }
     update_undo_redo_button_sensitivity(display);
-    
+
     display_refresh(display);
 }
 
@@ -401,7 +401,7 @@ void
 display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 {
     char buf[MAX_DISPLAY];
-    
+
     if (cursor_start < 0) {
         SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
         display_set_string(display, buf, -1);
@@ -409,7 +409,7 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
         GString *new_text;
         const char *c;
         gint cursor, new_cursor;
-        
+
         /* Get display text and strip out thousand separators */
         new_text = g_string_new("");
         new_cursor = 0;
@@ -417,26 +417,26 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
             g_string_append(new_text, text);
             new_cursor += g_utf8_strlen(text, -1);
         }
-        
+
         cursor = 0;
         for (c = ui_get_display(); *c; c = g_utf8_next_char(c), cursor++) {
             gboolean use = TRUE;
-            
+
             /* Ignore selected part */
             if (cursor_start != cursor_end && cursor >= cursor_start && cursor < cursor_end)
                 use = FALSE;
-            
+
             /* Ignore thousands separators */
             if (strncmp(c, v->tsep, strlen(v->tsep)) == 0)
                 use = FALSE;
-            
+
             /* Copy existing text */
             if (use) {
                 g_string_append_unichar(new_text, g_utf8_get_char(c));
                 if (cursor < cursor_start)
                     new_cursor++;
             }
-            
+
             /* Insert text */
             if ((cursor + 1) == cursor_start) {
                 g_string_append(new_text, text);
@@ -465,19 +465,19 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
     char buf[MAX_DISPLAY] = "";
     GCDisplayState *e = get_state(display);
     int cursor;
-    
+
     /* Can't delete empty display */
     if (display_is_empty(display))
         return;
 
     cursor = display_get_cursor(display);
-    
+
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor_start < 0) {
         int len;
-        
+
         len = g_utf8_strlen(ui_get_display(), -1);
-        
+
         if (display_is_result(display)) {
             display_make_number(display, buf, MAX_DISPLAY, &e->ans);
             e->expression = str_replace(e->expression, "ans", buf);
@@ -507,7 +507,7 @@ void
 display_surround(GCDisplay *display, const char *prefix, const char *suffix)
 {
     char buffer[MAX_DISPLAY];
-    
+
     SNPRINTF(buffer, MAX_DISPLAY, "%s%s%s", prefix, display_get_text(display), suffix);
     display_set_string(display, buffer, -1);
 }
@@ -525,7 +525,7 @@ display_is_result(GCDisplay *display)
 {
     if (strcmp(display_get_text(display), "ans") == 0)
         return TRUE;
-    
+
     return FALSE;
 }
 
@@ -549,10 +549,10 @@ void
 display_init(GCDisplay *display)
 {
     int i;
-   
+
     memset(display, 0, sizeof(GCDisplay));
-   
-    display->show_zeroes = FALSE;         
+
+    display->show_zeroes = FALSE;
     display->show_tsep = FALSE;
     display->format = DEC;
     display->accuracy = 9;
@@ -568,7 +568,7 @@ void display_set_accuracy(GCDisplay *display, int accuracy)
 {
     display->accuracy = accuracy;
     get_state(display)->cursor = -1;
-    display_refresh(display);   
+    display_refresh(display);
 }
 
 
@@ -609,16 +609,16 @@ void display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
 static void
 make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x, int base_)
 {
-    static char digits[] = "0123456789ABCDEF";   
+    static char digits[] = "0123456789ABCDEF";
     char fixed[MAX_DIGITS];
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
     int ddig, eng, exponent = 0;
     GString *string;
-    
+
     string = g_string_sized_new(target_len);
 
     eng = display->format == ENG;
-    
+
     mp_abs(x, &z);
     if (mp_is_negative(x))
         g_string_append(string, "−");
@@ -635,43 +635,43 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x
             exponent += 10;
             mp_multiply(&mantissa, &base10inv, &mantissa);
         }
- 
+
         while ((!eng &&  mp_is_greater_equal(&mantissa, &base)) ||
                 (eng && (mp_is_greater_equal(&mantissa, &base3) || exponent % 3 != 0))) {
             exponent += 1;
             mp_divide(&mantissa, &base, &mantissa);
         }
- 
+
         while (!eng && mp_is_less_than(&mantissa, &base10inv)) {
             exponent -= 10;
             mp_multiply(&mantissa, &base10, &mantissa);
         }
- 
+
         mp_set_from_integer(1, &t);
         while (mp_is_less_than(&mantissa, &t) || (eng && exponent % 3 != 0)) {
             exponent -= 1;
             mp_multiply(&mantissa, &base, &mantissa);
         }
     }
- 
+
     mp_cast_to_string(&mantissa, base_, display->accuracy, !display->show_zeroes, fixed, MAX_DIGITS);
     g_string_append(string, fixed);
     g_string_append(string, "×10^");
- 
+
     if (exponent < 0) {
         exponent = -exponent;
         g_string_append(string, "−");
     } else {
-        g_string_append(string, "+");        
+        g_string_append(string, "+");
     }
- 
+
     mp_set_from_string("0.5", &t);
     mp_add_integer(&t, exponent, &z);
     mp_set_from_integer(1, &t);
     for (ddig = 0; mp_is_greater_equal(&z, &t); ddig++) {
         mp_divide(&z, &base, &z);
     }
- 
+
     while (ddig-- > 0) {
         int dval;
 
@@ -718,7 +718,7 @@ get_variable(const char *name, MPNumber *z, void *data)
     char *c, *lower_name;
     int result = 1;
     GCDisplay *display = data;
-    
+
     lower_name = strdup(name);
     for (c = lower_name; *c; c++)
         *c = tolower(*c);
@@ -769,7 +769,7 @@ do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
     /* Copy input to modify, no operation can make the clean string longer than
      * the original string */
     clean_text = strdup(text);
-    
+
     output = clean_text;
     for (input = text; *input; input++) {
         /* If the clipboard buffer contains any occurances of the "thousands
@@ -779,28 +779,28 @@ do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
             input += strlen(v->tsep) - 1;
             continue;
         }
-        
+
         /* Replace radix with "." */
         else if (strncmp(input, v->radix, strlen(v->radix)) == 0) {
             input += strlen(v->radix) - 1;
             c = '.';
         }
 
-        /* Replace tabs with spaces */        
+        /* Replace tabs with spaces */
         else if (*input == '\t') {
             c = ' ';
         }
-        
-        /* Terminate on newlines */        
+
+        /* Terminate on newlines */
         else if (*input == '\r' || *input == '\n') {
             c = '\0';
         }
-        
-        /* If an "A", "B", "C", "D" or "F" character is encountered, it 
-         * will be converted to its lowercase equivalent. If an "E" is 
-         * found,  and the next character is a "-" or a "+", then it 
-         * remains as an upper case "E" (it's assumed to be a possible 
-         * exponential number), otherwise its converted to a lower case 
+
+        /* If an "A", "B", "C", "D" or "F" character is encountered, it
+         * will be converted to its lowercase equivalent. If an "E" is
+         * found,  and the next character is a "-" or a "+", then it
+         * remains as an upper case "E" (it's assumed to be a possible
+         * exponential number), otherwise its converted to a lower case
          * "e". See bugs #455889 and #469245 for more details.
          */
         else if (*input >= 'A' && *input <= 'F') {
@@ -812,10 +812,10 @@ do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
             else
                 c = tolower(*input);
         }
-        
+
         else
             c = *input;
-        
+
         *output++ = c;
     }
     *output++ = '\0';
@@ -869,7 +869,7 @@ do_factorize()
         display_insert(&v->display, -1, -1, "−");
         mp_invert_sign(&value, &value);
     }
-    
+
     mp_set_from_integer(1, &tmp);
     if (mp_is_equal(&value, &tmp)) {
         display_insert(&v->display, -1, -1, v->digits[1]);
@@ -915,7 +915,7 @@ static void
 do_sto(GCDisplay *display, int index)
 {
     MPNumber temp;
-    
+
     if (!display_is_usable_number(display, &temp))
         ui_set_statusbar(_("No sane value to store"));
     else
@@ -930,7 +930,7 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
     MPNumber *ans;
     int enabled;
     guint64 bit_value;
-    
+
     switch (function) {
         case FN_UNDO:
             display_pop(display);
@@ -943,7 +943,7 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
         default:
             break;
     }
-    
+
     display_push(display);
 
     display_set_cursor(display, cursor_start);
@@ -968,10 +968,10 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
         case FN_PASTE:
             do_paste(display, cursor_start, cursor_end, (const char *)arg); // FIXME: Probably not 64 bit safe
             return;
-        
+
         case FN_INSERT_CHARACTER:
             do_insert_character(display, (const char *)arg); // FIXME: Probably not 64 bit safe
-            return;        
+            return;
 
         case FN_STORE:
             do_sto(display, arg);
@@ -985,7 +985,7 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
         case FN_BACKSPACE:
             display_backspace(display, cursor_start, cursor_end);
             break;
-        
+
         case FN_DELETE:
             display_delete(display, cursor_start, cursor_end);
             break;
@@ -996,7 +996,7 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
                 MPNumber MP;
 
                 bit_value ^= (1LL << (63 - arg));
-    
+
                 /* FIXME: Convert to string since we don't support setting MP numbers from 64 bit integers */
                 SNPRINTF(buf, MAX_DISPLAY, "%llu", bit_value);
                 mp_set_from_string(buf, &MP);
@@ -1015,10 +1015,10 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
                     display_pop(display);
                 }
 
-            /* Do nothing */                
+            /* Do nothing */
             } else if (display_is_empty(display)) {
                 ;
-                
+
             /* Solve the equation */
             } else {
                 MPNumber z;

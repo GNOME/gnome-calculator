@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -38,9 +38,9 @@ mp_set_from_float(float rx, MPNumber *z)
 {
     int i, k, i2, ib, ie, tp;
     float rb, rj;
-    
+
     i2 = MP_T + 4;
-    
+
     memset(z, 0, sizeof(MPNumber));
 
     /* CHECK SIGN */
@@ -58,7 +58,7 @@ mp_set_from_float(float rx, MPNumber *z)
 
     ie = 0;
 
-    /* INCREASE IE AND DIVIDE RJ BY 16. */    
+    /* INCREASE IE AND DIVIDE RJ BY 16. */
     while (rj >= (float)1.0) {
         ++ie;
         rj *= (float) 0.0625;
@@ -133,7 +133,7 @@ mp_set_from_double(double dx, MPNumber *z)
     } else {
         mp_set_from_integer(0, z);
         return;
-    } 
+    }
 
     /* INCREASE IE AND DIVIDE DJ BY 16. */
     for (ie = 0; dj >= 1.0; ie++)
@@ -272,7 +272,7 @@ mp_cast_to_int(const MPNumber *x)
     j = ret_val;
     for (i = x2 - 1; i >= 0; i--) {
         int j1, kx;
-        
+
         j1 = j / MP_BASE;
         kx = 0;
         if (i < MP_T)
@@ -298,7 +298,7 @@ static double
 mppow_ri(float ap, int bp)
 {
     double pow;
-    
+
     if (bp == 0)
         return 1.0;
 
@@ -308,9 +308,9 @@ mppow_ri(float ap, int bp)
         bp = -bp;
         ap = 1 / ap;
     }
-    
+
     pow = 1.0;
-    for (;;) { 
+    for (;;) {
         if (bp & 01)
             pow *= ap;
         if (bp >>= 1)
@@ -318,7 +318,7 @@ mppow_ri(float ap, int bp)
         else
             break;
     }
-    
+
     return pow;
 }
 
@@ -328,7 +328,7 @@ mp_cast_to_float(const MPNumber *x)
 {
     int i;
     float rb, rz = 0.0;
-    
+
     if (x->sign == 0)
         return 0.0;
 
@@ -367,13 +367,13 @@ mppow_di(double ap, int bp)
 {
     double pow = 1.0;
 
-    if (bp != 0) { 
+    if (bp != 0) {
         if (bp < 0) {
             if (ap == 0) return(pow);
             bp = -bp;
             ap = 1/ap;
         }
-        for (;;) { 
+        for (;;) {
             if (bp & 01) pow *= ap;
             if (bp >>= 1) ap *= ap;
             else break;
@@ -438,14 +438,14 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
     MPNumber number, integer_component, fractional_component, MPbase, temp;
     int i, last_non_zero;
     GString *string;
-    
+
     string = g_string_sized_new(buffer_length);
 
     if (mp_is_negative(x))
         mp_abs(x, &number);
     else
         mp_set_from_mp(x, &number);
-   
+
     /* Add rounding factor */
     mp_set_from_integer(base, &MPbase);
     mp_xpowy_integer(&MPbase, -(accuracy+1), &temp);
@@ -455,28 +455,28 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
 
     /* Split into integer and fractional component */
     mp_integer_component(&number, &integer_component);
-    mp_fractional_component(&number, &fractional_component);  
+    mp_fractional_component(&number, &fractional_component);
 
     /* Write out the integer component least significant digit to most */
     mp_set_from_mp(&integer_component, &temp);
     do {
         MPNumber t, t2, t3;
-       
+
         mp_divide_integer(&temp, base, &t);
         mp_integer_component(&t, &t);
         mp_multiply_integer(&t, base, &t2);
-       
+
         mp_subtract(&temp, &t2, &t3);
         mp_integer_component(&t3, &t3);
 
         g_string_prepend_c(string, digits[mp_cast_to_int(&t3)]);
-       
+
         mp_set_from_mp(&t, &temp);
     } while (!mp_is_zero(&temp));
 
     last_non_zero = string->len;
     g_string_append_c(string, '.');
-   
+
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
     for (i = accuracy; i > 0 && !mp_is_zero(&temp); i--) {
@@ -486,7 +486,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
         mp_multiply_integer(&temp, base, &temp);
         mp_integer_component(&temp, &digit);
         d = mp_cast_to_int(&digit);
-       
+
         g_string_append_c(string, digits[d]);
 
         if(d != 0)
@@ -497,7 +497,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
     /* Strip trailing zeroes */
     if (trim_zeroes || accuracy == 0)
         g_string_truncate(string, last_non_zero);
-    
+
     /* Remove negative sign if the number was rounded down to zero */
     if (mp_is_negative(x) && strcmp(string->str, "0") != 0)
         g_string_prepend(string, "−");
@@ -517,7 +517,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
         g_string_append(string, "₁₆");
         break;
     }
-    
+
     // FIXME: Check for truncation
     strncpy(buffer, string->str, buffer_length);
     g_string_free(string, TRUE);
@@ -585,7 +585,7 @@ char_val(char **c, int base)
     }
     if (value >= base)
        return -1;
-    
+
     *c += offset;
 
     return value;
@@ -598,7 +598,7 @@ mp_set_from_string(const char *str, MPNumber *z)
     int i, base, negate = 0, multiplier = 0;
     const char *c, *end;
     gboolean has_fraction = FALSE;
-    
+
     const char *base_suffixes[] = {"₂", "₈", "₁₆", NULL};
     int base_values[]           = {2, 8, 16, 10};
     const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
@@ -606,7 +606,7 @@ mp_set_from_string(const char *str, MPNumber *z)
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
     const char *si_suffixes[]   = {"T", "G", "M", "k", "d", "c", "m", "u", "µ", "n", "p", "f", NULL};
     int si_multipliers[]        = { 12,   9,   6,   3,  -1,  -2,  -3,  -6,  -6,  -9, -12, -15};
-    
+
     /* Find the base */
     end = str;
     while (*end != '\0')
@@ -637,7 +637,7 @@ mp_set_from_string(const char *str, MPNumber *z)
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
     }
-    
+
     /* Look for fraction characters, e.g. ⅚ */
     for (i = 0; fractions[i] != NULL; i++) {
         if (end - strlen(fractions[i]) < str)
@@ -650,7 +650,7 @@ mp_set_from_string(const char *str, MPNumber *z)
         mp_set_from_fraction(numerators[i], denominators[i], &fraction);
         mp_add(z, &fraction, z);
     }
-    
+
     if (*c == '.') {
         has_fraction = TRUE;
         c++;
@@ -665,7 +665,7 @@ mp_set_from_string(const char *str, MPNumber *z)
             c += strlen(si_suffixes[i]);
         }
     }
-   
+
     /* Convert fractional part */
     if (has_fraction) {
         MPNumber numerator, denominator;
@@ -680,18 +680,18 @@ mp_set_from_string(const char *str, MPNumber *z)
         mp_divide(&numerator, &denominator, &numerator);
         mp_add(z, &numerator, z);
     }
-   
+
     if (c != end) {
         return 1;
     }
-    
+
     if (multiplier != 0) {
         MPNumber t;
         mp_set_from_integer(10, &t);
         mp_xpowy_integer(&t, multiplier, &t);
         mp_multiply(z, &t, z);
     }
- 
+
     if (negate == 1)
         mp_invert_sign(z, z);
 

@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -44,7 +44,7 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
 {
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
-   
+
     mp_cast_to_string(x, 16, 0, 0, text1, MAX_DIGITS);
     mp_cast_to_string(y, 16, 0, 0, text2, MAX_DIGITS);
     offset1 = strlen(text1) - 1 - strlen("₁₆");
@@ -57,11 +57,11 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
         mperr("Overflow. Try a bigger word size");
         return;
     }
-   
+
     /* Perform bitwise operator on each character from right to left */
     for (text_out[offset_out+1] = '\0'; offset_out >= 0; offset_out--) {
         int v1 = 0, v2 = 0;
-        
+
         if (offset1 >= 0) {
             v1 = hex_to_int(text1[offset1]);
             offset1--;
@@ -72,7 +72,7 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
         }
         text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
-   
+
     snprintf(text_out2, MAX_DIGITS, "%s₁₆", text_out);
     mp_set_from_string(text_out2, z);
 }
@@ -112,7 +112,7 @@ mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     if (!mp_is_natural(x) || !mp_is_natural(y))
     {
-        /* Translators: Error displayed when boolean OR attempted on non-integer values */        
+        /* Translators: Error displayed when boolean OR attempted on non-integer values */
         mperr(_("Boolean OR only defined for natural numbers"));
     }
 
@@ -137,7 +137,7 @@ void
 mp_not(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber temp;
-    
+
     if (!mp_is_natural(x))
     {
         /* Translators: Error displayed when boolean XOR attempted on non-integer values */
@@ -154,7 +154,7 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
 {
     char text[MAX_DIGITS];
     size_t len, offset;
-    
+
     /* Convert to a hexadecimal string and use last characters */
     mp_cast_to_string(x, 16, 0, 0, text, MAX_DIGITS);
     len = strlen(text) - strlen("₁₆");
@@ -168,13 +168,13 @@ void
 mp_shift(const MPNumber *x, int count, MPNumber *z)
 {
     int i, multiplier = 1;
-    
+
     if (!mp_is_integer(x)) {
         /* Translators: Error displayed when bit shift attempted on non-integer values */
         mperr(_("Shift only possible on integer values"));
         return;
     }
-    
+
     if (count >= 0) {
         for (i = 0; i < count; i++)
             multiplier *= 2;

@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -37,7 +37,7 @@ mperr(const char *format, ...)
 {
     char text[1024];
     va_list args;
-    
+
     va_start(args, format);
     vsnprintf(text, 1024, format, args);
     va_end(args);
@@ -78,7 +78,7 @@ mpext(int i, int j, MPNumber *x)
     q = (j + 1) / i + 1;
     s = MP_BASE * x->fraction[MP_T - 2] + x->fraction[MP_T - 1];
 
-    /* SET LAST TWO DIGITS TO ZERO */    
+    /* SET LAST TWO DIGITS TO ZERO */
     if (s <= q) {
         x->fraction[MP_T - 2] = 0;
         x->fraction[MP_T - 1] = 0;
@@ -121,7 +121,7 @@ static int
 mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
 {
     int i, c;
-    
+
     /* CLEAR GUARD DIGITS TO RIGHT OF X DIGITS */
     for(i = 3; i >= med; i--)
         r[MP_T + i] = 0;
@@ -134,7 +134,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         c = 0;
         for (; i >= med; i--) {
             c = y->fraction[i] + x->fraction[i - med] + c;
-            
+
             if (c < MP_BASE) {
                 /* NO CARRY GENERATED HERE */
                 r[i] = c;
@@ -145,25 +145,25 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
                 c = 1;
             }
         }
-        
+
         for (; i >= 0; i--)
         {
             c = y->fraction[i] + c;
             if (c < MP_BASE) {
                 r[i] = c;
                 i--;
-                
+
                 /* NO CARRY POSSIBLE HERE */
                 for (; i >= 0; i--)
                     r[i] = y->fraction[i];
 
                 return 0;
             }
-            
+
             r[i] = 0;
             c = 1;
         }
-        
+
         /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
         if (c != 0) {
             for (i = MP_T + 3; i > 0; i--)
@@ -180,8 +180,8 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         /* HERE DO SUBTRACTION, ABS(Y) > ABS(X) */
         r[i] = c - x->fraction[i - med];
         c = 0;
-        
-        /* BORROW GENERATED HERE */    
+
+        /* BORROW GENERATED HERE */
         if (r[i] < 0) {
             c = -1;
             r[i] += MP_BASE;
@@ -195,7 +195,7 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
             r[i] = c;
             c = 0;
         } else {
-            /* BORROW GENERATED HERE */            
+            /* BORROW GENERATED HERE */
             r[i] = c + MP_BASE;
             c = -1;
         }
@@ -207,14 +207,14 @@ mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
         if (c >= 0) {
             r[i] = c;
             i--;
-            
+
             /* NO CARRY POSSIBLE HERE */
             for (; i >= 0; i--)
                 r[i] = y->fraction[i];
 
             return 0;
         }
-        
+
         r[i] = c + MP_BASE;
         c = -1;
     }
@@ -231,7 +231,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
     int exp_diff, med;
     int x_largest = 0;
     MPNumber zt; // Use stack variable because of mp_normalize brokeness
-    
+
     memset(&zt, 0, sizeof(MPNumber));
 
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
@@ -241,7 +241,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
         return;
     }
 
-    /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */    
+    /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */
     if (y->sign == 0 || y->sign == 0) {
         mp_set_from_mp(x, z);
         return;
@@ -290,7 +290,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
                     x_largest = 1;
                 break;
             }
-            
+
             /* Both mantissas equal, so result is zero. */
             if (j >= MP_T) {
                 mp_set_from_integer(0, z);
@@ -360,7 +360,7 @@ mp_fractional_component(const MPNumber *x, MPNumber *z)
         mp_set_from_mp(x, z);
         return;
     }
-    
+
     /* Shift fractional component */
     shift = x->exponent;
     for (i = shift; i < MP_SIZE && x->fraction[i] == 0; i++)
@@ -382,7 +382,7 @@ void
 mp_integer_component(const MPNumber *x, MPNumber *z)
 {
     int i;
-    
+
     /* Integer component of zero = 0 */
     if (x->sign == 0) {
         mp_set_from_mp(x, z);
@@ -396,7 +396,7 @@ mp_integer_component(const MPNumber *x, MPNumber *z)
     }
 
     /* Clear fraction */
-    mp_set_from_mp(x, z);    
+    mp_set_from_mp(x, z);
     for (i = z->exponent; i < MP_SIZE; i++)
         z->fraction[i] = 0;
 }
@@ -408,12 +408,12 @@ mp_compare_mp_to_mp(const MPNumber *x, const MPNumber *y)
     int i;
 
     if (x->sign != y->sign) {
-        if (x->sign > y->sign) 
+        if (x->sign > y->sign)
             return 1;
         else
             return -1;
     }
-    
+
     /* x = y = 0 */
     if (x->sign == 0)
         return 0;
@@ -492,7 +492,7 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
-    
+
     /* 0/y = 0 */
     if (x->sign == 0) {
         mp_set_from_integer(0, z);
@@ -564,20 +564,20 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
             if (c < 0)
                 goto L210;
         }
-        
+
         for (k = kh; k < i2; k++) {
             z->fraction[k] = c / y;
             c = MP_BASE * (c - y * z->fraction[k]);
         }
         if (c < 0)
             goto L210;
-        
+
         /* NORMALIZE AND ROUND RESULT */
         mp_normalize(z);
 
         return;
     }
-    
+
     /* HERE NEED SIMULATED DOUBLE-PRECISION DIVISION */
     j1 = y / MP_BASE;
 
@@ -625,10 +625,10 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
         /* R(K) = QUOTIENT, C = REMAINDER */
         z->fraction[k - 1] = iqj + ir;
         c = iq - y * iqj;
-        
+
         if (c < 0)
             goto L210;
-        
+
         ++k;
         if (k > i2) {
             mp_normalize(z);
@@ -649,8 +649,8 @@ mp_is_integer(const MPNumber *x)
     MPNumber t1, t2, t3;
 
     /* This fix is required for 1/3 repiprocal not being detected as an integer */
-    /* Multiplication and division by 10000 is used to get around a 
-     * limitation to the "fix" for Sun bugtraq bug #4006391 in the 
+    /* Multiplication and division by 10000 is used to get around a
+     * limitation to the "fix" for Sun bugtraq bug #4006391 in the
      * mp_integer_component() routine in mp.c, when the exponent is less than 1.
      */
     mp_set_from_integer(10000, &t3);
@@ -661,7 +661,7 @@ mp_is_integer(const MPNumber *x)
 
     /* Correct way to check for integer */
     /*int i;
-    
+
     // Zero is an integer
     if (x->sign == 0)
         return 1;
@@ -675,14 +675,14 @@ mp_is_integer(const MPNumber *x)
         if (x->fraction[i] != 0)
             return 0;
     }
-    
+
     return 1;*/
 }
 
 
 int
 mp_is_natural(const MPNumber *x)
-{    
+{
     return x->sign > 0 && mp_is_integer(x);
 }
 
@@ -763,7 +763,7 @@ mpexp(const MPNumber *x, MPNumber *z)
         mp_add_integer(z, 2, &t1);
         mp_multiply(&t1, z, z);
     }
-    
+
     mp_add_integer(z, 1, z);
 }
 
@@ -824,7 +824,7 @@ mp_epowy(const MPNumber *x, MPNumber *z)
     for (i = 2 ; ; i++) {
         if (min(tss, tss + 2 + t1.exponent) <= 2)
             break;
-        
+
         mp_divide_integer(&t1, i * xs, &t1);
         mp_add(&t2, &t1, &t2);
         if (t1.sign == 0)
@@ -901,7 +901,7 @@ mp_is_zero(const MPNumber *x)
 }
 
 
-int 
+int
 mp_is_negative(const MPNumber *x)
 {
     MPNumber zero;
@@ -941,7 +941,7 @@ mplns(const MPNumber *x, MPNumber *z)
 {
     int t, it0;
     MPNumber t1, t2, t3;
-    
+
     /* ln(1) = 0 */
     if (x->sign == 0) {
         mp_set_from_integer(0, z);
@@ -974,7 +974,7 @@ mplns(const MPNumber *x, MPNumber *z)
         while(1)
         {
             int ts2, ts3;
-            
+
             mp_epowy(z, &t3);
             mp_add_integer(&t3, -1, &t3);
             mp_multiply(&t2, &t3, &t1);
@@ -996,7 +996,7 @@ mplns(const MPNumber *x, MPNumber *z)
             } while (t > ts3);
             t = ts2;
         }
-        
+
         /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
         if (t3.sign != 0 && t3.exponent << 1 > it0 - MP_T) {
             mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
@@ -1014,7 +1014,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
     int e, k;
     float rx, rlx;
     MPNumber t1, t2;
-    
+
     /* ln(-x) invalid */
     if (x->sign <= 0) {
         /* Translators: Error displayed attempted to take logarithm of negative value */
@@ -1057,7 +1057,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
 
         /* COMPUTE RESIDUAL WHOSE LOG IS STILL TO BE FOUND */
         mp_multiply(&t1, &t2, &t1);
-        
+
         /* MAKE SURE NOT LOOPING INDEFINITELY */
         ++k;
         if (k >= 10) {
@@ -1112,11 +1112,11 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
-    
+
     z->sign = x->sign * y->sign;
     z->exponent = x->exponent + y->exponent;
     memset(&r, 0, sizeof(MPNumber));
-    
+
     /* PERFORM MULTIPLICATION */
     c = 8;
     for (i = 0; i < MP_T; i++) {
@@ -1167,7 +1167,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
             mp_set_from_integer(0, z);
             return;
         }
-    
+
         c = 0;
         for (j = MP_T + 3; j >= 0; j--) {
             int ri = r.fraction[j] + c;
@@ -1179,7 +1179,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
             c = ri / MP_BASE;
             r.fraction[j] = ri - MP_BASE * c;
         }
-        
+
         if (c != 0) {
             mperr("*** ILLEGAL BASE B DIGIT IN CALL TO MP_MULTIPLY, POSSIBLE OVERWRITING PROBLEM ***");
             mp_set_from_integer(0, z);
@@ -1211,7 +1211,7 @@ mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
     y_length = MP_SIZE;
     while (y_length > 0 && y->fraction[y_length - 1] == 0)
         y_length--;
-    
+
     /* Multiply together */
     memset(fraction, 0, sizeof(fraction));
     for (i = MP_SIZE - 1; i >= 0; i--) {
@@ -1219,7 +1219,7 @@ mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
             continue;
         for (j = y_length - 1; j >= 0; j--) {
             int pos = i + j + 1;
-            
+
             fraction[pos] += x->fraction[i] * y->fraction[j];
             fraction[pos-1] += fraction[pos] / MP_BASE;
             fraction[pos] = fraction[pos] % MP_BASE;
@@ -1237,7 +1237,7 @@ mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
         else
             z->fraction[i] = fraction[i + offset];
     }
-    
+
     /*for (i = MP_SIZE + offset; i < MP_SIZE * 2; i++) {
         if (fraction[i] != 0) {
             printf("truncated\n");
@@ -1252,7 +1252,7 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
 {
     int c, i, c1, c2, j1, j2;
     int t1, t3, t4, ij, ri = 0, is, ix;
-    
+
     /* x*0 = 0*y = 0 */
     if (x->sign == 0 || y == 0) {
         mp_set_from_integer(0, z);
@@ -1266,7 +1266,7 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
         z->sign *= y;
         return;
     }*/
-    
+
     /* If multiplying by base then can optimise */
     if (y % MP_BASE == 0) {
         mp_set_from_mp(x, z);
@@ -1275,7 +1275,7 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
             z->exponent += -y / MP_BASE;
         }
         else
-            z->exponent += y / MP_BASE;    
+            z->exponent += y / MP_BASE;
         return;
     }
 
@@ -1350,13 +1350,13 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
             mp_normalize(z);
             return;
         }
-        
+
         if (c < 0) {
             mperr("*** INTEGER OVERFLOW IN mp_multiply_integer, B TOO LARGE ***");
             mp_set_from_integer(0, z);
             return;
         }
-        
+
         for (ij = 1; ij <= t3; ++ij) {
             i = t4 - ij;
             z->fraction[i] = z->fraction[i - 1];
@@ -1410,7 +1410,7 @@ mp_normalize(MPNumber *x)
     /* Normalized zero is zero */
     if (x->sign == 0)
         return;
-    
+
     /* CHECK THAT SIGN = +-1 */
     if (abs(x->sign) > 1) {
         mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_NORMALIZE, POSSIBLE OVERWRITING PROBLEM ***");
@@ -1420,7 +1420,7 @@ mp_normalize(MPNumber *x)
 
     i2 = MP_T + 4;
 
-    /* Normalize by shifting the fraction to the left */    
+    /* Normalize by shifting the fraction to the left */
     if (x->fraction[0] == 0) {
         /* Find how many places to shift and detect 0 fraction */
         for (i = 1; i < i2 && x->fraction[i] == 0; i++);
@@ -1428,7 +1428,7 @@ mp_normalize(MPNumber *x)
             mp_set_from_integer(0, x);
             return;
         }
-        
+
         x->exponent -= i;
         i2m = i2 - i;
         for (j = 0; j < i2m; j++)
@@ -1507,7 +1507,7 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
-    
+
     /* x^0 = 1 */
     if (y->sign == 0) {
         mp_set_from_integer(1, z);
@@ -1563,11 +1563,11 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
         t = 3;
     it0 = (t + 4) / 2;
 
-    /* MAIN ITERATION LOOP */    
-    if (t <= MP_T) {        
+    /* MAIN ITERATION LOOP */
+    if (t <= MP_T) {
         while(1) {
             int ts2, ts3;
-            
+
             mp_multiply(x, &t1, &t2);
             mp_add_integer(&t2, -1, &t2);
             mp_multiply(&t1, &t2, &t2);
@@ -1586,7 +1586,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
             } while (t > ts3);
             t = min(ts2, MP_T);
         }
-        
+
         /* RETURN IF NEWTON ITERATION WAS CONVERGING */
         if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
             /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
@@ -1639,7 +1639,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
             mperr(_("Negative root of zero is undefined"));
         return;
     }
-    
+
     if (x->sign < 0 && np % 2 == 0) {
         mperr(_("nth root of negative number not defined for even n"));
         mp_set_from_integer(0, z);
@@ -1673,8 +1673,8 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     if (MP_BASE < 10)
         t = it[MP_BASE - 1];
     else
-        t = 3;        
-    
+        t = 3;
+
     if (t <= MP_T) {
         /* IT0 IS A NECESSARY SAFETY FACTOR */
         it0 = (t + 4) / 2;
@@ -1750,7 +1750,7 @@ void
 mp_factorial(const MPNumber *x, MPNumber *z)
 {
     int i, value;
-    
+
     /* 0! == 1 */
     if (x->sign == 0) {
         mp_set_from_integer(1, z);
@@ -1812,14 +1812,14 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
 {
     int i;
     MPNumber t;
-    
+
     /* 0^-n invalid */
     if (x->sign == 0 && n < 0) {
         /* Translators: Error displayed when attempted to raise 0 to a negative exponent */
         mperr(_("The power of zero is not defined for a negative exponent"));
         return;
     }
-    
+
     /* 0^n = 0 */
     if (x->sign == 0) {
         mp_set_from_integer(0, z);

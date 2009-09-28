@@ -1,14 +1,14 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
@@ -85,7 +85,7 @@ static ButtonData button_data[] = {
     {"fractional_portion", "frac"},
     {"ones_complement",    "ones"},
     {"twos_complement",    "twos"},
-    {"trunc",              "trunc"},    
+    {"trunc",              "trunc"},
     {"start_group",        "("},
     {"end_group",          ")"},
     {NULL, NULL}
@@ -95,7 +95,7 @@ static ButtonData button_data[] = {
 static char *titles[] = {
     /* Translators: The window title when in basic mode */
     N_("Calculator"),
-    /* Translators: The window title when in advanced mode */    
+    /* Translators: The window title when in advanced mode */
     N_("Calculator - Advanced"),
     /* Translators: The window title when in financial mode */
     N_("Calculator - Financial"),
@@ -143,13 +143,13 @@ typedef enum {
 
 /* Gtk+/Xlib graphics object. */
 typedef struct {
-    ModeType mode;  /* Current calculator mode. */   
+    ModeType mode;  /* Current calculator mode. */
 
     GtkBuilder *ui;
     GtkBuilder *financial;
-    
+
     GtkWidget *main_window;
- 
+
     GtkWidget *menubar; // FIXME: Why is this needed?
 
     GtkWidget *bit_panel;
@@ -160,7 +160,7 @@ typedef struct {
 
     GtkWidget *display_item;           /* Calculator display. */
     GtkTextBuffer *display_buffer;     /* Buffer used in display */
-    GtkTextBuffer *info_buffer;        /* Buffer used in info messages */    
+    GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
     GtkWidget *bas_panel;      /* Panel containing basic mode widgets. */
@@ -168,18 +168,18 @@ typedef struct {
     GtkWidget *fin_panel;      /* Panel containing financial mode widgets. */
     GtkWidget *sci_panel;      /* Panel containing scientific mode widgets. */
     GtkWidget *prog_panel;     /* Panel containing programming mode widgets. */
-    
+
     GtkWidget *superscript_toggle;
     GtkWidget *subscript_toggle;
-    
+
     /* Labels for popup menus */
     GtkWidget *memory_store_labels[MAX_REGISTERS];
     GtkWidget *memory_recall_labels[MAX_REGISTERS];
-    
+
     GtkWidget *preferences_dialog;
-    
+
     GdkAtom clipboard_atom;
-    GdkAtom primary_atom;  
+    GdkAtom primary_atom;
     char *shelf;                       /* PUT selection shelf contents. */
 
     /* Last text entered */
@@ -218,7 +218,7 @@ static void load_ui(GtkBuilder *ui, const gchar *filename)
     gtk_builder_add_from_file(ui, filename, &error);
     if (error == NULL)
         return;
-        
+
     dialog = gtk_message_dialog_new(NULL, 0,
                                     GTK_MESSAGE_ERROR,
                                     GTK_BUTTONS_NONE,
@@ -228,7 +228,7 @@ static void load_ui(GtkBuilder *ui, const gchar *filename)
                                              /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
                                              N_("A required file is missing or damaged, please check your installation.\n\n%s"), error->message);
     gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
-    
+
     gtk_dialog_run(GTK_DIALOG(dialog));
     exit(0);
 }
@@ -249,7 +249,7 @@ static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *
 }
 
 static void
-position_popup(GtkWidget *base, GtkWidget *popup, 
+position_popup(GtkWidget *base, GtkWidget *popup,
                PopupLocation location_op)
 {
     int base_x, base_y, base_width, base_height;
@@ -322,10 +322,10 @@ position_popup(GtkWidget *base, GtkWidget *popup,
 }
 
 
-void 
+void
 ui_set_undo_enabled(gboolean undo, gboolean redo)
 {
-//    gtk_widget_set_sensitive(GET_WIDGET("undo_menu"), undo); 
+//    gtk_widget_set_sensitive(GET_WIDGET("undo_menu"), undo);
 //    gtk_widget_set_sensitive(GET_WIDGET("redo_menu"), redo);
 }
 
@@ -344,7 +344,7 @@ ui_set_bitfield(int enabled, guint64 bits)
 {
     int i;
     const gchar *label;
-    
+
     gtk_widget_set_sensitive(X.bit_panel, enabled);
 
     for (i = 0; i < MAXBITS; i++) {
@@ -396,7 +396,7 @@ do_text(const char *text)
 {
     do_button(FN_TEXT, (int)text); // FIXME: Not 64 bit safe
 }
-            
+
 
 static void
 do_finc(char* dialog)
@@ -416,7 +416,7 @@ ui_set_mode(ModeType mode)
 
     /* Save mode */
     set_enumerated_resource(R_MODE, mode_names, (int)mode);
-    
+
     /* Show/enable the widgets used in this mode */
     g_object_set(G_OBJECT(X.adv_panel), "visible", mode != BASIC, NULL);
     g_object_set(G_OBJECT(X.fin_panel), "visible", mode == FINANCIAL, NULL);
@@ -443,7 +443,7 @@ ui_set_mode(ModeType mode)
         case SCIENTIFIC:
             menu = GET_WIDGET("view_scientific_menu");
             break;
-        
+
         case PROGRAMMING:
             menu = GET_WIDGET("view_programming_menu");
             break;
@@ -456,7 +456,7 @@ ui_set_mode(ModeType mode)
 }
 
 
-void 
+void
 ui_set_statusbar(const gchar *text)
 {
     gtk_text_buffer_set_text(X.info_buffer, text, -1);
@@ -473,15 +473,15 @@ redo_display(gpointer data)
     gtk_text_buffer_get_start_iter(X.display_buffer, &start);
     gtk_text_buffer_get_end_iter(X.display_buffer, &end);
     text = gtk_text_buffer_get_text(X.display_buffer, &start, &end, FALSE);
-    
+
     g_object_get(G_OBJECT(X.display_buffer), "cursor-position", &cursor_position, NULL);
 
-    gtk_text_buffer_set_text(X.display_buffer, text, -1);    
+    gtk_text_buffer_set_text(X.display_buffer, text, -1);
     gtk_text_buffer_get_iter_at_offset(X.display_buffer, &cursor, cursor_position);
     gtk_text_buffer_place_cursor(X.display_buffer, &cursor);
 
     g_free(text);
-    
+
     return FALSE;
 }
 
@@ -497,21 +497,21 @@ ui_set_display(char *str, int cursor)
         str = " ";
 
     gtk_text_buffer_set_text(X.display_buffer, str, -1);
-    
+
     if (cursor < 0)
         gtk_text_buffer_get_end_iter(X.display_buffer, &iter);
     else
         gtk_text_buffer_get_iter_at_offset(X.display_buffer, &iter, cursor);
     gtk_text_buffer_place_cursor(X.display_buffer, &iter);
     gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(X.display_item), &iter, 0.0, TRUE, 1.0, 0.0);
-    
+
     /* This is a workaround for bug #524602.
      * Basically the above code can cause the display to disappear when going from
      * a display that is wider than the widget to one that is thinner. The following
      * causes the display to be set twice which seems to work the second time.
      */
     g_idle_add(redo_display, NULL);
-    
+
     /* Align to the right */
     if (cursor < 0) {
         adj = gtk_scrolled_window_get_hadjustment(
@@ -536,7 +536,7 @@ about_cb(GtkWidget *widget)
         "Sun Microsystems",
         NULL
     };
-    
+
     /* Translators: The translator credits. Please translate this with your name(s). */
     const gchar *translator_credits = _("translator-credits");
 
@@ -577,12 +577,12 @@ void
 ascii_dialog_response_cb(GtkWidget *dialog, gint response_id)
 {
     const gchar *text;
-    
+
     text = gtk_entry_get_text(GTK_ENTRY(X.ascii_entry));
-    
+
     if (response_id == GTK_RESPONSE_OK)
         do_button(FN_INSERT_CHARACTER, GPOINTER_TO_INT(text));
-    
+
     gtk_widget_hide(dialog);
 }
 
@@ -612,7 +612,7 @@ help_display(void)
 
     screen = gtk_widget_get_screen (GTK_WIDGET (X.main_window));
     gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
- 
+
     if (error != NULL)
     {
         GtkWidget *d;
@@ -627,7 +627,7 @@ help_display(void)
                                                   "%s", error->message);
         g_signal_connect (d, "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_window_present (GTK_WINDOW (d));
-        
+
         g_error_free (error);
     }
 }
@@ -658,7 +658,7 @@ finc_activate_cb(GtkWidget *widget) {
 
     dialog = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
     field = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_field"));
-    
+
     if (finc_dialog_fields[dialog][field+1] == NULL) {
         GtkWidget *dialog_widget;
         dialog_widget = gtk_widget_get_toplevel(widget);
@@ -687,7 +687,7 @@ finc_response_cb(GtkWidget *widget, gint response_id)
 
     if (response_id != GTK_RESPONSE_OK)
         return;
-    
+
     dialog = GPOINTER_TO_INT (g_object_get_data(G_OBJECT(widget), "finc_dialog"));
 
     for (i = 0; i < 4; i++) {
@@ -709,10 +709,10 @@ static void
 setup_finc_dialogs(void)
 {
     int i, j;
-    
+
     X.financial = gtk_builder_new();
     load_ui(X.financial, UI_FINC_FILE);
-    
+
     set_int_data(X.financial, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
     set_int_data(X.financial, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
     set_int_data(X.financial, "fv_dialog", "finc_dialog", FINC_FV_DIALOG);
@@ -723,7 +723,7 @@ setup_finc_dialogs(void)
     set_int_data(X.financial, "sln_dialog", "finc_dialog", FINC_SLN_DIALOG);
     set_int_data(X.financial, "syd_dialog", "finc_dialog", FINC_SYD_DIALOG);
     set_int_data(X.financial, "term_dialog", "finc_dialog", FINC_TERM_DIALOG);
-    
+
     for (i = 0; finc_dialog_fields[i][0] != NULL; i++) {
         for (j = 0; finc_dialog_fields[i][j]; j++) {
             GObject *o;
@@ -732,7 +732,7 @@ setup_finc_dialogs(void)
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
-    
+
     gtk_builder_connect_signals(X.financial, NULL);
 }
 
@@ -774,12 +774,12 @@ update_memory_menus()
 
     for (i = 0; i < MAX_REGISTERS; i++) {
         const char *name, *register_prefix;
-        
+
         name = register_get_name(i);
 
-        /* Translators: R is the short form of register used inter alia in popup menus */        
+        /* Translators: R is the short form of register used inter alia in popup menus */
         register_prefix = _("R");
-        
+
         display_make_number(&v->display, value, MAXLINE, register_get_value(i));
         if (name[0] != '\0')
             SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s [%s]", register_prefix, i, value, name);
@@ -827,7 +827,7 @@ check_for_localized_numeric_point(int keyval)
 
 
 G_MODULE_EXPORT
-void 
+void
 help_cb(GtkWidget *widget)
 {
     help_display();
@@ -876,10 +876,10 @@ popup_cb(GtkWidget *widget, GdkEventButton *event)
     GtkWidget *menu;
     GdkPoint loc;
 
-    /* If gcalctool is being driven by gok, the on-screen keyboard 
-     * assistive technology, it's possible that the event returned by 
-     * gtk_get_current_event() is NULL. If this is the case, we need 
-     * to fudge the popping up on the menu associated with this menu 
+    /* If gcalctool is being driven by gok, the on-screen keyboard
+     * assistive technology, it's possible that the event returned by
+     * gtk_get_current_event() is NULL. If this is the case, we need
+     * to fudge the popping up on the menu associated with this menu
      * button.
      */
 
@@ -888,7 +888,7 @@ popup_cb(GtkWidget *widget, GdkEventButton *event)
     menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
     if (event == NULL) {
         GtkAllocation allocation;
-        
+
         gdk_window_get_origin(gtk_widget_get_window(widget), &loc.x, &loc.y);
         gtk_widget_get_allocation(widget, &allocation);
         loc.x += allocation.x;
@@ -919,7 +919,7 @@ digit_cb(GtkWidget *widget, GdkEventButton *event)
     else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.subscript_toggle)))
         do_text(g_object_get_data(G_OBJECT(widget), "calc_subscript_text"));
     else
-        do_text(g_object_get_data(G_OBJECT(widget), "calc_text"));    
+        do_text(g_object_get_data(G_OBJECT(widget), "calc_text"));
 }
 
 
@@ -935,7 +935,7 @@ button_cb(GtkWidget *widget, GdkEventButton *event)
 select_display_entry(int offset)
 {
     GtkTextIter iter;
-    
+
     gtk_text_buffer_get_iter_at_offset(X.display_buffer, &iter, offset);
     gtk_text_buffer_place_cursor(X.display_buffer, &iter);
     gtk_widget_grab_focus(X.display_item);
@@ -949,18 +949,18 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     int i, state;
     const char *conversions[]       = {"-", "*", "/", "\t", NULL};
     const char *conversion_values[] = {"−", "×", "÷", " ", };
-    
+
     /* Only look at the modifiers we use */
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
-    
+
     // FIXME: Convert event to character
     // FIXME: Or safer to intercept characters as they enter the text input (handles input methods)
-    
+
     if (check_for_localized_numeric_point(event->keyval) == TRUE) {
         event->state = 0;
         event->keyval = GDK_KP_Decimal;
     }
-    
+
     /* Shortcuts */
     if (state == GDK_CONTROL_MASK) {
         switch(event->keyval)
@@ -997,7 +997,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;
         case GDK_u:
             do_text("µ");
-            return TRUE;            
+            return TRUE;
         case GDK_e:
             do_text("×10^");
             return TRUE;
@@ -1050,7 +1050,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;
         }
     }
-    
+
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
         do_button(FN_DELETE, 0);
@@ -1060,7 +1060,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_button(FN_BACKSPACE, 0);
         return TRUE;
     }
-    
+
     /* Clear display */
     if ((event->keyval == GDK_Escape && state == 0) ||
         (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
@@ -1068,19 +1068,19 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_button(FN_CLEAR, 0);
         return TRUE;
     }
-    
+
     /* Solve */
     if ((event->keyval == GDK_Return && state == 0) ||
         (event->keyval == GDK_KP_Enter && state == 0)) {
         do_button(FN_CALCULATE, 0);
         return TRUE;
     }
-    
+
     if (state != 0)
         return FALSE;
-    
+
     // FIXME: event->string deprecated
- 
+
     for (i = 0; conversions[i]; i++) {
         if (strcmp(event->string, conversions[i]) == 0) {
             do_text(conversion_values[i]);
@@ -1091,7 +1091,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_text(v->radix);
         return TRUE;
     }
-    
+
     /* Some keyboards use this keyval for '^' (e.g. German) */
     if (event->keyval == GDK_dead_circumflex) {
         do_text("^");
@@ -1102,7 +1102,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     {
     case '<':
         button_cb(GET_WIDGET("calc_shift_left_button"), NULL);
-        return TRUE;                
+        return TRUE;
     case '>':
         button_cb(GET_WIDGET("calc_shift_right_button"), NULL);
         return TRUE;
@@ -1111,12 +1111,12 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_button(FN_CALCULATE, 0);
         return TRUE;
     }
-    
+
     if (event->string[0] != '\0') {
         do_text(event->string);
         return TRUE;
     }
-    
+
     return FALSE;
 }
 
@@ -1125,18 +1125,18 @@ G_MODULE_EXPORT void
 edit_cb(GtkWidget *widget)
 {
     gboolean can_paste, can_copy;
-    
+
     can_copy = gtk_text_buffer_get_has_selection(X.display_buffer);
     can_paste = gtk_clipboard_wait_is_text_available(
                             gtk_clipboard_get(X.clipboard_atom));
-    
+
     gtk_widget_set_sensitive(GET_WIDGET("copy_menu"), can_copy);
     gtk_widget_set_sensitive(GET_WIDGET("paste_menu"), can_paste);
 }
 
 
 G_MODULE_EXPORT
-void 
+void
 copy_cb(GtkWidget *widget)
 {
     get_display();
@@ -1164,7 +1164,7 @@ middle_click_paste_cb(GtkWidget *widget, GdkEventButton *event)
 
 
 G_MODULE_EXPORT
-void 
+void
 paste_cb(GtkWidget *widget)
 {
     gtk_clipboard_request_text(gtk_clipboard_get(X.clipboard_atom),
@@ -1173,7 +1173,7 @@ paste_cb(GtkWidget *widget)
 
 
 G_MODULE_EXPORT
-void 
+void
 popup_paste_cb(GtkWidget *menu)
 {
     paste_cb(menu);
@@ -1192,7 +1192,7 @@ G_MODULE_EXPORT
 void
 redo_cb(GtkWidget *widget)
 {
-    do_button(FN_REDO, 0);    
+    do_button(FN_REDO, 0);
 }
 
 
@@ -1240,7 +1240,7 @@ G_MODULE_EXPORT
 void
 shift_cb(GtkWidget *widget)
 {
-    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), 
+    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
                                                    "shiftcount"));
     do_button(FN_SHIFT, count);
 }
@@ -1301,7 +1301,7 @@ create_main_window()
     GtkWidget *widget;
     PangoFontDescription *font_desc;
     GtkCellRenderer *renderer;
-   
+
     X.ui = gtk_builder_new();
     load_ui(X.ui, UI_FILE);
     gtk_builder_connect_signals(X.ui, NULL);
@@ -1324,7 +1324,7 @@ create_main_window()
     X.subscript_toggle   = GET_WIDGET("subscript_togglebutton");
     X.preferences_dialog = GET_WIDGET("preferences_dialog");
     X.info_buffer = GTK_TEXT_BUFFER(GET_OBJECT("info_buffer"));
-       
+
     /* Connect text to buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
         SNPRINTF(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
@@ -1361,11 +1361,11 @@ create_main_window()
         widget = GET_WIDGET(name);
         g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
         X.memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
-        
+
         SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
         widget = GET_WIDGET(name);
         g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
-        X.memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));        
+        X.memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 
     /* Load bit panel */
@@ -1386,7 +1386,7 @@ create_main_window()
     gtk_widget_modify_font(X.display_item, font_desc);
     pango_font_description_free(font_desc);
     gtk_widget_set_name(X.display_item, "displayitem");
-    atk_object_set_role(gtk_widget_get_accessible(X.display_item), 
+    atk_object_set_role(gtk_widget_get_accessible(X.display_item),
                                                   ATK_ROLE_EDITBAR);
 
     gtk_widget_realize(X.main_window);
@@ -1415,7 +1415,7 @@ create_main_window()
     set_data(X.ui, "calc_finc_straight_line_depreciation_button", "finc_dialog", "sln_dialog");
     set_data(X.ui, "calc_finc_sum_of_the_years_digits_depreciation_button", "finc_dialog", "syd_dialog");
     set_data(X.ui, "calc_finc_term_button", "finc_dialog", "term_dialog");
-    
+
     /* Configuration dialog */
 
     widget = GET_WIDGET("angle_unit_combobox");
@@ -1427,19 +1427,19 @@ create_main_window()
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-    
+
     widget = GET_WIDGET("word_size_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-    
+
     // _("Show %d decimal places") decimal_places_label1, decimal_places_label2
 }
 
 
 void
 ui_init(int *argc, char ***argv)
-{  
+{
     gchar *path;
     int value;
 
@@ -1448,7 +1448,7 @@ ui_init(int *argc, char ***argv)
     memset(&X, 0, sizeof(X));
 
     gtk_rc_get_default_files();
-   
+
     if (get_enumerated_resource(R_MODE, mode_names, &value))
         X.mode = (ModeType) value;
     else
@@ -1481,7 +1481,7 @@ angle_unit_combobox_changed_cb(GtkWidget *combo)
         {"gradians",    MP_GRADIANS},
         {NULL,          MP_DEGREES}
     };
-    
+
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
@@ -1532,7 +1532,7 @@ word_size_combobox_changed_cb(GtkWidget *combo)
     gint value;
     GtkTreeModel *model;
     GtkTreeIter iter;
-    
+
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
@@ -1588,11 +1588,11 @@ set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_ty
     int int_key_value;
     GtkTreeIter iter;
     gboolean valid;
-    
+
     combo = GET_WIDGET(name);
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     valid = gtk_tree_model_get_iter_first(model, &iter);
-    
+
     switch (key_type)
     {
     case G_TYPE_STRING:
@@ -1612,7 +1612,7 @@ set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_ty
         gchar *str_value;
         gint int_value;
         gboolean matched = FALSE;
-        
+
         switch (key_type)
         {
         case G_TYPE_STRING:
@@ -1620,23 +1620,23 @@ set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_ty
             matched = strcmp(str_value, str_key_value) == 0;
             break;
         case G_TYPE_INT:
-            gtk_tree_model_get(model, &iter, 1, &int_value, -1);            
+            gtk_tree_model_get(model, &iter, 1, &int_value, -1);
             matched = int_value == int_key_value;
             break;
         default:
             break;
         }
-        
+
         if (matched)
             break;
-        
+
         valid = gtk_tree_model_iter_next(model, &iter);
     }
     if (!valid)
         valid = gtk_tree_model_get_iter_first(model, &iter);
 
     gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
-    
+
     g_free(str_key_value);
 }
 
@@ -1645,23 +1645,23 @@ void
 ui_load(void)
 {
     int value;
-    
+
     /* Create main gcalctool window. */
     create_main_window();
     ui_set_undo_enabled(FALSE, FALSE);
-    
+
     set_combo_box_from_config("angle_unit_combobox", R_TRIG, G_TYPE_STRING);
     set_combo_box_from_config("display_format_combobox", R_DISPLAY, G_TYPE_STRING);
     set_combo_box_from_config("word_size_combobox", R_WORDLEN, G_TYPE_INT);
-    
+
     if (!get_int_resource(R_ACCURACY, &value))
         value = 9;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_OBJECT("decimal_places_spin")), value);
-    
+
     if (!get_boolean_resource(R_TSEP, &value))
         value = FALSE;
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT("thousands_separator_check")), value);
-    
+
     if (!get_boolean_resource(R_ZEROES, &value))
         value = FALSE;
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT("trailing_zeroes_check")), value);
@@ -1673,7 +1673,7 @@ add_buttons_to_size_group()
 {
     int i;
     GtkSizeGroup *size_group;
-    
+
     const char *button_names[] = {
         "calc_finc_straight_line_depreciation_button",
         "calc_finc_periodic_interest_rate_button",
@@ -1769,13 +1769,13 @@ add_buttons_to_size_group()
 
 void
 ui_start(void)
-{    
+{
     ui_set_mode(X.mode);
 
     gtk_widget_show(X.main_window);
 
     /* Add buttons to size group so they are all the same size.
-     * 
+     *
      * This is supported in GtkBuilder but it does not appear to work, setting
      * the group after showing the widgets works. It would have been preferrable
      * to make the table homogeneous but this does not ignore hidden rows.

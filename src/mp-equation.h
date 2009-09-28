@@ -32,19 +32,19 @@
 typedef struct {
     /* The wordlength for binary operations in bits (e.g. 8, 16, 32) */
     int wordlen;
-    
+
     /* Units for angles (e.g. radians, degrees) */
     MPAngleUnit angle_units;
-    
+
     // FIXME:
     // int enable_builtins;
-    
+
     /* Data to pass to callbacks */
     void *callback_data;
-    
+
     /* Function to get variable values */
     int (*get_variable)(const char *name, MPNumber *z, void *data);
-    
+
     /* Function to set variable values */
     void (*set_variable)(const char *name, const MPNumber *x, void *data);
 

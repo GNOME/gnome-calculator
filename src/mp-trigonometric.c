@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -28,7 +28,7 @@
 static int
 mp_compare_mp_to_int(const MPNumber *x, int i)
 {
-    MPNumber t;   
+    MPNumber t;
     mp_set_from_integer(i, &t);
     return mp_compare_mp_to_mp(x, &t);
 }
@@ -52,7 +52,7 @@ convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         mp_divide_integer(&t2, 180, z);
         break;
 
-    case MP_GRADIANS:        
+    case MP_GRADIANS:
         mp_get_pi(&t1);
         mp_multiply(x, &t1, &t2);
         mp_divide_integer(&t2, 200, z);
@@ -72,19 +72,19 @@ static void
 convert_from_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber t1, t2;
-    
+
     switch (unit) {
     default:
     case MP_RADIANS:
         mp_set_from_mp(x, z);
         break;
-        
+
     case MP_DEGREES:
         mp_multiply_integer(x, 180, &t2);
         mp_get_pi(&t1);
         mp_divide(&t2, &t1, z);
         break;
-        
+
     case MP_GRADIANS:
         mp_multiply_integer(x, 200, &t2);
         mp_get_pi(&t1);
@@ -145,7 +145,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
             mp_divide_integer(&t1, -i * (i + 1), &t1);
         }
         mp_add(&t1, z, z);
-        
+
         i += 2;
     } while (t1.sign != 0);
 
@@ -207,7 +207,7 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         if (x_radians.sign == 0) {
             mp_set_from_integer(0, z);
             return;
-        }        
+        }
 
         x_radians.sign = 1;
         mp_multiply_integer(&x_radians, 2, &x_radians);
@@ -242,7 +242,7 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 void
 mp_cos(const MPNumber *xi, MPAngleUnit unit, MPNumber *z)
 {
-    /* cos(0) = 1 */    
+    /* cos(0) = 1 */
     if (xi->sign == 0) {
         mp_set_from_integer(1, z);
         return;
@@ -266,7 +266,7 @@ mp_cos(const MPNumber *xi, MPAngleUnit unit, MPNumber *z)
 }
 
 
-void 
+void
 mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber cos_x, sin_x;
@@ -278,7 +278,7 @@ mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         mperr(_("Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"));
         return;
     }
-    
+
     /* tan(x) = sin(x) / cos(x) */
     mp_sin(x, unit, &sin_x);
     mp_divide(&sin_x, &cos_x, z);
@@ -319,7 +319,7 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     /* X == +-1 SO RETURN +-PI/2 */
     mp_get_pi(z);
     mp_divide_integer(z, t2.sign << 1, z);
-    
+
     convert_from_radians(z, unit, z);
 }
 
@@ -344,7 +344,7 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         mp_set_from_integer(0, z);
     } else if (mp_is_equal(x, &MPn1)) {
         mp_set_from_mp(&pi, z);
-    } else { 
+    } else {
         mp_multiply(x, x, &t2);
         mp_subtract(&t1, &t2, &t2);
         mp_sqrt(&t2, &t2);
@@ -356,7 +356,7 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
             mp_add(&MPy, &pi, z);
         }
     }
-    
+
     convert_from_radians(z, unit, z);
 }
 
@@ -400,7 +400,7 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     for (i = 1; ; i += 2) {
         if (MP_T + 2 + t2.exponent <= 1)
             break;
-        
+
         mp_multiply(&t2, &t1, &t2);
         mp_multiply_fraction(&t2, -i, i + 2, &t2);
 
@@ -443,7 +443,7 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     /* If |x| < 1 USE MPEXP TO AVOID CANCELLATION, otherwise IF TOO LARGE MP_EPOWY GIVES ERROR MESSAGE */
     if (abs_x.exponent <= 0) {
         MPNumber exp_x, a, b;
-        
+
         /* ((e^|x| + 1) * (e^|x| - 1)) / e^|x| */
         // FIXME: Solves to e^|x| - e^-|x|, why not lower branch always? */
         mp_epowy(&abs_x, &exp_x);
@@ -472,7 +472,7 @@ mp_cosh(const MPNumber *x, MPNumber *z)
 {
     MPNumber t;
 
-    /* cosh(0) = 1 */    
+    /* cosh(0) = 1 */
     if (x->sign == 0) {
         mp_set_from_integer(1, z);
         return;
@@ -493,7 +493,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     float r__1;
     MPNumber t;
 
-    /* tanh(0) = 0 */    
+    /* tanh(0) = 0 */
     if (x->sign == 0) {
         mp_set_from_integer(0, z);
         return;
@@ -555,7 +555,7 @@ mp_acosh(const MPNumber *x, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
-    
+
     /* acosh(x) = ln(x + sqrt(x^2 - 1)) */
     mp_multiply(x, x, &t);
     mp_add_integer(&t, -1, &t);
@@ -579,7 +579,7 @@ mp_atanh(const MPNumber *x, MPNumber *z)
         mp_set_from_integer(0, z);
         return;
     }
-    
+
     /* atanh(x) = 0.5 * ln((1 + x) / (1 - x)) */
     mp_add_integer(x, 1, &n);
     mp_set_from_mp(x, &d);

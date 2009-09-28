@@ -28,13 +28,13 @@ typedef struct MPEquationParserState MPEquationParserState;
 struct MPEquationParserState {
     /* User provided options */
     MPEquationOptions *options;
-    
+
     /* Function to get variable values */
     int (*get_variable)(MPEquationParserState *state, const char *name, MPNumber *z);
-         
+
     /* Function to set variable values */
     void (*set_variable)(MPEquationParserState *state, const char *name, const MPNumber *x);
-    
+
     /* Function to solve functions */
     int (*get_function)(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z);
 

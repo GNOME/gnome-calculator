@@ -5,12 +5,12 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -29,7 +29,7 @@ static int
 get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 {
     int result = 1;
-    
+
     if (strcmp(name, "e") == 0)
         mp_get_eulers(z);
     else if (strcmp(name, "π") == 0)
@@ -47,7 +47,7 @@ set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
 {
     if (strcmp(name, "e") == 0 || strcmp(name, "π") == 0)
         return; // FALSE
-    
+
     if (state->options->set_variable)
         state->options->set_variable(name, x, state->options->callback_data);
 }
@@ -62,7 +62,7 @@ static int sub_atoi(const char *data)
 {
     int i, value = 0;
     const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
-    
+
     do {
         for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
         if(digits[i] == NULL)
@@ -80,18 +80,18 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 {
     char *c, *lower_name;
     int result = 1;
-    
+
     lower_name = strdup(name);
     for (c = lower_name; *c; c++)
         *c = tolower(*c);
-    
+
     // FIXME: Re Im ?
 
     if (strcmp(lower_name, "log") == 0)
         mp_logarithm(10, x, z); // FIXME: Default to ln
     else if (strncmp(lower_name, "log", 3) == 0) {
         int base;
-        
+
         base = sub_atoi(lower_name + 3);
         if (base < 0)
             result = 0;
@@ -113,13 +113,13 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
     else if (strcmp(lower_name, "cos") == 0)
         mp_cos(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "tan") == 0)
-        mp_tan(x, state->options->angle_units, z);    
+        mp_tan(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "sin⁻¹") == 0 || strcmp(lower_name, "asin") == 0)
         mp_asin(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "cos⁻¹") == 0 || strcmp(lower_name, "acos") == 0)
         mp_acos(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "tan⁻¹") == 0 || strcmp(lower_name, "atan") == 0)
-        mp_atan(x, state->options->angle_units, z);    
+        mp_atan(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "sinh") == 0)
         mp_sinh(x, z);
     else if (strcmp(lower_name, "cosh") == 0)
@@ -140,9 +140,9 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
         result = state->options->get_function(name, x, z, state->options->callback_data);
     else
         result = 0;
-    
+
     free(lower_name);
-    
+
     return result;
 }
 
@@ -178,7 +178,7 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     /* Failed to parse */
     if (ret)
         return -PARSER_ERR_INVALID;
-        
+
     /* Error during parsing */
     if (state.error)
         return state.error;

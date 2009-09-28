@@ -13,12 +13,12 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -37,7 +37,7 @@ static int super_atoi(const char *data)
 {
    int i, value = 0;
    const char *digits[11] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
-   
+
    while(*data != '\0') {
       for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
       if(digits[i] == NULL)
@@ -45,7 +45,7 @@ static int super_atoi(const char *data)
       value = value * 10 + i;
       data += strlen(digits[i]);
    }
-   
+
    return value;
 }
 
@@ -61,7 +61,7 @@ static int sub_atoi(const char *data)
       data += strlen(digits[i]);
       value = value * 10 + i;
    }
-   
+
    return value;
 }
 %}
@@ -134,4 +134,4 @@ NOT  "¬"|"~"|[nN][oO][tT]
 [ \t\n]
 .           {return *yytext;}
 
-%% 
+%%

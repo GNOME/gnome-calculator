@@ -1,15 +1,15 @@
 /*  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -66,7 +66,7 @@ test(char *expression, char *expected, int expected_error)
     int error;
     MPNumber result;
     char result_str[1024] = "";
-    
+
     error = mp_equation_parse(expression, &options, &result);
 
     if(error == 0) {
@@ -100,7 +100,7 @@ test_parser()
 
     base = 8;
     test("16434824", "76543210₈", 0);
-    
+
     base = 16;
     test("18364758544493064720", "FEDCBA9876543210₁₆", 0);
 
@@ -213,11 +213,11 @@ test_parser()
     test("2÷3", "0.666666667", 0);
     test("1÷0", "", -9);
     test("0÷0", "", -9);
-    
+
     /* Precision */
     test("1000000000000000−1000000000000000", "0", 0);
     test("1000000000000000÷1000000000000000", "1", 0);
-    test("1000000000000000×0.000000000000001", "1", 0);    
+    test("1000000000000000×0.000000000000001", "1", 0);
 
     /* Order of operations */
     test("1−0.9−0.1", "0", 0);
@@ -225,7 +225,7 @@ test_parser()
     test("1+(2×3)", "7", 0);
     test("(1+2)×3", "9", 0);
     test("(1+2×3)", "7", 0);
-    
+
     /* Percentage */
     test("100%", "1", 0);
     test("1%", "0.01", 0);
@@ -278,13 +278,13 @@ test_parser()
     test("2^0.5", "1.414213562", 0);
     test("(−4)^0.5", "", -9);
     test("(−8)^(1÷3)", "−2", 0);
-    
+
     test("0 mod 7", "0", 0);
     test("6 mod 7", "6", 0);
     test("7 mod 7", "0", 0);
     test("8 mod 7", "1", 0);
     test("−1 mod 7", "6", 0);
-    
+
     test("int 3.2", "3", 0);
     test("frac 3.2", "0.2", 0);
     test("int −3.2", "−3", 0);
@@ -322,7 +322,7 @@ test_parser()
     test("sin 180", "0", 0);
     test("2 sin 90", "2", 0);
     test("sin²45", "0.5", 0);
-   
+
     test("cos 0", "1", 0);
     test("cos 45 − 1÷√2", "0", 0);
     test("cos 20 − cos −20", "0", 0);
@@ -334,7 +334,7 @@ test_parser()
     test("tan 0", "0", 0);
     test("tan 10 − sin 10÷cos 10", "0", 0);
     test("tan 90", "", -9);
-    test("tan 10", "0.176326981", 0);    
+    test("tan 10", "0.176326981", 0);
     test("tan²10", "0.031091204", 0);
 
     test("cos⁻¹ 0", "90", 0);
@@ -363,10 +363,10 @@ test_parser()
 
     options.angle_units = MP_DEGREES;
     test("sin 90", "1", 0);
-    
+
     options.angle_units = MP_RADIANS;
     test("sin (π÷2)", "1", 0); // FIXME: Shouldn't need brackets
-    
+
     options.angle_units = MP_GRADIANS;
     test("sin 100", "1", 0);
 
@@ -403,7 +403,7 @@ static void
 test_string(const char *number)
 {
     MPNumber t;
-    
+
     mp_set_from_string(number, &t);
 
     printf("MPNumber(%s) -> {", number);
@@ -415,7 +415,7 @@ static void
 test_integer(int number)
 {
     MPNumber t;
-    
+
     mp_set_from_integer(number, &t);
 
     printf("MPNumber(%d) -> {", number);
@@ -432,29 +432,29 @@ test_numbers()
     test_integer(1);
     test_integer(-1);
     test_integer(2);
-    test_integer(9999);    
+    test_integer(9999);
     test_integer(10000);
     test_integer(10001);
     test_integer(2147483647);
-    
+
     test_string("0");
     test_string("1");
     test_string("-1");
-    test_string("16383");    
+    test_string("16383");
     test_string("16384");
     test_string("16385");
     test_string("268435456");
-    
-    test_string("0.1");    
+
+    test_string("0.1");
     test_string("0.5");
     test_string("0.25");
     test_string("0.125");
     test_string("0.0625");
     test_string("0.00006103515625");
     test_string("0.000030517578125");
-    
+
     test_string("1.00006103515625");
-    test_string("16384.00006103515625");    
+    test_string("16384.00006103515625");
 }
 
 

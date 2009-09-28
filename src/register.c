@@ -1,15 +1,15 @@
 /*  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -57,7 +57,7 @@ static const char *default_registers[][2] =
 void register_init()
 {
     int i;
-    
+
     for (i = 0; i < MAX_REGISTERS; i++) {
         char nkey[MAXLINE], *nline;
         char vkey[MAXLINE], *vline = NULL;
@@ -85,11 +85,11 @@ void register_init()
             register_set_value(i, &value);
         }
     }
-    
+
     for (i = 0; i < MAX_FUNCTIONS; i++) {
         char nkey[MAXLINE], *nline;
         char vkey[MAXLINE], *vline;
-        
+
         SNPRINTF(nkey, MAXLINE, "function%1dname", i);
         nline = get_resource(nkey);
         if (nline) {
@@ -98,7 +98,7 @@ void register_init()
             if (vline == NULL)
                 g_free(nline);
         }
- 
+
         if (nline && vline) {
             function_set(i, nline, vline);
             g_free(nline);
@@ -132,7 +132,7 @@ register_get_value(int index)
 void register_set_name(int index, const char *name)
 {
     char key[MAXLINE];
-    
+
     STRNCPY(register_names[index], name, MAXLINE - 1);
     SNPRINTF(key, MAXLINE, "register%1dname", index);
     set_resource(key, name);
@@ -149,9 +149,9 @@ void function_set(int index, const char *name, const char *value)
 {
     char key[MAXLINE];
 
-    STRNCPY(function_names[index], name, MAXLINE - 1);        
+    STRNCPY(function_names[index], name, MAXLINE - 1);
     STRNCPY(function_values[index], value, MAXLINE - 1);
-    
+
     SNPRINTF(key, MAXLINE, "function%1dname", index);
     set_resource(key, name);
     SNPRINTF(key, MAXLINE, "function%1dvalue", index);

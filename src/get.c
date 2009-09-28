@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -34,7 +34,7 @@
 #include "register.h"
 #include "mp.h"
 
-#define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b) 
+#define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b)
 
 /* Various string values read/written as X resources. */
 
@@ -63,7 +63,7 @@ void
 set_int_resource(const char *key, int value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_int(client, key_name, value, NULL);
 }
 
@@ -72,7 +72,7 @@ void
 set_boolean_resource(const char *key, int value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);    
+    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_bool(client, key_name, value, NULL);
 }
 
@@ -95,7 +95,7 @@ get_int_resource(const char *key, int *intval)
     if (error)
         return FALSE;
     *intval = v;
-    
+
     return TRUE;
 }
 
@@ -106,13 +106,13 @@ get_boolean_resource(const char *key, int *boolval)
     char key_name[MAXLINE];
     GError *error = NULL;
     gboolean v;
-    
+
     SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     v = gconf_client_get_bool(client, key_name, &error);
     if (error)
         return FALSE;
     *boolval = v;
-    
+
     return TRUE;
 }
 
@@ -126,7 +126,7 @@ get_enumerated_resource(const char *key, const char *values[], int *value)
     val = get_resource(key);
     if (!val)
        return FALSE;
-   
+
     for (i = 0; values[i]; i++) {
        if (strcmp(values[i], val) == 0) {
            *value = i;
@@ -135,12 +135,12 @@ get_enumerated_resource(const char *key, const char *values[], int *value)
        }
     }
     free(val);
- 
+
     return retval;
 }
 
 
-/* Return the radix character. For most locales, this is a period. 
+/* Return the radix character. For most locales, this is a period.
  * If nl_langinfo(RADIXCHAR) returns an empty string, return ",".
  */
 const char *
@@ -161,8 +161,8 @@ get_radix()
 }
 
 
-/* Return the thousands separator string. For most locales, this is a 
- * comma. 
+/* Return the thousands separator string. For most locales, this is a
+ * comma.
  */
 const char *
 get_tsep()
@@ -191,7 +191,7 @@ get_tsep_count()
 
 void
 resources_init()
-{ 
+{
     assert(client == NULL);
     client = gconf_client_get_default();
     gconf_client_add_dir(client, "/apps/gcalctool", GCONF_CLIENT_PRELOAD_NONE, NULL);

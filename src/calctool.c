@@ -49,11 +49,11 @@ solve(const char *equation)
     int error;
     MPNumber result;
     char result_str[MAXLINE];
-    
+
     memset(&options, 0, sizeof(options));
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
-    
+
     error = mp_equation_parse(equation, &options, &result);
     if(error != 0) {
         fprintf(stderr, "Error %d\n", error);
@@ -86,7 +86,7 @@ usage(int show_gtk)
               "  --help-gtk                      Show GTK+ options"));
     fprintf(stderr,
             "\n\n");
-    
+
     if (show_gtk) {
         /* Translators: Description on gcalctool command-line GTK+ options displayed on command-line */
         fprintf(stderr,
@@ -101,7 +101,7 @@ usage(int show_gtk)
                 "\n\n");
     }
 
-    /* Translators: Description on gcalctool application options displayed on command-line */    
+    /* Translators: Description on gcalctool application options displayed on command-line */
     fprintf(stderr,
             _("Application Options:\n"
               "  -u, --unittest                  Perform unittests\n"
@@ -115,17 +115,17 @@ get_options(int argc, char *argv[])
 {
     int i;
     char *arg;
-   
+
     for (i = 1; i < argc; i++) {
         arg = argv[i];
 
-        if (strcmp(arg, "-v") == 0 || 
+        if (strcmp(arg, "-v") == 0 ||
                  strcmp(arg, "--version") == 0 ||
                  strcmp(arg, "-?") == 0) {
             version();
             exit(0);
         }
-        else if (strcmp(arg, "-h") == 0 || 
+        else if (strcmp(arg, "-h") == 0 ||
                  strcmp(arg, "--help") == 0) {
             usage(FALSE);
             exit(0);
@@ -193,7 +193,7 @@ main(int argc, char **argv)
 {
     memset(&calc_state, 0, sizeof(calc_state));
     v = &calc_state;
-    
+
     g_type_init();
 
     bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -201,12 +201,12 @@ main(int argc, char **argv)
     textdomain(GETTEXT_PACKAGE);
 
     v->progname = g_path_get_basename(argv[0]);
-    
-    /* Seed random number generator. */   
+
+    /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
-   
+
     resources_init();
-    
+
     init_state();
     register_init();
     display_init(&v->display);
@@ -216,6 +216,6 @@ main(int argc, char **argv)
 
     ui_load();
     ui_start();
-    
+
     return(0);
 }

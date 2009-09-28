@@ -1,16 +1,16 @@
 /*  Copyright (c) 1987-2008 Sun Microsystems, Inc. All Rights Reserved.
  *  Copyright (c) 2008-2009 Robert Ancell
- *           
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2, or (at your option)
  *  any later version.
- *           
- *  This program is distributed in the hope that it will be useful, but 
+ *
+ *  This program is distributed in the hope that it will be useful, but
  *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  General Public License for more details.
- *           
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
@@ -32,7 +32,7 @@ calc_ctrm(MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
  *          pv  (present value).
  *
  *          RESULT = log(fv / pv) / log(1 + pint)
- */    
+ */
     MPNumber MP1, MP2, MP3, MP4;
 
     mp_divide(fv, pv, &MP1);
@@ -76,7 +76,7 @@ calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
     }
 
     if (len >= 0) {
-        display_set_error (&v->display, 
+        display_set_error (&v->display,
                            ("Error: the number of periods must be positive"));
         mp_set_from_integer(0, t);
     }
@@ -95,7 +95,7 @@ calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
  */
 
     MPNumber MP1, MP2, MP3, MP4;
-  
+
     mp_add_integer(pint, 1, &MP1);
     mp_xpowy(&MP1, n, &MP2);
     mp_add_integer(&MP2, -1, &MP3);
@@ -199,7 +199,7 @@ calc_sln(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
  *
  *          RESULT = (cost - salvage) / life
  */
-  
+
     MPNumber MP1;
     mp_subtract(cost, salvage, &MP1);
     mp_divide(&MP1, life, t);
@@ -253,7 +253,7 @@ calc_term(MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
     mp_add_integer(&MP3, 1, &MP4);
     mp_ln(&MP4, &MP1);
     mp_divide(&MP1, &MP2, t);
-} 
+}
 
 void
 do_finc_expression(int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3, MPNumber *arg4)
