@@ -216,7 +216,7 @@
                             <property name="buffer">display_buffer</property>
                             <child internal-child="accessible">
                               <object class="AtkObject" id="displayitem-atkobject">
-                                <property name="AtkObject::accessible-description" translatable="yes">Result Region</property>
+                                <property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
                               </object>
                             </child>
                             <signal name="populate_popup" handler="buffer_populate_popup_cb"/>
@@ -2072,11 +2072,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_4_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 4</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2095,11 +2090,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_7_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 7</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2116,11 +2106,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_8_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 8</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2139,11 +2124,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_9_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 9</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2162,11 +2142,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_5_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 5</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2187,11 +2162,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_6_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 6</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2231,11 +2201,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_1_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 1</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2254,11 +2219,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_2_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 2</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2279,11 +2239,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_0_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 0</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2344,11 +2299,6 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_3_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Numeric 3</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="digit_cb"/>
                   </object>
                   <packing>
@@ -2527,6 +2477,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the store value button">Store value</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_store_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="popup_cb"/>
                     <child>
                       <object class="GtkHBox" id="hbox20">
@@ -2571,6 +2526,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the recall value button">Recall value</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_recall_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="popup_cb"/>
                     <child>
                       <object class="GtkHBox" id="hbox19">
@@ -2675,9 +2635,14 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the exponentiation (x to the power or y) button">Exponent [^ or **]</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the exponentiation (x to the power of y) button">Exponent [^ or **]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_x_pow_y_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="x_pow_y_label">
@@ -2718,6 +2683,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the inverse button">Inverse [Ctrl+I]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_inverse_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="label20">
@@ -2792,6 +2762,11 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_abs_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the absolute value button">Absolute Value</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="label1">
@@ -2816,6 +2791,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the factorial button">Factorial [!]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_factorial_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorial button">Factorial</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="label14">
@@ -2864,6 +2844,11 @@
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_exponential_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the scientific exponent button">Scientific Exponent</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="label2">
@@ -2934,6 +2919,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the subscript mode button">Subscript number mode [Alt+number]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="subscript_togglebutton-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the subscript mode button">Subscript</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="set_subscript_cb"/>
                     <child>
                       <object class="GtkLabel" id="label4">
@@ -2958,9 +2948,14 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the superscript mode button">Superscipt number mode [Ctrl+number]</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the superscript mode button">Superscript number mode [Ctrl+number]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="superscript_togglebutton-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the superscript mode button">Superscript</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="set_superscript_cb"/>
                     <child>
                       <object class="GtkLabel" id="label3">
@@ -3006,10 +3001,15 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the fractional portion button">Factorize into prime numbers (Ctrl+F)</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the factorize button">Factorize into prime numbers (Ctrl+F)</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_factor_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorize button">Factorize</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="factorize_cb"/>
                   </object>
                   <packing>
@@ -3272,6 +3272,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the shift right button">Shift right [&gt;]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_shift_right_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift right button">Shift Right</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="popup_cb"/>
                     <child>
                       <object class="GtkHBox" id="hbox10">
@@ -3317,6 +3322,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the shift left button">Shift left [&lt;]</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_shift_left_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift left button">Shift Left</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="popup_cb"/>
                     <child>
                       <object class="GtkHBox" id="hbox11">
@@ -3402,6 +3412,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the base 2 button">Base 2</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_base_2_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the base 2 button">Base 2</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="base_2_label">
@@ -3428,6 +3443,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the base 8 button">Base 8</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_base_8_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the base 8 button">Base 8</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="base_8_label">
@@ -3452,6 +3472,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the base 16 button">Base 16</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_base_16_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the base 16 button">Base 16</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
                     <child>
                       <object class="GtkLabel" id="base_16_label">
@@ -3479,6 +3504,11 @@
                     <property name="tooltip_text" translatable="yes" comments="Tooltip for the insert character button">Insert character</property>
                     <property name="border_width">3</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_character_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the insert character button">Insert Character</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">9</property>
