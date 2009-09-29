@@ -186,8 +186,8 @@ void   mp_xpowy_integer(const MPNumber *x, int y, MPNumber *z);
 /* Sets z = e^x */
 void   mp_epowy(const MPNumber *x, MPNumber *z);
 
-/* Returns a list of all prime factors in value as MPNumbers */
-GList* mp_factorize(const MPNumber *value);
+/* Returns a list of all prime factors in x as MPNumbers */
+GList* mp_factorize(const MPNumber *x);
 
 /* Sets z = x */
 void   mp_set_from_mp(const MPNumber *x, MPNumber *z);

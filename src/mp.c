@@ -1841,13 +1841,13 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
 }
 
 GList*
-mp_factorize(const MPNumber *orig_value)
+mp_factorize(const MPNumber *x)
 {
     GList *list = NULL;
     MPNumber *factor = g_slice_alloc0(sizeof(MPNumber));
     MPNumber value, tmp, divisor, root;
 
-    mp_abs(orig_value, &value);
+    mp_abs(x, &value);
 
     if (mp_is_zero(&value)) {
         mp_set_from_mp(&value, factor);
@@ -1857,7 +1857,7 @@ mp_factorize(const MPNumber *orig_value)
 
     mp_set_from_integer(1, &tmp);
     if (mp_is_equal(&value, &tmp)) {
-        mp_set_from_mp(orig_value, factor);
+        mp_set_from_mp(x, factor);
         list = g_list_append(list, factor);
         return list;
     }
@@ -1899,7 +1899,7 @@ mp_factorize(const MPNumber *orig_value)
         g_slice_free(MPNumber, factor);
     }
 
-    if (mp_is_negative(orig_value)) {
+    if (mp_is_negative(x)) {
         mp_invert_sign(list->data, list->data);
     }
 
