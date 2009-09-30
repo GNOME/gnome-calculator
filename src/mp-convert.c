@@ -693,7 +693,6 @@ mp_set_from_string(const char *str, int base, MPNumber *z)
         while ((i = char_val((char **)&c, base)) >= 0) {
             mp_multiply_integer(&MPexponent, base, &MPexponent);
             mp_add_integer(&MPexponent, i, &MPexponent);
-            c++;
         }
         if (negate) {
             mp_invert_sign(&MPexponent, &MPexponent);
