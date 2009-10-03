@@ -209,9 +209,14 @@ display_get_cursor(GCDisplay *display)
 void
 display_set_number(GCDisplay *display, const MPNumber *x)
 {
-   char text[MAX_DISPLAY];
-   display_make_number(display, text, MAX_DISPLAY, x);
-   display_set_string(display, text, -1);
+    char text[MAX_DISPLAY];
+    int enabled;
+    guint64 bit_value;
+    display_make_number(display, text, MAX_DISPLAY, x);
+    display_set_string(display, text, -1);
+
+    enabled = display_get_unsigned_integer(display, &bit_value);
+    ui_set_bitfield(enabled, bit_value);
 }
 
 
@@ -825,10 +830,20 @@ do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 
 
 static void
-do_insert_character(GCDisplay *display, const char *text)
+do_insert_character(GCDisplay *display, const unsigned char *text)
 {
     MPNumber value;
-    mp_set_from_integer(text[0], &value);
+    int i = 0;
+    mp_set_from_integer(0, &value);
+    while (TRUE) {
+        mp_add_integer(&value, text[i], &value);
+        if (text[i+1]) {
+            mp_shift(&value, 8, &value);
+            i++;
+        } else {
+            break;
+        }
+    }
     display_set_number(display, &value);
 }
 
@@ -937,7 +952,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             return;
 
         case FN_INSERT_CHARACTER:
-            do_insert_character(display, (const char *)arg);
+            do_insert_character(display, (const unsigned char *)arg);
             return;
 
         case FN_STORE:
@@ -1029,7 +1044,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             break;
 
         case FN_TEXT:
-            display_insert(display, cursor_start, cursor_end, (const char *)arg); // FIXME: Probably not 64 bit safe
+            display_insert(display, cursor_start, cursor_end, (const char *)arg);
             break;
     }
 
