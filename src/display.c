@@ -891,7 +891,7 @@ do_sto(GCDisplay *display, int index)
 
 
 void
-display_do_function(GCDisplay *display, int function, int arg, int cursor_start, int cursor_end)
+display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_start, int cursor_end)
 {
     char buf[MAXLINE];
     MPNumber *ans;
@@ -925,27 +925,27 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
             break;
 
         case FN_SHIFT:
-            do_shift(display, arg);
+            do_shift(display, GPOINTER_TO_INT (arg));
             break;
 
         case FN_FACTORIZE:
-            do_factorize(display, arg);
+            do_factorize(display, GPOINTER_TO_INT (arg));
             break;
 
         case FN_PASTE:
-            do_paste(display, cursor_start, cursor_end, (const char *)arg); // FIXME: Probably not 64 bit safe
+            do_paste(display, cursor_start, cursor_end, (const char *)arg);
             return;
 
         case FN_INSERT_CHARACTER:
-            do_insert_character(display, (const char *)arg); // FIXME: Probably not 64 bit safe
+            do_insert_character(display, (const char *)arg);
             return;
 
         case FN_STORE:
-            do_sto(display, arg);
+            do_sto(display, GPOINTER_TO_INT (arg));
             return;
 
         case FN_RECALL:
-            SNPRINTF(buf, MAXLINE, "R%d", arg);
+            SNPRINTF(buf, MAXLINE, "R%d", GPOINTER_TO_INT (arg));
             display_insert(display, cursor_start, cursor_end, buf);
             break;
 
@@ -962,10 +962,10 @@ display_do_function(GCDisplay *display, int function, int arg, int cursor_start,
                 char buf[MAX_DISPLAY];
                 MPNumber MP;
 
-                bit_value ^= (1LL << (63 - arg));
+                bit_value ^= (1LL << (63 - GPOINTER_TO_INT (arg)));
 
                 /* FIXME: Convert to string since we don't support setting MP numbers from 64 bit integers */
-                SNPRINTF(buf, MAX_DISPLAY, "%llu", bit_value);
+                SNPRINTF(buf, MAX_DISPLAY, "%" G_GUINT64_FORMAT, bit_value);
                 mp_set_from_string(buf, &MP);
                 display_set_number(display, &MP);
             }

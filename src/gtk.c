@@ -358,7 +358,7 @@ ui_set_bitfield(int enabled, guint64 bits)
 
 
 static void
-do_button(int function, int arg)
+do_button(int function, gpointer arg)
 {
     GtkTextIter start, end;
     gint cursor_start, cursor_end;
@@ -378,8 +378,8 @@ do_button(int function, int arg)
     if (cursor_start == cursor_end &&
         function == FN_TEXT && X.last_text != NULL &&
         strcmp((char *)arg, "×") == 0 && strcmp(X.last_text, "×") == 0) {
-        do_button(FN_BACKSPACE, 0);
-        do_button(FN_TEXT, (int)"^"); // FIXME: Not 64 bit safe
+        do_button(FN_BACKSPACE, NULL);
+        do_button(FN_TEXT, "^");
     }
     else {
         display_do_function(&v->display, function, arg, cursor_start, cursor_end);
@@ -394,7 +394,7 @@ do_button(int function, int arg)
 static void
 do_text(const char *text)
 {
-    do_button(FN_TEXT, (int)text); // FIXME: Not 64 bit safe
+    do_button(FN_TEXT, (gpointer) text); // FIXME: Not 64 bit safe
 }
 
 
@@ -581,7 +581,7 @@ ascii_dialog_response_cb(GtkWidget *dialog, gint response_id)
     text = gtk_entry_get_text(GTK_ENTRY(X.ascii_entry));
 
     if (response_id == GTK_RESPONSE_OK)
-        do_button(FN_INSERT_CHARACTER, GPOINTER_TO_INT(text));
+        do_button(FN_INSERT_CHARACTER, (gpointer) text);
 
     gtk_widget_hide(dialog);
 }
@@ -637,8 +637,7 @@ G_MODULE_EXPORT
 void
 store_menu_cb(GtkMenuItem *menu)
 {
-    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
-    do_button(FN_STORE, arg);
+    do_button(FN_STORE, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
@@ -646,8 +645,7 @@ G_MODULE_EXPORT
 void
 recall_menu_cb(GtkMenuItem *menu)
 {
-    int arg = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "register_id"));
-    do_button(FN_RECALL, arg);
+    do_button(FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
@@ -741,9 +739,8 @@ G_MODULE_EXPORT
 gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event)
 {
-    int index;
-    index = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index"));
-    do_button(FN_TOGGLE_BIT, index);
+    do_button(FN_TOGGLE_BIT,
+              g_object_get_data(G_OBJECT(event_box), "bit_index"));
     return TRUE;
 }
 
@@ -849,7 +846,7 @@ G_MODULE_EXPORT
 void
 solve_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    do_button(FN_CALCULATE, 0);
+    do_button(FN_CALCULATE, NULL);
 }
 
 
@@ -857,7 +854,7 @@ G_MODULE_EXPORT
 void
 clear_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    do_button(FN_CLEAR, 0);
+    do_button(FN_CLEAR, NULL);
 }
 
 
@@ -906,7 +903,7 @@ G_MODULE_EXPORT
 void
 factorize_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    do_button(FN_FACTORIZE, 0);
+    do_button(FN_FACTORIZE, NULL);
 }
 
 
@@ -972,7 +969,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             do_text("×10^");
             return TRUE;
         case GDK_f:
-            do_button(FN_FACTORIZE, 0);
+            do_button(FN_FACTORIZE, NULL);
             return TRUE;
         case GDK_r:
             do_text("√");
@@ -1060,11 +1057,11 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 
     /* Delete in display */
     if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
-        do_button(FN_DELETE, 0);
+        do_button(FN_DELETE, NULL);
         return TRUE;
     }
     if (event->keyval == GDK_BackSpace && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
-        do_button(FN_BACKSPACE, 0);
+        do_button(FN_BACKSPACE, NULL);
         return TRUE;
     }
 
@@ -1072,14 +1069,14 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     if ((event->keyval == GDK_Escape && state == 0) ||
         (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
         (event->keyval == GDK_Delete && state == GDK_SHIFT_MASK)) {
-        do_button(FN_CLEAR, 0);
+        do_button(FN_CLEAR, NULL);
         return TRUE;
     }
 
     /* Solve */
     if ((event->keyval == GDK_Return && state == 0) ||
         (event->keyval == GDK_KP_Enter && state == 0)) {
-        do_button(FN_CALCULATE, 0);
+        do_button(FN_CALCULATE, NULL);
         return TRUE;
     }
 
@@ -1115,7 +1112,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         return TRUE;
     case '=':
     case '\n':
-        do_button(FN_CALCULATE, 0);
+        do_button(FN_CALCULATE, NULL);
         return TRUE;
     }
 
@@ -1154,7 +1151,7 @@ static void
 on_paste(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
     if (text != NULL)
-        do_button(FN_PASTE, GPOINTER_TO_INT(text));
+        do_button(FN_PASTE, (gpointer) text);
 }
 
 
@@ -1191,7 +1188,7 @@ G_MODULE_EXPORT
 void
 undo_cb(GtkWidget *widget)
 {
-    do_button(FN_UNDO, 0);
+    do_button(FN_UNDO, NULL);
 }
 
 
@@ -1199,7 +1196,7 @@ G_MODULE_EXPORT
 void
 redo_cb(GtkWidget *widget)
 {
-    do_button(FN_REDO, 0);
+    do_button(FN_REDO, NULL);
 }
 
 
@@ -1247,9 +1244,7 @@ G_MODULE_EXPORT
 void
 shift_cb(GtkWidget *widget)
 {
-    int count = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget),
-                                                   "shiftcount"));
-    do_button(FN_SHIFT, count);
+    do_button(FN_SHIFT, g_object_get_data(G_OBJECT(widget), "shiftcount"));
 }
 
 

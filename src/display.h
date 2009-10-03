@@ -115,6 +115,6 @@ const char *display_get_text(GCDisplay *display);
 
 void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x);
 
-void display_do_function(GCDisplay *display, int function, int arg, int cursor_start, int cursor_end);
+void display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_start, int cursor_end);
 
 #endif /* DISPLAY_H */
