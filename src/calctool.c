@@ -217,5 +217,7 @@ main(int argc, char **argv)
     ui_load();
     ui_start();
 
+    currency_free_resources();
+
     return(0);
 }

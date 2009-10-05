@@ -35,6 +35,7 @@
 
 #include "config.h"
 #include "financial.h"
+#include "currency.h"
 #include "mp-equation.h"
 #include "display.h"
 #include "get.h"
@@ -209,6 +210,11 @@ typedef enum {
     POPUP_AOB,       /* Place popup above or below baseframe */
     POPUP_CENTERED   /* Center popup within baseframe */
 } PopupLocation;
+
+typedef enum {
+    CURRENCY_TARGET_UPPER,
+    CURRENCY_TARGET_LOWER
+} CurrencyTargetRow;
 
 static void load_ui(GtkBuilder *ui, const gchar *filename)
 {
@@ -394,7 +400,7 @@ do_button(int function, gpointer arg)
 static void
 do_text(const char *text)
 {
-    do_button(FN_TEXT, (gpointer) text); // FIXME: Not 64 bit safe
+    do_button(FN_TEXT, (gpointer) text);
 }
 
 
@@ -707,6 +713,12 @@ static void
 setup_finc_dialogs(void)
 {
     int i, j;
+    GtkListStore *currency_store;
+    GtkCellRenderer *render;
+    GtkSpinButton *currency_amount_upper;
+    GtkSpinButton *currency_amount_lower;
+    GtkComboBox   *currency_type_upper;
+    GtkComboBox   *currency_type_lower;
 
     X.financial = gtk_builder_new();
     load_ui(X.financial, UI_FINC_FILE);
@@ -730,6 +742,53 @@ setup_finc_dialogs(void)
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
+
+    currency_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_upper"));
+    currency_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_lower"));
+    currency_type_upper = GTK_COMBO_BOX(gtk_builder_get_object(
+        X.financial,
+        "currency_type_upper"));
+    currency_type_lower = GTK_COMBO_BOX(gtk_builder_get_object(
+        X.financial,
+        "currency_type_lower"));
+
+    currency_store = gtk_list_store_new(2,
+                                                      G_TYPE_INT,
+                                                      G_TYPE_STRING);
+
+    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(currency_store),
+                                         1,
+                                         GTK_SORT_ASCENDING);
+
+    gtk_combo_box_set_model(currency_type_upper,
+                            GTK_TREE_MODEL(currency_store));
+    gtk_combo_box_set_model(currency_type_lower,
+                            GTK_TREE_MODEL(currency_store));
+
+    render = gtk_cell_renderer_text_new();
+
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_upper),
+                               render,
+                               TRUE);
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_lower),
+                               render,
+                               TRUE);
+
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_upper),
+                                  render,
+                                  "text",
+                                  1);
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_lower),
+                                  render,
+                                  "text",
+                                  1);
+
+    set_int_data(X.financial, "currency_amount_upper", "target", CURRENCY_TARGET_LOWER);
+    set_int_data(X.financial, "currency_amount_lower", "target", CURRENCY_TARGET_UPPER);
 
     gtk_builder_connect_signals(X.financial, NULL);
 }
@@ -865,6 +924,150 @@ finc_cb(GtkWidget *widget, GdkEventButton *event)
     do_finc(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
 }
 
+static void
+recalculate_currency(CurrencyTargetRow target)
+{
+    int upper_index, lower_index;
+    GtkComboBox *combo_upper = GTK_COMBO_BOX(gtk_builder_get_object(
+        X.financial,
+        "currency_type_upper"));
+    GtkComboBox *combo_lower = GTK_COMBO_BOX(gtk_builder_get_object(
+        X.financial,
+        "currency_type_lower"));
+    GtkSpinButton *spin_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_upper"));
+    GtkSpinButton *spin_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_lower"));
+
+    GtkTreeModel *model = gtk_combo_box_get_model(combo_upper);
+    GtkTreeIter iter;
+
+    if (!gtk_combo_box_get_active_iter(combo_upper, &iter))
+        return;
+    gtk_tree_model_get(model, &iter, 0, &upper_index, -1);
+
+    if (!gtk_combo_box_get_active_iter(combo_lower, &iter))
+        return;
+    gtk_tree_model_get(model, &iter, 0, &lower_index, -1);
+
+    if (target == CURRENCY_TARGET_LOWER) {
+        MPNumber input, output;
+        mp_set_from_double (gtk_spin_button_get_value(spin_upper), &input);
+        currency_convert(&input, upper_index, lower_index, &output);
+        if (!mp_is_zero(&output))
+            gtk_spin_button_set_value(spin_lower, mp_cast_to_double(&output));
+    } else {
+        MPNumber input, output;
+        mp_set_from_double (gtk_spin_button_get_value(spin_lower), &input);
+        currency_convert(&input, lower_index, upper_index, &output);
+        if (!mp_is_zero(&output))
+            gtk_spin_button_set_value(spin_upper, mp_cast_to_double(&output));
+    }
+}
+
+G_MODULE_EXPORT
+void
+currency_type_cb(GtkComboBox *combo, gpointer user_data)
+{
+    recalculate_currency(CURRENCY_TARGET_LOWER);
+}
+
+G_MODULE_EXPORT
+void
+currency_amount_cb (GtkSpinButton *spinbutton, gpointer user_data)
+{
+    recalculate_currency(GPOINTER_TO_INT(g_object_get_data(G_OBJECT(spinbutton),
+                                                           "target")));
+}
+
+static void
+setup_currency_rates ()
+{
+    static int has_run = 0;
+    int i;
+    GtkListStore *currency_store;
+    GObject *currency_type;
+    if (has_run)
+        return;
+
+    if (currency_rates_needs_update()) {
+        GtkWidget *dialog = gtk_message_dialog_new(NULL, 0,
+                                        GTK_MESSAGE_INFO,
+                                        GTK_BUTTONS_YES_NO,
+                                        /* Translators: Title of the error dialog when unable to load the UI files */
+                                        N_("You don't have any recent currency rates. Should I download some now?"));
+        int response = gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+
+        if (response == GTK_RESPONSE_YES) {
+            if (!currency_download_rates()) {
+                dialog = gtk_message_dialog_new(NULL, 0,
+                                                GTK_MESSAGE_ERROR,
+                                                GTK_BUTTONS_OK,
+                                                /* Translators: Title of the error dialog when unable to load the UI files */
+                                                N_("I could not download any currency rates. You may receive inaccurate results, or you may not receive any results at all."));
+            }
+        }
+    }
+    currency_load_rates();
+
+    currency_type = gtk_builder_get_object(X.financial, "currency_type_upper");
+    currency_store = GTK_LIST_STORE(gtk_combo_box_get_model(
+        GTK_COMBO_BOX(currency_type)));
+
+    for (i = 0; currency_names[i].short_name; i++) {
+        GtkTreeIter iter;
+        int index;
+
+        if ((index = currency_get_index(currency_names[i].short_name)) < 0) {
+            continue;
+        }
+        gtk_list_store_append(currency_store, &iter);
+        gtk_list_store_set(currency_store, &iter,
+                           0, index,
+                           1, gettext(currency_names[i].long_name),
+                           -1);
+    }
+
+    has_run = 1;
+}
+
+G_MODULE_EXPORT
+void
+currency_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    GtkDialog *win;
+    GtkSpinButton *c_amount_upper, *c_amount_lower;
+    MPNumber display_val;
+    if (X.financial == NULL)
+        setup_finc_dialogs();
+
+    setup_currency_rates();
+
+    win = GTK_DIALOG(gtk_builder_get_object(X.financial, "currency_dialog"));
+    c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_upper"));
+    c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
+        X.financial,
+        "currency_amount_lower"));
+    if (display_is_usable_number(&v->display, &display_val)) {
+        double start_val = mp_cast_to_double(&display_val);
+        gtk_spin_button_set_value(c_amount_upper, start_val);
+    }
+    gtk_widget_grab_focus(GTK_WIDGET(c_amount_upper));
+    gtk_dialog_run(win);
+
+    char* result = g_strdup_printf("%.2f",
+                                   gtk_spin_button_get_value(c_amount_lower));
+    mp_set_from_string(result, &display_val);
+    g_free(result);
+
+    display_set_number(&v->display, &display_val);
+    gtk_widget_hide(GTK_WIDGET(win));
+}
 
 G_MODULE_EXPORT
 void

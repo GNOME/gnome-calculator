@@ -9,13 +9,17 @@ INCLUDES = \
 	-DPACKAGE_PIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
 	$(PACKAGE_CFLAGS) \
 	$(GNOME_UTILS_CFLAGS) \
-	$(GCONF_CFLAGS)
+	$(GCONF_CFLAGS) \
+	$(LIBXML_CFLAGS) \
+	$(LIBSOUP_CFLAGS)
 
 bin_PROGRAMS = gcalctool
 
 gcalctool_SOURCES = \
 	calctool.c \
 	calctool.h \
+	currency.c \
+	currency.h \
 	display.c \
 	display.h \
 	get.c \
@@ -28,7 +32,7 @@ gcalctool_SOURCES = \
 	mp-trigonometric.c \
 	mp-equation.c \
 	mp-equation.h \
-	mp-equation-private.h \        
+	mp-equation-private.h \
 	mp-equation-lexer.c \
 	mp-equation-lexer.h \
 	mp-equation-parser.c \
@@ -53,6 +57,8 @@ gcalctool_LDADD = \
 	$(PACKAGE_LIBS) \
 	$(GNOME_UTILS_LIBS) \
 	$(GCONF_LIBS) \
+	$(LIBXML_LIBS) \
+	$(LIBSOUP_LIBS) \
 	libparser.a
 
 libparser.a: \
