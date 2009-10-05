@@ -409,7 +409,7 @@ mp_cast_to_double(const MPNumber *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    ret_val *= mppow_di(db, x->exponent - tm);
+    ret_val *= mppow_di(db, x->exponent - tm - 1);
 
     /* CHECK REASONABLENESS OF RESULT. */
     /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
