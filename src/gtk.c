@@ -757,8 +757,8 @@ setup_finc_dialogs(void)
         "currency_type_lower"));
 
     currency_store = gtk_list_store_new(2,
-                                                      G_TYPE_INT,
-                                                      G_TYPE_STRING);
+                                        G_TYPE_INT,
+                                        G_TYPE_STRING);
 
     gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(currency_store),
                                          1,
@@ -928,6 +928,7 @@ static void
 recalculate_currency(CurrencyTargetRow target)
 {
     int upper_index, lower_index;
+
     GtkComboBox *combo_upper = GTK_COMBO_BOX(gtk_builder_get_object(
         X.financial,
         "currency_type_upper"));
@@ -989,6 +990,7 @@ setup_currency_rates ()
     int i;
     GtkListStore *currency_store;
     GObject *currency_type;
+
     if (has_run)
         return;
 
@@ -1041,6 +1043,7 @@ currency_cb(GtkWidget *widget, GdkEventButton *event)
     GtkDialog *win;
     GtkSpinButton *c_amount_upper, *c_amount_lower;
     MPNumber display_val;
+
     if (X.financial == NULL)
         setup_finc_dialogs();
 
@@ -1058,14 +1061,18 @@ currency_cb(GtkWidget *widget, GdkEventButton *event)
         gtk_spin_button_set_value(c_amount_upper, start_val);
     }
     gtk_widget_grab_focus(GTK_WIDGET(c_amount_upper));
-    gtk_dialog_run(win);
 
-    char* result = g_strdup_printf("%.2f",
-                                   gtk_spin_button_get_value(c_amount_lower));
-    mp_set_from_string(result, &display_val);
-    g_free(result);
+    if (gtk_dialog_run(win) == GTK_RESPONSE_OK) {
+        gchar *result;
+        
+        result = g_strdup_printf("%.2f",
+                                 gtk_spin_button_get_value(c_amount_lower));
+        mp_set_from_string(result, &display_val);
+        g_free(result);
 
-    display_set_number(&v->display, &display_val);
+        display_set_number(&v->display, &display_val);
+    }
+
     gtk_widget_hide(GTK_WIDGET(win));
 }
 

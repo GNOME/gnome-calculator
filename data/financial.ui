@@ -1778,7 +1778,8 @@
     </action-widgets>
   </object>
   <object class="GtkDialog" id="currency_dialog">
-    <property name="border_width">5</property>
+    <property name="border_width">6</property>
+    <property name="title" translatable="yes">Currency Conversion</property>
     <property name="type_hint">normal</property>
     <property name="has_separator">False</property>
     <child internal-child="vbox">
@@ -1789,6 +1790,7 @@
         <child>
           <object class="GtkTable" id="table11">
             <property name="visible">True</property>
+            <property name="border_width">6</property>
             <property name="n_rows">3</property>
             <property name="n_columns">2</property>
             <property name="column_spacing">6</property>
@@ -1843,6 +1845,7 @@
                 <property name="right_attach">2</property>
                 <property name="top_attach">1</property>
                 <property name="bottom_attach">2</property>
+                <property name="y_options"></property>
               </packing>
             </child>
             <child>
@@ -1855,6 +1858,7 @@
                 <property name="right_attach">2</property>
                 <property name="top_attach">2</property>
                 <property name="bottom_attach">3</property>
+                <property name="y_options"></property>
               </packing>
             </child>
           </object>
@@ -1867,8 +1871,8 @@
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button21">
-                <property name="label">gtk-ok</property>
+              <object class="GtkButton" id="button22">
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1878,6 +1882,20 @@
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button21">
+                <property name="label">C_alculate</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
@@ -1890,6 +1908,7 @@
       </object>
     </child>
     <action-widgets>
+      <action-widget response="-6">button22</action-widget>
       <action-widget response="-5">button21</action-widget>
     </action-widgets>
   </object>

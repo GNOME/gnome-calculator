@@ -77,16 +77,15 @@ currency_download_rates()
     gchar *filename, *directory;
     GError *e = NULL;
     SoupSession *session = soup_session_sync_new();
-    SoupMessage *msg = soup_message_new(
-        "GET",
-        "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
+    SoupMessage *msg = soup_message_new("GET",
+                                        "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
     soup_session_send_message(session, msg);
     if (msg->status_code != 200) {
         return 0;
     }
     filename = get_rate_filepath();
     directory = g_path_get_dirname(filename);
-    g_mkdir_with_parents(directory, 755);
+    g_mkdir_with_parents(directory, 0755);
     g_free(directory);
 
     g_file_set_contents(filename,
@@ -143,13 +142,11 @@ void currency_load_rates()
         return;
     }
 
-    xmlXPathRegisterNs(
-        xpath_ctx,
-        BAD_CAST("xref"),
-        BAD_CAST("http://www.ecb.int/vocabulary/2002-08-01/eurofxref"));
-    xpath_obj = xmlXPathEvalExpression(
-        BAD_CAST("//xref:Cube[@currency][@rate]"),
-        xpath_ctx);
+    xmlXPathRegisterNs(xpath_ctx,
+                       BAD_CAST("xref"),
+                       BAD_CAST("http://www.ecb.int/vocabulary/2002-08-01/eurofxref"));
+    xpath_obj = xmlXPathEvalExpression(BAD_CAST("//xref:Cube[@currency][@rate]"),
+                                       xpath_ctx);
 
     if (xpath_obj == NULL) {
         xmlXPathFreeContext(xpath_ctx);
@@ -166,7 +163,7 @@ void currency_load_rates()
             set_rate(xpath_obj->nodesetval->nodeTab[i], &currencies[i]);
         }
 
-       // Avoid accessing removed elements
+        // Avoid accessing removed elements
         if (xpath_obj->nodesetval->nodeTab[i]->type != XML_NAMESPACE_DECL)
             xpath_obj->nodesetval->nodeTab[i] = NULL;
     }
@@ -202,6 +199,7 @@ void
 currency_free_resources()
 {
     int i;
+
     for (i = 0; i < currency_count; i++) {
         if (currencies[i].short_name != NULL)
             xmlFree(currencies[i].short_name);
@@ -209,5 +207,4 @@ currency_free_resources()
     g_slice_free1(currency_count * sizeof(currency), currencies);
     currencies = NULL;
     currency_count = 0;
-
 }
