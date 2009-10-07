@@ -729,7 +729,7 @@ get_variable(const char *name, MPNumber *z, void *data)
         *c = tolower(*c);
 
     if (lower_name[0] == 'r')
-        mp_set_from_mp(register_get_value(atoi(name+1)), z);
+        mp_set_from_mp(register_get_value(sub_atoi(name+1)), z);
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(display_get_answer(display), z);
     else
@@ -960,7 +960,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             return;
 
         case FN_RECALL:
-            SNPRINTF(buf, MAXLINE, "R%d", GPOINTER_TO_INT (arg));
+            SNPRINTF(buf, MAXLINE, "R%s", (const char *)arg);
             display_insert(display, cursor_start, cursor_end, buf);
             break;
 

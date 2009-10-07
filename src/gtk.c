@@ -216,6 +216,9 @@ typedef enum {
     CURRENCY_TARGET_LOWER
 } CurrencyTargetRow;
 
+static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
+static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+
 static void load_ui(GtkBuilder *ui, const gchar *filename)
 {
     GError *error = NULL;
@@ -651,7 +654,7 @@ G_MODULE_EXPORT
 void
 recall_menu_cb(GtkMenuItem *menu)
 {
-    do_button(FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
+    do_button(FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_digit"));
 }
 
 
@@ -838,9 +841,9 @@ update_memory_menus()
 
         display_make_number(&v->display, value, MAXLINE, register_get_value(i));
         if (name[0] != '\0')
-            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s [%s]", register_prefix, i, value, name);
+            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s%s:</span>    %s [%s]", register_prefix, subscript_digits[i], value, name);
         else
-            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s_%d:</span>    %s", register_prefix, i, value);
+            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s%s:</span>    %s", register_prefix, subscript_digits[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X.memory_store_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X.memory_recall_labels[i]), mstr);
     }
@@ -1553,8 +1556,6 @@ create_main_window()
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
-        static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
-        static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
         SNPRINTF(name, MAXLINE, "calc_%d_button", i);
         set_string_data(X.ui, name, "calc_subscript_text", subscript_digits[i]);
@@ -1576,7 +1577,7 @@ create_main_window()
 
         SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
         widget = GET_WIDGET(name);
-        g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(widget), "register_digit", (gpointer) subscript_digits[i]);
         X.memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 

@@ -58,7 +58,8 @@ set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
 // letters+numbers = numbers+letters+numbers = function
 
 
-static int sub_atoi(const char *data)
+int
+sub_atoi(const char *data)
 {
     int i, value = 0;
     const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
@@ -66,7 +67,7 @@ static int sub_atoi(const char *data)
     do {
         for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
         if(digits[i] == NULL)
-            return -1;
+            return 0;
         data += strlen(digits[i]);
         value = value * 10 + i;
     } while(*data != '\0');
@@ -74,6 +75,22 @@ static int sub_atoi(const char *data)
     return value;
 }
 
+int
+super_atoi(const char *data)
+{
+   int i, value = 0;
+   const char *digits[11] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
+
+   do {
+      for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
+      if(digits[i] == NULL)
+         return 0;
+      value = value * 10 + i;
+      data += strlen(digits[i]);
+   } while(*data != '\0');
+
+   return value;
+}
 
 static int
 get_function(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z)

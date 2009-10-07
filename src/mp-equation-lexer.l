@@ -32,38 +32,7 @@
 
 #include "mp-equation-private.h"
 #include "mp-equation-parser.h"
-
-static int super_atoi(const char *data)
-{
-   int i, value = 0;
-   const char *digits[11] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
-
-   while(*data != '\0') {
-      for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
-      if(digits[i] == NULL)
-         return 0;
-      value = value * 10 + i;
-      data += strlen(digits[i]);
-   }
-
-   return value;
-}
-
-static int sub_atoi(const char *data)
-{
-   int i, value = 0;
-   const char *digits[11] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
-
-   while(*data != '\0') {
-      for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
-      if(digits[i] == NULL)
-         return 0;
-      data += strlen(digits[i]);
-      value = value * 10 + i;
-   }
-
-   return value;
-}
+#include "mp-equation.h"
 %}
 
 

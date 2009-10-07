@@ -54,4 +54,6 @@ typedef struct {
 
 int mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);
 
+int sub_atoi(const char *data);
+int super_atoi(const char *data);
 #endif
