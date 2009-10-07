@@ -52,6 +52,6 @@ typedef struct {
     int (*get_function)(const char *name, const MPNumber *x, MPNumber *z, void *data);
 } MPEquationOptions;
 
-int mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result);
+int mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);
 
 #endif

@@ -54,7 +54,7 @@ solve(const char *equation)
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
 
-    error = mp_equation_parse(equation, &options, &result);
+    error = mp_equation_parse(equation, &options, &result, NULL);
     if(error != 0) {
         fprintf(stderr, "Error %d\n", error);
         exit(1);

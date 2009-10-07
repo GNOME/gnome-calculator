@@ -43,6 +43,9 @@ struct MPEquationParserState {
     /* Error returned from parser */
     int error;
 
+    /* Name of token where error occured */
+    char *error_token;
+
     /* Value returned from parser */
     MPNumber ret;
 };

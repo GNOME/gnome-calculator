@@ -38,8 +38,10 @@ static void set_error(yyscan_t yyscanner, int error)
 
 static void get_variable(yyscan_t yyscanner, const char *name, MPNumber *z)
 {
-    if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z))
+    if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z)) {
         set_error(yyscanner, -PARSER_ERR_UNKNOWN_VARIABLE);
+        _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
+    }
 }
 
 static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
@@ -49,8 +51,10 @@ static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
 
 static void get_function(yyscan_t yyscanner, const char *name, const MPNumber *x, MPNumber *z)
 {
-    if (!_mp_equation_get_extra(yyscanner)->get_function(_mp_equation_get_extra(yyscanner), name, x, z))
+    if (!_mp_equation_get_extra(yyscanner)->get_function(_mp_equation_get_extra(yyscanner), name, x, z)) {
         set_error(yyscanner, -PARSER_ERR_UNKNOWN_FUNCTION);
+        _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
+    }
 }
 
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)

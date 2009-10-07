@@ -67,7 +67,7 @@ test(char *expression, char *expected, int expected_error)
     MPNumber result;
     char result_str[1024] = "";
 
-    error = mp_equation_parse(expression, &options, &result);
+    error = mp_equation_parse(expression, &options, &result, NULL);
 
     if(error == 0) {
         mp_cast_to_string(&result, base, 9, 1, result_str, 1024);

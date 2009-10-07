@@ -750,7 +750,7 @@ set_variable(const char *name, const MPNumber *x, void *data)
 
 
 static int
-parse(GCDisplay *display, const char *text, MPNumber *z)
+parse(GCDisplay *display, const char *text, MPNumber *z, char **error_token)
 {
     MPEquationOptions options;
 
@@ -761,7 +761,7 @@ parse(GCDisplay *display, const char *text, MPNumber *z)
     options.set_variable = set_variable;
     options.callback_data = display;
 
-    return mp_equation_parse(text, &options, z);
+    return mp_equation_parse(text, &options, z, error_token);
 }
 
 
@@ -1006,8 +1006,12 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
                 MPNumber z;
                 int result;
                 const char *message = NULL;
+                char *error_token;
 
-                result = parse(display, display_get_text(display), &z);
+                result = parse(display,
+                               display_get_text(display),
+                               &z,
+                               &error_token);
                 switch (result) {
                     case 0:
                         mp_set_from_mp(&z, ans);
@@ -1021,12 +1025,14 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
 
                     case -PARSER_ERR_UNKNOWN_VARIABLE:
                         /* Translators: Error displayed to user when they an unknown variable is entered */
-                        message = _("Unknown variable");
+                        message = g_strdup_printf(_("Unknown variable '%s'"), error_token);
+                        free(error_token);
                         break;
 
                     case -PARSER_ERR_UNKNOWN_FUNCTION:
                         /* Translators: Error displayed to user when an unknown function is entered */
-                        message = _("Function '%s' is not defined");
+                        message = g_strdup_printf(_("Function '%s' is not defined"), error_token);
+                        free(error_token);
                         break;
 
                     case -PARSER_ERR_MP:

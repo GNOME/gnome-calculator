@@ -148,7 +148,7 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 
 
 int
-mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result)
+mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token)
 {
     int ret;
     MPEquationParserState state;
@@ -171,6 +171,9 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     buffer = _mp_equation__scan_string(expression, yyscanner);
 
     ret = _mp_equation_parse(yyscanner);
+    if (state.error_token != NULL && error_token != NULL) {
+        *error_token = state.error_token;
+    }
 
     _mp_equation__delete_buffer(buffer, yyscanner);
     _mp_equation_lex_destroy(yyscanner);
