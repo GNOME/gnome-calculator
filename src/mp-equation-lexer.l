@@ -70,7 +70,8 @@ NUMBER   {BIN_NUM}|{OCT_NUM}|{DEC_NUM}|{HEX_NUM}
 GREEKS   "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
 REGISTERS "R₀"|"R₁"|"R₂"|"R₃"|"R₄"|"R₅"|"R₆"|"R₇"|"R₈"|"R₉"
 ANS      [aA][nN][sS]
-VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}
+RAND     [rR][aA][nN][dD]
+VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}|{RAND}
 VARIABLE_NAME [a-zA-Z]+
 FUNCTION {VARIABLE_NAME}|{VARIABLE_NAME}{INVERSE}|{VARIABLE_NAME}{SUB_NUM}
 

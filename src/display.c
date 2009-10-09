@@ -728,8 +728,10 @@ get_variable(const char *name, MPNumber *z, void *data)
     for (c = lower_name; *c; c++)
         *c = tolower(*c);
 
-    if (lower_name[0] == 'r')
-        mp_set_from_mp(register_get_value(sub_atoi(name+1)), z);
+    if (strcmp(lower_name, "rand") == 0)
+        mp_set_from_random(z);
+    else if (lower_name[0] == 'r')
+        mp_set_from_mp(register_get_value(atoi(name+1)), z);
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(display_get_answer(display), z);
     else
