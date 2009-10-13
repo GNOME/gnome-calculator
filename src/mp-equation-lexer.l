@@ -99,7 +99,8 @@ SUB_NUM  {SUB_DIGITS}+
 GREEKS   "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
 REGISTERS "R0"|"R1"|"R2"|"R3"|"R4"|"R5"|"R6"|"R7"|"R8"|"R9"
 ANS       [aA][nN][sS]
-VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}
+RAND      [rR][aA][nN][dD]
+VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}|{RAND}
 VARIABLE_NAME [a-zA-Z]+
 FUNCTION {VARIABLE_NAME}|{VARIABLE_NAME}{INVERSE}|{VARIABLE_NAME}{SUB_NUM}
 

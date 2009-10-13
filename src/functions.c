@@ -93,7 +93,7 @@ static Function functions[NFUNCTIONS] = {
 { FN_X_POW_Y,           "^", 0 },
 { FN_X_POW_Y_INV,       "^(1/(", 0 },
 { FN_FACTORIAL,         "!", 0 },
-{ FN_RANDOM,            " rand ", 0 },
+{ FN_RANDOM,            "rand", 0 },
 { FN_SIN,               " sin ", 0 },
 { FN_SINH,              " sinh ", 0 },
 { FN_ASIN,              " sin⁻¹ ", 0 },
@@ -179,7 +179,9 @@ get_variable(const char *name, MPNumber *z, void *data)
     for (c = lower_name; *c; c++)
         *c = tolower(*c);
 
-    if (lower_name[0] == 'r')
+    if (strcmp(lower_name, "rand") == 0)
+        mp_set_from_random(z);
+    else if (lower_name[0] == 'r')
         register_get(atoi(name+1), z);
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(display_get_answer(&v->display), z);
