@@ -651,7 +651,7 @@ mp_set_from_string(const char *str, MPNumber *z)
         mp_add(z, &fraction, z);
     }
 
-    if (*c == '.') {
+    if (*c == '.' | *c == ',') {
         has_fraction = TRUE;
         c++;
     } else {
