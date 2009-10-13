@@ -1,4 +1,5 @@
 ## Process this file with automake to produce Makefile.in
+# FIXME: Don't distribute generated lex and parse files
 
 INCLUDES = \
 	-I$(includedir) \
