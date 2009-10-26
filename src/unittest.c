@@ -80,9 +80,10 @@ test(char *expression, char *expected, int expected_error)
     }
     else {
         if(error == expected_error)
-            pass("'%s' -> error %d", expression, error);
+            pass("'%s' -> error %s", expression, mp_error_code_to_string(error));
         else
-            fail("'%s' -> error %d, expected error %d", expression, error, expected_error);
+            fail("'%s' -> error %s, expected error %s", expression,
+                 mp_error_code_to_string(error), mp_error_code_to_string(expected_error));
     }
 }
 
@@ -107,26 +108,26 @@ test_parser()
     base = 10;
     test("0₂", "0", 0); test("0₈", "0", 0); test("0", "0", 0); test("0₁₆", "0", 0);
     test("1₂", "1", 0); test("1₈", "1", 0); test("1", "1", 0); test("1₁₆", "1", 0);
-    test("2₂", "", -1); test("2₈", "2", 0); test("2", "2", 0); test("2₁₆", "2", 0);
-    test("3₂", "", -1); test("3₈", "3", 0); test("3", "3", 0); test("3₁₆", "3", 0);
-    test("4₂", "", -1); test("4₈", "4", 0); test("4", "4", 0); test("4₁₆", "4", 0);
-    test("5₂", "", -1); test("5₈", "5", 0); test("5", "5", 0); test("5₁₆", "5", 0);
-    test("6₂", "", -1); test("6₈", "6", 0); test("6", "6", 0); test("6₁₆", "6", 0);
-    test("7₂", "", -1); test("7₈", "7", 0); test("7", "7", 0); test("7₁₆", "7", 0);
-    test("8₂", "", -1); test("8₈", "", -1); test("8", "8", 0); test("8₁₆", "8", 0);
-    test("9₂", "", -1); test("9₈", "", -1); test("9", "9", 0); test("9₁₆", "9", 0);
-    test("A₂", "", -1); test("A₈", "", -1); test("A", "", -1); test("A₁₆", "10", 0);
-    test("B₂", "", -1); test("B₈", "", -1); test("B", "", -1); test("B₁₆", "11", 0);
-    test("C₂", "", -1); test("C₈", "", -1); test("C", "", -1); test("C₁₆", "12", 0);
-    test("D₂", "", -1); test("D₈", "", -1); test("D", "", -1); test("D₁₆", "13", 0);
-    test("E₂", "", -1); test("E₈", "", -1); test("E", "", -1); test("E₁₆", "14", 0);
-    test("F₂", "", -1); test("F₈", "", -1); test("F", "", -1); test("F₁₆", "15", 0);
+    test("2₂", "", PARSER_ERR_INVALID); test("2₈", "2", 0); test("2", "2", 0); test("2₁₆", "2", 0);
+    test("3₂", "", PARSER_ERR_INVALID); test("3₈", "3", 0); test("3", "3", 0); test("3₁₆", "3", 0);
+    test("4₂", "", PARSER_ERR_INVALID); test("4₈", "4", 0); test("4", "4", 0); test("4₁₆", "4", 0);
+    test("5₂", "", PARSER_ERR_INVALID); test("5₈", "5", 0); test("5", "5", 0); test("5₁₆", "5", 0);
+    test("6₂", "", PARSER_ERR_INVALID); test("6₈", "6", 0); test("6", "6", 0); test("6₁₆", "6", 0);
+    test("7₂", "", PARSER_ERR_INVALID); test("7₈", "7", 0); test("7", "7", 0); test("7₁₆", "7", 0);
+    test("8₂", "", PARSER_ERR_INVALID); test("8₈", "", PARSER_ERR_INVALID); test("8", "8", 0); test("8₁₆", "8", 0);
+    test("9₂", "", PARSER_ERR_INVALID); test("9₈", "", PARSER_ERR_INVALID); test("9", "9", 0); test("9₁₆", "9", 0);
+    test("A₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("A₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("A", "", PARSER_ERR_UNKNOWN_VARIABLE); test("A₁₆", "10", 0);
+    test("B₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("B₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("B", "", PARSER_ERR_UNKNOWN_VARIABLE); test("B₁₆", "11", 0);
+    test("C₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("C₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("C", "", PARSER_ERR_UNKNOWN_VARIABLE); test("C₁₆", "12", 0);
+    test("D₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D₁₆", "13", 0);
+    test("E₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E₁₆", "14", 0);
+    test("F₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F₁₆", "15", 0);
 
     test("+1", "1", 0);
     test("−1", "−1", 0);
     test("+ 1", "1", 0); // FIXME: Should this be allowed?
     test("− 1", "−1", 0); // FIXME: Should this be allowed?
-    test("++1", "1", -1);
+    test("++1", "1", PARSER_ERR_INVALID);
     test("−−1", "1", 0);
     test("255", "255", 0);
     test("256", "256", 0);
@@ -138,6 +139,7 @@ test_parser()
     test("١٢٣٤٥٦٧٨٩٠", "1234567890", 0);
     test("۱۲۳۴۵۶۷۸۹۰", "1234567890", 0);
 
+/*    
     //test("2A", "2000000000000000", 0);
     test("2T", "2000000000000", 0);
     test("2G", "2000000000", 0);
@@ -166,6 +168,7 @@ test_parser()
     //test("2n3", "0.0000000023", 0); // FIXME: Need to print out significant figures, not decimal places
     //test("2p3", "0.0000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
     //test("2f3", "0.0000000000000023", 0); // FIXME: Need to print out significant figures, not decimal places
+*/
 
     test("2×10^3", "2000", 0);
     test("2×10^−3", "0.002", 0);
@@ -176,8 +179,8 @@ test_parser()
     test("2e", "5.436563657", 0);
     //test("2π²", "19.739208802", 0);
     //test("2e²", "14.778112198", 0);
-    test("e2", "", -1);
-    test("π2", "", -1);
+    test("e2", "", PARSER_ERR_UNKNOWN_FUNCTION);
+    test("π2", "", PARSER_ERR_UNKNOWN_FUNCTION);
     test("πe", "8.539734223", 0);
     test("eπ", "8.539734223", 0);
     //test("2πe", "17.079468445", 0);
@@ -211,8 +214,8 @@ test_parser()
     test("1÷4", "0.25", 0);
     test("1÷3", "0.333333333", 0);
     test("2÷3", "0.666666667", 0);
-    test("1÷0", "", -9);
-    test("0÷0", "", -9);
+    test("1÷0", "", PARSER_ERR_MP);
+    test("0÷0", "", PARSER_ERR_MP);
 
     /* Precision */
     test("1000000000000000−1000000000000000", "0", 0);
@@ -239,9 +242,9 @@ test_parser()
     test("1!", "1", 0);
     test("5!", "120", 0);
     test("69!", "171122452428141311372468338881272839092270544893520369393648040923257279754140647424000000000000000", 0);
-    test("0.1!", "", -9);
+    test("0.1!", "", PARSER_ERR_MP);
     test("−1!", "−1", 0);
-    test("(−1)!", "", -9);
+    test("(−1)!", "", PARSER_ERR_MP);
     test("−(1!)", "−1", 0);
 
     /* Powers */
@@ -252,7 +255,7 @@ test_parser()
     test("2^1", "2", 0);
     test("2^2", "4", 0);
     test("2⁻¹", "0.5", 0);
-    //test("2⁻", "", -9); // FIXME: Maybe an error in bison?
+    //test("2⁻", "", PARSER_ERR_MP); // FIXME: Maybe an error in bison?
     test("2^−1", "0.5", 0);
     test("2^(−1)", "0.5", 0);
     test("−10^2", "−100", 0);
@@ -276,7 +279,7 @@ test_parser()
     test("Sqrt(2)", "1.414213562", 0);
     test("4^0.5", "2", 0);
     test("2^0.5", "1.414213562", 0);
-    test("(−4)^0.5", "", -9);
+    test("(−4)^0.5", "", PARSER_ERR_MP);
     test("(−8)^(1÷3)", "−2", 0);
 
     test("0 mod 7", "0", 0);
@@ -287,8 +290,8 @@ test_parser()
 
     test("int 3.2", "3", 0);
     test("frac 3.2", "0.2", 0);
-    test("int −3.2", "−3", 0);
-    test("frac −3.2", "−0.2", 0);
+    test("int (−3.2)", "−3", 0);
+    test("frac (−3.2)", "−0.2", 0);
 
     test("|1|", "1", 0);
     test("|−1|", "1", 0);
@@ -296,10 +299,10 @@ test_parser()
     test("|e|", "2.718281828", 0);
     test("|π|", "3.141592654", 0);
     test("abs 1", "1", 0);
-    test("abs −1", "1", 0);
+    test("abs (−1)", "1", 0);
 
-    test("log −1", "", -9);
-    test("log 0", "", -9);
+    test("log (−1)", "", PARSER_ERR_MP);
+    test("log 0", "", PARSER_ERR_MP);
     test("log 1", "0", 0);
     test("log 2", "0.301029996", 0);
     test("log 10", "1", 0);
@@ -307,8 +310,8 @@ test_parser()
     test("log₂ 2", "1", 0);
     test("2 log 2", "0.602059991", 0);
 
-    test("ln −1", "", -9);
-    test("ln 0", "", -9);
+    test("ln (−1)", "", PARSER_ERR_MP);
+    test("ln 0", "", PARSER_ERR_MP);
     test("ln 1", "0", 0);
     test("ln 2", "0.693147181", 0);
     test("ln e", "1", 0);
@@ -325,7 +328,7 @@ test_parser()
 
     test("cos 0", "1", 0);
     test("cos 45 − 1÷√2", "0", 0);
-    test("cos 20 − cos −20", "0", 0);
+    test("cos 20 − cos (−20)", "0", 0);
     test("cos 90", "0", 0);
     test("cos 180", "−1", 0);
     test("2 cos 0", "2", 0);
@@ -333,18 +336,18 @@ test_parser()
 
     test("tan 0", "0", 0);
     test("tan 10 − sin 10÷cos 10", "0", 0);
-    test("tan 90", "", -9);
+    test("tan 90", "", PARSER_ERR_MP);
     test("tan 10", "0.176326981", 0);
     test("tan²10", "0.031091204", 0);
 
     test("cos⁻¹ 0", "90", 0);
     test("cos⁻¹ 1", "0", 0);
-    test("cos⁻¹ −1", "180", 0);
+    test("cos⁻¹ (−1)", "180", 0);
     test("cos⁻¹ (1÷√2)", "45", 0);
 
     test("sin⁻¹ 0", "0", 0);
     test("sin⁻¹ 1", "90", 0);
-    test("sin⁻¹ −1", "−90", 0);
+    test("sin⁻¹ (−1)", "−90", 0);
     test("sin⁻¹ (1÷√2)", "45", 0);
 
     test("cosh 0", "1", 0);
@@ -352,7 +355,7 @@ test_parser()
 
     test("sinh 0", "0", 0);
     test("sinh 10 − (e^10 − e^−10)÷2", "0", 0);
-    test("sinh −10 + sinh 10", "0", 0);
+    test("sinh (−10) + sinh 10", "0", 0);
 
     test("cosh² −5 − sinh² −5", "1", 0);
     test("tanh 0", "0", 0);

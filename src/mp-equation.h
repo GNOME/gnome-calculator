@@ -22,11 +22,15 @@
 
 #include "mp.h"
 
-#define PARSER_ERR_INVALID          1
-#define PARSER_ERR_OVERFLOW         5
-#define PARSER_ERR_UNKNOWN_VARIABLE 6
-#define PARSER_ERR_UNKNOWN_FUNCTION 7
-#define PARSER_ERR_MP               9
+typedef enum
+{
+    PARSER_ERR_NONE = 0,
+    PARSER_ERR_INVALID,
+    PARSER_ERR_OVERFLOW,
+    PARSER_ERR_UNKNOWN_VARIABLE,
+    PARSER_ERR_UNKNOWN_FUNCTION,
+    PARSER_ERR_MP
+} MPErrorCode;
 
 /* Options for parser */
 typedef struct {
@@ -52,7 +56,8 @@ typedef struct {
     int (*get_function)(const char *name, const MPNumber *x, MPNumber *z, void *data);
 } MPEquationOptions;
 
-int mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);
+MPErrorCode mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);
+const char *mp_error_code_to_string(MPErrorCode error_code);
 
 int sub_atoi(const char *data);
 int super_atoi(const char *data);

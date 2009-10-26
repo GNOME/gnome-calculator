@@ -1323,7 +1323,6 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     case '>':
         button_cb(GET_WIDGET("calc_shift_right_button"), NULL);
         return TRUE;
-    case '=':
     case '\n':
         do_button(FN_CALCULATE, NULL);
         return TRUE;

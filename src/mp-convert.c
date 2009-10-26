@@ -592,32 +592,49 @@ char_val(char **c, int base)
 }
 
 
+static int
+ends_with(const char *start, const char *end, const char *word)
+{
+    size_t word_len = strlen(word);
+
+    if (word_len > end - start)
+        return 0;
+
+    return strncmp(end - word_len, word, word_len) == 0;
+}
+
+
 int
 mp_set_from_string(const char *str, MPNumber *z)
 {
-    int i, base, negate = 0, multiplier = 0;
+    int i, base, negate = 0, multiplier = 0, base_multiplier = 1;
     const char *c, *end;
     gboolean has_fraction = FALSE;
 
-    const char *base_suffixes[] = {"₂", "₈", "₁₆", NULL};
-    int base_values[]           = {2, 8, 16, 10};
+    const char *base_digits[]   = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
     const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
     int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
-    const char *si_suffixes[]   = {"T", "G", "M", "k", "d", "c", "m", "u", "µ", "n", "p", "f", NULL};
-    int si_multipliers[]        = { 12,   9,   6,   3,  -1,  -2,  -3,  -6,  -6,  -9, -12, -15};
 
     /* Find the base */
     end = str;
     while (*end != '\0')
         end++;
-    for (i = 0; base_suffixes[i] != NULL; i++) {
-        if (end - strlen(base_suffixes[i]) < str)
-            continue;
-        if (strcmp(end - strlen(base_suffixes[i]), base_suffixes[i]) == 0)
+    base = 0;
+    while (1) {
+        for (i = 0; base_digits[i] != NULL; i++) {
+            if (ends_with(str, end, base_digits[i])) {
+                base += i * base_multiplier;
+                end -= strlen(base_digits[i]);
+                base_multiplier *= 10;
+                break;
+            }
+        }
+        if (base_digits[i] == NULL)
             break;
     }
-    base = base_values[i];
+    if (base_multiplier == 1)
+        base = 10;
 
     /* Check if this has a sign */
     c = str;
@@ -634,16 +651,18 @@ mp_set_from_string(const char *str, MPNumber *z)
     /* Convert integer part */
     mp_set_from_integer(0, z);
     while ((i = char_val((char **)&c, base)) >= 0) {
+        if (i > base)
+            return 1;
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
     }
 
     /* Look for fraction characters, e.g. ⅚ */
     for (i = 0; fractions[i] != NULL; i++) {
-        if (end - strlen(fractions[i]) < str)
-            continue;
-        if (strcmp(end - strlen(fractions[i]), fractions[i]) == 0)
+        if (ends_with(str, end, fractions[i])) {
+            end -= strlen(fractions[i]);
             break;
+        }
     }
     if (fractions[i] != NULL) {
         MPNumber fraction;
@@ -651,19 +670,9 @@ mp_set_from_string(const char *str, MPNumber *z)
         mp_add(z, &fraction, z);
     }
 
-    if (*c == '.' | *c == ',') {
+    if (*c == '.' || *c == ',') {
         has_fraction = TRUE;
         c++;
-    } else {
-        for (i = 0; si_suffixes[i] != NULL; i++) {
-            if (strncmp(c, si_suffixes[i], strlen(si_suffixes[i])) == 0)
-                break;
-        }
-        if (si_suffixes[i] != NULL) {
-            has_fraction = TRUE;
-            multiplier = si_multipliers[i];
-            c += strlen(si_suffixes[i]);
-        }
     }
 
     /* Convert fractional part */

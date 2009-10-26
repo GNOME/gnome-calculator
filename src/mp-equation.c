@@ -25,6 +25,17 @@
 
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
+
+char *
+utf8_next_char (const char *c)
+{
+    c++;
+    while ((*c & 0xC0) == 0x80)
+        c++;
+    return (char *)c;
+}
+
+
 static int
 get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 {
@@ -39,12 +50,41 @@ get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
     else
         result = 0;
 
+    /* If has more than one character then assuming a multiplication of variables */
+    if (!result && utf8_next_char(name)[0] != '\0') {
+        const char *c, *next;
+        char *buffer = malloc(sizeof(char) * strlen(name));
+        MPNumber value;
+
+        result = 1;
+        mp_set_from_integer(1, &value);
+        for (c = name; *c != '\0'; c = next)
+        {
+            MPNumber t;
+
+            next = utf8_next_char(c);
+            snprintf(buffer, next - c + 1, "%s", c);
+
+            if (!get_variable(state, buffer, &t))
+            {
+                result = 0;
+                break;
+            }
+            mp_multiply(&value, &t, &value);
+        }
+
+        free(buffer);
+        if (result)
+            mp_set_from_mp(&value, z);
+    }
+
     return result;
 }
 
 static void
 set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
 {
+    // Reserved words, e, π, mod, and, or, xor, not, abs, log, ln, sqrt, int, frac, sin, cos, ...
     if (strcmp(name, "e") == 0 || strcmp(name, "π") == 0)
         return; // FALSE
 
@@ -164,7 +204,7 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 }
 
 
-int
+MPErrorCode
 mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token)
 {
     int ret;
@@ -173,7 +213,7 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     YY_BUFFER_STATE buffer;
 
     if (!(expression && result) || strlen(expression) == 0)
-        return -EINVAL;
+        return PARSER_ERR_INVALID;
 
     memset(&state, 0, sizeof(MPEquationParserState));
     state.options = options;
@@ -197,18 +237,41 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
 
     /* Failed to parse */
     if (ret)
-        return -PARSER_ERR_INVALID;
+        return PARSER_ERR_INVALID;
 
     /* Error during parsing */
     if (state.error)
         return state.error;
 
     if (mp_get_error())
-        return -PARSER_ERR_MP;
+        return PARSER_ERR_MP;
 
     mp_set_from_mp(&state.ret, result);
 
-    return 0;
+    return PARSER_ERR_NONE;
+}
+
+
+const char *
+mp_error_code_to_string(MPErrorCode error_code)
+{
+    switch(error_code)
+    {
+    case PARSER_ERR_NONE:
+        return "PARSER_ERR_NONE";
+    case PARSER_ERR_INVALID:
+        return "PARSER_ERR_INVALID";
+    case PARSER_ERR_OVERFLOW:
+        return "PARSER_ERR_OVERFLOW";
+    case PARSER_ERR_UNKNOWN_VARIABLE:
+        return "PARSER_ERR_UNKNOWN_VARIABLE";
+    case PARSER_ERR_UNKNOWN_FUNCTION:
+        return "PARSER_ERR_UNKNOWN_FUNCTION";
+    case PARSER_ERR_MP:
+        return "PARSER_ERR_MP";
+    default:
+        return "Unknown parser error";
+    }
 }
 
 

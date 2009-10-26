@@ -47,33 +47,23 @@ SEVEN         "7"|"٧"|"۷"|"߇"|"७"|"৭"|"੭"|"૭"|"୭"|"௭"|"౭"|"೭"
 EIGHT         "8"|"٨"|"۸"|"߈"|"८"|"৮"|"੮"|"૮"|"୮"|"௮"|"౮"|"೮"|"൮"|"๘"|"໘"|"༨"|"၈"|"႘"|"៨"|"᠘"|"᥎"|"᧘"|"᭘"|"᮸"|"᱈"|"᱘"|"꘨"|"꣘"|"꤈"|"꩘"|"𐒨"
 NINE          "9"|"٩"|"۹"|"߉"|"९"|"৯"|"੯"|"૯"|"୯"|"௯"|"౯"|"೯"|"൯"|"๙"|"໙"|"༩"|"၉"|"႙"|"៩"|"᠙"|"᥏"|"᧙"|"᭙"|"᮹"|"᱉"|"᱙"|"꘩"|"꣙"|"꤉"|"꩙"|"𐒩"
 DECIMAL	      "."|","
-BIN           {ZERO}|{ONE}
-BIN_SUFFIX    "₂"
-OCT           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}
-OCT_SUFFIX    "₈"
 DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}
-HEX           {DEC}|[A-F]|[a-f]
-HEX_SUFFIX    "₁₆"
-SI_SUFFIX     "T"|"G"|"M"|"k"|"d"|"c"|"m"|"u"|"µ"|"n"|"p"|"f"
+HEX           {DEC}|[A-F]
 SUPER_DIGITS  "⁰"|"¹"|"²"|"³"|"⁴"|"⁵"|"⁶"|"⁷"|"⁸"|"⁹"
 SUB_DIGITS    "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
 FRACTION      "½"|"⅓"|"⅔"|"¼"|"¾"|"⅕"|"⅖"|"⅗"|"⅘"|"⅙"|"⅚"|"⅛"|"⅜"|"⅝"|"⅞"
 INVERSE       "⁻¹"
+GREEKS        "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
+LETTERS       [a-zA-Z]|{GREEKS}
 
-HEX_NUM  {HEX}+{HEX_SUFFIX}|{HEX}*{DECIMAL}{HEX}+{HEX_SUFFIX}
-DEC_NUM  {DEC}+|{DEC}+{SI_SUFFIX}|{DEC}*{DECIMAL}{DEC}+|{DEC}*{SI_SUFFIX}{DEC}+|{FRACTION}|{DEC}{FRACTION}
-OCT_NUM  {OCT}+{OCT_SUFFIX}|{OCT}*{DECIMAL}{OCT}+{OCT_SUFFIX}
-BIN_NUM  {BIN}+{BIN_SUFFIX}|{BIN}*{DECIMAL}{BIN}+{BIN_SUFFIX}
 SUP_NUM  {SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
-NUMBER   {BIN_NUM}|{OCT_NUM}|{DEC_NUM}|{HEX_NUM}
-GREEKS   "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
-REGISTERS "R₀"|"R₁"|"R₂"|"R₃"|"R₄"|"R₅"|"R₆"|"R₇"|"R₈"|"R₉"
-ANS      [aA][nN][sS]
-RAND     [rR][aA][nN][dD]
-VARIABLE {REGISTERS}|{GREEKS}|"e"|{ANS}|{RAND}
-VARIABLE_NAME [a-zA-Z]+
-FUNCTION {VARIABLE_NAME}|{VARIABLE_NAME}{INVERSE}|{VARIABLE_NAME}{SUB_NUM}
+WORD     {LETTERS}+
+DEC_NUM  {DEC}+|{DEC}*{DECIMAL}{DEC}+
+BASE_NUM {HEX}+{SUB_NUM}|{HEX}*{DECIMAL}{HEX}+{SUB_NUM}
+
+NUMBER   {DEC_NUM}|{BASE_NUM}|{FRACTION}|{DEC_NUM}{FRACTION}
+VARIABLE {WORD}|{WORD}{SUB_NUM}|{WORD}{INVERSE}|{GREEKS}
 
 MOD  [mM][oO][dD]
 AND  "∧"|[aA][nN][dD]
@@ -95,11 +85,10 @@ NOT  "¬"|"~"|[nN][oO][tT]
 {AND}       {return tAND;}
 {OR}        {return tOR;}
 {XOR}       {return tXOR;}
+{NUMBER}    {if (mp_set_from_string(yytext, &yylval->int_t) != 0) REJECT; return tNUMBER;}
 {SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM; }
 {SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM; }
-{NUMBER}    {mp_set_from_string(yytext, &yylval->int_t); return tNUMBER;}
 {VARIABLE}  {yylval->name = strdup(yytext); return tVARIABLE;}
-{FUNCTION}  {yylval->name = strdup(yytext); return tFUNCTION;}
 {INVERSE}   {return tINVERSE;}
 [ \t\n]
 .           {return *yytext;}

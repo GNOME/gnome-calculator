@@ -746,6 +746,7 @@ get_variable(const char *name, MPNumber *z, void *data)
 static void
 set_variable(const char *name, const MPNumber *x, void *data)
 {
+    /* FIXME: Don't allow writing to built-in variables, e.g. ans, rand, sin, ... */
     if (name[0] == 'R' || name[0] == 'r')
         register_set_value(atoi(name+1), x);
 }
@@ -1015,29 +1016,29 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
                                &z,
                                &error_token);
                 switch (result) {
-                    case 0:
+                    case PARSER_ERR_NONE:
                         mp_set_from_mp(&z, ans);
                         display_set_answer(display);
                         break;
 
-                    case -PARSER_ERR_OVERFLOW:
+                    case PARSER_ERR_OVERFLOW:
                         /* Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word */
                         message = _("Overflow. Try a bigger word size");
                         break;
 
-                    case -PARSER_ERR_UNKNOWN_VARIABLE:
+                    case PARSER_ERR_UNKNOWN_VARIABLE:
                         /* Translators: Error displayed to user when they an unknown variable is entered */
                         message = g_strdup_printf(_("Unknown variable '%s'"), error_token);
                         free(error_token);
                         break;
 
-                    case -PARSER_ERR_UNKNOWN_FUNCTION:
+                    case PARSER_ERR_UNKNOWN_FUNCTION:
                         /* Translators: Error displayed to user when an unknown function is entered */
                         message = g_strdup_printf(_("Function '%s' is not defined"), error_token);
                         free(error_token);
                         break;
 
-                    case -PARSER_ERR_MP:
+                    case PARSER_ERR_MP:
                         message = mp_get_error();
                         break;
 

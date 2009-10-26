@@ -46,7 +46,7 @@ static void
 solve(const char *equation)
 {
     MPEquationOptions options;
-    int error;
+    MPErrorCode error;
     MPNumber result;
     char result_str[MAXLINE];
 
@@ -56,7 +56,7 @@ solve(const char *equation)
 
     error = mp_equation_parse(equation, &options, &result, NULL);
     if(error != 0) {
-        fprintf(stderr, "Error %d\n", error);
+        fprintf(stderr, "Error: %s\n", mp_error_code_to_string(error));
         exit(1);
     }
     else {

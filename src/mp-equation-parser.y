@@ -36,10 +36,15 @@ static void set_error(yyscan_t yyscanner, int error)
     _mp_equation_get_extra(yyscanner)->error = error;
 }
 
+static void set_result(yyscan_t yyscanner, const MPNumber *x)
+{
+    mp_set_from_mp(x, &(_mp_equation_get_extra(yyscanner))->ret);
+}
+
 static void get_variable(yyscan_t yyscanner, const char *name, MPNumber *z)
 {
     if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z)) {
-        set_error(yyscanner, -PARSER_ERR_UNKNOWN_VARIABLE);
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_VARIABLE);
         _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
     }
 }
@@ -52,7 +57,7 @@ static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
 static void get_function(yyscan_t yyscanner, const char *name, const MPNumber *x, MPNumber *z)
 {
     if (!_mp_equation_get_extra(yyscanner)->get_function(_mp_equation_get_extra(yyscanner), name, x, z)) {
-        set_error(yyscanner, -PARSER_ERR_UNKNOWN_FUNCTION);
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION);
         _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
     }
 }
@@ -60,7 +65,7 @@ static void get_function(yyscan_t yyscanner, const char *name, const MPNumber *x
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 {
     if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
-	set_error(yyscanner, -PARSER_ERR_OVERFLOW);
+	set_error(yyscanner, PARSER_ERR_OVERFLOW);
     }
     mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
@@ -86,35 +91,35 @@ static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 %left tMULTIPLY tDIVIDE tMOD MULTIPLICATION
 %left tNOT
 %left tROOT tROOT3 tROOT4
-%left <name> tVARIABLE tFUNCTION
+%left <name> tVARIABLE
 %right <integer> tSUBNUM tSUPNUM
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
 %left UNARY_MINUS
 %right '^' tINVERSE '!'
 
-%type <int_t> exp function
+%type <int_t> exp variable
 %start statement
 
 %%
 
 statement:
-  exp { mp_set_from_mp(&$1, &(_mp_equation_get_extra(yyscanner))->ret);}
-| tVARIABLE '=' exp {set_variable(yyscanner, $1, &$3);}
+  exp { set_result(yyscanner, &$1); }
+| exp '=' { set_result(yyscanner, &$1); }
+| tVARIABLE '=' exp {set_variable(yyscanner, $1, &$3); set_result(yyscanner, &$3); }
 ;
 
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}
 | '|' exp '|' {mp_abs(&$2, &$$);}
+| '|' tVARIABLE '|' {get_variable(yyscanner, $2, &$$); mp_abs(&$$, &$$); free($2);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
+| '|' tNUMBER tVARIABLE '|' {get_variable(yyscanner, $3, &$$); mp_multiply(&$2, &$$, &$$); mp_abs(&$$, &$$); free($3);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
 | exp tINVERSE {mp_reciprocal(&$1, &$$);}
 | exp '!' {mp_factorial(&$1, &$$);}
-| tVARIABLE {get_variable(yyscanner, $1, &$$); free($1);}
-| tVARIABLE tVARIABLE %prec MULTIPLICATION {MPNumber t; get_variable(yyscanner, $1, &t); get_variable(yyscanner, $2, &$$); mp_multiply(&t, &$$, &$$); free($1);}
-| function {mp_set_from_mp(&$1, &$$);}
-| tNUMBER function  %prec MULTIPLICATION {mp_multiply(&$1, &$2, &$$);}
-| tNUMBER tVARIABLE %prec MULTIPLICATION {get_variable(yyscanner, $2, &$$); mp_multiply(&$1, &$$, &$$); free($2);}
+| variable {mp_set_from_mp(&$1, &$$);}
+| tNUMBER variable %prec MULTIPLICATION {mp_multiply(&$1, &$2, &$$);}
 | tSUBTRACT exp %prec UNARY_MINUS {mp_invert_sign(&$2, &$$);}
 | tADD tNUMBER %prec UNARY_PLUS {mp_set_from_mp(&$2, &$$);}
 | exp tDIVIDE exp {mp_divide(&$1, &$3, &$$);}
@@ -133,13 +138,14 @@ exp:
 ;
 
 
-function:
-  tFUNCTION exp {get_function(yyscanner, $1, &$2, &$$); free($1);}
-| tFUNCTION tSUPNUM exp {get_function(yyscanner, $1, &$3, &$$); mp_xpowy_integer(&$$, $2, &$$); free($1);}
+variable:
+  tVARIABLE exp {get_function(yyscanner, $1, &$2, &$$); free($1);}
+| tVARIABLE tSUPNUM exp {get_function(yyscanner, $1, &$3, &$$); mp_xpowy_integer(&$$, $2, &$$); free($1);}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
 | tROOT3 exp {mp_root(&$2, 3, &$$);}
 | tROOT4 exp {mp_root(&$2, 4, &$$);}
+| tVARIABLE {get_variable(yyscanner, $1, &$$); free($1);}
 ;
 
 %%
