@@ -70,6 +70,7 @@ AND  "∧"|[aA][nN][dD]
 OR   "∨"|[oO][rR]
 XOR  "⊕"|[xX][oO][rR]
 NOT  "¬"|"~"|[nN][oO][tT]
+IN   [iI][nN]
 
 %%
 
@@ -85,6 +86,7 @@ NOT  "¬"|"~"|[nN][oO][tT]
 {AND}       {return tAND;}
 {OR}        {return tOR;}
 {XOR}       {return tXOR;}
+{IN}        {return tIN;}
 {NUMBER}    {if (mp_set_from_string(yytext, &yylval->int_t) != 0) REJECT; return tNUMBER;}
 {SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM; }
 {SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM; }

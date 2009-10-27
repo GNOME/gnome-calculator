@@ -29,6 +29,7 @@ typedef enum
     PARSER_ERR_OVERFLOW,
     PARSER_ERR_UNKNOWN_VARIABLE,
     PARSER_ERR_UNKNOWN_FUNCTION,
+    PARSER_ERR_UNKNOWN_CONVERSION,
     PARSER_ERR_MP
 } MPErrorCode;
 
@@ -54,6 +55,9 @@ typedef struct {
 
     /* Function to solve functions */
     int (*get_function)(const char *name, const MPNumber *x, MPNumber *z, void *data);
+
+    /* Function to convert units */
+    int (*convert)(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data);
 } MPEquationOptions;
 
 MPErrorCode mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);

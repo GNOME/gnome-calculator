@@ -70,6 +70,16 @@ static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
     mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
 
+static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
+{
+    void *data = _mp_equation_get_extra(yyscanner)->options->callback_data;
+
+    if (_mp_equation_get_extra(yyscanner)->options->convert == NULL
+        || !_mp_equation_get_extra(yyscanner)->options->convert(x, x_units, z_units, z, data)) {
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_CONVERSION);
+    }
+}
+
 %}
 
 %pure-parser
@@ -96,7 +106,8 @@ static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
 %left UNARY_MINUS
-%right '^' tINVERSE '!'
+%right '^' tINVERSE '!' '|'
+%left tIN
 
 %type <int_t> exp variable
 %start statement
@@ -107,7 +118,11 @@ statement:
   exp { set_result(yyscanner, &$1); }
 | exp '=' { set_result(yyscanner, &$1); }
 | tVARIABLE '=' exp {set_variable(yyscanner, $1, &$3); set_result(yyscanner, &$3); }
+| tNUMBER tVARIABLE tIN tVARIABLE { MPNumber t; do_conversion(yyscanner, &$1, $2, $4, &t); set_result(yyscanner, &t); free($2); free($4); }
+| tVARIABLE tIN tVARIABLE { MPNumber x, t; mp_set_from_integer(1, &x); do_conversion(yyscanner, &x, $1, $3, &t); set_result(yyscanner, &t); free($1); free($3); }
 ;
+
+/* |x| gets confused and thinks = |x|(...||) */
 
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}

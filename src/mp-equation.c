@@ -267,6 +267,8 @@ mp_error_code_to_string(MPErrorCode error_code)
         return "PARSER_ERR_UNKNOWN_VARIABLE";
     case PARSER_ERR_UNKNOWN_FUNCTION:
         return "PARSER_ERR_UNKNOWN_FUNCTION";
+    case PARSER_ERR_UNKNOWN_CONVERSION:
+        return "PARSER_ERR_UNKNOWN_CONVERSION";
     case PARSER_ERR_MP:
         return "PARSER_ERR_MP";
     default:

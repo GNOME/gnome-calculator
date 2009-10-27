@@ -1,3 +1,6 @@
+#ifndef CURRENCY_H
+#define CURRENCY_H
+
 #include <glib/gi18n.h>
 
 #include "mp.h"
@@ -72,3 +75,5 @@ void currency_convert(const MPNumber *from_amount,
 
 /* Frees up all allocated resources */
 void currency_free_resources();
+
+#endif /* CURRENCY_H */
