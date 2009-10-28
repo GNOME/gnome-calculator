@@ -22,13 +22,7 @@
 #include "mp.h"
 
 void register_init();
-void register_set_value(int index, const MPNumber *value);
-void register_set_name(int index, const char *name);
-const MPNumber *register_get_value(int index);
-const char *register_get_name(int index);
-
-void function_set(int index, const char *name, const char *value);
-const char *function_get_name(int index);
-const char *function_get_value(int index);
+void register_set_value(const char *name, const MPNumber *value);
+MPNumber *register_get_value(const char *name);
 
 #endif /*REGISTER_H*/

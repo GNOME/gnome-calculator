@@ -37,9 +37,6 @@
 #define MAXLINE        512        /* Length of character strings. */
 #endif
 
-#define MAX_FUNCTIONS 10
-#define MAX_REGISTERS 10         /* Maximum number of memory registers. */
-
 #ifndef RCNAME
 #define RCNAME         ".gcalctoolrc"
 #endif

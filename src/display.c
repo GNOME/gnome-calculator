@@ -615,10 +615,9 @@ void display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
 static void
 make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x, int base_)
 {
-    static char digits[] = "0123456789ABCDEF";
     char fixed[MAX_DIGITS];
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
-    int ddig, eng, exponent = 0;
+    int eng, exponent = 0;
     GString *string;
 
     string = g_string_sized_new(target_len);
@@ -662,30 +661,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x
 
     mp_cast_to_string(&mantissa, base_, display->accuracy, !display->show_zeroes, fixed, MAX_DIGITS);
     g_string_append(string, fixed);
-    g_string_append(string, "×10^");
-
-    if (exponent < 0) {
-        exponent = -exponent;
-        g_string_append(string, "−");
-    } else {
-        g_string_append(string, "+");
-    }
-
-    mp_set_from_string("0.5", &t);
-    mp_add_integer(&t, exponent, &z);
-    mp_set_from_integer(1, &t);
-    for (ddig = 0; mp_is_greater_equal(&z, &t); ddig++) {
-        mp_divide(&z, &base, &z);
-    }
-
-    while (ddig-- > 0) {
-        int dval;
-
-        mp_multiply(&z, &base, &z);
-        dval = mp_cast_to_int(&z);
-        g_string_append_c(string, digits[dval]);
-        mp_add_integer(&z, -dval, &z);
-    }
+    g_string_append_printf(string, "×10^%d", exponent);
 
     strncpy(target, string->str, target_len);
     g_string_free(string, TRUE);
@@ -724,6 +700,7 @@ get_variable(const char *name, MPNumber *z, void *data)
     char *c, *lower_name;
     int result = 1;
     GCDisplay *display = data;
+    MPNumber *t;
 
     lower_name = strdup(name);
     for (c = lower_name; *c; c++)
@@ -731,12 +708,15 @@ get_variable(const char *name, MPNumber *z, void *data)
 
     if (strcmp(lower_name, "rand") == 0)
         mp_set_from_random(z);
-    else if (lower_name[0] == 'r')
-        mp_set_from_mp(register_get_value(atoi(name+1)), z);
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(display_get_answer(display), z);
-    else
-        result = 0;
+    else {
+        t = register_get_value(name);
+        if (t)
+            mp_set_from_mp(t, z);
+        else
+            result = 0;
+    }
 
     free(lower_name);
 
@@ -748,8 +728,7 @@ static void
 set_variable(const char *name, const MPNumber *x, void *data)
 {
     /* FIXME: Don't allow writing to built-in variables, e.g. ans, rand, sin, ... */
-    if (name[0] == 'R' || name[0] == 'r')
-        register_set_value(atoi(name+1), x);
+    register_set_value(name, x);
 }
 
 
@@ -1068,21 +1047,20 @@ do_factorize()
 
 
 static void
-do_sto(GCDisplay *display, int index)
+do_sto(GCDisplay *display, const char *name)
 {
-    MPNumber temp;
+    MPNumber t;
 
-    if (!display_is_usable_number(display, &temp))
+    if (!display_is_usable_number(display, &t))
         ui_set_statusbar(_("No sane value to store"));
     else
-        register_set_value(index, &temp);
+        register_set_value(name, &t);
 }
 
 
 void
 display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_start, int cursor_end)
 {
-    char buf[MAXLINE];
     MPNumber *ans;
     int enabled;
     guint64 bit_value;
@@ -1130,12 +1108,11 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             return;
 
         case FN_STORE:
-            do_sto(display, GPOINTER_TO_INT (arg));
+            do_sto(display, (const char *)arg);
             return;
 
         case FN_RECALL:
-            SNPRINTF(buf, MAXLINE, "R%s", (const char *)arg);
-            display_insert(display, cursor_start, cursor_end, buf);
+            display_insert(display, cursor_start, cursor_end, (const char *)arg);
             break;
 
         case FN_BACKSPACE:

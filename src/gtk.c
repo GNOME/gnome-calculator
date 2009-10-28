@@ -92,6 +92,9 @@ static ButtonData button_data[] = {
     {NULL, NULL}
 };
 
+static char *registers[] = {"a", "b", "c", "x", "y", "z", NULL};
+#define MAX_REGISTERS 6
+
 /* Window titles dependant on mode */
 static char *titles[] = {
     /* Translators: The window title when in basic mode */
@@ -654,7 +657,7 @@ G_MODULE_EXPORT
 void
 recall_menu_cb(GtkMenuItem *menu)
 {
-    do_button(FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_digit"));
+    do_button(FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
@@ -828,22 +831,16 @@ set_subscript_cb(GtkWidget *widget)
 static void
 update_memory_menus()
 {
-    char mstr[MAXLINE], value[MAXLINE];
     int i;
 
-    for (i = 0; i < MAX_REGISTERS; i++) {
-        const char *name, *register_prefix;
+    for (i = 0; registers[i] != NULL; i++) {
+        char value[MAXLINE] = "", mstr[MAXLINE];
+        MPNumber *t;
 
-        name = register_get_name(i);
-
-        /* Translators: R is the short form of register used inter alia in popup menus */
-        register_prefix = _("R");
-
-        display_make_number(&v->display, value, MAXLINE, register_get_value(i));
-        if (name[0] != '\0')
-            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s%s:</span>    %s [%s]", register_prefix, subscript_digits[i], value, name);
-        else
-            SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s%s:</span>    %s", register_prefix, subscript_digits[i], value);
+        t = register_get_value(registers[i]);
+        if (t)
+            display_make_number(&v->display, value, MAXLINE, t);
+        SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X.memory_store_labels[i]), mstr);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(X.memory_recall_labels[i]), mstr);
     }
@@ -1555,7 +1552,6 @@ create_main_window()
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
-
         SNPRINTF(name, MAXLINE, "calc_%d_button", i);
         set_string_data(X.ui, name, "calc_subscript_text", subscript_digits[i]);
         set_string_data(X.ui, name, "calc_superscript_text", superscript_digits[i]);
@@ -1568,15 +1564,15 @@ create_main_window()
     set_data(X.ui, "calc_recall_button", "calc_menu", GET_WIDGET("memory_recall_popup"));
 
     /* Get labels from popup menus */
-    for (i = 0; i < MAX_REGISTERS; i++) {
+    for (i = 0; registers[i]; i++) {
         SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
         widget = GET_WIDGET(name);
-        g_object_set_data(G_OBJECT(widget), "register_id", GINT_TO_POINTER(i));
+        g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
         X.memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
 
         SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
         widget = GET_WIDGET(name);
-        g_object_set_data(G_OBJECT(widget), "register_digit", (gpointer) subscript_digits[i]);
+        g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
         X.memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
 
