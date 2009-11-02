@@ -196,7 +196,7 @@ main(int argc, char **argv)
 
     g_type_init();
 
-    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 

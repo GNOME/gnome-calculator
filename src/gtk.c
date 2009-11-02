@@ -124,8 +124,8 @@ static char *finc_dialog_fields[][5] = {
     {NULL,        NULL,          NULL,         NULL,         NULL}
 };
 
-#define UI_FILE      PACKAGE_UI_DIR "/gcalctool.ui"
-#define UI_FINC_FILE PACKAGE_UI_DIR "/financial.ui"
+#define UI_FILE      UI_DIR "/gcalctool.ui"
+#define UI_FINC_FILE UI_DIR "/financial.ui"
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 

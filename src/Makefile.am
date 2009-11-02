@@ -4,10 +4,10 @@
 INCLUDES = \
 	-I$(includedir) \
 	$(DISABLE_DEPRECATED) \
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	-DPACKAGE_UI_DIR=\""$(datadir)/gcalctool"\" \
-	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	-DPACKAGE_PIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
+	-DDATA_DIR=\""$(datadir)"\" \
+	-DUI_DIR=\""$(datadir)/gcalctool"\" \
+	-DLOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
 	$(PACKAGE_CFLAGS) \
 	$(GNOME_UTILS_CFLAGS) \
 	$(GCONF_CFLAGS) \
@@ -46,7 +46,7 @@ gcalctool_SOURCES = \
 	ui.h \
 	unittest.c \
 	unittest.h
-	
+
 CLEANFILES = \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
