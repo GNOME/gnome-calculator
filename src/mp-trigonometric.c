@@ -104,7 +104,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
     MPNumber t1, t2;
 
     /* sin(0) = 0, cos(0) = 1 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         if (do_sin == 0)
             mp_set_from_integer(1, z);
         else
@@ -162,7 +162,7 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     MPNumber x_radians;
 
     /* sin(0) = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -204,7 +204,7 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         if (x_radians.exponent > 0)
             mp_add_integer(&x_radians, -2, &x_radians);
 
-        if (x_radians.sign == 0) {
+        if (mp_is_zero(&x_radians)) {
             mp_set_from_integer(0, z);
             return;
         }
@@ -240,15 +240,15 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 
 
 void
-mp_cos(const MPNumber *xi, MPAngleUnit unit, MPNumber *z)
+mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     /* cos(0) = 1 */
-    if (xi->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
     }
 
-    convert_to_radians(xi, unit, z);
+    convert_to_radians(x, unit, z);
 
     /* Use power series if -1 >= x >= 1 */
     mp_abs(z, z);
@@ -291,7 +291,7 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     MPNumber t1, t2;
 
     /* asin(0) = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -338,7 +338,7 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         /* Translators: Error displayed when inverse cosine value is undefined */
         mperr(_("Inverse cosine not defined for values outside [-1, 1]"));
         mp_set_from_integer(0, z);
-    } else if (x->sign == 0) {
+    } else if (mp_is_zero(x)) {
         mp_divide_integer(&pi, 2, z);
     } else if (mp_is_equal(x, &t1)) {
         mp_set_from_integer(0, z);
@@ -368,7 +368,7 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     float rx = 0.0;
     MPNumber t1, t2;
 
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -405,7 +405,7 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         mp_multiply_fraction(&t2, -i, i + 2, &t2);
 
         mp_add(z, &t2, z);
-        if (t2.sign == 0)
+        if (mp_is_zero(&t2))
             break;
     }
 
@@ -432,7 +432,7 @@ mp_sinh(const MPNumber *x, MPNumber *z)
     MPNumber abs_x;
 
     /* sinh(0) = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -473,7 +473,7 @@ mp_cosh(const MPNumber *x, MPNumber *z)
     MPNumber t;
 
     /* cosh(0) = 1 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -494,7 +494,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     MPNumber t;
 
     /* tanh(0) = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }

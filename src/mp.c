@@ -71,7 +71,7 @@ mpext(int i, int j, MPNumber *x)
 {
     int q, s;
 
-    if (x->sign == 0 || MP_T <= 2 || i == 0)
+    if (mp_is_zero(x) || MP_T <= 2 || i == 0)
         return;
 
     /* COMPUTE MAXIMUM POSSIBLE ERROR IN THE LAST PLACE */
@@ -235,14 +235,14 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
     memset(&zt, 0, sizeof(MPNumber));
 
     /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_mp(y, z);
         z->sign = y_sign;
         return;
     }
 
     /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */
-    if (y->sign == 0 || y->sign == 0) {
+    if (mp_is_zero(y) || y_sign == 0) {
         mp_set_from_mp(x, z);
         return;
     }
@@ -350,7 +350,7 @@ mp_fractional_component(const MPNumber *x, MPNumber *z)
     int i, shift;
 
     /* Fractional component of zero is 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -384,7 +384,7 @@ mp_integer_component(const MPNumber *x, MPNumber *z)
     int i;
 
     /* Integer component of zero = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_mp(x, z);
         return;
     }
@@ -415,7 +415,7 @@ mp_compare_mp_to_mp(const MPNumber *x, const MPNumber *y)
     }
 
     /* x = y = 0 */
-    if (x->sign == 0)
+    if (mp_is_zero(x))
         return 0;
 
     /* See if numbers are of different magnitude */
@@ -449,7 +449,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     MPNumber t;
 
     /* x/0 */
-    if (y->sign == 0) {
+    if (mp_is_zero(y)) {
         /* Translators: Error displayed attempted to divide by zero */
         mperr(_("Division by zero is not defined"));
         mp_set_from_integer(0, z);
@@ -457,7 +457,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     /* 0/y = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -494,7 +494,7 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
     }
 
     /* 0/y = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -663,7 +663,7 @@ mp_is_integer(const MPNumber *x)
     /*int i;
 
     // Zero is an integer
-    if (x->sign == 0)
+    if (mp_is_zero(x))
         return 1;
 
     // Fractional
@@ -709,7 +709,7 @@ mpexp(const MPNumber *x, MPNumber *z)
     MPNumber t1, t2;
 
     /* e^0 = 1 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -742,7 +742,7 @@ mpexp(const MPNumber *x, MPNumber *z)
         }
     }
 
-    if (t1.sign == 0) {
+    if (mp_is_zero(&t1)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -754,7 +754,7 @@ mpexp(const MPNumber *x, MPNumber *z)
         mp_multiply(&t1, &t2, &t2);
         mp_divide_integer(&t2, i, &t2);
         mp_add(&t2, z, z);
-        if (t2.sign == 0)
+        if (mp_is_zero(&t2))
             break;
     }
 
@@ -777,7 +777,7 @@ mp_epowy(const MPNumber *x, MPNumber *z)
     MPNumber t1, t2;
 
     /* x^0 = 1 */
-    if (x->sign == 0)  {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -827,7 +827,7 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 
         mp_divide_integer(&t1, i * xs, &t1);
         mp_add(&t2, &t1, &t2);
-        if (t1.sign == 0)
+        if (mp_is_zero(&t1))
             break;
     }
 
@@ -943,7 +943,7 @@ mplns(const MPNumber *x, MPNumber *z)
     MPNumber t1, t2, t3;
 
     /* ln(1) = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -1034,7 +1034,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
         mp_add_integer(&t1, -1, &t2);
 
         /* IF POSSIBLE GO TO CALL MPLNS */
-        if (t2.sign == 0 || t2.exponent + 1 <= 0) {
+        if (mp_is_zero(&t2) || t2.exponent + 1 <= 0) {
             /* COMPUTE FINAL CORRECTION ACCURATELY USING MPLNS */
             mplns(&t2, &t2);
             mp_add(z, &t2, z);
@@ -1108,7 +1108,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
     MPNumber r;
 
     /* x*0 = 0*y = 0 */
-    if (x->sign == 0 || y->sign == 0) {
+    if (mp_is_zero(x) || mp_is_zero(y)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -1202,7 +1202,7 @@ mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
     int fraction[MP_SIZE*2];
 
     /* x*0 or 0*y or 0*0 = 0 */
-    if (x->sign * y->sign == 0) {
+    if (mp_is_zero(x) || mp_is_zero(y)) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -1254,7 +1254,7 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
     int t1, t3, t4, ij, ri = 0, is, ix;
 
     /* x*0 = 0*y = 0 */
-    if (x->sign == 0 || y == 0) {
+    if (mp_is_zero(x) || y == 0) {
         mp_set_from_integer(0, z);
         return;
     }
@@ -1408,7 +1408,7 @@ mp_normalize(MPNumber *x)
     int i__1, i, j, b2, i2, i2m, round;
 
     /* Normalized zero is zero */
-    if (x->sign == 0)
+    if (mp_is_zero(x))
         return;
 
     /* CHECK THAT SIGN = +-1 */
@@ -1502,14 +1502,14 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     /* 0^-y illegal */
-    if (x->sign == 0 && y->sign < 0) {
+    if (mp_is_zero(x) && y->sign < 0) {
         mperr(_("The power of zero is not defined for a negative exponent"));
         mp_set_from_integer(0, z);
         return;
     }
 
     /* x^0 = 1 */
-    if (y->sign == 0) {
+    if (mp_is_zero(y)) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -1536,7 +1536,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
     static int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
 
     /* 1/0 invalid */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mperr(_("Reciprocal of zero is not defined"));
         mp_set_from_integer(0, z);
         return;
@@ -1633,7 +1633,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     }
 
     /* 0^(1/n) = 0 for positive n */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         if (n <= 0)
             mperr(_("Negative root of zero is undefined"));
@@ -1732,7 +1732,7 @@ mp_sqrt(const MPNumber *x, MPNumber *z)
 {
     if (x->sign < 0)
         mperr(_("Square root is not defined for negative values"));
-    else if (x->sign == 0)
+    else if (mp_is_zero(x))
         mp_set_from_integer(0, z);
     else {
         int i;
@@ -1752,7 +1752,7 @@ mp_factorial(const MPNumber *x, MPNumber *z)
     int i, value;
 
     /* 0! == 1 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
     }
@@ -1814,14 +1814,14 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     MPNumber t;
 
     /* 0^-n invalid */
-    if (x->sign == 0 && n < 0) {
+    if (mp_is_zero(x) && n < 0) {
         /* Translators: Error displayed when attempted to raise 0 to a negative exponent */
         mperr(_("The power of zero is not defined for a negative exponent"));
         return;
     }
 
     /* 0^n = 0 */
-    if (x->sign == 0) {
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }

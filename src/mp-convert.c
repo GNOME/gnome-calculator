@@ -329,7 +329,7 @@ mp_cast_to_float(const MPNumber *x)
     int i;
     float rb, rz = 0.0;
 
-    if (x->sign == 0)
+    if (mp_is_zero(x))
         return 0.0;
 
     rb = (float) MP_BASE;
@@ -390,7 +390,7 @@ mp_cast_to_double(const MPNumber *x)
     int i, tm = 0;
     double d__1, db, dz2, ret_val = 0.0;
 
-    if (x->sign == 0)
+    if (mp_is_zero(x))
         return 0.0;
 
     db = (double) MP_BASE;
