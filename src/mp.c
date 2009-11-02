@@ -942,7 +942,7 @@ mplns(const MPNumber *x, MPNumber *z)
     int t, it0;
     MPNumber t1, t2, t3;
 
-    /* ln(1) = 0 */
+    /* ln(1+0) = 0 */
     if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
@@ -965,45 +965,41 @@ mplns(const MPNumber *x, MPNumber *z)
     mp_add_integer(&t1, -1, &t1);
     mp_multiply(x, &t1, z);
 
-    /* START NEWTON ITERATION USING SMALL T, LATER INCREASE */
-    t = max(5, 13 - (MP_BASE << 1));
-    if (t <= MP_T)
+    /* Solve using Newtons method */
+    it0 = t = 5;
+    while(1)
     {
-        it0 = (t + 5) / 2;
+        int ts2, ts3;
 
-        while(1)
-        {
-            int ts2, ts3;
+        /* t3 = (e^t3 - 1) */
+        /* z = z - (t2 + t3 + (t2 * t3)) */
+        mp_epowy(z, &t3);
+        mp_add_integer(&t3, -1, &t3);
+        mp_multiply(&t2, &t3, &t1);
+        mp_add(&t3, &t1, &t3);
+        mp_add(&t2, &t3, &t3);
+        mp_subtract(z, &t3, z);
+        if (t >= MP_T)
+            break;
 
-            mp_epowy(z, &t3);
-            mp_add_integer(&t3, -1, &t3);
-            mp_multiply(&t2, &t3, &t1);
-            mp_add(&t3, &t1, &t3);
-            mp_add(&t2, &t3, &t3);
-            mp_subtract(z, &t3, z);
-            if (t >= MP_T)
-                break;
-
-            /*  FOLLOWING LOOP COMPUTES NEXT VALUE OF T TO USE.
-             *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE,
-             *  WE CAN ALMOST DOUBLE T EACH TIME.
-             */
-            ts3 = t;
-            t = MP_T;
-            do {
-                ts2 = t;
-                t = (t + it0) / 2;
-            } while (t > ts3);
-            t = ts2;
-        }
-
-        /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
-        if (t3.sign != 0 && t3.exponent << 1 > it0 - MP_T) {
-            mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
-        }
+        /*  FOLLOWING LOOP COMPUTES NEXT VALUE OF T TO USE.
+         *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE,
+         *  WE CAN ALMOST DOUBLE T EACH TIME.
+         */
+        ts3 = t;
+        t = MP_T;
+        do {
+            ts2 = t;
+            t = (t + it0) / 2;
+        } while (t > ts3);
+        t = ts2;
     }
 
-    /* REVERSE SIGN OF Y AND RETURN */
+    /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
+    if (t3.sign != 0 && t3.exponent << 1 > it0 - MP_T) {
+        mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
+    }
+
     z->sign = -z->sign;
 }
 
@@ -1405,86 +1401,27 @@ mp_invert_sign(const MPNumber *x, MPNumber *z)
 void
 mp_normalize(MPNumber *x)
 {
-    int i__1, i, j, b2, i2, i2m, round;
+    int start_index;
 
-    /* Normalized zero is zero */
-    if (mp_is_zero(x))
+    /* Find first non-zero digit */
+    for (start_index = 0; start_index < MP_SIZE && x->fraction[start_index] == 0; start_index++);
+
+    /* Mark as zero */
+    if (start_index >= MP_SIZE) {
+        x->sign = 0;
+        x->exponent = 0;
         return;
-
-    /* CHECK THAT SIGN = +-1 */
-    if (abs(x->sign) > 1) {
-        mperr("*** SIGN NOT 0, +1 OR -1 IN CALL TO MP_NORMALIZE, POSSIBLE OVERWRITING PROBLEM ***");
-        mp_set_from_integer(0, x);
-        return;
     }
 
-    i2 = MP_T + 4;
+    /* Shift left so first digit is non-zero */
+    if (start_index > 0) {
+        int i;
 
-    /* Normalize by shifting the fraction to the left */
-    if (x->fraction[0] == 0) {
-        /* Find how many places to shift and detect 0 fraction */
-        for (i = 1; i < i2 && x->fraction[i] == 0; i++);
-        if (i == i2) {
-            mp_set_from_integer(0, x);
-            return;
-        }
-
-        x->exponent -= i;
-        i2m = i2 - i;
-        for (j = 0; j < i2m; j++)
-            x->fraction[j] = x->fraction[j + i];
-        for (; j < i2; j++)
-            x->fraction[j] = 0;
-    }
-
-    /*  SEE IF ROUNDING NECESSARY
-     *  TREAT EVEN AND ODD BASES DIFFERENTLY
-     */
-    b2 = MP_BASE / 2;
-    if (b2 << 1 != MP_BASE) {
-        round = 0;
-        /* ODD BASE, ROUND IF R(T+1)... > 1/2 */
-        for (i = 0; i < 4; i++) {
-            i__1 = x->fraction[MP_T + i] - b2;
-            if (i__1 < 0)
-                break;
-            else if (i__1 == 0)
-                continue;
-            else {
-                round = 1;
-                break;
-            }
-        }
-    }
-    else {
-        /*  B EVEN.  ROUND IF R(T+1) >= B2 UNLESS R(T) ODD AND ALL ZEROS
-         *  AFTER R(T+2).
-         */
-        round = 1;
-        i__1 = x->fraction[MP_T] - b2;
-        if (i__1 < 0)
-            round = 0;
-        else if (i__1 == 0) {
-            if (x->fraction[MP_T - 1] % 2 != 0) {
-                if (x->fraction[MP_T + 1] + x->fraction[MP_T + 2] + x->fraction[MP_T + 3] == 0)
-                    round = 0;
-            }
-        }
-    }
-
-    /* ROUND */
-    if (round) {
-        for (j = MP_T - 1; j >= 0; j--) {
-            ++x->fraction[j];
-            if (x->fraction[j] < MP_BASE)
-                break;
-            x->fraction[j] = 0;
-        }
-        /* EXCEPTIONAL CASE, ROUNDED UP TO .10000... */
-        if (j < 0) {
-            x->exponent++;
-            x->fraction[0] = 1;
-        }
+        x->exponent -= start_index;
+        for (i = 0; (i + start_index) < MP_SIZE; i++)
+            x->fraction[i] = x->fraction[i + start_index];
+        for (; i < MP_SIZE; i++)
+            x->fraction[i] = 0;
     }
 }
 
@@ -1520,20 +1457,11 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 }
 
 
-/*  RETURNS Z = 1/X, FOR MP X AND Z.
- *  MP_ROOT (X, -1, Z) HAS THE SAME EFFECT.
- *  DIMENSION OF R MUST BE AT LEAST 4*T+10 IN CALLING PROGRAM
- *  (BUT Z(1) MAY BE R(3T+9)).
- *  NEWTONS METHOD IS USED, SO FINAL ONE OR TWO DIGITS MAY
- *  NOT BE CORRECT.
- */
 void
 mp_reciprocal(const MPNumber *x, MPNumber *z)
 {
-    MPNumber tmp_x, t1, t2;
-    int ex, it0, t;
-    float rx;
-    static int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
+    MPNumber t1, t2;
+    int it0, t;
 
     /* 1/0 invalid */
     if (mp_is_zero(x)) {
@@ -1542,61 +1470,44 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
         return;
     }
 
-    ex = x->exponent;
+    /* Start by approximating value using floating point */
+    mp_set_from_mp(x, &t1);
+    t1.exponent = 0;
+    mp_set_from_float(1.0f / mp_cast_to_float(&t1), &t1);
+    t1.exponent -= x->exponent;
 
-    /* SET EXPONENT TO ZERO SO RX NOT TOO LARGE OR SMALL. */
-    /* work-around to avoid touching X */
-    mp_set_from_mp(x, &tmp_x);
-    tmp_x.exponent = 0;
-    rx = mp_cast_to_float(&tmp_x);
+    it0 = t = 3;
+    while(1) {
+        int ts2, ts3;
 
-    /* USE SINGLE-PRECISION RECIPROCAL AS FIRST APPROXIMATION */
-    mp_set_from_float(1.0f / rx, &t1);
+        /* t1 = t1 - (t1 * ((x * t1) - 1))   (2*t1 - t1^2*x) */
+        mp_multiply(x, &t1, &t2);
+        mp_add_integer(&t2, -1, &t2);
+        mp_multiply(&t1, &t2, &t2);
+        mp_subtract(&t1, &t2, &t1);
+        if (t >= MP_T)
+            break;
 
-    /* CORRECT EXPONENT OF FIRST APPROXIMATION */
-    t1.exponent -= ex;
-
-    /* START WITH SMALL T TO SAVE TIME. ENSURE THAT B**(T-1) >= 100 */
-    if (MP_BASE < 10)
-        t = it[MP_BASE - 1];
-    else
-        t = 3;
-    it0 = (t + 4) / 2;
-
-    /* MAIN ITERATION LOOP */
-    if (t <= MP_T) {
-        while(1) {
-            int ts2, ts3;
-
-            mp_multiply(x, &t1, &t2);
-            mp_add_integer(&t2, -1, &t2);
-            mp_multiply(&t1, &t2, &t2);
-            mp_subtract(&t1, &t2, &t1);
-            if (t >= MP_T)
-                break;
-
-            /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE
-             *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
-             */
-            ts3 = t;
-            t = MP_T;
-            do {
-                ts2 = t;
-                t = (t + it0) / 2;
-            } while (t > ts3);
-            t = min(ts2, MP_T);
-        }
-
-        /* RETURN IF NEWTON ITERATION WAS CONVERGING */
-        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
-            /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
-             *  OR THAT THE STARTING APPROXIMATION IS NOT ACCURATE ENOUGH.
-             */
-            mperr("*** ERROR OCCURRED IN MP_RECIPROCAL, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
-        }
+        /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE
+         *  BECAUSE NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
+         */
+        ts3 = t;
+        t = MP_T;
+        do {
+            ts2 = t;
+            t = (t + it0) / 2;
+        } while (t > ts3);
+        t = min(ts2, MP_T);
     }
 
-    /* MOVE RESULT TO Y AND RETURN AFTER RESTORING T */
+    /* RETURN IF NEWTON ITERATION WAS CONVERGING */
+    if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
+        /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
+         *  OR THAT THE STARTING APPROXIMATION IS NOT ACCURATE ENOUGH.
+         */
+        mperr("*** ERROR OCCURRED IN MP_RECIPROCAL, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
+    }
+
     mp_set_from_mp(&t1, z);
 }
 
@@ -1604,11 +1515,9 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 void
 mp_root(const MPNumber *x, int n, MPNumber *z)
 {
-    float r__1;
+    float approximation;
     int ex, np, it0, t;
-    float rx;
     MPNumber t1, t2;
-    static const int it[9] = { 0, 8, 6, 5, 4, 4, 4, 4, 4 };
 
     /* x^(1/1) = x */
     if (n == 1) {
@@ -1640,6 +1549,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
         return;
     }
 
+    // FIXME: Imaginary root
     if (x->sign < 0 && np % 2 == 0) {
         mperr(_("nth root of negative number not defined for even n"));
         mp_set_from_integer(0, z);
@@ -1649,72 +1559,52 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
     /* DIVIDE EXPONENT BY NP */
     ex = x->exponent / np;
 
-    /* REDUCE EXPONENT SO RX NOT TOO LARGE OR SMALL. */
-    {
-        MPNumber tmp_x;
-        mp_set_from_mp(x, &tmp_x);
-        tmp_x.exponent = 0;
-        rx = mp_cast_to_float(&tmp_x);
-    }
-
-    /* USE SINGLE-PRECISION ROOT FOR FIRST APPROXIMATION */
-    r__1 = exp(((float)(np * ex - x->exponent) * log((float)MP_BASE) -
-           log((fabs(rx)))) / (float)np);
-    mp_set_from_float(r__1, &t1);
-
-    /* SIGN OF APPROXIMATION SAME AS THAT OF X */
+    /* Get initial approximation */
+    mp_set_from_mp(x, &t1);
+    t1.exponent = 0;
+    approximation = exp(((float)(np * ex - x->exponent) * log((float)MP_BASE) -
+                         log((fabs(mp_cast_to_float(&t1))))) / (float)np);
+    mp_set_from_float(approximation, &t1);
     t1.sign = x->sign;
-
-    /* CORRECT EXPONENT OF FIRST APPROXIMATION */
     t1.exponent -= ex;
 
-    /* START WITH SMALL T TO SAVE TIME */
-    /* ENSURE THAT B**(T-1) >= 100 */
-    if (MP_BASE < 10)
-        t = it[MP_BASE - 1];
-    else
-        t = 3;
+    /* MAIN ITERATION LOOP */
+    it0 = t = 3;
+    while(1) {
+        int ts2, ts3;
 
-    if (t <= MP_T) {
-        /* IT0 IS A NECESSARY SAFETY FACTOR */
-        it0 = (t + 4) / 2;
+        /* t1 = t1 - ((t1 * ((x * t1^np) - 1)) / np) */
+        mp_xpowy_integer(&t1, np, &t2);
+        mp_multiply(x, &t2, &t2);
+        mp_add_integer(&t2, -1, &t2);
+        mp_multiply(&t1, &t2, &t2);
+        mp_divide_integer(&t2, np, &t2);
+        mp_subtract(&t1, &t2, &t1);
 
-        /* MAIN ITERATION LOOP */
-        while(1) {
-            int ts2, ts3;
-
-            mp_xpowy_integer(&t1, np, &t2);
-            mp_multiply(x, &t2, &t2);
-            mp_add_integer(&t2, -1, &t2);
-            mp_multiply(&t1, &t2, &t2);
-            mp_divide_integer(&t2, np, &t2);
-            mp_subtract(&t1, &t2, &t1);
-
-            /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE BECAUSE
-             *  NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
-             */
-            if (t >= MP_T)
-                break;
-
-            ts3 = t;
-            t = MP_T;
-            do {
-                ts2 = t;
-                t = (t + it0) / 2;
-            } while (t > ts3);
-            t = min(ts2, MP_T);
-        }
-
-        /*  NOW R(I2) IS X**(-1/NP)
-         *  CHECK THAT NEWTON ITERATION WAS CONVERGING
+        /*  FOLLOWING LOOP ALMOST DOUBLES T (POSSIBLE BECAUSE
+         *  NEWTONS METHOD HAS 2ND ORDER CONVERGENCE).
          */
-        if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
-            /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
-             *  OR THAT THE INITIAL APPROXIMATION OBTAINED USING ALOG AND EXP
-             *  IS NOT ACCURATE ENOUGH.
-             */
-            mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
-        }
+        if (t >= MP_T)
+            break;
+
+        ts3 = t;
+        t = MP_T;
+        do {
+            ts2 = t;
+            t = (t + it0) / 2;
+        } while (t > ts3);
+        t = min(ts2, MP_T);
+    }
+
+    /*  NOW R(I2) IS X**(-1/NP)
+     *  CHECK THAT NEWTON ITERATION WAS CONVERGING
+     */
+    if (t2.sign != 0 && (t1.exponent - t2.exponent) << 1 < MP_T - it0) {
+        /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL,
+         *  OR THAT THE INITIAL APPROXIMATION OBTAINED USING ALOG AND EXP
+         *  IS NOT ACCURATE ENOUGH.
+         */
+        mperr("*** ERROR OCCURRED IN MP_ROOT, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
     }
 
     if (n >= 0) {
@@ -1739,7 +1629,7 @@ mp_sqrt(const MPNumber *x, MPNumber *z)
         MPNumber t;
 
         mp_root(x, -2, &t);
-        i = t.fraction[0];
+        i = t.fraction[0]; // ?
         mp_multiply(x, &t, z);
         mpext(i, z->fraction[0], z);
     }
