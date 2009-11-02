@@ -21,12 +21,16 @@ dnl ###########################################################################
 GTK_REQUIRED=2.17.5
 GCONF_REQUIRED=1.1.9
 
-PKG_CHECK_MODULES(PACKAGE, [
+PKG_CHECK_MODULES(GCALCTOOL, [
     gtk+-2.0 >= $GTK_REQUIRED
     gconf-2.0 >= $GCONF_REQUIRED
     libxml-2.0
     libsoup-2.4
     gmodule-export-2.0
+])
+
+PKG_CHECK_MODULES(GCALCCMD, [
+    glib-2.0
 ])
 
 dnl ###########################################################################

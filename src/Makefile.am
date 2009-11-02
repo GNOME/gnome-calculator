@@ -8,13 +8,13 @@ INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
 	-DLOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DPIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
-	$(PACKAGE_CFLAGS) \
+	$(GCALCTOOL_CFLAGS) \
 	$(GNOME_UTILS_CFLAGS) \
 	$(GCONF_CFLAGS) \
 	$(LIBXML_CFLAGS) \
 	$(LIBSOUP_CFLAGS)
 
-bin_PROGRAMS = gcalctool
+bin_PROGRAMS = gcalctool gcalccmd
 
 gcalctool_SOURCES = \
 	calctool.c \
@@ -47,6 +47,16 @@ gcalctool_SOURCES = \
 	unittest.c \
 	unittest.h
 
+gcalccmd_SOURCES = \
+	gcalccmd.c \
+	mp.c \
+	mp-convert.c \
+	mp-binary.c \
+	mp-trigonometric.c \
+	mp-equation.c \
+	mp-equation-parser.c \
+	mp-equation-lexer.c
+
 CLEANFILES = \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
@@ -55,12 +65,16 @@ CLEANFILES = \
 	libparser.a
 
 gcalctool_LDADD = \
-	$(PACKAGE_LIBS) \
+	$(GCALCTOOL_LIBS) \
 	$(GNOME_UTILS_LIBS) \
 	$(GCONF_LIBS) \
 	$(LIBXML_LIBS) \
 	$(LIBSOUP_LIBS) \
 	libparser.a
+
+gcalccmd_LDADD = \
+	$(GCALCCMD_LIBS) \
+	-lm
 
 libparser.a: \
 	mp-equation-lexer.o\
