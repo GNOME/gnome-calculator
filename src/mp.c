@@ -115,165 +115,22 @@ mp_abs(const MPNumber *x, MPNumber *z)
 }
 
 
-/* CALLED BY MPADD2, DOES INNER LOOPS OF ADDITION */
-/* return value is amount by which exponent needs to be increased. */
-static int
-mp_add3(const MPNumber *x, const MPNumber *y, int *r, int s, int med)
-{
-    int i, c;
-
-    /* CLEAR GUARD DIGITS TO RIGHT OF X DIGITS */
-    for(i = 3; i >= med; i--)
-        r[MP_T + i] = 0;
-
-    if (s >= 0) {
-        /* HERE DO ADDITION, EXPONENT(Y) >= EXPONENT(X) */
-        for (i = MP_T + 3; i >= MP_T; i--)
-            r[i] = x->fraction[i - med];
-
-        c = 0;
-        for (; i >= med; i--) {
-            c = y->fraction[i] + x->fraction[i - med] + c;
-
-            if (c < MP_BASE) {
-                /* NO CARRY GENERATED HERE */
-                r[i] = c;
-                c = 0;
-            } else {
-                /* CARRY GENERATED HERE */
-                r[i] = c - MP_BASE;
-                c = 1;
-            }
-        }
-
-        for (; i >= 0; i--)
-        {
-            c = y->fraction[i] + c;
-            if (c < MP_BASE) {
-                r[i] = c;
-                i--;
-
-                /* NO CARRY POSSIBLE HERE */
-                for (; i >= 0; i--)
-                    r[i] = y->fraction[i];
-
-                return 0;
-            }
-
-            r[i] = 0;
-            c = 1;
-        }
-
-        /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
-        if (c != 0) {
-            for (i = MP_T + 3; i > 0; i--)
-                r[i] = r[i - 1];
-            r[0] = 1;
-            return 1;
-        }
-
-        return 0;
-    }
-
-    c = 0;
-    for (i = MP_T + med - 1; i >= MP_T; i--) {
-        /* HERE DO SUBTRACTION, ABS(Y) > ABS(X) */
-        r[i] = c - x->fraction[i - med];
-        c = 0;
-
-        /* BORROW GENERATED HERE */
-        if (r[i] < 0) {
-            c = -1;
-            r[i] += MP_BASE;
-        }
-    }
-
-    for(; i >= med; i--) {
-        c = y->fraction[i] + c - x->fraction[i - med];
-        if (c >= 0) {
-            /* NO BORROW GENERATED HERE */
-            r[i] = c;
-            c = 0;
-        } else {
-            /* BORROW GENERATED HERE */
-            r[i] = c + MP_BASE;
-            c = -1;
-        }
-    }
-
-    for (; i >= 0; i--) {
-        c = y->fraction[i] + c;
-
-        if (c >= 0) {
-            r[i] = c;
-            i--;
-
-            /* NO CARRY POSSIBLE HERE */
-            for (; i >= 0; i--)
-                r[i] = y->fraction[i];
-
-            return 0;
-        }
-
-        r[i] = c + MP_BASE;
-        c = -1;
-    }
-
-    return 0;
-}
-
-
-/* z = x + y_sign * abs(y) */
 static void
-mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
+mp_add_component(int x_sign, int x_exponent, const int *x_fraction,
+                 int y_sign, int y_exponent, const int *y_fraction,
+                 int *z_sign, int *z_exponent, int *z_fraction)
 {
-    int sign_prod;
+    int sign_prod, i, c;
     int exp_diff, med;
     int x_largest = 0;
-    MPNumber zt; // Use stack variable because of mp_normalize brokeness
+    const int *big_fraction, *small_fraction;
 
-    memset(&zt, 0, sizeof(MPNumber));
-
-    /* X = 0 OR NEGLIGIBLE, SO RESULT = +-Y */
-    if (mp_is_zero(x)) {
-        mp_set_from_mp(y, z);
-        z->sign = y_sign;
-        return;
-    }
-
-    /* Y = 0 OR NEGLIGIBLE, SO RESULT = X */
-    if (mp_is_zero(y) || y_sign == 0) {
-        mp_set_from_mp(x, z);
-        return;
-    }
-
-    /* COMPARE SIGNS */
-    sign_prod = y_sign * x->sign;
-    if (abs(sign_prod) > 1) {
-        mperr("*** SIGN NOT 0, +1 OR -1 IN MP_ADD2 CALL, POSSIBLE OVERWRITING PROBLEM ***");
-        mp_set_from_integer(0, z);
-        return;
-    }
-
-    /* COMPARE EXPONENTS */
-    exp_diff = x->exponent - y->exponent;
+    sign_prod = y_sign * x_sign;
+    exp_diff = x_exponent - y_exponent;
     med = abs(exp_diff);
     if (exp_diff < 0) {
-        /* HERE EXPONENT(Y)  >  EXPONENT(X) */
-        if (med > MP_T) {
-            /* 'y' so much larger than 'x' that 'x+-y = y'.  Warning: still true with rounding??  */
-            mp_set_from_mp(y, z);
-            z->sign = y_sign;
-            return;
-        }
         x_largest = 0;
     } else if (exp_diff > 0) {
-        /* HERE EXPONENT(X)  >  EXPONENT(Y) */
-        if (med > MP_T) {
-            /* 'x' so much larger than 'y' that 'x+-y = x'.  Warning: still true with rounding??  */
-            mp_set_from_mp(x, z);
-            return;
-        }
         x_largest = 1;
     } else {
         /* EXPONENTS EQUAL SO COMPARE SIGNS, THEN FRACTIONS IF NEC. */
@@ -281,7 +138,7 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
             /* Signs are not equal.  find out which mantissa is larger. */
             int j;
             for (j = 0; j < MP_T; j++) {
-                int i = x->fraction[j] - y->fraction[j];
+                int i = x_fraction[j] - y_fraction[j];
                 if (i == 0)
                     continue;
                 if (i < 0)
@@ -293,29 +150,140 @@ mp_add2(const MPNumber *x, const MPNumber *y, int y_sign, MPNumber *z)
 
             /* Both mantissas equal, so result is zero. */
             if (j >= MP_T) {
-                mp_set_from_integer(0, z);
+                *z_sign = 0;
+                *z_exponent = 0;
+                memset(z_fraction, 0, sizeof(int) * MP_SIZE);
                 return;
             }
         }
     }
 
-    /* NORMALIZE, ROUND OR TRUNCATE, AND RETURN */
     if (x_largest) {
-        zt.sign = x->sign;
-        zt.exponent = x->exponent + mp_add3(y, x, zt.fraction, sign_prod, med);
+        *z_sign = x_sign;
+        *z_exponent = x_exponent;
+        big_fraction = x_fraction;
+        small_fraction = y_fraction;
     } else {
-        zt.sign = y_sign;
-        zt.exponent = y->exponent + mp_add3(x, y, zt.fraction, sign_prod, med);
+        *z_sign = y_sign;
+        *z_exponent = y_exponent;
+        big_fraction = y_fraction;
+        small_fraction = x_fraction;
     }
-    mp_normalize(&zt);
-    mp_set_from_mp(&zt, z);
+
+    /* CLEAR GUARD DIGITS TO RIGHT OF X DIGITS */
+    for(i = 3; i >= med; i--)
+        z_fraction[MP_T + i] = 0;
+
+    if (sign_prod >= 0) {
+        /* HERE DO ADDITION, EXPONENT(Y) >= EXPONENT(X) */
+        for (i = MP_T + 3; i >= MP_T; i--)
+            z_fraction[i] = small_fraction[i - med];
+
+        c = 0;
+        for (; i >= med; i--) {
+            c = big_fraction[i] + small_fraction[i - med] + c;
+
+            if (c < MP_BASE) {
+                /* NO CARRY GENERATED HERE */
+                z_fraction[i] = c;
+                c = 0;
+            } else {
+                /* CARRY GENERATED HERE */
+                z_fraction[i] = c - MP_BASE;
+                c = 1;
+            }
+        }
+
+        for (; i >= 0; i--)
+        {
+            c = big_fraction[i] + c;
+            if (c < MP_BASE) {
+                z_fraction[i] = c;
+                i--;
+
+                /* NO CARRY POSSIBLE HERE */
+                for (; i >= 0; i--)
+                    z_fraction[i] = big_fraction[i];
+
+                return;
+            }
+
+            z_fraction[i] = 0;
+            c = 1;
+        }
+
+        /* MUST SHIFT RIGHT HERE AS CARRY OFF END */
+        if (c != 0) {
+            for (i = MP_T + 3; i > 0; i--)
+                z_fraction[i] = z_fraction[i - 1];
+            z_fraction[0] = 1;
+            (*z_exponent)++;
+        }
+
+        return;
+    }
+
+    c = 0;
+    for (i = MP_T + med - 1; i >= MP_T; i--) {
+        /* HERE DO SUBTRACTION, ABS(Y) > ABS(X) */
+        z_fraction[i] = c - small_fraction[i - med];
+        c = 0;
+
+        /* BORROW GENERATED HERE */
+        if (z_fraction[i] < 0) {
+            c = -1;
+            z_fraction[i] += MP_BASE;
+        }
+    }
+
+    for(; i >= med; i--) {
+        c = big_fraction[i] + c - small_fraction[i - med];
+        if (c >= 0) {
+            /* NO BORROW GENERATED HERE */
+            z_fraction[i] = c;
+            c = 0;
+        } else {
+            /* BORROW GENERATED HERE */
+            z_fraction[i] = c + MP_BASE;
+            c = -1;
+        }
+    }
+
+    for (; i >= 0; i--) {
+        c = big_fraction[i] + c;
+
+        if (c >= 0) {
+            z_fraction[i] = c;
+            i--;
+
+            /* NO CARRY POSSIBLE HERE */
+            for (; i >= 0; i--)
+                z_fraction[i] = big_fraction[i];
+
+            return;
+        }
+
+        z_fraction[i] = c + MP_BASE;
+        c = -1;
+    }
 }
 
 
 void
 mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    mp_add2(x, y, y->sign, z);
+    /* 0 + y = y
+     * x + 0 = x */
+    if (mp_is_zero(x))
+        mp_set_from_mp(y, z);
+    else if (mp_is_zero(y))
+        mp_set_from_mp(x, z);
+    else {
+        mp_add_component(x->sign, x->exponent, x->fraction,
+                         y->sign, y->exponent, y->fraction,
+                         &z->sign, &z->exponent, z->fraction);
+        mp_normalize(z);
+    }
 }
 
 
@@ -340,7 +308,20 @@ mp_add_fraction(const MPNumber *x, int i, int j, MPNumber *y)
 void
 mp_subtract(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    mp_add2(x, y, -y->sign, z);
+    /* 0 - y = -y
+     * x - 0 = x */
+    if (mp_is_zero(x)) {
+        mp_set_from_mp(y, z);
+        mp_invert_sign(z, z);
+    }
+    else if (mp_is_zero(y))
+        mp_set_from_mp(x, z);
+    else {
+        mp_add_component(x->sign, x->exponent, x->fraction,
+                         -y->sign, y->exponent, y->fraction,
+                         &z->sign, &z->exponent, z->fraction);
+        mp_normalize(z);
+    }
 }
 
 
