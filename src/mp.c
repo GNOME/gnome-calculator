@@ -1414,7 +1414,7 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* (-x)^y imaginary */
     if (x->sign < 0) {
-        mperr(_("The power of negative numbers only defined for for integer exponents"));
+        mperr(_("The power of negative numbers only defined for integer exponents"));
         mp_set_from_integer(0, z);
         return;
     }
