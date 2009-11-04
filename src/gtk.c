@@ -1058,7 +1058,7 @@ ui_set_mode(ModeType mode)
     g_object_set(G_OBJECT(X.sci_panel), "visible", mode == SCIENTIFIC, NULL);
     g_object_set(G_OBJECT(X.prog_panel), "visible", mode == PROGRAMMING, NULL);
     g_object_set(G_OBJECT(X.bit_panel), "visible", mode == PROGRAMMING, NULL);
-    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"), mode == SCIENTIFIC || mode == PROGRAMMING);
+    gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"), mode != BASIC);
     gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), mode != BASIC);
     
     /* HACK: Some horrible hack down below to keep the buttons the same size.
@@ -1279,8 +1279,7 @@ ui_set_error_state(gboolean error)
     gtk_widget_set_sensitive(GET_WIDGET("view_financial_menu"),  !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("view_scientific_menu"), !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("show_trailing_zeroes_menu"),
-                             !v->error && (X.mode == SCIENTIFIC || 
-                                           X.mode == PROGRAMMING)); 
+                             !v->error && (X.mode != BASIC));
     gtk_widget_set_sensitive(GET_WIDGET("show_thousands_separator_menu"),
                              !v->error); 
     gtk_widget_set_sensitive(GET_WIDGET("show_registers_menu"), !v->error); 
