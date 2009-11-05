@@ -96,6 +96,9 @@ int    mp_is_integer(const MPNumber *x);
 /* Return true if x is a natural number (an integer ≥ 0) */
 int    mp_is_natural(const MPNumber *x);
 
+/* Return true if x has an imaginary component */
+int    mp_is_complex(const MPNumber *x);
+
 /* Return true if x == y */
 int    mp_is_equal(const MPNumber *x, const MPNumber *y);
 
@@ -113,6 +116,18 @@ int    mp_is_less_than(const MPNumber *x, const MPNumber *y);
 
 /* Sets z = |x| */
 void   mp_abs(const MPNumber *x, MPNumber *z);
+
+/* Sets z = Arg(x) */
+void   mp_arg(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
+
+/* Sets z = ‾̅x */
+void   mp_conjugate(const MPNumber *x, MPNumber *z);
+
+/* Sets z = Re(x) */
+void   mp_real_component(const MPNumber *x, MPNumber *z);
+
+/* Sets z = Im(x) */
+void   mp_imaginary_component(const MPNumber *x, MPNumber *z);
 
 /* Sets z = −x */
 void   mp_invert_sign(const MPNumber *x, MPNumber *z);
@@ -165,6 +180,9 @@ void   mp_get_pi(MPNumber *z);
 /* Sets z = e */
 void   mp_get_eulers(MPNumber *z);
 
+/* Sets z = i (√−1) */
+void   mp_get_i(MPNumber *z);
+
 /* Sets z = n√x */
 void   mp_root(const MPNumber *x, int n, MPNumber *z);
 
@@ -203,6 +221,12 @@ void   mp_set_from_integer(int x, MPNumber *z);
 
 /* Sets z = numerator ÷ denominator */
 void   mp_set_from_fraction(int numerator, int denominator, MPNumber *z);
+
+/* Sets z = r(cos theta + i sin theta) */
+void   mp_set_from_polar(const MPNumber *r, MPAngleUnit unit, const MPNumber *theta, MPNumber *z);
+
+/* Sets z = x + iy */
+void   mp_set_from_complex(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z to be a uniform random number in the range [0, 1] */
 void   mp_set_from_random(MPNumber *z);

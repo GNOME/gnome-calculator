@@ -43,6 +43,8 @@ get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 
     if (strcmp(name, "e") == 0)
         mp_get_eulers(z);
+    else if (strcmp(name, "i") == 0)
+        mp_get_i(z);
     else if (strcmp(name, "π") == 0)
         mp_get_pi(z);
     else if (state->options->get_variable)

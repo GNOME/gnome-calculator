@@ -237,6 +237,30 @@ mp_set_from_fraction(int i, int j, MPNumber *z)
 
 
 void
+mp_set_from_polar(const MPNumber *r, MPAngleUnit unit, const MPNumber *theta, MPNumber *z)
+{
+    MPNumber sin_theta, cos_theta;
+    
+    mp_sin(theta, unit, &sin_theta);
+    mp_cos(theta, unit, &cos_theta);
+    mp_set_from_complex(&cos_theta, &sin_theta, z);
+}
+
+
+void
+mp_set_from_complex(const MPNumber *x, const MPNumber *y, MPNumber *z)
+{
+    //MPNumber i;
+
+    // FIXME: There is some corruption here as i is currently defined to zero but the result does not work
+    //mp_get_i(&i);
+    //mp_multiply(y, &i, z);
+    //mp_add(x, z, z);
+    mp_set_from_mp(x, z);
+}
+
+
+void
 mp_set_from_random(MPNumber *z)
 {
     mp_set_from_double(drand48(), z);
