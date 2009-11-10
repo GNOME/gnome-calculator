@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-11-05 23:49+0000\n"
-"PO-Revision-Date: 2009-11-06 16:02+0100\n"
+"POT-Creation-Date: 2009-11-10 02:00+0000\n"
+"PO-Revision-Date: 2009-11-10 21:03+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -982,7 +982,7 @@ msgstr "Tipo trigonométrico"
 msgid "Word size"
 msgstr "Tamaño de palabra"
 
-#: ../src/calctool.c:74
+#: ../src/calctool.c:78
 #, c-format
 msgid ""
 "Usage:\n"
@@ -991,7 +991,7 @@ msgstr ""
 "Uso:\n"
 "  %s - Realizar cálculos matemáticos"
 
-#: ../src/calctool.c:82
+#: ../src/calctool.c:86
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1006,7 +1006,7 @@ msgstr ""
 "  -help-all                       Mostrar todas las opciones de ayuda\n"
 "  -help-gtk                       Mostrar las opciones de GTK+"
 
-#: ../src/calctool.c:93
+#: ../src/calctool.c:97
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1030,7 +1030,7 @@ msgstr ""
 "  --gtk-module=MÓDULOS            Cargar módulos GTK+ adicionales\n"
 "  --g-fatal-warnings              Hacer que todos los avisos sean fatales"
 
-#: ../src/calctool.c:106
+#: ../src/calctool.c:110
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1042,19 +1042,19 @@ msgstr ""
 "  -s, --solve <ecuación>          Resolver la ecuación proporcionada"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:142
+#: ../src/calctool.c:146
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Parámetro --resolver requiere una ecuación para resolver"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:155
+#: ../src/calctool.c:159
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Parámetro «%s» desconocido"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:168
+#: ../src/calctool.c:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1366,53 +1366,58 @@ msgid "Paste"
 msgstr "Pegar"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:526 ../src/mp.c:563 ../src/mp.c:1465
+#: ../src/mp.c:529 ../src/mp.c:566 ../src/mp.c:1474
 msgid "Division by zero is not defined"
 msgstr "La división por cero no está definida"
 
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1156 ../src/mp.c:1193
+#| msgid "Negative root of zero is undefined"
+msgid "Logarithm of zero is undefined"
+msgstr "El logaritmo de cero no está definido"
+
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1088
+#: ../src/mp.c:1165
 msgid "Logarithm of negative values is undefined"
 msgstr "El logaritmo de valores negativos no está definido"
 
-#: ../src/mp.c:1530
-#| msgid "The power of negative numbers only defined for for integer exponents"
+#: ../src/mp.c:1539
 msgid "The power of negative numbers only defined for integer exponents"
 msgstr ""
 "La potencia de valores negativos sólo está definida para exponentes enteros"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1537 ../src/mp.c:1827
+#: ../src/mp.c:1546 ../src/mp.c:1839
 msgid "The power of zero is not defined for a negative exponent"
 msgstr "La potencia de cero no está definida para un exponente negativo"
 
-#: ../src/mp.c:1562
+#: ../src/mp.c:1571
 msgid "Reciprocal of zero is not defined"
 msgstr "El recíproco de cero no está definido"
 
-#: ../src/mp.c:1648
+#: ../src/mp.c:1656
 msgid "Root must non-zero"
 msgstr "La raíz debe ser distinta de cero"
 
-#: ../src/mp.c:1666
+#: ../src/mp.c:1674
 msgid "Negative root of zero is undefined"
 msgstr "La raíz negativa de cero no está definida"
 
-#: ../src/mp.c:1672
+#: ../src/mp.c:1680
 msgid "nth root of negative number not defined for even n"
 msgstr "La raíz enésima de un número negativo no está definida, incluso para n"
 
-#: ../src/mp.c:1742
+#: ../src/mp.c:1750
 msgid "Square root is not defined for negative values"
 msgstr "La raíz cuadrada no está definida para valores negativos"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1769
+#: ../src/mp.c:1779
 msgid "Factorial only defined for natural numbers"
 msgstr "El factorial sólo está definido para números naturales"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1788
+#: ../src/mp.c:1799
 msgid "Modulus division only defined for integers"
 msgstr "La división modular sólo está definida para enteros"
 
@@ -1451,17 +1456,17 @@ msgstr ""
 "también lo son de π∕4 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:316
+#: ../src/mp-trigonometric.c:317
 msgid "Inverse sine not defined for values outside [-1, 1]"
 msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:339
+#: ../src/mp-trigonometric.c:340
 msgid "Inverse cosine not defined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:554
+#: ../src/mp-trigonometric.c:555
 msgid ""
 "Inverse hyperbolic cosine not defined for values less than or equal to one"
 msgstr ""
@@ -1469,7 +1474,7 @@ msgstr ""
 "o iguales a uno"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:578
+#: ../src/mp-trigonometric.c:579
 msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
