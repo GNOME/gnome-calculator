@@ -67,7 +67,7 @@ void mp_clear_error()
  *  CAN BE.  X IS AN MP NUMBER, I AND J ARE INTEGERS.
  */
 static void
-mpext(int i, int j, MPNumber *x)
+mp_ext(int i, int j, MPNumber *x)
 {
     int q, s;
 
@@ -164,14 +164,16 @@ mp_arg(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-void mp_conjugate(const MPNumber *x, MPNumber *z)
+void
+mp_conjugate(const MPNumber *x, MPNumber *z)
 {
     //mp_set_from_mp(x, z);
     //z->im_sign = -z->im_sign;
 }
 
 
-void mp_real_component(const MPNumber *x, MPNumber *z)
+void
+mp_real_component(const MPNumber *x, MPNumber *z)
 {
     mp_set_from_mp(x, z);
     //z->im_sign = 0;
@@ -180,7 +182,8 @@ void mp_real_component(const MPNumber *x, MPNumber *z)
 }
 
 
-void mp_imaginary_component(const MPNumber *x, MPNumber *z)
+void
+mp_imaginary_component(const MPNumber *x, MPNumber *z)
 {
     mp_set_from_integer(0, z);
     //mp_set_from_mp(x, z);
@@ -194,9 +197,9 @@ void mp_imaginary_component(const MPNumber *x, MPNumber *z)
 
 
 static void
-mp_add_component(int x_sign, int x_exponent, const int *x_fraction,
-                 int y_sign, int y_exponent, const int *y_fraction,
-                 int *z_sign, int *z_exponent, int *z_fraction)
+mp_add_real(int x_sign, int x_exponent, const int *x_fraction,
+            int y_sign, int y_exponent, const int *y_fraction,
+            int *z_sign, int *z_exponent, int *z_fraction)
 {
     int sign_prod, i, c;
     int exp_diff, med;
@@ -370,9 +373,9 @@ mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z)
     else if (mp_is_zero(y))
         mp_set_from_mp(x, z);
     else {
-        mp_add_component(x->sign, x->exponent, x->fraction,
-                         y->sign, y->exponent, y->fraction,
-                         &z->sign, &z->exponent, z->fraction);
+        mp_add_real(x->sign, x->exponent, x->fraction,
+                    y->sign, y->exponent, y->fraction,
+                    &z->sign, &z->exponent, z->fraction);
         mp_normalize(z);
     }
 }
@@ -408,9 +411,9 @@ mp_subtract(const MPNumber *x, const MPNumber *y, MPNumber *z)
     else if (mp_is_zero(y))
         mp_set_from_mp(x, z);
     else {
-        mp_add_component(x->sign, x->exponent, x->fraction,
-                         -y->sign, y->exponent, y->fraction,
-                         &z->sign, &z->exponent, z->fraction);
+        mp_add_real(x->sign, x->exponent, x->fraction,
+                    -y->sign, y->exponent, y->fraction,
+                    &z->sign, &z->exponent, z->fraction);
         mp_normalize(z);
     }
 }
@@ -544,7 +547,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* MULTIPLY BY X */
     mp_multiply(x, &t, z);
-    mpext(i, z->fraction[0], z);
+    mp_ext(i, z->fraction[0], z);
 
     z->exponent += ie;
 }
@@ -574,7 +577,8 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
     /* Division by -1 or 1 just changes sign */
     if (y == 1 || y == -1) {
         mp_set_from_mp(x, z);
-        z->sign *= y;
+        if (y < 0)
+            mp_invert_sign(z, z);
         return;
     }
 
@@ -704,6 +708,13 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
         ++k;
         if (k > i2) {
             mp_normalize(z);
+            
+            if (mp_is_complex(x)) {
+                MPNumber im_z;
+                mp_imaginary_component(x, &im_z);
+                mp_divide_integer(&im_z, y, &im_z);
+                mp_set_from_complex(z, &im_z, z);
+            }
             return;
         }
     }
@@ -846,15 +857,15 @@ mp_exp(const MPNumber *x, MPNumber *z)
 }
 
 
-void
-mp_epowy(const MPNumber *x, MPNumber *z)
+static void
+mp_epowy_real(const MPNumber *x, MPNumber *z)
 {
     float r__1;
     int i, ix, xs, tss;
     float rx, rz, rlb;
     MPNumber t1, t2;
 
-    /* x^0 = 1 */
+    /* e^0 = 1 */
     if (mp_is_zero(x)) {
         mp_set_from_integer(1, z);
         return;
@@ -935,12 +946,35 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 }
 
 
+void
+mp_epowy(const MPNumber *x, MPNumber *z)
+{
+    /* e^0 = 1 */
+    if (mp_is_zero(x)) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
+    if (mp_is_complex(x)) {
+        MPNumber x_real, r, theta;
+        
+        mp_real_component(x, &x_real);
+        mp_imaginary_component(x, &theta);
+
+        mp_epowy_real(&x_real, &r);
+        mp_set_from_polar(&r, MP_RADIANS, &theta, z);
+    }
+    else
+        mp_epowy_real(x, z);
+}
+
+
 /*  RETURNS K = K/GCD AND L = L/GCD, WHERE GCD IS THE
  *  GREATEST COMMON DIVISOR OF K AND L.
  *  SAVE INPUT PARAMETERS IN LOCAL VARIABLES
  */
 void
-mpgcd(int *k, int *l)
+mp_gcd(int *k, int *l)
 {
     int i, j;
 
@@ -982,9 +1016,7 @@ mp_is_zero(const MPNumber *x)
 int
 mp_is_negative(const MPNumber *x)
 {
-    MPNumber zero;
-    mp_set_from_integer(0, &zero);
-    return mp_is_less_than(x, &zero);
+    return x->sign < 0;
 }
 
 
@@ -1015,7 +1047,7 @@ mp_is_less_equal(const MPNumber *x, const MPNumber *y)
  *  EXP1(-Y) = X, THEN REVERSES SIGN OF Y.
  */
 static void
-mplns(const MPNumber *x, MPNumber *z)
+mp_lns(const MPNumber *x, MPNumber *z)
 {
     int t, it0;
     MPNumber t1, t2, t3;
@@ -1068,44 +1100,30 @@ mplns(const MPNumber *x, MPNumber *z)
 
     /* CHECK THAT NEWTON ITERATION WAS CONVERGING AS EXPECTED */
     if (t3.sign != 0 && t3.exponent << 1 > it0 - MP_T) {
-        mperr("*** ERROR OCCURRED IN MPLNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
+        mperr("*** ERROR OCCURRED IN MP_LNS, NEWTON ITERATION NOT CONVERGING PROPERLY ***");
     }
 
     z->sign = -z->sign;
 }
 
 
-void
-mp_ln(const MPNumber *x, MPNumber *z)
+static void
+mp_ln_real(const MPNumber *x, MPNumber *z)
 {
     int e, k;
     float rx, rlx;
     MPNumber t1, t2;
 
-    /* ln(-x) complex */
-    if (x->sign <= 0) {
-        /* Translators: Error displayed attempted to take logarithm of negative value */
-        mperr(_("Logarithm of negative values is undefined"));
-        mp_set_from_integer(0, z);
-        return;
-    }
-
-    mp_abs(x, &t1);
-
     /* LOOP TO GET APPROXIMATE LN(X) USING SINGLE-PRECISION */
+    mp_set_from_mp(x, &t1);
     mp_set_from_integer(0, z);
-    k = 0;
-    while(1)
+    for(k = 0; k < 10; k++)
     {
+        /* COMPUTE FINAL CORRECTION ACCURATELY USING MP_LNS */
         mp_add_integer(&t1, -1, &t2);
-
-        /* COMPUTE FINAL CORRECTION ACCURATELY USING MPLNS */
         if (mp_is_zero(&t2) || t2.exponent + 1 <= 0) {
-            mplns(&t2, &t2);
+            mp_lns(&t2, &t2);
             mp_add(z, &t2, z);
-
-            mp_arg(x, MP_RADIANS, &t1);
-            mp_set_from_complex(z, &t1, z);
             return;
         }
 
@@ -1113,8 +1131,6 @@ mp_ln(const MPNumber *x, MPNumber *z)
         e = t1.exponent;
         t1.exponent = 0;
         rx = mp_cast_to_float(&t1);
-
-        /* RESTORE EXPONENT AND COMPUTE SINGLE-PRECISION LOG */
         t1.exponent = e;
         rlx = log(rx) + (float)e * log((float)MP_BASE);
         mp_set_from_float(-(double)rlx, &t2);
@@ -1125,14 +1141,44 @@ mp_ln(const MPNumber *x, MPNumber *z)
 
         /* COMPUTE RESIDUAL WHOSE LOG IS STILL TO BE FOUND */
         mp_multiply(&t1, &t2, &t1);
-
-        /* MAKE SURE NOT LOOPING INDEFINITELY */
-        ++k;
-        if (k >= 10) {
-            mperr("*** ERROR IN MP_LN, ITERATION NOT CONVERGING ***");
-            return;
-        }
     }
+
+    mperr("*** ERROR IN MP_LN, ITERATION NOT CONVERGING ***");
+}
+
+
+void
+mp_ln(const MPNumber *x, MPNumber *z)
+{
+    /* ln(0) undefined */
+    if (mp_is_zero(x)) {
+        /* Translators: Error displayed when attempting to take logarithm of zero */
+        mperr(_("Logarithm of zero is undefined"));
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    /* ln(-x) complex */
+    // TEMP: Remove when supporting complex numbers
+    if (mp_is_negative(x)) {
+        /* Translators: Error displayed attempted to take logarithm of negative value */
+        mperr(_("Logarithm of negative values is undefined"));
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    if (mp_is_complex(x) || mp_is_negative(x)) {
+        MPNumber r, theta, z_real;
+
+        /* ln(re^iθ) = e^(ln(r)+iθ) */
+        mp_abs(x, &r);
+        mp_arg(x, MP_RADIANS, &theta);
+
+        mp_ln_real(&r, &z_real);
+        mp_set_from_complex(&z_real, &theta, z);
+    }
+    else
+        mp_ln_real(x, z);
 }
 
 
@@ -1140,6 +1186,14 @@ void
 mp_logarithm(int n, const MPNumber *x, MPNumber *z)
 {
     MPNumber t1, t2;
+    
+    /* log(0) undefined */
+    if (mp_is_zero(x)) {
+        /* Translators: Error displayed when attempting to take logarithm of zero */
+        mperr(_("Logarithm of zero is undefined"));
+        mp_set_from_integer(0, z);
+        return;
+    }
 
     /* logn(x) = ln(x) / ln(n) */
     mp_set_from_integer(n, &t1);
@@ -1157,7 +1211,7 @@ mp_is_less_than(const MPNumber *x, const MPNumber *y)
 
 
 static void
-mp_multiply_internal(const MPNumber *x, const MPNumber *y, MPNumber *z)
+mp_multiply_real(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
     int c, i, j, xi;
     MPNumber r;
@@ -1253,86 +1307,34 @@ mp_multiply_internal(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    MPNumber real_x, real_y, im_x, im_y, t1, t2;
-
     /* x*0 = 0*y = 0 */
     if (mp_is_zero(x) || mp_is_zero(y)) {
         mp_set_from_integer(0, z);
         return;
     }
 
-    mp_real_component(x, &real_x);
-    mp_imaginary_component(x, &im_x);
-    mp_real_component(y, &real_y);
-    mp_imaginary_component(y, &im_y);
-    
     /* (a+bi)(c+di) = (ac-bd)+(ad+bc)i */
-    mp_multiply_internal(&real_x, &real_y, &t1);
-    mp_multiply_internal(&im_x, &im_y, &t2);
-    mp_subtract(&t1, &t2, z);
+    if (mp_is_complex(x) || mp_is_complex(y)) {
+        MPNumber real_x, real_y, im_x, im_y, t1, t2, real_z, im_z;
+
+        mp_real_component(x, &real_x);
+        mp_imaginary_component(x, &im_x);
+        mp_real_component(y, &real_y);
+        mp_imaginary_component(y, &im_y);
     
-    mp_multiply_internal(&real_x, &im_y, &t1);
-    mp_multiply_internal(&im_x, &real_y, &t2);
-    mp_add(&t1, &t2, &t1);
-    //t1.im_sign = t1.sign;
-    //t1.im_exponent = t1.exponent;
-    //memcpy(t1.im_fraction, t1.fraction, sizeof(int) * MP_SIZE);
-    t1.sign = t1.exponent = 0;
-    memset(t1.fraction, 0, sizeof(int) * MP_SIZE);
+        mp_multiply_real(&real_x, &real_y, &t1);
+        mp_multiply_real(&im_x, &im_y, &t2);
+        mp_subtract(&t1, &t2, &real_z);
     
-    mp_add(z, &t1, z);
-}
-
-
-void
-mp_multiply_new(const MPNumber *x, const MPNumber *y, MPNumber *z)
-{
-    int i, j, offset, y_length;
-    int fraction[MP_SIZE*2];
-
-    /* x*0 or 0*y or 0*0 = 0 */
-    if (mp_is_zero(x) || mp_is_zero(y)) {
-        mp_set_from_integer(0, z);
-        return;
+        mp_multiply_real(&real_x, &im_y, &t1);
+        mp_multiply_real(&im_x, &real_y, &t2);
+        mp_add(&t1, &t2, &im_z);
+        
+        mp_set_from_complex(&real_z, &im_z, z);
     }
-
-    /* Calculate length of each fraction */
-    y_length = MP_SIZE;
-    while (y_length > 0 && y->fraction[y_length - 1] == 0)
-        y_length--;
-
-    /* Multiply together */
-    memset(fraction, 0, sizeof(fraction));
-    for (i = MP_SIZE - 1; i >= 0; i--) {
-        if (x->fraction[i] == 0)
-            continue;
-        for (j = y_length - 1; j >= 0; j--) {
-            int pos = i + j + 1;
-
-            fraction[pos] += x->fraction[i] * y->fraction[j];
-            fraction[pos-1] += fraction[pos] / MP_BASE;
-            fraction[pos] = fraction[pos] % MP_BASE;
-        }
+    else {
+        mp_multiply_real(x, y, z);
     }
-
-    offset = 0;
-    for (i = 0; i < MP_SIZE && fraction[offset] == 0; i++)
-        offset++;
-    z->sign = x->sign * y->sign;
-    z->exponent = x->exponent + y->exponent - offset;
-    for (i = 0; i < MP_SIZE; i++) {
-        if (i + offset >= MP_SIZE*2)
-            z->fraction[i] = 0;
-        else
-            z->fraction[i] = fraction[i + offset];
-    }
-
-    /*for (i = MP_SIZE + offset; i < MP_SIZE * 2; i++) {
-        if (fraction[i] != 0) {
-            printf("truncated\n");
-            break;
-        }
-    }*/
 }
 
 
@@ -1455,6 +1457,13 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
         z->fraction[0] = ri - MP_BASE * c;
         z->exponent++;
     }
+    
+    if (mp_is_complex(x)) {
+        MPNumber im_z;
+        mp_imaginary_component(x, &im_z);
+        mp_multiply_integer(&im_z, y, &im_z);
+        mp_set_from_complex(z, &im_z, z);
+    }
 }
 
 
@@ -1473,7 +1482,7 @@ mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber
     }
 
     /* Reduce to lowest terms */
-    mpgcd(&numerator, &denominator);
+    mp_gcd(&numerator, &denominator);
     mp_divide_integer(x, denominator, z);
     mp_multiply_integer(z, numerator, z);
 }
@@ -1552,7 +1561,7 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 static void
-mp_reciprocal_internal(const MPNumber *x, MPNumber *z)
+mp_reciprocal_real(const MPNumber *x, MPNumber *z)
 {
     MPNumber t1, t2;
     int it0, t;
@@ -1608,25 +1617,24 @@ mp_reciprocal_internal(const MPNumber *x, MPNumber *z)
 
 void
 mp_reciprocal(const MPNumber *x, MPNumber *z)
-{
-    MPNumber real_x, im_x;
-    
-    mp_real_component(x, &real_x);
-    mp_imaginary_component(x, &im_x);
-    
-    if (mp_is_zero(&im_x))
-        mp_reciprocal_internal(&real_x, z);
-    else {
+{    
+    if (mp_is_complex(x)) {
         MPNumber t1, t2;
-        
+        MPNumber real_x, im_x;
+
+        mp_real_component(x, &real_x);
+        mp_imaginary_component(x, &im_x);
+
         /* 1/(a+bi) = (a-bi)/(a+bi)(a-bi) = (a-bi)/(a²+b²) */
         mp_multiply(&real_x, &real_x, &t1);
         mp_multiply(&im_x, &im_x, &t2);
         mp_add(&t1, &t2, &t1);
-        mp_reciprocal_internal(&t1, z);
+        mp_reciprocal_real(&t1, z);
         mp_conjugate(x, &t1);
         mp_multiply(&t1, z, z);
     }
+    else
+        mp_reciprocal_real(x, z);
 }
 
 
@@ -1738,8 +1746,10 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 void
 mp_sqrt(const MPNumber *x, MPNumber *z)
 {
-    if (x->sign < 0)
+    if (x->sign < 0) {
         mperr(_("Square root is not defined for negative values"));
+        mp_set_from_integer(0, z);
+    }
     else if (mp_is_zero(x))
         mp_set_from_integer(0, z);
     else {
@@ -1749,7 +1759,7 @@ mp_sqrt(const MPNumber *x, MPNumber *z)
         mp_root(x, -2, &t);
         i = t.fraction[0]; // ?
         mp_multiply(x, &t, z);
-        mpext(i, z->fraction[0], z);
+        mp_ext(i, z->fraction[0], z);
     }
 }
 
@@ -1767,6 +1777,7 @@ mp_factorial(const MPNumber *x, MPNumber *z)
     if (!mp_is_natural(x)) {
         /* Translators: Error displayed when attempted take the factorial of a fractional number */
         mperr(_("Factorial only defined for natural numbers"));
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -1786,6 +1797,7 @@ mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if (!mp_is_integer(x) || !mp_is_integer(y)) {
         /* Translators: Error displayed when attemping to do a modulus division on non-integer numbers */
         mperr(_("Modulus division only defined for integers"));
+        mp_set_from_integer(0, z);
     }
 
     mp_divide(x, y, &t1);
@@ -1825,6 +1837,7 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     if (mp_is_zero(x) && n < 0) {
         /* Translators: Error displayed when attempted to raise 0 to a negative exponent */
         mperr(_("The power of zero is not defined for a negative exponent"));
+        mp_set_from_integer(0, z);
         return;
     }
 
@@ -1847,6 +1860,7 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     for (i = 0; i < n; i++)
         mp_multiply(z, &t, z);
 }
+
 
 GList*
 mp_factorize(const MPNumber *x)

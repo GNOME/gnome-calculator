@@ -36,18 +36,16 @@ mp_set_from_mp(const MPNumber *x, MPNumber *z)
 void
 mp_set_from_float(float rx, MPNumber *z)
 {
-    int i, k, i2, ib, ie, tp;
-    float rb, rj;
-
-    i2 = MP_T + 4;
+    int i, k, ib, ie, tp;
+    float rj;
 
     memset(z, 0, sizeof(MPNumber));
 
     /* CHECK SIGN */
-    if (rx < (float) 0.0) {
+    if (rx < 0.0f) {
         z->sign = -1;
         rj = -(double)(rx);
-    } else if (rx > (float) 0.0) {
+    } else if (rx > 0.0f) {
         z->sign = 1;
         rj = rx;
     } else {
@@ -56,28 +54,25 @@ mp_set_from_float(float rx, MPNumber *z)
         return;
     }
 
-    ie = 0;
-
     /* INCREASE IE AND DIVIDE RJ BY 16. */
-    while (rj >= (float)1.0) {
+    ie = 0;
+    while (rj >= 1.0f) {
         ++ie;
-        rj *= (float) 0.0625;
+        rj *= 0.0625f;
     }
-
-    while (rj < (float).0625) {
+    while (rj < 0.0625f) {
         --ie;
-        rj *= (float)16.0;
+        rj *= 16.0f;
     }
 
     /*  NOW RJ IS DY DIVIDED BY SUITABLE POWER OF 16.
      *  SET EXPONENT TO 0
      */
     z->exponent = 0;
-    rb = (float) MP_BASE;
 
     /* CONVERSION LOOP (ASSUME SINGLE-PRECISION OPS. EXACT) */
-    for (i = 0; i < i2; i++) {
-        rj = rb * rj;
+    for (i = 0; i < MP_T + 4; i++) {
+        rj *= (float) MP_BASE;
         z->fraction[i] = (int) rj;
         rj -= (float) z->fraction[i];
     }
@@ -108,26 +103,22 @@ mp_set_from_float(float rx, MPNumber *z)
             tp = 1;
         }
     }
-
-    return;
 }
 
 
 void
 mp_set_from_double(double dx, MPNumber *z)
 {
-    int i, k, i2, ib, ie, tp;
-    double db, dj;
-
-    i2 = MP_T + 4;
+    int i, k, ib, ie, tp;
+    double dj;
 
     memset(z, 0, sizeof(MPNumber));
 
     /* CHECK SIGN */
-    if (dx < 0.)  {
+    if (dx < 0.0)  {
         z->sign = -1;
         dj = -dx;
-    } else if (dx > 0.)  {
+    } else if (dx > 0.0)  {
         z->sign = 1;
         dj = dx;
     } else {
@@ -140,18 +131,16 @@ mp_set_from_double(double dx, MPNumber *z)
       dj *= 1.0/16.0;
 
     for ( ; dj < 1.0/16.0; ie--)
-      dj *= 16.;
+      dj *= 16.0;
 
     /*  NOW DJ IS DY DIVIDED BY SUITABLE POWER OF 16
      *  SET EXPONENT TO 0
      */
     z->exponent = 0;
 
-    db = (double) MP_BASE;
-
     /* CONVERSION LOOP (ASSUME DOUBLE-PRECISION OPS. EXACT) */
-    for (i = 0; i < i2; i++) {
-        dj = db * dj;
+    for (i = 0; i < MP_T + 4; i++) {
+        dj *= (double) MP_BASE;
         z->fraction[i] = (int) dj;
         dj -= (double) z->fraction[i];
     }
@@ -182,8 +171,6 @@ mp_set_from_double(double dx, MPNumber *z)
             tp = 1;
         }
     }
-
-    return;
 }
 
 
@@ -217,7 +204,7 @@ mp_set_from_integer(int x, MPNumber *z)
 void
 mp_set_from_fraction(int i, int j, MPNumber *z)
 {
-    mpgcd(&i, &j);
+    mp_gcd(&i, &j);
 
     if (j == 0) {
         mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
@@ -351,14 +338,13 @@ float
 mp_cast_to_float(const MPNumber *x)
 {
     int i;
-    float rb, rz = 0.0;
+    float rz = 0.0;
 
     if (mp_is_zero(x))
         return 0.0;
 
-    rb = (float) MP_BASE;
     for (i = 0; i < MP_T; i++) {
-        rz = rb * rz + (float)x->fraction[i];
+        rz = (float) MP_BASE * rz + (float)x->fraction[i];
 
         /* CHECK IF FULL SINGLE-PRECISION ACCURACY ATTAINED */
         if (rz + 1.0f <= rz)
@@ -366,7 +352,7 @@ mp_cast_to_float(const MPNumber *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    rz *= mppow_ri(rb, x->exponent - i - 1);
+    rz *= mppow_ri((float) MP_BASE, x->exponent - i - 1);
 
     /* CHECK REASONABLENESS OF RESULT */
     /* LHS SHOULD BE <= 0.5, BUT ALLOW FOR SOME ERROR IN ALOG */
@@ -412,14 +398,13 @@ double
 mp_cast_to_double(const MPNumber *x)
 {
     int i, tm = 0;
-    double d__1, db, dz2, ret_val = 0.0;
+    double d__1, dz2, ret_val = 0.0;
 
     if (mp_is_zero(x))
         return 0.0;
 
-    db = (double) MP_BASE;
     for (i = 0; i < MP_T; i++) {
-        ret_val = db * ret_val + (double) x->fraction[i];
+        ret_val = (double) MP_BASE * ret_val + (double) x->fraction[i];
         tm = i;
 
         /* CHECK IF FULL DOUBLE-PRECISION ACCURACY ATTAINED */
@@ -433,7 +418,7 @@ mp_cast_to_double(const MPNumber *x)
     }
 
     /* NOW ALLOW FOR EXPONENT */
-    ret_val *= mppow_di(db, x->exponent - tm - 1);
+    ret_val *= mppow_di((double) MP_BASE, x->exponent - tm - 1);
 
     /* CHECK REASONABLENESS OF RESULT. */
     /* LHS SHOULD BE .LE. 0.5 BUT ALLOW FOR SOME ERROR IN DLOG */
@@ -455,15 +440,12 @@ mp_cast_to_double(const MPNumber *x)
 }
 
 
-void
-mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
+static void
+mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, int trim_zeroes, int force_sign, GString *string)
 {
     static char digits[] = "0123456789ABCDEF";
-    MPNumber number, integer_component, fractional_component, MPbase, temp;
+    MPNumber number, integer_component, fractional_component, temp;
     int i, last_non_zero;
-    GString *string;
-
-    string = g_string_sized_new(buffer_length);
 
     if (mp_is_negative(x))
         mp_abs(x, &number);
@@ -471,8 +453,8 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
         mp_set_from_mp(x, &number);
 
     /* Add rounding factor */
-    mp_set_from_integer(base, &MPbase);
-    mp_xpowy_integer(&MPbase, -(accuracy+1), &temp);
+    mp_set_from_integer(base, &temp);
+    mp_xpowy_integer(&temp, -(accuracy+1), &temp);
     mp_multiply_integer(&temp, base, &temp);
     mp_divide_integer(&temp, 2, &temp);
     mp_add(&number, &temp, &number);
@@ -522,9 +504,13 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
     if (trim_zeroes || accuracy == 0)
         g_string_truncate(string, last_non_zero);
 
-    /* Remove negative sign if the number was rounded down to zero */
-    if (mp_is_negative(x) && strcmp(string->str, "0") != 0)
-        g_string_prepend(string, "−");
+    /* Add sign on non-zero values */
+    if (strcmp(string->str, "0") != 0) {
+        if (mp_is_negative(x))
+            g_string_prepend(string, "−");
+        else if (force_sign)
+            g_string_prepend(string, "+");
+    }
 
     switch(base)
     {
@@ -540,6 +526,47 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, ch
     case 16:
         g_string_append(string, "₁₆");
         break;
+    }
+}
+
+
+void
+mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
+{
+    MPNumber x_real, x_im;
+    GString *string;
+    
+    string = g_string_sized_new(buffer_length);
+    
+    mp_real_component(x, &x_real);
+    mp_imaginary_component(x, &x_im);
+    
+    mp_cast_to_string_real(&x_real, base, accuracy, trim_zeroes, FALSE, string);
+    if (mp_is_complex(x)) {
+        GString *s;
+        gboolean force_sign = TRUE;
+        
+        if (strcmp(string->str, "0") == 0) {
+            g_string_assign(string, "");
+            force_sign = FALSE;
+        }
+
+        s = g_string_sized_new(buffer_length);
+        mp_cast_to_string_real(&x_im, 10, accuracy, trim_zeroes, force_sign, s);
+        if (strcmp(s->str, "1") == 0) {
+            g_string_append(string, "i");
+        }
+        else if (strcmp(s->str, "+1") == 0) {
+            g_string_append(string, "+i");
+        }
+        else if (strcmp(s->str, "−1") == 0) {
+            g_string_append(string, "−i");
+        }
+        else {
+            g_string_append(string, s->str);
+            g_string_append(string, "i");
+        }
+        g_string_free(s, TRUE);
     }
 
     // FIXME: Check for truncation

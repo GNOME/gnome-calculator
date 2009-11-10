@@ -276,6 +276,7 @@ mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     if (mp_is_zero(&cos_x)) {
         /* Translators: Error displayed when tangent value is undefined */
         mperr(_("Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"));
+        mp_set_from_integer(0, z);
         return;
     }
 
