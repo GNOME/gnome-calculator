@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-11-05 23:49+0000\n"
-"PO-Revision-Date: 2009-11-06 07:57+0100\n"
+"POT-Creation-Date: 2009-11-10 20:05+0000\n"
+"PO-Revision-Date: 2009-11-13 07:40+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -447,12 +447,12 @@ msgstr "fakulteta [!]"
 #. Accessible name for the factorize button
 #: ../data/gcalctool.ui.h:90
 msgid "Factorize"
-msgstr ""
+msgstr "Faktorizacija"
 
 #. Tooltip for the factorize button
 #: ../data/gcalctool.ui.h:92
 msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr ""
+msgstr "Faktorizacija na praštevila (Ctrl+F)"
 
 #. Tooltip for the fractional portion button
 #: ../data/gcalctool.ui.h:94
@@ -541,7 +541,7 @@ msgstr "Osmiško"
 #. Tooltip for the ones' complement button
 #: ../data/gcalctool.ui.h:126
 msgid "Ones' complement"
-msgstr ""
+msgstr "Enojni komplement"
 
 # G:5 K:12 O:5
 #. Tooltip on the percentage button
@@ -683,7 +683,7 @@ msgstr "Podpisano"
 #. Tooltip for the subscript mode button
 #: ../data/gcalctool.ui.h:180
 msgid "Subscript number mode [Alt+number]"
-msgstr ""
+msgstr "Podpisni način števil [Alt+številka]"
 
 #. Tooltip for the subtraction button
 #: ../data/gcalctool.ui.h:182
@@ -699,7 +699,7 @@ msgstr "Nadpisano"
 #. Tooltip for the superscript mode button
 #: ../data/gcalctool.ui.h:186
 msgid "Superscript number mode [Ctrl+number]"
-msgstr ""
+msgstr "Nadpisni način števil [Ctrl+številka]"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:188
@@ -928,7 +928,7 @@ msgstr "Trigonometrična vrsta"
 msgid "Word size"
 msgstr "Velikost besede"
 
-#: ../src/calctool.c:74
+#: ../src/calctool.c:78
 #, c-format
 msgid ""
 "Usage:\n"
@@ -937,7 +937,7 @@ msgstr ""
 "Uporaba:\n"
 "  %s - matematični izvračun"
 
-#: ../src/calctool.c:82
+#: ../src/calctool.c:86
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -952,7 +952,7 @@ msgstr ""
 "  --help-all                      Prikaži vse možnosti pomoči\n"
 "  --help-gtk                      Prikaži GTK+ možnosti"
 
-#: ../src/calctool.c:93
+#: ../src/calctool.c:97
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -971,7 +971,7 @@ msgstr ""
 "  --gtk-module=MODULES            Naloži dodatnemodule GTK+\n"
 "  --g-fatal-warnings              Določi vsa opozorila ključna"
 
-#: ../src/calctool.c:106
+#: ../src/calctool.c:110
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -983,19 +983,19 @@ msgstr ""
 "  -s, --solve <equation>          Reši podano enačbo"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:142
+#: ../src/calctool.c:146
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argument --solve zahteva tudi zapis enačbe"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:155
+#: ../src/calctool.c:159
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Neznan argument '%s'"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:168
+#: ../src/calctool.c:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1156,7 +1156,7 @@ msgstr "Ni razumne vrednosti za premestitev bitov"
 #. Translators: Error displayed when trying to factorize a non-integer value
 #: ../src/display.c:1029
 msgid "Need an integer to factorize"
-msgstr ""
+msgstr "Za faktorizacijo je zahtevana celo številčna vrednost"
 
 #: ../src/display.c:1055
 msgid "No sane value to store"
@@ -1183,7 +1183,7 @@ msgstr "Funkcija '%s' ni določena"
 #: ../src/display.c:1191
 #, c-format
 msgid "Unknown conversion"
-msgstr ""
+msgstr "Neznana pretvorba"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
 #: ../src/display.c:1200
@@ -1291,12 +1291,12 @@ msgstr "Ni mogoče odpreti datoteke pomoči"
 #. Translators: Title of the error dialog when unable to load the UI files
 #: ../src/gtk.c:1002
 msgid "You don't have any recent currency rates. Should I download some now?"
-msgstr ""
+msgstr "Vrednosti valut niso posodobljene. Ali naj se posodobijo takoj?"
 
 #. Translators: Title of the error dialog when unable to load the UI files
 #: ../src/gtk.c:1012
 msgid "I could not download any currency rates. You may receive inaccurate results, or you may not receive any results at all."
-msgstr ""
+msgstr "Ni mogoče prejeti vrednosti valut. Morda bodo izračunane vrednsti valut napačne ali pa izračun sploh ne bo mogoč."
 
 # G:0 K:1 O:0
 #: ../src/gtk.c:1421
@@ -1304,106 +1304,112 @@ msgid "Paste"
 msgstr "Prilepi"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:526
-#: ../src/mp.c:563
-#: ../src/mp.c:1465
+#: ../src/mp.c:529
+#: ../src/mp.c:566
+#: ../src/mp.c:1474
 msgid "Division by zero is not defined"
-msgstr ""
+msgstr "Deljenje z nič ni določeno"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1156
+#: ../src/mp.c:1193
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritem vrednosti nič ni določen"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1088
+#: ../src/mp.c:1165
 msgid "Logarithm of negative values is undefined"
-msgstr ""
+msgstr "Logaritem negativnih vrednosti ni določen"
 
-#: ../src/mp.c:1530
+#: ../src/mp.c:1539
 msgid "The power of negative numbers only defined for integer exponents"
-msgstr ""
+msgstr "Potenciranje negativnih števil je določeno le s celoštevilskimi potencami"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1537
-#: ../src/mp.c:1827
+#: ../src/mp.c:1546
+#: ../src/mp.c:1839
 msgid "The power of zero is not defined for a negative exponent"
-msgstr ""
+msgstr "Potenciranje vrednosti nič ni določeno za negativne potence"
 
-#: ../src/mp.c:1562
+#: ../src/mp.c:1571
 msgid "Reciprocal of zero is not defined"
-msgstr ""
+msgstr "Obratna vrednost števila nič ni določena"
 
-#: ../src/mp.c:1648
+#: ../src/mp.c:1656
 msgid "Root must non-zero"
-msgstr ""
+msgstr "Koren ne sme biti vrednosti nič"
 
-#: ../src/mp.c:1666
+#: ../src/mp.c:1674
 msgid "Negative root of zero is undefined"
-msgstr ""
+msgstr "Negativni koren vrednosti nič ni določen"
 
-#: ../src/mp.c:1672
+#: ../src/mp.c:1680
 msgid "nth root of negative number not defined for even n"
-msgstr ""
+msgstr "n-ti koren negativnega števila ni določen za sode vrednosti n"
 
-#: ../src/mp.c:1742
+#: ../src/mp.c:1750
 msgid "Square root is not defined for negative values"
-msgstr ""
+msgstr "Kvadratni koren ni določen za negativne vrednosti"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1769
+#: ../src/mp.c:1779
 msgid "Factorial only defined for natural numbers"
-msgstr ""
+msgstr "Fakulteta je določena le za naravna števila"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1788
+#: ../src/mp.c:1799
 msgid "Modulus division only defined for integers"
-msgstr ""
+msgstr "Deljenje z ostankom je določeno le za cela števila"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
 msgid "Boolean AND only defined for natural numbers"
-msgstr ""
+msgstr "Logični AND je določen le za naravna števila"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
 msgid "Boolean OR only defined for natural numbers"
-msgstr ""
+msgstr "Logični OR je določen le za naravna števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
 msgid "Boolean XOR only defined for natural numbers"
-msgstr ""
+msgstr "Logični XOR je določen le za naravna števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
 msgid "Boolean NOT only defined for natural numbers"
-msgstr ""
+msgstr "Logični NOT je določen le za naravna števila"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
 msgid "Shift only possible on integer values"
-msgstr ""
+msgstr "Zamik je mogoč le pri celoštevilčnih vrednostih"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid "Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"
-msgstr ""
+msgstr "Tangenta ni določena za kote, ki so večkratniki n/2 (180°) od π∕4 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:316
+#: ../src/mp-trigonometric.c:317
 msgid "Inverse sine not defined for values outside [-1, 1]"
-msgstr ""
+msgstr "Preobrnjen sinus ni določen za vrednosti izven [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:339
+#: ../src/mp-trigonometric.c:340
 msgid "Inverse cosine not defined for values outside [-1, 1]"
-msgstr ""
+msgstr "Preobrnjen kosinus ni določen za vrednosti izven [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:554
+#: ../src/mp-trigonometric.c:555
 msgid "Inverse hyperbolic cosine not defined for values less than or equal to one"
-msgstr ""
+msgstr "Preobrnjeni hiperbolični kosinus ni določen za vrednosti manj ali enako 1"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:578
+#: ../src/mp-trigonometric.c:579
 msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
-msgstr ""
+msgstr "Preobrnjena hiperbolična tangenta ni določena za vrednosti izven [-1, 1]"
 
 #~ msgid "0"
 #~ msgstr "0"
