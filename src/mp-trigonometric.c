@@ -129,7 +129,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 
     /* Taylor series */
     /* POWER SERIES LOOP.  REDUCE T IF POSSIBLE */
-    b2 = max(MP_BASE, 64) << 1;
+    b2 = 2 * max(MP_BASE, 64);
     do {
         if (MP_T + t1.exponent <= 0)
             break;
@@ -250,7 +250,7 @@ mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 
     convert_to_radians(x, unit, z);
 
-    /* Use power series if -1 >= x >= 1 */
+    /* Use power series if |x| <= 1 */
     mp_abs(z, z);
     if (mp_compare_mp_to_int(z, 1) <= 0) {
         mpsin1(z, z, 0);
@@ -291,14 +291,14 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber t1, t2;
 
-    /* asin(0) = 0 */
+    /* asin⁻¹(0) = 0 */
     if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
         return;
     }
 
+    /* sin⁻¹(x) = tan⁻¹(x / √(1 - x²)), |x| < 1 */
     if (x->exponent <= 0) {
-        /* HERE ABS(X) < 1,  SO USE ARCTAN(X/SQRT(1 - X^2)) */
         mp_set_from_integer(1, &t1);
         mp_set_from_mp(&t1, &t2);
         mp_subtract(&t1, x, &t1);
@@ -310,18 +310,18 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         return;
     }
 
-    /* HERE ABS(X) >= 1.  SEE IF X == +-1 */
+    /* sin⁻¹(1) = π/2, sin⁻¹(-1) = -π/2 */
     mp_set_from_integer(x->sign, &t2);
-    if (!mp_is_equal(x, &t2)) {
-        /* Translators: Error displayed when inverse sine value is undefined */
-        mperr(_("Inverse sine not defined for values outside [-1, 1]"));
+    if (mp_is_equal(x, &t2)) {
+        mp_get_pi(z);
+        mp_divide_integer(z, 2 * t2.sign, z);
+        convert_from_radians(z, unit, z);
+        return;
     }
 
-    /* X == +-1 SO RETURN +-PI/2 */
-    mp_get_pi(z);
-    mp_divide_integer(z, t2.sign << 1, z);
-
-    convert_from_radians(z, unit, z);
+    /* Translators: Error displayed when inverse sine value is undefined */
+    mperr(_("Inverse sine not defined for values outside [-1, 1]"));
+    mp_set_from_integer(0, z);
 }
 
 
@@ -346,6 +346,7 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     } else if (mp_is_equal(x, &MPn1)) {
         mp_set_from_mp(&pi, z);
     } else {
+        /* cos⁻¹(x) = tan⁻¹(√(1 - x²) / x) */
         mp_multiply(x, x, &t2);
         mp_subtract(&t1, &t2, &t2);
         mp_sqrt(&t2, &t2);
@@ -382,10 +383,12 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     q = 1;
     while (t2.exponent >= 0)
     {
-        if (t2.exponent == 0 && (t2.fraction[0] + 1) << 1 <= MP_BASE)
+        if (t2.exponent == 0 && 2 * (t2.fraction[0] + 1) <= MP_BASE)
             break;
 
-        q <<= 1;
+        q *= 2;
+        
+        /* t = t / (√(t² + 1) + 1) */
         mp_multiply(&t2, &t2, z);
         mp_add_integer(z, 1, z);
         mp_sqrt(z, z);
@@ -410,7 +413,7 @@ mp_atan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
             break;
     }
 
-    /* CORRECT FOR ARGUMENT REDUCTION, AND EXIT */
+    /* CORRECT FOR ARGUMENT REDUCTION */
     mp_multiply_integer(z, q, z);
 
     /*  CHECK THAT RELATIVE ERROR LESS THAN 0.01 UNLESS EXPONENT
@@ -534,7 +537,7 @@ mp_asinh(const MPNumber *x, MPNumber *z)
 {
     MPNumber t;
 
-    /* asinh(x) = ln(x + sqrt(x^2 + 1)) */
+    /* sinh⁻¹(x) = ln(x + √(x² + 1)) */
     mp_multiply(x, x, &t);
     mp_add_integer(&t, 1, &t);
     mp_sqrt(&t, &t);
@@ -557,7 +560,7 @@ mp_acosh(const MPNumber *x, MPNumber *z)
         return;
     }
 
-    /* acosh(x) = ln(x + sqrt(x^2 - 1)) */
+    /* cosh⁻¹(x) = ln(x + √(x² - 1)) */
     mp_multiply(x, x, &t);
     mp_add_integer(&t, -1, &t);
     mp_sqrt(&t, &t);

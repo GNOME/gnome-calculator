@@ -167,7 +167,7 @@ mp_arg(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 void
 mp_conjugate(const MPNumber *x, MPNumber *z)
 {
-    //mp_set_from_mp(x, z);
+    mp_set_from_mp(x, z);
     //z->im_sign = -z->im_sign;
 }
 
@@ -537,18 +537,14 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
         return;
     }
 
-    /* FORM RECIPROCAL OF Y */
+    /* z = x × y⁻¹ */
+    /* FIXME: Set exponent to zero to avoid overflow in mp_multiply??? */
     mp_reciprocal(y, &t);
-
-    /* SET EXPONENT OF R(I2) TO ZERO TO AVOID OVERFLOW IN MP_MULTIPLY */
     ie = t.exponent;
     t.exponent = 0;
     i = t.fraction[0];
-
-    /* MULTIPLY BY X */
     mp_multiply(x, &t, z);
     mp_ext(i, z->fraction[0], z);
-
     z->exponent += ie;
 }
 
@@ -730,6 +726,9 @@ int
 mp_is_integer(const MPNumber *x)
 {
     MPNumber t1, t2, t3;
+    
+    if (mp_is_complex(x))
+        return 0;
 
     /* This fix is required for 1/3 repiprocal not being detected as an integer */
     /* Multiplication and division by 10000 is used to get around a
@@ -766,7 +765,10 @@ mp_is_integer(const MPNumber *x)
 int
 mp_is_natural(const MPNumber *x)
 {
-    return x->sign > 0 && mp_is_integer(x);
+    if (mp_is_complex(x))
+        return 0;
+    else
+        return x->sign > 0 && mp_is_integer(x);
 }
 
 
