@@ -83,7 +83,7 @@ BIN           {ZERO}|{ONE}
 OCT           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}
 DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}
 HEX           {DEC}|[A-F]|[a-f]
-EXP           "e"|"e+"|"e-"|"E"|"E+"|"E-"
+EXP           "e"|"e+"|"e-"|"e−"|"E"|"E+"|"E-"|"E−"
 SI_SUFFIX     "T"|"G"|"M"|"k"|"d"|"c"|"m"|"u"|"µ"|"n"|"p"|"f"
 SUPER_DIGITS  "⁰"|"¹"|"²"|"³"|"⁴"|"⁵"|"⁶"|"⁷"|"⁸"|"⁹"
 SUB_DIGITS    "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
