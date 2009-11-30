@@ -73,16 +73,16 @@ solve(const char *equation)
 static void
 usage(int show_gtk)
 {
-    /* Translators: Description on how to use gcalctool displayed on command-line */
     fprintf(stderr,
+            /* Description on how to use gcalctool displayed on command-line */
             _("Usage:\n"
               "  %s - Perform mathematical calculations"), v->progname);
 
     fprintf(stderr,
             "\n\n");
 
-    /* Translators: Description on gcalctool command-line help options displayed on command-line */
     fprintf(stderr,
+            /* Description on gcalctool command-line help options displayed on command-line */
             _("Help Options:\n"
               "  -v, --version                   Show release version\n"
               "  -h, -?, --help                  Show help options\n"
@@ -92,8 +92,8 @@ usage(int show_gtk)
             "\n\n");
 
     if (show_gtk) {
-        /* Translators: Description on gcalctool command-line GTK+ options displayed on command-line */
         fprintf(stderr,
+                /* Description on gcalctool command-line GTK+ options displayed on command-line */
                 _("GTK+ Options:\n"
                   "  --class=CLASS                   Program class as used by the window manager\n"
                   "  --name=NAME                     Program name as used by the window manager\n"
@@ -105,8 +105,8 @@ usage(int show_gtk)
                 "\n\n");
     }
 
-    /* Translators: Description on gcalctool application options displayed on command-line */
     fprintf(stderr,
+            /* Description on gcalctool application options displayed on command-line */
             _("Application Options:\n"
               "  -u, --unittest                  Perform unittests\n"
               "  -s, --solve <equation>          Solve the given equation"));
@@ -124,12 +124,12 @@ get_options(int argc, char *argv[])
         arg = argv[i];
 
         if (strcmp(arg, "-v") == 0 ||
-                 strcmp(arg, "--version") == 0 ||
-                 strcmp(arg, "-?") == 0) {
+            strcmp(arg, "--version") == 0) {
             version();
             exit(0);
         }
         else if (strcmp(arg, "-h") == 0 ||
+                 strcmp(arg, "-?") == 0 ||
                  strcmp(arg, "--help") == 0) {
             usage(FALSE);
             exit(0);
@@ -142,8 +142,9 @@ get_options(int argc, char *argv[])
             strcmp(arg, "--solve") == 0) {
             i++;
             if (i >= argc) {
-                /* Translators: Error printed to stderr when user uses --solve argument without an equation */
-                fprintf(stderr, _("Argument --solve requires an equation to solve"));
+                fprintf(stderr,
+                        /* Error printed to stderr when user uses --solve argument without an equation */
+                        _("Argument --solve requires an equation to solve"));
                 fprintf(stderr, "\n");
                 exit(1);
             }
@@ -155,8 +156,9 @@ get_options(int argc, char *argv[])
             unittest();
         }
         else {
-            /* Translators: Error printed to stderr when user provides an unknown command-line argument */
-            fprintf(stderr, _("Unknown argument '%s'"), arg);
+            fprintf(stderr,
+                    /* Error printed to stderr when user provides an unknown command-line argument */
+                    _("Unknown argument '%s'"), arg);
             fprintf(stderr, "\n");
             usage(FALSE);
             exit(1);
