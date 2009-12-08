@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-11-05 23:49+0000\n"
-"PO-Revision-Date: 2009-11-06 19:04+0800\n"
-"Last-Translator: Aron Xu <happyaron.xu@gmail.com>\n"
+"POT-Creation-Date: 2009-12-01 06:26+0000\n"
+"PO-Revision-Date: 2009-12-02 21:36+0100\n"
+"Last-Translator: Tao Wei <weitao1979@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +33,6 @@ msgstr "成本(_O)："
 
 #. Periodic Payment Dialog: Description of calculation
 #: ../data/financial.ui.h:6
-#, fuzzy
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -91,12 +90,11 @@ msgstr "计算某投资增加到某一未来值需要的每期利率，按复合
 
 #. Present Value Dialog: Description of calculation
 #: ../data/financial.ui.h:20
-#, fuzzy
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
-msgstr "计算"
+msgstr ""
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/financial.ui.h:22
@@ -441,9 +439,8 @@ msgstr "工程"
 
 #. Tooltip for the eulers number button
 #: ../data/gcalctool.ui.h:80
-#, fuzzy
 msgid "Eulers number"
-msgstr "欧拉常数(e)"
+msgstr "欧拉数"
 
 #. Accessible name for the exponentiation (x to the power of y) button
 #: ../data/gcalctool.ui.h:82
@@ -557,9 +554,8 @@ msgstr "八进制"
 
 #. Tooltip for the ones' complement button
 #: ../data/gcalctool.ui.h:126
-#, fuzzy
 msgid "Ones' complement"
-msgstr "1 的补码"
+msgstr "1 的补数"
 
 #. Tooltip on the percentage button
 #: ../data/gcalctool.ui.h:129
@@ -599,7 +595,7 @@ msgstr "随机数"
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: ../data/gcalctool.ui.h:142
 msgid "Rate"
-msgstr ""
+msgstr "利率"
 
 #. Accessible name for the recall value button
 #: ../data/gcalctool.ui.h:144
@@ -728,9 +724,8 @@ msgstr "截断值"
 
 #. Tooltip for the two's complement button
 #: ../data/gcalctool.ui.h:194
-#, fuzzy
 msgid "Two's complement"
-msgstr "2 的补码"
+msgstr "2 的补数"
 
 #. Preferences dialog: label for word size combo box
 #: ../data/gcalctool.ui.h:196
@@ -918,13 +913,11 @@ msgstr "小数点后显示的数字位数。此值必须在 0 到 9 范围内。
 
 # fuzzy
 #: ../data/gcalctool.schemas.in.h:17
-#, fuzzy
 msgid "The number of pixels to place the window from the left of the screen."
 msgstr "呈现窗口距屏幕左侧的像素数。"
 
 # fuzzy
 #: ../data/gcalctool.schemas.in.h:18
-#, fuzzy
 msgid "The number of pixels to place the window from the top of the screen."
 msgstr "呈现窗口距屏幕顶部的像素数。"
 
@@ -946,7 +939,8 @@ msgstr "角度类型"
 msgid "Word size"
 msgstr "字长"
 
-#: ../src/calctool.c:74
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/calctool.c:78
 #, c-format
 msgid ""
 "Usage:\n"
@@ -955,7 +949,8 @@ msgstr ""
 "用法：\n"
 "  %s - 执行数学计算"
 
-#: ../src/calctool.c:82
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/calctool.c:86
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -970,7 +965,8 @@ msgstr ""
 "  -help-all\t\t显示所有帮助选项\n"
 "  -help-gtk\t\t显示 GTK+ 选项"
 
-#: ../src/calctool.c:93
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/calctool.c:97
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -991,7 +987,8 @@ msgstr ""
 "  --gtk-module=MODULES\t加载额外的 GTK+ 模块\n"
 "  --g-fatal-warnings\t给出所有重要警告"
 
-#: ../src/calctool.c:106
+#. Description on gcalctool application options displayed on command-line
+#: ../src/calctool.c:110
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1002,20 +999,20 @@ msgstr ""
 "  -u，--unittest\t执行单元测试\n"
 "  -s，--solve <方程>\t求解给出的方程"
 
-#. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:142
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/calctool.c:147
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "参数 --solve 需要一个方程以便求解"
 
-#. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:155
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/calctool.c:161
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "未知参数“%s”"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:168
+#: ../src/calctool.c:174
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "零，一，二，三，四，五，六，七，八，九，十，A，B，C，D，E，F"
 
@@ -1324,53 +1321,56 @@ msgid "Paste"
 msgstr "粘贴"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:526 ../src/mp.c:563 ../src/mp.c:1465
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
 msgid "Division by zero is not defined"
 msgstr "被零除无意义"
 
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1158 ../src/mp.c:1195
+msgid "Logarithm of zero is undefined"
+msgstr "零的对数未定义"
+
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1088
+#: ../src/mp.c:1167
 msgid "Logarithm of negative values is undefined"
 msgstr "对负数进行求对数运算无意义"
 
-#: ../src/mp.c:1530
-#, fuzzy
-#| msgid "The power of negative numbers only defined for for integer exponents"
+#: ../src/mp.c:1541
 msgid "The power of negative numbers only defined for integer exponents"
-msgstr "对负数进行求幂运算，仅当指数为整数时有意义"
+msgstr "负数的幂只能定义为整数指数"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1537 ../src/mp.c:1827
+#: ../src/mp.c:1548 ../src/mp.c:1841
 msgid "The power of zero is not defined for a negative exponent"
 msgstr "对零进行求幂运算，当指数为负时无意义"
 
-#: ../src/mp.c:1562
+#: ../src/mp.c:1573
 msgid "Reciprocal of zero is not defined"
 msgstr "对零求倒数无意义"
 
-#: ../src/mp.c:1648
+#: ../src/mp.c:1658
 msgid "Root must non-zero"
 msgstr "根次方数必需为非零值"
 
-#: ../src/mp.c:1666
+#: ../src/mp.c:1676
 msgid "Negative root of zero is undefined"
 msgstr "零的负数次方根无意义"
 
-#: ../src/mp.c:1672
+#: ../src/mp.c:1682
 msgid "nth root of negative number not defined for even n"
 msgstr "对负数求偶次方根无意义"
 
-#: ../src/mp.c:1742
+#: ../src/mp.c:1752
 msgid "Square root is not defined for negative values"
 msgstr "对负数开平方无意义"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1769
+#: ../src/mp.c:1781
 msgid "Factorial only defined for natural numbers"
 msgstr "阶乘运算仅对自然数有意义"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1788
+#: ../src/mp.c:1801
 msgid "Modulus division only defined for integers"
 msgstr "取模运算仅对整数有意义"
 
@@ -1402,30 +1402,29 @@ msgstr "只能对整数进行移位运算"
 # fuzzy
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
-#, fuzzy
 msgid ""
 "Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
 "(90°)"
-msgstr "正切函数在 90°+180°n( n为整数)上无意义"
+msgstr "正切函数对于从 π∕4 (90°) 开始加上 π∕2 (180°) 的倍数的角度上无效"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:316
+#: ../src/mp-trigonometric.c:323
 msgid "Inverse sine not defined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:339
+#: ../src/mp-trigonometric.c:340
 msgid "Inverse cosine not defined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:554
+#: ../src/mp-trigonometric.c:558
 msgid ""
 "Inverse hyperbolic cosine not defined for values less than or equal to one"
 msgstr "反双曲余弦函数在小于等于 1 范围内无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:578
+#: ../src/mp-trigonometric.c:582
 msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
 
