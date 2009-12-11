@@ -31,9 +31,11 @@
 // treat exp NAME exp as a function always and pass both arguments, i.e.
 // can do mod using both and all others use $1 * NAME($3)
 
-static void set_error(yyscan_t yyscanner, int error)
+static void set_error(yyscan_t yyscanner, int error, const char *token)
 {
     _mp_equation_get_extra(yyscanner)->error = error;
+    if (token)
+        _mp_equation_get_extra(yyscanner)->error_token = strdup(token);
 }
 
 static void set_result(yyscan_t yyscanner, const MPNumber *x)
@@ -41,12 +43,14 @@ static void set_result(yyscan_t yyscanner, const MPNumber *x)
     mp_set_from_mp(x, &(_mp_equation_get_extra(yyscanner))->ret);
 }
 
-static void get_variable(yyscan_t yyscanner, const char *name, MPNumber *z)
+static int get_variable(yyscan_t yyscanner, const char *name, MPNumber *z)
 {
     if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z)) {
-        set_error(yyscanner, PARSER_ERR_UNKNOWN_VARIABLE);
-        _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_VARIABLE, name);
+        return 0;
     }
+    
+    return 1;
 }
 
 static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
@@ -54,18 +58,19 @@ static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
     _mp_equation_get_extra(yyscanner)->set_variable(_mp_equation_get_extra(yyscanner), name, x);
 }
 
-static void get_function(yyscan_t yyscanner, const char *name, const MPNumber *x, MPNumber *z)
+static int get_function(yyscan_t yyscanner, const char *name, const MPNumber *x, MPNumber *z)
 {
     if (!_mp_equation_get_extra(yyscanner)->get_function(_mp_equation_get_extra(yyscanner), name, x, z)) {
-        set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION);
-        _mp_equation_get_extra(yyscanner)->error_token = strdup(name);
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, name);
+        return 0;
     }
+    return 1;
 }
 
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 {
     if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
-	set_error(yyscanner, PARSER_ERR_OVERFLOW);
+        set_error(yyscanner, PARSER_ERR_OVERFLOW, NULL);
     }
     mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
@@ -76,7 +81,7 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 
     if (_mp_equation_get_extra(yyscanner)->options->convert == NULL
         || !_mp_equation_get_extra(yyscanner)->options->convert(x, x_units, z_units, z, data)) {
-        set_error(yyscanner, PARSER_ERR_UNKNOWN_CONVERSION);
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_CONVERSION, NULL);
     }
 }
 
@@ -154,13 +159,13 @@ exp:
 
 
 variable:
-  tVARIABLE exp {get_function(yyscanner, $1, &$2, &$$); free($1);}
-| tVARIABLE tSUPNUM exp {get_function(yyscanner, $1, &$3, &$$); mp_xpowy_integer(&$$, $2, &$$); free($1);}
+  tVARIABLE exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
+| tVARIABLE tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
 | tROOT3 exp {mp_root(&$2, 3, &$$);}
 | tROOT4 exp {mp_root(&$2, 4, &$$);}
-| tVARIABLE {get_variable(yyscanner, $1, &$$); free($1);}
+| tVARIABLE {if (!get_variable(yyscanner, $1, &$$)) YYABORT; free($1);}
 ;
 
 %%

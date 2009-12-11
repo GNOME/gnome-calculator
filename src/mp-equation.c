@@ -237,16 +237,16 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     _mp_equation__delete_buffer(buffer, yyscanner);
     _mp_equation_lex_destroy(yyscanner);
 
-    /* Failed to parse */
-    if (ret)
-        return PARSER_ERR_INVALID;
-
     /* Error during parsing */
     if (state.error)
         return state.error;
 
     if (mp_get_error())
         return PARSER_ERR_MP;
+
+    /* Failed to parse */
+    if (ret)
+        return PARSER_ERR_INVALID;
 
     mp_set_from_mp(&state.ret, result);
 
