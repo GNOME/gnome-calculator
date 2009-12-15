@@ -111,7 +111,7 @@ static void do_mod(yyscan_t yyscanner, const MPNumber *x, const MPNumber *y, MPN
 %left tMULTIPLY tDIVIDE tMOD MULTIPLICATION
 %left tNOT
 %left tROOT tROOT3 tROOT4
-%left <name> tVARIABLE tFUNCTION
+%left <name> tVARIABLE tPI tFUNCTION
 %right <integer> tSUBNUM tSUPNUM
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
@@ -136,10 +136,10 @@ exp:
 | exp tINVERSE {mp_reciprocal(&$1, &$$);}
 | exp '!' {mp_factorial(&$1, &$$);}
 | tVARIABLE {get_variable(yyscanner, $1, &$$); free($1);}
-| tVARIABLE tVARIABLE %prec MULTIPLICATION {MPNumber t; get_variable(yyscanner, $1, &t); get_variable(yyscanner, $2, &$$); mp_multiply(&t, &$$, &$$); free($1);}
+| tPI {get_variable(yyscanner, $1, &$$); free($1);}
 | function {mp_set_from_mp(&$1, &$$);}
 | tNUMBER function  %prec MULTIPLICATION {mp_multiply(&$1, &$2, &$$);}
-| tNUMBER tVARIABLE %prec MULTIPLICATION {get_variable(yyscanner, $2, &$$); mp_multiply(&$1, &$$, &$$); free($2);}
+| tNUMBER tPI %prec MULTIPLICATION {get_variable(yyscanner, $2, &$$); mp_multiply(&$1, &$$, &$$); free($2);}
 | tSUBTRACT exp %prec UNARY_MINUS {mp_invert_sign(&$2, &$$);}
 | tADD tNUMBER %prec UNARY_PLUS {mp_set_from_mp(&$2, &$$);}
 | exp tDIVIDE exp {mp_divide(&$1, &$3, &$$);}
