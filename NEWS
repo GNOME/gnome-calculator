@@ -4,6 +4,15 @@
  *  All Rights Reserved.
  */
 
+Overview of changes in gcalctool 5.28.2
+
+    * Fix negative exponential detection e.g. "2e−3" = 0.002
+
+    * Only disable trailing zeroes option in basic mode (Bug #600700)
+
+    * Disable ambiguous multiplication with Eulers number, e.g. "2e" as this
+      makes exponential numbers confusing
+
 Overview of changes in gcalctool 5.28.1
 
     * Fix numeric exponent parsing (Robin Sonefors, Bug #596892)
