@@ -72,6 +72,7 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
+                        <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="quit_cb"/>
                       </object>
                     </child>
@@ -4325,7 +4326,7 @@
         <col id="1">decimal</col>
       </row>
       <row>
-        <col id="0" translatable="yes" comments="Number display mode combo: Scientific, e.g. 1.234×10^3">Scientific</col>
+        <col id="0" translatable="yes" comments="Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3">Scientific</col>
         <col id="1">scientific</col>
       </row>
       <row>
@@ -4333,15 +4334,15 @@
         <col id="1">engineering</col>
       </row>
       <row>
-        <col id="0" translatable="yes" comments="Number display mode combo: Binary, e.g. 10011010010₂">Binary</col>
+        <col id="0" translatable="yes" comments="Number display mode combo: Binary, e.g. 10011010010&#x2082;">Binary</col>
         <col id="1">binary</col>
       </row>
       <row>
-        <col id="0" translatable="yes" comments="Number display mode combo: Octal, e.g. 2322₈">Octal</col>
+        <col id="0" translatable="yes" comments="Number display mode combo: Octal, e.g. 2322&#x2088;">Octal</col>
         <col id="1">octal</col>
       </row>
       <row>
-        <col id="0" translatable="yes" comments="Number display mode combo: Hexadecimal, e.g. 4D2₁₆">Hexadecimal</col>
+        <col id="0" translatable="yes" comments="Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;">Hexadecimal</col>
         <col id="1">hexadecimal</col>
       </row>
     </data>
