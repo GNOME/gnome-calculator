@@ -6,7 +6,7 @@ INCLUDES = \
 	$(DISABLE_DEPRECATED) \
 	-DDATA_DIR=\""$(datadir)"\" \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
-	-DLOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DLOCALE_DIR=\""$(localdir)"\" \
 	-DPIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
 	$(GCALCTOOL_CFLAGS) \
 	$(GNOME_UTILS_CFLAGS) \
