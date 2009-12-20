@@ -1843,6 +1843,12 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
         return;
     }
 
+    /* x^0 = 1 */
+    if (n == 0) {
+        mp_set_from_integer(1, z);
+        return;
+    }
+
     /* 0^n = 0 */
     if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
