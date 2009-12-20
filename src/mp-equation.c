@@ -120,8 +120,13 @@ sub_atoi(const char *data)
 int
 super_atoi(const char *data)
 {
-   int i, value = 0;
+   int i, sign = 1, value = 0;
    const char *digits[11] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
+
+   if(strncmp(data, "⁻", strlen("⁻")) == 0) {
+      sign = -1;
+      data += strlen("⁻");
+   }
 
    do {
       for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
@@ -131,7 +136,7 @@ super_atoi(const char *data)
       data += strlen(digits[i]);
    } while(*data != '\0');
 
-   return value;
+   return sign * value;
 }
 
 static int

@@ -615,10 +615,11 @@ void display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
 static void
 make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x, int base_)
 {
-    char fixed[MAX_DIGITS];
+    char fixed[MAX_DIGITS], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
     int eng, exponent = 0;
     GString *string;
+    const char *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
     string = g_string_sized_new(target_len);
 
@@ -661,7 +662,14 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x
 
     mp_cast_to_string(&mantissa, base_, display->accuracy, !display->show_zeroes, fixed, MAX_DIGITS);
     g_string_append(string, fixed);
-    g_string_append_printf(string, "×10^%d", exponent);
+    g_string_append_printf(string, "×10");
+    if (exponent < 0) {
+        exponent = -exponent;
+        g_string_append(string, "⁻");
+    }
+    snprintf(fixed, MAX_DIGITS, "%d", exponent);
+    for (c = fixed; *c; c++)
+        g_string_append(string, super_digits[*c - '0']);
 
     strncpy(target, string->str, target_len);
     g_string_free(string, TRUE);

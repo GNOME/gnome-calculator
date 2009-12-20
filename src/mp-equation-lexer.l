@@ -50,20 +50,21 @@ DECIMAL	      "."|","
 DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}
 HEX           {DEC}|[A-F]
 SUPER_DIGITS  "⁰"|"¹"|"²"|"³"|"⁴"|"⁵"|"⁶"|"⁷"|"⁸"|"⁹"
+SUPER_MINUS   "⁻"
 SUB_DIGITS    "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
 FRACTION      "½"|"⅓"|"⅔"|"¼"|"¾"|"⅕"|"⅖"|"⅗"|"⅘"|"⅙"|"⅚"|"⅛"|"⅜"|"⅝"|"⅞"
-INVERSE       "⁻¹"
 GREEKS        "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
 LETTERS       [a-zA-Z]|{GREEKS}
 
 SUP_NUM  {SUPER_DIGITS}+
+NSUP_NUM {SUPER_MINUS}{SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
 WORD     {LETTERS}+
 DEC_NUM  {DEC}+|{DEC}*{DECIMAL}{DEC}+
 BASE_NUM {HEX}+{SUB_NUM}|{HEX}*{DECIMAL}{HEX}+{SUB_NUM}
 
 NUMBER   {DEC_NUM}|{BASE_NUM}|{FRACTION}|{DEC_NUM}{FRACTION}
-VARIABLE {WORD}|{WORD}{SUB_NUM}|{WORD}{INVERSE}|{GREEKS}
+VARIABLE {WORD}|{WORD}{SUB_NUM}|{WORD}"⁻¹"|{GREEKS}
 
 MOD  [mM][oO][dD]
 AND  "∧"|[aA][nN][dD]
@@ -88,10 +89,10 @@ IN   [iI][nN]
 {XOR}       {return tXOR;}
 {IN}        {return tIN;}
 {NUMBER}    {if (mp_set_from_string(yytext, &yylval->int_t) != 0) REJECT; return tNUMBER;}
-{SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM; }
-{SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM; }
+{SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM;}
+{NSUP_NUM}  {yylval->integer = super_atoi(yytext); return tNSUPNUM;}
+{SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM;}
 {VARIABLE}  {yylval->name = strdup(yytext); return tVARIABLE;}
-{INVERSE}   {return tINVERSE;}
 [ \t\n]
 .           {return *yytext;}
 

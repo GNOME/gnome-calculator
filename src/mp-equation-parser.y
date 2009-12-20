@@ -107,11 +107,11 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 %left tNOT
 %left tROOT tROOT3 tROOT4
 %left <name> tVARIABLE
-%right <integer> tSUBNUM tSUPNUM
+%right <integer> tSUBNUM tSUPNUM tNSUPNUM
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
 %left UNARY_MINUS
-%right '^' tINVERSE '!' '|'
+%right '^' '!' '|'
 %left tIN
 
 %type <int_t> exp variable
@@ -136,7 +136,7 @@ exp:
 | '|' tNUMBER tVARIABLE '|' {get_variable(yyscanner, $3, &$$); mp_multiply(&$2, &$$, &$$); mp_abs(&$$, &$$); free($3);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
-| exp tINVERSE {mp_reciprocal(&$1, &$$);}
+| exp tNSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
 | exp '!' {mp_factorial(&$1, &$$);}
 | variable {mp_set_from_mp(&$1, &$$);}
 | tNUMBER variable %prec MULTIPLICATION {mp_multiply(&$1, &$2, &$$);}

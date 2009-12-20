@@ -375,6 +375,14 @@ do_button(int function, gpointer arg)
     GtkTextIter start, end;
     gint cursor_start, cursor_end;
 
+    /* Disable super/subscript mode when finished entering */
+    if (function == FN_CALCULATE ||
+        function == FN_CLEAR ||
+        (function == FN_TEXT && strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", (char *)arg) == NULL)) {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.subscript_toggle), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), FALSE);
+    }
+
     if(gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end)) {
         cursor_start = gtk_text_iter_get_offset(&start);
         cursor_end = gtk_text_iter_get_offset(&end);
@@ -1176,7 +1184,8 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             do_text("µ");
             return TRUE;
         case GDK_e:
-            do_text("×10^");
+            do_text("×10");
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), TRUE);
             return TRUE;
         case GDK_f:
             do_button(FN_FACTORIZE, NULL);
@@ -1196,6 +1205,9 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.superscript_toggle))) {
         switch(event->keyval)
         {
+        case GDK_minus:
+            do_text("⁻");
+            return TRUE;
         case GDK_0:
             do_text("⁰");
             return TRUE;
