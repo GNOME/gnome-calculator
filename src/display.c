@@ -1214,6 +1214,8 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             break;
 
         case FN_TEXT:
+            if(display_is_result(display) && g_unichar_isdigit(g_utf8_get_char((char*)arg)))
+                display_clear(display);
             display_insert(display, cursor_start, cursor_end, (const char *)arg);
             break;
     }
