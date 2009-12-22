@@ -374,6 +374,7 @@ do_button(int function, gpointer arg)
 {
     GtkTextIter start, end;
     gint cursor_start, cursor_end;
+   printf("%d %d %p\n", function, FN_TEXT, arg);
 
     /* Disable super/subscript mode when finished entering */
     if (function == FN_CALCULATE ||
@@ -1104,10 +1105,17 @@ popup_cb(GtkWidget *widget, GdkEventButton *event)
     if (event == NULL) {
         GtkAllocation allocation;
 
-        gdk_window_get_origin(gtk_widget_get_window(widget), &loc.x, &loc.y);
-        gtk_widget_get_allocation(widget, &allocation);
-        loc.x += allocation.x;
-        loc.y += allocation.y;
+        if (X.mode == PROGRAMMING) {
+            gdk_window_get_origin(gtk_widget_get_window(widget), &loc.x, &loc.y);
+            gtk_widget_get_allocation(widget, &allocation);
+            loc.x += allocation.x;
+            loc.y += allocation.y;
+        } else {
+            gdk_window_get_origin(gtk_widget_get_window(X.display_item), &loc.x, &loc.y);
+            gtk_widget_get_allocation(X.display_item, &allocation);
+            loc.x += allocation.x + allocation.width;
+            loc.y += allocation.y + allocation.height;
+	}
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL, menu_pos_func,
                        (gpointer) &loc, 0, gtk_get_current_event_time());
     } else if (event->button == 1) {
@@ -1327,10 +1335,10 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     switch(*event->string)
     {
     case '<':
-        button_cb(GET_WIDGET("calc_shift_left_button"), NULL);
+        popup_cb(GET_WIDGET("calc_shift_left_button"), NULL);
         return TRUE;
     case '>':
-        button_cb(GET_WIDGET("calc_shift_right_button"), NULL);
+        popup_cb(GET_WIDGET("calc_shift_right_button"), NULL);
         return TRUE;
     case '\n':
         do_button(FN_CALCULATE, NULL);
