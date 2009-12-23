@@ -374,7 +374,6 @@ do_button(int function, gpointer arg)
 {
     GtkTextIter start, end;
     gint cursor_start, cursor_end;
-   printf("%d %d %p\n", function, FN_TEXT, arg);
 
     /* Disable super/subscript mode when finished entering */
     if (function == FN_CALCULATE ||
