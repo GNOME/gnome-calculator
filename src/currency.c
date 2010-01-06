@@ -63,7 +63,7 @@ currency_rates_needs_update()
     }
     g_free(filename);
 
-    if (difftime(buf.st_mtime, time(NULL)) > (60 * 60 * 24 * 7)) {
+    if (difftime(time(NULL), buf.st_mtime) > (60 * 60 * 24 * 7)) {
         return 1;
     }
 
