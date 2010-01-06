@@ -680,7 +680,7 @@ finc_activate_cb(GtkWidget *widget) {
     if (finc_dialog_fields[dialog][field+1] == NULL) {
         GtkWidget *dialog_widget;
         dialog_widget = gtk_widget_get_toplevel(widget);
-        if (GTK_WIDGET_TOPLEVEL (dialog_widget)) {
+        if (gtk_widget_is_toplevel (dialog_widget)) {
             gtk_dialog_response(GTK_DIALOG(dialog_widget),
                                 GTK_RESPONSE_OK);
             return;
