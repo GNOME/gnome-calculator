@@ -24,6 +24,7 @@
 #include <glib-object.h>
 
 #include "calctool.h"
+#include "currency.h"
 #include "unittest.h"
 #include "get.h"
 #include "display.h"
