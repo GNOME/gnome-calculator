@@ -547,7 +547,6 @@ about_cb(GtkWidget *widget)
 {
     const gchar *authors[] = {
         "Rich Burridge <rich.burridge@sun.com>",
-        "Sami Pietila <sampie@ariana-dsl.utu.fi>",
         "Robert Ancell <robert.ancell@gmail.com>",
         "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
         NULL
