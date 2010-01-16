@@ -80,14 +80,14 @@ libparser.a: \
 	mp-equation-lexer.o\
 	mp-equation-parser.o\
 	mp-equation.o
-	$(AR) r libparser.a $^
-	$(RANLIB) libparser.a
+	$(AM_V_at)$(AR) r libparser.a $^
+	$(AM_V_GEN)$(RANLIB) libparser.a
 
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
-	$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
+	$(AM_V_GEN)$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
 
 mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
-	$(LEX) $(srcdir)/mp-equation-lexer.l
+	$(AM_V_GEN)$(LEX) $(srcdir)/mp-equation-lexer.l
 
 mp-equation-parser.o: mp-equation-lexer.h
 mp-equation-lexer.o: mp-equation-parser.h
