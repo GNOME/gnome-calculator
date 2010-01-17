@@ -40,34 +40,6 @@ get_state(GCDisplay *display)
 }
 
 
-static char *
-str_replace(char *str, char *from, char *to)
-{
-    char output[MAX_DISPLAY];
-    int offset = 0;
-    char *c;
-    int flen = strlen(from);
-    int tlen = strlen(to);
-
-    for (c = str; *c && offset < MAX_DISPLAY - 1; c++, offset++) {
-        if (strncasecmp(from, c, flen) == 0) {
-            SNPRINTF(output + offset, MAX_DISPLAY - offset, "%s", to);
-            c += flen - 1;
-            offset += tlen - 1;
-        } else {
-            output[offset] = *c;
-        }
-    }
-
-    if (offset >= MAX_DISPLAY)
-        offset = MAX_DISPLAY - 1;
-    output[offset] = '\0';
-
-    free(str);
-
-    return strdup(output);
-}
-
 /* Add in the thousand separators characters if required and if we are
  * currently in the decimal numeric base, use the "right" radix character.
  */
@@ -140,43 +112,60 @@ localize_expression(GCDisplay *display, char *dest, const char *src, int dest_le
 void
 display_clear(GCDisplay *display)
 {
+    GCDisplayState *state;
+
+    state = get_state(display);
     display_set_string(display, "", -1);
+    state->ans_start = -1;
+    state->ans_end = -1;
 }
 
 
-const char *
-display_get_text(GCDisplay *display)
+static const char *
+get_text(GCDisplay *display)
 {
     return get_state(display)->expression;
 }
 
 
-gboolean display_get_integer(GCDisplay *display, gint64 *value)
+static char *
+get_expression(GCDisplay *display)
 {
-    const char *text;
-    char buf[MAX_DISPLAY];
+    GCDisplayState *state;
+
+    state = get_state(display);
+    if(state->ans_start >= 0)
+        return g_strdup_printf("%.*sans%s", state->ans_start, state->expression, g_utf8_offset_to_pointer(state->expression, state->ans_end));
+    else
+        return g_strdup(state->expression);
+}
+
+
+gboolean
+display_get_integer(GCDisplay *display, gint64 *value)
+{
     gchar *endptr;
 
-    text = display_get_text(display);
     if (display_is_result(display)) {
-        display_make_number(display, buf, MAX_DISPLAY, display_get_answer(display));
-        text = buf;
+        *value = mp_cast_to_int(display_get_answer(display));
+        return TRUE;
     }
 
-    *value = g_ascii_strtoll(text, &endptr, 10);
+    *value = g_ascii_strtoll(get_text(display), &endptr, 10);
     if(*endptr != '\0' || ((*value == G_MAXINT64 || *value == G_MININT64) && errno == ERANGE))
         return FALSE;
     return TRUE;
 }
 
 
-gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
+gboolean
+display_get_unsigned_integer(GCDisplay *display, guint64 *value)
 {
     const char *text;
     char buf[MAX_DISPLAY];
     gchar *endptr;
 
-    text = display_get_text(display);
+    text = get_text(display);
     if (display_is_result(display)) {
         display_make_number(display, buf, MAX_DISPLAY, display_get_answer(display));
         text = buf;
@@ -193,7 +182,8 @@ gboolean display_get_unsigned_integer(GCDisplay *display, guint64 *value)
 }
 
 
-MPNumber *display_get_answer(GCDisplay *display)
+MPNumber *
+display_get_answer(GCDisplay *display)
 {
     return &get_state(display)->ans;
 }
@@ -213,6 +203,7 @@ display_set_number(GCDisplay *display, const MPNumber *x)
     char text[MAX_DISPLAY];
     int enabled;
     guint64 bit_value;
+
     display_make_number(display, text, MAX_DISPLAY, x);
     display_set_string(display, text, -1);
 
@@ -224,7 +215,14 @@ display_set_number(GCDisplay *display, const MPNumber *x)
 void
 display_set_answer(GCDisplay *display)
 {
-    display_set_string(display, "ans", -1);
+    GCDisplayState *state;
+    char text[MAX_DISPLAY];
+
+    state = get_state(display);
+    display_make_number(display, text, MAX_DISPLAY, &state->ans);
+    display_set_string(display, text, -1);
+    state->ans_start = 0;
+    state->ans_end = g_utf8_strlen(text, -1);
 }
 
 
@@ -323,7 +321,8 @@ update_undo_redo_button_sensitivity(GCDisplay *display)
 }
 
 
-void display_clear_stack(GCDisplay *display)
+void
+display_clear_stack(GCDisplay *display)
 {
     int i = display->h.begin;
     while (i != display->h.end) {
@@ -338,7 +337,8 @@ void display_clear_stack(GCDisplay *display)
 }
 
 
-void display_push(GCDisplay *display)
+void
+display_push(GCDisplay *display)
 {
     int c;
 
@@ -348,7 +348,9 @@ void display_push(GCDisplay *display)
         do {
             i = ((i + 1) % UNDO_HISTORY_LENGTH);
             free(display->h.e[i].expression);
-            display->h.e[i].expression = strdup("ans");
+            display->h.e[i].expression = strdup("ans"); // FIXME: Use actual number
+            display->h.e[i].ans_start = -1;
+            display->h.e[i].ans_end = -1;
         } while (i != display->h.end);
     }
 
@@ -367,7 +369,8 @@ void display_push(GCDisplay *display)
 }
 
 
-void display_pop(GCDisplay *display)
+void
+display_pop(GCDisplay *display)
 {
     if (display->h.current != display->h.begin) {
         display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
@@ -406,10 +409,19 @@ display_is_undo_step(GCDisplay *display)
 void
 display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 {
+    GCDisplayState *state;   
     char buf[MAX_DISPLAY];
 
+    state = get_state(display);
+
+    /* If inside ans variable then modify number */
+    if (state->ans_start >= 0 && cursor_start >= state->ans_start && cursor_start <= state->ans_end) {
+        state->ans_start = -1;
+        state->ans_end = -1;
+    }
+
     if (cursor_start < 0) {
-        SNPRINTF(buf, MAX_DISPLAY, "%s%s", display_get_text(display), text);
+        SNPRINTF(buf, MAX_DISPLAY, "%s%s", get_text(display), text);
         display_set_string(display, buf, -1);
     } else {
         GString *new_text;
@@ -468,8 +480,6 @@ display_insert_number(GCDisplay *display, int cursor_start, int cursor_end, cons
 void
 display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
 {
-    char buf[MAX_DISPLAY] = "";
-    GCDisplayState *e = get_state(display);
     int cursor;
 
     /* Can't delete empty display */
@@ -481,14 +491,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor_start < 0) {
         int len;
-
         len = g_utf8_strlen(ui_get_display(), -1);
-
-        if (display_is_result(display)) {
-            display_make_number(display, buf, MAX_DISPLAY, &e->ans);
-            e->expression = str_replace(e->expression, "ans", buf);
-        }
-
         display_insert(display, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
         display_insert(display, cursor_start, cursor_end, "");
@@ -509,27 +512,20 @@ display_delete(GCDisplay *display, int cursor_start, int cursor_end)
 }
 
 
-void
-display_surround(GCDisplay *display, const char *prefix, const char *suffix)
-{
-    char buffer[MAX_DISPLAY];
-
-    SNPRINTF(buffer, MAX_DISPLAY, "%s%s%s", prefix, display_get_text(display), suffix);
-    display_set_string(display, buffer, -1);
-}
-
-
 gboolean
 display_is_empty(GCDisplay *display)
 {
-    return strcmp(display_get_text(display), "") == 0;
+    return strcmp(get_text(display), "") == 0;
 }
 
 
 gboolean
 display_is_result(GCDisplay *display)
 {
-    if (strcmp(display_get_text(display), "ans") == 0)
+    GCDisplayState *state;
+
+    state = get_state(display);
+    if (state->ans_start == 0 && state->ans_end == g_utf8_strlen(state->expression, -1))
         return TRUE;
 
     return FALSE;
@@ -546,7 +542,7 @@ display_is_usable_number(GCDisplay *display, MPNumber *z)
         mp_set_from_mp(display_get_answer(display), z);
         return TRUE;
     } else {
-        return mp_set_from_string(display_get_text(display), z) == 0;
+        return mp_set_from_string(get_text(display), z) == 0;
     }
 }
 
@@ -565,12 +561,16 @@ display_init(GCDisplay *display)
     display->word_size = 32;
     display->angle_unit = MP_DEGREES;
 
-    for (i = 0; i < UNDO_HISTORY_LENGTH; i++)
+    for (i = 0; i < UNDO_HISTORY_LENGTH; i++) {
         display->h.e[i].expression = strdup("");
+        display->h.e[i].ans_start = -1;
+        display->h.e[i].ans_end = -1;
+    }
 }
 
 
-void display_set_accuracy(GCDisplay *display, int accuracy)
+void
+display_set_accuracy(GCDisplay *display, int accuracy)
 {
     display->accuracy = accuracy;
     get_state(display)->cursor = -1;
@@ -578,7 +578,8 @@ void display_set_accuracy(GCDisplay *display, int accuracy)
 }
 
 
-void display_set_show_thousands_separator(GCDisplay *display, gboolean visible)
+void
+display_set_show_thousands_separator(GCDisplay *display, gboolean visible)
 {
     display->show_tsep = visible;
     display_set_cursor(display, -1);
@@ -586,7 +587,8 @@ void display_set_show_thousands_separator(GCDisplay *display, gboolean visible)
 }
 
 
-void display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible)
+void
+display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible)
 {
     display->show_zeroes = visible;
     get_state(display)->cursor = -1;
@@ -594,22 +596,28 @@ void display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible)
 }
 
 
-void display_set_format(GCDisplay *display, DisplayFormat format)
+void
+display_set_format(GCDisplay *display, DisplayFormat format)
 {
     display->format = format;
     get_state(display)->cursor = -1;
     display_refresh(display);
 }
 
-void display_set_word_size(GCDisplay *display, int word_size)
+
+void
+display_set_word_size(GCDisplay *display, int word_size)
 {
     display->word_size = word_size;
 }
 
-void display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
+
+void
+display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
 {
     display->angle_unit = angle_unit;
 }
+
 
 /* Convert engineering or scientific number in the given base. */
 static void
@@ -1165,12 +1173,15 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
                 MPNumber z;
                 int result;
                 const char *message = NULL;
-                char *error_token;
+                char *text, *error_token;
 
+                text = get_expression (display);
                 result = parse(display,
-                               display_get_text(display),
+                               text,
                                &z,
                                &error_token);
+                g_free(text);
+
                 switch (result) {
                     case PARSER_ERR_NONE:
                         mp_set_from_mp(&z, ans);
@@ -1214,8 +1225,10 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
             break;
 
         case FN_TEXT:
+            /* Start new equation when entering digits after existing result */
             if(display_is_result(display) && g_unichar_isdigit(g_utf8_get_char((char*)arg)))
                 display_clear(display);
+
             display_insert(display, cursor_start, cursor_end, (const char *)arg);
             break;
     }

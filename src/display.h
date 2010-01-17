@@ -29,8 +29,9 @@
 
 /* Expression mode state */
 typedef struct {
-    MPNumber ans;          /* Previously calculated answer */
-    char *expression;      /* Expression entered by user */
+    MPNumber ans;           /* Previously calculated answer */
+    char *expression;       /* Expression entered by user */
+    int ans_start, ans_end; /* Start and end characters for ans variable in expression */
     int cursor;
 } GCDisplayState;
 
@@ -105,13 +106,10 @@ void display_insert(GCDisplay *display, int, int, const char *);
 void display_insert_number(GCDisplay *display, int, int, const MPNumber *);
 void display_backspace(GCDisplay *, int, int);
 void display_delete(GCDisplay *, int, int);
-void display_surround(GCDisplay *display, const char *, const char *);
 
 gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);
 gboolean display_is_usable_number(GCDisplay *display, MPNumber *);
-
-const char *display_get_text(GCDisplay *display);
 
 void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x);
 

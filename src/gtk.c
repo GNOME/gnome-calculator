@@ -512,10 +512,6 @@ ui_set_display(char *str, int cursor)
     GtkTextIter iter;
     GtkAdjustment *adj;
 
-    // ???
-    if (str[0] == '\0')
-        str = " ";
-
     gtk_text_buffer_set_text(X.display_buffer, str, -1);
 
     if (cursor < 0)
