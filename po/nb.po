@@ -1,15 +1,15 @@
 # Norwegian (bokmål) translation of gcalctool.
 # Copyright © 2003 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2003-2009.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2010.
 # Sigurd Gartman <sigurd-translate@brogar.org>, 2003, 2005.
 # Eskild Hustvedt <i18n@zerodogg.org>, 2007
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 4.5.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 13:27+0100\n"
-"PO-Revision-Date: 2010-01-07 13:44+0100\n"
+"Project-Id-Version: gcalctool 5.29.x\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2010-01-31 20:13+0100\n"
+"PO-Revision-Date: 2010-01-31 20:19+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -459,12 +459,12 @@ msgstr ""
 #. Accessible name for the factorize button
 #: ../data/gcalctool.ui.h:90
 msgid "Factorize"
-msgstr ""
+msgstr "Faktoriser"
 
 #. Tooltip for the factorize button
 #: ../data/gcalctool.ui.h:92
 msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr ""
+msgstr "Faktoriser til primtall (Ctrl+F)"
 
 #. Tooltip for the fractional portion button
 #: ../data/gcalctool.ui.h:94
@@ -538,9 +538,8 @@ msgstr "Naturlig logaritme"
 
 #. Tooltip for the numeric point button
 #: ../data/gcalctool.ui.h:122
-#, fuzzy
 msgid "Numeric point [. or ,]"
-msgstr "Komma"
+msgstr "Numerisk punkt [. eller ,]"
 
 #. Number display mode combo: Octal, e.g. 2322&#x2088;
 #: ../data/gcalctool.ui.h:124
@@ -550,7 +549,7 @@ msgstr "Oktal"
 #. Tooltip for the ones' complement button
 #: ../data/gcalctool.ui.h:126
 msgid "Ones' complement"
-msgstr ""
+msgstr "En-komplement"
 
 #. Tooltip on the percentage button
 #: ../data/gcalctool.ui.h:129
@@ -716,14 +715,13 @@ msgstr "Term"
 
 #. Tooltip for the truncate button
 #: ../data/gcalctool.ui.h:192
-#, fuzzy
 msgid "Truncate value"
-msgstr "Fremtidig verdi"
+msgstr "Avkort verdi"
 
 #. Tooltip for the two's complement button
 #: ../data/gcalctool.ui.h:194
 msgid "Two's complement"
-msgstr ""
+msgstr "To-komplement"
 
 #. Preferences dialog: label for word size combo box
 #: ../data/gcalctool.ui.h:196
@@ -783,7 +781,7 @@ msgstr "_Avansert"
 #. Preferences dialog: Label for angle unit combo box
 #: ../data/gcalctool.ui.h:218
 msgid "_Angle units:"
-msgstr ""
+msgstr "_Enhet for vinkel:"
 
 #. View|Basic menu item
 #: ../data/gcalctool.ui.h:220
@@ -835,9 +833,8 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Utfør aritmetiske, vitenskapelige eller finansielle utregninger"
 
 #: ../data/gcalctool.schemas.in.h:1
-#, fuzzy
 msgid "Accuracy value"
-msgstr "Fremtidig verdi"
+msgstr "Verdi for nøyaktighet"
 
 #: ../data/gcalctool.schemas.in.h:2
 msgid "Display Mode"
@@ -947,7 +944,7 @@ msgstr ""
 
 #. Description on gcalctool command-line help options displayed on command-line
 #: ../src/calctool.c:87
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Help Options:\n"
 "  -v, --version                   Show release version\n"
@@ -956,7 +953,10 @@ msgid ""
 "  --help-gtk                      Show GTK+ options"
 msgstr ""
 "Alternativer for hjelp:\n"
-"  -v, --version"
+"  -v, --version                   Vis versjon\n"
+"  -h, -?, --help                  Vis alternativer for hjelp\n"
+"  --help-all                      Vis alle alternativer for hjelp\n"
+"  --help-gtk                      Vis alternativer for GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
 #: ../src/calctool.c:98
@@ -997,7 +997,7 @@ msgstr "Ukjent argument «%s»"
 #. Translators: Digits localized for the given language
 #: ../src/calctool.c:175
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr ""
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,Æ,Ø,Å"
 
 #: ../src/currency.h:18
 msgid "Australian dollar"
@@ -1139,54 +1139,54 @@ msgstr "US dollar"
 msgid "South African rand"
 msgstr "Sør-afrikanske rand"
 
-#: ../src/display.c:376
+#: ../src/display.c:379
 msgid "No undo history"
 msgstr "Ingen angrehistorikk"
 
-#: ../src/display.c:391
+#: ../src/display.c:394
 msgid "No redo steps"
 msgstr "Ingen steg å gjenta"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1021
+#: ../src/display.c:1029
 msgid "No sane value to do bitwise shift"
 msgstr "Ingen verdi å bruke til bitvis skift"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1037
+#: ../src/display.c:1045
 msgid "Need an integer to factorize"
-msgstr ""
+msgstr "Trenger et heltall for å faktorisere"
 
-#: ../src/display.c:1063
+#: ../src/display.c:1071
 msgid "No sane value to store"
 msgstr "Ingen fornuftige verdier å lagre"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1182
+#: ../src/display.c:1193
 msgid "Overflow. Try a bigger word size"
-msgstr ""
+msgstr "Overflyt. Prøv høyere ordstørrelse"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1187
+#: ../src/display.c:1198
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ukjent variabel «%s»"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1193
+#: ../src/display.c:1204
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funksjon «%s» er ikke definert"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1199
+#: ../src/display.c:1210
 #, c-format
 msgid "Unknown conversion"
 msgstr "Ukjent konvertering"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1208
+#: ../src/display.c:1219
 msgid "Malformed expression"
 msgstr "Feilutformet uttrykk"
 
@@ -1228,7 +1228,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:561
+#: ../src/gtk.c:556
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
@@ -1236,7 +1236,7 @@ msgstr ""
 "Eskild Hustvedt <i18n@zerodogg.org>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:564
+#: ../src/gtk.c:559
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1254,38 +1254,38 @@ msgid ""
 msgstr ""
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:580
+#: ../src/gtk.c:575
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:583
+#: ../src/gtk.c:578
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Utviklerene av Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:586
+#: ../src/gtk.c:581
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator med finans- og vitenskapelig modus."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:640
+#: ../src/gtk.c:635
 msgid "Unable to open help file"
 msgstr "Kan ikke åpne hjelpfil"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1010
+#: ../src/gtk.c:1005
 msgid "You don't have any recent currency rates. Should I download some now?"
 msgstr ""
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1020
+#: ../src/gtk.c:1015
 msgid ""
 "I could not download any currency rates. You may receive inaccurate results, "
 "or you may not receive any results at all."
 msgstr ""
 
-#: ../src/gtk.c:1440
+#: ../src/gtk.c:1435
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -1297,12 +1297,12 @@ msgstr "Deling med null er ikke definert"
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../src/mp.c:1158 ../src/mp.c:1195
 msgid "Logarithm of zero is undefined"
-msgstr ""
+msgstr "Logaritmen for null er ikke definert"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
 #: ../src/mp.c:1167
 msgid "Logarithm of negative values is undefined"
-msgstr ""
+msgstr "Logaritmen for negative verdier er ikke definert"
 
 #: ../src/mp.c:1541
 msgid "The power of negative numbers only defined for integer exponents"
@@ -1315,7 +1315,7 @@ msgstr ""
 
 #: ../src/mp.c:1573
 msgid "Reciprocal of zero is not defined"
-msgstr ""
+msgstr "Resiprok for null er ikke definert"
 
 #: ../src/mp.c:1658
 msgid "Root must non-zero"
@@ -1323,7 +1323,7 @@ msgstr "Roten må være ulik null"
 
 #: ../src/mp.c:1676
 msgid "Negative root of zero is undefined"
-msgstr ""
+msgstr "Negativ rot for null er ikke definert"
 
 #: ../src/mp.c:1682
 msgid "nth root of negative number not defined for even n"
@@ -1331,7 +1331,7 @@ msgstr ""
 
 #: ../src/mp.c:1752
 msgid "Square root is not defined for negative values"
-msgstr ""
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
 #: ../src/mp.c:1781
@@ -1395,4 +1395,3 @@ msgstr ""
 #: ../src/mp-trigonometric.c:582
 msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
 msgstr ""
-
