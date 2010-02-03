@@ -1026,7 +1026,7 @@ do_shift(GCDisplay *display, int count)
     if (!display_is_usable_number(display, &z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
-        ui_set_statusbar(_("No sane value to do bitwise shift"));
+        ui_set_statusbar(_("No sane value to bitwise shift"));
     }
     else {
         mp_shift(&z, count, display_get_answer(display));

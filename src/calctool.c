@@ -77,7 +77,7 @@ usage(int show_gtk)
     fprintf(stderr,
             /* Description on how to use gcalctool displayed on command-line */
             _("Usage:\n"
-              "  %s - Perform mathematical calculations"), v->progname);
+              "  %s — Perform mathematical calculations"), v->progname);
 
     fprintf(stderr,
             "\n\n");
@@ -109,7 +109,7 @@ usage(int show_gtk)
     fprintf(stderr,
             /* Description on gcalctool application options displayed on command-line */
             _("Application Options:\n"
-              "  -u, --unittest                  Perform unittests\n"
+              "  -u, --unittest                  Perform unit tests\n"
               "  -s, --solve <equation>          Solve the given equation"));
     fprintf(stderr,
             "\n\n");

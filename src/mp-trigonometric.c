@@ -275,7 +275,7 @@ mp_tan(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     mp_cos(x, unit, &cos_x);
     if (mp_is_zero(&cos_x)) {
         /* Translators: Error displayed when tangent value is undefined */
-        mperr(_("Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"));
+        mperr(_("Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -320,7 +320,7 @@ mp_asin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     }
 
     /* Translators: Error displayed when inverse sine value is undefined */
-    mperr(_("Inverse sine not defined for values outside [-1, 1]"));
+    mperr(_("Inverse sine is undefined for values outside [-1, 1]"));
     mp_set_from_integer(0, z);
 }
 
@@ -337,7 +337,7 @@ mp_acos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 
     if (mp_is_greater_than(x, &t1) || mp_is_less_than(x, &MPn1)) {
         /* Translators: Error displayed when inverse cosine value is undefined */
-        mperr(_("Inverse cosine not defined for values outside [-1, 1]"));
+        mperr(_("Inverse cosine is undefined for values outside [-1, 1]"));
         mp_set_from_integer(0, z);
     } else if (mp_is_zero(x)) {
         mp_divide_integer(&pi, 2, z);
@@ -555,7 +555,7 @@ mp_acosh(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(1, &t);
     if (mp_is_less_than(x, &t)) {
         /* Translators: Error displayed when inverse hyperbolic cosine value is undefined */
-        mperr(_("Inverse hyperbolic cosine not defined for values less than or equal to one"));
+        mperr(_("Inverse hyperbolic cosine is undefined for values less than or equal to one"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -579,7 +579,7 @@ mp_atanh(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(-1, &minus_one);
     if (mp_is_greater_equal(x, &one) || mp_is_less_equal(x, &minus_one)) {
         /* Translators: Error displayed when inverse hyperbolic tangent value is undefined */
-        mperr(_("Inverse hyperbolic tangent not defined for values outside [-1, 1]"));
+        mperr(_("Inverse hyperbolic tangent is undefined for values outside [-1, 1]"));
         mp_set_from_integer(0, z);
         return;
     }

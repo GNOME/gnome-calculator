@@ -100,13 +100,13 @@ static char *titles[] = {
     /* Translators: The window title when in basic mode */
     N_("Calculator"),
     /* Translators: The window title when in advanced mode */
-    N_("Calculator - Advanced"),
+    N_("Calculator — Advanced"),
     /* Translators: The window title when in financial mode */
-    N_("Calculator - Financial"),
+    N_("Calculator — Financial"),
     /* Translators: The window title when in scientific mode */
-    N_("Calculator - Scientific"),
+    N_("Calculator — Scientific"),
     /* Translators: The window title when in programming mode */
-    N_("Calculator - Programming")
+    N_("Calculator — Programming")
 };
 
 /* The names of each field in the dialogs for the financial functions */
@@ -238,7 +238,7 @@ static void load_ui(GtkBuilder *ui, const gchar *filename)
                                     N_("Error loading user interface"));
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
                                              /* Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
-                                             N_("A required file is missing or damaged, please check your installation.\n\n%s"), error->message);
+                                             N_("A required file is missing or damaged. Please check your installation.\n\n%s"), error->message);
     gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT, NULL);
 
     gtk_dialog_run(GTK_DIALOG(dialog));
@@ -575,7 +575,7 @@ about_cb(GtkWidget *widget)
                           "name", _("Gcalctool"),
                           "version", VERSION,
                           /* Translators: Copyright notice in the about dialog */
-                          "copyright", _("\xc2\xa9 1986-2008 The Gcalctool authors"),
+                          "copyright", _("\xc2\xa9 1986–2008 The Gcalctool authors"),
                           "license", license,
                           /* Translators: Short description in the about dialog */
                           "comments", _("Calculator with financial and scientific modes."),
@@ -1001,8 +1001,8 @@ setup_currency_rates ()
         GtkWidget *dialog = gtk_message_dialog_new(NULL, 0,
                                         GTK_MESSAGE_INFO,
                                         GTK_BUTTONS_YES_NO,
-                                        /* Translators: Title of the error dialog when unable to load the UI files */
-                                        N_("You don't have any recent currency rates. Should I download some now?"));
+                                        /* Translators: Title of the error dialog when prompting to download currency rates */
+                                        N_("You don't have any recent currency rates. Should some be downloaded now?"));
         int response = gtk_dialog_run(GTK_DIALOG(dialog));
         gtk_widget_destroy(dialog);
 
@@ -1011,8 +1011,8 @@ setup_currency_rates ()
                 dialog = gtk_message_dialog_new(NULL, 0,
                                                 GTK_MESSAGE_ERROR,
                                                 GTK_BUTTONS_OK,
-                                                /* Translators: Title of the error dialog when unable to load the UI files */
-                                                N_("I could not download any currency rates. You may receive inaccurate results, or you may not receive any results at all."));
+                                                /* Translators: Title of the error dialog when unable to download currency rates */
+                                                N_("Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."));
             }
         }
     }

@@ -526,7 +526,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     /* x/0 */
     if (mp_is_zero(y)) {
         /* Translators: Error displayed attempted to divide by zero */
-        mperr(_("Division by zero is not defined"));
+        mperr(_("Division by zero is undefined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -559,7 +559,7 @@ mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
     /* x/0 */
     if (y == 0) {
         /* Translators: Error displayed attempted to divide by zero */
-        mperr(_("Division by zero is not defined"));
+        mperr(_("Division by zero is undefined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1473,7 +1473,7 @@ void
 mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z)
 {
     if (denominator == 0) {
-        mperr(_("Division by zero is not defined"));
+        mperr(_("Division by zero is undefined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1538,14 +1538,14 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     /* (-x)^y imaginary */
     if (x->sign < 0) {
-        mperr(_("The power of negative numbers only defined for integer exponents"));
+        mperr(_("The power of negative numbers is only defined for integer exponents"));
         mp_set_from_integer(0, z);
         return;
     }
 
     /* 0^-y illegal */
     if (mp_is_zero(x) && y->sign < 0) {
-        mperr(_("The power of zero is not defined for a negative exponent"));
+        mperr(_("The power of zero is undefined for a negative exponent"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1570,7 +1570,7 @@ mp_reciprocal_real(const MPNumber *x, MPNumber *z)
 
     /* 1/0 invalid */
     if (mp_is_zero(x)) {
-        mperr(_("Reciprocal of zero is not defined"));
+        mperr(_("Reciprocal of zero is undefined"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1655,7 +1655,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     /* x^(1/0) invalid */
     if (n == 0) {
-        mperr(_("Root must non-zero"));
+        mperr(_("Root must be non-zero"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1679,7 +1679,7 @@ mp_root(const MPNumber *x, int n, MPNumber *z)
 
     // FIXME: Imaginary root
     if (x->sign < 0 && np % 2 == 0) {
-        mperr(_("nth root of negative number not defined for even n"));
+        mperr(_("nth root of negative number is undefined for even n"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1749,7 +1749,7 @@ void
 mp_sqrt(const MPNumber *x, MPNumber *z)
 {
     if (x->sign < 0) {
-        mperr(_("Square root is not defined for negative values"));
+        mperr(_("Square root is undefined for negative values"));
         mp_set_from_integer(0, z);
     }
     else if (mp_is_zero(x))
@@ -1778,7 +1778,7 @@ mp_factorial(const MPNumber *x, MPNumber *z)
     }
     if (!mp_is_natural(x)) {
         /* Translators: Error displayed when attempted take the factorial of a fractional number */
-        mperr(_("Factorial only defined for natural numbers"));
+        mperr(_("Factorial is only defined for natural numbers"));
         mp_set_from_integer(0, z);
         return;
     }
@@ -1798,7 +1798,7 @@ mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
     if (!mp_is_integer(x) || !mp_is_integer(y)) {
         /* Translators: Error displayed when attemping to do a modulus division on non-integer numbers */
-        mperr(_("Modulus division only defined for integers"));
+        mperr(_("Modulus division is only defined for integers"));
         mp_set_from_integer(0, z);
     }
 
@@ -1838,7 +1838,7 @@ mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
     /* 0^-n invalid */
     if (mp_is_zero(x) && n < 0) {
         /* Translators: Error displayed when attempted to raise 0 to a negative exponent */
-        mperr(_("The power of zero is not defined for a negative exponent"));
+        mperr(_("The power of zero is undefined for a negative exponent"));
         mp_set_from_integer(0, z);
         return;
     }

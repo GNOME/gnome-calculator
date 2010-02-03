@@ -100,7 +100,7 @@ mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if (!mp_is_natural(x) || !mp_is_natural(y))
     {
         /* Translators: Error displayed when boolean AND attempted on non-integer values */
-        mperr(_("Boolean AND only defined for natural numbers"));
+        mperr(_("Boolean AND is only defined for natural numbers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_and, z, 0);
@@ -113,7 +113,7 @@ mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if (!mp_is_natural(x) || !mp_is_natural(y))
     {
         /* Translators: Error displayed when boolean OR attempted on non-integer values */
-        mperr(_("Boolean OR only defined for natural numbers"));
+        mperr(_("Boolean OR is only defined for natural numbers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_or, z, 0);
@@ -126,7 +126,7 @@ mp_xor(const MPNumber *x, const MPNumber *y, MPNumber *z)
     if (!mp_is_natural(x) || !mp_is_natural(y))
     {
         /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-        mperr(_("Boolean XOR only defined for natural numbers"));
+        mperr(_("Boolean XOR is only defined for natural numbers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_xor, z, 0);
@@ -141,7 +141,7 @@ mp_not(const MPNumber *x, int wordlen, MPNumber *z)
     if (!mp_is_natural(x))
     {
         /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-        mperr(_("Boolean NOT only defined for natural numbers"));
+        mperr(_("Boolean NOT is only defined for natural numbers"));
     }
 
     mp_set_from_integer(0, &temp);
@@ -171,7 +171,7 @@ mp_shift(const MPNumber *x, int count, MPNumber *z)
 
     if (!mp_is_integer(x)) {
         /* Translators: Error displayed when bit shift attempted on non-integer values */
-        mperr(_("Shift only possible on integer values"));
+        mperr(_("Shift is only possible on integer values"));
         return;
     }
 
