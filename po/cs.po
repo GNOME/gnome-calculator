@@ -7,14 +7,15 @@
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2009.
-# Marek Černocký <marek@manet.cz>, 2009.
+# Marek Černocký <marek@manet.cz>, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool gnome-2-28\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 20:39+0100\n"
-"PO-Revision-Date: 2009-11-16 10:38+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gcalctool&component=general\n"
+"POT-Creation-Date: 2010-02-03 23:21+0000\n"
+"PO-Revision-Date: 2010-02-05 14:32+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,11 +45,11 @@ msgstr ""
 "Spočítá výši pravidelné splátky půjčky, kde jsou platby prováděny na konci "
 "každého platebního období. "
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -56,7 +57,7 @@ msgstr ""
 "Vypočítá hodnotu degresivního odpisu pro zadané období s použitím metody SYD "
 "(Sum of The Years' Digits). Jedná se o degresivní metodu odpisů, takže z "
 "počátku je hodnota odpisů vyšší a časem klesá.  Životnost je počet období, "
-"typicky v letech, po které je majetek odepisován. "
+"typicky v letech, po které je majetek odepisován."
 
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:10
@@ -213,12 +214,12 @@ msgstr "Současná _hodnota:"
 msgid "Straight-Line Depreciation"
 msgstr "Lineární odpisy"
 
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
-msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Hodnota degresivního odpisu pro období"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../data/financial.ui.h:54
 msgid "_Cost:"
 msgstr "_Náklady:"
@@ -228,7 +229,7 @@ msgstr "_Náklady:"
 msgid "_Future Value:"
 msgstr "_Budoucí hodnota:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
 #: ../data/financial.ui.h:58
 msgid "_Life:"
 msgstr "Ži_votnost:"
@@ -240,10 +241,10 @@ msgstr "_Marže:"
 
 #. Present Value Dialog: Label before number of periods input
 #: ../data/financial.ui.h:62
-msgid "_Number Of Periods:"
+msgid "_Number of Periods:"
 msgstr "_Počet období:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
 #: ../data/financial.ui.h:64
 msgid "_Period:"
 msgstr "_Období:"
@@ -258,7 +259,7 @@ msgstr "_Pravidelná splátka:"
 msgid "_Principal:"
 msgstr "Pů_jčka:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../data/financial.ui.h:70
 msgid "_Salvage:"
 msgstr "_Zůstatek:"
@@ -463,9 +464,9 @@ msgstr "Konec bloku [)]"
 msgid "Engineering"
 msgstr "Inženýrský"
 
-#. Tooltip for the eulers number button
+#. Tooltip for the Euler's number button
 #: ../data/gcalctool.ui.h:80
-msgid "Eulers number"
+msgid "Euler's number"
 msgstr "Eulerovo číslo"
 
 #. Accessible name for the exponentiation (x to the power of y) button
@@ -872,8 +873,8 @@ msgstr "Typ zobrazení"
 
 #: ../data/gcalctool.schemas.in.h:3
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
 "Udává, zda se u zobrazené hodnoty mají vypisovat koncové nuly za desetinnou "
 "čárkou."
@@ -899,7 +900,7 @@ msgid "Show Registers"
 msgstr "Zobrazit paměťové registry"
 
 #: ../data/gcalctool.schemas.in.h:9
-msgid "Show Thousands Separator"
+msgid "Show Thousands Separators"
 msgstr "Zobrazovat oddělovač tisíců"
 
 #: ../data/gcalctool.schemas.in.h:10
@@ -976,17 +977,17 @@ msgid "Word size"
 msgstr "Velikost slova"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/calctool.c:78
+#: ../src/calctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
-"  %s - Perform mathematical calculations"
+"  %s — Perform mathematical calculations"
 msgstr ""
 "Použití:\n"
-"  %s - Provést matematické výpočty"
+"  %s — Provést matematické výpočty"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/calctool.c:86
+#: ../src/calctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1002,7 +1003,7 @@ msgstr ""
 "  --help-gtk                      Zobrazí přepínače GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/calctool.c:97
+#: ../src/calctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1026,31 +1027,31 @@ msgstr ""
 "  --g-fatal-warnings              Všechna varování budou kritická"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:110
+#: ../src/calctool.c:111
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
+"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Přepínače aplikace:\n"
-"  -u, --unittest                  Provést test jednotky\n"
-"  -s, --solve <rovnice>           Vyřešit zadanou rovnici"
+"  -u, --unittest                  Provést testy jednotky\n"
+"  -s, --solve <rovnice>         Vyřešit zadanou rovnici"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:147
+#: ../src/calctool.c:148
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Přepínač --solve vyžaduje rovnici, která se má vyřešit"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:161
+#: ../src/calctool.c:162
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Neznámý přepínač „%s“"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:174
+#: ../src/calctool.c:175
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1194,75 +1195,75 @@ msgstr "Americký dolar"
 msgid "South African rand"
 msgstr "Jihoafrický rand"
 
-#: ../src/display.c:376
+#: ../src/display.c:379
 msgid "No undo history"
 msgstr "Žádná historie změn"
 
-#: ../src/display.c:391
+#: ../src/display.c:394
 msgid "No redo steps"
 msgstr "Žádné kroky opakování"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1021
-msgid "No sane value to do bitwise shift"
+#: ../src/display.c:1029
+msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1037
+#: ../src/display.c:1045
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
-#: ../src/display.c:1063
+#: ../src/display.c:1071
 msgid "No sane value to store"
 msgstr "Nesmyslná hodnota pro uložení"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1182
+#: ../src/display.c:1193
 msgid "Overflow. Try a bigger word size"
 msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1187
+#: ../src/display.c:1198
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznámá proměnná „%s“"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1193
+#: ../src/display.c:1204
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1199
+#: ../src/display.c:1210
 #, c-format
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1208
+#: ../src/display.c:1219
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
 #. Translators: The window title when in advanced mode
 #: ../src/gtk.c:103
-msgid "Calculator - Advanced"
+msgid "Calculator — Advanced"
 msgstr "Kalkulačka - pokročilá"
 
 #. Translators: The window title when in financial mode
 #: ../src/gtk.c:105
-msgid "Calculator - Financial"
+msgid "Calculator — Financial"
 msgstr "Kalkulačka - finanční"
 
 #. Translators: The window title when in scientific mode
 #: ../src/gtk.c:107
-msgid "Calculator - Scientific"
+msgid "Calculator — Scientific"
 msgstr "Kalkulačka - vědecká"
 
 #. Translators: The window title when in programming mode
 #: ../src/gtk.c:109
-msgid "Calculator - Programming"
+msgid "Calculator — Programming"
 msgstr "Kalkulačka - programátorská"
 
 #. Translators: Title of the error dialog when unable to load the UI files
@@ -1274,17 +1275,17 @@ msgstr "Chyba načítání uživatelského rozhraní"
 #: ../src/gtk.c:241
 #, c-format
 msgid ""
-"A required file is missing or damaged, please check your installation.\n"
+"A required file is missing or damaged. Please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
-"Požadovaný soubor chybí nebo je poškozený, zkontrolujte prosím svoji "
+"Požadovaný soubor chybí nebo je poškozený. Zkontrolujte prosím svoji "
 "instalaci.\n"
 "\n"
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:561
+#: ../src/gtk.c:556
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -1293,7 +1294,7 @@ msgstr ""
 "Marek Černocký <marek@manet.cz>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:564
+#: ../src/gtk.c:559
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1324,47 +1325,48 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:580
+#: ../src/gtk.c:575
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:583
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 autoři Gcalctool"
+#: ../src/gtk.c:578
+msgid "© 1986–2008 The Gcalctool authors"
+msgstr "© 1986-2008 autoři aplikace Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:586
+#: ../src/gtk.c:581
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:640
+#: ../src/gtk.c:635
 msgid "Unable to open help file"
 msgstr "Nelze otevřít soubor s nápovědou"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1010
-msgid "You don't have any recent currency rates. Should I download some now?"
+#. Translators: Title of the error dialog when prompting to download currency rates
+#: ../src/gtk.c:1005
+msgid ""
+"You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Nemáte tabulku aktuálních měnových kurzů. Má se nějaká stáhnout?"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1020
+#. Translators: Title of the error dialog when unable to download currency rates
+#: ../src/gtk.c:1015
 msgid ""
-"I could not download any currency rates. You may receive inaccurate results, "
+"Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
 msgstr ""
 "Nelze stáhnout tabulku měnových kurzů. Kvůli tomu můžete získat nesprávné "
 "výsledky nebo dokonce nemusíte získat vůbec žádné."
 
-#: ../src/gtk.c:1440
+#: ../src/gtk.c:1435
 msgid "Paste"
 msgstr "Vložit"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
-msgid "Division by zero is not defined"
-msgstr "Dělení nulou není definováno"
+msgid "Division by zero is undefined"
+msgstr "Dělení nulou není definováné"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../src/mp.c:1158 ../src/mp.c:1195
@@ -1377,20 +1379,20 @@ msgid "Logarithm of negative values is undefined"
 msgstr "Logaritmus záporného čísla je nedefinovaný"
 
 #: ../src/mp.c:1541
-msgid "The power of negative numbers only defined for integer exponents"
+msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "Mocnina záporných čísel je definovaná pouze pro celočíselné exponenty"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1548 ../src/mp.c:1841
-msgid "The power of zero is not defined for a negative exponent"
+msgid "The power of zero is undefined for a negative exponent"
 msgstr "Mocnina nuly není definovaná pro záporný exponent"
 
 #: ../src/mp.c:1573
-msgid "Reciprocal of zero is not defined"
+msgid "Reciprocal of zero is undefined"
 msgstr "Převrácená hodnota nuly není definovaná"
 
 #: ../src/mp.c:1658
-msgid "Root must non-zero"
+msgid "Root must be non-zero"
 msgstr "Odmocnitel musí být nenulový"
 
 #: ../src/mp.c:1676
@@ -1398,1005 +1400,78 @@ msgid "Negative root of zero is undefined"
 msgstr "Záporná odmocnina z nuly je nedefinovaná"
 
 #: ../src/mp.c:1682
-msgid "nth root of negative number not defined for even n"
+msgid "nth root of negative number is undefined for even n"
 msgstr "n-tá odmocnina záporného čísla není definovaná pro sudé n"
 
 #: ../src/mp.c:1752
-msgid "Square root is not defined for negative values"
+msgid "Square root is undefined for negative values"
 msgstr "Druhá mocnina není definovaná pro záporná čísla"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
 #: ../src/mp.c:1781
-msgid "Factorial only defined for natural numbers"
+msgid "Factorial is only defined for natural numbers"
 msgstr "Faktoriál je definovaný pouze pro přirozená čísla"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: ../src/mp.c:1801
-msgid "Modulus division only defined for integers"
+msgid "Modulus division is only defined for integers"
 msgstr "Zbytek po dělení je definován pouze pro celá čísla"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND only defined for natural numbers"
+msgid "Boolean AND is only defined for natural numbers"
 msgstr "Logická konjunkce AND je definovaná pouze pro přirozená čísla"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR only defined for natural numbers"
+msgid "Boolean OR is only defined for natural numbers"
 msgstr "Logická disjunkce OR je definovaná pouze pro přirozená čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR only defined for natural numbers"
+msgid "Boolean XOR is only defined for natural numbers"
 msgstr "Logická exkluzivní disjunkce je definovaná pouze pro přirozená čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT only defined for natural numbers"
+msgid "Boolean NOT is only defined for natural numbers"
 msgstr "Logická negace NOT je definovaná pouze pro přirozená čísla"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
-msgid "Shift only possible on integer values"
+msgid "Shift is only possible on integer values"
 msgstr "Posun je možný pouze u celočíselných hodnot"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid ""
-"Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
+"Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 "
 "(90°)"
 msgstr ""
 "Tangens není definován pro úhly, které jsou násobky π∕2 (180°) od π∕4 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
-msgid "Inverse sine not defined for values outside [-1, 1]"
+msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzní sinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
-msgid "Inverse cosine not defined for values outside [-1, 1]"
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzní kosinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
 msgid ""
-"Inverse hyperbolic cosine not defined for values less than or equal to one"
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
 "Inverzní hyperbolický kosinus není definován pro hodnoty menší nebo rovny "
 "jedné"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:582
-msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzní hyperbolický tangens není definován pro hodnoty mimo interval [-1, "
 "1]"
 
-#~ msgid "%"
-#~ msgstr "%"
-
-#~ msgid "&#x221A;"
-#~ msgstr "&#x221A;"
-
-#~ msgid "&#xB1;"
-#~ msgstr "&#xB1;"
-
-#~ msgid "&#xD7;"
-#~ msgstr "&#xD7;"
-
-#~ msgid "&#xF7;"
-#~ msgstr "&#xF7;"
-
-#~ msgid "("
-#~ msgstr "("
-
-#~ msgid "(Ln)"
-#~ msgstr "(ln)"
-
-#~ msgid "(Set accuracy from 0 to N numeric places [A])"
-#~ msgstr "(Nastavit přesnost od 0 do N desetinných míst [A])"
-
-#~ msgid "(X^Y)"
-#~ msgstr "(X^Y)"
-
-#~ msgid "(cos)"
-#~ msgstr "(cos)"
-
-#~ msgid "(log)"
-#~ msgstr "(log)"
-
-#~ msgid "(log2)"
-#~ msgstr "(log2)"
-
-#~ msgid "(sin)"
-#~ msgstr "(sin)"
-
-#~ msgid "(tan)"
-#~ msgstr "(tan)"
-
-#~ msgid ")"
-#~ msgstr ")"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "1's"
-#~ msgstr "1's"
-
-#~ msgid "1/<i>x</i>"
-#~ msgstr "1/<i>x</i>"
-
-#~ msgid "1/x"
-#~ msgstr "1/x"
-
-#~ msgid "15"
-#~ msgstr "15"
-
-#~ msgid "2"
-#~ msgstr "2"
-
-#~ msgid "2's"
-#~ msgstr "2's"
-
-#~ msgid "2's complement [Z]"
-#~ msgstr "dvojkový doplněk [Z]"
-
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgid "31"
-#~ msgstr "31"
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgid "47"
-#~ msgstr "47"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgid "63"
-#~ msgstr "63"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "9"
-#~ msgstr "9"
-
-#~ msgid "<"
-#~ msgstr "<"
-
-#~ msgid "<i>x</i>!"
-#~ msgstr "<i>x</i>!"
-
-#~ msgid "<i>x</i><sup>2</sup>"
-#~ msgstr "<i>x</i><sup>2</sup>"
-
-#~ msgid ""
-#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
-#~ "numeric base.</i></small>"
-#~ msgstr ""
-#~ "<small><i><b>Poznámka:</b> Všechny konstanty jsou definovány v desítkové "
-#~ "soustavě.</i></small>"
-
-#~ msgid "<span weight=\"bold\">R0</span>"
-#~ msgstr "<span weight=\"bold\">R0</span>"
-
-#~ msgid "<span weight=\"bold\">R1</span>"
-#~ msgstr "<span weight=\"bold\">R1</span>"
-
-#~ msgid "<span weight=\"bold\">R2</span>"
-#~ msgstr "<span weight=\"bold\">R2</span>"
-
-#~ msgid "<span weight=\"bold\">R3</span>"
-#~ msgstr "<span weight=\"bold\">R3</span>"
-
-#~ msgid "<span weight=\"bold\">R4</span>"
-#~ msgstr "<span weight=\"bold\">R4</span>"
-
-#~ msgid "<span weight=\"bold\">R5</span>"
-#~ msgstr "<span weight=\"bold\">R5</span>"
-
-#~ msgid "<span weight=\"bold\">R6</span>"
-#~ msgstr "<span weight=\"bold\">R6</span>"
-
-#~ msgid "<span weight=\"bold\">R7</span>"
-#~ msgstr "<span weight=\"bold\">R7</span>"
-
-#~ msgid "<span weight=\"bold\">R8</span>"
-#~ msgstr "<span weight=\"bold\">R8</span>"
-
-#~ msgid "<span weight=\"bold\">R9</span>"
-#~ msgstr "<span weight=\"bold\">R9</span>"
-
-#~ msgid ">"
-#~ msgstr ">"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~ msgid "AND"
-#~ msgstr "AND"
-
-#~ msgid "Abs"
-#~ msgstr "Abs"
-
-#~ msgid "Acc"
-#~ msgstr "Acc"
-
-#~ msgid "Add"
-#~ msgstr "Sčítání"
-
-#~ msgid "Advanced"
-#~ msgstr "Pokročilá"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "Backspace"
-#~ msgstr "Backspace"
-
-#~ msgid "Basic"
-#~ msgstr "Základní"
-
-#~ msgid "Bitwise AND [&]"
-#~ msgstr "Bitové AND [&]"
-
-#~ msgid "Bitwise NOT [~]"
-#~ msgstr "Bitové NOT [~]"
-
-#~ msgid "Bitwise OR [|]"
-#~ msgstr "Bitové NEBO [|]"
-
-#~ msgid "Bitwise XNOR [{]"
-#~ msgstr "Bitové XNOR [{]"
-
-#~ msgid "Bitwise XOR [x]"
-#~ msgstr "Bitové XOR [x]"
-
-#~ msgid "Bksp"
-#~ msgstr "Bksp"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "CE"
-#~ msgstr "CE"
-
-#~ msgid "Calculate result"
-#~ msgstr "Spočítat výsledek"
-
-#~ msgid "Change Sign [C]"
-#~ msgstr "Změnit znaménko [C]"
-
-#~ msgid "Change sign"
-#~ msgstr "Změnit znaménko"
-
-#~ msgid "Clear"
-#~ msgstr "Vymazat"
-
-#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
-#~ msgstr "Smazat zobrazenou hodnotu i probíhající výpočet [Shift Delete]"
-
-#~ msgid "Clear entry"
-#~ msgstr "Vymazat pole"
-
-#~ msgid "Click a _value or description to edit it:"
-#~ msgstr "Pro úpravu klikněte na _hodnotu nebo popis:"
-
-#~ msgid "Compounding term"
-#~ msgstr "Doba úročení"
-
-#~ msgid "Compounding term [m]"
-#~ msgstr "Doba úročení [m]"
-
-#~ msgid "Con"
-#~ msgstr "Con"
-
-#~ msgid "Constants [#]"
-#~ msgstr "Konstanty [#]"
-
-#~ msgid "Copy selection"
-#~ msgstr "Kopírovat výběr"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "Divide"
-#~ msgstr "Dělení"
-
-#~ msgid "Double-declining depreciation"
-#~ msgstr "Dvojitě degresivní odpis"
-
-#~ msgid "Double-declining depreciation [D]"
-#~ msgstr "Dvojitě degresivní odpis [D]"
-
-#~ msgid "E"
-#~ msgstr "E"
-
-#~ msgid "E_ng"
-#~ msgstr "_Eng"
-
-#~ msgid "Edit Constants"
-#~ msgstr "Úprava konstant"
-
-#~ msgid "Edit Constants..."
-#~ msgstr "Upravit konstanty..."
-
-#~ msgid "Edit Functions"
-#~ msgstr "Úprava funkcí"
-
-#~ msgid "Edit Functions..."
-#~ msgstr "Upravit funkce..."
-
-#~ msgid "End group of calculations [)]"
-#~ msgstr "Ukončit skupinu výpočtů [)]"
-
-#~ msgid "Enter an exponential number [E]"
-#~ msgstr "Zadání v exponenciálním tvaru [E]"
-
-#~ msgid "Exch"
-#~ msgstr "Exch"
-
-#~ msgid "Exchange displayed value with memory register [X]"
-#~ msgstr "Vyměnit zobrazenou hodnotu s paměťovým registrem [X]"
-
-#~ msgid "Exchange with register"
-#~ msgstr "Vyměnit s registrem"
-
-#~ msgid "Exp"
-#~ msgstr "Exp"
-
-#~ msgid "F"
-#~ msgstr "F"
-
-#~ msgid "Factorial of displayed value [!]"
-#~ msgstr "Faktoriál zobrazené hodnoty [!]"
-
-#~ msgid "Frac"
-#~ msgstr "Frac"
-
-#~ msgid "Fractional portion of displayed value [:]"
-#~ msgstr "Desetinná část zobrazené hodnoty [:]"
-
-#~ msgid "Fun"
-#~ msgstr "Fun"
-
-#~ msgid "Future value [v]"
-#~ msgstr "Budoucí hodnota [v]"
-
-#~ msgid "Gross Profit Margin [I]"
-#~ msgstr "Hrubá marže [I]"
-
-#~ msgid "Gross Profit Margin [g]"
-#~ msgstr "Hrubá marže [g]"
-
-#~ msgid "H_yp"
-#~ msgstr "H_yp"
-
-#~ msgid "He_x"
-#~ msgstr "_Hex"
-
-#~ msgid "Hexadecimal digit B [b]"
-#~ msgstr "Šestnáctková číslice B [b]"
-
-#~ msgid "Hexadecimal digit C [c]"
-#~ msgstr "Šestnáctková číslice C [c]"
-
-#~ msgid "Hexadecimal digit D [d]"
-#~ msgstr "Šestnáctková číslice D [d]"
-
-#~ msgid "Hexadecimal digit E [e]"
-#~ msgstr "Šestnáctková číslice E [e]"
-
-#~ msgid "Hexadecimal digit F [f]"
-#~ msgstr "Šestnáctková číslice F [f]"
-
-#~ msgid "Insert ASCII value"
-#~ msgstr "Vložit hodnotu ASCII"
-
-#~ msgid "Int"
-#~ msgstr "Int"
-
-#~ msgid "Integer portion of displayed value [i]"
-#~ msgstr "Celá část zobrazené hodnoty [i]"
-
-#~ msgid "Left bracket"
-#~ msgstr "Levá závorka"
-
-#~ msgid "Makes the bitwise functions use 16 bit mode"
-#~ msgstr "Bitové operace budou používat 16bitový režim"
-
-#~ msgid "Makes the bitwise functions use 32 bit mode"
-#~ msgstr "Bitové operace budou používat 32bitový režim"
-
-#~ msgid "Makes the bitwise functions use 64 bit mode"
-#~ msgstr "Bitové operace budou používat 64bitový režim"
-
-#~ msgid "Memory Registers"
-#~ msgstr "Paměťové registry"
-
-#~ msgid "Mod"
-#~ msgstr "Mod"
-
-#~ msgid "Multiply"
-#~ msgstr "Násobení"
-
-#~ msgid "NOT"
-#~ msgstr "NOT"
-
-#~ msgid "Numeric 0"
-#~ msgstr "Číslice 0"
-
-#~ msgid "Numeric 1"
-#~ msgstr "Číslice 1"
-
-#~ msgid "Numeric 2"
-#~ msgstr "Číslice 2"
-
-#~ msgid "Numeric 3"
-#~ msgstr "Číslice 3"
-
-#~ msgid "Numeric 4"
-#~ msgstr "Číslice 4"
-
-#~ msgid "Numeric 5"
-#~ msgstr "Číslice 5"
-
-#~ msgid "Numeric 6"
-#~ msgstr "Číslice 6"
-
-#~ msgid "Numeric 7"
-#~ msgstr "Číslice 7"
-
-#~ msgid "Numeric 8"
-#~ msgstr "Číslice 8"
-
-#~ msgid "Numeric 9"
-#~ msgstr "Číslice 9"
-
-#~ msgid "OR"
-#~ msgstr "OR"
-
-#~ msgid "Paste selection"
-#~ msgstr "Vložit výběr"
-
-#~ msgid "Payment period"
-#~ msgstr "Platební období"
-
-#~ msgid "Payment period [t]"
-#~ msgstr "Platební období [t]"
-
-#~ msgid "Percentage"
-#~ msgstr "Procenta"
-
-#~ msgid "Periodic interest rate"
-#~ msgstr "Pravidelná úroková sazba"
-
-#~ msgid "Periodic interest rate [T]"
-#~ msgstr "Pravidelná úroková sazba [T]"
-
-#~ msgid "Periodic payment"
-#~ msgstr "Pravidelná splátka"
-
-#~ msgid "Periodic payment [P]"
-#~ msgstr "Pravidelná splátka [P]"
-
-#~ msgid "Present value"
-#~ msgstr "Současná hodnota"
-
-#~ msgid "Present value [p]"
-#~ msgstr "Současná hodnota [p]"
-
-#~ msgid "Programming"
-#~ msgstr "Programátorská"
-
-#~ msgid "Quit the calculator"
-#~ msgstr "Ukončit kalkulačku"
-
-#~ msgid "Rand"
-#~ msgstr "Rand"
-
-#~ msgid "Random number in the range 0.0 to 1.0 [?]"
-#~ msgstr "Náhodné číslo v rozsahu 0.0 až 1.0 [?]"
-
-#~ msgid "Reciprocal"
-#~ msgstr "Převrácená hodnota"
-
-#~ msgid "Reciprocal [r]"
-#~ msgstr "Převrácená hodnota [r]"
-
-#~ msgid "Redo"
-#~ msgstr "Znovu"
-
-#~ msgid "Remove rightmost character from displayed value [Backspace]"
-#~ msgstr "Odstranit znak nejvíce vpravo v zobrazené hodnotě [Backspace]"
-
-#~ msgid "Retrieve from register"
-#~ msgstr "Načíst z registru"
-
-#~ msgid "Retrieve memory register to display [R]"
-#~ msgstr "Načíst paměťový registr na displej [R]"
-
-#~ msgid "Right bracket"
-#~ msgstr "Pravá závorka"
-
-#~ msgid "Set Precision"
-#~ msgstr "Nastavení přesnosti"
-
-#~ msgid "Set display type to engineering format"
-#~ msgstr "Nastavit typ zobrazení na inženýrský formát"
-
-#~ msgid "Set display type to fixed-point format"
-#~ msgstr "Nastavit typ zobrazení na formát s pevnou čárkou"
-
-#~ msgid "Set display type to scientific format"
-#~ msgstr "Nastavit typ zobrazení na vědecký formát"
-
-#~ msgid "Set hyperbolic option for trigonometric functions"
-#~ msgstr "Nastavit hyperbolický přepínač pro trigonometrické funkce"
-
-#~ msgid "Set inverse option for trigonometric functions"
-#~ msgstr "Nastavit přepínač inverze pro trigonometrické funkce"
-
-#~ msgid "Set numeric base to binary (base 2)"
-#~ msgstr "Nastavit číselnou soustavu na dvojkovou (základ 2)"
-
-#~ msgid "Set numeric base to decimal (base 10)"
-#~ msgstr "Nastavit číselnou soustavu na desítkovou (základ 10)"
-
-#~ msgid "Set numeric base to hexadecimal (base 16)"
-#~ msgstr "Nastavit číselnou soustavu na šestnáctkovou (základ 16)"
-
-#~ msgid "Set numeric base to octal (base 8)"
-#~ msgstr "Nastavit číselnou soustavu na osmičkovou (základ 8)"
-
-#~ msgid "Set trigonometric type to degrees"
-#~ msgstr "Nastavit trigonometrické jednotky na stupně"
-
-#~ msgid "Set trigonometric type to gradians"
-#~ msgstr "Nastavit trigonometrické jednotky na grady"
-
-#~ msgid "Set trigonometric type to radians"
-#~ msgstr "Nastavit trigonometrické jednotky na radiány"
-
-#~ msgid "Shift displayed value 1-15 places to the left [<]"
-#~ msgstr "Posunout zobrazenou hodnotu o 1-15 míst doleva [<]"
-
-#~ msgid "Shift displayed value 1-15 places to the right [>]"
-#~ msgstr "Posunout zobrazenou hodnotu o 1-15 míst doprava [>]"
-
-#~ msgid "Show T_housands Separator"
-#~ msgstr "Zobrazovat oddělovač _tisíců"
-
-#~ msgid "Show _Trailing Zeroes"
-#~ msgstr "Zobrazovat _koncové nuly"
-
-#~ msgid "Show help contents"
-#~ msgstr "Zobrazit obsah nápovědy"
-
-#~ msgid "Show memory registers"
-#~ msgstr "Zobrazit paměťové registry"
-
-#~ msgid "Show the About Gcalctool dialog"
-#~ msgstr "Zobrazit dialog O Gcalctool"
-
-#~ msgid "Significant _places:"
-#~ msgstr "_Míst soustavy:"
-
-#~ msgid "Square"
-#~ msgstr "Druhá mocnina"
-
-#~ msgid "Square [@]"
-#~ msgstr "Druhá mocnina [@]"
-
-#~ msgid "Square root"
-#~ msgstr "Druhá odmocnina"
-
-#~ msgid "Square root [s]"
-#~ msgstr "Druhá odmocnina [s]"
-
-#~ msgid "Start group of calculations [(]"
-#~ msgstr "Začít skupinu výpočtů [(]"
-
-#~ msgid "Store displayed value in memory register [S]"
-#~ msgstr "Uložit zobrazenou hodnotu do paměťového registru [S]"
-
-#~ msgid "Store to register"
-#~ msgstr "Uložit do registru"
-
-#~ msgid "Straight-line depreciation"
-#~ msgstr "Lineární odpisy"
-
-#~ msgid "Straight-line depreciation [l]"
-#~ msgstr "Lineární odpisy [l]"
-
-#~ msgid "Subtract"
-#~ msgstr "Odčítání"
-
-#~ msgid "Sum-of-the years'-digits depreciation"
-#~ msgstr "Hodnota degresivního odpisu pro období"
-
-#~ msgid "Sum-of-the years'-digits depreciation [Y]"
-#~ msgstr "Hodnota degresivního odpisu pro období [Y]"
-
-#~ msgid "Sum-of-the years'-digits depreciation [y]"
-#~ msgstr "Hodnota degresivního odpisu pro období [y]"
-
-#~ msgid "Trunc"
-#~ msgstr "Trunc"
-
-#~ msgid "Truncate displayed value to the chosen word size ([)"
-#~ msgstr "Ořízne zobrazenou hodnotu na zvolenou délku slova ([)"
-
-#~ msgid "Undo"
-#~ msgstr "Zpět"
-
-#~ msgid "User-defined functions [F]"
-#~ msgstr "Uživatelem definované funkce [F]"
-
-#~ msgid "XNOR"
-#~ msgstr "XNOR"
-
-#~ msgid "XOR"
-#~ msgstr "XOR"
-
-#~ msgid "_0 significant places"
-#~ msgstr "_0 míst soustavy"
-
-#~ msgid "_1 significant place"
-#~ msgstr "_1 místo soustavy"
-
-#~ msgid "_2 significant places"
-#~ msgstr "_2 místa soustavy"
-
-#~ msgid "_3 significant places"
-#~ msgstr "_3 místa soustavy"
-
-#~ msgid "_4 significant places"
-#~ msgstr "_4 místa soustavy"
-
-#~ msgid "_5 significant places"
-#~ msgstr "_5 míst soustavy"
-
-#~ msgid "_6 significant places"
-#~ msgstr "_6 míst soustavy"
-
-#~ msgid "_7 significant places"
-#~ msgstr "_7 míst soustavy"
-
-#~ msgid "_8 significant places"
-#~ msgstr "_8 míst soustavy"
-
-#~ msgid "_9 significant places"
-#~ msgstr "_9 míst soustavy"
-
-#~ msgid "_Contents"
-#~ msgstr "_Obsah"
-
-#~ msgid "_Dec"
-#~ msgstr "_Dec"
-
-#~ msgid "_Edit"
-#~ msgstr "_Upravit"
-
-#~ msgid "_Fix"
-#~ msgstr "_Fix"
-
-#~ msgid "_Insert ASCII value..."
-#~ msgstr "Vlož_it ASCII hodnotu znaku..."
-
-#~ msgid "_Inv"
-#~ msgstr "_Inv"
-
-#~ msgid "_Memory Registers"
-#~ msgstr "Paměťové _registry"
-
-#~ msgid "_Redo"
-#~ msgstr "Z_novu"
-
-#~ msgid "_Sci"
-#~ msgstr "_Sci"
-
-#~ msgid "_Set"
-#~ msgstr "_Nastavit"
-
-#~ msgid "_Undo"
-#~ msgstr "_Zpět"
-
-#~ msgid "register 0"
-#~ msgstr "registr 0"
-
-#~ msgid "register 1"
-#~ msgstr "registr 1"
-
-#~ msgid "register 2"
-#~ msgstr "registr 2"
-
-#~ msgid "register 3"
-#~ msgstr "registr 3"
-
-#~ msgid "register 4"
-#~ msgstr "registr 4"
-
-#~ msgid "register 5"
-#~ msgstr "registr 5"
-
-#~ msgid "register 6"
-#~ msgstr "registr 6"
-
-#~ msgid "register 7"
-#~ msgstr "registr 7"
-
-#~ msgid "register 8"
-#~ msgstr "registr 8"
-
-#~ msgid "register 9"
-#~ msgstr "registr 9"
-
-#~ msgid "x2"
-#~ msgstr "x2"
-
-#~ msgid "%s: accuracy should be in the range 0-%d\n"
-#~ msgstr "%s: přesnost by měla být v rozsahu 0-%d\n"
-
-#~ msgid "Malformed function"
-#~ msgstr "Nesprávná funkce"
-
-#~ msgid "No sane value to convert"
-#~ msgstr "Nesmyslná hodnota pro převod"
-
-#~ msgid "Invalid number for the current base"
-#~ msgstr "Neplatné číslo pro aktuální soustavu"
-
-#~ msgid "Invalid bitwise operation"
-#~ msgstr "Neplatná bitová operace"
-
-#~ msgid "Invalid modulus operation"
-#~ msgstr "Neplatná operace zbytek po dělení"
-
-#~ msgid "Calculator [%s]"
-#~ msgstr "Kalkulačka [%s]"
-
-#~ msgid "Calculator [%s] - Advanced"
-#~ msgstr "Kalkulačka [%s] - pokročilá"
-
-#~ msgid "Calculator [%s] - Financial"
-#~ msgstr "Kalkulačka [%s] - finanční"
-
-#~ msgid "Calculator [%s] - Scientific"
-#~ msgstr "Kalkulačka [%s] - vědecká"
-
-#~ msgid "Calculator [%s] - Programming"
-#~ msgstr "Kalkulačka [%s] - programátorská"
-
-#~ msgid "_Other (%d) ..."
-#~ msgstr "_Jiná (%d) ..."
-
-#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
-#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-#~ msgstr[0] "Nastavit přesnost od 0 do %d desetinného místa. [A]"
-#~ msgstr[1] "Nastavit přesnost od 0 do %d desetinných míst. [A]"
-#~ msgstr[2] "Nastavit přesnost od 0 do %d desetinných míst. [A]"
-
-#~ msgid "sin"
-#~ msgstr "sin"
-
-#~ msgid "sin<sup>−1</sup>"
-#~ msgstr "sin<sup>-1</sup>"
-
-#~ msgid "sinh"
-#~ msgstr "sinh"
-
-#~ msgid "sinh<sup>−1</sup>"
-#~ msgstr "sinh<sup>-1</sup>"
-
-#~ msgid "Sine [k]"
-#~ msgstr "Sinus [k]"
-
-#~ msgid "Hyperbolic Sine [k]"
-#~ msgstr "Hyperbolický sinus [k]"
-
-#~ msgid "Hyperbolic Inverse Sine [K]"
-#~ msgstr "Hyperbolický arkus sinus [K]"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "cos<sup>−1</sup>"
-#~ msgstr "cos<sup>-1</sup>"
-
-#~ msgid "cosh"
-#~ msgstr "cosh"
-
-#~ msgid "cosh<sup>−1</sup>"
-#~ msgstr "cosh<sup>-1</sup>"
-
-#~ msgid "Cosine [j]"
-#~ msgstr "Kosinus [j]"
-
-#~ msgid "Inverse Cosine [J]"
-#~ msgstr "Arkus kosinus [J]"
-
-#~ msgid "Hyperbolic Cosine [j]"
-#~ msgstr "Hyperbolický kosinus [j]"
-
-#~ msgid "Hyperbolic Inverse Cosine [J]"
-#~ msgstr "Hyberbolický arkus kosinus [J]"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "tan<sup>−1</sup>"
-#~ msgstr "tan<sup>-1</sup>"
-
-#~ msgid "tanh"
-#~ msgstr "tanh"
-
-#~ msgid "tanh<sup>−1</sup>"
-#~ msgstr "tanh<sup>-1</sup>"
-
-#~ msgid "Tangent [w]"
-#~ msgstr "Tangens [w]"
-
-#~ msgid "Inverse Tangent [W]"
-#~ msgstr "Arkus tangens [W]"
-
-#~ msgid "Hyperbolic Tangent [w]"
-#~ msgstr "Hyperbolický tangens [w]"
-
-#~ msgid "Hyperbolic Inverse Tangent [W]"
-#~ msgstr "Hyperbolický arkus tangens [W]"
-
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "e<sup><i>x</i></sup>"
-#~ msgstr "e<sup><i>x</i></sup>"
-
-#~ msgid "e to the power of the displayed value [N]"
-#~ msgstr "e na zobrazenou hodnotu [N]"
-
-#~ msgid "log"
-#~ msgstr "log"
-
-#~ msgid "10<sup><i>x</i></sup>"
-#~ msgstr "10<sup><i>x</i></sup>"
-
-#~ msgid "10 to the power of displayed value [G]"
-#~ msgstr "10 na zobrazenou hodnotu [G]"
-
-#~ msgid "log<sub>2</sub>"
-#~ msgstr "log<sub>2</sub>"
-
-#~ msgid "2<sup><i>x</i></sup>"
-#~ msgstr "2<sup><i>x</i></sup>"
-
-#~ msgid "Base 2 logarithm [h]"
-#~ msgstr "Dvojkový logaritmus [h]"
-
-#~ msgid "2 to the power of the displayed value [H]"
-#~ msgstr "2 na zobrazenou hodnotu [H]"
-
-#~ msgid "x<sup><i>y</i></sup>"
-#~ msgstr "x<sup><i>y</i></sup>"
-
-#~ msgid "x<sup>1/<i>y</i></sup>"
-#~ msgstr "x<sup>1/<i>y</i></sup>"
-
-#~ msgid "Raise displayed value to the power of y [o]"
-#~ msgstr "Umocnit zobrazenou hodnotu na y [o]"
-
-#~ msgid "Raise displayed value to the power of reciprocal y [O]"
-#~ msgstr "Umocnit zobrazenou hodnotu na 1/y [O]"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "No."
-#~ msgstr "Č."
-
-#~ msgid "Value"
-#~ msgstr "Hodnota"
-
-#~ msgid "Reset to _Default (%d)"
-#~ msgstr "Obnovit na _výchozí (%d)"
-
-#~ msgid "Negative X and non-integer Y not supported"
-#~ msgstr "Záporné X a neceločíselné Y není podporováno"
-
-#~ msgid "Tangent is infinite"
-#~ msgstr "Tangens je nekonečno"
-
-#~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "Činitel převodu kilometrů na míle"
-
-#~ msgid "square root of 2"
-#~ msgstr "odmocnina ze 2"
-
-#~ msgid "π"
-#~ msgstr "π"
-
-#~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "Činitel převodu centimetrů na palce"
-
-#~ msgid "degrees in a radian"
-#~ msgstr "počet stupňů v radiánu"
-
-#~ msgid "2 ^ 20"
-#~ msgstr "2 ^ 20"
-
-#~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "Činitel převodu gramů na unce"
-
-#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr "Činitel převodu kilojoulů na britské tepelné jednotky"
-
-#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "Činitel převodu krychlových centimetrů na krychlové palce"
-
-#~ msgid "Too long number"
-#~ msgstr "Příliš dlouhé číslo"
-
-#~ msgid "Math operation error"
-#~ msgstr "Matematická chyba"
-
-#~ msgid "Ln"
-#~ msgstr "Ln"
-
-#~ msgid "Error, cannot calculate cosine"
-#~ msgstr "Chyba, nemohu spočítat kosinus"
-
-#~ msgid "&16"
-#~ msgstr "&16"
-
-#~ msgid "&32"
-#~ msgstr "&32"
-
-#~ msgid "16-bit unsigned integer value of display (])"
-#~ msgstr "Hodnotu na displeji jako 16bitové celé číslo bez znaménka (])"
-
-#~ msgid "32-bit unsigned integer value of display ([)"
-#~ msgstr "Hodnotu na displeji jako 32bitové celé číslo bez znaménka ([)"
-
-#~ msgid "±"
-#~ msgstr "±"
-
-#~ msgid "×"
-#~ msgstr "×"
-
-#~ msgid "÷"
-#~ msgstr "÷"
-
-#~ msgid "−"
-#~ msgstr "−"
-
-#~ msgid "√"
-#~ msgstr "√"
-
-#~ msgid ""
-#~ "%1$s version %2$s\n"
-#~ "\n"
-#~ "Usage: %3$s: [-u] [-?] [-v] [-h]\n"
-#~ msgstr ""
-#~ "%1$s verze %2$s\n"
-#~ "\n"
-#~ "Použití: %3$s: [-u] [-?] [-v] [-h]\n"
