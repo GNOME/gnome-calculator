@@ -34,6 +34,8 @@ PKG_CHECK_MODULES(GCALCCMD, [
     glib-2.0
 ])
 
+AC_CHECK_LIB(m, log)
+
 dnl ###########################################################################
 dnl Determine if a usable lex is available on this system
 dnl ###########################################################################
