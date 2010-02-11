@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 5.29.x\n"
-"Report-Msgid-Bugs-To:\n"
-"POT-Creation-Date: 2010-01-31 20:13+0100\n"
-"PO-Revision-Date: 2010-01-31 20:19+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-11 20:25+0100\n"
+"PO-Revision-Date: 2010-02-11 20:31+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -36,11 +36,11 @@ msgstr ""
 "Beregner beløp for periodisk avbetaling av et lån hvor betalingene gjøres "
 "ved slutten av hver betalingsperiode."
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -179,12 +179,13 @@ msgstr "Nåtids_verdi:"
 msgid "Straight-Line Depreciation"
 msgstr "Lineær avskrivning"
 
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
-msgid "Sum-Of-The-Years'-Digits Depreciation"
+#, fuzzy
+msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Avskriving av summen av årenes sifre"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../data/financial.ui.h:54
 msgid "_Cost:"
 msgstr "_Kost:"
@@ -194,7 +195,7 @@ msgstr "_Kost:"
 msgid "_Future Value:"
 msgstr "_Fremtidig verdi:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
 #: ../data/financial.ui.h:58
 msgid "_Life:"
 msgstr "_Livstid"
@@ -206,10 +207,10 @@ msgstr "_Margin:"
 
 #. Present Value Dialog: Label before number of periods input
 #: ../data/financial.ui.h:62
-msgid "_Number Of Periods:"
+msgid "_Number of Periods:"
 msgstr "A_ntall perioder:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
 #: ../data/financial.ui.h:64
 msgid "_Period:"
 msgstr "_Periode:"
@@ -225,7 +226,7 @@ msgstr "_Periodisk betaling:"
 msgid "_Principal:"
 msgstr "_Finansiell"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../data/financial.ui.h:70
 msgid "_Salvage:"
 msgstr ""
@@ -235,15 +236,15 @@ msgstr ""
 msgid "_Term:"
 msgstr "_Term:"
 
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
 #. The label on the memory recall button
-#: ../data/gcalctool.ui.h:4
+#: ../data/gcalctool.ui.h:2
 msgid "&#x2190; R"
 msgstr "&#x2190; R"
+
+#. The label on the memory store button
+#: ../data/gcalctool.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
 
 #. The label on the currency button
 #: ../data/gcalctool.ui.h:6
@@ -430,9 +431,9 @@ msgstr ""
 msgid "Engineering"
 msgstr ""
 
-#. Tooltip for the eulers number button
+#. Tooltip for the Euler's number button
 #: ../data/gcalctool.ui.h:80
-msgid "Eulers number"
+msgid "Euler's number"
 msgstr "Eulers tall"
 
 #. Accessible name for the exponentiation (x to the power of y) button
@@ -842,8 +843,8 @@ msgstr "Visningsmodus"
 
 #: ../data/gcalctool.schemas.in.h:3
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:4
@@ -867,7 +868,7 @@ msgid "Show Registers"
 msgstr "Vis registre"
 
 #: ../data/gcalctool.schemas.in.h:9
-msgid "Show Thousands Separator"
+msgid "Show Thousands Separators"
 msgstr "Vis tusenskilletegn"
 
 #: ../data/gcalctool.schemas.in.h:10
@@ -937,7 +938,7 @@ msgstr "Størrelse på ord"
 #, c-format
 msgid ""
 "Usage:\n"
-"  %s - Perform mathematical calculations"
+"  %s — Perform mathematical calculations"
 msgstr ""
 "Bruk:\n"
 "  %s - Utfør matematiske beregninger"
@@ -978,7 +979,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
+"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 
@@ -1150,7 +1151,8 @@ msgstr "Ingen steg å gjenta"
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
 #: ../src/display.c:1029
-msgid "No sane value to do bitwise shift"
+#, fuzzy
+msgid "No sane value to bitwise shift"
 msgstr "Ingen verdi å bruke til bitvis skift"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
@@ -1192,22 +1194,22 @@ msgstr "Feilutformet uttrykk"
 
 #. Translators: The window title when in advanced mode
 #: ../src/gtk.c:103
-msgid "Calculator - Advanced"
+msgid "Calculator — Advanced"
 msgstr "Kalkulator - Avansert"
 
 #. Translators: The window title when in financial mode
 #: ../src/gtk.c:105
-msgid "Calculator - Financial"
+msgid "Calculator — Financial"
 msgstr "Kalkulator - Finansiell"
 
 #. Translators: The window title when in scientific mode
 #: ../src/gtk.c:107
-msgid "Calculator - Scientific"
+msgid "Calculator — Scientific"
 msgstr "Kalkulator - Vitenskapelig"
 
 #. Translators: The window title when in programming mode
 #: ../src/gtk.c:109
-msgid "Calculator - Programming"
+msgid "Calculator — Programming"
 msgstr "Kalkulator - Programmering"
 
 #. Translators: Title of the error dialog when unable to load the UI files
@@ -1219,7 +1221,7 @@ msgstr "Feil ved lesing av brukergrensesnitt"
 #: ../src/gtk.c:241
 #, c-format
 msgid ""
-"A required file is missing or damaged, please check your installation.\n"
+"A required file is missing or damaged. Please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
@@ -1260,7 +1262,7 @@ msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
 #: ../src/gtk.c:578
-msgid "© 1986-2008 The Gcalctool authors"
+msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986-2008 Utviklerene av Gcalctool"
 
 #. Translators: Short description in the about dialog
@@ -1273,15 +1275,16 @@ msgstr "Kalkulator med finans- og vitenskapelig modus."
 msgid "Unable to open help file"
 msgstr "Kan ikke åpne hjelpfil"
 
-#. Translators: Title of the error dialog when unable to load the UI files
+#. Translators: Title of the error dialog when prompting to download currency rates
 #: ../src/gtk.c:1005
-msgid "You don't have any recent currency rates. Should I download some now?"
+msgid ""
+"You don't have any recent currency rates. Should some be downloaded now?"
 msgstr ""
 
-#. Translators: Title of the error dialog when unable to load the UI files
+#. Translators: Title of the error dialog when unable to download currency rates
 #: ../src/gtk.c:1015
 msgid ""
-"I could not download any currency rates. You may receive inaccurate results, "
+"Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
 msgstr ""
 
@@ -1291,7 +1294,7 @@ msgstr "Lim inn"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
-msgid "Division by zero is not defined"
+msgid "Division by zero is undefined"
 msgstr "Deling med null er ikke definert"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
@@ -1305,20 +1308,21 @@ msgid "Logarithm of negative values is undefined"
 msgstr "Logaritmen for negative verdier er ikke definert"
 
 #: ../src/mp.c:1541
-msgid "The power of negative numbers only defined for integer exponents"
+msgid "The power of negative numbers is only defined for integer exponents"
 msgstr ""
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1548 ../src/mp.c:1841
-msgid "The power of zero is not defined for a negative exponent"
-msgstr ""
+#, fuzzy
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #: ../src/mp.c:1573
-msgid "Reciprocal of zero is not defined"
+msgid "Reciprocal of zero is undefined"
 msgstr "Resiprok for null er ikke definert"
 
 #: ../src/mp.c:1658
-msgid "Root must non-zero"
+msgid "Root must be non-zero"
 msgstr "Roten må være ulik null"
 
 #: ../src/mp.c:1676
@@ -1326,72 +1330,78 @@ msgid "Negative root of zero is undefined"
 msgstr "Negativ rot for null er ikke definert"
 
 #: ../src/mp.c:1682
-msgid "nth root of negative number not defined for even n"
-msgstr ""
+#, fuzzy
+msgid "nth root of negative number is undefined for even n"
+msgstr "Logaritmen for negative verdier er ikke definert"
 
 #: ../src/mp.c:1752
-msgid "Square root is not defined for negative values"
+msgid "Square root is undefined for negative values"
 msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
 #: ../src/mp.c:1781
-msgid "Factorial only defined for natural numbers"
-msgstr ""
+#, fuzzy
+msgid "Factorial is only defined for natural numbers"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: ../src/mp.c:1801
-msgid "Modulus division only defined for integers"
+msgid "Modulus division is only defined for integers"
 msgstr ""
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND only defined for natural numbers"
-msgstr ""
+#, fuzzy
+msgid "Boolean AND is only defined for natural numbers"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR only defined for natural numbers"
-msgstr ""
+#, fuzzy
+msgid "Boolean OR is only defined for natural numbers"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR only defined for natural numbers"
-msgstr ""
+#, fuzzy
+msgid "Boolean XOR is only defined for natural numbers"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT only defined for natural numbers"
-msgstr ""
+#, fuzzy
+msgid "Boolean NOT is only defined for natural numbers"
+msgstr "Kvadratrot er ikke definert for negative verdier"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
-msgid "Shift only possible on integer values"
+msgid "Shift is only possible on integer values"
 msgstr ""
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid ""
-"Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
+"Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 "
 "(90°)"
 msgstr ""
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
-msgid "Inverse sine not defined for values outside [-1, 1]"
+msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr ""
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
-msgid "Inverse cosine not defined for values outside [-1, 1]"
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
 msgid ""
-"Inverse hyperbolic cosine not defined for values less than or equal to one"
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:582
-msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
