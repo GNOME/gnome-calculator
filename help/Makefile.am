@@ -34,3 +34,6 @@ DOC_PAGES = absolute.page \
             variables.page
 
 DOC_LINGUAS =
+
+DISTCLEANFILES = \
+	Makefile.in

@@ -1,6 +1,3 @@
-## Process this file with automake to produce Makefile.in
-# FIXME: Don't distribute generated lex and parse files
-
 INCLUDES = \
 	-I$(includedir) \
 	$(DISABLE_DEPRECATED) \
@@ -8,6 +5,7 @@ INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
 	-DLOCALE_DIR=\""$(localdir)"\" \
 	-DPIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
+    -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(GCALCTOOL_CFLAGS) \
 	$(GNOME_UTILS_CFLAGS) \
 	$(GCONF_CFLAGS) \
@@ -61,27 +59,18 @@ CLEANFILES = \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
-	mp-equation-lexer.h \
-	libparser.a
+	mp-equation-lexer.h
 
 gcalctool_LDADD = \
 	$(GCALCTOOL_LIBS) \
 	$(GNOME_UTILS_LIBS) \
 	$(GCONF_LIBS) \
 	$(LIBXML_LIBS) \
-	$(LIBSOUP_LIBS) \
-	libparser.a
+	$(LIBSOUP_LIBS)
 
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
-
-libparser.a: \
-	mp-equation-lexer.o\
-	mp-equation-parser.o\
-	mp-equation.o
-	$(AM_V_at)$(AR) r libparser.a $^
-	$(AM_V_GEN)$(RANLIB) libparser.a
 
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
 	$(AM_V_GEN)$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
@@ -92,12 +81,6 @@ mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
 mp-equation-parser.o: mp-equation-lexer.h
 mp-equation-lexer.o: mp-equation-parser.h
 mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
-
-code-format: 
-	ls *[ch] | xargs indent -nbad -bap -bbo -nbc -br\
-	-brs -c33 -cd33 -ncdb -ce -ci4 -cli0 -cp33 \
-	-cs -d0 -di1 -nfc1 -nfca -hnl -i4 -ip0 -l75 -lp -npcs\
-	-nprs -npsl -nut -saf -sai -saw -nsc -nsob -nss
 
 # Install a symlink between gcalctool and gnome-calculator
 install-exec-hook:
@@ -112,6 +95,9 @@ uninstall-local:
 EXTRA_DIST = \
 	mp-equation-parser.y \
 	mp-equation-lexer.l
+
+DISTCLEANFILES = \
+	Makefile.in
 
 test: gcalctool
 	./gcalctool -u

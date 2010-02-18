@@ -1,19 +1,20 @@
-Process this file with autoconf to produce a configure script.
+dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.in)
 AM_INIT_AUTOMAKE(gcalctool, 5.29.90)
-AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 GNOME_MAINTAINER_MODE_DEFINES
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-IT_PROG_INTLTOOL([0.35.0])
-
 AC_ISC_POSIX
 AC_PROG_CC
 AM_PROG_CC_STDC
 AC_HEADER_STDC
+
+AM_GCONF_SOURCE_2
+
+GNOME_COMPILE_WARNINGS(yes)
 
 dnl ###########################################################################
 dnl Dependencies
@@ -56,53 +57,16 @@ if [[ "$HAVE_YACC" = "no" ]]; then
 fi
 
 dnl ###########################################################################
-dnl Scrollkeeper checks
-dnl ###########################################################################
-
-AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
-if test x$SCROLLKEEPER_CONFIG = xno; then
-  AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
-fi
-
-dnl ###########################################################################
 dnl Internationalization
 dnl ###########################################################################
 
+IT_PROG_INTLTOOL([0.35.0])
 GETTEXT_PACKAGE=gcalctool
-AC_PREREQ(2.53)
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
-
-AM_PROG_LIBTOOL
 AM_GLIB_GNU_GETTEXT
 
 dnl ###########################################################################
-dnl Use -Wall if we have gcc.
-dnl ###########################################################################
-
-changequote(,)dnl
-if test "x$GCC" = "xyes"; then
-  case " $CFLAGS " in
-  *[\ \	]-Wall[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wall" ;;
-  esac
-fi
-changequote([,])dnl
-
-dnl ###########################################################################
-dnl Checking for gconftool-2
-dnl ###########################################################################
-
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-
-if test "x$GCONFTOOL" = xno; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-
-AM_GCONF_SOURCE_2
-
-dnl ###########################################################################
-dnl API Documentation
+dnl Documentation
 dnl ###########################################################################
 
 GNOME_DOC_INIT
@@ -115,7 +79,6 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 po/Makefile.in
-m4/Makefile
 data/Makefile
 help/Makefile
 ])
