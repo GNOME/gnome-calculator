@@ -1,18 +1,10 @@
+bin_PROGRAMS = gcalctool gcalccmd
+
 INCLUDES = \
-	-I$(includedir) \
-	$(DISABLE_DEPRECATED) \
-	-DDATA_DIR=\""$(datadir)"\" \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
 	-DLOCALE_DIR=\""$(localdir)"\" \
-	-DPIXMAP_DIR=\""$(prefix)/$(DATADIRNAME)/pixmaps"\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
-	$(GCALCTOOL_CFLAGS) \
-	$(GNOME_UTILS_CFLAGS) \
-	$(GCONF_CFLAGS) \
-	$(LIBXML_CFLAGS) \
-	$(LIBSOUP_CFLAGS)
-
-bin_PROGRAMS = gcalctool gcalccmd
+	$(GCALCTOOL_CFLAGS)
 
 gcalctool_SOURCES = \
 	calctool.c \
@@ -45,6 +37,9 @@ gcalctool_SOURCES = \
 	unittest.c \
 	unittest.h
 
+gcalctool_LDADD = \
+	$(GCALCTOOL_LIBS)
+
 gcalccmd_SOURCES = \
 	gcalccmd.c \
 	mp.c \
@@ -55,29 +50,25 @@ gcalccmd_SOURCES = \
 	mp-equation-parser.c \
 	mp-equation-lexer.c
 
+gcalccmd_LDADD = \
+	$(GCALCCMD_LIBS) \
+	-lm
+
 CLEANFILES = \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
 	mp-equation-lexer.h
 
-gcalctool_LDADD = \
-	$(GCALCTOOL_LIBS) \
-	$(GNOME_UTILS_LIBS) \
-	$(GCONF_LIBS) \
-	$(LIBXML_LIBS) \
-	$(LIBSOUP_LIBS)
-
-gcalccmd_LDADD = \
-	$(GCALCCMD_LIBS) \
-	-lm
-
+# Generate parser files
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
 	$(AM_V_GEN)$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
 
+# Generate lexer files
 mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
 	$(AM_V_GEN)$(LEX) $(srcdir)/mp-equation-lexer.l
 
+# Rebuild parser when source files change
 mp-equation-parser.o: mp-equation-lexer.h
 mp-equation-lexer.o: mp-equation-parser.h
 mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
