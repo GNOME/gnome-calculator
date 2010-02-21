@@ -444,8 +444,8 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
             if (cursor_start != cursor_end && cursor >= cursor_start && cursor < cursor_end)
                 use = FALSE;
 
-            /* Ignore thousands separators */
-            if (strncmp(c, v->tsep, strlen(v->tsep)) == 0)
+            /* Ignore thousands separators (if one exists) */
+            if (v->tsep[0] != '\0' && strncmp(c, v->tsep, strlen(v->tsep)) == 0)
                 use = FALSE;
 
             /* Copy existing text */
