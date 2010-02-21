@@ -374,8 +374,22 @@ test_parser()
     options.angle_units = MP_GRADIANS;
     test("sin 100", "1", 0);
 
+    test("0 and 0", "0", 0);
+    test("1 and 0", "0", 0);
+    test("0 and 1", "0", 0);
+    test("1 and 1", "1", 0);
     test("3 and 5", "1", 0);
+
+    test("0 or 0", "0", 0);  
+    test("1 or 0", "1", 0);
+    test("0 or 1", "1", 0);  
+    test("1 or 1", "1", 0);
     test("3 or 5", "7", 0);
+
+    test("0 xor 0", "0", 0);
+    test("1 xor 0", "1", 0);
+    test("0 xor 1", "1", 0);
+    test("1 xor 1", "0", 0);
     test("3 xor 5", "6", 0);
 
     base = 16;

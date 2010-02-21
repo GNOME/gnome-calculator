@@ -763,6 +763,16 @@ mp_is_integer(const MPNumber *x)
 
 
 int
+mp_is_positive_integer(const MPNumber *x)
+{
+    if (mp_is_complex(x))
+        return 0;
+    else
+        return x->sign >= 0 && mp_is_integer(x);
+}
+
+
+int
 mp_is_natural(const MPNumber *x)
 {
     if (mp_is_complex(x))

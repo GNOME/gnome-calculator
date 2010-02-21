@@ -97,10 +97,10 @@ mp_is_overflow (const MPNumber *x, int wordlen)
 void
 mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    if (!mp_is_natural(x) || !mp_is_natural(y))
+    if (!mp_is_positive_integer(x) || !mp_is_positive_integer(y))
     {
         /* Translators: Error displayed when boolean AND attempted on non-integer values */
-        mperr(_("Boolean AND is only defined for natural numbers"));
+        mperr(_("Boolean AND is only defined for positive integers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_and, z, 0);
@@ -110,10 +110,10 @@ mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    if (!mp_is_natural(x) || !mp_is_natural(y))
+    if (!mp_is_positive_integer(x) || !mp_is_positive_integer(y))
     {
         /* Translators: Error displayed when boolean OR attempted on non-integer values */
-        mperr(_("Boolean OR is only defined for natural numbers"));
+        mperr(_("Boolean OR is only defined for positive integers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_or, z, 0);
@@ -123,10 +123,10 @@ mp_or(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_xor(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    if (!mp_is_natural(x) || !mp_is_natural(y))
+    if (!mp_is_positive_integer(x) || !mp_is_positive_integer(y))
     {
         /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-        mperr(_("Boolean XOR is only defined for natural numbers"));
+        mperr(_("Boolean XOR is only defined for positive integers"));
     }
 
     mp_bitwise(x, y, mp_bitwise_xor, z, 0);
@@ -138,10 +138,10 @@ mp_not(const MPNumber *x, int wordlen, MPNumber *z)
 {
     MPNumber temp;
 
-    if (!mp_is_natural(x))
+    if (!mp_is_positive_integer(x))
     {
         /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-        mperr(_("Boolean NOT is only defined for natural numbers"));
+        mperr(_("Boolean NOT is only defined for positive integers"));
     }
 
     mp_set_from_integer(0, &temp);

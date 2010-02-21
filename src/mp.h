@@ -93,6 +93,9 @@ int    mp_is_negative(const MPNumber *x);
 /* Return true if x is integer */
 int    mp_is_integer(const MPNumber *x);
 
+/* Return true if x is a positive integer */
+int    mp_is_positive_integer(const MPNumber *x);
+
 /* Return true if x is a natural number (an integer ≥ 0) */
 int    mp_is_natural(const MPNumber *x);
 
