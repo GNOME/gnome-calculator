@@ -1164,8 +1164,8 @@ gboolean
 main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
     int i, state;
-    const char *conversions[]       = {"-", "*", "/", "\t", NULL};
-    const char *conversion_values[] = {"−", "×", "÷", " ", };
+    const char *conversions[]       = {"-", "*", "/", NULL};
+    const char *conversion_values[] = {"−", "×", "÷", NULL };
 
     /* Only look at the modifiers we use */
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
@@ -1300,8 +1300,13 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     /* Solve */
     if ((event->keyval == GDK_Return && state == 0) ||
         (event->keyval == GDK_KP_Enter && state == 0)) {
-        do_button(FN_CALCULATE, NULL);
-        return TRUE;
+        if (gtk_widget_has_focus(X.display_item)) {
+            do_button(FN_CALCULATE, NULL);
+            return TRUE;
+        }
+        else {
+            return FALSE;
+        }
     }
 
     if (state != 0)
@@ -1338,6 +1343,10 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         do_button(FN_CALCULATE, NULL);
         return TRUE;
     }
+  
+    /* Don't override space - it is used in UI */
+    if (event->string[0] == ' ')
+        return FALSE;
 
     if (event->string[0] != '\0') {
         do_text(event->string);
