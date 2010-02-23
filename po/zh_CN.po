@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-12-01 06:26+0000\n"
+"POT-Creation-Date: 2010-02-21 23:40+0000\n"
 "PO-Revision-Date: 2009-12-02 21:36+0100\n"
 "Last-Translator: Tao Wei <weitao1979@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -38,11 +38,19 @@ msgid ""
 "made at the end of each payment period. "
 msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
+#, fuzzy
+#| msgid ""
+#| "Calculates the depreciation allowance on an asset for a specified period "
+#| "of time, using the Sum-Of-The-Years'-Digits method. This method of "
+#| "depreciation accelerates the rate of depreciation, so that more "
+#| "depreciation expense occurs in earlier periods than in later ones. The "
+#| "useful life is the number of periods, typically years, over which an "
+#| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -187,12 +195,14 @@ msgstr "现值(_V)："
 msgid "Straight-Line Depreciation"
 msgstr "直线折旧"
 
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
-msgid "Sum-Of-The-Years'-Digits Depreciation"
+#, fuzzy
+#| msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "年数总和折旧"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../data/financial.ui.h:54
 msgid "_Cost:"
 msgstr "成本(_C)："
@@ -202,7 +212,7 @@ msgstr "成本(_C)："
 msgid "_Future Value:"
 msgstr "未来值(_F)："
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
 #: ../data/financial.ui.h:58
 msgid "_Life:"
 msgstr "年限(_L)："
@@ -214,10 +224,10 @@ msgstr "利润(_M)："
 
 #. Present Value Dialog: Label before number of periods input
 #: ../data/financial.ui.h:62
-msgid "_Number Of Periods:"
-msgstr "期数(_N)"
+msgid "_Number of Periods:"
+msgstr "期数(_N)："
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
 #: ../data/financial.ui.h:64
 msgid "_Period:"
 msgstr "期(_P)："
@@ -232,7 +242,7 @@ msgstr "定期付款(_P)："
 msgid "_Principal:"
 msgstr "本金(_P)："
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../data/financial.ui.h:70
 msgid "_Salvage:"
 msgstr "残值(_S)："
@@ -242,15 +252,15 @@ msgstr "残值(_S)："
 msgid "_Term:"
 msgstr "期限(_T)："
 
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
 #. The label on the memory recall button
-#: ../data/gcalctool.ui.h:4
+#: ../data/gcalctool.ui.h:2
 msgid "&#x2190; R"
 msgstr "&#x2190; R"
+
+#. The label on the memory store button
+#: ../data/gcalctool.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
 
 #. The label on the currency button
 #: ../data/gcalctool.ui.h:6
@@ -352,7 +362,7 @@ msgstr "二进制"
 msgid "Base 8"
 msgstr "八进制"
 
-#. Number display mode combo: Binary, e.g. 10011010010₂
+#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
 #: ../data/gcalctool.ui.h:46
 msgid "Binary"
 msgstr "二进制"
@@ -390,7 +400,7 @@ msgstr "字符(_A)："
 #. Tooltop for the clear display button
 #: ../data/gcalctool.ui.h:60
 msgid "Clear display [Escape]"
-msgstr "清除显示 [Escape]"
+msgstr "清除显示 [Esc]"
 
 #. Label on the clear display button. Clr is short for Clear
 #: ../data/gcalctool.ui.h:62
@@ -437,9 +447,9 @@ msgstr "结束块 [)]"
 msgid "Engineering"
 msgstr "工程"
 
-#. Tooltip for the eulers number button
+#. Tooltip for the Euler's number button
 #: ../data/gcalctool.ui.h:80
-msgid "Eulers number"
+msgid "Euler's number"
 msgstr "欧拉数"
 
 #. Accessible name for the exponentiation (x to the power of y) button
@@ -465,7 +475,7 @@ msgstr "阶乘 [!]"
 #. Accessible name for the factorize button
 #: ../data/gcalctool.ui.h:90
 msgid "Factorize"
-msgstr "分解因式"
+msgstr "质因数分解"
 
 #. Tooltip for the factorize button
 #: ../data/gcalctool.ui.h:92
@@ -492,7 +502,7 @@ msgstr "Gpm"
 msgid "Gradians"
 msgstr "百分度"
 
-#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
 #: ../data/gcalctool.ui.h:102
 msgid "Hexadecimal"
 msgstr "十六进制"
@@ -547,7 +557,7 @@ msgstr "自然对数"
 msgid "Numeric point [. or ,]"
 msgstr "小数点 [. 或 ,]"
 
-#. Number display mode combo: Octal, e.g. 2322₈
+#. Number display mode combo: Octal, e.g. 2322&#x2088;
 #: ../data/gcalctool.ui.h:124
 msgid "Octal"
 msgstr "八进制"
@@ -617,7 +627,7 @@ msgstr "结果区"
 msgid "Root [Ctrl+S]"
 msgstr "求根 [Ctrl+S]"
 
-#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
 #: ../data/gcalctool.ui.h:152
 msgid "Scientific"
 msgstr "科学"
@@ -655,12 +665,12 @@ msgstr "右移[>]"
 #. Preferences dialog: label for show thousands separator check button
 #: ../data/gcalctool.ui.h:166
 msgid "Show _thousands separators"
-msgstr "显示千位分隔符"
+msgstr "显示千位分隔符(_T)"
 
 #. Preferences dialog: label for show trailing zeroes check button
 #: ../data/gcalctool.ui.h:168
 msgid "Show trailing _zeroes"
-msgstr "显示末位零[_Z]"
+msgstr "显示末位零(_Z)"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:170
@@ -730,7 +740,7 @@ msgstr "2 的补数"
 #. Preferences dialog: label for word size combo box
 #: ../data/gcalctool.ui.h:196
 msgid "Word _size:"
-msgstr "字长(_S)"
+msgstr "字长(_S)："
 
 #. Right Shift Popup: Menu item to shift right by 1 bit
 #: ../data/gcalctool.ui.h:198
@@ -845,9 +855,13 @@ msgid "Display Mode"
 msgstr "显示模式"
 
 #: ../data/gcalctool.schemas.in.h:3
+#, fuzzy
+#| msgid ""
+#| "Indicates whether any trailing zeroes after the number point should be "
+#| "shown in the display value."
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr "设置是否在数值中小数点后显示末位零。"
 
 #: ../data/gcalctool.schemas.in.h:4
@@ -871,7 +885,7 @@ msgid "Show Registers"
 msgstr "显示内存寄存器"
 
 #: ../data/gcalctool.schemas.in.h:9
-msgid "Show Thousands Separator"
+msgid "Show Thousands Separators"
 msgstr "显示千位分隔符"
 
 #: ../data/gcalctool.schemas.in.h:10
@@ -940,17 +954,17 @@ msgid "Word size"
 msgstr "字长"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/calctool.c:78
+#: ../src/calctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
-"  %s - Perform mathematical calculations"
+"  %s — Perform mathematical calculations"
 msgstr ""
 "用法：\n"
 "  %s - 执行数学计算"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/calctool.c:86
+#: ../src/calctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -966,7 +980,7 @@ msgstr ""
 "  -help-gtk\t\t显示 GTK+ 选项"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/calctool.c:97
+#: ../src/calctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -980,41 +994,41 @@ msgid ""
 "  --g-fatal-warnings              Make all warnings fatal"
 msgstr ""
 "GTK+ 选项：\n"
-"  --class=CLASS\t窗口管理器所用的程序类\n"
-"  --name=NAME\t窗口管理器所用的程序名\n"
-"  --screen=SCREEN\t要使用的 X 屏幕\n"
-"  --sync\t\t同步 X 调用\n"
-"  --gtk-module=MODULES\t加载额外的 GTK+ 模块\n"
-"  --g-fatal-warnings\t给出所有重要警告"
+"  --class=类                     窗口管理器所用的程序类\n"
+"  --name=名称                    窗口管理器所用的程序名\n"
+"  --screen=屏幕                  要使用的 X 屏幕\n"
+"  --sync                         同步 X 调用\n"
+"  --gtk-module=模块              加载额外的 GTK+ 模块\n"
+"  --g-fatal-warnings             给出所有重要警告"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:110
+#: ../src/calctool.c:111
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
+"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "程序选项：\n"
-"  -u，--unittest\t执行单元测试\n"
-"  -s，--solve <方程>\t求解给出的方程"
+"  -u，--unittest                  执行单元测试\n"
+"  -s，--solve <方程>              求解给出的方程"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:147
+#: ../src/calctool.c:148
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "参数 --solve 需要一个方程以便求解"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:161
+#: ../src/calctool.c:162
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "未知参数“%s”"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:174
+#: ../src/calctool.c:175
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "零，一，二，三，四，五，六，七，八，九，十，A，B，C，D，E，F"
+msgstr "零,一,二,三,四,五,六,七,八,九,十,A,B,C,D,E,F"
 
 #: ../src/currency.h:18
 msgid "Australian dollar"
@@ -1156,75 +1170,75 @@ msgstr "美元"
 msgid "South African rand"
 msgstr "南非兰特"
 
-#: ../src/display.c:376
+#: ../src/display.c:379
 msgid "No undo history"
 msgstr "无撤销记录"
 
-#: ../src/display.c:391
+#: ../src/display.c:394
 msgid "No redo steps"
 msgstr "无重做步骤"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1013
-msgid "No sane value to do bitwise shift"
+#: ../src/display.c:1029
+msgid "No sane value to bitwise shift"
 msgstr "没有正常数值可用于移位"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1029
+#: ../src/display.c:1045
 msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
-#: ../src/display.c:1055
+#: ../src/display.c:1071
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1174
+#: ../src/display.c:1193
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1179
+#: ../src/display.c:1198
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "未知变量“%s”"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1185
+#: ../src/display.c:1204
 #, c-format
 msgid "Function '%s' is not defined"
-msgstr "函数\"%s\" 未定义"
+msgstr "函数“%s”未定义"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1191
+#: ../src/display.c:1210
 #, c-format
 msgid "Unknown conversion"
 msgstr "未知转换"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1200
+#: ../src/display.c:1219
 msgid "Malformed expression"
 msgstr "格式错误的表达式"
 
 #. Translators: The window title when in advanced mode
 #: ../src/gtk.c:103
-msgid "Calculator - Advanced"
+msgid "Calculator — Advanced"
 msgstr "计算器 - 高级"
 
 #. Translators: The window title when in financial mode
 #: ../src/gtk.c:105
-msgid "Calculator - Financial"
+msgid "Calculator — Financial"
 msgstr "计算器 - 财务"
 
 #. Translators: The window title when in scientific mode
 #: ../src/gtk.c:107
-msgid "Calculator - Scientific"
+msgid "Calculator — Scientific"
 msgstr "计算器 - 科学"
 
 #. Translators: The window title when in programming mode
 #: ../src/gtk.c:109
-msgid "Calculator - Programming"
+msgid "Calculator — Programming"
 msgstr "计算器 - 编程"
 
 #. Translators: Title of the error dialog when unable to load the UI files
@@ -1234,9 +1248,13 @@ msgstr "载入用户界面出错"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
 #: ../src/gtk.c:241
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "A required file is missing or damaged, please check your installation.\n"
+#| "\n"
+#| "%s"
 msgid ""
-"A required file is missing or damaged, please check your installation.\n"
+"A required file is missing or damaged. Please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
@@ -1245,7 +1263,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:553
+#: ../src/gtk.c:556
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@linux.net.cn>\n"
@@ -1255,7 +1273,7 @@ msgstr ""
 "arccos <boyermoore@gmail.com>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:556
+#: ../src/gtk.c:559
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1279,1209 +1297,190 @@ msgstr ""
 "Gcalctool 分发的目的是希望它物有所用，\n"
 "但是没有任何担保；没有对其适销性和某一特定目的下\n"
 "的适用性的任何哪怕是暗示的担保。\n"
-"请查阅 GNU 通用公共许可证以获得更多信息。n\n"
+"请查阅 GNU 通用公共许可证以获得更多信息。\n"
 "你应该已经跟 Gcalctool 一起收到一份 GNU 通用公共许可证的副本；\n"
 "如果没有，请写信至：Free Software Foundation, Inc., 59 Temple Place - Suite "
 "330, Boston, MA 02111-1307, USA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:572
+#: ../src/gtk.c:575
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:575
-msgid "© 1986-2008 The Gcalctool authors"
+#: ../src/gtk.c:578
+msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986-2008 Gcalctool 作者"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:581
 msgid "Calculator with financial and scientific modes."
 msgstr "带有财务和科学模式的计算器。"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:632
+#: ../src/gtk.c:635
 msgid "Unable to open help file"
 msgstr "无法打开帮助文件"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1002
-msgid "You don't have any recent currency rates. Should I download some now?"
-msgstr "您没有最近的汇率信息，现在下载吗？"
-
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:1012
+#. Translators: Title of the error dialog when prompting to download currency rates
+#: ../src/gtk.c:1005
 msgid ""
-"I could not download any currency rates. You may receive inaccurate results, "
+"You don't have any recent currency rates. Should some be downloaded now?"
+msgstr "您没有最近的汇率信息。现在下载吗？"
+
+#. Translators: Title of the error dialog when unable to download currency rates
+#: ../src/gtk.c:1015
+#, fuzzy
+#| msgid ""
+#| "I could not download any currency rates. You may receive inaccurate "
+#| "results, or you may not receive any results at all."
+msgid ""
+"Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
 msgstr "无法下载任何汇率信息。您可能得到不准确的结果，或根本得不到任何结果。"
 
-#: ../src/gtk.c:1421
+#: ../src/gtk.c:1444
 msgid "Paste"
 msgstr "粘贴"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
-msgid "Division by zero is not defined"
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1486
+msgid "Division by zero is undefined"
 msgstr "被零除无意义"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1158 ../src/mp.c:1195
+#: ../src/mp.c:1168 ../src/mp.c:1205
 msgid "Logarithm of zero is undefined"
 msgstr "零的对数未定义"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1167
+#: ../src/mp.c:1177
 msgid "Logarithm of negative values is undefined"
 msgstr "对负数进行求对数运算无意义"
 
-#: ../src/mp.c:1541
-msgid "The power of negative numbers only defined for integer exponents"
+#: ../src/mp.c:1551
+#, fuzzy
+#| msgid "The power of negative numbers only defined for integer exponents"
+msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "负数的幂只能定义为整数指数"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1548 ../src/mp.c:1841
-msgid "The power of zero is not defined for a negative exponent"
+#: ../src/mp.c:1558 ../src/mp.c:1851
+#, fuzzy
+#| msgid "The power of zero is not defined for a negative exponent"
+msgid "The power of zero is undefined for a negative exponent"
 msgstr "对零进行求幂运算，当指数为负时无意义"
 
-#: ../src/mp.c:1573
-msgid "Reciprocal of zero is not defined"
+#: ../src/mp.c:1583
+#, fuzzy
+#| msgid "Reciprocal of zero is not defined"
+msgid "Reciprocal of zero is undefined"
 msgstr "对零求倒数无意义"
 
-#: ../src/mp.c:1658
-msgid "Root must non-zero"
+#: ../src/mp.c:1668
+msgid "Root must be non-zero"
 msgstr "根次方数必需为非零值"
 
-#: ../src/mp.c:1676
+#: ../src/mp.c:1686
 msgid "Negative root of zero is undefined"
 msgstr "零的负数次方根无意义"
 
-#: ../src/mp.c:1682
-msgid "nth root of negative number not defined for even n"
+#: ../src/mp.c:1692
+msgid "nth root of negative number is undefined for even n"
 msgstr "对负数求偶次方根无意义"
 
-#: ../src/mp.c:1752
-msgid "Square root is not defined for negative values"
+#: ../src/mp.c:1762
+#, fuzzy
+#| msgid "Square root is not defined for negative values"
+msgid "Square root is undefined for negative values"
 msgstr "对负数开平方无意义"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1781
-msgid "Factorial only defined for natural numbers"
+#: ../src/mp.c:1791
+#, fuzzy
+#| msgid "Factorial only defined for natural numbers"
+msgid "Factorial is only defined for natural numbers"
 msgstr "阶乘运算仅对自然数有意义"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1801
-msgid "Modulus division only defined for integers"
+#: ../src/mp.c:1811
+#, fuzzy
+#| msgid "Modulus division only defined for integers"
+msgid "Modulus division is only defined for integers"
 msgstr "取模运算仅对整数有意义"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND only defined for natural numbers"
+#, fuzzy
+#| msgid "Boolean AND only defined for natural numbers"
+msgid "Boolean AND is only defined for positive integers"
 msgstr "逻辑与运算仅对自然数有意义"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR only defined for natural numbers"
+#, fuzzy
+#| msgid "Boolean OR only defined for natural numbers"
+msgid "Boolean OR is only defined for positive integers"
 msgstr "逻辑或运算仅对自然数有意义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR only defined for natural numbers"
+#, fuzzy
+#| msgid "Boolean XOR only defined for natural numbers"
+msgid "Boolean XOR is only defined for positive integers"
 msgstr "逻辑异或运算仅对自然数有意义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT only defined for natural numbers"
+#, fuzzy
+#| msgid "Boolean NOT only defined for natural numbers"
+msgid "Boolean NOT is only defined for positive integers"
 msgstr "逻辑非运算仅对自然数有意义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
-msgid "Shift only possible on integer values"
+#, fuzzy
+#| msgid "Shift only possible on integer values"
+msgid "Shift is only possible on integer values"
 msgstr "只能对整数进行移位运算"
 
 # fuzzy
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
+#, fuzzy
+#| msgid ""
+#| "Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
+#| "(90°)"
 msgid ""
-"Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
-"(90°)"
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "正切函数对于从 π∕4 (90°) 开始加上 π∕2 (180°) 的倍数的角度上无效"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
-msgid "Inverse sine not defined for values outside [-1, 1]"
+#, fuzzy
+#| msgid "Inverse sine not defined for values outside [-1, 1]"
+msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
-msgid "Inverse cosine not defined for values outside [-1, 1]"
+#, fuzzy
+#| msgid "Inverse cosine not defined for values outside [-1, 1]"
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
+#, fuzzy
+#| msgid ""
+#| "Inverse hyperbolic cosine not defined for values less than or equal to one"
 msgid ""
-"Inverse hyperbolic cosine not defined for values less than or equal to one"
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr "反双曲余弦函数在小于等于 1 范围内无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:582
-msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
-msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
-
-#~ msgid "%"
-#~ msgstr "%"
-
-#~ msgid "("
-#~ msgstr "("
-
-#~ msgid "(Ln)"
-#~ msgstr "(Ln)"
-
-#~ msgid "(Set accuracy from 0 to N numeric places [A])"
-#~ msgstr "(将精确度设定为 0 到 9 位数字 [A])"
-
-#~ msgid "(X^Y)"
-#~ msgstr "(X^Y)"
-
-#~ msgid "(cos)"
-#~ msgstr "(cos)"
-
-#~ msgid "(log)"
-#~ msgstr "(log)"
-
-#~ msgid "(log2)"
-#~ msgstr "(log2)"
-
-#~ msgid "(sin)"
-#~ msgstr "(sin)"
-
-#~ msgid "(tan)"
-#~ msgstr "(tan)"
-
-#~ msgid ")"
-#~ msgstr ")"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "1/<i>x</i>"
-#~ msgstr "1/<i>x</i>"
-
-#~ msgid "1/x"
-#~ msgstr "1/x"
-
-#~ msgid "15"
-#~ msgstr "15"
-
-#~ msgid "2"
-#~ msgstr "2"
-
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgid "31"
-#~ msgstr "31"
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgid "47"
-#~ msgstr "47"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgid "63"
-#~ msgstr "63"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "9"
-#~ msgstr "9"
-
-#~ msgid "<"
-#~ msgstr "<"
-
-#~ msgid "<i>x</i>!"
-#~ msgstr "<i>x</i>!"
-
-#~ msgid "<i>x</i><sup>2</sup>"
-#~ msgstr "<i>x</i><sup>2</sup>"
-
-#~ msgid ""
-#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
-#~ "numeric base.</i></small>"
-#~ msgstr "<small><i><b>注意：</b>所有常数的值都是以十进制指定的。</i></small>"
-
-#~ msgid "<span weight=\"bold\">R0</span>"
-#~ msgstr "<span weight=\"bold\">R0</span>"
-
-#~ msgid "<span weight=\"bold\">R1</span>"
-#~ msgstr "<span weight=\"bold\">R1</span>"
-
-#~ msgid "<span weight=\"bold\">R2</span>"
-#~ msgstr "<span weight=\"bold\">R2</span>"
-
-#~ msgid "<span weight=\"bold\">R3</span>"
-#~ msgstr "<span weight=\"bold\">R3</span>"
-
-#~ msgid "<span weight=\"bold\">R4</span>"
-#~ msgstr "<span weight=\"bold\">R4</span>"
-
-#~ msgid "<span weight=\"bold\">R5</span>"
-#~ msgstr "<span weight=\"bold\">R5</span>"
-
-#~ msgid "<span weight=\"bold\">R6</span>"
-#~ msgstr "<span weight=\"bold\">R6</span>"
-
-#~ msgid "<span weight=\"bold\">R7</span>"
-#~ msgstr "<span weight=\"bold\">R7</span>"
-
-#~ msgid "<span weight=\"bold\">R8</span>"
-#~ msgstr "<span weight=\"bold\">R8</span>"
-
-#~ msgid "<span weight=\"bold\">R9</span>"
-#~ msgstr "<span weight=\"bold\">R9</span>"
-
-#~ msgid ">"
-#~ msgstr ">"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~ msgid "AND"
-#~ msgstr "与"
-
-#~ msgid "Abs"
-#~ msgstr "Abs"
-
-#~ msgid "Acc"
-#~ msgstr "Acc"
-
-#~ msgid "Add"
-#~ msgstr "加法"
-
-#~ msgid "Advanced"
-#~ msgstr "高级"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "Backspace"
-#~ msgstr "退格"
-
-#~ msgid "Basic"
-#~ msgstr "基本"
-
-#~ msgid "Bitwise AND [&]"
-#~ msgstr "按位与 [&]"
-
-#~ msgid "Bitwise NOT [~]"
-#~ msgstr "按位非 [~]"
-
-#~ msgid "Bitwise OR [|]"
-#~ msgstr "按位或 [|]"
-
-#~ msgid "Bitwise XNOR [{]"
-#~ msgstr "逐位 XNOR [{]"
-
-#~ msgid "Bitwise XOR [x]"
-#~ msgstr "按位异或 [x]"
-
-#~ msgid "Bksp"
-#~ msgstr "Bksp"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "CE"
-#~ msgstr "CE"
-
-#~ msgid "Calculate result"
-#~ msgstr "计算结果"
-
-#~ msgid "Change Sign [C]"
-#~ msgstr "更改符号 [C]"
-
-#~ msgid "Change sign"
-#~ msgstr "更改符号"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
-#~ msgstr "清除显示值和任何未完成的计算 [Shift Delete]"
-
-#~ msgid "Clear entry"
-#~ msgstr "清除输入"
-
-#~ msgid "Click a _value or description to edit it:"
-#~ msgstr "单击值或描述以进行编辑(_V)："
-
-#~ msgid "Compounding term"
-#~ msgstr "复式"
-
-#~ msgid "Compounding term [m]"
-#~ msgstr "复式 [m]"
-
-#~ msgid "Con"
-#~ msgstr "Con"
-
-#~ msgid "Constants [#]"
-#~ msgstr "常数 [#]"
-
-#~ msgid "Copy selection"
-#~ msgstr "复制选中内容"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "Divide"
-#~ msgstr "除法"
-
-#~ msgid "Double-declining depreciation"
-#~ msgstr "双倍余额递减折旧"
-
-#~ msgid "Double-declining depreciation [D]"
-#~ msgstr "双倍余额递减折旧 [D]"
-
-#~ msgid "E"
-#~ msgstr "E"
-
-#~ msgid "E_ng"
-#~ msgstr "工程(_N)"
-
-#~ msgid "Edit Constants"
-#~ msgstr "编辑常数"
-
-#~ msgid "Edit Constants..."
-#~ msgstr "编辑常数..."
-
-#~ msgid "Edit Functions"
-#~ msgstr "编辑函数"
-
-#~ msgid "Edit Functions..."
-#~ msgstr "编辑函数..."
-
-#~ msgid "End group of calculations [)]"
-#~ msgstr "结束计算组 [)]"
-
-#~ msgid "Enter an exponential number [E]"
-#~ msgstr "请输入一个指数 [E]"
-
-#~ msgid "Exch"
-#~ msgstr "x<->M"
-
-#~ msgid "Exchange displayed value with memory register [X]"
-#~ msgstr "交换显示值和内存寄存器的值 [X]"
-
-#~ msgid "Exchange with register"
-#~ msgstr "与寄存器交换"
-
-#~ msgid "Exp"
-#~ msgstr "Exp"
-
-#~ msgid "F"
-#~ msgstr "F"
-
-#~ msgid "Factorial of displayed value [!]"
-#~ msgstr "显示值的阶乘 [!]"
-
-#~ msgid "Financial"
-#~ msgstr "财务"
-
-#~ msgid "Frac"
-#~ msgstr "Frac"
-
-#~ msgid "Fractional portion of displayed value [:]"
-#~ msgstr "显示值的小数部分 [:]"
-
-#~ msgid "Fun"
-#~ msgstr "Fun"
-
-#~ msgid "Future value [v]"
-#~ msgstr "将来值 [v]"
-
-#~ msgid "Gross Profit Margin [I]"
-#~ msgstr "毛利率 [I]"
-
-#~ msgid "Gross Profit Margin [g]"
-#~ msgstr "毛利率 [g]"
-
-#~ msgid "H_yp"
-#~ msgstr "Hyp(_Y)"
-
-#~ msgid "He_x"
-#~ msgstr "十六进制(_X)"
-
-#~ msgid "Hexadecimal digit A [a]"
-#~ msgstr "十六进制数码 A [a]"
-
-#~ msgid "Hexadecimal digit B [b]"
-#~ msgstr "十六进制数码 B [b]"
-
-#~ msgid "Hexadecimal digit C [c]"
-#~ msgstr "十六进制数码 C [c]"
-
-#~ msgid "Hexadecimal digit D [d]"
-#~ msgstr "十六进制数码 D [d]"
-
-#~ msgid "Hexadecimal digit E [e]"
-#~ msgstr "十六进制数码 E [e]"
-
-#~ msgid "Hexadecimal digit F [f]"
-#~ msgstr "十六进制数码 F [f]"
-
-#~ msgid "Insert ASCII value"
-#~ msgstr "插入 ASCII 值"
-
-#~ msgid "Int"
-#~ msgstr "Int"
-
-#~ msgid "Integer portion of displayed value [i]"
-#~ msgstr "取显示值的整数部分 [i]"
-
-#~ msgid "Left bracket"
-#~ msgstr "左括号"
-
-#~ msgid "Memory Registers"
-#~ msgstr "内存寄存器"
-
-#~ msgid "Mod"
-#~ msgstr "模"
-
-#~ msgid "Multiply"
-#~ msgstr "乘法"
-
-#~ msgid "NOT"
-#~ msgstr "非"
-
-#~ msgid "Numeric 0"
-#~ msgstr "数字 0"
-
-#~ msgid "Numeric 1"
-#~ msgstr "数字 1"
-
-#~ msgid "Numeric 2"
-#~ msgstr "数字 2"
-
-#~ msgid "Numeric 3"
-#~ msgstr "数字 3"
-
-#~ msgid "Numeric 4"
-#~ msgstr "数字 4"
-
-#~ msgid "Numeric 5"
-#~ msgstr "数字 5"
-
-#~ msgid "Numeric 6"
-#~ msgstr "数字 6"
-
-#~ msgid "Numeric 7"
-#~ msgstr "数字 7"
-
-#~ msgid "Numeric 8"
-#~ msgstr "数字 8"
-
-#~ msgid "Numeric 9"
-#~ msgstr "数字 9"
-
-#~ msgid "OR"
-#~ msgstr "或"
-
-#~ msgid "Paste selection"
-#~ msgstr "粘贴选中内容"
-
-#~ msgid "Payment period"
-#~ msgstr "付款周期"
-
-#~ msgid "Payment period [t]"
-#~ msgstr "付款周期 [t]"
-
-#~ msgid "Percentage"
-#~ msgstr "百分数"
-
-#~ msgid "Periodic interest rate"
-#~ msgstr "定期利率"
-
-#~ msgid "Periodic interest rate [T]"
-#~ msgstr "定期利率 [T]"
-
-#~ msgid "Periodic payment"
-#~ msgstr "定期付款 [P]"
-
-#~ msgid "Periodic payment [P]"
-#~ msgstr "定期付款 [P]"
-
-#~ msgid "Present value"
-#~ msgstr "现值"
-
-#~ msgid "Present value [p]"
-#~ msgstr "现值 [p]"
-
-#~ msgid "Programming"
-#~ msgstr "编程"
-
-#~ msgid "Quit the calculator"
-#~ msgstr "退出计算器"
-
-#~ msgid "Rand"
-#~ msgstr "Rand"
-
-#~ msgid "Random number in the range 0.0 to 1.0 [?]"
-#~ msgstr "从 0.0 到 1.0 之间的随机数 [?]"
-
-#~ msgid "Reciprocal"
-#~ msgstr "倒数"
-
-#~ msgid "Reciprocal [r]"
-#~ msgstr "倒数 [r]"
-
-#~ msgid "Redo"
-#~ msgstr "重做"
-
-#~ msgid "Remove rightmost character from displayed value [Backspace]"
-#~ msgstr "删除显示值的最右一个字符 [Backspace]"
-
-#~ msgid "Retrieve from register"
-#~ msgstr "从寄存器获取"
-
-#~ msgid "Retrieve memory register to display [R]"
-#~ msgstr "从内存寄存器中读取数值到显示区 [R]"
-
-#~ msgid "Right bracket"
-#~ msgstr "右括号"
-
-#~ msgid "Set Precision"
-#~ msgstr "设定精确度"
-
-#~ msgid "Set display type to engineering format"
-#~ msgstr "设置显示类型为工程格式"
-
-#~ msgid "Set display type to fixed-point format"
-#~ msgstr "设置显示类型为定点格式"
-
-#~ msgid "Set display type to scientific format"
-#~ msgstr "设置显示类型为科学计数法"
-
-#~ msgid "Set hyperbolic option for trigonometric functions"
-#~ msgstr "设置三角函数的双曲函数"
-
-#~ msgid "Set inverse option for trigonometric functions"
-#~ msgstr "设置三角函数的反函数"
-
-#~ msgid "Set numeric base to binary (base 2)"
-#~ msgstr "将数制设为二进制"
-
-#~ msgid "Set numeric base to decimal (base 10)"
-#~ msgstr "将数制设为十进制"
-
-#~ msgid "Set numeric base to hexadecimal (base 16)"
-#~ msgstr "将数制设为十六进制"
-
-#~ msgid "Set numeric base to octal (base 8)"
-#~ msgstr "将数制设为八进制"
-
-#~ msgid "Set trigonometric type to degrees"
-#~ msgstr "将三角函数类型设为角度"
-
-#~ msgid "Set trigonometric type to gradians"
-#~ msgstr "将三角函数类型设为梯度"
-
-#~ msgid "Set trigonometric type to radians"
-#~ msgstr "将三角函数类型设为弧度"
-
-#~ msgid "Shift displayed value 1-15 places to the left [<]"
-#~ msgstr "将显示值左移 1-15 位数 [<]"
-
-#~ msgid "Shift displayed value 1-15 places to the right [>]"
-#~ msgstr "将显示值右移 1-15 位数 [>]"
-
-#~ msgid "Show T_housands Separator"
-#~ msgstr "显示千分位符(_H)"
-
-#~ msgid "Show _Trailing Zeroes"
-#~ msgstr "显示末位零(_T)"
-
-#~ msgid "Show help contents"
-#~ msgstr "显示帮助目录"
-
-#~ msgid "Show memory registers"
-#~ msgstr "显示内存寄存器"
-
-#~ msgid "Show the About Gcalctool dialog"
-#~ msgstr "显示关于 Gcalctool 对话框"
-
-#~ msgid "Significant _places:"
-#~ msgstr "有效数字位数(_P)："
-
-#~ msgid "Square"
-#~ msgstr "平方"
-
-#~ msgid "Square [@]"
-#~ msgstr "平方 [@]"
-
-#~ msgid "Square root"
-#~ msgstr "平方根"
-
-#~ msgid "Square root [s]"
-#~ msgstr "平方根 [s]"
-
-#~ msgid "Start group of calculations [(]"
-#~ msgstr "开始计算组"
-
-#~ msgid "Store displayed value in memory register [S]"
-#~ msgstr "在内存寄存器中存储显示值 [S]"
-
-#~ msgid "Store to register"
-#~ msgstr "保存到寄存器"
-
-#~ msgid "Straight-line depreciation"
-#~ msgstr "直线折旧"
-
-#~ msgid "Straight-line depreciation [l]"
-#~ msgstr "直线折旧 [l]"
-
-#~ msgid "Subtract"
-#~ msgstr "减法"
-
-#~ msgid "Sum-of-the years'-digits depreciation"
-#~ msgstr "年数总和折旧"
-
-#~ msgid "Sum-of-the years'-digits depreciation [Y]"
-#~ msgstr "年数总和折旧 [Y]"
-
-#~ msgid "Sum-of-the years'-digits depreciation [y]"
-#~ msgstr "年数总和折旧 [Y]"
-
 #, fuzzy
-#~ msgid "Truncate displayed value to the chosen word size ([)"
-#~ msgstr "提高显示值到 y 次幂 [o]"
-
-#~ msgid "Undo"
-#~ msgstr "撤消"
-
-#~ msgid "User-defined functions [F]"
-#~ msgstr "用户自定义函数 [F]"
-
-#~ msgid "XNOR"
-#~ msgstr "同或"
-
-#~ msgid "XOR"
-#~ msgstr "异或"
-
-#~ msgid "_0 significant places"
-#~ msgstr "_0 位有效数字"
-
-#~ msgid "_1 significant place"
-#~ msgstr "_1 位有效数字"
-
-#~ msgid "_2 significant places"
-#~ msgstr "_2 位有效数字"
-
-#~ msgid "_3 significant places"
-#~ msgstr "_3 位有效数字"
-
-#~ msgid "_4 significant places"
-#~ msgstr "_4 位有效数字"
-
-#~ msgid "_5 significant places"
-#~ msgstr "_5 位有效数字"
-
-#~ msgid "_6 significant places"
-#~ msgstr "_6 位有效数字"
-
-#~ msgid "_7 significant places"
-#~ msgstr "_7 位有效数字"
-
-#~ msgid "_8 significant places"
-#~ msgstr "_8 位有效数字"
-
-#~ msgid "_9 significant places"
-#~ msgstr "_9 位有效数字"
-
-#~ msgid "_Contents"
-#~ msgstr "目录(_C)"
-
-#~ msgid "_Dec"
-#~ msgstr "十进制(_D)"
-
-#~ msgid "_Edit"
-#~ msgstr "编辑(_E)"
-
-#~ msgid "_Fix"
-#~ msgstr "定点(_F)"
-
-#~ msgid "_Insert ASCII value..."
-#~ msgstr "插入 ASCII 值(_I)..."
-
-#~ msgid "_Inv"
-#~ msgstr "_Inv"
-
-#~ msgid "_Memory Registers"
-#~ msgstr "内存寄存器(_M)"
-
-#~ msgid "_Redo"
-#~ msgstr "重做(_R)"
-
-#~ msgid "_Sci"
-#~ msgstr "科学(_S)"
-
-#~ msgid "_Set"
-#~ msgstr "设定(_S)"
-
-#~ msgid "_Undo"
-#~ msgstr "撤销(_U)"
-
-#~ msgid "register 0"
-#~ msgstr "register 0"
-
-#~ msgid "register 1"
-#~ msgstr "register 1"
-
-#~ msgid "register 2"
-#~ msgstr "register 2"
-
-#~ msgid "register 3"
-#~ msgstr "register 3"
-
-#~ msgid "register 4"
-#~ msgstr "register 4"
-
-#~ msgid "register 5"
-#~ msgstr "register 5"
-
-#~ msgid "register 6"
-#~ msgstr "register 6"
-
-#~ msgid "register 7"
-#~ msgstr "register 7"
-
-#~ msgid "register 8"
-#~ msgstr "register 8"
-
-#~ msgid "register 9"
-#~ msgstr "register 9"
-
-#~ msgid "x2"
-#~ msgstr "x2"
-
-#~ msgid "%s: accuracy should be in the range 0-%d\n"
-#~ msgstr "%s：精度必须介于 0-%d\n"
-
-#~ msgid "Malformed function"
-#~ msgstr "格式错误的函数"
-
-#~ msgid "No sane value to convert"
-#~ msgstr "没有要转换的标准值"
-
-#~ msgid "Invalid number for the current base"
-#~ msgstr "当前数制下的无效数字"
-
-#~ msgid "Invalid bitwise operation"
-#~ msgstr "无效的位运算操作"
-
-#~ msgid "Invalid modulus operation"
-#~ msgstr "无效的求模运算操作"
-
-#~ msgid "Calculator [%s]"
-#~ msgstr "计算器 [%s]"
-
-#~ msgid "Calculator [%s] - Advanced"
-#~ msgstr "计算器 [%s] - 高级"
-
-#~ msgid "Calculator [%s] - Financial"
-#~ msgstr "计算器 [%s] - 财务"
-
-#~ msgid "Calculator [%s] - Scientific"
-#~ msgstr "计算器 [%s] - 科学"
-
-#~ msgid "Calculator [%s] - Programming"
-#~ msgstr "计算器 [%s] - 编程"
-
-#~ msgid "_Other (%d) ..."
-#~ msgstr "其它 (%d)(_O)..."
-
-#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
-#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-#~ msgstr[0] "将精度设定为 0 到 %d 位数字。"
-
-#~ msgid "sin"
-#~ msgstr "sin"
-
-#~ msgid "sin<sup>−1</sup>"
-#~ msgstr "sin<sup>-1</sup>"
-
-#~ msgid "sinh"
-#~ msgstr "sin"
-
-#~ msgid "sinh<sup>−1</sup>"
-#~ msgstr "sinh<sup>-1</sup>"
-
-#~ msgid "Sine [k]"
-#~ msgstr "正弦 [k]"
-
-#~ msgid "Hyperbolic Sine [k]"
-#~ msgstr "双曲正弦 [k]"
-
-#~ msgid "Hyperbolic Inverse Sine [K]"
-#~ msgstr "反双曲正弦 [K]"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "cos<sup>−1</sup>"
-#~ msgstr "cos <sup>-1</sup>"
-
-#~ msgid "cosh"
-#~ msgstr "cosh "
-
-#~ msgid "cosh<sup>−1</sup>"
-#~ msgstr "cosh <sup>-1</sup>"
-
-#~ msgid "Cosine [j]"
-#~ msgstr "余弦 [j]"
-
-#~ msgid "Inverse Cosine [J]"
-#~ msgstr "反余弦 [j]"
-
-#~ msgid "Hyperbolic Cosine [j]"
-#~ msgstr "双曲余弦 [j]"
-
-#~ msgid "Hyperbolic Inverse Cosine [J]"
-#~ msgstr "反双曲余弦 [J]"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "tan<sup>−1</sup>"
-#~ msgstr "tan<sup>-1</sup>"
-
-#~ msgid "tanh"
-#~ msgstr "tanh"
-
-#~ msgid "tanh<sup>−1</sup>"
-#~ msgstr "tanh<sup>-1</sup>"
-
-#~ msgid "Tangent [w]"
-#~ msgstr "正切 [w]"
-
-#~ msgid "Inverse Tangent [W]"
-#~ msgstr "反正切 [W]"
-
-#~ msgid "Hyperbolic Tangent [w]"
-#~ msgstr "双曲正切 [w]"
-
-#~ msgid "Hyperbolic Inverse Tangent [W]"
-#~ msgstr "反双曲正切 [W]"
-
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "e<sup><i>x</i></sup>"
-#~ msgstr "e<sup><i>x</i></sup>"
-
-#~ msgid "e to the power of the displayed value [N]"
-#~ msgstr "计算显示值的 e 次方 [N]"
-
-#~ msgid "log"
-#~ msgstr "log"
-
-#~ msgid "10<sup><i>x</i></sup>"
-#~ msgstr "10<sup><i>x</i></sup>"
-
-#~ msgid "10 to the power of displayed value [G]"
-#~ msgstr "计算当前显示值的 10 次幂 [G]"
-
-#~ msgid "log<sub>2</sub>"
-#~ msgstr "log<sub>2</sub>"
-
-#~ msgid "2<sup><i>x</i></sup>"
-#~ msgstr "2<sup><i>x</i></sup>"
-
-#~ msgid "Base 2 logarithm [h]"
-#~ msgstr "常用以 2 底的对数 [h]"
-
-#~ msgid "2 to the power of the displayed value [H]"
-#~ msgstr "计算显示值的指定 2 次方 [H]"
-
-#~ msgid "x<sup><i>y</i></sup>"
-#~ msgstr "x<sup><i>y</i></sup>"
-
-#~ msgid "x<sup>1/<i>y</i></sup>"
-#~ msgstr "x<sup><i>y</i></sup>"
-
-#~ msgid "Raise displayed value to the power of y [o]"
-#~ msgstr "提高显示值到 y 次幂 [o]"
-
-#~ msgid "Raise displayed value to the power of reciprocal y [O]"
-#~ msgstr "提高显示值到倒数 y 次幂 [O]"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "No."
-#~ msgstr "编号"
-
-#~ msgid "Value"
-#~ msgstr "值"
-
-#~ msgid "Reset to _Default (%d)"
-#~ msgstr "重置为默认值(%d)(_D)"
-
-#~ msgid "Negative X and non-integer Y not supported"
-#~ msgstr "不支持负 X 和非整数 Y"
-
-#~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "千米到英里转换因子"
-
-#~ msgid "square root of 2"
-#~ msgstr "2 的平方根"
-
-#~ msgid "π"
-#~ msgstr "π"
-
-#~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "厘米到英寸转换因子"
-
-#~ msgid "degrees in a radian"
-#~ msgstr "一弧度对应的角度"
-
-#~ msgid "2 ^ 20"
-#~ msgstr "2 ^ 20"
-
-#~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "克到盎司转换因子"
-
-#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr "千焦耳到英制热量单位转换因子"
-
-#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "立方厘米到立方英寸转换因子"
-
-#~ msgid ""
-#~ "%1$s version %2$s\n"
-#~ "\n"
-#~ "Usage: %3$s: [-u] [-?] [-v] [-h]\n"
-#~ msgstr ""
-#~ "%1$s 版本 %2$s\n"
-#~ "\n"
-#~ "用法：%3$s: [-u] [-?] [-v] [-h]\n"
-
-#~ msgid "Too long number"
-#~ msgstr "数字太长"
-
-#~ msgid "Math operation error"
-#~ msgstr "数学运算出错"
-
-#~ msgid "Error, cannot calculate cosine"
-#~ msgstr "错误，无法计算余弦"
-
-#~ msgid "&16"
-#~ msgstr "&16"
-
-#~ msgid "&32"
-#~ msgstr "&32"
-
-#~ msgid "16-bit unsigned integer value of display (])"
-#~ msgstr "显示值的 16 位无符号整数 (])"
-
-#~ msgid "32-bit unsigned integer value of display ([)"
-#~ msgstr "显示值的 32 位无符号整数 ([)"
-
-#~ msgid "±"
-#~ msgstr "±"
-
-#~ msgid "×"
-#~ msgstr "×"
-
-#~ msgid "÷"
-#~ msgstr "÷"
-
-#~ msgid "−"
-#~ msgstr "−"
-
-#~ msgid "√"
-#~ msgstr "√"
-
-#~ msgid "pi"
-#~ msgstr "pi"
-
-#~ msgid "%s: %s as next argument.\n"
-#~ msgstr "%s：%s 为下个参数。\n"
-
-#~ msgid ""
-#~ "%s version %s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "%s 版本 %s\n"
-#~ "\n"
-
-#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-#~ msgstr "用法：%s: [-E] [-u] [-a 精度] "
-
-#~ msgid "\t\t [-?] [-v] [-h]\n"
-#~ msgstr "\t\t [-?] [-v] [-h]\n"
-
-#~ msgid "-a needs accuracy value"
-#~ msgstr "-a 需要精度值"
-
-#~ msgid "%s: base should be 2, 8, 10 or 16\n"
-#~ msgstr "%s：必须是二进制、八进制、十进制或十六进制\n"
-
-#~ msgid "%s: invalid display mode [%s]\n"
-#~ msgstr "%s：无效的显示模式[%s]\n"
-
-#~ msgid "%s: invalid mode [%s]\n"
-#~ msgstr "%s：无效模式[%s]\n"
-
-#~ msgid "%s: invalid trigonometric mode [%s]\n"
-#~ msgstr "%s：无效的角度模式[%s]\n"
-
-#~ msgid "Currently set to %d place."
-#~ msgid_plural "Currently set to %d places."
-#~ msgstr[0] "目前设为 %d 位数。"
-
-#~ msgid "Bit editor activated. Click on bit values to toggle them."
-#~ msgstr "位编辑器已激活。单击位值来切换它们。"
-
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ msgstr ""
-#~ "Gcalctool 是自由软件；您可以依据自由软件基金会所发表\n"
-#~ "的 GNU 通用公共许可证再次发布和/或修改它；\n"
-#~ "无论您依据的是本许可证的第二版，或(您选择的)以后的任何版本。\n"
-
-#~ msgid ""
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ msgstr ""
-#~ "发布 Gcalctool 是希望它有用，但没有任何担保；\n"
-#~ "亦无暗含的可否商业性使用或是否符合特定目的的担保。\n"
-#~ "详情请参考 GNU 通用公共许可证。\n"
-
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
-#~ msgstr ""
-#~ "您应该在收到 Gcalctool 的同时收到了 GNU 通用公共许可证的副本；\n"
-#~ "如果没有的话，请致函自由软件基金会，地址是 \n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
-
-#~ msgid "Changing Modes Clears Calculation"
-#~ msgstr "更改模式并清零"
-
-#~ msgid ""
-#~ "When you change modes, the current calculation will be cleared, and the "
-#~ "base will be reset to decimal."
-#~ msgstr "当您更改模式后，计算器将清零，基数也会被重置为十进制。"
-
-#~ msgid "_Do not warn me again"
-#~ msgstr "不要再警告我(_D)"
-
-#~ msgid "C_hange Mode"
-#~ msgstr "更改模式(_H)"
-
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "10 to the x"
-#~ msgstr "10 的 x 次方"
-
-#~ msgid "10x"
-#~ msgstr "10x"
-
-#~ msgid "16 bit unsigned integer"
-#~ msgstr "16 位无符号整数"
-
-#~ msgid "<i>x</i><sup><i>y</i></sup>"
-#~ msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#~ msgid "Bitwise AND"
-#~ msgstr "按位与"
-
-#~ msgid "Bitwise NOT"
-#~ msgstr "按位非"
-
-#~ msgid "Bitwise OR"
-#~ msgstr "按位或"
-
-#~ msgid "Bitwise XNOR"
-#~ msgstr "按位同或"
-
-#~ msgid "Bitwise XOR"
-#~ msgstr "按位异或"
-
-#~ msgid "Constants"
-#~ msgstr "常数"
-
-#~ msgid "E to the x"
-#~ msgstr "E 的 x 次方"
-
-#~ msgid "Hexadecimal digit B"
-#~ msgstr "十六进制数码 B"
-
-#~ msgid "Hexadecimal digit C"
-#~ msgstr "十六进制数码 C"
-
-#~ msgid "Hexadecimal digit D"
-#~ msgstr "十六进制数码 D"
-
-#~ msgid "Hexadecimal digit E"
-#~ msgstr "十六进制数码 E"
-
-#~ msgid "Hexadecimal digit F"
-#~ msgstr "十六进制数码 F"
-
-#~ msgid "Log<sub>10</sub>"
-#~ msgstr "Log<sub>10</sub>"
-
-#~ msgid "Show Bit Editor"
-#~ msgstr "显示位编辑器"
-
-#~ msgid "Show Bit _Editor"
-#~ msgstr "显示位编辑器(_E)"
-
-#~ msgid "Show bit editor"
-#~ msgstr "显示位编辑器"
-
-#~ msgid "Ten to the x"
-#~ msgstr "10 的 x 次方"
-
-#~ msgid "User-defined functions"
-#~ msgstr "用户自定义函数"
-
-#~ msgid "X to the y"
-#~ msgstr "X 的 y 次方"
-
-#~ msgid "e<sup>x</sup>"
-#~ msgstr "e<sup>x</sup>"
-
-#~ msgid "ex"
-#~ msgstr "ex"
-
-#~ msgid "xy"
-#~ msgstr "xy"
+#| msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
