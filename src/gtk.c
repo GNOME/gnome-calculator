@@ -56,12 +56,10 @@ static ButtonData button_data[] = {
     {"ans",                "ans"},
     {"numeric_point",      "."},
     {"add",                "+"},
-    {"subtract",           "−"},
     {"multiply",           "×"},
     {"divide",             "÷"},
     {"modulus_divide",     " mod "},
     {"x_pow_y",            "^"},
-    {"exponential",        "×10^"},
     {"percentage",         "%"},
     {"factorial",          "!"},
     {"abs",                "|"},
@@ -173,6 +171,8 @@ typedef struct {
     GtkWidget *superscript_toggle;
     GtkWidget *subscript_toggle;
 
+    gboolean can_super_minus;
+
     /* Labels for popup menus */
     GtkWidget *memory_store_labels[MAX_REGISTERS];
     GtkWidget *memory_recall_labels[MAX_REGISTERS];
@@ -216,8 +216,8 @@ typedef enum {
     CURRENCY_TARGET_LOWER
 } CurrencyTargetRow;
 
-static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
-static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
+static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
 static void load_ui(GtkBuilder *ui, const gchar *filename)
 {
@@ -371,6 +371,10 @@ do_button(int function, gpointer arg)
 {
     GtkTextIter start, end;
     gint cursor_start, cursor_end;
+  
+    /* Can't enter superscript minus after entering digits */
+    if (function == FN_TEXT && strstr("⁰¹²³⁴⁵⁶⁷⁸⁹", (char *)arg) != NULL)
+        X.can_super_minus = FALSE;
 
     /* Disable super/subscript mode when finished entering */
     if (function == FN_CALCULATE ||
@@ -814,8 +818,12 @@ G_MODULE_EXPORT
 void
 set_superscript_cb(GtkWidget *widget)
 {
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+       X.can_super_minus = TRUE;
        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.subscript_toggle), FALSE);
+    }
+    else
+       X.can_super_minus = FALSE;
 }
 
 
@@ -1161,11 +1169,49 @@ do_base(gint base)
 }
 
 
+static void
+do_exponent()
+{
+    do_text("×10");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), TRUE);
+}
+
+
+static void
+do_subtract()
+{
+    if (X.can_super_minus) {
+        do_text("⁻");
+        X.can_super_minus = FALSE;
+    }
+    else {
+        do_text("−");
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), FALSE);
+    }
+}
+
+
 G_MODULE_EXPORT
 void
 base_cb(GtkWidget *widget, GdkEventButton *event)
 {
     do_base(GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
+}
+
+
+G_MODULE_EXPORT
+void
+exponent_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    do_exponent();
+}
+
+
+G_MODULE_EXPORT
+void
+subtract_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    do_subtract();
 }
 
 
@@ -1193,8 +1239,8 @@ gboolean
 main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
 {
     int i, state;
-    const char *conversions[]       = {"-", "*", "/", NULL};
-    const char *conversion_values[] = {"−", "×", "÷", NULL };
+    const char *conversions[]       = {"*", "/", NULL};
+    const char *conversion_values[] = {"×", "÷", NULL };
 
     /* Only look at the modifiers we use */
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
@@ -1218,8 +1264,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             do_base(10);
             return TRUE;
         case GDK_e:
-            do_text("×10");
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), TRUE);
+            do_exponent();
             return TRUE;
         case GDK_f:
             do_button(FN_FACTORIZE, NULL);
@@ -1248,9 +1293,6 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.superscript_toggle))) {
         switch(event->keyval)
         {
-        case GDK_minus:
-            do_text("⁻");
-            return TRUE;
         case GDK_0:
             do_text("⁰");
             return TRUE;
@@ -1354,6 +1396,11 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         return FALSE;
 
     // FIXME: event->string deprecated
+
+    if (strcmp(event->string, "-") == 0 || strcmp(event->string, "−") == 0) {
+        do_subtract();
+        return TRUE;
+    }
 
     for (i = 0; conversions[i]; i++) {
         if (strcmp(event->string, conversions[i]) == 0) {
