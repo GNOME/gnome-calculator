@@ -96,6 +96,8 @@ void display_set_string(GCDisplay *display, const char *, int);
 void display_set_cursor(GCDisplay *display, int);
 void display_set_error(GCDisplay *display, const char *);
 
+void display_convert(GCDisplay *display, DisplayFormat format);
+
 void display_clear_stack(GCDisplay *);
 void display_push(GCDisplay *);
 void display_pop(GCDisplay *);

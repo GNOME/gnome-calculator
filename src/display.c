@@ -295,6 +295,22 @@ display_set_error(GCDisplay *display, const char *message)
 }
 
 
+void
+display_convert(GCDisplay *display, DisplayFormat format)
+{
+    DisplayFormat old_format;
+
+    if (!display_is_result (display))
+        return;
+
+    /* FIXME: A bit hacky... */
+    old_format = display->format;
+    display->format = format;
+    display_set_answer(display);
+    display->format = old_format;
+}
+
+
 static void
 copy_state(GCDisplayState *dst, GCDisplayState *src)
 {

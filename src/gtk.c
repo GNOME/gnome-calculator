@@ -75,9 +75,6 @@ static ButtonData button_data[] = {
     {"hyperbolic_cosine",  "cosh"},
     {"hyperbolic_tangent", "tanh"},
     {"inverse",            "⁻¹"},
-    {"base_2",             "₂"},
-    {"base_8",             "₈"},
-    {"base_16",            "₁₆"},
     {"and",                " AND "},
     {"or",                 " OR "},
     {"xor",                " XOR "},
@@ -1140,6 +1137,38 @@ digit_cb(GtkWidget *widget, GdkEventButton *event)
 }
 
 
+static void
+do_base(gint base)
+{
+    if (display_is_result(&v->display)) {
+        if (base == 2)
+            display_convert (&v->display, BIN);
+        else if (base == 8)
+            display_convert (&v->display, OCT);
+        else if (base == 16)
+            display_convert (&v->display, HEX);
+        else
+            display_convert (&v->display, DEC);
+    }
+    else {
+        if (base == 2)
+            do_text("₂");
+        else if (base == 8)
+            do_text("₈");
+        else if (base == 16)
+            do_text("₁₆");
+    }
+}
+
+
+G_MODULE_EXPORT
+void
+base_cb(GtkWidget *widget, GdkEventButton *event)
+{
+    do_base(GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
+}
+
+
 G_MODULE_EXPORT
 void
 button_cb(GtkWidget *widget, GdkEventButton *event)
@@ -1182,8 +1211,11 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     if (state == GDK_CONTROL_MASK) {
         switch(event->keyval)
         {
-        case GDK_u:
-            do_text("µ");
+        case GDK_b:
+            do_base(2);
+            return TRUE;
+        case GDK_d:
+            do_base(10);
             return TRUE;
         case GDK_e:
             do_text("×10");
@@ -1192,14 +1224,23 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         case GDK_f:
             do_button(FN_FACTORIZE, NULL);
             return TRUE;
-        case GDK_r:
-            do_text("√");
+        case GDK_h:
+            do_base(16);          
             return TRUE;
         case GDK_i:
             do_text("⁻¹");
             return TRUE;
+        case GDK_o:
+            do_base(8);
+            return TRUE;
         case GDK_p:
             do_text("π");
+            return TRUE;
+        case GDK_r:
+            do_text("√");
+            return TRUE;
+        case GDK_u:
+            do_text("µ");
             return TRUE;
         }
     }
@@ -1579,6 +1620,11 @@ create_main_window()
         set_string_data(X.ui, name, "calc_subscript_text", subscript_digits[i]);
         set_string_data(X.ui, name, "calc_superscript_text", superscript_digits[i]);
     }
+  
+    /* Set base button data */
+    set_int_data(X.ui, "calc_base_2_button", "base", 2);
+    set_int_data(X.ui, "calc_base_8_button", "base", 8);
+    set_int_data(X.ui, "calc_base_16_button", "base", 16);
 
     /* Connect menus to popup buttons */
     set_data(X.ui, "calc_shift_left_button", "calc_menu", GET_WIDGET("left_shift_popup"));
