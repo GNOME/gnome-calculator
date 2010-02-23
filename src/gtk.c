@@ -1392,6 +1392,13 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
         }
     }
 
+    if (state == GDK_CONTROL_MASK && event->keyval == GDK_minus) 
+    {
+        do_text("⁻");
+        X.can_super_minus = FALSE;
+        return TRUE;
+    }
+
     if (state != 0)
         return FALSE;
 
