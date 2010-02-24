@@ -122,6 +122,12 @@ test_parser()
     test("D₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D", "", PARSER_ERR_UNKNOWN_VARIABLE); test("D₁₆", "13", 0);
     test("E₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E", "", PARSER_ERR_UNKNOWN_VARIABLE); test("E₁₆", "14", 0);
     test("F₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F", "", PARSER_ERR_UNKNOWN_VARIABLE); test("F₁₆", "15", 0);
+    test("a₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("a₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("a", "", PARSER_ERR_UNKNOWN_VARIABLE); test("a₁₆", "10", 0);
+    test("b₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("b₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("b", "", PARSER_ERR_UNKNOWN_VARIABLE); test("b₁₆", "11", 0);
+    test("c₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("c₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("c", "", PARSER_ERR_UNKNOWN_VARIABLE); test("c₁₆", "12", 0);
+    test("d₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("d₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("d", "", PARSER_ERR_UNKNOWN_VARIABLE); test("d₁₆", "13", 0);
+    test("e₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("e₈", "", PARSER_ERR_UNKNOWN_VARIABLE); /* e is a built-in variable */              test("e₁₆", "14", 0);
+    test("f₂", "", PARSER_ERR_UNKNOWN_VARIABLE); test("f₈", "", PARSER_ERR_UNKNOWN_VARIABLE); test("f", "", PARSER_ERR_UNKNOWN_VARIABLE); test("f₁₆", "15", 0);
 
     test("+1", "1", 0);
     test("−1", "−1", 0);
