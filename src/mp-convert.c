@@ -177,7 +177,14 @@ mp_set_from_double(double dx, MPNumber *z)
 void
 mp_set_from_integer(int64_t x, MPNumber *z)
 {
+    int i;
+
     memset(z, 0, sizeof(MPNumber));
+
+    if (x == 0) {
+        z->sign = 0;
+        return;
+    }
 
     if (x < 0) {
         x = -x;
@@ -185,18 +192,42 @@ mp_set_from_integer(int64_t x, MPNumber *z)
     }
     else if (x > 0)
         z->sign = 1;
-    else
-        z->sign = 0; /* Optimisation for indicating zero */
 
-    z->exponent = 1;
-    z->fraction[0] = x;
-    while (z->fraction[0] >= MP_BASE) {
-        int i;
-        for (i = z->exponent; i >= 0; i--)
-            z->fraction[i] = z->fraction[i-1];
-        z->fraction[0] = z->fraction[1] / MP_BASE;
-        z->fraction[1] = z->fraction[1] % MP_BASE;
+    while (x != 0) {
+        z->fraction[z->exponent] = x % MP_BASE;
+        x = x / MP_BASE;
         z->exponent++;
+    }
+    for (i = 0; i < z->exponent / 2; i++) {
+        int t = z->fraction[i];
+        z->fraction[i] = z->fraction[z->exponent - i - 1];
+        z->fraction[z->exponent - i - 1] = t;
+    }
+}
+
+
+void
+mp_set_from_unsigned_integer(uint64_t x, MPNumber *z)
+{
+    int i;
+
+    memset(z, 0, sizeof(MPNumber));
+
+    if (x == 0) {
+        z->sign = 0;
+        return;
+    }
+    z->sign = 1;
+
+    while (x != 0) {
+        z->fraction[z->exponent] = x % MP_BASE;
+        x = x / MP_BASE;
+        z->exponent++;
+    }
+    for (i = 0; i < z->exponent / 2; i++) {
+        int t = z->fraction[i];
+        z->fraction[i] = z->fraction[z->exponent - i - 1];
+        z->fraction[z->exponent - i - 1] = t;
     }
 }
 
@@ -480,7 +511,7 @@ mp_cast_to_double(const MPNumber *x)
 
 
 static void
-mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, int trim_zeroes, int force_sign, GString *string)
+mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, bool trim_zeroes, bool force_sign, GString *string)
 {
     static char digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
@@ -570,7 +601,7 @@ mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, int trim_zeroe
 
 
 void
-mp_cast_to_string(const MPNumber *x, int base, int accuracy, int trim_zeroes, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
 {
     MPNumber x_real, x_im;
     GString *string;

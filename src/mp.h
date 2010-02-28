@@ -224,6 +224,9 @@ void   mp_set_from_double(double x, MPNumber *z);
 /* Sets z = x */
 void   mp_set_from_integer(int64_t x, MPNumber *z);
 
+/* Sets z = x */
+void   mp_set_from_unsigned_integer(uint64_t x, MPNumber *z);
+
 /* Sets z = numerator ÷ denominator */
 void   mp_set_from_fraction(int64_t numerator, int64_t denominator, MPNumber *z);
 
@@ -260,7 +263,7 @@ uint64_t mp_cast_to_unsigned_int(const MPNumber *x);
  * If 'trim_zeroes' is non-zero then strip off trailing zeroes.
  * Fractional components are truncated at 'max_digits' digits.
  */
-void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, int trim_zeroes, char *buffer, int buffer_length);
+void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, bool trim_zeroes, char *buffer, int buffer_length);
 
 /* Sets z = sin x */
 void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
