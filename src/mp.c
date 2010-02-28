@@ -382,7 +382,7 @@ mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
-mp_add_integer(const MPNumber *x, int y, MPNumber *z)
+mp_add_integer(const MPNumber *x, int64_t y, MPNumber *z)
 {
     MPNumber t;
     mp_set_from_integer(y, &t);
@@ -391,7 +391,7 @@ mp_add_integer(const MPNumber *x, int y, MPNumber *z)
 
 
 void
-mp_add_fraction(const MPNumber *x, int i, int j, MPNumber *y)
+mp_add_fraction(const MPNumber *x, int64_t i, int64_t j, MPNumber *y)
 {
     MPNumber t;
     mp_set_from_fraction(i, j, &t);
@@ -550,7 +550,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
-mp_divide_integer(const MPNumber *x, int y, MPNumber *z)
+mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
 {
     int i__1;
     int c, i, k, b2, c2, i2, j1, j2, r1;
@@ -722,13 +722,13 @@ L210:
 }
 
 
-int
+bool
 mp_is_integer(const MPNumber *x)
 {
     MPNumber t1, t2, t3;
     
     if (mp_is_complex(x))
-        return 0;
+        return false;
 
     /* This fix is required for 1/3 repiprocal not being detected as an integer */
     /* Multiplication and division by 10000 is used to get around a
@@ -746,49 +746,50 @@ mp_is_integer(const MPNumber *x)
 
     // Zero is an integer
     if (mp_is_zero(x))
-        return 1;
+        return true;
 
     // Fractional
     if (x->exponent <= 0)
-        return 0;
+        return false;
 
     // Look for fractional components
     for (i = x->exponent; i < MP_SIZE; i++) {
         if (x->fraction[i] != 0)
-            return 0;
+            return false;
     }
 
-    return 1;*/
+    return true;*/
 }
 
 
-int
+bool
 mp_is_positive_integer(const MPNumber *x)
 {
     if (mp_is_complex(x))
-        return 0;
+        return false;
     else
         return x->sign >= 0 && mp_is_integer(x);
 }
 
 
-int
+bool
 mp_is_natural(const MPNumber *x)
 {
     if (mp_is_complex(x))
-        return 0;
+        return false;
     else
         return x->sign > 0 && mp_is_integer(x);
 }
 
 
-int mp_is_complex(const MPNumber *x)
+bool
+mp_is_complex(const MPNumber *x)
 {
-    return 0;//x->im_sign != 0;
+    return false;//x->im_sign != 0;
 }
 
 
-int
+bool
 mp_is_equal(const MPNumber *x, const MPNumber *y)
 {
     return mp_compare_mp_to_mp(x, y) == 0;
@@ -986,9 +987,9 @@ mp_epowy(const MPNumber *x, MPNumber *z)
  *  SAVE INPUT PARAMETERS IN LOCAL VARIABLES
  */
 void
-mp_gcd(int *k, int *l)
+mp_gcd(int64_t *k, int64_t *l)
 {
-    int i, j;
+    int64_t i, j;
 
     i = abs(*k);
     j = abs(*l);
@@ -1018,35 +1019,35 @@ mp_gcd(int *k, int *l)
 }
 
 
-int
+bool
 mp_is_zero(const MPNumber *x)
 {
     return x->sign == 0; // && x->im_sign == 0;
 }
 
 
-int
+bool
 mp_is_negative(const MPNumber *x)
 {
     return x->sign < 0;
 }
 
 
-int
+bool
 mp_is_greater_equal(const MPNumber *x, const MPNumber *y)
 {
     return mp_compare_mp_to_mp(x, y) >= 0;
 }
 
 
-int
+bool
 mp_is_greater_than(const MPNumber *x, const MPNumber *y)
 {
     return mp_compare_mp_to_mp(x, y) > 0;
 }
 
 
-int
+bool
 mp_is_less_equal(const MPNumber *x, const MPNumber *y)
 {
     return mp_compare_mp_to_mp(x, y) <= 0;
@@ -1195,7 +1196,7 @@ mp_ln(const MPNumber *x, MPNumber *z)
 
 
 void
-mp_logarithm(int n, const MPNumber *x, MPNumber *z)
+mp_logarithm(int64_t n, const MPNumber *x, MPNumber *z)
 {
     MPNumber t1, t2;
     
@@ -1215,7 +1216,7 @@ mp_logarithm(int n, const MPNumber *x, MPNumber *z)
 }
 
 
-int
+bool
 mp_is_less_than(const MPNumber *x, const MPNumber *y)
 {
     return mp_compare_mp_to_mp(x, y) < 0;
@@ -1351,7 +1352,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
-mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
+mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
 {
     int c, i, c1, c2, j1, j2;
     int t1, t3, t4, ij, ri = 0, is, ix;
@@ -1480,7 +1481,7 @@ mp_multiply_integer(const MPNumber *x, int y, MPNumber *z)
 
 
 void
-mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z)
+mp_multiply_fraction(const MPNumber *x, int64_t numerator, int64_t denominator, MPNumber *z)
 {
     if (denominator == 0) {
         mperr(_("Division by zero is undefined"));
@@ -1651,7 +1652,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
 
 void
-mp_root(const MPNumber *x, int n, MPNumber *z)
+mp_root(const MPNumber *x, int64_t n, MPNumber *z)
 {
     float approximation;
     int ex, np, it0, t;
@@ -1840,7 +1841,7 @@ mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
-mp_xpowy_integer(const MPNumber *x, int n, MPNumber *z)
+mp_xpowy_integer(const MPNumber *x, int64_t n, MPNumber *z)
 {
     int i;
     MPNumber t;

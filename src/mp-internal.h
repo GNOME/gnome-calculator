@@ -39,7 +39,7 @@
 #define MP_T 55
 
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
-void mp_gcd(int *, int *);
+void mp_gcd(int64_t *, int64_t *);
 void mp_normalize(MPNumber *);
 
 #endif /* MP_INTERNAL_H */

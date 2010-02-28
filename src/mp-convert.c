@@ -175,7 +175,7 @@ mp_set_from_double(double dx, MPNumber *z)
 
 
 void
-mp_set_from_integer(int x, MPNumber *z)
+mp_set_from_integer(int64_t x, MPNumber *z)
 {
     memset(z, 0, sizeof(MPNumber));
 
@@ -202,24 +202,24 @@ mp_set_from_integer(int x, MPNumber *z)
 
 
 void
-mp_set_from_fraction(int i, int j, MPNumber *z)
+mp_set_from_fraction(int64_t numerator, int64_t denominator, MPNumber *z)
 {
-    mp_gcd(&i, &j);
+    mp_gcd(&numerator, &denominator);
 
-    if (j == 0) {
+    if (denominator == 0) {
         mperr("*** J == 0 IN CALL TO MP_SET_FROM_FRACTION ***\n");
         mp_set_from_integer(0, z);
         return;
     }
 
-    if (j < 0) {
-        i = -i;
-        j = -j;
+    if (denominator < 0) {
+        numerator = -numerator;
+        denominator = -denominator;
     }
 
-    mp_set_from_integer(i, z);
-    if (j != 1)
-        mp_divide_integer(z, j, z);
+    mp_set_from_integer(numerator, z);
+    if (denominator != 1)
+        mp_divide_integer(z, denominator, z);
 }
 
 
@@ -254,18 +254,17 @@ mp_set_from_random(MPNumber *z)
 }
 
 
-int
+int64_t
 mp_cast_to_int(const MPNumber *x)
 {
-    int i, j, x2, xs, ret_val = 0;
+    int i, j;
+    int64_t ret_val = 0;
 
     /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */
-    xs = x->sign;
-    if (xs == 0 || x->exponent <= 0)
+    if (x->sign == 0 || x->exponent <= 0)
         return 0;
 
-    x2 = x->exponent;
-    for (i = 0; i < x2; i++) {
+    for (i = 0; i < x->exponent; i++) {
         int izs;
         izs = ret_val;
         ret_val = MP_BASE * ret_val;
@@ -277,11 +276,9 @@ mp_cast_to_int(const MPNumber *x)
             return 0;
     }
 
-    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY
-     *  HAVE OCCURRED).
-     */
+    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY HAVE OCCURRED). */
     j = ret_val;
-    for (i = x2 - 1; i >= 0; i--) {
+    for (i = x->exponent - 1; i >= 0; i--) {
         int j1, kx;
 
         j1 = j / MP_BASE;
@@ -296,12 +293,54 @@ mp_cast_to_int(const MPNumber *x)
         return 0;
 
     /* RESULT CORRECT SO RESTORE SIGN AND RETURN */
-    return xs * ret_val;
+    return x->sign * ret_val;
 
     /* Old comment about returning zero: */
     /*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
      *  RETURN ZERO.
      */
+}
+
+
+uint64_t
+mp_cast_to_unsigned_int(const MPNumber *x)
+{
+    int i, j;
+    uint64_t ret_val = 0;
+
+    /* RETURN 0 IF X <= 0 OR IF NUMBER FRACTION */
+    if (x->sign <= 0 || x->exponent <= 0)
+        return 0;
+
+    for (i = 0; i < x->exponent; i++) {
+        int izs;
+        izs = ret_val;
+        ret_val = MP_BASE * ret_val;
+        if (i < MP_T)
+            ret_val += x->fraction[i];
+
+        /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
+        if (ret_val <= 0 || ret_val <= izs)
+            return 0;
+    }
+
+    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY HAVE OCCURRED). */
+    j = ret_val;
+    for (i = x->exponent - 1; i >= 0; i--) {
+        int j1, kx;
+
+        j1 = j / MP_BASE;
+        kx = 0;
+        if (i < MP_T)
+            kx = x->fraction[i];
+        if (kx != j - MP_BASE * j1)
+            return 0;
+        j = j1;
+    }
+    if (j != 0)
+        return 0;
+
+    return ret_val;
 }
 
 
@@ -655,7 +694,7 @@ ends_with(const char *start, const char *end, const char *word)
 }
 
 
-int
+bool
 mp_set_from_string(const char *str, MPNumber *z)
 {
     int i, base, negate = 0, multiplier = 0, base_multiplier = 1;
@@ -703,7 +742,7 @@ mp_set_from_string(const char *str, MPNumber *z)
     mp_set_from_integer(0, z);
     while ((i = char_val((char **)&c, base)) >= 0) {
         if (i > base)
-            return 1;
+            return true;
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
     }
@@ -742,7 +781,7 @@ mp_set_from_string(const char *str, MPNumber *z)
     }
 
     if (c != end) {
-        return 1;
+        return true;
     }
 
     if (multiplier != 0) {
@@ -755,5 +794,5 @@ mp_set_from_string(const char *str, MPNumber *z)
     if (negate == 1)
         mp_invert_sign(z, z);
 
-    return 0;
+    return false;
 }

@@ -39,6 +39,8 @@
 #ifndef MP_H
 #define MP_H
 
+#include <stdbool.h>
+#include <stdint.h>
 #include <glib.h>
 
 /* Size of the multiple precision values */
@@ -85,37 +87,37 @@ void mp_clear_error();
 int    mp_compare_mp_to_mp(const MPNumber *x, const MPNumber *y);
 
 /* Return true if the value is x == 0 */
-int    mp_is_zero(const MPNumber *x);
+bool   mp_is_zero(const MPNumber *x);
 
 /* Return true if x < 0 */
-int    mp_is_negative(const MPNumber *x);
+bool   mp_is_negative(const MPNumber *x);
 
 /* Return true if x is integer */
-int    mp_is_integer(const MPNumber *x);
+bool   mp_is_integer(const MPNumber *x);
 
 /* Return true if x is a positive integer */
-int    mp_is_positive_integer(const MPNumber *x);
+bool   mp_is_positive_integer(const MPNumber *x);
 
 /* Return true if x is a natural number (an integer ≥ 0) */
-int    mp_is_natural(const MPNumber *x);
+bool   mp_is_natural(const MPNumber *x);
 
 /* Return true if x has an imaginary component */
-int    mp_is_complex(const MPNumber *x);
+bool   mp_is_complex(const MPNumber *x);
 
 /* Return true if x == y */
-int    mp_is_equal(const MPNumber *x, const MPNumber *y);
+bool   mp_is_equal(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x ≥ y */
-int    mp_is_greater_equal(const MPNumber *x, const MPNumber *y);
+bool   mp_is_greater_equal(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x > y */
-int    mp_is_greater_than(const MPNumber *x, const MPNumber *y);
+bool   mp_is_greater_than(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x ≤ y */
-int    mp_is_less_equal(const MPNumber *x, const MPNumber *y);
+bool   mp_is_less_equal(const MPNumber *x, const MPNumber *y);
 
 /* Return true if x < y */
-int    mp_is_less_than(const MPNumber *x, const MPNumber *y);
+bool   mp_is_less_than(const MPNumber *x, const MPNumber *y);
 
 /* Sets z = |x| */
 void   mp_abs(const MPNumber *x, MPNumber *z);
@@ -139,10 +141,10 @@ void   mp_invert_sign(const MPNumber *x, MPNumber *z);
 void   mp_add(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x + y */
-void   mp_add_integer(const MPNumber *x, int y, MPNumber *z);
+void   mp_add_integer(const MPNumber *x, int64_t y, MPNumber *z);
 
 /* Sets z = x + numerator ÷ denominator */
-void   mp_add_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z);
+void   mp_add_fraction(const MPNumber *x, int64_t numerator, int64_t denominator, MPNumber *z);
 
 /* Sets z = x − y */
 void   mp_subtract(const MPNumber *x, const MPNumber *y, MPNumber *z);
@@ -151,16 +153,16 @@ void   mp_subtract(const MPNumber *x, const MPNumber *y, MPNumber *z);
 void   mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x × y */
-void   mp_multiply_integer(const MPNumber *x, int y, MPNumber *z);
+void   mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z);
 
 /* Sets z = x × numerator ÷ denominator */
-void   mp_multiply_fraction(const MPNumber *x, int numerator, int denominator, MPNumber *z);
+void   mp_multiply_fraction(const MPNumber *x, int64_t numerator, int64_t denominator, MPNumber *z);
 
 /* Sets z = x ÷ y */
 void   mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x ÷ y */
-void   mp_divide_integer(const MPNumber *x, int y, MPNumber *z);
+void   mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z);
 
 /* Sets z = 1 ÷ x */
 void   mp_reciprocal(const MPNumber *, MPNumber *);
@@ -175,7 +177,7 @@ void   mp_integer_component(const MPNumber *x, MPNumber *z);
 void   mp_ln(const MPNumber *x, MPNumber *z);
 
 /* Sets z = log_n x */
-void   mp_logarithm(int n, const MPNumber *x, MPNumber *z);
+void   mp_logarithm(int64_t n, const MPNumber *x, MPNumber *z);
 
 /* Sets z = π */
 void   mp_get_pi(MPNumber *z);
@@ -187,7 +189,7 @@ void   mp_get_eulers(MPNumber *z);
 void   mp_get_i(MPNumber *z);
 
 /* Sets z = n√x */
-void   mp_root(const MPNumber *x, int n, MPNumber *z);
+void   mp_root(const MPNumber *x, int64_t n, MPNumber *z);
 
 /* Sets z = √x */
 void   mp_sqrt(const MPNumber *x, MPNumber *z);
@@ -202,7 +204,7 @@ void   mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z);
 void   mp_xpowy(const MPNumber *x, const MPNumber *y, MPNumber *z);
 
 /* Sets z = x^y */
-void   mp_xpowy_integer(const MPNumber *x, int y, MPNumber *z);
+void   mp_xpowy_integer(const MPNumber *x, int64_t y, MPNumber *z);
 
 /* Sets z = e^x */
 void   mp_epowy(const MPNumber *x, MPNumber *z);
@@ -220,10 +222,10 @@ void   mp_set_from_float(float x, MPNumber *z);
 void   mp_set_from_double(double x, MPNumber *z);
 
 /* Sets z = x */
-void   mp_set_from_integer(int x, MPNumber *z);
+void   mp_set_from_integer(int64_t x, MPNumber *z);
 
 /* Sets z = numerator ÷ denominator */
-void   mp_set_from_fraction(int numerator, int denominator, MPNumber *z);
+void   mp_set_from_fraction(int64_t numerator, int64_t denominator, MPNumber *z);
 
 /* Sets z = r(cos theta + i sin theta) */
 void   mp_set_from_polar(const MPNumber *r, MPAngleUnit unit, const MPNumber *theta, MPNumber *z);
@@ -235,9 +237,9 @@ void   mp_set_from_complex(const MPNumber *x, const MPNumber *y, MPNumber *z);
 void   mp_set_from_random(MPNumber *z);
 
 /* Sets z from a string representation in 'text'.
- * Returns 0 on success.
+ * Returns true on success.
  */
-int    mp_set_from_string(const char *text, MPNumber *z);
+bool   mp_set_from_string(const char *text, MPNumber *z);
 
 /* Returns x as a native single-precision floating point number */
 float  mp_cast_to_float(const MPNumber *x);
@@ -246,7 +248,10 @@ float  mp_cast_to_float(const MPNumber *x);
 double mp_cast_to_double(const MPNumber *x);
 
 /* Returns x as a native integer */
-int    mp_cast_to_int(const MPNumber *x);
+int64_t mp_cast_to_int(const MPNumber *x);
+
+/* Returns x as a native unsigned integer */
+uint64_t mp_cast_to_unsigned_int(const MPNumber *x);
 
 /* Converts x to a string representation.
  * The string is written into 'buffer' which is guaranteed to be at least 'buffer_length' octets in size.
@@ -294,7 +299,7 @@ void   mp_acosh(const MPNumber *x, MPNumber *z);
 void   mp_atanh(const MPNumber *x, MPNumber *z);
 
 /* Returns true if x is cannot be represented in a binary word of length 'wordlen' */
-int    mp_is_overflow(const MPNumber *x, int wordlen);
+bool   mp_is_overflow(const MPNumber *x, int wordlen);
 
 /* Sets z = boolean AND for each bit in x and z */
 void   mp_and(const MPNumber *x, const MPNumber *y, MPNumber *z);

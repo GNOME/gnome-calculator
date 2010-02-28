@@ -84,7 +84,7 @@ static int mp_bitwise_xor(int v1, int v2) { return v1 ^ v2; }
 static int mp_bitwise_not(int v1, int dummy) { return v1 ^ 0xF; }
 
 
-int
+bool
 mp_is_overflow (const MPNumber *x, int wordlen)
 {
     MPNumber tmp1, tmp2;
