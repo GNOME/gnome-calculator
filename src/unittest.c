@@ -482,10 +482,71 @@ test_numbers()
 }
 
 
+static void
+try(const char *string, bool result, bool expected)
+{
+    if ((result && !expected) || (!result && expected))
+        fail("%s -> %s, expected %s", string, expected ? "true" : "false", result ? "true" : "false");
+    else
+        pass("%s -> %s", string, result ? "true" : "false");
+}
+
+
+static void
+test_comparison()
+{
+    MPNumber zero, one, minus_one;
+  
+    mp_set_from_integer(0, &zero);
+    mp_set_from_integer(1, &one);
+    mp_set_from_integer(-1, &minus_one);
+
+    try("0 > -1", mp_is_greater_than (&zero, &minus_one), true);  
+    try("0 > 0", mp_is_greater_than (&zero, &zero), false);
+    try("0 > 1", mp_is_greater_than (&zero, &one), false);
+    try("0 >= -1", mp_is_greater_equal (&zero, &minus_one), true);  
+    try("0 >= 0", mp_is_greater_equal (&zero, &zero), true);
+    try("0 >= 1", mp_is_greater_equal (&zero, &one), false);
+    try("0 < -1", mp_is_less_than (&zero, &minus_one), false);  
+    try("0 < 0", mp_is_less_than (&zero, &zero), false);
+    try("0 < 1", mp_is_less_than (&zero, &one), true);
+    try("0 <= -1", mp_is_less_equal (&zero, &minus_one), false);  
+    try("0 <= 0", mp_is_less_equal (&zero, &zero), true);
+    try("0 <= 1", mp_is_less_equal (&zero, &one), true);
+
+    try("1 > -1", mp_is_greater_than (&one, &minus_one), true);  
+    try("1 > 0", mp_is_greater_than (&one, &zero), true);
+    try("1 > 1", mp_is_greater_than (&one, &one), false);
+    try("1 >= -1", mp_is_greater_equal (&one, &minus_one), true);
+    try("1 >= 0", mp_is_greater_equal (&one, &zero), true);
+    try("1 >= 1", mp_is_greater_equal (&one, &one), true);
+    try("1 < -1", mp_is_less_than (&one, &minus_one), false);  
+    try("1 < 0", mp_is_less_than (&one, &zero), false);
+    try("1 < 1", mp_is_less_than (&one, &one), false);
+    try("1 <= -1", mp_is_less_equal (&one, &minus_one), false);  
+    try("1 <= 0", mp_is_less_equal (&one, &zero), false);
+    try("1 <= 1", mp_is_less_equal (&one, &one), true);
+
+    try("-1 > -1", mp_is_greater_than (&minus_one, &minus_one), false);  
+    try("-1 > 0", mp_is_greater_than (&minus_one, &zero), false);
+    try("-1 > 1", mp_is_greater_than (&minus_one, &one), false);
+    try("-1 >= -1", mp_is_greater_equal (&minus_one, &minus_one), true);
+    try("-1 >= 0", mp_is_greater_equal (&minus_one, &zero), false);
+    try("-1 >= 1", mp_is_greater_equal (&minus_one, &one), false);
+    try("-1 < -1", mp_is_less_than (&minus_one, &minus_one), false);  
+    try("-1 < 0", mp_is_less_than (&minus_one, &zero), true);
+    try("-1 < 1", mp_is_less_than (&minus_one, &one), true);
+    try("-1 <= -1", mp_is_less_equal (&minus_one, &minus_one), true);  
+    try("-1 <= 0", mp_is_less_equal (&minus_one, &zero), true);
+    try("-1 <= 1", mp_is_less_equal (&minus_one, &one), true);
+}
+
+
 void
 unittest()
 {
     test_parser();
+    test_comparison();
     test_numbers();
     exit(fails > 0 ? 1 : 0);
 }
