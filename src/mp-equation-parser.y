@@ -160,6 +160,7 @@ exp:
 
 variable:
   tVARIABLE exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
+| tVARIABLE tSUPNUM {MPNumber t; if (!get_variable(yyscanner, $1, &t)) YYABORT; mp_xpowy_integer(&t, $2, &$$);; free($1);}
 | tVARIABLE tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
