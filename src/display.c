@@ -558,6 +558,32 @@ display_is_usable_number(GCDisplay *display, MPNumber *z)
 }
 
 
+gboolean
+display_is_number_with_base(GCDisplay *display)
+{
+    MPNumber t;
+    const char *text;
+    const char *sub_digits[] = { "₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL };
+    int i;
+
+    if (display_is_empty(display))
+        return FALSE;
+
+    if (display_is_result(display))
+        return (display->format == BIN || display->format == OCT || display->format == HEX);
+
+    /* See if it has a subscript suffix */
+    text = get_text(display);
+    text += strlen (text);
+    for (i = 0; sub_digits[i] != NULL; i++) {
+        if (strcmp (text - strlen (sub_digits[i]), sub_digits[i]) == 0)
+            return mp_set_from_string(get_text(display), &t) == 0;
+    }
+
+    return FALSE;
+}
+
+
 void
 display_init(GCDisplay *display)
 {

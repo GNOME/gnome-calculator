@@ -112,6 +112,7 @@ void display_delete(GCDisplay *, int, int);
 gboolean display_is_empty(GCDisplay *);
 gboolean display_is_result(GCDisplay *);
 gboolean display_is_usable_number(GCDisplay *display, MPNumber *);
+gboolean display_is_number_with_base(GCDisplay *display);
 
 void display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x);
 
