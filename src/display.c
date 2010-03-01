@@ -144,16 +144,17 @@ get_expression(GCDisplay *display)
 gboolean
 display_get_integer(GCDisplay *display, gint64 *value)
 {
-    gchar *endptr;
+    MPNumber t, min, max;
 
-    if (display_is_result(display)) {
-        *value = mp_cast_to_int(display_get_answer(display));
-        return TRUE;
-    }
-
-    *value = g_ascii_strtoll(get_text(display), &endptr, 10);
-    if(*endptr != '\0' || ((*value == G_MAXINT64 || *value == G_MININT64) && errno == ERANGE))
+    if (!display_is_usable_number(display, &t))
         return FALSE;
+
+    mp_set_from_integer(G_MININT64, &min);
+    mp_set_from_integer(G_MAXINT64, &max);
+    if (mp_is_less_than(&t, &min) || mp_is_greater_than(&t, &max))
+        return FALSE;
+
+    *value = mp_cast_to_int(&t);
     return TRUE;
 }
 
@@ -161,23 +162,17 @@ display_get_integer(GCDisplay *display, gint64 *value)
 gboolean
 display_get_unsigned_integer(GCDisplay *display, guint64 *value)
 {
-    const char *text;
-    char buf[MAX_DISPLAY];
-    gchar *endptr;
+    MPNumber t, max;
 
-    text = get_text(display);
-    if (display_is_result(display)) {
-        display_make_number(display, buf, MAX_DISPLAY, display_get_answer(display));
-        text = buf;
-    }
-
-    /* strtoull() treats the string like a 2's complement number which is not what we want */
-    if(strncmp(text, "-", strlen("-")) == 0 || strncmp(text, "−", strlen("−")) == 0)
+    if (!display_is_usable_number(display, &t))
+        return FALSE;
+  
+    mp_set_from_unsigned_integer(G_MAXUINT64, &max);
+    char string[MAX_DIGITS];
+    if (mp_is_negative(&t) || mp_is_greater_than(&t, &max))
         return FALSE;
 
-    *value = g_ascii_strtoull(text, &endptr, 10);
-    if(*endptr != '\0' || (*value == G_MAXUINT64 && errno == ERANGE))
-        return FALSE;
+    *value = mp_cast_to_unsigned_int(&t);
     return TRUE;
 }
 
