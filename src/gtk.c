@@ -1149,7 +1149,7 @@ static void
 do_base(gint base)
 {
     /* If has a number already in a base, then solve and convert it */
-    if (display_is_number_with_base(&v->display))
+    if (!display_is_result(&v->display) && display_is_number_with_base(&v->display))
         do_button(FN_CALCULATE, NULL);
 
     if (display_is_result(&v->display)) {
