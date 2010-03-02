@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gcalctool gnome-2-28\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-03 23:21+0000\n"
-"PO-Revision-Date: 2010-02-05 14:32+0100\n"
+"POT-Creation-Date: 2010-03-01 05:46+0000\n"
+"PO-Revision-Date: 2010-03-02 10:21+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -269,15 +269,15 @@ msgstr "_Zůstatek:"
 msgid "_Term:"
 msgstr "_Doba:"
 
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
 #. The label on the memory recall button
-#: ../data/gcalctool.ui.h:4
+#: ../data/gcalctool.ui.h:2
 msgid "&#x2190; R"
 msgstr "&#x2190; R"
+
+#. The label on the memory store button
+#: ../data/gcalctool.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
 
 #. The label on the currency button
 #: ../data/gcalctool.ui.h:6
@@ -855,7 +855,7 @@ msgid "_View"
 msgstr "_Zobrazit"
 
 #. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:101
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -1195,84 +1195,84 @@ msgstr "Americký dolar"
 msgid "South African rand"
 msgstr "Jihoafrický rand"
 
-#: ../src/display.c:379
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Žádná historie změn"
 
-#: ../src/display.c:394
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Žádné kroky opakování"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
+#: ../src/display.c:1066
 msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
+#: ../src/display.c:1082
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
-#: ../src/display.c:1071
+#: ../src/display.c:1108
 msgid "No sane value to store"
 msgstr "Nesmyslná hodnota pro uložení"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#: ../src/display.c:1230
 msgid "Overflow. Try a bigger word size"
 msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#: ../src/display.c:1235
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznámá proměnná „%s“"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#: ../src/display.c:1241
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
+#: ../src/display.c:1247
 #, c-format
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#: ../src/display.c:1256
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
+#: ../src/gtk.c:98
 msgid "Calculator — Advanced"
 msgstr "Kalkulačka - pokročilá"
 
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
+#: ../src/gtk.c:100
 msgid "Calculator — Financial"
 msgstr "Kalkulačka - finanční"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
+#: ../src/gtk.c:102
 msgid "Calculator — Scientific"
 msgstr "Kalkulačka - vědecká"
 
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
+#: ../src/gtk.c:104
 msgid "Calculator — Programming"
 msgstr "Kalkulačka - programátorská"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Chyba načítání uživatelského rozhraní"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
 "A required file is missing or damaged. Please check your installation.\n"
@@ -1285,7 +1285,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -1294,7 +1294,7 @@ msgstr ""
 "Marek Černocký <marek@manet.cz>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1325,33 +1325,33 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:579
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986-2008 autoři aplikace Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Nelze otevřít soubor s nápovědou"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
+#: ../src/gtk.c:1010
 msgid ""
 "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Nemáte tabulku aktuálních měnových kurzů. Má se nějaká stáhnout?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
+#: ../src/gtk.c:1020
 msgid ""
 "Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
@@ -1359,83 +1359,84 @@ msgstr ""
 "Nelze stáhnout tabulku měnových kurzů. Kvůli tomu můžete získat nesprávné "
 "výsledky nebo dokonce nemusíte získat vůbec žádné."
 
-#: ../src/gtk.c:1435
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Vložit"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "Dělení nulou není definováné"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1158 ../src/mp.c:1195
+#: ../src/mp.c:1169 ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmus nuly je nedefinovaný"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1167
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Logaritmus záporného čísla je nedefinovaný"
 
-#: ../src/mp.c:1541
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "Mocnina záporných čísel je definovaná pouze pro celočíselné exponenty"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1548 ../src/mp.c:1841
+#: ../src/mp.c:1559 ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Mocnina nuly není definovaná pro záporný exponent"
 
-#: ../src/mp.c:1573
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Převrácená hodnota nuly není definovaná"
 
-#: ../src/mp.c:1658
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "Odmocnitel musí být nenulový"
 
-#: ../src/mp.c:1676
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "Záporná odmocnina z nuly je nedefinovaná"
 
-#: ../src/mp.c:1682
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-tá odmocnina záporného čísla není definovaná pro sudé n"
 
-#: ../src/mp.c:1752
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "Druhá mocnina není definovaná pro záporná čísla"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1781
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "Faktoriál je definovaný pouze pro přirozená čísla"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1801
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Zbytek po dělení je definován pouze pro celá čísla"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND is only defined for natural numbers"
-msgstr "Logická konjunkce AND je definovaná pouze pro přirozená čísla"
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Logická konjunkce AND je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR is only defined for natural numbers"
-msgstr "Logická disjunkce OR je definovaná pouze pro přirozená čísla"
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Logická disjunkce OR je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR is only defined for natural numbers"
-msgstr "Logická exkluzivní disjunkce je definovaná pouze pro přirozená čísla"
+msgid "Boolean XOR is only defined for positive integers"
+msgstr ""
+"Logická exkluzivní disjunkce XOR je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT is only defined for natural numbers"
-msgstr "Logická negace NOT je definovaná pouze pro přirozená čísla"
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "Logická negace NOT je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
@@ -1445,10 +1446,10 @@ msgstr "Posun je možný pouze u celočíselných hodnot"
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid ""
-"Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 "
-"(90°)"
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"Tangens není definován pro úhly, které jsou násobky π∕2 (180°) od π∕4 (90°)"
+"Tangens není definován pro úhly, které jsou násobky π (180°) a to od π∕2 "
+"(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
