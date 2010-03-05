@@ -102,6 +102,27 @@ test(char *expression, char *expected, int expected_error)
 }
 
 
+int
+get_variable(const char *name, MPNumber *z, void *data)
+{
+    if (strcmp (name, "x") == 0) {
+        mp_set_from_integer (2, z);
+        return 1;
+    }
+    if (strcmp (name, "y") == 0) {
+        mp_set_from_integer (3, z);
+        return 1;
+    }
+    return 0;  
+}
+
+
+void
+set_variable(const char *name, const MPNumber *x, void *data)
+{
+}
+
+
 void
 test_parser()
 {
@@ -109,6 +130,8 @@ test_parser()
     base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
+    options.get_variable = get_variable;
+    options.set_variable = set_variable;
 
     base = 2;
     test("2", "10₂", 0);
@@ -193,24 +216,29 @@ test_parser()
     test("2×10^3", "2000", 0);
     test("2×10^−3", "0.002", 0);
 
+    test("x", "2", 0);
+    test("y", "3", 0);
+    test("z", "", PARSER_ERR_UNKNOWN_VARIABLE);
+    test("2y", "6", 0);
+    test("y2", "", PARSER_ERR_UNKNOWN_FUNCTION);
+    test("y²", "9", 0);
+    test("2y²", "18", 0);
+    test("xy", "6", 0);
+    test("yx", "6", 0);
+    test("2xy", "12", 0);
+    //test("x²y", "12", 0);
+    //test("xy²", "18", 0);
+    test("(xy)²", "36", 0);
+    //test("2x²y", "24", 0);
+    //test("2xy²", "36", 0);
+    //test("2x²y²", "72", 0);
+
     test("π", "3.141592654", 0);
     test("e", "2.718281828", 0);
-    test("e²", "7.389056099", 0);
-    test("2π", "6.283185307", 0);
-    test("2e", "5.436563657", 0);
-    test("2π²", "19.739208802", 0);
-    test("2e²", "14.778112198", 0);
-    test("e2", "", PARSER_ERR_UNKNOWN_FUNCTION);
-    test("π2", "", PARSER_ERR_UNKNOWN_FUNCTION);
-    test("πe", "8.539734223", 0);
-    test("eπ", "8.539734223", 0);
-    test("2πe", "17.079468445", 0);
-    /* All failing currently */
-    /*test("π²e", "26.828366298", 0);
-    test("πe²", "23.213404357", 0);
-    test("2π²e", "53.656732595", 0);
-    test("2πe²", "46.426808715", 0);
-    test("2π²e²", "145.854121188", 0);*/
+
+    test("z=99", "99", 0);
+    test("longname=99", "99", 0);
+    //test("e=99", "", PARSER_ERR_BUILTIN_VARIABLE);
 
     test("0+0", "0", 0);
     test("1+1", "2", 0);
@@ -278,6 +306,10 @@ test_parser()
     test("2²", "4", 0);
     test("2³", "8", 0);
     test("2¹⁰", "1024", 0);
+    test("(1+2)²", "9", 0);
+    test("(x)²", "4", 0);
+    test("|1−3|²", "4", 0);
+    test("|x|²", "4", 0);
     test("0^0", "1", 0);
     test("2^0", "1", 0);
     test("2^1", "2", 0);
@@ -324,8 +356,7 @@ test_parser()
     test("|1|", "1", 0);
     test("|−1|", "1", 0);
     test("|3−5|", "2", 0);
-    test("|e|", "2.718281828", 0);
-    test("|π|", "3.141592654", 0);
+    test("|x|", "2", 0);
     test("abs 1", "1", 0);
     test("abs (−1)", "1", 0);
 
