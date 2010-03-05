@@ -60,10 +60,24 @@ static void fail(const char *format, ...)
     fails++;
 }
 
+
+static const char *
+error_code_to_string(MPErrorCode error)
+{
+    static char error_string[1024];
+
+    if (error != PARSER_ERR_MP)
+        return mp_error_code_to_string(error);
+
+    snprintf(error_string, 1024, "PARSER_ERR_MP(\"%s\")", mp_get_error());
+    return error_string;
+}
+
+
 static void
 test(char *expression, char *expected, int expected_error)
 {
-    int error;
+    MPErrorCode error;
     MPNumber result;
     char result_str[1024] = "";
 
@@ -80,10 +94,10 @@ test(char *expression, char *expected, int expected_error)
     }
     else {
         if(error == expected_error)
-            pass("'%s' -> error %s", expression, mp_error_code_to_string(error));
+            pass("'%s' -> error %s", expression, error_code_to_string(error));
         else
             fail("'%s' -> error %s, expected error %s", expression,
-                 mp_error_code_to_string(error), mp_error_code_to_string(expected_error));
+                 error_code_to_string(error), error_code_to_string(expected_error));
     }
 }
 
