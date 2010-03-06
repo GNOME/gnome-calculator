@@ -1444,7 +1444,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     }
   
     /* Don't override space - it is used in UI */
-    if (event->string[0] == ' ')
+    if (event->string[0] == ' ' && !gtk_widget_has_focus(X.display_item))
         return FALSE;
 
     if (event->string[0] != '\0') {
