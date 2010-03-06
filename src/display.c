@@ -936,6 +936,8 @@ convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z
     };
     
     /* See if currency */
+    if (currency_rates_needs_update())
+        currency_download_rates();
     currency_load_rates();
     if (currency_get_index(x_units) >= 0 && currency_get_index(z_units) >= 0)
     {
