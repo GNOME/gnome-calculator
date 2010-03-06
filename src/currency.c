@@ -2,10 +2,10 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
+#include <gio/gio.h>
 #include <libxml/tree.h>
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
-#include <libsoup/soup.h>
 
 #include "currency.h"
 #include "mp.h"
@@ -76,28 +76,26 @@ currency_download_rates()
 {
     gchar *filename, *directory;
     GError *e = NULL;
-    SoupSession *session = soup_session_sync_new();
-    SoupMessage *msg = soup_message_new("GET",
-                                        "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
-    soup_session_send_message(session, msg);
-    if (msg->status_code != 200) {
-        return 0;
-    }
+    GFile *source, *dest;
+   
     filename = get_rate_filepath();
     directory = g_path_get_dirname(filename);
     g_mkdir_with_parents(directory, 0755);
     g_free(directory);
 
-    g_file_set_contents(filename,
-                        msg->response_body->data,
-                        msg->response_body->length,
-                        &e);
+    source = g_file_new_for_uri ("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
+    dest = g_file_new_for_path (filename);
+    g_free(filename);
+
+    g_file_copy (source, dest, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &e);
+    g_object_unref(source);
+    g_object_unref(dest);
+
     if (e != NULL) {
         fprintf(stderr, "Couldn't download currency file: %s\n", e->message);
+        g_error_free (e);
         return 0;
     }
-    g_free(filename);
-    g_object_unref(session);
 
     return 1;
 }
@@ -117,7 +115,8 @@ set_rate (xmlNodePtr node, currency *cur)
     }
 }
 
-void currency_load_rates()
+void
+currency_load_rates()
 {
     char *filename = get_rate_filepath();
     xmlDocPtr document;

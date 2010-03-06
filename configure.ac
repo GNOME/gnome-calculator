@@ -26,8 +26,8 @@ GCONF_REQUIRED=1.1.9
 PKG_CHECK_MODULES(GCALCTOOL, [
     gtk+-2.0 >= $GTK_REQUIRED
     gconf-2.0 >= $GCONF_REQUIRED
+    gio-2.0
     libxml-2.0
-    libsoup-2.4
     gmodule-export-2.0
 ])
 
