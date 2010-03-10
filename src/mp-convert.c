@@ -288,90 +288,82 @@ mp_set_from_random(MPNumber *z)
 int64_t
 mp_cast_to_int(const MPNumber *x)
 {
-    int i, j;
-    int64_t ret_val = 0;
-
-    /* RETURN 0 IF X = 0 OR IF NUMBER FRACTION */
+    int i;
+    int64_t z = 0, v;
+  
+    /* |x| <= 1 */
     if (x->sign == 0 || x->exponent <= 0)
         return 0;
 
+    /* Multiply digits together */
     for (i = 0; i < x->exponent; i++) {
-        int izs;
-        izs = ret_val;
-        ret_val = MP_BASE * ret_val;
-        if (i < MP_T)
-            ret_val += x->fraction[i];
+        int64_t t;
 
-        /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
-        if (ret_val <= 0 || ret_val <= izs)
+        t = z;
+        z = z * MP_BASE + x->fraction[i];
+      
+        /* Check for overflow */
+        if (z <= t)
             return 0;
     }
 
-    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY HAVE OCCURRED). */
-    j = ret_val;
+    /* Validate result */
+    v = z;
     for (i = x->exponent - 1; i >= 0; i--) {
-        int j1, kx;
+        int64_t digit;
 
-        j1 = j / MP_BASE;
-        kx = 0;
-        if (i < MP_T)
-            kx = x->fraction[i];
-        if (kx != j - MP_BASE * j1)
+        /* Get last digit */
+        digit = v - (v / MP_BASE) * MP_BASE;
+        if (x->fraction[i] != digit)
             return 0;
-        j = j1;
+
+        v /= MP_BASE;
     }
-    if (j != 0)
+    if (v != 0)
         return 0;
 
-    /* RESULT CORRECT SO RESTORE SIGN AND RETURN */
-    return x->sign * ret_val;
-
-    /* Old comment about returning zero: */
-    /*  HERE OVERFLOW OCCURRED (OR X WAS UNNORMALIZED), SO
-     *  RETURN ZERO.
-     */
+    return x->sign * z;
 }
 
 
 uint64_t
 mp_cast_to_unsigned_int(const MPNumber *x)
 {
-    int i, j;
-    uint64_t ret_val = 0;
-
-    /* RETURN 0 IF X <= 0 OR IF NUMBER FRACTION */
+    int i;
+    uint64_t z = 0, v;
+  
+    /* x <= 1 */
     if (x->sign <= 0 || x->exponent <= 0)
         return 0;
 
+    /* Multiply digits together */
     for (i = 0; i < x->exponent; i++) {
-        int izs;
-        izs = ret_val;
-        ret_val = MP_BASE * ret_val;
-        if (i < MP_T)
-            ret_val += x->fraction[i];
+        uint64_t t;
 
-        /* CHECK FOR SIGNS OF INTEGER OVERFLOW */
-        if (ret_val <= 0 || ret_val <= izs)
+        t = z;
+        z = z * MP_BASE + x->fraction[i];
+      
+        /* Check for overflow */
+        if (z <= t)
             return 0;
     }
 
-    /*  CHECK THAT RESULT IS CORRECT (AN UNDETECTED OVERFLOW MAY HAVE OCCURRED). */
-    j = ret_val;
+    /* Validate result */
+    v = z;
     for (i = x->exponent - 1; i >= 0; i--) {
-        int j1, kx;
+        uint64_t digit;
 
-        j1 = j / MP_BASE;
-        kx = 0;
-        if (i < MP_T)
-            kx = x->fraction[i];
-        if (kx != j - MP_BASE * j1)
+        /* Get last digit */
+        digit = v - (v / MP_BASE) * MP_BASE;
+        if (x->fraction[i] != digit)
             return 0;
-        j = j1;
+
+        v /= MP_BASE;
     }
-    if (j != 0)
+    if (v != 0)
         return 0;
 
-    return ret_val;
+    return z;
 }
 
 
