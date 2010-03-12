@@ -1,6 +1,7 @@
 # Brazilian Portuguese translation of the GNOME Calculator.
 # Copyright (C) 2003-2009 the GNOME Calculator authors.
 # This file is distributed under the same license as the gcalctool package.
+#
 # Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003.
 # Joao Emanuel <deathbird1981@yahoo.com.br>, 2003.
 # Estêvão Samuel Procópio <tevaum@gmail.com>, 2004.
@@ -11,19 +12,25 @@
 # Fabrício Godoy <skarllot@gmail.com>, 2008.
 # Rodrigo L. M. Flores <rodrigomarquesflores@gmail.com>, 2009.
 # Daniel S. Koda <danielskoda@gmail.com>, 2009-2010.
+# Felipe Vieira Borges <felipe10borges@gmail.com>, 2010.
+# Enrico Nicoletto <liverig@gmail.com>, 2010.
+#
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 17:44-0500\n"
-"PO-Revision-Date: 2010-02-03 17:05-0200\n"
-"Last-Translator: Daniel S. Koda <danielskoda@gmail.com>\n"
+"POT-Creation-Date: 2010-03-12 06:33-0300\n"
+"PO-Revision-Date: 2010-03-08 13:49-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Bookmarks: 260,259,258,257,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: Brazil\n"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/financial.ui.h:2
@@ -41,9 +48,12 @@ msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
 msgstr ""
-"Calcula o montante de um pagamento periódico de um empréstimo, no qual "
+"Calcula o montante do pagamento periódico de um empréstimo, no qual "
 "pagamentos são feitos no final de cada período de pagamento. "
 
+# Método de depreciação utilizado baseado na referência:
+# http://www.htmlstaff.org/xkurt/projetos/portaldoadmin/modules/news/article.php?storyid=638
+# *Outros sites corroboram para o mesmo termo.
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
 msgid ""
@@ -53,20 +63,23 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
-"Calcula o desconto de depreciação de um bem para um período específico de "
-"tempo, utilizando o método de Soma-dos-Dígitos-dos-Anos. Este método de "
-"depreciação acelera a taxa de depreciação, para que a maior depreciação "
+"Calcula o desconto de depreciação de um ativo para um período específico de "
+"tempo, utilizando o método da \"soma dos algarismos dos anos\". Este método "
+"de depreciação acelera a taxa de depreciação, para que a maior depreciação "
 "ocorra em períodos iniciais do que em posteriores. A vida útil é o número de "
 "períodos, normalmente anos, na qual o bem é depreciado. "
 
+# Referências:
+# Concurso de Analista Judiciário - especialidade Informática, questão 43, página 7.
+# Disponível em: <http://www.trf4.jus.br/trf4/upload/arquivos/provas_conc_anteriores_servidores/analista_informatica_1.pdf>
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:10
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
-"Calcula o desconto de depreciação em um bem para um período específico de "
-"tempo utilizando o método de balanço descrescente duplo."
+"Calcula o desconto de depreciação em um ativo para um período específico de "
+"tempo utilizando o método de balanço de declínio duplo."
 
 #. Future Value Dialog: Description of calculation
 #: ../data/financial.ui.h:12
@@ -77,7 +90,7 @@ msgid ""
 msgstr ""
 "Calcula o valor futuro de um investimento baseado em uma série de pagamentos "
 "iguais sob uma taxa de juros períodica sobre o número de períodos de "
-"pagamento no termo."
+"pagamento no prazo."
 
 #. Compounding Term Dialog: Description of calculation
 #: ../data/financial.ui.h:14
@@ -87,8 +100,8 @@ msgid ""
 "compounding period."
 msgstr ""
 "Calcula o número de períodos compostos necessários para aumentar um "
-"investimento de valor presente a um valor futuro, com um taxa de juros fixa "
-"por período composto."
+"investimento de valor presente para um de valor futuro, com uma taxa de "
+"juros fixa por período composto."
 
 #. Payment Period Dialog: Description of calculation
 #: ../data/financial.ui.h:16
@@ -98,8 +111,8 @@ msgid ""
 "rate."
 msgstr ""
 "Calcula o número de períodos de pagamento que são necessários durante o "
-"termo de uma anuidade ordinária, para acumular para um valor futuro, sob uma "
-"taxa de juros periódica."
+"prazo de uma anuidade ordinária para acumular um valor futuro, sob uma taxa "
+"de juros periódica."
 
 #. Periodic Interest Rate Dialog: Description of calculation
 #: ../data/financial.ui.h:18
@@ -118,8 +131,8 @@ msgid ""
 "periods in the term. "
 msgstr ""
 "Calcula o valor atual de um investimento baseado em uma série de pagamentos "
-"iguais descontados sob uma taxa de juros perióddica sobre o número de "
-"períodos de pagamento no termo. "
+"iguais descontados sob uma taxa de juros periódica sobre o número de "
+"períodos de pagamento no prazo. "
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/financial.ui.h:22
@@ -127,8 +140,8 @@ msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
-"Calcula o preço de revenda de um produto, baseado no custo do produto e "
-"amargem de lucro bruto desejada."
+"Calcula o preço de revenda de um produto, baseado no custo do produto e na "
+"margem de lucro bruto desejada."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:24
@@ -138,15 +151,15 @@ msgid ""
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
-"Calcula a depreciação linear de um bem para um período. O método de "
-"depreciação linear divide o custo de depreciação da mesma maneira sobre a "
-"vida útil de um bem. A vida útil é o número de períodos, normalmente anos, "
-"no qual um bem é depreciado. "
+"Calcula a depreciação linear de um ativo para um período. O método de "
+"depreciação linear divide o custo de depreciação de forma uniforme sobre a "
+"vida útil de um ativo. A vida útil é o número de períodos, normalmente anos, "
+"no qual um ativo é depreciado."
 
 #. Title of Compounding Term dialog
 #: ../data/financial.ui.h:26
 msgid "Compounding Term"
-msgstr "Termo composto"
+msgstr "Prazo composto"
 
 #: ../data/financial.ui.h:27
 msgid ""
@@ -165,7 +178,7 @@ msgstr "Conversão de moeda"
 #. Title of Double-Declining Depreciation dialog
 #: ../data/financial.ui.h:30
 msgid "Double-Declining Depreciation"
-msgstr "Depreciação decrescente dupla"
+msgstr "Depreciação de declínio duplo"
 
 #. Title of Future Value dialog
 #: ../data/financial.ui.h:32
@@ -220,7 +233,7 @@ msgstr "Depreciação linear"
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
 msgid "Sum-of-the-Years'-Digits Depreciation"
-msgstr "Depreciação \"soma-dos-dígitos-dos-anos\""
+msgstr "Depreciação da \"soma dos algarismos dos anos\""
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
 #: ../data/financial.ui.h:54
@@ -355,17 +368,17 @@ msgstr "Valor absoluto [|]"
 #. Tooltip for the addition button
 #: ../data/gcalctool.ui.h:34
 msgid "Add [+]"
-msgstr "Adiciona [+]"
+msgstr "Adicionar [+]"
 
 #. Tooltip for the answer variable button
 #: ../data/gcalctool.ui.h:36
 msgid "Answer variable"
-msgstr "Resposta variável"
+msgstr "Variável de resposta"
 
 #. Tooltip for the base 10 logarithm button
 #: ../data/gcalctool.ui.h:38
 msgid "Base 10 logarithm"
-msgstr "Logaritmo base 10"
+msgstr "Logaritmo de base 10"
 
 #. Accessible name for the base 16 button
 #: ../data/gcalctool.ui.h:40
@@ -390,27 +403,27 @@ msgstr "Binário"
 #. Tooltip for the boolean AND button
 #: ../data/gcalctool.ui.h:48
 msgid "Boolean AND"
-msgstr "E Booleano"
+msgstr "E booleano"
 
 #. Tooltip for the boolean NOT button
 #: ../data/gcalctool.ui.h:50
 msgid "Boolean NOT"
-msgstr "NÃO Booleano"
+msgstr "NÃO booleano"
 
 #. Tooltip for the boolean OR button
 #: ../data/gcalctool.ui.h:52
 msgid "Boolean OR"
-msgstr "OU Booleano"
+msgstr "OU booleano"
 
 #. Tooltip for the boolean exclusive OR button
 #: ../data/gcalctool.ui.h:54
 msgid "Boolean exclusive OR"
-msgstr "OU exclusivo Booleano"
+msgstr "OU exclusivo booleano"
 
 #. Tooltip for the solve button
 #: ../data/gcalctool.ui.h:56
 msgid "Calculate result [=]"
-msgstr "Calcula o resultado [=]"
+msgstr "Calcular o resultado [=]"
 
 #. Insert ASCII dialog: Label before character entry
 #: ../data/gcalctool.ui.h:58
@@ -420,7 +433,7 @@ msgstr "C_aractere:"
 #. Tooltop for the clear display button
 #: ../data/gcalctool.ui.h:60
 msgid "Clear display [Escape]"
-msgstr "Limpa o valor exibido [Escape]"
+msgstr "Limpar o visor [Tecla esc]"
 
 #. Label on the clear display button. Clr is short for Clear
 #: ../data/gcalctool.ui.h:62
@@ -432,10 +445,11 @@ msgstr "Clr"
 msgid "Ctrm"
 msgstr "Ctrm"
 
+# Abreviação de balanço de duplo declínio
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:66
 msgid "Ddb"
-msgstr "Dbd"
+msgstr "Bdd"
 
 #. Number display mode combo: Decimal, e.g. 1234
 #: ../data/gcalctool.ui.h:68
@@ -455,7 +469,7 @@ msgstr "_Formato de exibição:"
 #. Tooltip for the division button
 #: ../data/gcalctool.ui.h:74
 msgid "Divide [/]"
-msgstr "Divide [/]"
+msgstr "Dividir [/]"
 
 #. Tooltip for the end block button
 #: ../data/gcalctool.ui.h:76
@@ -475,12 +489,12 @@ msgstr "Número de Euler"
 #. Accessible name for the exponentiation (x to the power of y) button
 #: ../data/gcalctool.ui.h:82
 msgid "Exponent"
-msgstr "Exponencial"
+msgstr "Expoente"
 
 #. Tooltip for the exponentiation (x to the power of y) button
 #: ../data/gcalctool.ui.h:84
 msgid "Exponent [^ or **]"
-msgstr "Exponencial [^ ou **]"
+msgstr "Expoente [^ ou **]"
 
 #. Accessible name for the factorial button
 #: ../data/gcalctool.ui.h:86
@@ -507,11 +521,10 @@ msgstr "Fatorar em números primos (Ctrl+F)"
 msgid "Fractional portion"
 msgstr "Porção fracionária"
 
-# Parece que as calculadoras mais comuns no Brasil trazem essa tecla como FV
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
 #: ../data/gcalctool.ui.h:96
 msgid "Fv"
-msgstr "FV"
+msgstr "Vf"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../data/gcalctool.ui.h:98
@@ -521,7 +534,7 @@ msgstr "Mlb"
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
 #: ../data/gcalctool.ui.h:100
 msgid "Gradians"
-msgstr "Grados"
+msgstr "Gradianos"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
 #: ../data/gcalctool.ui.h:102
@@ -531,7 +544,7 @@ msgstr "Hexadecimal"
 #. Title of insert ASCII dialog
 #: ../data/gcalctool.ui.h:104
 msgid "Insert ASCII Value"
-msgstr "Inserir Valor ASCII"
+msgstr "Inserir valor ASCII"
 
 #. Accessible name for the insert character button
 #: ../data/gcalctool.ui.h:106
@@ -566,7 +579,7 @@ msgstr "Resto da divisão"
 #. Tooltip for the multiplication button
 #: ../data/gcalctool.ui.h:118
 msgid "Multiply [*]"
-msgstr "Multiplica [*]"
+msgstr "Multiplicar [*]"
 
 #. Tooltip for the natural logarithm button
 #: ../data/gcalctool.ui.h:120
@@ -592,7 +605,7 @@ msgstr "Complemento de um"
 #: ../data/gcalctool.ui.h:129
 #, no-c-format
 msgid "Percentage [%]"
-msgstr "Percentagem [%]"
+msgstr "Porcentagem [%]"
 
 #. Tooltip for the Pi button
 #: ../data/gcalctool.ui.h:131
@@ -608,11 +621,10 @@ msgstr "Pgt"
 msgid "Preferences"
 msgstr "Preferências"
 
-# Parece que as calculadoras mais comuns no Brasil trazem essa tecla como PV
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: ../data/gcalctool.ui.h:136
 msgid "Pv"
-msgstr "PV"
+msgstr "Vp"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
 #: ../data/gcalctool.ui.h:138
@@ -642,7 +654,7 @@ msgstr "Recorda o valor"
 #. Accessible description for the area in which results are displayed
 #: ../data/gcalctool.ui.h:148
 msgid "Result Region"
-msgstr "Região do Resultado"
+msgstr "Região do resultado"
 
 #. Tooltip for the root button
 #: ../data/gcalctool.ui.h:150
@@ -654,15 +666,17 @@ msgstr "Raiz [Ctrl+S]"
 msgid "Scientific"
 msgstr "Científica"
 
+# exponentiation = exponenciação
+# expoent = expoente
 #. Accessible name for the scientific exponent button
 #: ../data/gcalctool.ui.h:154
 msgid "Scientific Exponent"
-msgstr "Exponenciação científica"
+msgstr "Expoente científico"
 
 #. Tooltip for the scientific exponent button
 #: ../data/gcalctool.ui.h:156
 msgid "Scientific exponent [Ctrl+E]"
-msgstr "Exponenciação científica [Ctrl+E]"
+msgstr "Expoente científico [Ctrl+E]"
 
 #. Accessible name for the shift left button
 #: ../data/gcalctool.ui.h:158
@@ -677,27 +691,27 @@ msgstr "Mover para a direita"
 #. Tooltip for the shift left button
 #: ../data/gcalctool.ui.h:162
 msgid "Shift left [<]"
-msgstr "Mover para a esquerda [<]"
+msgstr "Move para a esquerda [<]"
 
 #. Tooltip for the shift right button
 #: ../data/gcalctool.ui.h:164
 msgid "Shift right [>]"
-msgstr "Mover para a direita [>]"
+msgstr "Move para a direita [>]"
 
 #. Preferences dialog: label for show thousands separator check button
 #: ../data/gcalctool.ui.h:166
 msgid "Show _thousands separators"
-msgstr "Mos_tra o separador de milhares"
+msgstr "Mos_trar o separador de milhares"
 
 #. Preferences dialog: label for show trailing zeroes check button
 #: ../data/gcalctool.ui.h:168
 msgid "Show trailing _zeroes"
-msgstr "Mostra _zeros no final"
+msgstr "Mostrar os _zeros a direita "
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:170
 msgid "Sln"
-msgstr "DC"
+msgstr "Cdl"
 
 #. Tooltip for the start block button
 #: ../data/gcalctool.ui.h:172
@@ -727,7 +741,7 @@ msgstr "Modo de número subscrito [Alt+número]"
 #. Tooltip for the subtraction button
 #: ../data/gcalctool.ui.h:182
 msgid "Subtract [-]"
-msgstr "Subtrai [-]"
+msgstr "Subtrair [-]"
 
 #. Accessible name for the superscript mode button
 #: ../data/gcalctool.ui.h:184
@@ -742,12 +756,12 @@ msgstr "Modo de número sobrescrito [Ctrl+número]"
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:188
 msgid "Syd"
-msgstr "Dsa"
+msgstr "Saa"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: ../data/gcalctool.ui.h:190
 msgid "Term"
-msgstr "Período"
+msgstr "Prazo"
 
 #. Tooltip for the truncate button
 #: ../data/gcalctool.ui.h:192
@@ -857,20 +871,20 @@ msgstr "_Científica"
 #. View menu
 #: ../data/gcalctool.ui.h:234
 msgid "_View"
-msgstr "_Ver"
+msgstr "_Visualizar"
 
 #. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:101
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Calculadora"
 
 #: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Efetue cálculos aritméticos, científicos, ou financeiros"
+msgstr "Efetue cálculos aritméticos, científicos ou financeiros"
 
 #: ../data/gcalctool.schemas.in.h:1
 msgid "Accuracy value"
-msgstr "Valor da precisão"
+msgstr "Valor de precisão"
 
 #: ../data/gcalctool.schemas.in.h:2
 msgid "Display Mode"
@@ -880,7 +894,9 @@ msgstr "Modo de exibição"
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
-msgstr "Mostrar zeros no final após a vírgula decimal no valor exibido."
+msgstr ""
+"Indica se quaiquer zeros à direita após o ponto numérico (a virgula) devem "
+"ser mostrados no valor de exibição."
 
 #: ../data/gcalctool.schemas.in.h:4
 msgid "Indicates whether the memory register window is initially displayed."
@@ -900,7 +916,7 @@ msgstr "Base numérica"
 
 #: ../data/gcalctool.schemas.in.h:8
 msgid "Show Registers"
-msgstr "Mostra os registradores"
+msgstr "Mostrar registros"
 
 #: ../data/gcalctool.schemas.in.h:9
 msgid "Show Thousands Separators"
@@ -908,32 +924,32 @@ msgstr "Mostrar separador de milhares"
 
 #: ../data/gcalctool.schemas.in.h:10
 msgid "Show Trailing Zeroes"
-msgstr "Mostrar zeros no final"
+msgstr "Mostrar zeros a direita"
 
 #: ../data/gcalctool.schemas.in.h:11
 msgid ""
 "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
 "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 msgstr ""
-"O modo inicial da calculadora. Valores válidos são \"BASIC\" (básica), "
+"O modo inicial da calculadora. Os valores válidos são \"BASIC\" (básica), "
 "\"FINANCIAL\" (financeira), \"LOGICAL\" (lógica), \"SCIENTIFIC"
-"\" (científica) ou \"PROGRAMMING\" (programável)"
+"\" (científica) ou \"PROGRAMMING\" (programação)"
 
 #: ../data/gcalctool.schemas.in.h:12
 msgid ""
 "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
 "\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
-"O modo de exibição inicial. Valores válidos são \"ENG\" (engenharia), \"FIX"
-"\" (ponto-fixo) e \"SCI\" (científico)"
+"O modo de exibição inicial. Os valores válidos são \"ENG\" (engenharia), "
+"\"FIX\" (ponto-fixo) e \"SCI\" (científico)"
 
 #: ../data/gcalctool.schemas.in.h:13
 msgid ""
 "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
 "\" (gradians) and \"RAD\" (radians)."
 msgstr ""
-"O tipo trigonométrico inicial. Valores válidos são \"DEG\" (graus), \"GRAD"
-"\" (grados) e \"RAD\" (radianos)."
+"O tipo trigonométrico inicial. Os valores válidos são \"DEG\" (graus), \"GRAD"
+"\" (gradianos) e \"RAD\" (radianos)."
 
 #: ../data/gcalctool.schemas.in.h:14
 msgid "The initial x-coordinate for the window"
@@ -953,11 +969,12 @@ msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:17
 msgid "The number of pixels to place the window from the left of the screen."
-msgstr "O número de pixels para colocar a janela a partir da esquerda da tela."
+msgstr ""
+"O número de pixels para colocar na janela a partir da esquerda da tela."
 
 #: ../data/gcalctool.schemas.in.h:18
 msgid "The number of pixels to place the window from the top of the screen."
-msgstr "O número de pixels para colocar a janela a partir do topo da tela."
+msgstr "O número de pixels para colocar na janela a partir do topo da tela."
 
 #: ../data/gcalctool.schemas.in.h:19
 msgid "The numeric base for input and display."
@@ -968,8 +985,8 @@ msgid ""
 "The size of the words used in bitwise operations. Valid values are 16, 32 "
 "and 64."
 msgstr ""
-"O tamanho das palavras usadas em operações bit a bit. Valores válidos são "
-"16, 32 ou 64."
+"O tamanho das palavras usadas em operações bit a bit. Os valores válidos são "
+"16, 32 e 64."
 
 #: ../data/gcalctool.schemas.in.h:21
 msgid "Trigonometric type"
@@ -1038,7 +1055,7 @@ msgid ""
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Opções do aplicativo:\n"
-"  -u, --unittest                  Executa testes unitários\n"
+"  -u, --unittest                  Executa testes de unidade\n"
 "  -s, --solve <equação>           Resolve a equação dada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
@@ -1058,7 +1075,6 @@ msgstr "O argumento \"%s\" é desconhecido"
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
-# Todas as traduções para as moedas foram retiradas de: http://pt.wikipedia.org/wiki/Lista_de_moedas
 #: ../src/currency.h:18
 msgid "Australian dollar"
 msgstr "Dólar australiano"
@@ -1081,11 +1097,11 @@ msgstr "Franco suíço"
 
 #: ../src/currency.h:23
 msgid "Chinese yuan renminbi"
-msgstr "Iuan Renminbi chinês"
+msgstr "Yuan renminbi chinês"
 
 #: ../src/currency.h:24
 msgid "Czech koruna"
-msgstr "Coroa da República Checa"
+msgstr "Coroa tcheca"
 
 #: ../src/currency.h:25
 msgid "Danish krone"
@@ -1199,97 +1215,97 @@ msgstr "Dólar norte-americano"
 msgid "South African rand"
 msgstr "Rand sul-africano"
 
-#: ../src/display.c:379
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Sem histórico para desfazer"
 
-#: ../src/display.c:394
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Sem passos para refazer"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
+#: ../src/display.c:1068
 msgid "No sane value to bitwise shift"
-msgstr "Nenhum valor sano para efetuar alternação bit a bit"
+msgstr "Não há um valor razoável para alternar bit a bit"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
+#: ../src/display.c:1084
 msgid "Need an integer to factorize"
 msgstr "É necessário um valor inteiro para fatorar"
 
-#: ../src/display.c:1071
+#: ../src/display.c:1110
 msgid "No sane value to store"
-msgstr "Nenhum valor sano para armazenar"
+msgstr "Não há um valor razoável para armazenar"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#: ../src/display.c:1232
 msgid "Overflow. Try a bigger word size"
-msgstr "Estouro de capacidade. Tente um tamanho maior de palavra"
+msgstr "Estouro de capacidade. Tente um tamanho de palavra maior"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#: ../src/display.c:1237
 #, c-format
 msgid "Unknown variable '%s'"
-msgstr "Variável \"%s\" desconhecida"
+msgstr "A variável \"%s\" é desconhecida"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#: ../src/display.c:1243
 #, c-format
 msgid "Function '%s' is not defined"
-msgstr "Função \"%s\" não está definida"
+msgstr "A função \"%s\" não está definida"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
+#: ../src/display.c:1249
 #, c-format
 msgid "Unknown conversion"
 msgstr "Conversão desconhecida"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#: ../src/display.c:1258
 msgid "Malformed expression"
 msgstr "Expressão mal formada"
 
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
+#: ../src/gtk.c:98
 msgid "Calculator — Advanced"
 msgstr "Calculadora — Avançada"
 
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
+#: ../src/gtk.c:100
 msgid "Calculator — Financial"
 msgstr "Calculadora — Financeira"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
+#: ../src/gtk.c:102
 msgid "Calculator — Scientific"
-msgstr "Científico — Científica"
+msgstr "Calculadora — Científica"
 
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
+#: ../src/gtk.c:104
 msgid "Calculator — Programming"
-msgstr "Calculadora — Programável"
+msgstr "Calculadora — Programação"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Erro ao carregar a interface de usuário"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
 "A required file is missing or damaged. Please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
-"Um arquivo requerido está ausente ou danificado. Por favor, verifique sua "
-"instalação.\n"
+"Um arquivo necessário está faltando ou foi danificado. Por favor, verifique "
+"sua instalação.\n"
 "\n"
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Alexandre Folle de Menezes <afmenez@terra.com.br>\n"
@@ -1301,10 +1317,11 @@ msgstr ""
 "Og Maciel <ogmaciel@ubuntu.com>\n"
 "Leonardo Ferreira Fontenelle <leonardof@gnome.org>\n"
 "Rodrigo L. M. Flores <rodrigomarquesflores@gmail.com>\n"
-"Daniel S. Koda <danielskoda@gmail.com>"
+"Daniel S. Koda <danielskoda@gmail.com>\n"
+"Enrico Nicoletto <liverig@gmail.com>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1320,7 +1337,7 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"O Gcalctool é software livre; você pode redistribuí-lo e/ou\n"
+"O Gcalctool é um software livre; você pode redistribuí-lo e/ou\n"
 "modificá-lo sob os termos da Licença Pública Geral GNU publicada\n"
 "pela Free Software Foundation; qualquer versão 2 da licença, ou\n"
 "(à sua escolha) qualquer versão posterior.\n"
@@ -1336,27 +1353,27 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, EUA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:579
 msgid "© 1986–2008 The Gcalctool authors"
-msgstr "© 1986-2008 Autores do Gcalctool"
+msgstr "© 1986-2008 Os autores do Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora com modos financeiro e científico."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Não foi possível abrir o arquivo de ajuda"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
+#: ../src/gtk.c:1010
 msgid ""
 "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr ""
@@ -1364,130 +1381,132 @@ msgstr ""
 "agora?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
+#: ../src/gtk.c:1020
 msgid ""
 "Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
 msgstr ""
 "As taxas de câmbio não puderam ser baixadas. Você pode receber resultados "
-"imprecisos, ou pode não receber nenhum resultado."
+"imprecisos ou pode não receber nenhum resultado."
 
-#: ../src/gtk.c:1435
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Colar"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1476
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
-msgstr "Divisão por zero não está definida"
+msgstr "A divisão por zero não é definida"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1158 ../src/mp.c:1195
+#: ../src/mp.c:1169 ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
-msgstr "Logaritmo de zero é indefinido"
+msgstr "O logaritmo de zero não é definido"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1167
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
-msgstr "Logaritmo de valores negativos é indefinido"
+msgstr "O logaritmo de valores negativos não é definido"
 
-#: ../src/mp.c:1541
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr ""
 "A potência de números negativos é definida apenas para expoentes inteiros"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1548 ../src/mp.c:1841
+#: ../src/mp.c:1559 ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "A potência de zero é indefinida para um expoente negativo"
 
-#: ../src/mp.c:1573
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "A recíproca de zero é indefinida"
 
-#: ../src/mp.c:1658
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
-msgstr "Raiz deve ser diferente de zero"
+msgstr "A raiz deve ser diferente de zero"
 
-#: ../src/mp.c:1676
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
-msgstr "Raiz negativa de zero é indefinido"
+msgstr "A raiz negativa de zero não está definida"
 
-#: ../src/mp.c:1682
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
-msgstr "enésima raiz de um número negatico é indefinida para n par"
+msgstr "A enésima raiz de um número negativo é indefinida para o mesmo n"
 
-#: ../src/mp.c:1752
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
-msgstr "Raiz quadrada é indefinida para valores negativos"
+msgstr "A raiz quadrada é indefinida para valores negativos"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1781
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
-msgstr "Fatorial é definido apenas para números naturais"
+msgstr "O fatorial é definido apenas para números naturais"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1801
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
-msgstr "Resto da divisão é definido apenas para inteiros"
+msgstr "O resto da divisão é definido apenas para inteiros"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND is only defined for natural numbers"
-msgstr "E Booleano é definido apenas para números naturais"
+msgid "Boolean AND is only defined for positive integers"
+msgstr "O AND booleano é definido apenas para números inteiros positivos"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR is only defined for natural numbers"
-msgstr "OU Booleano é definido apenas para números naturais"
+msgid "Boolean OR is only defined for positive integers"
+msgstr "O OR booleano é definido apenas para números inteiros e positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR is only defined for natural numbers"
-msgstr "OU exclusivo Booleano é definido apenas para números naturais"
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "O XOR bololeano só é definido para números inteiros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT is only defined for natural numbers"
-msgstr "NÃO Booleano é definido apenas para números naturais"
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "O NOT booleano é definido apenas para números inteiros positivos"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
 msgid "Shift is only possible on integer values"
-msgstr "Deslocamento é possível apenas em valores inteiros"
+msgstr "A alternância só é possível para valores inteiros"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"Tangente é indefinida para ângulos que são múltiplos de π (180°) a partir de "
-"π∕2 (90°)"
+"A tangente não é definida para ângulos que são múltiplos de π (180°) a "
+"partir de π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
 msgid "Inverse sine is undefined for values outside [-1, 1]"
-msgstr "Inversa do seno é indefinida para valores fora do intervalo [-1, 1]"
+msgstr ""
+"O inverso do seno não é definido para valores fora do intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
-msgstr "Inversa do cosseno é indefinida para valores fora do intervalo [-1, 1]"
+msgstr ""
+"O inverso do cosseno não é definido para valores fora do intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
 msgid ""
 "Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
-"Inversa do cosseno hiperbólico é indefinida para valores menores ou iguais a "
-"um"
+"O inverso do cosseno hiperbólico não é definido para valores menores ou "
+"iguais a um"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:582
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
-"Inversa da tangente hiperbólica é indefinida para valores fora do intervalo "
-"[-1, 1]"
+"O inverso da tangente hiperbólica não é definido para valores fora do "
+"intervalo [-1, 1]"
 
 #~ msgid "%"
 #~ msgstr "%"
@@ -2128,809 +2147,3 @@ msgstr ""
 
 #~ msgid "_Memory Registers"
 #~ msgstr "_Registradores de Memória"
-
-# Colisão de tecla de acesso, com "_Calculadora".
-#~ msgid "_Sci"
-#~ msgstr "_Cie"
-
-#~ msgid "_Set"
-#~ msgstr "_Definir"
-
-#~ msgid "register 0"
-#~ msgstr "registro 0"
-
-#~ msgid "register 1"
-#~ msgstr "registro 1"
-
-#~ msgid "register 2"
-#~ msgstr "registro 2"
-
-#~ msgid "register 3"
-#~ msgstr "registro 3"
-
-#~ msgid "register 4"
-#~ msgstr "registro 4"
-
-#~ msgid "register 5"
-#~ msgstr "registro 5"
-
-#~ msgid "register 6"
-#~ msgstr "registro 6"
-
-#~ msgid "register 7"
-#~ msgstr "registro 7"
-
-#~ msgid "register 8"
-#~ msgstr "registro 8"
-
-#~ msgid "register 9"
-#~ msgstr "registro 9"
-
-#~ msgid "x2"
-#~ msgstr "x2"
-
-#~ msgid "%s: accuracy should be in the range 0-%d\n"
-#~ msgstr "%s: a precisão deveria estar no intervalo 0-%d\n"
-
-#~ msgid "Malformed function"
-#~ msgstr "Função mal formada"
-
-#~ msgid "No sane value to convert"
-#~ msgstr "Nenhum valor sano para converter"
-
-#~ msgid "Invalid number for the current base"
-#~ msgstr "Número inválido para a base atual"
-
-#~ msgid "Invalid bitwise operation"
-#~ msgstr "Operação bit a bit inválida"
-
-#~ msgid "Invalid modulus operation"
-#~ msgstr "Operação módulo inválida"
-
-#~ msgid "Calculator [%s]"
-#~ msgstr "Calculadora [%s]"
-
-#~ msgid "Calculator [%s] - Advanced"
-#~ msgstr "Calculadora [%s] - Avançada"
-
-#~ msgid "Calculator [%s] - Financial"
-#~ msgstr "Calculadora [%s] - Financeira"
-
-#~ msgid "Calculator [%s] - Scientific"
-#~ msgstr "Calculadora [%s] - Científica"
-
-#~ msgid "Calculator [%s] - Programming"
-#~ msgstr "Calculadora [%s] - Programável"
-
-#~ msgid "_Other (%d) ..."
-#~ msgstr "_Outro (%d) ..."
-
-#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
-#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-#~ msgstr[0] "Define a precisão de 0 a %d casa decimal. [A]"
-#~ msgstr[1] "Define a precisão de 0 a %d casas decimais. [A]"
-
-#~ msgid "sin"
-#~ msgstr "sen"
-
-#~ msgid "sin<sup>−1</sup>"
-#~ msgstr "sen<sup>-1</sup>"
-
-#~ msgid "sinh"
-#~ msgstr "senh"
-
-#~ msgid "sinh<sup>−1</sup>"
-#~ msgstr "senh<sup>-1</sup>"
-
-#~ msgid "Sine [k]"
-#~ msgstr "Seno [k]"
-
-#~ msgid "Hyperbolic Sine [k]"
-#~ msgstr "Seno Hiperbólico [k]"
-
-#~ msgid "Hyperbolic Inverse Sine [K]"
-#~ msgstr "Inversa do Seno Hiperbólico [K]"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "cos<sup>−1</sup>"
-#~ msgstr "cos<sup>-1</sup>"
-
-#~ msgid "cosh"
-#~ msgstr "cosh"
-
-#~ msgid "cosh<sup>−1</sup>"
-#~ msgstr "cosh<sup>-1</sup>"
-
-#~ msgid "Cosine [j]"
-#~ msgstr "Cosseno [j]"
-
-#~ msgid "Inverse Cosine [J]"
-#~ msgstr "Inversa do Cosseno [J]"
-
-#~ msgid "Hyperbolic Cosine [j]"
-#~ msgstr "Cosseno Hiperbólico [j]"
-
-#~ msgid "Hyperbolic Inverse Cosine [J]"
-#~ msgstr "Inversa do Cosseno Hiperbólico [J]"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "tan<sup>−1</sup>"
-#~ msgstr "tan<sup>-1</sup>"
-
-#~ msgid "tanh"
-#~ msgstr "tanh"
-
-#~ msgid "tanh<sup>−1</sup>"
-#~ msgstr "tanh<sup>-1</sup>"
-
-#~ msgid "Tangent [w]"
-#~ msgstr "Tangente [w]"
-
-#~ msgid "Inverse Tangent [W]"
-#~ msgstr "Inversa da Tangente [W]"
-
-#~ msgid "Hyperbolic Tangent [w]"
-#~ msgstr "Tangente Hiperbólica [w]"
-
-#~ msgid "Hyperbolic Inverse Tangent [W]"
-#~ msgstr "Inversa da Tangente Hiperbólica [W]"
-
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "e<sup><i>x</i></sup>"
-#~ msgstr "e<sup><i>x</i></sup>"
-
-#~ msgid "e to the power of the displayed value [N]"
-#~ msgstr "e elevado à potência do número exibido [N]"
-
-#~ msgid "log"
-#~ msgstr "log"
-
-#~ msgid "10<sup><i>x</i></sup>"
-#~ msgstr "10<sup><i>x</i></sup>"
-
-#~ msgid "10 to the power of displayed value [G]"
-#~ msgstr "10 elevado à potência do número exibido [G]"
-
-#~ msgid "log<sub>2</sub>"
-#~ msgstr "log<sub>2</sub>"
-
-#~ msgid "2<sup><i>x</i></sup>"
-#~ msgstr "2<sup><i>x</i></sup>"
-
-#~ msgid "Base 2 logarithm [h]"
-#~ msgstr "Logaritmo base 2 [h]"
-
-#~ msgid "2 to the power of the displayed value [H]"
-#~ msgstr "2 elevado à potência do número exibido [H]"
-
-#~ msgid "x<sup><i>y</i></sup>"
-#~ msgstr "x<sup><i>y</i></sup>"
-
-#~ msgid "x<sup>1/<i>y</i></sup>"
-#~ msgstr "x<sup>1/<i>y</i></sup>"
-
-#~ msgid "Raise displayed value to the power of y [o]"
-#~ msgstr "Eleva o valor exibido à potência de y [o]"
-
-#~ msgid "Raise displayed value to the power of reciprocal y [O]"
-#~ msgstr "Eleva o valor exibido à potência de y [O]"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "No."
-#~ msgstr "Nº"
-
-#~ msgid "Value"
-#~ msgstr "Valor"
-
-#~ msgid "Reset to _Default (%d)"
-#~ msgstr "Restaurar _Padrão (%d)"
-
-#~ msgid "Negative X and non-integer Y not supported"
-#~ msgstr "Não X negativos e Y não-inteiros não são suportados"
-
-#~ msgid "Tangent is infinite"
-#~ msgstr "Tangente é infinita"
-
-#~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "Fator de conversão de quilômetros para milhas"
-
-#~ msgid "square root of 2"
-#~ msgstr "raiz quadrada de 2"
-
-#~ msgid "π"
-#~ msgstr "π"
-
-#~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "Fator de conversão de centímetros para polegadas"
-
-#~ msgid "degrees in a radian"
-#~ msgstr "graus em um radiano"
-
-#~ msgid "2 ^ 20"
-#~ msgstr "2 ^ 20"
-
-#~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "Fator de conversão de gramas para onças"
-
-#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr ""
-#~ "Fator de conversão de quilojoule para unidade térmica Britânica (BTUs)"
-
-#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "Fator de conversão de centímetros cúbicos para polegadas cúbicas"
-
-#~ msgid "Error in math library function %s"
-#~ msgstr "Erro na função %s da biblioteca matemática"
-
-#~ msgid "Too long number"
-#~ msgstr "Número longo demais"
-
-#~ msgid "Math operation error"
-#~ msgstr "Erro matemático operacional"
-
-#~ msgid "Sin"
-#~ msgstr "Sen"
-
-#~ msgid "Sinh"
-#~ msgstr "Senh"
-
-#~ msgid "Cos"
-#~ msgstr "Cos"
-
-#~ msgid "Cosh"
-#~ msgstr "Cosh"
-
-#~ msgid "Tan"
-#~ msgstr "Tan"
-
-#~ msgid "Tanh"
-#~ msgstr "Tanh"
-
-#~ msgid "Log"
-#~ msgstr "Log"
-
-#~ msgid "Error, cannot calculate cosine"
-#~ msgstr "Erro, não é possível calcular o cosseno"
-
-# Alguma sugestão melhor?
-#~ msgid "&16"
-#~ msgstr "&16"
-
-# Alguma sugestão melhor?
-#~ msgid "&32"
-#~ msgstr "&32"
-
-#~ msgid "16-bit unsigned integer value of display (])"
-#~ msgstr "Valor inteiro de 16 bits sem sinal do display (])"
-
-#~ msgid "32-bit unsigned integer value of display ([)"
-#~ msgstr "Valor inteiro de 32 bits sem sinal do display ([)"
-
-#~ msgid "_Contents"
-#~ msgstr "_Constantes"
-
-#~ msgid "_Redo"
-#~ msgstr "_Refazer"
-
-#~ msgid "_Undo"
-#~ msgstr "Desfa_zer"
-
-#~ msgid "±"
-#~ msgstr "±"
-
-#~ msgid "×"
-#~ msgstr "×"
-
-#~ msgid "÷"
-#~ msgstr "÷"
-
-#~ msgid "−"
-#~ msgstr "−"
-
-#~ msgid "√"
-#~ msgstr "√"
-
-#~ msgid ""
-#~ "%1$s version %2$s\n"
-#~ "\n"
-#~ "Usage: %3$s: [-u] [-?] [-v] [-h]\n"
-#~ msgstr ""
-#~ "%1$s versão %2$s\n"
-#~ "\n"
-#~ "Uso: %3$s: [-u] [-?] [-v] [-h]\n"
-
-#~ msgid "pi"
-#~ msgstr "pi"
-
-#~ msgid "%s: %s as next argument.\n"
-#~ msgstr "%s: %s como próximo argumento.\n"
-
-#~ msgid ""
-#~ "%s version %s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "%s versão %s\n"
-#~ "\n"
-
-#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-#~ msgstr "Uso: %s: [-E] [-u] [-a precisão] "
-
-#~ msgid "\t\t [-?] [-v] [-h]\n"
-#~ msgstr "\t\t [-?] [-v] [-h]\n"
-
-#~ msgid "-a needs accuracy value"
-#~ msgstr "-a necessita do valor de precisão"
-
-#~ msgid "%s: base should be 2, 8, 10 or 16\n"
-#~ msgstr "%s: base deveria ser 2, 8, 10 ou 16\n"
-
-#~ msgid "%s: invalid display mode [%s]\n"
-#~ msgstr "%s: modo de exibição inválido [%s]\n"
-
-#~ msgid "%s: invalid mode [%s]\n"
-#~ msgstr "%s: modo inválido [%s]\n"
-
-#~ msgid "%s: invalid trigonometric mode [%s]\n"
-#~ msgstr "%s: modo trigonométrico inválido [%s]\n"
-
-#~ msgid "Currently set to %d place."
-#~ msgid_plural "Currently set to %d places."
-#~ msgstr[0] "Atualmente definida como %d casa."
-#~ msgstr[1] "Atualmente definida como %d casas."
-
-#~ msgid "Bit editor activated. Click on bit values to toggle them."
-#~ msgstr ""
-#~ "Editor binário ativado. Clique nos valores binários para habilitá-los "
-#~ "desabilitá-los."
-
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ msgstr ""
-#~ "Gclactool é software livre; você pode redistribuí-lo e/ou modificá-lo\n"
-#~ "sob os termos da Licença Pública Geral GNU (GNU General Public License)\n"
-#~ "conforme publicada pela Free Software Foundation, tanto a versão 2 da\n"
-#~ "Licença como (a seu critério) qualquer versão mais nova.\n"
-
-#~ msgid ""
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ msgstr ""
-#~ "Gcalctool é distribuído na expectativa de ser útil,\n"
-#~ "mas SEM QUALQUER GARANTIA; sem mesmo a garantia implícita de\n"
-#~ "COMERCIALIZAÇÃO ou de ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. "
-#~ "Consulte a\n"
-#~ "Licença Pública Geral GNU para obter mais detalhes.\n"
-
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
-#~ msgstr ""
-#~ "Você deve ter recebido uma cópia da Licença Pública Geral GNU (GNU "
-#~ "General Public License)\n"
-#~ "junto com o Gcalctool; caso contrário, escreva para a Free Software "
-#~ "Foundation, Inc.,\n"
-#~ "51 Temple Place, Fifth Floor, Boston, MA 02110-1301 USA\n"
-
-#~ msgid "Changing Modes Clears Calculation"
-#~ msgstr "Trocar de Modo Limpa o Cálculo"
-
-#~ msgid ""
-#~ "When you change modes, the current calculation will be cleared, and the "
-#~ "base will be reset to decimal."
-#~ msgstr ""
-#~ "Quando você troca de modo, o cálculo atual é limpo e a base é redefinida "
-#~ "para decimal."
-
-#~ msgid "_Do not warn me again"
-#~ msgstr "_Não avisar novamente"
-
-#~ msgid "C_hange Mode"
-#~ msgstr "_Trocar de Modo"
-
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "10 to the x"
-#~ msgstr "10 elevado a x"
-
-#~ msgid "10x"
-#~ msgstr "10x"
-
-#~ msgid "16 bit unsigned integer"
-#~ msgstr "Valor inteiro de 16 bits sem sinal"
-
-#~ msgid "<i>x</i><sup><i>y</i></sup>"
-#~ msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#~ msgid "Bitwise AND"
-#~ msgstr "Operação E bit a bit"
-
-#~ msgid "Bitwise NOT"
-#~ msgstr "Operação NÃO bit a bit"
-
-#~ msgid "Bitwise OR"
-#~ msgstr "Operação OU bit a bit"
-
-#~ msgid "Bitwise XNOR"
-#~ msgstr "Operação OU Exclusivo Negado bit a bit"
-
-#~ msgid "Bitwise XOR"
-#~ msgstr "Operação OU Exclusivo bit a bit"
-
-#~ msgid "Constants"
-#~ msgstr "Constantes"
-
-#~ msgid "E to the x"
-#~ msgstr "E elevado a x"
-
-#~ msgid "Hexadecimal digit B"
-#~ msgstr "Dígito hexadecimal B"
-
-#~ msgid "Hexadecimal digit C"
-#~ msgstr "Dígito hexadecimal C"
-
-#~ msgid "Hexadecimal digit D"
-#~ msgstr "Dígito hexadecimal D"
-
-#~ msgid "Hexadecimal digit E"
-#~ msgstr "Dígito hexadecimal E"
-
-#~ msgid "Hexadecimal digit F"
-#~ msgstr "Dígito hexadecimal F"
-
-#~ msgid "Log<sub>10</sub>"
-#~ msgstr "Log<sub>10</sub>"
-
-#~ msgid "Show Bit Editor"
-#~ msgstr "Mostrar Editor Binário"
-
-#~ msgid "Show Bit _Editor"
-#~ msgstr "Mostrar E_ditor Binário"
-
-#~ msgid "Show bit editor"
-#~ msgstr "Mostra o editor binário"
-
-#~ msgid "Ten to the x"
-#~ msgstr "Dez elevado a x"
-
-#~ msgid "User-defined functions"
-#~ msgstr "Funções definidas pelo usuário"
-
-#~ msgid "X to the y"
-#~ msgstr "X elevado a y"
-
-#~ msgid "e<sup>x</sup>"
-#~ msgstr "e<sup>x</sup>"
-
-#~ msgid "ex"
-#~ msgstr "ex"
-
-#~ msgid "xy"
-#~ msgstr "xy"
-
-#~ msgid "Error, operands must be integers"
-#~ msgstr "Erro: os operandos devem ser inteiros"
-
-#~ msgid "Cleared display, prefix without an operator is not allowed"
-#~ msgstr "Display limpo, prefixo sem um operador não é permitido"
-
-#~ msgid "Malformed parenthesis expression"
-#~ msgstr "Expressão com parênteses mal formada"
-
-#~ msgid "%s: invalid syntax mode [%s]\n"
-#~ msgstr "%s: modo de sintaxe inválido [%s]\n"
-
-#~ msgid "Activated no operator precedence mode"
-#~ msgstr "Nenhum modo de precedência de operadores ativado"
-
-#~ msgid "Activated expression mode with operator precedence"
-#~ msgstr "Modo de expressão com precedência de operador ativado"
-
-#~ msgid "Clipboard contained malformed calculation"
-#~ msgstr "A área de transferência continha um cálculo mal formado"
-
-#~ msgid "A_rithmetic Precedence"
-#~ msgstr "_Precedência Aritmética"
-
-#~ msgid "Use Arithmetic Precedence"
-#~ msgstr "Usa Precedência Aritmética"
-
-#~ msgid "Use Left-right Precedence"
-#~ msgstr "Usa precedência esquerda para a direita"
-
-#~ msgid "_Left-to-right Precedence"
-#~ msgstr "Precedência da _Esquerda Para a Direita"
-
-#~ msgid "Expression"
-#~ msgstr "Expressão"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "Chs"
-#~ msgstr "Chs"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-#~ msgid "Sqrt"
-#~ msgstr "Raiz"
-
-#~ msgid "Recip"
-#~ msgstr "Recíp"
-
-#~ msgid "^2"
-#~ msgstr "^2"
-
-#~ msgid "&amp;16"
-#~ msgstr "&amp;16"
-
-#~ msgid "&amp;32"
-#~ msgstr "&amp;32"
-
-#~ msgid "32 bit unsigned integer"
-#~ msgstr "Valor inteiro de 32 bits sem sinal"
-
-#~ msgid " Mod "
-#~ msgstr " Mód "
-
-#~ msgid "e"
-#~ msgstr "e"
-
-#~ msgid "e^"
-#~ msgstr "e^"
-
-#~ msgid "^"
-#~ msgstr "^"
-
-#~ msgid "!"
-#~ msgstr "!"
-
-#~ msgid "Or"
-#~ msgstr "Ou"
-
-#~ msgid " Or "
-#~ msgstr " Ou "
-
-#~ msgid "And"
-#~ msgstr "E"
-
-#~ msgid " And "
-#~ msgstr " E "
-
-#~ msgid "Not"
-#~ msgstr "Não"
-
-#~ msgid "~"
-#~ msgstr "~"
-
-#~ msgid "Xor"
-#~ msgstr "Xou"
-
-#~ msgid " Xor "
-#~ msgstr " Xou "
-
-#~ msgid "Xnor"
-#~ msgstr "Xnou"
-
-#~ msgid " Xnor "
-#~ msgstr " Xnou "
-
-#~ msgid "Numeric stack error"
-#~ msgstr "Erro de pilha numérica"
-
-#~ msgid "Operand stack error"
-#~ msgstr "Erro de pilha de operandos"
-
-#~ msgid "calculator"
-#~ msgstr "calculadora"
-
-#~ msgid "%s: invalid bitcalc choice [%s]\n"
-#~ msgstr "%s: escolha de bitcálc inválido [%s]\n"
-
-#~ msgid "1 place"
-#~ msgstr "1 casa"
-
-#~ msgid "2 places"
-#~ msgstr "2 casas"
-
-#~ msgid "3 places"
-#~ msgstr "3 casas"
-
-#~ msgid "4 places"
-#~ msgstr "4 casas"
-
-#~ msgid "5 places"
-#~ msgstr "5 casas"
-
-#~ msgid "6 places"
-#~ msgstr "6 casas"
-
-#~ msgid "7 places"
-#~ msgstr "7 casas"
-
-#~ msgid "8 places"
-#~ msgstr "8 casas"
-
-#~ msgid "9 places"
-#~ msgstr "9 casas"
-
-#~ msgid "Show Bitcalculating _Extension"
-#~ msgstr "Exibir _Extensão BitCálculo"
-
-#~ msgid "Show bitcalculating extension"
-#~ msgstr "Mostra extensão bitcálculo"
-
-#~ msgid "0 significant places"
-#~ msgstr "0 casa significativas"
-
-#~ msgid "1 significant place"
-#~ msgstr "1 casa significativa"
-
-#~ msgid "2 significant places"
-#~ msgstr "2 casas significativas"
-
-#~ msgid "3 significant places"
-#~ msgstr "3 casas significativas"
-
-#~ msgid "4 significant places"
-#~ msgstr "4 casas significativas"
-
-#~ msgid "5 significant places"
-#~ msgstr "5 casas significativas"
-
-#~ msgid "6 significant places"
-#~ msgstr "6 casas significativas"
-
-#~ msgid "7 significant places"
-#~ msgstr "7 casas significativas"
-
-#~ msgid "8 significant places"
-#~ msgstr "8 casas significativas"
-
-#~ msgid "9 significant places"
-#~ msgstr "9 casas significativas"
-
-#~ msgid "_Other (10) ..."
-#~ msgstr "_Outro (10) ..."
-
-#~ msgid "Set other precision"
-#~ msgstr "Define outra precisão"
-
-#~ msgid "Note:"
-#~ msgstr "Nota:"
-
-#~ msgid ""
-#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-#~ msgstr ""
-#~ "Define precisão de 0 a %d casas decimais. Definida atualmente para %d "
-#~ "casas. [a]"
-
-#~ msgid "Accuracy value out of range"
-#~ msgstr "Valor de precisão fora dos limites"
-
-#~ msgid "Perform calculations"
-#~ msgstr "Executar cálculos"
-
-#~ msgid "Previous expression"
-#~ msgstr "Expressão anterior"
-
-#~ msgid "+/-"
-#~ msgstr "+/-"
-
-#~ msgid "*10^"
-#~ msgstr "*10^"
-
-#~ msgid "abs"
-#~ msgstr "abs"
-
-#~ msgid "acosh"
-#~ msgstr "acosh"
-
-#~ msgid "acos"
-#~ msgstr "acos"
-
-#~ msgid "and"
-#~ msgstr "e"
-
-#~ msgid "asinh"
-#~ msgstr "asenh"
-
-#~ msgid "asin"
-#~ msgstr "asen"
-
-#~ msgid "atanh"
-#~ msgstr "atanh"
-
-#~ msgid "atan"
-#~ msgstr "atan"
-
-#~ msgid "cbrt"
-#~ msgstr "rz. cúb."
-
-#~ msgid "chs"
-#~ msgstr "chs"
-
-#~ msgid "clr"
-#~ msgstr "clr"
-
-#~ msgid "ddb"
-#~ msgstr "ddb"
-
-#~ msgid "frac"
-#~ msgstr "fraç"
-
-#~ msgid "fv"
-#~ msgstr "vf"
-
-#~ msgid "int"
-#~ msgstr "int"
-
-#~ msgid "not"
-#~ msgstr "não"
-
-#~ msgid "or"
-#~ msgstr "ou"
-
-#~ msgid "pv"
-#~ msgstr "pv"
-
-#~ msgid "rand"
-#~ msgstr "rand"
-
-#~ msgid "rate"
-#~ msgstr "taxa"
-
-#~ msgid "rcl"
-#~ msgstr "rcl"
-
-#~ msgid "sln"
-#~ msgstr "sln"
-
-#~ msgid "sqrt"
-#~ msgstr "raiz"
-
-#~ msgid "sto"
-#~ msgstr "arm"
-
-#~ msgid "syd"
-#~ msgstr "syd"
-
-#~ msgid "term"
-#~ msgstr "term"
-
-#~ msgid "xnor"
-#~ msgstr "xnou"
-
-#~ msgid "xor"
-#~ msgstr "xou"
-
-#~ msgid "ans"
-#~ msgstr "resp"
-
-#~ msgid "_Quit"
-#~ msgstr "_Sair"
-
-#~ msgid "_Copy"
-#~ msgstr "_Copiar"
-
-#~ msgid "_About"
-#~ msgstr "_Sobre"
