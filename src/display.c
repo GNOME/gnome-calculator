@@ -821,7 +821,7 @@ convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z
         {"nm",                   "1852000"},
         {"mile",                    "1609.344"},
         {"miles",                   "1609.344"},
-        {"m",                       "1609.344"},
+        {"mi",                      "1609.344"},
         {"kilometer",               "1000"},
         {"kilometers",              "1000"},
         {"km",                      "1000"},
