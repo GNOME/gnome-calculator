@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 13:06+0100\n"
-"PO-Revision-Date: 2010-03-02 13:09+0100\n"
+"POT-Creation-Date: 2010-03-14 02:35+0100\n"
+"PO-Revision-Date: 2010-03-14 02:49+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -337,7 +337,7 @@ msgstr "Boolesk OR"
 #. Tooltip for the boolean exclusive OR button
 #: ../data/gcalctool.ui.h:54
 msgid "Boolean exclusive OR"
-msgstr ""
+msgstr "Boolesk exklusiv OR"
 
 #. Tooltip for the solve button
 #: ../data/gcalctool.ui.h:56
@@ -392,7 +392,7 @@ msgstr "Dividera [/]"
 #. Tooltip for the end block button
 #: ../data/gcalctool.ui.h:76
 msgid "End block [)]"
-msgstr ""
+msgstr "Slutblock [)]"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
 #: ../data/gcalctool.ui.h:78
@@ -421,20 +421,18 @@ msgstr "Fakultet"
 
 #. Tooltip for the factorial button
 #: ../data/gcalctool.ui.h:88
-#, fuzzy
 msgid "Factorial [!]"
-msgstr "Fakultet"
+msgstr "Fakultet [!]"
 
 #. Accessible name for the factorize button
 #: ../data/gcalctool.ui.h:90
-#, fuzzy
 msgid "Factorize"
-msgstr "Fakultet"
+msgstr "Faktorisera"
 
 #. Tooltip for the factorize button
 #: ../data/gcalctool.ui.h:92
 msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr ""
+msgstr "Faktorisera till primtal (Ctrl+F)"
 
 #. Tooltip for the fractional portion button
 #: ../data/gcalctool.ui.h:94
@@ -564,15 +562,13 @@ msgstr "Sats"
 
 #. Accessible name for the recall value button
 #: ../data/gcalctool.ui.h:144
-#, fuzzy
 msgid "Recall"
 msgstr "Hämt"
 
 #. Tooltip for the recall value button
 #: ../data/gcalctool.ui.h:146
-#, fuzzy
 msgid "Recall value"
-msgstr "Noggrannhetsvärde"
+msgstr "Hämta värde"
 
 #. Accessible description for the area in which results are displayed
 #: ../data/gcalctool.ui.h:148
@@ -639,7 +635,7 @@ msgstr "Rkl"
 #. Tooltip for the start block button
 #: ../data/gcalctool.ui.h:172
 msgid "Start block [(]"
-msgstr ""
+msgstr "Startblock [(]"
 
 #. Accessible name for the store value button
 #: ../data/gcalctool.ui.h:174
@@ -653,9 +649,8 @@ msgstr "Lagra värde"
 
 #. Accessible name for the subscript mode button
 #: ../data/gcalctool.ui.h:178
-#, fuzzy
 msgid "Subscript"
-msgstr "Beskrivning"
+msgstr "Nedsänkt"
 
 #. Tooltip for the subscript mode button
 #: ../data/gcalctool.ui.h:180
@@ -669,9 +664,8 @@ msgstr "Subtrahera [-]"
 
 #. Accessible name for the superscript mode button
 #: ../data/gcalctool.ui.h:184
-#, fuzzy
 msgid "Superscript"
-msgstr "Beskrivning"
+msgstr "Överskrift"
 
 #. Tooltip for the superscript mode button
 #: ../data/gcalctool.ui.h:186
@@ -701,9 +695,8 @@ msgstr "Första komplement [z]"
 
 #. Preferences dialog: label for word size combo box
 #: ../data/gcalctool.ui.h:196
-#, fuzzy
 msgid "Word _size:"
-msgstr "Ordstorlek"
+msgstr "Ord_storlek:"
 
 #. Right Shift Popup: Menu item to shift right by 1 bit
 #: ../data/gcalctool.ui.h:198
@@ -1124,45 +1117,44 @@ msgstr "Inga gör om-steg"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1066
-#, fuzzy
+#: ../src/display.c:1068
 msgid "No sane value to bitwise shift"
 msgstr "Inget vettigt värde att göra bitvis skifte"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1082
+#: ../src/display.c:1084
 msgid "Need an integer to factorize"
 msgstr ""
 
-#: ../src/display.c:1108
+#: ../src/display.c:1110
 msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1230
+#: ../src/display.c:1232
 msgid "Overflow. Try a bigger word size"
 msgstr "Överflöde. Prova en större ordstorlek"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1235
+#: ../src/display.c:1237
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Okänd variabel \"%s\""
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1241
+#: ../src/display.c:1243
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" är inte definierad"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1247
+#: ../src/display.c:1249
 #, c-format
 msgid "Unknown conversion"
 msgstr "Okänd konvertering"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1256
+#: ../src/display.c:1258
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
@@ -1207,11 +1199,11 @@ msgstr ""
 #: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
-"Daniel Nylander\n"
+"Daniel Nylander <po@danielnylander.se>\n"
 "Christian Rose\n"
 "\n"
 "Skicka synpunkter på översättningen till\n"
-"tp-sv@listor.tp-sv.se"
+"<tp-sv@listor.tp-sv.se>."
 
 #. Translators: The license this software is under (GPL2+)
 #: ../src/gtk.c:560
@@ -1272,7 +1264,7 @@ msgstr ""
 #. Translators: Title of the error dialog when unable to download currency rates
 #: ../src/gtk.c:1020
 msgid "Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."
-msgstr ""
+msgstr "Valutakurser kunde inte hämtas. Du kan få felaktiga resultat eller så kanske du inte får några resultat alls."
 
 #: ../src/gtk.c:1543
 msgid "Paste"
@@ -1283,18 +1275,18 @@ msgstr "Klistra in"
 #: ../src/mp.c:562
 #: ../src/mp.c:1487
 msgid "Division by zero is undefined"
-msgstr ""
+msgstr "Division med noll är inte definierad"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../src/mp.c:1169
 #: ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
-msgstr ""
+msgstr "Logaritm med noll är inte definierad"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
 #: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
-msgstr ""
+msgstr "Logaritm med negativa värden är inte definierad"
 
 #: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
@@ -1312,11 +1304,11 @@ msgstr ""
 
 #: ../src/mp.c:1669
 msgid "Root must be non-zero"
-msgstr ""
+msgstr "Rot får inte vara noll"
 
 #: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
-msgstr ""
+msgstr "Negativ rot av noll är inte definierad"
 
 #: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
@@ -1324,67 +1316,67 @@ msgstr ""
 
 #: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
-msgstr ""
+msgstr "Kvadratroten är inte definierad för negativa värden"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
 #: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
-msgstr ""
+msgstr "Faktultet är endast definierad för naturliga tal"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
-msgstr ""
+msgstr "Modulus division är endast definierad för heltal"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
 msgid "Boolean AND is only defined for positive integers"
-msgstr ""
+msgstr "Boolesk AND definieras endast för positiva heltal"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
 msgid "Boolean OR is only defined for positive integers"
-msgstr ""
+msgstr "Boolesk OR definieras endast för positiva heltal"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
 msgid "Boolean XOR is only defined for positive integers"
-msgstr ""
+msgstr "Boolesk XOR definieras endast för positiva heltal"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
 msgid "Boolean NOT is only defined for positive integers"
-msgstr ""
+msgstr "Boolesk NOT definieras endast för positiva heltal"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
 msgid "Shift is only possible on integer values"
-msgstr ""
+msgstr "Skift är endast möjlig på heltalsvärden"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
-msgstr ""
+msgstr "Tangent är inte definierad för vinklar som är nämnare av π (180°) från π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
 msgid "Inverse sine is undefined for values outside [-1, 1]"
-msgstr ""
+msgstr "Inversad sinus är inte definierad för värden utanför [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
-msgstr ""
+msgstr "Inversad cosinus är inte definierad för värden utanför [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
 msgid "Inverse hyperbolic cosine is undefined for values less than or equal to one"
-msgstr ""
+msgstr "Inversad hyperbolisk cosinus är inte definierad för värden mindre än eller lika med ett"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:582
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
-msgstr ""
+msgstr "Inversad hyperbolisk tangent är inte definierad för värden utanför [-1, 1]"
 
 #~ msgid "%"
 #~ msgstr "%"
