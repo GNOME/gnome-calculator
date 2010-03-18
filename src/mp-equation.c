@@ -301,11 +301,12 @@ convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, co
         {"acres",            "4046.8564224"},
         {"m²",                  "1"},
         {"cm²",                 "0.001"},
+        {"mm²",                 "0.000001"},
         {NULL, NULL}
     };
 
     const char *volume_units[][2] = {
-        {"cm³",              "1000"},
+        {"m³",               "1000"},
         {"gallon",              "3.785412"},
         {"gallons",             "3.785412"},
         {"gal",                 "3.785412"},
@@ -325,7 +326,8 @@ convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, co
         {"milliliter",          "0.001"},
         {"milliliters",         "0.001"},
         {"mL",                  "0.001"},
-        {"m³",                  "0.001"},
+        {"cm³",                 "0.001"},
+        {"mm³",                 "0.000001"},
         {NULL, NULL}
     };
 

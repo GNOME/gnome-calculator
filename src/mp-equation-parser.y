@@ -122,6 +122,27 @@ static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
     mp_not(x, _mp_equation_get_extra(yyscanner)->options->wordlen, z);
 }
 
+static char *make_unit(const char *name, int power)
+{
+    char *name2;
+
+    // FIXME: Hacky
+    if (power == 2) {
+        name2 = malloc(sizeof(char) * (strlen(name) + strlen("²") + 1));
+        sprintf(name2, "%s²", name);
+    }
+    else if (power == 3) {
+        name2 = malloc(sizeof(char) * (strlen(name) + strlen("³") + 1));
+        sprintf(name2, "%s³", name);
+    }
+    else {
+        name2 = malloc(sizeof(char) * (strlen(name) + strlen("?") + 1));
+        sprintf(name2, "%s?", name);
+    }
+    
+    return name2;
+}
+
 static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
     if (!_mp_equation_get_extra(yyscanner)->convert(_mp_equation_get_extra(yyscanner), x, x_units, z_units, z))
@@ -158,6 +179,7 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 %left tIN
 
 %type <int_t> exp variable term
+%type <name> unit
 %start statement
 
 %%
@@ -166,9 +188,13 @@ statement:
   exp { set_result(yyscanner, &$1); }
 | exp '=' { set_result(yyscanner, &$1); }
 | tVARIABLE '=' exp {set_variable(yyscanner, $1, &$3); set_result(yyscanner, &$3); }
-| tNUMBER tVARIABLE tIN tVARIABLE { MPNumber t; do_conversion(yyscanner, &$1, $2, $4, &t); set_result(yyscanner, &t); free($2); free($4); }
-| tVARIABLE tIN tVARIABLE { MPNumber x, t; mp_set_from_integer(1, &x); do_conversion(yyscanner, &x, $1, $3, &t); set_result(yyscanner, &t); free($1); free($3); }
+| tNUMBER unit tIN unit { MPNumber t; do_conversion(yyscanner, &$1, $2, $4, &t); set_result(yyscanner, &t); free($2); free($4); }
+| unit tIN unit { MPNumber x, t; mp_set_from_integer(1, &x); do_conversion(yyscanner, &x, $1, $3, &t); set_result(yyscanner, &t); free($1); free($3); }
 ;
+
+unit:
+  tVARIABLE {$$ = $1;}
+| tVARIABLE tSUPNUM {$$ = make_unit($1, $2); free($1);}
 
 /* |x| gets confused and thinks = |x|(...||) */
 
