@@ -44,6 +44,9 @@ struct MPEquationParserState {
     /* Function to solve functions */
     int (*get_function)(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z);
 
+    /* Function to convert units */
+    int (*convert)(MPEquationParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z);
+
     // FIXME: get_operator??
 
     /* Error returned from parser */

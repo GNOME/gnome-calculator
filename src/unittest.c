@@ -102,6 +102,33 @@ test(char *expression, char *expected, int expected_error)
 }
 
 
+static void
+test_conversions()
+{
+    memset(&options, 0, sizeof(options));
+    base = 10;
+    options.wordlen = 32;
+    options.angle_units = MP_DEGREES;
+
+    /* Length */
+    test("1 meter in mm", "1000", 0);  
+    test("1m in mm", "1000", 0);
+    test("1 inch in cm", "2.54", 0);
+
+    /* Area */
+    test("1m² in mm²", "1000000", 0);
+  
+    /* Volume */
+    test("1m³ in mm³", "1000000000", 0);  
+
+    /* Weight */
+    test("1 kg in pounds", "2.204622622", 0);
+  
+    /* Time */
+    test("1 minute in seconds", "60", 0);
+}
+
+
 int
 variable_is_defined(const char *name)
 {
@@ -129,9 +156,8 @@ set_variable(const char *name, const MPNumber *x, void *data)
 {
 }
 
-
 void
-test_parser()
+test_equations()
 {
     memset(&options, 0, sizeof(options));
     base = 10;
@@ -645,6 +671,7 @@ unittest()
 {
     test_mp();
     test_numbers();
-    test_parser();
+    test_conversions();
+    test_equations();
     exit(fails > 0 ? 1 : 0);
 }

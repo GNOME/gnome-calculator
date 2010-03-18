@@ -124,12 +124,8 @@ static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 
 static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
-    void *data = _mp_equation_get_extra(yyscanner)->options->callback_data;
-
-    if (_mp_equation_get_extra(yyscanner)->options->convert == NULL
-        || !_mp_equation_get_extra(yyscanner)->options->convert(x, x_units, z_units, z, data)) {
+    if (!_mp_equation_get_extra(yyscanner)->convert(_mp_equation_get_extra(yyscanner), x, x_units, z_units, z))
         set_error(yyscanner, PARSER_ERR_UNKNOWN_CONVERSION, NULL);
-    }
 }
 
 %}
