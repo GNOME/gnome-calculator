@@ -747,6 +747,27 @@ display_make_number(GCDisplay *display, char *target, int target_len, const MPNu
     }
 }
 
+
+static int
+variable_is_defined(const char *name)
+{
+    char *c, *lower_name;
+
+    lower_name = strdup(name);
+    for (c = lower_name; *c; c++)
+        *c = tolower(*c);
+
+    if (strcmp(lower_name, "rand") == 0 || 
+        strcmp(lower_name, "ans") == 0) {
+        g_free (lower_name);
+        return 1;
+    }
+    g_free (lower_name);
+
+    return register_get_value(name) != NULL;
+}
+
+
 static int
 get_variable(const char *name, MPNumber *z, void *data)
 {
@@ -964,6 +985,7 @@ parse(GCDisplay *display, const char *text, MPNumber *z, char **error_token)
     memset(&options, 0, sizeof(options));
     options.wordlen = display->word_size;
     options.angle_units = display->angle_unit;
+    options.variable_is_defined = variable_is_defined;
     options.get_variable = get_variable;
     options.set_variable = set_variable;
     options.convert = convert;

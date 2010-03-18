@@ -26,13 +26,15 @@
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
 
-char *
-utf8_next_char (const char *c)
+static int
+variable_is_defined(MPEquationParserState *state, const char *name)
 {
-    c++;
-    while ((*c & 0xC0) == 0x80)
-        c++;
-    return (char *)c;
+    /* FIXME: Make more generic */
+    if (strcmp(name, "e") == 0 || strcmp(name, "i") == 0 || strcmp(name, "π") == 0)
+        return 1;
+    if (state->options->variable_is_defined)
+        return state->options->variable_is_defined(name);
+    return 0;
 }
 
 
@@ -51,34 +53,6 @@ get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
         result = state->options->get_variable(name, z, state->options->callback_data);
     else
         result = 0;
-
-    /* If has more than one character then assuming a multiplication of variables */
-    if (!result && utf8_next_char(name)[0] != '\0') {
-        const char *c, *next;
-        char *buffer = malloc(sizeof(char) * strlen(name));
-        MPNumber value;
-
-        result = 1;
-        mp_set_from_integer(1, &value);
-        for (c = name; *c != '\0'; c = next)
-        {
-            MPNumber t;
-
-            next = utf8_next_char(c);
-            snprintf(buffer, next - c + 1, "%s", c);
-
-            if (!get_variable(state, buffer, &t))
-            {
-                result = 0;
-                break;
-            }
-            mp_multiply(&value, &t, &value);
-        }
-
-        free(buffer);
-        if (result)
-            mp_set_from_mp(&value, z);
-    }
 
     return result;
 }
@@ -109,7 +83,7 @@ sub_atoi(const char *data)
     do {
         for(i = 0; digits[i] != NULL && strncmp(data, digits[i], strlen(digits[i])) != 0; i++);
         if(digits[i] == NULL)
-            return 0;
+            return -1;
         data += strlen(digits[i]);
         value = value * 10 + i;
     } while(*data != '\0');
@@ -138,6 +112,43 @@ super_atoi(const char *data)
 
    return sign * value;
 }
+
+
+static int
+function_is_defined(MPEquationParserState *state, const char *name)
+{
+    char *c, *lower_name;
+    int result = 1;
+
+    lower_name = strdup(name);
+    for (c = lower_name; *c; c++)
+        *c = tolower(*c);
+
+    /* FIXME: Make more generic */
+    if (strcmp(lower_name, "log") == 0 ||
+        (strncmp(lower_name, "log", 3) == 0 && sub_atoi(lower_name + 3) >= 0) ||
+        strcmp(lower_name, "ln") == 0 ||
+        strcmp(lower_name, "sqrt") == 0 ||
+        strcmp(lower_name, "abs") == 0 ||
+        strcmp(lower_name, "int") == 0 ||
+        strcmp(lower_name, "frac") == 0 ||
+        strcmp(lower_name, "sin") == 0 || strcmp(lower_name, "cos") == 0 || strcmp(lower_name, "tan") == 0 ||
+        strcmp(lower_name, "sin⁻¹") == 0 || strcmp(lower_name, "cos⁻¹") == 0 || strcmp(lower_name, "tan⁻¹") == 0 ||
+        strcmp(lower_name, "sinh") == 0 || strcmp(lower_name, "cosh") == 0 || strcmp(lower_name, "tanh") == 0 ||
+        strcmp(lower_name, "sinh⁻¹") == 0 || strcmp(lower_name, "cosh⁻¹") == 0 || strcmp(lower_name, "tanh⁻¹") == 0 ||
+        strcmp(lower_name, "asinh") == 0 || strcmp(lower_name, "acosh") == 0 || strcmp(lower_name, "atanh") == 0 ||
+        strcmp(lower_name, "ones") == 0 ||
+        strcmp(lower_name, "twos") == 0) {
+        g_free (lower_name);
+        return 1;
+    }
+    g_free (lower_name);
+
+    if (state->options->function_is_defined)
+        return state->options->function_is_defined(name);
+    return 0;
+}
+
 
 static int
 get_function(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z)
@@ -224,8 +235,10 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
 
     memset(&state, 0, sizeof(MPEquationParserState));
     state.options = options;
+    state.variable_is_defined = variable_is_defined;
     state.get_variable = get_variable;
     state.set_variable = set_variable;
+    state.function_is_defined = function_is_defined;
     state.get_function = get_function;
     state.error = 0;
 

@@ -29,11 +29,17 @@ struct MPEquationParserState {
     /* User provided options */
     MPEquationOptions *options;
 
+    /* Function to check if a variable is defined */
+    int (*variable_is_defined)(MPEquationParserState *state, const char *name);
+
     /* Function to get variable values */
     int (*get_variable)(MPEquationParserState *state, const char *name, MPNumber *z);
 
     /* Function to set variable values */
     void (*set_variable)(MPEquationParserState *state, const char *name, const MPNumber *x);
+
+    /* Function to check if a function is defined */
+    int (*function_is_defined)(MPEquationParserState *state, const char *name);
 
     /* Function to solve functions */
     int (*get_function)(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z);

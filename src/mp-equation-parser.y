@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <errno.h>
+#include <assert.h>
 
 #include "mp-equation-private.h"
 #include "mp-equation-parser.h"
@@ -43,14 +44,60 @@ static void set_result(yyscan_t yyscanner, const MPNumber *x)
     mp_set_from_mp(x, &(_mp_equation_get_extra(yyscanner))->ret);
 }
 
-static int get_variable(yyscan_t yyscanner, const char *name, MPNumber *z)
+char *
+utf8_next_char (const char *c)
 {
-    if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z)) {
-        set_error(yyscanner, PARSER_ERR_UNKNOWN_VARIABLE, name);
-        return 0;
+    c++;
+    while ((*c & 0xC0) == 0x80)
+        c++;
+    return (char *)c;
+}
+
+static int get_variable(yyscan_t yyscanner, const char *name, int power, MPNumber *z)
+{
+    int result = 0;
+
+    /* If defined, then get the variable */
+    if (_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), name, z)) {
+        mp_xpowy_integer(z, power, z);
+        return 1;
     }
     
-    return 1;
+    /* If has more than one character then assume a multiplication of variables */
+    if (utf8_next_char(name)[0] != '\0') {
+        const char *c, *next;
+        char *buffer = malloc(sizeof(char) * strlen(name));
+        MPNumber value;
+
+        result = 1;
+        mp_set_from_integer(1, &value);
+        for (c = name; *c != '\0'; c = next) {
+            MPNumber t;
+
+            next = utf8_next_char(c);
+            snprintf(buffer, next - c + 1, "%s", c);
+
+            if (!_mp_equation_get_extra(yyscanner)->get_variable(_mp_equation_get_extra(yyscanner), buffer, &t)) {
+                result = 0;
+                break;
+            }
+
+            /* If last term do power */
+            if (*next == '\0')
+                mp_xpowy_integer(&t, power, &t);
+
+            mp_multiply(&value, &t, &value);
+        }
+
+        free(buffer);
+        if (result)
+            mp_set_from_mp(&value, z);
+    }
+
+    if (!result)
+        set_error(yyscanner, PARSER_ERR_UNKNOWN_VARIABLE, name);
+
+    return result;
 }
 
 static void set_variable(yyscan_t yyscanner, const char *name, MPNumber *x)
@@ -132,8 +179,8 @@ statement:
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}
 | '|' exp '|' {mp_abs(&$2, &$$);}
-| '|' tVARIABLE '|' {get_variable(yyscanner, $2, &$$); mp_abs(&$$, &$$); free($2);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
-| '|' tNUMBER tVARIABLE '|' {get_variable(yyscanner, $3, &$$); mp_multiply(&$2, &$$, &$$); mp_abs(&$$, &$$); free($3);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
+| '|' tVARIABLE '|' {get_variable(yyscanner, $2, 1, &$$); mp_abs(&$$, &$$); free($2);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
+| '|' tNUMBER tVARIABLE '|' {get_variable(yyscanner, $3, 1, &$$); mp_multiply(&$2, &$$, &$$); mp_abs(&$$, &$$); free($3);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
 | exp tNSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
@@ -160,13 +207,13 @@ exp:
 
 variable:
   tVARIABLE exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
-| tVARIABLE tSUPNUM {MPNumber t; if (!get_variable(yyscanner, $1, &t)) YYABORT; mp_xpowy_integer(&t, $2, &$$);; free($1);}
+| tVARIABLE tSUPNUM {MPNumber t; if (!get_variable(yyscanner, $1, $2, &$$)) YYABORT; free($1);}
 | tVARIABLE tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
 | tROOT3 exp {mp_root(&$2, 3, &$$);}
 | tROOT4 exp {mp_root(&$2, 4, &$$);}
-| tVARIABLE {if (!get_variable(yyscanner, $1, &$$)) YYABORT; free($1);}
+| tVARIABLE {if (!get_variable(yyscanner, $1, 1, &$$)) YYABORT; free($1);}
 ;
 
 %%

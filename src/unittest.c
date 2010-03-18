@@ -86,7 +86,7 @@ test(char *expression, char *expected, int expected_error)
     if(error == 0) {
         mp_cast_to_string(&result, base, 9, 1, result_str, 1024);
         if(expected_error != 0)
-            fail("'%s' -> %s, expected error %d", expression, result_str, expected_error);
+            fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)
             fail("'%s' -> '%s', expected '%s'", expression, result_str, expected);
         else
@@ -99,6 +99,13 @@ test(char *expression, char *expected, int expected_error)
             fail("'%s' -> error %s, expected error %s", expression,
                  error_code_to_string(error), error_code_to_string(expected_error));
     }
+}
+
+
+int
+variable_is_defined(const char *name)
+{
+    return strcmp (name, "x") == 0 || strcmp (name, "y") == 0;
 }
 
 
@@ -130,6 +137,7 @@ test_parser()
     base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
+    options.variable_is_defined = variable_is_defined;  
     options.get_variable = get_variable;
     options.set_variable = set_variable;
 
@@ -223,15 +231,17 @@ test_parser()
     test("y2", "", PARSER_ERR_UNKNOWN_FUNCTION);
     test("y²", "9", 0);
     test("2y²", "18", 0);
+    test("x×y", "6", 0);
     test("xy", "6", 0);
     test("yx", "6", 0);
     test("2xy", "12", 0);
-    //test("x²y", "12", 0);
-    //test("xy²", "18", 0);
+    test("x²y", "12", 0);
+    test("xy²", "18", 0);
     test("(xy)²", "36", 0);
-    //test("2x²y", "24", 0);
-    //test("2xy²", "36", 0);
-    //test("2x²y²", "72", 0);
+    test("2x²y", "24", 0);
+    test("2xy²", "36", 0);
+    test("2x²y²", "72", 0);
+    test("x²yx²y", "324", 0);
 
     test("π", "3.141592654", 0);
     test("e", "2.718281828", 0);
