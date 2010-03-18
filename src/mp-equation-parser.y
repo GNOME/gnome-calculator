@@ -153,7 +153,7 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 %left tMULTIPLY tDIVIDE tMOD MULTIPLICATION
 %left tNOT
 %left tROOT tROOT3 tROOT4
-%left <name> tVARIABLE
+%left <name> tVARIABLE tFUNCTION
 %right <integer> tSUBNUM tSUPNUM tNSUPNUM
 %left BOOLEAN_OPERATOR
 %left PERCENTAGE
@@ -161,7 +161,7 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 %right '^' '!' '|'
 %left tIN
 
-%type <int_t> exp variable
+%type <int_t> exp variable term
 %start statement
 
 %%
@@ -206,14 +206,21 @@ exp:
 
 
 variable:
-  tVARIABLE exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
-| tVARIABLE tSUPNUM {MPNumber t; if (!get_variable(yyscanner, $1, $2, &$$)) YYABORT; free($1);}
-| tVARIABLE tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
+  term {mp_set_from_mp(&$1, &$$);}
+| tFUNCTION exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
+| tFUNCTION tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
+| tVARIABLE exp {set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, $1); free($1); YYABORT;}
+| tVARIABLE tSUPNUM exp {set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, $1); free($1); YYABORT;}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
 | tROOT3 exp {mp_root(&$2, 3, &$$);}
 | tROOT4 exp {mp_root(&$2, 4, &$$);}
-| tVARIABLE {if (!get_variable(yyscanner, $1, 1, &$$)) YYABORT; free($1);}
+;
+
+term:
+  tVARIABLE {if (!get_variable(yyscanner, $1, 1, &$$)) YYABORT; free($1);}
+| tVARIABLE tSUPNUM {if (!get_variable(yyscanner, $1, $2, &$$)) YYABORT; free($1);}
+| term term {mp_multiply(&$1, &$2, &$$);}
 ;
 
 %%

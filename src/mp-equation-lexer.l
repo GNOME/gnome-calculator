@@ -92,7 +92,17 @@ IN   [iI][nN]
 {SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM;}
 {NSUP_NUM}  {yylval->integer = super_atoi(yytext); return tNSUPNUM;}
 {SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM;}
-{VARIABLE}  {yylval->name = strdup(yytext); return tVARIABLE;}
+{VARIABLE}  {\
+    MPEquationParserState *state = _mp_equation_get_extra(yyscanner);\
+    if (state->function_is_defined(state, yytext)) {\
+        yylval->name = strdup(yytext);\
+        return tFUNCTION;\
+    }\
+    else {\
+        yylval->name = strdup(yytext);\
+        return tVARIABLE;\
+    }\
+}
 [ \t\n]
 .           {return *yytext;}
 

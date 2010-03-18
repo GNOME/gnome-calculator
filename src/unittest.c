@@ -229,6 +229,7 @@ test_parser()
     test("z", "", PARSER_ERR_UNKNOWN_VARIABLE);
     test("2y", "6", 0);
     test("y2", "", PARSER_ERR_UNKNOWN_FUNCTION);
+    test("y(2)", "", PARSER_ERR_UNKNOWN_FUNCTION);
     test("y²", "9", 0);
     test("2y²", "18", 0);
     test("x×y", "6", 0);
@@ -241,7 +242,7 @@ test_parser()
     test("2x²y", "24", 0);
     test("2xy²", "36", 0);
     test("2x²y²", "72", 0);
-    test("x²yx²y", "324", 0);
+    test("x²yx²y", "144", 0);
 
     test("π", "3.141592654", 0);
     test("e", "2.718281828", 0);
