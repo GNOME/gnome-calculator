@@ -5,19 +5,22 @@
 # Sami Pesonen <sampeson@iki.fi>, 2003-2004.
 # Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008-2009.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2008.
+# Jiri Grönroos <Unknown>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-15 17:21+0300\n"
-"PO-Revision-Date: 2009-08-15 17:20+0300\n"
-"Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
+"POT-Creation-Date: 2010-03-18 09:50+0200\n"
+"PO-Revision-Date: 2010-03-18 09:50+0200\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2010-03-17 17:56+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/financial.ui.h:2
@@ -36,22 +39,17 @@ msgid ""
 "made at the end of each payment period. "
 msgstr ""
 "Laskee toistuvan lainanmaksun kokonaissumman, kun lyhennykset tehdään joka "
-"maksujakson lopuksi."
+"maksujakson lopuksi. "
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
-"Laskee vähennysten määrän hankinnalle tietyllä aikajaksolla käyttäen Sum-Of-"
-"The-Years'-Digits-menetelmää. Tämä poistotapa kiihdyttää vähennysten määrää "
-"siten, että suurempi vähennyskulu tapahtuu aiemmissa jaksoissa verrattuna "
-"myöhempiin jaksoihin. Hyötyaika on jaksojen määrä, tyypillisesti vuosia, "
-"jonka aikana hankinta poistetaan. "
 
 #. Double-Declining Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:10
@@ -100,7 +98,7 @@ msgid ""
 "future value, over the number of compounding periods. "
 msgstr ""
 "Laskee tarvittavan jaksottaisen koron, jolla sijoitus kasvaa tulevaan arvoon "
-"korkojaksojen määrän aikana."
+"korkojaksojen määrän aikana. "
 
 #. Present Value Dialog: Description of calculation
 #: ../data/financial.ui.h:20
@@ -110,7 +108,7 @@ msgid ""
 "periods in the term. "
 msgstr ""
 "Laskee sijoituksen nykyisen arvon pohjautuen sarjaan tasasuuruisia maksuja "
-"vähennettynä jaksottaisella korkotasolla maksujaksojen ajanjakson aikana."
+"vähennettynä jaksottaisella korkotasolla maksujaksojen ajanjakson aikana. "
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/financial.ui.h:22
@@ -132,1457 +130,721 @@ msgstr ""
 "Laskee tasapoiston vähennykset hankinnasta yhdelle jaksolle. Tasapoiston "
 "menetelmässä vähennykset jakautuvat tasaisiin vähennyskuluihin hankinnan "
 "hyödyllisen eliniän ajaksi. Hyödyllinen elinikä on jaksojen määrä, "
-"tyypillisesti vuosia, jonka aikana hankinta poistetaan."
+"tyypillisesti vuosia, jonka aikana hankinta poistetaan. "
 
 #. Title of Compounding Term dialog
 #: ../data/financial.ui.h:26
 msgid "Compounding Term"
 msgstr "Korkojakso"
 
-#. Title of Double-Declining Depreciation dialog
+#: ../data/financial.ui.h:27
+msgid ""
+"Converts between different currencies. Enter the amount and the currency you "
+"want to convert from on the upper row, and the currency you want to convert "
+"to on the lower row, and the amount will be displayed on the lower row."
+msgstr ""
+
 #: ../data/financial.ui.h:28
+msgid "Currency Conversion"
+msgstr "Valuuttamuunnin"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../data/financial.ui.h:30
 msgid "Double-Declining Depreciation"
 msgstr "Kahdestialeneva arvonalennus"
 
 #. Title of Future Value dialog
-#: ../data/financial.ui.h:30
+#: ../data/financial.ui.h:32
 msgid "Future Value"
 msgstr "Tuleva arvo"
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:32
+#: ../data/financial.ui.h:34
 msgid "Future _Value:"
 msgstr "Tuleva _arvo:"
 
 #. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:34 ../data/gcalctool.ui.h:209
+#: ../data/financial.ui.h:36
 msgid "Gross Profit Margin"
 msgstr "Bruttokate"
 
 #. Title of Payment Period dialog
-#: ../data/financial.ui.h:36
+#: ../data/financial.ui.h:38
 msgid "Payment Period"
 msgstr "Maksuaika"
 
 #. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:38
+#: ../data/financial.ui.h:40
 msgid "Periodic Interest Rate"
 msgstr "Säännöllinen korkotaso"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:40
+#: ../data/financial.ui.h:42
 msgid "Periodic Interest _Rate:"
 msgstr "Säännöllinen _korkotaso:"
 
 #. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:42
+#: ../data/financial.ui.h:44
 msgid "Periodic Payment"
 msgstr "Säännöllinen maksu"
 
 #. Title of Present Value dialog
-#: ../data/financial.ui.h:44
+#: ../data/financial.ui.h:46
 msgid "Present Value"
 msgstr "Nykyinen arvo"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:46
+#: ../data/financial.ui.h:48
 msgid "Present _Value:"
 msgstr "Nykyinen _arvo:"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:48
+#: ../data/financial.ui.h:50
 msgid "Straight-Line Depreciation"
 msgstr "Tasainen poistuma"
 
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:50
-msgid "Sum-Of-The-Years'-Digits Depreciation"
-msgstr "Vuosittaisten lyhennysten poistuma"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr ""
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/financial.ui.h:54
 msgid "_Cost:"
 msgstr "_Kustannus:"
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:54
+#: ../data/financial.ui.h:56
 msgid "_Future Value:"
 msgstr "_Tuleva arvo:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:56
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/financial.ui.h:58
 msgid "_Life:"
 msgstr "_Kesto:"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:58
+#: ../data/financial.ui.h:60
 msgid "_Margin:"
 msgstr "_Marginaali:"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:60
-msgid "_Number Of Periods:"
-msgstr "_Maksujaksojen lukumäärä:"
-
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
 #: ../data/financial.ui.h:62
+msgid "_Number of Periods:"
+msgstr ""
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/financial.ui.h:64
 msgid "_Period:"
 msgstr "_Maksujakso:"
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:64
+#: ../data/financial.ui.h:66
 msgid "_Periodic Payment:"
 msgstr "_Toistuva maksu:"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:66
+#: ../data/financial.ui.h:68
 msgid "_Principal:"
 msgstr "_Peruspääoma:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:68
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/financial.ui.h:70
 msgid "_Salvage:"
 msgstr "_Maksu:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:70
+#: ../data/financial.ui.h:72
 msgid "_Term:"
 msgstr "_Kausi:"
 
-#. The percentage button
-#: ../data/gcalctool.ui.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
+#. The label on the memory recall button
+#: ../data/gcalctool.ui.h:2
+msgid "&#x2190; R"
+msgstr ""
 
-#. Subtraction button
-#: ../data/gcalctool.ui.h:5
-msgid "&#x2212;"
-msgstr "&#x2212;"
+#. The label on the memory store button
+#: ../data/gcalctool.ui.h:4
+msgid "&#x2192; R"
+msgstr ""
 
-#. Square root button
-#: ../data/gcalctool.ui.h:7
-msgid "&#x221A;"
-msgstr "&#x221A;"
-
-#. Change sign button
-#: ../data/gcalctool.ui.h:9
-msgid "&#xB1;"
-msgstr "&#xB1;"
-
-#. Multiplication button
-#: ../data/gcalctool.ui.h:11
-msgid "&#xD7;"
-msgstr "&#xD7;"
-
-#. Division button
-#: ../data/gcalctool.ui.h:13
-msgid "&#xF7;"
-msgstr "&#xF7;"
-
-#. Start calculation group button
-#: ../data/gcalctool.ui.h:15
-msgid "("
-msgstr "("
-
-#: ../data/gcalctool.ui.h:16
-msgid "(Ln)"
-msgstr "(Ln)"
-
-#: ../data/gcalctool.ui.h:17
-msgid "(Set accuracy from 0 to N numeric places [A])"
-msgstr "(Aseta tarkkuus 0-9 desimaaliksi [A])"
-
-#: ../data/gcalctool.ui.h:18
-msgid "(X^Y)"
-msgstr "(X^Y)"
-
-#: ../data/gcalctool.ui.h:19
-msgid "(cos)"
-msgstr "(cos)"
-
-#: ../data/gcalctool.ui.h:20
-msgid "(log)"
-msgstr "(log)"
-
-#: ../data/gcalctool.ui.h:21
-msgid "(log2)"
-msgstr "(log2)"
-
-#: ../data/gcalctool.ui.h:22
-msgid "(sin)"
-msgstr "(sin)"
-
-#: ../data/gcalctool.ui.h:23
-msgid "(tan)"
-msgstr "(tan)"
-
-#. Right bracket
-#: ../data/gcalctool.ui.h:25
-msgid ")"
-msgstr ")"
-
-#. Addition button
-#: ../data/gcalctool.ui.h:27
-msgid "+"
-msgstr "+"
-
-#. Numeric 0 button
-#: ../data/gcalctool.ui.h:29
-msgid "0"
-msgstr "0"
-
-#. Numeric 1 button
-#: ../data/gcalctool.ui.h:31
-msgid "1"
-msgstr "1"
-
-#. 1's complement
-#: ../data/gcalctool.ui.h:33
-msgid "1's"
-msgstr "yhden"
-
-#: ../data/gcalctool.ui.h:34
-msgid "1's complement [z]"
-msgstr "yhden komplementti [z]"
-
-#. Reciprocal button
-#: ../data/gcalctool.ui.h:36
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../data/gcalctool.ui.h:37
-msgid "1/x"
-msgstr "1/x"
+#. The label on the currency button
+#: ../data/gcalctool.ui.h:6
+msgid "&#xA4;$&#x20AC;"
+msgstr ""
 
 #. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:39
+#: ../data/gcalctool.ui.h:8
 msgid "10 places"
 msgstr "10 paikkaa"
 
 #. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:41
+#: ../data/gcalctool.ui.h:10
 msgid "11 places"
 msgstr "11 paikkaa"
 
 #. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:43
+#: ../data/gcalctool.ui.h:12
 msgid "12 places"
 msgstr "12 paikkaa"
 
 #. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:45
+#: ../data/gcalctool.ui.h:14
 msgid "13 places"
 msgstr "13 paikkaa"
 
 #. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:47
+#: ../data/gcalctool.ui.h:16
 msgid "14 places"
 msgstr "14 paikkaa"
 
-#. Label for bit 15 on the bit editor
-#: ../data/gcalctool.ui.h:49
-msgid "15"
-msgstr "15"
-
 #. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:51
+#: ../data/gcalctool.ui.h:18
 msgid "15 places"
 msgstr "15 paikkaa"
 
-#. Numeric 2 button
-#: ../data/gcalctool.ui.h:53
-msgid "2"
-msgstr "2"
-
-#. 2's complement
-#: ../data/gcalctool.ui.h:55
-msgid "2's"
-msgstr "kahden"
-
-#: ../data/gcalctool.ui.h:56
-msgid "2's complement [Z]"
-msgstr "kahden komplementti [Z]"
-
-#. Numeric 3 button
-#: ../data/gcalctool.ui.h:58
-msgid "3"
-msgstr "3"
-
-#. Label for bit 31 on the bit editor
-#: ../data/gcalctool.ui.h:60
-msgid "31"
-msgstr "31"
-
-#. Label for bit 32 on the bit editor
-#: ../data/gcalctool.ui.h:62
-msgid "32"
-msgstr "32"
-
-#. Numeric 4 button
-#: ../data/gcalctool.ui.h:64
-msgid "4"
-msgstr "4"
-
-#. Label for bit 47 on the bit editor
-#: ../data/gcalctool.ui.h:66
-msgid "47"
-msgstr "47"
-
-#. Numeric 5 button
-#: ../data/gcalctool.ui.h:68
-msgid "5"
-msgstr "5"
-
-#. Numeric 6 button
-#: ../data/gcalctool.ui.h:70
-msgid "6"
-msgstr "6"
-
-#. Label for the most significant bit (bit 63) on the bit editor
-#: ../data/gcalctool.ui.h:72
-msgid "63"
-msgstr "63"
-
-#. Numeric 7 button
-#: ../data/gcalctool.ui.h:74
-msgid "7"
-msgstr "7"
-
-#. Numeric 8 button
-#: ../data/gcalctool.ui.h:76
-msgid "8"
-msgstr "8"
-
-#. Numeric 9 button
-#: ../data/gcalctool.ui.h:78
-msgid "9"
-msgstr "9"
-
-#. Shift left button
-#: ../data/gcalctool.ui.h:80
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../data/gcalctool.ui.h:82
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x to the power of 2 button
-#: ../data/gcalctool.ui.h:84
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. Edit Function Dialog: Note about what base numbers will be entered as
-#: ../data/gcalctool.ui.h:86
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
+#. Word size combo: 16 bits
+#: ../data/gcalctool.ui.h:20
+msgid "16-bit"
 msgstr ""
-"<small><i><b>Huom:</b> Kaikki vakioarvot on määritelty desimaalimuodossa.</"
-"i></small>"
 
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../data/gcalctool.ui.h:88
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
+#. Word size combo: 32 bits
+#: ../data/gcalctool.ui.h:22
+msgid "32-bit"
+msgstr ""
 
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../data/gcalctool.ui.h:90
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
+#. Word size combo: 64 bits
+#: ../data/gcalctool.ui.h:24
+msgid "64-bit"
+msgstr ""
 
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../data/gcalctool.ui.h:92
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
+#. Word size combo: 8 bits
+#: ../data/gcalctool.ui.h:26
+msgid "8-bit"
+msgstr ""
 
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../data/gcalctool.ui.h:94
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../data/gcalctool.ui.h:96
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../data/gcalctool.ui.h:98
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../data/gcalctool.ui.h:100
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../data/gcalctool.ui.h:102
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../data/gcalctool.ui.h:104
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../data/gcalctool.ui.h:106
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. Solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:108
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/gcalctool.ui.h:28
 msgid "="
 msgstr "="
 
-#. Shift right button
-#: ../data/gcalctool.ui.h:110
-msgid ">"
-msgstr ">"
+#. Accessible name for the absolute value button
+#: ../data/gcalctool.ui.h:30
+msgid "Absolute Value"
+msgstr ""
 
-#. Hexadecimal digit A button
-#: ../data/gcalctool.ui.h:112
-msgid "A"
-msgstr "A"
+#. Tooltip for the absolute value button
+#: ../data/gcalctool.ui.h:32
+msgid "Absolute value [|]"
+msgstr ""
 
-#. Boolean AND button
-#: ../data/gcalctool.ui.h:114
-msgid "AND"
-msgstr "AND"
-
-#. Absolute value button. Abs is short for Absolute
-#: ../data/gcalctool.ui.h:116
-msgid "Abs"
-msgstr "Abs"
-
-#: ../data/gcalctool.ui.h:117
-msgid "Absolute value"
-msgstr "Itseisarvo"
-
-#: ../data/gcalctool.ui.h:118
-msgid "Absolute value [u]"
-msgstr "Itseisarvo [u]"
-
-#. Accuracy button
-#: ../data/gcalctool.ui.h:120
-msgid "Acc"
-msgstr "Acc"
-
-#: ../data/gcalctool.ui.h:121
-msgid "Add"
-msgstr "Lisää"
-
-#: ../data/gcalctool.ui.h:122
+#. Tooltip for the addition button
+#: ../data/gcalctool.ui.h:34
 msgid "Add [+]"
 msgstr "Lisää [+]"
 
-#: ../data/gcalctool.ui.h:123
-msgid "Advanced"
-msgstr "Edistynyt"
+#. Tooltip for the answer variable button
+#: ../data/gcalctool.ui.h:36
+msgid "Answer variable"
+msgstr ""
 
-#. Hexadecimal digit B button
-#: ../data/gcalctool.ui.h:125
-msgid "B"
-msgstr "B"
+#. Tooltip for the base 10 logarithm button
+#: ../data/gcalctool.ui.h:38
+msgid "Base 10 logarithm"
+msgstr "Kantaluku 10"
 
-#: ../data/gcalctool.ui.h:126
-msgid "Backspace"
-msgstr "Askelpalautin"
+#. Accessible name for the base 16 button
+#: ../data/gcalctool.ui.h:40
+msgid "Base 16"
+msgstr "Kantaluku 16"
 
-#: ../data/gcalctool.ui.h:127
-msgid "Basic"
-msgstr "Perus"
+#. Accessible name for the base 2 button
+#: ../data/gcalctool.ui.h:42
+msgid "Base 2"
+msgstr "Kantaluku 2"
 
-#: ../data/gcalctool.ui.h:128
-msgid "Bitwise AND [&]"
-msgstr "Bitittäinen AND [&]"
+#. Accessible name for the base 8 button
+#: ../data/gcalctool.ui.h:44
+msgid "Base 8"
+msgstr "Kantaluku 8"
 
-#: ../data/gcalctool.ui.h:129
-msgid "Bitwise NOT [~]"
-msgstr "Bitittäinen NOT [~]"
+#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
+#: ../data/gcalctool.ui.h:46
+msgid "Binary"
+msgstr "Binääri"
 
-#: ../data/gcalctool.ui.h:130
-msgid "Bitwise OR [|]"
-msgstr "Bitittäinen OR [|]"
+#. Tooltip for the boolean AND button
+#: ../data/gcalctool.ui.h:48
+msgid "Boolean AND"
+msgstr "Totuusarvo JA"
 
-#: ../data/gcalctool.ui.h:131
-msgid "Bitwise XNOR [{]"
-msgstr "Bitittäinen XNOR [{]"
+#. Tooltip for the boolean NOT button
+#: ../data/gcalctool.ui.h:50
+msgid "Boolean NOT"
+msgstr "Totuusarvo EI"
 
-#: ../data/gcalctool.ui.h:132
-msgid "Bitwise XOR [x]"
-msgstr "Bitittäinen XOR [x]"
+#. Tooltip for the boolean OR button
+#: ../data/gcalctool.ui.h:52
+msgid "Boolean OR"
+msgstr "Totuusarvo TAI"
 
-#. Bksp is short for Backspace
-#: ../data/gcalctool.ui.h:134
-msgid "Bksp"
-msgstr "←"
+#. Tooltip for the boolean exclusive OR button
+#: ../data/gcalctool.ui.h:54
+msgid "Boolean exclusive OR"
+msgstr "Totuusarvo poissulkeva TAI (XOR)"
 
-#. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1700
-msgid "C"
-msgstr "C"
-
-#. Clear displayed value button
-#: ../data/gcalctool.ui.h:138
-msgid "CE"
-msgstr "CE"
-
-#: ../data/gcalctool.ui.h:139
-msgid "Calculate result"
-msgstr "Laske tulos"
-
-#: ../data/gcalctool.ui.h:140
+#. Tooltip for the solve button
+#: ../data/gcalctool.ui.h:56
 msgid "Calculate result [=]"
 msgstr "Laske tulos [=]"
 
 #. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:142
+#: ../data/gcalctool.ui.h:58
 msgid "Ch_aracter:"
 msgstr "_Kirjain:"
 
-#: ../data/gcalctool.ui.h:143
-msgid "Change Sign [C]"
-msgstr "Vaihda etumerkki [C]"
+#. Tooltop for the clear display button
+#: ../data/gcalctool.ui.h:60
+msgid "Clear display [Escape]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:144
-msgid "Change sign"
-msgstr "Vaihda etumerkki"
-
-#: ../data/gcalctool.ui.h:145
-msgid "Clear"
-msgstr "Tyhjennä"
-
-#: ../data/gcalctool.ui.h:146
-msgid "Clear displayed value [Escape]"
-msgstr "Poista näytetty arvo [Esc]"
-
-#: ../data/gcalctool.ui.h:147
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Tyhjennä näytetty arvo ja osittainen laskelma [Shift-Del]"
-
-#: ../data/gcalctool.ui.h:148
-msgid "Clear entry"
-msgstr "Tyhjennä syöttöalue"
-
-#. Edit Functions Dialog: Instructions in dialog
-#: ../data/gcalctool.ui.h:150
-msgid "Click a _value or description to edit it:"
-msgstr "Napsauta _arvoa tai määritelmää muokataksesi sitä:"
-
-#. Clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:152
+#. Label on the clear display button. Clr is short for Clear
+#: ../data/gcalctool.ui.h:62
 msgid "Clr"
 msgstr "AC"
 
-#: ../data/gcalctool.ui.h:153
-msgid "Compounding term"
-msgstr "Sekoitustermi"
-
-#: ../data/gcalctool.ui.h:154
-msgid "Compounding term [m]"
-msgstr "Sekoitustermi [m]"
-
-#. Constants button
-#: ../data/gcalctool.ui.h:156
-msgid "Con"
-msgstr "Con"
-
-#: ../data/gcalctool.ui.h:157
-msgid "Constants [#]"
-msgstr "Vakiot [#]"
-
-#: ../data/gcalctool.ui.h:158
-msgid "Copy selection"
-msgstr "Kopioi valinta"
-
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:160
+#: ../data/gcalctool.ui.h:64
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#. Hexadecimal digit D button
-#: ../data/gcalctool.ui.h:162
-msgid "D"
-msgstr "D"
-
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:164
+#: ../data/gcalctool.ui.h:66
 msgid "Ddb"
 msgstr "Ddb"
 
-#. Degrees radio button
-#: ../data/gcalctool.ui.h:166
-msgid "De_grees"
-msgstr "_Asteet"
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../data/gcalctool.ui.h:68
+msgid "Decimal"
+msgstr "Desimaali"
 
-#: ../data/gcalctool.ui.h:167
-msgid "Divide"
-msgstr "Jaa"
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../data/gcalctool.ui.h:70
+msgid "Degrees"
+msgstr "Astetta"
 
-#: ../data/gcalctool.ui.h:168
+#. Preferences dialog: Label for display format combo box
+#: ../data/gcalctool.ui.h:72
+msgid "Display _Format:"
+msgstr ""
+
+#. Tooltip for the division button
+#: ../data/gcalctool.ui.h:74
 msgid "Divide [/]"
 msgstr "Jaa [/]"
 
-#: ../data/gcalctool.ui.h:169
-msgid "Double-declining depreciation"
-msgstr "Kahdestialeneva arvonalennus"
+#. Tooltip for the end block button
+#: ../data/gcalctool.ui.h:76
+msgid "End block [)]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:170
-msgid "Double-declining depreciation [D]"
-msgstr "Kahdestialeneva arvonalennus [D]"
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../data/gcalctool.ui.h:78
+msgid "Engineering"
+msgstr ""
 
-#. Hexadecimal digit E button
-#: ../data/gcalctool.ui.h:172
-msgid "E"
-msgstr "E"
+#. Tooltip for the Euler's number button
+#: ../data/gcalctool.ui.h:80
+msgid "Euler's number"
+msgstr ""
 
-#. Engineering display radio button
-#: ../data/gcalctool.ui.h:174
-msgid "E_ng"
-msgstr "E_ng"
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/gcalctool.ui.h:82
+msgid "Exponent"
+msgstr "Eksponentti"
 
-#. Title of edit constants dialog
-#: ../data/gcalctool.ui.h:176
-msgid "Edit Constants"
-msgstr "Muokkaa vakioita"
+#. Tooltip for the exponentiation (x to the power of y) button
+#: ../data/gcalctool.ui.h:84
+msgid "Exponent [^ or **]"
+msgstr ""
 
-#. Menu item in the constants menu to show the Edit Constants dialog
-#: ../data/gcalctool.ui.h:178
-msgid "Edit Constants..."
-msgstr "Muokkaa vakioita..."
+#. Accessible name for the factorial button
+#: ../data/gcalctool.ui.h:86
+msgid "Factorial"
+msgstr "Kertoma"
 
-#. Title of edit functions dialog
-#: ../data/gcalctool.ui.h:180
-msgid "Edit Functions"
-msgstr "Muokkaa funktioita"
+#. Tooltip for the factorial button
+#: ../data/gcalctool.ui.h:88
+msgid "Factorial [!]"
+msgstr ""
 
-#. Menu item in the constants menu to show the Edit Functions dialog
-#: ../data/gcalctool.ui.h:182
-msgid "Edit Functions..."
-msgstr "Muokkaa funktioita..."
+#. Accessible name for the factorize button
+#: ../data/gcalctool.ui.h:90
+msgid "Factorize"
+msgstr "Jaa tekijöihin"
 
-#: ../data/gcalctool.ui.h:183
-msgid "End group of calculations [)]"
-msgstr "Lopeta ryhmä laskutoimituksia [)]"
+#. Tooltip for the factorize button
+#: ../data/gcalctool.ui.h:92
+msgid "Factorize into prime numbers (Ctrl+F)"
+msgstr "Jaa alkulukuihin (Ctrl+F)"
 
-#: ../data/gcalctool.ui.h:184
-msgid "Enter an exponential number [E]"
-msgstr "Anna eksponenttiluku [E]"
-
-#. Memory exchange button. Exch is short for Exchange
-#: ../data/gcalctool.ui.h:186
-msgid "Exch"
-msgstr "Exch"
-
-#: ../data/gcalctool.ui.h:187
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Vaihda näytetty arvo muistirekisterin kanssa [X]"
-
-#: ../data/gcalctool.ui.h:188
-msgid "Exchange with register"
-msgstr "Vaihda rekisterin kanssa"
-
-#. Exponential
-#: ../data/gcalctool.ui.h:190
-msgid "Exp"
-msgstr "Exp"
-
-#. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1723
-msgid "F"
-msgstr "F"
-
-#: ../data/gcalctool.ui.h:193
-msgid "Factorial of displayed value [!]"
-msgstr "Annetun arvon kertoma [!]"
-
-#: ../data/gcalctool.ui.h:194
-msgid "Financial"
-msgstr "Talous"
-
-#. Fractional portion button
-#: ../data/gcalctool.ui.h:196
-msgid "Frac"
-msgstr "Frac"
-
-#: ../data/gcalctool.ui.h:197
+#. Tooltip for the fractional portion button
+#: ../data/gcalctool.ui.h:94
 msgid "Fractional portion"
 msgstr "Desimaaliosa"
 
-#: ../data/gcalctool.ui.h:198
-msgid "Fractional portion of displayed value [:]"
-msgstr "Näkyvän arvon desimaaliosa [:]"
-
-#. Functions button
-#: ../data/gcalctool.ui.h:200
-msgid "Fun"
-msgstr "Fun"
-
-#: ../data/gcalctool.ui.h:201
-msgid "Future value"
-msgstr "Tuleva arvo"
-
-#: ../data/gcalctool.ui.h:202
-msgid "Future value [v]"
-msgstr "Tuleva arvo [v]"
-
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:204
+#: ../data/gcalctool.ui.h:96
 msgid "Fv"
 msgstr "Fv"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:206
+#: ../data/gcalctool.ui.h:98
 msgid "Gpm"
 msgstr "kate"
 
-#. Gradians radio button
-#: ../data/gcalctool.ui.h:208
-msgid "Gr_adians"
-msgstr "_Graadit"
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../data/gcalctool.ui.h:100
+msgid "Gradians"
+msgstr "Gradiaanit"
 
-#: ../data/gcalctool.ui.h:210
-msgid "Gross Profit Margin [I]"
-msgstr "Bruttokateprosentti [I]"
-
-#: ../data/gcalctool.ui.h:211
-msgid "Gross Profit Margin [g]"
-msgstr "Bruttokateprosentti [g]"
-
-#. Hyperbolic check box
-#: ../data/gcalctool.ui.h:213
-msgid "H_yp"
-msgstr "H_yp"
-
-#. Base 16 radio button
-#: ../data/gcalctool.ui.h:215
-msgid "He_x"
-msgstr "He_x"
-
-#: ../data/gcalctool.ui.h:216
-msgid "Hexadecimal digit A [a]"
-msgstr "Heksadesimaalinumero A [a]"
-
-#: ../data/gcalctool.ui.h:217
-msgid "Hexadecimal digit B [b]"
-msgstr "Heksadesimaalinumero B [b]"
-
-#: ../data/gcalctool.ui.h:218
-msgid "Hexadecimal digit C [c]"
-msgstr "Heksadesimaalinumero C [c]"
-
-#: ../data/gcalctool.ui.h:219
-msgid "Hexadecimal digit D [d]"
-msgstr "Heksadesimaalinumero D [d]"
-
-#: ../data/gcalctool.ui.h:220
-msgid "Hexadecimal digit E [e]"
-msgstr "Heksadesimaalinumero E [e]"
-
-#: ../data/gcalctool.ui.h:221
-msgid "Hexadecimal digit F [f]"
-msgstr "Heksadesimaalinumero F [f]"
+#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
+#: ../data/gcalctool.ui.h:102
+msgid "Hexadecimal"
+msgstr "Heksadesimaali"
 
 #. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:223
+#: ../data/gcalctool.ui.h:104
 msgid "Insert ASCII Value"
 msgstr "Lisää ASCII-arvo"
 
-#: ../data/gcalctool.ui.h:224
-msgid "Insert ASCII value"
-msgstr "Lisää ASCII-arvo"
+#. Accessible name for the insert character button
+#: ../data/gcalctool.ui.h:106
+msgid "Insert Character"
+msgstr "Syötä merkki"
 
-#. Integer portion button
-#: ../data/gcalctool.ui.h:226
-msgid "Int"
-msgstr "Int"
+#. Tooltip for the insert character button
+#: ../data/gcalctool.ui.h:108
+msgid "Insert character"
+msgstr "Syötä merkki"
 
-#: ../data/gcalctool.ui.h:227
+#. Tooltip for the integer portion button
+#: ../data/gcalctool.ui.h:110
 msgid "Integer portion"
 msgstr "Kokonaisosa"
 
-#: ../data/gcalctool.ui.h:228
-msgid "Integer portion of displayed value [i]"
-msgstr "Näkyvän arvon kokonaisosa [i]"
+#. Accessible name for the inverse button
+#: ../data/gcalctool.ui.h:112
+msgid "Inverse"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:229
-msgid "Left bracket"
-msgstr "Vasen sulku"
+#. Tooltip for the inverse button
+#: ../data/gcalctool.ui.h:114
+msgid "Inverse [Ctrl+I]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:230
-msgid "Makes the bitwise functions use 16 bit mode"
-msgstr "Asettaa bitittäin toimivat funktiot käyttämään 16-bittistä tilaa"
+#. Tooltip for the modulus division button
+#: ../data/gcalctool.ui.h:116
+msgid "Modulus divide"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:231
-msgid "Makes the bitwise functions use 32 bit mode"
-msgstr "Asettaa bitittäin toimivat funktiot käyttämään 32-bittistä tilaa"
-
-#: ../data/gcalctool.ui.h:232
-msgid "Makes the bitwise functions use 64 bit mode"
-msgstr "Asettaa bitittäin toimivat funktiot käyttämään 64-bittistä tilaa"
-
-#: ../data/gcalctool.ui.h:233
-msgid "Memory Registers"
-msgstr "Muistirekisterit"
-
-#. Modulus division button
-#: ../data/gcalctool.ui.h:235
-msgid "Mod"
-msgstr "Mod"
-
-#: ../data/gcalctool.ui.h:236
-msgid "Modulus Division [M]"
-msgstr "Jakojäännös [M]"
-
-#: ../data/gcalctool.ui.h:237
-msgid "Multiply"
-msgstr "Kerro"
-
-#: ../data/gcalctool.ui.h:238
+#. Tooltip for the multiplication button
+#: ../data/gcalctool.ui.h:118
 msgid "Multiply [*]"
 msgstr "Kerro [*]"
 
-#. Boolean NOT button
-#: ../data/gcalctool.ui.h:240
-msgid "NOT"
-msgstr "NOT"
+#. Tooltip for the natural logarithm button
+#: ../data/gcalctool.ui.h:120
+msgid "Natural logarithm"
+msgstr "Luonnollinen logaritmi"
 
-#: ../data/gcalctool.ui.h:241
-msgid "Numeric 0"
-msgstr "Luku 0"
+#. Tooltip for the numeric point button
+#: ../data/gcalctool.ui.h:122
+msgid "Numeric point [. or ,]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:242
-msgid "Numeric 1"
-msgstr "Luku 1"
+#. Number display mode combo: Octal, e.g. 2322&#x2088;
+#: ../data/gcalctool.ui.h:124
+msgid "Octal"
+msgstr "Oktaali"
 
-#: ../data/gcalctool.ui.h:243
-msgid "Numeric 2"
-msgstr "Luku 2"
+#. Tooltip for the ones' complement button
+#: ../data/gcalctool.ui.h:126
+msgid "Ones' complement"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:244
-msgid "Numeric 3"
-msgstr "Luku 3"
-
-#: ../data/gcalctool.ui.h:245
-msgid "Numeric 4"
-msgstr "Luku 4"
-
-#: ../data/gcalctool.ui.h:246
-msgid "Numeric 5"
-msgstr "Luku 5"
-
-#: ../data/gcalctool.ui.h:247
-msgid "Numeric 6"
-msgstr "Luku 6"
-
-#: ../data/gcalctool.ui.h:248
-msgid "Numeric 7"
-msgstr "Luku 7"
-
-#: ../data/gcalctool.ui.h:249
-msgid "Numeric 8"
-msgstr "Luku 8"
-
-#: ../data/gcalctool.ui.h:250
-msgid "Numeric 9"
-msgstr "Luku 9"
-
-#: ../data/gcalctool.ui.h:251
-msgid "Numeric point"
-msgstr "Desimaalipilkku"
-
-#. Boolean OR button
-#: ../data/gcalctool.ui.h:253
-msgid "OR"
-msgstr "OR"
-
-#: ../data/gcalctool.ui.h:254
-msgid "Paste selection"
-msgstr "Liitä valinta"
-
-#: ../data/gcalctool.ui.h:255
-msgid "Payment period"
-msgstr "Maksuaika"
-
-#: ../data/gcalctool.ui.h:256
-msgid "Payment period [t]"
-msgstr "Maksuaika [t]"
-
-#: ../data/gcalctool.ui.h:257
-msgid "Percentage"
-msgstr "Prosentti"
-
-#: ../data/gcalctool.ui.h:259
+#. Tooltip on the percentage button
+#: ../data/gcalctool.ui.h:129
 #, no-c-format
 msgid "Percentage [%]"
 msgstr "Prosentti [%]"
 
-#: ../data/gcalctool.ui.h:260
-msgid "Periodic interest rate"
-msgstr "Säännöllinen korkotaso"
-
-#: ../data/gcalctool.ui.h:261
-msgid "Periodic interest rate [T]"
-msgstr "Säännöllinen korkotaso [T]"
-
-#: ../data/gcalctool.ui.h:262
-msgid "Periodic payment"
-msgstr "Säännöllinen maksu"
-
-#: ../data/gcalctool.ui.h:263
-msgid "Periodic payment [P]"
-msgstr "Säännöllinen maksu [P]"
+#. Tooltip for the Pi button
+#: ../data/gcalctool.ui.h:131
+msgid "Pi [Ctrl+P]"
+msgstr "Pii [Ctrl+P]"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:265
+#: ../data/gcalctool.ui.h:133
 msgid "Pmt"
 msgstr "Pmt"
 
-#: ../data/gcalctool.ui.h:266
-msgid "Present value"
-msgstr "Nykyinen arvo"
-
-#: ../data/gcalctool.ui.h:267
-msgid "Present value [p]"
-msgstr "Nykyinen arvo [p]"
-
-#: ../data/gcalctool.ui.h:268
-msgid "Programming"
-msgstr "Ohjelmointi"
+#: ../data/gcalctool.ui.h:134
+msgid "Preferences"
+msgstr "Asetukset"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:270
+#: ../data/gcalctool.ui.h:136
 msgid "Pv"
 msgstr "Pv"
 
-#: ../data/gcalctool.ui.h:271
-msgid "Quit the calculator"
-msgstr "Lopeta laskin"
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../data/gcalctool.ui.h:138
+msgid "Radians"
+msgstr ""
 
-#. Random number
-#: ../data/gcalctool.ui.h:273
-msgid "Rand"
-msgstr "Rand"
-
-#: ../data/gcalctool.ui.h:274
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Satunnaisluku välillä 0,0-1,0 [?]"
+#. Tooltip for the random number button
+#: ../data/gcalctool.ui.h:140
+msgid "Random number"
+msgstr "Satunnaisluku"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:276
+#: ../data/gcalctool.ui.h:142
 msgid "Rate"
 msgstr "Taso"
 
-#. Memory recall button. Rcl is short for Recall
-#: ../data/gcalctool.ui.h:278
-msgid "Rcl"
-msgstr "Rcl"
+#. Accessible name for the recall value button
+#: ../data/gcalctool.ui.h:144
+msgid "Recall"
+msgstr "Palauta"
 
-#: ../data/gcalctool.ui.h:279
-msgid "Reciprocal"
-msgstr "Käänteisarvo"
+#. Tooltip for the recall value button
+#: ../data/gcalctool.ui.h:146
+msgid "Recall value"
+msgstr "Palauta arvo"
 
-#: ../data/gcalctool.ui.h:280
-msgid "Reciprocal [r]"
-msgstr "Käänteisarvo [r]"
-
-#: ../data/gcalctool.ui.h:281
-msgid "Redo"
-msgstr "Tee uudestaan"
-
-#: ../data/gcalctool.ui.h:282
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "Poista luvun oikeanpuolimmainen numero (tai merkki) [←]"
-
-#: ../data/gcalctool.ui.h:283
+#. Accessible description for the area in which results are displayed
+#: ../data/gcalctool.ui.h:148
 msgid "Result Region"
 msgstr "Tulosalue"
 
-#: ../data/gcalctool.ui.h:284
-msgid "Retrieve from register"
-msgstr "Hae rekisteristä"
+#. Tooltip for the root button
+#: ../data/gcalctool.ui.h:150
+msgid "Root [Ctrl+S]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:285
-msgid "Retrieve memory register to display [R]"
-msgstr "Hae muistirekisteri näyttöön [R]"
-
-#: ../data/gcalctool.ui.h:286
-msgid "Right bracket"
-msgstr "Oikea sulku"
-
-#: ../data/gcalctool.ui.h:287
+#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
+#: ../data/gcalctool.ui.h:152
 msgid "Scientific"
 msgstr "Tiede"
 
-#. Title of set precision dialog
-#: ../data/gcalctool.ui.h:289
-msgid "Set Precision"
-msgstr "Aseta tarkkuus"
+#. Accessible name for the scientific exponent button
+#: ../data/gcalctool.ui.h:154
+msgid "Scientific Exponent"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:290
-msgid "Set display type to engineering format"
-msgstr "Aseta näyttötyyppi insinöörimuotoon"
+#. Tooltip for the scientific exponent button
+#: ../data/gcalctool.ui.h:156
+msgid "Scientific exponent [Ctrl+E]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:291
-msgid "Set display type to fixed-point format"
-msgstr "Aseta näyttötyyppi normaalimuotoon"
+#. Accessible name for the shift left button
+#: ../data/gcalctool.ui.h:158
+msgid "Shift Left"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:292
-msgid "Set display type to scientific format"
-msgstr "Aseta näyttötyyppi tieteelliseen muotoon"
+#. Accessible name for the shift right button
+#: ../data/gcalctool.ui.h:160
+msgid "Shift Right"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:293
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Aseta hyperbolinen asetus päälle trigonometrisiin funktioihin"
+#. Tooltip for the shift left button
+#: ../data/gcalctool.ui.h:162
+msgid "Shift left [<]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:294
-msgid "Set inverse option for trigonometric functions"
-msgstr "Aseta käänteisasetus päälle trigonometrisiin funktioihin"
+#. Tooltip for the shift right button
+#: ../data/gcalctool.ui.h:164
+msgid "Shift right [>]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:295
-msgid "Set numeric base to binary (base 2)"
-msgstr "Aseta lukujen kanta binääriseksi (kantaluku 2)"
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/gcalctool.ui.h:166
+msgid "Show _thousands separators"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:296
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Aseta lukujen kanta desimaaliseksi (kantaluku 10)"
-
-#: ../data/gcalctool.ui.h:297
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Aseta lukujen kanta heksadesimaaliseksi (kantaluku 16)"
-
-#: ../data/gcalctool.ui.h:298
-msgid "Set numeric base to octal (base 8)"
-msgstr "Aseta lukujen kanta oktaaliseksi (kantaluku 8)"
-
-#: ../data/gcalctool.ui.h:299
-msgid "Set trigonometric type to degrees"
-msgstr "Käytä asteita"
-
-#: ../data/gcalctool.ui.h:300
-msgid "Set trigonometric type to gradians"
-msgstr "Käytä graadeja"
-
-#: ../data/gcalctool.ui.h:301
-msgid "Set trigonometric type to radians"
-msgstr "Käytä radiaaneja"
-
-#: ../data/gcalctool.ui.h:302
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Siirrä näkyvää arvoa 1-15 kohtaa vasemmalle [<]"
-
-#: ../data/gcalctool.ui.h:303
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Siirrä näkyvää arvoa 1-15 kohtaa oikealle [>]"
-
-#. View|Show Thousands Separator menu item
-#: ../data/gcalctool.ui.h:305
-msgid "Show T_housands Separator"
-msgstr "Näytä _tuhaterotin"
-
-#. Accuracy Popup: Check menu item to enable trailing zeroes
-#: ../data/gcalctool.ui.h:307
-msgid "Show _Trailing Zeroes"
-msgstr "Näytä _nollat lopussa"
-
-#: ../data/gcalctool.ui.h:308
-msgid "Show help contents"
-msgstr "Näytä ohjeen sisältö"
-
-#: ../data/gcalctool.ui.h:309
-msgid "Show memory registers"
-msgstr "Näytä muistirekisterit"
-
-#: ../data/gcalctool.ui.h:310
-msgid "Show the About Gcalctool dialog"
-msgstr "Näytä Tietoja Gcaltoolista -ikkuna"
-
-#: ../data/gcalctool.ui.h:311
-msgid "Show thousands separator"
-msgstr "Näytä tuhaterotin"
-
-#: ../data/gcalctool.ui.h:312
-msgid "Show trailing zeroes"
-msgstr "Näytä nollat lopussa"
-
-#. Set Precision Dialog: Label before the significant places spin button
-#: ../data/gcalctool.ui.h:314
-msgid "Significant _places:"
-msgstr "_Desimaaleja:"
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/gcalctool.ui.h:168
+msgid "Show trailing _zeroes"
+msgstr ""
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:316
+#: ../data/gcalctool.ui.h:170
 msgid "Sln"
 msgstr "Sln"
 
-#: ../data/gcalctool.ui.h:317
-msgid "Square"
-msgstr "Neliö"
+#. Tooltip for the start block button
+#: ../data/gcalctool.ui.h:172
+msgid "Start block [(]"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:318
-msgid "Square [@]"
-msgstr "Neliö [@]"
+#. Accessible name for the store value button
+#: ../data/gcalctool.ui.h:174
+msgid "Store"
+msgstr "Tallenna"
 
-#: ../data/gcalctool.ui.h:319
-msgid "Square root"
-msgstr "Neliöjuuri"
+#. Tooltip for the store value button
+#: ../data/gcalctool.ui.h:176
+msgid "Store value"
+msgstr "Tallenna arvo"
 
-#: ../data/gcalctool.ui.h:320
-msgid "Square root [s]"
-msgstr "Neliöjuuri [s]"
+#. Accessible name for the subscript mode button
+#: ../data/gcalctool.ui.h:178
+msgid "Subscript"
+msgstr "Alaindeksi"
 
-#: ../data/gcalctool.ui.h:321
-msgid "Start group of calculations [(]"
-msgstr "Aloita ryhmä laskutoimituksia [(]"
+#. Tooltip for the subscript mode button
+#: ../data/gcalctool.ui.h:180
+msgid "Subscript number mode [Alt+number]"
+msgstr ""
 
-#. Memory store button. Sto is short for Store
-#: ../data/gcalctool.ui.h:323
-msgid "Sto"
-msgstr "Sto"
-
-#: ../data/gcalctool.ui.h:324
-msgid "Store displayed value in memory register [S]"
-msgstr "Tallenna näytetty arvo muistirekisteriin [S]"
-
-#: ../data/gcalctool.ui.h:325
-msgid "Store to register"
-msgstr "Tallenna rekisteriin"
-
-#: ../data/gcalctool.ui.h:326
-msgid "Straight-line depreciation"
-msgstr "Poisto tasaerin"
-
-#: ../data/gcalctool.ui.h:327
-msgid "Straight-line depreciation [l]"
-msgstr "Poisto tasaerin [l]"
-
-#: ../data/gcalctool.ui.h:328
-msgid "Subtract"
-msgstr "Vähennä"
-
-#: ../data/gcalctool.ui.h:329
+#. Tooltip for the subtraction button
+#: ../data/gcalctool.ui.h:182
 msgid "Subtract [-]"
 msgstr "Vähennä [-]"
 
-#: ../data/gcalctool.ui.h:330
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Vuotuiset poistot yhteensä"
+#. Accessible name for the superscript mode button
+#: ../data/gcalctool.ui.h:184
+msgid "Superscript"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:331
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Vuotuiset poistot yhteensä [Y]"
-
-#: ../data/gcalctool.ui.h:332
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Vuotuiset poistot yhteensä [y]"
+#. Tooltip for the superscript mode button
+#: ../data/gcalctool.ui.h:186
+msgid "Superscript number mode [Ctrl+number]"
+msgstr ""
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:334
+#: ../data/gcalctool.ui.h:188
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:336
+#: ../data/gcalctool.ui.h:190
 msgid "Term"
 msgstr "Ehto"
 
-#. Truncate displayed value
-#: ../data/gcalctool.ui.h:338
-msgid "Trunc"
-msgstr "Katkaise"
+#. Tooltip for the truncate button
+#: ../data/gcalctool.ui.h:192
+msgid "Truncate value"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:339
-msgid "Truncate displayed value to the chosen word size ([)"
-msgstr "Katkaise näytetty arvo valittuun sanakokoon ([)"
+#. Tooltip for the two's complement button
+#: ../data/gcalctool.ui.h:194
+msgid "Two's complement"
+msgstr ""
 
-#: ../data/gcalctool.ui.h:340
-msgid "Undo"
-msgstr "Kumoa"
-
-#: ../data/gcalctool.ui.h:341
-msgid "User-defined functions [F]"
-msgstr "Käyttäjän määrittelemät funktiot [F]"
-
-#. Boolean exclusive NOR button
-#: ../data/gcalctool.ui.h:343
-msgid "XNOR"
-msgstr "XNOR"
-
-#. Boolean exlcusive OR button
-#: ../data/gcalctool.ui.h:345
-msgid "XOR"
-msgstr "XOR"
-
-#. Accuracy Popup: Menu item to set accuracy to 0 significant places
-#: ../data/gcalctool.ui.h:347
-msgid "_0 significant places"
-msgstr "_0:n desimaalin tarkkuus"
+#. Preferences dialog: label for word size combo box
+#: ../data/gcalctool.ui.h:196
+msgid "Word _size:"
+msgstr ""
 
 #. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:349
+#: ../data/gcalctool.ui.h:198
 msgid "_1 place"
 msgstr "_1 paikka"
 
-#. Accuracy Popup: Menu item to set accuracy to 1 significant place
-#: ../data/gcalctool.ui.h:351
-msgid "_1 significant place"
-msgstr "_1:n desimaalin tarkkuus"
-
-#. 16 bit radio button
-#: ../data/gcalctool.ui.h:353
-msgid "_16 bit"
-msgstr "_16-bittinen"
-
 #. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:355
+#: ../data/gcalctool.ui.h:200
 msgid "_2 places"
 msgstr "_2 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 2 significant places
-#: ../data/gcalctool.ui.h:357
-msgid "_2 significant places"
-msgstr "_2:n desimaalin tarkkuus"
-
 #. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:359
+#: ../data/gcalctool.ui.h:202
 msgid "_3 places"
 msgstr "_3 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 3 significant places
-#: ../data/gcalctool.ui.h:361
-msgid "_3 significant places"
-msgstr "_3:n desimaalin tarkkuus"
-
-#. 32 bit radio button
-#: ../data/gcalctool.ui.h:363
-msgid "_32 bit"
-msgstr "_32-bittinen"
-
 #. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:365
+#: ../data/gcalctool.ui.h:204
 msgid "_4 places"
 msgstr "_4 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 4 significant places
-#: ../data/gcalctool.ui.h:367
-msgid "_4 significant places"
-msgstr "_4:n desimaalin tarkkuus"
-
 #. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:369
+#: ../data/gcalctool.ui.h:206
 msgid "_5 places"
 msgstr "_5 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 5 significant places
-#: ../data/gcalctool.ui.h:371
-msgid "_5 significant places"
-msgstr "_5:n desimaalin tarkkuus"
-
 #. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:373
+#: ../data/gcalctool.ui.h:208
 msgid "_6 places"
 msgstr "_6 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 6 significant places
-#: ../data/gcalctool.ui.h:375
-msgid "_6 significant places"
-msgstr "_6:n desimaalin tarkkuus"
-
-#. 64 bit radio button
-#: ../data/gcalctool.ui.h:377
-msgid "_64 bit"
-msgstr "_64-bittinen"
-
 #. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:379
+#: ../data/gcalctool.ui.h:210
 msgid "_7 places"
 msgstr "_7 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 7 significant places
-#: ../data/gcalctool.ui.h:381
-msgid "_7 significant places"
-msgstr "_7:n desimaalin tarkkuus"
-
 #. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:383
+#: ../data/gcalctool.ui.h:212
 msgid "_8 places"
 msgstr "_8 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 8 significant places
-#: ../data/gcalctool.ui.h:385
-msgid "_8 significant places"
-msgstr "_8:n desimaalin tarkkuus"
-
 #. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:387
+#: ../data/gcalctool.ui.h:214
 msgid "_9 places"
 msgstr "_9 paikkaa"
 
-#. Accuracy Popup: Menu item to set accuracy to 9 significant places
-#: ../data/gcalctool.ui.h:389
-msgid "_9 significant places"
-msgstr "_9:n desimaalin tarkkuus"
-
 #. View|Advanced menu item
-#: ../data/gcalctool.ui.h:391
+#: ../data/gcalctool.ui.h:216
 msgid "_Advanced"
 msgstr "_Edistynyt"
 
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/gcalctool.ui.h:218
+msgid "_Angle units:"
+msgstr ""
+
 #. View|Basic menu item
-#: ../data/gcalctool.ui.h:393
+#: ../data/gcalctool.ui.h:220
 msgid "_Basic"
 msgstr "_Perustila"
 
-#. Base 2 radio button
-#: ../data/gcalctool.ui.h:395
-msgid "_Bin"
-msgstr "_Bin"
-
 #. Calculator menu
-#: ../data/gcalctool.ui.h:397
+#: ../data/gcalctool.ui.h:222
 msgid "_Calculator"
 msgstr "_Laskin"
 
-#. Base 10 radio button
-#: ../data/gcalctool.ui.h:399
-msgid "_Dec"
-msgstr "_Dec"
-
-#. Edit menu
-#: ../data/gcalctool.ui.h:401
-msgid "_Edit"
-msgstr "_Muokkaa"
-
 #. View|Financial menu item
-#: ../data/gcalctool.ui.h:403
+#: ../data/gcalctool.ui.h:224
 msgid "_Financial"
 msgstr "_Taloustila"
 
-#. Fixed-point display radio button
-#: ../data/gcalctool.ui.h:405
-msgid "_Fix"
-msgstr "_Fix"
-
 #. Help menu
-#: ../data/gcalctool.ui.h:407
+#: ../data/gcalctool.ui.h:226
 msgid "_Help"
 msgstr "O_hje"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:409
+#: ../data/gcalctool.ui.h:228
 msgid "_Insert"
 msgstr "_Lisää"
 
-#. Edit|Insert ASCII value menu item
-#: ../data/gcalctool.ui.h:411
-msgid "_Insert ASCII value..."
-msgstr "L_isää ASCII-arvo..."
-
-#. Inverse check box
-#: ../data/gcalctool.ui.h:413
-msgid "_Inv"
-msgstr "_Inv"
-
-#. View|Memory Registers menu item
-#: ../data/gcalctool.ui.h:415
-msgid "_Memory Registers"
-msgstr "_Muistirekisterit"
-
-#. Base 8 radio button
-#: ../data/gcalctool.ui.h:417
-msgid "_Oct"
-msgstr "_Oct"
-
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:419
+#: ../data/gcalctool.ui.h:230
 msgid "_Programming"
 msgstr "_Ohjelmointi"
 
-#. Radian radio button
-#: ../data/gcalctool.ui.h:421
-msgid "_Radians"
-msgstr "_Radiaanit"
-
-#. Scientific display radio button
-#: ../data/gcalctool.ui.h:423
-msgid "_Sci"
-msgstr "_Sci"
-
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:425
+#: ../data/gcalctool.ui.h:232
 msgid "_Scientific"
 msgstr "T_iedetila"
 
-#. Set Precision Dialog: Button to apply settings
-#: ../data/gcalctool.ui.h:427
-msgid "_Set"
-msgstr "_Aseta"
-
 #. View menu
-#: ../data/gcalctool.ui.h:429
+#: ../data/gcalctool.ui.h:234
 msgid "_View"
 msgstr "_Näytä"
 
-#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:431
-msgid "register 0"
-msgstr "rekisteri 0"
-
-#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:433
-msgid "register 1"
-msgstr "rekisteri 1"
-
-#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:435
-msgid "register 2"
-msgstr "rekisteri 2"
-
-#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:437
-msgid "register 3"
-msgstr "rekisteri 3"
-
-#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:439
-msgid "register 4"
-msgstr "rekisteri 4"
-
-#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:441
-msgid "register 5"
-msgstr "rekisteri 5"
-
-#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:443
-msgid "register 6"
-msgstr "rekisteri 6"
-
-#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:445
-msgid "register 7"
-msgstr "rekisteri 7"
-
-#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:447
-msgid "register 8"
-msgstr "rekisteri 8"
-
-#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:449
-msgid "register 9"
-msgstr "rekisteri 9"
-
-#: ../data/gcalctool.ui.h:450
-msgid "x2"
-msgstr "x2"
-
 #. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:62
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Laskin"
 
@@ -1600,11 +862,9 @@ msgstr "Näyttötila"
 
 #: ../data/gcalctool.schemas.in.h:3
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
-"Ilmoittaa näytetäänkö nollat lopussa desimaalierottimen jälkeen "
-"näytettävässä arvossa."
 
 #: ../data/gcalctool.schemas.in.h:4
 msgid "Indicates whether the memory register window is initially displayed."
@@ -1627,8 +887,8 @@ msgid "Show Registers"
 msgstr "Näytä rekisterit"
 
 #: ../data/gcalctool.schemas.in.h:9
-msgid "Show Thousands Separator"
-msgstr "Näytä tuhaterotin"
+msgid "Show Thousands Separators"
+msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:10
 msgid "Show Trailing Zeroes"
@@ -1660,7 +920,7 @@ msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:14
 msgid "The initial x-coordinate for the window"
-msgstr "Ikkunan x-koordinaattu aluksi"
+msgstr "Ikkunan x-koordinaatti aluksi"
 
 #: ../data/gcalctool.schemas.in.h:15
 msgid "The initial y-coordinate for the window"
@@ -1688,7 +948,7 @@ msgstr ""
 
 #: ../data/gcalctool.schemas.in.h:19
 msgid "The numeric base for input and display."
-msgstr "Kantaluku syöttelle ja näytölle."
+msgstr "Kantaluku syötteelle ja näytölle."
 
 #: ../data/gcalctool.schemas.in.h:20
 msgid ""
@@ -1705,16 +965,16 @@ msgstr "Trigonometrinen tyyppi"
 msgid "Word size"
 msgstr "Sanakoko"
 
-#: ../src/calctool.c:82
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/calctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
-"  %s - Perform mathematical calculations"
+"  %s — Perform mathematical calculations"
 msgstr ""
-"Käyttö:\n"
-"  %s - Suorita matemaattisia laskelmia"
 
-#: ../src/calctool.c:90
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/calctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1729,7 +989,8 @@ msgstr ""
 "  --help-all                      Näytä kaikki ohjevalitsimet\n"
 "  --help-gtk                      Näytä GTK+-valitsimet"
 
-#: ../src/calctool.c:101
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/calctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1750,390 +1011,262 @@ msgstr ""
 "  --gtk-module=MODUULIT           Lataa lisäksi GTK+-moduulit\n"
 "  --g-fatal-warnings              Tee kaikista varoituksista kuolettavia"
 
-#: ../src/calctool.c:114
+#. Description on gcalctool application options displayed on command-line
+#: ../src/calctool.c:111
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
+"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
-"Sovelluksen valitsimet:\n"
-"  -u, --unittest                  Suorita yksikkötestit\n"
-"  -s, --solve <yhtälö>            Ratkaise annettu yhtälö"
 
-#. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:150
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/calctool.c:148
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argumentti --solve vaatii ratkaistavan yhtälön"
 
-#. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:163
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/calctool.c:162
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Tuntematon argumentti ”%s”"
 
-#. Translators: A log message displayed when an invalid accuracy
-#. is read from the configuration
-#: ../src/calctool.c:191
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: tarkkuus tulisi olla välillä 0-%d\n"
+#. Translators: Digits localized for the given language
+#: ../src/calctool.c:175
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
-#: ../src/display.c:417
+#: ../src/currency.h:18
+msgid "Australian dollar"
+msgstr "Australian dollari"
+
+#: ../src/currency.h:19
+msgid "Bulgarian lev"
+msgstr "Bulgarian lev"
+
+#: ../src/currency.h:20
+msgid "Brazilian real"
+msgstr "Brasilian real"
+
+#: ../src/currency.h:21
+msgid "Canadian dollar"
+msgstr "Canadan dollari"
+
+#: ../src/currency.h:22
+msgid "Swiss franc"
+msgstr "Sveitsin frangi"
+
+#: ../src/currency.h:23
+msgid "Chinese yuan renminbi"
+msgstr "Kiinan renminbi yuan"
+
+#: ../src/currency.h:24
+msgid "Czech koruna"
+msgstr "Tsekin koruna"
+
+#: ../src/currency.h:25
+msgid "Danish krone"
+msgstr "Tanskan kruunu"
+
+#: ../src/currency.h:26
+msgid "Estonian kroon"
+msgstr "Viron kruunu"
+
+#: ../src/currency.h:27
+msgid "Euro"
+msgstr "Euro"
+
+#: ../src/currency.h:28
+msgid "Pound sterling"
+msgstr "Iso-Britannian punta"
+
+#: ../src/currency.h:29
+msgid "Hong Kong dollar"
+msgstr "Hongkongin dollari"
+
+#: ../src/currency.h:30
+msgid "Croatian kuna"
+msgstr "Kroatian kuna"
+
+#: ../src/currency.h:31
+msgid "Hungarian forint"
+msgstr "Unkarin forintti"
+
+#: ../src/currency.h:32
+msgid "Indonesian rupiah"
+msgstr "Indonesian rupia"
+
+#: ../src/currency.h:33
+msgid "Indian rupee"
+msgstr "Intian rupia"
+
+#: ../src/currency.h:34
+msgid "Icelandic krona"
+msgstr "Islannin kruunu"
+
+#: ../src/currency.h:35
+msgid "Japanese yen"
+msgstr "Japanin jeni"
+
+#: ../src/currency.h:36
+msgid "South Korean won"
+msgstr "Etelä-Korean won"
+
+#: ../src/currency.h:37
+msgid "Lithuanian litas"
+msgstr "Liettuan lita"
+
+#: ../src/currency.h:38
+msgid "Latvian lats"
+msgstr "Latvian lati"
+
+#: ../src/currency.h:39
+msgid "Mexican peso"
+msgstr "Meksikon peso"
+
+#: ../src/currency.h:40
+msgid "Malaysian ringgit"
+msgstr "Malesian ringgit"
+
+#: ../src/currency.h:41
+msgid "Norwegian krone"
+msgstr "Norjan kruunu"
+
+#: ../src/currency.h:42
+msgid "New Zealand dollar"
+msgstr "Uuden-Seelannin dollari"
+
+#: ../src/currency.h:43
+msgid "Philippine peso"
+msgstr "Filippiinien peso"
+
+#: ../src/currency.h:44
+msgid "Polish zloty"
+msgstr "Puolan zloty"
+
+#: ../src/currency.h:45
+msgid "New Romanian leu"
+msgstr "Romanian uusi leu"
+
+#: ../src/currency.h:46
+msgid "Russian rouble"
+msgstr "Venäjän rupla"
+
+#: ../src/currency.h:47
+msgid "Swedish krona"
+msgstr "Ruotsin kruunu"
+
+#: ../src/currency.h:48
+msgid "Singapore dollar"
+msgstr "Singaporen dollari"
+
+#: ../src/currency.h:49
+msgid "Thai baht"
+msgstr "Thaimaan baht"
+
+#: ../src/currency.h:50
+msgid "New Turkish lira"
+msgstr "Turkin uusi liira"
+
+#: ../src/currency.h:51
+msgid "US dollar"
+msgstr "Yhdysvaltain dollari"
+
+#: ../src/currency.h:52
+msgid "South African rand"
+msgstr "Etelä-Afrikan randi"
+
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Ei perumishistoriaa"
 
-#: ../src/display.c:432
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Ei uudelleen tehtäviä toimia"
 
-#. Translators: This message is displayed in the status bar when an
-#. invalid user-defined function is executed
-#: ../src/functions.c:235
-msgid "Malformed function"
-msgstr "Virheellinen funktio"
-
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:322
-msgid "No sane value to do bitwise shift"
-msgstr "Arvo ei ole järkevä bittisiirron arvoksi"
+#: ../src/display.c:1068
+msgid "No sane value to bitwise shift"
+msgstr "Ei järkevää arvoa bittisiirrolle"
 
-#: ../src/functions.c:343 ../src/functions.c:398
-msgid "No sane value to convert"
-msgstr "Ei kelpoa arvoa muunnettavaksi"
+#. Translators: Error displayed when trying to factorize a non-integer value
+#: ../src/display.c:1084
+msgid "Need an integer to factorize"
+msgstr "Tekijöihin jakamiseen vaaditaan kokonaisluku"
 
-#: ../src/functions.c:366 ../src/functions.c:418
+#: ../src/display.c:1110
 msgid "No sane value to store"
 msgstr "Ei kelpoa arvoa tallennettavaksi"
 
-#: ../src/functions.c:583
-msgid "Invalid number for the current base"
-msgstr "Virheellinen numero nykyiselle kannalle"
-
-#. Translators: Error displayed to user when they
-#. * perform an invalid bitwise operation, e.g.
-#. * 1 XOR -1
-#: ../src/functions.c:590
-msgid "Invalid bitwise operation"
-msgstr "Virheellinen bitittäisoperaatio"
-
-#. Translators: Error displayed to user when they
-#. * perform an invalid modulus operation, e.g.
-#. * 6 MOD 1.2
-#: ../src/functions.c:597
-msgid "Invalid modulus operation"
-msgstr "Virheellinen modulo-operaatio"
-
-#. Translators; Error displayd to user when they
-#. * perform a bitwise operation on numbers greater
-#. * than the current word
-#: ../src/functions.c:604
+#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/display.c:1232
 msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
-#. Translators; Error displayd to user when they
-#. * an unknown variable is entered
-#: ../src/functions.c:610
-msgid "Unknown variable"
-msgstr "Tuntematon muuttuja"
+#. Translators: Error displayed to user when they an unknown variable is entered
+#: ../src/display.c:1237
+#, c-format
+msgid "Unknown variable '%s'"
+msgstr "Tuntematon muuttuja '%s'"
 
-#. Translators; Error displayd to user when they
-#. * an unknown function is entered
-#: ../src/functions.c:616
-msgid "Unknown function"
-msgstr "Tuntematon funktio"
+#. Translators: Error displayed to user when an unknown function is entered
+#: ../src/display.c:1243
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "Funktiota '%s' ei ole määritelty"
 
-#. Translators: Error displayed to user when they
-#. * enter an invalid calculation
-#: ../src/functions.c:626
+#. Translators: Error displayed to user when an conversion with unknown units is attempted
+#: ../src/display.c:1249
+#, c-format
+msgid "Unknown conversion"
+msgstr "Tuntematon muunnos"
+
+#. Translators: Error displayed to user when they enter an invalid calculation
+#: ../src/display.c:1258
 msgid "Malformed expression"
 msgstr "Virheellinen lauseke"
 
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:64
-msgid "Calculator - Advanced"
+#: ../src/gtk.c:98
+msgid "Calculator — Advanced"
 msgstr "Laskin - edistynyt"
 
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:66
-msgid "Calculator - Financial"
-msgstr "Laskin - taloustila"
+#: ../src/gtk.c:100
+msgid "Calculator — Financial"
+msgstr "Laskin - talous"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:68
-msgid "Calculator - Scientific"
-msgstr "Laskin - tiedetila"
+#: ../src/gtk.c:102
+msgid "Calculator — Scientific"
+msgstr "Laskin - tieteellinen"
 
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:70
-msgid "Calculator - Programming"
+#: ../src/gtk.c:104
+msgid "Calculator — Programming"
 msgstr "Laskin - ohjelmointi"
 
-#. Translators: The window title when in basic mode. %s is replaced with the hostname.
-#: ../src/gtk.c:76
-#, c-format
-msgid "Calculator [%s]"
-msgstr "Laskin [%s]"
-
-#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
-#: ../src/gtk.c:78
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Laskin [%s] - edistynyt"
-
-#. Translators: The window title when in financial mode. %s is replaced with the hostname.
-#: ../src/gtk.c:80
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Laskin [%s] - taloustila"
-
-#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
-#: ../src/gtk.c:82
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Laskin [%s] - tiedetila"
-
-#. Translators: The window title when in programming mode. %s is replaced with the hostname.
-#: ../src/gtk.c:84
-#, c-format
-msgid "Calculator [%s] - Programming"
-msgstr "Laskin [%s] - ohjelmointi"
-
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:572
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Virhe ladattaessa käyttöliittymää"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:575
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
-"A required file is missing or damaged, please check your installation.\n"
+"A required file is missing or damaged. Please check your installation.\n"
 "\n"
 "%s"
 msgstr ""
-"Vaadittu tiedosto puuttuu tai on vioittunut. Tarkista asennus.\n"
+"Tarvittava tiedosto puuttuu tai on vahingoittunut. Tarkista asennuksesi.\n"
 "\n"
 "%s"
 
-#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../src/gtk.c:672
-#, c-format
-msgid "_Other (%d) ..."
-msgstr "_Muu (%d) ..."
-
-#. Translators: Tooltip for accuracy button
-#: ../src/gtk.c:678
-#, c-format
-msgid "Set accuracy from 0 to %d numeric place. [A]"
-msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgstr[0] "Aseta tarkkuus nollasta %d desimaaliksi. [A]"
-msgstr[1] "Aseta tarkkuus nollasta %d desimaaliksi. [A]"
-
-#. Translators: The sine button
-#: ../src/gtk.c:703
-msgid "sin"
-msgstr "sin"
-
-#. Translators: The inverse sine button
-#: ../src/gtk.c:705
-msgid "sin<sup>−1</sup>"
-msgstr "sin<sup>-1</sup>"
-
-#. Translators: The hyperbolic sine button
-#: ../src/gtk.c:707
-msgid "sinh"
-msgstr "sinh"
-
-#. Translators: The inverse hyperbolic sine button
-#: ../src/gtk.c:709
-msgid "sinh<sup>−1</sup>"
-msgstr "sinh<sup>-1</sup>"
-
-#. Translators: The sine tooltip
-#: ../src/gtk.c:712
-msgid "Sine [k]"
-msgstr "Sini [k]"
-
-#. Translators: The inverse sine tooltip
-#: ../src/gtk.c:714
-msgid "Inverse Sine [K]"
-msgstr "Käänteinen sini [K]"
-
-#. Translators: The hyperbolic sine tooltip
-#: ../src/gtk.c:716
-msgid "Hyperbolic Sine [k]"
-msgstr "Hyperbolinen sini [k]"
-
-#. Translators: The hyperbolic inverse sine tooltip
-#: ../src/gtk.c:718
-msgid "Hyperbolic Inverse Sine [K]"
-msgstr "Hyperbolinen käänteinen sini [K]"
-
-#. Translators: The cosine button
-#: ../src/gtk.c:722
-msgid "cos"
-msgstr "cos"
-
-#. Translators: The inverse cosine button
-#: ../src/gtk.c:724
-msgid "cos<sup>−1</sup>"
-msgstr "cos<sup>-1</sup>"
-
-#. Translators: The hyperbolic cosine button
-#: ../src/gtk.c:726
-msgid "cosh"
-msgstr "cosh"
-
-#. Translators: The inverse hyperbolic cosine button
-#: ../src/gtk.c:728
-msgid "cosh<sup>−1</sup>"
-msgstr "cosh<sup>-1</sup>"
-
-#. Translators: The cosine tooltip
-#: ../src/gtk.c:731
-msgid "Cosine [j]"
-msgstr "Kosini [j]"
-
-#. Translators: The inverse cosine tooltip
-#: ../src/gtk.c:733
-msgid "Inverse Cosine [J]"
-msgstr "Käänteinen kosini [J]"
-
-#. Translators: The hyperbolic cosine tooltip
-#: ../src/gtk.c:735
-msgid "Hyperbolic Cosine [j]"
-msgstr "Hyperbolinen kosini [j]"
-
-#. Translators: The hyperbolic inverse cosine tooltip
-#: ../src/gtk.c:737
-msgid "Hyperbolic Inverse Cosine [J]"
-msgstr "Hyperbolinen käänteinen kosini [J]"
-
-#. Translators: The tangent button
-#: ../src/gtk.c:741
-msgid "tan"
-msgstr "tan"
-
-#. Translators: The inverse tangent button
-#: ../src/gtk.c:743
-msgid "tan<sup>−1</sup>"
-msgstr "tan<sup>-1</sup>"
-
-#. Translators: The hyperbolic tangent button
-#: ../src/gtk.c:745
-msgid "tanh"
-msgstr "tanh"
-
-#. Translators: The inverse hyperbolic tangent button
-#: ../src/gtk.c:747
-msgid "tanh<sup>−1</sup>"
-msgstr "tanh<sup>-1</sup>"
-
-#. Translators: The tangent tooltip
-#: ../src/gtk.c:750
-msgid "Tangent [w]"
-msgstr "Tangentti [w]"
-
-#. Translators: The inverse tangent tooltip
-#: ../src/gtk.c:752
-msgid "Inverse Tangent [W]"
-msgstr "Käänteinen tangentti [W]"
-
-#. Translators: The hyperbolic tangent tooltip
-#: ../src/gtk.c:754
-msgid "Hyperbolic Tangent [w]"
-msgstr "Hyperbolinen tangentti [w]"
-
-#. Translators: The hyperbolic inverse tangent tooltip
-#: ../src/gtk.c:756
-msgid "Hyperbolic Inverse Tangent [W]"
-msgstr "Hyperbolinen käänteinen tangentti [W]"
-
-#. Translators: The natural logaritm button
-#: ../src/gtk.c:761
-msgid "ln"
-msgstr "ln"
-
-#. Translators: The e to the power of x button
-#: ../src/gtk.c:763
-msgid "e<sup><i>x</i></sup>"
-msgstr "e<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the natural log button
-#: ../src/gtk.c:766
-msgid "Natural logarithm [n]"
-msgstr "Luonnollinen logaritmi [n]"
-
-#. Translators: Tooltip for the e to the power of x button
-#: ../src/gtk.c:768
-msgid "e to the power of the displayed value [N]"
-msgstr "e annetun arvon potenssiin [N]"
-
-#. Translators: The 10-based logaritm button
-#: ../src/gtk.c:773
-msgid "log"
-msgstr "log"
-
-#. Translators: The 10 to the power of x button
-#: ../src/gtk.c:775
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 10 button
-#: ../src/gtk.c:778
-msgid "Base 10 logarithm [g]"
-msgstr "10-kantainen logaritmi [g]"
-
-#. Translators: Tooltip for the 10 to the power of x button
-#: ../src/gtk.c:780
-msgid "10 to the power of displayed value [G]"
-msgstr "10 annetun arvon potenssiin [G]"
-
-#. Translators: The 2-based logaritm button
-#: ../src/gtk.c:785
-msgid "log<sub>2</sub>"
-msgstr "log<sub>2</sub>"
-
-#. Translators: The 2 to the power of x button
-#: ../src/gtk.c:787
-msgid "2<sup><i>x</i></sup>"
-msgstr "2<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 2 button
-#: ../src/gtk.c:790
-msgid "Base 2 logarithm [h]"
-msgstr "2-kantainen logaritmi [h]"
-
-#. Translators: Tooltip for the 2 to the power of x button
-#: ../src/gtk.c:792
-msgid "2 to the power of the displayed value [H]"
-msgstr "2 annetun arvon potenssiin [H]"
-
-#. Translators: The x to the power of y button
-#: ../src/gtk.c:797
-msgid "x<sup><i>y</i></sup>"
-msgstr "x<sup><i>y</i></sup>"
-
-#. Translators: The x to the power of reciprocal y button
-#: ../src/gtk.c:799
-msgid "x<sup>1/<i>y</i></sup>"
-msgstr "x<sup>1/<i>y</i></sup>"
-
-#. Translators: Tooltip for the x to the power of y button
-#: ../src/gtk.c:802
-msgid "Raise displayed value to the power of y [o]"
-msgstr "Korota näytetty arvo potenssiin y [o]"
-
-#. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../src/gtk.c:804
-msgid "Raise displayed value to the power of reciprocal y [O]"
-msgstr "Korota näytetty arvo potenssiin 1/y (käänteisarvo) [O]"
-
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1365
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Ilkka Tuohela, 2005-2009\n"
@@ -2141,9 +1274,16 @@ msgstr ""
 "Sami Pesonen, 2003-2004\n"
 "Mika Mononen, 2003\n"
 "\n"
-"http://gnome.fi/"
+"http://gnome.fi/\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
+"  Jussi Aalto https://launchpad.net/~jtaalto\n"
+"  T Kortehisto https://launchpad.net/~temakort\n"
+"  Tommi Vainikainen https://launchpad.net/~thv"
 
-#: ../src/gtk.c:1369
+#. Translators: The license this software is under (GPL2+)
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -2174,731 +1314,1174 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:1385
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Laskin"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1388
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1987-2008 Gcalctoolin kehittäjät"
+#: ../src/gtk.c:579
+msgid "© 1986–2008 The Gcalctool authors"
+msgstr "© 1986–2008 Laskimen tekijät"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:1391
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
-msgstr "Laskin talous- ja tiedetilojan kera"
+msgstr "Laskin talous- ja tiedetilojen kera"
 
-#: ../src/gtk.c:1549
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Ohjetiedostoa ei voi avata"
 
-#. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1956
-msgid "R"
-msgstr "R"
+#. Translators: Title of the error dialog when prompting to download currency rates
+#: ../src/gtk.c:1010
+msgid ""
+"You don't have any recent currency rates. Should some be downloaded now?"
+msgstr ""
+"Viimeaikaisia kurssiarvoja ei ole tiedossa. Ladataanko kurssiarvot nyt?"
 
-#. FIXME: WTF?
-#: ../src/gtk.c:2319
+#. Translators: Title of the error dialog when unable to download currency rates
+#: ../src/gtk.c:1020
+msgid ""
+"Currency rates could not be downloaded. You may receive inaccurate results, "
+"or you may not receive any results at all."
+msgstr ""
+"Kurssiarvojen lataus epäonnistui. Tulokset voivat olla epätarkkoja, tai "
+"vaihtoehtoisesti minkäänlaisia tuloksia ei voida näyttää."
+
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Liitä"
 
-#. Translators: Edit Constants Dialog: Constant number column title
-#. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2679 ../src/gtk.c:2696
-msgid "No."
-msgstr "Nro"
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
+msgid "Division by zero is undefined"
+msgstr "Nollalla jakamista ei ole määritelty"
 
-#. Translators: Edit Constants Dialog: Constant value column title
-#. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2681 ../src/gtk.c:2699
-msgid "Value"
-msgstr "Arvo"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1169 ../src/mp.c:1206
+msgid "Logarithm of zero is undefined"
+msgstr "Nollan logaritmia ei ole määritelty"
 
-#. Translators: Edit Constants Dialog: Constant description column title
-#. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2683 ../src/gtk.c:2702
-msgid "Description"
-msgstr "Selitys"
+#. Translators: Error displayed attempted to take logarithm of negative value
+#: ../src/mp.c:1178
+msgid "Logarithm of negative values is undefined"
+msgstr "Negatiivisten lukujen logaritmia ei ole määritelty"
 
-#. Set default accuracy menu item
-#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2826
-#, c-format
-msgid "Reset to _Default (%d)"
-msgstr "Palauta _oletusarvoon (%d)"
+#: ../src/mp.c:1552
+msgid "The power of negative numbers is only defined for integer exponents"
+msgstr ""
 
-#: ../src/mp.c:1467
-msgid "Negative X and non-integer Y not supported"
-msgstr "Negatiivista X ja ei-kokonaislukua Y ei tueta"
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1559 ../src/mp.c:1852
+msgid "The power of zero is undefined for a negative exponent"
+msgstr ""
+
+#: ../src/mp.c:1584
+msgid "Reciprocal of zero is undefined"
+msgstr "Nollan käänteislukua ei ole määritelty"
+
+#: ../src/mp.c:1669
+msgid "Root must be non-zero"
+msgstr "Juuri ei voi olla nolla"
+
+#: ../src/mp.c:1687
+msgid "Negative root of zero is undefined"
+msgstr "Nollan negatiivista juurta ei ole määritelty"
+
+#: ../src/mp.c:1693
+msgid "nth root of negative number is undefined for even n"
+msgstr "Negatiivisen luvun n:ttä juurta ei ole määritelty parilliselle n:lle"
+
+#: ../src/mp.c:1763
+msgid "Square root is undefined for negative values"
+msgstr "Neliöjuurta ei ole määritelty negatiivisille arvoille"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1792
+msgid "Factorial is only defined for natural numbers"
+msgstr "Tekijöihin jakaminen on määritelty vain luonnollisille luvuille"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1812
+msgid "Modulus division is only defined for integers"
+msgstr ""
+
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:103
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:116
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:129
+msgid "Boolean XOR is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:144
+msgid "Boolean NOT is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:174
+msgid "Shift is only possible on integer values"
+msgstr ""
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:281
-msgid "Tangent is infinite"
-msgstr "Tangentti on ääretön"
+#: ../src/mp-trigonometric.c:278
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
-#: ../src/register.c:40
-msgid "Kilometer-to-mile conversion factor"
-msgstr "kilometrit maileiksi -muunnoskerroin"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:323
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
-#: ../src/register.c:42
-msgid "square root of 2"
-msgstr "neliöjuuri kakkosesta"
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:340
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr ""
 
-#. Translators: This is the label for the default constant, Euler's number (2.71828)
-#: ../src/register.c:44
-msgid "Euler's Number (e)"
-msgstr "Eulerin numero (e)"
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:558
+msgid ""
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
+msgstr ""
 
-#. Translators: This is the label for the default constant, π (3.14159)
-#: ../src/register.c:46
-msgid "π"
-msgstr "π"
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:582
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
-#: ../src/register.c:48
-msgid "Centimeter-to-inch conversion factor"
-msgstr "senttimetrit tuumiksi -muunnoskerroin"
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "Näkyvän arvon kokonaisosa [i]"
 
-#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
-#: ../src/register.c:50
-msgid "degrees in a radian"
-msgstr "asteet radiaaneina"
+#~ msgid "x2"
+#~ msgstr "x2"
 
-#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
-#: ../src/register.c:52
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#~ msgid "register 9"
+#~ msgstr "rekisteri 9"
 
-#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
-#: ../src/register.c:54
-msgid "Gram-to-ounce conversion factor"
-msgstr "grammat unsseiksi -muunnoskerroin"
+#~ msgid "register 8"
+#~ msgstr "rekisteri 8"
 
-#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
-#: ../src/register.c:56
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "kilojoulet brittiläisiksi lämpöyksiköiksi -muunnoskerroin"
+#~ msgid "register 7"
+#~ msgstr "rekisteri 7"
 
-#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
-#: ../src/register.c:58
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "kuutiosenttimetrit kuutiotuumiksi -muunnoskerroin"
+#~ msgid "register 6"
+#~ msgstr "rekisteri 6"
 
-#~ msgid "Error"
-#~ msgstr "Virhe"
+#~ msgid "register 5"
+#~ msgstr "rekisteri 5"
 
-#~ msgid "Too long number"
-#~ msgstr "Liian pitkä numero"
+#~ msgid "register 4"
+#~ msgstr "rekisteri 4"
 
-#~ msgid "Math operation error"
-#~ msgstr "Virhe matematiikkatoiminnossa"
+#~ msgid "register 3"
+#~ msgstr "rekisteri 3"
 
-#~ msgid "Sin"
-#~ msgstr "Sin"
+#~ msgid "register 2"
+#~ msgstr "rekisteri 2"
 
-#~ msgid "Sinh"
-#~ msgstr "Sinh"
+#~ msgid "register 1"
+#~ msgstr "rekisteri 1"
 
-#~ msgid "Cos"
-#~ msgstr "Cos"
-
-#~ msgid "Cosh"
-#~ msgstr "Cosh"
-
-#~ msgid "Tan"
-#~ msgstr "Tan"
-
-#~ msgid "Tanh"
-#~ msgstr "Tanh"
-
-#~ msgid "Log"
-#~ msgstr "Log"
-
-#~ msgid "Error, cannot calculate cosine"
-#~ msgstr "Virhe, kosinia ei voi laskea"
-
-#~ msgid "&16"
-#~ msgstr "&16"
-
-#~ msgid "&32"
-#~ msgstr "&32"
-
-#~ msgid "16-bit unsigned integer value of display (])"
-#~ msgstr "16-bittinen etumerkitön kokonaisluku näytöstä (])"
-
-#~ msgid "32-bit unsigned integer value of display ([)"
-#~ msgstr "32-bittinen etumerkitön kokonaisluku näytöstä ([)"
-
-#~ msgid "_Contents"
-#~ msgstr "_Sisältö"
-
-#~ msgid "_Redo"
-#~ msgstr "Tee _uudestaan"
+#~ msgid "register 0"
+#~ msgstr "rekisteri 0"
 
 #~ msgid "_Undo"
 #~ msgstr "_Peru"
 
-#~ msgid "±"
-#~ msgstr "±"
-
-#~ msgid "×"
-#~ msgstr "×"
-
-#~ msgid "÷"
-#~ msgstr "÷"
-
-#~ msgid "−"
-#~ msgstr "−"
-
-#~ msgid "√"
-#~ msgstr "√"
-
-#~ msgid "pi"
-#~ msgstr "pii"
-
-#~ msgid "%s: %s as next argument.\n"
-#~ msgstr "%s: %s seuraavana argumenttina.\n"
-
-#~ msgid ""
-#~ "%s version %s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "%s versio %s\n"
-#~ "\n"
-
-#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-#~ msgstr "Käyttö: %s: [-E] [-u] [-a tarkkuus] "
-
-#~ msgid "\t\t [-?] [-v] [-h]\n"
-#~ msgstr "\t\t [-?] [-v] [-h]\n"
-
-#~ msgid "-a needs accuracy value"
-#~ msgstr "-a tarvitsee tarkkuusarvon"
+#~ msgid "_Set"
+#~ msgstr "_Aseta"
 
-#~ msgid "%s: base should be 2, 8, 10 or 16\n"
-#~ msgstr "%s: kannan tulisi olla 2, 8, 10 tai 16\n"
+#~ msgid "_Sci"
+#~ msgstr "_Sci"
 
-#~ msgid "%s: invalid display mode [%s]\n"
-#~ msgstr "%s: virheellinen näyttötila [%s]\n"
+#~ msgid "_Redo"
+#~ msgstr "Tee _uudestaan"
 
-#~ msgid "%s: invalid mode [%s]\n"
-#~ msgstr "%s: virheellinen tila [%s]\n"
+#~ msgid "_Radians"
+#~ msgstr "_Radiaanit"
 
-#~ msgid "%s: invalid trigonometric mode [%s]\n"
-#~ msgstr "%s: virheellinen kulmamittatila [%s]\n"
+#~ msgid "_Oct"
+#~ msgstr "_Oct"
 
-#~ msgid "Currently set to %d place."
-#~ msgid_plural "Currently set to %d places."
-#~ msgstr[0] "Tämänhetkinen tarkkuus %d desimaali."
-#~ msgstr[1] "Tämänhetkinen tarkkuus %d desimaalia."
+#~ msgid "_Memory Registers"
+#~ msgstr "_Muistirekisterit"
 
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ msgstr ""
-#~ "Gcalctool on vapaa ohjelma; voit levittää sitä edelleen ja/tai muokata "
-#~ "sitä GNU:n GPL-lisenssin sallimilla tavoilla siten kuin Free Software "
-#~ "Foundation on sen määritellyt; voit halutessasi käyttää lisenssin "
-#~ "versiota 2 taikka mitä tahansa tämän jälkeen ilmestynyttä versiota.\n"
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
 
-#~ msgid ""
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ msgstr ""
-#~ "Gcalctoolia levitetään siinä toivossa, että siitä on hyötyä, mutta ILMAN "
-#~ "MITÄÄN TAKUUTA; jopa ilman konkludenttista takuuta MYYNTIKELPOISUUDESTA "
-#~ "TAI SOVELTUMISESTA TIETTYYN ERITYISEEN TARKOITUKSEEN. Yksityiskohtien "
-#~ "osalta katso GNU:n GPL-lisenssiä.\n"
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "L_isää ASCII-arvo..."
 
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
-#~ msgstr ""
-#~ "Sinun olisi pitänyt saada kopio GNU:n GPL-lisenssistä tämän ohjelman "
-#~ "mukana; jos et sitä saanut, niin lähetä kirje Free Software Foundation, "
-#~ "Inc. :lle, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgid "_Fix"
+#~ msgstr "_Fix"
 
-#~ msgid "Changing Modes Clears Calculation"
-#~ msgstr "Tilan vaihto tyhjentää laskutoimituksen"
+#~ msgid "_Edit"
+#~ msgstr "_Muokkaa"
 
-#~ msgid ""
-#~ "When you change modes, the current calculation will be cleared, and the "
-#~ "base will be reset to decimal."
-#~ msgstr ""
-#~ "Kun vaihdat tilaa, tämänhetkinen laskutoimitus tyhjennetään ja kanta "
-#~ "asetetaan desimaaliseksi."
+#~ msgid "_Dec"
+#~ msgstr "_Dec"
 
-#~ msgid "_Do not warn me again"
-#~ msgstr "Älä _varoita uudestaan"
+#~ msgid "_Contents"
+#~ msgstr "_Sisältö"
 
-#~ msgid "C_hange Mode"
-#~ msgstr "Vai_hda tilaa"
+#~ msgid "_Bin"
+#~ msgstr "_Bin"
 
-#~ msgid "."
-#~ msgstr ","
+#~ msgid "_9 significant places"
+#~ msgstr "_9:n desimaalin tarkkuus"
 
-#~ msgid "10 to the x"
-#~ msgstr "10 potenssiin x"
+#~ msgid "_8 significant places"
+#~ msgstr "_8:n desimaalin tarkkuus"
 
-#~ msgid "10x"
-#~ msgstr "10×"
+#~ msgid "_7 significant places"
+#~ msgstr "_7:n desimaalin tarkkuus"
 
-#~ msgid "16 bit unsigned integer"
-#~ msgstr "16-bittinen etumerkitön kokonaisluku"
+#~ msgid "_6 significant places"
+#~ msgstr "_6:n desimaalin tarkkuus"
 
-#~ msgid "<i>x</i><sup><i>y</i></sup>"
-#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+#~ msgid "_5 significant places"
+#~ msgstr "_5:n desimaalin tarkkuus"
 
-#~ msgid "Bitwise AND"
-#~ msgstr "Bitittäinen AND"
+#~ msgid "_4 significant places"
+#~ msgstr "_4:n desimaalin tarkkuus"
 
-#~ msgid "Bitwise NOT"
-#~ msgstr "Bitittäinen NOT"
+#~ msgid "_3 significant places"
+#~ msgstr "_3:n desimaalin tarkkuus"
 
-#~ msgid "Bitwise OR"
-#~ msgstr "Bitittäinen OR"
+#~ msgid "Sum-of-the years'-digits depreciation [y]"
+#~ msgstr "Vuotuiset poistot yhteensä [y]"
 
-#~ msgid "Bitwise XNOR"
-#~ msgstr "Bitittäinen XNOR"
+#~ msgid "Sum-of-the years'-digits depreciation"
+#~ msgstr "Vuotuiset poistot yhteensä"
 
-#~ msgid "Bitwise XOR"
-#~ msgstr "Bitittäinen XOR"
+#~ msgid "Subtract"
+#~ msgstr "Vähennä"
 
-#~ msgid "Constants"
-#~ msgstr "Vakiot"
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "Poisto tasaerin [l]"
 
-#~ msgid "E to the x"
-#~ msgstr "e potenssiin x"
+#~ msgid "Straight-line depreciation"
+#~ msgstr "Poisto tasaerin"
 
-#~ msgid "Factorial"
-#~ msgstr "Kertoma"
+#~ msgid "Store to register"
+#~ msgstr "Tallenna rekisteriin"
 
-#~ msgid "Hexadecimal digit A"
-#~ msgstr "Heksadesimaalinumero A"
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "Tallenna näytetty arvo muistirekisteriin [S]"
 
-#~ msgid "Hexadecimal digit B"
-#~ msgstr "Heksadesimaalinumero B"
+#~ msgid "Sto"
+#~ msgstr "Sto"
 
-#~ msgid "Hexadecimal digit C"
-#~ msgstr "Heksadesimaalinumero C"
+#~ msgid "Start group of calculations [(]"
+#~ msgstr "Aloita ryhmä laskutoimituksia [(]"
 
-#~ msgid "Hexadecimal digit D"
-#~ msgstr "Heksadesimaalinumero D"
+#~ msgid "Square root [s]"
+#~ msgstr "Neliöjuuri [s]"
 
-#~ msgid "Hexadecimal digit E"
-#~ msgstr "Heksadesimaalinumero E"
+#~ msgid "Square root"
+#~ msgstr "Neliöjuuri"
 
-#~ msgid "Hexadecimal digit F"
-#~ msgstr "Heksadesimaalinumero F"
+#~ msgid "Square [@]"
+#~ msgstr "Neliö [@]"
 
-#~ msgid "Log<sub>10</sub>"
-#~ msgstr "Log<sub>10</sub>"
+#~ msgid "Square"
+#~ msgstr "Neliö"
 
-#~ msgid "Random number"
-#~ msgstr "Satunnaisluku"
+#~ msgid "Significant _places:"
+#~ msgstr "_Desimaaleja:"
 
-#~ msgid "Shift left"
-#~ msgstr "Siirrä vasemmalle"
+#~ msgid "Show trailing zeroes"
+#~ msgstr "Näytä nollat lopussa"
 
-#~ msgid "Shift right"
-#~ msgstr "Siirrä oikealle"
+#~ msgid "Show thousands separator"
+#~ msgstr "Näytä tuhaterotin"
 
-#~ msgid "Ten to the x"
-#~ msgstr "Kymmenen potenssiin x"
+#~ msgid "Show help contents"
+#~ msgstr "Näytä ohjeen sisältö"
 
-#~ msgid "User-defined functions"
-#~ msgstr "Käyttäjän määrittelemät funktiot"
+#~ msgid "Show _Trailing Zeroes"
+#~ msgstr "Näytä _nollat lopussa"
 
-#~ msgid "X to the y"
-#~ msgstr "X potenssiin y"
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "Siirrä näkyvää arvoa 1-15 kohtaa oikealle [>]"
 
-#~ msgid "e<sup>x</sup>"
-#~ msgstr "e<sup>x</sup>"
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "Siirrä näkyvää arvoa 1-15 kohtaa vasemmalle [<]"
 
-#~ msgid "ex"
-#~ msgstr "ex"
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "Käytä radiaaneja"
 
-#~ msgid "xy"
-#~ msgstr "xy"
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "Käytä asteita"
 
-#~ msgid "Bit editor activated. Click on bit values to toggle them."
-#~ msgstr "Bittimuokkaus käytössä. Muuta bittiarvoja napsauttamalla."
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "Aseta lukujen kanta oktaaliseksi (kantaluku 8)"
 
-#~ msgid "Show Bit Editor"
-#~ msgstr "Näytä bittimuokkain"
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "Aseta lukujen kanta heksadesimaaliseksi (kantaluku 16)"
 
-#~ msgid "Show Bit _Editor"
-#~ msgstr "Näytä bitti_muokkain"
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "Aseta lukujen kanta desimaaliseksi (kantaluku 10)"
 
-#~ msgid "Show bit editor"
-#~ msgstr "Näytä bittimuokkain"
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "Aseta lukujen kanta binääriseksi (kantaluku 2)"
 
-#~ msgid "Error, operands must be integers"
-#~ msgstr "Virhe, tekijöiden tulee olla kokonaislukuja"
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "Aseta käänteisasetus päälle trigonometrisiin funktioihin"
 
-#~ msgid "Cleared display, prefix without an operator is not allowed"
-#~ msgstr "Näyttö tyhjennetty, etuliitettä ei hyväksytä ilman operaattoria"
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "Aseta hyperbolinen asetus päälle trigonometrisiin funktioihin"
 
-#~ msgid "Malformed parenthesis expression"
-#~ msgstr "Virheellinen sulkulauseke"
+#~ msgid "Set display type to scientific format"
+#~ msgstr "Aseta näyttötyyppi tieteelliseen muotoon"
 
-#~ msgid "%s: invalid syntax mode [%s]\n"
-#~ msgstr "%s: virheellinen syntaksitila [%s]\n"
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "Aseta näyttötyyppi normaalimuotoon"
 
-#~ msgid "Activated no operator precedence mode"
-#~ msgstr "Käytössä ei laskujärjestystä"
+#~ msgid "Set display type to engineering format"
+#~ msgstr "Aseta näyttötyyppi insinöörimuotoon"
 
-#~ msgid "Activated expression mode with operator precedence"
-#~ msgstr "Käytössä lauseketila laskujärjestyksellä"
+#~ msgid "Set Precision"
+#~ msgstr "Aseta tarkkuus"
 
-#~ msgid "Clipboard contained malformed calculation"
-#~ msgstr "Leikepöytä sisälsi virheellisen laskennan"
+#~ msgid "Right bracket"
+#~ msgstr "Oikea sulku"
 
-#~ msgid "A_rithmetic Precedence"
-#~ msgstr "A_ritmeettinen laskujärjestys"
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "Hae muistirekisteri näyttöön [R]"
 
-#~ msgid "Use Arithmetic Precedence"
-#~ msgstr "Käytä aritmeettista laskujärjestystä"
-
-#~ msgid "Use Left-right Precedence"
-#~ msgstr "Käytä vasemmalta-oikealle laskujärjestystä"
-
-#~ msgid "_Left-to-right Precedence"
-#~ msgstr "_Vasemmalta-oikealle laskujärjestys"
-
-#~ msgid "e"
-#~ msgstr "e"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid " 0"
-#~ msgstr " 0"
-
-#~ msgid "Show Bitcalculating _Extension"
-#~ msgstr "Näytä bittilaskennan _laajennos"
-
-#~ msgid "Show bitcalculating extension"
-#~ msgstr "Näytä bittilaskennan laajennos"
-
-#~ msgid "Retreive from register"
+#~ msgid "Retrieve from register"
 #~ msgstr "Hae rekisteristä"
 
-#~ msgid "Expression"
-#~ msgstr "Lauseke"
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr "Poista luvun oikeanpuolimmainen numero (tai merkki) [←]"
 
-#~ msgid "/"
-#~ msgstr "÷"
+#~ msgid "Redo"
+#~ msgstr "Tee uudestaan"
 
-#~ msgid "*"
-#~ msgstr "×"
+#~ msgid "Reciprocal [r]"
+#~ msgstr "Käänteisarvo [r]"
 
-#~ msgid "Chs"
-#~ msgstr "Chs"
-
-# U+2212
-#~ msgid "-"
-#~ msgstr "−"
-
-#~ msgid "Sqrt"
-#~ msgstr "√"
-
-#~ msgid "Recip"
+#~ msgid "Reciprocal"
 #~ msgstr "Käänteisarvo"
 
-#~ msgid "^2"
-#~ msgstr "²"
+#~ msgid "Rcl"
+#~ msgstr "Rcl"
 
-#~ msgid "&amp;16"
-#~ msgstr "&amp;16"
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "Satunnaisluku välillä 0,0-1,0 [?]"
 
-#~ msgid "&amp;32"
-#~ msgstr "&amp;32"
+#~ msgid "Quit the calculator"
+#~ msgstr "Lopeta laskin"
 
-#~ msgid "32 bit unsigned integer"
-#~ msgstr "32-bittinen etumerkitön kokonaisluku"
+#~ msgid "Present value [p]"
+#~ msgstr "Nykyinen arvo [p]"
 
-#~ msgid " Mod "
-#~ msgstr " Mod "
+#~ msgid "Periodic interest rate [T]"
+#~ msgstr "Säännöllinen korkotaso [T]"
 
-#~ msgid "Exponential"
-#~ msgstr "Eksponentiaalinen"
+#~ msgid "Periodic interest rate"
+#~ msgstr "Säännöllinen korkotaso"
 
-#~ msgid "e^"
-#~ msgstr "e^"
+#~ msgid "Payment period"
+#~ msgstr "Maksuaika"
 
-#~ msgid "^"
-#~ msgstr "^"
+#~ msgid "Paste selection"
+#~ msgstr "Liitä valinta"
 
-#~ msgid "!"
-#~ msgstr "!"
+#~ msgid "OR"
+#~ msgstr "OR"
 
-#~ msgid "Or"
-#~ msgstr "Or"
+#~ msgid "Numeric point"
+#~ msgstr "Desimaalipilkku"
 
-#~ msgid "And"
-#~ msgstr "And"
+#~ msgid "Numeric 8"
+#~ msgstr "Luku 8"
 
-#~ msgid " And "
-#~ msgstr " And "
+#~ msgid "Numeric 7"
+#~ msgstr "Luku 7"
 
-#~ msgid "Not"
-#~ msgstr "Not"
+#~ msgid "Numeric 6"
+#~ msgstr "Luku 6"
 
-#~ msgid "~"
-#~ msgstr "~"
+#~ msgid "Numeric 5"
+#~ msgstr "Luku 5"
 
-#~ msgid "Xor"
-#~ msgstr "Xor"
+#~ msgid "Numeric 4"
+#~ msgstr "Luku 4"
 
-#~ msgid " Xor "
-#~ msgstr " Xor "
+#~ msgid "Numeric 3"
+#~ msgstr "Luku 3"
 
-#~ msgid "Xnor"
-#~ msgstr "Xnor"
+#~ msgid "Numeric 2"
+#~ msgstr "Luku 2"
 
-#~ msgid " Xnor "
-#~ msgstr " Xnor "
+#~ msgid "Numeric 1"
+#~ msgstr "Luku 1"
 
-#~ msgid "Numeric stack error"
-#~ msgstr "Numeerinen pinovirhe"
+#~ msgid "Numeric 0"
+#~ msgstr "Luku 0"
 
-#~ msgid "Operand stack error"
-#~ msgstr "Operandin pinovirhe"
+#~ msgid "NOT"
+#~ msgstr "NOT"
 
-#~ msgid "calculator"
-#~ msgstr "laskin"
+#~ msgid "Multiply"
+#~ msgstr "Kerro"
 
-#~ msgid "%s: invalid bitcalc choice [%s]\n"
-#~ msgstr "%s: virheellinen bitcalc-valinta [%s]\n"
+#~ msgid "Modulus Division [M]"
+#~ msgstr "Jakojäännös [M]"
 
-#~ msgid "1 place"
-#~ msgstr "1 paikka"
+#~ msgid "Mod"
+#~ msgstr "Mod"
 
-#~ msgid "2 places"
-#~ msgstr "2 paikkaa"
+#~ msgid "Memory Registers"
+#~ msgstr "Muistirekisterit"
 
-#~ msgid "3 places"
-#~ msgstr "3 paikkaa"
+#~ msgid "Left bracket"
+#~ msgstr "Vasen sulku"
 
-#~ msgid "4 places"
-#~ msgstr "4 paikkaa"
+#~ msgid "Int"
+#~ msgstr "Int"
 
-#~ msgid "5 places"
-#~ msgstr "5 paikkaa"
+#~ msgid "Insert ASCII value"
+#~ msgstr "Lisää ASCII-arvo"
 
-#~ msgid "6 places"
-#~ msgstr "6 paikkaa"
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "Heksadesimaalinumero F [f]"
 
-#~ msgid "7 places"
-#~ msgstr "7 paikkaa"
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "Heksadesimaalinumero E [e]"
 
-#~ msgid "8 places"
-#~ msgstr "8 paikkaa"
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "Heksadesimaalinumero D [d]"
 
-#~ msgid "9 places"
-#~ msgstr "9 paikkaa"
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "Heksadesimaalinumero C [c]"
 
-#~ msgid "0 significant places"
-#~ msgstr "0:n desimaalin tarkkuus"
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "Heksadesimaalinumero B [b]"
 
-#~ msgid "1 significant place"
-#~ msgstr "1:n desimaalin tarkkuus"
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "Heksadesimaalinumero A [a]"
 
-#~ msgid "2 significant places"
-#~ msgstr "2:n desimaalin tarkkuus"
+#~ msgid "He_x"
+#~ msgstr "He_x"
 
-#~ msgid "3 significant places"
-#~ msgstr "3:n desimaalin tarkkuus"
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
 
-#~ msgid "4 significant places"
-#~ msgstr "4:n desimaalin tarkkuus"
+#~ msgid "Gr_adians"
+#~ msgstr "_Graadit"
 
-#~ msgid "5 significant places"
-#~ msgstr "5:n desimaalin tarkkuus"
+#~ msgid "Future value [v]"
+#~ msgstr "Tuleva arvo [v]"
 
-#~ msgid "6 significant places"
-#~ msgstr "6:n desimaalin tarkkuus"
+#~ msgid "Future value"
+#~ msgstr "Tuleva arvo"
 
-#~ msgid "7 significant places"
-#~ msgstr "7:n desimaalin tarkkuus"
+#~ msgid "Fun"
+#~ msgstr "Fun"
 
-#~ msgid "8 significant places"
-#~ msgstr "8:n desimaalin tarkkuus"
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "Näkyvän arvon desimaaliosa [:]"
 
-#~ msgid "9 significant places"
-#~ msgstr "9:n desimaalin tarkkuus"
+#~ msgid "Frac"
+#~ msgstr "Frac"
 
-#~ msgid "_Other (10) ..."
-#~ msgstr "_Muu (10) ..."
+#~ msgid "Financial"
+#~ msgstr "Talous"
 
-#~ msgid "Set other precision"
-#~ msgstr "Aseta muu tarkkuus"
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "Annetun arvon kertoma [!]"
 
-#~ msgid "Note:"
-#~ msgstr "Huomautus:"
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "Exchange with register"
+#~ msgstr "Vaihda rekisterin kanssa"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "Vaihda näytetty arvo muistirekisterin kanssa [X]"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "Anna eksponenttiluku [E]"
+
+#~ msgid "End group of calculations [)]"
+#~ msgstr "Lopeta ryhmä laskutoimituksia [)]"
+
+#~ msgid "Edit Functions..."
+#~ msgstr "Muokkaa funktioita..."
+
+#~ msgid "Edit Functions"
+#~ msgstr "Muokkaa funktioita"
+
+#~ msgid "Edit Constants..."
+#~ msgstr "Muokkaa vakioita..."
+
+#~ msgid "Edit Constants"
+#~ msgstr "Muokkaa vakioita"
+
+#~ msgid "E_ng"
+#~ msgstr "E_ng"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "Double-declining depreciation [D]"
+#~ msgstr "Kahdestialeneva arvonalennus [D]"
+
+#~ msgid "Double-declining depreciation"
+#~ msgstr "Kahdestialeneva arvonalennus"
+
+#~ msgid "Divide"
+#~ msgstr "Jaa"
+
+#~ msgid "De_grees"
+#~ msgstr "_Asteet"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "Copy selection"
+#~ msgstr "Kopioi valinta"
+
+#~ msgid "Constants [#]"
+#~ msgstr "Vakiot [#]"
+
+#~ msgid "Compounding term [m]"
+#~ msgstr "Sekoitustermi [m]"
+
+#~ msgid "Compounding term"
+#~ msgstr "Sekoitustermi"
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "Napsauta _arvoa tai määritelmää muokataksesi sitä:"
+
+#~ msgid "Clear entry"
+#~ msgstr "Tyhjennä syöttöalue"
+
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr "Tyhjennä näytetty arvo ja osittainen laskelma [Shift-Del]"
+
+#~ msgid "Clear displayed value [Escape]"
+#~ msgstr "Poista näytetty arvo [Esc]"
+
+#~ msgid "Clear"
+#~ msgstr "Tyhjennä"
+
+#~ msgid "Change sign"
+#~ msgstr "Vaihda etumerkki"
+
+#~ msgid "Change Sign [C]"
+#~ msgstr "Vaihda etumerkki [C]"
+
+#~ msgid "Calculate result"
+#~ msgstr "Laske tulos"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Bksp"
+#~ msgstr "←"
+
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "Bitittäinen XOR [x]"
+
+#~ msgid "Bitwise OR [|]"
+#~ msgstr "Bitittäinen OR [|]"
+
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "Bitittäinen NOT [~]"
+
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "Bitittäinen AND [&]"
+
+#~ msgid "Basic"
+#~ msgstr "Perus"
+
+#~ msgid "Backspace"
+#~ msgstr "Askelpalautin"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "Advanced"
+#~ msgstr "Edistynyt"
+
+#~ msgid "Add"
+#~ msgstr "Lisää"
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">R8</span>"
+
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">R7</span>"
+
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">R6</span>"
+
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">R5</span>"
+
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">R4</span>"
+
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">R3</span>"
+
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">R2</span>"
+
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">R1</span>"
+
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">R0</span>"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>2</sup>"
+
+#~ msgid "<i>x</i>!"
+#~ msgstr "<i>x</i>!"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "63"
+#~ msgstr "63"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "47"
+#~ msgstr "47"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "31"
+#~ msgstr "31"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "15"
+#~ msgstr "15"
+
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10<sup><i>x</i></sup>"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1/<i>x</i>"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "Negatiivista X ja ei-kokonaislukua Y ei tueta"
+
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "Palauta _oletusarvoon (%d)"
+
+#~ msgid "Description"
+#~ msgstr "Selitys"
+
+#~ msgid "Value"
+#~ msgstr "Arvo"
+
+#~ msgid "No."
+#~ msgstr "Nro"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "© 1986-2008 The Gcalctool authors"
+#~ msgstr "© 1987-2008 Gcalctoolin kehittäjät"
+
+#~ msgid "_Other (%d) ..."
+#~ msgstr "_Muu (%d) ..."
+
+#~ msgid "Calculator - Scientific"
+#~ msgstr "Laskin - tiedetila"
+
+#~ msgid "Calculator - Financial"
+#~ msgstr "Laskin - taloustila"
+
+#~ msgid "No sane value to do bitwise shift"
+#~ msgstr "Arvo ei ole järkevä bittisiirron arvoksi"
+
+#~ msgid "Malformed function"
+#~ msgstr "Virheellinen funktio"
+
+#~ msgid "No sane value to convert"
+#~ msgstr "Ei kelpoa arvoa muunnettavaksi"
+
+#~ msgid "Invalid number for the current base"
+#~ msgstr "Virheellinen numero nykyiselle kannalle"
+
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: tarkkuus tulisi olla välillä 0-%d\n"
+
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "kilojoulet brittiläisiksi lämpöyksiköiksi -muunnoskerroin"
+
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "grammat unsseiksi -muunnoskerroin"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "2 ^ 20"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "asteet radiaaneina"
+
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "senttimetrit tuumiksi -muunnoskerroin"
+
+#~ msgid "Euler's Number (e)"
+#~ msgstr "Eulerin numero (e)"
+
+#~ msgid "square root of 2"
+#~ msgstr "neliöjuuri kakkosesta"
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "kilometrit maileiksi -muunnoskerroin"
+
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "Käytä graadeja"
+
+#~ msgid "Rand"
+#~ msgstr "Rand"
+
+#~ msgid "Numeric 9"
+#~ msgstr "Luku 9"
+
+#~ msgid "Con"
+#~ msgstr "Con"
+
+#~ msgid "Absolute value [u]"
+#~ msgstr "Itseisarvo [u]"
+
+#~ msgid "Absolute value"
+#~ msgstr "Itseisarvo"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "AND"
+#~ msgstr "AND"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">R9</span>"
+
+#~ msgid "_2 significant places"
+#~ msgstr "_2:n desimaalin tarkkuus"
+
+#~ msgid "_1 significant place"
+#~ msgstr "_1:n desimaalin tarkkuus"
+
+#~ msgid "_0 significant places"
+#~ msgstr "_0:n desimaalin tarkkuus"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "XNOR"
+#~ msgstr "XNOR"
+
+#~ msgid "User-defined functions [F]"
+#~ msgstr "Käyttäjän määrittelemät funktiot [F]"
+
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "Näytä Tietoja Gcaltoolista -ikkuna"
+
+#~ msgid "Show memory registers"
+#~ msgstr "Näytä muistirekisterit"
+
+#~ msgid "Show T_housands Separator"
+#~ msgstr "Näytä _tuhaterotin"
+
+#~ msgid "Percentage"
+#~ msgstr "Prosentti"
+
+#~ msgid "Payment period [t]"
+#~ msgstr "Maksuaika [t]"
 
 #~ msgid ""
-#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-#~ msgstr "Aseta tarkkuus 0-%d desimaaliksi. Nyt asetettu %d desimaaliksi. [a]"
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
+#~ msgstr ""
+#~ "<small><i><b>Huom:</b> Kaikki vakioarvot on määritelty desimaalimuodossa."
+#~ "</i></small>"
 
-#~ msgid "Accuracy value out of range"
-#~ msgstr "Tarkkuusarvo yli rajojen"
+#~ msgid "8"
+#~ msgstr "8"
 
-#~ msgid "Perform calculations"
-#~ msgstr "Suorita laskutoimitukset"
+#~ msgid "7"
+#~ msgstr "7"
 
-#~ msgid "Previous expression"
-#~ msgstr "Edellinen lauseke"
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "Laskin [%s] - tiedetila"
 
-#~ msgid "+/-"
-#~ msgstr "±"
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "Laskin [%s] - taloustila"
 
-#~ msgid "*10^"
-#~ msgstr "×10^"
+#~ msgid "Calculator [%s]"
+#~ msgstr "Laskin [%s]"
 
-#~ msgid "abs"
-#~ msgstr "abs"
+#~ msgid "Present value"
+#~ msgstr "Nykyinen arvo"
 
-#~ msgid "acosh"
-#~ msgstr "acosh"
+#~ msgid "Periodic payment [P]"
+#~ msgstr "Säännöllinen maksu [P]"
 
-#~ msgid "acos"
-#~ msgstr "acos"
+#~ msgid "Periodic payment"
+#~ msgstr "Säännöllinen maksu"
 
-#~ msgid "and"
-#~ msgstr "and"
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "kuutiosenttimetrit kuutiotuumiksi -muunnoskerroin"
 
-#~ msgid "asinh"
-#~ msgstr "asinh"
+#~ msgid "Programming"
+#~ msgstr "Ohjelmointi"
 
-#~ msgid "asin"
-#~ msgstr "asin"
+#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
+#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+#~ msgstr[0] "Aseta tarkkuus nollasta %d desimaaliksi. [A]"
+#~ msgstr[1] "Aseta tarkkuus nollasta %d desimaaliksi. [A]"
 
-#~ msgid "atanh"
-#~ msgstr "atanh"
+#~ msgid "Sine [k]"
+#~ msgstr "Sini [k]"
 
-#~ msgid "atan"
-#~ msgstr "atan"
+#~ msgid "Inverse Sine [K]"
+#~ msgstr "Käänteinen sini [K]"
 
-#~ msgid "cbrt"
-#~ msgstr "cbrt"
+#~ msgid "Hyperbolic Sine [k]"
+#~ msgstr "Hyperbolinen sini [k]"
 
-#~ msgid "chs"
-#~ msgstr "chs"
+#~ msgid "Hyperbolic Inverse Sine [K]"
+#~ msgstr "Hyperbolinen käänteinen sini [K]"
 
-#~ msgid "clr"
-#~ msgstr "clr"
+#~ msgid "Cosine [j]"
+#~ msgstr "Kosini [j]"
 
-#~ msgid "ddb"
-#~ msgstr "ddb"
+#~ msgid "Inverse Cosine [J]"
+#~ msgstr "Käänteinen kosini [J]"
 
-#~ msgid "frac"
-#~ msgstr "frac"
+#~ msgid "Hyperbolic Cosine [j]"
+#~ msgstr "Hyperbolinen kosini [j]"
 
-#~ msgid "fv"
-#~ msgstr "fv"
+#~ msgid "Hyperbolic Inverse Cosine [J]"
+#~ msgstr "Hyperbolinen käänteinen kosini [J]"
 
-#~ msgid "int"
-#~ msgstr "int"
+#~ msgid "Tangent [w]"
+#~ msgstr "Tangentti [w]"
 
-#~ msgid "not"
-#~ msgstr "not"
+#~ msgid "Inverse Tangent [W]"
+#~ msgstr "Käänteinen tangentti [W]"
 
-#~ msgid "or"
-#~ msgstr "or"
+#~ msgid "Hyperbolic Tangent [w]"
+#~ msgstr "Hyperbolinen tangentti [w]"
 
-#~ msgid "pv"
-#~ msgstr "pv"
+#~ msgid "Hyperbolic Inverse Tangent [W]"
+#~ msgstr "Hyperbolinen käänteinen tangentti [W]"
 
-#~ msgid "rand"
-#~ msgstr "rand"
+#~ msgid "e<sup><i>x</i></sup>"
+#~ msgstr "e<sup><i>x</i></sup>"
 
-#~ msgid "rate"
-#~ msgstr "rate"
+#~ msgid "e to the power of the displayed value [N]"
+#~ msgstr "e annetun arvon potenssiin [N]"
 
-#~ msgid "rcl"
-#~ msgstr "rcl"
+#~ msgid "10 to the power of displayed value [G]"
+#~ msgstr "10 annetun arvon potenssiin [G]"
 
-#~ msgid "sln"
-#~ msgstr "sln"
+#~ msgid "2<sup><i>x</i></sup>"
+#~ msgstr "2<sup><i>x</i></sup>"
 
-#~ msgid "sqrt"
-#~ msgstr "sqrt"
+#~ msgid "2 to the power of the displayed value [H]"
+#~ msgstr "2 annetun arvon potenssiin [H]"
 
-#~ msgid "sto"
-#~ msgstr "sto"
+#~ msgid "x<sup><i>y</i></sup>"
+#~ msgstr "x<sup><i>y</i></sup>"
 
-#~ msgid "syd"
-#~ msgstr "syd"
+#~ msgid "x<sup>1/<i>y</i></sup>"
+#~ msgstr "x<sup>1/<i>y</i></sup>"
 
-#~ msgid "term"
-#~ msgstr "term"
+#~ msgid "Raise displayed value to the power of y [o]"
+#~ msgstr "Korota näytetty arvo potenssiin y [o]"
 
-#~ msgid "xnor"
-#~ msgstr "xnor"
+#~ msgid "Raise displayed value to the power of reciprocal y [O]"
+#~ msgstr "Korota näytetty arvo potenssiin 1/y (käänteisarvo) [O]"
 
-#~ msgid "xor"
-#~ msgstr "xor"
+#~ msgid "π"
+#~ msgstr "π"
 
-#~ msgid "ans"
-#~ msgstr "ans"
+#~ msgid ""
+#~ "Calculates the depreciation allowance on an asset for a specified period "
+#~ "of time, using the Sum-Of-The-Years'-Digits method. This method of "
+#~ "depreciation accelerates the rate of depreciation, so that more "
+#~ "depreciation expense occurs in earlier periods than in later ones. The "
+#~ "useful life is the number of periods, typically years, over which an "
+#~ "asset is depreciated. "
+#~ msgstr ""
+#~ "Laskee vähennysten määrän hankinnalle tietyllä aikajaksolla käyttäen Sum-"
+#~ "Of-The-Years'-Digits-menetelmää. Tämä poistotapa kiihdyttää vähennysten "
+#~ "määrää siten, että suurempi vähennyskulu tapahtuu aiemmissa jaksoissa "
+#~ "verrattuna myöhempiin jaksoihin. Hyötyaika on jaksojen määrä, "
+#~ "tyypillisesti vuosia, jonka aikana hankinta poistetaan. "
 
-#~ msgid "_Quit"
-#~ msgstr "_Lopeta"
+#~ msgid "Sum-Of-The-Years'-Digits Depreciation"
+#~ msgstr "Vuosittaisten lyhennysten poistuma"
 
-#~ msgid "_Copy"
-#~ msgstr "_Kopioi"
+#~ msgid "_Number Of Periods:"
+#~ msgstr "_Maksujaksojen lukumäärä:"
 
-#~ msgid "_About"
-#~ msgstr "_Tietoja"
+#~ msgid "Bitwise XNOR [{]"
+#~ msgstr "Bitittäinen XNOR [{]"
 
-#~ msgid "Basic mode"
-#~ msgstr "Perustila"
+#~ msgid "Gross Profit Margin [I]"
+#~ msgstr "Bruttokateprosentti [I]"
 
-#~ msgid "Financial mode"
-#~ msgstr "Taloustila"
+#~ msgid "Gross Profit Margin [g]"
+#~ msgstr "Bruttokateprosentti [g]"
 
-#~ msgid "Scientific mode"
-#~ msgstr "Tiedetila"
+#~ msgid "Sum-of-the years'-digits depreciation [Y]"
+#~ msgstr "Vuotuiset poistot yhteensä [Y]"
 
-#~ msgid "BASIC"
-#~ msgstr "PERUS"
+#~ msgid "cosh"
+#~ msgstr "cosh"
 
-#~ msgid "FINANCIAL"
-#~ msgstr "TALOUS"
+#~ msgid "cos"
+#~ msgstr "cos"
 
-#~ msgid "SCIENTIFIC"
-#~ msgstr "TIEDE"
+#~ msgid "ln"
+#~ msgstr "ln"
 
-#~ msgid "Logical OR"
-#~ msgstr "Looginen OR"
+#~ msgid "log"
+#~ msgstr "log"
 
-#~ msgid "Logical AND"
-#~ msgstr "Looginen AND"
+#~ msgid "sinh"
+#~ msgstr "sinh"
 
-#~ msgid "Logical NOT"
-#~ msgstr "Looginen NOT"
+#~ msgid "sin"
+#~ msgstr "sin"
 
-#~ msgid "Logical XOR"
-#~ msgstr "Looginen XOR"
+#~ msgid "tanh"
+#~ msgstr "tanh"
 
-#~ msgid "Logical XNOR"
-#~ msgstr "Looginen XNOR"
+#~ msgid "tan"
+#~ msgstr "tan"
 
-#~ msgid "kilometers per hour or miles per hour"
-#~ msgstr "kilometria tunnissa tai mailia tunnissa"
+#~ msgid "&#x2212;"
+#~ msgstr "&#x2212;"
 
-#~ msgid "centimeters or inches"
-#~ msgstr "senttimetriä tai tuumia"
+#~ msgid "&#x221A;"
+#~ msgstr "&#x221A;"
 
-#~ msgid "grams or ounces"
-#~ msgstr "grammoja tai nauloja"
+#~ msgid "&#xB1;"
+#~ msgstr "&#xB1;"
+
+#~ msgid "&#xD7;"
+#~ msgstr "&#xD7;"
+
+#~ msgid "&#xF7;"
+#~ msgstr "&#xF7;"
+
+#~ msgid "(Ln)"
+#~ msgstr "(Ln)"
+
+#~ msgid "(Set accuracy from 0 to N numeric places [A])"
+#~ msgstr "(Aseta tarkkuus 0-9 desimaaliksi [A])"
+
+#~ msgid "(X^Y)"
+#~ msgstr "(X^Y)"
+
+#~ msgid "(cos)"
+#~ msgstr "(cos)"
+
+#~ msgid "(log)"
+#~ msgstr "(log)"
+
+#~ msgid "(log2)"
+#~ msgstr "(log2)"
+
+#~ msgid "(sin)"
+#~ msgstr "(sin)"
+
+#~ msgid "(tan)"
+#~ msgstr "(tan)"
+
+#~ msgid "1's"
+#~ msgstr "yhden"
+
+#~ msgid "1's complement [z]"
+#~ msgstr "yhden komplementti [z]"
+
+#~ msgid "2's"
+#~ msgstr "kahden"
+
+#~ msgid "2's complement [Z]"
+#~ msgstr "kahden komplementti [Z]"
+
+#~ msgid "Makes the bitwise functions use 16 bit mode"
+#~ msgstr "Asettaa bitittäin toimivat funktiot käyttämään 16-bittistä tilaa"
+
+#~ msgid "Makes the bitwise functions use 32 bit mode"
+#~ msgstr "Asettaa bitittäin toimivat funktiot käyttämään 32-bittistä tilaa"
+
+#~ msgid "Makes the bitwise functions use 64 bit mode"
+#~ msgstr "Asettaa bitittäin toimivat funktiot käyttämään 64-bittistä tilaa"
+
+#~ msgid "Trunc"
+#~ msgstr "Katkaise"
+
+#~ msgid "Truncate displayed value to the chosen word size ([)"
+#~ msgstr "Katkaise näytetty arvo valittuun sanakokoon ([)"
+
+#~ msgid "Undo"
+#~ msgstr "Kumoa"
+
+#~ msgid "_16 bit"
+#~ msgstr "_16-bittinen"
+
+#~ msgid "_32 bit"
+#~ msgstr "_32-bittinen"
+
+#~ msgid "_64 bit"
+#~ msgstr "_64-bittinen"
+
+#~ msgid ""
+#~ "Indicates whether any trailing zeroes after the number point should be "
+#~ "shown in the display value."
+#~ msgstr ""
+#~ "Ilmoittaa näytetäänkö nollat lopussa desimaalierottimen jälkeen "
+#~ "näytettävässä arvossa."
+
+#~ msgid "Show Thousands Separator"
+#~ msgstr "Näytä tuhaterotin"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s - Perform mathematical calculations"
+#~ msgstr ""
+#~ "Käyttö:\n"
+#~ "  %s - Suorita matemaattisia laskelmia"
+
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -u, --unittest                  Perform unittests\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "Sovelluksen valitsimet:\n"
+#~ "  -u, --unittest                  Suorita yksikkötestit\n"
+#~ "  -s, --solve <yhtälö>            Ratkaise annettu yhtälö"
+
+#~ msgid "Invalid bitwise operation"
+#~ msgstr "Virheellinen bitittäisoperaatio"
+
+#~ msgid "Invalid modulus operation"
+#~ msgstr "Virheellinen modulo-operaatio"
+
+#~ msgid "Unknown variable"
+#~ msgstr "Tuntematon muuttuja"
+
+#~ msgid "Unknown function"
+#~ msgstr "Tuntematon funktio"
+
+#~ msgid ""
+#~ "A required file is missing or damaged, please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Vaadittu tiedosto puuttuu tai on vioittunut. Tarkista asennus.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "sin<sup>−1</sup>"
+#~ msgstr "sin<sup>-1</sup>"
+
+#~ msgid "sinh<sup>−1</sup>"
+#~ msgstr "sinh<sup>-1</sup>"
+
+#~ msgid "cos<sup>−1</sup>"
+#~ msgstr "cos<sup>-1</sup>"
+
+#~ msgid "cosh<sup>−1</sup>"
+#~ msgstr "cosh<sup>-1</sup>"
+
+#~ msgid "tan<sup>−1</sup>"
+#~ msgstr "tan<sup>-1</sup>"
+
+#~ msgid "tanh<sup>−1</sup>"
+#~ msgstr "tanh<sup>-1</sup>"
+
+#~ msgid "Natural logarithm [n]"
+#~ msgstr "Luonnollinen logaritmi [n]"
+
+#~ msgid "Base 10 logarithm [g]"
+#~ msgstr "10-kantainen logaritmi [g]"
+
+#~ msgid "log<sub>2</sub>"
+#~ msgstr "log<sub>2</sub>"
+
+#~ msgid "Base 2 logarithm [h]"
+#~ msgstr "2-kantainen logaritmi [h]"
+
+#~ msgid "Tangent is infinite"
+#~ msgstr "Tangentti on ääretön"
