@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 02:35+0100\n"
-"PO-Revision-Date: 2010-03-14 02:49+0100\n"
+"POT-Creation-Date: 2010-03-19 22:56+0100\n"
+"PO-Revision-Date: 2010-03-19 23:10+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,6 @@ msgstr "Beräknar mängden för den periodiska betalningen för ett lån, där b
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
 #: ../data/financial.ui.h:8
-#, fuzzy
 msgid "Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated. "
 msgstr "Beräknar avskrivningskostnaden för ett objekt för en angiven tidsperiod och använder metoden degressiv avskrivning. Denna metod för avskrivning accelererar räntan för avskrivningen så att högra avskrivningskostnader inträffar i tidigare perioder än i de senare. Den användbara livslängden är antalet perioder, oftast år, över vilka ett objekt skrivs av."
 
@@ -85,7 +84,7 @@ msgstr "Sammansatt period"
 
 #: ../data/financial.ui.h:27
 msgid "Converts between different currencies. Enter the amount and the currency you want to convert from on the upper row, and the currency you want to convert to on the lower row, and the amount will be displayed on the lower row."
-msgstr ""
+msgstr "Konverterar mellan olika valutor. Ange summan och valutan som du vill konvertera från i övre raden samt valutan du vill konvertera till i nedre raden. Den konverterade summan kommer att visas i nedre raden."
 
 #: ../data/financial.ui.h:28
 msgid "Currency Conversion"
@@ -148,7 +147,6 @@ msgstr "Linjär avskrivning"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/financial.ui.h:52
-#, fuzzy
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Degressiv avskrivning"
 
@@ -290,9 +288,8 @@ msgstr "Addera [+]"
 
 #. Tooltip for the answer variable button
 #: ../data/gcalctool.ui.h:36
-#, fuzzy
 msgid "Answer variable"
-msgstr "Okänd variabel"
+msgstr "Svarsvariabel"
 
 #. Tooltip for the base 10 logarithm button
 #: ../data/gcalctool.ui.h:38
@@ -516,9 +513,8 @@ msgstr "Oktal"
 
 #. Tooltip for the ones' complement button
 #: ../data/gcalctool.ui.h:126
-#, fuzzy
 msgid "Ones' complement"
-msgstr "Första komplement [z]"
+msgstr "Enkomplementsform"
 
 #. Tooltip on the percentage button
 #: ../data/gcalctool.ui.h:129
@@ -587,9 +583,8 @@ msgstr "Vetenskaplig"
 
 #. Accessible name for the scientific exponent button
 #: ../data/gcalctool.ui.h:154
-#, fuzzy
 msgid "Scientific Exponent"
-msgstr "Vetenskaplig"
+msgstr "Vetenskaplig exponent"
 
 #. Tooltip for the scientific exponent button
 #: ../data/gcalctool.ui.h:156
@@ -655,7 +650,7 @@ msgstr "Nedsänkt"
 #. Tooltip for the subscript mode button
 #: ../data/gcalctool.ui.h:180
 msgid "Subscript number mode [Alt+number]"
-msgstr ""
+msgstr "Subscript-sifferläge [Alt+siffra]"
 
 #. Tooltip for the subtraction button
 #: ../data/gcalctool.ui.h:182
@@ -670,7 +665,7 @@ msgstr "Överskrift"
 #. Tooltip for the superscript mode button
 #: ../data/gcalctool.ui.h:186
 msgid "Superscript number mode [Ctrl+number]"
-msgstr ""
+msgstr "Superscript-sifferläge [Ctrl+siffra]"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/gcalctool.ui.h:188
@@ -689,9 +684,8 @@ msgstr "Korta ner värde"
 
 #. Tooltip for the two's complement button
 #: ../data/gcalctool.ui.h:194
-#, fuzzy
 msgid "Two's complement"
-msgstr "Första komplement [z]"
+msgstr "Tvåkomplementsform"
 
 #. Preferences dialog: label for word size combo box
 #: ../data/gcalctool.ui.h:196
@@ -812,7 +806,6 @@ msgid "Display Mode"
 msgstr "Visningsläge"
 
 #: ../data/gcalctool.schemas.in.h:3
-#, fuzzy
 msgid "Indicates whether any trailing zeroes after the numeric point should be shown in the display value."
 msgstr "Indikerar huruvida eventuella efterliggande nollor efter talpunkten ska visas i visningsvärdet."
 
@@ -1117,44 +1110,44 @@ msgstr "Inga gör om-steg"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1068
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Inget vettigt värde att göra bitvis skifte"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1084
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
-msgstr ""
+msgstr "Behöver ett heltal att faktorisera"
 
-#: ../src/display.c:1110
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1232
+#: ../src/display.c:1100
 msgid "Overflow. Try a bigger word size"
 msgstr "Överflöde. Prova en större ordstorlek"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1237
+#: ../src/display.c:1105
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Okänd variabel \"%s\""
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1243
+#: ../src/display.c:1111
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" är inte definierad"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1249
+#: ../src/display.c:1117
 #, c-format
 msgid "Unknown conversion"
 msgstr "Okänd konvertering"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1258
+#: ../src/display.c:1126
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
@@ -1259,7 +1252,7 @@ msgstr "Kunde inte öppna hjälpfilen"
 #. Translators: Title of the error dialog when prompting to download currency rates
 #: ../src/gtk.c:1010
 msgid "You don't have any recent currency rates. Should some be downloaded now?"
-msgstr ""
+msgstr "Du har inte några valutakurser. Vill du hämta dem nu?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
 #: ../src/gtk.c:1020
@@ -1290,17 +1283,17 @@ msgstr "Logaritm med negativa värden är inte definierad"
 
 #: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
-msgstr ""
+msgstr "Potensen av negativ tal definieras endast för heltalsexponenter"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1559
 #: ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
-msgstr ""
+msgstr "Potensen för noll är inte definierad för en negativ exponent"
 
 #: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
-msgstr ""
+msgstr "Reciprok av noll är inte definierad"
 
 #: ../src/mp.c:1669
 msgid "Root must be non-zero"
@@ -1312,7 +1305,7 @@ msgstr "Negativ rot av noll är inte definierad"
 
 #: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
-msgstr ""
+msgstr "n:de roten av negativt tal är inte definierad för jämna n"
 
 #: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
