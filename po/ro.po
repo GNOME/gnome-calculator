@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-11 19:31+0000\n"
-"PO-Revision-Date: 2010-02-13 01:28+0200\n"
+"POT-Creation-Date: 2010-03-14 01:49+0000\n"
+"PO-Revision-Date: 2010-03-22 15:01+0200\n"
 "Last-Translator: Adi Roiban <adi@roiban.ro>\n"
 "Language-Team: Romanian GNOME Team <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -788,7 +788,7 @@ msgstr "_Vizualizare"
 
 #. Translators: The window title when in basic mode
 #: ../data/gcalctool.desktop.in.h:1
-#: ../src/gtk.c:101
+#: ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Calculator"
 
@@ -1099,85 +1099,84 @@ msgstr "Dolar american"
 msgid "South African rand"
 msgstr "Rand sud african"
 
-#: ../src/display.c:379
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Nu există istoric pentru anulări"
 
-#: ../src/display.c:394
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Nu există istoric pentru refaceri"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
+#: ../src/display.c:1068
 msgid "No sane value to bitwise shift"
 msgstr "Nicio valoare bună pentru deplasare binară"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
+#: ../src/display.c:1084
 msgid "Need an integer to factorize"
 msgstr "Este nevoie de un înteg pentru factorizare"
 
-#: ../src/display.c:1071
+#: ../src/display.c:1110
 msgid "No sane value to store"
 msgstr "Nici o valoare nu poate fi stocată"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#: ../src/display.c:1232
 msgid "Overflow. Try a bigger word size"
 msgstr "Revărsare. Încercați o lungime de cuvânt mai mare"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#: ../src/display.c:1237
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variabilă necunoscută „%s”"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#: ../src/display.c:1243
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funcția „%s” nu este definită"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
+#: ../src/display.c:1249
 #, c-format
 msgid "Unknown conversion"
 msgstr "Conversie necunoscută"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#: ../src/display.c:1258
 msgid "Malformed expression"
 msgstr "Expresie eronată"
 
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
+#: ../src/gtk.c:98
 msgid "Calculator — Advanced"
 msgstr "Calculator – Avansat"
 
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
+#: ../src/gtk.c:100
 msgid "Calculator — Financial"
 msgstr "Calculator – Financiar"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
+#: ../src/gtk.c:102
 msgid "Calculator — Scientific"
 msgstr "Calculator – Științific"
 
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
-#| msgid "Calculator - Programming"
+#: ../src/gtk.c:104
 msgid "Calculator — Programming"
 msgstr "Calculator — Programare"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Eroare la încărcarea intefeței utilizator"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
 "A required file is missing or damaged. Please check your installation.\n"
@@ -1189,7 +1188,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Mișu Moldovan <dumol@gnome.ro>\n"
@@ -1204,7 +1203,7 @@ msgstr ""
 "  Mișu Moldovan https://launchpad.net/~dumol-gnome"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1227,116 +1226,120 @@ msgstr ""
 "Ar trebui să fi primit o copie a Licenței Publice Generale GNU împreună cu acest program; dacă nu, scrieți Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:579
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986–2008 autorii Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculator cu un mod financiar și un mod științific."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Nu s-a putut deschide fișierul de ajutor"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
+#: ../src/gtk.c:1010
 msgid "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Nu aveți rate curente de conversie monetară. Doriți ca acestea să fie descărcate acum?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
+#: ../src/gtk.c:1020
 msgid "Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."
 msgstr "Nu s-au putut descărca ratele de conversie monetară. Rezultatele pe care le veți primi vor fi imprecise sau nu veți primi niciun rezultat."
 
-#: ../src/gtk.c:1435
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Lipește"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529
 #: ../src/mp.c:562
-#: ../src/mp.c:1476
+#: ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "Împărțirea la zero nu este definită"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1158
-#: ../src/mp.c:1195
+#: ../src/mp.c:1169
+#: ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmul lui zero este nedefinit"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1167
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Logaritmul valorilor negative nu este definit"
 
-#: ../src/mp.c:1541
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "Puterea numerelor negative este definită doar pentru exponenți întegi"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1548
-#: ../src/mp.c:1841
+#: ../src/mp.c:1559
+#: ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Puterea lui zero nu este definită pentru exponenți negativi"
 
-#: ../src/mp.c:1573
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Reciprocul lui zero nu este definit"
 
-#: ../src/mp.c:1658
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "Rădăcina trebuie să fie nenulă"
 
-#: ../src/mp.c:1676
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "Rădăcina negativă a lui zero este nedefinită"
 
-#: ../src/mp.c:1682
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "a n-a rădăcină a unui număr negativ nu este definită pentru n par"
 
-#: ../src/mp.c:1752
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "Rădăcina pătrată nu este definită pentru valori negative"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1781
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "Factorialul este definit doar pentru numere naturale"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1801
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Impărțirea modulo este definită doar pentru întregi"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-msgid "Boolean AND is only defined for natural numbers"
-msgstr "ȘI boolean este definit doar pentru numere naturale"
+#| msgid "Boolean AND is only defined for natural numbers"
+msgid "Boolean AND is only defined for positive integers"
+msgstr "ȘI boolean este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-msgid "Boolean OR is only defined for natural numbers"
-msgstr "SAU boolean este definit doar pentru numere naturale"
+#| msgid "Boolean OR is only defined for natural numbers"
+msgid "Boolean OR is only defined for positive integers"
+msgstr "SAU boolean este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-msgid "Boolean XOR is only defined for natural numbers"
-msgstr "SAU exclusiv boolean este definit doar pentru numere naturale"
+#| msgid "Boolean XOR is only defined for natural numbers"
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "SAU exclusiv boolean este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-msgid "Boolean NOT is only defined for natural numbers"
-msgstr "NU boolean este definit doar pentru numere naturale"
+#| msgid "Boolean NOT is only defined for natural numbers"
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "NU boolean este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
@@ -1345,8 +1348,11 @@ msgstr "Deplasarea este posibilă doar pentru valori întregi"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
-msgid "Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 (90°)"
-msgstr "Tangenta nu este definită pentru unghiuri care sunt cu multipli de π∕2 (180°) mai mari/mici decât π∕4 (90°)"
+#| msgid ""
+#| "Tangent is undefined for angles that are multiples of π∕2 (180°) from π∕4 "
+#| "(90°)"
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr "Tangenta nu este definită pentru unghiuri care sunt cu multipli de π (180°) de la π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
