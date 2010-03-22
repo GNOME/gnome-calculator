@@ -1011,7 +1011,6 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
     switch (function) {
         case FN_CLEAR:
             display_clear(display);
-            mp_set_from_string("0", ans);
             break;
 
         case FN_SHIFT:
