@@ -200,9 +200,8 @@ unit:
 
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}
+| exp '(' exp ')' {mp_multiply(&$1, &$3, &$$);}
 | '|' exp '|' {mp_abs(&$2, &$$);}
-| '|' tVARIABLE '|' {get_variable(yyscanner, $2, 1, &$$); mp_abs(&$$, &$$); free($2);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
-| '|' tNUMBER tVARIABLE '|' {get_variable(yyscanner, $3, 1, &$$); mp_multiply(&$2, &$$, &$$); mp_abs(&$$, &$$); free($3);} /* FIXME: Shouldn't need this rule but doesn't parse without it... */
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
 | exp tNSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}
@@ -231,7 +230,6 @@ variable:
   term {mp_set_from_mp(&$1, &$$);}
 | tFUNCTION exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
 | tFUNCTION tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
-| tVARIABLE exp {set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, $1); free($1); YYABORT;}
 | tVARIABLE tSUPNUM exp {set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, $1); free($1); YYABORT;}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}

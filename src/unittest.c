@@ -254,8 +254,12 @@ test_equations()
     test("y", "3", 0);
     test("z", "", PARSER_ERR_UNKNOWN_VARIABLE);
     test("2y", "6", 0);
-    test("y2", "", PARSER_ERR_UNKNOWN_FUNCTION);
-    test("y(2)", "", PARSER_ERR_UNKNOWN_FUNCTION);
+    test("y2", "", PARSER_ERR_INVALID);
+    test("y 2", "", PARSER_ERR_INVALID);
+    test("2z", "", PARSER_ERR_UNKNOWN_VARIABLE);  
+    test("z2", "", PARSER_ERR_UNKNOWN_VARIABLE);
+    test("z 2", "", PARSER_ERR_UNKNOWN_VARIABLE);
+    test("z(2)", "", PARSER_ERR_UNKNOWN_VARIABLE);
     test("y²", "9", 0);
     test("2y²", "18", 0);
     test("x×y", "6", 0);
@@ -269,6 +273,11 @@ test_equations()
     test("2xy²", "36", 0);
     test("2x²y²", "72", 0);
     test("x²yx²y", "144", 0);
+    test("x³+2x²−5", "11", 0);
+    test("2(x+3y)", "22", 0);
+    test("x(x+3y)", "22", 0);
+    test("(x+3y)(2x-4y)", "−88", 0);
+    test("2x²+2xy−12y²", "−88", 0);
 
     test("π", "3.141592654", 0);
     test("e", "2.718281828", 0);
