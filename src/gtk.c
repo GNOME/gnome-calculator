@@ -42,7 +42,7 @@
 #include "register.h"
 
 static const char *mode_names[] = { "BASIC", "ADVANCED", "FINANCIAL",
-                                    "SCIENTIFIC", "PROGRAMMING", NULL };
+                                    "PROGRAMMING", NULL };
 
 typedef struct {
     const char *widget_name;
@@ -98,8 +98,6 @@ static char *titles[] = {
     N_("Calculator — Advanced"),
     /* Translators: The window title when in financial mode */
     N_("Calculator — Financial"),
-    /* Translators: The window title when in scientific mode */
-    N_("Calculator — Scientific"),
     /* Translators: The window title when in programming mode */
     N_("Calculator — Programming")
 };
@@ -136,7 +134,6 @@ typedef enum {
     BASIC,
     ADVANCED,
     FINANCIAL,
-    SCIENTIFIC,
     PROGRAMMING
 } ModeType;
 
@@ -441,7 +438,7 @@ ui_set_mode(ModeType mode)
     /* Show/enable the widgets used in this mode */
     g_object_set(G_OBJECT(X.adv_panel), "visible", mode != BASIC, NULL);
     g_object_set(G_OBJECT(X.fin_panel), "visible", mode == FINANCIAL, NULL);
-    g_object_set(G_OBJECT(X.sci_panel), "visible", mode == SCIENTIFIC, NULL);
+    g_object_set(G_OBJECT(X.sci_panel), "visible", mode == ADVANCED, NULL);
     g_object_set(G_OBJECT(X.prog_panel), "visible", mode == PROGRAMMING, NULL);
     g_object_set(G_OBJECT(X.bit_panel), "visible", mode == PROGRAMMING, NULL);
 
@@ -459,10 +456,6 @@ ui_set_mode(ModeType mode)
 
         case FINANCIAL:
             menu = GET_WIDGET("view_financial_menu");
-            break;
-
-        case SCIENTIFIC:
-            menu = GET_WIDGET("view_scientific_menu");
             break;
 
         case PROGRAMMING:
@@ -1736,7 +1729,6 @@ create_main_window()
     set_int_data(X.ui, "view_basic_menu", "calcmode", BASIC);
     set_int_data(X.ui, "view_advanced_menu", "calcmode", ADVANCED);
     set_int_data(X.ui, "view_financial_menu", "calcmode", FINANCIAL);
-    set_int_data(X.ui, "view_scientific_menu", "calcmode", SCIENTIFIC);
     set_int_data(X.ui, "view_programming_menu", "calcmode", PROGRAMMING);
 
     /* Setup financial functions */
