@@ -2574,16 +2574,27 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="calc_modulus_divide_button">
-                    <property name="label">mod</property>
+                  <object class="GtkButton" id="calc_inverse_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the modulus division button">Modulus divide</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the inverse button">Inverse [Ctrl+I]</property>
                     <property name="border_width">3</property>
-                    <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_inverse_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
+                      </object>
+                    </child>
                     <signal name="clicked" handler="button_cb"/>
+                    <child>
+                      <object class="GtkLabel" id="label20">
+                        <property name="visible">True</property>
+                        <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&#x2212;1&lt;/sup&gt;</property>
+                        <property name="use_markup">True</property>
+                        <property name="justify">center</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -2658,28 +2669,17 @@
                     <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkButton" id="calc_inverse_button">
+                <child>                
+                  <object class="GtkButton" id="calc_modulus_divide_button">
+                    <property name="label">mod</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the inverse button">Inverse [Ctrl+I]</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the modulus division button">Modulus divide</property>
                     <property name="border_width">3</property>
+                    <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_inverse_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
-                      </object>
-                    </child>
                     <signal name="clicked" handler="button_cb"/>
-                    <child>
-                      <object class="GtkLabel" id="label20">
-                        <property name="visible">True</property>
-                        <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&#x2212;1&lt;/sup&gt;</property>
-                        <property name="use_markup">True</property>
-                        <property name="justify">center</property>
-                      </object>
-                    </child>
                   </object>
                   <packing>
                     <property name="top_attach">3</property>
