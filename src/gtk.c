@@ -90,18 +90,6 @@ static ButtonData button_data[] = {
 static char *registers[] = {"a", "b", "c", "x", "y", "z", NULL};
 #define MAX_REGISTERS 6
 
-/* Window titles dependant on mode */
-static char *titles[] = {
-    /* Translators: The window title when in basic mode */
-    N_("Calculator"),
-    /* Translators: The window title when in advanced mode */
-    N_("Calculator — Advanced"),
-    /* Translators: The window title when in financial mode */
-    N_("Calculator — Financial"),
-    /* Translators: The window title when in programming mode */
-    N_("Calculator — Programming")
-};
-
 /* The names of each field in the dialogs for the financial functions */
 static char *finc_dialog_fields[][5] = {
     {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL,         NULL},
@@ -441,8 +429,6 @@ ui_set_mode(ModeType mode)
     g_object_set(G_OBJECT(X.sci_panel), "visible", mode == ADVANCED, NULL);
     g_object_set(G_OBJECT(X.prog_panel), "visible", mode == PROGRAMMING, NULL);
     g_object_set(G_OBJECT(X.bit_panel), "visible", mode == PROGRAMMING, NULL);
-
-    gtk_window_set_title(GTK_WINDOW(X.main_window), gettext(titles[mode]));
 
     /* Update the menu */
     switch (mode) {
