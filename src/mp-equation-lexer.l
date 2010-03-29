@@ -69,7 +69,7 @@ VARIABLE {WORD}|{WORD}{SUB_NUM}|{WORD}"⁻¹"|{GREEKS}
 MOD  [mM][oO][dD]
 AND  "∧"|[aA][nN][dD]
 OR   "∨"|[oO][rR]
-XOR  "⊕"|[xX][oO][rR]
+XOR  "⊻"|"⊕"|[xX][oO][rR]
 NOT  "¬"|"~"|[nN][oO][tT]
 IN   [iI][nN]
 

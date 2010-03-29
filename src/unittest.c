@@ -477,7 +477,7 @@ test_equations()
 
     options.angle_units = MP_GRADIANS;
     test("sin 100", "1", 0);
-
+  
     test("0 and 0", "0", 0);
     test("1 and 0", "0", 0);
     test("0 and 1", "0", 0);
@@ -502,6 +502,18 @@ test_equations()
     test("twos 1", "FFFFFFFF₁₆", 0);
     test("twos 7FFFFFFF₁₆", "80000001₁₆", 0);
     test("~7A₁₆", "FFFFFF85₁₆", 0);
+
+/*    base = 2;
+    options.wordlen = 4;
+    test("1100₂∧1010₂", "1000₂", 0);
+    test("1100₂∨1010₂", "1110₂", 0);
+    test("1100₂⊻1010₂", "110₂", 0);
+    test("1100₂⊕1010₂", "110₂", 0);
+    test("1100₂⊼1010₂", "0111₂", 0);
+    test("1100₂⊽1010₂", "0001₂", 0);
+    options.wordlen = 2;
+    test("¬10₂", "1₂", 0);
+    test("¬¬10₂", "10₂", 0);*/
 }
 
 
