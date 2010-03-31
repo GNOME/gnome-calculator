@@ -2,7 +2,7 @@ bin_PROGRAMS = gcalctool gcalccmd
 
 INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
-	-DLOCALE_DIR=\""$(localdir)"\" \
+	-DLOCALE_DIR=\""$(localedir)"\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(GCALCTOOL_CFLAGS)
 
