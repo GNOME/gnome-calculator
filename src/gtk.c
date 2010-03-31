@@ -1770,7 +1770,7 @@ create_main_window()
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
     /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
-    string = _("Show %d decimal places");
+    string = _("Show %d decimal _places");
     tokens = g_strsplit(string, "%d", 2);
     widget = GET_WIDGET("decimal_places_label1");
     if (tokens[0])
@@ -1778,7 +1778,7 @@ create_main_window()
     else
         string = "";
     if (string[0] != '\0')
-        gtk_label_set_text(GTK_LABEL(widget), string);
+        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
     else
         gtk_widget_hide(widget);
 
@@ -1788,7 +1788,7 @@ create_main_window()
     else
         string = "";
     if (string[0] != '\0')
-        gtk_label_set_text(GTK_LABEL(widget), string);
+        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
     else
         gtk_widget_hide(widget);
 
