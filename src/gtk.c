@@ -1634,6 +1634,7 @@ create_main_window()
     GtkWidget *widget;
     PangoFontDescription *font_desc;
     GtkCellRenderer *renderer;
+    gchar *string, **tokens;
 
     X.ui = gtk_builder_new();
     load_ui(X.ui, UI_FILE);
@@ -1768,7 +1769,30 @@ create_main_window()
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    // _("Show %d decimal places") decimal_places_label1, decimal_places_label2
+    /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
+    string = _("Show %d decimal places");
+    tokens = g_strsplit(string, "%d", 2);
+    widget = GET_WIDGET("decimal_places_label1");
+    if (tokens[0])
+        string = g_strstrip(tokens[0]);
+    else
+        string = "";
+    if (string[0] != '\0')
+        gtk_label_set_text(GTK_LABEL(widget), string);
+    else
+        gtk_widget_hide(widget);
+
+    widget = GET_WIDGET("decimal_places_label2");
+    if (tokens[0] && tokens[1])
+        string = g_strstrip(tokens[1]);
+    else
+        string = "";
+    if (string[0] != '\0')
+        gtk_label_set_text(GTK_LABEL(widget), string);
+    else
+        gtk_widget_hide(widget);
+
+    g_strfreev(tokens);
 }
 
 
