@@ -2250,17 +2250,17 @@
                     <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkButton" id="calc_result_button">
-                    <property name="label" translatable="yes" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
+                <child>                
+                  <object class="GtkButton" id="calc_percentage_button">
+                    <property name="label">%</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the solve button">Calculate result [=]</property>
+                    <property name="receives_default">True</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip on the percentage button">Percentage [%]</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="solve_cb"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -2355,16 +2355,16 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="calc_clear_button">
-                    <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
+                  <object class="GtkButton" id="calc_result_button">
+                    <property name="label" translatable="yes" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltop for the clear display button">Clear display [Escape]</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the solve button">Calculate result [=]</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="clear_cb"/>
+                    <signal name="clicked" handler="solve_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">4</property>
@@ -2416,16 +2416,16 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="calc_percentage_button">
-                    <property name="label">%</property>
+                  <object class="GtkButton" id="calc_clear_button">
+                    <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip on the percentage button">Percentage [%]</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltop for the clear display button">Clear display [Escape]</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb"/>
+                    <signal name="clicked" handler="clear_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">4</property>
@@ -2668,16 +2668,21 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="calc_modulus_divide_button">
-                    <property name="label">mod</property>
+                  <object class="GtkButton" id="calc_factor_button">
+                    <property name="label">fact</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the modulus division button">Modulus divide</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the factorize button">Factorize into prime numbers (Ctrl+F)</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb"/>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="calc_factor_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorize button">Factorize</property>
+                      </object>
+                    </child>
+                    <signal name="clicked" handler="factorize_cb"/>
                   </object>
                   <packing>
                     <property name="top_attach">3</property>
@@ -2975,22 +2980,17 @@
                     <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkButton" id="calc_factor_button">
-                    <property name="label">fact</property>
+                <child>                
+                  <object class="GtkButton" id="calc_modulus_divide_button">
+                    <property name="label">mod</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the factorize button">Factorize into prime numbers (Ctrl+F)</property>
+                    <property name="tooltip_text" translatable="yes" comments="Tooltip for the modulus division button">Modulus divide</property>
                     <property name="border_width">3</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="calc_factor_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorize button">Factorize</property>
-                      </object>
-                    </child>
-                    <signal name="clicked" handler="factorize_cb"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

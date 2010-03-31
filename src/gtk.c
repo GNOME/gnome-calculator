@@ -1606,6 +1606,28 @@ preferences_dialog_delete_cb(GtkWidget *widget)
 
 
 static void
+set_tint (GtkWidget *widget, gint red, gint green, gint blue, gint alpha)
+{
+    GtkStyle *style = gtk_widget_get_style(widget);
+    int j;
+  
+    for (j = 0; j < 5; j++) {
+        GdkColor tint, color;
+
+        tint.red = red;
+        tint.green = green;
+        tint.blue = blue;
+
+        color.red = (style->bg[j].red * (10 - alpha) + tint.red * alpha) / 10;
+        color.green = (style->bg[j].green * (10 - alpha) + tint.green * alpha) / 10;
+        color.blue = (style->bg[j].blue * (10 - alpha) + tint.blue * alpha) / 10;
+        gdk_colormap_alloc_color(gdk_colormap_get_system(), &color, FALSE, TRUE);
+        gtk_widget_modify_bg(widget, j, &color);
+    }
+}
+
+
+static void
 create_main_window()
 {
     int i;
@@ -1656,7 +1678,59 @@ create_main_window()
         SNPRINTF(name, MAXLINE, "calc_%d_button", i);
         set_string_data(X.ui, name, "calc_subscript_text", subscript_digits[i]);
         set_string_data(X.ui, name, "calc_superscript_text", superscript_digits[i]);
+        set_tint(GET_WIDGET(name), 0, 0, 65535, 1);
     }
+  
+    set_tint(GET_WIDGET("calc_10_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_11_button"), 0, 0, 65535, 1);  
+    set_tint(GET_WIDGET("calc_12_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_13_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_14_button"), 0, 0, 65535, 1);  
+    set_tint(GET_WIDGET("calc_15_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_pi_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_eulers_number_button"), 0, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_numeric_point_button"), 0, 0, 65535, 2);
+    set_tint(GET_WIDGET("calc_percentage_button"), 0, 0, 65535, 2);
+    set_tint(GET_WIDGET("subscript_togglebutton"), 0, 0, 65535, 2);  
+    set_tint(GET_WIDGET("superscript_togglebutton"), 0, 0, 65535, 2);
+    set_tint(GET_WIDGET("calc_exponential_button"), 0, 0, 65535, 2);
+
+    set_tint(GET_WIDGET("calc_result_button"), 0, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_factor_button"), 0, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_clear_button"), 0, 0, 0, 2);
+  
+    set_tint(GET_WIDGET("calc_add_button"), 65535, 0, 0, 1);
+    set_tint(GET_WIDGET("calc_subtract_button"), 65535, 0, 0, 1);  
+    set_tint(GET_WIDGET("calc_multiply_button"), 65535, 0, 0, 1);
+    set_tint(GET_WIDGET("calc_divide_button"), 65535, 0, 0, 1);
+    set_tint(GET_WIDGET("calc_modulus_divide_button"), 65535, 0, 0, 1);
+    set_tint(GET_WIDGET("calc_and_button"), 65535, 0, 0, 1);  
+    set_tint(GET_WIDGET("calc_or_button"), 65535, 0, 0, 1);  
+    set_tint(GET_WIDGET("calc_xor_button"), 65535, 0, 0, 1);  
+
+    set_tint(GET_WIDGET("calc_cosine_button"), 65535, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_sine_button"), 65535, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_tangent_button"), 65535, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_hyperbolic_cosine_button"), 65535, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_hyperbolic_sine_button"), 65535, 65535, 0, 1);
+    set_tint(GET_WIDGET("calc_hyperbolic_tangent_button"), 65535, 65535, 0, 1);
+
+    set_tint(GET_WIDGET("calc_start_group_button"), 65535, 65535, 65535, 1);
+    set_tint(GET_WIDGET("calc_end_group_button"), 65535, 65535, 65535, 1);
+
+    set_tint(GET_WIDGET("calc_store_button"), 65535, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_recall_button"), 65535, 0, 65535, 1);
+    set_tint(GET_WIDGET("calc_ans_button"), 65535, 0, 65535, 1);
+
+    set_tint(GET_WIDGET("calc_integer_portion_button"), 0, 65535, 65535, 1);
+    set_tint(GET_WIDGET("calc_fractional_portion_button"), 0, 65535, 65535, 1);
+    set_tint(GET_WIDGET("calc_x_pow_y_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_factorial_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_root_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_abs_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_inverse_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_logarithm_button"), 0, 65535, 65535, 1);  
+    set_tint(GET_WIDGET("calc_natural_logarithm_button"), 0, 65535, 65535, 1);  
   
     /* Set base button data */
     set_int_data(X.ui, "calc_base_2_button", "base", 2);
