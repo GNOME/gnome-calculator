@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-26 14:05+0200\n"
+"POT-Creation-Date: 2010-04-02 10:30+0300\n"
 "PO-Revision-Date: 2010-03-26 16:34+0300\n"
 "Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -822,33 +822,38 @@ msgstr "_Простий"
 msgid "_Calculator"
 msgstr "_Калькулятор"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Зміст"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Фінансовий"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Довідка"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Вставити"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Програмування"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Науковий"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Вигляд"
 
@@ -1214,30 +1219,30 @@ msgid "No sane value to store"
 msgstr "Немає нормального значення для зберігання"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1100
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Переповнення. Спробуйте більший розмір слова"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1105
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Невідома змінна «%s»"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1111
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Функцію «%s» не визначена"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1117
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Невідоме перетворення"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1126
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Неправильний вираз"
 
@@ -1356,6 +1361,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Вставити"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Показати %d десяткових _знаків"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
