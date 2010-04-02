@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD dot hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-15 13:20+0100\n"
-"PO-Revision-Date: 2010-03-15 13:18+0100\n"
+"POT-Creation-Date: 2010-04-02 02:03+0200\n"
+"PO-Revision-Date: 2010-04-02 02:04+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
@@ -824,33 +824,38 @@ msgstr "_Alap"
 msgid "_Calculator"
 msgstr "Számoló_gép"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Tartalom"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Pénzügyi mód"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Súgó"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Beszúrás"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programozói"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Tudományos mód"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Nézet"
 
@@ -944,8 +949,7 @@ msgstr "Az ablak kiinduló Y koordinátája"
 msgid ""
 "The number of digits displayed after the numeric point. This value must be "
 "in the range 0 to 9."
-msgstr ""
-"A tizedespont után megjelenő számjegyek száma. Ez az érték 0-9 között lehet."
+msgstr "A tizedespont után megjelenő számjegyek száma. Ez az érték 0-9 között lehet."
 
 #: ../data/gcalctool.schemas.in.h:17
 msgid "The number of pixels to place the window from the left of the screen."
@@ -1205,44 +1209,44 @@ msgstr "Nincsenek ismétlési lépések"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1068
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Nincs ép érték a bitenkénti eltoláshoz"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1084
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "A faktorizáláshoz egész szám szükséges"
 
-#: ../src/display.c:1110
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Nincs tárolható ép kifejezés"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1232
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Túlcsordulás. Próbálja nagyobb szóhosszal."
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1237
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ismeretlen változó: „%s”"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1243
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "A függvény („%s”) nincs meghatározva"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1249
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Ismeretlen konverzió"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1258
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Hibás kifejezés"
 
@@ -1347,8 +1351,7 @@ msgstr "A súgófájl nem nyitható meg"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
 #: ../src/gtk.c:1010
-msgid ""
-"You don't have any recent currency rates. Should some be downloaded now?"
+msgid "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Nem érhetők el az aktuális árfolyamok. Letölti most?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
@@ -1363,6 +1366,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Beillesztés"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "%d decimális _hely megjelenítése"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
@@ -1445,8 +1454,7 @@ msgstr "A csúsztatást csak egészekre lehet elvégezni"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
-msgid ""
-"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "A tangens nincs meghatározva π∕2 (90°) és π (180°) közötti szögek "
 "többszöröseire"
@@ -1454,8 +1462,7 @@ msgstr ""
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
 msgid "Inverse sine is undefined for values outside [-1, 1]"
-msgstr ""
-"Az inverz szinusz nincs meghatározva a [-1, 1] intervallumon kívüli értékekre"
+msgstr "Az inverz szinusz nincs meghatározva a [-1, 1] intervallumon kívüli értékekre"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: ../src/mp-trigonometric.c:340
@@ -1466,8 +1473,7 @@ msgstr ""
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
-msgid ""
-"Inverse hyperbolic cosine is undefined for values less than or equal to one"
+msgid "Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
 "Az inverz hiperbolikus koszinusz nincs meghatározva az egynél kisebb vagy "
 "azzal egyenlő értékekre"
@@ -1478,3 +1484,4 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Az inverz hiperbolikus tangens nincs meghatározva a [-1, 1] intervallumon "
 "kívüli értékekre"
+
