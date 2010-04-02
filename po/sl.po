@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-22 06:47+0000\n"
-"PO-Revision-Date: 2010-02-22 08:25+0100\n"
+"POT-Creation-Date: 2010-04-02 00:05+0000\n"
+"PO-Revision-Date: 2010-04-02 10:34+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -797,42 +797,47 @@ msgstr "_Osnovno"
 msgid "_Calculator"
 msgstr "_Računalo"
 
+#. Help|Contents menu
+#: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Vsebina"
+
 # G:0 K:1 O:0
 #. View|Financial menu item
-#: ../data/gcalctool.ui.h:224
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Finančni"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "Pomo_č"
 
 # G:1 K:3 O:16
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Vstavi"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programiranje"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Znanstveni"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Pogled"
 
 # G:1 K:0 O:0
 #. Translators: The window title when in basic mode
 #: ../data/gcalctool.desktop.in.h:1
-#: ../src/gtk.c:101
+#: ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Računalo"
 
@@ -1145,87 +1150,87 @@ msgstr "ameriški dolar"
 msgid "South African rand"
 msgstr "južnoafriški rand"
 
-#: ../src/display.c:379
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Ni zgodovine razveljavitve"
 
-#: ../src/display.c:394
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Ni korakov naprej po zgodovini"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Ni razumne vrednosti za premestitev bitov"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Za faktorizacijo je zahtevana celo številčna vrednost"
 
-#: ../src/display.c:1071
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Ni razumne vrednosti za shranjevanje"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračitev. Poskusite z večjo besedo"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznana spremenljivka '%s'"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcija '%s' ni določena"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Neznana pretvorba"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Napačen izraz"
 
 # G:1 K:0 O:0
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
+#: ../src/gtk.c:98
 msgid "Calculator — Advanced"
 msgstr "Računalo - napredne možnosti"
 
 # G:1 K:0 O:0
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
+#: ../src/gtk.c:100
 msgid "Calculator — Financial"
 msgstr "Računalo - finančni pogled"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
+#: ../src/gtk.c:102
 msgid "Calculator — Scientific"
 msgstr "Računalo - znanstveni pogled"
 
 # G:1 K:0 O:0
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
+#: ../src/gtk.c:104
 msgid "Calculator — Programming"
 msgstr "Računalo - programiranje"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Napaka med nalaganjem uporabniškega vmesnika"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
 "A required file is missing or damaged. Please check your installation.\n"
@@ -1237,7 +1242,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Andraž Tori <andraz.tori1@guest.arnes.si>\n"
@@ -1245,7 +1250,7 @@ msgstr ""
 "Matej Urbančič <mateju@svn.gnome.org>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1275,95 +1280,101 @@ msgstr ""
 
 # G:8 K:0 O:0
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:579
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986-2008 Avtorji programa Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "Računalo z različnimi načini delovanja."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Ni mogoče odpreti datoteke pomoči"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
+#: ../src/gtk.c:1010
 msgid "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Vrednosti valut niso posodobljene. Ali naj se posodobijo takoj?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
+#: ../src/gtk.c:1020
 msgid "Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."
 msgstr "Ni mogoče prejeti vrednosti valut. Morda bodo izračunane vrednsti valut nenatančne ali pa izračun sploh ne bo mogoč."
 
 # G:0 K:1 O:0
-#: ../src/gtk.c:1444
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Prilepi"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Pokaži %d decimalnih mest"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529
 #: ../src/mp.c:562
-#: ../src/mp.c:1486
+#: ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "Deljenje z nič ni določeno"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1168
-#: ../src/mp.c:1205
+#: ../src/mp.c:1169
+#: ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritem vrednosti nič ni določen"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1177
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Logaritem negativnih vrednosti ni določen"
 
-#: ../src/mp.c:1551
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "Potenciranje negativnih števil je določeno le s celoštevilskimi potencami"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1558
-#: ../src/mp.c:1851
+#: ../src/mp.c:1559
+#: ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potenciranje vrednosti nič ni določeno za negativne potence"
 
-#: ../src/mp.c:1583
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Obratna vrednost števila nič ni določena"
 
-#: ../src/mp.c:1668
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "Koren ne sme biti vrednosti nič"
 
-#: ../src/mp.c:1686
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "Negativni koren vrednosti nič ni določen"
 
-#: ../src/mp.c:1692
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-ti koren negativnega števila ni določen za sode vrednosti n"
 
-#: ../src/mp.c:1762
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "Kvadratni koren ni določen za negativne vrednosti"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1791
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "Fakulteta je določena le za naravna števila"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1811
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Deljenje z ostankom je določeno le za cela števila"
 
@@ -1419,4 +1430,3 @@ msgstr "Preobrnjena hiperbolična tangenta ni določena za vrednosti izven obmo�
 
 #~ msgid "0"
 #~ msgstr "0"
-
