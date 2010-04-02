@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-21 23:40+0000\n"
-"PO-Revision-Date: 2010-02-27 11:16+0100\n"
+"POT-Creation-Date: 2010-03-31 22:38+0000\n"
+"PO-Revision-Date: 2010-04-02 10:48+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -837,38 +837,43 @@ msgstr "_Basique"
 msgid "_Calculator"
 msgstr "Calc_ulatrice"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Sommaire"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Financier"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "Aid_e"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Insérer"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programmation"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Scientifique"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Affichage"
 
 #. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:101
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
 msgid "Calculator"
 msgstr "Calculatrice"
 
@@ -1214,84 +1219,84 @@ msgstr "Dollar US"
 msgid "South African rand"
 msgstr "Rand sud-africain"
 
-#: ../src/display.c:379
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Aucun historique d'annulation"
 
-#: ../src/display.c:394
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Aucune opération à rétablir"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Aucune valeur correcte pour décaler bit-à-bit"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Un entier est nécessaire pour factoriser"
 
-#: ../src/display.c:1071
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Aucune valeur correcte à stocker"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Dépassement de capacité. Essayez avec une taille de mot plus grande"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variable « %s » inconnue"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "La fonction « %s » n'est pas définie"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Conversion inconnue"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Expression incorrecte"
 
 #. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
+#: ../src/gtk.c:98
 msgid "Calculator — Advanced"
 msgstr "Calculatrice — Mode avancé"
 
 #. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
+#: ../src/gtk.c:100
 msgid "Calculator — Financial"
 msgstr "Calculatrice — Mode financier"
 
 #. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
+#: ../src/gtk.c:102
 msgid "Calculator — Scientific"
 msgstr "Calculatrice — Mode scientifique"
 
 #. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
+#: ../src/gtk.c:104
 msgid "Calculator — Programming"
 msgstr "Calculatrice — Mode programmation"
 
 #. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
+#: ../src/gtk.c:235
 msgid "Error loading user interface"
 msgstr "Erreur lors du chargement de l'interface utilisateur"
 
 #. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
+#: ../src/gtk.c:238
 #, c-format
 msgid ""
 "A required file is missing or damaged. Please check your installation.\n"
@@ -1303,7 +1308,7 @@ msgstr ""
 "%s"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "Laurent Richard <laurent.richard@lilit.be>\n"
@@ -1318,7 +1323,7 @@ msgstr ""
 "Laurent Coudeur <laurentc@iol.ie>"
 
 #. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1349,27 +1354,27 @@ msgstr ""
 "Foundation Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#: ../src/gtk.c:579
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986–2008 les auteurs de Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculatrice avec des modes financiers et scientifiques."
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
+#: ../src/gtk.c:636
 msgid "Unable to open help file"
 msgstr "Impossible d'ouvrir le fichier d'aide"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
+#: ../src/gtk.c:1010
 msgid ""
 "You don't have any recent currency rates. Should some be downloaded now?"
 msgstr ""
@@ -1377,7 +1382,7 @@ msgstr ""
 "maintenant ?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
+#: ../src/gtk.c:1020
 msgid ""
 "Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
@@ -1385,62 +1390,68 @@ msgstr ""
 "Impossible de télécharger les taux de change. Les résultats peuvent être "
 "imprécis ou vous pouvez ne pas avoir de résultats du tout."
 
-#: ../src/gtk.c:1444
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Coller"
 
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Afficher %d _décimales"
+
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1486
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "La division par zéro n'est pas définie"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1168 ../src/mp.c:1205
+#: ../src/mp.c:1169 ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Le logarithme de zéro est indéfini"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1177
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Le logarithme d'une valeur négative est indéfini"
 
-#: ../src/mp.c:1551
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr ""
 "La puissance d'un nombre négatif n'est définie que pour des exposants entiers"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1558 ../src/mp.c:1851
+#: ../src/mp.c:1559 ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La puissance de zéro n'est pas définie pour des exposants négatifs"
 
-#: ../src/mp.c:1583
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Le nombre inverse de zéro n'est pas défini"
 
-#: ../src/mp.c:1668
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "La racine ne peut être nulle"
 
-#: ../src/mp.c:1686
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "La racine négative de zéro n'est pas définie"
 
-#: ../src/mp.c:1692
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "La racine n-ième d'un nombre négatif n'est pas définie pour n pair"
 
-#: ../src/mp.c:1762
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "La racine carrée n'est pas définie pour une valeur négative"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1791
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "La factorielle n'est définie que pour les nombres naturels"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1811
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Le modulo de la division n'est défini que pour les entiers"
 
