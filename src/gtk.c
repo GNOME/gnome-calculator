@@ -105,8 +105,9 @@ static char *finc_dialog_fields[][5] = {
     {NULL,        NULL,          NULL,         NULL,         NULL}
 };
 
-#define UI_FILE      UI_DIR "/gcalctool.ui"
-#define UI_FINC_FILE UI_DIR "/financial.ui"
+#define UI_FILE         UI_DIR "/gcalctool.ui"
+#define UI_FINC_FILE    UI_DIR "/financial.ui"
+#define UI_DIALOGS_FILE UI_DIR "/dialogs.ui"
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 
@@ -116,6 +117,10 @@ static char *finc_dialog_fields[][5] = {
           GTK_WIDGET(GET_OBJECT((name)))
 #define GET_FINC_WIDGET(name) \
           GTK_WIDGET(gtk_builder_get_object(X.financial, (name)))
+#define GET_DIALOG_OBJECT(name) \
+          gtk_builder_get_object(X.dialogs, (name))
+#define GET_DIALOG_WIDGET(name) \
+          GTK_WIDGET(gtk_builder_get_object(X.dialogs, (name)))
 
 /* Calculator modes. */
 typedef enum {
@@ -130,6 +135,7 @@ typedef struct {
     ModeType mode;  /* Current calculator mode. */
 
     GtkBuilder *ui;
+    GtkBuilder *dialogs;
     GtkBuilder *financial;
 
     GtkWidget *main_window;
@@ -564,6 +570,152 @@ about_cb(GtkWidget *widget)
                           "translator_credits", translator_credits,
                           "logo-icon-name", "accessories-calculator",
                           NULL);
+}
+
+
+static void
+set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_type)
+{
+    GtkWidget *combo;
+    GtkTreeModel *model;
+    gchar *str_key_value = NULL;
+    int int_key_value;
+    GtkTreeIter iter;
+    gboolean valid;
+
+    combo = GET_DIALOG_WIDGET(name);
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    switch (key_type)
+    {
+    case G_TYPE_STRING:
+        str_key_value = get_resource(key_name);
+        if (!str_key_value)
+            valid = FALSE;
+        break;
+    case G_TYPE_INT:
+        if (!get_int_resource(key_name, &int_key_value))
+            valid = FALSE;
+        break;
+    default:
+        break;
+    }
+
+    while (valid) {
+        gchar *str_value;
+        gint int_value;
+        gboolean matched = FALSE;
+
+        switch (key_type)
+        {
+        case G_TYPE_STRING:
+            gtk_tree_model_get(model, &iter, 1, &str_value, -1);
+            matched = strcmp(str_value, str_key_value) == 0;
+            break;
+        case G_TYPE_INT:
+            gtk_tree_model_get(model, &iter, 1, &int_value, -1);
+            matched = int_value == int_key_value;
+            break;
+        default:
+            break;
+        }
+
+        if (matched)
+            break;
+
+        valid = gtk_tree_model_iter_next(model, &iter);
+    }
+    if (!valid)
+        valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
+
+    g_free(str_key_value);
+}
+
+
+static void
+create_dialogs()
+{
+    GtkWidget *widget;
+    GtkCellRenderer *renderer;
+    gchar *string, **tokens;
+    int value;
+  
+    if (X.dialogs)
+        return;
+  
+    X.dialogs = gtk_builder_new();
+    load_ui(X.dialogs, UI_DIALOGS_FILE);
+
+    X.ascii_dialog = GET_DIALOG_WIDGET("ascii_dialog");
+    X.ascii_entry = GET_DIALOG_WIDGET("ascii_entry");
+
+    /* Make dialogs transient of the main window */
+    gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));
+
+    X.preferences_dialog = GET_DIALOG_WIDGET("preferences_dialog");
+
+    /* Configuration dialog */
+
+    widget = GET_DIALOG_WIDGET("angle_unit_combobox");
+    renderer = gtk_cell_renderer_text_new();
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
+
+    widget = GET_DIALOG_WIDGET("display_format_combobox");
+    renderer = gtk_cell_renderer_text_new();
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
+
+    widget = GET_DIALOG_WIDGET("word_size_combobox");
+    renderer = gtk_cell_renderer_text_new();
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
+
+    /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
+    string = _("Show %d decimal _places");
+    tokens = g_strsplit(string, "%d", 2);
+    widget = GET_DIALOG_WIDGET("decimal_places_label1");
+    if (tokens[0])
+        string = g_strstrip(tokens[0]);
+    else
+        string = "";
+    if (string[0] != '\0')
+        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
+    else
+        gtk_widget_hide(widget);
+
+    widget = GET_DIALOG_WIDGET("decimal_places_label2");
+    if (tokens[0] && tokens[1])
+        string = g_strstrip(tokens[1]);
+    else
+        string = "";
+    if (string[0] != '\0')
+        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
+    else
+        gtk_widget_hide(widget);
+
+    g_strfreev(tokens);
+
+    set_combo_box_from_config("angle_unit_combobox", R_TRIG, G_TYPE_STRING);
+    set_combo_box_from_config("display_format_combobox", R_DISPLAY, G_TYPE_STRING);
+    set_combo_box_from_config("word_size_combobox", R_WORDLEN, G_TYPE_INT);
+
+    if (!get_int_resource(R_ACCURACY, &value))
+        value = 9;
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_DIALOG_OBJECT("decimal_places_spin")), value);
+
+    if (!get_boolean_resource(R_TSEP, &value))
+        value = FALSE;
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_DIALOG_OBJECT("thousands_separator_check")), value);
+
+    if (!get_boolean_resource(R_ZEROES, &value))
+        value = FALSE;
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_DIALOG_OBJECT("trailing_zeroes_check")), value);
+
+    gtk_builder_connect_signals(X.dialogs, NULL);
 }
 
 
@@ -1543,6 +1695,8 @@ G_MODULE_EXPORT
 void
 insert_ascii_cb(GtkWidget *widget)
 {
+    create_dialogs();
+  
     if (!gtk_widget_get_visible(X.ascii_dialog))
         position_popup(X.main_window, X.ascii_dialog, POPUP_LEFT);
     gtk_widget_grab_focus(GTK_WIDGET(X.ascii_entry));
@@ -1584,6 +1738,7 @@ G_MODULE_EXPORT
 void
 show_preferences_cb(GtkMenuItem *menu)
 {
+    create_dialogs();
     gtk_window_present(GTK_WINDOW(X.preferences_dialog));
 }
 
@@ -1622,7 +1777,6 @@ set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
     }
 }
 
-
 static void
 create_main_window()
 {
@@ -1631,7 +1785,6 @@ create_main_window()
     GtkWidget *widget;
     PangoFontDescription *font_desc;
     GtkCellRenderer *renderer;
-    gchar *string, **tokens;
     GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
 
     X.ui = gtk_builder_new();
@@ -1641,8 +1794,6 @@ create_main_window()
     X.clipboard_atom   = gdk_atom_intern("CLIPBOARD", FALSE);
     X.primary_atom     = gdk_atom_intern("PRIMARY", FALSE);
     X.main_window      = GET_WIDGET("calc_window");
-    X.ascii_dialog     = GET_WIDGET("ascii_dialog");
-    X.ascii_entry      = GET_WIDGET("ascii_entry");
     X.menubar          = GET_WIDGET("menubar");
     X.scrolledwindow   = GET_WIDGET("display_scroll"),
     X.display_item     = GET_WIDGET("displayitem"),
@@ -1654,7 +1805,6 @@ create_main_window()
     X.bit_panel        = GET_WIDGET("bit_panel");
     X.superscript_toggle = GET_WIDGET("superscript_togglebutton");
     X.subscript_toggle   = GET_WIDGET("subscript_togglebutton");
-    X.preferences_dialog = GET_WIDGET("preferences_dialog");
     X.info_buffer = GTK_TEXT_BUFFER(GET_OBJECT("info_buffer"));
 
     /* Connect text to buttons */
@@ -1797,9 +1947,6 @@ create_main_window()
         set_int_data(X.ui, name, "bit_index", i);
     }
 
-    /* Make dialogs transient of the main window */
-    gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));
-
     X.display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X.display_item));
     gtk_widget_ensure_style(X.display_item);
     font_desc = pango_font_description_copy(gtk_widget_get_style(X.display_item)->font_desc);
@@ -1835,48 +1982,6 @@ create_main_window()
     set_data(X.ui, "calc_finc_straight_line_depreciation_button", "finc_dialog", "sln_dialog");
     set_data(X.ui, "calc_finc_sum_of_the_years_digits_depreciation_button", "finc_dialog", "syd_dialog");
     set_data(X.ui, "calc_finc_term_button", "finc_dialog", "term_dialog");
-
-    /* Configuration dialog */
-
-    widget = GET_WIDGET("angle_unit_combobox");
-    renderer = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-
-    widget = GET_WIDGET("display_format_combobox");
-    renderer = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-
-    widget = GET_WIDGET("word_size_combobox");
-    renderer = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-
-    /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
-    string = _("Show %d decimal _places");
-    tokens = g_strsplit(string, "%d", 2);
-    widget = GET_WIDGET("decimal_places_label1");
-    if (tokens[0])
-        string = g_strstrip(tokens[0]);
-    else
-        string = "";
-    if (string[0] != '\0')
-        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
-    else
-        gtk_widget_hide(widget);
-
-    widget = GET_WIDGET("decimal_places_label2");
-    if (tokens[0] && tokens[1])
-        string = g_strstrip(tokens[1]);
-    else
-        string = "";
-    if (string[0] != '\0')
-        gtk_label_set_text_with_mnemonic(GTK_LABEL(widget), string);
-    else
-        gtk_widget_hide(widget);
-
-    g_strfreev(tokens);
 }
 
 
@@ -2022,68 +2127,6 @@ trailing_zeroes_check_toggled_cb(GtkWidget *check)
 }
 
 
-static void
-set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_type)
-{
-    GtkWidget *combo;
-    GtkTreeModel *model;
-    gchar *str_key_value = NULL;
-    int int_key_value;
-    GtkTreeIter iter;
-    gboolean valid;
-
-    combo = GET_WIDGET(name);
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
-    valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    switch (key_type)
-    {
-    case G_TYPE_STRING:
-        str_key_value = get_resource(key_name);
-        if (!str_key_value)
-            valid = FALSE;
-        break;
-    case G_TYPE_INT:
-        if (!get_int_resource(key_name, &int_key_value))
-            valid = FALSE;
-        break;
-    default:
-        break;
-    }
-
-    while (valid) {
-        gchar *str_value;
-        gint int_value;
-        gboolean matched = FALSE;
-
-        switch (key_type)
-        {
-        case G_TYPE_STRING:
-            gtk_tree_model_get(model, &iter, 1, &str_value, -1);
-            matched = strcmp(str_value, str_key_value) == 0;
-            break;
-        case G_TYPE_INT:
-            gtk_tree_model_get(model, &iter, 1, &int_value, -1);
-            matched = int_value == int_key_value;
-            break;
-        default:
-            break;
-        }
-
-        if (matched)
-            break;
-
-        valid = gtk_tree_model_iter_next(model, &iter);
-    }
-    if (!valid)
-        valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(combo), &iter);
-
-    g_free(str_key_value);
-}
-
-
 void
 ui_load(void)
 {
@@ -2092,22 +2135,6 @@ ui_load(void)
     /* Create main gcalctool window. */
     create_main_window();
     ui_set_undo_enabled(FALSE, FALSE);
-
-    set_combo_box_from_config("angle_unit_combobox", R_TRIG, G_TYPE_STRING);
-    set_combo_box_from_config("display_format_combobox", R_DISPLAY, G_TYPE_STRING);
-    set_combo_box_from_config("word_size_combobox", R_WORDLEN, G_TYPE_INT);
-
-    if (!get_int_resource(R_ACCURACY, &value))
-        value = 9;
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_OBJECT("decimal_places_spin")), value);
-
-    if (!get_boolean_resource(R_TSEP, &value))
-        value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT("thousands_separator_check")), value);
-
-    if (!get_boolean_resource(R_ZEROES, &value))
-        value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT("trailing_zeroes_check")), value);
 }
 
 

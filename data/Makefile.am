@@ -1,6 +1,7 @@
 uidir = $(datadir)/gcalctool
 ui_DATA = \
 	gcalctool.ui \
+	dialogs.ui \
 	financial.ui
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
