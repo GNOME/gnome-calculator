@@ -1725,7 +1725,6 @@ create_main_window()
     set_tint(GET_WIDGET("calc_trunc_button"), &colour_action, 1);
     set_tint(GET_WIDGET("calc_shift_left_button"), &colour_action, 1);
     set_tint(GET_WIDGET("calc_shift_right_button"), &colour_action, 1);
-    set_tint(GET_WIDGET("calc_character_button"), &colour_action, 1);
   
     set_tint(GET_WIDGET("calc_add_button"), &colour_operator, 1);
     set_tint(GET_WIDGET("calc_subtract_button"), &colour_operator, 1);  
@@ -1749,7 +1748,8 @@ create_main_window()
     set_tint(GET_WIDGET("calc_store_button"), &colour_memory, 1);
     set_tint(GET_WIDGET("calc_recall_button"), &colour_memory, 1);
     set_tint(GET_WIDGET("calc_ans_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET("calc_random_button"), &colour_memory, 1);  
+    set_tint(GET_WIDGET("calc_random_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET("calc_character_button"), &colour_memory, 1);
 
     set_tint(GET_WIDGET("calc_integer_portion_button"), &colour_function, 1);
     set_tint(GET_WIDGET("calc_fractional_portion_button"), &colour_function, 1);
