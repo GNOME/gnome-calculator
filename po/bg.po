@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gaclctool master\n"
+"Project-Id-Version: gaclctool gnome-2-30\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-23 09:22+0200\n"
-"PO-Revision-Date: 2010-02-23 09:22+0200\n"
+"POT-Creation-Date: 2010-04-04 08:31+0300\n"
+"PO-Revision-Date: 2010-04-04 08:30+0300\n"
 "Last-Translator: Ivaylo Valkov <ivaylo@e-valkov.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -821,33 +821,38 @@ msgstr "_Основен режим"
 msgid "_Calculator"
 msgstr "_Калкулатор"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Ръководство"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Финансов режим"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "Помо_щ"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Вмъкване"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "Ре_жим за програмиране"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Научен режим"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Изглед"
 
@@ -1202,54 +1207,54 @@ msgstr "Щатски долар"
 msgid "South African rand"
 msgstr "Южноафрикански ранд"
 
-#: ../src/display.c:395
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "Няма история за отмяна на действие"
 
-#: ../src/display.c:410
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "Няма стъпки за повтаряне"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1045
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Тази стойност не може да се отмести побитово"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1061
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "За разлагането на множители е необходимо цяло число"
 
-#: ../src/display.c:1087
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Тази стойност не може да се запази"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1209
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Препълване. Опитайте с по-голям размер на думата"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1214
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Неизвестна променлива „%s“"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1220
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Функцията „%s“ не е дефинирана"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1226
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Неизвестна мерна единица"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1235
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Неправилен израз"
 
@@ -1370,63 +1375,69 @@ msgstr ""
 "Изтеглянето на валутни курсове бе неуспешно. Възможно е да получите грешни "
 "резултати или изобщо да не получите такива."
 
-#: ../src/gtk.c:1539
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Поставяне"
 
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "%d _места след запетаята"
+
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1486
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "Деленето на нула е неопределено"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1168 ../src/mp.c:1205
+#: ../src/mp.c:1169 ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Логаритъм от нула е неопределен"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1177
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Логаритъм от отрицателни стойности е неопределен"
 
-#: ../src/mp.c:1551
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr ""
 "Степен с основа отрицателни числа е определена само за целочислени степенни "
 "показатели"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1558 ../src/mp.c:1851
+#: ../src/mp.c:1559 ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Степен с основа нула и отрицателен степенен показател е неопределена"
 
-#: ../src/mp.c:1583
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Реципрочната стойност на нула е неопределена"
 
-#: ../src/mp.c:1668
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "Коренът трябва да е различен от нула"
 
-#: ../src/mp.c:1686
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "Отрицателен корен от нула е неопределен"
 
-#: ../src/mp.c:1692
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "Корен n-ти от отрицателно число е неопределен за четни стойности на n"
 
-#: ../src/mp.c:1762
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "Корен квадратен е неопределен за отрицателни стойности"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1791
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "Факториелът е определен само за естествени числа"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1811
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Остатъкът от делене е определен само за цели числа"
 
