@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 22:56+0100\n"
-"PO-Revision-Date: 2010-03-19 23:10+0100\n"
+"POT-Creation-Date: 2010-04-04 22:56+0200\n"
+"PO-Revision-Date: 2010-04-04 22:57+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -757,33 +757,38 @@ msgstr "_Grundläggande"
 msgid "_Calculator"
 msgstr "_Kalkylator"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Innehåll"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Finansiell"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Hjälp"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Infoga"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programmering"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Vetenskaplig"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Visa"
 
@@ -1124,30 +1129,30 @@ msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1100
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Överflöde. Prova en större ordstorlek"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1105
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Okänd variabel \"%s\""
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1111
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" är inte definierad"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1117
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Okänd konvertering"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1126
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
@@ -1262,6 +1267,12 @@ msgstr "Valutakurser kunde inte hämtas. Du kan få felaktiga resultat eller så
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Klistra in"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Visa %d decimal_platser"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529
