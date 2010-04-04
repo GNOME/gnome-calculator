@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.30\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-18 23:14+0000\n"
-"PO-Revision-Date: 2010-03-18 23:20+0000\n"
+"POT-Creation-Date: 2010-04-04 01:41+0100\n"
+"PO-Revision-Date: 2010-04-04 01:41+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -817,33 +817,38 @@ msgstr "_Básico"
 msgid "_Calculator"
 msgstr "_Calculadora"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Conteúdo"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Financeiro"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Ajuda"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Inserir"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programação"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Científico"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Ver"
 
@@ -1212,30 +1217,30 @@ msgid "No sane value to store"
 msgstr "Nenhum valor lógico a armazenar"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1100
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Excedeu o tamanho. Tente um tamanho de word maior"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1105
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variável desconhecida '%s'"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1111
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "A função '%s' não está definida"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1117
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Conversão desconhecida"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1126
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Expressão mal-formada"
 
@@ -1337,8 +1342,7 @@ msgstr "Incapaz de abrir o ficheiro de ajuda"
 #: ../src/gtk.c:1010
 msgid ""
 "You don't have any recent currency rates. Should some be downloaded now?"
-msgstr ""
-"Não possui taxas de câmbio actuais. Deseja obter algumas agora?"
+msgstr "Não possui taxas de câmbio actuais. Deseja obter algumas agora?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
 #: ../src/gtk.c:1020
@@ -1352,6 +1356,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Colar"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Apresentar %d casas _decimais"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
@@ -1370,7 +1380,8 @@ msgstr "O logaritmo de valores negativos é indefinido"
 
 #: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
-msgstr "A potência de números negativos apenas está definida para expoentes inteiros"
+msgstr ""
+"A potência de números negativos apenas está definida para expoentes inteiros"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1559 ../src/mp.c:1852
@@ -1437,7 +1448,8 @@ msgstr "Deslocamento apenas é possível em valores inteiros"
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"A tangente é indefinida para ângulos que sejam múltiplos de π (180°) a partir de π∕2 (90°)"
+"A tangente é indefinida para ângulos que sejam múltiplos de π (180°) a "
+"partir de π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
@@ -1460,7 +1472,8 @@ msgstr ""
 #: ../src/mp-trigonometric.c:582
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
-"A tangente hiperbólica inversa é indefinida para valores fora do intervalo [-1, 1]"
+"A tangente hiperbólica inversa é indefinida para valores fora do intervalo [-"
+"1, 1]"
 
 #~ msgid "%"
 #~ msgstr "%"
@@ -2084,9 +2097,6 @@ msgstr ""
 
 #~ msgid "_9 significant places"
 #~ msgstr "_9 casas significativas"
-
-#~ msgid "_Contents"
-#~ msgstr "_Conteúdo"
 
 #~ msgid "_Dec"
 #~ msgstr "_Dec"
