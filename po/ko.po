@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-03-07 01:42+0900\n"
-"PO-Revision-Date: 2010-03-07 01:42+0900\n"
+"POT-Creation-Date: 2010-04-05 01:44+0900\n"
+"PO-Revision-Date: 2010-04-05 01:46+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -813,33 +813,38 @@ msgstr "기본(_B)"
 msgid "_Calculator"
 msgstr "계산기(_C)"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "차례(_C)"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "재무(_F)"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "도움말(_H)"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "넣기(_I)"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "프로그래밍(_P)"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "과학(_S)"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "보기(_V)"
 
@@ -1185,44 +1190,44 @@ msgstr "다시 실행 단계 없음"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1068
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "비트 쉬프트의 값이 올바르지 않습니다"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1084
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
-#: ../src/display.c:1110
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "제대로 된 값을 저장할 수 없습니다"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1232
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "오버플로우. 워드 크기를 늘려 보십시오"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1237
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "알 수 없는 변수 '%s'"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1243
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "'%s' 함수가 정의되지 않았습니다"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1249
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "변환 불가"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1258
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "수식 형식이 틀렸습니다"
 
@@ -1338,6 +1343,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "붙여넣기"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "십진수 %d자리까지 표시(_P)"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
