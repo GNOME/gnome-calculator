@@ -94,7 +94,7 @@
                         <property name="label" translatable="yes" comments="View|Basic menu item">_Basic</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
-                        <signal name="activate" handler="mode_radio_cb"/>
+                        <signal name="activate" handler="mode_changed_cb"/>
                       </object>
                     </child>
                     <child>
@@ -103,7 +103,7 @@
                         <property name="label" translatable="yes" comments="View|Advanced menu item">_Advanced</property>
                         <property name="use_underline">True</property>
                         <property name="group">view_basic_menu</property>
-                        <signal name="activate" handler="mode_radio_cb"/>
+                        <signal name="activate" handler="mode_changed_cb"/>
                       </object>
                     </child>
                     <child>
@@ -112,7 +112,7 @@
                         <property name="label" translatable="yes" comments="View|Financial menu item">_Financial</property>
                         <property name="use_underline">True</property>
                         <property name="group">view_basic_menu</property>
-                        <signal name="activate" handler="mode_radio_cb"/>
+                        <signal name="activate" handler="mode_changed_cb"/>
                       </object>
                     </child>
                     <child>
@@ -121,7 +121,7 @@
                         <property name="label" translatable="yes" comments="View|Programming menu item">_Programming</property>
                         <property name="use_underline">True</property>
                         <property name="group">view_basic_menu</property>
-                        <signal name="activate" handler="mode_radio_cb"/>
+                        <signal name="activate" handler="mode_changed_cb"/>
                       </object>
                     </child>
                   </object>

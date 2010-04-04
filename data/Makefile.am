@@ -20,7 +20,7 @@ Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 
 man1_MANS = gcalctool.1
 
-EXTRA_DIST = $(ui_DATA) $(schema_in_files) gcalctool.desktop.in $(man1_MANS) gcalctoolrc
+EXTRA_DIST = $(ui_DATA) $(schema_in_files) gcalctool.desktop.in $(man1_MANS)
 
 DISTCLEANFILES = \
 	Makefile.in \

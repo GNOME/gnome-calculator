@@ -25,6 +25,7 @@
 #include "config.h"
 #include "mp.h"
 #include "display.h"
+#include "ui.h"
 
 /* To make lint happy. */
 #define SNPRINTF     (void) snprintf
@@ -59,5 +60,6 @@ typedef struct {
 } CalculatorVariables;
 
 extern CalculatorVariables *v; /* Calctool variables and options. */
+extern GCalctoolUI *X;
 
 #endif /* CALCTOOL_H */

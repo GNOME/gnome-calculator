@@ -36,6 +36,8 @@
 static CalculatorVariables calc_state;
 CalculatorVariables *v;
 
+GCalctoolUI *X;
+
 static void
 version()
 {
@@ -221,8 +223,8 @@ main(int argc, char **argv)
 
     get_options(argc, argv);
 
-    ui_load();
-    ui_start();
+    X = ui_new();
+    ui_start(X);
 
     currency_free_resources();
 

@@ -32,6 +32,7 @@
 #include "mp-equation.h"
 #include "register.h"
 #include "currency.h"
+#include "calctool.h"
 
 static GCDisplayState *
 get_state(GCDisplay *display)
@@ -203,7 +204,7 @@ display_set_number(GCDisplay *display, const MPNumber *x)
     display_set_string(display, text, -1);
 
     enabled = display_get_unsigned_integer(display, &bit_value);
-    ui_set_bitfield(enabled, bit_value);
+    ui_set_bitfield(X, enabled, bit_value);
 }
 
 
@@ -251,7 +252,7 @@ display_refresh(GCDisplay *display)
 
     cursor = display_get_cursor(display);
     display_make_text(display, localized, MAX_LOCALIZED, &cursor);
-    ui_set_display(localized, cursor);
+    ui_set_display(X, localized, cursor);
 }
 
 
@@ -286,7 +287,7 @@ display_set_cursor(GCDisplay *display, int cursor)
 void
 display_set_error(GCDisplay *display, const char *message)
 {
-    ui_set_statusbar(message);
+    ui_set_statusbar(X, message);
 }
 
 
@@ -314,24 +315,6 @@ copy_state(GCDisplayState *dst, GCDisplayState *src)
 }
 
 
-static void
-update_undo_redo_button_sensitivity(GCDisplay *display)
-{
-    int undo = 0;
-    int redo = 0;
-
-    if (display->h.current != display->h.end) {
-        redo = 1;
-    }
-
-    if (display->h.current != display->h.begin) {
-        undo = 1;
-    }
-
-    ui_set_undo_enabled(undo, redo);
-}
-
-
 void
 display_clear_stack(GCDisplay *display)
 {
@@ -344,7 +327,6 @@ display_clear_stack(GCDisplay *display)
         i = ((i + 1) % UNDO_HISTORY_LENGTH);
     }
     display->h.begin = display->h.end = display->h.current;
-    update_undo_redo_button_sensitivity(display);
 }
 
 
@@ -376,7 +358,6 @@ display_push(GCDisplay *display)
     }
 
     copy_state(&(display->h.e[display->h.current]), &(display->h.e[c]));
-    update_undo_redo_button_sensitivity(display);
 }
 
 
@@ -385,11 +366,10 @@ display_pop(GCDisplay *display)
 {
     if (display->h.current != display->h.begin) {
         display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
-        ui_set_statusbar("");
+        ui_set_statusbar(X, "");
     } else {
-        ui_set_statusbar(_("No undo history"));
+        ui_set_statusbar(X, _("No undo history"));
     }
-    update_undo_redo_button_sensitivity(display);
 
     display_refresh(display);
 }
@@ -400,11 +380,10 @@ display_unpop(GCDisplay *display)
 {
     if (display->h.current != display->h.end) {
         display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
-        ui_set_statusbar("");
+        ui_set_statusbar(X, "");
     } else {
-        ui_set_statusbar(_("No redo steps"));
+        ui_set_statusbar(X, _("No redo steps"));
     }
-    update_undo_redo_button_sensitivity(display);
     get_state(display)->cursor = -1;
     display_refresh(display);
 }
@@ -448,7 +427,7 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
         }
 
         cursor = 0;
-        for (c = ui_get_display(); *c; c = g_utf8_next_char(c), cursor++) {
+        for (c = ui_get_display(X); *c; c = g_utf8_next_char(c), cursor++) {
             gboolean use = TRUE;
 
             /* Ignore selected part */
@@ -502,7 +481,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor_start < 0) {
         int len;
-        len = g_utf8_strlen(ui_get_display(), -1);
+        len = g_utf8_strlen(ui_get_display(X), -1);
         display_insert(display, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
         display_insert(display, cursor_start, cursor_end, "");
@@ -933,7 +912,7 @@ do_shift(GCDisplay *display, int count)
     if (!display_is_usable_number(display, &z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
-        ui_set_statusbar(_("No sane value to bitwise shift"));
+        ui_set_statusbar(X, _("No sane value to bitwise shift"));
     }
     else {
         mp_shift(&z, count, display_get_answer(display));
@@ -949,7 +928,7 @@ do_factorize()
 
     if (!display_is_usable_number(&v->display, &value)) {
         /* Translators: Error displayed when trying to factorize a non-integer value */
-        ui_set_statusbar(_("Need an integer to factorize"));
+        ui_set_statusbar(X, _("Need an integer to factorize"));
         return;
     }
     display_clear(&v->display);
@@ -975,7 +954,7 @@ do_sto(GCDisplay *display, const char *name)
     MPNumber t;
 
     if (!display_is_usable_number(display, &t))
-        ui_set_statusbar(_("No sane value to store"));
+        ui_set_statusbar(X, _("No sane value to store"));
     else
         register_set_value(name, &t);
 }
@@ -1006,7 +985,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
     display_set_cursor(display, cursor_start);
     ans = display_get_answer(display);
 
-    ui_set_statusbar("");
+    ui_set_statusbar(X, "");
 
     switch (function) {
         case FN_CLEAR:
@@ -1126,7 +1105,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
                         break;
                 }
                 if (message)
-                    ui_set_statusbar(message);
+                    ui_set_statusbar(X, message);
             }
             break;
 
@@ -1140,5 +1119,5 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
     }
 
     enabled = display_get_unsigned_integer(display, &bit_value);
-    ui_set_bitfield(enabled, bit_value);
+    ui_set_bitfield(X, enabled, bit_value);
 }

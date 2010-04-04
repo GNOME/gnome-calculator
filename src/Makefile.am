@@ -32,8 +32,16 @@ gcalctool_SOURCES = \
 	financial.h \
 	register.c \
 	register.h \
-	gtk.c \
+	ui.c \
 	ui.h \
+	ui-buttons.c \
+	ui-buttons.h \
+	ui-display.c \
+	ui-display.h \
+	ui-financial.c \
+	ui-financial.h \
+	ui-preferences.c \
+	ui-preferences.h \
 	unittest.c \
 	unittest.h
 
