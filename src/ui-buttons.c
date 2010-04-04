@@ -94,6 +94,34 @@ static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅
 static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
 
+Buttons *
+ui_buttons_new(GCalctoolUI *ui)
+{
+    Buttons *buttons;
+  
+    buttons = g_malloc0(sizeof(Buttons));
+    buttons->ui = ui;
+    buttons->button_vbox = GET_WIDGET(ui->ui, "button_vbox");
+    return buttons;
+}
+
+
+static GtkWidget *
+get_buttons(Buttons *buttons, ButtonMode mode)
+{
+    switch (mode) {
+    case BASIC:
+        return buttons->bas_panel;
+    case ADVANCED:
+        return buttons->adv_panel;
+    case FINANCIAL:
+        return buttons->fin_panel;
+    case PROGRAMMING:
+        return buttons->prog_panel;
+    }
+}
+
+
 static void
 set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
 {
@@ -103,6 +131,7 @@ set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
     if (!widget)
       return;
 
+    gtk_widget_ensure_style(widget);
     style = gtk_widget_get_style(widget);
   
     for (j = 0; j < 5; j++) {
@@ -139,8 +168,8 @@ static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *
 }
 
 
-void
-ui_load_mode(GCalctoolUI *ui, ModeType mode)
+static void
+load_mode(Buttons *buttons, ButtonMode mode)
 {
     GtkBuilder *builder, **builder_ptr;
     gint i;
@@ -176,36 +205,36 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
     /* Get labels from popup menus */
     for (i = 0; registers[i]; i++) {
         SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
-        widget = GET_WIDGET(ui->ui, name);
+        widget = GET_WIDGET(buttons->ui->ui, name);
         g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
-        ui->memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+        buttons->memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
 
         SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
-        widget = GET_WIDGET(ui->ui, name);
+        widget = GET_WIDGET(buttons->ui->ui, name);
         g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
-        ui->memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
+        buttons->memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
     }
   
     switch (mode) {
     case BASIC:
-        builder_ptr = &ui->basic_ui;
+        builder_ptr = &buttons->basic_ui;
         builder_file = UI_BASIC_FILE;
-        panel = &ui->bas_panel;
+        panel = &buttons->bas_panel;
         break;
     case ADVANCED:
-        builder_ptr = &ui->advanced_ui;
+        builder_ptr = &buttons->advanced_ui;
         builder_file = UI_ADVANCED_FILE;
-        panel = &ui->adv_panel;
+        panel = &buttons->adv_panel;
         break;
     case FINANCIAL:
-        builder_ptr = &ui->financial_ui;
+        builder_ptr = &buttons->financial_ui;
         builder_file = UI_FINANCIAL_FILE;
-        panel = &ui->fin_panel;
+        panel = &buttons->fin_panel;
         break;
     case PROGRAMMING:
-        builder_ptr = &ui->programming_ui;
+        builder_ptr = &buttons->programming_ui;
         builder_file = UI_PROGRAMMING_FILE;
-        panel = &ui->prog_panel;
+        panel = &buttons->prog_panel;
         break;
     }
 
@@ -213,8 +242,7 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
     // FIXME: Show dialog if failed to load
     gtk_builder_add_objects_from_file(builder, builder_file, objects, NULL);
     *panel = GET_WIDGET(builder, "button_panel");
-    gtk_box_pack_end(GTK_BOX(ui->button_vbox), *panel, FALSE, TRUE, 0);
-    gtk_widget_realize(*panel);
+    gtk_box_pack_end(GTK_BOX(buttons->button_vbox), *panel, FALSE, TRUE, 0);
 
     /* Connect text to buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
@@ -248,14 +276,14 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
   
     widget = GET_WIDGET(builder, "superscript_togglebutton");
     if (widget) {
-        ui->superscript_toggles = g_list_append(ui->superscript_toggles, widget);
-        if (ui->number_mode == SUPERSCRIPT)
+        buttons->superscript_toggles = g_list_append(buttons->superscript_toggles, widget);
+        if (buttons->ui->display->number_mode == SUPERSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
     widget = GET_WIDGET(builder, "subscript_togglebutton");
     if (widget) {
-        ui->subscript_toggles = g_list_append(ui->subscript_toggles, widget);
-        if (ui->number_mode == SUBSCRIPT)
+        buttons->subscript_toggles = g_list_append(buttons->subscript_toggles, widget);
+        if (buttons->ui->display->number_mode == SUBSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
@@ -337,7 +365,7 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
     if (mode == PROGRAMMING) {
         for (i = 0; i < MAXBITS; i++) {
             SNPRINTF(name, MAXLINE, "bit_label_%d", i);
-            ui->bit_labels[i] = GET_WIDGET(builder, name);
+            buttons->bit_labels[i] = GET_WIDGET(builder, name);
             SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
             set_int_data(builder, name, "bit_index", i);
         }
@@ -345,6 +373,12 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
 
     /* Setup financial functions */
     if (mode == FINANCIAL) {
+        ui_setup_finc_dialogs(buttons->ui);
+
+        buttons->ascii_dialog = GET_WIDGET(builder, "ascii_dialog");
+        buttons->ascii_entry = GET_WIDGET(builder, "ascii_entry");
+        gtk_window_set_transient_for(GTK_WINDOW(buttons->ascii_dialog), GTK_WINDOW(buttons->ui->main_window));
+
         set_data(builder, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
         set_data(builder, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
         set_data(builder, "calc_finc_future_value_button", "finc_dialog", "fv_dialog");
@@ -357,85 +391,102 @@ ui_load_mode(GCalctoolUI *ui, ModeType mode)
         set_data(builder, "calc_finc_term_button", "finc_dialog", "term_dialog");
     }
 
-    gtk_builder_connect_signals(builder, ui);
+    gtk_builder_connect_signals(builder, buttons);
 }
 
 
-G_MODULE_EXPORT
 void
-base_cb(GtkWidget *widget, GCalctoolUI *ui)
+ui_buttons_set_mode(Buttons *buttons, ButtonMode mode)
 {
-    ui_set_base(ui, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
+    ButtonMode old_mode;
+
+    old_mode = buttons->mode;
+    buttons->mode = mode;
+
+    /* Hide the existing mode */
+    if (get_buttons(buttons, old_mode))
+        gtk_widget_hide(get_buttons(buttons, old_mode));
+  
+    /* Create the new mode if necessary */
+    if (!get_buttons(buttons, mode))
+        load_mode(buttons, mode);
+    gtk_widget_show(get_buttons(buttons, mode));
 }
 
 
 G_MODULE_EXPORT
 void
-exponent_cb(GtkWidget *widget, GCalctoolUI *ui)
+base_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_exponent(ui);
+    ui_set_base(buttons->ui, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
 }
 
 
 G_MODULE_EXPORT
 void
-subtract_cb(GtkWidget *widget, GCalctoolUI *ui)
+exponent_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_subtract(ui);
+    ui_do_exponent(buttons->ui);
 }
 
 
 G_MODULE_EXPORT
 void
-button_cb(GtkWidget *widget, GCalctoolUI *ui)
+subtract_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_insert_text(ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
+    ui_do_subtract(buttons->ui);
 }
 
 
 G_MODULE_EXPORT
 void
-store_menu_cb(GtkMenuItem *menu, GCalctoolUI *ui)
+button_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_button(ui, FN_STORE, g_object_get_data(G_OBJECT(menu), "register_id"));
+    ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
 }
 
 
 G_MODULE_EXPORT
 void
-recall_menu_cb(GtkMenuItem *menu, GCalctoolUI *ui)
+store_menu_cb(GtkMenuItem *menu, Buttons *buttons)
 {
-    ui_do_button(ui, FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
+    ui_do_button(buttons->ui, FN_STORE, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
 G_MODULE_EXPORT
 void
-solve_cb(GtkWidget *widget, GCalctoolUI *ui)
+recall_menu_cb(GtkMenuItem *menu, Buttons *buttons)
 {
-    ui_do_button(ui, FN_CALCULATE, NULL);
+    ui_do_button(buttons->ui, FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
 G_MODULE_EXPORT
 void
-clear_cb(GtkWidget *widget, GCalctoolUI *ui)
+solve_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_button(ui, FN_CLEAR, NULL);
+    ui_do_button(buttons->ui, FN_CALCULATE, NULL);
 }
 
 
 G_MODULE_EXPORT
 void
-finc_cb(GtkWidget *widget, GCalctoolUI *ui)
+clear_cb(GtkWidget *widget, Buttons *buttons)
+{
+    ui_do_button(buttons->ui, FN_CLEAR, NULL);
+}
+
+
+G_MODULE_EXPORT
+void
+finc_cb(GtkWidget *widget, Buttons *buttons)
 {
     gchar *name;
 
-    if (ui->financial == NULL)
-        ui_setup_finc_dialogs(ui);
     name = g_object_get_data(G_OBJECT(widget), "finc_dialog");
-    gtk_dialog_run(GTK_DIALOG(GET_WIDGET(ui->financial, name)));
-    gtk_widget_hide(GTK_WIDGET(GET_WIDGET(ui->financial, name)));
+    gtk_dialog_run(GTK_DIALOG(GET_WIDGET(buttons->financial_ui, name)));
+    gtk_widget_hide(GTK_WIDGET(GET_WIDGET(buttons->financial_ui, name)));
 }
 
 
@@ -515,47 +566,45 @@ position_popup(GtkWidget *base, GtkWidget *popup,
 
 G_MODULE_EXPORT
 void
-insert_ascii_cb(GtkWidget *widget, GCalctoolUI *ui)
+insert_ascii_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_create_dialogs(ui);
-  
-    if (!gtk_widget_get_visible(ui->ascii_dialog))
-        position_popup(ui->main_window, ui->ascii_dialog, POPUP_LEFT);
-    gtk_widget_grab_focus(GTK_WIDGET(ui->ascii_entry));
-    gtk_widget_show(ui->ascii_dialog);
+    if (!gtk_widget_get_visible(buttons->ascii_dialog))
+        position_popup(buttons->ui->main_window, buttons->ascii_dialog, POPUP_LEFT);
+    gtk_widget_grab_focus(GTK_WIDGET(buttons->ascii_entry));
+    gtk_widget_show(buttons->ascii_dialog);
 }
 
 
 G_MODULE_EXPORT
 void
-shift_cb(GtkWidget *widget, GCalctoolUI *ui)
+shift_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_button(ui, FN_SHIFT, g_object_get_data(G_OBJECT(widget), "shiftcount"));
+    ui_do_button(buttons->ui, FN_SHIFT, g_object_get_data(G_OBJECT(widget), "shiftcount"));
 }
 
 G_MODULE_EXPORT
 void
-factorize_cb(GtkWidget *widget, GCalctoolUI *ui)
+factorize_cb(GtkWidget *widget, Buttons *buttons)
 {
-    ui_do_button(ui, FN_FACTORIZE, NULL);
+    ui_do_button(buttons->ui, FN_FACTORIZE, NULL);
 }
 
 
 G_MODULE_EXPORT
 void
-digit_cb(GtkWidget *widget, GCalctoolUI *ui)
+digit_cb(GtkWidget *widget, Buttons *buttons)
 {
-    if (ui->number_mode == SUPERSCRIPT)
-        ui_insert_text(ui, g_object_get_data(G_OBJECT(widget), "calc_superscript_text"));
-    else if (ui->number_mode == SUBSCRIPT)
-        ui_insert_text(ui, g_object_get_data(G_OBJECT(widget), "calc_subscript_text"));
+    if (buttons->ui->display->number_mode == SUPERSCRIPT)
+        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_superscript_text"));
+    else if (buttons->ui->display->number_mode == SUBSCRIPT)
+        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_subscript_text"));
     else
-        ui_insert_text(ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
+        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
 }
 
 
 static void
-update_memory_menus(GCalctoolUI *ui)
+update_memory_menus(Buttons *buttons)
 {
     int i;
 
@@ -567,20 +616,20 @@ update_memory_menus(GCalctoolUI *ui)
         if (t)
             display_make_number(&v->display, value, MAXLINE, t);
         SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(ui->memory_store_labels[i]), mstr);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(ui->memory_recall_labels[i]), mstr);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->memory_store_labels[i]), mstr);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->memory_recall_labels[i]), mstr);
     }
 }
 
 
 G_MODULE_EXPORT
 void
-popup_cb(GtkWidget *widget, GCalctoolUI *ui)
+popup_cb(GtkWidget *widget, Buttons *buttons)
 {
     GtkWidget *menu;
     GdkPoint loc;
 
-    update_memory_menus(ui);
+    update_memory_menus(buttons);
 
     menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
@@ -589,14 +638,14 @@ popup_cb(GtkWidget *widget, GCalctoolUI *ui)
 
 G_MODULE_EXPORT
 void
-ascii_dialog_response_cb(GtkWidget *dialog, gint response_id, GCalctoolUI *ui)
+ascii_dialog_response_cb(GtkWidget *dialog, gint response_id, Buttons *buttons)
 {
     const gchar *text;
 
-    text = gtk_entry_get_text(GTK_ENTRY(ui->ascii_entry));
+    text = gtk_entry_get_text(GTK_ENTRY(buttons->ascii_entry));
 
     if (response_id == GTK_RESPONSE_OK)
-        ui_do_button(ui, FN_INSERT_CHARACTER, (gpointer) text);
+        ui_do_button(buttons->ui, FN_INSERT_CHARACTER, (gpointer) text);
 
     gtk_widget_hide(dialog);
 }
@@ -604,27 +653,27 @@ ascii_dialog_response_cb(GtkWidget *dialog, gint response_id, GCalctoolUI *ui)
 
 G_MODULE_EXPORT
 void
-ascii_dialog_activate_cb(GtkWidget *entry, GCalctoolUI *ui)
+ascii_dialog_activate_cb(GtkWidget *entry, Buttons *buttons)
 {
-    ascii_dialog_response_cb(ui->ascii_dialog, GTK_RESPONSE_OK, ui);
+    ascii_dialog_response_cb(buttons->ascii_dialog, GTK_RESPONSE_OK, buttons);
 }
 
 
 G_MODULE_EXPORT
 gboolean
-ascii_dialog_delete_cb(GtkWidget *dialog, GCalctoolUI *ui)
+ascii_dialog_delete_cb(GtkWidget *dialog, Buttons *buttons)
 {
-    ascii_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL, ui);
+    ascii_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL, buttons);
     return TRUE;
 }
 
 
 G_MODULE_EXPORT
 gboolean
-bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, GCalctoolUI *ui)
+bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, Buttons *buttons)
 {
-    ui_do_button(ui, FN_TOGGLE_BIT,
-              g_object_get_data(G_OBJECT(event_box), "bit_index"));
+    ui_do_button(buttons->ui, FN_TOGGLE_BIT,
+                 g_object_get_data(G_OBJECT(event_box), "bit_index"));
     return TRUE;
 }
 
@@ -632,26 +681,48 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, GCalctoolUI *ui)
 
 G_MODULE_EXPORT
 void
-set_superscript_cb(GtkWidget *widget, GCalctoolUI *ui)
+set_superscript_cb(GtkWidget *widget, Buttons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-       ui->can_super_minus = TRUE;
-       ui_set_number_mode(ui, SUPERSCRIPT);
+       buttons->ui->display->can_super_minus = TRUE;
+       ui_set_number_mode(buttons->ui, SUPERSCRIPT);
     }
     else {
-       ui->can_super_minus = FALSE;
-       if (ui->number_mode == SUPERSCRIPT)
-           ui_set_number_mode(ui, NORMAL);
+       buttons->ui->display->can_super_minus = FALSE;
+       if (buttons->ui->display->number_mode == SUPERSCRIPT)
+           ui_set_number_mode(buttons->ui, NORMAL);
     }
 }
 
 
 G_MODULE_EXPORT
 void
-set_subscript_cb(GtkWidget *widget, GCalctoolUI *ui)
+set_subscript_cb(GtkWidget *widget, Buttons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       ui_set_number_mode(ui, SUBSCRIPT);
-    else if (ui->number_mode == SUBSCRIPT)
-       ui_set_number_mode(ui, NORMAL);
+       ui_set_number_mode(buttons->ui, SUBSCRIPT);
+    else if (buttons->ui->display->number_mode == SUBSCRIPT)
+       ui_set_number_mode(buttons->ui, NORMAL);
+}
+
+
+// FIXME: Watch for changes in programming mode
+void
+ui_set_bitfield(GCalctoolUI *ui, int enabled, guint64 bits)
+{
+    int i;
+    const gchar *label;
+  
+    if (!ui->buttons->bit_panel)
+       return;
+
+    gtk_widget_set_sensitive(ui->buttons->bit_panel, enabled);
+
+    for (i = 0; i < MAXBITS; i++) {
+        if (bits & (1LL << (MAXBITS-i-1)))
+            label = " 1";
+        else
+            label = " 0";
+        gtk_label_set_text(GTK_LABEL(ui->buttons->bit_labels[i]), label);
+    }
 }

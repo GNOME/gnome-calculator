@@ -19,8 +19,36 @@
 #ifndef UI_DISPLAY_H
 #define UI_DISPLAY_H
 
+typedef struct MathDisplay MathDisplay;
+
 #include "ui.h"
 
+typedef enum {
+    NORMAL,
+    SUPERSCRIPT,
+    SUBSCRIPT
+} NumberMode;
+
+struct MathDisplay
+{
+    NumberMode number_mode;  
+
+    GtkWidget *display_item;           /* Calculator display. */
+    GtkTextBuffer *display_buffer;     /* Buffer used in display */
+    GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
+    GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
+
+    GdkAtom clipboard_atom;
+    GdkAtom primary_atom;
+    char *shelf;                       /* PUT selection shelf contents. */
+
+    gboolean can_super_minus;
+
+    /* Last text entered */
+    char *last_text;
+};
+
+MathDisplay *ui_display_new(GCalctoolUI *ui);
 void ui_display_copy(GCalctoolUI *ui);
 void ui_display_paste(GCalctoolUI *ui);
 void ui_insert_text(GCalctoolUI *ui, const char *text);

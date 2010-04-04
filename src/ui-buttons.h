@@ -19,6 +19,46 @@
 #ifndef UI_BUTTONS_H
 #define UI_BUTTONS_H
 
+typedef struct Buttons Buttons;
+
 #include "ui.h"
+
+typedef enum {
+    BASIC,
+    ADVANCED,
+    FINANCIAL,
+    PROGRAMMING
+} ButtonMode;
+
+#define MAXBITS 64      /* Bit panel: number of bit fields. */
+#define MAX_REGISTERS 6
+
+struct Buttons
+{
+    GCalctoolUI *ui;
+    ButtonMode mode;
+    GtkBuilder *financial_dialog_ui; // FIXME: Merge into financial UI
+    GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
+
+    GtkWidget *button_vbox;
+    GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
+
+    /* Labels for popup menus */
+    GtkWidget *memory_store_labels[MAX_REGISTERS];
+    GtkWidget *memory_recall_labels[MAX_REGISTERS];
+
+    GList *superscript_toggles;
+    GList *subscript_toggles;
+
+    GtkWidget *bit_panel;
+    GtkWidget *bit_labels[MAXBITS];
+
+    GtkWidget *ascii_dialog;
+    GtkWidget *ascii_entry;
+};
+
+Buttons *ui_buttons_new(GCalctoolUI *ui);
+
+void ui_buttons_set_mode(Buttons *buttons, ButtonMode mode);
 
 #endif /* UI_BUTTONS_H */

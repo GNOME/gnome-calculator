@@ -1,12 +1,11 @@
 uidir = $(datadir)/gcalctool
 ui_DATA = \
 	gcalctool.ui \
-	dialogs.ui \
-	financial.ui \
-    buttons-basic.ui \
-    buttons-advanced.ui \
-    buttons-financial.ui \
-    buttons-programming.ui
+	preferences.ui \
+	buttons-basic.ui \
+	buttons-advanced.ui \
+	buttons-financial.ui \
+	buttons-programming.ui
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_in_files = gcalctool.schemas.in

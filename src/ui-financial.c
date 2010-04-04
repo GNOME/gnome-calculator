@@ -45,8 +45,6 @@ static char *finc_dialog_fields[][5] = {
     {NULL,        NULL,          NULL,         NULL,         NULL}
 };
 
-#define UI_FINC_FILE        UI_DIR "/financial.ui"
-
 G_MODULE_EXPORT
 void
 finc_activate_cb(GtkWidget *widget, GCalctoolUI *ui)
@@ -67,7 +65,7 @@ finc_activate_cb(GtkWidget *widget, GCalctoolUI *ui)
     }
     else {
         GtkWidget *next_widget;
-        next_widget = GET_WIDGET(ui->financial, finc_dialog_fields[dialog][field+1]);
+        next_widget = GET_WIDGET(ui->buttons->financial_ui, finc_dialog_fields[dialog][field+1]);
         gtk_widget_grab_focus(next_widget);
     }
 }
@@ -91,18 +89,19 @@ finc_response_cb(GtkWidget *widget, gint response_id, GCalctoolUI *ui)
         if (finc_dialog_fields[dialog][i] == NULL) {
             continue;
         }
-        entry = GET_WIDGET(ui->financial, finc_dialog_fields[dialog][i]);
+        entry = GET_WIDGET(ui->buttons->financial_ui, finc_dialog_fields[dialog][i]);
         // FIXME: Have to delocalize the input
         mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
-    gtk_widget_grab_focus(GET_WIDGET(ui->financial, finc_dialog_fields[dialog][0]));
+    gtk_widget_grab_focus(GET_WIDGET(ui->buttons->financial_ui, finc_dialog_fields[dialog][0]));
 
     do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
 }
 
 
-static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const gpointer value)
+static void
+set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const gpointer value)
 {
     GObject *object;  
     object = gtk_builder_get_object(ui, object_name);
@@ -111,7 +110,8 @@ static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name
 }
 
 
-static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
+static void
+set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
 {
     set_data(ui, object_name, name, GINT_TO_POINTER(value));
 }
@@ -128,41 +128,37 @@ ui_setup_finc_dialogs(GCalctoolUI *ui)
     GtkComboBox   *currency_type_upper;
     GtkComboBox   *currency_type_lower;
 
-    // FIXME: Handle errors
-    ui->financial = gtk_builder_new();
-    gtk_builder_add_from_file(ui->financial, UI_FINC_FILE, NULL);
-
-    set_int_data(ui->financial, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
-    set_int_data(ui->financial, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
-    set_int_data(ui->financial, "fv_dialog", "finc_dialog", FINC_FV_DIALOG);
-    set_int_data(ui->financial, "gpm_dialog", "finc_dialog", FINC_GPM_DIALOG);
-    set_int_data(ui->financial, "pmt_dialog", "finc_dialog", FINC_PMT_DIALOG);
-    set_int_data(ui->financial, "pv_dialog", "finc_dialog", FINC_PV_DIALOG);
-    set_int_data(ui->financial, "rate_dialog", "finc_dialog", FINC_RATE_DIALOG);
-    set_int_data(ui->financial, "sln_dialog", "finc_dialog", FINC_SLN_DIALOG);
-    set_int_data(ui->financial, "syd_dialog", "finc_dialog", FINC_SYD_DIALOG);
-    set_int_data(ui->financial, "term_dialog", "finc_dialog", FINC_TERM_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "fv_dialog", "finc_dialog", FINC_FV_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "gpm_dialog", "finc_dialog", FINC_GPM_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "pmt_dialog", "finc_dialog", FINC_PMT_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "pv_dialog", "finc_dialog", FINC_PV_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "rate_dialog", "finc_dialog", FINC_RATE_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "sln_dialog", "finc_dialog", FINC_SLN_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "syd_dialog", "finc_dialog", FINC_SYD_DIALOG);
+    set_int_data(ui->buttons->financial_ui, "term_dialog", "finc_dialog", FINC_TERM_DIALOG);
 
     for (i = 0; finc_dialog_fields[i][0] != NULL; i++) {
         for (j = 0; finc_dialog_fields[i][j]; j++) {
             GObject *o;
-            o = gtk_builder_get_object(ui->financial, finc_dialog_fields[i][j]);
+            o = gtk_builder_get_object(ui->buttons->financial_ui, finc_dialog_fields[i][j]);
             g_object_set_data(o, "finc_field", GINT_TO_POINTER(j));
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
 
     currency_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_upper"));
     currency_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_lower"));
     currency_type_upper = GTK_COMBO_BOX(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_type_upper"));
     currency_type_lower = GTK_COMBO_BOX(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_type_lower"));
 
     currency_store = gtk_list_store_new(2,
@@ -196,10 +192,10 @@ ui_setup_finc_dialogs(GCalctoolUI *ui)
                                   "text",
                                   1);
 
-    set_int_data(ui->financial, "currency_amount_upper", "target", CURRENCY_TARGET_LOWER);
-    set_int_data(ui->financial, "currency_amount_lower", "target", CURRENCY_TARGET_UPPER);
+    set_int_data(ui->buttons->financial_ui, "currency_amount_upper", "target", CURRENCY_TARGET_LOWER);
+    set_int_data(ui->buttons->financial_ui, "currency_amount_lower", "target", CURRENCY_TARGET_UPPER);
 
-    gtk_builder_connect_signals(ui->financial, ui);
+    gtk_builder_connect_signals(ui->buttons->financial_ui, ui);
 }
 
 
@@ -209,16 +205,16 @@ recalculate_currency(GCalctoolUI *ui, CurrencyTargetRow target)
     int upper_index, lower_index;
 
     GtkComboBox *combo_upper = GTK_COMBO_BOX(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_type_upper"));
     GtkComboBox *combo_lower = GTK_COMBO_BOX(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_type_lower"));
     GtkSpinButton *spin_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_upper"));
     GtkSpinButton *spin_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_lower"));
 
     GtkTreeModel *model = gtk_combo_box_get_model(combo_upper);
@@ -296,7 +292,7 @@ setup_currency_rates(GCalctoolUI *ui)
     }
     currency_load_rates();
 
-    currency_type = gtk_builder_get_object(ui->financial, "currency_type_upper");
+    currency_type = gtk_builder_get_object(ui->buttons->financial_ui, "currency_type_upper");
     currency_store = GTK_LIST_STORE(gtk_combo_box_get_model(
         GTK_COMBO_BOX(currency_type)));
 
@@ -326,17 +322,17 @@ currency_cb(GtkWidget *widget, GCalctoolUI *ui)
     GtkSpinButton *c_amount_upper, *c_amount_lower;
     MPNumber display_val;
 
-    if (ui->financial == NULL)
+    if (ui->buttons->financial_ui == NULL)
         ui_setup_finc_dialogs(ui);
 
     setup_currency_rates(ui);
 
-    win = GTK_DIALOG(gtk_builder_get_object(ui->financial, "currency_dialog"));
+    win = GTK_DIALOG(gtk_builder_get_object(ui->buttons->financial_ui, "currency_dialog"));
     c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_upper"));
     c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(
-        ui->financial,
+        ui->buttons->financial_ui,
         "currency_amount_lower"));
     if (display_is_usable_number(&v->display, &display_val)) {
         double start_val = mp_cast_to_double(&display_val);

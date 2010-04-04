@@ -22,28 +22,34 @@
 #include "ui-internal.h"
 #include "get.h"
 
-
-#define UI_DIALOGS_FILE     UI_DIR "/dialogs.ui"
-
-#define GET_OBJECT(ui, name) \
-          gtk_builder_get_object((ui), (name))
+#define UI_DIALOGS_FILE  UI_DIR "/preferences.ui"
 #define GET_WIDGET(ui, name) \
-          GTK_WIDGET(GET_OBJECT(ui, name))
+          GTK_WIDGET(gtk_builder_get_object(ui, name))
+
+
+PreferencesDialog *ui_preferences_dialog_new(GCalctoolUI *ui)
+{
+    PreferencesDialog *dialog;
+  
+    dialog = g_malloc0(sizeof(PreferencesDialog));
+    dialog->ui = ui;
+    return dialog;
+}
 
 
 G_MODULE_EXPORT
 void
-preferences_response_cb(GtkWidget *widget, gint id, GCalctoolUI *ui)
+preferences_response_cb(GtkWidget *widget, gint id, PreferencesDialog *dialog)
 {
-    gtk_widget_hide(ui->preferences_dialog);
+    gtk_widget_hide(dialog->dialog);
 }
 
 
 G_MODULE_EXPORT
 gboolean
-preferences_dialog_delete_cb(GtkWidget *widget, GCalctoolUI *ui)
+preferences_dialog_delete_cb(GtkWidget *widget, GdkEvent *event, PreferencesDialog *dialog)
 {
-    preferences_response_cb(widget, 0, ui);
+    preferences_response_cb(widget, 0, dialog);
     return TRUE;
 }
 
@@ -165,16 +171,8 @@ trailing_zeroes_check_toggled_cb(GtkWidget *check)
 }
 
 
-void
-ui_show_preferences(GCalctoolUI *ui)
-{  
-    ui_create_dialogs(ui);
-    gtk_window_present(GTK_WINDOW(ui->preferences_dialog));
-}
-
-
 static void
-set_combo_box_from_config(GCalctoolUI *ui, const gchar *name, const gchar *key_name, GType key_type)
+set_combo_box_from_config(PreferencesDialog *dialog, const gchar *name, const gchar *key_name, GType key_type)
 {
     GtkWidget *combo;
     GtkTreeModel *model;
@@ -183,7 +181,7 @@ set_combo_box_from_config(GCalctoolUI *ui, const gchar *name, const gchar *key_n
     GtkTreeIter iter;
     gboolean valid;
 
-    combo = GET_WIDGET(ui->dialog_ui, name);
+    combo = GET_WIDGET(dialog->dialog_ui, name);
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     valid = gtk_tree_model_get_iter_first(model, &iter);
 
@@ -235,43 +233,39 @@ set_combo_box_from_config(GCalctoolUI *ui, const gchar *name, const gchar *key_n
 }
 
 
-// FIXME: Take out ascii dialog
 void
-ui_create_dialogs(GCalctoolUI *ui)
-{
+ui_preferences_show(PreferencesDialog *dialog)
+{  
     GtkWidget *widget;
     GtkCellRenderer *renderer;
     gchar *string, **tokens;
     int value;
   
-    if (ui->dialog_ui)
+    if (dialog->dialog_ui) {
+        gtk_window_present(GTK_WINDOW(dialog->dialog));
         return;
+    }
 
     // FIXME: Handle errors
-    ui->dialog_ui = gtk_builder_new();
-    gtk_builder_add_from_file(ui->dialog_ui, UI_DIALOGS_FILE, NULL);
+    dialog->dialog_ui = gtk_builder_new();
+    gtk_builder_add_from_file(dialog->dialog_ui, UI_DIALOGS_FILE, NULL);
 
-    ui->ascii_dialog = GET_WIDGET(ui->dialog_ui, "ascii_dialog");
-    ui->ascii_entry = GET_WIDGET(ui->dialog_ui, "ascii_entry");
-
-    /* Make dialogs transient of the main window */
-    gtk_window_set_transient_for(GTK_WINDOW(ui->ascii_dialog), GTK_WINDOW(ui->main_window));
-
-    ui->preferences_dialog = GET_WIDGET(ui->dialog_ui, "preferences_dialog");
+    dialog->dialog = GET_WIDGET(dialog->dialog_ui, "preferences_dialog");
+    gtk_window_set_transient_for(GTK_WINDOW(dialog->dialog), GTK_WINDOW(dialog->ui->main_window));
 
     /* Configuration dialog */
 
-    widget = GET_WIDGET(ui->dialog_ui, "angle_unit_combobox");
+    widget = GET_WIDGET(dialog->dialog_ui, "angle_unit_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    widget = GET_WIDGET(ui->dialog_ui, "display_format_combobox");
+    widget = GET_WIDGET(dialog->dialog_ui, "display_format_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    widget = GET_WIDGET(ui->dialog_ui, "word_size_combobox");
+    widget = GET_WIDGET(dialog->dialog_ui, "word_size_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
@@ -279,7 +273,7 @@ ui_create_dialogs(GCalctoolUI *ui)
     /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
     string = _("Show %d decimal _places");
     tokens = g_strsplit(string, "%d", 2);
-    widget = GET_WIDGET(ui->dialog_ui, "decimal_places_label1");
+    widget = GET_WIDGET(dialog->dialog_ui, "decimal_places_label1");
     if (tokens[0])
         string = g_strstrip(tokens[0]);
     else
@@ -289,7 +283,7 @@ ui_create_dialogs(GCalctoolUI *ui)
     else
         gtk_widget_hide(widget);
 
-    widget = GET_WIDGET(ui->dialog_ui, "decimal_places_label2");
+    widget = GET_WIDGET(dialog->dialog_ui, "decimal_places_label2");
     if (tokens[0] && tokens[1])
         string = g_strstrip(tokens[1]);
     else
@@ -301,21 +295,23 @@ ui_create_dialogs(GCalctoolUI *ui)
 
     g_strfreev(tokens);
 
-    set_combo_box_from_config(ui, "angle_unit_combobox", R_TRIG, G_TYPE_STRING);
-    set_combo_box_from_config(ui, "display_format_combobox", R_DISPLAY, G_TYPE_STRING);
-    set_combo_box_from_config(ui, "word_size_combobox", R_WORDLEN, G_TYPE_INT);
+    set_combo_box_from_config(dialog, "angle_unit_combobox", R_TRIG, G_TYPE_STRING);
+    set_combo_box_from_config(dialog, "display_format_combobox", R_DISPLAY, G_TYPE_STRING);
+    set_combo_box_from_config(dialog, "word_size_combobox", R_WORDLEN, G_TYPE_INT);
 
     if (!get_int_resource(R_ACCURACY, &value))
         value = 9;
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_OBJECT(ui->dialog_ui, "decimal_places_spin")), value);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(gtk_builder_get_object(dialog->dialog_ui, "decimal_places_spin")), value);
 
     if (!get_boolean_resource(R_TSEP, &value))
         value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT(ui->dialog_ui, "thousands_separator_check")), value);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gtk_builder_get_object(dialog->dialog_ui, "thousands_separator_check")), value);
 
     if (!get_boolean_resource(R_ZEROES, &value))
         value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT(ui->dialog_ui, "trailing_zeroes_check")), value);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gtk_builder_get_object(dialog->dialog_ui, "trailing_zeroes_check")), value);
 
-    gtk_builder_connect_signals(ui->dialog_ui, ui);
+    gtk_builder_connect_signals(dialog->dialog_ui, dialog);
+
+    gtk_window_present(GTK_WINDOW(dialog->dialog));
 }

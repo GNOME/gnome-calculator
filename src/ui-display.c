@@ -21,12 +21,44 @@
 #include "ui-display.h"
 #include "ui-internal.h"
 
+#define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
+
+MathDisplay *
+ui_display_new(GCalctoolUI *ui)
+{
+    MathDisplay *display;
+    PangoFontDescription *font_desc;
+    GtkCellRenderer *renderer;
+  
+    display = g_malloc0(sizeof(MathDisplay));
+    display->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
+    display->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
+
+    display->scrolledwindow = GET_WIDGET(ui->ui, "display_scroll");
+    display->display_item = GET_WIDGET(ui->ui, "displayitem");
+    display->info_buffer = GTK_TEXT_BUFFER(gtk_builder_get_object(ui->ui, "info_buffer"));
+
+/*    display->display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(ui->display->display_item));
+    gtk_widget_ensure_style(ui->display->display_item);
+    font_desc = pango_font_description_copy(gtk_widget_get_style(ui->display->display_item)->font_desc);
+    pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
+    gtk_widget_modify_font(ui->display->display_item, font_desc);
+    pango_font_description_free(font_desc);
+    gtk_widget_set_name(ui->display->display_item, "displayitem");
+    atk_object_set_role(gtk_widget_get_accessible(ui->display->display_item),
+                                                  ATK_ROLE_EDITBAR);*/
+
+    return display;
+}
+
+
+
 gchar *
 ui_get_display(GCalctoolUI *ui)
 {
     GtkTextIter start, end;
-    gtk_text_buffer_get_bounds(ui->display_buffer, &start, &end);
-    return gtk_text_buffer_get_text(ui->display_buffer, &start, &end, FALSE);
+    gtk_text_buffer_get_bounds(ui->display->display_buffer, &start, &end);
+    return gtk_text_buffer_get_text(ui->display->display_buffer, &start, &end, FALSE);
 }
 
 
@@ -44,15 +76,15 @@ redo_display(GCalctoolUI *ui)
     GtkTextIter start, end, cursor;
     gint cursor_position;
 
-    gtk_text_buffer_get_start_iter(ui->display_buffer, &start);
-    gtk_text_buffer_get_end_iter(ui->display_buffer, &end);
-    text = gtk_text_buffer_get_text(ui->display_buffer, &start, &end, FALSE);
+    gtk_text_buffer_get_start_iter(ui->display->display_buffer, &start);
+    gtk_text_buffer_get_end_iter(ui->display->display_buffer, &end);
+    text = gtk_text_buffer_get_text(ui->display->display_buffer, &start, &end, FALSE);
 
-    g_object_get(G_OBJECT(ui->display_buffer), "cursor-position", &cursor_position, NULL);
+    g_object_get(G_OBJECT(ui->display->display_buffer), "cursor-position", &cursor_position, NULL);
 
-    gtk_text_buffer_set_text(ui->display_buffer, text, -1);
-    gtk_text_buffer_get_iter_at_offset(ui->display_buffer, &cursor, cursor_position);
-    gtk_text_buffer_place_cursor(ui->display_buffer, &cursor);
+    gtk_text_buffer_set_text(ui->display->display_buffer, text, -1);
+    gtk_text_buffer_get_iter_at_offset(ui->display->display_buffer, &cursor, cursor_position);
+    gtk_text_buffer_place_cursor(ui->display->display_buffer, &cursor);
 
     g_free(text);
 
@@ -66,14 +98,14 @@ ui_set_display(GCalctoolUI *ui, char *str, int cursor)
     GtkTextIter iter;
     GtkAdjustment *adj;
 
-    gtk_text_buffer_set_text(ui->display_buffer, str, -1);
+    gtk_text_buffer_set_text(ui->display->display_buffer, str, -1);
 
     if (cursor < 0)
-        gtk_text_buffer_get_end_iter(ui->display_buffer, &iter);
+        gtk_text_buffer_get_end_iter(ui->display->display_buffer, &iter);
     else
-        gtk_text_buffer_get_iter_at_offset(ui->display_buffer, &iter, cursor);
-    gtk_text_buffer_place_cursor(ui->display_buffer, &iter);
-    gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(ui->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
+        gtk_text_buffer_get_iter_at_offset(ui->display->display_buffer, &iter, cursor);
+    gtk_text_buffer_place_cursor(ui->display->display_buffer, &iter);
+    gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(ui->display->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
 
     /* This is a workaround for bug #524602.
      * Basically the above code can cause the display to disappear when going from
@@ -85,7 +117,7 @@ ui_set_display(GCalctoolUI *ui, char *str, int cursor)
     /* Align to the right */
     if (cursor < 0) {
         adj = gtk_scrolled_window_get_hadjustment(
-                 GTK_SCROLLED_WINDOW(ui->scrolledwindow));
+                 GTK_SCROLLED_WINDOW(ui->display->scrolledwindow));
         gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj) - gtk_adjustment_get_page_size(adj));
     }
 }
@@ -99,7 +131,7 @@ ui_do_button(GCalctoolUI *ui, int function, gpointer arg)
   
     /* Can't enter superscript minus after entering digits */
     if (function == FN_TEXT && strstr("⁰¹²³⁴⁵⁶⁷⁸⁹", (char *)arg) != NULL)
-        ui->can_super_minus = FALSE;
+        ui->display->can_super_minus = FALSE;
 
     /* Disable super/subscript mode when finished entering */
     if (function == FN_CALCULATE ||
@@ -108,30 +140,30 @@ ui_do_button(GCalctoolUI *ui, int function, gpointer arg)
         ui_set_number_mode(ui, NORMAL);
     }
 
-    if (gtk_text_buffer_get_selection_bounds(ui->display_buffer, &start, &end)) {
+    if (gtk_text_buffer_get_selection_bounds(ui->display->display_buffer, &start, &end)) {
         cursor_start = gtk_text_iter_get_offset(&start);
         cursor_end = gtk_text_iter_get_offset(&end);
     }
     else {
-        g_object_get(G_OBJECT(ui->display_buffer), "cursor-position", &cursor_start, NULL);
-        if (cursor_start == gtk_text_buffer_get_char_count(ui->display_buffer))
+        g_object_get(G_OBJECT(ui->display->display_buffer), "cursor-position", &cursor_start, NULL);
+        if (cursor_start == gtk_text_buffer_get_char_count(ui->display->display_buffer))
             cursor_start = -1;
         cursor_end = cursor_start;
     }
 
     /* Some keyboards don't have a '^' button so convert two multiplies to one '^' */
     if (cursor_start == cursor_end &&
-        function == FN_TEXT && ui->last_text != NULL &&
-        strcmp((char *)arg, "×") == 0 && strcmp(ui->last_text, "×") == 0) {
+        function == FN_TEXT && ui->display->last_text != NULL &&
+        strcmp((char *)arg, "×") == 0 && strcmp(ui->display->last_text, "×") == 0) {
         ui_do_button(ui, FN_BACKSPACE, NULL);
         ui_do_button(ui, FN_TEXT, "^");
     }
     else {
         display_do_function(&v->display, function, arg, cursor_start, cursor_end);
         if (function == FN_TEXT)
-            ui->last_text = (char *)arg;
+            ui->display->last_text = (char *)arg;
         else
-            ui->last_text = NULL;
+            ui->display->last_text = NULL;
     }
 }
 
@@ -142,17 +174,17 @@ ui_display_copy(GCalctoolUI *ui)
     gchar *string = NULL;
     GtkTextIter start, end;
 
-    if (gtk_text_buffer_get_selection_bounds(ui->display_buffer, &start, &end) == TRUE)
-        string = gtk_text_buffer_get_text(ui->display_buffer, &start, &end, FALSE);
+    if (gtk_text_buffer_get_selection_bounds(ui->display->display_buffer, &start, &end) == TRUE)
+        string = gtk_text_buffer_get_text(ui->display->display_buffer, &start, &end, FALSE);
     else
         string = ui_get_display(ui);
 
-    if (ui->shelf != NULL)
-        g_free(ui->shelf);
-    ui->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
+    if (ui->display->shelf != NULL)
+        g_free(ui->display->shelf);
+    ui->display->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
     g_free(string);
 
-    gtk_clipboard_set_text(gtk_clipboard_get(ui->clipboard_atom), ui->shelf, -1);
+    gtk_clipboard_set_text(gtk_clipboard_get(ui->display->clipboard_atom), ui->display->shelf, -1);
 }
 
 
@@ -167,9 +199,9 @@ ui_do_exponent(GCalctoolUI *ui)
 void
 ui_do_subtract(GCalctoolUI *ui)
 {
-    if (ui->can_super_minus) {
+    if (ui->display->can_super_minus) {
         ui_insert_text(ui, "⁻");
-        ui->can_super_minus = FALSE;
+        ui->display->can_super_minus = FALSE;
     }
     else {
         ui_insert_text(ui, "−");
@@ -249,7 +281,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
             return TRUE;
         }
     }
-    if (state == GDK_CONTROL_MASK || ui->number_mode == SUPERSCRIPT) {
+    if (state == GDK_CONTROL_MASK || ui->display->number_mode == SUPERSCRIPT) {
         switch(event->keyval)
         {
         case GDK_0:
@@ -284,7 +316,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
             return TRUE;
         }
     }
-    else if (state == GDK_MOD1_MASK || ui->number_mode == SUBSCRIPT) {
+    else if (state == GDK_MOD1_MASK || ui->display->number_mode == SUBSCRIPT) {
         switch(event->keyval)
         {
         case GDK_0:
@@ -341,7 +373,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     /* Solve */
     if ((event->keyval == GDK_Return && state == 0) ||
         (event->keyval == GDK_KP_Enter && state == 0)) {
-        if (gtk_widget_has_focus(ui->display_item)) {
+        if (gtk_widget_has_focus(ui->display->display_item)) {
             ui_do_button(ui, FN_CALCULATE, NULL);
             return TRUE;
         }
@@ -353,7 +385,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     if (state == GDK_CONTROL_MASK && event->keyval == GDK_minus) 
     {
         ui_insert_text(ui, "⁻");
-        ui->can_super_minus = FALSE;
+        ui->display->can_super_minus = FALSE;
         return TRUE;
     }
 
@@ -392,7 +424,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     }
   
     /* Don't override space - it is used in UI */
-    if (event->string[0] == ' ' && !gtk_widget_has_focus(ui->display_item))
+    if (event->string[0] == ' ' && !gtk_widget_has_focus(ui->display->display_item))
         return FALSE;
 
     if (event->string[0] != '\0') {
@@ -422,7 +454,7 @@ for_each_menu(GtkWidget *widget, GCalctoolUI *ui)
         GtkWidget *label = gtk_bin_get_child(GTK_BIN(widget));
 
          if (strcmp(gtk_label_get_text(GTK_LABEL(label)), _("Paste")) == 0) {
-            if (gtk_clipboard_wait_is_text_available(gtk_clipboard_get(ui->clipboard_atom))) {
+            if (gtk_clipboard_wait_is_text_available(gtk_clipboard_get(ui->display->clipboard_atom))) {
                 gtk_widget_set_sensitive(GTK_WIDGET(widget), TRUE);
                 g_signal_connect(GTK_OBJECT(widget), "activate",
                                  G_CALLBACK(popup_paste_cb), ui);
@@ -451,7 +483,7 @@ on_paste(GtkClipboard *clipboard, const gchar *text, GCalctoolUI *ui)
 void
 ui_display_paste(GCalctoolUI *ui)
 {
-    gtk_clipboard_request_text(gtk_clipboard_get(ui->clipboard_atom),
+    gtk_clipboard_request_text(gtk_clipboard_get(ui->display->clipboard_atom),
                                (GtkClipboardTextReceivedFunc)on_paste, ui);
 }
 

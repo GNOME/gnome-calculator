@@ -21,10 +21,8 @@
 
 #include "ui.h"
 
-void ui_load_mode(GCalctoolUI *ui, ModeType mode);
 void ui_do_button(GCalctoolUI *ui, int function, gpointer arg);
 void ui_setup_finc_dialogs(GCalctoolUI *ui);
-void ui_create_dialogs(GCalctoolUI *ui);
 void ui_set_number_mode(GCalctoolUI *ui, NumberMode mode);
 
 #endif /* UI_INTERNAL_H */

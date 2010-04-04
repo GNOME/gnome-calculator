@@ -19,8 +19,19 @@
 #ifndef UI_PREFERENCES_H
 #define UI_PREFERENCES_H
 
+typedef struct PreferencesDialog PreferencesDialog;
+
 #include "ui.h"
 
-void ui_show_preferences(GCalctoolUI *ui);
+struct PreferencesDialog
+{
+    GCalctoolUI *ui;
+    GtkBuilder *dialog_ui;
+    GtkWidget *dialog;
+};
+
+PreferencesDialog *ui_preferences_dialog_new(GCalctoolUI *ui);
+
+void ui_preferences_show(PreferencesDialog *dialog);
 
 #endif /* UI_PREFERENCES_H */
