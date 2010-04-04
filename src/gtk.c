@@ -47,6 +47,8 @@ static const char *mode_names[] = { "BASIC", "ADVANCED", "FINANCIAL",
 typedef struct {
     const char *widget_name;
     const char *data;
+/*    const char *colour;
+    int alpha;*/
 } ButtonData;
 
 static ButtonData button_data[] = {
@@ -105,22 +107,20 @@ static char *finc_dialog_fields[][5] = {
     {NULL,        NULL,          NULL,         NULL,         NULL}
 };
 
-#define UI_FILE         UI_DIR "/gcalctool.ui"
-#define UI_FINC_FILE    UI_DIR "/financial.ui"
-#define UI_DIALOGS_FILE UI_DIR "/dialogs.ui"
+#define UI_FILE             UI_DIR "/gcalctool.ui"
+#define UI_FINC_FILE        UI_DIR "/financial.ui"
+#define UI_DIALOGS_FILE     UI_DIR "/dialogs.ui"
+#define UI_BASIC_FILE       UI_DIR "/buttons-basic.ui"
+#define UI_ADVANCED_FILE    UI_DIR "/buttons-advanced.ui"
+#define UI_FINANCIAL_FILE   UI_DIR "/buttons-financial.ui"
+#define UI_PROGRAMMING_FILE UI_DIR "/buttons-programming.ui"
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 
-#define GET_OBJECT(name) \
-          gtk_builder_get_object(X.ui, (name))
-#define GET_WIDGET(name) \
-          GTK_WIDGET(GET_OBJECT((name)))
-#define GET_FINC_WIDGET(name) \
-          GTK_WIDGET(gtk_builder_get_object(X.financial, (name)))
-#define GET_DIALOG_OBJECT(name) \
-          gtk_builder_get_object(X.dialogs, (name))
-#define GET_DIALOG_WIDGET(name) \
-          GTK_WIDGET(gtk_builder_get_object(X.dialogs, (name)))
+#define GET_OBJECT(ui, name) \
+          gtk_builder_get_object((ui), (name))
+#define GET_WIDGET(ui, name) \
+          GTK_WIDGET(GET_OBJECT(ui, name))
 
 /* Calculator modes. */
 typedef enum {
@@ -130,17 +130,23 @@ typedef enum {
     PROGRAMMING
 } ModeType;
 
+typedef enum {
+    NORMAL,
+    SUPERSCRIPT,
+    SUBSCRIPT
+} NumberMode;
+
 /* Gtk+/Xlib graphics object. */
 typedef struct {
     ModeType mode;  /* Current calculator mode. */
+    NumberMode number_mode;
 
     GtkBuilder *ui;
-    GtkBuilder *dialogs;
+    GtkBuilder *dialog_ui;
     GtkBuilder *financial;
+    GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
     GtkWidget *main_window;
-
-    GtkWidget *menubar; // FIXME: Why is this needed?
 
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
@@ -153,14 +159,14 @@ typedef struct {
     GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
     GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
 
+    GtkWidget *button_vbox;
     GtkWidget *bas_panel;      /* Panel containing basic mode widgets. */
     GtkWidget *adv_panel;      /* Panel containing advanced mode widgets. */
     GtkWidget *fin_panel;      /* Panel containing financial mode widgets. */
-    GtkWidget *sci_panel;      /* Panel containing scientific mode widgets. */
     GtkWidget *prog_panel;     /* Panel containing programming mode widgets. */
 
-    GtkWidget *superscript_toggle;
-    GtkWidget *subscript_toggle;
+    GList *superscript_toggles;
+    GList *subscript_toggles;
 
     gboolean can_super_minus;
 
@@ -235,12 +241,18 @@ static void load_ui(GtkBuilder *ui, const gchar *filename)
 
 static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const gpointer value)
 {
-    g_object_set_data(gtk_builder_get_object(ui, object_name), name, value);
+    GObject *object;  
+    object = gtk_builder_get_object(ui, object_name);
+    if (object)
+        g_object_set_data(object, name, value);
 }
 
 static void set_string_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const char *value)
 {
-    g_object_set_data(gtk_builder_get_object(ui, object_name), name, (gpointer)value); // FIXME: Copy?
+    GObject *object;
+    object = gtk_builder_get_object(ui, object_name);
+    if (object)
+        g_object_set_data(object, name, (gpointer)value); // FIXME: Copy?
 }
 
 static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
@@ -325,8 +337,8 @@ position_popup(GtkWidget *base, GtkWidget *popup,
 void
 ui_set_undo_enabled(gboolean undo, gboolean redo)
 {
-//    gtk_widget_set_sensitive(GET_WIDGET("undo_menu"), undo);
-//    gtk_widget_set_sensitive(GET_WIDGET("redo_menu"), redo);
+//    gtk_widget_set_sensitive(GET_WIDGET(X.ui, "undo_menu"), undo);
+//    gtk_widget_set_sensitive(GET_WIDGET(X.ui, "redo_menu"), redo);
 }
 
 
@@ -344,6 +356,9 @@ ui_set_bitfield(int enabled, guint64 bits)
 {
     int i;
     const gchar *label;
+  
+    if (!X.bit_panel)
+       return;
 
     gtk_widget_set_sensitive(X.bit_panel, enabled);
 
@@ -353,6 +368,23 @@ ui_set_bitfield(int enabled, guint64 bits)
         else
             label = " 0";
         gtk_label_set_text(GTK_LABEL(X.bit_labels[i]), label);
+    }
+}
+
+
+static void
+set_number_mode(NumberMode mode)
+{
+    GList *i;
+
+    X.number_mode = mode;
+    for (i = X.superscript_toggles; i; i = i->next) {
+        GtkWidget *widget = i->data;
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUPERSCRIPT);
+    }
+    for (i = X.subscript_toggles; i; i = i->next) {
+        GtkWidget *widget = i->data;
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUBSCRIPT);
     }
 }
 
@@ -371,8 +403,7 @@ do_button(int function, gpointer arg)
     if (function == FN_CALCULATE ||
         function == FN_CLEAR ||
         (function == FN_TEXT && strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", (char *)arg) == NULL)) {
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.subscript_toggle), FALSE);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), FALSE);
+        set_number_mode(NORMAL);
     }
 
     if(gtk_text_buffer_get_selection_bounds(X.display_buffer, &start, &end)) {
@@ -415,43 +446,295 @@ do_finc(char* dialog)
 {
     if (X.financial == NULL)
         setup_finc_dialogs();
-    gtk_dialog_run(GTK_DIALOG(GET_FINC_WIDGET(dialog)));
-    gtk_widget_hide(GTK_WIDGET(GET_FINC_WIDGET(dialog)));
+    gtk_dialog_run(GTK_DIALOG(GET_WIDGET(X.financial, dialog)));
+    gtk_widget_hide(GTK_WIDGET(GET_WIDGET(X.financial, dialog)));
 }
 
+
+static GtkWidget *
+get_buttons(ModeType mode)
+{
+    switch (mode) {
+    case BASIC:
+        return X.bas_panel;
+    case ADVANCED:
+        return X.adv_panel;
+    case FINANCIAL:
+        return X.fin_panel;
+    case PROGRAMMING:
+        return X.prog_panel;
+    }
+}
+
+
+static void
+set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
+{
+    GtkStyle *style;
+    int j;
+  
+    if (!widget)
+      return;
+
+    style = gtk_widget_get_style(widget);
+  
+    for (j = 0; j < 5; j++) {
+        GdkColor color;
+
+        color.red = (style->bg[j].red * (10 - alpha) + tint->red * alpha) / 10;
+        color.green = (style->bg[j].green * (10 - alpha) + tint->green * alpha) / 10;
+        color.blue = (style->bg[j].blue * (10 - alpha) + tint->blue * alpha) / 10;
+        gdk_colormap_alloc_color(gdk_colormap_get_system(), &color, FALSE, TRUE);
+        gtk_widget_modify_bg(widget, j, &color);
+    }
+}
+
+
+static void
+load_mode(ModeType mode)
+{
+    GtkBuilder *ui, **ui_ptr;
+    gint i;
+    gchar name[MAXLINE];
+    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
+    const gchar *ui_file;
+    gchar *objects[] = { "button_panel", NULL };
+    GtkWidget *widget, **panel;
+
+    colour_numbers.red = 0;
+    colour_numbers.green = 0;
+    colour_numbers.blue = 65535;
+    colour_action.red = 0;
+    colour_action.green = 65535;
+    colour_action.blue = 0;
+    colour_operator.red = 65535;
+    colour_operator.green = 0;
+    colour_operator.blue = 0;
+    colour_function.red = 0;
+    colour_function.green = 65535;
+    colour_function.blue = 65535;
+    colour_memory.red = 65535;
+    colour_memory.green = 0;
+    colour_memory.blue = 65535;
+    colour_trig.red = 65535;
+    colour_trig.green = 65535;
+    colour_trig.blue = 0;
+    colour_group.red = 65535;
+    colour_group.green = 65535;
+    colour_group.blue = 65535;
+  
+    switch (mode) {
+    case BASIC:
+        ui_ptr = &X.basic_ui;
+        ui_file = UI_BASIC_FILE;
+        panel = &X.bas_panel;
+        break;
+    case ADVANCED:
+        ui_ptr = &X.advanced_ui;
+        ui_file = UI_ADVANCED_FILE;
+        panel = &X.adv_panel;
+        break;
+    case FINANCIAL:
+        ui_ptr = &X.financial_ui;
+        ui_file = UI_FINANCIAL_FILE;
+        panel = &X.fin_panel;
+        break;
+    case PROGRAMMING:
+        ui_ptr = &X.programming_ui;
+        ui_file = UI_PROGRAMMING_FILE;
+        panel = &X.prog_panel;
+        break;
+    }
+
+    ui = *ui_ptr = gtk_builder_new();
+    // FIXME: Show dialog if failed to load
+    gtk_builder_add_objects_from_file(ui, ui_file, objects, NULL);
+    *panel = GET_WIDGET(ui, "button_panel");
+    gtk_box_pack_end(GTK_BOX(X.button_vbox), *panel, FALSE, TRUE, 0);
+    gtk_widget_realize(*panel);
+
+    /* Connect text to buttons */
+    for (i = 0; button_data[i].widget_name != NULL; i++) {
+        SNPRINTF(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
+        set_string_data(ui, name, "calc_text", button_data[i].data);
+    }
+
+    /* Localize buttons */
+    for (i = 0; i < 16; i++) {
+        GtkWidget *button;
+
+        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
+        button = GET_WIDGET(ui, name);
+      
+        if (button) {
+            gtk_button_set_label(GTK_BUTTON(button), v->digits[i]);
+            set_string_data(ui, name, "calc_text", v->digits[i]);
+        }
+    }
+    widget = GET_WIDGET(ui, "calc_numeric_point_button");
+    if (widget)
+        gtk_button_set_label(GTK_BUTTON(widget), v->radix);
+
+    /* Connect super and subscript */
+    for (i = 0; i < 10; i++) {
+        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
+        set_string_data(ui, name, "calc_subscript_text", subscript_digits[i]);
+        set_string_data(ui, name, "calc_superscript_text", superscript_digits[i]);
+        set_tint(GET_WIDGET(ui, name), &colour_numbers, 1);
+    }
+  
+    widget = GET_WIDGET(ui, "superscript_togglebutton");
+    if (widget) {
+        X.superscript_toggles = g_list_append(X.superscript_toggles, widget);
+        if (X.number_mode == SUPERSCRIPT)
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
+    }
+    widget = GET_WIDGET(ui, "subscript_togglebutton");
+    if (widget) {
+        X.subscript_toggles = g_list_append(X.subscript_toggles, widget);
+        if (X.number_mode == SUBSCRIPT)
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
+    }
+
+    set_tint(GET_WIDGET(ui, "calc_10_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_11_button"), &colour_numbers, 1);  
+    set_tint(GET_WIDGET(ui, "calc_12_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_13_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_14_button"), &colour_numbers, 1);  
+    set_tint(GET_WIDGET(ui, "calc_15_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_imaginary_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_pi_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_eulers_number_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_numeric_point_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_percentage_button"), &colour_numbers, 2);
+    set_tint(GET_WIDGET(ui, "subscript_togglebutton"), &colour_numbers, 2);  
+    set_tint(GET_WIDGET(ui, "superscript_togglebutton"), &colour_numbers, 2);
+    set_tint(GET_WIDGET(ui, "calc_exponential_button"), &colour_numbers, 2);
+    set_tint(GET_WIDGET(ui, "calc_base_2_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_base_8_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(ui, "calc_base_16_button"), &colour_numbers, 1);
+
+    set_tint(GET_WIDGET(ui, "calc_result_button"), &colour_action, 2);
+    set_tint(GET_WIDGET(ui, "calc_factor_button"), &colour_action, 2);
+    set_tint(GET_WIDGET(ui, "calc_clear_button"), &colour_action, 1); // Different colour?
+    set_tint(GET_WIDGET(ui, "calc_trunc_button"), &colour_action, 1);
+    set_tint(GET_WIDGET(ui, "calc_shift_left_button"), &colour_action, 1);
+    set_tint(GET_WIDGET(ui, "calc_shift_right_button"), &colour_action, 1);
+  
+    set_tint(GET_WIDGET(ui, "calc_add_button"), &colour_operator, 1);
+    set_tint(GET_WIDGET(ui, "calc_subtract_button"), &colour_operator, 1);  
+    set_tint(GET_WIDGET(ui, "calc_multiply_button"), &colour_operator, 1);
+    set_tint(GET_WIDGET(ui, "calc_divide_button"), &colour_operator, 1);
+    set_tint(GET_WIDGET(ui, "calc_modulus_divide_button"), &colour_operator, 1);
+    set_tint(GET_WIDGET(ui, "calc_and_button"), &colour_operator, 1);  
+    set_tint(GET_WIDGET(ui, "calc_or_button"), &colour_operator, 1);  
+    set_tint(GET_WIDGET(ui, "calc_xor_button"), &colour_operator, 1);  
+
+    set_tint(GET_WIDGET(ui, "calc_cosine_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(ui, "calc_sine_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(ui, "calc_tangent_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(ui, "calc_hyperbolic_cosine_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(ui, "calc_hyperbolic_sine_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(ui, "calc_hyperbolic_tangent_button"), &colour_trig, 1);
+
+    set_tint(GET_WIDGET(ui, "calc_start_group_button"), &colour_group, 1);
+    set_tint(GET_WIDGET(ui, "calc_end_group_button"), &colour_group, 1);
+    set_tint(GET_WIDGET(ui, "calc_store_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET(ui, "calc_recall_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET(ui, "calc_ans_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET(ui, "calc_random_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET(ui, "calc_character_button"), &colour_memory, 1);
+
+    set_tint(GET_WIDGET(ui, "calc_integer_portion_button"), &colour_function, 1);
+    set_tint(GET_WIDGET(ui, "calc_fractional_portion_button"), &colour_function, 1);
+    set_tint(GET_WIDGET(ui, "calc_x_pow_y_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_factorial_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_root_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_abs_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_inverse_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_logarithm_button"), &colour_function, 1);  
+    set_tint(GET_WIDGET(ui, "calc_natural_logarithm_button"), &colour_function, 1);
+    set_tint(GET_WIDGET(ui, "calc_ones_complement_button"), &colour_function, 1);
+    set_tint(GET_WIDGET(ui, "calc_twos_complement_button"), &colour_function, 1);
+    set_tint(GET_WIDGET(ui, "calc_not_button"), &colour_function, 1);  
+//    set_tint(GET_WIDGET(ui, "calc__button"), &colour_function, 1);
+  
+    /* Set base button data */
+    set_int_data(ui, "calc_base_2_button", "base", 2);
+    set_int_data(ui, "calc_base_8_button", "base", 8);
+    set_int_data(ui, "calc_base_16_button", "base", 16);
+
+    /* Connect menus to popup buttons */
+    set_data(ui, "calc_shift_left_button", "calc_menu", GET_WIDGET(ui, "left_shift_popup"));
+    set_data(ui, "calc_shift_right_button", "calc_menu", GET_WIDGET(ui, "right_shift_popup"));
+    set_data(ui, "calc_store_button", "calc_menu", GET_WIDGET(ui, "memory_store_popup"));
+    set_data(ui, "calc_recall_button", "calc_menu", GET_WIDGET(ui, "memory_recall_popup"));
+
+    /* Load bit panel */
+    if (mode == PROGRAMMING) {
+        for (i = 0; i < MAXBITS; i++) {
+            SNPRINTF(name, MAXLINE, "bit_label_%d", i);
+            X.bit_labels[i] = GET_WIDGET(ui, name);
+            SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
+            set_int_data(ui, name, "bit_index", i);
+        }
+    }
+
+    /* Setup financial functions */
+    if (mode == FINANCIAL) {
+        set_data(ui, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
+        set_data(ui, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
+        set_data(ui, "calc_finc_future_value_button", "finc_dialog", "fv_dialog");
+        set_data(ui, "calc_finc_gross_profit_margin_button", "finc_dialog", "gpm_dialog");
+        set_data(ui, "calc_finc_periodic_payment_button", "finc_dialog", "pmt_dialog");
+        set_data(ui, "calc_finc_present_value_button", "finc_dialog", "pv_dialog");
+        set_data(ui, "calc_finc_periodic_interest_rate_button", "finc_dialog", "rate_dialog");
+        set_data(ui, "calc_finc_straight_line_depreciation_button", "finc_dialog", "sln_dialog");
+        set_data(ui, "calc_finc_sum_of_the_years_digits_depreciation_button", "finc_dialog", "syd_dialog");
+        set_data(ui, "calc_finc_term_button", "finc_dialog", "term_dialog");
+    }
+
+    gtk_builder_connect_signals(ui, NULL);
+}
+
+    
 static void
 ui_set_mode(ModeType mode)
 {
     GtkWidget *menu;
+    ModeType old_mode;
 
+    old_mode = X.mode;
     X.mode = mode;
 
     /* Save mode */
     set_enumerated_resource(R_MODE, mode_names, (int)mode);
 
-    /* Show/enable the widgets used in this mode */
-    g_object_set(G_OBJECT(X.adv_panel), "visible", mode != BASIC, NULL);
-    g_object_set(G_OBJECT(X.fin_panel), "visible", mode == FINANCIAL, NULL);
-    g_object_set(G_OBJECT(X.sci_panel), "visible", mode == ADVANCED, NULL);
-    g_object_set(G_OBJECT(X.prog_panel), "visible", mode == PROGRAMMING, NULL);
-    g_object_set(G_OBJECT(X.bit_panel), "visible", mode == PROGRAMMING, NULL);
+    /* Hide the existing mode */
+    if (get_buttons(old_mode))
+        gtk_widget_hide(get_buttons(old_mode));
+  
+    /* Create the new mode if necessary */
+    if (!get_buttons(mode))
+        load_mode(mode);
+    gtk_widget_show(get_buttons(mode));
 
     /* Update the menu */
     switch (mode) {
         case BASIC:
-            menu = GET_WIDGET("view_basic_menu");
+            menu = GET_WIDGET(X.ui, "view_basic_menu");
             break;
 
         case ADVANCED:
-            menu = GET_WIDGET("view_advanced_menu");
+            menu = GET_WIDGET(X.ui, "view_advanced_menu");
             break;
 
         case FINANCIAL:
-            menu = GET_WIDGET("view_financial_menu");
+            menu = GET_WIDGET(X.ui, "view_financial_menu");
             break;
 
         case PROGRAMMING:
-            menu = GET_WIDGET("view_programming_menu");
+            menu = GET_WIDGET(X.ui, "view_programming_menu");
             break;
 
         default:
@@ -583,7 +866,7 @@ set_combo_box_from_config(const gchar *name, const gchar *key_name, GType key_ty
     GtkTreeIter iter;
     gboolean valid;
 
-    combo = GET_DIALOG_WIDGET(name);
+    combo = GET_WIDGET(X.dialog_ui, name);
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     valid = gtk_tree_model_get_iter_first(model, &iter);
 
@@ -643,33 +926,33 @@ create_dialogs()
     gchar *string, **tokens;
     int value;
   
-    if (X.dialogs)
+    if (X.dialog_ui)
         return;
   
-    X.dialogs = gtk_builder_new();
-    load_ui(X.dialogs, UI_DIALOGS_FILE);
+    X.dialog_ui = gtk_builder_new();
+    load_ui(X.dialog_ui, UI_DIALOGS_FILE);
 
-    X.ascii_dialog = GET_DIALOG_WIDGET("ascii_dialog");
-    X.ascii_entry = GET_DIALOG_WIDGET("ascii_entry");
+    X.ascii_dialog = GET_WIDGET(X.dialog_ui, "ascii_dialog");
+    X.ascii_entry = GET_WIDGET(X.dialog_ui, "ascii_entry");
 
     /* Make dialogs transient of the main window */
     gtk_window_set_transient_for(GTK_WINDOW(X.ascii_dialog), GTK_WINDOW(X.main_window));
 
-    X.preferences_dialog = GET_DIALOG_WIDGET("preferences_dialog");
+    X.preferences_dialog = GET_WIDGET(X.dialog_ui, "preferences_dialog");
 
     /* Configuration dialog */
 
-    widget = GET_DIALOG_WIDGET("angle_unit_combobox");
+    widget = GET_WIDGET(X.dialog_ui, "angle_unit_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    widget = GET_DIALOG_WIDGET("display_format_combobox");
+    widget = GET_WIDGET(X.dialog_ui, "display_format_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    widget = GET_DIALOG_WIDGET("word_size_combobox");
+    widget = GET_WIDGET(X.dialog_ui, "word_size_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
@@ -677,7 +960,7 @@ create_dialogs()
     /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
     string = _("Show %d decimal _places");
     tokens = g_strsplit(string, "%d", 2);
-    widget = GET_DIALOG_WIDGET("decimal_places_label1");
+    widget = GET_WIDGET(X.dialog_ui, "decimal_places_label1");
     if (tokens[0])
         string = g_strstrip(tokens[0]);
     else
@@ -687,7 +970,7 @@ create_dialogs()
     else
         gtk_widget_hide(widget);
 
-    widget = GET_DIALOG_WIDGET("decimal_places_label2");
+    widget = GET_WIDGET(X.dialog_ui, "decimal_places_label2");
     if (tokens[0] && tokens[1])
         string = g_strstrip(tokens[1]);
     else
@@ -705,17 +988,17 @@ create_dialogs()
 
     if (!get_int_resource(R_ACCURACY, &value))
         value = 9;
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_DIALOG_OBJECT("decimal_places_spin")), value);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(GET_OBJECT(X.dialog_ui, "decimal_places_spin")), value);
 
     if (!get_boolean_resource(R_TSEP, &value))
         value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_DIALOG_OBJECT("thousands_separator_check")), value);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT(X.dialog_ui, "thousands_separator_check")), value);
 
     if (!get_boolean_resource(R_ZEROES, &value))
         value = FALSE;
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_DIALOG_OBJECT("trailing_zeroes_check")), value);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(GET_OBJECT(X.dialog_ui, "trailing_zeroes_check")), value);
 
-    gtk_builder_connect_signals(X.dialogs, NULL);
+    gtk_builder_connect_signals(X.dialog_ui, NULL);
 }
 
 
@@ -815,7 +1098,7 @@ finc_activate_cb(GtkWidget *widget) {
     }
     else {
         GtkWidget *next_widget;
-        next_widget = GET_FINC_WIDGET(finc_dialog_fields[dialog][field+1]);
+        next_widget = GET_WIDGET(X.financial, finc_dialog_fields[dialog][field+1]);
         gtk_widget_grab_focus(next_widget);
     }
 }
@@ -839,12 +1122,12 @@ finc_response_cb(GtkWidget *widget, gint response_id)
         if (finc_dialog_fields[dialog][i] == NULL) {
             continue;
         }
-        entry = GET_FINC_WIDGET(finc_dialog_fields[dialog][i]);
+        entry = GET_WIDGET(X.financial, finc_dialog_fields[dialog][i]);
         // FIXME: Have to delocalize the input
         mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
-    gtk_widget_grab_focus(GET_FINC_WIDGET(finc_dialog_fields[dialog][0]));
+    gtk_widget_grab_focus(GET_WIDGET(X.financial, finc_dialog_fields[dialog][0]));
 
     do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
 }
@@ -951,10 +1234,13 @@ set_superscript_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
        X.can_super_minus = TRUE;
-       gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.subscript_toggle), FALSE);
+       set_number_mode(SUPERSCRIPT);
     }
-    else
+    else {
        X.can_super_minus = FALSE;
+       if (X.number_mode == SUPERSCRIPT)
+           set_number_mode(NORMAL);
+    }
 }
 
 
@@ -963,7 +1249,9 @@ void
 set_subscript_cb(GtkWidget *widget)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), FALSE);
+       set_number_mode(SUBSCRIPT);
+    else if (X.number_mode == SUBSCRIPT)
+       set_number_mode(NORMAL);
 }
 
 
@@ -1267,9 +1555,9 @@ G_MODULE_EXPORT
 void
 digit_cb(GtkWidget *widget, GdkEventButton *event)
 {
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.superscript_toggle)))
+    if (X.number_mode == SUPERSCRIPT)
         do_text(g_object_get_data(G_OBJECT(widget), "calc_superscript_text"));
-    else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.subscript_toggle)))
+    else if (X.number_mode == SUBSCRIPT)
         do_text(g_object_get_data(G_OBJECT(widget), "calc_subscript_text"));
     else
         do_text(g_object_get_data(G_OBJECT(widget), "calc_text"));
@@ -1308,7 +1596,7 @@ static void
 do_exponent()
 {
     do_text("×10");
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), TRUE);
+    set_number_mode(SUPERSCRIPT);
 }
 
 
@@ -1321,7 +1609,7 @@ do_subtract()
     }
     else {
         do_text("−");
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(X.superscript_toggle), FALSE);
+        set_number_mode(NORMAL);
     }
 }
 
@@ -1424,8 +1712,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;
         }
     }
-    if (state == GDK_CONTROL_MASK ||
-        gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.superscript_toggle))) {
+    if (state == GDK_CONTROL_MASK || X.number_mode == SUPERSCRIPT) {
         switch(event->keyval)
         {
         case GDK_0:
@@ -1460,8 +1747,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
             return TRUE;
         }
     }
-    else if (state == GDK_MOD1_MASK ||
-             gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(X.subscript_toggle))) {
+    else if (state == GDK_MOD1_MASK || X.number_mode == SUBSCRIPT) {
         switch(event->keyval)
         {
         case GDK_0:
@@ -1564,10 +1850,10 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event)
     switch(*event->string)
     {
     case '<':
-        popup_cb(GET_WIDGET("calc_shift_left_button"), NULL);
+        popup_cb(GET_WIDGET(X.ui, "calc_shift_left_button"), NULL);
         return TRUE;
     case '>':
-        popup_cb(GET_WIDGET("calc_shift_right_button"), NULL);
+        popup_cb(GET_WIDGET(X.ui, "calc_shift_right_button"), NULL);
         return TRUE;
     case '\n':
         do_button(FN_CALCULATE, NULL);
@@ -1596,8 +1882,8 @@ edit_cb(GtkWidget *widget)
     can_paste = gtk_clipboard_wait_is_text_available(
                             gtk_clipboard_get(X.clipboard_atom));
 
-    gtk_widget_set_sensitive(GET_WIDGET("copy_menu"), can_copy);
-    gtk_widget_set_sensitive(GET_WIDGET("paste_menu"), can_paste);
+    gtk_widget_set_sensitive(GET_WIDGET(X.ui, "copy_menu"), can_copy);
+    gtk_widget_set_sensitive(GET_WIDGET(X.ui, "paste_menu"), can_paste);
 }
 
 
@@ -1761,23 +2047,6 @@ preferences_dialog_delete_cb(GtkWidget *widget)
 
 
 static void
-set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
-{
-    GtkStyle *style = gtk_widget_get_style(widget);
-    int j;
-  
-    for (j = 0; j < 5; j++) {
-        GdkColor color;
-
-        color.red = (style->bg[j].red * (10 - alpha) + tint->red * alpha) / 10;
-        color.green = (style->bg[j].green * (10 - alpha) + tint->green * alpha) / 10;
-        color.blue = (style->bg[j].blue * (10 - alpha) + tint->blue * alpha) / 10;
-        gdk_colormap_alloc_color(gdk_colormap_get_system(), &color, FALSE, TRUE);
-        gtk_widget_modify_bg(widget, j, &color);
-    }
-}
-
-static void
 create_main_window()
 {
     int i;
@@ -1785,7 +2054,6 @@ create_main_window()
     GtkWidget *widget;
     PangoFontDescription *font_desc;
     GtkCellRenderer *renderer;
-    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
 
     X.ui = gtk_builder_new();
     load_ui(X.ui, UI_FILE);
@@ -1793,158 +2061,23 @@ create_main_window()
 
     X.clipboard_atom   = gdk_atom_intern("CLIPBOARD", FALSE);
     X.primary_atom     = gdk_atom_intern("PRIMARY", FALSE);
-    X.main_window      = GET_WIDGET("calc_window");
-    X.menubar          = GET_WIDGET("menubar");
-    X.scrolledwindow   = GET_WIDGET("display_scroll"),
-    X.display_item     = GET_WIDGET("displayitem"),
-    X.bas_panel        = GET_WIDGET("basic_panel");
-    X.sci_panel        = GET_WIDGET("scientific_panel");
-    X.prog_panel       = GET_WIDGET("programming_panel");
-    X.adv_panel        = GET_WIDGET("advanced_panel");
-    X.fin_panel        = GET_WIDGET("financial_panel");
-    X.bit_panel        = GET_WIDGET("bit_panel");
-    X.superscript_toggle = GET_WIDGET("superscript_togglebutton");
-    X.subscript_toggle   = GET_WIDGET("subscript_togglebutton");
-    X.info_buffer = GTK_TEXT_BUFFER(GET_OBJECT("info_buffer"));
-
-    /* Connect text to buttons */
-    for (i = 0; button_data[i].widget_name != NULL; i++) {
-        SNPRINTF(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
-        set_string_data(X.ui, name, "calc_text", button_data[i].data);
-    }
-
-    /* Localize buttons */
-    for (i = 0; i < 16; i++) {
-        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
-        gtk_button_set_label(GTK_BUTTON(GET_OBJECT(name)), v->digits[i]);
-        set_string_data(X.ui, name, "calc_text", v->digits[i]);
-    }
-    gtk_button_set_label(GTK_BUTTON(GET_OBJECT("calc_numeric_point_button")), v->radix);
-  
-    colour_numbers.red = 0;
-    colour_numbers.green = 0;
-    colour_numbers.blue = 65535;
-    colour_action.red = 0;
-    colour_action.green = 65535;
-    colour_action.blue = 0;
-    colour_operator.red = 65535;
-    colour_operator.green = 0;
-    colour_operator.blue = 0;
-    colour_function.red = 0;
-    colour_function.green = 65535;
-    colour_function.blue = 65535;
-    colour_memory.red = 65535;
-    colour_memory.green = 0;
-    colour_memory.blue = 65535;
-    colour_trig.red = 65535;
-    colour_trig.green = 65535;
-    colour_trig.blue = 0;
-    colour_group.red = 65535;
-    colour_group.green = 65535;
-    colour_group.blue = 65535;
-
-    /* Connect super and subscript */
-    for (i = 0; i < 10; i++) {
-        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
-        set_string_data(X.ui, name, "calc_subscript_text", subscript_digits[i]);
-        set_string_data(X.ui, name, "calc_superscript_text", superscript_digits[i]);
-        set_tint(GET_WIDGET(name), &colour_numbers, 1);
-    }
-  
-    set_tint(GET_WIDGET("calc_10_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_11_button"), &colour_numbers, 1);  
-    set_tint(GET_WIDGET("calc_12_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_13_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_14_button"), &colour_numbers, 1);  
-    set_tint(GET_WIDGET("calc_15_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_imaginary_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_pi_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_eulers_number_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_numeric_point_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_percentage_button"), &colour_numbers, 2);
-    set_tint(GET_WIDGET("subscript_togglebutton"), &colour_numbers, 2);  
-    set_tint(GET_WIDGET("superscript_togglebutton"), &colour_numbers, 2);
-    set_tint(GET_WIDGET("calc_exponential_button"), &colour_numbers, 2);
-    set_tint(GET_WIDGET("calc_base_2_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_base_8_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET("calc_base_16_button"), &colour_numbers, 1);
-
-    set_tint(GET_WIDGET("calc_result_button"), &colour_action, 2);
-    set_tint(GET_WIDGET("calc_factor_button"), &colour_action, 2);
-    set_tint(GET_WIDGET("calc_clear_button"), &colour_action, 1); // Different colour?
-    set_tint(GET_WIDGET("calc_trunc_button"), &colour_action, 1);
-    set_tint(GET_WIDGET("calc_shift_left_button"), &colour_action, 1);
-    set_tint(GET_WIDGET("calc_shift_right_button"), &colour_action, 1);
-  
-    set_tint(GET_WIDGET("calc_add_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET("calc_subtract_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET("calc_multiply_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET("calc_divide_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET("calc_modulus_divide_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET("calc_and_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET("calc_or_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET("calc_xor_button"), &colour_operator, 1);  
-
-    set_tint(GET_WIDGET("calc_cosine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET("calc_sine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET("calc_tangent_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET("calc_hyperbolic_cosine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET("calc_hyperbolic_sine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET("calc_hyperbolic_tangent_button"), &colour_trig, 1);
-
-    set_tint(GET_WIDGET("calc_start_group_button"), &colour_group, 1);
-    set_tint(GET_WIDGET("calc_end_group_button"), &colour_group, 1);
-
-    set_tint(GET_WIDGET("calc_store_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET("calc_recall_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET("calc_ans_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET("calc_random_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET("calc_character_button"), &colour_memory, 1);
-
-    set_tint(GET_WIDGET("calc_integer_portion_button"), &colour_function, 1);
-    set_tint(GET_WIDGET("calc_fractional_portion_button"), &colour_function, 1);
-    set_tint(GET_WIDGET("calc_x_pow_y_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_factorial_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_root_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_abs_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_inverse_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_logarithm_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET("calc_natural_logarithm_button"), &colour_function, 1);
-    set_tint(GET_WIDGET("calc_ones_complement_button"), &colour_function, 1);
-    set_tint(GET_WIDGET("calc_twos_complement_button"), &colour_function, 1);
-    set_tint(GET_WIDGET("calc_not_button"), &colour_function, 1);  
-//    set_tint(GET_WIDGET("calc__button"), &colour_function, 1);
-  
-    /* Set base button data */
-    set_int_data(X.ui, "calc_base_2_button", "base", 2);
-    set_int_data(X.ui, "calc_base_8_button", "base", 8);
-    set_int_data(X.ui, "calc_base_16_button", "base", 16);
-
-    /* Connect menus to popup buttons */
-    set_data(X.ui, "calc_shift_left_button", "calc_menu", GET_WIDGET("left_shift_popup"));
-    set_data(X.ui, "calc_shift_right_button", "calc_menu", GET_WIDGET("right_shift_popup"));
-    set_data(X.ui, "calc_store_button", "calc_menu", GET_WIDGET("memory_store_popup"));
-    set_data(X.ui, "calc_recall_button", "calc_menu", GET_WIDGET("memory_recall_popup"));
+    X.main_window      = GET_WIDGET(X.ui, "calc_window");
+    X.scrolledwindow   = GET_WIDGET(X.ui, "display_scroll"),
+    X.display_item     = GET_WIDGET(X.ui, "displayitem"),
+    X.info_buffer = GTK_TEXT_BUFFER(GET_OBJECT(X.ui, "info_buffer"));
+    X.button_vbox = GET_WIDGET(X.ui, "button_vbox");
 
     /* Get labels from popup menus */
     for (i = 0; registers[i]; i++) {
         SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
-        widget = GET_WIDGET(name);
+        widget = GET_WIDGET(X.ui, name);
         g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
         X.memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
 
         SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
-        widget = GET_WIDGET(name);
+        widget = GET_WIDGET(X.ui, name);
         g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
         X.memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
-    }
-
-    /* Load bit panel */
-    for (i = 0; i < MAXBITS; i++) {
-        SNPRINTF(name, MAXLINE, "bit_label_%d", i);
-        X.bit_labels[i] = GET_WIDGET(name);
-        SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
-        set_int_data(X.ui, name, "bit_index", i);
     }
 
     X.display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(X.display_item));
@@ -1970,18 +2103,6 @@ create_main_window()
     set_int_data(X.ui, "view_advanced_menu", "calcmode", ADVANCED);
     set_int_data(X.ui, "view_financial_menu", "calcmode", FINANCIAL);
     set_int_data(X.ui, "view_programming_menu", "calcmode", PROGRAMMING);
-
-    /* Setup financial functions */
-    set_data(X.ui, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
-    set_data(X.ui, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
-    set_data(X.ui, "calc_finc_future_value_button", "finc_dialog", "fv_dialog");
-    set_data(X.ui, "calc_finc_gross_profit_margin_button", "finc_dialog", "gpm_dialog");
-    set_data(X.ui, "calc_finc_periodic_payment_button", "finc_dialog", "pmt_dialog");
-    set_data(X.ui, "calc_finc_present_value_button", "finc_dialog", "pv_dialog");
-    set_data(X.ui, "calc_finc_periodic_interest_rate_button", "finc_dialog", "rate_dialog");
-    set_data(X.ui, "calc_finc_straight_line_depreciation_button", "finc_dialog", "sln_dialog");
-    set_data(X.ui, "calc_finc_sum_of_the_years_digits_depreciation_button", "finc_dialog", "syd_dialog");
-    set_data(X.ui, "calc_finc_term_button", "finc_dialog", "term_dialog");
 }
 
 
@@ -2138,119 +2259,12 @@ ui_load(void)
 }
 
 
-static void
-add_buttons_to_size_group()
-{
-    int i;
-    GtkSizeGroup *size_group;
-
-    const char *button_names[] = {
-        "calc_finc_straight_line_depreciation_button",
-        "calc_finc_periodic_interest_rate_button",
-        "calc_finc_present_value_button",
-        "calc_finc_periodic_payment_button",
-        "calc_finc_future_value_button",
-        "calc_finc_gross_profit_margin_button",
-        "calc_finc_double_declining_depreciation_button",
-        "calc_finc_compounding_term_button",
-        "calc_finc_sum_of_the_years_digits_depreciation_button",
-        "calc_finc_term_button",
-        "calc_store_button",
-        "calc_recall_button",
-        "calc_pi_button",
-        "calc_modulus_divide_button",
-        "calc_root_button",
-        "calc_x_pow_y_button",
-        "calc_logarithm_button",
-        "calc_inverse_button",
-        "calc_natural_logarithm_button",
-        "calc_eulers_number_button",
-        "calc_abs_button",
-        "calc_factorial_button",
-        "calc_integer_portion_button",
-        "calc_exponential_button",
-        "calc_fractional_portion_button",
-        "calc_imaginary_button",
-        "subscript_togglebutton",
-        "superscript_togglebutton",
-        "calc_ans_button",
-        "calc_4_button",
-        "calc_7_button",
-        "calc_8_button",
-        "calc_9_button",
-        "calc_5_button",
-        "calc_6_button",
-        "calc_divide_button",
-        "calc_1_button",
-        "calc_2_button",
-        "calc_0_button",
-        "calc_numeric_point_button",
-        "calc_result_button",
-        "calc_3_button",
-        "calc_multiply_button",
-        "calc_subtract_button",
-        "calc_add_button",
-        "calc_clear_button",
-        "calc_start_group_button",
-        "calc_end_group_button",
-        "calc_percentage_button",
-        "calc_10_button",
-        "calc_11_button",
-        "calc_12_button",
-        "calc_13_button",
-        "calc_14_button",
-        "calc_15_button",
-        "calc_and_button",
-        "calc_or_button",
-        "calc_not_button",
-        "calc_xor_button",
-        "calc_ones_complement_button",
-        "calc_twos_complement_button",
-        "calc_shift_right_button",
-        "calc_shift_left_button",
-        "calc_trunc_button",
-        "calc_random_button",
-        "calc_base_2_button",
-        "calc_base_8_button",
-        "calc_base_16_button",
-        "calc_si_kilo_button",
-        "calc_si_milli_button",
-        "calc_si_micro_button",
-        "calc_si_mega_button",
-        "calc_si_giga_button",
-        "calc_si_peta_button",
-        "calc_si_femto_button",
-        "calc_si_pico_button",
-        "calc_si_nano_button",
-        "calc_tangent_button",
-        "calc_sine_button",
-        "calc_cosine_button",
-        "calc_hyperbolic_cosine_button",
-        "calc_hyperbolic_sine_button",
-        "calc_hyperbolic_tangent_button",
-        "calc_character_button",
-        NULL};
-
-    size_group = gtk_size_group_new(GTK_SIZE_GROUP_BOTH);
-    for (i = 0; button_names[i] != NULL; i++)
-        gtk_size_group_add_widget(size_group, GET_WIDGET(button_names[i]));
-}
-
-
 void
 ui_start(void)
 {
     ui_set_mode(X.mode);
 
     gtk_widget_show(X.main_window);
-
-    /* Add buttons to size group so they are all the same size.
-     *
-     * This is supported in GtkBuilder but it does not appear to work, setting
-     * the group after showing the widgets works. It would have been preferrable
-     * to make the table homogeneous but this does not ignore hidden rows.
-     */
-    add_buttons_to_size_group();
 
     gtk_main();
 }
