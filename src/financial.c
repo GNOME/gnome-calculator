@@ -17,11 +17,10 @@
  *  02111-1307, USA.
  */
 
-#include "financial.h"
-#include "calctool.h"
-#include "mp.h"
+#include <glib/gi18n.h>
 
-#include <libintl.h>
+#include "financial.h"
+#include "mp.h"
 
 static void
 calc_ctrm(MathEquation *equation, MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)

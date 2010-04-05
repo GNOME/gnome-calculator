@@ -17,6 +17,7 @@
  *  02111-1307, USA.
  */
 
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include "ui.h"

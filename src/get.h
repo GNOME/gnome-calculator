@@ -20,8 +20,6 @@
 #ifndef GET_H
 #define GET_H
 
-#include "calctool.h"
-
 #define R_ACCURACY "accuracy"
 #define R_DISPLAY  "result_format"
 #define R_MODE     "button_layout"

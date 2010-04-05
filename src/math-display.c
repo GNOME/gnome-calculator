@@ -17,10 +17,11 @@
  */
 
 #include <string.h>
+#include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
 
 #include "math-display.h"
-#include "calctool.h" // FIXME: TEMP
+#include "ui.h" // FIXME: TEMP
 
 enum {
     PROP_0,
@@ -76,18 +77,6 @@ math_display_get_text(MathDisplay *display)
     GtkTextIter start, end;
     gtk_text_buffer_get_bounds(display->priv->display_buffer, &start, &end);
     return gtk_text_buffer_get_text(display->priv->display_buffer, &start, &end, FALSE);
-}
-
-
-const gchar *math_display_get_digit_text(MathDisplay *display, guint digit)
-{
-    return v->digits[digit];
-}
-
-
-const gchar *math_display_get_numeric_point_text(MathDisplay *display)
-{
-    return v->radix;
 }
 
 
@@ -184,7 +173,7 @@ math_display_insert_digit(MathDisplay *display, unsigned int digit)
     static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
     if (display->priv->number_mode == NORMAL || digit >= 10)
-        math_display_insert(display, v->digits[digit]);
+        math_display_insert(display, math_equation_get_digit_text(display->priv->equation, digit));
     else if (display->priv->number_mode == SUPERSCRIPT)
         math_display_insert(display, superscript_digits[digit]);
     else if (display->priv->number_mode == SUBSCRIPT)
@@ -195,7 +184,7 @@ math_display_insert_digit(MathDisplay *display, unsigned int digit)
 void
 math_display_insert_numeric_point(MathDisplay *display)
 {
-    math_display_insert(display, v->radix);
+    math_display_insert(display, math_equation_get_numeric_point_text(display->priv->equation));
 }
 
 
@@ -264,30 +253,6 @@ math_display_toggle_bit(MathDisplay *display, guint bit)
 
 
 void
-math_display_set(MathDisplay *display, char *str, int cursor)
-{
-    GtkTextIter iter;
-    GtkAdjustment *adj;
-
-    gtk_text_buffer_set_text(display->priv->display_buffer, str, -1);
-
-    if (cursor < 0)
-        gtk_text_buffer_get_end_iter(display->priv->display_buffer, &iter);
-    else
-        gtk_text_buffer_get_iter_at_offset(display->priv->display_buffer, &iter, cursor);
-    gtk_text_buffer_place_cursor(display->priv->display_buffer, &iter);
-    gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(display->priv->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
-}
-
-
-void
-math_display_set_status(MathDisplay *display, const gchar *message)
-{
-    gtk_text_buffer_set_text(display->priv->info_buffer, message, -1);
-}
-
-
-void
 math_display_copy(MathDisplay *display)
 {
     gchar *string = NULL;
@@ -308,7 +273,7 @@ math_display_copy(MathDisplay *display)
 
 
 static gboolean
-check_for_localized_numeric_point(int keyval)
+check_for_localized_numeric_point(MathDisplay *display, int keyval)
 {
     gchar outbuf[10]; /* Minumum size 6. */
     gunichar ch;
@@ -318,7 +283,7 @@ check_for_localized_numeric_point(int keyval)
 
     outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
 
-    return (strcmp(outbuf, v->radix) == 0);
+    return (strcmp(outbuf, math_equation_get_numeric_point_text(display->priv->equation)) == 0);
 }
 
 
@@ -340,7 +305,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     // FIXME: Convert event to character
     // FIXME: Or safer to intercept characters as they enter the text input (handles input methods)
 
-    if (check_for_localized_numeric_point(event->keyval) == TRUE) {
+    if (check_for_localized_numeric_point(display, event->keyval) == TRUE) {
         event->state = 0;
         event->keyval = GDK_KP_Decimal;
     }
@@ -505,7 +470,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         }
     }
     if (strcmp(event->string, ".") == 0) {
-        math_display_insert(display, v->radix);
+        math_display_insert_numeric_point(display);
         return TRUE;
     }
 
@@ -640,10 +605,39 @@ math_display_set_base(MathDisplay *display, gint base)
 
 
 static void
-math_display_set_property (GObject      *object,
-                           guint         prop_id,
-                           const GValue *value,
-                           GParamSpec   *pspec)
+display_changed_cb(MathEquation *equation, MathDisplay *display)
+{
+    GtkTextIter iter;
+    GtkAdjustment *adj;
+    const gchar *str;
+    gint cursor;
+  
+    str = math_equation_get_text(equation);
+    cursor = math_equation_get_cursor(equation);
+
+    gtk_text_buffer_set_text(display->priv->display_buffer, str, -1);
+
+    if (cursor < 0)
+        gtk_text_buffer_get_end_iter(display->priv->display_buffer, &iter);
+    else
+        gtk_text_buffer_get_iter_at_offset(display->priv->display_buffer, &iter, cursor);
+    gtk_text_buffer_place_cursor(display->priv->display_buffer, &iter);
+    gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(display->priv->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
+}
+
+
+static void
+status_changed_cb(MathEquation *equation, MathDisplay *display)
+{
+    gtk_text_buffer_set_text(display->priv->info_buffer, math_equation_get_status(equation), -1);
+}
+
+
+static void
+math_display_set_property(GObject      *object,
+                          guint         prop_id,
+                          const GValue *value,
+                          GParamSpec   *pspec)
 {
     MathDisplay *self;
 
@@ -652,6 +646,9 @@ math_display_set_property (GObject      *object,
     switch (prop_id) {
     case PROP_EQUATION:
         self->priv->equation = g_value_get_object (value);
+        g_signal_connect(self->priv->equation, "display-changed", G_CALLBACK(display_changed_cb), self);      
+        g_signal_connect(self->priv->equation, "status-changed", G_CALLBACK(status_changed_cb), self);
+        status_changed_cb(self->priv->equation, self);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -661,10 +658,10 @@ math_display_set_property (GObject      *object,
 
 
 static void
-math_display_get_property (GObject    *object,
-                           guint       prop_id,
-                           GValue     *value,
-                           GParamSpec *pspec)
+math_display_get_property(GObject    *object,
+                          guint       prop_id,
+                          GValue     *value,
+                          GParamSpec *pspec)
 {
     MathDisplay *self;
 
@@ -729,6 +726,7 @@ math_display_init(MathDisplay *display)
     PangoFontDescription *font_desc;
 
     display->priv = G_TYPE_INSTANCE_GET_PRIVATE (display, math_display_get_type(), MathDisplayPrivate);
+
     display->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     display->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
 

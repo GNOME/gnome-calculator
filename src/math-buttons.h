@@ -51,8 +51,6 @@ GType math_buttons_get_type();
 
 MathButtons *math_buttons_new(MathDisplay *display);
 
-void math_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits);
-
 void math_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
 
 ButtonMode math_buttons_get_mode(MathButtons *buttons);

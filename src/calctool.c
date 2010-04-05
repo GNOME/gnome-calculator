@@ -23,7 +23,6 @@
 #include <sys/types.h>
 #include <glib-object.h>
 
-#include "calctool.h"
 #include "currency.h"
 #include "unittest.h"
 #include "get.h"
@@ -31,18 +30,14 @@
 #include "register.h"
 #include "mp-equation.h"
 
-/* Calctool variables and options. */
-static CalculatorVariables calc_state;
-CalculatorVariables *v;
-
-GCalctoolUI *X;
 
 static void
-version()
+version(const gchar *progname)
 {
     /* NOTE: Is not translated so can be easily parsed */
-    fprintf(stderr, "%1$s %2$s\n", v->progname, VERSION);
+    fprintf(stderr, "%1$s %2$s\n", progname, VERSION);
 }
+
 
 static void
 solve(const char *equation)
@@ -50,7 +45,7 @@ solve(const char *equation)
     MPEquationOptions options;
     MPErrorCode error;
     MPNumber result;
-    char result_str[MAXLINE];
+    char result_str[1024];
 
     memset(&options, 0, sizeof(options));
     options.wordlen = 32;
@@ -66,19 +61,20 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, 10, 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&result, 10, 9, 1, result_str, 1024);
         printf("%s\n", result_str);
         exit(0);
     }
 }
 
+
 static void
-usage(int show_gtk)
+usage(const gchar *progname, int show_gtk)
 {
     fprintf(stderr,
             /* Description on how to use gcalctool displayed on command-line */
             _("Usage:\n"
-              "  %s — Perform mathematical calculations"), v->progname);
+              "  %s — Perform mathematical calculations"), progname);
 
     fprintf(stderr,
             "\n\n");
@@ -116,28 +112,31 @@ usage(int show_gtk)
             "\n\n");
 }
 
+
 void
 get_options(int argc, char *argv[])
 {
     int i;
-    char *arg;
+    char *progname, *arg;
+
+    progname = g_path_get_basename(argv[0]);
 
     for (i = 1; i < argc; i++) {
         arg = argv[i];
 
         if (strcmp(arg, "-v") == 0 ||
             strcmp(arg, "--version") == 0) {
-            version();
+            version(progname);
             exit(0);
         }
         else if (strcmp(arg, "-h") == 0 ||
                  strcmp(arg, "-?") == 0 ||
                  strcmp(arg, "--help") == 0) {
-            usage(FALSE);
+            usage(progname, FALSE);
             exit(0);
         }
         else if (strcmp(arg, "--help-all") == 0) {
-            usage(TRUE);
+            usage(progname, TRUE);
             exit(0);
         }
         else if (strcmp(arg, "-s") == 0 ||
@@ -162,68 +161,34 @@ get_options(int argc, char *argv[])
                     /* Error printed to stderr when user provides an unknown command-line argument */
                     _("Unknown argument '%s'"), arg);
             fprintf(stderr, "\n");
-            usage(FALSE);
+            usage(progname, FALSE);
             exit(1);
         }
     }
 }
 
 
-static void
-init_state(void)
-{
-    /* Translators: Digits localized for the given language */
-    const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
-    const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
-    gchar **digits;
-    gboolean use_default_digits = FALSE;
-    int i;
-
-    digits = g_strsplit(digit_values, ",", -1);
-    for (i = 0; i < 16; i++) {
-        if (use_default_digits || digits[i] == NULL) {
-            use_default_digits = TRUE;
-            v->digits[i] = strdup(default_digits[i]);
-        }
-        else
-            v->digits[i] = strdup(digits[i]);
-    }
-    g_strfreev(digits);
-
-    v->radix         = get_radix();    /* Locale specific radix string. */
-    v->tsep          = get_tsep();     /* Locale specific thousands separator. */
-    v->tsep_count    = get_tsep_count();
-}
-
-
 int
 main(int argc, char **argv)
 {
-    memset(&calc_state, 0, sizeof(calc_state));
-    v = &calc_state;
-
+    GCalctoolUI *ui;
+  
     g_type_init();
 
     bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-    v->progname = g_path_get_basename(argv[0]);
-
     /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
 
     resources_init();
-
-    init_state();
     register_init();
     ui_gtk_init(&argc, &argv);
-
     get_options(argc, argv);
-
-    X = ui_new();
-    ui_start(X);
-
+    ui = ui_new();
+    ui_start(ui);
+  
     currency_free_resources();
 
     return(0);

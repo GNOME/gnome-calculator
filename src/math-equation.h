@@ -21,14 +21,13 @@
 #define DISPLAY_H
 
 #include <glib-object.h>
+#include "mp.h"
 
 G_BEGIN_DECLS
 
 #define MATH_EQUATION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_equation_get_type(), MathEquation))
 
 typedef struct MathEquationPrivate MathEquationPrivate;
-
-#include "mp.h"
 
 #define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
 #define MAX_DISPLAY 512
@@ -68,6 +67,10 @@ typedef struct
 typedef struct
 {
     GObjectClass parent_class;
+
+    void (*status_changed)(MathEquation *display);  
+    void (*bitfield_changed)(MathEquation *display);
+    void (*display_changed)(MathEquation *display);
 } MathEquationClass;
 
 /* Available functions */
@@ -91,6 +94,16 @@ enum
 
 GType math_equation_get_type();
 MathEquation *math_equation_new();
+
+const gchar *math_equation_get_digit_text(MathEquation *equation, guint digit);
+const gchar *math_equation_get_numeric_point_text(MathEquation *equation);
+
+void math_equation_set_status(MathEquation *equation, const gchar *status);
+const gchar *math_equation_get_status(MathEquation *equation);
+gboolean math_equation_get_bitfield_enabled(MathEquation *equation);
+guint64 math_equation_get_bitfield(MathEquation *equation);
+const gchar *math_equation_get_text(MathEquation *equation);
+gint math_equation_get_cursor(MathEquation *equation);
 
 void display_set_accuracy(MathEquation *display, int accuracy);
 void display_set_show_thousands_separator(MathEquation *display, gboolean visible);

@@ -2,13 +2,13 @@ bin_PROGRAMS = gcalctool gcalccmd
 
 INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
+	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(GCALCTOOL_CFLAGS)
 
 gcalctool_SOURCES = \
 	calctool.c \
-	calctool.h \
 	currency.c \
 	currency.h \
 	get.c \

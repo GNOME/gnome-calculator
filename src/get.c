@@ -34,7 +34,7 @@
 #include "register.h"
 #include "mp.h"
 
-#define EQUAL(a, b)    (strlen(a)==strlen(b)) & !strcmp(a, b)
+#define MAXLINE 1024
 
 /* Various string values read/written as X resources. */
 
@@ -45,7 +45,7 @@ char *
 get_resource(const char *key)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     return gconf_client_get_string(client, key_name, NULL);
 }
 
@@ -54,7 +54,7 @@ void
 set_resource(const char *key, const char *value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_string(client, key_name, value, NULL);
 }
 
@@ -63,7 +63,7 @@ void
 set_int_resource(const char *key, int value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_int(client, key_name, value, NULL);
 }
 
@@ -72,7 +72,7 @@ void
 set_boolean_resource(const char *key, int value)
 {
     char key_name[MAXLINE];
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     gconf_client_set_bool(client, key_name, value, NULL);
 }
 
@@ -90,7 +90,7 @@ get_int_resource(const char *key, int *intval)
     GError *error = NULL;
     gint v;
 
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     v = gconf_client_get_int(client, key_name, &error);
     if (error)
         return FALSE;
@@ -107,7 +107,7 @@ get_boolean_resource(const char *key, int *boolval)
     GError *error = NULL;
     gboolean v;
 
-    SNPRINTF(key_name, MAXLINE, "/apps/gcalctool/%s", key);
+    snprintf(key_name, MAXLINE, "/apps/gcalctool/%s", key);
     v = gconf_client_get_bool(client, key_name, &error);
     if (error)
         return FALSE;

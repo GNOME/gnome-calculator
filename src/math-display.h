@@ -56,12 +56,7 @@ MathEquation *math_display_get_equation(MathDisplay *display);
 
 void math_display_set_base(MathDisplay *display, gint base);
 void math_display_set_number_mode(MathDisplay *display, NumberMode mode);
-void math_display_set(MathDisplay *display, gchar *, gint); // FIXME: Make obsolete by Math model
-void math_display_set_status(MathDisplay *display, const gchar *message);
 gchar *math_display_get_text(MathDisplay *display);
-
-const gchar *math_display_get_digit_text(MathDisplay *display, guint digit);
-const gchar *math_display_get_numeric_point_text(MathDisplay *display);
 
 void math_display_copy(MathDisplay *display);
 void math_display_paste(MathDisplay *display);

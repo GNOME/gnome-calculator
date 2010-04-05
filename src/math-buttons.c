@@ -342,12 +342,12 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         name = g_strdup_printf("calc_%d_button", i);
         button = GET_WIDGET(builder, name);     
         if (button)
-            gtk_button_set_label(GTK_BUTTON(button), math_display_get_digit_text(buttons->priv->display, i));
+            gtk_button_set_label(GTK_BUTTON(button), math_equation_get_digit_text(math_display_get_equation(buttons->priv->display), i));
         g_free(name);
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget)
-        gtk_button_set_label(GTK_BUTTON(widget), math_display_get_numeric_point_text(buttons->priv->display));
+        gtk_button_set_label(GTK_BUTTON(widget), math_equation_get_numeric_point_text(math_display_get_equation(buttons->priv->display)));
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
@@ -1085,18 +1085,19 @@ set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
-// FIXME: Watch for display changes from MathEngine
-void
-math_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits)
+static void
+bitfield_changed_cb(MathEquation *equation, MathButtons *buttons)
 {
     int i;
-    const gchar *label;  
+    const gchar *label;
+    guint64 bits;
 
     if (!buttons->priv->bit_panel)
        return;
 
-    gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
+    gtk_widget_set_sensitive(buttons->priv->bit_panel, math_equation_get_bitfield_enabled(equation));
 
+    bits = math_equation_get_bitfield(equation);
     for (i = 0; i < MAXBITS; i++) {
         if (bits & (1LL << (MAXBITS-i-1)))
             label = " 1";
@@ -1140,6 +1141,7 @@ math_buttons_set_property (GObject      *object,
     case PROP_DISPLAY:
         self->priv->display = g_value_get_object (value);
         g_signal_connect(self->priv->display, "number-mode-changed", G_CALLBACK(number_mode_changed_cb), self);
+        g_signal_connect(math_display_get_equation(self->priv->display), "bitfield-changed", G_CALLBACK(bitfield_changed_cb), self);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
