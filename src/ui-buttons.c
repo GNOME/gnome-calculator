@@ -17,8 +17,48 @@
  */
 
 #include "ui-buttons.h"
-#include "ui-internal.h"
 #include "register.h"
+#include "financial.h"
+#include "currency.h"
+#include "calctool.h" // FIXME: TEMP
+
+enum {
+    PROP_0,
+    PROP_DISPLAY
+};
+
+#define MAXBITS 64      /* Bit panel: number of bit fields. */
+#define MAX_REGISTERS 6 // FIXME: Obsolete once use a hash table
+
+struct MathButtonsPrivate
+{
+    MathDisplay *display;
+
+    ButtonMode mode;
+    GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
+
+    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
+
+    GtkWidget *button_vbox;
+    GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
+
+    GtkWidget *store_menu, *recall_menu;
+    GtkWidget *recall_menu_labels[MAX_REGISTERS];
+    GtkWidget *store_menu_labels[MAX_REGISTERS];
+
+    GtkWidget *shift_left_menu, *shift_right_menu;
+
+    GList *superscript_toggles;
+    GList *subscript_toggles;
+
+    GtkWidget *bit_panel;
+    GtkWidget *bit_labels[MAXBITS];
+
+    GtkWidget *character_code_dialog;
+    GtkWidget *character_code_entry;
+};
+
+G_DEFINE_TYPE (MathButtons, ui_buttons, G_TYPE_OBJECT);
 
 #define UI_BASIC_FILE       UI_DIR "/buttons-basic.ui"
 #define UI_ADVANCED_FILE    UI_DIR "/buttons-advanced.ui"
@@ -31,16 +71,6 @@
           GTK_WIDGET(GET_OBJECT(ui, name))
 
 static char *registers[] = {"a", "b", "c", "x", "y", "z", NULL};
-
-typedef enum {
-    POPUP_RIGHT,     /* Place popup to right of baseframe */
-    POPUP_LEFT,      /* Place popup to left of baseframe */
-    POPUP_ABOVE,     /* Place popup above baseframe */
-    POPUP_BELOW,     /* Place popup below baseframe */
-    POPUP_LOR,       /* Place popup to right or left of baseframe */
-    POPUP_AOB,       /* Place popup above or below baseframe */
-    POPUP_CENTERED   /* Center popup within baseframe */
-} PopupLocation;
 
 #define WM_WIDTH_FACTOR  10
 #define WM_HEIGHT_FACTOR 30
@@ -90,34 +120,53 @@ static ButtonData button_data[] = {
     {NULL, NULL}
 };
 
-static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
-static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
+typedef enum {
+    CURRENCY_TARGET_UPPER,
+    CURRENCY_TARGET_LOWER
+} CurrencyTargetRow;
+
+/* The names of each field in the dialogs for the financial functions */
+static char *finc_dialog_fields[][5] = {
+    {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL,         NULL},
+    {"ddb_cost",  "ddb_life",    "ddb_period", NULL,         NULL},
+    {"fv_pmt",    "fv_pint",     "fv_n",       NULL,         NULL},
+    {"gpm_cost",  "gpm_margin",  NULL,         NULL,         NULL},
+    {"pmt_prin",  "pmt_pint",    "pmt_n",      NULL,         NULL},
+    {"pv_pmt",    "pv_pint",     "pv_n",       NULL,         NULL},
+    {"rate_fv",   "rate_pv",     "rate_n",     NULL,         NULL},
+    {"sln_cost",  "sln_salvage", "sln_life",   NULL,         NULL},
+    {"syd_cost",  "syd_salvage", "syd_life",   "syd_period", NULL},
+    {"term_pmt",  "term_fv",     "term_pint",  NULL,         NULL},
+    {NULL,        NULL,          NULL,         NULL,         NULL}
+};
 
 
-Buttons *
-ui_buttons_new(GCalctoolUI *ui)
+MathButtons *
+ui_buttons_new(MathDisplay *display)
 {
-    Buttons *buttons;
-  
-    buttons = g_malloc0(sizeof(Buttons));
-    buttons->ui = ui;
-    buttons->button_vbox = GET_WIDGET(ui->ui, "button_vbox");
-    return buttons;
+    return g_object_new (ui_buttons_get_type(), "display", display, NULL);
+}
+
+
+GtkWidget *
+ui_buttons_get_widget(MathButtons *buttons)
+{
+    return buttons->priv->button_vbox;
 }
 
 
 static GtkWidget *
-get_buttons(Buttons *buttons, ButtonMode mode)
+get_buttons(MathButtons *buttons, ButtonMode mode)
 {
     switch (mode) {
     case BASIC:
-        return buttons->bas_panel;
+        return buttons->priv->bas_panel;
     case ADVANCED:
-        return buttons->adv_panel;
+        return buttons->priv->adv_panel;
     case FINANCIAL:
-        return buttons->fin_panel;
+        return buttons->priv->fin_panel;
     case PROGRAMMING:
-        return buttons->prog_panel;
+        return buttons->priv->prog_panel;
     }
 }
 
@@ -169,84 +218,128 @@ static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *
 
 
 static void
-load_mode(Buttons *buttons, ButtonMode mode)
+load_finc_dialogs(MathButtons *buttons)
+{
+    int i, j;
+    GtkListStore *currency_store;
+    GtkCellRenderer *render;
+    GtkSpinButton *currency_amount_upper;
+    GtkSpinButton *currency_amount_lower;
+    GtkComboBox   *currency_type_upper;
+    GtkComboBox   *currency_type_lower;
+
+    set_int_data(buttons->priv->financial_ui, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "fv_dialog", "finc_dialog", FINC_FV_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "gpm_dialog", "finc_dialog", FINC_GPM_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "pmt_dialog", "finc_dialog", FINC_PMT_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "pv_dialog", "finc_dialog", FINC_PV_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "rate_dialog", "finc_dialog", FINC_RATE_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "sln_dialog", "finc_dialog", FINC_SLN_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "syd_dialog", "finc_dialog", FINC_SYD_DIALOG);
+    set_int_data(buttons->priv->financial_ui, "term_dialog", "finc_dialog", FINC_TERM_DIALOG);
+
+    for (i = 0; finc_dialog_fields[i][0] != NULL; i++) {
+        for (j = 0; finc_dialog_fields[i][j]; j++) {
+            GObject *o;
+            o = gtk_builder_get_object(buttons->priv->financial_ui, finc_dialog_fields[i][j]);
+          if(!o)
+            printf("missing '%s'\n", finc_dialog_fields[i][j]);
+            g_object_set_data(o, "finc_field", GINT_TO_POINTER(j));
+            g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
+        }
+    }
+  return;
+
+    currency_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
+    currency_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
+    currency_type_upper = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper"));
+    currency_type_lower = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_lower"));
+
+    currency_store = gtk_list_store_new(2,
+                                        G_TYPE_INT,
+                                        G_TYPE_STRING);
+
+    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(currency_store),
+                                         1,
+                                         GTK_SORT_ASCENDING);
+
+    gtk_combo_box_set_model(currency_type_upper, GTK_TREE_MODEL(currency_store));
+    gtk_combo_box_set_model(currency_type_lower, GTK_TREE_MODEL(currency_store));
+
+    render = gtk_cell_renderer_text_new();
+
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_upper),
+                               render,
+                               TRUE);
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_lower),
+                               render,
+                               TRUE);
+
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_upper),
+                                  render,
+                                  "text",
+                                  1);
+    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_lower),
+                                  render,
+                                  "text",
+                                  1);
+
+    set_int_data(buttons->priv->financial_ui, "currency_amount_upper", "target", CURRENCY_TARGET_LOWER);
+    set_int_data(buttons->priv->financial_ui, "currency_amount_lower", "target", CURRENCY_TARGET_UPPER);
+}
+
+
+static void
+load_mode(MathButtons *buttons, ButtonMode mode)
 {
     GtkBuilder *builder, **builder_ptr;
     gint i;
     gchar name[MAXLINE];
-    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
     const gchar *builder_file;
-    gchar *objects[] = { "button_panel", NULL };
+    gchar *objects[] = { "button_panel", "character_code_dialog", "currency_dialog",
+                         "ctrm_dialog", "ddb_dialog", "fv_dialog", "gpm_dialog",
+                         "pmt_dialog", "pv_dialog", "rate_dialog", "sln_dialog",
+                         "syd_dialog", "term_dialog", "adjustment1", "adjustment2", NULL };
     GtkWidget *widget, **panel;
+    GError *error = NULL;
 
-    colour_numbers.red = 0;
-    colour_numbers.green = 0;
-    colour_numbers.blue = 65535;
-    colour_action.red = 0;
-    colour_action.green = 65535;
-    colour_action.blue = 0;
-    colour_operator.red = 65535;
-    colour_operator.green = 0;
-    colour_operator.blue = 0;
-    colour_function.red = 0;
-    colour_function.green = 65535;
-    colour_function.blue = 65535;
-    colour_memory.red = 65535;
-    colour_memory.green = 0;
-    colour_memory.blue = 65535;
-    colour_trig.red = 65535;
-    colour_trig.green = 65535;
-    colour_trig.blue = 0;
-    colour_group.red = 65535;
-    colour_group.green = 65535;
-    colour_group.blue = 65535;
-
-    // FIXME
-    /* Get labels from popup menus */
-    for (i = 0; registers[i]; i++) {
-        SNPRINTF(name, MAXLINE, "store_menu_item%d", i);
-        widget = GET_WIDGET(buttons->ui->ui, name);
-        g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
-        buttons->memory_store_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
-
-        SNPRINTF(name, MAXLINE, "recall_menu_item%d", i);
-        widget = GET_WIDGET(buttons->ui->ui, name);
-        g_object_set_data(G_OBJECT(widget), "register_id", registers[i]);
-        buttons->memory_recall_labels[i] = gtk_bin_get_child(GTK_BIN(widget));
-    }
-  
     switch (mode) {
     case BASIC:
-        builder_ptr = &buttons->basic_ui;
+        builder_ptr = &buttons->priv->basic_ui;
         builder_file = UI_BASIC_FILE;
-        panel = &buttons->bas_panel;
+        panel = &buttons->priv->bas_panel;
         break;
     case ADVANCED:
-        builder_ptr = &buttons->advanced_ui;
+        builder_ptr = &buttons->priv->advanced_ui;
         builder_file = UI_ADVANCED_FILE;
-        panel = &buttons->adv_panel;
+        panel = &buttons->priv->adv_panel;
         break;
     case FINANCIAL:
-        builder_ptr = &buttons->financial_ui;
+        builder_ptr = &buttons->priv->financial_ui;
         builder_file = UI_FINANCIAL_FILE;
-        panel = &buttons->fin_panel;
+        panel = &buttons->priv->fin_panel;
         break;
     case PROGRAMMING:
-        builder_ptr = &buttons->programming_ui;
+        builder_ptr = &buttons->priv->programming_ui;
         builder_file = UI_PROGRAMMING_FILE;
-        panel = &buttons->prog_panel;
+        panel = &buttons->priv->prog_panel;
         break;
     }
 
     builder = *builder_ptr = gtk_builder_new();
     // FIXME: Show dialog if failed to load
-    gtk_builder_add_objects_from_file(builder, builder_file, objects, NULL);
+    gtk_builder_add_objects_from_file(builder, builder_file, objects, &error);
+    if (error) {
+        g_warning("Error loading button UI: %s", error->message);
+        g_clear_error(&error);
+    }
     *panel = GET_WIDGET(builder, "button_panel");
-    gtk_box_pack_end(GTK_BOX(buttons->button_vbox), *panel, FALSE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(buttons->priv->button_vbox), *panel, FALSE, TRUE, 0);
 
     /* Connect text to buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
-        SNPRINTF(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
+        snprintf(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
         set_string_data(builder, name, "calc_text", button_data[i].data);
     }
 
@@ -254,130 +347,118 @@ load_mode(Buttons *buttons, ButtonMode mode)
     for (i = 0; i < 16; i++) {
         GtkWidget *button;
 
-        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
-        button = GET_WIDGET(builder, name);
-      
-        if (button) {
-            gtk_button_set_label(GTK_BUTTON(button), v->digits[i]);
-            set_string_data(builder, name, "calc_text", v->digits[i]);
-        }
+        snprintf(name, MAXLINE, "calc_%d_button", i);
+        button = GET_WIDGET(builder, name);     
+        if (button)
+            gtk_button_set_label(GTK_BUTTON(button), ui_display_get_digit_text(buttons->priv->display, i));
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget)
-        gtk_button_set_label(GTK_BUTTON(widget), v->radix);
+        gtk_button_set_label(GTK_BUTTON(widget), ui_display_get_numeric_point_text(buttons->priv->display));
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
-        SNPRINTF(name, MAXLINE, "calc_%d_button", i);
-        set_string_data(builder, name, "calc_subscript_text", subscript_digits[i]);
-        set_string_data(builder, name, "calc_superscript_text", superscript_digits[i]);
-        set_tint(GET_WIDGET(builder, name), &colour_numbers, 1);
+        snprintf(name, MAXLINE, "calc_%d_button", i);
+        set_int_data(builder, name, "calc_digit", i);
+        set_tint(GET_WIDGET(builder, name), &buttons->priv->colour_numbers, 1);
     }
   
     widget = GET_WIDGET(builder, "superscript_togglebutton");
     if (widget) {
-        buttons->superscript_toggles = g_list_append(buttons->superscript_toggles, widget);
-        if (buttons->ui->display->number_mode == SUPERSCRIPT)
+        buttons->priv->superscript_toggles = g_list_append(buttons->priv->superscript_toggles, widget);
+        if (ui_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
     widget = GET_WIDGET(builder, "subscript_togglebutton");
     if (widget) {
-        buttons->subscript_toggles = g_list_append(buttons->subscript_toggles, widget);
-        if (buttons->ui->display->number_mode == SUBSCRIPT)
+        buttons->priv->subscript_toggles = g_list_append(buttons->priv->subscript_toggles, widget);
+        if (ui_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
-    set_tint(GET_WIDGET(builder, "calc_10_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_11_button"), &colour_numbers, 1);  
-    set_tint(GET_WIDGET(builder, "calc_12_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_13_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_14_button"), &colour_numbers, 1);  
-    set_tint(GET_WIDGET(builder, "calc_15_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_imaginary_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_pi_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_eulers_number_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_numeric_point_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_percentage_button"), &colour_numbers, 2);
-    set_tint(GET_WIDGET(builder, "subscript_togglebutton"), &colour_numbers, 2);  
-    set_tint(GET_WIDGET(builder, "superscript_togglebutton"), &colour_numbers, 2);
-    set_tint(GET_WIDGET(builder, "calc_exponential_button"), &colour_numbers, 2);
-    set_tint(GET_WIDGET(builder, "calc_base_2_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_base_8_button"), &colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_base_16_button"), &colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_10_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_11_button"), &buttons->priv->colour_numbers, 1);  
+    set_tint(GET_WIDGET(builder, "calc_12_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_13_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_14_button"), &buttons->priv->colour_numbers, 1);  
+    set_tint(GET_WIDGET(builder, "calc_15_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_imaginary_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_pi_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_eulers_number_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_numeric_point_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_percentage_button"), &buttons->priv->colour_numbers, 2);
+    set_tint(GET_WIDGET(builder, "subscript_togglebutton"), &buttons->priv->colour_numbers, 2);  
+    set_tint(GET_WIDGET(builder, "superscript_togglebutton"), &buttons->priv->colour_numbers, 2);
+    set_tint(GET_WIDGET(builder, "calc_exponential_button"), &buttons->priv->colour_numbers, 2);
+    set_tint(GET_WIDGET(builder, "calc_base_2_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_base_8_button"), &buttons->priv->colour_numbers, 1);
+    set_tint(GET_WIDGET(builder, "calc_base_16_button"), &buttons->priv->colour_numbers, 1);
 
-    set_tint(GET_WIDGET(builder, "calc_result_button"), &colour_action, 2);
-    set_tint(GET_WIDGET(builder, "calc_factor_button"), &colour_action, 2);
-    set_tint(GET_WIDGET(builder, "calc_clear_button"), &colour_action, 1); // Different colour?
-    set_tint(GET_WIDGET(builder, "calc_trunc_button"), &colour_action, 1);
-    set_tint(GET_WIDGET(builder, "calc_shift_left_button"), &colour_action, 1);
-    set_tint(GET_WIDGET(builder, "calc_shift_right_button"), &colour_action, 1);
+    set_tint(GET_WIDGET(builder, "calc_result_button"), &buttons->priv->colour_action, 2);
+    set_tint(GET_WIDGET(builder, "calc_factor_button"), &buttons->priv->colour_action, 2);
+    set_tint(GET_WIDGET(builder, "calc_clear_button"), &buttons->priv->colour_action, 1); // Different colour?
+    set_tint(GET_WIDGET(builder, "calc_trunc_button"), &buttons->priv->colour_action, 1);
+    set_tint(GET_WIDGET(builder, "calc_shift_left_button"), &buttons->priv->colour_action, 1);
+    set_tint(GET_WIDGET(builder, "calc_shift_right_button"), &buttons->priv->colour_action, 1);
   
-    set_tint(GET_WIDGET(builder, "calc_add_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_subtract_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_multiply_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_divide_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_modulus_divide_button"), &colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_and_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_or_button"), &colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_xor_button"), &colour_operator, 1);  
+    set_tint(GET_WIDGET(builder, "calc_add_button"), &buttons->priv->colour_operator, 1);
+    set_tint(GET_WIDGET(builder, "calc_subtract_button"), &buttons->priv->colour_operator, 1);  
+    set_tint(GET_WIDGET(builder, "calc_multiply_button"), &buttons->priv->colour_operator, 1);
+    set_tint(GET_WIDGET(builder, "calc_divide_button"), &buttons->priv->colour_operator, 1);
+    set_tint(GET_WIDGET(builder, "calc_modulus_divide_button"), &buttons->priv->colour_operator, 1);
+    set_tint(GET_WIDGET(builder, "calc_and_button"), &buttons->priv->colour_operator, 1);  
+    set_tint(GET_WIDGET(builder, "calc_or_button"), &buttons->priv->colour_operator, 1);  
+    set_tint(GET_WIDGET(builder, "calc_xor_button"), &buttons->priv->colour_operator, 1);  
 
-    set_tint(GET_WIDGET(builder, "calc_cosine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_sine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_tangent_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_cosine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_sine_button"), &colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_tangent_button"), &colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_cosine_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_sine_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_tangent_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_cosine_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_sine_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_tangent_button"), &buttons->priv->colour_trig, 1);
 
-    set_tint(GET_WIDGET(builder, "calc_start_group_button"), &colour_group, 1);
-    set_tint(GET_WIDGET(builder, "calc_end_group_button"), &colour_group, 1);
-    set_tint(GET_WIDGET(builder, "calc_store_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_recall_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_ans_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_random_button"), &colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_character_button"), &colour_memory, 1);
+    set_tint(GET_WIDGET(builder, "calc_start_group_button"), &buttons->priv->colour_group, 1);
+    set_tint(GET_WIDGET(builder, "calc_end_group_button"), &buttons->priv->colour_group, 1);
+    set_tint(GET_WIDGET(builder, "calc_store_button"), &buttons->priv->colour_memory, 1);
+    set_tint(GET_WIDGET(builder, "calc_recall_button"), &buttons->priv->colour_memory, 1);
+    set_tint(GET_WIDGET(builder, "calc_ans_button"), &buttons->priv->colour_memory, 1);
+    set_tint(GET_WIDGET(builder, "calc_random_button"), &buttons->priv->colour_memory, 1);
+    set_tint(GET_WIDGET(builder, "calc_character_button"), &buttons->priv->colour_memory, 1);
 
-    set_tint(GET_WIDGET(builder, "calc_integer_portion_button"), &colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_fractional_portion_button"), &colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_x_pow_y_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_factorial_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_root_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_abs_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_inverse_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_logarithm_button"), &colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_natural_logarithm_button"), &colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_ones_complement_button"), &colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_not_button"), &colour_function, 1);  
-//    set_tint(GET_WIDGET(builder, "calc__button"), &colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_integer_portion_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_fractional_portion_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_x_pow_y_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_factorial_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_root_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_abs_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_inverse_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_logarithm_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_natural_logarithm_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_ones_complement_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);  
   
     /* Set base button data */
     set_int_data(builder, "calc_base_2_button", "base", 2);
     set_int_data(builder, "calc_base_8_button", "base", 8);
     set_int_data(builder, "calc_base_16_button", "base", 16);
 
-    /* Connect menus to popup buttons */
-    set_data(builder, "calc_shift_left_button", "calc_menu", GET_WIDGET(builder, "left_shift_popup"));
-    set_data(builder, "calc_shift_right_button", "calc_menu", GET_WIDGET(builder, "right_shift_popup"));
-    set_data(builder, "calc_store_button", "calc_menu", GET_WIDGET(builder, "memory_store_popup"));
-    set_data(builder, "calc_recall_button", "calc_menu", GET_WIDGET(builder, "memory_recall_popup"));
-
-    /* Load bit panel */
     if (mode == PROGRAMMING) {
+        buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
+        buttons->priv->character_code_entry = GET_WIDGET(builder, "character_code_entry");
+
+        buttons->priv->bit_panel = GET_WIDGET(builder, "bit_table");
         for (i = 0; i < MAXBITS; i++) {
-            SNPRINTF(name, MAXLINE, "bit_label_%d", i);
-            buttons->bit_labels[i] = GET_WIDGET(builder, name);
-            SNPRINTF(name, MAXLINE, "bit_eventbox_%d", i);
+            snprintf(name, MAXLINE, "bit_label_%d", i);
+            buttons->priv->bit_labels[i] = GET_WIDGET(builder, name);
+            snprintf(name, MAXLINE, "bit_eventbox_%d", i);
             set_int_data(builder, name, "bit_index", i);
         }
     }
 
     /* Setup financial functions */
     if (mode == FINANCIAL) {
-        ui_setup_finc_dialogs(buttons->ui);
-
-        buttons->ascii_dialog = GET_WIDGET(builder, "ascii_dialog");
-        buttons->ascii_entry = GET_WIDGET(builder, "ascii_entry");
-        gtk_window_set_transient_for(GTK_WINDOW(buttons->ascii_dialog), GTK_WINDOW(buttons->ui->main_window));
+        load_finc_dialogs(buttons);
 
         set_data(builder, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
         set_data(builder, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
@@ -396,12 +477,12 @@ load_mode(Buttons *buttons, ButtonMode mode)
 
 
 void
-ui_buttons_set_mode(Buttons *buttons, ButtonMode mode)
+ui_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 {
     ButtonMode old_mode;
 
-    old_mode = buttons->mode;
-    buttons->mode = mode;
+    old_mode = buttons->priv->mode;
+    buttons->priv->mode = mode;
 
     /* Hide the existing mode */
     if (get_buttons(buttons, old_mode))
@@ -414,199 +495,112 @@ ui_buttons_set_mode(Buttons *buttons, ButtonMode mode)
 }
 
 
-G_MODULE_EXPORT
-void
-base_cb(GtkWidget *widget, Buttons *buttons)
+ButtonMode
+ui_buttons_get_mode(MathButtons *buttons)
 {
-    ui_set_base(buttons->ui, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
+    return buttons->priv->mode;
 }
 
 
 G_MODULE_EXPORT
 void
-exponent_cb(GtkWidget *widget, Buttons *buttons)
+base_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_do_exponent(buttons->ui);
+    ui_display_set_base(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
 }
 
 
 G_MODULE_EXPORT
 void
-subtract_cb(GtkWidget *widget, Buttons *buttons)
+exponent_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_do_subtract(buttons->ui);
+    ui_display_insert_exponent(buttons->priv->display);
 }
 
 
 G_MODULE_EXPORT
 void
-button_cb(GtkWidget *widget, Buttons *buttons)
+subtract_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
+    ui_display_insert_subtract(buttons->priv->display);  
 }
 
 
 G_MODULE_EXPORT
 void
-store_menu_cb(GtkMenuItem *menu, Buttons *buttons)
+button_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_do_button(buttons->ui, FN_STORE, g_object_get_data(G_OBJECT(menu), "register_id"));
+    ui_display_insert(buttons->priv->display, g_object_get_data(G_OBJECT(widget), "calc_text"));
 }
 
 
 G_MODULE_EXPORT
 void
-recall_menu_cb(GtkMenuItem *menu, Buttons *buttons)
+store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 {
-    ui_do_button(buttons->ui, FN_RECALL, g_object_get_data(G_OBJECT(menu), "register_id"));
-}
-
-
-G_MODULE_EXPORT
-void
-solve_cb(GtkWidget *widget, Buttons *buttons)
-{
-    ui_do_button(buttons->ui, FN_CALCULATE, NULL);
-}
-
-
-G_MODULE_EXPORT
-void
-clear_cb(GtkWidget *widget, Buttons *buttons)
-{
-    ui_do_button(buttons->ui, FN_CLEAR, NULL);
-}
-
-
-G_MODULE_EXPORT
-void
-finc_cb(GtkWidget *widget, Buttons *buttons)
-{
-    gchar *name;
-
-    name = g_object_get_data(G_OBJECT(widget), "finc_dialog");
-    gtk_dialog_run(GTK_DIALOG(GET_WIDGET(buttons->financial_ui, name)));
-    gtk_widget_hide(GTK_WIDGET(GET_WIDGET(buttons->financial_ui, name)));
+    ui_display_store(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
 static void
-position_popup(GtkWidget *base, GtkWidget *popup,
-               PopupLocation location_op)
+recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 {
-    int base_x, base_y, base_width, base_height;
-    int popup_x, popup_y, popup_width, popup_height;
-    int screen_width, screen_height;
-    int n;
-
-    gtk_window_get_position(GTK_WINDOW(base), &base_x, &base_y);
-    gtk_window_get_size(GTK_WINDOW(base), &base_width, &base_height);
-    gtk_window_get_position(GTK_WINDOW(popup), &popup_x, &popup_y);
-    gtk_window_get_size(GTK_WINDOW(popup), &popup_width, &popup_height);
-    screen_width = gdk_screen_width();
-    screen_height = gdk_screen_height();
-
-    if (location_op == POPUP_LOR) {
-        if (base_x >= screen_width - base_width - base_x)
-            location_op = POPUP_LEFT;
-        else
-            location_op = POPUP_RIGHT;
-    } else if (location_op == POPUP_AOB) {
-        if (base_y > screen_height - base_height - base_y)
-            location_op = POPUP_ABOVE;
-        else
-            location_op = POPUP_BELOW;
-    }
-
-    switch (location_op) {
-        case POPUP_RIGHT:
-            popup_x = base_x + base_width + WM_WIDTH_FACTOR;
-            popup_y = base_y;
-            break;
-
-        case POPUP_LEFT:
-            popup_x = base_x - popup_width - WM_WIDTH_FACTOR;
-            popup_y = base_y;
-            break;
-
-        case POPUP_ABOVE:
-            popup_x = base_x;
-            popup_y = base_y - popup_height - WM_HEIGHT_FACTOR;
-            break;
-
-        case POPUP_BELOW:
-            popup_x = base_x;
-            popup_y = base_y + base_height + WM_HEIGHT_FACTOR;
-            break;
-
-        case POPUP_CENTERED:
-        default:
-            popup_x = base_x + (base_width - popup_width) / 2;
-            popup_y = base_y + (base_height - popup_height) / 2;
-            break;
-    }
-
-    /* Make sure frame doesn't go off side of screen */
-    n = popup_x + popup_width;
-    if (n > screen_width)
-        popup_x -= (n - screen_width);
-    else if (popup_x < 0)
-        popup_x = 0;
-
-    /* Make sure frame doesn't go off top or bottom */
-    n = popup_y + popup_height;
-    if (n > screen_height)
-        popup_y -= n - screen_height;
-    else if (popup_y < 0)
-        popup_y = 0;
-
-    gtk_window_move(GTK_WINDOW(popup), popup_x, popup_y);
+    ui_display_recall(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));  
 }
 
 
 G_MODULE_EXPORT
 void
-insert_ascii_cb(GtkWidget *widget, Buttons *buttons)
+solve_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    if (!gtk_widget_get_visible(buttons->ascii_dialog))
-        position_popup(buttons->ui->main_window, buttons->ascii_dialog, POPUP_LEFT);
-    gtk_widget_grab_focus(GTK_WIDGET(buttons->ascii_entry));
-    gtk_widget_show(buttons->ascii_dialog);
+    ui_display_solve(buttons->priv->display);
 }
 
 
 G_MODULE_EXPORT
 void
-shift_cb(GtkWidget *widget, Buttons *buttons)
+clear_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_do_button(buttons->ui, FN_SHIFT, g_object_get_data(G_OBJECT(widget), "shiftcount"));
-}
-
-G_MODULE_EXPORT
-void
-factorize_cb(GtkWidget *widget, Buttons *buttons)
-{
-    ui_do_button(buttons->ui, FN_FACTORIZE, NULL);
-}
-
-
-G_MODULE_EXPORT
-void
-digit_cb(GtkWidget *widget, Buttons *buttons)
-{
-    if (buttons->ui->display->number_mode == SUPERSCRIPT)
-        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_superscript_text"));
-    else if (buttons->ui->display->number_mode == SUBSCRIPT)
-        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_subscript_text"));
-    else
-        ui_insert_text(buttons->ui, g_object_get_data(G_OBJECT(widget), "calc_text"));
+    ui_display_clear(buttons->priv->display);
 }
 
 
 static void
-update_memory_menus(Buttons *buttons)
+shift_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    ui_display_shift(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "shiftcount")));
+}
+
+
+static void
+update_store_menu(MathButtons *buttons)
 {
     int i;
+
+    if (!buttons->priv->store_menu) {
+        GtkWidget *menu;
+
+        menu = buttons->priv->store_menu = gtk_menu_new();
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+        set_tint(menu, &buttons->priv->colour_memory, 1);
+
+        for (i = 0; i < MAX_REGISTERS; i++) {
+            GtkWidget *item, *label;
+
+            label = buttons->priv->store_menu_labels[i] = gtk_label_new("");
+            gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+
+            item = gtk_menu_item_new();
+            gtk_container_add(GTK_CONTAINER(item), label);
+
+            g_object_set_data(G_OBJECT(item), "register_id", registers[i]);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            g_signal_connect(item, "activate", G_CALLBACK(store_menu_cb), buttons);
+
+            gtk_widget_show(label);
+            gtk_widget_show(item);
+        }  
+    }
 
     for (i = 0; registers[i] != NULL; i++) {
         char value[MAXLINE] = "", mstr[MAXLINE];
@@ -615,37 +609,431 @@ update_memory_menus(Buttons *buttons)
         t = register_get_value(registers[i]);
         if (t)
             display_make_number(&v->display, value, MAXLINE, t);
-        SNPRINTF(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->memory_store_labels[i]), mstr);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->memory_recall_labels[i]), mstr);
+        snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->store_menu_labels[i]), mstr);
+    }
+}
+
+
+static void
+button_menu_position_func(GtkMenu *menu, gint *x, gint *y,
+                          gboolean *push_in, gpointer user_data)
+{
+    GtkWidget *button = user_data;
+    GdkPoint loc;
+    gint border;
+  
+    gdk_window_get_origin(gtk_widget_get_window(button), &loc.x, &loc.y);
+    border = gtk_container_get_border_width(GTK_CONTAINER(button));
+    *x = loc.x + button->allocation.x + border;
+    *y = loc.y + button->allocation.y + border;
+}
+
+
+static void
+popup_button_menu(GtkWidget *widget, GtkMenu *menu)
+{
+    gtk_menu_popup(menu, NULL, NULL,
+                   button_menu_position_func, widget, 1, gtk_get_current_event_time());
+}
+
+
+G_MODULE_EXPORT
+void
+store_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    update_store_menu(buttons);
+    popup_button_menu(widget, GTK_MENU(buttons->priv->store_menu));
+}
+
+
+static void
+update_recall_menu(MathButtons *buttons)
+{
+    int i;
+
+    if (!buttons->priv->recall_menu) {
+        GtkWidget *menu;
+
+        menu = buttons->priv->recall_menu = gtk_menu_new();
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+        set_tint(menu, &buttons->priv->colour_memory, 1);
+
+        for (i = 0; i < MAX_REGISTERS; i++) {
+            GtkWidget *item, *label;
+
+            label = buttons->priv->recall_menu_labels[i] = gtk_label_new("");
+            gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+
+            item = gtk_menu_item_new();
+            gtk_container_add(GTK_CONTAINER(item), label);
+
+            g_object_set_data(G_OBJECT(item), "register_id", registers[i]);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            g_signal_connect(item, "activate", G_CALLBACK(recall_menu_cb), buttons);
+
+            gtk_widget_show(label);
+            gtk_widget_show(item);
+        }
+    }
+
+    for (i = 0; registers[i] != NULL; i++) {
+        char value[MAXLINE] = "", mstr[MAXLINE];
+        MPNumber *t;
+
+        t = register_get_value(registers[i]);
+        if (t)
+            display_make_number(&v->display, value, MAXLINE, t);
+        snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
+        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->recall_menu_labels[i]), mstr);
     }
 }
 
 
 G_MODULE_EXPORT
 void
-popup_cb(GtkWidget *widget, Buttons *buttons)
+recall_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    GtkWidget *menu;
-    GdkPoint loc;
-
-    update_memory_menus(buttons);
-
-    menu = (GtkWidget *)g_object_get_data(G_OBJECT(widget), "calc_menu");
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                   1, 0);
+    update_recall_menu(buttons);
+    popup_button_menu(widget, GTK_MENU(buttons->priv->recall_menu));
 }
+
 
 G_MODULE_EXPORT
 void
-ascii_dialog_response_cb(GtkWidget *dialog, gint response_id, Buttons *buttons)
+shift_left_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    if (!buttons->priv->shift_left_menu) {
+        gint i;
+        GtkWidget *menu;
+
+        menu = buttons->priv->shift_left_menu = gtk_menu_new();
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+        set_tint(menu, &buttons->priv->colour_action, 1);
+
+        for (i = 1; i < 16; i++) {
+            GtkWidget *item, *label;
+            gchar *format, *text;
+
+            if (i < 10) {
+                /* Left Shift Popup: Menu item to shift left by n places (n < 10) */
+                format = ngettext("_%d place", "_%d places", i);
+            }
+            else {
+                /* Left Shift Popup: Menu item to shift left by n places (n >= 10) */
+                format = ngettext("%d place", "%d places", i);
+            }
+            text = g_strdup_printf(format, i);
+            label = gtk_label_new_with_mnemonic(text);
+
+            item = gtk_menu_item_new();
+            g_object_set_data(G_OBJECT(item), "shiftcount", GINT_TO_POINTER(i));
+            gtk_container_add(GTK_CONTAINER(item), label);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            g_signal_connect(item, "activate", G_CALLBACK(shift_cb), buttons);
+
+            gtk_widget_show(label);
+            gtk_widget_show(item);
+            g_free(text);
+        }
+    }
+
+    popup_button_menu(widget, GTK_MENU(buttons->priv->shift_left_menu));
+}
+
+
+G_MODULE_EXPORT
+void
+shift_right_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    if (!buttons->priv->shift_right_menu) {
+        gint i;
+        GtkWidget *menu;
+
+        menu = buttons->priv->shift_right_menu = gtk_menu_new();
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+        set_tint(menu, &buttons->priv->colour_action, 1);
+
+        for (i = 1; i < 16; i++) {
+            GtkWidget *item, *label;
+            gchar *format, *text;
+
+            if (i < 10) {
+                /* Right Shift Popup: Menu item to shift right by n places (n < 10) */
+                format = ngettext("_%d place", "_%d places", i);
+            }
+            else {
+                /* Right Shift Popup: Menu item to shift right by n places (n >= 10) */
+                format = ngettext("%d place", "%d places", i);
+            }
+            text = g_strdup_printf(format, i);
+            label = gtk_label_new_with_mnemonic(text);
+
+            item = gtk_menu_item_new();
+            g_object_set_data(G_OBJECT(item), "shiftcount", GINT_TO_POINTER(-i));
+            gtk_container_add(GTK_CONTAINER(item), label);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            g_signal_connect(item, "activate", G_CALLBACK(shift_cb), buttons);
+
+            gtk_widget_show(label);
+            gtk_widget_show(item);
+            g_free(text);
+        }
+    }
+
+    popup_button_menu(widget, GTK_MENU(buttons->priv->shift_right_menu));  
+}
+
+
+G_MODULE_EXPORT
+void
+factorize_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    ui_display_factorize (buttons->priv->display);
+}
+
+
+G_MODULE_EXPORT
+void
+digit_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    ui_display_insert_digit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "calc_digit")));
+}
+
+
+G_MODULE_EXPORT
+void
+numeric_point_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    ui_display_insert_numeric_point(buttons->priv->display);
+}
+
+
+
+G_MODULE_EXPORT
+void
+finc_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    gchar *name;
+
+    name = g_object_get_data(G_OBJECT(widget), "finc_dialog");
+    gtk_dialog_run(GTK_DIALOG(GET_WIDGET(buttons->priv->financial_ui, name)));
+    gtk_widget_hide(GTK_WIDGET(GET_WIDGET(buttons->priv->financial_ui, name)));
+}
+
+
+G_MODULE_EXPORT
+void
+insert_character_code_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    gtk_window_present(GTK_WINDOW(buttons->priv->character_code_dialog));
+}
+
+
+G_MODULE_EXPORT
+void
+finc_activate_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    gint dialog, field;
+
+    dialog = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
+    field = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_field"));
+
+    if (finc_dialog_fields[dialog][field+1] == NULL) {
+        GtkWidget *dialog_widget;
+        dialog_widget = gtk_widget_get_toplevel(widget);
+        if (gtk_widget_is_toplevel (dialog_widget)) {
+            gtk_dialog_response(GTK_DIALOG(dialog_widget),
+                                GTK_RESPONSE_OK);
+            return;
+        }
+    }
+    else {
+        GtkWidget *next_widget;
+        next_widget = GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][field+1]);
+        gtk_widget_grab_focus(next_widget);
+    }
+}
+
+
+G_MODULE_EXPORT
+void
+finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
+{
+    int dialog;
+    int i;
+    MPNumber arg[4];
+    GtkWidget *entry;
+
+    if (response_id != GTK_RESPONSE_OK)
+        return;
+
+    dialog = GPOINTER_TO_INT (g_object_get_data(G_OBJECT(widget), "finc_dialog"));
+
+    for (i = 0; i < 4; i++) {
+        if (finc_dialog_fields[dialog][i] == NULL) {
+            continue;
+        }
+        entry = GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][i]);
+        // FIXME: Have to delocalize the input
+        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), &arg[i]);
+        gtk_entry_set_text(GTK_ENTRY(entry), "0");
+    }
+    gtk_widget_grab_focus(GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][0]));
+
+    do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
+}
+
+
+static void
+recalculate_currency(MathButtons *buttons, CurrencyTargetRow target)
+{
+    int upper_index, lower_index;
+
+    GtkComboBox *combo_upper = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper"));
+    GtkComboBox *combo_lower = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_lower"));
+    GtkSpinButton *spin_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
+    GtkSpinButton *spin_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
+
+    GtkTreeModel *model = gtk_combo_box_get_model(combo_upper);
+    GtkTreeIter iter;
+
+    if (!gtk_combo_box_get_active_iter(combo_upper, &iter))
+        return;
+    gtk_tree_model_get(model, &iter, 0, &upper_index, -1);
+
+    if (!gtk_combo_box_get_active_iter(combo_lower, &iter))
+        return;
+    gtk_tree_model_get(model, &iter, 0, &lower_index, -1);
+
+    if (target == CURRENCY_TARGET_LOWER) {
+        MPNumber input, output;
+        mp_set_from_double (gtk_spin_button_get_value(spin_upper), &input);
+        currency_convert(&input, upper_index, lower_index, &output);
+        if (!mp_is_zero(&output))
+            gtk_spin_button_set_value(spin_lower, mp_cast_to_double(&output));
+    } else {
+        MPNumber input, output;
+        mp_set_from_double (gtk_spin_button_get_value(spin_lower), &input);
+        currency_convert(&input, lower_index, upper_index, &output);
+        if (!mp_is_zero(&output))
+            gtk_spin_button_set_value(spin_upper, mp_cast_to_double(&output));
+    }
+}
+
+
+G_MODULE_EXPORT
+void
+currency_type_cb(GtkComboBox *combo, gpointer user_data, MathButtons *buttons)
+{
+    recalculate_currency(buttons, CURRENCY_TARGET_LOWER);
+}
+
+
+G_MODULE_EXPORT
+void
+currency_amount_cb (GtkSpinButton *spinbutton, gpointer user_data, MathButtons *buttons)
+{
+    recalculate_currency(buttons, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(spinbutton), "target")));
+}
+
+static void
+setup_currency_rates(MathButtons *buttons)
+{
+    static int has_run = 0;
+    int i;
+    GtkListStore *currency_store;
+    GObject *currency_type;
+
+    if (has_run)
+        return;
+
+    if (currency_rates_needs_update()) {
+        GtkWidget *dialog = gtk_message_dialog_new(NULL, 0,
+                                        GTK_MESSAGE_INFO,
+                                        GTK_BUTTONS_YES_NO,
+                                        /* Translators: Title of the error dialog when prompting to download currency rates */
+                                        N_("You don't have any recent currency rates. Should some be downloaded now?"));
+        int response = gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+
+        if (response == GTK_RESPONSE_YES) {
+            if (!currency_download_rates()) {
+                dialog = gtk_message_dialog_new(NULL, 0,
+                                                GTK_MESSAGE_ERROR,
+                                                GTK_BUTTONS_OK,
+                                                /* Translators: Title of the error dialog when unable to download currency rates */
+                                                N_("Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."));
+            }
+        }
+    }
+    currency_load_rates();
+
+    currency_type = gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper");
+    currency_store = GTK_LIST_STORE(gtk_combo_box_get_model(
+        GTK_COMBO_BOX(currency_type)));
+
+    for (i = 0; currency_names[i].short_name; i++) {
+        GtkTreeIter iter;
+        int index;
+
+        if ((index = currency_get_index(currency_names[i].short_name)) < 0) {
+            continue;
+        }
+        gtk_list_store_append(currency_store, &iter);
+        gtk_list_store_set(currency_store, &iter,
+                           0, index,
+                           1, gettext(currency_names[i].long_name),
+                           -1);
+    }
+
+    has_run = 1;
+}
+
+
+G_MODULE_EXPORT
+void
+currency_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    GtkDialog *win;
+    GtkSpinButton *c_amount_upper, *c_amount_lower;
+    MPNumber display_val;
+
+    setup_currency_rates(buttons);
+
+    win = GTK_DIALOG(gtk_builder_get_object(buttons->priv->financial_ui, "currency_dialog"));
+    c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
+    c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
+    if (display_is_usable_number(&v->display, &display_val)) {
+        double start_val = mp_cast_to_double(&display_val);
+        gtk_spin_button_set_value(c_amount_upper, start_val);
+    }
+    gtk_widget_grab_focus(GTK_WIDGET(c_amount_upper));
+
+    if (gtk_dialog_run(win) == GTK_RESPONSE_OK) {
+        gchar *result;
+
+        result = g_strdup_printf("%.2f", gtk_spin_button_get_value(c_amount_lower));
+        mp_set_from_string(result, &display_val);
+        g_free(result);
+
+        display_set_number(&v->display, &display_val);
+    }
+
+    gtk_widget_hide(GTK_WIDGET(win));
+}
+
+
+G_MODULE_EXPORT
+void
+character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButtons *buttons)
 {
     const gchar *text;
 
-    text = gtk_entry_get_text(GTK_ENTRY(buttons->ascii_entry));
+    text = gtk_entry_get_text(GTK_ENTRY(buttons->priv->character_code_entry));
 
     if (response_id == GTK_RESPONSE_OK)
-        ui_do_button(buttons->ui, FN_INSERT_CHARACTER, (gpointer) text);
+        ui_display_insert_character(buttons->priv->display, text);
 
     gtk_widget_hide(dialog);
 }
@@ -653,27 +1041,26 @@ ascii_dialog_response_cb(GtkWidget *dialog, gint response_id, Buttons *buttons)
 
 G_MODULE_EXPORT
 void
-ascii_dialog_activate_cb(GtkWidget *entry, Buttons *buttons)
+character_code_dialog_activate_cb(GtkWidget *entry, MathButtons *buttons)
 {
-    ascii_dialog_response_cb(buttons->ascii_dialog, GTK_RESPONSE_OK, buttons);
+    character_code_dialog_response_cb(buttons->priv->character_code_dialog, GTK_RESPONSE_OK, buttons);
 }
 
 
 G_MODULE_EXPORT
 gboolean
-ascii_dialog_delete_cb(GtkWidget *dialog, Buttons *buttons)
+character_code_dialog_delete_cb(GtkWidget *dialog, GdkEvent *event, MathButtons *buttons)
 {
-    ascii_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL, buttons);
+    character_code_dialog_response_cb(dialog, GTK_RESPONSE_CANCEL, buttons);
     return TRUE;
 }
 
 
 G_MODULE_EXPORT
 gboolean
-bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, Buttons *buttons)
+bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons)
 {
-    ui_do_button(buttons->ui, FN_TOGGLE_BIT,
-                 g_object_get_data(G_OBJECT(event_box), "bit_index"));
+    ui_display_toggle_bit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index")));
     return TRUE;
 }
 
@@ -681,48 +1068,155 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, Buttons *buttons)
 
 G_MODULE_EXPORT
 void
-set_superscript_cb(GtkWidget *widget, Buttons *buttons)
-{
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-       buttons->ui->display->can_super_minus = TRUE;
-       ui_set_number_mode(buttons->ui, SUPERSCRIPT);
-    }
-    else {
-       buttons->ui->display->can_super_minus = FALSE;
-       if (buttons->ui->display->number_mode == SUPERSCRIPT)
-           ui_set_number_mode(buttons->ui, NORMAL);
-    }
-}
-
-
-G_MODULE_EXPORT
-void
-set_subscript_cb(GtkWidget *widget, Buttons *buttons)
+set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       ui_set_number_mode(buttons->ui, SUBSCRIPT);
-    else if (buttons->ui->display->number_mode == SUBSCRIPT)
-       ui_set_number_mode(buttons->ui, NORMAL);
+       ui_display_set_number_mode(buttons->priv->display, SUPERSCRIPT);
+    else if (ui_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
+       ui_display_set_number_mode(buttons->priv->display, NORMAL);
 }
 
 
-// FIXME: Watch for changes in programming mode
+G_MODULE_EXPORT
 void
-ui_set_bitfield(GCalctoolUI *ui, int enabled, guint64 bits)
+set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
+       ui_display_set_number_mode(buttons->priv->display, SUBSCRIPT);
+    else if (ui_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
+       ui_display_set_number_mode(buttons->priv->display, NORMAL);
+}
+
+
+// FIXME: Watch for display changes from MathEngine
+void
+ui_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits)
 {
     int i;
-    const gchar *label;
-  
-    if (!ui->buttons->bit_panel)
+    const gchar *label;  
+
+    if (!buttons->priv->bit_panel)
        return;
 
-    gtk_widget_set_sensitive(ui->buttons->bit_panel, enabled);
+    gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
 
     for (i = 0; i < MAXBITS; i++) {
         if (bits & (1LL << (MAXBITS-i-1)))
             label = " 1";
         else
             label = " 0";
-        gtk_label_set_text(GTK_LABEL(ui->buttons->bit_labels[i]), label);
+        gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
     }
+}
+
+
+static void
+number_mode_changed_cb(MathDisplay *display, MathButtons *buttons)
+{
+    GList *i;
+    NumberMode mode;
+  
+    mode = ui_display_get_number_mode(display);
+
+    for (i = buttons->priv->superscript_toggles; i; i = i->next) {
+        GtkWidget *widget = i->data;
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUPERSCRIPT);
+    }
+    for (i = buttons->priv->subscript_toggles; i; i = i->next) {
+        GtkWidget *widget = i->data;
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUBSCRIPT);
+    }
+}
+
+
+static void
+ui_buttons_set_property (GObject      *object,
+                         guint         prop_id,
+                         const GValue *value,
+                         GParamSpec   *pspec)
+{
+    MathButtons *self;
+
+    self = MATH_BUTTONS (object);
+
+    switch (prop_id) {
+    case PROP_DISPLAY:
+        self->priv->display = g_value_get_object (value);
+        g_signal_connect(self->priv->display, "number-mode-changed", G_CALLBACK(number_mode_changed_cb), self);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
+ui_buttons_get_property (GObject    *object,
+                         guint       prop_id,
+                         GValue     *value,
+                         GParamSpec *pspec)
+{
+    MathButtons *self;
+
+    self = MATH_BUTTONS (object);
+
+    switch (prop_id) {
+    case PROP_DISPLAY:
+        g_value_set_object (value, self->priv->display);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
+ui_buttons_class_init (MathButtonsClass *klass)
+{
+    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+    object_class->get_property = ui_buttons_get_property;
+    object_class->set_property = ui_buttons_set_property;
+
+    g_type_class_add_private (klass, sizeof (MathButtonsPrivate));
+
+    g_object_class_install_property (object_class,
+                                     PROP_DISPLAY,
+                                     g_param_spec_object ("display",
+                                                          "display",
+                                                          "Display being controlled",
+                                                          ui_display_get_type(),
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+}
+
+
+static void
+ui_buttons_init (MathButtons *buttons)
+{
+    buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, ui_buttons_get_type(), MathButtonsPrivate);
+    buttons->priv->colour_numbers.red = 0;
+    buttons->priv->colour_numbers.green = 0;
+    buttons->priv->colour_numbers.blue = 65535;
+    buttons->priv->colour_action.red = 0;
+    buttons->priv->colour_action.green = 65535;
+    buttons->priv->colour_action.blue = 0;
+    buttons->priv->colour_operator.red = 65535;
+    buttons->priv->colour_operator.green = 0;
+    buttons->priv->colour_operator.blue = 0;
+    buttons->priv->colour_function.red = 0;
+    buttons->priv->colour_function.green = 65535;
+    buttons->priv->colour_function.blue = 65535;
+    buttons->priv->colour_memory.red = 65535;
+    buttons->priv->colour_memory.green = 0;
+    buttons->priv->colour_memory.blue = 65535;
+    buttons->priv->colour_trig.red = 65535;
+    buttons->priv->colour_trig.green = 65535;
+    buttons->priv->colour_trig.blue = 0;
+    buttons->priv->colour_group.red = 65535;
+    buttons->priv->colour_group.green = 65535;
+    buttons->priv->colour_group.blue = 65535;
+    buttons->priv->button_vbox = gtk_vbox_new(FALSE, 0);
+    gtk_widget_show(buttons->priv->button_vbox);
 }

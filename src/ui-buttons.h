@@ -19,9 +19,26 @@
 #ifndef UI_BUTTONS_H
 #define UI_BUTTONS_H
 
-typedef struct Buttons Buttons;
+#include <glib-object.h>
+#include <gtk/gtk.h>
+#include "ui-display.h"
 
-#include "ui.h"
+G_BEGIN_DECLS
+
+#define MATH_BUTTONS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_buttons_get_type(), MathButtons))
+
+typedef struct MathButtonsPrivate MathButtonsPrivate;
+
+typedef struct
+{
+    GObject         parent_instance; // FIXME: Extend GtkVBox
+    MathButtonsPrivate *priv;
+} MathButtons;
+
+typedef struct
+{
+    GObjectClass parent_class;
+} MathButtonsClass;
 
 typedef enum {
     BASIC,
@@ -30,35 +47,16 @@ typedef enum {
     PROGRAMMING
 } ButtonMode;
 
-#define MAXBITS 64      /* Bit panel: number of bit fields. */
-#define MAX_REGISTERS 6
+GType ui_buttons_get_type();
 
-struct Buttons
-{
-    GCalctoolUI *ui;
-    ButtonMode mode;
-    GtkBuilder *financial_dialog_ui; // FIXME: Merge into financial UI
-    GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
+MathButtons *ui_buttons_new(MathDisplay *display);
 
-    GtkWidget *button_vbox;
-    GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
+GtkWidget *ui_buttons_get_widget(MathButtons *buttons);
 
-    /* Labels for popup menus */
-    GtkWidget *memory_store_labels[MAX_REGISTERS];
-    GtkWidget *memory_recall_labels[MAX_REGISTERS];
+void ui_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits);
 
-    GList *superscript_toggles;
-    GList *subscript_toggles;
+void ui_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
 
-    GtkWidget *bit_panel;
-    GtkWidget *bit_labels[MAXBITS];
-
-    GtkWidget *ascii_dialog;
-    GtkWidget *ascii_entry;
-};
-
-Buttons *ui_buttons_new(GCalctoolUI *ui);
-
-void ui_buttons_set_mode(Buttons *buttons, ButtonMode mode);
+ButtonMode ui_buttons_get_mode(MathButtons *buttons);
 
 #endif /* UI_BUTTONS_H */

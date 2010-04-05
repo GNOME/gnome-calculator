@@ -20,31 +20,39 @@
 #ifndef UI_H
 #define UI_H
 
-#include <gtk/gtk.h>
-
-typedef struct GCalctoolUI GCalctoolUI;
-
-#include "calctool.h"
+#include <glib-object.h>
 #include "ui-display.h"
 #include "ui-buttons.h"
-#include "ui-preferences.h"
 
-// FIXME: Make opaque
-struct GCalctoolUI {
-    GtkBuilder *ui;
-    GtkWidget *main_window;
-    MathDisplay *display;
-    Buttons *buttons;
-    PreferencesDialog *preferences_dialog;
-};
+G_BEGIN_DECLS
 
-void ui_init(int *argc, char ***argv);
+#define UI(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_get_type(), GCalctoolUI))
+
+typedef struct GCalctoolUIPrivate GCalctoolUIPrivate;
+
+typedef struct
+{
+    GObject             parent_instance;
+    GCalctoolUIPrivate *priv;
+} GCalctoolUI;
+
+typedef struct
+{
+    GObjectClass parent_class;
+} GCalctoolUIClass;
+
+void ui_gtk_init(int *argc, char ***argv);
+
+GType ui_get_type();
+
 GCalctoolUI *ui_new(void);
+
+MathDisplay *ui_get_display(GCalctoolUI *ui);
+
+MathButtons *ui_get_buttons(GCalctoolUI *ui);
+
 void ui_critical_error(GCalctoolUI *ui, const gchar *title, const gchar *contents);
+
 void ui_start(GCalctoolUI *ui);
-void ui_set_display(GCalctoolUI *ui, char *, int);
-void ui_set_bitfield(GCalctoolUI *ui, int enabled, guint64 bits);
-void ui_set_statusbar(GCalctoolUI *ui, const gchar *);
-gchar *ui_get_display(GCalctoolUI *ui);
 
 #endif /* UI_H */

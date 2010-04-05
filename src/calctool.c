@@ -219,7 +219,7 @@ main(int argc, char **argv)
     init_state();
     register_init();
     display_init(&v->display);
-    ui_init(&argc, &argv);
+    ui_gtk_init(&argc, &argv);
 
     get_options(argc, argv);
 

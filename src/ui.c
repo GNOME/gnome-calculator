@@ -20,12 +20,22 @@
 #include <gtk/gtk.h>
 
 #include "ui.h"
-#include "ui-internal.h"
 #include "ui-display.h"
 #include "ui-buttons.h"
 #include "ui-preferences.h"
 #include "config.h"
 #include "get.h"
+
+struct GCalctoolUIPrivate
+{
+    GtkBuilder *ui;
+    GtkWidget *main_window;
+    MathDisplay *display;
+    MathButtons *buttons;
+    PreferencesDialog *preferences_dialog;
+};
+
+G_DEFINE_TYPE (GCalctoolUI, ui, G_TYPE_OBJECT);
 
 static const char *mode_names[] = { "BASIC", "ADVANCED", "FINANCIAL", "PROGRAMMING", NULL };
 
@@ -33,7 +43,7 @@ static const char *mode_names[] = { "BASIC", "ADVANCED", "FINANCIAL", "PROGRAMMI
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 void
-ui_init(int *argc, char ***argv)
+ui_gtk_init(int *argc, char ***argv)
 {
     gtk_init(argc, argv);
     gtk_window_set_default_icon_name("accessories-calculator");
@@ -43,48 +53,21 @@ ui_init(int *argc, char ***argv)
 GCalctoolUI *
 ui_new()
 {
-    GCalctoolUI *ui;
-    GError *error = NULL;
-    int i;
+    return g_object_new (ui_get_type(), NULL);
+}
 
-    ui = g_malloc0(sizeof(GCalctoolUI));
 
-    ui->ui = gtk_builder_new();
-    gtk_builder_add_from_file(ui->ui, UI_FILE, &error);
-    if (error) {
-       gchar *contents;
-       contents = g_strdup_printf(/* Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
-                                  _("A required file is missing or damaged. Please check your installation.\n\n%s"),
-                                  error->message);
-       ui_critical_error(ui,
-                         /* Title of the error dialog when unable to load the UI files */
-                         _("Error loading user interface"),
-                         contents);
-    }
-    gtk_builder_connect_signals(ui->ui, ui);
+MathDisplay *
+ui_get_display(GCalctoolUI *ui)
+{
+    return ui->priv->display;
+}
 
-    ui->main_window = GET_WIDGET(ui->ui, "calc_window");
 
-    /* Set modes for menu items */
-  // FIXME: Move into buttons
-    for (i = 1; i < 16; i++) {
-        char name[MAXLINE];
-        SNPRINTF(name, MAXLINE, "shift_left%d_menu", i);
-        g_object_set_data(gtk_builder_get_object(ui->ui, name), "shiftcount", GINT_TO_POINTER(i));
-        SNPRINTF(name, MAXLINE, "shift_right%d_menu", i);
-        g_object_set_data(gtk_builder_get_object(ui->ui, name), "shiftcount", GINT_TO_POINTER(-i));
-    }
-
-    g_object_set_data(gtk_builder_get_object(ui->ui, "view_basic_menu"), "calcmode", GINT_TO_POINTER(BASIC));
-    g_object_set_data(gtk_builder_get_object(ui->ui, "view_advanced_menu"), "calcmode", GINT_TO_POINTER(ADVANCED));
-    g_object_set_data(gtk_builder_get_object(ui->ui, "view_financial_menu"), "calcmode", GINT_TO_POINTER(FINANCIAL));
-    g_object_set_data(gtk_builder_get_object(ui->ui, "view_programming_menu"), "calcmode", GINT_TO_POINTER(PROGRAMMING));
-
-    ui->display = ui_display_new(ui);
-    ui->buttons = ui_buttons_new(ui);
-    ui->preferences_dialog = ui_preferences_dialog_new(ui);
-
-    return ui;
+MathButtons *
+ui_get_buttons(GCalctoolUI *ui)
+{
+    return ui->priv->buttons;
 }
 
 
@@ -96,24 +79,24 @@ ui_set_mode(GCalctoolUI *ui, ButtonMode mode)
     /* Save mode */
     set_enumerated_resource(R_MODE, mode_names, (int)mode);
 
-    ui_buttons_set_mode(ui->buttons, mode);
+    ui_buttons_set_mode(ui->priv->buttons, mode);
 
     /* Update the menu */
     switch (mode) {
         case BASIC:
-            menu = GET_WIDGET(ui->ui, "view_basic_menu");
+            menu = GET_WIDGET(ui->priv->ui, "view_basic_menu");
             break;
 
         case ADVANCED:
-            menu = GET_WIDGET(ui->ui, "view_advanced_menu");
+            menu = GET_WIDGET(ui->priv->ui, "view_advanced_menu");
             break;
 
         case FINANCIAL:
-            menu = GET_WIDGET(ui->ui, "view_financial_menu");
+            menu = GET_WIDGET(ui->priv->ui, "view_financial_menu");
             break;
 
         case PROGRAMMING:
-            menu = GET_WIDGET(ui->ui, "view_programming_menu");
+            menu = GET_WIDGET(ui->priv->ui, "view_programming_menu");
             break;
 
         default:
@@ -133,7 +116,7 @@ ui_start(GCalctoolUI *ui)
     get_enumerated_resource(R_MODE, mode_names, &mode);
     ui_set_mode(ui, (ButtonMode)mode);
 
-    gtk_widget_show(ui->main_window);
+    gtk_widget_show(ui->priv->main_window);
     gtk_main();
 }
 
@@ -157,35 +140,11 @@ ui_critical_error(GCalctoolUI *ui, const gchar *title, const gchar *contents)
 }
 
 
-void
-ui_set_number_mode(GCalctoolUI *ui, NumberMode mode)
-{
-    GList *i;
-
-    ui->display->number_mode = mode;
-    for (i = ui->buttons->superscript_toggles; i; i = i->next) {
-        GtkWidget *widget = i->data;
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUPERSCRIPT);
-    }
-    for (i = ui->buttons->subscript_toggles; i; i = i->next) {
-        GtkWidget *widget = i->data;
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), mode == SUBSCRIPT);
-    }
-}
-
-
-void
-ui_set_statusbar(GCalctoolUI *ui, const gchar *text)
-{
-    gtk_text_buffer_set_text(ui->display->info_buffer, text, -1);
-}
-
-
 G_MODULE_EXPORT
 void
 copy_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    ui_display_copy(ui);
+    ui_display_copy(ui->priv->display);
 }
 
 
@@ -193,7 +152,7 @@ G_MODULE_EXPORT
 void
 paste_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    ui_display_paste(ui);
+    ui_display_paste(ui->priv->display);
 }
 
 
@@ -215,7 +174,7 @@ G_MODULE_EXPORT
 void
 show_preferences_cb(GtkMenuItem *menu, GCalctoolUI *ui)
 {
-    ui_preferences_show(ui->preferences_dialog);
+    ui_preferences_show(ui->priv->preferences_dialog);
 }
 
 
@@ -226,7 +185,7 @@ help_cb(GtkWidget *widget, GCalctoolUI *ui)
     GdkScreen *screen;
     GError *error = NULL;
 
-    screen = gtk_widget_get_screen (GTK_WIDGET (ui->main_window));
+    screen = gtk_widget_get_screen (GTK_WIDGET (ui->priv->main_window));
     gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
 
     if (error != NULL)
@@ -235,7 +194,7 @@ help_cb(GtkWidget *widget, GCalctoolUI *ui)
         /* Translators: Error message displayed when unable to launch help browser */
         const char *message = _("Unable to open help file");
 
-        d = gtk_message_dialog_new (GTK_WINDOW (ui->main_window),
+        d = gtk_message_dialog_new (GTK_WINDOW (ui->priv->main_window),
                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                     GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
                                     "%s", message);
@@ -282,7 +241,7 @@ about_cb(GtkWidget *widget, GCalctoolUI *ui)
           "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
           "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA");
 
-    gtk_show_about_dialog(GTK_WINDOW(ui->main_window),
+    gtk_show_about_dialog(GTK_WINDOW(ui->priv->main_window),
                           "name",
                           /* Program name in the about dialog */
                           _("Gcalctool"),
@@ -307,4 +266,47 @@ void
 quit_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
     gtk_main_quit();
+}
+
+
+static void
+ui_class_init (GCalctoolUIClass *klass)
+{
+    g_type_class_add_private (klass, sizeof (GCalctoolUIPrivate));
+}
+
+
+static void 
+ui_init(GCalctoolUI *ui)
+{
+    GError *error = NULL;
+    int i;
+
+    ui->priv = G_TYPE_INSTANCE_GET_PRIVATE (ui, ui_get_type(), GCalctoolUIPrivate);
+
+    ui->priv->ui = gtk_builder_new();
+    gtk_builder_add_from_file(ui->priv->ui, UI_FILE, &error);
+    if (error) {
+       gchar *contents;
+       contents = g_strdup_printf(/* Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+ */
+                                  _("A required file is missing or damaged. Please check your installation.\n\n%s"),
+                                  error->message);
+       ui_critical_error(ui,
+                         /* Title of the error dialog when unable to load the UI files */
+                         _("Error loading user interface"),
+                         contents);
+    }
+    gtk_builder_connect_signals(ui->priv->ui, ui);
+
+    ui->priv->main_window = GET_WIDGET(ui->priv->ui, "calc_window");
+
+    g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_basic_menu"), "calcmode", GINT_TO_POINTER(BASIC));
+    g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_advanced_menu"), "calcmode", GINT_TO_POINTER(ADVANCED));
+    g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_financial_menu"), "calcmode", GINT_TO_POINTER(FINANCIAL));
+    g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_programming_menu"), "calcmode", GINT_TO_POINTER(PROGRAMMING));
+
+    ui->priv->display = ui_display_new(ui->priv->ui);
+    ui->priv->buttons = ui_buttons_new(ui->priv->display);
+    gtk_box_pack_end(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), ui_buttons_get_widget(ui->priv->buttons), TRUE, TRUE, 0);
+    ui->priv->preferences_dialog = ui_preferences_dialog_new(ui);
 }

@@ -19,7 +19,6 @@
 #include <gtk/gtk.h>
 
 #include "ui-preferences.h"
-#include "ui-internal.h"
 #include "get.h"
 
 #define UI_DIALOGS_FILE  UI_DIR "/preferences.ui"
@@ -251,7 +250,7 @@ ui_preferences_show(PreferencesDialog *dialog)
     gtk_builder_add_from_file(dialog->dialog_ui, UI_DIALOGS_FILE, NULL);
 
     dialog->dialog = GET_WIDGET(dialog->dialog_ui, "preferences_dialog");
-    gtk_window_set_transient_for(GTK_WINDOW(dialog->dialog), GTK_WINDOW(dialog->ui->main_window));
+    //FIXME: gtk_window_set_transient_for(GTK_WINDOW(dialog->dialog), GTK_WINDOW(dialog->ui->main_window));
 
     /* Configuration dialog */
 

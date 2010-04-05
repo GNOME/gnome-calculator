@@ -19,9 +19,14 @@
 #ifndef UI_DISPLAY_H
 #define UI_DISPLAY_H
 
-typedef struct MathDisplay MathDisplay;
+#include <glib-object.h>
+#include <gtk/gtk.h>
 
-#include "ui.h"
+G_BEGIN_DECLS
+
+#define MATH_DISPLAY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_display_get_type(), MathDisplay))
+
+typedef struct MathDisplayPrivate MathDisplayPrivate;
 
 typedef enum {
     NORMAL,
@@ -29,31 +34,45 @@ typedef enum {
     SUBSCRIPT
 } NumberMode;
 
-struct MathDisplay
+typedef struct
 {
-    NumberMode number_mode;  
+    GObject             parent_instance; // FIXME: Extend GtkVBox, remove widgets from gcalctool.ui
+    MathDisplayPrivate *priv;
+} MathDisplay;
 
-    GtkWidget *display_item;           /* Calculator display. */
-    GtkTextBuffer *display_buffer;     /* Buffer used in display */
-    GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
-    GtkWidget *scrolledwindow;         /* Scrolled window for display_item. */
+typedef struct
+{
+    GObjectClass parent_class;
 
-    GdkAtom clipboard_atom;
-    GdkAtom primary_atom;
-    char *shelf;                       /* PUT selection shelf contents. */
+    void (*number_mode_changed)(MathDisplay *display);
+} MathDisplayClass;
 
-    gboolean can_super_minus;
+GType ui_display_get_type();
 
-    /* Last text entered */
-    char *last_text;
-};
+MathDisplay *ui_display_new();
+void ui_display_set_base(MathDisplay *display, gint base);
+void ui_display_set_number_mode(MathDisplay *display, NumberMode mode);
+void ui_display_set(MathDisplay *display, gchar *, gint); // FIXME: Make obsolete by Math model
+void ui_display_set_status(MathDisplay *display, const gchar *message);
+gchar *ui_display_get_text(MathDisplay *display);
 
-MathDisplay *ui_display_new(GCalctoolUI *ui);
-void ui_display_copy(GCalctoolUI *ui);
-void ui_display_paste(GCalctoolUI *ui);
-void ui_insert_text(GCalctoolUI *ui, const char *text);
-void ui_set_base(GCalctoolUI *ui, gint base);
-void ui_do_subtract(GCalctoolUI *ui);
-void ui_do_exponent(GCalctoolUI *ui);
+const gchar *ui_display_get_digit_text(MathDisplay *display, guint digit);
+const gchar *ui_display_get_numeric_point_text(MathDisplay *display);
+
+void ui_display_copy(MathDisplay *display);
+void ui_display_paste(MathDisplay *display);
+void ui_display_store(MathDisplay *display, const gchar *name);
+void ui_display_recall(MathDisplay *display, const gchar *name);
+void ui_display_insert(MathDisplay *display, const gchar *text);
+void ui_display_insert_digit(MathDisplay *display, guint digit);
+void ui_display_insert_numeric_point(MathDisplay *display);
+void ui_display_insert_subtract(MathDisplay *display);
+void ui_display_insert_exponent(MathDisplay *display);
+void ui_display_insert_character(MathDisplay *display, const gchar *character);
+void ui_display_solve(MathDisplay *display);
+void ui_display_factorize(MathDisplay *display);
+void ui_display_clear(MathDisplay *display);
+void ui_display_shift(MathDisplay *display, gint count);
+void ui_display_toggle_bit(MathDisplay *display, guint bit);
 
 #endif /* UI_DISPLAY_H */

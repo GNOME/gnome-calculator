@@ -21,7 +21,7 @@
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
               </object>
             </child>
-            <signal name="clicked" handler="popup_cb"/>
+            <signal name="clicked" handler="store_cb"/>
             <child>
               <object class="GtkHBox" id="hbox20">
                 <property name="visible">True</property>
@@ -69,7 +69,7 @@
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
               </object>
             </child>
-            <signal name="clicked" handler="popup_cb"/>
+            <signal name="clicked" handler="recall_cb"/>
             <child>
               <object class="GtkHBox" id="hbox19">
                 <property name="visible">True</property>
@@ -763,7 +763,7 @@
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="button_cb"/>
+            <signal name="clicked" handler="numeric_point_cb"/>
           </object>
           <packing>
             <property name="left_attach">1</property>

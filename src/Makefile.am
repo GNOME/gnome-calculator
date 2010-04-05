@@ -38,8 +38,6 @@ gcalctool_SOURCES = \
 	ui-buttons.h \
 	ui-display.c \
 	ui-display.h \
-	ui-financial.c \
-	ui-financial.h \
 	ui-preferences.c \
 	ui-preferences.h \
 	unittest.c \

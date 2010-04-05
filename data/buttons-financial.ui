@@ -21,7 +21,7 @@
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
               </object>
             </child>
-            <signal name="clicked" handler="popup_cb"/>
+            <signal name="clicked" handler="store_cb"/>
             <child>
               <object class="GtkHBox" id="hbox20">
                 <property name="visible">True</property>
@@ -69,7 +69,7 @@
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
               </object>
             </child>
-            <signal name="clicked" handler="popup_cb"/>
+            <signal name="clicked" handler="recall_cb"/>
             <child>
               <object class="GtkHBox" id="hbox19">
                 <property name="visible">True</property>
@@ -347,7 +347,7 @@
             </child>
             <signal name="clicked" handler="button_cb"/>
             <child>
-              <object class="GtkLabel" id="label14">
+              <object class="GtkLabel" id="label27">
                 <property name="visible">True</property>
                 <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
                 <property name="use_markup">True</property>
@@ -763,7 +763,7 @@
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="button_cb"/>
+            <signal name="clicked" handler="numeric_point_cb"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -1197,7 +1197,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table1">
             <property name="visible">True</property>
@@ -1270,7 +1269,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label3">
+              <object class="GtkLabel" id="label6">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes" comments="Compounding Term Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
@@ -1285,7 +1284,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label2">
+              <object class="GtkLabel" id="label9">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes" comments="Compounding Term Dialog: Description of calculation">Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period.</property>
                 <property name="wrap">True</property>
@@ -1297,7 +1296,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="GtkLabel" id="label16">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes" comments="Compounding Term Dialog: Label before future value input">_Future Value:</property>
@@ -1374,7 +1373,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table2">
             <property name="visible">True</property>
@@ -1551,7 +1549,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table3">
             <property name="visible">True</property>
@@ -1728,7 +1725,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox10">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table10">
             <property name="visible">True</property>
@@ -1873,7 +1869,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table4">
             <property name="visible">True</property>
@@ -1926,7 +1921,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label20">
+              <object class="GtkLabel" id="label21">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes" comments="Periodic Payment Dialog: Label before term input">_Term:</property>
@@ -2051,7 +2046,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox5">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table5">
             <property name="visible">True</property>
@@ -2061,7 +2055,7 @@
             <property name="column_spacing">6</property>
             <property name="row_spacing">6</property>
             <child>
-              <object class="GtkLabel" id="label23">
+              <object class="GtkLabel" id="label36">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes" comments="Present Value Dialog: Description of calculation">Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term. </property>
@@ -2229,7 +2223,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox6">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table6">
             <property name="visible">True</property>
@@ -2407,7 +2400,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox7">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table7">
             <property name="visible">True</property>
@@ -2585,7 +2577,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox8">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table8">
             <property name="visible">True</property>
@@ -2794,7 +2785,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox9">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkTable" id="table9">
             <property name="visible">True</property>
@@ -2970,7 +2960,6 @@
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox11">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <object class="GtkTable" id="table11">
@@ -2981,7 +2970,7 @@
             <property name="column_spacing">6</property>
             <property name="row_spacing">6</property>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="GtkLabel" id="label42">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Converts between different currencies. Enter the amount and the currency you want to convert from on the upper row, and the currency you want to convert to on the lower row, and the amount will be displayed on the lower row.</property>
                 <property name="wrap">True</property>

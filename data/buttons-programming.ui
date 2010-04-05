@@ -1823,7 +1823,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="popup_cb"/>
+                <signal name="clicked" handler="store_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox20">
                     <property name="visible">True</property>
@@ -1871,7 +1871,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="popup_cb"/>
+                <signal name="clicked" handler="recall_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox19">
                     <property name="visible">True</property>
@@ -2563,7 +2563,7 @@
                 <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb"/>
+                <signal name="clicked" handler="numeric_point_cb"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -2988,7 +2988,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift right button">Shift Right</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="popup_cb"/>
+                <signal name="clicked" handler="shift_right_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox10">
                     <property name="visible">True</property>
@@ -3037,7 +3037,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift left button">Shift Left</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="popup_cb"/>
+                <signal name="clicked" handler="shift_left_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox11">
                     <property name="visible">True</property>
@@ -3213,7 +3213,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the insert character button">Insert Character</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="insert_ascii_cb"/>
+                <signal name="clicked" handler="insert_character_code_cb"/>
               </object>
               <packing>
                 <property name="left_attach">9</property>
@@ -3230,14 +3230,14 @@
       </object>
     </child>
   </object>
-  <object class="GtkDialog" id="ascii_dialog">
+  <object class="GtkDialog" id="character_code_dialog">
     <property name="border_width">6</property>
-    <property name="title" translatable="yes" comments="Title of insert ASCII dialog">Insert ASCII Value</property>
+    <property name="title" translatable="yes" comments="Title of insert character code dialog">Insert Character Code</property>
     <property name="resizable">False</property>
     <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
-    <signal name="response" handler="ascii_dialog_response_cb"/>
-    <signal name="delete_event" handler="ascii_dialog_delete_cb"/>
+    <signal name="response" handler="character_code_dialog_response_cb"/>
+    <signal name="delete_event" handler="character_code_dialog_delete_cb"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
@@ -3250,7 +3250,7 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes" comments="Insert ASCII dialog: Label before character entry">Ch_aracter:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ascii_entry</property>
+                <property name="mnemonic_widget">character_code_entry</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -3259,12 +3259,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="ascii_entry">
+              <object class="GtkEntry" id="character_code_entry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="max_length">1</property>
                 <property name="invisible_char">&#x25CF;</property>
-                <signal name="activate" handler="ascii_dialog_activate_cb"/>
+                <signal name="activate" handler="character_code_dialog_activate_cb"/>
               </object>
               <packing>
                 <property name="expand">False</property>
