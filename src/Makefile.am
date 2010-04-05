@@ -15,6 +15,10 @@ gcalctool_SOURCES = \
 	display.h \
 	get.c \
 	get.h \
+	math-buttons.c \
+	math-buttons.h \
+	math-display.c \
+	math-display.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \
@@ -34,10 +38,6 @@ gcalctool_SOURCES = \
 	register.h \
 	ui.c \
 	ui.h \
-	ui-buttons.c \
-	ui-buttons.h \
-	ui-display.c \
-	ui-display.h \
 	ui-preferences.c \
 	ui-preferences.h \
 	unittest.c \

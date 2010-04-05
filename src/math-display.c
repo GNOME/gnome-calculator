@@ -19,7 +19,7 @@
 #include <string.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "ui-display.h"
+#include "math-display.h"
 #include "display.h"
 #include "calctool.h"
 
@@ -46,19 +46,19 @@ struct MathDisplayPrivate
     char *last_text;
 };
 
-G_DEFINE_TYPE (MathDisplay, ui_display, GTK_TYPE_VBOX);
+G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VBOX);
 
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 MathDisplay *
-ui_display_new()
+math_display_new()
 {
-    return g_object_new (ui_display_get_type(), NULL);
+    return g_object_new (math_display_get_type(), NULL);
 }
 
 
 gchar *
-ui_display_get_text(MathDisplay *display)
+math_display_get_text(MathDisplay *display)
 {
     GtkTextIter start, end;
     gtk_text_buffer_get_bounds(display->priv->display_buffer, &start, &end);
@@ -66,20 +66,20 @@ ui_display_get_text(MathDisplay *display)
 }
 
 
-const gchar *ui_display_get_digit_text(MathDisplay *display, guint digit)
+const gchar *math_display_get_digit_text(MathDisplay *display, guint digit)
 {
     return v->digits[digit];
 }
 
 
-const gchar *ui_display_get_numeric_point_text(MathDisplay *display)
+const gchar *math_display_get_numeric_point_text(MathDisplay *display)
 {
     return v->radix;
 }
 
 
 void
-ui_display_set_number_mode(MathDisplay *display, NumberMode mode)
+math_display_set_number_mode(MathDisplay *display, NumberMode mode)
 {
     if (display->priv->number_mode == mode)
         return;
@@ -92,7 +92,7 @@ ui_display_set_number_mode(MathDisplay *display, NumberMode mode)
 
 
 NumberMode
-ui_display_get_number_mode(MathDisplay *display)
+math_display_get_number_mode(MathDisplay *display)
 {
     return display->priv->number_mode;
 }
@@ -112,7 +112,7 @@ do_button(MathDisplay *display, int function, gpointer arg)
     if (function == FN_CALCULATE ||
         function == FN_CLEAR ||
         (function == FN_TEXT && strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", (char *)arg) == NULL)) {
-        ui_display_set_number_mode(display, NORMAL);
+        math_display_set_number_mode(display, NORMAL);
     }
 
     if (gtk_text_buffer_get_selection_bounds(display->priv->display_buffer, &start, &end)) {
@@ -144,114 +144,114 @@ do_button(MathDisplay *display, int function, gpointer arg)
 
 
 void
-ui_display_store(MathDisplay *display, const char *name)
+math_display_store(MathDisplay *display, const gchar *name)
 {
     do_button(display, FN_STORE, (gpointer)name);
 }
 
 
 void
-ui_display_recall(MathDisplay *display, const char *name)
+math_display_recall(MathDisplay *display, const gchar *name)
 {
     do_button(display, FN_RECALL, (gpointer)name);
 }
 
 
 void
-ui_display_insert(MathDisplay *display, const char *text)
+math_display_insert(MathDisplay *display, const gchar *text)
 {
     do_button(display, FN_TEXT, (gpointer) text);
 }
 
 
 void
-ui_display_insert_digit(MathDisplay *display, unsigned int digit)
+math_display_insert_digit(MathDisplay *display, unsigned int digit)
 {
     static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
     static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
     if (display->priv->number_mode == NORMAL || digit >= 10)
-        ui_display_insert(display, v->digits[digit]);
+        math_display_insert(display, v->digits[digit]);
     else if (display->priv->number_mode == SUPERSCRIPT)
-        ui_display_insert(display, superscript_digits[digit]);
+        math_display_insert(display, superscript_digits[digit]);
     else if (display->priv->number_mode == SUBSCRIPT)
-        ui_display_insert(display, subscript_digits[digit]);
+        math_display_insert(display, subscript_digits[digit]);
 }
 
 
 void
-ui_display_insert_numeric_point(MathDisplay *display)
+math_display_insert_numeric_point(MathDisplay *display)
 {
-    ui_display_insert(display, v->radix);
+    math_display_insert(display, v->radix);
 }
 
 
 void
-ui_display_insert_exponent(MathDisplay *display)
+math_display_insert_exponent(MathDisplay *display)
 {
-    ui_display_insert(display, "×10");
-    ui_display_set_number_mode(display, SUPERSCRIPT);
+    math_display_insert(display, "×10");
+    math_display_set_number_mode(display, SUPERSCRIPT);
 }
 
 
 void
-ui_display_insert_character(MathDisplay *display, const char *character)
+math_display_insert_character(MathDisplay *display, const char *character)
 {
     do_button(display, FN_INSERT_CHARACTER, (gpointer)character);
 }
 
 
 void
-ui_display_insert_subtract(MathDisplay *display)
+math_display_insert_subtract(MathDisplay *display)
 {
     if (display->priv->number_mode == SUPERSCRIPT && display->priv->can_super_minus) {
-        ui_display_insert(display, "⁻");
+        math_display_insert(display, "⁻");
         display->priv->can_super_minus = FALSE;
     }
     else {
-        ui_display_insert(display, "−");
-        ui_display_set_number_mode(display, NORMAL);
+        math_display_insert(display, "−");
+        math_display_set_number_mode(display, NORMAL);
     }
 }
 
 
 void
-ui_display_solve(MathDisplay *display)
+math_display_solve(MathDisplay *display)
 {
     do_button(display, FN_CALCULATE, NULL);
 }
 
 
 void
-ui_display_factorize(MathDisplay *display)
+math_display_factorize(MathDisplay *display)
 {
     do_button(display, FN_FACTORIZE, NULL);
 }
 
 
 void
-ui_display_clear(MathDisplay *display)
+math_display_clear(MathDisplay *display)
 {
     do_button(display, FN_CLEAR, NULL);  
 }
 
 
 void
-ui_display_shift(MathDisplay *display, gint count)
+math_display_shift(MathDisplay *display, gint count)
 {
     do_button(display, FN_SHIFT, GINT_TO_POINTER(count));
 }
 
 
 void
-ui_display_toggle_bit(MathDisplay *display, guint bit)
+math_display_toggle_bit(MathDisplay *display, guint bit)
 {
     do_button(display, FN_TOGGLE_BIT, GINT_TO_POINTER(bit));
 }
 
 
 void
-ui_display_set(MathDisplay *display, char *str, int cursor)
+math_display_set(MathDisplay *display, char *str, int cursor)
 {
     GtkTextIter iter;
     GtkAdjustment *adj;
@@ -268,14 +268,14 @@ ui_display_set(MathDisplay *display, char *str, int cursor)
 
 
 void
-ui_display_set_status(MathDisplay *display, const gchar *message)
+math_display_set_status(MathDisplay *display, const gchar *message)
 {
     gtk_text_buffer_set_text(display->priv->info_buffer, message, -1);
 }
 
 
 void
-ui_display_copy(MathDisplay *display)
+math_display_copy(MathDisplay *display)
 {
     gchar *string = NULL;
     GtkTextIter start, end;
@@ -283,7 +283,7 @@ ui_display_copy(MathDisplay *display)
     if (gtk_text_buffer_get_selection_bounds(display->priv->display_buffer, &start, &end) == TRUE)
         string = gtk_text_buffer_get_text(display->priv->display_buffer, &start, &end, FALSE);
     else
-        string = ui_display_get_text(display);
+        string = math_display_get_text(display);
 
     if (display->priv->shelf != NULL)
         g_free(display->priv->shelf);
@@ -337,34 +337,34 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         switch(event->keyval)
         {
         case GDK_b:
-            ui_display_set_base(display, 2);
+            math_display_set_base(display, 2);
             return TRUE;
         case GDK_d:
-            ui_display_set_base(display, 10);
+            math_display_set_base(display, 10);
             return TRUE;
         case GDK_e:
-            ui_display_insert_exponent(display);
+            math_display_insert_exponent(display);
             return TRUE;
         case GDK_f:
-            ui_display_factorize(display);
+            math_display_factorize(display);
             return TRUE;
         case GDK_h:
-            ui_display_set_base(display, 16);
+            math_display_set_base(display, 16);
             return TRUE;
         case GDK_i:
-            ui_display_insert(display, "⁻¹");
+            math_display_insert(display, "⁻¹");
             return TRUE;
         case GDK_o:
-            ui_display_set_base(display, 8);
+            math_display_set_base(display, 8);
             return TRUE;
         case GDK_p:
-            ui_display_insert(display, "π");
+            math_display_insert(display, "π");
             return TRUE;
         case GDK_r:
-            ui_display_insert(display, "√");
+            math_display_insert(display, "√");
             return TRUE;
         case GDK_u:
-            ui_display_insert(display, "µ");
+            math_display_insert(display, "µ");
             return TRUE;
         }
     }
@@ -372,34 +372,34 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         switch(event->keyval)
         {
         case GDK_0:
-            ui_display_insert(display, "⁰");
+            math_display_insert(display, "⁰");
             return TRUE;
         case GDK_1:
-            ui_display_insert(display, "¹");
+            math_display_insert(display, "¹");
             return TRUE;
         case GDK_2:
-            ui_display_insert(display, "²");
+            math_display_insert(display, "²");
             return TRUE;
         case GDK_3:
-            ui_display_insert(display, "³");
+            math_display_insert(display, "³");
             return TRUE;
         case GDK_4:
-            ui_display_insert(display, "⁴");
+            math_display_insert(display, "⁴");
             return TRUE;
         case GDK_5:
-            ui_display_insert(display, "⁵");
+            math_display_insert(display, "⁵");
             return TRUE;
         case GDK_6:
-            ui_display_insert(display, "⁶");
+            math_display_insert(display, "⁶");
             return TRUE;
         case GDK_7:
-            ui_display_insert(display, "⁷");
+            math_display_insert(display, "⁷");
             return TRUE;
         case GDK_8:
-            ui_display_insert(display, "⁸");
+            math_display_insert(display, "⁸");
             return TRUE;
         case GDK_9:
-            ui_display_insert(display, "⁹");
+            math_display_insert(display, "⁹");
             return TRUE;
         }
     }
@@ -407,34 +407,34 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         switch(event->keyval)
         {
         case GDK_0:
-            ui_display_insert(display, "₀");
+            math_display_insert(display, "₀");
             return TRUE;
         case GDK_1:
-            ui_display_insert(display, "₁");
+            math_display_insert(display, "₁");
             return TRUE;
         case GDK_2:
-            ui_display_insert(display, "₂");
+            math_display_insert(display, "₂");
             return TRUE;
         case GDK_3:
-            ui_display_insert(display, "₃");
+            math_display_insert(display, "₃");
             return TRUE;
         case GDK_4:
-            ui_display_insert(display, "₄");
+            math_display_insert(display, "₄");
             return TRUE;
         case GDK_5:
-            ui_display_insert(display, "₅");
+            math_display_insert(display, "₅");
             return TRUE;
         case GDK_6:
-            ui_display_insert(display, "₆");
+            math_display_insert(display, "₆");
             return TRUE;
         case GDK_7:
-            ui_display_insert(display, "₇");
+            math_display_insert(display, "₇");
             return TRUE;
         case GDK_8:
-            ui_display_insert(display, "₈");
+            math_display_insert(display, "₈");
             return TRUE;
         case GDK_9:
-            ui_display_insert(display, "₉");
+            math_display_insert(display, "₉");
             return TRUE;
         }
     }
@@ -453,7 +453,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     if ((event->keyval == GDK_Escape && state == 0) ||
         (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
         (event->keyval == GDK_Delete && state == GDK_SHIFT_MASK)) {
-        ui_display_clear(display);
+        math_display_clear(display);
         return TRUE;
     }
 
@@ -461,7 +461,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     if ((event->keyval == GDK_Return && state == 0) ||
         (event->keyval == GDK_KP_Enter && state == 0)) {
         if (gtk_widget_has_focus(display->priv->display_item)) {
-            ui_display_solve(display);
+            math_display_solve(display);
             return TRUE;
         }
         else {
@@ -471,7 +471,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
 
     if (state == GDK_CONTROL_MASK && event->keyval == GDK_minus) 
     {
-        ui_display_insert(display, "⁻");
+        math_display_insert(display, "⁻");
         return TRUE;
     }
 
@@ -481,24 +481,24 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
     // FIXME: event->string deprecated
 
     if (strcmp(event->string, "-") == 0 || strcmp(event->string, "−") == 0) {
-        ui_display_insert_subtract(display);
+        math_display_insert_subtract(display);
         return TRUE;
     }
 
     for (i = 0; conversions[i]; i++) {
         if (strcmp(event->string, conversions[i]) == 0) {
-            ui_display_insert(display, conversion_values[i]);
+            math_display_insert(display, conversion_values[i]);
             return TRUE;
         }
     }
     if (strcmp(event->string, ".") == 0) {
-        ui_display_insert(display, v->radix);
+        math_display_insert(display, v->radix);
         return TRUE;
     }
 
     /* Some keyboards use this keyval for '^' (e.g. German) */
     if (event->keyval == GDK_dead_circumflex) {
-        ui_display_insert(display, "^");
+        math_display_insert(display, "^");
         return TRUE;
     }
 
@@ -511,7 +511,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         // FIXME: Should open right shift menu (programming mode)
         return TRUE;
     case '\n':
-        ui_display_solve(display);
+        math_display_solve(display);
         return TRUE;
     }
   
@@ -520,7 +520,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         return FALSE;
 
     if (event->string[0] != '\0') {
-        ui_display_insert(display, event->string);
+        math_display_insert(display, event->string);
         return TRUE;
     }
 
@@ -532,7 +532,7 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
 static void
 popup_paste_cb(GtkWidget *menu, MathDisplay *display)
 {
-    ui_display_paste(display);
+    math_display_paste(display);
 }
 
 
@@ -574,7 +574,7 @@ on_paste(GtkClipboard *clipboard, const gchar *text, MathDisplay *display)
 
 
 void
-ui_display_paste(MathDisplay *display)
+math_display_paste(MathDisplay *display)
 {
     gtk_clipboard_request_text(gtk_clipboard_get(display->priv->clipboard_atom),
                                (GtkClipboardTextReceivedFunc)on_paste, display);
@@ -585,7 +585,7 @@ static gboolean
 middle_click_paste_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display)
 {
     if (event->button == 2)
-        ui_display_paste(display);
+        math_display_paste(display);
 
     return FALSE;
 }
@@ -594,16 +594,16 @@ middle_click_paste_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *dis
 static void
 paste_cb(GtkWidget *widget, MathDisplay *display)
 {
-    ui_display_paste(display);
+    math_display_paste(display);
 }
 
 
 void
-ui_display_set_base(MathDisplay *display, gint base)
+math_display_set_base(MathDisplay *display, gint base)
 {
     /* If has a number already in a base, then solve and convert it */
     if (!display_is_result(&v->display) && display_is_number_with_base(&v->display))
-        ui_display_solve(display);
+        math_display_solve(display);
 
     if (display_is_result(&v->display)) {
         if (base == 2)
@@ -617,17 +617,17 @@ ui_display_set_base(MathDisplay *display, gint base)
     }
     else {
         if (base == 2)
-            ui_display_insert(display, "₂");
+            math_display_insert(display, "₂");
         else if (base == 8)
-            ui_display_insert(display, "₈");
+            math_display_insert(display, "₈");
         else if (base == 16)
-            ui_display_insert(display, "₁₆");
+            math_display_insert(display, "₁₆");
     }
 }
 
 
 static void
-ui_display_class_init (MathDisplayClass *klass)
+math_display_class_init (MathDisplayClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -672,12 +672,12 @@ ui_display_class_init (MathDisplayClass *klass)
                           </object>
  */
 static void 
-ui_display_init(MathDisplay *display)
+math_display_init(MathDisplay *display)
 {
     GtkWidget *vbox, *info_view;
     PangoFontDescription *font_desc;
 
-    display->priv = G_TYPE_INSTANCE_GET_PRIVATE (display, ui_display_get_type(), MathDisplayPrivate);
+    display->priv = G_TYPE_INSTANCE_GET_PRIVATE (display, math_display_get_type(), MathDisplayPrivate);
     display->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     display->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
 

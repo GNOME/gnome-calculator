@@ -204,7 +204,7 @@ display_set_number(GCDisplay *display, const MPNumber *x)
     display_set_string(display, text, -1);
 
     enabled = display_get_unsigned_integer(display, &bit_value);
-    ui_buttons_set_bitfield(ui_get_buttons(X), enabled, bit_value);
+    math_buttons_set_bitfield(ui_get_buttons(X), enabled, bit_value);
 }
 
 
@@ -252,7 +252,7 @@ display_refresh(GCDisplay *display)
 
     cursor = display_get_cursor(display);
     display_make_text(display, localized, MAX_LOCALIZED, &cursor);
-    ui_display_set(ui_get_display(X), localized, cursor);
+    math_display_set(ui_get_display(X), localized, cursor);
 }
 
 
@@ -287,7 +287,7 @@ display_set_cursor(GCDisplay *display, int cursor)
 void
 display_set_error(GCDisplay *display, const char *message)
 {
-    ui_display_set_status(ui_get_display(X), message);
+    math_display_set_status(ui_get_display(X), message);
 }
 
 
@@ -366,9 +366,9 @@ display_pop(GCDisplay *display)
 {
     if (display->h.current != display->h.begin) {
         display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
-        ui_display_set_status(ui_get_display(X), "");
+        math_display_set_status(ui_get_display(X), "");
     } else {
-        ui_display_set_status(ui_get_display(X), _("No undo history"));
+        math_display_set_status(ui_get_display(X), _("No undo history"));
     }
 
     display_refresh(display);
@@ -380,9 +380,9 @@ display_unpop(GCDisplay *display)
 {
     if (display->h.current != display->h.end) {
         display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
-        ui_display_set_status(ui_get_display(X), "");
+        math_display_set_status(ui_get_display(X), "");
     } else {
-        ui_display_set_status(ui_get_display(X), _("No redo steps"));
+        math_display_set_status(ui_get_display(X), _("No redo steps"));
     }
     get_state(display)->cursor = -1;
     display_refresh(display);
@@ -427,7 +427,7 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
         }
 
         cursor = 0;
-        for (c = ui_display_get_text(ui_get_display(X)); *c; c = g_utf8_next_char(c), cursor++) {
+        for (c = math_display_get_text(ui_get_display(X)); *c; c = g_utf8_next_char(c), cursor++) {
             gboolean use = TRUE;
 
             /* Ignore selected part */
@@ -481,7 +481,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor_start < 0) {
         int len;
-        len = g_utf8_strlen(ui_display_get_text(ui_get_display(X)), -1);
+        len = g_utf8_strlen(math_display_get_text(ui_get_display(X)), -1);
         display_insert(display, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
         display_insert(display, cursor_start, cursor_end, "");
@@ -912,7 +912,7 @@ do_shift(GCDisplay *display, int count)
     if (!display_is_usable_number(display, &z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
-        ui_display_set_status(ui_get_display(X), _("No sane value to bitwise shift"));
+        math_display_set_status(ui_get_display(X), _("No sane value to bitwise shift"));
     }
     else {
         mp_shift(&z, count, display_get_answer(display));
@@ -928,7 +928,7 @@ do_factorize()
 
     if (!display_is_usable_number(&v->display, &value)) {
         /* Translators: Error displayed when trying to factorize a non-integer value */
-        ui_display_set_status(ui_get_display(X), _("Need an integer to factorize"));
+        math_display_set_status(ui_get_display(X), _("Need an integer to factorize"));
         return;
     }
     display_clear(&v->display);
@@ -954,7 +954,7 @@ do_sto(GCDisplay *display, const char *name)
     MPNumber t;
 
     if (!display_is_usable_number(display, &t))
-        ui_display_set_status(ui_get_display(X), _("No sane value to store"));
+        math_display_set_status(ui_get_display(X), _("No sane value to store"));
     else
         register_set_value(name, &t);
 }
@@ -985,7 +985,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
     display_set_cursor(display, cursor_start);
     ans = display_get_answer(display);
 
-    ui_display_set_status(ui_get_display(X), "");
+    math_display_set_status(ui_get_display(X), "");
 
     switch (function) {
         case FN_CLEAR:
@@ -1105,7 +1105,7 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
                         break;
                 }
                 if (message)
-                    ui_display_set_status(ui_get_display(X), message);
+                    math_display_set_status(ui_get_display(X), message);
             }
             break;
 
@@ -1119,5 +1119,5 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
     }
 
     enabled = display_get_unsigned_integer(display, &bit_value);
-    ui_buttons_set_bitfield(ui_get_buttons(X), enabled, bit_value);
+    math_buttons_set_bitfield(ui_get_buttons(X), enabled, bit_value);
 }

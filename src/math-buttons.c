@@ -16,7 +16,7 @@
  *  02111-1307, USA.
  */
 
-#include "ui-buttons.h"
+#include "math-buttons.h"
 #include "register.h"
 #include "financial.h"
 #include "currency.h"
@@ -57,7 +57,7 @@ struct MathButtonsPrivate
     GtkWidget *character_code_entry;
 };
 
-G_DEFINE_TYPE (MathButtons, ui_buttons, GTK_TYPE_VBOX);
+G_DEFINE_TYPE (MathButtons, math_buttons, GTK_TYPE_VBOX);
 
 #define UI_BASIC_FILE       UI_DIR "/buttons-basic.ui"
 #define UI_ADVANCED_FILE    UI_DIR "/buttons-advanced.ui"
@@ -141,9 +141,9 @@ static char *finc_dialog_fields[][5] = {
 
 
 MathButtons *
-ui_buttons_new(MathDisplay *display)
+math_buttons_new(MathDisplay *display)
 {
-    return g_object_new (ui_buttons_get_type(), "display", display, NULL);
+    return g_object_new (math_buttons_get_type(), "display", display, NULL);
 }
 
 
@@ -342,11 +342,11 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         snprintf(name, MAXLINE, "calc_%d_button", i);
         button = GET_WIDGET(builder, name);     
         if (button)
-            gtk_button_set_label(GTK_BUTTON(button), ui_display_get_digit_text(buttons->priv->display, i));
+            gtk_button_set_label(GTK_BUTTON(button), math_display_get_digit_text(buttons->priv->display, i));
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget)
-        gtk_button_set_label(GTK_BUTTON(widget), ui_display_get_numeric_point_text(buttons->priv->display));
+        gtk_button_set_label(GTK_BUTTON(widget), math_display_get_numeric_point_text(buttons->priv->display));
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
@@ -358,13 +358,13 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     widget = GET_WIDGET(builder, "superscript_togglebutton");
     if (widget) {
         buttons->priv->superscript_toggles = g_list_append(buttons->priv->superscript_toggles, widget);
-        if (ui_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
+        if (math_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
     widget = GET_WIDGET(builder, "subscript_togglebutton");
     if (widget) {
         buttons->priv->subscript_toggles = g_list_append(buttons->priv->subscript_toggles, widget);
-        if (ui_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
+        if (math_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
@@ -469,7 +469,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
 
 void
-ui_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
+math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 {
     ButtonMode old_mode;
 
@@ -488,7 +488,7 @@ ui_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 
 
 ButtonMode
-ui_buttons_get_mode(MathButtons *buttons)
+math_buttons_get_mode(MathButtons *buttons)
 {
     return buttons->priv->mode;
 }
@@ -498,7 +498,7 @@ G_MODULE_EXPORT
 void
 base_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_set_base(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
+    math_display_set_base(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
 }
 
 
@@ -506,7 +506,7 @@ G_MODULE_EXPORT
 void
 exponent_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_insert_exponent(buttons->priv->display);
+    math_display_insert_exponent(buttons->priv->display);
 }
 
 
@@ -514,7 +514,7 @@ G_MODULE_EXPORT
 void
 subtract_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_insert_subtract(buttons->priv->display);  
+    math_display_insert_subtract(buttons->priv->display);  
 }
 
 
@@ -522,7 +522,7 @@ G_MODULE_EXPORT
 void
 button_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_insert(buttons->priv->display, g_object_get_data(G_OBJECT(widget), "calc_text"));
+    math_display_insert(buttons->priv->display, g_object_get_data(G_OBJECT(widget), "calc_text"));
 }
 
 
@@ -530,14 +530,14 @@ G_MODULE_EXPORT
 void
 store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 {
-    ui_display_store(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));
+    math_display_store(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));
 }
 
 
 static void
 recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 {
-    ui_display_recall(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));  
+    math_display_recall(buttons->priv->display, g_object_get_data(G_OBJECT(menu), "register_id"));  
 }
 
 
@@ -545,7 +545,7 @@ G_MODULE_EXPORT
 void
 solve_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_solve(buttons->priv->display);
+    math_display_solve(buttons->priv->display);
 }
 
 
@@ -553,14 +553,14 @@ G_MODULE_EXPORT
 void
 clear_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_clear(buttons->priv->display);
+    math_display_clear(buttons->priv->display);
 }
 
 
 static void
 shift_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_shift(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "shiftcount")));
+    math_display_shift(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "shiftcount")));
 }
 
 
@@ -781,7 +781,7 @@ G_MODULE_EXPORT
 void
 factorize_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_factorize (buttons->priv->display);
+    math_display_factorize (buttons->priv->display);
 }
 
 
@@ -789,7 +789,7 @@ G_MODULE_EXPORT
 void
 digit_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_insert_digit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "calc_digit")));
+    math_display_insert_digit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "calc_digit")));
 }
 
 
@@ -797,7 +797,7 @@ G_MODULE_EXPORT
 void
 numeric_point_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    ui_display_insert_numeric_point(buttons->priv->display);
+    math_display_insert_numeric_point(buttons->priv->display);
 }
 
 
@@ -1025,7 +1025,7 @@ character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButto
     text = gtk_entry_get_text(GTK_ENTRY(buttons->priv->character_code_entry));
 
     if (response_id == GTK_RESPONSE_OK)
-        ui_display_insert_character(buttons->priv->display, text);
+        math_display_insert_character(buttons->priv->display, text);
 
     gtk_widget_hide(dialog);
 }
@@ -1052,7 +1052,7 @@ G_MODULE_EXPORT
 gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons)
 {
-    ui_display_toggle_bit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index")));
+    math_display_toggle_bit(buttons->priv->display, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(event_box), "bit_index")));
     return TRUE;
 }
 
@@ -1063,9 +1063,9 @@ void
 set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       ui_display_set_number_mode(buttons->priv->display, SUPERSCRIPT);
-    else if (ui_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
-       ui_display_set_number_mode(buttons->priv->display, NORMAL);
+       math_display_set_number_mode(buttons->priv->display, SUPERSCRIPT);
+    else if (math_display_get_number_mode(buttons->priv->display) == SUPERSCRIPT)
+       math_display_set_number_mode(buttons->priv->display, NORMAL);
 }
 
 
@@ -1074,15 +1074,15 @@ void
 set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       ui_display_set_number_mode(buttons->priv->display, SUBSCRIPT);
-    else if (ui_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
-       ui_display_set_number_mode(buttons->priv->display, NORMAL);
+       math_display_set_number_mode(buttons->priv->display, SUBSCRIPT);
+    else if (math_display_get_number_mode(buttons->priv->display) == SUBSCRIPT)
+       math_display_set_number_mode(buttons->priv->display, NORMAL);
 }
 
 
 // FIXME: Watch for display changes from MathEngine
 void
-ui_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits)
+math_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits)
 {
     int i;
     const gchar *label;  
@@ -1108,7 +1108,7 @@ number_mode_changed_cb(MathDisplay *display, MathButtons *buttons)
     GList *i;
     NumberMode mode;
   
-    mode = ui_display_get_number_mode(display);
+    mode = math_display_get_number_mode(display);
 
     for (i = buttons->priv->superscript_toggles; i; i = i->next) {
         GtkWidget *widget = i->data;
@@ -1122,7 +1122,7 @@ number_mode_changed_cb(MathDisplay *display, MathButtons *buttons)
 
 
 static void
-ui_buttons_set_property (GObject      *object,
+math_buttons_set_property (GObject      *object,
                          guint         prop_id,
                          const GValue *value,
                          GParamSpec   *pspec)
@@ -1144,7 +1144,7 @@ ui_buttons_set_property (GObject      *object,
 
 
 static void
-ui_buttons_get_property (GObject    *object,
+math_buttons_get_property (GObject    *object,
                          guint       prop_id,
                          GValue     *value,
                          GParamSpec *pspec)
@@ -1165,12 +1165,12 @@ ui_buttons_get_property (GObject    *object,
 
 
 static void
-ui_buttons_class_init (MathButtonsClass *klass)
+math_buttons_class_init (MathButtonsClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-    object_class->get_property = ui_buttons_get_property;
-    object_class->set_property = ui_buttons_set_property;
+    object_class->get_property = math_buttons_get_property;
+    object_class->set_property = math_buttons_set_property;
 
     g_type_class_add_private (klass, sizeof (MathButtonsPrivate));
 
@@ -1179,15 +1179,15 @@ ui_buttons_class_init (MathButtonsClass *klass)
                                      g_param_spec_object ("display",
                                                           "display",
                                                           "Display being controlled",
-                                                          ui_display_get_type(),
+                                                          math_display_get_type(),
                                                           G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 
 static void
-ui_buttons_init (MathButtons *buttons)
+math_buttons_init (MathButtons *buttons)
 {
-    buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, ui_buttons_get_type(), MathButtonsPrivate);
+    buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, math_buttons_get_type(), MathButtonsPrivate);
     buttons->priv->colour_numbers.red = 0;
     buttons->priv->colour_numbers.green = 0;
     buttons->priv->colour_numbers.blue = 65535;

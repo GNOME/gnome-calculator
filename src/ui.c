@@ -20,8 +20,6 @@
 #include <gtk/gtk.h>
 
 #include "ui.h"
-#include "ui-display.h"
-#include "ui-buttons.h"
 #include "ui-preferences.h"
 #include "config.h"
 #include "get.h"
@@ -80,7 +78,7 @@ ui_set_mode(GCalctoolUI *ui, ButtonMode mode)
     /* Save mode */
     set_enumerated_resource(R_MODE, mode_names, (int)mode);
 
-    ui_buttons_set_mode(ui->priv->buttons, mode);
+    math_buttons_set_mode(ui->priv->buttons, mode);
 
     /* Update the menu */
     switch (mode) {
@@ -145,7 +143,7 @@ G_MODULE_EXPORT
 void
 copy_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    ui_display_copy(ui->priv->display);
+    math_display_copy(ui->priv->display);
 }
 
 
@@ -153,7 +151,7 @@ G_MODULE_EXPORT
 void
 paste_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    ui_display_paste(ui->priv->display);
+    math_display_paste(ui->priv->display);
 }
 
 
@@ -335,11 +333,11 @@ ui_init(GCalctoolUI *ui)
     ui->priv->right_aligned = TRUE;
     gtk_widget_show(scrolled_window);
 
-    ui->priv->display = ui_display_new();
+    ui->priv->display = math_display_new();
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), GTK_WIDGET(ui->priv->display));
     gtk_widget_show(GTK_WIDGET(ui->priv->display));
 
-    ui->priv->buttons = ui_buttons_new(ui->priv->display);
+    ui->priv->buttons = math_buttons_new(ui->priv->display);
     gtk_box_pack_start(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
     gtk_widget_show(GTK_WIDGET(ui->priv->buttons));
 

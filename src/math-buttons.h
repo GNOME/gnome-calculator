@@ -16,16 +16,16 @@
  *  02111-1307, USA.
  */
 
-#ifndef UI_BUTTONS_H
-#define UI_BUTTONS_H
+#ifndef MATH_BUTTONS_H
+#define MATH_BUTTONS_H
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include "ui-display.h"
+#include "math-display.h"
 
 G_BEGIN_DECLS
 
-#define MATH_BUTTONS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_buttons_get_type(), MathButtons))
+#define MATH_BUTTONS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_buttons_get_type(), MathButtons))
 
 typedef struct MathButtonsPrivate MathButtonsPrivate;
 
@@ -47,14 +47,14 @@ typedef enum {
     PROGRAMMING
 } ButtonMode;
 
-GType ui_buttons_get_type();
+GType math_buttons_get_type();
 
-MathButtons *ui_buttons_new(MathDisplay *display);
+MathButtons *math_buttons_new(MathDisplay *display);
 
-void ui_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits);
+void math_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits);
 
-void ui_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
+void math_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
 
-ButtonMode ui_buttons_get_mode(MathButtons *buttons);
+ButtonMode math_buttons_get_mode(MathButtons *buttons);
 
-#endif /* UI_BUTTONS_H */
+#endif /* MATH_BUTTONS_H */

@@ -21,8 +21,8 @@
 #define UI_H
 
 #include <glib-object.h>
-#include "ui-display.h"
-#include "ui-buttons.h"
+#include "math-display.h"
+#include "math-buttons.h"
 
 G_BEGIN_DECLS
 
