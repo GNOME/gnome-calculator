@@ -76,7 +76,7 @@ calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
     }
 
     if (len >= 0) {
-        display_set_error (&v->display,
+        display_set_error (v->display,
                            ("Error: the number of periods must be positive"));
         mp_set_from_integer(0, t);
     }
@@ -291,5 +291,5 @@ do_finc_expression(int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3,
        calc_term(&result, arg1, arg2, arg3);
        break;
     }
-    display_set_number(&v->display, &result);
+    display_set_number(v->display, &result);
 }

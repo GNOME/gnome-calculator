@@ -600,7 +600,7 @@ update_store_menu(MathButtons *buttons)
 
         t = register_get_value(registers[i]);
         if (t)
-            display_make_number(&v->display, value, MAXLINE, t);
+            display_make_number(v->display, value, MAXLINE, t);
         snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->store_menu_labels[i]), mstr);
     }
@@ -675,7 +675,7 @@ update_recall_menu(MathButtons *buttons)
 
         t = register_get_value(registers[i]);
         if (t)
-            display_make_number(&v->display, value, MAXLINE, t);
+            display_make_number(v->display, value, MAXLINE, t);
         snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->recall_menu_labels[i]), mstr);
     }
@@ -996,7 +996,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
     win = GTK_DIALOG(gtk_builder_get_object(buttons->priv->financial_ui, "currency_dialog"));
     c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
     c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-    if (display_is_usable_number(&v->display, &display_val)) {
+    if (display_is_usable_number(v->display, &display_val)) {
         double start_val = mp_cast_to_double(&display_val);
         gtk_spin_button_set_value(c_amount_upper, start_val);
     }
@@ -1009,7 +1009,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
         mp_set_from_string(result, &display_val);
         g_free(result);
 
-        display_set_number(&v->display, &display_val);
+        display_set_number(v->display, &display_val);
     }
 
     gtk_widget_hide(GTK_WIDGET(win));

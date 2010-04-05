@@ -77,7 +77,7 @@ angle_unit_combobox_changed_cb(GtkWidget *combo)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
     for (i = 0; unit_map[i].value != NULL && strcmp(unit_map[i].value, value) != 0; i++);
-    display_set_angle_unit(&v->display, unit_map[i].units);
+    display_set_angle_unit(v->display, unit_map[i].units);
 
     set_resource(R_TRIG, value);
 }
@@ -110,7 +110,7 @@ display_format_combobox_changed_cb(GtkWidget *combo)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
     for (i = 0; mode_map[i].value != NULL && strcmp(mode_map[i].value, value) != 0; i++);
-    display_set_format(&v->display, mode_map[i].format);
+    display_set_format(v->display, mode_map[i].format);
 
     set_resource(R_DISPLAY, value);
 }
@@ -127,7 +127,7 @@ word_size_combobox_changed_cb(GtkWidget *combo)
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
-    display_set_word_size(&v->display, value);
+    display_set_word_size(v->display, value);
 
     set_int_resource(R_WORDLEN, value);
 }
@@ -140,7 +140,7 @@ decimal_places_spin_change_value_cb(GtkWidget *spin)
     gint value = 0;
 
     value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-    display_set_accuracy(&v->display, value);
+    display_set_accuracy(v->display, value);
 
     set_int_resource(R_ACCURACY, value);
 }
@@ -153,7 +153,7 @@ thousands_separator_check_toggled_cb(GtkWidget *check)
     gboolean value;
 
     value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check));
-    display_set_show_thousands_separator(&v->display, value);
+    display_set_show_thousands_separator(v->display, value);
     set_boolean_resource(R_TSEP, value);
 }
 
@@ -165,7 +165,7 @@ trailing_zeroes_check_toggled_cb(GtkWidget *check)
     gboolean value;
 
     value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check));
-    display_set_show_trailing_zeroes(&v->display, value);
+    display_set_show_trailing_zeroes(v->display, value);
     set_boolean_resource(R_ZEROES, value);
 }
 

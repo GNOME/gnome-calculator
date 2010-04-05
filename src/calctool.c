@@ -27,7 +27,6 @@
 #include "currency.h"
 #include "unittest.h"
 #include "get.h"
-#include "display.h"
 #include "ui.h"
 #include "register.h"
 #include "mp-equation.h"
@@ -218,7 +217,7 @@ main(int argc, char **argv)
 
     init_state();
     register_init();
-    display_init(&v->display);
+    v->display = math_equation_new();
     ui_gtk_init(&argc, &argv);
 
     get_options(argc, argv);

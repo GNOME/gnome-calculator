@@ -25,7 +25,7 @@
 #include <errno.h>
 #include <glib.h>
 
-#include "display.h"
+#include "math-equation.h"
 
 #include "mp.h"
 #include "ui.h"
@@ -34,8 +34,23 @@
 #include "currency.h"
 #include "calctool.h"
 
-static GCDisplayState *
-get_state(GCDisplay *display)
+
+struct MathEquationPrivate
+{
+    gint fixme;
+};
+
+G_DEFINE_TYPE (MathEquation, math_equation, G_TYPE_OBJECT);
+
+MathEquation *
+math_equation_new()
+{
+    return g_object_new (math_equation_get_type(), NULL);
+}
+
+
+static MathEquationState *
+get_state(MathEquation *display)
 {
     return &(display->h.e[display->h.current]);
 }
@@ -47,7 +62,7 @@ get_state(GCDisplay *display)
 
 /* Add in the thousand separators characters if required */
 static void
-localize_expression(GCDisplay *display, char *dest, const char *src, int dest_length, int *cursor)
+localize_expression(MathEquation *display, char *dest, const char *src, int dest_length, int *cursor)
 {
     GString *output;
     const char *c, *d;
@@ -111,9 +126,9 @@ localize_expression(GCDisplay *display, char *dest, const char *src, int dest_le
 
 
 void
-display_clear(GCDisplay *display)
+display_clear(MathEquation *display)
 {
-    GCDisplayState *state;
+    MathEquationState *state;
 
     state = get_state(display);
     display_set_string(display, "", -1);
@@ -123,16 +138,16 @@ display_clear(GCDisplay *display)
 
 
 static const char *
-get_text(GCDisplay *display)
+get_text(MathEquation *display)
 {
     return get_state(display)->expression;
 }
 
 
 static char *
-get_expression(GCDisplay *display)
+get_expression(MathEquation *display)
 {
-    GCDisplayState *state;
+    MathEquationState *state;
 
     state = get_state(display);
     if(state->ans_start >= 0)
@@ -143,7 +158,7 @@ get_expression(GCDisplay *display)
 
 
 gboolean
-display_get_integer(GCDisplay *display, gint64 *value)
+display_get_integer(MathEquation *display, gint64 *value)
 {
     MPNumber t, min, max;
 
@@ -161,7 +176,7 @@ display_get_integer(GCDisplay *display, gint64 *value)
 
 
 gboolean
-display_get_unsigned_integer(GCDisplay *display, guint64 *value)
+display_get_unsigned_integer(MathEquation *display, guint64 *value)
 {
     MPNumber t, max;
 
@@ -179,14 +194,14 @@ display_get_unsigned_integer(GCDisplay *display, guint64 *value)
 
 
 MPNumber *
-display_get_answer(GCDisplay *display)
+display_get_answer(MathEquation *display)
 {
     return &get_state(display)->ans;
 }
 
 
 int
-display_get_cursor(GCDisplay *display)
+display_get_cursor(MathEquation *display)
 {
     return get_state(display)->cursor;
 }
@@ -194,7 +209,7 @@ display_get_cursor(GCDisplay *display)
 
 // FIXME: Looses accuracy
 void
-display_set_number(GCDisplay *display, const MPNumber *x)
+display_set_number(MathEquation *display, const MPNumber *x)
 {
     char text[MAX_DISPLAY];
     int enabled;
@@ -209,9 +224,9 @@ display_set_number(GCDisplay *display, const MPNumber *x)
 
 
 void
-display_set_answer(GCDisplay *display)
+display_set_answer(MathEquation *display)
 {
-    GCDisplayState *state;
+    MathEquationState *state;
     char text[MAX_DISPLAY];
 
     state = get_state(display);
@@ -223,10 +238,10 @@ display_set_answer(GCDisplay *display)
 
 
 static void
-display_make_text(GCDisplay *display, char *localized, int length, int *cursor)
+display_make_text(MathEquation *display, char *localized, int length, int *cursor)
 {
     char *str;
-    GCDisplayState *e;
+    MathEquationState *e;
 
     e = get_state(display);
 
@@ -245,7 +260,7 @@ display_make_text(GCDisplay *display, char *localized, int length, int *cursor)
 
 
 static void
-display_refresh(GCDisplay *display)
+display_refresh(MathEquation *display)
 {
     char localized[MAX_LOCALIZED];
     int cursor;
@@ -257,9 +272,9 @@ display_refresh(GCDisplay *display)
 
 
 void
-display_set_string(GCDisplay *display, const char *value, int cursor)
+display_set_string(MathEquation *display, const char *value, int cursor)
 {
-    GCDisplayState *e;
+    MathEquationState *e;
 
     if (value[0] == '\0')
         cursor = -1;
@@ -274,9 +289,9 @@ display_set_string(GCDisplay *display, const char *value, int cursor)
 
 
 void
-display_set_cursor(GCDisplay *display, int cursor)
+display_set_cursor(MathEquation *display, int cursor)
 {
-    GCDisplayState *e;
+    MathEquationState *e;
 
     e = get_state(display);
     e->cursor = cursor;
@@ -285,14 +300,14 @@ display_set_cursor(GCDisplay *display, int cursor)
 
 
 void
-display_set_error(GCDisplay *display, const char *message)
+display_set_error(MathEquation *display, const char *message)
 {
     math_display_set_status(ui_get_display(X), message);
 }
 
 
 void
-display_convert(GCDisplay *display, DisplayFormat format)
+display_convert(MathEquation *display, DisplayFormat format)
 {
     DisplayFormat old_format;
 
@@ -308,15 +323,15 @@ display_convert(GCDisplay *display, DisplayFormat format)
 
 
 static void
-copy_state(GCDisplayState *dst, GCDisplayState *src)
+copy_state(MathEquationState *dst, MathEquationState *src)
 {
-    memcpy(dst, src, sizeof(GCDisplayState));
+    memcpy(dst, src, sizeof(MathEquationState));
     dst->expression = strdup(src->expression);
 }
 
 
 void
-display_clear_stack(GCDisplay *display)
+display_clear_stack(MathEquation *display)
 {
     int i = display->h.begin;
     while (i != display->h.end) {
@@ -331,7 +346,7 @@ display_clear_stack(GCDisplay *display)
 
 
 void
-display_push(GCDisplay *display)
+display_push(MathEquation *display)
 {
     int c;
 
@@ -362,7 +377,7 @@ display_push(GCDisplay *display)
 
 
 void
-display_pop(GCDisplay *display)
+display_pop(MathEquation *display)
 {
     if (display->h.current != display->h.begin) {
         display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
@@ -376,7 +391,7 @@ display_pop(GCDisplay *display)
 
 
 void
-display_unpop(GCDisplay *display)
+display_unpop(MathEquation *display)
 {
     if (display->h.current != display->h.end) {
         display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
@@ -390,16 +405,16 @@ display_unpop(GCDisplay *display)
 
 
 gboolean
-display_is_undo_step(GCDisplay *display)
+display_is_undo_step(MathEquation *display)
 {
     return(display->h.current != display->h.begin);
 }
 
 
 void
-display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
+display_insert(MathEquation *display, int cursor_start, int cursor_end, const char *text)
 {
-    GCDisplayState *state;   
+    MathEquationState *state;   
     char buf[MAX_DISPLAY];
 
     state = get_state(display);
@@ -459,7 +474,7 @@ display_insert(GCDisplay *display, int cursor_start, int cursor_end, const char 
 
 
 void
-display_insert_number(GCDisplay *display, int cursor_start, int cursor_end, const MPNumber *value)
+display_insert_number(MathEquation *display, int cursor_start, int cursor_end, const MPNumber *value)
 {
     char text[MAX_DISPLAY];
     display_make_number(display, text, MAX_DISPLAY, value);
@@ -468,7 +483,7 @@ display_insert_number(GCDisplay *display, int cursor_start, int cursor_end, cons
 
 
 void
-display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
+display_backspace(MathEquation *display, int cursor_start, int cursor_end)
 {
     int cursor;
 
@@ -492,7 +507,7 @@ display_backspace(GCDisplay *display, int cursor_start, int cursor_end)
 }
 
 void
-display_delete(GCDisplay *display, int cursor_start, int cursor_end)
+display_delete(MathEquation *display, int cursor_start, int cursor_end)
 {
     /* Delete selected block */
     if (cursor_start != cursor_end)
@@ -503,16 +518,16 @@ display_delete(GCDisplay *display, int cursor_start, int cursor_end)
 
 
 gboolean
-display_is_empty(GCDisplay *display)
+display_is_empty(MathEquation *display)
 {
     return strcmp(get_text(display), "") == 0;
 }
 
 
 gboolean
-display_is_result(GCDisplay *display)
+display_is_result(MathEquation *display)
 {
-    GCDisplayState *state;
+    MathEquationState *state;
 
     state = get_state(display);
     if (state->ans_start == 0 && state->ans_end == g_utf8_strlen(state->expression, -1))
@@ -523,7 +538,7 @@ display_is_result(GCDisplay *display)
 
 
 gboolean
-display_is_usable_number(GCDisplay *display, MPNumber *z)
+display_is_usable_number(MathEquation *display, MPNumber *z)
 {
     if (display_is_empty(display)) {
         mp_set_from_integer(0, z);
@@ -538,7 +553,7 @@ display_is_usable_number(GCDisplay *display, MPNumber *z)
 
 
 gboolean
-display_is_number_with_base(GCDisplay *display)
+display_is_number_with_base(MathEquation *display)
 {
     MPNumber t;
     const char *text;
@@ -564,29 +579,7 @@ display_is_number_with_base(GCDisplay *display)
 
 
 void
-display_init(GCDisplay *display)
-{
-    int i;
-
-    memset(display, 0, sizeof(GCDisplay));
-
-    display->show_zeroes = FALSE;
-    display->show_tsep = FALSE;
-    display->format = DEC;
-    display->accuracy = 9;
-    display->word_size = 32;
-    display->angle_unit = MP_DEGREES;
-
-    for (i = 0; i < UNDO_HISTORY_LENGTH; i++) {
-        display->h.e[i].expression = strdup("");
-        display->h.e[i].ans_start = -1;
-        display->h.e[i].ans_end = -1;
-    }
-}
-
-
-void
-display_set_accuracy(GCDisplay *display, int accuracy)
+display_set_accuracy(MathEquation *display, int accuracy)
 {
     display->accuracy = accuracy;
     get_state(display)->cursor = -1;
@@ -595,7 +588,7 @@ display_set_accuracy(GCDisplay *display, int accuracy)
 
 
 void
-display_set_show_thousands_separator(GCDisplay *display, gboolean visible)
+display_set_show_thousands_separator(MathEquation *display, gboolean visible)
 {
     display->show_tsep = visible;
     display_set_cursor(display, -1);
@@ -604,7 +597,7 @@ display_set_show_thousands_separator(GCDisplay *display, gboolean visible)
 
 
 void
-display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible)
+display_set_show_trailing_zeroes(MathEquation *display, gboolean visible)
 {
     display->show_zeroes = visible;
     get_state(display)->cursor = -1;
@@ -613,7 +606,7 @@ display_set_show_trailing_zeroes(GCDisplay *display, gboolean visible)
 
 
 void
-display_set_format(GCDisplay *display, DisplayFormat format)
+display_set_format(MathEquation *display, DisplayFormat format)
 {
     display->format = format;
     get_state(display)->cursor = -1;
@@ -622,14 +615,14 @@ display_set_format(GCDisplay *display, DisplayFormat format)
 
 
 void
-display_set_word_size(GCDisplay *display, int word_size)
+display_set_word_size(MathEquation *display, int word_size)
 {
     display->word_size = word_size;
 }
 
 
 void
-display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
+display_set_angle_unit(MathEquation *display, MPAngleUnit angle_unit)
 {
     display->angle_unit = angle_unit;
 }
@@ -637,7 +630,7 @@ display_set_angle_unit(GCDisplay *display, MPAngleUnit angle_unit)
 
 /* Convert engineering or scientific number in the given base. */
 static void
-make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x, int base_)
+make_eng_sci(MathEquation *display, char *target, int target_len, const MPNumber *x, int base_)
 {
     char fixed[MAX_DIGITS], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -702,7 +695,7 @@ make_eng_sci(GCDisplay *display, char *target, int target_len, const MPNumber *x
 
 /* Convert MP number to character string. */
 void
-display_make_number(GCDisplay *display, char *target, int target_len, const MPNumber *x)
+display_make_number(MathEquation *display, char *target, int target_len, const MPNumber *x)
 {
     switch(display->format) {
     case DEC:
@@ -752,7 +745,7 @@ get_variable(const char *name, MPNumber *z, void *data)
 {
     char *c, *lower_name;
     int result = 1;
-    GCDisplay *display = data;
+    MathEquation *display = data;
     MPNumber *t;
 
     lower_name = strdup(name);
@@ -803,7 +796,7 @@ convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z
 
 
 static int
-parse(GCDisplay *display, const char *text, MPNumber *z, char **error_token)
+parse(MathEquation *display, const char *text, MPNumber *z, char **error_token)
 {
     MPEquationOptions options;
 
@@ -821,7 +814,7 @@ parse(GCDisplay *display, const char *text, MPNumber *z, char **error_token)
 
 
 static void
-do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
+do_paste(MathEquation *display, int cursor_start, int cursor_end, const char *text)
 {
     const char *input;
     char c, *output, *clean_text;
@@ -885,7 +878,7 @@ do_paste(GCDisplay *display, int cursor_start, int cursor_end, const char *text)
 
 
 static void
-do_insert_character(GCDisplay *display, const unsigned char *text)
+do_insert_character(MathEquation *display, const unsigned char *text)
 {
     MPNumber value;
     int i = 0;
@@ -905,7 +898,7 @@ do_insert_character(GCDisplay *display, const unsigned char *text)
 
 /* Perform bitwise shift on display value. */
 static void
-do_shift(GCDisplay *display, int count)
+do_shift(MathEquation *display, int count)
 {
     MPNumber z;
 
@@ -926,22 +919,22 @@ do_factorize()
 {
     MPNumber value;
 
-    if (!display_is_usable_number(&v->display, &value)) {
+    if (!display_is_usable_number(v->display, &value)) {
         /* Translators: Error displayed when trying to factorize a non-integer value */
         math_display_set_status(ui_get_display(X), _("Need an integer to factorize"));
         return;
     }
-    display_clear(&v->display);
+    display_clear(v->display);
 
     GList *factors = mp_factorize(&value);
 
-    display_insert_number(&v->display, -1, -1, factors->data);
+    display_insert_number(v->display, -1, -1, factors->data);
     g_slice_free(MPNumber, factors->data);
 
     GList *list = factors->next;
     for (; list != NULL; list = list->next) {
-            display_insert(&v->display, -1, -1, "×");
-            display_insert_number(&v->display, -1, -1, list->data);
+            display_insert(v->display, -1, -1, "×");
+            display_insert_number(v->display, -1, -1, list->data);
             g_slice_free(MPNumber, list->data);
     }
     g_list_free(factors);
@@ -949,7 +942,7 @@ do_factorize()
 
 
 static void
-do_sto(GCDisplay *display, const char *name)
+do_sto(MathEquation *display, const char *name)
 {
     MPNumber t;
 
@@ -961,7 +954,7 @@ do_sto(GCDisplay *display, const char *name)
 
 
 void
-display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_start, int cursor_end)
+display_do_function(MathEquation *display, int function, gpointer arg, int cursor_start, int cursor_end)
 {
     MPNumber *ans;
     int enabled;
@@ -1120,4 +1113,35 @@ display_do_function(GCDisplay *display, int function, gpointer arg, int cursor_s
 
     enabled = display_get_unsigned_integer(display, &bit_value);
     math_buttons_set_bitfield(ui_get_buttons(X), enabled, bit_value);
+}
+
+
+static void
+math_equation_class_init (MathEquationClass *klass)
+{
+    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+    g_type_class_add_private (klass, sizeof (MathEquationPrivate));
+}
+
+
+static void
+math_equation_init(MathEquation *equation)
+{
+    int i;
+
+    equation->priv = G_TYPE_INSTANCE_GET_PRIVATE (equation, math_equation_get_type(), MathEquationPrivate);
+
+    equation->show_zeroes = FALSE;
+    equation->show_tsep = FALSE;
+    equation->format = DEC;
+    equation->accuracy = 9;
+    equation->word_size = 32;
+    equation->angle_unit = MP_DEGREES;
+
+    for (i = 0; i < UNDO_HISTORY_LENGTH; i++) {
+        equation->h.e[i].expression = strdup("");
+        equation->h.e[i].ans_start = -1;
+        equation->h.e[i].ans_end = -1;
+    }
 }

@@ -11,14 +11,14 @@ gcalctool_SOURCES = \
 	calctool.h \
 	currency.c \
 	currency.h \
-	display.c \
-	display.h \
 	get.c \
 	get.h \
 	math-buttons.c \
 	math-buttons.h \
 	math-display.c \
 	math-display.h \
+	math-equation.c \
+	math-equation.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \

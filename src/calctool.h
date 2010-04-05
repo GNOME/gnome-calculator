@@ -24,7 +24,7 @@
 
 #include "config.h"
 #include "mp.h"
-#include "display.h"
+#include "math-equation.h"
 #include "ui.h"
 
 /* To make lint happy. */
@@ -51,7 +51,7 @@
 typedef struct {
     char *progname;           /* Name of this program. */
 
-    GCDisplay display;        /* Display stack */
+    MathEquation *display;        /* Display stack */
 
     const char *digits[16];   /* Localized digit values */
     const char *radix;        /* Locale specific radix string. */

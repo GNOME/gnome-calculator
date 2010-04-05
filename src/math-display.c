@@ -20,8 +20,8 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "math-display.h"
-#include "display.h"
-#include "calctool.h"
+#include "math-equation.h" // FIXME: Move into math-display.h
+#include "calctool.h" // FIXME: TEMP
 
 enum {
     NUMBER_MODE_CHANGED,
@@ -134,7 +134,7 @@ do_button(MathDisplay *display, int function, gpointer arg)
         do_button(display, FN_TEXT, "^");
     }
     else {
-        display_do_function(&v->display, function, arg, cursor_start, cursor_end);
+        display_do_function(v->display, function, arg, cursor_start, cursor_end);
         if (function == FN_TEXT)
             display->priv->last_text = (char *)arg;
         else
@@ -602,18 +602,18 @@ void
 math_display_set_base(MathDisplay *display, gint base)
 {
     /* If has a number already in a base, then solve and convert it */
-    if (!display_is_result(&v->display) && display_is_number_with_base(&v->display))
+    if (!display_is_result(v->display) && display_is_number_with_base(v->display))
         math_display_solve(display);
 
-    if (display_is_result(&v->display)) {
+    if (display_is_result(v->display)) {
         if (base == 2)
-            display_convert (&v->display, BIN);
+            display_convert (v->display, BIN);
         else if (base == 8)
-            display_convert (&v->display, OCT);
+            display_convert (v->display, OCT);
         else if (base == 16)
-            display_convert (&v->display, HEX);
+            display_convert (v->display, HEX);
         else
-            display_convert (&v->display, DEC);
+            display_convert (v->display, DEC);
     }
     else {
         if (base == 2)
@@ -643,20 +643,7 @@ math_display_class_init (MathDisplayClass *klass)
                       G_TYPE_NONE, 0);
 }
 
-
-/*
-        <child>
-          <object class="GtkEventBox" id="display_eventbox">
-            <property name="visible">True</property>
-            <child>
-              <object class="GtkScrolledWindow" id="display_scroll">
-                <property name="can_focus">True</property>
-                <child>
-                  <object class="GtkViewport" id="viewport1">
-                    <property name="resize_mode">queue</property>
-                    <child>
-                      <object class="GtkVBox" id="vbox1">
-                        <child>
+/* FIXME
                           <object class="GtkTextView" id="displayitem">
                             <property name="wrap_mode">word</property>
                             <child internal-child="accessible">
@@ -665,8 +652,6 @@ math_display_class_init (MathDisplayClass *klass)
                               </object>
                             </child>
                           </object>
-                        </child>
-                        <child>
                           <object class="GtkTextView" id="info_textview">
                             <property name="wrap_mode">word</property>
                           </object>
