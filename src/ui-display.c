@@ -264,12 +264,6 @@ ui_display_set(MathDisplay *display, char *str, int cursor)
         gtk_text_buffer_get_iter_at_offset(display->priv->display_buffer, &iter, cursor);
     gtk_text_buffer_place_cursor(display->priv->display_buffer, &iter);
     gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(display->priv->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
-
-    /* Align to the right */
-    /*FIXME: if (cursor < 0) {
-        adj = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(display));
-        gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj) - gtk_adjustment_get_page_size(adj));
-    }*/
 }
 
 
