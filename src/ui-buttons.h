@@ -31,13 +31,13 @@ typedef struct MathButtonsPrivate MathButtonsPrivate;
 
 typedef struct
 {
-    GObject         parent_instance; // FIXME: Extend GtkVBox
+    GtkVBox parent_instance;
     MathButtonsPrivate *priv;
 } MathButtons;
 
 typedef struct
 {
-    GObjectClass parent_class;
+    GtkVBoxClass parent_class;
 } MathButtonsClass;
 
 typedef enum {
@@ -50,8 +50,6 @@ typedef enum {
 GType ui_buttons_get_type();
 
 MathButtons *ui_buttons_new(MathDisplay *display);
-
-GtkWidget *ui_buttons_get_widget(MathButtons *buttons);
 
 void ui_buttons_set_bitfield(MathButtons *buttons, int enabled, guint64 bits);
 

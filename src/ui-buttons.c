@@ -39,7 +39,6 @@ struct MathButtonsPrivate
 
     GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
 
-    GtkWidget *button_vbox;
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
 
     GtkWidget *store_menu, *recall_menu;
@@ -58,7 +57,7 @@ struct MathButtonsPrivate
     GtkWidget *character_code_entry;
 };
 
-G_DEFINE_TYPE (MathButtons, ui_buttons, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MathButtons, ui_buttons, GTK_TYPE_VBOX);
 
 #define UI_BASIC_FILE       UI_DIR "/buttons-basic.ui"
 #define UI_ADVANCED_FILE    UI_DIR "/buttons-advanced.ui"
@@ -145,13 +144,6 @@ MathButtons *
 ui_buttons_new(MathDisplay *display)
 {
     return g_object_new (ui_buttons_get_type(), "display", display, NULL);
-}
-
-
-GtkWidget *
-ui_buttons_get_widget(MathButtons *buttons)
-{
-    return buttons->priv->button_vbox;
 }
 
 
@@ -335,7 +327,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         g_clear_error(&error);
     }
     *panel = GET_WIDGET(builder, "button_panel");
-    gtk_box_pack_end(GTK_BOX(buttons->priv->button_vbox), *panel, FALSE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(buttons), *panel, FALSE, TRUE, 0);
 
     /* Connect text to buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
@@ -1217,6 +1209,4 @@ ui_buttons_init (MathButtons *buttons)
     buttons->priv->colour_group.red = 65535;
     buttons->priv->colour_group.green = 65535;
     buttons->priv->colour_group.blue = 65535;
-    buttons->priv->button_vbox = gtk_vbox_new(FALSE, 0);
-    gtk_widget_show(buttons->priv->button_vbox);
 }

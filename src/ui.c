@@ -307,6 +307,7 @@ ui_init(GCalctoolUI *ui)
 
     ui->priv->display = ui_display_new(ui->priv->ui);
     ui->priv->buttons = ui_buttons_new(ui->priv->display);
-    gtk_box_pack_end(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), ui_buttons_get_widget(ui->priv->buttons), TRUE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
+    gtk_widget_show(GTK_WIDGET(ui->priv->buttons));
     ui->priv->preferences_dialog = ui_preferences_dialog_new(ui);
 }
