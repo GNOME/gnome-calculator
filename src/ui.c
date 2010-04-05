@@ -33,6 +33,7 @@ struct GCalctoolUIPrivate
     MathDisplay *display;
     MathButtons *buttons;
     PreferencesDialog *preferences_dialog;
+    gboolean right_aligned;
 };
 
 G_DEFINE_TYPE (GCalctoolUI, ui, G_TYPE_OBJECT);
@@ -270,6 +271,24 @@ quit_cb(GtkWidget *widget, GCalctoolUI *ui)
 
 
 static void
+scroll_changed_cb(GtkAdjustment *adjustment, GCalctoolUI *ui)
+{
+    if (ui->priv->right_aligned)
+        gtk_adjustment_set_value(adjustment, gtk_adjustment_get_upper(adjustment) - gtk_adjustment_get_page_size(adjustment));
+}
+
+
+static void
+scroll_value_changed_cb(GtkAdjustment *adjustment, GCalctoolUI *ui)
+{
+    if (gtk_adjustment_get_value(adjustment) == gtk_adjustment_get_upper(adjustment) - gtk_adjustment_get_page_size(adjustment))
+        ui->priv->right_aligned = TRUE;
+    else
+        ui->priv->right_aligned = FALSE;
+}
+
+
+static void
 ui_class_init (GCalctoolUIClass *klass)
 {
     g_type_class_add_private (klass, sizeof (GCalctoolUIPrivate));
@@ -279,6 +298,7 @@ ui_class_init (GCalctoolUIClass *klass)
 static void 
 ui_init(GCalctoolUI *ui)
 {
+    GtkWidget *scrolled_window;
     GError *error = NULL;
     int i;
 
@@ -305,9 +325,23 @@ ui_init(GCalctoolUI *ui)
     g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_financial_menu"), "calcmode", GINT_TO_POINTER(FINANCIAL));
     g_object_set_data(gtk_builder_get_object(ui->priv->ui, "view_programming_menu"), "calcmode", GINT_TO_POINTER(PROGRAMMING));
 
-    ui->priv->display = ui_display_new(ui->priv->ui);
+    scrolled_window = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
+    gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
+    gtk_container_set_border_width(GTK_CONTAINER(scrolled_window), 7);
+    gtk_box_pack_start(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(scrolled_window), TRUE, TRUE, 0);
+    g_signal_connect(gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(scrolled_window)), "changed", G_CALLBACK(scroll_changed_cb), ui);
+    g_signal_connect(gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(scrolled_window)), "value-changed", G_CALLBACK(scroll_value_changed_cb), ui);
+    ui->priv->right_aligned = TRUE;
+    gtk_widget_show(scrolled_window);
+
+    ui->priv->display = ui_display_new();
+    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), GTK_WIDGET(ui->priv->display));
+    gtk_widget_show(GTK_WIDGET(ui->priv->display));
+
     ui->priv->buttons = ui_buttons_new(ui->priv->display);
-    gtk_box_pack_end(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
     gtk_widget_show(GTK_WIDGET(ui->priv->buttons));
+
     ui->priv->preferences_dialog = ui_preferences_dialog_new(ui);
 }

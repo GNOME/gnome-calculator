@@ -24,11 +24,6 @@
 #include "calctool.h"
 
 enum {
-    PROP_0,
-    PROP_UI
-};
-
-enum {
     NUMBER_MODE_CHANGED,
     LAST_SIGNAL
 };
@@ -42,7 +37,6 @@ struct MathDisplayPrivate
     GtkWidget *display_item;           /* Calculator display. */
     GtkTextBuffer *display_buffer;     /* Buffer used in display */
     GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
-    GtkWidget *scrolled_window;        /* Scrolled window for display_item. */
 
     GdkAtom clipboard_atom;
     GdkAtom primary_atom;
@@ -52,14 +46,14 @@ struct MathDisplayPrivate
     char *last_text;
 };
 
-G_DEFINE_TYPE (MathDisplay, ui_display, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MathDisplay, ui_display, GTK_TYPE_VBOX);
 
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 MathDisplay *
-ui_display_new(GtkBuilder *ui)
+ui_display_new()
 {
-    return g_object_new (ui_display_get_type(), "ui", ui, NULL);
+    return g_object_new (ui_display_get_type(), NULL);
 }
 
 
@@ -256,29 +250,6 @@ ui_display_toggle_bit(MathDisplay *display, guint bit)
 }
 
 
-static gboolean
-redo_display(MathDisplay *display)
-{
-    gchar *text;
-    GtkTextIter start, end, cursor;
-    gint cursor_position;
-
-    gtk_text_buffer_get_start_iter(display->priv->display_buffer, &start);
-    gtk_text_buffer_get_end_iter(display->priv->display_buffer, &end);
-    text = gtk_text_buffer_get_text(display->priv->display_buffer, &start, &end, FALSE);
-
-    g_object_get(G_OBJECT(display->priv->display_buffer), "cursor-position", &cursor_position, NULL);
-
-    gtk_text_buffer_set_text(display->priv->display_buffer, text, -1);
-    gtk_text_buffer_get_iter_at_offset(display->priv->display_buffer, &cursor, cursor_position);
-    gtk_text_buffer_place_cursor(display->priv->display_buffer, &cursor);
-
-    g_free(text);
-
-    return FALSE;
-}
-
-
 void
 ui_display_set(MathDisplay *display, char *str, int cursor)
 {
@@ -294,19 +265,11 @@ ui_display_set(MathDisplay *display, char *str, int cursor)
     gtk_text_buffer_place_cursor(display->priv->display_buffer, &iter);
     gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(display->priv->display_item), &iter, 0.0, TRUE, 1.0, 0.0);
 
-    /* This is a workaround for bug #524602.
-     * Basically the above code can cause the display to disappear when going from
-     * a display that is wider than the widget to one that is thinner. The following
-     * causes the display to be set twice which seems to work the second time.
-     */
-    g_idle_add((GSourceFunc)redo_display, display);
-
     /* Align to the right */
-    if (cursor < 0) {
-        adj = gtk_scrolled_window_get_hadjustment(
-                 GTK_SCROLLED_WINDOW(display->priv->scrolled_window));
+    /*FIXME: if (cursor < 0) {
+        adj = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(display));
         gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj) - gtk_adjustment_get_page_size(adj));
-    }
+    }*/
 }
 
 
@@ -601,8 +564,7 @@ for_each_menu(GtkWidget *widget, MathDisplay *display)
 
 
 // FIXME: Kill this
-G_MODULE_EXPORT
-void
+static void
 buffer_populate_popup_cb(GtkTextView *textview, GtkMenu *menu, MathDisplay *display)
 {
     gtk_container_foreach(GTK_CONTAINER(menu), (GtkCallback)for_each_menu, display);
@@ -625,14 +587,20 @@ ui_display_paste(MathDisplay *display)
 }
 
 
-G_MODULE_EXPORT
-gboolean
+static gboolean
 middle_click_paste_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display)
 {
     if (event->button == 2)
         ui_display_paste(display);
 
     return FALSE;
+}
+
+
+static void
+paste_cb(GtkWidget *widget, MathDisplay *display)
+{
+    ui_display_paste(display);
 }
 
 
@@ -665,77 +633,11 @@ ui_display_set_base(MathDisplay *display, gint base)
 
 
 static void
-ui_display_set_property (GObject      *object,
-                         guint         prop_id,
-                         const GValue *value,
-                         GParamSpec   *pspec)
-{
-    MathDisplay *self;
-    GtkBuilder *ui;
-    PangoFontDescription *font_desc;
-    GtkCellRenderer *renderer;
-
-    self = MATH_DISPLAY (object);
-
-    switch (prop_id) {
-    case PROP_UI:
-        ui = g_value_get_object (value);
-      
-        self->priv->scrolled_window = GET_WIDGET(ui, "display_scroll");
-        self->priv->info_buffer = GTK_TEXT_BUFFER(gtk_builder_get_object(ui, "info_buffer"));
-        self->priv->display_item = GET_WIDGET(ui, "displayitem");
-        self->priv->display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(self->priv->display_item));
-
-        gtk_widget_ensure_style(self->priv->display_item);
-        font_desc = pango_font_description_copy(gtk_widget_get_style(self->priv->display_item)->font_desc);
-        pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
-        gtk_widget_modify_font(self->priv->display_item, font_desc);
-        pango_font_description_free(font_desc);
-        gtk_widget_set_name(self->priv->display_item, "displayitem");
-        atk_object_set_role(gtk_widget_get_accessible(self->priv->display_item), ATK_ROLE_EDITBAR);
-        break;
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        break;
-    }
-}
-
-
-static void
-ui_display_get_property (GObject    *object,
-                         guint       prop_id,
-                         GValue     *value,
-                         GParamSpec *pspec)
-{
-    MathDisplay *self;
-
-    self = MATH_DISPLAY (object);
-
-    switch (prop_id) {
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        break;
-    }
-}
-
-
-static void
 ui_display_class_init (MathDisplayClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-    object_class->get_property = ui_display_get_property;
-    object_class->set_property = ui_display_set_property;
-  
     g_type_class_add_private (klass, sizeof (MathDisplayPrivate));
-
-    g_object_class_install_property (object_class,
-                                     PROP_UI,
-                                     g_param_spec_object ("ui",
-                                                          "ui",
-                                                          "GtkBuilder to get widgets from (temp)",
-                                                          gtk_builder_get_type(),
-                                                          G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 
     signals[NUMBER_MODE_CHANGED] =
         g_signal_new ("number-mode-changed",
@@ -748,10 +650,73 @@ ui_display_class_init (MathDisplayClass *klass)
 }
 
 
+/*
+        <child>
+          <object class="GtkEventBox" id="display_eventbox">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkScrolledWindow" id="display_scroll">
+                <property name="can_focus">True</property>
+                <child>
+                  <object class="GtkViewport" id="viewport1">
+                    <property name="resize_mode">queue</property>
+                    <child>
+                      <object class="GtkVBox" id="vbox1">
+                        <child>
+                          <object class="GtkTextView" id="displayitem">
+                            <property name="wrap_mode">word</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="displayitem-atkobject">
+                                <property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTextView" id="info_textview">
+                            <property name="wrap_mode">word</property>
+                          </object>
+ */
 static void 
 ui_display_init(MathDisplay *display)
 {
+    GtkWidget *vbox, *info_view;
+    PangoFontDescription *font_desc;
+
     display->priv = G_TYPE_INSTANCE_GET_PRIVATE (display, ui_display_get_type(), MathDisplayPrivate);
     display->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     display->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
+
+    display->priv->display_item = gtk_text_view_new();
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
+    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->display_item), 8);
+    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->display_item), 2);
+    gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);
+    gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->display_item), GTK_JUSTIFY_RIGHT);
+    g_signal_connect(display->priv->display_item, "populate-popup", G_CALLBACK(buffer_populate_popup_cb), display); // FIXME
+    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(middle_click_paste_cb), display);
+    g_signal_connect(display->priv->display_item, "paste-clipboard", G_CALLBACK(paste_cb), display);
+    gtk_box_pack_start(GTK_BOX(display), display->priv->display_item, TRUE, TRUE, 0);
+
+    display->priv->display_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(display->priv->display_item));
+
+    gtk_widget_ensure_style(display->priv->display_item);
+    font_desc = pango_font_description_copy(gtk_widget_get_style(display->priv->display_item)->font_desc);
+    pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
+    gtk_widget_modify_font(display->priv->display_item, font_desc);
+    pango_font_description_free(font_desc);
+    gtk_widget_set_name(display->priv->display_item, "displayitem");
+    atk_object_set_role(gtk_widget_get_accessible(display->priv->display_item), ATK_ROLE_EDITBAR);
+  
+    info_view = gtk_text_view_new();
+    gtk_widget_set_can_focus(info_view, TRUE); // FIXME: This should be FALSE but it locks the cursor inside the main view for some reason
+    gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(info_view), FALSE); // FIXME: Just here so when incorrectly gets focus doesn't look editable
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(info_view), FALSE);
+    gtk_text_view_set_justification(GTK_TEXT_VIEW(info_view), GTK_JUSTIFY_RIGHT);
+    gtk_text_view_set_right_margin(GTK_TEXT_VIEW(info_view), 6);
+    gtk_box_pack_start(GTK_BOX(display), info_view, FALSE, TRUE, 0);
+    display->priv->info_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(info_view));
+
+    gtk_widget_show(info_view);
+    gtk_widget_show(display->priv->display_item);
 }

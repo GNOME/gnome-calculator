@@ -28,28 +28,28 @@ G_BEGIN_DECLS
 
 typedef struct MathDisplayPrivate MathDisplayPrivate;
 
+typedef struct
+{
+    GtkVBox parent_instance;
+    MathDisplayPrivate *priv;
+} MathDisplay;
+
+typedef struct
+{
+    GtkVBoxClass parent_class;
+
+    void (*number_mode_changed)(MathDisplay *display);
+} MathDisplayClass;
+
 typedef enum {
     NORMAL,
     SUPERSCRIPT,
     SUBSCRIPT
 } NumberMode;
 
-typedef struct
-{
-    GObject             parent_instance; // FIXME: Extend GtkVBox, remove widgets from gcalctool.ui
-    MathDisplayPrivate *priv;
-} MathDisplay;
-
-typedef struct
-{
-    GObjectClass parent_class;
-
-    void (*number_mode_changed)(MathDisplay *display);
-} MathDisplayClass;
-
 GType ui_display_get_type();
-
 MathDisplay *ui_display_new();
+
 void ui_display_set_base(MathDisplay *display, gint base);
 void ui_display_set_number_mode(MathDisplay *display, NumberMode mode);
 void ui_display_set(MathDisplay *display, gchar *, gint); // FIXME: Make obsolete by Math model

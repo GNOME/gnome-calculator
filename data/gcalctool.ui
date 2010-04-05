@@ -167,79 +167,9 @@
             <property name="position">0</property>
           </packing>
         </child>
-        <child>
-          <object class="GtkEventBox" id="display_eventbox">
-            <property name="visible">True</property>
-            <child>
-              <object class="GtkScrolledWindow" id="display_scroll">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="border_width">7</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">never</property>
-                <property name="shadow_type">in</property>
-                <child>
-                  <object class="GtkViewport" id="viewport1">
-                    <property name="visible">True</property>
-                    <property name="resize_mode">queue</property>
-                    <child>
-                      <object class="GtkVBox" id="vbox1">
-                        <property name="visible">True</property>
-                        <child>
-                          <object class="GtkTextView" id="displayitem">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="can_default">True</property>
-                            <property name="pixels_above_lines">8</property>
-                            <property name="pixels_below_lines">2</property>
-                            <property name="editable">False</property>
-                            <property name="wrap_mode">word</property>
-                            <property name="justification">right</property>
-                            <property name="right_margin">6</property>
-                            <property name="buffer">display_buffer</property>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="displayitem-atkobject">
-                                <property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-                              </object>
-                            </child>
-                            <signal name="populate_popup" handler="buffer_populate_popup_cb"/>
-                            <signal name="button_release_event" handler="middle_click_paste_cb"/>
-                            <signal name="paste_clipboard" handler="paste_cb"/>
-                          </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkTextView" id="info_textview">
-                            <property name="visible">True</property>
-                            <property name="editable">False</property>
-                            <property name="wrap_mode">word</property>
-                            <property name="justification">right</property>
-                            <property name="right_margin">6</property>
-                            <property name="cursor_visible">False</property>
-                            <property name="buffer">info_buffer</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="display_buffer"/>
   <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
