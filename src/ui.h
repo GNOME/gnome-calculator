@@ -21,6 +21,7 @@
 #define UI_H
 
 #include <glib-object.h>
+#include "math-equation.h"
 #include "math-display.h"
 #include "math-buttons.h"
 
@@ -46,6 +47,8 @@ void ui_gtk_init(int *argc, char ***argv);
 GType ui_get_type();
 
 GCalctoolUI *ui_new(void);
+
+MathEquation *ui_get_equation(GCalctoolUI *ui);
 
 MathDisplay *ui_get_display(GCalctoolUI *ui);
 

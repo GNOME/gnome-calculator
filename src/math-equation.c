@@ -914,27 +914,27 @@ do_shift(MathEquation *display, int count)
 }
 
 
-void
-do_factorize()
+static void
+do_factorize(MathEquation *equation)
 {
     MPNumber value;
 
-    if (!display_is_usable_number(v->display, &value)) {
+    if (!display_is_usable_number(equation, &value)) {
         /* Translators: Error displayed when trying to factorize a non-integer value */
         math_display_set_status(ui_get_display(X), _("Need an integer to factorize"));
         return;
     }
-    display_clear(v->display);
+    display_clear(equation);
 
     GList *factors = mp_factorize(&value);
 
-    display_insert_number(v->display, -1, -1, factors->data);
+    display_insert_number(equation, -1, -1, factors->data);
     g_slice_free(MPNumber, factors->data);
 
     GList *list = factors->next;
     for (; list != NULL; list = list->next) {
-            display_insert(v->display, -1, -1, "×");
-            display_insert_number(v->display, -1, -1, list->data);
+            display_insert(equation, -1, -1, "×");
+            display_insert_number(equation, -1, -1, list->data);
             g_slice_free(MPNumber, list->data);
     }
     g_list_free(factors);
@@ -990,7 +990,7 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
             break;
 
         case FN_FACTORIZE:
-            do_factorize(display, GPOINTER_TO_INT (arg));
+            do_factorize(display);
             break;
 
         case FN_PASTE:

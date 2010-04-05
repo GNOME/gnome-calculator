@@ -26,7 +26,8 @@
           GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 
-PreferencesDialog *ui_preferences_dialog_new(GCalctoolUI *ui)
+PreferencesDialog *
+ui_preferences_dialog_new(GCalctoolUI *ui)
 {
     PreferencesDialog *dialog;
   
@@ -55,7 +56,7 @@ preferences_dialog_delete_cb(GtkWidget *widget, GdkEvent *event, PreferencesDial
 
 G_MODULE_EXPORT
 void
-angle_unit_combobox_changed_cb(GtkWidget *combo)
+angle_unit_combobox_changed_cb(GtkWidget *combo, PreferencesDialog *dialog)
 {
     int i;
     const gchar *value;
@@ -77,7 +78,7 @@ angle_unit_combobox_changed_cb(GtkWidget *combo)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
     for (i = 0; unit_map[i].value != NULL && strcmp(unit_map[i].value, value) != 0; i++);
-    display_set_angle_unit(v->display, unit_map[i].units);
+    display_set_angle_unit(ui_get_equation(dialog->ui), unit_map[i].units);
 
     set_resource(R_TRIG, value);
 }
@@ -85,7 +86,7 @@ angle_unit_combobox_changed_cb(GtkWidget *combo)
 
 G_MODULE_EXPORT
 void
-display_format_combobox_changed_cb(GtkWidget *combo)
+display_format_combobox_changed_cb(GtkWidget *combo, PreferencesDialog *dialog)
 {
     int i;
     const gchar *value;
@@ -110,7 +111,7 @@ display_format_combobox_changed_cb(GtkWidget *combo)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
     for (i = 0; mode_map[i].value != NULL && strcmp(mode_map[i].value, value) != 0; i++);
-    display_set_format(v->display, mode_map[i].format);
+    display_set_format(ui_get_equation(dialog->ui), mode_map[i].format);
 
     set_resource(R_DISPLAY, value);
 }
@@ -118,7 +119,7 @@ display_format_combobox_changed_cb(GtkWidget *combo)
 
 G_MODULE_EXPORT
 void
-word_size_combobox_changed_cb(GtkWidget *combo)
+word_size_combobox_changed_cb(GtkWidget *combo, PreferencesDialog *dialog)
 {
     gint value;
     GtkTreeModel *model;
@@ -127,7 +128,7 @@ word_size_combobox_changed_cb(GtkWidget *combo)
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
-    display_set_word_size(v->display, value);
+    display_set_word_size(ui_get_equation(dialog->ui), value);
 
     set_int_resource(R_WORDLEN, value);
 }
@@ -135,12 +136,12 @@ word_size_combobox_changed_cb(GtkWidget *combo)
 
 G_MODULE_EXPORT
 void
-decimal_places_spin_change_value_cb(GtkWidget *spin)
+decimal_places_spin_change_value_cb(GtkWidget *spin, PreferencesDialog *dialog)
 {
     gint value = 0;
 
     value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-    display_set_accuracy(v->display, value);
+    display_set_accuracy(ui_get_equation(dialog->ui), value);
 
     set_int_resource(R_ACCURACY, value);
 }
@@ -148,24 +149,24 @@ decimal_places_spin_change_value_cb(GtkWidget *spin)
 
 G_MODULE_EXPORT
 void
-thousands_separator_check_toggled_cb(GtkWidget *check)
+thousands_separator_check_toggled_cb(GtkWidget *check, PreferencesDialog *dialog)
 {
     gboolean value;
 
     value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check));
-    display_set_show_thousands_separator(v->display, value);
+    display_set_show_thousands_separator(ui_get_equation(dialog->ui), value);
     set_boolean_resource(R_TSEP, value);
 }
 
 
 G_MODULE_EXPORT
 void
-trailing_zeroes_check_toggled_cb(GtkWidget *check)
+trailing_zeroes_check_toggled_cb(GtkWidget *check, PreferencesDialog *dialog)
 {
     gboolean value;
 
     value = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check));
-    display_set_show_trailing_zeroes(v->display, value);
+    display_set_show_trailing_zeroes(ui_get_equation(dialog->ui), value);
     set_boolean_resource(R_ZEROES, value);
 }
 

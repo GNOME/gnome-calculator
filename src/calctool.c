@@ -217,7 +217,6 @@ main(int argc, char **argv)
 
     init_state();
     register_init();
-    v->display = math_equation_new();
     ui_gtk_init(&argc, &argv);
 
     get_options(argc, argv);

@@ -22,6 +22,8 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
+#include "math-equation.h"
+
 G_BEGIN_DECLS
 
 #define MATH_DISPLAY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_display_get_type(), MathDisplay))
@@ -48,7 +50,9 @@ typedef enum {
 } NumberMode;
 
 GType math_display_get_type();
-MathDisplay *math_display_new();
+MathDisplay *math_display_new(MathEquation *equation);
+
+MathEquation *math_display_get_equation(MathDisplay *display);
 
 void math_display_set_base(MathDisplay *display, gint base);
 void math_display_set_number_mode(MathDisplay *display, NumberMode mode);

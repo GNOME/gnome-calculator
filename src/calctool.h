@@ -24,7 +24,6 @@
 
 #include "config.h"
 #include "mp.h"
-#include "math-equation.h"
 #include "ui.h"
 
 /* To make lint happy. */
@@ -50,8 +49,6 @@
 /* Calctool variables and options. */
 typedef struct {
     char *progname;           /* Name of this program. */
-
-    MathEquation *display;        /* Display stack */
 
     const char *digits[16];   /* Localized digit values */
     const char *radix;        /* Locale specific radix string. */

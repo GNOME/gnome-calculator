@@ -23,8 +23,8 @@
 
 #include <libintl.h>
 
-void
-calc_ctrm(MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
+static void
+calc_ctrm(MathEquation *equation, MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
 {
 
 /*  Cterm - pint (periodic interest rate).
@@ -43,8 +43,8 @@ calc_ctrm(MPNumber *t, MPNumber *pint, MPNumber *fv, MPNumber *pv)
 }
 
 
-void
-calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
+static void
+calc_ddb(MathEquation *equation, MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
 {
 
 /*  Ddb   - cost    (amount paid for asset).
@@ -76,15 +76,14 @@ calc_ddb(MPNumber *t, MPNumber *cost, MPNumber *life, MPNumber *period)
     }
 
     if (len >= 0) {
-        display_set_error (v->display,
-                           ("Error: the number of periods must be positive"));
+        display_set_error (equation, ("Error: the number of periods must be positive"));
         mp_set_from_integer(0, t);
     }
 }
 
 
-void
-calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
+static void
+calc_fv(MathEquation *equation, MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 {
 
 /*  Fv    - pmt (periodic payment).
@@ -104,8 +103,8 @@ calc_fv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 }
 
 
-void
-calc_gpm(MPNumber *t, MPNumber *cost, MPNumber *margin)
+static void
+calc_gpm(MathEquation *equation, MPNumber *t, MPNumber *cost, MPNumber *margin)
 {
 
 /*  Gpm   - cost (cost of sale).
@@ -122,8 +121,8 @@ calc_gpm(MPNumber *t, MPNumber *cost, MPNumber *margin)
 }
 
 
-void
-calc_pmt(MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
+static void
+calc_pmt(MathEquation *equation, MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
 {
 
 /*  Pmt   - prin (principal).
@@ -145,8 +144,8 @@ calc_pmt(MPNumber *t, MPNumber *prin, MPNumber *pint, MPNumber *n)
 }
 
 
-void
-calc_pv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
+static void
+calc_pv(MathEquation *equation, MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 {
 
 /*  Pv    - pmt (periodic payment).
@@ -168,8 +167,8 @@ calc_pv(MPNumber *t, MPNumber *pmt, MPNumber *pint, MPNumber *n)
 }
 
 
-void
-calc_rate(MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
+static void
+calc_rate(MathEquation *equation, MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
 {
 
 /*  Rate  - fv (future value).
@@ -189,8 +188,8 @@ calc_rate(MPNumber *t, MPNumber *fv, MPNumber *pv, MPNumber *n)
 }
 
 
-void
-calc_sln(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
+static void
+calc_sln(MathEquation *equation, MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
 {
 
 /*  Sln   - cost    (cost of the asset).
@@ -206,8 +205,8 @@ calc_sln(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life)
 }
 
 
-void
-calc_syd(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life, MPNumber *period)
+static void
+calc_syd(MathEquation *equation, MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life, MPNumber *period)
 {
 
 /*  Syd   - cost    (cost of the asset).
@@ -233,8 +232,8 @@ calc_syd(MPNumber *t, MPNumber *cost, MPNumber *salvage, MPNumber *life, MPNumbe
 }
 
 
-void
-calc_term(MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
+static void
+calc_term(MathEquation *equation, MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
 {
 
 /*  Term  - pmt (periodic payment).
@@ -255,41 +254,42 @@ calc_term(MPNumber *t, MPNumber *pmt, MPNumber *fv, MPNumber *pint)
     mp_divide(&MP1, &MP2, t);
 }
 
+
 void
-do_finc_expression(int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3, MPNumber *arg4)
+do_finc_expression(MathEquation *equation, int function, MPNumber *arg1, MPNumber *arg2, MPNumber *arg3, MPNumber *arg4)
 {
     MPNumber result;
     switch (function) {
      case FINC_CTRM_DIALOG:
-       calc_ctrm(&result, arg1, arg2, arg3);
+       calc_ctrm(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_DDB_DIALOG:
-       calc_ddb(&result, arg1, arg2, arg3);
+       calc_ddb(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_FV_DIALOG:
-       calc_fv(&result, arg1, arg2, arg3);
+       calc_fv(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_GPM_DIALOG:
-       calc_gpm(&result, arg1, arg2);
+       calc_gpm(equation, &result, arg1, arg2);
        break;
      case FINC_PMT_DIALOG:
-       calc_pmt(&result, arg1, arg2, arg3);
+       calc_pmt(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_PV_DIALOG:
-       calc_pv(&result, arg1, arg2, arg3);
+       calc_pv(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_RATE_DIALOG:
-       calc_rate(&result, arg1, arg2, arg3);
+       calc_rate(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_SLN_DIALOG:
-       calc_sln(&result, arg1, arg2, arg3);
+       calc_sln(equation, &result, arg1, arg2, arg3);
        break;
      case FINC_SYD_DIALOG:
-       calc_syd(&result, arg1, arg2, arg3, arg4);
+       calc_syd(equation, &result, arg1, arg2, arg3, arg4);
        break;
      case FINC_TERM_DIALOG:
-       calc_term(&result, arg1, arg2, arg3);
+       calc_term(equation, &result, arg1, arg2, arg3);
        break;
     }
-    display_set_number(v->display, &result);
+    display_set_number(equation, &result);
 }

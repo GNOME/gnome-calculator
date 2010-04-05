@@ -20,7 +20,6 @@
 #include "register.h"
 #include "financial.h"
 #include "currency.h"
-#include "calctool.h" // FIXME: TEMP
 
 enum {
     PROP_0,
@@ -32,7 +31,7 @@ enum {
 
 struct MathButtonsPrivate
 {
-    MathDisplay *display;
+    MathDisplay *display; // FIXME: Change to MathEquation
 
     ButtonMode mode;
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
@@ -287,7 +286,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 {
     GtkBuilder *builder, **builder_ptr;
     gint i;
-    gchar name[MAXLINE];
+    gchar *name;
     const gchar *builder_file;
     gchar *objects[] = { "button_panel", "character_code_dialog", "currency_dialog",
                          "ctrm_dialog", "ddb_dialog", "fv_dialog", "gpm_dialog",
@@ -331,18 +330,20 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
     /* Connect text to buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
-        snprintf(name, MAXLINE, "calc_%s_button", button_data[i].widget_name);
+        name = g_strdup_printf("calc_%s_button", button_data[i].widget_name);
         set_string_data(builder, name, "calc_text", button_data[i].data);
+        g_free(name);
     }
 
     /* Localize buttons */
     for (i = 0; i < 16; i++) {
         GtkWidget *button;
 
-        snprintf(name, MAXLINE, "calc_%d_button", i);
+        name = g_strdup_printf("calc_%d_button", i);
         button = GET_WIDGET(builder, name);     
         if (button)
             gtk_button_set_label(GTK_BUTTON(button), math_display_get_digit_text(buttons->priv->display, i));
+        g_free(name);
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget)
@@ -350,9 +351,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
     /* Connect super and subscript */
     for (i = 0; i < 10; i++) {
-        snprintf(name, MAXLINE, "calc_%d_button", i);
+        name = g_strdup_printf("calc_%d_button", i);
         set_int_data(builder, name, "calc_digit", i);
         set_tint(GET_WIDGET(builder, name), &buttons->priv->colour_numbers, 1);
+        g_free(name);
     }
   
     widget = GET_WIDGET(builder, "superscript_togglebutton");
@@ -441,9 +443,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
         buttons->priv->bit_panel = GET_WIDGET(builder, "bit_table");
         for (i = 0; i < MAXBITS; i++) {
-            snprintf(name, MAXLINE, "bit_label_%d", i);
+            name = g_strdup_printf("bit_label_%d", i);
             buttons->priv->bit_labels[i] = GET_WIDGET(builder, name);
-            snprintf(name, MAXLINE, "bit_eventbox_%d", i);
+            g_free(name);
+            name = g_strdup_printf("bit_eventbox_%d", i);
             set_int_data(builder, name, "bit_index", i);
         }
     }
@@ -595,14 +598,15 @@ update_store_menu(MathButtons *buttons)
     }
 
     for (i = 0; registers[i] != NULL; i++) {
-        char value[MAXLINE] = "", mstr[MAXLINE];
+        gchar value[1024] = "", *mstr;
         MPNumber *t;
 
         t = register_get_value(registers[i]);
         if (t)
-            display_make_number(v->display, value, MAXLINE, t);
-        snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
+            display_make_number(math_display_get_equation(buttons->priv->display), value, 1024, t);
+        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", registers[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->store_menu_labels[i]), mstr);
+        g_free(mstr);
     }
 }
 
@@ -670,14 +674,15 @@ update_recall_menu(MathButtons *buttons)
     }
 
     for (i = 0; registers[i] != NULL; i++) {
-        char value[MAXLINE] = "", mstr[MAXLINE];
+        gchar value[1024] = "", *mstr;
         MPNumber *t;
 
         t = register_get_value(registers[i]);
         if (t)
-            display_make_number(v->display, value, MAXLINE, t);
-        snprintf(mstr, MAXLINE, "<span weight=\"bold\">%s</span> = %s", registers[i], value);
+            display_make_number(math_display_get_equation(buttons->priv->display), value, 1024, t);
+        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", registers[i], value);
         gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->recall_menu_labels[i]), mstr);
+        g_free(mstr);
     }
 }
 
@@ -873,7 +878,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
     }
     gtk_widget_grab_focus(GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][0]));
 
-    do_finc_expression(dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
+    do_finc_expression(math_display_get_equation(buttons->priv->display), dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
 }
 
 
@@ -996,7 +1001,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
     win = GTK_DIALOG(gtk_builder_get_object(buttons->priv->financial_ui, "currency_dialog"));
     c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
     c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-    if (display_is_usable_number(v->display, &display_val)) {
+    if (display_is_usable_number(math_display_get_equation(buttons->priv->display), &display_val)) {
         double start_val = mp_cast_to_double(&display_val);
         gtk_spin_button_set_value(c_amount_upper, start_val);
     }
@@ -1009,7 +1014,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
         mp_set_from_string(result, &display_val);
         g_free(result);
 
-        display_set_number(v->display, &display_val);
+        display_set_number(math_display_get_equation(buttons->priv->display), &display_val);
     }
 
     gtk_widget_hide(GTK_WIDGET(win));
@@ -1123,9 +1128,9 @@ number_mode_changed_cb(MathDisplay *display, MathButtons *buttons)
 
 static void
 math_buttons_set_property (GObject      *object,
-                         guint         prop_id,
-                         const GValue *value,
-                         GParamSpec   *pspec)
+                           guint         prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
 {
     MathButtons *self;
 
@@ -1145,9 +1150,9 @@ math_buttons_set_property (GObject      *object,
 
 static void
 math_buttons_get_property (GObject    *object,
-                         guint       prop_id,
-                         GValue     *value,
-                         GParamSpec *pspec)
+                           guint       prop_id,
+                           GValue     *value,
+                           GParamSpec *pspec)
 {
     MathButtons *self;
 

@@ -28,6 +28,7 @@ struct GCalctoolUIPrivate
 {
     GtkBuilder *ui;
     GtkWidget *main_window;
+    MathEquation *equation;
     MathDisplay *display;
     MathButtons *buttons;
     PreferencesDialog *preferences_dialog;
@@ -53,6 +54,12 @@ GCalctoolUI *
 ui_new()
 {
     return g_object_new (ui_get_type(), NULL);
+}
+
+
+MathEquation *ui_get_equation(GCalctoolUI *ui)
+{
+    return ui->priv->equation;
 }
 
 
@@ -301,6 +308,8 @@ ui_init(GCalctoolUI *ui)
     int i;
 
     ui->priv = G_TYPE_INSTANCE_GET_PRIVATE (ui, ui_get_type(), GCalctoolUIPrivate);
+  
+    ui->priv->equation = math_equation_new();
 
     ui->priv->ui = gtk_builder_new();
     gtk_builder_add_from_file(ui->priv->ui, UI_FILE, &error);
@@ -333,7 +342,7 @@ ui_init(GCalctoolUI *ui)
     ui->priv->right_aligned = TRUE;
     gtk_widget_show(scrolled_window);
 
-    ui->priv->display = math_display_new();
+    ui->priv->display = math_display_new(ui->priv->equation);
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), GTK_WIDGET(ui->priv->display));
     gtk_widget_show(GTK_WIDGET(ui->priv->display));
 

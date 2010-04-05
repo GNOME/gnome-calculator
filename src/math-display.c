@@ -20,8 +20,12 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "math-display.h"
-#include "math-equation.h" // FIXME: Move into math-display.h
 #include "calctool.h" // FIXME: TEMP
+
+enum {
+    PROP_0,
+    PROP_EQUATION
+};
 
 enum {
     NUMBER_MODE_CHANGED,
@@ -31,6 +35,8 @@ static guint signals[LAST_SIGNAL] = { 0, };
 
 struct MathDisplayPrivate
 {
+    MathEquation *equation;
+
     NumberMode number_mode;
     gboolean can_super_minus;
 
@@ -51,9 +57,16 @@ G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VBOX);
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 MathDisplay *
-math_display_new()
+math_display_new(MathEquation *equation)
 {
-    return g_object_new (math_display_get_type(), NULL);
+    return g_object_new (math_display_get_type(), "equation", equation, NULL);
+}
+
+
+MathEquation *
+math_display_get_equation(MathDisplay *display)
+{
+    return display->priv->equation;
 }
 
 
@@ -134,7 +147,7 @@ do_button(MathDisplay *display, int function, gpointer arg)
         do_button(display, FN_TEXT, "^");
     }
     else {
-        display_do_function(v->display, function, arg, cursor_start, cursor_end);
+        display_do_function(display->priv->equation, function, arg, cursor_start, cursor_end);
         if (function == FN_TEXT)
             display->priv->last_text = (char *)arg;
         else
@@ -602,18 +615,18 @@ void
 math_display_set_base(MathDisplay *display, gint base)
 {
     /* If has a number already in a base, then solve and convert it */
-    if (!display_is_result(v->display) && display_is_number_with_base(v->display))
+    if (!display_is_result(display->priv->equation) && display_is_number_with_base(display->priv->equation))
         math_display_solve(display);
 
-    if (display_is_result(v->display)) {
+    if (display_is_result(display->priv->equation)) {
         if (base == 2)
-            display_convert (v->display, BIN);
+            display_convert(display->priv->equation, BIN);
         else if (base == 8)
-            display_convert (v->display, OCT);
+            display_convert(display->priv->equation, OCT);
         else if (base == 16)
-            display_convert (v->display, HEX);
+            display_convert(display->priv->equation, HEX);
         else
-            display_convert (v->display, DEC);
+            display_convert(display->priv->equation, DEC);
     }
     else {
         if (base == 2)
@@ -627,11 +640,64 @@ math_display_set_base(MathDisplay *display, gint base)
 
 
 static void
+math_display_set_property (GObject      *object,
+                           guint         prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
+{
+    MathDisplay *self;
+
+    self = MATH_DISPLAY (object);
+
+    switch (prop_id) {
+    case PROP_EQUATION:
+        self->priv->equation = g_value_get_object (value);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
+math_display_get_property (GObject    *object,
+                           guint       prop_id,
+                           GValue     *value,
+                           GParamSpec *pspec)
+{
+    MathDisplay *self;
+
+    self = MATH_DISPLAY (object);
+
+    switch (prop_id) {
+    case PROP_EQUATION:
+        g_value_set_object (value, self->priv->equation);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
 math_display_class_init (MathDisplayClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+    object_class->get_property = math_display_get_property;
+    object_class->set_property = math_display_set_property;
+
     g_type_class_add_private (klass, sizeof (MathDisplayPrivate));
+
+    g_object_class_install_property(object_class,
+                                    PROP_EQUATION,
+                                    g_param_spec_object("equation",
+                                                        "equation",
+                                                        "Equation being displayed",
+                                                        math_equation_get_type(),
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     signals[NUMBER_MODE_CHANGED] =
         g_signal_new ("number-mode-changed",
