@@ -151,7 +151,7 @@ G_MODULE_EXPORT
 void
 copy_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    math_display_copy(ui->priv->display);
+    math_equation_copy(ui->priv->equation);
 }
 
 
@@ -159,7 +159,7 @@ G_MODULE_EXPORT
 void
 paste_cb(GtkWidget *widget, GCalctoolUI *ui)
 {
-    math_display_paste(ui->priv->display);
+    math_equation_paste(ui->priv->equation);
 }
 
 
@@ -347,7 +347,7 @@ ui_init(GCalctoolUI *ui)
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), GTK_WIDGET(ui->priv->display));
     gtk_widget_show(GTK_WIDGET(ui->priv->display));
 
-    ui->priv->buttons = math_buttons_new(ui->priv->display);
+    ui->priv->buttons = math_buttons_new(ui->priv->equation);
     gtk_box_pack_start(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
     gtk_widget_show(GTK_WIDGET(ui->priv->buttons));
 

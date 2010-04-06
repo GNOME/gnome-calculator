@@ -39,39 +39,10 @@ typedef struct
 typedef struct
 {
     GtkVBoxClass parent_class;
-
-    void (*number_mode_changed)(MathDisplay *display);
 } MathDisplayClass;
-
-typedef enum {
-    NORMAL,
-    SUPERSCRIPT,
-    SUBSCRIPT
-} NumberMode;
 
 GType math_display_get_type();
 MathDisplay *math_display_new(MathEquation *equation);
-
 MathEquation *math_display_get_equation(MathDisplay *display);
-
-void math_display_set_base(MathDisplay *display, gint base);
-void math_display_set_number_mode(MathDisplay *display, NumberMode mode);
-gchar *math_display_get_text(MathDisplay *display);
-
-void math_display_copy(MathDisplay *display);
-void math_display_paste(MathDisplay *display);
-void math_display_store(MathDisplay *display, const gchar *name);
-void math_display_recall(MathDisplay *display, const gchar *name);
-void math_display_insert(MathDisplay *display, const gchar *text);
-void math_display_insert_digit(MathDisplay *display, guint digit);
-void math_display_insert_numeric_point(MathDisplay *display);
-void math_display_insert_subtract(MathDisplay *display);
-void math_display_insert_exponent(MathDisplay *display);
-void math_display_insert_character(MathDisplay *display, const gchar *character);
-void math_display_solve(MathDisplay *display);
-void math_display_factorize(MathDisplay *display);
-void math_display_clear(MathDisplay *display);
-void math_display_shift(MathDisplay *display, gint count);
-void math_display_toggle_bit(MathDisplay *display, guint bit);
 
 #endif /* MATH_DISPLAY_H */

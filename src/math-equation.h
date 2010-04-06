@@ -17,10 +17,11 @@
  *  02111-1307, USA.
  */
 
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#ifndef MATH_EQUATION_H
+#define MATH_EQUATION_H
 
 #include <glib-object.h>
+#include <gtk/gtk.h>
 #include "mp.h"
 
 G_BEGIN_DECLS
@@ -29,68 +30,29 @@ G_BEGIN_DECLS
 
 typedef struct MathEquationPrivate MathEquationPrivate;
 
-#define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
-#define MAX_DISPLAY 512
-
-/* Expression mode state */
-typedef struct {
-    MPNumber ans;           /* Previously calculated answer */
-    char *expression;       /* Expression entered by user */
-    int ans_start, ans_end; /* Start and end characters for ans variable in expression */
-    int cursor;
-} MathEquationState;
-
-/* Circular list of Arithmetic Precedence Mode states*/
-typedef struct {
-  unsigned int begin;
-  unsigned int end;
-  unsigned int current;
-  MathEquationState e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
-} MathEquationHistory;
-
-/* Number display mode. */
-typedef enum { DEC, BIN, OCT, HEX, SCI, ENG } DisplayFormat;
-
 typedef struct
 {
-    GObject parent_instance;
+    GtkTextBuffer parent_instance;
     MathEquationPrivate *priv;
-    MathEquationHistory h;    /* History of expression mode states */
-    int show_tsep;         /* Set if the thousands separator should be shown. */
-    int show_zeroes;       /* Set if trailing zeroes should be shown. */
-    DisplayFormat format;  /* Number display mode. */
-    int accuracy;          /* Number of digits to show */
-    int word_size;
-    MPAngleUnit angle_unit;
 } MathEquation;
 
 typedef struct
 {
-    GObjectClass parent_class;
+    GtkTextBufferClass parent_class;
 
     void (*status_changed)(MathEquation *display);  
     void (*bitfield_changed)(MathEquation *display);
-    void (*display_changed)(MathEquation *display);
+    void (*number_mode_changed)(MathEquation *display);
 } MathEquationClass;
 
-/* Available functions */
-enum
-{
-    FN_TEXT,
-    FN_CALCULATE,
-    FN_CLEAR,
-    FN_BACKSPACE,
-    FN_DELETE,
-    FN_TOGGLE_BIT,
-    FN_SHIFT,
-    FN_FACTORIZE,
-    FN_STORE,
-    FN_RECALL,
-    FN_UNDO,
-    FN_REDO,
-    FN_PASTE,
-    FN_INSERT_CHARACTER
-};
+/* Number display mode. */
+typedef enum { DEC, BIN, OCT, HEX, SCI, ENG } DisplayFormat;
+
+typedef enum {
+    NORMAL,
+    SUPERSCRIPT,
+    SUBSCRIPT
+} NumberMode;
 
 GType math_equation_get_type();
 MathEquation *math_equation_new();
@@ -100,50 +62,43 @@ const gchar *math_equation_get_numeric_point_text(MathEquation *equation);
 
 void math_equation_set_status(MathEquation *equation, const gchar *status);
 const gchar *math_equation_get_status(MathEquation *equation);
+
 gboolean math_equation_get_bitfield_enabled(MathEquation *equation);
 guint64 math_equation_get_bitfield(MathEquation *equation);
-const gchar *math_equation_get_text(MathEquation *equation);
-gint math_equation_get_cursor(MathEquation *equation);
 
-void display_set_accuracy(MathEquation *display, int accuracy);
-void display_set_show_thousands_separator(MathEquation *display, gboolean visible);
-void display_set_show_trailing_zeroes(MathEquation *display, gboolean visible);
-void display_set_format(MathEquation *display, DisplayFormat format);
-void display_set_word_size(MathEquation *display, int word_size);
-void display_set_angle_unit(MathEquation *display, MPAngleUnit angle_unit);
-void display_clear(MathEquation *);
+void math_equation_set_number_mode(MathEquation *equation, NumberMode mode);
+NumberMode math_equation_get_number_mode(MathEquation *equation);
 
-gboolean display_get_integer(MathEquation *display, gint64 *value);
-gboolean display_get_unsigned_integer(MathEquation *display, guint64 *value);
-MPNumber *display_get_answer(MathEquation *);
-int display_get_cursor(MathEquation *);
+//FIXME: Make get_
+void math_equation_set_accuracy(MathEquation *equation, int accuracy);
+void math_equation_set_show_thousands_separator(MathEquation *equation, gboolean visible);
+void math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible);
+void math_equation_set_format(MathEquation *equation, DisplayFormat format);
+void math_equation_set_word_size(MathEquation *equation, int word_size);
+void math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit);
+void math_equation_set_base(MathEquation *equation, gint base);
 
-void display_set_number(MathEquation *display, const MPNumber *);
-void display_set_answer(MathEquation *display);
-void display_set_string(MathEquation *display, const char *, int);
-void display_set_cursor(MathEquation *display, int);
-void display_set_error(MathEquation *display, const char *);
+void math_equation_copy(MathEquation *equation);
+void math_equation_paste(MathEquation *equation);
+void math_equation_store(MathEquation *equation, const gchar *name);
+void math_equation_recall(MathEquation *equation, const gchar *name);
+void math_equation_insert(MathEquation *equation, const gchar *text);
+void math_equation_insert_digit(MathEquation *equation, guint digit);
+void math_equation_insert_numeric_point(MathEquation *equation);
+void math_equation_insert_subtract(MathEquation *equation);
+void math_equation_insert_exponent(MathEquation *equation);
+void math_equation_insert_character(MathEquation *equation, const gchar *character);
+void math_equation_solve(MathEquation *equation);
+void math_equation_factorize(MathEquation *equation);
+void math_equation_delete(MathEquation *equation);
+void math_equation_backspace(MathEquation *equation);
+void math_equation_clear(MathEquation *equation);
+void math_equation_shift(MathEquation *equation, gint count);
+void math_equation_toggle_bit(MathEquation *equation, guint bit);
 
-void display_convert(MathEquation *display, DisplayFormat format);
+//FIXME: Obsolete
+void display_set_number(MathEquation *equation, const MPNumber *);
+gboolean display_is_usable_number(MathEquation *equation, MPNumber *);
+void display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x);
 
-void display_clear_stack(MathEquation *);
-void display_push(MathEquation *);
-void display_pop(MathEquation *);
-void display_unpop(MathEquation *);
-gboolean display_is_undo_step(MathEquation *display);
-
-void display_insert(MathEquation *display, int, int, const char *);
-void display_insert_number(MathEquation *display, int, int, const MPNumber *);
-void display_backspace(MathEquation *, int, int);
-void display_delete(MathEquation *, int, int);
-
-gboolean display_is_empty(MathEquation *);
-gboolean display_is_result(MathEquation *);
-gboolean display_is_usable_number(MathEquation *display, MPNumber *);
-gboolean display_is_number_with_base(MathEquation *display);
-
-void display_make_number(MathEquation *display, char *target, int target_len, const MPNumber *x);
-
-void display_do_function(MathEquation *display, int function, gpointer arg, int cursor_start, int cursor_end);
-
-#endif /* DISPLAY_H */
+#endif /* MATH_EQUATION_H */

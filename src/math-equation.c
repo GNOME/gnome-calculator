@@ -38,28 +38,84 @@
 enum {
     STATUS_CHANGED,
     BITFIELD_CHANGED,
-    DISPLAY_CHANGED,
+    NUMBER_MODE_CHANGED,
     LAST_SIGNAL
 };
 static guint signals[LAST_SIGNAL] = { 0, };
 
 #define MAX_DIGITS 200
+#define UNDO_HISTORY_LENGTH 16  /* Arithmetic mode undo history length */
+#define MAX_DISPLAY 512
+
+/* Expression mode state */
+typedef struct {
+    MPNumber ans;           /* Previously calculated answer */
+    char *expression;       /* Expression entered by user */
+    int ans_start, ans_end; /* Start and end characters for ans variable in expression */
+    int cursor;
+} MathEquationState;
+
+/* Circular list of Arithmetic Precedence Mode states*/
+typedef struct {
+  unsigned int begin;
+  unsigned int end;
+  unsigned int current;
+  MathEquationState e[UNDO_HISTORY_LENGTH];  /* Expression mode state */
+} MathEquationHistory;
 
 struct MathEquationPrivate
 {
-    gchar *status;
-    guint64 bitfield;
-    gboolean bitfield_enabled;
-    char localized[MAX_DIGITS];
-    gint cursor;
+    gchar *status;            /* ??? */
+
+    guint64 bitfield;           // FIXME: Move into ui-buttons.c
+    gboolean bitfield_enabled;  // FIXME: Move into ui-buttons.c
+    char localized[MAX_DIGITS]; // FIXME: Obsolete now a TextBuffer
+    gint cursor;                // FIXME: Obsolete now a TextBuffer
+
+    int show_tsep;            /* Set if the thousands separator should be shown. */
+    int show_zeroes;          /* Set if trailing zeroes should be shown. */
+    DisplayFormat format;     /* Number display mode. */
+    int accuracy;             /* Number of digits to show */
+    int word_size;            /* ??? */
+    MPAngleUnit angle_unit;   /* ??? */
+    NumberMode number_mode;   /* ??? */
+    gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
     const char *digits[16];   /* Localized digit values */
     const char *radix;        /* Locale specific radix string. */
     const char *tsep;         /* Locale specific thousands separator. */
     int tsep_count;           /* Number of digits between separator. */
+
+    char *last_text;          /* Last text entered */
+
+    MathEquationHistory h;    /* History of expression mode states */
+
+    GdkAtom clipboard_atom;   /* ??? */
+    GdkAtom primary_atom;     /* ??? */
+    char *shelf;              /* PUT selection shelf contents. */
 };
 
-G_DEFINE_TYPE (MathEquation, math_equation, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
+
+/* Available functions */
+//FIXME: Obsolete
+enum
+{
+    FN_TEXT,
+    FN_CALCULATE,
+    FN_CLEAR,
+    FN_BACKSPACE,
+    FN_DELETE,
+    FN_TOGGLE_BIT,
+    FN_SHIFT,
+    FN_FACTORIZE,
+    FN_STORE,
+    FN_RECALL,
+    FN_UNDO,
+    FN_REDO,
+    FN_PASTE,
+    FN_INSERT_CHARACTER
+};
 
 MathEquation *
 math_equation_new()
@@ -135,10 +191,232 @@ math_equation_get_cursor(MathEquation *equation)
 }
 
 
-static MathEquationState *
-get_state(MathEquation *display)
+void
+math_equation_set_number_mode(MathEquation *equation, NumberMode mode)
 {
-    return &(display->h.e[display->h.current]);
+    if (equation->priv->number_mode == mode)
+        return;
+
+    equation->priv->can_super_minus = mode == SUPERSCRIPT;
+
+    equation->priv->number_mode = mode;
+    g_signal_emit(equation, signals[NUMBER_MODE_CHANGED], 0);
+}
+
+
+NumberMode
+math_equation_get_number_mode(MathEquation *equation)
+{
+    return equation->priv->number_mode;
+}
+
+
+static void display_do_function(MathEquation *equation, int function, gpointer arg, int cursor_start, int cursor_end);
+
+static void
+do_button(MathEquation *equation, int function, gpointer arg)
+{
+    GtkTextIter start, end;
+    gint cursor_start, cursor_end;
+  
+    /* Can't enter superscript minus after entering digits */
+    if (function == FN_TEXT && (strstr("⁰¹²³⁴⁵⁶⁷⁸⁹", (char *)arg) != NULL || strcmp("⁻", (char *)arg) == 0))
+        equation->priv->can_super_minus = FALSE;
+
+    /* Disable super/subscript mode when finished entering */
+    if (function == FN_CALCULATE ||
+        function == FN_CLEAR ||
+        (function == FN_TEXT && strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", (char *)arg) == NULL)) {
+        math_equation_set_number_mode(equation, NORMAL);
+    }
+
+    if (gtk_text_buffer_get_selection_bounds(GTK_TEXT_BUFFER(equation), &start, &end)) {
+        cursor_start = gtk_text_iter_get_offset(&start);
+        cursor_end = gtk_text_iter_get_offset(&end);
+    }
+    else {
+        g_object_get(G_OBJECT(equation), "cursor-position", &cursor_start, NULL);
+        if (cursor_start == gtk_text_buffer_get_char_count(GTK_TEXT_BUFFER(equation)))
+            cursor_start = -1;
+        cursor_end = cursor_start;
+    }
+
+    /* Some keyboards don't have a '^' button so convert two multiplies to one '^' */
+    if (cursor_start == cursor_end &&
+        function == FN_TEXT && equation->priv->last_text != NULL &&
+        strcmp((char *)arg, "×") == 0 && strcmp(equation->priv->last_text, "×") == 0) {
+        do_button(equation, FN_BACKSPACE, NULL);
+        do_button(equation, FN_TEXT, "^");
+    }
+    else {
+        display_do_function(equation, function, arg, cursor_start, cursor_end);
+        if (function == FN_TEXT)
+            equation->priv->last_text = (char *)arg;
+        else
+            equation->priv->last_text = NULL;
+    }
+}
+
+
+void
+math_equation_copy(MathEquation *equation)
+{
+    gchar *string = NULL;
+    GtkTextIter start, end;
+
+    if (gtk_text_buffer_get_selection_bounds(GTK_TEXT_BUFFER(equation), &start, &end) == TRUE)
+        string = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &start, &end, FALSE);
+    else
+        string = equation->priv->localized;
+
+    if (equation->priv->shelf != NULL)
+        g_free(equation->priv->shelf);
+    equation->priv->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
+    g_free(string);
+
+    gtk_clipboard_set_text(gtk_clipboard_get(equation->priv->clipboard_atom), equation->priv->shelf, -1);
+}
+
+
+static void
+on_paste(GtkClipboard *clipboard, const gchar *text, MathEquation *equation)
+{
+    if (text != NULL)
+        do_button(equation, FN_PASTE, (gpointer) text);
+}
+
+
+void
+math_equation_paste(MathEquation *equation)
+{
+    gtk_clipboard_request_text(gtk_clipboard_get(equation->priv->clipboard_atom),
+                               (GtkClipboardTextReceivedFunc)on_paste, equation);
+}
+
+
+void
+math_equation_store(MathEquation *equation, const gchar *name)
+{
+    do_button(equation, FN_STORE, (gpointer)name);
+}
+
+
+void
+math_equation_recall(MathEquation *equation, const gchar *name)
+{
+    do_button(equation, FN_RECALL, (gpointer)name);
+}
+
+
+void
+math_equation_insert(MathEquation *equation, const gchar *text)
+{
+    do_button(equation, FN_TEXT, (gpointer) text);
+}
+
+
+void
+math_equation_insert_digit(MathEquation *equation, unsigned int digit)
+{
+    static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
+    static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
+
+    if (equation->priv->number_mode == NORMAL || digit >= 10)
+        math_equation_insert(equation, math_equation_get_digit_text(equation, digit));
+    else if (equation->priv->number_mode == SUPERSCRIPT)
+        math_equation_insert(equation, superscript_digits[digit]);
+    else if (equation->priv->number_mode == SUBSCRIPT)
+        math_equation_insert(equation, subscript_digits[digit]);
+}
+
+
+void
+math_equation_insert_numeric_point(MathEquation *equation)
+{
+    math_equation_insert(equation, math_equation_get_numeric_point_text(equation));
+}
+
+
+void
+math_equation_insert_exponent(MathEquation *equation)
+{
+    math_equation_insert(equation, "×10");
+    math_equation_set_number_mode(equation, SUPERSCRIPT);
+}
+
+
+void
+math_equation_insert_character(MathEquation *equation, const char *character)
+{
+    do_button(equation, FN_INSERT_CHARACTER, (gpointer)character);
+}
+
+
+void
+math_equation_insert_subtract(MathEquation *equation)
+{
+    if (equation->priv->number_mode == SUPERSCRIPT && equation->priv->can_super_minus) {
+        math_equation_insert(equation, "⁻");
+        equation->priv->can_super_minus = FALSE;
+    }
+    else {
+        math_equation_insert(equation, "−");
+        math_equation_set_number_mode(equation, NORMAL);
+    }
+}
+
+
+void
+math_equation_solve(MathEquation *equation)
+{
+    do_button(equation, FN_CALCULATE, NULL);
+}
+
+
+void
+math_equation_factorize(MathEquation *equation)
+{
+    do_button(equation, FN_FACTORIZE, NULL);
+}
+
+
+void math_equation_delete(MathEquation *equation)
+{
+    do_button(equation, FN_DELETE, NULL);  
+}
+
+
+void math_equation_backspace(MathEquation *equation)
+{
+    do_button(equation, FN_BACKSPACE, NULL);  
+}
+
+
+void
+math_equation_clear(MathEquation *equation)
+{
+    do_button(equation, FN_CLEAR, NULL);  
+}
+
+
+void
+math_equation_shift(MathEquation *equation, gint count)
+{
+    do_button(equation, FN_SHIFT, GINT_TO_POINTER(count));
+}
+
+
+void
+math_equation_toggle_bit(MathEquation *equation, guint bit)
+{
+    do_button(equation, FN_TOGGLE_BIT, GINT_TO_POINTER(bit));
+}
+
+
+static MathEquationState *
+get_state(MathEquation *equation)
+{
+    return &(equation->priv->h.e[equation->priv->h.current]);
 }
 
 
@@ -148,7 +426,7 @@ get_state(MathEquation *display)
 
 /* Add in the thousand separators characters if required */
 static void
-localize_expression(MathEquation *display, char *dest, const char *src, int dest_length, int *cursor)
+localize_expression(MathEquation *equation, char *dest, const char *src, int dest_length, int *cursor)
 {
     GString *output;
     const char *c, *d;
@@ -177,9 +455,9 @@ localize_expression(MathEquation *display, char *dest, const char *src, int dest
             g_string_append_unichar(output, g_utf8_get_char(c));
 
             /* Insert separator after nth digit */
-            if (display->show_tsep && display->format == DEC &&
-                !after_radix && digit_count > 1 && digit_count % display->priv->tsep_count == 1) {
-                g_string_append(output, display->priv->tsep);
+            if (equation->priv->show_tsep && equation->priv->format == DEC &&
+                !after_radix && digit_count > 1 && digit_count % equation->priv->tsep_count == 1) {
+                g_string_append(output, equation->priv->tsep);
                 if (new_cursor > read_cursor) {
                     new_cursor++;
                 }
@@ -191,7 +469,7 @@ localize_expression(MathEquation *display, char *dest, const char *src, int dest
         else if (*c == '.') {
             digit_count = -1;
             after_radix = TRUE;
-            g_string_append(output, display->priv->radix);
+            g_string_append(output, equation->priv->radix);
             // FIXME: Handle cursor if radix is more than one character?
         }
         /* Reset when encountering other characters (e.g. '+') */
@@ -211,31 +489,112 @@ localize_expression(MathEquation *display, char *dest, const char *src, int dest
 }
 
 
-void
-display_clear(MathEquation *display)
+static MPNumber *
+display_get_answer(MathEquation *equation)
+{
+    return &get_state(equation)->ans;
+}
+
+
+static int
+display_get_cursor(MathEquation *equation)
+{
+    return get_state(equation)->cursor;
+}
+
+
+static gboolean
+display_is_result(MathEquation *equation)
 {
     MathEquationState *state;
 
-    state = get_state(display);
-    display_set_string(display, "", -1);
+    state = get_state(equation);
+    if (state->ans_start == 0 && state->ans_end == g_utf8_strlen(state->expression, -1))
+        return TRUE;
+
+    return FALSE;
+}
+
+
+static void
+display_make_text(MathEquation *equation, char *localized, int length, int *cursor)
+{
+    char *str;
+    MathEquationState *e;
+
+    e = get_state(equation);
+
+    /* Substitute answer register */
+    if (display_is_result(equation)) {
+        char temp[MAX_DIGITS];
+        display_make_number(equation, temp, MAX_DIGITS, &e->ans);
+        str = strdup(temp);
+    }
+    else
+        str = strdup(e->expression);
+
+    localize_expression(equation, localized, str, length, cursor);
+    free(str);
+}
+
+
+static void
+display_refresh(MathEquation *equation)
+{
+    GtkTextIter iter;
+
+    equation->priv->cursor = display_get_cursor(equation);
+    display_make_text(equation, equation->priv->localized, MAX_DIGITS, &equation->priv->cursor);
+    gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), equation->priv->localized, -1);
+    if (equation->priv->cursor < 0)
+        gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(equation), &iter);
+    else
+        gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, equation->priv->cursor);
+    gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(equation), &iter);
+}
+
+
+static void
+display_set_string(MathEquation *equation, const char *value, int cursor)
+{
+    MathEquationState *e;
+
+    if (value[0] == '\0')
+        cursor = -1;
+
+    e = get_state(equation);
+    free(e->expression);
+    e->expression = strdup(value);
+    e->cursor = cursor;
+
+    display_refresh(equation);
+}
+
+static void
+display_clear(MathEquation *equation)
+{
+    MathEquationState *state;
+
+    state = get_state(equation);
+    display_set_string(equation, "", -1);
     state->ans_start = -1;
     state->ans_end = -1;
 }
 
 
 static const char *
-get_text(MathEquation *display)
+get_text(MathEquation *equation)
 {
-    return get_state(display)->expression;
+    return get_state(equation)->expression;
 }
 
 
 static char *
-get_expression(MathEquation *display)
+get_expression(MathEquation *equation)
 {
     MathEquationState *state;
 
-    state = get_state(display);
+    state = get_state(equation);
     if(state->ans_start >= 0)
         return g_strdup_printf("%.*sans%s", state->ans_start, state->expression, g_utf8_offset_to_pointer(state->expression, state->ans_end));
     else
@@ -243,12 +602,12 @@ get_expression(MathEquation *display)
 }
 
 
-gboolean
-display_get_integer(MathEquation *display, gint64 *value)
+static gboolean
+display_get_integer(MathEquation *equation, gint64 *value)
 {
     MPNumber t, min, max;
 
-    if (!display_is_usable_number(display, &t))
+    if (!display_is_usable_number(equation, &t))
         return FALSE;
 
     mp_set_from_integer(G_MININT64, &min);
@@ -261,12 +620,12 @@ display_get_integer(MathEquation *display, gint64 *value)
 }
 
 
-gboolean
-display_get_unsigned_integer(MathEquation *display, guint64 *value)
+static gboolean
+display_get_unsigned_integer(MathEquation *equation, guint64 *value)
 {
     MPNumber t, max;
 
-    if (!display_is_usable_number(display, &t))
+    if (!display_is_usable_number(equation, &t))
         return FALSE;
   
     mp_set_from_unsigned_integer(G_MAXUINT64, &max);
@@ -279,129 +638,60 @@ display_get_unsigned_integer(MathEquation *display, guint64 *value)
 }
 
 
-MPNumber *
-display_get_answer(MathEquation *display)
-{
-    return &get_state(display)->ans;
-}
-
-
-int
-display_get_cursor(MathEquation *display)
-{
-    return get_state(display)->cursor;
-}
-
-
 // FIXME: Looses accuracy
 void
-display_set_number(MathEquation *display, const MPNumber *x)
+display_set_number(MathEquation *equation, const MPNumber *x)
 {
     char text[MAX_DISPLAY];
     int enabled;
     guint64 bit_value;
 
-    display_make_number(display, text, MAX_DISPLAY, x);
-    display_set_string(display, text, -1);
+    display_make_number(equation, text, MAX_DISPLAY, x);
+    display_set_string(equation, text, -1);
 
-    enabled = display_get_unsigned_integer(display, &bit_value);
-    math_equation_set_bitfield(display, enabled, bit_value);
+    enabled = display_get_unsigned_integer(equation, &bit_value);
+    math_equation_set_bitfield(equation, enabled, bit_value);
 }
 
 
 void
-display_set_answer(MathEquation *display)
+display_set_answer(MathEquation *equation)
 {
     MathEquationState *state;
     char text[MAX_DISPLAY];
 
-    state = get_state(display);
-    display_make_number(display, text, MAX_DISPLAY, &state->ans);
-    display_set_string(display, text, -1);
+    state = get_state(equation);
+    display_make_number(equation, text, MAX_DISPLAY, &state->ans);
+    display_set_string(equation, text, -1);
     state->ans_start = 0;
     state->ans_end = g_utf8_strlen(text, -1);
 }
 
 
 static void
-display_make_text(MathEquation *display, char *localized, int length, int *cursor)
+display_set_cursor(MathEquation *equation, int cursor)
 {
-    char *str;
     MathEquationState *e;
 
-    e = get_state(display);
-
-    /* Substitute answer register */
-    if (display_is_result(display)) {
-        char temp[MAX_DIGITS];
-        display_make_number(display, temp, MAX_DIGITS, &e->ans);
-        str = strdup(temp);
-    }
-    else
-        str = strdup(e->expression);
-
-    localize_expression(display, localized, str, length, cursor);
-    free(str);
+    e = get_state(equation);
+    e->cursor = cursor;
+    display_refresh(equation);
 }
 
 
 static void
-display_refresh(MathEquation *equation)
-{
-    equation->priv->cursor = display_get_cursor(equation);
-    display_make_text(equation, equation->priv->localized, MAX_DIGITS, &equation->priv->cursor);
-    g_signal_emit(equation, signals[DISPLAY_CHANGED], 0);
-}
-
-
-void
-display_set_string(MathEquation *display, const char *value, int cursor)
-{
-    MathEquationState *e;
-
-    if (value[0] == '\0')
-        cursor = -1;
-
-    e = get_state(display);
-    free(e->expression);
-    e->expression = strdup(value);
-    e->cursor = cursor;
-
-    display_refresh(display);
-}
-
-
-void
-display_set_cursor(MathEquation *display, int cursor)
-{
-    MathEquationState *e;
-
-    e = get_state(display);
-    e->cursor = cursor;
-    display_refresh(display);
-}
-
-
-void
-display_set_error(MathEquation *display, const char *message)
-{
-    math_equation_set_status(display, message);
-}
-
-
-void
-display_convert(MathEquation *display, DisplayFormat format)
+display_convert(MathEquation *equation, DisplayFormat format)
 {
     DisplayFormat old_format;
 
-    if (!display_is_result (display))
+    if (!display_is_result (equation))
         return;
 
     /* FIXME: A bit hacky... */
-    old_format = display->format;
-    display->format = format;
-    display_set_answer(display);
-    display->format = old_format;
+    old_format = equation->priv->format;
+    equation->priv->format = format;
+    display_set_answer(equation);
+    equation->priv->format = old_format;
 }
 
 
@@ -413,94 +703,94 @@ copy_state(MathEquationState *dst, MathEquationState *src)
 }
 
 
-void
-display_clear_stack(MathEquation *display)
+static void
+display_clear_stack(MathEquation *equation)
 {
-    int i = display->h.begin;
-    while (i != display->h.end) {
-        if (i != display->h.current) {
-            free(display->h.e[i].expression);
-            display->h.e[i].expression = NULL;
+    int i = equation->priv->h.begin;
+    while (i != equation->priv->h.end) {
+        if (i != equation->priv->h.current) {
+            free(equation->priv->h.e[i].expression);
+            equation->priv->h.e[i].expression = NULL;
         }
         i = ((i + 1) % UNDO_HISTORY_LENGTH);
     }
-    display->h.begin = display->h.end = display->h.current;
+    equation->priv->h.begin = equation->priv->h.end = equation->priv->h.current;
 }
 
 
-void
-display_push(MathEquation *display)
+static void
+display_push(MathEquation *equation)
 {
     int c;
 
-    if (display->h.current != display->h.end) {
-        int i = display->h.current;
+    if (equation->priv->h.current != equation->priv->h.end) {
+        int i = equation->priv->h.current;
 
         do {
             i = ((i + 1) % UNDO_HISTORY_LENGTH);
-            free(display->h.e[i].expression);
-            display->h.e[i].expression = strdup("ans"); // FIXME: Use actual number
-            display->h.e[i].ans_start = -1;
-            display->h.e[i].ans_end = -1;
-        } while (i != display->h.end);
+            free(equation->priv->h.e[i].expression);
+            equation->priv->h.e[i].expression = strdup("ans"); // FIXME: Use actual number
+            equation->priv->h.e[i].ans_start = -1;
+            equation->priv->h.e[i].ans_end = -1;
+        } while (i != equation->priv->h.end);
     }
 
-    display->h.end = display->h.current;
+    equation->priv->h.end = equation->priv->h.current;
 
-    c = display->h.current;
-    display->h.end = display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
-    if (display->h.current == display->h.begin) {
-        free(display->h.e[display->h.begin].expression);
-        display->h.e[display->h.begin].expression = NULL;
-        display->h.begin = ((display->h.begin + 1) % UNDO_HISTORY_LENGTH);
+    c = equation->priv->h.current;
+    equation->priv->h.end = equation->priv->h.current = ((equation->priv->h.current + 1) % UNDO_HISTORY_LENGTH);
+    if (equation->priv->h.current == equation->priv->h.begin) {
+        free(equation->priv->h.e[equation->priv->h.begin].expression);
+        equation->priv->h.e[equation->priv->h.begin].expression = NULL;
+        equation->priv->h.begin = ((equation->priv->h.begin + 1) % UNDO_HISTORY_LENGTH);
     }
 
-    copy_state(&(display->h.e[display->h.current]), &(display->h.e[c]));
+    copy_state(&(equation->priv->h.e[equation->priv->h.current]), &(equation->priv->h.e[c]));
 }
 
 
-void
-display_pop(MathEquation *display)
+static void
+display_pop(MathEquation *equation)
 {
-    if (display->h.current != display->h.begin) {
-        display->h.current = ((display->h.current - 1) % UNDO_HISTORY_LENGTH);
-        math_equation_set_status(display, "");
+    if (equation->priv->h.current != equation->priv->h.begin) {
+        equation->priv->h.current = ((equation->priv->h.current - 1) % UNDO_HISTORY_LENGTH);
+        math_equation_set_status(equation, "");
     } else {
-        math_equation_set_status(display, _("No undo history"));
+        math_equation_set_status(equation, _("No undo history"));
     }
 
-    display_refresh(display);
+    display_refresh(equation);
 }
 
 
-void
-display_unpop(MathEquation *display)
+static void
+display_unpop(MathEquation *equation)
 {
-    if (display->h.current != display->h.end) {
-        display->h.current = ((display->h.current + 1) % UNDO_HISTORY_LENGTH);
-        math_equation_set_status(display, "");
+    if (equation->priv->h.current != equation->priv->h.end) {
+        equation->priv->h.current = ((equation->priv->h.current + 1) % UNDO_HISTORY_LENGTH);
+        math_equation_set_status(equation, "");
     } else {
-        math_equation_set_status(display, _("No redo steps"));
+        math_equation_set_status(equation, _("No redo steps"));
     }
-    get_state(display)->cursor = -1;
-    display_refresh(display);
+    get_state(equation)->cursor = -1;
+    display_refresh(equation);
 }
 
 
-gboolean
-display_is_undo_step(MathEquation *display)
+static gboolean
+display_is_undo_step(MathEquation *equation)
 {
-    return(display->h.current != display->h.begin);
+    return(equation->priv->h.current != equation->priv->h.begin);
 }
 
 
-void
-display_insert(MathEquation *display, int cursor_start, int cursor_end, const char *text)
+static void
+display_insert(MathEquation *equation, int cursor_start, int cursor_end, const char *text)
 {
     MathEquationState *state;   
     char buf[MAX_DISPLAY];
 
-    state = get_state(display);
+    state = get_state(equation);
 
     /* If inside ans variable then modify number */
     if (state->ans_start >= 0 && cursor_start >= state->ans_start && cursor_start <= state->ans_end) {
@@ -509,8 +799,8 @@ display_insert(MathEquation *display, int cursor_start, int cursor_end, const ch
     }
 
     if (cursor_start < 0) {
-        snprintf(buf, MAX_DISPLAY, "%s%s", get_text(display), text);
-        display_set_string(display, buf, -1);
+        snprintf(buf, MAX_DISPLAY, "%s%s", get_text(equation), text);
+        display_set_string(equation, buf, -1);
     } else {
         GString *new_text;
         const char *c;
@@ -525,7 +815,7 @@ display_insert(MathEquation *display, int cursor_start, int cursor_end, const ch
         }
 
         cursor = 0;
-        for (c = display->priv->localized; *c; c = g_utf8_next_char(c), cursor++) {
+        for (c = equation->priv->localized; *c; c = g_utf8_next_char(c), cursor++) {
             gboolean use = TRUE;
 
             /* Ignore selected part */
@@ -533,7 +823,7 @@ display_insert(MathEquation *display, int cursor_start, int cursor_end, const ch
                 use = FALSE;
 
             /* Ignore thousands separators (if one exists) */
-            if (display->priv->tsep[0] != '\0' && strncmp(c, display->priv->tsep, strlen(display->priv->tsep)) == 0)
+            if (equation->priv->tsep[0] != '\0' && strncmp(c, equation->priv->tsep, strlen(equation->priv->tsep)) == 0)
                 use = FALSE;
 
             /* Copy existing text */
@@ -549,112 +839,99 @@ display_insert(MathEquation *display, int cursor_start, int cursor_end, const ch
                 new_cursor += g_utf8_strlen(text, -1);
             }
         }
-        display_set_string(display, new_text->str, new_cursor);
+        display_set_string(equation, new_text->str, new_cursor);
         g_string_free(new_text, TRUE);
     }
 
 }
 
 
-void
-display_insert_number(MathEquation *display, int cursor_start, int cursor_end, const MPNumber *value)
+static void
+display_insert_number(MathEquation *equation, int cursor_start, int cursor_end, const MPNumber *value)
 {
     char text[MAX_DISPLAY];
-    display_make_number(display, text, MAX_DISPLAY, value);
-    display_insert(display, cursor_start, cursor_end, text);
+    display_make_number(equation, text, MAX_DISPLAY, value);
+    display_insert(equation, cursor_start, cursor_end, text);
 }
 
 
-void
-display_backspace(MathEquation *display, int cursor_start, int cursor_end)
+static gboolean
+display_is_empty(MathEquation *equation)
+{
+    return strcmp(get_text(equation), "") == 0;
+}
+
+
+static void
+display_backspace(MathEquation *equation, int cursor_start, int cursor_end)
 {
     int cursor;
 
     /* Can't delete empty display */
-    if (display_is_empty(display))
+    if (display_is_empty(equation))
         return;
 
-    cursor = display_get_cursor(display);
+    cursor = display_get_cursor(equation);
 
     /* If cursor is at end of the line then delete the last character preserving accuracy */
     if (cursor_start < 0) {
         int len;
-        len = g_utf8_strlen(display->priv->localized, -1);
-        display_insert(display, len - 1, len, "");
+        len = g_utf8_strlen(equation->priv->localized, -1);
+        display_insert(equation, len - 1, len, "");
     } else if (cursor_start != cursor_end) {
-        display_insert(display, cursor_start, cursor_end, "");
+        display_insert(equation, cursor_start, cursor_end, "");
     } else if (cursor_start > 0) {
-        display_insert(display, cursor_start - 1, cursor_start, "");
+        display_insert(equation, cursor_start - 1, cursor_start, "");
     }
 
 }
 
-void
-display_delete(MathEquation *display, int cursor_start, int cursor_end)
+static void
+display_delete(MathEquation *equation, int cursor_start, int cursor_end)
 {
     /* Delete selected block */
     if (cursor_start != cursor_end)
-        display_insert(display, cursor_start, cursor_end, "");
+        display_insert(equation, cursor_start, cursor_end, "");
     else if (cursor_start >= 0)
-        display_insert(display, cursor_start, cursor_start + 1, "");
+        display_insert(equation, cursor_start, cursor_start + 1, "");
 }
 
 
 gboolean
-display_is_empty(MathEquation *display)
+display_is_usable_number(MathEquation *equation, MPNumber *z)
 {
-    return strcmp(get_text(display), "") == 0;
-}
-
-
-gboolean
-display_is_result(MathEquation *display)
-{
-    MathEquationState *state;
-
-    state = get_state(display);
-    if (state->ans_start == 0 && state->ans_end == g_utf8_strlen(state->expression, -1))
-        return TRUE;
-
-    return FALSE;
-}
-
-
-gboolean
-display_is_usable_number(MathEquation *display, MPNumber *z)
-{
-    if (display_is_empty(display)) {
+    if (display_is_empty(equation)) {
         mp_set_from_integer(0, z);
         return TRUE;
-    } else if (display_is_result(display)) {
-        mp_set_from_mp(display_get_answer(display), z);
+    } else if (display_is_result(equation)) {
+        mp_set_from_mp(display_get_answer(equation), z);
         return TRUE;
     } else {
-        return mp_set_from_string(get_text(display), z) == 0;
+        return mp_set_from_string(get_text(equation), z) == 0;
     }
 }
 
 
-gboolean
-display_is_number_with_base(MathEquation *display)
+static gboolean
+display_is_number_with_base(MathEquation *equation)
 {
     MPNumber t;
     const char *text;
     const char *sub_digits[] = { "₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL };
     int i;
 
-    if (display_is_empty(display))
+    if (display_is_empty(equation))
         return FALSE;
 
-    if (display_is_result(display))
-        return (display->format == BIN || display->format == OCT || display->format == HEX);
+    if (display_is_result(equation))
+        return (equation->priv->format == BIN || equation->priv->format == OCT || equation->priv->format == HEX);
 
     /* See if it has a subscript suffix */
-    text = get_text(display);
+    text = get_text(equation);
     text += strlen (text);
     for (i = 0; sub_digits[i] != NULL; i++) {
         if (strcmp (text - strlen (sub_digits[i]), sub_digits[i]) == 0)
-            return mp_set_from_string(get_text(display), &t) == 0;
+            return mp_set_from_string(get_text(equation), &t) == 0;
     }
 
     return FALSE;
@@ -662,58 +939,86 @@ display_is_number_with_base(MathEquation *display)
 
 
 void
-display_set_accuracy(MathEquation *display, int accuracy)
+math_equation_set_accuracy(MathEquation *equation, int accuracy)
 {
-    display->accuracy = accuracy;
-    get_state(display)->cursor = -1;
-    display_refresh(display);
+    equation->priv->accuracy = accuracy;
+    get_state(equation)->cursor = -1;
+    display_refresh(equation);
 }
 
 
 void
-display_set_show_thousands_separator(MathEquation *display, gboolean visible)
+math_equation_set_show_thousands_separator(MathEquation *equation, gboolean visible)
 {
-    display->show_tsep = visible;
-    display_set_cursor(display, -1);
-    display_refresh(display);
+    equation->priv->show_tsep = visible;
+    display_set_cursor(equation, -1);
+    display_refresh(equation);
 }
 
 
 void
-display_set_show_trailing_zeroes(MathEquation *display, gboolean visible)
+math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
 {
-    display->show_zeroes = visible;
-    get_state(display)->cursor = -1;
-    display_refresh(display);
+    equation->priv->show_zeroes = visible;
+    get_state(equation)->cursor = -1;
+    display_refresh(equation);
 }
 
 
 void
-display_set_format(MathEquation *display, DisplayFormat format)
+math_equation_set_format(MathEquation *equation, DisplayFormat format)
 {
-    display->format = format;
-    get_state(display)->cursor = -1;
-    display_refresh(display);
+    equation->priv->format = format;
+    get_state(equation)->cursor = -1;
+    display_refresh(equation);
 }
 
 
 void
-display_set_word_size(MathEquation *display, int word_size)
+math_equation_set_word_size(MathEquation *equation, int word_size)
 {
-    display->word_size = word_size;
+    equation->priv->word_size = word_size;
 }
 
 
 void
-display_set_angle_unit(MathEquation *display, MPAngleUnit angle_unit)
+math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit)
 {
-    display->angle_unit = angle_unit;
+    equation->priv->angle_unit = angle_unit;
+}
+
+
+void
+math_equation_set_base(MathEquation *equation, gint base)
+{
+    /* If has a number already in a base, then solve and convert it */
+    if (!display_is_result(equation) && display_is_number_with_base(equation))
+        math_equation_solve(equation);
+
+    if (display_is_result(equation)) {
+        if (base == 2)
+            display_convert(equation, BIN);
+        else if (base == 8)
+            display_convert(equation, OCT);
+        else if (base == 16)
+            display_convert(equation, HEX);
+        else
+            display_convert(equation, DEC);
+    }
+    else {
+        if (base == 2)
+            math_equation_insert(equation, "₂");
+        else if (base == 8)
+            math_equation_insert(equation, "₈");
+        else if (base == 16)
+            math_equation_insert(equation, "₁₆");
+    }
 }
 
 
 /* Convert engineering or scientific number in the given base. */
 static void
-make_eng_sci(MathEquation *display, char *target, int target_len, const MPNumber *x, int base_)
+make_eng_sci(MathEquation *equation, char *target, int target_len, const MPNumber *x, int base_)
 {
     char fixed[MAX_DIGITS], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -723,7 +1028,7 @@ make_eng_sci(MathEquation *display, char *target, int target_len, const MPNumber
 
     string = g_string_sized_new(target_len);
 
-    eng = display->format == ENG;
+    eng = equation->priv->format == ENG;
 
     mp_abs(x, &z);
     if (mp_is_negative(x))
@@ -760,7 +1065,7 @@ make_eng_sci(MathEquation *display, char *target, int target_len, const MPNumber
         }
     }
 
-    mp_cast_to_string(&mantissa, base_, display->accuracy, !display->show_zeroes, fixed, MAX_DIGITS);
+    mp_cast_to_string(&mantissa, base_, equation->priv->accuracy, !equation->priv->show_zeroes, fixed, MAX_DIGITS);
     g_string_append(string, fixed);
     g_string_append_printf(string, "×10");
     if (exponent < 0) {
@@ -778,26 +1083,26 @@ make_eng_sci(MathEquation *display, char *target, int target_len, const MPNumber
 
 /* Convert MP number to character string. */
 void
-display_make_number(MathEquation *display, char *target, int target_len, const MPNumber *x)
+display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x)
 {
-    switch(display->format) {
+    switch(equation->priv->format) {
     case DEC:
-        mp_cast_to_string(x, 10, display->accuracy, !display->show_zeroes, target, target_len);
+        mp_cast_to_string(x, 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case BIN:
-        mp_cast_to_string(x, 2, display->accuracy, !display->show_zeroes, target, target_len);
+        mp_cast_to_string(x, 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case OCT:
-        mp_cast_to_string(x, 8, display->accuracy, !display->show_zeroes, target, target_len);
+        mp_cast_to_string(x, 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case HEX:
-        mp_cast_to_string(x, 16, display->accuracy, !display->show_zeroes, target, target_len);
+        mp_cast_to_string(x, 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case SCI:
-        make_eng_sci(display, target, target_len, x, 10);
+        make_eng_sci(equation, target, target_len, x, 10);
         break;
     case ENG:
-        make_eng_sci(display, target, target_len, x, 10);
+        make_eng_sci(equation, target, target_len, x, 10);
         break;
     }
 }
@@ -828,7 +1133,7 @@ get_variable(const char *name, MPNumber *z, void *data)
 {
     char *c, *lower_name;
     int result = 1;
-    MathEquation *display = data;
+    MathEquation *equation = data;
     MPNumber *t;
 
     lower_name = strdup(name);
@@ -838,7 +1143,7 @@ get_variable(const char *name, MPNumber *z, void *data)
     if (strcmp(lower_name, "rand") == 0)
         mp_set_from_random(z);
     else if (strcmp(lower_name, "ans") == 0)
-        mp_set_from_mp(display_get_answer(display), z);
+        mp_set_from_mp(display_get_answer(equation), z);
     else {
         t = register_get_value(name);
         if (t)
@@ -879,25 +1184,25 @@ convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z
 
 
 static int
-parse(MathEquation *display, const char *text, MPNumber *z, char **error_token)
+parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
 {
     MPEquationOptions options;
 
     memset(&options, 0, sizeof(options));
-    options.wordlen = display->word_size;
-    options.angle_units = display->angle_unit;
+    options.wordlen = equation->priv->word_size;
+    options.angle_units = equation->priv->angle_unit;
     options.variable_is_defined = variable_is_defined;
     options.get_variable = get_variable;
     options.set_variable = set_variable;
     options.convert = convert;
-    options.callback_data = display;
+    options.callback_data = equation;
 
     return mp_equation_parse(text, &options, z, error_token);
 }
 
 
 static void
-do_paste(MathEquation *display, int cursor_start, int cursor_end, const char *text)
+do_paste(MathEquation *equation, int cursor_start, int cursor_end, const char *text)
 {
     const char *input;
     char c, *output, *clean_text;
@@ -911,14 +1216,14 @@ do_paste(MathEquation *display, int cursor_start, int cursor_end, const char *te
         /* If the clipboard buffer contains any occurances of the "thousands
          * separator", remove them.
          */
-        if (display->priv->tsep[0] != '\0' && strncmp(input, display->priv->tsep, strlen(display->priv->tsep)) == 0) {
-            input += strlen(display->priv->tsep) - 1;
+        if (equation->priv->tsep[0] != '\0' && strncmp(input, equation->priv->tsep, strlen(equation->priv->tsep)) == 0) {
+            input += strlen(equation->priv->tsep) - 1;
             continue;
         }
 
         /* Replace radix with "." */
-        else if (strncmp(input, display->priv->radix, strlen(display->priv->radix)) == 0) {
-            input += strlen(display->priv->radix) - 1;
+        else if (strncmp(input, equation->priv->radix, strlen(equation->priv->radix)) == 0) {
+            input += strlen(equation->priv->radix) - 1;
             c = '.';
         }
 
@@ -956,12 +1261,12 @@ do_paste(MathEquation *display, int cursor_start, int cursor_end, const char *te
     }
     *output++ = '\0';
 
-    display_insert(display, cursor_start, cursor_end, clean_text);
+    display_insert(equation, cursor_start, cursor_end, clean_text);
 }
 
 
 static void
-do_insert_character(MathEquation *display, const unsigned char *text)
+do_insert_character(MathEquation *equation, const unsigned char *text)
 {
     MPNumber value;
     int i = 0;
@@ -975,24 +1280,24 @@ do_insert_character(MathEquation *display, const unsigned char *text)
             break;
         }
     }
-    display_set_number(display, &value);
+    display_set_number(equation, &value);
 }
 
 
 /* Perform bitwise shift on display value. */
 static void
-do_shift(MathEquation *display, int count)
+do_shift(MathEquation *equation, int count)
 {
     MPNumber z;
 
-    if (!display_is_usable_number(display, &z)) {
+    if (!display_is_usable_number(equation, &z)) {
         /* Translators: This message is displayed in the status bar when a bit
            shift operation is performed and the display does not contain a number */
-        math_equation_set_status(display, _("No sane value to bitwise shift"));
+        math_equation_set_status(equation, _("No sane value to bitwise shift"));
     }
     else {
-        mp_shift(&z, count, display_get_answer(display));
-        display_set_answer(display);
+        mp_shift(&z, count, display_get_answer(equation));
+        display_set_answer(equation);
     }
 }
 
@@ -1025,19 +1330,19 @@ do_factorize(MathEquation *equation)
 
 
 static void
-do_sto(MathEquation *display, const char *name)
+do_sto(MathEquation *equation, const char *name)
 {
     MPNumber t;
 
-    if (!display_is_usable_number(display, &t))
-        math_equation_set_status(display, _("No sane value to store"));
+    if (!display_is_usable_number(equation, &t))
+        math_equation_set_status(equation, _("No sane value to store"));
     else
         register_set_value(name, &t);
 }
 
 
-void
-display_do_function(MathEquation *display, int function, gpointer arg, int cursor_start, int cursor_end)
+static void
+display_do_function(MathEquation *equation, int function, gpointer arg, int cursor_start, int cursor_end)
 {
     MPNumber *ans;
     int enabled;
@@ -1045,63 +1350,63 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
 
     switch (function) {
         case FN_UNDO:
-            display_pop(display);
+            display_pop(equation);
             return;
 
         case FN_REDO:
-            display_unpop(display);
+            display_unpop(equation);
             return;
 
         default:
             break;
     }
 
-    display_push(display);
+    display_push(equation);
 
-    display_set_cursor(display, cursor_start);
-    ans = display_get_answer(display);
+    display_set_cursor(equation, cursor_start);
+    ans = display_get_answer(equation);
 
-    math_equation_set_status(display, "");
+    math_equation_set_status(equation, "");
 
     switch (function) {
         case FN_CLEAR:
-            display_clear(display);
+            display_clear(equation);
             break;
 
         case FN_SHIFT:
-            do_shift(display, GPOINTER_TO_INT (arg));
+            do_shift(equation, GPOINTER_TO_INT (arg));
             break;
 
         case FN_FACTORIZE:
-            do_factorize(display);
+            do_factorize(equation);
             break;
 
         case FN_PASTE:
-            do_paste(display, cursor_start, cursor_end, (const char *)arg);
+            do_paste(equation, cursor_start, cursor_end, (const char *)arg);
             return;
 
         case FN_INSERT_CHARACTER:
-            do_insert_character(display, (const unsigned char *)arg);
+            do_insert_character(equation, (const unsigned char *)arg);
             return;
 
         case FN_STORE:
-            do_sto(display, (const char *)arg);
+            do_sto(equation, (const char *)arg);
             return;
 
         case FN_RECALL:
-            display_insert(display, cursor_start, cursor_end, (const char *)arg);
+            display_insert(equation, cursor_start, cursor_end, (const char *)arg);
             break;
 
         case FN_BACKSPACE:
-            display_backspace(display, cursor_start, cursor_end);
+            display_backspace(equation, cursor_start, cursor_end);
             break;
 
         case FN_DELETE:
-            display_delete(display, cursor_start, cursor_end);
+            display_delete(equation, cursor_start, cursor_end);
             break;
 
         case FN_TOGGLE_BIT:
-            if (display_get_unsigned_integer(display, &bit_value)) {
+            if (display_get_unsigned_integer(equation, &bit_value)) {
                 char buf[MAX_DISPLAY];
                 MPNumber MP;
 
@@ -1110,7 +1415,7 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
                 /* FIXME: Convert to string since we don't support setting MP numbers from 64 bit integers */
                 snprintf(buf, MAX_DISPLAY, "%" G_GUINT64_FORMAT, bit_value);
                 mp_set_from_string(buf, &MP);
-                display_set_number(display, &MP);
+                display_set_number(equation, &MP);
             }
             break;
 
@@ -1119,14 +1424,14 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
              * this result */
             /* TODO: Work out why two undo steps are required and why
              * the cursor must be taken from the first undo */
-            if (display_is_result(display)) {
-                display_pop(display);
-                if (display_is_undo_step(display)) {
-                    display_pop(display);
+            if (display_is_result(equation)) {
+                display_pop(equation);
+                if (display_is_undo_step(equation)) {
+                    display_pop(equation);
                 }
 
             /* Do nothing */
-            } else if (display_is_empty(display)) {
+            } else if (display_is_empty(equation)) {
                 ;
 
             /* Solve the equation */
@@ -1136,8 +1441,8 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
                 const char *message = NULL;
                 char *text, *error_token;
 
-                text = get_expression (display);
-                result = parse(display,
+                text = get_expression (equation);
+                result = parse(equation,
                                text,
                                &z,
                                &error_token);
@@ -1146,7 +1451,7 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
                 switch (result) {
                     case PARSER_ERR_NONE:
                         mp_set_from_mp(&z, ans);
-                        display_set_answer(display);
+                        display_set_answer(equation);
                         break;
 
                     case PARSER_ERR_OVERFLOW:
@@ -1181,21 +1486,21 @@ display_do_function(MathEquation *display, int function, gpointer arg, int curso
                         break;
                 }
                 if (message)
-                    math_equation_set_status(display, message);
+                    math_equation_set_status(equation, message);
             }
             break;
 
         case FN_TEXT:
             /* Start new equation when entering digits after existing result */
-            if(display_is_result(display) && g_unichar_isdigit(g_utf8_get_char((char*)arg)))
-                display_clear(display);
+            if(display_is_result(equation) && g_unichar_isdigit(g_utf8_get_char((char*)arg)))
+                display_clear(equation);
 
-            display_insert(display, cursor_start, cursor_end, (const char *)arg);
+            display_insert(equation, cursor_start, cursor_end, (const char *)arg);
             break;
     }
 
-    enabled = display_get_unsigned_integer(display, &bit_value);
-    math_equation_set_bitfield(display, enabled, bit_value);
+    enabled = display_get_unsigned_integer(equation, &bit_value);
+    math_equation_set_bitfield(equation, enabled, bit_value);
 }
 
 
@@ -1222,11 +1527,11 @@ math_equation_class_init (MathEquationClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0);
-    signals[DISPLAY_CHANGED] =
-        g_signal_new ("display-changed",
+    signals[NUMBER_MODE_CHANGED] =
+        g_signal_new ("number-mode-changed",
                       G_TYPE_FROM_CLASS (klass),
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MathEquationClass, display_changed),
+                      G_STRUCT_OFFSET (MathEquationClass, number_mode_changed),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0);
@@ -1260,17 +1565,20 @@ math_equation_init(MathEquation *equation)
     equation->priv->tsep = get_tsep();     /* Locale specific thousands separator. */
     equation->priv->tsep_count = get_tsep_count();
 
+    equation->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
+    equation->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
+
     equation->priv->status = g_strdup("");
-    equation->show_zeroes = FALSE;
-    equation->show_tsep = FALSE;
-    equation->format = DEC;
-    equation->accuracy = 9;
-    equation->word_size = 32;
-    equation->angle_unit = MP_DEGREES;
+    equation->priv->show_zeroes = FALSE;
+    equation->priv->show_tsep = FALSE;
+    equation->priv->format = DEC;
+    equation->priv->accuracy = 9;
+    equation->priv->word_size = 32;
+    equation->priv->angle_unit = MP_DEGREES;
 
     for (i = 0; i < UNDO_HISTORY_LENGTH; i++) {
-        equation->h.e[i].expression = strdup("");
-        equation->h.e[i].ans_start = -1;
-        equation->h.e[i].ans_end = -1;
+        equation->priv->h.e[i].expression = strdup("");
+        equation->priv->h.e[i].ans_start = -1;
+        equation->priv->h.e[i].ans_end = -1;
     }
 }

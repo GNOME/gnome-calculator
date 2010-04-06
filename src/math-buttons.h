@@ -21,7 +21,7 @@
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include "math-display.h"
+#include "math-equation.h"
 
 G_BEGIN_DECLS
 
@@ -49,7 +49,7 @@ typedef enum {
 
 GType math_buttons_get_type();
 
-MathButtons *math_buttons_new(MathDisplay *display);
+MathButtons *math_buttons_new(MathEquation *equation);
 
 void math_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
 
