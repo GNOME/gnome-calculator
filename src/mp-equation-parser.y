@@ -114,6 +114,20 @@ static int get_function(yyscan_t yyscanner, const char *name, const MPNumber *x,
     return 1;
 }
 
+static int get_inverse_function(yyscan_t yyscanner, const char *name, const MPNumber *x, MPNumber *z)
+{
+    char *inv_name;
+    int result;
+    
+    inv_name = malloc(sizeof(char) * (strlen(name) + strlen("⁻¹") + 1));
+    strcpy(inv_name, name);
+    strcat(inv_name, "⁻¹");
+    result = get_function(yyscanner, inv_name, x, z);
+    free(inv_name);
+
+    return result;
+}
+
 static void do_not(yyscan_t yyscanner, const MPNumber *x, MPNumber *z)
 {
     if (!mp_is_overflow(x, _mp_equation_get_extra(yyscanner)->options->wordlen)) {
@@ -230,6 +244,7 @@ variable:
   term {mp_set_from_mp(&$1, &$$);}
 | tFUNCTION exp {if (!get_function(yyscanner, $1, &$2, &$$)) YYABORT; free($1);}
 | tFUNCTION tSUPNUM exp {if (!get_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, $2, &$$); free($1);}
+| tFUNCTION tNSUPNUM exp {if (!get_inverse_function(yyscanner, $1, &$3, &$$)) YYABORT; mp_xpowy_integer(&$$, -$2, &$$); free($1);}
 | tVARIABLE tSUPNUM exp {set_error(yyscanner, PARSER_ERR_UNKNOWN_FUNCTION, $1); free($1); YYABORT;}
 | tSUBNUM tROOT exp {mp_root(&$3, $1, &$$);}
 | tROOT exp {mp_sqrt(&$2, &$$);}
