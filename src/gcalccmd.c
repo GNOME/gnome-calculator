@@ -79,21 +79,20 @@ main(int argc, char **argv)
     /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
 
+    equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {
         printf("> ");
-        equation = (char *) malloc(MAXLINE * sizeof(char));
         bytes_read = getline(&equation, &nbytes, stdin);
-
-        if (bytes_read != -1) {
+      
+        if (bytes_read >= 0)
             str_adjust(equation);
-            if (!strcmp(equation, "exit") || !strcmp(equation, "quit") ||
-                strlen(equation) == 0) {
-                printf("\n");
-                exit(1);
-            } else {
-                solve(equation);
-                free(equation);
-            }
-        }
+
+        if (bytes_read < 0 || strcmp(equation, "exit") == 0 || strcmp(equation, "quit") == 0 || strlen(equation) == 0)
+            break;
+
+        solve(equation);
     }
+    free(equation);
+
+    return 0;
 }
