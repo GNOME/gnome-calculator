@@ -773,6 +773,7 @@
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="button_cb"/>
           </object>
           <packing>
             <property name="left_attach">8</property>
@@ -792,6 +793,7 @@
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="button_cb"/>
           </object>
           <packing>
             <property name="left_attach">9</property>
@@ -804,24 +806,14 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_conjugate_button">
+            <property name="label">conj</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="calc_conjugate_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the absolute value button">Absolute Value</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="visible">True</property>
-                <property name="label">conj</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
+            <signal name="clicked" handler="button_cb"/>
           </object>
           <packing>
             <property name="left_attach">9</property>

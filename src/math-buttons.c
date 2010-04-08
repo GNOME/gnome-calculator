@@ -84,6 +84,7 @@ typedef struct {
 static ButtonData button_data[] = {
     {"pi",                 "π"},
     {"eulers_number",      "e"},
+    {"imaginary",          "i"},
     {"numeric_point",      "."},
     {"add",                "+"},
     {"multiply",           "×"},
@@ -94,25 +95,28 @@ static ButtonData button_data[] = {
     {"percentage",         "%"},
     {"factorial",          "!"},
     {"abs",                "|"},
+    {"conjugate",          "conj "},
     {"root",               "√"},
-    {"logarithm",          "log"},
-    {"natural_logarithm",  "ln"},
-    {"sine",               "sin"},
-    {"cosine",             "cos"},
-    {"tangent",            "tan"},
-    {"hyperbolic_sine",    "sinh"},
-    {"hyperbolic_cosine",  "cosh"},
-    {"hyperbolic_tangent", "tanh"},
+    {"logarithm",          "log "},
+    {"natural_logarithm",  "ln "},
+    {"sine",               "sin "},
+    {"cosine",             "cos "},
+    {"tangent",            "tan "},
+    {"hyperbolic_sine",    "sinh "},
+    {"hyperbolic_cosine",  "cosh "},
+    {"hyperbolic_tangent", "tanh "},
     {"inverse",            "⁻¹"},
     {"and",                "∧"},
     {"or",                 "∨"},
     {"xor",                "⊻"},
     {"not",                "¬"},
-    {"integer_portion",    "int"},
-    {"fractional_portion", "frac"},
-    {"ones_complement",    "ones"},
-    {"twos_complement",    "twos"},
-    {"trunc",              "trunc"},
+    {"integer_portion",    "int "},
+    {"fractional_portion", "frac "},
+    {"real_portion",       "re "},
+    {"imaginary_portion",  "im "},
+    {"ones_complement",    "ones "},
+    {"twos_complement",    "twos "},
+    {"trunc",              "trunc "},
     {"start_group",        "("},
     {"end_group",          ")"},
     {NULL, NULL}
@@ -335,27 +339,21 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         g_free(name);
     }
 
-    /* Localize buttons */
     for (i = 0; i < 16; i++) {
         GtkWidget *button;
 
         name = g_strdup_printf("calc_%d_button", i);
-        button = GET_WIDGET(builder, name);     
-        if (button)
+        button = GET_WIDGET(builder, name);
+        if (button) {
+            g_object_set_data(G_OBJECT(button), "calc_digit", GINT_TO_POINTER(i));
+            set_tint(button, &buttons->priv->colour_numbers, 1);
             gtk_button_set_label(GTK_BUTTON(button), math_equation_get_digit_text(buttons->priv->equation, i));
+        }
         g_free(name);
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget)
         gtk_button_set_label(GTK_BUTTON(widget), math_equation_get_numeric_point_text(buttons->priv->equation));
-
-    /* Connect super and subscript */
-    for (i = 0; i < 10; i++) {
-        name = g_strdup_printf("calc_%d_button", i);
-        set_int_data(builder, name, "calc_digit", i);
-        set_tint(GET_WIDGET(builder, name), &buttons->priv->colour_numbers, 1);
-        g_free(name);
-    }
   
     widget = GET_WIDGET(builder, "superscript_togglebutton");
     if (widget) {
@@ -370,12 +368,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
-    set_tint(GET_WIDGET(builder, "calc_10_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_11_button"), &buttons->priv->colour_numbers, 1);  
-    set_tint(GET_WIDGET(builder, "calc_12_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_13_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_14_button"), &buttons->priv->colour_numbers, 1);  
-    set_tint(GET_WIDGET(builder, "calc_15_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "calc_imaginary_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "calc_pi_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "calc_eulers_number_button"), &buttons->priv->colour_numbers, 1);
