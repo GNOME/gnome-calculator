@@ -84,14 +84,13 @@ typedef struct {
 static ButtonData button_data[] = {
     {"pi",                 "π"},
     {"eulers_number",      "e"},
-    {"random",             "rand"},
-    {"ans",                "ans"},
     {"numeric_point",      "."},
     {"add",                "+"},
     {"multiply",           "×"},
     {"divide",             "÷"},
     {"modulus_divide",     " mod "},
     {"x_pow_y",            "^"},
+    {"x_squared",          "²"},
     {"percentage",         "%"},
     {"factorial",          "!"},
     {"abs",                "|"},
@@ -381,15 +380,15 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_pi_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "calc_eulers_number_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "calc_numeric_point_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_percentage_button"), &buttons->priv->colour_numbers, 2);
+    set_tint(GET_WIDGET(builder, "calc_percentage_button"), &buttons->priv->colour_numbers, 1);
     set_tint(GET_WIDGET(builder, "subscript_togglebutton"), &buttons->priv->colour_numbers, 2);  
     set_tint(GET_WIDGET(builder, "superscript_togglebutton"), &buttons->priv->colour_numbers, 2);
     set_tint(GET_WIDGET(builder, "calc_exponential_button"), &buttons->priv->colour_numbers, 2);
 
     set_tint(GET_WIDGET(builder, "calc_result_button"), &buttons->priv->colour_action, 2);
     set_tint(GET_WIDGET(builder, "calc_factor_button"), &buttons->priv->colour_action, 2);
-    set_tint(GET_WIDGET(builder, "calc_clear_button"), &buttons->priv->colour_action, 1); // Different colour?
-    set_tint(GET_WIDGET(builder, "calc_trunc_button"), &buttons->priv->colour_action, 1);
+    set_tint(GET_WIDGET(builder, "calc_clear_button"), &buttons->priv->colour_action, 1); // Different colour
+    set_tint(GET_WIDGET(builder, "calc_backspace_button"), &buttons->priv->colour_action, 1); // Different colour?
     set_tint(GET_WIDGET(builder, "calc_shift_left_button"), &buttons->priv->colour_action, 1);
     set_tint(GET_WIDGET(builder, "calc_shift_right_button"), &buttons->priv->colour_action, 1);
   
@@ -400,7 +399,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_modulus_divide_button"), &buttons->priv->colour_operator, 1);
     set_tint(GET_WIDGET(builder, "calc_and_button"), &buttons->priv->colour_operator, 1);  
     set_tint(GET_WIDGET(builder, "calc_or_button"), &buttons->priv->colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_xor_button"), &buttons->priv->colour_operator, 1);  
+    set_tint(GET_WIDGET(builder, "calc_xor_button"), &buttons->priv->colour_operator, 1);
 
     set_tint(GET_WIDGET(builder, "calc_cosine_button"), &buttons->priv->colour_trig, 1);
     set_tint(GET_WIDGET(builder, "calc_sine_button"), &buttons->priv->colour_trig, 1);
@@ -413,22 +412,25 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_end_group_button"), &buttons->priv->colour_group, 1);
     set_tint(GET_WIDGET(builder, "calc_store_button"), &buttons->priv->colour_memory, 1);
     set_tint(GET_WIDGET(builder, "calc_recall_button"), &buttons->priv->colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_ans_button"), &buttons->priv->colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_random_button"), &buttons->priv->colour_memory, 1);
     set_tint(GET_WIDGET(builder, "calc_character_button"), &buttons->priv->colour_memory, 1);
 
     set_tint(GET_WIDGET(builder, "calc_integer_portion_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_fractional_portion_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_real_portion_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_imaginary_portion_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_x_pow_y_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_x_squared_button"), &buttons->priv->colour_function, 1);  
     set_tint(GET_WIDGET(builder, "calc_factorial_button"), &buttons->priv->colour_function, 1);  
     set_tint(GET_WIDGET(builder, "calc_root_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_abs_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_abs_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_conjugate_button"), &buttons->priv->colour_function, 1);  
     set_tint(GET_WIDGET(builder, "calc_inverse_button"), &buttons->priv->colour_function, 1);  
     set_tint(GET_WIDGET(builder, "calc_logarithm_button"), &buttons->priv->colour_function, 1);  
     set_tint(GET_WIDGET(builder, "calc_natural_logarithm_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_ones_complement_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);  
+    set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_trunc_button"), &buttons->priv->colour_function, 1);
   
     if (mode == PROGRAMMING) {
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
