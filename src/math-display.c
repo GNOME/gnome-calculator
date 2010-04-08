@@ -21,7 +21,6 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "math-display.h"
-#include "ui.h" // FIXME: TEMP
 
 enum {
     PROP_0,
@@ -55,41 +54,42 @@ math_display_get_equation(MathDisplay *display)
 
 
 static gboolean
-check_for_localized_numeric_point(MathDisplay *display, int keyval)
+display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display)
 {
-    gchar outbuf[10]; /* Minumum size 6. */
-    gunichar ch;
+    int state;
+    guint32 c;
 
-    ch = gdk_keyval_to_unicode(keyval);
-    g_return_val_if_fail(g_unichar_validate(ch), FALSE);
-
-    outbuf[g_unichar_to_utf8(ch, outbuf)] = '\0';
-
-    return (strcmp(outbuf, math_equation_get_numeric_point_text(display->priv->equation)) == 0);
-}
-
-
-// FIXME: Should be able to replace by making display can_default
-G_MODULE_EXPORT
-gboolean
-main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
-{
-    MathDisplay *display;
-    int i, state;
-    const char *conversions[]       = {"*", "/", NULL};
-    const char *conversion_values[] = {"×", "÷", NULL };
-  
-    display = ui_get_display(ui);
-
-    /* Only look at the modifiers we use */
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
+    c = gdk_keyval_to_unicode(event->keyval);
 
-    // FIXME: Convert event to character
-    // FIXME: Or safer to intercept characters as they enter the text input (handles input methods)
+    /* Solve on enter */
+    if (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter) {
+        math_equation_solve(display->priv->equation);
+        return TRUE;
+    }
 
-    if (check_for_localized_numeric_point(display, event->keyval) == TRUE) {
-        event->state = 0;
-        event->keyval = GDK_KP_Decimal;
+    /* Clear on escape */
+    if ((event->keyval == GDK_Escape && state == 0) ||
+        (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
+        (event->keyval == GDK_Delete && state == GDK_SHIFT_MASK)) {
+        math_equation_clear(display->priv->equation);
+        return TRUE;
+    }
+
+    /* Substitute */
+    if (state == 0) {
+        if (c == '*') {
+            math_equation_insert(display->priv->equation, "×");
+            return TRUE;
+        }
+        if (c == '/') {
+            math_equation_insert(display->priv->equation, "÷");
+            return TRUE;
+        }
+        if (c == '-') {
+            math_equation_insert_subtract(display->priv->equation);
+            return TRUE;
+        }
     }
 
     /* Shortcuts */
@@ -126,8 +126,12 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         case GDK_u:
             math_equation_insert(display->priv->equation, "µ");
             return TRUE;
+        case GDK_minus:
+             math_equation_insert(display->priv->equation, "⁻");
+             return TRUE;
         }
     }
+
     if (state == GDK_CONTROL_MASK || math_equation_get_number_mode(display->priv->equation) == SUPERSCRIPT) {
         switch(event->keyval)
         {
@@ -199,117 +203,26 @@ main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
         }
     }
 
-    /* Delete in display */
-    if (event->keyval == GDK_Delete && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
-        math_equation_delete(display->priv->equation);
-        return TRUE;
-    }
-    if (event->keyval == GDK_BackSpace && state == 0 && (event->state & GDK_SHIFT_MASK) == 0) {
-        math_equation_backspace(display->priv->equation);
-        return TRUE;
-    }
-
-    /* Clear display */
-    if ((event->keyval == GDK_Escape && state == 0) ||
-        (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
-        (event->keyval == GDK_Delete && state == GDK_SHIFT_MASK)) {
-        math_equation_clear(display->priv->equation);
-        return TRUE;
-    }
-
-    /* Solve */
-    if ((event->keyval == GDK_Return && state == 0) ||
-        (event->keyval == GDK_KP_Enter && state == 0)) {
-        if (gtk_widget_has_focus(display->priv->display_item)) {
-            math_equation_solve(display->priv->equation);
-            return TRUE;
-        }
-        else {
-            return FALSE;
-        }
-    }
-
-    if (state == GDK_CONTROL_MASK && event->keyval == GDK_minus) 
-    {
-        math_equation_insert(display->priv->equation, "⁻");
-        return TRUE;
-    }
-
-    if (state != 0)
-        return FALSE;
-
-    // FIXME: event->string deprecated
-
-    if (strcmp(event->string, "-") == 0 || strcmp(event->string, "−") == 0) {
-        math_equation_insert_subtract(display->priv->equation);
-        return TRUE;
-    }
-
-    for (i = 0; conversions[i]; i++) {
-        if (strcmp(event->string, conversions[i]) == 0) {
-            math_equation_insert(display->priv->equation, conversion_values[i]);
-            return TRUE;
-        }
-    }
-    if (strcmp(event->string, ".") == 0) {
-        math_equation_insert_numeric_point(display->priv->equation);
-        return TRUE;
-    }
-
-    /* Some keyboards use this keyval for '^' (e.g. German) */
-    if (event->keyval == GDK_dead_circumflex) {
-        math_equation_insert(display->priv->equation, "^");
-        return TRUE;
-    }
-
-    switch(*event->string)
-    {
-    case '<':
-        // FIXME: Should open left shift menu (programming mode)
-        return TRUE;
-    case '>':
-        // FIXME: Should open right shift menu (programming mode)
-        return TRUE;
-    case '\n':
-        math_equation_solve(display->priv->equation);
-        return TRUE;
-    }
-  
-    /* Don't override space - it is used in UI */
-    if (event->string[0] == ' ' && !gtk_widget_has_focus(display->priv->display_item))
-        return FALSE;
-
-    if (event->string[0] != '\0') {
-        math_equation_insert(display->priv->equation, event->string);
-        return TRUE;
-    }
-
     return FALSE;
 }
 
 
-// FIXME: Kill this
-static void
-popup_paste_cb(GtkWidget *menu, MathDisplay *display)
+static gboolean
+key_press_cb(MathDisplay *display, GdkEventKey *event)
 {
-    math_equation_paste(display->priv->equation);
+  gboolean result;
+  g_signal_emit_by_name(display->priv->display_item, "key-press-event", event, &result);
+  return result;
 }
 
 
 static gboolean
-middle_click_paste_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display)
+button_release_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display)
 {
     if (event->button == 2)
         math_equation_paste(display->priv->equation);
 
     return FALSE;
-}
-
-
-static void
-paste_cb(GtkWidget *widget, MathDisplay *display)
-{
-    math_equation_paste(display->priv->equation);
 }
 
 
@@ -323,17 +236,19 @@ status_changed_cb(MathEquation *equation, MathDisplay *display)
 static void
 create_gui(MathDisplay *display)
 {
-    GtkWidget *vbox, *info_view;
+    GtkWidget *event_box, *info_view;
     PangoFontDescription *font_desc;
+  
+    g_signal_connect(display, "key-press-event", G_CALLBACK(key_press_cb), display);
 
     display->priv->display_item = gtk_text_view_new_with_buffer(GTK_TEXT_BUFFER(display->priv->equation));
-    gtk_text_view_set_editable(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
+    gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
     gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->display_item), 8);
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->display_item), 2);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);
     gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->display_item), GTK_JUSTIFY_RIGHT);
-    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(middle_click_paste_cb), display);
-    g_signal_connect(display->priv->display_item, "paste-clipboard", G_CALLBACK(paste_cb), display);
+    g_signal_connect(display->priv->display_item, "key-press-event", G_CALLBACK(display_key_press_cb), display);
+    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(button_release_cb), display);
     gtk_box_pack_start(GTK_BOX(display), display->priv->display_item, TRUE, TRUE, 0);
 
     gtk_widget_ensure_style(display->priv->display_item);

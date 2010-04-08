@@ -103,7 +103,7 @@ IN   [iI][nN]
         return tVARIABLE;\
     }\
 }
-[ \t\n]
+[ \r\t\n]
 .           {return *yytext;}
 
 %%

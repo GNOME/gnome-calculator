@@ -19,6 +19,7 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 
 #include "ui.h"
 #include "ui-preferences.h"
@@ -174,6 +175,16 @@ mode_changed_cb(GtkWidget *menu, GCalctoolUI *ui)
 
     mode = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menu), "calcmode"));
     ui_set_mode(ui, mode);
+}
+
+
+G_MODULE_EXPORT
+gboolean
+main_window_key_press_cb(GtkWidget *widget, GdkEventKey *event, GCalctoolUI *ui)
+{
+    gboolean result;
+    g_signal_emit_by_name(ui->priv->display, "key-press-event", event, &result);
+    return result;
 }
 
 

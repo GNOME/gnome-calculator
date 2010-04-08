@@ -290,5 +290,5 @@ do_finc_expression(MathEquation *equation, int function, MPNumber *arg1, MPNumbe
        calc_term(equation, &result, arg1, arg2, arg3);
        break;
     }
-    display_set_number(equation, &result);
+    math_equation_set_number(equation, &result);
 }

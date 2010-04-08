@@ -10,7 +10,7 @@
     <accel-groups>
       <group name="accelgroup1"/>
     </accel-groups>
-    <signal name="key_press_event" handler="main_window_key_press_cb"/>
+    <signal name="key_press_event" handler="main_window_key_press_cb" after="yes"/>
     <signal name="delete_event" handler="quit_cb"/>
     <child>
       <object class="GtkVBox" id="window_vbox">

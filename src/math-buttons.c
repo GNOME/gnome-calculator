@@ -49,6 +49,7 @@ struct MathButtonsPrivate
     GList *superscript_toggles;
     GList *subscript_toggles;
 
+    guint64 bits;
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
 
@@ -384,9 +385,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "subscript_togglebutton"), &buttons->priv->colour_numbers, 2);  
     set_tint(GET_WIDGET(builder, "superscript_togglebutton"), &buttons->priv->colour_numbers, 2);
     set_tint(GET_WIDGET(builder, "calc_exponential_button"), &buttons->priv->colour_numbers, 2);
-    set_tint(GET_WIDGET(builder, "calc_base_2_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_base_8_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_base_16_button"), &buttons->priv->colour_numbers, 1);
 
     set_tint(GET_WIDGET(builder, "calc_result_button"), &buttons->priv->colour_action, 2);
     set_tint(GET_WIDGET(builder, "calc_factor_button"), &buttons->priv->colour_action, 2);
@@ -432,11 +430,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);  
   
-    /* Set base button data */
-    set_int_data(builder, "calc_base_2_button", "base", 2);
-    set_int_data(builder, "calc_base_8_button", "base", 8);
-    set_int_data(builder, "calc_base_16_button", "base", 16);
-
     if (mode == PROGRAMMING) {
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
         buttons->priv->character_code_entry = GET_WIDGET(builder, "character_code_entry");
@@ -494,14 +487,6 @@ ButtonMode
 math_buttons_get_mode(MathButtons *buttons)
 {
     return buttons->priv->mode;
-}
-
-
-G_MODULE_EXPORT
-void
-base_cb(GtkWidget *widget, MathButtons *buttons)
-{
-    math_equation_set_base(buttons->priv->equation, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "base")));
 }
 
 
@@ -1001,7 +986,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
     win = GTK_DIALOG(gtk_builder_get_object(buttons->priv->financial_ui, "currency_dialog"));
     c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
     c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-    if (display_is_usable_number(buttons->priv->equation, &display_val)) {
+    if (math_equation_get_number(buttons->priv->equation, &display_val)) {
         double start_val = mp_cast_to_double(&display_val);
         gtk_spin_button_set_value(c_amount_upper, start_val);
     }
@@ -1014,7 +999,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
         mp_set_from_string(result, &display_val);
         g_free(result);
 
-        display_set_number(buttons->priv->equation, &display_val);
+        math_equation_set_number(buttons->priv->equation, &display_val);
     }
 
     gtk_widget_hide(GTK_WIDGET(win));
@@ -1029,8 +1014,23 @@ character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButto
 
     text = gtk_entry_get_text(GTK_ENTRY(buttons->priv->character_code_entry));
 
-    if (response_id == GTK_RESPONSE_OK)
-        math_equation_insert_character(buttons->priv->equation, text);
+    if (response_id == GTK_RESPONSE_OK) {     
+        MPNumber x;
+        int i = 0;
+
+        mp_set_from_integer(0, &x);
+        while (TRUE) {
+            mp_add_integer(&x, text[i], &x);
+            if (text[i+1]) {
+                 mp_shift(&x, 8, &x);
+                 i++;
+            }
+            else
+                break;
+        }
+
+        math_equation_insert_number(buttons->priv->equation, text);
+    }
 
     gtk_widget_hide(dialog);
 }
@@ -1086,20 +1086,31 @@ set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 
 
 static void
-bitfield_changed_cb(MathEquation *equation, MathButtons *buttons)
+display_changed_cb(MathEquation *equation, MathButtons *buttons)
 {
+    gboolean enabled;
+    MPNumber x;
     int i;
-    const gchar *label;
-    guint64 bits;
 
     if (!buttons->priv->bit_panel)
        return;
 
-    gtk_widget_set_sensitive(buttons->priv->bit_panel, math_equation_get_bitfield_enabled(equation));
+    enabled = math_equation_get_number(equation, &x);
+    if (enabled) {
+        MPNumber max;
 
-    bits = math_equation_get_bitfield(equation);
+        mp_set_from_unsigned_integer(G_MAXUINT64, &max);
+        if (mp_is_negative(&x) || mp_is_greater_than(&x, &max))
+            enabled = FALSE;
+        else
+            buttons->priv->bits = mp_cast_to_unsigned_int(&x);
+    }
+
+    gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
     for (i = 0; i < MAXBITS; i++) {
-        if (bits & (1LL << (MAXBITS-i-1)))
+        const gchar *label;
+
+        if (buttons->priv->bits & (1LL << (MAXBITS-i-1)))
             label = " 1";
         else
             label = " 0";
@@ -1141,7 +1152,9 @@ math_buttons_set_property (GObject      *object,
     case PROP_EQUATION:
         self->priv->equation = g_value_get_object (value);
         g_signal_connect(self->priv->equation, "number-mode-changed", G_CALLBACK(number_mode_changed_cb), self);
-        g_signal_connect(self->priv->equation, "bitfield-changed", G_CALLBACK(bitfield_changed_cb), self);
+        g_signal_connect(self->priv->equation, "display-changed", G_CALLBACK(display_changed_cb), self);
+        number_mode_changed_cb(self->priv->equation, self);
+        display_changed_cb(self->priv->equation, self);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);

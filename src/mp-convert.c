@@ -597,12 +597,12 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, c
 {
     MPNumber x_real, x_im;
     GString *string;
-    
+
     string = g_string_sized_new(buffer_length);
-    
+
     mp_real_component(x, &x_real);
     mp_imaginary_component(x, &x_im);
-    
+
     mp_cast_to_string_real(&x_real, base, accuracy, trim_zeroes, FALSE, string);
     if (mp_is_complex(x)) {
         GString *s;

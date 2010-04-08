@@ -40,8 +40,9 @@ typedef struct
 {
     GtkTextBufferClass parent_class;
 
-    void (*status_changed)(MathEquation *display);  
-    void (*bitfield_changed)(MathEquation *display);
+    void (*status_changed)(MathEquation *display);
+    void (*display_changed)(MathEquation *display);
+//FIXME    void (*equation_changed)(MathEquation *display);
     void (*number_mode_changed)(MathEquation *display);
 } MathEquationClass;
 
@@ -63,31 +64,49 @@ const gchar *math_equation_get_numeric_point_text(MathEquation *equation);
 void math_equation_set_status(MathEquation *equation, const gchar *status);
 const gchar *math_equation_get_status(MathEquation *equation);
 
-gboolean math_equation_get_bitfield_enabled(MathEquation *equation);
-guint64 math_equation_get_bitfield(MathEquation *equation);
+gboolean math_equation_is_empty(MathEquation *equation);
+gboolean math_equation_is_result(MathEquation *equation);
+gchar *math_equation_get_display(MathEquation *equation);
+gchar *math_equation_get_equation(MathEquation *equation);
+gboolean math_equation_get_number(MathEquation *equation, MPNumber *z);
 
 void math_equation_set_number_mode(MathEquation *equation, NumberMode mode);
 NumberMode math_equation_get_number_mode(MathEquation *equation);
 
 //FIXME: Make get_
 void math_equation_set_accuracy(MathEquation *equation, int accuracy);
+int math_equation_get_accuracy(MathEquation *equation);
+
 void math_equation_set_show_thousands_separator(MathEquation *equation, gboolean visible);
+gboolean math_equation_get_show_thousands_separator(MathEquation *equation);
+
 void math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible);
+gboolean math_equation_get_show_trailing_zeroes(MathEquation *equation);
+
 void math_equation_set_format(MathEquation *equation, DisplayFormat format);
+DisplayFormat math_equation_get_format(MathEquation *equation);
+
 void math_equation_set_word_size(MathEquation *equation, int word_size);
+int math_equation_get_word_size(MathEquation *equation);
+
 void math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit);
+MPAngleUnit math_equation_get_angle_unit(MathEquation *equation);
+
 void math_equation_set_base(MathEquation *equation, gint base);
+gint math_equation_get_base(MathEquation *equation);
 
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);
 void math_equation_store(MathEquation *equation, const gchar *name);
 void math_equation_recall(MathEquation *equation, const gchar *name);
+void math_equation_set(MathEquation *equation, const gchar *text);
+void math_equation_set_answer(MathEquation *equation);
+void math_equation_set_number(MathEquation *equation, const MPNumber *x);
 void math_equation_insert(MathEquation *equation, const gchar *text);
 void math_equation_insert_digit(MathEquation *equation, guint digit);
 void math_equation_insert_numeric_point(MathEquation *equation);
 void math_equation_insert_subtract(MathEquation *equation);
 void math_equation_insert_exponent(MathEquation *equation);
-void math_equation_insert_character(MathEquation *equation, const gchar *character);
 void math_equation_solve(MathEquation *equation);
 void math_equation_factorize(MathEquation *equation);
 void math_equation_delete(MathEquation *equation);
@@ -97,8 +116,6 @@ void math_equation_shift(MathEquation *equation, gint count);
 void math_equation_toggle_bit(MathEquation *equation, guint bit);
 
 //FIXME: Obsolete
-void display_set_number(MathEquation *equation, const MPNumber *);
-gboolean display_is_usable_number(MathEquation *equation, MPNumber *);
 void display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x);
 
 #endif /* MATH_EQUATION_H */
