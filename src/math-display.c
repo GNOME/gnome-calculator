@@ -245,7 +245,8 @@ create_gui(MathDisplay *display)
     gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
     gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->display_item), 8);
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->display_item), 2);
-    gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);
+    /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
+    /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);*/
     gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->display_item), GTK_JUSTIFY_RIGHT);
     g_signal_connect(display->priv->display_item, "key-press-event", G_CALLBACK(display_key_press_cb), display);
     g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(button_release_cb), display);
@@ -264,7 +265,8 @@ create_gui(MathDisplay *display)
     gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(info_view), FALSE); // FIXME: Just here so when incorrectly gets focus doesn't look editable
     gtk_text_view_set_editable(GTK_TEXT_VIEW(info_view), FALSE);
     gtk_text_view_set_justification(GTK_TEXT_VIEW(info_view), GTK_JUSTIFY_RIGHT);
-    gtk_text_view_set_right_margin(GTK_TEXT_VIEW(info_view), 6);
+    /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
+    /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(info_view), 6);*/
     gtk_box_pack_start(GTK_BOX(display), info_view, FALSE, TRUE, 0);
     display->priv->info_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(info_view));
 
