@@ -71,6 +71,8 @@ AND  "∧"|[aA][nN][dD]
 OR   "∨"|[oO][rR]
 XOR  "⊻"|"⊕"|[xX][oO][rR]
 NOT  "¬"|"~"|[nN][oO][tT]
+RE   "⃰ℜ"
+IM   "ℑ"
 IN   [iI][nN]
 
 %%

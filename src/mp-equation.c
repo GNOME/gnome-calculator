@@ -130,8 +130,11 @@ function_is_defined(MPEquationParserState *state, const char *name)
         strcmp(lower_name, "ln") == 0 ||
         strcmp(lower_name, "sqrt") == 0 ||
         strcmp(lower_name, "abs") == 0 ||
+        strcmp(lower_name, "conj") == 0 ||
         strcmp(lower_name, "int") == 0 ||
         strcmp(lower_name, "frac") == 0 ||
+        strcmp(lower_name, "re") == 0 ||
+        strcmp(lower_name, "im") == 0 ||
         strcmp(lower_name, "sin") == 0 || strcmp(lower_name, "cos") == 0 || strcmp(lower_name, "tan") == 0 ||
         strcmp(lower_name, "sin⁻¹") == 0 || strcmp(lower_name, "cos⁻¹") == 0 || strcmp(lower_name, "tan⁻¹") == 0 ||
         strcmp(lower_name, "sinh") == 0 || strcmp(lower_name, "cosh") == 0 || strcmp(lower_name, "tanh") == 0 ||
@@ -179,10 +182,16 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
         mp_sqrt(x, z);
     else if (strcmp(lower_name, "abs") == 0) // |x|
         mp_abs(x, z);
+    else if (strcmp(lower_name, "conj") == 0)
+        mp_conjugate(x, z);
     else if (strcmp(lower_name, "int") == 0)
         mp_integer_component(x, z);
     else if (strcmp(lower_name, "frac") == 0)
         mp_fractional_component(x, z);
+    else if (strcmp(lower_name, "re") == 0)
+        mp_real_component(x, z);
+    else if (strcmp(lower_name, "im") == 0)
+        mp_imaginary_component(x, z);
     else if (strcmp(lower_name, "sin") == 0)
         mp_sin(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "cos") == 0)

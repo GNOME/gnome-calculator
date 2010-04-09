@@ -384,6 +384,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Clear display [Escape]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -500,6 +501,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Square root</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -519,14 +521,15 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Square</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="button_cb"/>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_x_squared_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
               </object>
             </child>
+            <signal name="clicked" handler="button_cb"/>
             <child>
               <object class="GtkLabel" id="x_squared_label">
                 <property name="visible">True</property>

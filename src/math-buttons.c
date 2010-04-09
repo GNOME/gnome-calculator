@@ -36,7 +36,7 @@ struct MathButtonsPrivate
     ButtonMode mode;
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
-    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_trig, colour_group;
+    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_group;
 
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
 
@@ -393,12 +393,12 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_or_button"), &buttons->priv->colour_operator, 1);  
     set_tint(GET_WIDGET(builder, "calc_xor_button"), &buttons->priv->colour_operator, 1);
 
-    set_tint(GET_WIDGET(builder, "calc_cosine_button"), &buttons->priv->colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_sine_button"), &buttons->priv->colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_tangent_button"), &buttons->priv->colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_cosine_button"), &buttons->priv->colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_sine_button"), &buttons->priv->colour_trig, 1);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_tangent_button"), &buttons->priv->colour_trig, 1);
+    set_tint(GET_WIDGET(builder, "calc_cosine_button"), &buttons->priv->colour_function, 2);
+    set_tint(GET_WIDGET(builder, "calc_sine_button"), &buttons->priv->colour_function, 2);
+    set_tint(GET_WIDGET(builder, "calc_tangent_button"), &buttons->priv->colour_function, 2);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_cosine_button"), &buttons->priv->colour_function, 2);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_sine_button"), &buttons->priv->colour_function, 2);
+    set_tint(GET_WIDGET(builder, "calc_hyperbolic_tangent_button"), &buttons->priv->colour_function, 2);
 
     set_tint(GET_WIDGET(builder, "calc_start_group_button"), &buttons->priv->colour_group, 1);
     set_tint(GET_WIDGET(builder, "calc_end_group_button"), &buttons->priv->colour_group, 1);
@@ -851,7 +851,6 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
             continue;
         }
         entry = GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][i]);
-        // FIXME: Have to delocalize the input
         mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
@@ -1217,9 +1216,6 @@ math_buttons_init (MathButtons *buttons)
     buttons->priv->colour_memory.red = 65535;
     buttons->priv->colour_memory.green = 0;
     buttons->priv->colour_memory.blue = 65535;
-    buttons->priv->colour_trig.red = 65535;
-    buttons->priv->colour_trig.green = 65535;
-    buttons->priv->colour_trig.blue = 0;
     buttons->priv->colour_group.red = 65535;
     buttons->priv->colour_group.green = 65535;
     buttons->priv->colour_group.blue = 65535;
