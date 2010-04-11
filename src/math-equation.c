@@ -88,8 +88,8 @@ struct MathEquationPrivate
     GList *history;           /* History of expression mode states */
 
     // FIXME: Replace with GtkClipboard
-    GdkAtom clipboard_atom;   /* ??? */
-    GdkAtom primary_atom;     /* ??? */
+    GdkAtom clipboard_atom;   /* ??? */ // 
+    GdkAtom primary_atom;     /* ??? */ // FIXME: Is this middle click?
     char *shelf;              /* PUT selection shelf contents. */
 };
 

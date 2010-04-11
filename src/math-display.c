@@ -342,6 +342,7 @@ math_display_class_init (MathDisplayClass *klass)
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
+
 static void 
 math_display_init(MathDisplay *display)
 {
