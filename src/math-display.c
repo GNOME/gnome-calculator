@@ -242,16 +242,13 @@ create_gui(MathDisplay *display)
     g_signal_connect(display, "key-press-event", G_CALLBACK(key_press_cb), display);
 
     display->priv->display_item = gtk_text_view_new_with_buffer(GTK_TEXT_BUFFER(display->priv->equation));
+    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(display->priv->display_item), GTK_WRAP_WORD);
     gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
     gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->display_item), 8);
     gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->display_item), 2);
     /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
     /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);*/
     gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->display_item), GTK_JUSTIFY_RIGHT);
-    g_signal_connect(display->priv->display_item, "key-press-event", G_CALLBACK(display_key_press_cb), display);
-    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(button_release_cb), display);
-    gtk_box_pack_start(GTK_BOX(display), display->priv->display_item, TRUE, TRUE, 0);
-
     gtk_widget_ensure_style(display->priv->display_item);
     font_desc = pango_font_description_copy(gtk_widget_get_style(display->priv->display_item)->font_desc);
     pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
@@ -259,8 +256,13 @@ create_gui(MathDisplay *display)
     pango_font_description_free(font_desc);
     gtk_widget_set_name(display->priv->display_item, "displayitem");
     atk_object_set_role(gtk_widget_get_accessible(display->priv->display_item), ATK_ROLE_EDITBAR);
+  //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
+    g_signal_connect(display->priv->display_item, "key-press-event", G_CALLBACK(display_key_press_cb), display);
+    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(button_release_cb), display);
+    gtk_box_pack_start(GTK_BOX(display), display->priv->display_item, TRUE, TRUE, 0);
   
     info_view = gtk_text_view_new();
+    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(info_view), GTK_WRAP_WORD);
     gtk_widget_set_can_focus(info_view, TRUE); // FIXME: This should be FALSE but it locks the cursor inside the main view for some reason
     gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(info_view), FALSE); // FIXME: Just here so when incorrectly gets focus doesn't look editable
     gtk_text_view_set_editable(GTK_TEXT_VIEW(info_view), FALSE);
@@ -340,19 +342,6 @@ math_display_class_init (MathDisplayClass *klass)
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
-/* FIXME
-                          <object class="GtkTextView" id="displayitem">
-                            <property name="wrap_mode">word</property>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="displayitem-atkobject">
-                                <property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-                              </object>
-                            </child>
-                          </object>
-                          <object class="GtkTextView" id="info_textview">
-                            <property name="wrap_mode">word</property>
-                          </object>
- */
 static void 
 math_display_init(MathDisplay *display)
 {
