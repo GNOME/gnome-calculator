@@ -36,12 +36,21 @@
 
 
 enum {
-    STATUS_CHANGED, // FIXME: Use g_object_notify and signal notify::status
-    DISPLAY_CHANGED,
-    NUMBER_MODE_CHANGED,
-    LAST_SIGNAL
+    PROP_0,
+    PROP_STATUS,
+    PROP_DISPLAY,
+    PROP_EQUATION,
+    PROP_NUMBER_MODE,
+    PROP_ACCURACY,
+    PROP_SHOW_THOUSANDS_SEPARATOR,
+    PROP_SHOW_TRAILING_ZEROES,
+    PROP_FORMAT,
+    PROP_WORD_SIZE,
+    PROP_ANGLE_UNIT,
+    PROP_BASE
 };
-static guint signals[LAST_SIGNAL] = { 0, };
+
+static GType number_mode_type, display_format_type, angle_unit_type;
 
 #define MAX_DIGITS 512
 
@@ -64,6 +73,7 @@ struct MathEquationPrivate
     int show_zeroes;          /* Set if trailing zeroes should be shown. */
     DisplayFormat format;     /* Number display mode. */
     int accuracy;             /* Number of digits to show */
+    int base;                 /* Number base */
     int word_size;            /* Word size in bits */
     MPAngleUnit angle_unit;   /* Units for trigonometric functions */
     NumberMode number_mode;   /* ??? */
@@ -179,8 +189,11 @@ math_equation_get_numeric_point_text(MathEquation *equation)
 void
 math_equation_set_accuracy(MathEquation *equation, int accuracy)
 {
+    if (equation->priv->accuracy == accuracy)
+        return;
     equation->priv->accuracy = accuracy;
     display_refresh(equation);
+    g_object_notify(G_OBJECT(equation), "accuracy");
 }
 
 
@@ -194,8 +207,11 @@ math_equation_get_accuracy(MathEquation *equation)
 void
 math_equation_set_show_thousands_separator(MathEquation *equation, gboolean visible)
 {
+    if (equation->priv->show_tsep && visible || !equation->priv->show_tsep && !visible)
+        return;
     equation->priv->show_tsep = visible;
     display_refresh(equation);
+    g_object_notify(G_OBJECT(equation), "show-thousands-separator");
 }
 
 
@@ -209,8 +225,11 @@ math_equation_get_show_thousands_separator(MathEquation *equation)
 void
 math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
 {
+    if (equation->priv->show_zeroes && visible || !equation->priv->show_zeroes && !visible)
+        return;
     equation->priv->show_zeroes = visible;
     display_refresh(equation);
+    g_object_notify(G_OBJECT(equation), "show-trailing-zeroes");
 }
 
 
@@ -224,8 +243,11 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 void
 math_equation_set_format(MathEquation *equation, DisplayFormat format)
 {
+    if (equation->priv->format == format)
+        return;
     equation->priv->format = format;
     display_refresh(equation);
+    g_object_notify(G_OBJECT(equation), "display-format");
 }
 
 
@@ -239,7 +261,10 @@ math_equation_get_format(MathEquation *equation)
 void
 math_equation_set_word_size(MathEquation *equation, int word_size)
 {
+    if (equation->priv->word_size == word_size)
+        return;
     equation->priv->word_size = word_size;
+    g_object_notify(G_OBJECT(equation), "word-size");
 }
 
 
@@ -253,7 +278,10 @@ math_equation_get_word_size(MathEquation *equation)
 void
 math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit)
 {
+    if (equation->priv->angle_unit == angle_unit)
+        return;
     equation->priv->angle_unit = angle_unit;
+    g_object_notify(G_OBJECT(equation), "angle-unit");  
 }
 
 
@@ -267,15 +295,17 @@ math_equation_get_angle_unit(MathEquation *equation)
 void
 math_equation_set_base(MathEquation *equation, gint base)
 {
-   // FIXME
+    if (equation->priv->base == base)
+        return;
+    equation->priv->base = base;
+    g_object_notify(G_OBJECT(equation), "base");
 }
 
 
 gint
 math_equation_get_base(MathEquation *equation)
 {
-   // FIXME
-   return 0;
+   return equation->priv->base;
 }
 
 
@@ -284,7 +314,7 @@ math_equation_set_status(MathEquation *equation, const gchar *status)
 {
     g_free(equation->priv->status);
     equation->priv->status = g_strdup(status);
-    g_signal_emit(equation, signals[STATUS_CHANGED], 0);
+    g_object_notify(G_OBJECT(equation), "status");    
 }
 
 
@@ -366,7 +396,7 @@ math_equation_set_number_mode(MathEquation *equation, NumberMode mode)
     equation->priv->can_super_minus = mode == SUPERSCRIPT;
 
     equation->priv->number_mode = mode;
-    g_signal_emit(equation, signals[NUMBER_MODE_CHANGED], 0);
+    g_object_notify(G_OBJECT(equation), "number-mode");
 }
 
 
@@ -1025,36 +1055,227 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
 
 
 static void
+math_equation_set_property(GObject      *object,
+                           guint         prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
+{
+    MathEquation *self;
+
+    self = MATH_EQUATION (object);
+
+    switch (prop_id) {
+    case PROP_STATUS:
+      math_equation_set_status(self, g_value_get_string(value));
+      break;
+    case PROP_DISPLAY:
+      math_equation_set(self, g_value_get_string(value));
+      break;
+    case PROP_NUMBER_MODE:
+      math_equation_set_number_mode(self, g_value_get_int(value));
+      break;
+    case PROP_ACCURACY:
+      math_equation_set_accuracy(self, g_value_get_int(value));
+      break;
+    case PROP_SHOW_THOUSANDS_SEPARATOR:
+      math_equation_set_show_thousands_separator(self, g_value_get_boolean(value));
+      break;
+    case PROP_SHOW_TRAILING_ZEROES:
+      math_equation_set_show_trailing_zeroes(self, g_value_get_boolean(value));
+      break;
+    case PROP_FORMAT:
+      math_equation_set_format(self, g_value_get_int(value));
+      break;
+    case PROP_WORD_SIZE:
+      math_equation_set_word_size(self, g_value_get_int(value));
+      break;
+    case PROP_ANGLE_UNIT:
+      math_equation_set_angle_unit(self, g_value_get_int(value));
+      break;
+    case PROP_BASE:
+      math_equation_set_base(self, g_value_get_int(value));
+      break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
+math_equation_get_property(GObject    *object,
+                           guint       prop_id,
+                           GValue     *value,
+                           GParamSpec *pspec)
+{
+    MathEquation *self;
+    gchar *text;
+
+    self = MATH_EQUATION (object);
+
+    switch (prop_id) {
+    case PROP_STATUS:
+      g_value_set_string(value, self->priv->status);
+      break;
+    case PROP_DISPLAY:
+      text = math_equation_get_display(self);      
+      g_value_set_string(value, text);
+      g_free(text);
+      break;
+    case PROP_EQUATION:
+      text = math_equation_get_equation(self);
+      g_value_set_string(value, text);
+      g_free(text);
+      break;
+    case PROP_NUMBER_MODE:
+      g_value_set_enum(value, self->priv->number_mode);
+      break;
+    case PROP_ACCURACY:
+      g_value_set_int(value, self->priv->accuracy);
+      break;
+    case PROP_SHOW_THOUSANDS_SEPARATOR:
+      g_value_set_boolean(value, self->priv->show_tsep);
+      break;
+    case PROP_SHOW_TRAILING_ZEROES:
+      g_value_set_boolean(value, self->priv->show_zeroes);
+      break;
+    case PROP_FORMAT:
+      g_value_set_enum(value, self->priv->format);
+      break;
+    case PROP_WORD_SIZE:
+      g_value_set_int(value, self->priv->word_size);
+      break;
+    case PROP_ANGLE_UNIT:
+      g_value_set_enum(value, self->priv->angle_unit);
+      break;
+    case PROP_BASE:
+      g_value_set_int(value, self->priv->base);
+      break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+static void
 math_equation_class_init (MathEquationClass *klass)
 {
+    static GEnumValue number_mode_values[] =
+    {
+      {NORMAL,      "normal",      "normal"},
+      {SUPERSCRIPT, "superscript", "superscript"},
+      {SUBSCRIPT,   "subscript",   "subscript"},
+      {0, NULL, NULL}
+    };
+    static GEnumValue display_format_values[] =
+    {
+      {DEC, "DEC", "DEC"},
+      {BIN, "BIN", "BIN"},
+      {OCT, "OCT", "OCT"},
+      {HEX, "HEX", "HEX"},
+      {SCI, "SCI", "SCI"},
+      {ENG, "ENG", "ENG"},
+      {0, NULL, NULL}
+    };
+    static GEnumValue angle_unit_values[] =
+    {
+      {MP_RADIANS, "radians", "radians"},
+      {MP_DEGREES, "degrees", "degrees"},
+      {MP_GRADIANS, "gradians", "gradians"},
+      {0, NULL, NULL}
+    };
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-    g_type_class_add_private (klass, sizeof (MathEquationPrivate));
+    object_class->get_property = math_equation_get_property;
+    object_class->set_property = math_equation_set_property;
 
-    signals[STATUS_CHANGED] =
-        g_signal_new ("status-changed",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MathEquationClass, status_changed),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0);
-    signals[DISPLAY_CHANGED] =
-        g_signal_new ("display-changed",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MathEquationClass, display_changed),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0);
-    signals[NUMBER_MODE_CHANGED] =
-        g_signal_new ("number-mode-changed",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MathEquationClass, number_mode_changed),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0);
+    g_type_class_add_private (klass, sizeof (MathEquationPrivate));
+  
+    number_mode_type = g_enum_register_static("NumberMode", number_mode_values);
+    display_format_type = g_enum_register_static("DisplayFormat", display_format_values);
+    angle_unit_type = g_enum_register_static("AngleUnit", angle_unit_values);
+
+    g_object_class_install_property(object_class,
+                                    PROP_STATUS,
+                                    g_param_spec_string("status",
+                                                        "status",
+                                                        "Equation status",
+                                                        "",
+                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_DISPLAY,
+                                    g_param_spec_string("display",
+                                                        "display",
+                                                        "Displayed equation text",
+                                                        "",
+                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_EQUATION,
+                                    g_param_spec_string("equation",
+                                                        "equation",
+                                                        "Equation text",
+                                                        "",
+                                                        G_PARAM_READABLE));
+    g_object_class_install_property(object_class,
+                                    PROP_NUMBER_MODE,
+                                    g_param_spec_enum("number-mode",
+                                                      "number-mode",
+                                                      "Input number mode",
+                                                      number_mode_type,
+                                                      NORMAL,
+                                                      G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_ACCURACY,
+                                    g_param_spec_int("accuracy",
+                                                     "accuracy",
+                                                     "Display accuracy",
+                                                     0, 20, 9,
+                                                     G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_SHOW_THOUSANDS_SEPARATOR,
+                                    g_param_spec_boolean("show-thousands-separators",
+                                                         "show-thousands-separators",
+                                                         "Show thousands separators",
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_SHOW_TRAILING_ZEROES,
+                                    g_param_spec_boolean("show-trailing-zeroes",
+                                                         "show-trailing-zeroes",
+                                                         "Show trailing zeroes",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_FORMAT,
+                                    g_param_spec_enum("format",
+                                                      "format",
+                                                      "Display format",
+                                                      display_format_type,
+                                                      DEC,
+                                                      G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_WORD_SIZE,
+                                    g_param_spec_int("word-size",
+                                                     "word-size",
+                                                     "Word size in bits",
+                                                     8, 64, 64,
+                                                     G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_ANGLE_UNIT,
+                                    g_param_spec_enum("angle-unit",
+                                                      "angle-unit",
+                                                      "Angle units",
+                                                      angle_unit_type,
+                                                      MP_DEGREES,
+                                                      G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_BASE,
+                                    g_param_spec_int("base",
+                                                     "base",
+                                                     "Numeric base",
+                                                     2, 16, 10,
+                                                     G_PARAM_READWRITE));
 }
 
 
@@ -1075,7 +1296,7 @@ insert_text_cb (MathEquation  *equation,
     equation->priv->state.entered_multiply = strcmp(text, "×") == 0;
 
     // FIXME: Check if have split/appended ans
-    g_signal_emit(equation, signals[DISPLAY_CHANGED], 0);
+    g_object_notify(G_OBJECT(equation), "display");
 }
 
 
@@ -1087,7 +1308,7 @@ delete_range_cb (MathEquation  *equation,
 {
     // FIXME: Check if have joined/deleted ans
     // FIXME: A replace will emit this both for delete-range and insert-text, can it be avoided?
-    g_signal_emit(equation, signals[DISPLAY_CHANGED], 0);  
+    g_object_notify(G_OBJECT(equation), "display");
 }
 
 
@@ -1130,6 +1351,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->show_zeroes = FALSE;
     equation->priv->show_tsep = FALSE;
     equation->priv->format = DEC;
+    equation->priv->base = 10;
     equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
     equation->priv->angle_unit = MP_DEGREES;

@@ -39,15 +39,17 @@ typedef struct
 typedef struct
 {
     GtkTextBufferClass parent_class;
-
-    void (*status_changed)(MathEquation *display);
-    void (*display_changed)(MathEquation *display);
-//FIXME    void (*equation_changed)(MathEquation *display);
-    void (*number_mode_changed)(MathEquation *display);
 } MathEquationClass;
 
 /* Number display mode. */
-typedef enum { DEC, BIN, OCT, HEX, SCI, ENG } DisplayFormat;
+typedef enum {
+  DEC,
+  BIN,
+  OCT,
+  HEX,
+  SCI,
+  ENG
+} DisplayFormat;
 
 typedef enum {
     NORMAL,
@@ -73,7 +75,6 @@ gboolean math_equation_get_number(MathEquation *equation, MPNumber *z);
 void math_equation_set_number_mode(MathEquation *equation, NumberMode mode);
 NumberMode math_equation_get_number_mode(MathEquation *equation);
 
-//FIXME: Make get_
 void math_equation_set_accuracy(MathEquation *equation, int accuracy);
 int math_equation_get_accuracy(MathEquation *equation);
 

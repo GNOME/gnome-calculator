@@ -227,7 +227,7 @@ button_release_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display
 
 
 static void
-status_changed_cb(MathEquation *equation, MathDisplay *display)
+status_changed_cb(MathEquation *equation, GParamSpec *spec, MathDisplay *display)
 {
     gtk_text_buffer_set_text(display->priv->info_buffer, math_equation_get_status(equation), -1);
 }
@@ -273,8 +273,8 @@ create_gui(MathDisplay *display)
     gtk_widget_show(info_view);
     gtk_widget_show(display->priv->display_item);
 
-    g_signal_connect(display->priv->equation, "status-changed", G_CALLBACK(status_changed_cb), display);
-    status_changed_cb(display->priv->equation, display);
+    g_signal_connect(display->priv->equation, "notify::status", G_CALLBACK(status_changed_cb), display);
+    status_changed_cb(display->priv->equation, NULL, display);
 }
 
 

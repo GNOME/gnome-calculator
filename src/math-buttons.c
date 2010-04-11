@@ -1079,7 +1079,7 @@ set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 
 
 static void
-display_changed_cb(MathEquation *equation, MathButtons *buttons)
+display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
     gboolean enabled;
     MPNumber x;
@@ -1113,7 +1113,7 @@ display_changed_cb(MathEquation *equation, MathButtons *buttons)
 
 
 static void
-number_mode_changed_cb(MathEquation *equation, MathButtons *buttons)
+number_mode_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
     GList *i;
     NumberMode mode;
@@ -1144,10 +1144,10 @@ math_buttons_set_property (GObject      *object,
     switch (prop_id) {
     case PROP_EQUATION:
         self->priv->equation = g_value_get_object (value);
-        g_signal_connect(self->priv->equation, "number-mode-changed", G_CALLBACK(number_mode_changed_cb), self);
-        g_signal_connect(self->priv->equation, "display-changed", G_CALLBACK(display_changed_cb), self);
-        number_mode_changed_cb(self->priv->equation, self);
-        display_changed_cb(self->priv->equation, self);
+        g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
+        g_signal_connect(self->priv->equation, "notify::display", G_CALLBACK(display_changed_cb), self);
+        number_mode_changed_cb(self->priv->equation, NULL, self);
+        display_changed_cb(self->priv->equation, NULL, self);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
