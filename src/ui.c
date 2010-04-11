@@ -192,7 +192,11 @@ G_MODULE_EXPORT
 void
 show_preferences_cb(GtkMenuItem *menu, GCalctoolUI *ui)
 {
-    ui_preferences_show(ui->priv->preferences_dialog);
+    if (!ui->priv->preferences_dialog) {
+        ui->priv->preferences_dialog = ui_preferences_dialog_new(ui->priv->equation);
+        gtk_window_set_transient_for(GTK_WINDOW(ui->priv->preferences_dialog), GTK_WINDOW(ui->priv->main_window));
+    }
+    gtk_window_present(GTK_WINDOW(ui->priv->preferences_dialog));
 }
 
 
@@ -318,10 +322,27 @@ ui_init(GCalctoolUI *ui)
     GtkWidget *scrolled_window;
     GError *error = NULL;
     int i;
+    int accuracy = 9, base = 10, word_size = 64;
+    gchar *angle_units;
+    gboolean show_tsep = FALSE, show_zeroes = FALSE;
+    gchar *display_format, *angle_unit;
 
     ui->priv = G_TYPE_INSTANCE_GET_PRIVATE (ui, ui_get_type(), GCalctoolUIPrivate);
   
     ui->priv->equation = math_equation_new();
+    get_int_resource(R_ACCURACY, &accuracy);
+    get_int_resource(R_BASE, &accuracy);
+    get_int_resource(R_WORDLEN, &word_size);
+    get_boolean_resource(R_TSEP, &show_tsep);  
+    get_boolean_resource(R_ZEROES, &show_zeroes);
+    display_format = get_resource(R_DISPLAY);
+    angle_units = get_resource(R_TRIG);
+  
+    math_equation_set_accuracy(ui->priv->equation, accuracy);
+    g_free(display_format);
+    g_free(angle_units);
+  
+    // FIXME: Save these on quit
 
     ui->priv->ui = gtk_builder_new();
     gtk_builder_add_from_file(ui->priv->ui, UI_FILE, &error);
@@ -361,6 +382,4 @@ ui_init(GCalctoolUI *ui)
     ui->priv->buttons = math_buttons_new(ui->priv->equation);
     gtk_box_pack_start(GTK_BOX(GET_WIDGET(ui->priv->ui, "window_vbox")), GTK_WIDGET(ui->priv->buttons), TRUE, TRUE, 0);
     gtk_widget_show(GTK_WIDGET(ui->priv->buttons));
-
-    ui->priv->preferences_dialog = ui_preferences_dialog_new(ui);
 }

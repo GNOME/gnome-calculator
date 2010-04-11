@@ -42,11 +42,11 @@ enum {
     PROP_EQUATION,
     PROP_NUMBER_MODE,
     PROP_ACCURACY,
-    PROP_SHOW_THOUSANDS_SEPARATOR,
+    PROP_SHOW_THOUSANDS_SEPARATORS,
     PROP_SHOW_TRAILING_ZEROES,
-    PROP_FORMAT,
+    PROP_DISPLAY_FORMAT,
     PROP_WORD_SIZE,
-    PROP_ANGLE_UNIT,
+    PROP_ANGLE_UNITS,
     PROP_BASE
 };
 
@@ -75,7 +75,7 @@ struct MathEquationPrivate
     int accuracy;             /* Number of digits to show */
     int base;                 /* Number base */
     int word_size;            /* Word size in bits */
-    MPAngleUnit angle_unit;   /* Units for trigonometric functions */
+    MPAngleUnit angle_units;  /* Units for trigonometric functions */
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
@@ -205,18 +205,18 @@ math_equation_get_accuracy(MathEquation *equation)
 
 
 void
-math_equation_set_show_thousands_separator(MathEquation *equation, gboolean visible)
+math_equation_set_show_thousands_separators(MathEquation *equation, gboolean visible)
 {
     if (equation->priv->show_tsep && visible || !equation->priv->show_tsep && !visible)
         return;
     equation->priv->show_tsep = visible;
     display_refresh(equation);
-    g_object_notify(G_OBJECT(equation), "show-thousands-separator");
+    g_object_notify(G_OBJECT(equation), "show-thousands-separators");
 }
 
 
 gboolean
-math_equation_get_show_thousands_separator(MathEquation *equation)
+math_equation_get_show_thousands_separators(MathEquation *equation)
 {
     return equation->priv->show_tsep;
 }
@@ -241,7 +241,7 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 
 
 void
-math_equation_set_format(MathEquation *equation, DisplayFormat format)
+math_equation_set_display_format(MathEquation *equation, DisplayFormat format)
 {
     if (equation->priv->format == format)
         return;
@@ -252,7 +252,7 @@ math_equation_set_format(MathEquation *equation, DisplayFormat format)
 
 
 DisplayFormat
-math_equation_get_format(MathEquation *equation)
+math_equation_get_display_format(MathEquation *equation)
 {
     return equation->priv->format;
 }
@@ -276,19 +276,19 @@ math_equation_get_word_size(MathEquation *equation)
 
 
 void
-math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit)
+math_equation_set_angle_units(MathEquation *equation, MPAngleUnit angle_units)
 {
-    if (equation->priv->angle_unit == angle_unit)
+    if (equation->priv->angle_units == angle_units)
         return;
-    equation->priv->angle_unit = angle_unit;
-    g_object_notify(G_OBJECT(equation), "angle-unit");  
+    equation->priv->angle_units = angle_units;
+    g_object_notify(G_OBJECT(equation), "angle-units");
 }
 
 
 MPAngleUnit
-math_equation_get_angle_unit(MathEquation *equation)
+math_equation_get_angle_units(MathEquation *equation)
 {
-    return equation->priv->angle_unit;
+    return equation->priv->angle_units;
 }
 
 
@@ -727,7 +727,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
 
     memset(&options, 0, sizeof(options));
     options.wordlen = equation->priv->word_size;
-    options.angle_units = equation->priv->angle_unit;
+    options.angle_units = equation->priv->angle_units;
     options.variable_is_defined = variable_is_defined;
     options.get_variable = get_variable;
     options.set_variable = set_variable;
@@ -1077,20 +1077,20 @@ math_equation_set_property(GObject      *object,
     case PROP_ACCURACY:
       math_equation_set_accuracy(self, g_value_get_int(value));
       break;
-    case PROP_SHOW_THOUSANDS_SEPARATOR:
-      math_equation_set_show_thousands_separator(self, g_value_get_boolean(value));
+    case PROP_SHOW_THOUSANDS_SEPARATORS:
+      math_equation_set_show_thousands_separators(self, g_value_get_boolean(value));
       break;
     case PROP_SHOW_TRAILING_ZEROES:
       math_equation_set_show_trailing_zeroes(self, g_value_get_boolean(value));
       break;
-    case PROP_FORMAT:
-      math_equation_set_format(self, g_value_get_int(value));
+    case PROP_DISPLAY_FORMAT:
+      math_equation_set_display_format(self, g_value_get_int(value));
       break;
     case PROP_WORD_SIZE:
       math_equation_set_word_size(self, g_value_get_int(value));
       break;
-    case PROP_ANGLE_UNIT:
-      math_equation_set_angle_unit(self, g_value_get_int(value));
+    case PROP_ANGLE_UNITS:
+      math_equation_set_angle_units(self, g_value_get_int(value));
       break;
     case PROP_BASE:
       math_equation_set_base(self, g_value_get_int(value));
@@ -1133,20 +1133,20 @@ math_equation_get_property(GObject    *object,
     case PROP_ACCURACY:
       g_value_set_int(value, self->priv->accuracy);
       break;
-    case PROP_SHOW_THOUSANDS_SEPARATOR:
+    case PROP_SHOW_THOUSANDS_SEPARATORS:
       g_value_set_boolean(value, self->priv->show_tsep);
       break;
     case PROP_SHOW_TRAILING_ZEROES:
       g_value_set_boolean(value, self->priv->show_zeroes);
       break;
-    case PROP_FORMAT:
+    case PROP_DISPLAY_FORMAT:
       g_value_set_enum(value, self->priv->format);
       break;
     case PROP_WORD_SIZE:
       g_value_set_int(value, self->priv->word_size);
       break;
-    case PROP_ANGLE_UNIT:
-      g_value_set_enum(value, self->priv->angle_unit);
+    case PROP_ANGLE_UNITS:
+      g_value_set_enum(value, self->priv->angle_units);
       break;
     case PROP_BASE:
       g_value_set_int(value, self->priv->base);
@@ -1233,7 +1233,7 @@ math_equation_class_init (MathEquationClass *klass)
                                                      0, 20, 9,
                                                      G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
-                                    PROP_SHOW_THOUSANDS_SEPARATOR,
+                                    PROP_SHOW_THOUSANDS_SEPARATORS,
                                     g_param_spec_boolean("show-thousands-separators",
                                                          "show-thousands-separators",
                                                          "Show thousands separators",
@@ -1247,9 +1247,9 @@ math_equation_class_init (MathEquationClass *klass)
                                                          FALSE,
                                                          G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
-                                    PROP_FORMAT,
-                                    g_param_spec_enum("format",
-                                                      "format",
+                                    PROP_DISPLAY_FORMAT,
+                                    g_param_spec_enum("display-format",
+                                                      "display-format",
                                                       "Display format",
                                                       display_format_type,
                                                       DEC,
@@ -1262,9 +1262,9 @@ math_equation_class_init (MathEquationClass *klass)
                                                      8, 64, 64,
                                                      G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
-                                    PROP_ANGLE_UNIT,
-                                    g_param_spec_enum("angle-unit",
-                                                      "angle-unit",
+                                    PROP_ANGLE_UNITS,
+                                    g_param_spec_enum("angle-units",
+                                                      "angle-units",
                                                       "Angle units",
                                                       angle_unit_type,
                                                       MP_DEGREES,
@@ -1354,7 +1354,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->base = 10;
     equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
-    equation->priv->angle_unit = MP_DEGREES;
+    equation->priv->angle_units = MP_DEGREES;
 
     mp_set_from_integer(0, &equation->priv->state.ans);
     equation->priv->state.ans_start = -1;

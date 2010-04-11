@@ -19,19 +19,29 @@
 #ifndef UI_PREFERENCES_H
 #define UI_PREFERENCES_H
 
-typedef struct PreferencesDialog PreferencesDialog;
+#include <glib-object.h>
+#include <gtk/gtk.h>
+#include "math-equation.h"
 
-#include "ui.h"
+G_BEGIN_DECLS
 
-struct PreferencesDialog
+#define UI_PREFERENCES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_preferences_get_type(), PreferencesDialog))
+
+typedef struct PreferencesDialogPrivate PreferencesDialogPrivate;
+
+typedef struct
 {
-    GCalctoolUI *ui;
-    GtkBuilder *dialog_ui;
-    GtkWidget *dialog;
-};
+    GtkDialog                 parent_instance;
+    PreferencesDialogPrivate *priv;
+} PreferencesDialog;
 
-PreferencesDialog *ui_preferences_dialog_new(GCalctoolUI *ui);
+typedef struct
+{
+    GtkDialogClass parent_class;
+} PreferencesDialogClass;
 
-void ui_preferences_show(PreferencesDialog *dialog);
+GType ui_preferences_get_type();
+
+PreferencesDialog *ui_preferences_dialog_new(MathEquation *equation);
 
 #endif /* UI_PREFERENCES_H */

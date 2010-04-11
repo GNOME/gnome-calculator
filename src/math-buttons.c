@@ -292,10 +292,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     gint i;
     gchar *name;
     const gchar *builder_file;
-    gchar *objects[] = { "button_panel", "character_code_dialog", "currency_dialog",
-                         "ctrm_dialog", "ddb_dialog", "fv_dialog", "gpm_dialog",
-                         "pmt_dialog", "pv_dialog", "rate_dialog", "sln_dialog",
-                         "syd_dialog", "term_dialog", "adjustment1", "adjustment2", NULL };
+    static gchar *objects[] = { "button_panel", "character_code_dialog", "currency_dialog",
+                                "ctrm_dialog", "ddb_dialog", "fv_dialog", "gpm_dialog",
+                                "pmt_dialog", "pv_dialog", "rate_dialog", "sln_dialog",
+                                "syd_dialog", "term_dialog", "adjustment1", "adjustment2", NULL };
     GtkWidget *widget, **panel;
     GError *error = NULL;
 
