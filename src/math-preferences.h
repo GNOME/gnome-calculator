@@ -16,8 +16,8 @@
  *  02111-1307, USA.
  */
 
-#ifndef UI_PREFERENCES_H
-#define UI_PREFERENCES_H
+#ifndef MATH_PREFERENCES_H
+#define MATH_PREFERENCES_H
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -25,23 +25,23 @@
 
 G_BEGIN_DECLS
 
-#define UI_PREFERENCES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_preferences_get_type(), PreferencesDialog))
+#define MATH_PREFERENCES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_preferences_get_type(), MathPreferencesDialog))
 
-typedef struct PreferencesDialogPrivate PreferencesDialogPrivate;
+typedef struct MathPreferencesDialogPrivate MathPreferencesDialogPrivate;
 
 typedef struct
 {
     GtkDialog                 parent_instance;
-    PreferencesDialogPrivate *priv;
-} PreferencesDialog;
+    MathPreferencesDialogPrivate *priv;
+} MathPreferencesDialog;
 
 typedef struct
 {
     GtkDialogClass parent_class;
-} PreferencesDialogClass;
+} MathPreferencesDialogClass;
 
-GType ui_preferences_get_type();
+GType math_preferences_get_type();
 
-PreferencesDialog *ui_preferences_dialog_new(MathEquation *equation);
+MathPreferencesDialog *math_preferences_dialog_new(MathEquation *equation);
 
-#endif /* UI_PREFERENCES_H */
+#endif /* MATH_PREFERENCES_H */

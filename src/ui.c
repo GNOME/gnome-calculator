@@ -22,7 +22,7 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "ui.h"
-#include "ui-preferences.h"
+#include "math-preferences.h"
 #include "config.h"
 #include "get.h"
 
@@ -33,7 +33,7 @@ struct GCalctoolUIPrivate
     MathEquation *equation;
     MathDisplay *display;
     MathButtons *buttons;
-    PreferencesDialog *preferences_dialog;
+    MathPreferencesDialog *preferences_dialog;
     gboolean right_aligned;
 };
 
@@ -193,7 +193,7 @@ void
 show_preferences_cb(GtkMenuItem *menu, GCalctoolUI *ui)
 {
     if (!ui->priv->preferences_dialog) {
-        ui->priv->preferences_dialog = ui_preferences_dialog_new(ui->priv->equation);
+        ui->priv->preferences_dialog = math_preferences_dialog_new(ui->priv->equation);
         gtk_window_set_transient_for(GTK_WINDOW(ui->priv->preferences_dialog), GTK_WINDOW(ui->priv->main_window));
     }
     gtk_window_present(GTK_WINDOW(ui->priv->preferences_dialog));

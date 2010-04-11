@@ -19,6 +19,8 @@ gcalctool_SOURCES = \
 	math-display.h \
 	math-equation.c \
 	math-equation.h \
+	math-preferences.c \
+	math-preferences.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \
@@ -38,8 +40,6 @@ gcalctool_SOURCES = \
 	register.h \
 	ui.c \
 	ui.h \
-	ui-preferences.c \
-	ui-preferences.h \
 	unittest.c \
 	unittest.h
 
