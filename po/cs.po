@@ -12,10 +12,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool gnome-2-28\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-03-01 05:46+0000\n"
-"PO-Revision-Date: 2010-03-02 10:21+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-12 22:33+0200\n"
+"PO-Revision-Date: 2010-04-07 16:13+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -824,33 +823,38 @@ msgstr "_Základní"
 msgid "_Calculator"
 msgstr "_Kalkulačka"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Obsah"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Finanční"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Nápověda"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Vložit"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programátorská"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Vědecká"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Zobrazit"
 
@@ -1205,44 +1209,44 @@ msgstr "Žádné kroky opakování"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1066
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1082
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
-#: ../src/display.c:1108
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Nesmyslná hodnota pro uložení"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1230
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1235
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznámá proměnná „%s“"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1241
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1247
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1256
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
@@ -1363,6 +1367,12 @@ msgstr ""
 msgid "Paste"
 msgstr "Vložit"
 
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Zobrazovat %d desetinných _míst"
+
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
@@ -1475,4 +1485,3 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzní hyperbolický tangens není definován pro hodnoty mimo interval [-1, "
 "1]"
-
