@@ -109,7 +109,7 @@ set_rate (xmlNodePtr node, currency *cur)
             cur->short_name = (char *)xmlNodeGetContent((xmlNodePtr) attribute);
         } else if (strcmp ((char *)attribute->name, "rate") == 0) {
             char *val = (char *)xmlNodeGetContent ((xmlNodePtr) attribute);
-            mp_set_from_string(val, &(cur->value));
+            mp_set_from_string(val, 10, &(cur->value));
             xmlFree (val);
         }
     }

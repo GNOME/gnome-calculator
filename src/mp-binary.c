@@ -45,10 +45,10 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
 
-    mp_cast_to_string(x, 16, 0, 0, text1, MAX_DIGITS);
-    mp_cast_to_string(y, 16, 0, 0, text2, MAX_DIGITS);
-    offset1 = strlen(text1) - 1 - strlen("₁₆");
-    offset2 = strlen(text2) - 1 - strlen("₁₆");
+    mp_cast_to_string(x, 16, 16, 0, 0, text1, MAX_DIGITS);
+    mp_cast_to_string(y, 16, 16, 0, 0, text2, MAX_DIGITS);
+    offset1 = strlen(text1) - 1;
+    offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
     if (offset_out <= 0) {
         offset_out = offset1 > offset2 ? offset1 : offset2;
@@ -73,8 +73,8 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
         text_out[offset_out] = digits[bitwise_operator(v1, v2)];
     }
 
-    snprintf(text_out2, MAX_DIGITS, "%s₁₆", text_out);
-    mp_set_from_string(text_out2, z);
+    snprintf(text_out2, MAX_DIGITS, "%s", text_out);
+    mp_set_from_string(text_out2, 16, z);
 }
 
 
@@ -156,11 +156,11 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
     size_t len, offset;
 
     /* Convert to a hexadecimal string and use last characters */
-    mp_cast_to_string(x, 16, 0, 0, text, MAX_DIGITS);
-    len = strlen(text) - strlen("₁₆");
+    mp_cast_to_string(x, 16, 16, 0, 0, text, MAX_DIGITS);
+    len = strlen(text);
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
-    mp_set_from_string(text + offset, z);
+    mp_set_from_string(text + offset, 16, z);
 }
 
 

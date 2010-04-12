@@ -35,6 +35,9 @@ typedef enum
 
 /* Options for parser */
 typedef struct {
+    /* Default number base */
+    int base;
+  
     /* The wordlength for binary operations in bits (e.g. 8, 16, 32) */
     int wordlen;
 

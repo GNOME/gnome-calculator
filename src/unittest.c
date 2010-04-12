@@ -25,7 +25,6 @@
 #include "mp-equation.h"
 
 static MPEquationOptions options;
-static int base;
 
 static int fails = 0;
 
@@ -84,7 +83,7 @@ test(char *expression, char *expected, int expected_error)
     error = mp_equation_parse(expression, &options, &result, NULL);
 
     if(error == 0) {
-        mp_cast_to_string(&result, base, 9, 1, result_str, 1024);
+        mp_cast_to_string(&result, options.base, options.base, 9, 1, result_str, 1024);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)
@@ -106,7 +105,7 @@ static void
 test_conversions()
 {
     memset(&options, 0, sizeof(options));
-    base = 10;
+    options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
 
@@ -160,23 +159,24 @@ void
 test_equations()
 {
     memset(&options, 0, sizeof(options));
-    base = 10;
+    options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
     options.variable_is_defined = variable_is_defined;  
     options.get_variable = get_variable;
     options.set_variable = set_variable;
 
-    base = 2;
-    test("2", "10₂", 0);
+    options.base = 2;
+    test("2₁₀", "10", 0);
 
-    base = 8;
-    test("16434824", "76543210₈", 0);
+    options.base = 8;
+    test("16434824₁₀", "76543210", 0);
 
-    base = 16;
-    test("18364758544493064720", "FEDCBA9876543210₁₆", 0);
+    options.base = 16;
+    test("FF", "FF", 0);
+    test("18364758544493064720₁₀", "FEDCBA9876543210", 0);
 
-    base = 10;
+    options.base = 10;
     test("0₂", "0", 0); test("0₈", "0", 0); test("0", "0", 0); test("0₁₆", "0", 0);
     test("1₂", "1", 0); test("1₈", "1", 0); test("1", "1", 0); test("1₁₆", "1", 0);
     test("2₂", "", PARSER_ERR_INVALID); test("2₈", "2", 0); test("2", "2", 0); test("2₁₆", "2", 0);
@@ -497,24 +497,24 @@ test_equations()
     test("1 xor 1", "0", 0);
     test("3 xor 5", "6", 0);
 
-    base = 16;
-    test("ones 1", "FFFFFFFE₁₆", 0);
-    test("ones 7FFFFFFF₁₆", "80000000₁₆", 0);
-    test("twos 1", "FFFFFFFF₁₆", 0);
-    test("twos 7FFFFFFF₁₆", "80000001₁₆", 0);
-    test("~7A₁₆", "FFFFFF85₁₆", 0);
+    options.base = 16;
+    test("ones 1", "FFFFFFFE", 0);
+    test("ones 7FFFFFFF", "80000000", 0);
+    test("twos 1", "FFFFFFFF", 0);
+    test("twos 7FFFFFFF", "80000001", 0);
+    test("~7A₁₆", "FFFFFF85", 0);
 
-/*    base = 2;
+    options.base = 2;
     options.wordlen = 4;
-    test("1100₂∧1010₂", "1000₂", 0);
-    test("1100₂∨1010₂", "1110₂", 0);
-    test("1100₂⊻1010₂", "110₂", 0);
-    test("1100₂⊕1010₂", "110₂", 0);
-    test("1100₂⊼1010₂", "0111₂", 0);
-    test("1100₂⊽1010₂", "0001₂", 0);
-    options.wordlen = 2;
-    test("¬10₂", "1₂", 0);
-    test("¬¬10₂", "10₂", 0);*/
+    test("1100∧1010", "1000", 0);
+    test("1100∨1010", "1110", 0);
+    test("1100⊻1010", "110", 0);
+    test("1100⊕1010", "110", 0);
+    //test("1100⊼1010", "0111", 0);
+    //test("1100⊽1010", "0001", 0);
+    //options.wordlen = 2;
+    //test("¬01₂", "10₂", 0);
+    //test("¬¬10₂", "10₂", 0);
 }
 
 
@@ -539,7 +539,7 @@ test_string(const char *number)
 {
     MPNumber t;
 
-    mp_set_from_string(number, &t);
+    mp_set_from_string(number, 10, &t);
 
     printf("MPNumber(%s) -> {", number);
     print_number(&t);

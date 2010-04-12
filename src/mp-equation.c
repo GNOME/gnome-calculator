@@ -244,8 +244,8 @@ do_convert(const char *units[][2], const MPNumber *x, const char *x_units, const
     if (units[z_index][0] == NULL)
         return 0;
 
-    mp_set_from_string(units[x_index][1], &x_factor);
-    mp_set_from_string(units[z_index][1], &z_factor);
+    mp_set_from_string(units[x_index][1], 10, &x_factor);
+    mp_set_from_string(units[z_index][1], 10, &z_factor);
     mp_multiply(x, &x_factor, z);
     mp_divide(z, &z_factor, z);
 

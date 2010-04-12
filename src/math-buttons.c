@@ -851,7 +851,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
             continue;
         }
         entry = GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][i]);
-        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), &arg[i]);
+        mp_set_from_string(gtk_entry_get_text(GTK_ENTRY(entry)), 10, &arg[i]);
         gtk_entry_set_text(GTK_ENTRY(entry), "0");
     }
     gtk_widget_grab_focus(GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][0]));
@@ -989,7 +989,7 @@ currency_cb(GtkWidget *widget, MathButtons *buttons)
         gchar *result;
 
         result = g_strdup_printf("%.2f", gtk_spin_button_get_value(c_amount_lower));
-        mp_set_from_string(result, &display_val);
+        mp_set_from_string(result, 10, &display_val);
         g_free(result);
 
         math_equation_set_number(buttons->priv->equation, &display_val);

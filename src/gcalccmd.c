@@ -37,6 +37,7 @@ solve(const char *equation)
     char result_str[MAXLINE];
     
     memset(&options, 0, sizeof(options));
+    options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
     
@@ -47,7 +48,7 @@ solve(const char *equation)
     else if (ret)        
         fprintf(stderr, "Error %d\n", ret);
     else {
-        mp_cast_to_string(&z, 10, 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&z, 10, 10, 9, 1, result_str, MAXLINE);
         printf("%s\n", result_str);
     }
 }

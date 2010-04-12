@@ -60,10 +60,10 @@ SUP_NUM  {SUPER_DIGITS}+
 NSUP_NUM {SUPER_MINUS}{SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
 WORD     {LETTERS}+
-DEC_NUM  {DEC}+|{DEC}*{DECIMAL}{DEC}+
+DEF_NUM  {HEX}+|{HEX}*{DECIMAL}{HEX}+
 BASE_NUM {HEX}+{SUB_NUM}|{HEX}*{DECIMAL}{HEX}+{SUB_NUM}
 
-NUMBER   {DEC_NUM}|{BASE_NUM}|{FRACTION}|{DEC_NUM}{FRACTION}
+NUMBER   {DEF_NUM}|{BASE_NUM}|{FRACTION}|{DEC}+{FRACTION}
 VARIABLE {WORD}|{WORD}{SUB_NUM}|{GREEKS}
 
 MOD  [mM][oO][dD]
@@ -90,7 +90,7 @@ IN   [iI][nN]
 {OR}        {return tOR;}
 {XOR}       {return tXOR;}
 {IN}        {return tIN;}
-{NUMBER}    {if (mp_set_from_string(yytext, &yylval->int_t) != 0) REJECT; return tNUMBER;}
+{NUMBER}    {if (mp_set_from_string(yytext, _mp_equation_get_extra(yyscanner)->options->base, &yylval->int_t) != 0) REJECT; return tNUMBER;}
 {SUP_NUM}   {yylval->integer = super_atoi(yytext); return tSUPNUM;}
 {NSUP_NUM}  {yylval->integer = super_atoi(yytext); return tNSUPNUM;}
 {SUB_NUM}   {yylval->integer = sub_atoi(yytext); return tSUBNUM;}

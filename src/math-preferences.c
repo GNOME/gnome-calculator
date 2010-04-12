@@ -63,6 +63,21 @@ preferences_dialog_delete_cb(GtkWidget *widget, GdkEvent *event)
 
 G_MODULE_EXPORT
 void
+display_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
+{
+    DisplayFormat value;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 1, &value, -1);
+    math_equation_set_display_format(dialog->priv->equation, value);
+}
+
+
+G_MODULE_EXPORT
+void
 angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 {
     MPAngleUnit value;
@@ -78,16 +93,16 @@ angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 
 G_MODULE_EXPORT
 void
-display_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
+number_base_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 {
-    DisplayFormat value;
+    MPAngleUnit value;
     GtkTreeModel *model;
     GtkTreeIter iter;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
-    math_equation_set_display_format(dialog->priv->equation, value);
+    math_equation_set_base(dialog->priv->equation, value);
 }
 
 

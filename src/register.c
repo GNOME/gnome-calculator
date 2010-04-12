@@ -54,7 +54,7 @@ registers_load()
         value = g_strstrip(value);
 
         t = g_malloc(sizeof(MPNumber));
-        if (mp_set_from_string(value, t) == 0)
+        if (mp_set_from_string(value, 10, t) == 0)
             g_hash_table_insert(registers, g_strdup(name), t);
         else
             g_free(t);
@@ -86,7 +86,7 @@ registers_save()
         MPNumber *value = val;
         char number[1024];
 
-        mp_cast_to_string(value, 10, 50, TRUE, number, 1024);
+        mp_cast_to_string(value, 10, 10, 50, TRUE, number, 1024);
         fprintf(f, "%s=%s\n", name, number);
     }
     fclose(f);

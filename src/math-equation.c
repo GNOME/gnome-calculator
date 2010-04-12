@@ -380,7 +380,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gboolean result;
 
     text = math_equation_get_display(equation);
-    result = !mp_set_from_string(text, z);
+    result = !mp_set_from_string(text, equation->priv->base, z);
     g_free (text);
 
     return result;
@@ -726,6 +726,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     MPEquationOptions options;
 
     memset(&options, 0, sizeof(options));
+    options.base = equation->priv->base;
     options.wordlen = equation->priv->word_size;
     options.angle_units = equation->priv->angle_units;
     options.variable_is_defined = variable_is_defined;
@@ -963,7 +964,7 @@ display_get_integer(MathEquation *equation, gint64 *value)
 /* Convert engineering or scientific number in the given base. */
 // FIXME: Move into mp-convert.c
 static void
-make_eng_sci(MathEquation *equation, char *target, int target_len, const MPNumber *x, int base_)
+make_eng_sci(MathEquation *equation, char *target, int target_len, const MPNumber *x, int default_base, int base_)
 {
     char fixed[MAX_DIGITS], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -1010,7 +1011,7 @@ make_eng_sci(MathEquation *equation, char *target, int target_len, const MPNumbe
         }
     }
 
-    mp_cast_to_string(&mantissa, base_, equation->priv->accuracy, !equation->priv->show_zeroes, fixed, MAX_DIGITS);
+    mp_cast_to_string(&mantissa, default_base, base_, equation->priv->accuracy, !equation->priv->show_zeroes, fixed, MAX_DIGITS);
     g_string_append(string, fixed);
     g_string_append_printf(string, "×10");
     if (exponent < 0) {
@@ -1033,22 +1034,22 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
 {
     switch(equation->priv->format) {
     case DEC:
-        mp_cast_to_string(x, 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case BIN:
-        mp_cast_to_string(x, 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case OCT:
-        mp_cast_to_string(x, 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case HEX:
-        mp_cast_to_string(x, 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case SCI:
-        make_eng_sci(equation, target, target_len, x, 10);
+        make_eng_sci(equation, target, target_len, x, equation->priv->base, 10);
         break;
     case ENG:
-        make_eng_sci(equation, target, target_len, x, 10);
+        make_eng_sci(equation, target, target_len, x, equation->priv->base, 10);
         break;
     }
 }

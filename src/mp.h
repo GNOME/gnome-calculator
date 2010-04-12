@@ -242,7 +242,7 @@ void   mp_set_from_random(MPNumber *z);
 /* Sets z from a string representation in 'text'.
  * Returns true on success.
  */
-bool   mp_set_from_string(const char *text, MPNumber *z);
+bool   mp_set_from_string(const char *text, int default_base, MPNumber *z);
 
 /* Returns x as a native single-precision floating point number */
 float  mp_cast_to_float(const MPNumber *x);
@@ -263,7 +263,7 @@ uint64_t mp_cast_to_unsigned_int(const MPNumber *x);
  * If 'trim_zeroes' is non-zero then strip off trailing zeroes.
  * Fractional components are truncated at 'max_digits' digits.
  */
-void   mp_cast_to_string(const MPNumber *x, int base, int max_digits, bool trim_zeroes, char *buffer, int buffer_length);
+void   mp_cast_to_string(const MPNumber *x, int default_base, int base, int max_digits, bool trim_zeroes, char *buffer, int buffer_length);
 
 /* Sets z = sin x */
 void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);

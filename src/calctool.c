@@ -48,6 +48,7 @@ solve(const char *equation)
     char result_str[1024];
 
     memset(&options, 0, sizeof(options));
+    options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
 
@@ -61,7 +62,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, 10, 9, 1, result_str, 1024);
+        mp_cast_to_string(&result, 10, 10, 9, 1, result_str, 1024);
         printf("%s\n", result_str);
         exit(0);
     }

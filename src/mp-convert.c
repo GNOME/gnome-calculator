@@ -503,7 +503,7 @@ mp_cast_to_double(const MPNumber *x)
 
 
 static void
-mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, bool trim_zeroes, bool force_sign, GString *string)
+mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool force_sign, GString *string)
 {
     static char digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
@@ -574,26 +574,26 @@ mp_cast_to_string_real(const MPNumber *x, int base, int accuracy, bool trim_zero
             g_string_prepend(string, "+");
     }
 
-    switch(base)
-    {
-    case 2:
-        g_string_append(string, "₂");
-        break;
-    case 8:
-        g_string_append(string, "₈");
-        break;
-    default:
-    case 10:
-        break;
-    case 16:
-        g_string_append(string, "₁₆");
-        break;
+    /* Append base suffix if not in default base */
+    if (base != default_base) {
+        const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
+        int multiplier = 1;
+        int b = base;
+
+        while (base / multiplier != 0)
+            multiplier *= 10;
+        while (multiplier != 1) {
+            int d = b / multiplier;
+            g_string_append(string, digits[d]);
+            b -= d * multiplier;
+            multiplier /= 10;
+        }
     }
 }
 
 
 void
-mp_cast_to_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
 {
     MPNumber x_real, x_im;
     GString *string;
@@ -603,7 +603,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, c
     mp_real_component(x, &x_real);
     mp_imaginary_component(x, &x_im);
 
-    mp_cast_to_string_real(&x_real, base, accuracy, trim_zeroes, FALSE, string);
+    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, string);
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
@@ -614,7 +614,7 @@ mp_cast_to_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, c
         }
 
         s = g_string_sized_new(buffer_length);
-        mp_cast_to_string_real(&x_im, 10, accuracy, trim_zeroes, force_sign, s);
+        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, s);
         if (strcmp(s->str, "1") == 0) {
             g_string_append(string, "i");
         }
@@ -718,7 +718,7 @@ ends_with(const char *start, const char *end, const char *word)
 
 
 bool
-mp_set_from_string(const char *str, MPNumber *z)
+mp_set_from_string(const char *str, int default_base, MPNumber *z)
 {
     int i, base, negate = 0, multiplier = 0, base_multiplier = 1;
     const char *c, *end;
@@ -747,7 +747,7 @@ mp_set_from_string(const char *str, MPNumber *z)
             break;
     }
     if (base_multiplier == 1)
-        base = 10;
+        base = default_base;
 
     /* Check if this has a sign */
     c = str;
