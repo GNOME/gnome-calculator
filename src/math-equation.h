@@ -84,17 +84,14 @@ gboolean math_equation_get_show_thousands_separators(MathEquation *equation);
 void math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible);
 gboolean math_equation_get_show_trailing_zeroes(MathEquation *equation);
 
-void math_equation_set_display_format(MathEquation *equation, DisplayFormat format);
-DisplayFormat math_equation_get_display_format(MathEquation *equation);
+void math_equation_set_number_format(MathEquation *equation, DisplayFormat format);
+DisplayFormat math_equation_get_number_format(MathEquation *equation);
 
 void math_equation_set_word_size(MathEquation *equation, int word_size);
 int math_equation_get_word_size(MathEquation *equation);
 
 void math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit);
 MPAngleUnit math_equation_get_angle_unit(MathEquation *equation);
-
-void math_equation_set_base(MathEquation *equation, gint base);
-gint math_equation_get_base(MathEquation *equation);
 
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);

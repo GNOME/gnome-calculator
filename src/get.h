@@ -27,7 +27,6 @@
 #define R_ZEROES   "showzeroes"
 #define R_TSEP     "showthousands"
 #define R_WORDLEN  "wordlen"
-#define R_BASE     "base"
 
 void resources_init();
 

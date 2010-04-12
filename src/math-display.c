@@ -97,10 +97,10 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
         switch(event->keyval)
         {
         case GDK_b:
-            math_equation_set_base(display->priv->equation, 2);
+            math_equation_set_number_format(display->priv->equation, BIN);
             return TRUE;
         case GDK_d:
-            math_equation_set_base(display->priv->equation, 10);
+            math_equation_set_number_format(display->priv->equation, DEC);
             return TRUE;
         case GDK_e:
             math_equation_insert_exponent(display->priv->equation);
@@ -109,13 +109,13 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
             math_equation_factorize(display->priv->equation);
             return TRUE;
         case GDK_h:
-            math_equation_set_base(display->priv->equation, 16);
+            math_equation_set_number_format(display->priv->equation, HEX);
             return TRUE;
         case GDK_i:
             math_equation_insert(display->priv->equation, "⁻¹");
             return TRUE;
         case GDK_o:
-            math_equation_set_base(display->priv->equation, 8);
+            math_equation_set_number_format(display->priv->equation, OCT);
             return TRUE;
         case GDK_p:
             math_equation_insert(display->priv->equation, "π");

@@ -325,21 +325,26 @@ ui_init(GCalctoolUI *ui)
     int accuracy = 9, base = 10, word_size = 64;
     gchar *angle_units;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
-    gchar *display_format, *angle_unit;
+    gchar *number_format, *angle_unit;
 
     ui->priv = G_TYPE_INSTANCE_GET_PRIVATE (ui, ui_get_type(), GCalctoolUIPrivate);
   
     ui->priv->equation = math_equation_new();
     get_int_resource(R_ACCURACY, &accuracy);
-    get_int_resource(R_BASE, &accuracy);
     get_int_resource(R_WORDLEN, &word_size);
     get_boolean_resource(R_TSEP, &show_tsep);  
     get_boolean_resource(R_ZEROES, &show_zeroes);
-    display_format = get_resource(R_DISPLAY);
+    number_format = get_resource(R_DISPLAY);
     angle_units = get_resource(R_TRIG);
   
     math_equation_set_accuracy(ui->priv->equation, accuracy);
-    g_free(display_format);
+    math_equation_set_word_length(ui->priv->equation, word_size);
+    math_equation_set_show_thousands_separators(ui->priv->equation, show_tsep);
+    math_equation_set_show_trailing_zeroes(ui->priv->equation, show_zeroes);
+    //math_equation_set_number_format(ui->priv->equation, ?);
+    //math_equation_set_angle_units(ui->priv->equation, ?);
+
+    g_free(number_format);
     g_free(angle_units);
   
     // FIXME: Save these on quit

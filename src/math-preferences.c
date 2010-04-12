@@ -63,7 +63,7 @@ preferences_dialog_delete_cb(GtkWidget *widget, GdkEvent *event)
 
 G_MODULE_EXPORT
 void
-display_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
+number_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 {
     DisplayFormat value;
     GtkTreeModel *model;
@@ -72,7 +72,7 @@ display_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dial
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
-    math_equation_set_display_format(dialog->priv->equation, value);
+    math_equation_set_number_format(dialog->priv->equation, value);
 }
 
 
@@ -88,21 +88,6 @@ angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
     math_equation_set_angle_units(dialog->priv->equation, value);
-}
-
-
-G_MODULE_EXPORT
-void
-number_base_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
-{
-    MPAngleUnit value;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
-    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 1, &value, -1);
-    math_equation_set_base(dialog->priv->equation, value);
 }
 
 
@@ -205,9 +190,9 @@ show_trailing_zeroes_cb(MathEquation *equation, GParamSpec *spec, MathPreference
 
 
 static void
-display_format_cb(MathEquation *equation, GParamSpec *spec, MathPreferencesDialog *dialog)
+number_format_cb(MathEquation *equation, GParamSpec *spec, MathPreferencesDialog *dialog)
 {
-    set_combo_box_from_int(GET_WIDGET(dialog->priv->ui, "display_format_combobox"), math_equation_get_display_format(equation));
+    set_combo_box_from_int(GET_WIDGET(dialog->priv->ui, "number_format_combobox"), math_equation_get_number_format(equation));
 }
 
 
@@ -226,13 +211,6 @@ angle_unit_cb(MathEquation *equation, GParamSpec *spec, MathPreferencesDialog *d
 
 
 static void
-base_cb(MathEquation *equation, GParamSpec *spec, MathPreferencesDialog *dialog)
-{
-    set_combo_box_from_int(GET_WIDGET(dialog->priv->ui, "number_base_combobox"), math_equation_get_base(equation));
-}
-
-
-static void
 create_gui(MathPreferencesDialog *dialog)
 {
     GtkWidget *widget;
@@ -241,7 +219,7 @@ create_gui(MathPreferencesDialog *dialog)
     GtkCellRenderer *renderer;
     gchar *string, **tokens;
     GError *error = NULL;
-    static gchar *objects[] = { "preferences_table", "angle_unit_model", "display_format_model",
+    static gchar *objects[] = { "preferences_table", "angle_unit_model", "number_format_model",
                                 "word_size_model", "decimal_places_adjustment", "number_base_model", NULL };
 
     // FIXME: Handle errors
@@ -281,7 +259,7 @@ create_gui(MathPreferencesDialog *dialog)
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
 
-    widget = GET_WIDGET(dialog->priv->ui, "display_format_combobox");
+    widget = GET_WIDGET(dialog->priv->ui, "number_format_combobox");
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(widget));
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
@@ -307,11 +285,6 @@ create_gui(MathPreferencesDialog *dialog)
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Hexadecimal, e.g. 4D2₁₆ */
                        _("Hexadecimal"), 1, HEX, -1);
-    renderer = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
-
-    widget = GET_WIDGET(dialog->priv->ui, "number_base_combobox");
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
@@ -351,18 +324,16 @@ create_gui(MathPreferencesDialog *dialog)
     g_signal_connect(dialog->priv->equation, "notify::accuracy", G_CALLBACK(accuracy_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::show-thousands-separators", G_CALLBACK(show_thousands_separators_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::show-trailing_zeroes", G_CALLBACK(show_trailing_zeroes_cb), dialog);
-    g_signal_connect(dialog->priv->equation, "notify::display_format", G_CALLBACK(display_format_cb), dialog);
+    g_signal_connect(dialog->priv->equation, "notify::number_format", G_CALLBACK(number_format_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::word-size", G_CALLBACK(word_size_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::angle-unit", G_CALLBACK(angle_unit_cb), dialog);
-    g_signal_connect(dialog->priv->equation, "notify::base", G_CALLBACK(base_cb), dialog);
 
     accuracy_cb(dialog->priv->equation, NULL, dialog);
     show_thousands_separators_cb(dialog->priv->equation, NULL, dialog);
     show_trailing_zeroes_cb(dialog->priv->equation, NULL, dialog);
-    display_format_cb(dialog->priv->equation, NULL, dialog);
+    number_format_cb(dialog->priv->equation, NULL, dialog);
     word_size_cb(dialog->priv->equation, NULL, dialog);
     angle_unit_cb(dialog->priv->equation, NULL, dialog);
-    base_cb(dialog->priv->equation, NULL, dialog);
 }
 
 

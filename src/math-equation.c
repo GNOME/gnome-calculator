@@ -44,13 +44,12 @@ enum {
     PROP_ACCURACY,
     PROP_SHOW_THOUSANDS_SEPARATORS,
     PROP_SHOW_TRAILING_ZEROES,
-    PROP_DISPLAY_FORMAT,
+    PROP_NUMBER_FORMAT,
     PROP_WORD_SIZE,
-    PROP_ANGLE_UNITS,
-    PROP_BASE
+    PROP_ANGLE_UNITS
 };
 
-static GType number_mode_type, display_format_type, angle_unit_type;
+static GType number_mode_type, number_format_type, angle_unit_type;
 
 #define MAX_DIGITS 512
 
@@ -73,7 +72,6 @@ struct MathEquationPrivate
     int show_zeroes;          /* Set if trailing zeroes should be shown. */
     DisplayFormat format;     /* Number display mode. */
     int accuracy;             /* Number of digits to show */
-    int base;                 /* Number base */
     int word_size;            /* Word size in bits */
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
     NumberMode number_mode;   /* ??? */
@@ -241,18 +239,18 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 
 
 void
-math_equation_set_display_format(MathEquation *equation, DisplayFormat format)
+math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 {
     if (equation->priv->format == format)
         return;
     equation->priv->format = format;
     display_refresh(equation);
-    g_object_notify(G_OBJECT(equation), "display-format");
+    g_object_notify(G_OBJECT(equation), "number-format");
 }
 
 
 DisplayFormat
-math_equation_get_display_format(MathEquation *equation)
+math_equation_get_number_format(MathEquation *equation)
 {
     return equation->priv->format;
 }
@@ -289,23 +287,6 @@ MPAngleUnit
 math_equation_get_angle_units(MathEquation *equation)
 {
     return equation->priv->angle_units;
-}
-
-
-void
-math_equation_set_base(MathEquation *equation, gint base)
-{
-    if (equation->priv->base == base)
-        return;
-    equation->priv->base = base;
-    g_object_notify(G_OBJECT(equation), "base");
-}
-
-
-gint
-math_equation_get_base(MathEquation *equation)
-{
-   return equation->priv->base;
 }
 
 
@@ -373,6 +354,23 @@ math_equation_get_equation(MathEquation *equation)
 }
 
 
+static int
+get_base(MathEquation *equation)
+{
+    switch(equation->priv->format)
+    {
+    case BIN:
+      return 2;
+    case OCT:
+      return 8;
+    case HEX:
+      return 16;
+    default:
+      return 10;
+    }
+}
+
+
 gboolean
 math_equation_get_number(MathEquation *equation, MPNumber *z)
 {
@@ -380,7 +378,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gboolean result;
 
     text = math_equation_get_display(equation);
-    result = !mp_set_from_string(text, equation->priv->base, z);
+    result = !mp_set_from_string(text, get_base(equation), z);
     g_free (text);
 
     return result;
@@ -726,7 +724,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     MPEquationOptions options;
 
     memset(&options, 0, sizeof(options));
-    options.base = equation->priv->base;
+    options.base = get_base(equation);
     options.wordlen = equation->priv->word_size;
     options.angle_units = equation->priv->angle_units;
     options.variable_is_defined = variable_is_defined;
@@ -1034,22 +1032,22 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
 {
     switch(equation->priv->format) {
     case DEC:
-        mp_cast_to_string(x, equation->priv->base, 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case BIN:
-        mp_cast_to_string(x, equation->priv->base, 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, get_base(equation), 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case OCT:
-        mp_cast_to_string(x, equation->priv->base, 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, get_base(equation), 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case HEX:
-        mp_cast_to_string(x, equation->priv->base, 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, get_base(equation), 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case SCI:
-        make_eng_sci(equation, target, target_len, x, equation->priv->base, 10);
+        make_eng_sci(equation, target, target_len, x, get_base(equation), 10);
         break;
     case ENG:
-        make_eng_sci(equation, target, target_len, x, equation->priv->base, 10);
+        make_eng_sci(equation, target, target_len, x, get_base(equation), 10);
         break;
     }
 }
@@ -1084,17 +1082,14 @@ math_equation_set_property(GObject      *object,
     case PROP_SHOW_TRAILING_ZEROES:
       math_equation_set_show_trailing_zeroes(self, g_value_get_boolean(value));
       break;
-    case PROP_DISPLAY_FORMAT:
-      math_equation_set_display_format(self, g_value_get_int(value));
+    case PROP_NUMBER_FORMAT:
+      math_equation_set_number_format(self, g_value_get_int(value));
       break;
     case PROP_WORD_SIZE:
       math_equation_set_word_size(self, g_value_get_int(value));
       break;
     case PROP_ANGLE_UNITS:
       math_equation_set_angle_units(self, g_value_get_int(value));
-      break;
-    case PROP_BASE:
-      math_equation_set_base(self, g_value_get_int(value));
       break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1140,7 +1135,7 @@ math_equation_get_property(GObject    *object,
     case PROP_SHOW_TRAILING_ZEROES:
       g_value_set_boolean(value, self->priv->show_zeroes);
       break;
-    case PROP_DISPLAY_FORMAT:
+    case PROP_NUMBER_FORMAT:
       g_value_set_enum(value, self->priv->format);
       break;
     case PROP_WORD_SIZE:
@@ -1148,9 +1143,6 @@ math_equation_get_property(GObject    *object,
       break;
     case PROP_ANGLE_UNITS:
       g_value_set_enum(value, self->priv->angle_units);
-      break;
-    case PROP_BASE:
-      g_value_set_int(value, self->priv->base);
       break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1169,7 +1161,7 @@ math_equation_class_init (MathEquationClass *klass)
       {SUBSCRIPT,   "subscript",   "subscript"},
       {0, NULL, NULL}
     };
-    static GEnumValue display_format_values[] =
+    static GEnumValue number_format_values[] =
     {
       {DEC, "DEC", "DEC"},
       {BIN, "BIN", "BIN"},
@@ -1194,7 +1186,7 @@ math_equation_class_init (MathEquationClass *klass)
     g_type_class_add_private (klass, sizeof (MathEquationPrivate));
   
     number_mode_type = g_enum_register_static("NumberMode", number_mode_values);
-    display_format_type = g_enum_register_static("DisplayFormat", display_format_values);
+    number_format_type = g_enum_register_static("DisplayFormat", number_format_values);
     angle_unit_type = g_enum_register_static("AngleUnit", angle_unit_values);
 
     g_object_class_install_property(object_class,
@@ -1248,11 +1240,11 @@ math_equation_class_init (MathEquationClass *klass)
                                                          FALSE,
                                                          G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
-                                    PROP_DISPLAY_FORMAT,
-                                    g_param_spec_enum("display-format",
-                                                      "display-format",
+                                    PROP_NUMBER_FORMAT,
+                                    g_param_spec_enum("number-format",
+                                                      "number-format",
                                                       "Display format",
-                                                      display_format_type,
+                                                      number_format_type,
                                                       DEC,
                                                       G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
@@ -1270,13 +1262,6 @@ math_equation_class_init (MathEquationClass *klass)
                                                       angle_unit_type,
                                                       MP_DEGREES,
                                                       G_PARAM_READWRITE));
-    g_object_class_install_property(object_class,
-                                    PROP_BASE,
-                                    g_param_spec_int("base",
-                                                     "base",
-                                                     "Numeric base",
-                                                     2, 16, 10,
-                                                     G_PARAM_READWRITE));
 }
 
 
@@ -1352,7 +1337,6 @@ math_equation_init(MathEquation *equation)
     equation->priv->show_zeroes = FALSE;
     equation->priv->show_tsep = FALSE;
     equation->priv->format = DEC;
-    equation->priv->base = 10;
     equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
