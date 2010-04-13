@@ -20,18 +20,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/types.h>
-#include <glib-object.h>
+#include <gconf/gconf-client.h>
 
 #include "currency.h"
 #include "unittest.h"
-#include "get.h"
 #include "math-window.h"
 #include "register.h"
 #include "mp-equation.h"
 
+static GConfClient *client = NULL;
 
-static MathEquation *equation;
 static MathWindow *window;
 
 static void
@@ -175,23 +173,57 @@ get_options(int argc, char *argv[])
 static void
 quit_cb(MathWindow *window)
 {
-    set_int_resource(R_ACCURACY, math_equation_get_accuracy(equation));
-    set_int_resource(R_WORDLEN, math_equation_get_word_size(equation));
-    set_boolean_resource(R_TSEP, math_equation_get_show_thousands_separators(equation));
-    set_boolean_resource(R_ZEROES, math_equation_get_show_trailing_zeroes(equation));
-    //FIXME
-    //set_resource(R_DISPLAY, "?");
-    //set_resource(R_TRIG, "?");
-    //set_resource(R_MODE, "?");
+    MathEquation *equation;
+
+    equation = math_window_get_equation(window);
+
+    gconf_client_set_int(client, "/apps/gcalctool/accuracy", math_equation_get_accuracy(equation), NULL);
+    gconf_client_set_int(client, "/apps/gcalctool/wordlen", math_equation_get_word_size(equation), NULL);
+    gconf_client_set_bool(client, "/apps/gcalctool/showthousands", math_equation_get_show_thousands_separators(equation), NULL);
+    gconf_client_set_bool(client, "/apps/gcalctool/showzeroes", math_equation_get_show_trailing_zeroes(equation), NULL);
+    //FIXMEgconf_client_set_string(client, "/apps/gcalctool/result_format", "?", NULL);
+    //gconf_client_set_string(client, "/apps/gcalctool/angle_units", "?", NULL);
+    //gconf_client_set_string(client, "/apps/gcalctool/button_layout", "?", NULL);
 
     currency_free_resources();
     gtk_main_quit();
 }
 
 
+static void
+get_int(const char *name, gint *value)
+{
+    gint v;
+    GError *error = NULL;
+
+    v = gconf_client_get_int(client, name, &error);
+    if (error) {
+        g_clear_error(&error);
+        return;
+    }
+    *value = v;
+}
+
+
+static void
+get_bool(const char *name, gboolean *value)
+{
+    gboolean v;
+    GError *error = NULL;
+
+    v = gconf_client_get_bool(client, name, &error);
+    if (error) {
+        g_clear_error(&error);
+        return;
+    }
+    *value = v;
+}
+
+
 int
 main(int argc, char **argv)
 {
+    MathEquation *equation;
     int accuracy = 9, base = 10, word_size = 64;
     gchar *angle_units;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
@@ -206,18 +238,20 @@ main(int argc, char **argv)
     /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
 
-    resources_init();
     register_init();
     get_options(argc, argv);
+
+    client = gconf_client_get_default();
+    gconf_client_add_dir(client, "/apps/gcalctool", GCONF_CLIENT_PRELOAD_NONE, NULL);  
   
     equation = math_equation_new();
-    get_int_resource(R_ACCURACY, &accuracy);
-    get_int_resource(R_WORDLEN, &word_size);
-    get_boolean_resource(R_TSEP, &show_tsep);  
-    get_boolean_resource(R_ZEROES, &show_zeroes);
-    number_format = get_resource(R_DISPLAY);
-    angle_units = get_resource(R_TRIG);
-    button_mode = get_resource(R_MODE);
+    get_int("/apps/gcalctool/accuracy", &accuracy);
+    get_int("/apps/gcalctool/wordlen", &word_size);
+    get_bool("/apps/gcalctool/showthousands", &show_tsep);
+    get_bool("/apps/gcalctool/showzeroes", &show_zeroes);
+    number_format = gconf_client_get_string(client, "/apps/gcalctool/result_format", NULL);
+    angle_units = gconf_client_get_string(client, "/apps/gcalctool/angle_units", NULL);
+    button_mode = gconf_client_get_string(client, "/apps/gcalctool/button_layout", NULL);
 
     math_equation_set_accuracy(equation, accuracy);
     math_equation_set_word_size(equation, word_size);

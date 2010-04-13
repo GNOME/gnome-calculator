@@ -11,8 +11,6 @@ gcalctool_SOURCES = \
 	calctool.c \
 	currency.c \
 	currency.h \
-	get.c \
-	get.h \
 	math-buttons.c \
 	math-buttons.h \
 	math-display.c \
