@@ -6,8 +6,8 @@
     <child>
       <object class="GtkTable" id="button_panel">
         <property name="visible">True</property>
-        <property name="n_rows">5</property>
-        <property name="n_columns">10</property>
+        <property name="n_rows">4</property>
+        <property name="n_columns">9</property>
         <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="calc_store_button">
@@ -49,10 +49,10 @@
             </child>
           </object>
           <packing>
-            <property name="left_attach">9</property>
-            <property name="right_attach">10</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="left_attach">5</property>
+            <property name="right_attach">6</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -97,41 +97,10 @@
             </child>
           </object>
           <packing>
-            <property name="left_attach">9</property>
-            <property name="right_attach">10</property>
+            <property name="left_attach">4</property>
+            <property name="right_attach">5</property>
             <property name="top_attach">1</property>
             <property name="bottom_attach">2</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_inverse_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="focus_on_click">False</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="calc_inverse_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
-              </object>
-            </child>
-            <signal name="clicked" handler="button_cb"/>
-            <child>
-              <object class="GtkLabel" id="label20">
-                <property name="visible">True</property>
-                <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&#x2212;1&lt;/sup&gt;</property>
-                <property name="use_markup">True</property>
-                <property name="justify">center</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">6</property>
-            <property name="right_attach">7</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -178,10 +147,10 @@
             </child>
           </object>
           <packing>
-            <property name="left_attach">5</property>
-            <property name="right_attach">6</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
+            <property name="left_attach">4</property>
+            <property name="right_attach">5</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -197,109 +166,8 @@
             <signal name="clicked" handler="button_cb"/>
           </object>
           <packing>
-            <property name="left_attach">5</property>
-            <property name="right_attach">6</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_natural_logarithm_button">
-            <property name="label">ln</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="button_cb"/>
-          </object>
-          <packing>
             <property name="left_attach">6</property>
             <property name="right_attach">7</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_abs_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="calc_abs_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the absolute value button">Absolute Value</property>
-              </object>
-            </child>
-            <signal name="clicked" handler="button_cb"/>
-            <child>
-              <object class="GtkLabel" id="label1">
-                <property name="visible">True</property>
-                <property name="label">|&lt;i&gt;x&lt;/i&gt;|</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">7</property>
-            <property name="right_attach">8</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_factorial_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="focus_on_click">False</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="calc_factorial_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorial button">Factorial</property>
-              </object>
-            </child>
-            <signal name="clicked" handler="button_cb"/>
-            <child>
-              <object class="GtkLabel" id="label27">
-                <property name="visible">True</property>
-                <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">7</property>
-            <property name="right_attach">8</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_integer_portion_button">
-            <property name="label">int</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="button_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">7</property>
-            <property name="right_attach">8</property>
             <property name="top_attach">3</property>
             <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -318,8 +186,8 @@
             <signal name="clicked" handler="digit_cb"/>
           </object>
           <packing>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -336,8 +204,6 @@
             <signal name="clicked" handler="digit_cb"/>
           </object>
           <packing>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -356,8 +222,6 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -376,8 +240,6 @@
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -396,8 +258,8 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -416,8 +278,8 @@
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -437,8 +299,6 @@
           <packing>
             <property name="left_attach">3</property>
             <property name="right_attach">4</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -455,8 +315,8 @@
             <signal name="clicked" handler="digit_cb"/>
           </object>
           <packing>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -475,8 +335,8 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -493,8 +353,8 @@
             <signal name="clicked" handler="digit_cb"/>
           </object>
           <packing>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -514,8 +374,8 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="right_attach">2</property>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -535,8 +395,8 @@
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -555,8 +415,8 @@
           <packing>
             <property name="left_attach">2</property>
             <property name="right_attach">3</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -576,8 +436,8 @@
           <packing>
             <property name="left_attach">3</property>
             <property name="right_attach">4</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -597,8 +457,8 @@
           <packing>
             <property name="left_attach">3</property>
             <property name="right_attach">4</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -618,8 +478,8 @@
           <packing>
             <property name="left_attach">3</property>
             <property name="right_attach">4</property>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -639,8 +499,8 @@
           <packing>
             <property name="left_attach">4</property>
             <property name="right_attach">5</property>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -660,8 +520,6 @@
           <packing>
             <property name="left_attach">4</property>
             <property name="right_attach">5</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -679,10 +537,8 @@
             <signal name="clicked" handler="button_cb"/>
           </object>
           <packing>
-            <property name="left_attach">4</property>
-            <property name="right_attach">5</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
+            <property name="left_attach">5</property>
+            <property name="right_attach">6</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -700,136 +556,10 @@
             <signal name="clicked" handler="clear_cb"/>
           </object>
           <packing>
-            <property name="left_attach">4</property>
-            <property name="right_attach">5</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
-            <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">7</property>
-            <property name="right_attach">8</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
-            <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest                                      ">Rate</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">6</property>
-            <property name="right_attach">7</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_present_value_button">
-            <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
             <property name="left_attach">5</property>
             <property name="right_attach">6</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_periodic_payment_button">
-            <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="right_attach">5</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_future_value_button">
-            <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="right_attach">3</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
-            <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="right_attach">4</property>
-            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
-            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="border_width">3</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <signal name="clicked" handler="finc_cb"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -846,13 +576,33 @@
             <signal name="clicked" handler="finc_cb"/>
           </object>
           <packing>
+            <property name="left_attach">6</property>
+            <property name="right_attach">7</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
-            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
+          <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">7</property>
+            <property name="right_attach">8</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_future_value_button">
+            <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -880,8 +630,10 @@
             <signal name="clicked" handler="finc_cb"/>
           </object>
           <packing>
-            <property name="left_attach">9</property>
-            <property name="right_attach">10</property>
+            <property name="left_attach">7</property>
+            <property name="right_attach">8</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
             <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
           </packing>
@@ -897,8 +649,8 @@
             <signal name="clicked" handler="currency_cb"/>
           </object>
           <packing>
-            <property name="left_attach">9</property>
-            <property name="right_attach">10</property>
+            <property name="left_attach">8</property>
+            <property name="right_attach">9</property>
             <property name="top_attach">3</property>
             <property name="bottom_attach">4</property>
             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -906,31 +658,124 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">8</property>
+            <property name="right_attach">9</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">7</property>
+            <property name="right_attach">8</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
+            <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest                                      ">Rate</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">6</property>
+            <property name="right_attach">7</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_present_value_button">
+            <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">8</property>
+            <property name="right_attach">9</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_periodic_payment_button">
+            <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">7</property>
+            <property name="right_attach">8</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
+          <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
+            <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="border_width">3</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <signal name="clicked" handler="finc_cb"/>
+          </object>
+          <packing>
+            <property name="left_attach">6</property>
+            <property name="right_attach">7</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
+            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+            <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+          </packing>
         </child>
       </object>
     </child>

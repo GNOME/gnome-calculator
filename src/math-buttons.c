@@ -432,6 +432,17 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);
     set_tint(GET_WIDGET(builder, "calc_trunc_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_compounding_term_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_double_declining_depreciation_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_future_value_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_term_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_sum_of_the_years_digits_depreciation_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_straight_line_depreciation_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_periodic_interest_rate_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_present_value_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_periodic_payment_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_finc_gross_profit_margin_button"), &buttons->priv->colour_function, 1);
+    set_tint(GET_WIDGET(builder, "calc_currency_button"), &buttons->priv->colour_function, 1);
   
     if (mode == PROGRAMMING) {
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
