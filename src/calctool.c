@@ -26,10 +26,13 @@
 #include "currency.h"
 #include "unittest.h"
 #include "get.h"
-#include "ui.h"
+#include "math-window.h"
 #include "register.h"
 #include "mp-equation.h"
 
+
+static MathEquation *equation;
+static MathWindow *window;
 
 static void
 version(const gchar *progname)
@@ -169,10 +172,30 @@ get_options(int argc, char *argv[])
 }
 
 
+static void
+quit_cb(MathWindow *window)
+{
+    set_int_resource(R_ACCURACY, math_equation_get_accuracy(equation));
+    set_int_resource(R_WORDLEN, math_equation_get_word_size(equation));
+    set_boolean_resource(R_TSEP, math_equation_get_show_thousands_separators(equation));
+    set_boolean_resource(R_ZEROES, math_equation_get_show_trailing_zeroes(equation));
+    //FIXME
+    //set_resource(R_DISPLAY, "?");
+    //set_resource(R_TRIG, "?");
+    //set_resource(R_MODE, "?");
+
+    currency_free_resources();
+    gtk_main_quit();
+}
+
+
 int
 main(int argc, char **argv)
 {
-    GCalctoolUI *ui;
+    int accuracy = 9, base = 10, word_size = 64;
+    gchar *angle_units;
+    gboolean show_tsep = FALSE, show_zeroes = FALSE;
+    gchar *number_format, *angle_unit, *button_mode;
   
     g_type_init();
 
@@ -185,12 +208,37 @@ main(int argc, char **argv)
 
     resources_init();
     register_init();
-    ui_gtk_init(&argc, &argv);
     get_options(argc, argv);
-    ui = ui_new();
-    ui_start(ui);
   
-    currency_free_resources();
+    equation = math_equation_new();
+    get_int_resource(R_ACCURACY, &accuracy);
+    get_int_resource(R_WORDLEN, &word_size);
+    get_boolean_resource(R_TSEP, &show_tsep);  
+    get_boolean_resource(R_ZEROES, &show_zeroes);
+    number_format = get_resource(R_DISPLAY);
+    angle_units = get_resource(R_TRIG);
+    button_mode = get_resource(R_MODE);
+
+    math_equation_set_accuracy(equation, accuracy);
+    math_equation_set_word_size(equation, word_size);
+    math_equation_set_show_thousands_separators(equation, show_tsep);
+    math_equation_set_show_trailing_zeroes(equation, show_zeroes);
+    //FIXME
+    //math_equation_set_number_format(equation, ?);
+    //math_equation_set_angle_units(equation, ?);
+
+    g_free(number_format);
+    g_free(angle_units);
+    g_free(button_mode);
+
+    gtk_init(&argc, &argv);
+
+    window = math_window_new(equation);
+    g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
+    //FIXMEmath_buttons_set_mode(math_window_get_buttons(window), ADVANCED); // FIXME: We load the basic buttons even if we immediately switch to the next type
+
+    gtk_widget_show(GTK_WIDGET(window));
+    gtk_main();
 
     return(0);
 }

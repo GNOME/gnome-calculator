@@ -24,15 +24,14 @@
 #include <math.h>
 #include <errno.h>
 #include <glib.h>
+#include <langinfo.h>
 
 #include "math-equation.h"
 
 #include "mp.h"
-#include "ui.h"
 #include "mp-equation.h"
 #include "register.h"
 #include "currency.h"
-#include "get.h"
 
 
 enum {
@@ -1163,18 +1162,18 @@ math_equation_class_init (MathEquationClass *klass)
     };
     static GEnumValue number_format_values[] =
     {
-      {DEC, "DEC", "DEC"},
-      {BIN, "BIN", "BIN"},
-      {OCT, "OCT", "OCT"},
-      {HEX, "HEX", "HEX"},
-      {SCI, "SCI", "SCI"},
-      {ENG, "ENG", "ENG"},
+      {DEC, "decimal",     "decimal"},
+      {BIN, "binary",      "binary"},
+      {OCT, "octal",       "octal"},
+      {HEX, "hexadecimal", "hexadecimal"},
+      {SCI, "scientific",  "scientific"},
+      {ENG, "engineering", "engineering"},
       {0, NULL, NULL}
     };
     static GEnumValue angle_unit_values[] =
     {
-      {MP_RADIANS, "radians", "radians"},
-      {MP_DEGREES, "degrees", "degrees"},
+      {MP_RADIANS,  "radians",  "radians"},
+      {MP_DEGREES,  "degrees",  "degrees"},
       {MP_GRADIANS, "gradians", "gradians"},
       {0, NULL, NULL}
     };
@@ -1304,6 +1303,7 @@ math_equation_init(MathEquation *equation)
     /* Digits localized for the given language */
     const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
     const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
+    gchar *radix, *tsep;
     gchar **digits;
     gboolean use_default_digits = FALSE;
     int i;
@@ -1324,10 +1324,14 @@ math_equation_init(MathEquation *equation)
     }
     g_strfreev(digits);
 
-    // FIXME: Take out of get.c
-    equation->priv->radix = get_radix();
-    equation->priv->tsep = get_tsep();
-    equation->priv->tsep_count = get_tsep_count();
+    setlocale(LC_NUMERIC, "");
+
+    radix = nl_langinfo(RADIXCHAR);
+    equation->priv->radix = radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    tsep = nl_langinfo(THOUSEP);
+    equation->priv->tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
+
+    equation->priv->tsep_count = 3;
 
     // Use GtkClipboad instead
     equation->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);

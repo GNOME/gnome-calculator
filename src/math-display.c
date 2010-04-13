@@ -40,7 +40,14 @@ G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VBOX);
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
 MathDisplay *
-math_display_new(MathEquation *equation)
+math_display_new()
+{
+    return g_object_new (math_display_get_type(), "equation", math_equation_new(), NULL);
+}
+
+
+MathDisplay *
+math_display_new_with_equation(MathEquation *equation)
 {
     return g_object_new (math_display_get_type(), "equation", equation, NULL);
 }

@@ -40,8 +40,4 @@ int get_int_resource(const char *key, int *value);
 int get_boolean_resource(const char *key, int *value);
 int get_enumerated_resource(const char *key, const char *values[], int *value);
 
-const char *get_radix();
-const char *get_tsep();
-int get_tsep_count();
-
 #endif /* GET_H */

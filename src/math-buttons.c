@@ -23,8 +23,11 @@
 
 enum {
     PROP_0,
-    PROP_EQUATION
+    PROP_EQUATION,
+    PROP_MODE
 };
+
+static GType button_mode_type;
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
 #define MAX_REGISTERS 6 // FIXME: Obsolete once use a hash table
@@ -39,6 +42,7 @@ struct MathButtonsPrivate
     GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_group;
 
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
+    GtkWidget *active_panel;
 
     GtkWidget *store_menu, *recall_menu;
     GtkWidget *recall_menu_labels[MAX_REGISTERS];
@@ -163,6 +167,8 @@ get_buttons(MathButtons *buttons, ButtonMode mode)
     case PROGRAMMING:
         return buttons->priv->prog_panel;
     }
+  
+    return NULL;
 }
 
 
@@ -285,7 +291,7 @@ load_finc_dialogs(MathButtons *buttons)
 }
 
 
-static void
+static GtkWidget *
 load_mode(MathButtons *buttons, ButtonMode mode)
 {
     GtkBuilder *builder, **builder_ptr;
@@ -321,6 +327,9 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         panel = &buttons->priv->prog_panel;
         break;
     }
+  
+    if (*panel)
+        return *panel;
 
     builder = *builder_ptr = gtk_builder_new();
     // FIXME: Show dialog if failed to load
@@ -455,6 +464,32 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     }
 
     gtk_builder_connect_signals(builder, buttons);
+  
+    return *panel;
+}
+
+
+
+static void
+load_buttons(MathButtons *buttons)
+{
+    GtkWidget *panel;
+
+    if (!gtk_widget_get_visible(GTK_WIDGET(buttons)))
+        return;
+
+    panel = load_mode(buttons, buttons->priv->mode);
+    if (buttons->priv->active_panel == panel)
+        return;
+
+    /* Hide old buttons */
+    if (buttons->priv->active_panel)
+        gtk_widget_hide(buttons->priv->active_panel);
+
+    /* Load and display new buttons */
+    buttons->priv->active_panel = panel;
+    if (panel)
+        gtk_widget_show(panel);
 }
 
 
@@ -462,18 +497,16 @@ void
 math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 {
     ButtonMode old_mode;
+ 
+    if (buttons->priv->mode == mode)
+        return;
 
     old_mode = buttons->priv->mode;
     buttons->priv->mode = mode;
 
-    /* Hide the existing mode */
-    if (get_buttons(buttons, old_mode))
-        gtk_widget_hide(get_buttons(buttons, old_mode));
-  
-    /* Create the new mode if necessary */
-    if (!get_buttons(buttons, mode))
-        load_mode(buttons, mode);
-    gtk_widget_show(get_buttons(buttons, mode));
+    load_buttons(buttons);
+
+    g_object_notify(G_OBJECT(buttons), "mode");
 }
 
 
@@ -1144,10 +1177,14 @@ math_buttons_set_property (GObject      *object,
     switch (prop_id) {
     case PROP_EQUATION:
         self->priv->equation = g_value_get_object (value);
+        math_buttons_set_mode(self, self->priv->mode);
         g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::display", G_CALLBACK(display_changed_cb), self);
         number_mode_changed_cb(self->priv->equation, NULL, self);
         display_changed_cb(self->priv->equation, NULL, self);
+        break;
+    case PROP_MODE:
+        math_buttons_set_mode(self, g_value_get_int (value));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1170,6 +1207,9 @@ math_buttons_get_property (GObject    *object,
     case PROP_EQUATION:
         g_value_set_object (value, self->priv->equation);
         break;
+    case PROP_MODE:
+        g_value_set_int (value, self->priv->mode);
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -1180,12 +1220,22 @@ math_buttons_get_property (GObject    *object,
 static void
 math_buttons_class_init (MathButtonsClass *klass)
 {
+    static GEnumValue button_mode_values[] =
+    {
+      {BASIC,       "basic",       "basic"},
+      {ADVANCED,    "advanced",    "advanced"},
+      {FINANCIAL,   "financial",   "financial"},
+      {PROGRAMMING, "programming", "programming"},
+      {0, NULL, NULL}
+    };
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->get_property = math_buttons_get_property;
     object_class->set_property = math_buttons_set_property;
 
     g_type_class_add_private (klass, sizeof (MathButtonsPrivate));
+
+    button_mode_type = g_enum_register_static("ButtonMode", button_mode_values);
 
     g_object_class_install_property (object_class,
                                      PROP_EQUATION,
@@ -1194,6 +1244,14 @@ math_buttons_class_init (MathButtonsClass *klass)
                                                           "Equation being controlled",
                                                           math_equation_get_type(),
                                                           G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+    g_object_class_install_property (object_class,
+                                     PROP_MODE,
+                                     g_param_spec_enum ("mode",
+                                                        "mode",
+                                                        "Button mode",
+                                                        button_mode_type,
+                                                        BASIC,
+                                                        G_PARAM_READWRITE));
 }
 
 
@@ -1219,4 +1277,5 @@ math_buttons_init (MathButtons *buttons)
     buttons->priv->colour_group.red = 65535;
     buttons->priv->colour_group.green = 65535;
     buttons->priv->colour_group.blue = 65535;
+    g_signal_connect(G_OBJECT(buttons), "show", G_CALLBACK(load_buttons), NULL);
 }

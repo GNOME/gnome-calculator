@@ -31,8 +31,6 @@
 #include <gconf/gconf-client.h>
 
 #include "get.h"
-#include "register.h"
-#include "mp.h"
 
 #define MAXLINE 1024
 
@@ -137,55 +135,6 @@ get_enumerated_resource(const char *key, const char *values[], int *value)
     free(val);
 
     return retval;
-}
-
-
-/* Return the radix character. For most locales, this is a period.
- * If nl_langinfo(RADIXCHAR) returns an empty string, return ",".
- */
-const char *
-get_radix()
-{
-    const char *radix;
-
-    setlocale(LC_NUMERIC, "");
-    if ((radix = nl_langinfo(RADIXCHAR)) != NULL) {
-        radix = g_locale_to_utf8(radix, -1, NULL, NULL, NULL);
-    }
-
-    if (radix == NULL || radix[0] == '\0') {
-        return(".");
-    } else {
-        return(radix);
-    }
-}
-
-
-/* Return the thousands separator string. For most locales, this is a
- * comma.
- */
-const char *
-get_tsep()
-{
-    char *tsep;
-
-    setlocale(LC_NUMERIC, "");
-    if ((tsep = nl_langinfo(THOUSEP)) != NULL) {
-        tsep = g_locale_to_utf8(tsep, -1, NULL, NULL, NULL);
-    }
-
-    if (tsep == NULL) {
-        return("");
-    } else {
-        return(tsep);
-    }
-}
-
-
-int
-get_tsep_count()
-{
-    return 3;
 }
 
 

@@ -231,7 +231,8 @@ create_gui(MathPreferencesDialog *dialog)
 
     gtk_window_set_title(GTK_WINDOW(dialog),
                          /* Title of preferences dialog */
-                         _("Preferences")); 
+                         _("Preferences"));
+    gtk_window_set_icon_name(GTK_WINDOW(dialog), "accessories-calculator");
     gtk_container_set_border_width(GTK_CONTAINER(dialog), 8);
     gtk_dialog_set_has_separator(GTK_DIALOG(dialog), FALSE);
     gtk_dialog_add_button(GTK_DIALOG(dialog),

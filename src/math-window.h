@@ -17,8 +17,8 @@
  *  02111-1307, USA.
  */
 
-#ifndef UI_H
-#define UI_H
+#ifndef MATH_WINDOW_H
+#define MATH_WINDOW_H
 
 #include <glib-object.h>
 #include "math-equation.h"
@@ -27,35 +27,35 @@
 
 G_BEGIN_DECLS
 
-#define UI(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ui_get_type(), GCalctoolUI))
+#define MATH_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_window_get_type(), MathWindow))
 
-typedef struct GCalctoolUIPrivate GCalctoolUIPrivate;
-
-typedef struct
-{
-    GObject             parent_instance;
-    GCalctoolUIPrivate *priv;
-} GCalctoolUI;
+typedef struct MathWindowPrivate MathWindowPrivate;
 
 typedef struct
 {
-    GObjectClass parent_class;
-} GCalctoolUIClass;
+    GtkWindow parent_instance;
+    MathWindowPrivate *priv;
+} MathWindow;
 
-void ui_gtk_init(int *argc, char ***argv);
+typedef struct
+{
+    GtkWindowClass parent_class;
 
-GType ui_get_type();
+    void (*quit)(MathWindow *window);
+} MathWindowClass;
 
-GCalctoolUI *ui_new(void);
+GType math_window_get_type();
 
-MathEquation *ui_get_equation(GCalctoolUI *ui);
+MathWindow *math_window_new(MathEquation *equation);
 
-MathDisplay *ui_get_display(GCalctoolUI *ui);
+GtkWidget *math_window_get_menu_bar(MathWindow *window);
 
-MathButtons *ui_get_buttons(GCalctoolUI *ui);
+MathEquation *math_window_get_equation(MathWindow *window);
 
-void ui_critical_error(GCalctoolUI *ui, const gchar *title, const gchar *contents);
+MathDisplay *math_window_get_display(MathWindow *window);
 
-void ui_start(GCalctoolUI *ui);
+MathButtons *math_window_get_buttons(MathWindow *window);
 
-#endif /* UI_H */
+void math_window_critical_error(MathWindow *window, const gchar *title, const gchar *contents);
+
+#endif /* MATH_WINDOW_H */
