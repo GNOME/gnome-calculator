@@ -104,21 +104,38 @@ math_equation_new()
 }
 
 
-//FIXME
 static void
-display_refresh(MathEquation *equation)
+get_ans_offsets(MathEquation *equation, gint *start, gint *end)
 {
     GtkTextIter iter;
+  
+    if (!equation->priv->ans_start) {
+        *start = *end = -1;
+        return;
+    }
 
-    /*FIXME
-    equation->priv->cursor = display_get_cursor(equation);
-    display_make_text(equation, equation->priv->localized, MAX_DIGITS, &equation->priv->cursor);
-    gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), equation->priv->localized, -1);
-    if (equation->priv->cursor < 0)
-        gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(equation), &iter);
-    else
-        gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, equation->priv->cursor);
-    gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(equation), &iter);*/
+    gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &iter, equation->priv->ans_start);
+    *start = gtk_text_iter_get_offset(&iter);
+    gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &iter, equation->priv->ans_end);
+    *end = gtk_text_iter_get_offset(&iter);
+}
+
+
+static void
+reformat_display(MathEquation *equation)
+{
+    gchar *text;
+    gint ans_start, ans_end;
+
+    text = math_equation_get_display(equation);
+    get_ans_offsets(equation, &ans_start, &ans_end);
+
+    // FIXME: Need to know old base to do base changes
+    // FIXME: Need to keep cursor location correct
+
+    /* Find numbers in display, format and then replace if changed */
+  
+    g_free(text);
 }
 
 
@@ -235,7 +252,7 @@ math_equation_set_accuracy(MathEquation *equation, int accuracy)
     if (equation->priv->accuracy == accuracy)
         return;
     equation->priv->accuracy = accuracy;
-    display_refresh(equation);
+    reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "accuracy");
 }
 
@@ -253,7 +270,7 @@ math_equation_set_show_thousands_separators(MathEquation *equation, gboolean vis
     if (equation->priv->show_tsep && visible || !equation->priv->show_tsep && !visible)
         return;
     equation->priv->show_tsep = visible;
-    display_refresh(equation);
+    reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "show-thousands-separators");
 }
 
@@ -271,7 +288,7 @@ math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
     if (equation->priv->show_zeroes && visible || !equation->priv->show_zeroes && !visible)
         return;
     equation->priv->show_zeroes = visible;
-    display_refresh(equation);
+    reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "show-trailing-zeroes");
 }
 
@@ -289,7 +306,7 @@ math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
     if (equation->priv->format == format)
         return;
     equation->priv->format = format;
-    display_refresh(equation);
+    reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "number-format");
 }
 
@@ -379,18 +396,6 @@ math_equation_get_display(MathEquation *equation)
 
     gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(equation), &start, &end);
     return gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &start, &end, FALSE);
-}
-
-
-static void
-get_ans_offsets(MathEquation *equation, gint *start, gint *end)
-{
-    GtkTextIter iter;
-
-    gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &iter, equation->priv->ans_start);
-    *start = gtk_text_iter_get_offset(&iter);
-    gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &iter, equation->priv->ans_end);
-    *end = gtk_text_iter_get_offset(&iter);
 }
 
 
