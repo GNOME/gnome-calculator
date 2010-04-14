@@ -1377,6 +1377,17 @@ pre_insert_text_cb (MathEquation  *equation,
                     gint           len,
                     gpointer       user_data)
 {
+    gunichar c;
+
+    /* Clear result on next digit entered if cursor at end of line */
+    // FIXME Cursor
+    c = g_utf8_get_char(text);
+    if (g_unichar_isdigit(c) && math_equation_is_result(equation)) {
+        gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
+        clear_ans(equation, FALSE);
+        gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(equation), location);
+    }
+
     if (equation->priv->ans_start) {
         gint ans_start, ans_end;
         gint offset;
