@@ -95,6 +95,8 @@ MPAngleUnit math_equation_get_angle_unit(MathEquation *equation);
 
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);
+void math_equation_undo(MathEquation *equation);
+//FIXMEvoid math_equation_redo(MathEquation *equation);
 void math_equation_store(MathEquation *equation, const gchar *name);
 void math_equation_recall(MathEquation *equation, const gchar *name);
 void math_equation_set(MathEquation *equation, const gchar *text);

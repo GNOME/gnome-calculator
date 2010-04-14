@@ -86,7 +86,8 @@ struct MathEquationPrivate
     GtkTextMark *ans_start, *ans_end;
 
     MathEquationState state;  /* Equation state */
-    GList *history;           /* History of expression mode states */
+    GList *undo_stack;           /* History of expression mode states */
+    GList *redo_stack;
 
     // FIXME: Replace with GtkClipboard
     GdkAtom clipboard_atom;   /* ??? */ // 
@@ -140,13 +141,23 @@ reformat_display(MathEquation *equation)
 
 
 static void
-display_push(MathEquation *equation)
+math_equation_push_undo_stack(MathEquation *equation)
 {
+    GList *link;
     MathEquationState *state;
     gint ans_start = -1, ans_end = -1;
 
+    /* Can't redo anymore */
+    for (link = equation->priv->redo_stack; link; link = link->next) {
+        state = link->data;
+        g_free(state->expression);
+        g_free(state);
+    }
+    g_list_free(equation->priv->redo_stack);
+    equation->priv->redo_stack = NULL;
+
     state = g_malloc0(sizeof(MathEquationState));
-    equation->priv->history = g_list_prepend(equation->priv->history, state);
+    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, state);  
   
     if (equation->priv->ans_start) 
     {
@@ -190,23 +201,9 @@ clear_ans(MathEquation *equation, gboolean remove_tag)
 
 
 static void
-display_pop(MathEquation *equation)
+apply_state(MathEquation *equation, MathEquationState *state)
 {
-    GList *link;
-    MathEquationState *state;
     GtkTextIter cursor;
-  
-    if (!equation->priv->history) {
-        math_equation_set_status(equation,
-                                 /* Error shown when trying to undo with no undo history */
-                                 _("No undo history"));
-        return;
-    }
-
-    link = equation->priv->history;
-    equation->priv->history = g_list_remove_link(equation->priv->history, link);
-    state = link->data;
-    g_list_free(link);
 
     mp_set_from_mp(&state->ans, &equation->priv->state.ans);
 
@@ -227,8 +224,54 @@ display_pop(MathEquation *equation)
     math_equation_set_number_mode(equation, state->number_mode);
     equation->priv->can_super_minus = state->can_super_minus;
     equation->priv->state.entered_multiply = state->entered_multiply;
-    g_free(state->expression);
-    g_free(state);
+}
+
+
+void
+math_equation_undo(MathEquation *equation)
+{
+    GList *link;
+    MathEquationState *state;
+  
+    if (!equation->priv->undo_stack) {
+        math_equation_set_status(equation,
+                                 /* Error shown when trying to undo with no undo history */
+                                 _("No undo history"));
+        return;
+    }
+
+    link = equation->priv->undo_stack;
+    equation->priv->undo_stack = g_list_remove_link(equation->priv->undo_stack, link);
+    state = link->data;
+    g_list_free(link);
+
+    apply_state(equation, state);
+  
+    equation->priv->redo_stack = g_list_prepend(equation->priv->redo_stack, state);
+}
+
+
+void
+math_equation_redo(MathEquation *equation)
+{
+    GList *link;
+    MathEquationState *state;
+
+    if (!equation->priv->redo_stack) {
+        math_equation_set_status(equation,
+                                 /* Error shown when trying to redo with no redo history */
+                                 _("No redo history"));
+        return;
+    }
+
+    link = equation->priv->redo_stack;
+    equation->priv->redo_stack = g_list_remove_link(equation->priv->redo_stack, link);
+    state = link->data;
+    g_list_free(link);
+
+    apply_state(equation, state);
+
+    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, state);
 }
 
 
@@ -585,7 +628,7 @@ void
 math_equation_set(MathEquation *equation, const gchar *text)
 
 {
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), text, -1);
     clear_ans(equation, FALSE);
 }
@@ -597,7 +640,7 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
     char text[MAX_DIGITS];
     GtkTextIter start, end;  
 
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
 
     /* Show the number in the user chosen format */
     display_make_number(equation, text, MAX_DIGITS, x);
@@ -616,7 +659,7 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
 void
 math_equation_insert(MathEquation *equation, const gchar *text)
 {
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
 
     /* Replace ** with ^ (not on all keyboards) */
     if (!gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(equation)) &&
@@ -801,14 +844,14 @@ math_equation_solve(MathEquation *equation)
     MPNumber z;
     int result;
     gchar *text, *error_token = NULL, *message = NULL;
-  
+
     if (math_equation_is_empty(equation))
         return;
 
     /* If showing a result return to the equation that caused it */
     // FIXME: Result may not be here due to solve (i.e. the user may have entered "ans")
     if (math_equation_is_result(equation)) {
-        display_pop(equation);
+        math_equation_undo(equation);
         return;
     }
 
@@ -908,7 +951,7 @@ math_equation_delete(MathEquation *equation)
     if (cursor >= gtk_text_buffer_get_char_count(GTK_TEXT_BUFFER(equation)))
         return;
 
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
 
     gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, cursor);
     gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, cursor+1);
@@ -923,7 +966,7 @@ math_equation_backspace(MathEquation *equation)
     if (math_equation_is_empty(equation))
         return;
 
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
 
     if (gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(equation)))
         gtk_text_buffer_delete_selection(GTK_TEXT_BUFFER(equation), FALSE, FALSE);
@@ -938,7 +981,7 @@ math_equation_backspace(MathEquation *equation)
 void
 math_equation_clear(MathEquation *equation)
 {
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
     math_equation_set_number_mode(equation, NORMAL);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
     clear_ans(equation, FALSE);
@@ -958,7 +1001,7 @@ math_equation_shift(MathEquation *equation, gint count)
         return;
     }
 
-    display_push(equation);
+    math_equation_push_undo_stack(equation);
     
     mp_shift(&z, count, &z);
     math_equation_set_number(equation, &z);

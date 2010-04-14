@@ -117,6 +117,20 @@ paste_cb(GtkWidget *widget, MathWindow *window)
 
 
 static void
+undo_cb(GtkWidget *widget, MathWindow *window)
+{
+    math_equation_undo(window->priv->equation);
+}
+
+
+static void
+redo_cb(GtkWidget *widget, MathWindow *window)
+{
+    math_equation_redo(window->priv->equation);
+}
+
+
+static void
 mode_changed_cb(GtkWidget *menu, MathWindow *window)
 {
     int mode;
@@ -355,6 +369,10 @@ create_menu(MathWindow *window)
     menu = add_menu(window->priv->menu_bar, CALCULATOR_MENU_LABEL);
     add_menu_item(menu, gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, accel_group), G_CALLBACK(copy_cb), window);
     add_menu_item(menu, gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, accel_group), G_CALLBACK(paste_cb), window);
+    add_menu_item(menu, gtk_image_menu_item_new_from_stock(GTK_STOCK_UNDO, accel_group), G_CALLBACK(undo_cb), window);
+    // FIXME: Make Ctrl+Z work for undo
+    add_menu_item(menu, gtk_image_menu_item_new_from_stock(GTK_STOCK_REDO, accel_group), G_CALLBACK(redo_cb), window);
+    // FIXME: Make Ctrl+Shift+Z work for redo
     add_menu_item(menu, gtk_separator_menu_item_new(), NULL, NULL);
     add_menu_item(menu, gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, accel_group), G_CALLBACK(show_preferences_cb), window);
     add_menu_item(menu, gtk_separator_menu_item_new(), NULL, NULL);
