@@ -8,9 +8,9 @@ INCLUDES = \
 	$(GCALCTOOL_CFLAGS)
 
 gcalctool_SOURCES = \
-	calctool.c \
 	currency.c \
 	currency.h \
+	gcalctool.c \
 	math-buttons.c \
 	math-buttons.h \
 	math-display.c \
