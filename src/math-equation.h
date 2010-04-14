@@ -98,7 +98,6 @@ void math_equation_paste(MathEquation *equation);
 void math_equation_store(MathEquation *equation, const gchar *name);
 void math_equation_recall(MathEquation *equation, const gchar *name);
 void math_equation_set(MathEquation *equation, const gchar *text);
-void math_equation_set_answer(MathEquation *equation);
 void math_equation_set_number(MathEquation *equation, const MPNumber *x);
 void math_equation_insert(MathEquation *equation, const gchar *text);
 void math_equation_insert_digit(MathEquation *equation, guint digit);
