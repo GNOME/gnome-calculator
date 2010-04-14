@@ -75,7 +75,7 @@ solve(const char *equation)
 }
 
 static void
-usage(int show_gtk)
+usage(gboolean show_application, gboolean show_gtk)
 {
     /* Translators: Description on how to use gcalctool displayed on command-line */
     fprintf(stderr,
@@ -109,13 +109,15 @@ usage(int show_gtk)
                 "\n\n");
     }
 
-    /* Translators: Description on gcalctool application options displayed on command-line */    
-    fprintf(stderr,
-            _("Application Options:\n"
-              "  -u, --unittest                  Perform unittests\n"
-              "  -s, --solve <equation>          Solve the given equation"));
-    fprintf(stderr,
-            "\n\n");
+    if (show_application) {
+        /* Translators: Description on gcalctool application options displayed on command-line */
+        fprintf(stderr,
+                _("Application Options:\n"
+                  "  -u, --unittest                  Perform unit tests\n"
+                  "  -s, --solve <equation>          Solve the given equation"));
+        fprintf(stderr,
+                "\n\n");
+    }
 }
 
 void
@@ -135,11 +137,15 @@ get_options(int argc, char *argv[])
         }
         else if (strcmp(arg, "-h") == 0 || 
                  strcmp(arg, "--help") == 0) {
-            usage(FALSE);
+            usage(TRUE, FALSE);
             exit(0);
         }
         else if (strcmp(arg, "--help-all") == 0) {
-            usage(TRUE);
+            usage(TRUE, TRUE);
+            exit(0);
+        }
+        else if (strcmp(arg, "--help-gtk") == 0) {
+            usage(FALSE, TRUE);
             exit(0);
         }
         else if (strcmp(arg, "-s") == 0 ||
@@ -162,7 +168,7 @@ get_options(int argc, char *argv[])
             /* Translators: Error printed to stderr when user provides an unknown command-line argument */
             fprintf(stderr, _("Unknown argument '%s'"), arg);
             fprintf(stderr, "\n");
-            usage(FALSE);
+            usage(TRUE, FALSE);
             exit(1);
         }
     }
