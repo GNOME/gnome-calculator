@@ -390,6 +390,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     set_tint(GET_WIDGET(builder, "calc_factor_button"), &buttons->priv->colour_action, 2);
     set_tint(GET_WIDGET(builder, "calc_clear_button"), &buttons->priv->colour_action, 1); // Different colour
     set_tint(GET_WIDGET(builder, "calc_backspace_button"), &buttons->priv->colour_action, 1); // Different colour?
+    set_tint(GET_WIDGET(builder, "calc_delete_button"), &buttons->priv->colour_action, 1); // Different colour?
     set_tint(GET_WIDGET(builder, "calc_shift_left_button"), &buttons->priv->colour_action, 1);
     set_tint(GET_WIDGET(builder, "calc_shift_right_button"), &buttons->priv->colour_action, 1);
   
@@ -580,6 +581,22 @@ void
 clear_cb(GtkWidget *widget, MathButtons *buttons)
 {
     math_equation_clear(buttons->priv->equation);
+}
+
+
+G_MODULE_EXPORT
+void
+delete_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    math_equation_delete(buttons->priv->equation);
+}
+
+
+G_MODULE_EXPORT
+void
+backspace_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    math_equation_backspace(buttons->priv->equation);
 }
 
 
