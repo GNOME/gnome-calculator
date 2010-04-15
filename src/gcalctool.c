@@ -176,20 +176,123 @@ get_options(int argc, char *argv[])
 }
 
 
+// FIXME: Use a proper GEnum for these
+static const gchar *
+number_format_to_string(DisplayFormat format)
+{
+    switch(format)
+    {
+    default:
+    case DEC:
+        return "DEC";
+    case BIN:
+        return "BIN";
+    case OCT:
+        return "OCT";
+    case HEX:
+        return "HEX";
+    case SCI:
+        return "SCI";
+    case ENG:      
+        return "ENG";
+    }
+}
+
+
+static DisplayFormat
+string_to_number_format(const gchar *name)
+{
+    if (strcmp(name, "BIN") == 0)
+        return BIN;
+    else if (strcmp(name, "OCT") == 0)
+        return OCT;
+    else if (strcmp(name, "HEX") == 0)
+        return HEX;
+    else if (strcmp(name, "SCI") == 0)
+        return SCI;
+    else if (strcmp(name, "ENG") == 0)
+        return ENG;
+    else
+        return DEC;
+}
+
+
+static const gchar *
+angle_unit_to_string(MPAngleUnit unit)
+{
+    switch(unit)
+    {
+    default:
+    case MP_DEGREES:
+        return "degrees";
+    case MP_RADIANS:
+        return "radians";
+    case MP_GRADIANS:
+        return "gradians";
+    }
+}
+
+
+static MPAngleUnit
+string_to_angle_unit(const gchar *name)
+{
+    if (strcmp(name, "radians") == 0)
+        return MP_RADIANS;
+    else if (strcmp(name, "gradians") == 0)
+        return MP_GRADIANS;
+    else
+        return MP_DEGREES;
+}
+
+
+static const gchar *
+button_mode_to_string(ButtonMode mode)
+{
+    switch(mode)
+    {
+    default:
+    case BASIC:
+        return "BASIC";
+    case ADVANCED:
+        return "ADVANCED";
+    case FINANCIAL:
+        return "FINANCIAL";
+    case PROGRAMMING:
+        return "PROGRAMMING";
+    }
+}
+
+
+static ButtonMode
+string_to_button_mode(const gchar *name)
+{
+    if (strcmp(name, "ADVANCED") == 0)
+        return ADVANCED;
+    else if (strcmp(name, "FINANCIAL") == 0)
+        return FINANCIAL;
+    else if (strcmp(name, "PROGRAMMING") == 0)
+        return PROGRAMMING;
+    else
+        return BASIC;
+}
+
+
 static void
 quit_cb(MathWindow *window)
 {
     MathEquation *equation;
+    MathButtons *buttons;
 
     equation = math_window_get_equation(window);
+    buttons = math_window_get_buttons(window);
 
     gconf_client_set_int(client, "/apps/gcalctool/accuracy", math_equation_get_accuracy(equation), NULL);
     gconf_client_set_int(client, "/apps/gcalctool/wordlen", math_equation_get_word_size(equation), NULL);
     gconf_client_set_bool(client, "/apps/gcalctool/showthousands", math_equation_get_show_thousands_separators(equation), NULL);
     gconf_client_set_bool(client, "/apps/gcalctool/showzeroes", math_equation_get_show_trailing_zeroes(equation), NULL);
-    //FIXMEgconf_client_set_string(client, "/apps/gcalctool/result_format", "?", NULL);
-    //gconf_client_set_string(client, "/apps/gcalctool/angle_units", "?", NULL);
-    //gconf_client_set_string(client, "/apps/gcalctool/button_layout", "?", NULL);
+    gconf_client_set_string(client, "/apps/gcalctool/result_format", number_format_to_string(math_equation_get_number_format(equation)), NULL);
+    gconf_client_set_string(client, "/apps/gcalctool/angle_units", angle_unit_to_string(math_equation_get_angle_units(equation)), NULL);
+    gconf_client_set_string(client, "/apps/gcalctool/button_layout", button_mode_to_string(math_buttons_get_mode(buttons)), NULL);
 
     currency_free_resources();
     gtk_main_quit();
@@ -263,19 +366,17 @@ main(int argc, char **argv)
     math_equation_set_word_size(equation, word_size);
     math_equation_set_show_thousands_separators(equation, show_tsep);
     math_equation_set_show_trailing_zeroes(equation, show_zeroes);
-    //FIXME
-    //math_equation_set_number_format(equation, ?);
-    //math_equation_set_angle_units(equation, ?);
-
+    math_equation_set_number_format(equation, string_to_number_format(number_format));
+    math_equation_set_angle_units(equation, string_to_angle_unit(angle_units));
     g_free(number_format);
     g_free(angle_units);
-    g_free(button_mode);
 
     gtk_init(&argc, &argv);
 
     window = math_window_new(equation);
     g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
-    //FIXMEmath_buttons_set_mode(math_window_get_buttons(window), ADVANCED); // FIXME: We load the basic buttons even if we immediately switch to the next type
+    math_buttons_set_mode(math_window_get_buttons(window), string_to_button_mode(button_mode)); // FIXME: We load the basic buttons even if we immediately switch to the next type
+    g_free(button_mode);
 
     gtk_widget_show(GTK_WIDGET(window));
     gtk_main();
