@@ -88,6 +88,9 @@ struct MathEquationPrivate
     MathEquationState state;  /* Equation state */
     GList *undo_stack;           /* History of expression mode states */
     GList *redo_stack;
+    gboolean in_undo_operation;
+
+    gboolean in_delete;
 
     // FIXME: Replace with GtkClipboard
     GdkAtom clipboard_atom;   /* ??? */ // 
@@ -140,26 +143,15 @@ reformat_display(MathEquation *equation)
 }
 
 
-static void
-math_equation_push_undo_stack(MathEquation *equation)
+static MathEquationState *
+get_current_state(MathEquation *equation)
 {
-    GList *link;
     MathEquationState *state;
     gint ans_start = -1, ans_end = -1;
 
-    /* Can't redo anymore */
-    for (link = equation->priv->redo_stack; link; link = link->next) {
-        state = link->data;
-        g_free(state->expression);
-        g_free(state);
-    }
-    g_list_free(equation->priv->redo_stack);
-    equation->priv->redo_stack = NULL;
-
     state = g_malloc0(sizeof(MathEquationState));
-    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, state);  
-  
-    if (equation->priv->ans_start) 
+
+    if (equation->priv->ans_start)
     {
         GtkTextIter iter;
         gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &iter, equation->priv->ans_start);
@@ -176,6 +168,38 @@ math_equation_push_undo_stack(MathEquation *equation)
     state->number_mode = equation->priv->number_mode;
     state->can_super_minus = equation->priv->can_super_minus;
     state->entered_multiply = equation->priv->state.entered_multiply;
+  
+    return state;
+}
+
+
+static void
+free_state(MathEquationState *state)
+{
+    g_free(state->expression);
+    g_free(state);
+}
+
+
+static void
+math_equation_push_undo_stack(MathEquation *equation)
+{
+    GList *link;
+    MathEquationState *state;
+
+    if (equation->priv->in_undo_operation)
+        return;
+  
+    /* Can't redo anymore */
+    for (link = equation->priv->redo_stack; link; link = link->next) {
+        state = link->data;
+        free_state(state);
+    }
+    g_list_free(equation->priv->redo_stack);
+    equation->priv->redo_stack = NULL;
+
+    state = get_current_state(equation);
+    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, state);  
 }
 
 
@@ -204,6 +228,9 @@ static void
 apply_state(MathEquation *equation, MathEquationState *state)
 {
     GtkTextIter cursor;
+  
+    /* Disable undo detection */
+    equation->priv->in_undo_operation = TRUE;
 
     mp_set_from_mp(&state->ans, &equation->priv->state.ans);
 
@@ -224,6 +251,8 @@ apply_state(MathEquation *equation, MathEquationState *state)
     math_equation_set_number_mode(equation, state->number_mode);
     equation->priv->can_super_minus = state->can_super_minus;
     equation->priv->state.entered_multiply = state->entered_multiply;
+
+    equation->priv->in_undo_operation = FALSE;
 }
 
 
@@ -245,9 +274,10 @@ math_equation_undo(MathEquation *equation)
     state = link->data;
     g_list_free(link);
 
+    equation->priv->redo_stack = g_list_prepend(equation->priv->redo_stack, get_current_state(equation));
+
     apply_state(equation, state);
-  
-    equation->priv->redo_stack = g_list_prepend(equation->priv->redo_stack, state);
+    free_state(state);
 }
 
 
@@ -269,9 +299,10 @@ math_equation_redo(MathEquation *equation)
     state = link->data;
     g_list_free(link);
 
-    apply_state(equation, state);
+    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, get_current_state(equation));
 
-    equation->priv->undo_stack = g_list_prepend(equation->priv->undo_stack, state);
+    apply_state(equation, state);
+    free_state(state);
 }
 
 
@@ -628,7 +659,6 @@ void
 math_equation_set(MathEquation *equation, const gchar *text)
 
 {
-    math_equation_push_undo_stack(equation);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), text, -1);
     clear_ans(equation, FALSE);
 }
@@ -639,8 +669,6 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
 {
     char text[MAX_DIGITS];
     GtkTextIter start, end;  
-
-    math_equation_push_undo_stack(equation);
 
     /* Show the number in the user chosen format */
     display_make_number(equation, text, MAX_DIGITS, x);
@@ -659,8 +687,6 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
 void
 math_equation_insert(MathEquation *equation, const gchar *text)
 {
-    math_equation_push_undo_stack(equation);
-
     /* Replace ** with ^ (not on all keyboards) */
     if (!gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(equation)) &&
         strcmp(text, "×") == 0 && equation->priv->state.entered_multiply) {
@@ -951,8 +977,6 @@ math_equation_delete(MathEquation *equation)
     if (cursor >= gtk_text_buffer_get_char_count(GTK_TEXT_BUFFER(equation)))
         return;
 
-    math_equation_push_undo_stack(equation);
-
     gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, cursor);
     gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, cursor+1);
     gtk_text_buffer_delete(GTK_TEXT_BUFFER(equation), &start, &end);
@@ -965,8 +989,6 @@ math_equation_backspace(MathEquation *equation)
     /* Can't delete empty display */
     if (math_equation_is_empty(equation))
         return;
-
-    math_equation_push_undo_stack(equation);
 
     if (gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(equation)))
         gtk_text_buffer_delete_selection(GTK_TEXT_BUFFER(equation), FALSE, FALSE);
@@ -981,7 +1003,6 @@ math_equation_backspace(MathEquation *equation)
 void
 math_equation_clear(MathEquation *equation)
 {
-    math_equation_push_undo_stack(equation);
     math_equation_set_number_mode(equation, NORMAL);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
     clear_ans(equation, FALSE);
@@ -1001,8 +1022,6 @@ math_equation_shift(MathEquation *equation, gint count)
         return;
     }
 
-    math_equation_push_undo_stack(equation);
-    
     mp_shift(&z, count, &z);
     math_equation_set_number(equation, &z);
 }
@@ -1379,6 +1398,11 @@ pre_insert_text_cb (MathEquation  *equation,
 {
     gunichar c;
 
+    /* If following a delete then have already pushed undo stack (GtkTextBuffer
+       doesn't indicate replace operations so we have to infer them) */
+    if (!equation->priv->in_delete)
+        math_equation_push_undo_stack(equation);
+
     /* Clear result on next digit entered if cursor at end of line */
     // FIXME Cursor
     c = g_utf8_get_char(text);
@@ -1402,12 +1426,25 @@ pre_insert_text_cb (MathEquation  *equation,
 }
 
 
+static gboolean
+on_delete(MathEquation *equation)
+{
+  equation->priv->in_delete = FALSE;  
+  return FALSE;
+}
+
+
 static void
 pre_delete_range_cb (MathEquation  *equation,
                      GtkTextIter   *start,
                      GtkTextIter   *end,
                      gpointer       user_data)
 {
+    math_equation_push_undo_stack(equation);
+
+    equation->priv->in_delete = TRUE;
+    g_idle_add((GSourceFunc)on_delete, equation);
+
     if (equation->priv->ans_start) {
         gint ans_start, ans_end;
         gint start_offset, end_offset;
