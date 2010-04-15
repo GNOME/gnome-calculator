@@ -61,12 +61,11 @@ typedef struct {
     NumberMode number_mode;    /* ??? */
     gboolean can_super_minus;  /* TRUE if entering minus can generate a superscript minus */
     gboolean entered_multiply; /* Last insert was a multiply character */
+    gchar *status;             /* Equation status */
 } MathEquationState;
 
 struct MathEquationPrivate
 {
-    gchar *status;            /* Status text */
-
     GtkTextTag *ans_tag;
 
     int show_tsep;            /* Set if the thousands separator should be shown. */
@@ -168,6 +167,7 @@ get_current_state(MathEquation *equation)
     state->number_mode = equation->priv->number_mode;
     state->can_super_minus = equation->priv->can_super_minus;
     state->entered_multiply = equation->priv->state.entered_multiply;
+    state->status = g_strdup(equation->priv->state.status);
   
     return state;
 }
@@ -177,6 +177,7 @@ static void
 free_state(MathEquationState *state)
 {
     g_free(state->expression);
+    g_free(state->status);
     g_free(state);
 }
 
@@ -189,7 +190,9 @@ math_equation_push_undo_stack(MathEquation *equation)
 
     if (equation->priv->in_undo_operation)
         return;
-  
+
+    math_equation_set_status(equation, "");
+
     /* Can't redo anymore */
     for (link = equation->priv->redo_stack; link; link = link->next) {
         state = link->data;
@@ -251,6 +254,7 @@ apply_state(MathEquation *equation, MathEquationState *state)
     math_equation_set_number_mode(equation, state->number_mode);
     equation->priv->can_super_minus = state->can_super_minus;
     equation->priv->state.entered_multiply = state->entered_multiply;
+    math_equation_set_status(equation, state->status);
 
     equation->priv->in_undo_operation = FALSE;
 }
@@ -429,8 +433,11 @@ math_equation_get_angle_units(MathEquation *equation)
 void
 math_equation_set_status(MathEquation *equation, const gchar *status)
 {
-    g_free(equation->priv->status);
-    equation->priv->status = g_strdup(status);
+    if (strcmp(equation->priv->state.status, status) == 0)
+        return;
+
+    g_free(equation->priv->state.status);
+    equation->priv->state.status = g_strdup(status);
     g_object_notify(G_OBJECT(equation), "status");    
 }
 
@@ -438,7 +445,7 @@ math_equation_set_status(MathEquation *equation, const gchar *status)
 const gchar *
 math_equation_get_status(MathEquation *equation)
 {
-    return equation->priv->status;
+    return equation->priv->state.status;
 }
 
 
@@ -1228,7 +1235,7 @@ math_equation_get_property(GObject    *object,
 
     switch (prop_id) {
     case PROP_STATUS:
-      g_value_set_string(value, self->priv->status);
+      g_value_set_string(value, self->priv->state.status);
       break;
     case PROP_DISPLAY:
       text = math_equation_get_display(self);      
@@ -1397,7 +1404,7 @@ pre_insert_text_cb (MathEquation  *equation,
                     gpointer       user_data)
 {
     gunichar c;
-
+  
     /* If following a delete then have already pushed undo stack (GtkTextBuffer
        doesn't indicate replace operations so we have to infer them) */
     if (!equation->priv->in_delete)
@@ -1529,7 +1536,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
     equation->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
 
-    equation->priv->status = g_strdup("");
+    equation->priv->state.status = g_strdup("");
     equation->priv->show_zeroes = FALSE;
     equation->priv->show_tsep = FALSE;
     equation->priv->format = DEC;
