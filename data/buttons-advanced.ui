@@ -14,7 +14,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Inverse [Ctrl+I]</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
@@ -47,7 +46,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Factorize [Ctrl+F]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -72,7 +70,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Factorial [!]</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
@@ -104,7 +101,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Fractional component</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -267,7 +263,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the division button">Divide [/]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -384,7 +379,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the multiplication button">Multiply [*]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -405,7 +399,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the subtraction button">Subtract [-]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -426,7 +419,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the addition button">Add [+]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -447,7 +439,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the solve button">Calculate result [=]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -468,7 +459,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltop for the clear display button">Clear display [Escape]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -484,15 +474,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="subscript_togglebutton">
+          <object class="GtkToggleButton" id="calc_subscript_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Subscript mode [Alt]</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
-              <object class="AtkObject" id="subscript_togglebutton-atkobject">
+              <object class="AtkObject" id="calc_subscript_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the subscript mode button">Subscript</property>
               </object>
             </child>
@@ -511,15 +500,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="superscript_togglebutton">
+          <object class="GtkToggleButton" id="calc_superscript_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Superscript mode [Ctrl]</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
-              <object class="AtkObject" id="superscript_togglebutton-atkobject">
+              <object class="AtkObject" id="calc_superscript_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the superscript mode button">Superscript</property>
               </object>
             </child>
@@ -544,7 +532,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Scientific exponent [Ctrl+E]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -575,7 +562,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Modulus divide</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -594,7 +580,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Start block [(]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -613,7 +598,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes" comments="Tooltip for the end block button">End block [)]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -631,7 +615,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Insert variable</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
@@ -680,7 +663,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Assign variable</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
@@ -729,7 +711,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Absolute value [|]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -762,7 +743,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Integer component</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -783,7 +763,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Real component</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -804,7 +783,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Imaginary component</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -825,7 +803,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Complex conjugate</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -846,7 +823,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Natural logarithm</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -867,7 +843,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Logarithm</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <signal name="clicked" handler="button_cb"/>
@@ -886,7 +861,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
             <property name="border_width">3</property>
             <property name="focus_on_click">False</property>
             <child internal-child="accessible">
@@ -918,7 +892,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -939,7 +912,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Backspace</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -959,7 +931,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Pi [Ctrl+P]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -986,7 +957,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Eulers number [e]</property>
             <property name="border_width">3</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
@@ -1020,7 +990,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Cosine</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1036,7 +1005,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Sine</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1054,7 +1022,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Tangent</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1072,7 +1039,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Hyperbolic cosine</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1090,7 +1056,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Hyperbolic sine</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1110,7 +1075,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Hyperbolic tangent</property>
                 <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>

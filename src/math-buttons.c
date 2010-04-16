@@ -16,6 +16,8 @@
  *  02111-1307, USA.
  */
 
+#include <glib/gi18n.h>
+
 #include "math-buttons.h"
 #include "register.h"
 #include "financial.h"
@@ -78,52 +80,212 @@ static char *registers[] = {"a", "b", "c", "x", "y", "z", NULL};
 #define WM_WIDTH_FACTOR  10
 #define WM_HEIGHT_FACTOR 30
 
+typedef enum
+{
+    NUMBER,
+    NUMBER_BOLD,
+    OPERATOR,
+    FUNCTION,
+    MEMORY,
+    GROUP,
+    ACTION,
+    ACTION_BOLD
+} ButtonClass;
+
 typedef struct {
     const char *widget_name;
     const char *data;
-/*    const char *colour;
-    int alpha;*/
+    ButtonClass class;
+    const char *tooltip;
 } ButtonData;
 
 static ButtonData button_data[] = {
-    {"pi",                 "π"},
-    {"eulers_number",      "e"},
-    {"imaginary",          "i"},
-    {"numeric_point",      "."},
-    {"add",                "+"},
-    {"multiply",           "×"},
-    {"divide",             "÷"},
-    {"modulus_divide",     " mod "},
-    {"x_pow_y",            "^"},
-    {"x_squared",          "²"},
-    {"percentage",         "%"},
-    {"factorial",          "!"},
-    {"abs",                "|"},
-    {"conjugate",          "conj "},
-    {"root",               "√"},
-    {"logarithm",          "log "},
-    {"natural_logarithm",  "ln "},
-    {"sine",               "sin "},
-    {"cosine",             "cos "},
-    {"tangent",            "tan "},
-    {"hyperbolic_sine",    "sinh "},
-    {"hyperbolic_cosine",  "cosh "},
-    {"hyperbolic_tangent", "tanh "},
-    {"inverse",            "⁻¹"},
-    {"and",                "∧"},
-    {"or",                 "∨"},
-    {"xor",                "⊻"},
-    {"not",                "¬"},
-    {"integer_portion",    "int "},
-    {"fractional_portion", "frac "},
-    {"real_portion",       "re "},
-    {"imaginary_portion",  "im "},
-    {"ones_complement",    "ones "},
-    {"twos_complement",    "twos "},
-    {"trunc",              "trunc "},
-    {"start_group",        "("},
-    {"end_group",          ")"},
-    {NULL, NULL}
+    {"pi",                 "π", NUMBER,
+      /* Tooltip for the Pi button */
+      N_("Pi [Ctrl+P]")},
+    {"eulers_number",      "e", NUMBER,
+      /* Tooltip for the Euler's Number button */
+      N_("Eulers Number")},
+    {"imaginary",          "i", NUMBER, NULL},
+    {"numeric_point", NULL, NUMBER, NULL},
+    {"subscript", NULL, NUMBER_BOLD,
+      /* Tooltip for the subscript button */
+      N_("Subscript mode [Alt]")},
+    {"superscript", NULL, NUMBER_BOLD,
+      /* Tooltip for the superscript button */
+      N_("Supercript mode [Ctrl]")},
+    {"exponential", NULL, NUMBER_BOLD,
+      /* Tooltip for the scientific exponent button */
+      N_("Scientific exponent [Ctrl+E]")},
+    {"add",                "+", OPERATOR,
+      /* Tooltip for the add button */
+      N_("Add [+]")},
+    {"subtract",           "−", OPERATOR,
+      /* Tooltip for the subtract button */
+      N_("Subtract [-]")},
+    {"multiply",           "×", OPERATOR,
+      /* Tooltip for the multiply button */
+      N_("Multiply [*]")},
+    {"divide",             "÷", OPERATOR,
+      /* Tooltip for the divide button */
+      N_("Divide [/]")},
+    {"modulus_divide",     " mod ", OPERATOR,
+      /* Tooltip for the modulus divide button */
+      N_("Modulus divide")},
+    {"x_pow_y",            "^", FUNCTION,
+      /* Tooltip for the exponent button */
+      N_("Exponent [^ or **]")},
+    {"x_squared",          "²", FUNCTION,
+      /* Tooltip for the square button */
+      N_("Square [Ctrl+2]")},
+    {"percentage",         "%", NUMBER,
+      /* Tooltip for the percentage button */
+      N_("Percentage [%]")},
+    {"factorial",          "!", FUNCTION,
+      /* Tooltip for the factorial button */
+      N_("Factorial [!]")},
+    {"abs",                "|", FUNCTION,
+      /* Tooltip for the absolute value button */
+      N_("Absolute value [|]")},
+    {"conjugate",          "conj ", FUNCTION,
+      /* Tooltip for the complex conjugate button */
+      N_("Complex conjugate")},
+    {"root",               "√", FUNCTION,
+      /* Tooltip for the root button */
+      N_("Root [Ctrl+R]")},
+    {"square_root",        "√", FUNCTION,
+      /* Tooltip for the square root button */
+      N_("Square root [Ctrl+R]")},
+    {"logarithm",          "log ", FUNCTION,
+      /* Tooltip for the logarithm button */
+      N_("Logarithm")},
+    {"natural_logarithm",  "ln ", FUNCTION,
+      /* Tooltip for the natural logarithm button */
+      N_("Natural Logarithm")},
+    {"sine",               "sin ", FUNCTION,
+      /* Tooltip for the sine button */
+      N_("Sine")},
+    {"cosine",             "cos ", FUNCTION,
+      /* Tooltip for the cosine button */
+      N_("Cosine")},
+    {"tangent",            "tan ", FUNCTION,
+      /* Tooltip for the tangent button */
+      N_("Tangent")},
+    {"hyperbolic_sine",    "sinh ", FUNCTION,
+      /* Tooltip for the hyperbolic sine button */
+      N_("Hyperbolic Sine")},
+    {"hyperbolic_cosine",  "cosh ", FUNCTION,
+      /* Tooltip for the hyperbolic cosine button */
+      N_("Hyperbolic Cosine")},
+    {"hyperbolic_tangent", "tanh ", FUNCTION,
+      /* Tooltip for the hyperbolic tangent button */
+      N_("Hyperbolic Tangent")},
+    {"inverse",            "⁻¹", FUNCTION,
+      /* Tooltip for the inverse button */
+      N_("Inverse [Ctrl+I]")},
+    {"and",                "∧", OPERATOR,
+      /* Tooltip for the boolean AND button */
+      N_("Boolean AND")},
+    {"or",                 "∨", OPERATOR,
+      /* Tooltip for the boolean OR button */
+      N_("Boolean OR")},
+    {"xor",                "⊻", OPERATOR,
+      /* Tooltip for the exclusive OR button */
+      N_("Boolean Exclusive OR")},
+    {"not",                "¬", FUNCTION,
+      /* Tooltip for the boolean NOT button */
+      N_("Boolean NOT")},
+    {"integer_portion",    "int ", FUNCTION,
+      /* Tooltip for the integer component button */
+      N_("Integer Component")},
+    {"fractional_portion", "frac ", FUNCTION,
+      /* Tooltip for the fractional component button */
+      N_("Fractional Component")},
+    {"real_portion",       "re ", FUNCTION,
+      /* Tooltip for the real component button */
+      N_("Real Component")},
+    {"imaginary_portion",  "im ", FUNCTION,
+      /* Tooltip for the imaginary component button */
+      N_("Imaginary Component")},
+    {"ones_complement",    "ones ", FUNCTION,
+      /* Tooltip for the ones complement button */
+      N_("Ones Complement")},
+    {"twos_complement",    "twos ", FUNCTION,
+      /* Tooltip for the twos complement button */
+      N_("Twos Complement")},
+    {"trunc",              "trunc ", FUNCTION,
+      /* Tooltip for the truncate button */
+      N_("Truncate")},
+    {"start_group",        "(", GROUP,
+      /* Tooltip for the start group button */
+      N_("Start Group [(]")},
+    {"end_group",          ")", GROUP,
+      /* Tooltip for the end group button */
+      N_("End Group [)]")},
+    {"store", NULL, MEMORY,
+      /* Tooltip for the assign variable button */
+      N_("Assign Variable")},
+    {"recall", NULL, MEMORY,
+      /* Tooltip for the insert variable button */
+      N_("Insert Variable")},
+    {"character", NULL, MEMORY,
+      /* Tooltip for the insert character code button */
+      N_("Insert Character Code")},
+    {"result", NULL, ACTION_BOLD,
+      /* Tooltip for the solve button */
+      N_("Calculate Result")},
+    {"factor", NULL, ACTION_BOLD,
+      /* Tooltip for the factor button */
+      N_("Factorize [Ctrl+F]")},
+    {"clear", NULL, ACTION,
+      /* Tooltip for the clear button */
+      N_("Clear Display [Escape]")},
+    {"backspace", NULL, ACTION,
+      /* Tooltip for the backspace button */
+      N_("Backspace")},  
+    {"delete", NULL, ACTION,
+      /* Tooltip for the delete button */
+      N_("Delete")},  
+    {"shift_left", NULL, ACTION,
+      /* Tooltip for the shift left button */
+      N_("Shift Left")},  
+    {"shift_right", NULL, ACTION,
+      /* Tooltip for the shift right button */
+      N_("Shift Right")},  
+    {"finc_compounding_term", NULL, FUNCTION,
+      /* Tooltip for the compounding term button */
+      N_("Compounding Term")},
+    {"finc_double_declining_depreciation", NULL, FUNCTION,
+      /* Tooltip for the double declining depreciation button */
+      N_("Double Declining Depreciation")},
+    {"finc_future_value", NULL, FUNCTION,
+      /* Tooltip for the future value button */
+      N_("Future Value")},
+    {"finc_term", NULL, FUNCTION,
+      /* Tooltip for the financial term button */
+      N_("Financial Term")},
+    {"finc_sum_of_the_years_digits_depreciation", NULL, FUNCTION,
+      /* Tooltip for the sum of the years digits depreciation button */
+      N_("Sum of the Years Digits Depreciation")},
+    {"finc_straight_line_depreciation", NULL, FUNCTION,
+      /* Tooltip for the straight line depreciation button */
+      N_("Straight Line Depreciation")},
+    {"finc_periodic_interest_rate", NULL, FUNCTION,
+      /* Tooltip for the periodic interest rate button */
+      N_("Periodic Interest Rate")},
+    {"finc_present_value", NULL, FUNCTION,
+      /* Tooltip for the present value button */
+      N_("Present Value")},
+    {"finc_periodic_payment", NULL, FUNCTION,
+      /* Tooltip for the periodic payment button */
+      N_("Periodic Payment")},
+    {"finc_gross_profit_margin", NULL, FUNCTION,
+      /* Tooltip for the gross profit margin button */
+      N_("Gross Profit Margin")},
+    {"currency", NULL, FUNCTION,
+      /* Tooltip for the currency button */
+      N_("Currency Converter")},
+    {NULL, NULL, 0, NULL}
 };
 
 typedef enum {
@@ -196,25 +358,23 @@ set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
 }
 
 
-static void set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const gpointer value)
-{
-    GObject *object;  
-    object = gtk_builder_get_object(ui, object_name);
-    if (object)
-        g_object_set_data(object, name, value);
-}
-
-static void set_string_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const char *value)
+static void
+set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const char *value)
 {
     GObject *object;
     object = gtk_builder_get_object(ui, object_name);
     if (object)
-        g_object_set_data(object, name, (gpointer)value); // FIXME: Copy?
+        g_object_set_data(object, name, GINT_TO_POINTER(value));
 }
 
-static void set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
+
+static void
+set_int_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, gint value)
 {
-    set_data(ui, object_name, name, GINT_TO_POINTER(value));
+    GObject *object;  
+    object = gtk_builder_get_object(ui, object_name);
+    if (object)
+        g_object_set_data(object, name, GINT_TO_POINTER(value));
 }
 
 
@@ -341,13 +501,54 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     *panel = GET_WIDGET(builder, "button_panel");
     gtk_box_pack_end(GTK_BOX(buttons), *panel, FALSE, TRUE, 0);
 
-    /* Connect text to buttons */
+    /* Configure buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {
+        GObject *object;
+        GtkWidget *button;
+
         name = g_strdup_printf("calc_%s_button", button_data[i].widget_name);
-        set_string_data(builder, name, "calc_text", button_data[i].data);
+        object = gtk_builder_get_object(*builder_ptr, name);
         g_free(name);
+
+        if (!object)
+            continue;
+        button = GTK_WIDGET(object);
+
+        if (button_data[i].data)
+            g_object_set_data(object, "calc_text", (gpointer) button_data[i].data);
+
+        if (button_data[i].tooltip)
+            gtk_widget_set_tooltip_text(button, _(button_data[i].tooltip));
+
+        switch (button_data[i].class) {
+        case NUMBER:
+            set_tint(button, &buttons->priv->colour_numbers, 1);          
+            break;
+        case NUMBER_BOLD:
+            set_tint(button, &buttons->priv->colour_numbers, 2);
+            break;
+        case OPERATOR:
+            set_tint(button, &buttons->priv->colour_operator, 1);          
+            break;
+        case FUNCTION:
+            set_tint(button, &buttons->priv->colour_function, 1);          
+            break;
+        case MEMORY:
+            set_tint(button, &buttons->priv->colour_memory, 1);
+            break;
+        case GROUP:
+            set_tint(button, &buttons->priv->colour_group, 1);
+            break;
+        case ACTION:
+            set_tint(button, &buttons->priv->colour_action, 1);
+            break;
+        case ACTION_BOLD:
+            set_tint(button, &buttons->priv->colour_action, 2);
+            break;
+        }
     }
 
+    /* Set special button data */
     for (i = 0; i < 16; i++) {
         GtkWidget *button;
 
@@ -364,87 +565,19 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     if (widget)
         gtk_button_set_label(GTK_BUTTON(widget), math_equation_get_numeric_point_text(buttons->priv->equation));
   
-    widget = GET_WIDGET(builder, "superscript_togglebutton");
+    widget = GET_WIDGET(builder, "calc_superscript_button");
     if (widget) {
         buttons->priv->superscript_toggles = g_list_append(buttons->priv->superscript_toggles, widget);
         if (math_equation_get_number_mode(buttons->priv->equation) == SUPERSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
-    widget = GET_WIDGET(builder, "subscript_togglebutton");
+    widget = GET_WIDGET(builder, "calc_subscript_button");
     if (widget) {
         buttons->priv->subscript_toggles = g_list_append(buttons->priv->subscript_toggles, widget);
         if (math_equation_get_number_mode(buttons->priv->equation) == SUBSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
-    set_tint(GET_WIDGET(builder, "calc_imaginary_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_pi_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_eulers_number_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_numeric_point_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "calc_percentage_button"), &buttons->priv->colour_numbers, 1);
-    set_tint(GET_WIDGET(builder, "subscript_togglebutton"), &buttons->priv->colour_numbers, 2);  
-    set_tint(GET_WIDGET(builder, "superscript_togglebutton"), &buttons->priv->colour_numbers, 2);
-    set_tint(GET_WIDGET(builder, "calc_exponential_button"), &buttons->priv->colour_numbers, 2);
-
-    set_tint(GET_WIDGET(builder, "calc_result_button"), &buttons->priv->colour_action, 2);
-    set_tint(GET_WIDGET(builder, "calc_factor_button"), &buttons->priv->colour_action, 2);
-    set_tint(GET_WIDGET(builder, "calc_clear_button"), &buttons->priv->colour_action, 1); // Different colour
-    set_tint(GET_WIDGET(builder, "calc_backspace_button"), &buttons->priv->colour_action, 1); // Different colour?
-    set_tint(GET_WIDGET(builder, "calc_delete_button"), &buttons->priv->colour_action, 1); // Different colour?
-    set_tint(GET_WIDGET(builder, "calc_shift_left_button"), &buttons->priv->colour_action, 1);
-    set_tint(GET_WIDGET(builder, "calc_shift_right_button"), &buttons->priv->colour_action, 1);
-  
-    set_tint(GET_WIDGET(builder, "calc_add_button"), &buttons->priv->colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_subtract_button"), &buttons->priv->colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_multiply_button"), &buttons->priv->colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_divide_button"), &buttons->priv->colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_modulus_divide_button"), &buttons->priv->colour_operator, 1);
-    set_tint(GET_WIDGET(builder, "calc_and_button"), &buttons->priv->colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_or_button"), &buttons->priv->colour_operator, 1);  
-    set_tint(GET_WIDGET(builder, "calc_xor_button"), &buttons->priv->colour_operator, 1);
-
-    set_tint(GET_WIDGET(builder, "calc_cosine_button"), &buttons->priv->colour_function, 2);
-    set_tint(GET_WIDGET(builder, "calc_sine_button"), &buttons->priv->colour_function, 2);
-    set_tint(GET_WIDGET(builder, "calc_tangent_button"), &buttons->priv->colour_function, 2);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_cosine_button"), &buttons->priv->colour_function, 2);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_sine_button"), &buttons->priv->colour_function, 2);
-    set_tint(GET_WIDGET(builder, "calc_hyperbolic_tangent_button"), &buttons->priv->colour_function, 2);
-
-    set_tint(GET_WIDGET(builder, "calc_start_group_button"), &buttons->priv->colour_group, 1);
-    set_tint(GET_WIDGET(builder, "calc_end_group_button"), &buttons->priv->colour_group, 1);
-    set_tint(GET_WIDGET(builder, "calc_store_button"), &buttons->priv->colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_recall_button"), &buttons->priv->colour_memory, 1);
-    set_tint(GET_WIDGET(builder, "calc_character_button"), &buttons->priv->colour_memory, 1);
-
-    set_tint(GET_WIDGET(builder, "calc_integer_portion_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_fractional_portion_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_real_portion_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_imaginary_portion_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_x_pow_y_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_x_squared_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_factorial_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_root_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_abs_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_conjugate_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_inverse_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_logarithm_button"), &buttons->priv->colour_function, 1);  
-    set_tint(GET_WIDGET(builder, "calc_natural_logarithm_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_ones_complement_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_twos_complement_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_not_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_trunc_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_compounding_term_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_double_declining_depreciation_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_future_value_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_term_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_sum_of_the_years_digits_depreciation_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_straight_line_depreciation_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_periodic_interest_rate_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_present_value_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_periodic_payment_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_finc_gross_profit_margin_button"), &buttons->priv->colour_function, 1);
-    set_tint(GET_WIDGET(builder, "calc_currency_button"), &buttons->priv->colour_function, 1);
-  
     if (mode == PROGRAMMING) {
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
         buttons->priv->character_code_entry = GET_WIDGET(builder, "character_code_entry");
@@ -989,7 +1122,7 @@ setup_currency_rates(MathButtons *buttons)
                                         GTK_MESSAGE_INFO,
                                         GTK_BUTTONS_YES_NO,
                                         /* Translators: Title of the error dialog when prompting to download currency rates */
-                                        N_("You don't have any recent currency rates. Should some be downloaded now?"));
+                                        _("You don't have any recent currency rates. Should some be downloaded now?"));
         int response = gtk_dialog_run(GTK_DIALOG(dialog));
         gtk_widget_destroy(dialog);
 
@@ -999,7 +1132,7 @@ setup_currency_rates(MathButtons *buttons)
                                                 GTK_MESSAGE_ERROR,
                                                 GTK_BUTTONS_OK,
                                                 /* Translators: Title of the error dialog when unable to download currency rates */
-                                                N_("Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."));
+                                                _("Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."));
             }
         }
     }
