@@ -202,6 +202,9 @@ number_format_to_string(DisplayFormat format)
 static DisplayFormat
 string_to_number_format(const gchar *name)
 {
+    if (name == NULL)
+        return DEC;
+
     if (strcmp(name, "BIN") == 0)
         return BIN;
     else if (strcmp(name, "OCT") == 0)
@@ -236,6 +239,9 @@ angle_unit_to_string(MPAngleUnit unit)
 static MPAngleUnit
 string_to_angle_unit(const gchar *name)
 {
+    if (name == NULL)
+        return MP_DEGREES;
+
     if (strcmp(name, "radians") == 0)
         return MP_RADIANS;
     else if (strcmp(name, "gradians") == 0)
@@ -266,6 +272,9 @@ button_mode_to_string(ButtonMode mode)
 static ButtonMode
 string_to_button_mode(const gchar *name)
 {
+    if (name == NULL)
+         return BASIC;
+
     if (strcmp(name, "ADVANCED") == 0)
         return ADVANCED;
     else if (strcmp(name, "FINANCIAL") == 0)
@@ -302,30 +311,26 @@ quit_cb(MathWindow *window)
 static void
 get_int(const char *name, gint *value)
 {
-    gint v;
-    GError *error = NULL;
+    GConfValue *v;
 
-    v = gconf_client_get_int(client, name, &error);
-    if (error) {
-        g_clear_error(&error);
+    v = gconf_client_get(client, name, NULL);
+    if (!v)
         return;
-    }
-    *value = v;
+    *value = gconf_value_get_int(v);
+    gconf_value_free(v);
 }
 
 
 static void
 get_bool(const char *name, gboolean *value)
 {
-    gboolean v;
-    GError *error = NULL;
+    GConfValue *v;
 
-    v = gconf_client_get_bool(client, name, &error);
-    if (error) {
-        g_clear_error(&error);
+    v = gconf_client_get(client, name, NULL);
+    if (!v)
         return;
-    }
-    *value = v;
+    *value = gconf_value_get_bool(v);
+    gconf_value_free(v);
 }
 
 
