@@ -14,15 +14,15 @@
 # Daniel S. Koda <danielskoda@gmail.com>, 2009-2010.
 # Felipe Vieira Borges <felipe10borges@gmail.com>, 2010.
 # Enrico Nicoletto <liverig@gmail.com>, 2010.
-#
+# Jonh Wendell <jwendell@gnome.org>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-12 06:33-0300\n"
-"PO-Revision-Date: 2010-03-08 13:49-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2010-04-16 11:51-0300\n"
+"PO-Revision-Date: 2010-04-16 11:51-0300\n"
+"Last-Translator: Jonh Wendell <jwendell@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -843,33 +843,38 @@ msgstr "_Básica"
 msgid "_Calculator"
 msgstr "_Calculadora"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "S_umário"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Financeira"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "Aj_uda"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Inserir"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programável"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Científica"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Visualizar"
 
@@ -1047,7 +1052,7 @@ msgstr ""
 "  --g-fatal-warnings              Torna todos os avisos fatais"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/calctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1059,19 +1064,19 @@ msgstr ""
 "  -s, --solve <equação>           Resolve a equação dada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/calctool.c:155
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "O argumento --solve requer uma equação para ser resolvida"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/calctool.c:169
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "O argumento \"%s\" é desconhecido"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
+#: ../src/calctool.c:182
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1225,44 +1230,44 @@ msgstr "Sem passos para refazer"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1068
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Não há um valor razoável para alternar bit a bit"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1084
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "É necessário um valor inteiro para fatorar"
 
-#: ../src/display.c:1110
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Não há um valor razoável para armazenar"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1232
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Estouro de capacidade. Tente um tamanho de palavra maior"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1237
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "A variável \"%s\" é desconhecida"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1243
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "A função \"%s\" não está definida"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1249
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Conversão desconhecida"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1258
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Expressão mal formada"
 
@@ -1392,6 +1397,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Colar"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Mostrar %d casas _decimais"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
@@ -1745,9 +1756,6 @@ msgstr ""
 
 #~ msgid "Con"
 #~ msgstr "Con"
-
-#~ msgid "Constants [#]"
-#~ msgstr "Constantes [#]"
 
 #~ msgid "Copy selection"
 #~ msgstr "Copiar a seleção"
