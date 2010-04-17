@@ -151,7 +151,6 @@ set_combo_box_from_int(GtkWidget *combo, int value)
 
     while (valid) {
         gint v;
-        gboolean matched = FALSE;
 
         gtk_tree_model_get(model, &iter, 1, &v, -1);
         if (v == value)

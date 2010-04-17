@@ -346,7 +346,7 @@ math_equation_get_accuracy(MathEquation *equation)
 void
 math_equation_set_show_thousands_separators(MathEquation *equation, gboolean visible)
 {
-    if (equation->priv->show_tsep && visible || !equation->priv->show_tsep && !visible)
+    if ((equation->priv->show_tsep && visible) || (!equation->priv->show_tsep && !visible))
         return;
     equation->priv->show_tsep = visible;
     reformat_display(equation);
@@ -364,7 +364,7 @@ math_equation_get_show_thousands_separators(MathEquation *equation)
 void
 math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
 {
-    if (equation->priv->show_zeroes && visible || !equation->priv->show_zeroes && !visible)
+    if ((equation->priv->show_zeroes && visible) || (!equation->priv->show_zeroes && !visible))
         return;
     equation->priv->show_zeroes = visible;
     reformat_display(equation);
@@ -1066,24 +1066,6 @@ math_equation_toggle_bit(MathEquation *equation, guint bit)
 }
 
 
-static gboolean
-display_get_integer(MathEquation *equation, gint64 *value)
-{
-    MPNumber t, min, max;
-
-    if (!math_equation_get_number(equation, &t))
-        return FALSE;
-
-    mp_set_from_integer(G_MININT64, &min);
-    mp_set_from_integer(G_MAXINT64, &max);
-    if (mp_is_less_than(&t, &min) || mp_is_greater_than(&t, &max))
-        return FALSE;
-
-    *value = mp_cast_to_int(&t);
-    return TRUE;
-}
-
-
 /* Convert engineering or scientific number in the given base. */
 // FIXME: Move into mp-convert.c
 static void
@@ -1387,13 +1369,6 @@ math_equation_class_init (MathEquationClass *klass)
                                                       angle_unit_type,
                                                       MP_DEGREES,
                                                       G_PARAM_READWRITE));
-}
-
-
-static void
-solve_cb (MathEquation *equation)
-{
-    math_equation_solve(equation);
 }
 
 

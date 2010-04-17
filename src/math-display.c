@@ -243,7 +243,7 @@ status_changed_cb(MathEquation *equation, GParamSpec *spec, MathDisplay *display
 static void
 create_gui(MathDisplay *display)
 {
-    GtkWidget *event_box, *info_view;
+    GtkWidget *info_view;
     PangoFontDescription *font_desc;
   
     g_signal_connect(display, "key-press-event", G_CALLBACK(key_press_cb), display);

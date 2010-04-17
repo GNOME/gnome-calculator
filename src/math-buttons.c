@@ -316,24 +316,6 @@ math_buttons_new(MathEquation *equation)
 }
 
 
-static GtkWidget *
-get_buttons(MathButtons *buttons, ButtonMode mode)
-{
-    switch (mode) {
-    case BASIC:
-        return buttons->priv->bas_panel;
-    case ADVANCED:
-        return buttons->priv->adv_panel;
-    case FINANCIAL:
-        return buttons->priv->fin_panel;
-    case PROGRAMMING:
-        return buttons->priv->prog_panel;
-    }
-  
-    return NULL;
-}
-
-
 static void
 set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
 {
@@ -1218,7 +1200,7 @@ character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButto
                 break;
         }
 
-        math_equation_insert_number(buttons->priv->equation, text);
+        math_equation_insert(buttons->priv->equation, text);
     }
 
     gtk_widget_hide(dialog);

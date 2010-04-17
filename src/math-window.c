@@ -401,8 +401,6 @@ create_gui(MathWindow *window)
 {
     GtkWidget *main_vbox, *vbox;
     GtkWidget *scrolled_window;
-    GError *error = NULL;
-    int i;
 
     main_vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(window), main_vbox);

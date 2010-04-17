@@ -90,13 +90,13 @@ DisplayFormat math_equation_get_number_format(MathEquation *equation);
 void math_equation_set_word_size(MathEquation *equation, int word_size);
 int math_equation_get_word_size(MathEquation *equation);
 
-void math_equation_set_angle_unit(MathEquation *equation, MPAngleUnit angle_unit);
-MPAngleUnit math_equation_get_angle_unit(MathEquation *equation);
+void math_equation_set_angle_units(MathEquation *equation, MPAngleUnit angle_unit);
+MPAngleUnit math_equation_get_angle_units(MathEquation *equation);
 
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);
 void math_equation_undo(MathEquation *equation);
-//FIXMEvoid math_equation_redo(MathEquation *equation);
+void math_equation_redo(MathEquation *equation);
 void math_equation_store(MathEquation *equation, const gchar *name);
 void math_equation_recall(MathEquation *equation, const gchar *name);
 void math_equation_set(MathEquation *equation, const gchar *text);
@@ -104,6 +104,7 @@ void math_equation_set_number(MathEquation *equation, const MPNumber *x);
 void math_equation_insert(MathEquation *equation, const gchar *text);
 void math_equation_insert_digit(MathEquation *equation, guint digit);
 void math_equation_insert_numeric_point(MathEquation *equation);
+void math_equation_insert_number(MathEquation *equation, const MPNumber *x);
 void math_equation_insert_subtract(MathEquation *equation);
 void math_equation_insert_exponent(MathEquation *equation);
 void math_equation_solve(MathEquation *equation);

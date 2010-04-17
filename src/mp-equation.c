@@ -118,7 +118,6 @@ static int
 function_is_defined(MPEquationParserState *state, const char *name)
 {
     char *c, *lower_name;
-    int result = 1;
 
     lower_name = strdup(name);
     for (c = lower_name; *c; c++)
