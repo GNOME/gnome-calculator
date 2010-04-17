@@ -25,6 +25,7 @@
 #include <errno.h>
 #include <glib.h>
 #include <langinfo.h>
+#include <locale.h>
 
 #include "math-equation.h"
 

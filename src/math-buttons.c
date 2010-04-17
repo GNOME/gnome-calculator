@@ -789,13 +789,15 @@ button_menu_position_func(GtkMenu *menu, gint *x, gint *y,
                           gboolean *push_in, gpointer user_data)
 {
     GtkWidget *button = user_data;
+    GtkAllocation allocation;
     GdkPoint loc;
     gint border;
   
     gdk_window_get_origin(gtk_widget_get_window(button), &loc.x, &loc.y);
     border = gtk_container_get_border_width(GTK_CONTAINER(button));
-    *x = loc.x + button->allocation.x + border;
-    *y = loc.y + button->allocation.y + border;
+    gtk_widget_get_allocation(button, &allocation);
+    *x = loc.x + allocation.x + border;
+    *y = loc.y + allocation.y + border;
 }
 
 
