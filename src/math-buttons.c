@@ -1200,7 +1200,7 @@ character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButto
                 break;
         }
 
-        math_equation_insert(buttons->priv->equation, text);
+        math_equation_insert_number(buttons->priv->equation, &x);
     }
 
     gtk_widget_hide(dialog);
