@@ -50,6 +50,8 @@ struct MathButtonsPrivate
     GList *superscript_toggles;
     GList *subscript_toggles;
 
+    GtkWidget *angle_label, *base_label;
+
     guint64 bits;
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
@@ -424,6 +426,104 @@ load_finc_dialogs(MathButtons *buttons)
 }
 
 
+static void
+display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    MPNumber x;
+    gboolean is_number;
+
+    is_number = math_equation_get_number(equation, &x);
+
+    if (buttons->priv->angle_label && is_number) {
+        MPNumber pi;
+        char *label, ans_string[1024], conv_string[1024];
+
+        mp_get_pi(&pi);
+        mp_cast_to_string(&x, 10, 10, 2, false, ans_string, 1024);
+        switch (math_equation_get_angle_units(equation)) {
+        default:
+        case MP_DEGREES:
+            mp_multiply(&x, &pi, &x);
+            mp_divide_integer(&x, 180, &x);
+            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
+            label = g_strdup_printf("%s degrees = %s radians", ans_string, conv_string);
+            break;
+        case MP_RADIANS:
+            mp_multiply_integer(&x, 180, &x);
+            mp_divide(&x, &pi, &x);
+            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
+            label = g_strdup_printf("%s radians = %s degrees", ans_string, conv_string);
+            break;
+        case MP_GRADIANS:
+            mp_multiply(&x, &pi, &x);
+            mp_divide_integer(&x, 200, &x);
+            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
+            label = g_strdup_printf("%s gradians = %s radians", ans_string, conv_string);
+            break;
+        }
+
+        gtk_label_set_text(GTK_LABEL(buttons->priv->angle_label), label);
+        g_free(label);
+    }
+  
+    if (buttons->priv->base_label) {
+        GString *label;
+        gint base;
+        gchar text[1024];
+
+        base = math_equation_get_base(equation);      
+        label = g_string_new("");
+        if (base != 8) {
+            mp_cast_to_string(&x, 0, 8, 2, true, text, 1024);
+            if (label->len != 0)
+                g_string_append(label, " ");
+            g_string_append(label, text);
+        }
+        if (base != 10) {
+            mp_cast_to_string(&x, 0, 10, 2, true, text, 1024);
+            if (label->len != 0)
+                g_string_append(label, " ");
+            g_string_append(label, text);
+        }
+        if (base != 16) {
+            mp_cast_to_string(&x, 0, 16, 2, true, text, 1024);
+            if (label->len != 0)
+                g_string_append(label, " ");
+            g_string_append(label, text);
+        }
+
+        gtk_label_set_text(GTK_LABEL(buttons->priv->base_label), label->str);
+        g_string_free(label, TRUE);
+    }
+
+    if (buttons->priv->bit_panel) {
+        gboolean enabled = is_number;
+        int i;
+
+        if (enabled) {
+            MPNumber max;
+
+            mp_set_from_unsigned_integer(G_MAXUINT64, &max);
+            if (mp_is_negative(&x) || mp_is_greater_than(&x, &max))
+                enabled = FALSE;
+            else
+                buttons->priv->bits = mp_cast_to_unsigned_int(&x);
+        }
+
+        gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
+        for (i = 0; i < MAXBITS; i++) {
+            const gchar *label;
+
+            if (buttons->priv->bits & (1LL << (MAXBITS-i-1)))
+                label = " 1";
+            else
+                label = " 0";
+            gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
+        }
+    }
+}
+
+
 static GtkWidget *
 load_mode(MathButtons *buttons, ButtonMode mode)
 {
@@ -549,8 +649,13 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         if (math_equation_get_number_mode(buttons->priv->equation) == SUBSCRIPT)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
+  
+    if (mode == ADVANCED) {
+        buttons->priv->angle_label = GET_WIDGET(builder, "angle_label");
+    }
 
     if (mode == PROGRAMMING) {
+        buttons->priv->base_label = GET_WIDGET(builder, "base_label");      
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
         buttons->priv->character_code_entry = GET_WIDGET(builder, "character_code_entry");
 
@@ -581,6 +686,8 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     }
 
     gtk_builder_connect_signals(builder, buttons);
+
+    display_changed_cb(buttons->priv->equation, NULL, buttons);
   
     return *panel;
 }
@@ -1260,40 +1367,6 @@ set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 
 
 static void
-display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
-{
-    gboolean enabled;
-    MPNumber x;
-    int i;
-
-    if (!buttons->priv->bit_panel)
-       return;
-
-    enabled = math_equation_get_number(equation, &x);
-    if (enabled) {
-        MPNumber max;
-
-        mp_set_from_unsigned_integer(G_MAXUINT64, &max);
-        if (mp_is_negative(&x) || mp_is_greater_than(&x, &max))
-            enabled = FALSE;
-        else
-            buttons->priv->bits = mp_cast_to_unsigned_int(&x);
-    }
-
-    gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
-    for (i = 0; i < MAXBITS; i++) {
-        const gchar *label;
-
-        if (buttons->priv->bits & (1LL << (MAXBITS-i-1)))
-            label = " 1";
-        else
-            label = " 0";
-        gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
-    }
-}
-
-
-static void
 number_mode_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
     GList *i;
@@ -1328,6 +1401,8 @@ math_buttons_set_property (GObject      *object,
         math_buttons_set_mode(self, self->priv->mode);
         g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::display", G_CALLBACK(display_changed_cb), self);
+        g_signal_connect(self->priv->equation, "notify::angle-units", G_CALLBACK(display_changed_cb), self);
+        g_signal_connect(self->priv->equation, "notify::number-format", G_CALLBACK(display_changed_cb), self);
         number_mode_changed_cb(self->priv->equation, NULL, self);
         display_changed_cb(self->priv->equation, NULL, self);
         break;

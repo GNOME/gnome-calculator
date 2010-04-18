@@ -86,6 +86,7 @@ gboolean math_equation_get_show_trailing_zeroes(MathEquation *equation);
 
 void math_equation_set_number_format(MathEquation *equation, DisplayFormat format);
 DisplayFormat math_equation_get_number_format(MathEquation *equation);
+gint math_equation_get_base(MathEquation *equation);
 
 void math_equation_set_word_size(MathEquation *equation, int word_size);
 int math_equation_get_word_size(MathEquation *equation);
