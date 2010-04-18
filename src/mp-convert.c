@@ -18,6 +18,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
@@ -717,6 +718,36 @@ ends_with(const char *start, const char *end, const char *word)
 }
 
 
+// FIXME: Doesn't handle errors well (e.g. trailing space)
+static bool
+set_from_sexagesimal(const char *str, int length, MPNumber *z)
+{
+    int degrees = 0, minutes = 0;
+    char seconds[length+1];
+    MPNumber t;
+    int n_matched;
+
+    seconds[0] = '\0';
+    n_matched = sscanf(str, "%d°%d'%s\"\0", &degrees, &minutes, seconds);
+
+    if (n_matched < 1)
+        return true;
+    mp_set_from_integer(degrees, z);
+    if (n_matched > 1) {
+        mp_set_from_integer(minutes, &t);
+        mp_divide_integer(&t, 60, &t);
+        mp_add(z, &t, z);
+    }
+    if (n_matched > 2) {
+        mp_set_from_string(seconds, 10, &t);
+        mp_divide_integer(&t, 3600, &t);
+        mp_add(z, &t, z);
+    }
+
+    return false;
+}
+
+
 bool
 mp_set_from_string(const char *str, int default_base, MPNumber *z)
 {
@@ -728,6 +759,9 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
     const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
     int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
+  
+    if (strstr(str, "°"))
+        return set_from_sexagesimal(str, strlen(str), z);
 
     /* Find the base */
     end = str;

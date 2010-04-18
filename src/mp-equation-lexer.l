@@ -54,16 +54,21 @@ SUPER_MINUS   "⁻"
 SUB_DIGITS    "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
 FRACTION      "½"|"⅓"|"⅔"|"¼"|"¾"|"⅕"|"⅖"|"⅗"|"⅘"|"⅙"|"⅚"|"⅛"|"⅜"|"⅝"|"⅞"
 GREEKS        "α"|"β"|"γ"|"δ"|"ε"|"ζ"|"η"|"θ"|"ι"|"κ"|"λ"|"μ"|"ν"|"ξ"|"ο"|"π"|"ρ"|"ς"|"σ"|"τ"|"υ"|"φ"|"χ"|"ψ"|"ω"
+DEGREES       "°"
+MINUTES       "'"
+SECONDS       "\""
 LETTERS       [a-zA-Z]|{GREEKS}
 
 SUP_NUM  {SUPER_DIGITS}+
 NSUP_NUM {SUPER_MINUS}{SUPER_DIGITS}+
 SUB_NUM  {SUB_DIGITS}+
 WORD     {LETTERS}+
+DEC_NUM  {DEC}+|{DEC}*{DECIMAL}{DEC}+
 DEF_NUM  {HEX}+|{HEX}*{DECIMAL}{HEX}+
 BASE_NUM {HEX}+{SUB_NUM}|{HEX}*{DECIMAL}{HEX}+{SUB_NUM}
+ANGLE_NUM {DEC_NUM}{DEGREES}|{DEC}+{DEGREES}{DEC_NUM}{MINUTES}|{DEC}+{DEGREES}{DEC}+{MINUTES}{DEC_NUM}{SECONDS}
 
-NUMBER   {DEF_NUM}|{BASE_NUM}|{FRACTION}|{DEC}+{FRACTION}
+NUMBER   {DEF_NUM}|{BASE_NUM}|{FRACTION}|{DEC}+{FRACTION}|{ANGLE_NUM}
 VARIABLE {WORD}|{WORD}{SUB_NUM}|{GREEKS}
 
 MOD  [mM][oO][dD]

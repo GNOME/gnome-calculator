@@ -136,6 +136,9 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
         case GDK_minus:
              math_equation_insert(display->priv->equation, "⁻");
              return TRUE;
+        case GDK_apostrophe:
+             math_equation_insert(display->priv->equation, "°");
+             return TRUE;
         }
     }
 
