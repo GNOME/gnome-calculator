@@ -385,7 +385,6 @@ load_finc_dialogs(MathButtons *buttons)
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
-  return;
 
     currency_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
     currency_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
