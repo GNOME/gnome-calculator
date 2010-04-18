@@ -324,9 +324,9 @@ create_gui(MathPreferencesDialog *dialog)
     g_signal_connect(dialog->priv->equation, "notify::accuracy", G_CALLBACK(accuracy_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::show-thousands-separators", G_CALLBACK(show_thousands_separators_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::show-trailing_zeroes", G_CALLBACK(show_trailing_zeroes_cb), dialog);
-    g_signal_connect(dialog->priv->equation, "notify::number_format", G_CALLBACK(number_format_cb), dialog);
+    g_signal_connect(dialog->priv->equation, "notify::number-format", G_CALLBACK(number_format_cb), dialog);
     g_signal_connect(dialog->priv->equation, "notify::word-size", G_CALLBACK(word_size_cb), dialog);
-    g_signal_connect(dialog->priv->equation, "notify::angle-unit", G_CALLBACK(angle_unit_cb), dialog);
+    g_signal_connect(dialog->priv->equation, "notify::angle-units", G_CALLBACK(angle_unit_cb), dialog);
 
     accuracy_cb(dialog->priv->equation, NULL, dialog);
     show_thousands_separators_cb(dialog->priv->equation, NULL, dialog);

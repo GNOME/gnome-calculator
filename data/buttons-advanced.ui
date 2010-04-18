@@ -8,10 +8,29 @@
         <property name="visible">True</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkLabel" id="angle_label">
+          <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
-            <property name="xalign">1</property>
-            <property name="label" comments="Example content">3.14159 radians = 180 degrees</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkComboBox" id="angle_units_combo">
+                <property name="visible">True</property>
+                <property name="focus_on_click">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="angle_label">
+                <property name="visible">True</property>
+                <property name="xalign">1</property>
+                <property name="label" comments="Example content">3.14159 radians = 180 degrees</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>

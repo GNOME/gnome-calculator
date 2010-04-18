@@ -75,8 +75,8 @@ gboolean math_equation_get_number(MathEquation *equation, MPNumber *z);
 void math_equation_set_number_mode(MathEquation *equation, NumberMode mode);
 NumberMode math_equation_get_number_mode(MathEquation *equation);
 
-void math_equation_set_accuracy(MathEquation *equation, int accuracy);
-int math_equation_get_accuracy(MathEquation *equation);
+void math_equation_set_accuracy(MathEquation *equation, gint accuracy);
+gint math_equation_get_accuracy(MathEquation *equation);
 
 void math_equation_set_show_thousands_separators(MathEquation *equation, gboolean visible);
 gboolean math_equation_get_show_thousands_separators(MathEquation *equation);
@@ -86,10 +86,12 @@ gboolean math_equation_get_show_trailing_zeroes(MathEquation *equation);
 
 void math_equation_set_number_format(MathEquation *equation, DisplayFormat format);
 DisplayFormat math_equation_get_number_format(MathEquation *equation);
+
+void math_equation_set_base(MathEquation *equation, gint base);
 gint math_equation_get_base(MathEquation *equation);
 
-void math_equation_set_word_size(MathEquation *equation, int word_size);
-int math_equation_get_word_size(MathEquation *equation);
+void math_equation_set_word_size(MathEquation *equation, gint word_size);
+gint math_equation_get_word_size(MathEquation *equation);
 
 void math_equation_set_angle_units(MathEquation *equation, MPAngleUnit angle_unit);
 MPAngleUnit math_equation_get_angle_units(MathEquation *equation);

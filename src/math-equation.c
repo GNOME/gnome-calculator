@@ -45,6 +45,7 @@ enum {
     PROP_SHOW_THOUSANDS_SEPARATORS,
     PROP_SHOW_TRAILING_ZEROES,
     PROP_NUMBER_FORMAT,
+    PROP_BASE,
     PROP_WORD_SIZE,
     PROP_ANGLE_UNITS
 };
@@ -69,11 +70,11 @@ struct MathEquationPrivate
 {
     GtkTextTag *ans_tag;
 
-    int show_tsep;            /* Set if the thousands separator should be shown. */
-    int show_zeroes;          /* Set if trailing zeroes should be shown. */
+    gint show_tsep;           /* Set if the thousands separator should be shown. */
+    gint show_zeroes;         /* Set if trailing zeroes should be shown. */
     DisplayFormat format;     /* Number display mode. */
-    int accuracy;             /* Number of digits to show */
-    int word_size;            /* Word size in bits */
+    gint accuracy;            /* Number of digits to show */
+    gint word_size;           /* Word size in bits */
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
@@ -81,7 +82,7 @@ struct MathEquationPrivate
     const char *digits[16];   /* Localized digit values */
     const char *radix;        /* Locale specific radix string. */
     const char *tsep;         /* Locale specific thousands separator. */
-    int tsep_count;           /* Number of digits between separator. */
+    gint tsep_count;          /* Number of digits between separator. */
 
     GtkTextMark *ans_start, *ans_end;
 
@@ -326,7 +327,7 @@ math_equation_get_numeric_point_text(MathEquation *equation)
 
 
 void
-math_equation_set_accuracy(MathEquation *equation, int accuracy)
+math_equation_set_accuracy(MathEquation *equation, gint accuracy)
 {
     if (equation->priv->accuracy == accuracy)
         return;
@@ -336,7 +337,7 @@ math_equation_set_accuracy(MathEquation *equation, int accuracy)
 }
 
 
-int
+gint
 math_equation_get_accuracy(MathEquation *equation)
 {
     return equation->priv->accuracy;
@@ -382,11 +383,17 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 void
 math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 {
+    gint base;
+
     if (equation->priv->format == format)
         return;
+
+    base = math_equation_get_base(equation);
     equation->priv->format = format;
     reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "number-format");
+    if (base != math_equation_get_base(equation))
+        g_object_notify(G_OBJECT(equation), "base");
 }
 
 
@@ -394,6 +401,32 @@ DisplayFormat
 math_equation_get_number_format(MathEquation *equation)
 {
     return equation->priv->format;
+}
+
+
+void
+math_equation_set_base(MathEquation *equation, gint base)
+{
+    if (math_equation_get_base(equation) == base)
+        return;
+  
+    switch(base) {
+    case 2:
+        math_equation_set_number_format(equation, BIN);
+        break;
+    case 8:
+        math_equation_set_number_format(equation, OCT);
+        break;
+    case 10:
+        math_equation_set_number_format(equation, DEC);
+        break;
+    case 16:
+        math_equation_set_number_format(equation, HEX);
+        break;
+    default:
+        g_warning("Attempt to set non-supported base %d", base);
+        return;
+    }
 }
 
 
@@ -415,7 +448,7 @@ math_equation_get_base(MathEquation *equation)
 
 
 void
-math_equation_set_word_size(MathEquation *equation, int word_size)
+math_equation_set_word_size(MathEquation *equation, gint word_size)
 {
     if (equation->priv->word_size == word_size)
         return;
@@ -424,7 +457,7 @@ math_equation_set_word_size(MathEquation *equation, int word_size)
 }
 
 
-int
+gint
 math_equation_get_word_size(MathEquation *equation)
 {
     return equation->priv->word_size;
@@ -733,7 +766,7 @@ math_equation_insert(MathEquation *equation, const gchar *text)
 
 
 void
-math_equation_insert_digit(MathEquation *equation, unsigned int digit)
+math_equation_insert_digit(MathEquation *equation, guint digit)
 {
     static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
     static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
@@ -1199,6 +1232,9 @@ math_equation_set_property(GObject      *object,
     case PROP_NUMBER_FORMAT:
       math_equation_set_number_format(self, g_value_get_int(value));
       break;
+    case PROP_BASE:
+      math_equation_set_base(self, g_value_get_int(value));
+      break;
     case PROP_WORD_SIZE:
       math_equation_set_word_size(self, g_value_get_int(value));
       break;
@@ -1251,6 +1287,9 @@ math_equation_get_property(GObject    *object,
       break;
     case PROP_NUMBER_FORMAT:
       g_value_set_enum(value, self->priv->format);
+      break;
+    case PROP_BASE:
+      g_value_set_int(value, math_equation_get_base(self));
       break;
     case PROP_WORD_SIZE:
       g_value_set_int(value, self->priv->word_size);
@@ -1361,6 +1400,13 @@ math_equation_class_init (MathEquationClass *klass)
                                                       number_format_type,
                                                       DEC,
                                                       G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_BASE,
+                                    g_param_spec_int("base",
+                                                     "base",
+                                                     "Default number base (derived from number-format)",
+                                                     2, 16, 10, 
+                                                     G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
                                     PROP_WORD_SIZE,
                                     g_param_spec_int("word-size",

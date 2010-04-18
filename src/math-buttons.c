@@ -50,9 +50,11 @@ struct MathButtonsPrivate
     GList *superscript_toggles;
     GList *subscript_toggles;
 
-    GtkWidget *angle_label, *base_label;
-
-    guint64 bits;
+    GtkWidget *angle_combo;
+    GtkWidget *angle_label;
+  
+    GtkWidget *base_combo;  
+    GtkWidget *base_label;
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
 
@@ -434,30 +436,53 @@ display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *button
     is_number = math_equation_get_number(equation, &x);
 
     if (buttons->priv->angle_label && is_number) {
-        MPNumber pi;
-        char *label, ans_string[1024], conv_string[1024];
+        MPNumber pi, max_value, min_value, fraction, input, output;
+        char *label, input_text[1024], output_text[1024];
 
         mp_get_pi(&pi);
-        mp_cast_to_string(&x, 10, 10, 2, false, ans_string, 1024);
         switch (math_equation_get_angle_units(equation)) {
         default:
         case MP_DEGREES:
-            mp_multiply(&x, &pi, &x);
-            mp_divide_integer(&x, 180, &x);
-            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
-            label = g_strdup_printf("%s degrees = %s radians", ans_string, conv_string);
+            label = g_strdup("");
             break;
         case MP_RADIANS:
-            mp_multiply_integer(&x, 180, &x);
-            mp_divide(&x, &pi, &x);
-            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
-            label = g_strdup_printf("%s radians = %s degrees", ans_string, conv_string);
+            /* Clip to the range ±2π */
+            mp_multiply_integer(&pi, 2, &max_value);
+            mp_invert_sign(&max_value, &min_value);
+            if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
+                mp_divide(&x, &max_value, &fraction);
+                mp_fractional_component(&fraction, &fraction);
+                mp_multiply(&fraction, &max_value, &input);
+            }
+            else {
+                mp_set_from_mp(&x, &input);
+                mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
+            }
+            mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+
+            mp_multiply_integer(&fraction, 360, &output);
+            mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+            label = g_strdup_printf("%s radians = %s degrees", input_text, output_text);
             break;
         case MP_GRADIANS:
-            mp_multiply(&x, &pi, &x);
-            mp_divide_integer(&x, 200, &x);
-            mp_cast_to_string(&x, 10, 10, 2, false, conv_string, 1024);
-            label = g_strdup_printf("%s gradians = %s radians", ans_string, conv_string);
+            /* Clip to the range ±400 */
+            mp_set_from_integer(400, &max_value);
+            mp_invert_sign(&max_value, &min_value);
+            if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
+                mp_divide(&x, &max_value, &fraction);
+                mp_fractional_component(&fraction, &fraction);
+                mp_multiply(&fraction, &max_value, &input);
+            }
+            else {
+                mp_set_from_mp(&x, &input);
+                mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
+            }
+
+            mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+
+            mp_multiply_integer(&fraction, 360, &output);
+            mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+            label = g_strdup_printf("%s gradians = %s degrees", input_text, output_text);
             break;
         }
 
@@ -465,39 +490,9 @@ display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *button
         g_free(label);
     }
   
-    if (buttons->priv->base_label) {
-        GString *label;
-        gint base;
-        gchar text[1024];
-
-        base = math_equation_get_base(equation);      
-        label = g_string_new("");
-        if (base != 8) {
-            mp_cast_to_string(&x, 0, 8, 2, true, text, 1024);
-            if (label->len != 0)
-                g_string_append(label, " ");
-            g_string_append(label, text);
-        }
-        if (base != 10) {
-            mp_cast_to_string(&x, 0, 10, 2, true, text, 1024);
-            if (label->len != 0)
-                g_string_append(label, " ");
-            g_string_append(label, text);
-        }
-        if (base != 16) {
-            mp_cast_to_string(&x, 0, 16, 2, true, text, 1024);
-            if (label->len != 0)
-                g_string_append(label, " ");
-            g_string_append(label, text);
-        }
-
-        gtk_label_set_text(GTK_LABEL(buttons->priv->base_label), label->str);
-        g_string_free(label, TRUE);
-    }
-
     if (buttons->priv->bit_panel) {
         gboolean enabled = is_number;
-        int i;
+        guint64 bits;
 
         if (enabled) {
             MPNumber max;
@@ -506,20 +501,133 @@ display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *button
             if (mp_is_negative(&x) || mp_is_greater_than(&x, &max))
                 enabled = FALSE;
             else
-                buttons->priv->bits = mp_cast_to_unsigned_int(&x);
+                bits = mp_cast_to_unsigned_int(&x);
         }
 
         gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
-        for (i = 0; i < MAXBITS; i++) {
-            const gchar *label;
+        gtk_widget_set_sensitive(buttons->priv->base_label, enabled);
+      
+        if (enabled) {
+            int i;
+            GString *label;
+            gint base;
 
-            if (buttons->priv->bits & (1LL << (MAXBITS-i-1)))
-                label = " 1";
-            else
-                label = " 0";
-            gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
+            for (i = 0; i < MAXBITS; i++) {
+                const gchar *label;
+
+                if (bits & (1LL << (MAXBITS-i-1)))
+                    label = " 1";
+                else
+                    label = " 0";
+                gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
+            }
+
+            base = math_equation_get_base(equation);      
+            label = g_string_new("");
+            if (base != 8) {
+                if (label->len != 0)
+                    g_string_append(label, " = ");
+                g_string_append_printf(label, "%lo", bits);
+                g_string_append(label, "₈");
+            }
+            if (base != 10) {
+                if (label->len != 0)
+                    g_string_append(label, " = ");
+                g_string_append_printf(label, "%lu", bits);
+                g_string_append(label, "₁₀");
+            }
+            if (base != 16) {
+                if (label->len != 0)
+                    g_string_append(label, " = ");
+                g_string_append_printf(label, "%lX", bits);
+                g_string_append(label, "₁₆");
+            }
+
+            gtk_label_set_text(GTK_LABEL(buttons->priv->base_label), label->str);
+            g_string_free(label, TRUE);
         }
     }
+}
+
+
+static void
+angle_unit_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
+{
+    MPAngleUnit value;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 1, &value, -1);
+    math_equation_set_angle_units(buttons->priv->equation, value);
+}
+
+
+static void
+angle_unit_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gboolean valid;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->angle_combo));
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    while (valid) {
+        gint v;
+
+        gtk_tree_model_get(model, &iter, 1, &v, -1);
+        if (v == math_equation_get_angle_units(buttons->priv->equation))
+            break;
+        valid = gtk_tree_model_iter_next(model, &iter);
+    }
+    if (!valid)
+        valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->angle_combo), &iter);
+}
+
+
+static void
+base_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
+{
+    gint value;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 1, &value, -1);
+
+    math_equation_set_base(buttons->priv->equation, value);
+}
+
+
+static void
+base_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gboolean valid;
+    gint value;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->base_combo));
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+    value = math_equation_get_base(buttons->priv->equation);
+
+    while (valid) {
+        gint v;
+
+        gtk_tree_model_get(model, &iter, 1, &v, -1);
+        if (v == value)
+            break;
+        valid = gtk_tree_model_iter_next(model, &iter);
+    }
+    if (!valid)
+        valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->base_combo), &iter);
 }
 
 
@@ -650,11 +758,42 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     }
   
     if (mode == ADVANCED) {
+        GtkListStore *model;
+        GtkTreeIter iter;
+        GtkCellRenderer *renderer;
+
         buttons->priv->angle_label = GET_WIDGET(builder, "angle_label");
+
+        buttons->priv->angle_combo = GET_WIDGET(builder, "angle_units_combo");
+        model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT);
+        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->angle_combo), GTK_TREE_MODEL(model));
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations */
+                           _("Degrees"), 1, MP_DEGREES, -1);
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations */
+                           _("Radians"), 1, MP_RADIANS, -1);
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations */
+                           _("Gradians"), 1, MP_GRADIANS, -1);
+        renderer = gtk_cell_renderer_text_new();
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->angle_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->angle_combo), renderer, "text", 0);
+
+        g_signal_connect(buttons->priv->angle_combo, "changed", G_CALLBACK(angle_unit_combobox_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::angle-unit", G_CALLBACK(angle_unit_cb), buttons);
+        angle_unit_cb(buttons->priv->equation, NULL, buttons);
     }
 
     if (mode == PROGRAMMING) {
-        buttons->priv->base_label = GET_WIDGET(builder, "base_label");      
+        GtkListStore *model;
+        GtkTreeIter iter;
+        GtkCellRenderer *renderer;
+
+        buttons->priv->base_label = GET_WIDGET(builder, "base_label");
         buttons->priv->character_code_dialog = GET_WIDGET(builder, "character_code_dialog");
         buttons->priv->character_code_entry = GET_WIDGET(builder, "character_code_entry");
 
@@ -666,6 +805,33 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             name = g_strdup_printf("bit_eventbox_%d", i);
             set_int_data(builder, name, "bit_index", i);
         }
+
+        buttons->priv->base_combo = GET_WIDGET(builder, "base_combo");
+        model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT);
+        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->base_combo), GTK_TREE_MODEL(model));
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Number display mode combo: Binary, e.g. 10011010010₂ */
+                           _("Binary"), 1, 2, -1);
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Number display mode combo: Octal, e.g. 2322₈ */
+                           _("Octal"), 1, 8, -1);
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Number display mode combo: Decimal, e.g. 1234 */
+                           _("Decimal"), 1, 10, -1);
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                           /* Number display mode combo: Hexadecimal, e.g. 4D2₁₆ */
+                           _("Hexadecimal"), 1, 16, -1);
+        renderer = gtk_cell_renderer_text_new();
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->base_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->base_combo), renderer, "text", 0);
+
+        g_signal_connect(buttons->priv->base_combo, "changed", G_CALLBACK(base_combobox_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::base", G_CALLBACK(base_changed_cb), buttons);
+        base_changed_cb(buttons->priv->equation, NULL, buttons);
     }
 
     /* Setup financial functions */
