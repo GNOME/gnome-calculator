@@ -102,6 +102,30 @@ register_init()
 }
 
 
+// FIXME: Sort
+gchar **
+register_get_names()
+{
+    GHashTableIter iter;
+    gpointer key;
+    gint i = 0;
+    gchar **names;
+  
+    names = g_malloc0(sizeof(gchar *) * (g_hash_table_size(registers) + 1));
+
+    g_hash_table_iter_init(&iter, registers);
+    while (g_hash_table_iter_next(&iter, &key, NULL))
+    {
+        gchar *name = key;
+        names[i] = g_strdup(name);
+        i++;
+    }
+    names[i] = NULL;
+
+    return names;
+}
+
+
 void
 register_set_value(const char *name, const MPNumber *value)
 {

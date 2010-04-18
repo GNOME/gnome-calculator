@@ -22,6 +22,7 @@
 #include "mp.h"
 
 void register_init();
+gchar **register_get_names();
 void register_set_value(const char *name, const MPNumber *value);
 MPNumber *register_get_value(const char *name);
 

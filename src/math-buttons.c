@@ -32,7 +32,6 @@ enum {
 static GType button_mode_type;
 
 #define MAXBITS 64      /* Bit panel: number of bit fields. */
-#define MAX_REGISTERS 6 // FIXME: Obsolete once use a hash table
 
 struct MathButtonsPrivate
 {
@@ -45,10 +44,6 @@ struct MathButtonsPrivate
 
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
     GtkWidget *active_panel;
-
-    GtkWidget *store_menu, *recall_menu;
-    GtkWidget *recall_menu_labels[MAX_REGISTERS];
-    GtkWidget *store_menu_labels[MAX_REGISTERS];
 
     GtkWidget *shift_left_menu, *shift_right_menu;
 
@@ -70,12 +65,8 @@ G_DEFINE_TYPE (MathButtons, math_buttons, GTK_TYPE_VBOX);
 #define UI_FINANCIAL_FILE   UI_DIR "/buttons-financial.ui"
 #define UI_PROGRAMMING_FILE UI_DIR "/buttons-programming.ui"
 
-#define GET_OBJECT(ui, name) \
-          gtk_builder_get_object((ui), (name))
 #define GET_WIDGET(ui, name) \
-          GTK_WIDGET(GET_OBJECT(ui, name))
-
-static char *registers[] = {"a", "b", "c", "x", "y", "z", NULL};
+          GTK_WIDGET(gtk_builder_get_object((ui), (name)))
 
 #define WM_WIDTH_FACTOR  10
 #define WM_HEIGHT_FACTOR 30
@@ -495,7 +486,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         if (!object)
             continue;
         button = GTK_WIDGET(object);
-
         if (button_data[i].data)
             g_object_set_data(object, "calc_text", (gpointer) button_data[i].data);
 
@@ -670,21 +660,6 @@ button_cb(GtkWidget *widget, MathButtons *buttons)
 
 G_MODULE_EXPORT
 void
-store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
-{
-    math_equation_store(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));
-}
-
-
-static void
-recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
-{
-    math_equation_recall(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));  
-}
-
-
-G_MODULE_EXPORT
-void
 solve_cb(GtkWidget *widget, MathButtons *buttons)
 {
     math_equation_solve(buttons->priv->equation);
@@ -723,50 +698,6 @@ shift_cb(GtkWidget *widget, MathButtons *buttons)
 
 
 static void
-update_store_menu(MathButtons *buttons)
-{
-    int i;
-
-    if (!buttons->priv->store_menu) {
-        GtkWidget *menu;
-
-        menu = buttons->priv->store_menu = gtk_menu_new();
-        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->colour_memory, 1);
-
-        for (i = 0; i < MAX_REGISTERS; i++) {
-            GtkWidget *item, *label;
-
-            label = buttons->priv->store_menu_labels[i] = gtk_label_new("");
-            gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-
-            item = gtk_menu_item_new();
-            gtk_container_add(GTK_CONTAINER(item), label);
-
-            g_object_set_data(G_OBJECT(item), "register_id", registers[i]);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-            g_signal_connect(item, "activate", G_CALLBACK(store_menu_cb), buttons);
-
-            gtk_widget_show(label);
-            gtk_widget_show(item);
-        }  
-    }
-
-    for (i = 0; registers[i] != NULL; i++) {
-        gchar value[1024] = "", *mstr;
-        MPNumber *t;
-
-        t = register_get_value(registers[i]);
-        if (t)
-            display_make_number(buttons->priv->equation, value, 1024, t);
-        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", registers[i], value);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->store_menu_labels[i]), mstr);
-        g_free(mstr);
-    }
-}
-
-
-static void
 button_menu_position_func(GtkMenu *menu, gint *x, gint *y,
                           gboolean *push_in, gpointer user_data)
 {
@@ -791,56 +722,99 @@ popup_button_menu(GtkWidget *widget, GtkMenu *menu)
 }
 
 
-G_MODULE_EXPORT
-void
-store_cb(GtkWidget *widget, MathButtons *buttons)
+static void
+delete_variable_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    update_store_menu(buttons);
-    popup_button_menu(widget, GTK_MENU(buttons->priv->store_menu));
+  printf("!\n");
+}
+
+
+static GtkWidget *
+make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber *value, gboolean can_delete, GCallback callback)
+{
+    gchar text[1024] = "", *mstr;
+    GtkWidget *item, *label;
+
+    if (value) {
+        display_make_number(buttons->priv->equation, text, 1024, value);
+        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", name, text);
+    }
+    else
+        mstr = g_strdup_printf("<span weight=\"bold\">%s</span>", name);
+    label = gtk_label_new(mstr);
+    gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+    gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+    g_free(mstr);
+
+    item = gtk_menu_item_new();
+
+    // FIXME: Buttons don't work inside menus...
+    if (0){//can_delete) {
+        GtkWidget *hbox, *button;
+        hbox = gtk_hbox_new(FALSE, 6);
+        gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+        button = gtk_button_new();
+        gtk_button_set_image(GTK_BUTTON(button), gtk_image_new_from_stock(GTK_STOCK_DELETE, GTK_ICON_SIZE_MENU));
+        gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
+        gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, TRUE, 0);
+        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(delete_variable_cb), buttons);
+        gtk_container_add(GTK_CONTAINER(item), hbox);
+    }
+    else
+        gtk_container_add(GTK_CONTAINER(item), label);
+
+    g_object_set_data(G_OBJECT(item), "register_id", g_strdup(name)); // FIXME: Memory leak
+    g_signal_connect(item, "activate", callback, buttons);
+  
+    return item;
 }
 
 
 static void
-update_recall_menu(MathButtons *buttons)
+store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
+{
+    math_equation_store(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));
+}
+
+
+G_MODULE_EXPORT
+void
+store_cb(GtkWidget *widget, MathButtons *buttons)
 {
     int i;
+    GtkWidget *menu;
+    GtkWidget *item;
+    gchar **names;
 
-    if (!buttons->priv->recall_menu) {
-        GtkWidget *menu;
+    menu = gtk_menu_new();
+    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+    set_tint(menu, &buttons->priv->colour_memory, 1);
 
-        menu = buttons->priv->recall_menu = gtk_menu_new();
-        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->colour_memory, 1);
-
-        for (i = 0; i < MAX_REGISTERS; i++) {
-            GtkWidget *item, *label;
-
-            label = buttons->priv->recall_menu_labels[i] = gtk_label_new("");
-            gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-
-            item = gtk_menu_item_new();
-            gtk_container_add(GTK_CONTAINER(item), label);
-
-            g_object_set_data(G_OBJECT(item), "register_id", registers[i]);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-            g_signal_connect(item, "activate", G_CALLBACK(recall_menu_cb), buttons);
-
-            gtk_widget_show(label);
-            gtk_widget_show(item);
-        }
+    names = register_get_names();
+    if (names[0] == NULL) {
+        item = gtk_menu_item_new_with_label(/* Text shown in store menu when no variables defined */
+                                            _("No variables defined"));
+        gtk_widget_set_sensitive(item, FALSE);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    }  
+    for (i = 0; names[i]; i++) {
+        item = make_register_menu_item(buttons, names[i], register_get_value(names[i]), TRUE, G_CALLBACK(store_menu_cb));
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     }
 
-    for (i = 0; registers[i] != NULL; i++) {
-        gchar value[1024] = "", *mstr;
-        MPNumber *t;
+    g_strfreev(names);
 
-        t = register_get_value(registers[i]);
-        if (t)
-            display_make_number(buttons->priv->equation, value, 1024, t);
-        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", registers[i], value);
-        gtk_label_set_markup_with_mnemonic(GTK_LABEL(buttons->priv->recall_menu_labels[i]), mstr);
-        g_free(mstr);
-    }
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
+
+    gtk_widget_show_all(menu);
+    popup_button_menu(widget, GTK_MENU(menu));
+}
+
+
+static void
+recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
+{
+    math_equation_recall(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));  
 }
 
 
@@ -848,8 +822,37 @@ G_MODULE_EXPORT
 void
 recall_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    update_recall_menu(buttons);
-    popup_button_menu(widget, GTK_MENU(buttons->priv->recall_menu));
+    int i;
+    GtkWidget *menu;
+    GtkWidget *item;
+    gchar **names;
+
+    menu = gtk_menu_new();
+    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+    set_tint(menu, &buttons->priv->colour_memory, 1);
+
+    names = register_get_names();
+    if (names[0] == NULL) {
+        item = gtk_menu_item_new_with_label(/* Text shown in recall menu when no variables defined */
+                                            _("No variables defined"));
+        gtk_widget_set_sensitive(item, FALSE);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    }  
+    for (i = 0; names[i]; i++) {
+        item = make_register_menu_item(buttons, names[i], register_get_value(names[i]), TRUE, G_CALLBACK(recall_menu_cb));
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    }
+
+    g_strfreev(names);
+
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
+    item = make_register_menu_item(buttons, "ans", math_equation_get_answer(buttons->priv->equation), FALSE, G_CALLBACK(recall_menu_cb));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    item = make_register_menu_item(buttons, "rand", NULL, FALSE, G_CALLBACK(recall_menu_cb));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+
+    gtk_widget_show_all(menu);
+    popup_button_menu(widget, GTK_MENU(menu));
 }
 
 

@@ -551,6 +551,13 @@ math_equation_get_number_mode(MathEquation *equation)
 }
 
 
+const MPNumber *
+math_equation_get_answer(MathEquation *equation)
+{
+    return &equation->priv->state.ans;
+}
+
+
 void
 math_equation_copy(MathEquation *equation)
 {

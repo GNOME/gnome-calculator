@@ -93,6 +93,8 @@ int math_equation_get_word_size(MathEquation *equation);
 void math_equation_set_angle_units(MathEquation *equation, MPAngleUnit angle_unit);
 MPAngleUnit math_equation_get_angle_units(MathEquation *equation);
 
+const MPNumber *math_equation_get_answer(MathEquation *equation);
+
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);
 void math_equation_undo(MathEquation *equation);
