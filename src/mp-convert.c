@@ -584,10 +584,11 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
         while (base / multiplier != 0)
             multiplier *= 10;
         while (multiplier != 1) {
-            int d = b / multiplier;
+            int d;
+            multiplier /= 10;
+            d = b / multiplier;
             g_string_append(string, digits[d]);
             b -= d * multiplier;
-            multiplier /= 10;
         }
     }
 }
