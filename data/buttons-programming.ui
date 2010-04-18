@@ -11,7 +11,7 @@
           <object class="GtkLabel" id="display_label">
             <property name="visible">True</property>
             <property name="xalign">1</property>
-            <property name="label" comments="Example content">3.14159 radians = 180 degrees</property>
+            <property name="label" comments="Example content">FF&#x2081;&#x2086; 256&#x2081;&#x2080;</property>
           </object>
           <packing>
             <property name="position">0</property>
@@ -1820,6 +1820,8 @@
             <property name="visible">True</property>
             <property name="n_rows">5</property>
             <property name="n_columns">10</property>
+            <property name="column_spacing">6</property>
+            <property name="row_spacing">6</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkButton" id="calc_root_button">
@@ -1827,7 +1829,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1847,7 +1848,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
               </object>
@@ -1866,7 +1866,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
@@ -1891,7 +1890,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1910,7 +1908,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
@@ -1942,7 +1939,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1962,7 +1958,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -1982,7 +1977,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2002,7 +1996,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2020,7 +2013,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2040,7 +2032,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="subtract_cb"/>
@@ -2060,7 +2051,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2080,7 +2070,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="solve_cb"/>
@@ -2100,7 +2089,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="clear_cb"/>
@@ -2120,7 +2108,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2140,7 +2127,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2160,7 +2146,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2180,7 +2165,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2198,7 +2182,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2218,7 +2201,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2238,7 +2220,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2258,7 +2239,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2276,7 +2256,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2296,7 +2275,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2316,7 +2294,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2336,7 +2313,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2354,7 +2330,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2374,7 +2349,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2394,7 +2368,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="digit_cb"/>
@@ -2413,7 +2386,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_subscript_button-atkobject">
@@ -2439,7 +2411,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_superscript_button-atkobject">
@@ -2467,7 +2438,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_recall_button-atkobject">
@@ -2513,7 +2483,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_store_button-atkobject">
@@ -2560,7 +2529,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2580,7 +2548,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2600,7 +2567,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2620,7 +2586,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2640,7 +2605,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2658,7 +2622,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2675,7 +2638,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_shift_left_button-atkobject">
@@ -2722,7 +2684,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_shift_right_button-atkobject">
@@ -2770,7 +2731,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_character_button-atkobject">
@@ -2792,7 +2752,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2811,7 +2770,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_factorial_button-atkobject">
@@ -2841,7 +2799,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_inverse_button-atkobject">
@@ -2872,7 +2829,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="focus_on_click">False</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="calc_x_pow_y_button-atkobject">
@@ -2903,7 +2859,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2923,7 +2878,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
@@ -2943,7 +2897,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="border_width">3</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="button_cb"/>
