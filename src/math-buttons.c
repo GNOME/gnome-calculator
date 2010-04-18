@@ -495,10 +495,11 @@ display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *button
         guint64 bits;
 
         if (enabled) {
-            MPNumber max;
+            MPNumber max, fraction;
 
             mp_set_from_unsigned_integer(G_MAXUINT64, &max);
-            if (mp_is_negative(&x) || mp_is_greater_than(&x, &max))
+            mp_fractional_component(&x, &fraction);
+            if (mp_is_negative(&x) || mp_is_greater_than(&x, &max) || !mp_is_zero(&fraction))
                 enabled = FALSE;
             else
                 bits = mp_cast_to_unsigned_int(&x);
