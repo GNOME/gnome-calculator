@@ -40,7 +40,7 @@ struct MathButtonsPrivate
     ButtonMode mode;
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
-    GdkColor colour_numbers, colour_action, colour_operator, colour_function, colour_memory, colour_group;
+    GdkColor color_numbers, color_action, color_operator, color_function, color_memory, color_group;
 
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
     GtkWidget *active_panel;
@@ -702,28 +702,28 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
         switch (button_data[i].class) {
         case NUMBER:
-            set_tint(button, &buttons->priv->colour_numbers, 1);          
+            set_tint(button, &buttons->priv->color_numbers, 1);          
             break;
         case NUMBER_BOLD:
-            set_tint(button, &buttons->priv->colour_numbers, 2);
+            set_tint(button, &buttons->priv->color_numbers, 2);
             break;
         case OPERATOR:
-            set_tint(button, &buttons->priv->colour_operator, 1);          
+            set_tint(button, &buttons->priv->color_operator, 1);          
             break;
         case FUNCTION:
-            set_tint(button, &buttons->priv->colour_function, 1);          
+            set_tint(button, &buttons->priv->color_function, 1);          
             break;
         case MEMORY:
-            set_tint(button, &buttons->priv->colour_memory, 1);
+            set_tint(button, &buttons->priv->color_memory, 1);
             break;
         case GROUP:
-            set_tint(button, &buttons->priv->colour_group, 1);
+            set_tint(button, &buttons->priv->color_group, 1);
             break;
         case ACTION:
-            set_tint(button, &buttons->priv->colour_action, 1);
+            set_tint(button, &buttons->priv->color_action, 1);
             break;
         case ACTION_BOLD:
-            set_tint(button, &buttons->priv->colour_action, 2);
+            set_tint(button, &buttons->priv->color_action, 2);
             break;
         }
     }
@@ -736,7 +736,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         button = GET_WIDGET(builder, name);
         if (button) {
             g_object_set_data(G_OBJECT(button), "calc_digit", GINT_TO_POINTER(i));
-            set_tint(button, &buttons->priv->colour_numbers, 1);
+            set_tint(button, &buttons->priv->color_numbers, 1);
             gtk_button_set_label(GTK_BUTTON(button), math_equation_get_digit_text(buttons->priv->equation, i));
         }
         g_free(name);
@@ -1061,7 +1061,7 @@ store_cb(GtkWidget *widget, MathButtons *buttons)
 
     menu = gtk_menu_new();
     gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-    set_tint(menu, &buttons->priv->colour_memory, 1);
+    set_tint(menu, &buttons->priv->color_memory, 1);
 
     names = register_get_names();
     if (names[0] == NULL) {
@@ -1102,7 +1102,7 @@ recall_cb(GtkWidget *widget, MathButtons *buttons)
 
     menu = gtk_menu_new();
     gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-    set_tint(menu, &buttons->priv->colour_memory, 1);
+    set_tint(menu, &buttons->priv->color_memory, 1);
 
     names = register_get_names();
     if (names[0] == NULL) {
@@ -1139,7 +1139,7 @@ shift_left_cb(GtkWidget *widget, MathButtons *buttons)
 
         menu = buttons->priv->shift_left_menu = gtk_menu_new();
         gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->colour_action, 1);
+        set_tint(menu, &buttons->priv->color_action, 1);
 
         for (i = 1; i < 16; i++) {
             GtkWidget *item, *label;
@@ -1182,7 +1182,7 @@ shift_right_cb(GtkWidget *widget, MathButtons *buttons)
 
         menu = buttons->priv->shift_right_menu = gtk_menu_new();
         gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->colour_action, 1);
+        set_tint(menu, &buttons->priv->color_action, 1);
 
         for (i = 1; i < 16; i++) {
             GtkWidget *item, *label;
@@ -1648,23 +1648,11 @@ static void
 math_buttons_init (MathButtons *buttons)
 {
     buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, math_buttons_get_type(), MathButtonsPrivate);
-    buttons->priv->colour_numbers.red = 0;
-    buttons->priv->colour_numbers.green = 0;
-    buttons->priv->colour_numbers.blue = 65535;
-    buttons->priv->colour_action.red = 0;
-    buttons->priv->colour_action.green = 65535;
-    buttons->priv->colour_action.blue = 0;
-    buttons->priv->colour_operator.red = 65535;
-    buttons->priv->colour_operator.green = 0;
-    buttons->priv->colour_operator.blue = 0;
-    buttons->priv->colour_function.red = 0;
-    buttons->priv->colour_function.green = 65535;
-    buttons->priv->colour_function.blue = 65535;
-    buttons->priv->colour_memory.red = 65535;
-    buttons->priv->colour_memory.green = 0;
-    buttons->priv->colour_memory.blue = 65535;
-    buttons->priv->colour_group.red = 65535;
-    buttons->priv->colour_group.green = 65535;
-    buttons->priv->colour_group.blue = 65535;
+    gdk_color_parse("#0000FF", &buttons->priv->color_numbers);
+    gdk_color_parse("#00FF00", &buttons->priv->color_action);
+    gdk_color_parse("#FF0000", &buttons->priv->color_operator);
+    gdk_color_parse("#00FFFF", &buttons->priv->color_function);
+    gdk_color_parse("#FF00FF", &buttons->priv->color_memory);
+    gdk_color_parse("#FFFFFF", &buttons->priv->color_group);
     g_signal_connect(G_OBJECT(buttons), "show", G_CALLBACK(load_buttons), NULL);
 }
