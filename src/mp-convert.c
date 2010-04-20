@@ -729,7 +729,7 @@ set_from_sexagesimal(const char *str, int length, MPNumber *z)
     int n_matched;
 
     seconds[0] = '\0';
-    n_matched = sscanf(str, "%d°%d'%s\"\0", &degrees, &minutes, seconds);
+    n_matched = sscanf(str, "%d°%d'%s\"", &degrees, &minutes, seconds);
 
     if (n_matched < 1)
         return true;
