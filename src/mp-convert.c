@@ -639,6 +639,68 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
 }
 
 
+void
+mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, bool eng_format, char *buffer, int buffer_length)
+{
+    char fixed[1024], *c;
+    MPNumber t, z, base, base3, base10, base10inv, mantissa;
+    int exponent = 0;
+    GString *string;
+    const char *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+
+    string = g_string_sized_new(buffer_length);
+
+    mp_abs(x, &z);
+    if (mp_is_negative(x))
+        g_string_append(string, "−");
+    mp_set_from_mp(&z, &mantissa);
+
+    mp_set_from_integer(base_, &base);
+    mp_xpowy_integer(&base, 3, &base3);
+    mp_xpowy_integer(&base, 10, &base10);
+    mp_set_from_integer(1, &t);
+    mp_divide(&t, &base10, &base10inv);
+
+    if (!mp_is_zero(&mantissa)) {
+        while (!eng_format && mp_is_greater_equal(&mantissa, &base10)) {
+            exponent += 10;
+            mp_multiply(&mantissa, &base10inv, &mantissa);
+        }
+
+        while ((!eng_format &&  mp_is_greater_equal(&mantissa, &base)) ||
+                (eng_format && (mp_is_greater_equal(&mantissa, &base3) || exponent % 3 != 0))) {
+            exponent += 1;
+            mp_divide(&mantissa, &base, &mantissa);
+        }
+
+        while (!eng_format && mp_is_less_than(&mantissa, &base10inv)) {
+            exponent -= 10;
+            mp_multiply(&mantissa, &base10, &mantissa);
+        }
+
+        mp_set_from_integer(1, &t);
+        while (mp_is_less_than(&mantissa, &t) || (eng_format && exponent % 3 != 0)) {
+            exponent -= 1;
+            mp_multiply(&mantissa, &base, &mantissa);
+        }
+    }
+
+    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, fixed, 1024);
+    g_string_append(string, fixed);
+    g_string_append_printf(string, "×10");
+    if (exponent < 0) {
+        exponent = -exponent;
+        g_string_append(string, "⁻");
+    }
+    snprintf(fixed, 1024, "%d", exponent);
+    for (c = fixed; *c; c++)
+        g_string_append(string, super_digits[*c - '0']);
+
+    strncpy(buffer, string->str, buffer_length);
+    g_string_free(string, TRUE);
+}
+
+
 static int
 char_val(char **c, int base)
 {

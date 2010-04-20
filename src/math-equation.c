@@ -1116,72 +1116,6 @@ math_equation_toggle_bit(MathEquation *equation, guint bit)
 }
 
 
-/* Convert engineering or scientific number in the given base. */
-// FIXME: Move into mp-convert.c
-static void
-make_eng_sci(MathEquation *equation, char *target, int target_len, const MPNumber *x, int default_base, int base_)
-{
-    char fixed[MAX_DIGITS], *c;
-    MPNumber t, z, base, base3, base10, base10inv, mantissa;
-    int eng, exponent = 0;
-    GString *string;
-    const char *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
-
-    string = g_string_sized_new(target_len);
-
-    eng = equation->priv->format == ENG;
-
-    mp_abs(x, &z);
-    if (mp_is_negative(x))
-        g_string_append(string, "−");
-    mp_set_from_mp(&z, &mantissa);
-
-    mp_set_from_integer(base_, &base);
-    mp_xpowy_integer(&base, 3, &base3);
-    mp_xpowy_integer(&base, 10, &base10);
-    mp_set_from_integer(1, &t);
-    mp_divide(&t, &base10, &base10inv);
-
-    if (!mp_is_zero(&mantissa)) {
-        while (!eng && mp_is_greater_equal(&mantissa, &base10)) {
-            exponent += 10;
-            mp_multiply(&mantissa, &base10inv, &mantissa);
-        }
-
-        while ((!eng &&  mp_is_greater_equal(&mantissa, &base)) ||
-                (eng && (mp_is_greater_equal(&mantissa, &base3) || exponent % 3 != 0))) {
-            exponent += 1;
-            mp_divide(&mantissa, &base, &mantissa);
-        }
-
-        while (!eng && mp_is_less_than(&mantissa, &base10inv)) {
-            exponent -= 10;
-            mp_multiply(&mantissa, &base10, &mantissa);
-        }
-
-        mp_set_from_integer(1, &t);
-        while (mp_is_less_than(&mantissa, &t) || (eng && exponent % 3 != 0)) {
-            exponent -= 1;
-            mp_multiply(&mantissa, &base, &mantissa);
-        }
-    }
-
-    mp_cast_to_string(&mantissa, default_base, base_, equation->priv->accuracy, !equation->priv->show_zeroes, fixed, MAX_DIGITS);
-    g_string_append(string, fixed);
-    g_string_append_printf(string, "×10");
-    if (exponent < 0) {
-        exponent = -exponent;
-        g_string_append(string, "⁻");
-    }
-    snprintf(fixed, MAX_DIGITS, "%d", exponent);
-    for (c = fixed; *c; c++)
-        g_string_append(string, super_digits[*c - '0']);
-
-    strncpy(target, string->str, target_len);
-    g_string_free(string, TRUE);
-}
-
-
 /* Convert MP number to character string. */
 //FIXME: What to do with this?
 void
@@ -1201,10 +1135,10 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
         mp_cast_to_string(x, math_equation_get_base(equation), 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case SCI:
-        make_eng_sci(equation, target, target_len, x, math_equation_get_base(equation), 10);
+        mp_cast_to_exponential_string(x, math_equation_get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, false, target, target_len);
         break;
     case ENG:
-        make_eng_sci(equation, target, target_len, x, math_equation_get_base(equation), 10);
+        mp_cast_to_exponential_string(x, math_equation_get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
         break;
     }
 }
