@@ -23,6 +23,7 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include "mp.h"
+#include "math-variables.h"
 
 G_BEGIN_DECLS
 
@@ -59,6 +60,8 @@ typedef enum {
 
 GType math_equation_get_type();
 MathEquation *math_equation_new();
+
+MathVariables *math_equation_get_variables(MathEquation *equation);
 
 const gchar *math_equation_get_digit_text(MathEquation *equation, guint digit);
 const gchar *math_equation_get_numeric_point_text(MathEquation *equation);

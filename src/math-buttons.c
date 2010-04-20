@@ -19,7 +19,6 @@
 #include <glib/gi18n.h>
 
 #include "math-buttons.h"
-#include "register.h"
 #include "financial.h"
 #include "currency.h"
 
@@ -1063,7 +1062,7 @@ store_cb(GtkWidget *widget, MathButtons *buttons)
     gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
     set_tint(menu, &buttons->priv->color_memory, 1);
 
-    names = register_get_names();
+    names = math_variables_get_names(math_equation_get_variables(buttons->priv->equation));
     if (names[0] == NULL) {
         item = gtk_menu_item_new_with_label(/* Text shown in store menu when no variables defined */
                                             _("No variables defined"));
@@ -1071,7 +1070,9 @@ store_cb(GtkWidget *widget, MathButtons *buttons)
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     }  
     for (i = 0; names[i]; i++) {
-        item = make_register_menu_item(buttons, names[i], register_get_value(names[i]), TRUE, G_CALLBACK(store_menu_cb));
+        MPNumber *value;
+        value = math_variables_get_value(math_equation_get_variables(buttons->priv->equation), names[i]);
+        item = make_register_menu_item(buttons, names[i], value, TRUE, G_CALLBACK(store_menu_cb));
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     }
 
@@ -1104,7 +1105,7 @@ recall_cb(GtkWidget *widget, MathButtons *buttons)
     gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
     set_tint(menu, &buttons->priv->color_memory, 1);
 
-    names = register_get_names();
+    names = math_variables_get_names(math_equation_get_variables(buttons->priv->equation));
     if (names[0] == NULL) {
         item = gtk_menu_item_new_with_label(/* Text shown in recall menu when no variables defined */
                                             _("No variables defined"));
@@ -1112,7 +1113,9 @@ recall_cb(GtkWidget *widget, MathButtons *buttons)
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     }  
     for (i = 0; names[i]; i++) {
-        item = make_register_menu_item(buttons, names[i], register_get_value(names[i]), TRUE, G_CALLBACK(recall_menu_cb));
+        MPNumber *value;
+        value = math_variables_get_value(math_equation_get_variables(buttons->priv->equation), names[i]);
+        item = make_register_menu_item(buttons, names[i], value, TRUE, G_CALLBACK(recall_menu_cb));
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     }
 

@@ -25,7 +25,6 @@
 #include "currency.h"
 #include "unittest.h"
 #include "math-window.h"
-#include "register.h"
 #include "mp-equation.h"
 
 static GConfClient *client = NULL;
@@ -351,7 +350,6 @@ main(int argc, char **argv)
     /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
 
-    register_init();
     get_options(argc, argv);
 
     client = gconf_client_get_default();

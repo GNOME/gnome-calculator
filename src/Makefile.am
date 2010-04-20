@@ -19,6 +19,8 @@ gcalctool_SOURCES = \
 	math-equation.h \
 	math-preferences.c \
 	math-preferences.h \
+	math-variables.c \
+	math-variables.h \
 	math-window.c \
 	math-window.h \
 	mp.c \
@@ -36,8 +38,6 @@ gcalctool_SOURCES = \
 	mp-equation-parser.h \
 	financial.c \
 	financial.h \
-	register.c \
-	register.h \
 	unittest.c \
 	unittest.h
 

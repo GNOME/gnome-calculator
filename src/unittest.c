@@ -129,7 +129,7 @@ test_conversions()
 
 
 int
-variable_is_defined(const char *name)
+variable_is_defined(const char *name, void *data)
 {
     return strcmp (name, "x") == 0 || strcmp (name, "y") == 0;
 }

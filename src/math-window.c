@@ -285,6 +285,7 @@ button_mode_changed_cb(MathButtons *buttons, GParamSpec *spec, MathWindow *windo
     {
     case BASIC:
       menu = window->priv->mode_basic_menu_item;
+      //FIXME: Should it revert to decimal mode? math_equation_set_number_format(window->priv->equation, DEC);
       break;
 
     case ADVANCED:

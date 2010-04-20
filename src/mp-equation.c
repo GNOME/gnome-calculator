@@ -33,7 +33,7 @@ variable_is_defined(MPEquationParserState *state, const char *name)
     if (strcmp(name, "e") == 0 || strcmp(name, "i") == 0 || strcmp(name, "π") == 0)
         return 1;
     if (state->options->variable_is_defined)
-        return state->options->variable_is_defined(name);
+        return state->options->variable_is_defined(name, state->options->callback_data);
     return 0;
 }
 
@@ -147,7 +147,7 @@ function_is_defined(MPEquationParserState *state, const char *name)
     g_free (lower_name);
 
     if (state->options->function_is_defined)
-        return state->options->function_is_defined(name);
+        return state->options->function_is_defined(name, state->options->callback_data);
     return 0;
 }
 

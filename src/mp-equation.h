@@ -51,7 +51,7 @@ typedef struct {
     void *callback_data;
   
     /* Function to check if a variable is defined */
-    int (*variable_is_defined)(const char *name);
+    int (*variable_is_defined)(const char *name, void *data);
 
     /* Function to get variable values */
     int (*get_variable)(const char *name, MPNumber *z, void *data);
@@ -60,7 +60,7 @@ typedef struct {
     void (*set_variable)(const char *name, const MPNumber *x, void *data);
 
     /* Function to check if a function is defined */
-    int (*function_is_defined)(const char *name);
+    int (*function_is_defined)(const char *name, void *data);
 
     /* Function to solve functions */
     int (*get_function)(const char *name, const MPNumber *x, MPNumber *z, void *data);

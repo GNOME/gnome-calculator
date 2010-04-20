@@ -31,7 +31,6 @@
 
 #include "mp.h"
 #include "mp-equation.h"
-#include "register.h"
 #include "currency.h"
 
 
@@ -93,6 +92,8 @@ struct MathEquationPrivate
 
     gboolean in_delete;
 
+    MathVariables *variables;
+
     // FIXME: Replace with GtkClipboard
     GdkAtom clipboard_atom;   /* ??? */ // 
     GdkAtom primary_atom;     /* ??? */ // FIXME: Is this middle click?
@@ -106,6 +107,13 @@ MathEquation *
 math_equation_new()
 {
     return g_object_new (math_equation_get_type(), NULL);
+}
+
+
+MathVariables *
+math_equation_get_variables(MathEquation *equation)
+{
+    return equation->priv->variables;
 }
 
 
@@ -692,7 +700,7 @@ math_equation_store(MathEquation *equation, const gchar *name)
     if (!math_equation_get_number(equation, &t))
         math_equation_set_status(equation, _("No sane value to store"));
     else
-        register_set_value(name, &t);
+        math_variables_set_value(equation->priv->variables, name, &t);
 }
 
 
@@ -819,8 +827,9 @@ math_equation_insert_subtract(MathEquation *equation)
 
 
 static int
-variable_is_defined(const char *name)
+variable_is_defined(const char *name, void *data)
 {
+    MathEquation *equation = data;
     char *c, *lower_name;
 
     lower_name = strdup(name);
@@ -834,7 +843,7 @@ variable_is_defined(const char *name)
     }
     g_free (lower_name);
 
-    return register_get_value(name) != NULL;
+    return math_variables_get_value(equation->priv->variables, name) != NULL;
 }
 
 
@@ -855,7 +864,7 @@ get_variable(const char *name, MPNumber *z, void *data)
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(&equation->priv->state.ans, z);
     else {
-        t = register_get_value(name);
+        t = math_variables_get_value(equation->priv->variables, name);
         if (t)
             mp_set_from_mp(t, z);
         else
@@ -871,8 +880,9 @@ get_variable(const char *name, MPNumber *z, void *data)
 static void
 set_variable(const char *name, const MPNumber *x, void *data)
 {
+    MathEquation *equation = data;
     /* FIXME: Don't allow writing to built-in variables, e.g. ans, rand, sin, ... */
-    register_set_value(name, x);
+    math_variables_set_value(equation->priv->variables, name, x);
 }
 
 
@@ -1560,6 +1570,8 @@ math_equation_init(MathEquation *equation)
     equation->priv->tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
 
     equation->priv->tsep_count = 3;
+  
+    equation->priv->variables = math_variables_new();
 
     // Use GtkClipboad instead
     equation->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
