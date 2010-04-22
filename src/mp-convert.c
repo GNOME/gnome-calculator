@@ -688,7 +688,7 @@ mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, in
     mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, fixed, 1024);
     g_string_append(string, fixed);
     if (exponent != 0) {
-        g_string_append_printf(string, "×10");
+        g_string_append_printf(string, "×10"); // FIXME: Use the current base
         if (exponent < 0) {
             exponent = -exponent;
             g_string_append(string, "⁻");
