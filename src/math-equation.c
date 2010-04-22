@@ -1271,6 +1271,8 @@ math_equation_toggle_bit(MathEquation *equation, guint bit)
     bits ^= (1LL << (63 - bit));
 
     mp_set_from_unsigned_integer(bits, &x);
+
+    // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
     math_equation_set_number(equation, &x);
 }
 
