@@ -687,14 +687,16 @@ mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, in
 
     mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, fixed, 1024);
     g_string_append(string, fixed);
-    g_string_append_printf(string, "×10");
-    if (exponent < 0) {
-        exponent = -exponent;
-        g_string_append(string, "⁻");
+    if (exponent != 0) {
+        g_string_append_printf(string, "×10");
+        if (exponent < 0) {
+            exponent = -exponent;
+            g_string_append(string, "⁻");
+        }
+        snprintf(fixed, 1024, "%d", exponent);
+        for (c = fixed; *c; c++)
+            g_string_append(string, super_digits[*c - '0']);
     }
-    snprintf(fixed, 1024, "%d", exponent);
-    for (c = fixed; *c; c++)
-        g_string_append(string, super_digits[*c - '0']);
 
     strncpy(buffer, string->str, buffer_length);
     g_string_free(string, TRUE);
