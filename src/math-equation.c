@@ -90,6 +90,8 @@ struct MathEquationPrivate
     GList *undo_stack;           /* History of expression mode states */
     GList *redo_stack;
     gboolean in_undo_operation;
+  
+    gboolean in_reformat;
 
     gboolean in_delete;
 
@@ -136,13 +138,44 @@ get_ans_offsets(MathEquation *equation, gint *start, gint *end)
 
 
 static void
-reformat_display(MathEquation *equation)
+reformat_display(MathEquation *equation, gint old_base)
 {
     gchar *text;
-    gint ans_start, ans_end;
 
     text = math_equation_get_display(equation);
-    get_ans_offsets(equation, &ans_start, &ans_end);
+
+    /* Reformat answer */
+    if (equation->priv->ans_start) {
+        gchar *orig_ans_text;
+        gchar ans_text[MAX_DIGITS];
+        GtkTextIter ans_start, ans_end;
+
+        gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
+        gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
+        orig_ans_text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &ans_start, &ans_end, FALSE);
+        display_make_number(equation, ans_text, MAX_DIGITS, &equation->priv->state.ans);
+        if (strcmp(orig_ans_text, ans_text) != 0) {
+            gint start;
+
+            equation->priv->in_undo_operation = TRUE;
+            equation->priv->in_reformat = TRUE;
+
+            start = gtk_text_iter_get_offset(&ans_start);
+            gtk_text_buffer_delete(GTK_TEXT_BUFFER(equation), &ans_start, &ans_end);
+            gtk_text_buffer_insert_with_tags(GTK_TEXT_BUFFER(equation), &ans_end, ans_text, -1, equation->priv->ans_tag, NULL);
+
+            /* There seems to be a bug in the marks as they alternate being the correct and incorrect ways.  Reset them */
+            gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &ans_start, start);
+            gtk_text_buffer_move_mark(GTK_TEXT_BUFFER(equation), equation->priv->ans_start, &ans_start);
+            gtk_text_buffer_move_mark(GTK_TEXT_BUFFER(equation), equation->priv->ans_end, &ans_end);
+
+            equation->priv->in_reformat = FALSE;
+            equation->priv->in_undo_operation = FALSE;
+        }
+        gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
+        gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
+        g_free(orig_ans_text);
+    }
 
     // FIXME: Need to know old base to do base changes
     // FIXME: Need to keep cursor location correct
@@ -341,7 +374,7 @@ math_equation_set_accuracy(MathEquation *equation, gint accuracy)
     if (equation->priv->accuracy == accuracy)
         return;
     equation->priv->accuracy = accuracy;
-    reformat_display(equation);
+    reformat_display(equation, equation->priv->base);
     g_object_notify(G_OBJECT(equation), "accuracy");
 }
 
@@ -359,7 +392,7 @@ math_equation_set_show_thousands_separators(MathEquation *equation, gboolean vis
     if ((equation->priv->show_tsep && visible) || (!equation->priv->show_tsep && !visible))
         return;
     equation->priv->show_tsep = visible;
-    reformat_display(equation);
+    reformat_display(equation, equation->priv->base);
     g_object_notify(G_OBJECT(equation), "show-thousands-separators");
 }
 
@@ -377,7 +410,7 @@ math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
     if ((equation->priv->show_zeroes && visible) || (!equation->priv->show_zeroes && !visible))
         return;
     equation->priv->show_zeroes = visible;
-    reformat_display(equation);
+    reformat_display(equation, equation->priv->base);
     g_object_notify(G_OBJECT(equation), "show-trailing-zeroes");
 }
 
@@ -396,7 +429,7 @@ math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
         return;
 
     equation->priv->format = format;
-    reformat_display(equation);
+    reformat_display(equation, equation->priv->base);
     g_object_notify(G_OBJECT(equation), "number-format");
 }
 
@@ -411,11 +444,14 @@ math_equation_get_number_format(MathEquation *equation)
 void
 math_equation_set_base(MathEquation *equation, gint base)
 {
+    gint old_base;
+
     if (equation->priv->base == base)
         return;
-  
+
+    old_base = equation->priv->base;
     equation->priv->base = base;
-    reformat_display(equation);
+    reformat_display(equation, old_base);
     g_object_notify(G_OBJECT(equation), "base");
 }
 
@@ -696,7 +732,7 @@ void
 math_equation_set_number(MathEquation *equation, const MPNumber *x)
 {
     char text[MAX_DIGITS];
-    GtkTextIter start, end;  
+    GtkTextIter start, end;
 
     /* Show the number in the user chosen format */
     display_make_number(equation, text, MAX_DIGITS, x);
@@ -1338,6 +1374,9 @@ pre_insert_text_cb (MathEquation  *equation,
 {
     gunichar c;
   
+    if (equation->priv->in_reformat)
+        return;
+  
     /* If following a delete then have already pushed undo stack (GtkTextBuffer
        doesn't indicate replace operations so we have to infer them) */
     if (!equation->priv->in_delete)
@@ -1379,7 +1418,10 @@ pre_delete_range_cb (MathEquation  *equation,
                      GtkTextIter   *start,
                      GtkTextIter   *end,
                      gpointer       user_data)
-{
+{  
+    if (equation->priv->in_reformat)
+        return;
+
     math_equation_push_undo_stack(equation);
 
     equation->priv->in_delete = TRUE;
@@ -1407,6 +1449,9 @@ insert_text_cb (MathEquation  *equation,
                 gint           len,
                 gpointer       user_data)
 {
+    if (equation->priv->in_reformat)
+        return;
+
     equation->priv->state.entered_multiply = strcmp(text, "×") == 0;
     g_object_notify(G_OBJECT(equation), "display");
 }
@@ -1418,6 +1463,9 @@ delete_range_cb (MathEquation  *equation,
                  GtkTextIter   *end,
                  gpointer       user_data)
 {
+    if (equation->priv->in_reformat)
+        return;
+
     // FIXME: A replace will emit this both for delete-range and insert-text, can it be avoided?
     g_object_notify(G_OBJECT(equation), "display");
 }
