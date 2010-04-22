@@ -2,21 +2,22 @@
 # Copyright (C) 2004 gcalctool's COPYRIGHT HOLDER
 # This file is distributed under the same licence as the gcalctool package.
 # Gareth Owen <gowen72@yahoo.com>, 2004.
-# Bruce Cowan <bcowan@fastmail.co.uk>, 2009.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2009, 2010.
 # Philip Withnall <philip@tecnocode.co.uk>, 2010.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-25 00:33+0000\n"
-"PO-Revision-Date: 2009-09-08 14:16+0100\n"
-"Last-Translator: Philip Withnall <philip@tecnocode.co.uk>\n"
+"POT-Creation-Date: 2010-04-22 15:02+0100\n"
+"PO-Revision-Date: 2010-04-18 16:23+0100\n"
+"Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.5.2\n"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/financial.ui.h:2
@@ -820,33 +821,38 @@ msgstr "_Basic"
 msgid "_Calculator"
 msgstr "_Calculator"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Contents"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Financial"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Help"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Insert"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Programming"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Scientific"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_View"
 
@@ -1022,7 +1028,7 @@ msgstr ""
 "  --g-fatal-warnings              Make all warnings fatal"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/calctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1034,19 +1040,19 @@ msgstr ""
 "  -s, --solve <equation>          Solve the given equation"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/calctool.c:155
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argument --solve requires an equation to solve"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/calctool.c:169
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Unknown argument '%s'"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
+#: ../src/calctool.c:182
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1190,54 +1196,54 @@ msgstr "US dollar"
 msgid "South African rand"
 msgstr "South African rand"
 
-#: ../src/display.c:395
+#: ../src/display.c:390
 msgid "No undo history"
 msgstr "No undo history"
 
-#: ../src/display.c:410
+#: ../src/display.c:405
 msgid "No redo steps"
 msgstr "No redo steps"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1045
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "No sane value to bitwise shift"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1061
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Need an integer to factorise"
 
-#: ../src/display.c:1087
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "No sane value to store"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1209
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Overflow. Try a bigger word size"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1214
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Unknown variable '%s'"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1220
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Function '%s' is not defined"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1226
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Unknown conversion"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1235
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Malformed expression"
 
@@ -1286,7 +1292,7 @@ msgstr ""
 "Bastien Nocera <hadess@hadess.net>\n"
 "Gareth Owen <gowen@gnome.org>\n"
 "Philip Withnall <philip@tecnocode.co.uk>\n"
-"Bruce Cowan <bcowan@fastmail.co.uk>"
+"Bruce Cowan <bruce@bcowan.me.uk>"
 
 #. Translators: The license this software is under (GPL2+)
 #: ../src/gtk.c:560
@@ -1355,61 +1361,67 @@ msgstr ""
 "Currency rates could not be downloaded. You may receive inaccurate results, "
 "or you may not receive any results at all."
 
-#: ../src/gtk.c:1539
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Paste"
 
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Show %d decimal _places"
+
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1486
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
 msgid "Division by zero is undefined"
 msgstr "Division by zero is undefined"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1168 ../src/mp.c:1205
+#: ../src/mp.c:1169 ../src/mp.c:1206
 msgid "Logarithm of zero is undefined"
 msgstr "Logarithm of zero is undefined"
 
 #. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1177
+#: ../src/mp.c:1178
 msgid "Logarithm of negative values is undefined"
 msgstr "Logarithm of negative values is undefined"
 
-#: ../src/mp.c:1551
+#: ../src/mp.c:1552
 msgid "The power of negative numbers is only defined for integer exponents"
 msgstr "The power of negative numbers is only defined for integer exponents"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1558 ../src/mp.c:1851
+#: ../src/mp.c:1559 ../src/mp.c:1852
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "The power of zero is undefined for a negative exponent"
 
-#: ../src/mp.c:1583
+#: ../src/mp.c:1584
 msgid "Reciprocal of zero is undefined"
 msgstr "Reciprocal of zero is undefined"
 
-#: ../src/mp.c:1668
+#: ../src/mp.c:1669
 msgid "Root must be non-zero"
 msgstr "Root must be non-zero"
 
-#: ../src/mp.c:1686
+#: ../src/mp.c:1687
 msgid "Negative root of zero is undefined"
 msgstr "Negative root of zero is undefined"
 
-#: ../src/mp.c:1692
+#: ../src/mp.c:1693
 msgid "nth root of negative number is undefined for even n"
 msgstr "nth root of negative number is undefined for even n"
 
-#: ../src/mp.c:1762
+#: ../src/mp.c:1763
 msgid "Square root is undefined for negative values"
 msgstr "Square root is undefined for negative values"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1791
+#: ../src/mp.c:1792
 msgid "Factorial is only defined for natural numbers"
 msgstr "Factorial is only defined for natural numbers"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1811
+#: ../src/mp.c:1812
 msgid "Modulus division is only defined for integers"
 msgstr "Modulus division is only defined for integers"
 
@@ -2088,9 +2100,6 @@ msgstr "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 
 #~ msgid "_9 significant places"
 #~ msgstr "_9 significant places"
-
-#~ msgid "_Contents"
-#~ msgstr "_Contents"
 
 #~ msgid "_Dec"
 #~ msgstr "_Dec"
