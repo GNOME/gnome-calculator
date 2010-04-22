@@ -37,6 +37,8 @@ struct MathButtonsPrivate
     MathEquation *equation;
 
     ButtonMode mode;
+    gint programming_base;
+  
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
     GdkColor color_numbers, color_action, color_operator, color_function, color_memory, color_group;
@@ -610,17 +612,19 @@ base_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
     GtkTreeModel *model;
     GtkTreeIter iter;
     gboolean valid;
-    gint value;
+  
+    if (buttons->priv->mode != PROGRAMMING)
+        return;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->base_combo));
     valid = gtk_tree_model_get_iter_first(model, &iter);
-    value = math_equation_get_base(buttons->priv->equation);
+    buttons->priv->programming_base = math_equation_get_base(buttons->priv->equation);
 
     while (valid) {
         gint v;
 
         gtk_tree_model_get(model, &iter, 1, &v, -1);
-        if (v == value)
+        if (v == buttons->priv->programming_base)
             break;
         valid = gtk_tree_model_iter_next(model, &iter);
     }
@@ -892,6 +896,11 @@ math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 
     old_mode = buttons->priv->mode;
     buttons->priv->mode = mode;
+  
+    if (mode == PROGRAMMING)
+        math_equation_set_base(buttons->priv->equation, buttons->priv->programming_base);
+    else
+        math_equation_set_base(buttons->priv->equation, 10);
 
     load_buttons(buttons);
 
@@ -903,6 +912,20 @@ ButtonMode
 math_buttons_get_mode(MathButtons *buttons)
 {
     return buttons->priv->mode;
+}
+
+
+void
+math_buttons_set_programming_base(MathButtons *buttons, gint base)
+{
+    buttons->priv->programming_base = base;
+}
+
+
+gint
+math_buttons_get_programming_base(MathButtons *buttons)
+{
+    return buttons->priv->programming_base;
 }
 
 
@@ -1568,8 +1591,8 @@ math_buttons_set_property (GObject      *object,
     case PROP_EQUATION:
         self->priv->equation = g_value_get_object (value);
         math_buttons_set_mode(self, self->priv->mode);
-        g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::display", G_CALLBACK(display_changed_cb), self);
+        g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::angle-units", G_CALLBACK(display_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::number-format", G_CALLBACK(display_changed_cb), self);
         number_mode_changed_cb(self->priv->equation, NULL, self);
@@ -1651,6 +1674,7 @@ static void
 math_buttons_init (MathButtons *buttons)
 {
     buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, math_buttons_get_type(), MathButtonsPrivate);
+    buttons->priv->programming_base = 10;
     gdk_color_parse("#0000FF", &buttons->priv->color_numbers);
     gdk_color_parse("#00FF00", &buttons->priv->color_action);
     gdk_color_parse("#FF0000", &buttons->priv->color_operator);

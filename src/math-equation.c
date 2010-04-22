@@ -75,6 +75,7 @@ struct MathEquationPrivate
     gint accuracy;            /* Number of digits to show */
     gint word_size;           /* Word size in bits */
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
+    gint base;                /* Numeric base */
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
@@ -391,17 +392,12 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 void
 math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 {
-    gint base;
-
     if (equation->priv->format == format)
         return;
 
-    base = math_equation_get_base(equation);
     equation->priv->format = format;
     reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "number-format");
-    if (base != math_equation_get_base(equation))
-        g_object_notify(G_OBJECT(equation), "base");
 }
 
 
@@ -415,43 +411,19 @@ math_equation_get_number_format(MathEquation *equation)
 void
 math_equation_set_base(MathEquation *equation, gint base)
 {
-    if (math_equation_get_base(equation) == base)
+    if (equation->priv->base == base)
         return;
   
-    switch(base) {
-    case 2:
-        math_equation_set_number_format(equation, BIN);
-        break;
-    case 8:
-        math_equation_set_number_format(equation, OCT);
-        break;
-    case 10:
-        math_equation_set_number_format(equation, DEC);
-        break;
-    case 16:
-        math_equation_set_number_format(equation, HEX);
-        break;
-    default:
-        g_warning("Attempt to set non-supported base %d", base);
-        return;
-    }
+    equation->priv->base = base;
+    reformat_display(equation);
+    g_object_notify(G_OBJECT(equation), "base");
 }
 
 
 gint
 math_equation_get_base(MathEquation *equation)
 {
-    switch(equation->priv->format)
-    {
-    case BIN:
-      return 2;
-    case OCT:
-      return 8;
-    case HEX:
-      return 16;
-    default:
-      return 10;
-    }
+    return equation->priv->base;
 }
 
 
@@ -565,7 +537,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gboolean result;
 
     text = math_equation_get_display(equation);
-    result = !mp_set_from_string(text, math_equation_get_base(equation), z);
+    result = !mp_set_from_string(text, equation->priv->base, z);
     g_free (text);
 
     return result;
@@ -909,7 +881,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     MPEquationOptions options;
 
     memset(&options, 0, sizeof(options));
-    options.base = math_equation_get_base(equation);
+    options.base = equation->priv->base;
     options.wordlen = equation->priv->word_size;
     options.angle_units = equation->priv->angle_units;
     options.variable_is_defined = variable_is_defined;
@@ -1122,23 +1094,14 @@ void
 display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x)
 {
     switch(equation->priv->format) {
-    case DEC:
-        mp_cast_to_string(x, math_equation_get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
-        break;
-    case BIN:
-        mp_cast_to_string(x, math_equation_get_base(equation), 2, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
-        break;
-    case OCT:
-        mp_cast_to_string(x, math_equation_get_base(equation), 8, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
-        break;
-    case HEX:
-        mp_cast_to_string(x, math_equation_get_base(equation), 16, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+    case FIX:
+        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
         break;
     case SCI:
-        mp_cast_to_exponential_string(x, math_equation_get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, false, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, false, target, target_len);
         break;
     case ENG:
-        mp_cast_to_exponential_string(x, math_equation_get_base(equation), 10, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
         break;
     }
 }
@@ -1260,10 +1223,7 @@ math_equation_class_init (MathEquationClass *klass)
     };
     static GEnumValue number_format_values[] =
     {
-      {DEC, "decimal",     "decimal"},
-      {BIN, "binary",      "binary"},
-      {OCT, "octal",       "octal"},
-      {HEX, "hexadecimal", "hexadecimal"},
+      {FIX, "fixed-point", "fixed-point"},
       {SCI, "scientific",  "scientific"},
       {ENG, "engineering", "engineering"},
       {0, NULL, NULL}
@@ -1342,7 +1302,7 @@ math_equation_class_init (MathEquationClass *klass)
                                                       "number-format",
                                                       "Display format",
                                                       number_format_type,
-                                                      DEC,
+                                                      FIX,
                                                       G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
                                     PROP_BASE,
@@ -1514,10 +1474,11 @@ math_equation_init(MathEquation *equation)
     equation->priv->state.status = g_strdup("");
     equation->priv->show_zeroes = FALSE;
     equation->priv->show_tsep = FALSE;
-    equation->priv->format = DEC;
+    equation->priv->format = FIX;
     equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
+    equation->priv->base = 10;
 
     mp_set_from_integer(0, &equation->priv->state.ans);
 }

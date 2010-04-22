@@ -55,4 +55,8 @@ void math_buttons_set_mode(MathButtons *buttons, ButtonMode mode);
 
 ButtonMode math_buttons_get_mode(MathButtons *buttons);
 
+void math_buttons_set_programming_base(MathButtons *buttons, gint base);
+
+gint math_buttons_get_programming_base(MathButtons *buttons);
+
 #endif /* MATH_BUTTONS_H */

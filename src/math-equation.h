@@ -44,10 +44,7 @@ typedef struct
 
 /* Number display mode. */
 typedef enum {
-  DEC,
-  BIN,
-  OCT,
-  HEX,
+  FIX,
   SCI,
   ENG
 } DisplayFormat;

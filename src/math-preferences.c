@@ -263,8 +263,8 @@ create_gui(MathPreferencesDialog *dialog)
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(widget));
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                       /* Number display mode combo: Decimal, e.g. 1234 */
-                       _("Decimal"), 1, DEC, -1);
+                       /* Number display mode combo: Fixed, e.g. 1234 */
+                       _("Fixed"), 1, FIX, -1);
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Scientific, e.g. 1.234×10^3 */
@@ -273,18 +273,6 @@ create_gui(MathPreferencesDialog *dialog)
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Engineering, e.g. 1.234k */
                        _("Engineering"), 1, ENG, -1);
-    gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-    gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                       /* Number display mode combo: Binary, e.g. 10011010010₂ */
-                       _("Binary"), 1, BIN, -1);
-    gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-    gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                       /* Number display mode combo: Octal, e.g. 2322₈ */
-                       _("Octal"), 1, OCT, -1);
-    gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-    gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                       /* Number display mode combo: Hexadecimal, e.g. 4D2₁₆ */
-                       _("Hexadecimal"), 1, HEX, -1);
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);
