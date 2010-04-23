@@ -1085,8 +1085,9 @@ void
 math_equation_solve(MathEquation *equation)
 {
     MPNumber z;
-    int result;
-    gchar *text, *error_token = NULL, *message = NULL;
+    gint result, n_brackets = 0;
+    gchar *c, *text, *error_token = NULL, *message = NULL;
+    GString *equation_text;
 
     if (math_equation_is_empty(equation))
         return;
@@ -1101,8 +1102,23 @@ math_equation_solve(MathEquation *equation)
     math_equation_set_number_mode(equation, NORMAL);
 
     text = math_equation_get_equation(equation);
-    result = parse(equation, text, &z, &error_token);
+    equation_text = g_string_new(text);
     g_free(text);
+    /* Count the number of brackets and automatically add missing closing brackets */
+    for (c = equation_text->str; *c; c++) {
+        if (*c == '(')
+            n_brackets++;
+        else if (*c == ')')
+            n_brackets--;
+    }
+    while (n_brackets > 0) {
+        g_string_append_c(equation_text, ')');
+        n_brackets--;
+    }
+  
+
+    result = parse(equation, equation_text->str, &z, &error_token);
+    g_string_free(equation_text, TRUE);
 
     switch (result) {
         case PARSER_ERR_NONE:
