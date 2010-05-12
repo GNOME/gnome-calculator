@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-03 16:23+0100\n"
+"POT-Creation-Date: 2010-05-13 00:36+0200\n"
 "PO-Revision-Date: 2010-03-03 16:16+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
@@ -820,33 +820,38 @@ msgstr "_Podstawowy"
 msgid "_Calculator"
 msgstr "_Kalkulator"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Spis treści"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Finansowy"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "Pomo_c"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Wstaw"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "P_rogramowanie"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Naukowy"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Widok"
 
@@ -1023,7 +1028,7 @@ msgstr ""
 "  --g-fatal-warnings              Wszystkie ostrzeżenia są krytyczne"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/calctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1035,19 +1040,19 @@ msgstr ""
 "  -s, --solve <równanie>          Rozwiązuje podane równanie"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/calctool.c:155
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Parametr --solve wymaga równania do rozwiązania"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/calctool.c:169
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Nieznany parametr \"%s\""
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
+#: ../src/calctool.c:182
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1201,44 +1206,44 @@ msgstr "Brak historii powtarzania"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1066
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Brak poprawnej wartości dla przesunięcia bitowego"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1082
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Do rozłożenia na czynniki potrzebna jest liczba całkowita"
 
-#: ../src/display.c:1108
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Brak poprawnej wartości do przechowania"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1230
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Przepełnienie. Proszę spróbować większego słowa maszynowego"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1235
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Nieznana zmienna \"%s\""
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1241
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Nie określono funkcji \"%s\""
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1247
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Nieznana konwersja"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1256
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Nieprawidłowa forma wyrażenia"
 
@@ -1275,7 +1280,8 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"Brak wymaganego pliku lub jest uszkodzony. Proszę sprawdzić instalację.\n"
+"Brak wymaganego pliku lub jest uszkodzony. Proszę sprawdzić poprawność "
+"instalacji.\n"
 "\n"
 "%s"
 
@@ -1356,6 +1362,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Wklej"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Wyświetlanie %d _miejsc po przecinku"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
