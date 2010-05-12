@@ -219,7 +219,7 @@ exp:
 | tLFLOOR exp tRFLOOR {mp_floor(&$2, &$$);}
 | tLCEILING exp tRCEILING {mp_ceiling(&$2, &$$);}
 | '[' exp ']' {mp_round(&$2, &$$);}
-| '{' exp '}' {mp_fractional_component(&$2, &$$);}
+| '{' exp '}' {mp_fractional_part(&$2, &$$);}
 | '|' exp '|' {mp_abs(&$2, &$$);}
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}

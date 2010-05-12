@@ -450,8 +450,15 @@ mp_fractional_component(const MPNumber *x, MPNumber *z)
     }
     if (z->fraction[0] == 0)
         z->sign = 0;
-    if (z->sign < 0)
-       z->sign = -z->sign;
+}
+
+
+void
+mp_fractional_part(const MPNumber *x, MPNumber *z)
+{
+    MPNumber f;
+    mp_floor(x, &f);
+    mp_subtract(x, &f, z);
 }
 
 
@@ -459,6 +466,7 @@ void
 mp_floor(const MPNumber *x, MPNumber *z)
 {
     int i;
+    bool have_fraction = false;
 
     /* Integer component of zero = 0 */
     if (mp_is_zero(x)) {
@@ -474,8 +482,14 @@ mp_floor(const MPNumber *x, MPNumber *z)
 
     /* Clear fraction */
     mp_set_from_mp(x, z);
-    for (i = z->exponent; i < MP_SIZE; i++)
+    for (i = z->exponent; i < MP_SIZE; i++) {
+        if (z->fraction[i])
+            have_fraction = true;
         z->fraction[i] = 0;
+    }
+
+    if (have_fraction && mp_is_negative(x))
+       mp_add_integer(z, -1, z);
 }
 
 
@@ -488,11 +502,7 @@ mp_ceiling(const MPNumber *x, MPNumber *z)
     mp_fractional_component(x, &f);
     if (mp_is_zero(&f))
         return;
-
-    if (mp_is_negative(x))
-       mp_add_integer(z, -1, z);
-    else
-       mp_add_integer(z, 1, z);
+    mp_add_integer(z, 1, z);
 }
 
 
@@ -500,18 +510,22 @@ void
 mp_round(const MPNumber *x, MPNumber *z)
 {
     MPNumber f, one;
+    bool do_floor;
 
-    mp_floor(x, z);
+    do_floor = !mp_is_negative(x);
+
     mp_fractional_component(x, &f);
     mp_multiply_integer(&f, 2, &f);
+    mp_abs(&f, &f);
     mp_set_from_integer(1, &one);
-    if (mp_is_less_than(&f, &one))
-        return;
+    if (mp_is_greater_equal(&f, &one))
+        do_floor = !do_floor;
 
-    if (mp_is_negative(x))
-       mp_add_integer(z, -1, z);
+    if (do_floor)
+        mp_floor(x, z);
     else
-       mp_add_integer(z, 1, z);   
+        mp_ceiling(x, z);
+
 }
 
 int

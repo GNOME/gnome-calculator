@@ -495,7 +495,7 @@ display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *button
             MPNumber max, fraction;
 
             mp_set_from_unsigned_integer(G_MAXUINT64, &max);
-            mp_fractional_component(&x, &fraction);
+            mp_fractional_part(&x, &fraction);
             if (mp_is_negative(&x) || mp_is_greater_than(&x, &max) || !mp_is_zero(&fraction))
                 enabled = FALSE;
             else

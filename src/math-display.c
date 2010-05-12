@@ -103,6 +103,12 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     if (state == GDK_CONTROL_MASK) {
         switch(event->keyval)
         {
+        case GDK_bracketleft:
+            math_equation_insert(display->priv->equation, "⌈");
+            return TRUE;
+        case GDK_bracketright:
+            math_equation_insert(display->priv->equation, "⌉");
+            return TRUE;
         case GDK_e:
             math_equation_insert_exponent(display->priv->equation);
             return TRUE;
@@ -127,6 +133,17 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
         case GDK_apostrophe:
              math_equation_insert(display->priv->equation, "°");
              return TRUE;
+        }
+    }
+    if (state == GDK_MOD1_MASK) {
+        switch(event->keyval)
+        {
+        case GDK_bracketleft:
+            math_equation_insert(display->priv->equation, "⌊");
+            return TRUE;
+        case GDK_bracketright:
+            math_equation_insert(display->priv->equation, "⌋");
+            return TRUE;
         }
     }
 
