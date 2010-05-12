@@ -84,8 +84,7 @@ typedef enum
     FUNCTION,
     MEMORY,
     GROUP,
-    ACTION,
-    ACTION_BOLD
+    ACTION
 } ButtonClass;
 
 typedef struct {
@@ -227,21 +226,18 @@ static ButtonData button_data[] = {
     {"character", NULL, MEMORY,
       /* Tooltip for the insert character code button */
       N_("Insert Character Code")},
-    {"result", NULL, ACTION_BOLD,
+    {"result", NULL, ACTION,
       /* Tooltip for the solve button */
       N_("Calculate Result")},
-    {"factor", NULL, ACTION_BOLD,
+    {"factor", NULL, ACTION,
       /* Tooltip for the factor button */
       N_("Factorize [Ctrl+F]")},
-    {"clear", NULL, ACTION,
+    {"clear", NULL, GROUP,
       /* Tooltip for the clear button */
       N_("Clear Display [Escape]")},
-    {"backspace", NULL, ACTION,
-      /* Tooltip for the backspace button */
-      N_("Backspace")},  
-    {"delete", NULL, ACTION,
-      /* Tooltip for the delete button */
-      N_("Delete")},  
+    {"undo", NULL, GROUP,
+      /* Tooltip for the undo button */
+      N_("Undo [Ctrl+Z]")},
     {"shift_left", NULL, ACTION,
       /* Tooltip for the shift left button */
       N_("Shift Left")},  
@@ -723,9 +719,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             set_tint(button, &buttons->priv->color_group, 1);
             break;
         case ACTION:
-            set_tint(button, &buttons->priv->color_action, 1);
-            break;
-        case ACTION_BOLD:
             set_tint(button, &buttons->priv->color_action, 2);
             break;
         }
@@ -979,9 +972,9 @@ delete_cb(GtkWidget *widget, MathButtons *buttons)
 
 G_MODULE_EXPORT
 void
-backspace_cb(GtkWidget *widget, MathButtons *buttons)
+undo_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    math_equation_backspace(buttons->priv->equation);
+    math_equation_undo(buttons->priv->equation);
 }
 
 
@@ -1018,14 +1011,21 @@ popup_button_menu(GtkWidget *widget, GtkMenu *menu)
 
 
 static void
+save_variable_cb(GtkWidget *widget, MathButtons *buttons)
+{
+  printf("save\n");
+}
+
+
+static void
 delete_variable_cb(GtkWidget *widget, MathButtons *buttons)
 {
-  printf("!\n");
+  printf("delete\n");
 }
 
 
 static GtkWidget *
-make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber *value, gboolean can_delete, GCallback callback)
+make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber *value, gboolean can_modify, GCallback callback)
 {
     gchar text[1024] = "", *mstr;
     GtkWidget *item, *label;
@@ -1044,16 +1044,25 @@ make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber 
     item = gtk_menu_item_new();
 
     // FIXME: Buttons don't work inside menus...
-    if (0){//can_delete) {
+    if (0) {//can_modify) {
         GtkWidget *hbox, *button;
+
         hbox = gtk_hbox_new(FALSE, 6);
+        gtk_container_add(GTK_CONTAINER(item), hbox);
+
         gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+
         button = gtk_button_new();
         gtk_button_set_image(GTK_BUTTON(button), gtk_image_new_from_stock(GTK_STOCK_DELETE, GTK_ICON_SIZE_MENU));
         gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
         gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, TRUE, 0);
         g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(delete_variable_cb), buttons);
-        gtk_container_add(GTK_CONTAINER(item), hbox);
+
+        button = gtk_button_new();
+        gtk_button_set_image(GTK_BUTTON(button), gtk_image_new_from_stock(GTK_STOCK_SAVE, GTK_ICON_SIZE_MENU));
+        gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
+        gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, TRUE, 0);
+        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(save_variable_cb), buttons);
     }
     else
         gtk_container_add(GTK_CONTAINER(item), label);
@@ -1101,7 +1110,9 @@ store_cb(GtkWidget *widget, MathButtons *buttons)
 
     g_strfreev(names);
 
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
+    // FIXME
+    //item = gtk_menu_item_new_with_label(_("Add variable"));
+    //gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
 
     gtk_widget_show_all(menu);
     popup_button_menu(widget, GTK_MENU(menu));
