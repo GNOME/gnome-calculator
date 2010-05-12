@@ -184,7 +184,7 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
     else if (strcmp(lower_name, "conj") == 0)
         mp_conjugate(x, z);
     else if (strcmp(lower_name, "int") == 0)
-        mp_integer_component(x, z);
+        mp_floor(x, z);
     else if (strcmp(lower_name, "frac") == 0)
         mp_fractional_component(x, z);
     else if (strcmp(lower_name, "re") == 0)

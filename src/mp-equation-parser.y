@@ -178,6 +178,7 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 }
 
 %left <int_t> tNUMBER
+%left tLFLOOR tRFLOOR tLCEILING tRCEILING
 %left UNARY_PLUS
 %left tADD tSUBTRACT
 %left tAND tOR tXOR tXNOR
@@ -215,6 +216,10 @@ unit:
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}
 | exp '(' exp ')' {mp_multiply(&$1, &$3, &$$);}
+| tLFLOOR exp tRFLOOR {mp_floor(&$2, &$$);}
+| tLCEILING exp tRCEILING {mp_ceiling(&$2, &$$);}
+| '[' exp ']' {mp_round(&$2, &$$);}
+| '{' exp '}' {mp_fractional_component(&$2, &$$);}
 | '|' exp '|' {mp_abs(&$2, &$$);}
 | exp '^' exp {mp_xpowy(&$1, &$3, &$$);}
 | exp tSUPNUM {mp_xpowy_integer(&$1, $2, &$$);}

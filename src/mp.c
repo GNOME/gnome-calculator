@@ -450,11 +450,13 @@ mp_fractional_component(const MPNumber *x, MPNumber *z)
     }
     if (z->fraction[0] == 0)
         z->sign = 0;
+    if (z->sign < 0)
+       z->sign = -z->sign;
 }
 
 
 void
-mp_integer_component(const MPNumber *x, MPNumber *z)
+mp_floor(const MPNumber *x, MPNumber *z)
 {
     int i;
 
@@ -476,6 +478,41 @@ mp_integer_component(const MPNumber *x, MPNumber *z)
         z->fraction[i] = 0;
 }
 
+
+void
+mp_ceiling(const MPNumber *x, MPNumber *z)
+{
+    MPNumber f;
+
+    mp_floor(x, z);
+    mp_fractional_component(x, &f);
+    if (mp_is_zero(&f))
+        return;
+
+    if (mp_is_negative(x))
+       mp_add_integer(z, -1, z);
+    else
+       mp_add_integer(z, 1, z);
+}
+
+
+void
+mp_round(const MPNumber *x, MPNumber *z)
+{
+    MPNumber f, one;
+
+    mp_floor(x, z);
+    mp_fractional_component(x, &f);
+    mp_multiply_integer(&f, 2, &f);
+    mp_set_from_integer(1, &one);
+    if (mp_is_less_than(&f, &one))
+        return;
+
+    if (mp_is_negative(x))
+       mp_add_integer(z, -1, z);
+    else
+       mp_add_integer(z, 1, z);   
+}
 
 int
 mp_compare_mp_to_mp(const MPNumber *x, const MPNumber *y)
@@ -733,12 +770,12 @@ mp_is_integer(const MPNumber *x)
     /* This fix is required for 1/3 repiprocal not being detected as an integer */
     /* Multiplication and division by 10000 is used to get around a
      * limitation to the "fix" for Sun bugtraq bug #4006391 in the
-     * mp_integer_component() routine in mp.c, when the exponent is less than 1.
+     * mp_floor() routine in mp.c, when the exponent is less than 1.
      */
     mp_set_from_integer(10000, &t3);
     mp_multiply(x, &t3, &t1);
     mp_divide(&t1, &t3, &t1);
-    mp_integer_component(&t1, &t2);
+    mp_floor(&t1, &t2);
     return mp_is_equal(&t1, &t2);
 
     /* Correct way to check for integer */
@@ -1814,7 +1851,7 @@ mp_modulus_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
     }
 
     mp_divide(x, y, &t1);
-    mp_integer_component(&t1, &t1);
+    mp_floor(&t1, &t1);
     mp_multiply(&t1, y, &t2);
     mp_subtract(x, &t2, z);
 

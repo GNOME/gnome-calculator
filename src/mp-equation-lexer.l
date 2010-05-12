@@ -87,6 +87,10 @@ IN   [iI][nN]
 "*"|"×"     {return tMULTIPLY;}
 "/"|"∕"|"÷" {return tDIVIDE;}
 {MOD}       {return tMOD;}
+"⌊"         {return tLFLOOR;}
+"⌋"         {return tRFLOOR;}
+"⌈"         {return tLCEILING;}
+"⌉"         {return tRCEILING;}
 "√"         {return tROOT;}
 "∛"         {return tROOT3;}
 "∜"         {return tROOT4;}

@@ -185,7 +185,7 @@ mp_shift(const MPNumber *x, int count, MPNumber *z)
         for (i = 0; i < -count; i++)
             multiplier *= 2;
         mp_divide_integer(x, multiplier, &temp);
-        mp_integer_component(&temp, z);
+        mp_floor(&temp, z);
     }
 }
 

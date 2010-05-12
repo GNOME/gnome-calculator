@@ -167,11 +167,17 @@ void   mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z);
 /* Sets z = 1 ÷ x */
 void   mp_reciprocal(const MPNumber *, MPNumber *);
 
-/* Sets z = fractional part of x */
+/* Sets z = {x} */
 void   mp_fractional_component(const MPNumber *x, MPNumber *z);
 
-/* Sets z = integer part of x */
-void   mp_integer_component(const MPNumber *x, MPNumber *z);
+/* Sets z = ⌊x⌋ */
+void   mp_floor(const MPNumber *x, MPNumber *z);
+
+/* Sets z = ⌈x⌉ */
+void   mp_ceiling(const MPNumber *x, MPNumber *z);
+
+/* Sets z = [x] */
+void   mp_round(const MPNumber *x, MPNumber *z);
 
 /* Sets z = ln x */
 void   mp_ln(const MPNumber *x, MPNumber *z);

@@ -523,7 +523,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
     mp_add(&number, &temp, &number);
 
     /* Split into integer and fractional component */
-    mp_integer_component(&number, &integer_component);
+    mp_floor(&number, &integer_component);
     mp_fractional_component(&number, &fractional_component);
 
     /* Write out the integer component least significant digit to most */
@@ -532,11 +532,11 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
         MPNumber t, t2, t3;
 
         mp_divide_integer(&temp, base, &t);
-        mp_integer_component(&t, &t);
+        mp_floor(&t, &t);
         mp_multiply_integer(&t, base, &t2);
 
         mp_subtract(&temp, &t2, &t3);
-        mp_integer_component(&t3, &t3);
+        mp_floor(&t3, &t3);
 
         g_string_prepend_c(string, digits[mp_cast_to_int(&t3)]);
 
@@ -553,7 +553,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
         MPNumber digit;
 
         mp_multiply_integer(&temp, base, &temp);
-        mp_integer_component(&temp, &digit);
+        mp_floor(&temp, &digit);
         d = mp_cast_to_int(&digit);
 
         g_string_append_c(string, digits[d]);
