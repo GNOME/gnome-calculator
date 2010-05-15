@@ -603,9 +603,7 @@ mp_divide(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
 {
-    int i__1;
-    int c, i, k, b2, c2, i2, j1, j2, r1;
-    int j11, kh, iq, ir, iqj;
+    int c, i, k, b2, c2, j1, j2;
 
     /* x/0 */
     if (y == 0) {
@@ -650,7 +648,6 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
     z->exponent = x->exponent;
 
     c = 0;
-    i2 = MP_T + 4;
     i = 0;
 
     /*  IF y*B NOT REPRESENTABLE AS AN INTEGER HAVE TO SIMULATE
@@ -660,6 +657,8 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
     /* Computing MAX */
     b2 = max(MP_BASE << 3, 32767 / MP_BASE);
     if (y < b2) {
+        int kh, r1;
+
         /* LOOK FOR FIRST NONZERO DIGIT IN QUOTIENT */
         do {
             c = MP_BASE * c;
@@ -669,7 +668,7 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
             r1 = c / y;
             if (r1 < 0)
                 goto L210;
-        } while(r1 == 0);
+        } while (r1 == 0);
 
         /* ADJUST EXPONENT AND GET T+4 DIGITS IN QUOTIENT */
         z->exponent += 1 - i;
@@ -688,7 +687,7 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
                 goto L210;
         }
 
-        for (k = kh; k < i2; k++) {
+        for (k = kh; k < MP_T + 4; k++) {
             z->fraction[k] = c / y;
             c = MP_BASE * (c - y * z->fraction[k]);
         }
@@ -703,16 +702,15 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
 
     /* HERE NEED SIMULATED DOUBLE-PRECISION DIVISION */
     j1 = y / MP_BASE;
+    j2 = y - j1 * MP_BASE;
 
     /* LOOK FOR FIRST NONZERO DIGIT */
     c2 = 0;
-    j2 = y - j1 * MP_BASE;
     do {
         c = MP_BASE * c + c2;
-        i__1 = c - j1;
         c2 = i < MP_T ? x->fraction[i] : 0;
         i++;
-    } while (i__1 < 0 || (i__1 == 0 && c2 < j2));
+    } while (c < j1 || (c == j1 && c2 < j2));
 
     /* COMPUTE T+4 QUOTIENT DIGITS */
     z->exponent += 1 - i;
@@ -720,10 +718,11 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
     k = 1;
 
     /* MAIN LOOP FOR LARGE ABS(y) CASE */
-    j11 = j1 + 1;
-    while(1) {
+    while (true) {
+        int ir, iq, iqj;
+
         /* GET APPROXIMATE QUOTIENT FIRST */
-        ir = c / j11;
+        ir = c / (j1 + 1);
 
         /* NOW REDUCE SO OVERFLOW DOES NOT OCCUR */
         iq = c - ir * j1;
@@ -753,7 +752,7 @@ mp_divide_integer(const MPNumber *x, int64_t y, MPNumber *z)
             goto L210;
 
         ++k;
-        if (k > i2) {
+        if (k > MP_T + 4) {
             mp_normalize(z);
             
             if (mp_is_complex(x)) {
@@ -1277,7 +1276,7 @@ mp_is_less_than(const MPNumber *x, const MPNumber *y)
 static void
 mp_multiply_real(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    int c, i, j, xi;
+    int c, i, xi;
     MPNumber r;
 
     /* x*0 = 0*y = 0 */    
@@ -1293,6 +1292,8 @@ mp_multiply_real(const MPNumber *x, const MPNumber *y, MPNumber *z)
     /* PERFORM MULTIPLICATION */
     c = 8;
     for (i = 0; i < MP_T; i++) {
+        int j;
+
         xi = x->fraction[i];
 
         /* FOR SPEED, PUT THE NUMBER WITH MANY ZEROS FIRST */
@@ -1342,15 +1343,15 @@ mp_multiply_real(const MPNumber *x, const MPNumber *y, MPNumber *z)
         }
 
         c = 0;
-        for (j = MP_T + 3; j >= 0; j--) {
-            int ri = r.fraction[j] + c;
+        for (i = MP_T + 3; i >= 0; i--) {
+            int ri = r.fraction[i] + c;
             if (ri < 0) {
                 mperr("*** INTEGER OVERFLOW IN MP_MULTIPLY, B TOO LARGE ***");
                 mp_set_from_integer(0, z);
                 return;
             }
             c = ri / MP_BASE;
-            r.fraction[j] = ri - MP_BASE * c;
+            r.fraction[i] = ri - MP_BASE * c;
         }
 
         if (c != 0) {
@@ -1405,8 +1406,7 @@ mp_multiply(const MPNumber *x, const MPNumber *y, MPNumber *z)
 void
 mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
 {
-    int c, i, c1, c2, j1, j2;
-    int t1, t3, t4, ij, ri = 0, is, ix;
+    int c, i;
 
     /* x*0 = 0*y = 0 */
     if (mp_is_zero(x) || y == 0) {
@@ -1418,12 +1418,14 @@ mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
     // FIXME: Why is this not working?
     /*if (y == 1 || y == -1) {
         mp_set_from_mp(x, z);
-        z->sign *= y;
+        if (y < 0)
+            mp_invert_sign(z, z);
         return;
     }*/
 
     /* If multiplying by base then can optimise */
-    if (y % MP_BASE == 0) {
+    // FIXME: Very unlikely and doesn't support complex numbers
+    /*if (y % MP_BASE == 0) {
         mp_set_from_mp(x, z);
         if (y < 0) {
             z->sign = -z->sign;
@@ -1432,8 +1434,9 @@ mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
         else
             z->exponent += y / MP_BASE;
         return;
-    }
+    }*/
 
+    //FIXME: breaks:  mp_set_from_integer(0, z);
     if (y < 0) {
         y = -y;
         z->sign = -x->sign;
@@ -1444,9 +1447,6 @@ mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
 
     /* FORM PRODUCT IN ACCUMULATOR */
     c = 0;
-    t1 = MP_T + 1;
-    t3 = MP_T + 3;
-    t4 = MP_T + 4;
 
     /*  IF y*B NOT REPRESENTABLE AS AN INTEGER WE HAVE TO SIMULATE
      *  DOUBLE-PRECISION MULTIPLICATION.
@@ -1454,31 +1454,36 @@ mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
 
     /* Computing MAX */
     if (y >= max(MP_BASE << 3, 32767 / MP_BASE)) {
+        int j1, j2;
+
         /* HERE J IS TOO LARGE FOR SINGLE-PRECISION MULTIPLICATION */
         j1 = y / MP_BASE;
         j2 = y - j1 * MP_BASE;
 
         /* FORM PRODUCT */
-        for (ij = 1; ij <= t4; ++ij) {
+        for (i = MP_T + 3; i >= 0; i--) {
+            int c1, c2, is, ix, t;
+
             c1 = c / MP_BASE;
             c2 = c - MP_BASE * c1;
-            i = t1 - ij;
             ix = 0;
-            if (i > 0)
-                ix = x->fraction[i - 1];
-            ri = j2 * ix + c2;
-            is = ri / MP_BASE;
+            if (i > 3)
+                ix = x->fraction[i - 4];
+
+            t = j2 * ix + c2;
+            is = t / MP_BASE;
             c = j1 * ix + c1 + is;
-            z->fraction[i + 3] = ri - MP_BASE * is;
+            z->fraction[i] = t - MP_BASE * is;
         }
     }
     else
     {
-        for (ij = 1; ij <= MP_T; ++ij) {
-            i = t1 - ij;
-            ri = y * x->fraction[i - 1] + c;
+        int ri = 0;
+
+        for (i = MP_T + 3; i >= 4; i--) {
+            ri = y * x->fraction[i - 4] + c;
             c = ri / MP_BASE;
-            z->fraction[i + 3] = ri - MP_BASE * c;
+            z->fraction[i] = ri - MP_BASE * c;
         }
 
         /* CHECK FOR INTEGER OVERFLOW */
@@ -1489,39 +1494,35 @@ mp_multiply_integer(const MPNumber *x, int64_t y, MPNumber *z)
         }
 
         /* HAVE TO TREAT FIRST FOUR WORDS OF R SEPARATELY */
-        for (ij = 1; ij <= 4; ++ij) {
-            i = 5 - ij;
-            ri = c;
-            c = ri / MP_BASE;
-            z->fraction[i - 1] = ri - MP_BASE * c;
+        for (i = 3; i >= 0; i--) {
+            int t;
+
+            t = c;
+            c = t / MP_BASE;
+            z->fraction[i] = t - MP_BASE * c;
         }
     }
 
     /* HAVE TO SHIFT RIGHT HERE AS CARRY OFF END */
-    while(1) {
-        /* NORMALIZE AND ROUND OR TRUNCATE RESULT */
-        if (c == 0)
-        {
-            mp_normalize(z);
-            return;
-        }
+    while (c != 0) {
+        int t;
 
-        if (c < 0) {
-            mperr("*** INTEGER OVERFLOW IN mp_multiply_integer, B TOO LARGE ***");
-            mp_set_from_integer(0, z);
-            return;
-        }
-
-        for (ij = 1; ij <= t3; ++ij) {
-            i = t4 - ij;
+        for (i = MP_T + 3; i >= 1; i--)
             z->fraction[i] = z->fraction[i - 1];
-        }
-        ri = c;
-        c = ri / MP_BASE;
-        z->fraction[0] = ri - MP_BASE * c;
+        t = c;
+        c = t / MP_BASE;
+        z->fraction[0] = t - MP_BASE * c;
         z->exponent++;
     }
-    
+
+    if (c < 0) {
+        mperr("*** INTEGER OVERFLOW IN mp_multiply_integer, B TOO LARGE ***");
+        mp_set_from_integer(0, z);
+        return;
+    }
+
+    mp_normalize(z);
+
     if (mp_is_complex(x)) {
         MPNumber im_z;
         mp_imaginary_component(x, &im_z);
