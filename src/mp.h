@@ -56,13 +56,13 @@
 typedef struct
 {
    /* Sign (+1, -1) or 0 for the value zero */
-   int sign; //, im_sign;
+   int sign, im_sign;
 
    /* Exponent (to base MP_BASE) */
-   int exponent; //, im_exponent;
+   int exponent, im_exponent;
 
    /* Normalized fraction */
-   int fraction[MP_SIZE]; //, im_fraction[MP_SIZE];
+   int fraction[MP_SIZE], im_fraction[MP_SIZE];
 } MPNumber;
 
 typedef enum

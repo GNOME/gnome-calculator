@@ -329,7 +329,7 @@ main(int argc, char **argv)
     int accuracy = 9, word_size = 64, base = 10;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
     gchar *number_format, *angle_units, *button_mode;
-  
+
     g_type_init();
 
     bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);

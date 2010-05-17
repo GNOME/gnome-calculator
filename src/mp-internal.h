@@ -41,5 +41,7 @@
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void mp_gcd(int64_t *, int64_t *);
 void mp_normalize(MPNumber *);
+void convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
+void convert_from_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 
 #endif /* MP_INTERNAL_H */

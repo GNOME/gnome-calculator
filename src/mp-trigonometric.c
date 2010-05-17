@@ -35,7 +35,7 @@ mp_compare_mp_to_int(const MPNumber *x, int i)
 
 
 /* Convert x to radians */
-static void
+void
 convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber t1, t2;
@@ -68,7 +68,7 @@ mp_get_pi(MPNumber *z)
 }
 
 
-static void
+void
 convert_from_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     MPNumber t1, t2;

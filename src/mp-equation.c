@@ -61,7 +61,7 @@ static void
 set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
 {
     // Reserved words, e, π, mod, and, or, xor, not, abs, log, ln, sqrt, int, frac, sin, cos, ...
-    if (strcmp(name, "e") == 0 || strcmp(name, "π") == 0)
+    if (strcmp(name, "e") == 0 || strcmp(name, "i") == 0 || strcmp(name, "π") == 0)
         return; // FALSE
 
     if (state->options->set_variable)
@@ -129,6 +129,7 @@ function_is_defined(MPEquationParserState *state, const char *name)
         strcmp(lower_name, "ln") == 0 ||
         strcmp(lower_name, "sqrt") == 0 ||
         strcmp(lower_name, "abs") == 0 ||
+        strcmp(lower_name, "arg") == 0 ||
         strcmp(lower_name, "conj") == 0 ||
         strcmp(lower_name, "int") == 0 ||
         strcmp(lower_name, "frac") == 0 ||
@@ -181,6 +182,8 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
         mp_sqrt(x, z);
     else if (strcmp(lower_name, "abs") == 0) // |x|
         mp_abs(x, z);
+    else if (strcmp(lower_name, "arg") == 0)
+        mp_arg(x, state->options->angle_units, z);
     else if (strcmp(lower_name, "conj") == 0)
         mp_conjugate(x, z);
     else if (strcmp(lower_name, "int") == 0)

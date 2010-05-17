@@ -507,6 +507,31 @@ test_equations()
     options.angle_units = MP_GRADIANS;
     test("sin 100", "1", 0);
 
+    /* Complex numbers */
+    options.angle_units = MP_DEGREES;
+    test("i", "i", 0);
+    test("−i", "−i", 0);
+    test("2i", "2i", 0);
+    test("1+i", "1+i", 0);  
+    test("i+1", "1+i", 0);
+    test("1−i", "1−i", 0);  
+    test("i−1", "−1+i", 0);
+    test("i×i", "−1", 0);
+    test("i÷i", "1", 0);
+    test("1÷i", "−i", 0);
+    test("|i|", "1", 0);
+    test("|3+4i|", "5", 0);
+    test("arg 0", "", PARSER_ERR_MP);  
+    test("arg 1", "0", 0);
+    test("arg (1+i)", "45", 0);
+    test("arg i", "90", 0);
+    test("arg −1", "180", 0);
+    test("arg −i", "270", 0);
+    test("i⁻¹", "−i", 0);
+    //test("√−1", "i", 0);
+    //test("i^0.5", "i", 0);
+
+    /* Boolean */
     test("0 and 0", "0", 0);
     test("1 and 0", "0", 0);
     test("0 and 1", "0", 0);
@@ -718,7 +743,7 @@ test_mp()
 
 void
 unittest()
-{
+{    
     test_mp();
     test_numbers();
     test_conversions();

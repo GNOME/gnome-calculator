@@ -40,7 +40,7 @@ mp_set_from_float(float rx, MPNumber *z)
     int i, k, ib, ie, tp;
     float rj;
 
-    memset(z, 0, sizeof(MPNumber));
+    mp_set_from_integer(0, z);
 
     /* CHECK SIGN */
     if (rx < 0.0f) {
@@ -113,7 +113,7 @@ mp_set_from_double(double dx, MPNumber *z)
     int i, k, ib, ie, tp;
     double dj;
 
-    memset(z, 0, sizeof(MPNumber));
+    mp_set_from_integer(0, z);
 
     /* CHECK SIGN */
     if (dx < 0.0)  {
@@ -196,8 +196,8 @@ mp_set_from_integer(int64_t x, MPNumber *z)
 
     while (x != 0) {
         z->fraction[z->exponent] = x % MP_BASE;
-        x = x / MP_BASE;
         z->exponent++;
+        x /= MP_BASE;
     }
     for (i = 0; i < z->exponent / 2; i++) {
         int t = z->fraction[i];
@@ -212,7 +212,7 @@ mp_set_from_unsigned_integer(uint64_t x, MPNumber *z)
 {
     int i;
 
-    memset(z, 0, sizeof(MPNumber));
+    mp_set_from_integer(0, z);
 
     if (x == 0) {
         z->sign = 0;
@@ -269,13 +269,15 @@ mp_set_from_polar(const MPNumber *r, MPAngleUnit unit, const MPNumber *theta, MP
 void
 mp_set_from_complex(const MPNumber *x, const MPNumber *y, MPNumber *z)
 {
-    //MPNumber i;
+    /* NOTE: Do imaginary component first as z may be x or y */
+    z->im_sign = y->sign;
+    z->im_exponent = y->exponent;
+    memcpy(z->im_fraction, y->fraction, sizeof(int) * MP_SIZE);
 
-    // FIXME: There is some corruption here as i is currently defined to zero but the result does not work
-    //mp_get_i(&i);
-    //mp_multiply(y, &i, z);
-    //mp_add(x, z, z);
-    mp_set_from_mp(x, z);
+    z->sign = x->sign;
+    z->exponent = x->exponent;
+    if (z != x)
+        memcpy(z->fraction, x->fraction, sizeof(int) * MP_SIZE);
 }
 
 
@@ -568,7 +570,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
         g_string_truncate(string, last_non_zero);
 
     /* Add sign on non-zero values */
-    if (strcmp(string->str, "0") != 0) {
+    if (strcmp(string->str, "0") != 0 || force_sign) {
         if (mp_is_negative(x))
             g_string_prepend(string, "−");
         else if (force_sign)
@@ -597,22 +599,23 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
 void
 mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
 {
-    MPNumber x_real, x_im;
     GString *string;
+    MPNumber x_real;
 
     string = g_string_sized_new(buffer_length);
 
     mp_real_component(x, &x_real);
-    mp_imaginary_component(x, &x_im);
-
     mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, string);
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
-        
+        MPNumber x_im;
+
+        mp_imaginary_component(x, &x_im);
+
         if (strcmp(string->str, "0") == 0) {
             g_string_assign(string, "");
-            force_sign = FALSE;
+            force_sign = false;
         }
 
         s = g_string_sized_new(buffer_length);
@@ -627,7 +630,11 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
             g_string_append(string, "−i");
         }
         else {
-            g_string_append(string, s->str);
+            if (strcmp(s->str, "+0") == 0)
+                g_string_append(string, "+");
+            else if (strcmp(s->str, "0") != 0)
+                g_string_append(string, s->str);
+
             g_string_append(string, "i");
         }
         g_string_free(s, TRUE);
