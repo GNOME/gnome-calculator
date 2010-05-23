@@ -258,11 +258,13 @@ mp_set_from_fraction(int64_t numerator, int64_t denominator, MPNumber *z)
 void
 mp_set_from_polar(const MPNumber *r, MPAngleUnit unit, const MPNumber *theta, MPNumber *z)
 {
-    MPNumber sin_theta, cos_theta;
-    
-    mp_sin(theta, unit, &sin_theta);
-    mp_cos(theta, unit, &cos_theta);
-    mp_set_from_complex(&cos_theta, &sin_theta, z);
+    MPNumber x, y;
+
+    mp_cos(theta, unit, &x);
+    mp_multiply(&x, r, &x);
+    mp_sin(theta, unit, &y);
+    mp_multiply(&y, r, &y);
+    mp_set_from_complex(&x, &y, z);
 }
 
 
@@ -620,7 +622,10 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
 
         s = g_string_sized_new(buffer_length);
         mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, s);
-        if (strcmp(s->str, "1") == 0) {
+        if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
+            /* Ignore */
+        }
+        else if (strcmp(s->str, "1") == 0) {
             g_string_append(string, "i");
         }
         else if (strcmp(s->str, "+1") == 0) {

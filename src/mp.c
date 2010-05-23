@@ -48,7 +48,8 @@ mperr(const char *format, ...)
 }
 
 
-const char *mp_get_error()
+const char *
+mp_get_error()
 {
     return mp_error;
 }
@@ -141,8 +142,7 @@ mp_abs(const MPNumber *x, MPNumber *z)
 void
 mp_arg(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
-    MPNumber x_real, x_im, t;
-    bool invert;
+    MPNumber x_real, x_im, pi;
 
     if (mp_is_zero(x)) {
         /* Translators: Error display when attempting to take argument of zero */
@@ -153,24 +153,35 @@ mp_arg(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 
     mp_real_component(x, &x_real);
     mp_imaginary_component(x, &x_im);
+    mp_get_pi(&pi);
 
-    if (mp_is_zero(&x_real)) {
-        mp_get_pi(z);
-        convert_from_radians(z, unit, z);
-        mp_divide_integer(z, 2, z);
-        invert = mp_is_negative(&x_im);
+    if (mp_is_zero(&x_im)) {
+        if (mp_is_negative(&x_real))
+            convert_from_radians(&pi, MP_RADIANS, z);
+        else
+            mp_set_from_integer(0, z);
+    }
+    else if (mp_is_zero(&x_real)) {
+        mp_set_from_mp(&pi, z);
+        if (mp_is_negative(&x_im))
+            mp_divide_integer(z, -2, z);
+        else
+            mp_divide_integer(z, 2, z);
+    }
+    else if (mp_is_negative(&x_real)) {
+        mp_divide(&x_im, &x_real, z);
+        mp_atan(z, MP_RADIANS, z);
+        if (mp_is_negative(&x_im))
+            mp_subtract(z, &pi, z);
+        else
+            mp_add(z, &pi, z);
     }
     else {
-        mp_divide(&x_im, &x_real, &t);
-        mp_atan(&t, unit, z);
-        invert = mp_is_negative(&x_real);
+        mp_divide(&x_im, &x_real, z);
+        mp_atan(z, MP_RADIANS, z);
     }
-  
-    if (invert) {
-        mp_get_pi(&t);
-        convert_from_radians(&t, unit, &t);
-        mp_add(z, &t, z);
-    }
+
+    convert_from_radians(z, unit, z);
 }
 
 
@@ -1038,7 +1049,7 @@ mp_epowy(const MPNumber *x, MPNumber *z)
 
     if (mp_is_complex(x)) {
         MPNumber x_real, r, theta;
-        
+
         mp_real_component(x, &x_real);
         mp_imaginary_component(x, &theta);
 
@@ -1240,13 +1251,13 @@ mp_ln(const MPNumber *x, MPNumber *z)
     }
 
     /* ln(-x) complex */
-    // TEMP: Remove when supporting complex numbers
-    if (mp_is_negative(x)) {
-        /* Translators: Error displayed attempted to take logarithm of negative value */
+    /* FIXME: Make complex numbers optional */
+    /*if (mp_is_negative(x)) {
+        // Translators: Error displayed attempted to take logarithm of negative value
         mperr(_("Logarithm of negative values is undefined"));
         mp_set_from_integer(0, z);
         return;
-    }
+    }*/
 
     if (mp_is_complex(x) || mp_is_negative(x)) {
         MPNumber r, theta, z_real;
@@ -1627,11 +1638,12 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
     MPNumber t;
 
     /* (-x)^y imaginary */
-    if (x->sign < 0) {
+    /* FIXME: Make complex numbers optional */
+    /*if (x->sign < 0) {
         mperr(_("The power of negative numbers is only defined for integer exponents"));
         mp_set_from_integer(0, z);
         return;
-    }
+    }*/
 
     /* 0^-y illegal */
     if (mp_is_zero(x) && y->sign < 0) {
@@ -1731,7 +1743,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 
 
 void
-mp_root(const MPNumber *x, int64_t n, MPNumber *z)
+mp_root_real(const MPNumber *x, int64_t n, MPNumber *z)
 {
     float approximation;
     int ex, np, it0, t;
@@ -1836,14 +1848,38 @@ mp_root(const MPNumber *x, int64_t n, MPNumber *z)
 
 
 void
+mp_root(const MPNumber *x, int64_t n, MPNumber *z)
+{
+    if (!mp_is_complex(x) && mp_is_negative(x) && n % 2 == 1) {
+        mp_abs(x, z);
+        mp_root_real(z, n, z);
+        mp_invert_sign(z, z);
+    }
+    else if (mp_is_complex(x) || mp_is_negative(x)) {
+        MPNumber r, theta, i;
+
+        mp_abs(x, &r);
+        mp_arg(x, MP_RADIANS, &theta);
+
+        mp_root_real(&r, n, &r);
+        mp_divide_integer(&theta, n, &theta);
+        mp_set_from_polar(&r, MP_RADIANS, &theta, z);
+    }
+    else
+        mp_root_real(x, n, z);
+}
+
+
+void
 mp_sqrt(const MPNumber *x, MPNumber *z)
 {
     if (mp_is_zero(x))
-        mp_set_from_integer(0, z);
-    else if (x->sign < 0) {
+       mp_set_from_integer(0, z);
+    /* FIXME: Make complex numbers optional */
+    /*else if (x->sign < 0) {
         mperr(_("Square root is undefined for negative values"));
         mp_set_from_integer(0, z);
-    }
+    }*/
     else {
         MPNumber t;
 

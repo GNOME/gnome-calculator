@@ -378,7 +378,6 @@ test_equations()
     test("4^3^2", "262144", 0);
     test("4^(3^2)", "262144", 0);
     test("(4^3)^2", "4096", 0);
-    //test("e^(iπ)", "1", 0);
     test("√4", "2", 0);
     test("√4−2", "0", 0);
     test("∛8", "2", 0);
@@ -392,7 +391,7 @@ test_equations()
     test("Sqrt(2)", "1.414213562", 0);
     test("4^0.5", "2", 0);
     test("2^0.5", "1.414213562", 0);
-    test("(−4)^0.5", "", PARSER_ERR_MP);
+    test("₃√−8", "−2", 0);
     test("(−8)^(1÷3)", "−2", 0);
 
     test("0 mod 7", "0", 0);
@@ -435,7 +434,6 @@ test_equations()
     test("abs 1", "1", 0);
     test("abs (−1)", "1", 0);
 
-    test("log (−1)", "", PARSER_ERR_MP);
     test("log 0", "", PARSER_ERR_MP);
     test("log 1", "0", 0);
     test("log 2", "0.301029996", 0);
@@ -444,7 +442,6 @@ test_equations()
     test("log₂ 2", "1", 0);
     test("2 log 2", "0.602059991", 0);
 
-    test("ln (−1)", "", PARSER_ERR_MP);
     test("ln 0", "", PARSER_ERR_MP);
     test("ln 1", "0", 0);
     test("ln 2", "0.693147181", 0);
@@ -525,11 +522,18 @@ test_equations()
     test("arg 1", "0", 0);
     test("arg (1+i)", "45", 0);
     test("arg i", "90", 0);
+    test("arg (−1+i)", "135", 0);
     test("arg −1", "180", 0);
-    test("arg −i", "270", 0);
+    test("arg (1+−i)", "−45", 0);
+    test("arg −i", "−90", 0);
+    test("arg (−1−i)", "−135", 0);
     test("i⁻¹", "−i", 0);
-    //test("√−1", "i", 0);
-    //test("i^0.5", "i", 0);
+    test("√−1", "i", 0);
+    test("(−1)^0.5", "i", 0);
+    test("√−4", "2i", 0);
+    test("e^iπ", "−1", 0);
+    test("log (−10) − (1 + πi÷ln(10))", "0", 0);
+    test("ln (−e) − (1 + πi)", "0", 0);
 
     /* Boolean */
     test("0 and 0", "0", 0);

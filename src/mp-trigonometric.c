@@ -157,7 +157,7 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 void
 mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
-    int ie, xs;
+    int xs;
     float rx = 0.0;
     MPNumber x_radians;
 
@@ -170,15 +170,10 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     convert_to_radians(x, unit, &x_radians);
 
     xs = x_radians.sign;
-    ie = abs(x_radians.exponent);
-    if (ie <= 2)
-        rx = mp_cast_to_float(&x_radians);
-
     mp_abs(&x_radians, &x_radians);
 
     /* USE MPSIN1 IF ABS(X) <= 1 */
-    if (mp_compare_mp_to_int(&x_radians, 1) <= 0)
-    {
+    if (mp_compare_mp_to_int(&x_radians, 1) <= 0) {
         mpsin1(&x_radians, z, 1);
     }
     /* FIND ABS(X) MODULO 2PI */
@@ -226,16 +221,6 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
     }
 
     z->sign = xs;
-
-    /*  CHECK THAT ABSOLUTE ERROR LESS THAN 0.01 IF ABS(X) <= 100
-     *  (IF ABS(X) IS LARGE THEN SINGLE-PRECISION SIN INACCURATE)
-     */
-    if (ie <= 2 && fabs(rx) <= 100.0) {
-        float ry = mp_cast_to_float(z);
-        /*  THE FOLLOWING MESSAGE MAY INDICATE THAT B**(T-1) IS TOO SMALL. */
-        if (fabs(ry - sin(rx)) >= 0.01)
-            mperr("*** ERROR OCCURRED IN MPSIN, RESULT INCORRECT ***");
-    }
 }
 
 
