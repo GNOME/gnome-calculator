@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-05-12 16:39+0000\n"
-"PO-Revision-Date: 2010-05-16 17:13+0700\n"
+"POT-Creation-Date: 2010-05-24 01:46+0000\n"
+"PO-Revision-Date: 2010-05-25 13:33+0700\n"
 "Last-Translator: Sira Nokyoongtong <gumaraa@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -541,8 +541,8 @@ msgid ""
 "The display format used in advanced mode. One of: \"ENG\" (engineering), "
 "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
 msgstr ""
-"รูปแบบการแสดงผลในโหมดพิเศษ ค่าที่เป็นไปได้คือ \"ENG\" (วิศวกรรม), \"FIX\" "
-"(จุดทศนิยมตายตัว) และ \"SCI\" (วิทยาศาสตร์)"
+"รูปแบบการแสดงผลในโหมดพิเศษ ค่าที่เป็นไปได้คือ \"ENG\" (วิศวกรรม), \"FIX"
+"\" (จุดทศนิยมตายตัว) และ \"SCI\" (วิทยาศาสตร์)"
 
 #: ../data/gcalctool.schemas.in.h:12
 msgid ""
@@ -1359,86 +1359,87 @@ msgstr "NOT แบบบูลีนมีนิยามไว้สำหร�
 msgid "Shift is only possible on integer values"
 msgstr "การเลื่อนบิตทำได้กับจำนวนเต็มเท่านั้น"
 
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:149
+msgid "Argument not defined for zero"
+msgstr "อาร์กิวเมนต์นี้ไม่นิยามสำหรับค่าศูนย์"
+
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
+#: ../src/mp.c:611 ../src/mp.c:643 ../src/mp.c:1577
 msgid "Division by zero is undefined"
 msgstr "การหารด้วยศูนย์ไม่มีนิยาม"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1169 ../src/mp.c:1206
+#: ../src/mp.c:1248 ../src/mp.c:1285
 msgid "Logarithm of zero is undefined"
 msgstr "ลอการิทึมของศูนย์ไม่มีนิยาม"
 
-#. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1178
-msgid "Logarithm of negative values is undefined"
-msgstr "ลอการิทึมของจำนวนลบไม่มีนิยาม"
-
-#: ../src/mp.c:1552
-msgid "The power of negative numbers is only defined for integer exponents"
-msgstr "เลขยกกำลังของเลขลบมีนิยามไว้สำหรับเลขชี้กำลังที่เป็นจำนวนเต็มเท่านั้น"
-
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1559 ../src/mp.c:1852
+#: ../src/mp.c:1650 ../src/mp.c:1965
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "เลขยกกำลังของศูนย์ไม่มีนิยามสำหรับเลขชี้กำลังที่เป็นลบ"
 
-#: ../src/mp.c:1584
+#: ../src/mp.c:1675
 msgid "Reciprocal of zero is undefined"
 msgstr "ส่วนกลับของศูนยไม่มีนิยาม"
 
-#: ../src/mp.c:1669
+#: ../src/mp.c:1760
 msgid "Root must be non-zero"
 msgstr "อันดับของรากต้องไม่เป็นศูนย์"
 
-#: ../src/mp.c:1687
+#: ../src/mp.c:1778
 msgid "Negative root of zero is undefined"
 msgstr "รากอันดับลบของศูนย์ไม่มีนิยาม"
 
-#: ../src/mp.c:1693
+#: ../src/mp.c:1784
 msgid "nth root of negative number is undefined for even n"
 msgstr "รากที่ n ของเลขลบไม่มีนิยามสำหรับ n ที่เป็นเลขคู่"
 
-#: ../src/mp.c:1763
-msgid "Square root is undefined for negative values"
-msgstr "รากที่สองไม่มีนิยามสำหรับเลขลบ"
-
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1792
+#: ../src/mp.c:1905
 msgid "Factorial is only defined for natural numbers"
 msgstr "แฟกทอเรียลมีนิยามไว้สำหรับจำนวนนับเท่านั้น"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1812
+#: ../src/mp.c:1925
 msgid "Modulus division is only defined for integers"
 msgstr "การหารเอาเศษมีนิยามไว้สำหรับจำนวนเต็มเท่านั้น"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:278
+#: ../src/mp-trigonometric.c:263
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "แทนเจนต์ไม่มีนิยามสำหรับมุมที่ห่างจาก π∕2 (90°) เป็นจำนวนเท่าของ π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:323
+#: ../src/mp-trigonometric.c:308
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "ไซน์ผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:340
+#: ../src/mp-trigonometric.c:325
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "โคไซน์ผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:558
+#: ../src/mp-trigonometric.c:543
 msgid ""
 "Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr "โคไซน์ไฮเพอร์โบลิกผกผันไม่มีนิยามสำหรับค่าที่น้อยกว่าหรือเท่ากับหนึ่ง"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:582
+#: ../src/mp-trigonometric.c:567
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "แทนเจนต์ไฮเพอร์โบลิกผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "ลอการิทึมของจำนวนลบไม่มีนิยาม"
+
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr "เลขยกกำลังของเลขลบมีนิยามไว้สำหรับเลขชี้กำลังที่เป็นจำนวนเต็มเท่านั้น"
+
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "รากที่สองไม่มีนิยามสำหรับเลขลบ"
 
 #~| msgid "B"
 #~ msgid "BS"
