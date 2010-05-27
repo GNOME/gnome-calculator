@@ -154,8 +154,8 @@ mpsin1(const MPNumber *x, MPNumber *z, int do_sin)
 }
 
 
-void
-mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+static void
+mp_sin_real(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     int xs;
     MPNumber x_radians;
@@ -223,8 +223,8 @@ mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 }
 
 
-void
-mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+static void
+mp_cos_real(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     /* cos(0) = 1 */
     if (mp_is_zero(x)) {
@@ -247,6 +247,55 @@ mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
         mp_subtract(&t, z, z);
         mp_sin(z, MP_RADIANS, z);
     }
+}
+
+
+void
+mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    if (mp_is_complex(x)) {
+        MPNumber x_real, x_im, z_real, z_im, t;
+
+        mp_real_component(x, &x_real);
+        mp_imaginary_component(x, &x_im);
+
+        mp_sin_real(&x_real, unit, &z_real);
+        mp_cosh(&x_im, &t);
+        mp_multiply(&z_real, &t, &z_real);
+
+        mp_cos_real(&x_real, unit, &z_im);
+        mp_sinh(&x_im, &t);
+        mp_multiply(&z_im, &t, &z_im);
+
+        mp_set_from_complex(&z_real, &z_im, z);
+    }
+    else
+       mp_sin_real(x, unit, z);
+}
+
+
+void
+mp_cos(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
+{
+    if (mp_is_complex(x)) {
+        MPNumber x_real, x_im, z_real, z_im, t;
+
+        mp_real_component(x, &x_real);
+        mp_imaginary_component(x, &x_im);
+
+        mp_cos_real(&x_real, unit, &z_real);
+        mp_cosh(&x_im, &t);
+        mp_multiply(&z_real, &t, &z_real);
+
+        mp_sin_real(&x_real, unit, &z_im);
+        mp_sinh(&x_im, &t);
+        mp_multiply(&z_im, &t, &z_im);
+        mp_invert_sign(&z_im, &z_im);
+
+        mp_set_from_complex(&z_real, &z_im, z);
+    }
+    else
+       mp_cos_real(x, unit, z);
 }
 
 

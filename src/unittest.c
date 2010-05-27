@@ -534,6 +534,8 @@ test_equations()
     test("e^iπ", "−1", 0);
     test("log (−10) − (1 + πi÷ln(10))", "0", 0);
     test("ln (−e) − (1 + πi)", "0", 0);
+    test("sin(iπ÷4) − i×sinh(π÷4)", "0", 0);
+    test("cos(iπ÷4) − cosh(π÷4)", "0", 0);
 
     /* Boolean */
     test("0 and 0", "0", 0);
