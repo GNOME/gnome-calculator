@@ -1856,7 +1856,7 @@ mp_root(const MPNumber *x, int64_t n, MPNumber *z)
         mp_invert_sign(z, z);
     }
     else if (mp_is_complex(x) || mp_is_negative(x)) {
-        MPNumber r, theta, i;
+        MPNumber r, theta;
 
         mp_abs(x, &r);
         mp_arg(x, MP_RADIANS, &theta);

@@ -158,7 +158,6 @@ void
 mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 {
     int xs;
-    float rx = 0.0;
     MPNumber x_radians;
 
     /* sin(0) = 0 */

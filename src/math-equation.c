@@ -183,7 +183,7 @@ reformat_base(MathEquation *equation, gint old_base)
     gunichar sub_zero, sub_nine;
     gchar *text, *read_iter;
     gboolean in_number = FALSE, have_radix = FALSE;
-    gint offset = 0, offset_step = 0, max_digit = 0, base = -1, base_offset;
+    gint offset = 0, offset_step = 0, max_digit = 0, base = -1, base_offset = 0;
     gint ans_start, ans_end;
 
     if (equation->priv->base == old_base)
