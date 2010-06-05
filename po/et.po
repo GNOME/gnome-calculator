@@ -12,14 +12,79 @@ msgstr ""
 "Project-Id-Version: Gcalctool MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-21 23:40+0000\n"
-"PO-Revision-Date: 2010-02-23 08:31+0200\n"
+"POT-Creation-Date: 2010-05-24 01:42+0000\n"
+"PO-Revision-Date: 2010-06-05 20:59+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. The label on the memory recall button
+msgid "&#x2190; R"
+msgstr ""
+
+#. The label on the memory store button
+msgid "&#x2192; R"
+msgstr ""
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+msgid "Absolute Value"
+msgstr "Absoluutväärtus"
+
+#. Label on the clear display button
+msgid "Clear"
+msgstr "Nulli"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+msgid "Exponent"
+msgstr ""
+
+#. Accessible name for the factorial button
+msgid "Factorial"
+msgstr "Faktoriaal"
+
+#. Accessible name for the factorize button
+msgid "Factorize"
+msgstr ""
+
+#. Accessible name for the inverse button
+msgid "Inverse"
+msgstr ""
+
+#. Accessible name for the recall value button
+msgid "Recall"
+msgstr ""
+
+#. Accessible name for the scientific exponent button
+msgid "Scientific Exponent"
+msgstr ""
+
+#. Accessible name for the store value button
+msgid "Store"
+msgstr ""
+
+#. Accessible name for the subscript mode button
+msgid "Subscript"
+msgstr ""
+
+#. Accessible name for the superscript mode button
+msgid "Superscript"
+msgstr ""
+
+#. Label on the undo button
+#. Label on the clear display button
+msgid "Undo"
+msgstr "Viimase tegevuse unustamine"
+
+#. The label on the currency button
+msgid "&#xA4;$&#x20AC;"
+msgstr ""
 
 #. Payment Period Dialog: Button to calculate result
 msgid "C_alculate"
@@ -105,6 +170,7 @@ msgstr ""
 "arv. Tüüpiliselt arvestatakse üheks amortisatsiooniperioodiks üks aasta."
 
 #. Title of Compounding Term dialog
+#. Tooltip for the compounding term button
 msgid "Compounding Term"
 msgstr "Liitintress"
 
@@ -114,7 +180,15 @@ msgid ""
 "to on the lower row, and the amount will be displayed on the lower row."
 msgstr ""
 
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+msgid "Ctrm"
+msgstr "Li"
+
 msgid "Currency Conversion"
+msgstr ""
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+msgid "Ddb"
 msgstr ""
 
 #. Title of Double-Declining Depreciation dialog
@@ -122,6 +196,7 @@ msgid "Double-Declining Depreciation"
 msgstr ""
 
 #. Title of Future Value dialog
+#. Tooltip for the future value button
 msgid "Future Value"
 msgstr "Tulevikuväärtus"
 
@@ -129,7 +204,16 @@ msgstr "Tulevikuväärtus"
 msgid "Future _Value:"
 msgstr "_Tulevikuväärtus:"
 
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+msgid "Fv"
+msgstr "Tv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+msgid "Gpm"
+msgstr "Bkm"
+
 #. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
 msgid "Gross Profit Margin"
 msgstr "Brutokasumi marginaal"
 
@@ -138,6 +222,7 @@ msgid "Payment Period"
 msgstr "Makseperiood"
 
 #. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
 msgid "Periodic Interest Rate"
 msgstr "Perioodiline intressimäär"
 
@@ -146,16 +231,34 @@ msgid "Periodic Interest _Rate:"
 msgstr ""
 
 #. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
 msgid "Periodic Payment"
 msgstr "Perioodiline makse"
 
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+msgid "Pmt"
+msgstr "Makse"
+
 #. Title of Present Value dialog
+#. Tooltip for the present value button
 msgid "Present Value"
 msgstr "Nüüdisväärtus"
 
 #. Periodic Interest Rate Dialog: Label before present value input
 msgid "Present _Value:"
 msgstr "_Nüüdisväärtus:"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+msgid "Pv"
+msgstr "Nv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+msgid "Rate"
+msgstr "Intress"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+msgid "Sln"
+msgstr "La"
 
 #. Title of Straight-Line Depreciation dialog
 msgid "Straight-Line Depreciation"
@@ -164,6 +267,14 @@ msgstr "Lineaarne amortisatsioon"
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr ""
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+msgid "Syd"
+msgstr ""
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+msgid "Term"
+msgstr "Mp"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
 msgid "_Cost:"
@@ -205,41 +316,32 @@ msgstr ""
 msgid "_Term:"
 msgstr ""
 
-#. The label on the memory recall button
-msgid "&#x2190; R"
+#. Insert ASCII dialog: Label before character entry
+msgid "Ch_aracter:"
+msgstr "Sü_mbol:"
+
+#. Accessible name for the insert character button
+msgid "Insert Character"
 msgstr ""
 
-#. The label on the memory store button
-msgid "&#x2192; R"
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+msgid "Insert Character Code"
 msgstr ""
 
-#. The label on the currency button
-msgid "&#xA4;$&#x20AC;"
-msgstr ""
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+msgid "Shift Left"
+msgstr "Nihutamine vasakule"
 
-#. Right Shift Popup: Menu item to shift right by 10 bits
-msgid "10 places"
-msgstr "10 kohta"
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+msgid "Shift Right"
+msgstr "Nihutamine paremale"
 
-#. Right Shift Popup: Menu item to shift right by 11 bits
-msgid "11 places"
-msgstr "11 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-msgid "12 places"
-msgstr "12 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-msgid "13 places"
-msgstr "13 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-msgid "14 places"
-msgstr "14 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-msgid "15 places"
-msgstr "15 kohta"
+#. Insert ASCII dialog: Button to insert selected character
+msgid "_Insert"
+msgstr "_Sisesta"
 
 #. Word size combo: 16 bits
 msgid "16-bit"
@@ -257,281 +359,13 @@ msgstr "64-bitine"
 msgid "8-bit"
 msgstr "8-bitine"
 
-#. Label on the solve button (clicking this solves the displayed calculation)
-msgid "="
-msgstr "="
-
-#. Accessible name for the absolute value button
-msgid "Absolute Value"
-msgstr "Absoluutväärtus"
-
-#. Tooltip for the absolute value button
-msgid "Absolute value [|]"
-msgstr "Absoluutväärtus [|]"
-
-#. Tooltip for the addition button
-msgid "Add [+]"
-msgstr "Liitmine [+]"
-
-#. Tooltip for the answer variable button
-msgid "Answer variable"
-msgstr ""
-
-#. Tooltip for the base 10 logarithm button
-msgid "Base 10 logarithm"
-msgstr "Kümnendlogaritm"
-
-#. Accessible name for the base 16 button
-msgid "Base 16"
-msgstr ""
-
-#. Accessible name for the base 2 button
-msgid "Base 2"
-msgstr ""
-
-#. Accessible name for the base 8 button
-msgid "Base 8"
-msgstr ""
-
-#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
-msgid "Binary"
-msgstr ""
-
-#. Tooltip for the boolean AND button
-msgid "Boolean AND"
-msgstr ""
-
-#. Tooltip for the boolean NOT button
-msgid "Boolean NOT"
-msgstr ""
-
-#. Tooltip for the boolean OR button
-msgid "Boolean OR"
-msgstr ""
-
-#. Tooltip for the boolean exclusive OR button
-msgid "Boolean exclusive OR"
-msgstr ""
-
-#. Tooltip for the solve button
-msgid "Calculate result [=]"
-msgstr "Tulemuse arvutamine [=]"
-
-#. Insert ASCII dialog: Label before character entry
-msgid "Ch_aracter:"
-msgstr "Sü_mbol:"
-
-#. Tooltop for the clear display button
-msgid "Clear display [Escape]"
-msgstr "Kuva puhastamine [Escape]"
-
-#. Label on the clear display button. Clr is short for Clear
-msgid "Clr"
-msgstr "Puhasta"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-msgid "Ctrm"
-msgstr "Li"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-msgid "Ddb"
-msgstr ""
-
-#. Number display mode combo: Decimal, e.g. 1234
-msgid "Decimal"
-msgstr ""
-
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-msgid "Degrees"
-msgstr "Kraadid"
-
 #. Preferences dialog: Label for display format combo box
-msgid "Display _Format:"
-msgstr "Kuvamis_vorming:"
-
-#. Tooltip for the division button
-msgid "Divide [/]"
-msgstr "Jagamine [/]"
-
-#. Tooltip for the end block button
-msgid "End block [)]"
+msgid "Number _Format:"
 msgstr ""
 
-#. Number display mode combo: Engineering, e.g. 1.234k
-msgid "Engineering"
-msgstr ""
-
-#. Tooltip for the Euler's number button
-msgid "Euler's number"
-msgstr "Euleri arv"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-msgid "Exponent"
-msgstr ""
-
-#. Tooltip for the exponentiation (x to the power of y) button
-msgid "Exponent [^ or **]"
-msgstr ""
-
-#. Accessible name for the factorial button
-msgid "Factorial"
-msgstr "Faktoriaal"
-
-#. Tooltip for the factorial button
-msgid "Factorial [!]"
-msgstr "Faktoriaal [!]"
-
-#. Accessible name for the factorize button
-msgid "Factorize"
-msgstr ""
-
-#. Tooltip for the factorize button
-msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr ""
-
-#. Tooltip for the fractional portion button
-msgid "Fractional portion"
-msgstr "Murdosa"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-msgid "Fv"
-msgstr "Tv"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-msgid "Gpm"
-msgstr "Bkm"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-msgid "Gradians"
-msgstr "Goonid"
-
-#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
-msgid "Hexadecimal"
-msgstr ""
-
-#. Title of insert ASCII dialog
-msgid "Insert ASCII Value"
-msgstr "ASCII-väärtuse sisestamine"
-
-#. Accessible name for the insert character button
-msgid "Insert Character"
-msgstr ""
-
-#. Tooltip for the insert character button
-msgid "Insert character"
-msgstr ""
-
-#. Tooltip for the integer portion button
-msgid "Integer portion"
-msgstr "Täisosa"
-
-#. Accessible name for the inverse button
-msgid "Inverse"
-msgstr ""
-
-#. Tooltip for the inverse button
-msgid "Inverse [Ctrl+I]"
-msgstr ""
-
-#. Tooltip for the modulus division button
-msgid "Modulus divide"
-msgstr "Jäägiga jagamine"
-
-#. Tooltip for the multiplication button
-msgid "Multiply [*]"
-msgstr "Korrutamine [*]"
-
-#. Tooltip for the natural logarithm button
-msgid "Natural logarithm"
-msgstr "Naturaallogaritm"
-
-#. Tooltip for the numeric point button
-msgid "Numeric point [. or ,]"
-msgstr "Koma [. või ,]"
-
-#. Number display mode combo: Octal, e.g. 2322&#x2088;
-msgid "Octal"
-msgstr ""
-
-#. Tooltip for the ones' complement button
-msgid "Ones' complement"
-msgstr ""
-
-#. Tooltip on the percentage button
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Protsent [%]"
-
-#. Tooltip for the Pi button
-msgid "Pi [Ctrl+P]"
-msgstr ""
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-msgid "Pmt"
-msgstr "Makse"
-
+#. Title of preferences dialog
 msgid "Preferences"
 msgstr ""
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-msgid "Pv"
-msgstr "Nv"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-msgid "Radians"
-msgstr "Radiaanid"
-
-#. Tooltip for the random number button
-msgid "Random number"
-msgstr "Juhuslik arv"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-msgid "Rate"
-msgstr "Intress"
-
-#. Accessible name for the recall value button
-msgid "Recall"
-msgstr ""
-
-#. Tooltip for the recall value button
-msgid "Recall value"
-msgstr ""
-
-#. Accessible description for the area in which results are displayed
-msgid "Result Region"
-msgstr ""
-
-#. Tooltip for the root button
-msgid "Root [Ctrl+S]"
-msgstr ""
-
-#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
-msgid "Scientific"
-msgstr "Teaduslik"
-
-#. Accessible name for the scientific exponent button
-msgid "Scientific Exponent"
-msgstr ""
-
-#. Tooltip for the scientific exponent button
-msgid "Scientific exponent [Ctrl+E]"
-msgstr ""
-
-#. Accessible name for the shift left button
-msgid "Shift Left"
-msgstr "Nihutamine vasakule"
-
-#. Accessible name for the shift right button
-msgid "Shift Right"
-msgstr "Nihutamine paremale"
-
-#. Tooltip for the shift left button
-msgid "Shift left [<]"
-msgstr "Nihutamine vasakule [<]"
-
-#. Tooltip for the shift right button
-msgid "Shift right [>]"
-msgstr "Nihutamine paremale [>]"
 
 #. Preferences dialog: label for show thousands separator check button
 msgid "Show _thousands separators"
@@ -541,139 +375,15 @@ msgstr "_Tuhandike eraldaja näitamine"
 msgid "Show trailing _zeroes"
 msgstr "Lõpusolevate _nullide näitamine"
 
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-msgid "Sln"
-msgstr "La"
-
-#. Tooltip for the start block button
-msgid "Start block [(]"
-msgstr ""
-
-#. Accessible name for the store value button
-msgid "Store"
-msgstr ""
-
-#. Tooltip for the store value button
-msgid "Store value"
-msgstr ""
-
-#. Accessible name for the subscript mode button
-msgid "Subscript"
-msgstr ""
-
-#. Tooltip for the subscript mode button
-msgid "Subscript number mode [Alt+number]"
-msgstr ""
-
-#. Tooltip for the subtraction button
-msgid "Subtract [-]"
-msgstr "Lahutamine [-]"
-
-#. Accessible name for the superscript mode button
-msgid "Superscript"
-msgstr ""
-
-#. Tooltip for the superscript mode button
-msgid "Superscript number mode [Ctrl+number]"
-msgstr ""
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-msgid "Syd"
-msgstr ""
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-msgid "Term"
-msgstr "Mp"
-
-#. Tooltip for the truncate button
-msgid "Truncate value"
-msgstr ""
-
-#. Tooltip for the two's complement button
-msgid "Two's complement"
-msgstr ""
-
 #. Preferences dialog: label for word size combo box
 msgid "Word _size:"
 msgstr "_Sõna suurus:"
-
-#. Right Shift Popup: Menu item to shift right by 1 bit
-msgid "_1 place"
-msgstr "_1 koht"
-
-#. Right Shift Popup: Menu item to shift right by 2 bits
-msgid "_2 places"
-msgstr "_2 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 3 bits
-msgid "_3 places"
-msgstr "_3 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 4 bits
-msgid "_4 places"
-msgstr "_4 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 5 bits
-msgid "_5 places"
-msgstr "_5 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 6 bits
-msgid "_6 places"
-msgstr "_6 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 7 bits
-msgid "_7 places"
-msgstr "_7 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 8 bits
-msgid "_8 places"
-msgstr "_8 kohta"
-
-#. Right Shift Popup: Menu item to shift right by 9 bits
-msgid "_9 places"
-msgstr "_9 kohta"
-
-#. View|Advanced menu item
-msgid "_Advanced"
-msgstr "_Laiendatud"
 
 #. Preferences dialog: Label for angle unit combo box
 msgid "_Angle units:"
 msgstr ""
 
-#. View|Basic menu item
-msgid "_Basic"
-msgstr "_Tavaline"
-
-#. Calculator menu
-msgid "_Calculator"
-msgstr "K_alkulaator"
-
-#. View|Financial menu item
-msgid "_Financial"
-msgstr "_Rahandus"
-
-#. Help menu
-msgid "_Help"
-msgstr "A_bi"
-
-#. Insert ASCII dialog: Button to insert selected character
-msgid "_Insert"
-msgstr "_Sisesta"
-
-#. View|Programming menu item
-msgid "_Programming"
-msgstr "_Programmeerimine"
-
-#. View|Scientific menu item
-msgid "_Scientific"
-msgstr "T_eaduslik"
-
-#. View menu
-msgid "_View"
-msgstr "_Vaade"
-
-#. Translators: The window title when in basic mode
+#. Title of main window
 msgid "Calculator"
 msgstr "Kalkulaator"
 
@@ -712,6 +422,17 @@ msgstr "Tuhandike eraldajate näitamine"
 msgid "Show Trailing Zeroes"
 msgstr "Lõpusolevate nullide näitamine"
 
+#, fuzzy
+#| msgid ""
+#| "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#| "\" (fixed-point) and \"SCI\" (scientific)"
+msgid ""
+"The display format used in advanced mode. One of: \"ENG\" (engineering), "
+"\"FIX\" (fixed-point) and \"SCI\" (scientific)"
+msgstr ""
+"Kuva lähterežiim. Võimalikud väärtused on \"ENG\" (insenerarvutused), \"FIX"
+"\" (kinnispunkt) ja \"SCI\" (teaduslik)"
+
 msgid ""
 "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
 "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
@@ -719,13 +440,6 @@ msgstr ""
 "Kalkulaatori lähterežiim. Võimalikud väärtused on \"BASIC\" (tavaline), "
 "\"FINANCIAL\" (rahandus), \"LOGICAL\" (loogika), \"SCIENTIFIC\" (teaduslik) "
 "ja \"PROGRAMMING\" (programmeerimine)"
-
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"Kuva lähterežiim. Võimalikud väärtused on \"ENG\" (insenerarvutused), \"FIX"
-"\" (kinnispunkt) ja \"SCI\" (teaduslik)"
 
 msgid ""
 "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
@@ -751,7 +465,7 @@ msgstr ""
 msgid "The number of pixels to place the window from the top of the screen."
 msgstr ""
 
-msgid "The numeric base for input and display."
+msgid "The numeric base (used in programming mode)"
 msgstr ""
 
 msgid ""
@@ -764,76 +478,6 @@ msgstr "Trigonomeetriline tüüp"
 
 msgid "Word size"
 msgstr "Sõna suurus"
-
-#. Description on how to use gcalctool displayed on command-line
-#, c-format
-msgid ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
-msgstr ""
-"Kasutamine:\n"
-"  %s — Mathemaatiliste rehkenduste tegemine"
-
-#. Description on gcalctool command-line help options displayed on command-line
-#, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"Abiteabe võtmed:\n"
-"  -v, --version             Väljalaske versiooni näitamine\n"
-"  -h, -?, --help            Abiteabe võtmete näitamine\n"
-"  --help-all                Kõikide abiteabe võtmete näitamine\n"
-"  --help-gtk                GTK+ võtmete näitamine"
-
-#. Description on gcalctool command-line GTK+ options displayed on command-line
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window "
-"manager\n"
-"  --name=NAME                     Program name as used by the window "
-"manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"GTK+ võtmed:\n"
-"  --class=KLASS             Aknahalduri poolt kasutatav programmi klass\n"
-"  --name=NIMI               Aknahalduri poolt kasutatav programmi nimi\n"
-"  --screen=EKRAAN           Kasutatav X'i ekraan\n"
-"  --sync                    X'i kutsungid sünkroonseks\n"
-"  --gtk-module=MOODULID     Täiendavate GTK+ moodulite laadimine\n"
-"  --g-fatal-warnings        Kõikide hoiatuste muutmine fataalseks"
-
-#. Description on gcalctool application options displayed on command-line
-#, c-format
-msgid ""
-"Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"Rakenduse võtmed:\n"
-"  -u, --unittest            Unittestide läbiviimine\n"
-"  -s, --solve <equation>    Etteantud võrrandi lahendamine"
-
-#. Error printed to stderr when user uses --solve argument without an equation
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "Võtimele --solve on vaja argumendiks võrrandit, mida lahendada"
-
-#. Error printed to stderr when user provides an unknown command-line argument
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "Tundmatu argument '%s'"
-
-#. Translators: Digits localized for the given language
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 msgid "Australian dollar"
 msgstr "Austraalia dollar"
@@ -940,85 +584,427 @@ msgstr "Ameerika Ühendriikide dollar"
 msgid "South African rand"
 msgstr "Lõuna-Aafrika Vabariigi rand"
 
+#. Description on how to use gcalctool displayed on command-line
+#, c-format
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+msgstr ""
+"Kasutamine:\n"
+"  %s — Mathemaatiliste rehkenduste tegemine"
+
+#. Description on gcalctool command-line help options displayed on command-line
+#, c-format
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Abiteabe võtmed:\n"
+"  -v, --version             Väljalaske versiooni näitamine\n"
+"  -h, -?, --help            Abiteabe võtmete näitamine\n"
+"  --help-all                Kõikide abiteabe võtmete näitamine\n"
+"  --help-gtk                GTK+ võtmete näitamine"
+
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ võtmed:\n"
+"  --class=KLASS             Aknahalduri poolt kasutatav programmi klass\n"
+"  --name=NIMI               Aknahalduri poolt kasutatav programmi nimi\n"
+"  --screen=EKRAAN           Kasutatav X'i ekraan\n"
+"  --sync                    X'i kutsungid sünkroonseks\n"
+"  --gtk-module=MOODULID     Täiendavate GTK+ moodulite laadimine\n"
+"  --g-fatal-warnings        Kõikide hoiatuste muutmine fataalseks"
+
+#. Description on gcalctool application options displayed on command-line
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unit tests\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Rakenduse võtmed:\n"
+"  -u, --unittest            Unittestide läbiviimine\n"
+"  -s, --solve <equation>    Etteantud võrrandi lahendamine"
+
+#. Error printed to stderr when user uses --solve argument without an equation
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Võtimele --solve on vaja argumendiks võrrandit, mida lahendada"
+
+#. Error printed to stderr when user provides an unknown command-line argument
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "Tundmatu argument '%s'"
+
+#. Tooltip for the Pi button
+msgid "Pi [Ctrl+P]"
+msgstr ""
+
+#. Tooltip for the Euler's Number button
+msgid "Eulers Number"
+msgstr "Euleri arv"
+
+#. Tooltip for the subscript button
+msgid "Subscript mode [Alt]"
+msgstr ""
+
+#. Tooltip for the superscript button
+msgid "Supercript mode [Ctrl]"
+msgstr ""
+
+#. Tooltip for the scientific exponent button
+msgid "Scientific exponent [Ctrl+E]"
+msgstr ""
+
+#. Tooltip for the add button
+msgid "Add [+]"
+msgstr "Liitmine [+]"
+
+#. Tooltip for the subtract button
+msgid "Subtract [-]"
+msgstr "Lahutamine [-]"
+
+#. Tooltip for the multiply button
+msgid "Multiply [*]"
+msgstr "Korrutamine [*]"
+
+#. Tooltip for the divide button
+msgid "Divide [/]"
+msgstr "Jagamine [/]"
+
+#. Tooltip for the modulus divide button
+msgid "Modulus divide"
+msgstr "Jäägiga jagamine"
+
+#. Tooltip for the exponent button
+msgid "Exponent [^ or **]"
+msgstr ""
+
+#. Tooltip for the square button
+msgid "Square [Ctrl+2]"
+msgstr "Ruut [Ctrl+2]"
+
+#. Tooltip for the percentage button
+msgid "Percentage [%]"
+msgstr "Protsent [%]"
+
+#. Tooltip for the factorial button
+msgid "Factorial [!]"
+msgstr "Faktoriaal [!]"
+
+#. Tooltip for the absolute value button
+msgid "Absolute value [|]"
+msgstr "Absoluutväärtus [|]"
+
+#. Tooltip for the complex conjugate button
+msgid "Complex conjugate"
+msgstr ""
+
+#. Tooltip for the root button
+msgid "Root [Ctrl+R]"
+msgstr "Juur [Ctrl+R]"
+
+#. Tooltip for the square root button
+msgid "Square root [Ctrl+R]"
+msgstr "Ruutjuur [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+msgid "Logarithm"
+msgstr "Logaritm"
+
+#. Tooltip for the natural logarithm button
+msgid "Natural Logarithm"
+msgstr "Naturaallogaritm"
+
+#. Tooltip for the sine button
+msgid "Sine"
+msgstr "Siinus"
+
+#. Tooltip for the cosine button
+msgid "Cosine"
+msgstr "Koosinus"
+
+#. Tooltip for the tangent button
+msgid "Tangent"
+msgstr "Tangens"
+
+#. Tooltip for the hyperbolic sine button
+msgid "Hyperbolic Sine"
+msgstr "Hüperboolne siinus"
+
+#. Tooltip for the hyperbolic cosine button
+msgid "Hyperbolic Cosine"
+msgstr "Hüperboolne koosinus"
+
+#. Tooltip for the hyperbolic tangent button
+msgid "Hyperbolic Tangent"
+msgstr "Hüperboolne tangens"
+
+#. Tooltip for the inverse button
+msgid "Inverse [Ctrl+I]"
+msgstr ""
+
+#. Tooltip for the boolean AND button
+msgid "Boolean AND"
+msgstr ""
+
+#. Tooltip for the boolean OR button
+msgid "Boolean OR"
+msgstr ""
+
+#. Tooltip for the exclusive OR button
+msgid "Boolean Exclusive OR"
+msgstr ""
+
+#. Tooltip for the boolean NOT button
+msgid "Boolean NOT"
+msgstr ""
+
+#. Tooltip for the integer component button
+#, fuzzy
+#| msgid "Integer portion"
+msgid "Integer Component"
+msgstr "Täisosa"
+
+#. Tooltip for the fractional component button
+#, fuzzy
+#| msgid "Fractional portion"
+msgid "Fractional Component"
+msgstr "Murdosa"
+
+#. Tooltip for the real component button
+msgid "Real Component"
+msgstr ""
+
+#. Tooltip for the imaginary component button
+msgid "Imaginary Component"
+msgstr ""
+
+#. Tooltip for the ones complement button
+msgid "Ones Complement"
+msgstr ""
+
+#. Tooltip for the twos complement button
+msgid "Twos Complement"
+msgstr ""
+
+#. Tooltip for the truncate button
+msgid "Truncate"
+msgstr "Kärpimine"
+
+#. Tooltip for the start group button
+msgid "Start Group [(]"
+msgstr "Grupi alustamine [(]"
+
+#. Tooltip for the end group button
+msgid "End Group [)]"
+msgstr "Grupi lõpetamine [)]"
+
+#. Tooltip for the assign variable button
+msgid "Assign Variable"
+msgstr ""
+
+#. Tooltip for the insert variable button
+msgid "Insert Variable"
+msgstr ""
+
+#. Tooltip for the solve button
+msgid "Calculate Result"
+msgstr "Tulemuse arvutamine"
+
+#. Tooltip for the factor button
+#, fuzzy
+#| msgid "Factorial [!]"
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktoriaal [!]"
+
+#. Tooltip for the clear button
+msgid "Clear Display [Escape]"
+msgstr "Kuva puhastamine [Escape]"
+
+#. Tooltip for the undo button
+msgid "Undo [Ctrl+Z]"
+msgstr "Tühistamine [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+msgid "Double Declining Depreciation"
+msgstr ""
+
+#. Tooltip for the financial term button
+msgid "Financial Term"
+msgstr ""
+
+#. Tooltip for the sum of the years digits depreciation button
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Lineaarne amortisatsioon"
+
+#. Tooltip for the straight line depreciation button
+msgid "Straight Line Depreciation"
+msgstr "Lineaarne amortisatsioon"
+
+#. Tooltip for the currency button
+msgid "Currency Converter"
+msgstr ""
+
+#. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+msgid "Degrees"
+msgstr "Kraadid"
+
+#. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+msgid "Radians"
+msgstr "Radiaanid"
+
+#. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+msgid "Gradians"
+msgstr "Goonid"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+msgid "Binary"
+msgstr ""
+
+#. Number display mode combo: Octal, e.g. 2322₈
+msgid "Octal"
+msgstr ""
+
+#. Number display mode combo: Decimal, e.g. 1234
+msgid "Decimal"
+msgstr ""
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+msgid "Hexadecimal"
+msgstr ""
+
+#. Text shown in store menu when no variables defined
+#. Text shown in recall menu when no variables defined
+msgid "No variables defined"
+msgstr ""
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d koht"
+msgstr[1] "_%d kohta"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d koht"
+msgstr[1] "%d kohta"
+
+#. Translators: Title of the error dialog when prompting to download currency rates
+msgid ""
+"You don't have any recent currency rates. Should some be downloaded now?"
+msgstr ""
+
+#. Translators: Title of the error dialog when unable to download currency rates
+msgid ""
+"Currency rates could not be downloaded. You may receive inaccurate results, "
+"or you may not receive any results at all."
+msgstr ""
+
+#. Error shown when trying to undo with no undo history
 msgid "No undo history"
 msgstr "Tühistamiste ajalugu puudub"
 
-msgid "No redo steps"
-msgstr "Puuduvad taastamise sammud"
-
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-msgid "No sane value to bitwise shift"
-msgstr "Bitinihke tegemiseks pole mõistlikku väärtust"
-
-#. Translators: Error displayed when trying to factorize a non-integer value
-msgid "Need an integer to factorize"
-msgstr ""
+#. Error shown when trying to redo with no redo history
+msgid "No redo history"
+msgstr "Taastamiste ajalugu puudub"
 
 msgid "No sane value to store"
 msgstr "Salvestamiseks pole mõistlikku väärtust"
 
-#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
 msgid "Overflow. Try a bigger word size"
 msgstr "Ületäitumine. Proovi suurendada sõna suurust"
 
-#. Translators: Error displayed to user when they an unknown variable is entered
+#. Error displayed to user when they an unknown variable is entered
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Tundmatu muutuja '%s'"
 
-#. Translators: Error displayed to user when an unknown function is entered
+#. Error displayed to user when an unknown function is entered
 #, c-format
 msgid "Function '%s' is not defined"
-msgstr ""
+msgstr "Funktsioon '%s' on defineerimata"
 
-#. Translators: Error displayed to user when an conversion with unknown units is attempted
-#, c-format
+#. Error displayed to user when an conversion with unknown units is attempted
 msgid "Unknown conversion"
 msgstr "Tundmatu teisendus"
 
-#. Translators: Error displayed to user when they enter an invalid calculation
+#. Error displayed to user when they enter an invalid calculation
 msgid "Malformed expression"
 msgstr "Vigane avaldis"
 
-#. Translators: The window title when in advanced mode
-msgid "Calculator — Advanced"
-msgstr "Kalkulaator — Laiendatud"
-
-#. Translators: The window title when in financial mode
-msgid "Calculator — Financial"
-msgstr "Kalkulaator — Rahandus"
-
-#. Translators: The window title when in scientific mode
-msgid "Calculator — Scientific"
-msgstr "Kalkulaator — Teaduslik"
-
-#. Translators: The window title when in programming mode
-msgid "Calculator — Programming"
-msgstr "Kalkulaator — Programmeerimine"
-
-#. Translators: Title of the error dialog when unable to load the UI files
-msgid "Error loading user interface"
-msgstr "Viga kasutajaliidese laadimisel"
-
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#, c-format
-msgid ""
-"A required file is missing or damaged. Please check your installation.\n"
-"\n"
-"%s"
+#. Error displayed when trying to factorize a non-integer value
+msgid "Need an integer to factorize"
 msgstr ""
-"Vajalik fail on puudu või rikutud. Palun kontrolli programmi paigaldust.\n"
-"\n"
-"%s"
 
-#. Translators: The translator credits. Please translate this with your name(s).
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+msgid "No sane value to bitwise shift"
+msgstr "Bitinihke tegemiseks pole mõistlikku väärtust"
+
+#. Message displayed when cannot toggle bit in display
+msgid "Displayed value not an integer"
+msgstr ""
+
+#. Digits localized for the given language
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Label on close button in preferences dialog
+msgid "_Close"
+msgstr "Sul_ge"
+
+#. Number display mode combo: Fixed, e.g. 1234
+msgid "Fixed"
+msgstr ""
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+msgid "Scientific"
+msgstr "Teaduslik"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+msgid "Engineering"
+msgstr ""
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#, c-format
+msgid "Show %d decimal _places"
+msgstr ""
+
+#. Translators: Error message displayed when unable to launch help browser
+msgid "Unable to open help file"
+msgstr "Abiteabe faili pole võimalik avada"
+
+#. The translator credits. Please translate this with your name(s).
 msgid "translator-credits"
 msgstr ""
 "Priit Laes <amd tt ee>, 2004.\n"
 "Ivar Smolin <okul linux ee>, 2005—2010."
 
-#. Translators: The license this software is under (GPL2+)
+#. The license this software is under (GPL2+)
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1048,77 +1034,49 @@ msgstr ""
 "Gcalctooliga; kui ei, siis võtke ühendust Free Software Foundation'iga,\n"
 "59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
 
-#. Translators: Program name in the about dialog
+#. Program name in the about dialog
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#. Translators: Copyright notice in the about dialog
+#. Copyright notice in the about dialog
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986—2008 Gcalctool'i autorid"
 
-#. Translators: Short description in the about dialog
+#. Short description in the about dialog
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulaator koos finants- ja teadusarvutuste toega."
 
-#. Translators: Error message displayed when unable to launch help browser
-msgid "Unable to open help file"
-msgstr "Abiteabe faili pole võimalik avada"
+#. Calculator menu
+msgid "_Calculator"
+msgstr "K_alkulaator"
 
-#. Translators: Title of the error dialog when prompting to download currency rates
-msgid ""
-"You don't have any recent currency rates. Should some be downloaded now?"
-msgstr ""
+#. Mode menu
+msgid "_Mode"
+msgstr "_Režiim"
 
-#. Translators: Title of the error dialog when unable to download currency rates
-msgid ""
-"Currency rates could not be downloaded. You may receive inaccurate results, "
-"or you may not receive any results at all."
-msgstr ""
+#. Help menu label
+msgid "_Help"
+msgstr "A_bi"
 
-msgid "Paste"
-msgstr "Aseta"
+#. Basic menu label
+msgid "_Basic"
+msgstr "_Tavaline"
 
-#. Translators: Error displayed attempted to divide by zero
-msgid "Division by zero is undefined"
-msgstr ""
+#. Advanced menu label
+msgid "_Advanced"
+msgstr "_Laiendatud"
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-msgid "Logarithm of zero is undefined"
-msgstr ""
+#. Financial menu label
+msgid "_Financial"
+msgstr "_Rahandus"
 
-#. Translators: Error displayed attempted to take logarithm of negative value
-msgid "Logarithm of negative values is undefined"
-msgstr ""
+#. Programming menu label
+msgid "_Programming"
+msgstr "_Programmeerimine"
 
-msgid "The power of negative numbers is only defined for integer exponents"
-msgstr ""
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-msgid "The power of zero is undefined for a negative exponent"
-msgstr ""
-
-msgid "Reciprocal of zero is undefined"
-msgstr ""
-
-msgid "Root must be non-zero"
-msgstr ""
-
-msgid "Negative root of zero is undefined"
-msgstr ""
-
-msgid "nth root of negative number is undefined for even n"
-msgstr ""
-
-msgid "Square root is undefined for negative values"
-msgstr ""
-
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-msgid "Factorial is only defined for natural numbers"
-msgstr ""
-
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-msgid "Modulus division is only defined for integers"
-msgstr ""
+#. Help>Contents menu label
+msgid "_Contents"
+msgstr "_Sisukord"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 msgid "Boolean AND is only defined for positive integers"
@@ -1138,6 +1096,42 @@ msgstr ""
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 msgid "Shift is only possible on integer values"
+msgstr ""
+
+#. Translators: Error display when attempting to take argument of zero
+msgid "Argument not defined for zero"
+msgstr ""
+
+#. Translators: Error displayed attempted to divide by zero
+msgid "Division by zero is undefined"
+msgstr ""
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+msgid "Logarithm of zero is undefined"
+msgstr ""
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+msgid "The power of zero is undefined for a negative exponent"
+msgstr ""
+
+msgid "Reciprocal of zero is undefined"
+msgstr ""
+
+msgid "Root must be non-zero"
+msgstr ""
+
+msgid "Negative root of zero is undefined"
+msgstr ""
+
+msgid "nth root of negative number is undefined for even n"
+msgstr ""
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+msgid "Factorial is only defined for natural numbers"
+msgstr ""
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+msgid "Modulus division is only defined for integers"
 msgstr ""
 
 #. Translators: Error displayed when tangent value is undefined
@@ -1162,6 +1156,33 @@ msgstr ""
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 
+#~ msgid "Calculator — Advanced"
+#~ msgstr "Kalkulaator — Laiendatud"
+
+#~ msgid "Calculator — Financial"
+#~ msgstr "Kalkulaator — Rahandus"
+
+#~ msgid "Calculator — Scientific"
+#~ msgstr "Kalkulaator — Teaduslik"
+
+#~ msgid "Calculator — Programming"
+#~ msgstr "Kalkulaator — Programmeerimine"
+
+#~ msgid "Error loading user interface"
+#~ msgstr "Viga kasutajaliidese laadimisel"
+
+#~ msgid ""
+#~ "A required file is missing or damaged. Please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Vajalik fail on puudu või rikutud. Palun kontrolli programmi paigaldust.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "Paste"
+#~ msgstr "Aseta"
+
 #~ msgid "Bitwise AND [&]"
 #~ msgstr "Bitikaupa JA-tehe (AND) [&]"
 
@@ -1180,17 +1201,11 @@ msgstr ""
 #~ msgid "Bksp"
 #~ msgstr "Tagasi"
 
-#~ msgid "Calculate result"
-#~ msgstr "Tulemuse arvutamine"
-
 #~ msgid "Change Sign [C]"
 #~ msgstr "Märgi muutmine [C]"
 
 #~ msgid "Change sign"
 #~ msgstr "Märgi muutmine"
-
-#~ msgid "Clear"
-#~ msgstr "Nulli"
 
 #~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
 #~ msgstr ""
@@ -1244,17 +1259,8 @@ msgstr ""
 #~ msgid "Exchange with register"
 #~ msgstr "Mäluregistri väärtuse ümbervahetamine"
 
-#~ msgid "Exp"
-#~ msgstr "Eksp"
-
-#~ msgid "F"
-#~ msgstr "F"
-
 #~ msgid "Factorial of displayed value [!]"
 #~ msgstr "Kuvatava väärtuse faktoriaal [!]"
-
-#~ msgid "Financial"
-#~ msgstr "Rahandus"
 
 #~ msgid "Frac"
 #~ msgstr "Murd"
@@ -1264,36 +1270,6 @@ msgstr ""
 
 #~ msgid "Fun"
 #~ msgstr "Fun"
-
-#~ msgid "Future value [v]"
-#~ msgstr "Tulevikuväärtus [v]"
-
-#~ msgid "Gross Profit Margin [I]"
-#~ msgstr "Brutokasumi marginaal [I]"
-
-#~ msgid "Gross Profit Margin [g]"
-#~ msgstr "Brutokasumi marginaal [g]"
-
-#~ msgid "H_yp"
-#~ msgstr "Hü_p"
-
-#~ msgid "He_x"
-#~ msgstr "1_6"
-
-#~ msgid "Hexadecimal digit B [b]"
-#~ msgstr "Kuueteistkümnendsüsteemi number B [b]"
-
-#~ msgid "Hexadecimal digit C [c]"
-#~ msgstr "Kuueteistkümnendsüsteemi number C [c]"
-
-#~ msgid "Hexadecimal digit D [d]"
-#~ msgstr "Kuueteistkümnendsüsteemi number D [d]"
-
-#~ msgid "Hexadecimal digit E [e]"
-#~ msgstr "Kuueteistkümnendsüsteemi number E [e]"
-
-#~ msgid "Hexadecimal digit F [f]"
-#~ msgstr "Kuueteistkümnendsüsteemi number F [f]"
 
 #~ msgid "Insert ASCII value"
 #~ msgstr "ASCII-väärtuse sisestamine"
@@ -1324,12 +1300,6 @@ msgstr ""
 
 #~ msgid "Multiply"
 #~ msgstr "Korrutamine"
-
-#~ msgid "NOT"
-#~ msgstr "NOT"
-
-#~ msgid "OR"
-#~ msgstr "OR"
 
 #~ msgid "Paste selection"
 #~ msgstr "Valiku asetamine"
@@ -1457,17 +1427,8 @@ msgstr ""
 #~ msgid "Square"
 #~ msgstr "Astendamine - ruut"
 
-#~ msgid "Square [@]"
-#~ msgstr "Astendamine - ruut [@]"
-
 #~ msgid "Square root"
 #~ msgstr "Ruutjuur"
-
-#~ msgid "Square root [s]"
-#~ msgstr "Ruutjuur [s]"
-
-#~ msgid "Start group of calculations [(]"
-#~ msgstr "Arvutusgrupi alustamine [(]"
 
 #~ msgid "Store displayed value in memory register [S]"
 #~ msgstr "Kuvatava väärtuse salvestamine mäluregistrisse [S]"
@@ -1484,14 +1445,8 @@ msgstr ""
 #~ msgid "Subtract"
 #~ msgstr "Lahutamine"
 
-#~ msgid "Trunc"
-#~ msgstr "Kärbi"
-
 #~ msgid "Truncate displayed value to the chosen word size ([)"
 #~ msgstr "Kuvatava väärtuse kärpimine valitud sõna suuruse järgi ([)"
-
-#~ msgid "Undo"
-#~ msgstr "Viimase tegevuse unustamine"
 
 #~ msgid "User-defined functions [F]"
 #~ msgstr "Kasutaja poolt kirjeldatud funktsioonid [F]"
@@ -1502,17 +1457,11 @@ msgstr ""
 #~ msgid "XOR"
 #~ msgstr "XOR"
 
-#~ msgid "_Contents"
-#~ msgstr "_Sisukord"
-
 #~ msgid "_Dec"
 #~ msgstr "_10"
 
 #~ msgid "_Edit"
 #~ msgstr "_Redaktor"
-
-#~ msgid "_Fix"
-#~ msgstr "_Fiks"
 
 #~ msgid "_Insert ASCII value..."
 #~ msgstr "_Sisesta ASCII-väärtus..."
@@ -1534,9 +1483,6 @@ msgstr ""
 
 #~ msgid "_Undo"
 #~ msgstr "_Unusta"
-
-#~ msgid "x2"
-#~ msgstr "x2"
 
 #~ msgid "%s: accuracy should be in the range 0-%d\n"
 #~ msgstr "%s: täpsus peab olema vahemikus 0-%d\n"
@@ -1579,71 +1525,8 @@ msgstr ""
 #~ msgstr[0] "Täpsuse seadmine 0-st kuni %d. komakohani. [A]"
 #~ msgstr[1] "Täpsuse seadmine 0-st kuni %d. komakohani. [A]"
 
-#~ msgid "sin"
-#~ msgstr "sin"
-
-#~ msgid "sin<sup>−1</sup>"
-#~ msgstr "sin<sup>-1</sup>"
-
-#~ msgid "sinh"
-#~ msgstr "sinh"
-
-#~ msgid "sinh<sup>−1</sup>"
-#~ msgstr "sinh<sup>-1</sup>"
-
-#~ msgid "Sine [k]"
-#~ msgstr "Siinus [k]"
-
-#~ msgid "Hyperbolic Sine [k]"
-#~ msgstr "Hüperboolne siinus [k]"
-
-#~ msgid "Hyperbolic Inverse Sine [K]"
-#~ msgstr "Hüperboolne arkussiinus [K]"
-
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "cos<sup>−1</sup>"
-#~ msgstr "cos<sup>-1</sup>"
-
-#~ msgid "cosh"
-#~ msgstr "cosh"
-
-#~ msgid "cosh<sup>−1</sup>"
-#~ msgstr "cosh<sup>-1</sup>"
-
-#~ msgid "Cosine [j]"
-#~ msgstr "Koosinus [j]"
-
-#~ msgid "Inverse Cosine [J]"
-#~ msgstr "Arkuskoosinus [J]"
-
-#~ msgid "Hyperbolic Cosine [j]"
-#~ msgstr "Hüperboolne koosinus [j]"
-
-#~ msgid "Hyperbolic Inverse Cosine [J]"
-#~ msgstr "Hüperboolne arkuskoosinus [J]"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "tan<sup>−1</sup>"
-#~ msgstr "tan<sup>-1</sup>"
-
-#~ msgid "tanh"
-#~ msgstr "tanh"
-
-#~ msgid "tanh<sup>−1</sup>"
-#~ msgstr "tanh<sup>-1</sup>"
-
-#~ msgid "Tangent [w]"
-#~ msgstr "Tangens [w]"
-
 #~ msgid "Inverse Tangent [W]"
 #~ msgstr "Arkustangens [W]"
-
-#~ msgid "Hyperbolic Tangent [w]"
-#~ msgstr "Hüperboolne tangens [w]"
 
 #~ msgid "Hyperbolic Inverse Tangent [W]"
 #~ msgstr "Hüperboolne arkustangens [W]"
@@ -1672,17 +1555,11 @@ msgstr ""
 #~ msgid "square root of 2"
 #~ msgstr "ruutjuur kahest"
 
-#~ msgid "π"
-#~ msgstr "π"
-
 #~ msgid "Centimeter-to-inch conversion factor"
 #~ msgstr "Sentimeetrist tolliks teisendamise tegur"
 
 #~ msgid "degrees in a radian"
 #~ msgstr "kraadid radiaanides"
-
-#~ msgid "2 ^ 20"
-#~ msgstr "2 ^ 20"
 
 #~ msgid "Gram-to-ounce conversion factor"
 #~ msgstr "Grammist untsiks teisendamise tegur"
