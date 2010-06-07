@@ -48,6 +48,8 @@ struct MathButtonsPrivate
 
     GtkWidget *shift_left_menu, *shift_right_menu;
 
+    GtkWidget *function_menu;
+
     GList *superscript_toggles;
     GList *subscript_toggles;
 
@@ -127,6 +129,9 @@ static ButtonData button_data[] = {
     {"modulus_divide",     " mod ", OPERATOR,
       /* Tooltip for the modulus divide button */
       N_("Modulus divide")},
+    {"function",           NULL, FUNCTION,
+      /* Tooltip for the additional functions button */
+      N_("Additional Functions")},
     {"x_pow_y",            "^", FUNCTION,
       /* Tooltip for the exponent button */
       N_("Exponent [^ or **]")},
@@ -199,10 +204,10 @@ static ButtonData button_data[] = {
     {"fractional_portion", "frac ", FUNCTION,
       /* Tooltip for the fractional component button */
       N_("Fractional Component")},
-    {"real_portion",       "re ", FUNCTION,
+    {"real_portion",       "Re ", FUNCTION,
       /* Tooltip for the real component button */
       N_("Real Component")},
-    {"imaginary_portion",  "im ", FUNCTION,
+    {"imaginary_portion",  "Im ", FUNCTION,
       /* Tooltip for the imaginary component button */
       N_("Imaginary Component")},
     {"ones_complement",    "ones ", FUNCTION,
@@ -1252,6 +1257,51 @@ shift_right_cb(GtkWidget *widget, MathButtons *buttons)
     }
 
     popup_button_menu(widget, GTK_MENU(buttons->priv->shift_right_menu));  
+}
+
+
+static void
+insert_function_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    math_equation_insert(buttons->priv->equation, g_object_get_data(G_OBJECT(widget), "function"));
+}
+
+
+G_MODULE_EXPORT
+void
+function_cb(GtkWidget *widget, MathButtons *buttons)
+{
+    if (!buttons->priv->function_menu) {
+        gint i;
+        GtkWidget *menu;
+        struct 
+        {
+            gchar *name, *function;
+        } functions[] = 
+        {
+            { /* Tooltip for the integer component button */
+              N_("Integer Component"), "int " },
+            { /* Tooltip for the fractional component button */
+              N_("Fractional Component"), "frac " },
+            { NULL, NULL }
+        };
+
+        menu = buttons->priv->function_menu = gtk_menu_new();
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+        set_tint(menu, &buttons->priv->color_function, 1);
+
+        for (i = 0; functions[i].name != NULL; i++) {
+            GtkWidget *item;
+          
+            item = gtk_menu_item_new_with_label(_(functions[i].name));
+            g_object_set_data(G_OBJECT(item), "function", g_strdup (functions[i].function));
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            g_signal_connect(item, "activate", G_CALLBACK(insert_function_cb), buttons);
+            gtk_widget_show(item);
+        }
+    }
+
+    popup_button_menu(widget, GTK_MENU(buttons->priv->function_menu));  
 }
 
 
