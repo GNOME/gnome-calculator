@@ -142,6 +142,9 @@ static ButtonData button_data[] = {
     {"abs",                "|", FUNCTION,
       /* Tooltip for the absolute value button */
       N_("Absolute value [|]")},
+    {"arg",                "Arg ", FUNCTION,
+      /* Tooltip for the complex argument component button */
+      N_("Complex argument")},
     {"conjugate",          "conj ", FUNCTION,
       /* Tooltip for the complex conjugate button */
       N_("Complex conjugate")},
