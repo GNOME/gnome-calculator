@@ -400,6 +400,9 @@ test_equations()
     test("8 mod 7", "1", 0);
     test("−1 mod 7", "6", 0);
 
+    test("sgn 0", "0", 0);  
+    test("sgn 3", "1", 0);
+    test("sgn −3", "−1", 0);
     test("⌊3⌋", "3", 0);
     test("⌈3⌉", "3", 0);
     test("[3]", "3", 0);

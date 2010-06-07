@@ -443,6 +443,31 @@ mp_subtract(const MPNumber *x, const MPNumber *y, MPNumber *z)
 
 
 void
+mp_sgn(const MPNumber *x, MPNumber *z)
+{
+    if (mp_is_zero(x))
+        mp_set_from_integer(0, z);
+    else if (mp_is_negative(x))
+        mp_set_from_integer(-1, z);
+    else
+        mp_set_from_integer(1, z);  
+}
+
+void
+mp_integer_component(const MPNumber *x, MPNumber *z)
+{
+    int i;
+
+    /* Clear fraction */
+    mp_set_from_mp(x, z);
+    for (i = z->exponent; i < MP_SIZE; i++)
+        z->fraction[i] = 0;
+    z->im_sign = 0;
+    z->im_exponent = 0;
+    memset(z->im_fraction, 0, sizeof(int) * MP_SIZE);
+}
+
+void
 mp_fractional_component(const MPNumber *x, MPNumber *z)
 {
     int i, shift;

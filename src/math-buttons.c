@@ -1283,6 +1283,14 @@ function_cb(GtkWidget *widget, MathButtons *buttons)
               N_("Integer Component"), "int " },
             { /* Tooltip for the fractional component button */
               N_("Fractional Component"), "frac " },
+            { /* Tooltip for the round button */
+              N_("Round"), "round " },
+            { /* Tooltip for the floor button */
+              N_("Floor"), "floor " },
+            { /* Tooltip for the ceiling button */
+              N_("Ceiling"), "ceil " },
+            { /* Tooltip for the ceiling button */
+              N_("Sign"), "sgn " },
             { NULL, NULL }
         };
 
