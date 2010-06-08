@@ -18,6 +18,9 @@ typedef struct {
 static currency *currencies = NULL;
 static int currency_count = 0;
 
+static gboolean downloading_rates = FALSE;
+static gboolean loaded_rates = FALSE;
+
 static char*
 get_rate_filepath()
 {
@@ -27,7 +30,7 @@ get_rate_filepath()
                             NULL);
 }
 
-int
+static int
 currency_get_index(const char *short_name)
 {
     int i;
@@ -47,7 +50,7 @@ currency_get_index(const char *short_name)
 /* A file needs to be redownloaded if it doesn't exist, or every 7 days.
  * When an error occur, it probably won't hurt to try to download again.
  */
-int
+static int
 currency_rates_needs_update()
 {
     gchar *filename = get_rate_filepath ();
@@ -70,13 +73,30 @@ currency_rates_needs_update()
     return 0;
 }
 
-/* FIXME: This code is synchronous, and should thus be accessed from a thread */
-int
+
+static void
+download_cb(GObject *object, GAsyncResult *result, gpointer user_data)
+{
+    GError *error = NULL;
+
+    if (g_file_copy_finish(G_FILE(object), result, &error))
+        g_debug("Rates updated");
+
+    if (error != NULL)
+        g_warning("Couldn't download currency file: %s\n", error->message);
+    g_clear_error(&error);
+    downloading_rates = FALSE;
+}
+
+
+static void
 currency_download_rates()
 {
     gchar *filename, *directory;
-    GError *e = NULL;
     GFile *source, *dest;
+
+    downloading_rates = TRUE;
+    g_debug("Downloading rates");
    
     filename = get_rate_filepath();
     directory = g_path_get_dirname(filename);
@@ -87,18 +107,11 @@ currency_download_rates()
     dest = g_file_new_for_path (filename);
     g_free(filename);
 
-    g_file_copy (source, dest, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &e);
+    g_file_copy_async (source, dest, G_FILE_COPY_OVERWRITE, G_PRIORITY_DEFAULT, NULL, NULL, NULL, download_cb, NULL);
     g_object_unref(source);
     g_object_unref(dest);
-
-    if (e != NULL) {
-        fprintf(stderr, "Couldn't download currency file: %s\n", e->message);
-        g_error_free (e);
-        return 0;
-    }
-
-    return 1;
 }
+
 
 static void
 set_rate (xmlNodePtr node, currency *cur)
@@ -115,7 +128,7 @@ set_rate (xmlNodePtr node, currency *cur)
     }
 }
 
-void
+static void
 currency_load_rates()
 {
     char *filename = get_rate_filepath();
@@ -176,22 +189,45 @@ currency_load_rates()
     xmlXPathFreeContext(xpath_ctx);
     xmlFreeDoc(document);
     xmlCleanupParser();
+
+    g_debug("Rates loaded");
+    loaded_rates = TRUE;
 }
 
-void
+
+gboolean
 currency_convert(const MPNumber *from_amount,
-                 int from_index,
-                 int to_index,
+                 const char *source_currency, const char *target_currency,
                  MPNumber *to_amount)
 {
+    int from_index, to_index;
+
+    if (downloading_rates)
+        return FALSE;
+
+    /* Update currency if necessary */
+    if (currency_rates_needs_update()) {
+        currency_download_rates();
+        return FALSE;
+    }
+    if (!loaded_rates)
+        currency_load_rates();
+  
+    from_index = currency_get_index(source_currency);
+    to_index = currency_get_index(target_currency);
+    if (from_index < 0 || to_index < 0)
+        return FALSE;
+
     if (mp_is_zero(&currencies[from_index].value) ||
         mp_is_zero(&currencies[to_index].value)) {
         mp_set_from_integer(0, to_amount);
-        return;
+        return FALSE;
     }
 
     mp_divide(from_amount, &currencies[from_index].value, to_amount);
     mp_multiply(to_amount, &currencies[to_index].value, to_amount);
+
+    return TRUE;
 }
 
 void

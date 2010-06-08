@@ -61,6 +61,10 @@ struct MathButtonsPrivate
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
 
+    GtkWidget *source_currency_combo;
+    GtkWidget *target_currency_combo;
+    GtkWidget *currency_label;
+
     GtkWidget *character_code_dialog;
     GtkWidget *character_code_entry;
 };
@@ -282,9 +286,6 @@ static ButtonData button_data[] = {
     {"finc_gross_profit_margin", NULL, FUNCTION,
       /* Tooltip for the gross profit margin button */
       N_("Gross Profit Margin")},
-    {"currency", NULL, FUNCTION,
-      /* Tooltip for the currency button */
-      N_("Currency Converter")},
     {NULL, NULL, 0, NULL}
 };
 
@@ -364,12 +365,6 @@ static void
 load_finc_dialogs(MathButtons *buttons)
 {
     int i, j;
-    GtkListStore *currency_store;
-    GtkCellRenderer *render;
-    GtkSpinButton *currency_amount_upper;
-    GtkSpinButton *currency_amount_lower;
-    GtkComboBox   *currency_type_upper;
-    GtkComboBox   *currency_type_lower;
 
     set_int_data(buttons->priv->financial_ui, "ctrm_dialog", "finc_dialog", FINC_CTRM_DIALOG);
     set_int_data(buttons->priv->financial_ui, "ddb_dialog", "finc_dialog", FINC_DDB_DIALOG);
@@ -392,167 +387,189 @@ load_finc_dialogs(MathButtons *buttons)
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
+}
 
-    currency_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
-    currency_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-    currency_type_upper = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper"));
-    currency_type_lower = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_lower"));
 
-    currency_store = gtk_list_store_new(2,
-                                        G_TYPE_INT,
-                                        G_TYPE_STRING);
+static void
+update_angle_label (MathButtons *buttons)
+{
+    MPNumber x;
+    MPNumber pi, max_value, min_value, fraction, input, output;
+    char *label, input_text[1024], output_text[1024];
 
-    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(currency_store),
-                                         1,
-                                         GTK_SORT_ASCENDING);
+    if (!buttons->priv->angle_label)
+        return;
 
-    gtk_combo_box_set_model(currency_type_upper, GTK_TREE_MODEL(currency_store));
-    gtk_combo_box_set_model(currency_type_lower, GTK_TREE_MODEL(currency_store));
+    if (!math_equation_get_number(buttons->priv->equation, &x))
+        return;
 
-    render = gtk_cell_renderer_text_new();
+    mp_get_pi(&pi);
+    switch (math_equation_get_angle_units(buttons->priv->equation)) {
+    default:
+    case MP_DEGREES:
+        label = g_strdup("");
+        break;
+    case MP_RADIANS:
+        /* Clip to the range ±2π */
+        mp_multiply_integer(&pi, 2, &max_value);
+        mp_invert_sign(&max_value, &min_value);
+        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
+            mp_divide(&x, &max_value, &fraction);
+            mp_fractional_component(&fraction, &fraction);
+            mp_multiply(&fraction, &max_value, &input);
+        }
+        else {
+            mp_set_from_mp(&x, &input);
+            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
+        }
+        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
 
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_upper),
-                               render,
-                               TRUE);
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(currency_type_lower),
-                               render,
-                               TRUE);
+        mp_multiply_integer(&fraction, 360, &output);
+        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        label = g_strdup_printf("%s radians = %s degrees", input_text, output_text);
+        break;
+    case MP_GRADIANS:
+        /* Clip to the range ±400 */
+        mp_set_from_integer(400, &max_value);
+        mp_invert_sign(&max_value, &min_value);
+        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
+            mp_divide(&x, &max_value, &fraction);
+            mp_fractional_component(&fraction, &fraction);
+            mp_multiply(&fraction, &max_value, &input);
+        }
+        else {
+            mp_set_from_mp(&x, &input);
+            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
+        }
 
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_upper),
-                                  render,
-                                  "text",
-                                  1);
-    gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(currency_type_lower),
-                                  render,
-                                  "text",
-                                  1);
+        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
 
-    set_int_data(buttons->priv->financial_ui, "currency_amount_upper", "target", CURRENCY_TARGET_LOWER);
-    set_int_data(buttons->priv->financial_ui, "currency_amount_lower", "target", CURRENCY_TARGET_UPPER);
+        mp_multiply_integer(&fraction, 360, &output);
+        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        label = g_strdup_printf("%s gradians = %s degrees", input_text, output_text);
+        break;
+    }
+
+    gtk_label_set_text(GTK_LABEL(buttons->priv->angle_label), label);
+    g_free(label);
+}
+
+
+static void
+update_bit_panel(MathButtons *buttons)
+{
+    MPNumber x;
+    gboolean enabled;
+    guint64 bits;
+    int i;
+    GString *label;
+    gint base;
+
+    if (!buttons->priv->bit_panel)
+        return;
+  
+    enabled = math_equation_get_number(buttons->priv->equation, &x);
+
+    if (enabled) {
+        MPNumber max, fraction;
+
+        mp_set_from_unsigned_integer(G_MAXUINT64, &max);
+        mp_fractional_part(&x, &fraction);
+        if (mp_is_negative(&x) || mp_is_greater_than(&x, &max) || !mp_is_zero(&fraction))
+            enabled = FALSE;
+        else
+            bits = mp_cast_to_unsigned_int(&x);
+    }
+
+    gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
+    gtk_widget_set_sensitive(buttons->priv->base_label, enabled);
+      
+    if (!enabled)
+        return;
+
+    for (i = 0; i < MAXBITS; i++) {
+        const gchar *label;
+
+        if (bits & (1LL << (MAXBITS-i-1)))
+            label = " 1";
+        else
+            label = " 0";
+        gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
+    }
+
+    base = math_equation_get_base(buttons->priv->equation);      
+    label = g_string_new("");
+    if (base != 8) {
+        if (label->len != 0)
+            g_string_append(label, " = ");
+        g_string_append_printf(label, "%lo", bits);
+        g_string_append(label, "₈");
+    }
+    if (base != 10) {
+        if (label->len != 0)
+            g_string_append(label, " = ");
+        g_string_append_printf(label, "%lu", bits);
+        g_string_append(label, "₁₀");
+    }
+    if (base != 16) {
+        if (label->len != 0)
+            g_string_append(label, " = ");
+        g_string_append_printf(label, "%lX", bits);
+        g_string_append(label, "₁₆");
+    }
+
+    gtk_label_set_text(GTK_LABEL(buttons->priv->base_label), label->str);
+    g_string_free(label, TRUE);
+}
+
+
+static void
+update_currency_label(MathButtons *buttons)
+{
+    MPNumber x, value;
+    int source_index, target_index;
+    char *label;
+
+    if (!buttons->priv->currency_label)
+        return;
+
+    if (!math_equation_get_number(buttons->priv->equation, &x))
+        return;
+  
+    if (currency_convert(&x,
+                         math_equation_get_source_currency(buttons->priv->equation),
+                         math_equation_get_target_currency(buttons->priv->equation),
+                         &value)) {
+        char input_text[1024], output_text[1024];
+        const char *source_symbol, *target_symbol;
+        int i;
+
+        mp_cast_to_string(&x, 10, 10, 2, false, input_text, 1024);
+        mp_cast_to_string(&value, 10, 10, 2, false, output_text, 1024);
+
+        for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
+        source_symbol = currency_names[i].symbol;
+        for (i = 0; strcmp(math_equation_get_target_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
+        target_symbol = currency_names[i].symbol;
+
+        label = g_strdup_printf("%s%s = %s%s",
+                                source_symbol, input_text,
+                                target_symbol, output_text);
+    }
+    else
+        label = g_strdup_printf("");
+
+    gtk_label_set_text(GTK_LABEL(buttons->priv->currency_label), label);
+    g_free(label);
 }
 
 
 static void
 display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
-    MPNumber x;
-    gboolean is_number;
-
-    is_number = math_equation_get_number(equation, &x);
-
-    if (buttons->priv->angle_label && is_number) {
-        MPNumber pi, max_value, min_value, fraction, input, output;
-        char *label, input_text[1024], output_text[1024];
-
-        mp_get_pi(&pi);
-        switch (math_equation_get_angle_units(equation)) {
-        default:
-        case MP_DEGREES:
-            label = g_strdup("");
-            break;
-        case MP_RADIANS:
-            /* Clip to the range ±2π */
-            mp_multiply_integer(&pi, 2, &max_value);
-            mp_invert_sign(&max_value, &min_value);
-            if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
-                mp_divide(&x, &max_value, &fraction);
-                mp_fractional_component(&fraction, &fraction);
-                mp_multiply(&fraction, &max_value, &input);
-            }
-            else {
-                mp_set_from_mp(&x, &input);
-                mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
-            }
-            mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
-
-            mp_multiply_integer(&fraction, 360, &output);
-            mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
-            label = g_strdup_printf("%s radians = %s degrees", input_text, output_text);
-            break;
-        case MP_GRADIANS:
-            /* Clip to the range ±400 */
-            mp_set_from_integer(400, &max_value);
-            mp_invert_sign(&max_value, &min_value);
-            if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
-                mp_divide(&x, &max_value, &fraction);
-                mp_fractional_component(&fraction, &fraction);
-                mp_multiply(&fraction, &max_value, &input);
-            }
-            else {
-                mp_set_from_mp(&x, &input);
-                mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
-            }
-
-            mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
-
-            mp_multiply_integer(&fraction, 360, &output);
-            mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
-            label = g_strdup_printf("%s gradians = %s degrees", input_text, output_text);
-            break;
-        }
-
-        gtk_label_set_text(GTK_LABEL(buttons->priv->angle_label), label);
-        g_free(label);
-    }
-  
-    if (buttons->priv->bit_panel) {
-        gboolean enabled = is_number;
-        guint64 bits;
-
-        if (enabled) {
-            MPNumber max, fraction;
-
-            mp_set_from_unsigned_integer(G_MAXUINT64, &max);
-            mp_fractional_part(&x, &fraction);
-            if (mp_is_negative(&x) || mp_is_greater_than(&x, &max) || !mp_is_zero(&fraction))
-                enabled = FALSE;
-            else
-                bits = mp_cast_to_unsigned_int(&x);
-        }
-
-        gtk_widget_set_sensitive(buttons->priv->bit_panel, enabled);
-        gtk_widget_set_sensitive(buttons->priv->base_label, enabled);
-      
-        if (enabled) {
-            int i;
-            GString *label;
-            gint base;
-
-            for (i = 0; i < MAXBITS; i++) {
-                const gchar *label;
-
-                if (bits & (1LL << (MAXBITS-i-1)))
-                    label = " 1";
-                else
-                    label = " 0";
-                gtk_label_set_text(GTK_LABEL(buttons->priv->bit_labels[i]), label);
-            }
-
-            base = math_equation_get_base(equation);      
-            label = g_string_new("");
-            if (base != 8) {
-                if (label->len != 0)
-                    g_string_append(label, " = ");
-                g_string_append_printf(label, "%lo", bits);
-                g_string_append(label, "₈");
-            }
-            if (base != 10) {
-                if (label->len != 0)
-                    g_string_append(label, " = ");
-                g_string_append_printf(label, "%lu", bits);
-                g_string_append(label, "₁₀");
-            }
-            if (base != 16) {
-                if (label->len != 0)
-                    g_string_append(label, " = ");
-                g_string_append_printf(label, "%lX", bits);
-                g_string_append(label, "₁₆");
-            }
-
-            gtk_label_set_text(GTK_LABEL(buttons->priv->base_label), label->str);
-            g_string_free(label, TRUE);
-        }
-    }
+    update_angle_label(buttons);
+    update_currency_label(buttons);
+    update_bit_panel(buttons);
 }
 
 
@@ -636,6 +653,102 @@ base_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
         valid = gtk_tree_model_get_iter_first(model, &iter);
 
     gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->base_combo), &iter);
+}
+
+
+static void
+source_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
+{
+    gchar *value;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 0, &value, -1);
+
+    math_equation_set_source_currency(buttons->priv->equation, value);
+    g_free (value);
+}
+
+
+static void
+source_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gboolean valid;
+  
+    if (buttons->priv->mode != FINANCIAL)
+        return;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->source_currency_combo));
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    while (valid) {
+        gchar *v;
+        gboolean matched;
+
+        gtk_tree_model_get(model, &iter, 0, &v, -1);
+        matched = strcmp (math_equation_get_source_currency(buttons->priv->equation), v) == 0;
+        g_free (v);
+        if (matched)
+            break;
+        valid = gtk_tree_model_iter_next(model, &iter);
+    }
+    if (!valid)
+        valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->source_currency_combo), &iter);
+    update_currency_label(buttons);
+}
+
+
+static void
+target_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
+{
+    gchar *value;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 0, &value, -1);
+
+    math_equation_set_target_currency(buttons->priv->equation, value);
+    g_free (value);
+}
+
+
+static void
+target_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gboolean valid;
+  
+    if (buttons->priv->mode != FINANCIAL)
+        return;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->target_currency_combo));
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    while (valid) {
+        gchar *v;
+        gboolean matched;
+
+        gtk_tree_model_get(model, &iter, 0, &v, -1);
+        matched = strcmp (math_equation_get_target_currency(buttons->priv->equation), v) == 0;
+        g_free (v);
+        if (matched)
+            break;
+        valid = gtk_tree_model_iter_next(model, &iter);
+    }
+    if (!valid)
+        valid = gtk_tree_model_get_iter_first(model, &iter);
+
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->target_currency_combo), &iter);
+    update_currency_label(buttons);
 }
 
 
@@ -841,7 +954,40 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
     /* Setup financial functions */
     if (mode == FINANCIAL) {
+        GtkListStore *model;
+        GtkCellRenderer *renderer;
+
         load_finc_dialogs(buttons);
+
+        buttons->priv->source_currency_combo = GET_WIDGET(builder, "source_currency_combo");
+        buttons->priv->target_currency_combo = GET_WIDGET(builder, "target_currency_combo");
+        buttons->priv->currency_label = GET_WIDGET(builder, "currency_label");
+
+        model = gtk_list_store_new(1, G_TYPE_STRING);
+
+        for (i = 0; currency_names[i].short_name != NULL; i++) {
+            GtkTreeIter iter;
+
+            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, currency_names[i].short_name, -1);
+        }
+
+        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->source_currency_combo), GTK_TREE_MODEL(model));
+        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->target_currency_combo), GTK_TREE_MODEL(model));
+
+        renderer = gtk_cell_renderer_text_new();
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->source_currency_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->source_currency_combo), renderer, "text", 0);
+        renderer = gtk_cell_renderer_text_new();
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->target_currency_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->target_currency_combo), renderer, "text", 0);
+
+        g_signal_connect(buttons->priv->source_currency_combo, "changed", G_CALLBACK(source_currency_combo_changed_cb), buttons);
+        g_signal_connect(buttons->priv->target_currency_combo, "changed", G_CALLBACK(target_currency_combo_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::source-currency", G_CALLBACK(source_currency_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::target-currency", G_CALLBACK(target_currency_changed_cb), buttons);
+        source_currency_changed_cb(buttons->priv->equation, NULL, buttons);
+        target_currency_changed_cb(buttons->priv->equation, NULL, buttons);
 
         set_data(builder, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
         set_data(builder, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
@@ -1409,145 +1555,6 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
     gtk_widget_grab_focus(GET_WIDGET(buttons->priv->financial_ui, finc_dialog_fields[dialog][0]));
 
     do_finc_expression(buttons->priv->equation, dialog, &arg[0], &arg[1], &arg[2], &arg[3]);
-}
-
-
-static void
-recalculate_currency(MathButtons *buttons, CurrencyTargetRow target)
-{
-    int upper_index, lower_index;
-
-    GtkComboBox *combo_upper = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper"));
-    GtkComboBox *combo_lower = GTK_COMBO_BOX(gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_lower"));
-    GtkSpinButton *spin_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
-    GtkSpinButton *spin_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-
-    GtkTreeModel *model = gtk_combo_box_get_model(combo_upper);
-    GtkTreeIter iter;
-
-    if (!gtk_combo_box_get_active_iter(combo_upper, &iter))
-        return;
-    gtk_tree_model_get(model, &iter, 0, &upper_index, -1);
-
-    if (!gtk_combo_box_get_active_iter(combo_lower, &iter))
-        return;
-    gtk_tree_model_get(model, &iter, 0, &lower_index, -1);
-
-    if (target == CURRENCY_TARGET_LOWER) {
-        MPNumber input, output;
-        mp_set_from_double (gtk_spin_button_get_value(spin_upper), &input);
-        currency_convert(&input, upper_index, lower_index, &output);
-        if (!mp_is_zero(&output))
-            gtk_spin_button_set_value(spin_lower, mp_cast_to_double(&output));
-    } else {
-        MPNumber input, output;
-        mp_set_from_double (gtk_spin_button_get_value(spin_lower), &input);
-        currency_convert(&input, lower_index, upper_index, &output);
-        if (!mp_is_zero(&output))
-            gtk_spin_button_set_value(spin_upper, mp_cast_to_double(&output));
-    }
-}
-
-
-G_MODULE_EXPORT
-void
-currency_type_cb(GtkComboBox *combo, gpointer user_data, MathButtons *buttons)
-{
-    recalculate_currency(buttons, CURRENCY_TARGET_LOWER);
-}
-
-
-G_MODULE_EXPORT
-void
-currency_amount_cb (GtkSpinButton *spinbutton, gpointer user_data, MathButtons *buttons)
-{
-    recalculate_currency(buttons, GPOINTER_TO_INT(g_object_get_data(G_OBJECT(spinbutton), "target")));
-}
-
-static void
-setup_currency_rates(MathButtons *buttons)
-{
-    static int has_run = 0;
-    int i;
-    GtkListStore *currency_store;
-    GObject *currency_type;
-
-    if (has_run)
-        return;
-
-    if (currency_rates_needs_update()) {
-        GtkWidget *dialog = gtk_message_dialog_new(NULL, 0,
-                                        GTK_MESSAGE_INFO,
-                                        GTK_BUTTONS_YES_NO,
-                                        /* Translators: Title of the error dialog when prompting to download currency rates */
-                                        _("You don't have any recent currency rates. Should some be downloaded now?"));
-        int response = gtk_dialog_run(GTK_DIALOG(dialog));
-        gtk_widget_destroy(dialog);
-
-        if (response == GTK_RESPONSE_YES) {
-            if (!currency_download_rates()) {
-                dialog = gtk_message_dialog_new(NULL, 0,
-                                                GTK_MESSAGE_ERROR,
-                                                GTK_BUTTONS_OK,
-                                                /* Translators: Title of the error dialog when unable to download currency rates */
-                                                _("Currency rates could not be downloaded. You may receive inaccurate results, or you may not receive any results at all."));
-            }
-        }
-    }
-    currency_load_rates();
-
-    currency_type = gtk_builder_get_object(buttons->priv->financial_ui, "currency_type_upper");
-    currency_store = GTK_LIST_STORE(gtk_combo_box_get_model(
-        GTK_COMBO_BOX(currency_type)));
-
-    for (i = 0; currency_names[i].short_name; i++) {
-        GtkTreeIter iter;
-        int index;
-
-        if ((index = currency_get_index(currency_names[i].short_name)) < 0) {
-            continue;
-        }
-        gtk_list_store_append(currency_store, &iter);
-        gtk_list_store_set(currency_store, &iter,
-                           0, index,
-                           1, gettext(currency_names[i].long_name),
-                           -1);
-    }
-
-    has_run = 1;
-}
-
-
-G_MODULE_EXPORT
-void
-currency_cb(GtkWidget *widget, MathButtons *buttons)
-{
-    GtkDialog *win;
-    GtkSpinButton *c_amount_upper, *c_amount_lower;
-    MPNumber display_val;
-
-    setup_currency_rates(buttons);
-
-    win = GTK_DIALOG(gtk_builder_get_object(buttons->priv->financial_ui, "currency_dialog"));
-    c_amount_upper = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_upper"));
-    c_amount_lower = GTK_SPIN_BUTTON(gtk_builder_get_object(buttons->priv->financial_ui, "currency_amount_lower"));
-    if (math_equation_get_number(buttons->priv->equation, &display_val)) {
-        double start_val = mp_cast_to_double(&display_val);
-        gtk_spin_button_set_value(c_amount_upper, start_val);
-    }
-    gtk_widget_grab_focus(GTK_WIDGET(c_amount_upper));
-
-    if (gtk_dialog_run(win) == GTK_RESPONSE_OK) {
-        gchar *result;
-
-        result = g_strdup_printf("%.2f", gtk_spin_button_get_value(c_amount_lower));
-        mp_set_from_string(result, 10, &display_val);
-        g_free(result);
-
-        math_equation_set_number(buttons->priv->equation, &display_val);
-    }
-
-    gtk_widget_hide(GTK_WIDGET(win));
 }
 
 

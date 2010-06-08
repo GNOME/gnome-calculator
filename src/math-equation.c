@@ -46,7 +46,9 @@ enum {
     PROP_NUMBER_FORMAT,
     PROP_BASE,
     PROP_WORD_SIZE,
-    PROP_ANGLE_UNITS
+    PROP_ANGLE_UNITS,
+    PROP_SOURCE_CURRENCY,
+    PROP_TARGET_CURRENCY
 };
 
 static GType number_mode_type, number_format_type, angle_unit_type;
@@ -75,6 +77,8 @@ struct MathEquationPrivate
     gint accuracy;            /* Number of digits to show */
     gint word_size;           /* Word size in bits */
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
+    char *source_currency;
+    char *target_currency;
     gint base;                /* Numeric base */
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
@@ -649,6 +653,49 @@ math_equation_get_angle_units(MathEquation *equation)
 
 
 void
+math_equation_set_source_currency(MathEquation *equation, const gchar *currency)
+{
+    // FIXME: Pick based on locale  
+    if (!currency || currency[0] == '\0')
+        currency = currency_names[0].short_name;
+
+    if (strcmp(equation->priv->source_currency, currency) == 0)
+        return;
+    g_free(equation->priv->source_currency);
+    equation->priv->source_currency = g_strdup(currency);
+    g_object_notify(G_OBJECT(equation), "source-currency");
+}
+
+const gchar *
+math_equation_get_source_currency(MathEquation *equation)
+{
+    return equation->priv->source_currency;
+}
+
+
+void
+math_equation_set_target_currency(MathEquation *equation, const gchar *currency)
+{
+    // FIXME: Pick based on locale  
+    if (!currency || currency[0] == '\0')
+        currency = currency_names[0].short_name;
+
+    if (strcmp(equation->priv->target_currency, currency) == 0)
+        return;
+    g_free(equation->priv->target_currency);
+    equation->priv->target_currency = g_strdup(currency);
+    g_object_notify(G_OBJECT(equation), "target-currency");
+}
+
+
+const gchar *
+math_equation_get_target_currency(MathEquation *equation)
+{
+    return equation->priv->target_currency;
+}
+
+
+void
 math_equation_set_status(MathEquation *equation, const gchar *status)
 {
     if (strcmp(equation->priv->state.status, status) == 0)
@@ -1048,17 +1095,7 @@ set_variable(const char *name, const MPNumber *x, void *data)
 static int
 convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data)
 {   
-    /* Update currency if necessary */
-    if (currency_rates_needs_update())
-        currency_download_rates();
-    currency_load_rates();
-    if (currency_get_index(x_units) >= 0 && currency_get_index(z_units) >= 0)
-    {
-        currency_convert(x, currency_get_index(x_units), currency_get_index(z_units), z);
-        return 1;
-    }
-
-    return 0;
+    return currency_convert(x, x_units, z_units, z);
 }
 
 
@@ -1324,35 +1361,41 @@ math_equation_set_property(GObject      *object,
 
     switch (prop_id) {
     case PROP_STATUS:
-      math_equation_set_status(self, g_value_get_string(value));
-      break;
+        math_equation_set_status(self, g_value_get_string(value));
+        break;
     case PROP_DISPLAY:
-      math_equation_set(self, g_value_get_string(value));
-      break;
+        math_equation_set(self, g_value_get_string(value));
+        break;
     case PROP_NUMBER_MODE:
-      math_equation_set_number_mode(self, g_value_get_int(value));
-      break;
+        math_equation_set_number_mode(self, g_value_get_int(value));
+        break;
     case PROP_ACCURACY:
-      math_equation_set_accuracy(self, g_value_get_int(value));
-      break;
+        math_equation_set_accuracy(self, g_value_get_int(value));
+        break;
     case PROP_SHOW_THOUSANDS_SEPARATORS:
-      math_equation_set_show_thousands_separators(self, g_value_get_boolean(value));
-      break;
+        math_equation_set_show_thousands_separators(self, g_value_get_boolean(value));
+        break;
     case PROP_SHOW_TRAILING_ZEROES:
-      math_equation_set_show_trailing_zeroes(self, g_value_get_boolean(value));
-      break;
+        math_equation_set_show_trailing_zeroes(self, g_value_get_boolean(value));
+        break;
     case PROP_NUMBER_FORMAT:
-      math_equation_set_number_format(self, g_value_get_int(value));
-      break;
+        math_equation_set_number_format(self, g_value_get_int(value));
+        break;
     case PROP_BASE:
-      math_equation_set_base(self, g_value_get_int(value));
-      break;
+        math_equation_set_base(self, g_value_get_int(value));
+        break;
     case PROP_WORD_SIZE:
-      math_equation_set_word_size(self, g_value_get_int(value));
-      break;
+        math_equation_set_word_size(self, g_value_get_int(value));
+        break;
     case PROP_ANGLE_UNITS:
-      math_equation_set_angle_units(self, g_value_get_int(value));
-      break;
+        math_equation_set_angle_units(self, g_value_get_int(value));
+        break;
+    case PROP_SOURCE_CURRENCY:
+        math_equation_set_source_currency(self, g_value_get_string(value));
+        break;
+    case PROP_TARGET_CURRENCY:
+        math_equation_set_target_currency(self, g_value_get_string(value));
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -1373,42 +1416,48 @@ math_equation_get_property(GObject    *object,
 
     switch (prop_id) {
     case PROP_STATUS:
-      g_value_set_string(value, self->priv->state.status);
-      break;
+        g_value_set_string(value, self->priv->state.status);
+        break;
     case PROP_DISPLAY:
-      text = math_equation_get_display(self);      
-      g_value_set_string(value, text);
-      g_free(text);
-      break;
+        text = math_equation_get_display(self);      
+        g_value_set_string(value, text);
+        g_free(text);
+        break;
     case PROP_EQUATION:
-      text = math_equation_get_equation(self);
-      g_value_set_string(value, text);
-      g_free(text);
-      break;
+        text = math_equation_get_equation(self);
+        g_value_set_string(value, text);
+        g_free(text);
+        break;
     case PROP_NUMBER_MODE:
-      g_value_set_enum(value, self->priv->number_mode);
-      break;
+        g_value_set_enum(value, self->priv->number_mode);
+        break;
     case PROP_ACCURACY:
-      g_value_set_int(value, self->priv->accuracy);
-      break;
+        g_value_set_int(value, self->priv->accuracy);
+        break;
     case PROP_SHOW_THOUSANDS_SEPARATORS:
-      g_value_set_boolean(value, self->priv->show_tsep);
-      break;
+        g_value_set_boolean(value, self->priv->show_tsep);
+        break;
     case PROP_SHOW_TRAILING_ZEROES:
-      g_value_set_boolean(value, self->priv->show_zeroes);
-      break;
+        g_value_set_boolean(value, self->priv->show_zeroes);
+        break;
     case PROP_NUMBER_FORMAT:
-      g_value_set_enum(value, self->priv->format);
-      break;
+        g_value_set_enum(value, self->priv->format);
+        break;
     case PROP_BASE:
-      g_value_set_int(value, math_equation_get_base(self));
-      break;
+        g_value_set_int(value, math_equation_get_base(self));
+        break;
     case PROP_WORD_SIZE:
-      g_value_set_int(value, self->priv->word_size);
-      break;
+        g_value_set_int(value, self->priv->word_size);
+        break;
     case PROP_ANGLE_UNITS:
-      g_value_set_enum(value, self->priv->angle_units);
-      break;
+        g_value_set_enum(value, self->priv->angle_units);
+        break;
+    case PROP_SOURCE_CURRENCY:
+        g_value_set_string(value, self->priv->source_currency);
+        break;
+    case PROP_TARGET_CURRENCY:
+        g_value_set_string(value, self->priv->target_currency);
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -1531,6 +1580,20 @@ math_equation_class_init (MathEquationClass *klass)
                                                       angle_unit_type,
                                                       MP_DEGREES,
                                                       G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_SOURCE_CURRENCY,
+                                    g_param_spec_string("source-currency",
+                                                        "source-currency",
+                                                        "Source Currency",
+                                                        "",
+                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_TARGET_CURRENCY,
+                                    g_param_spec_string("target-currency",
+                                                        "target-currency",
+                                                        "target Currency",
+                                                        "",
+                                                        G_PARAM_READWRITE));
 }
 
 
@@ -1695,6 +1758,9 @@ math_equation_init(MathEquation *equation)
     equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
+    // FIXME: Pick based on locale
+    equation->priv->source_currency = g_strdup(currency_names[0].short_name);
+    equation->priv->target_currency = g_strdup(currency_names[0].short_name);
     equation->priv->base = 10;
 
     mp_set_from_integer(0, &equation->priv->state.ans);

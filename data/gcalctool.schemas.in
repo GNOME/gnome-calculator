@@ -148,6 +148,28 @@ To change the gconftool target use the - -config-source=blah option to gconftool
         </long>
       </locale>
     </schema>
+    <schema>
+      <applyto>/apps/gcalctool/source_currency</applyto>
+      <key>/schemas/apps/gcalctool/source_currency</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Source currency</short>
+        <long>Currency of the current calculation</long>
+      </locale>
+    </schema>
+    <schema>
+      <applyto>/apps/gcalctool/target_currency</applyto>
+      <key>/schemas/apps/gcalctool/target_currency</key>
+      <owner>gcalctool</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Target currency</short>
+        <long>Currency to convert the current calculation into</long>
+      </locale>
+    </schema>
     <schema> 
       <applyto>/apps/gcalctool/xposition</applyto>
       <key>/schemas/apps/gcalctool/xposition</key> 

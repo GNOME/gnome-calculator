@@ -290,6 +290,8 @@ quit_cb(MathWindow *window)
     gconf_client_set_string(client, "/apps/gcalctool/angle_units", angle_unit_to_string(math_equation_get_angle_units(equation)), NULL);
     gconf_client_set_string(client, "/apps/gcalctool/button_layout", button_mode_to_string(math_buttons_get_mode(buttons)), NULL);
     gconf_client_set_int(client, "/apps/gcalctool/base", math_buttons_get_programming_base(buttons), NULL);
+    gconf_client_set_string(client, "/apps/gcalctool/source_currency", math_equation_get_source_currency(equation), NULL);
+    gconf_client_set_string(client, "/apps/gcalctool/target_currency", math_equation_get_target_currency(equation), NULL);
 
     currency_free_resources();
     gtk_main_quit();
@@ -329,6 +331,7 @@ main(int argc, char **argv)
     int accuracy = 9, word_size = 64, base = 10;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
     gchar *number_format, *angle_units, *button_mode;
+    gchar *source_currency, *target_currency;
 
     g_type_init();
 
@@ -353,6 +356,8 @@ main(int argc, char **argv)
     number_format = gconf_client_get_string(client, "/apps/gcalctool/result_format", NULL);
     angle_units = gconf_client_get_string(client, "/apps/gcalctool/angle_units", NULL);
     button_mode = gconf_client_get_string(client, "/apps/gcalctool/button_layout", NULL);
+    source_currency = gconf_client_get_string(client, "/apps/gcalctool/source_currency", NULL);
+    target_currency = gconf_client_get_string(client, "/apps/gcalctool/target_currency", NULL);
 
     math_equation_set_accuracy(equation, accuracy);
     math_equation_set_word_size(equation, word_size);
@@ -360,8 +365,12 @@ main(int argc, char **argv)
     math_equation_set_show_trailing_zeroes(equation, show_zeroes);
     math_equation_set_number_format(equation, string_to_number_format(number_format));
     math_equation_set_angle_units(equation, string_to_angle_unit(angle_units));
+    math_equation_set_source_currency(equation, source_currency);
+    math_equation_set_target_currency(equation, target_currency);
     g_free(number_format);
     g_free(angle_units);
+    g_free(source_currency);
+    g_free(target_currency);
 
     gtk_init(&argc, &argv);
 
