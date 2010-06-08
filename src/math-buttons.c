@@ -789,7 +789,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->angle_combo), renderer, "text", 0);
 
         g_signal_connect(buttons->priv->angle_combo, "changed", G_CALLBACK(angle_unit_combobox_changed_cb), buttons);
-        g_signal_connect(buttons->priv->equation, "notify::angle-unit", G_CALLBACK(angle_unit_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::angle-units", G_CALLBACK(angle_unit_cb), buttons);
         angle_unit_cb(buttons->priv->equation, NULL, buttons);
     }
 
