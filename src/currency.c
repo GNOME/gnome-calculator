@@ -81,9 +81,8 @@ download_cb(GObject *object, GAsyncResult *result, gpointer user_data)
 
     if (g_file_copy_finish(G_FILE(object), result, &error))
         g_debug("Rates updated");
-
-    if (error != NULL)
-        g_warning("Couldn't download currency file: %s\n", error->message);
+    else
+        g_warning("Couldn't download currency file: %s", error->message);
     g_clear_error(&error);
     downloading_rates = FALSE;
 }
@@ -96,8 +95,8 @@ currency_download_rates()
     GFile *source, *dest;
 
     downloading_rates = TRUE;
-    g_debug("Downloading rates");
-   
+    g_debug("Downloading rates...");
+
     filename = get_rate_filepath();
     directory = g_path_get_dirname(filename);
     g_mkdir_with_parents(directory, 0755);
