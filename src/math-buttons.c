@@ -106,7 +106,7 @@ static ButtonData button_data[] = {
       N_("Pi [Ctrl+P]")},
     {"eulers_number",      "e", NUMBER,
       /* Tooltip for the Euler's Number button */
-      N_("Eulers Number")},
+      N_("Euler’s Number")},
     {"imaginary",          "i", NUMBER, NULL},
     {"numeric_point", NULL, NUMBER, NULL},
     {"subscript", NULL, NUMBER_BOLD,
@@ -114,7 +114,7 @@ static ButtonData button_data[] = {
       N_("Subscript mode [Alt]")},
     {"superscript", NULL, NUMBER_BOLD,
       /* Tooltip for the superscript button */
-      N_("Supercript mode [Ctrl]")},
+      N_("Superscript mode [Ctrl]")},
     {"exponential", NULL, NUMBER_BOLD,
       /* Tooltip for the scientific exponent button */
       N_("Scientific exponent [Ctrl+E]")},
