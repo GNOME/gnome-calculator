@@ -18,15 +18,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-03-17 08:33+0000\n"
-"PO-Revision-Date: 2010-03-17 19:57+0300\n"
-"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-15 19:36+0300\n"
+"PO-Revision-Date: 2010-04-01 08:19+0300\n"
+"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #. Payment Period Dialog: Button to calculate result
@@ -828,33 +829,38 @@ msgstr "_Простой"
 msgid "_Calculator"
 msgstr "_Калькулятор"
 
-#. View|Financial menu item
+#. Help|Contents menu
 #: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "_Содержание"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
 msgid "_Financial"
 msgstr "_Финансовый"
 
 #. Help menu
-#: ../data/gcalctool.ui.h:226
+#: ../data/gcalctool.ui.h:228
 msgid "_Help"
 msgstr "_Справка"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/gcalctool.ui.h:230
 msgid "_Insert"
 msgstr "_Вставить"
 
 #. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
+#: ../data/gcalctool.ui.h:232
 msgid "_Programming"
 msgstr "_Программирование"
 
 #. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
+#: ../data/gcalctool.ui.h:234
 msgid "_Scientific"
 msgstr "_Научный"
 
 #. View menu
-#: ../data/gcalctool.ui.h:234
+#: ../data/gcalctool.ui.h:236
 msgid "_View"
 msgstr "_Вид"
 
@@ -1028,7 +1034,7 @@ msgstr ""
 "  --g-fatal-warnings              Сделать все предупреждения фатальными"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/calctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1040,19 +1046,19 @@ msgstr ""
 "  -s, --solve <equation>          Вычислить заданное выражение"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/calctool.c:155
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Аргументу --solve требуется выражение  для вычисления"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/calctool.c:169
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Неизвестный аргумент «%s»"
 
 #. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
+#: ../src/calctool.c:182
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1206,44 +1212,44 @@ msgstr "Нет действий, которые можно вернуть"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1068
+#: ../src/display.c:936
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1084
+#: ../src/display.c:952
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
-#: ../src/display.c:1110
+#: ../src/display.c:978
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1232
+#: ../src/display.c:1099
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1237
+#: ../src/display.c:1104
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Неизвестная переменная «%s»"
 
 #. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1243
+#: ../src/display.c:1110
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1249
+#: ../src/display.c:1116
 #, c-format
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1258
+#: ../src/display.c:1125
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
@@ -1347,7 +1353,8 @@ msgstr "Не удалось открыть файл справки"
 
 #. Translators: Title of the error dialog when prompting to download currency rates
 #: ../src/gtk.c:1010
-msgid "You don't have any recent currency rates. Should some be downloaded now?"
+msgid ""
+"You don't have any recent currency rates. Should some be downloaded now?"
 msgstr "Нет ранее использованных курсов валют. Загрузить их сейчас?"
 
 #. Translators: Title of the error dialog when unable to download currency rates
@@ -1362,6 +1369,12 @@ msgstr ""
 #: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "Вставить"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Показывать %d _десятичных разрядов"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
@@ -1429,7 +1442,8 @@ msgstr "Логическое побитовое И определено толь
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
 msgid "Boolean OR is only defined for positive integers"
-msgstr "Логическое побитовое ИЛИ определено только для положительных целых чисел"
+msgstr ""
+"Логическое побитовое ИЛИ определено только для положительных целых чисел"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
@@ -1441,7 +1455,8 @@ msgstr ""
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
 msgid "Boolean NOT is only defined for positive integers"
-msgstr "Логическое побитовое НЕ определено только для положительных целых чисел"
+msgstr ""
+"Логическое побитовое НЕ определено только для положительных целых чисел"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
@@ -1450,8 +1465,10 @@ msgstr "Сдвиг возможен только для целых чисел"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:278
-msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
-msgstr "Тангенс не определён для углов с периодом π (180°), начиная с π∕2 (90°)"
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"Тангенс не определён для углов с периодом π (180°), начиная с π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:323
@@ -1465,7 +1482,8 @@ msgstr "Обратный косинус не определён для знач�
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: ../src/mp-trigonometric.c:558
-msgid "Inverse hyperbolic cosine is undefined for values less than or equal to one"
+msgid ""
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
 "Обратный гиперболический косинус не определён для значений, меньших или "
 "равных единице"
@@ -1476,4 +1494,3 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Обратный гиперболический тангенс не определён для значений вне диапазона [-"
 "1, 1]"
-
