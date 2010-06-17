@@ -73,8 +73,7 @@ str_adjust(char *str)
 int
 main(int argc, char **argv)
 {
-    char *equation;
-    int bytes_read;
+    char *equation, *line;
     size_t nbytes = MAXLINE;
 
     /* Seed random number generator. */
@@ -83,12 +82,12 @@ main(int argc, char **argv)
     equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {
         printf("> ");
-        bytes_read = getline(&equation, &nbytes, stdin);
-      
-        if (bytes_read >= 0)
+        line = fgets(equation, nbytes, stdin);
+
+        if (line != NULL)
             str_adjust(equation);
 
-        if (bytes_read < 0 || strcmp(equation, "exit") == 0 || strcmp(equation, "quit") == 0 || strlen(equation) == 0)
+        if (line == NULL || strcmp(equation, "exit") == 0 || strcmp(equation, "quit") == 0 || strlen(equation) == 0)
             break;
 
         solve(equation);
