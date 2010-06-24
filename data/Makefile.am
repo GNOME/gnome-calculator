@@ -6,10 +6,9 @@ ui_DATA = \
 	buttons-financial.ui \
 	buttons-programming.ui
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_in_files = gcalctool.schemas.in
-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
-@INTLTOOL_SCHEMAS_RULE@
+gsettings_SCHEMAS = org.gnome.gcalctool.gschema.xml
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
 Utilitiesdir = $(datadir)/applications
 Utilities_in_files = gcalctool.desktop.in
@@ -18,9 +17,9 @@ Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 
 man1_MANS = gcalctool.1
 
-EXTRA_DIST = $(ui_DATA) $(schema_in_files) gcalctool.desktop.in $(man1_MANS)
+EXTRA_DIST = $(ui_DATA) org.gnome.gcalctool.gschema.xml gcalctool.desktop.in $(man1_MANS)
 
 DISTCLEANFILES = \
 	Makefile.in \
 	gcalctool.desktop \
-	$(schema_DATA)
+	$(gsettings_SCHEMAS)

@@ -1,69 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.gcalctool" path="/apps/gcalctool/">
-    <key name="accuracy" type="i">
+  <enum id="org.gnome.gcalctool.NumberFormat">
+    <value value="0" nick="fixed"/>
+    <value value="1" nick="scientific"/>
+    <value value="2" nick="engineering"/>
+  </enum>
+  <enum id="org.gnome.gcalctool.ButtonMode">
+    <value value="0" nick="basic"/>
+    <value value="1" nick="advanced"/>
+    <value value="2" nick="financial"/>
+    <value value="3" nick="programming"/>
+  </enum>
+  <enum id="org.gnome.gcalctool.AngleUnit">
+    <value value="0" nick="radians"/>
+    <value value="1" nick="degrees"/>
+    <value value="2" nick="gradians"/>
+  </enum>
+
+  <schema path="/apps/gcalctool/" id="org.gnome.gcalctool" gettext-domain="gcalctool">
+    <key type="i" name="accuracy">
       <default>9</default>
+      <range min="0" max="9"/>
       <_summary>Accuracy value</_summary>
-      <_description>The number of digits displayed after the numeric point. This value must be in the range 0 to 9.</_description>
+      <_description>The number of digits displayed after the numeric point</_description>
     </key>
-    <key name="base" type="i">
+    <key type="i" name="word-size">
+      <default>64</default>
+      <range min="8" max="64"/>
+      <_summary>Word size</_summary>
+      <_description>The size of the words used in bitwise operations</_description>
+    </key>
+    <key type="i" name="base">
       <default>10</default>
+      <range min="2" max="16"/>
       <_summary>Numeric Base</_summary>
-      <_description>The numeric base (used in programming mode)</_description>
+      <_description>The numeric base</_description>
     </key>
-    <key name="display" type="s">
-      <default>'FIX'</default>
-      <_summary>Display Mode</_summary>
-      <_description>The display format used in advanced mode.  One of: "ENG" (engineering),  "FIX" (fixed-point) and "SCI" (scientific)</_description>
-    </key>
-    <key name="mode" type="s">
-      <default>'BASIC'</default>
-      <_summary>Mode</_summary>
-      <_description>The initial calculator mode. Valid values are "BASIC",  "FINANCIAL",  "LOGICAL",  "SCIENTIFIC" and  "PROGRAMMING"</_description>
-    </key>
-    <key name="showzeroes" type="b">
-      <default>false</default>
-      <_summary>Show Trailing Zeroes</_summary>
-      <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
-    </key>
-    <key name="showthousands" type="b">
+    <key type="b" name="show-thousands">
       <default>false</default>
       <_summary>Show Thousands Separators</_summary>
       <_description>Indicates whether thousands separators are shown in large numbers.</_description>
     </key>
-    <key name="showregisters" type="b">
+    <key type="b" name="show-zeroes">
       <default>false</default>
-      <_summary>Show Registers</_summary>
-      <_description>Indicates whether the memory register window is  initially displayed.</_description>
+      <_summary>Show Trailing Zeroes</_summary>
+      <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
     </key>
-    <key name="trigtype" type="s">
-      <default>'DEG'</default>
-      <_summary>Trigonometric type</_summary>
-      <_description>The initial trigonometric type. Valid values are "DEG" (degrees), "GRAD" (gradians) and  "RAD" (radians).</_description>
+    <key name="number-format" enum="org.gnome.gcalctool.NumberFormat">
+      <default>'fixed'</default>
+      <_summary>Number format</_summary>
+      <_description>The format to display numbers in</_description>
     </key>
-    <key name="wordlen" type="i">
-      <default>64</default>
-      <_summary>Word size</_summary>
-      <_description>The size of the words used in bitwise operations. Valid values are 16,  32 and 64.</_description>
+    <key name="angle-units" enum="org.gnome.gcalctool.AngleUnit">
+      <default>'degrees'</default>
+      <_summary>Angle units</_summary>
+      <_description>The angle units to use</_description>
     </key>
-    <key name="source_currency" type="s">
+    <key name="button-mode" enum="org.gnome.gcalctool.ButtonMode">
+      <default>'basic'</default>
+      <_summary>Button mode</_summary>
+      <_description>The button mode</_description>
+    </key>
+    <key type="s" name="source-currency">
       <default>''</default>
       <_summary>Source currency</_summary>
       <_description>Currency of the current calculation</_description>
     </key>
-    <key name="target_currency" type="s">
+    <key type="s" name="target-currency">
       <default>''</default>
       <_summary>Target currency</_summary>
       <_description>Currency to convert the current calculation into</_description>
-    </key>
-    <key name="xposition" type="i">
-      <default>-1</default>
-      <_summary>The initial x-coordinate for the window</_summary>
-      <_description>The number of pixels to place the window from the left of the screen.</_description>
-    </key>
-    <key name="yposition" type="i">
-      <default>-1</default>
-      <_summary>The initial y-coordinate for the window</_summary>
-      <_description>The number of pixels to place the window from the top of the screen.</_description>
     </key>
   </schema>
 </schemalist>

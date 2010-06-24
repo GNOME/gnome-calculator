@@ -12,8 +12,7 @@ AC_PROG_CC
 AM_PROG_CC_STDC
 AC_HEADER_STDC
 
-AM_GCONF_SOURCE_2
-
+GLIB_GSETTINGS
 GNOME_COMPILE_WARNINGS(yes)
 
 dnl ###########################################################################
@@ -21,12 +20,11 @@ dnl Dependencies
 dnl ###########################################################################
 
 GTK_REQUIRED=2.18
-GCONF_REQUIRED=1.1.9
+GIO_REQUIRED=2.25.10
 
 PKG_CHECK_MODULES(GCALCTOOL, [
     gtk+-2.0 >= $GTK_REQUIRED
-    gconf-2.0 >= $GCONF_REQUIRED
-    gio-2.0
+    gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
     gmodule-export-2.0
 ])

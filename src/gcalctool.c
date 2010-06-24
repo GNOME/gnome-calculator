@@ -20,14 +20,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <gconf/gconf-client.h>
 
 #include "currency.h"
 #include "unittest.h"
 #include "math-window.h"
 #include "mp-equation.h"
 
-static GConfClient *client = NULL;
+static GSettings *settings = NULL;
 
 static MathWindow *window;
 
@@ -175,104 +174,6 @@ get_options(int argc, char *argv[])
 }
 
 
-// FIXME: Use a proper GEnum for these
-static const gchar *
-number_format_to_string(DisplayFormat format)
-{
-    switch(format)
-    {
-    default:
-    case FIX:
-        return "FIX";
-    case SCI:
-        return "SCI";
-    case ENG:      
-        return "ENG";
-    }
-}
-
-
-static DisplayFormat
-string_to_number_format(const gchar *name)
-{
-    if (name == NULL)
-        return FIX;
-
-    if (strcmp(name, "SCI") == 0)
-        return SCI;
-    else if (strcmp(name, "ENG") == 0)
-        return ENG;
-    else
-        return FIX;
-}
-
-
-static const gchar *
-angle_unit_to_string(MPAngleUnit unit)
-{
-    switch(unit)
-    {
-    default:
-    case MP_DEGREES:
-        return "degrees";
-    case MP_RADIANS:
-        return "radians";
-    case MP_GRADIANS:
-        return "gradians";
-    }
-}
-
-
-static MPAngleUnit
-string_to_angle_unit(const gchar *name)
-{
-    if (name == NULL)
-        return MP_DEGREES;
-
-    if (strcmp(name, "radians") == 0)
-        return MP_RADIANS;
-    else if (strcmp(name, "gradians") == 0)
-        return MP_GRADIANS;
-    else
-        return MP_DEGREES;
-}
-
-
-static const gchar *
-button_mode_to_string(ButtonMode mode)
-{
-    switch(mode)
-    {
-    default:
-    case BASIC:
-        return "BASIC";
-    case ADVANCED:
-        return "ADVANCED";
-    case FINANCIAL:
-        return "FINANCIAL";
-    case PROGRAMMING:
-        return "PROGRAMMING";
-    }
-}
-
-
-static ButtonMode
-string_to_button_mode(const gchar *name)
-{
-    if (name == NULL)
-         return BASIC;
-
-    if (strcmp(name, "ADVANCED") == 0)
-        return ADVANCED;
-    else if (strcmp(name, "FINANCIAL") == 0)
-        return FINANCIAL;
-    else if (strcmp(name, "PROGRAMMING") == 0)
-        return PROGRAMMING;
-    else
-        return BASIC;
-}
-
-
 static void
 quit_cb(MathWindow *window)
 {
@@ -282,45 +183,19 @@ quit_cb(MathWindow *window)
     equation = math_window_get_equation(window);
     buttons = math_window_get_buttons(window);
 
-    gconf_client_set_int(client, "/apps/gcalctool/accuracy", math_equation_get_accuracy(equation), NULL);
-    gconf_client_set_int(client, "/apps/gcalctool/wordlen", math_equation_get_word_size(equation), NULL);
-    gconf_client_set_bool(client, "/apps/gcalctool/showthousands", math_equation_get_show_thousands_separators(equation), NULL);
-    gconf_client_set_bool(client, "/apps/gcalctool/showzeroes", math_equation_get_show_trailing_zeroes(equation), NULL);
-    gconf_client_set_string(client, "/apps/gcalctool/result_format", number_format_to_string(math_equation_get_number_format(equation)), NULL);
-    gconf_client_set_string(client, "/apps/gcalctool/angle_units", angle_unit_to_string(math_equation_get_angle_units(equation)), NULL);
-    gconf_client_set_string(client, "/apps/gcalctool/button_layout", button_mode_to_string(math_buttons_get_mode(buttons)), NULL);
-    gconf_client_set_int(client, "/apps/gcalctool/base", math_buttons_get_programming_base(buttons), NULL);
-    gconf_client_set_string(client, "/apps/gcalctool/source_currency", math_equation_get_source_currency(equation), NULL);
-    gconf_client_set_string(client, "/apps/gcalctool/target_currency", math_equation_get_target_currency(equation), NULL);
+    g_settings_set_int(settings, "accuracy", math_equation_get_accuracy(equation));
+    g_settings_set_int(settings, "word-size", math_equation_get_word_size(equation));
+    g_settings_set_int(settings, "base", math_buttons_get_programming_base(buttons));
+    g_settings_set_boolean(settings, "show-thousands", math_equation_get_show_thousands_separators(equation));
+    g_settings_set_boolean(settings, "show-zeroes", math_equation_get_show_trailing_zeroes(equation));
+    g_settings_set_enum(settings, "number-format", math_equation_get_number_format(equation));
+    g_settings_set_enum(settings, "angle-units", math_equation_get_angle_units(equation));
+    g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
+    g_settings_set_string(settings, "source-currency", math_equation_get_source_currency(equation));
+    g_settings_set_string(settings, "target-currency", math_equation_get_target_currency(equation));
 
     currency_free_resources();
     gtk_main_quit();
-}
-
-
-static void
-get_int(const char *name, gint *value)
-{
-    GConfValue *v;
-
-    v = gconf_client_get(client, name, NULL);
-    if (!v)
-        return;
-    *value = gconf_value_get_int(v);
-    gconf_value_free(v);
-}
-
-
-static void
-get_bool(const char *name, gboolean *value)
-{
-    GConfValue *v;
-
-    v = gconf_client_get(client, name, NULL);
-    if (!v)
-        return;
-    *value = gconf_value_get_bool(v);
-    gconf_value_free(v);
 }
 
 
@@ -330,7 +205,9 @@ main(int argc, char **argv)
     MathEquation *equation;
     int accuracy = 9, word_size = 64, base = 10;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
-    gchar *number_format, *angle_units, *button_mode;
+    DisplayFormat number_format;
+    MPAngleUnit angle_units;
+    ButtonMode button_mode;
     gchar *source_currency, *target_currency;
 
     g_type_init();
@@ -344,31 +221,27 @@ main(int argc, char **argv)
 
     get_options(argc, argv);
 
-    client = gconf_client_get_default();
-    gconf_client_add_dir(client, "/apps/gcalctool", GCONF_CLIENT_PRELOAD_NONE, NULL);  
-  
-    equation = math_equation_new();
-    get_int("/apps/gcalctool/accuracy", &accuracy);
-    get_int("/apps/gcalctool/wordlen", &word_size);
-    get_bool("/apps/gcalctool/showthousands", &show_tsep);
-    get_bool("/apps/gcalctool/showzeroes", &show_zeroes);
-    get_int("/apps/gcalctool/base", &base);
-    number_format = gconf_client_get_string(client, "/apps/gcalctool/result_format", NULL);
-    angle_units = gconf_client_get_string(client, "/apps/gcalctool/angle_units", NULL);
-    button_mode = gconf_client_get_string(client, "/apps/gcalctool/button_layout", NULL);
-    source_currency = gconf_client_get_string(client, "/apps/gcalctool/source_currency", NULL);
-    target_currency = gconf_client_get_string(client, "/apps/gcalctool/target_currency", NULL);
+    settings = g_settings_new ("org.gnome.gcalctool");
+    accuracy = g_settings_get_int(settings, "accuracy");
+    word_size = g_settings_get_int(settings, "word-size");
+    base = g_settings_get_int(settings, "base");
+    show_tsep = g_settings_get_boolean(settings, "show-thousands");
+    show_zeroes = g_settings_get_boolean(settings, "show-zeroes");
+    number_format = g_settings_get_enum(settings, "number-format");
+    angle_units = g_settings_get_enum(settings, "angle-units");
+    button_mode = g_settings_get_enum(settings, "button-mode");
+    source_currency = g_settings_get_string(settings, "source-currency");
+    target_currency = g_settings_get_string(settings, "target-currency");
 
+    equation = math_equation_new();
     math_equation_set_accuracy(equation, accuracy);
     math_equation_set_word_size(equation, word_size);
     math_equation_set_show_thousands_separators(equation, show_tsep);
     math_equation_set_show_trailing_zeroes(equation, show_zeroes);
-    math_equation_set_number_format(equation, string_to_number_format(number_format));
-    math_equation_set_angle_units(equation, string_to_angle_unit(angle_units));
+    math_equation_set_number_format(equation, number_format);
+    math_equation_set_angle_units(equation, angle_units);
     math_equation_set_source_currency(equation, source_currency);
     math_equation_set_target_currency(equation, target_currency);
-    g_free(number_format);
-    g_free(angle_units);
     g_free(source_currency);
     g_free(target_currency);
 
@@ -377,8 +250,7 @@ main(int argc, char **argv)
     window = math_window_new(equation);
     g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
     math_buttons_set_programming_base(math_window_get_buttons(window), base);
-    math_buttons_set_mode(math_window_get_buttons(window), string_to_button_mode(button_mode)); // FIXME: We load the basic buttons even if we immediately switch to the next type
-    g_free(button_mode);
+    math_buttons_set_mode(math_window_get_buttons(window), button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
 
     gtk_widget_show(GTK_WIDGET(window));
     gtk_main();
