@@ -1,0 +1,69 @@
+<schemalist>
+  <schema id="org.gnome.gcalctool" path="/apps/gcalctool/">
+    <key name="accuracy" type="i">
+      <default>9</default>
+      <_summary>Accuracy value</_summary>
+      <_description>The number of digits displayed after the numeric point. This value must be in the range 0 to 9.</_description>
+    </key>
+    <key name="base" type="i">
+      <default>10</default>
+      <_summary>Numeric Base</_summary>
+      <_description>The numeric base (used in programming mode)</_description>
+    </key>
+    <key name="display" type="s">
+      <default>'FIX'</default>
+      <_summary>Display Mode</_summary>
+      <_description>The display format used in advanced mode.  One of: "ENG" (engineering),  "FIX" (fixed-point) and "SCI" (scientific)</_description>
+    </key>
+    <key name="mode" type="s">
+      <default>'BASIC'</default>
+      <_summary>Mode</_summary>
+      <_description>The initial calculator mode. Valid values are "BASIC",  "FINANCIAL",  "LOGICAL",  "SCIENTIFIC" and  "PROGRAMMING"</_description>
+    </key>
+    <key name="showzeroes" type="b">
+      <default>false</default>
+      <_summary>Show Trailing Zeroes</_summary>
+      <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
+    </key>
+    <key name="showthousands" type="b">
+      <default>false</default>
+      <_summary>Show Thousands Separators</_summary>
+      <_description>Indicates whether thousands separators are shown in large numbers.</_description>
+    </key>
+    <key name="showregisters" type="b">
+      <default>false</default>
+      <_summary>Show Registers</_summary>
+      <_description>Indicates whether the memory register window is  initially displayed.</_description>
+    </key>
+    <key name="trigtype" type="s">
+      <default>'DEG'</default>
+      <_summary>Trigonometric type</_summary>
+      <_description>The initial trigonometric type. Valid values are "DEG" (degrees), "GRAD" (gradians) and  "RAD" (radians).</_description>
+    </key>
+    <key name="wordlen" type="i">
+      <default>64</default>
+      <_summary>Word size</_summary>
+      <_description>The size of the words used in bitwise operations. Valid values are 16,  32 and 64.</_description>
+    </key>
+    <key name="source_currency" type="s">
+      <default>''</default>
+      <_summary>Source currency</_summary>
+      <_description>Currency of the current calculation</_description>
+    </key>
+    <key name="target_currency" type="s">
+      <default>''</default>
+      <_summary>Target currency</_summary>
+      <_description>Currency to convert the current calculation into</_description>
+    </key>
+    <key name="xposition" type="i">
+      <default>-1</default>
+      <_summary>The initial x-coordinate for the window</_summary>
+      <_description>The number of pixels to place the window from the left of the screen.</_description>
+    </key>
+    <key name="yposition" type="i">
+      <default>-1</default>
+      <_summary>The initial y-coordinate for the window</_summary>
+      <_description>The number of pixels to place the window from the top of the screen.</_description>
+    </key>
+  </schema>
+</schemalist>
