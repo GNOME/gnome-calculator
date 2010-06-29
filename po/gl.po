@@ -16,15 +16,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-master-po-gl-72274_.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-13 01:56+0200\n"
-"PO-Revision-Date: 2010-06-13 01:57+0200\n"
+"POT-Creation-Date: 2010-06-30 00:05+0200\n"
+"PO-Revision-Date: 2010-06-30 00:07+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <gnome@g11.net>\n"
+"Language-Team: Galician <gnome@g11n.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: gl\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\\\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #. The label on the memory recall button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
@@ -493,23 +493,27 @@ msgstr "Calculadora"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Realice cálculos aritméticos, científicos ou financeiros"
 
-#: ../data/gcalctool.schemas.in.h:1
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Valor de precisión"
 
-#: ../data/gcalctool.schemas.in.h:2
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "Unidades de ángulo"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Modo botón"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
 msgid "Currency of the current calculation"
 msgstr "Moeda do cálculo actual"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
 msgid "Currency to convert the current calculation into"
 msgstr "Moeda á que converter o cálculo actual"
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Display Mode"
-msgstr "Modo de presentación"
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -517,108 +521,60 @@ msgstr ""
 "Indica se no caso de haber ceros execedentes despois do punto, deberían "
 "mostrarse despois da presentación do valor."
 
-#: ../data/gcalctool.schemas.in.h:6
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr "Indica se a xanela de rexistros de memoria se amosa ao iniciar."
-
-#: ../data/gcalctool.schemas.in.h:7
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Indica se o separador de millares se amosa en números longos."
 
-#: ../data/gcalctool.schemas.in.h:8
-msgid "Mode"
-msgstr "(Modo)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "Formato numérico"
 
-#: ../data/gcalctool.schemas.in.h:9
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "Base numérica"
 
-#: ../data/gcalctool.schemas.in.h:10
-msgid "Show Registers"
-msgstr "Mostrar os rexistros"
-
-#: ../data/gcalctool.schemas.in.h:11
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
 msgstr "Mostrar o separador de millares"
 
 # (pofilter) accelerators: accelerator _ appears before an invalid accelerator character 'á' (eg. space)
-#: ../data/gcalctool.schemas.in.h:12
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "Mostrar os ceros á esquerda"
 
-#: ../data/gcalctool.schemas.in.h:13
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
 msgid "Source currency"
 msgstr "Moeda de orixe"
 
-#: ../data/gcalctool.schemas.in.h:14
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
 msgid "Target currency"
 msgstr "Moeda destino"
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid ""
-"The display format used in advanced mode. One of: \"ENG\" (engineering), "
-"\"FIX\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"O modo de presentación usado no modo avanzado. Os valores válidos son  \"ENG"
-"\" (enxeñaría), \"FIX\" (punto fixo), SCI (científico)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr "A unidade de ángulo que usar"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
-"O modo de calculadora inicial. Os valores válidos son \"BÁSICA\", "
-"\"FINANCEIRA\", \"LÓXICA\", \"CIENTÍFICA\" e \"PROGRAMACIÓN\""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "The button mode"
+msgstr "O modo botón"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
-"O tipo trigonométrico inicial. Os valores válidos son \"DEG\" (graos "
-"sexaxesimais), \"GRAD\" (graos centígrados), \"RAD\" (radián)."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The format to display numbers in"
+msgstr "O formato no que mostrar os números"
 
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The initial x-coordinate for the window"
-msgstr "Coordenada x inicial para a xanela"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The number of digits displayed after the numeric point"
+msgstr "O número de díxitos que se mostran logo do punto numérico"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The initial y-coordinate for the window"
-msgstr "Coordenada y inicial para a xanela"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The numeric base"
+msgstr "A base numérica"
 
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr ""
-"Número de díxitos que se amosan logo da coma de decimais. Este valor debe "
-"estar entre 0 e 9."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The size of the words used in bitwise operations"
+msgstr "O tamaño das palabras usadas nas operación de bit a bit"
 
-#: ../data/gcalctool.schemas.in.h:21
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr "Distancia en píxeles desde o lado esquerdo da pantalla á xanela."
-
-#: ../data/gcalctool.schemas.in.h:22
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "Distancia en píxeles desde a parte superior da pantalla á xanela."
-
-#: ../data/gcalctool.schemas.in.h:23
-msgid "The numeric base (used in programming mode)"
-msgstr "A base numérica (usada no modo avanzado)"
-
-#: ../data/gcalctool.schemas.in.h:24
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
-msgstr ""
-"O tamaño das palabras usadas nas operación de bit a bit. Os valores válidos "
-"son 16 32 64."
-
-#: ../data/gcalctool.schemas.in.h:25
-msgid "Trigonometric type"
-msgstr "Tipo trigonométrico"
-
-#: ../data/gcalctool.schemas.in.h:26
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "Word size"
 msgstr "Tamaño da palabra"
 
@@ -763,7 +719,7 @@ msgid "South African rand"
 msgstr "Rand de Sur África"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:76
 #, c-format
 msgid ""
 "Usage:\n"
@@ -773,7 +729,7 @@ msgstr ""
 "  %s — Realiza cálculos matemáticos"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:84
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -789,7 +745,7 @@ msgstr ""
 "  --help-gtk                     Mostra as opcións GTK+ "
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:95
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -813,7 +769,7 @@ msgstr ""
 "  --g-fatal-warnings              Fai que todos os avisos sexan fatais"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:109
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -825,13 +781,13 @@ msgstr ""
 "  -s, --solve <equation>          Resolve a ecuación dada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:155
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "O argumento --solve require unha ecuación para resolver"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:169
+#: ../src/gcalctool.c:168
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Argumento descoñecido '%s'"
@@ -1470,6 +1426,58 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "A tanxente hiperbólica inversa non está definida para os valores fóra de [-"
 "1, 1]"
+
+#~ msgid "Display Mode"
+#~ msgstr "Modo de presentación"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Indica se a xanela de rexistros de memoria se amosa ao iniciar."
+
+#~ msgid "Mode"
+#~ msgstr "(Modo)"
+
+#~ msgid "Show Registers"
+#~ msgstr "Mostrar os rexistros"
+
+#~ msgid ""
+#~ "The display format used in advanced mode. One of: \"ENG\" (engineering), "
+#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "O modo de presentación usado no modo avanzado. Os valores válidos son  "
+#~ "\"ENG\" (enxeñaría), \"FIX\" (punto fixo), SCI (científico)"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "O modo de calculadora inicial. Os valores válidos son \"BÁSICA\", "
+#~ "\"FINANCEIRA\", \"LÓXICA\", \"CIENTÍFICA\" e \"PROGRAMACIÓN\""
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr ""
+#~ "O tipo trigonométrico inicial. Os valores válidos son \"DEG\" (graos "
+#~ "sexaxesimais), \"GRAD\" (graos centígrados), \"RAD\" (radián)."
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Coordenada x inicial para a xanela"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Coordenada y inicial para a xanela"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "Distancia en píxeles desde o lado esquerdo da pantalla á xanela."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Distancia en píxeles desde a parte superior da pantalla á xanela."
+
+#~ msgid "The numeric base (used in programming mode)"
+#~ msgstr "A base numérica (usada no modo avanzado)"
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Tipo trigonométrico"
 
 #~ msgid "&#xA4;$&#x20AC;"
 #~ msgstr "&#xA4;$&#x20AC;"
