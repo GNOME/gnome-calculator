@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-02-21 23:40+0000\n"
-"PO-Revision-Date: 2009-12-02 21:36+0100\n"
+"POT-Creation-Date: 2010-06-28 07:41+0000\n"
+"PO-Revision-Date: 2010-06-06 20:42+0800\n"
 "Last-Translator: Tao Wei <weitao1979@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,25 +21,109 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. The label on the memory recall button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#: ../data/buttons-programming.ui.h:2
+msgid "&#x2190; R"
+msgstr "&#x2190; R"
+
+#. The label on the memory store button
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:4
+#: ../data/buttons-programming.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:6
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-programming.ui.h:8
+msgid "Absolute Value"
+msgstr "绝对值"
+
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:32 ../data/buttons-programming.ui.h:12
+msgid "Clear"
+msgstr "清屏"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:6
+#: ../data/buttons-financial.ui.h:42 ../data/buttons-programming.ui.h:14
+msgid "Exponent"
+msgstr "X^Y"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:16
+msgid "Factorial"
+msgstr "阶乘"
+
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-programming.ui.h:18
+msgid "Factorize"
+msgstr "质因数分解"
+
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:18 ../data/buttons-programming.ui.h:24
+msgid "Inverse"
+msgstr "反三角函数"
+
+#. Accessible name for the recall value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
+#: ../data/buttons-programming.ui.h:26
+msgid "Recall"
+msgstr "召回"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:22
+msgid "Scientific Exponent"
+msgstr "科学"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:76
+#: ../data/buttons-programming.ui.h:32
+msgid "Store"
+msgstr "记忆"
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:26 ../data/buttons-programming.ui.h:34
+msgid "Subscript"
+msgstr "下标"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:28 ../data/buttons-programming.ui.h:36
+msgid "Superscript"
+msgstr "上标"
+
+#. Label on the undo button
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:8
+#: ../data/buttons-financial.ui.h:86
+msgid "Undo"
+msgstr "撤销"
+
 #. Payment Period Dialog: Button to calculate result
-#: ../data/financial.ui.h:2
+#: ../data/buttons-financial.ui.h:8
 msgid "C_alculate"
 msgstr "计算(_A)"
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/financial.ui.h:4
+#: ../data/buttons-financial.ui.h:10
 msgid "C_ost:"
 msgstr "成本(_O)："
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/financial.ui.h:6
+#: ../data/buttons-financial.ui.h:12
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
 msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:8
+#: ../data/buttons-financial.ui.h:14
 #, fuzzy
 #| msgid ""
 #| "Calculates the depreciation allowance on an asset for a specified period "
@@ -59,14 +143,14 @@ msgstr ""
 "比后期发生更多折旧费用。可用年限指该资产折旧的期数，典型情况下为年。"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:10
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr "计算某一资产在指定期间的折旧提成，使用加倍余额递减法。"
 
 #. Future Value Dialog: Description of calculation
-#: ../data/financial.ui.h:12
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -74,7 +158,7 @@ msgid ""
 msgstr "计算某投资的未来值，按约定付款期数的固定利率下每期等额付款。"
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/financial.ui.h:14
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -82,7 +166,7 @@ msgid ""
 msgstr "计算某投资的现值需要到某一未来值需要的复合期，按每复合期固定利息率。"
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/financial.ui.h:16
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -90,14 +174,14 @@ msgid ""
 msgstr "计算期限内普通年金积累到某一未来值需要的付款期数，按某一每期利率。"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/financial.ui.h:18
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr "计算某投资增加到某一未来值需要的每期利率，按复合期数。"
 
 #. Present Value Dialog: Description of calculation
-#: ../data/financial.ui.h:20
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -105,14 +189,14 @@ msgid ""
 msgstr ""
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/financial.ui.h:22
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr "计算某产品的转售价格，按产品成本及期望的毛利率。"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:24
+#: ../data/buttons-financial.ui.h:30
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -123,722 +207,263 @@ msgstr ""
 "年限指该资产折旧的期数，典型情况下为年。"
 
 #. Title of Compounding Term dialog
-#: ../data/financial.ui.h:26
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:34 ../src/math-buttons.c:261
 msgid "Compounding Term"
 msgstr "复合期限"
 
-#: ../data/financial.ui.h:27
-msgid ""
-"Converts between different currencies. Enter the amount and the currency you "
-"want to convert from on the upper row, and the currency you want to convert "
-"to on the lower row, and the amount will be displayed on the lower row."
-msgstr ""
-"在不同币制之间进行转换。在上面一排输入待转换的货币数量，在下面一排输入目的货"
-"币，转换值将会显示在下而一排。"
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:36
+msgid "Ctrm"
+msgstr "Ctrm"
 
-#: ../data/financial.ui.h:28
-msgid "Currency Conversion"
-msgstr "币制转换"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:38
+msgid "Ddb"
+msgstr "Ddb"
 
 #. Title of Double-Declining Depreciation dialog
-#: ../data/financial.ui.h:30
+#: ../data/buttons-financial.ui.h:40
 msgid "Double-Declining Depreciation"
 msgstr "双倍余额递减折旧"
 
 #. Title of Future Value dialog
-#: ../data/financial.ui.h:32
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:44 ../src/math-buttons.c:267
 msgid "Future Value"
 msgstr "未来值"
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:34
+#: ../data/buttons-financial.ui.h:46
 msgid "Future _Value:"
 msgstr "未来值(_V)："
 
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:48
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:50
+msgid "Gpm"
+msgstr "Gpm"
+
 #. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:36
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:288
 msgid "Gross Profit Margin"
 msgstr "毛利率"
 
 #. Title of Payment Period dialog
-#: ../data/financial.ui.h:38
+#: ../data/buttons-financial.ui.h:54
 msgid "Payment Period"
 msgstr "付款期"
 
 #. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:40
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
 msgid "Periodic Interest Rate"
 msgstr "每期利率"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:42
+#: ../data/buttons-financial.ui.h:58
 msgid "Periodic Interest _Rate:"
 msgstr "每期利率(_R)："
 
 #. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:44
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
 msgid "Periodic Payment"
 msgstr "定期付款"
 
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:62
+msgid "Pmt"
+msgstr "Pmt"
+
 #. Title of Present Value dialog
-#: ../data/financial.ui.h:46
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
 msgid "Present Value"
 msgstr "现值"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:48
+#: ../data/buttons-financial.ui.h:66
 msgid "Present _Value:"
 msgstr "现值(_V)："
 
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:68
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:70
+msgid "Rate"
+msgstr "利率"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:74
+msgid "Sln"
+msgstr "Sln"
+
 #. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:50
+#: ../data/buttons-financial.ui.h:78
 msgid "Straight-Line Depreciation"
 msgstr "直线折旧"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:52
+#: ../data/buttons-financial.ui.h:80
 #, fuzzy
 #| msgid "Sum-Of-The-Years'-Digits Depreciation"
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "年数总和折旧"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/financial.ui.h:54
-msgid "_Cost:"
-msgstr "成本(_C)："
-
-#. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:56
-msgid "_Future Value:"
-msgstr "未来值(_F)："
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:58
-msgid "_Life:"
-msgstr "年限(_L)："
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:60
-msgid "_Margin:"
-msgstr "利润(_M)："
-
-#. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:62
-msgid "_Number of Periods:"
-msgstr "期数(_N)："
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/financial.ui.h:64
-msgid "_Period:"
-msgstr "期(_P)："
-
-#. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:66
-msgid "_Periodic Payment:"
-msgstr "定期付款(_P)："
-
-#. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:68
-msgid "_Principal:"
-msgstr "本金(_P)："
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:70
-msgid "_Salvage:"
-msgstr "残值(_S)："
-
-#. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:72
-msgid "_Term:"
-msgstr "期限(_T)："
-
-#. The label on the memory recall button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2190; R"
-msgstr "&#x2190; R"
-
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:4
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
-#. The label on the currency button
-#: ../data/gcalctool.ui.h:6
-msgid "&#xA4;$&#x20AC;"
-msgstr "&#xA4;$&#x20AC;"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:8
-msgid "10 places"
-msgstr "10 位"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:10
-msgid "11 places"
-msgstr "11 位"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:12
-msgid "12 places"
-msgstr "12 位"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:14
-msgid "13 places"
-msgstr "13 位"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:16
-msgid "14 places"
-msgstr "14 位"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:18
-msgid "15 places"
-msgstr "15 位"
-
-#. Word size combo: 16 bits
-#: ../data/gcalctool.ui.h:20
-msgid "16-bit"
-msgstr "16 位"
-
-#. Word size combo: 32 bits
-#: ../data/gcalctool.ui.h:22
-msgid "32-bit"
-msgstr "32 位"
-
-#. Word size combo: 64 bits
-#: ../data/gcalctool.ui.h:24
-msgid "64-bit"
-msgstr "64 位"
-
-#. Word size combo: 8 bits
-#: ../data/gcalctool.ui.h:26
-msgid "8-bit"
-msgstr "8 位"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:28
-msgid "="
-msgstr "="
-
-#. Accessible name for the absolute value button
-#: ../data/gcalctool.ui.h:30
-msgid "Absolute Value"
-msgstr "绝对值"
-
-#. Tooltip for the absolute value button
-#: ../data/gcalctool.ui.h:32
-msgid "Absolute value [|]"
-msgstr "绝对值 [|]"
-
-#. Tooltip for the addition button
-#: ../data/gcalctool.ui.h:34
-msgid "Add [+]"
-msgstr "加法 [+]"
-
-#. Tooltip for the answer variable button
-#: ../data/gcalctool.ui.h:36
-msgid "Answer variable"
-msgstr "应答变量"
-
-#. Tooltip for the base 10 logarithm button
-#: ../data/gcalctool.ui.h:38
-msgid "Base 10 logarithm"
-msgstr "以 10 为底的对数"
-
-#. Accessible name for the base 16 button
-#: ../data/gcalctool.ui.h:40
-msgid "Base 16"
-msgstr "十六进制"
-
-#. Accessible name for the base 2 button
-#: ../data/gcalctool.ui.h:42
-msgid "Base 2"
-msgstr "二进制"
-
-#. Accessible name for the base 8 button
-#: ../data/gcalctool.ui.h:44
-msgid "Base 8"
-msgstr "八进制"
-
-#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
-#: ../data/gcalctool.ui.h:46
-msgid "Binary"
-msgstr "二进制"
-
-#. Tooltip for the boolean AND button
-#: ../data/gcalctool.ui.h:48
-msgid "Boolean AND"
-msgstr "逻辑与"
-
-#. Tooltip for the boolean NOT button
-#: ../data/gcalctool.ui.h:50
-msgid "Boolean NOT"
-msgstr "逻辑非"
-
-#. Tooltip for the boolean OR button
-#: ../data/gcalctool.ui.h:52
-msgid "Boolean OR"
-msgstr "逻辑或"
-
-#. Tooltip for the boolean exclusive OR button
-#: ../data/gcalctool.ui.h:54
-msgid "Boolean exclusive OR"
-msgstr "逻辑异或"
-
-#. Tooltip for the solve button
-#: ../data/gcalctool.ui.h:56
-msgid "Calculate result [=]"
-msgstr "计算结果 [=]"
-
-#. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:58
-msgid "Ch_aracter:"
-msgstr "字符(_A)："
-
-#. Tooltop for the clear display button
-#: ../data/gcalctool.ui.h:60
-msgid "Clear display [Escape]"
-msgstr "清除显示 [Esc]"
-
-#. Label on the clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:62
-msgid "Clr"
-msgstr "Clr"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:64
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:66
-msgid "Ddb"
-msgstr "Ddb"
-
-#. Number display mode combo: Decimal, e.g. 1234
-#: ../data/gcalctool.ui.h:68
-msgid "Decimal"
-msgstr "十进制"
-
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../data/gcalctool.ui.h:70
-msgid "Degrees"
-msgstr "角度(_G)"
-
-#. Preferences dialog: Label for display format combo box
-#: ../data/gcalctool.ui.h:72
-msgid "Display _Format:"
-msgstr "显示模式[_F]："
-
-#. Tooltip for the division button
-#: ../data/gcalctool.ui.h:74
-msgid "Divide [/]"
-msgstr "除法 [/]"
-
-#. Tooltip for the end block button
-#: ../data/gcalctool.ui.h:76
-msgid "End block [)]"
-msgstr "结束块 [)]"
-
-#. Number display mode combo: Engineering, e.g. 1.234k
-#: ../data/gcalctool.ui.h:78
-msgid "Engineering"
-msgstr "工程"
-
-#. Tooltip for the Euler's number button
-#: ../data/gcalctool.ui.h:80
-msgid "Euler's number"
-msgstr "欧拉数"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:82
-msgid "Exponent"
-msgstr "X^Y"
-
-#. Tooltip for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:84
-msgid "Exponent [^ or **]"
-msgstr "乘方 [^ 或 **]"
-
-#. Accessible name for the factorial button
-#: ../data/gcalctool.ui.h:86
-msgid "Factorial"
-msgstr "阶乘"
-
-#. Tooltip for the factorial button
-#: ../data/gcalctool.ui.h:88
-msgid "Factorial [!]"
-msgstr "阶乘 [!]"
-
-#. Accessible name for the factorize button
-#: ../data/gcalctool.ui.h:90
-msgid "Factorize"
-msgstr "质因数分解"
-
-#. Tooltip for the factorize button
-#: ../data/gcalctool.ui.h:92
-msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr "分解为质因数(Ctrl+F)"
-
-#. Tooltip for the fractional portion button
-#: ../data/gcalctool.ui.h:94
-msgid "Fractional portion"
-msgstr "小数部分"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:96
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:98
-msgid "Gpm"
-msgstr "Gpm"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../data/gcalctool.ui.h:100
-msgid "Gradians"
-msgstr "百分度"
-
-#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
-#: ../data/gcalctool.ui.h:102
-msgid "Hexadecimal"
-msgstr "十六进制"
-
-#. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:104
-msgid "Insert ASCII Value"
-msgstr "插入 ASCII 值"
-
-#. Accessible name for the insert character button
-#: ../data/gcalctool.ui.h:106
-msgid "Insert Character"
-msgstr "插入字符"
-
-#. Tooltip for the insert character button
-#: ../data/gcalctool.ui.h:108
-msgid "Insert character"
-msgstr "插入字符"
-
-#. Tooltip for the integer portion button
-#: ../data/gcalctool.ui.h:110
-msgid "Integer portion"
-msgstr "取整数部分"
-
-#. Accessible name for the inverse button
-#: ../data/gcalctool.ui.h:112
-msgid "Inverse"
-msgstr "反三角函数"
-
-#. Tooltip for the inverse button
-#: ../data/gcalctool.ui.h:114
-msgid "Inverse [Ctrl+I]"
-msgstr "反函数 [Ctrl+I]"
-
-#. Tooltip for the modulus division button
-#: ../data/gcalctool.ui.h:116
-msgid "Modulus divide"
-msgstr "求余数"
-
-#. Tooltip for the multiplication button
-#: ../data/gcalctool.ui.h:118
-msgid "Multiply [*]"
-msgstr "乘法 [*]"
-
-#. Tooltip for the natural logarithm button
-#: ../data/gcalctool.ui.h:120
-msgid "Natural logarithm"
-msgstr "自然对数"
-
-#. Tooltip for the numeric point button
-#: ../data/gcalctool.ui.h:122
-msgid "Numeric point [. or ,]"
-msgstr "小数点 [. 或 ,]"
-
-#. Number display mode combo: Octal, e.g. 2322&#x2088;
-#: ../data/gcalctool.ui.h:124
-msgid "Octal"
-msgstr "八进制"
-
-#. Tooltip for the ones' complement button
-#: ../data/gcalctool.ui.h:126
-msgid "Ones' complement"
-msgstr "1 的补数"
-
-#. Tooltip on the percentage button
-#: ../data/gcalctool.ui.h:129
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "百分数 [%]"
-
-#. Tooltip for the Pi button
-#: ../data/gcalctool.ui.h:131
-msgid "Pi [Ctrl+P]"
-msgstr "圆周率 [Ctrl+P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:133
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../data/gcalctool.ui.h:134
-msgid "Preferences"
-msgstr "首选项"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:136
-msgid "Pv"
-msgstr "Pv"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../data/gcalctool.ui.h:138
-msgid "Radians"
-msgstr "弧度"
-
-#. Tooltip for the random number button
-#: ../data/gcalctool.ui.h:140
-msgid "Random number"
-msgstr "随机数"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:142
-msgid "Rate"
-msgstr "利率"
-
-#. Accessible name for the recall value button
-#: ../data/gcalctool.ui.h:144
-msgid "Recall"
-msgstr "召回"
-
-#. Tooltip for the recall value button
-#: ../data/gcalctool.ui.h:146
-msgid "Recall value"
-msgstr "召回值"
-
-#. Accessible description for the area in which results are displayed
-#: ../data/gcalctool.ui.h:148
-msgid "Result Region"
-msgstr "结果区"
-
-#. Tooltip for the root button
-#: ../data/gcalctool.ui.h:150
-msgid "Root [Ctrl+S]"
-msgstr "求根 [Ctrl+S]"
-
-#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
-#: ../data/gcalctool.ui.h:152
-msgid "Scientific"
-msgstr "科学"
-
-#. Accessible name for the scientific exponent button
-#: ../data/gcalctool.ui.h:154
-msgid "Scientific Exponent"
-msgstr "科学"
-
-#. Tooltip for the scientific exponent button
-#: ../data/gcalctool.ui.h:156
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "科学记数法 [Ctrl+E]"
-
-#. Accessible name for the shift left button
-#: ../data/gcalctool.ui.h:158
-msgid "Shift Left"
-msgstr "左移"
-
-#. Accessible name for the shift right button
-#: ../data/gcalctool.ui.h:160
-msgid "Shift Right"
-msgstr "右移"
-
-#. Tooltip for the shift left button
-#: ../data/gcalctool.ui.h:162
-msgid "Shift left [<]"
-msgstr "左移[<]"
-
-#. Tooltip for the shift right button
-#: ../data/gcalctool.ui.h:164
-msgid "Shift right [>]"
-msgstr "右移[>]"
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/gcalctool.ui.h:166
-msgid "Show _thousands separators"
-msgstr "显示千位分隔符(_T)"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/gcalctool.ui.h:168
-msgid "Show trailing _zeroes"
-msgstr "显示末位零(_Z)"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:170
-msgid "Sln"
-msgstr "Sln"
-
-#. Tooltip for the start block button
-#: ../data/gcalctool.ui.h:172
-msgid "Start block [(]"
-msgstr "起始块 [(]"
-
-#. Accessible name for the store value button
-#: ../data/gcalctool.ui.h:174
-msgid "Store"
-msgstr "记忆"
-
-#. Tooltip for the store value button
-#: ../data/gcalctool.ui.h:176
-msgid "Store value"
-msgstr "储存当前值到寄存器"
-
-#. Accessible name for the subscript mode button
-#: ../data/gcalctool.ui.h:178
-msgid "Subscript"
-msgstr "下标"
-
-#. Tooltip for the subscript mode button
-#: ../data/gcalctool.ui.h:180
-msgid "Subscript number mode [Alt+number]"
-msgstr "下标数字模式 [Alt+数字]"
-
-#. Tooltip for the subtraction button
-#: ../data/gcalctool.ui.h:182
-msgid "Subtract [-]"
-msgstr "减法 [-]"
-
-#. Accessible name for the superscript mode button
-#: ../data/gcalctool.ui.h:184
-msgid "Superscript"
-msgstr "上标"
-
-#. Tooltip for the superscript mode button
-#: ../data/gcalctool.ui.h:186
-msgid "Superscript number mode [Ctrl+number]"
-msgstr "上标数字模式 [Ctrl+数字]"
-
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:188
+#: ../data/buttons-financial.ui.h:82
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:190
+#: ../data/buttons-financial.ui.h:84
 msgid "Term"
 msgstr "Term"
 
-#. Tooltip for the truncate button
-#: ../data/gcalctool.ui.h:192
-msgid "Truncate value"
-msgstr "截断值"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Cost:"
+msgstr "成本(_C)："
 
-#. Tooltip for the two's complement button
-#: ../data/gcalctool.ui.h:194
-msgid "Two's complement"
-msgstr "2 的补数"
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Future Value:"
+msgstr "未来值(_F)："
 
-#. Preferences dialog: label for word size combo box
-#: ../data/gcalctool.ui.h:196
-msgid "Word _size:"
-msgstr "字长(_S)："
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Life:"
+msgstr "年限(_L)："
 
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:198
-msgid "_1 place"
-msgstr "_1 位"
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:94
+msgid "_Margin:"
+msgstr "利润(_M)："
 
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:200
-msgid "_2 places"
-msgstr "_2 位"
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Number of Periods:"
+msgstr "期数(_N)："
 
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:202
-msgid "_3 places"
-msgstr "_3 位"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:98
+msgid "_Period:"
+msgstr "期(_P)："
 
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:204
-msgid "_4 places"
-msgstr "_4 位"
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:100
+msgid "_Periodic Payment:"
+msgstr "定期付款(_P)："
 
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:206
-msgid "_5 places"
-msgstr "_5 位"
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:102
+msgid "_Principal:"
+msgstr "本金(_P)："
 
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:208
-msgid "_6 places"
-msgstr "_6 位"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:104
+msgid "_Salvage:"
+msgstr "残值(_S)："
 
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:210
-msgid "_7 places"
-msgstr "_7 位"
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:106
+msgid "_Term:"
+msgstr "期限(_T)："
 
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:212
-msgid "_8 places"
-msgstr "_8 位"
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:10
+msgid "Ch_aracter:"
+msgstr "字符(_A)："
 
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:214
-msgid "_9 places"
-msgstr "_9 位"
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:20
+msgid "Insert Character"
+msgstr "插入字符"
 
-#. View|Advanced menu item
-#: ../data/gcalctool.ui.h:216
-msgid "_Advanced"
-msgstr "高级(_A)"
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
+msgid "Insert Character Code"
+msgstr "插入字符编码"
 
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/gcalctool.ui.h:218
-msgid "_Angle units:"
-msgstr "角度单位(_A)："
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:255
+msgid "Shift Left"
+msgstr "左移"
 
-#. View|Basic menu item
-#: ../data/gcalctool.ui.h:220
-msgid "_Basic"
-msgstr "基本(_B)"
-
-#. Calculator menu
-#: ../data/gcalctool.ui.h:222
-msgid "_Calculator"
-msgstr "计算器(_C)"
-
-#. View|Financial menu item
-#: ../data/gcalctool.ui.h:224
-msgid "_Financial"
-msgstr "财务(_F)"
-
-#. Help menu
-#: ../data/gcalctool.ui.h:226
-msgid "_Help"
-msgstr "帮助(_H)"
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:30 ../src/math-buttons.c:258
+msgid "Shift Right"
+msgstr "右移"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/buttons-programming.ui.h:38
 msgid "_Insert"
 msgstr "插入(_I)"
 
-#. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
-msgid "_Programming"
-msgstr "编程(_P)"
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16 位"
 
-#. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
-msgid "_Scientific"
-msgstr "科学(_S)"
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32 位"
 
-#. View menu
-#: ../data/gcalctool.ui.h:234
-msgid "_View"
-msgstr "查看(_V)"
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64 位"
 
-#. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:101
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8 位"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "数字格式(_F)："
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:233
+msgid "Preferences"
+msgstr "首选项"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "显示千位分隔符(_T)"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "显示末位零(_Z)"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "字长(_S)："
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "角度单位(_A)："
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:521
 msgid "Calculator"
 msgstr "计算器"
 
@@ -846,115 +471,244 @@ msgstr "计算器"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "执行算术、科学或财务计算"
 
-#: ../data/gcalctool.schemas.in.h:1
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "精确度"
 
-#: ../data/gcalctool.schemas.in.h:2
-msgid "Display Mode"
-msgstr "显示模式"
-
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
 #, fuzzy
-#| msgid ""
-#| "Indicates whether any trailing zeroes after the number point should be "
-#| "shown in the display value."
+#| msgid "_Angle units:"
+msgid "Angle units"
+msgstr "角度单位(_A)："
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
-msgstr "设置是否在数值中小数点后显示末位零。"
+msgstr "表明是否在数值中小数点后显示末位零。"
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr "设置是否在启动时显示内存寄存器窗口。"
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "设置是否在大数中显示千位分隔符。"
 
-#: ../data/gcalctool.schemas.in.h:6
-msgid "Mode"
-msgstr "模式"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#, fuzzy
+#| msgid "Number _Format:"
+msgid "Number format"
+msgstr "数字格式(_F)："
 
-#: ../data/gcalctool.schemas.in.h:7
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "进位制"
 
-#: ../data/gcalctool.schemas.in.h:8
-msgid "Show Registers"
-msgstr "显示内存寄存器"
-
-#: ../data/gcalctool.schemas.in.h:9
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
 msgstr "显示千位分隔符"
 
-#: ../data/gcalctool.schemas.in.h:10
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "显示末位零"
 
-#: ../data/gcalctool.schemas.in.h:11
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr "初始计算器模式。 有效值为“基本”、“财务”、 “逻辑”、“科学”和“编程”"
-
-#: ../data/gcalctool.schemas.in.h:12
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
 msgstr ""
-"初始显示模式。 有效值为 “ENG”(工程模式)、“FIX”(定点模式)和“SCI”(科学模式)"
 
-#: ../data/gcalctool.schemas.in.h:13
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr "初始角度类型。有效值为 “DEG”(度数)、“GRAD”(梯度)和“RAD”(弧度)。"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Target currency"
+msgstr ""
 
-#: ../data/gcalctool.schemas.in.h:14
-msgid "The initial x-coordinate for the window"
-msgstr "窗口的初始 x 座标"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr ""
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid "The initial y-coordinate for the window"
-msgstr "窗口的初始 y 座标"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "The button mode"
+msgstr ""
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The format to display numbers in"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#, fuzzy
+#| msgid ""
+#| "The number of digits displayed after the numeric point. This value must "
+#| "be in the range 0 to 9."
+msgid "The number of digits displayed after the numeric point"
 msgstr "小数点后显示的数字位数。此值必须在 0 到 9 范围内。"
 
-# fuzzy
-#: ../data/gcalctool.schemas.in.h:17
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr "呈现窗口距屏幕左侧的像素数。"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#, fuzzy
+#| msgid "Numeric Base"
+msgid "The numeric base"
+msgstr "进位制"
 
-# fuzzy
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "呈现窗口距屏幕顶部的像素数。"
-
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The numeric base for input and display."
-msgstr "输出和显示数值的进制。"
-
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#, fuzzy
+#| msgid ""
+#| "The size of the words used in bitwise operations. Valid values are 16, 32 "
+#| "and 64."
+msgid "The size of the words used in bitwise operations"
 msgstr "位运算所用字长。有效值为 16、32 和 64。"
 
-#: ../data/gcalctool.schemas.in.h:21
-msgid "Trigonometric type"
-msgstr "角度类型"
-
-#: ../data/gcalctool.schemas.in.h:22
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "Word size"
 msgstr "字长"
 
+#: ../src/currency.h:19
+msgid "Australian dollar"
+msgstr "澳大利亚元"
+
+#: ../src/currency.h:20
+msgid "Bulgarian lev"
+msgstr "保加利亚列弗"
+
+#: ../src/currency.h:21
+msgid "Brazilian real"
+msgstr "巴西雷亚尔"
+
+#: ../src/currency.h:22
+msgid "Canadian dollar"
+msgstr "加拿大元"
+
+#: ../src/currency.h:23
+msgid "Swiss franc"
+msgstr "瑞士法郎"
+
+#: ../src/currency.h:24
+msgid "Chinese yuan renminbi"
+msgstr "人民币"
+
+#: ../src/currency.h:25
+msgid "Czech koruna"
+msgstr "捷克克朗"
+
+#: ../src/currency.h:26
+msgid "Danish krone"
+msgstr "丹麦克朗"
+
+#: ../src/currency.h:27
+msgid "Estonian kroon"
+msgstr "爱沙尼亚克朗"
+
+#: ../src/currency.h:28
+msgid "Euro"
+msgstr "欧元"
+
+#: ../src/currency.h:29
+msgid "Pound sterling"
+msgstr "英镑"
+
+#: ../src/currency.h:30
+msgid "Hong Kong dollar"
+msgstr "港元"
+
+#: ../src/currency.h:31
+msgid "Croatian kuna"
+msgstr "克罗地亚库纳"
+
+#: ../src/currency.h:32
+msgid "Hungarian forint"
+msgstr "匈牙利福林"
+
+#: ../src/currency.h:33
+msgid "Indonesian rupiah"
+msgstr "印度尼西亚卢比"
+
+#: ../src/currency.h:34
+msgid "Indian rupee"
+msgstr "印度卢比"
+
+#: ../src/currency.h:35
+msgid "Icelandic krona"
+msgstr "冰岛克朗"
+
+#: ../src/currency.h:36
+msgid "Japanese yen"
+msgstr "日元"
+
+#: ../src/currency.h:37
+msgid "South Korean won"
+msgstr "韩元"
+
+#: ../src/currency.h:38
+msgid "Lithuanian litas"
+msgstr "立陶宛拉特"
+
+#: ../src/currency.h:39
+msgid "Latvian lats"
+msgstr "拉脱维亚拉特"
+
+#: ../src/currency.h:40
+msgid "Mexican peso"
+msgstr "墨西哥比索"
+
+#: ../src/currency.h:41
+msgid "Malaysian ringgit"
+msgstr "马来西亚林吉特"
+
+#: ../src/currency.h:42
+msgid "Norwegian krone"
+msgstr "挪威克朗"
+
+#: ../src/currency.h:43
+msgid "New Zealand dollar"
+msgstr "新西兰元"
+
+#: ../src/currency.h:44
+msgid "Philippine peso"
+msgstr "菲律宾比索"
+
+#: ../src/currency.h:45
+msgid "Polish zloty"
+msgstr "波兰兹罗提"
+
+#: ../src/currency.h:46
+msgid "New Romanian leu"
+msgstr "新罗马尼亚列伊"
+
+#: ../src/currency.h:47
+msgid "Russian rouble"
+msgstr "俄罗斯卢布"
+
+#: ../src/currency.h:48
+msgid "Swedish krona"
+msgstr "瑞典克朗"
+
+#: ../src/currency.h:49
+msgid "Singapore dollar"
+msgstr "新加坡元"
+
+#: ../src/currency.h:50
+msgid "Thai baht"
+msgstr "泰国铢"
+
+#: ../src/currency.h:51
+msgid "New Turkish lira"
+msgstr "新土尔其里拉"
+
+#: ../src/currency.h:52
+msgid "US dollar"
+msgstr "美元"
+
+#: ../src/currency.h:53
+msgid "South African rand"
+msgstr "南非兰特"
+
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/calctool.c:79
+#: ../src/gcalctool.c:76
 #, c-format
 msgid ""
 "Usage:\n"
@@ -964,7 +718,7 @@ msgstr ""
 "  %s - 执行数学计算"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/calctool.c:87
+#: ../src/gcalctool.c:84
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -980,7 +734,7 @@ msgstr ""
 "  -help-gtk\t\t显示 GTK+ 选项"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/calctool.c:98
+#: ../src/gcalctool.c:95
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1002,7 +756,7 @@ msgstr ""
 "  --g-fatal-warnings             给出所有重要警告"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/gcalctool.c:109
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1014,266 +768,491 @@ msgstr ""
 "  -s，--solve <方程>              求解给出的方程"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "参数 --solve 需要一个方程以便求解"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/gcalctool.c:168
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "未知参数“%s”"
 
-#. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "零,一,二,三,四,五,六,七,八,九,十,A,B,C,D,E,F"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:106
+msgid "Pi [Ctrl+P]"
+msgstr "圆周率 [Ctrl+P]"
 
-#: ../src/currency.h:18
-msgid "Australian dollar"
-msgstr "澳大利亚元"
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:109
+#, fuzzy
+#| msgid "Eulers Number"
+msgid "Euler’s Number"
+msgstr "欧拉数"
 
-#: ../src/currency.h:19
-msgid "Bulgarian lev"
-msgstr "保加利亚列弗"
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:114
+msgid "Subscript mode [Alt]"
+msgstr "下标数字模式 [Alt]"
 
-#: ../src/currency.h:20
-msgid "Brazilian real"
-msgstr "巴西雷亚尔"
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:117
+#, fuzzy
+#| msgid "Supercript mode [Ctrl]"
+msgid "Superscript mode [Ctrl]"
+msgstr "上标数字模式 [Ctrl]"
 
-#: ../src/currency.h:21
-msgid "Canadian dollar"
-msgstr "加拿大元"
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:120
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "科学记数法 [Ctrl+E]"
 
-#: ../src/currency.h:22
-msgid "Swiss franc"
-msgstr "瑞士法郎"
+#. Tooltip for the add button
+#: ../src/math-buttons.c:123
+msgid "Add [+]"
+msgstr "加法 [+]"
 
-#: ../src/currency.h:23
-msgid "Chinese yuan renminbi"
-msgstr "人民币"
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:126
+msgid "Subtract [-]"
+msgstr "减法 [-]"
 
-#: ../src/currency.h:24
-msgid "Czech koruna"
-msgstr "捷克克朗"
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:129
+msgid "Multiply [*]"
+msgstr "乘法 [*]"
 
-#: ../src/currency.h:25
-msgid "Danish krone"
-msgstr "丹麦克朗"
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:132
+msgid "Divide [/]"
+msgstr "除法 [/]"
 
-#: ../src/currency.h:26
-msgid "Estonian kroon"
-msgstr "爱沙尼亚克朗"
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:135
+msgid "Modulus divide"
+msgstr "求余数"
 
-#: ../src/currency.h:27
-msgid "Euro"
-msgstr "欧元"
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:138
+msgid "Additional Functions"
+msgstr ""
 
-#: ../src/currency.h:28
-msgid "Pound sterling"
-msgstr "英镑"
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:141
+msgid "Exponent [^ or **]"
+msgstr "乘方 [^ 或 **]"
 
-#: ../src/currency.h:29
-msgid "Hong Kong dollar"
-msgstr "港元"
+#. Tooltip for the square button
+#: ../src/math-buttons.c:144
+msgid "Square [Ctrl+2]"
+msgstr "平方 [Ctrl+2]"
 
-#: ../src/currency.h:30
-msgid "Croatian kuna"
-msgstr "克罗地亚库纳"
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:147
+msgid "Percentage [%]"
+msgstr "百分数 [%]"
 
-#: ../src/currency.h:31
-msgid "Hungarian forint"
-msgstr "匈牙利福林"
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:150
+msgid "Factorial [!]"
+msgstr "阶乘 [!]"
 
-#: ../src/currency.h:32
-msgid "Indonesian rupiah"
-msgstr "印度尼西亚卢比"
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:153
+msgid "Absolute value [|]"
+msgstr "绝对值 [|]"
 
-#: ../src/currency.h:33
-msgid "Indian rupee"
-msgstr "印度卢比"
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:156
+#, fuzzy
+#| msgid "Ones' complement"
+msgid "Complex argument"
+msgstr "1 的补数"
 
-#: ../src/currency.h:34
-msgid "Icelandic krona"
-msgstr "冰岛克朗"
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:159
+msgid "Complex conjugate"
+msgstr "复共轭"
 
-#: ../src/currency.h:35
-msgid "Japanese yen"
-msgstr "日元"
+#. Tooltip for the root button
+#: ../src/math-buttons.c:162
+msgid "Root [Ctrl+R]"
+msgstr "根 [Ctrl+R]"
 
-#: ../src/currency.h:36
-msgid "South Korean won"
-msgstr "韩元"
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:165
+msgid "Square root [Ctrl+R]"
+msgstr "平方根 [Ctrl+R]"
 
-#: ../src/currency.h:37
-msgid "Lithuanian litas"
-msgstr "立陶宛拉特"
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:168
+msgid "Logarithm"
+msgstr "常用对数(以 10 为底)"
 
-#: ../src/currency.h:38
-msgid "Latvian lats"
-msgstr "拉脱维亚拉特"
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:171
+msgid "Natural Logarithm"
+msgstr "自然对数(以 e 为底)"
 
-#: ../src/currency.h:39
-msgid "Mexican peso"
-msgstr "墨西哥比索"
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:174
+msgid "Sine"
+msgstr "正弦"
 
-#: ../src/currency.h:40
-msgid "Malaysian ringgit"
-msgstr "马来西亚林吉特"
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:177
+msgid "Cosine"
+msgstr "余弦"
 
-#: ../src/currency.h:41
-msgid "Norwegian krone"
-msgstr "挪威克朗"
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:180
+msgid "Tangent"
+msgstr "正切"
 
-#: ../src/currency.h:42
-msgid "New Zealand dollar"
-msgstr "新西兰元"
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:183
+msgid "Hyperbolic Sine"
+msgstr "双曲正弦"
 
-#: ../src/currency.h:43
-msgid "Philippine peso"
-msgstr "菲律宾比索"
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:186
+msgid "Hyperbolic Cosine"
+msgstr "双曲余弦"
 
-#: ../src/currency.h:44
-msgid "Polish zloty"
-msgstr "波兰兹罗提"
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:189
+msgid "Hyperbolic Tangent"
+msgstr "双曲正切"
 
-#: ../src/currency.h:45
-msgid "New Romanian leu"
-msgstr "新罗马尼亚列伊"
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:192
+msgid "Inverse [Ctrl+I]"
+msgstr "反函数 [Ctrl+I]"
 
-#: ../src/currency.h:46
-msgid "Russian rouble"
-msgstr "俄罗斯卢布"
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:195
+msgid "Boolean AND"
+msgstr "逻辑与"
 
-#: ../src/currency.h:47
-msgid "Swedish krona"
-msgstr "瑞典克朗"
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:198
+msgid "Boolean OR"
+msgstr "逻辑或"
 
-#: ../src/currency.h:48
-msgid "Singapore dollar"
-msgstr "新加坡元"
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:201
+msgid "Boolean Exclusive OR"
+msgstr "逻辑异或"
 
-#: ../src/currency.h:49
-msgid "Thai baht"
-msgstr "泰国铢"
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:204
+msgid "Boolean NOT"
+msgstr "逻辑非"
 
-#: ../src/currency.h:50
-msgid "New Turkish lira"
-msgstr "新土尔其里拉"
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1429
+msgid "Integer Component"
+msgstr "取整数部分"
 
-#: ../src/currency.h:51
-msgid "US dollar"
-msgstr "美元"
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1431
+msgid "Fractional Component"
+msgstr "小数部分"
 
-#: ../src/currency.h:52
-msgid "South African rand"
-msgstr "南非兰特"
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:213
+msgid "Real Component"
+msgstr "实数部分"
 
-#: ../src/display.c:379
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:216
+msgid "Imaginary Component"
+msgstr "虚数部分"
+
+#. Tooltip for the ones complement button
+#: ../src/math-buttons.c:219
+#, fuzzy
+#| msgid "Ones' complement"
+msgid "Ones Complement"
+msgstr "1 的补数"
+
+#. Tooltip for the twos complement button
+#: ../src/math-buttons.c:222
+#, fuzzy
+#| msgid "Two's complement"
+msgid "Twos Complement"
+msgstr "2 的补数"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:225
+msgid "Truncate"
+msgstr "截断"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:228
+#, fuzzy
+#| msgid "Start block [(]"
+msgid "Start Group [(]"
+msgstr "起始块 [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:231
+#, fuzzy
+#| msgid "End block [)]"
+msgid "End Group [)]"
+msgstr "结束块 [)]"
+
+#. Tooltip for the assign variable button
+#: ../src/math-buttons.c:234
+#, fuzzy
+#| msgid "Answer variable"
+msgid "Assign Variable"
+msgstr "应答变量"
+
+#. Tooltip for the insert variable button
+#: ../src/math-buttons.c:237
+msgid "Insert Variable"
+msgstr "插入变量"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:243
+msgid "Calculate Result"
+msgstr "计算结果"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:246
+#, fuzzy
+#| msgid "Factorize"
+msgid "Factorize [Ctrl+F]"
+msgstr "质因数分解"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:249
+msgid "Clear Display [Escape]"
+msgstr "清除显示 [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:252
+msgid "Undo [Ctrl+Z]"
+msgstr "撤销 [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:264
+#, fuzzy
+#| msgid "Double-Declining Depreciation"
+msgid "Double Declining Depreciation"
+msgstr "双倍余额递减折旧"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:270
+#, fuzzy
+#| msgid "_Financial"
+msgid "Financial Term"
+msgstr "财务(_F)"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:273
+#, fuzzy
+#| msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum of the Years Digits Depreciation"
+msgstr "年数总和折旧"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:276
+#, fuzzy
+#| msgid "Straight-Line Depreciation"
+msgid "Straight Line Depreciation"
+msgstr "直线折旧"
+
+#. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../src/math-buttons.c:891 ../src/math-preferences.c:249
+msgid "Degrees"
+msgstr "角度(_G)"
+
+#. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-buttons.c:895 ../src/math-preferences.c:253
+msgid "Radians"
+msgstr "弧度"
+
+#. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-buttons.c:899 ../src/math-preferences.c:257
+msgid "Gradians"
+msgstr "百分度"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:933
+msgid "Binary"
+msgstr "二进制"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:937
+msgid "Octal"
+msgstr "八进制"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:941
+msgid "Decimal"
+msgstr "十进制"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:945
+msgid "Hexadecimal"
+msgstr "十六进制"
+
+#. Text shown in store menu when no variables defined
+#. Text shown in recall menu when no variables defined
+#: ../src/math-buttons.c:1254 ../src/math-buttons.c:1299
+msgid "No variables defined"
+msgstr "未定义变量"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:1341 ../src/math-buttons.c:1384
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d 位"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:1345 ../src/math-buttons.c:1388
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d 位"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1433
+msgid "Round"
+msgstr ""
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1435
+msgid "Floor"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1437
+msgid "Ceiling"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1439
+#, fuzzy
+#| msgid "Sine"
+msgid "Sign"
+msgstr "正弦"
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:471
 msgid "No undo history"
 msgstr "无撤销记录"
 
-#: ../src/display.c:394
-msgid "No redo steps"
-msgstr "无重做步骤"
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:496
+msgid "No redo history"
+msgstr "无重做记录"
 
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1029
-msgid "No sane value to bitwise shift"
-msgstr "没有正常数值可用于移位"
-
-#. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1045
-msgid "Need an integer to factorize"
-msgstr "分解因式运算需要一个整数"
-
-#: ../src/display.c:1071
+#: ../src/math-equation.c:907
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
-#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1193
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1167
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
-#. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1198
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1172
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "未知变量“%s”"
 
-#. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1204
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1177
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "函数“%s”未定义"
 
-#. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1210
-#, c-format
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1182
 msgid "Unknown conversion"
 msgstr "未知转换"
 
-#. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1219
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1191
 msgid "Malformed expression"
 msgstr "格式错误的表达式"
 
-#. Translators: The window title when in advanced mode
-#: ../src/gtk.c:103
-msgid "Calculator — Advanced"
-msgstr "计算器 - 高级"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1214
+msgid "Need an integer to factorize"
+msgstr "分解因式运算需要一个整数"
 
-#. Translators: The window title when in financial mode
-#: ../src/gtk.c:105
-msgid "Calculator — Financial"
-msgstr "计算器 - 财务"
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1291
+msgid "No sane value to bitwise shift"
+msgstr "没有正常数值可用于移位"
 
-#. Translators: The window title when in scientific mode
-#: ../src/gtk.c:107
-msgid "Calculator — Scientific"
-msgstr "计算器 - 科学"
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1320
+msgid "Displayed value not an integer"
+msgstr "显示的值不是整数"
 
-#. Translators: The window title when in programming mode
-#: ../src/gtk.c:109
-msgid "Calculator — Programming"
-msgstr "计算器 - 编程"
+#. Digits localized for the given language
+#: ../src/math-equation.c:1710
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "零,一,二,三,四,五,六,七,八,九,十,A,B,C,D,E,F"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:238
-msgid "Error loading user interface"
-msgstr "载入用户界面出错"
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:239
+msgid "_Close"
+msgstr "关闭(_C)："
 
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:241
-#, fuzzy, c-format
-#| msgid ""
-#| "A required file is missing or damaged, please check your installation.\n"
-#| "\n"
-#| "%s"
-msgid ""
-"A required file is missing or damaged. Please check your installation.\n"
-"\n"
-"%s"
-msgstr ""
-"用户界面文件丢失或无法载入。请检查您的安装。\n"
-"\n"
-"%s"
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:267
+msgid "Fixed"
+msgstr "定点数"
 
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:556
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:271
+msgid "Scientific"
+msgstr "科学"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:275
+msgid "Engineering"
+msgstr "工程"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:286
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "显示 %d 个十进制位(_P)"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:170
+msgid "Unable to open help file"
+msgstr "无法打开帮助文件"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:201
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@linux.net.cn>\n"
 "Shaodong Di <gnuyhlfh@gmail.com>\n"
 "甘露 <rhythm.gan@gmail.com>\n"
 "Aron Xu <aronxu@gnome.org>\n"
-"arccos <boyermoore@gmail.com>"
+"arccos <boyermoore@gmail.com>\n"
+"YunQiang Su <wzssyqa@gmail.com>"
 
-#. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:559
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:204
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1302,185 +1281,380 @@ msgstr ""
 "如果没有，请写信至：Free Software Foundation, Inc., 59 Temple Place - Suite "
 "330, Boston, MA 02111-1307, USA"
 
-#. Translators: Program name in the about dialog
-#: ../src/gtk.c:575
+#. Program name in the about dialog
+#: ../src/math-window.c:221
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:578
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:225
 msgid "© 1986–2008 The Gcalctool authors"
 msgstr "© 1986-2008 Gcalctool 作者"
 
-#. Translators: Short description in the about dialog
-#: ../src/gtk.c:581
+#. Short description in the about dialog
+#: ../src/math-window.c:229
 msgid "Calculator with financial and scientific modes."
 msgstr "带有财务和科学模式的计算器。"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:635
-msgid "Unable to open help file"
-msgstr "无法打开帮助文件"
+#. Calculator menu
+#: ../src/math-window.c:355
+msgid "_Calculator"
+msgstr "计算器(_C)"
 
-#. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1005
-msgid ""
-"You don't have any recent currency rates. Should some be downloaded now?"
-msgstr "您没有最近的汇率信息。现在下载吗？"
+#. Mode menu
+#: ../src/math-window.c:357
+msgid "_Mode"
+msgstr "模式(_M)"
 
-#. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1015
-#, fuzzy
-#| msgid ""
-#| "I could not download any currency rates. You may receive inaccurate "
-#| "results, or you may not receive any results at all."
-msgid ""
-"Currency rates could not be downloaded. You may receive inaccurate results, "
-"or you may not receive any results at all."
-msgstr "无法下载任何汇率信息。您可能得到不准确的结果，或根本得不到任何结果。"
+#. Help menu label
+#: ../src/math-window.c:359
+msgid "_Help"
+msgstr "帮助(_H)"
 
-#: ../src/gtk.c:1444
-msgid "Paste"
-msgstr "粘贴"
+#. Basic menu label
+#: ../src/math-window.c:361
+msgid "_Basic"
+msgstr "基本(_B)"
 
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1486
-msgid "Division by zero is undefined"
-msgstr "被零除无意义"
+#. Advanced menu label
+#: ../src/math-window.c:363
+msgid "_Advanced"
+msgstr "高级(_A)"
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1168 ../src/mp.c:1205
-msgid "Logarithm of zero is undefined"
-msgstr "零的对数未定义"
+#. Financial menu label
+#: ../src/math-window.c:365
+msgid "_Financial"
+msgstr "财务(_F)"
 
-#. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1177
-msgid "Logarithm of negative values is undefined"
-msgstr "对负数进行求对数运算无意义"
+#. Programming menu label
+#: ../src/math-window.c:367
+msgid "_Programming"
+msgstr "编程(_P)"
 
-#: ../src/mp.c:1551
-#, fuzzy
-#| msgid "The power of negative numbers only defined for integer exponents"
-msgid "The power of negative numbers is only defined for integer exponents"
-msgstr "负数的幂只能定义为整数指数"
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1558 ../src/mp.c:1851
-#, fuzzy
-#| msgid "The power of zero is not defined for a negative exponent"
-msgid "The power of zero is undefined for a negative exponent"
-msgstr "对零进行求幂运算，当指数为负时无意义"
-
-#: ../src/mp.c:1583
-#, fuzzy
-#| msgid "Reciprocal of zero is not defined"
-msgid "Reciprocal of zero is undefined"
-msgstr "对零求倒数无意义"
-
-#: ../src/mp.c:1668
-msgid "Root must be non-zero"
-msgstr "根次方数必需为非零值"
-
-#: ../src/mp.c:1686
-msgid "Negative root of zero is undefined"
-msgstr "零的负数次方根无意义"
-
-#: ../src/mp.c:1692
-msgid "nth root of negative number is undefined for even n"
-msgstr "对负数求偶次方根无意义"
-
-#: ../src/mp.c:1762
-#, fuzzy
-#| msgid "Square root is not defined for negative values"
-msgid "Square root is undefined for negative values"
-msgstr "对负数开平方无意义"
-
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1791
-#, fuzzy
-#| msgid "Factorial only defined for natural numbers"
-msgid "Factorial is only defined for natural numbers"
-msgstr "阶乘运算仅对自然数有意义"
-
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1811
-#, fuzzy
-#| msgid "Modulus division only defined for integers"
-msgid "Modulus division is only defined for integers"
-msgstr "取模运算仅对整数有意义"
+#. Help>Contents menu label
+#: ../src/math-window.c:369
+msgid "_Contents"
+msgstr "内容(_C)"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
-#, fuzzy
-#| msgid "Boolean AND only defined for natural numbers"
 msgid "Boolean AND is only defined for positive integers"
-msgstr "逻辑与运算仅对自然数有意义"
+msgstr "逻辑与运算只对正整数定义"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
-#, fuzzy
-#| msgid "Boolean OR only defined for natural numbers"
 msgid "Boolean OR is only defined for positive integers"
-msgstr "逻辑或运算仅对自然数有意义"
+msgstr "逻辑或运算只对正整数定义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
-#, fuzzy
-#| msgid "Boolean XOR only defined for natural numbers"
 msgid "Boolean XOR is only defined for positive integers"
-msgstr "逻辑异或运算仅对自然数有意义"
+msgstr "逻辑异或运算只对正整数定义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
-#, fuzzy
-#| msgid "Boolean NOT only defined for natural numbers"
 msgid "Boolean NOT is only defined for positive integers"
-msgstr "逻辑非运算仅对自然数有意义"
+msgstr "逻辑非运算只对正整数定义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
-#, fuzzy
-#| msgid "Shift only possible on integer values"
 msgid "Shift is only possible on integer values"
-msgstr "只能对整数进行移位运算"
+msgstr "只能对整数值进行移位运算"
+
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:149
+msgid "Argument not defined for zero"
+msgstr "参数值不能为零"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:636 ../src/mp.c:668 ../src/mp.c:1602
+msgid "Division by zero is undefined"
+msgstr "被零除未定义"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1273 ../src/mp.c:1310
+msgid "Logarithm of zero is undefined"
+msgstr "零的对数未定义"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1675 ../src/mp.c:1990
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "对零进行求幂运算，当指数为负时无意义"
+
+#: ../src/mp.c:1700
+msgid "Reciprocal of zero is undefined"
+msgstr "对零求倒数无意义"
+
+#: ../src/mp.c:1785
+msgid "Root must be non-zero"
+msgstr "根次方数必需为非零值"
+
+#: ../src/mp.c:1803
+msgid "Negative root of zero is undefined"
+msgstr "零的负数次方根无意义"
+
+#: ../src/mp.c:1809
+msgid "nth root of negative number is undefined for even n"
+msgstr "对负数求偶次方根无意义"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1930
+msgid "Factorial is only defined for natural numbers"
+msgstr "阶乘运算仅对自然数有定义"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1950
+msgid "Modulus division is only defined for integers"
+msgstr "取模运算仅对整数有意义"
 
 # fuzzy
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:278
-#, fuzzy
-#| msgid ""
-#| "Tangent not defined for angles that are multiples of π∕2 (180°) from π∕4 "
-#| "(90°)"
+#: ../src/mp-trigonometric.c:311
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
-msgstr "正切函数对于从 π∕4 (90°) 开始加上 π∕2 (180°) 的倍数的角度上无效"
+msgstr "正切函数对 (n+1/2)*π (90°，270° ...) 无意义"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:323
-#, fuzzy
-#| msgid "Inverse sine not defined for values outside [-1, 1]"
+#: ../src/mp-trigonometric.c:356
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:340
-#, fuzzy
-#| msgid "Inverse cosine not defined for values outside [-1, 1]"
+#: ../src/mp-trigonometric.c:373
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:558
-#, fuzzy
-#| msgid ""
-#| "Inverse hyperbolic cosine not defined for values less than or equal to one"
+#: ../src/mp-trigonometric.c:591
 msgid ""
 "Inverse hyperbolic cosine is undefined for values less than or equal to one"
-msgstr "反双曲余弦函数在小于等于 1 范围内无意义"
+msgstr "反双曲余弦函数在小于等于 1 时无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:582
-#, fuzzy
-#| msgid "Inverse hyperbolic tangent not defined for values outside [-1, 1]"
+#: ../src/mp-trigonometric.c:615
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
+
+#~ msgid "&#xA4;$&#x20AC;"
+#~ msgstr "&#xA4;$&#x20AC;"
+
+#~ msgid ""
+#~ "Converts between different currencies. Enter the amount and the currency "
+#~ "you want to convert from on the upper row, and the currency you want to "
+#~ "convert to on the lower row, and the amount will be displayed on the "
+#~ "lower row."
+#~ msgstr ""
+#~ "在不同币制之间进行转换。在上面一排输入待转换的货币数量，在下面一排输入目的"
+#~ "货币，转换值将会显示在下而一排。"
+
+#~ msgid "Currency Conversion"
+#~ msgstr "币制转换"
+
+#~ msgid "Display Mode"
+#~ msgstr "显示模式"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "设置是否在启动时显示内存寄存器窗口。"
+
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#~ msgid "Show Registers"
+#~ msgstr "显示内存寄存器"
+
+#~| msgid ""
+#~| "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#~| "\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgid ""
+#~ "The display format used in advanced mode. One of: \"ENG\" (engineering), "
+#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "高级模式中的显示格式。 有效值为 “ENG”(工程模式)、“FIX”(定点模式)和“SCI”(科"
+#~ "学模式)"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr "初始计算器模式。 有效值为“基本”、“财务”、 “逻辑”、“科学”和“编程”"
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr "初始角度类型。有效值为 “DEG”(度数)、“GRAD”(梯度)和“RAD”(弧度)。"
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "窗口的初始 x 座标"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "窗口的初始 y 座标"
+
+# fuzzy
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "呈现窗口距屏幕左侧的像素数。"
+
+# fuzzy
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "呈现窗口距屏幕顶部的像素数。"
+
+#~| msgid "The numeric base for input and display."
+#~ msgid "The numeric base (used in programming mode)"
+#~ msgstr "进制(用于编程模式)"
+
+#~ msgid "Trigonometric type"
+#~ msgstr "角度类型"
+
+#, fuzzy
+#~| msgid "Currency Conversion"
+#~ msgid "Currency Converter"
+#~ msgstr "币制转换"
+
+#~ msgid ""
+#~ "You don't have any recent currency rates. Should some be downloaded now?"
+#~ msgstr "您没有最近的汇率信息。现在下载吗？"
+
+#~| msgid ""
+#~| "I could not download any currency rates. You may receive inaccurate "
+#~| "results, or you may not receive any results at all."
+#~ msgid ""
+#~ "Currency rates could not be downloaded. You may receive inaccurate "
+#~ "results, or you may not receive any results at all."
+#~ msgstr "无法下载汇率信息。您可能得到不准确的结果，或根本得不到任何结果。"
+
+#~ msgid "10 places"
+#~ msgstr "10 位"
+
+#~ msgid "11 places"
+#~ msgstr "11 位"
+
+#~ msgid "12 places"
+#~ msgstr "12 位"
+
+#~ msgid "13 places"
+#~ msgstr "13 位"
+
+#~ msgid "14 places"
+#~ msgstr "14 位"
+
+#~ msgid "15 places"
+#~ msgstr "15 位"
+
+#~ msgid "Base 16"
+#~ msgstr "十六进制"
+
+#~ msgid "Base 2"
+#~ msgstr "二进制"
+
+#~ msgid "Base 8"
+#~ msgstr "八进制"
+
+#~ msgid "Display _Format:"
+#~ msgstr "显示模式[_F]："
+
+#~ msgid "Factorize into prime numbers (Ctrl+F)"
+#~ msgstr "分解为质因数(Ctrl+F)"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "插入 ASCII 值"
+
+#~ msgid "Insert character"
+#~ msgstr "插入字符"
+
+#~ msgid "Numeric point [. or ,]"
+#~ msgstr "小数点 [. 或 ,]"
+
+#~ msgid "Random number"
+#~ msgstr "随机数"
+
+#~ msgid "Recall value"
+#~ msgstr "召回值"
+
+#~ msgid "Result Region"
+#~ msgstr "结果区"
+
+#~ msgid "Shift left [<]"
+#~ msgstr "左移[<]"
+
+#~ msgid "Shift right [>]"
+#~ msgstr "右移[>]"
+
+#~ msgid "Store value"
+#~ msgstr "储存当前值到寄存器"
+
+#~ msgid "_2 places"
+#~ msgstr "_2 位"
+
+#~ msgid "_3 places"
+#~ msgstr "_3 位"
+
+#~ msgid "_4 places"
+#~ msgstr "_4 位"
+
+#~ msgid "_5 places"
+#~ msgstr "_5 位"
+
+#~ msgid "_6 places"
+#~ msgstr "_6 位"
+
+#~ msgid "_7 places"
+#~ msgstr "_7 位"
+
+#~ msgid "_8 places"
+#~ msgstr "_8 位"
+
+#~ msgid "_9 places"
+#~ msgstr "_9 位"
+
+#~ msgid "_Scientific"
+#~ msgstr "科学(_S)"
+
+#~ msgid "_View"
+#~ msgstr "查看(_V)"
+
+#~ msgid "No redo steps"
+#~ msgstr "无重做步骤"
+
+#~ msgid "Calculator — Advanced"
+#~ msgstr "计算器 - 高级"
+
+#~ msgid "Calculator — Financial"
+#~ msgstr "计算器 - 财务"
+
+#~ msgid "Calculator — Scientific"
+#~ msgstr "计算器 - 科学"
+
+#~ msgid "Calculator — Programming"
+#~ msgstr "计算器 - 编程"
+
+#~ msgid "Error loading user interface"
+#~ msgstr "载入用户界面出错"
+
+#, fuzzy
+#~| msgid ""
+#~| "A required file is missing or damaged, please check your installation.\n"
+#~| "\n"
+#~| "%s"
+#~ msgid ""
+#~ "A required file is missing or damaged. Please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "用户界面文件丢失或无法载入。请检查您的安装。\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "Paste"
+#~ msgstr "粘贴"
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "对负数进行求对数运算无意义"
+
+#, fuzzy
+#~| msgid "The power of negative numbers only defined for integer exponents"
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr "负数的幂只能定义为整数指数"
+
+#, fuzzy
+#~| msgid "Square root is not defined for negative values"
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "对负数开平方无意义"
