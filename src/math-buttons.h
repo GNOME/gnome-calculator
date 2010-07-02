@@ -47,7 +47,7 @@ typedef enum {
     PROGRAMMING
 } ButtonMode;
 
-GType math_buttons_get_type();
+GType math_buttons_get_type(void);
 
 MathButtons *math_buttons_new(MathEquation *equation);
 

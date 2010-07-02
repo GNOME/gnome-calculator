@@ -62,6 +62,6 @@ gboolean currency_convert(const MPNumber *from_amount,
                           MPNumber *to_amount);
 
 /* Frees up all allocated resources */
-void currency_free_resources();
+void currency_free_resources(void);
 
 #endif /* CURRENCY_H */

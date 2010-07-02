@@ -128,14 +128,14 @@ test_conversions()
 }
 
 
-int
+static int
 variable_is_defined(const char *name, void *data)
 {
     return strcmp (name, "x") == 0 || strcmp (name, "y") == 0;
 }
 
 
-int
+static int
 get_variable(const char *name, MPNumber *z, void *data)
 {
     if (strcmp (name, "x") == 0) {
@@ -150,12 +150,12 @@ get_variable(const char *name, MPNumber *z, void *data)
 }
 
 
-void
+static void
 set_variable(const char *name, const MPNumber *x, void *data)
 {
 }
 
-void
+static void
 test_equations()
 {
     memset(&options, 0, sizeof(options));

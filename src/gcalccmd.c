@@ -55,7 +55,7 @@ solve(const char *equation)
 
 
 /* Adjust user input equation string before solving it. */
-void
+static void
 str_adjust(char *str)
 {
     int i, j = 0;

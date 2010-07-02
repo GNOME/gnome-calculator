@@ -527,7 +527,6 @@ static void
 update_currency_label(MathButtons *buttons)
 {
     MPNumber x, value;
-    int source_index, target_index;
     char *label;
 
     if (!buttons->priv->currency_label)
@@ -557,7 +556,7 @@ update_currency_label(MathButtons *buttons)
                                 target_symbol, output_text);
     }
     else
-        label = g_strdup_printf("");
+        label = g_strdup("");
 
     gtk_label_set_text(GTK_LABEL(buttons->priv->currency_label), label);
     g_free(label);
@@ -1076,6 +1075,7 @@ math_buttons_get_programming_base(MathButtons *buttons)
 }
 
 
+void exponent_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 exponent_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1084,6 +1084,7 @@ exponent_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void subtract_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 subtract_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1092,6 +1093,7 @@ subtract_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void button_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 button_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1100,6 +1102,7 @@ button_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void solve_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 solve_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1108,6 +1111,7 @@ solve_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void clear_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 clear_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1116,6 +1120,7 @@ clear_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void delete_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 delete_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1124,6 +1129,7 @@ delete_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void undo_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 undo_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1235,6 +1241,7 @@ store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 }
 
 
+void store_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 store_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1280,6 +1287,7 @@ recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
 }
 
 
+void recall_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 recall_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1320,6 +1328,7 @@ recall_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void shift_left_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 shift_left_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1363,6 +1372,7 @@ shift_left_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void shift_right_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 shift_right_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1413,6 +1423,7 @@ insert_function_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void function_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 function_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1459,6 +1470,7 @@ function_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void factorize_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 factorize_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1467,6 +1479,7 @@ factorize_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void digit_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 digit_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1475,6 +1488,7 @@ digit_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void numeric_point_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 numeric_point_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1484,6 +1498,7 @@ numeric_point_cb(GtkWidget *widget, MathButtons *buttons)
 
 
 
+void finc_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 finc_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1496,6 +1511,7 @@ finc_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void insert_character_code_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 insert_character_code_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1504,6 +1520,7 @@ insert_character_code_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void finc_activate_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 finc_activate_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1530,6 +1547,7 @@ finc_activate_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
@@ -1558,6 +1576,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
 }
 
 
+void character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButtons *buttons)
@@ -1588,6 +1607,7 @@ character_code_dialog_response_cb(GtkWidget *dialog, gint response_id, MathButto
 }
 
 
+void character_code_dialog_activate_cb(GtkWidget *entry, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 character_code_dialog_activate_cb(GtkWidget *entry, MathButtons *buttons)
@@ -1596,6 +1616,7 @@ character_code_dialog_activate_cb(GtkWidget *entry, MathButtons *buttons)
 }
 
 
+gboolean character_code_dialog_delete_cb(GtkWidget *dialog, GdkEvent *event, MathButtons *buttons);
 G_MODULE_EXPORT
 gboolean
 character_code_dialog_delete_cb(GtkWidget *dialog, GdkEvent *event, MathButtons *buttons)
@@ -1605,6 +1626,7 @@ character_code_dialog_delete_cb(GtkWidget *dialog, GdkEvent *event, MathButtons 
 }
 
 
+gboolean bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons);
 G_MODULE_EXPORT
 gboolean
 bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons)
@@ -1615,6 +1637,7 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons)
 
 
 
+void set_superscript_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
@@ -1626,6 +1649,7 @@ set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
 }
 
 
+void set_subscript_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
 set_subscript_cb(GtkWidget *widget, MathButtons *buttons)

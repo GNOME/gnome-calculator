@@ -19,6 +19,6 @@
 #ifndef UNITTEST_H
 #define UNITTEST_H
 
-void unittest();
+void unittest(void);
 
 #endif /* UNITTEST_H */

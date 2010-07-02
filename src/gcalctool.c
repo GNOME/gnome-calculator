@@ -115,7 +115,7 @@ usage(const gchar *progname, gboolean show_application, gboolean show_gtk)
 }
 
 
-void
+static void
 get_options(int argc, char *argv[])
 {
     int i;

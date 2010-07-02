@@ -55,8 +55,8 @@ typedef enum {
     SUBSCRIPT
 } NumberMode;
 
-GType math_equation_get_type();
-MathEquation *math_equation_new();
+GType math_equation_get_type(void);
+MathEquation *math_equation_new(void);
 
 MathVariables *math_equation_get_variables(MathEquation *equation);
 

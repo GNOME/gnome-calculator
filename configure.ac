@@ -13,7 +13,7 @@ AM_PROG_CC_STDC
 AC_HEADER_STDC
 
 GLIB_GSETTINGS
-GNOME_COMPILE_WARNINGS(yes)
+GNOME_COMPILE_WARNINGS(maximum)
 
 dnl ###########################################################################
 dnl Dependencies

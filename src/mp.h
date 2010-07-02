@@ -74,10 +74,10 @@ typedef enum
 
 /* Returns error string or NULL if no error */
 // FIXME: Global variable
-const char *mp_get_error();
+const char *mp_get_error(void);
 
 /* Clear any current error */
-void mp_clear_error();
+void mp_clear_error(void);
 
 /* Returns:
  *  0 if x == y

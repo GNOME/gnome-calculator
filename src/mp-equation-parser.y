@@ -44,7 +44,7 @@ static void set_result(yyscan_t yyscanner, const MPNumber *x)
     mp_set_from_mp(x, &(_mp_equation_get_extra(yyscanner))->ret);
 }
 
-char *
+static char *
 utf8_next_char (const char *c)
 {
     c++;

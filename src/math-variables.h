@@ -39,7 +39,9 @@ typedef struct
     GObjectClass parent_class;
 } MathVariablesClass;
 
-MathVariables *math_variables_new();
+GType math_variables_get_type(void);
+
+MathVariables *math_variables_new(void);
 
 gchar **math_variables_get_names(MathVariables *variables);
 

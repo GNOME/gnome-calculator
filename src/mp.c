@@ -1767,7 +1767,7 @@ mp_reciprocal(const MPNumber *x, MPNumber *z)
 }
 
 
-void
+static void
 mp_root_real(const MPNumber *x, int64_t n, MPNumber *z)
 {
     float approximation;

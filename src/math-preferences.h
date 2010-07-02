@@ -40,7 +40,7 @@ typedef struct
     GtkDialogClass parent_class;
 } MathPreferencesDialogClass;
 
-GType math_preferences_get_type();
+GType math_preferences_get_type(void);
 
 MathPreferencesDialog *math_preferences_dialog_new(MathEquation *equation);
 

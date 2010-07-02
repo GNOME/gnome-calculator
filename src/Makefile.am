@@ -4,7 +4,8 @@ INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
-    -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
+	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
+	$(WARN_CFLAGS) \
 	$(GCALCTOOL_CFLAGS)
 
 gcalctool_SOURCES = \

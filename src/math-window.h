@@ -44,7 +44,7 @@ typedef struct
     void (*quit)(MathWindow *window);
 } MathWindowClass;
 
-GType math_window_get_type();
+GType math_window_get_type(void);
 
 MathWindow *math_window_new(MathEquation *equation);
 

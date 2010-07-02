@@ -61,6 +61,7 @@ preferences_dialog_delete_cb(GtkWidget *widget, GdkEvent *event)
 }
 
 
+void number_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 number_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
@@ -76,6 +77,7 @@ number_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialo
 }
 
 
+void angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
@@ -91,6 +93,7 @@ angle_unit_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 }
 
 
+void word_size_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 word_size_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
@@ -106,6 +109,7 @@ word_size_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 }
 
 
+void decimal_places_spin_change_value_cb(GtkWidget *spin, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 decimal_places_spin_change_value_cb(GtkWidget *spin, MathPreferencesDialog *dialog)
@@ -117,6 +121,7 @@ decimal_places_spin_change_value_cb(GtkWidget *spin, MathPreferencesDialog *dial
 }
 
 
+void thousands_separator_check_toggled_cb(GtkWidget *check, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 thousands_separator_check_toggled_cb(GtkWidget *check, MathPreferencesDialog *dialog)
@@ -128,6 +133,7 @@ thousands_separator_check_toggled_cb(GtkWidget *check, MathPreferencesDialog *di
 }
 
 
+void trailing_zeroes_check_toggled_cb(GtkWidget *check, MathPreferencesDialog *dialog);
 G_MODULE_EXPORT
 void
 trailing_zeroes_check_toggled_cb(GtkWidget *check, MathPreferencesDialog *dialog)
