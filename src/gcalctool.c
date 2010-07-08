@@ -193,6 +193,7 @@ quit_cb(MathWindow *window)
     g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
     g_settings_set_string(settings, "source-currency", math_equation_get_source_currency(equation));
     g_settings_set_string(settings, "target-currency", math_equation_get_target_currency(equation));
+    g_settings_sync();
 
     currency_free_resources();
     gtk_main_quit();
