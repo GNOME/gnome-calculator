@@ -29,10 +29,14 @@ enum {
 
 struct MathDisplayPrivate
 {
+    /* Equation being displayed */
     MathEquation *equation;
 
-    GtkWidget *display_item;           /* Calculator display. */
-    GtkTextBuffer *info_buffer;        /* Buffer used in info messages */
+    /* Display widget */
+    GtkWidget *text_view;
+
+    /* Buffer that shows errors etc */
+    GtkTextBuffer *info_buffer;
 };
 
 G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VBOX);
@@ -225,19 +229,9 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
 static gboolean
 key_press_cb(MathDisplay *display, GdkEventKey *event)
 {
-  gboolean result;
-  g_signal_emit_by_name(display->priv->display_item, "key-press-event", event, &result);
-  return result;
-}
-
-
-static gboolean
-button_release_cb(GtkWidget *widget, GdkEventButton *event, MathDisplay *display)
-{
-    if (event->button == 2)
-        math_equation_paste(display->priv->equation);
-
-    return FALSE;
+    gboolean result;
+    g_signal_emit_by_name(display->priv->text_view, "key-press-event", event, &result);
+    return result;
 }
 
 
@@ -256,25 +250,24 @@ create_gui(MathDisplay *display)
   
     g_signal_connect(display, "key-press-event", G_CALLBACK(key_press_cb), display);
 
-    display->priv->display_item = gtk_text_view_new_with_buffer(GTK_TEXT_BUFFER(display->priv->equation));
-    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(display->priv->display_item), GTK_WRAP_WORD);
-    gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(display->priv->display_item), FALSE);
-    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->display_item), 8);
-    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->display_item), 2);
+    display->priv->text_view = gtk_text_view_new_with_buffer(GTK_TEXT_BUFFER(display->priv->equation));
+    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(display->priv->text_view), GTK_WRAP_WORD);
+    gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(display->priv->text_view), FALSE);
+    gtk_text_view_set_pixels_above_lines(GTK_TEXT_VIEW(display->priv->text_view), 8);
+    gtk_text_view_set_pixels_below_lines(GTK_TEXT_VIEW(display->priv->text_view), 2);
     /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
-    /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->display_item), 6);*/
-    gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->display_item), GTK_JUSTIFY_RIGHT);
-    gtk_widget_ensure_style(display->priv->display_item);
-    font_desc = pango_font_description_copy(gtk_widget_get_style(display->priv->display_item)->font_desc);
+    /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(display->priv->text_view), 6);*/
+    gtk_text_view_set_justification(GTK_TEXT_VIEW(display->priv->text_view), GTK_JUSTIFY_RIGHT);
+    gtk_widget_ensure_style(display->priv->text_view);
+    font_desc = pango_font_description_copy(gtk_widget_get_style(display->priv->text_view)->font_desc);
     pango_font_description_set_size(font_desc, 16 * PANGO_SCALE);
-    gtk_widget_modify_font(display->priv->display_item, font_desc);
+    gtk_widget_modify_font(display->priv->text_view, font_desc);
     pango_font_description_free(font_desc);
-    gtk_widget_set_name(display->priv->display_item, "displayitem");
-    atk_object_set_role(gtk_widget_get_accessible(display->priv->display_item), ATK_ROLE_EDITBAR);
+    gtk_widget_set_name(display->priv->text_view, "displayitem");
+    atk_object_set_role(gtk_widget_get_accessible(display->priv->text_view), ATK_ROLE_EDITBAR);
   //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-    g_signal_connect(display->priv->display_item, "key-press-event", G_CALLBACK(display_key_press_cb), display);
-    g_signal_connect(display->priv->display_item, "button-release-event", G_CALLBACK(button_release_cb), display);
-    gtk_box_pack_start(GTK_BOX(display), display->priv->display_item, TRUE, TRUE, 0);
+    g_signal_connect(display->priv->text_view, "key-press-event", G_CALLBACK(display_key_press_cb), display);
+    gtk_box_pack_start(GTK_BOX(display), display->priv->text_view, TRUE, TRUE, 0);
   
     info_view = gtk_text_view_new();
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(info_view), GTK_WRAP_WORD);
@@ -288,7 +281,7 @@ create_gui(MathDisplay *display)
     display->priv->info_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(info_view));
 
     gtk_widget_show(info_view);
-    gtk_widget_show(display->priv->display_item);
+    gtk_widget_show(display->priv->text_view);
 
     g_signal_connect(display->priv->equation, "notify::status", G_CALLBACK(status_changed_cb), display);
     status_changed_cb(display->priv->equation, NULL, display);

@@ -100,11 +100,6 @@ struct MathEquationPrivate
     gboolean in_delete;
 
     MathVariables *variables;
-
-    // FIXME: Replace with GtkClipboard
-    GdkAtom clipboard_atom;   /* ??? */ // 
-    GdkAtom primary_atom;     /* ??? */ // FIXME: Is this middle click?
-    char *shelf;              /* PUT selection shelf contents. */
 };
 
 G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
@@ -460,6 +455,36 @@ apply_state(MathEquation *equation, MathEquationState *state)
 
 
 void
+math_equation_copy(MathEquation *equation)
+{
+    GtkTextIter start, end;
+    gchar *text;
+
+    if (!gtk_text_buffer_get_selection_bounds(GTK_TEXT_BUFFER(equation), &start, &end))
+        gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(equation), &start, &end);
+
+    text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &start, &end, FALSE);
+    gtk_clipboard_set_text(gtk_clipboard_get(GDK_NONE), text, -1);
+    g_free (text);
+}
+
+
+static void
+on_paste(GtkClipboard *clipboard, const gchar *text, gpointer data)
+{
+    MathEquation *equation = data;
+    math_equation_insert (equation, text);
+}
+
+
+void
+math_equation_paste(MathEquation *equation)
+{
+    gtk_clipboard_request_text(gtk_clipboard_get(GDK_NONE), on_paste, equation);
+}
+
+
+void
 math_equation_undo(MathEquation *equation)
 {
     GList *link;
@@ -520,6 +545,12 @@ const gchar *
 math_equation_get_numeric_point_text(MathEquation *equation)
 {
     return equation->priv->radix;
+}
+
+
+const gchar *math_equation_get_thousands_separator_text(MathEquation *equation)
+{
+    return equation->priv->tsep;
 }
 
 
@@ -802,99 +833,6 @@ const MPNumber *
 math_equation_get_answer(MathEquation *equation)
 {
     return &equation->priv->state.ans;
-}
-
-
-void
-math_equation_copy(MathEquation *equation)
-{
-    gchar *string = NULL;
-    GtkTextIter start, end;
-
-    if (!gtk_text_buffer_get_selection_bounds(GTK_TEXT_BUFFER(equation), &start, &end))
-        gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(equation), &start, &end);
-
-    string = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &start, &end, FALSE);
-
-    if (equation->priv->shelf != NULL)
-        g_free(equation->priv->shelf);
-    equation->priv->shelf = g_locale_from_utf8(string, strlen(string), NULL, NULL, NULL);
-
-    gtk_clipboard_set_text(gtk_clipboard_get(equation->priv->clipboard_atom), equation->priv->shelf, -1);
-
-    g_free(string);
-}
-
-
-static void
-on_paste(GtkClipboard *clipboard, const gchar *text, MathEquation *equation)
-{
-    const char *input;
-    char c, *output, *clean_text;
-  
-    /* Copy input to modify, no operation can make the clean string longer than
-     * the original string */
-    clean_text = strdup(text);
-
-    output = clean_text;
-    for (input = text; *input; input++) {
-        /* If the clipboard buffer contains any occurances of the "thousands
-         * separator", remove them.
-         */
-        if (equation->priv->tsep[0] != '\0' && strncmp(input, equation->priv->tsep, strlen(equation->priv->tsep)) == 0) {
-            input += strlen(equation->priv->tsep) - 1;
-            continue;
-        }
-
-        /* Replace radix with "." */
-        else if (strncmp(input, equation->priv->radix, strlen(equation->priv->radix)) == 0) {
-            input += strlen(equation->priv->radix) - 1;
-            c = '.';
-        }
-
-        /* Replace tabs with spaces */
-        else if (*input == '\t') {
-            c = ' ';
-        }
-
-        /* Terminate on newlines */
-        else if (*input == '\r' || *input == '\n') {
-            c = '\0';
-        }
-
-        /* If an "A", "B", "C", "D" or "F" character is encountered, it
-         * will be converted to its lowercase equivalent. If an "E" is
-         * found,  and the next character is a "-" or a "+", then it
-         * remains as an upper case "E" (it's assumed to be a possible
-         * exponential number), otherwise its converted to a lower case
-         * "e". See bugs #455889 and #469245 for more details.
-         */
-        else if (*input >= 'A' && *input <= 'F') {
-            c = *input;
-            if (*input == 'E') {
-                if (*(input+1) != '-' && *(input+1) != '+')
-                    c = tolower(*input);
-            }
-            else
-                c = tolower(*input);
-        }
-
-        else
-            c = *input;
-
-        *output++ = c;
-    }
-    *output++ = '\0';
-
-    math_equation_insert(equation, clean_text);
-}
-
-
-void
-math_equation_paste(MathEquation *equation)
-{
-    gtk_clipboard_request_text(gtk_clipboard_get(equation->priv->clipboard_atom),
-                               (GtkClipboardTextReceivedFunc)on_paste, equation);
 }
 
 
@@ -1746,10 +1684,6 @@ math_equation_init(MathEquation *equation)
     equation->priv->tsep_count = 3;
   
     equation->priv->variables = math_variables_new();
-
-    // Use GtkClipboad instead
-    equation->priv->primary_atom = gdk_atom_intern("PRIMARY", FALSE);
-    equation->priv->clipboard_atom = gdk_atom_intern("CLIPBOARD", FALSE);
 
     equation->priv->state.status = g_strdup("");
     equation->priv->show_zeroes = FALSE;

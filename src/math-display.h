@@ -42,8 +42,11 @@ typedef struct
 } MathDisplayClass;
 
 GType math_display_get_type(void);
+
 MathDisplay *math_display_new(void);
+
 MathDisplay *math_display_new_with_equation(MathEquation *equation);
+
 MathEquation *math_display_get_equation(MathDisplay *display);
 
 #endif /* MATH_DISPLAY_H */

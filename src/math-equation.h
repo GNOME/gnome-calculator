@@ -62,6 +62,7 @@ MathVariables *math_equation_get_variables(MathEquation *equation);
 
 const gchar *math_equation_get_digit_text(MathEquation *equation, guint digit);
 const gchar *math_equation_get_numeric_point_text(MathEquation *equation);
+const gchar *math_equation_get_thousands_separator_text(MathEquation *equation);
 
 void math_equation_set_status(MathEquation *equation, const gchar *status);
 const gchar *math_equation_get_status(MathEquation *equation);

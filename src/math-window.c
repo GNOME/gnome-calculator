@@ -105,14 +105,14 @@ math_window_critical_error(MathWindow *window, const gchar *title, const gchar *
 static void
 copy_cb(GtkWidget *widget, MathWindow *window)
 {
-    math_equation_copy(window->priv->equation);
+    math_equation_copy (window->priv->equation);  
 }
 
 
 static void
 paste_cb(GtkWidget *widget, MathWindow *window)
 {
-    math_equation_paste(window->priv->equation);
+    math_equation_paste (window->priv->equation);
 }
 
 
