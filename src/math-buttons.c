@@ -818,6 +818,8 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
         if (button_data[i].tooltip)
             gtk_widget_set_tooltip_text(button, _(button_data[i].tooltip));
+      
+        atk_object_set_name (gtk_widget_get_accessible (button), button_data[i].widget_name);
 
         switch (button_data[i].class) {
         case NUMBER:
