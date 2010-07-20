@@ -1,1829 +1,2540 @@
-# translation of sk.po to Slovak
-# Slovak translations for gcalctool package
-# Slovenské preklady pre balík gcalctool.
-# Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
+# Slovak translation for gcalctool.
+# Copyright (C) 2003, 2004, 2005, 2007, 2008, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # Peter Tuharsky <tuharsky@misbb.sk>, 2007.
 # Marcel Telka <marcel@telka.sk>, 2003, 2004, 2005, 2008.
+# Robert Hartl <hartl.robert@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 22:54+0200\n"
-"PO-Revision-Date: 2008-08-06 23:06+0200\n"
-"Last-Translator: Marcel Telka <marcel@telka.sk>\n"
-"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gcalctool&component=general\n"
+"POT-Creation-Date: 2010-07-18 17:21+0000\n"
+"PO-Revision-Date: 2010-07-19 23:14+0200\n"
+"Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-Country: SLOVAKIA\n"
 
-#: ../gcalctool/calctool.c:472
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Konštanta na prevod kilometrov na míle"
+#. The label on the memory recall button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#: ../data/buttons-programming.ui.h:2
+msgid "&#x2190; R"
+msgstr "&#x2190; R"
 
-#: ../gcalctool/calctool.c:474
-msgid "square root of 2"
-msgstr "druhá odmocnina z 2"
+#. The label on the memory store button
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:4
+#: ../data/buttons-programming.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
 
-#: ../gcalctool/calctool.c:475
-msgid "Euler's Number (e)"
-msgstr "Eulerova konštanta (e)"
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:6
+msgid "="
+msgstr "="
 
-#: ../gcalctool/calctool.c:476
-msgid "pi"
-msgstr "pí"
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-programming.ui.h:8
+msgid "Absolute Value"
+msgstr "Absolútna hodnota"
 
-#: ../gcalctool/calctool.c:477
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Konštanta na prevod centimetrov na palce"
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:32 ../data/buttons-programming.ui.h:12
+msgid "Clear"
+msgstr "Vymazať"
 
-#: ../gcalctool/calctool.c:479
-msgid "degrees in a radian"
-msgstr "stupňov v radiáne"
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:6
+#: ../data/buttons-financial.ui.h:42 ../data/buttons-programming.ui.h:14
+msgid "Exponent"
+msgstr "Mocnina"
 
-#: ../gcalctool/calctool.c:480
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:16
+msgid "Factorial"
+msgstr "Faktoriál"
 
-#: ../gcalctool/calctool.c:481
-msgid "Gram-to-ounce conversion factor"
-msgstr "Konštanta na prevod gramov na unce"
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-programming.ui.h:18
+msgid "Factorize"
+msgstr "Faktorizovať"
 
-#: ../gcalctool/calctool.c:483
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Konštanta na prevod kilojoulov na britské tepelné jednotky"
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:18 ../data/buttons-programming.ui.h:24
+msgid "Inverse"
+msgstr "Prevrátená hodnota"
 
-#: ../gcalctool/calctool.c:486
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Konštanta na prevod kubických centimetrov na kubické palce"
+#. Accessible name for the recall value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
+#: ../data/buttons-programming.ui.h:26
+msgid "Recall"
+msgstr "Vyvolať"
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:497 ../gcalctool/mp.c:1814
-#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
-msgid "Error"
-msgstr "Chyba"
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:22
+msgid "Scientific Exponent"
+msgstr "Vedecký exponent"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is an error message (see the last parameter in the
-#. * getparam() call in the get_options() routine below.
-#.
-#: ../gcalctool/calctool.c:514
-#, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s ako ďalší parameter.\n"
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:76
+#: ../data/buttons-programming.ui.h:32
+msgid "Store"
+msgstr "Uložiť"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is the program version number.
-#.
-#: ../gcalctool/calctool.c:527
-#, c-format
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:26 ../data/buttons-programming.ui.h:34
+msgid "Subscript"
+msgstr "Dolný index"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:28 ../data/buttons-programming.ui.h:36
+msgid "Superscript"
+msgstr "Horný index"
+
+#. Label on the undo button
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:8
+#: ../data/buttons-financial.ui.h:86
+msgid "Undo"
+msgstr "Späť"
+
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:8
+msgid "C_alculate"
+msgstr "_Vypočítať"
+
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:10
+msgid "C_ost:"
+msgstr "_Náklady:"
+
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:12
 msgid ""
-"%s version %s\n"
-"\n"
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
 msgstr ""
-"%s verzia %s\n"
-"\n"
+"Vypočíta výšku pravidelnej splátky pôžičky, kde sú platby uskutočňované na "
+"konci každého platobného obdobia"
 
-#: ../gcalctool/calctool.c:528
-#, c-format
-msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-msgstr "Použitie: %s: [-E] [-u] [-a presnosť] "
-
-#: ../gcalctool/calctool.c:529
-msgid "\t\t [-?] [-v] [-h]\n"
-msgstr "\t\t [-?] [-v] [-h]\n"
-
-#: ../gcalctool/calctool.c:550
-msgid "-a needs accuracy value"
-msgstr "-a potrebuje hodnotu presnosti"
-
-#: ../gcalctool/calctool.c:554 ../gcalctool/get.c:242
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: presnosť by mala byť v rozsahu 0-%d\n"
-
-#: ../gcalctool/display.c:322
-msgid "No undo history"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:14
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
 msgstr ""
+"Počíta amortizačnú čiastku majetku za dané časové obdobie metódou Sum-of-the-"
+"Years'-Digits (zrýchlené odpisovanie). Táto metóda odpisov zrýchľuje "
+"odpisovanie, takže v skoršom období sa odpisujú väčšie čiastky ako v "
+"neskoršom. Praktická životnosť je počet období, zvyčajne rokov, počas "
+"ktorých sa majetok odpisuje."
 
-#: ../gcalctool/display.c:336
-msgid "No redo steps"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:16
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
 msgstr ""
+"Počíta amortizačnú čiastku majetku za dané časové obdobie dvojitou odpisovou "
+"metóda s klesajúcim zostatkom."
 
-#: ../gcalctool/functions.c:135
-msgid "Malformed function"
-msgstr "Poškodená funkcia"
+#. Future Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:18
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Počíta budúcu hodnotu investície na základe postupnosti rovnakých splátok "
+"pri pravidelnom úročení počas niekoľkých platobných období."
 
-#: ../gcalctool/functions.c:145
-msgid "No sane value to do bitwise shift"
-msgstr "Nie je rozumná hodnota na bitový posun"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:20
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Počíta počet období, ktoré sú potrebné na navýšenie investície súčasnej "
+"hodnoty na budúcu hodnoty pri pevnom úročení za obdobie."
 
-#: ../gcalctool/functions.c:178 ../gcalctool/functions.c:227
-msgid "No sane value to convert"
-msgstr "Nie je rozumná hodnota na prevod"
+#. Payment Period Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:22
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Počíta počet splátkových období, ktoré sú potrebné počas ročného splátkového "
+"obdobia na navýšenie budúcej hodnoty pri pravidelnom úročení"
 
-#: ../gcalctool/functions.c:202 ../gcalctool/functions.c:244
-msgid "No sane value to store"
-msgstr "Nie je rozumná hodnota na uloženie"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:24
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Počíta pravidelné úročenie potrebné na navýšenie investície na budúcu "
+"hodnotu počas niekoľkých období."
 
-#: ../gcalctool/functions.c:401
-msgid "Invalid number for the current base"
-msgstr "Neplatné číslo pre aktuálnu sústavu"
+#. Present Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:26
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Počíta súčasnú hodnotu investície na základe rovnakých platieb "
+"odpočítavaných pravidelným úročením v danom počte splátok v danom období."
 
-#: ../gcalctool/functions.c:405
-msgid "Too long number"
-msgstr "Príliš dlhé číslo"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:28
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Počíta predajnú cenu výrobku na základe výrobných nákladov a požadovanej "
+"hrubej marže."
 
-#: ../gcalctool/functions.c:409
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "Neplatné parametre bitovej operácie"
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:30
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Počíta rovnomerné odpisy majetku za jedno obdobie. Rovnomerná metóda "
+"odpisovania delí odpisovateľné náklady rovnomerne počas praktickej "
+"životnosti majetku. Praktická životnosť je počet období, zvyčajne rokov, "
+"počas ktorých sa majetok odpisuje."
 
-#: ../gcalctool/functions.c:413
-msgid "Invalid modulus operation parameter(s)"
-msgstr "Neplatné parametre operácie modula"
+#. Title of Compounding Term dialog
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:34 ../src/math-buttons.c:261
+msgid "Compounding Term"
+msgstr "Doba úročenia"
 
-#: ../gcalctool/functions.c:417
-msgid "Math operation error"
-msgstr "Chyba matematickej operácie"
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:36
+msgid "Ctrm"
+msgstr "Ctrm"
 
-#: ../gcalctool/functions.c:421
-msgid "Malformed expression"
-msgstr "Poškodený výraz"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:38
+msgid "Ddb"
+msgstr "Ddb"
 
-#: ../gcalctool/get.c:263
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s: základ by mal byť 2, 8, 10 alebo 16\n"
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:40
+msgid "Double-Declining Depreciation"
+msgstr "Dvojitá odpisová metóda s klesajúcim zostatkom (DDB)"
 
-#: ../gcalctool/get.c:278
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: neplatný zobrazovací režim [%s]\n"
+#. Title of Future Value dialog
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:44 ../src/math-buttons.c:267
+msgid "Future Value"
+msgstr "Budúca hodnota"
 
-#: ../gcalctool/get.c:293
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: neplatný režim [%s]\n"
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:46
+msgid "Future _Value:"
+msgstr "Budúca _hodnota:"
 
-#: ../gcalctool/get.c:307
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: neplatný trigonometrický režim [%s]\n"
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:48
+msgid "Fv"
+msgstr "Fv"
 
-#: ../gcalctool/gtk.c:54 ../gcalctool.desktop.in.h:1
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:50
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:288
+msgid "Gross Profit Margin"
+msgstr "Hrubá marža"
+
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:54
+msgid "Payment Period"
+msgstr "Platobné obdobie"
+
+#. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
+msgid "Periodic Interest Rate"
+msgstr "Úroková sadzba za obdobie"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:58
+msgid "Periodic Interest _Rate:"
+msgstr "Úroková _sadzba za obdobie:"
+
+#. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
+msgid "Periodic Payment"
+msgstr "Pravidelná spátka"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:62
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Title of Present Value dialog
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
+msgid "Present Value"
+msgstr "Súčasná hodnota"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:66
+msgid "Present _Value:"
+msgstr "Súčasná _hodnota:"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:68
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:70
+msgid "Rate"
+msgstr "Rate"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:74
+msgid "Sln"
+msgstr "Sln"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:78
+msgid "Straight-Line Depreciation"
+msgstr "Lineárna amortizácia"
+
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:80
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "Amortizácia po súčtoch číslic rokov"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:82
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:84
+msgid "Term"
+msgstr "Term"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Cost:"
+msgstr "_Náklady:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Future Value:"
+msgstr "_Budúca hodnota:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Life:"
+msgstr "Ži_votnosť:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:94
+msgid "_Margin:"
+msgstr "_Marža:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Number of Periods:"
+msgstr "_Počet období:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:98
+msgid "_Period:"
+msgstr "_Obdobie:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:100
+msgid "_Periodic Payment:"
+msgstr "_Pravidelná splátka:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:102
+msgid "_Principal:"
+msgstr "_Pôžička"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:104
+msgid "_Salvage:"
+msgstr "_Zostatok:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:106
+msgid "_Term:"
+msgstr "_Obdobie:"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:10
+msgid "Ch_aracter:"
+msgstr "_Znak:"
+
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:20
+msgid "Insert Character"
+msgstr "Vložiť znak"
+
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
+msgid "Insert Character Code"
+msgstr "Vložiť kód znaku"
+
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:255
+msgid "Shift Left"
+msgstr "Posun vľavo"
+
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:30 ../src/math-buttons.c:258
+msgid "Shift Right"
+msgstr "Posun vpravo"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/buttons-programming.ui.h:38
+msgid "_Insert"
+msgstr "_Vložiť"
+
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16 bitov"
+
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32 bitov"
+
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64 bitov"
+
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8 bitov"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "_Formát čísla:"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
+msgid "Preferences"
+msgstr "Predvoľby"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "Zobraziť oddeľovač _tisícov"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "Zobraziť koncové _nuly"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "Dĺžka _slova:"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "_Uhlové jednotky:"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:521
 msgid "Calculator"
 msgstr "Kalkulačka"
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Advanced"
-msgstr "Kalkulačka - Rozšírená"
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Vykonávanie aritmetických, vedeckých alebo finančných výpočtov"
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Financial"
-msgstr "Kalkulačka - Finančná"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+msgid "Accuracy value"
+msgstr "Hodnota presnosti"
 
-#: ../gcalctool/gtk.c:55
-msgid "Calculator - Scientific"
-msgstr "Kalkulačka - Vedecká"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "Uhlové jednotky:"
 
-#: ../gcalctool/gtk.c:60
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
+msgstr ""
+"Udáva, či sa u zobrazenej hodnoty majú vypisovať koncové nuly za desatinnou "
+"čiarkou"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Udáva, či sa u veľkých čísiel majú zobrazovať oddeľovače tisícov."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "Formát čísla"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+msgid "Numeric Base"
+msgstr "Číselná sústava"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+msgid "Show Thousands Separators"
+msgstr "Zobraziť oddeľovač tisícov"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+msgid "Show Trailing Zeroes"
+msgstr "Zobraziť koncové nuly"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Target currency"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "The button mode"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The format to display numbers in"
+msgstr ""
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The number of digits displayed after the numeric point"
+msgstr "Počet číslic zobrazených za desatinnou čiarkou"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The numeric base"
+msgstr "Číselná sústava"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The size of the words used in bitwise operations"
+msgstr "Veľkosť slov použitých pri bitových operáciách"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+msgid "Word size"
+msgstr "Veľkosť slova"
+
+#: ../src/currency.h:19
+msgid "Australian dollar"
+msgstr "Australský dolár"
+
+#: ../src/currency.h:20
+msgid "Bulgarian lev"
+msgstr "Bulharský lev"
+
+#: ../src/currency.h:21
+msgid "Brazilian real"
+msgstr "Brazílsky reál"
+
+#: ../src/currency.h:22
+msgid "Canadian dollar"
+msgstr "Kanadský dolár"
+
+#: ../src/currency.h:23
+msgid "Swiss franc"
+msgstr "Švajčiarsky frank"
+
+#: ../src/currency.h:24
+msgid "Chinese yuan renminbi"
+msgstr "Čínsky jüan"
+
+#: ../src/currency.h:25
+msgid "Czech koruna"
+msgstr "Česká koruna"
+
+#: ../src/currency.h:26
+msgid "Danish krone"
+msgstr "Dánska koruna"
+
+#: ../src/currency.h:27
+msgid "Estonian kroon"
+msgstr "Estónska koruna"
+
+#: ../src/currency.h:28
+msgid "Euro"
+msgstr "Euro"
+
+#: ../src/currency.h:29
+msgid "Pound sterling"
+msgstr "Britská libra"
+
+#: ../src/currency.h:30
+msgid "Hong Kong dollar"
+msgstr "Hongkongský dolár"
+
+#: ../src/currency.h:31
+msgid "Croatian kuna"
+msgstr "Chorvátska kuna"
+
+#: ../src/currency.h:32
+msgid "Hungarian forint"
+msgstr "Maďarský forint"
+
+#: ../src/currency.h:33
+msgid "Indonesian rupiah"
+msgstr "Indonézska rupia"
+
+#: ../src/currency.h:34
+msgid "Indian rupee"
+msgstr "Indická rupia"
+
+#: ../src/currency.h:35
+msgid "Icelandic krona"
+msgstr "Islandská koruna"
+
+#: ../src/currency.h:36
+msgid "Japanese yen"
+msgstr "Japonský jen"
+
+#: ../src/currency.h:37
+msgid "South Korean won"
+msgstr "Juhokórejský won"
+
+#: ../src/currency.h:38
+msgid "Lithuanian litas"
+msgstr "Litovský litas"
+
+#: ../src/currency.h:39
+msgid "Latvian lats"
+msgstr "Lotyšský lat"
+
+#: ../src/currency.h:40
+msgid "Mexican peso"
+msgstr "Mexické peso"
+
+#: ../src/currency.h:41
+msgid "Malaysian ringgit"
+msgstr "Malajský ringgit"
+
+#: ../src/currency.h:42
+msgid "Norwegian krone"
+msgstr "Nórska koruna"
+
+#: ../src/currency.h:43
+msgid "New Zealand dollar"
+msgstr "Novozélandský dolár"
+
+#: ../src/currency.h:44
+msgid "Philippine peso"
+msgstr "Filipínske peso"
+
+#: ../src/currency.h:45
+msgid "Polish zloty"
+msgstr "Poľský zloty"
+
+#: ../src/currency.h:46
+msgid "New Romanian leu"
+msgstr "Nové rumunské leu"
+
+#: ../src/currency.h:47
+msgid "Russian rouble"
+msgstr "Ruský rubeľ"
+
+#: ../src/currency.h:48
+msgid "Swedish krona"
+msgstr "Švédska koruna"
+
+#: ../src/currency.h:49
+msgid "Singapore dollar"
+msgstr "Singapurský dolár"
+
+#: ../src/currency.h:50
+msgid "Thai baht"
+msgstr "Thajský baht"
+
+#: ../src/currency.h:51
+msgid "New Turkish lira"
+msgstr "Nová turecká líra"
+
+#: ../src/currency.h:52
+msgid "US dollar"
+msgstr "Americký dolár"
+
+#: ../src/currency.h:53
+msgid "South African rand"
+msgstr "Juhoafrický rand"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/gcalctool.c:76
 #, c-format
-msgid "Calculator [%s]"
-msgstr "Kalkulačka [%s]"
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+msgstr ""
+"Použitie:\n"
+"  %s - Vykonať matematické výpočty"
 
-#: ../gcalctool/gtk.c:60
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/gcalctool.c:84
 #, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Kalkulačka [%s] - Rozšírená"
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Možnosti pomocníka:\n"
+"  -v, --version                   Zobrazí verziu vydania\n"
+"  -h, -?, --help                  Zobrazí možnosti pomocníka \n"
+"  --help-all                      Zobrazí všetky možnosti pomocníka\n"
+"  --help-gtk                      Zobrazí možnosti GTK+"
 
-#: ../gcalctool/gtk.c:60
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/gcalctool.c:95
 #, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Kalkulačka [%s] - Finančná"
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"Možnosti GTK+:\n"
+"  --class=TRIEDA                  Trieda programu, ako je použitá v "
+"správcovi okien\n"
+"  --name=NÁZOV                    Názov programu, ako je použitý v správcovi "
+"okien\n"
+"  --screen=OBRAZOVKA              Obrazovka X, ktorá sa má použiť\n"
+"  --sync                          Volania X budú synchrónne\n"
+"  --gtk-module=MODULY             Načíta prídavné moduly GTK+\n"
+"  --g-fatal-warnings              Všetky varovania budú kritické"
 
-#: ../gcalctool/gtk.c:61
+#. Description on gcalctool application options displayed on command-line
+#: ../src/gcalctool.c:109
 #, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Kalkulačka [%s] - Vedecká"
+msgid ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unit tests\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Možnosti aplikácie:\n"
+"  -u, --unittest                  Vykoná test jednotky\n"
+"  -s, --solve <rovnica>           Vyrieši zadanú rovnicu"
 
-#: ../gcalctool/gtk.c:495 ../glade/gcalctool.glade.h:385
-#, no-c-format
-msgid "_Other (%d) ..."
-msgstr "_Ostatné (%d) ..."
-
-#: ../gcalctool/gtk.c:499
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/gcalctool.c:154
 #, c-format
-msgid "Set accuracy from 0 to %d numeric place."
-msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Nastaviť presnosť od 0 do %d miest."
-msgstr[1] "Nastaviť presnosť od 0 do %d miesta."
-msgstr[2] "Nastaviť presnosť od 0 do %d miest."
+msgid "Argument --solve requires an equation to solve"
+msgstr "Parameter --solve vyžaduje rovnicu, ktorá sa má vyriešiť"
 
-#. Translators: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:505
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/gcalctool.c:168
 #, c-format
-msgid "Currently set to %d place."
-msgid_plural "Currently set to %d places."
-msgstr[0] "Momentálne nastavené na %d miest."
-msgstr[1] "Momentálne nastavené na %d miesto."
-msgstr[2] "Momentálne nastavené na %d miesta."
+msgid "Unknown argument '%s'"
+msgstr "Neznámy parameter \"%s\""
 
-#. Factorial
-#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
-msgid "Sin"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:106
+msgid "Pi [Ctrl+P]"
+msgstr "Ludolfovo číslo Pí [Ctrl+P]"
+
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:109
+msgid "Euler’s Number"
+msgstr "Eulerovo číslo"
+
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:114
+msgid "Subscript mode [Alt]"
+msgstr "Režim dolného indexu [Alt]"
+
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:117
+msgid "Superscript mode [Ctrl]"
+msgstr "Režim horného indexu [Ctrl]"
+
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:120
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Vedecký exponent [Ctrl+E]"
+
+#. Tooltip for the add button
+#: ../src/math-buttons.c:123
+msgid "Add [+]"
+msgstr "Sčítanie [+]"
+
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:126
+msgid "Subtract [-]"
+msgstr "Odčítanie [-]"
+
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:129
+msgid "Multiply [*]"
+msgstr "Násobenie [*]"
+
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:132
+msgid "Divide [/]"
+msgstr "Delenie [/]"
+
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:135
+msgid "Modulus divide"
+msgstr "Zvyšok po delení"
+
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:138
+msgid "Additional Functions"
+msgstr "Ďalšie funkcie"
+
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:141
+msgid "Exponent [^ or **]"
+msgstr "Mocnina [^ alebo **]"
+
+#. Tooltip for the square button
+#: ../src/math-buttons.c:144
+msgid "Square [Ctrl+2]"
+msgstr "Druhá mocnina [Ctrl+2]"
+
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:147
+msgid "Percentage [%]"
+msgstr "Percentá [%]"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:150
+msgid "Factorial [!]"
+msgstr "Faktoriál [!]"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:153
+msgid "Absolute value [|]"
+msgstr "Absolútna hodnota [|]"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:156
+msgid "Complex argument"
+msgstr ""
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:159
+msgid "Complex conjugate"
+msgstr ""
+
+#. Tooltip for the root button
+#: ../src/math-buttons.c:162
+#, fuzzy
+#| msgid "Root [Ctrl+S]"
+msgid "Root [Ctrl+R]"
+msgstr "Druhá odmocnina [Ctrl+S]"
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:165
+msgid "Square root [Ctrl+R]"
+msgstr "Druhá odmocnina [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:168
+msgid "Logarithm"
+msgstr "Logaritmus"
+
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:171
+msgid "Natural Logarithm"
+msgstr "Prirodzený logaritmus"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:174
+msgid "Sine"
+msgstr "Sínus"
+
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:177
+msgid "Cosine"
+msgstr "Kosínus"
+
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:180
+msgid "Tangent"
+msgstr "Tangens"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:183
+msgid "Hyperbolic Sine"
+msgstr ""
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:186
+msgid "Hyperbolic Cosine"
+msgstr ""
+
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:189
+msgid "Hyperbolic Tangent"
+msgstr ""
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:192
+msgid "Inverse [Ctrl+I]"
+msgstr "Prevrátená hodnota [Ctrl+I]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:195
+msgid "Boolean AND"
+msgstr "Logický súčin AND"
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:198
+msgid "Boolean OR"
+msgstr "Logický súčet OR"
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:201
+msgid "Boolean Exclusive OR"
+msgstr "Exkluzívny logický súčet XOR"
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:204
+msgid "Boolean NOT"
+msgstr "Logická negácia NOT"
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1440
+msgid "Integer Component"
+msgstr "Celočíselná časť"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1442
+msgid "Fractional Component"
+msgstr "Desatinná časť"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:213
+msgid "Real Component"
+msgstr ""
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:216
+msgid "Imaginary Component"
+msgstr ""
+
+#. Tooltip for the ones complement button
+#: ../src/math-buttons.c:219
+msgid "Ones Complement"
+msgstr "Jednotkový doplnok"
+
+#. Tooltip for the twos complement button
+#: ../src/math-buttons.c:222
+msgid "Twos Complement"
+msgstr "Dvojkový doplnok"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:225
+msgid "Truncate"
+msgstr "Orezať"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:228
+msgid "Start Group [(]"
+msgstr "Začiatok skupiny [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:231
+msgid "End Group [)]"
+msgstr "Koniec skupiny [)]"
+
+#. Tooltip for the assign variable button
+#: ../src/math-buttons.c:234
+#, fuzzy
+#| msgid "Answer variable"
+msgid "Assign Variable"
+msgstr "Odpovedajúca premenná"
+
+#. Tooltip for the insert variable button
+#: ../src/math-buttons.c:237
+#, fuzzy
+#| msgid "Answer variable"
+msgid "Insert Variable"
+msgstr "Odpovedajúca premenná"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:243
+msgid "Calculate Result"
+msgstr "Vypočítať výsledok"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:246
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktorizovať [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:249
+msgid "Clear Display [Escape]"
+msgstr "Zmazať displej [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:252
+#, fuzzy
+#| msgid "Root [Ctrl+S]"
+msgid "Undo [Ctrl+Z]"
+msgstr "Druhá odmocnina [Ctrl+S]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:264
+msgid "Double Declining Depreciation"
+msgstr "Dvojitá odpisová metóda s klesajúcim zostatkom (DDB)"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:270
+#, fuzzy
+#| msgid "Financial"
+msgid "Financial Term"
+msgstr "Finančná"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:273
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Amortizácia po súčtoch číslic rokov"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:276
+msgid "Straight Line Depreciation"
+msgstr "Lineárna amortizácia"
+
+#. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../src/math-buttons.c:890 ../src/math-preferences.c:255
+msgid "Degrees"
+msgstr "Stupne"
+
+#. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-buttons.c:894 ../src/math-preferences.c:259
+msgid "Radians"
+msgstr "Radiány"
+
+#. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-buttons.c:898 ../src/math-preferences.c:263
+msgid "Gradians"
+msgstr "Gradiány"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:932
+msgid "Binary"
+msgstr "Dvojkový"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:936
+msgid "Octal"
+msgstr "Osmičkový"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:940
+msgid "Decimal"
+msgstr "Desiatkový"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:944
+msgid "Hexadecimal"
+msgstr "Šestnástkový"
+
+#. Text shown in store menu when no variables defined
+#. Text shown in recall menu when no variables defined
+#: ../src/math-buttons.c:1261 ../src/math-buttons.c:1307
+msgid "No variables defined"
+msgstr ""
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:1350 ../src/math-buttons.c:1394
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "o _%d miest"
+msgstr[1] "o _%d miesto"
+msgstr[2] "o _%d miesta"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:1354 ../src/math-buttons.c:1398
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "o %d miest"
+msgstr[1] "o %d miesto"
+msgstr[2] "o %d miesta"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1444
+#, fuzzy
+#| msgid "Rand"
+msgid "Round"
+msgstr "Rand"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1446
+msgid "Floor"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1448
+msgid "Ceiling"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1450
+#, fuzzy
+#| msgid "Sin"
+msgid "Sign"
 msgstr "sin"
 
-#: ../gcalctool/gtk.c:537
-msgid "Sinh"
-msgstr "sinh"
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:496
+msgid "No undo history"
+msgstr "Žiadna história spätných zmien"
 
-#: ../gcalctool/gtk.c:538
-msgid "Sin<sup>-1</sup>"
-msgstr "sin<sup>-1</sup>"
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:521
+msgid "No redo history"
+msgstr "Žiadna história dopredných zmien"
 
-#: ../gcalctool/gtk.c:539
-msgid "Sinh<sup>-1</sup>"
-msgstr "sinh<sup>-1</sup>"
+#: ../src/math-equation.c:845
+msgid "No sane value to store"
+msgstr "Nie je rozumná hodnota na uloženie"
 
-#. Factorial
-#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
-msgid "Cos"
-msgstr "cos"
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1105
+msgid "Overflow. Try a bigger word size"
+msgstr "Pretečenie. Skúste väčšiu veľkosť slova"
 
-#: ../gcalctool/gtk.c:541
-msgid "Cosh"
-msgstr "cosh"
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1110
+#, c-format
+msgid "Unknown variable '%s'"
+msgstr "Neznáma premenná '%s'"
 
-#: ../gcalctool/gtk.c:542
-msgid "Cos<sup>-1</sup>"
-msgstr "cos<sup>-1</sup>"
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1115
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "Funkcia '%s' nie je definovaná"
 
-#: ../gcalctool/gtk.c:543
-msgid "Cosh<sup>-1</sup>"
-msgstr "cosh<sup>-1</sup>"
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1120
+msgid "Unknown conversion"
+msgstr "Neznámy prevod"
 
-#. Factorial
-#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
-msgid "Tan"
-msgstr "tg"
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1129
+msgid "Malformed expression"
+msgstr "Nesprávny výraz"
 
-#: ../gcalctool/gtk.c:545
-msgid "Tanh"
-msgstr "tgh"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1152
+msgid "Need an integer to factorize"
+msgstr "Pre rozklad na súčin prvočísel je potrebné celé číslo"
 
-#: ../gcalctool/gtk.c:546
-msgid "Tan<sup>-1</sup>"
-msgstr "tg<sup>-1</sup>"
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1229
+msgid "No sane value to bitwise shift"
+msgstr "Nezmyselná hodnota pre bitový posun"
 
-#: ../gcalctool/gtk.c:547
-msgid "Tanh<sup>-1</sup>"
-msgstr "tgh<sup>-1</sup>"
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1258
+msgid "Displayed value not an integer"
+msgstr ""
 
-#. Translators: When the bit editor is visible, there will be two
-#. * rows of ones and zeroes shown. When the number being displayed in
-#. * in the calculator is an integer value, these ones and zeroes will
-#. * be sensitive, and they will correspond to the value of each of
-#. * the bits in the displayed integer number. By clicking on any of
-#. * the labels for these ones and zeroes, their value can be toggled
-#. * (a one becomes a zero and a zero becomes a one), causing the
-#. * displayed integer value to be adjusted accordingly.
-#.
-#: ../gcalctool/gtk.c:643
-msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr "Bitový editor aktivovaný. Kliknutím na hodnoty bitov im zmeníte hodnotu."
+#. Digits localized for the given language
+#: ../src/math-equation.c:1648
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
-#: ../gcalctool/gtk.c:1069
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:245
+#, fuzzy
+#| msgid "_Cost:"
+msgid "_Close"
+msgstr "_Náklady:"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:273
+#, fuzzy
+#| msgid "_Fix"
+msgid "Fixed"
+msgstr "_Fix"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:277
+msgid "Scientific"
+msgstr "Vedecký"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:281
+msgid "Engineering"
+msgstr "Inžiniersky"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:292
+#, c-format
+msgid "Show %d decimal _places"
+msgstr ""
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:170
+msgid "Unable to open help file"
+msgstr "Nie je možné otvoriť súbor s pomocníkom"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:201
 msgid "translator-credits"
 msgstr ""
 "Marcel Telka <marcel@telka.sk>\n"
-"Peter Tuhársky <tuharsky@misbb.sk>"
+"Peter Tuhársky <tuharsky@misbb.sk>\n"
+"Robert Hartl <hartl.robert@gmail.com>"
 
-#: ../gcalctool/gtk.c:1072
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:204
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-"Gkalkulačka je slobodný softvér. Môžete ho šíriť a/alebo modifikovať podľa\n"
-"ustanovení Všeobecnej verejnej licencie GNU, vydanej nadáciou Free Software\n"
-"Foundation a to buď verzie 2 tejto licencie, alebo (podľa vášho uváženia)\n"
-"kterejkoľvek neskoršej verzie.\n"
-
-#: ../gcalctool/gtk.c:1076
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-"Gkalkulačka je rozširovaný v nádeji, že bude užitočný, avšak BEZ AKEJKOĽVEK\n"
-"ZÁRUKY. Neposkytujú sa ani odvodené záruky PREDAJNOSTI alebo VHODNOSTI PRE\n"
-"URČITÝ ÚČEL. Ďalšie podrobnosti hľadajte vo Všeobecnej verejnej licencii\n"
-"GNU.\n"
-
-#: ../gcalctool/gtk.c:1080
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"Kópiu Všeobecnej verejnej licencie GNU ste mali dostať spolu s "
-"Gkalkulačkou.\n"
-"Ak sa tak nestalo, napíšte na adresu Free Software Foundation, Inc.,\n"
-"51Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+"Gcalctool je slobodný softvér; môžete ho šíriť a upravovať podľa\n"
+"ustanovení GNU General Public License, vydávanej Free Software \n"
+"Foundation, a to buď vo verzii 2 tejto licencie alebo (podľa vlastného\n"
+"uváženia) v akejkoľvek neskoršej verzii.\n"
+"\n"
+"Tento program je šírený v nádeji, že bude užitočný, avšak BEZ\n"
+"AKEJKOĽVEK ZÁRUKY; neposkytujú sa ani odvodené záruky PREDAJNOSTI\n"
+"alebo VHODNOSTI PRE URČITÝ ÚČEL. Ďalšie podrobnosti hľadajte v GNU\n"
+"General Public License.\n"
+"\n"
+"Kópiu GNU General Public License by ste mali obdržať spolu s týmto\n"
+"programom. Ak sa tak nestalo, napíšte si o ňu Free Software Foundation,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
-#: ../gcalctool/gtk.c:1091
+#. Program name in the about dialog
+#: ../src/math-window.c:221
 msgid "Gcalctool"
-msgstr "Gkalkulačka"
+msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1093
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1987-2008 Autori Gkalkulačky"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:225
+msgid "© 1986–2008 The Gcalctool authors"
+msgstr "© 1986-2008 autori Gcalctool"
 
-#: ../gcalctool/gtk.c:1095
+#. Short description in the about dialog
+#: ../src/math-window.c:229
 msgid "Calculator with financial and scientific modes."
-msgstr "Kalkulčka s finančným a vedeckým režimom."
+msgstr "Kalkulačka s finančným a vedeckým režimom."
 
-#: ../gcalctool/gtk.c:1380 ../glade/gcalctool.glade.h:118
-msgid "C"
-msgstr "C"
-
-#: ../gcalctool/gtk.c:1398 ../glade/gcalctool.glade.h:169
-msgid "F"
-msgstr "F"
-
-#: ../gcalctool/gtk.c:1579
-msgid "Changing Modes Clears Calculation"
-msgstr "Zmena režimu vymaže výpočet"
-
-#: ../gcalctool/gtk.c:1582
-msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-"Keď zmeníte režim, aktuálny výpočet sa vymaže a sústava sa nastaví na "
-"desiatkovú."
-
-#: ../gcalctool/gtk.c:1586
-msgid "_Do not warn me again"
-msgstr "_Už neupozorňovať"
-
-#: ../gcalctool/gtk.c:1591
-msgid "C_hange Mode"
-msgstr "Z_meniť režim"
-
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1707
-msgid "R"
-msgstr "R"
-
-#: ../gcalctool/gtk.c:2127
-msgid "Paste"
-msgstr "Prilepiť"
-
-#: ../gcalctool/gtk.c:2381
-msgid "Error loading user interface"
-msgstr "Chyba pri načítavaní používateľského rozhrania"
-
-#: ../gcalctool/gtk.c:2383
-#, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"Súbor používateľského rozhrania %s chýba alebo ho nie je možné načítať. "
-"Prosím, skontrolujte vašu inštaláciu."
-
-#: ../gcalctool/gtk.c:2607 ../gcalctool/gtk.c:2625
-msgid "No."
-msgstr "Č."
-
-#: ../gcalctool/gtk.c:2609 ../gcalctool/gtk.c:2627
-msgid "Value"
-msgstr "Hodnota"
-
-#: ../gcalctool/gtk.c:2611 ../gcalctool/gtk.c:2629
-msgid "Description"
-msgstr "Popis"
-
-#. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2766 ../glade/gcalctool.glade.h:268
-#, no-c-format
-msgid "Reset to _Default (%d)"
-msgstr "Nastaviť na pre_dvolené (%d)"
-
-#: ../gcalctool/mp.c:3152
-msgid "Negative X and non-integer Y not supported"
-msgstr "Záporné X a neceločíselné Y nie sú podporované"
-
-#: ../gcalctool/mpmath.c:255
-msgid "Error, cannot calculate cosine"
-msgstr "Chyba, nepodarilo sa vypočítať kosínus"
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Vykonať aritmetické, vedecké alebo finančné výpočty"
-
-#. This is a percentage sign
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Left bracket
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#: ../glade/gcalctool.glade.h:12
-msgid "+"
-msgstr "+"
-
-#. Numeric point
-#: ../glade/gcalctool.glade.h:14
-msgid "."
-msgstr ","
-
-#. Numeric 0
-#: ../glade/gcalctool.glade.h:16
-msgid "0"
-msgstr "0"
-
-#. Numeric 1
-#: ../glade/gcalctool.glade.h:18
-msgid "1"
-msgstr "1"
-
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#: ../glade/gcalctool.glade.h:21
-msgid "10 places"
-msgstr "10 miest"
-
-#: ../glade/gcalctool.glade.h:22
-msgid "10 to the power of displayed value [}]"
-msgstr "10 umocnené na zobrazenú hodnotu [}]"
-
-#: ../glade/gcalctool.glade.h:23
-msgid "10 to the x"
-msgstr "10 na x"
-
-#. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:25
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#: ../glade/gcalctool.glade.h:26
-msgid "10x"
-msgstr "10x"
-
-#: ../glade/gcalctool.glade.h:27
-msgid "11 places"
-msgstr "11 miest"
-
-#: ../glade/gcalctool.glade.h:28
-msgid "12 places"
-msgstr "12 miest"
-
-#: ../glade/gcalctool.glade.h:29
-msgid "13 places"
-msgstr "13 miest"
-
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 miest"
-
-#: ../glade/gcalctool.glade.h:31
-msgid "15"
-msgstr "15"
-
-#: ../glade/gcalctool.glade.h:32
-msgid "15 places"
-msgstr "15 miest"
-
-#: ../glade/gcalctool.glade.h:33
-msgid "16 bit unsigned integer"
-msgstr "16-bitové celé číslo bez znamienka"
-
-#: ../glade/gcalctool.glade.h:34
-msgid "16-bit unsigned integer value of display (])"
-msgstr "16-bitové celé číslo bez znamienka zo zobrazenej hodnoty (])"
-
-#. Numeric 2
-#: ../glade/gcalctool.glade.h:36
-msgid "2"
-msgstr "2"
-
-#. Numeric 3
-#: ../glade/gcalctool.glade.h:38
-msgid "3"
-msgstr "3"
-
-#: ../glade/gcalctool.glade.h:39
-msgid "31"
-msgstr "31"
-
-#: ../glade/gcalctool.glade.h:40
-msgid "32"
-msgstr "32"
-
-#: ../glade/gcalctool.glade.h:41
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "32-bitové celé číslo bez znamienka zo zobrazenej hodnoty ([)"
-
-#. Numeric 4
-#: ../glade/gcalctool.glade.h:43
-msgid "4"
-msgstr "4"
-
-#: ../glade/gcalctool.glade.h:44
-msgid "47"
-msgstr "47"
-
-#. Numeric 5
-#: ../glade/gcalctool.glade.h:46
-msgid "5"
-msgstr "5"
-
-#. Numeric 6
-#: ../glade/gcalctool.glade.h:48
-msgid "6"
-msgstr "6"
-
-#: ../glade/gcalctool.glade.h:49
-msgid "63"
-msgstr "63"
-
-#. Numeric 7
-#: ../glade/gcalctool.glade.h:51
-msgid "7"
-msgstr "7"
-
-#. Numeric 8
-#: ../glade/gcalctool.glade.h:53
-msgid "8"
-msgstr "8"
-
-#. Numeric 9
-#: ../glade/gcalctool.glade.h:55
-msgid "9"
-msgstr "9"
-
-#. Shift left
-#: ../glade/gcalctool.glade.h:57
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:59
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x squared. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:61
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. X to the power of y. Note that this label uses mark up and the "y" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:63
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../glade/gcalctool.glade.h:64
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Poznámka:</b> Všetky konštantné hodnoty sú zadané v desiatkovej "
-"číselnej sústave.</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:66
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:68
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:70
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. This is the calculate result button (=)
-#: ../glade/gcalctool.glade.h:86
-msgid "="
-msgstr "="
-
-#. Shift right
-#: ../glade/gcalctool.glade.h:88
-msgid ">"
-msgstr ">"
-
-#: ../glade/gcalctool.glade.h:89
-msgid "A"
-msgstr "A"
-
-#: ../glade/gcalctool.glade.h:90
-msgid "AND"
-msgstr "AND"
-
-#. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:92
-msgid "Abs"
-msgstr "Abs"
-
-#: ../glade/gcalctool.glade.h:93
-msgid "Absolute value"
-msgstr "Absolútna hodnota"
-
-#: ../glade/gcalctool.glade.h:94
-msgid "Absolute value [u]"
-msgstr "Absolútna hodnota [u]"
-
-#. Accuracy
-#: ../glade/gcalctool.glade.h:96
-msgid "Acc"
-msgstr "Acc"
-
-#: ../glade/gcalctool.glade.h:97
-msgid "Accuracy"
-msgstr "Presnosť"
-
-#: ../glade/gcalctool.glade.h:98
-msgid "Add"
-msgstr "Súčet"
-
-#: ../glade/gcalctool.glade.h:99
-msgid "Add [+]"
-msgstr "Súčet [+]"
-
-#: ../glade/gcalctool.glade.h:100
-msgid "Advanced"
-msgstr "Rozšírená"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:102
-msgid "Backspace"
-msgstr "Vrátiť"
-
-#: ../glade/gcalctool.glade.h:103
-msgid "Base 10 log [G]"
-msgstr "Desiatkový logaritmus [G]"
-
-#: ../glade/gcalctool.glade.h:104
-msgid "Base 2 log [H]"
-msgstr "Binárny logaritmus [H]"
-
-#: ../glade/gcalctool.glade.h:105
-msgid "Basic"
-msgstr "Základná"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Bitwise AND"
-msgstr "Bitový súčin"
-
-#: ../glade/gcalctool.glade.h:107
-msgid "Bitwise AND [&]"
-msgstr "Bitový súčin [&]"
-
-#: ../glade/gcalctool.glade.h:108
-msgid "Bitwise NOT"
-msgstr "Bitová negácia"
-
-#: ../glade/gcalctool.glade.h:109
-msgid "Bitwise NOT [~]"
-msgstr "Bitová negácia [~]"
-
-#: ../glade/gcalctool.glade.h:110
-msgid "Bitwise OR"
-msgstr "Bitový súčet"
-
-#: ../glade/gcalctool.glade.h:111
-msgid "Bitwise OR [|]"
-msgstr "Bitový súčet [|]"
-
-#: ../glade/gcalctool.glade.h:112
-msgid "Bitwise XNOR"
-msgstr "Bitový exkluzívny negovaný súčet"
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Bitwise XNOR [n]"
-msgstr "Bitový exkluzívny negovaný súčet [n]"
-
-#: ../glade/gcalctool.glade.h:114
-msgid "Bitwise XOR"
-msgstr "Bitový exkluzívny súčet"
-
-#: ../glade/gcalctool.glade.h:115
-msgid "Bitwise XOR [x]"
-msgstr "Bitový exkluzívny súčet [x]"
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:117
-msgid "Bksp"
-msgstr "<-"
-
-#: ../glade/gcalctool.glade.h:119
-msgid "CE"
-msgstr "CE"
-
-#: ../glade/gcalctool.glade.h:120
-msgid "Calculate result"
-msgstr "Vypočítať výsledok"
-
-#: ../glade/gcalctool.glade.h:121
-msgid "Calculate result [=]"
-msgstr "Vypočítať výsledok [=]"
-
-#: ../glade/gcalctool.glade.h:122
-msgid "Ch_aracter:"
-msgstr "Zn_ak:"
-
-#: ../glade/gcalctool.glade.h:123
-msgid "Change Sign [C]"
-msgstr "Zmeniť znamienko [C]"
-
-#: ../glade/gcalctool.glade.h:124
-msgid "Change sign"
-msgstr "Zmeniť znamienko"
-
-#: ../glade/gcalctool.glade.h:125
-msgid "Clear"
-msgstr "Vymazať"
-
-#: ../glade/gcalctool.glade.h:126
-msgid "Clear displayed value [Escape]"
-msgstr "Vymazať zobrazenú hodnotu [Escape]"
-
-#: ../glade/gcalctool.glade.h:127
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Vymazať zobrazenú hodnotu a prípadný čiastočný výpočet [Shift Delete]"
-
-#: ../glade/gcalctool.glade.h:128
-msgid "Clear entry"
-msgstr "Vymazať položku"
-
-#: ../glade/gcalctool.glade.h:129
-msgid "Click a _value or description to edit it:"
-msgstr "Pre úpravu kliknite na _hodnotu alebo popis:"
-
-#. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:131
-msgid "Clr"
-msgstr "Clr"
-
-#: ../glade/gcalctool.glade.h:132
-msgid "Compounding term"
-msgstr "Zložený výraz"
-
-#: ../glade/gcalctool.glade.h:133
-msgid "Compounding term [m]"
-msgstr "Zložený výraz [m]"
-
-#: ../glade/gcalctool.glade.h:134
-msgid "Con"
-msgstr "Kon"
-
-#: ../glade/gcalctool.glade.h:135
-msgid "Constants"
-msgstr "Konštanty"
-
-#: ../glade/gcalctool.glade.h:136
-msgid "Constants [#]"
-msgstr "Konštanty [#]"
-
-#: ../glade/gcalctool.glade.h:137
-msgid "Copy selection"
-msgstr "Kopírovať výber"
-
-#: ../glade/gcalctool.glade.h:140
-msgid "Cosine [J]"
-msgstr "Kosínus [J]"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:144
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#: ../glade/gcalctool.glade.h:145
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:148
-msgid "Ddb"
-msgstr "Ddb"
-
-#: ../glade/gcalctool.glade.h:149
-msgid "De_grees"
-msgstr "_Stupne"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "Divide"
-msgstr "Delenie"
-
-#: ../glade/gcalctool.glade.h:151
-msgid "Divide [/]"
-msgstr "Delenie [/]"
-
-#: ../glade/gcalctool.glade.h:152
-msgid "Double-declining depreciation"
-msgstr "Dvojnásobne klesajúca amortizácia"
-
-#: ../glade/gcalctool.glade.h:153
-msgid "Double-declining depreciation [D]"
-msgstr "Dvojnásobne klesajúca amortizácia [D]"
-
-#: ../glade/gcalctool.glade.h:154
-msgid "E"
-msgstr "E"
-
-#: ../glade/gcalctool.glade.h:155
-msgid "E to the x"
-msgstr "E na x"
-
-#: ../glade/gcalctool.glade.h:156
-msgid "E_ng"
-msgstr "E_ng"
-
-#: ../glade/gcalctool.glade.h:157
-msgid "Edit Constants"
-msgstr "Upraviť konštanty"
-
-#: ../glade/gcalctool.glade.h:158
-msgid "Edit Constants..."
-msgstr "Upraviť konštanty..."
-
-#: ../glade/gcalctool.glade.h:159
-msgid "Edit Functions"
-msgstr "Upraviť funkcie"
-
-#: ../glade/gcalctool.glade.h:160
-msgid "Edit Functions..."
-msgstr "Upraviť funkcie..."
-
-#: ../glade/gcalctool.glade.h:161
-msgid "End group of calculations [)]"
-msgstr "Koniec skupiny výpočtov [)]"
-
-#: ../glade/gcalctool.glade.h:162
-msgid "Enter an exponential number [E]"
-msgstr "Zadať exponenciálne číslo [E]"
-
-#. Exchange with register
-#: ../glade/gcalctool.glade.h:164
-msgid "Exch"
-msgstr "Exch"
-
-#: ../glade/gcalctool.glade.h:165
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Vymeniť zobrazenú hodnotu s pamäťovým registrom [X]"
-
-#: ../glade/gcalctool.glade.h:166
-msgid "Exchange with register"
-msgstr "Vymeniť s registrom"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:168
-msgid "Exp"
-msgstr "Exp"
-
-#: ../glade/gcalctool.glade.h:170
-msgid "Factorial"
-msgstr "Faktoriál"
-
-#: ../glade/gcalctool.glade.h:171
-msgid "Factorial of displayed value [!]"
-msgstr "Faktoriál zobrazenej hodnoty [!]"
-
-#: ../glade/gcalctool.glade.h:172
-msgid "Financial"
-msgstr "Finančná"
-
-#. Fractional portion
-#: ../glade/gcalctool.glade.h:174
-msgid "Frac"
-msgstr "Frac"
-
-#: ../glade/gcalctool.glade.h:175
-msgid "Fractional portion"
-msgstr "Desatinná časť"
-
-#: ../glade/gcalctool.glade.h:176
-msgid "Fractional portion of displayed value [:]"
-msgstr "Desatinná časť zobrazenej hodnoty [:]"
-
-#: ../glade/gcalctool.glade.h:177
-msgid "Fun"
-msgstr "Fun"
-
-#: ../glade/gcalctool.glade.h:178
-msgid "Future value"
-msgstr "Budúca hodnota"
-
-#: ../glade/gcalctool.glade.h:179
-msgid "Future value [v]"
-msgstr "Budúca hodnota [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:182
-msgid "Fv"
-msgstr "Fv"
-
-#: ../glade/gcalctool.glade.h:183
-msgid "Gr_adians"
-msgstr "Gr_adiány"
-
-#: ../glade/gcalctool.glade.h:184
-msgid "H_yp"
-msgstr "H_yp"
-
-#: ../glade/gcalctool.glade.h:185
-msgid "He_x"
-msgstr "He_x"
-
-#: ../glade/gcalctool.glade.h:186
-msgid "Hexadecimal digit A"
-msgstr "Šestnásková číslica A"
-
-#: ../glade/gcalctool.glade.h:187
-msgid "Hexadecimal digit A [a]"
-msgstr "Šestnásková číslica A [a]"
-
-#: ../glade/gcalctool.glade.h:188
-msgid "Hexadecimal digit B"
-msgstr "Šestnástková číslica B"
-
-#: ../glade/gcalctool.glade.h:189
-msgid "Hexadecimal digit B [b]"
-msgstr "Šestnástková číslica B [b]"
-
-#: ../glade/gcalctool.glade.h:190
-msgid "Hexadecimal digit C"
-msgstr "Šestnástková číslica C"
-
-#: ../glade/gcalctool.glade.h:191
-msgid "Hexadecimal digit C [c]"
-msgstr "Šestnástková číslica C [c]"
-
-#: ../glade/gcalctool.glade.h:192
-msgid "Hexadecimal digit D"
-msgstr "Šestnástková číslica D"
-
-#: ../glade/gcalctool.glade.h:193
-msgid "Hexadecimal digit D [d]"
-msgstr "Šestnástková číslica D [d]"
-
-#: ../glade/gcalctool.glade.h:194
-msgid "Hexadecimal digit E"
-msgstr "Šestnástková číslica E"
-
-#: ../glade/gcalctool.glade.h:195
-msgid "Hexadecimal digit E [e]"
-msgstr "Šestnástková číslica E [e]"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Hexadecimal digit F"
-msgstr "Šestnástková číslica F"
-
-#: ../glade/gcalctool.glade.h:197
-msgid "Hexadecimal digit F [f]"
-msgstr "Šestnástková číslica F [f]"
-
-#: ../glade/gcalctool.glade.h:198
-msgid "Insert ASCII Value"
-msgstr "Vložiť ASCII hodnotu"
-
-#: ../glade/gcalctool.glade.h:199
-msgid "Insert ASCII value"
-msgstr "Vložiť ASCII hodnotu"
-
-#. Integer portion
-#: ../glade/gcalctool.glade.h:201
-msgid "Int"
-msgstr "Int"
-
-#: ../glade/gcalctool.glade.h:202
-msgid "Integer portion"
-msgstr "Celočíselná časť"
-
-#: ../glade/gcalctool.glade.h:203
-msgid "Integer portion of displayed value [i]"
-msgstr "Celočíselná časť zobrazenej hodnoty [i]"
-
-#: ../glade/gcalctool.glade.h:204
-msgid "Left bracket"
-msgstr "Ľavá zátvorka"
-
-#. Natural logarithm
-#: ../glade/gcalctool.glade.h:206
-msgid "Ln"
-msgstr "ln"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:208
-msgid "Log<sub>10</sub>"
-msgstr "log<sub>10</sub>"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:210
-msgid "Log<sub>2</sub>"
-msgstr "log<sub>2</sub>"
-
-#: ../glade/gcalctool.glade.h:211
-msgid "Memory Registers"
-msgstr "Pamäťové registre"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Mod"
-msgstr "Mod"
-
-#: ../glade/gcalctool.glade.h:213
-msgid "Modulus Division [M]"
-msgstr "Delenie so zvyškom [M]"
-
-#: ../glade/gcalctool.glade.h:214
-msgid "Multiply"
-msgstr "Násobenie"
-
-#: ../glade/gcalctool.glade.h:215
-msgid "Multiply [*]"
-msgstr "Násobenie [*]"
-
-#: ../glade/gcalctool.glade.h:216
-msgid "NOT"
-msgstr "NOT"
-
-#: ../glade/gcalctool.glade.h:217
-msgid "Natural log [N]"
-msgstr "Prirodzený logaritmus [N]"
-
-#: ../glade/gcalctool.glade.h:218
-msgid "Numeric 0"
-msgstr "Číslica 0"
-
-#: ../glade/gcalctool.glade.h:219
-msgid "Numeric 1"
-msgstr "Číslica 1"
-
-#: ../glade/gcalctool.glade.h:220
-msgid "Numeric 2"
-msgstr "Číslica 2"
-
-#: ../glade/gcalctool.glade.h:221
-msgid "Numeric 3"
-msgstr "Číslica 3"
-
-#: ../glade/gcalctool.glade.h:222
-msgid "Numeric 4"
-msgstr "Číslica 4"
-
-#: ../glade/gcalctool.glade.h:223
-msgid "Numeric 5"
-msgstr "Číslica 5"
-
-#: ../glade/gcalctool.glade.h:224
-msgid "Numeric 6"
-msgstr "Číslica 6"
-
-#: ../glade/gcalctool.glade.h:225
-msgid "Numeric 7"
-msgstr "Číslica 7"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Numeric 8"
-msgstr "Číslica 8"
-
-#: ../glade/gcalctool.glade.h:227
-msgid "Numeric 9"
-msgstr "Číslica 9"
-
-#: ../glade/gcalctool.glade.h:228
-msgid "Numeric point"
-msgstr "Desatinná čiarka"
-
-#: ../glade/gcalctool.glade.h:229
-msgid "OR"
-msgstr "OR"
-
-#: ../glade/gcalctool.glade.h:230
-msgid "Paste selection"
-msgstr "Prilepiť výber"
-
-#: ../glade/gcalctool.glade.h:231
-msgid "Payment period"
-msgstr "Doba platenia"
-
-#: ../glade/gcalctool.glade.h:232
-msgid "Payment period [t]"
-msgstr "Doba platenia [T]"
-
-#: ../glade/gcalctool.glade.h:233
-msgid "Percentage"
-msgstr "Percento"
-
-#: ../glade/gcalctool.glade.h:235
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Percento [%u]"
-
-#: ../glade/gcalctool.glade.h:236
-msgid "Periodic interest rate"
-msgstr "Periodická sadzba úroku"
-
-#: ../glade/gcalctool.glade.h:237
-msgid "Periodic interest rate [T]"
-msgstr "Periodická sadzba úroku [T]"
-
-#: ../glade/gcalctool.glade.h:238
-msgid "Periodic payment"
-msgstr "Periodická platba"
-
-#: ../glade/gcalctool.glade.h:239
-msgid "Periodic payment [P]"
-msgstr "Periodická platba [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:242
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../glade/gcalctool.glade.h:243
-msgid "Present value"
-msgstr "Súčasná hodnota"
-
-#: ../glade/gcalctool.glade.h:244
-msgid "Present value [p]"
-msgstr "Súčasná hodnota [p]"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:247
-msgid "Pv"
-msgstr "Pv"
-
-#: ../glade/gcalctool.glade.h:248
-msgid "Quit the calculator"
-msgstr "Ukončiť kalkulačku"
-
-#: ../glade/gcalctool.glade.h:249
-msgid "Raise displayed value to the power of y [^]"
-msgstr "Zvýšiť zobrazenú hodnotu na mocninu y [^]"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:251
-msgid "Rand"
-msgstr "Rand"
-
-#: ../glade/gcalctool.glade.h:252
-msgid "Random number"
-msgstr "Náhodné číslo"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Náhodné číslo v rozsahu od 0.0 do 1.0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:260
-msgid "Rate"
-msgstr "Rate"
-
-#. Retrieve from register
-#: ../glade/gcalctool.glade.h:262
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../glade/gcalctool.glade.h:263
-msgid "Reciprocal"
-msgstr "Prevrátená hodnota"
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Reciprocal [r]"
-msgstr "Prevrátená hodnota [r]"
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Redo"
-msgstr "Opakovať"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr ""
-"Odstrániť znak, ktorý je najviac vpravo, zo zobrazenej hodnoty [Backspace]"
-
-#: ../glade/gcalctool.glade.h:269
-msgid "Result Region"
-msgstr "Výsledná oblasť"
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Retrieve from register"
-msgstr "Obnoviť z registra"
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Retrieve memory register to display [R]"
-msgstr "Obnoviť pamäťový register na displej [R]"
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Right bracket"
-msgstr "Pravá zátvorka"
-
-#: ../glade/gcalctool.glade.h:273
-msgid "Scientific"
-msgstr "Vedecká"
-
-#: ../glade/gcalctool.glade.h:274
-msgid "Set Precision"
-msgstr "Nastaviť presnosť"
-
-#: ../glade/gcalctool.glade.h:275
-msgid "Set accuracy from 0 to 9 numeric places [A]"
-msgstr "Nastaviť presnosť od 0 do 9 miest [a]"
-
-#: ../glade/gcalctool.glade.h:276
-msgid "Set display type to engineering format"
-msgstr "Nastaviť typ zobrazovania na inžiniersky formát"
-
-#: ../glade/gcalctool.glade.h:277
-msgid "Set display type to fixed-point format"
-msgstr "Nastaviť typ zobrazovania na formát s pevnou desatinnou čiarkou"
-
-#: ../glade/gcalctool.glade.h:278
-msgid "Set display type to scientific format"
-msgstr "Nastaviť typ zobrazovania na vedecký formát"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Nastaviť hyperbolickú voľbu pre trigonometrické funkcie"
-
-#: ../glade/gcalctool.glade.h:280
-msgid "Set inverse option for trigonometric functions"
-msgstr "Nastaviť inverznú voľbu pre trigonometrické funkcie"
-
-#: ../glade/gcalctool.glade.h:281
-msgid "Set numeric base to binary (base 2)"
-msgstr "Nastaviť číselnú sústavu na dvojkovú (základ 2)"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Nastaviť číselnú sústavu na desiatkovú (základ 10)"
-
-#: ../glade/gcalctool.glade.h:283
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Nastaviť číselnú sústavu na šestnástkovú (základ 16)"
-
-#: ../glade/gcalctool.glade.h:284
-msgid "Set numeric base to octal (base 8)"
-msgstr "Nastaviť číselnú sústavu na osmičkovú (základ 8)"
-
-#: ../glade/gcalctool.glade.h:285
-msgid "Set trigonometric type to degrees"
-msgstr "Nastaviť trigonometrický typ na stupne"
-
-#: ../glade/gcalctool.glade.h:286
-msgid "Set trigonometric type to gradians"
-msgstr "Nastaviť trigonometricky typ na gradiány"
-
-#: ../glade/gcalctool.glade.h:287
-msgid "Set trigonometric type to radians"
-msgstr "Nastaviť trigonometricky typ na radiány"
-
-#: ../glade/gcalctool.glade.h:288
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vľavo [<]"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vpravo [>]"
-
-#: ../glade/gcalctool.glade.h:290
-msgid "Shift left"
-msgstr "Posun vľavo"
-
-#: ../glade/gcalctool.glade.h:291
-msgid "Shift right"
-msgstr "Posun vpravo"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:295
-msgid "Show Bit Editor"
-msgstr "Zobraziť bitový editor"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:299
-msgid "Show Bit _Editor"
-msgstr "Zobraziť bitový _editor"
-
-#: ../glade/gcalctool.glade.h:300
-msgid "Show T_housands Separator"
-msgstr "Zobraziť oddeľovač _tisícov"
-
-#: ../glade/gcalctool.glade.h:301
-msgid "Show _Trailing Zeroes"
-msgstr "Zobraziť _zadné nuly"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:305
-msgid "Show bit editor"
-msgstr "Zobraziť bitový editor"
-
-#: ../glade/gcalctool.glade.h:306
-msgid "Show help contents"
-msgstr "Zobraziť obsah pomocníka"
-
-#: ../glade/gcalctool.glade.h:307
-msgid "Show memory registers"
-msgstr "Zobraziť pamäťové registre"
-
-#: ../glade/gcalctool.glade.h:308
-msgid "Show the About Gcalctool dialog"
-msgstr "Zobraziť dialógové okno O programe Gkalkulačka"
-
-#: ../glade/gcalctool.glade.h:309
-msgid "Show thousands separator"
-msgstr "Zobraziť oddeľovač tisícov"
-
-#: ../glade/gcalctool.glade.h:310
-msgid "Show trailing zeroes"
-msgstr "Zobraziť zadné nuly"
-
-#: ../glade/gcalctool.glade.h:311
-msgid "Significant _places:"
-msgstr "Významných _miest:"
-
-#: ../glade/gcalctool.glade.h:314
-msgid "Sine [K]"
-msgstr "Sínus [K]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:317
-msgid "Sln"
-msgstr "Sln"
-
-#: ../glade/gcalctool.glade.h:318
-msgid "Square"
-msgstr "Mocnina"
-
-#: ../glade/gcalctool.glade.h:319
-msgid "Square [@]"
-msgstr "Mocnina [@]"
-
-#: ../glade/gcalctool.glade.h:320
-msgid "Square root"
-msgstr "Druhá odmocnina"
-
-#: ../glade/gcalctool.glade.h:321
-msgid "Square root [s]"
-msgstr "Druhá odmocnina [s]"
-
-#: ../glade/gcalctool.glade.h:322
-msgid "Start group of calculations [(]"
-msgstr "Začiatok skupiny výpočtov [(]"
-
-#. Store to register
-#: ../glade/gcalctool.glade.h:324
-msgid "Sto"
-msgstr "Sto"
-
-#: ../glade/gcalctool.glade.h:325
-msgid "Store displayed value in memory register [S]"
-msgstr "Uložiť zobrazenú hodnotu do pamäťového registra [S]"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Store to register"
-msgstr "Uložiť do registra"
-
-#: ../glade/gcalctool.glade.h:327
-msgid "Straight-line depreciation"
-msgstr "Priamočiara amortizácia"
-
-#: ../glade/gcalctool.glade.h:328
-msgid "Straight-line depreciation [l]"
-msgstr "Priamočiara amortizácia [l]"
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Subtract"
-msgstr "Rozdiel"
-
-#: ../glade/gcalctool.glade.h:330
-msgid "Subtract [-]"
-msgstr "Rozdiel [-]"
-
-#: ../glade/gcalctool.glade.h:331
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Amortizácia po súčtoch číslic rokov"
-
-#: ../glade/gcalctool.glade.h:332
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Amortizácia po súčtoch číslic rokov [y]"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:336
-msgid "Syd"
-msgstr "Syd"
-
-#: ../glade/gcalctool.glade.h:339
-msgid "Tangent [L]"
-msgstr "Tangens [L]"
-
-#: ../glade/gcalctool.glade.h:340
-msgid "Ten to the x"
-msgstr "10 na x"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:343
-msgid "Term"
-msgstr "Výraz"
-
-#: ../glade/gcalctool.glade.h:344
-msgid "Undo"
-msgstr "Späť"
-
-#: ../glade/gcalctool.glade.h:345
-msgid "User-defined functions"
-msgstr "Používateľom definované funkcie"
-
-#: ../glade/gcalctool.glade.h:346
-msgid "User-defined functions [F]"
-msgstr "Používateľom definované funkcie [F]"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "X to the y"
-msgstr "X na y"
-
-#: ../glade/gcalctool.glade.h:348
-msgid "XNOR"
-msgstr "XNOR"
-
-#: ../glade/gcalctool.glade.h:349
-msgid "XOR"
-msgstr "XOR"
-
-#: ../glade/gcalctool.glade.h:350
-msgid "_0 significant places"
-msgstr "_0 významných miest"
-
-#: ../glade/gcalctool.glade.h:351
-msgid "_1 place"
-msgstr "_1 miesto"
-
-#: ../glade/gcalctool.glade.h:352
-msgid "_1 significant place"
-msgstr "_1 významné miesto"
-
-#: ../glade/gcalctool.glade.h:353
-msgid "_2 places"
-msgstr "_2 miesta"
-
-#: ../glade/gcalctool.glade.h:354
-msgid "_2 significant places"
-msgstr "_2 významné miesta"
-
-#: ../glade/gcalctool.glade.h:355
-msgid "_3 places"
-msgstr "_3 miesta"
-
-#: ../glade/gcalctool.glade.h:356
-msgid "_3 significant places"
-msgstr "_3 významné miesta"
-
-#: ../glade/gcalctool.glade.h:357
-msgid "_4 places"
-msgstr "_4 miesta"
-
-#: ../glade/gcalctool.glade.h:358
-msgid "_4 significant places"
-msgstr "_4 významné miesta"
-
-#: ../glade/gcalctool.glade.h:359
-msgid "_5 places"
-msgstr "_5 miest"
-
-#: ../glade/gcalctool.glade.h:360
-msgid "_5 significant places"
-msgstr "_5 významných miest"
-
-#: ../glade/gcalctool.glade.h:361
-msgid "_6 places"
-msgstr "_6 miest"
-
-#: ../glade/gcalctool.glade.h:362
-msgid "_6 significant places"
-msgstr "_6 významných miest"
-
-#: ../glade/gcalctool.glade.h:363
-msgid "_7 places"
-msgstr "_7 miest"
-
-#: ../glade/gcalctool.glade.h:364
-msgid "_7 significant places"
-msgstr "_7 významných miest"
-
-#: ../glade/gcalctool.glade.h:365
-msgid "_8 places"
-msgstr "_8 miest"
-
-#: ../glade/gcalctool.glade.h:366
-msgid "_8 significant places"
-msgstr "_8 významných miest"
-
-#: ../glade/gcalctool.glade.h:367
-msgid "_9 places"
-msgstr "_9 miest"
-
-#: ../glade/gcalctool.glade.h:368
-msgid "_9 significant places"
-msgstr "_9 významných miest"
-
-#: ../glade/gcalctool.glade.h:369
-msgid "_Advanced"
-msgstr "_Rozšírená"
-
-#: ../glade/gcalctool.glade.h:370
-msgid "_Basic"
-msgstr "_Základná"
-
-#: ../glade/gcalctool.glade.h:371
-msgid "_Bin"
-msgstr "_Bin"
-
-#: ../glade/gcalctool.glade.h:372
+#. Calculator menu
+#: ../src/math-window.c:355
 msgid "_Calculator"
 msgstr "_Kalkulačka"
 
-#: ../glade/gcalctool.glade.h:373
-msgid "_Contents"
-msgstr "_Obsah"
+#. Mode menu
+#: ../src/math-window.c:357
+msgid "_Mode"
+msgstr "_Režim"
 
-#: ../glade/gcalctool.glade.h:374
-msgid "_Dec"
-msgstr "_Dec"
-
-#: ../glade/gcalctool.glade.h:375
-msgid "_Edit"
-msgstr "_Upraviť"
-
-#: ../glade/gcalctool.glade.h:376
-msgid "_Financial"
-msgstr "_Finančný"
-
-#: ../glade/gcalctool.glade.h:377
-msgid "_Fix"
-msgstr "_Fix"
-
-#: ../glade/gcalctool.glade.h:378
+#. Help menu label
+#: ../src/math-window.c:359
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../glade/gcalctool.glade.h:379
-msgid "_Insert"
-msgstr "V_ložiť"
+#. Basic menu label
+#: ../src/math-window.c:361
+msgid "_Basic"
+msgstr "_Základný"
 
-#: ../glade/gcalctool.glade.h:380
-msgid "_Insert ASCII value..."
-msgstr "_Vložiť ASCII hodnotu..."
+#. Advanced menu label
+#: ../src/math-window.c:363
+msgid "_Advanced"
+msgstr "_Rozšírený"
 
-#: ../glade/gcalctool.glade.h:381
-msgid "_Inv"
-msgstr "_Inv"
+#. Financial menu label
+#: ../src/math-window.c:365
+msgid "_Financial"
+msgstr "_Finančný"
 
-#: ../glade/gcalctool.glade.h:382
-msgid "_Memory Registers"
-msgstr "_Pamäťové registre"
+#. Programming menu label
+#: ../src/math-window.c:367
+msgid "_Programming"
+msgstr "_Programátorský"
 
-#: ../glade/gcalctool.glade.h:383
-msgid "_Oct"
-msgstr "_Oct"
+#. Help>Contents menu label
+#: ../src/math-window.c:369
+msgid "_Contents"
+msgstr "_Obsah"
 
-#: ../glade/gcalctool.glade.h:386
-msgid "_Radians"
-msgstr "_Radiány"
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:103
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Logický súčin AND je definovaný len pre kladné celé čísla"
 
-#: ../glade/gcalctool.glade.h:387
-msgid "_Redo"
-msgstr "_Opakovať"
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:116
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Logický súčet OR je definovaný len pre kladné celé čísla"
 
-#: ../glade/gcalctool.glade.h:388
-msgid "_Sci"
-msgstr "_Sci"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:129
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "Exkluzívny logický súčet XOR je definovaný len pre kladné celé čísla"
 
-#: ../glade/gcalctool.glade.h:389
-msgid "_Scientific"
-msgstr "_Vedecký"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:144
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "Logická negácia NOT je definovaná len pre kladné celé čísla"
 
-#: ../glade/gcalctool.glade.h:390
-msgid "_Set"
-msgstr "_Nastaviť"
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:174
+msgid "Shift is only possible on integer values"
+msgstr "Posun je možný len pri celočíselných hodnotách"
 
-#: ../glade/gcalctool.glade.h:391
-msgid "_Undo"
-msgstr "Vrátiť _späť"
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:149
+msgid "Argument not defined for zero"
+msgstr ""
 
-#: ../glade/gcalctool.glade.h:392
-msgid "_View"
-msgstr "_Zobraziť"
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:636 ../src/mp.c:668 ../src/mp.c:1602
+msgid "Division by zero is undefined"
+msgstr "Delenie nulou nie je definované"
 
-#: ../glade/gcalctool.glade.h:393
-msgid "e to the power of displayed value [{]"
-msgstr "e umocnené na zobrazenú hodnotu [{]"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1273 ../src/mp.c:1310
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritmus nuly nie je definovaný"
 
-#. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:395
-msgid "e<sup>x</sup>"
-msgstr "e<sup>x</sup>"
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1675 ../src/mp.c:1990
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Mocnina nuly nie je definovaná pre záporný exponent"
 
-#: ../glade/gcalctool.glade.h:396
-msgid "ex"
-msgstr "ex"
+#: ../src/mp.c:1700
+msgid "Reciprocal of zero is undefined"
+msgstr "Prevrátená hodnota nuly nie je definovaná"
 
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:400
-msgid "register 0"
-msgstr "register 0"
+#: ../src/mp.c:1785
+msgid "Root must be non-zero"
+msgstr "Odmocniteľ musí byť nenulový"
 
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
-msgid "register 1"
-msgstr "register 1"
+#: ../src/mp.c:1803
+msgid "Negative root of zero is undefined"
+msgstr "Záporná odmocnina z nuly nie je definovaná"
 
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
-msgid "register 2"
-msgstr "registre 2"
+#: ../src/mp.c:1809
+msgid "nth root of negative number is undefined for even n"
+msgstr "n-tá odmocnina záporného čísla nie je definovaná pre párne n"
 
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
-msgid "register 3"
-msgstr "register 3"
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1930
+msgid "Factorial is only defined for natural numbers"
+msgstr "Faktoriál je definovaný len pre prirodzené čísla"
 
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
-msgid "register 4"
-msgstr "register 4"
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1950
+msgid "Modulus division is only defined for integers"
+msgstr "Zvyšok po delení je definovaný len pre celé čísla"
 
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
-msgid "register 5"
-msgstr "register 5"
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:311
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"Tangens nie je definovaný pre uhly, ktoré sú násobkami π (180°) od π∕2 (90°)"
 
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
-msgid "register 6"
-msgstr "register 6"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:356
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Inverzný sínus nie je definovaný pre hodnoty mimo interval [-1, 1]"
 
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
-msgid "register 7"
-msgstr "register 7"
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:373
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Inverzný kosínus nie je definovaný pre hodnoty mimo interval [-1, 1]"
 
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
-msgid "register 8"
-msgstr "register 8"
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:591
+msgid ""
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
+msgstr ""
+"Inverzný hyperbolický kosínus nie je definovaný pre hodnoty menšie alebo "
+"rovné jednej"
 
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
-msgid "register 9"
-msgstr "register 9"
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:615
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
+"Inverzný hyperbolický tangens nie je definovaný pre hodnoty mimo interval [-"
+"1, 1]"
 
-#: ../glade/gcalctool.glade.h:437
-msgid "x2"
-msgstr "x2"
+#~ msgid ""
+#~ "Converts between different currencies. Enter the amount and the currency "
+#~ "you want to convert from on the upper row, and the currency you want to "
+#~ "convert to on the lower row, and the amount will be displayed on the "
+#~ "lower row."
+#~ msgstr ""
+#~ "Prepočet medzi rôznymi menami. Zadajte čiastku a menu, ktorú chcete "
+#~ "prepočítať, do horného riadku a menu, na ktorú chcete prepočítať, do "
+#~ "dolného riadku a prepočítaná čiastka sa zobrazí v dolnom riadku."
 
-#: ../glade/gcalctool.glade.h:438
-msgid "xy"
-msgstr "xy"
+#~ msgid "Currency Conversion"
+#~ msgstr "Prepočet meny"
 
-#. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:440
-msgid "±"
-msgstr "±"
+#~ msgid "&#xA4;$&#x20AC;"
+#~ msgstr "&#xA4;$&#x20AC;"
 
-#. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:442
-msgid "×"
-msgstr "×"
+#~ msgid "10 places"
+#~ msgstr "o 10 miest"
 
-#. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:444
-msgid "÷"
-msgstr "÷"
+#~ msgid "11 places"
+#~ msgstr "o 11 miest"
 
-#. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:446
-msgid "−"
-msgstr "−"
+#~ msgid "12 places"
+#~ msgstr "o 12 miest"
 
-#. This is a square root sign
-#: ../glade/gcalctool.glade.h:448
-msgid "√"
-msgstr "√"
+#~ msgid "13 places"
+#~ msgstr "o 13 miest"
+
+#~ msgid "14 places"
+#~ msgstr "o 14 miest"
+
+#~ msgid "15 places"
+#~ msgstr "o 15 miest"
+
+#~ msgid "Base 16"
+#~ msgstr "Základ 16"
+
+#~ msgid "Base 2"
+#~ msgstr "Základ 2"
+
+#~ msgid "Base 8"
+#~ msgstr "Základ 8"
+
+#~ msgid "Calculate result [=]"
+#~ msgstr "Vypočítať výsledok [=]"
+
+#~ msgid "Clr"
+#~ msgstr "Clr"
+
+#~ msgid "Display _Format:"
+#~ msgstr "_Formát zobrazenia:"
+
+#~ msgid "Factorize into prime numbers (Ctrl+F)"
+#~ msgstr "Faktorizovať na súčin prvočísel (Ctrl+F)"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "Vložiť ASCII hodnotu"
+
+#~ msgid "Insert character"
+#~ msgstr "Vložiť znak"
+
+#~ msgid "Numeric point [. or ,]"
+#~ msgstr "Desatinná čiarka [, alebo .]"
+
+#~ msgid "Random number"
+#~ msgstr "Náhodné číslo"
+
+#~ msgid "Recall value"
+#~ msgstr "Vyvolať hodnotu"
+
+#~ msgid "Result Region"
+#~ msgstr "Výsledná oblasť"
+
+#~ msgid "Shift left [<]"
+#~ msgstr "Posun vľavo [<]"
+
+#~ msgid "Shift right [>]"
+#~ msgstr "Posun vpravo [>]"
+
+#~ msgid "Store value"
+#~ msgstr "Uloží hodnotu"
+
+#~ msgid "_2 places"
+#~ msgstr "o _2 miesta"
+
+#~ msgid "_3 places"
+#~ msgstr "o _3 miesta"
+
+#~ msgid "_4 places"
+#~ msgstr "o _4 miesta"
+
+#~ msgid "_5 places"
+#~ msgstr "o _5 miest"
+
+#~ msgid "_6 places"
+#~ msgstr "o _6 miest"
+
+#~ msgid "_7 places"
+#~ msgstr "o _7 miest"
+
+#~ msgid "_8 places"
+#~ msgstr "o _8 miest"
+
+#~ msgid "_9 places"
+#~ msgstr "o _9 miest"
+
+#~ msgid "_Scientific"
+#~ msgstr "_Vedecká"
+
+#~ msgid "_View"
+#~ msgstr "_Zobraziť"
+
+#~ msgid "Display Mode"
+#~ msgstr "Typ zobrazenia"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Udáva, či sa pri spustení zobrazí okno s pamäťovými registrami."
+
+#~ msgid "Show Registers"
+#~ msgstr "Zobraziť pamäťové registre"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "Počiatočný režim kalkulačky. Platné hodnoty sú \"BASIC\" (základný), "
+#~ "\"FINANCIAL\" (finančný), \"LOGICAL\" (pokročilý), \"SCIENTIFIC"
+#~ "\" (vedecký) a \"PROGRAMING\" (programátorský)"
+
+#~ msgid ""
+#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#~ "\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "Počiatočný typ zobrazenia. Platné hodnoty sú \"ENG\" (inžiniersky), \"FIX"
+#~ "\" (s pevnou čiarkou) a \"SCI\" (vedecký)"
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr ""
+#~ "Počiatočné trigonometrické jednotky. Platné hodnoty sú \"DEG\" (stupne), "
+#~ "\"GRAD\" (grády) a \"RAD\" (radiány)."
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Počiatočná x-ová súradnica okna"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Počiatočná y-ová súradnica okna"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "Počet pixelov od ľavého okraja obrazovky, kde sa zobrazí okno."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Počet pixelov od horného okraja obrazovky, kde sa zobrazí okno."
+
+#~ msgid "The numeric base for input and display."
+#~ msgstr "Číselná sústava pre vstup a zobrazenie."
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Trigonometrické jednotky"
+
+#~ msgid "No redo steps"
+#~ msgstr "Žiadne kroky opakovania"
+
+#~ msgid "Calculator — Advanced"
+#~ msgstr "Kalkulačka - pokročilá"
+
+#~ msgid "Calculator — Financial"
+#~ msgstr "Kalkulačka - finančná"
+
+#~ msgid "Calculator — Scientific"
+#~ msgstr "Kalkulačka - vedecká"
+
+#~ msgid "Calculator — Programming"
+#~ msgstr "Kalkulačka - programátorská"
+
+#~ msgid "Error loading user interface"
+#~ msgstr "Chyba pri načítavaní používateľského rozhrania"
+
+#~ msgid ""
+#~ "A required file is missing or damaged. Please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Požadovaný súbor chýba alebo je poškodený, skontrolujte, prosím, svoju "
+#~ "inštaláciu.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "You don't have any recent currency rates. Should some be downloaded now?"
+#~ msgstr ""
+#~ "Nemáte tabuľku aktuálnych menových kurzov. Prajete si nejakú stiahnuť?"
+
+#~ msgid ""
+#~ "Currency rates could not be downloaded. You may receive inaccurate "
+#~ "results, or you may not receive any results at all."
+#~ msgstr ""
+#~ "Nemôžem stiahnuť kurzy mien. Môžete získať nesprávne výsledky alebo "
+#~ "dokonca nemusíte získať žiadne."
+
+#~ msgid "Paste"
+#~ msgstr "Vložiť"
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "Logaritmus záporného čísla je nedefinovaný"
+
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr "Mocnina záporných čísel je definovaná len pre celočíselné exponenty"
+
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "Druhá mocnina nie je definovaná pre záporné čísla"
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "Konštanta na prevod kilometrov na míle"
+
+#~ msgid "square root of 2"
+#~ msgstr "druhá odmocnina z 2"
+
+#~ msgid "pi"
+#~ msgstr "pí"
+
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "Konštanta na prevod centimetrov na palce"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "stupňov v radiáne"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "2 ^ 20"
+
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "Konštanta na prevod gramov na unce"
+
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "Konštanta na prevod kilojoulov na britské tepelné jednotky"
+
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "Konštanta na prevod kubických centimetrov na kubické palce"
+
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s ako ďalší parameter.\n"
+
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s verzia %s\n"
+#~ "\n"
+
+#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+#~ msgstr "Použitie: %s: [-E] [-u] [-a presnosť] "
+
+#~ msgid "\t\t [-?] [-v] [-h]\n"
+#~ msgstr "\t\t [-?] [-v] [-h]\n"
+
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-a potrebuje hodnotu presnosti"
+
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: presnosť by mala byť v rozsahu 0-%d\n"
+
+#~ msgid "Malformed function"
+#~ msgstr "Poškodená funkcia"
+
+#~ msgid "No sane value to convert"
+#~ msgstr "Nie je rozumná hodnota na prevod"
+
+#~ msgid "Invalid number for the current base"
+#~ msgstr "Neplatné číslo pre aktuálnu sústavu"
+
+#~ msgid "Too long number"
+#~ msgstr "Príliš dlhé číslo"
+
+#~ msgid "Invalid bitwise operation parameter(s)"
+#~ msgstr "Neplatné parametre bitovej operácie"
+
+#~ msgid "Invalid modulus operation parameter(s)"
+#~ msgstr "Neplatné parametre operácie modula"
+
+#~ msgid "Math operation error"
+#~ msgstr "Chyba matematickej operácie"
+
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s: základ by mal byť 2, 8, 10 alebo 16\n"
+
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: neplatný zobrazovací režim [%s]\n"
+
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: neplatný režim [%s]\n"
+
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: neplatný trigonometrický režim [%s]\n"
+
+#~ msgid "Calculator [%s]"
+#~ msgstr "Kalkulačka [%s]"
+
+#~ msgid "Calculator [%s] - Advanced"
+#~ msgstr "Kalkulačka [%s] - Rozšírená"
+
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "Kalkulačka [%s] - Finančná"
+
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "Kalkulačka [%s] - Vedecká"
+
+#~ msgid "_Other (%d) ..."
+#~ msgstr "_Ostatné (%d) ..."
+
+#~ msgid "Set accuracy from 0 to %d numeric place."
+#~ msgid_plural "Set accuracy from 0 to %d numeric places."
+#~ msgstr[0] "Nastaviť presnosť od 0 do %d miest."
+#~ msgstr[1] "Nastaviť presnosť od 0 do %d miesta."
+#~ msgstr[2] "Nastaviť presnosť od 0 do %d miest."
+
+#~ msgid "Currently set to %d place."
+#~ msgid_plural "Currently set to %d places."
+#~ msgstr[0] "Momentálne nastavené na %d miest."
+#~ msgstr[1] "Momentálne nastavené na %d miesto."
+#~ msgstr[2] "Momentálne nastavené na %d miesta."
+
+#~ msgid "Sinh"
+#~ msgstr "sinh"
+
+#~ msgid "Sin<sup>-1</sup>"
+#~ msgstr "sin<sup>-1</sup>"
+
+#~ msgid "Sinh<sup>-1</sup>"
+#~ msgstr "sinh<sup>-1</sup>"
+
+#~ msgid "Cosh"
+#~ msgstr "cosh"
+
+#~ msgid "Cos<sup>-1</sup>"
+#~ msgstr "cos<sup>-1</sup>"
+
+#~ msgid "Cosh<sup>-1</sup>"
+#~ msgstr "cosh<sup>-1</sup>"
+
+#~ msgid "Tan"
+#~ msgstr "tg"
+
+#~ msgid "Tanh"
+#~ msgstr "tgh"
+
+#~ msgid "Tan<sup>-1</sup>"
+#~ msgstr "tg<sup>-1</sup>"
+
+#~ msgid "Tanh<sup>-1</sup>"
+#~ msgstr "tgh<sup>-1</sup>"
+
+#~ msgid "Bit editor activated. Click on bit values to toggle them."
+#~ msgstr ""
+#~ "Bitový editor aktivovaný. Kliknutím na hodnoty bitov im zmeníte hodnotu."
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ msgstr ""
+#~ "Gkalkulačka je slobodný softvér. Môžete ho šíriť a/alebo modifikovať "
+#~ "podľa\n"
+#~ "ustanovení Všeobecnej verejnej licencie GNU, vydanej nadáciou Free "
+#~ "Software\n"
+#~ "Foundation a to buď verzie 2 tejto licencie, alebo (podľa vášho "
+#~ "uváženia)\n"
+#~ "kterejkoľvek neskoršej verzie.\n"
+
+#~ msgid ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ msgstr ""
+#~ "Gkalkulačka je rozširovaný v nádeji, že bude užitočný, avšak BEZ "
+#~ "AKEJKOĽVEK\n"
+#~ "ZÁRUKY. Neposkytujú sa ani odvodené záruky PREDAJNOSTI alebo VHODNOSTI "
+#~ "PRE\n"
+#~ "URČITÝ ÚČEL. Ďalšie podrobnosti hľadajte vo Všeobecnej verejnej licencii\n"
+#~ "GNU.\n"
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgstr ""
+#~ "Kópiu Všeobecnej verejnej licencie GNU ste mali dostať spolu s "
+#~ "Gkalkulačkou.\n"
+#~ "Ak sa tak nestalo, napíšte na adresu Free Software Foundation, Inc.,\n"
+#~ "51Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Changing Modes Clears Calculation"
+#~ msgstr "Zmena režimu vymaže výpočet"
+
+#~ msgid ""
+#~ "When you change modes, the current calculation will be cleared, and the "
+#~ "base will be reset to decimal."
+#~ msgstr ""
+#~ "Keď zmeníte režim, aktuálny výpočet sa vymaže a sústava sa nastaví na "
+#~ "desiatkovú."
+
+#~ msgid "_Do not warn me again"
+#~ msgstr "_Už neupozorňovať"
+
+#~ msgid "C_hange Mode"
+#~ msgstr "Z_meniť režim"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "No."
+#~ msgstr "Č."
+
+#~ msgid "Value"
+#~ msgstr "Hodnota"
+
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "Nastaviť na pre_dvolené (%d)"
+
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "Záporné X a neceločíselné Y nie sú podporované"
+
+#~ msgid "Error, cannot calculate cosine"
+#~ msgstr "Chyba, nepodarilo sa vypočítať kosínus"
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "&16"
+#~ msgstr "&16"
+
+#~ msgid "&32"
+#~ msgstr "&32"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "."
+#~ msgstr ","
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1/<i>x</i>"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "10 to the power of displayed value [}]"
+#~ msgstr "10 umocnené na zobrazenú hodnotu [}]"
+
+#~ msgid "10 to the x"
+#~ msgstr "10 na x"
+
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10<sup><i>x</i></sup>"
+
+#~ msgid "10x"
+#~ msgstr "10x"
+
+#~ msgid "15"
+#~ msgstr "15"
+
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "16-bitové celé číslo bez znamienka"
+
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "16-bitové celé číslo bez znamienka zo zobrazenej hodnoty (])"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "31"
+#~ msgstr "31"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "32-bitové celé číslo bez znamienka zo zobrazenej hodnoty ([)"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "47"
+#~ msgstr "47"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "63"
+#~ msgstr "63"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "<i>x</i>!"
+#~ msgstr "<i>x</i>!"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>2</sup>"
+
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+
+#~ msgid ""
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
+#~ msgstr ""
+#~ "<small><i><b>Poznámka:</b> Všetky konštantné hodnoty sú zadané v "
+#~ "desiatkovej číselnej sústave.</i></small>"
+
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">R0</span>"
+
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">R1</span>"
+
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">R2</span>"
+
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">R3</span>"
+
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">R4</span>"
+
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">R5</span>"
+
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">R6</span>"
+
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">R7</span>"
+
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">R8</span>"
+
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">R9</span>"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "AND"
+#~ msgstr "AND"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid "Add"
+#~ msgstr "Súčet"
+
+#~ msgid "Advanced"
+#~ msgstr "Rozšírená"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "Backspace"
+#~ msgstr "Vrátiť"
+
+#~ msgid "Basic"
+#~ msgstr "Základná"
+
+#~ msgid "Bitwise AND"
+#~ msgstr "Bitový súčin"
+
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "Bitový súčin [&]"
+
+#~ msgid "Bitwise NOT"
+#~ msgstr "Bitová negácia"
+
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "Bitová negácia [~]"
+
+#~ msgid "Bitwise OR"
+#~ msgstr "Bitový súčet"
+
+#~ msgid "Bitwise OR [|]"
+#~ msgstr "Bitový súčet [|]"
+
+#~ msgid "Bitwise XNOR"
+#~ msgstr "Bitový exkluzívny negovaný súčet"
+
+#~ msgid "Bitwise XNOR [n]"
+#~ msgstr "Bitový exkluzívny negovaný súčet [n]"
+
+#~ msgid "Bitwise XOR"
+#~ msgstr "Bitový exkluzívny súčet"
+
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "Bitový exkluzívny súčet [x]"
+
+#~ msgid "Bksp"
+#~ msgstr "<-"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Change Sign [C]"
+#~ msgstr "Zmeniť znamienko [C]"
+
+#~ msgid "Change sign"
+#~ msgstr "Zmeniť znamienko"
+
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr ""
+#~ "Vymazať zobrazenú hodnotu a prípadný čiastočný výpočet [Shift Delete]"
+
+#~ msgid "Clear entry"
+#~ msgstr "Vymazať položku"
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "Pre úpravu kliknite na _hodnotu alebo popis:"
+
+#~ msgid "Compounding term [m]"
+#~ msgstr "Zložený výraz [m]"
+
+#~ msgid "Con"
+#~ msgstr "Kon"
+
+#~ msgid "Constants"
+#~ msgstr "Konštanty"
+
+#~ msgid "Constants [#]"
+#~ msgstr "Konštanty [#]"
+
+#~ msgid "Copy selection"
+#~ msgstr "Kopírovať výber"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "Divide"
+#~ msgstr "Delenie"
+
+#~ msgid "Double-declining depreciation [D]"
+#~ msgstr "Dvojnásobne klesajúca amortizácia [D]"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "E to the x"
+#~ msgstr "E na x"
+
+#~ msgid "E_ng"
+#~ msgstr "E_ng"
+
+#~ msgid "Edit Constants"
+#~ msgstr "Upraviť konštanty"
+
+#~ msgid "Edit Constants..."
+#~ msgstr "Upraviť konštanty..."
+
+#~ msgid "Edit Functions..."
+#~ msgstr "Upraviť funkcie..."
+
+#~ msgid "End group of calculations [)]"
+#~ msgstr "Koniec skupiny výpočtov [)]"
+
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "Zadať exponenciálne číslo [E]"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "Vymeniť zobrazenú hodnotu s pamäťovým registrom [X]"
+
+#~ msgid "Exchange with register"
+#~ msgstr "Vymeniť s registrom"
+
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "Faktoriál zobrazenej hodnoty [!]"
+
+#~ msgid "Frac"
+#~ msgstr "Frac"
+
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "Desatinná časť zobrazenej hodnoty [:]"
+
+#~ msgid "Fun"
+#~ msgstr "Fun"
+
+#~ msgid "Future value [v]"
+#~ msgstr "Budúca hodnota [v]"
+
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
+
+#~ msgid "He_x"
+#~ msgstr "He_x"
+
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "Šestnásková číslica A [a]"
+
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "Šestnástková číslica B"
+
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "Šestnástková číslica B [b]"
+
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "Šestnástková číslica C"
+
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "Šestnástková číslica C [c]"
+
+#~ msgid "Hexadecimal digit D"
+#~ msgstr "Šestnástková číslica D"
+
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "Šestnástková číslica D [d]"
+
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "Šestnástková číslica E"
+
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "Šestnástková číslica E [e]"
+
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "Šestnástková číslica F"
+
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "Šestnástková číslica F [f]"
+
+#~ msgid "Insert ASCII value"
+#~ msgstr "Vložiť ASCII hodnotu"
+
+#~ msgid "Int"
+#~ msgstr "Int"
+
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "Celočíselná časť zobrazenej hodnoty [i]"
+
+#~ msgid "Left bracket"
+#~ msgstr "Ľavá zátvorka"
+
+#~ msgid "Ln"
+#~ msgstr "ln"
+
+#~ msgid "Log<sub>10</sub>"
+#~ msgstr "log<sub>10</sub>"
+
+#~ msgid "Log<sub>2</sub>"
+#~ msgstr "log<sub>2</sub>"
+
+#~ msgid "Memory Registers"
+#~ msgstr "Pamäťové registre"
+
+#~ msgid "Multiply"
+#~ msgstr "Násobenie"
+
+#~ msgid "NOT"
+#~ msgstr "NOT"
+
+#~ msgid "Numeric 1"
+#~ msgstr "Číslica 1"
+
+#~ msgid "Numeric 2"
+#~ msgstr "Číslica 2"
+
+#~ msgid "Numeric 3"
+#~ msgstr "Číslica 3"
+
+#~ msgid "Numeric 4"
+#~ msgstr "Číslica 4"
+
+#~ msgid "Numeric 5"
+#~ msgstr "Číslica 5"
+
+#~ msgid "Numeric 6"
+#~ msgstr "Číslica 6"
+
+#~ msgid "Numeric 7"
+#~ msgstr "Číslica 7"
+
+#~ msgid "Numeric 8"
+#~ msgstr "Číslica 8"
+
+#~ msgid "Numeric 9"
+#~ msgstr "Číslica 9"
+
+#~ msgid "OR"
+#~ msgstr "OR"
+
+#~ msgid "Paste selection"
+#~ msgstr "Prilepiť výber"
+
+#~ msgid "Payment period [t]"
+#~ msgstr "Doba platenia [T]"
+
+#~ msgid "Percentage"
+#~ msgstr "Percento"
+
+#~ msgid "Periodic interest rate [T]"
+#~ msgstr "Periodická sadzba úroku [T]"
+
+#~ msgid "Periodic payment [P]"
+#~ msgstr "Periodická platba [P]"
+
+#~ msgid "Present value [p]"
+#~ msgstr "Súčasná hodnota [p]"
+
+#~ msgid "Quit the calculator"
+#~ msgstr "Ukončiť kalkulačku"
+
+#~ msgid "Raise displayed value to the power of y [^]"
+#~ msgstr "Zvýšiť zobrazenú hodnotu na mocninu y [^]"
+
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "Náhodné číslo v rozsahu od 0.0 do 1.0 [?]"
+
+#~ msgid "Reciprocal"
+#~ msgstr "Prevrátená hodnota"
+
+#~ msgid "Reciprocal [r]"
+#~ msgstr "Prevrátená hodnota [r]"
+
+#~ msgid "Redo"
+#~ msgstr "Opakovať"
+
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr ""
+#~ "Odstrániť znak, ktorý je najviac vpravo, zo zobrazenej hodnoty [Backspace]"
+
+#~ msgid "Retrieve from register"
+#~ msgstr "Obnoviť z registra"
+
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "Obnoviť pamäťový register na displej [R]"
+
+#~ msgid "Right bracket"
+#~ msgstr "Pravá zátvorka"
+
+#~ msgid "Set Precision"
+#~ msgstr "Nastaviť presnosť"
+
+#~ msgid "Set accuracy from 0 to 9 numeric places [A]"
+#~ msgstr "Nastaviť presnosť od 0 do 9 miest [a]"
+
+#~ msgid "Set display type to engineering format"
+#~ msgstr "Nastaviť typ zobrazovania na inžiniersky formát"
+
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "Nastaviť typ zobrazovania na formát s pevnou desatinnou čiarkou"
+
+#~ msgid "Set display type to scientific format"
+#~ msgstr "Nastaviť typ zobrazovania na vedecký formát"
+
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "Nastaviť hyperbolickú voľbu pre trigonometrické funkcie"
+
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "Nastaviť inverznú voľbu pre trigonometrické funkcie"
+
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "Nastaviť číselnú sústavu na dvojkovú (základ 2)"
+
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "Nastaviť číselnú sústavu na desiatkovú (základ 10)"
+
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "Nastaviť číselnú sústavu na šestnástkovú (základ 16)"
+
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "Nastaviť číselnú sústavu na osmičkovú (základ 8)"
+
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "Nastaviť trigonometricky typ na gradiány"
+
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "Nastaviť trigonometricky typ na radiány"
+
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vľavo [<]"
+
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "Posunúť zobrazenú hodnotu o 1-15 miest vpravo [>]"
+
+#~ msgid "Show Bit Editor"
+#~ msgstr "Zobraziť bitový editor"
+
+#~ msgid "Show Bit _Editor"
+#~ msgstr "Zobraziť bitový _editor"
+
+#~ msgid "Show bit editor"
+#~ msgstr "Zobraziť bitový editor"
+
+#~ msgid "Show help contents"
+#~ msgstr "Zobraziť obsah pomocníka"
+
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "Zobraziť dialógové okno O programe Gkalkulačka"
+
+#~ msgid "Significant _places:"
+#~ msgstr "Významných _miest:"
+
+#~ msgid "Sine [K]"
+#~ msgstr "Sínus [K]"
+
+#~ msgid "Square"
+#~ msgstr "Mocnina"
+
+#~ msgid "Square root"
+#~ msgstr "Druhá odmocnina"
+
+#~ msgid "Start group of calculations [(]"
+#~ msgstr "Začiatok skupiny výpočtov [(]"
+
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "Uložiť zobrazenú hodnotu do pamäťového registra [S]"
+
+#~ msgid "Store to register"
+#~ msgstr "Uložiť do registra"
+
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "Priamočiara amortizácia [l]"
+
+#~ msgid "Subtract"
+#~ msgstr "Rozdiel"
+
+#~ msgid "Sum-of-the years'-digits depreciation [y]"
+#~ msgstr "Amortizácia po súčtoch číslic rokov [y]"
+
+#~ msgid "Ten to the x"
+#~ msgstr "10 na x"
+
+#~ msgid "User-defined functions"
+#~ msgstr "Používateľom definované funkcie"
+
+#~ msgid "User-defined functions [F]"
+#~ msgstr "Používateľom definované funkcie [F]"
+
+#~ msgid "X to the y"
+#~ msgstr "X na y"
+
+#~ msgid "XNOR"
+#~ msgstr "XNOR"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "_0 significant places"
+#~ msgstr "_0 významných miest"
+
+#~ msgid "_1 significant place"
+#~ msgstr "_1 významné miesto"
+
+#~ msgid "_2 significant places"
+#~ msgstr "_2 významné miesta"
+
+#~ msgid "_3 significant places"
+#~ msgstr "_3 významné miesta"
+
+#~ msgid "_4 significant places"
+#~ msgstr "_4 významné miesta"
+
+#~ msgid "_5 significant places"
+#~ msgstr "_5 významných miest"
+
+#~ msgid "_6 significant places"
+#~ msgstr "_6 významných miest"
+
+#~ msgid "_7 significant places"
+#~ msgstr "_7 významných miest"
+
+#~ msgid "_8 significant places"
+#~ msgstr "_8 významných miest"
+
+#~ msgid "_9 significant places"
+#~ msgstr "_9 významných miest"
+
+#~ msgid "_Dec"
+#~ msgstr "_Dec"
+
+#~ msgid "_Edit"
+#~ msgstr "_Upraviť"
+
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "_Vložiť ASCII hodnotu..."
+
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
+
+#~ msgid "_Memory Registers"
+#~ msgstr "_Pamäťové registre"
+
+#~ msgid "_Redo"
+#~ msgstr "_Opakovať"
+
+#~ msgid "_Sci"
+#~ msgstr "_Sci"
+
+#~ msgid "_Set"
+#~ msgstr "_Nastaviť"
+
+#~ msgid "_Undo"
+#~ msgstr "Vrátiť _späť"
+
+#~ msgid "e to the power of displayed value [{]"
+#~ msgstr "e umocnené na zobrazenú hodnotu [{]"
+
+#~ msgid "e<sup>x</sup>"
+#~ msgstr "e<sup>x</sup>"
+
+#~ msgid "ex"
+#~ msgstr "ex"
+
+#~ msgid "register 0"
+#~ msgstr "register 0"
+
+#~ msgid "register 1"
+#~ msgstr "register 1"
+
+#~ msgid "register 2"
+#~ msgstr "registre 2"
+
+#~ msgid "register 3"
+#~ msgstr "register 3"
+
+#~ msgid "register 4"
+#~ msgstr "register 4"
+
+#~ msgid "register 5"
+#~ msgstr "register 5"
+
+#~ msgid "register 6"
+#~ msgstr "register 6"
+
+#~ msgid "register 7"
+#~ msgstr "register 7"
+
+#~ msgid "register 8"
+#~ msgstr "register 8"
+
+#~ msgid "register 9"
+#~ msgstr "register 9"
+
+#~ msgid "x2"
+#~ msgstr "x2"
+
+#~ msgid "xy"
+#~ msgstr "xy"
+
+#~ msgid "±"
+#~ msgstr "±"
+
+#~ msgid "×"
+#~ msgstr "×"
+
+#~ msgid "÷"
+#~ msgstr "÷"
+
+#~ msgid "−"
+#~ msgstr "−"
+
+#~ msgid "√"
+#~ msgstr "√"
