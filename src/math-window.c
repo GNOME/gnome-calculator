@@ -222,7 +222,7 @@ about_cb(GtkWidget *widget, MathWindow *window)
                           "version", VERSION,
                           "copyright",
                           /* Copyright notice in the about dialog */
-                          _("\xc2\xa9 1986–2008 The Gcalctool authors"),
+                          _("\xc2\xa9 1986–2010 The Gcalctool authors"),
                           "license", license,
                           "comments",
                           /* Short description in the about dialog */
