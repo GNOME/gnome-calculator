@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-12 23:15+0200\n"
-"PO-Revision-Date: 2009-10-12 23:16+0200\n"
+"POT-Creation-Date: 2010-08-07 15:49+0200\n"
+"PO-Revision-Date: 2010-08-07 15:50+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan  <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -624,7 +624,7 @@ msgid "Bksp"
 msgstr "Rtcs"
 
 #. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1735
+#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1734
 msgid "C"
 msgstr "C"
 
@@ -795,7 +795,7 @@ msgid "Exp"
 msgstr "Exp"
 
 #. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1758
+#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1757
 msgid "F"
 msgstr "F"
 
@@ -1770,32 +1770,32 @@ msgstr ""
 "  --gtk-module=MÒDULS             Carrega mòduls de la GTK+ addicionals\n"
 "  --g-fatal-warnings              Fa que tots els avisos siguin fatals"
 
-#: ../src/calctool.c:114
+#: ../src/calctool.c:115
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
+"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Opcions de l'aplicació:\n"
 "  -u, --unittest                  Realitza comprovacions unitàries\n"
-"  -s, --solve <equation>          Resol l'equació proporcionada"
+"  -s, --solve <equació>          Resol l'equació proporcionada"
 
 #. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:150
+#: ../src/calctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "L'argument --solve requereix una equació a resoldre"
 
 #. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:163
+#: ../src/calctool.c:169
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Argument desconegut «%s»"
 
 #. Translators: A log message displayed when an invalid accuracy
 #. is read from the configuration
-#: ../src/calctool.c:191
+#: ../src/calctool.c:197
 #, c-format
 msgid "%s: accuracy should be in the range 0-%d\n"
 msgstr "%s: l'exactitud ha d'estar dins del rang de 0 a %d\n"
@@ -1810,64 +1810,64 @@ msgstr "Sense passos per a refer"
 
 #. Translators: This message is displayed in the status bar when an
 #. invalid user-defined function is executed
-#: ../src/functions.c:235
+#: ../src/functions.c:237
 msgid "Malformed function"
 msgstr "Funció mal escrita"
 
 #. Translators: This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:322
+#: ../src/functions.c:324
 msgid "No sane value to do bitwise shift"
 msgstr "No és un valor adequat per a fer un desplaçament bit a bit"
 
-#: ../src/functions.c:341 ../src/functions.c:394
+#: ../src/functions.c:343 ../src/functions.c:396
 msgid "No sane value to convert"
 msgstr "No és un valor adequat a convertir"
 
-#: ../src/functions.c:364 ../src/functions.c:414
+#: ../src/functions.c:366 ../src/functions.c:416
 msgid "No sane value to store"
 msgstr "No és un valor adequat per emmagatzemar"
 
-#: ../src/functions.c:579
+#: ../src/functions.c:581
 msgid "Invalid number for the current base"
 msgstr "El nombre no és vàlid per la base actual"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid bitwise operation, e.g.
 #. * 1 XOR -1
-#: ../src/functions.c:586
+#: ../src/functions.c:588
 msgid "Invalid bitwise operation"
 msgstr "Operació a nivell de bits no vàlida"
 
 #. Translators: Error displayed to user when they
 #. * perform an invalid modulus operation, e.g.
 #. * 6 MOD 1.2
-#: ../src/functions.c:593
+#: ../src/functions.c:595
 msgid "Invalid modulus operation"
 msgstr "Operació del mòdul no vàlida"
 
 #. Translators; Error displayd to user when they
 #. * perform a bitwise operation on numbers greater
 #. * than the current word
-#: ../src/functions.c:600
+#: ../src/functions.c:602
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordament. Torneu-ho a provar amb una mida de paraula més gran"
 
 #. Translators; Error displayd to user when they
 #. * an unknown variable is entered
-#: ../src/functions.c:606
+#: ../src/functions.c:608
 msgid "Unknown variable"
 msgstr "Variable desconeguda"
 
 #. Translators; Error displayd to user when they
 #. * an unknown function is entered
-#: ../src/functions.c:612
+#: ../src/functions.c:614
 msgid "Unknown function"
 msgstr "Funció desconeguda"
 
 #. Translators: Error displayed to user when they
 #. * enter an invalid calculation
-#: ../src/functions.c:622
+#: ../src/functions.c:624
 msgid "Malformed expression"
 msgstr "Expressió mal escrita"
 
@@ -2153,14 +2153,14 @@ msgid "Raise displayed value to the power of reciprocal y [O]"
 msgstr "Eleva el valor mostrat al recíproc de y [O]"
 
 #. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1396
+#: ../src/gtk.c:1395
 msgid "translator-credits"
 msgstr ""
 "Blanca Biosca <b_biosca@hotmail.com>\n"
 "Josep Puigdemont <josep.puigdemont@gmail.com>\n"
 "Joan Duran <jodufi@gmail.com>"
 
-#: ../src/gtk.c:1400
+#: ../src/gtk.c:1399
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -2189,55 +2189,55 @@ msgstr ""
 "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
 #. Translators: Program name in the about dialog
-#: ../src/gtk.c:1416
+#: ../src/gtk.c:1415
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1419
+#: ../src/gtk.c:1418
 msgid "© 1986-2008 The Gcalctool authors"
 msgstr "© 1986-2008 Els autors del Gcalctool"
 
 #. Translators: Short description in the about dialog
-#: ../src/gtk.c:1422
+#: ../src/gtk.c:1421
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora amb mode financer i científic"
 
-#: ../src/gtk.c:1580
+#: ../src/gtk.c:1579
 msgid "Unable to open help file"
 msgstr "No s'ha pogut obrir el fitxer d'ajuda"
 
 #. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1991
+#: ../src/gtk.c:1990
 msgid "R"
 msgstr "R"
 
 #. FIXME: WTF?
-#: ../src/gtk.c:2372
+#: ../src/gtk.c:2371
 msgid "Paste"
 msgstr "Enganxa"
 
 #. Translators: Edit Constants Dialog: Constant number column title
 #. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2740 ../src/gtk.c:2757
+#: ../src/gtk.c:2739 ../src/gtk.c:2756
 msgid "No."
 msgstr "Núm."
 
 #. Translators: Edit Constants Dialog: Constant value column title
 #. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2742 ../src/gtk.c:2760
+#: ../src/gtk.c:2741 ../src/gtk.c:2759
 msgid "Value"
 msgstr "Valor"
 
 #. Translators: Edit Constants Dialog: Constant description column title
 #. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2744 ../src/gtk.c:2763
+#: ../src/gtk.c:2743 ../src/gtk.c:2762
 msgid "Description"
 msgstr "Descripció"
 
 #. Set default accuracy menu item
 #. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2887
+#: ../src/gtk.c:2886
 #, c-format
 msgid "Reset to _Default (%d)"
 msgstr "Reinicia a la pre_determinada (%d)"
