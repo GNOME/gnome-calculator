@@ -2,14 +2,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2003
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-04 07:53+0000\n"
-"PO-Revision-Date: 2003-07-29 17:06+0300\n"
-"Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
+"POT-Creation-Date: 2010-08-17 01:41+0300\n"
+"PO-Revision-Date: 2010-08-17 01:56+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,287 +18,1265 @@ msgstr ""
 "X-Generator: KBabel 1.0.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gcalctool/calctool.c:472
-msgid "Kilometer-to-mile conversion factor"
-msgstr ""
+#. Payment Period Dialog: Button to calculate result
+#: ../data/financial.ui.h:2
+msgid "C_alculate"
+msgstr "_חישוב"
 
-#: ../gcalctool/calctool.c:474
-msgid "square root of 2"
-msgstr "שורש ריבועי של 2"
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/financial.ui.h:4
+msgid "C_ost:"
+msgstr "_עלות:"
 
-#: ../gcalctool/calctool.c:475
-msgid "Euler's Number (e)"
-msgstr ""
-
-#: ../gcalctool/calctool.c:476
-msgid "pi"
-msgstr "pi"
-
-#: ../gcalctool/calctool.c:477
-msgid "Centimeter-to-inch conversion factor"
-msgstr ""
-
-#: ../gcalctool/calctool.c:479
-msgid "degrees in a radian"
-msgstr "מעלות בראדיין"
-
-#: ../gcalctool/calctool.c:480
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
-
-#: ../gcalctool/calctool.c:481
-msgid "Gram-to-ounce conversion factor"
-msgstr ""
-
-#: ../gcalctool/calctool.c:483
-#, fuzzy
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "קילוג'אולים אן יחידות חום בריטיות"
-
-#: ../gcalctool/calctool.c:486
-#, fuzzy
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "סנטימטרים רבועים או אינצ'ים רבועים"
-
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:497 ../gcalctool/mp.c:1814
-#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
-msgid "Error"
-msgstr "שגיאה"
-
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is an error message (see the last parameter in the
-#. * getparam() call in the get_options() routine below.
-#.
-#: ../gcalctool/calctool.c:514
-#, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s as next argument.\n"
-
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is the program version number.
-#.
-#: ../gcalctool/calctool.c:527
-#, c-format
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/financial.ui.h:6
 msgid ""
-"%s version %s\n"
-"\n"
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
 msgstr ""
-"%s version %s\n"
-"\n"
+"חישוב מספר התשלומים להחזר הלוואה, כאשר כל תשלום מבוצע בסיום תקופת התשלום."
 
-#: ../gcalctool/calctool.c:528
-#, fuzzy, c-format
-msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-msgstr "Usage: %s: [-D] [-E] [-a accuracy] "
-
-#: ../gcalctool/calctool.c:529
-msgid "\t\t [-?] [-v] [-h]\n"
-msgstr "\t\t [-?] [-v] [-h]\n"
-
-#: ../gcalctool/calctool.c:550
-msgid "-a needs accuracy value"
-msgstr "-a needs accuracy value"
-
-#: ../gcalctool/calctool.c:554 ../gcalctool/get.c:242
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: accuracy should be in the range 0-%d\n"
-
-#: ../gcalctool/display.c:322
-msgid "No undo history"
-msgstr "אין היסטורית ביטול"
-
-#: ../gcalctool/display.c:336
-msgid "No redo steps"
-msgstr "אין צעדים לשחזר"
-
-#: ../gcalctool/functions.c:135
-msgid "Malformed function"
-msgstr "פונקציה שגויה"
-
-#: ../gcalctool/functions.c:145
-msgid "No sane value to do bitwise shift"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:8
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
 msgstr ""
+"חישוב הפחת על נכס לתקופה מוגדרת, תוך שימוש בשיטת סכום ספרות השנים. שיטת "
+"הפחתה זו מאיצה את קצב ההפחתה, כך שהפחתות חשבונאיות מתרחשות יותר בתקופות "
+"המוקדמות מאשר בתקופות המאוחרות. אורך החיים השימושיים הוא מספר התקופות, בדרך "
+"כלל שנים, אשר בהם נכס זה מופחת."
 
-#: ../gcalctool/functions.c:178 ../gcalctool/functions.c:227
-msgid "No sane value to convert"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:10
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
 msgstr ""
+"חישוב ההפרשה לפחת על הנכס לתקופת זמן קצובה, תוך שימוש בשיטת יתרה פוחתת כפולה."
 
-#: ../gcalctool/functions.c:202 ../gcalctool/functions.c:244
-msgid "No sane value to store"
+#. Future Value Dialog: Description of calculation
+#: ../data/financial.ui.h:12
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
 msgstr ""
+"חישוב הערך העתידי של השקעה המבוססת על סדרה של תשלומים שווים בריבית משתנה "
+"לאורך מספר תקופות התשלום."
 
-#: ../gcalctool/functions.c:401
-msgid "Invalid number for the current base"
-msgstr "מספר לא תקין עבור הבסיס הנוכחי"
-
-#: ../gcalctool/functions.c:405
-msgid "Too long number"
-msgstr "מספר ארוך מדי"
-
-#: ../gcalctool/functions.c:409
-msgid "Invalid bitwise operation parameter(s)"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/financial.ui.h:14
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
 msgstr ""
+"חישוב מספר תקופות הצבירה הנדרשות על מנת להביא את ההשקעה של הערך הנוכחי לערך "
+"עתידי, בריבית קבועה לכל תקופת הצבירה."
 
-#: ../gcalctool/functions.c:413
-msgid "Invalid modulus operation parameter(s)"
+#. Payment Period Dialog: Description of calculation
+#: ../data/financial.ui.h:16
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
 msgstr ""
+"חישוב מספר תקופות התשלום הנדרשות במהלך תקופת הפקדה רגילה, על מנת לצבור ערך "
+"עתידי, בריבית משתנה."
 
-#: ../gcalctool/functions.c:417
-msgid "Math operation error"
-msgstr "שגיאת פעולה מתמטית"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/financial.ui.h:18
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"חישוב הריבית המשתנה הנדרשת כדי להביא את ההשקעה אל הערך העתידי, על פני מספר "
+"תקופות צבירה."
 
-#: ../gcalctool/functions.c:421
-msgid "Malformed expression"
-msgstr "ביטוי שגוי"
+#. Present Value Dialog: Description of calculation
+#: ../data/financial.ui.h:20
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"חישוב הערך הנוכחי של השקעה המבוססת על סדרה של תשלומים שווים המהוונים בשיעור "
+"ריבית משתנה על מספר תקופות התשלום."
 
-#: ../gcalctool/get.c:263
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s: base should be 2, 8, 10 or 16\n"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/financial.ui.h:22
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"חישוב ערך המכירה החוזרת של מוצר, על פי מחיר המוצר ועל פי שולי הרווח הגולמי "
+"הרצויים."
 
-#: ../gcalctool/get.c:278
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: invalid display mode [%s]\n"
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/financial.ui.h:24
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"חישוב פחת של נכס על פי שיטת הקו הישר לתקופה אחת. שיטת הקו הישר מחלקת את עלות "
+"הפחת באופן שווה על פני אורך החיים השימושי של נכס. אורך החיים השימושיים הוא "
+"מספר התקופות, בדרך כלל שנים, אשר על פניהן נכס זה מופחת."
 
-#: ../gcalctool/get.c:293
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: invalid mode [%s]\n"
+#. Title of Compounding Term dialog
+#: ../data/financial.ui.h:26
+msgid "Compounding Term"
+msgstr "משך הצבירה"
 
-#: ../gcalctool/get.c:307
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: invalid trigonometric mode [%s]\n"
+#: ../data/financial.ui.h:27
+msgid ""
+"Converts between different currencies. Enter the amount and the currency you "
+"want to convert from on the upper row, and the currency you want to convert "
+"to on the lower row, and the amount will be displayed on the lower row."
+msgstr ""
+"מבצע המרה בין המטבעות השונים. יש להזין את הכמות ואת המטבע שממנו רוצים להעביר "
+"בשורה העליונה ואת המטבע אליו רוצים להמיר בשורה התחתונה, הסכום יופיע בשורה "
+"התחתונה."
 
-#: ../gcalctool/gtk.c:54 ../gcalctool.desktop.in.h:1
+#: ../data/financial.ui.h:28
+msgid "Currency Conversion"
+msgstr "המרת מטבעות"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../data/financial.ui.h:30
+msgid "Double-Declining Depreciation"
+msgstr "פחת בשיטת יתרה פוחתת כפולה"
+
+#. Title of Future Value dialog
+#: ../data/financial.ui.h:32
+msgid "Future Value"
+msgstr "ערך עתידי"
+
+#. Payment Period Dialog: Label before future value input
+#: ../data/financial.ui.h:34
+msgid "Future _Value:"
+msgstr "ערך _עתידי:"
+
+#. Title of Gross Profit Margin dialog
+#: ../data/financial.ui.h:36
+msgid "Gross Profit Margin"
+msgstr "שיעור הרווח הגולמי"
+
+#. Title of Payment Period dialog
+#: ../data/financial.ui.h:38
+msgid "Payment Period"
+msgstr "תקופת התשלום"
+
+#. Title of Periodic Interest Rate dialog
+#: ../data/financial.ui.h:40
+msgid "Periodic Interest Rate"
+msgstr "שער ריבית תקופתי"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/financial.ui.h:42
+msgid "Periodic Interest _Rate:"
+msgstr "שער ריבית _תקופתי:"
+
+#. Title of Periodic Payment dialog
+#: ../data/financial.ui.h:44
+msgid "Periodic Payment"
+msgstr "תשלום תקופתי"
+
+#. Title of Present Value dialog
+#: ../data/financial.ui.h:46
+msgid "Present Value"
+msgstr "ערך נוכחי"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/financial.ui.h:48
+msgid "Present _Value:"
+msgstr "ערך _נוכחי:"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../data/financial.ui.h:50
+msgid "Straight-Line Depreciation"
+msgstr "פחת בשיטת קו ישר"
+
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/financial.ui.h:52
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "פחת לפי סכום ספרות"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/financial.ui.h:54
+msgid "_Cost:"
+msgstr "ע_לות:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/financial.ui.h:56
+msgid "_Future Value:"
+msgstr "ערך _עתידי:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/financial.ui.h:58
+msgid "_Life:"
+msgstr "_חיים:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/financial.ui.h:60
+msgid "_Margin:"
+msgstr "_שוליים:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/financial.ui.h:62
+msgid "_Number of Periods:"
+msgstr "_מספר התקופות:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/financial.ui.h:64
+msgid "_Period:"
+msgstr "_תקופה:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/financial.ui.h:66
+msgid "_Periodic Payment:"
+msgstr "_תשלום תקופתי:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/financial.ui.h:68
+msgid "_Principal:"
+msgstr "_עיקרון:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/financial.ui.h:70
+msgid "_Salvage:"
+msgstr "_ניצולת:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/financial.ui.h:72
+msgid "_Term:"
+msgstr "_תקופה:"
+
+#. The label on the memory recall button
+#: ../data/gcalctool.ui.h:2
+msgid "&#x2190; R"
+msgstr "&#x2192; R"
+
+#. The label on the memory store button
+#: ../data/gcalctool.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2190; R"
+
+#. The label on the currency button
+#: ../data/gcalctool.ui.h:6
+msgid "&#xA4;$&#x20AC;"
+msgstr "&#xA4;$&#x20AC;"
+
+#. Right Shift Popup: Menu item to shift right by 10 bits
+#: ../data/gcalctool.ui.h:8
+msgid "10 places"
+msgstr "10 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 11 bits
+#: ../data/gcalctool.ui.h:10
+msgid "11 places"
+msgstr "11 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 12 bits
+#: ../data/gcalctool.ui.h:12
+msgid "12 places"
+msgstr "12 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 13 bits
+#: ../data/gcalctool.ui.h:14
+msgid "13 places"
+msgstr "13 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 14 bits
+#: ../data/gcalctool.ui.h:16
+msgid "14 places"
+msgstr "14 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 15 bits
+#: ../data/gcalctool.ui.h:18
+msgid "15 places"
+msgstr "15 מקומות"
+
+#. Word size combo: 16 bits
+#: ../data/gcalctool.ui.h:20
+msgid "16-bit"
+msgstr "16-סיביות"
+
+#. Word size combo: 32 bits
+#: ../data/gcalctool.ui.h:22
+msgid "32-bit"
+msgstr "32-סיביות"
+
+#. Word size combo: 64 bits
+#: ../data/gcalctool.ui.h:24
+msgid "64-bit"
+msgstr "64-סיביות"
+
+#. Word size combo: 8 bits
+#: ../data/gcalctool.ui.h:26
+msgid "8-bit"
+msgstr "8-סיביות"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/gcalctool.ui.h:28
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+#: ../data/gcalctool.ui.h:30
+msgid "Absolute Value"
+msgstr "ערך מוחלט"
+
+#. Tooltip for the absolute value button
+#: ../data/gcalctool.ui.h:32
+msgid "Absolute value [|]"
+msgstr "ערך מוחלט [|]"
+
+#. Tooltip for the addition button
+#: ../data/gcalctool.ui.h:34
+msgid "Add [+]"
+msgstr "חיבור [+]"
+
+#. Tooltip for the answer variable button
+#: ../data/gcalctool.ui.h:36
+msgid "Answer variable"
+msgstr "משתנה התשובה"
+
+#. Tooltip for the base 10 logarithm button
+#: ../data/gcalctool.ui.h:38
+msgid "Base 10 logarithm"
+msgstr "בסיס 10 לוגריתמי"
+
+#. Accessible name for the base 16 button
+#: ../data/gcalctool.ui.h:40
+msgid "Base 16"
+msgstr "בסיס 16"
+
+#. Accessible name for the base 2 button
+#: ../data/gcalctool.ui.h:42
+msgid "Base 2"
+msgstr "בסיס 2"
+
+#. Accessible name for the base 8 button
+#: ../data/gcalctool.ui.h:44
+msgid "Base 8"
+msgstr "בסיס 8"
+
+#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
+#: ../data/gcalctool.ui.h:46
+msgid "Binary"
+msgstr "בינרי"
+
+#. Tooltip for the boolean AND button
+#: ../data/gcalctool.ui.h:48
+msgid "Boolean AND"
+msgstr "AND לוגי"
+
+#. Tooltip for the boolean NOT button
+#: ../data/gcalctool.ui.h:50
+msgid "Boolean NOT"
+msgstr "NOT לוגי"
+
+#. Tooltip for the boolean OR button
+#: ../data/gcalctool.ui.h:52
+msgid "Boolean OR"
+msgstr "OR לוגי"
+
+#. Tooltip for the boolean exclusive OR button
+#: ../data/gcalctool.ui.h:54
+msgid "Boolean exclusive OR"
+msgstr "OR בלעדי בוליאני"
+
+#. Tooltip for the solve button
+#: ../data/gcalctool.ui.h:56
+msgid "Calculate result [=]"
+msgstr "חשב תוצאה [=]"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/gcalctool.ui.h:58
+msgid "Ch_aracter:"
+msgstr "_תו:"
+
+#. Tooltop for the clear display button
+#: ../data/gcalctool.ui.h:60
+msgid "Clear display [Escape]"
+msgstr "מחיקת התצוגה [Escape]"
+
+#. Label on the clear display button. Clr is short for Clear
+#: ../data/gcalctool.ui.h:62
+msgid "Clr"
+msgstr "Clr"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/gcalctool.ui.h:64
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:66
+msgid "Ddb"
+msgstr "Ddb"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../data/gcalctool.ui.h:68
+msgid "Decimal"
+msgstr "עשרוני"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../data/gcalctool.ui.h:70
+msgid "Degrees"
+msgstr "מעלות"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/gcalctool.ui.h:72
+msgid "Display _Format:"
+msgstr "מבנה התצוגה"
+
+#. Tooltip for the division button
+#: ../data/gcalctool.ui.h:74
+msgid "Divide [/]"
+msgstr "חילוק [/]"
+
+#. Tooltip for the end block button
+#: ../data/gcalctool.ui.h:76
+msgid "End block [)]"
+msgstr "סיום מקטע [)]"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../data/gcalctool.ui.h:78
+msgid "Engineering"
+msgstr "הנדסה"
+
+#. Tooltip for the Euler's number button
+#: ../data/gcalctool.ui.h:80
+msgid "Euler's number"
+msgstr "קבוע אוילר"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/gcalctool.ui.h:82
+msgid "Exponent"
+msgstr "מעריך"
+
+#. Tooltip for the exponentiation (x to the power of y) button
+#: ../data/gcalctool.ui.h:84
+msgid "Exponent [^ or **]"
+msgstr "מעריך [^ or **]"
+
+#. Accessible name for the factorial button
+#: ../data/gcalctool.ui.h:86
+msgid "Factorial"
+msgstr "עצרת"
+
+#. Tooltip for the factorial button
+#: ../data/gcalctool.ui.h:88
+msgid "Factorial [!]"
+msgstr "עצרת [!]"
+
+#. Accessible name for the factorize button
+#: ../data/gcalctool.ui.h:90
+msgid "Factorize"
+msgstr "פירוק לגורמים"
+
+#. Tooltip for the factorize button
+#: ../data/gcalctool.ui.h:92
+msgid "Factorize into prime numbers (Ctrl+F)"
+msgstr "פירוק למספרים ראשוניים (Ctrl+F)"
+
+#. Tooltip for the fractional portion button
+#: ../data/gcalctool.ui.h:94
+msgid "Fractional portion"
+msgstr "חלק השבר"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/gcalctool.ui.h:96
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/gcalctool.ui.h:98
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../data/gcalctool.ui.h:100
+msgid "Gradians"
+msgstr "גראדיאנים"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
+#: ../data/gcalctool.ui.h:102
+msgid "Hexadecimal"
+msgstr "הקסדצימלי"
+
+#. Title of insert ASCII dialog
+#: ../data/gcalctool.ui.h:104
+msgid "Insert ASCII Value"
+msgstr "הוספת ערך ASCII"
+
+#. Accessible name for the insert character button
+#: ../data/gcalctool.ui.h:106
+msgid "Insert Character"
+msgstr "הוספת תו"
+
+#. Tooltip for the insert character button
+#: ../data/gcalctool.ui.h:108
+msgid "Insert character"
+msgstr "הוספת תו"
+
+#. Tooltip for the integer portion button
+#: ../data/gcalctool.ui.h:110
+msgid "Integer portion"
+msgstr "חלק משלם חיובי"
+
+#. Accessible name for the inverse button
+#: ../data/gcalctool.ui.h:112
+msgid "Inverse"
+msgstr "היפוך"
+
+#. Tooltip for the inverse button
+#: ../data/gcalctool.ui.h:114
+msgid "Inverse [Ctrl+I]"
+msgstr "היפוך [Ctrl+I]"
+
+#. Tooltip for the modulus division button
+#: ../data/gcalctool.ui.h:116
+msgid "Modulus divide"
+msgstr "חילוק עם שארית"
+
+#. Tooltip for the multiplication button
+#: ../data/gcalctool.ui.h:118
+msgid "Multiply [*]"
+msgstr "כפל [*]"
+
+#. Tooltip for the natural logarithm button
+#: ../data/gcalctool.ui.h:120
+msgid "Natural logarithm"
+msgstr "לוגריתם טבעי"
+
+#. Tooltip for the numeric point button
+#: ../data/gcalctool.ui.h:122
+msgid "Numeric point [. or ,]"
+msgstr "נקודה מספרית [. או ,]"
+
+#. Number display mode combo: Octal, e.g. 2322&#x2088;
+#: ../data/gcalctool.ui.h:124
+msgid "Octal"
+msgstr "אוקטלי"
+
+#. Tooltip for the ones' complement button
+#: ../data/gcalctool.ui.h:126
+msgid "Ones' complement"
+msgstr "משלים לאחד"
+
+#. Tooltip on the percentage button
+#: ../data/gcalctool.ui.h:129
+#, no-c-format
+msgid "Percentage [%]"
+msgstr "אחוזים [%]"
+
+#. Tooltip for the Pi button
+#: ../data/gcalctool.ui.h:131
+msgid "Pi [Ctrl+P]"
+msgstr "פאי [Ctrl+P]"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/gcalctool.ui.h:133
+msgid "Pmt"
+msgstr "Pmt"
+
+#: ../data/gcalctool.ui.h:134
+msgid "Preferences"
+msgstr "העדפות"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/gcalctool.ui.h:136
+msgid "Pv"
+msgstr "Pv"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../data/gcalctool.ui.h:138
+msgid "Radians"
+msgstr "רדיאנים"
+
+#. Tooltip for the random number button
+#: ../data/gcalctool.ui.h:140
+msgid "Random number"
+msgstr "מספר אקראי"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/gcalctool.ui.h:142
+msgid "Rate"
+msgstr "דירוג"
+
+#. Accessible name for the recall value button
+#: ../data/gcalctool.ui.h:144
+msgid "Recall"
+msgstr "קריאה"
+
+#. Tooltip for the recall value button
+#: ../data/gcalctool.ui.h:146
+msgid "Recall value"
+msgstr "קריאה לערך"
+
+#. Accessible description for the area in which results are displayed
+#: ../data/gcalctool.ui.h:148
+msgid "Result Region"
+msgstr "איזור התוצאה"
+
+#. Tooltip for the root button
+#: ../data/gcalctool.ui.h:150
+msgid "Root [Ctrl+S]"
+msgstr "שורש [Ctrl+R]"
+
+#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
+#: ../data/gcalctool.ui.h:152
+msgid "Scientific"
+msgstr "מדעי"
+
+#. Accessible name for the scientific exponent button
+#: ../data/gcalctool.ui.h:154
+msgid "Scientific Exponent"
+msgstr "מעריך מדעי"
+
+#. Tooltip for the scientific exponent button
+#: ../data/gcalctool.ui.h:156
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "מעריך מדעי [Ctrl+E]"
+
+#. Accessible name for the shift left button
+#: ../data/gcalctool.ui.h:158
+msgid "Shift Left"
+msgstr "הזזה שמאלה"
+
+#. Accessible name for the shift right button
+#: ../data/gcalctool.ui.h:160
+msgid "Shift Right"
+msgstr "הזזה ימינה"
+
+#. Tooltip for the shift left button
+#: ../data/gcalctool.ui.h:162
+msgid "Shift left [<]"
+msgstr "הזחה שמאלה [<]"
+
+#. Tooltip for the shift right button
+#: ../data/gcalctool.ui.h:164
+msgid "Shift right [>]"
+msgstr "הזחה ימינה [>]"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/gcalctool.ui.h:166
+msgid "Show _thousands separators"
+msgstr "הצגת מפריד _אלפים"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/gcalctool.ui.h:168
+msgid "Show trailing _zeroes"
+msgstr "הצגת אפסים _עוקבים"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:170
+msgid "Sln"
+msgstr "Sln"
+
+#. Tooltip for the start block button
+#: ../data/gcalctool.ui.h:172
+msgid "Start block [(]"
+msgstr "התחלת מקטע [(]"
+
+#. Accessible name for the store value button
+#: ../data/gcalctool.ui.h:174
+msgid "Store"
+msgstr "שמירה"
+
+#. Tooltip for the store value button
+#: ../data/gcalctool.ui.h:176
+msgid "Store value"
+msgstr "שמירת הערך"
+
+#. Accessible name for the subscript mode button
+#: ../data/gcalctool.ui.h:178
+msgid "Subscript"
+msgstr "כתב תחתי"
+
+#. Tooltip for the subscript mode button
+#: ../data/gcalctool.ui.h:180
+msgid "Subscript number mode [Alt+number]"
+msgstr "מצב מספרים תחתי [Alt+number]"
+
+#. Tooltip for the subtraction button
+#: ../data/gcalctool.ui.h:182
+msgid "Subtract [-]"
+msgstr "חיסור [-]"
+
+#. Accessible name for the superscript mode button
+#: ../data/gcalctool.ui.h:184
+msgid "Superscript"
+msgstr "כתב עילי"
+
+#. Tooltip for the superscript mode button
+#: ../data/gcalctool.ui.h:186
+msgid "Superscript number mode [Ctrl+number]"
+msgstr "מצב מספרים עילי [Ctrl+number]"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/gcalctool.ui.h:188
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/gcalctool.ui.h:190
+msgid "Term"
+msgstr "תקופה"
+
+#. Tooltip for the truncate button
+#: ../data/gcalctool.ui.h:192
+msgid "Truncate value"
+msgstr "קיצוץ הערך"
+
+#. Tooltip for the two's complement button
+#: ../data/gcalctool.ui.h:194
+msgid "Two's complement"
+msgstr "משלים לשתיים"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/gcalctool.ui.h:196
+msgid "Word _size:"
+msgstr "_גודל Word:"
+
+#. Right Shift Popup: Menu item to shift right by 1 bit
+#: ../data/gcalctool.ui.h:198
+msgid "_1 place"
+msgstr "מקום _אחד"
+
+#. Right Shift Popup: Menu item to shift right by 2 bits
+#: ../data/gcalctool.ui.h:200
+msgid "_2 places"
+msgstr "_2 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 3 bits
+#: ../data/gcalctool.ui.h:202
+msgid "_3 places"
+msgstr "_3 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 4 bits
+#: ../data/gcalctool.ui.h:204
+msgid "_4 places"
+msgstr "_4 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 5 bits
+#: ../data/gcalctool.ui.h:206
+msgid "_5 places"
+msgstr "_5 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 6 bits
+#: ../data/gcalctool.ui.h:208
+msgid "_6 places"
+msgstr "_6 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 7 bits
+#: ../data/gcalctool.ui.h:210
+msgid "_7 places"
+msgstr "_7 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 8 bits
+#: ../data/gcalctool.ui.h:212
+msgid "_8 places"
+msgstr "_8 מקומות"
+
+#. Right Shift Popup: Menu item to shift right by 9 bits
+#: ../data/gcalctool.ui.h:214
+msgid "_9 places"
+msgstr "_9 מקומות"
+
+#. View|Advanced menu item
+#: ../data/gcalctool.ui.h:216
+msgid "_Advanced"
+msgstr "_מתקדם"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/gcalctool.ui.h:218
+msgid "_Angle units:"
+msgstr "יחידות ה_זווית:"
+
+#. View|Basic menu item
+#: ../data/gcalctool.ui.h:220
+msgid "_Basic"
+msgstr "_בסיסי"
+
+#. Calculator menu
+#: ../data/gcalctool.ui.h:222
+msgid "_Calculator"
+msgstr "_מחשבון"
+
+#. Help|Contents menu
+#: ../data/gcalctool.ui.h:224
+msgid "_Contents"
+msgstr "ת_כנים"
+
+#. View|Financial menu item
+#: ../data/gcalctool.ui.h:226
+msgid "_Financial"
+msgstr "_פיננסי"
+
+#. Help menu
+#: ../data/gcalctool.ui.h:228
+msgid "_Help"
+msgstr "ע_זרה"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/gcalctool.ui.h:230
+msgid "_Insert"
+msgstr "הו_ספה"
+
+#. View|Programming menu item
+#: ../data/gcalctool.ui.h:232
+msgid "_Programming"
+msgstr "_תכנות"
+
+#. View|Scientific menu item
+#: ../data/gcalctool.ui.h:234
+msgid "_Scientific"
+msgstr "מ_דעי"
+
+#. View menu
+#: ../data/gcalctool.ui.h:236
+msgid "_View"
+msgstr "_תצוגה"
+
+#. Translators: The window title when in basic mode
+#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
 msgid "Calculator"
 msgstr "מחשבון"
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Advanced"
-msgstr "מחשבון - מתקדם"
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "ביצוע חישובים פשוטים, מדעיים וכלכליים."
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Financial"
-msgstr "מחשבון - פיננסי"
+#: ../data/gcalctool.schemas.in.h:1
+msgid "Accuracy value"
+msgstr "Accuracy value"
 
-#: ../gcalctool/gtk.c:55
-msgid "Calculator - Scientific"
-msgstr "מחשבון - מדעי"
+#: ../data/gcalctool.schemas.in.h:2
+msgid "Display Mode"
+msgstr "מצב תצוגה"
 
-#: ../gcalctool/gtk.c:60
-#, c-format
-msgid "Calculator [%s]"
-msgstr "מחשבון [%s]"
-
-#: ../gcalctool/gtk.c:60
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "מחשבון [%s] - מתקדם"
-
-#: ../gcalctool/gtk.c:60
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "מחשבון [%s] - פיננסי"
-
-#: ../gcalctool/gtk.c:61
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "מחשבון [%s] - מדעי"
-
-#: ../gcalctool/gtk.c:495 ../glade/gcalctool.glade.h:385
-#, no-c-format
-msgid "_Other (%d) ..."
-msgstr "א_חר (%d) ..."
-
-#: ../gcalctool/gtk.c:499
-#, fuzzy, c-format
-msgid "Set accuracy from 0 to %d numeric place."
-msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "קבע דיוק מ 0 עד %d מקומות עשרוניים."
-msgstr[1] "קבע דיוק מ 0 עד %d מקומות עשרוניים."
-
-#. Translators: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:505
-#, fuzzy, c-format
-msgid "Currently set to %d place."
-msgid_plural "Currently set to %d places."
-msgstr[0] "הדיוק הנוכחי הוא %d מקומות."
-msgstr[1] "הדיוק הנוכחי הוא %d מקומות."
-
-#. Factorial
-#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
-msgid "Sin"
-msgstr "Sin"
-
-#: ../gcalctool/gtk.c:537
-msgid "Sinh"
-msgstr "Sinh"
-
-#: ../gcalctool/gtk.c:538
-msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:539
-msgid "Sinh<sup>-1</sup>"
-msgstr "Sinh<sup>-1</sup>"
-
-#. Factorial
-#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
-msgid "Cos"
-msgstr "Cos"
-
-#: ../gcalctool/gtk.c:541
-msgid "Cosh"
-msgstr "Cosh"
-
-#: ../gcalctool/gtk.c:542
-msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:543
-msgid "Cosh<sup>-1</sup>"
-msgstr "Cosh<sup>-1</sup>"
-
-#. Factorial
-#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
-msgid "Tan"
-msgstr "Tan"
-
-#: ../gcalctool/gtk.c:545
-msgid "Tanh"
-msgstr "Tanh"
-
-#: ../gcalctool/gtk.c:546
-msgid "Tan<sup>-1</sup>"
-msgstr "Tan<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:547
-msgid "Tanh<sup>-1</sup>"
-msgstr "Tanh<sup>-1</sup>"
-
-#. Translators: When the bit editor is visible, there will be two
-#. * rows of ones and zeroes shown. When the number being displayed in
-#. * in the calculator is an integer value, these ones and zeroes will
-#. * be sensitive, and they will correspond to the value of each of
-#. * the bits in the displayed integer number. By clicking on any of
-#. * the labels for these ones and zeroes, their value can be toggled
-#. * (a one becomes a zero and a zero becomes a one), causing the
-#. * displayed integer value to be adjusted accordingly.
-#.
-#: ../gcalctool/gtk.c:643
-msgid "Bit editor activated. Click on bit values to toggle them."
+#: ../data/gcalctool.schemas.in.h:3
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 
-#: ../gcalctool/gtk.c:1069
+#: ../data/gcalctool.schemas.in.h:4
+msgid "Indicates whether the memory register window is initially displayed."
+msgstr "Indicates whether the memory register window is initially displayed."
+
+#: ../data/gcalctool.schemas.in.h:5
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Indicates whether thousands separators are shown in large numbers."
+
+#: ../data/gcalctool.schemas.in.h:6
+msgid "Mode"
+msgstr "מצב"
+
+#: ../data/gcalctool.schemas.in.h:7
+msgid "Numeric Base"
+msgstr "Numeric Base"
+
+#: ../data/gcalctool.schemas.in.h:8
+msgid "Show Registers"
+msgstr "הצגת אוגרים"
+
+#: ../data/gcalctool.schemas.in.h:9
+msgid "Show Thousands Separators"
+msgstr "Show Thousands Separators"
+
+#: ../data/gcalctool.schemas.in.h:10
+msgid "Show Trailing Zeroes"
+msgstr "Show Trailing Zeroes"
+
+#: ../data/gcalctool.schemas.in.h:11
+msgid ""
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+msgstr ""
+"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+
+#: ../data/gcalctool.schemas.in.h:12
+msgid ""
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
+msgstr ""
+"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+"\" (fixed-point) and \"SCI\" (scientific)"
+
+#: ../data/gcalctool.schemas.in.h:13
+msgid ""
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
+msgstr ""
+"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+"\" (gradians) and \"RAD\" (radians)."
+
+#: ../data/gcalctool.schemas.in.h:14
+msgid "The initial x-coordinate for the window"
+msgstr "The initial x-coordinate for the window"
+
+#: ../data/gcalctool.schemas.in.h:15
+msgid "The initial y-coordinate for the window"
+msgstr "The initial y-coordinate for the window"
+
+#: ../data/gcalctool.schemas.in.h:16
+msgid ""
+"The number of digits displayed after the numeric point. This value must be "
+"in the range 0 to 9."
+msgstr ""
+"The number of digits displayed after the numeric point. This value must be "
+"in the range 0 to 9."
+
+#: ../data/gcalctool.schemas.in.h:17
+msgid "The number of pixels to place the window from the left of the screen."
+msgstr "The number of pixels to place the window from the left of the screen."
+
+#: ../data/gcalctool.schemas.in.h:18
+msgid "The number of pixels to place the window from the top of the screen."
+msgstr "The number of pixels to place the window from the top of the screen."
+
+#: ../data/gcalctool.schemas.in.h:19
+msgid "The numeric base for input and display."
+msgstr "The numeric base for input and display."
+
+#: ../data/gcalctool.schemas.in.h:20
+msgid ""
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
+msgstr ""
+"The size of the words used in bitwise operations. Valid values are 16, 32 "
+"and 64."
+
+#: ../data/gcalctool.schemas.in.h:21
+msgid "Trigonometric type"
+msgstr "Trigonometric type"
+
+#: ../data/gcalctool.schemas.in.h:22
+msgid "Word size"
+msgstr "Word size"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/calctool.c:79
+#, c-format
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+msgstr ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/calctool.c:87
+#, c-format
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/calctool.c:98
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+
+#. Description on gcalctool application options displayed on command-line
+#: ../src/calctool.c:112
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unit tests\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Application Options:\n"
+"  -u, --unittest                  Perform unit tests\n"
+"  -s, --solve <equation>          Solve the given equation"
+
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/calctool.c:155
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Argument --solve requires an equation to solve"
+
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/calctool.c:169
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "Unknown argument '%s'"
+
+#. Translators: Digits localized for the given language
+#: ../src/calctool.c:182
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#: ../src/currency.h:18
+msgid "Australian dollar"
+msgstr "דולר אוסטרלי"
+
+#: ../src/currency.h:19
+msgid "Bulgarian lev"
+msgstr "לב בולגרי"
+
+#: ../src/currency.h:20
+msgid "Brazilian real"
+msgstr "ריאל ברזילאי"
+
+#: ../src/currency.h:21
+msgid "Canadian dollar"
+msgstr "דולר קנדי"
+
+#: ../src/currency.h:22
+msgid "Swiss franc"
+msgstr "פרנק שווייצרי"
+
+#: ../src/currency.h:23
+msgid "Chinese yuan renminbi"
+msgstr "יואן ז'נמינבי סיני"
+
+#: ../src/currency.h:24
+msgid "Czech koruna"
+msgstr "קורונה צ'כית"
+
+#: ../src/currency.h:25
+msgid "Danish krone"
+msgstr "קרונה"
+
+#: ../src/currency.h:26
+msgid "Estonian kroon"
+msgstr "קרון"
+
+#: ../src/currency.h:27
+msgid "Euro"
+msgstr "אירו"
+
+#: ../src/currency.h:28
+msgid "Pound sterling"
+msgstr "לירה סטרלינג"
+
+#: ../src/currency.h:29
+msgid "Hong Kong dollar"
+msgstr "דולר הונג קונגי"
+
+#: ../src/currency.h:30
+msgid "Croatian kuna"
+msgstr "קונה קרואטית"
+
+#: ../src/currency.h:31
+msgid "Hungarian forint"
+msgstr "פורינט הונגרי"
+
+#: ../src/currency.h:32
+msgid "Indonesian rupiah"
+msgstr "רופיה אינדונזית"
+
+#: ../src/currency.h:33
+msgid "Indian rupee"
+msgstr "רופי הודי"
+
+#: ../src/currency.h:34
+msgid "Icelandic krona"
+msgstr "קרונה איסלנדית"
+
+#: ../src/currency.h:35
+msgid "Japanese yen"
+msgstr "ין יפני"
+
+#: ../src/currency.h:36
+msgid "South Korean won"
+msgstr "וון דרום קוריאני"
+
+#: ../src/currency.h:37
+msgid "Lithuanian litas"
+msgstr "ליטאס ליטאי"
+
+#: ../src/currency.h:38
+msgid "Latvian lats"
+msgstr "לאטס ליטאי"
+
+#: ../src/currency.h:39
+msgid "Mexican peso"
+msgstr "פזו מקסיקני"
+
+#: ../src/currency.h:40
+msgid "Malaysian ringgit"
+msgstr "רינגיט מלזי"
+
+#: ../src/currency.h:41
+msgid "Norwegian krone"
+msgstr "קרונה נורבגית"
+
+#: ../src/currency.h:42
+msgid "New Zealand dollar"
+msgstr "דולר ניו־זילנדי"
+
+#: ../src/currency.h:43
+msgid "Philippine peso"
+msgstr "פזו פיליפיני"
+
+#: ../src/currency.h:44
+msgid "Polish zloty"
+msgstr "זלוטי פולני"
+
+#: ../src/currency.h:45
+msgid "New Romanian leu"
+msgstr "לאו רומני חדש"
+
+#: ../src/currency.h:46
+msgid "Russian rouble"
+msgstr "רובל רוסי"
+
+#: ../src/currency.h:47
+msgid "Swedish krona"
+msgstr "קרונה שבדית"
+
+#: ../src/currency.h:48
+msgid "Singapore dollar"
+msgstr "דולר סינגפורי"
+
+#: ../src/currency.h:49
+msgid "Thai baht"
+msgstr "באט תאילנדי"
+
+#: ../src/currency.h:50
+msgid "New Turkish lira"
+msgstr "לירה טורקית חדשה"
+
+#: ../src/currency.h:51
+msgid "US dollar"
+msgstr "דולר אמריקאי"
+
+#: ../src/currency.h:52
+msgid "South African rand"
+msgstr "ראנד דרום אפריקאי"
+
+#: ../src/display.c:390
+msgid "No undo history"
+msgstr "אין היסטורית ביטול"
+
+#: ../src/display.c:405
+msgid "No redo steps"
+msgstr "אין צעדים לשחזר"
+
+#. Translators: This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/display.c:936
+msgid "No sane value to bitwise shift"
+msgstr "אין ערך שפוי לביצוע הזזת סיביות"
+
+#. Translators: Error displayed when trying to factorize a non-integer value
+#: ../src/display.c:952
+msgid "Need an integer to factorize"
+msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
+
+#: ../src/display.c:978
+msgid "No sane value to store"
+msgstr "אין ערך שפוי לשמירה"
+
+#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/display.c:1099
+msgid "Overflow. Try a bigger word size"
+msgstr "הצפה, יש לנסות גודל word גדול יותר"
+
+#. Translators: Error displayed to user when they an unknown variable is entered
+#: ../src/display.c:1104
+#, c-format
+msgid "Unknown variable '%s'"
+msgstr "המשתנה '%s' אינו מוכר"
+
+#. Translators: Error displayed to user when an unknown function is entered
+#: ../src/display.c:1110
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "הפונקציה '%s' אינה מוגדרת"
+
+#. Translators: Error displayed to user when an conversion with unknown units is attempted
+#: ../src/display.c:1116
+#, c-format
+msgid "Unknown conversion"
+msgstr "המרה בלתי מוכרת"
+
+#. Translators: Error displayed to user when they enter an invalid calculation
+#: ../src/display.c:1125
+msgid "Malformed expression"
+msgstr "ביטוי שגוי"
+
+#. Translators: The window title when in advanced mode
+#: ../src/gtk.c:98
+msgid "Calculator — Advanced"
+msgstr "מחשבון — מתקדם"
+
+#. Translators: The window title when in financial mode
+#: ../src/gtk.c:100
+msgid "Calculator — Financial"
+msgstr "מחשבון — פיננסי"
+
+#. Translators: The window title when in scientific mode
+#: ../src/gtk.c:102
+msgid "Calculator — Scientific"
+msgstr "מחשבון — מדעי"
+
+#. Translators: The window title when in programming mode
+#: ../src/gtk.c:104
+msgid "Calculator — Programming"
+msgstr "מחשבון — תכנות"
+
+#. Translators: Title of the error dialog when unable to load the UI files
+#: ../src/gtk.c:235
+msgid "Error loading user interface"
+msgstr "שגיאה באעינת מנשק המשתמש"
+
+#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
+#: ../src/gtk.c:238
+#, c-format
+msgid ""
+"A required file is missing or damaged. Please check your installation.\n"
+"\n"
+"%s"
+msgstr ""
+"קובץ הכרחי חסר או פגום. נא לבדוק את תקינות ההתקנה.\n"
+"\n"
+"%s"
+
+#. Translators: The translator credits. Please translate this with your name(s).
+#: ../src/gtk.c:557
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -306,1683 +1285,1128 @@ msgstr ""
 "פרוייקט תרגום GNOME לעברית\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../gcalctool/gtk.c:1072
+#. Translators: The license this software is under (GPL2+)
+#: ../src/gtk.c:560
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-
-#: ../gcalctool/gtk.c:1076
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-
-#: ../gcalctool/gtk.c:1080
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"‏Gcalctool הנה תכנה חופשית; ניתן להפיץ מחדש ו/או לשנות\n"
+"אותה תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם\n"
+"על ידי המוסד לתכנה חופשית; גם גרסה 2 של הרישיון, או\n"
+"(לבחירתך) כל גרסה עדכנית יותר.\n"
+"\n"
+"‏Gcalctool מופצת בתקווה שתביא תועלת אך ללא,\n"
+"כל אחריות; אפילו לא אחריות מרומזת לצורכי מסחר\n"
+"או התאמה לצרכים כלשהים.  ניתן לעיין ברישיון\n"
+"הציבורי הכללי של GNU לפרטים נוספים.\n"
+"\n"
+"ל־Gcalctool אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי\n"
+"של GNU; במידה שלא, יש לכתוב אל Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
-#: ../gcalctool/gtk.c:1091
+#. Translators: Program name in the about dialog
+#: ../src/gtk.c:576
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1093
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 The Gcalctool authors"
+#. Translators: Copyright notice in the about dialog
+#: ../src/gtk.c:579
+msgid "© 1986–2008 The Gcalctool authors"
+msgstr "© 1986–2008 יוצרי Gcalctool"
 
-#: ../gcalctool/gtk.c:1095
+#. Translators: Short description in the about dialog
+#: ../src/gtk.c:582
 msgid "Calculator with financial and scientific modes."
 msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
 
-#: ../gcalctool/gtk.c:1380 ../glade/gcalctool.glade.h:118
-msgid "C"
-msgstr "C"
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gtk.c:636
+msgid "Unable to open help file"
+msgstr "לא ניתן לפתוח את קובץ העזרה"
 
-#: ../gcalctool/gtk.c:1398 ../glade/gcalctool.glade.h:169
-msgid "F"
-msgstr "F"
-
-#: ../gcalctool/gtk.c:1579
-msgid "Changing Modes Clears Calculation"
-msgstr "החלפת מצבים מאפסת את המחשבון"
-
-#: ../gcalctool/gtk.c:1582
+#. Translators: Title of the error dialog when prompting to download currency rates
+#: ../src/gtk.c:1010
 msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr "כאשר מתחלף מצב, החישוב הנוכחי נמחק, והבסיס חוזר להיות עשרוני."
+"You don't have any recent currency rates. Should some be downloaded now?"
+msgstr "אין לך כל שיעורי מטבעות קודמים. להוריד כמה כעת?"
 
-#: ../gcalctool/gtk.c:1586
-msgid "_Do not warn me again"
-msgstr "_אל תשאל שוב"
+#. Translators: Title of the error dialog when unable to download currency rates
+#: ../src/gtk.c:1020
+msgid ""
+"Currency rates could not be downloaded. You may receive inaccurate results, "
+"or you may not receive any results at all."
+msgstr ""
+"לא ניתן להוריד את שערי החליפין. יתכן שהתוצאות שלך יהיו לא מדויקות או שלא "
+"יתקבלו תוצאות כלל."
 
-#: ../gcalctool/gtk.c:1591
-msgid "C_hange Mode"
-msgstr "_החלף מצב"
-
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1707
-msgid "R"
-msgstr "אוגר"
-
-#: ../gcalctool/gtk.c:2127
+#: ../src/gtk.c:1543
 msgid "Paste"
 msgstr "הדבק"
 
-#: ../gcalctool/gtk.c:2381
-msgid "Error loading user interface"
-msgstr "שגיאה באעינת מנשק המשתמש"
-
-#: ../gcalctool/gtk.c:2383
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/gtk.c:1773
 #, c-format
+msgid "Show %d decimal _places"
+msgstr "הצגת %d _מקומות עשרוניים"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
+msgid "Division by zero is undefined"
+msgstr "חלוקה באפס אינה מוגדרת"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1169 ../src/mp.c:1206
+msgid "Logarithm of zero is undefined"
+msgstr "הלוגריתם של אפס אינו מוגדר"
+
+#. Translators: Error displayed attempted to take logarithm of negative value
+#: ../src/mp.c:1178
+msgid "Logarithm of negative values is undefined"
+msgstr "לוגריתם של ערכים שליליים אינו מוגדר"
+
+#: ../src/mp.c:1552
+msgid "The power of negative numbers is only defined for integer exponents"
+msgstr "החזרה של מספר שליליים מוגדל רק עבור מעריכים שלמים חיוביים"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1559 ../src/mp.c:1852
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "החזקה של אפס אינה מוגדרת עבור מעריך שלילי"
+
+#: ../src/mp.c:1584
+msgid "Reciprocal of zero is undefined"
+msgstr "לא מוגדרת הדדיות לאפס"
+
+#: ../src/mp.c:1669
+msgid "Root must be non-zero"
+msgstr "על השורש להיות שונה מאפס"
+
+#: ../src/mp.c:1687
+msgid "Negative root of zero is undefined"
+msgstr "שורש שלילי של אפס אינו מוגדר"
+
+#: ../src/mp.c:1693
+msgid "nth root of negative number is undefined for even n"
+msgstr "השורש ה־nי של מספר שלילי אינו מוגדר עבור n זוגי"
+
+#: ../src/mp.c:1763
+msgid "Square root is undefined for negative values"
+msgstr "שורש ריבועי אינו מוגדר עבור ערכים שליליים"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1792
+msgid "Factorial is only defined for natural numbers"
+msgstr "פירוק לגורמים אפשרי עבור מספרים טבעיים בלבד"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1812
+msgid "Modulus division is only defined for integers"
+msgstr "חלוקת שארית מוגדרת רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:103
+msgid "Boolean AND is only defined for positive integers"
+msgstr "AND לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:116
+msgid "Boolean OR is only defined for positive integers"
+msgstr "OR לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:129
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "XOR לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:144
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "NOT לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:174
+msgid "Shift is only possible on integer values"
+msgstr "ניתן לבצע הזזה רק על מספרים שלמים וחיוביים"
+
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:278
 msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr "טנגנס אינו מוגדר עבור זוויות שהן כפולות של π ‏(180°) החל מ־π∕2 ‏(90°)"
 
-#: ../gcalctool/gtk.c:2607 ../gcalctool/gtk.c:2625
-msgid "No."
-msgstr "מס'"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:323
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "סינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
-#: ../gcalctool/gtk.c:2609 ../gcalctool/gtk.c:2627
-msgid "Value"
-msgstr "ערך"
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:340
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "קוסינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
-#: ../gcalctool/gtk.c:2611 ../gcalctool/gtk.c:2629
-msgid "Description"
-msgstr "תיאור"
-
-#. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2766 ../glade/gcalctool.glade.h:268
-#, no-c-format
-msgid "Reset to _Default (%d)"
-msgstr "החזר ל_ברירת מחדל (%)"
-
-#: ../gcalctool/mp.c:3152
-msgid "Negative X and non-integer Y not supported"
-msgstr ""
-
-#: ../gcalctool/mpmath.c:255
-msgid "Error, cannot calculate cosine"
-msgstr ""
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "בצע חישובים פשוטים, מדעיים וכלכליים."
-
-#. This is a percentage sign
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Left bracket
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#: ../glade/gcalctool.glade.h:12
-msgid "+"
-msgstr "+"
-
-#. Numeric point
-#: ../glade/gcalctool.glade.h:14
-msgid "."
-msgstr "."
-
-#. Numeric 0
-#: ../glade/gcalctool.glade.h:16
-msgid "0"
-msgstr "0"
-
-#. Numeric 1
-#: ../glade/gcalctool.glade.h:18
-msgid "1"
-msgstr "1"
-
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#: ../glade/gcalctool.glade.h:21
-msgid "10 places"
-msgstr "10 מקומות"
-
-#: ../glade/gcalctool.glade.h:22
-msgid "10 to the power of displayed value [}]"
-msgstr "10 בחזקת הערך המוצג [}]"
-
-#: ../glade/gcalctool.glade.h:23
-msgid "10 to the x"
-msgstr "10 בחזקת x"
-
-#. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:25
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#: ../glade/gcalctool.glade.h:26
-msgid "10x"
-msgstr "10x"
-
-#: ../glade/gcalctool.glade.h:27
-msgid "11 places"
-msgstr "11 מקומות"
-
-#: ../glade/gcalctool.glade.h:28
-msgid "12 places"
-msgstr "12 מקומות"
-
-#: ../glade/gcalctool.glade.h:29
-msgid "13 places"
-msgstr "13 מקומות"
-
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 מקומות"
-
-#: ../glade/gcalctool.glade.h:31
-msgid "15"
-msgstr "15"
-
-#: ../glade/gcalctool.glade.h:32
-msgid "15 places"
-msgstr "15 מקומות"
-
-#: ../glade/gcalctool.glade.h:33
-msgid "16 bit unsigned integer"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:34
-msgid "16-bit unsigned integer value of display (])"
-msgstr ""
-
-#. Numeric 2
-#: ../glade/gcalctool.glade.h:36
-msgid "2"
-msgstr "2"
-
-#. Numeric 3
-#: ../glade/gcalctool.glade.h:38
-msgid "3"
-msgstr "3"
-
-#: ../glade/gcalctool.glade.h:39
-msgid "31"
-msgstr "31"
-
-#: ../glade/gcalctool.glade.h:40
-msgid "32"
-msgstr "32"
-
-#: ../glade/gcalctool.glade.h:41
-msgid "32-bit unsigned integer value of display ([)"
-msgstr ""
-
-#. Numeric 4
-#: ../glade/gcalctool.glade.h:43
-msgid "4"
-msgstr "4"
-
-#: ../glade/gcalctool.glade.h:44
-msgid "47"
-msgstr "47"
-
-#. Numeric 5
-#: ../glade/gcalctool.glade.h:46
-msgid "5"
-msgstr "5"
-
-#. Numeric 6
-#: ../glade/gcalctool.glade.h:48
-msgid "6"
-msgstr "6"
-
-#: ../glade/gcalctool.glade.h:49
-msgid "63"
-msgstr "63"
-
-#. Numeric 7
-#: ../glade/gcalctool.glade.h:51
-msgid "7"
-msgstr "7"
-
-#. Numeric 8
-#: ../glade/gcalctool.glade.h:53
-msgid "8"
-msgstr "8"
-
-#. Numeric 9
-#: ../glade/gcalctool.glade.h:55
-msgid "9"
-msgstr "9"
-
-#. Shift left
-#: ../glade/gcalctool.glade.h:57
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:59
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x squared. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:61
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. X to the power of y. Note that this label uses mark up and the "y" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:63
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../glade/gcalctool.glade.h:64
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:558
 msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"‏<small><i><b>הערה:</b> כל הערכים הקבועים מצויינים בבסיס מספרי דצימלי.</i></"
-"small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:66
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">אוגר0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:68
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">אוגר1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:70
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">אוגר2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">אוגר3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">אוגר4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">אוגר5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">אוגר6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">אוגר7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">אוגר8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">אוגר9</span>"
-
-#. This is the calculate result button (=)
-#: ../glade/gcalctool.glade.h:86
-msgid "="
-msgstr "="
-
-#. Shift right
-#: ../glade/gcalctool.glade.h:88
-msgid ">"
-msgstr ">"
-
-#: ../glade/gcalctool.glade.h:89
-msgid "A"
-msgstr "A"
-
-#: ../glade/gcalctool.glade.h:90
-msgid "AND"
-msgstr "AND"
-
-#. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:92
-msgid "Abs"
-msgstr "Abs"
-
-#: ../glade/gcalctool.glade.h:93
-msgid "Absolute value"
-msgstr "ערך מוחלט"
-
-#: ../glade/gcalctool.glade.h:94
-msgid "Absolute value [u]"
-msgstr "ערך מוחלט [u]"
-
-#. Accuracy
-#: ../glade/gcalctool.glade.h:96
-msgid "Acc"
-msgstr "Acc"
-
-#: ../glade/gcalctool.glade.h:97
-msgid "Accuracy"
-msgstr "דיוק"
-
-#: ../glade/gcalctool.glade.h:98
-msgid "Add"
-msgstr "חיבור"
-
-#: ../glade/gcalctool.glade.h:99
-msgid "Add [+]"
-msgstr "חיבור [+]"
-
-#: ../glade/gcalctool.glade.h:100
-msgid "Advanced"
-msgstr "מתקדם"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:102
-msgid "Backspace"
-msgstr "Backspace"
-
-#: ../glade/gcalctool.glade.h:103
-msgid "Base 10 log [G]"
-msgstr "לוגריתם בבסיס 10 [G]"
-
-#: ../glade/gcalctool.glade.h:104
-msgid "Base 2 log [H]"
-msgstr "לוגריתם בבסיס 2 [H]"
-
-#: ../glade/gcalctool.glade.h:105
-msgid "Basic"
-msgstr "בסיסי"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Bitwise AND"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:107
-msgid "Bitwise AND [&]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:108
-msgid "Bitwise NOT"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:109
-msgid "Bitwise NOT [~]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:110
-msgid "Bitwise OR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:111
-msgid "Bitwise OR [|]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:112
-msgid "Bitwise XNOR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Bitwise XNOR [n]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:114
-msgid "Bitwise XOR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:115
-msgid "Bitwise XOR [x]"
-msgstr ""
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:117
-msgid "Bksp"
-msgstr "Bksp"
-
-#: ../glade/gcalctool.glade.h:119
-msgid "CE"
-msgstr "CE"
-
-#: ../glade/gcalctool.glade.h:120
-msgid "Calculate result"
-msgstr "חשב תוצאה"
-
-#: ../glade/gcalctool.glade.h:121
-msgid "Calculate result [=]"
-msgstr "חשב תוצאה [=]"
-
-#: ../glade/gcalctool.glade.h:122
-msgid "Ch_aracter:"
-msgstr "_תו:"
-
-#: ../glade/gcalctool.glade.h:123
-msgid "Change Sign [C]"
-msgstr "שנה סימן [C]"
-
-#: ../glade/gcalctool.glade.h:124
-msgid "Change sign"
-msgstr "שנה סימן"
-
-#: ../glade/gcalctool.glade.h:125
-msgid "Clear"
-msgstr "נקה"
-
-#: ../glade/gcalctool.glade.h:126
-msgid "Clear displayed value [Escape]"
-msgstr "נקה את הערך המוצג [Escape]"
-
-#: ../glade/gcalctool.glade.h:127
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "נקה את הערך המוצג וכל חישוב חלקי [Shift Delete]"
-
-#: ../glade/gcalctool.glade.h:128
-msgid "Clear entry"
-msgstr "ערך נקה"
-
-#: ../glade/gcalctool.glade.h:129
-msgid "Click a _value or description to edit it:"
-msgstr "לחץ על _ערך או תיאור כדי לערוך אותו:"
-
-#. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:131
-msgid "Clr"
-msgstr "Clr"
-
-#: ../glade/gcalctool.glade.h:132
-msgid "Compounding term"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:133
-msgid "Compounding term [m]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:134
-msgid "Con"
-msgstr "Con"
-
-#: ../glade/gcalctool.glade.h:135
-msgid "Constants"
-msgstr "קבועים"
-
-#: ../glade/gcalctool.glade.h:136
-msgid "Constants [#]"
-msgstr "קבועים [#]"
-
-#: ../glade/gcalctool.glade.h:137
-msgid "Copy selection"
-msgstr "העתק את הבחירה"
-
-#: ../glade/gcalctool.glade.h:140
-msgid "Cosine [J]"
-msgstr "קוסינוס [J]"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:144
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#: ../glade/gcalctool.glade.h:145
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:148
-msgid "Ddb"
-msgstr "Ddb"
-
-#: ../glade/gcalctool.glade.h:149
-msgid "De_grees"
-msgstr "מ_עלות"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "Divide"
-msgstr "חילוק"
-
-#: ../glade/gcalctool.glade.h:151
-msgid "Divide [/]"
-msgstr "חילוק [/]"
-
-#: ../glade/gcalctool.glade.h:152
-msgid "Double-declining depreciation"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:153
-#, fuzzy
-msgid "Double-declining depreciation [D]"
-msgstr "ירידת הערך של קו ישר"
-
-#: ../glade/gcalctool.glade.h:154
-msgid "E"
-msgstr "E"
-
-#: ../glade/gcalctool.glade.h:155
-msgid "E to the x"
-msgstr "‏E בחזקת x"
-
-#: ../glade/gcalctool.glade.h:156
-msgid "E_ng"
-msgstr "ה_נד"
-
-#: ../glade/gcalctool.glade.h:157
-msgid "Edit Constants"
-msgstr "ערוך קבועים"
-
-#: ../glade/gcalctool.glade.h:158
-msgid "Edit Constants..."
-msgstr "ערוך קבועים..."
-
-#: ../glade/gcalctool.glade.h:159
-msgid "Edit Functions"
-msgstr "ערוך פונקציות"
-
-#: ../glade/gcalctool.glade.h:160
-msgid "Edit Functions..."
-msgstr "ערוך פונקציות..."
-
-#: ../glade/gcalctool.glade.h:161
-msgid "End group of calculations [)]"
-msgstr "סיים קבוצת חישובים [)]"
-
-#: ../glade/gcalctool.glade.h:162
-msgid "Enter an exponential number [E]"
-msgstr "הכנס מספר מעריכי [E]"
-
-#. Exchange with register
-#: ../glade/gcalctool.glade.h:164
-msgid "Exch"
-msgstr "Exch"
-
-#: ../glade/gcalctool.glade.h:165
-msgid "Exchange displayed value with memory register [X]"
-msgstr "החלף את הערך המוצג עם אוגר זיכרון [X]"
-
-#: ../glade/gcalctool.glade.h:166
-msgid "Exchange with register"
-msgstr "החלף עם אוגר"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:168
-msgid "Exp"
-msgstr "Exp"
-
-#: ../glade/gcalctool.glade.h:170
-msgid "Factorial"
-msgstr "עצרת"
-
-#: ../glade/gcalctool.glade.h:171
-msgid "Factorial of displayed value [!]"
-msgstr "עצרת של הערך המוצג [!]"
-
-#: ../glade/gcalctool.glade.h:172
-msgid "Financial"
-msgstr "פיננסי"
-
-#. Fractional portion
-#: ../glade/gcalctool.glade.h:174
-msgid "Frac"
-msgstr "Frac"
-
-#: ../glade/gcalctool.glade.h:175
-msgid "Fractional portion"
-msgstr "חלק השבר"
-
-#: ../glade/gcalctool.glade.h:176
-msgid "Fractional portion of displayed value [:]"
-msgstr "חלק השבר של הערך המוצג [:]"
-
-#: ../glade/gcalctool.glade.h:177
-msgid "Fun"
-msgstr "Fun"
-
-#: ../glade/gcalctool.glade.h:178
-msgid "Future value"
-msgstr "ערך עתידי"
-
-#: ../glade/gcalctool.glade.h:179
-msgid "Future value [v]"
-msgstr "ערך עתידי [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:182
-msgid "Fv"
-msgstr "Fv"
-
-#: ../glade/gcalctool.glade.h:183
-msgid "Gr_adians"
-msgstr "_גראדיינים"
-
-#: ../glade/gcalctool.glade.h:184
-msgid "H_yp"
-msgstr "H_yp"
-
-#: ../glade/gcalctool.glade.h:185
-msgid "He_x"
-msgstr "ה_קסא"
-
-#: ../glade/gcalctool.glade.h:186
-msgid "Hexadecimal digit A"
-msgstr "הספרה A בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:187
-msgid "Hexadecimal digit A [a]"
-msgstr "הספרה A בהקסאדצימלית [a]"
-
-#: ../glade/gcalctool.glade.h:188
-msgid "Hexadecimal digit B"
-msgstr "הספרה B בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:189
-msgid "Hexadecimal digit B [b]"
-msgstr "הספרה B בהקסאדצימלית [b]"
-
-#: ../glade/gcalctool.glade.h:190
-msgid "Hexadecimal digit C"
-msgstr "הספרה C בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:191
-msgid "Hexadecimal digit C [c]"
-msgstr "הספרה C בהקסאדצימלית [c]"
-
-#: ../glade/gcalctool.glade.h:192
-msgid "Hexadecimal digit D"
-msgstr "הספרה D בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:193
-msgid "Hexadecimal digit D [d]"
-msgstr "הספרה D בהקסאדצימלית [d]"
-
-#: ../glade/gcalctool.glade.h:194
-msgid "Hexadecimal digit E"
-msgstr "הספרה E בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:195
-msgid "Hexadecimal digit E [e]"
-msgstr "הספרה E בהקסאדצימלית [e]"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Hexadecimal digit F"
-msgstr "הספרה F בהקסאדצימלית"
-
-#: ../glade/gcalctool.glade.h:197
-msgid "Hexadecimal digit F [f]"
-msgstr "הספרה F בהקסאדצימלית [f]"
-
-#: ../glade/gcalctool.glade.h:198
-msgid "Insert ASCII Value"
-msgstr "הכנס ערך ASCII"
-
-#: ../glade/gcalctool.glade.h:199
-msgid "Insert ASCII value"
-msgstr "הכנס ערך ASCII"
-
-#. Integer portion
-#: ../glade/gcalctool.glade.h:201
-msgid "Int"
-msgstr "Int"
-
-#: ../glade/gcalctool.glade.h:202
-msgid "Integer portion"
-msgstr "חלק שלם"
-
-#: ../glade/gcalctool.glade.h:203
-msgid "Integer portion of displayed value [i]"
-msgstr "החלק השלם של הערך המוצג [i]"
-
-#: ../glade/gcalctool.glade.h:204
-msgid "Left bracket"
-msgstr "סוגריים שמאליים"
-
-#. Natural logarithm
-#: ../glade/gcalctool.glade.h:206
-msgid "Ln"
-msgstr "Ln"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:208
-msgid "Log<sub>10</sub>"
-msgstr "Log<sub>10</sub>"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:210
-msgid "Log<sub>2</sub>"
-msgstr "Log<sub>2</sub>"
-
-#: ../glade/gcalctool.glade.h:211
-msgid "Memory Registers"
-msgstr "אוגרי זיכרון"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Mod"
-msgstr "Mod"
-
-#: ../glade/gcalctool.glade.h:213
-msgid "Modulus Division [M]"
-msgstr "חילוק מודולו [M]"
-
-#: ../glade/gcalctool.glade.h:214
-msgid "Multiply"
-msgstr "כפל"
-
-#: ../glade/gcalctool.glade.h:215
-msgid "Multiply [*]"
-msgstr "כפל [*]"
-
-#: ../glade/gcalctool.glade.h:216
-msgid "NOT"
-msgstr "NOT"
-
-#: ../glade/gcalctool.glade.h:217
-msgid "Natural log [N]"
-msgstr "לוגוריתם טבעי [N]"
-
-#: ../glade/gcalctool.glade.h:218
-msgid "Numeric 0"
-msgstr "מספר 0"
-
-#: ../glade/gcalctool.glade.h:219
-msgid "Numeric 1"
-msgstr "מספר 1"
-
-#: ../glade/gcalctool.glade.h:220
-msgid "Numeric 2"
-msgstr "מספר 2"
-
-#: ../glade/gcalctool.glade.h:221
-msgid "Numeric 3"
-msgstr "מספר 3"
-
-#: ../glade/gcalctool.glade.h:222
-msgid "Numeric 4"
-msgstr "מספר 4"
-
-#: ../glade/gcalctool.glade.h:223
-msgid "Numeric 5"
-msgstr "מספר 5"
-
-#: ../glade/gcalctool.glade.h:224
-msgid "Numeric 6"
-msgstr "מספר 6"
-
-#: ../glade/gcalctool.glade.h:225
-msgid "Numeric 7"
-msgstr "מספר 7"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Numeric 8"
-msgstr "מספר 8"
-
-#: ../glade/gcalctool.glade.h:227
-msgid "Numeric 9"
-msgstr "מספר 9"
-
-#: ../glade/gcalctool.glade.h:228
-msgid "Numeric point"
-msgstr "נקודה עשרונית"
-
-#: ../glade/gcalctool.glade.h:229
-msgid "OR"
-msgstr "OR"
-
-#: ../glade/gcalctool.glade.h:230
-msgid "Paste selection"
-msgstr "הדבק את הבחירה"
-
-#: ../glade/gcalctool.glade.h:231
-msgid "Payment period"
-msgstr "תקופת תשלום"
-
-#: ../glade/gcalctool.glade.h:232
-msgid "Payment period [t]"
-msgstr "תקופת תשלום [t]"
-
-#: ../glade/gcalctool.glade.h:233
-msgid "Percentage"
-msgstr "אחוזים"
-
-#: ../glade/gcalctool.glade.h:235
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "אחוזים [%]"
-
-#: ../glade/gcalctool.glade.h:236
-msgid "Periodic interest rate"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:237
-msgid "Periodic interest rate [T]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:238
-msgid "Periodic payment"
-msgstr "תשלום תקופתי"
-
-#: ../glade/gcalctool.glade.h:239
-msgid "Periodic payment [P]"
-msgstr "תשלום תקופתי [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:242
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../glade/gcalctool.glade.h:243
-msgid "Present value"
-msgstr "ערך נוכחי"
-
-#: ../glade/gcalctool.glade.h:244
-msgid "Present value [p]"
-msgstr "ערך נוכחי [p]"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:247
-msgid "Pv"
-msgstr "Pv"
-
-#: ../glade/gcalctool.glade.h:248
-msgid "Quit the calculator"
-msgstr "יציאה מהמחשבון"
-
-#: ../glade/gcalctool.glade.h:249
-#, fuzzy
-msgid "Raise displayed value to the power of y [^]"
-msgstr "הזז את הערך המוצג 1-15 מקומות שמאלה"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:251
-msgid "Rand"
-msgstr "Rand"
-
-#: ../glade/gcalctool.glade.h:252
-msgid "Random number"
-msgstr "מספר אקראי"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "מספר אקראי בטווח שבין 0.0 ל 1.0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:260
-msgid "Rate"
-msgstr "דירוג"
-
-#. Retrieve from register
-#: ../glade/gcalctool.glade.h:262
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../glade/gcalctool.glade.h:263
-msgid "Reciprocal"
-msgstr "הפכי"
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Reciprocal [r]"
-msgstr "הפכי [r]"
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Redo"
-msgstr "בצע שוב את הפעולה האחרונה שבוטלה"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "הסר את התו הימני ביותר מהערך המוצג [Backspace]"
-
-#: ../glade/gcalctool.glade.h:269
-msgid "Result Region"
-msgstr "איזור התוצאה"
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Retrieve from register"
-msgstr "אחזר ערך מאוגר"
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Retrieve memory register to display [R]"
-msgstr "אחזר ערך מאוגר זיכרון לתצוגה [R]"
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Right bracket"
-msgstr "סוגריים ימניים"
-
-#: ../glade/gcalctool.glade.h:273
-msgid "Scientific"
-msgstr "מדעי"
-
-#: ../glade/gcalctool.glade.h:274
-msgid "Set Precision"
-msgstr "קבע דיוק"
-
-#: ../glade/gcalctool.glade.h:275
-msgid "Set accuracy from 0 to 9 numeric places [A]"
-msgstr "קבע דיוק מ 0 עד 9 מקומות עשרוניים [A]"
-
-#: ../glade/gcalctool.glade.h:276
-msgid "Set display type to engineering format"
-msgstr "קבע את התצוגה לתבנית הנדסית"
-
-#: ../glade/gcalctool.glade.h:277
-msgid "Set display type to fixed-point format"
-msgstr "קבע את התצוגה לתבנית נקודה קבועה"
-
-#: ../glade/gcalctool.glade.h:278
-msgid "Set display type to scientific format"
-msgstr "קבע את התצוגה לתבנית מדעית"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:280
-msgid "Set inverse option for trigonometric functions"
-msgstr "קבע את אפשרות ההפיכה לפונקציות טריגונומטריות"
-
-#: ../glade/gcalctool.glade.h:281
-msgid "Set numeric base to binary (base 2)"
-msgstr "קבע את הבסיס המספרי כבינארי (בסיס 2)"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Set numeric base to decimal (base 10)"
-msgstr "קבע את הבסיס המספרי כדצימלי (בסיס 10)"
-
-#: ../glade/gcalctool.glade.h:283
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "קבע את הבסיס המספרי כהקסדצימלי (בסיס 16)"
-
-#: ../glade/gcalctool.glade.h:284
-msgid "Set numeric base to octal (base 8)"
-msgstr "קבע את הבסיס המספרי כאוקטלי (בסיס 8)"
-
-#: ../glade/gcalctool.glade.h:285
-msgid "Set trigonometric type to degrees"
-msgstr "קבע מצב טריגונומטרי למעלות"
-
-#: ../glade/gcalctool.glade.h:286
-msgid "Set trigonometric type to gradians"
-msgstr "קבע מצב טריגונומטרי לגראדיינים"
-
-#: ../glade/gcalctool.glade.h:287
-msgid "Set trigonometric type to radians"
-msgstr "קבע מצב טריגונומטרי לראדיינים"
-
-#: ../glade/gcalctool.glade.h:288
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "הזז את הערך המוצג 1-15 מקומות שמאלה [<]"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "הזז את הערך המוצג 1-15 מקומות ימינה [>]"
-
-#: ../glade/gcalctool.glade.h:290
-msgid "Shift left"
-msgstr "הזז שמאלה"
-
-#: ../glade/gcalctool.glade.h:291
-msgid "Shift right"
-msgstr "הזז ימינה"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:295
-msgid "Show Bit Editor"
-msgstr ""
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:299
-msgid "Show Bit _Editor"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:300
-msgid "Show T_housands Separator"
-msgstr "הצג _מפריד אלפים"
-
-#: ../glade/gcalctool.glade.h:301
-msgid "Show _Trailing Zeroes"
-msgstr "הצג אפסים _עוקבים"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:305
-msgid "Show bit editor"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:306
-msgid "Show help contents"
-msgstr "הצג את תכני העזרה"
-
-#: ../glade/gcalctool.glade.h:307
-msgid "Show memory registers"
-msgstr "הצג אוגרי זיכרון"
-
-#: ../glade/gcalctool.glade.h:308
-msgid "Show the About Gcalctool dialog"
-msgstr "הצג את דו-השיח אודות Gcalctool"
-
-#: ../glade/gcalctool.glade.h:309
-msgid "Show thousands separator"
-msgstr "הצג מפריד אלפים"
-
-#: ../glade/gcalctool.glade.h:310
-msgid "Show trailing zeroes"
-msgstr "הצג אפסים _עוקבים"
-
-#: ../glade/gcalctool.glade.h:311
-msgid "Significant _places:"
-msgstr "מקומות _משמעותיים:"
-
-#: ../glade/gcalctool.glade.h:314
-msgid "Sine [K]"
-msgstr "סינוס [K]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:317
-msgid "Sln"
-msgstr "Sln"
-
-#: ../glade/gcalctool.glade.h:318
-msgid "Square"
-msgstr "ריבוע"
-
-#: ../glade/gcalctool.glade.h:319
-msgid "Square [@]"
-msgstr "ריבוע [@]"
-
-#: ../glade/gcalctool.glade.h:320
-msgid "Square root"
-msgstr "שורש ריבועי"
-
-#: ../glade/gcalctool.glade.h:321
-msgid "Square root [s]"
-msgstr "שורש ריבועי [s]"
-
-#: ../glade/gcalctool.glade.h:322
-msgid "Start group of calculations [(]"
-msgstr "התחל קבוצת חישובים [(]"
-
-#. Store to register
-#: ../glade/gcalctool.glade.h:324
-msgid "Sto"
-msgstr "Sto"
-
-#: ../glade/gcalctool.glade.h:325
-msgid "Store displayed value in memory register [S]"
-msgstr "שמור ערך מוצג באוגר זיכרון [S]"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Store to register"
-msgstr "שמור לאוגר"
-
-#: ../glade/gcalctool.glade.h:327
-#, fuzzy
-msgid "Straight-line depreciation"
-msgstr "ירידת הערך של קו ישר"
-
-#: ../glade/gcalctool.glade.h:328
-#, fuzzy
-msgid "Straight-line depreciation [l]"
-msgstr "ירידת הערך של קו ישר"
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Subtract"
-msgstr "חיסור"
-
-#: ../glade/gcalctool.glade.h:330
-msgid "Subtract [-]"
-msgstr "חיסור [-]"
-
-#: ../glade/gcalctool.glade.h:331
-msgid "Sum-of-the years'-digits depreciation"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:332
-#, fuzzy
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "ירידת הערך של קו ישר"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:336
-msgid "Syd"
-msgstr "Syd"
-
-#: ../glade/gcalctool.glade.h:339
-msgid "Tangent [L]"
-msgstr "Tangent [L]"
-
-#: ../glade/gcalctool.glade.h:340
-msgid "Ten to the x"
-msgstr "10 בחזקת x"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:343
-msgid "Term"
-msgstr "Term"
-
-#: ../glade/gcalctool.glade.h:344
-msgid "Undo"
-msgstr "בטל את הפעולה האחרונה"
-
-#: ../glade/gcalctool.glade.h:345
-msgid "User-defined functions"
-msgstr "פונקציות מותאמות אישית"
-
-#: ../glade/gcalctool.glade.h:346
-msgid "User-defined functions [F]"
-msgstr "פונקציות מותאמות אישית [F]"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "X to the y"
-msgstr "‏X בחזקת y"
-
-#: ../glade/gcalctool.glade.h:348
-msgid "XNOR"
-msgstr "XNOR"
-
-#: ../glade/gcalctool.glade.h:349
-msgid "XOR"
-msgstr "XOR"
-
-#: ../glade/gcalctool.glade.h:350
-msgid "_0 significant places"
-msgstr "_0 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:351
-msgid "_1 place"
-msgstr "מקום _אחד"
-
-#: ../glade/gcalctool.glade.h:352
-msgid "_1 significant place"
-msgstr "_מקום משמעותי אחד"
-
-#: ../glade/gcalctool.glade.h:353
-msgid "_2 places"
-msgstr "_2 מקומות"
-
-#: ../glade/gcalctool.glade.h:354
-msgid "_2 significant places"
-msgstr "_2 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:355
-msgid "_3 places"
-msgstr "_3 מקומות"
-
-#: ../glade/gcalctool.glade.h:356
-msgid "_3 significant places"
-msgstr "_3 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:357
-msgid "_4 places"
-msgstr "_4 מקומות"
-
-#: ../glade/gcalctool.glade.h:358
-msgid "_4 significant places"
-msgstr "_4 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:359
-msgid "_5 places"
-msgstr "_5 מקומות"
-
-#: ../glade/gcalctool.glade.h:360
-msgid "_5 significant places"
-msgstr "_5 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:361
-msgid "_6 places"
-msgstr "_6 מקומות"
-
-#: ../glade/gcalctool.glade.h:362
-msgid "_6 significant places"
-msgstr "_6 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:363
-msgid "_7 places"
-msgstr "_7 מקומות"
-
-#: ../glade/gcalctool.glade.h:364
-msgid "_7 significant places"
-msgstr "_7 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:365
-msgid "_8 places"
-msgstr "_8 מקומות"
-
-#: ../glade/gcalctool.glade.h:366
-msgid "_8 significant places"
-msgstr "_8 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:367
-msgid "_9 places"
-msgstr "_9 מקומות"
-
-#: ../glade/gcalctool.glade.h:368
-msgid "_9 significant places"
-msgstr "_9 מקומות משמעותיים"
-
-#: ../glade/gcalctool.glade.h:369
-msgid "_Advanced"
-msgstr "_מתקדם"
-
-#: ../glade/gcalctool.glade.h:370
-msgid "_Basic"
-msgstr "בסיסי_"
-
-#: ../glade/gcalctool.glade.h:371
-msgid "_Bin"
-msgstr "_בינ"
-
-#: ../glade/gcalctool.glade.h:372
-msgid "_Calculator"
-msgstr "_מחשבון"
-
-#: ../glade/gcalctool.glade.h:373
-#, fuzzy
-msgid "_Contents"
-msgstr "קבועים"
-
-#: ../glade/gcalctool.glade.h:374
-msgid "_Dec"
-msgstr "_דצי"
-
-#: ../glade/gcalctool.glade.h:375
-msgid "_Edit"
-msgstr "_עריכה"
-
-#: ../glade/gcalctool.glade.h:376
-msgid "_Financial"
-msgstr "_פיננסי"
-
-#: ../glade/gcalctool.glade.h:377
-msgid "_Fix"
-msgstr "_קבו"
-
-#: ../glade/gcalctool.glade.h:378
-msgid "_Help"
-msgstr "_עזרה"
-
-#: ../glade/gcalctool.glade.h:379
-msgid "_Insert"
-msgstr "ה_כנס"
-
-#: ../glade/gcalctool.glade.h:380
-msgid "_Insert ASCII value..."
-msgstr "הכנס ערך _ASCII..."
-
-#: ../glade/gcalctool.glade.h:381
-msgid "_Inv"
-msgstr "_Inv"
-
-#: ../glade/gcalctool.glade.h:382
-msgid "_Memory Registers"
-msgstr "_אוגרי זיכרון"
-
-#: ../glade/gcalctool.glade.h:383
-msgid "_Oct"
-msgstr "_אוק"
-
-#: ../glade/gcalctool.glade.h:386
-msgid "_Radians"
-msgstr "_ראדיינים"
-
-#: ../glade/gcalctool.glade.h:387
-msgid "_Redo"
-msgstr "_בצע שוב"
-
-#: ../glade/gcalctool.glade.h:388
-msgid "_Sci"
-msgstr "_מדע"
-
-#: ../glade/gcalctool.glade.h:389
-msgid "_Scientific"
-msgstr "מ_דעי"
-
-#: ../glade/gcalctool.glade.h:390
-msgid "_Set"
-msgstr "_קבע"
-
-#: ../glade/gcalctool.glade.h:391
-msgid "_Undo"
-msgstr "_בטל"
-
-#: ../glade/gcalctool.glade.h:392
-msgid "_View"
-msgstr "_תצוגה"
-
-#: ../glade/gcalctool.glade.h:393
-msgid "e to the power of displayed value [{]"
-msgstr "‏e בחזקת הערך המוצג [{]"
-
-#. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:395
-msgid "e<sup>x</sup>"
-msgstr "e<sup>x</sup>"
-
-#: ../glade/gcalctool.glade.h:396
-msgid "ex"
-msgstr "ex"
-
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:400
-msgid "register 0"
-msgstr "אוגר 0"
-
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
-msgid "register 1"
-msgstr "אוגר 1"
-
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
-msgid "register 2"
-msgstr "אוגר 2"
-
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
-msgid "register 3"
-msgstr "אוגר 3"
-
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
-msgid "register 4"
-msgstr "אוגר 4"
-
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
-msgid "register 5"
-msgstr "אוגר 5"
-
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
-msgid "register 6"
-msgstr "אוגר 6"
-
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
-msgid "register 7"
-msgstr "אוגר 7"
-
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
-msgid "register 8"
-msgstr "אוגר 8"
-
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
-msgid "register 9"
-msgstr "אוגר 9"
-
-#: ../glade/gcalctool.glade.h:437
-msgid "x2"
-msgstr "x2"
-
-#: ../glade/gcalctool.glade.h:438
-msgid "xy"
-msgstr "xy"
-
-#. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:440
-msgid "±"
-msgstr "±"
-
-#. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:442
-msgid "×"
-msgstr "×"
-
-#. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:444
-msgid "÷"
-msgstr "÷"
-
-#. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:446
-msgid "−"
-msgstr "−"
-
-#. This is a square root sign
-#: ../glade/gcalctool.glade.h:448
-msgid "√"
-msgstr "√"
+"Inverse hyperbolic cosine is undefined for values less than or equal to one"
+msgstr "קוסינוס היפרבולי הפוך אינו מוגדר עבור ערכים הקטנים או שווים לאחד"
 
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:582
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "טנגנס היפרבולי הפוך אינו מוגדל עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
+#~ msgid "Clear"
+#~ msgstr "ניקוי"
 
+#~ msgid "Undo"
+#~ msgstr "ביטול הפעולה האחרונה"
 
+#~ msgid "Insert Character Code"
+#~ msgstr "הוספת קוד תו"
 
+#~ msgid "Number _Format:"
+#~ msgstr "מבנה ה_ספרות:"
 
+#~ msgid "Angle units"
+#~ msgstr "Angle units"
 
+#~ msgid "Button mode"
+#~ msgstr "Button mode"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "Currency of the current calculation"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "Currency to convert the current calculation into"
+
+#~ msgid "Number format"
+#~ msgstr "Number format"
+
+#~ msgid "Source currency"
+#~ msgstr "Source currency"
+
+#~ msgid "Target currency"
+#~ msgstr "Target currency"
+
+#~ msgid "The angle units to use"
+#~ msgstr "The angle units to use"
+
+#~ msgid "The button mode"
+#~ msgstr "The button mode"
+
+#~ msgid "The format to display numbers in"
+#~ msgstr "The format to display numbers in"
+
+#~ msgid "The numeric base"
+#~ msgstr "The numeric base"
+
+#~ msgid "Additional Functions"
+#~ msgstr "פונקציות נוספות"
+
+#~ msgid "Square [Ctrl+2]"
+#~ msgstr "ריבוע [Ctrl+2]"
+
+#~ msgid "Complex argument"
+#~ msgstr "הארגומנט המרוכב"
+
+#~ msgid "Complex conjugate"
+#~ msgstr "צמוד מרוכב "
+
+#~ msgid "Square root [Ctrl+R]"
+#~ msgstr "שורש ריבועי [Ctrl+R]"
+
+#~ msgid "Logarithm"
+#~ msgstr "לוגריתם"
+
+#~ msgid "Sine"
+#~ msgstr "סינוס"
+
+#~ msgid "Cosine"
+#~ msgstr "קוסינוס"
+
+#~ msgid "Tangent"
+#~ msgstr "טנגנס"
+
+#~ msgid "Hyperbolic Sine"
+#~ msgstr "סינוס היפרבולי"
+
+#~ msgid "Hyperbolic Cosine"
+#~ msgstr "קוסינוס היפרבולי"
+
+#~ msgid "Hyperbolic Tangent"
+#~ msgstr "טנגנס היפרבולי"
+
+#~ msgid "Real Component"
+#~ msgstr "רכיב ממשי"
+
+#~ msgid "Imaginary Component"
+#~ msgstr "רכיב מדומה"
+
+#~ msgid "Assign Variable"
+#~ msgstr "הקצאת משתנה"
+
+#~ msgid "Calculate Result"
+#~ msgstr "חישוב תוצאה"
+
+#~ msgid "Factorize [Ctrl+F]"
+#~ msgstr "פירוק לגורמים [Ctrl+F]"
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "ביטול [Ctrl+Z]"
+
+#~ msgid "Double Declining Depreciation"
+#~ msgstr "פחת בשיטת יתרה פוחתת כפולה"
+
+#~ msgid "Financial Term"
+#~ msgstr "תקופה חשבונאית"
+
+#~ msgid "Sum of the Years Digits Depreciation"
+#~ msgstr "פחת לפי סכום ספרות"
+
+#~ msgid "Straight Line Depreciation"
+#~ msgstr "פחת בשיטת קו ישר"
+
+#~ msgid "No variables defined"
+#~ msgstr "לא הוגדר משתנה"
+
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "מקום אחד"
+#~ msgstr[1] "%d מקומות"
+
+#~ msgid "Round"
+#~ msgstr "עיגול"
+
+#~ msgid "Floor"
+#~ msgstr "רצפה"
+
+#~ msgid "Ceiling"
+#~ msgstr "תקרה"
+
+#~ msgid "Sign"
+#~ msgstr "סימן"
+
+#~ msgid "No redo history"
+#~ msgstr "אין היסטוריית שחזור"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "הערך המוצג איננו שלם חיובי"
+
+#~ msgid "_Close"
+#~ msgstr "ס_גירה"
+
+#~ msgid "Fixed"
+#~ msgstr "קבועה"
+
+#~ msgid "_Mode"
+#~ msgstr "_מצב"
+
+#~ msgid "Argument not defined for zero"
+#~ msgstr "לא מוגדר ארגומנט עבור אפס"
+
+#~ msgid "Currency Converter"
+#~ msgstr "ממיר מטבעות"
+
+#~ msgid "square root of 2"
+#~ msgstr "שורש ריבועי של 2"
+
+#~ msgid "pi"
+#~ msgstr "pi"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "מעלות בראדיין"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "2 ^ 20"
 
 #, fuzzy
-
-
-
-
-
-
-
-
-
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "קילוג'אולים אן יחידות חום בריטיות"
 
 #, fuzzy
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "סנטימטרים רבועים או אינצ'ים רבועים"
 
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s as next argument.\n"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s version %s\n"
+#~ "\n"
 
 #, fuzzy
+#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+#~ msgstr "Usage: %s: [-D] [-E] [-a accuracy] "
+
+#~ msgid "\t\t [-?] [-v] [-h]\n"
+#~ msgstr "\t\t [-?] [-v] [-h]\n"
+
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-a needs accuracy value"
+
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: accuracy should be in the range 0-%d\n"
+
+#~ msgid "Malformed function"
+#~ msgstr "פונקציה שגויה"
+
+#~ msgid "Invalid number for the current base"
+#~ msgstr "מספר לא תקין עבור הבסיס הנוכחי"
+
+#~ msgid "Too long number"
+#~ msgstr "מספר ארוך מדי"
+
+#~ msgid "Math operation error"
+#~ msgstr "שגיאת פעולה מתמטית"
+
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s: base should be 2, 8, 10 or 16\n"
+
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: invalid display mode [%s]\n"
+
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: invalid mode [%s]\n"
+
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: invalid trigonometric mode [%s]\n"
+
+#~ msgid "Calculator [%s]"
+#~ msgstr "מחשבון [%s]"
+
+#~ msgid "Calculator [%s] - Advanced"
+#~ msgstr "מחשבון [%s] - מתקדם"
+
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "מחשבון [%s] - פיננסי"
+
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "מחשבון [%s] - מדעי"
+
+#~ msgid "_Other (%d) ..."
+#~ msgstr "א_חר (%d) ..."
 
 #, fuzzy
+#~ msgid "Set accuracy from 0 to %d numeric place."
+#~ msgid_plural "Set accuracy from 0 to %d numeric places."
+#~ msgstr[0] "קבע דיוק מ 0 עד %d מקומות עשרוניים."
+#~ msgstr[1] "קבע דיוק מ 0 עד %d מקומות עשרוניים."
 
 #, fuzzy
+#~ msgid "Currently set to %d place."
+#~ msgid_plural "Currently set to %d places."
+#~ msgstr[0] "הדיוק הנוכחי הוא %d מקומות."
+#~ msgstr[1] "הדיוק הנוכחי הוא %d מקומות."
+
+#~ msgid "Sinh"
+#~ msgstr "Sinh"
+
+#~ msgid "Sin<sup>-1</sup>"
+#~ msgstr "Sin<sup>-1</sup>"
+
+#~ msgid "Sinh<sup>-1</sup>"
+#~ msgstr "Sinh<sup>-1</sup>"
+
+#~ msgid "Cosh"
+#~ msgstr "Cosh"
+
+#~ msgid "Cos<sup>-1</sup>"
+#~ msgstr "Cos<sup>-1</sup>"
+
+#~ msgid "Cosh<sup>-1</sup>"
+#~ msgstr "Cosh<sup>-1</sup>"
+
+#~ msgid "Tan"
+#~ msgstr "Tan"
+
+#~ msgid "Tanh"
+#~ msgstr "Tanh"
+
+#~ msgid "Tan<sup>-1</sup>"
+#~ msgstr "Tan<sup>-1</sup>"
+
+#~ msgid "Tanh<sup>-1</sup>"
+#~ msgstr "Tanh<sup>-1</sup>"
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ msgstr ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+
+#~ msgid ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ msgstr ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgstr ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Changing Modes Clears Calculation"
+#~ msgstr "החלפת מצבים מאפסת את המחשבון"
+
+#~ msgid ""
+#~ "When you change modes, the current calculation will be cleared, and the "
+#~ "base will be reset to decimal."
+#~ msgstr "כאשר מתחלף מצב, החישוב הנוכחי נמחק, והבסיס חוזר להיות עשרוני."
+
+#~ msgid "_Do not warn me again"
+#~ msgstr "_אל תשאל שוב"
+
+#~ msgid "C_hange Mode"
+#~ msgstr "_החלף מצב"
+
+#~ msgid "R"
+#~ msgstr "אוגר"
+
+#~ msgid "No."
+#~ msgstr "מס'"
+
+#~ msgid "Value"
+#~ msgstr "ערך"
+
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "החזר ל_ברירת מחדל (%)"
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "&16"
+#~ msgstr "&16"
+
+#~ msgid "&32"
+#~ msgstr "&32"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1/<i>x</i>"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "10 to the power of displayed value [}]"
+#~ msgstr "10 בחזקת הערך המוצג [}]"
+
+#~ msgid "10 to the x"
+#~ msgstr "10 בחזקת x"
+
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10<sup><i>x</i></sup>"
+
+#~ msgid "10x"
+#~ msgstr "10x"
+
+#~ msgid "15"
+#~ msgstr "15"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "31"
+#~ msgstr "31"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "47"
+#~ msgstr "47"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "63"
+#~ msgstr "63"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "<i>x</i>!"
+#~ msgstr "<i>x</i>!"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>2</sup>"
+
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+
+#~ msgid ""
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
+#~ msgstr ""
+#~ "‏<small><i><b>הערה:</b> כל הערכים הקבועים מצויינים בבסיס מספרי דצימלי.</"
+#~ "i></small>"
+
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">אוגר0</span>"
+
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">אוגר1</span>"
+
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">אוגר2</span>"
+
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">אוגר3</span>"
+
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">אוגר4</span>"
+
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">אוגר5</span>"
+
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">אוגר6</span>"
+
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">אוגר7</span>"
+
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">אוגר8</span>"
+
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">אוגר9</span>"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "AND"
+#~ msgstr "AND"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid "Add"
+#~ msgstr "חיבור"
+
+#~ msgid "Advanced"
+#~ msgstr "מתקדם"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "Backspace"
+#~ msgstr "Backspace"
+
+#~ msgid "Basic"
+#~ msgstr "בסיסי"
+
+#~ msgid "Bksp"
+#~ msgstr "Bksp"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Change Sign [C]"
+#~ msgstr "שנה סימן [C]"
+
+#~ msgid "Change sign"
+#~ msgstr "שנה סימן"
+
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr "נקה את הערך המוצג וכל חישוב חלקי [Shift Delete]"
+
+#~ msgid "Clear entry"
+#~ msgstr "ערך נקה"
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "לחץ על _ערך או תיאור כדי לערוך אותו:"
+
+#~ msgid "Con"
+#~ msgstr "Con"
+
+#~ msgid "Constants"
+#~ msgstr "קבועים"
+
+#~ msgid "Constants [#]"
+#~ msgstr "קבועים [#]"
+
+#~ msgid "Copy selection"
+#~ msgstr "העתק את הבחירה"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "Divide"
+#~ msgstr "חילוק"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "E to the x"
+#~ msgstr "‏E בחזקת x"
+
+#~ msgid "E_ng"
+#~ msgstr "ה_נד"
+
+#~ msgid "Edit Constants"
+#~ msgstr "ערוך קבועים"
+
+#~ msgid "Edit Constants..."
+#~ msgstr "ערוך קבועים..."
+
+#~ msgid "Edit Functions..."
+#~ msgstr "ערוך פונקציות..."
+
+#~ msgid "End group of calculations [)]"
+#~ msgstr "סיים קבוצת חישובים [)]"
+
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "הכנס מספר מעריכי [E]"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "החלף את הערך המוצג עם אוגר זיכרון [X]"
+
+#~ msgid "Exchange with register"
+#~ msgstr "החלף עם אוגר"
+
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "עצרת של הערך המוצג [!]"
+
+#~ msgid "Frac"
+#~ msgstr "Frac"
+
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "חלק השבר של הערך המוצג [:]"
+
+#~ msgid "Fun"
+#~ msgstr "Fun"
+
+#~ msgid "Future value [v]"
+#~ msgstr "ערך עתידי [v]"
+
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
+
+#~ msgid "He_x"
+#~ msgstr "ה_קסא"
+
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "הספרה A בהקסאדצימלית [a]"
+
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "הספרה B בהקסאדצימלית"
+
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "הספרה B בהקסאדצימלית [b]"
+
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "הספרה C בהקסאדצימלית"
+
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "הספרה C בהקסאדצימלית [c]"
+
+#~ msgid "Hexadecimal digit D"
+#~ msgstr "הספרה D בהקסאדצימלית"
+
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "הספרה D בהקסאדצימלית [d]"
+
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "הספרה E בהקסאדצימלית"
+
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "הספרה E בהקסאדצימלית [e]"
+
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "הספרה F בהקסאדצימלית"
+
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "הספרה F בהקסאדצימלית [f]"
+
+#~ msgid "Int"
+#~ msgstr "Int"
+
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "החלק השלם של הערך המוצג [i]"
+
+#~ msgid "Left bracket"
+#~ msgstr "סוגריים שמאליים"
+
+#~ msgid "Ln"
+#~ msgstr "Ln"
+
+#~ msgid "Log<sub>10</sub>"
+#~ msgstr "Log<sub>10</sub>"
+
+#~ msgid "Log<sub>2</sub>"
+#~ msgstr "Log<sub>2</sub>"
+
+#~ msgid "Memory Registers"
+#~ msgstr "אוגרי זיכרון"
+
+#~ msgid "Multiply"
+#~ msgstr "כפל"
+
+#~ msgid "NOT"
+#~ msgstr "NOT"
+
+#~ msgid "Numeric 1"
+#~ msgstr "מספר 1"
+
+#~ msgid "Numeric 2"
+#~ msgstr "מספר 2"
+
+#~ msgid "Numeric 3"
+#~ msgstr "מספר 3"
+
+#~ msgid "Numeric 4"
+#~ msgstr "מספר 4"
+
+#~ msgid "Numeric 5"
+#~ msgstr "מספר 5"
+
+#~ msgid "Numeric 6"
+#~ msgstr "מספר 6"
+
+#~ msgid "Numeric 7"
+#~ msgstr "מספר 7"
+
+#~ msgid "Numeric 8"
+#~ msgstr "מספר 8"
+
+#~ msgid "Numeric 9"
+#~ msgstr "מספר 9"
+
+#~ msgid "OR"
+#~ msgstr "OR"
+
+#~ msgid "Paste selection"
+#~ msgstr "הדבק את הבחירה"
+
+#~ msgid "Payment period [t]"
+#~ msgstr "תקופת תשלום [t]"
+
+#~ msgid "Percentage"
+#~ msgstr "אחוזים"
+
+#~ msgid "Periodic payment [P]"
+#~ msgstr "תשלום תקופתי [P]"
+
+#~ msgid "Present value [p]"
+#~ msgstr "ערך נוכחי [p]"
+
+#~ msgid "Quit the calculator"
+#~ msgstr "יציאה מהמחשבון"
 
 #, fuzzy
+#~ msgid "Raise displayed value to the power of y [^]"
+#~ msgstr "הזז את הערך המוצג 1-15 מקומות שמאלה"
+
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "מספר אקראי בטווח שבין 0.0 ל 1.0 [?]"
+
+#~ msgid "Reciprocal"
+#~ msgstr "הפכי"
+
+#~ msgid "Reciprocal [r]"
+#~ msgstr "הפכי [r]"
+
+#~ msgid "Redo"
+#~ msgstr "בצע שוב את הפעולה האחרונה שבוטלה"
+
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr "הסר את התו הימני ביותר מהערך המוצג [Backspace]"
+
+#~ msgid "Retrieve from register"
+#~ msgstr "אחזר ערך מאוגר"
+
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "אחזר ערך מאוגר זיכרון לתצוגה [R]"
+
+#~ msgid "Right bracket"
+#~ msgstr "סוגריים ימניים"
+
+#~ msgid "Set Precision"
+#~ msgstr "קבע דיוק"
+
+#~ msgid "Set accuracy from 0 to 9 numeric places [A]"
+#~ msgstr "קבע דיוק מ 0 עד 9 מקומות עשרוניים [A]"
+
+#~ msgid "Set display type to engineering format"
+#~ msgstr "קבע את התצוגה לתבנית הנדסית"
+
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "קבע את התצוגה לתבנית נקודה קבועה"
+
+#~ msgid "Set display type to scientific format"
+#~ msgstr "קבע את התצוגה לתבנית מדעית"
+
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "קבע את אפשרות ההפיכה לפונקציות טריגונומטריות"
+
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "קבע את הבסיס המספרי כבינארי (בסיס 2)"
+
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "קבע את הבסיס המספרי כדצימלי (בסיס 10)"
+
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "קבע את הבסיס המספרי כהקסדצימלי (בסיס 16)"
+
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "קבע את הבסיס המספרי כאוקטלי (בסיס 8)"
+
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "קבע מצב טריגונומטרי לגראדיינים"
+
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "קבע מצב טריגונומטרי לראדיינים"
+
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "הזז את הערך המוצג 1-15 מקומות שמאלה [<]"
+
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "הזז את הערך המוצג 1-15 מקומות ימינה [>]"
+
+#~ msgid "Show help contents"
+#~ msgstr "הצג את תכני העזרה"
+
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "הצג את דו-השיח אודות Gcalctool"
+
+#~ msgid "Significant _places:"
+#~ msgstr "מקומות _משמעותיים:"
+
+#~ msgid "Sine [K]"
+#~ msgstr "סינוס [K]"
+
+#~ msgid "Square"
+#~ msgstr "ריבוע"
+
+#~ msgid "Square root"
+#~ msgstr "שורש ריבועי"
+
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "שמור ערך מוצג באוגר זיכרון [S]"
+
+#~ msgid "Store to register"
+#~ msgstr "שמור לאוגר"
 
 #, fuzzy
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "ירידת הערך של קו ישר"
 
-#, fuzzy
+#~ msgid "Subtract"
+#~ msgstr "חיסור"
 
-#, fuzzy
+#~ msgid "Ten to the x"
+#~ msgstr "10 בחזקת x"
 
-#, fuzzy
+#~ msgid "User-defined functions"
+#~ msgstr "פונקציות מותאמות אישית"
 
-#, fuzzy
+#~ msgid "User-defined functions [F]"
+#~ msgstr "פונקציות מותאמות אישית [F]"
 
-#, fuzzy
+#~ msgid "X to the y"
+#~ msgstr "‏X בחזקת y"
 
-#, fuzzy
+#~ msgid "XNOR"
+#~ msgstr "XNOR"
 
-#, fuzzy
+#~ msgid "XOR"
+#~ msgstr "XOR"
 
-#, fuzzy
+#~ msgid "_0 significant places"
+#~ msgstr "_0 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_1 significant place"
+#~ msgstr "_מקום משמעותי אחד"
 
-#, fuzzy
+#~ msgid "_2 significant places"
+#~ msgstr "_2 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_3 significant places"
+#~ msgstr "_3 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_4 significant places"
+#~ msgstr "_4 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_5 significant places"
+#~ msgstr "_5 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_6 significant places"
+#~ msgstr "_6 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_7 significant places"
+#~ msgstr "_7 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_8 significant places"
+#~ msgstr "_8 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_9 significant places"
+#~ msgstr "_9 מקומות משמעותיים"
 
-#, fuzzy
+#~ msgid "_Dec"
+#~ msgstr "_דצי"
 
-#, fuzzy
+#~ msgid "_Edit"
+#~ msgstr "_עריכה"
 
-#, fuzzy
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "הכנס ערך _ASCII..."
 
-#, fuzzy
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
 
-#, fuzzy
+#~ msgid "_Memory Registers"
+#~ msgstr "_אוגרי זיכרון"
 
-#, fuzzy
+#~ msgid "_Redo"
+#~ msgstr "_בצע שוב"
 
-#, fuzzy
+#~ msgid "_Sci"
+#~ msgstr "_מדע"
 
-#, fuzzy
+#~ msgid "_Set"
+#~ msgstr "_קבע"
 
-#, fuzzy
+#~ msgid "_Undo"
+#~ msgstr "_בטל"
 
+#~ msgid "e to the power of displayed value [{]"
+#~ msgstr "‏e בחזקת הערך המוצג [{]"
 
+#~ msgid "e<sup>x</sup>"
+#~ msgstr "e<sup>x</sup>"
 
+#~ msgid "ex"
+#~ msgstr "ex"
 
-#, fuzzy
+#~ msgid "register 0"
+#~ msgstr "אוגר 0"
 
+#~ msgid "register 1"
+#~ msgstr "אוגר 1"
 
+#~ msgid "register 2"
+#~ msgstr "אוגר 2"
 
+#~ msgid "register 3"
+#~ msgstr "אוגר 3"
 
+#~ msgid "register 4"
+#~ msgstr "אוגר 4"
 
+#~ msgid "register 5"
+#~ msgstr "אוגר 5"
 
+#~ msgid "register 6"
+#~ msgstr "אוגר 6"
 
+#~ msgid "register 7"
+#~ msgstr "אוגר 7"
 
+#~ msgid "register 8"
+#~ msgstr "אוגר 8"
 
+#~ msgid "register 9"
+#~ msgstr "אוגר 9"
 
+#~ msgid "x2"
+#~ msgstr "x2"
 
+#~ msgid "xy"
+#~ msgstr "xy"
 
+#~ msgid "±"
+#~ msgstr "±"
 
+#~ msgid "×"
+#~ msgstr "×"
 
+#~ msgid "÷"
+#~ msgstr "÷"
 
+#~ msgid "−"
+#~ msgstr "−"
 
-
-
-
-
-#, fuzzy
-
-
-#, fuzzy
-
-
-#, fuzzy
+#~ msgid "√"
+#~ msgstr "√"
