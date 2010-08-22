@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-14 10:24+0200\n"
-"PO-Revision-Date: 2010-06-13 17:04+0200\n"
+"POT-Creation-Date: 2010-08-22 13:15+0200\n"
+"PO-Revision-Date: 2010-08-22 02:47+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -421,9 +421,8 @@ msgstr "Indsæt tegn"
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
 #: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
-#, fuzzy
 msgid "Insert Character Code"
-msgstr "Indsæt tegn"
+msgstr "Indsæt tegnkode"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
@@ -465,10 +464,10 @@ msgstr "8-bit"
 #. Preferences dialog: Label for display format combo box
 #: ../data/preferences.ui.h:10
 msgid "Number _Format:"
-msgstr ""
+msgstr "Tal_format:"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:11 ../src/math-preferences.c:233
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
 msgid "Preferences"
 msgstr "Indstillinger"
 
@@ -501,134 +500,88 @@ msgstr "Lommeregner"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Udfør aritmetiske, videnskabelige eller finansielle udregninger"
 
-#: ../data/gcalctool.schemas.in.h:1
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Værdi for nøjagtighed"
 
-#: ../data/gcalctool.schemas.in.h:2
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "Vinkelenheder"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Knaptilstand"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
 msgid "Currency of the current calculation"
-msgstr ""
+msgstr "Valuta for den aktuelle beregning"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
 msgid "Currency to convert the current calculation into"
-msgstr ""
+msgstr "Valuta, som den aktuelle beregning skal konverteres til"
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Display Mode"
-msgstr "Visningstilstand"
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr ""
 "Angiver om nuller, der følger efter kommaet, skal indgå i den viste værdi."
 
-#: ../data/gcalctool.schemas.in.h:6
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr ""
-"Angiver om vinduet for hukommelsesregistre skal vises til at begynde med."
-
-#: ../data/gcalctool.schemas.in.h:7
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Angiver om tusindtalsseparatorer vises i store tal."
 
-#: ../data/gcalctool.schemas.in.h:8
-msgid "Mode"
-msgstr "Tilstand"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "Talformat"
 
-#: ../data/gcalctool.schemas.in.h:9
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "Numerisk grundtal"
 
-#: ../data/gcalctool.schemas.in.h:10
-msgid "Show Registers"
-msgstr "Vis registre"
-
-#: ../data/gcalctool.schemas.in.h:11
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
 msgstr "Vis tusinde-adskillere"
 
-#: ../data/gcalctool.schemas.in.h:12
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "Vis afsluttende nuller"
 
-#: ../data/gcalctool.schemas.in.h:13
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
 msgid "Source currency"
-msgstr ""
+msgstr "Kildevaluta"
 
-#: ../data/gcalctool.schemas.in.h:14
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
 msgid "Target currency"
-msgstr ""
+msgstr "Målvaluta"
 
-#: ../data/gcalctool.schemas.in.h:15
-#, fuzzy
-msgid ""
-"The display format used in advanced mode. One of: \"ENG\" (engineering), "
-"\"FIX\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"Visningstilstand ved begyndelse. Gyldige værdier er \"ENG\" (engineering), "
-"\"FIX\" (fixed-point) og \"SCI\" (scientific)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr "Vinkelenhed, der skal bruges"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
-"Lommeregnerens begyndelsestilstand. Gyldige værdier er \"BASIC\", \"FINANCIAL"
-"\", \"LOGICAL\", \"SCIENTIFIC\" og \"PROGRAMMING\""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "The button mode"
+msgstr "Knaptilstanden"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
-"Den trigonometriske type ved start. Gyldige værdier er \"DEG\" (degrees), "
-"\"GRAD\" (gradians) og \"RAD\" (radians)."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The format to display numbers in"
+msgstr "Formatet som tal vises i"
 
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The initial x-coordinate for the window"
-msgstr "Vinduets start-x-koordinat"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The number of digits displayed after the numeric point"
+msgstr "Antallet af cifre, der vises efter kommaet"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The initial y-coordinate for the window"
-msgstr "Vinduets start-y-koordinat"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The numeric base"
+msgstr "Numerisk grundtal"
 
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr ""
-"Antallet af cifre, der vises efter kommaet. Denne værdi skal være i "
-"intervallet 0 til 9."
-
-#: ../data/gcalctool.schemas.in.h:21
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr ""
-"Pixelpositionen, hvor vinduet placeres, målt fra venstre side af skærmen."
-
-#: ../data/gcalctool.schemas.in.h:22
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "Pixelpositionen, hvor vinduet placeres, målt fra toppen af skærmen."
-
-#: ../data/gcalctool.schemas.in.h:23
-#, fuzzy
-msgid "The numeric base (used in programming mode)"
-msgstr "Det numeriske grundtal for input og visning."
-
-#: ../data/gcalctool.schemas.in.h:24
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The size of the words used in bitwise operations"
 msgstr ""
 "Størrelsen af word, der bruges i bitvise operationer. Gyldige værdier er 16, "
 "32 og 64."
 
-#: ../data/gcalctool.schemas.in.h:25
-msgid "Trigonometric type"
-msgstr "Trigonometrisk type"
-
-#: ../data/gcalctool.schemas.in.h:26
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "Word size"
 msgstr "Word-størrelse"
 
@@ -773,7 +726,7 @@ msgid "South African rand"
 msgstr "Sydafrikanske rand"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:76
 #, c-format
 msgid ""
 "Usage:\n"
@@ -783,7 +736,7 @@ msgstr ""
 "  %s — Foretag matematiske udregninger"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:84
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -799,7 +752,7 @@ msgstr ""
 "  --help-gtk                      Vis GTK+-tilvalg"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:95
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -823,7 +776,7 @@ msgstr ""
 "  --g-fatal-warnings              Gør alle advarsler fatale"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:109
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -835,13 +788,13 @@ msgstr ""
 "  -s, --solve <ligning>           Løs den givne ligning"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:155
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argumentet --solve kræver en ligning, der skal løses"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:169
+#: ../src/gcalctool.c:168
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Ukendt argument \"%s\""
@@ -853,21 +806,18 @@ msgstr "Pi [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
 #: ../src/math-buttons.c:109
-#, fuzzy
 msgid "Euler’s Number"
 msgstr "Eulers tal"
 
 #. Tooltip for the subscript button
 #: ../src/math-buttons.c:114
-#, fuzzy
 msgid "Subscript mode [Alt]"
-msgstr "Sænket skriftstilstand for tal [Alt+tal]"
+msgstr "Sænket skrifttilstand [Alt]"
 
 #. Tooltip for the superscript button
 #: ../src/math-buttons.c:117
-#, fuzzy
 msgid "Superscript mode [Ctrl]"
-msgstr "Hævet skrifttilstand for tal [Ctrl+tal]"
+msgstr "Hævet skrifttilstand [Ctrl]"
 
 #. Tooltip for the scientific exponent button
 #: ../src/math-buttons.c:120
@@ -901,9 +851,8 @@ msgstr "Modulo-division"
 
 #. Tooltip for the additional functions button
 #: ../src/math-buttons.c:138
-#, fuzzy
 msgid "Additional Functions"
-msgstr "Redigér funktioner"
+msgstr "Flere funktioner"
 
 #. Tooltip for the exponent button
 #: ../src/math-buttons.c:141
@@ -912,9 +861,8 @@ msgstr "Eksponent [^ eller **]"
 
 #. Tooltip for the square button
 #: ../src/math-buttons.c:144
-#, fuzzy
 msgid "Square [Ctrl+2]"
-msgstr "Kvadrat [@]"
+msgstr "Kvadrat [Ctrl+2]"
 
 #. Tooltip for the percentage button
 #: ../src/math-buttons.c:147
@@ -934,72 +882,62 @@ msgstr "Absolut værdi [|]"
 #. Tooltip for the complex argument component button
 #: ../src/math-buttons.c:156
 msgid "Complex argument"
-msgstr ""
+msgstr "Komplekst argument"
 
 #. Tooltip for the complex conjugate button
 #: ../src/math-buttons.c:159
 msgid "Complex conjugate"
-msgstr ""
+msgstr "Kompleks konjugeret"
 
 #. Tooltip for the root button
 #: ../src/math-buttons.c:162
-#, fuzzy
 msgid "Root [Ctrl+R]"
-msgstr "Rod [Ctrl+S]"
+msgstr "Rod [Ctrl+R]"
 
 #. Tooltip for the square root button
 #: ../src/math-buttons.c:165
-#, fuzzy
 msgid "Square root [Ctrl+R]"
-msgstr "Kvadratrod [s]"
+msgstr "Kvadratrod [Ctrl+R]"
 
 #. Tooltip for the logarithm button
 #: ../src/math-buttons.c:168
-#, fuzzy
 msgid "Logarithm"
-msgstr "10-talslogaritme"
+msgstr "Logaritme"
 
 #. Tooltip for the natural logarithm button
 #: ../src/math-buttons.c:171
-#, fuzzy
 msgid "Natural Logarithm"
 msgstr "Naturlig logaritme"
 
 #. Tooltip for the sine button
 #: ../src/math-buttons.c:174
-#, fuzzy
 msgid "Sine"
-msgstr "Sin"
+msgstr "Sinus"
 
 #. Tooltip for the cosine button
 #: ../src/math-buttons.c:177
-#, fuzzy
 msgid "Cosine"
-msgstr "Cosinus [j]"
+msgstr "Cosinus"
 
 #. Tooltip for the tangent button
 #: ../src/math-buttons.c:180
-#, fuzzy
 msgid "Tangent"
-msgstr "Tangens [w]"
+msgstr "Tangens"
 
 #. Tooltip for the hyperbolic sine button
 #: ../src/math-buttons.c:183
-#, fuzzy
 msgid "Hyperbolic Sine"
-msgstr "Sinushyperbolsk [k]"
+msgstr "Sinushyperbolsk"
 
 #. Tooltip for the hyperbolic cosine button
 #: ../src/math-buttons.c:186
-#, fuzzy
 msgid "Hyperbolic Cosine"
-msgstr "Cosinushyperbolsk [j]"
+msgstr "Cosinushyperbolsk"
 
 #. Tooltip for the hyperbolic tangent button
 #: ../src/math-buttons.c:189
-#, fuzzy
 msgid "Hyperbolic Tangent"
-msgstr "Tangenshyperbolsk [w]"
+msgstr "Tangenshyperbolsk"
 
 #. Tooltip for the inverse button
 #: ../src/math-buttons.c:192
@@ -1018,7 +956,6 @@ msgstr "Boolesk ELLER"
 
 #. Tooltip for the exclusive OR button
 #: ../src/math-buttons.c:201
-#, fuzzy
 msgid "Boolean Exclusive OR"
 msgstr "Boolesk eksklusiv ELLER"
 
@@ -1028,291 +965,272 @@ msgid "Boolean NOT"
 msgstr "Boolesk IKKE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:207 ../src/math-buttons.c:1429
-#, fuzzy
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1442
 msgid "Integer Component"
 msgstr "Heltalsdel"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1431
-#, fuzzy
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1444
 msgid "Fractional Component"
-msgstr "Brøkdel"
+msgstr "Decimaldel"
 
 #. Tooltip for the real component button
 #: ../src/math-buttons.c:213
 msgid "Real Component"
-msgstr ""
+msgstr "Realdel"
 
 #. Tooltip for the imaginary component button
 #: ../src/math-buttons.c:216
 msgid "Imaginary Component"
-msgstr ""
+msgstr "Imaginærdel"
 
 #. Tooltip for the ones complement button
 #: ../src/math-buttons.c:219
-#, fuzzy
 msgid "Ones Complement"
 msgstr "1'er-komplement"
 
 #. Tooltip for the twos complement button
 #: ../src/math-buttons.c:222
-#, fuzzy
 msgid "Twos Complement"
 msgstr "2'er-komplement"
 
 #. Tooltip for the truncate button
 #: ../src/math-buttons.c:225
-#, fuzzy
 msgid "Truncate"
-msgstr "Trunk"
+msgstr "Trunkér"
 
 #. Tooltip for the start group button
 #: ../src/math-buttons.c:228
-#, fuzzy
 msgid "Start Group [(]"
-msgstr "Start blok [(]"
+msgstr "Start gruppe [(]"
 
 #. Tooltip for the end group button
 #: ../src/math-buttons.c:231
-#, fuzzy
 msgid "End Group [)]"
-msgstr "Afslut blok [)]"
+msgstr "Afslut gruppe [)]"
 
 #. Tooltip for the assign variable button
 #: ../src/math-buttons.c:234
-#, fuzzy
 msgid "Assign Variable"
-msgstr "Svarvariabel"
+msgstr "Tildel variabel"
 
 #. Tooltip for the insert variable button
 #: ../src/math-buttons.c:237
-#, fuzzy
 msgid "Insert Variable"
-msgstr "Svarvariabel"
+msgstr "Indsæt variabel"
 
 #. Tooltip for the solve button
 #: ../src/math-buttons.c:243
-#, fuzzy
 msgid "Calculate Result"
 msgstr "Beregn resultat"
 
 #. Tooltip for the factor button
 #: ../src/math-buttons.c:246
-#, fuzzy
 msgid "Factorize [Ctrl+F]"
-msgstr "Faktorisér"
+msgstr "Faktorisér [Ctrl+F]"
 
 #. Tooltip for the clear button
 #: ../src/math-buttons.c:249
-#, fuzzy
 msgid "Clear Display [Escape]"
-msgstr "Ryd skærm [Esc]"
+msgstr "Ryd skærm [Escape]"
 
 #. Tooltip for the undo button
 #: ../src/math-buttons.c:252
-#, fuzzy
 msgid "Undo [Ctrl+Z]"
-msgstr "Rod [Ctrl+S]"
+msgstr "Fortryd [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
 #: ../src/math-buttons.c:264
-#, fuzzy
 msgid "Double Declining Depreciation"
 msgstr "Dobbeltmindskende afskrivning"
 
+# ..term?
 #. Tooltip for the financial term button
 #: ../src/math-buttons.c:270
-#, fuzzy
 msgid "Financial Term"
-msgstr "Finansiel tilstand"
+msgstr "Finansiel term"
 
 #. Tooltip for the sum of the years digits depreciation button
 #: ../src/math-buttons.c:273
-#, fuzzy
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Summen af årenes cifre-afskrivning"
 
 #. Tooltip for the straight line depreciation button
 #: ../src/math-buttons.c:276
-#, fuzzy
 msgid "Straight Line Depreciation"
 msgstr "Retlinjet afskrivning"
 
 #. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:891 ../src/math-preferences.c:249
+#: ../src/math-buttons.c:892 ../src/math-preferences.c:255
 msgid "Degrees"
 msgstr "Grader"
 
 #. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:895 ../src/math-preferences.c:253
+#: ../src/math-buttons.c:896 ../src/math-preferences.c:259
 msgid "Radians"
 msgstr "Radianer"
 
 #. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:899 ../src/math-preferences.c:257
+#: ../src/math-buttons.c:900 ../src/math-preferences.c:263
 msgid "Gradians"
 msgstr "Nygrader"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:933
+#: ../src/math-buttons.c:934
 msgid "Binary"
 msgstr "Binær"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:937
+#: ../src/math-buttons.c:938
 msgid "Octal"
 msgstr "Oktal"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:941
+#: ../src/math-buttons.c:942
 msgid "Decimal"
 msgstr "Titalssystem"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:945
+#: ../src/math-buttons.c:946
 msgid "Hexadecimal"
 msgstr "Heksadecimal"
 
 #. Text shown in store menu when no variables defined
 #. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1254 ../src/math-buttons.c:1299
+#: ../src/math-buttons.c:1263 ../src/math-buttons.c:1309
 msgid "No variables defined"
-msgstr ""
+msgstr "Ingen variable defineret"
 
+# right og left shift er bitvise operatorer, der forskyder N bit til højre eller venstre.  Places og bit er derfor det samme i denne sammenhæng
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1341 ../src/math-buttons.c:1384
-#, fuzzy, c-format
+#: ../src/math-buttons.c:1352 ../src/math-buttons.c:1396
+#, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
-msgstr[0] "_1 bit"
-msgstr[1] "_1 bit"
+msgstr[0] "_%d bit"
+msgstr[1] "_%d bit"
 
+# right og left shift er bitvise operatorer, der forskyder N bit til højre eller venstre.  Places og bit er derfor det samme i denne sammenhæng
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1345 ../src/math-buttons.c:1388
-#, fuzzy, c-format
+#: ../src/math-buttons.c:1356 ../src/math-buttons.c:1400
+#, c-format
 msgid "%d place"
 msgid_plural "%d places"
-msgstr[0] "_1 bit"
-msgstr[1] "_1 bit"
+msgstr[0] "%d bit"
+msgstr[1] "%d bit"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1433
-#, fuzzy
+#: ../src/math-buttons.c:1446
 msgid "Round"
-msgstr "Tilf"
+msgstr "Afrund"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1435
+#: ../src/math-buttons.c:1448
 msgid "Floor"
-msgstr ""
+msgstr "Gulv"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1437
+#: ../src/math-buttons.c:1450
 msgid "Ceiling"
-msgstr ""
+msgstr "Loft"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1439
-#, fuzzy
+#: ../src/math-buttons.c:1452
 msgid "Sign"
-msgstr "Sin"
+msgstr "Fortegn"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:471
+#: ../src/math-equation.c:496
 msgid "No undo history"
 msgstr "Ingen fortrydelseshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:496
-#, fuzzy
+#: ../src/math-equation.c:521
 msgid "No redo history"
 msgstr "Ingen fortrydelseshistorik"
 
-#: ../src/math-equation.c:907
+#: ../src/math-equation.c:845
 msgid "No sane value to store"
 msgstr "Ingen gyldig værdi til at lagre"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1167
+#: ../src/math-equation.c:1105
 msgid "Overflow. Try a bigger word size"
 msgstr "Overløb. Prøv at øge word-størrelsen"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1172
+#: ../src/math-equation.c:1110
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ukendt variabel \"%s\""
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1177
+#: ../src/math-equation.c:1115
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" er ikke defineret"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1182
+#: ../src/math-equation.c:1120
 msgid "Unknown conversion"
 msgstr "Ukendt konvertering"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1191
+#: ../src/math-equation.c:1129
 msgid "Malformed expression"
 msgstr "Misdannet udtryk"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1214
+#: ../src/math-equation.c:1152
 msgid "Need an integer to factorize"
 msgstr "Kræver et heltal at faktorisere"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1291
+#: ../src/math-equation.c:1229
 msgid "No sane value to bitwise shift"
 msgstr "Ingen gyldig værdi til at udføre bitvis-skift"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1320
+#: ../src/math-equation.c:1258
 msgid "Displayed value not an integer"
-msgstr ""
+msgstr "Den viste værdi er ikke et heltal"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1710
+#: ../src/math-equation.c:1648
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:239
-#, fuzzy
+#: ../src/math-preferences.c:245
 msgid "_Close"
-msgstr "_Pris:"
+msgstr "_Luk"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:267
-#, fuzzy
+#: ../src/math-preferences.c:273
 msgid "Fixed"
-msgstr "_Fast"
+msgstr "Fast"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:271
+#: ../src/math-preferences.c:277
 msgid "Scientific"
 msgstr "Videnskabelig"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:275
+#: ../src/math-preferences.c:281
 msgid "Engineering"
 msgstr "Ingeniør"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:286
+#: ../src/math-preferences.c:292
 #, c-format
 msgid "Show %d decimal _places"
-msgstr ""
+msgstr "Vis %d _decimaler"
 
 #. Translators: Error message displayed when unable to launch help browser
 #: ../src/math-window.c:170
@@ -1371,8 +1289,8 @@ msgstr "Lommeregner"
 
 #. Copyright notice in the about dialog
 #: ../src/math-window.c:225
-msgid "© 1986–2008 The Gcalctool authors"
-msgstr "© 1986–2008 Forfatterne af Gcalctool"
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Forfatterne af Gcalctool"
 
 #. Short description in the about dialog
 #: ../src/math-window.c:229
@@ -1386,9 +1304,8 @@ msgstr "_Lommeregner"
 
 #. Mode menu
 #: ../src/math-window.c:357
-#, fuzzy
 msgid "_Mode"
-msgstr "Tilstand"
+msgstr "_Tilstand"
 
 #. Help menu label
 #: ../src/math-window.c:359
@@ -1448,7 +1365,7 @@ msgstr "Bitvis forskydning er kun mulig på heltalsværdier"
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/mp.c:149
 msgid "Argument not defined for zero"
-msgstr ""
+msgstr "Argumentet af nul er ikke defineret"
 
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:636 ../src/mp.c:668 ../src/mp.c:1602
@@ -1521,6 +1438,50 @@ msgstr ""
 #: ../src/mp-trigonometric.c:615
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Areatangenshyperbolsk er ikke defineret for værdier uden for [-1, 1]"
+
+#~ msgid "Display Mode"
+#~ msgstr "Visningstilstand"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr ""
+#~ "Angiver om vinduet for hukommelsesregistre skal vises til at begynde med."
+
+#~ msgid "Mode"
+#~ msgstr "Tilstand"
+
+#~ msgid "Show Registers"
+#~ msgstr "Vis registre"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "Lommeregnerens begyndelsestilstand. Gyldige værdier er \"BASIC\", "
+#~ "\"FINANCIAL\", \"LOGICAL\", \"SCIENTIFIC\" og \"PROGRAMMING\""
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr ""
+#~ "Den trigonometriske type ved start. Gyldige værdier er \"DEG\" (degrees), "
+#~ "\"GRAD\" (gradians) og \"RAD\" (radians)."
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Vinduets start-x-koordinat"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Vinduets start-y-koordinat"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr ""
+#~ "Pixelpositionen, hvor vinduet placeres, målt fra venstre side af skærmen."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Pixelpositionen, hvor vinduet placeres, målt fra toppen af skærmen."
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Trigonometrisk type"
 
 #~ msgid ""
 #~ "Converts between different currencies. Enter the amount and the currency "
