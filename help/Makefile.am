@@ -33,7 +33,7 @@ DOC_PAGES = absolute.page \
             trigonometry.page \
             variables.page
 
-DOC_LINGUAS = bg ca cs de el es eu fi fr it ja ko oc pt_BR ru sv zh_CN zh_HK zh_TW
+DOC_LINGUAS = bg ca cs de el es eu fi fr gl it ja ko oc pt_BR ru sv zh_CN zh_HK zh_TW
 
 DISTCLEANFILES = \
 	Makefile.in
