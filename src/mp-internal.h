@@ -36,7 +36,7 @@
 //    mperr("MP_SIZE TOO SMALL IN CALL TO MPSET, INCREASE MP_SIZE AND DIMENSIONS OF MP ARRAYS TO AT LEAST %d ***", MP.t);
 //    MP.t = MP_SIZE;
 //}
-#define MP_T 55
+#define MP_T 100
 
 void mperr(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void mp_gcd(int64_t *, int64_t *);

@@ -534,15 +534,16 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
     mp_set_from_mp(&integer_component, &temp);
     do {
         MPNumber t, t2, t3;
+        int64_t d;
 
         mp_divide_integer(&temp, base, &t);
         mp_floor(&t, &t);
         mp_multiply_integer(&t, base, &t2);
 
         mp_subtract(&temp, &t2, &t3);
-        mp_floor(&t3, &t3);
 
-        g_string_prepend_c(string, digits[mp_cast_to_int(&t3)]);
+        d = mp_cast_to_int(&t3);
+        g_string_prepend_c(string, d < 16 ? digits[d] : '?');
 
         mp_set_from_mp(&t, &temp);
     } while (!mp_is_zero(&temp));
