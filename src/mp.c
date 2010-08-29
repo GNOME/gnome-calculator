@@ -23,7 +23,7 @@
 #include <errno.h>
 
 #include "mp.h"
-#include "mp-internal.h"
+#include "mp-private.h"
 
 // FIXME: Re-add overflow and underflow detection
 

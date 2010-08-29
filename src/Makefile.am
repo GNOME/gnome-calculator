@@ -28,7 +28,7 @@ gcalctool_SOURCES = \
 	mp.h \
 	mp-binary.c \
 	mp-convert.c \
-	mp-internal.h \
+	mp-private.h \
 	mp-trigonometric.c \
 	mp-equation.c \
 	mp-equation.h \

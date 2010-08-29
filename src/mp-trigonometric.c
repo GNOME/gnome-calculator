@@ -23,7 +23,7 @@
 #include <libintl.h>
 
 #include "mp.h"
-#include "mp-internal.h"
+#include "mp-private.h"
 
 static int
 mp_compare_mp_to_int(const MPNumber *x, int i)

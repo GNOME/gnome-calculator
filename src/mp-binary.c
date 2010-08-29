@@ -20,7 +20,7 @@
 #include <stdio.h>
 
 #include "mp.h"
-#include "mp-internal.h"
+#include "mp-private.h"
 
 // FIXME: Make dynamic
 #define MAX_DIGITS 1000

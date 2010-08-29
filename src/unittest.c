@@ -620,7 +620,7 @@ test_integer(int number)
     printf("}\n");
 }
 
-#include "mp-internal.h"
+#include "mp-private.h"
 static void
 test_numbers()
 {

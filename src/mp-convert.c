@@ -24,7 +24,7 @@
 #include <math.h>
 
 #include "mp.h"
-#include "mp-internal.h"
+#include "mp-private.h"
 
 void
 mp_set_from_mp(const MPNumber *x, MPNumber *z)
