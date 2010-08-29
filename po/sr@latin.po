@@ -4,14 +4,14 @@
 # Maintainer: Danilo Šegan <dsegan@gmx.net>
 # Reviewed on 2005-07-18 by: Igor Nestorović <igor@prevod.org>
 # Translated on 2006-01-30 by: Slobodan D. Sredojević <slobo@akrep.be>
-# Translated on 2009-05-08 by: Branko Kokanović <branko.kokanovic@gmail.com>
+# Translated on 2010-08-25 by: Branko Kokanović <branko.kokanovic@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-03-03 17:33+0000\n"
-"PO-Revision-Date: 2010-03-05 00:19+0100\n"
+"POT-Creation-Date: 2010-08-25 15:33+0000\n"
+"PO-Revision-Date: 2010-08-25 22:36+0200\n"
 "Last-Translator: Branko Kokanović <branko.kokanovic@gmail.com>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,18 +20,102 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#. The label on the memory recall button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#: ../data/buttons-programming.ui.h:2
+msgid "&#x2190; R"
+msgstr "&#x2190; R"
+
+#. The label on the memory store button
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:4
+#: ../data/buttons-programming.ui.h:4
+msgid "&#x2192; R"
+msgstr "&#x2192; R"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:6
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-programming.ui.h:8
+msgid "Absolute Value"
+msgstr "Apsolutna vrednost"
+
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:32 ../data/buttons-programming.ui.h:12
+msgid "Clear"
+msgstr "Očisti"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:6
+#: ../data/buttons-financial.ui.h:42 ../data/buttons-programming.ui.h:14
+msgid "Exponent"
+msgstr "Eksponent"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:16
+msgid "Factorial"
+msgstr "Faktorijel"
+
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-programming.ui.h:18
+msgid "Factorize"
+msgstr "Faktoriši"
+
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:18 ../data/buttons-programming.ui.h:24
+msgid "Inverse"
+msgstr "Inverzno"
+
+#. Accessible name for the recall value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
+#: ../data/buttons-programming.ui.h:26
+msgid "Recall"
+msgstr "Učitaj"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:22
+msgid "Scientific Exponent"
+msgstr "Naučni eksponent"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:76
+#: ../data/buttons-programming.ui.h:32
+msgid "Store"
+msgstr "Snimi"
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:26 ../data/buttons-programming.ui.h:34
+msgid "Subscript"
+msgstr "Indeks"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:28 ../data/buttons-programming.ui.h:36
+msgid "Superscript"
+msgstr "Eksponent"
+
+#. Label on the undo button
+#. Label on the clear display button
+#: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:8
+#: ../data/buttons-financial.ui.h:86
+msgid "Undo"
+msgstr "Opozovi"
+
 #. Payment Period Dialog: Button to calculate result
-#: ../data/financial.ui.h:2
+#: ../data/buttons-financial.ui.h:8
 msgid "C_alculate"
 msgstr "_Izračunaj"
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/financial.ui.h:4
+#: ../data/buttons-financial.ui.h:10
 msgid "C_ost:"
 msgstr "_Cena:"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/financial.ui.h:6
+#: ../data/buttons-financial.ui.h:12
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -40,7 +124,7 @@ msgstr ""
 "kraju perioda plaćanja."
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:8
+#: ../data/buttons-financial.ui.h:14
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
@@ -54,7 +138,7 @@ msgstr ""
 "proizvoda je broj perioda, obično godina, za koje je proizvod amortizovan. "
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:10
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -63,7 +147,7 @@ msgstr ""
 "metod dvostruko-opadajućeg umanjenja."
 
 #. Future Value Dialog: Description of calculation
-#: ../data/financial.ui.h:12
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -73,7 +157,7 @@ msgstr ""
 "periodičnu kamatnu stopu nad određenim brojem perioda plaćanja."
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/financial.ui.h:14
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -84,7 +168,7 @@ msgstr ""
 "periodu činiočnog sastava."
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/financial.ui.h:16
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -94,7 +178,7 @@ msgstr ""
 "buduća vrednost po periodičnoj kamatnoj stopi."
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/financial.ui.h:18
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -103,7 +187,7 @@ msgstr ""
 "investicije na buduću vrednost nad brojem perioda činiočnog sastava."
 
 #. Present Value Dialog: Description of calculation
-#: ../data/financial.ui.h:20
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -113,7 +197,7 @@ msgstr ""
 "periodičnoj kamatnoj stopi nad datim brojem perioda plaćanja."
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/financial.ui.h:22
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -122,7 +206,7 @@ msgstr ""
 "bruto marže."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:24
+#: ../data/buttons-financial.ui.h:30
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -135,721 +219,261 @@ msgstr ""
 "posle koga je proizvod amortizovan."
 
 #. Title of Compounding Term dialog
-#: ../data/financial.ui.h:26
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:34 ../src/math-buttons.c:261
 msgid "Compounding Term"
 msgstr "Činilac sastava"
 
-#: ../data/financial.ui.h:27
-msgid ""
-"Converts between different currencies. Enter the amount and the currency you "
-"want to convert from on the upper row, and the currency you want to convert "
-"to on the lower row, and the amount will be displayed on the lower row."
-msgstr ""
-"Pretvara različite valute. Unesite iznos i valutu koju želite da pretvorite "
-"u gornji red, a valutu u koju želite da se iznos pretvori u donji red i iznos "
-"će biti ispisan u donjem redu."
-
-#: ../data/financial.ui.h:28
-msgid "Currency Conversion"
-msgstr "Pretvaranje valuta"
-
-#. Title of Double-Declining Depreciation dialog
-#: ../data/financial.ui.h:30
-msgid "Double-Declining Depreciation"
-msgstr "Dvostruko-opadajuće umanjenje"
-
-#. Title of Future Value dialog
-#: ../data/financial.ui.h:32
-msgid "Future Value"
-msgstr "Buduća vrednost"
-
-#. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:34
-msgid "Future _Value:"
-msgstr "Buduća _vrednost"
-
-#. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:36
-msgid "Gross Profit Margin"
-msgstr "Bruto marža"
-
-#. Title of Payment Period dialog
-#: ../data/financial.ui.h:38
-msgid "Payment Period"
-msgstr "Period za plaćanje"
-
-#. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:40
-msgid "Periodic Interest Rate"
-msgstr "Periodična stopa kamate"
-
-#. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:42
-msgid "Periodic Interest _Rate:"
-msgstr "Periodična stopa _kamate"
-
-#. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:44
-msgid "Periodic Payment"
-msgstr "Periodično plaćanje"
-
-#. Title of Present Value dialog
-#: ../data/financial.ui.h:46
-msgid "Present Value"
-msgstr "Trenutna vrednost"
-
-#. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:48
-msgid "Present _Value:"
-msgstr "Trenutna _vrednost:"
-
-#. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:50
-msgid "Straight-Line Depreciation"
-msgstr "Pravolinijsko umanjenje"
-
-#. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:52
-msgid "Sum-of-the-Years'-Digits Depreciation"
-msgstr "Zbir-cifara-godine umanjenje"
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/financial.ui.h:54
-msgid "_Cost:"
-msgstr "_Cena:"
-
-#. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:56
-msgid "_Future Value:"
-msgstr "_Buduća vrednost:"
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:58
-msgid "_Life:"
-msgstr "_Životni vek:"
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:60
-msgid "_Margin:"
-msgstr "_Marža:"
-
-#. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:62
-msgid "_Number of Periods:"
-msgstr "_Broj perioda:"
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/financial.ui.h:64
-msgid "_Period:"
-msgstr "_Period:"
-
-#. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:66
-msgid "_Periodic Payment:"
-msgstr "_Periodično plaćanje:"
-
-#. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:68
-msgid "_Principal:"
-msgstr "_Osnova:"
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:70
-msgid "_Salvage:"
-msgstr "_Krajnja cena:"
-
-#. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:72
-msgid "_Term:"
-msgstr "_Rok:"
-
-#. The label on the memory recall button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2190; R"
-msgstr "&#x2190; R"
-
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:4
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
-#. The label on the currency button
-#: ../data/gcalctool.ui.h:6
-msgid "&#xA4;$&#x20AC;"
-msgstr "&#xA4;$&#x20AC;"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:8
-msgid "10 places"
-msgstr "10 mesta"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:10
-msgid "11 places"
-msgstr "11 mesta"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:12
-msgid "12 places"
-msgstr "12 mesta"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:14
-msgid "13 places"
-msgstr "13 mesta"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:16
-msgid "14 places"
-msgstr "14 mesta"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:18
-msgid "15 places"
-msgstr "15 mesta"
-
-#. Word size combo: 16 bits
-#: ../data/gcalctool.ui.h:20
-msgid "16-bit"
-msgstr "16 bita"
-
-#. Word size combo: 32 bits
-#: ../data/gcalctool.ui.h:22
-msgid "32-bit"
-msgstr "32 bita"
-
-#. Word size combo: 64 bits
-#: ../data/gcalctool.ui.h:24
-msgid "64-bit"
-msgstr "64 bita"
-
-#. Word size combo: 8 bits
-#: ../data/gcalctool.ui.h:26
-msgid "8-bit"
-msgstr "8 bita"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:28
-msgid "="
-msgstr "="
-
-#. Accessible name for the absolute value button
-#: ../data/gcalctool.ui.h:30
-msgid "Absolute Value"
-msgstr "Apsolutna vrednost"
-
-#. Tooltip for the absolute value button
-#: ../data/gcalctool.ui.h:32
-msgid "Absolute value [|]"
-msgstr "Apsolutna vrednost [|]"
-
-#. Tooltip for the addition button
-#: ../data/gcalctool.ui.h:34
-msgid "Add [+]"
-msgstr "Saberi [+]"
-
-#. Tooltip for the answer variable button
-#: ../data/gcalctool.ui.h:36
-msgid "Answer variable"
-msgstr "Promenljiva odgovora"
-
-#. Tooltip for the base 10 logarithm button
-#: ../data/gcalctool.ui.h:38
-msgid "Base 10 logarithm"
-msgstr "Logaritam sa osnovom 10"
-
-#. Accessible name for the base 16 button
-#: ../data/gcalctool.ui.h:40
-msgid "Base 16"
-msgstr "Osnova 16"
-
-#. Accessible name for the base 2 button
-#: ../data/gcalctool.ui.h:42
-msgid "Base 2"
-msgstr "Osnova 2"
-
-#. Accessible name for the base 8 button
-#: ../data/gcalctool.ui.h:44
-msgid "Base 8"
-msgstr "Osnova 8"
-
-#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
-#: ../data/gcalctool.ui.h:46
-msgid "Binary"
-msgstr "Binarno"
-
-#. Tooltip for the boolean AND button
-#: ../data/gcalctool.ui.h:48
-msgid "Boolean AND"
-msgstr "Logičko I"
-
-#. Tooltip for the boolean NOT button
-#: ../data/gcalctool.ui.h:50
-msgid "Boolean NOT"
-msgstr "Logičko NE"
-
-#. Tooltip for the boolean OR button
-#: ../data/gcalctool.ui.h:52
-msgid "Boolean OR"
-msgstr "Logičko ILI"
-
-#. Tooltip for the boolean exclusive OR button
-#: ../data/gcalctool.ui.h:54
-msgid "Boolean exclusive OR"
-msgstr "Logičko ILLI"
-
-#. Tooltip for the solve button
-#: ../data/gcalctool.ui.h:56
-msgid "Calculate result [=]"
-msgstr "Izračunaj rezultat [=]"
-
-#. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:58
-msgid "Ch_aracter:"
-msgstr "_Znak:"
-
-#. Tooltop for the clear display button
-#: ../data/gcalctool.ui.h:60
-msgid "Clear display [Escape]"
-msgstr "Očisti ekran [Escape]"
-
-#. Label on the clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:62
-msgid "Clr"
-msgstr "Očisti"
-
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:64
+#: ../data/buttons-financial.ui.h:36
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:66
+#: ../data/buttons-financial.ui.h:38
 msgid "Ddb"
 msgstr "Ddb"
 
-#. Number display mode combo: Decimal, e.g. 1234
-#: ../data/gcalctool.ui.h:68
-msgid "Decimal"
-msgstr "Decimalno"
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:40
+msgid "Double-Declining Depreciation"
+msgstr "Dvostruko-opadajuće umanjenje"
 
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../data/gcalctool.ui.h:70
-msgid "Degrees"
-msgstr "Stepeni"
+#. Title of Future Value dialog
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:44 ../src/math-buttons.c:267
+msgid "Future Value"
+msgstr "Buduća vrednost"
 
-#. Preferences dialog: Label for display format combo box
-#: ../data/gcalctool.ui.h:72
-msgid "Display _Format:"
-msgstr "Način _prikaza"
-
-#. Tooltip for the division button
-#: ../data/gcalctool.ui.h:74
-msgid "Divide [/]"
-msgstr "Deljenje [/]"
-
-#. Tooltip for the end block button
-#: ../data/gcalctool.ui.h:76
-msgid "End block [)]"
-msgstr "Kraj bloka [)]"
-
-#. Number display mode combo: Engineering, e.g. 1.234k
-#: ../data/gcalctool.ui.h:78
-msgid "Engineering"
-msgstr "Inženjerski"
-
-#. Tooltip for the Euler's number button
-#: ../data/gcalctool.ui.h:80
-msgid "Euler's number"
-msgstr "Ojlerov broj"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:82
-msgid "Exponent"
-msgstr "Eksponent"
-
-#. Tooltip for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:84
-msgid "Exponent [^ or **]"
-msgstr "Eksponent [^ ili **]"
-
-#. Accessible name for the factorial button
-#: ../data/gcalctool.ui.h:86
-msgid "Factorial"
-msgstr "Faktorijel"
-
-#. Tooltip for the factorial button
-#: ../data/gcalctool.ui.h:88
-msgid "Factorial [!]"
-msgstr "Faktorijel [!]"
-
-#. Accessible name for the factorize button
-#: ../data/gcalctool.ui.h:90
-msgid "Factorize"
-msgstr "Faktoriši"
-
-#. Tooltip for the factorize button
-#: ../data/gcalctool.ui.h:92
-msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr "Faktoriši u proste brojeve (Ctrl+F)"
-
-#. Tooltip for the fractional portion button
-#: ../data/gcalctool.ui.h:94
-msgid "Fractional portion"
-msgstr "Razlomljeni deo"
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:46
+msgid "Future _Value:"
+msgstr "Buduća _vrednost"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:96
+#: ../data/buttons-financial.ui.h:48
 msgid "Fv"
 msgstr "Bv"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:98
+#: ../data/buttons-financial.ui.h:50
 msgid "Gpm"
 msgstr "BM"
 
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../data/gcalctool.ui.h:100
-msgid "Gradians"
-msgstr "Gradijani"
+#. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:288
+msgid "Gross Profit Margin"
+msgstr "Bruto marža"
 
-#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
-#: ../data/gcalctool.ui.h:102
-msgid "Hexadecimal"
-msgstr "Heksadecimalno"
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:54
+msgid "Payment Period"
+msgstr "Period za plaćanje"
 
-#. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:104
-msgid "Insert ASCII Value"
-msgstr "Ubaci ASKRI vrednost"
+#. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
+msgid "Periodic Interest Rate"
+msgstr "Periodična stopa kamate"
 
-#. Accessible name for the insert character button
-#: ../data/gcalctool.ui.h:106
-msgid "Insert Character"
-msgstr "Ubaci Znak"
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:58
+msgid "Periodic Interest _Rate:"
+msgstr "Periodična stopa _kamate"
 
-#. Tooltip for the insert character button
-#: ../data/gcalctool.ui.h:108
-msgid "Insert character"
-msgstr "Ubaci znak"
-
-#. Tooltip for the integer portion button
-#: ../data/gcalctool.ui.h:110
-msgid "Integer portion"
-msgstr "Celobrojni deo"
-
-#. Accessible name for the inverse button
-#: ../data/gcalctool.ui.h:112
-msgid "Inverse"
-msgstr "Inverzno"
-
-#. Tooltip for the inverse button
-#: ../data/gcalctool.ui.h:114
-msgid "Inverse [Ctrl+I]"
-msgstr "Inverzno [Ctrl+I]"
-
-#. Tooltip for the modulus division button
-#: ../data/gcalctool.ui.h:116
-msgid "Modulus divide"
-msgstr "Deljenje po modulu"
-
-#. Tooltip for the multiplication button
-#: ../data/gcalctool.ui.h:118
-msgid "Multiply [*]"
-msgstr "Množenje [*]"
-
-#. Tooltip for the natural logarithm button
-#: ../data/gcalctool.ui.h:120
-msgid "Natural logarithm"
-msgstr "Prirodni logaritam"
-
-#. Tooltip for the numeric point button
-#: ../data/gcalctool.ui.h:122
-msgid "Numeric point [. or ,]"
-msgstr "Decimalni zarez [. ili ,]"
-
-#. Number display mode combo: Octal, e.g. 2322&#x2088;
-#: ../data/gcalctool.ui.h:124
-msgid "Octal"
-msgstr "Oktalno"
-
-#. Tooltip for the ones' complement button
-#: ../data/gcalctool.ui.h:126
-msgid "Ones' complement"
-msgstr "Komplement jedinice"
-
-#. Tooltip on the percentage button
-#: ../data/gcalctool.ui.h:129
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Procenat [%]"
-
-#. Tooltip for the Pi button
-#: ../data/gcalctool.ui.h:131
-msgid "Pi [Ctrl+P]"
-msgstr "Pi [Ctrl+P]"
+#. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
+msgid "Periodic Payment"
+msgstr "Periodično plaćanje"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:133
+#: ../data/buttons-financial.ui.h:62
 msgid "Pmt"
 msgstr "Ppl"
 
-#: ../data/gcalctool.ui.h:134
-msgid "Preferences"
-msgstr "Podešavanja"
+#. Title of Present Value dialog
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
+msgid "Present Value"
+msgstr "Trenutna vrednost"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:66
+msgid "Present _Value:"
+msgstr "Trenutna _vrednost:"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:136
+#: ../data/buttons-financial.ui.h:68
 msgid "Pv"
 msgstr "Tv"
 
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../data/gcalctool.ui.h:138
-msgid "Radians"
-msgstr "Radijani"
-
-#. Tooltip for the random number button
-#: ../data/gcalctool.ui.h:140
-msgid "Random number"
-msgstr "Slučajan broj"
-
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:142
+#: ../data/buttons-financial.ui.h:70
 msgid "Rate"
 msgstr "Stopa"
 
-#. Accessible name for the recall value button
-#: ../data/gcalctool.ui.h:144
-msgid "Recall"
-msgstr "Učitaj"
-
-#. Tooltip for the recall value button
-#: ../data/gcalctool.ui.h:146
-msgid "Recall value"
-msgstr "Učitana vrednost"
-
-#. Accessible description for the area in which results are displayed
-#: ../data/gcalctool.ui.h:148
-msgid "Result Region"
-msgstr "Ciljna oblast"
-
-#. Tooltip for the root button
-#: ../data/gcalctool.ui.h:150
-msgid "Root [Ctrl+S]"
-msgstr "Koren [Ctrl+S]"
-
-#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
-#: ../data/gcalctool.ui.h:152
-msgid "Scientific"
-msgstr "Naučni"
-
-#. Accessible name for the scientific exponent button
-#: ../data/gcalctool.ui.h:154
-msgid "Scientific Exponent"
-msgstr "Naučni eksponent"
-
-#. Tooltip for the scientific exponent button
-#: ../data/gcalctool.ui.h:156
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "Naučni eksponent [Ctrl+E]"
-
-#. Accessible name for the shift left button
-#: ../data/gcalctool.ui.h:158
-msgid "Shift Left"
-msgstr "Pomeri ulevo"
-
-#. Accessible name for the shift right button
-#: ../data/gcalctool.ui.h:160
-msgid "Shift Right"
-msgstr "Pomeri udesno"
-
-#. Tooltip for the shift left button
-#: ../data/gcalctool.ui.h:162
-msgid "Shift left [<]"
-msgstr "Pomeri ulevo [<]"
-
-#. Tooltip for the shift right button
-#: ../data/gcalctool.ui.h:164
-msgid "Shift right [>]"
-msgstr "Pomeri udesno [>]"
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/gcalctool.ui.h:166
-msgid "Show _thousands separators"
-msgstr "Prikaži _razdvajač hiljada"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/gcalctool.ui.h:168
-msgid "Show trailing _zeroes"
-msgstr "Prikaži prateće _nule"
-
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:170
+#: ../data/buttons-financial.ui.h:74
 msgid "Sln"
 msgstr "Sln"
 
-#. Tooltip for the start block button
-#: ../data/gcalctool.ui.h:172
-msgid "Start block [(]"
-msgstr "Početak bloka [(]"
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:78
+msgid "Straight-Line Depreciation"
+msgstr "Pravolinijsko umanjenje"
 
-#. Accessible name for the store value button
-#: ../data/gcalctool.ui.h:174
-msgid "Store"
-msgstr "Snimi"
-
-#. Tooltip for the store value button
-#: ../data/gcalctool.ui.h:176
-msgid "Store value"
-msgstr "Snimljena vrednost"
-
-#. Accessible name for the subscript mode button
-#: ../data/gcalctool.ui.h:178
-msgid "Subscript"
-msgstr "Indeks"
-
-#. Tooltip for the subscript mode button
-#: ../data/gcalctool.ui.h:180
-msgid "Subscript number mode [Alt+number]"
-msgstr "Režim indeksa [Alt+broj]"
-
-#. Tooltip for the subtraction button
-#: ../data/gcalctool.ui.h:182
-msgid "Subtract [-]"
-msgstr "Oduzmi [-]"
-
-#. Accessible name for the superscript mode button
-#: ../data/gcalctool.ui.h:184
-msgid "Superscript"
-msgstr "Eksponent"
-
-#. Tooltip for the superscript mode button
-#: ../data/gcalctool.ui.h:186
-msgid "Superscript number mode [Ctrl+number]"
-msgstr "Režim eksponenta [Ctrl+broj]"
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:80
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "Zbir-cifara-godine umanjenje"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:188
+#: ../data/buttons-financial.ui.h:82
 msgid "Syd"
 msgstr "Zcg"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:190
+#: ../data/buttons-financial.ui.h:84
 msgid "Term"
 msgstr "Rok"
 
-#. Tooltip for the truncate button
-#: ../data/gcalctool.ui.h:192
-msgid "Truncate value"
-msgstr "Odseci vrednost"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Cost:"
+msgstr "_Cena:"
 
-#. Tooltip for the two's complement button
-#: ../data/gcalctool.ui.h:194
-msgid "Two's complement"
-msgstr "Komplement dvojke"
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Future Value:"
+msgstr "_Buduća vrednost:"
 
-#. Preferences dialog: label for word size combo box
-#: ../data/gcalctool.ui.h:196
-msgid "Word _size:"
-msgstr "Dužina _reči"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Life:"
+msgstr "_Životni vek:"
 
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:198
-msgid "_1 place"
-msgstr "_1 mesto"
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:94
+msgid "_Margin:"
+msgstr "_Marža:"
 
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:200
-msgid "_2 places"
-msgstr "_2 mesta"
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Number of Periods:"
+msgstr "_Broj perioda:"
 
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:202
-msgid "_3 places"
-msgstr "_3 mesta"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:98
+msgid "_Period:"
+msgstr "_Period:"
 
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:204
-msgid "_4 places"
-msgstr "_4 mesta"
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:100
+msgid "_Periodic Payment:"
+msgstr "_Periodično plaćanje:"
 
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:206
-msgid "_5 places"
-msgstr "_5 mesta"
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:102
+msgid "_Principal:"
+msgstr "_Osnova:"
 
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:208
-msgid "_6 places"
-msgstr "_6 mesta"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:104
+msgid "_Salvage:"
+msgstr "_Krajnja cena:"
 
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:210
-msgid "_7 places"
-msgstr "_7 mesta"
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:106
+msgid "_Term:"
+msgstr "_Rok:"
 
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:212
-msgid "_8 places"
-msgstr "_8 mesta"
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:10
+msgid "Ch_aracter:"
+msgstr "_Znak:"
 
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:214
-msgid "_9 places"
-msgstr "_9 mesta"
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:20
+msgid "Insert Character"
+msgstr "Ubaci Znak"
 
-#. View|Advanced menu item
-#: ../data/gcalctool.ui.h:216
-msgid "_Advanced"
-msgstr "Na_predni"
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
+msgid "Insert Character Code"
+msgstr "Ubaci Kod Znak"
 
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/gcalctool.ui.h:218
-msgid "_Angle units:"
-msgstr "Jedinice uglov_a"
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:255
+msgid "Shift Left"
+msgstr "Pomeri ulevo"
 
-#. View|Basic menu item
-#: ../data/gcalctool.ui.h:220
-msgid "_Basic"
-msgstr "_Osnovni"
-
-#. Calculator menu
-#: ../data/gcalctool.ui.h:222
-msgid "_Calculator"
-msgstr "_Kalkulator"
-
-#. View|Financial menu item
-#: ../data/gcalctool.ui.h:224
-msgid "_Financial"
-msgstr "_Finansijski"
-
-#. Help menu
-#: ../data/gcalctool.ui.h:226
-msgid "_Help"
-msgstr "_Pomoć"
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:30 ../src/math-buttons.c:258
+msgid "Shift Right"
+msgstr "Pomeri udesno"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:228
+#: ../data/buttons-programming.ui.h:38
 msgid "_Insert"
 msgstr "U_metni"
 
-#. View|Programming menu item
-#: ../data/gcalctool.ui.h:230
-msgid "_Programming"
-msgstr "P_rogramerski"
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16 bita"
 
-#. View|Scientific menu item
-#: ../data/gcalctool.ui.h:232
-msgid "_Scientific"
-msgstr "_Naučni"
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32 bita"
 
-#. View menu
-#: ../data/gcalctool.ui.h:234
-msgid "_View"
-msgstr "P_regled"
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64 bita"
 
-#. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8 bita"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "_Format broja:"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
+msgid "Preferences"
+msgstr "Podešavanja"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "Prikaži _razdvajač hiljada"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "Prikaži prateće _nule"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "Dužina _reči"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "Jedinice uglov_a"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:521
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -857,15 +481,27 @@ msgstr "Kalkulator"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Obavi aritmetičke, naučne ili finansijske proračune"
 
-#: ../data/gcalctool.schemas.in.h:1
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Vrednost preciznosti"
 
-#: ../data/gcalctool.schemas.in.h:2
-msgid "Display Mode"
-msgstr "Način prikaza"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "Jedinice uglova"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Režim dugmeta"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "Valuta trenutne računice"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "Valuta u koje treba pretvoriti računicu"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -873,105 +509,204 @@ msgstr ""
 "Da li da se u prikazanoj vrednosti prikazuju prateće nule posle decimalnog "
 "zareza."
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr "Da li da memorijski registri budu prikazani po pokretanju."
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Da li da se razdvajač hiljada prikazuje za velike brojeve."
 
-#: ../data/gcalctool.schemas.in.h:6
-msgid "Mode"
-msgstr "Mod"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "Format broja"
 
-#: ../data/gcalctool.schemas.in.h:7
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "Brojna osnova"
 
-#: ../data/gcalctool.schemas.in.h:8
-msgid "Show Registers"
-msgstr "Prikaži memorijske registre"
-
-#: ../data/gcalctool.schemas.in.h:9
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
 msgstr "Prikaži razdvajač hiljada"
 
-#: ../data/gcalctool.schemas.in.h:10
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "Prikaži prateće nule"
 
-#: ../data/gcalctool.schemas.in.h:11
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
-"Početni način rada kalkulatora. Ispravne vrednosti su „BASIC“ (osnovni), "
-"„FINANCIAL“ (finansijski), „LOGICAL“ (logički), „SCIENTIFIC“ (naučni) i "
-"„PROGRAMMING“ (programerski)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "Izvorna valuta"
 
-#: ../data/gcalctool.schemas.in.h:12
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"Početni način prikaza. Ispravne vrednosti su „ENG“ (inženjerski), „FIX“ (sa "
-"nepokretnim zarezom) i „SCI“ (naučni)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Target currency"
+msgstr "Odredišna valuta"
 
-#: ../data/gcalctool.schemas.in.h:13
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
-"Početna vrednost načina rada sa trigonometrijskim funkcijama. Ispravne "
-"vrednosti su „DEG“ (stepeni), „GRAD“ (gradijani) i „RAD“ (radijani)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr "Jedinice uglova koje treba koristiti"
 
-#: ../data/gcalctool.schemas.in.h:14
-msgid "The initial x-coordinate for the window"
-msgstr "Početna x koordinata glavnog prozora"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "The button mode"
+msgstr "Režim dugmeta"
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid "The initial y-coordinate for the window"
-msgstr "Početna y koordinata glavnog prozora"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The format to display numbers in"
+msgstr "Format u kome treba prikazivati brojeve"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr ""
-"Broj cifara prikazan posle decimalnog zareza. Ova vrednost mora biti od 0 do "
-"9."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The number of digits displayed after the numeric point"
+msgstr "Broj cifara prikazan posle decimalnog zareza"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr "Broj piksela za koje treba pomeriti prozor od leve ivice ekrana."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The numeric base"
+msgstr "Brojna osnova"
 
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "Broj piksela za koje treba pomeriti prozor od gornje ivice ekrana."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The size of the words used in bitwise operations"
+msgstr "Dužina reči koja se koristi za bitske operacije"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The numeric base for input and display."
-msgstr "Brojna osnova za unos i prikaz."
-
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
-msgstr ""
-"Dužina reči koja se koristi za bitovske operacije. Ispravne vrednosti su 16, "
-"32 i 64."
-
-#: ../data/gcalctool.schemas.in.h:21
-msgid "Trigonometric type"
-msgstr "Način rada trigonometrijskih funkcija"
-
-#: ../data/gcalctool.schemas.in.h:22
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "Word size"
 msgstr "Dužina reči"
 
+#: ../src/currency.h:19
+msgid "Australian dollar"
+msgstr "Australijski dolar"
+
+#: ../src/currency.h:20
+msgid "Bulgarian lev"
+msgstr "Bugarski lev"
+
+#: ../src/currency.h:21
+msgid "Brazilian real"
+msgstr "Brazilski real"
+
+#: ../src/currency.h:22
+msgid "Canadian dollar"
+msgstr "Kanadski dolar"
+
+#: ../src/currency.h:23
+msgid "Swiss franc"
+msgstr "Švajcarski franak"
+
+#: ../src/currency.h:24
+msgid "Chinese yuan renminbi"
+msgstr "Kineski juan"
+
+#: ../src/currency.h:25
+msgid "Czech koruna"
+msgstr "Češka kruna"
+
+#: ../src/currency.h:26
+msgid "Danish krone"
+msgstr "Danska kruna"
+
+#: ../src/currency.h:27
+msgid "Estonian kroon"
+msgstr "Estonska kruna"
+
+#: ../src/currency.h:28
+msgid "Euro"
+msgstr "Evro"
+
+#: ../src/currency.h:29
+msgid "Pound sterling"
+msgstr "Funta sterling"
+
+#: ../src/currency.h:30
+msgid "Hong Kong dollar"
+msgstr "Hongkong dolar"
+
+#: ../src/currency.h:31
+msgid "Croatian kuna"
+msgstr "Hrvatska kuna"
+
+#: ../src/currency.h:32
+msgid "Hungarian forint"
+msgstr "Mađarska forinta"
+
+#: ../src/currency.h:33
+msgid "Indonesian rupiah"
+msgstr "Indonežanska rupija"
+
+#: ../src/currency.h:34
+msgid "Indian rupee"
+msgstr "Indijska rupija"
+
+#: ../src/currency.h:35
+msgid "Icelandic krona"
+msgstr "Islandska kruna"
+
+#: ../src/currency.h:36
+msgid "Japanese yen"
+msgstr "Japanski jen"
+
+#: ../src/currency.h:37
+msgid "South Korean won"
+msgstr "Južnokorejski von"
+
+#: ../src/currency.h:38
+msgid "Lithuanian litas"
+msgstr "Litvanski litas"
+
+#: ../src/currency.h:39
+msgid "Latvian lats"
+msgstr "Letonski lats"
+
+#: ../src/currency.h:40
+msgid "Mexican peso"
+msgstr "Meksički pezos"
+
+#: ../src/currency.h:41
+msgid "Malaysian ringgit"
+msgstr "Malezijski ringit"
+
+#: ../src/currency.h:42
+msgid "Norwegian krone"
+msgstr "Norveška kruna"
+
+#: ../src/currency.h:43
+msgid "New Zealand dollar"
+msgstr "Novozelandski dolar"
+
+#: ../src/currency.h:44
+msgid "Philippine peso"
+msgstr "Filipinski pezos"
+
+#: ../src/currency.h:45
+msgid "Polish zloty"
+msgstr "Poljski zlot"
+
+#: ../src/currency.h:46
+msgid "New Romanian leu"
+msgstr "Novi rumunski lej"
+
+#: ../src/currency.h:47
+msgid "Russian rouble"
+msgstr "Ruska rublja"
+
+#: ../src/currency.h:48
+msgid "Swedish krona"
+msgstr "Švedska kruna"
+
+#: ../src/currency.h:49
+msgid "Singapore dollar"
+msgstr "Singapurski dolar"
+
+#: ../src/currency.h:50
+msgid "Thai baht"
+msgstr "Tajlandski bat"
+
+#: ../src/currency.h:51
+msgid "New Turkish lira"
+msgstr "Nova turska lira"
+
+#: ../src/currency.h:52
+msgid "US dollar"
+msgstr "Američki dolar"
+
+#: ../src/currency.h:53
+msgid "South African rand"
+msgstr "Južnoafrički rand"
+
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/calctool.c:79
+#: ../src/gcalctool.c:76
 #, c-format
 msgid ""
 "Usage:\n"
@@ -981,7 +716,7 @@ msgstr ""
 "  %s — Obavlja matematička izračunavanja"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/calctool.c:87
+#: ../src/gcalctool.c:84
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -997,7 +732,7 @@ msgstr ""
 "  --help-gtk                      Prikazuje Gtk+ opcije"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/calctool.c:98
+#: ../src/gcalctool.c:95
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1021,7 +756,7 @@ msgstr ""
 "  --g-fatal-warnings              Postavlja sva upozorenja kao kobna"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/gcalctool.c:109
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1033,253 +768,456 @@ msgstr ""
 "  -s, --solve <equation>          Rešava zadatu jednačinu"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argument --solve zahteva jednačinu za rešavanje"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/gcalctool.c:168
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Nepoznat argument „%s“"
 
-#. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:106
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
 
-#: ../src/currency.h:18
-msgid "Australian dollar"
-msgstr "Australijski dolar"
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:109
+msgid "Euler’s Number"
+msgstr "Ojlerov broj"
 
-#: ../src/currency.h:19
-msgid "Bulgarian lev"
-msgstr "Bugarski lev"
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:114
+msgid "Subscript mode [Alt]"
+msgstr "Režim indeksa [Alt]"
 
-#: ../src/currency.h:20
-msgid "Brazilian real"
-msgstr "Brazilski real"
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:117
+msgid "Superscript mode [Ctrl]"
+msgstr "Režim eksponenta [Ctrl]"
 
-#: ../src/currency.h:21
-msgid "Canadian dollar"
-msgstr "Kanadski dolar"
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:120
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Naučni eksponent [Ctrl+E]"
 
-#: ../src/currency.h:22
-msgid "Swiss franc"
-msgstr "Švajcarski franak"
+#. Tooltip for the add button
+#: ../src/math-buttons.c:123
+msgid "Add [+]"
+msgstr "Saberi [+]"
 
-#: ../src/currency.h:23
-msgid "Chinese yuan renminbi"
-msgstr "Kineski juan"
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:126
+msgid "Subtract [-]"
+msgstr "Oduzmi [-]"
 
-#: ../src/currency.h:24
-msgid "Czech koruna"
-msgstr "Češka kruna"
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:129
+msgid "Multiply [*]"
+msgstr "Množenje [*]"
 
-#: ../src/currency.h:25
-msgid "Danish krone"
-msgstr "Danska kruna"
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:132
+msgid "Divide [/]"
+msgstr "Deljenje [/]"
 
-#: ../src/currency.h:26
-msgid "Estonian kroon"
-msgstr "Estonska kruna"
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:135
+msgid "Modulus divide"
+msgstr "Deljenje po modulu"
 
-#: ../src/currency.h:27
-msgid "Euro"
-msgstr "Evro"
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:138
+msgid "Additional Functions"
+msgstr "Dodatne funkcije"
 
-#: ../src/currency.h:28
-msgid "Pound sterling"
-msgstr "Funta sterling"
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:141
+msgid "Exponent [^ or **]"
+msgstr "Eksponent [^ ili **]"
 
-#: ../src/currency.h:29
-msgid "Hong Kong dollar"
-msgstr "Hongkong dolar"
+#. Tooltip for the square button
+#: ../src/math-buttons.c:144
+msgid "Square [Ctrl+2]"
+msgstr "Kvadrat [Ctrl+2]"
 
-#: ../src/currency.h:30
-msgid "Croatian kuna"
-msgstr "Hrvatska kuna"
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:147
+msgid "Percentage [%]"
+msgstr "Procenat [%]"
 
-#: ../src/currency.h:31
-msgid "Hungarian forint"
-msgstr "Mađarska forinta"
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:150
+msgid "Factorial [!]"
+msgstr "Faktorijel [!]"
 
-#: ../src/currency.h:32
-msgid "Indonesian rupiah"
-msgstr "Indonežanska rupija"
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:153
+msgid "Absolute value [|]"
+msgstr "Apsolutna vrednost [|]"
 
-#: ../src/currency.h:33
-msgid "Indian rupee"
-msgstr "Indijska rupija"
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:156
+msgid "Complex argument"
+msgstr "Kompleksni argument"
 
-#: ../src/currency.h:34
-msgid "Icelandic krona"
-msgstr "Islandska kruna"
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:159
+msgid "Complex conjugate"
+msgstr "Konjugovano kompleksna vrednost"
 
-#: ../src/currency.h:35
-msgid "Japanese yen"
-msgstr "Japanski jen"
+#. Tooltip for the root button
+#: ../src/math-buttons.c:162
+msgid "Root [Ctrl+R]"
+msgstr "Koren [Ctrl+R]"
 
-#: ../src/currency.h:36
-msgid "South Korean won"
-msgstr "Južnokorejski von"
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:165
+msgid "Square root [Ctrl+R]"
+msgstr "Kvadratni koren [Ctrl+R]"
 
-#: ../src/currency.h:37
-msgid "Lithuanian litas"
-msgstr "Litvanski litas"
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:168
+msgid "Logarithm"
+msgstr "Logaritam"
 
-#: ../src/currency.h:38
-msgid "Latvian lats"
-msgstr "Letonski lats"
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:171
+msgid "Natural Logarithm"
+msgstr "Prirodni logaritam"
 
-#: ../src/currency.h:39
-msgid "Mexican peso"
-msgstr "Meksički pezos"
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:174
+msgid "Sine"
+msgstr "Sinus"
 
-#: ../src/currency.h:40
-msgid "Malaysian ringgit"
-msgstr "Malezijski ringit"
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:177
+msgid "Cosine"
+msgstr "Kosinus"
 
-#: ../src/currency.h:41
-msgid "Norwegian krone"
-msgstr "Norveška kruna"
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:180
+msgid "Tangent"
+msgstr "Tangens"
 
-#: ../src/currency.h:42
-msgid "New Zealand dollar"
-msgstr "Novozelandski dolar"
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:183
+msgid "Hyperbolic Sine"
+msgstr "Sinus Hiperbolični"
 
-#: ../src/currency.h:43
-msgid "Philippine peso"
-msgstr "Filipinski pezos"
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:186
+msgid "Hyperbolic Cosine"
+msgstr "Kosinus Hiperbolični"
 
-#: ../src/currency.h:44
-msgid "Polish zloty"
-msgstr "Poljski zlot"
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:189
+msgid "Hyperbolic Tangent"
+msgstr "Tangens Hiperbolični"
 
-#: ../src/currency.h:45
-msgid "New Romanian leu"
-msgstr "Novi rumunski lej"
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:192
+msgid "Inverse [Ctrl+I]"
+msgstr "Inverzno [Ctrl+I]"
 
-#: ../src/currency.h:46
-msgid "Russian rouble"
-msgstr "Ruska rublja"
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:195
+msgid "Boolean AND"
+msgstr "Logičko I"
 
-#: ../src/currency.h:47
-msgid "Swedish krona"
-msgstr "Švedska kruna"
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:198
+msgid "Boolean OR"
+msgstr "Logičko ILI"
 
-#: ../src/currency.h:48
-msgid "Singapore dollar"
-msgstr "Singapurski dolar"
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:201
+msgid "Boolean Exclusive OR"
+msgstr "Logičko ILLI"
 
-#: ../src/currency.h:49
-msgid "Thai baht"
-msgstr "Tajlandski bat"
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:204
+msgid "Boolean NOT"
+msgstr "Logičko NE"
 
-#: ../src/currency.h:50
-msgid "New Turkish lira"
-msgstr "Nova turska lira"
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1442
+msgid "Integer Component"
+msgstr "Celobrojni Deo"
 
-#: ../src/currency.h:51
-msgid "US dollar"
-msgstr "Američki dolar"
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1444
+msgid "Fractional Component"
+msgstr "Razlomljeni Deo"
 
-#: ../src/currency.h:52
-msgid "South African rand"
-msgstr "Južnoafrički rand"
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:213
+msgid "Real Component"
+msgstr "Realni Deo"
 
-#: ../src/display.c:390
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:216
+msgid "Imaginary Component"
+msgstr "Imaginarni Deo"
+
+#. Tooltip for the ones complement button
+#: ../src/math-buttons.c:219
+msgid "Ones Complement"
+msgstr "Komplement Jedinice"
+
+#. Tooltip for the twos complement button
+#: ../src/math-buttons.c:222
+msgid "Twos Complement"
+msgstr "Komplement Dvojke"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:225
+msgid "Truncate"
+msgstr "Odseci"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:228
+msgid "Start Group [(]"
+msgstr "Početak Grupe [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:231
+msgid "End Group [)]"
+msgstr "Kraj Grupe [)]"
+
+#. Tooltip for the assign variable button
+#: ../src/math-buttons.c:234
+msgid "Assign Variable"
+msgstr "Dodeli promenljivu"
+
+#. Tooltip for the insert variable button
+#: ../src/math-buttons.c:237
+msgid "Insert Variable"
+msgstr "Ubaci promenljivu"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:243
+msgid "Calculate Result"
+msgstr "Izračunaj Rezultat"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:246
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktoriši [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:249
+msgid "Clear Display [Escape]"
+msgstr "Očisti Ekran [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:252
+msgid "Undo [Ctrl+Z]"
+msgstr "Opozovi [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:264
+msgid "Double Declining Depreciation"
+msgstr "Dvostruko-Opadajuće Umanjenje"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:270
+msgid "Financial Term"
+msgstr "Finansijski Izraz"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:273
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Zbir-cifara-godine umanjenje"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:276
+msgid "Straight Line Depreciation"
+msgstr "Pravolinijsko umanjenje"
+
+#. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../src/math-buttons.c:892 ../src/math-preferences.c:255
+msgid "Degrees"
+msgstr "Stepeni"
+
+#. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-buttons.c:896 ../src/math-preferences.c:259
+msgid "Radians"
+msgstr "Radijani"
+
+#. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-buttons.c:900 ../src/math-preferences.c:263
+msgid "Gradians"
+msgstr "Gradijani"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:934
+msgid "Binary"
+msgstr "Binarno"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:938
+msgid "Octal"
+msgstr "Oktalno"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:942
+msgid "Decimal"
+msgstr "Decimalno"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:946
+msgid "Hexadecimal"
+msgstr "Heksadecimalno"
+
+#. Text shown in store menu when no variables defined
+#. Text shown in recall menu when no variables defined
+#: ../src/math-buttons.c:1263 ../src/math-buttons.c:1309
+msgid "No variables defined"
+msgstr "Nema definisanih promenljivih"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:1352 ../src/math-buttons.c:1396
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d mesto"
+msgstr[1] "_%d mesta"
+msgstr[2] "_%d mesta"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:1356 ../src/math-buttons.c:1400
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d mesto"
+msgstr[1] "%d mesta"
+msgstr[2] "%d mesta"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1446
+msgid "Round"
+msgstr "Zaokruži"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1448
+msgid "Floor"
+msgstr "Zaokruži na dole"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1450
+msgid "Ceiling"
+msgstr "Zaokruži na gore"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1452
+msgid "Sign"
+msgstr "Znak"
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:496
 msgid "No undo history"
 msgstr "Nema istorijata opozivanja"
 
-#: ../src/display.c:405
-msgid "No redo steps"
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:521
+msgid "No redo history"
 msgstr "Nema istorijata ponavljanja"
 
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/display.c:1066
-msgid "No sane value to bitwise shift"
-msgstr "Nema razumne vrednosti za bitsko pomeranje"
-
-#. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:1082
-msgid "Need an integer to factorize"
-msgstr "Za faktorisanje je potreban ceo broj"
-
-#: ../src/display.c:1108
+#: ../src/math-equation.c:845
 msgid "No sane value to store"
 msgstr "Nema razumne vrednosti za smeštanje"
 
-#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1230
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1105
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračenje. Pokušajte sa većom dužinom reči"
 
-#. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1235
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1110
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Nepoznata promenljiva „%s“"
 
-#. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1241
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1115
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcija „%s“ nije definisana"
 
-#. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1247
-#, c-format
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1120
 msgid "Unknown conversion"
 msgstr "Nepoznato pretvaranje"
 
-#. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1256
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1129
 msgid "Malformed expression"
 msgstr "Neispravan izraz"
 
-#. Translators: The window title when in advanced mode
-#: ../src/gtk.c:98
-msgid "Calculator — Advanced"
-msgstr "Kalkulator — Napredni"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1152
+msgid "Need an integer to factorize"
+msgstr "Za faktorisanje je potreban ceo broj"
 
-#. Translators: The window title when in financial mode
-#: ../src/gtk.c:100
-msgid "Calculator — Financial"
-msgstr "Kalkulator — Finansijski"
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1229
+msgid "No sane value to bitwise shift"
+msgstr "Nema razumne vrednosti za bitsko pomeranje"
 
-#. Translators: The window title when in scientific mode
-#: ../src/gtk.c:102
-msgid "Calculator — Scientific"
-msgstr "Kalkulator — Naučni"
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1258
+msgid "Displayed value not an integer"
+msgstr "Prikazana vrednost nije ceo broj"
 
-#. Translators: The window title when in programming mode
-#: ../src/gtk.c:104
-msgid "Calculator — Programming"
-msgstr "Kalkulator — Programerski"
+#. Digits localized for the given language
+#: ../src/math-equation.c:1648
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:235
-msgid "Error loading user interface"
-msgstr "Greška pri učitavanju grafičkog sučelja"
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:245
+msgid "_Close"
+msgstr "_Zatvori"
 
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:238
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:273
+msgid "Fixed"
+msgstr "Fiksni"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:277
+msgid "Scientific"
+msgstr "Naučni"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:281
+msgid "Engineering"
+msgstr "Inženjerski"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:292
 #, c-format
-msgid ""
-"A required file is missing or damaged. Please check your installation.\n"
-"\n"
-"%s"
-msgstr ""
-"Potrebna datoteka ne postoji ili je oštećena. Proverite instalaciju "
-"programa.\n"
-"\n"
-"%s"
+msgid "Show %d decimal _places"
+msgstr "_Prikaži %d decimalna mesta"
 
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:557
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:170
+msgid "Unable to open help file"
+msgstr "Ne mogu da otvorim datoteku za pomoć"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:201
 msgid "translator-credits"
 msgstr ""
 "Danilo Šegan <danilo@prevod.org>\n"
@@ -1289,8 +1227,8 @@ msgstr ""
 "\n"
 "Prevod.org — prevod na srpski jezik"
 
-#. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:560
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:204
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1320,98 +1258,60 @@ msgstr ""
 "Foundation, Inc.), 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301 USA"
 
-#. Translators: Program name in the about dialog
-#: ../src/gtk.c:576
+#. Program name in the about dialog
+#: ../src/math-window.c:221
 msgid "Gcalctool"
 msgstr "Gnomov kalkulator"
 
-#. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:579
-msgid "© 1986–2008 The Gcalctool authors"
-msgstr "© 1986–2008 Autori Gnomovog kalkulatora"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:225
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Autori Gnomovog kalkulatora"
 
-#. Translators: Short description in the about dialog
-#: ../src/gtk.c:582
+#. Short description in the about dialog
+#: ../src/math-window.c:229
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator sa finansijskim i naučnim načinom rada."
 
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:636
-msgid "Unable to open help file"
-msgstr "Ne mogu da otvorim datoteku za pomoć"
+#. Calculator menu
+#: ../src/math-window.c:355
+msgid "_Calculator"
+msgstr "_Kalkulator"
 
-#. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1010
-msgid ""
-"You don't have any recent currency rates. Should some be downloaded now?"
-msgstr "Nemate skorašnje kursne liste. Da li želite da ih skinete sada?"
+#. Mode menu
+#: ../src/math-window.c:357
+msgid "_Mode"
+msgstr "_Mod"
 
-#. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1020
-msgid ""
-"Currency rates could not be downloaded. You may receive inaccurate results, "
-"or you may not receive any results at all."
-msgstr ""
-"Ne mogu da preuzmem kursne liste. Možda ćete dobiti pogrešne rezultate ili "
-"nećete dobiti nikakav rezultat."
+#. Help menu label
+#: ../src/math-window.c:359
+msgid "_Help"
+msgstr "_Pomoć"
 
-#: ../src/gtk.c:1543
-msgid "Paste"
-msgstr "Ubaci"
+#. Basic menu label
+#: ../src/math-window.c:361
+msgid "_Basic"
+msgstr "_Osnovni"
 
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
-msgid "Division by zero is undefined"
-msgstr "Deljenje sa nulom nije definisano"
+#. Advanced menu label
+#: ../src/math-window.c:363
+msgid "_Advanced"
+msgstr "Na_predni"
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1169 ../src/mp.c:1206
-msgid "Logarithm of zero is undefined"
-msgstr "Logaritam od nule nije definisan"
+#. Financial menu label
+#: ../src/math-window.c:365
+msgid "_Financial"
+msgstr "_Finansijski"
 
-#. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1178
-msgid "Logarithm of negative values is undefined"
-msgstr "Logaritam od negativne vrednost nije definisan"
+#. Programming menu label
+#: ../src/math-window.c:367
+msgid "_Programming"
+msgstr "P_rogramerski"
 
-#: ../src/mp.c:1552
-msgid "The power of negative numbers is only defined for integer exponents"
-msgstr "Stepen negativnog broja je definisan samo za celobrojne eksponente"
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1559 ../src/mp.c:1852
-msgid "The power of zero is undefined for a negative exponent"
-msgstr "Stepenovanje nule nije definisano za negativne eksponente"
-
-#: ../src/mp.c:1584
-msgid "Reciprocal of zero is undefined"
-msgstr "Recipročna vrednost nule nije definisana"
-
-#: ../src/mp.c:1669
-msgid "Root must be non-zero"
-msgstr "Koran mora biti različit od nule"
-
-#: ../src/mp.c:1687
-msgid "Negative root of zero is undefined"
-msgstr "Negativni koren od nule nije definisan"
-
-#: ../src/mp.c:1693
-msgid "nth root of negative number is undefined for even n"
-msgstr "n-ti koren od negativnog broja nije definisan za parno n"
-
-#: ../src/mp.c:1763
-msgid "Square root is undefined for negative values"
-msgstr "Kvadratni koren nije definisan za negativne vrednosti"
-
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1792
-msgid "Factorial is only defined for natural numbers"
-msgstr "Faktorijel je definisan samo za prirodne brojeve"
-
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1812
-msgid "Modulus division is only defined for integers"
-msgstr "Deljenje po modulu je definisano samo za cele brojeve"
+#. Help>Contents menu label
+#: ../src/math-window.c:369
+msgid "_Contents"
+msgstr "_Sadržaj"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
@@ -1438,8 +1338,54 @@ msgstr "Logičko NE je definisano samo za pozitivne cele brojeve"
 msgid "Shift is only possible on integer values"
 msgstr "Pomeranje je moguće samo za pozitivne cele vrednosti"
 
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:149
+msgid "Argument not defined for zero"
+msgstr "Argument nije definisan za nulu"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:636 ../src/mp.c:668 ../src/mp.c:1602
+msgid "Division by zero is undefined"
+msgstr "Deljenje sa nulom nije definisano"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1273 ../src/mp.c:1310
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritam od nule nije definisan"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1675 ../src/mp.c:1990
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Stepenovanje nule nije definisano za negativne eksponente"
+
+#: ../src/mp.c:1700
+msgid "Reciprocal of zero is undefined"
+msgstr "Recipročna vrednost nule nije definisana"
+
+#: ../src/mp.c:1785
+msgid "Root must be non-zero"
+msgstr "Koran mora biti različit od nule"
+
+#: ../src/mp.c:1803
+msgid "Negative root of zero is undefined"
+msgstr "Negativni koren od nule nije definisan"
+
+#: ../src/mp.c:1809
+msgid "nth root of negative number is undefined for even n"
+msgstr "n-ti koren od negativnog broja nije definisan za parno n"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1930
+msgid "Factorial is only defined for natural numbers"
+msgstr "Faktorijel je definisan samo za prirodne brojeve"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1950
+msgid "Modulus division is only defined for integers"
+msgstr "Deljenje po modulu je definisano samo za cele brojeve"
+
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:278
+#: ../src/mp-trigonometric.c:311
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1447,17 +1393,17 @@ msgstr ""
 "(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:323
+#: ../src/mp-trigonometric.c:356
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzni sinus nije definisan za vrednosti izvan [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:340
+#: ../src/mp-trigonometric.c:373
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzni kosinus nije definisan za vrednosti izvan [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:558
+#: ../src/mp-trigonometric.c:591
 msgid ""
 "Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr ""
@@ -1465,10 +1411,226 @@ msgstr ""
 "jedan"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:582
+#: ../src/mp-trigonometric.c:615
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzni tangens hiperbolički nije definisan za vrednosti izvan [-1, 1]"
+
+#~ msgid ""
+#~ "Converts between different currencies. Enter the amount and the currency "
+#~ "you want to convert from on the upper row, and the currency you want to "
+#~ "convert to on the lower row, and the amount will be displayed on the "
+#~ "lower row."
+#~ msgstr ""
+#~ "Pretvara različite valute. Unesite iznos i valutu koju želite da "
+#~ "pretvorite u gornji red, a valutu u koju želite da se iznos pretvori u "
+#~ "donji red i iznos će biti ispisan u donjem redu."
+
+#~ msgid "Currency Conversion"
+#~ msgstr "Pretvaranje valuta"
+
+#~ msgid "&#xA4;$&#x20AC;"
+#~ msgstr "&#xA4;$&#x20AC;"
+
+#~ msgid "10 places"
+#~ msgstr "10 mesta"
+
+#~ msgid "11 places"
+#~ msgstr "11 mesta"
+
+#~ msgid "12 places"
+#~ msgstr "12 mesta"
+
+#~ msgid "13 places"
+#~ msgstr "13 mesta"
+
+#~ msgid "14 places"
+#~ msgstr "14 mesta"
+
+#~ msgid "15 places"
+#~ msgstr "15 mesta"
+
+#~ msgid "Base 16"
+#~ msgstr "Osnova 16"
+
+#~ msgid "Base 2"
+#~ msgstr "Osnova 2"
+
+#~ msgid "Base 8"
+#~ msgstr "Osnova 8"
+
+#~ msgid "Calculate result [=]"
+#~ msgstr "Izračunaj rezultat [=]"
+
+#~ msgid "Clr"
+#~ msgstr "Očisti"
+
+#~ msgid "Display _Format:"
+#~ msgstr "Način _prikaza"
+
+#~ msgid "Factorize into prime numbers (Ctrl+F)"
+#~ msgstr "Faktoriši u proste brojeve (Ctrl+F)"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "Ubaci ASKRI vrednost"
+
+#~ msgid "Insert character"
+#~ msgstr "Ubaci znak"
+
+#~ msgid "Numeric point [. or ,]"
+#~ msgstr "Decimalni zarez [. ili ,]"
+
+#~ msgid "Random number"
+#~ msgstr "Slučajan broj"
+
+#~ msgid "Recall value"
+#~ msgstr "Učitana vrednost"
+
+#~ msgid "Result Region"
+#~ msgstr "Ciljna oblast"
+
+#~ msgid "Shift left [<]"
+#~ msgstr "Pomeri ulevo [<]"
+
+#~ msgid "Shift right [>]"
+#~ msgstr "Pomeri udesno [>]"
+
+#~ msgid "Store value"
+#~ msgstr "Snimljena vrednost"
+
+#~ msgid "Truncate value"
+#~ msgstr "Odseci vrednost"
+
+#~ msgid "_2 places"
+#~ msgstr "_2 mesta"
+
+#~ msgid "_3 places"
+#~ msgstr "_3 mesta"
+
+#~ msgid "_4 places"
+#~ msgstr "_4 mesta"
+
+#~ msgid "_5 places"
+#~ msgstr "_5 mesta"
+
+#~ msgid "_6 places"
+#~ msgstr "_6 mesta"
+
+#~ msgid "_7 places"
+#~ msgstr "_7 mesta"
+
+#~ msgid "_8 places"
+#~ msgstr "_8 mesta"
+
+#~ msgid "_9 places"
+#~ msgstr "_9 mesta"
+
+#~ msgid "_Scientific"
+#~ msgstr "_Naučni"
+
+#~ msgid "_View"
+#~ msgstr "P_regled"
+
+#~ msgid "Display Mode"
+#~ msgstr "Način prikaza"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Da li da memorijski registri budu prikazani po pokretanju."
+
+#~ msgid "Show Registers"
+#~ msgstr "Prikaži memorijske registre"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "Početni način rada kalkulatora. Ispravne vrednosti su „BASIC“ (osnovni), "
+#~ "„FINANCIAL“ (finansijski), „LOGICAL“ (logički), „SCIENTIFIC“ (naučni) i "
+#~ "„PROGRAMMING“ (programerski)"
+
+#~ msgid ""
+#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#~ "\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "Početni način prikaza. Ispravne vrednosti su „ENG“ (inženjerski), "
+#~ "„FIX“ (sa nepokretnim zarezom) i „SCI“ (naučni)"
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr ""
+#~ "Početna vrednost načina rada sa trigonometrijskim funkcijama. Ispravne "
+#~ "vrednosti su „DEG“ (stepeni), „GRAD“ (gradijani) i „RAD“ (radijani)"
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Početna x koordinata glavnog prozora"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Početna y koordinata glavnog prozora"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "Broj piksela za koje treba pomeriti prozor od leve ivice ekrana."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Broj piksela za koje treba pomeriti prozor od gornje ivice ekrana."
+
+#~ msgid "The numeric base for input and display."
+#~ msgstr "Brojna osnova za unos i prikaz."
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Način rada trigonometrijskih funkcija"
+
+#~ msgid "No redo steps"
+#~ msgstr "Nema istorijata ponavljanja"
+
+#~ msgid "Calculator — Advanced"
+#~ msgstr "Kalkulator — Napredni"
+
+#~ msgid "Calculator — Financial"
+#~ msgstr "Kalkulator — Finansijski"
+
+#~ msgid "Calculator — Scientific"
+#~ msgstr "Kalkulator — Naučni"
+
+#~ msgid "Calculator — Programming"
+#~ msgstr "Kalkulator — Programerski"
+
+#~ msgid "Error loading user interface"
+#~ msgstr "Greška pri učitavanju grafičkog sučelja"
+
+#~ msgid ""
+#~ "A required file is missing or damaged. Please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Potrebna datoteka ne postoji ili je oštećena. Proverite instalaciju "
+#~ "programa.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "You don't have any recent currency rates. Should some be downloaded now?"
+#~ msgstr "Nemate skorašnje kursne liste. Da li želite da ih skinete sada?"
+
+#~ msgid ""
+#~ "Currency rates could not be downloaded. You may receive inaccurate "
+#~ "results, or you may not receive any results at all."
+#~ msgstr ""
+#~ "Ne mogu da preuzmem kursne liste. Možda ćete dobiti pogrešne rezultate "
+#~ "ili nećete dobiti nikakav rezultat."
+
+#~ msgid "Paste"
+#~ msgstr "Ubaci"
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "Logaritam od negativne vrednost nije definisan"
+
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr "Stepen negativnog broja je definisan samo za celobrojne eksponente"
+
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "Kvadratni koren nije definisan za negativne vrednosti"
 
 #~ msgid "%"
 #~ msgstr "%"
@@ -1678,17 +1840,11 @@ msgstr ""
 #~ msgid "CE"
 #~ msgstr "CE"
 
-#~ msgid "Calculate result"
-#~ msgstr "Izračunaj rezultat"
-
 #~ msgid "Change Sign [C]"
 #~ msgstr "Promeni znak [C]"
 
 #~ msgid "Change sign"
 #~ msgstr "Promeni znak"
-
-#~ msgid "Clear"
-#~ msgstr "Očisti"
 
 #~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
 #~ msgstr ""
@@ -1738,9 +1894,6 @@ msgstr ""
 
 #~ msgid "Edit Constants..."
 #~ msgstr "Uredi konstante..."
-
-#~ msgid "Edit Functions"
-#~ msgstr "Uredi funkcije"
 
 #~ msgid "Edit Functions..."
 #~ msgstr "Uredi funkcije..."
@@ -1913,9 +2066,6 @@ msgstr ""
 #~ msgid "Quit the calculator"
 #~ msgstr "Izađi iz kalkulatora"
 
-#~ msgid "Rand"
-#~ msgstr "Sluč"
-
 #~ msgid "Random number in the range 0.0 to 1.0 [?]"
 #~ msgstr "Slučajan broj u opsegu 0.0 do 1.0 [?]"
 
@@ -2007,14 +2157,8 @@ msgstr ""
 #~ msgid "Square"
 #~ msgstr "Kvadrat"
 
-#~ msgid "Square [@]"
-#~ msgstr "Kvadrat [@]"
-
 #~ msgid "Square root"
 #~ msgstr "Kvadratni koren"
-
-#~ msgid "Square root [s]"
-#~ msgstr "Kvadratni koren [s]"
 
 # Pokreni više operacija?
 # Pokreni izračunavanje
@@ -2045,14 +2189,8 @@ msgstr ""
 #~ msgid "Sum-of-the years'-digits depreciation [y]"
 #~ msgstr "Zbir-cifara-godine umanjenje [y]"
 
-#~ msgid "Trunc"
-#~ msgstr "Ods"
-
 #~ msgid "Truncate displayed value to the chosen word size ([)"
 #~ msgstr "Odseca prikazanu vrednost na odabranu dužinu reči ([)"
-
-#~ msgid "Undo"
-#~ msgstr "Opozovi"
 
 #~ msgid "User-defined functions [F]"
 #~ msgstr "Funkcije korisnika [F]"
@@ -2093,17 +2231,11 @@ msgstr ""
 #~ msgid "_9 significant places"
 #~ msgstr "_9 značajnih mesta"
 
-#~ msgid "_Contents"
-#~ msgstr "_Sadržaj"
-
 #~ msgid "_Dec"
 #~ msgstr "_Dec"
 
 #~ msgid "_Edit"
 #~ msgstr "_Uređivanje"
-
-#~ msgid "_Fix"
-#~ msgstr "_Razl"
 
 #~ msgid "_Insert ASCII value..."
 #~ msgstr "U_metni ASCII vrednost..."
@@ -2216,9 +2348,6 @@ msgstr ""
 #~ msgid "Sine [k]"
 #~ msgstr "Sinus [k]"
 
-#~ msgid "Hyperbolic Sine [k]"
-#~ msgstr "Sinus Hiperbolični [k]"
-
 #~ msgid "Hyperbolic Inverse Sine [K]"
 #~ msgstr "Inverzni Sinus Hiperbolični [K]"
 
@@ -2234,14 +2363,8 @@ msgstr ""
 #~ msgid "cosh<sup>−1</sup>"
 #~ msgstr "cosh<sup>-1</sup>"
 
-#~ msgid "Cosine [j]"
-#~ msgstr "Kosinus [j]"
-
 #~ msgid "Inverse Cosine [J]"
 #~ msgstr "Inverzni Kosinus [J]"
-
-#~ msgid "Hyperbolic Cosine [j]"
-#~ msgstr "Kosinus Hiperbolični [j]"
 
 #~ msgid "Hyperbolic Inverse Cosine [J]"
 #~ msgstr "Inverzni Kosinus Hiperbolični [J]"
@@ -2258,14 +2381,8 @@ msgstr ""
 #~ msgid "tanh<sup>−1</sup>"
 #~ msgstr "tgh<sup>-1</sup>"
 
-#~ msgid "Tangent [w]"
-#~ msgstr "Tangens [w]"
-
 #~ msgid "Inverse Tangent [W]"
 #~ msgstr "Inverzni Tangens [W]"
-
-#~ msgid "Hyperbolic Tangent [w]"
-#~ msgstr "Tangens Hiperbolični [w]"
 
 #~ msgid "Hyperbolic Inverse Tangent [W]"
 #~ msgstr "Inverzni Tangens Hiperbolični [W]"
@@ -2362,9 +2479,6 @@ msgstr ""
 
 #~ msgid "Math operation error"
 #~ msgstr "Greška u matematičkoj operaciji"
-
-#~ msgid "Sin"
-#~ msgstr "sin"
 
 #~ msgid "Sinh"
 #~ msgstr "Sinh"
@@ -2570,9 +2684,6 @@ msgstr ""
 
 #~ msgid "\t\t [-?] [-v] [-?]\n"
 #~ msgstr "\t\t [-?] [-v] [-?]\n"
-
-#~ msgid "1 place"
-#~ msgstr "1 mesto"
 
 #~ msgid "2 places"
 #~ msgstr "2 mesta"
@@ -2836,9 +2947,6 @@ msgstr ""
 
 #~ msgid "Basic mode"
 #~ msgstr "Osnovni režim"
-
-#~ msgid "Financial mode"
-#~ msgstr "Finansijski režim"
 
 #~ msgid "Show about help"
 #~ msgstr "Prikaži pomoć o programu"
