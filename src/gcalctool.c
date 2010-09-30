@@ -61,7 +61,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, 10, 10, 9, 1, result_str, 1024);
+        mp_cast_to_string(&result, 10, 10, 9, 1, TRUE, result_str, 1024);
         printf("%s\n", result_str);
         exit(0);
     }

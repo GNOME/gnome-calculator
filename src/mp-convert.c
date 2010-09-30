@@ -22,6 +22,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <langinfo.h>
 
 #include "mp.h"
 #include "mp-private.h"
@@ -507,8 +508,20 @@ mp_cast_to_double(const MPNumber *x)
 }
 
 
+static const char*
+mp_radix_char()
+{
+    static const char* radix = NULL;
+    if (radix == NULL) {
+        radix = nl_langinfo(RADIXCHAR);
+        radix = radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    }
+    return radix;
+}
+
+
 static void
-mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool force_sign, GString *string)
+mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool force_sign, bool localize_radix, GString *string)
 {
     static char digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
@@ -549,7 +562,12 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
     } while (!mp_is_zero(&temp));
 
     last_non_zero = string->len;
-    g_string_append_c(string, '.');
+
+    /* Allow user to change locale without breaking saved numbers */
+    if (localize_radix)
+        g_string_append(string, mp_radix_char());
+    else
+        g_string_append_c(string, '.');
 
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
@@ -600,7 +618,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
 
 
 void
-mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool localize_radix, char *buffer, int buffer_length)
 {
     GString *string;
     MPNumber x_real;
@@ -608,7 +626,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
     string = g_string_sized_new(buffer_length);
 
     mp_real_component(x, &x_real);
-    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, string);
+    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, localize_radix, string);
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
@@ -622,7 +640,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
         }
 
         s = g_string_sized_new(buffer_length);
-        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, s);
+        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, localize_radix, s);
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -653,7 +671,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
 
 
 void
-mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, bool eng_format, char *buffer, int buffer_length)
+mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, bool eng_format, bool localize_radix, char *buffer, int buffer_length)
 {
     char fixed[1024], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -698,7 +716,7 @@ mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, in
         }
     }
 
-    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, fixed, 1024);
+    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, localize_radix, fixed, 1024);
     g_string_append(string, fixed);
     if (exponent != 0) {
         g_string_append_printf(string, "×10"); // FIXME: Use the current base
@@ -837,7 +855,13 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
     const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
     int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
-  
+    static const char *tsep = NULL;
+
+    if (tsep == NULL) {
+        tsep = nl_langinfo(THOUSEP);
+        tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
+    }
+
     if (strstr(str, "°"))
         return set_from_sexagesimal(str, strlen(str), z);
 
@@ -875,7 +899,16 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
 
     /* Convert integer part */
     mp_set_from_integer(0, z);
-    while ((i = char_val((char **)&c, base)) >= 0) {
+    while (1) {
+        if (strncmp(c, tsep, strlen(tsep)) == 0) {
+            c += strlen(tsep);
+            continue;
+        }
+
+        i = char_val((char **)&c, base);
+        if (i < 0)
+            break;
+
         if (i > base)
             return true;
         mp_multiply_integer(z, base, z);
@@ -895,7 +928,11 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
         mp_add(z, &fraction, z);
     }
 
-    if (*c == '.' || *c == ',') {
+    /* Accept both the user's local radix point (usually '.' or ','), and the
+     * english '.', since at least europeans frequently use '.' despite ','
+     * being the correct one for their locale.
+     */
+    if (*c == '.' || strncmp(c, mp_radix_char(), strlen(mp_radix_char())) == 0) {
         has_fraction = TRUE;
         c++;
     }

@@ -422,10 +422,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_mp(&x, &input);
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
-        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+        mp_cast_to_string(&input, 10, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&output, 10, 10, 2, false, true, output_text, 1024);
         label = g_strdup_printf(_("%s radians = %s degrees"), input_text, output_text);
         break;
     case MP_GRADIANS:
@@ -442,10 +442,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
 
-        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+        mp_cast_to_string(&input, 10, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&output, 10, 10, 2, false, true, output_text, 1024);
         label = g_strdup_printf(_("%s gradians = %s degrees"), input_text, output_text);
         break;
     }
@@ -543,8 +543,8 @@ update_currency_label(MathButtons *buttons)
         const char *source_symbol, *target_symbol;
         int i;
 
-        mp_cast_to_string(&x, 10, 10, 2, false, input_text, 1024);
-        mp_cast_to_string(&value, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&x, 10, 10, 2, false, true, input_text, 1024);
+        mp_cast_to_string(&value, 10, 10, 2, false, true, output_text, 1024);
 
         for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         source_symbol = currency_names[i].symbol;

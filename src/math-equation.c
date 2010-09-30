@@ -1276,13 +1276,13 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
 {
     switch(equation->priv->format) {
     case FIX:
-        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
         break;
     case SCI:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, false, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, false, true, target, target_len);
         break;
     case ENG:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, true, target, target_len);
         break;
     }
 }

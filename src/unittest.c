@@ -83,7 +83,7 @@ test(char *expression, char *expected, int expected_error)
     error = mp_equation_parse(expression, &options, &result, NULL);
 
     if(error == 0) {
-        mp_cast_to_string(&result, options.base, options.base, 9, 1, result_str, 1024);
+        mp_cast_to_string(&result, options.base, options.base, 9, 1, TRUE, result_str, 1024);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)

@@ -48,7 +48,7 @@ solve(const char *equation)
     else if (ret)        
         fprintf(stderr, "Error %d\n", ret);
     else {
-        mp_cast_to_string(&z, 10, 10, 9, 1, result_str, MAXLINE);
+        mp_cast_to_string(&z, 10, 10, 9, 1, TRUE, result_str, MAXLINE);
         printf("%s\n", result_str);
     }
 }
