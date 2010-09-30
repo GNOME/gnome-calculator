@@ -473,7 +473,8 @@ static void
 on_paste(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
     MathEquation *equation = data;
-    math_equation_insert (equation, text);
+    if (text != NULL)
+        math_equation_insert (equation, text);
 }
 
 
