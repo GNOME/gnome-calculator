@@ -426,7 +426,7 @@ update_angle_label (MathButtons *buttons)
 
         mp_multiply_integer(&fraction, 360, &output);
         mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
-        label = g_strdup_printf("%s radians = %s degrees", input_text, output_text);
+        label = g_strdup_printf(_("%s radians = %s degrees"), input_text, output_text);
         break;
     case MP_GRADIANS:
         /* Clip to the range ±400 */
@@ -446,7 +446,7 @@ update_angle_label (MathButtons *buttons)
 
         mp_multiply_integer(&fraction, 360, &output);
         mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
-        label = g_strdup_printf("%s gradians = %s degrees", input_text, output_text);
+        label = g_strdup_printf(_("%s gradians = %s degrees"), input_text, output_text);
         break;
     }
 
@@ -551,7 +551,8 @@ update_currency_label(MathButtons *buttons)
         for (i = 0; strcmp(math_equation_get_target_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         target_symbol = currency_names[i].symbol;
 
-        label = g_strdup_printf("%s%s = %s%s",
+        /* Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100 */
+        label = g_strdup_printf(_("%s%s = %s%s"),
                                 source_symbol, input_text,
                                 target_symbol, output_text);
     }
