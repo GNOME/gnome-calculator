@@ -47,11 +47,10 @@ SEVEN         [7٧۷߇७৭੭૭୭௭౭೭൭๗໗༧၇႗៧᠗᥍᧗᭗�
 EIGHT         [8٨۸߈८৮੮૮୮௮౮೮൮๘໘༨၈႘៨᠘᥎᧘᭘᮸᱈᱘꘨꣘꤈꩘𐒨]
 NINE          [9٩۹߉९৯੯૯୯௯౯೯൯๙໙༩၉႙៩᠙᥏᧙᭙᮹᱉᱙꘩꣙꤉꩙𐒩]
 /* FIXME: DECIMAL and TSEP needs to figure out, at runtime, the correct
- * character. I can't figure out how to make flex do this, so I send
- * everything at mp_set_from_string and let it fail. This is slow.
+ * character. I can't figure out how to make flex do this.
  */
-DECIMAL       .
-TSEP          .
+DECIMAL       [,.]
+TSEP          [ ,]
 DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}
 HEX           {DEC}|[A-F]|[a-f]
 SUPER_DIGITS  [⁰¹²³⁴⁵⁶⁷⁸⁹]
