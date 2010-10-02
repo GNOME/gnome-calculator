@@ -335,7 +335,7 @@ set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
         color.red = (style->bg[j].red * (10 - alpha) + tint->red * alpha) / 10;
         color.green = (style->bg[j].green * (10 - alpha) + tint->green * alpha) / 10;
         color.blue = (style->bg[j].blue * (10 - alpha) + tint->blue * alpha) / 10;
-        gdk_colormap_alloc_color(gdk_colormap_get_system(), &color, FALSE, TRUE);
+
         gtk_widget_modify_bg(widget, j, &color);
     }
 }

@@ -74,15 +74,15 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     c = gdk_keyval_to_unicode(event->keyval);
 
     /* Solve on enter */
-    if (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter) {
+    if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) {
         math_equation_solve(display->priv->equation);
         return TRUE;
     }
 
     /* Clear on escape */
-    if ((event->keyval == GDK_Escape && state == 0) ||
-        (event->keyval == GDK_BackSpace && state == GDK_CONTROL_MASK) ||
-        (event->keyval == GDK_Delete && state == GDK_SHIFT_MASK)) {
+    if ((event->keyval == GDK_KEY_Escape && state == 0) ||
+        (event->keyval == GDK_KEY_BackSpace && state == GDK_CONTROL_MASK) ||
+        (event->keyval == GDK_KEY_Delete && state == GDK_SHIFT_MASK)) {
         math_equation_clear(display->priv->equation);
         return TRUE;
     }
@@ -107,34 +107,34 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     if (state == GDK_CONTROL_MASK) {
         switch(event->keyval)
         {
-        case GDK_bracketleft:
+        case GDK_KEY_bracketleft:
             math_equation_insert(display->priv->equation, "⌈");
             return TRUE;
-        case GDK_bracketright:
+        case GDK_KEY_bracketright:
             math_equation_insert(display->priv->equation, "⌉");
             return TRUE;
-        case GDK_e:
+        case GDK_KEY_e:
             math_equation_insert_exponent(display->priv->equation);
             return TRUE;
-        case GDK_f:
+        case GDK_KEY_f:
             math_equation_factorize(display->priv->equation);
             return TRUE;
-        case GDK_i:
+        case GDK_KEY_i:
             math_equation_insert(display->priv->equation, "⁻¹");
             return TRUE;
-        case GDK_p:
+        case GDK_KEY_p:
             math_equation_insert(display->priv->equation, "π");
             return TRUE;
-        case GDK_r:
+        case GDK_KEY_r:
             math_equation_insert(display->priv->equation, "√");
             return TRUE;
-        case GDK_u:
+        case GDK_KEY_u:
             math_equation_insert(display->priv->equation, "µ");
             return TRUE;
-        case GDK_minus:
+        case GDK_KEY_minus:
              math_equation_insert(display->priv->equation, "⁻");
              return TRUE;
-        case GDK_apostrophe:
+        case GDK_KEY_apostrophe:
              math_equation_insert(display->priv->equation, "°");
              return TRUE;
         }
@@ -142,10 +142,10 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     if (state == GDK_MOD1_MASK) {
         switch(event->keyval)
         {
-        case GDK_bracketleft:
+        case GDK_KEY_bracketleft:
             math_equation_insert(display->priv->equation, "⌊");
             return TRUE;
-        case GDK_bracketright:
+        case GDK_KEY_bracketright:
             math_equation_insert(display->priv->equation, "⌋");
             return TRUE;
         }
@@ -154,34 +154,34 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     if (state == GDK_CONTROL_MASK || math_equation_get_number_mode(display->priv->equation) == SUPERSCRIPT) {
         switch(event->keyval)
         {
-        case GDK_0:
+        case GDK_KEY_0:
             math_equation_insert(display->priv->equation, "⁰");
             return TRUE;
-        case GDK_1:
+        case GDK_KEY_1:
             math_equation_insert(display->priv->equation, "¹");
             return TRUE;
-        case GDK_2:
+        case GDK_KEY_2:
             math_equation_insert(display->priv->equation, "²");
             return TRUE;
-        case GDK_3:
+        case GDK_KEY_3:
             math_equation_insert(display->priv->equation, "³");
             return TRUE;
-        case GDK_4:
+        case GDK_KEY_4:
             math_equation_insert(display->priv->equation, "⁴");
             return TRUE;
-        case GDK_5:
+        case GDK_KEY_5:
             math_equation_insert(display->priv->equation, "⁵");
             return TRUE;
-        case GDK_6:
+        case GDK_KEY_6:
             math_equation_insert(display->priv->equation, "⁶");
             return TRUE;
-        case GDK_7:
+        case GDK_KEY_7:
             math_equation_insert(display->priv->equation, "⁷");
             return TRUE;
-        case GDK_8:
+        case GDK_KEY_8:
             math_equation_insert(display->priv->equation, "⁸");
             return TRUE;
-        case GDK_9:
+        case GDK_KEY_9:
             math_equation_insert(display->priv->equation, "⁹");
             return TRUE;
         }
@@ -189,34 +189,34 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
     else if (state == GDK_MOD1_MASK || math_equation_get_number_mode(display->priv->equation) == SUBSCRIPT) {
         switch(event->keyval)
         {
-        case GDK_0:
+        case GDK_KEY_0:
             math_equation_insert(display->priv->equation, "₀");
             return TRUE;
-        case GDK_1:
+        case GDK_KEY_1:
             math_equation_insert(display->priv->equation, "₁");
             return TRUE;
-        case GDK_2:
+        case GDK_KEY_2:
             math_equation_insert(display->priv->equation, "₂");
             return TRUE;
-        case GDK_3:
+        case GDK_KEY_3:
             math_equation_insert(display->priv->equation, "₃");
             return TRUE;
-        case GDK_4:
+        case GDK_KEY_4:
             math_equation_insert(display->priv->equation, "₄");
             return TRUE;
-        case GDK_5:
+        case GDK_KEY_5:
             math_equation_insert(display->priv->equation, "₅");
             return TRUE;
-        case GDK_6:
+        case GDK_KEY_6:
             math_equation_insert(display->priv->equation, "₆");
             return TRUE;
-        case GDK_7:
+        case GDK_KEY_7:
             math_equation_insert(display->priv->equation, "₇");
             return TRUE;
-        case GDK_8:
+        case GDK_KEY_8:
             math_equation_insert(display->priv->equation, "₈");
             return TRUE;
-        case GDK_9:
+        case GDK_KEY_9:
             math_equation_insert(display->priv->equation, "₉");
             return TRUE;
         }
