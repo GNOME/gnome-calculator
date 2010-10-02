@@ -514,7 +514,7 @@ mp_radix_char()
     static const char* radix = NULL;
     if (radix == NULL) {
         radix = nl_langinfo(RADIXCHAR);
-        radix = radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+        radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
     }
     return radix;
 }
@@ -859,7 +859,7 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
 
     if (tsep == NULL) {
         tsep = nl_langinfo(THOUSEP);
-        tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
+        tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
     }
 
     if (strstr(str, "°"))

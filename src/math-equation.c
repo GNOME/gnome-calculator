@@ -1678,9 +1678,9 @@ math_equation_init(MathEquation *equation)
     setlocale(LC_NUMERIC, "");
 
     radix = nl_langinfo(RADIXCHAR);
-    equation->priv->radix = radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    equation->priv->radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
     tsep = nl_langinfo(THOUSEP);
-    equation->priv->tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
+    equation->priv->tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
 
     equation->priv->tsep_count = 3;
   
