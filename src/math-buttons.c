@@ -801,7 +801,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         g_clear_error(&error);
     }
     *panel = GET_WIDGET(builder, "button_panel");
-    gtk_box_pack_end(GTK_BOX(buttons), *panel, FALSE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(buttons), *panel, TRUE, TRUE, 0);
 
     /* Configure buttons */
     for (i = 0; button_data[i].widget_name != NULL; i++) {

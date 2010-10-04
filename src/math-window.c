@@ -409,7 +409,7 @@ create_gui(MathWindow *window)
     gtk_widget_show(main_vbox);
 
     window->priv->menu_bar = gtk_menu_bar_new();
-    gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->menu_bar, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->menu_bar, FALSE, FALSE, 0);
     gtk_widget_show(window->priv->menu_bar);
   
     create_menu(window);
@@ -422,7 +422,7 @@ create_gui(MathWindow *window)
     scrolled_window = gtk_scrolled_window_new(NULL, NULL);
     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_NEVER);
     gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
-    gtk_box_pack_start(GTK_BOX(vbox), GTK_WIDGET(scrolled_window), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), GTK_WIDGET(scrolled_window), FALSE, FALSE, 0);
     g_signal_connect(gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(scrolled_window)), "changed", G_CALLBACK(scroll_changed_cb), window);
     g_signal_connect(gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(scrolled_window)), "value-changed", G_CALLBACK(scroll_value_changed_cb), window);
     window->priv->right_aligned = TRUE;
@@ -521,7 +521,7 @@ math_window_init(MathWindow *window)
                          _("Calculator"));
     gtk_window_set_icon_name(GTK_WINDOW(window), "accessories-calculator");
     gtk_window_set_role(GTK_WINDOW(window), "gcalctool");
-    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
     g_signal_connect_after(G_OBJECT(window), "key-press-event", G_CALLBACK(key_press_cb), NULL);
     g_signal_connect(G_OBJECT(window), "delete-event", G_CALLBACK(delete_cb), NULL);
 }
