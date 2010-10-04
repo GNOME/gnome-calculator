@@ -44,4 +44,6 @@ GType math_preferences_get_type(void);
 
 MathPreferencesDialog *math_preferences_dialog_new(MathEquation *equation);
 
+G_END_DECLS
+
 #endif /* MATH_PREFERENCES_H */

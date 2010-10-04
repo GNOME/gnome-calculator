@@ -59,4 +59,6 @@ void math_buttons_set_programming_base(MathButtons *buttons, gint base);
 
 gint math_buttons_get_programming_base(MathButtons *buttons);
 
+G_END_DECLS
+
 #endif /* MATH_BUTTONS_H */

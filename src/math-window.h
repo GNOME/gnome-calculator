@@ -58,4 +58,6 @@ MathButtons *math_window_get_buttons(MathWindow *window);
 
 void math_window_critical_error(MathWindow *window, const gchar *title, const gchar *contents);
 
+G_END_DECLS
+
 #endif /* MATH_WINDOW_H */

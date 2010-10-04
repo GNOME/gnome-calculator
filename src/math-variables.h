@@ -49,4 +49,6 @@ void math_variables_set_value(MathVariables *variables, const char *name, const 
 
 MPNumber *math_variables_get_value(MathVariables *variables, const char *name);
 
+G_END_DECLS
+
 #endif /* MATH_VARIABLES_H */

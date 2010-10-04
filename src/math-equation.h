@@ -122,4 +122,6 @@ void math_equation_clear(MathEquation *equation);
 void math_equation_shift(MathEquation *equation, gint count);
 void math_equation_toggle_bit(MathEquation *equation, guint bit);
 
+G_END_DECLS
+
 #endif /* MATH_EQUATION_H */
