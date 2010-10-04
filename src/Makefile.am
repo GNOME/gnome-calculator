@@ -24,6 +24,8 @@ gcalctool_SOURCES = \
 	math-variables.h \
 	math-window.c \
 	math-window.h \
+	math-enums.c \
+	math-enums.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \
@@ -37,6 +39,8 @@ gcalctool_SOURCES = \
 	mp-equation-lexer.h \
 	mp-equation-parser.c \
 	mp-equation-parser.h \
+	mp-serializer.c \
+	mp-serializer.h \
 	financial.c \
 	financial.h \
 	unittest.c \
@@ -53,7 +57,11 @@ gcalccmd_SOURCES = \
 	mp-trigonometric.c \
 	mp-equation.c \
 	mp-equation-parser.c \
-	mp-equation-lexer.c
+	mp-equation-lexer.c \
+	mp-serializer.c \
+	mp-serializer.h\
+	math-enums.c \
+	math-enums.h
 
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \
@@ -63,7 +71,9 @@ CLEANFILES = \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
-	mp-equation-lexer.h
+	mp-equation-lexer.h \
+	math-enums.c \
+	math-enums.h
 
 # Generate parser files
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
@@ -77,6 +87,13 @@ mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
 mp-equation-parser.o: mp-equation-lexer.h
 mp-equation-lexer.o: mp-equation-parser.h
 mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
+
+# Generate enum types
+math-enums.h: math-enums.h.template
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.h.template $(srcdir)/mp-serializer.h > math-enums.h
+
+math-enums.c: math-enums.c.template math-enums.h
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.c.template $(srcdir)/mp-serializer.h > math-enums.c
 
 # Install a symlink between gcalctool and gnome-calculator
 install-exec-hook:

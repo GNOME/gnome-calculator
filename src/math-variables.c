@@ -20,6 +20,7 @@
 #include <string.h>
 
 #include "math-variables.h"
+#include "mp-serializer.h"
 
 
 struct MathVariablesPrivate
@@ -97,7 +98,7 @@ registers_save(MathVariables *variables)
         MPNumber *value = val;
         char number[1024];
 
-        mp_cast_to_string(value, 10, 10, 50, TRUE, FALSE, number, 1024);
+        mp_serializer_to_specific_string(value, 10, 50, true, false, number, 1024);
         fprintf(f, "%s=%s\n", name, number);
     }
     fclose(f);

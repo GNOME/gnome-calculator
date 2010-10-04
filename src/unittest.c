@@ -23,6 +23,7 @@
 
 #include "unittest.h"
 #include "mp-equation.h"
+#include "mp-serializer.h"
 
 static MPEquationOptions options;
 
@@ -83,7 +84,7 @@ test(char *expression, char *expected, int expected_error)
     error = mp_equation_parse(expression, &options, &result, NULL);
 
     if(error == 0) {
-        mp_cast_to_string(&result, options.base, options.base, 9, 1, TRUE, result_str, 1024);
+        mp_serializer_to_specific_string(&result, options.base, 9, true, false, result_str, 1024);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)

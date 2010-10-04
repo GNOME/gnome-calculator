@@ -507,233 +507,6 @@ mp_cast_to_double(const MPNumber *x)
     }
 }
 
-
-static const char*
-mp_radix_char()
-{
-    static const char* radix = NULL;
-    if (radix == NULL) {
-        radix = nl_langinfo(RADIXCHAR);
-        radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
-    }
-    return radix;
-}
-
-
-static void
-mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool force_sign, bool localize_radix, GString *string)
-{
-    static char digits[] = "0123456789ABCDEF";
-    MPNumber number, integer_component, fractional_component, temp;
-    int i, last_non_zero;
-
-    if (mp_is_negative(x))
-        mp_abs(x, &number);
-    else
-        mp_set_from_mp(x, &number);
-
-    /* Add rounding factor */
-    mp_set_from_integer(base, &temp);
-    mp_xpowy_integer(&temp, -(accuracy+1), &temp);
-    mp_multiply_integer(&temp, base, &temp);
-    mp_divide_integer(&temp, 2, &temp);
-    mp_add(&number, &temp, &number);
-
-    /* Split into integer and fractional component */
-    mp_floor(&number, &integer_component);
-    mp_fractional_component(&number, &fractional_component);
-
-    /* Write out the integer component least significant digit to most */
-    mp_set_from_mp(&integer_component, &temp);
-    do {
-        MPNumber t, t2, t3;
-        int64_t d;
-
-        mp_divide_integer(&temp, base, &t);
-        mp_floor(&t, &t);
-        mp_multiply_integer(&t, base, &t2);
-
-        mp_subtract(&temp, &t2, &t3);
-
-        d = mp_cast_to_int(&t3);
-        g_string_prepend_c(string, d < 16 ? digits[d] : '?');
-
-        mp_set_from_mp(&t, &temp);
-    } while (!mp_is_zero(&temp));
-
-    last_non_zero = string->len;
-
-    /* Allow user to change locale without breaking saved numbers */
-    if (localize_radix)
-        g_string_append(string, mp_radix_char());
-    else
-        g_string_append_c(string, '.');
-
-    /* Write out the fractional component */
-    mp_set_from_mp(&fractional_component, &temp);
-    for (i = accuracy; i > 0 && !mp_is_zero(&temp); i--) {
-        int d;
-        MPNumber digit;
-
-        mp_multiply_integer(&temp, base, &temp);
-        mp_floor(&temp, &digit);
-        d = mp_cast_to_int(&digit);
-
-        g_string_append_c(string, digits[d]);
-
-        if(d != 0)
-            last_non_zero = string->len;
-        mp_subtract(&temp, &digit, &temp);
-    }
-
-    /* Strip trailing zeroes */
-    if (trim_zeroes || accuracy == 0)
-        g_string_truncate(string, last_non_zero);
-
-    /* Add sign on non-zero values */
-    if (strcmp(string->str, "0") != 0 || force_sign) {
-        if (mp_is_negative(x))
-            g_string_prepend(string, "−");
-        else if (force_sign)
-            g_string_prepend(string, "+");
-    }
-
-    /* Append base suffix if not in default base */
-    if (base != default_base) {
-        const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
-        int multiplier = 1;
-        int b = base;
-
-        while (base / multiplier != 0)
-            multiplier *= 10;
-        while (multiplier != 1) {
-            int d;
-            multiplier /= 10;
-            d = b / multiplier;
-            g_string_append(string, digits[d]);
-            b -= d * multiplier;
-        }
-    }
-}
-
-
-void
-mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool localize_radix, char *buffer, int buffer_length)
-{
-    GString *string;
-    MPNumber x_real;
-
-    string = g_string_sized_new(buffer_length);
-
-    mp_real_component(x, &x_real);
-    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, localize_radix, string);
-    if (mp_is_complex(x)) {
-        GString *s;
-        gboolean force_sign = TRUE;
-        MPNumber x_im;
-
-        mp_imaginary_component(x, &x_im);
-
-        if (strcmp(string->str, "0") == 0) {
-            g_string_assign(string, "");
-            force_sign = false;
-        }
-
-        s = g_string_sized_new(buffer_length);
-        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, localize_radix, s);
-        if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
-            /* Ignore */
-        }
-        else if (strcmp(s->str, "1") == 0) {
-            g_string_append(string, "i");
-        }
-        else if (strcmp(s->str, "+1") == 0) {
-            g_string_append(string, "+i");
-        }
-        else if (strcmp(s->str, "−1") == 0) {
-            g_string_append(string, "−i");
-        }
-        else {
-            if (strcmp(s->str, "+0") == 0)
-                g_string_append(string, "+");
-            else if (strcmp(s->str, "0") != 0)
-                g_string_append(string, s->str);
-
-            g_string_append(string, "i");
-        }
-        g_string_free(s, TRUE);
-    }
-
-    // FIXME: Check for truncation
-    strncpy(buffer, string->str, buffer_length);
-    g_string_free(string, TRUE);
-}
-
-
-void
-mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, bool eng_format, bool localize_radix, char *buffer, int buffer_length)
-{
-    char fixed[1024], *c;
-    MPNumber t, z, base, base3, base10, base10inv, mantissa;
-    int exponent = 0;
-    GString *string;
-    const char *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
-
-    string = g_string_sized_new(buffer_length);
-
-    mp_abs(x, &z);
-    if (mp_is_negative(x))
-        g_string_append(string, "−");
-    mp_set_from_mp(&z, &mantissa);
-
-    mp_set_from_integer(base_, &base);
-    mp_xpowy_integer(&base, 3, &base3);
-    mp_xpowy_integer(&base, 10, &base10);
-    mp_set_from_integer(1, &t);
-    mp_divide(&t, &base10, &base10inv);
-
-    if (!mp_is_zero(&mantissa)) {
-        while (!eng_format && mp_is_greater_equal(&mantissa, &base10)) {
-            exponent += 10;
-            mp_multiply(&mantissa, &base10inv, &mantissa);
-        }
-
-        while ((!eng_format &&  mp_is_greater_equal(&mantissa, &base)) ||
-                (eng_format && (mp_is_greater_equal(&mantissa, &base3) || exponent % 3 != 0))) {
-            exponent += 1;
-            mp_divide(&mantissa, &base, &mantissa);
-        }
-
-        while (!eng_format && mp_is_less_than(&mantissa, &base10inv)) {
-            exponent -= 10;
-            mp_multiply(&mantissa, &base10, &mantissa);
-        }
-
-        mp_set_from_integer(1, &t);
-        while (mp_is_less_than(&mantissa, &t) || (eng_format && exponent % 3 != 0)) {
-            exponent -= 1;
-            mp_multiply(&mantissa, &base, &mantissa);
-        }
-    }
-
-    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, localize_radix, fixed, 1024);
-    g_string_append(string, fixed);
-    if (exponent != 0) {
-        g_string_append_printf(string, "×10"); // FIXME: Use the current base
-        if (exponent < 0) {
-            exponent = -exponent;
-            g_string_append(string, "⁻");
-        }
-        snprintf(fixed, 1024, "%d", exponent);
-        for (c = fixed; *c; c++)
-            g_string_append(string, super_digits[*c - '0']);
-    }
-
-    strncpy(buffer, string->str, buffer_length);
-    g_string_free(string, TRUE);
-}
-
-
 static int
 char_val(char **c, int base)
 {
@@ -856,10 +629,16 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
     int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
     static const char *tsep = NULL;
+    static const char *radix = NULL;
+
+    if (radix == NULL) {
+        radix = nl_langinfo(RADIXCHAR);
+        radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    }
 
     if (tsep == NULL) {
         tsep = nl_langinfo(THOUSEP);
-        tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
+        tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : tsep;
     }
 
     if (strstr(str, "°"))
@@ -900,11 +679,6 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
     /* Convert integer part */
     mp_set_from_integer(0, z);
     while (1) {
-        if (strncmp(c, tsep, strlen(tsep)) == 0) {
-            c += strlen(tsep);
-            continue;
-        }
-
         i = char_val((char **)&c, base);
         if (i < 0)
             break;
@@ -913,6 +687,11 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
             return true;
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
+
+        // Must be after the first digit, as locales with tsep = ' ' becomes
+        // buggy otherwise.
+        if (*tsep && strncmp(c, tsep, strlen(tsep)) == 0)
+            c += strlen(tsep);
     }
 
     /* Look for fraction characters, e.g. ⅚ */
@@ -932,7 +711,7 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
      * english '.', since at least europeans frequently use '.' despite ','
      * being the correct one for their locale.
      */
-    if (*c == '.' || strncmp(c, mp_radix_char(), strlen(mp_radix_char())) == 0) {
+    if (*c == '.' || strncmp(c, radix, strlen(radix)) == 0) {
         has_fraction = TRUE;
         c++;
     }

@@ -270,24 +270,6 @@ int64_t mp_cast_to_int(const MPNumber *x);
 /* Returns x as a native unsigned integer */
 uint64_t mp_cast_to_unsigned_int(const MPNumber *x);
 
-/* Converts x to a string representation.
- * The string is written into 'buffer' which is guaranteed to be at least 'buffer_length' octets in size.
- * If not enough space is available the string is truncated.
- * The numbers are written in 'base' (e.g. 10).
- * If 'trim_zeroes' is non-zero then strip off trailing zeroes.
- * Fractional components are truncated at 'max_digits' digits.
- */
-void   mp_cast_to_string(const MPNumber *x, int default_base, int base, int max_digits, bool trim_zeroes, bool localize_radix, char *buffer, int buffer_length);
-
-/* Converts x to a string representation in exponential form.
- * The string is written into 'buffer' which is guaranteed to be at least 'buffer_length' octets in size.
- * If not enough space is available the string is truncated.
- * The numbers are written in 'base' (e.g. 10).
- * If 'trim_zeroes' is non-zero then strip off trailing zeroes.
- * Fractional components are truncated at 'max_digits' digits.
- */
-void   mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base, int max_digits, bool trim_zeroes, bool eng_format, bool localize_radix, char *buffer, int buffer_length);
-
 /* Sets z = sin x */
 void   mp_sin(const MPNumber *x, MPAngleUnit unit, MPNumber *z);
 

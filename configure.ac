@@ -49,7 +49,11 @@ PKG_CHECK_MODULES(GCALCTOOL, [
 
 PKG_CHECK_MODULES(GCALCCMD, [
     glib-2.0
+    gobject-2.0
 ])
+
+GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`
+AC_SUBST(GLIB_MKENUMS)
 
 AC_CHECK_LIB(m, log)
 

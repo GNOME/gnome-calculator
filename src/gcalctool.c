@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 
 #include "currency.h"
 #include "unittest.h"
@@ -61,7 +62,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_cast_to_string(&result, 10, 10, 9, 1, TRUE, result_str, 1024);
+        mp_serializer_to_specific_string(&result, options.base, 9, true, true, result_str, 1024);
         printf("%s\n", result_str);
         exit(0);
     }
@@ -212,6 +213,7 @@ main(int argc, char **argv)
     gchar *source_currency, *target_currency;
 
     g_type_init();
+    setlocale(LC_NUMERIC, "");
 
     bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");

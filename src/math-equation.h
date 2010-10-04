@@ -24,6 +24,7 @@
 #include <gtk/gtk.h>
 #include "mp.h"
 #include "math-variables.h"
+#include "mp-serializer.h"
 
 G_BEGIN_DECLS
 
@@ -41,13 +42,6 @@ typedef struct
 {
     GtkTextBufferClass parent_class;
 } MathEquationClass;
-
-/* Number display mode. */
-typedef enum {
-  FIX,
-  SCI,
-  ENG
-} DisplayFormat;
 
 typedef enum {
     NORMAL,
@@ -104,6 +98,7 @@ void math_equation_set_target_currency(MathEquation *equation, const gchar *curr
 const gchar *math_equation_get_target_currency(MathEquation *equation);
 
 const MPNumber *math_equation_get_answer(MathEquation *equation);
+MpSerializer *math_equation_get_serializer(MathEquation *equation);
 
 void math_equation_copy(MathEquation *equation);
 void math_equation_paste(MathEquation *equation);
@@ -126,8 +121,5 @@ void math_equation_backspace(MathEquation *equation);
 void math_equation_clear(MathEquation *equation);
 void math_equation_shift(MathEquation *equation, gint count);
 void math_equation_toggle_bit(MathEquation *equation, guint bit);
-
-//FIXME: Obsolete
-void display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x);
 
 #endif /* MATH_EQUATION_H */

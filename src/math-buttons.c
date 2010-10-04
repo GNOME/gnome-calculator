@@ -21,6 +21,7 @@
 #include "math-buttons.h"
 #include "financial.h"
 #include "currency.h"
+#include "mp-serializer.h"
 
 enum {
     PROP_0,
@@ -422,10 +423,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_mp(&x, &input);
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
-        mp_cast_to_string(&input, 10, 10, 2, false, true, input_text, 1024);
+        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, true, output_text, 1024);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text, 1024);
         label = g_strdup_printf(_("%s radians = %s degrees"), input_text, output_text);
         break;
     case MP_GRADIANS:
@@ -442,10 +443,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
 
-        mp_cast_to_string(&input, 10, 10, 2, false, true, input_text, 1024);
+        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, true, output_text, 1024);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text, 1024);
         label = g_strdup_printf(_("%s gradians = %s degrees"), input_text, output_text);
         break;
     }
@@ -543,8 +544,8 @@ update_currency_label(MathButtons *buttons)
         const char *source_symbol, *target_symbol;
         int i;
 
-        mp_cast_to_string(&x, 10, 10, 2, false, true, input_text, 1024);
-        mp_cast_to_string(&value, 10, 10, 2, false, true, output_text, 1024);
+        mp_serializer_to_specific_string(&x, 10, 2, false, true, input_text, 1024);
+        mp_serializer_to_specific_string(&value, 10, 2, false, true, output_text, 1024);
 
         for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         source_symbol = currency_names[i].symbol;
@@ -861,8 +862,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         g_free(name);
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
-    if (widget)
-        gtk_button_set_label(GTK_BUTTON(widget), math_equation_get_numeric_point_text(buttons->priv->equation));
+    if (widget) {
+        MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
+        gtk_button_set_label(GTK_BUTTON(widget), mp_serializer_get_numeric_point_text(serializer));
+    }
   
     widget = GET_WIDGET(builder, "calc_superscript_button");
     if (widget) {
@@ -1194,7 +1197,8 @@ make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber 
     GtkWidget *item, *label;
 
     if (value) {
-        display_make_number(buttons->priv->equation, text, 1024, value);
+        MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
+        mp_serializer_to_standard_string(serializer, value, text, 1024);
         mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", name, text);
     }
     else

@@ -26,7 +26,6 @@
  */
 
 #include <stdlib.h>
-#include <locale.h>
 #include <string.h>
 #include <sys/types.h>
 

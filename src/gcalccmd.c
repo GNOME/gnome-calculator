@@ -23,8 +23,10 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+#include <locale.h>
 
 #include "mp-equation.h"
+#include "mp-serializer.h"
 
 #define MAXLINE 1024
 
@@ -48,7 +50,7 @@ solve(const char *equation)
     else if (ret)        
         fprintf(stderr, "Error %d\n", ret);
     else {
-        mp_cast_to_string(&z, 10, 10, 9, 1, TRUE, result_str, MAXLINE);
+        mp_serializer_to_specific_string(&z, 10, 9, true, true, result_str, MAXLINE);
         printf("%s\n", result_str);
     }
 }
@@ -78,6 +80,9 @@ main(int argc, char **argv)
 
     /* Seed random number generator. */
     srand48((long) time((time_t *) 0));
+
+    g_type_init ();
+    setlocale(LC_NUMERIC, "");
 
     equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {

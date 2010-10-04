@@ -24,14 +24,14 @@
 #include <math.h>
 #include <errno.h>
 #include <glib.h>
-#include <langinfo.h>
-#include <locale.h>
 
 #include "math-equation.h"
 
 #include "mp.h"
 #include "mp-equation.h"
+#include "mp-serializer.h"
 #include "currency.h"
+#include "math-enums.h"
 
 
 enum {
@@ -48,7 +48,8 @@ enum {
     PROP_WORD_SIZE,
     PROP_ANGLE_UNITS,
     PROP_SOURCE_CURRENCY,
-    PROP_TARGET_CURRENCY
+    PROP_TARGET_CURRENCY,
+    PROP_SERIALIZER
 };
 
 static GType number_mode_type, number_format_type, angle_unit_type;
@@ -71,22 +72,14 @@ struct MathEquationPrivate
 {
     GtkTextTag *ans_tag;
 
-    gint show_tsep;           /* Set if the thousands separator should be shown. */
-    gint show_zeroes;         /* Set if trailing zeroes should be shown. */
-    DisplayFormat format;     /* Number display mode. */
-    gint accuracy;            /* Number of digits to show */
     gint word_size;           /* Word size in bits */
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
     char *source_currency;
     char *target_currency;
-    gint base;                /* Numeric base */
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
     const char *digits[16];   /* Localized digit values */
-    const char *radix;        /* Locale specific radix string. */
-    const char *tsep;         /* Locale specific thousands separator. */
-    gint tsep_count;          /* Number of digits between separator. */
 
     GtkTextMark *ans_start, *ans_end;
 
@@ -100,6 +93,7 @@ struct MathEquationPrivate
     gboolean in_delete;
 
     MathVariables *variables;
+    MpSerializer *serializer;
 };
 
 G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
@@ -149,7 +143,7 @@ reformat_ans(MathEquation *equation)
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
     orig_ans_text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &ans_start, &ans_end, FALSE);
-    display_make_number(equation, ans_text, MAX_DIGITS, &equation->priv->state.ans);
+    mp_serializer_to_standard_string(equation->priv->serializer, &equation->priv->state.ans, ans_text, MAX_DIGITS);
     if (strcmp(orig_ans_text, ans_text) != 0) {
         gint start;
 
@@ -173,7 +167,7 @@ reformat_ans(MathEquation *equation)
     g_free(orig_ans_text);
 }
 
-
+#if 0
 /* NOTE: Not efficent but easy to write */
 // FIXME: This is just a lexer - use the same lexer as the solver
 static void
@@ -320,7 +314,7 @@ reformat_separators(MathEquation *equation)
     g_free(text);
 #endif
 }
-
+#endif
 
 static void
 reformat_display(MathEquation *equation, gint old_base)
@@ -329,10 +323,10 @@ reformat_display(MathEquation *equation, gint old_base)
     reformat_ans(equation);
 
     /* Add/remove base suffixes if have changed base */
-    reformat_base(equation, old_base);
+    //reformat_base(equation, old_base);
 
     /* Add/remove thousands separators */
-    reformat_separators(equation);
+    //reformat_separators(equation);
 }
 
 
@@ -542,26 +536,14 @@ math_equation_get_digit_text(MathEquation *equation, guint digit)
 }
 
 
-const gchar *
-math_equation_get_numeric_point_text(MathEquation *equation)
-{
-    return equation->priv->radix;
-}
-
-
-const gchar *math_equation_get_thousands_separator_text(MathEquation *equation)
-{
-    return equation->priv->tsep;
-}
-
-
 void
 math_equation_set_accuracy(MathEquation *equation, gint accuracy)
 {
-    if (equation->priv->accuracy == accuracy)
+    gint old_accuracy = mp_serializer_get_accuracy(equation->priv->serializer);
+    if (old_accuracy == accuracy)
         return;
-    equation->priv->accuracy = accuracy;
-    reformat_display(equation, equation->priv->base);
+    mp_serializer_set_accuracy(equation->priv->serializer, accuracy);
+    reformat_display(equation, mp_serializer_get_base(equation->priv->serializer));
     g_object_notify(G_OBJECT(equation), "accuracy");
 }
 
@@ -569,17 +551,18 @@ math_equation_set_accuracy(MathEquation *equation, gint accuracy)
 gint
 math_equation_get_accuracy(MathEquation *equation)
 {
-    return equation->priv->accuracy;
+    return mp_serializer_get_accuracy(equation->priv->serializer);
 }
 
 
 void
 math_equation_set_show_thousands_separators(MathEquation *equation, gboolean visible)
 {
-    if ((equation->priv->show_tsep && visible) || (!equation->priv->show_tsep && !visible))
+    gboolean old_visible = mp_serializer_get_show_thousands_separators(equation->priv->serializer);
+    if (old_visible == visible)
         return;
-    equation->priv->show_tsep = visible;
-    reformat_display(equation, equation->priv->base);
+    mp_serializer_set_show_thousands_separators(equation->priv->serializer, visible);
+    reformat_display(equation, mp_serializer_get_base(equation->priv->serializer));
     g_object_notify(G_OBJECT(equation), "show-thousands-separators");
 }
 
@@ -587,17 +570,18 @@ math_equation_set_show_thousands_separators(MathEquation *equation, gboolean vis
 gboolean
 math_equation_get_show_thousands_separators(MathEquation *equation)
 {
-    return equation->priv->show_tsep;
+    return mp_serializer_get_show_thousands_separators(equation->priv->serializer);
 }
 
 
 void
 math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
 {
-    if ((equation->priv->show_zeroes && visible) || (!equation->priv->show_zeroes && !visible))
+    gboolean old_visible = mp_serializer_get_show_trailing_zeroes(equation->priv->serializer);
+    if (old_visible == visible)
         return;
-    equation->priv->show_zeroes = visible;
-    reformat_display(equation, equation->priv->base);
+    mp_serializer_set_show_trailing_zeroes(equation->priv->serializer, visible);
+    reformat_display(equation, mp_serializer_get_base(equation->priv->serializer));
     g_object_notify(G_OBJECT(equation), "show-trailing-zeroes");
 }
 
@@ -605,18 +589,19 @@ math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible)
 gboolean
 math_equation_get_show_trailing_zeroes(MathEquation *equation)
 {
-    return equation->priv->show_zeroes;
+    return mp_serializer_get_show_trailing_zeroes(equation->priv->serializer);
 }
 
 
 void
 math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 {
-    if (equation->priv->format == format)
+    DisplayFormat old_format = mp_serializer_get_number_format(equation->priv->serializer);
+    if (old_format == format)
         return;
 
-    equation->priv->format = format;
-    reformat_display(equation, equation->priv->base);
+    mp_serializer_set_number_format(equation->priv->serializer, format);
+    reformat_display(equation, mp_serializer_get_base(equation->priv->serializer));
     g_object_notify(G_OBJECT(equation), "number-format");
 }
 
@@ -624,20 +609,19 @@ math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 DisplayFormat
 math_equation_get_number_format(MathEquation *equation)
 {
-    return equation->priv->format;
+    return mp_serializer_get_number_format(equation->priv->serializer);
 }
 
 
 void
 math_equation_set_base(MathEquation *equation, gint base)
 {
-    gint old_base;
+    gint old_base = mp_serializer_get_base(equation->priv->serializer);
 
-    if (equation->priv->base == base)
+    if (old_base == base)
         return;
 
-    old_base = equation->priv->base;
-    equation->priv->base = base;
+    mp_serializer_set_base(equation->priv->serializer, base);
     reformat_display(equation, old_base);
     g_object_notify(G_OBJECT(equation), "base");
 }
@@ -646,7 +630,7 @@ math_equation_set_base(MathEquation *equation, gint base)
 gint
 math_equation_get_base(MathEquation *equation)
 {
-    return equation->priv->base;
+    return mp_serializer_get_base(equation->priv->serializer);
 }
 
 
@@ -803,12 +787,17 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gboolean result;
 
     text = math_equation_get_display(equation);
-    result = !mp_set_from_string(text, equation->priv->base, z);
+    result = !mp_serializer_from_string(equation->priv->serializer, text, z);
     g_free (text);
 
     return result;
 }
 
+MpSerializer*
+math_equation_get_serializer(MathEquation *equation)
+{
+    return equation->priv->serializer;
+}
 
 void
 math_equation_set_number_mode(MathEquation *equation, NumberMode mode)
@@ -872,7 +861,7 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
     GtkTextIter start, end;
 
     /* Show the number in the user chosen format */
-    display_make_number(equation, text, MAX_DIGITS, x);
+    mp_serializer_to_standard_string(equation->priv->serializer, x, text, MAX_DIGITS);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), text, -1);
     mp_set_from_mp(x, &equation->priv->state.ans);
 
@@ -936,7 +925,7 @@ math_equation_insert_digit(MathEquation *equation, guint digit)
 void
 math_equation_insert_numeric_point(MathEquation *equation)
 {
-    math_equation_insert(equation, math_equation_get_numeric_point_text(equation));
+    math_equation_insert(equation, mp_serializer_get_numeric_point_text(equation->priv->serializer));
 }
 
 
@@ -944,7 +933,7 @@ void
 math_equation_insert_number(MathEquation *equation, const MPNumber *x)
 {
     char text[MAX_DIGITS];
-    display_make_number(equation, text, MAX_DIGITS, x);
+    mp_serializer_to_standard_string(equation->priv->serializer, x, text, MAX_DIGITS);
     math_equation_insert(equation, text);
 }
 
@@ -1044,7 +1033,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     MPEquationOptions options;
 
     memset(&options, 0, sizeof(options));
-    options.base = equation->priv->base;
+    options.base = mp_serializer_get_base(equation->priv->serializer);
     options.wordlen = equation->priv->word_size;
     options.angle_units = equation->priv->angle_units;
     options.variable_is_defined = variable_is_defined;
@@ -1163,7 +1152,7 @@ math_equation_factorize(MathEquation *equation)
         MPNumber *n;
 
         n = factor->data;
-        display_make_number(equation, temp, MAX_DIGITS, n);
+        mp_serializer_to_standard_string(equation->priv->serializer, n, temp, MAX_DIGITS);
         g_string_append(text, temp);
         if (factor->next)
             g_string_append(text, "×");
@@ -1269,25 +1258,6 @@ math_equation_toggle_bit(MathEquation *equation, guint bit)
 }
 
 
-/* Convert MP number to character string. */
-//FIXME: What to do with this?
-void
-display_make_number(MathEquation *equation, char *target, int target_len, const MPNumber *x)
-{
-    switch(equation->priv->format) {
-    case FIX:
-        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
-        break;
-    case SCI:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, false, true, target, target_len);
-        break;
-    case ENG:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, true, target, target_len);
-        break;
-    }
-}
-
-
 static void
 math_equation_set_property(GObject      *object,
                            guint         prop_id,
@@ -1371,16 +1341,16 @@ math_equation_get_property(GObject    *object,
         g_value_set_enum(value, self->priv->number_mode);
         break;
     case PROP_ACCURACY:
-        g_value_set_int(value, self->priv->accuracy);
+        g_value_set_int(value, mp_serializer_get_accuracy(self->priv->serializer));
         break;
     case PROP_SHOW_THOUSANDS_SEPARATORS:
-        g_value_set_boolean(value, self->priv->show_tsep);
+        g_value_set_boolean(value, mp_serializer_get_show_thousands_separators(self->priv->serializer));
         break;
     case PROP_SHOW_TRAILING_ZEROES:
-        g_value_set_boolean(value, self->priv->show_zeroes);
+        g_value_set_boolean(value, mp_serializer_get_show_trailing_zeroes(self->priv->serializer));
         break;
     case PROP_NUMBER_FORMAT:
-        g_value_set_enum(value, self->priv->format);
+        g_value_set_enum(value, mp_serializer_get_number_format(self->priv->serializer));
         break;
     case PROP_BASE:
         g_value_set_int(value, math_equation_get_base(self));
@@ -1396,6 +1366,9 @@ math_equation_get_property(GObject    *object,
         break;
     case PROP_TARGET_CURRENCY:
         g_value_set_string(value, self->priv->target_currency);
+        break;
+    case PROP_SERIALIZER:
+        g_value_set_object(value, self->priv->serializer);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1414,13 +1387,6 @@ math_equation_class_init (MathEquationClass *klass)
       {SUBSCRIPT,   "subscript",   "subscript"},
       {0, NULL, NULL}
     };
-    static GEnumValue number_format_values[] =
-    {
-      {FIX, "fixed-point", "fixed-point"},
-      {SCI, "scientific",  "scientific"},
-      {ENG, "engineering", "engineering"},
-      {0, NULL, NULL}
-    };
     static GEnumValue angle_unit_values[] =
     {
       {MP_RADIANS,  "radians",  "radians"},
@@ -1436,7 +1402,7 @@ math_equation_class_init (MathEquationClass *klass)
     g_type_class_add_private (klass, sizeof (MathEquationPrivate));
   
     number_mode_type = g_enum_register_static("NumberMode", number_mode_values);
-    number_format_type = g_enum_register_static("DisplayFormat", number_format_values);
+    number_format_type = math_display_format_get_type();
     angle_unit_type = g_enum_register_static("AngleUnit", angle_unit_values);
 
     g_object_class_install_property(object_class,
@@ -1533,6 +1499,13 @@ math_equation_class_init (MathEquationClass *klass)
                                                         "target Currency",
                                                         "",
                                                         G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_SERIALIZER,
+                                    g_param_spec_object("serializer",
+                                                        "serializer",
+                                                        "Serializer",
+                                                        MP_TYPE_SERIALIZER,
+                                                        G_PARAM_READABLE));
 }
 
 
@@ -1648,7 +1621,6 @@ math_equation_init(MathEquation *equation)
     /* Digits localized for the given language */
     const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
     const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
-    gchar *radix, *tsep;
     gchar **digits;
     gboolean use_default_digits = FALSE;
     int i;
@@ -1675,28 +1647,15 @@ math_equation_init(MathEquation *equation)
     }
     g_strfreev(digits);
 
-    setlocale(LC_NUMERIC, "");
-
-    radix = nl_langinfo(RADIXCHAR);
-    equation->priv->radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
-    tsep = nl_langinfo(THOUSEP);
-    equation->priv->tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
-
-    equation->priv->tsep_count = 3;
-  
     equation->priv->variables = math_variables_new();
 
     equation->priv->state.status = g_strdup("");
-    equation->priv->show_zeroes = FALSE;
-    equation->priv->show_tsep = FALSE;
-    equation->priv->format = FIX;
-    equation->priv->accuracy = 9;
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
     // FIXME: Pick based on locale
     equation->priv->source_currency = g_strdup(currency_names[0].short_name);
     equation->priv->target_currency = g_strdup(currency_names[0].short_name);
-    equation->priv->base = 10;
+    equation->priv->serializer = mp_serializer_new();
 
     mp_set_from_integer(0, &equation->priv->state.ans);
 }

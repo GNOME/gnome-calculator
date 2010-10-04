@@ -21,6 +21,7 @@
 
 #include "mp.h"
 #include "mp-private.h"
+#include "mp-serializer.h"
 
 // FIXME: Make dynamic
 #define MAX_DIGITS 1000
@@ -45,8 +46,8 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
     char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
 
-    mp_cast_to_string(x, 16, 16, 0, 0, FALSE, text1, MAX_DIGITS);
-    mp_cast_to_string(y, 16, 16, 0, 0, FALSE, text2, MAX_DIGITS);
+    mp_serializer_to_specific_string(x, 16, 0, false, false, text1, MAX_DIGITS);
+    mp_serializer_to_specific_string(y, 16, 0, false, false, text2, MAX_DIGITS);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
@@ -156,7 +157,7 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
     size_t len, offset;
 
     /* Convert to a hexadecimal string and use last characters */
-    mp_cast_to_string(x, 16, 16, 0, 0, FALSE, text, MAX_DIGITS);
+    mp_serializer_to_specific_string(x, 16, 0, false, false, text, MAX_DIGITS);
     len = strlen(text);
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
