@@ -107,7 +107,9 @@ uninstall-local:
 
 EXTRA_DIST = \
 	mp-equation-parser.y \
-	mp-equation-lexer.l
+	mp-equation-lexer.l \
+	math-enums.c.template \
+	math-enums.h.template
 
 DISTCLEANFILES = \
 	Makefile.in
