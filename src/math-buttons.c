@@ -396,7 +396,7 @@ update_angle_label (MathButtons *buttons)
 {
     MPNumber x;
     MPNumber pi, max_value, min_value, fraction, input, output;
-    char *label, input_text[1024], output_text[1024];
+    char *label, input_text[1024], output_text1[1024], output_text2[1024];
 
     if (!buttons->priv->angle_label)
         return;
@@ -408,7 +408,28 @@ update_angle_label (MathButtons *buttons)
     switch (math_equation_get_angle_units(buttons->priv->equation)) {
     default:
     case MP_DEGREES:
-        label = g_strdup("");
+        /* Clip to the range ±360 */
+        mp_set_from_integer(360, &max_value);
+        mp_invert_sign(&max_value, &min_value);
+        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
+            mp_divide(&x, &max_value, &fraction);
+            mp_fractional_component(&fraction, &fraction);
+            mp_multiply(&fraction, &max_value, &input);
+        }
+        else {
+            mp_set_from_mp(&x, &input);
+            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
+        }
+        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
+
+        mp_multiply_integer(&fraction, 2, &output);
+        mp_multiply(&output, &pi, &output);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
+
+        mp_multiply_integer(&fraction, 400, &output);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
+
+        label = g_strdup_printf(_("%s degrees = %s radians = %s gradians"), input_text, output_text1, output_text2);
         break;
     case MP_RADIANS:
         /* Clip to the range ±2π */
@@ -426,8 +447,12 @@ update_angle_label (MathButtons *buttons)
         mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text, 1024);
-        label = g_strdup_printf(_("%s radians = %s degrees"), input_text, output_text);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
+
+        mp_multiply_integer(&fraction, 400, &output);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
+
+        label = g_strdup_printf(_("%s radians = %s degrees = %s gradians"), input_text, output_text1, output_text2);
         break;
     case MP_GRADIANS:
         /* Clip to the range ±400 */
@@ -446,8 +471,13 @@ update_angle_label (MathButtons *buttons)
         mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text, 1024);
-        label = g_strdup_printf(_("%s gradians = %s degrees"), input_text, output_text);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
+
+        mp_multiply_integer(&fraction, 2, &output);
+        mp_multiply(&output, &pi, &output);
+        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
+
+        label = g_strdup_printf(_("%s gradians = %s degrees = %s radians"), input_text, output_text1, output_text2);
         break;
     }
 
