@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 02:03+0200\n"
-"PO-Revision-Date: 2010-10-06 02:04+0200\n"
+"POT-Creation-Date: 2010-10-10 01:43+0200\n"
+"PO-Revision-Date: 2010-10-10 01:46+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -944,12 +944,12 @@ msgid "Boolean NOT"
 msgstr "NOT לוגי"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:208 ../src/math-buttons.c:1447
+#: ../src/math-buttons.c:208 ../src/math-buttons.c:1477
 msgid "Integer Component"
 msgstr "החלק השלם"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:211 ../src/math-buttons.c:1449
+#: ../src/math-buttons.c:211 ../src/math-buttons.c:1479
 msgid "Fractional Component"
 msgstr "חלק השבר"
 
@@ -1038,69 +1038,74 @@ msgstr "פחת לפי סכום ספרות"
 msgid "Straight Line Depreciation"
 msgstr "פחת בשיטת קו ישר"
 
-#: ../src/math-buttons.c:430
+#: ../src/math-buttons.c:432
 #, c-format
-msgid "%s radians = %s degrees"
-msgstr "%s רדיאנים = %s מעלות"
+msgid "%s degrees = %s radians = %s gradians"
+msgstr "%s מעלות = %s רדיאנים = %s גרדיאנים"
 
-#: ../src/math-buttons.c:450
+#: ../src/math-buttons.c:455
 #, c-format
-msgid "%s gradians = %s degrees"
-msgstr "%s גרדיאנים = %s מעלות"
+msgid "%s radians = %s degrees = %s gradians"
+msgstr "%s רדיאנים = %s מעלות = %s גרדיאנים"
+
+#: ../src/math-buttons.c:480
+#, c-format
+msgid "%s gradians = %s degrees = %s radians"
+msgstr "%s גרדיאנים = %s מעלות = %s רדיאנים"
 
 #. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
-#: ../src/math-buttons.c:556
+#: ../src/math-buttons.c:586
 #, c-format
 msgid "%s%s = %s%s"
 msgstr "%s%s = %s%s"
 
 #. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:896 ../src/math-preferences.c:254
+#: ../src/math-buttons.c:926 ../src/math-preferences.c:254
 msgid "Degrees"
 msgstr "מעלות"
 
 #. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:900 ../src/math-preferences.c:258
+#: ../src/math-buttons.c:930 ../src/math-preferences.c:258
 msgid "Radians"
 msgstr "רדיאנים"
 
 #. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:904 ../src/math-preferences.c:262
+#: ../src/math-buttons.c:934 ../src/math-preferences.c:262
 msgid "Gradians"
 msgstr "גראדיאנים"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:938
+#: ../src/math-buttons.c:968
 msgid "Binary"
 msgstr "בינרי"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:942
+#: ../src/math-buttons.c:972
 msgid "Octal"
 msgstr "אוקטלי"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:946
+#: ../src/math-buttons.c:976
 msgid "Decimal"
 msgstr "עשרוני"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:950
+#: ../src/math-buttons.c:980
 msgid "Hexadecimal"
 msgstr "הקסדצימלי"
 
 #. Text shown in store menu when no variables defined
 #. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1268 ../src/math-buttons.c:1314
+#: ../src/math-buttons.c:1298 ../src/math-buttons.c:1344
 msgid "No variables defined"
 msgstr "לא הוגדר משתנה"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1357 ../src/math-buttons.c:1401
+#: ../src/math-buttons.c:1387 ../src/math-buttons.c:1431
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1109,7 +1114,7 @@ msgstr[1] "_%d מקומות"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1361 ../src/math-buttons.c:1405
+#: ../src/math-buttons.c:1391 ../src/math-buttons.c:1435
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1117,84 +1122,84 @@ msgstr[0] "מקום אחד"
 msgstr[1] "%d מקומות"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1451
+#: ../src/math-buttons.c:1481
 msgid "Round"
 msgstr "עיגול"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1453
+#: ../src/math-buttons.c:1483
 msgid "Floor"
 msgstr "רצפה"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1455
+#: ../src/math-buttons.c:1485
 msgid "Ceiling"
 msgstr "תקרה"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1457
+#: ../src/math-buttons.c:1487
 msgid "Sign"
 msgstr "סימן"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:491
+#: ../src/math-equation.c:336
 msgid "No undo history"
 msgstr "אין היסטורית ביטול"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:516
+#: ../src/math-equation.c:361
 msgid "No redo history"
 msgstr "אין היסטוריית שחזור"
 
-#: ../src/math-equation.c:835
+#: ../src/math-equation.c:680
 msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1095
+#: ../src/math-equation.c:938
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1100
+#: ../src/math-equation.c:943
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "המשתנה '%s' אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1105
+#: ../src/math-equation.c:948
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "הפונקציה '%s' אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1110
+#: ../src/math-equation.c:953
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1119
+#: ../src/math-equation.c:962
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1142
+#: ../src/math-equation.c:985
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1219
+#: ../src/math-equation.c:1062
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1248
+#: ../src/math-equation.c:1091
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1622
+#: ../src/math-equation.c:1466
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
