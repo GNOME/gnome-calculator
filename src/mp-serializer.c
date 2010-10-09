@@ -337,6 +337,14 @@ mp_serializer_get_thousands_separator_text(MpSerializer *serializer)
     return serializer->priv->tsep;
 }
 
+gboolean
+mp_serializer_is_numeric_point(MpSerializer *serializer, const char *text)
+{
+    if (*text == '.' || strncmp(text, serializer->priv->radix, strlen(serializer->priv->radix)) == 0)
+        return true;
+    return false;
+}
+
 void
 mp_serializer_set_show_thousands_separators(MpSerializer *serializer, gboolean visible)
 {

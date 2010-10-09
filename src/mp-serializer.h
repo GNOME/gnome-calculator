@@ -54,8 +54,9 @@ void mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *
 void mp_serializer_to_specific_string(const MPNumber *z, int base, int accuracy, bool trim_zeroes, bool localize, char *target, int target_len);
 bool mp_serializer_from_string(MpSerializer *serializer, const char *str, MPNumber *z);
 
-const gchar* mp_serializer_get_numeric_point_text(MpSerializer *serializer);
 const gchar* mp_serializer_get_thousands_separator_text(MpSerializer *serializer);
+const gchar* mp_serializer_get_numeric_point_text(MpSerializer *serializer);
+gboolean mp_serializer_is_numeric_point(MpSerializer *serializer, const char* text);
 void mp_serializer_set_base(MpSerializer *serializer, int base);
 int mp_serializer_get_base(MpSerializer *serializer);
 gboolean mp_serializer_get_show_trailing_zeroes(MpSerializer *serializer);
