@@ -167,166 +167,11 @@ reformat_ans(MathEquation *equation)
     g_free(orig_ans_text);
 }
 
-#if 0
-/* NOTE: Not efficent but easy to write */
-// FIXME: This is just a lexer - use the same lexer as the solver
-static void
-reformat_base(MathEquation *equation, gint old_base)
-{
-    gunichar sub_zero, sub_nine;
-    gchar *text, *read_iter;
-    gboolean in_number = FALSE, have_radix = FALSE;
-    gint offset = 0, offset_step = 0, max_digit = 0, base = -1, base_offset = 0;
-    gint ans_start, ans_end;
-
-    if (equation->priv->base == old_base)
-        return;
-
-    sub_zero = g_utf8_get_char("₀");
-    sub_nine = g_utf8_get_char("₉");
-
-    read_iter = text = math_equation_get_display(equation);
-    get_ans_offsets(equation, &ans_start, &ans_end);
-    while (TRUE) {
-        gunichar c;
-        gint digit = -1, sub_digit = -1;
-
-        /* See what digit this character is */
-        c = g_utf8_get_char(read_iter);
-        if (c >= sub_zero && c <= sub_nine)
-            sub_digit = c - sub_zero;
-        else if (c >= 'a' && c <= 'z')
-            digit = c - 'a';
-        else if (c >= 'A' && c <= 'Z')
-            digit = c - 'A';
-        else
-            digit = g_unichar_digit_value(c);
-
-        /* Don't mess with ans */
-        if (offset >= ans_start && offset <= ans_end) {
-            digit = -1;
-            sub_digit = -1;
-        }
-
-        if (in_number && digit >= 0) {
-            if (digit > max_digit)
-                max_digit = digit;
-        }
-        else if (in_number && sub_digit >= 0) {
-            if (base < 0) {
-                base_offset = offset;
-                base = 0;
-            }
-
-            base = base * 10 + sub_digit;
-        }
-        else if (in_number) {
-            /* Allow one radix inside a number */
-            if (!have_radix && base < 0 && strncmp(read_iter, equation->priv->radix, strlen(equation->priv->radix)) == 0) {
-                have_radix = TRUE;
-                read_iter += strlen(equation->priv->radix);
-                offset += g_utf8_strlen(equation->priv->radix, -1);
-                continue;
-            }
-
-            /* If had no base then insert it */
-            if (base < 0) {
-                GtkTextIter iter;
-                gint multiplier = 1;
-                gint b = old_base;
-                const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
-
-                equation->priv->in_undo_operation = TRUE;
-                equation->priv->in_reformat = TRUE;
-
-                while (b / multiplier != 0)
-                    multiplier *= 10;
-                while (multiplier != 1) {
-                    int d;
-                    multiplier /= 10;
-                    d = b / multiplier;
-                    gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, offset + offset_step);
-                    gtk_text_buffer_insert(GTK_TEXT_BUFFER(equation), &iter, digits[d], -1);
-                    offset_step++;
-                    b -= d * multiplier;
-                }
-
-                equation->priv->in_reformat = FALSE;
-                equation->priv->in_undo_operation = FALSE;
-            }
-            /* Remove the base if the current value */
-            else if (max_digit < base && base == equation->priv->base) {
-                GtkTextIter start, end;
-
-                equation->priv->in_undo_operation = TRUE;
-                equation->priv->in_reformat = TRUE;
-
-                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, base_offset + offset_step);
-                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, offset + offset_step);
-                gtk_text_buffer_delete(GTK_TEXT_BUFFER(equation), &start, &end);
-                offset_step -= offset - base_offset;
-
-                equation->priv->in_reformat = FALSE;
-                equation->priv->in_undo_operation = FALSE;
-            }
-
-            in_number = FALSE;
-        }
-        else if (digit >= 0) {
-            in_number = TRUE;
-            have_radix = FALSE;
-            base = -1;
-            max_digit = digit;
-        }
-
-        if (c == '\0')
-            break;
-               
-        read_iter = g_utf8_next_char(read_iter);
-        offset++;
-    }
-
-    g_free(text);
-}
-
-
-static void
-reformat_separators(MathEquation *equation)
-{
-#if 0
-    gchar *text, *read_iter;
-    gboolean in_number = FALSE, in_fraction = FALSE;
-
-    text = math_equation_get_display(equation);
-
-    /* Find numbers in display, and modify if necessary */
-    read_iter = text;
-    while(*read_iter != '\0') {
-        gunichar c;
-      
-        c = g_utf8_get_char(read_iter);
-
-        if (strncmp(read_iter, equation->priv->tsep, strlen(equation->priv->tsep)) == 0)
-            ;
-        read_iter = g_utf8_next_char(read_iter);
-    }
-
-    g_free(text);
-#endif
-}
-#endif
-
 static void
 reformat_display(MathEquation *equation, gint old_base)
 {
     /* Change ans */
     reformat_ans(equation);
-
-    /* Add/remove base suffixes if have changed base */
-    //reformat_base(equation, old_base);
-
-    /* Add/remove thousands separators */
-    //reformat_separators(equation);
 }
 
 
@@ -899,8 +744,6 @@ math_equation_insert(MathEquation *equation, const gchar *text)
     /* Disable super/subscript mode when finished entering */
     if (strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", text) == NULL)
         math_equation_set_number_mode(equation, NORMAL);
-
-    // FIXME: Add thousands separators
 
     gtk_text_buffer_delete_selection(GTK_TEXT_BUFFER(equation), FALSE, FALSE);
     gtk_text_buffer_insert_at_cursor(GTK_TEXT_BUFFER(equation), text, -1);
