@@ -54,10 +54,11 @@ struct MathButtonsPrivate
     GList *superscript_toggles;
     GList *subscript_toggles;
 
-    GtkWidget *angle_combo;
-    GtkWidget *angle_label;
-  
-    GtkWidget *base_combo;  
+    GtkWidget *convert_from_combo;
+    GtkWidget *convert_to_combo;
+    gchar *previous_ans;
+
+    GtkWidget *base_combo;
     GtkWidget *base_label;
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
@@ -310,6 +311,119 @@ static char *finc_dialog_fields[][5] = {
     {NULL,        NULL,          NULL,         NULL,         NULL}
 };
 
+#define MAX_UNITS 20
+struct Unit {
+    char* ui_name;
+    char* internal_name;
+};
+
+struct UnitCategory {
+    char* name;
+    struct Unit units[MAX_UNITS];
+};
+
+static struct UnitCategory categories[] = {
+    {N_("Angle Units"),  {
+                          /* Angle unit */
+                          {N_("Degrees"), "degrees"},
+                          /* Angle unit */
+                          {N_("Radians"), "radians"},
+                          /* Angle unit */
+                          {N_("Gradians"), "gradians"},
+                          {NULL, NULL}}},
+    {N_("Length Units"), {
+                          /* Length unit */
+                          {N_("Parsecs"), "parsecs"},
+                          /* Length unit */
+                          {N_("Light Years"), "lightyears"},
+                          /* Length unit */
+                          {N_("Astronomical Unit"), "au"},
+                          /* Length unit */
+                          {N_("Nautical Miles"), "nm"},
+                          /* Length unit */
+                          {N_("Miles"), "miles"},
+                          /* Length unit */
+                          {N_("Kilometers"), "kilometers"},
+                          /* Length unit */
+                          {N_("Cables"), "cables"},
+                          /* Length unit */
+                          {N_("Fathoms"), "fathoms"},
+                          /* Length unit */
+                          {N_("Meters"), "meters"},
+                          /* Length unit */
+                          {N_("Yards"), "yards"},
+                          /* Length unit */
+                          {N_("Feet"), "feet"},
+                          /* Length unit */
+                          {N_("Inches"), "inches"},
+                          /* Length unit */
+                          {N_("Centimeters"), "centimeters"},
+                          /* Length unit */
+                          {N_("Millimeters"), "millimeters"},
+                          /* Length unit */
+                          {N_("Micrometers"), "micrometers"},
+                          /* Length unit */
+                          {N_("Nanometers"), "nanometers"},
+                          {NULL, NULL}}},
+    {N_("Area Units"),   {
+                          /* Area unit */
+                          {N_("Hectares"), "hectares"},
+                          /* Area unit */
+                          {N_("Acres"), "acres"},
+                          /* Area unit */
+                          {N_("m²"), "m²"},
+                          /* Area unit */
+                          {N_("cm²"), "cm²"},
+                          /* Area unit */
+                          {N_("mm²"), "mm²"},
+                          {NULL, NULL}}},
+    {N_("Volume Units"), {
+                          /* Volume unit */
+                          {N_("m³"), "m³"},
+                          /* Volume unit */
+                          {N_("Gallons"), "gallons"},
+                          /* Volume unit */
+                          {N_("Liters"), "liters"},
+                          /* Volume unit */
+                          {N_("Quarts"), "quarts"},
+                          /* Volume unit */
+                          {N_("Pints"), "pints"},
+                          /* Volume unit */
+                          {N_("Milliliters"), "milliliters"},
+                          /* Volume unit */
+                          {N_("cm³"), "cm³"},
+                          /* Volume unit */
+                          {N_("mm³"), "mm³"},
+                          {NULL, NULL}}},
+    {N_("Weight Units"), {
+                          /* Weight unit */
+                          {N_("Tonnes"), "tonnes"},
+                          /* Weight unit */
+                          {N_("Kilograms"), "kilograms"},
+                          /* Weight unit */
+                          {N_("Pounds"), "pounds"},
+                          /* Weight unit */
+                          {N_("Ounces"), "ounces"},
+                          /* Weight unit */
+                          {N_("Grams"), "grams"},
+                          {NULL, NULL}}},
+    {N_("Time Units"),   {
+                          /* Time unit */
+                          {N_("Years"), "years"},
+                          /* Time unit */
+                          {N_("Days"), "days"},
+                          /* Time unit */
+                          {N_("Hours"), "hours"},
+                          /* Time unit */
+                          {N_("Minutes"), "minutes"},
+                          /* Time unit */
+                          {N_("Seconds"), "seconds"},
+                          /* Time unit */
+                          {N_("Milliseconds"), "milliseconds"},
+                          /* Time unit */
+                          {N_("Microseconds"), "microseconds"},
+                          {NULL, NULL}}}
+};
 
 MathButtons *
 math_buttons_new(MathEquation *equation)
@@ -388,101 +502,6 @@ load_finc_dialogs(MathButtons *buttons)
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
     }
-}
-
-
-static void
-update_angle_label (MathButtons *buttons)
-{
-    MPNumber x;
-    MPNumber pi, max_value, min_value, fraction, input, output;
-    char *label, input_text[1024], output_text1[1024], output_text2[1024];
-
-    if (!buttons->priv->angle_label)
-        return;
-
-    if (!math_equation_get_number(buttons->priv->equation, &x))
-        return;
-
-    mp_get_pi(&pi);
-    switch (math_equation_get_angle_units(buttons->priv->equation)) {
-    default:
-    case MP_DEGREES:
-        /* Clip to the range ±360 */
-        mp_set_from_integer(360, &max_value);
-        mp_invert_sign(&max_value, &min_value);
-        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
-            mp_divide(&x, &max_value, &fraction);
-            mp_fractional_component(&fraction, &fraction);
-            mp_multiply(&fraction, &max_value, &input);
-        }
-        else {
-            mp_set_from_mp(&x, &input);
-            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
-        }
-        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
-
-        mp_multiply_integer(&fraction, 2, &output);
-        mp_multiply(&output, &pi, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
-
-        mp_multiply_integer(&fraction, 400, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
-
-        label = g_strdup_printf(_("%s degrees = %s radians = %s gradians"), input_text, output_text1, output_text2);
-        break;
-    case MP_RADIANS:
-        /* Clip to the range ±2π */
-        mp_multiply_integer(&pi, 2, &max_value);
-        mp_invert_sign(&max_value, &min_value);
-        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
-            mp_divide(&x, &max_value, &fraction);
-            mp_fractional_component(&fraction, &fraction);
-            mp_multiply(&fraction, &max_value, &input);
-        }
-        else {
-            mp_set_from_mp(&x, &input);
-            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
-        }
-        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
-
-        mp_multiply_integer(&fraction, 360, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
-
-        mp_multiply_integer(&fraction, 400, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
-
-        label = g_strdup_printf(_("%s radians = %s degrees = %s gradians"), input_text, output_text1, output_text2);
-        break;
-    case MP_GRADIANS:
-        /* Clip to the range ±400 */
-        mp_set_from_integer(400, &max_value);
-        mp_invert_sign(&max_value, &min_value);
-        if (!mp_is_equal(&x, &max_value) && !mp_is_equal(&x, &min_value)) {
-            mp_divide(&x, &max_value, &fraction);
-            mp_fractional_component(&fraction, &fraction);
-            mp_multiply(&fraction, &max_value, &input);
-        }
-        else {
-            mp_set_from_mp(&x, &input);
-            mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
-        }
-
-        mp_serializer_to_specific_string(&input, 10, 2, false, true, input_text, 1024);
-
-        mp_multiply_integer(&fraction, 360, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text1, 1024);
-
-        mp_multiply_integer(&fraction, 2, &output);
-        mp_multiply(&output, &pi, &output);
-        mp_serializer_to_specific_string(&output, 10, 2, false, true, output_text2, 1024);
-
-        label = g_strdup_printf(_("%s gradians = %s degrees = %s radians"), input_text, output_text1, output_text2);
-        break;
-    }
-
-    gtk_label_set_text(GTK_LABEL(buttons->priv->angle_label), label);
-    g_free(label);
 }
 
 
@@ -598,50 +617,84 @@ update_currency_label(MathButtons *buttons)
 static void
 display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
-    update_angle_label(buttons);
     update_currency_label(buttons);
     update_bit_panel(buttons);
 }
 
 
 static void
-angle_unit_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
+convert_from_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
 {
-    MPAngleUnit value;
     GtkTreeModel *model;
-    GtkTreeIter iter;
+    GtkTreeIter iter, unittype;
+    int typeindex, i;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 1, &value, -1);
-    math_equation_set_angle_units(buttons->priv->equation, value);
+
+    if (!gtk_tree_model_iter_parent(model, &unittype, &iter))
+        return;
+
+    gtk_tree_model_get(model, &unittype, 1, &typeindex, -1);
+
+    model = GTK_TREE_MODEL(gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT));
+    for (i = 0; categories[typeindex].units[i].ui_name != NULL; i++) {
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[typeindex].units[i].ui_name, 1, i, -1);
+    }
+    gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_to_combo), model);
 }
 
 
 static void
-angle_unit_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+convert_to_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter, catiter;
+    gchar *from, *to, *display;
+    int category, fromindex, toindex;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 1, &toindex, -1);
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo));
+    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(buttons->priv->convert_from_combo), &iter);
+    if (!gtk_tree_model_iter_parent(model, &catiter, &iter))
+        return;
+
+    gtk_tree_model_get(model, &catiter, 1, &category, -1);
+    gtk_tree_model_get(model, &iter, 1, &fromindex, -1);
+
+    from = categories[category].units[fromindex].internal_name;
+    to = categories[category].units[toindex].internal_name;
+
+    if (buttons->priv->previous_ans == NULL) {
+        display = math_equation_get_display(buttons->priv->equation);
+        buttons->priv->previous_ans = display;
+    }
+    else {
+        display = buttons->priv->previous_ans;
+    }
+    math_equation_set(buttons->priv->equation, g_strdup_printf("%s %s in %s", display, from, to));
+}
+
+static void
+update_conversion_combos(MathEquation *equation, MathButtons *buttons)
 {
     GtkTreeModel *model;
     GtkTreeIter iter;
-    gboolean valid;
 
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->angle_combo));
-    valid = gtk_tree_model_get_iter_first(model, &iter);
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo));
+    gtk_tree_model_get_iter_first(model, &iter);
+    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->convert_from_combo), &iter);
 
-    while (valid) {
-        gint v;
+    model = GTK_TREE_MODEL(gtk_list_store_new(1, G_TYPE_STRING));
+    gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_to_combo), model);
 
-        gtk_tree_model_get(model, &iter, 1, &v, -1);
-        if (v == math_equation_get_angle_units(buttons->priv->equation))
-            break;
-        valid = gtk_tree_model_iter_next(model, &iter);
-    }
-    if (!valid)
-        valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->angle_combo), &iter);
+    g_free(buttons->priv->previous_ans);
+    buttons->priv->previous_ans = NULL;
 }
-
 
 static void
 base_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
@@ -911,34 +964,37 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     }
   
     if (mode == ADVANCED) {
-        GtkListStore *model;
-        GtkTreeIter iter;
+        GtkTreeStore *from_model;
+        GtkTreeIter iter, parent;
         GtkCellRenderer *renderer;
+        int i, j;
 
-        buttons->priv->angle_label = GET_WIDGET(builder, "angle_label");
+//        buttons->priv->angle_label = GET_WIDGET(builder, "angle_label");
 
-        buttons->priv->angle_combo = GET_WIDGET(builder, "angle_units_combo");
-        model = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT);
-        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->angle_combo), GTK_TREE_MODEL(model));
-        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                           /* Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations */
-                           _("Degrees"), 1, MP_DEGREES, -1);
-        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                           /* Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations */
-                           _("Radians"), 1, MP_RADIANS, -1);
-        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
-                           /* Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations */
-                           _("Gradians"), 1, MP_GRADIANS, -1);
+        buttons->priv->convert_from_combo = GET_WIDGET(builder, "convert_from_combo");
+        from_model = gtk_tree_store_new(2, G_TYPE_STRING, G_TYPE_INT);
+        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo), GTK_TREE_MODEL(from_model));
+
+        for (i = 0; i < sizeof(categories) / sizeof(categories[0]); i++) {
+            gtk_tree_store_append(from_model, &parent, NULL);
+            gtk_tree_store_set(from_model, &parent, 0, categories[i].name, 1, i, -1);
+            for (j = 0; categories[i].units[j].ui_name != NULL; j++) {
+                gtk_tree_store_append(from_model, &iter, &parent);
+                gtk_tree_store_set(from_model, &iter, 0, categories[i].units[j].ui_name, 1, j, -1);
+            }
+        }
         renderer = gtk_cell_renderer_text_new();
-        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->angle_combo), renderer, TRUE);
-        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->angle_combo), renderer, "text", 0);
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->convert_from_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->convert_from_combo), renderer, "text", 0);
 
-        g_signal_connect(buttons->priv->angle_combo, "changed", G_CALLBACK(angle_unit_combobox_changed_cb), buttons);
-        g_signal_connect(buttons->priv->equation, "notify::angle-units", G_CALLBACK(angle_unit_cb), buttons);
-        angle_unit_cb(buttons->priv->equation, NULL, buttons);
+        buttons->priv->convert_to_combo = GET_WIDGET(builder, "convert_to_combo");
+        renderer = gtk_cell_renderer_text_new();
+        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->convert_to_combo), renderer, TRUE);
+        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->convert_to_combo), renderer, "text", 0);
+
+        g_signal_connect(buttons->priv->convert_from_combo, "changed", G_CALLBACK(convert_from_combobox_changed_cb), buttons);
+        g_signal_connect(buttons->priv->convert_to_combo, "changed", G_CALLBACK(convert_to_combobox_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "answer-changed", G_CALLBACK(update_conversion_combos), buttons);
     }
 
     if (mode == PROGRAMMING) {

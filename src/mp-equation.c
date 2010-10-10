@@ -270,6 +270,21 @@ do_convert(const char *units[][2], const MPNumber *x, const char *x_units, const
 static int
 convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
+    const char *angle_units[][2] = {
+        /* FIXME: Approximations of 1/(units in a circle)
+         * Therefore, 360 deg != 400 grads */
+        {"grad",     "0.0025"},
+        {"gradian",  "0.0025"},
+        {"gradians", "0.0025"},
+        {"deg",      "0.002777778"},
+        {"degree",   "0.002777778"},
+        {"degrees",  "0.002777778"},
+        {"rad",      "0.159154943"},
+        {"radian",   "0.159154943"},
+        {"radians",  "0.159154943"},
+        {NULL, NULL}
+    };
+
     const char *length_units[][2] = {
         {"parsec",     "30857000000000000"},
         {"parsecs",    "30857000000000000"},
@@ -397,7 +412,8 @@ convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, co
         {NULL, NULL}
     };
 
-    if (do_convert(length_units, x, x_units, z_units, z) ||
+    if (do_convert(angle_units, x, x_units, z_units, z) ||
+        do_convert(length_units, x, x_units, z_units, z) ||
         do_convert(area_units, x, x_units, z_units, z) ||
         do_convert(volume_units, x, x_units, z_units, z) ||
         do_convert(weight_units, x, x_units, z_units, z) ||

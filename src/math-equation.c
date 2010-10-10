@@ -172,6 +172,8 @@ reformat_display(MathEquation *equation, gint old_base)
 {
     /* Change ans */
     reformat_ans(equation);
+
+    g_signal_emit_by_name(equation, "answer-changed");
 }
 
 
@@ -970,6 +972,8 @@ math_equation_solve(MathEquation *equation)
         math_equation_set_status(equation, message);
         g_free(message);
     }
+
+    g_signal_emit_by_name(equation, "answer-changed");
 }
 
 
@@ -1349,6 +1353,16 @@ math_equation_class_init (MathEquationClass *klass)
                                                         "Serializer",
                                                         MP_TYPE_SERIALIZER,
                                                         G_PARAM_READABLE));
+
+    g_signal_new ("answer-changed",
+                  G_TYPE_FROM_CLASS(object_class),
+                  G_SIGNAL_RUN_FIRST,
+                  0,
+                  NULL,
+                  NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE,
+                  0);
 }
 
 
