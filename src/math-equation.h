@@ -28,7 +28,9 @@
 
 G_BEGIN_DECLS
 
+#define MATH_TYPE_EQUATION (math_equation_get_type ())
 #define MATH_EQUATION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_equation_get_type(), MathEquation))
+#define MATH_EQUATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), MATH_TYPE_EQUATION, MathEquationClass))
 
 typedef struct MathEquationPrivate MathEquationPrivate;
 

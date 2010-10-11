@@ -1223,6 +1223,18 @@ math_equation_get_property(GObject    *object,
     }
 }
 
+static void
+math_equation_constructed (GObject *object)
+{
+    GtkTextBuffer *parent_class;
+    parent_class = g_type_class_peek_parent(MATH_EQUATION_GET_CLASS(object));
+    if (G_OBJECT_CLASS(parent_class)->constructed)
+        G_OBJECT_CLASS(parent_class)->constructed(object);
+
+    MATH_EQUATION(object)->priv->ans_tag = gtk_text_buffer_create_tag(GTK_TEXT_BUFFER(object), NULL, "weight", PANGO_WEIGHT_BOLD, NULL);
+}
+
+
 
 static void
 math_equation_class_init (MathEquationClass *klass)
@@ -1245,6 +1257,7 @@ math_equation_class_init (MathEquationClass *klass)
 
     object_class->get_property = math_equation_get_property;
     object_class->set_property = math_equation_set_property;
+    object_class->constructed = math_equation_constructed;
 
     g_type_class_add_private (klass, sizeof (MathEquationPrivate));
   
@@ -1484,10 +1497,6 @@ math_equation_init(MathEquation *equation)
     int i;
 
     equation->priv = G_TYPE_INSTANCE_GET_PRIVATE (equation, math_equation_get_type(), MathEquationPrivate);
-
-    // FIXME: Causes error
-    // (process:18573): Gtk-CRITICAL **: set_table: assertion buffer->tag_table == NULL' failed
-    equation->priv->ans_tag = gtk_text_buffer_create_tag(GTK_TEXT_BUFFER(equation), NULL, "weight", PANGO_WEIGHT_BOLD, NULL);
 
     g_signal_connect(equation, "insert-text", G_CALLBACK(pre_insert_text_cb), equation);
     g_signal_connect(equation, "delete-range", G_CALLBACK(pre_delete_range_cb), equation);  
