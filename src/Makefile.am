@@ -95,6 +95,10 @@ math-enums.h: math-enums.h.template
 math-enums.c: math-enums.c.template math-enums.h
 	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.c.template $(srcdir)/mp-serializer.h > math-enums.c
 
+# Fix dependencies
+math-serializer.c: math-enums.h
+math-equation.c: math-enums.h
+
 # Install a symlink between gcalctool and gnome-calculator
 install-exec-hook:
 	test -e "$(DESTDIR)$(bindir)/gnome-calculator" \
