@@ -50,8 +50,8 @@ typedef enum {
 GType mp_serializer_get_type(void);
 MpSerializer *mp_serializer_new(void);
 
-void mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *z, char *target, int target_len);
-void mp_serializer_to_specific_string(const MPNumber *z, int base, int accuracy, bool trim_zeroes, bool localize, char *target, int target_len);
+void mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *z, char **target);
+void mp_serializer_to_specific_string(const MPNumber *z, int base, int accuracy, bool trim_zeroes, bool localize, char **target);
 bool mp_serializer_from_string(MpSerializer *serializer, const char *str, MPNumber *z);
 
 const gchar* mp_serializer_get_thousands_separator_text(MpSerializer *serializer);

@@ -79,18 +79,19 @@ test(char *expression, char *expected, int expected_error)
 {
     MPErrorCode error;
     MPNumber result;
-    char result_str[1024] = "";
 
     error = mp_equation_parse(expression, &options, &result, NULL);
 
     if(error == 0) {
-        mp_serializer_to_specific_string(&result, options.base, 9, true, false, result_str, 1024);
+        char *result_str;
+        mp_serializer_to_specific_string(&result, options.base, 9, true, false, &result_str);
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)
             fail("'%s' -> '%s', expected '%s'", expression, result_str, expected);
         else
             pass("'%s' -> '%s'", expression, result_str);
+        g_free(result_str);
     }
     else {
         if(error == expected_error)

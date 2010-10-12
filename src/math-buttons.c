@@ -589,12 +589,12 @@ update_currency_label(MathButtons *buttons)
                          math_equation_get_source_currency(buttons->priv->equation),
                          math_equation_get_target_currency(buttons->priv->equation),
                          &value)) {
-        char input_text[1024], output_text[1024];
+        char *input_text, *output_text;
         const char *source_symbol, *target_symbol;
         int i;
 
-        mp_serializer_to_specific_string(&x, 10, 2, false, true, input_text, 1024);
-        mp_serializer_to_specific_string(&value, 10, 2, false, true, output_text, 1024);
+        mp_serializer_to_specific_string(&x, 10, 2, false, true, &input_text);
+        mp_serializer_to_specific_string(&value, 10, 2, false, true, &output_text);
 
         for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         source_symbol = currency_names[i].symbol;
@@ -605,6 +605,8 @@ update_currency_label(MathButtons *buttons)
         label = g_strdup_printf(_("%s%s = %s%s"),
                                 source_symbol, input_text,
                                 target_symbol, output_text);
+        g_free(input_text);
+        g_free(output_text);
     }
     else
         label = g_strdup("");
@@ -1279,13 +1281,14 @@ delete_variable_cb(GtkWidget *widget, MathButtons *buttons)
 static GtkWidget *
 make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber *value, gboolean can_modify, GCallback callback)
 {
-    gchar text[1024] = "", *mstr;
+    gchar *text, *mstr;
     GtkWidget *item, *label;
 
     if (value) {
         MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
-        mp_serializer_to_standard_string(serializer, value, text, 1024);
+        mp_serializer_to_standard_string(serializer, value, &text);
         mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", name, text);
+        g_free(text);
     }
     else
         mstr = g_strdup_printf("<span weight=\"bold\">%s</span>", name);

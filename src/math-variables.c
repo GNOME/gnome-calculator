@@ -96,10 +96,11 @@ registers_save(MathVariables *variables)
     {
         gchar *name = key;
         MPNumber *value = val;
-        char number[1024];
+        char *number;
 
-        mp_serializer_to_specific_string(value, 10, 50, true, false, number, 1024);
+        mp_serializer_to_specific_string(value, 10, 50, true, false, &number);
         fprintf(f, "%s=%s\n", name, number);
+        g_free(number);
     }
     fclose(f);
 }

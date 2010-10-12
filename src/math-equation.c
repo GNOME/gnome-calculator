@@ -147,13 +147,13 @@ reformat_ans(MathEquation *equation)
         return;
 
     gchar *orig_ans_text;
-    gchar ans_text[MAX_DIGITS];
+    gchar *ans_text;
     GtkTextIter ans_start, ans_end;
 
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
     orig_ans_text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &ans_start, &ans_end, FALSE);
-    mp_serializer_to_standard_string(equation->priv->serializer, &equation->priv->state.ans, ans_text, MAX_DIGITS);
+    mp_serializer_to_standard_string(equation->priv->serializer, &equation->priv->state.ans, &ans_text);
     if (strcmp(orig_ans_text, ans_text) != 0) {
         gint start;
 
@@ -175,6 +175,7 @@ reformat_ans(MathEquation *equation)
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
     g_free(orig_ans_text);
+    g_free(ans_text);
 }
 
 static void
@@ -714,11 +715,11 @@ math_equation_set(MathEquation *equation, const gchar *text)
 void
 math_equation_set_number(MathEquation *equation, const MPNumber *x)
 {
-    char text[MAX_DIGITS];
+    char *text;
     GtkTextIter start, end;
 
     /* Show the number in the user chosen format */
-    mp_serializer_to_standard_string(equation->priv->serializer, x, text, MAX_DIGITS);
+    mp_serializer_to_standard_string(equation->priv->serializer, x, &text);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), text, -1);
     mp_set_from_mp(x, &equation->priv->state.ans);
 
@@ -728,6 +729,7 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
     equation->priv->ans_start = gtk_text_buffer_create_mark(GTK_TEXT_BUFFER(equation), NULL, &start, FALSE);
     equation->priv->ans_end = gtk_text_buffer_create_mark(GTK_TEXT_BUFFER(equation), NULL, &end, TRUE);
     gtk_text_buffer_apply_tag(GTK_TEXT_BUFFER(equation), equation->priv->ans_tag, &start, &end);
+    g_free(text);
 }
 
 
@@ -787,9 +789,10 @@ math_equation_insert_numeric_point(MathEquation *equation)
 void
 math_equation_insert_number(MathEquation *equation, const MPNumber *x)
 {
-    char text[MAX_DIGITS];
-    mp_serializer_to_standard_string(equation->priv->serializer, x, text, MAX_DIGITS);
+    char *text;
+    mp_serializer_to_standard_string(equation->priv->serializer, x, &text);
     math_equation_insert(equation, text);
+    g_free(text);
 }
 
 
@@ -1053,15 +1056,16 @@ math_equation_factorize(MathEquation *equation)
     text = g_string_new("");
 
     for (factor = factors; factor; factor = factor->next) {
-        gchar temp[MAX_DIGITS];
+        gchar *temp;
         MPNumber *n;
 
         n = factor->data;
-        mp_serializer_to_standard_string(equation->priv->serializer, n, temp, MAX_DIGITS);
+        mp_serializer_to_standard_string(equation->priv->serializer, n, &temp);
         g_string_append(text, temp);
         if (factor->next)
             g_string_append(text, "×");
         g_slice_free(MPNumber, n);
+        g_free(temp);
     }
     g_list_free(factors);
 

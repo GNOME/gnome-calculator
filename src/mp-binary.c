@@ -43,11 +43,11 @@ static int hex_to_int(char digit)
 static void
 mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, int), MPNumber *z, int wordlen)
 {
-    char text1[MAX_DIGITS], text2[MAX_DIGITS], text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
+    char *text1, *text2, text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
 
-    mp_serializer_to_specific_string(x, 16, 0, false, false, text1, MAX_DIGITS);
-    mp_serializer_to_specific_string(y, 16, 0, false, false, text2, MAX_DIGITS);
+    mp_serializer_to_specific_string(x, 16, 0, false, false, &text1);
+    mp_serializer_to_specific_string(y, 16, 0, false, false, &text2);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
@@ -56,6 +56,8 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
     }
     if (offset_out > 0 && (offset_out < offset1 || offset_out < offset2)) {
         mperr("Overflow. Try a bigger word size");
+        g_free(text1);
+        g_free(text2);
         return;
     }
 
@@ -76,6 +78,8 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
 
     snprintf(text_out2, MAX_DIGITS, "%s", text_out);
     mp_set_from_string(text_out2, 16, z);
+    g_free(text1);
+    g_free(text2);
 }
 
 
@@ -153,15 +157,16 @@ mp_not(const MPNumber *x, int wordlen, MPNumber *z)
 void
 mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
 {
-    char text[MAX_DIGITS];
+    char *text;
     size_t len, offset;
 
     /* Convert to a hexadecimal string and use last characters */
-    mp_serializer_to_specific_string(x, 16, 0, false, false, text, MAX_DIGITS);
+    mp_serializer_to_specific_string(x, 16, 0, false, false, &text);
     len = strlen(text);
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;
     mp_set_from_string(text + offset, 16, z);
+    g_free(text);
 }
 
 

@@ -293,6 +293,15 @@ mp_add_real(const MPNumber *x, int y_sign, const MPNumber *y, MPNumber *z)
         z->fraction[MP_T + i] = 0;
 
     if (sign_prod >= 0) {
+        /* This is probably insufficient overflow detection, but it makes us
+         * not crash at least.
+         */
+        if (MP_T + 3 < med) {
+            mperr(_("Overflow: the result couldn't be calculated"));
+            mp_set_from_integer(0, z);
+            return;
+        }
+
         /* HERE DO ADDITION, EXPONENT(Y) >= EXPONENT(X) */
         for (i = MP_T + 3; i >= MP_T; i--)
             z->fraction[i] = small_fraction[i - med];

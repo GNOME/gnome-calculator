@@ -36,7 +36,7 @@ solve(const char *equation)
     int ret;
     MPEquationOptions options;
     MPNumber z;
-    char result_str[MAXLINE];
+    char *result_str;
     
     memset(&options, 0, sizeof(options));
     options.base = 10;
@@ -50,9 +50,10 @@ solve(const char *equation)
     else if (ret)        
         fprintf(stderr, "Error %d\n", ret);
     else {
-        mp_serializer_to_specific_string(&z, 10, 9, true, true, result_str, MAXLINE);
+        mp_serializer_to_specific_string(&z, 10, 9, true, true, &result_str);
         printf("%s\n", result_str);
     }
+    g_free(result_str);
 }
 
 
