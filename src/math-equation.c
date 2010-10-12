@@ -92,9 +92,19 @@ struct MathEquationPrivate
 
     gboolean in_delete;
 
+    gboolean in_solve;
+
     MathVariables *variables;
     MpSerializer *serializer;
+
+    GAsyncQueue *queue;
 };
+
+typedef struct {
+    gint result;
+    MPNumber z;
+    gchar *error_token;
+} SolveData;
 
 G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
 
@@ -890,26 +900,19 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     return mp_equation_parse(text, &options, z, error_token);
 }
 
-
-void
-math_equation_solve(MathEquation *equation)
+/*
+ * Executed in separate thread. It is thus not a good idea to write to anything
+ * in MathEquation but the async queue from here.
+ */
+static gpointer
+math_equation_solve_real(gpointer data)
 {
-    MPNumber z;
-    gint result, n_brackets = 0;
-    gchar *c, *text, *error_token = NULL, *message = NULL;
+    MathEquation *equation = MATH_EQUATION(data);
+    SolveData *solvedata = g_slice_new0(SolveData);
+
+    gint n_brackets = 0;
+    gchar *c, *text;
     GString *equation_text;
-
-    if (math_equation_is_empty(equation))
-        return;
-
-    /* If showing a result return to the equation that caused it */
-    // FIXME: Result may not be here due to solve (i.e. the user may have entered "ans")
-    if (math_equation_is_result(equation)) {
-        math_equation_undo(equation);
-        return;
-    }
-
-    math_equation_set_number_mode(equation, NORMAL);
 
     text = math_equation_get_equation(equation);
     equation_text = g_string_new(text);
@@ -925,14 +928,29 @@ math_equation_solve(MathEquation *equation)
         g_string_append_c(equation_text, ')');
         n_brackets--;
     }
-  
 
-    result = parse(equation, equation_text->str, &z, &error_token);
+
+    solvedata->result = parse(equation, equation_text->str, &solvedata->z, &solvedata->error_token);
     g_string_free(equation_text, TRUE);
 
-    switch (result) {
+    g_async_queue_push(equation->priv->queue, solvedata);
+
+    return NULL;
+}
+
+static gboolean
+math_equation_look_for_answer(gpointer data)
+{
+    MathEquation *equation = MATH_EQUATION(data);
+    gchar *message = NULL;
+    SolveData *result = g_async_queue_try_pop(equation->priv->queue);
+
+    if (result == NULL)
+        return true;
+
+    switch (result->result) {
         case PARSER_ERR_NONE:
-            math_equation_set_number(equation, &z);
+            math_equation_set_number(equation, &result->z);
             break;
 
         case PARSER_ERR_OVERFLOW:
@@ -942,12 +960,12 @@ math_equation_solve(MathEquation *equation)
 
         case PARSER_ERR_UNKNOWN_VARIABLE:
             message = g_strdup_printf(/* Error displayed to user when they an unknown variable is entered */
-                                      _("Unknown variable '%s'"), error_token);
+                                      _("Unknown variable '%s'"), result->error_token);
             break;
 
         case PARSER_ERR_UNKNOWN_FUNCTION:
             message = g_strdup_printf(/* Error displayed to user when an unknown function is entered */
-                                      _("Function '%s' is not defined"), error_token);
+                                      _("Function '%s' is not defined"), result->error_token);
             break;
 
         case PARSER_ERR_UNKNOWN_CONVERSION:
@@ -965,15 +983,55 @@ math_equation_solve(MathEquation *equation)
             break;
     }
 
-    if (error_token)
-        free(error_token);
-  
+    if (result->error_token)
+        free(result->error_token);
+
     if (message) {
         math_equation_set_status(equation, message);
         g_free(message);
     }
+    else {
+        math_equation_set_status(equation, "");
+    }
+    g_slice_free(SolveData, result);
+
+    equation->priv->in_solve = false;
 
     g_signal_emit_by_name(equation, "answer-changed");
+
+    return false;
+}
+
+void
+math_equation_solve(MathEquation *equation)
+{
+    GError *error = NULL;
+
+    // FIXME: should replace calculation or give error message
+    if (equation->priv->in_solve)
+        return;
+
+    if (math_equation_is_empty(equation))
+        return;
+
+    /* If showing a result return to the equation that caused it */
+    // FIXME: Result may not be here due to solve (i.e. the user may have entered "ans")
+    if (math_equation_is_result(equation)) {
+        math_equation_undo(equation);
+        return;
+    }
+
+    equation->priv->in_solve = true;
+
+    math_equation_set_number_mode(equation, NORMAL);
+    math_equation_set_status(equation, "Calculating...");
+
+    g_thread_create(math_equation_solve_real, equation, false, &error);
+
+    if (error)
+        g_warning("Error spawning thread for calculations: %s\n", error->message);
+
+    g_idle_add(math_equation_look_for_answer, equation);
 }
 
 
@@ -1523,6 +1581,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->source_currency = g_strdup(currency_names[0].short_name);
     equation->priv->target_currency = g_strdup(currency_names[0].short_name);
     equation->priv->serializer = mp_serializer_new();
+    equation->priv->queue = g_async_queue_new();
 
     mp_set_from_integer(0, &equation->priv->state.ans);
 }
