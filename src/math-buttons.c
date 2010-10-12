@@ -1735,10 +1735,14 @@ G_MODULE_EXPORT
 void
 set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       math_equation_set_number_mode(buttons->priv->equation, SUPERSCRIPT);
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+        char* display;
+        math_equation_set_number_mode(buttons->priv->equation, SUPERSCRIPT);
+        display = math_equation_get_display(buttons->priv->equation);
+        math_equation_set(buttons->priv->equation, g_strchomp(display));
+    }
     else if (math_equation_get_number_mode(buttons->priv->equation) == SUPERSCRIPT)
-       math_equation_set_number_mode(buttons->priv->equation, NORMAL);
+        math_equation_set_number_mode(buttons->priv->equation, NORMAL);
 }
 
 
@@ -1747,10 +1751,14 @@ G_MODULE_EXPORT
 void
 set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-       math_equation_set_number_mode(buttons->priv->equation, SUBSCRIPT);
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
+        char* display;
+        math_equation_set_number_mode(buttons->priv->equation, SUBSCRIPT);
+        display = math_equation_get_display(buttons->priv->equation);
+        math_equation_set(buttons->priv->equation, g_strchomp(display));
+    }
     else if (math_equation_get_number_mode(buttons->priv->equation) == SUBSCRIPT)
-       math_equation_set_number_mode(buttons->priv->equation, NORMAL);
+        math_equation_set_number_mode(buttons->priv->equation, NORMAL);
 }
 
 
