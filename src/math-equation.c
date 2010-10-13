@@ -101,9 +101,9 @@ struct MathEquationPrivate
 };
 
 typedef struct {
-    gint result;
-    MPNumber z;
-    gchar *error_token;
+    MPNumber *number_result;
+    gchar *text_result;
+    gchar *error;
 } SolveData;
 
 G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
@@ -913,9 +913,10 @@ math_equation_solve_real(gpointer data)
     MathEquation *equation = MATH_EQUATION(data);
     SolveData *solvedata = g_slice_new0(SolveData);
 
-    gint n_brackets = 0;
-    gchar *c, *text;
+    gint n_brackets = 0, result;
+    gchar *c, *text, *error_token;
     GString *equation_text;
+    MPNumber z;
 
     text = math_equation_get_equation(equation);
     equation_text = g_string_new(text);
@@ -933,9 +934,44 @@ math_equation_solve_real(gpointer data)
     }
 
 
-    solvedata->result = parse(equation, equation_text->str, &solvedata->z, &solvedata->error_token);
+    result = parse(equation, equation_text->str, &z, &error_token);
     g_string_free(equation_text, TRUE);
 
+    switch (result) {
+        case PARSER_ERR_NONE:
+            solvedata->number_result = g_slice_new(MPNumber);
+            mp_set_from_mp(&z, solvedata->number_result);
+            break;
+
+        case PARSER_ERR_OVERFLOW:
+            solvedata->error = g_strdup(/* Error displayed to user when they perform a bitwise operation on numbers greater than the current word */
+                               _("Overflow. Try a bigger word size"));
+            break;
+
+        case PARSER_ERR_UNKNOWN_VARIABLE:
+            solvedata->error = g_strdup_printf(/* Error displayed to user when they an unknown variable is entered */
+                                      _("Unknown variable '%s'"), error_token);
+            break;
+
+        case PARSER_ERR_UNKNOWN_FUNCTION:
+            solvedata->error = g_strdup_printf(/* Error displayed to user when an unknown function is entered */
+                                      _("Function '%s' is not defined"), error_token);
+            break;
+
+        case PARSER_ERR_UNKNOWN_CONVERSION:
+            solvedata->error = g_strdup(/* Error displayed to user when an conversion with unknown units is attempted */
+                               _("Unknown conversion"));
+            break;
+
+        case PARSER_ERR_MP:
+            solvedata->error = g_strdup(mp_get_error());
+            break;
+
+        default:
+            solvedata->error = g_strdup(/* Error displayed to user when they enter an invalid calculation */
+                               _("Malformed expression"));
+            break;
+    }
     g_async_queue_push(equation->priv->queue, solvedata);
 
     return NULL;
@@ -945,7 +981,6 @@ static gboolean
 math_equation_look_for_answer(gpointer data)
 {
     MathEquation *equation = MATH_EQUATION(data);
-    gchar *message = NULL;
     SolveData *result = g_async_queue_try_pop(equation->priv->queue);
 
     math_equation_set_status(equation, "Calculating...");
@@ -953,51 +988,24 @@ math_equation_look_for_answer(gpointer data)
     if (result == NULL)
         return true;
 
-    switch (result->result) {
-        case PARSER_ERR_NONE:
-            math_equation_set_number(equation, &result->z);
-            break;
-
-        case PARSER_ERR_OVERFLOW:
-            message = g_strdup(/* Error displayed to user when they perform a bitwise operation on numbers greater than the current word */
-                               _("Overflow. Try a bigger word size"));
-            break;
-
-        case PARSER_ERR_UNKNOWN_VARIABLE:
-            message = g_strdup_printf(/* Error displayed to user when they an unknown variable is entered */
-                                      _("Unknown variable '%s'"), result->error_token);
-            break;
-
-        case PARSER_ERR_UNKNOWN_FUNCTION:
-            message = g_strdup_printf(/* Error displayed to user when an unknown function is entered */
-                                      _("Function '%s' is not defined"), result->error_token);
-            break;
-
-        case PARSER_ERR_UNKNOWN_CONVERSION:
-            message = g_strdup(/* Error displayed to user when an conversion with unknown units is attempted */
-                               _("Unknown conversion"));
-            break;
-
-        case PARSER_ERR_MP:
-            message = g_strdup(mp_get_error());
-            break;
-
-        default:
-            message = g_strdup(/* Error displayed to user when they enter an invalid calculation */
-                               _("Malformed expression"));
-            break;
-    }
-
-    if (result->error_token)
-        free(result->error_token);
-
-    if (message) {
-        math_equation_set_status(equation, message);
-        g_free(message);
+    if (result->error != NULL) {
+        math_equation_set_status(equation, result->error);
+        g_free(result->error);
     }
     else {
         math_equation_set_status(equation, "");
     }
+
+    if (result->number_result != NULL) {
+        math_equation_set_number(equation, result->number_result);
+        g_slice_free(MPNumber, result->number_result);
+    }
+
+    if (result->text_result != NULL) {
+        math_equation_set(equation, result->text_result);
+        g_free(result->text_result);
+    }
+
     g_slice_free(SolveData, result);
 
     equation->priv->in_solve = false;
@@ -1046,6 +1054,7 @@ math_equation_factorize_real(gpointer data)
     GList *factors, *factor;
     MPNumber x;
     MathEquation *equation = MATH_EQUATION(data);
+    SolveData *result = g_slice_new0(SolveData);
 
     math_equation_get_number(equation, &x);
     factors = mp_factorize(&x);
@@ -1066,26 +1075,11 @@ math_equation_factorize_real(gpointer data)
     }
     g_list_free(factors);
 
-    g_async_queue_push(equation->priv->queue, g_strndup(text->str, text->len));
+    result->text_result = g_strndup(text->str, text->len);
+    g_async_queue_push(equation->priv->queue, result);
     g_string_free(text, TRUE);
 
     return NULL;
-}
-
-static gboolean
-math_equation_look_for_factorized_answer(gpointer data)
-{
-    MathEquation *equation = MATH_EQUATION(data);
-    gchar *result = g_async_queue_try_pop(equation->priv->queue);
-
-    math_equation_set_status(equation, "Calculating...");
-
-    if (result == NULL)
-        return true;
-
-    math_equation_set(equation, result);
-    g_free(result);
-    return false;
 }
 
 void
@@ -1111,7 +1105,7 @@ math_equation_factorize(MathEquation *equation)
     if (error)
         g_warning("Error spawning thread for calculations: %s\n", error->message);
 
-    g_timeout_add(100, math_equation_look_for_factorized_answer, equation);
+    g_timeout_add(100, math_equation_look_for_answer, equation);
 }
 
 
