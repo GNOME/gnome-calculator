@@ -985,6 +985,15 @@ math_equation_solve_real(gpointer data)
 }
 
 static gboolean
+math_equation_show_in_progress(gpointer data)
+{
+    MathEquation *equation = MATH_EQUATION(data);
+    if (equation->priv->in_solve)
+        math_equation_set_status(equation, "Calculating");
+    return false;
+}
+
+static gboolean
 math_equation_look_for_answer(gpointer data)
 {
     MathEquation *equation = MATH_EQUATION(data);
@@ -1036,7 +1045,6 @@ math_equation_solve(MathEquation *equation)
     }
 
     equation->priv->in_solve = true;
-    math_equation_set_status(equation, "Calculating");
 
     math_equation_set_number_mode(equation, NORMAL);
 
@@ -1045,7 +1053,8 @@ math_equation_solve(MathEquation *equation)
     if (error)
         g_warning("Error spawning thread for calculations: %s\n", error->message);
 
-    g_timeout_add(100, math_equation_look_for_answer, equation);
+    g_timeout_add(50, math_equation_look_for_answer, equation);
+    g_timeout_add(100, math_equation_show_in_progress, equation);
 }
 
 
@@ -1101,14 +1110,14 @@ math_equation_factorize(MathEquation *equation)
     }
 
     equation->priv->in_solve = true;
-    math_equation_set_status(equation, "Calculating");
 
     g_thread_create(math_equation_factorize_real, equation, false, &error);
 
     if (error)
         g_warning("Error spawning thread for calculations: %s\n", error->message);
 
-    g_timeout_add(100, math_equation_look_for_answer, equation);
+    g_timeout_add(50, math_equation_look_for_answer, equation);
+    g_timeout_add(100, math_equation_show_in_progress, equation);
 }
 
 
