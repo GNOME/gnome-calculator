@@ -948,6 +948,8 @@ math_equation_look_for_answer(gpointer data)
     gchar *message = NULL;
     SolveData *result = g_async_queue_try_pop(equation->priv->queue);
 
+    math_equation_set_status(equation, "Calculating...");
+
     if (result == NULL)
         return true;
 
@@ -1027,30 +1029,25 @@ math_equation_solve(MathEquation *equation)
     equation->priv->in_solve = true;
 
     math_equation_set_number_mode(equation, NORMAL);
-    math_equation_set_status(equation, "Calculating...");
 
     g_thread_create(math_equation_solve_real, equation, false, &error);
 
     if (error)
         g_warning("Error spawning thread for calculations: %s\n", error->message);
 
-    g_idle_add(math_equation_look_for_answer, equation);
+    g_timeout_add(100, math_equation_look_for_answer, equation);
 }
 
 
-void
-math_equation_factorize(MathEquation *equation)
+static gpointer
+math_equation_factorize_real(gpointer data)
 {
-    MPNumber x;
-    GList *factors, *factor;
     GString *text;
-  
-    if (!math_equation_get_number(equation, &x) || !mp_is_integer(&x)) {
-        /* Error displayed when trying to factorize a non-integer value */
-        math_equation_set_status(equation, _("Need an integer to factorize"));
-        return;
-    }
+    GList *factors, *factor;
+    MPNumber x;
+    MathEquation *equation = MATH_EQUATION(data);
 
+    math_equation_get_number(equation, &x);
     factors = mp_factorize(&x);
 
     text = g_string_new("");
@@ -1069,8 +1066,52 @@ math_equation_factorize(MathEquation *equation)
     }
     g_list_free(factors);
 
-    math_equation_set(equation, text->str);
+    g_async_queue_push(equation->priv->queue, g_strndup(text->str, text->len));
     g_string_free(text, TRUE);
+
+    return NULL;
+}
+
+static gboolean
+math_equation_look_for_factorized_answer(gpointer data)
+{
+    MathEquation *equation = MATH_EQUATION(data);
+    gchar *result = g_async_queue_try_pop(equation->priv->queue);
+
+    math_equation_set_status(equation, "Calculating...");
+
+    if (result == NULL)
+        return true;
+
+    math_equation_set(equation, result);
+    g_free(result);
+    return false;
+}
+
+void
+math_equation_factorize(MathEquation *equation)
+{
+    MPNumber x;
+    GError *error = NULL;
+
+    // FIXME: should replace calculation or give error message
+    if (equation->priv->in_solve)
+        return;
+
+    if (!math_equation_get_number(equation, &x) || !mp_is_integer(&x)) {
+        /* Error displayed when trying to factorize a non-integer value */
+        math_equation_set_status(equation, _("Need an integer to factorize"));
+        return;
+    }
+
+    equation->priv->in_solve = true;
+
+    g_thread_create(math_equation_factorize_real, equation, false, &error);
+
+    if (error)
+        g_warning("Error spawning thread for calculations: %s\n", error->message);
+
+    g_timeout_add(100, math_equation_look_for_factorized_answer, equation);
 }
 
 
