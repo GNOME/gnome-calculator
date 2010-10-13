@@ -429,7 +429,7 @@ create_gui(MathWindow *window)
     gtk_widget_show(scrolled_window);
 
     window->priv->display = math_display_new_with_equation(window->priv->equation);
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), GTK_WIDGET(window->priv->display));
+    gtk_container_add(GTK_CONTAINER(scrolled_window), GTK_WIDGET(window->priv->display));
     gtk_widget_show(GTK_WIDGET(window->priv->display));
 
     window->priv->buttons = math_buttons_new(window->priv->equation);

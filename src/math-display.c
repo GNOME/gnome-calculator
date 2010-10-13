@@ -37,9 +37,12 @@ struct MathDisplayPrivate
 
     /* Buffer that shows errors etc */
     GtkTextBuffer *info_buffer;
+
+    /* Spinner widget that shows if we're calculating a response */
+    GtkWidget *spinner;
 };
 
-G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VBOX);
+G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VIEWPORT);
 
 #define GET_WIDGET(ui, name)  GTK_WIDGET(gtk_builder_get_object(ui, name))
 
@@ -239,15 +242,28 @@ static void
 status_changed_cb(MathEquation *equation, GParamSpec *spec, MathDisplay *display)
 {
     gtk_text_buffer_set_text(display->priv->info_buffer, math_equation_get_status(equation), -1);
+    if (math_equation_in_solve(equation) && !gtk_widget_get_visible(display->priv->spinner)) {
+        gtk_widget_show(display->priv->spinner);
+        gtk_spinner_start(GTK_SPINNER(display->priv->spinner));
+    }
+    else if (!math_equation_in_solve(equation) && gtk_widget_get_visible(display->priv->spinner)) {
+        gtk_widget_hide(display->priv->spinner);
+        gtk_spinner_stop(GTK_SPINNER(display->priv->spinner));
+    }
 }
 
 
 static void
 create_gui(MathDisplay *display)
 {
-    GtkWidget *info_view;
+    GtkWidget *info_view, *info_box, *main_box;
     PangoFontDescription *font_desc;
-  
+    int i;
+    GtkStyle *style;
+
+    main_box = gtk_vbox_new(false, 0);
+    gtk_container_add(GTK_CONTAINER(display), main_box);
+
     g_signal_connect(display, "key-press-event", G_CALLBACK(key_press_cb), display);
 
     display->priv->text_view = gtk_text_view_new_with_buffer(GTK_TEXT_BUFFER(display->priv->equation));
@@ -267,8 +283,11 @@ create_gui(MathDisplay *display)
     atk_object_set_role(gtk_widget_get_accessible(display->priv->text_view), ATK_ROLE_EDITBAR);
   //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
     g_signal_connect(display->priv->text_view, "key-press-event", G_CALLBACK(display_key_press_cb), display);
-    gtk_box_pack_start(GTK_BOX(display), display->priv->text_view, TRUE, TRUE, 0);
-  
+    gtk_box_pack_start(GTK_BOX(main_box), display->priv->text_view, TRUE, TRUE, 0);
+
+    info_box = gtk_hbox_new(false, 6);
+    gtk_box_pack_start(GTK_BOX(main_box), info_box, FALSE, TRUE, 0);
+
     info_view = gtk_text_view_new();
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(info_view), GTK_WRAP_WORD);
     gtk_widget_set_can_focus(info_view, TRUE); // FIXME: This should be FALSE but it locks the cursor inside the main view for some reason
@@ -277,11 +296,20 @@ create_gui(MathDisplay *display)
     gtk_text_view_set_justification(GTK_TEXT_VIEW(info_view), GTK_JUSTIFY_RIGHT);
     /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
     /*gtk_text_view_set_right_margin(GTK_TEXT_VIEW(info_view), 6);*/
-    gtk_box_pack_start(GTK_BOX(display), info_view, FALSE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(info_box), info_view, TRUE, TRUE, 0);
     display->priv->info_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(info_view));
 
+    display->priv->spinner = gtk_spinner_new();
+    gtk_box_pack_end(GTK_BOX(info_box), display->priv->spinner, FALSE, FALSE, 0);
+    style = gtk_widget_get_style(info_view);
+    for (i = 0; i < 5; i++) {
+        gtk_widget_modify_bg(GTK_WIDGET(display), i, &style->base[i]);
+    }
+
+    gtk_widget_show(info_box);
     gtk_widget_show(info_view);
     gtk_widget_show(display->priv->text_view);
+    gtk_widget_show(main_box);
 
     g_signal_connect(display->priv->equation, "notify::status", G_CALLBACK(status_changed_cb), display);
     status_changed_cb(display->priv->equation, NULL, display);

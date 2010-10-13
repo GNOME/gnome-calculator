@@ -32,13 +32,13 @@ typedef struct MathDisplayPrivate MathDisplayPrivate;
 
 typedef struct
 {
-    GtkVBox parent_instance;
+    GtkViewport parent_instance;
     MathDisplayPrivate *priv;
 } MathDisplay;
 
 typedef struct
 {
-    GtkVBoxClass parent_class;
+    GtkViewportClass parent_class;
 } MathDisplayClass;
 
 GType math_display_get_type(void);

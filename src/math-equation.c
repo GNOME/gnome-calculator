@@ -677,6 +677,13 @@ math_equation_get_number_mode(MathEquation *equation)
 }
 
 
+gboolean
+math_equation_in_solve(MathEquation *equation)
+{
+    return equation->priv->in_solve;
+}
+
+
 const MPNumber *
 math_equation_get_answer(MathEquation *equation)
 {
@@ -983,35 +990,29 @@ math_equation_look_for_answer(gpointer data)
     MathEquation *equation = MATH_EQUATION(data);
     SolveData *result = g_async_queue_try_pop(equation->priv->queue);
 
-    math_equation_set_status(equation, "Calculating...");
-
     if (result == NULL)
         return true;
+
+    equation->priv->in_solve = false;
+
+    if (!result->error)
+        math_equation_set_status(equation, "");
 
     if (result->error != NULL) {
         math_equation_set_status(equation, result->error);
         g_free(result->error);
     }
-    else {
-        math_equation_set_status(equation, "");
-    }
-
-    if (result->number_result != NULL) {
+    else if (result->number_result != NULL) {
         math_equation_set_number(equation, result->number_result);
         g_slice_free(MPNumber, result->number_result);
     }
-
-    if (result->text_result != NULL) {
+    else if (result->text_result != NULL) {
         math_equation_set(equation, result->text_result);
         g_free(result->text_result);
     }
-
     g_slice_free(SolveData, result);
 
-    equation->priv->in_solve = false;
-
     g_signal_emit_by_name(equation, "answer-changed");
-
     return false;
 }
 
@@ -1035,6 +1036,7 @@ math_equation_solve(MathEquation *equation)
     }
 
     equation->priv->in_solve = true;
+    math_equation_set_status(equation, "Calculating");
 
     math_equation_set_number_mode(equation, NORMAL);
 
@@ -1099,6 +1101,7 @@ math_equation_factorize(MathEquation *equation)
     }
 
     equation->priv->in_solve = true;
+    math_equation_set_status(equation, "Calculating");
 
     g_thread_create(math_equation_factorize_real, equation, false, &error);
 
