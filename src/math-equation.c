@@ -1804,8 +1804,6 @@ math_equation_init(MathEquation *equation)
     }
     g_strfreev(digits);
 
-    setlocale(LC_NUMERIC, "");
-
     radix = nl_langinfo(RADIXCHAR);
     equation->priv->radix = radix ? g_utf8_get_char(g_locale_to_utf8(radix, -1, NULL, NULL, NULL)) : '.';
     tsep = nl_langinfo(THOUSEP);
