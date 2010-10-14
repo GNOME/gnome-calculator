@@ -83,7 +83,7 @@ main(int argc, char **argv)
     srand48((long) time((time_t *) 0));
 
     g_type_init ();
-    setlocale(LC_NUMERIC, "");
+    setlocale(LC_ALL, "");
 
     equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {

@@ -214,8 +214,8 @@ main(int argc, char **argv)
     gchar *source_currency, *target_currency;
 
     g_type_init();
-    setlocale(LC_NUMERIC, "");
 
+    setlocale(LC_ALL, "");
     bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
