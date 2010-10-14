@@ -72,6 +72,53 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
 {
     int state;
     guint32 c;
+    guint new_keyval = 0;
+
+    /* Treat keypad keys as numbers even when numlock is off */
+    switch(event->keyval)
+    {
+    case GDK_KEY_KP_Insert:
+        new_keyval = GDK_KEY_0;
+        break;
+    case GDK_KEY_KP_End:
+        new_keyval = GDK_KEY_1;
+        break;
+    case GDK_KEY_KP_Down:
+        new_keyval = GDK_KEY_2;
+        break;
+    case GDK_KEY_KP_Page_Down:
+        new_keyval = GDK_KEY_3;
+        break;
+    case GDK_KEY_KP_Left:
+        new_keyval = GDK_KEY_4;
+        break;
+    case GDK_KEY_KP_Begin: /* This is apparently what "5" does when numlock is off. */
+        new_keyval = GDK_KEY_5;
+        break;
+    case GDK_KEY_KP_Right:
+        new_keyval = GDK_KEY_6;
+        break;
+    case GDK_KEY_KP_Home:
+        new_keyval = GDK_KEY_7;
+        break;
+    case GDK_KEY_KP_Up:
+        new_keyval = GDK_KEY_8;
+        break;
+    case GDK_KEY_KP_Page_Up:
+        new_keyval = GDK_KEY_9;
+        break;
+    }
+
+    if (new_keyval) {
+        gboolean result;
+        GdkEvent *new_event;
+
+        new_event = gdk_event_copy((GdkEvent *)event);
+        ((GdkEventKey *)new_event)->keyval = new_keyval;
+        g_signal_emit_by_name(widget, "key-press-event", new_event, &result);
+        gdk_event_free(new_event);
+        return result;
+    }
 
     state = event->state & (GDK_CONTROL_MASK | GDK_MOD1_MASK);
     c = gdk_keyval_to_unicode(event->keyval);
