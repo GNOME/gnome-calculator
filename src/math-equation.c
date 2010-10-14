@@ -1760,6 +1760,8 @@ delete_range_cb (MathEquation  *equation,
 {
     if (equation->priv->in_reformat)
         return;
+
+    equation->priv->state.entered_multiply = FALSE;
   
     /* Update thousands separators */
     reformat_separators(equation);  
