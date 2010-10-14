@@ -508,7 +508,7 @@ mp_cast_to_double(const MPNumber *x)
 
 
 static void
-mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, bool force_sign, GString *string)
+mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, gunichar radix, bool force_sign, GString *string)
 {
     static char digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
@@ -549,7 +549,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
     } while (!mp_is_zero(&temp));
 
     last_non_zero = string->len;
-    g_string_append_c(string, '.');
+    g_string_append_unichar(string, radix);
 
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
@@ -600,7 +600,7 @@ mp_cast_to_string_real(const MPNumber *x, int default_base, int base, int accura
 
 
 void
-mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, char *buffer, int buffer_length)
+mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, bool trim_zeroes, gunichar radix, char *buffer, int buffer_length)
 {
     GString *string;
     MPNumber x_real;
@@ -608,7 +608,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
     string = g_string_sized_new(buffer_length);
 
     mp_real_component(x, &x_real);
-    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, FALSE, string);
+    mp_cast_to_string_real(&x_real, default_base, base, accuracy, trim_zeroes, radix, FALSE, string);
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
@@ -622,7 +622,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
         }
 
         s = g_string_sized_new(buffer_length);
-        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, force_sign, s);
+        mp_cast_to_string_real(&x_im, default_base, 10, accuracy, trim_zeroes, radix, force_sign, s);
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -653,7 +653,7 @@ mp_cast_to_string(const MPNumber *x, int default_base, int base, int accuracy, b
 
 
 void
-mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, bool eng_format, char *buffer, int buffer_length)
+mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, int max_digits, bool trim_zeroes, gunichar radix, bool eng_format, char *buffer, int buffer_length)
 {
     char fixed[1024], *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -698,7 +698,7 @@ mp_cast_to_exponential_string(const MPNumber *x, int default_base, int base_, in
         }
     }
 
-    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, fixed, 1024);
+    mp_cast_to_string(&mantissa, default_base, base_, max_digits, trim_zeroes, radix, fixed, 1024);
     g_string_append(string, fixed);
     if (exponent != 0) {
         g_string_append_printf(string, "×10"); // FIXME: Use the current base

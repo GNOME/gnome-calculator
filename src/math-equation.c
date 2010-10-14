@@ -83,15 +83,15 @@ struct MathEquationPrivate
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
-    const char *digits[16];   /* Localized digit values */
-    const char *radix;        /* Locale specific radix string. */
-    const char *tsep;         /* Locale specific thousands separator. */
+    gunichar digits[16];      /* Localized digits */
+    gunichar radix;           /* Locale specific radix. */
+    gunichar tsep;            /* Locale specific thousands separator. */
     gint tsep_count;          /* Number of digits between separator. */
 
     GtkTextMark *ans_start, *ans_end;
 
     MathEquationState state;  /* Equation state */
-    GList *undo_stack;           /* History of expression mode states */
+    GList *undo_stack;        /* History of expression mode states */
     GList *redo_stack;
     gboolean in_undo_operation;
   
@@ -228,10 +228,10 @@ reformat_base(MathEquation *equation, gint old_base)
         }
         else if (in_number) {
             /* Allow one radix inside a number */
-            if (!have_radix && base < 0 && strncmp(read_iter, equation->priv->radix, strlen(equation->priv->radix)) == 0) {
+            if (!have_radix && base < 0 && c == equation->priv->radix) {
                 have_radix = TRUE;
-                read_iter += strlen(equation->priv->radix);
-                offset += g_utf8_strlen(equation->priv->radix, -1);
+                read_iter = g_utf8_next_char(read_iter);
+                offset++;
                 continue;
             }
 
@@ -296,29 +296,108 @@ reformat_base(MathEquation *equation, gint old_base)
 }
 
 
+static gint
+count_digits(MathEquation *equation, const gchar *text)
+{
+    const gchar *read_iter;
+    gint count = 0;
+
+    read_iter = text;
+    while (*read_iter != '\0') {
+        if (!g_unichar_isdigit(g_utf8_get_char(read_iter)))
+            return count;
+
+        read_iter = g_utf8_next_char(read_iter);
+
+        /* Allow a thousands separator between digits follow a digit */
+        if (g_utf8_get_char(read_iter) == equation->priv->tsep) {
+            read_iter = g_utf8_next_char(read_iter);
+            if (!g_unichar_isdigit(g_utf8_get_char(read_iter)))
+                return count;
+        }
+
+        count++;
+    }
+
+    return count;
+}
+
+
 static void
 reformat_separators(MathEquation *equation)
 {
-#if 0
     gchar *text, *read_iter;
-    gboolean in_number = FALSE, in_fraction = FALSE;
+    gint ans_start, ans_end;
+    gint offset, digit_offset = 0;
+    gboolean in_number = FALSE, in_radix = FALSE, last_is_tsep = FALSE;
+
+    equation->priv->in_undo_operation = TRUE;
+    equation->priv->in_reformat = TRUE;
 
     text = math_equation_get_display(equation);
-
-    /* Find numbers in display, and modify if necessary */
-    read_iter = text;
-    while(*read_iter != '\0') {
+    get_ans_offsets(equation, &ans_start, &ans_end);
+    for (read_iter = text, offset = 0; *read_iter != '\0'; read_iter = g_utf8_next_char(read_iter), offset++) {
         gunichar c;
-      
+        gboolean expect_tsep;
+
+        /* See what digit this character is */
         c = g_utf8_get_char(read_iter);
 
-        if (strncmp(read_iter, equation->priv->tsep, strlen(equation->priv->tsep)) == 0)
-            ;
-        read_iter = g_utf8_next_char(read_iter);
+        expect_tsep = equation->priv->show_tsep &&
+                      in_number && !in_radix && !last_is_tsep &&
+                      digit_offset > 0 && digit_offset % equation->priv->tsep_count == 0;
+        last_is_tsep = FALSE;
+
+        /* Don't mess with ans */
+        if (offset >= ans_start && offset <= ans_end) {
+            in_number = in_radix = FALSE;
+            continue;
+        }
+        if (g_unichar_isdigit(c)) {
+            if (!in_number)
+                digit_offset = count_digits(equation, read_iter);
+            in_number = TRUE;
+
+            /* Expected a thousands separator between these digits - insert it */
+            if (expect_tsep) {
+                GtkTextIter iter;
+                gchar buffer[7];
+                gint len;
+
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, offset);
+                len = g_unichar_to_utf8(equation->priv->tsep, buffer);
+                buffer[len] = '\0';
+                gtk_text_buffer_insert(GTK_TEXT_BUFFER(equation), &iter, buffer, -1);
+                offset++;
+                last_is_tsep = TRUE;
+            }
+
+            digit_offset--;
+        }
+        else if (c == equation->priv->radix) {
+            in_number = in_radix = TRUE;
+        }
+        else if (c == equation->priv->tsep) {
+            /* Didn't expect thousands separator - delete it */
+            if (!expect_tsep) {
+                GtkTextIter start, end;
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, offset);
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, offset + 1);
+                gtk_text_buffer_delete(GTK_TEXT_BUFFER(equation), &start, &end);
+                offset--;
+            }
+            else
+                last_is_tsep = TRUE;            
+        }
+        else {
+            in_number = in_radix = FALSE;
+        }
     }
 
     g_free(text);
-#endif
+
+    equation->priv->in_reformat = FALSE;
+    equation->priv->in_undo_operation = FALSE;
 }
 
 
@@ -535,21 +614,22 @@ math_equation_redo(MathEquation *equation)
 }
 
 
-const gchar *
+gunichar
 math_equation_get_digit_text(MathEquation *equation, guint digit)
 {
     return equation->priv->digits[digit];
 }
 
 
-const gchar *
+gunichar
 math_equation_get_numeric_point_text(MathEquation *equation)
 {
     return equation->priv->radix;
 }
 
 
-const gchar *math_equation_get_thousands_separator_text(MathEquation *equation)
+gunichar 
+math_equation_get_thousands_separator_text(MathEquation *equation)
 {
     return equation->priv->tsep;
 }
@@ -780,19 +860,52 @@ math_equation_get_display(MathEquation *equation)
 gchar *
 math_equation_get_equation(MathEquation *equation)
 {
-    char *text, *t;
-    gint ans_start, ans_end;
+    gchar *text;
+    GString *eq_text;
+    gint ans_start = -1, ans_end = -1, offset;
+    const gchar *read_iter;
+    gboolean last_is_digit = FALSE;
 
     text = math_equation_get_display(equation);
+    eq_text = g_string_sized_new(strlen(text));
 
-    /* No ans to substitute */
-    if(!equation->priv->ans_start)
-        return text;
+    if (equation->priv->ans_start)
+        get_ans_offsets(equation, &ans_start, &ans_end);
 
-    get_ans_offsets(equation, &ans_start, &ans_end);
-    t = g_strdup_printf("%.*sans%s", (int)(g_utf8_offset_to_pointer(text, ans_start) - text), text, g_utf8_offset_to_pointer(text, ans_end));
+    for (read_iter = text, offset = 0; *read_iter != '\0'; read_iter = g_utf8_next_char(read_iter), offset++) {
+        gunichar c;
+        gboolean is_digit, next_is_digit;
+
+        c = g_utf8_get_char(read_iter);
+        is_digit = g_unichar_isdigit(c);
+        next_is_digit = g_unichar_isdigit(g_utf8_get_char(g_utf8_next_char(read_iter)));
+
+        /* Replace ans text with variable */
+        if (offset == ans_start) { 
+             g_string_append(eq_text, "ans");
+             read_iter = g_utf8_offset_to_pointer(read_iter, ans_end - ans_start - 1);
+             offset += ans_end - ans_start - 1;
+             is_digit = FALSE;
+             continue;
+        }
+
+        /* Ignore thousands separators */
+        if (c == equation->priv->tsep && last_is_digit && next_is_digit)
+            ;
+        /* Substitute radix character */
+        else if (c == equation->priv->radix && (last_is_digit || next_is_digit))
+            g_string_append_unichar(eq_text, '.');
+        else
+            g_string_append_unichar(eq_text, c);
+
+        last_is_digit = is_digit;
+    }
     g_free(text);
-    return t;
+
+    text = eq_text->str;
+    g_string_free(eq_text, FALSE);
+
+    return text;
 }
 
 
@@ -911,8 +1024,6 @@ math_equation_insert(MathEquation *equation, const gchar *text)
     if (strstr("⁻⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", text) == NULL)
         math_equation_set_number_mode(equation, NORMAL);
 
-    // FIXME: Add thousands separators
-
     gtk_text_buffer_delete_selection(GTK_TEXT_BUFFER(equation), FALSE, FALSE);
     gtk_text_buffer_insert_at_cursor(GTK_TEXT_BUFFER(equation), text, -1);
 }
@@ -924,8 +1035,13 @@ math_equation_insert_digit(MathEquation *equation, guint digit)
     static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
     static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
-    if (equation->priv->number_mode == NORMAL || digit >= 10)
-        math_equation_insert(equation, math_equation_get_digit_text(equation, digit));
+    if (equation->priv->number_mode == NORMAL || digit >= 10) {
+        gchar buffer[7];
+        gint len;
+        len = g_unichar_to_utf8(math_equation_get_digit_text(equation, digit), buffer);
+        buffer[len] = '\0';
+        math_equation_insert(equation, buffer);
+    }
     else if (equation->priv->number_mode == SUPERSCRIPT)
         math_equation_insert(equation, superscript_digits[digit]);
     else if (equation->priv->number_mode == SUBSCRIPT)
@@ -936,7 +1052,11 @@ math_equation_insert_digit(MathEquation *equation, guint digit)
 void
 math_equation_insert_numeric_point(MathEquation *equation)
 {
-    math_equation_insert(equation, math_equation_get_numeric_point_text(equation));
+    gchar buffer[7];
+    gint len;
+    len = g_unichar_to_utf8(math_equation_get_numeric_point_text(equation), buffer);
+    buffer[len] = '\0';
+    math_equation_insert(equation, buffer);
 }
 
 
@@ -1276,13 +1396,13 @@ display_make_number(MathEquation *equation, char *target, int target_len, const 
 {
     switch(equation->priv->format) {
     case FIX:
-        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, target, target_len);
+        mp_cast_to_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, equation->priv->radix, target, target_len);
         break;
     case SCI:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, false, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, equation->priv->radix, false, target, target_len);
         break;
     case ENG:
-        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, true, target, target_len);
+        mp_cast_to_exponential_string(x, equation->priv->base, equation->priv->base, equation->priv->accuracy, !equation->priv->show_zeroes, equation->priv->radix, true, target, target_len);
         break;
     }
 }
@@ -1579,8 +1699,8 @@ pre_insert_text_cb (MathEquation  *equation,
 static gboolean
 on_delete(MathEquation *equation)
 {
-  equation->priv->in_delete = FALSE;  
-  return FALSE;
+    equation->priv->in_delete = FALSE;  
+    return FALSE;
 }
 
 
@@ -1624,6 +1744,10 @@ insert_text_cb (MathEquation  *equation,
         return;
 
     equation->priv->state.entered_multiply = strcmp(text, "×") == 0;
+
+    /* Update thousands separators */
+    reformat_separators(equation);
+
     g_object_notify(G_OBJECT(equation), "display");
 }
 
@@ -1636,6 +1760,9 @@ delete_range_cb (MathEquation  *equation,
 {
     if (equation->priv->in_reformat)
         return;
+  
+    /* Update thousands separators */
+    reformat_separators(equation);  
 
     // FIXME: A replace will emit this both for delete-range and insert-text, can it be avoided?
     g_object_notify(G_OBJECT(equation), "display");
@@ -1668,20 +1795,19 @@ math_equation_init(MathEquation *equation)
     for (i = 0; i < 16; i++) {
         if (use_default_digits || digits[i] == NULL) {
             use_default_digits = TRUE;
-            equation->priv->digits[i] = strdup(default_digits[i]);
+            equation->priv->digits[i] = g_utf8_get_char(default_digits[i]);
         }
         else
-            equation->priv->digits[i] = strdup(digits[i]);
+            equation->priv->digits[i] = g_utf8_get_char(digits[i]);
     }
     g_strfreev(digits);
 
     setlocale(LC_NUMERIC, "");
 
     radix = nl_langinfo(RADIXCHAR);
-    equation->priv->radix = radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    equation->priv->radix = radix ? g_utf8_get_char(g_locale_to_utf8(radix, -1, NULL, NULL, NULL)) : '.';
     tsep = nl_langinfo(THOUSEP);
-    equation->priv->tsep = tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(",");
-
+    equation->priv->tsep = tsep ? g_utf8_get_char(g_locale_to_utf8(tsep, -1, NULL, NULL, NULL)) : ',';
     equation->priv->tsep_count = 3;
   
     equation->priv->variables = math_variables_new();

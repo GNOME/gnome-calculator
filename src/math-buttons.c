@@ -422,10 +422,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_mp(&x, &input);
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
-        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+        mp_cast_to_string(&input, 10, 10, 2, false, '.', input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&output, 10, 10, 2, false, '.', output_text, 1024);
         label = g_strdup_printf(_("%s radians = %s degrees"), input_text, output_text);
         break;
     case MP_GRADIANS:
@@ -442,10 +442,10 @@ update_angle_label (MathButtons *buttons)
             mp_set_from_integer(mp_is_negative(&input) ? -1 : 1, &fraction);
         }
 
-        mp_cast_to_string(&input, 10, 10, 2, false, input_text, 1024);
+        mp_cast_to_string(&input, 10, 10, 2, false, '.', input_text, 1024);
 
         mp_multiply_integer(&fraction, 360, &output);
-        mp_cast_to_string(&output, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&output, 10, 10, 2, false, '.', output_text, 1024);
         label = g_strdup_printf(_("%s gradians = %s degrees"), input_text, output_text);
         break;
     }
@@ -543,8 +543,8 @@ update_currency_label(MathButtons *buttons)
         const char *source_symbol, *target_symbol;
         int i;
 
-        mp_cast_to_string(&x, 10, 10, 2, false, input_text, 1024);
-        mp_cast_to_string(&value, 10, 10, 2, false, output_text, 1024);
+        mp_cast_to_string(&x, 10, 10, 2, false, '.', input_text, 1024);
+        mp_cast_to_string(&value, 10, 10, 2, false, '.', output_text, 1024);
 
         for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         source_symbol = currency_names[i].symbol;
@@ -854,16 +854,26 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         name = g_strdup_printf("calc_%d_button", i);
         button = GET_WIDGET(builder, name);
         if (button) {
+            gchar buffer[7];
+            gint len;
+
             g_object_set_data(G_OBJECT(button), "calc_digit", GINT_TO_POINTER(i));
             set_tint(button, &buttons->priv->color_numbers, 1);
-            gtk_button_set_label(GTK_BUTTON(button), math_equation_get_digit_text(buttons->priv->equation, i));
+            len = g_unichar_to_utf8(math_equation_get_digit_text(buttons->priv->equation, i), buffer);
+            buffer[len] = '\0';
+            gtk_button_set_label(GTK_BUTTON(button), buffer);
         }
         g_free(name);
     }
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
-    if (widget)
-        gtk_button_set_label(GTK_BUTTON(widget), math_equation_get_numeric_point_text(buttons->priv->equation));
-  
+    if (widget) {
+        gchar buffer[7];
+        gint len;
+        len = g_unichar_to_utf8(math_equation_get_numeric_point_text(buttons->priv->equation), buffer);
+        buffer[len] = '\0';
+        gtk_button_set_label(GTK_BUTTON(widget), buffer);
+    }
+
     widget = GET_WIDGET(builder, "calc_superscript_button");
     if (widget) {
         buttons->priv->superscript_toggles = g_list_append(buttons->priv->superscript_toggles, widget);
