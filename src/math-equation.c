@@ -1590,6 +1590,7 @@ delete_range_cb (MathEquation  *equation,
     if (equation->priv->in_reformat)
         return;
 
+    equation->priv->state.entered_multiply = FALSE;
     // FIXME: A replace will emit this both for delete-range and insert-text, can it be avoided?
     g_object_notify(G_OBJECT(equation), "display");
 }
