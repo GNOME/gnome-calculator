@@ -187,9 +187,10 @@ static void
 about_cb(GtkWidget *widget, MathWindow *window)
 {
     const gchar *authors[] = {
-        "Rich Burridge <rich.burridge@sun.com>",
+        "Rich Burridge <rich.burridge@gmail.com>",
         "Robert Ancell <robert.ancell@gmail.com>",
         "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
+        "Robin Sonefors <ozamosi@flukkost.nu>",
         NULL
     };
     const gchar *documenters[] = {
