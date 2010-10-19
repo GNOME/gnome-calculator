@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
@@ -115,7 +115,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_divide_button">
-            <property name="label">&#xF7;</property>
+            <property name="label">÷</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -169,6 +169,7 @@
         <child>
           <object class="GtkButton" id="calc_0_button">
             <property name="label">0</property>
+            <property name="width_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -242,7 +243,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_multiply_button">
-            <property name="label">&#xD7;</property>
+            <property name="label">×</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -261,7 +262,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_subtract_button">
-            <property name="label">&#x2212;</property>
+            <property name="label">−</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -356,13 +357,18 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_clear_button">
-            <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <signal name="clicked" handler="clear_cb"/>
+            <child>
+              <object class="GtkImage" id="image2">
+                <property name="visible">True</property>
+                <property name="stock">gtk-clear</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -373,7 +379,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_square_root_button">
-            <property name="label">&#x221A;</property>
+            <property name="label">√</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -421,13 +427,18 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_undo_button">
-            <property name="label" translatable="yes" comments="Label on the undo button">Undo</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <signal name="clicked" handler="undo_cb"/>
+            <child>
+              <object class="GtkImage" id="image1">
+                <property name="visible">True</property>
+                <property name="stock">gtk-undo</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">4</property>

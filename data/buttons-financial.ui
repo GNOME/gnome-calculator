@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
@@ -54,7 +54,7 @@
               <object class="GtkLabel" id="currency_label">
                 <property name="visible">True</property>
                 <property name="xalign">1</property>
-                <property name="label" comments="Example content">$100 = &#x20AC;120</property>
+                <property name="label" comments="Example content">$100 = €120</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="currency_label-atkobject">
                     <property name="AtkObject::accessible-name">currency_label</property>
@@ -97,7 +97,7 @@
                     <child>
                       <object class="GtkLabel" id="label23">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory store button">&#x2192; R</property>
+                        <property name="label" translatable="yes" comments="The label on the memory store button">→ R</property>
                       </object>
                       <packing>
                         <property name="position">0</property>
@@ -144,7 +144,7 @@
                     <child>
                       <object class="GtkLabel" id="label22">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory recall button">&#x2190; R</property>
+                        <property name="label" translatable="yes" comments="The label on the memory recall button">← R</property>
                       </object>
                       <packing>
                         <property name="position">0</property>
@@ -296,7 +296,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_divide_button">
-                <property name="label">&#xF7;</property>
+                <property name="label">÷</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -350,6 +350,7 @@
             <child>
               <object class="GtkButton" id="calc_0_button">
                 <property name="label">0</property>
+                <property name="width_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -423,7 +424,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_multiply_button">
-                <property name="label">&#xD7;</property>
+                <property name="label">×</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -442,7 +443,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_subtract_button">
-                <property name="label">&#x2212;</property>
+                <property name="label">−</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -537,13 +538,18 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_clear_button">
-                <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="clear_cb"/>
+                <child>
+                  <object class="GtkImage" id="image2">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-clear</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -738,12 +744,17 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_undo_button">
-                <property name="label" translatable="yes" comments="Label on the clear display button">Undo</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
+                <child>
+                  <object class="GtkImage" id="image1">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-undo</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -781,7 +792,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_root_button">
-                <property name="label">&#x221A;</property>
+                <property name="label">√</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -836,7 +847,7 @@
               <object class="GtkEntry" id="ctrm_pint">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -852,7 +863,7 @@
               <object class="GtkEntry" id="ctrm_fv">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -868,7 +879,7 @@
               <object class="GtkEntry" id="ctrm_pv">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1053,7 +1064,7 @@
               <object class="GtkEntry" id="ddb_life">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1069,7 +1080,7 @@
               <object class="GtkEntry" id="ddb_cost">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1100,7 +1111,7 @@
               <object class="GtkEntry" id="ddb_period">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1243,7 +1254,7 @@
               <object class="GtkEntry" id="fv_n">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1259,7 +1270,7 @@
               <object class="GtkEntry" id="fv_pint">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1275,7 +1286,7 @@
               <object class="GtkEntry" id="fv_pmt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1402,7 +1413,7 @@
               <object class="GtkEntry" id="gpm_cost">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1418,7 +1429,7 @@
               <object class="GtkEntry" id="gpm_margin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1562,7 +1573,7 @@
               <object class="GtkEntry" id="pmt_prin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1578,7 +1589,7 @@
               <object class="GtkEntry" id="pmt_pint">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1594,7 +1605,7 @@
               <object class="GtkEntry" id="pmt_n">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1738,7 +1749,7 @@
               <object class="GtkEntry" id="pv_pmt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1754,7 +1765,7 @@
               <object class="GtkEntry" id="pv_pint">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1770,7 +1781,7 @@
               <object class="GtkEntry" id="pv_n">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1914,7 +1925,7 @@
               <object class="GtkEntry" id="rate_fv">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1930,7 +1941,7 @@
               <object class="GtkEntry" id="rate_pv">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -1946,7 +1957,7 @@
               <object class="GtkEntry" id="rate_n">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2077,7 +2088,7 @@
               <object class="GtkEntry" id="sln_life">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2093,7 +2104,7 @@
               <object class="GtkEntry" id="sln_salvage">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2109,7 +2120,7 @@
               <object class="GtkEntry" id="sln_cost">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2268,7 +2279,7 @@
               <object class="GtkEntry" id="syd_cost">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2284,7 +2295,7 @@
               <object class="GtkEntry" id="syd_salvage">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2300,7 +2311,7 @@
               <object class="GtkEntry" id="syd_life">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2316,7 +2327,7 @@
               <object class="GtkEntry" id="syd_period">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2415,7 +2426,7 @@
               <object class="GtkEntry" id="term_pint">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2431,7 +2442,7 @@
               <object class="GtkEntry" id="term_fv">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>
@@ -2447,7 +2458,7 @@
               <object class="GtkEntry" id="term_pmt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="text">0</property>
                 <signal name="activate" handler="finc_activate_cb"/>
               </object>

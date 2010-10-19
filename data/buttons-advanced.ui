@@ -64,7 +64,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="label20">
                     <property name="visible">True</property>
@@ -96,7 +96,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorize button">Factorize</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="factorize_cb" swapped="no"/>
+                <signal name="clicked" handler="factorize_cb"/>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -118,7 +118,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorial button">Factorial</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
@@ -144,7 +144,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">7</property>
@@ -162,7 +162,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="imaginary_label">
                     <property name="visible">True</property>
@@ -188,7 +188,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="top_attach">2</property>
@@ -205,7 +205,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="top_attach">1</property>
@@ -222,7 +222,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -241,7 +241,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -260,7 +260,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -279,7 +279,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -298,7 +298,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -317,7 +317,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="top_attach">3</property>
@@ -334,7 +334,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -348,12 +348,13 @@
             <child>
               <object class="GtkButton" id="calc_0_button">
                 <property name="label">0</property>
+                <property name="width_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="top_attach">4</property>
@@ -370,7 +371,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="numeric_point_cb" swapped="no"/>
+                <signal name="clicked" handler="numeric_point_cb"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -389,7 +390,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="digit_cb" swapped="no"/>
+                <signal name="clicked" handler="digit_cb"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -408,7 +409,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -427,7 +428,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="subtract_cb" swapped="no"/>
+                <signal name="clicked" handler="subtract_cb"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -446,7 +447,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -465,7 +466,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="solve_cb" swapped="no"/>
+                <signal name="clicked" handler="solve_cb"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -478,13 +479,18 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_clear_button">
-                <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="clear_cb" swapped="no"/>
+                <signal name="clicked" handler="clear_cb"/>
+                <child>
+                  <object class="GtkImage" id="image1">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-clear</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -504,7 +510,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the subscript mode button">Subscript</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="set_subscript_cb" swapped="no"/>
+                <signal name="clicked" handler="set_subscript_cb"/>
                 <child>
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
@@ -529,7 +535,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the superscript mode button">Superscript</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="set_superscript_cb" swapped="no"/>
+                <signal name="clicked" handler="set_superscript_cb"/>
                 <child>
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
@@ -557,7 +563,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the scientific exponent button">Scientific Exponent</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="exponent_cb" swapped="no"/>
+                <signal name="clicked" handler="exponent_cb"/>
                 <child>
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
@@ -581,7 +587,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -598,7 +604,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -617,7 +623,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -639,7 +645,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="recall_cb" swapped="no"/>
+                <signal name="clicked" handler="recall_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox19">
                     <property name="visible">True</property>
@@ -685,7 +691,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="store_cb" swapped="no"/>
+                <signal name="clicked" handler="store_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox20">
                     <property name="visible">True</property>
@@ -732,7 +738,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the absolute value button">Absolute Value</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
@@ -758,7 +764,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">6</property>
@@ -777,7 +783,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">8</property>
@@ -796,7 +802,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">9</property>
@@ -815,7 +821,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">9</property>
@@ -833,7 +839,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">8</property>
@@ -855,7 +861,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="x_pow_y_label">
                     <property name="visible">True</property>
@@ -881,7 +887,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
               </object>
               <packing>
                 <property name="left_attach">7</property>
@@ -894,13 +900,18 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_undo_button">
-                <property name="label" translatable="yes" comments="Label on the undo button">Undo</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="undo_cb" swapped="no"/>
+                <signal name="clicked" handler="undo_cb"/>
+                <child>
+                  <object class="GtkImage" id="image2">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-undo</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -916,7 +927,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="pi_label">
                     <property name="visible">True</property>
@@ -941,7 +952,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <signal name="clicked" handler="button_cb" swapped="no"/>
+                <signal name="clicked" handler="button_cb"/>
                 <child>
                   <object class="GtkLabel" id="eulers_number_label">
                     <property name="visible">True</property>
@@ -972,7 +983,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
@@ -986,7 +997,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -1002,7 +1013,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -1018,7 +1029,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -1034,7 +1045,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -1052,7 +1063,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="focus_on_click">False</property>
-                    <signal name="clicked" handler="button_cb" swapped="no"/>
+                    <signal name="clicked" handler="button_cb"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -1081,7 +1092,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="function_cb" swapped="no"/>
+                <signal name="clicked" handler="function_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox2">
                     <property name="visible">True</property>

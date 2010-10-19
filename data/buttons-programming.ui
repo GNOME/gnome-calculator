@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
@@ -25,7 +25,7 @@
               <object class="GtkLabel" id="base_label">
                 <property name="visible">True</property>
                 <property name="xalign">1</property>
-                <property name="label" comments="Example content">FF&#x2081;&#x2086; 256&#x2081;&#x2080;</property>
+                <property name="label" comments="Example content">FF₁₆ 256₁₀</property>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -1843,7 +1843,7 @@
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkButton" id="calc_root_button">
-                <property name="label">&#x221A;</property>
+                <property name="label">√</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1991,7 +1991,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_divide_button">
-                <property name="label">&#xF7;</property>
+                <property name="label">÷</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2011,6 +2011,7 @@
             <child>
               <object class="GtkButton" id="calc_0_button">
                 <property name="label">0</property>
+                <property name="width_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2027,7 +2028,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_multiply_button">
-                <property name="label">&#xD7;</property>
+                <property name="label">×</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2046,7 +2047,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_subtract_button">
-                <property name="label">&#x2212;</property>
+                <property name="label">−</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2103,13 +2104,18 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_clear_button">
-                <property name="label" translatable="yes" comments="Label on the clear display button">Clear</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
                 <signal name="clicked" handler="clear_cb"/>
+                <child>
+                  <object class="GtkImage" id="image1">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-clear</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">6</property>
@@ -2414,7 +2420,7 @@
                 <child>
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
-                    <property name="label">&#x2193;n</property>
+                    <property name="label">↓n</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2439,7 +2445,7 @@
                 <child>
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
-                    <property name="label">&#x2191;n</property>
+                    <property name="label">↑n</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2470,7 +2476,7 @@
                     <child>
                       <object class="GtkLabel" id="label22">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory recall button">&#x2190; R</property>
+                        <property name="label" translatable="yes" comments="The label on the memory recall button">← R</property>
                       </object>
                       <packing>
                         <property name="position">0</property>
@@ -2515,7 +2521,7 @@
                     <child>
                       <object class="GtkLabel" id="label23">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory store button">&#x2192; R</property>
+                        <property name="label" translatable="yes" comments="The label on the memory store button">→ R</property>
                       </object>
                       <packing>
                         <property name="position">0</property>
@@ -2745,7 +2751,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_character_button">
-                <property name="label">&#xE1;</property>
+                <property name="label">á</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2827,7 +2833,7 @@
                 <child>
                   <object class="GtkLabel" id="label20">
                     <property name="visible">True</property>
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&#x2212;1&lt;/sup&gt;</property>
+                    <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;−1&lt;/sup&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="justify">center</property>
                   </object>
@@ -2971,7 +2977,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="max_length">1</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <signal name="activate" handler="character_code_dialog_activate_cb"/>
               </object>
               <packing>
