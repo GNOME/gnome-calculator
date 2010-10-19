@@ -311,6 +311,7 @@ convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, co
         {"meters",                     "1"},
         {"m",                          "1"},
         {"yard",                       "0.9144"},
+        {"yards",                      "0.9144"},
         {"yd",                         "0.9144"},
         {"foot",                       "0.3048"},
         {"feet",                       "0.3048"},
