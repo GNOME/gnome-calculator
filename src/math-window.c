@@ -523,7 +523,7 @@ math_window_init(MathWindow *window)
                          _("Calculator"));
     gtk_window_set_icon_name(GTK_WINDOW(window), "accessories-calculator");
     gtk_window_set_role(GTK_WINDOW(window), "gcalctool");
-    gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
+    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     g_signal_connect_after(G_OBJECT(window), "key-press-event", G_CALLBACK(key_press_cb), NULL);
     g_signal_connect(G_OBJECT(window), "delete-event", G_CALLBACK(delete_cb), NULL);
 }
