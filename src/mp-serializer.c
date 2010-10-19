@@ -103,8 +103,10 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bo
         g_string_prepend_c(string, d < 16 ? digits[d] : '?');
 
         i++;
-        if (serializer->priv->show_tsep && i == serializer->priv->tsep_count)
+        if (serializer->priv->show_tsep && i == serializer->priv->tsep_count) {
             g_string_prepend(string, serializer->priv->tsep);
+            i = 0;
+        }
 
         mp_set_from_mp(&t, &temp);
     } while (!mp_is_zero(&temp));
