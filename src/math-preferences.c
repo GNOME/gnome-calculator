@@ -42,7 +42,7 @@ struct MathPreferencesDialogPrivate
 MathPreferencesDialog *
 math_preferences_dialog_new(MathEquation *equation)
 {  
-    return g_object_new (math_preferences_get_type(), "equation", equation, NULL);
+    return g_object_new(math_preferences_get_type(), "equation", equation, NULL);
 }
 
 
@@ -332,21 +332,21 @@ create_gui(MathPreferencesDialog *dialog)
 
 static void
 math_preferences_set_property(GObject      *object,
-                            guint         prop_id,
-                            const GValue *value,
-                            GParamSpec   *pspec)
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
 {
     MathPreferencesDialog *self;
 
-    self = MATH_PREFERENCES (object);
+    self = MATH_PREFERENCES(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        self->priv->equation = g_value_get_object (value);
+        self->priv->equation = g_value_get_object(value);
         create_gui(self);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
@@ -354,34 +354,34 @@ math_preferences_set_property(GObject      *object,
 
 static void
 math_preferences_get_property(GObject    *object,
-                            guint       prop_id,
-                            GValue     *value,
-                            GParamSpec *pspec)
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
 {
     MathPreferencesDialog *self;
 
-    self = MATH_PREFERENCES (object);
+    self = MATH_PREFERENCES(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        g_value_set_object (value, self->priv->equation);
+        g_value_set_object(value, self->priv->equation);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-math_preferences_class_init (MathPreferencesDialogClass *klass)
+math_preferences_class_init(MathPreferencesDialogClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = math_preferences_get_property;
     object_class->set_property = math_preferences_set_property;
 
-    g_type_class_add_private (klass, sizeof (MathPreferencesDialogPrivate));
+    g_type_class_add_private(klass, sizeof(MathPreferencesDialogPrivate));
 
     g_object_class_install_property(object_class,
                                     PROP_EQUATION,
@@ -396,5 +396,5 @@ math_preferences_class_init (MathPreferencesDialogClass *klass)
 static void
 math_preferences_init(MathPreferencesDialog *dialog)
 {
-    dialog->priv = G_TYPE_INSTANCE_GET_PRIVATE (dialog, math_preferences_get_type(), MathPreferencesDialogPrivate);
+    dialog->priv = G_TYPE_INSTANCE_GET_PRIVATE(dialog, math_preferences_get_type(), MathPreferencesDialogPrivate);
 }

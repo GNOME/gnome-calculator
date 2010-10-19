@@ -301,7 +301,7 @@ mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *x, ch
 void
 mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, bool localize, char **target)
 {
-    MpSerializer *serializer = mp_serializer_new ();
+    MpSerializer *serializer = mp_serializer_new();
     if (!localize) {
         serializer->priv->radix = '.';
         serializer->priv->show_tsep = false;

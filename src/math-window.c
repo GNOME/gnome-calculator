@@ -52,7 +52,7 @@ static guint signals[LAST_SIGNAL] = { 0, };
 MathWindow *
 math_window_new(MathEquation *equation)
 {
-    return g_object_new (math_window_get_type(), "equation", equation, NULL);
+    return g_object_new(math_window_get_type(), "equation", equation, NULL);
 }
 
 
@@ -106,14 +106,14 @@ math_window_critical_error(MathWindow *window, const gchar *title, const gchar *
 static void
 copy_cb(GtkWidget *widget, MathWindow *window)
 {
-    math_equation_copy (window->priv->equation);  
+    math_equation_copy(window->priv->equation);  
 }
 
 
 static void
 paste_cb(GtkWidget *widget, MathWindow *window)
 {
-    math_equation_paste (window->priv->equation);
+    math_equation_paste(window->priv->equation);
 }
 
 
@@ -161,8 +161,8 @@ help_cb(GtkWidget *widget, MathWindow *window)
     GdkScreen *screen;
     GError *error = NULL;
 
-    screen = gtk_widget_get_screen (GTK_WIDGET (window));
-    gtk_show_uri (screen, "ghelp:gcalctool", gtk_get_current_event_time (), &error);
+    screen = gtk_widget_get_screen(GTK_WIDGET(window));
+    gtk_show_uri(screen, "ghelp:gcalctool", gtk_get_current_event_time(), &error);
 
     if (error != NULL)
     {
@@ -170,16 +170,16 @@ help_cb(GtkWidget *widget, MathWindow *window)
         /* Translators: Error message displayed when unable to launch help browser */
         const char *message = _("Unable to open help file");
 
-        d = gtk_message_dialog_new (GTK_WINDOW (window),
-                                    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                    GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-                                    "%s", message);
-        gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
-                                                  "%s", error->message);
-        g_signal_connect (d, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-        gtk_window_present (GTK_WINDOW (d));
+        d = gtk_message_dialog_new(GTK_WINDOW (window),
+                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+                                   "%s", message);
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (d),
+                                                 "%s", error->message);
+        g_signal_connect(d, "response", G_CALLBACK(gtk_widget_destroy), NULL);
+        gtk_window_present(GTK_WINDOW(d));
 
-        g_error_free (error);
+        g_error_free(error);
     }
 }
 
@@ -450,15 +450,15 @@ math_window_set_property(GObject      *object,
 {
     MathWindow *self;
 
-    self = MATH_WINDOW (object);
+    self = MATH_WINDOW(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        self->priv->equation = g_value_get_object (value);
+        self->priv->equation = g_value_get_object(value);
         create_gui(self);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
@@ -472,28 +472,28 @@ math_window_get_property(GObject    *object,
 {
     MathWindow *self;
 
-    self = MATH_WINDOW (object);
+    self = MATH_WINDOW(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        g_value_set_object (value, self->priv->equation);
+        g_value_set_object(value, self->priv->equation);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-math_window_class_init (MathWindowClass *klass)
+math_window_class_init(MathWindowClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = math_window_get_property;
     object_class->set_property = math_window_set_property;
 
-    g_type_class_add_private (klass, sizeof (MathWindowPrivate));
+    g_type_class_add_private(klass, sizeof(MathWindowPrivate));
 
     g_object_class_install_property(object_class,
                                     PROP_EQUATION,
@@ -504,20 +504,20 @@ math_window_class_init (MathWindowClass *klass)
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     signals[QUIT] =
-        g_signal_new ("quit",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MathWindowClass, quit),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0);
+        g_signal_new("quit",
+                     G_TYPE_FROM_CLASS (klass),
+                     G_SIGNAL_RUN_LAST,
+                     G_STRUCT_OFFSET (MathWindowClass, quit),
+                     NULL, NULL,
+                     g_cclosure_marshal_VOID__VOID,
+                     G_TYPE_NONE, 0);
 }
 
 
 static void
 math_window_init(MathWindow *window)
 {
-    window->priv = G_TYPE_INSTANCE_GET_PRIVATE (window, math_window_get_type(), MathWindowPrivate);
+    window->priv = G_TYPE_INSTANCE_GET_PRIVATE(window, math_window_get_type(), MathWindowPrivate);
     gtk_window_set_title(GTK_WINDOW(window),
                          /* Title of main window */
                          _("Calculator"));

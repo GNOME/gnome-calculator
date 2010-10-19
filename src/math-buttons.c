@@ -428,12 +428,12 @@ static struct UnitCategory categories[] = {
 MathButtons *
 math_buttons_new(MathEquation *equation)
 {
-    return g_object_new (math_buttons_get_type(), "equation", equation, NULL);
+    return g_object_new(math_buttons_get_type(), "equation", equation, NULL);
 }
 
 
 static void
-set_tint (GtkWidget *widget, GdkColor *tint, gint alpha)
+set_tint(GtkWidget *widget, GdkColor *tint, gint alpha)
 {
     GtkStyle *style;
     int j;
@@ -754,7 +754,7 @@ source_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
     gtk_tree_model_get(model, &iter, 0, &value, -1);
 
     math_equation_set_source_currency(buttons->priv->equation, value);
-    g_free (value);
+    g_free(value);
 }
 
 
@@ -776,8 +776,8 @@ source_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons
         gboolean matched;
 
         gtk_tree_model_get(model, &iter, 0, &v, -1);
-        matched = strcmp (math_equation_get_source_currency(buttons->priv->equation), v) == 0;
-        g_free (v);
+        matched = strcmp(math_equation_get_source_currency(buttons->priv->equation), v) == 0;
+        g_free(v);
         if (matched)
             break;
         valid = gtk_tree_model_iter_next(model, &iter);
@@ -802,7 +802,7 @@ target_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
     gtk_tree_model_get(model, &iter, 0, &value, -1);
 
     math_equation_set_target_currency(buttons->priv->equation, value);
-    g_free (value);
+    g_free(value);
 }
 
 
@@ -824,8 +824,8 @@ target_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons
         gboolean matched;
 
         gtk_tree_model_get(model, &iter, 0, &v, -1);
-        matched = strcmp (math_equation_get_target_currency(buttons->priv->equation), v) == 0;
-        g_free (v);
+        matched = strcmp(math_equation_get_target_currency(buttons->priv->equation), v) == 0;
+        g_free(v);
         if (matched)
             break;
         valid = gtk_tree_model_iter_next(model, &iter);
@@ -906,7 +906,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         if (button_data[i].tooltip)
             gtk_widget_set_tooltip_text(button, _(button_data[i].tooltip));
       
-        atk_object_set_name (gtk_widget_get_accessible (button), button_data[i].widget_name);
+        atk_object_set_name(gtk_widget_get_accessible(button), button_data[i].widget_name);
 
         switch (button_data[i].class) {
         case NUMBER:
@@ -1564,7 +1564,7 @@ function_cb(GtkWidget *widget, MathButtons *buttons)
             GtkWidget *item;
           
             item = gtk_menu_item_new_with_label(_(functions[i].name));
-            g_object_set_data(G_OBJECT(item), "function", g_strdup (functions[i].function));
+            g_object_set_data(G_OBJECT(item), "function", g_strdup(functions[i].function));
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
             g_signal_connect(item, "activate", G_CALLBACK(insert_function_cb), buttons);
             gtk_widget_show(item);
@@ -1580,7 +1580,7 @@ G_MODULE_EXPORT
 void
 factorize_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    math_equation_factorize (buttons->priv->equation);
+    math_equation_factorize(buttons->priv->equation);
 }
 
 
@@ -1638,7 +1638,7 @@ finc_activate_cb(GtkWidget *widget, MathButtons *buttons)
     if (finc_dialog_fields[dialog][field+1] == NULL) {
         GtkWidget *dialog_widget;
         dialog_widget = gtk_widget_get_toplevel(widget);
-        if (gtk_widget_is_toplevel (dialog_widget)) {
+        if (gtk_widget_is_toplevel(dialog_widget)) {
             gtk_dialog_response(GTK_DIALOG(dialog_widget),
                                 GTK_RESPONSE_OK);
             return;
@@ -1665,7 +1665,7 @@ finc_response_cb(GtkWidget *widget, gint response_id, MathButtons *buttons)
     if (response_id != GTK_RESPONSE_OK)
         return;
 
-    dialog = GPOINTER_TO_INT (g_object_get_data(G_OBJECT(widget), "finc_dialog"));
+    dialog = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "finc_dialog"));
 
     for (i = 0; i < 4; i++) {
         if (finc_dialog_fields[dialog][i] == NULL) {
@@ -1794,18 +1794,18 @@ number_mode_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *bu
 
 
 static void
-math_buttons_set_property (GObject      *object,
-                           guint         prop_id,
-                           const GValue *value,
-                           GParamSpec   *pspec)
+math_buttons_set_property(GObject      *object,
+                          guint         prop_id,
+                          const GValue *value,
+                          GParamSpec   *pspec)
 {
     MathButtons *self;
 
-    self = MATH_BUTTONS (object);
+    self = MATH_BUTTONS(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        self->priv->equation = g_value_get_object (value);
+        self->priv->equation = g_value_get_object(value);
         math_buttons_set_mode(self, self->priv->mode);
         g_signal_connect(self->priv->equation, "notify::display", G_CALLBACK(display_changed_cb), self);
         g_signal_connect(self->priv->equation, "notify::number-mode", G_CALLBACK(number_mode_changed_cb), self);
@@ -1815,41 +1815,41 @@ math_buttons_set_property (GObject      *object,
         display_changed_cb(self->priv->equation, NULL, self);
         break;
     case PROP_MODE:
-        math_buttons_set_mode(self, g_value_get_int (value));
+        math_buttons_set_mode(self, g_value_get_int(value));
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-math_buttons_get_property (GObject    *object,
-                           guint       prop_id,
-                           GValue     *value,
-                           GParamSpec *pspec)
+math_buttons_get_property(GObject    *object,
+                          guint       prop_id,
+                          GValue     *value,
+                          GParamSpec *pspec)
 {
     MathButtons *self;
 
-    self = MATH_BUTTONS (object);
+    self = MATH_BUTTONS(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        g_value_set_object (value, self->priv->equation);
+        g_value_set_object(value, self->priv->equation);
         break;
     case PROP_MODE:
-        g_value_set_int (value, self->priv->mode);
+        g_value_set_int(value, self->priv->mode);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-math_buttons_class_init (MathButtonsClass *klass)
+math_buttons_class_init(MathButtonsClass *klass)
 {
     static GEnumValue button_mode_values[] =
     {
@@ -1859,37 +1859,37 @@ math_buttons_class_init (MathButtonsClass *klass)
       {PROGRAMMING, "programming", "programming"},
       {0, NULL, NULL}
     };
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = math_buttons_get_property;
     object_class->set_property = math_buttons_set_property;
 
-    g_type_class_add_private (klass, sizeof (MathButtonsPrivate));
+    g_type_class_add_private(klass, sizeof(MathButtonsPrivate));
 
     button_mode_type = g_enum_register_static("ButtonMode", button_mode_values);
 
-    g_object_class_install_property (object_class,
-                                     PROP_EQUATION,
-                                     g_param_spec_object ("equation",
-                                                          "equation",
-                                                          "Equation being controlled",
-                                                          math_equation_get_type(),
-                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-    g_object_class_install_property (object_class,
-                                     PROP_MODE,
-                                     g_param_spec_enum ("mode",
-                                                        "mode",
-                                                        "Button mode",
-                                                        button_mode_type,
-                                                        BASIC,
-                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_EQUATION,
+                                    g_param_spec_object("equation",
+                                                        "equation",
+                                                        "Equation being controlled",
+                                                        math_equation_get_type(),
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+    g_object_class_install_property(object_class,
+                                    PROP_MODE,
+                                    g_param_spec_enum("mode",
+                                                      "mode",
+                                                      "Button mode",
+                                                      button_mode_type,
+                                                      BASIC,
+                                                      G_PARAM_READWRITE));
 }
 
 
 static void
-math_buttons_init (MathButtons *buttons)
+math_buttons_init(MathButtons *buttons)
 {
-    buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE (buttons, math_buttons_get_type(), MathButtonsPrivate);
+    buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE(buttons, math_buttons_get_type(), MathButtonsPrivate);
     buttons->priv->programming_base = 10;
     gdk_color_parse("#0000FF", &buttons->priv->color_numbers);
     gdk_color_parse("#00FF00", &buttons->priv->color_action);

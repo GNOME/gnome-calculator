@@ -49,14 +49,14 @@ G_DEFINE_TYPE (MathDisplay, math_display, GTK_TYPE_VIEWPORT);
 MathDisplay *
 math_display_new()
 {
-    return g_object_new (math_display_get_type(), "equation", math_equation_new(), NULL);
+    return g_object_new(math_display_get_type(), "equation", math_equation_new(), NULL);
 }
 
 
 MathDisplay *
 math_display_new_with_equation(MathEquation *equation)
 {
-    return g_object_new (math_display_get_type(), "equation", equation, NULL);
+    return g_object_new(math_display_get_type(), "equation", equation, NULL);
 }
 
 
@@ -324,15 +324,15 @@ math_display_set_property(GObject      *object,
 {
     MathDisplay *self;
 
-    self = MATH_DISPLAY (object);
+    self = MATH_DISPLAY(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        self->priv->equation = g_value_get_object (value);
+        self->priv->equation = g_value_get_object(value);
         create_gui(self);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
@@ -346,28 +346,28 @@ math_display_get_property(GObject    *object,
 {
     MathDisplay *self;
 
-    self = MATH_DISPLAY (object);
+    self = MATH_DISPLAY(object);
 
     switch (prop_id) {
     case PROP_EQUATION:
-        g_value_set_object (value, self->priv->equation);
+        g_value_set_object(value, self->priv->equation);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-math_display_class_init (MathDisplayClass *klass)
+math_display_class_init(MathDisplayClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = math_display_get_property;
     object_class->set_property = math_display_set_property;
 
-    g_type_class_add_private (klass, sizeof (MathDisplayPrivate));
+    g_type_class_add_private(klass, sizeof(MathDisplayPrivate));
 
     g_object_class_install_property(object_class,
                                     PROP_EQUATION,
@@ -382,5 +382,5 @@ math_display_class_init (MathDisplayClass *klass)
 static void 
 math_display_init(MathDisplay *display)
 {
-    display->priv = G_TYPE_INSTANCE_GET_PRIVATE (display, math_display_get_type(), MathDisplayPrivate);
+    display->priv = G_TYPE_INSTANCE_GET_PRIVATE(display, math_display_get_type(), MathDisplayPrivate);
 }

@@ -112,7 +112,7 @@ G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
 MathEquation *
 math_equation_new()
 {
-    return g_object_new (math_equation_get_type(), NULL);
+    return g_object_new(math_equation_get_type(), NULL);
 }
 
 
@@ -317,7 +317,7 @@ math_equation_copy(MathEquation *equation)
 
     text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &start, &end, FALSE);
     gtk_clipboard_set_text(gtk_clipboard_get(GDK_NONE), text, -1);
-    g_free (text);
+    g_free(text);
 }
 
 
@@ -326,7 +326,7 @@ on_paste(GtkClipboard *clipboard, const gchar *text, gpointer data)
 {
     MathEquation *equation = data;
     if (text != NULL)
-        math_equation_insert (equation, text);
+        math_equation_insert(equation, text);
 }
 
 
@@ -646,7 +646,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
 
     text = math_equation_get_display(equation);
     result = !mp_serializer_from_string(equation->priv->serializer, text, z);
-    g_free (text);
+    g_free(text);
 
     return result;
 }
@@ -848,10 +848,10 @@ variable_is_defined(const char *name, void *data)
 
     if (strcmp(lower_name, "rand") == 0 || 
         strcmp(lower_name, "ans") == 0) {
-        g_free (lower_name);
+        g_free(lower_name);
         return 1;
     }
-    g_free (lower_name);
+    g_free(lower_name);
 
     return math_variables_get_value(equation->priv->variables, name) != NULL;
 }
@@ -1238,7 +1238,7 @@ math_equation_set_property(GObject      *object,
 {
     MathEquation *self;
 
-    self = MATH_EQUATION (object);
+    self = MATH_EQUATION(object);
 
     switch (prop_id) {
     case PROP_STATUS:
@@ -1278,7 +1278,7 @@ math_equation_set_property(GObject      *object,
         math_equation_set_target_currency(self, g_value_get_string(value));
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
@@ -1293,7 +1293,7 @@ math_equation_get_property(GObject    *object,
     MathEquation *self;
     gchar *text;
 
-    self = MATH_EQUATION (object);
+    self = MATH_EQUATION(object);
 
     switch (prop_id) {
     case PROP_STATUS:
@@ -1343,13 +1343,14 @@ math_equation_get_property(GObject    *object,
         g_value_set_object(value, self->priv->serializer);
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
+
 static void
-math_equation_constructed (GObject *object)
+math_equation_constructed(GObject *object)
 {
     GtkTextBuffer *parent_class;
     parent_class = g_type_class_peek_parent(MATH_EQUATION_GET_CLASS(object));
@@ -1361,7 +1362,7 @@ math_equation_constructed (GObject *object)
 
 
 static void
-math_equation_class_init (MathEquationClass *klass)
+math_equation_class_init(MathEquationClass *klass)
 {
     static GEnumValue number_mode_values[] =
     {
@@ -1377,13 +1378,13 @@ math_equation_class_init (MathEquationClass *klass)
       {MP_GRADIANS, "gradians", "gradians"},
       {0, NULL, NULL}
     };
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = math_equation_get_property;
     object_class->set_property = math_equation_set_property;
     object_class->constructed = math_equation_constructed;
 
-    g_type_class_add_private (klass, sizeof (MathEquationPrivate));
+    g_type_class_add_private(klass, sizeof(MathEquationPrivate));
   
     number_mode_type = g_enum_register_static("NumberMode", number_mode_values);
     number_format_type = math_display_format_get_type();
@@ -1491,24 +1492,24 @@ math_equation_class_init (MathEquationClass *klass)
                                                         MP_TYPE_SERIALIZER,
                                                         G_PARAM_READABLE));
 
-    g_signal_new ("answer-changed",
-                  G_TYPE_FROM_CLASS(object_class),
-                  G_SIGNAL_RUN_FIRST,
-                  0,
-                  NULL,
-                  NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE,
-                  0);
+    g_signal_new("answer-changed",
+                 G_TYPE_FROM_CLASS(object_class),
+                 G_SIGNAL_RUN_FIRST,
+                 0,
+                 NULL,
+                 NULL,
+                 g_cclosure_marshal_VOID__VOID,
+                 G_TYPE_NONE,
+                 0);
 }
 
 
 static void
-pre_insert_text_cb (MathEquation  *equation,
-                    GtkTextIter   *location,
-                    gchar         *text,
-                    gint           len,
-                    gpointer       user_data)
+pre_insert_text_cb(MathEquation  *equation,
+                   GtkTextIter   *location,
+                   gchar         *text,
+                   gint           len,
+                   gpointer       user_data)
 {
     gunichar c;
   
@@ -1553,10 +1554,10 @@ on_delete(MathEquation *equation)
 
 
 static void
-pre_delete_range_cb (MathEquation  *equation,
-                     GtkTextIter   *start,
-                     GtkTextIter   *end,
-                     gpointer       user_data)
+pre_delete_range_cb(MathEquation  *equation,
+                    GtkTextIter   *start,
+                    GtkTextIter   *end,
+                    gpointer       user_data)
 {  
     if (equation->priv->in_reformat)
         return;
@@ -1582,11 +1583,11 @@ pre_delete_range_cb (MathEquation  *equation,
 
 
 static void
-insert_text_cb (MathEquation  *equation,
-                GtkTextIter   *location,
-                gchar         *text,
-                gint           len,
-                gpointer       user_data)
+insert_text_cb(MathEquation  *equation,
+               GtkTextIter   *location,
+               gchar         *text,
+               gint           len,
+               gpointer       user_data)
 {
     if (equation->priv->in_reformat)
         return;
@@ -1597,10 +1598,10 @@ insert_text_cb (MathEquation  *equation,
 
 
 static void
-delete_range_cb (MathEquation  *equation,
-                 GtkTextIter   *start,
-                 GtkTextIter   *end,
-                 gpointer       user_data)
+delete_range_cb(MathEquation  *equation,
+                GtkTextIter   *start,
+                GtkTextIter   *end,
+                gpointer       user_data)
 {
     if (equation->priv->in_reformat)
         return;
@@ -1621,7 +1622,7 @@ math_equation_init(MathEquation *equation)
     gboolean use_default_digits = FALSE;
     int i;
 
-    equation->priv = G_TYPE_INSTANCE_GET_PRIVATE (equation, math_equation_get_type(), MathEquationPrivate);
+    equation->priv = G_TYPE_INSTANCE_GET_PRIVATE(equation, math_equation_get_type(), MathEquationPrivate);
 
     g_signal_connect(equation, "insert-text", G_CALLBACK(pre_insert_text_cb), equation);
     g_signal_connect(equation, "delete-range", G_CALLBACK(pre_delete_range_cb), equation);  
