@@ -79,7 +79,7 @@ struct MathEquationPrivate
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
-    const char *digits[16];   /* Localized digit values */
+    gunichar digits[16];      /* Localized digits */
 
     GtkTextMark *ans_start, *ans_end;
 
@@ -387,7 +387,7 @@ math_equation_redo(MathEquation *equation)
 }
 
 
-const gchar *
+gunichar
 math_equation_get_digit_text(MathEquation *equation, guint digit)
 {
     return equation->priv->digits[digit];
@@ -779,8 +779,13 @@ math_equation_insert_digit(MathEquation *equation, guint digit)
     static const char *subscript_digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", NULL};
     static const char *superscript_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", NULL};
 
-    if (equation->priv->number_mode == NORMAL || digit >= 10)
-        math_equation_insert(equation, math_equation_get_digit_text(equation, digit));
+    if (equation->priv->number_mode == NORMAL || digit >= 10) {
+        gchar buffer[7];
+        gint len;
+        len = g_unichar_to_utf8(math_equation_get_digit_text(equation, digit), buffer);
+        buffer[len] = '\0';
+        math_equation_insert(equation, buffer);
+    }
     else if (equation->priv->number_mode == SUPERSCRIPT)
         math_equation_insert(equation, superscript_digits[digit]);
     else if (equation->priv->number_mode == SUBSCRIPT)
@@ -1623,10 +1628,10 @@ math_equation_init(MathEquation *equation)
     for (i = 0; i < 16; i++) {
         if (use_default_digits || digits[i] == NULL) {
             use_default_digits = TRUE;
-            equation->priv->digits[i] = strdup(default_digits[i]);
+            equation->priv->digits[i] = g_utf8_get_char(default_digits[i]);
         }
         else
-            equation->priv->digits[i] = strdup(digits[i]);
+            equation->priv->digits[i] = g_utf8_get_char(digits[i]);
     }
     g_strfreev(digits);
 

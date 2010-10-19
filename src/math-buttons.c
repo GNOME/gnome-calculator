@@ -940,9 +940,14 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         name = g_strdup_printf("calc_%d_button", i);
         button = GET_WIDGET(builder, name);
         if (button) {
+            gchar buffer[7];
+            gint len;
+
             g_object_set_data(G_OBJECT(button), "calc_digit", GINT_TO_POINTER(i));
             set_tint(button, &buttons->priv->color_numbers, 1);
-            gtk_button_set_label(GTK_BUTTON(button), math_equation_get_digit_text(buttons->priv->equation, i));
+            len = g_unichar_to_utf8(math_equation_get_digit_text(buttons->priv->equation, i), buffer);
+            buffer[len] = '\0';
+            gtk_button_set_label(GTK_BUTTON(button), buffer);
         }
         g_free(name);
     }
