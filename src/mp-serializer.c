@@ -511,7 +511,7 @@ mp_serializer_init(MpSerializer *serializer)
     radix = nl_langinfo(RADIXCHAR);
     serializer->priv->radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
     tsep = nl_langinfo(THOUSEP);
-    serializer->priv->tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup("");
+    serializer->priv->tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(" ");
 
     serializer->priv->tsep_count = 3;
     serializer->priv->base = 10;
