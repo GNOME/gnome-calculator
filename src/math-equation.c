@@ -796,7 +796,11 @@ math_equation_insert_digit(MathEquation *equation, guint digit)
 void
 math_equation_insert_numeric_point(MathEquation *equation)
 {
-    math_equation_insert(equation, mp_serializer_get_numeric_point_text(equation->priv->serializer));
+    gchar buffer[7];
+    gint len;
+    len = g_unichar_to_utf8( mp_serializer_get_numeric_point_text(equation->priv->serializer), buffer);
+    buffer[len] = '\0';
+    math_equation_insert(equation, buffer);
 }
 
 
@@ -1519,8 +1523,8 @@ pre_insert_text_cb (MathEquation  *equation,
     /* Clear result on next digit entered if cursor at end of line */
     // FIXME Cursor
     c = g_utf8_get_char(text);
-    if ((g_unichar_isdigit(c) || mp_serializer_is_numeric_point(equation->priv->serializer, text)) &&
-            math_equation_is_result(equation)) {
+    if ((g_unichar_isdigit(c) || c == mp_serializer_get_numeric_point_text(equation->priv->serializer)) &&
+         math_equation_is_result(equation)) {
         gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
         clear_ans(equation, FALSE);
         gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(equation), location);

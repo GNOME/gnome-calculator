@@ -954,7 +954,11 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     widget = GET_WIDGET(builder, "calc_numeric_point_button");
     if (widget) {
         MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
-        gtk_button_set_label(GTK_BUTTON(widget), mp_serializer_get_numeric_point_text(serializer));
+        gchar buffer[7];
+        gint len;
+        len = g_unichar_to_utf8(mp_serializer_get_numeric_point_text(serializer), buffer);
+        buffer[len] = '\0';
+        gtk_button_set_label(GTK_BUTTON(widget), buffer);
     }
   
     widget = GET_WIDGET(builder, "calc_superscript_button");

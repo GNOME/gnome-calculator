@@ -45,8 +45,8 @@ struct MpSerializerPrivate
 
     gint base;                /* Numeric base */
 
-    char *tsep;         /* Locale specific thousands separator. */
-    char *radix;        /* Locale specific radix string. */
+    gunichar tsep;            /* Locale specific thousands separator. */
+    gunichar radix;           /* Locale specific radix string. */
     gint tsep_count;          /* Number of digits between separator. */
 };
 
@@ -104,7 +104,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bo
 
         i++;
         if (serializer->priv->show_tsep && i == serializer->priv->tsep_count) {
-            g_string_prepend(string, serializer->priv->tsep);
+            g_string_prepend_unichar(string, serializer->priv->tsep);
             i = 0;
         }
 
@@ -113,7 +113,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bo
 
     last_non_zero = string->len;
 
-    g_string_append(string, serializer->priv->radix);
+    g_string_append_unichar(string, serializer->priv->radix);
 
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
@@ -301,8 +301,7 @@ mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, bool
 {
     MpSerializer *serializer = mp_serializer_new ();
     if (!localize) {
-        g_free(serializer->priv->radix);
-        serializer->priv->radix = g_strdup(".");
+        serializer->priv->radix = '.';
         serializer->priv->show_tsep = false;
     }
     serializer->priv->base = base;
@@ -330,26 +329,20 @@ mp_serializer_get_base(MpSerializer *serializer)
     return serializer->priv->base;
 }
 
-const gchar *
+
+gunichar
 mp_serializer_get_numeric_point_text(MpSerializer *serializer)
 {
     return serializer->priv->radix;
 }
 
 
-const gchar *
+gunichar
 mp_serializer_get_thousands_separator_text(MpSerializer *serializer)
 {
     return serializer->priv->tsep;
 }
 
-gboolean
-mp_serializer_is_numeric_point(MpSerializer *serializer, const char *text)
-{
-    if (*text == '.' || strncmp(text, serializer->priv->radix, strlen(serializer->priv->radix)) == 0)
-        return true;
-    return false;
-}
 
 void
 mp_serializer_set_show_thousands_separators(MpSerializer *serializer, gboolean visible)
@@ -451,13 +444,6 @@ mp_serializer_get_property(GObject *object,
     }
 }
 
-static void
-mp_serializer_finalize (GObject *gobject)
-{
-    MpSerializer *serializer = MP_SERIALIZER(gobject);
-    g_free(serializer->priv->radix);
-    g_free(serializer->priv->tsep);
-}
 
 static void
 mp_serializer_class_init (MpSerializerClass *klass)
@@ -465,7 +451,6 @@ mp_serializer_class_init (MpSerializerClass *klass)
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     object_class->get_property = mp_serializer_get_property;
     object_class->set_property = mp_serializer_set_property;
-    object_class->finalize = mp_serializer_finalize;
 
     g_type_class_add_private (klass, sizeof(MpSerializerPrivate));
 
@@ -509,11 +494,11 @@ mp_serializer_init(MpSerializer *serializer)
     serializer->priv = G_TYPE_INSTANCE_GET_PRIVATE(serializer, mp_serializer_get_type(), MpSerializerPrivate);
 
     radix = nl_langinfo(RADIXCHAR);
-    serializer->priv->radix = *radix ? g_locale_to_utf8(radix, -1, NULL, NULL, NULL) : g_strdup(".");
+    serializer->priv->radix = radix ? g_utf8_get_char(g_locale_to_utf8(radix, -1, NULL, NULL, NULL)) : '.';
     tsep = nl_langinfo(THOUSEP);
-    serializer->priv->tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : g_strdup(" ");
-
+    serializer->priv->tsep = tsep ? g_utf8_get_char(g_locale_to_utf8(tsep, -1, NULL, NULL, NULL)) : ',';
     serializer->priv->tsep_count = 3;
+
     serializer->priv->base = 10;
     serializer->priv->accuracy = 9;
     serializer->priv->show_zeroes = FALSE;
