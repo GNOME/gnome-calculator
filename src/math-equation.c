@@ -178,11 +178,120 @@ reformat_ans(MathEquation *equation)
     g_free(ans_text);
 }
 
+
+static gint
+count_digits(MathEquation *equation, const gchar *text)
+{
+    const gchar *read_iter;
+    gint count = 0;
+
+    read_iter = text;
+    while (*read_iter != '\0') {
+        if (!g_unichar_isdigit(g_utf8_get_char(read_iter)))
+            return count;
+
+        read_iter = g_utf8_next_char(read_iter);
+
+        /* Allow a thousands separator between digits follow a digit */
+        if (g_utf8_get_char(read_iter) == mp_serializer_get_thousands_separator_text(equation->priv->serializer)) {
+            read_iter = g_utf8_next_char(read_iter);
+            if (!g_unichar_isdigit(g_utf8_get_char(read_iter)))
+                return count;
+        }
+
+        count++;
+    }
+
+    return count;
+}
+
+
+static void
+reformat_separators(MathEquation *equation)
+{
+    gchar *text, *read_iter;
+    gint ans_start, ans_end;
+    gint offset, digit_offset = 0;
+    gboolean in_number = FALSE, in_radix = FALSE, last_is_tsep = FALSE;
+
+    equation->priv->in_undo_operation = TRUE;
+    equation->priv->in_reformat = TRUE;
+
+    text = math_equation_get_display(equation);
+    get_ans_offsets(equation, &ans_start, &ans_end);
+    for (read_iter = text, offset = 0; *read_iter != '\0'; read_iter = g_utf8_next_char(read_iter), offset++) {
+        gunichar c;
+        gboolean expect_tsep;
+
+        /* See what digit this character is */
+        c = g_utf8_get_char(read_iter);
+
+        expect_tsep = mp_serializer_get_show_thousands_separators(equation->priv->serializer) &&
+                      in_number && !in_radix && !last_is_tsep &&
+                      digit_offset > 0 && digit_offset % mp_serializer_get_thousands_separator_count(equation->priv->serializer) == 0;
+        last_is_tsep = FALSE;
+
+        /* Don't mess with ans */
+        if (offset >= ans_start && offset <= ans_end) {
+            in_number = in_radix = FALSE;
+            continue;
+        }
+        if (g_unichar_isdigit(c)) {
+            if (!in_number)
+                digit_offset = count_digits(equation, read_iter);
+            in_number = TRUE;
+
+            /* Expected a thousands separator between these digits - insert it */
+            if (expect_tsep) {
+                GtkTextIter iter;
+                gchar buffer[7];
+                gint len;
+
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, offset);
+                len = g_unichar_to_utf8(mp_serializer_get_thousands_separator_text(equation->priv->serializer), buffer);
+                buffer[len] = '\0';
+                gtk_text_buffer_insert(GTK_TEXT_BUFFER(equation), &iter, buffer, -1);
+                offset++;
+                last_is_tsep = TRUE;
+            }
+
+            digit_offset--;
+        }
+        else if (c == mp_serializer_get_numeric_point_text(equation->priv->serializer)) {
+            in_number = in_radix = TRUE;
+        }
+        else if (c == mp_serializer_get_thousands_separator_text(equation->priv->serializer)) {
+            /* Didn't expect thousands separator - delete it */
+            if (!expect_tsep) {
+                GtkTextIter start, end;
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, offset);
+                gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, offset + 1);
+                gtk_text_buffer_delete(GTK_TEXT_BUFFER(equation), &start, &end);
+                offset--;
+            }
+            else
+                last_is_tsep = TRUE;            
+        }
+        else {
+            in_number = in_radix = FALSE;
+        }
+    }
+
+    g_free(text);
+
+    equation->priv->in_reformat = FALSE;
+    equation->priv->in_undo_operation = FALSE;
+}
+
+
 static void
 reformat_display(MathEquation *equation, gint old_base)
 {
     /* Change ans */
     reformat_ans(equation);
+
+    /* Add/remove thousands separators */
+    reformat_separators(equation);
 
     g_signal_emit_by_name(equation, "answer-changed");
 }
@@ -652,7 +761,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
 }
 
 
-MpSerializer*
+MpSerializer *
 math_equation_get_serializer(MathEquation *equation)
 {
     return equation->priv->serializer;
@@ -1548,8 +1657,8 @@ pre_insert_text_cb(MathEquation  *equation,
 static gboolean
 on_delete(MathEquation *equation)
 {
-  equation->priv->in_delete = FALSE;  
-  return FALSE;
+    equation->priv->in_delete = FALSE;  
+    return FALSE;
 }
 
 
@@ -1593,6 +1702,10 @@ insert_text_cb(MathEquation  *equation,
         return;
 
     equation->priv->state.entered_multiply = strcmp(text, "×") == 0;
+
+    /* Update thousands separators */
+    reformat_separators(equation);
+
     g_object_notify(G_OBJECT(equation), "display");
 }
 
@@ -1607,6 +1720,10 @@ delete_range_cb(MathEquation  *equation,
         return;
 
     equation->priv->state.entered_multiply = FALSE;
+
+    /* Update thousands separators */
+    reformat_separators(equation);
+
     // FIXME: A replace will emit this both for delete-range and insert-text, can it be avoided?
     g_object_notify(G_OBJECT(equation), "display");
 }

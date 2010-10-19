@@ -349,6 +349,13 @@ mp_serializer_get_thousands_separator_text(MpSerializer *serializer)
 }
 
 
+gint
+mp_serializer_get_thousands_separator_count(MpSerializer *serializer)
+{
+    return serializer->priv->tsep_count;
+}
+
+
 void
 mp_serializer_set_show_thousands_separators(MpSerializer *serializer, gboolean visible)
 {

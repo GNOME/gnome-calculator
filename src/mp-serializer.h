@@ -55,6 +55,7 @@ void mp_serializer_to_specific_string(const MPNumber *z, int base, int accuracy,
 bool mp_serializer_from_string(MpSerializer *serializer, const char *str, MPNumber *z);
 
 gunichar mp_serializer_get_thousands_separator_text(MpSerializer *serializer);
+gint mp_serializer_get_thousands_separator_count(MpSerializer *serializer);
 gunichar mp_serializer_get_numeric_point_text(MpSerializer *serializer);
 void mp_serializer_set_base(MpSerializer *serializer, int base);
 int mp_serializer_get_base(MpSerializer *serializer);
