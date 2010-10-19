@@ -63,7 +63,8 @@ math_window_get_menu_bar(MathWindow *window)
 }
 
 
-MathEquation *math_window_get_equation(MathWindow *window)
+MathEquation *
+math_window_get_equation(MathWindow *window)
 {
     return window->priv->equation;
 }

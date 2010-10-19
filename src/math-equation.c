@@ -84,7 +84,7 @@ struct MathEquationPrivate
     GtkTextMark *ans_start, *ans_end;
 
     MathEquationState state;  /* Equation state */
-    GList *undo_stack;           /* History of expression mode states */
+    GList *undo_stack;        /* History of expression mode states */
     GList *redo_stack;
     gboolean in_undo_operation;
   
@@ -651,11 +651,13 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     return result;
 }
 
+
 MpSerializer*
 math_equation_get_serializer(MathEquation *equation)
 {
     return equation->priv->serializer;
 }
+
 
 void
 math_equation_set_number_mode(MathEquation *equation, NumberMode mode)
@@ -910,6 +912,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     return mp_equation_parse(text, &options, z, error_token);
 }
 
+
 /*
  * Executed in separate thread. It is thus not a good idea to write to anything
  * in MathEquation but the async queue from here.
@@ -984,6 +987,7 @@ math_equation_solve_real(gpointer data)
     return NULL;
 }
 
+
 static gboolean
 math_equation_show_in_progress(gpointer data)
 {
@@ -992,6 +996,7 @@ math_equation_show_in_progress(gpointer data)
         math_equation_set_status(equation, "Calculating");
     return false;
 }
+
 
 static gboolean
 math_equation_look_for_answer(gpointer data)
@@ -1024,6 +1029,7 @@ math_equation_look_for_answer(gpointer data)
     g_signal_emit_by_name(equation, "answer-changed");
     return false;
 }
+
 
 void
 math_equation_solve(MathEquation *equation)
@@ -1092,6 +1098,7 @@ math_equation_factorize_real(gpointer data)
 
     return NULL;
 }
+
 
 void
 math_equation_factorize(MathEquation *equation)
@@ -1342,7 +1349,6 @@ math_equation_constructed (GObject *object)
 
     MATH_EQUATION(object)->priv->ans_tag = gtk_text_buffer_create_tag(GTK_TEXT_BUFFER(object), NULL, "weight", PANGO_WEIGHT_BOLD, NULL);
 }
-
 
 
 static void
