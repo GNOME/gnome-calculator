@@ -59,6 +59,7 @@ mp_serializer_new()
     return g_object_new(mp_serializer_get_type(), NULL);
 }
 
+
 static void
 mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bool force_sign, GString *string)
 {
@@ -296,6 +297,7 @@ mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *x, ch
     }
 }
 
+
 void
 mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, bool localize, char **target)
 {
@@ -311,17 +313,20 @@ mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, bool
     g_object_unref(serializer);
 }
 
+
 bool
 mp_serializer_from_string(MpSerializer *serializer, const char *str, MPNumber *z)
 {
     return mp_set_from_string(str, serializer->priv->base, z);
 }
 
+
 void
 mp_serializer_set_base(MpSerializer *serializer, gint base)
 {
     serializer->priv->base = base;
 }
+
 
 int
 mp_serializer_get_base(MpSerializer *serializer)
@@ -378,11 +383,13 @@ mp_serializer_get_accuracy(MpSerializer *serializer)
     return serializer->priv->accuracy;
 }
 
+
 void
 mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy)
 {
     serializer->priv->accuracy = accuracy;
 }
+
 
 DisplayFormat
 mp_serializer_get_number_format(MpSerializer *serializer)
@@ -390,17 +397,19 @@ mp_serializer_get_number_format(MpSerializer *serializer)
     return serializer->priv->format;
 }
 
+
 void
 mp_serializer_set_number_format(MpSerializer *serializer, DisplayFormat format)
 {
     serializer->priv->format = format;
 }
 
+
 static void
 mp_serializer_set_property(GObject *object,
-                          guint prop_id,
-                          const GValue *value,
-                          GParamSpec *pspec)
+                           guint prop_id,
+                           const GValue *value,
+                           GParamSpec *pspec)
 {
     MpSerializer *self = MP_SERIALIZER(object);
 
@@ -420,11 +429,12 @@ mp_serializer_set_property(GObject *object,
     }
 }
 
+
 static void
 mp_serializer_get_property(GObject *object,
-                          guint prop_id,
-                          GValue *value,
-                          GParamSpec *pspec)
+                           guint prop_id,
+                           GValue *value,
+                           GParamSpec *pspec)
 {
     MpSerializer *self = MP_SERIALIZER(object);
 
@@ -439,20 +449,20 @@ mp_serializer_get_property(GObject *object,
         g_value_set_int(value, mp_serializer_get_base(self));
         break;
     default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
     }
 }
 
 
 static void
-mp_serializer_class_init (MpSerializerClass *klass)
+mp_serializer_class_init(MpSerializerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     object_class->get_property = mp_serializer_get_property;
     object_class->set_property = mp_serializer_set_property;
 
-    g_type_class_add_private (klass, sizeof(MpSerializerPrivate));
+    g_type_class_add_private(klass, sizeof(MpSerializerPrivate));
 
     number_format_type = math_display_format_get_type();
 
@@ -486,6 +496,7 @@ mp_serializer_class_init (MpSerializerClass *klass)
                                                       FIX,
                                                       G_PARAM_READWRITE));
 }
+
 
 static void
 mp_serializer_init(MpSerializer *serializer)
