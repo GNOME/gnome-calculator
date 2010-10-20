@@ -1775,7 +1775,7 @@ static void
 math_equation_init(MathEquation *equation)
 {
     /* Digits localized for the given language */
-    const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
+    const char *digit_values = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F";
     const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
     gchar *radix, *tsep;
     gchar **digits;
