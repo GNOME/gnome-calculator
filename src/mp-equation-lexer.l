@@ -45,16 +45,9 @@ SIX           "6"|"〦"|"٦"|"۶"|"߆"|"६"|"৬"|"੬"|"૬"|"୬"|"௬"|"౬"
 SEVEN         "7"|"〧"|"٧"|"۷"|"߇"|"७"|"৭"|"੭"|"૭"|"୭"|"௭"|"౭"|"೭"|"൭"|"๗"|"໗"|"༧"|"၇"|"႗"|"៧"|"᠗"|"᥍"|"᧗"|"᭗"|"᮷"|"᱇"|"᱗"|"꘧"|"꣗"|"꤇"|"꩗"|"𐒧"
 EIGHT         "8"|"〨"|"٨"|"۸"|"߈"|"८"|"৮"|"੮"|"૮"|"୮"|"௮"|"౮"|"೮"|"൮"|"๘"|"໘"|"༨"|"၈"|"႘"|"៨"|"᠘"|"᥎"|"᧘"|"᭘"|"᮸"|"᱈"|"᱘"|"꘨"|"꣘"|"꤈"|"꩘"|"𐒨"
 NINE          "9"|"〩"|"٩"|"۹"|"߉"|"९"|"৯"|"੯"|"૯"|"୯"|"௯"|"౯"|"೯"|"൯"|"๙"|"໙"|"༩"|"၉"|"႙"|"៩"|"᠙"|"᥏"|"᧙"|"᭙"|"᮹"|"᱉"|"᱙"|"꘩"|"꣙"|"꤉"|"꩙"|"𐒩"
-/* FIXME: DECIMAL and TSEP needs to figure out, at runtime, the correct
- * character. I can't figure out how to make flex do this.
- */
-DECIMAL       [,.]
-TSEP          [ ,]
-/* FIXME: TSEP is not a number, but if I try to handle it properly, the parser
- * gets too many NFA states.
- */
-DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}|{TSEP}
-HEX           {DEC}|[A-Fa-f]
+DECIMAL	      "."|","
+DEC           {ZERO}|{ONE}|{TWO}|{THREE}|{FOUR}|{FIVE}|{SIX}|{SEVEN}|{EIGHT}|{NINE}
+HEX           {DEC}|[A-F]a-f]
 SUPER_DIGITS  "⁰"|"¹"|"²"|"³"|"⁴"|"⁵"|"⁶"|"⁷"|"⁸"|"⁹"
 SUPER_MINUS   "⁻"
 SUB_DIGITS    "₀"|"₁"|"₂"|"₃"|"₄"|"₅"|"₆"|"₇"|"₈"|"₉"
@@ -75,7 +68,7 @@ BASE_NUM {HEX}+{SUB_NUM}|{HEX}*{DECIMAL}{HEX}+{SUB_NUM}
 ANGLE_NUM {DEC_NUM}{DEGREES}|{DEC}+{DEGREES}{DEC_NUM}{MINUTES}|{DEC}+{DEGREES}{DEC}+{MINUTES}{DEC_NUM}{SECONDS}
 
 NUMBER   {DEF_NUM}|{BASE_NUM}|{FRACTION}|{DEC}+{FRACTION}|{ANGLE_NUM}
-VARIABLE {WORD}|{WORD}{SUB_NUM}
+VARIABLE {WORD}|{WORD}{SUB_NUM}|{GREEKS}
 
 MOD  [mM][oO][dD]
 AND  "∧"|[aA][nN][dD]

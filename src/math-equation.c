@@ -731,19 +731,52 @@ math_equation_get_display(MathEquation *equation)
 gchar *
 math_equation_get_equation(MathEquation *equation)
 {
-    char *text, *t;
-    gint ans_start, ans_end;
+    gchar *text;
+    GString *eq_text;
+    gint ans_start = -1, ans_end = -1, offset;
+    const gchar *read_iter;
+    gboolean last_is_digit = FALSE;
 
     text = math_equation_get_display(equation);
+    eq_text = g_string_sized_new(strlen(text));
 
-    /* No ans to substitute */
-    if(!equation->priv->ans_start)
-        return text;
+    if (equation->priv->ans_start)
+        get_ans_offsets(equation, &ans_start, &ans_end);
 
-    get_ans_offsets(equation, &ans_start, &ans_end);
-    t = g_strdup_printf("%.*sans%s", (int)(g_utf8_offset_to_pointer(text, ans_start) - text), text, g_utf8_offset_to_pointer(text, ans_end));
+    for (read_iter = text, offset = 0; *read_iter != '\0'; read_iter = g_utf8_next_char(read_iter), offset++) {
+        gunichar c;
+        gboolean is_digit, next_is_digit;
+
+        c = g_utf8_get_char(read_iter);
+        is_digit = g_unichar_isdigit(c);
+        next_is_digit = g_unichar_isdigit(g_utf8_get_char(g_utf8_next_char(read_iter)));
+
+        /* Replace ans text with variable */
+        if (offset == ans_start) { 
+             g_string_append(eq_text, "ans");
+             read_iter = g_utf8_offset_to_pointer(read_iter, ans_end - ans_start - 1);
+             offset += ans_end - ans_start - 1;
+             is_digit = FALSE;
+             continue;
+        }
+
+        /* Ignore thousands separators */
+        if (c == mp_serializer_get_thousands_separator_text(equation->priv->serializer) && last_is_digit && next_is_digit)
+            ;
+        /* Substitute radix character */
+        else if (c == mp_serializer_get_numeric_point_text(equation->priv->serializer) && (last_is_digit || next_is_digit))
+            g_string_append_unichar(eq_text, '.');
+        else
+            g_string_append_unichar(eq_text, c);
+
+        last_is_digit = is_digit;
+    }
     g_free(text);
-    return t;
+
+    text = eq_text->str;
+    g_string_free(eq_text, FALSE);
+
+    return text;
 }
 
 
