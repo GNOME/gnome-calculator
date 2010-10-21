@@ -588,7 +588,7 @@ mp_acosh(const MPNumber *x, MPNumber *z)
     mp_set_from_integer(1, &t);
     if (mp_is_less_than(x, &t)) {
         /* Translators: Error displayed when inverse hyperbolic cosine value is undefined */
-        mperr(_("Inverse hyperbolic cosine is undefined for values less than or equal to one"));
+        mperr(_("Inverse hyperbolic cosine is undefined for values less than one"));
         mp_set_from_integer(0, z);
         return;
     }
