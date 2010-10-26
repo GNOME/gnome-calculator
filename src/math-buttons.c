@@ -1741,6 +1741,21 @@ bit_toggle_cb(GtkWidget *event_box, GdkEventButton *event, MathButtons *buttons)
 }
 
 
+static void
+remove_trailing_spaces(MathButtons *buttons)
+{
+    GtkTextMark *insert_mark;
+    GtkTextIter start, end;
+    insert_mark = gtk_text_buffer_get_insert (GTK_TEXT_BUFFER(buttons->priv->equation));
+    gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(buttons->priv->equation), &end, insert_mark);
+    start = end;
+    while (gtk_text_iter_backward_char(&start)) {
+        if (!g_unichar_isspace(gtk_text_iter_get_char(&start)))
+            break;
+        gtk_text_buffer_delete(GTK_TEXT_BUFFER(buttons->priv->equation), &start, &end);
+    }
+}
+
 
 void set_superscript_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
@@ -1748,10 +1763,10 @@ void
 set_superscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-        char* display;
         math_equation_set_number_mode(buttons->priv->equation, SUPERSCRIPT);
-        display = math_equation_get_display(buttons->priv->equation);
-        math_equation_set(buttons->priv->equation, g_strchomp(display));
+        if (!gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(buttons->priv->equation))) {
+            remove_trailing_spaces(buttons);
+        }
     }
     else if (math_equation_get_number_mode(buttons->priv->equation) == SUPERSCRIPT)
         math_equation_set_number_mode(buttons->priv->equation, NORMAL);
@@ -1764,10 +1779,10 @@ void
 set_subscript_cb(GtkWidget *widget, MathButtons *buttons)
 {
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget))) {
-        char* display;
         math_equation_set_number_mode(buttons->priv->equation, SUBSCRIPT);
-        display = math_equation_get_display(buttons->priv->equation);
-        math_equation_set(buttons->priv->equation, g_strchomp(display));
+        if (!gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(buttons->priv->equation))) {
+            remove_trailing_spaces(buttons);
+        }
     }
     else if (math_equation_get_number_mode(buttons->priv->equation) == SUBSCRIPT)
         math_equation_set_number_mode(buttons->priv->equation, NORMAL);
