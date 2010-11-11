@@ -22,6 +22,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <langinfo.h>
 
 #include "mp.h"
 #include "mp-private.h"
@@ -838,7 +839,13 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
     const char *fractions[]     = {"½", "⅓", "⅔", "¼", "¾", "⅕", "⅖", "⅗", "⅘", "⅙", "⅚", "⅛", "⅜", "⅝", "⅞", NULL};
     int numerators[]            = { 1,   1,   2,   1,   3,   1,   2,   3,   4,   1,   5,   1,   3,   5,   7};
     int denominators[]          = { 2,   3,   3,   4,   4,   5,   5,   5,   5,   6,   6,   8,   8,   8,   8};
-  
+    static const char *tsep = NULL;
+
+    if (tsep == NULL) {
+        tsep = nl_langinfo(THOUSEP);
+        tsep = *tsep ? g_locale_to_utf8(tsep, -1, NULL, NULL, NULL) : tsep;
+    }
+
     if (strstr(str, "°"))
         return set_from_sexagesimal(str, strlen(str), z);
 
@@ -881,6 +888,9 @@ mp_set_from_string(const char *str, int default_base, MPNumber *z)
             return true;
         mp_multiply_integer(z, base, z);
         mp_add_integer(z, i, z);
+
+        if (*tsep && strncmp(c, tsep, strlen(tsep)) == 0)
+            c += strlen(tsep);
     }
 
     /* Look for fraction characters, e.g. ⅚ */
