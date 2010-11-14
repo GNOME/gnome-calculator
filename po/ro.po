@@ -3,38 +3,39 @@
 # Mișu Moldovan <dumol@gnome.ro>, 2003 - 2008.
 # Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010.
+# Daniel Șerbănescu <cyber19rider@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: "
-"http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-08-18 20:18+0000\n"
-"PO-Revision-Date: 2010-09-25 15:03+0300\n"
-"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gcalctool&component=general\n"
+"POT-Creation-Date: 2010-11-11 00:17+0000\n"
+"PO-Revision-Date: 2010-11-14 21:46+0300\n"
+"Last-Translator: Daniel Șerbănescu <cyber19rider@gmail.com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
-"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
 "X-Generator: Virtaal 0.6.1\n"
 
 #. The label on the memory recall button
-#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:4
 #: ../data/buttons-programming.ui.h:2
 msgid "&#x2190; R"
 msgstr "&#x2190; R"
 
 #. The label on the memory store button
-#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:4
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:6
 #: ../data/buttons-programming.ui.h:4
 msgid "&#x2192; R"
 msgstr "&#x2192; R"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: ../data/buttons-advanced.ui.h:6 ../data/buttons-basic.ui.h:2
-#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:6
+#: ../data/buttons-financial.ui.h:8 ../data/buttons-programming.ui.h:6
 msgid "="
 msgstr "="
 
@@ -45,13 +46,13 @@ msgstr "Valoare absolută"
 
 #. Label on the clear display button
 #: ../data/buttons-advanced.ui.h:10 ../data/buttons-basic.ui.h:4
-#: ../data/buttons-financial.ui.h:32 ../data/buttons-programming.ui.h:12
+#: ../data/buttons-financial.ui.h:34 ../data/buttons-programming.ui.h:12
 msgid "Clear"
 msgstr "Șterge"
 
 #. Accessible name for the exponentiation (x to the power of y) button
 #: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:6
-#: ../data/buttons-financial.ui.h:42 ../data/buttons-programming.ui.h:14
+#: ../data/buttons-financial.ui.h:44 ../data/buttons-programming.ui.h:14
 msgid "Exponent"
 msgstr "Exponent"
 
@@ -71,7 +72,7 @@ msgid "Inverse"
 msgstr "Inversa"
 
 #. Accessible name for the recall value button
-#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:74
 #: ../data/buttons-programming.ui.h:26
 msgid "Recall"
 msgstr "Reține"
@@ -82,7 +83,7 @@ msgid "Scientific Exponent"
 msgstr "Exponent științific"
 
 #. Accessible name for the store value button
-#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:76
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:78
 #: ../data/buttons-programming.ui.h:32
 msgid "Store"
 msgstr "Stocare"
@@ -100,22 +101,27 @@ msgstr "Exponent"
 #. Label on the undo button
 #. Label on the clear display button
 #: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:8
-#: ../data/buttons-financial.ui.h:86
+#: ../data/buttons-financial.ui.h:88
 msgid "Undo"
-msgstr "Anulează ultima acțiune"
+msgstr "Anulează"
+
+#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
+#: ../data/buttons-financial.ui.h:2
+msgid " in "
+msgstr " în "
 
 #. Payment Period Dialog: Button to calculate result
-#: ../data/buttons-financial.ui.h:8
+#: ../data/buttons-financial.ui.h:10
 msgid "C_alculate"
 msgstr "C_alculează"
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:10
+#: ../data/buttons-financial.ui.h:12
 msgid "C_ost:"
 msgstr "C_ost:"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:12
+#: ../data/buttons-financial.ui.h:14
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -124,7 +130,7 @@ msgstr ""
 "sfârșitul fiecărei perioade de plată."
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:14
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
@@ -132,9 +138,15 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
+"Calculează indemnizația de amortizare pe un activ pentru o anumită perioadă "
+"de timp, utilizând metoda, folosind metoda sumei cifrelor anilor („SOFTY”). "
+"Această metodă de amortizare accelerează rata amortizării, astfel încât "
+"consumul are loc în perioadele de timp recente decât în cele de mai târziu. "
+"Durata de viață utilă este numărul de perioade, de obicei ani, în care un "
+"activ este amortizat."
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:16
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -143,7 +155,7 @@ msgstr ""
 "de timp, utilizând metoda balanței dublu-declin."
 
 #. Future Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:18
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -154,7 +166,7 @@ msgstr ""
 "termen."
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:20
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -165,7 +177,7 @@ msgstr ""
 "dobânzii pe perioada de compunere."
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:22
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -176,7 +188,7 @@ msgstr ""
 "periodică."
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:24
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -185,18 +197,18 @@ msgstr ""
 "valoare viitoare, peste numărul de perioade de compunere."
 
 #. Present Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:26
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
-"Calculează valoarea actuală a unei investiții bazat pe o serie de plăți "
+"Calculează valoarea actuală a unei investiții pe baza unei serii de plăți "
 "egale actualizate la o rată a dobânzii periodice peste numărul de perioade "
 "de plată din termen."
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:28
+#: ../data/buttons-financial.ui.h:30
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -205,7 +217,7 @@ msgstr ""
 "a marjei brute de profit dorite."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:30
+#: ../data/buttons-financial.ui.h:32
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -220,172 +232,172 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:34 ../src/math-buttons.c:261
+#: ../data/buttons-financial.ui.h:36 ../src/math-buttons.c:261
 msgid "Compounding Term"
 msgstr "Termen compus"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/buttons-financial.ui.h:36
+#: ../data/buttons-financial.ui.h:38
 msgid "Ctrm"
 msgstr "TrmC"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:38
+#: ../data/buttons-financial.ui.h:40
 msgid "Ddb"
 msgstr "Amd"
 
 #. Title of Double-Declining Depreciation dialog
-#: ../data/buttons-financial.ui.h:40
+#: ../data/buttons-financial.ui.h:42
 msgid "Double-Declining Depreciation"
 msgstr "Amortizare dublu-regresivă"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:44 ../src/math-buttons.c:267
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.c:267
 msgid "Future Value"
 msgstr "Valoare viitoare"
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:46
+#: ../data/buttons-financial.ui.h:48
 msgid "Future _Value:"
 msgstr "_Valore viitoare:"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/buttons-financial.ui.h:48
+#: ../data/buttons-financial.ui.h:50
 msgid "Fv"
 msgstr "Vv"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/buttons-financial.ui.h:50
+#: ../data/buttons-financial.ui.h:52
 msgid "Gpm"
 msgstr "Mpb"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:288
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:288
 msgid "Gross Profit Margin"
 msgstr "Marjă de profit brut"
 
 #. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:54
+#: ../data/buttons-financial.ui.h:56
 msgid "Payment Period"
 msgstr "Perioadă plată"
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
 msgid "Periodic Interest Rate"
 msgstr "Rata de dobândă periodică"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:58
+#: ../data/buttons-financial.ui.h:60
 msgid "Periodic Interest _Rate:"
 msgstr "_Rata de dobândă periodică:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:285
 msgid "Periodic Payment"
 msgstr "Plată periodică"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:62
+#: ../data/buttons-financial.ui.h:64
 msgid "Pmt"
 msgstr "Pp"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
+#: ../data/buttons-financial.ui.h:66 ../src/math-buttons.c:282
 msgid "Present Value"
 msgstr "Valoare prezentă"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:66
+#: ../data/buttons-financial.ui.h:68
 msgid "Present _Value:"
 msgstr "_Valoare prezentă"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:68
+#: ../data/buttons-financial.ui.h:70
 msgid "Pv"
 msgstr "Vp"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:70
+#: ../data/buttons-financial.ui.h:72
 msgid "Rate"
 msgstr "Rată"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:74
+#: ../data/buttons-financial.ui.h:76
 msgid "Sln"
 msgstr "Ald"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:78
+#: ../data/buttons-financial.ui.h:80
 msgid "Straight-Line Depreciation"
 msgstr "Amortizare în linie dreaptă"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:80
+#: ../data/buttons-financial.ui.h:82
 msgid "Sum-of-the-Years'-Digits Depreciation"
-msgstr "Amortizare prin metoda digiților valorii „suma-cifrelor-anilor”"
+msgstr "Amortizare prin metoda sumei cifrelor anilor („SOFTY”)"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:82
+#: ../data/buttons-financial.ui.h:84
 msgid "Syd"
 msgstr "Sca"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:84
+#: ../data/buttons-financial.ui.h:86
 msgid "Term"
 msgstr "TrmR"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:88
+#: ../data/buttons-financial.ui.h:90
 msgid "_Cost:"
 msgstr "_Cost:"
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:90
+#: ../data/buttons-financial.ui.h:92
 msgid "_Future Value:"
 msgstr "Valoare _viitoare:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:92
+#: ../data/buttons-financial.ui.h:94
 msgid "_Life:"
 msgstr "_Viață:"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:94
+#: ../data/buttons-financial.ui.h:96
 msgid "_Margin:"
 msgstr "_Margine:"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:96
+#: ../data/buttons-financial.ui.h:98
 msgid "_Number of Periods:"
 msgstr "_Număr de perioade:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:98
+#: ../data/buttons-financial.ui.h:100
 msgid "_Period:"
 msgstr "_Perioadă:"
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:100
+#: ../data/buttons-financial.ui.h:102
 msgid "_Periodic Payment:"
 msgstr "_Plată periodică:"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:102
+#: ../data/buttons-financial.ui.h:104
 msgid "_Principal:"
 msgstr "_Principal:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:104
+#: ../data/buttons-financial.ui.h:106
 msgid "_Salvage:"
 msgstr "_Valoare reziduală:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:106
+#: ../data/buttons-financial.ui.h:108
 msgid "_Term:"
 msgstr "_Termen:"
 
@@ -397,31 +409,30 @@ msgstr "_Caracter:"
 #. Accessible name for the insert character button
 #: ../data/buttons-programming.ui.h:20
 msgid "Insert Character"
-msgstr "Inserează caracter"
+msgstr "Introdu un caracter"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
 #: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
-#| msgid "Insert Character"
 msgid "Insert Character Code"
-msgstr "Inserează codul caracterului"
+msgstr "Introducere cod caracter"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:255
 msgid "Shift Left"
-msgstr "Deplasare la stânga"
+msgstr "Deplasează la stânga"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
 #: ../data/buttons-programming.ui.h:30 ../src/math-buttons.c:258
 msgid "Shift Right"
-msgstr "Deplasare la dreapta"
+msgstr "Deplasează la dreapta"
 
 #. Insert ASCII dialog: Button to insert selected character
 #: ../data/buttons-programming.ui.h:38
 msgid "_Insert"
-msgstr "_Inserează"
+msgstr "_Introdu"
 
 #. Word size combo: 16 bits
 #: ../data/preferences.ui.h:2
@@ -487,7 +498,6 @@ msgid "Accuracy value"
 msgstr "Valoarea preciziei"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
-#| msgid "_Angle units:"
 msgid "Angle units"
 msgstr "Unități unghi"
 
@@ -519,7 +529,7 @@ msgstr "Format număr"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
-msgstr "Bază numerație"
+msgstr "Bază numerică"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
@@ -531,7 +541,7 @@ msgstr "Afișează zerouri la final"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
 msgid "Source currency"
-msgstr "Moneda sursă"
+msgstr "Monedă sursă"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
 msgid "Target currency"
@@ -543,28 +553,21 @@ msgstr "Unitățile de măsurare a unghiului de utilizat"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
 msgid "The button mode"
-msgstr "Modul de buton"
+msgstr "Mod buton"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
 msgid "The format to display numbers in"
 msgstr "Formatul în care se afișează numerele"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
-#| msgid ""
-#| "The number of digits displayed after the numeric point. This value must "
-#| "be in the range 0 to 9."
 msgid "The number of digits displayed after the numeric point"
 msgstr "Numărul de cifre afișate după virgulă"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
-#| msgid "Numeric Base"
 msgid "The numeric base"
-msgstr "Baza de numerație"
+msgstr "Baza numerică"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
-#| msgid ""
-#| "The size of the words used in bitwise operations. Valid values are 16, 32 "
-#| "and 64."
 msgid "The size of the words used in bitwise operations"
 msgstr "Dimensiunea cuvintelor folosite în operațiile binare"
 
@@ -646,7 +649,7 @@ msgstr "Yen japonez"
 
 #: ../src/currency.h:37
 msgid "South Korean won"
-msgstr "Won sud-corean"
+msgstr "Won sud-coreean"
 
 #: ../src/currency.h:38
 msgid "Lithuanian litas"
@@ -694,7 +697,7 @@ msgstr "Coroană suedeză"
 
 #: ../src/currency.h:49
 msgid "Singapore dollar"
-msgstr "Dolar singaporenez"
+msgstr "Dolar singaporez"
 
 #: ../src/currency.h:50
 msgid "Thai baht"
@@ -733,10 +736,10 @@ msgid ""
 "  --help-gtk                      Show GTK+ options"
 msgstr ""
 "Opțiuni de ajutor\n"
-"  -v, --version                   Afișează versiunea\n"
-"  -h, -?, --help                  Afișează opțiuni de ajutor\n"
-"  --help-all                      Afișează toate opțiunile de ajutor\n"
-"  --help-gtk                      Afișează opțiunile de ajutor GTK+"
+"  -v, --version                   Arată versiunea ediției\n"
+"  -h, -?, --help                  Arată opțiuni de ajutor\n"
+"  --help-all                      Arată toate opțiunile de ajutor\n"
+"  --help-gtk                      Arată opțiunile de ajutor GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
 #: ../src/gcalctool.c:95
@@ -778,7 +781,7 @@ msgstr ""
 #: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr "Argumentul --solve are necesită o ecuație de rezolvat"
+msgstr "Argumentul --solve necesită o ecuație de rezolvat"
 
 #. Error printed to stderr when user provides an unknown command-line argument
 #: ../src/gcalctool.c:168
@@ -793,19 +796,16 @@ msgstr "Pi [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
 #: ../src/math-buttons.c:109
-#| msgid "Euler's number"
 msgid "Euler’s Number"
 msgstr "Numărul lui Euler"
 
 #. Tooltip for the subscript button
 #: ../src/math-buttons.c:114
-#| msgid "Subscript number mode [Alt+number]"
 msgid "Subscript mode [Alt]"
 msgstr "Mod indice [Alt]"
 
 #. Tooltip for the superscript button
 #: ../src/math-buttons.c:117
-#| msgid "Superscript number mode [Ctrl+number]"
 msgid "Superscript mode [Ctrl]"
 msgstr "Mod exponent [Ctrl]"
 
@@ -832,7 +832,7 @@ msgstr "Înmulțire [*]"
 #. Tooltip for the divide button
 #: ../src/math-buttons.c:132
 msgid "Divide [/]"
-msgstr "Împarte [/]"
+msgstr "Împărțire [/]"
 
 #. Tooltip for the modulus divide button
 #: ../src/math-buttons.c:135
@@ -841,7 +841,6 @@ msgstr "Împărțire modulo"
 
 #. Tooltip for the additional functions button
 #: ../src/math-buttons.c:138
-#| msgid "Edit Functions"
 msgid "Additional Functions"
 msgstr "Funcții suplimentare"
 
@@ -852,7 +851,6 @@ msgstr "Exponent [^ sau **]"
 
 #. Tooltip for the square button
 #: ../src/math-buttons.c:144
-#| msgid "Square [@]"
 msgid "Square [Ctrl+2]"
 msgstr "Pătrat [Ctrl+2]"
 
@@ -883,61 +881,51 @@ msgstr "Conjugatul complexului"
 
 #. Tooltip for the root button
 #: ../src/math-buttons.c:162
-#| msgid "Root [Ctrl+S]"
 msgid "Root [Ctrl+R]"
 msgstr "Rădăcină [Ctrl+R]"
 
 #. Tooltip for the square root button
 #: ../src/math-buttons.c:165
-#| msgid "Square root [s]"
 msgid "Square root [Ctrl+R]"
 msgstr "Rădăcină pătrată [Ctrl+R]"
 
 #. Tooltip for the logarithm button
 #: ../src/math-buttons.c:168
-#| msgid "Base 10 logarithm"
 msgid "Logarithm"
 msgstr "Logaritm"
 
 #. Tooltip for the natural logarithm button
 #: ../src/math-buttons.c:171
-#| msgid "Natural logarithm"
 msgid "Natural Logarithm"
 msgstr "Logaritm natural"
 
 #. Tooltip for the sine button
 #: ../src/math-buttons.c:174
-#| msgid "Sine [k]"
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
 #: ../src/math-buttons.c:177
-#| msgid "Cosine [j]"
 msgid "Cosine"
 msgstr "Cosinus"
 
 #. Tooltip for the tangent button
 #: ../src/math-buttons.c:180
-#| msgid "Tangent [w]"
 msgid "Tangent"
 msgstr "Tangentă"
 
 #. Tooltip for the hyperbolic sine button
 #: ../src/math-buttons.c:183
-#| msgid "Hyperbolic Sine [k]"
 msgid "Hyperbolic Sine"
 msgstr "Sinus hiperbolic"
 
 #. Tooltip for the hyperbolic cosine button
 #: ../src/math-buttons.c:186
-#| msgid "Hyperbolic Cosine [j]"
 msgid "Hyperbolic Cosine"
 msgstr "Cosinus hiperbolic"
 
 #. Tooltip for the hyperbolic tangent button
 #: ../src/math-buttons.c:189
-#| msgid "Hyperbolic Tangent [w]"
 msgid "Hyperbolic Tangent"
 msgstr "Tangentă hiperbolică"
 
@@ -949,35 +937,32 @@ msgstr "Inversa [Ctrl+I]"
 #. Tooltip for the boolean AND button
 #: ../src/math-buttons.c:195
 msgid "Boolean AND"
-msgstr "ȘI boolean"
+msgstr "ȘI logic"
 
 #. Tooltip for the boolean OR button
 #: ../src/math-buttons.c:198
 msgid "Boolean OR"
-msgstr "SAU boolean"
+msgstr "SAU logic"
 
 #. Tooltip for the exclusive OR button
 #: ../src/math-buttons.c:201
-#| msgid "Boolean exclusive OR"
 msgid "Boolean Exclusive OR"
-msgstr "SAU exclusiv boolean"
+msgstr "SAU exclusiv logic"
 
 #. Tooltip for the boolean NOT button
 #: ../src/math-buttons.c:204
 msgid "Boolean NOT"
-msgstr "NU boolean"
+msgstr "NU logic"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:207 ../src/math-buttons.c:1442
-#| msgid "Integer portion"
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1453
 msgid "Integer Component"
 msgstr "Partea întreagă"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1444
-#| msgid "Fractional portion"
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1455
 msgid "Fractional Component"
-msgstr "Partea fracțională"
+msgstr "Partea fracționară"
 
 #. Tooltip for the real component button
 #: ../src/math-buttons.c:213
@@ -991,143 +976,143 @@ msgstr "Componenta imaginară"
 
 #. Tooltip for the ones complement button
 #: ../src/math-buttons.c:219
-#| msgid "Ones' complement"
 msgid "Ones Complement"
 msgstr "Complement față de 1"
 
 #. Tooltip for the twos complement button
 #: ../src/math-buttons.c:222
-#| msgid "Two's complement"
 msgid "Twos Complement"
 msgstr "Complement față de 2"
 
 #. Tooltip for the truncate button
 #: ../src/math-buttons.c:225
-#| msgid "Trunc"
 msgid "Truncate"
 msgstr "Trunchiază"
 
 #. Tooltip for the start group button
 #: ../src/math-buttons.c:228
-#| msgid "Start block [(]"
 msgid "Start Group [(]"
-msgstr "Start grup [(]"
+msgstr "Începutul grupului [(]"
 
 #. Tooltip for the end group button
 #: ../src/math-buttons.c:231
-#| msgid "End block [)]"
 msgid "End Group [)]"
-msgstr "Sfârșit grup [)]"
+msgstr "Sfârșitul grupului [)]"
 
 #. Tooltip for the assign variable button
 #: ../src/math-buttons.c:234
-#| msgid "Answer variable"
 msgid "Assign Variable"
-msgstr "Asignează o variabilă"
+msgstr "Atribuie o variabilă"
 
 #. Tooltip for the insert variable button
 #: ../src/math-buttons.c:237
-#| msgid "Answer variable"
 msgid "Insert Variable"
 msgstr "Introdu o variabilă"
 
 #. Tooltip for the solve button
 #: ../src/math-buttons.c:243
-#| msgid "Calculate result"
 msgid "Calculate Result"
 msgstr "Calculează rezultatul"
 
 #. Tooltip for the factor button
 #: ../src/math-buttons.c:246
-#| msgid "Factorize"
 msgid "Factorize [Ctrl+F]"
 msgstr "Factorizează [Ctrl+F]"
 
 #. Tooltip for the clear button
 #: ../src/math-buttons.c:249
-#| msgid "Clear display [Escape]"
 msgid "Clear Display [Escape]"
 msgstr "Șterge afișajul [Escape]"
 
 #. Tooltip for the undo button
 #: ../src/math-buttons.c:252
-#| msgid "Root [Ctrl+S]"
 msgid "Undo [Ctrl+Z]"
 msgstr "Anulează [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
 #: ../src/math-buttons.c:264
-#| msgid "Double-Declining Depreciation"
 msgid "Double Declining Depreciation"
 msgstr "Amortizare dublă în declin"
 
 #. Tooltip for the financial term button
 #: ../src/math-buttons.c:270
-#| msgid "_Financial"
 msgid "Financial Term"
 msgstr "Termen financiar"
 
 #. Tooltip for the sum of the years digits depreciation button
 #: ../src/math-buttons.c:273
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
 msgid "Sum of the Years Digits Depreciation"
-msgstr "Amortizare prin metoda digiților valorii „suma cifrelor anilor”"
+msgstr "Amortizare prin metoda sumei cifrelor anilor („SOFTY”)"
 
 #. Tooltip for the straight line depreciation button
 #: ../src/math-buttons.c:276
-#| msgid "Straight-Line Depreciation"
 msgid "Straight Line Depreciation"
 msgstr "Amortizare în linie dreaptă"
 
+#: ../src/math-buttons.c:429
+#, c-format
+msgid "%s radians = %s degrees"
+msgstr "%s radiani = %s grade"
+
+#: ../src/math-buttons.c:449
+#, c-format
+msgid "%s gradians = %s degrees"
+msgstr "%s gradiani = %s grade"
+
+#. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
+#: ../src/math-buttons.c:555
+#, c-format
+msgid "%s%s = %s%s"
+msgstr "%s%s = %s%s"
+
 #. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:892 ../src/math-preferences.c:255
+#: ../src/math-buttons.c:903 ../src/math-preferences.c:255
 msgid "Degrees"
 msgstr "Grade"
 
 #. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:896 ../src/math-preferences.c:259
+#: ../src/math-buttons.c:907 ../src/math-preferences.c:259
 msgid "Radians"
 msgstr "Radiani"
 
 #. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:900 ../src/math-preferences.c:263
+#: ../src/math-buttons.c:911 ../src/math-preferences.c:263
 msgid "Gradians"
 msgstr "Gradiani"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:934
+#: ../src/math-buttons.c:945
 msgid "Binary"
 msgstr "Binar"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:938
+#: ../src/math-buttons.c:949
 msgid "Octal"
 msgstr "Octal"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:942
+#: ../src/math-buttons.c:953
 msgid "Decimal"
 msgstr "Zecimal"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:946
+#: ../src/math-buttons.c:957
 msgid "Hexadecimal"
 msgstr "Hexazecimal"
 
 #. Text shown in store menu when no variables defined
 #. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1263 ../src/math-buttons.c:1309
+#: ../src/math-buttons.c:1274 ../src/math-buttons.c:1320
 msgid "No variables defined"
 msgstr "Nicio variabilă definită"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1352 ../src/math-buttons.c:1396
+#: ../src/math-buttons.c:1363 ../src/math-buttons.c:1407
 #, c-format
-#| msgid "_1 place"
 msgid "_%d place"
 msgid_plural "_%d places"
 msgstr[0] "_%d poziție"
@@ -1136,108 +1121,98 @@ msgstr[2] "_%d de poziții"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1356 ../src/math-buttons.c:1400
+#: ../src/math-buttons.c:1367 ../src/math-buttons.c:1411
 #, c-format
-#| msgid "_1 place"
 msgid "%d place"
 msgid_plural "%d places"
-msgstr[0] "_%d poziție"
-msgstr[1] "_%d poziții"
-msgstr[2] "_%d de poziții"
+msgstr[0] "o poziție"
+msgstr[1] "%d poziții"
+msgstr[2] "%d de poziții"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1446
-#| msgid "Rand"
+#: ../src/math-buttons.c:1457
 msgid "Round"
 msgstr "Rotunjire"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1448
+#: ../src/math-buttons.c:1459
 msgid "Floor"
 msgstr "Parte întreagă inferioară"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1450
+#: ../src/math-buttons.c:1461
 msgid "Ceiling"
 msgstr "Parte întreagă superioară"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1452
+#: ../src/math-buttons.c:1463
 msgid "Sign"
 msgstr "Semn"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:496
+#: ../src/math-equation.c:576
 msgid "No undo history"
 msgstr "Nu există istoric pentru anulări"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:521
-#| msgid "No undo history"
+#: ../src/math-equation.c:601
 msgid "No redo history"
 msgstr "Nu există istoric pentru refaceri"
 
-#: ../src/math-equation.c:845
+#: ../src/math-equation.c:959
 msgid "No sane value to store"
 msgstr "Nici o valoare nu poate fi stocată"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1105
+#: ../src/math-equation.c:1226
 msgid "Overflow. Try a bigger word size"
 msgstr "Revărsare. Încercați o lungime de cuvânt mai mare"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1110
+#: ../src/math-equation.c:1231
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variabilă necunoscută „%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1115
+#: ../src/math-equation.c:1236
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funcția „%s” nu este definită"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1120
+#: ../src/math-equation.c:1241
 msgid "Unknown conversion"
 msgstr "Conversie necunoscută"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1129
+#: ../src/math-equation.c:1250
 msgid "Malformed expression"
 msgstr "Expresie eronată"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1152
+#: ../src/math-equation.c:1273
 msgid "Need an integer to factorize"
 msgstr "Este nevoie de un înteg pentru factorizare"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1229
+#: ../src/math-equation.c:1350
 msgid "No sane value to bitwise shift"
 msgstr "Nicio valoare bună pentru deplasare binară"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1258
+#: ../src/math-equation.c:1379
 msgid "Displayed value not an integer"
 msgstr "Valoarea afișată nu este un întreg"
 
-#. Digits localized for the given language
-#: ../src/math-equation.c:1648
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-
 #. Label on close button in preferences dialog
 #: ../src/math-preferences.c:245
-#| msgid "_Cost:"
 msgid "_Close"
 msgstr "În_chide"
 
 #. Number display mode combo: Fixed, e.g. 1234
 #: ../src/math-preferences.c:273
-#| msgid "_Fix"
 msgid "Fixed"
 msgstr "Fix"
 
@@ -1255,7 +1230,7 @@ msgstr "Ingineresc"
 #: ../src/math-preferences.c:292
 #, c-format
 msgid "Show %d decimal _places"
-msgstr "Arată %d cifre după virgulă"
+msgstr "Arată %d cifre du_pă virgulă"
 
 #. Translators: Error message displayed when unable to launch help browser
 #: ../src/math-window.c:170
@@ -1268,6 +1243,7 @@ msgid "translator-credits"
 msgstr ""
 "Mișu Moldovan <dumol@gnome.ro>\n"
 "Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Daniel Șerbănescu <cyber19rider@gmail.com>\n"
 "\n"
 "Launchpad Contributions:\n"
 "  Adi Roiban https://launchpad.net/~adiroiban\n"
@@ -1304,8 +1280,8 @@ msgstr ""
 "anumit scop. Citiți Licența Publică Generală GNU pentru detalii.\n"
 "\n"
 "Ar trebui să fi primit o copie a Licenței Publice Generale GNU împreună cu "
-"acest program; dacă nu, scrieți Free Software Foundation, Inc., 51 Franklin "
-"Street, Fifth Floor, Boston, MA  02110-1301, USA"
+"acest program; dacă nu, scrieți la Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA"
 
 #. Program name in the about dialog
 #: ../src/math-window.c:221
@@ -1314,7 +1290,6 @@ msgstr "Gcalctool"
 
 #. Copyright notice in the about dialog
 #: ../src/math-window.c:225
-#| msgid "© 1986–2008 The Gcalctool authors"
 msgid "© 1986–2010 The Gcalctool authors"
 msgstr "© 1986–2010 autorii Gcalctool"
 
@@ -1330,7 +1305,6 @@ msgstr "_Calculator"
 
 #. Mode menu
 #: ../src/math-window.c:357
-#| msgid "Mode"
 msgid "_Mode"
 msgstr "_Mod"
 
@@ -1367,22 +1341,22 @@ msgstr "_Conținut"
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:103
 msgid "Boolean AND is only defined for positive integers"
-msgstr "ȘI boolean este definit doar pentru numere naturale pozitive"
+msgstr "ȘI logic este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: ../src/mp-binary.c:116
 msgid "Boolean OR is only defined for positive integers"
-msgstr "SAU boolean este definit doar pentru numere naturale pozitive"
+msgstr "SAU logic este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:129
 msgid "Boolean XOR is only defined for positive integers"
-msgstr "SAU exclusiv boolean este definit doar pentru numere naturale pozitive"
+msgstr "SAU exclusiv logic este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: ../src/mp-binary.c:144
 msgid "Boolean NOT is only defined for positive integers"
-msgstr "NU boolean este definit doar pentru numere naturale pozitive"
+msgstr "NU logic este definit doar pentru numere naturale pozitive"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: ../src/mp-binary.c:174
@@ -1402,7 +1376,7 @@ msgstr "Împărțirea la zero nu este definită"
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../src/mp.c:1273 ../src/mp.c:1310
 msgid "Logarithm of zero is undefined"
-msgstr "Logaritmul lui zero este nedefinit"
+msgstr "Logaritmul lui zero nu este definit"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1675 ../src/mp.c:1990
@@ -1433,7 +1407,7 @@ msgstr "Factorialul este definit doar pentru numere naturale"
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: ../src/mp.c:1950
 msgid "Modulus division is only defined for integers"
-msgstr "Impărțirea modulo este definită doar pentru întregi"
+msgstr "Împărțirea modulo este definită doar pentru întregi"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:311
@@ -1471,6 +1445,9 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inversa tangentei hiperbolice nu este definită pentru valori în afara "
 "intervalului [-1, 1]"
+
+#~ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+#~ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #~ msgid ""
 #~ "Converts between different currencies. Enter the amount and the currency "
