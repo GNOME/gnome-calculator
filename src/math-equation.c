@@ -915,7 +915,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gchar *text;
     gboolean result;
 
-    text = math_equation_get_display(equation);
+    text = math_equation_get_equation(equation);
     result = !mp_set_from_string(text, equation->priv->base, z);
     g_free (text);
 
