@@ -786,7 +786,7 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     gchar *text;
     gboolean result;
 
-    text = math_equation_get_display(equation);
+    text = math_equation_get_equation(equation);
     result = !mp_serializer_from_string(equation->priv->serializer, text, z);
     g_free(text);
 
