@@ -557,6 +557,7 @@ mp_tanh(const MPNumber *x, MPNumber *z)
     } else {
         mp_epowy(&t, &t);
         mp_add_integer(&t, 1, z);
+        mp_add_integer(&t, -1, &t);
         mp_divide(&t, z, z);
     }
 
