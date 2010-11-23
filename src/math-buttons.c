@@ -838,6 +838,17 @@ target_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons
 }
 
 
+static void
+convert_from_cell_data_func(GtkCellLayout   *cell_layout,
+                            GtkCellRenderer *cell,
+                            GtkTreeModel    *tree_model,
+                            GtkTreeIter     *iter,
+                            gpointer         data)
+{
+    g_object_set(cell, "sensitive", !gtk_tree_model_iter_has_child(tree_model, iter), NULL);
+}
+
+
 static GtkWidget *
 load_mode(MathButtons *buttons, ButtonMode mode)
 {
@@ -998,6 +1009,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         renderer = gtk_cell_renderer_text_new();
         gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->convert_from_combo), renderer, TRUE);
         gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->convert_from_combo), renderer, "text", 0);
+        gtk_cell_layout_set_cell_data_func(GTK_CELL_LAYOUT(buttons->priv->convert_from_combo),
+                                           renderer,
+                                           convert_from_cell_data_func,
+                                           NULL, NULL);
 
         buttons->priv->convert_to_combo = GET_WIDGET(builder, "convert_to_combo");
         renderer = gtk_cell_renderer_text_new();
