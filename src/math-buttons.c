@@ -853,6 +853,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
     GError *error = NULL;
 
     switch (mode) {
+    default:
     case BASIC:
         builder_ptr = &buttons->priv->basic_ui;
         builder_file = UI_BASIC_FILE;
