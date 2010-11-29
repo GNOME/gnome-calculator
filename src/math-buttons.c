@@ -1374,7 +1374,7 @@ make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber 
 
     if (value) {
         MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
-        mp_serializer_to_standard_string(serializer, value, &text);
+        text = mp_serializer_to_string(serializer, value);
         mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", name, text);
         g_free(text);
     }

@@ -157,7 +157,7 @@ reformat_ans(MathEquation *equation)
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_start, equation->priv->ans_start);
     gtk_text_buffer_get_iter_at_mark(GTK_TEXT_BUFFER(equation), &ans_end, equation->priv->ans_end);
     orig_ans_text = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(equation), &ans_start, &ans_end, FALSE);
-    mp_serializer_to_standard_string(equation->priv->serializer, &equation->priv->state.ans, &ans_text);
+    ans_text = mp_serializer_to_string(equation->priv->serializer, &equation->priv->state.ans);
     if (strcmp(orig_ans_text, ans_text) != 0) {
         gint start;
 
@@ -908,7 +908,7 @@ math_equation_set_number(MathEquation *equation, const MPNumber *x)
     GtkTextIter start, end;
 
     /* Show the number in the user chosen format */
-    mp_serializer_to_standard_string(equation->priv->serializer, x, &text);
+    text = mp_serializer_to_string(equation->priv->serializer, x);
     gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), text, -1);
     mp_set_from_mp(x, &equation->priv->state.ans);
 
@@ -988,7 +988,7 @@ void
 math_equation_insert_number(MathEquation *equation, const MPNumber *x)
 {
     char *text;
-    mp_serializer_to_standard_string(equation->priv->serializer, x, &text);
+    text = mp_serializer_to_string(equation->priv->serializer, x);
     math_equation_insert(equation, text);
     g_free(text);
 }
@@ -1271,7 +1271,7 @@ math_equation_factorize_real(gpointer data)
         MPNumber *n;
 
         n = factor->data;
-        mp_serializer_to_standard_string(equation->priv->serializer, n, &temp);
+        temp = mp_serializer_to_string(equation->priv->serializer, n);
         g_string_append(text, temp);
         if (factor->next)
             g_string_append(text, "×");

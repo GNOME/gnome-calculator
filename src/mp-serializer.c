@@ -61,9 +61,9 @@ mp_serializer_new()
 
 
 static void
-mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bool force_sign, GString *string)
+mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gboolean force_sign, GString *string)
 {
-    static char digits[] = "0123456789ABCDEF";
+    static gchar digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
     int i, last_non_zero;
 
@@ -147,7 +147,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bo
 
     /* Append base suffix if not in default base */
     if (base != serializer->priv->base) {
-        const char *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
+        const gchar *digits[] = {"₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
         int multiplier = 1;
         int b = base;
 
@@ -164,26 +164,27 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, bo
 }
 
 
-static void
-mp_cast_to_string(MpSerializer *serializer, const MPNumber *x, char **buffer)
+static gchar *
+mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
 {
     GString *string;
     MPNumber x_real;
+    gchar *result;
 
     string = g_string_sized_new(1024);
 
     mp_real_component(x, &x_real);
-    mp_cast_to_string_real(serializer, &x_real, serializer->priv->base, false, string);
+    mp_cast_to_string_real(serializer, &x_real, serializer->priv->base, FALSE, string);
     if (mp_is_complex(x)) {
         GString *s;
-        gboolean force_sign = true;
+        gboolean force_sign = TRUE;
         MPNumber x_im;
 
         mp_imaginary_component(x, &x_im);
 
         if (strcmp(string->str, "0") == 0) {
             g_string_assign(string, "");
-            force_sign = false;
+            force_sign = FALSE;
         }
 
         s = g_string_sized_new(1024);
@@ -211,19 +212,22 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x, char **buffer)
         g_string_free(s, TRUE);
     }
 
-    *buffer = g_strndup(string->str, string->len + 1);
+    result = g_strndup(string->str, string->len + 1);
     g_string_free(string, TRUE);
+
+    return result;
 }
 
 
-static void
-mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, bool eng_format, char **buffer)
+static gchar *
+mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gboolean eng_format)
 {
-    char *fixed, *c;
+    gchar *fixed, *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
     int exponent = 0;
     GString *string;
-    const char *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+    gchar *result;
+    const gchar *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
     string = g_string_sized_new(1024);
 
@@ -262,7 +266,7 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, bool 
         }
     }
 
-    mp_cast_to_string(serializer, &mantissa, &fixed);
+    fixed = mp_cast_to_string(serializer, &mantissa);
     g_string_append(string, fixed);
     g_free(fixed);
     if (exponent != 0) {
@@ -276,46 +280,46 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, bool 
             g_string_append(string, super_digits[*c - '0']);
     }
 
-    *buffer = g_strndup(string->str, string->len + 1);
+    result = g_strndup(string->str, string->len + 1);
     g_string_free(string, TRUE);
+
+    return result;
 }
 
 
-void
-mp_serializer_to_standard_string(MpSerializer *serializer, const MPNumber *x, char **target)
+gchar *
+mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
 {
     switch(serializer->priv->format) {
+    default:
     case FIX:
-        mp_cast_to_string(serializer, x, target);
-        break;
+        return mp_cast_to_string(serializer, x);
     case SCI:
-        mp_cast_to_exponential_string(serializer, x, false, target);
-        break;
+        return mp_cast_to_exponential_string(serializer, x, FALSE);
     case ENG:
-        mp_cast_to_exponential_string(serializer, x, true, target);
-        break;
+        return mp_cast_to_exponential_string(serializer, x, TRUE);
     }
 }
 
 
 void
-mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, bool trim_zeroes, bool localize, char **target)
+mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, gboolean trim_zeroes, gboolean localize, gchar **target)
 {
     MpSerializer *serializer = mp_serializer_new();
     if (!localize) {
         serializer->priv->radix = '.';
-        serializer->priv->show_tsep = false;
+        serializer->priv->show_tsep = FALSE;
     }
     serializer->priv->base = base;
     serializer->priv->accuracy = accuracy;
     serializer->priv->show_zeroes = !trim_zeroes;
-    mp_serializer_to_standard_string(serializer, x, target);
+    *target = mp_serializer_to_string(serializer, x);
     g_object_unref(serializer);
 }
 
 
-bool
-mp_serializer_from_string(MpSerializer *serializer, const char *str, MPNumber *z)
+gboolean
+mp_serializer_from_string(MpSerializer *serializer, const gchar *str, MPNumber *z)
 {
     return mp_set_from_string(str, serializer->priv->base, z);
 }
