@@ -86,7 +86,7 @@ test(char *expression, char *expected, int expected_error)
         char *result_str;
         MpSerializer *serializer;
 
-        serializer = mp_serializer_new(options.base, 9);
+        serializer = mp_serializer_new(MP_DISPLAY_FORMAT_FIXED, options.base, 9);
         result_str = mp_serializer_to_string(serializer, &result);
         g_object_unref(serializer);
 

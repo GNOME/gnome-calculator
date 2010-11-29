@@ -1055,7 +1055,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         int i, j;
 
         buttons->priv->convert_result_label = GET_WIDGET(builder, "convert_result_label");
-        buttons->priv->units_serializer = mp_serializer_new(10, 2);
+        buttons->priv->units_serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 2);
 
         buttons->priv->convert_from_combo = GET_WIDGET(builder, "convert_from_combo");
         from_model = gtk_tree_store_new(3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT);
@@ -1147,7 +1147,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         buttons->priv->target_currency_combo = GET_WIDGET(builder, "target_currency_combo");
         buttons->priv->currency_label = GET_WIDGET(builder, "currency_label");
 
-        buttons->priv->currency_serializer = mp_serializer_new(10, 2);
+        buttons->priv->currency_serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 2);
 
         model = gtk_list_store_new(1, G_TYPE_STRING);
 

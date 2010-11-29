@@ -46,7 +46,7 @@ to_hex_string(const MPNumber *x)
     MpSerializer *serializer;
     gchar *result;
 
-    serializer = mp_serializer_new(16, 0);
+    serializer = mp_serializer_new(MP_DISPLAY_FORMAT_FIXED, 16, 0);
     result = mp_serializer_to_string(serializer, x);
     g_object_unref(serializer);
 

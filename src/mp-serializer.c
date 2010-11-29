@@ -54,9 +54,10 @@ struct MpSerializerPrivate
 G_DEFINE_TYPE(MpSerializer, mp_serializer, G_TYPE_OBJECT);
 
 MpSerializer *
-mp_serializer_new(int base, int accuracy)
+mp_serializer_new(MpDisplayFormat format, int base, int accuracy)
 {
-    MpSerializer *serializer = g_object_new(mp_serializer_get_type(), NULL);
+    MpSerializer *serializer = g_object_new(mp_serializer_get_type(), /*"number-format", format,*/ NULL);
+    mp_serializer_set_number_format(serializer, format);
     mp_serializer_set_base(serializer, base);
     mp_serializer_set_accuracy(serializer, accuracy);
     return serializer;
@@ -273,14 +274,18 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
     g_string_append(string, fixed);
     g_free(fixed);
     if (exponent != 0) {
+        gchar *super_value;
+
         g_string_append_printf(string, "×10"); // FIXME: Use the current base
         if (exponent < 0) {
             exponent = -exponent;
             g_string_append(string, "⁻");
         }
-        snprintf(fixed, 1024, "%d", exponent);
-        for (c = fixed; *c; c++)
+
+        super_value = g_strdup_printf("%d", exponent);
+        for (c = super_value; *c; c++)
             g_string_append(string, super_digits[*c - '0']);
+        g_free (super_value);
     }
 
     result = g_strndup(string->str, string->len + 1);
@@ -293,8 +298,23 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
 gchar *
 mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
 {
+    gchar *s0, *s1;
     switch(serializer->priv->format) {
     default:
+    case MP_DISPLAY_FORMAT_AUTOMATIC:
+        s0 = mp_cast_to_string(serializer, x);
+        s1 = mp_cast_to_exponential_string(serializer, x, FALSE);
+        if (g_utf8_strlen(s0, -1) < g_utf8_strlen(s1, -1))
+        {
+            g_free(s1);
+            return s0;
+        }
+        else
+        {
+            g_free(s0);
+            return s1;
+        }
+      break;
     case MP_DISPLAY_FORMAT_FIXED:
         return mp_cast_to_string(serializer, x);
     case MP_DISPLAY_FORMAT_SCIENTIFIC:
@@ -476,7 +496,7 @@ mp_serializer_class_init(MpSerializerClass *klass)
 
     g_type_class_add_private(klass, sizeof(MpSerializerPrivate));
 
-    number_format_type = math_display_format_get_type();
+    number_format_type = math_mp_display_format_get_type();
 
     g_object_class_install_property(object_class,
                                     PROP_SHOW_THOUSANDS_SEPARATORS,
@@ -493,20 +513,20 @@ mp_serializer_class_init(MpSerializerClass *klass)
                                                          FALSE,
                                                          G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
-                                    PROP_BASE,
-                                    g_param_spec_int("base",
-                                                     "base",
-                                                     "Default number base (derived from number-format)",
-                                                     2, 16, 10, 
-                                                     G_PARAM_READWRITE));
-    g_object_class_install_property(object_class,
                                     PROP_NUMBER_FORMAT,
                                     g_param_spec_enum("number-format",
                                                       "number-format",
                                                       "Display format",
                                                       number_format_type,
-                                                      MP_DISPLAY_FORMAT_FIXED,
+                                                      MP_DISPLAY_FORMAT_AUTOMATIC,
                                                       G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_BASE,
+                                    g_param_spec_int("base",
+                                                     "base",
+                                                     "Default number base",
+                                                     2, 16, 10, 
+                                                     G_PARAM_READWRITE));
 }
 
 
@@ -529,5 +549,5 @@ mp_serializer_init(MpSerializer *serializer)
     serializer->priv->accuracy = 9;
     serializer->priv->show_zeroes = FALSE;
     serializer->priv->show_tsep = FALSE;
-    serializer->priv->format = MP_DISPLAY_FORMAT_FIXED;
+    serializer->priv->format = MP_DISPLAY_FORMAT_AUTOMATIC;
 }

@@ -162,7 +162,7 @@ math_variables_init(MathVariables *variables)
     variables->priv = G_TYPE_INSTANCE_GET_PRIVATE (variables, math_variables_get_type(), MathVariablesPrivate);
     variables->priv->registers = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
     variables->priv->file_name = g_build_filename(g_get_user_data_dir(), "gcalctool", "registers", NULL);
-    variables->priv->serializer = mp_serializer_new(10, 50);
+    variables->priv->serializer = mp_serializer_new(MP_DISPLAY_FORMAT_SCIENTIFIC, 10, 50);
     mp_serializer_set_radix(variables->priv->serializer, '.');
     registers_load(variables);
 }

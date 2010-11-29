@@ -1578,7 +1578,7 @@ math_equation_class_init(MathEquationClass *klass)
     g_type_class_add_private(klass, sizeof(MathEquationPrivate));
   
     number_mode_type = g_enum_register_static("NumberMode", number_mode_values);
-    number_format_type = math_display_format_get_type();
+    number_format_type = math_mp_display_format_get_type();
     angle_unit_type = g_enum_register_static("AngleUnit", angle_unit_values);
 
     g_object_class_install_property(object_class,
@@ -1853,7 +1853,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->target_currency = g_strdup(currency_names[0].short_name);
     equation->priv->source_units = g_strdup("");
     equation->priv->target_units = g_strdup("");
-    equation->priv->serializer = mp_serializer_new(10, 9);
+    equation->priv->serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 9);
     equation->priv->queue = g_async_queue_new();
 
     mp_set_from_integer(0, &equation->priv->state.ans);

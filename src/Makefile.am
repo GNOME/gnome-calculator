@@ -93,10 +93,10 @@ mp-equation-lexer.o: mp-equation-parser.h
 mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
 
 # Generate enum types
-math-enums.h: math-enums.h.template
+math-enums.h: math-enums.h.template mp-serializer.h
 	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.h.template $(srcdir)/mp-serializer.h > math-enums.h
 
-math-enums.c: math-enums.c.template math-enums.h
+math-enums.c: math-enums.c.template math-enums.h mp-serializer.h
 	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.c.template $(srcdir)/mp-serializer.h > math-enums.c
 
 # Fix dependencies

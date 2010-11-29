@@ -42,6 +42,7 @@ typedef struct {
 
 /* Number display mode. */
 typedef enum {
+    MP_DISPLAY_FORMAT_AUTOMATIC,
     MP_DISPLAY_FORMAT_FIXED,
     MP_DISPLAY_FORMAT_SCIENTIFIC,
     MP_DISPLAY_FORMAT_ENGINEERING
@@ -49,19 +50,19 @@ typedef enum {
 
 GType mp_serializer_get_type(void);
 
-MpSerializer *mp_serializer_new(int base, int accuracy);
+MpSerializer *mp_serializer_new(MpDisplayFormat format, int base, int accuracy);
 
 gchar *mp_serializer_to_string(MpSerializer *serializer, const MPNumber *z);
 gboolean mp_serializer_from_string(MpSerializer *serializer, const gchar *str, MPNumber *z);
+
+void mp_serializer_set_number_format(MpSerializer *serializer, MpDisplayFormat format);
+MpDisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
 
 void mp_serializer_set_base(MpSerializer *serializer, int base);
 int mp_serializer_get_base(MpSerializer *serializer);
 
 void mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy);
 int mp_serializer_get_accuracy(MpSerializer *serializer);
-
-void mp_serializer_set_number_format(MpSerializer *serializer, MpDisplayFormat format);
-MpDisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
 
 void mp_serializer_set_radix(MpSerializer *serializer, gunichar radix);
 gunichar mp_serializer_get_radix(MpSerializer *serializer);

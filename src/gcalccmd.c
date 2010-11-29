@@ -87,7 +87,7 @@ main(int argc, char **argv)
     g_type_init ();
     setlocale(LC_ALL, "");
 
-    result_serializer = mp_serializer_new(10, 9);
+    result_serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 9);
 
     equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {

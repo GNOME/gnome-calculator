@@ -62,7 +62,7 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        result_str = mp_serializer_to_string(mp_serializer_new(10, 9), &result);
+        result_str = mp_serializer_to_string(mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 9), &result);
         printf("%s\n", result_str);
         exit(0);
     }

@@ -268,6 +268,10 @@ create_gui(MathPreferencesDialog *dialog)
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(widget));
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
+                       /* Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99) */
+                       _("Automatic"), 1, MP_DISPLAY_FORMAT_AUTOMATIC, -1);
+    gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+    gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Fixed, e.g. 1234 */
                        _("Fixed"), 1, MP_DISPLAY_FORMAT_FIXED, -1);
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);

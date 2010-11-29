@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
   <enum id="org.gnome.gcalctool.NumberFormat">
-    <value value="0" nick="fixed"/>
-    <value value="1" nick="scientific"/>
-    <value value="2" nick="engineering"/>
+    <value value="0" nick="automatic"/>
+    <value value="1" nick="fixed"/>
+    <value value="2" nick="scientific"/>
+    <value value="3" nick="engineering"/>
   </enum>
   <enum id="org.gnome.gcalctool.ButtonMode">
     <value value="0" nick="basic"/>
@@ -47,7 +48,7 @@
       <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
     </key>
     <key name="number-format" enum="org.gnome.gcalctool.NumberFormat">
-      <default>'fixed'</default>
+      <default>'automatic'</default>
       <_summary>Number format</_summary>
       <_description>The format to display numbers in</_description>
     </key>
