@@ -250,9 +250,9 @@ static int
 convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
     if (!units_convert(x, x_units, z_units, z))
-        return 1;
+        return 0;
 
-    return 0;
+    return 1;
 }
 
 
