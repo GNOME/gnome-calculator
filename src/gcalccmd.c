@@ -30,13 +30,15 @@
 
 #define MAXLINE 1024
 
+static MpSerializer *result_serializer;
+
 static void
 solve(const char *equation)
 {
     int ret;
     MPEquationOptions options;
     MPNumber z;
-    char *result_str;
+    gchar *result_str = NULL;
     
     memset(&options, 0, sizeof(options));
     options.base = 10;
@@ -50,7 +52,7 @@ solve(const char *equation)
     else if (ret)        
         fprintf(stderr, "Error %d\n", ret);
     else {
-        mp_serializer_to_specific_string(&z, 10, 9, true, true, &result_str);
+        result_str = mp_serializer_to_string(result_serializer, &z);
         printf("%s\n", result_str);
     }
     g_free(result_str);
@@ -84,6 +86,8 @@ main(int argc, char **argv)
 
     g_type_init ();
     setlocale(LC_ALL, "");
+
+    result_serializer = mp_serializer_new(10, 9);
 
     equation = (char *) malloc(MAXLINE * sizeof(char));
     while (1) {

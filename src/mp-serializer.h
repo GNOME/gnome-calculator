@@ -48,26 +48,34 @@ typedef enum {
 } DisplayFormat;
 
 GType mp_serializer_get_type(void);
-MpSerializer *mp_serializer_new(void);
 
-void mp_serializer_to_specific_string(const MPNumber *z, int base, int accuracy, gboolean trim_zeroes, gboolean localize, char **target);
+MpSerializer *mp_serializer_new(int base, int accuracy);
 
 gchar *mp_serializer_to_string(MpSerializer *serializer, const MPNumber *z);
 gboolean mp_serializer_from_string(MpSerializer *serializer, const gchar *str, MPNumber *z);
 
-gunichar mp_serializer_get_thousands_separator_text(MpSerializer *serializer);
-gint mp_serializer_get_thousands_separator_count(MpSerializer *serializer);
-gunichar mp_serializer_get_numeric_point_text(MpSerializer *serializer);
 void mp_serializer_set_base(MpSerializer *serializer, int base);
 int mp_serializer_get_base(MpSerializer *serializer);
-gboolean mp_serializer_get_show_trailing_zeroes(MpSerializer *serializer);
-void mp_serializer_set_show_trailing_zeroes(MpSerializer *serializer, gboolean visible);
-gboolean mp_serializer_get_show_thousands_separators(MpSerializer *serializer);
-void mp_serializer_set_show_thousands_separators(MpSerializer *serializer, gboolean visible);
-int mp_serializer_get_accuracy(MpSerializer *serializer);
+
 void mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy);
-DisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
+int mp_serializer_get_accuracy(MpSerializer *serializer);
+
 void mp_serializer_set_number_format(MpSerializer *serializer, DisplayFormat format);
+DisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
+
+void mp_serializer_set_radix(MpSerializer *serializer, gunichar radix);
+gunichar mp_serializer_get_radix(MpSerializer *serializer);
+
+void mp_serializer_set_thousands_separator(MpSerializer *serializer, gunichar separator);
+gunichar mp_serializer_get_thousands_separator(MpSerializer *serializer);
+
+gint mp_serializer_get_thousands_separator_count(MpSerializer *serializer);
+
+void mp_serializer_set_show_trailing_zeroes(MpSerializer *serializer, gboolean visible);
+gboolean mp_serializer_get_show_trailing_zeroes(MpSerializer *serializer);
+
+void mp_serializer_set_show_thousands_separators(MpSerializer *serializer, gboolean visible);
+gboolean mp_serializer_get_show_thousands_separators(MpSerializer *serializer);
 
 G_END_DECLS
 

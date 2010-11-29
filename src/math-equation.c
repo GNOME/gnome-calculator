@@ -197,7 +197,7 @@ count_digits(MathEquation *equation, const gchar *text)
         read_iter = g_utf8_next_char(read_iter);
 
         /* Allow a thousands separator between digits follow a digit */
-        if (g_utf8_get_char(read_iter) == mp_serializer_get_thousands_separator_text(equation->priv->serializer)) {
+        if (g_utf8_get_char(read_iter) == mp_serializer_get_thousands_separator(equation->priv->serializer)) {
             read_iter = g_utf8_next_char(read_iter);
             if (!g_unichar_isdigit(g_utf8_get_char(read_iter)))
                 return count;
@@ -252,7 +252,7 @@ reformat_separators(MathEquation *equation)
                 gint len;
 
                 gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &iter, offset);
-                len = g_unichar_to_utf8(mp_serializer_get_thousands_separator_text(equation->priv->serializer), buffer);
+                len = g_unichar_to_utf8(mp_serializer_get_thousands_separator(equation->priv->serializer), buffer);
                 buffer[len] = '\0';
                 gtk_text_buffer_insert(GTK_TEXT_BUFFER(equation), &iter, buffer, -1);
                 offset++;
@@ -261,10 +261,10 @@ reformat_separators(MathEquation *equation)
 
             digit_offset--;
         }
-        else if (c == mp_serializer_get_numeric_point_text(equation->priv->serializer)) {
+        else if (c == mp_serializer_get_radix(equation->priv->serializer)) {
             in_number = in_radix = TRUE;
         }
-        else if (c == mp_serializer_get_thousands_separator_text(equation->priv->serializer)) {
+        else if (c == mp_serializer_get_thousands_separator(equation->priv->serializer)) {
             /* Didn't expect thousands separator - delete it */
             if (!expect_tsep) {
                 GtkTextIter start, end;
@@ -799,10 +799,10 @@ math_equation_get_equation(MathEquation *equation)
         }
 
         /* Ignore thousands separators */
-        if (c == mp_serializer_get_thousands_separator_text(equation->priv->serializer) && last_is_digit && next_is_digit)
+        if (c == mp_serializer_get_thousands_separator(equation->priv->serializer) && last_is_digit && next_is_digit)
             ;
         /* Substitute radix character */
-        else if (c == mp_serializer_get_numeric_point_text(equation->priv->serializer) && (last_is_digit || next_is_digit))
+        else if (c == mp_serializer_get_radix(equation->priv->serializer) && (last_is_digit || next_is_digit))
             g_string_append_unichar(eq_text, '.');
         else
             g_string_append_unichar(eq_text, c);
@@ -978,7 +978,7 @@ math_equation_insert_numeric_point(MathEquation *equation)
 {
     gchar buffer[7];
     gint len;
-    len = g_unichar_to_utf8( mp_serializer_get_numeric_point_text(equation->priv->serializer), buffer);
+    len = g_unichar_to_utf8( mp_serializer_get_radix(equation->priv->serializer), buffer);
     buffer[len] = '\0';
     math_equation_insert(equation, buffer);
 }
@@ -1719,7 +1719,7 @@ pre_insert_text_cb(MathEquation  *equation,
     /* Clear result on next digit entered if cursor at end of line */
     // FIXME Cursor
     c = g_utf8_get_char(text);
-    if ((g_unichar_isdigit(c) || c == mp_serializer_get_numeric_point_text(equation->priv->serializer)) &&
+    if ((g_unichar_isdigit(c) || c == mp_serializer_get_radix(equation->priv->serializer)) &&
          math_equation_is_result(equation)) {
         gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
         clear_ans(equation, FALSE);
@@ -1853,7 +1853,7 @@ math_equation_init(MathEquation *equation)
     equation->priv->target_currency = g_strdup(currency_names[0].short_name);
     equation->priv->source_units = g_strdup("");
     equation->priv->target_units = g_strdup("");
-    equation->priv->serializer = mp_serializer_new();
+    equation->priv->serializer = mp_serializer_new(10, 9);
     equation->priv->queue = g_async_queue_new();
 
     mp_set_from_integer(0, &equation->priv->state.ans);

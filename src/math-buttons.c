@@ -57,6 +57,7 @@ struct MathButtonsPrivate
 
     GtkWidget *convert_from_combo;
     GtkWidget *convert_to_combo;
+    MpSerializer *units_serializer;
     GtkWidget *convert_result_label;
 
     GtkWidget *base_combo;
@@ -66,6 +67,7 @@ struct MathButtonsPrivate
 
     GtkWidget *source_currency_combo;
     GtkWidget *target_currency_combo;
+    MpSerializer *currency_serializer;
     GtkWidget *currency_label;
 
     GtkWidget *character_code_dialog;
@@ -594,8 +596,8 @@ update_currency_label(MathButtons *buttons)
         const char *source_symbol, *target_symbol;
         int i;
 
-        mp_serializer_to_specific_string(&x, 10, 2, false, true, &input_text);
-        mp_serializer_to_specific_string(&value, 10, 2, false, true, &output_text);
+        input_text = mp_serializer_to_string(buttons->priv->currency_serializer, &x);
+        output_text = mp_serializer_to_string(buttons->priv->currency_serializer, &value);
 
         for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
         source_symbol = currency_names[i].symbol;
@@ -641,9 +643,9 @@ update_conversion_bar(MathButtons *buttons)
     gtk_widget_set_sensitive(buttons->priv->convert_result_label, enabled);
     if (!enabled)
         return;
-  
-    mp_serializer_to_specific_string(&x, 10, 2, TRUE, TRUE, &source_value);
-    mp_serializer_to_specific_string(&z, 10, 2, TRUE, TRUE, &target_value);
+
+    source_value = mp_serializer_to_string(buttons->priv->units_serializer, &x);
+    target_value = mp_serializer_to_string(buttons->priv->units_serializer, &z);
 
     label = g_strdup_printf("%s %s = %s %s", source_value, source_units, target_value, target_units);
     gtk_label_set_text(GTK_LABEL(buttons->priv->convert_result_label), label);
@@ -1028,7 +1030,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
         gchar buffer[7];
         gint len;
-        len = g_unichar_to_utf8(mp_serializer_get_numeric_point_text(serializer), buffer);
+        len = g_unichar_to_utf8(mp_serializer_get_radix(serializer), buffer);
         buffer[len] = '\0';
         gtk_button_set_label(GTK_BUTTON(widget), buffer);
     }
@@ -1053,6 +1055,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         int i, j;
 
         buttons->priv->convert_result_label = GET_WIDGET(builder, "convert_result_label");
+        buttons->priv->units_serializer = mp_serializer_new(10, 2);
 
         buttons->priv->convert_from_combo = GET_WIDGET(builder, "convert_from_combo");
         from_model = gtk_tree_store_new(3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT);
@@ -1143,6 +1146,8 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         buttons->priv->source_currency_combo = GET_WIDGET(builder, "source_currency_combo");
         buttons->priv->target_currency_combo = GET_WIDGET(builder, "target_currency_combo");
         buttons->priv->currency_label = GET_WIDGET(builder, "currency_label");
+
+        buttons->priv->currency_serializer = mp_serializer_new(10, 2);
 
         model = gtk_list_store_new(1, G_TYPE_STRING);
 

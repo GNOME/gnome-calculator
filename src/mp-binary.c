@@ -40,14 +40,28 @@ static int hex_to_int(char digit)
 }
 
 
+static gchar *
+to_hex_string(const MPNumber *x)
+{
+    MpSerializer *serializer;
+    gchar *result;
+
+    serializer = mp_serializer_new(16, 0);
+    result = mp_serializer_to_string(serializer, x);
+    g_object_unref(serializer);
+
+    return result;
+}
+
+
 static void
 mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, int), MPNumber *z, int wordlen)
 {
     char *text1, *text2, text_out[MAX_DIGITS], text_out2[MAX_DIGITS];
     int offset1, offset2, offset_out;
 
-    mp_serializer_to_specific_string(x, 16, 0, false, false, &text1);
-    mp_serializer_to_specific_string(y, 16, 0, false, false, &text2);
+    text1 = to_hex_string(x);
+    text2 = to_hex_string(y);
     offset1 = strlen(text1) - 1;
     offset2 = strlen(text2) - 1;
     offset_out = wordlen / 4 - 1;
@@ -161,7 +175,7 @@ mp_mask(const MPNumber *x, int wordlen, MPNumber *z)
     size_t len, offset;
 
     /* Convert to a hexadecimal string and use last characters */
-    mp_serializer_to_specific_string(x, 16, 0, false, false, &text);
+    text = to_hex_string(x);
     len = strlen(text);
     offset = wordlen / 4;
     offset = len > offset ? len - offset: 0;

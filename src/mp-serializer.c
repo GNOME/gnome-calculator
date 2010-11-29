@@ -54,9 +54,12 @@ struct MpSerializerPrivate
 G_DEFINE_TYPE(MpSerializer, mp_serializer, G_TYPE_OBJECT);
 
 MpSerializer *
-mp_serializer_new()
+mp_serializer_new(int base, int accuracy)
 {
-    return g_object_new(mp_serializer_get_type(), NULL);
+    MpSerializer *serializer = g_object_new(mp_serializer_get_type(), NULL);
+    mp_serializer_set_base(serializer, base);
+    mp_serializer_set_accuracy(serializer, accuracy);
+    return serializer;
 }
 
 
@@ -302,22 +305,6 @@ mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
 }
 
 
-void
-mp_serializer_to_specific_string(const MPNumber *x, int base, int accuracy, gboolean trim_zeroes, gboolean localize, gchar **target)
-{
-    MpSerializer *serializer = mp_serializer_new();
-    if (!localize) {
-        serializer->priv->radix = '.';
-        serializer->priv->show_tsep = FALSE;
-    }
-    serializer->priv->base = base;
-    serializer->priv->accuracy = accuracy;
-    serializer->priv->show_zeroes = !trim_zeroes;
-    *target = mp_serializer_to_string(serializer, x);
-    g_object_unref(serializer);
-}
-
-
 gboolean
 mp_serializer_from_string(MpSerializer *serializer, const gchar *str, MPNumber *z)
 {
@@ -339,15 +326,29 @@ mp_serializer_get_base(MpSerializer *serializer)
 }
 
 
+void
+mp_serializer_set_radix(MpSerializer *serializer, gunichar radix)
+{
+    serializer->priv->radix = radix;
+}
+
+
 gunichar
-mp_serializer_get_numeric_point_text(MpSerializer *serializer)
+mp_serializer_get_radix(MpSerializer *serializer)
 {
     return serializer->priv->radix;
 }
 
 
+void
+mp_serializer_set_thousands_separator(MpSerializer *serializer, gunichar separator)
+{
+    serializer->priv->tsep = separator;
+}
+
+
 gunichar
-mp_serializer_get_thousands_separator_text(MpSerializer *serializer)
+mp_serializer_get_thousands_separator(MpSerializer *serializer)
 {
     return serializer->priv->tsep;
 }

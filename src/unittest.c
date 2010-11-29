@@ -84,7 +84,12 @@ test(char *expression, char *expected, int expected_error)
 
     if(error == 0) {
         char *result_str;
-        mp_serializer_to_specific_string(&result, options.base, 9, true, false, &result_str);
+        MpSerializer *serializer;
+
+        serializer = mp_serializer_new(options.base, 9);
+        result_str = mp_serializer_to_string(serializer, &result);
+        g_object_unref(serializer);
+
         if(expected_error != 0)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)

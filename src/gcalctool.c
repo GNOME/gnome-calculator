@@ -62,9 +62,8 @@ solve(const char *equation)
         exit(1);
     }
     else {
-        mp_serializer_to_specific_string(&result, options.base, 9, true, true, &result_str);
+        result_str = mp_serializer_to_string(mp_serializer_new(10, 9), &result);
         printf("%s\n", result_str);
-        g_free(result_str);
         exit(0);
     }
 }
