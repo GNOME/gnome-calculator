@@ -90,7 +90,7 @@ test(char *expression, char *expected, int expected_error)
         result_str = mp_serializer_to_string(serializer, &result);
         g_object_unref(serializer);
 
-        if(expected_error != 0)
+        if(expected_error != PARSER_ERR_NONE)
             fail("'%s' -> %s, expected error %s", expression, result_str, error_code_to_string(expected_error));
         else if(strcmp(result_str, expected) != 0)
             fail("'%s' -> '%s', expected '%s'", expression, result_str, expected);
@@ -101,6 +101,9 @@ test(char *expression, char *expected, int expected_error)
     else {
         if(error == expected_error)
             pass("'%s' -> error %s", expression, error_code_to_string(error));
+        else if(expected_error == PARSER_ERR_NONE)
+            fail("'%s' -> error %s, expected result %s", expression,
+                 error_code_to_string(error), expected);
         else
             fail("'%s' -> error %s, expected error %s", expression,
                  error_code_to_string(error), error_code_to_string(expected_error));
